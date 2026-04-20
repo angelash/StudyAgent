@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const apiEnvSchema = z.object({
+  API_PORT: z.coerce.number().optional(),
   PORT: z.coerce.number().default(4000),
   DATABASE_URL: z.string().default('postgresql://user:password@localhost:5432/study_agent'),
   OPENAI_API_KEY: z.string().optional(),
@@ -17,6 +18,8 @@ export type ApiEnv = z.infer<typeof apiEnvSchema>;
 
 export const webEnvSchema = z.object({
   NEXT_PUBLIC_API_BASE_URL: z.string().default('http://localhost:4000'),
+  PORT: z.coerce.number().optional(),
+  WEB_PORT: z.coerce.number().optional(),
 });
 
 export type WebEnv = z.infer<typeof webEnvSchema>;

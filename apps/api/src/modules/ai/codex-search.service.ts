@@ -65,6 +65,8 @@ export class CodexSearchService {
         const args = [
           '--search',
           'exec',
+          '--disable',
+          'plugins',
           '--json',
           '--color',
           'never',
@@ -78,6 +80,8 @@ export class CodexSearchService {
           args.push('-m', this.env.CODEX_MODEL.trim());
         }
 
+        args.push('-c', 'model_reasoning_effort="low"');
+        args.push('-c', 'model_verbosity="low"');
         args.push('--output-schema', schemaPath, '-');
 
         const child = spawn(this.env.CODEX_COMMAND, args, {
