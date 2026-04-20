@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserAccount {
+  id           String   @id @default(cuid())
+  principal    String   @unique
+  passwordHash String
+  role         String
+  displayName  String
+  status       String
+  createdAt    DateTime @default(now())
+}
+
+model StudentProfile {
+  id                      String   @id @default(cuid())
+  userId                  String
+  nickname                String
+  grade                   Int
+  preferredSessionMinutes Int
+  chineseVersionId        String
+  mathVersionId           String
+  englishVersionId        String
+  createdAt               DateTime @default(now())
+}
+
+model SubjectEnrollment {
+  id               String   @id @default(cuid())
+  studentId        String
+  subject          String
+  enabled          Boolean
+  textbookVersionId String
+  createdAt        DateTime @default(now())
+}
+
+model TextbookVolume {
+  id               String   @id @default(cuid())
+  subject          String
+  publisherVersion String
+  grade            Int
+  term             String
+  displayName      String
+  sourcePath       String
+  status           String
+  createdAt        DateTime @default(now())
+}
+
+model KnowledgePoint {
+  id              String   @id @default(cuid())
+  subject         String
+  name            String
+  parentId        String?
+  gradeBand       String
+  difficultyLevel Int
+  lessonId        String?
+  status          String
+  createdAt       DateTime @default(now())
+}
+
+model Question {
+  id              String   @id @default(cuid())
+  subject         String
+  type            String
+  stem            String
+  answer          Json
+  analysis        String
+  difficultyLevel Int
+  status          String
+  createdAt       DateTime @default(now())
+}
+
+model AssessmentSession {
+  id             String   @id @default(cuid())
+  studentId      String
+  subject        String
+  assessmentType String
+  status         String
+  startedAt      DateTime
+  completedAt    DateTime?
+}
+
+model DailyMission {
+  id                     String   @id @default(cuid())
+  studentId              String
+  subject                String
+  missionType            String
+  title                  String
+  estimatedMinutes       Int
+  status                 String
+  createdAt              DateTime @default(now())
+}
+
+model AssistantSession {
+  id             String   @id @default(cuid())
+  userRole       String
+  studentId      String?
+  pageContext    String
+  contextRefType String?
+  contextRefId   String?
+  status         String
+  createdAt      DateTime @default(now())
+}

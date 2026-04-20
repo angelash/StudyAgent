@@ -1,0 +1,2 @@
+export * from './assistant-dock';
+

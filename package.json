@@ -1,0 +1,23 @@
+{
+  "name": "study-agent",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:web": "npm run dev --workspace @study-agent/web",
+    "dev:api": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run dev --workspace @study-agent/api",
+    "build": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run build --workspace @study-agent/api && npm run build --workspace @study-agent/web",
+    "test": "npm run test --workspace @study-agent/api",
+    "lint": "npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "concurrently": "^9.1.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}

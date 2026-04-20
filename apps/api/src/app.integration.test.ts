@@ -1,0 +1,302 @@
+import 'reflect-metadata';
+import { createRequire } from 'module';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { NestFactory } from '@nestjs/core';
+import request from 'supertest';
+import { INestApplication } from '@nestjs/common';
+
+const require = createRequire(__filename);
+
+type WrappedResponse<T> = {
+  data: T;
+  error: { code: string; message: string } | null;
+  meta: { requestId: string };
+};
+
+describe('StudyAgent API integration', () => {
+  let app: INestApplication;
+  let store: {
+    reset: () => void;
+    events: Array<Record<string, unknown>>;
+  };
+
+  beforeAll(async () => {
+    const { AppModule } = require('../dist/apps/api/src/app.module.js');
+    const { InMemoryStoreService } = require('../dist/apps/api/src/infrastructure/in-memory-store.service.js');
+    app = await NestFactory.create(AppModule, { logger: false });
+    app.setGlobalPrefix('api');
+    await app.init();
+    store = app.get(InMemoryStoreService);
+  });
+
+  beforeEach(() => {
+    store.reset();
+  });
+
+  afterAll(async () => {
+    await app.close();
+  });
+
+  async function login(principal: string, credential = 'study-agent') {
+    const response = await request(app.getHttpServer())
+      .post('/api/auth/login')
+      .send({ principal, credential })
+      .expect(201);
+    return (response.body as WrappedResponse<{ token: string; user: { id: string; role: string } }>).data;
+  }
+
+  async function createStudent(token: string) {
+    const response = await request(app.getHttpServer())
+      .post('/api/students')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        nickname: '测试学生',
+        grade: 3,
+        preferredSessionMinutes: 20,
+        defaultVersionMap: {
+          chinese: 'chinese-dev-version',
+          math: 'math-dev-version',
+          english: 'english-dev-version',
+        },
+      })
+      .expect(201);
+
+    return (response.body as WrappedResponse<{ profile: { id: string } }>).data.profile.id;
+  }
+
+  async function importTextbooks(token: string) {
+    const response = await request(app.getHttpServer())
+      .post('/api/admin/textbooks/import')
+      .set('Authorization', `Bearer ${token}`)
+      .send({})
+      .expect(201);
+
+    return (response.body as WrappedResponse<{ volumes: Array<{ id: string }> }>).data.volumes;
+  }
+
+  async function createPublishedQuestion(token: string, lessonId: string) {
+    const kpResponse = await request(app.getHttpServer())
+      .post('/api/admin/knowledge-points')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        subject: 'math',
+        name: '表内除法',
+        parentId: null,
+        gradeBand: '2-3',
+        difficultyLevel: 1,
+        lessonId,
+        status: 'published',
+      })
+      .expect(201);
+
+    const knowledgePoint = (kpResponse.body as WrappedResponse<{ id: string }>).data;
+
+    const questionResponse = await request(app.getHttpServer())
+      .post('/api/admin/questions')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        subject: 'math',
+        type: 'objective',
+        stem: '36 ÷ 6 = ?',
+        answer: '6',
+        analysis: '先做表内除法。',
+        difficultyLevel: 1,
+      })
+      .expect(201);
+
+    const question = (questionResponse.body as WrappedResponse<{ id: string }>).data;
+
+    await request(app.getHttpServer())
+      .post(`/api/admin/questions/${question.id}/knowledge-points`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        knowledgePointIds: [knowledgePoint.id],
+      })
+      .expect(201);
+
+    await request(app.getHttpServer())
+      .patch(`/api/admin/questions/${question.id}/publish`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({})
+      .expect(200);
+
+    return question.id;
+  }
+
+  it('allows parent login and student creation', async () => {
+    const auth = await login('parent@example.com');
+    const studentId = await createStudent(auth.token);
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/students/${studentId}/profile`)
+      .set('Authorization', `Bearer ${auth.token}`)
+      .expect(200);
+
+    const profile = (response.body as WrappedResponse<{ id: string; enrollments: Array<unknown> }>).data;
+    expect(profile.id).toBe(studentId);
+    expect(profile.enrollments).toHaveLength(3);
+  });
+
+  it('imports math textbooks and exposes textbook tree', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token);
+    expect(volumes.length).toBeGreaterThan(0);
+
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+
+    const tree = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<unknown> }> }>).data;
+    expect(tree.units.length).toBeGreaterThan(0);
+    expect(tree.units[0].lessons.length).toBeGreaterThan(0);
+  });
+
+  it('blocks assessment when there are no published questions', async () => {
+    const parent = await login('parent@example.com');
+    const studentId = await createStudent(parent.token);
+
+    await request(app.getHttpServer())
+      .post('/api/assessments/start')
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        studentId,
+        subject: 'math',
+        assessmentType: 'initial',
+      })
+      .expect(400);
+  });
+
+  it('completes assessment and emits assessment.completed event', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token);
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data.units[0].lessons[0].id;
+    await createPublishedQuestion(admin.token, lessonId);
+
+    const parent = await login('parent@example.com');
+    const studentId = await createStudent(parent.token);
+
+    const sessionResponse = await request(app.getHttpServer())
+      .post('/api/assessments/start')
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        studentId,
+        subject: 'math',
+        assessmentType: 'initial',
+      })
+      .expect(201);
+
+    const session = (sessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data;
+    await request(app.getHttpServer())
+      .post(`/api/assessments/${session.id}/answers`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        itemId: session.itemIds[0],
+        answer: '6',
+        elapsedMs: 2000,
+      })
+      .expect(201);
+
+    const completeResponse = await request(app.getHttpServer())
+      .post(`/api/assessments/${session.id}/complete`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({})
+      .expect(201);
+
+    const result = (completeResponse.body as WrappedResponse<{ overallScore: number }>).data;
+    expect(result.overallScore).toBeGreaterThanOrEqual(1);
+    expect(store.events.some((event) => event.eventName === 'assessment.completed')).toBe(true);
+  });
+
+  it('falls back to mock AI analysis without API key', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/ai/assessment/analyze')
+      .send({
+        question: {
+          id: 'q1',
+          subject: 'math',
+          type: 'stepwise',
+          stem: '请说明 8 × 7 的计算过程',
+          answer: '56',
+          analysis: '先记口诀。',
+          difficultyLevel: 2,
+          knowledgePointIds: ['kp1'],
+          status: 'published',
+        },
+        answer: '54',
+      })
+      .expect(201);
+
+    const result = (response.body as WrappedResponse<{ source: string }>).data;
+    expect(result.source).toBe('mock');
+  });
+
+  it('generates a mission, returns hints, and completes training', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token);
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data.units[0].lessons[0].id;
+    await createPublishedQuestion(admin.token, lessonId);
+
+    const parent = await login('parent@example.com');
+    const studentId = await createStudent(parent.token);
+
+    const missionResponse = await request(app.getHttpServer())
+      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .expect(200);
+    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data;
+
+    await request(app.getHttpServer())
+      .post(`/api/missions/${mission.id}/start`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({})
+      .expect(201);
+
+    const hintResponse = await request(app.getHttpServer())
+      .post(`/api/missions/${mission.id}/hints`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        itemId: mission.questionIds[0],
+      })
+      .expect(201);
+
+    const hint = (hintResponse.body as WrappedResponse<{ hint: string }>).data;
+    expect(hint.hint.length).toBeGreaterThan(0);
+
+    await request(app.getHttpServer())
+      .post(`/api/missions/${mission.id}/answers`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        itemId: mission.questionIds[0],
+        answer: '6',
+        elapsedMs: 2000,
+      })
+      .expect(201);
+
+    const completeResponse = await request(app.getHttpServer())
+      .post(`/api/missions/${mission.id}/complete`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({})
+      .expect(201);
+
+    const result = (completeResponse.body as WrappedResponse<{ summary: string }>).data;
+    expect(result.summary.length).toBeGreaterThan(0);
+    expect(store.events.some((event) => event.eventName === 'mission.completed')).toBe(true);
+  });
+
+  it('rejects access from an unbound parent', async () => {
+    const parentA = await login('parentA@example.com');
+    const studentId = await createStudent(parentA.token);
+    const parentB = await login('parentB@example.com');
+
+    await request(app.getHttpServer())
+      .get(`/api/students/${studentId}/profile`)
+      .set('Authorization', `Bearer ${parentB.token}`)
+      .expect(403);
+  });
+});
