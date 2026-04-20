@@ -8,6 +8,7 @@ import {
   DailyMission,
   KnowledgePoint,
   Question,
+  StudyPlan,
   StudentProfile,
   SubjectEnrollment,
   TextbookVolume,
@@ -115,6 +116,7 @@ export class InMemoryStoreService {
   assessments: AssessmentSession[] = [];
   assessmentAnswers: AssessmentAnswerRecord[] = [];
   assessmentResults: AssessmentResult[] = [];
+  studyPlans: StudyPlan[] = [];
   missions: DailyMissionInternal[] = [];
   missionAnswers: MissionAnswerRecord[] = [];
   assistantSessions: AssistantSession[] = [];
@@ -140,6 +142,7 @@ export class InMemoryStoreService {
     this.assessments = [];
     this.assessmentAnswers = [];
     this.assessmentResults = [];
+    this.studyPlans = [];
     this.missions = [];
     this.missionAnswers = [];
     this.assistantSessions = [];
@@ -148,4 +151,3 @@ export class InMemoryStoreService {
     this.events = [];
   }
 }
-

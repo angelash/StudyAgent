@@ -136,11 +136,14 @@ export const assessmentResultSchema = z.object({
 
 export type AssessmentResult = z.infer<typeof assessmentResultSchema>;
 
+export const missionTypeSchema = z.enum(['new_learning', 'practice', 'retry', 'review']);
+export type MissionType = z.infer<typeof missionTypeSchema>;
+
 export const dailyMissionSchema = z.object({
   id: z.string(),
   studentId: z.string(),
   subject: subjectSchema,
-  missionType: z.enum(['new_learning', 'practice', 'retry', 'review']),
+  missionType: missionTypeSchema,
   title: z.string(),
   targetKnowledgePointIds: z.array(z.string()),
   questionIds: z.array(z.string()),
@@ -149,6 +152,129 @@ export const dailyMissionSchema = z.object({
 });
 
 export type DailyMission = z.infer<typeof dailyMissionSchema>;
+
+export const studyPlanDaySchema = z.object({
+  date: z.string(),
+  weekday: z.enum(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']),
+  missionType: missionTypeSchema,
+  estimatedMinutes: z.number().int().positive(),
+  focusKnowledgePointIds: z.array(z.string()),
+  focusKnowledgePointNames: z.array(z.string()),
+  goal: z.string(),
+});
+
+export type StudyPlanDay = z.infer<typeof studyPlanDaySchema>;
+
+export const studyPlanSchema = z.object({
+  id: z.string(),
+  studentId: z.string(),
+  subject: subjectSchema,
+  weekStartDate: z.string(),
+  weekEndDate: z.string(),
+  availableMinutesPerDay: z.number().int().positive(),
+  goals: z.array(z.string()),
+  requiredKnowledgePointIds: z.array(z.string()),
+  requiredKnowledgePointNames: z.array(z.string()),
+  dailyPlans: z.array(studyPlanDaySchema),
+  summary: z.string(),
+  status: z.enum(['draft', 'active', 'completed']),
+  generatedAt: z.string(),
+});
+
+export type StudyPlan = z.infer<typeof studyPlanSchema>;
+
+export const generateWeeklyPlanRequestSchema = z.object({
+  studentId: z.string(),
+  subject: subjectSchema,
+  weekStartDate: z.string().optional(),
+  availableMinutesPerDay: z.number().int().positive().optional(),
+});
+
+export type GenerateWeeklyPlanRequest = z.infer<typeof generateWeeklyPlanRequestSchema>;
+
+export const masteryStatusSchema = z.enum(['unknown', 'learning', 'unstable', 'mastered', 'at_risk']);
+export type MasteryStatus = z.infer<typeof masteryStatusSchema>;
+
+export const studentMasterySnapshotSchema = z.object({
+  studentId: z.string(),
+  subject: subjectSchema,
+  knowledgePointId: z.string(),
+  knowledgePointName: z.string(),
+  masteryScore: z.number(),
+  confidenceScore: z.number(),
+  status: masteryStatusSchema,
+  updatedAt: z.string(),
+});
+
+export type StudentMasterySnapshot = z.infer<typeof studentMasterySnapshotSchema>;
+
+export const masteryHeatmapViewSchema = z.object({
+  studentId: z.string(),
+  subject: subjectSchema,
+  summary: z.object({
+    masteredCount: z.number().int().nonnegative(),
+    learningCount: z.number().int().nonnegative(),
+    unstableCount: z.number().int().nonnegative(),
+    atRiskCount: z.number().int().nonnegative(),
+    unknownCount: z.number().int().nonnegative(),
+  }),
+  snapshots: z.array(studentMasterySnapshotSchema),
+});
+
+export type MasteryHeatmapView = z.infer<typeof masteryHeatmapViewSchema>;
+
+export const riskSignalSchema = z.object({
+  id: z.string(),
+  studentId: z.string(),
+  subject: subjectSchema,
+  type: z.enum(['streak_break', 'retry_failure', 'mastery_drop', 'high_hint_dependency']),
+  level: z.enum(['low', 'medium', 'high']),
+  summary: z.string(),
+  action: z.string(),
+  knowledgePointId: z.string().nullable(),
+  knowledgePointName: z.string().nullable(),
+});
+
+export type RiskSignal = z.infer<typeof riskSignalSchema>;
+
+const weeklyReportKnowledgePointSchema = z.object({
+  knowledgePointId: z.string(),
+  knowledgePointName: z.string(),
+  masteryScore: z.number(),
+  status: masteryStatusSchema,
+});
+
+export const weeklyReportSchema = z.object({
+  studentId: z.string(),
+  subject: subjectSchema,
+  weekStartDate: z.string(),
+  weekEndDate: z.string(),
+  assessmentCount: z.number().int().nonnegative(),
+  missionCompletedCount: z.number().int().nonnegative(),
+  totalAnsweredCount: z.number().int().nonnegative(),
+  correctRate: z.number(),
+  hintUsedCount: z.number().int().nonnegative(),
+  highlights: z.array(z.string()),
+  strongestKnowledgePoints: z.array(weeklyReportKnowledgePointSchema),
+  focusKnowledgePoints: z.array(weeklyReportKnowledgePointSchema),
+  masterySnapshots: z.array(studentMasterySnapshotSchema),
+  riskSignals: z.array(riskSignalSchema),
+  parentSummary: z.string(),
+  generatedAt: z.string(),
+});
+
+export type WeeklyReport = z.infer<typeof weeklyReportSchema>;
+
+export const analyticsOverviewSchema = z.object({
+  studentCount: z.number().int().nonnegative(),
+  activeParentCount: z.number().int().nonnegative(),
+  publishedQuestionCount: z.number().int().nonnegative(),
+  completedAssessmentCount: z.number().int().nonnegative(),
+  completedMissionCount: z.number().int().nonnegative(),
+  aiInsightCount: z.number().int().nonnegative(),
+});
+
+export type AnalyticsOverview = z.infer<typeof analyticsOverviewSchema>;
 
 export const aiAnalysisResponseSchema = z.object({
   summary: z.string(),

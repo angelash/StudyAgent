@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { DailyMission, Question } from '@study-agent/contracts';
+import { DailyMission, MissionType, Question } from '@study-agent/contracts';
 import { AiService } from '../ai/ai.service';
 import { AssessmentsService } from '../assessments/assessments.service';
 import { ContentService } from '../content/content.service';
@@ -20,9 +20,12 @@ export class MissionsService {
 
   getTodayMission(requestUser: InMemoryUserAccount, studentId: string, subject: 'math' | 'chinese' | 'english') {
     this.studentsService.assertCanAccessStudent(requestUser, studentId);
-    const today = new Date().toISOString().slice(0, 10);
+    const today = this.formatDateKey(new Date());
     const existing = this.store.missions.find(
-      (item) => item.studentId === studentId && item.subject === subject && item.createdAt.startsWith(today),
+      (item) =>
+        item.studentId === studentId &&
+        item.subject === subject &&
+        this.formatDateKey(new Date(item.createdAt)) === today,
     );
     if (existing) {
       return existing;
@@ -31,24 +34,51 @@ export class MissionsService {
     const lastResult = this.assessmentsService.getLatestResult(studentId, subject);
     const weakKnowledgeIds =
       lastResult?.knowledgeResults.filter((item) => item.score < 80).map((item) => item.knowledgePointId) ?? [];
-    const questions = this.contentService.getPublishedQuestions(subject, weakKnowledgeIds.length > 0 ? weakKnowledgeIds : undefined).slice(0, 3);
+    const weeklyPlan = this.store.studyPlans.find(
+      (item) =>
+        item.studentId === studentId &&
+        item.subject === subject &&
+        item.weekStartDate <= today &&
+        item.weekEndDate >= today,
+    );
+    const todayPlan = weeklyPlan?.dailyPlans.find((item) => item.date === today);
+    const preferredKnowledgeIds =
+      weakKnowledgeIds.length > 0
+        ? weakKnowledgeIds
+        : todayPlan?.focusKnowledgePointIds.length
+          ? todayPlan.focusKnowledgePointIds
+          : (weeklyPlan?.requiredKnowledgePointIds ?? []);
+    let questions = this.contentService
+      .getPublishedQuestions(subject, preferredKnowledgeIds.length > 0 ? preferredKnowledgeIds : undefined)
+      .slice(0, 3);
+
+    if (questions.length === 0 && preferredKnowledgeIds.length > 0) {
+      questions = this.contentService.getPublishedQuestions(subject).slice(0, 3);
+    }
 
     if (questions.length === 0) {
       throw new BadRequestException('No published questions available to build mission');
     }
 
+    const missionType: MissionType =
+      weakKnowledgeIds.length > 0 ? 'retry' : (todayPlan?.missionType ?? 'practice');
+    const targetKnowledgePointIds =
+      preferredKnowledgeIds.length > 0 ? preferredKnowledgeIds : questions[0].knowledgePointIds;
+
     const mission: DailyMission & { createdAt: string; studentSummary: string } = {
       id: this.store.nextId('mission'),
       studentId,
       subject,
-      missionType: weakKnowledgeIds.length > 0 ? 'retry' : 'practice',
-      title: weakKnowledgeIds.length > 0 ? '数学薄弱点巩固任务' : '数学今日任务',
-      targetKnowledgePointIds: weakKnowledgeIds.length > 0 ? weakKnowledgeIds : questions[0].knowledgePointIds,
+      missionType,
+      title: this.resolveMissionTitle(missionType, subject),
+      targetKnowledgePointIds,
       questionIds: questions.map((item) => item.id),
-      estimatedMinutes: 15,
+      estimatedMinutes: todayPlan?.estimatedMinutes ?? 15,
       status: 'pending',
       createdAt: new Date().toISOString(),
-      studentSummary: weakKnowledgeIds.length > 0 ? '先把最容易错的地方补稳。' : '今天继续把当前知识点练熟。',
+      studentSummary:
+        todayPlan?.goal ??
+        (weakKnowledgeIds.length > 0 ? '先把最容易错的地方补稳。' : '今天继续把当前知识点练熟。'),
     };
 
     this.store.missions.push(mission);
@@ -194,5 +224,26 @@ export class MissionsService {
     }
     return question;
   }
-}
 
+  private resolveMissionTitle(type: MissionType, subject: 'math' | 'chinese' | 'english') {
+    const subjectName = subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : '英语';
+    switch (type) {
+      case 'retry':
+        return `${subjectName}薄弱点巩固任务`;
+      case 'review':
+        return `${subjectName}复习回看任务`;
+      case 'new_learning':
+        return `${subjectName}新知入门任务`;
+      case 'practice':
+      default:
+        return `${subjectName}今日任务`;
+    }
+  }
+
+  private formatDateKey(date: Date) {
+    const year = date.getFullYear();
+    const month = `${date.getMonth() + 1}`.padStart(2, '0');
+    const day = `${date.getDate()}`.padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+}

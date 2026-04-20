@@ -10,9 +10,11 @@ import { ContentModule } from './modules/content/content.module';
 import { AssessmentsModule } from './modules/assessments/assessments.module';
 import { MissionsModule } from './modules/missions/missions.module';
 import { AiModule } from './modules/ai/ai.module';
+import { ProgressModule } from './modules/progress/progress.module';
+import { PlansModule } from './modules/plans/plans.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, AssessmentsModule, MissionsModule, AiModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule],
   providers: [
     {
       provide: APP_FILTER,
