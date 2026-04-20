@@ -44,4 +44,9 @@ export class ProgressController {
   getAnalyticsOverview(@Req() req: AuthenticatedRequest) {
     return this.progressService.getAnalyticsOverview(req.user);
   }
+
+  @Get('admin/analytics/ai-quality')
+  getAiQualityOverview(@Req() req: AuthenticatedRequest) {
+    return this.progressService.getAiQualityOverview(req.user);
+  }
 }

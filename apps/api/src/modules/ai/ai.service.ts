@@ -8,7 +8,7 @@ import { loadApiEnv } from '@study-agent/config';
 import { AIAnalysisResponse, AssistantSession, Question } from '@study-agent/contracts';
 import OpenAI from 'openai';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
-import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { AIInsightRecord, InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { CodexSearchResult, CodexSearchService } from './codex-search.service';
 
 type AnalyzeAssessmentCommand = {
@@ -78,13 +78,15 @@ export class AiService {
       }
 
       const parsed = this.parseAnalysisResponse(raw);
-      return {
+      const response = {
         summary: parsed.summary,
         structuredResult: parsed.structuredResult,
         confidenceLevel: parsed.confidenceLevel,
         reviewRequired: parsed.reviewRequired,
-        source: 'openai',
+        source: 'openai' as const,
       };
+      this.recordInsight('assessment', command.question.id, null, response.summary, response);
+      return response;
     } catch (error) {
       throw this.wrapAiError('AI 评估分析', error);
     }
@@ -122,10 +124,21 @@ export class AiService {
         throw new ServiceUnavailableException('AI 提示生成返回了空结果');
       }
 
-      return {
+      const response = {
         hint,
         source: 'openai' as const,
       };
+      this.recordInsight('hint', command.question.id, null, hint, {
+        summary: hint,
+        structuredResult: {
+          questionId: command.question.id,
+          answerHistoryCount: command.answerHistoryCount,
+        },
+        confidenceLevel: command.answerHistoryCount >= 2 ? 'medium' : 'high',
+        reviewRequired: false,
+        source: 'openai' as const,
+      });
+      return response;
     } catch (error) {
       throw this.wrapAiError('AI 提示生成', error);
     }
@@ -218,37 +231,23 @@ export class AiService {
         createdAt: new Date().toISOString(),
       });
 
-      const insight = {
-        id: this.store.nextId('ai_insight'),
-        sourceType: 'assistant' as const,
-        sourceId: session.id,
-        studentId: session.studentId,
+      this.recordInsight('assistant', session.id, session.studentId, reply, {
         summary: reply,
-        payload: {
-          summary: reply,
-          structuredResult: {
-            pageContext: session.pageContext,
-            webSearch: {
-              query: webSearch.query,
-              requestId: webSearch.requestId,
-              resultCount: webSearch.results.length,
-              sources: webSearch.results.slice(0, 3).map((item) => ({
-                title: item.title,
-                url: item.url,
-              })),
-            },
+        structuredResult: {
+          pageContext: session.pageContext,
+          webSearch: {
+            query: webSearch.query,
+            requestId: webSearch.requestId,
+            resultCount: webSearch.results.length,
+            sources: webSearch.results.slice(0, 3).map((item) => ({
+              title: item.title,
+              url: item.url,
+            })),
           },
-          confidenceLevel: 'medium' as const,
-          reviewRequired: false,
-          source: 'openai' as const,
         },
-        createdAt: new Date().toISOString(),
-      };
-      this.store.aiInsights.push(insight);
-      this.eventBus.publish('ai.insight_created', {
-        insightId: insight.id,
-        sourceType: insight.sourceType,
-        studentId: insight.studentId,
+        confidenceLevel: 'medium',
+        reviewRequired: false,
+        source: 'openai' as const,
       });
 
       return {
@@ -353,5 +352,31 @@ export class AiService {
     }
 
     return new ServiceUnavailableException(`${scene}失败：未知异常`);
+  }
+
+  private recordInsight(
+    sourceType: AIInsightRecord['sourceType'],
+    sourceId: string,
+    studentId: string | null,
+    summary: string,
+    payload: AIAnalysisResponse,
+  ) {
+    const insight: AIInsightRecord = {
+      id: this.store.nextId('ai_insight'),
+      sourceType,
+      sourceId,
+      studentId,
+      summary,
+      payload,
+      createdAt: new Date().toISOString(),
+    };
+
+    this.store.aiInsights.push(insight);
+    this.eventBus.publish('ai.insight_created', {
+      insightId: insight.id,
+      sourceType: insight.sourceType,
+      studentId: insight.studentId,
+    });
+    return insight;
   }
 }

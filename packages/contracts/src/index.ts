@@ -268,13 +268,49 @@ export type WeeklyReport = z.infer<typeof weeklyReportSchema>;
 export const analyticsOverviewSchema = z.object({
   studentCount: z.number().int().nonnegative(),
   activeParentCount: z.number().int().nonnegative(),
+  textbookVolumeCount: z.number().int().nonnegative(),
+  knowledgePointCount: z.number().int().nonnegative(),
   publishedQuestionCount: z.number().int().nonnegative(),
   completedAssessmentCount: z.number().int().nonnegative(),
   completedMissionCount: z.number().int().nonnegative(),
+  activeStudyPlanCount: z.number().int().nonnegative(),
   aiInsightCount: z.number().int().nonnegative(),
 });
 
 export type AnalyticsOverview = z.infer<typeof analyticsOverviewSchema>;
+
+export const aiInsightSummarySchema = z.object({
+  id: z.string(),
+  sourceType: z.enum(['assessment', 'hint', 'assistant']),
+  studentId: z.string().nullable(),
+  summary: z.string(),
+  confidenceLevel: z.enum(['low', 'medium', 'high']),
+  reviewRequired: z.boolean(),
+  searchResultCount: z.number().int().nonnegative(),
+  createdAt: z.string(),
+});
+
+export type AIInsightSummary = z.infer<typeof aiInsightSummarySchema>;
+
+export const aiQualityOverviewSchema = z.object({
+  totalInsightCount: z.number().int().nonnegative(),
+  sourceBreakdown: z.object({
+    assessment: z.number().int().nonnegative(),
+    hint: z.number().int().nonnegative(),
+    assistant: z.number().int().nonnegative(),
+  }),
+  confidenceBreakdown: z.object({
+    low: z.number().int().nonnegative(),
+    medium: z.number().int().nonnegative(),
+    high: z.number().int().nonnegative(),
+  }),
+  reviewRequiredCount: z.number().int().nonnegative(),
+  searchBackedAssistantCount: z.number().int().nonnegative(),
+  searchBackedAssistantRate: z.number(),
+  recentInsights: z.array(aiInsightSummarySchema),
+});
+
+export type AIQualityOverview = z.infer<typeof aiQualityOverviewSchema>;
 
 export const aiAnalysisResponseSchema = z.object({
   summary: z.string(),

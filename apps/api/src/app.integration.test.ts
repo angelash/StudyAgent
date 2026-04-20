@@ -18,6 +18,8 @@ describe('StudyAgent API integration', () => {
   let store: {
     reset: () => void;
     events: Array<Record<string, unknown>>;
+    aiInsights: Array<Record<string, unknown>>;
+    nextId: (prefix: string) => string;
   };
   const originalOpenAiApiKey = process.env.OPENAI_API_KEY;
   const originalOpenAiBaseUrl = process.env.OPENAI_BASE_URL;
@@ -537,9 +539,93 @@ describe('StudyAgent API integration', () => {
       .get('/api/admin/analytics/overview')
       .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
-    const overview = (response.body as WrappedResponse<{ studentCount: number; publishedQuestionCount: number }>).data!;
+    const overview = (response.body as WrappedResponse<{
+      studentCount: number;
+      knowledgePointCount: number;
+      publishedQuestionCount: number;
+    }>).data!;
 
     expect(overview.studentCount).toBeGreaterThanOrEqual(1);
+    expect(overview.knowledgePointCount).toBeGreaterThanOrEqual(1);
     expect(overview.publishedQuestionCount).toBeGreaterThanOrEqual(1);
+  });
+
+  it('returns ai quality overview for admin', async () => {
+    const admin = await login('admin@example.com');
+
+    store.aiInsights.push(
+      {
+        id: store.nextId('ai_insight'),
+        sourceType: 'assessment',
+        sourceId: 'question_1',
+        studentId: null,
+        summary: '评估分析结果稳定。',
+        payload: {
+          summary: '评估分析结果稳定。',
+          structuredResult: { correct: true },
+          confidenceLevel: 'high',
+          reviewRequired: false,
+          source: 'openai',
+        },
+        createdAt: '2026-04-20T08:00:00.000Z',
+      },
+      {
+        id: store.nextId('ai_insight'),
+        sourceType: 'hint',
+        sourceId: 'question_2',
+        studentId: null,
+        summary: '提示聚焦下一步思路。',
+        payload: {
+          summary: '提示聚焦下一步思路。',
+          structuredResult: { answerHistoryCount: 1 },
+          confidenceLevel: 'medium',
+          reviewRequired: false,
+          source: 'openai',
+        },
+        createdAt: '2026-04-20T09:00:00.000Z',
+      },
+      {
+        id: store.nextId('ai_insight'),
+        sourceType: 'assistant',
+        sourceId: 'assistant_session_1',
+        studentId: 'student_demo',
+        summary: '建议先让孩子说出第一步。',
+        payload: {
+          summary: '建议先让孩子说出第一步。',
+          structuredResult: {
+            webSearch: {
+              resultCount: 3,
+            },
+          },
+          confidenceLevel: 'low',
+          reviewRequired: true,
+          source: 'openai',
+        },
+        createdAt: '2026-04-20T10:00:00.000Z',
+      },
+    );
+
+    const response = await request(app.getHttpServer())
+      .get('/api/admin/analytics/ai-quality')
+      .set('Authorization', `Bearer ${admin.token}`)
+      .expect(200);
+
+    const overview = (response.body as WrappedResponse<{
+      totalInsightCount: number;
+      sourceBreakdown: { assessment: number; hint: number; assistant: number };
+      confidenceBreakdown: { low: number; medium: number; high: number };
+      reviewRequiredCount: number;
+      searchBackedAssistantCount: number;
+      recentInsights: Array<{ sourceType: string }>;
+    }>).data!;
+
+    expect(overview.totalInsightCount).toBe(3);
+    expect(overview.sourceBreakdown.assessment).toBe(1);
+    expect(overview.sourceBreakdown.hint).toBe(1);
+    expect(overview.sourceBreakdown.assistant).toBe(1);
+    expect(overview.confidenceBreakdown.low).toBe(1);
+    expect(overview.reviewRequiredCount).toBe(1);
+    expect(overview.searchBackedAssistantCount).toBe(1);
+    expect(overview.recentInsights[0].sourceType).toBe('assistant');
   });
 });

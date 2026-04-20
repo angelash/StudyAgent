@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 
 type Volume = {
@@ -141,8 +142,18 @@ export default function AdminContentPage() {
 
   return (
     <main style={{ padding: 40, maxWidth: 1080 }}>
-      <h1>内容后台</h1>
-      <p style={{ color: '#475569' }}>请用包含 admin 的账号登录后再使用这里的接口。</p>
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+        <div>
+          <h1>内容后台</h1>
+          <p style={{ color: '#475569' }}>请用包含 admin 的账号登录后再使用这里的接口。</p>
+        </div>
+        <Link
+          href="/admin/analytics"
+          style={{ padding: '10px 14px', borderRadius: 12, background: '#0f172a', color: '#fff' }}
+        >
+          查看运营看板
+        </Link>
+      </div>
 
       <div style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', marginTop: 24 }}>
         <section style={{ padding: 20, borderRadius: 20, background: '#fff', border: '1px solid #e2e8f0' }}>

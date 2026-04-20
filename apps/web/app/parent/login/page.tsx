@@ -12,7 +12,7 @@ export default function ParentLoginPage() {
 
   async function submit() {
     try {
-      const response = await apiRequest<{ token: string; user: unknown }>('/auth/login', {
+      const response = await apiRequest<{ token: string; user: { role: string } }>('/auth/login', {
         method: 'POST',
         body: JSON.stringify({
           principal,
@@ -22,7 +22,7 @@ export default function ParentLoginPage() {
 
       setAuthToken(response.token);
       setCurrentUser(response.user);
-      router.push('/parent/dashboard');
+      router.push(response.user.role === 'admin' ? '/admin/analytics' : '/parent/dashboard');
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : '登录失败');
     }
@@ -59,4 +59,3 @@ export default function ParentLoginPage() {
     </main>
   );
 }
-

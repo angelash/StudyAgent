@@ -1,6 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import {
   AnalyticsOverview,
+  AIQualityOverview,
   MasteryHeatmapView,
   RiskSignal,
   StudentMasterySnapshot,
@@ -142,10 +143,59 @@ export class ProgressService {
     return {
       studentCount: this.store.students.length,
       activeParentCount: new Set(this.store.bindings.filter((item) => item.status === 'active').map((item) => item.parentUserId)).size,
+      textbookVolumeCount: this.store.textbookVolumes.length,
+      knowledgePointCount: this.store.knowledgePoints.length,
       publishedQuestionCount: this.store.questions.filter((item) => item.status === 'published').length,
       completedAssessmentCount: this.store.assessments.filter((item) => item.status === 'completed').length,
       completedMissionCount: this.store.missions.filter((item) => item.status === 'completed').length,
+      activeStudyPlanCount: this.store.studyPlans.filter((item) => item.status === 'active').length,
       aiInsightCount: this.store.aiInsights.length,
+    };
+  }
+
+  getAiQualityOverview(requestUser: InMemoryUserAccount): AIQualityOverview {
+    if (requestUser.role !== 'admin') {
+      throw new ForbiddenException('Admin role is required');
+    }
+
+    const sourceBreakdown = {
+      assessment: this.store.aiInsights.filter((item) => item.sourceType === 'assessment').length,
+      hint: this.store.aiInsights.filter((item) => item.sourceType === 'hint').length,
+      assistant: this.store.aiInsights.filter((item) => item.sourceType === 'assistant').length,
+    };
+    const confidenceBreakdown = {
+      low: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'low').length,
+      medium: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'medium').length,
+      high: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'high').length,
+    };
+    const reviewRequiredCount = this.store.aiInsights.filter((item) => item.payload.reviewRequired).length;
+    const assistantInsights = this.store.aiInsights.filter((item) => item.sourceType === 'assistant');
+    const searchBackedAssistantCount = assistantInsights.filter((item) => this.getSearchResultCount(item) > 0).length;
+    const searchBackedAssistantRate =
+      assistantInsights.length > 0
+        ? Math.round((searchBackedAssistantCount / assistantInsights.length) * 100)
+        : 0;
+
+    return {
+      totalInsightCount: this.store.aiInsights.length,
+      sourceBreakdown,
+      confidenceBreakdown,
+      reviewRequiredCount,
+      searchBackedAssistantCount,
+      searchBackedAssistantRate,
+      recentInsights: [...this.store.aiInsights]
+        .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime())
+        .slice(0, 8)
+        .map((item) => ({
+          id: item.id,
+          sourceType: item.sourceType,
+          studentId: item.studentId,
+          summary: item.summary,
+          confidenceLevel: item.payload.confidenceLevel,
+          reviewRequired: item.payload.reviewRequired,
+          searchResultCount: this.getSearchResultCount(item),
+          createdAt: item.createdAt,
+        })),
     };
   }
 
@@ -525,5 +575,12 @@ export class ProgressService {
       default:
         return 4;
     }
+  }
+
+  private getSearchResultCount(
+    insight: (typeof this.store.aiInsights)[number],
+  ) {
+    const resultCount = insight.payload.structuredResult?.webSearch?.resultCount;
+    return typeof resultCount === 'number' && Number.isFinite(resultCount) ? resultCount : 0;
   }
 }
