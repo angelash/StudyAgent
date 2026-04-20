@@ -155,7 +155,7 @@ export const aiAnalysisResponseSchema = z.object({
   structuredResult: z.record(z.any()),
   confidenceLevel: z.enum(['low', 'medium', 'high']),
   reviewRequired: z.boolean(),
-  source: z.enum(['openai', 'mock']),
+  source: z.enum(['openai']),
 });
 
 export type AIAnalysisResponse = z.infer<typeof aiAnalysisResponseSchema>;
@@ -171,4 +171,3 @@ export const assistantSessionSchema = z.object({
 });
 
 export type AssistantSession = z.infer<typeof assistantSessionSchema>;
-

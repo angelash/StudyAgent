@@ -31,7 +31,10 @@ packages/ui        悬浮助教 UI 组件
 
 1. 当前首轮 API 默认使用内存存储跑主链路，便于本地直接体验完整流程
 2. Prisma schema、迁移和 seed 脚本已预留，托管 PostgreSQL 配置好后可逐步切换到真实持久化
-3. AI 分析优先使用真实模型，未配置 `OPENAI_API_KEY` 时自动降级为 mock
+3. AI 能力只走真实模型，必须配置 `OPENAI_API_KEY`
+4. 悬浮助教对话会先调用本机 `codex --search` 做实时 websearch，再把检索结果交给大模型生成回答
+5. AI 或 codex 检索失败时接口会直接返回明确错误，不再返回 mock / fake feedback
+6. 使用助教前请确认本机 `codex` CLI 可执行且已完成可用认证或模型配置
 
 ## 测试
 

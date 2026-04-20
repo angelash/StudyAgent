@@ -47,15 +47,29 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
     },
   });
 
-  const payload = (await response.json()) as {
-    data: T;
-    error: { code: string; message: string } | null;
-  };
+  let payload:
+    | {
+        data: T;
+        error: { code: string; message: string } | null;
+      }
+    | null = null;
 
-  if (!response.ok || payload.error) {
-    throw new Error(payload.error?.message ?? `Request failed: ${response.status}`);
+  try {
+    payload = (await response.json()) as {
+      data: T;
+      error: { code: string; message: string } | null;
+    };
+  } catch {
+    payload = null;
+  }
+
+  if (!response.ok || payload?.error) {
+    throw new Error(payload?.error?.message ?? `Request failed: ${response.status}`);
+  }
+
+  if (!payload) {
+    throw new Error(`Request failed: ${response.status}`);
   }
 
   return payload.data;
 }
-

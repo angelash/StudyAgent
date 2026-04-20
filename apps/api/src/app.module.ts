@@ -1,5 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { ApiExceptionFilter } from './common/api-exception.filter';
 import { ApiResponseInterceptor } from './common/api-response.interceptor';
 import { RequestContextMiddleware } from './common/request-context.middleware';
 import { CoreModule } from './infrastructure/core.module';
@@ -13,6 +14,10 @@ import { AiModule } from './modules/ai/ai.module';
 @Module({
   imports: [CoreModule, AuthModule, StudentsModule, ContentModule, AssessmentsModule, MissionsModule, AiModule],
   providers: [
+    {
+      provide: APP_FILTER,
+      useClass: ApiExceptionFilter,
+    },
     {
       provide: APP_INTERCEPTOR,
       useClass: ApiResponseInterceptor,

@@ -39,12 +39,22 @@ export function StudentMissionClient() {
   const [questions, setQuestions] = React.useState<Question[]>([]);
   const [currentAnswer, setCurrentAnswer] = React.useState('');
   const [feedback, setFeedback] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [hint, setHint] = React.useState<string | null>(null);
 
+  function applyError(caught: unknown) {
+    setError(caught instanceof Error ? caught.message : '当前操作失败，请稍后重试');
+  }
+
   async function loadQuestionBank() {
-    const questionBank = await apiRequest<Question[]>('/questions?subject=math');
-    setQuestions(questionBank);
+    try {
+      setError(null);
+      const questionBank = await apiRequest<Question[]>('/questions?subject=math');
+      setQuestions(questionBank);
+    } catch (caught) {
+      applyError(caught);
+    }
   }
 
   React.useEffect(() => {
@@ -56,22 +66,27 @@ export function StudentMissionClient() {
       return;
     }
 
-    const session = await apiRequest<AssessmentSession>(
-      '/assessments/start',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          studentId,
-          subject: 'math',
-          assessmentType: 'initial',
-        }),
-      },
-      getAuthToken(),
-    );
-    setAssessment(session);
-    setAssessmentResult(null);
-    setCurrentIndex(0);
-    setFeedback(null);
+    try {
+      setError(null);
+      const session = await apiRequest<AssessmentSession>(
+        '/assessments/start',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            studentId,
+            subject: 'math',
+            assessmentType: 'initial',
+          }),
+        },
+        getAuthToken(),
+      );
+      setAssessment(session);
+      setAssessmentResult(null);
+      setCurrentIndex(0);
+      setFeedback(null);
+    } catch (caught) {
+      applyError(caught);
+    }
   }
 
   async function submitAssessmentAnswer() {
@@ -79,32 +94,37 @@ export function StudentMissionClient() {
       return;
     }
 
-    const itemId = assessment.itemIds[currentIndex];
-    const response = await apiRequest<{ analysis: string; correct: boolean }>(
-      `/assessments/${assessment.id}/answers`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          itemId,
-          answer: currentAnswer,
-          elapsedMs: 3000,
-        }),
-      },
-      getAuthToken(),
-    );
-    setFeedback(response.analysis);
-    setCurrentAnswer('');
-
-    if (currentIndex === assessment.itemIds.length - 1) {
-      const result = await apiRequest<AssessmentResult>(
-        `/assessments/${assessment.id}/complete`,
-        { method: 'POST' },
+    try {
+      setError(null);
+      const itemId = assessment.itemIds[currentIndex];
+      const response = await apiRequest<{ analysis: string; correct: boolean }>(
+        `/assessments/${assessment.id}/answers`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            itemId,
+            answer: currentAnswer,
+            elapsedMs: 3000,
+          }),
+        },
         getAuthToken(),
       );
-      setAssessmentResult(result);
-      setAssessment(null);
-    } else {
-      setCurrentIndex((value) => value + 1);
+      setFeedback(response.analysis);
+      setCurrentAnswer('');
+
+      if (currentIndex === assessment.itemIds.length - 1) {
+        const result = await apiRequest<AssessmentResult>(
+          `/assessments/${assessment.id}/complete`,
+          { method: 'POST' },
+          getAuthToken(),
+        );
+        setAssessmentResult(result);
+        setAssessment(null);
+      } else {
+        setCurrentIndex((value) => value + 1);
+      }
+    } catch (caught) {
+      applyError(caught);
     }
   }
 
@@ -113,16 +133,21 @@ export function StudentMissionClient() {
       return;
     }
 
-    const todayMission = await apiRequest<Mission>(
-      `/missions/today?studentId=${studentId}&subject=math`,
-      {},
-      getAuthToken(),
-    );
-    setMission(todayMission);
-    setCurrentIndex(0);
-    setFeedback(todayMission.studentSummary);
-    setHint(null);
-    await apiRequest(`/missions/${todayMission.id}/start`, { method: 'POST' }, getAuthToken());
+    try {
+      setError(null);
+      const todayMission = await apiRequest<Mission>(
+        `/missions/today?studentId=${studentId}&subject=math`,
+        {},
+        getAuthToken(),
+      );
+      setMission(todayMission);
+      setCurrentIndex(0);
+      setFeedback(todayMission.studentSummary);
+      setHint(null);
+      await apiRequest(`/missions/${todayMission.id}/start`, { method: 'POST' }, getAuthToken());
+    } catch (caught) {
+      applyError(caught);
+    }
   }
 
   async function submitMissionAnswer() {
@@ -130,32 +155,37 @@ export function StudentMissionClient() {
       return;
     }
 
-    const itemId = mission.questionIds[currentIndex];
-    const response = await apiRequest<{ analysis: string; recoverySuggested: boolean }>(
-      `/missions/${mission.id}/answers`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          itemId,
-          answer: currentAnswer,
-          elapsedMs: 3000,
-        }),
-      },
-      getAuthToken(),
-    );
-    setFeedback(response.analysis);
-    setCurrentAnswer('');
-
-    if (currentIndex === mission.questionIds.length - 1) {
-      const completed = await apiRequest<{ summary: string }>(
-        `/missions/${mission.id}/complete`,
-        { method: 'POST' },
+    try {
+      setError(null);
+      const itemId = mission.questionIds[currentIndex];
+      const response = await apiRequest<{ analysis: string; recoverySuggested: boolean }>(
+        `/missions/${mission.id}/answers`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            itemId,
+            answer: currentAnswer,
+            elapsedMs: 3000,
+          }),
+        },
         getAuthToken(),
       );
-      setFeedback(completed.summary);
-      setMission(null);
-    } else {
-      setCurrentIndex((value) => value + 1);
+      setFeedback(response.analysis);
+      setCurrentAnswer('');
+
+      if (currentIndex === mission.questionIds.length - 1) {
+        const completed = await apiRequest<{ summary: string }>(
+          `/missions/${mission.id}/complete`,
+          { method: 'POST' },
+          getAuthToken(),
+        );
+        setFeedback(completed.summary);
+        setMission(null);
+      } else {
+        setCurrentIndex((value) => value + 1);
+      }
+    } catch (caught) {
+      applyError(caught);
     }
   }
 
@@ -163,18 +193,24 @@ export function StudentMissionClient() {
     if (!mission) {
       return;
     }
-    const itemId = mission.questionIds[currentIndex];
-    const response = await apiRequest<{ hint: string }>(
-      `/missions/${mission.id}/hints`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          itemId,
-        }),
-      },
-      getAuthToken(),
-    );
-    setHint(response.hint);
+    try {
+      setError(null);
+      const itemId = mission.questionIds[currentIndex];
+      const response = await apiRequest<{ hint: string }>(
+        `/missions/${mission.id}/hints`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            itemId,
+          }),
+        },
+        getAuthToken(),
+      );
+      setHint(response.hint);
+    } catch (caught) {
+      setHint(null);
+      applyError(caught);
+    }
   }
 
   const currentAssessmentQuestion = assessment ? questions.find((item) => item.id === assessment.itemIds[currentIndex]) : null;
@@ -229,6 +265,12 @@ export function StudentMissionClient() {
       {feedback ? (
         <section style={{ marginTop: 24, padding: 20, borderRadius: 20, background: '#ecfeff', border: '1px solid #99f6e4' }}>
           <strong>反馈：</strong> {feedback}
+        </section>
+      ) : null}
+
+      {error ? (
+        <section style={{ marginTop: 24, padding: 20, borderRadius: 20, background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c' }}>
+          <strong>错误：</strong> {error}
         </section>
       ) : null}
 

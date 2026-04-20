@@ -32,22 +32,28 @@ export default function ParentDashboardPage() {
   const [nickname, setNickname] = React.useState('小明');
   const [grade, setGrade] = React.useState(3);
   const [message, setMessage] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     async function bootstrap() {
-      const currentUser = getCurrentUser<User>();
-      if (!currentUser) {
-        router.push('/parent/login');
-        return;
-      }
+      try {
+        setError(null);
+        const currentUser = getCurrentUser<User>();
+        if (!currentUser) {
+          router.push('/parent/login');
+          return;
+        }
 
-      setUser(currentUser);
-      const [childrenResult, volumesResult] = await Promise.all([
-        apiRequest<ChildProfile[]>(`/parents/${currentUser.id}/students`, {}, getAuthToken()),
-        apiRequest<Volume[]>('/textbooks', {}),
-      ]);
-      setChildrenProfiles(childrenResult);
-      setVolumes(volumesResult.filter((item) => item.subject === 'math'));
+        setUser(currentUser);
+        const [childrenResult, volumesResult] = await Promise.all([
+          apiRequest<ChildProfile[]>(`/parents/${currentUser.id}/students`, {}, getAuthToken()),
+          apiRequest<Volume[]>('/textbooks', {}),
+        ]);
+        setChildrenProfiles(childrenResult);
+        setVolumes(volumesResult.filter((item) => item.subject === 'math'));
+      } catch (caught) {
+        setError(caught instanceof Error ? caught.message : '家长控制台加载失败');
+      }
     }
 
     void bootstrap();
@@ -58,27 +64,32 @@ export default function ParentDashboardPage() {
       return;
     }
 
-    const mathVolume = volumes[0];
-    const created = await apiRequest<{ profile: ChildProfile }>(
-      '/students',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          nickname,
-          grade,
-          preferredSessionMinutes: 20,
-          defaultVersionMap: {
-            chinese: 'chinese-dev-version',
-            math: mathVolume?.id ?? 'math-dev-version',
-            english: 'english-dev-version',
-          },
-        }),
-      },
-      getAuthToken(),
-    );
+    try {
+      setError(null);
+      const mathVolume = volumes[0];
+      const created = await apiRequest<{ profile: ChildProfile }>(
+        '/students',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            nickname,
+            grade,
+            preferredSessionMinutes: 20,
+            defaultVersionMap: {
+              chinese: 'chinese-dev-version',
+              math: mathVolume?.id ?? 'math-dev-version',
+              english: 'english-dev-version',
+            },
+          }),
+        },
+        getAuthToken(),
+      );
 
-    setChildrenProfiles((items) => [...items, created.profile]);
-    setMessage(`已创建学生档案：${created.profile.nickname}`);
+      setChildrenProfiles((items) => [...items, created.profile]);
+      setMessage(`已创建学生档案：${created.profile.nickname}`);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '创建学生档案失败');
+    }
   }
 
   return (
@@ -103,6 +114,7 @@ export default function ParentDashboardPage() {
             创建
           </button>
           {message ? <div style={{ color: '#0f766e' }}>{message}</div> : null}
+          {error ? <div style={{ color: '#b91c1c' }}>{error}</div> : null}
         </div>
       </section>
 
@@ -136,4 +148,3 @@ export default function ParentDashboardPage() {
     </main>
   );
 }
-

@@ -8,7 +8,7 @@ import { INestApplication } from '@nestjs/common';
 const require = createRequire(__filename);
 
 type WrappedResponse<T> = {
-  data: T;
+  data: T | null;
   error: { code: string; message: string } | null;
   meta: { requestId: string };
 };
@@ -19,8 +19,12 @@ describe('StudyAgent API integration', () => {
     reset: () => void;
     events: Array<Record<string, unknown>>;
   };
+  const originalOpenAiApiKey = process.env.OPENAI_API_KEY;
+  const originalOpenAiBaseUrl = process.env.OPENAI_BASE_URL;
 
   beforeAll(async () => {
+    delete process.env.OPENAI_API_KEY;
+    delete process.env.OPENAI_BASE_URL;
     const { AppModule } = require('../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     app = await NestFactory.create(AppModule, { logger: false });
@@ -35,6 +39,12 @@ describe('StudyAgent API integration', () => {
 
   afterAll(async () => {
     await app.close();
+    if (originalOpenAiApiKey) {
+      process.env.OPENAI_API_KEY = originalOpenAiApiKey;
+    }
+    if (originalOpenAiBaseUrl) {
+      process.env.OPENAI_BASE_URL = originalOpenAiBaseUrl;
+    }
   });
 
   async function login(principal: string, credential = 'study-agent') {
@@ -42,7 +52,7 @@ describe('StudyAgent API integration', () => {
       .post('/api/auth/login')
       .send({ principal, credential })
       .expect(201);
-    return (response.body as WrappedResponse<{ token: string; user: { id: string; role: string } }>).data;
+    return (response.body as WrappedResponse<{ token: string; user: { id: string; role: string } }>).data!;
   }
 
   async function createStudent(token: string) {
@@ -61,7 +71,7 @@ describe('StudyAgent API integration', () => {
       })
       .expect(201);
 
-    return (response.body as WrappedResponse<{ profile: { id: string } }>).data.profile.id;
+    return (response.body as WrappedResponse<{ profile: { id: string } }>).data!.profile.id;
   }
 
   async function importTextbooks(token: string) {
@@ -71,7 +81,7 @@ describe('StudyAgent API integration', () => {
       .send({})
       .expect(201);
 
-    return (response.body as WrappedResponse<{ volumes: Array<{ id: string }> }>).data.volumes;
+    return (response.body as WrappedResponse<{ volumes: Array<{ id: string }> }>).data!.volumes;
   }
 
   async function createPublishedQuestion(token: string, lessonId: string) {
@@ -89,7 +99,7 @@ describe('StudyAgent API integration', () => {
       })
       .expect(201);
 
-    const knowledgePoint = (kpResponse.body as WrappedResponse<{ id: string }>).data;
+    const knowledgePoint = (kpResponse.body as WrappedResponse<{ id: string }>).data!;
 
     const questionResponse = await request(app.getHttpServer())
       .post('/api/admin/questions')
@@ -104,7 +114,7 @@ describe('StudyAgent API integration', () => {
       })
       .expect(201);
 
-    const question = (questionResponse.body as WrappedResponse<{ id: string }>).data;
+    const question = (questionResponse.body as WrappedResponse<{ id: string }>).data!;
 
     await request(app.getHttpServer())
       .post(`/api/admin/questions/${question.id}/knowledge-points`)
@@ -132,7 +142,7 @@ describe('StudyAgent API integration', () => {
       .set('Authorization', `Bearer ${auth.token}`)
       .expect(200);
 
-    const profile = (response.body as WrappedResponse<{ id: string; enrollments: Array<unknown> }>).data;
+    const profile = (response.body as WrappedResponse<{ id: string; enrollments: Array<unknown> }>).data!;
     expect(profile.id).toBe(studentId);
     expect(profile.enrollments).toHaveLength(3);
   });
@@ -146,7 +156,7 @@ describe('StudyAgent API integration', () => {
       .get(`/api/textbooks/${volumes[0].id}/tree`)
       .expect(200);
 
-    const tree = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<unknown> }> }>).data;
+    const tree = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<unknown> }> }>).data!;
     expect(tree.units.length).toBeGreaterThan(0);
     expect(tree.units[0].lessons.length).toBeGreaterThan(0);
   });
@@ -172,7 +182,7 @@ describe('StudyAgent API integration', () => {
     const treeResponse = await request(app.getHttpServer())
       .get(`/api/textbooks/${volumes[0].id}/tree`)
       .expect(200);
-    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data.units[0].lessons[0].id;
+    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data!.units[0].lessons[0].id;
     await createPublishedQuestion(admin.token, lessonId);
 
     const parent = await login('parent@example.com');
@@ -188,7 +198,7 @@ describe('StudyAgent API integration', () => {
       })
       .expect(201);
 
-    const session = (sessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data;
+    const session = (sessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
     await request(app.getHttpServer())
       .post(`/api/assessments/${session.id}/answers`)
       .set('Authorization', `Bearer ${parent.token}`)
@@ -205,12 +215,12 @@ describe('StudyAgent API integration', () => {
       .send({})
       .expect(201);
 
-    const result = (completeResponse.body as WrappedResponse<{ overallScore: number }>).data;
+    const result = (completeResponse.body as WrappedResponse<{ overallScore: number }>).data!;
     expect(result.overallScore).toBeGreaterThanOrEqual(1);
     expect(store.events.some((event) => event.eventName === 'assessment.completed')).toBe(true);
   });
 
-  it('falls back to mock AI analysis without API key', async () => {
+  it('returns explicit AI configuration error without API key', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/ai/assessment/analyze')
       .send({
@@ -227,19 +237,20 @@ describe('StudyAgent API integration', () => {
         },
         answer: '54',
       })
-      .expect(201);
+      .expect(503);
 
-    const result = (response.body as WrappedResponse<{ source: string }>).data;
-    expect(result.source).toBe('mock');
+    const payload = response.body as WrappedResponse<{ source: string }>;
+    expect(payload.data).toBeNull();
+    expect(payload.error?.message).toContain('OPENAI_API_KEY');
   });
 
-  it('generates a mission, returns hints, and completes training', async () => {
+  it('generates a mission and completes training', async () => {
     const admin = await login('admin@example.com');
     const volumes = await importTextbooks(admin.token);
     const treeResponse = await request(app.getHttpServer())
       .get(`/api/textbooks/${volumes[0].id}/tree`)
       .expect(200);
-    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data.units[0].lessons[0].id;
+    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data!.units[0].lessons[0].id;
     await createPublishedQuestion(admin.token, lessonId);
 
     const parent = await login('parent@example.com');
@@ -249,24 +260,13 @@ describe('StudyAgent API integration', () => {
       .get(`/api/missions/today?studentId=${studentId}&subject=math`)
       .set('Authorization', `Bearer ${parent.token}`)
       .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data;
+    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
 
     await request(app.getHttpServer())
       .post(`/api/missions/${mission.id}/start`)
       .set('Authorization', `Bearer ${parent.token}`)
       .send({})
       .expect(201);
-
-    const hintResponse = await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/hints`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-      })
-      .expect(201);
-
-    const hint = (hintResponse.body as WrappedResponse<{ hint: string }>).data;
-    expect(hint.hint.length).toBeGreaterThan(0);
 
     await request(app.getHttpServer())
       .post(`/api/missions/${mission.id}/answers`)
@@ -284,9 +284,40 @@ describe('StudyAgent API integration', () => {
       .send({})
       .expect(201);
 
-    const result = (completeResponse.body as WrappedResponse<{ summary: string }>).data;
+    const result = (completeResponse.body as WrappedResponse<{ summary: string }>).data!;
     expect(result.summary.length).toBeGreaterThan(0);
     expect(store.events.some((event) => event.eventName === 'mission.completed')).toBe(true);
+  });
+
+  it('returns explicit AI configuration error for mission hints without API key', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token);
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+    const lessonId = (treeResponse.body as WrappedResponse<{ units: Array<{ lessons: Array<{ id: string }> }> }>).data!.units[0].lessons[0].id;
+    await createPublishedQuestion(admin.token, lessonId);
+
+    const parent = await login('parent@example.com');
+    const studentId = await createStudent(parent.token);
+
+    const missionResponse = await request(app.getHttpServer())
+      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .expect(200);
+    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
+
+    const hintResponse = await request(app.getHttpServer())
+      .post(`/api/missions/${mission.id}/hints`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        itemId: mission.questionIds[0],
+      })
+      .expect(503);
+
+    const payload = hintResponse.body as WrappedResponse<{ hint: string }>;
+    expect(payload.data).toBeNull();
+    expect(payload.error?.message).toContain('OPENAI_API_KEY');
   });
 
   it('rejects access from an unbound parent', async () => {

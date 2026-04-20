@@ -23,6 +23,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
   const [sessionId, setSessionId] = React.useState<string | null>(null);
   const [messages, setMessages] = React.useState<AssistantMessage[]>([]);
   const [input, setInput] = React.useState('');
+  const [error, setError] = React.useState<string | null>(null);
 
   async function ensureSession() {
     if (sessionId) {
@@ -50,21 +51,27 @@ export function AssistantWidget(props: AssistantWidgetProps) {
       return;
     }
 
-    const ensuredSessionId = await ensureSession();
-    const response = await apiRequest<{ reply: string; messages: AssistantMessage[] }>(
-      `/ai/assistant/sessions/${ensuredSessionId}/messages`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          message: input.trim(),
-        }),
-      },
-      getAuthToken(),
-    );
+    try {
+      setError(null);
+      const ensuredSessionId = await ensureSession();
+      const response = await apiRequest<{ reply: string; messages: AssistantMessage[] }>(
+        `/ai/assistant/sessions/${ensuredSessionId}/messages`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            message: input.trim(),
+          }),
+        },
+        getAuthToken(),
+      );
 
-    setMessages(response.messages);
-    setInput('');
-    setOpen(true);
+      setMessages(response.messages);
+      setInput('');
+      setOpen(true);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '助教暂时不可用');
+      setOpen(true);
+    }
   }
 
   return (
@@ -96,6 +103,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
             </div>
           ))}
         </div>
+        {error ? <div style={{ color: '#b91c1c', fontSize: 13 }}>{error}</div> : null}
         <textarea
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -120,4 +128,3 @@ export function AssistantWidget(props: AssistantWidgetProps) {
     </AssistantDock>
   );
 }
-

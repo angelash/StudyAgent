@@ -28,16 +28,22 @@ export default function AdminContentPage() {
   const [answer, setAnswer] = React.useState('6');
   const [knowledgePointName, setKnowledgePointName] = React.useState('表内除法');
   const [message, setMessage] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
 
   async function reload() {
-    const [volumesResult, knowledgeResult, questionResult] = await Promise.all([
-      apiRequest<Volume[]>('/textbooks'),
-      apiRequest<KnowledgePoint[]>('/knowledge-points?subject=math'),
-      apiRequest<Question[]>('/questions?subject=math'),
-    ]);
-    setVolumes(volumesResult);
-    setKnowledgePoints(knowledgeResult);
-    setQuestions(questionResult);
+    try {
+      setError(null);
+      const [volumesResult, knowledgeResult, questionResult] = await Promise.all([
+        apiRequest<Volume[]>('/textbooks'),
+        apiRequest<KnowledgePoint[]>('/knowledge-points?subject=math'),
+        apiRequest<Question[]>('/questions?subject=math'),
+      ]);
+      setVolumes(volumesResult);
+      setKnowledgePoints(knowledgeResult);
+      setQuestions(questionResult);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '内容后台加载失败');
+    }
   }
 
   React.useEffect(() => {
@@ -45,66 +51,92 @@ export default function AdminContentPage() {
   }, []);
 
   async function importTextbooks() {
-    const result = await apiRequest<{ importedCount: number }>('/admin/textbooks/import', { method: 'POST', body: '{}' }, getAuthToken());
-    setMessage(`已导入 ${result.importedCount} 本数学教材`);
-    await reload();
+    try {
+      setError(null);
+      const result = await apiRequest<{ importedCount: number }>(
+        '/admin/textbooks/import',
+        { method: 'POST', body: '{}' },
+        getAuthToken(),
+      );
+      setMessage(`已导入 ${result.importedCount} 本数学教材`);
+      await reload();
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '教材导入失败');
+    }
   }
 
   async function createKnowledgePoint() {
-    const lessonId = volumes.length > 0 ? (await apiRequest<{ volume: { id: string }; units: Array<{ lessons: Array<{ id: string }> }> }>(`/textbooks/${volumes[0].id}/tree`)).units[0]?.lessons[0]?.id ?? null : null;
-    await apiRequest(
-      '/admin/knowledge-points',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          subject: 'math',
-          name: knowledgePointName,
-          parentId: null,
-          gradeBand: '2-3',
-          difficultyLevel: 2,
-          lessonId,
-          status: 'published',
-        }),
-      },
-      getAuthToken(),
-    );
-    setMessage(`已创建知识点：${knowledgePointName}`);
-    await reload();
-  }
-
-  async function createQuestion() {
-    const created = await apiRequest<Question>(
-      '/admin/questions',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          subject: 'math',
-          type: 'objective',
-          stem,
-          answer,
-          analysis: '先做表内除法基础运算。',
-          difficultyLevel: 1,
-        }),
-      },
-      getAuthToken(),
-    );
-
-    if (knowledgePoints[0]) {
+    try {
+      setError(null);
+      const lessonId =
+        volumes.length > 0
+          ? (
+              await apiRequest<{ volume: { id: string }; units: Array<{ lessons: Array<{ id: string }> }> }>(
+                `/textbooks/${volumes[0].id}/tree`,
+              )
+            ).units[0]?.lessons[0]?.id ?? null
+          : null;
       await apiRequest(
-        `/admin/questions/${created.id}/knowledge-points`,
+        '/admin/knowledge-points',
         {
           method: 'POST',
           body: JSON.stringify({
-            knowledgePointIds: [knowledgePoints[0].id],
+            subject: 'math',
+            name: knowledgePointName,
+            parentId: null,
+            gradeBand: '2-3',
+            difficultyLevel: 2,
+            lessonId,
+            status: 'published',
           }),
         },
         getAuthToken(),
       );
-      await apiRequest(`/admin/questions/${created.id}/publish`, { method: 'PATCH' }, getAuthToken());
+      setMessage(`已创建知识点：${knowledgePointName}`);
+      await reload();
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '知识点创建失败');
     }
+  }
 
-    setMessage(`已创建并发布题目：${stem}`);
-    await reload();
+  async function createQuestion() {
+    try {
+      setError(null);
+      const created = await apiRequest<Question>(
+        '/admin/questions',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            subject: 'math',
+            type: 'objective',
+            stem,
+            answer,
+            analysis: '先做表内除法基础运算。',
+            difficultyLevel: 1,
+          }),
+        },
+        getAuthToken(),
+      );
+
+      if (knowledgePoints[0]) {
+        await apiRequest(
+          `/admin/questions/${created.id}/knowledge-points`,
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              knowledgePointIds: [knowledgePoints[0].id],
+            }),
+          },
+          getAuthToken(),
+        );
+        await apiRequest(`/admin/questions/${created.id}/publish`, { method: 'PATCH' }, getAuthToken());
+      }
+
+      setMessage(`已创建并发布题目：${stem}`);
+      await reload();
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : '题目创建失败');
+    }
   }
 
   return (
@@ -140,7 +172,7 @@ export default function AdminContentPage() {
       </div>
 
       {message ? <div style={{ marginTop: 20, color: '#0f766e' }}>{message}</div> : null}
+      {error ? <div style={{ marginTop: 20, color: '#b91c1c' }}>{error}</div> : null}
     </main>
   );
 }
-
