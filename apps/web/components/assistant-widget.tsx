@@ -7,6 +7,7 @@ import { apiRequest, getAuthToken } from '../lib/api';
 type AssistantWidgetProps = {
   userRole: 'student' | 'parent';
   studentId: string | null;
+  subject?: 'math' | 'chinese' | 'english' | null;
   pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report';
   title: string;
   subtitle: string;
@@ -24,6 +25,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
   const [messages, setMessages] = React.useState<AssistantMessage[]>([]);
   const [input, setInput] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
+  const [sending, setSending] = React.useState(false);
 
   async function ensureSession() {
     if (sessionId) {
@@ -37,6 +39,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
         body: JSON.stringify({
           userRole: props.userRole,
           studentId: props.studentId,
+          subject: props.subject ?? null,
           pageContext: props.pageContext,
         }),
       },
@@ -53,6 +56,8 @@ export function AssistantWidget(props: AssistantWidgetProps) {
 
     try {
       setError(null);
+      setOpen(true);
+      setSending(true);
       const ensuredSessionId = await ensureSession();
       const response = await apiRequest<{ reply: string; messages: AssistantMessage[] }>(
         `/ai/assistant/sessions/${ensuredSessionId}/messages`,
@@ -67,10 +72,11 @@ export function AssistantWidget(props: AssistantWidgetProps) {
 
       setMessages(response.messages);
       setInput('');
-      setOpen(true);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : '助教暂时不可用');
       setOpen(true);
+    } finally {
+      setSending(false);
     }
   }
 
@@ -103,26 +109,42 @@ export function AssistantWidget(props: AssistantWidgetProps) {
             </div>
           ))}
         </div>
+        {sending ? (
+          <div
+            style={{
+              padding: 10,
+              borderRadius: 12,
+              background: '#f8fafc',
+              border: '1px dashed #94a3b8',
+              color: '#334155',
+              fontSize: 13,
+            }}
+          >
+            助教正在整理回复，请稍等一下。
+          </div>
+        ) : null}
         {error ? <div style={{ color: '#b91c1c', fontSize: 13 }}>{error}</div> : null}
         <textarea
           value={input}
           onChange={(event) => setInput(event.target.value)}
           rows={4}
           placeholder="输入你的问题..."
+          disabled={sending}
           style={{ borderRadius: 12, border: '1px solid #cbd5e1', padding: 10 }}
         />
         <button
           onClick={sendMessage}
+          disabled={sending || !input.trim()}
           style={{
             border: 'none',
             borderRadius: 12,
             padding: '10px 14px',
-            background: '#0f766e',
+            background: sending || !input.trim() ? '#94a3b8' : '#0f766e',
             color: '#f8fafc',
-            cursor: 'pointer',
+            cursor: sending || !input.trim() ? 'not-allowed' : 'pointer',
           }}
         >
-          发送
+          {sending ? '发送中...' : '发送'}
         </button>
       </div>
     </AssistantDock>

@@ -39,9 +39,13 @@ export class AssessmentsController {
     return this.assessmentsService.complete(req.user, sessionId);
   }
 
+  @Get(':sessionId/progress')
+  progress(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string) {
+    return this.assessmentsService.getProgress(req.user, sessionId);
+  }
+
   @Get(':sessionId/result')
   result(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string) {
     return this.assessmentsService.getResult(req.user, sessionId);
   }
 }
-

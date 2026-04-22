@@ -49,4 +49,9 @@ export class MissionsController {
   completeMission(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string) {
     return this.missionsService.completeMission(req.user, missionId);
   }
+
+  @Get(':missionId/result')
+  getMissionResult(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string) {
+    return this.missionsService.getMissionResult(req.user, missionId);
+  }
 }

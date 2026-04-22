@@ -12,9 +12,10 @@ import { MissionsModule } from './modules/missions/missions.module';
 import { AiModule } from './modules/ai/ai.module';
 import { ProgressModule } from './modules/progress/progress.module';
 import { PlansModule } from './modules/plans/plans.module';
+import { QuestionWorkspaceModule } from './modules/question-workspace/question-workspace.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule],
   providers: [
     {
       provide: APP_FILTER,

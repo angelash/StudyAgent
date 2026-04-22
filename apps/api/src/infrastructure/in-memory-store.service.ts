@@ -2,6 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import {
   AIAnalysisResponse,
+  QuestionAnswerSchema,
+  QuestionDocument,
+  QuestionImportJob,
+  QuestionImportRecord,
+  QuestionSourceRecord,
   AssessmentResult,
   AssessmentSession,
   AssistantSession,
@@ -113,6 +118,11 @@ export class InMemoryStoreService {
   textbookLessons: TextbookLesson[] = [];
   knowledgePoints: KnowledgePoint[] = [];
   questions: Question[] = [];
+  questionDocuments: QuestionDocument[] = [];
+  questionAnswerSchemas: QuestionAnswerSchema[] = [];
+  questionSources: QuestionSourceRecord[] = [];
+  questionImportJobs: QuestionImportJob[] = [];
+  questionImportRecords: QuestionImportRecord[] = [];
   assessments: AssessmentSession[] = [];
   assessmentAnswers: AssessmentAnswerRecord[] = [];
   assessmentResults: AssessmentResult[] = [];
@@ -139,6 +149,11 @@ export class InMemoryStoreService {
     this.textbookLessons = [];
     this.knowledgePoints = [];
     this.questions = [];
+    this.questionDocuments = [];
+    this.questionAnswerSchemas = [];
+    this.questionSources = [];
+    this.questionImportJobs = [];
+    this.questionImportRecords = [];
     this.assessments = [];
     this.assessmentAnswers = [];
     this.assessmentResults = [];

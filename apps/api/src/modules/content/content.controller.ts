@@ -7,8 +7,8 @@ export class ContentController {
   constructor(private readonly contentService: ContentService) {}
 
   @Get('textbooks')
-  listTextbooks() {
-    return this.contentService.listTextbooks();
+  listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english') {
+    return this.contentService.listTextbooks(subject);
   }
 
   @Get('textbooks/:volumeId/tree')
@@ -30,9 +30,9 @@ export class ContentController {
   @Post('admin/textbooks/import')
   importTextbooks(
     @Req() req: AuthenticatedRequest,
-    @Body() body: { publisherVersion?: string },
+    @Body() body: { subject?: 'math' | 'chinese' | 'english'; publisherVersion?: string },
   ) {
-    return this.contentService.importMathTextbooks(req.user, body.publisherVersion);
+    return this.contentService.importTextbooks(req.user, body.subject, body.publisherVersion);
   }
 
   @UseGuards(AuthGuard)

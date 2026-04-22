@@ -1,10 +1,11 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { AssessmentResult, AssessmentSession, Question } from '@study-agent/contracts';
+import { AssessmentProgressView, AssessmentResult, AssessmentSession, Question } from '@study-agent/contracts';
 import { AiService } from '../ai/ai.service';
 import { ContentService } from '../content/content.service';
 import { StudentsService } from '../students/students.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
 
 type StartAssessmentCommand = {
   studentId: string;
@@ -18,6 +19,7 @@ export class AssessmentsService {
     private readonly store: InMemoryStoreService,
     private readonly studentsService: StudentsService,
     private readonly contentService: ContentService,
+    private readonly questionWorkspaceService: QuestionWorkspaceService,
     private readonly aiService: AiService,
     private readonly eventBus: DomainEventBusService,
   ) {}
@@ -41,6 +43,13 @@ export class AssessmentsService {
       completedAt: null,
     };
     this.store.assessments.push(session);
+    this.eventBus.publish('assessment.started', {
+      sessionId: session.id,
+      studentId: session.studentId,
+      subject: session.subject,
+      assessmentType: session.assessmentType,
+      itemCount: session.itemIds.length,
+    });
     return session;
   }
 
@@ -58,19 +67,27 @@ export class AssessmentsService {
     if (session.status !== 'in_progress') {
       throw new BadRequestException('Assessment session is not in progress');
     }
+    if (!session.itemIds.includes(command.itemId)) {
+      throw new BadRequestException('Question does not belong to current assessment session');
+    }
 
     const question = this.requireQuestion(command.itemId);
     if (question.status !== 'published') {
       throw new BadRequestException('Unpublished question cannot be used in assessment');
     }
 
-    const graded = await this.gradeQuestion(question, command.answer, command.elapsedMs);
+    const validation = this.questionWorkspaceService.validateAnswer(question.id, command.answer);
+    if (!validation.valid) {
+      throw new BadRequestException(validation.message ?? 'Invalid answer payload');
+    }
+
+    const graded = await this.gradeQuestion(question, validation.normalizedAnswer, command.elapsedMs);
     const existing = this.store.assessmentAnswers.find(
       (item) => item.sessionId === sessionId && item.questionId === question.id,
     );
 
     if (existing) {
-      existing.answer = command.answer;
+      existing.answer = validation.normalizedAnswer;
       existing.correct = graded.correct;
       existing.score = graded.score;
       existing.errorType = graded.errorType;
@@ -81,7 +98,7 @@ export class AssessmentsService {
         id: this.store.nextId('assessment_answer'),
         sessionId,
         questionId: question.id,
-        answer: command.answer,
+        answer: validation.normalizedAnswer,
         correct: graded.correct,
         score: graded.score,
         errorType: graded.errorType,
@@ -89,6 +106,14 @@ export class AssessmentsService {
         elapsedMs: command.elapsedMs,
       });
     }
+    this.eventBus.publish('assessment.answer_submitted', {
+      sessionId,
+      studentId: session.studentId,
+      subject: session.subject,
+      questionId: question.id,
+      correct: graded.correct,
+      score: graded.score,
+    });
 
     return {
       sessionId,
@@ -97,12 +122,25 @@ export class AssessmentsService {
     };
   }
 
+  getProgress(requestUser: InMemoryUserAccount, sessionId: string): AssessmentProgressView {
+    const session = this.requireSession(sessionId);
+    this.studentsService.assertCanAccessStudent(requestUser, session.studentId);
+    return this.buildProgressView(session);
+  }
+
   complete(requestUser: InMemoryUserAccount, sessionId: string): AssessmentResult {
     const session = this.requireSession(sessionId);
     this.studentsService.assertCanAccessStudent(requestUser, session.studentId);
+    const existing = this.store.assessmentResults.find((item) => item.sessionId === sessionId);
+    if (session.status === 'completed' && existing) {
+      return existing;
+    }
     const answers = this.store.assessmentAnswers.filter((item) => item.sessionId === sessionId);
     if (answers.length === 0) {
       throw new BadRequestException('Assessment has no answers');
+    }
+    if (answers.length < session.itemIds.length) {
+      throw new BadRequestException('Assessment is not fully answered');
     }
 
     const perKnowledge = new Map<
@@ -135,9 +173,13 @@ export class AssessmentsService {
     const overallScore = Math.round(
       (answers.reduce((sum, item) => sum + item.score, 0) / Math.max(answers.length, 1)) * 100,
     ) / 100;
+    const knowledgePointMap = new Map(
+      this.contentService.getKnowledgePointsByIds(Array.from(perKnowledge.keys())).map((item) => [item.id, item.name]),
+    );
 
     const knowledgeResults = Array.from(perKnowledge.entries()).map(([knowledgePointId, value]) => ({
       knowledgePointId,
+      knowledgePointName: knowledgePointMap.get(knowledgePointId) ?? '未命名知识点',
       score: Math.round((value.correctCount / value.totalCount) * 100),
       correctCount: value.correctCount,
       totalCount: value.totalCount,
@@ -163,7 +205,6 @@ export class AssessmentsService {
     session.status = 'completed';
     session.completedAt = new Date().toISOString();
 
-    const existing = this.store.assessmentResults.find((item) => item.sessionId === sessionId);
     if (existing) {
       Object.assign(existing, result);
     } else {
@@ -203,7 +244,9 @@ export class AssessmentsService {
 
   private async gradeQuestion(question: Question, answer: unknown, elapsedMs: number) {
     if (question.type === 'objective') {
-      const correct = this.normalize(answer) === this.normalize(question.answer);
+      const correct =
+        this.questionWorkspaceService.normalizeForGrading(question.id, answer) ===
+        this.questionWorkspaceService.normalizeForGrading(question.id, question.answer);
       return {
         correct,
         score: correct ? 1 : 0,
@@ -227,10 +270,6 @@ export class AssessmentsService {
     };
   }
 
-  private normalize(value: unknown) {
-    return JSON.stringify(value).replace(/\s+/g, '').toLowerCase();
-  }
-
   private requireSession(sessionId: string) {
     const session = this.store.assessments.find((item) => item.id === sessionId);
     if (!session) {
@@ -246,5 +285,41 @@ export class AssessmentsService {
     }
     return question;
   }
-}
 
+  private buildProgressView(session: AssessmentSession): AssessmentProgressView {
+    const answerMap = new Map(
+      this.store.assessmentAnswers
+        .filter((item) => item.sessionId === session.id)
+        .map((item) => [item.questionId, item]),
+    );
+    const answeredCount = session.itemIds.filter((itemId) => answerMap.has(itemId)).length;
+    const currentIndex =
+      session.status === 'completed'
+        ? Math.max(session.itemIds.length - 1, 0)
+        : Math.min(answeredCount, Math.max(session.itemIds.length - 1, 0));
+
+    return {
+      sessionId: session.id,
+      status: session.status,
+      answeredCount,
+      totalCount: session.itemIds.length,
+      progressPercent: Math.round((answeredCount / Math.max(session.itemIds.length, 1)) * 100),
+      currentIndex,
+      currentItemId: session.status === 'completed' ? null : session.itemIds[currentIndex] ?? null,
+      items: session.itemIds.map((questionId) => {
+        const answer = answerMap.get(questionId);
+        const question = this.requireQuestion(questionId);
+        return {
+          questionId,
+          questionStem: question.stem,
+          answered: Boolean(answer),
+          correct: answer?.correct ?? null,
+          score: answer?.score ?? null,
+          errorType: answer?.errorType ?? null,
+          analysis: answer?.analysis ?? null,
+          elapsedMs: answer?.elapsedMs ?? null,
+        };
+      }),
+    };
+  }
+}

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
+import type { Subject } from '@study-agent/contracts';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { apiRequest, getAuthToken, getCurrentUser } from '../../../lib/api';
 
@@ -16,20 +17,21 @@ type ChildProfile = {
   nickname: string;
   grade: number;
   preferredSessionMinutes: number;
-  enrollments: Array<{ subject: string; enabled: boolean; textbookVersionId: string }>;
+  enrollments: Array<{ subject: Subject; enabled: boolean; textbookVersionId: string }>;
 };
 
 type Volume = {
   id: string;
-  subject: string;
+  subject: Subject;
   displayName: string;
+  grade: number;
 };
 
 type MasteryStatus = 'unknown' | 'learning' | 'unstable' | 'mastered' | 'at_risk';
 
 type WeeklyReport = {
   studentId: string;
-  subject: 'math' | 'chinese' | 'english';
+  subject: Subject;
   weekStartDate: string;
   weekEndDate: string;
   assessmentCount: number;
@@ -85,6 +87,24 @@ type StudyPlan = {
     focusKnowledgePointNames: string[];
     goal: string;
   }>;
+};
+
+const subjectMeta: Record<Subject, { label: string; missionLabel: string; defaultVersionId: string }> = {
+  chinese: {
+    label: '语文',
+    missionLabel: '语文任务',
+    defaultVersionId: 'chinese-dev-version',
+  },
+  math: {
+    label: '数学',
+    missionLabel: '数学任务',
+    defaultVersionId: 'math-dev-version',
+  },
+  english: {
+    label: '英语',
+    missionLabel: '英语任务',
+    defaultVersionId: 'english-dev-version',
+  },
 };
 
 const sectionStyle: React.CSSProperties = {
@@ -144,6 +164,7 @@ export default function ParentDashboardPage() {
   const [user, setUser] = React.useState<User | null>(null);
   const [childrenProfiles, setChildrenProfiles] = React.useState<ChildProfile[]>([]);
   const [volumes, setVolumes] = React.useState<Volume[]>([]);
+  const [selectedSubject, setSelectedSubject] = React.useState<Subject>('math');
   const [reportsByStudent, setReportsByStudent] = React.useState<Record<string, WeeklyReport>>({});
   const [alertsByStudent, setAlertsByStudent] = React.useState<Record<string, RiskSignal[]>>({});
   const [plansByStudent, setPlansByStudent] = React.useState<Record<string, StudyPlan>>({});
@@ -170,8 +191,7 @@ export default function ParentDashboardPage() {
           apiRequest<Volume[]>('/textbooks', {}),
         ]);
         setChildrenProfiles(childrenResult);
-        setVolumes(volumesResult.filter((item) => item.subject === 'math'));
-        await loadStudentInsights(currentUser.id, childrenResult);
+        setVolumes(volumesResult);
       } catch (caught) {
         setError(caught instanceof Error ? caught.message : '家长控制台加载失败');
       }
@@ -180,7 +200,15 @@ export default function ParentDashboardPage() {
     void bootstrap();
   }, [router]);
 
-  async function loadStudentInsights(parentId: string, children: ChildProfile[]) {
+  React.useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    void loadStudentInsights(user.id, childrenProfiles, selectedSubject);
+  }, [childrenProfiles, selectedSubject, user]);
+
+  async function loadStudentInsights(parentId: string, children: ChildProfile[], subject: Subject) {
     if (children.length === 0) {
       setReportsByStudent({});
       setAlertsByStudent({});
@@ -193,9 +221,9 @@ export default function ParentDashboardPage() {
       const settled = await Promise.allSettled(
         children.map(async (child) => {
           const [report, alerts, plan] = await Promise.all([
-            apiRequest<WeeklyReport>(`/reports/weekly?studentId=${child.id}&subject=math`, {}, getAuthToken()),
-            apiRequest<RiskSignal[]>(`/parents/${parentId}/alerts?studentId=${child.id}&subject=math`, {}, getAuthToken()),
-            apiRequest<StudyPlan>(`/plans/weekly?studentId=${child.id}&subject=math`, {}, getAuthToken()),
+            apiRequest<WeeklyReport>(`/reports/weekly?studentId=${child.id}&subject=${subject}`, {}, getAuthToken()),
+            apiRequest<RiskSignal[]>(`/parents/${parentId}/alerts?studentId=${child.id}&subject=${subject}`, {}, getAuthToken()),
+            apiRequest<StudyPlan>(`/plans/weekly?studentId=${child.id}&subject=${subject}`, {}, getAuthToken()),
           ]);
 
           return {
@@ -243,18 +271,28 @@ export default function ParentDashboardPage() {
           method: 'POST',
           body: JSON.stringify({
             studentId: child.id,
-            subject: 'math',
+            subject: selectedSubject,
             availableMinutesPerDay: child.preferredSessionMinutes,
           }),
         },
         getAuthToken(),
       );
-      await loadStudentInsights(user.id, childrenProfiles);
+      await loadStudentInsights(user.id, childrenProfiles, selectedSubject);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : '重建本周计划失败');
     } finally {
       setRegeneratingPlanStudentId(null);
     }
+  }
+
+  function pickDefaultVolumeId(subject: Subject, gradeValue: number) {
+    const exactMatch = volumes.find((item) => item.subject === subject && item.grade === gradeValue);
+    if (exactMatch) {
+      return exactMatch.id;
+    }
+
+    const fallback = volumes.find((item) => item.subject === subject);
+    return fallback?.id ?? subjectMeta[subject].defaultVersionId;
   }
 
   async function createStudent() {
@@ -265,7 +303,6 @@ export default function ParentDashboardPage() {
     try {
       setError(null);
       setMessage(null);
-      const mathVolume = volumes[0];
       const created = await apiRequest<{ profile: ChildProfile }>(
         '/students',
         {
@@ -275,9 +312,9 @@ export default function ParentDashboardPage() {
             grade,
             preferredSessionMinutes: 20,
             defaultVersionMap: {
-              chinese: 'chinese-dev-version',
-              math: mathVolume?.id ?? 'math-dev-version',
-              english: 'english-dev-version',
+              chinese: pickDefaultVolumeId('chinese', grade),
+              math: pickDefaultVolumeId('math', grade),
+              english: pickDefaultVolumeId('english', grade),
             },
           }),
         },
@@ -287,7 +324,7 @@ export default function ParentDashboardPage() {
       const nextChildren = [...childrenProfiles, created.profile];
       setChildrenProfiles(nextChildren);
       setMessage(`已创建学生档案：${created.profile.nickname}`);
-      await loadStudentInsights(user.id, nextChildren);
+      await loadStudentInsights(user.id, nextChildren, selectedSubject);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : '创建学生档案失败');
     }
@@ -297,8 +334,30 @@ export default function ParentDashboardPage() {
     <main style={{ padding: 40, maxWidth: 980 }}>
       <h1>家长控制台</h1>
       <p style={{ color: '#475569' }}>
-        这里不仅能建学生档案，也能看到孩子这一周的学习状态、风险提醒和重点陪伴方向。
+        这里不仅能建学生档案，也能按语文、数学、英语查看孩子这一周的学习状态、风险提醒和重点陪伴方向。
       </p>
+
+      <section style={sectionStyle}>
+        <h2>当前查看学科</h2>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 12 }}>
+          {(Object.keys(subjectMeta) as Subject[]).map((subject) => (
+            <button
+              key={subject}
+              onClick={() => setSelectedSubject(subject)}
+              style={{
+                border: `1px solid ${selectedSubject === subject ? '#0f766e' : '#cbd5e1'}`,
+                borderRadius: 999,
+                padding: '10px 14px',
+                background: selectedSubject === subject ? '#ecfdf5' : '#ffffff',
+                color: selectedSubject === subject ? '#065f46' : '#0f172a',
+                cursor: 'pointer',
+              }}
+            >
+              {subjectMeta[subject].label}
+            </button>
+          ))}
+        </div>
+      </section>
 
       <section style={sectionStyle}>
         <h2>创建学生档案</h2>
@@ -338,6 +397,10 @@ export default function ParentDashboardPage() {
                   <div>
                     <div style={{ fontSize: 20, fontWeight: 700 }}>{child.nickname}</div>
                     <div style={{ color: '#475569', marginTop: 6 }}>年级：{child.grade}</div>
+                    <div style={{ color: '#64748b', marginTop: 6 }}>
+                      已开通学科：
+                      {child.enrollments.filter((item) => item.enabled).map((item) => subjectMeta[item.subject].label).join('、') || '暂无'}
+                    </div>
                   </div>
                   <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     <button
@@ -355,7 +418,7 @@ export default function ParentDashboardPage() {
                       {regeneratingPlanStudentId === child.id ? '重建中…' : '重建本周计划'}
                     </button>
                     <a
-                      href={`/student/mission?studentId=${child.id}`}
+                      href={`/student/mission?studentId=${child.id}&subject=${selectedSubject}`}
                       style={{
                         display: 'inline-block',
                         padding: '10px 14px',
@@ -365,7 +428,7 @@ export default function ParentDashboardPage() {
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      进入学生任务页
+                      进入{subjectMeta[selectedSubject].missionLabel}
                     </a>
                   </div>
                 </div>
@@ -374,14 +437,14 @@ export default function ParentDashboardPage() {
                   <div style={{ marginTop: 18, display: 'grid', gap: 16 }}>
                     <div style={{ padding: 16, borderRadius: 16, background: '#f8fafc', border: '1px solid #e2e8f0' }}>
                       <div style={{ fontSize: 12, color: '#64748b' }}>
-                        周计划区间：{plan.weekStartDate} 至 {plan.weekEndDate}
+                        {subjectMeta[selectedSubject].label}周计划区间：{plan.weekStartDate} 至 {plan.weekEndDate}
                       </div>
                       <div style={{ marginTop: 8, fontSize: 15, lineHeight: 1.7, color: '#0f172a' }}>{plan.summary}</div>
                       <div style={{ marginTop: 10, color: '#475569' }}>建议日训练时长：{plan.availableMinutesPerDay} 分钟</div>
                     </div>
 
-                    <div style={{ display: 'grid', gap: 10 }}>
-                      <div style={{ fontWeight: 700 }}>本周训练目标</div>
+                      <div style={{ display: 'grid', gap: 10 }}>
+                      <div style={{ fontWeight: 700 }}>{subjectMeta[selectedSubject].label}本周训练目标</div>
                       {plan.goals.map((goal) => (
                         <div
                           key={goal}
@@ -393,7 +456,7 @@ export default function ParentDashboardPage() {
                     </div>
 
                     <div style={{ display: 'grid', gap: 10 }}>
-                      <div style={{ fontWeight: 700 }}>每日节奏安排</div>
+                      <div style={{ fontWeight: 700 }}>{subjectMeta[selectedSubject].label}每日节奏安排</div>
                       <div style={{ display: 'grid', gap: 12 }}>
                         {plan.dailyPlans.map((item) => (
                           <div
@@ -426,7 +489,7 @@ export default function ParentDashboardPage() {
                   <div style={{ marginTop: 18, display: 'grid', gap: 16 }}>
                     <div style={{ padding: 16, borderRadius: 16, background: '#f8fafc', border: '1px solid #e2e8f0' }}>
                       <div style={{ fontSize: 12, color: '#64748b' }}>
-                        周报区间：{report.weekStartDate} 至 {report.weekEndDate}
+                        {subjectMeta[selectedSubject].label}周报区间：{report.weekStartDate} 至 {report.weekEndDate}
                       </div>
                       <div style={{ marginTop: 8, fontSize: 15, lineHeight: 1.7, color: '#0f172a' }}>
                         {report.parentSummary}
@@ -451,7 +514,7 @@ export default function ParentDashboardPage() {
                     </div>
 
                     <div style={{ display: 'grid', gap: 10 }}>
-                      <div style={{ fontWeight: 700 }}>本周重点</div>
+                      <div style={{ fontWeight: 700 }}>{subjectMeta[selectedSubject].label}本周重点</div>
                       {report.highlights.map((item) => (
                         <div
                           key={item}
@@ -463,7 +526,7 @@ export default function ParentDashboardPage() {
                     </div>
 
                     <div style={{ display: 'grid', gap: 10 }}>
-                      <div style={{ fontWeight: 700 }}>家长提醒</div>
+                      <div style={{ fontWeight: 700 }}>{subjectMeta[selectedSubject].label}家长提醒</div>
                       {alerts.length > 0 ? (
                         alerts.map((alert) => (
                           <div
@@ -497,7 +560,7 @@ export default function ParentDashboardPage() {
                     </div>
 
                     <div style={{ display: 'grid', gap: 10 }}>
-                      <div style={{ fontWeight: 700 }}>掌握度热力图</div>
+                      <div style={{ fontWeight: 700 }}>{subjectMeta[selectedSubject].label}掌握度热力图</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                         {report.masterySnapshots.length > 0 ? (
                           report.masterySnapshots.map((snapshot) => (
@@ -525,7 +588,7 @@ export default function ParentDashboardPage() {
                   </div>
                 ) : (
                   <div style={{ marginTop: 18, color: '#64748b' }}>
-                    {loadingInsights ? '正在生成周报、提醒和周计划…' : '当前还没有足够数据生成周报。'}
+                    {loadingInsights ? `正在生成${subjectMeta[selectedSubject].label}周报、提醒和周计划…` : `当前还没有足够数据生成${subjectMeta[selectedSubject].label}周报。`}
                   </div>
                 )}
               </div>
@@ -537,9 +600,10 @@ export default function ParentDashboardPage() {
       <AssistantWidget
         userRole="parent"
         studentId={childrenProfiles[0]?.id ?? null}
+        subject={selectedSubject}
         pageContext="weekly_report"
-        title="家长助教"
-        subtitle="问我：现在我该怎么陪孩子"
+        title={`${subjectMeta[selectedSubject].label}家长助教`}
+        subtitle={`问我：现在我该怎么陪孩子学${subjectMeta[selectedSubject].label}`}
       />
     </main>
   );

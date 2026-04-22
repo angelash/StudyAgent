@@ -45,7 +45,7 @@ export class StudentsService {
       id: this.store.nextId('enroll'),
       studentId: profile.id,
       subject,
-      enabled: subject === 'math',
+      enabled: Boolean(command.defaultVersionMap[subject]),
       textbookVersionId: command.defaultVersionMap[subject],
     }));
     this.store.subjectEnrollments.push(...enrollments);

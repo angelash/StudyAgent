@@ -22,6 +22,7 @@ export class AiController {
     body: {
       userRole: 'student' | 'parent';
       studentId: string | null;
+      subject?: 'math' | 'chinese' | 'english' | null;
       pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report';
       contextRefType?: string | null;
       contextRefId?: string | null;

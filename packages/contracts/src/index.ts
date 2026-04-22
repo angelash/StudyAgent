@@ -104,6 +104,305 @@ export const questionSchema = z.object({
 
 export type Question = z.infer<typeof questionSchema>;
 
+export const questionRuntimeSummarySchema = questionSchema.pick({
+  id: true,
+  subject: true,
+  type: true,
+  difficultyLevel: true,
+  status: true,
+});
+
+export type QuestionRuntimeSummary = z.infer<typeof questionRuntimeSummarySchema>;
+
+export const questionBlockTypeSchema = z.enum([
+  'text',
+  'math_inline',
+  'math_display',
+  'image',
+  'table',
+  'audio',
+  'video',
+  'reading_material',
+  'sub_question_group',
+  'geometry_canvas',
+  'annotation',
+  'divider',
+]);
+
+export type QuestionBlockType = z.infer<typeof questionBlockTypeSchema>;
+
+const questionBlockBaseSchema = z.object({
+  id: z.string(),
+  type: questionBlockTypeSchema,
+  text: z.string().optional(),
+  latex: z.string().optional(),
+  url: z.string().optional(),
+  alt: z.string().optional(),
+  caption: z.string().optional(),
+  prompt: z.string().optional(),
+  headers: z.array(z.string()).optional(),
+  rows: z.array(z.array(z.string())).optional(),
+  meta: z.record(z.any()).optional(),
+});
+
+export const questionBlockSchema: z.ZodType<{
+  id: string;
+  type: QuestionBlockType;
+  text?: string;
+  latex?: string;
+  url?: string;
+  alt?: string;
+  caption?: string;
+  prompt?: string;
+  headers?: string[];
+  rows?: string[][];
+  meta?: Record<string, unknown>;
+  children?: Array<{
+    id: string;
+    type: QuestionBlockType;
+    text?: string;
+    latex?: string;
+    url?: string;
+    alt?: string;
+    caption?: string;
+    prompt?: string;
+    headers?: string[];
+    rows?: string[][];
+    meta?: Record<string, unknown>;
+    children?: unknown[];
+  }>;
+}> = z.lazy(() =>
+  questionBlockBaseSchema.extend({
+    children: z.array(questionBlockSchema).optional(),
+  }),
+);
+
+export type QuestionBlock = z.infer<typeof questionBlockSchema>;
+
+export const questionAttachmentSchema = z.object({
+  id: z.string(),
+  kind: z.enum(['image', 'audio', 'video', 'file']),
+  url: z.string(),
+  mimeType: z.string(),
+  alt: z.string().nullable().optional(),
+  width: z.number().int().positive().nullable().optional(),
+  height: z.number().int().positive().nullable().optional(),
+  durationMs: z.number().int().positive().nullable().optional(),
+  sizeBytes: z.number().int().positive().nullable().optional(),
+});
+
+export type QuestionAttachment = z.infer<typeof questionAttachmentSchema>;
+
+export const questionLayoutModeSchema = z.enum(['default', 'reading_split', 'multi_part', 'canvas_assist']);
+export type QuestionLayoutMode = z.infer<typeof questionLayoutModeSchema>;
+
+export const questionDocumentSchema = z.object({
+  questionId: z.string(),
+  version: z.number().int().positive(),
+  locale: z.literal('zh-CN'),
+  blocks: z.array(questionBlockSchema),
+  attachments: z.array(questionAttachmentSchema),
+  layoutMode: questionLayoutModeSchema,
+  accessibilityConfig: z.record(z.any()),
+});
+
+export type QuestionDocument = z.infer<typeof questionDocumentSchema>;
+
+export const questionAnswerModeSchema = z.enum([
+  'single_choice',
+  'multiple_choice',
+  'boolean',
+  'text_blank',
+  'numeric_blank',
+  'formula_blank',
+  'multi_blank',
+  'table_fill',
+  'matching',
+  'sorting',
+  'drag_drop',
+  'hotspot',
+  'geometry_draw',
+  'stepwise',
+  'image_upload',
+  'short_answer',
+  'audio_record',
+]);
+
+export type QuestionAnswerMode = z.infer<typeof questionAnswerModeSchema>;
+
+export const questionOptionSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  value: z.string(),
+  content: z.string().nullable().optional(),
+});
+
+export type QuestionOption = z.infer<typeof questionOptionSchema>;
+
+export const questionAnswerSchemaSchema = z.object({
+  questionId: z.string(),
+  mode: questionAnswerModeSchema,
+  responseShape: z.record(z.any()),
+  validationRules: z.record(z.any()),
+  gradingConfig: z.record(z.any()),
+  options: z.array(questionOptionSchema).optional(),
+  placeholder: z.string().nullable().optional(),
+});
+
+export type QuestionAnswerSchema = z.infer<typeof questionAnswerSchemaSchema>;
+
+export const questionSourceTypeSchema = z.enum([
+  'internal_authoring',
+  'internal_textbook',
+  'open_content',
+  'public_reference',
+  'partner',
+]);
+
+export type QuestionSourceType = z.infer<typeof questionSourceTypeSchema>;
+
+export const questionLicenseClassSchema = z.enum([
+  'A_INTERNAL',
+  'B_OPEN',
+  'C_PUBLIC_REFERENCE_ONLY',
+  'D_COMMERCIAL_PARTNER',
+]);
+
+export type QuestionLicenseClass = z.infer<typeof questionLicenseClassSchema>;
+
+export const questionSourceRecordSchema = z.object({
+  questionId: z.string(),
+  sourceType: questionSourceTypeSchema,
+  sourceName: z.string(),
+  sourcePathOrUrl: z.string(),
+  licenseClass: questionLicenseClassSchema,
+  licenseName: z.string().nullable(),
+  importJobId: z.string().nullable(),
+  reviewStatus: z.enum(['pending', 'approved', 'rejected']),
+  notes: z.string().nullable(),
+});
+
+export type QuestionSourceRecord = z.infer<typeof questionSourceRecordSchema>;
+
+export const questionImportTypeSchema = z.enum(['textbook_pdf', 'qti', 'h5p', 'manual_seed']);
+export type QuestionImportType = z.infer<typeof questionImportTypeSchema>;
+
+export const questionImportJobStatusSchema = z.enum(['pending', 'running', 'completed', 'failed']);
+export type QuestionImportJobStatus = z.infer<typeof questionImportJobStatusSchema>;
+
+export const questionImportReviewStatusSchema = z.enum(['pending', 'approved', 'rejected']);
+export type QuestionImportReviewStatus = z.infer<typeof questionImportReviewStatusSchema>;
+
+export const questionImportSplitModeSchema = z.enum(['page', 'question']);
+export type QuestionImportSplitMode = z.infer<typeof questionImportSplitModeSchema>;
+
+export const questionImportQualityLevelSchema = z.enum(['low', 'medium', 'high']);
+export type QuestionImportQualityLevel = z.infer<typeof questionImportQualityLevelSchema>;
+
+export const questionImportAiSuggestionSchema = z.object({
+  suggestedStem: z.string(),
+  suggestedSectionLabel: z.string().nullable(),
+  suggestedAnswerMode: questionAnswerModeSchema.nullable(),
+  reviewAdvice: z.string(),
+  actionablePoints: z.array(z.string()),
+  confidenceLevel: z.enum(['low', 'medium', 'high']),
+  reviewRequired: z.boolean(),
+});
+
+export type QuestionImportAiSuggestion = z.infer<typeof questionImportAiSuggestionSchema>;
+
+export const questionImportSourcePolicySchema = z.object({
+  sourceType: questionSourceTypeSchema,
+  licenseClass: questionLicenseClassSchema,
+  licenseName: z.string().nullable(),
+});
+
+export type QuestionImportSourcePolicy = z.infer<typeof questionImportSourcePolicySchema>;
+
+export const questionImportJobSchema = z.object({
+  id: z.string(),
+  importType: questionImportTypeSchema,
+  subject: subjectSchema,
+  sourcePathOrUrl: z.string(),
+  sourcePolicy: questionImportSourcePolicySchema,
+  status: questionImportJobStatusSchema,
+  fileCount: z.number().int().nonnegative(),
+  recordCount: z.number().int().nonnegative(),
+  warningCount: z.number().int().nonnegative(),
+  errorMessage: z.string().nullable(),
+  createdAt: z.string(),
+  completedAt: z.string().nullable(),
+});
+
+export type QuestionImportJob = z.infer<typeof questionImportJobSchema>;
+
+export const questionImportRecordSchema = z.object({
+  id: z.string(),
+  jobId: z.string(),
+  subject: subjectSchema,
+  sourcePath: z.string(),
+  sourceName: z.string(),
+  pageNumber: z.number().int().positive().nullable(),
+  candidateIndexOnPage: z.number().int().positive(),
+  splitMode: questionImportSplitModeSchema,
+  sectionLabel: z.string().nullable(),
+  qualityLevel: questionImportQualityLevelSchema,
+  qualityFlags: z.array(z.string()),
+  excerpt: z.string(),
+  previewImageDataUrl: z.string().nullable(),
+  detectionReason: z.string(),
+  candidateStem: z.string(),
+  aiSuggestion: questionImportAiSuggestionSchema.nullable(),
+  aiSuggestedAt: z.string().nullable(),
+  reviewStatus: questionImportReviewStatusSchema,
+  reviewComment: z.string().nullable(),
+  candidateQuestionId: z.string().nullable(),
+  createdAt: z.string(),
+  reviewedAt: z.string().nullable(),
+});
+
+export type QuestionImportRecord = z.infer<typeof questionImportRecordSchema>;
+
+export const questionRenderPayloadSchema = z.object({
+  question: questionRuntimeSummarySchema,
+  document: questionDocumentSchema,
+  answerSchema: questionAnswerSchemaSchema,
+  source: questionSourceRecordSchema,
+});
+
+export type QuestionRenderPayload = z.infer<typeof questionRenderPayloadSchema>;
+
+export const studentAnswerPayloadSchema = z.object({
+  questionId: z.string(),
+  mode: questionAnswerModeSchema,
+  response: z.record(z.any()),
+  clientMeta: z
+    .object({
+      elapsedMs: z.number().int().positive().optional(),
+      inputMethod: z.string().optional(),
+      usedToolbar: z.array(z.string()).optional(),
+    })
+    .optional(),
+});
+
+export type StudentAnswerPayload = z.infer<typeof studentAnswerPayloadSchema>;
+
+export const answerValidationFieldErrorSchema = z.object({
+  field: z.string(),
+  message: z.string(),
+});
+
+export type AnswerValidationFieldError = z.infer<typeof answerValidationFieldErrorSchema>;
+
+export const answerValidationResultSchema = z.object({
+  valid: z.boolean(),
+  normalizedAnswer: z.any().nullable(),
+  fieldErrors: z.array(answerValidationFieldErrorSchema),
+  message: z.string().nullable(),
+});
+
+export type AnswerValidationResult = z.infer<typeof answerValidationResultSchema>;
+
 export const assessmentSessionSchema = z.object({
   id: z.string(),
   studentId: z.string(),
@@ -124,6 +423,7 @@ export const assessmentResultSchema = z.object({
   knowledgeResults: z.array(
     z.object({
       knowledgePointId: z.string(),
+      knowledgePointName: z.string(),
       score: z.number(),
       correctCount: z.number().int().nonnegative(),
       totalCount: z.number().int().positive(),
@@ -135,6 +435,32 @@ export const assessmentResultSchema = z.object({
 });
 
 export type AssessmentResult = z.infer<typeof assessmentResultSchema>;
+
+export const assessmentProgressItemSchema = z.object({
+  questionId: z.string(),
+  questionStem: z.string(),
+  answered: z.boolean(),
+  correct: z.boolean().nullable(),
+  score: z.number().nullable(),
+  errorType: z.string().nullable(),
+  analysis: z.string().nullable(),
+  elapsedMs: z.number().int().nonnegative().nullable(),
+});
+
+export type AssessmentProgressItem = z.infer<typeof assessmentProgressItemSchema>;
+
+export const assessmentProgressViewSchema = z.object({
+  sessionId: z.string(),
+  status: z.enum(['pending', 'in_progress', 'completed', 'aborted']),
+  answeredCount: z.number().int().nonnegative(),
+  totalCount: z.number().int().positive(),
+  progressPercent: z.number(),
+  currentIndex: z.number().int().nonnegative(),
+  currentItemId: z.string().nullable(),
+  items: z.array(assessmentProgressItemSchema),
+});
+
+export type AssessmentProgressView = z.infer<typeof assessmentProgressViewSchema>;
 
 export const missionTypeSchema = z.enum(['new_learning', 'practice', 'retry', 'review']);
 export type MissionType = z.infer<typeof missionTypeSchema>;
@@ -152,6 +478,38 @@ export const dailyMissionSchema = z.object({
 });
 
 export type DailyMission = z.infer<typeof dailyMissionSchema>;
+
+export const missionResultItemSchema = z.object({
+  questionId: z.string(),
+  questionStem: z.string(),
+  attemptCount: z.number().int().positive(),
+  correct: z.boolean(),
+  score: z.number(),
+  hintLevelUsed: z.number().int().nonnegative(),
+  analysis: z.string(),
+});
+
+export type MissionResultItem = z.infer<typeof missionResultItemSchema>;
+
+export const missionResultViewSchema = z.object({
+  missionId: z.string(),
+  subject: subjectSchema,
+  missionType: missionTypeSchema,
+  title: z.string(),
+  status: z.enum(['pending', 'in_progress', 'completed', 'skipped']),
+  correctCount: z.number().int().nonnegative(),
+  totalCount: z.number().int().positive(),
+  incorrectCount: z.number().int().nonnegative(),
+  hintUsedCount: z.number().int().nonnegative(),
+  totalAttempts: z.number().int().nonnegative(),
+  summary: z.string(),
+  targetKnowledgePointIds: z.array(z.string()),
+  targetKnowledgePointNames: z.array(z.string()),
+  nextActions: z.array(z.string()),
+  itemResults: z.array(missionResultItemSchema),
+});
+
+export type MissionResultView = z.infer<typeof missionResultViewSchema>;
 
 export const studyPlanDaySchema = z.object({
   date: z.string(),
@@ -326,6 +684,7 @@ export const assistantSessionSchema = z.object({
   id: z.string(),
   userRole: z.enum(['student', 'parent']),
   studentId: z.string().nullable(),
+  subject: subjectSchema.nullable(),
   pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report']),
   contextRefType: z.string().nullable(),
   contextRefId: z.string().nullable(),
