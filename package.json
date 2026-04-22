@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:restart:win": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/restart-dev.ps1",
     "dev:web": "npm run dev --workspace @study-agent/web",
     "dev:api": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run dev --workspace @study-agent/api",
     "build": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run build --workspace @study-agent/api && npm run build --workspace @study-agent/web",

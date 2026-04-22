@@ -28,6 +28,7 @@ packages/ui        悬浮助教 UI 组件
 3. 同时启动前后端：`npm run dev`
 4. 或单独启动 API：`npm run dev:api`
 5. 或单独启动 Web：`npm run dev:web`
+6. Windows 下先清理旧端口再重启开发服务：`npm run dev:restart:win`
 
 默认端口：
 
@@ -48,3 +49,4 @@ packages/ui        悬浮助教 UI 组件
 
 1. API 集成测试：`npm run test --workspace @study-agent/api`
 2. 全仓构建：`npm run build`
+3. API 集成测试不会占用 `4000` 端口；测试里是内存内初始化应用并通过 `supertest` 直连 HTTP server
