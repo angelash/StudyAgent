@@ -26,6 +26,7 @@ export class QuestionWorkspaceController {
       importType: QuestionImportType;
       subject: Subject;
       sourcePathOrUrl: string;
+      includePreviewImage?: boolean;
       sourcePolicy: {
         sourceType: 'internal_authoring' | 'internal_textbook' | 'open_content' | 'public_reference' | 'partner';
         licenseClass: 'A_INTERNAL' | 'B_OPEN' | 'C_PUBLIC_REFERENCE_ONLY' | 'D_COMMERCIAL_PARTNER';
@@ -37,6 +38,7 @@ export class QuestionWorkspaceController {
       importType: body.importType,
       subject: body.subject,
       sourcePathOrUrl: body.sourcePathOrUrl,
+      includePreviewImage: body.includePreviewImage ?? true,
       sourcePolicy: {
         sourceType: body.sourcePolicy.sourceType,
         licenseClass: body.sourcePolicy.licenseClass,

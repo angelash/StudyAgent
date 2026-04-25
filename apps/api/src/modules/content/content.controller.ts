@@ -1,10 +1,14 @@
 import { Body, Controller, Get, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { ContentService } from './content.service';
+import { QuestionCoverageService } from './question-coverage.service';
 
 @Controller()
 export class ContentController {
-  constructor(private readonly contentService: ContentService) {}
+  constructor(
+    private readonly contentService: ContentService,
+    private readonly questionCoverageService: QuestionCoverageService,
+  ) {}
 
   @Get('textbooks')
   listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english') {
@@ -112,6 +116,36 @@ export class ContentController {
   @Post('admin/textbooks/:volumeId/scaffold-questions')
   scaffoldVolumeQuestions(@Req() req: AuthenticatedRequest, @Param('volumeId') volumeId: string) {
     return this.contentService.scaffoldVolumeQuestions(req.user, volumeId);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('admin/question-coverage/summary')
+  getQuestionCoverageSummary(
+    @Req() req: AuthenticatedRequest,
+    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('minQuestionsPerKnowledgePoint') minQuestionsPerKnowledgePoint?: string,
+  ) {
+    return this.questionCoverageService.getCoverageSummary(
+      req.user,
+      subject,
+      minQuestionsPerKnowledgePoint ? Number(minQuestionsPerKnowledgePoint) : 5,
+    );
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('admin/question-coverage/backfill')
+  async backfillQuestionCoverage(
+    @Req() req: AuthenticatedRequest,
+    @Body()
+    body: {
+      subject?: 'math' | 'chinese' | 'english';
+      minQuestionsPerKnowledgePoint?: number;
+      importTextbookCandidates?: boolean;
+      candidateVolumeLimit?: number | null;
+      autoCreateDraftsFromCandidates?: boolean;
+    },
+  ) {
+    return this.questionCoverageService.backfillQuestionCoverage(req.user, body);
   }
 
   @UseGuards(AuthGuard)

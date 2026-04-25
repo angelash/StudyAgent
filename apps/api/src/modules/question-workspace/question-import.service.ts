@@ -4,6 +4,7 @@ import { BadRequestException, ForbiddenException, Injectable, NotFoundException 
 import { loadApiEnv } from '@study-agent/config';
 import {
   Question,
+  QuestionAnswerMode,
   QuestionAnswerSchema,
   QuestionDocument,
   QuestionImportJob,
@@ -24,6 +25,7 @@ type CreateQuestionImportJobCommand = {
   importType: QuestionImportType;
   subject: Subject;
   sourcePathOrUrl: string;
+  includePreviewImage?: boolean;
   sourcePolicy: QuestionImportSourcePolicy;
 };
 
@@ -119,7 +121,11 @@ export class QuestionImportService {
 
     try {
       for (const filePath of resolvedPaths) {
-        const candidates = await this.extractCandidatesFromPdf(filePath, job.subject);
+        const candidates = await this.extractCandidatesFromPdf(
+          filePath,
+          job.subject,
+          command.includePreviewImage ?? true,
+        );
         if (candidates.length === 0) {
           job.warningCount += 1;
           continue;
@@ -299,7 +305,11 @@ export class QuestionImportService {
     }
   }
 
-  private async extractCandidatesFromPdf(filePath: string, subject: Subject) {
+  private async extractCandidatesFromPdf(
+    filePath: string,
+    subject: Subject,
+    includePreviewImage: boolean,
+  ) {
     const pdfData = await fs.readFile(filePath);
     const parser = new PDFParse({ data: pdfData });
 
@@ -308,19 +318,26 @@ export class QuestionImportService {
       const candidates: ImportCandidate[] = [];
       for (const page of textResult.pages) {
         const pageText = typeof page.text === 'string' ? page.text : '';
-        let previewImageDataUrl: string | null = null;
-        try {
-          const screenshotResult = await parser.getScreenshot({
-            partial: [page.num],
-            desiredWidth: 360,
-            imageBuffer: false,
-          });
-          previewImageDataUrl = screenshotResult.pages[0]?.dataUrl ?? null;
-        } catch {
-          previewImageDataUrl = null;
+        const pageCandidates = splitTextbookPageCandidates(pageText, subject);
+        if (pageCandidates.length === 0) {
+          continue;
         }
 
-        for (const candidate of splitTextbookPageCandidates(pageText, subject)) {
+        let previewImageDataUrl: string | null = null;
+        if (includePreviewImage) {
+          try {
+            const screenshotResult = await parser.getScreenshot({
+              partial: [page.num],
+              desiredWidth: 360,
+              imageBuffer: false,
+            });
+            previewImageDataUrl = screenshotResult.pages[0]?.dataUrl ?? null;
+          } catch {
+            previewImageDataUrl = null;
+          }
+        }
+
+        for (const candidate of pageCandidates) {
           const quality = assessImportCandidateQuality(candidate);
           candidates.push({
             pageNumber: page.num,
@@ -358,12 +375,14 @@ export class QuestionImportService {
       }
     }
 
+    const suggestedAnswerMode = this.resolveDraftAnswerMode(record, job.subject);
+
     const question: Question = {
       id: this.store.nextId('question'),
       subject: job.subject,
-      type: 'subjective',
+      type: this.resolveDraftQuestionType(suggestedAnswerMode),
       stem: record.aiSuggestion?.suggestedStem?.trim() || record.candidateStem,
-      answer: '',
+      answer: this.buildDraftDefaultAnswer(suggestedAnswerMode),
       analysis: '教材导入候选草稿，需人工补充标准答案、解析和作答协议后再发布。',
       difficultyLevel: 2,
       knowledgePointIds,
@@ -430,23 +449,7 @@ export class QuestionImportService {
       },
     });
 
-    const answerSchema: Omit<QuestionAnswerSchema, 'questionId'> = {
-      mode: 'short_answer',
-      responseShape: {
-        value: 'string',
-      },
-      validationRules: {
-        required: true,
-      },
-      gradingConfig: {
-        compareAs: 'manual_review_required',
-        importedFromRecordId: record.id,
-        suggestedAnswerMode:
-          record.aiSuggestion?.suggestedAnswerMode ??
-          suggestAnswerModeFromCandidate({ candidateStem: record.candidateStem, excerpt: record.excerpt }, job.subject),
-      },
-      placeholder: '导入候选草稿，请人工配置最终作答模式',
-    };
+    const answerSchema = this.buildDraftAnswerSchema(record, job.subject, suggestedAnswerMode);
     this.questionWorkspaceService.upsertAnswerSchema(requestUser, question.id, answerSchema);
 
     const source: Omit<QuestionSourceRecord, 'questionId'> = {
@@ -469,6 +472,173 @@ export class QuestionImportService {
     this.questionWorkspaceService.upsertSource(requestUser, question.id, source);
 
     return question;
+  }
+
+  private resolveDraftAnswerMode(record: QuestionImportRecord, subject: Subject): QuestionAnswerMode {
+    return (
+      record.aiSuggestion?.suggestedAnswerMode ??
+      suggestAnswerModeFromCandidate(
+        { candidateStem: record.candidateStem, excerpt: record.excerpt },
+        subject,
+      ) ??
+      'short_answer'
+    );
+  }
+
+  private resolveDraftQuestionType(mode: QuestionAnswerMode): Question['type'] {
+    if (mode === 'stepwise') {
+      return 'stepwise';
+    }
+
+    if (mode === 'short_answer' || mode === 'image_upload' || mode === 'audio_record') {
+      return 'subjective';
+    }
+
+    return 'objective';
+  }
+
+  private buildDraftDefaultAnswer(mode: QuestionAnswerMode) {
+    switch (mode) {
+      case 'multiple_choice':
+        return [] as string[];
+      case 'multi_blank':
+        return [
+          { key: 'blank_1', label: '第1空', answer: '' },
+          { key: 'blank_2', label: '第2空', answer: '' },
+        ];
+      case 'boolean':
+        return false;
+      case 'numeric_blank':
+        return 0;
+      default:
+        return '';
+    }
+  }
+
+  private buildDraftAnswerSchema(
+    record: QuestionImportRecord,
+    subject: Subject,
+    mode: QuestionAnswerMode,
+  ): Omit<QuestionAnswerSchema, 'questionId'> {
+    const gradingConfig = {
+      compareAs: 'manual_review_required',
+      importedFromRecordId: record.id,
+      suggestedAnswerMode: mode,
+    };
+
+    if (mode === 'single_choice') {
+      return {
+        mode,
+        responseShape: { value: 'string' },
+        validationRules: { required: true },
+        gradingConfig,
+        options: ['A', 'B', 'C', 'D'].map((label) => ({
+          id: this.store.nextId('option'),
+          label,
+          value: label,
+          content: `待补充选项${label}`,
+        })),
+        placeholder: '导入候选草稿，请补充选项和正确答案',
+      };
+    }
+
+    if (mode === 'multiple_choice') {
+      return {
+        mode,
+        responseShape: { values: 'string[]' },
+        validationRules: { required: true, minItems: 1 },
+        gradingConfig,
+        options: ['A', 'B', 'C', 'D'].map((label) => ({
+          id: this.store.nextId('option'),
+          label,
+          value: label,
+          content: `待补充选项${label}`,
+        })),
+        placeholder: '导入候选草稿，请补充多选项和标准答案',
+      };
+    }
+
+    if (mode === 'boolean') {
+      return {
+        mode,
+        responseShape: { value: 'boolean' },
+        validationRules: { required: true },
+        gradingConfig,
+        options: [
+          { id: this.store.nextId('option'), label: 'A', value: 'true', content: '正确' },
+          { id: this.store.nextId('option'), label: 'B', value: 'false', content: '错误' },
+        ],
+        placeholder: '导入候选草稿，请确认判断题标准答案',
+      };
+    }
+
+    if (mode === 'numeric_blank') {
+      return {
+        mode,
+        responseShape: { value: 'number' },
+        validationRules: { required: true },
+        gradingConfig,
+        placeholder: '导入候选草稿，请补充数字答案',
+      };
+    }
+
+    if (mode === 'formula_blank') {
+      return {
+        mode,
+        responseShape: { value: 'string' },
+        validationRules: { required: true },
+        gradingConfig,
+        placeholder: '导入候选草稿，请补充公式答案',
+      };
+    }
+
+    if (mode === 'multi_blank') {
+      return {
+        mode,
+        responseShape: {
+          entries: [
+            { key: 'blank_1', label: '第1空' },
+            { key: 'blank_2', label: '第2空' },
+          ],
+        },
+        validationRules: { required: true },
+        gradingConfig,
+        placeholder: '导入候选草稿，请补充每个空的答案',
+      };
+    }
+
+    if (mode === 'stepwise') {
+      return {
+        mode,
+        responseShape: {
+          steps: [
+            { key: 'step_1', label: '步骤 1' },
+            { key: 'step_2', label: '步骤 2' },
+          ],
+        },
+        validationRules: { required: true },
+        gradingConfig,
+        placeholder: '导入候选草稿，请补充分步作答要求',
+      };
+    }
+
+    return {
+      mode: mode === 'short_answer' ? 'short_answer' : 'text_blank',
+      responseShape: {
+        value: 'string',
+      },
+      validationRules: {
+        required: true,
+      },
+      gradingConfig: {
+        ...gradingConfig,
+        subject,
+      },
+      placeholder:
+        mode === 'short_answer'
+          ? '导入候选草稿，请补充参考答案和评分点'
+          : '导入候选草稿，请补充最终答案',
+    };
   }
 
   private repairCandidateStem(candidateStem: string, excerpt: string) {

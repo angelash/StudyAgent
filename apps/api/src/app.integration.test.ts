@@ -463,7 +463,7 @@ describe('StudyAgent API integration', () => {
       }>).data!;
 
     expect(payload.question.status).toBe('draft');
-      expect(payload.answerSchema.mode).toBe('short_answer');
+      expect(payload.answerSchema.mode).toBe('numeric_blank');
       expect(payload.source.importJobId).toBe(job.id);
       expect(payload.source.sourceType).toBe('internal_textbook');
       expect(payload.source.sourcePathOrUrl).toContain('&candidate=1');
@@ -1068,6 +1068,73 @@ describe('StudyAgent API integration', () => {
     expect(
       knowledgeMap.units.some((unit) =>
         unit.lessons.some((lesson) => lesson.knowledgePoints.some((knowledgePoint) => knowledgePoint.questionCount > 0)),
+      ),
+    ).toBe(true);
+  });
+
+  it('backfills question coverage so every knowledge point reaches at least five published questions', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token, 'math');
+
+    const backfillResponse = await request(app.getHttpServer())
+      .post('/api/admin/question-coverage/backfill')
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({
+        subject: 'math',
+        minQuestionsPerKnowledgePoint: 5,
+        importTextbookCandidates: false,
+        autoCreateDraftsFromCandidates: false,
+      })
+      .expect(201);
+
+    const backfillSummary = (backfillResponse.body as WrappedResponse<{
+      subjects: Array<{
+        subject: string;
+        knowledgePointCount: number;
+        belowTargetKnowledgePointCount: number;
+        generatedPublishedQuestionCount: number;
+      }>;
+    }>).data!;
+    expect(backfillSummary.subjects[0].subject).toBe('math');
+    expect(backfillSummary.subjects[0].knowledgePointCount).toBeGreaterThan(0);
+    expect(backfillSummary.subjects[0].belowTargetKnowledgePointCount).toBe(0);
+    expect(backfillSummary.subjects[0].generatedPublishedQuestionCount).toBeGreaterThan(0);
+
+    const parent = await login('parent@example.com');
+    const studentResponse = await request(app.getHttpServer())
+      .post('/api/students')
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        nickname: '批量补题学生',
+        grade: 1,
+        preferredSessionMinutes: 20,
+        defaultVersionMap: {
+          chinese: 'chinese-dev-version',
+          math: volumes[0].id,
+          english: 'english-dev-version',
+        },
+      })
+      .expect(201);
+    const studentId = (studentResponse.body as WrappedResponse<{ profile: { id: string } }>).data!.profile.id;
+
+    const knowledgeMapResponse = await request(app.getHttpServer())
+      .get(`/api/students/${studentId}/knowledge-map?subject=math`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .expect(200);
+
+    const knowledgeMap = (knowledgeMapResponse.body as WrappedResponse<{
+      units: Array<{
+        lessons: Array<{
+          knowledgePoints: Array<{ questionCount: number }>;
+        }>;
+      }>;
+    }>).data!;
+
+    expect(
+      knowledgeMap.units.every((unit) =>
+        unit.lessons.every((lesson) =>
+          lesson.knowledgePoints.every((knowledgePoint) => knowledgePoint.questionCount >= 5),
+        ),
       ),
     ).toBe(true);
   });
