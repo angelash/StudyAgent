@@ -14,16 +14,62 @@ import type {
 } from '@study-agent/contracts';
 import { FormulaInput } from '../../../components/formula-input';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
-import { apiRequest, getAuthToken } from '../../../lib/api';
+import { apiRequest, getAuthToken, getCurrentUser } from '../../../lib/api';
+
+type User = {
+  id: string;
+  role: string;
+  displayName: string;
+};
 
 type Volume = {
   id: string;
+  subject: Subject;
   displayName: string;
+  publisherVersion: string;
+  grade: number;
+  term: 'first' | 'second';
+  sourcePath: string;
+  status: 'draft' | 'published';
 };
 
 type KnowledgePoint = {
   id: string;
   name: string;
+  subject: Subject;
+  parentId: string | null;
+  gradeBand: string;
+  difficultyLevel: number;
+  lessonId: string | null;
+  status: 'draft' | 'published';
+};
+
+type TextbookLessonTree = {
+  id: string;
+  title: string;
+  sortOrder: number;
+  knowledgePoints: KnowledgePoint[];
+};
+
+type TextbookUnitTree = {
+  id: string;
+  title: string;
+  sortOrder: number;
+  lessons: TextbookLessonTree[];
+};
+
+type VolumeTree = {
+  volume: Volume;
+  units: TextbookUnitTree[];
+};
+
+type LessonWorkspaceItem = {
+  id: string;
+  title: string;
+  sortOrder: number;
+  unitId: string;
+  unitTitle: string;
+  knowledgePoints: KnowledgePoint[];
 };
 
 type QuestionSummary = {
@@ -31,6 +77,7 @@ type QuestionSummary = {
   stem: string;
   status: string;
   knowledgePointIds: string[];
+  difficultyLevel: number;
 };
 
 type ChoiceOption = {
@@ -102,23 +149,47 @@ const subjectMeta: Record<
 > = {
   chinese: {
     label: '语文',
-    importPath: 'E:\\ChinaTextbook\\小学\\语文\\人教版\\义务教育教科书·语文三年级上册.pdf',
-    prepCopy: '先把语文教材和知识点准备好，后续导入候选、阅读题和表达题都会按语文学科归档。',
-    importCopy: '支持整册教材、阅读题和表达题导入，适合阅读理解、字词句和习作训练素材沉淀。',
+    importPath: 'E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文三年级上册.pdf',
+    prepCopy: '系统默认已经提供语文示例教材、知识点和题库，开箱即可体验；如果要补充你自己的阅读题、表达题和教材内容，可以再从这里导入。',
+    importCopy: '支持整册教材、阅读题和表达题导入，适合在默认题库之外继续扩充阅读理解、字词句和习作训练素材。',
   },
   math: {
     label: '数学',
     importPath: 'E:\\ChinaTextbook\\小学\\数学\\人教版\\义务教育教科书 · 数学二年级上册.pdf',
-    prepCopy: '先把数学教材和知识点准备好，结构化题目发布时会自动绑定到对应知识点。',
-    importCopy: '支持整册教材、例题与练习页导入，适合计算题、应用题和图文题结构化沉淀。',
+    prepCopy: '系统默认已经提供数学示例教材、知识点和题库，开箱即可体验；如果要补充你自己的例题、练习页和结构化题，可以再从这里导入。',
+    importCopy: '支持整册教材、例题与练习页导入，适合在默认题库之外继续扩充计算题、应用题和图文题素材。',
   },
   english: {
     label: '英语',
-    importPath: 'E:\\ChinaTextbook\\小学\\英语\\人教版\\义务教育教科书·英语（PEP）（三年级起点）三年级上册.pdf',
-    prepCopy: '先把英语教材和知识点准备好，后续词汇、句型、阅读和对话题都会按英语学科组织。',
-    importCopy: '支持教材页、单词句型与阅读材料导入，适合单词拼写、选词填空和阅读理解沉淀。',
+    importPath:
+      'E:\\ChinaTextbook\\小学\\英语\\人教版（PEP）（三年级起点）（主编：吴欣）\\义务教育教科书·英语（PEP）（三年级起点）三年级上册.pdf',
+    prepCopy: '系统默认已经提供英语示例教材、知识点和题库，开箱即可体验；如果要补充你自己的词汇、句型、阅读和对话素材，可以再从这里导入。',
+    importCopy: '支持教材页、单词句型与阅读材料导入，适合在默认题库之外继续扩充单词拼写、选词填空和阅读理解素材。',
   },
 };
+
+function isAuthErrorMessage(message: string) {
+  const normalized = message.trim().toLowerCase();
+  return (
+    normalized.includes('401') ||
+    normalized.includes('403') ||
+    normalized.includes('missing bearer token') ||
+    normalized.includes('invalid session token') ||
+    normalized.includes('user is unavailable')
+  );
+}
+
+function resolveErrorMessage(caught: unknown, fallback: string) {
+  return caught instanceof Error ? caught.message : fallback;
+}
+
+function resolveAdminWarning(caught: unknown) {
+  const message = resolveErrorMessage(caught, '导入任务加载失败');
+  if (isAuthErrorMessage(message)) {
+    return '管理员登录状态已失效。教材、知识点和题库数据仍会正常显示，但导入任务、审核和导入操作需要重新登录后才能使用。';
+  }
+  return `导入任务加载失败：${message}`;
+}
 
 function createSubjectPreset(subject: Subject) {
   switch (subject) {
@@ -217,6 +288,12 @@ export default function AdminContentPage() {
   const [questions, setQuestions] = React.useState<QuestionSummary[]>([]);
   const [importJobs, setImportJobs] = React.useState<QuestionImportJob[]>([]);
   const [importRecords, setImportRecords] = React.useState<QuestionImportRecord[]>([]);
+  const [selectedVolumeId, setSelectedVolumeId] = React.useState('');
+  const [selectedVolumeTree, setSelectedVolumeTree] = React.useState<VolumeTree | null>(null);
+  const [loadingVolumeTree, setLoadingVolumeTree] = React.useState(false);
+  const [selectedLessonId, setSelectedLessonId] = React.useState('');
+  const [lessonKnowledgePointDraft, setLessonKnowledgePointDraft] = React.useState(initialPreset.knowledgePointName);
+  const [existingKnowledgePointId, setExistingKnowledgePointId] = React.useState('');
 
   const [knowledgePointName, setKnowledgePointName] = React.useState(initialPreset.knowledgePointName);
   const [questionTitle, setQuestionTitle] = React.useState(initialPreset.questionTitle);
@@ -244,34 +321,63 @@ export default function AdminContentPage() {
   const [loadingImportRecords, setLoadingImportRecords] = React.useState(false);
   const [reviewingRecordId, setReviewingRecordId] = React.useState<string | null>(null);
   const [structuringRecordId, setStructuringRecordId] = React.useState<string | null>(null);
+  const [movingKnowledgePointId, setMovingKnowledgePointId] = React.useState<string | null>(null);
+  const [bindingQuestionId, setBindingQuestionId] = React.useState<string | null>(null);
+  const [scaffoldingVolumeId, setScaffoldingVolumeId] = React.useState<string | null>(null);
   const [message, setMessage] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const [adminWarning, setAdminWarning] = React.useState<string | null>(null);
+  const hasAdminSession = Boolean(getAuthToken() && getCurrentUser<User>()?.role === 'admin' && !adminWarning);
 
   async function reload() {
     try {
       setError(null);
-      const token = getAuthToken();
-      const [volumesResult, knowledgeResult, questionResult, importJobResult] = await Promise.all([
+      const [volumesResult, knowledgeResult, questionResult] = await Promise.all([
         apiRequest<Volume[]>(`/textbooks?subject=${selectedSubject}`),
         apiRequest<KnowledgePoint[]>(`/knowledge-points?subject=${selectedSubject}`),
         apiRequest<QuestionSummary[]>(`/questions?subject=${selectedSubject}`),
-        token ? apiRequest<QuestionImportJob[]>('/admin/question-import-jobs', {}, token) : Promise.resolve([]),
       ]);
-      const scopedImportJobs = importJobResult.filter((item) => item.subject === selectedSubject);
       setVolumes(volumesResult);
       setKnowledgePoints(knowledgeResult);
       setQuestions(questionResult);
-      setImportJobs(scopedImportJobs);
-
-      setSelectedKnowledgePointId((current) => current || knowledgeResult[0]?.id || '');
-      setSelectedImportJobId((current) => {
-        if (current && scopedImportJobs.some((item) => item.id === current)) {
+      setSelectedVolumeId((current) => {
+        if (current && volumesResult.some((item) => item.id === current)) {
           return current;
         }
-        return scopedImportJobs[0]?.id ?? '';
+        return sortVolumes(volumesResult)[0]?.id ?? '';
       });
+
+      setSelectedKnowledgePointId((current) => current || knowledgeResult[0]?.id || '');
+      const currentUser = getCurrentUser<User>();
+      const token = getAuthToken();
+
+      if (!currentUser || currentUser.role !== 'admin' || !token) {
+        setImportJobs([]);
+        setSelectedImportJobId('');
+        setImportRecords([]);
+        setAdminWarning('当前没有可用的管理员登录状态。教材、知识点和题库数据已加载；如需查看导入任务或继续导入，请重新登录管理员账号。');
+        return;
+      }
+
+      try {
+        const importJobResult = await apiRequest<QuestionImportJob[]>('/admin/question-import-jobs', {}, token);
+        const scopedImportJobs = importJobResult.filter((item) => item.subject === selectedSubject);
+        setImportJobs(scopedImportJobs);
+        setSelectedImportJobId((current) => {
+          if (current && scopedImportJobs.some((item) => item.id === current)) {
+            return current;
+          }
+          return scopedImportJobs[0]?.id ?? '';
+        });
+        setAdminWarning(null);
+      } catch (caught) {
+        setImportJobs([]);
+        setSelectedImportJobId('');
+        setImportRecords([]);
+        setAdminWarning(resolveAdminWarning(caught));
+      }
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '内容后台加载失败');
+      setError(resolveErrorMessage(caught, '内容后台加载失败'));
     }
   }
 
@@ -282,6 +388,7 @@ export default function AdminContentPage() {
   React.useEffect(() => {
     const preset = createSubjectPreset(selectedSubject);
     setKnowledgePointName(preset.knowledgePointName);
+    setLessonKnowledgePointDraft(preset.knowledgePointName);
     setQuestionTitle(preset.questionTitle);
     setAnalysis(preset.analysis);
     setImportSourcePath(subjectMeta[selectedSubject].importPath);
@@ -296,9 +403,47 @@ export default function AdminContentPage() {
     setSelectedKnowledgePointId('');
     setSelectedImportJobId('');
     setImportRecords([]);
+    setSelectedVolumeId('');
+    setSelectedLessonId('');
+    setSelectedVolumeTree(null);
     setLatestPublishedPayload(null);
     setLatestPublishedAnswer(null);
+    setAdminWarning(null);
   }, [selectedSubject]);
+
+  React.useEffect(() => {
+    if (!selectedVolumeId) {
+      setSelectedVolumeTree(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function loadVolumeTree() {
+      try {
+        setLoadingVolumeTree(true);
+        const tree = await apiRequest<VolumeTree>(`/textbooks/${selectedVolumeId}/tree`);
+        if (!cancelled) {
+          setSelectedVolumeTree(tree);
+        }
+      } catch (caught) {
+        if (!cancelled) {
+          setError(resolveErrorMessage(caught, '教材结构加载失败'));
+          setSelectedVolumeTree(null);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingVolumeTree(false);
+        }
+      }
+    }
+
+    void loadVolumeTree();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedVolumeId]);
 
   React.useEffect(() => {
     if (!selectedImportJobId) {
@@ -307,6 +452,35 @@ export default function AdminContentPage() {
     }
     void loadImportRecords(selectedImportJobId);
   }, [selectedImportJobId]);
+
+  React.useEffect(() => {
+    if (!selectedVolumeTree) {
+      setSelectedLessonId('');
+      return;
+    }
+
+    const lessonIds = selectedVolumeTree.units.flatMap((unit) => unit.lessons.map((lesson) => lesson.id));
+    setSelectedLessonId((current) => (current && lessonIds.includes(current) ? current : lessonIds[0] ?? ''));
+  }, [selectedVolumeTree]);
+
+  React.useEffect(() => {
+    if (!selectedVolumeTree) {
+      setSelectedKnowledgePointId('');
+      return;
+    }
+
+    const lesson = selectedVolumeTree.units
+      .flatMap((unit) => unit.lessons)
+      .find((item) => item.id === selectedLessonId);
+
+    if (!lesson) {
+      setSelectedKnowledgePointId('');
+      return;
+    }
+
+    const lessonKnowledgePointIds = lesson.knowledgePoints.map((knowledgePoint) => knowledgePoint.id);
+    setSelectedKnowledgePointId((current) => (current && lessonKnowledgePointIds.includes(current) ? current : lessonKnowledgePointIds[0] ?? ''));
+  }, [selectedLessonId, selectedVolumeTree]);
 
   const draftRenderPayload = React.useMemo<QuestionRenderPayload>(
     () => ({
@@ -358,23 +532,17 @@ export default function AdminContentPage() {
       setMessage(`已导入 ${result.importedCount} 本${subjectProfile.label}教材`);
       await reload();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '教材导入失败');
+      setError(resolveErrorMessage(caught, '教材导入失败'));
     }
   }
 
   async function createKnowledgePoint() {
+    const targetLessonId = selectedLessonId || selectedVolumeTree?.units[0]?.lessons[0]?.id || null;
+
     try {
       setError(null);
       setMessage(null);
-      const lessonId =
-        volumes.length > 0
-          ? (
-              await apiRequest<{ volume: { id: string }; units: Array<{ lessons: Array<{ id: string }> }> }>(
-                `/textbooks/${volumes[0].id}/tree`,
-              )
-            ).units[0]?.lessons[0]?.id ?? null
-          : null;
-      await apiRequest(
+      const created = await apiRequest<KnowledgePoint>(
         '/admin/knowledge-points',
         {
           method: 'POST',
@@ -382,18 +550,20 @@ export default function AdminContentPage() {
             subject: selectedSubject,
             name: knowledgePointName,
             parentId: null,
-            gradeBand: '2-3',
+            gradeBand: selectedVolumeTree?.volume.grade ? `${selectedVolumeTree.volume.grade}` : '2-3',
             difficultyLevel: 2,
-            lessonId,
+            lessonId: targetLessonId,
             status: 'published',
           }),
         },
         getAuthToken(),
       );
       setMessage(`已创建${subjectProfile.label}知识点：${knowledgePointName}`);
+      setSelectedKnowledgePointId(created.id);
+      setLessonKnowledgePointDraft(created.name);
       await reload();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '知识点创建失败');
+      setError(resolveErrorMessage(caught, '知识点创建失败'));
     }
   }
 
@@ -474,9 +644,129 @@ export default function AdminContentPage() {
       setMessage(`已创建并发布${subjectProfile.label}结构化题目：${questionTitle}`);
       await reload();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '结构化题目创建失败');
+      setError(resolveErrorMessage(caught, '结构化题目创建失败'));
     } finally {
       setSavingQuestion(false);
+    }
+  }
+
+  async function createLessonKnowledgePoint() {
+    if (!selectedLesson) {
+      setError('请先在教材结构里选择一个课时');
+      return;
+    }
+
+    if (!lessonKnowledgePointDraft.trim()) {
+      setError('请先填写知识点名称');
+      return;
+    }
+
+    try {
+      setError(null);
+      setMessage(null);
+      const created = await apiRequest<KnowledgePoint>(
+        '/admin/knowledge-points',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            subject: selectedSubject,
+            name: lessonKnowledgePointDraft.trim(),
+            parentId: null,
+            gradeBand: selectedVolumeTree?.volume.grade ? `${selectedVolumeTree.volume.grade}` : '2-3',
+            difficultyLevel: 2,
+            lessonId: selectedLesson.id,
+            status: 'published',
+          }),
+        },
+        getAuthToken(),
+      );
+      setSelectedKnowledgePointId(created.id);
+      setMessage(`已将知识点“${created.name}”挂到课时「${selectedLesson.title}」`);
+      await reload();
+    } catch (caught) {
+      setError(resolveErrorMessage(caught, '课时知识点创建失败'));
+    }
+  }
+
+  async function moveKnowledgePointToLesson(knowledgePointId: string) {
+    if (!selectedLesson) {
+      setError('请先选择一个课时');
+      return;
+    }
+
+    try {
+      setMovingKnowledgePointId(knowledgePointId);
+      setError(null);
+      setMessage(null);
+      const updated = await apiRequest<KnowledgePoint>(
+        `/admin/knowledge-points/${knowledgePointId}`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify({
+            lessonId: selectedLesson.id,
+          }),
+        },
+        getAuthToken(),
+      );
+      setSelectedKnowledgePointId(updated.id);
+      setExistingKnowledgePointId('');
+      setMessage(`已将知识点“${updated.name}”移动到课时「${selectedLesson.title}」`);
+      await reload();
+    } catch (caught) {
+      setError(resolveErrorMessage(caught, '知识点挂接失败'));
+    } finally {
+      setMovingKnowledgePointId(null);
+    }
+  }
+
+  async function bindQuestionToKnowledgePoint(questionId: string, knowledgePointId: string) {
+    try {
+      setBindingQuestionId(questionId);
+      setError(null);
+      setMessage(null);
+      await apiRequest<QuestionSummary>(
+        `/admin/questions/${questionId}/knowledge-points`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify({
+            knowledgePointIds: [knowledgePointId],
+          }),
+        },
+        getAuthToken(),
+      );
+      setMessage('题目已绑定到当前知识点');
+      await reload();
+    } catch (caught) {
+      setError(resolveErrorMessage(caught, '题目绑定失败'));
+    } finally {
+      setBindingQuestionId(null);
+    }
+  }
+
+  async function scaffoldCurrentVolumeQuestions() {
+    if (!selectedVolumeId) {
+      setError('请先选择一本教材');
+      return;
+    }
+
+    try {
+      setScaffoldingVolumeId(selectedVolumeId);
+      setError(null);
+      setMessage(null);
+      const result = await apiRequest<{ questionCount: number }>(
+        `/admin/textbooks/${selectedVolumeId}/scaffold-questions`,
+        {
+          method: 'POST',
+          body: '{}',
+        },
+        getAuthToken(),
+      );
+      setMessage(`已为当前教材补齐可用样例题，当前关联题目数 ${result.questionCount}。`);
+      await reload();
+    } catch (caught) {
+      setError(resolveErrorMessage(caught, '教材样例题补齐失败'));
+    } finally {
+      setScaffoldingVolumeId(null);
     }
   }
 
@@ -491,7 +781,7 @@ export default function AdminContentPage() {
       );
       setImportRecords(records);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '导入记录加载失败');
+      setError(resolveErrorMessage(caught, '导入记录加载失败'));
     } finally {
       setLoadingImportRecords(false);
     }
@@ -536,7 +826,7 @@ export default function AdminContentPage() {
         setMessage(`导入任务状态：${formatImportJobStatus(created.status)}`);
       }
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '教材导入任务创建失败');
+      setError(resolveErrorMessage(caught, '教材导入任务创建失败'));
     } finally {
       setCreatingImportJob(false);
     }
@@ -571,7 +861,7 @@ export default function AdminContentPage() {
         setMessage('候选题已标记为驳回，不会进入题库草稿。');
       }
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '导入记录审核失败');
+      setError(resolveErrorMessage(caught, '导入记录审核失败'));
     } finally {
       setReviewingRecordId(null);
     }
@@ -595,7 +885,7 @@ export default function AdminContentPage() {
       setImportRecords((current) => current.map((item) => (item.id === result.record.id ? result.record : item)));
       setMessage(`AI 已生成结构化建议：${result.suggestion.suggestedStem}`);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'AI 结构化解析失败');
+      setError(resolveErrorMessage(caught, 'AI 结构化解析失败'));
     } finally {
       setStructuringRecordId(null);
     }
@@ -686,6 +976,75 @@ export default function AdminContentPage() {
     setMultiBlankItems((current) => (current.length > 1 ? current.filter((item) => item.id !== id) : current));
   }
 
+  const sortedVolumes = React.useMemo(() => sortVolumes(volumes), [volumes]);
+  const publishedQuestionCount = questions.filter((item) => item.status === 'published').length;
+  const draftQuestionCount = questions.filter((item) => item.status === 'draft').length;
+  const currentImportCandidateCount = importJobs.reduce((sum, job) => sum + job.recordCount, 0);
+  const volumeLessons = React.useMemo<LessonWorkspaceItem[]>(() => {
+    if (!selectedVolumeTree) {
+      return [];
+    }
+
+    return selectedVolumeTree.units.flatMap((unit) =>
+      unit.lessons.map((lesson) => ({
+        id: lesson.id,
+        title: lesson.title,
+        sortOrder: lesson.sortOrder,
+        unitId: unit.id,
+        unitTitle: unit.title,
+        knowledgePoints: lesson.knowledgePoints,
+      })),
+    );
+  }, [selectedVolumeTree]);
+  const selectedLesson = volumeLessons.find((lesson) => lesson.id === selectedLessonId) ?? null;
+  const volumeKnowledgePointIds = React.useMemo(
+    () => new Set(volumeLessons.flatMap((lesson) => lesson.knowledgePoints.map((knowledgePoint) => knowledgePoint.id))),
+    [volumeLessons],
+  );
+  const selectedLessonKnowledgePointIds = React.useMemo(
+    () => new Set((selectedLesson?.knowledgePoints ?? []).map((knowledgePoint) => knowledgePoint.id)),
+    [selectedLesson],
+  );
+  const selectedLessonQuestionCount = React.useMemo(
+    () =>
+      questions.filter((question) => question.knowledgePointIds.some((knowledgePointId) => selectedLessonKnowledgePointIds.has(knowledgePointId))).length,
+    [questions, selectedLessonKnowledgePointIds],
+  );
+  const lessonQuestionCountMap = React.useMemo(() => {
+    const counts = new Map<string, number>();
+    volumeLessons.forEach((lesson) => {
+      const lessonKnowledgeIds = new Set(lesson.knowledgePoints.map((knowledgePoint) => knowledgePoint.id));
+      counts.set(
+        lesson.id,
+        questions.filter((question) => question.knowledgePointIds.some((knowledgePointId) => lessonKnowledgeIds.has(knowledgePointId))).length,
+      );
+    });
+    return counts;
+  }, [questions, volumeLessons]);
+  const selectedKnowledgePoint = knowledgePoints.find((knowledgePoint) => knowledgePoint.id === selectedKnowledgePointId) ?? null;
+  const activeLessonKnowledgePoint =
+    selectedKnowledgePoint && selectedLessonKnowledgePointIds.has(selectedKnowledgePoint.id) ? selectedKnowledgePoint : null;
+  const selectedKnowledgePointQuestions = React.useMemo(
+    () =>
+      selectedKnowledgePointId
+        ? questions.filter((question) => question.knowledgePointIds.includes(selectedKnowledgePointId))
+        : [],
+    [questions, selectedKnowledgePointId],
+  );
+  const unboundQuestions = React.useMemo(() => questions.filter((question) => question.knowledgePointIds.length === 0), [questions]);
+  const attachableKnowledgePoints = React.useMemo(
+    () =>
+      selectedLesson
+        ? knowledgePoints.filter((knowledgePoint) => knowledgePoint.lessonId !== selectedLesson.id)
+        : [],
+    [knowledgePoints, selectedLesson],
+  );
+  const currentVolumeQuestionCount = React.useMemo(
+    () =>
+      questions.filter((question) => question.knowledgePointIds.some((knowledgePointId) => volumeKnowledgePointIds.has(knowledgePointId))).length,
+    [questions, volumeKnowledgePointIds],
+  );
+
   return (
     <main style={{ padding: 40, maxWidth: 1320 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -735,7 +1094,7 @@ export default function AdminContentPage() {
             <h2 style={{ marginBottom: 6 }}>{subjectProfile.label}教材与知识点准备</h2>
             <div style={{ color: '#64748b' }}>{subjectProfile.prepCopy}</div>
           </div>
-          <button onClick={importTextbooks} style={primaryButtonStyle}>
+          <button onClick={importTextbooks} style={primaryButtonStyle} disabled={!hasAdminSession}>
             导入{subjectProfile.label}教材
           </button>
         </div>
@@ -755,7 +1114,7 @@ export default function AdminContentPage() {
               placeholder="知识点名称"
               style={inputStyle}
             />
-            <button onClick={createKnowledgePoint} style={{ ...secondaryButtonStyle, marginTop: 12 }}>
+            <button onClick={createKnowledgePoint} style={{ ...secondaryButtonStyle, marginTop: 12 }} disabled={!hasAdminSession}>
               创建知识点
             </button>
             <div style={{ marginTop: 12, color: '#64748b' }}>当前{subjectProfile.label}知识点数量：{knowledgePoints.length}</div>
@@ -763,9 +1122,183 @@ export default function AdminContentPage() {
 
           <article style={cardStyle}>
             <div style={cardTitleStyle}>发布题目总数</div>
-            <div style={metricValueStyle}>{questions.filter((item) => item.status === 'published').length}</div>
+            <div style={metricValueStyle}>{publishedQuestionCount}</div>
             <div style={{ color: '#64748b' }}>{subjectProfile.label}草稿与已发布题目共 {questions.length} 条</div>
           </article>
+        </div>
+      </section>
+
+      <section style={sectionStyle}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div>
+            <h2 style={{ marginBottom: 6 }}>已导入教材与可见内容</h2>
+            <div style={{ color: '#64748b', maxWidth: 820, lineHeight: 1.7 }}>
+              这里可以直接查看当前学科已导入的教材册次、来源路径和结构树。教材原文目前仍保存在源 PDF 中，系统会在下方导入工作台里继续把教材页切成候选记录、摘录、截图和草稿题。
+            </div>
+          </div>
+          <div style={statusPillStyle('#eff6ff', '#1d4ed8')}>
+            当前学科已导入 {sortedVolumes.length} 册
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gap: 24,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+            marginTop: 20,
+            alignItems: 'start',
+          }}
+        >
+          <article style={cardStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+              <div style={cardTitleStyle}>教材列表</div>
+              <div style={{ color: '#64748b' }}>共 {sortedVolumes.length} 册</div>
+            </div>
+
+            <div style={{ display: 'grid', gap: 12, marginTop: 16, maxHeight: 520, overflowY: 'auto', paddingRight: 4 }}>
+              {sortedVolumes.map((volume) => {
+                const selected = volume.id === selectedVolumeId;
+                return (
+                  <button
+                    key={volume.id}
+                    type="button"
+                    onClick={() => setSelectedVolumeId(volume.id)}
+                    style={{
+                      ...jobCardButtonStyle,
+                      borderColor: selected ? '#0f172a' : '#e2e8f0',
+                      background: selected ? '#f8fafc' : '#ffffff',
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                      <div style={{ fontWeight: 700, color: '#0f172a' }}>{volume.displayName}</div>
+                      <span style={statusPillStyle(volume.status === 'published' ? '#ecfdf5' : '#fef3c7', volume.status === 'published' ? '#166534' : '#92400e')}>
+                        {volume.status === 'published' ? '已发布' : '草稿'}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
+                      <span style={miniBadgeStyle}>{volume.publisherVersion}</span>
+                      <span style={miniBadgeStyle}>{formatGradeTerm(volume.grade, volume.term)}</span>
+                    </div>
+                    <div style={{ color: '#64748b', marginTop: 10, textAlign: 'left', wordBreak: 'break-all', lineHeight: 1.6 }}>
+                      {volume.sourcePath}
+                    </div>
+                  </button>
+                );
+              })}
+              {sortedVolumes.length === 0 ? <div style={{ color: '#64748b' }}>当前学科还没有导入教材。</div> : null}
+            </div>
+          </article>
+
+          <div style={{ display: 'grid', gap: 18 }}>
+            <article style={cardStyle}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                <div>
+                  <div style={cardTitleStyle}>教材详情与结构树</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>
+                    当前会展示册次元数据、来源路径、单元课时树，以及该课时已绑定的知识点。
+                  </div>
+                </div>
+                {selectedVolumeTree ? <div style={{ color: '#475569' }}>教材 ID：{selectedVolumeTree.volume.id}</div> : null}
+              </div>
+
+              {loadingVolumeTree ? <div style={{ marginTop: 18, color: '#64748b' }}>教材结构加载中...</div> : null}
+
+              {!loadingVolumeTree && selectedVolumeTree ? (
+                <div style={{ display: 'grid', gap: 18, marginTop: 18 }}>
+                  <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>教材名称</div>
+                      <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.6 }}>{selectedVolumeTree.volume.displayName}</div>
+                    </div>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>版本</div>
+                      <div style={{ fontWeight: 700, color: '#0f172a' }}>{selectedVolumeTree.volume.publisherVersion}</div>
+                    </div>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>年级册次</div>
+                      <div style={{ fontWeight: 700, color: '#0f172a' }}>{formatGradeTerm(selectedVolumeTree.volume.grade, selectedVolumeTree.volume.term)}</div>
+                    </div>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>状态</div>
+                      <div style={{ fontWeight: 700, color: '#0f172a' }}>{selectedVolumeTree.volume.status === 'published' ? '已发布' : '草稿'}</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={subtleTitleStyle}>原始教材路径</div>
+                    <div style={excerptStyle}>{selectedVolumeTree.volume.sourcePath}</div>
+                  </div>
+
+                  <div style={{ display: 'grid', gap: 12 }}>
+                    <div style={subtleTitleStyle}>单元与课时结构</div>
+                    {selectedVolumeTree.units.length > 0 ? (
+                      selectedVolumeTree.units.map((unit) => (
+                        <div key={unit.id} style={treeCardStyle}>
+                          <div style={{ fontWeight: 700, color: '#0f172a' }}>{unit.title}</div>
+                          <div style={{ display: 'grid', gap: 10, marginTop: 12 }}>
+                            {unit.lessons.map((lesson) => (
+                              <div key={lesson.id} style={lessonCardStyle}>
+                                <div style={{ fontWeight: 700, color: '#0f172a' }}>{lesson.title}</div>
+                                {lesson.knowledgePoints.length > 0 ? (
+                                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
+                                    {lesson.knowledgePoints.map((knowledgePoint) => (
+                                      <span key={knowledgePoint.id} style={miniBadgeStyle}>
+                                        {knowledgePoint.name}
+                                      </span>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <div style={{ color: '#64748b', marginTop: 10 }}>当前课时还没有绑定知识点。</div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ color: '#64748b' }}>当前教材还没有可展示的单元结构。</div>
+                    )}
+                  </div>
+                </div>
+              ) : null}
+
+              {!loadingVolumeTree && !selectedVolumeTree ? <div style={{ marginTop: 18, color: '#64748b' }}>从左侧选择一本教材后，这里会展示详情和结构树。</div> : null}
+            </article>
+
+            <article style={{ ...cardStyle, background: '#f8fafc' }}>
+              <div style={cardTitleStyle}>导入后能产出什么</div>
+              <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', marginTop: 16 }}>
+                <div style={detailCardStyle}>
+                  <div style={subtleTitleStyle}>教材册次</div>
+                  <div style={{ fontSize: 28, fontWeight: 800 }}>{sortedVolumes.length}</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>可直接查看来源路径和册次结构</div>
+                </div>
+                <div style={detailCardStyle}>
+                  <div style={subtleTitleStyle}>候选记录</div>
+                  <div style={{ fontSize: 28, fontWeight: 800 }}>{currentImportCandidateCount}</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>
+                    {adminWarning ? '重新登录管理员后可查看当前学科导入任务统计' : '可查看页截图、摘录、题干和 AI 建议'}
+                  </div>
+                </div>
+                <div style={detailCardStyle}>
+                  <div style={subtleTitleStyle}>草稿题</div>
+                  <div style={{ fontSize: 28, fontWeight: 800 }}>{draftQuestionCount}</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>待补答案、解析和作答协议后发布</div>
+                </div>
+                <div style={detailCardStyle}>
+                  <div style={subtleTitleStyle}>已发布题</div>
+                  <div style={{ fontSize: 28, fontWeight: 800 }}>{publishedQuestionCount}</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>可直接进入学生端评估和今日任务</div>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gap: 10, marginTop: 18, color: '#475569', lineHeight: 1.7 }}>
+                <div>1. 教材导入后，系统先沉淀册次、来源路径和默认结构，方便后续按版本和年级管理。</div>
+                <div>2. 在下方导入工作台里，教材 PDF 会继续被切成候选记录，展示原页截图、页内摘录、候选题干和 AI 建议。</div>
+                <div>3. 候选记录审核通过后会生成草稿题，继续完善后发布，就能作为学生端评估题和今日任务题源。</div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -782,7 +1315,15 @@ export default function AdminContentPage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'minmax(0, 0.9fr) minmax(0, 1.1fr)', marginTop: 20 }}>
+        <div
+          style={{
+            display: 'grid',
+            gap: 24,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+            marginTop: 20,
+            alignItems: 'start',
+          }}
+        >
           <div style={{ display: 'grid', gap: 18 }}>
             <article style={cardStyle}>
               <div style={cardTitleStyle}>创建导入任务</div>
@@ -800,7 +1341,7 @@ export default function AdminContentPage() {
               </label>
 
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 16 }}>
-                <button onClick={createImportJob} style={primaryButtonStyle} disabled={creatingImportJob}>
+                <button onClick={createImportJob} style={primaryButtonStyle} disabled={!hasAdminSession || creatingImportJob}>
                   {creatingImportJob ? '导入中...' : '创建教材导入任务'}
                 </button>
               </div>
@@ -970,21 +1511,21 @@ export default function AdminContentPage() {
                         <button
                           onClick={() => structureImportRecordWithAi(record.id)}
                           style={secondaryButtonStyle}
-                          disabled={structuringRecordId === record.id}
+                          disabled={!hasAdminSession || structuringRecordId === record.id}
                         >
                           {structuringRecordId === record.id ? 'AI 解析中...' : 'AI 重整候选'}
                         </button>
                         <button
                           onClick={() => reviewImportRecord(record.id, 'approved')}
                           style={primaryButtonStyle}
-                          disabled={reviewingRecordId === record.id}
+                          disabled={!hasAdminSession || reviewingRecordId === record.id}
                         >
                           {reviewingRecordId === record.id ? '处理中...' : '审核通过并建草稿'}
                         </button>
                         <button
                           onClick={() => reviewImportRecord(record.id, 'rejected')}
                           style={ghostDangerButtonStyle}
-                          disabled={reviewingRecordId === record.id}
+                          disabled={!hasAdminSession || reviewingRecordId === record.id}
                         >
                           驳回候选
                         </button>
@@ -1005,7 +1546,320 @@ export default function AdminContentPage() {
       </section>
 
       <section style={sectionStyle}>
-        <div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'minmax(0, 1.2fr) minmax(360px, 0.8fr)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div>
+            <h2 style={{ marginBottom: 6 }}>知识装配工作台</h2>
+            <div style={{ color: '#64748b', maxWidth: 860, lineHeight: 1.7 }}>
+              这里把教材结构真正组装成学生可用的学习地图。你可以按课时挂接知识点、把已有知识点移动到正确课时、把题目绑定到知识点，并在当前教材还没有可练题时一键补齐样例题。
+            </div>
+          </div>
+          <div style={statusPillStyle('#eef2ff', '#4338ca')}>
+            {selectedVolumeTree ? `当前装配：${selectedVolumeTree.volume.displayName}` : '先从上方选择教材'}
+          </div>
+        </div>
+
+        {selectedVolumeTree ? (
+          <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', marginTop: 20 }}>
+            <div style={detailCardStyle}>
+              <div style={subtleTitleStyle}>单元数</div>
+              <div style={{ fontSize: 28, fontWeight: 800 }}>{selectedVolumeTree.units.length}</div>
+              <div style={{ color: '#64748b', marginTop: 6 }}>教材目录骨架</div>
+            </div>
+            <div style={detailCardStyle}>
+              <div style={subtleTitleStyle}>课时数</div>
+              <div style={{ fontSize: 28, fontWeight: 800 }}>{volumeLessons.length}</div>
+              <div style={{ color: '#64748b', marginTop: 6 }}>当前可装配的课时节点</div>
+            </div>
+            <div style={detailCardStyle}>
+              <div style={subtleTitleStyle}>知识点数</div>
+              <div style={{ fontSize: 28, fontWeight: 800 }}>{volumeKnowledgePointIds.size}</div>
+              <div style={{ color: '#64748b', marginTop: 6 }}>已挂到本教材课时的知识点</div>
+            </div>
+            <div style={detailCardStyle}>
+              <div style={subtleTitleStyle}>关联题数</div>
+              <div style={{ fontSize: 28, fontWeight: 800 }}>{currentVolumeQuestionCount}</div>
+              <div style={{ color: '#64748b', marginTop: 6 }}>学生端会从这里生成评估和任务</div>
+            </div>
+          </div>
+        ) : null}
+
+        <div
+          style={{
+            display: 'grid',
+            gap: 24,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            marginTop: 20,
+            alignItems: 'start',
+          }}
+        >
+          <article style={cardStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+              <div>
+                <div style={cardTitleStyle}>课时列表</div>
+                <div style={{ color: '#64748b', marginTop: 6 }}>先选课时，再往下装配知识点和题目。</div>
+              </div>
+              {selectedVolumeTree ? <div style={{ color: '#64748b' }}>共 {volumeLessons.length} 个课时</div> : null}
+            </div>
+
+            {selectedVolumeTree ? (
+              <div style={{ display: 'grid', gap: 12, marginTop: 16, maxHeight: 560, overflowY: 'auto', paddingRight: 4 }}>
+                {volumeLessons.map((lesson) => {
+                  const selected = lesson.id === selectedLessonId;
+                  return (
+                    <button
+                      key={lesson.id}
+                      type="button"
+                      onClick={() => setSelectedLessonId(lesson.id)}
+                      style={{
+                        ...jobCardButtonStyle,
+                        borderColor: selected ? '#0f172a' : '#e2e8f0',
+                        background: selected ? '#f8fafc' : '#ffffff',
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                        <div style={{ fontWeight: 700, color: '#0f172a', textAlign: 'left' }}>{lesson.title}</div>
+                        <span style={miniBadgeStyle}>{lesson.unitTitle}</span>
+                      </div>
+                      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
+                        <span style={miniBadgeStyle}>知识点 {lesson.knowledgePoints.length}</span>
+                        <span style={miniBadgeStyle}>题目 {lessonQuestionCountMap.get(lesson.id) ?? 0}</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div style={{ marginTop: 18, color: '#64748b' }}>先在上方教材列表中选择一本教材，这里才会出现对应课时。</div>
+            )}
+          </article>
+
+          <div style={{ display: 'grid', gap: 18 }}>
+            <article style={cardStyle}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                <div>
+                  <div style={cardTitleStyle}>课时与知识点装配</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>把知识点挂到具体课时，学生端就能明确看到“这个知识点在课本哪里”。</div>
+                </div>
+                {selectedLesson ? <div style={{ color: '#475569' }}>当前课时：{selectedLesson.title}</div> : null}
+              </div>
+
+              {selectedLesson ? (
+                <div style={{ display: 'grid', gap: 18, marginTop: 18 }}>
+                  <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>所属单元</div>
+                      <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.6 }}>{selectedLesson.unitTitle}</div>
+                    </div>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>知识点数</div>
+                      <div style={{ fontSize: 28, fontWeight: 800 }}>{selectedLesson.knowledgePoints.length}</div>
+                      <div style={{ color: '#64748b', marginTop: 6 }}>课时内已挂接节点</div>
+                    </div>
+                    <div style={detailCardStyle}>
+                      <div style={subtleTitleStyle}>题目数</div>
+                      <div style={{ fontSize: 28, fontWeight: 800 }}>{selectedLessonQuestionCount}</div>
+                      <div style={{ color: '#64748b', marginTop: 6 }}>课时相关题库资源</div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+                    <label style={labelStyle}>
+                      <span>新增课时知识点</span>
+                      <input
+                        value={lessonKnowledgePointDraft}
+                        onChange={(event) => setLessonKnowledgePointDraft(event.target.value)}
+                        placeholder="例如：认识整十数 / 一元一次方程 / 阅读策略"
+                        style={inputStyle}
+                      />
+                      <button onClick={createLessonKnowledgePoint} style={{ ...secondaryButtonStyle, marginTop: 12 }} disabled={!hasAdminSession}>
+                        添加到当前课时
+                      </button>
+                    </label>
+
+                    <label style={labelStyle}>
+                      <span>挂接已有知识点</span>
+                      <select
+                        value={existingKnowledgePointId}
+                        onChange={(event) => setExistingKnowledgePointId(event.target.value)}
+                        style={inputStyle}
+                      >
+                        <option value="">选择已有知识点</option>
+                        {attachableKnowledgePoints.map((knowledgePoint) => (
+                          <option key={knowledgePoint.id} value={knowledgePoint.id}>
+                            {knowledgePoint.name}
+                          </option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={() => moveKnowledgePointToLesson(existingKnowledgePointId)}
+                        style={{ ...secondaryButtonStyle, marginTop: 12 }}
+                        disabled={!hasAdminSession || !existingKnowledgePointId || movingKnowledgePointId !== null}
+                      >
+                        {movingKnowledgePointId ? '挂接中...' : '移动到当前课时'}
+                      </button>
+                    </label>
+                  </div>
+
+                  <div style={{ display: 'grid', gap: 12 }}>
+                    <div style={subtleTitleStyle}>当前课时知识点</div>
+                    {selectedLesson.knowledgePoints.length > 0 ? (
+                      selectedLesson.knowledgePoints.map((knowledgePoint) => {
+                        const selected = knowledgePoint.id === selectedKnowledgePointId;
+                        const knowledgePointQuestionCount = questions.filter((question) =>
+                          question.knowledgePointIds.includes(knowledgePoint.id),
+                        ).length;
+
+                        return (
+                          <button
+                            key={knowledgePoint.id}
+                            type="button"
+                            onClick={() => setSelectedKnowledgePointId(knowledgePoint.id)}
+                            style={{
+                              ...jobCardButtonStyle,
+                              borderColor: selected ? '#0f172a' : '#e2e8f0',
+                              background: selected ? '#f8fafc' : '#ffffff',
+                            }}
+                          >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                              <div style={{ textAlign: 'left' }}>
+                                <div style={{ fontWeight: 700, color: '#0f172a' }}>{knowledgePoint.name}</div>
+                                <div style={{ color: '#64748b', marginTop: 6 }}>
+                                  难度 {knowledgePoint.difficultyLevel} · {knowledgePoint.status === 'published' ? '已发布' : '草稿'}
+                                </div>
+                              </div>
+                              <span style={miniBadgeStyle}>题目 {knowledgePointQuestionCount}</span>
+                            </div>
+                          </button>
+                        );
+                      })
+                    ) : (
+                      <div style={{ color: '#64748b', lineHeight: 1.7 }}>
+                        这个课时还没有知识点。先在上面新增一个，或者把现有知识点移动过来。
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div style={{ marginTop: 18, color: '#64748b' }}>先在左侧选择一个课时，这里才会出现知识点装配入口。</div>
+              )}
+            </article>
+
+            <article style={cardStyle}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                <div>
+                  <div style={cardTitleStyle}>题目绑定与可用性</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>题目一旦绑定到知识点，学生端就能按教材位置、知识点和掌握状态聚合查看。</div>
+                </div>
+                <button
+                  onClick={scaffoldCurrentVolumeQuestions}
+                  style={secondaryButtonStyle}
+                  disabled={!hasAdminSession || !selectedVolumeId || scaffoldingVolumeId !== null}
+                >
+                  {scaffoldingVolumeId ? '补齐中...' : '补齐当前教材样例题'}
+                </button>
+              </div>
+
+              <div style={{ display: 'grid', gap: 18, marginTop: 18 }}>
+                <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
+                  <div style={detailCardStyle}>
+                    <div style={subtleTitleStyle}>当前知识点</div>
+                    <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.6 }}>
+                      {activeLessonKnowledgePoint ? activeLessonKnowledgePoint.name : '未选择'}
+                    </div>
+                  </div>
+                  <div style={detailCardStyle}>
+                    <div style={subtleTitleStyle}>已绑定题数</div>
+                    <div style={{ fontSize: 28, fontWeight: 800 }}>
+                      {activeLessonKnowledgePoint ? selectedKnowledgePointQuestions.length : 0}
+                    </div>
+                    <div style={{ color: '#64748b', marginTop: 6 }}>直接出现在学生知识体系页</div>
+                  </div>
+                  <div style={detailCardStyle}>
+                    <div style={subtleTitleStyle}>未绑定题</div>
+                    <div style={{ fontSize: 28, fontWeight: 800 }}>{unboundQuestions.length}</div>
+                    <div style={{ color: '#64748b', marginTop: 6 }}>还没有挂到任何知识点</div>
+                  </div>
+                </div>
+
+                {activeLessonKnowledgePoint ? (
+                  <div style={{ display: 'grid', gap: 12 }}>
+                    <div style={subtleTitleStyle}>当前知识点题目</div>
+                    {selectedKnowledgePointQuestions.length > 0 ? (
+                      selectedKnowledgePointQuestions.slice(-6).reverse().map((question) => (
+                        <div key={question.id} style={treeCardStyle}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                            <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.6 }}>{question.stem}</div>
+                            <span
+                              style={statusPillStyle(
+                                question.status === 'published' ? '#ecfdf5' : '#fef3c7',
+                                question.status === 'published' ? '#166534' : '#92400e',
+                              )}
+                            >
+                              {question.status === 'published' ? '已发布' : '草稿'}
+                            </span>
+                          </div>
+                          <div style={{ color: '#64748b', marginTop: 10 }}>
+                            难度 {question.difficultyLevel} · 题目 ID：{question.id}
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ color: '#64748b', lineHeight: 1.7 }}>
+                        这个知识点还没有题目。可以先点击上方“补齐当前教材样例题”，或在下方结构化编辑器里直接创建并发布题目。
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div style={{ color: '#64748b', lineHeight: 1.7 }}>
+                    先在上一张卡里选中一个课时知识点，这里才会展示它绑定的题目和挂接入口。
+                  </div>
+                )}
+
+                <div style={{ display: 'grid', gap: 12 }}>
+                  <div style={subtleTitleStyle}>把未绑定题挂到当前知识点</div>
+                  {unboundQuestions.length > 0 ? (
+                    unboundQuestions.slice(-6).reverse().map((question) => (
+                      <div key={question.id} style={lessonCardStyle}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                          <div>
+                            <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.6 }}>{question.stem}</div>
+                            <div style={{ color: '#64748b', marginTop: 8 }}>
+                              难度 {question.difficultyLevel} · {question.status === 'published' ? '已发布' : '草稿'}
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => activeLessonKnowledgePoint && bindQuestionToKnowledgePoint(question.id, activeLessonKnowledgePoint.id)}
+                            style={secondaryButtonStyle}
+                            disabled={!hasAdminSession || !activeLessonKnowledgePoint || bindingQuestionId !== null}
+                          >
+                            {bindingQuestionId === question.id ? '绑定中...' : '绑定到当前知识点'}
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div style={{ color: '#64748b' }}>当前学科没有未绑定题，知识点和题目的关系已经比较完整了。</div>
+                  )}
+                </div>
+
+                <div style={{ color: '#475569', lineHeight: 1.7 }}>
+                  下方“题目基础信息”和“题面块编辑器”会直接沿用这里当前选中的知识点，所以你可以先在这里完成装配，再继续补题面、答案协议和发布。
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section style={sectionStyle}>
+        <div
+          style={{
+            display: 'grid',
+            gap: 24,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+            alignItems: 'start',
+          }}
+        >
           <div style={{ display: 'grid', gap: 18 }}>
             <article style={cardStyle}>
               <div style={cardTitleStyle}>题目基础信息</div>
@@ -1276,7 +2130,7 @@ export default function AdminContentPage() {
             </article>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <button onClick={createStructuredQuestion} style={primaryButtonStyle} disabled={savingQuestion}>
+              <button onClick={createStructuredQuestion} style={primaryButtonStyle} disabled={!hasAdminSession || savingQuestion}>
                 {savingQuestion ? '发布中...' : '创建并发布结构化题目'}
               </button>
             </div>
@@ -1328,6 +2182,21 @@ export default function AdminContentPage() {
       </section>
 
       {message ? <div style={{ marginTop: 20, color: '#0f766e' }}>{message}</div> : null}
+      {adminWarning ? (
+        <div
+          style={{
+            marginTop: 20,
+            padding: '12px 14px',
+            borderRadius: 14,
+            background: '#fff7ed',
+            border: '1px solid #fed7aa',
+            color: '#9a3412',
+            lineHeight: 1.7,
+          }}
+        >
+          {adminWarning} <Link href="/parent/login">去重新登录</Link>
+        </div>
+      ) : null}
       {error ? <div style={{ marginTop: 20, color: '#b91c1c' }}>{error}</div> : null}
     </main>
   );
@@ -1561,6 +2430,27 @@ const importRecordCardStyle: React.CSSProperties = {
   border: '1px solid #e2e8f0',
 };
 
+const detailCardStyle: React.CSSProperties = {
+  padding: 14,
+  borderRadius: 16,
+  background: '#ffffff',
+  border: '1px solid #e2e8f0',
+};
+
+const treeCardStyle: React.CSSProperties = {
+  padding: 14,
+  borderRadius: 16,
+  background: '#ffffff',
+  border: '1px solid #e2e8f0',
+};
+
+const lessonCardStyle: React.CSSProperties = {
+  padding: 12,
+  borderRadius: 14,
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+};
+
 const cardTitleStyle: React.CSSProperties = {
   fontSize: 18,
   fontWeight: 700,
@@ -1774,4 +2664,23 @@ function getQualityTone(level: QuestionImportRecord['qualityLevel']) {
     default:
       return { background: '#fef2f2', color: '#b91c1c' };
   }
+}
+
+function formatGradeTerm(grade: number, term: Volume['term']) {
+  return `${grade} 年级${term === 'first' ? '上册' : '下册'}`;
+}
+
+function sortVolumes(volumes: Volume[]) {
+  return [...volumes].sort((left, right) => {
+    if (left.grade !== right.grade) {
+      return left.grade - right.grade;
+    }
+    if (left.term !== right.term) {
+      return left.term === 'first' ? -1 : 1;
+    }
+    if (left.publisherVersion !== right.publisherVersion) {
+      return left.publisherVersion.localeCompare(right.publisherVersion, 'zh-CN');
+    }
+    return left.displayName.localeCompare(right.displayName, 'zh-CN');
+  });
 }

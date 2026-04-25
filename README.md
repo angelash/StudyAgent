@@ -38,12 +38,13 @@ packages/ui        悬浮助教 UI 组件
 ## 开发说明
 
 1. 当前首轮 API 默认使用内存存储跑主链路，便于本地直接体验完整流程
-2. Prisma schema、迁移和 seed 脚本已预留，托管 PostgreSQL 配置好后可逐步切换到真实持久化
-3. AI 能力只走真实模型，必须配置 `OPENAI_API_KEY`
-4. 悬浮助教对话会先调用本机 `codex --search` 做实时 websearch，再把检索结果交给大模型生成回答
-5. AI 或 codex 检索失败时接口会直接返回明确错误，不再返回 mock / fake feedback
-6. 使用助教前请确认本机 `codex` CLI 可执行且已完成可用认证或模型配置
-7. API 与 Web 现在都会自动读取仓库根目录 `.env`
+2. API 启动时会自动注入一套内置示例教材、知识点和已发布题目，覆盖语文、数学、英语三个学科，方便本地直接体验评估与任务流程
+3. Prisma schema、迁移和 seed 脚本已预留，托管 PostgreSQL 配置好后可逐步切换到真实持久化
+4. AI 能力只走真实模型，必须配置 `OPENAI_API_KEY`
+5. 悬浮助教对话会先调用本机 `codex --search` 做实时 websearch，再把检索结果交给大模型生成回答
+6. AI 或 codex 检索失败时接口会直接返回明确错误，不再返回 mock / fake feedback
+7. 使用助教前请确认本机 `codex` CLI 可执行且已完成可用认证或模型配置
+8. API 与 Web 现在都会自动读取仓库根目录 `.env`
 
 ## 测试
 

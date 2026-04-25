@@ -418,6 +418,20 @@ export default function ParentDashboardPage() {
                       {regeneratingPlanStudentId === child.id ? '重建中…' : '重建本周计划'}
                     </button>
                     <a
+                      href={`/student/knowledge?studentId=${child.id}&subject=${selectedSubject}`}
+                      style={{
+                        display: 'inline-block',
+                        padding: '10px 14px',
+                        borderRadius: 12,
+                        background: '#ffffff',
+                        border: '1px solid #cbd5e1',
+                        color: '#0f172a',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      查看知识体系
+                    </a>
+                    <a
                       href={`/student/mission?studentId=${child.id}&subject=${selectedSubject}`}
                       style={{
                         display: 'inline-block',

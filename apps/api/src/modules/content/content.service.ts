@@ -11,6 +11,7 @@ import {
   TextbookUnit,
 } from '../../infrastructure/in-memory-store.service';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
+import { getCurriculumScaffold } from './curriculum-scaffold';
 
 const gradeMap: Record<string, number> = {
   一: 1,
@@ -134,10 +135,8 @@ export class ContentService {
   }
 
   getVolumeTree(volumeId: string) {
-    const volume = this.store.textbookVolumes.find((item) => item.id === volumeId);
-    if (!volume) {
-      throw new NotFoundException('Volume not found');
-    }
+    const volume = this.requireVolume(volumeId);
+    this.ensureVolumeCurriculumScaffold(volume);
 
     const units = this.store.textbookUnits
       .filter((item) => item.volumeId === volumeId)
@@ -157,6 +156,15 @@ export class ContentService {
       volume,
       units,
     };
+  }
+
+  getTextbookVolume(volumeId: string) {
+    return this.requireVolume(volumeId);
+  }
+
+  ensureVolumeSampleQuestions(volumeId: string) {
+    const volume = this.requireVolume(volumeId);
+    this.ensureVolumeQuestionScaffold(volume);
   }
 
   listKnowledgePoints(subject: Subject = 'math') {
@@ -188,6 +196,41 @@ export class ContentService {
       status: command.status ?? 'draft',
     };
     this.store.knowledgePoints.push(knowledgePoint);
+    return knowledgePoint;
+  }
+
+  updateKnowledgePoint(
+    requestUser: InMemoryUserAccount,
+    knowledgePointId: string,
+    command: {
+      name?: string;
+      lessonId?: string | null;
+      difficultyLevel?: number;
+      status?: 'draft' | 'published';
+    },
+  ) {
+    this.assertAdmin(requestUser);
+
+    const knowledgePoint = this.requireKnowledgePoint(knowledgePointId);
+    if (command.lessonId !== undefined) {
+      if (command.lessonId) {
+        this.requireLesson(command.lessonId);
+      }
+      knowledgePoint.lessonId = command.lessonId;
+    }
+
+    if (command.name !== undefined) {
+      knowledgePoint.name = command.name.trim() || knowledgePoint.name;
+    }
+
+    if (command.difficultyLevel !== undefined) {
+      knowledgePoint.difficultyLevel = command.difficultyLevel;
+    }
+
+    if (command.status !== undefined) {
+      knowledgePoint.status = command.status;
+    }
+
     return knowledgePoint;
   }
 
@@ -236,6 +279,39 @@ export class ContentService {
     return question;
   }
 
+  replaceQuestionKnowledge(requestUser: InMemoryUserAccount, questionId: string, knowledgePointIds: string[]) {
+    this.assertAdmin(requestUser);
+
+    const question = this.requireQuestion(questionId);
+    for (const knowledgePointId of knowledgePointIds) {
+      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId);
+      if (!exists) {
+        throw new BadRequestException(`Knowledge point not found: ${knowledgePointId}`);
+      }
+    }
+
+    question.knowledgePointIds = Array.from(new Set(knowledgePointIds));
+    return question;
+  }
+
+  scaffoldVolumeQuestions(requestUser: InMemoryUserAccount, volumeId: string) {
+    this.assertAdmin(requestUser);
+    this.ensureVolumeSampleQuestions(volumeId);
+    const volume = this.requireVolume(volumeId);
+    const volumeTree = this.getVolumeTree(volumeId);
+    const knowledgePointIds = new Set(
+      volumeTree.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.knowledgePoints.map((knowledgePoint) => knowledgePoint.id))),
+    );
+    const questionCount = this.store.questions.filter(
+      (item) => item.subject === volume.subject && item.knowledgePointIds.some((knowledgePointId) => knowledgePointIds.has(knowledgePointId)),
+    ).length;
+
+    return {
+      volumeId,
+      questionCount,
+    };
+  }
+
   publishQuestion(requestUser: InMemoryUserAccount, questionId: string) {
     this.assertAdmin(requestUser);
     const question = this.requireQuestion(questionId);
@@ -279,10 +355,296 @@ export class ContentService {
     return question;
   }
 
+  private requireKnowledgePoint(knowledgePointId: string) {
+    const knowledgePoint = this.store.knowledgePoints.find((item) => item.id === knowledgePointId);
+    if (!knowledgePoint) {
+      throw new NotFoundException('Knowledge point not found');
+    }
+    return knowledgePoint;
+  }
+
+  private requireVolume(volumeId: string) {
+    const volume = this.store.textbookVolumes.find((item) => item.id === volumeId);
+    if (!volume) {
+      throw new NotFoundException('Volume not found');
+    }
+    return volume;
+  }
+
+  private requireLesson(lessonId: string) {
+    const lesson = this.store.textbookLessons.find((item) => item.id === lessonId);
+    if (!lesson) {
+      throw new NotFoundException('Lesson not found');
+    }
+    return lesson;
+  }
+
   private assertAdmin(user: InMemoryUserAccount) {
     if (user.role !== 'admin') {
       throw new ForbiddenException('Admin role is required');
     }
+  }
+
+  private ensureVolumeCurriculumScaffold(volume: TextbookVolume) {
+    const volumeUnits = this.store.textbookUnits.filter((item) => item.volumeId === volume.id);
+    const volumeUnitIds = new Set(volumeUnits.map((item) => item.id));
+    const volumeLessons = this.store.textbookLessons.filter((item) => volumeUnitIds.has(item.unitId));
+    const volumeLessonIds = new Set(volumeLessons.map((item) => item.id));
+    const hasKnowledgePoints = this.store.knowledgePoints.some((item) => item.lessonId && volumeLessonIds.has(item.lessonId));
+    const hasNonPlaceholderStructure =
+      volumeUnits.some((item) => item.title !== '默认单元') || volumeLessons.some((item) => item.title !== volume.displayName);
+
+    if (hasKnowledgePoints || hasNonPlaceholderStructure) {
+      return;
+    }
+
+    if (volumeUnitIds.size > 0) {
+      this.store.textbookUnits = this.store.textbookUnits.filter((item) => item.volumeId !== volume.id);
+      this.store.textbookLessons = this.store.textbookLessons.filter((item) => !volumeLessonIds.has(item.id));
+    }
+
+    const scaffold = getCurriculumScaffold(volume.subject, volume.grade, volume.term);
+    scaffold.units.forEach((unit, unitIndex) => {
+      const unitId = this.store.nextId('unit');
+      this.store.textbookUnits.push({
+        id: unitId,
+        volumeId: volume.id,
+        title: unit.title,
+        sortOrder: unitIndex + 1,
+      });
+
+      unit.lessons.forEach((lesson, lessonIndex) => {
+        const lessonId = this.store.nextId('lesson');
+        this.store.textbookLessons.push({
+          id: lessonId,
+          unitId,
+          title: lesson.title,
+          sortOrder: lessonIndex + 1,
+        });
+
+        lesson.knowledgePoints.forEach((knowledgePointName, knowledgePointIndex) => {
+          this.store.knowledgePoints.push({
+            id: this.store.nextId('kp'),
+            subject: volume.subject,
+            name: knowledgePointName,
+            parentId: null,
+            gradeBand: `${volume.grade}`,
+            difficultyLevel: Math.min((knowledgePointIndex % 3) + 1, 5),
+            lessonId,
+            status: 'published',
+          });
+        });
+      });
+    });
+  }
+
+  private ensureVolumeQuestionScaffold(volume: TextbookVolume) {
+    const unitIds = new Set(this.store.textbookUnits.filter((item) => item.volumeId === volume.id).map((item) => item.id));
+    const lessonIds = new Set(this.store.textbookLessons.filter((item) => unitIds.has(item.unitId)).map((item) => item.id));
+    const knowledgePoints = this.store.knowledgePoints.filter((item) => item.lessonId && lessonIds.has(item.lessonId));
+    const knowledgePointIds = new Set(knowledgePoints.map((item) => item.id));
+
+    if (knowledgePoints.length === 0) {
+      return;
+    }
+
+    const hasLinkedQuestions = this.store.questions.some((item) => item.knowledgePointIds.some((knowledgePointId) => knowledgePointIds.has(knowledgePointId)));
+    if (hasLinkedQuestions) {
+      return;
+    }
+
+    knowledgePoints.slice(0, 4).forEach((knowledgePoint) => {
+      const fixture = this.buildScaffoldQuestionFixture(volume.subject, knowledgePoint.name);
+      const question: Question = {
+        id: this.store.nextId('question'),
+        subject: volume.subject,
+        type: 'objective',
+        stem: fixture.stem,
+        answer: fixture.answer,
+        analysis: fixture.analysis,
+        difficultyLevel: fixture.difficultyLevel,
+        knowledgePointIds: [knowledgePoint.id],
+        status: 'published',
+      };
+
+      this.store.questions.push(question);
+      this.questionWorkspaceService.initializeQuestionWorkspace(question, '系统样例题');
+      const systemAdmin: InMemoryUserAccount = {
+        id: 'system_admin',
+        principal: 'system',
+        passwordHash: '',
+        displayName: '系统样例题',
+        role: 'admin',
+        status: 'active',
+      };
+      this.questionWorkspaceService.upsertSource(
+        systemAdmin,
+        question.id,
+        {
+          sourceType: 'internal_authoring',
+          sourceName: `${volume.displayName} 自动样例题`,
+          sourcePathOrUrl: `${volume.sourcePath}#scaffold`,
+          licenseClass: 'A_INTERNAL',
+          licenseName: 'auto-scaffold',
+          importJobId: null,
+          reviewStatus: 'approved',
+          notes: '系统根据教材脚手架自动生成的示例题，用于让学生端和知识体系页可直接体验。',
+        },
+      );
+    });
+  }
+
+  private buildScaffoldQuestionFixture(subject: Subject, knowledgePointName: string) {
+    if (subject === 'chinese') {
+      if (knowledgePointName.includes('古诗') || knowledgePointName.includes('文言')) {
+        return {
+          stem: '“春眠不觉晓”的下一句是什么？',
+          answer: '处处闻啼鸟',
+          analysis: '根据古诗《春晓》补出下一句。',
+          difficultyLevel: 1,
+        };
+      }
+
+      if (knowledgePointName.includes('阅读') || knowledgePointName.includes('概括')) {
+        return {
+          stem: '读完一段短文后，先找哪一类信息最能帮助你概括主要内容？',
+          answer: '关键词句',
+          analysis: '概括时先抓关键词句和中心句。',
+          difficultyLevel: 2,
+        };
+      }
+
+      if (knowledgePointName.includes('词') || knowledgePointName.includes('字')) {
+        return {
+          stem: '在句子“他（）地完成了作业”中填入最合适的词语。',
+          answer: '认真',
+          analysis: '结合语境填写能描述状态的词语。',
+          difficultyLevel: 1,
+        };
+      }
+
+      return {
+        stem: '写句子时，怎样才能让表达更完整、更清楚？',
+        answer: '把时间、人物、事情说清楚',
+        analysis: '完整表达通常要把核心要素交代清楚。',
+        difficultyLevel: 2,
+      };
+    }
+
+    if (subject === 'english') {
+      if (knowledgePointName.includes('词汇') || knowledgePointName.includes('拼写')) {
+        return {
+          stem: 'Spell the word for “老师”: ____.',
+          answer: 'teacher',
+          analysis: '根据中文意思写出对应英文单词。',
+          difficultyLevel: 1,
+        };
+      }
+
+      if (knowledgePointName.includes('阅读')) {
+        return {
+          stem: 'Read and answer: Who is in the classroom?',
+          answer: 'A teacher',
+          analysis: '先定位人物信息，再用简短英文作答。',
+          difficultyLevel: 2,
+        };
+      }
+
+      if (knowledgePointName.includes('对话') || knowledgePointName.includes('口语')) {
+        return {
+          stem: 'When someone says “How are you?”, what can you answer?',
+          answer: 'I am fine',
+          analysis: '这是基础日常问候句型。',
+          difficultyLevel: 1,
+        };
+      }
+
+      return {
+        stem: 'Complete the sentence: This is my ____.',
+        answer: 'book',
+        analysis: '根据基础句型补全单词。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('除法')) {
+      return {
+        stem: '24 ÷ 6 = ?',
+        answer: '4',
+        analysis: '根据表内除法直接计算。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('乘法')) {
+      return {
+        stem: '6 × 7 = ?',
+        answer: '42',
+        analysis: '根据乘法口诀直接作答。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('长度') || knowledgePointName.includes('测量')) {
+      return {
+        stem: '1 米 = （ ）厘米',
+        answer: '100',
+        analysis: '长度单位换算中，1 米等于 100 厘米。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('时间')) {
+      return {
+        stem: '1 小时 = （ ）分钟',
+        answer: '60',
+        analysis: '时间单位换算中，1 小时等于 60 分钟。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('分数') || knowledgePointName.includes('百分数')) {
+      return {
+        stem: '把一个圆平均分成 4 份，其中 1 份是它的几分之几？',
+        answer: '1/4',
+        analysis: '平均分成几份，其中一份就是几分之一。',
+        difficultyLevel: 2,
+      };
+    }
+
+    if (knowledgePointName.includes('图形') || knowledgePointName.includes('几何') || knowledgePointName.includes('圆')) {
+      return {
+        stem: '正方形有几条边？',
+        answer: '4',
+        analysis: '正方形是四边形，有 4 条边。',
+        difficultyLevel: 1,
+      };
+    }
+
+    if (knowledgePointName.includes('统计')) {
+      return {
+        stem: '统计图最适合用来做什么？',
+        answer: '表示数量变化',
+        analysis: '统计图主要用于直观展示数据和数量变化。',
+        difficultyLevel: 2,
+      };
+    }
+
+    if (knowledgePointName.includes('数的认识') || knowledgePointName.includes('数位')) {
+      return {
+        stem: '最大的两位数是多少？',
+        answer: '99',
+        analysis: '两位数中最大的是 99。',
+        difficultyLevel: 1,
+      };
+    }
+
+    return {
+      stem: '2 + 3 = ?',
+      answer: '5',
+      analysis: '根据基础加法直接作答。',
+      difficultyLevel: 1,
+    };
   }
 
   private parseTextbookFileName(fileName: string): { grade: number; term: 'first' | 'second' } | null {

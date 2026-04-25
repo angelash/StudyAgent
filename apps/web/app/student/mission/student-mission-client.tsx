@@ -20,6 +20,11 @@ type MissionView = DailyMission & {
   studentSummary: string;
 };
 
+type QuestionSummary = {
+  id: string;
+  status: 'draft' | 'published';
+};
+
 const subjectMeta: Record<Subject, { label: string; assistantTitle: string; assistantSubtitle: string }> = {
   chinese: {
     label: '语文',
@@ -63,10 +68,33 @@ export function StudentMissionClient() {
   const [error, setError] = React.useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [hint, setHint] = React.useState<string | null>(null);
+  const [publishedQuestionCount, setPublishedQuestionCount] = React.useState(0);
+  const [questionAvailabilityStatus, setQuestionAvailabilityStatus] = React.useState<'loading' | 'ready' | 'error'>(
+    'loading',
+  );
+
+  function getMissingPublishedQuestionMessage(currentSubject: Subject) {
+    return `当前${subjectMeta[currentSubject].label}还没有已发布题目，请先在管理员内容台导入教材并发布题目，再开始入门评估或生成今日任务。`;
+  }
 
   function applyError(caught: unknown) {
-    setError(caught instanceof Error ? caught.message : '当前操作失败，请稍后重试');
+    const fallback = '当前操作失败，请稍后重试';
+    const message = caught instanceof Error ? caught.message : fallback;
+
+    if (
+      message === 'No published questions available for assessment' ||
+      message === 'No published questions available to build mission'
+    ) {
+      setError(getMissingPublishedQuestionMessage(subject));
+      return;
+    }
+
+    setError(message);
   }
+
+  const hasPublishedQuestions = publishedQuestionCount > 0;
+  const isCheckingQuestionAvailability = questionAvailabilityStatus === 'loading';
+  const missingPublishedQuestionMessage = getMissingPublishedQuestionMessage(subject);
 
   React.useEffect(() => {
     setAssessment(null);
@@ -82,6 +110,38 @@ export function StudentMissionClient() {
     setHint(null);
     setError(null);
     setCurrentIndex(0);
+    setPublishedQuestionCount(0);
+    setQuestionAvailabilityStatus('loading');
+  }, [subject]);
+
+  React.useEffect(() => {
+    let cancelled = false;
+
+    setQuestionAvailabilityStatus('loading');
+    setPublishedQuestionCount(0);
+
+    void apiRequest<QuestionSummary[]>(`/questions?subject=${subject}`)
+      .then((questions) => {
+        if (cancelled) {
+          return;
+        }
+
+        const nextPublishedQuestionCount = questions.filter((item) => item.status === 'published').length;
+        setPublishedQuestionCount(nextPublishedQuestionCount);
+        setQuestionAvailabilityStatus('ready');
+      })
+      .catch((caught) => {
+        if (cancelled) {
+          return;
+        }
+
+        setQuestionAvailabilityStatus('error');
+        applyError(caught);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [subject]);
 
   React.useEffect(() => {
@@ -158,6 +218,11 @@ export function StudentMissionClient() {
       return;
     }
 
+    if (!hasPublishedQuestions) {
+      setError(missingPublishedQuestionMessage);
+      return;
+    }
+
     try {
       setError(null);
       const session = await apiRequest<AssessmentSession>(
@@ -230,6 +295,11 @@ export function StudentMissionClient() {
 
   async function loadMission() {
     if (!studentId) {
+      return;
+    }
+
+    if (!hasPublishedQuestions) {
+      setError(missingPublishedQuestionMessage);
       return;
     }
 
@@ -343,12 +413,32 @@ export function StudentMissionClient() {
               {subjectMeta[item].label}
             </button>
           ))}
+          <button
+            onClick={() => router.push(`/student/knowledge?studentId=${studentId ?? ''}&subject=${subject}`)}
+            style={{
+              border: '1px solid #cbd5e1',
+              borderRadius: 999,
+              padding: '10px 14px',
+              background: '#ffffff',
+              color: '#0f172a',
+              cursor: 'pointer',
+            }}
+          >
+            查看知识体系
+          </button>
         </div>
       </section>
 
       <section style={sectionStyle}>
         <h2>{subjectMeta[subject].label}入门评估</h2>
-        {!assessment && !assessmentResult ? <button onClick={startAssessment}>开始入门评估</button> : null}
+        {!assessment && !assessmentResult ? (
+          <button onClick={startAssessment} disabled={isCheckingQuestionAvailability || !hasPublishedQuestions}>
+            {isCheckingQuestionAvailability ? '检查题库中...' : '开始入门评估'}
+          </button>
+        ) : null}
+        {questionAvailabilityStatus === 'ready' && !hasPublishedQuestions ? (
+          <div style={emptyStateStyle}>{missingPublishedQuestionMessage}</div>
+        ) : null}
 
         {assessment && assessmentQuestion && assessmentAnswer ? (
           <div style={{ display: 'grid', gap: 16 }}>
@@ -410,7 +500,14 @@ export function StudentMissionClient() {
 
       <section style={sectionStyle}>
         <h2>{subjectMeta[subject].label}今日任务</h2>
-        {!mission && !missionResult ? <button onClick={loadMission}>生成今日任务</button> : null}
+        {!mission && !missionResult ? (
+          <button onClick={loadMission} disabled={isCheckingQuestionAvailability || !hasPublishedQuestions}>
+            {isCheckingQuestionAvailability ? '检查题库中...' : '生成今日任务'}
+          </button>
+        ) : null}
+        {questionAvailabilityStatus === 'ready' && !hasPublishedQuestions ? (
+          <div style={emptyStateStyle}>{missingPublishedQuestionMessage}</div>
+        ) : null}
 
         {mission && missionQuestion && missionAnswer ? (
           <div style={{ display: 'grid', gap: 16 }}>
@@ -531,4 +628,14 @@ const resultCardStyle: React.CSSProperties = {
   borderRadius: 16,
   border: '1px solid #dbeafe',
   background: '#f8fafc',
+};
+
+const emptyStateStyle: React.CSSProperties = {
+  marginTop: 12,
+  padding: 14,
+  borderRadius: 14,
+  border: '1px solid #fed7aa',
+  background: '#fff7ed',
+  color: '#9a3412',
+  lineHeight: 1.7,
 };

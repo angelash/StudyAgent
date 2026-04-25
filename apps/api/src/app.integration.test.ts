@@ -274,6 +274,79 @@ describe('StudyAgent API integration', () => {
     expect(englishTree.units.length).toBeGreaterThan(0);
   });
 
+  it('supports knowledge assembly actions for lessons, knowledge points and sample questions', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token, 'math');
+
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+    const tree = (treeResponse.body as WrappedResponse<{
+      units: Array<{ lessons: Array<{ id: string }> }>;
+    }>).data!;
+
+    const firstLessonId = tree.units[0].lessons[0].id;
+    const secondLessonId = tree.units.flatMap((unit) => unit.lessons.map((lesson) => lesson.id)).find((item) => item !== firstLessonId)!;
+
+    const knowledgePointResponse = await request(app.getHttpServer())
+      .post('/api/admin/knowledge-points')
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({
+        subject: 'math',
+        name: '装配测试知识点',
+        parentId: null,
+        gradeBand: '1',
+        difficultyLevel: 2,
+        lessonId: firstLessonId,
+        status: 'published',
+      })
+      .expect(201);
+    const knowledgePoint = (knowledgePointResponse.body as WrappedResponse<{ id: string; lessonId: string | null }>).data!;
+    expect(knowledgePoint.lessonId).toBe(firstLessonId);
+
+    const updatedKnowledgePointResponse = await request(app.getHttpServer())
+      .patch(`/api/admin/knowledge-points/${knowledgePoint.id}`)
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({
+        lessonId: secondLessonId,
+      })
+      .expect(200);
+    const updatedKnowledgePoint = (updatedKnowledgePointResponse.body as WrappedResponse<{ lessonId: string | null }>).data!;
+    expect(updatedKnowledgePoint.lessonId).toBe(secondLessonId);
+
+    const questionResponse = await request(app.getHttpServer())
+      .post('/api/admin/questions')
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({
+        subject: 'math',
+        type: 'objective',
+        stem: '知识装配工作台测试题',
+        answer: '4',
+        analysis: '测试题解析',
+        difficultyLevel: 1,
+      })
+      .expect(201);
+    const question = (questionResponse.body as WrappedResponse<{ id: string }>).data!;
+
+    const remapResponse = await request(app.getHttpServer())
+      .patch(`/api/admin/questions/${question.id}/knowledge-points`)
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({
+        knowledgePointIds: [knowledgePoint.id],
+      })
+      .expect(200);
+    const remappedQuestion = (remapResponse.body as WrappedResponse<{ knowledgePointIds: string[] }>).data!;
+    expect(remappedQuestion.knowledgePointIds).toEqual([knowledgePoint.id]);
+
+    const scaffoldResponse = await request(app.getHttpServer())
+      .post(`/api/admin/textbooks/${volumes[0].id}/scaffold-questions`)
+      .set('Authorization', `Bearer ${admin.token}`)
+      .send({})
+      .expect(201);
+    const scaffoldResult = (scaffoldResponse.body as WrappedResponse<{ questionCount: number }>).data!;
+    expect(scaffoldResult.questionCount).toBeGreaterThan(0);
+  });
+
   it('creates textbook import job and generates candidate records', async () => {
     const admin = await login('admin@example.com');
     const pdfPath = createTempTextbookPdf('Practice 1 1. 36+6= 2. 45-3= 3. 18+9= 4. 60-8=');
@@ -941,6 +1014,62 @@ describe('StudyAgent API integration', () => {
     expect(result.knowledgeResults.length).toBeGreaterThan(0);
     expect(result.knowledgeResults[0].knowledgePointName).toContain('表内除法');
     expect(result.knowledgeResults[0].score).toBeGreaterThanOrEqual(0);
+  });
+
+  it('builds student knowledge map with textbook structure, knowledge points and linked questions', async () => {
+    const admin = await login('admin@example.com');
+    const volumes = await importTextbooks(admin.token, 'math');
+
+    const treeResponse = await request(app.getHttpServer())
+      .get(`/api/textbooks/${volumes[0].id}/tree`)
+      .expect(200);
+    const lessonId = (treeResponse.body as WrappedResponse<{
+      units: Array<{ lessons: Array<{ id: string; knowledgePoints: Array<{ id: string }> }> }>;
+    }>).data!.units[0].lessons[0].id;
+
+    await createPublishedQuestion(admin.token, lessonId, 'math');
+
+    const parent = await login('parent@example.com');
+    const studentResponse = await request(app.getHttpServer())
+      .post('/api/students')
+      .set('Authorization', `Bearer ${parent.token}`)
+      .send({
+        nickname: '知识地图学生',
+        grade: 3,
+        preferredSessionMinutes: 20,
+        defaultVersionMap: {
+          chinese: 'chinese-dev-version',
+          math: volumes[0].id,
+          english: 'english-dev-version',
+        },
+      })
+      .expect(201);
+    const studentId = (studentResponse.body as WrappedResponse<{ profile: { id: string } }>).data!.profile.id;
+
+    const knowledgeMapResponse = await request(app.getHttpServer())
+      .get(`/api/students/${studentId}/knowledge-map?subject=math`)
+      .set('Authorization', `Bearer ${parent.token}`)
+      .expect(200);
+
+    const knowledgeMap = (knowledgeMapResponse.body as WrappedResponse<{
+      volume: { id: string } | null;
+      summary: { knowledgePointCount: number; questionCount: number };
+      units: Array<{
+        lessons: Array<{
+          knowledgePoints: Array<{ questionCount: number }>;
+        }>;
+      }>;
+    }>).data!;
+
+    expect(knowledgeMap.volume?.id).toBe(volumes[0].id);
+    expect(knowledgeMap.summary.knowledgePointCount).toBeGreaterThan(0);
+    expect(knowledgeMap.summary.questionCount).toBeGreaterThan(0);
+    expect(knowledgeMap.units.length).toBeGreaterThan(0);
+    expect(
+      knowledgeMap.units.some((unit) =>
+        unit.lessons.some((lesson) => lesson.knowledgePoints.some((knowledgePoint) => knowledgePoint.questionCount > 0)),
+      ),
+    ).toBe(true);
   });
 
   it('returns explicit AI configuration error without API key', async () => {

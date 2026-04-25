@@ -16,6 +16,15 @@ export class ProgressController {
     return this.progressService.getMasteryHeatmap(req.user, studentId, subject ?? 'math');
   }
 
+  @Get('students/:studentId/knowledge-map')
+  getStudentKnowledgeMap(
+    @Req() req: AuthenticatedRequest,
+    @Param('studentId') studentId: string,
+    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+  ) {
+    return this.progressService.getStudentKnowledgeMap(req.user, studentId, subject ?? 'math');
+  }
+
   @Get('reports/weekly')
   getWeeklyReport(
     @Req() req: AuthenticatedRequest,

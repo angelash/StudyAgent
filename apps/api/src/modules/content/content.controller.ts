@@ -54,6 +54,22 @@ export class ContentController {
   }
 
   @UseGuards(AuthGuard)
+  @Patch('admin/knowledge-points/:knowledgePointId')
+  updateKnowledgePoint(
+    @Req() req: AuthenticatedRequest,
+    @Param('knowledgePointId') knowledgePointId: string,
+    @Body()
+    body: {
+      name?: string;
+      lessonId?: string | null;
+      difficultyLevel?: number;
+      status?: 'draft' | 'published';
+    },
+  ) {
+    return this.contentService.updateKnowledgePoint(req.user, knowledgePointId, body);
+  }
+
+  @UseGuards(AuthGuard)
   @Post('admin/questions')
   createQuestion(
     @Req() req: AuthenticatedRequest,
@@ -80,6 +96,22 @@ export class ContentController {
     @Body() body: { knowledgePointIds: string[] },
   ) {
     return this.contentService.mapQuestionKnowledge(req.user, questionId, body.knowledgePointIds);
+  }
+
+  @UseGuards(AuthGuard)
+  @Patch('admin/questions/:questionId/knowledge-points')
+  replaceQuestionKnowledge(
+    @Req() req: AuthenticatedRequest,
+    @Param('questionId') questionId: string,
+    @Body() body: { knowledgePointIds: string[] },
+  ) {
+    return this.contentService.replaceQuestionKnowledge(req.user, questionId, body.knowledgePointIds);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('admin/textbooks/:volumeId/scaffold-questions')
+  scaffoldVolumeQuestions(@Req() req: AuthenticatedRequest, @Param('volumeId') volumeId: string) {
+    return this.contentService.scaffoldVolumeQuestions(req.user, volumeId);
   }
 
   @UseGuards(AuthGuard)
