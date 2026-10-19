@@ -1,0 +1,83 @@
+name: Verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  application:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install media tools
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
+      - name: Prepare configuration
+        run: cp .env.example .env
+      - run: npm ci
+      - run: npm audit --audit-level=low
+      - run: npm run build
+      - run: npm test
+      - run: npm run lint
+      - name: Asset audit tool regression
+        run: python scripts/assets/test_audit_archive_sensitive.py
+
+  postgres:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16-bookworm
+        env:
+          POSTGRES_USER: study_qa_admin
+          POSTGRES_PASSWORD: local_ci_only
+          POSTGRES_DB: study_agent_qa
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U study_qa_admin -d study_agent_qa"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Prepare configuration
+        run: cp .env.example .env
+      - run: npm ci
+      - name: Prepare isolated PostgreSQL roles and client tools
+        env:
+          PGPASSWORD: local_ci_only
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y postgresql-client-16
+          psql -h 127.0.0.1 -U study_qa_admin -d postgres -v ON_ERROR_STOP=1 -c "CREATE ROLE study_agent_app LOGIN PASSWORD 'local_ci_app_only';"
+          psql -h 127.0.0.1 -U study_qa_admin -d postgres -v ON_ERROR_STOP=1 -c "ALTER DATABASE study_agent_qa OWNER TO study_agent_app;"
+      - run: npm run build --workspace @study-agent/contracts
+      - run: npm run build --workspace @study-agent/config
+      - run: npm run build --workspace @study-agent/api
+      - name: PostgreSQL migration, recovery and fencing
+        working-directory: apps/api
+        env:
+          STUDY_TEST_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
+          STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/postgres.integration.test.ts

@@ -29,11 +29,14 @@ export function FormulaInput({
   React.useEffect(() => {
     let active = true;
 
-    void import('mathlive').then(() => {
+    void import('mathlive').then(({ MathfieldElement }) => {
+      MathfieldElement.fontsDirectory = '/vendor/mathlive/fonts';
+      MathfieldElement.soundsDirectory = null;
+      MathfieldElement.locale = 'zh-CN';
       if (active) {
         setReady(true);
       }
-    });
+    }).catch(() => { /* The plain formula input remains available when the optional editor cannot load. */ });
 
     return () => {
       active = false;
@@ -69,6 +72,7 @@ export function FormulaInput({
   if (!ready) {
     return (
       <textarea
+        aria-label="算式或公式答案"
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
@@ -90,6 +94,7 @@ export function FormulaInput({
   return (
     <div style={{ display: 'grid', gap: 8 }}>
       <math-field
+        aria-label="算式或公式答案"
         ref={(node) => {
           mathfieldRef.current = node;
         }}

@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node --env-file=../../.env ../../node_modules/next/dist/bin/next dev",
-    "build": "node --env-file=../../.env ../../node_modules/next/dist/bin/next build",
-    "start": "node --env-file=../../.env ../../node_modules/next/dist/bin/next start",
+    "dev": "node ../../scripts/run-web.cjs dev --webpack",
+    "prebuild": "node ../../scripts/build-web-assets.cjs",
+    "predev": "node ../../scripts/build-web-assets.cjs",
+    "build": "node ../../scripts/run-web.cjs build --webpack",
+    "start": "node ../../scripts/run-web.cjs start",
     "lint": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@study-agent/config": "0.1.0",
     "@study-agent/contracts": "0.1.0",
     "@study-agent/ui": "0.1.0",
-    "katex": "^0.16.45",
-    "mathlive": "^0.109.1",
-    "next": "^15.3.2",
+    "katex": "0.19.0",
+    "mathlive": "0.111.1",
+    "next": "16.4.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

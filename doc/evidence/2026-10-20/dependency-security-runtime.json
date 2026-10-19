@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-19T17:31:48.860Z",
+  "runtime": {
+    "node": "v24.19.0"
+  },
+  "audit": {
+    "before": {
+      "info": 0,
+      "low": 3,
+      "moderate": 4,
+      "high": 9,
+      "critical": 6,
+      "total": 22
+    },
+    "after": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "npm advisory database at audit time; excludes operating-system binaries and unpublished vulnerabilities"
+  },
+  "versions": {
+    "next": "16.4.2",
+    "vitest": "4.1.11",
+    "sharp": "0.35.5",
+    "mathlive": "0.111.1",
+    "katex": "0.19.0",
+    "postcss": "8.5.31",
+    "esbuild": "0.28.2"
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "result": "passed",
+      "tests": 120,
+      "skippedPostgres": 4
+    },
+    {
+      "command": "npm run lint",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "nextBuilder": "webpack"
+    },
+    {
+      "command": "node scripts/qa/run-postgres-tests.cjs",
+      "result": "passed",
+      "tests": 4,
+      "evidence": "postgres-dependency-runtime.json"
+    },
+    {
+      "command": "python scripts/assets/test_audit_archive_sensitive.py",
+      "result": "passed",
+      "tests": 2
+    },
+    {
+      "command": "node scripts/qa/verify-web-delivery.cjs",
+      "result": "passed",
+      "evidence": "web-dependency-runtime.json",
+      "scope": "HTTP artifact availability only"
+    }
+  ],
+  "ci": {
+    "file": ".github/workflows/verify.yml",
+    "status": "configured; remote workflow has not been run",
+    "postgresVersion": 16,
+    "localVerifiedPostgresVersion": "17.11-5"
+  },
+  "browser": {
+    "status": "blocked; not retried",
+    "reason": "Runtime requires a new user instruction after unknown action outcome"
+  }
+}

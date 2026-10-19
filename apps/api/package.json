@@ -10,15 +10,12 @@
     "worker": "node --env-file=../../.env dist/apps/api/src/worker.js",
     "lint": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run",
-    "prisma:generate": "prisma generate --schema prisma/schema.prisma",
-    "prisma:migrate:dev": "prisma migrate dev --schema prisma/schema.prisma",
-    "prisma:seed": "tsx prisma/seed.ts"
+    "storage:info": "node -e \"console.log('SQLite/PostgreSQL migrations run on application startup. See doc/product/05-running-and-storage.md. Prisma scaffolding is archived in resources/legacy/prisma.')\""
   },
   "dependencies": {
     "@nestjs/common": "^11.1.2",
     "@nestjs/core": "^11.1.2",
     "@nestjs/platform-express": "^11.1.2",
-    "@prisma/client": "^6.7.0",
     "@study-agent/config": "0.1.0",
     "@study-agent/contracts": "0.1.0",
     "bcryptjs": "^3.0.2",
@@ -28,7 +25,7 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "sanitize-html": "^2.18.1",
-    "sharp": "0.34.5",
+    "sharp": "0.35.5",
     "uuid": "^11.1.0",
     "zod": "^3.24.4"
   },
@@ -39,11 +36,10 @@
     "@types/sanitize-html": "^2.16.2",
     "@types/supertest": "^6.0.3",
     "@types/uuid": "^10.0.0",
-    "prisma": "^6.7.0",
     "supertest": "^7.1.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.4",
-    "vitest": "^3.1.2"
+    "vitest": "4.1.11"
   }
 }

@@ -1,6 +1,6 @@
 # 运行与存储
 
-Node.js 24.13+，Python 3.10+。先执行 `npm ci`、`npm run prisma:generate --workspace @study-agent/api`、`npm run build`。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
+Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
 默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本6）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
 
@@ -19,3 +19,5 @@ Node.js 24.13+，Python 3.10+。先执行 `npm ci`、`npm run prisma:generate --
 学生图片与录音作答位于 `STUDY_DATA_DIR/student-media`，必须随业务库备份。图片真实解码后校正方向并去掉EXIF，以PNG保存；录音需要PATH中的 `ffmpeg`、`ffprobe`，或设置 `STUDY_FFMPEG`、`STUDY_FFPROBE` 的绝对可执行路径，转成单声道16kHz WAV。缺少工具时音频题退出新选题，旧活动显示跳过提示。部署应固定、更新受支持的FFmpeg发行版；当前验证环境使用本机工具。单个原文件12MB、图片6000边长/2000万像素、录音180秒，两项解码并发上限；视频轨道与网络输入不接受。
 
 上传分块、完成状态、响应绑定和清理任务一起持久化。清理worker与处理任务一样受 `STUDY_WORKER_ENABLED` 控制，可由独立worker接管。完成后删除原上传分块，保留规范化学习证据；未完成上传24小时后过期，活动中的未绑定文件7天后过期（保存在草稿中的完整文件保留），结束活动中未绑定文件24小时后过期。已绑定响应的证据不随此定时回收。家庭下载包包含JSON、规范化图片/录音与SHA-256清单，不包含原始EXIF或未传完分块；准备后两分钟内由同一登录会话下载一次，中断或重启后重新准备。
+
+Web的 `prebuild` / `predev` 会从已锁定的MathLive依赖生成本地公式字体及许可，产物在 `apps/web/public/vendor/mathlive`。部署时应保留完整 `public` 目录。`scripts/run-web.cjs` 加载根目录配置，避免Next构建worker继承不支持的 `--env-file` 参数。CI门禁与本机升级验收见 [依赖安全交付](19-dependency-security-delivery.md)；配置文件存在不代表远程CI已运行。

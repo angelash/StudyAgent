@@ -127,7 +127,7 @@ suite('real PostgreSQL storage and API recovery', () => {
     const admin = new Pool({ connectionString: process.env.STUDY_TEST_POSTGRES_ADMIN_URL });
     const tag = randomUUID().replace(/-/g, ''), names = [`study_qa_source_${tag}`, `study_qa_restored_${tag}`, `study_qa_restored_${randomUUID().replace(/-/g, '')}`], created: string[] = [];
     const directory = mkdtempSync(join(tmpdir(), 'study-pg-backup-')), sourceFiles = join(directory, 'source'), bundle = join(directory, 'bundle'), restoredFiles = join(directory, 'restored');
-    const tools = resolve(__dirname, '../../../../data/tools/postgresql-17.11-5/pgsql/bin');
+    const tools = process.env.STUDY_TEST_PG_BIN ?? resolve(__dirname, '../../../../data/tools/postgresql-17.11-5/pgsql/bin');
     const { createPostgresBundle, verifyPostgresBundle, restorePostgresBundle } = require(resolve(__dirname, '../../../../scripts/operations/postgres-backup.cjs'));
     const { makeLedger } = require(resolve(__dirname, '../../../../scripts/operations/privacy-ledger.cjs'));
     const databases: DomainDatabase[] = [];
