@@ -36,6 +36,8 @@ jobs:
       - run: npm run lint
       - name: Authored teaching coverage and measurement material audit
         run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
+      - name: Canonical original spatial assets and independent image decoding
+        run: node scripts/qa/verify-spatial-assets.cjs data/qa/spatial-assets.json
       - name: Curriculum package persistence and safe seed enrichment
         run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
       - name: Reviewed textbook TOCs and frozen progress recovery

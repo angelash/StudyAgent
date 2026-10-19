@@ -27,6 +27,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts',
   'apps/api/src/modules/diagnostics/authored-number-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-spatial-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',

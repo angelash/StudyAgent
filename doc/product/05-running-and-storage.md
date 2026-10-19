@@ -12,7 +12,9 @@
 
 现有256个原创知识点均含教学卡。执行 `node scripts/qa/audit-authored-curriculum.cjs` 可核查教学覆盖和逐点测量素材缺口；先构建contracts/API。旧库仅为精确未编辑的v1补卡，用户修改和草稿保留。教学覆盖与教材审核对齐、测量题族深度、标准化校准分别验收，详见 [教学交付](27-full-teaching-delivery.md)。
 
-数位与退位等4点新增192题，基础算术5点补240题，数量/序位/单位10点再补480题。当前4347道任务、237点素材仍待补深。启动时幂等补充累计912道新题及映射，原3435题和前批内容快照、既有编辑不改写。新素材使用v2标识，表格或选项变化不会与同题干/答案碰撞；沿用旧关系的变式保留题族。核对旧内容升级、19点学生核查与五次重启：`node scripts/qa/verify-verification-groups.cjs <证据路径> sqlite|postgres content-upgrade`，正式限流保持生效。详见 [首批素材](34-authored-math-probes-delivery.md)、[算术素材](35-authored-arithmetic-probes-delivery.md) 与 [数量素材](36-authored-number-probes-delivery.md)。
+数位与退位等4点新增192题，基础算术5点补240题，数量/序位/单位10点补480题，图形/立体/整时3点补79题。当前4426道任务、234点素材仍待补深。启动时幂等补充累计991道新题及映射，原3435题和前批内容快照、既有编辑不改写。新素材使用v2标识，表格或选项变化不会与同题干/答案碰撞；沿用旧关系的变式保留题族。核对旧内容升级、22点学生核查与五次重启：`node scripts/qa/verify-verification-groups.cjs <证据路径> sqlite|postgres content-upgrade`，正式限流保持生效。详见 [首批素材](34-authored-math-probes-delivery.md)、[算术素材](35-authored-arithmetic-probes-delivery.md)、[数量素材](36-authored-number-probes-delivery.md) 与 [图形整时素材](38-authored-spatial-probes-delivery.md)。
+
+图形整时的43张原创SVG随 `apps/web/public/question-assets/spatial-probes-v1` 交付，生产部署须包含完整public目录。API构建后可运行 `node scripts/build-spatial-probe-assets.cjs` 重建，再用 `node scripts/qa/verify-spatial-assets.cjs <收据路径>` 核对逐字节一致和独立图像解码。不会在Web启动时依赖API产物生成，日常Web开发可直接使用已版本化的教学图。
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 

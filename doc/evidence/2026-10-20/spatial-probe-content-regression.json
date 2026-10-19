@@ -1,0 +1,283 @@
+{
+  "at": "2026-10-19T23:28:49.307018+00:00",
+  "passed": true,
+  "scope": "Default local API regression, authored geometry and supported response protocols. PostgreSQL and HTTP recorded separately; no browser or field-calibration acceptance.",
+  "passedTests": 261,
+  "failedTests": 0,
+  "skippedTests": 6,
+  "testFiles": 39,
+  "reportSha256": "d562419c33841f6e2999e2c9fdecc32824fb046250792fe6d52e1be4fc75d3f4",
+  "sourceSha256": {
+    "packages/contracts/src/diagnostics.ts": "4305654198e36f8948b0f38c1bea3d509751eddb71b627b45117ba8604ec47ed",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d28907502f8079c3af38df250e45496912faee913f36a6be3f66fd75671ce135",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "72f077ceefdb91491a42962d9a3a58f193e5a07b2780f18b5ca473fca4bad8e6",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "eb82022131e7e9eb5b4ed29a39304bdcb65385fd1475e8a77f33f6edc97e5d85",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "8fbbc5620897838c62e004e45d0f59b0937f6e951c0df3bfcd57a501a2b48756",
+    "apps/web/app/student/assessment/studio.tsx": "4b95008e25f479c69d91abe6e2cfbe077f20fda7aa5cb4e1dee685b48aa0fee9",
+    "apps/web/components/assessment-blueprint.tsx": "251d9005deda36d45dfeb6fbf8416f7cd3f9460d5f3d1fddf1277bc1eeac3771",
+    "apps/web/components/verification-observations.tsx": "dfd2da153c419391851bf9eeb77cee0b452072e010ea3120a7a81e85f9b601d9",
+    "apps/web/components/verification-observations.css": "d702e472486f038e64d5f6154dceefc618870354ab04001f8abdc8a312c4a0cf",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "e24ae4622904b556e94cf6542410e00502f84f055e17c1482dd43215ebae5be8",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "19324f14bd7f1af5594eed7fc185bc9b958d44dbafd7cbfca5874f65293dbadf",
+    "apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts": "e842ca98a3f8123ae4cefa1b4e945f7aea7b59a77abe4421bc99a22a1ac5ab15",
+    "apps/api/src/modules/diagnostics/authored-number-probes.ts": "135cba049ce9dd1c4caae692bd71240af16b6736d07ed18c418be716082982b9",
+    "apps/api/src/modules/diagnostics/authored-spatial-probes.ts": "ff2813ce8155ef0eaabca86013e347d75dd4d8397a721a1f1b635b266e51f9e7",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "73ed0175d8ce03ef7b0ff94fc70318c36286c3812e44ecc8ca41de9c56490890",
+    "scripts/qa/verify-verification-groups.cjs": "116492c06e3fc5fe008fcd921dd55fa33027a7105e05792352478a77c5dabbda",
+    "apps/api/src/modules/diagnostics/authored-teaching.ts": "75c2e93a9558d053c1c6752ef3187525ce17d7378c24dce758bef21912e50310",
+    "apps/api/src/modules/diagnostics/authored-math-teaching.ts": "23fac5b369549efe35b599d1733b490dd35e9b02daa64c91c01fa5cec5ff1a85",
+    "apps/api/src/modules/diagnostics/authored-chinese-teaching.ts": "2a42b9b7ad09212a0283b672550b9c719ca73130d7984f6a42de5e862807f2b2",
+    "apps/api/src/modules/diagnostics/authored-english-teaching.ts": "76437c2f0bf70547327761c78c96ea4d63094b470d612621b46d94812d7cfd42",
+    "apps/api/src/modules/diagnostics/teaching-author.ts": "c43cec970b0e6faca395d93a4bef536f38b57a5df2f8674a0d84e6e01ba6ee1b",
+    "apps/api/src/modules/diagnostics/authored-spatial-probes.test.ts": "1c81186e3d9b5de6178c3852609b9fe68c35c2378da0897c567432389adc3b71",
+    "scripts/build-spatial-probe-assets.cjs": "700b2ae3b69b52f983ccbaa24dc0a51eceec80ec851ac8499f598f553a7237ee",
+    "scripts/qa/verify-spatial-assets.cjs": "94eda686264e1d84d25cd4bee5e0f4d550f274d730f8fac8b4f7a187917a0ac9",
+    "scripts/qa/audit-authored-curriculum.cjs": "afb7c3d152f68ac7ca9274e814c7950ee25275591fda6f7b8d919fad65de11d6",
+    ".github/workflows/verify.yml": "8410ac8448ead223b2af2073766789cf9ac6b59521d10d722d51257d2bf5a3d9"
+  },
+  "sourceHashesVerifiedAgainstBothRuntimeReceipts": true,
+  "productionBuildsPassed": [
+    "api",
+    "web"
+  ],
+  "typeChecksPassed": [
+    "api",
+    "web"
+  ],
+  "suites": [
+    {
+      "file": "apps/api/src/app.integration.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/product-safety.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/domain-database.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/operations.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/postgres.integration.test.ts",
+      "status": "passed",
+      "passed": 0,
+      "skipped": 6
+    },
+    {
+      "file": "apps/api/src/infrastructure/rate-limit.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/scoped-transactions.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/task-repository.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/codex-search.service.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/learning/notebook.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-arithmetic-probes.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-math-probes.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-number-probes.test.ts",
+      "status": "passed",
+      "passed": 14,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-spatial-probes.test.ts",
+      "status": "passed",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "status": "passed",
+      "passed": 26,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement.test.ts",
+      "status": "passed",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/scoring.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/library.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "status": "passed",
+      "passed": 7,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/processing/processing.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/reviews/reviews.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/media-normalization.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 2,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/students/student-access.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    }
+  ]
+}

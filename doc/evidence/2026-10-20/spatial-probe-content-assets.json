@@ -1,0 +1,440 @@
+{
+  "at": "2026-10-19T23:25:26.563Z",
+  "passed": true,
+  "scope": "Original SVG content geometry and local raster decoding; not browser acceptance.",
+  "assets": [
+    {
+      "name": "plane-0.svg",
+      "bytes": 791,
+      "sha256": "6ff4e84d28610a63fbefaf3f50389e3967523f7b11beb0a87d147e421e9ca4d4",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "334c8d626368a45d6c3f79ab5e300f18fa524792ab9ee417b8fc649cda188776"
+    },
+    {
+      "name": "plane-1.svg",
+      "bytes": 1256,
+      "sha256": "304fa5b8efc4c505e3ff78cc5174b96eaf619c69f6b2adf3a283065053e22f74",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "008c69f7e529feedb35510929a37229eae20583a5a3c3c90217ba831242aedec"
+    },
+    {
+      "name": "plane-2.svg",
+      "bytes": 380,
+      "sha256": "feec68f0d468fc43a4768d68217017944380a071f4f54174108405c7f6a283d9",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "fa7d7a99440aba1bbdc91c75090ec23bae5bb79c59b3f5d68b4fefef96747433"
+    },
+    {
+      "name": "plane-3.svg",
+      "bytes": 1346,
+      "sha256": "1ae3bec7cfaddacc00092060217b4489966089bb355da7460a805a7d9ade2dfb",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "8e0de88fd96460e4322499f0ee62f6d977b94b1453139f205823bcdcfa1c3489"
+    },
+    {
+      "name": "constraint-0.svg",
+      "bytes": 1160,
+      "sha256": "ad4fbdf7b7799a8115ea5fc8aa79265d994d6ff537a15bf2c8c40b1b7a2e5caa",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "e418178d364610743f115250e5b5205497dc5fb14ab30cf38f405ebf464cc2f6"
+    },
+    {
+      "name": "constraint-1.svg",
+      "bytes": 1354,
+      "sha256": "712d28771e96a1fb32f911496e7a7e03d13f4ab4da43dd694a9ab91e9d753f6a",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "3e2d67dfa5986aa0cc7cfce0049db5b403ac2337f7a3edd9af6ca2023b533069"
+    },
+    {
+      "name": "constraint-2.svg",
+      "bytes": 1256,
+      "sha256": "fa96c5e31a18b9236e92c311c54790897f42127a7fd61b6002beddc078d0a6be",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "d9b094d482f5d50c32c1acaeb9b363df36f23e221ba7cd191db5776eaeebdb9f"
+    },
+    {
+      "name": "cut-0.svg",
+      "bytes": 1316,
+      "sha256": "a40d247f0379b680b71cd16e8b962526e1366e0be0ee44425fa60aaa4f29bbef",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "b290c60ca9f852d2d4dd5dca3b5d8acb05e3d062985e461c13755b9117e67d37"
+    },
+    {
+      "name": "cut-1.svg",
+      "bytes": 1319,
+      "sha256": "11dea457e3543df40d217a82b63ae4eb9fdb4bfe1ccf59b33bb58b89dc8127c7",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "ce6a8c64652df7529cb53e804aba2411e119188834cac5958bc463ac95397c60"
+    },
+    {
+      "name": "cut-2.svg",
+      "bytes": 1566,
+      "sha256": "b87602cd294af5d9027bdeff1157cdad18b7f0588b5d7bef2c624175775a7986",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "0221d8a2d7a663856bdddf08e42fd0c0432c2a785cc8bd91e949a328c2027ab8"
+    },
+    {
+      "name": "cut-3.svg",
+      "bytes": 1401,
+      "sha256": "a35c43fb9b51c81e80287fd5c14c9199c2cd9aeae2f3931cbf4a4dd09a689aa6",
+      "width": 340,
+      "height": 240,
+      "decoded": true,
+      "rasterSha256": "6a3ef82d87b67b13f35f54a94e409c672bc790f641f4b2cabcc612c3f2cde698"
+    },
+    {
+      "name": "solids-0.svg",
+      "bytes": 1421,
+      "sha256": "d5dc2d3e83d00b60b6783ff764f663b286fbfa7b38f0e8a7373fdaf917781c25",
+      "width": 570,
+      "height": 200,
+      "decoded": true,
+      "rasterSha256": "abd24ac9f4ed6a88b1b844898852d00e2b6f7e25d29b546458376be2c0c267c3"
+    },
+    {
+      "name": "clock-0.svg",
+      "bytes": 2210,
+      "sha256": "113aef54e34197b5fa11262d8f43e707565e4d1c88dc272a5f26aae8ef2eb486",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "1d5d96f9ebec2a887bb21fdcb8fb943d994eff0dca15d0ac4f4130ee2e1eb22b"
+    },
+    {
+      "name": "clock-1.svg",
+      "bytes": 2211,
+      "sha256": "8885cfe114a710bbac685435bc62e3ad6c97a8b7b847a8ed7aa5236b063fd460",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "23a9731aefd3cf26dc0e6e50982f2f28ea8644b28f9837bb24fef67fbabc0d9a"
+    },
+    {
+      "name": "clock-2.svg",
+      "bytes": 2203,
+      "sha256": "54baa9315a7dd027b148c8edc8eb58a1d2050d67ba9548aff9291ba03f1504b0",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "b8855598e9330ea8b904c47fc43337cb626d497dc570a75dcb50f66cbd2e8805"
+    },
+    {
+      "name": "clock-3.svg",
+      "bytes": 2211,
+      "sha256": "78b555d5fd0c2645eb196dce78fa2dab98a230e20d2b508725bea5e4959a5066",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "8b2017a49d42158d3d4777902d8d872645889ff1d2205226b704b3d93f44d53b"
+    },
+    {
+      "name": "clock-4.svg",
+      "bytes": 2211,
+      "sha256": "7ce19b551c12735e9484a4fc87895973b5599bfd4746210195ce7182f6c4eff0",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "874df11dcfdb61a341aa34597ea9e0892d8d415cd17bef2942e2aee5895fd59b"
+    },
+    {
+      "name": "clock-5.svg",
+      "bytes": 2203,
+      "sha256": "9d5e46c57899540596ac4a91d398a7861019eb9884ee4bb7c883aaa1a681df91",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "9c59e638cd06a3b71f60332748a54be2b5c98abb05af00bce4ab9912ed8b3fe4"
+    },
+    {
+      "name": "clock-6.svg",
+      "bytes": 2211,
+      "sha256": "9cc636244a5de61e21065b8e3b0df12b1b6532327eff2bbaaba0c21902b5a20b",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "fddb7d294360d989379b6b78052b934e5ebdd1fac15291c65ffb396ff2f11ec6"
+    },
+    {
+      "name": "clock-7.svg",
+      "bytes": 2210,
+      "sha256": "9c0d33404f24fcd0b56c9a37176cbd50a6601e2706bceadee654ce78ae3e1294",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "f304f976ae3236dbe2f43df95c4620bcd5315eebd794f98190d4c21890382d5b"
+    },
+    {
+      "name": "clock-8.svg",
+      "bytes": 2202,
+      "sha256": "8505aee1c9489512922cfae3e94a0198da5990699c94913391b25c832ac14a09",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "bf6a1c27f2807935158040d9cdc2214eba5e73acc35c1f6b0061038c06baf538"
+    },
+    {
+      "name": "clock-9.svg",
+      "bytes": 2210,
+      "sha256": "cea3a1444d5d4c29f6d8a64426551e6d86e82148aeab4e30cc355adc3389605b",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "aab1908b9b0849180031de780dcad633a42fdfd091e4d9d06d4cfa59f6f6cf08"
+    },
+    {
+      "name": "clock-10.svg",
+      "bytes": 2210,
+      "sha256": "13bce8f8f90af049091fedd18e626b344fe0e4d8a5c5f8b357c8e5e0372eb649",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "87ced65b32ccfa68088a74e5f13c729398b92ec19e8ced2a3dbff16624576132"
+    },
+    {
+      "name": "clock-11.svg",
+      "bytes": 2202,
+      "sha256": "d15ed2900d0a924472f77761b24ef979010b4d939d40d24cf0a8beaeb67f8a10",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "cd7c97e6704c23ce004fe75434e7569792434ad9b1f1d07947ce75b9fae8a93b"
+    },
+    {
+      "name": "clock-hidden-0.svg",
+      "bytes": 2316,
+      "sha256": "8f217551e286e017bd42329b067486fd4b2bf4ea1c9f09ddaad65a38142d9b19",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "2f2bd76ebc3a33bd5335c939a178e682c6effee27becf1cfe5e82f6b833b296f"
+    },
+    {
+      "name": "clock-hidden-1.svg",
+      "bytes": 2323,
+      "sha256": "b5aafd26bcd0c52dcbaed3d365c51380999da278a821df3cc5d693ec6fb5048d",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "2b22bc0d6a8179026dc0b33aee6f4952db6d0bf4fe004626002426512965dc1f"
+    },
+    {
+      "name": "clock-hidden-2.svg",
+      "bytes": 2323,
+      "sha256": "656ba62a66fb6ffb4423150c407470612473a2cf028d1a794c2aa0701fcb6d55",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "318f769ec3a4cc4ddcfe35aa2c008ba71f6854c0bd16f2f4e903fc8fb8e5d14f"
+    },
+    {
+      "name": "clock-hidden-3.svg",
+      "bytes": 2316,
+      "sha256": "bb55e26c1d9ed4094602b402d8bf899c5a3171c9092eaa56cca6f0a007c803fb",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "60832e7537e75ad6a132b72358aa7803727c854db29b0109aedf39f66b43929d"
+    },
+    {
+      "name": "clock-hidden-4.svg",
+      "bytes": 2323,
+      "sha256": "863ddcdfc9816ca0d9e3fcd1ac2ce823883fa703e0da937b61bff063bb2a172c",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "52d99935d19911c7090498c2eae92578a93d1e6c7c178e98ff1506833cdfe8c1"
+    },
+    {
+      "name": "clock-hidden-5.svg",
+      "bytes": 2324,
+      "sha256": "93d2c83e0ec0a27c41423400a67959223651bc67126a069227eece5580819528",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "b2a7b780bdd096e950821444391d9b84ce09a44276cb22cd0ebe806d0396ac78"
+    },
+    {
+      "name": "clock-hidden-6.svg",
+      "bytes": 2315,
+      "sha256": "10390a567ecbcbc32f1c6ceb09898adee64ace2125338247d8ec295266a1b158",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "adff84999a23d33cfa29e19d0b9ff0ee3201f0360e20b371f5b1c7d93dbbc30d"
+    },
+    {
+      "name": "clock-hidden-7.svg",
+      "bytes": 2324,
+      "sha256": "120480534ce861b712783f98e51197372dc17374ceeb6d029044377e361eed44",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "5848caa67f8339b94a44cd514985ee3ea6e26d056f2b45db24116b2c3641d210"
+    },
+    {
+      "name": "clock-hidden-8.svg",
+      "bytes": 2322,
+      "sha256": "35506344d26d838cb639cb11141e59e76852ca99712964f24aec7b50c94e6880",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "34fe3cce25eda20469c7438ee363c5a766e29d79f0916d187cf8fb936ae4560b"
+    },
+    {
+      "name": "clock-hidden-9.svg",
+      "bytes": 2315,
+      "sha256": "9236af34fa93f2f2d29f0d5fa73304b34d2ff66f5fe252bb4b101c03a9b65645",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "c674e366e17c8638e027b620981b946f5c708db4d2ca46cb51ad442d4ed88889"
+    },
+    {
+      "name": "clock-hidden-10.svg",
+      "bytes": 2322,
+      "sha256": "aff82c7fb1b22428ae7a03eda07a014dfadd309f6f31a727f2594888645b6de7",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "05ffc4e253936c438dc43b314908778eaeba3e22100da27991bf010d322b1f16"
+    },
+    {
+      "name": "clock-hidden-11.svg",
+      "bytes": 2323,
+      "sha256": "feaeb92f60a00710b1ee11d4b882da0e4bb980334153071334f9b850dda13e49",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "9eeff847f21b887f4808cd576db016213c5b4d79f3171a79835d9a8875f4975e"
+    },
+    {
+      "name": "clock-hidden-12.svg",
+      "bytes": 2314,
+      "sha256": "1150c20e0068d098acd2929e7db5b464ae74b482b1fbbf70be0be49a4887899a",
+      "width": 260,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "118fb73ae070ae411b28ea4e72a3df9fe90492cd50518aaf6dfc8c3dbb9ae708"
+    },
+    {
+      "name": "clock-model-0.svg",
+      "bytes": 2211,
+      "sha256": "9f91773356201ff30c03cbcf11afe3a0e88c155aedbf4e8370bd315f8c7c3d3f",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "b5c34d88c09c509820e7ab3404ca2470ea7675db08c5aa6da85183afd4f3cad5"
+    },
+    {
+      "name": "clock-model-1.svg",
+      "bytes": 2218,
+      "sha256": "1e1b556363f65b3d38e18ee7f0d62562120678b51ac2a245dd617d00b3ebde4c",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "406c6f8dc2adcd44b40ea2151f9bdae20aedb2cff03eb39d9504110a50696eff"
+    },
+    {
+      "name": "clock-model-2.svg",
+      "bytes": 2210,
+      "sha256": "33261fff42ad7cf7f4c2ac15e7be470357f42ba692034d5d03c8a9164ff7ef40",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "19e1b898973af46a8c4ca3563bd9cae6f1feee0bb707fc63b13e933d7eaf54d1"
+    },
+    {
+      "name": "clock-model-3.svg",
+      "bytes": 2212,
+      "sha256": "584500cd27200a6c71dc2e64d79a7f124c84aa29417c973e41dcc2f04ae0517c",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "ba3f1c73df1726bb308f0084335335a86bcf4d55926898319a52a6906a54182f"
+    },
+    {
+      "name": "clock-model-4.svg",
+      "bytes": 2217,
+      "sha256": "5449f9ad33b4da234ff6027d602ee1aaa208ba95e9de52a3fbd6289b46a74c84",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "06006db8df3f897c3a5f072677fcce235552687de485f986024991e6f510edf3"
+    },
+    {
+      "name": "clock-model-5.svg",
+      "bytes": 2209,
+      "sha256": "c769be3f3d66f970deca4a029617c5795e9387acf5fc941b41688885b1844fcb",
+      "width": 260,
+      "height": 260,
+      "decoded": true,
+      "rasterSha256": "41266803999cfda6e174ac0aa29a4ee406ae8939fcd5e00aac9955fc2edc8e76"
+    }
+  ],
+  "contactSheets": [
+    {
+      "group": "planar",
+      "file": "doc/evidence/2026-10-20/spatial-probe-content-images/planar-contact.png",
+      "images": 11,
+      "sha256": "e444722c24d4b0386c65935379280b5b52ea166bd6d0c5df1002d3bd85009226"
+    },
+    {
+      "group": "clocks",
+      "file": "doc/evidence/2026-10-20/spatial-probe-content-images/clocks-contact.png",
+      "images": 12,
+      "sha256": "caa6ec3f7994606522614ea7d318c25fa78bff95b2a44df3bc28af64f41e5d84"
+    },
+    {
+      "group": "hidden",
+      "file": "doc/evidence/2026-10-20/spatial-probe-content-images/hidden-contact.png",
+      "images": 13,
+      "sha256": "ed14469d308df43a5f558f0486b08267c1855d18b1a43ee737288c078eb039b8"
+    },
+    {
+      "group": "repair",
+      "file": "doc/evidence/2026-10-20/spatial-probe-content-images/repair-contact.png",
+      "images": 6,
+      "sha256": "16d3256d7742917cd227040c4327f34bcdd82467389965a5ccec7fdbb445268b"
+    },
+    {
+      "group": "solids",
+      "file": "doc/evidence/2026-10-20/spatial-probe-content-images/solids-contact.png",
+      "images": 1,
+      "sha256": "4c185ac47f1c6d92d95b57ec491596d240f455ca08c44c05d0169372b9a315af"
+    }
+  ],
+  "totals": {
+    "tasks": 79,
+    "assets": 43,
+    "bytes": 84497,
+    "decoded": 43
+  },
+  "visualReview": {
+    "reviewer": "agent_visual_review",
+    "imagesReviewed": 43,
+    "scope": "Actual local raster contact sheets inspected. Shape boundaries, right angles, equal-length marks, cut lines, solid labels, hands and all twelve dial digits checked. Notice moved outside dial and hidden-clock sheet reinspected.",
+    "notBrowserAcceptance": true,
+    "notIndependentTeacherReview": true,
+    "accessibilityBoundary": "Alt representations preserve mathematical conditions; they do not establish equivalent visual perception or diagnose a sensory or cognitive condition."
+  }
+}
