@@ -1,6 +1,7 @@
 import type { MeasurementDimension } from '@study-agent/contracts';
 import type { Exercise, FoundationDefinition } from './foundation-curriculum';
 import { buildArithmeticProbeFamilies } from './authored-arithmetic-probes';
+import { buildNumberProbeFamilies } from './authored-number-probes';
 
 export type AuthoredProbeFamily = { atomId: string; family: string; dimension: MeasurementDimension; behavior: string;
   structure: string; distinction: string; exercises: Exercise[] };
@@ -135,7 +136,9 @@ export function buildAuthoredMathProbeFamilies(): AuthoredProbeFamily[] {
   return result;
 }
 
-export function buildAllAuthoredMathProbeFamilies() { return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies()]; }
+export function buildAllAuthoredMathProbeFamilies() {
+  return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies()];
+}
 
 export function addAuthoredMathProbes(definitions: FoundationDefinition[]) {
   const byId = new Map(definitions.map(definition => [definition.atom.id, definition]));

@@ -14,7 +14,7 @@
 - 家庭资料下载与删除、持久任务、SQLite和PostgreSQL迁移、业务与媒体备份恢复。
 - 助教绑定当前学习证据，模型不可用时返回明确的规则指导；确定性评分不依赖AI。
 
-原创课程当前包含256个知识点、3867道任务。数位与退位、基础算术等9点已补充对照任务，逐题校验和素材缺口见 [首批素材交付](doc/product/34-authored-math-probes-delivery.md) 与 [算术素材交付](doc/product/35-authored-arithmetic-probes-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
+原创课程当前包含256个知识点、4347道任务。数位与退位、基础算术、数量与序位等19点已补充对照任务，逐题校验和素材缺口见 [测量素材交付](doc/product/36-authored-number-probes-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
 
 ## 本地运行
 
@@ -38,7 +38,7 @@
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 
-已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)。当前仍需补充教材与课时审核映射、其余247点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
+已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)。当前仍需补充教材与课时审核映射、其余237点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
 
 ## 工程目录
 

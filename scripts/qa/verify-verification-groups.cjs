@@ -26,6 +26,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/web/components/assessment-blueprint.tsx', 'apps/web/components/verification-observations.tsx', 'apps/web/components/verification-observations.css',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-number-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
@@ -54,6 +55,7 @@ async function wrongAnswer(id, item) {
   if (mode === 'boolean') return !snapshot.answer;
   if (mode === 'single_choice') return snapshot.answerSchema.options.find(option => option.value !== snapshot.answer).value;
   if (mode === 'multi_blank') return snapshot.answer.map(entry => ({ ...entry, value: String(Number(entry.value) + 1) }));
+  if (mode === 'sorting') return [...snapshot.answer].reverse();
   if (mode === 'text_blank') return 'QA未达标';
   return -999999;
 }
@@ -120,26 +122,34 @@ async function main() {
   tokens.learner = (await call('POST', '/auth/learning-code', { code: code.code }, 'anonymous')).token;
   if (verifyContentUpgrade) {
     evidence.pointJourneys = [];
+    const pointGrades = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom.grade]));
     for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))]) {
-      await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+      // Each synthetic child has a formal, independent learner identity. Keep production quotas active.
+      const grade = pointGrades.get(selectedAtomId), pointStudentId = (await call('POST', '/students', {
+        nickname: '合成知识点核查', grade, preferredSessionMinutes: 15, defaultVersionMap: { math: 'original', chinese: '', english: '' } })).profile.id;
+      const pointAccess = await call('POST', `/students/${pointStudentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '逐点核查独立学生身份与正式限流' });
+      const pointCode = await call('POST', `/students/${pointStudentId}/learning-access/codes`, { expectedVersion: pointAccess.version, requestKey: randomUUID() });
+      const actor = `point-${evidence.pointJourneys.length}`;
+      tokens[actor] = (await call('POST', '/auth/learning-code', { code: pointCode.code }, 'anonymous')).token;
+      await call('PUT', `/students/${pointStudentId}/learning-scope`, { subject: 'math', grade, term: 'upper', textbookVolumeId: null,
         textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 });
-      const baseline = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline',
-        targetAtomIds: [selectedAtomId], includePrerequisites: false, maxItems: 8 });
+      const baseline = await call('POST', '/diagnostics/sessions', { studentId: pointStudentId, subject: 'math', intent: 'baseline',
+        targetAtomIds: [selectedAtomId], includePrerequisites: false, maxItems: 8 }, actor);
       for (const item of baseline.items) await call('POST', sessionRoute(baseline.id) + '/responses', { itemId: item.id,
-        answer: await wrongAnswer(baseline.id, item), elapsedMs: 1000 });
-      const source = await call('POST', sessionRoute(baseline.id) + '/complete', {});
+        answer: await wrongAnswer(baseline.id, item), elapsedMs: 1000 }, actor);
+      const source = await call('POST', sessionRoute(baseline.id) + '/complete', {}, actor);
       const hypothesis = source.hypotheses.find(row => row.atomId === selectedAtomId && row.cause === 'representation_gap'); assert(hypothesis);
-      const preview = await call('POST', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
-        includePrerequisites: true, maxItems: 8, requestKey: randomUUID() }, 'learner');
+      const preview = await call('POST', '/diagnostics/blueprints', { studentId: pointStudentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
+        includePrerequisites: true, maxItems: 8, requestKey: randomUUID() }, actor);
       assert.equal(preview.blueprint.verification.fullyCovered, true); assert.equal(preview.itemCount, 4);
-      const session = await call('POST', previewRoute(preview.id) + '/start', {}, 'learner');
+      const session = await call('POST', previewRoute(preview.id) + '/start', {}, actor);
       for (const item of session.items) await call('POST', sessionRoute(session.id) + '/responses', { itemId: item.id,
-        answer: await snapshotAnswer(session.id, item.questionId), elapsedMs: 1000 }, 'learner');
-      const result = await call('POST', sessionRoute(session.id) + '/complete', {}, 'learner');
+        answer: await snapshotAnswer(session.id, item.questionId), elapsedMs: 1000 }, actor);
+      const result = await call('POST', sessionRoute(session.id) + '/complete', {}, actor);
       assert.equal(result.verification.independentObservationsComplete, true);
       assert(result.verification.groups.every(group => group.independentFamilies === 2 && group.passedFamilies === 2));
       assert.notEqual(result.estimates.find(row => row.atomId === selectedAtomId).status, 'secure');
-      evidence.pointJourneys.push({ atomId: selectedAtomId, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
+      evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
         independentObservationsComplete: true, noPrematureSecureMastery: true });
     }
   }
