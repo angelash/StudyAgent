@@ -20,6 +20,8 @@ const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
 const { buildFoundationCurriculum, foundationQuestionId } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
+const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
+const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
   'apps/api/src/modules/diagnostics/verification-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts',
   'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/web/app/student/assessment/studio.tsx',
@@ -29,6 +31,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-number-probes.ts',
   'apps/api/src/modules/diagnostics/authored-spatial-probes.ts',
   'apps/api/src/modules/diagnostics/authored-second-grade-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-data-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
@@ -46,20 +49,50 @@ async function raw(method, route, body, actor = 'parent') {
   const result = await response.json(); return { status: response.status, data: result.data, error: result.error?.message };
 }
 async function call(method, route, body, actor = 'parent', expected = method === 'POST' ? 201 : 200) {
-  const result = await raw(method, route, body, actor); assert.equal(result.status, expected, `${method} ${route}: ${result.error ?? ''}`); return result.data;
+  const result = await raw(method, route, body, actor);
+  if (result.status !== expected && /\/diagnostics\/sessions\/[^/]+\/responses$/.test(route)) {
+    const sessionId = route.split('/')[3];
+    // Only this script's owned synthetic session is inspected; no real family's answers or credentials enter QA output.
+    evidence.responseFailure = await store.transaction(() => {
+      const session = store.find('diagnosticSessions', { id: sessionId }), mapping = session?.itemSnapshots.find(row => row.id === body.itemId);
+      const question = session?.questionSnapshots.find(row => row.id === mapping?.questionId);
+      return structuredClone({ sessionId, itemId: body.itemId, atomId: mapping?.atomId, family: mapping?.family,
+        questionId: question?.id, stem: question?.stem, mode: question?.answerSchema.mode, options: question?.answerSchema.options,
+        submitted: body.answer, expected: question?.answer, status: result.status, error: result.error });
+    });
+  }
+  assert.equal(result.status, expected, `${method} ${route}: ${result.error ?? ''}`); return result.data;
 }
 async function snapshotAnswer(id, questionId) {
   return store.transaction(() => store.find('diagnosticSessions', { id }).questionSnapshots.find(row => row.id === questionId).answer);
 }
+function legalWrongAnswer(schema, expected) {
+  const mode = schema.mode, config = answerInputConfiguration(schema);
+  const wrongValue = value => Number.isFinite(Number(value)) ? String(Number(value) + 1) : 'QA未达标';
+  let answer;
+  if (mode === 'boolean') answer = gradeResponse(schema, expected, true).score === 1 ? false : true;
+  else if (mode === 'single_choice') answer = schema.options.find(option => option.value !== expected)?.value;
+  else if (mode === 'hotspot') answer = config.targets.find(target => target.id !== expected)?.id;
+  else if (mode === 'multiple_choice') {
+    const outside = schema.options.find(option => !expected.includes(option.value));
+    answer = [outside?.value ?? expected[0]];
+  } else if (mode === 'multi_blank') answer = expected.map(entry => ({ ...entry, value: wrongValue(entry.value) }));
+  else if (mode === 'sorting') answer = [...expected].reverse();
+  else if (mode === 'matching') answer = { pairs: expected.pairs.map(pair => ({ ...pair,
+    right: config.right[(config.right.findIndex(option => option.id === pair.right) + 1) % config.right.length].id })) };
+  else if (mode === 'table_fill') answer = { cells: Object.fromEntries(Object.entries(expected.cells).map(([key, value]) => [key, wrongValue(value)])) };
+  else if (mode === 'drag_drop') answer = { placements: Object.fromEntries(Object.entries(expected.placements).map(([key, value]) =>
+    [key, config.groups.find(group => group.id !== value)?.id])) };
+  else if (mode === 'text_blank') answer = 'QA未达标';
+  else if (mode === 'formula_blank') answer = '-999999';
+  else if (mode === 'numeric_blank') answer = -999999;
+  else throw new Error(`This deterministic QA fixture requires a dedicated manual-review journey for ${mode}`);
+  assert.equal(gradeResponse(schema, expected, answer).score, 0, `QA wrong response must be legal and actually score zero: ${schema.questionId} / ${mode}`);
+  return answer;
+}
 async function wrongAnswer(id, item) {
   const snapshot = await store.transaction(() => structuredClone(store.find('diagnosticSessions', { id }).questionSnapshots.find(row => row.id === item.questionId)));
-  const mode = snapshot.answerSchema.mode;
-  if (mode === 'boolean') return !snapshot.answer;
-  if (mode === 'single_choice') return snapshot.answerSchema.options.find(option => option.value !== snapshot.answer).value;
-  if (mode === 'multi_blank') return snapshot.answer.map(entry => ({ ...entry, value: String(Number(entry.value) + 1) }));
-  if (mode === 'sorting') return [...snapshot.answer].reverse();
-  if (mode === 'text_blank') return 'QA未达标';
-  return -999999;
+  return legalWrongAnswer(snapshot.answerSchema, snapshot.answer);
 }
 async function contentUpgrade() {
   const authoredFamilies = buildAllAuthoredMathProbeFamilies();
@@ -114,6 +147,18 @@ async function main() {
   assert.equal(boot.status, 0, 'Formal administrator bootstrap');
   await start();
   if (verifyContentUpgrade) await contentUpgrade();
+  evidence.responseFixtures = await store.transaction(() => {
+    const manual = ['short_answer', 'stepwise', 'geometry_draw', 'image_upload', 'audio_record'], counts = {};
+    for (const { atom, exercises } of buildFoundationCurriculum()) for (const task of exercises) {
+      const id = foundationQuestionId(atom.id, task), schema = store.find('questionAnswerSchemas', { questionId: id });
+      if (manual.includes(schema.mode)) continue;
+      const question = store.find('questions', { id });
+      assert.equal(gradeResponse(schema, question.answer, question.answer).score, 1, `Persisted standard answer: ${id}`);
+      legalWrongAnswer(schema, question.answer); counts[schema.mode] = (counts[schema.mode] ?? 0) + 1;
+    }
+    return { scope: 'Every persisted objective original task; manual and media answers require their separate review journeys.',
+      modes: counts, correctStandardsAndLegalZeroScoreFixturesChecked: true };
+  });
   tokens.admin = (await call('POST', '/auth/login', { principal: 'qa-verification', credential }, 'anonymous')).token;
   for (const actor of ['parent', 'outsider']) tokens[actor] = (await call('POST', '/auth/register', {
     principal: `qa-verification-${actor}`, credential: randomBytes(24).toString('hex') }, 'anonymous')).token;

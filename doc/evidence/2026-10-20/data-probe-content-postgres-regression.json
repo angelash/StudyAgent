@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-19T23:53:13.004Z",
+  "driver": "postgres",
+  "passedAllCases": true,
+  "metrics": [
+    {
+      "case": "scoped_transactions_and_partial_refresh",
+      "passed": true,
+      "independentFamilies": 2,
+      "deniedStaleAuthorization": true,
+      "deniedPausedPlan": true,
+      "deniedPhantoms": true,
+      "deniedLostUpdates": true,
+      "deniedDuplicateIdentity": true,
+      "disjointDeleteAndEdit": true,
+      "typedSelectors": true,
+      "externalRefreshRows": 8,
+      "reusedCurriculumRows": 200
+    },
+    {
+      "case": "migrations_uniqueness_revocation",
+      "passed": true,
+      "upgradedFromVersion": 3,
+      "currentVersion": 8
+    },
+    {
+      "case": "cross_pool_security_quotas",
+      "passed": true,
+      "parallelAttempts": 25,
+      "admitted": 8
+    },
+    {
+      "case": "cross_pool_queue_fencing",
+      "passed": true
+    },
+    {
+      "case": "real_api_restart",
+      "passed": true,
+      "elapsedMs": 15422,
+      "evidenceCount": 2
+    },
+    {
+      "case": "native_backup_restore",
+      "passed": true,
+      "verifiedFiles": 5,
+      "revokedSessions": 1,
+      "fencedTasks": 1,
+      "databaseGuardFailureVerified": true,
+      "privacyDeletionLedgerVerified": true
+    }
+  ],
+  "limits": "Isolated functional acceptance. This does not establish production throughput or clinical measurement validity."
+}
