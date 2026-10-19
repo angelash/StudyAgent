@@ -28,7 +28,7 @@ type Retrospective = { fingerprint: string; reviewed: boolean; followupSessionId
 const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语']];
 const statuses: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '稳定掌握' };
 const hypothesisStatuses: Record<string, string> = { proposed: '待验证', testing: '验证中', supported: '已有支持证据', contradicted: '已有反证', inconclusive: '证据不一致', monitoring: '持续观察', resolved: '已通过后续验证', reopened: '需要再次核查', withdrawn: '原依据已撤回' };
-const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', different_dimensions: '测量维度或量规不同', insufficient: '证据待补充', uncertain: '变化尚不确定', improved: '观察到改善', declined: '需要重新指导' };
+const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', different_definitions: '知识定义待核对，暂不比较', different_dimensions: '测量维度或量规不同', insufficient: '证据待补充', uncertain: '变化尚不确定', improved: '观察到改善', declined: '需要重新指导' };
 const request = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) }, getAuthToken());
 
 export function AssessmentStudio() {
@@ -255,6 +255,12 @@ export function AssessmentStudio() {
             <div className="studio-section-head"><span className="studio-eyebrow">03 / 知道表现，也知道依据</span><h2>从知识点看清下一步。</h2><p>{report.summary}</p></div>
             {report.scopeSnapshot && <details className="studio-report-scope"><summary>本次范围：{report.scopeSnapshot.grade}年级 · {report.scopeSnapshot.term === 'upper' ? '上学期' : '下学期'} · {report.scopeSnapshot.textbookVersion}</summary><p>按评测开始时确认的范围测量：{report.scopeSnapshot.learnedAtomIds.length} 个知识点，{report.scopeSnapshot.selectedLessonIds?.length ?? 0} 个已学课时。</p>{(report.scopeSnapshot.uncoveredLessonIds?.length ?? 0) > 0 && <p>其中 {report.scopeSnapshot.uncoveredLessonIds!.length} 个课时尚缺已审核的知识映射，报告不评价这些课时。</p>}{report.scopeSnapshot.selectedLessonSnapshots?.map((lesson) => <p key={lesson.id}>{lesson.chapterName} / {lesson.name}{report.scopeSnapshot!.uncoveredLessonIds?.includes(lesson.id) && ' · 尚未覆盖'}</p>)}</details>}
             <ReportHistory sessionId={report.sessionId} />
+            {report.definitionContext && <details className="studio-report-scope"><summary>{report.definitionContext.origin === 'started' ? '测量时采用的知识目标与标准' : '这份历史报告的知识定义尚无法核对'}</summary>
+              {report.definitionContext.origin === 'unavailable' && <p>保留历史作答与报告。请按当前范围完成新评测，再判断现在的掌握情况。</p>}
+              {report.definitionContext.atoms.map(atom => <div key={atom.id}><strong>{atom.name}</strong><p>目标：{atom.objective}</p><p>达标标准：{atom.successCriterion}</p></div>)}
+              {!!report.definitionContext.incompatibleEvidenceIds.length && <p>{report.definitionContext.incompatibleEvidenceIds.length} 条历史作答采用了不同知识定义，已从本报告掌握估计中分开。</p>}
+              {!!report.definitionContext.unverifiedEvidenceIds.length && <p>{report.definitionContext.unverifiedEvidenceIds.length} 条历史作答无法核对原定义，保留记录并继续补充新证据。</p>}
+            </details>}
             <div className="studio-report-stats"><div><strong>{report.scoredCount}<small> / {report.totalCount}</small></strong><span>已评分题目</span></div><div><strong>{report.rawScore === null ? '待评分' : `${report.rawScore}%`}</strong><span>本次题目得分</span></div><div><strong>{report.unmeasuredAtomIds.length}</strong><span>尚未测到的点</span></div></div>
             <h3 className="studio-line-title">知识掌握与证据范围</h3><p className="studio-muted">点按知识点展开作答依据。横线范围越宽，说明仍需要更多证据。</p>
             <div className="studio-estimates">{report.estimates.map((estimate) => <article key={estimate.atomId} data-status={estimate.status}>
@@ -269,8 +275,8 @@ export function AssessmentStudio() {
             </article>)}</div>
             {report.hypotheses.length > 0 && <><h3 className="studio-line-title">可能卡在哪里，以及怎样验证</h3><div className="studio-hypotheses">{report.hypotheses.map((hypothesis) => <article key={hypothesis.id}><span className="studio-badge">{hypothesisStatuses[hypothesis.status]}</span><h4>{hypothesis.title}</h4><p>{hypothesis.observation}</p><p>{hypothesis.explanation}</p><small>支持 {hypothesis.supportingEvidenceIds.length} 条 · 反证 {hypothesis.counterEvidenceIds.length} 条</small>
               <details><summary>查看验证方向与其他解释</summary><p>{hypothesis.nextAction}</p><ul>{hypothesis.alternatives.map((item) => <li key={item}>{item}</li>)}</ul></details>
-              {!['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status) && <button className="studio-secondary" disabled={busy} onClick={() => verify(hypothesis)}>做一组题验证原因 ↗</button>}</article>)}</div></>}
-            {!studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy} onClick={() => execute(async () => {
+              {report.definitionContext?.origin !== 'unavailable' && !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status) && <button className="studio-secondary" disabled={busy} onClick={() => verify(hypothesis)}>做一组题验证原因 ↗</button>}</article>)}</div></>}
+            {report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。</p></div><button className="studio-primary" disabled={busy} onClick={() => setScreen('setup')}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy} onClick={() => execute(async () => {
               setPlan(await request<GuidancePlanView>(`/diagnostics/students/${studentId}/plans`, { baselineSessionId: report.sessionId, minutesPerDay: minutes, useAi: true })); setRetrospective(null); setScreen('plan');
             })}>{busy ? '正在制定…' : '制定指导计划'} ↗</button></div> : <div className="studio-hint"><strong>这次的观察已经保存。</strong><p>请家长查看报告，一起确认下一步指导；也可以继续完成新的验证任务。</p><Link className="studio-secondary" href="/student/today">回到今日学习 ↗</Link></div>}<p className="studio-footnote">{report.modelNotice}</p>
           </>}

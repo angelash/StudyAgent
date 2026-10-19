@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
-  LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
+  KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -15,6 +15,7 @@ import { gradeResponse } from './scoring';
 import { prepareScoringReview } from './scoring-review';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
+import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measurement-definition';
 
 @Injectable()
 export class DiagnosticsService {
@@ -37,6 +38,9 @@ export class DiagnosticsService {
       const baselineVersion = plan.baselineReportVersion ?? this.store.diagnosticReports.filter(r => r.sessionId === plan.baselineSessionId && r.createdAt <= plan.createdAt)
         .sort((a, b) => b.version - a.version)[0]?.version ?? 1;
       if (baselineVersion !== (this.report(user, plan.baselineSessionId).version ?? 1)) throw new ConflictException('评测依据已修订，请先核对指导计划');
+      const baseline = this.requireSession(user, plan.baselineSessionId);
+      if (!baseline.atomSnapshots) throw new ConflictException('历史计划未保存知识定义，请重新评测后建立新计划');
+      if (this.changedPlanDefinitions(baseline, plan.actions.map(action => action.atomId)).length) throw new ConflictException('知识定义已调整，请按当前定义重新评测并建立计划');
     }
     if (review && (review.status !== 'pending' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已不可用');
     const scope = plan ? this.requireSession(user, plan.baselineSessionId).scopeSnapshot : scopeOverride ?? this.curriculum.getScope(user, command.studentId, command.subject);
@@ -48,6 +52,10 @@ export class DiagnosticsService {
     if (command.hypothesisId) {
       const hypothesis = this.store.find('diagnosticHypotheses', { id: command.hypothesisId, studentId: command.studentId, subject: command.subject });
       if (!hypothesis) throw new NotFoundException('待验证问题不存在');
+      const definition = this.store.find('knowledgeAtoms', { id: hypothesis.atomId });
+      if (!definition || hypothesis.atomDefinitionFingerprint !== atomDefinitionFingerprint(definition)) {
+        throw new ConflictException('该问题的知识定义已变化或无法核对，请重新评测后再验证原因');
+      }
       targets = command.targetAtomIds ?? hypothesis.probeAtomIds;
       if (targets.some((id) => !hypothesis.probeAtomIds.includes(id))) throw new BadRequestException('验证点超出当前假设的范围');
     }
@@ -96,6 +104,7 @@ export class DiagnosticsService {
     const session: DiagnosticSession = {
       id: this.store.nextId('diagnostic'), studentId: command.studentId, subject: command.subject, intent: command.intent,
       status: 'in_progress', scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id), itemSnapshots: selected,
+      atomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set([...scope.learnedAtomIds, ...targetSet])] })),
       questionSnapshots: selected.map((item) => {
         const question = this.store.find('questions', { id: item.questionId })!;
         const payload = this.workspace.buildRenderPayload(question.id);
@@ -129,6 +138,25 @@ export class DiagnosticsService {
     return session;
   }
 
+  definitionsForSession(session: DiagnosticSession): KnowledgeAtom[] {
+    const ids = [...new Set([...session.scopeSnapshot.learnedAtomIds, ...session.coverage.map(item => item.atomId)])];
+    return session.atomSnapshots ?? this.store.select('knowledgeAtoms', { id: ids });
+  }
+
+  definitionEvidence(atoms: readonly KnowledgeAtom[], responses: DiagnosticResponse[], studentId: string, known = true) {
+    const sessions = new Map(this.store.select('diagnosticSessions', { studentId }).map(session => [session.id, session]));
+    return compatibleDefinitionEvidence(atoms, responses, sessions, known);
+  }
+
+  changedPlanDefinitions(baseline: DiagnosticSession, atomIds: string[]) {
+    // Legacy plans retain their historical origin, rather than inventing a frozen definition.
+    if (!baseline.atomSnapshots) return [];
+    return atomIds.filter(id => {
+      const original = baseline.atomSnapshots!.find(atom => atom.id === id), current = this.store.find('knowledgeAtoms', { id });
+      return !original || !current || current.status !== 'published' || atomDefinitionFingerprint(original) !== atomDefinitionFingerprint(current);
+    });
+  }
+
   listSessions(user: InMemoryUserAccount, studentId: string, subject: Subject) {
     this.students.assertCanAccessStudent(user, studentId);
     return this.store.select('diagnosticSessions', { studentId: studentId, subject: subject })
@@ -143,7 +171,7 @@ export class DiagnosticsService {
       startedAt: session.startedAt, completedAt: session.completedAt, answeredCount: responses.length, totalCount: session.itemIds.length,
       planId: session.planId ?? null, planRevision: session.planRevision ?? null,
       items: session.itemSnapshots.map((item) => ({ id: item.id, questionId: item.questionId, atomId: item.atomId, dimension: item.dimension,
-        atomName: this.store.find('knowledgeAtoms', { id: item.atomId })?.name ?? item.atomId,
+        atomName: this.definitionsForSession(session).find(atom => atom.id === item.atomId)?.name ?? item.atomId,
         reason: session.selectionReasons[item.id], answered: responses.some((response) => response.itemId === item.id) })) };
   }
 
@@ -197,7 +225,8 @@ export class DiagnosticsService {
     const grade = command.disposition === 'answered' ? gradeResponse(question.answerSchema as QuestionAnswerSchema, question.answer, command.answer) :
       command.disposition === 'dont_know' ? { score: 0, correct: false, status: 'scored' as const, reason: '学生选择暂时不会，作为当前任务表现记录。' } :
         { score: null, correct: null, status: 'skipped' as const, reason: '本题已跳过，不计为错误。' };
-    const priorIndependent = this.effectiveResponses(session.studentId, session.subject).filter((item) => item.atomId === mapping.atomId &&
+    const atom = session.atomSnapshots?.find(atom => atom.id === mapping.atomId);
+    const priorIndependent = this.definitionEvidence(atom ? [atom] : [], this.effectiveResponses(session.studentId, session.subject), session.studentId, !!session.atomSnapshots).compatible.filter((item) => item.atomId === mapping.atomId &&
       item.sessionId !== sessionId && item.correct && item.hintLevel === 0 && !item.priorExposure && item.submittedAt < session.startedAt)
       .sort((a, b) => b.submittedAt.localeCompare(a.submittedAt))[0];
     const delay = priorIndependent ? Math.max(0, (Date.now() - Date.parse(priorIndependent.submittedAt)) / 86_400_000) : null;
@@ -212,6 +241,7 @@ export class DiagnosticsService {
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
       priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
+      ...(atom && session.atomSnapshots ? { atomVersion: atom.version, atomDefinitionFingerprint: atomDefinitionFingerprint(atom) } : {}),
     };
     this.store.append('diagnosticResponses', response);
     this.media.bind(mediaIds, response.id);
@@ -225,12 +255,12 @@ export class DiagnosticsService {
     if (session.status !== 'in_progress' || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) throw new BadRequestException('当前题目已提交');
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不存在');
-    const atom = this.store.find('knowledgeAtoms', { id: mapping.atomId })!;
+    const atom = session.atomSnapshots?.find(atom => atom.id === mapping.atomId);
     const previous = this.store.select('diagnosticHints', { sessionId: sessionId, itemId: itemId });
     const level = Math.min(previous.length + 1, 2);
     this.store.append('diagnosticHints', { id: this.store.nextId('diagnostic_hint'), sessionId, itemId, level, at: new Date().toISOString() });
-    return { level, hint: level === 1 ? `先确认这道题要你完成什么，再想一想“${atom.name}”的关键条件。` :
-      `试着把任务拆成小步骤：${atom.objective}。完成一步就核对一次条件。`, notice: '提示后的表现会与首次独立作答分开记录。' };
+    return { level, hint: level === 1 ? `先确认这道题要你完成什么，再想一想“${atom?.name ?? '当前任务'}”的关键条件。` :
+      `试着把任务拆成小步骤：${atom?.objective ?? '先列出已知条件与要求解决的目标'}。完成一步就核对一次条件。`, notice: '提示后的表现会与首次独立作答分开记录。' };
   }
 
   complete(user: InMemoryUserAccount, sessionId: string) {
@@ -267,8 +297,10 @@ export class DiagnosticsService {
   }
 
   refreshHypotheses(studentId: string, subject: Subject) {
-    const next = deriveHypotheses(studentId, subject, this.store.select('knowledgeAtoms', { subject: subject }),
-      this.effectiveResponses(studentId, subject), this.allMappings(studentId), this.store.select('diagnosticHypotheses', { studentId, subject }), new Date().toISOString());
+    const atoms = this.store.select('knowledgeAtoms', { subject });
+    const next = deriveHypotheses(studentId, subject, atoms,
+      this.definitionEvidence(atoms, this.effectiveResponses(studentId, subject), studentId).compatible,
+      this.allMappings(studentId), this.store.select('diagnosticHypotheses', { studentId, subject }), new Date().toISOString());
     for (const hypothesis of next) {
       const existing = this.store.find('diagnosticHypotheses', { id: hypothesis.id });
       if (existing) Object.assign(existing, hypothesis); else this.store.append('diagnosticHypotheses', hypothesis);
@@ -285,29 +317,40 @@ export class DiagnosticsService {
     const scope = this.curriculum.getScope(user, studentId, subject);
     const atoms = this.store.inspect('knowledgeAtoms').filter((item) => item.subject === subject && item.status === 'published' &&
       (!scope || item.grade <= scope.grade));
-    const weighted = weightedEvidence(this.effectiveResponses(studentId, subject), this.allMappings(studentId), new Date());
+    const compatibility = this.definitionEvidence(atoms, this.effectiveResponses(studentId, subject), studentId);
+    const weighted = weightedEvidence(compatibility.compatible, this.allMappings(studentId), new Date());
     return { studentId, subject, scope, estimates: atoms.map((atom) => estimateMastery(atom, weighted)),
-      hypotheses: this.store.select('diagnosticHypotheses', { studentId: studentId, subject: subject }), modelVersion: MEASUREMENT_VERSION };
+      hypotheses: this.store.select('diagnosticHypotheses', { studentId, subject }).filter(hypothesis => atoms.some(atom =>
+        atom.id === hypothesis.atomId && atomDefinitionFingerprint(atom) === hypothesis.atomDefinitionFingerprint)),
+      definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
+      modelVersion: MEASUREMENT_VERSION };
   }
 
   report(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
     const saved = this.store.select('diagnosticReports', { sessionId: sessionId }).sort((a, b) => b.version - a.version)[0];
-    return saved ? { ...saved.report, version: saved.version, generatedAt: saved.createdAt } : this.buildReport(session);
+    return saved ? { ...this.reportOrigin(saved.report), version: saved.version, generatedAt: saved.createdAt } : this.buildReport(session);
   }
 
   reportHistory(user: InMemoryUserAccount, sessionId: string) {
     this.requireSession(user, sessionId);
     return this.store.select('diagnosticReports', { sessionId: sessionId }).sort((a, b) => b.version - a.version)
-      .map((item) => ({ ...item.report, version: item.version, generatedAt: item.createdAt }));
+      .map((item) => ({ ...this.reportOrigin(item.report), version: item.version, generatedAt: item.createdAt }));
+  }
+
+  private reportOrigin(report: DiagnosticReport): DiagnosticReport {
+    return report.definitionContext ? report : { ...report, definitionContext: { origin: 'unavailable', atoms: [],
+      incompatibleEvidenceIds: [], unverifiedEvidenceIds: report.evidence.map(item => item.id) },
+      modelNotice: report.modelNotice + ' 此历史报告未保存知识定义快照，保留原估计供查阅，不能直接与当前定义比较。' };
   }
 
   private buildReport(session: DiagnosticSession): DiagnosticReport {
     const all = this.effectiveResponses(session.studentId, session.subject).filter((item) => !session.completedAt || item.submittedAt <= session.completedAt);
     const evidence = all.filter((item) => item.sessionId === session.id);
-    const weighted = weightedEvidence(all, this.allMappings(session.studentId), new Date(session.completedAt ?? Date.now()));
-    const ids = new Set([...session.scopeSnapshot.learnedAtomIds, ...session.coverage.map((item) => item.atomId)]);
-    const estimates = this.store.inspect('knowledgeAtoms').filter((item) => ids.has(item.id)).map((atom) => estimateMastery(atom, weighted));
+    const atoms = this.definitionsForSession(session);
+    const compatibility = this.definitionEvidence(atoms, all, session.studentId, !!session.atomSnapshots);
+    const weighted = weightedEvidence(compatibility.compatible, this.allMappings(session.studentId), new Date(session.completedAt ?? Date.now()));
+    const estimates = atoms.map((atom) => estimateMastery(atom, weighted));
     const scored = evidence.filter((item) => item.status === 'scored' && item.score !== null);
     const pending = evidence.filter((item) => item.status === 'pending_review').length;
     const insufficient = estimates.filter((item) => item.status === 'unknown' || item.status === 'insufficient').length;
@@ -321,11 +364,15 @@ export class DiagnosticsService {
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,
       coverage: session.coverage, estimates,
-      hypotheses: deriveHypotheses(session.studentId, session.subject, this.store.inspect('knowledgeAtoms').filter((item) => ids.has(item.id)),
-        all, this.allMappings(session.studentId), previous, measuredAt),
+      hypotheses: deriveHypotheses(session.studentId, session.subject, atoms,
+        compatibility.compatible, this.allMappings(session.studentId), previous, measuredAt),
       evidence, unmeasuredAtomIds: estimates.filter((item) => !item.scoredCount).map((item) => item.atomId),
       scopeSnapshot: structuredClone(session.scopeSnapshot),
       scoringRevisionIds: this.store.scoringRevisions.filter((revision) => all.some((item) => item.id === revision.responseId)).map((item) => item.id),
+      definitionContext: { origin: session.atomSnapshots ? 'started' : 'unavailable',
+        atoms: (session.atomSnapshots ?? []).map(atom => ({ id: atom.id, name: atom.name, version: atom.version, objective: atom.objective,
+          successCriterion: atom.successCriterion, fingerprint: session.atomSnapshots ? atomDefinitionFingerprint(atom) : null })),
+        incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
       summary: `本次已评分 ${scored.length} 题，${pending} 题待复核；${insufficient} 个知识点仍需补充证据。下一步优先核查具体知识与步骤。`,
       modelNotice: '掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。' };
   }
@@ -346,7 +393,10 @@ export class DiagnosticsService {
     this.refreshHypotheses(response.studentId, session.subject);
     // Later reports also used this evidence. Retain every earlier snapshot when rebuilding them.
     for (const affected of this.store.select('diagnosticSessions', { studentId: session.studentId, subject: session.subject }).filter((item) =>
-      item.status === 'completed' && item.completedAt! >= response.submittedAt)) {
+      item.status === 'completed' && item.completedAt! >= response.submittedAt && (item.id === session.id ||
+        this.definitionEvidence(this.definitionsForSession(item), [response], item.studentId, !!item.atomSnapshots).compatible.length > 0 ||
+        (!item.atomSnapshots && this.store.select('diagnosticReports', { sessionId: item.id }).some(saved =>
+          saved.report.estimates.some(estimate => estimate.evidenceIds.includes(response.id))))))) {
       this.store.append('diagnosticReports', { id: this.store.nextId('report'), sessionId: affected.id,
         version: Math.max(0, ...this.store.select('diagnosticReports', { sessionId: affected.id }).map((item) => item.version)) + 1,
         createdAt: revision.createdAt, report: { ...this.buildReport(affected), revisionReason: '作答证据经人工复核，已重新计算依赖该证据的报告。' } });

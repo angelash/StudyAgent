@@ -179,6 +179,123 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     return { baseline, plan, activity };
   }
 
+  it('freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes', async () => {
+    const original = structuredClone(store.knowledgeAtoms.find((atom: any) => atom.id === 'target'));
+    const session = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 4 });
+    const updated = await call('post', '/admin/knowledge-atoms', { ...original, name: '新的测量目标',
+      objective: '对照新条件完成不同的可观察操作并说明依据' }, 201, admin);
+    expect((await call('get', `/diagnostics/sessions/${session.id}`)).items.every((item: any) => item.atomName === original.name)).toBe(true);
+    await call('post', `/diagnostics/sessions/${session.id}/items/${session.items[0].id}/hint`, {});
+    const hint = await call('post', `/diagnostics/sessions/${session.id}/items/${session.items[0].id}/hint`, {});
+    expect(hint.hint).toContain(original.objective); expect(hint.hint).not.toContain(updated.objective);
+    for (const item of session.items) await submit(session, item, 6);
+    const first = await call('post', `/diagnostics/sessions/${session.id}/complete`, {});
+    expect(first.estimates.find((estimate: any) => estimate.atomId === 'target').atomName).toBe(original.name);
+    expect(first.definitionContext.atoms.find((atom: any) => atom.id === 'target').objective).toBe(original.objective);
+    expect(first.evidence.every((response: any) => response.atomVersion === 1)).toBe(true);
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(first.evidence[1].id)}/review`,
+      { score: 0, reason: '合成评分修订，用于核查旧知识定义不被当前定义替换', requestKey: 'definition-review', expectedVersion: 0 }, 201, admin);
+    const revised = await call('get', `/diagnostics/sessions/${session.id}/report`);
+    expect(revised.definitionContext.atoms).toEqual(first.definitionContext.atoms);
+    expect(revised.estimates.find((estimate: any) => estimate.atomId === 'target').atomName).toBe(original.name);
+    const profile = await call('get', `/diagnostics/students/${studentId}/profile?subject=math`);
+    expect(profile.estimates.find((estimate: any) => estimate.atomId === 'target').scoredCount).toBe(0);
+    expect(profile.definitionCompatibility.incompatibleEvidenceIds).toHaveLength(4);
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'math', targetAtomIds: ['target'], maxItems: 2 }, 400);
+    const coverage = await call('get', '/admin/curriculum/overview?subject=math', undefined, 200, admin);
+    expect(coverage.atoms.find((atom: any) => atom.id === 'target').approvedQuestions).toBe(0);
+    expect(coverage.atoms.find((atom: any) => atom.id === 'target').definitionGaps).toBe(32);
+    const staleMappings = await call('get', '/admin/curriculum/atoms/target/items', undefined, 200, admin);
+    expect(staleMappings.every((item: any) => !item.eligible && item.definitionIssue.includes('知识定义'))).toBe(true);
+    for (const mapping of store.measurementItems.filter((mapping: any) => mapping.atomId === 'target').slice(0, 8))
+      await call('post', '/admin/measurement-items', structuredClone(mapping), 201, admin);
+    vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(new Date(Date.now() + 2 * 86_400_000));
+    owner = await auth.login({ principal: 'diagnostic-parent@test', credential: 'diagnostic-secret-123' }, 'definition-renew');
+    const next = await start({ intent: 'retest', targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of next.items) await submit(next, item, 6);
+    const nextReport = await call('post', `/diagnostics/sessions/${next.id}/complete`, {});
+    expect(nextReport.evidence.every((response: any) => response.retentionDelayDays === null && response.dimension === 'procedure')).toBe(true);
+    expect(nextReport.definitionContext.incompatibleEvidenceIds).toHaveLength(4);
+    expect(nextReport.estimates.find((estimate: any) => estimate.atomId === 'target').scoredCount).toBe(2);
+    admin = await auth.login({ principal: 'diagnostic-reviewer@test', credential: 'diagnostic-secret-123' }, 'definition-admin-renew');
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(first.evidence[2].id)}/review`,
+      { score: 0, reason: '修订另一旧定义作答，不应使当前不同定义报告失效', requestKey: 'old-definition-review', expectedVersion: 0 }, 201, admin);
+    expect((await call('get', `/diagnostics/sessions/${next.id}/report`)).version).toBe(1);
+  });
+
+  it('keeps labels and teaching revisions comparable while preserving historical names', async () => {
+    const { baseline, plan } = await activatePractice();
+    const original = store.knowledgeAtoms.find((atom: any) => atom.id === 'target');
+    await call('post', '/admin/knowledge-atoms', { ...original, name: '更清楚的展示名称', strand: '更新展示领域', curriculumVersion: 'metadata-v2' }, 201, admin);
+    const profile = await call('get', `/diagnostics/students/${studentId}/profile?subject=math`);
+    expect(profile.estimates.find((estimate: any) => estimate.atomId === 'target').scoredCount).toBe(2);
+    expect(profile.definitionCompatibility.incompatibleEvidenceIds).toHaveLength(0);
+    expect((await call('get', `/diagnostics/sessions/${baseline.id}/report`)).estimates[0].atomName).toBe('target');
+    expect((await call('get', `/diagnostics/plans/${plan.id}`)).impact.needsReview).toBe(false);
+    expect((await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 })).items.length).toBe(2);
+  });
+
+  it('blocks new guidance and verification after changed definitions while retaining started practice', async () => {
+    const { baseline, plan, activity } = await activatePractice();
+    const original = structuredClone(store.knowledgeAtoms.find((atom: any) => atom.id === 'target'));
+    await call('post', '/admin/knowledge-atoms', { ...original, name: '调整后的新知识目标', objective: '改成另一个可观察行为，不能用于旧练习提示',
+      successCriterion: '新条件下完成不同的步骤并给出新的核对依据' }, 201, admin);
+    const current = await call('get', `/diagnostics/plans/${plan.id}`);
+    expect(current.impact.definitionChangedActionIds).toEqual([plan.actions[0].id]); expect(current.impact.needsReview).toBe(true);
+    await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false }, 409);
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'math', planId: plan.id, intent: 'verification', maxItems: 2 }, 409);
+    const hypothesis = store.diagnosticHypotheses.find((item: any) => item.atomId === 'target');
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'math', hypothesisId: hypothesis.id, intent: 'verification', maxItems: 2 }, 409);
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, { expectedRevision: plan.revision, requestKey: 'definition-adjust', reason: '修改活动不能绕过知识定义核对',
+      acknowledgeReportVersion: 1, minutesPerDay: 10, actions: plan.actions.map((action: any) => ({ actionId: action.id, minutes: 10, activity: '重新说明步骤并进行独立核查。' })) }, 409);
+    expect((await call('get', `/learning/practice/${activity.id}`)).action).toEqual(activity.action);
+    expect((await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {})).id).toBe(activity.id);
+    await call('post', `/learning/practice/${activity.id}/questions/${activity.questions[0].id}/hint`, {});
+    const hint = await call('post', `/learning/practice/${activity.id}/questions/${activity.questions[0].id}/hint`, {});
+    expect(hint.hint).toContain(original.objective);
+    expect((await call('get', `/learning/students/${studentId}/mistakes?subject=math`)).every((row: any) => row.atomName === original.name)).toBe(true);
+  });
+
+  it('preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence', async () => {
+    const { baseline, plan, activity } = await activatePractice();
+    delete store.diagnosticSessions.find((session: any) => session.id === baseline.id).atomSnapshots;
+    for (const response of store.diagnosticResponses) { delete response.atomDefinitionFingerprint; delete response.atomVersion; }
+    delete store.diagnosticReports.find((report: any) => report.sessionId === baseline.id).report.definitionContext;
+    const report = await call('get', `/diagnostics/sessions/${baseline.id}/report`);
+    expect(report.definitionContext.origin).toBe('unavailable'); expect(report.evidence).toHaveLength(2);
+    const profile = await call('get', `/diagnostics/students/${studentId}/profile?subject=math`);
+    expect(profile.estimates.find((estimate: any) => estimate.atomId === 'target').status).toBe('unknown');
+    expect(profile.definitionCompatibility.unverifiedEvidenceIds).toHaveLength(2);
+    expect((await call('get', `/diagnostics/plans/${plan.id}`)).impact.definitionUnverifiedActionIds).toEqual([plan.actions[0].id]);
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'math', planId: plan.id, intent: 'verification', maxItems: 2 }, 409);
+    expect((await call('get', `/learning/practice/${activity.id}`)).action).toEqual(activity.action);
+    await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false }, 400);
+    expect(store.diagnosticReports.find((report: any) => report.sessionId === baseline.id).report.definitionContext).toBeUndefined();
+  });
+
+  it('excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint', async () => {
+    const { plan } = await activatePractice();
+    const followup = await start({ planId: plan.id, intent: 'verification', targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of followup.items) await submit(followup, item, 6);
+    await call('post', `/diagnostics/sessions/${followup.id}/complete`, {});
+    expect((await call('get', `/diagnostics/plans/${plan.id}/retrospective`)).independentFollowupCount).toBe(2);
+    // Simulate a pre-upgrade linked historical observation with a different definition.
+    const raw = store.diagnosticSessions.find((session: any) => session.id === followup.id);
+    raw.atomSnapshots.find((atom: any) => atom.id === 'target').objective = '采用另一组条件完成不同的可观察行为';
+    const { atomDefinitionFingerprint } = require('../../../dist/apps/api/src/modules/diagnostics/measurement-definition.js');
+    const fingerprint = atomDefinitionFingerprint(raw.atomSnapshots.find((atom: any) => atom.id === 'target'));
+    for (const response of store.diagnosticResponses.filter((response: any) => response.sessionId === raw.id)) response.atomDefinitionFingerprint = fingerprint;
+    const review = await call('get', `/diagnostics/plans/${plan.id}/retrospective`);
+    expect(review.followupSessionIds).toHaveLength(0); expect(review.definitionCompatibility.incompatibleEvidenceIds).toHaveLength(2);
+    expect(review.comparisons[0].outcome).toBe('different_definitions');
+    const unrelated = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of unrelated.items) await submit(unrelated, item, 6);
+    await call('post', `/diagnostics/sessions/${unrelated.id}/complete`, {});
+    expect((await call('get', `/diagnostics/plans/${plan.id}/retrospective`)).fingerprint).toBe(review.fingerprint);
+    await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, { expectedRevision: plan.revision,
+      requestKey: 'incompatible-followup', fingerprint: review.fingerprint, reason: '不同定义的后测不能作为本计划已验证的依据' }, 400);
+  });
+
   it('versions parent adjustments, enforces budgets and idempotency, and freezes started activities', async () => {
     const { plan, activity } = await activatePractice();
     const schedule = await call('get', `/diagnostics/plans/${plan.id}/reviews`);

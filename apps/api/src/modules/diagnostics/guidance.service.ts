@@ -30,6 +30,10 @@ export class GuidanceService {
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
+    if (!session.atomSnapshots) throw new BadRequestException('历史评测未保存知识定义，请完成一轮新评测后建立指导计划');
+    if (this.diagnostics.changedPlanDefinitions(session, report.estimates.map(estimate => estimate.atomId)).length) {
+      throw new ConflictException('知识定义已调整，请按当前定义重新评测后建立计划');
+    }
     const atomMap = new Map(this.store.inspect('knowledgeAtoms').map((atom) => [atom.id, atom]));
     const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved', 'withdrawn'].includes(item.status));
     const prioritized = [...report.estimates].sort((a, b) => {
@@ -102,10 +106,17 @@ export class GuidanceService {
   private view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView {
     const report = this.diagnostics.report(user, plan.baselineSessionId), version = this.baseVersion(plan);
     const changed = version !== (report.version ?? 1);
+    const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
+    const definitionChangedActionIds = plan.actions.filter(action => this.diagnostics.changedPlanDefinitions(baseline, [action.atomId]).length).map(action => action.id);
+    const definitionUnverifiedActionIds = baseline.atomSnapshots ? [] : plan.actions.map(action => action.id);
+    const definitionIssues = [...definitionChangedActionIds, ...definitionUnverifiedActionIds];
     return { ...plan, revision: plan.revision ?? 1, baselineReportVersion: version, impact: {
-      needsReview: changed, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
-      pendingReviewCount: report.pendingReviewCount, affectedActionIds: changed ? plan.actions.map(a => a.id) : [],
-      message: changed ? '作为依据的评测已修订。请查看新证据，再确认或调整指导计划。' :
+      needsReview: changed || definitionIssues.length > 0, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
+      pendingReviewCount: report.pendingReviewCount, affectedActionIds: changed ? plan.actions.map(a => a.id) : definitionIssues,
+      definitionChangedActionIds, definitionUnverifiedActionIds,
+      message: definitionUnverifiedActionIds.length ? '历史计划未保存知识定义，暂不能核对新旧证据。请重新评测后建立新计划；已开始的练习可继续回看。' :
+        definitionChangedActionIds.length ? '知识点的目标或测量条件已调整。请重新评测当前定义，再建立新指导计划；原计划和已开始练习保留。' :
+        changed ? '作为依据的评测已修订。请查看新证据，再确认或调整指导计划。' :
         report.pendingReviewCount ? `还有 ${report.pendingReviewCount} 条作答等待评分；当前指导按已有证据安排。` : '指导依据与当前评测版本一致。',
     } };
   }
@@ -146,6 +157,8 @@ export class GuidanceService {
   adjust(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
     this.students.assertGuardian(user, plan.studentId);
+    const impact = this.view(user, plan).impact;
+    if (impact.definitionChangedActionIds?.length || impact.definitionUnverifiedActionIds?.length) throw new ConflictException('知识定义已变化或无法核对，修改活动不能替代重新评测，请建立新计划');
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180), reason: reasonSchema,
       minutesPerDay: z.number().int().min(5).max(60), acknowledgeReportVersion: z.number().int().positive(),
       actions: z.array(z.object({ actionId: z.string().max(180), minutes: z.number().int().min(1).max(60),
@@ -266,12 +279,16 @@ export class GuidanceService {
     const plan = this.store.find('diagnosticPlans', { id: planId });
     if (!plan) throw new NotFoundException('计划不存在');
     this.students.assertCanAccessStudent(user, plan.studentId);
-    const all = this.diagnostics.effectiveResponses(plan.studentId, plan.subject);
-    const before = all.filter((item) => item.sessionId === plan.baselineSessionId);
+    const raw = this.diagnostics.effectiveResponses(plan.studentId, plan.subject);
+    const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId), atoms = this.diagnostics.definitionsForSession(baseline);
     const linkedReviewIds = new Set(this.store.select('reviewTasks', { planId: planId }).map(t => t.id));
     const sessions = this.store.select('diagnosticSessions', { studentId: plan.studentId, subject: plan.subject }).filter((item) =>
       item.status === 'completed' && item.id !== plan.baselineSessionId &&
       (item.planId === planId || (item.reviewTaskId && linkedReviewIds.has(item.reviewTaskId))));
+    const relevant = raw.filter(item => item.sessionId === baseline.id || sessions.some(session => session.id === item.sessionId));
+    const compatibility = this.diagnostics.definitionEvidence(atoms, relevant, plan.studentId, !!baseline.atomSnapshots);
+    const all = compatibility.compatible;
+    const before = all.filter((item) => item.sessionId === plan.baselineSessionId);
     const after = all.filter((item) => sessions.some((session) => session.id === item.sessionId) && !before.some((baseline) => baseline.questionId === item.questionId));
     const mappings = this.diagnostics.allMappings(plan.studentId);
     // A delayed observation is labelled retention for mastery, but still measures its
@@ -288,12 +305,15 @@ export class GuidanceService {
     const fingerprint = inputHash('retrospective-v1', { planId, actions: plan.actions.map(a => [a.id, a.atomId]),
       reportVersion: this.diagnostics.report(user, plan.baselineSessionId).version ?? 1,
       sessions: sessions.map(s => [s.id, this.diagnostics.report(user, s.id).version ?? 1]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
+      definitionContext: { baseline: baseline.atomSnapshots?.map(atom => [atom.id, atom.objective, atom.successCriterion, atom.prerequisiteIds]),
+        incompatible: compatibility.incompatibleEvidenceIds, unverified: compatibility.unverifiedEvidenceIds },
       evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
     return { planId, baselineSessionId: plan.baselineSessionId, followupSessionIds, independentFollowupCount: independent.length, fingerprint,
       practiceSessionIds: this.store.select('practiceSessions', { planId: planId }).map(s => s.id),
       reviewed: plan.retrospectiveReview?.fingerprint === fingerprint,
+      definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
       comparisons: plan.actions.map((action) => {
-        const atom = this.store.find('knowledgeAtoms', { id: action.atomId })!;
+        const atom = atoms.find(atom => atom.id === action.atomId)!;
         const pre = before.filter((item) => item.atomId === atom.id), post = after.filter((item) => item.atomId === atom.id);
         const sharedScales = new Set(pre.map(comparisonKey).filter(key => post.some(item => comparisonKey(item) === key)));
         const preComparable = pre.filter(item => sharedScales.has(comparisonKey(item)));
@@ -302,7 +322,9 @@ export class GuidanceService {
         const afterEstimate = estimateMastery(atom, weightedEvidence(postComparable, mappings, new Date()));
         const sufficient = beforeEstimate.effectiveSamples >= 3 && afterEstimate.effectiveSamples >= 3 &&
           beforeEstimate.independentFamilies >= 2 && afterEstimate.independentFamilies >= 2;
-        const outcome = !post.length ? 'awaiting_retest' : !sharedScales.size ? 'different_dimensions' : !sufficient ? 'insufficient' :
+        const incompatiblePost = raw.some(item => item.atomId === atom.id && sessions.some(session => session.id === item.sessionId) &&
+          (compatibility.incompatibleEvidenceIds.includes(item.id) || compatibility.unverifiedEvidenceIds.includes(item.id)));
+        const outcome = !post.length ? incompatiblePost ? 'different_definitions' : 'awaiting_retest' : !sharedScales.size ? 'different_dimensions' : !sufficient ? 'insufficient' :
           afterEstimate.lower! > beforeEstimate.upper! ? 'improved' : afterEstimate.upper! < beforeEstimate.lower! ? 'declined' : 'uncertain';
         return { atomId: atom.id, atomName: atom.name, before: beforeEstimate, after: afterEstimate, outcome,
           retentionSamples: post.filter((item) => item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1).length,

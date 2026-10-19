@@ -1,4 +1,6 @@
 import { DiagnosticHypothesis, DiagnosticResponse, KnowledgeAtom, MeasurementItem, Subject } from '@study-agent/contracts';
+import { createHash } from 'node:crypto';
+import { atomDefinitionFingerprint } from './measurement-definition';
 
 const ids = (evidence: DiagnosticResponse[]) => evidence.map((item) => item.id);
 const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map((item) => item.family)).size;
@@ -50,7 +52,8 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
 
     for (const proposal of proposals) {
       if (!proposal.supporting.length && !proposal.counter.length) continue;
-      const id = `hypothesis:${studentId}:${atom.id}:${proposal.cause}`;
+      const fingerprint = atomDefinitionFingerprint(atom);
+      const id = `hypothesis:${createHash('sha256').update(JSON.stringify([studentId, atom.id, proposal.cause, fingerprint])).digest('hex')}`;
       const old = previous.find((item) => item.id === id);
       let status: DiagnosticHypothesis['status'] = proposal.supported && proposal.contradicted ? 'inconclusive' :
         proposal.contradicted ? 'contradicted' : proposal.supported ? 'supported' : 'proposed';
@@ -67,7 +70,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
         explanation: proposal.explanation, alternatives: ['题意或评分可能需要复核', '作答环境、误触和当日状态尚未测量', '其他知识或策略因素仍待排查'],
         supportingEvidenceIds: ids(proposal.supporting), counterEvidenceIds: ids(proposal.counter),
         probeAtomIds: proposal.probes, nextAction: proposal.action, confidence: proposal.supported ? 'medium' : 'low',
-        ruleVersion: 'diagnosis-rules-v1', updatedAt: at, history });
+        ruleVersion: 'diagnosis-rules-v2', atomDefinitionFingerprint: fingerprint, updatedAt: at, history });
     }
   }
   return results;

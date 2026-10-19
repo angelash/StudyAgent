@@ -55,6 +55,7 @@ export const measurementItemSchema = z.object({
   expectedSeconds: z.number().int().min(5).max(1200), difficulty: z.number().int().min(1).max(5),
   reviewStatus: z.enum(['draft', 'approved', 'rejected']), mappingWeight: z.number().positive().max(1),
   observationCode: z.string().min(1).max(100), version: z.number().int().positive(),
+  atomDefinitionFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
 });
 export type MeasurementItem = z.infer<typeof measurementItemSchema>;
 
@@ -68,6 +69,7 @@ export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 export type DiagnosticSession = {
   id: string; studentId: string; subject: z.infer<typeof subject>; intent: DiagnosticStart['intent'];
   status: 'in_progress' | 'completed' | 'aborted'; scopeSnapshot: LearningScope;
+  atomSnapshots?: KnowledgeAtom[];
   itemIds: string[]; itemSnapshots: MeasurementItem[];
   questionSnapshots: Array<{ id: string; stem: string; answer: unknown; analysis: string;
     document: unknown; answerSchema: unknown; renderPayload: unknown; questionType: string }>;
@@ -93,6 +95,7 @@ export type DiagnosticResponse = {
   retentionDelayDays: number | null;
   submittedAt: string; gradingVersion: string; requestKey: string;
   priorExposure?: boolean;
+  atomVersion?: number; atomDefinitionFingerprint?: string;
 };
 
 export type ScoringRevision = {
@@ -120,6 +123,7 @@ export type DiagnosticHypothesis = {
   supportingEvidenceIds: string[]; counterEvidenceIds: string[]; probeAtomIds: string[];
   nextAction: string; confidence: 'low' | 'medium'; ruleVersion: string; updatedAt: string;
   history: Array<{ at: string; status: string; reason: string }>;
+  atomDefinitionFingerprint?: string;
 };
 
 export type GuidanceAction = {
@@ -138,7 +142,8 @@ export type DiagnosticGuidancePlan = {
 };
 export type GuidancePlanView = DiagnosticGuidancePlan & {
   impact: { needsReview: boolean; baselineReportVersion: number; currentReportVersion: number;
-    pendingReviewCount: number; affectedActionIds: string[]; message: string };
+    pendingReviewCount: number; affectedActionIds: string[]; message: string; definitionChangedActionIds?: string[];
+    definitionUnverifiedActionIds?: string[] };
 };
 export type GuidancePlanRevision = {
   id: string; planId: string; revision: number; kind: 'created' | 'legacy' | 'adjusted' | 'status' | 'retrospective';
@@ -161,4 +166,7 @@ export type DiagnosticReport = {
   summary: string; modelNotice: string;
   scopeSnapshot?: LearningScope; version?: number; generatedAt?: string; revisionReason?: string;
   scoringRevisionIds?: string[];
+  definitionContext?: { origin: 'started' | 'unavailable';
+    atoms: Array<{ id: string; name: string; version: number; objective: string; successCriterion: string; fingerprint: string | null }>;
+    incompatibleEvidenceIds: string[]; unverifiedEvidenceIds: string[] };
 };

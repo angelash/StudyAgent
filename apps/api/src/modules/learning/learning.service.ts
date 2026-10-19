@@ -15,6 +15,7 @@ import { prepareScoringReview } from '../diagnostics/scoring-review';
 import { eligibleMeasurements } from '../diagnostics/curriculum.service';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
+import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -37,11 +38,12 @@ export class LearningService {
     this.students.assertCanAccessStudent(user, studentId);
     const day = studyDay();
     const plans = this.guidance.list(user, studentId, subject), plan = plans.find((item) => item.status === 'active');
+    const definitions = plan ? this.store.find('diagnosticSessions', { id: plan.baselineSessionId })?.atomSnapshots : undefined;
     const reviews = this.guidance.reviews(user, studentId, subject);
     return { studentId, subject, day, plan: plan ?? null, awaitingConfirmation: plans.find((item) => item.status === 'proposed') ?? null,
       activities: (plan?.actions ?? []).map((action) => {
         const session = this.store.practiceSessions.find((item) => item.planId === plan?.id && item.actionId === action.id && item.day === day);
-        return { ...action, atomName: this.store.find('knowledgeAtoms', { id: action.atomId })?.name ?? action.atomId,
+        return { ...action, atomName: definitions?.find(atom => atom.id === action.atomId)?.name ?? action.atomId,
           status: session?.status ?? 'pending', sessionId: session?.id ?? null };
       }), reviews, incompleteAssessments: this.diagnostics.listSessions(user, studentId, subject).filter((item) => item.status === 'in_progress'),
       notice: '训练可以看提示、订正与重试。训练完成不直接证明掌握，之后用独立新题和间隔复测验证。' };
@@ -187,11 +189,12 @@ export class LearningService {
     const session = this.requireSession(user, id);
     this.assertActive(session);
     if (session.status !== 'in_progress' || !session.questionIds.includes(questionId)) throw new BadRequestException('当前题目不可获取提示');
-    const atom = this.store.find('knowledgeAtoms', { id: session.atomId })!;
+    const plan = this.store.find('diagnosticPlans', { id: session.planId });
+    const atom = this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId);
     const level = Math.min(3, 1 + this.store.select('practiceHints', { sessionId: id, questionId: questionId }).length);
     this.store.append('practiceHints', { id: this.store.nextId('practice-hint'), sessionId: id, questionId, level, at: new Date().toISOString() });
-    return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom.name}”的关键条件。` : level === 2 ?
-      `把思路拆开：${atom.objective}。每做一步，核对一次条件。` : `可以请家长示范“${atom.name}”中的一个关键步骤，再自己解释并完成剩余部分。提示后的表现会单独记录。` };
+    return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom?.name ?? '当前任务'}”的关键条件。` : level === 2 ?
+      `把思路拆开：${atom?.objective ?? '先列出已知条件和需要解决的目标'}。每做一步，核对一次条件。` : `可以请家长示范“${atom?.name ?? '当前任务'}”中的一个关键步骤，再自己解释并完成剩余部分。提示后的表现会单独记录。` };
   }
   complete(user: InMemoryUserAccount, id: string) {
     const session = this.requireSession(user, id), view = this.view(user, id);
@@ -206,22 +209,29 @@ export class LearningService {
   mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject) {
     this.students.assertCanAccessStudent(user, studentId);
     const diagnostic = this.diagnostics.effectiveResponses(studentId, subject).filter((item) => item.correct === false || item.status === 'pending_review');
-    const rows = diagnostic.map((item) => ({ id: item.id, kind: 'measurement', atomId: item.atomId, questionId: item.questionId,
-      reason: item.gradingReason, status: item.status, answer: item.answer, at: item.submittedAt,
-      snapshot: this.store.find('diagnosticSessions', { id: item.sessionId })?.questionSnapshots.find((question) => question.id === item.questionId) }));
+    const rows = diagnostic.map((item) => {
+      const session = this.store.find('diagnosticSessions', { id: item.sessionId });
+      return { id: item.id, kind: 'measurement', atomId: item.atomId, questionId: item.questionId,
+        reason: item.gradingReason, status: item.status, answer: item.answer, at: item.submittedAt,
+        atomSnapshot: session?.atomSnapshots?.find(atom => atom.id === item.atomId),
+        snapshot: session?.questionSnapshots.find((question) => question.id === item.questionId) };
+    });
     for (const session of this.store.select('practiceSessions', { studentId: studentId, subject: subject })) {
       for (const questionId of session.questionIds) {
         const original = this.store.find('practiceAttempts', { sessionId: session.id, questionId: questionId });
         const first = original ? this.effectiveAttempt(original) : null;
         if (!first || (first.correct !== false && first.status !== 'pending_review')) continue;
+        const plan = this.store.find('diagnosticPlans', { id: session.planId });
         rows.push({ id: first.id, kind: 'practice', atomId: session.atomId, questionId, reason: first.reason, status: first.status,
+          atomSnapshot: this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId),
           answer: first.answer, at: first.submittedAt, snapshot: session.snapshots.find((item) => item.id === questionId) });
       }
     }
-    return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100).map(({ snapshot, ...item }) => ({ ...item,
-      atomName: this.store.find('knowledgeAtoms', { id: item.atomId })?.name ?? item.atomId,
+    return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100).map(({ snapshot, atomSnapshot, ...item }) => ({ ...item,
+      atomName: atomSnapshot?.name ?? item.atomId,
       stem: snapshot?.stem ?? '原始题目暂不可用', analysis: snapshot?.analysis ?? '', referenceAnswer: snapshot?.answer ?? null,
-      hypothesis: this.store.select('diagnosticHypotheses', { studentId, atomId: item.atomId }).find(hypothesis => !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null }));
+      hypothesis: atomSnapshot ? this.store.select('diagnosticHypotheses', { studentId, atomId: item.atomId }).find(hypothesis =>
+        hypothesis.atomDefinitionFingerprint === atomDefinitionFingerprint(atomSnapshot) && !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null : null }));
   }
   overview(user: InMemoryUserAccount) {
     const children = this.store.students.filter((child) => user.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })));

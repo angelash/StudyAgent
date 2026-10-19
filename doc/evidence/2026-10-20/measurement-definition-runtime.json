@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-19T19:40:42.207Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Owned production-mode database, synthetic family, original authored tasks, real HTTP and two restarts; no browser or content-completeness claim",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "eed8f35ee0fe82c131239fccfc4dd409b943f0ba0eaac86f10bef86f930d5885",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "a5c0ebd8ea72185e963d2c3994f6f75b1f251ad914a86efe1cf8b402e50feb02",
+    "apps/api/src/modules/diagnostics/guidance.service.ts": "d11217cf5266eaed859abf9e36416cd91536dfe9d471cc6856fac576cd0354e0",
+    "apps/api/src/modules/ai/ai.service.ts": "31847ee0a88fa0d810368fffb680b6f179e333fa71edd37cce3aef88fc5af9d5",
+    "apps/api/src/modules/learning/learning.service.ts": "916d636a931985c23cbdbd155bdf48aa4b871ab5f5b026d9d3672e923ec7e254"
+  },
+  "result": {
+    "oldEvidenceCount": 4,
+    "currentEvidenceCount": 2,
+    "mappingsReapproved": 24,
+    "frozenDefinitionSurvivesCompletionAndRestart": true,
+    "hintsAndAiUseFrozenDefinitions": "covered by integration tests",
+    "currentProfileExcludesOldDefinitions": true,
+    "reapprovalRequired": true,
+    "oldPlanNewProbeBlocked": true,
+    "startedPracticePreserved": true,
+    "retrospectiveFingerprintSurvivesRestart": true,
+    "unrelatedDefinitionReportNotRevised": true,
+    "originalReportAndRevisedReportRetained": true,
+    "restarts": 2
+  }
+}

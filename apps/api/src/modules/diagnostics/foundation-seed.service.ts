@@ -6,6 +6,7 @@ import { QuestionWorkspaceService } from '../question-workspace/question-workspa
 import { assertAcyclic, CurriculumService } from './curriculum.service';
 import { buildFoundationCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
+import { atomDefinitionFingerprint } from './measurement-definition';
 
 // Only the exact, unedited original v1 can receive an automatic enrichment.
 // An editor's missing card or changed relationship is an intentional definition.
@@ -54,6 +55,7 @@ export class FoundationSeedService implements OnModuleInit {
           family: `${atom.id}:${item.family}`, probeRole: item.dimension === 'transfer' ? 'transfer' : 'anchor',
           expectedSeconds: atom.subject === 'math' ? 40 : 60, difficulty: 1, reviewStatus: 'approved', mappingWeight: 1,
           observationCode: `${atom.id}:response_mismatch`, version: 1,
+          atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
         });
       }
     }

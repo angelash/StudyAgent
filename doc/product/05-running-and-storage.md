@@ -29,3 +29,5 @@ Web的 `prebuild` / `predev` 会从已锁定的MathLive依赖生成本地公式�
 API 默认绑定 `127.0.0.1`，可通过 `API_HOST` 显式调整；`API_PORT` / `PORT` 必须为1–65535的整数。Linux生产使用同站点HTTPS、独立API/worker/Web进程及PostgreSQL，完整环境样例、服务模板、构建/管理员引导/升级与运行证据见 [Linux交付](23-linux-deployment-delivery.md)。Web的同站API地址需在构建时令 `NEXT_PUBLIC_API_BASE_URL` 为空；仅修改运行环境不会重写已有浏览器包。
 
 课程定义可在 `/admin/curriculum` 导出及比较课程包；管理员确认后整批导入，单包最多8MiB/2,000点。教学资料有独立审核状态，新计划冻结批准版本。已有库只自动补充精确未编辑的v1原创教学定义，不覆盖用户编辑、较新版本或草稿。格式、冲突恢复、覆盖缺口和真实SQLite/PG重启证据见 [课程包交付](24-curriculum-package-delivery.md)。
+
+新评测冻结知识定义，当前画像和保持测量只使用定义可核对的证据；目标/标准/先修变化会让题目映射退出选题，需教研重新审核。旧报告、已开始练习和原分保留，缺快照的旧报告不能直接建立新指导计划。边界及SQLite/PG重启证据见 [知识定义交付](25-measurement-definition-delivery.md)。

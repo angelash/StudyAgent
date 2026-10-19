@@ -23,6 +23,7 @@ import { createHash } from 'node:crypto';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
+import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -263,22 +264,35 @@ export class AiService {
   private assistantContext(session: AssistantSession) {
     const bound = this.resolveQuestionContext(session);
     const subject = session.subject;
-    const reports = this.store.diagnosticReports.filter((item) => item.report.studentId === session.studentId &&
-      (!subject || item.report.subject === subject) && (bound || session.contextRefType !== 'diagnostic' || item.report.sessionId === session.contextRefId))
-      .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-    const latest = reports[0]?.report;
+    const selectedPlanId = bound?.planId ?? (session.contextRefType === 'plan' ? session.contextRefId : undefined);
     const plan = this.store.diagnosticPlans.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject) &&
-      (!(bound?.planId || session.contextRefType === 'plan') || item.id === (bound?.planId ?? session.contextRefId)))
+      (!selectedPlanId || item.id === selectedPlanId))
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
-    const frozen = this.store.diagnosticSessions.find(s => s.id === (session.contextRefType === 'diagnostic' ? session.contextRefId : plan?.baselineSessionId))?.scopeSnapshot;
+    const selectedAssessmentId = session.contextRefType === 'diagnostic' ? session.contextRefId : selectedPlanId ? plan?.baselineSessionId : undefined;
+    const reports = this.store.diagnosticReports.filter((item) => item.report.studentId === session.studentId &&
+      (!subject || item.report.subject === subject) && (!selectedAssessmentId || item.report.sessionId === selectedAssessmentId))
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.version - a.version);
+    const latest = reports[0]?.report;
+    const definitionSession = this.store.diagnosticSessions.find(s => s.id === (selectedAssessmentId ?? latest?.sessionId ?? plan?.baselineSessionId));
+    const frozen = definitionSession?.scopeSnapshot;
     const scope = frozen ?? this.store.learningScopes.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject))
       .sort((a, b) => b.confirmedAt.localeCompare(a.confirmedAt))[0];
-    const evidenceIds = [...new Set([...(latest?.evidence.map((item) => item.id) ?? []), ...(plan?.evidenceIds ?? [])])];
-    const atom = bound ? this.store.find('knowledgeAtoms', { id: bound.atomId }) : null;
+    const evidenceIds = [...new Set([...(latest?.evidence.map((item) => item.id) ?? []), ...(session.contextRefType !== 'diagnostic' ? plan?.evidenceIds ?? [] : [])])];
+    const atom = bound ? definitionSession?.atomSnapshots?.find(atom => atom.id === bound.atomId) : null;
+    const definitions = definitionSession?.atomSnapshots;
+    const definitionUnavailable = !!definitionSession && !definitions;
+    const definitionChanged = definitions?.some(original => {
+      const current = this.store.find('knowledgeAtoms', { id: original.id });
+      return !current || current.status !== 'published' || atomDefinitionFingerprint(original) !== atomDefinitionFingerprint(current);
+    }) ?? false;
+    const definitionNotice = definitionUnavailable ? '历史记录未保存知识定义；原报告供历史查阅，请重新评测后判断当前掌握并建立计划。' :
+      definitionChanged ? '记录中的知识定义与当前定义不同；只能解释当时的表现，请重新评测后判断当前掌握并建立计划。' : null;
     return { scope: scope ? { grade: scope.grade, term: scope.term, textbookVersion: scope.textbookVersion,
-        learned: scope.learnedAtomIds.map((id) => this.store.find('knowledgeAtoms', { id: id })?.name) } : null,
-      report: latest ? { summary: latest.summary, estimates: latest.estimates, hypotheses: latest.hypotheses } : null,
-      plan: plan ? { summary: plan.summary, status: plan.status, actions: plan.actions } : null,
+        learned: scope.learnedAtomIds.map((id) => frozen ? definitions?.find(atom => atom.id === id)?.name ?? id : this.store.find('knowledgeAtoms', { id })?.name ?? id) } : null,
+      report: latest ? { summary: latest.summary, estimates: latest.estimates, hypotheses: latest.hypotheses,
+        definitionContext: latest.definitionContext, definitionNotice } : null,
+      plan: plan && session.contextRefType !== 'diagnostic' ? { summary: plan.summary, status: plan.status, actions: plan.actions, definitionNotice } : null,
+      definitionNotice,
       currentQuestion: bound ? { kind: bound.kind, stem: bound.question.stem.slice(0, 6000), atomName: atom?.name,
         objective: atom?.objective, draft: JSON.stringify(bound.draft).slice(0, 4000),
         response: bound.response ? { status: bound.response.status, submittedAnswer: bound.response.answer, hintLevel: bound.response.hintLevel } : null,
@@ -319,7 +333,7 @@ export class AiService {
     try {
       const context = this.assistantContext(session);
       const { withheldAnswer, bound, ...safeContext } = context;
-      const fallback = session.userRole === 'student' ?
+      const fallback = session.userRole !== 'student' && context.definitionNotice ? context.definitionNotice : session.userRole === 'student' ?
         `${context.currentQuestion?.atomName ? `我们先看“${context.currentQuestion.atomName}”。${context.currentQuestion.objective ?? ''}。` : ''}${context.currentQuestion?.draft && context.currentQuestion.draft !== 'null' ? '你已经留下了思路草稿。先指出其中哪一步用到了题目的条件。' : '先用自己的话说一说题目要解决什么，再列出已知条件。'}你可以告诉我卡在哪一步；完成后再用一道新题检查。` :
         context.plan ? `当前计划：${context.plan.summary} 陪伴时先请孩子解释思路，只在卡住的一步给提示，再用独立新题验证。${context.report?.summary ?? ''}` :
           context.report ? `${context.report.summary} 先看知识点的证据和待验证原因，再制定每天可完成的指导计划。单次答错不足以确定深层原因。` :

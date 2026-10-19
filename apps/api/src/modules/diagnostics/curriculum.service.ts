@@ -9,6 +9,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { validate } from '../../common/validation';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
+import { atomDefinitionFingerprint, measurementDefinitionMatches } from './measurement-definition';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
@@ -23,7 +24,8 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
-      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported && mediaModeAvailable(schemas.get(item.questionId)!.mode);
+      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && measurementDefinitionMatches(store, item, atom) &&
+      !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported && mediaModeAvailable(schemas.get(item.questionId)!.mode);
   });
 }
 
@@ -231,7 +233,11 @@ export class CurriculumService {
     const answerSchema = this.store.find('questionAnswerSchemas', { questionId: question.id });
     if (item.reviewStatus === 'approved' && (!answerSchema || !answerInputConfiguration(answerSchema).supported)) throw new BadRequestException('请先补齐可用的作答交互配置，再审核量化映射');
     const previous = this.store.find('measurementItems', { id: item.id });
-    const next = { ...item, version: previous ? previous.version + 1 : 1 };
+    if (previous && item.version !== previous.version) throw new ConflictException('题目映射版本已变化，请重新核对后保存');
+    const next = { ...item, atomDefinitionFingerprint: atomDefinitionFingerprint(atom), version: previous ? previous.version + 1 : 1 };
+    if (previous && !this.store.find('curriculumRevisions', { entityId: item.id, kind: 'measurement', version: previous.version })) {
+      this.recordRevision('measurement', previous.id, previous.version, user.id, previous);
+    }
     if (previous) Object.assign(previous, next); else this.store.append('measurementItems', next);
     this.recordRevision('measurement', next.id, next.version, user.id, next);
     this.events.publish('curriculum.mapping_saved', { itemId: item.id, version: next.version, actorId: user.id });
@@ -267,6 +273,8 @@ export class CurriculumService {
       const items = counts.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
         families: new Set(items.map((i) => i.family)).size, dimensions: [...new Set(items.map((i) => i.dimension))],
+        definitionGaps: new Set(this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'approved' })
+          .filter(mapping => !measurementDefinitionMatches(this.store, mapping, atom)).map(mapping => mapping.questionId)).size,
         interactionGaps: new Set(this.store.inspect('measurementItems').filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
           !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported && mediaModeAvailable(schema.mode))).map(i => i.questionId)).size,
         draftMappings: this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'draft' }).length };
@@ -294,6 +302,10 @@ export class CurriculumService {
       eligible: eligible.has(mapping.id),
       inputIssue: Boolean(this.store.find('questionAnswerSchemas', { questionId: mapping.questionId })) ?
         answerInputConfiguration(this.store.find('questionAnswerSchemas', { questionId: mapping.questionId })!).reason : '尚未配置作答方式',
+      definitionIssue: (() => {
+        const atom = this.store.find('knowledgeAtoms', { id: mapping.atomId });
+        return atom && measurementDefinitionMatches(this.store, mapping, atom) ? null : '知识定义已变化或无法核对，请对照当前目标和标准重新审核此映射';
+      })(),
       question: this.store.find('questions', { id: mapping.questionId }),
       answerSchema: this.store.find('questionAnswerSchemas', { questionId: mapping.questionId }),
       source: this.store.find('questionSources', { questionId: mapping.questionId }) }));

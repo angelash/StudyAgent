@@ -121,4 +121,46 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     expect(store.diagnosticResponses.find((r: any) => r.id === answer.body.data.responseId).hintLevel).toBe(1);
     ai.client = null;
   });
+
+  it('uses the selected frozen definition and baseline report across report, plan and practice coaching', async () => {
+    const original = { id: 'frozen-coach-atom', name: '旧定义中的数量关系', objective: '根据原来条件说明两组数量的合并关系',
+      successCriterion: '独立核对原条件并说明关系', prerequisiteIds: [], grade: 3, term: 'upper', subject: 'math', status: 'published', version: 1 };
+    store.knowledgeAtoms.push({ ...original, name: 'LIVE_DEFINITION_NAME', objective: 'LIVE_DEFINITION_OBJECTIVE', version: 2 });
+    const scopeSnapshot = { grade: 3, subject: 'math', learnedAtomIds: [original.id], term: 'upper', textbookVersion: '原范围' };
+    store.diagnosticSessions.push({ id: 'frozen-coach-baseline', studentId: 'child', subject: 'math', status: 'completed',
+      atomSnapshots: [original], scopeSnapshot, itemSnapshots: [], questionSnapshots: [], coverage: [] });
+    const baseline = { studentId: 'child', subject: 'math', sessionId: 'frozen-coach-baseline',
+      summary: 'FROZEN_REPORT_MARKER', evidence: [], estimates: [], hypotheses: [] };
+    store.diagnosticReports.push({ id: 'frozen-coach-report', version: 1, createdAt: '2026-01-01T00:00:00Z', report: baseline });
+    store.diagnosticReports.push({ id: 'unrelated-coach-report', version: 1, createdAt: '2026-12-01T00:00:00Z',
+      report: { ...baseline, sessionId: 'another-assessment', summary: 'UNRELATED_REPORT_MARKER' } });
+    store.diagnosticPlans.push({ id: 'frozen-coach-plan', studentId: 'child', subject: 'math', status: 'active', createdAt: '2026-01-01T01:00:00Z',
+      baselineSessionId: 'frozen-coach-baseline', summary: '采用原基线指导', actions: [], evidenceIds: [] });
+    store.practiceSessions.push({ id: 'frozen-coach-practice', studentId: 'child', subject: 'math', planId: 'frozen-coach-plan',
+      atomId: original.id, status: 'in_progress', questionIds: ['frozen-coach-q'], snapshots: [question('frozen-coach-q')] });
+    let prompt = '';
+    ai.client = { chat: { completions: { create: async (command: any) => {
+      prompt = JSON.stringify(command.messages);
+      return { choices: [{ message: { content: JSON.stringify({ reply: '请对照当时的数量条件说明思路，并通过当前范围的新评测重新核查。', evidenceIds: [] }) } }] };
+    } } } };
+    try {
+      for (const [kind, ref, item] of [['diagnostic', 'frozen-coach-baseline', null], ['plan', 'frozen-coach-plan', null],
+        ['practice', 'frozen-coach-practice', 'frozen-coach-q']] as const) {
+        const session = (await post('/assistant/sessions', { userRole: 'parent', studentId: 'child', subject: 'math', pageContext: 'review',
+          contextRefType: kind, contextRefId: ref, contextItemId: item }).expect(201)).body.data;
+        await post(`/assistant/sessions/${session.id}/messages`, { message: '请根据这次记录解释当时的表现', requestKey: `frozen-${kind}-coaching` }).expect(201);
+        expect(prompt).toContain(original.name); expect(prompt).toContain('FROZEN_REPORT_MARKER');
+        expect(prompt).not.toContain('UNRELATED_REPORT_MARKER'); expect(prompt).not.toContain('LIVE_DEFINITION_NAME');
+        expect(prompt).not.toContain('LIVE_DEFINITION_OBJECTIVE'); expect(prompt).toContain('重新评测');
+        if (kind === 'practice') expect(prompt).toContain(original.objective);
+        ai.client = null;
+        const fallback = (await post(`/assistant/sessions/${session.id}/messages`, { message: '现在应该怎样继续？', requestKey: `frozen-${kind}-fallback` }).expect(201)).body.data;
+        expect(fallback.reply).toContain('重新评测');
+        ai.client = { chat: { completions: { create: async (command: any) => {
+          prompt = JSON.stringify(command.messages);
+          return { choices: [{ message: { content: JSON.stringify({ reply: '请对照当时的条件说明思路，并按当前范围重新评测。', evidenceIds: [] }) } }] };
+        } } } };
+      }
+    } finally { ai.client = null; }
+  });
 });
