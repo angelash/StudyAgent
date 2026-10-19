@@ -1,5 +1,7 @@
 # 运行与存储
 
+评测范围页可开启按作答逐步核查顺序，并在预览中确认加入的先修基础。题量、范围与题组冻结，结束后可展开每步依据；提示/曝光/跳过等不能当独立对错。旧API不传 `adaptive` 保持固定，间隔复测必须固定。两库专项为 `node scripts/qa/verify-adaptive-routing.cjs <证据路径> sqlite|postgres`，详见 [逐步核查交付](30-adaptive-routing-delivery.md)。
+
 错题本位于 `/student/today` 的“错题与思路”，支持知识点/标签筛选、收藏、步骤与反思便签、可恢复移除、原题复做、新题核查记录及打印稿准备。原题复做沿用训练和图片/录音路径，但不增加独立掌握样本；未结束评测不提前开放参考答案。生产SQLite/PG重启专项为 `node scripts/qa/verify-notebook.cjs <证据路径> sqlite|postgres`，详见 [错题本交付](29-notebook-delivery.md)。
 
 原卷测量素材页为 `/admin/measurement`，从 `/library` 单题进入，需管理员或教师身份。来源、题面、媒体、评分和知识映射分别审核后才能发布，研究原卷与单题发布资格独立。运行 `node scripts/qa/verify-measurement-content.cjs` 验证生产模式SQLite；第三个参数 `postgres` 使用既有隔离QA集群。第四个参数 `real` 只验证迁入原卷候选与重启，绝不发布。详见 [原卷测量素材交付](28-measurement-content-delivery.md)。

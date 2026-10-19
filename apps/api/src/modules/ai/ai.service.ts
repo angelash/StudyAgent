@@ -24,6 +24,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
+import { routedItemAvailable } from '../diagnostics/adaptive-routing';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -250,6 +251,7 @@ export class AiService {
       if (!session.contextItemId && assessment.status === 'completed') return null;
       const item = assessment.itemSnapshots.find(i => i.id === session.contextItemId);
       if (!item) throw new BadRequestException('请指定这次评测中正在查看的题目');
+      if (!routedItemAvailable(assessment, item.id)) throw new BadRequestException('请先完成当前核查题，再按安排打开后续助教上下文');
       const question = assessment.questionSnapshots.find(q => q.id === item.questionId)!;
       const response = this.store.find('diagnosticResponses', { sessionId: assessment.id, itemId: item.id }) ?? null;
       return { kind: 'diagnostic' as const, sessionId: assessment.id, itemId: item.id, question, atomId: item.atomId,

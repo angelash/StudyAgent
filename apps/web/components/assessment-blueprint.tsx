@@ -18,6 +18,7 @@ export function AssessmentBlueprintCard({ preview, busy, onStart, onBack }: {
       <div><dt>预计作答</dt><dd>{preview.itemCount ? Math.max(1, Math.ceil(preview.blueprint.expectedSeconds / 60)) : '—'}<small>分钟</small></dd></div>
       <div><dt>分成小组</dt><dd>{preview.blueprint.groups.length}<small>组</small></dd></div></dl>
     <p className="studio-muted">每组约{preview.blueprint.groupSize}题。可以保存草稿后休息，回来继续；预计时长用于安排题量，作答慢不会被直接解释为能力不足。</p>
+    {preview.blueprint.routing && <div className="studio-hint"><strong>按作答逐步核查</strong><p>{preview.blueprint.routing.description}</p><p>下一题的顺序会变化；具体选题依据在结束后的记录中展开，本组不会即时公布对错或判定深层原因。</p></div>}
     <div className="blueprint-dimensions" aria-label="本组测量维度">{preview.blueprint.dimensions.map(row => <div key={row.dimension}>
       <span>{dimensionNames[row.dimension]}</span><strong>{row.selected}<small>题</small></strong>
       <i aria-hidden="true"><b style={{ width: `${preview.itemCount ? row.selected / preview.itemCount * 100 : 0}%` }} /></i></div>)}</div>

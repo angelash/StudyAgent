@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-19T21:20:49.929Z",
+  "driver": "postgres",
+  "passed": true,
+  "scope": "Synthetic family, reviewed original math tasks, real HTTP, concurrent requests and three API restarts. Bounded frozen-item routing, not calibrated CAT or browser acceptance.",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/adaptive-routing.ts": "27b096476d0c30e43580152a1aa6c958232cd8d1d6c91357d1a1fbd29e421d12",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "07caf38b2ca6815d9a06b615b94453699f13264552e052ff2eaed9cab5fb3758",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "e2dc6590cc224468381db37de459ef74ed20f82332beea927518a7215b346f54",
+    "apps/api/src/modules/ai/ai.service.ts": "42f1b1ddb1e209a773285376e585b239af2cf4e5dc90d9e94266e4c925f20871",
+    "apps/api/src/modules/student-media/student-media.service.ts": "94223ade237d91d9beb9578eb9f94ad6f43990d0ec478a7daf5deb743450d807",
+    "apps/web/app/student/assessment/studio.tsx": "978c4f2bc9622594b3b70dd9240731898d72cab29f2478edd8e1b05c32775889",
+    "packages/contracts/src/diagnostics.ts": "4951de46128672656b1895a437718196ecbc2127765ee5718d818bb2993b19df"
+  },
+  "result": {
+    "concurrentStartStatuses": [
+      201,
+      201
+    ],
+    "concurrentResponseStatuses": [
+      201,
+      409
+    ],
+    "samePreviewAndFirstResponseReplayedOnce": true,
+    "frozenItemCount": 12,
+    "futureItemPathsBlocked": [
+      "render",
+      "draft",
+      "hint",
+      "submit",
+      "assistant",
+      "media"
+    ],
+    "actorIsolation": true,
+    "nearestPrerequisiteAndReturnToTarget": true,
+    "activeDecisionBasisHidden": true,
+    "pausedDraftAndRoutingSurviveRestart": true,
+    "allFrozenItemsAnsweredOnce": true,
+    "rescoringPreservesOriginalRoutingBasis": true,
+    "adaptiveRetestRejected": true,
+    "priorReservedQuestionDoesNotTriggerIndependentFailureRoute": true,
+    "abortedAndCompletedHistoryRestored": true,
+    "restarts": 3
+  }
+}

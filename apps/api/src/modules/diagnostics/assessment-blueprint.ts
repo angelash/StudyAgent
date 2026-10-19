@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { AssessmentBlueprint, DiagnosticSession, DiagnosticStart, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
+import { ROUTING_VERSION } from './adaptive-routing';
 
 /** JSONB may reorder object keys. Array order still represents the intended question/group order. */
 export function blueprintContentHash(value: unknown): string {
@@ -58,13 +59,15 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
   const groups: AssessmentBlueprint['groups'] = [];
   for (let offset = 0; offset < selected.length; offset += policy.groupSize) groups.push({ id: `group-${groups.length + 1}`,
     title: `第${groups.length + 1}小组`, itemIds: selected.slice(offset, offset + policy.groupSize).map(item => item.id) });
-  const blueprint: AssessmentBlueprint = { version: 'scope-blueprint-v2', title: policy.title, intent: command.intent, focus: policy.focus,
+  const blueprint: AssessmentBlueprint = { version: command.adaptive ? 'scope-blueprint-v3' : 'scope-blueprint-v2', title: policy.title, intent: command.intent, focus: policy.focus,
     itemLimit: policy.itemLimit, minutesLimit: policy.minutesLimit, expectedSeconds: seconds, groupSize: policy.groupSize,
     stopReason, stopRule: '达到本组题量或预计时间预算即停止选题；不因缺题使用未学内容。可以暂停，或保留已答证据后结束本组。',
     targetAtomIds: coverage.filter(point => point.role === 'target').map(point => point.atomId),
     prerequisiteAtomIds: coverage.filter(point => point.role === 'prerequisite').map(point => point.atomId), groups,
     dimensions: (['understanding', 'procedure', 'transfer', 'retention'] as MeasurementDimension[]).map(dimension => ({ dimension,
       selected: selected.filter(item => item.dimension === dimension).length,
-      available: new Set(candidates.filter(item => item.dimension === dimension).map(item => item.questionId)).size })), warnings };
+      available: new Set(candidates.filter(item => item.dimension === dimension).map(item => item.questionId)).size })), warnings,
+    ...(command.adaptive ? { routing: { mode: 'adaptive' as const, version: ROUTING_VERSION,
+      description: '范围与题量已冻结，作答时逐题选择本组中的下一道核查题；先观察基础，再区分先修、步骤和迁移。提示、跳过或待复核表达不当作独立对错。' } } : {}) };
   return { selected, blueprint };
 }

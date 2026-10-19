@@ -18,6 +18,7 @@ import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measurement-definition';
 import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
+import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } from './adaptive-routing';
 
 @Injectable()
 export class DiagnosticsService {
@@ -31,6 +32,7 @@ export class DiagnosticsService {
 
   private prepareSession(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope, seed: string = randomUUID(), allowEmpty = false): DiagnosticSession {
     const command = validate(diagnosticStartSchema, input);
+    if (command.adaptive && command.intent === 'retest') throw new BadRequestException('间隔复测使用预先固定的对照题组，请关闭在线分支后重试');
     this.students.assertCanAccessStudent(user, command.studentId);
     const review = command.reviewTaskId ? this.store.find('reviewTasks', { id: command.reviewTaskId, studentId: command.studentId, subject: command.subject }) : undefined;
     if (command.reviewTaskId && (!review || command.intent !== 'retest' || (command.planId && command.planId !== review.planId))) throw new BadRequestException('复测任务与当前评测不匹配');
@@ -86,7 +88,7 @@ export class DiagnosticsService {
         (!['verification', 'retest'].includes(command.intent) || !seen.has(item.questionId));
     });
     const coverage = [...targetSet].map((atomId) => ({ atomId, selected: 0, required: 2,
-      role: (learned.has(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
+      role: (targets.includes(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
     const { selected, blueprint } = selectBlueprintItems(command, candidates, coverage, seed, seen, scope.minutesPerSession, scope.grade);
     if (!selected.length && !allowEmpty) throw new BadRequestException({ message: '当前范围缺少审核通过的量化题，请查看覆盖缺口或调整已学范围',
       missingAtomIds: targets, code: 'assessment_coverage_gap' });
@@ -111,6 +113,7 @@ export class DiagnosticsService {
 
   private activateSession(user: InMemoryUserAccount, session: DiagnosticSession) {
     if (this.store.find('diagnosticSessions', { id: session.id })) return this.sessionView(user, session.id);
+    initializeRouting(session);
     if (session.reviewTaskId) {
       const task = this.store.find('reviewTasks', { id: session.reviewTaskId, studentId: session.studentId });
       if (!task || task.status !== 'pending' || !session.coverage.some(point => point.atomId === task.atomId)) throw new BadRequestException('复测任务不可用');
@@ -216,10 +219,13 @@ export class DiagnosticsService {
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
       startedAt: session.startedAt, completedAt: session.completedAt, endedAt: session.endedAt ?? null,
       revision: session.revision ?? 1, blueprint: session.blueprint,
+      routing: session.routing ? { version: session.routing.version, mode: 'adaptive', currentItemId: session.routing.currentItemId,
+        notice: '本组根据刚才的作答逐步选择核查顺序；题量和范围沿用开始前的确认，不即时判定深层原因。',
+        decisions: ['completed', 'aborted'].includes(session.status) ? session.routing.decisions : undefined } : null,
       stateHistory: session.stateHistory?.map(({ action, at, reason, revision }) => ({ action, at, reason, revision })) ?? [],
       answeredCount: responses.length, totalCount: session.itemIds.length,
       planId: session.planId ?? null, planRevision: session.planRevision ?? null,
-      items: session.itemSnapshots.map((item) => ({ id: item.id, questionId: item.questionId, atomId: item.atomId, dimension: item.dimension,
+      items: routedItems(session).map((item) => ({ id: item.id, questionId: item.questionId, atomId: item.atomId, dimension: item.dimension,
         atomName: this.definitionsForSession(session).find(atom => atom.id === item.atomId)?.name ?? item.atomId,
         reason: session.selectionReasons[item.id], answered: responses.some((response) => response.itemId === item.id) })) };
   }
@@ -267,6 +273,7 @@ export class DiagnosticsService {
     const session = this.requireSession(user, sessionId);
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不属于当前评测');
+    if (!routedItemAvailable(session, itemId)) throw new ConflictException('请先完成当前核查题，后续题目按本次作答继续安排');
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
     const payload = structuredClone(question.renderPayload) as QuestionRenderPayload;
     payload.answerSchema.gradingConfig = {};
@@ -279,7 +286,7 @@ export class DiagnosticsService {
   saveDraft(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown) {
     const session = this.requireSession(user, sessionId);
     const command = validate(z.object({ answer: z.unknown() }).strict(), input);
-    if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) {
+    if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) {
       throw new BadRequestException('只能保存尚未提交的当前评测题目');
     }
     const mapping = session.itemSnapshots.find(item => item.id === itemId)!;
@@ -305,6 +312,7 @@ export class DiagnosticsService {
       throw new ConflictException('首次作答已保存；如需重新验证，请开始新评测');
     }
     if (session.status !== 'in_progress') throw new BadRequestException('评测已结束');
+    if (session.routing && session.routing.currentItemId !== command.itemId) throw new ConflictException('核查顺序已经变化，请刷新并完成当前题目');
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
     const configuration = answerInputConfiguration(question.answerSchema as QuestionAnswerSchema);
     if (command.disposition !== 'skip' && !configuration.supported) throw new BadRequestException(configuration.reason);
@@ -334,13 +342,16 @@ export class DiagnosticsService {
     this.store.append('diagnosticResponses', response);
     this.media.bind(mediaIds, response.id);
     this.store.remove('diagnosticDrafts', { sessionId, itemId: mapping.id });
+    const next = advanceRouting(session, this.store.select('diagnosticResponses', { sessionId }), response.submittedAt);
+    if (session.routing) this.events.publish('diagnostic.routing_advanced', { sessionId, studentId: session.studentId, responseId: response.id,
+      nextItemId: next?.itemId ?? null, rule: next?.rule ?? 'finished', routingVersion: session.routing.version });
     this.events.publish('diagnostic.response_saved', { sessionId, responseId: response.id, studentId: session.studentId });
     return { saved: true, responseId: response.id, idempotent: false, status: response.status };
   }
 
   hint(user: InMemoryUserAccount, sessionId: string, itemId: string) {
     const session = this.requireSession(user, sessionId);
-    if (session.status !== 'in_progress' || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) throw new BadRequestException('当前题目已提交');
+    if (session.status !== 'in_progress' || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) throw new BadRequestException('只能获取尚未提交的当前核查题提示');
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不存在');
     const atom = session.atomSnapshots?.find(atom => atom.id === mapping.atomId);

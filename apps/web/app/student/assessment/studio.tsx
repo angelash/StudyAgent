@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import type { GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
-  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticStart, MasteryEstimate, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
+  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, MasteryEstimate, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import './studio.css';
@@ -23,6 +23,7 @@ import { AssessmentBlueprintCard } from '../../../components/assessment-blueprin
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
   revision: number; blueprint?: AssessmentBlueprint;
+  routing: { mode: 'adaptive'; currentItemId: string | null; notice: string; decisions?: DiagnosticRoutingDecision[] } | null;
   answeredCount: number; totalCount: number; startedAt: string;
   items: Array<{ id: string; atomId: string; questionId: string; dimension: string; atomName: string; answered: boolean; reason: string }> };
 type Review = ReviewTask & { atomName: string; due: boolean };
@@ -43,6 +44,7 @@ export function AssessmentStudio() {
   const [progress, setProgress] = React.useState<ProgressSelection>({ bookId: '', mode: 'knowledge', lessonIds: [] });
   const [atoms, setAtoms] = React.useState<KnowledgeAtom[]>([]), [learned, setLearned] = React.useState<string[]>([]);
   const [minutes, setMinutes] = React.useState(15), [maxItems, setMaxItems] = React.useState(12);
+  const [adaptive, setAdaptive] = React.useState(true), [includePrerequisites, setIncludePrerequisites] = React.useState(true);
   const [intent, setIntent] = React.useState<DiagnosticStart['intent']>('baseline'), [assessmentTargets, setAssessmentTargets] = React.useState<string[]>([]);
   const [blueprint, setBlueprint] = React.useState<DiagnosticBlueprintView | null>(null);
   const [sessions, setSessions] = React.useState<Session[]>([]), [session, setSession] = React.useState<Session | null>(null);
@@ -60,7 +62,9 @@ export function AssessmentStudio() {
   const [endOpen, setEndOpen] = React.useState(false), [endReason, setEndReason] = React.useState('');
   const previewRequest = React.useRef({ signature: '', key: '' }), stateRequest = React.useRef({ signature: '', key: '' });
   const openedAt = React.useRef(Date.now()), draftTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
-  const current = session?.items.find((item) => !item.answered);
+  const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
+  const currentGroup = session?.routing ? `第 ${Math.floor(session.answeredCount / (session.blueprint?.groupSize ?? 3)) + 1} 小组` :
+    session?.blueprint?.groups.find(group => group.itemIds.includes(current?.id ?? ''))?.title ?? `第 ${Math.floor((session?.answeredCount ?? 0) / 4) + 1} 小组`;
   const child = children.find((item) => item.id === studentId);
   const subjectName = subjects.find(([key]) => key === subject)?.[1];
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [screen, current?.id]);
@@ -71,8 +75,10 @@ export function AssessmentStudio() {
     finally { setBusy(false); }
   }
   async function openSession(next: Session) {
+    next = await request<Session>(`/diagnostics/sessions/${next.id}`);
     setStudentId(next.scopeSnapshot.studentId); setSubject(next.subject); setGrade(next.scopeSnapshot.grade); setTerm(next.scopeSnapshot.term);
     setSession(next); setReport(null); setPayload(null); setAnswer(null); setHint(''); setBlueprint(null); setEndOpen(false);
+    setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
     try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
     window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}`);
     if (['completed', 'aborted'].includes(next.status)) { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${next.id}/report`)); setScreen('report'); }
@@ -198,14 +204,15 @@ export function AssessmentStudio() {
   async function prepareBlueprint(scope: LearningScope) {
     const targets = assessmentTargets.filter(id => scope.learnedAtomIds.includes(id));
     if (intent === 'unit' && !targets.length) throw new Error('请先选择本单元要观察的知识点');
-    const command: DiagnosticStart = { studentId: scope.studentId, subject: scope.subject, intent, maxItems, includePrerequisites: false,
+    const command: DiagnosticStart = { studentId: scope.studentId, subject: scope.subject, intent, maxItems, includePrerequisites,
       ...(['unit', 'micro'].includes(intent) && targets.length ? { targetAtomIds: targets } : {}) };
     await showBlueprint(command, scope.id);
   }
   async function showBlueprint(command: DiagnosticStart, context: string) {
-    const signature = JSON.stringify([context, command]);
+    const configured = { ...command, adaptive: command.intent === 'retest' ? false : command.adaptive ?? adaptive };
+    const signature = JSON.stringify([context, configured]);
     if (previewRequest.current.signature !== signature) previewRequest.current = { signature, key: crypto.randomUUID() };
-    const body = { ...command, requestKey: previewRequest.current.key };
+    const body = { ...configured, requestKey: previewRequest.current.key };
     try { sessionStorage.setItem(previewStorageKey(command.studentId, command.subject), JSON.stringify(body)); } catch { /* The response and URL also restore the preview. */ }
     const next = await request<DiagnosticBlueprintView>('/diagnostics/blueprints', body);
     setBlueprint(next); setScreen('preview');
@@ -241,8 +248,15 @@ export function AssessmentStudio() {
         disposition, elapsedMs: Math.min(3_600_000, Date.now() - openedAt.current), requestKey: `${session.id}:${current.id}` });
       const next = await request<Session>(`/diagnostics/sessions/${session.id}`);
       setSession(next);
-      if (next.answeredCount === next.totalCount) { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${next.id}/complete`, {})); setScreen('report'); }
+      if (next.answeredCount === next.totalCount) await completeSession(next.id);
     });
+  }
+  async function completeSession(id: string) {
+    const finished = await request<DiagnosticReport>(`/diagnostics/sessions/${id}/complete`, {});
+    setReport(finished); setScreen('report');
+    // The completed view contains the frozen selection history, hidden while answering.
+    const completed = await request<Session>(`/diagnostics/sessions/${id}`);
+    setSession(completed); setSessions(rows => [completed, ...rows.filter(row => row.id !== id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
   }
   async function verify(hypothesis?: DiagnosticHypothesis, atomId?: string) {
     await execute(() => showBlueprint({ studentId, subject, intent: 'verification', maxItems: 8,
@@ -300,6 +314,7 @@ export function AssessmentStudio() {
                 <option value="baseline">起点评测 · 了解当前基础</option><option value="unit">单元评测 · 观察本单元知识</option><option value="phase">阶段回顾 · 在已学范围抽样</option><option value="micro">三分钟微测 · 只看当前目标</option></select></label>
                 {['unit', 'micro'].includes(intent) && <fieldset className="assessment-targets"><legend>{intent === 'micro' ? '本次目标（最多3点，可留空使用当前知识点）' : '选择本单元要观察的知识点'}</legend>{atoms.filter(atom => (studentMode ? confirmedScope?.learnedAtomIds ?? [] : learned).includes(atom.id)).map(atom => <label key={atom.id}><input type="checkbox" checked={assessmentTargets.includes(atom.id)} disabled={intent === 'micro' && assessmentTargets.length >= 3 && !assessmentTargets.includes(atom.id)} onChange={event => setAssessmentTargets(ids => event.target.checked ? [...ids, atom.id] : ids.filter(id => id !== atom.id))} /><span>{atom.name}</span></label>)}</fieldset>}
               </div>
+              <div className="assessment-routing-options"><label><input type="checkbox" checked={adaptive} onChange={event => setAdaptive(event.target.checked)} />按这次作答逐步选择核查顺序</label><label><input type="checkbox" checked={includePrerequisites} onChange={event => setIncludePrerequisites(event.target.checked)} />加入必要的前置基础核查，先在预览中确认</label><p>基础核查会单独标明。范围与题量确认后保持一致，选题顺序会在结束记录中保留。</p></div>
               <div className="studio-start"><div><strong>已选 {learned.filter((id) => atoms.some((atom) => atom.id === id)).length} 个点</strong><label>本组最多<select value={maxItems} onChange={(event) => setMaxItems(Number(event.target.value))}>{[2, 4, 6, 8, 12, 20, 30].map((value) => <option key={value} value={value}>{value}题</option>)}</select></label></div>
                 <button className="studio-primary" onClick={startAssessment} disabled={busy || !learned.length}>{busy ? '正在准备…' : studentMode ? '把这个进度告诉家长' : '确认进度，查看题组'} <span aria-hidden="true">↗</span></button></div>
               {studentMode && <><p role="status" className="studio-notice">{saved || '可以选择自己的年级和已学内容，请家长一起确认后，用新范围评测。'}</p>{confirmedScope && <button className="studio-primary" disabled={busy} onClick={() => execute(() => prepareBlueprint(confirmedScope!))}>按已确认的范围查看题组 →</button>}</>}<p className="studio-footnote">题量由时长和可用题目共同决定。基础题为规则估计材料，教材完整覆盖与标准化常模尚需独立验证。</p>
@@ -312,14 +327,14 @@ export function AssessmentStudio() {
           {screen === 'assessment' && session && <>
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
-            {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{session.blueprint?.groups.find(group => group.itemIds.includes(current.id))?.title ?? `第 ${Math.floor(session.answeredCount / 4) + 1} 小组`}</span><small aria-live="polite">{saved}</small></div>
+            {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{saved}</small></div>
               {payload && answer ? <QuestionRenderer renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /> : <p>正在打开题目…</p>}
               {hint && <div className="studio-hint" role="status">{hint}</div>}
               <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => {
                 const result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); setHint(result.hint);
               })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !canAnswer} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer || !canAnswer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
               <button className="studio-text-button studio-skip" disabled={busy} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
-            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy} onClick={() => execute(async () => { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${session.id}/complete`, {})); setScreen('report'); })}>生成本次报告</button> : null}
+            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
             {session.status === 'paused' && <div className="assessment-paused"><span className="studio-eyebrow">先休息一下</span><h3>思路和进度都已保存。</h3><p>回来后继续同一组题目。暂停期间保留草稿、首次作答与提示记录。</p><button className="studio-primary" disabled={busy} onClick={() => changeSessionState('resume')}>准备好了，继续这一组 →</button></div>}
             <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => setSession(await request<Session>(`/diagnostics/sessions/${session.id}`)))}>刷新当前状态</button></div>
             {endOpen && <form className="assessment-stop" onSubmit={event => { event.preventDefault(); void changeSessionState('abort'); }}><h3>保留这次已经完成的部分。</h3><p>已提交的表现和草稿继续保存，未答题保持未知。本组结束后不能再续答，可从当前范围另开一组新题。</p><label>这次提前结束的原因<textarea required minLength={5} maxLength={1000} rows={3} value={endReason} onChange={event => setEndReason(event.target.value)} placeholder="例如：今天已经疲劳，休息后再用新题继续观察。" /></label><div><button className="studio-primary" disabled={busy || mediaPending || endReason.trim().length < 5}>保留已答记录，结束本组</button><button type="button" className="studio-text-button" disabled={busy} onClick={() => setEndOpen(false)}>继续这一组</button></div></form>}
@@ -330,6 +345,7 @@ export function AssessmentStudio() {
             {report.scopeSnapshot && <details className="studio-report-scope"><summary>本次范围：{report.scopeSnapshot.grade}年级 · {report.scopeSnapshot.term === 'upper' ? '上学期' : '下学期'} · {report.scopeSnapshot.textbookVersion}</summary><p>按评测开始时确认的范围测量：{report.scopeSnapshot.learnedAtomIds.length} 个知识点，{report.scopeSnapshot.selectedLessonIds?.length ?? 0} 个已学课时。</p>{(report.scopeSnapshot.uncoveredLessonIds?.length ?? 0) > 0 && <p>其中 {report.scopeSnapshot.uncoveredLessonIds!.length} 个课时尚缺已审核的知识映射，报告不评价这些课时。</p>}{report.scopeSnapshot.selectedLessonSnapshots?.map((lesson) => <p key={lesson.id}>{lesson.chapterName} / {lesson.name}{report.scopeSnapshot!.uncoveredLessonIds?.includes(lesson.id) && ' · 尚未覆盖'}</p>)}</details>}
             {report.status === 'aborted' && <div className="assessment-partial" role="status"><strong>本组提前结束，仅记录已答部分。</strong><p>未作答的内容保持未知。可查看当时的具体表现，重新评测后再建立指导计划。</p></div>}
             <ReportHistory sessionId={report.sessionId} />
+            {session?.id === report.sessionId && !!session.routing?.decisions?.length && <details className="studio-report-scope"><summary>这组题怎样逐步核查</summary><p>每一步按当时的作答记录安排。选题理由帮助核对过程，不能单独证明深层原因；后续重评分保留原来的选题历史。</p><ol>{session.routing.decisions.map(decision => <li key={decision.sequence}><strong>{session.items.find(item => item.id === decision.itemId)?.atomName ?? '本组知识点'}</strong><p>{decision.reason}</p></li>)}</ol></details>}
             {report.definitionContext && <details className="studio-report-scope"><summary>{report.definitionContext.origin === 'started' ? '测量时采用的知识目标与标准' : '这份历史报告的知识定义尚无法核对'}</summary>
               {report.definitionContext.origin === 'unavailable' && <p>保留历史作答与报告。请按当前范围完成新评测，再判断现在的掌握情况。</p>}
               {report.definitionContext.atoms.map(atom => <div key={atom.id}><strong>{atom.name}</strong><p>目标：{atom.objective}</p><p>达标标准：{atom.successCriterion}</p></div>)}

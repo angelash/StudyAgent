@@ -64,6 +64,7 @@ export const diagnosticStartSchema = z.object({
   studentId: id, subject, intent: z.enum(['baseline', 'unit', 'phase', 'micro', 'verification', 'retest']).default('baseline'),
   targetAtomIds: z.array(id).max(100).optional(), maxItems: z.number().int().min(2).max(30).optional(),
   includePrerequisites: z.boolean().default(false), hypothesisId: id.optional(), reviewTaskId: id.optional(), planId: id.optional(),
+  adaptive: z.boolean().optional(),
 }).strict();
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
@@ -75,6 +76,7 @@ export type AssessmentBlueprint = {
   groups: Array<{ id: string; title: string; itemIds: string[] }>;
   dimensions: Array<{ dimension: MeasurementDimension; selected: number; available: number }>;
   warnings: string[];
+  routing?: { mode: 'adaptive'; version: string; description: string };
 };
 export type DiagnosticBlueprintReservation = {
   id: string; studentId: string; actorId: string; command: DiagnosticStart; seed: string; fingerprint: string;
@@ -101,6 +103,17 @@ export type DiagnosticSession = {
   startedAt: string; completedAt: string | null; hypothesisId: string | null; reviewTaskId: string | null;
   exposedQuestionIds?: string[];
   planId?: string; planRevision?: number;
+  routing?: DiagnosticRouting;
+};
+
+export type DiagnosticRoutingDecision = {
+  sequence: number; itemId: string; focusAtomId: string; rule: 'initial_anchor' | 'prerequisite_probe' | 'representation_contrast' |
+    'same_point_contrast' | 'return_to_target' | 'transfer_probe' | 'uncertain_followup' | 'coverage';
+  reason: string; at: string; basis: Array<{ responseId: string; itemId: string; status: string; score: number | null;
+    correct: boolean | null; disposition: string; hintLevel: number; priorExposure: boolean }>;
+};
+export type DiagnosticRouting = {
+  version: string; initialItemIds: string[]; currentItemId: string | null; decisions: DiagnosticRoutingDecision[];
 };
 
 export const diagnosticResponseInputSchema = z.object({

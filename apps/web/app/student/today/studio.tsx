@@ -90,7 +90,7 @@ export function DailyStudio() {
   async function previewAssessment(command: DiagnosticStart) {
     const signature = JSON.stringify(command);
     if (blueprintRequest.current.signature !== signature) blueprintRequest.current = { signature, key: crypto.randomUUID() };
-    const body = { ...command, requestKey: blueprintRequest.current.key };
+    const body = { ...command, adaptive: command.intent !== 'retest', requestKey: blueprintRequest.current.key };
     try { sessionStorage.setItem(`study-blueprint:${command.studentId}:${command.subject}`, JSON.stringify(body)); }
     catch { /* A preview is also recoverable through its server URL. */ }
     const next = await send<{ id: string }>('/diagnostics/blueprints', body);
