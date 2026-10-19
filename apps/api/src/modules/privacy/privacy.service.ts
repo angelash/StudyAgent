@@ -1,11 +1,14 @@
 import { BadRequestException, ConflictException, ForbiddenException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { z } from 'zod';
-import type { PrivacyExport, PrivacyOverview, PrivacyPreview, PrivacyReceipt } from '@study-agent/contracts';
+import { randomUUID } from 'node:crypto';
+import type { PrivacyExport, PrivacyOverview, PrivacyPreview, PrivacyReceipt, StudentMedia } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { AuthService } from '../auth/auth.service';
 import { validate } from '../../common/validation';
 import { accountRecords, anonymizeSharedAttribution, mergeSelections, portableRecords, privacyHash, removeSelected, selectionCounts, selectionFingerprint, studentRecords, type Selection } from './privacy-records';
+import { StudentMediaService } from '../student-media/student-media.service';
+import { tarArchive } from './tar-archive';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -14,7 +17,8 @@ const deletion = credentials.extend({ confirmation: z.string().min(1).max(254), 
 
 @Injectable()
 export class PrivacyService {
-  constructor(private readonly store: InMemoryStoreService, private readonly auth: AuthService, private readonly events: DomainEventBusService) {}
+  private readonly preparedArchives = new Map<string, { actorId: string; sessionId: string; expiresAt: number; snapshot: PrivacyExport }>();
+  constructor(private readonly store: InMemoryStoreService, private readonly auth: AuthService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
   private parent(actor: InMemoryUserAccount) {
     if (actor.role !== 'parent' || actor.status !== 'active') throw new ForbiddenException('家庭资料管理需要家长本人登录');
   }
@@ -87,6 +91,44 @@ export class PrivacyService {
       notices: ['包含当前业务快照的学习进度、原始作答、提示、评分修订、报告、指导与复测历史。', '账号密码、登录令牌、一次性学习码、他人的私有对话不在导出范围。',
         '题卷原始资产库为独立共享资料，不包含在家庭数据JSON中。', retentionNotice] };
   }
+  async exportArchive(actor: InMemoryUserAccount, input: unknown, studentId?: string) {
+    const snapshot = await this.export(actor, input, studentId);
+    return this.archiveForSnapshot(snapshot);
+  }
+  async prepareArchive(actor: InMemoryUserAccount, sessionId: string, input: unknown, studentId?: string) {
+    for (const [id, entry] of this.preparedArchives) if (entry.expiresAt < Date.now()) this.preparedArchives.delete(id);
+    if (this.preparedArchives.size >= 100 || [...this.preparedArchives.values()].filter(entry => entry.actorId === actor.id).length >= 3) throw new HttpException('请先下载已准备的副本，或两分钟后重试', 429);
+    const snapshot = await this.export(actor, input, studentId);
+    // Qualification is session-bound, short-lived and carries no password or bearer token in the URL.
+    const id = randomUUID(), expiresAt = Date.now() + 120000;
+    this.preparedArchives.set(id, { actorId: actor.id, sessionId, expiresAt, snapshot });
+    return { downloadPath: `/api/privacy/archives/${id}`, expiresAt: new Date(expiresAt).toISOString(), filename: `${snapshot.receipt.id}.tar` };
+  }
+  async downloadArchive(actor: InMemoryUserAccount, sessionId: string, id: string) {
+    this.parent(actor);
+    const prepared = this.preparedArchives.get(id);
+    if (!prepared || prepared.expiresAt < Date.now() || prepared.actorId !== actor.id || prepared.sessionId !== sessionId) throw new NotFoundException('下载资格已结束，请重新核对密码后准备副本');
+    for (const child of prepared.snapshot.students) this.child(actor, child.id);
+    for (const child of prepared.snapshot.students) for (const row of (child.records.studentMedia ?? []) as StudentMedia[]) {
+      if (row.status !== 'ready') continue;
+      if (!this.store.studentMedia.some(current => current.id === row.id && current.status === 'ready' && current.sha256 === row.sha256 && current.studentId === child.id)) throw new ConflictException('作答附件已变化，请重新准备最新副本');
+    }
+    const archive = await this.archiveForSnapshot(prepared.snapshot);
+    this.preparedArchives.delete(id);
+    return archive;
+  }
+  private async archiveForSnapshot(snapshot: PrivacyExport) {
+    const media = snapshot.students.flatMap(child => (child.records.studentMedia ?? []) as StudentMedia[]).filter(file => file.status === 'ready');
+    const entries: Array<{ name: string; size: number; bytes?: Buffer; path?: string }> = [];
+    const manifests: Array<{ mediaId: string; name: string; mediaType: string; size: number; sha256: string }> = [];
+    for (const record of media) {
+      const file = await this.media.verifiedContent(record), name = `media/${record.id}.${file.mediaType === 'image/png' ? 'png' : 'wav'}`;
+      manifests.push({ mediaId: record.id, name, mediaType: file.mediaType, size: file.size, sha256: file.sha256 }); entries.push({ name, path: file.path, size: file.size });
+    }
+    const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests }, null, 2) + '\n');
+    entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
+    return { stream: tarArchive(entries, snapshot.exportedAt), receiptId: snapshot.receipt.id };
+  }
   async delete(actor: InMemoryUserAccount, input: unknown, studentId?: string) {
     this.parent(actor); const command = validate(deletion, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
     const kind = studentId ? 'student_delete' : 'account_delete', subjectId = studentId ?? actor.id;
@@ -102,6 +144,7 @@ export class PrivacyService {
     const receipt = this.receipt(actor, kind, subjectId, command.requestKey, inputHash, preview.counts);
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
+    await this.media.schedulePurge((selection.studentMedia ?? []).map(row => String(row.id)), actor.id, receipt.id);
     this.events.publish('privacy.deletion_completed', { receiptId: receipt.id, kind, subjectHash: receipt.subjectHash, counts: receipt.counts, policyVersion });
     return receipt;
   }

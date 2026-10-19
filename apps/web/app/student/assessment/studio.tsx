@@ -10,6 +10,7 @@ import './studio.css';
 import '../today/today.css';
 import { StudyNav } from '../../../components/study-nav';
 import { LearningProgressSelector, ProgressSelection } from '../../../components/learning-progress-selector';
+import { AnswerEvidenceView } from '../../../components/answer-evidence-view';
 import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
 import { ReportHistory } from '../../../components/report-history';
 import { GuidanceManager, ReviewScheduleEditor } from '../../../components/guidance-manager';
@@ -40,7 +41,9 @@ export function AssessmentStudio() {
   const [minutes, setMinutes] = React.useState(15), [maxItems, setMaxItems] = React.useState(12);
   const [sessions, setSessions] = React.useState<Session[]>([]), [session, setSession] = React.useState<Session | null>(null);
   const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), [answer, setAnswer] = React.useState<StudentAnswerPayload | null>(null);
-  const canAnswer = payload ? answerInputConfiguration(payload.answerSchema).supported : false;
+  const [mediaPending, setMediaPending] = React.useState(false);
+  const [resourceBlocked, setResourceBlocked] = React.useState(false);
+  const canAnswer = payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked : false;
   const [report, setReport] = React.useState<DiagnosticReport | null>(null), [plan, setPlan] = React.useState<GuidancePlanView | null>(null);
   const [reviews, setReviews] = React.useState<Review[]>([]), [retrospective, setRetrospective] = React.useState<Retrospective | null>(null);
   const [screen, setScreen] = React.useState<'setup' | 'assessment' | 'report' | 'plan'>('setup');
@@ -238,7 +241,7 @@ export function AssessmentStudio() {
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
             {current ? <div className="studio-question"><div className="studio-question-top"><span>{session.answeredCount + 1 < 5 ? '第一小组' : `第 ${Math.floor(session.answeredCount / 4) + 1} 小组`}</span><small aria-live="polite">{saved}</small></div>
-              {payload && answer ? <QuestionRenderer renderPayload={payload} answer={answer} onChange={changeAnswer} /> : <p>正在打开题目…</p>}
+              {payload && answer ? <QuestionRenderer renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /> : <p>正在打开题目…</p>}
               {hint && <div className="studio-hint" role="status">{hint}</div>}
               <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => {
                 const result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); setHint(result.hint);
@@ -260,7 +263,7 @@ export function AssessmentStudio() {
                 {estimate.lower !== null && estimate.upper !== null && <><span style={{ left: `${estimate.lower}%`, width: `${estimate.upper - estimate.lower}%` }} /><i style={{ left: `${estimate.mastery}%` }} /></>}</div>
               {expandedAtom === estimate.atomId && <div className="studio-evidence"><p>{estimate.mastery === null ? '没有有效证据，保留为未知。' : `现有证据的估计区间：${estimate.lower}% – ${estimate.upper}%。有效样本权重 ${estimate.effectiveSamples}。`}</p>
                 <div className="studio-dimensions">{estimate.dimensions.map((dimension) => <span key={dimension.dimension}>{({ understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' } as Record<string, string>)[dimension.dimension]}<strong>{dimension.mastery === null ? '未测' : `${dimension.mastery}%`}</strong></span>)}</div>
-                {report.evidence.filter((item) => item.atomId === estimate.atomId).map((item) => <div key={item.id} className="studio-evidence-item"><b>{item.status === 'pending_review' ? '待复核' : item.status === 'skipped' ? '已跳过' : item.correct ? '达到本题标准' : '本题需要核查'}</b><span>{item.gradingReason}</span><small>{item.hintLevel ? `使用${item.hintLevel}级提示` : '独立作答'} · {Math.round(item.elapsedMs / 1000)}秒</small><EvidenceFeedbackForm kind="diagnostic" responseId={item.id} /></div>)}
+                {report.evidence.filter((item) => item.atomId === estimate.atomId).map((item) => <div key={item.id} className="studio-evidence-item"><b>{item.status === 'pending_review' ? '待复核' : item.status === 'skipped' ? '已跳过' : item.correct ? '达到本题标准' : '本题需要核查'}</b><span>{item.gradingReason}</span><AnswerEvidenceView answer={item.answer} /><small>{item.hintLevel ? `使用${item.hintLevel}级提示` : '独立作答'} · {Math.round(item.elapsedMs / 1000)}秒</small><EvidenceFeedbackForm kind="diagnostic" responseId={item.id} /></div>)}
               </div>}
             </article>)}</div>
             {report.hypotheses.length > 0 && <><h3 className="studio-line-title">可能卡在哪里，以及怎样验证</h3><div className="studio-hypotheses">{report.hypotheses.map((hypothesis) => <article key={hypothesis.id}><span className="studio-badge">{hypothesisStatuses[hypothesis.status]}</span><h4>{hypothesis.title}</h4><p>{hypothesis.observation}</p><p>{hypothesis.explanation}</p><small>支持 {hypothesis.supportingEvidenceIds.length} 条 · 反证 {hypothesis.counterEvidenceIds.length} 条</small>

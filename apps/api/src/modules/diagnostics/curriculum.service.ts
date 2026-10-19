@@ -8,6 +8,7 @@ import { StudentsService } from '../students/students.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
 import { TextbookRegistryService } from './textbook-registry.service';
+import { mediaModeAvailable } from '../student-media/media-normalization';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService) {
@@ -20,7 +21,7 @@ export function eligibleMeasurements(store: InMemoryStoreService) {
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
-      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported;
+      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported && mediaModeAvailable(schemas.get(item.questionId)!.mode);
   });
 }
 
@@ -222,7 +223,7 @@ export class CurriculumService {
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
         families: new Set(items.map((i) => i.family)).size, dimensions: [...new Set(items.map((i) => i.dimension))],
         interactionGaps: new Set(this.store.measurementItems.filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
-          !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported)).map(i => i.questionId)).size,
+          !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported && mediaModeAvailable(schema.mode))).map(i => i.questionId)).size,
         draftMappings: this.store.measurementItems.filter((i) => i.atomId === atom.id && i.reviewStatus === 'draft').length };
     });
     const cells = (['math', 'chinese', 'english'] as Subject[]).flatMap((s) => Array.from({ length: 6 }, (_, i) => {

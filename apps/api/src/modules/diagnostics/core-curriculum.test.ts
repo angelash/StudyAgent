@@ -29,7 +29,7 @@ describe('original curriculum content integrity', () => {
       if ((exercise.mode ?? (atom.subject === 'math' ? 'numeric_blank' : 'text_blank')) === 'numeric_blank') {
         expect(numericValue(exercise.answer), id).not.toBeNull();
       }
-      if (exercise.mode === 'short_answer') {
+      if (['short_answer', 'geometry_draw', 'stepwise', 'image_upload', 'audio_record'].includes(exercise.mode ?? '')) {
         expect(exercise.rubric!.length).toBeGreaterThanOrEqual(3);
         expect(exercise.rubric!.reduce((n, c) => n + c.weight, 0)).toBeCloseTo(1);
       }

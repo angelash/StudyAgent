@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-19T17:17:00Z",
+  "baseline": "06febaa",
+  "scope": "Student image and recorded answers, controlled evidence, family archive and recovery",
+  "databaseSchema": 6,
+  "environment": { "node": "24.19.0", "sharp": "0.34.5", "libvips": "8.17.3", "ffmpeg": "8.0.1-full_build-www.gyan.dev", "python": "3.10" },
+  "curriculum": { "atoms": 256, "tasks": 3435, "oralAtoms": 12, "oralTasks": 48, "imageTasksAdded": 8, "inputModes": 17, "calibratedNorms": false, "completeTextbookAlignment": false },
+  "checks": [
+    { "command": "npm test", "passed": 117, "skipped": 4, "note": "Full run before final anonymity and concurrent-deletion changes; affected suites rerun below" },
+    { "command": "vitest run student-media.integration privacy.durability.integration domain-database core-curriculum", "passed": 14, "skipped": 0, "note": "Final anonymous-owner uniqueness and Windows junction rejection" },
+    { "command": "vitest run student-media.durability.integration student-media.integration", "passed": 7, "skipped": 0, "note": "Persistent erasure marker and in-flight normalization/deletion race" },
+    { "command": "node scripts/qa/run-postgres-tests.cjs", "passed": 4, "skipped": 0, "evidence": "postgres-media-runtime.json" },
+    { "command": "npm run lint", "passed": true },
+    { "command": "npm run build", "passed": true, "note": "contracts, config, API and Web; final API and Web affected builds also rerun" }
+  ],
+  "verifiedCases": ["real_jpeg_rotation_and_metadata_removal", "real_wav_webm_ogg_mp3_m4a_decode", "fake_image_mime_mismatch_and_video_track_rejection", "duration_and_native_concurrency_bounds", "chunk_retry_and_sha256", "cross_item_session_and_kind_rejection", "student_recording_and_access_revocation", "assigned_teacher_only_after_completion", "manual_rubric_and_immutable_first_response", "session_bound_one_use_family_tar", "independent_python_tar_and_hash_check", "cancel_expiry_and_draft_retention", "sqlite_restart_upload_and_draft_recovery", "failed_deletion_transaction_preserves_file", "cleanup_outbox_restart", "erased_bytes_cannot_be_recreated_by_inflight_decoder", "sqlite_and_postgres_backup_media_and_pending_chunks", "restore_ledger_physically_erases_deleted_media", "windows_junction_rejection", "closed_owner_uniqueness"],
+  "browser": { "verified": false, "block": "BROWSER_ACTION_OUTCOME_UNKNOWN; new-user-instruction-required; no retry attempted" },
+  "remaining": ["browser_and_device_acceptance", "dependency_audit_22_findings_including_6_critical", "whole_asset_backup_and_full_recovery", "concurrency_and_capacity", "textbook_mapping_and_listening_coverage", "remaining_product_plan_acceptance"]
+}

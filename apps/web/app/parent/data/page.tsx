@@ -1,8 +1,8 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { PrivacyCounts, PrivacyExport, PrivacyOverview, PrivacyPreview, PrivacyReceipt } from '@study-agent/contracts';
-import { apiRequest, setAuthToken } from '../../../lib/api';
+import type { PrivacyCounts, PrivacyOverview, PrivacyPreview, PrivacyReceipt } from '@study-agent/contracts';
+import { apiRequest, apiBaseUrl, setAuthToken } from '../../../lib/api';
 import { refreshSessionUser, useSessionUser } from '../../../lib/session-user';
 import { StudyNav } from '../../../components/study-nav';
 import '../../student/assessment/studio.css';
@@ -41,11 +41,10 @@ export default function FamilyDataPage() {
     try {
       const body = { credential, requestKey: requestKey.current, ...(action === 'delete' ? { confirmation, fingerprint: preview?.fingerprint } : {}) };
       if (action === 'export') {
-        const data = await apiRequest<PrivacyExport>(`${endpoint}/export`, { method: 'POST', body: JSON.stringify(body) });
-        const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json;charset=utf-8' }));
-        const anchor = document.createElement('a'); anchor.href = url; anchor.download = `学习资料-${data.exportedAt.slice(0, 10)}-${data.receipt.id}.json`;
-        document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30_000);
-        setNotice('资料副本已准备下载。请妥善保存，其中包含孩子的学习记录。'); reset(); await reload();
+        const data = await apiRequest<{ downloadPath: string; filename: string }>(`${endpoint}/prepare-archive`, { method: 'POST', body: JSON.stringify(body) });
+        const anchor = document.createElement('a'); anchor.href = `${apiBaseUrl}${data.downloadPath}`; anchor.download = data.filename;
+        document.body.append(anchor); anchor.click(); anchor.remove();
+        setNotice('已发起资料包下载，包含学习记录和保存的作答图片、录音。请在浏览器下载列表核对是否完成；如下载中断，可重新准备副本。'); reset(); await reload();
       } else {
         const result = await apiRequest<PrivacyReceipt>(`${endpoint}/delete`, { method: 'POST', body: JSON.stringify(body) }); setReceipt(result); reset();
         if (scope === 'account') { setClosed(true); setAuthToken(''); window.sessionStorage.removeItem('study_agent_user'); void refreshSessionUser(); }
@@ -65,7 +64,7 @@ export default function FamilyDataPage() {
             {child ? <><Counts counts={child.counts} /><p>{child.guardianCount} 位有效监护人{child.canDelete ? '。你可以在核对后删除此档案。' : '。永久删除需要先处理共同监护关系。'}</p></> : <div className="privacy-children">{overview.children.length ? overview.children.map(item => <article key={item.id}><div><strong>{item.nickname}</strong><span>{item.grade}年级 · {item.guardianCount} 位监护人</span></div><p>{item.counts.observations} 条作答 · {item.counts.activities} 次学习活动</p></article>) : <p>当前没有绑定孩子档案。账号资料和本人收藏、私有对话仍可导出。</p>}</div>}
             <div className="privacy-actions"><button className="studio-primary" disabled={busy || !!operation} onClick={() => begin('export')}>下载资料副本 ↗</button><button className="privacy-delete-link" disabled={busy || !!operation} onClick={() => begin('delete')}>{scope === 'account' ? '查看注销账号的影响' : '查看删除档案的影响'}</button></div></section>
           {operation && <form ref={formRef} className={`privacy-panel ${operation === 'delete' ? 'privacy-danger' : ''}`} onSubmit={submit}><span className="studio-eyebrow">02 / 本人核对</span><h2>{operation === 'export' ? '将学习记录带在身边。' : scope === 'account' ? '核对注销后的变化。' : '核对将删除的记录。'}</h2>
-            {operation === 'export' ? <p>下载JSON资料文件，包含进度、作答、评分版本、报告、指导和复测历史。密码、学习码及他人的私有对话不会被导出。</p> : preview && <><Counts counts={preview.counts} />
+            {operation === 'export' ? <p>下载资料包，内含进度、作答、评分版本、报告、指导和复测历史的JSON文件，以及保存的作答图片、录音和校验清单。密码、学习码及他人的私有对话不会被导出。</p> : preview && <><Counts counts={preview.counts} />
               <p>本次将删除 {preview.counts.records} 条业务记录，包括相关身份、草稿与历史。{scope === 'account' && '本人账号和登录会话也会结束。'}</p>
               {preview.deletedChildren.length > 0 && <p><strong>将删除的孩子档案：</strong>{preview.deletedChildren.map(item => item.nickname).join('、')}</p>}
               {preview.retainedChildren.length > 0 && <p><strong>继续由其他监护人保留：</strong>{preview.retainedChildren.map(item => item.nickname).join('、')}。{scope === 'account' && '会移除你的绑定、私有对话和所授予的复核权限，保留学习事实与匿名历史。'}</p>}

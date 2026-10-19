@@ -89,6 +89,6 @@ describe('original structured course delivery', () => {
       expect(answerInputConfiguration(schema).supported, schema.questionId).toBe(true);
       if (!exercise.rubric) expect(gradeResponse(schema, exercise.answer, exercise.answer).score, schema.questionId).toBe(1);
     }
-    expect(modes.size).toBe(15);
+    expect(modes.size).toBe(17);
   });
 });

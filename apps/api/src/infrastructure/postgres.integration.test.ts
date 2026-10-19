@@ -45,6 +45,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       expect(await first.read()).toEqual(empty);
       await expect(first.commit(empty, { assistantSessions: [{ id: 'a', scopeKey: 'same' }, { id: 'b', scopeKey: 'same' }] })).rejects.toThrow();
       await expect(first.commit(empty, { privacyRequests: [{ id: 'a', actorId: 'owner', requestKey: 'same' }, { id: 'b', actorId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
+      await expect(first.commit(empty, { studentMedia: [{ id: 'a', ownerUserId: 'owner', requestKey: 'same' }, { id: 'b', ownerUserId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
       await first.commit(empty, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'active' }] });
       const authorized = await first.read(), latest = await second.read();
       await second.commit(latest, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }] });
@@ -55,7 +56,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       try { await upgrade.query('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
       const migrated = new DomainDatabase(target); await migrated.open();
       try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 5 });
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 6 });
     } finally { await first.close(); await second.close(); }
   });
 
@@ -137,14 +138,21 @@ suite('real PostgreSQL storage and API recovery', () => {
       const db = new DomainDatabase(source.toString()); databases.push(db); await db.open();
       const bytes = Buffer.from('%PDF-1.4 immutable PostgreSQL backup fixture'), sha256 = createHash('sha256').update(bytes).digest('hex');
       mkdirSync(join(sourceFiles, 'processing/blobs'), { recursive: true }); writeFileSync(join(sourceFiles, 'processing/blobs', sha256), bytes);
+      const keptMediaId = `student_media_${randomUUID()}`, erasedMediaId = `student_media_${randomUUID()}`, pendingMediaId = `student_media_${randomUUID()}`;
+      for (const id of [keptMediaId, erasedMediaId, pendingMediaId]) {
+        const directory = join(sourceFiles, 'student-media', id, id === pendingMediaId ? 'chunks' : 'ready'); mkdirSync(directory, { recursive: true });
+        writeFileSync(join(directory, id === pendingMediaId ? `0-${sha256}` : sha256), bytes);
+      }
       await db.commit(await db.read(), { users: [{ id: 'owner', principal: 'postgres-backup' }], sessions: [{ id: 'old-session', tokenHash: 'old-token-hash', revokedAt: null }],
         students: [{ id: 'erase-child', nickname: '私有恢复样本' }],
         diagnosticResponses: [{ id: 'original-evidence', score: 0.5 }, { id: 'erased-evidence', studentId: 'erase-child', score: 0 }], diagnosticPlans: [{ id: 'plan', revision: 4 }],
-        importFiles: [{ id: `import_file_${randomUUID()}`, status: 'ready', sha256, size: bytes.length }] },
+        importFiles: [{ id: `import_file_${randomUUID()}`, status: 'ready', sha256, size: bytes.length }],
+        studentMedia: [keptMediaId, erasedMediaId, pendingMediaId].map(id => ({ id, studentId: id === erasedMediaId ? 'erase-child' : 'keep-child', ownerUserId: 'owner', requestKey: id,
+          status: id === pendingMediaId ? 'uploading' : 'ready', sha256, size: bytes.length, storedSize: bytes.length, chunks: id === pendingMediaId ? [{ index: 0, size: bytes.length, sha256 }] : [] })) },
       { enqueue: [{ id: 'pending-task', kind: 'pdf.import', ownerUserId: 'owner', requestKey: 'pg-backup-task', payloadHash: 'hash', payload: {}, createdAt: new Date().toISOString(), maxAttempts: 3 }] });
       const oldWorker = (await db.tasks.claim(['pdf.import']))!;
       await createPostgresBundle({ connectionString: source.toString(), pgBin: tools, dataDir: sourceFiles, destination: bundle });
-      expect((await verifyPostgresBundle({ bundle, pgBin: tools })).verifiedFiles).toBe(2);
+      expect((await verifyPostgresBundle({ bundle, pgBin: tools })).verifiedFiles).toBe(5);
       const subjectHash = createHash('sha256').update(JSON.stringify({ id: 'erase-child' })).digest('hex'), ledgerPath = join(directory, 'deletions.json');
       writeFileSync(ledgerPath, JSON.stringify(makeLedger([{ id: 'privacy-test-receipt', actorId: 'owner', kind: 'student_delete', subjectHash, requestKey: 'postgres-delete-child', inputHash: 'a'.repeat(64),
         completedAt: new Date().toISOString(), counts: { records: 2, observations: 1, activities: 0, plans: 0, conversations: 0, accessRecords: 0 }, erasedStudentHashes: [subjectHash], retainedStudentHashes: [] }])));
@@ -152,6 +160,9 @@ suite('real PostgreSQL storage and API recovery', () => {
       expect(receipt).toMatchObject({ revokedSessions: 1, fencedTasks: 1, assetsIncluded: false });
       expect(existsSync(join(restoredFiles, '.study-restore-incomplete'))).toBe(false);
       expect(readFileSync(join(restoredFiles, 'processing/blobs', sha256))).toEqual(bytes);
+      expect(readFileSync(join(restoredFiles, 'student-media', keptMediaId, 'ready', sha256))).toEqual(bytes);
+      expect(readFileSync(join(restoredFiles, 'student-media', pendingMediaId, 'chunks', `0-${sha256}`))).toEqual(bytes);
+      expect(existsSync(join(restoredFiles, 'student-media', erasedMediaId))).toBe(false); expect(receipt.mediaDirectoriesPurged).toBe(1);
       const recovered = new DomainDatabase(restored.toString()); databases.push(recovered); await recovered.open();
       const snapshot = await recovered.read();
       expect(snapshot.state.diagnosticResponses).toEqual([{ id: 'original-evidence', score: 0.5 }]);

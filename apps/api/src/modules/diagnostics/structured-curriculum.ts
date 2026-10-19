@@ -56,5 +56,14 @@ export function addStructuredExercises(definitions: FoundationDefinition[]) {
     dimension: 'understanding', family: 'area-array', rubric: [
       { criterion: '长与宽分别对应4个和3个单位长度', weight: 0.3 }, { criterion: '单位正方形覆盖无重复、无遗漏，或文字准确说明行列', weight: 0.4 },
       { criterion: '将4×3=12与单位正方形数量联系起来', weight: 0.3 }] });
+  for (let n = 0; n < 8; n++) {
+    const length = 3 + n, width = 2 + n % 3;
+    append('core:math:rectanglecover', { stem: `在纸上画出长${length}格、宽${width}格的长方形，用单位正方形覆盖它，并写出面积算式。拍照上传完整作答。`,
+      mode: 'image_upload', answer: `每行${length}个单位正方形，共${width}行，${length}×${width}=${length * width}平方单位。`,
+      responseShape: { mediaPolicy: 'student-media-v1' }, dimension: 'understanding', family: 'area-array', rubric: [
+        { criterion: `图中长和宽分别对应${length}与${width}个单位长度`, weight: 0.3 },
+        { criterion: '用单位正方形无重叠无遗漏地覆盖长方形，表示可辨认', weight: 0.4 },
+        { criterion: `算式和图对应，面积为${length * width}平方单位`, weight: 0.3 }] });
+  }
   return definitions;
 }

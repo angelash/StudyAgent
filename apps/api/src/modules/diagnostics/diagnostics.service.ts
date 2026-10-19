@@ -13,12 +13,14 @@ import { deriveHypotheses } from './diagnosis';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { gradeResponse } from './scoring';
 import { prepareScoringReview } from './scoring-review';
+import { StudentMediaService } from '../student-media/student-media.service';
+import { mediaModeAvailable } from '../student-media/media-normalization';
 
 @Injectable()
 export class DiagnosticsService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly curriculum: CurriculumService, private readonly workspace: QuestionWorkspaceService,
-    private readonly events: DomainEventBusService) {}
+    private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
 
   start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope) {
     const command = validate(diagnosticStartSchema, input);
@@ -153,6 +155,7 @@ export class DiagnosticsService {
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
     const payload = structuredClone(question.renderPayload) as QuestionRenderPayload;
     payload.answerSchema.gradingConfig = {};
+    payload.inputAvailability = { supported: mediaModeAvailable(payload.answerSchema.mode), reason: mediaModeAvailable(payload.answerSchema.mode) ? '' : '本次音频作答暂时不可用，请先跳过并反馈给老师。' };
     payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
     const draft = this.store.diagnosticDrafts.find((item) => item.sessionId === sessionId && item.itemId === itemId);
     return { itemId, atomId: mapping.atomId, reason: session.selectionReasons[itemId], payload, draft: draft?.answer ?? null };
@@ -167,6 +170,7 @@ export class DiagnosticsService {
     const mapping = session.itemSnapshots.find(item => item.id === itemId)!;
     const snapshot = session.questionSnapshots.find(item => item.id === mapping.questionId)!;
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, command.answer, true); if (issue) throw new BadRequestException(issue);
+    this.media.assertAnswer(user, { kind: 'diagnostic', sessionId, itemId }, command.answer, true);
     const existing = this.store.diagnosticDrafts.find((item) => item.sessionId === sessionId && item.itemId === itemId);
     const draft = { id: `draft:${sessionId}:${itemId}`, sessionId, itemId, answer: command.answer, updatedAt: new Date().toISOString() };
     if (existing) Object.assign(existing, draft); else this.store.diagnosticDrafts.push(draft);
@@ -189,6 +193,8 @@ export class DiagnosticsService {
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
     const configuration = answerInputConfiguration(question.answerSchema as QuestionAnswerSchema);
     if (command.disposition !== 'skip' && !configuration.supported) throw new BadRequestException(configuration.reason);
+    if (command.disposition !== 'skip' && !mediaModeAvailable((question.answerSchema as QuestionAnswerSchema).mode)) throw new BadRequestException('本次音频作答暂时不可用，请先跳过');
+    const mediaIds = command.disposition === 'answered' ? this.media.assertAnswer(user, { kind: 'diagnostic', sessionId, itemId: command.itemId }, command.answer) : [];
     const grade = command.disposition === 'answered' ? gradeResponse(question.answerSchema as QuestionAnswerSchema, question.answer, command.answer) :
       command.disposition === 'dont_know' ? { score: 0, correct: false, status: 'scored' as const, reason: '学生选择暂时不会，作为当前任务表现记录。' } :
         { score: null, correct: null, status: 'skipped' as const, reason: '本题已跳过，不计为错误。' };
@@ -209,6 +215,7 @@ export class DiagnosticsService {
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
     };
     this.store.diagnosticResponses.push(response);
+    this.media.bind(mediaIds, response.id);
     this.store.diagnosticDrafts = this.store.diagnosticDrafts.filter((item) => item.sessionId !== sessionId || item.itemId !== mapping.id);
     this.events.publish('diagnostic.response_saved', { sessionId, responseId: response.id, studentId: session.studentId });
     return { saved: true, responseId: response.id, idempotent: false, status: response.status };

@@ -6,7 +6,7 @@ const { spawn } = require('node:child_process');
 const { Pool } = require('pg');
 const { files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } } = require('./backup.cjs');
 const { fenceRestoredState } = require('./restore-state.cjs');
-const { readLedger, applyDeletionLedger } = require('./privacy-ledger.cjs');
+const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
 const FORMAT = 'study-agent-postgres-backup-v1';
 const fail = message => { throw new Error(message); };
 function config(connectionString) {
@@ -26,7 +26,7 @@ function native(name, args, pgBin, connectionString) {
 }
 async function summary(client) {
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
-  if (!versions.length || versions.at(-1) > 5) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 6) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
     collections: (await client.query('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection')).rows.map(r => ({ collection: r.collection, count: Number(r.count) })),
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
@@ -39,7 +39,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
       (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
     database = await summary(client);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -70,7 +70,7 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   if (manifest.format !== FORMAT || !Array.isArray(manifest.files) || manifest.files.length > 1_000_000 || !Array.isArray(manifest.references) || typeof manifest.assetsIncluded !== 'boolean' || typeof manifest.id !== 'string') fail('unsupported_backup_format');
   const paths = new Map(), portable = new Set();
   for (const file of manifest.files) {
-    if (!/^(database\/postgres\.dump|data\/processing\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const actual = within(root, file.path), stat = fs.statSync(actual);
     if (!stat.isFile() || stat.size !== file.size || digest(actual) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file); portable.add(file.path.toLowerCase());
@@ -98,14 +98,15 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
     await native('pg_restore', ['--no-owner', '--no-acl', '--no-tablespaces', '--exit-on-error', '--single-transaction', '--dbname=' + config(connectionString).PGDATABASE, within(bundle, 'database/postgres.dump')], pgBin, connectionString);
     await client.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
     if (JSON.stringify(await summary(client)) !== JSON.stringify(verified.manifest.database)) fail('restored_database_summary_mismatch');
-    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts')")).rows);
+    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia')")).rows);
     for (const [relative, expected] of refs) {
       const item = verified.manifest.references.find(r => r.path === `data/${relative}`);
       if (!item || expected.sha256 !== item.sha256 || expected.size !== item.size) fail('restored_file_reference_mismatch');
     }
     if (refs.size !== verified.manifest.referencedFileCount) fail('restored_file_reference_mismatch');
     const query = async (sql, params = []) => { let index = 0; return (await client.query(sql.replace(/\?/g, () => `$${++index}`), params)).rows; };
-    const privacy = await applyDeletionLedger(query, ledger);
+    const { removedMediaIds, ...privacy } = await applyDeletionLedger(query, ledger);
+    privacy.mediaDirectoriesPurged = purgeRestoredMedia(root, removedMediaIds);
     counts = { ...await fenceRestoredState(query, verified.manifest.id, verified.manifest.database.revision), ...privacy };
     if ((await client.query("UPDATE study_restore_guard SET state='ready',updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'", [counts.restoredAt, verified.manifest.id])).rowCount !== 1) fail('restore_guard_changed');
     await client.query('COMMIT');

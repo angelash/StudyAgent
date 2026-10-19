@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash, randomUUID } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -36,6 +37,12 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
       const code = await call('post', `/students/${shared.id}/learning-access/codes`, { expectedVersion: 1, requestKey: 'durable-privacy-code' });
       const learner = await call('post', '/auth/learning-code', { code: code.code });
       const store = app.get(InMemoryStoreService);
+      const mediaBytes = Buffer.from('normalized synthetic media backup bytes'), mediaHash = createHash('sha256').update(mediaBytes).digest('hex');
+      const sharedMediaId = `student_media_${randomUUID()}`, exclusiveMediaId = `student_media_${randomUUID()}`, pendingMediaId = `student_media_${randomUUID()}`;
+      for (const id of [sharedMediaId, exclusiveMediaId, pendingMediaId]) {
+        const path = join(source, 'student-media', id, id === pendingMediaId ? 'chunks' : 'ready'); mkdirSync(path, { recursive: true });
+        writeFileSync(join(path, id === pendingMediaId ? `0-${mediaHash}` : mediaHash), mediaBytes);
+      }
       await store.transaction(() => {
         store.diagnosticResponses.push({ id: 'preserved-shared-response', studentId: shared.id, sessionId: 'shared-session', answer: '保留的原始表达', score: 0.75 },
           { id: 'erased-exclusive-response', studentId: exclusive.id, sessionId: 'exclusive-session', answer: '应删除的原始表达', score: 0 });
@@ -43,6 +50,11 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         store.diagnosticReports.push({ id: 'shared-report', sessionId: 'shared-session', report: { studentId: shared.id, version: 1 } });
         store.guidancePlanRevisions.push({ id: 'shared-plan-revision', planId: 'shared-plan', actorId: parent.user.id, snapshot: { studentId: shared.id, createdBy: parent.user.id } });
         store.diagnosticPlans.push({ id: 'shared-plan', studentId: shared.id });
+        for (const [id, studentId] of [[sharedMediaId, shared.id], [exclusiveMediaId, exclusive.id], [pendingMediaId, shared.id]]) store.studentMedia.push({ id, studentId,
+          ownerUserId: parent.user.id, requestKey: id, kind: 'diagnostic', sessionId: studentId === shared.id ? 'shared-session' : 'exclusive-session', itemId: 'item', questionId: 'question',
+          name: 'private-answer.png', mediaType: 'image/png', size: mediaBytes.length, chunkSize: 1048576, createdAt: new Date().toISOString(), references: [],
+          status: id === pendingMediaId ? 'uploading' : 'ready', sha256: id === pendingMediaId ? null : mediaHash, storedSize: mediaBytes.length, storedType: 'image/png',
+          receivedSha256: mediaHash, completedAt: null, chunks: id === pendingMediaId ? [{ index: 0, size: mediaBytes.length, sha256: mediaHash }] : [] });
       });
       const exported = await call('post', '/privacy/account/export', { credential, requestKey: 'before-deletion-export' });
       expect(exported.students).toHaveLength(2);
@@ -60,6 +72,10 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
       const restored = await restoreBundle({ bundle, destination: recovered, deletionLedger: ledgerPath });
       expect(restored.appliedDeletionReceipts).toBe(1); expect(restored.privacyRowsRemoved).toBeGreaterThan(0);
       expect(restored.deletionLedgerSha256).toBe(ledger.sha256);
+      expect(restored.mediaDirectoriesPurged).toBe(1);
+      expect(existsSync(join(recovered, 'student-media', exclusiveMediaId))).toBe(false);
+      expect(readFileSync(join(recovered, 'student-media', sharedMediaId, 'ready', mediaHash))).toEqual(mediaBytes);
+      expect(readFileSync(join(recovered, 'student-media', pendingMediaId, 'chunks', `0-${mediaHash}`))).toEqual(mediaBytes);
       process.env.STUDY_DATA_DIR = recovered; app = await start();
       await call('get', '/auth/me', undefined, parent.token, 401); await call('get', '/auth/me', undefined, learner.token, 401);
       await call('post', '/auth/login', { principal: parent.user.principal, credential }, '', 401);
@@ -72,6 +88,8 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         expect(recoveredStore.guidancePlanRevisions[0].actorId).toBe('deleted-account');
         expect(recoveredStore.privacyRequests.find((row: any) => row.id === receipt.id).kind).toBe('account_delete');
         expect(recoveredStore.events.some((row: any) => row.eventName === 'privacy.restore_deletions_applied')).toBe(true);
+        expect(recoveredStore.studentMedia.map((row: any) => row.id).sort()).toEqual([sharedMediaId, pendingMediaId].sort());
+        expect(recoveredStore.studentMedia.every((row: any) => row.ownerUserId === `deleted-account:${row.id}`)).toBe(true);
       });
       expect((await verifyBundle({ bundle })).manifest.database.collections.some((row: any) => row.collection === 'users' && row.count >= 3)).toBe(true);
       const damagedLedger = JSON.parse(ledgerText); damagedLedger.entries[0].erasedStudentHashes = []; writeFileSync(ledgerPath, JSON.stringify(damagedLedger));

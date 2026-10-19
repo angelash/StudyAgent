@@ -24,12 +24,13 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/students\/[^/]+\/(profile|plans|reviews)$/,
     /^diagnostics\/plans\/[^/]+(\/(reviews|retrospective))?$/,
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
-    /^ai\/assistant\/sessions\/[^/]+\/messages$/],
+    /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/],
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^diagnostics\/sessions\/[^/]+\/(responses|complete)$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/hint$/,
     /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
-    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/],
+    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/],
+  PUT: [/^learning\/media\/[^/]+\/chunks\/\d+$/],
   PATCH: [/^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 

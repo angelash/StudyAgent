@@ -390,6 +390,7 @@ export const questionRenderPayloadSchema = z.object({
   document: questionDocumentSchema,
   answerSchema: questionAnswerSchemaSchema,
   source: questionSourceRecordSchema,
+  inputAvailability: z.object({ supported: z.boolean(), reason: z.string() }).optional(),
 });
 
 export type QuestionRenderPayload = z.infer<typeof questionRenderPayloadSchema>;
@@ -719,3 +720,4 @@ export * from './processing';
 export * from './student-access';
 export * from './privacy';
 export * from './answer-protocol';
+export * from './student-media';

@@ -8,7 +8,8 @@ import { GuidanceService } from './guidance.service';
 import { DiagnosticsController } from './diagnostics.controller';
 import { FoundationSeedService } from './foundation-seed.service';
 import { TextbookRegistryService } from './textbook-registry.service';
+import { StudentMediaModule } from '../student-media/student-media.module';
 
-@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule], controllers: [DiagnosticsController],
+@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule], controllers: [DiagnosticsController],
   providers: [CurriculumService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}

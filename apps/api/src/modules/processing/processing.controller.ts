@@ -1,5 +1,5 @@
+import { streamFile } from '../../common/stream-file';
 import { BadRequestException, Body, ConflictException, Controller, Get, Headers, Param, Post, Put, Query, Req, Res, StreamableFile, UseGuards } from '@nestjs/common';
-import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
 import type { Response } from 'express';
 import { z } from 'zod';
@@ -14,22 +14,6 @@ export const taskView = (task: TaskRow) => ({ id: task.id, kind: task.kind, stat
   generation: task.generation, version: task.version, createdAt: task.createdAt, updatedAt: task.updatedAt, availableAt: task.availableAt,
   progress: task.progress, result: task.result, errorCode: task.errorCode });
 
-function streamFile(media: { path: string; mediaType: string; size: number; sha256: string }, range: string | undefined, response: Response) {
-  const etag = `"${media.sha256}"`; response.setHeader('ETag', etag); response.setHeader('Accept-Ranges', 'bytes');
-  response.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
-  let start = 0, end = media.size - 1;
-  if (range) {
-    const match = /^bytes=(\d*)-(\d*)$/.exec(range);
-    if (!match || (!match[1] && !match[2])) start = -1;
-    else if (!match[1]) { const length = Number(match[2]); start = length > 0 ? Math.max(0, media.size - length) : -1; }
-    else { start = Number(match[1]); if (match[2]) end = Math.min(end, Number(match[2])); }
-    if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start < 0 || start > end || start >= media.size) {
-      response.status(416).setHeader('Content-Range', `bytes */${media.size}`); return new StreamableFile(Buffer.alloc(0), { type: media.mediaType });
-    }
-    response.status(206).setHeader('Content-Range', `bytes ${start}-${end}/${media.size}`);
-  }
-  return new StreamableFile(createReadStream(media.path, { start, end }), { type: media.mediaType, length: end - start + 1, disposition: 'inline' });
-}
 
 @UseGuards(AuthGuard)
 @Controller('admin')

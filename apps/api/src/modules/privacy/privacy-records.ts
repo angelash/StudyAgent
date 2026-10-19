@@ -22,7 +22,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback']) {
+    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -109,7 +109,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
 
 /** Retain shared children's learning history while removing a closed account's attribution. */
 export function anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string) {
-  const actorFields = new Set(['actorId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy']);
+  const actorFields = new Set(['actorId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy', 'ownerUserId']);
   const replace = (value: unknown): unknown => {
     if (Array.isArray(value)) return value.map(replace);
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, child]) =>
@@ -119,6 +119,13 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
   const selected = mergeSelections(...studentIds.map(id => studentRecords(store, id)));
   for (const [name, records] of Object.entries(selected)) {
     const affected = new Set(records.map(recordId));
-    (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => affected.has(recordId(row)) ? replace(row) as Row : row);
+    (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => {
+      if (!affected.has(recordId(row))) return row;
+      const anonymous = replace(row) as Row;
+      // Different closed upload owners can have used the same request key.
+      // A per-file anonymous owner preserves uniqueness without retaining identity.
+      if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
+      return anonymous;
+    });
   }
 }

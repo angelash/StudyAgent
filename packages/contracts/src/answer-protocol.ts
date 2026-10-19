@@ -42,7 +42,7 @@ export function answerInputConfiguration(schema: Pick<QuestionAnswerSchema, 'mod
     const parsed = targets.safeParse(shape.targets); config.targets = parsed.success ? parsed.data : [];
     if (!config.targets.length || !config.imageUrl || !/^(\/(?:api|question-assets)\/(?!\/)|https:\/\/)/.test(config.imageUrl) || /[\\\x00-\x20]/.test(config.imageUrl)) unsupported('本题的图上选点尚未配置完整，请先跳过。');
   }
-  if (['image_upload', 'audio_record'].includes(mode)) unsupported('本题需要受控的作答上传，当前入口尚未开放，请先跳过。');
+  if (['image_upload', 'audio_record'].includes(mode) && shape.mediaPolicy !== 'student-media-v1') unsupported('本题尚未配置受控作答上传，请先跳过。');
   return config;
 }
 
@@ -60,6 +60,12 @@ export function answerProtocolIssue(schema: QuestionAnswerSchema, input: unknown
   if (mode === 'geometry_draw') {
     const parsed = drawing.safeParse(response);
     if (!parsed.success || (!partial && !parsed.data.strokes.length && !parsed.data.description.trim())) return '请保留作图笔迹，或用文字说明图形与理由';
+  }
+  if (['image_upload', 'audio_record'].includes(mode)) {
+    if (!config.supported) return partial ? null : config.reason;
+    if (!Array.isArray(response.mediaIds) || response.mediaIds.length > (mode === 'image_upload' ? 3 : 1) ||
+      response.mediaIds.some((id: unknown) => typeof id !== 'string' || !/^student_media_[a-f0-9-]{36}$/.test(id)) || new Set(response.mediaIds).size !== response.mediaIds.length ||
+      typeof response.description !== 'string' || response.description.length > 4000 || (!partial && !response.mediaIds.length)) return mode === 'image_upload' ? '请上传清晰的作答图片后提交' : '请录音或上传音频后提交';
   }
   if (mode === 'numeric_blank' && !(typeof response.value === 'string' && response.value.length <= 500 || typeof response.value === 'number' && Number.isFinite(response.value))) return '请输入有效数字或分数';
   if (mode === 'boolean' && !(typeof response.value === 'boolean' || typeof response.value === 'number' && [0, 1].includes(response.value) || typeof response.value === 'string' && response.value.length <= 20)) return '请选择正确或错误';

@@ -104,6 +104,7 @@ export class DomainDatabase {
     await this.migrateConstraints(4, [], `CREATE TABLE IF NOT EXISTS study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL);
       INSERT INTO study_restore_guard VALUES(1,'ready',NULL,'${new Date().toISOString()}') ON CONFLICT(id) DO NOTHING;`);
     await this.migrateConstraints(5, [{ name: 'privacy_request', collection: 'privacyRequests', fields: ['actorId', 'requestKey'] }]);
+    await this.migrateConstraints(6, [{ name: 'student_media_request', collection: 'studentMedia', fields: ['ownerUserId', 'requestKey'] }]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
     await this.tasks.open();
   }

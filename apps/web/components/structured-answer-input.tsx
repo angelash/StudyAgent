@@ -2,6 +2,7 @@
 import * as React from 'react';
 import type { DrawingPoint, DrawingStroke, InputConfiguration } from '@study-agent/contracts';
 import './structured-answer-input.css';
+import { questionMediaUrl } from '../lib/media';
 type Props = { config: InputConfiguration; response: Record<string, unknown>; onChange: (value: Record<string, unknown>) => void };
 const record = (value: unknown): Record<string, string> => value && typeof value === 'object' && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).filter(([, item]) => typeof item === 'string')) : {};
 
@@ -25,7 +26,7 @@ export function StructuredAnswerInput({ config, response, onChange }: Props) {
     const cells = record(response.cells);
     return <div className="answer-table-wrap"><table className="answer-grid-table"><caption>按行与列的提示填写每个空位</caption><thead><tr><th scope="col">项目</th>{config.columns.map(column => <th scope="col" key={column.id}>{column.label}</th>)}</tr></thead><tbody>{config.rows.map(row => <tr key={row.id}><th scope="row">{row.label}</th>{config.columns.map(column => { const key = `${row.id}:${column.id}`; return <td key={column.id}><input aria-label={`${row.label}，${column.label}`} maxLength={3000} value={cells[key] ?? ''} onChange={e => onChange({ cells: { ...cells, [key]: e.target.value } })} /></td>; })}</tr>)}</tbody></table></div>;
   }
-  if (config.mode === 'hotspot') return <div className="answer-hotspot"><p>选择图中合适的位置。也可以使用下面的文字按钮。</p><div className="answer-hotspot-image">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={config.imageUrl} alt={config.imageAlt} />{config.targets.map(target => <button type="button" key={target.id} aria-label={target.label} aria-pressed={response.value === target.id} style={{ left: `${target.x * 100}%`, top: `${target.y * 100}%`, width: `${target.width * 100}%`, height: `${target.height * 100}%` }} onClick={() => onChange({ value: target.id })}><span>{target.label}</span></button>)}</div><div className="answer-hotspot-options">{config.targets.map(target => <button type="button" key={target.id} aria-pressed={response.value === target.id} onClick={() => onChange({ value: target.id })}>{target.label}</button>)}</div></div>;
+  if (config.mode === 'hotspot') return <div className="answer-hotspot"><p>选择图中合适的位置。也可以使用下面的文字按钮。</p><div className="answer-hotspot-image">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={questionMediaUrl(config.imageUrl)} alt={config.imageAlt} />{config.targets.map(target => <button type="button" key={target.id} aria-label={target.label} aria-pressed={response.value === target.id} style={{ left: `${target.x * 100}%`, top: `${target.y * 100}%`, width: `${target.width * 100}%`, height: `${target.height * 100}%` }} onClick={() => onChange({ value: target.id })}><span>{target.label}</span></button>)}</div><div className="answer-hotspot-options">{config.targets.map(target => <button type="button" key={target.id} aria-pressed={response.value === target.id} onClick={() => onChange({ value: target.id })}>{target.label}</button>)}</div></div>;
   if (config.mode === 'geometry_draw') return <DrawingInput response={response} onChange={onChange} />;
   return null;
 }

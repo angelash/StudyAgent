@@ -5,5 +5,6 @@ import { QuestionWorkspaceModule } from '../question-workspace/question-workspac
 import { LearningController } from './learning.controller';
 import { LearningService } from './learning.service';
 import { RetiredLearningController } from './retired-learning.controller';
-@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule], controllers: [LearningController, RetiredLearningController], providers: [LearningService], exports: [LearningService] })
+import { StudentMediaModule } from '../student-media/student-media.module';
+@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule], controllers: [LearningController, RetiredLearningController], providers: [LearningService], exports: [LearningService] })
 export class LearningModule {}

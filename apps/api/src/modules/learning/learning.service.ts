@@ -13,6 +13,8 @@ import { gradeResponse } from '../diagnostics/scoring';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
 import { prepareScoringReview } from '../diagnostics/scoring-review';
 import { eligibleMeasurements } from '../diagnostics/curriculum.service';
+import { StudentMediaService } from '../student-media/student-media.service';
+import { mediaModeAvailable } from '../student-media/media-normalization';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -24,7 +26,7 @@ const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestK
 export class LearningService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly diagnostics: DiagnosticsService, private readonly guidance: GuidanceService,
-    private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService) {}
+    private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
 
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || this.store.bindings.some((binding) =>
@@ -108,6 +110,7 @@ export class LearningService {
     if (!snapshot) throw new NotFoundException('题目不属于当前训练');
     const payload = structuredClone(snapshot.renderPayload) as QuestionRenderPayload;
     payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
+    payload.inputAvailability = { supported: mediaModeAvailable(payload.answerSchema.mode), reason: mediaModeAvailable(payload.answerSchema.mode) ? '' : '本次音频作答暂时不可用，请先跳过并反馈给老师。' };
     const attempt = [...this.store.practiceAttempts].reverse().find((item) => item.sessionId === id && item.questionId === questionId);
     return { payload, feedback: attempt ? this.feedback(session, attempt) : null, draft: session.drafts?.[questionId] ?? null };
   }
@@ -118,6 +121,7 @@ export class LearningService {
     const { answer } = validate(z.object({ answer: z.unknown() }).strict(), input);
     const snapshot = session.snapshots.find(item => item.id === questionId)!;
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, answer, true); if (issue) throw new BadRequestException(issue);
+    this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: questionId }, answer, true);
     session.drafts ??= {};
     session.drafts[questionId] = { answer, savedAt: new Date().toISOString() };
     return { savedAt: session.drafts[questionId].savedAt };
@@ -138,6 +142,7 @@ export class LearningService {
     if (!snapshot) throw new BadRequestException('题目不属于当前训练');
     const previous = this.store.practiceAttempts.filter((item) => item.sessionId === id && item.questionId === command.questionId);
     if (previous.length >= 5) throw new BadRequestException('本题已练习五次，先查看指导后换一题');
+    const mediaIds = command.disposition === 'answered' ? this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: command.questionId }, command.answer) : [];
     const grade = command.disposition === 'skip' ? { score: null, correct: null, status: 'skipped' as const, reason: '本题跳过，不计为错误。' } :
       gradeResponse(snapshot.answerSchema as QuestionAnswerSchema, snapshot.answer, command.answer);
     const attempt: PracticeAttempt = { id: this.store.nextId('practice-attempt'), sessionId: id, questionId: command.questionId,
@@ -145,6 +150,7 @@ export class LearningService {
       hintLevel: Math.max(0, ...this.store.practiceHints.filter((item) => item.sessionId === id && item.questionId === command.questionId).map((item) => item.level)),
       attempt: previous.length + 1, solutionExposedBefore: previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
     this.store.practiceAttempts.push(attempt);
+    this.media.bind(mediaIds, attempt.id);
     if (session.drafts) delete session.drafts[command.questionId];
     this.events.publish('learning.practice_response', { studentId: session.studentId, sessionId: id, attemptId: attempt.id, questionId: command.questionId });
     return this.feedback(session, attempt);

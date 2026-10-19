@@ -2,7 +2,7 @@
 
 Node.js 24.13+，Python 3.10+。先执行 `npm ci`、`npm run prisma:generate --workspace @study-agent/api`、`npm run build`。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
-默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本5）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
+默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本6）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
 
 兼容注入名 `InMemoryStoreService` 目前仍由旧模块引用，运行时已使用请求隔离的数据库事务；`domain_records` 为具有唯一约束、版本和稳定顺序的领域文档表。原始全量题库使用独立索引库，不能塞入该兼容接口。并发写基线冲突返回409，调用方应重读后重试，不能盲目覆盖。
 
@@ -15,3 +15,7 @@ Node.js 24.13+，Python 3.10+。先执行 `npm ci`、`npm run prisma:generate --
 教材元信息随代码位于 `resources/curriculum/textbooks-v1.json`。可用 `STUDY_TEXTBOOK_REGISTRY` 指定独立只读登记文件；没有登记文件时原创能力路径仍可用。启动时原创课程种子幂等补充，`STUDY_SEED_FOUNDATION=false` 可关闭；已编辑的同标识定义不会被种子静默覆盖。
 
 家庭资料管理位于 `/parent/data`。旧备份恢复应同时提供最新的独立删除记录；生成和应用方法见 [家庭资料交付](16-family-data-delivery.md)。离线备份本身仍需按保留策略管理。
+
+学生图片与录音作答位于 `STUDY_DATA_DIR/student-media`，必须随业务库备份。图片真实解码后校正方向并去掉EXIF，以PNG保存；录音需要PATH中的 `ffmpeg`、`ffprobe`，或设置 `STUDY_FFMPEG`、`STUDY_FFPROBE` 的绝对可执行路径，转成单声道16kHz WAV。缺少工具时音频题退出新选题，旧活动显示跳过提示。部署应固定、更新受支持的FFmpeg发行版；当前验证环境使用本机工具。单个原文件12MB、图片6000边长/2000万像素、录音180秒，两项解码并发上限；视频轨道与网络输入不接受。
+
+上传分块、完成状态、响应绑定和清理任务一起持久化。清理worker与处理任务一样受 `STUDY_WORKER_ENABLED` 控制，可由独立worker接管。完成后删除原上传分块，保留规范化学习证据；未完成上传24小时后过期，活动中的未绑定文件7天后过期（保存在草稿中的完整文件保留），结束活动中未绑定文件24小时后过期。已绑定响应的证据不随此定时回收。家庭下载包包含JSON、规范化图片/录音与SHA-256清单，不包含原始EXIF或未传完分块；准备后两分钟内由同一登录会话下载一次，中断或重启后重新准备。

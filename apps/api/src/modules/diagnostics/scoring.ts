@@ -37,7 +37,7 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
     else if (schema.mode === 'multi_blank') response = Array.isArray(value) ? { entries: value } : value;
     else if (schema.mode === 'stepwise') response = Array.isArray(value) ? { steps: value } : value;
     else if (schema.mode === 'matching') response = Array.isArray(value) ? { pairs: value } : value;
-    else if (['table_fill', 'drag_drop', 'geometry_draw'].includes(schema.mode)) response = value;
+    else if (['table_fill', 'drag_drop', 'geometry_draw', 'image_upload', 'audio_record'].includes(schema.mode)) response = value;
     else response = value && typeof value === 'object' && 'value' in value ? value : { value };
     if (standard && schema.mode === 'multi_blank' && response && typeof response === 'object' && 'entries' in response && Array.isArray(response.entries)) {
       response = { entries: response.entries.map(entry => entry && typeof entry === 'object' ? { ...entry, value: String(entry.value ?? '') } : entry) };
@@ -49,13 +49,12 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
   };
   const submitted = wrap(input);
   const issue = answerProtocolIssue(schema, submitted); if (issue) throw new BadRequestException(issue);
-  if (['image_upload', 'audio_record'].includes(schema.mode)) throw new BadRequestException('请使用受控的作答上传入口；当前题目应先跳过');
   const unwrap = (envelope: unknown) => {
     const payload = envelope as { mode: string; response: Record<string, unknown> };
     return schema.mode === 'multi_blank' ? payload.response.entries :
       ['multiple_choice', 'sorting'].includes(schema.mode) ? payload.response.values :
         schema.mode === 'stepwise' ? payload.response.steps :
-          ['matching', 'table_fill', 'drag_drop', 'geometry_draw'].includes(schema.mode) ? payload.response :
+          ['matching', 'table_fill', 'drag_drop', 'geometry_draw', 'image_upload', 'audio_record'].includes(schema.mode) ? payload.response :
             payload.response.value;
   };
   const answer = unwrap(submitted);

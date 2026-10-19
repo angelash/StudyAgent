@@ -87,9 +87,20 @@ async function applyDeletionLedger(query, ledger) {
     payload: { ledgerSha256: ledger.sha256, appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed } };
   const position = Number((await query("SELECT COALESCE(MAX(position),-1)+1 AS position FROM domain_records WHERE collection='events'"))[0].position);
   await query('INSERT INTO domain_records VALUES(?,?,?,?)', ['events', event.eventId, JSON.stringify(event), position]);
-  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256 };
+  const retainedMedia = new Set((store.studentMedia ?? []).map(row => row.id));
+  const removedMediaIds = records.filter(row => row.collection === 'studentMedia' && !retainedMedia.has(row.record_id)).map(row => row.record_id);
+  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds };
 }
-module.exports = { makeLedger, readLedger, exportLedger, applyDeletionLedger };
+function purgeRestoredMedia(root, ids = []) {
+  const { within } = require('./backup.cjs').files;
+  for (const id of ids) {
+    if (!/^student_media_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
+    const directory = within(root, `student-media/${id}`);
+    if (fs.existsSync(directory)) fs.rmSync(directory, { recursive: true, force: true });
+  }
+  return ids.length;
+}
+module.exports = { makeLedger, readLedger, exportLedger, applyDeletionLedger, purgeRestoredMedia };
 if (require.main === module) {
   (async () => {
     const [command, ...args] = process.argv.slice(2), options = {};

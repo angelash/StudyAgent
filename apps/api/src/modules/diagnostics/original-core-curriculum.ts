@@ -1,6 +1,7 @@
 import type { KnowledgeAtom, MeasurementDimension, Subject } from '@study-agent/contracts';
 import type { Exercise, FoundationDefinition } from './foundation-curriculum';
 import { addChineseCurriculum, addEnglishCurriculum } from './original-language-curriculum';
+import { addSpokenCurriculum } from './spoken-curriculum';
 
 export type CurriculumAuthor = (subject: Subject, grade: number, code: string, strand: string, name: string,
   objective: string, prerequisites: string[], template: (n: number) => Exercise, count?: number) => void;
@@ -149,5 +150,6 @@ export function buildCoreCurriculum(): FoundationDefinition[] {
 
   addChineseCurriculum(add);
   addEnglishCurriculum(add);
+  addSpokenCurriculum(add);
   return definitions;
 }

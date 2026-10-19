@@ -3,8 +3,22 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { DomainDatabase } from './domain-database';
+import { anonymizeSharedAttribution } from '../modules/privacy/privacy-records';
 
 describe('durable domain transactions', () => {
+  it('retains media from two closed guardians with the same upload request key without violating the database constraint', async () => {
+    const database = new DomainDatabase(':memory:'); await database.open();
+    try {
+      const state: any = { students: [{ id: 'shared' }], studentMedia: [
+        { id: 'media-a', studentId: 'shared', ownerUserId: 'guardian-a', requestKey: 'same-key' },
+        { id: 'media-b', studentId: 'shared', ownerUserId: 'guardian-b', requestKey: 'same-key' }] };
+      anonymizeSharedAttribution(state, ['shared'], 'guardian-a'); anonymizeSharedAttribution(state, ['shared'], 'guardian-b');
+      await database.commit(await database.read(), state);
+      const retained = (await database.read()).state.studentMedia as any[];
+      expect(retained).toHaveLength(2); expect(new Set(retained.map(row => row.ownerUserId)).size).toBe(2);
+      expect(JSON.stringify(retained)).not.toContain('guardian-');
+    } finally { await database.close(); }
+  });
   it('preserves order and records after reopening and rejects stale writes without data loss', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-store-'));
     const location = join(directory, 'domain.sqlite3');
