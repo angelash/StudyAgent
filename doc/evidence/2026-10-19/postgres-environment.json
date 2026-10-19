@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-19T15:44:35.987Z",
+  "version": "PostgreSQL 17.11 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "port": 15439,
+  "host": "127.0.0.1",
+  "registeredSystemService": false,
+  "applicationRole": "non-superuser, no createdb, no createrole; owns only isolated QA database",
+  "download": {
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-17.11-5-windows-x64-binaries.zip",
+    "bytes": 381531864,
+    "sha256": "80379b2c04d51c30225532e0ae04509899141e9957ed096fe749d7fd9df8f82f",
+    "purpose": "isolated local PostgreSQL production-path verification; no system service installation"
+  },
+  "acceptance": "environment prepared; production storage acceptance is a separate test"
+}

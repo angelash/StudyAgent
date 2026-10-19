@@ -4,6 +4,7 @@ import { existsSync, realpathSync, statSync } from 'node:fs';
 import { isAbsolute, relative, resolve } from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { PaperRow } from './library.types';
+import { studyAssetRoot } from '../../infrastructure/workspace-paths';
 
 @Injectable()
 export class LibraryRepository implements OnModuleDestroy {
@@ -11,8 +12,7 @@ export class LibraryRepository implements OnModuleDestroy {
   private archive?: DatabaseSync;
   private manifest?: DatabaseSync;
   get root() {
-    const base = process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? resolve('../..') : process.cwd();
-    return resolve(process.env.STUDY_ASSETS_DIR ?? resolve(base, 'data/assets'));
+    return studyAssetRoot();
   }
   private open(name: 'catalog' | 'archive' | 'manifest') {
     const path = resolve(this.root, name === 'archive' ? 'shijuanbao/archive.sqlite3' : `${name}.sqlite3`);

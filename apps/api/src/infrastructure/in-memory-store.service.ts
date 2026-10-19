@@ -2,6 +2,7 @@ import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } fro
 import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
+import { existsSync } from 'node:fs';
 import { DomainDatabase, DomainState, StateSnapshot } from './domain-database';
 import { TaskFence, TaskIntent, TaskOperation } from './task-repository';
 import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
@@ -166,6 +167,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
       return;
     }
     const localRoot = process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? resolve('../..') : process.cwd();
+    if (existsSync(resolve(process.env.STUDY_DATA_DIR ?? resolve(localRoot, 'data'), '.study-restore-incomplete'))) throw new Error('Data restoration is incomplete; verify the restore receipt before starting the application');
     const location = process.env.STUDY_STORAGE === 'postgres' ? process.env.DATABASE_URL :
       resolve(process.env.STUDY_DATA_DIR ?? resolve(localRoot, 'data'), 'study-agent.sqlite3');
     if (!location) throw new Error('DATABASE_URL is required for PostgreSQL storage');

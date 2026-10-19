@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { NestFactory } from '@nestjs/core';
 import request from 'supertest';
@@ -13,7 +13,8 @@ describe('real API persistence across application restarts', () => {
   it('restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-restart-'));
     const previous = { NODE_ENV: process.env.NODE_ENV, STUDY_STORAGE: process.env.STUDY_STORAGE, STUDY_DATA_DIR: process.env.STUDY_DATA_DIR };
-    Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory });
+    const sourceDirectory = join(directory, 'source');
+    Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: sourceDirectory });
     const { AppModule } = require('../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     async function start() {
@@ -27,7 +28,7 @@ describe('real API persistence across application restarts', () => {
       expect(app.get<any>(InMemoryStoreService).persistence.durable).toBe(true);
       const created = await request(app.getHttpServer()).post('/api/auth/register')
         .send({ principal: 'restart@test', credential: 'restart-secret-123' }).expect(201);
-      const token = created.body.data.token;
+      let token = created.body.data.token;
       const profile = await request(app.getHttpServer()).post('/api/students').set('Authorization', `Bearer ${token}`).send({
         nickname: '小禾', grade: 3, preferredSessionMinutes: 15,
         defaultVersionMap: { math: 'math', chinese: 'chinese', english: 'english' },
@@ -86,6 +87,25 @@ describe('real API persistence across application restarts', () => {
       });
       expect(evidence.answers).toHaveLength(1);
       expect(evidence.events.some((item: any) => item.eventName === 'student.created')).toBe(true);
+      await app.close();
+      const { createBundle, restoreBundle } = require(resolve(__dirname, '../../../scripts/operations/backup.cjs'));
+      const bundle = join(directory, 'bundle'), restoredDirectory = join(directory, 'restored');
+      await createBundle({ dataDir: sourceDirectory, destination: bundle });
+      const recovered = await restoreBundle({ bundle, destination: restoredDirectory });
+      expect(recovered.revokedSessions).toBeGreaterThanOrEqual(2);
+      process.env.STUDY_DATA_DIR = restoredDirectory;
+      const marker = join(restoredDirectory, '.study-restore-incomplete'); writeFileSync(marker, 'simulated interrupted restore');
+      await expect(new InMemoryStoreService().onModuleInit()).rejects.toThrow('restoration is incomplete');
+      unlinkSync(marker); app = await start();
+      await request(app.getHttpServer()).get('/api/auth/me').set('Authorization', `Bearer ${token}`).expect(401);
+      await request(app.getHttpServer()).get('/api/auth/me').set('Authorization', `Bearer ${learner.token}`).expect(401);
+      const signedIn = await request(app.getHttpServer()).post('/api/auth/login').send({ principal: 'restart@test', credential: 'restart-secret-123' }).expect(201);
+      token = signedIn.body.data.token;
+      const recoveredActivity = await call('get', `/learning/practice/${activity.id}`);
+      expect(recoveredActivity.summary.attempted).toBe(1);
+      expect((await call('get', `/learning/practice/${activity.id}/questions/${activity.questions[1].id}`)).draft.answer).toEqual({ value: '正在思考' });
+      expect((await call('get', `/diagnostics/sessions/${baseline.id}/report`)).evidence).toHaveLength(baseline.items.length);
+      expect(await call('get', `/ai/assistant/sessions/${assistant.id}/messages`)).toHaveLength(2);
     } finally {
       await app.close();
       for (const [key, value] of Object.entries(previous)) {

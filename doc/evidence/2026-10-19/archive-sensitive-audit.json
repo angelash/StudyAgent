@@ -1,0 +1,37 @@
+{
+  "format": "structured-archive-sensitive-audit-v1",
+  "sourceBytes": 4082896896,
+  "startedAt": "2026-10-19T15:38:42Z",
+  "scope": "Structured metadata keys and credential-like URL/header values; prose is not semantically classified. Candidate identity fields need human contextual review.",
+  "tables": {
+    "responses": {
+      "expectedRows": 62272,
+      "scannedRows": 62272,
+      "candidateRows": 0,
+      "fields": {},
+      "parseErrors": {},
+      "candidateSamples": []
+    },
+    "member_responses": {
+      "expectedRows": 66334,
+      "scannedRows": 66334,
+      "candidateRows": 0,
+      "fields": {},
+      "parseErrors": {},
+      "candidateSamples": []
+    },
+    "member_question_versions": {
+      "expectedRows": 1131861,
+      "scannedRows": 1131861,
+      "candidateRows": 0,
+      "fields": {},
+      "parseErrors": {},
+      "candidateSamples": []
+    }
+  },
+  "sourceStatUnchanged": true,
+  "scanComplete": true,
+  "candidateRows": 0,
+  "sensitiveFreeVerified": false,
+  "elapsedSeconds": 77.52
+}

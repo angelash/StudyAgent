@@ -66,6 +66,10 @@ export class DomainDatabase {
   }
 
   async open() {
+    try { await this.initialize(); } catch (error) { await this.close(); throw error; }
+  }
+
+  private async initialize() {
     if (this.driver === 'sqlite') {
       mkdirSync(dirname(this.location), { recursive: true });
       this.sqlite = new DatabaseSync(this.location);
@@ -198,5 +202,8 @@ export class DomainDatabase {
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
-  async close() { await this.tasks?.serial(async () => { this.sqlite?.close(); await this.postgres?.end(); }); }
+  async close() {
+    const close = async () => { this.sqlite?.close(); this.sqlite = undefined; await this.postgres?.end(); this.postgres = undefined; };
+    if (this.tasks) await this.tasks.serial(close); else await close();
+  }
 }

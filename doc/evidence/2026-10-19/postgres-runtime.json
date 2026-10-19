@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-19T15:49:00.553Z",
+  "driver": "postgres",
+  "passedAllCases": true,
+  "metrics": [
+    {
+      "case": "migrations_uniqueness_revocation",
+      "passed": true
+    },
+    {
+      "case": "cross_pool_queue_fencing",
+      "passed": true
+    },
+    {
+      "case": "real_api_restart",
+      "passed": true,
+      "elapsedMs": 10745,
+      "evidenceCount": 2
+    }
+  ],
+  "limits": "Small isolated functional sample. Global revision conflicts and whole-domain loading remain production scaling work."
+}
