@@ -19,9 +19,12 @@ const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family, reviewed original math tasks, real HTTP, concurrent requests and three API restarts. Bounded frozen-item routing, not calibrated CAT or browser acceptance.',
-  sourceSha256: Object.fromEntries(['apps/api/src/modules/diagnostics/adaptive-routing.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
-    'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/api/src/modules/ai/ai.service.ts', 'apps/api/src/modules/student-media/student-media.service.ts',
-    'apps/web/app/student/assessment/studio.tsx', 'packages/contracts/src/diagnostics.ts'].map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
+  sourceSha256: Object.fromEntries(['apps/api/src/common/auth.guard.ts', 'apps/api/src/modules/diagnostics/guidance.service.ts',
+    'apps/api/src/modules/diagnostics/adaptive-routing.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
+    'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts', 'apps/api/src/modules/diagnostics/observations.ts',
+    'apps/api/src/modules/diagnostics/scoring.ts', 'apps/api/src/modules/ai/ai.service.ts', 'apps/api/src/modules/student-media/student-media.service.ts',
+    'apps/web/app/student/assessment/studio.tsx', 'apps/web/components/diagnostic-evidence.tsx',
+    'packages/contracts/src/diagnostics.ts'].map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminPool, qaDatabase;
 const tokens = {};
 async function start() {
@@ -91,6 +94,12 @@ async function main() {
   assert(submitted.every(row => [201, 409].includes(row.status))); assert(submitted.some(row => row.status === 201));
   const replay = await call('POST', `/diagnostics/sessions/${sessionId}/responses`, body);
   assert(submitted.filter(row => row.status === 201).every(row => row.data.responseId === replay.responseId));
+  await call('GET', `/diagnostics/sessions/${sessionId}/report`, undefined, 'parent', 409);
+  await call('GET', `/diagnostics/sessions/${sessionId}/report-history`, undefined, 'parent', 409);
+  const evidencePath = `/diagnostics/students/${studentId}/evidence/${encodeURIComponent(replay.responseId)}`;
+  await call('GET', evidencePath, undefined, 'parent', 409);
+  const unfinishedProfile = await call('GET', `/diagnostics/students/${studentId}/profile?subject=math`);
+  assert(unfinishedProfile.estimates.every(estimate => estimate.status === 'unknown' && estimate.scoredCount === 0));
   session = await get(sessionId); const checkpoint = await savedRouting(sessionId);
   assert.equal(checkpoint.decisions.length, 2); assert.equal(checkpoint.decisions[1].rule, 'prerequisite_probe');
   assert.equal(checkpoint.decisions[1].basis[0].correct, false);
@@ -112,12 +121,19 @@ async function main() {
   }
   assert.equal(session.answeredCount, preview.itemCount); assert.equal(session.routing.currentItemId, null); assert(!('decisions' in session.routing));
   const report = await call('POST', `/diagnostics/sessions/${sessionId}/complete`, {});
+  assert.equal(report.observations.length, preview.itemCount);
+  let detail = await call('GET', evidencePath);
+  assert.equal(detail.response.correct, false); assert.equal(detail.observation.kind, 'below_standard');
+  assert.deepEqual(detail.payload.answerSchema.gradingConfig, {}); assert.equal(detail.payload.source.sourcePathOrUrl, '');
+  await call('GET', evidencePath, undefined, 'outsider', 403);
   session = await get(sessionId); const history = session.routing.decisions;
   assert.equal(history.length, preview.itemCount); assert.deepEqual(new Set(history.map(row => row.itemId)), initialIds);
   assert.deepEqual(session.blueprint, preview.blueprint); assert(report.estimates.every(row => row.status !== 'secure'));
   await call('POST', `/admin/diagnostic-responses/${encodeURIComponent(replay.responseId)}/review`, { score: 1,
     reason: '合成评分修订验证当时选题依据保留原始评分', requestKey: randomUUID(), expectedVersion: 0 }, 'admin');
   assert.deepEqual((await get(sessionId)).routing.decisions, history);
+  detail = await call('GET', evidencePath); assert.equal(detail.originalResponse.score, 0); assert.equal(detail.response.score, 1);
+  assert.equal(detail.revisions.length, 1); assert.equal(detail.observation.kind, 'meets_standard');
   await call('POST', '/diagnostics/blueprints', { ...command, intent: 'retest', requestKey: randomUUID() }, 'parent', 400);
   const targetQuestionCount = await store.transaction(() => store.select('measurementItems', { atomId }).length);
   let aborted;
@@ -136,11 +152,14 @@ async function main() {
   assert.equal((await begin(preview.id)).id, sessionId);
   assert.deepEqual((await get(aborted.id)).routing, aborted.routing);
   assert.equal((await call('GET', `/diagnostics/sessions/${sessionId}/report`)).version, 2);
+  const restoredEvidence = await call('GET', evidencePath); assert.deepEqual(restoredEvidence, detail);
   evidence.result = { concurrentStartStatuses: started.map(row => row.status), concurrentResponseStatuses: submitted.map(row => row.status),
     samePreviewAndFirstResponseReplayedOnce: true, frozenItemCount: preview.itemCount, futureItemPathsBlocked: ['render', 'draft', 'hint', 'submit', 'assistant', 'media'],
     actorIsolation: true, nearestPrerequisiteAndReturnToTarget: true, activeDecisionBasisHidden: true,
     pausedDraftAndRoutingSurviveRestart: true, allFrozenItemsAnsweredOnce: true, rescoringPreservesOriginalRoutingBasis: true,
-    adaptiveRetestRejected: true, priorReservedQuestionDoesNotTriggerIndependentFailureRoute: true, abortedAndCompletedHistoryRestored: true, restarts: 3 };
+    adaptiveRetestRejected: true, priorReservedQuestionDoesNotTriggerIndependentFailureRoute: true, abortedAndCompletedHistoryRestored: true,
+    unfinishedReportHistoryEvidenceAndProfileDoNotRevealScores: true, observationFactsAndFrozenQuestionAvailableAfterEnd: true,
+    originalAndRevisedScoringEvidenceSurviveRestart: true, restarts: 3 };
   evidence.passed = true;
 }
 main().catch(error => { evidence.error = error.message; process.exitCode = 1; }).finally(async () => {

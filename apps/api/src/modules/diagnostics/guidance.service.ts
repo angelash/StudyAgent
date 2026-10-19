@@ -44,10 +44,15 @@ export class GuidanceService {
     if (!prioritized.length) prioritized.push(...report.estimates.slice(0, 1));
     const now = new Date();
     const perAction = Math.floor(command.minutesPerDay / Math.max(prioritized.length, 1));
+    const effectiveResponses = new Map(this.diagnostics.effectiveResponses(studentId, session.subject).map(response => [response.id, response]));
     const actions: GuidanceAction[] = prioritized.map((estimate, index) => {
       const atom = atomMap.get(estimate.atomId)!;
       const hypothesis = activeHypotheses.find((item) => item.atomId === atom.id || item.probeAtomIds.includes(atom.id));
-      const unknown = estimate.status === 'unknown' || estimate.status === 'insufficient';
+      const observedIndependentAnswer = estimate.evidenceIds.some(id => {
+        const response = effectiveResponses.get(id);
+        return response?.disposition === 'answered' && response.status === 'scored' && !response.hintLevel && !response.priorExposure;
+      });
+      const unknown = estimate.status === 'unknown' || estimate.status === 'insufficient' || !observedIndependentAnswer;
       const resourceQuestionIds = eligibleMeasurements(this.store, [atom.id])
         .map((item) => item.questionId).filter((id, position, all) => all.indexOf(id) === position &&
           Boolean(this.store.find('questions', { id: id, status: 'published' })) &&

@@ -132,7 +132,12 @@ export type DiagnosticResponse = {
   submittedAt: string; gradingVersion: string; requestKey: string;
   priorExposure?: boolean;
   atomVersion?: number; atomDefinitionFingerprint?: string;
+  scoreDetails?: ResponseScoreDetail[];
 };
+
+export type ResponseScoreDetail = { key: string; label: string; score: number; origin: 'protocol' | 'review'; observation?: string };
+export type DiagnosticObservation = { responseId: string; atomId: string; kind: 'meets_standard' | 'below_standard' | 'self_reported' | 'skipped' | 'awaiting_review';
+  description: string; details: ResponseScoreDetail[] };
 
 export type ScoringRevision = {
   id: string; responseId: string; score: number; reason: string; reviewerId: string;
@@ -157,6 +162,9 @@ export type DiagnosticHypothesis = {
   status: 'proposed' | 'testing' | 'supported' | 'contradicted' | 'inconclusive' | 'monitoring' | 'resolved' | 'reopened' | 'withdrawn';
   title: string; observation: string; explanation: string; alternatives: string[];
   supportingEvidenceIds: string[]; counterEvidenceIds: string[]; probeAtomIds: string[];
+  reportedEvidenceIds?: string[];
+  verification?: { supportCondition: string; counterCondition: string; undecidedCondition: string;
+    groups: Array<{ atomIds: string[]; dimensions: MeasurementDimension[]; minIndependentFamilies: number; purpose: string }> };
   nextAction: string; confidence: 'low' | 'medium'; ruleVersion: string; updatedAt: string;
   history: Array<{ at: string; status: string; reason: string }>;
   atomDefinitionFingerprint?: string;
@@ -199,6 +207,7 @@ export type DiagnosticReport = {
   answeredCount: number; totalCount: number; scoredCount: number; pendingReviewCount: number;
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];
   hypotheses: DiagnosticHypothesis[]; evidence: DiagnosticResponse[]; unmeasuredAtomIds: string[];
+  observations?: DiagnosticObservation[];
   summary: string; modelNotice: string;
   scopeSnapshot?: LearningScope; version?: number; generatedAt?: string; revisionReason?: string;
   scoringRevisionIds?: string[];

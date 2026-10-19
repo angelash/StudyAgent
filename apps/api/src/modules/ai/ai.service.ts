@@ -255,6 +255,7 @@ export class AiService {
       const question = assessment.questionSnapshots.find(q => q.id === item.questionId)!;
       const response = this.store.find('diagnosticResponses', { sessionId: assessment.id, itemId: item.id }) ?? null;
       return { kind: 'diagnostic' as const, sessionId: assessment.id, itemId: item.id, question, atomId: item.atomId,
+        assessmentStatus: assessment.status,
         draft: this.store.find('diagnosticDrafts', { sessionId: assessment.id, itemId: item.id })?.answer ?? null,
         response, assistanceNeeded: assessment.status === 'in_progress' && !response, action: null, planId: assessment.planId,
         atomSnapshot: assessment.atomSnapshots?.find(atom => atom.id === item.atomId) };
@@ -348,7 +349,7 @@ export class AiService {
         .map((item) => ({ role: item.sender === 'user' ? 'user' as const : 'assistant' as const, content: item.content.slice(0, 2000) }));
       // In-progress diagnostic items use deterministic prompts. Any help is
       // recorded before the response is returned and excluded from independent evidence.
-      if (this.client && (session.userRole === 'parent' || bound) && !(bound?.kind === 'diagnostic' && bound.assistanceNeeded)) {
+      if (this.client && (session.userRole === 'parent' || bound) && !(bound?.kind === 'diagnostic' && ['in_progress', 'paused'].includes(bound.assessmentStatus))) {
         try {
           const completion = await this.client.chat.completions.create({ model: this.env.OPENAI_MODEL,
             temperature: 0.2, max_tokens: 1200, response_format: { type: 'json_object' }, messages: [

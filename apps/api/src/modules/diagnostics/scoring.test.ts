@@ -25,4 +25,12 @@ describe('versioned deterministic scoring', () => {
     expect(gradeResponse(schema('formula_blank'), '2', 'process.exit()').score).toBe(0);
     expect(() => gradeResponse(schema('numeric_blank'), '2', { mode: 'short_answer', response: { value: '2' } })).toThrow();
   });
+  it('freezes per-position observations under the same normalization used for the score', () => {
+    const current = { ...schema('multi_blank'), responseShape: { entries: [{ key: 'a', label: '合并后的数量' }, { key: 'b', label: '每份数量' }] } };
+    const grade = gradeResponse(current, [{ key: 'a', value: '1/2' }, { key: 'b', value: '8' }], [{ key: 'b', value: '4' }, { key: 'a', value: '0.5' }]);
+    expect(grade.score).toBe(0.5); expect(grade.scoreDetails).toEqual([
+      { key: 'a', label: '合并后的数量', score: 1, origin: 'protocol' }, { key: 'b', label: '每份数量', score: 0, origin: 'protocol' },
+    ]);
+    expect(gradeResponse(schema('numeric_blank'), 8, 4).scoreDetails).toBeUndefined();
+  });
 });

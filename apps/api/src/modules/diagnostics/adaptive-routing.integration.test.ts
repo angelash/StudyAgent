@@ -155,4 +155,94 @@ describe('online routing through authenticated assessment, coaching and media AP
     expect(rawSession(exposed.id).routing.decisions.at(-1)).toMatchObject({ rule: 'uncertain_followup', basis: [{ priorExposure: true }] });
     await start({ targetAtomIds: ['future'] }).then(() => { throw new Error('Expected progress rejection'); }, error => expect(String(error)).toContain('400'));
   });
+
+  it('withholds unfinished scores from reports, evidence and knowledge profiles until the group ends', async () => {
+    const session = await start(), saved = await submit(session, 0), root = `/diagnostics/sessions/${session.id}`;
+    await call('post', '/students/child/learning-access', { enabled: true, expectedVersion: 0, requestKey: 'evidence-learner-access', reason: '核对学生身份只能查看已结束的本人评测依据。' });
+    const code = await call('post', '/students/child/learning-access/codes', { expectedVersion: 1, requestKey: 'evidence-learner-code' });
+    const learner = await call('post', '/auth/learning-code', { code: code.code });
+    await call('get', `${root}/report`, undefined, 409); await call('get', `${root}/report-history`, undefined, 409);
+    await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`, undefined, 409);
+    await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`, undefined, 409, learner);
+    const profile = await call('get', '/diagnostics/students/child/profile?subject=math');
+    expect(profile.estimates.every((row: any) => row.scoredCount === 0 && row.status === 'unknown')).toBe(true); expect(profile.hypotheses).toEqual([]);
+    await call('post', `${root}/state`, { action: 'pause', expectedRevision: 1, requestKey: 'evidence-pause', reason: '休息期间保持评分和原因报告尚未开放。' });
+    await call('get', `${root}/report`, undefined, 409);
+    await call('post', `${root}/state`, { action: 'abort', expectedRevision: 2, requestKey: 'evidence-end', reason: '本组明确结束，开放已答部分的评分依据。' });
+    expect((await call('get', `${root}/report`)).scoredCount).toBe(1);
+    const detail = await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`);
+    expect((await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`, undefined, 200, learner)).response.id).toBe(saved.responseId);
+    expect(detail.observation.description).toContain('尚不能确定错误发生在哪一步');
+    expect(detail.payload.answerSchema.gradingConfig).toEqual({}); expect(detail.payload.source.sourcePathOrUrl).toBe('');
+    await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`, undefined, 403, outsider);
+    expect((await call('get', '/diagnostics/students/child/profile?subject=math')).estimates.some((row: any) => row.scoredCount > 0)).toBe(true);
+  });
+
+  it('records self-reports separately from causal support and makes the guidance plan verify first', async () => {
+    let session = await start({ includePrerequisites: false, maxItems: 4 });
+    while (session.routing.currentItemId) { await submit(session, 6, { answer: undefined, disposition: 'dont_know' }); session = await view(session.id); }
+    const report = await call('post', `/diagnostics/sessions/${session.id}/complete`, {});
+    expect(report.rawScore).toBe(0); expect(report.observations.every((row: any) => row.kind === 'self_reported')).toBe(true);
+    expect(report.hypotheses).toHaveLength(1); expect(report.hypotheses[0]).toMatchObject({ status: 'proposed', supportingEvidenceIds: [], confidence: 'low' });
+    expect(report.hypotheses[0].reportedEvidenceIds).toHaveLength(4);
+    expect(report.hypotheses[0].verification.groups[0].minIndependentFamilies).toBe(2);
+    const plan = await call('post', '/diagnostics/students/child/plans', { baselineSessionId: session.id, minutesPerDay: 10, useAi: false });
+    expect(plan.actions.every((row: any) => row.title.startsWith('先补充证据'))).toBe(true);
+  });
+
+  it('preserves frozen per-position observations while separating a later total-score override', async () => {
+    for (const schema of store.questionAnswerSchemas.filter((row: any) => row.questionId.startsWith('target-'))) {
+      schema.mode = 'multi_blank'; schema.responseShape = { entries: [{ key: 'a', label: '合并数量' }, { key: 'b', label: '每份数量' }] };
+      store.questions.find((row: any) => row.id === schema.questionId).answer = [{ key: 'a', value: '6' }, { key: 'b', value: '2' }];
+    }
+    const session = await start({ includePrerequisites: false, maxItems: 4 }), first = current(session);
+    const saved = await submit(session, [{ key: 'a', value: '6' }, { key: 'b', value: '4' }] as any);
+    store.questions.find((row: any) => row.id === first.questionId).stem = 'LIVE_CONTENT_MUST_NOT_REPLACE_EVIDENCE';
+    await call('post', `/diagnostics/sessions/${session.id}/state`, { action: 'abort', expectedRevision: 1, requestKey: 'partial-position-report', reason: '保留第一条分项表现后明确结束本组。' });
+    const route = `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`, detail = await call('get', route);
+    expect(detail.response.score).toBe(0.5); expect(detail.observation.details.map((row: any) => [row.label, row.score])).toEqual([['合并数量', 1], ['每份数量', 0]]);
+    expect(detail.stem).not.toContain('LIVE_CONTENT'); expect(detail.referenceAnswer).toEqual([{ key: 'a', value: '6' }, { key: 'b', value: '2' }]);
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(saved.responseId)}/review`, { score: 1, reason: '总分经人工核对修订，不能倒用原自动空位结论作为新分项', requestKey: 'position-score-override', expectedVersion: 0 }, 201, admin);
+    const revised = await call('get', route); expect(revised.response.score).toBe(1); expect(revised.originalResponse.score).toBe(0.5);
+    expect(revised.observation.details).toEqual([]); expect(revised.originalResponse.scoreDetails).toHaveLength(2); expect(revised.revisions).toHaveLength(1);
+    const report = await call('get', `/diagnostics/sessions/${session.id}/report`);
+    expect(report.observations[0].details).toEqual([]);
+  });
+
+  it('shows actual rubric observations after review without changing the original pending expression', async () => {
+    for (const schema of store.questionAnswerSchemas.filter((row: any) => row.questionId.startsWith('target-'))) {
+      schema.mode = 'short_answer'; schema.gradingConfig = { rubric: [{ criterion: '明确表示数量关系', weight: 0.4 }, { criterion: '说明如何核对结果', weight: 0.6 }] };
+    }
+    const session = await start({ includePrerequisites: false }), saved = await submit(session, '我用两组三表示合并的数量。' as any);
+    await call('post', `/diagnostics/sessions/${session.id}/state`, { action: 'abort', expectedRevision: 1, requestKey: 'rubric-evidence-end', reason: '结束这组表达任务后交由量规复核。' });
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(saved.responseId)}/review`, { ratings: [
+      { criterionIndex: 0, score: 1, observation: '原回答明确表示了两组3的关系。' }, { criterionIndex: 1, score: 0, observation: '原回答没有说明核对结果的方法。' },
+    ], reason: '逐项核对学生原始表达，保留支持与缺少的过程', requestKey: 'rubric-evidence-review', expectedVersion: 0 }, 201, admin);
+    const detail = await call('get', `/diagnostics/students/child/evidence/${encodeURIComponent(saved.responseId)}`);
+    expect(detail.response.score).toBe(0.4); expect(detail.originalResponse.status).toBe('pending_review'); expect(detail.originalResponse.score).toBeNull();
+    expect(detail.observation.details.map((row: any) => [row.label, row.score, row.origin])).toEqual([['明确表示数量关系', 1, 'review'], ['说明如何核对结果', 0, 'review']]);
+    expect(detail.observation.details[1].observation).toContain('没有说明');
+  });
+
+  it('uses reviewed independent expressions when deciding whether guidance still needs initial evidence', async () => {
+    for (const schema of store.questionAnswerSchemas.filter((row: any) => row.questionId.startsWith('target-'))) {
+      schema.mode = 'short_answer'; schema.gradingConfig = { rubric: [{ criterion: '说明数量关系', weight: 1 }] };
+    }
+    let session = await start({ includePrerequisites: false, maxItems: 4 });
+    const responseIds: string[] = [];
+    while (session.routing.currentItemId) {
+      const saved = await submit(session, '两组3合并；还没有解释怎样核对。' as any);
+      responseIds.push(saved.responseId); session = await view(session.id);
+    }
+    await call('post', `/diagnostics/sessions/${session.id}/complete`, {});
+    for (const id of responseIds) await call('post', `/admin/diagnostic-responses/${encodeURIComponent(id)}/review`, {
+      ratings: [{ criterionIndex: 0, score: 0.5, observation: '已表达数量关系，核对说明尚不完整。' }],
+      reason: '核对独立表达后保存量规评分，不改写原始待评响应', requestKey: `reviewed-guidance-${id}`, expectedVersion: 0,
+    }, 201, admin);
+    expect(store.diagnosticResponses.every((row: any) => row.status === 'pending_review')).toBe(true);
+    const plan = await call('post', '/diagnostics/students/child/plans', { baselineSessionId: session.id, minutesPerDay: 10, useAi: false });
+    const action = plan.actions.find((row: any) => row.atomId === 'target');
+    expect(action?.title).toBe('逐步巩固：target');
+    expect(new Set(action.evidenceIds)).toEqual(new Set(responseIds));
+  });
 });

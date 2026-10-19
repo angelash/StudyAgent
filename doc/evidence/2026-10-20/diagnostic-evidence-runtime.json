@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-19T21:45:31.105Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Synthetic family, reviewed original math tasks, real HTTP, concurrent requests and three API restarts. Bounded frozen-item routing, not calibrated CAT or browser acceptance.",
+  "sourceSha256": {
+    "apps/api/src/common/auth.guard.ts": "ad23c46a4aac40762e48af795a3d178f2a6a4d822bb21dc4d8e1c10306471310",
+    "apps/api/src/modules/diagnostics/guidance.service.ts": "5a68937cebf63dce36ddc64b6d79bf7c44b2ad48906f62ec9c2719c515ad3b7e",
+    "apps/api/src/modules/diagnostics/adaptive-routing.ts": "27b096476d0c30e43580152a1aa6c958232cd8d1d6c91357d1a1fbd29e421d12",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "07caf38b2ca6815d9a06b615b94453699f13264552e052ff2eaed9cab5fb3758",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "66aa4bb91f356b9eaf9ca079ac5de1c05a6f27a13748a14c20336f1612612b2c",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "cb3a3be745744927ccda3881f52a4fea50b7530e5b72172451ad56a0b3bb3208",
+    "apps/api/src/modules/diagnostics/observations.ts": "7df2f20b2b3d0ee89c64d3213eb6b894642f8340783a46732db6d34a954c770d",
+    "apps/api/src/modules/diagnostics/scoring.ts": "2ea7d26bac9d5d478f91f666c4ede96644c2e3598473f60fd3b7bfd8e06a2fe1",
+    "apps/api/src/modules/ai/ai.service.ts": "92707236d09b7bab9934ba9ea26f0f589af57a3e53100c92dd166d111d1772a3",
+    "apps/api/src/modules/student-media/student-media.service.ts": "94223ade237d91d9beb9578eb9f94ad6f43990d0ec478a7daf5deb743450d807",
+    "apps/web/app/student/assessment/studio.tsx": "a62d69523421f181c380aa08fb0486eb1a011624ed1c4e7a45bad994e1b7e09b",
+    "apps/web/components/diagnostic-evidence.tsx": "68c75fb904311708cc766887af6b5120e96f48d81f1a13941d9fb1d8564c4bab",
+    "packages/contracts/src/diagnostics.ts": "1eddb37eda6dde73c59820f6e55c66f85cac67831d703ae8f8f1567065f304a8"
+  },
+  "result": {
+    "concurrentStartStatuses": [
+      201,
+      201
+    ],
+    "concurrentResponseStatuses": [
+      201,
+      201
+    ],
+    "samePreviewAndFirstResponseReplayedOnce": true,
+    "frozenItemCount": 12,
+    "futureItemPathsBlocked": [
+      "render",
+      "draft",
+      "hint",
+      "submit",
+      "assistant",
+      "media"
+    ],
+    "actorIsolation": true,
+    "nearestPrerequisiteAndReturnToTarget": true,
+    "activeDecisionBasisHidden": true,
+    "pausedDraftAndRoutingSurviveRestart": true,
+    "allFrozenItemsAnsweredOnce": true,
+    "rescoringPreservesOriginalRoutingBasis": true,
+    "adaptiveRetestRejected": true,
+    "priorReservedQuestionDoesNotTriggerIndependentFailureRoute": true,
+    "abortedAndCompletedHistoryRestored": true,
+    "unfinishedReportHistoryEvidenceAndProfileDoNotRevealScores": true,
+    "observationFactsAndFrozenQuestionAvailableAfterEnd": true,
+    "originalAndRevisedScoringEvidenceSurviveRestart": true,
+    "restarts": 3
+  }
+}

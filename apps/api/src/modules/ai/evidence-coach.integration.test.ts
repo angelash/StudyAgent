@@ -119,6 +119,8 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     const answer = await request(app.getHttpServer()).post('/api/diagnostics/sessions/coach-diagnostic/responses').set('Authorization', `Bearer ${account.token}`)
       .send({ itemId: mapping.id, answer: 731, elapsedMs: 3000 }).expect(201);
     expect(store.diagnosticResponses.find((r: any) => r.id === answer.body.data.responseId).hintLevel).toBe(1);
+    const afterSubmit = await post(`/assistant/sessions/${session.id}/messages`, { message: '刚才的回答对了吗', requestKey: 'diagnostic-after-submit-help' }).expect(201);
+    expect(afterSubmit.body.data.source).toBe('rules'); expect(afterSubmit.body.data.assistanceRecorded).toBe(false); expect(called).toBe(false);
     ai.client = null;
   });
 

@@ -1,0 +1,230 @@
+{
+  "at": "2026-10-19T21:47:48.195179+00:00",
+  "scope": "Default API full regression on the current diagnostic-evidence candidate. PostgreSQL tests and real HTTP runtime acceptance recorded separately; browser acceptance excluded.",
+  "passed": true,
+  "passedTests": 193,
+  "failedTests": 0,
+  "skippedTests": 6,
+  "testFiles": 33,
+  "reportSha256": "fbff51880ed3c2fe917e035c3635a3c13346f8fd9fb5aae9b3408015b231eed5",
+  "runtimeSourceHashesVerified": true,
+  "sourceSha256": {
+    "apps/api/src/modules/ai/ai.service.ts": "92707236d09b7bab9934ba9ea26f0f589af57a3e53100c92dd166d111d1772a3",
+    "apps/api/src/modules/ai/evidence-coach.integration.test.ts": "9a6c163f9c4f8ce28908e3471e6e74167c93fe868261c8319de7cf2cb9bf7e12",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "cb3a3be745744927ccda3881f52a4fea50b7530e5b72172451ad56a0b3bb3208",
+    "apps/api/src/modules/diagnostics/scoring.ts": "2ea7d26bac9d5d478f91f666c4ede96644c2e3598473f60fd3b7bfd8e06a2fe1",
+    "apps/api/src/modules/diagnostics/observations.ts": "7df2f20b2b3d0ee89c64d3213eb6b894642f8340783a46732db6d34a954c770d",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "66aa4bb91f356b9eaf9ca079ac5de1c05a6f27a13748a14c20336f1612612b2c",
+    "apps/api/src/modules/diagnostics/diagnostics.controller.ts": "7794cb19f42009bfb7c63c3ba4b71bbb5c79ca3bfc4a3e5a2192f9a4ff539bd4",
+    "apps/api/src/modules/diagnostics/guidance.service.ts": "5a68937cebf63dce36ddc64b6d79bf7c44b2ad48906f62ec9c2719c515ad3b7e",
+    "apps/api/src/modules/diagnostics/measurement.test.ts": "bfa93c2f010c905762acbb78d310d7cc2a59ca5c97463c8bb1c77e1c2759c8bd",
+    "apps/api/src/modules/diagnostics/scoring.test.ts": "7490af955f3fa29814388272477e0c6ad565054caee5f20967d76721a73e5563",
+    "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts": "60d54c542d78dd58efac27e1cfb88161d2f11f9e41ee6025dc925f7715640b44",
+    "apps/web/app/student/assessment/studio.tsx": "a62d69523421f181c380aa08fb0486eb1a011624ed1c4e7a45bad994e1b7e09b",
+    "apps/web/components/diagnostic-evidence.tsx": "68c75fb904311708cc766887af6b5120e96f48d81f1a13941d9fb1d8564c4bab",
+    "apps/web/components/question-face-view.tsx": "41995ab7bc139eb4338c3fb7951cad50d04377cbc300d364d8f83fc246cdaf7e",
+    "packages/contracts/src/diagnostics.ts": "1eddb37eda6dde73c59820f6e55c66f85cac67831d703ae8f8f1567065f304a8",
+    "scripts/qa/verify-adaptive-routing.cjs": "6228c9ccb8edf852216a5279879837a1765594bbf6a75a886c5507c7d35f68b3",
+    "apps/api/src/common/auth.guard.ts": "ad23c46a4aac40762e48af795a3d178f2a6a4d822bb21dc4d8e1c10306471310"
+  },
+  "suites": [
+    {
+      "file": "apps/api/src/app.integration.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/product-safety.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/domain-database.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/operations.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/postgres.integration.test.ts",
+      "status": "passed",
+      "passed": 0,
+      "skipped": 6
+    },
+    {
+      "file": "apps/api/src/infrastructure/rate-limit.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/scoped-transactions.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/task-repository.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/codex-search.service.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "status": "passed",
+      "passed": 23,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement.test.ts",
+      "status": "passed",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/scoring.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/learning/notebook.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/library.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "status": "passed",
+      "passed": 7,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/processing/processing.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/reviews/reviews.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/media-normalization.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 2,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/students/student-access.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    }
+  ]
+}

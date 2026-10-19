@@ -25,6 +25,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/sessions$/, /^diagnostics\/sessions\/[^/]+(\/(report|report-history)|\/items\/[^/]+)?$/,
     /^diagnostics\/blueprints\/[^/]+$/,
     /^diagnostics\/students\/[^/]+\/(profile|plans|reviews)$/,
+    /^diagnostics\/students\/[^/]+\/evidence\/[^/]+$/,
     /^diagnostics\/plans\/[^/]+(\/(reviews|retrospective))?$/,
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
     /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,

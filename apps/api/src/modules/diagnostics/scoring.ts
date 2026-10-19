@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { QuestionAnswerSchema, answerProtocolIssue } from '@study-agent/contracts';
+import { QuestionAnswerSchema, ResponseScoreDetail, answerInputConfiguration, answerProtocolIssue } from '@study-agent/contracts';
 import { arithmeticValue } from './arithmetic-expression';
 
 const text = (input: unknown) => String(input ?? '').normalize('NFKC').trim().replace(/\s+/g, '').toLowerCase();
@@ -29,7 +29,9 @@ function entries(input: unknown): Record<string, unknown> {
   }));
 }
 
-export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, input: unknown) {
+export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, input: unknown): {
+  score: number | null; correct: boolean | null; status: 'scored' | 'pending_review'; reason: string; scoreDetails?: ResponseScoreDetail[];
+} {
   const wrap = (value: unknown, standard = false) => {
     if (value && typeof value === 'object' && 'mode' in value) return value;
     let response: unknown;
@@ -76,6 +78,7 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
     return x !== null && y !== null ? Math.abs(x - y) <= tolerance : normalize(a) === normalize(b);
   };
   let score = 0;
+  const scoreDetails: ResponseScoreDetail[] = [];
   switch (schema.mode) {
     case 'numeric_blank': {
       const actual = numericValue(answer), standard = numericValue(expected);
@@ -99,7 +102,10 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
       const actual = entries(answer), standard = entries(expected);
       const keys = Object.keys(standard);
       if (!keys.length) return { score: null, correct: null, status: 'pending_review' as const, reason: '多空题评分协议需要复核。' };
-      score = keys.filter((key) => key in actual && equals(actual[key], standard[key])).length / keys.length;
+      const labels = schema.responseShape.entries as Array<{ key: string; label?: string }>;
+      for (const key of keys) scoreDetails.push({ key, label: labels.find(entry => entry.key === key)?.label ?? key,
+        score: Number(key in actual && equals(actual[key], standard[key])), origin: 'protocol' });
+      score = scoreDetails.reduce((sum, detail) => sum + detail.score, 0) / keys.length;
       break;
     }
     case 'single_choice': case 'hotspot': score = String(answer) === String(expected) ? 1 : 0; break;
@@ -121,10 +127,15 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
     }
     case 'table_fill': case 'drag_drop': {
       const field = schema.mode === 'table_fill' ? 'cells' : 'placements';
+      const configuration = answerInputConfiguration(schema);
+      const labels = new Map(schema.mode === 'table_fill' ? configuration.rows.flatMap(row => configuration.columns.map(column =>
+        [`${row.id}:${column.id}`, `${row.label} / ${column.label}`] as const)) : configuration.items.map(item => [item.id, item.label] as const));
       const standard = (expected as Record<string, Record<string, unknown>> | null)?.[field], actual = (answer as Record<string, Record<string, unknown>> | null)?.[field];
       if (!standard || typeof standard !== 'object' || Array.isArray(standard) || !Object.keys(standard).length) return { score: null, correct: null, status: 'pending_review' as const, reason: '表格或分类标准答案协议需要复核。' };
       const keys = Object.keys(standard);
-      score = actual ? keys.filter(key => key in actual && (schema.mode === 'table_fill' ? equals(actual[key], standard[key]) : actual[key] === standard[key])).length / keys.length : 0;
+      for (const key of keys) scoreDetails.push({ key, label: labels.get(key) ?? key, score: Number(!!actual && key in actual &&
+        (schema.mode === 'table_fill' ? equals(actual[key], standard[key]) : actual[key] === standard[key])), origin: 'protocol' });
+      score = scoreDetails.reduce((sum, detail) => sum + detail.score, 0) / keys.length;
       if (actual && Object.keys(actual).some(key => !keys.includes(key))) score = 0;
       break;
     }
@@ -133,5 +144,6 @@ export function gradeResponse(schema: QuestionAnswerSchema, expected: unknown, i
       score = [expected, ...alternatives].some((candidate) => equals(answer, candidate)) ? 1 : 0;
     }
   }
-  return { score, correct: score === 1, status: 'scored' as const, reason: score === 1 ? '按已保存的评分协议判定正确。' : score > 0 ? '部分空位正确，按空位计分。' : '当前响应未达到该题评分标准。' };
+  return { score, correct: score === 1, status: 'scored' as const, reason: score === 1 ? '按已保存的评分协议判定正确。' : score > 0 ? '部分空位正确，按空位计分。' : '当前响应未达到该题评分标准。',
+    ...(scoreDetails.length ? { scoreDetails } : {}) };
 }

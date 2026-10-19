@@ -84,6 +84,10 @@ export class DiagnosticsController {
   }
   @Get('diagnostics/sessions/:sessionId')
   session(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.diagnostics.sessionView(req.user, id); }
+  @Get('diagnostics/students/:studentId/evidence/:responseId')
+  evidence(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Param('responseId') responseId: string) {
+    return this.diagnostics.evidenceView(req.user, studentId, responseId);
+  }
   @Get('diagnostics/sessions/:sessionId/items/:itemId')
   render(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string) { return this.diagnostics.renderItem(req.user, id, item); }
   @Post('diagnostics/sessions/:sessionId/responses')

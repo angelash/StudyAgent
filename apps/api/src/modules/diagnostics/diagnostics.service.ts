@@ -19,6 +19,7 @@ import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measurement-definition';
 import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
 import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } from './adaptive-routing';
+import { observedPerformance } from './observations';
 
 @Injectable()
 export class DiagnosticsService {
@@ -337,6 +338,7 @@ export class DiagnosticsService {
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
       priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
+      ...('scoreDetails' in grade && grade.scoreDetails ? { scoreDetails: grade.scoreDetails } : {}),
       ...(atom && session.atomSnapshots ? { atomVersion: atom.version, atomDefinitionFingerprint: atomDefinitionFingerprint(atom) } : {}),
     };
     this.store.append('diagnosticResponses', response);
@@ -388,11 +390,13 @@ export class DiagnosticsService {
   }
 
   effectiveResponses(studentId: string, subject: Subject) {
-    const sessions = new Set(this.store.select('diagnosticSessions', { studentId: studentId, subject: subject }).map((item) => item.id));
+    const sessions = new Set(this.store.select('diagnosticSessions', { studentId, subject, status: ['completed', 'aborted'] }).map((item) => item.id));
     return this.store.select('diagnosticResponses', { sessionId: [...sessions] }).map((item) => {
       const revision = this.store.select('scoringRevisions', { responseId: item.id }).sort((a, b) => b.version - a.version)[0];
       return revision ? { ...item, score: revision.score, correct: revision.score === 1, status: 'scored' as const,
-        gradingReason: revision.reason, gradingVersion: `review-v${revision.version}` } : item;
+        gradingReason: revision.reason, gradingVersion: `review-v${revision.version}`,
+        scoreDetails: revision.ratings?.map(rating => ({ key: `criterion-${rating.criterionIndex}`, label: revision.rubricSnapshot?.[rating.criterionIndex]?.criterion ?? `量规${rating.criterionIndex + 1}`,
+          score: rating.score, origin: 'review' as const, observation: rating.observation })) } : item;
     });
   }
 
@@ -428,14 +432,34 @@ export class DiagnosticsService {
 
   report(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
+    if (!['completed', 'aborted'].includes(session.status)) throw new ConflictException('请先完成或明确结束本组，再查看评分与原因报告');
     const saved = this.store.select('diagnosticReports', { sessionId: sessionId }).sort((a, b) => b.version - a.version)[0];
     return saved ? { ...this.reportOrigin(saved.report), version: saved.version, generatedAt: saved.createdAt } : this.buildReport(session);
   }
 
   reportHistory(user: InMemoryUserAccount, sessionId: string) {
-    this.requireSession(user, sessionId);
+    const session = this.requireSession(user, sessionId);
+    if (!['completed', 'aborted'].includes(session.status)) throw new ConflictException('本组结束后才能查看评分与报告历史');
     return this.store.select('diagnosticReports', { sessionId: sessionId }).sort((a, b) => b.version - a.version)
       .map((item) => ({ ...this.reportOrigin(item.report), version: item.version, generatedAt: item.createdAt }));
+  }
+
+  evidenceView(user: InMemoryUserAccount, studentId: string, responseId: string) {
+    this.students.assertCanAccessStudent(user, studentId);
+    const original = this.store.find('diagnosticResponses', { id: responseId, studentId });
+    if (!original) throw new NotFoundException('作答证据不存在');
+    const session = this.requireSession(user, original.sessionId);
+    if (!['completed', 'aborted'].includes(session.status)) throw new ConflictException('本组结束后才能展开评分与原因依据');
+    const response = this.effectiveResponses(studentId, session.subject).find(item => item.id === responseId)!;
+    const question = session.questionSnapshots.find(item => item.id === original.questionId)!;
+    const mapping = session.itemSnapshots.find(item => item.id === original.itemId)!;
+    const payload = question.renderPayload ? structuredClone(question.renderPayload) as QuestionRenderPayload : null;
+    if (payload) { payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null; }
+    return { response, originalResponse: original, observation: observedPerformance(response), payload, stem: question.stem,
+      referenceAnswer: question.answer, analysis: question.analysis, mapping, scopeSnapshot: session.scopeSnapshot,
+      atomSnapshot: session.atomSnapshots?.find(atom => atom.id === original.atomId) ?? null,
+      revisions: this.store.select('scoringRevisions', { responseId }).sort((a, b) => a.version - b.version)
+        .map(({ version, score, reason, createdAt, ratings, rubricSnapshot }) => ({ version, score, reason, createdAt, ratings, rubricSnapshot })) };
   }
 
   private reportOrigin(report: DiagnosticReport): DiagnosticReport {
@@ -468,6 +492,7 @@ export class DiagnosticsService {
       hypotheses: deriveHypotheses(session.studentId, session.subject, atoms,
         compatibility.compatible, this.allMappings(session.studentId), previous, measuredAt),
       evidence, unmeasuredAtomIds: estimates.filter((item) => !item.scoredCount).map((item) => item.atomId),
+      observations: evidence.map(observedPerformance),
       scopeSnapshot: structuredClone(session.scopeSnapshot),
       scoringRevisionIds: this.store.scoringRevisions.filter((revision) => all.some((item) => item.id === revision.responseId)).map((item) => item.id),
       definitionContext: { origin: session.atomSnapshots ? 'started' : 'unavailable',

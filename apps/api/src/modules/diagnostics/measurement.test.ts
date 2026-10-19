@@ -3,6 +3,7 @@ import { DiagnosticResponse, KnowledgeAtom, MeasurementItem } from '@study-agent
 import { betaCdf, betaQuantile, estimateMastery, weightedEvidence } from './measurement';
 import { assertAcyclic } from './curriculum.service';
 import { deriveHypotheses } from './diagnosis';
+import { observedPerformance } from './observations';
 
 const atom: KnowledgeAtom = { id: 'borrow', subject: 'math', name: '退位操作', strand: '数与运算', grade: 2, term: 'both',
   objective: '判断个位是否需要退位并正确执行', successCriterion: '独立完成不同表示的退位操作', prerequisiteIds: [], curriculumVersion: 'test', status: 'published', version: 1 };
@@ -83,5 +84,33 @@ describe('conservative atomic measurement', () => {
     expect(transfer.status).toBe('supported');
     expect(transfer.supportingEvidenceIds).toHaveLength(4);
     expect(transfer.alternatives.length).toBeGreaterThan(0);
+  });
+  it('keeps self-reported difficulty traceable without manufacturing procedural or prerequisite failures', () => {
+    const definition = { ...atom, prerequisiteIds: ['place'] };
+    const records = [evidence(0, { disposition: 'dont_know', score: 0, correct: false }),
+      evidence(1, { disposition: 'dont_know', score: 0, correct: false }),
+      evidence(2, { atomId: 'place', correct: false, score: 0 }), evidence(3, { atomId: 'place', correct: false, score: 0 })];
+    const hypotheses = deriveHypotheses('student', 'math', [definition], records, mappings(records), [], now.toISOString());
+    expect(hypotheses).toHaveLength(1); expect(hypotheses[0]).toMatchObject({ cause: 'procedure_gap', status: 'proposed', confidence: 'low',
+      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v3' });
+    expect(hypotheses[0].verification!.supportCondition).toContain('两个独立题族');
+    expect(hypotheses[0].verification!.undecidedCondition).toContain('暂时不会');
+  });
+  it('cites both the target differences and independent prerequisite failures that support a prerequisite hypothesis', () => {
+    const definition = { ...atom, prerequisiteIds: ['place'] };
+    const records = [evidence(0, { score: 0, correct: false }), evidence(1, { score: 0, correct: false }),
+      evidence(2, { atomId: 'place', score: 0, correct: false }), evidence(3, { atomId: 'place', score: 0, correct: false })];
+    const root = deriveHypotheses('student', 'math', [definition], records, mappings(records), [], now.toISOString()).find(h => h.cause === 'prerequisite_gap')!;
+    expect(root.status).toBe('supported'); expect(root.supportingEvidenceIds).toEqual(['r0', 'r1', 'r2', 'r3']);
+    expect(root.verification!.groups.map(g => g.atomIds)).toEqual([['borrow'], ['place']]);
+  });
+  it('reports observed scoring positions and uncertainty without treating preset error tags as observed steps', () => {
+    const finalAnswer = evidence(0, { correct: false, score: 0, observationCode: 'carry_step_wrong' });
+    const observed = observedPerformance(finalAnswer);
+    expect(observed.description).toContain('尚不能确定错误发生在哪一步'); expect(observed.details).toEqual([]);
+    expect(JSON.stringify(observed)).not.toContain('carry_step_wrong');
+    expect(observedPerformance({ ...finalAnswer, disposition: 'dont_know' }).kind).toBe('self_reported');
+    expect(observedPerformance({ ...finalAnswer, status: 'pending_review', score: null }).kind).toBe('awaiting_review');
+    expect(observedPerformance({ ...finalAnswer, disposition: 'skip', status: 'skipped' }).kind).toBe('skipped');
   });
 });
