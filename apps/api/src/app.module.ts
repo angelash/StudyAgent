@@ -16,9 +16,10 @@ import { LibraryModule } from './modules/library/library.module';
 import { LearningModule } from './modules/learning/learning.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { ProcessingModule } from './modules/processing/processing.module';
+import { PrivacyModule } from './modules/privacy/privacy.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule, ReviewsModule, ProcessingModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule, ReviewsModule, ProcessingModule, PrivacyModule],
   providers: [
     {
       provide: APP_FILTER,

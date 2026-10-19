@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-19T16:02:50.362Z",
+  "at": "2026-10-19T16:18:54.208Z",
   "driver": "postgres",
   "passedAllCases": true,
   "metrics": [
@@ -7,7 +7,7 @@
       "case": "migrations_uniqueness_revocation",
       "passed": true,
       "upgradedFromVersion": 3,
-      "currentVersion": 4
+      "currentVersion": 5
     },
     {
       "case": "cross_pool_queue_fencing",
@@ -16,7 +16,7 @@
     {
       "case": "real_api_restart",
       "passed": true,
-      "elapsedMs": 8396,
+      "elapsedMs": 9416,
       "evidenceCount": 2
     },
     {
@@ -25,7 +25,8 @@
       "verifiedFiles": 2,
       "revokedSessions": 1,
       "fencedTasks": 1,
-      "databaseGuardFailureVerified": true
+      "databaseGuardFailureVerified": true,
+      "privacyDeletionLedgerVerified": true
     }
   ],
   "limits": "Small isolated functional sample. Global revision conflicts and whole-domain loading remain production scaling work."

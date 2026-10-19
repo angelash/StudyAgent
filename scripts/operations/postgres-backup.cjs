@@ -6,6 +6,7 @@ const { spawn } = require('node:child_process');
 const { Pool } = require('pg');
 const { files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } } = require('./backup.cjs');
 const { fenceRestoredState } = require('./restore-state.cjs');
+const { readLedger, applyDeletionLedger } = require('./privacy-ledger.cjs');
 const FORMAT = 'study-agent-postgres-backup-v1';
 const fail = message => { throw new Error(message); };
 function config(connectionString) {
@@ -25,7 +26,7 @@ function native(name, args, pgBin, connectionString) {
 }
 async function summary(client) {
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
-  if (!versions.length || versions.at(-1) > 4) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 5) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
     collections: (await client.query('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection')).rows.map(r => ({ collection: r.collection, count: Number(r.count) })),
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
@@ -79,8 +80,8 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   await native('pg_restore', ['--list', within(root, 'database/postgres.dump')], pgBin);
   return { manifest, verifiedFiles: paths.size };
 }
-async function restorePostgresBundle({ bundle, destination, connectionString, pgBin }) {
-  config(connectionString); const verified = await verifyPostgresBundle({ bundle, pgBin }), pool = new Pool({ connectionString, max: 1 });
+async function restorePostgresBundle({ bundle, destination, connectionString, pgBin, deletionLedger }) {
+  config(connectionString); const ledger = readLedger(deletionLedger), verified = await verifyPostgresBundle({ bundle, pgBin }), pool = new Pool({ connectionString, max: 1 });
   const client = await pool.connect(); let root, counts;
   try {
     const existing = (await client.query("SELECT COUNT(*) AS count FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname NOT LIKE 'pg_%' AND n.nspname<>'information_schema' AND c.relkind IN ('r','p','v','m','S','f')")).rows[0];
@@ -103,7 +104,9 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
       if (!item || expected.sha256 !== item.sha256 || expected.size !== item.size) fail('restored_file_reference_mismatch');
     }
     if (refs.size !== verified.manifest.referencedFileCount) fail('restored_file_reference_mismatch');
-    counts = await fenceRestoredState(async (sql, params = []) => { let index = 0; return (await client.query(sql.replace(/\?/g, () => `$${++index}`), params)).rows; }, verified.manifest.id, verified.manifest.database.revision);
+    const query = async (sql, params = []) => { let index = 0; return (await client.query(sql.replace(/\?/g, () => `$${++index}`), params)).rows; };
+    const privacy = await applyDeletionLedger(query, ledger);
+    counts = { ...await fenceRestoredState(query, verified.manifest.id, verified.manifest.database.revision), ...privacy };
     if ((await client.query("UPDATE study_restore_guard SET state='ready',updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'", [counts.restoredAt, verified.manifest.id])).rowCount !== 1) fail('restore_guard_changed');
     await client.query('COMMIT');
   } catch (error) { await client.query('ROLLBACK').catch(() => {}); throw error; } finally { client.release(); await pool.end(); }
@@ -118,9 +121,9 @@ if (require.main === module) {
     const [command, ...args] = process.argv.slice(2), options = {};
     for (let i = 0; i < args.length; i += 2) {
       const key = args[i].slice(2);
-      if (!args[i].startsWith('--') || !args[i + 1] || !['connection-env', 'pg-bin', 'data-dir', 'destination', 'assets', 'bundle'].includes(key) || options[key]) fail('invalid_arguments'); options[key] = args[i + 1];
+      if (!args[i].startsWith('--') || !args[i + 1] || !['connection-env', 'pg-bin', 'data-dir', 'destination', 'assets', 'bundle', 'deletion-ledger'].includes(key) || options[key]) fail('invalid_arguments'); options[key] = args[i + 1];
     }
-    const common = { connectionString: process.env[options['connection-env'] ?? 'DATABASE_URL'], pgBin: options['pg-bin'], dataDir: options['data-dir'], destination: options.destination, assets: options.assets, bundle: options.bundle };
+    const common = { connectionString: process.env[options['connection-env'] ?? 'DATABASE_URL'], pgBin: options['pg-bin'], dataDir: options['data-dir'], destination: options.destination, assets: options.assets, bundle: options.bundle, deletionLedger: options['deletion-ledger'] };
     return command === 'create' ? createPostgresBundle(common) : command === 'verify' ? verifyPostgresBundle(common).then(v => ({ verifiedFiles: v.verifiedFiles, database: v.manifest.database })) : command === 'restore' ? restorePostgresBundle(common) : fail('usage_create_verify_restore');
   })().then(result => console.log(JSON.stringify(result))).catch(error => { console.error(`PostgreSQL backup operation failed: ${error.code ?? error.message}`); process.exitCode = 1; });
 }

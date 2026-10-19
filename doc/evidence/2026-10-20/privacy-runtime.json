@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-19T16:20:12.471Z",
+  "driver": "sqlite",
+  "passed": true,
+  "cases": [
+    "portable_raw_evidence",
+    "credential_recheck",
+    "account_closed_across_restart",
+    "shared_child_preserved",
+    "deleted_child_absent",
+    "old_authentication_revoked",
+    "deletion_ledger_applied_in_restore_transaction",
+    "shared_attribution_anonymized",
+    "corrupt_ledger_rejected_before_target_creation"
+  ],
+  "appliedDeletionReceipts": 1,
+  "privacyRowsRemoved": 24,
+  "ledgerSha256": "0795d68a5df8f881ad9197bb5d71e87adcdffea2840fb1bd958508fa3fac9d44",
+  "limits": "Synthetic family data; new page browser interactions remain unverified. External offline copies require operator retention and the latest deletion ledger."
+}

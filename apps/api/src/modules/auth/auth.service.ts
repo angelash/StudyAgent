@@ -61,6 +61,11 @@ export class AuthService {
     return { loggedOut: true };
   }
 
+  async reauthenticate(user: InMemoryUserAccount, credential: string, purpose: string) {
+    this.rateLimit(`reauth:${purpose}:${user.id}`);
+    if (!credential || !(await compare(credential, user.passwordHash))) throw new UnauthorizedException('当前账号密码不正确');
+  }
+
   redeemLearningCode(input: unknown, address = 'local') {
     const { code } = validate(z.object({ code: z.string().trim().min(20).max(40).transform(s => s.replace(/\s/g, '').toLowerCase()) }).strict(), input);
     this.rateLimit(`learning-code:${address}`);

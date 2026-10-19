@@ -717,3 +717,4 @@ export const assistantSessionSchema = z.object({
 export type AssistantSession = z.infer<typeof assistantSessionSchema>;
 export * from './processing';
 export * from './student-access';
+export * from './privacy';

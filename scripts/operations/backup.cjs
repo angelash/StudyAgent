@@ -5,6 +5,7 @@ const path = require('node:path');
 const { createHash, randomUUID } = require('node:crypto');
 const { DatabaseSync, backup } = require('node:sqlite');
 const { fenceRestoredState } = require('./restore-state.cjs');
+const { readLedger, applyDeletionLedger } = require('./privacy-ledger.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
@@ -48,7 +49,7 @@ function summary(db) {
     db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 4) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 5) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
@@ -138,8 +139,8 @@ async function verifyBundle({ bundle, incomplete = false }) {
   } finally { db.close(); }
   return { manifest, database: state, verifiedFiles: paths.size };
 }
-async function restoreBundle({ bundle, destination }) {
-  const verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
+async function restoreBundle({ bundle, destination, deletionLedger }) {
+  const ledger = readLedger(deletionLedger), verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
   const marker = within(root, '.study-restore-incomplete'); fs.writeFileSync(marker, 'Restore has not completed. Do not start the application.\n', { flag: 'wx' });
   for (const file of verified.manifest.files) {
     const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
@@ -155,7 +156,9 @@ async function restoreBundle({ bundle, destination }) {
   const db = new DatabaseSync(within(root, 'study-agent.sqlite3')); let counts;
   try {
     db.exec('BEGIN IMMEDIATE');
-    counts = await fenceRestoredState((sql, params = []) => db.prepare(sql).all(...params), verified.manifest.id, verified.database.revision);
+    const query = (sql, params = []) => db.prepare(sql).all(...params);
+    const privacy = await applyDeletionLedger(query, ledger);
+    counts = { ...await fenceRestoredState(query, verified.manifest.id, verified.database.revision), ...privacy };
     if (Number(db.prepare("UPDATE study_restore_guard SET state='ready',updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(counts.restoredAt, verified.manifest.id).changes) !== 1) fail('restore_guard_changed');
     db.exec('COMMIT'); summary(db);
   } catch (error) { try { db.exec('ROLLBACK'); } catch {} throw error; } finally { db.close(); }
@@ -168,13 +171,13 @@ module.exports = { createBundle, verifyBundle, restoreBundle,
   files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } };
 if (require.main === module) {
   (async () => {
-    const [command, ...args] = process.argv.slice(2), options = {}, allowed = command === 'create' ? ['data-dir', 'destination', 'assets'] : ['bundle', 'destination'];
+    const [command, ...args] = process.argv.slice(2), options = {}, allowed = command === 'create' ? ['data-dir', 'destination', 'assets'] : ['bundle', 'destination', 'deletion-ledger'];
     for (let i = 0; i < args.length; i += 2) {
       const key = args[i].slice(2);
       if (!args[i].startsWith('--') || !args[i + 1] || !allowed.includes(key) || options[key]) fail('invalid_arguments'); options[key] = args[i + 1];
     }
     return command === 'create' ? createBundle({ dataDir: options['data-dir'], destination: options.destination, assets: options.assets }) :
       command === 'verify' ? verifyBundle({ bundle: options.bundle }).then(r => ({ verifiedFiles: r.verifiedFiles, database: r.database, assetsIncluded: r.manifest.assetsIncluded })) :
-      command === 'restore' ? restoreBundle({ bundle: options.bundle, destination: options.destination }) : fail('usage_create_verify_restore');
+      command === 'restore' ? restoreBundle({ bundle: options.bundle, destination: options.destination, deletionLedger: options['deletion-ledger'] }) : fail('usage_create_verify_restore');
   })().then(result => process.stdout.write(JSON.stringify(result) + '\n')).catch(error => { process.stderr.write(`Backup operation failed: ${error.code ?? error.message}\n`); process.exitCode = 1; });
 }
