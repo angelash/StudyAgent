@@ -97,7 +97,8 @@ export class CurriculumService {
     const previous = this.getScope(user, studentId, data.subject);
     const scope: LearningScope = { ...data, learnedAtomIds: [...new Set(data.learnedAtomIds)],
       id: this.store.nextId('scope'), studentId, version: (previous?.version ?? 0) + 1, confirmedAt: new Date().toISOString(),
-      textbookRevision, ...(progress ? { mappingSnapshots: progress.mappingSnapshots, uncoveredLessonIds: progress.uncoveredLessonIds } : {}) };
+      textbookRevision, ...(progress ? { mappingSnapshots: progress.mappingSnapshots, uncoveredLessonIds: progress.uncoveredLessonIds,
+        selectedLessonSnapshots: progress.selectedLessonSnapshots } : {}) };
     this.store.learningScopes.push(scope);
     this.events.publish('curriculum.scope_confirmed', { studentId, subject: data.subject, scopeId: scope.id, version: scope.version });
     return scope;

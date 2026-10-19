@@ -1,6 +1,6 @@
 // Responsive QA host: real pages render inside fixed-width browser frames.
 const http = require('node:http');
-const allowed = ['/student/assessment', '/library', '/parent/dashboard', '/student/today'];
+const allowed = ['/student/assessment', '/library', '/parent/dashboard', '/student/today', '/admin/reviews', '/admin/curriculum', '/admin/accounts', '/parent/access'];
 http.createServer((req, res) => {
   if (!['127.0.0.1', '::ffff:127.0.0.1', '::1'].includes(req.socket.remoteAddress)) { res.writeHead(403).end(); return; }
   const url = new URL(req.url, 'http://127.0.0.1:13001');

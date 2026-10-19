@@ -27,6 +27,7 @@ export const learningScopeSchema = learningScopeInputSchema.extend({
   textbookRevision: z.string().optional(),
   mappingSnapshots: z.array(z.object({ id, version: z.number().int().positive(), lessonId: id, atomIds: z.array(id) })).optional(),
   uncoveredLessonIds: z.array(id).optional(),
+  selectedLessonSnapshots: z.array(z.object({ id, name: z.string(), chapterName: z.string() })).optional(),
 });
 export type LearningScope = z.infer<typeof learningScopeSchema>;
 
@@ -79,6 +80,9 @@ export type DiagnosticResponse = {
 export type ScoringRevision = {
   id: string; responseId: string; score: number; reason: string; reviewerId: string;
   createdAt: string; version: number;
+  requestKey?: string; requestHash?: string;
+  ratings?: Array<{ criterionIndex: number; score: number; observation: string }>;
+  rubricSnapshot?: Array<{ criterion: string; weight: number }>;
 };
 
 export type MasteryEstimate = {
@@ -93,7 +97,7 @@ export type MasteryEstimate = {
 export type DiagnosticHypothesis = {
   id: string; studentId: string; subject: z.infer<typeof subject>; atomId: string;
   cause: 'prerequisite_gap' | 'procedure_gap' | 'representation_gap' | 'retention_gap';
-  status: 'proposed' | 'testing' | 'supported' | 'contradicted' | 'inconclusive' | 'monitoring' | 'resolved' | 'reopened';
+  status: 'proposed' | 'testing' | 'supported' | 'contradicted' | 'inconclusive' | 'monitoring' | 'resolved' | 'reopened' | 'withdrawn';
   title: string; observation: string; explanation: string; alternatives: string[];
   supportingEvidenceIds: string[]; counterEvidenceIds: string[]; probeAtomIds: string[];
   nextAction: string; confidence: 'low' | 'medium'; ruleVersion: string; updatedAt: string;
@@ -122,4 +126,6 @@ export type DiagnosticReport = {
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];
   hypotheses: DiagnosticHypothesis[]; evidence: DiagnosticResponse[]; unmeasuredAtomIds: string[];
   summary: string; modelNotice: string;
+  scopeSnapshot?: LearningScope; version?: number; generatedAt?: string; revisionReason?: string;
+  scoringRevisionIds?: string[];
 };

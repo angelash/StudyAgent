@@ -26,7 +26,7 @@ export class GuidanceService {
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
     const atomMap = new Map(this.store.knowledgeAtoms.map((atom) => [atom.id, atom]));
-    const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved'].includes(item.status));
+    const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved', 'withdrawn'].includes(item.status));
     const prioritized = [...report.estimates].sort((a, b) => {
       const rootA = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(a.atomId));
       const rootB = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(b.atomId));

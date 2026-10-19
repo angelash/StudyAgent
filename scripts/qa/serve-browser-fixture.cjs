@@ -14,9 +14,12 @@ const { NestFactory } = require('@nestjs/core');
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { AuthService } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
+const { CurriculumService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/curriculum.service.js');
+const { DiagnosticsService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js');
+const { GuidanceService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/guidance.service.js');
 const { writeFileSync, mkdirSync } = require('node:fs');
 async function main() {
-  let fixtureToken;
+  let fixtureToken, reviewFixture;
   const app = await NestFactory.create(AppModule, { logger: false, cors: { origin: process.env.CORS_ORIGINS.split(','), credentials: true } });
   app.use((req, res, next) => {
     if (!['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress)) return res.status(403).end();
@@ -33,12 +36,30 @@ async function main() {
     store.students.push({ id, userId: login.user.id, nickname: '测试小禾', grade: 2, preferredSessionMinutes: 15,
       defaultVersionMap: { math: 'common', chinese: 'common', english: 'common' } });
     store.bindings.push({ id: store.nextId('binding'), parentUserId: login.user.id, studentId: id, relation: 'guardian', status: 'active' });
+    const user = store.users.find((u) => u.id === login.user.id);
+    const rubricQuestionIds = new Set(store.questionAnswerSchemas.filter((q) => q.gradingConfig?.rubric).map((q) => q.questionId));
+    const atom = store.knowledgeAtoms.find((a) => a.subject === 'chinese' && a.grade === 3 &&
+      store.measurementItems.filter((m) => m.atomId === a.id && rubricQuestionIds.has(m.questionId)).length >= 2);
+    if (!atom) throw new Error('Original rubric fixture is unavailable');
+    const childId = store.nextId('student');
+    store.students.push({ id: childId, userId: store.nextId('student_user'), nickname: '测试小麦', grade: 3,
+      preferredSessionMinutes: 15, defaultVersionMap: { chinese: 'original', math: '', english: '' } });
+    store.bindings.push({ id: store.nextId('binding'), parentUserId: user.id, studentId: childId, relation: 'guardian', status: 'active' });
+    app.get(CurriculumService).saveScope(user, childId, { subject: 'chinese', grade: 3, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '浏览器合成复核范围', learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 });
+    const diagnostics = app.get(DiagnosticsService), session = diagnostics.start(user, { studentId: childId, subject: 'chinese', maxItems: 2 });
+    for (const item of session.items) diagnostics.submit(user, session.id, { itemId: item.id,
+      answer: { questionId: item.questionId, mode: 'short_answer', response: { value: '我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。' } }, elapsedMs: 38000 });
+    const report = diagnostics.complete(user, session.id);
+    const plan = await app.get(GuidanceService).create(user, childId, { baselineSessionId: session.id, minutesPerDay: 10, useAi: false });
+    app.get(GuidanceService).update(user, plan.id, { status: 'active' });
+    reviewFixture = { studentId: childId, sessionId: session.id, responseId: report.evidence[0].id, atomId: atom.id };
   });
   await app.listen(14000, '127.0.0.1');
   mkdirSync('data/qa', { recursive: true });
   writeFileSync('data/qa/browser-fixture.json', JSON.stringify({ startedAt: new Date().toISOString(),
     api: 'http://127.0.0.1:14000', fixture: 'synthetic account with pre-authenticated loopback requests; no production authentication bypass',
-    knowledgeAtoms: store.knowledgeAtoms.length, originalExercises: store.measurementItems.length }, null, 2));
+    knowledgeAtoms: store.knowledgeAtoms.length, originalExercises: store.measurementItems.length, reviewFixture }, null, 2));
   process.stdout.write('Synthetic browser QA API ready: http://127.0.0.1:14000/api/ready\n');
 }
 main().catch((error) => { process.stderr.write(`${error.message}\n`); process.exitCode = 1; });

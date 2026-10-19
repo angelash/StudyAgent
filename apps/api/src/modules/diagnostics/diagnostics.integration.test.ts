@@ -159,7 +159,7 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     const firstReport = await call('post', `/diagnostics/sessions/${session.id}/complete`, {});
     expect(firstReport.pendingReviewCount).toBe(2); expect(firstReport.rawScore).toBeNull();
     const responseId = firstReport.evidence[0].id;
-    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(responseId)}/review`, { score: 1, reason: '按该题量规逐步核对，关键步骤正确' }, 201, admin);
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(responseId)}/review`, { score: 1, reason: '按该题量规逐步核对，关键步骤正确', requestKey: 'legacy-review', expectedVersion: 0 }, 201, admin);
     const report = await call('get', `/diagnostics/sessions/${session.id}/report`);
     expect(report.pendingReviewCount).toBe(1); expect(report.scoredCount).toBe(1);
     expect(store.diagnosticResponses.find((item: any) => item.id === responseId).score).toBeNull();

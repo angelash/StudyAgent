@@ -76,7 +76,7 @@ export function QuestionRenderer({ renderPayload, answer, onChange }: QuestionRe
   );
 }
 
-function QuestionBlockView({ block }: { block: QuestionBlock }) {
+export function QuestionBlockView({ block }: { block: QuestionBlock }) {
   switch (block.type) {
     case 'text':
     case 'reading_material':

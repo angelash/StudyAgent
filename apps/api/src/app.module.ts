@@ -14,9 +14,10 @@ import { StoreContextMiddleware } from './infrastructure/store-context.middlewar
 import { DiagnosticsModule } from './modules/diagnostics/diagnostics.module';
 import { LibraryModule } from './modules/library/library.module';
 import { LearningModule } from './modules/learning/learning.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule, ReviewsModule],
   providers: [
     {
       provide: APP_FILTER,

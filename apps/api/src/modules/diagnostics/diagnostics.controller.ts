@@ -90,4 +90,6 @@ export class DiagnosticsController {
   retrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string) { return this.guidance.retrospective(req.user, id); }
   @Post('admin/diagnostic-responses/:responseId/review')
   reviewScore(@Req() req: AuthenticatedRequest, @Param('responseId') id: string, @Body() body: unknown) { return this.diagnostics.reviewScore(req.user, id, body); }
+  @Get('diagnostics/sessions/:sessionId/report-history')
+  reportHistory(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.diagnostics.reportHistory(req.user, id); }
 }

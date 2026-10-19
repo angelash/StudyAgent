@@ -26,6 +26,7 @@ import {
   DiagnosticHypothesis, DiagnosticGuidancePlan, ReviewTask, ScoringRevision, DiagnosticReport,
   PracticeSession, PracticeAttempt, PracticeHint,
   TextbookAtomMapping, CurriculumRevision,
+  TeacherStudentAssignment, EvidenceFeedback,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -35,6 +36,7 @@ export type InMemoryUserAccount = {
   role: UserRole;
   displayName: string;
   status: 'active' | 'disabled';
+  version?: number;
 };
 
 export type InMemoryAuthSession = {
@@ -194,6 +196,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   practiceSessions: PracticeSession[] = [];
   practiceAttempts: PracticeAttempt[] = [];
   practiceHints: PracticeHint[] = [];
+  practiceScoringRevisions: ScoringRevision[] = [];
+  teacherAssignments: TeacherStudentAssignment[] = [];
+  evidenceFeedback: EvidenceFeedback[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -246,6 +251,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.practiceSessions = [];
     this.practiceAttempts = [];
     this.practiceHints = [];
+    this.practiceScoringRevisions = [];
+    this.teacherAssignments = [];
+    this.evidenceFeedback = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];

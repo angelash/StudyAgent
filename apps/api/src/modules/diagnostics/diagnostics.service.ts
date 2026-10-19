@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
-import { DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
+import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
   LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -12,6 +12,7 @@ import { CurriculumService, eligibleMeasurements } from './curriculum.service';
 import { deriveHypotheses } from './diagnosis';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { gradeResponse } from './scoring';
+import { prepareScoringReview } from './scoring-review';
 
 @Injectable()
 export class DiagnosticsService {
@@ -169,7 +170,7 @@ export class DiagnosticsService {
       command.disposition === 'dont_know' ? { score: 0, correct: false, status: 'scored' as const, reason: '学生选择暂时不会，作为当前任务表现记录。' } :
         { score: null, correct: null, status: 'skipped' as const, reason: '本题已跳过，不计为错误。' };
     const priorIndependent = this.effectiveResponses(session.studentId, session.subject).filter((item) => item.atomId === mapping.atomId &&
-      item.sessionId !== sessionId && item.correct && item.hintLevel === 0 && item.submittedAt < session.startedAt)
+      item.sessionId !== sessionId && item.correct && item.hintLevel === 0 && !item.priorExposure && item.submittedAt < session.startedAt)
       .sort((a, b) => b.submittedAt.localeCompare(a.submittedAt))[0];
     const delay = priorIndependent ? Math.max(0, (Date.now() - Date.parse(priorIndependent.submittedAt)) / 86_400_000) : null;
     const response: DiagnosticResponse = {
@@ -243,6 +244,11 @@ export class DiagnosticsService {
       const existing = this.store.diagnosticHypotheses.find((item) => item.id === hypothesis.id);
       if (existing) Object.assign(existing, hypothesis); else this.store.diagnosticHypotheses.push(hypothesis);
     }
+    for (const old of this.store.diagnosticHypotheses.filter((entry) => entry.studentId === studentId && entry.subject === subject &&
+      !next.some((item) => item.id === entry.id) && entry.status !== 'withdrawn')) {
+      old.status = 'withdrawn'; old.updatedAt = new Date().toISOString();
+      old.history.push({ at: old.updatedAt, status: 'withdrawn', reason: '当前有效评分不再支持原假设，保留历史供追溯，不作为已验证改善。' });
+    }
     return next;
   }
 
@@ -259,7 +265,13 @@ export class DiagnosticsService {
   report(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
     const saved = this.store.diagnosticReports.filter((item) => item.sessionId === sessionId).sort((a, b) => b.version - a.version)[0];
-    return saved?.report ?? this.buildReport(session);
+    return saved ? { ...saved.report, version: saved.version, generatedAt: saved.createdAt } : this.buildReport(session);
+  }
+
+  reportHistory(user: InMemoryUserAccount, sessionId: string) {
+    this.requireSession(user, sessionId);
+    return this.store.diagnosticReports.filter((item) => item.sessionId === sessionId).sort((a, b) => b.version - a.version)
+      .map((item) => ({ ...item.report, version: item.version, generatedAt: item.createdAt }));
   }
 
   private buildReport(session: DiagnosticSession): DiagnosticReport {
@@ -271,29 +283,46 @@ export class DiagnosticsService {
     const scored = evidence.filter((item) => item.status === 'scored' && item.score !== null);
     const pending = evidence.filter((item) => item.status === 'pending_review').length;
     const insufficient = estimates.filter((item) => item.status === 'unknown' || item.status === 'insufficient').length;
+    const measuredAt = session.completedAt ?? new Date().toISOString();
+    const previous = this.store.diagnosticHypotheses.filter((item) => item.studentId === session.studentId && item.subject === session.subject)
+      .flatMap((item) => {
+        const history = item.history.filter((entry) => entry.at <= measuredAt), latest = history.at(-1);
+        return latest ? [{ ...item, status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
+      });
     return { sessionId: session.id, studentId: session.studentId, subject: session.subject, status: session.status,
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,
       coverage: session.coverage, estimates,
-      hypotheses: structuredClone(this.store.diagnosticHypotheses.filter((item) => item.studentId === session.studentId && item.subject === session.subject && ids.has(item.atomId))),
+      hypotheses: deriveHypotheses(session.studentId, session.subject, this.store.knowledgeAtoms.filter((item) => ids.has(item.id)),
+        all, this.allMappings(), previous, measuredAt),
       evidence, unmeasuredAtomIds: estimates.filter((item) => !item.scoredCount).map((item) => item.atomId),
+      scopeSnapshot: structuredClone(session.scopeSnapshot),
+      scoringRevisionIds: this.store.scoringRevisions.filter((revision) => all.some((item) => item.id === revision.responseId)).map((item) => item.id),
       summary: `本次已评分 ${scored.length} 题，${pending} 题待复核；${insufficient} 个知识点仍需补充证据。下一步优先核查具体知识与步骤。`,
       modelNotice: '掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。' };
   }
 
   reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown) {
-    this.curriculum.assertEditor(user);
-    const command = validate(z.object({ score: z.number().min(0).max(1), reason: z.string().trim().min(5).max(2000) }).strict(), input);
     const response = this.store.diagnosticResponses.find((item) => item.id === responseId);
     if (!response) throw new NotFoundException('作答证据不存在');
-    const session = this.requireSession(user, response.sessionId);
+    this.students.assertCanReviewStudent(user, response.studentId);
+    const session = this.store.diagnosticSessions.find((item) => item.id === response.sessionId)!;
+    if (session.status !== 'completed' || response.disposition !== 'answered') throw new BadRequestException('只可复核已结束评测中的有效作答');
+    const snapshot = session.questionSnapshots.find((item) => item.id === response.questionId)!;
     const previous = this.store.scoringRevisions.filter((item) => item.responseId === responseId);
-    const revision = { id: this.store.nextId('scoring_revision'), responseId, ...command, reviewerId: user.id,
-      createdAt: new Date().toISOString(), version: previous.length + 1 };
+    const prepared = prepareScoringReview(input, snapshot.answerSchema as QuestionAnswerSchema, previous);
+    if (prepared.existing) return prepared.existing;
+    const revision = { id: this.store.nextId('scoring_revision'), responseId, ...prepared.data!, reviewerId: user.id,
+      createdAt: new Date().toISOString() };
     this.store.scoringRevisions.push(revision);
     this.refreshHypotheses(response.studentId, session.subject);
-    if (session.status === 'completed') this.store.diagnosticReports.push({ id: this.store.nextId('report'), sessionId: session.id,
-      version: this.store.diagnosticReports.filter((item) => item.sessionId === session.id).length + 1, createdAt: revision.createdAt, report: this.buildReport(session) });
+    // Later reports also used this evidence. Retain every earlier snapshot when rebuilding them.
+    for (const affected of this.store.diagnosticSessions.filter((item) => item.studentId === session.studentId && item.subject === session.subject &&
+      item.status === 'completed' && item.completedAt! >= response.submittedAt)) {
+      this.store.diagnosticReports.push({ id: this.store.nextId('report'), sessionId: affected.id,
+        version: Math.max(0, ...this.store.diagnosticReports.filter((item) => item.sessionId === affected.id).map((item) => item.version)) + 1,
+        createdAt: revision.createdAt, report: { ...this.buildReport(affected), revisionReason: '作答证据经人工复核，已重新计算依赖该证据的报告。' } });
+    }
     this.events.publish('diagnostic.score_reviewed', { responseId, revisionId: revision.id, actorId: user.id });
     return revision;
   }

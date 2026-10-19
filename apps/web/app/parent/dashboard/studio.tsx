@@ -22,7 +22,7 @@ export function FamilyStudio() {
   const child = overview?.children.find((item) => item.id === studentId), data = child?.subjects.find((item) => item.subject === subject);
   const diagnosticsHref = `/student/assessment?studentId=${studentId}&subject=${subject}`, todayHref = `/student/today?studentId=${studentId}&subject=${subject}`;
   const due = data?.today.reviews.filter((item) => item.due && item.status !== 'completed') ?? [];
-  const hypotheses = data?.hypotheses.filter((item) => !['resolved', 'contradicted'].includes(item.status)) ?? [];
+  const hypotheses = data?.hypotheses.filter((item) => !['resolved', 'contradicted', 'withdrawn'].includes(item.status)) ?? [];
   async function createChild(event: React.FormEvent) {
     event.preventDefault(); setBusy(true); setError('');
     try {
@@ -55,7 +55,7 @@ export function FamilyStudio() {
           <h3 className="studio-line-title">这一周，留下了什么。</h3><div className="family-week">{[[data.week.completedAssessments, '完成的评测'], [data.week.completedActivities, '完成的指导活动'], [data.week.observations, '保存的作答观察']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
           <p className="studio-muted">活动完成表示练习发生过。是否学得更稳，还需比较同一量规下的独立新题和延迟复测。</p>
           {data.trend.length > 0 && <div className="family-timeline">{data.trend.map((item) => <Link key={`${item.sessionId}:${item.at}`} href={`${diagnosticsHref}&session=${item.sessionId}`}><span>{new Date(item.at).toLocaleDateString('zh-CN')}</span><strong>观察了 {item.measuredPoints} 个知识点</strong><small>{item.sufficientPoints} 个点的证据量达到初步判断要求 ↗</small></Link>)}</div>}
-          <div className="family-bottom"><Link className="studio-secondary" href={todayHref}>查看今日安排与错题 ↗</Link>{data.today.plan && <Link className="studio-secondary" href={diagnosticsHref}>指导计划与复盘 ↗</Link>}<Link className="studio-text-button" href="/library">浏览题卷资料 ↗</Link></div>
+          <div className="family-bottom"><Link className="studio-secondary" href={todayHref}>查看今日安排与错题 ↗</Link>{data.today.plan && <Link className="studio-secondary" href={diagnosticsHref}>指导计划与复盘 ↗</Link>}<Link className="studio-text-button" href={`/parent/access?studentId=${studentId}`}>复核授权与反馈记录 ↗</Link><Link className="studio-text-button" href="/library">浏览题卷资料 ↗</Link></div>
         </>}
       </>}
     </section></div>{child && <AssistantWidget userRole="parent" studentId={studentId} subject={subject} pageContext="weekly_report" title="家长陪伴助教" subtitle="一起看看具体证据和下一步" />}</main>;

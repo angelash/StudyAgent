@@ -1,9 +1,10 @@
-import { ConflictException, HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, HttpException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { hash, compare } from 'bcryptjs';
 import { createHash, randomBytes } from 'crypto';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { credentialsSchema, validate } from '../../common/validation';
+import { z } from 'zod';
 
 export const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
 
@@ -58,6 +59,43 @@ export class AuthService {
     const session = this.store.sessions.find((item) => item.tokenHash === hashToken(token));
     if (session) session.revokedAt = new Date().toISOString();
     return { loggedOut: true };
+  }
+
+  listAccounts(actor: InMemoryUserAccount, input: unknown) {
+    if (actor.role !== 'admin') throw new ForbiddenException('需要管理员权限');
+    const query = validate(z.object({ search: z.string().trim().max(254).default(''),
+      page: z.coerce.number().int().min(1).max(100000).default(1) }).strict(), input);
+    const rows = this.store.users.filter((u) => !query.search || u.principal.includes(query.search.toLowerCase()) || u.displayName.includes(query.search));
+    return { total: rows.length, page: query.page, rows: rows.slice((query.page - 1) * 25, query.page * 25).map(({ id, principal, displayName, role, status, version }) =>
+      ({ id, principal, displayName, role, status, version: version ?? 1 })) };
+  }
+
+  async updateAccount(actor: InMemoryUserAccount, id: string, input: unknown) {
+    if (actor.role !== 'admin') throw new ForbiddenException('需要管理员权限');
+    const command = validate(z.object({ role: z.enum(['parent', 'teacher', 'operator', 'admin']), status: z.enum(['active', 'disabled']),
+      expectedVersion: z.number().int().positive(), reason: z.string().trim().min(5).max(2000), adminCredential: z.string().min(10).max(128) }).strict(), input);
+    this.rateLimit(`account-change:${actor.id}`);
+    if (!(await compare(command.adminCredential, actor.passwordHash))) throw new UnauthorizedException('管理员密码不正确');
+    const target = this.store.users.find((item) => item.id === id);
+    if (!target) throw new NotFoundException('账号不存在');
+    if ((target.version ?? 1) !== command.expectedVersion) throw new ConflictException('账号权限已变更，请重新读取后核对');
+    if (target.role === 'student') throw new BadRequestException('学生身份需通过监护人的学习账号管理');
+    if (id === actor.id && (command.role !== actor.role || command.status !== 'active')) throw new BadRequestException('不能在当前会话撤销自己的管理权限');
+    if (target.role === 'admin' && (command.role !== 'admin' || command.status !== 'active') &&
+      this.store.users.filter((u) => u.role === 'admin' && u.status === 'active' && u.id !== id).length === 0) throw new BadRequestException('至少保留一个可用管理员');
+    const previous = { role: target.role, status: target.status, version: target.version ?? 1 };
+    target.role = command.role; target.status = command.status; target.version = previous.version + 1;
+    if (previous.role !== target.role || previous.status !== target.status) {
+      for (const session of this.store.sessions.filter((s) => s.userId === id && !s.revokedAt)) session.revokedAt = new Date().toISOString();
+      if (previous.role === 'teacher' && (target.role !== 'teacher' || target.status !== 'active')) {
+        for (const assignment of this.store.teacherAssignments.filter((a) => a.teacherUserId === id && a.status === 'active')) {
+          assignment.status = 'revoked'; assignment.revokedAt = new Date().toISOString(); assignment.revokedBy = actor.id;
+        }
+      }
+    }
+    this.eventBus.publish('auth.account_updated', { userId: id, actorId: actor.id, previous,
+      current: { role: target.role, status: target.status, version: target.version }, reason: command.reason });
+    return { id: target.id, principal: target.principal, displayName: target.displayName, role: target.role, status: target.status, version: target.version };
   }
 
   private createSession(user: InMemoryUserAccount) {

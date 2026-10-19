@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { randomBytes } from 'crypto';
 import { z } from 'zod';
 import { validate } from '../../common/validation';
@@ -150,6 +150,54 @@ export class StudentsService {
   listChildren(parentUser: InMemoryUserAccount) {
     const bindings = this.store.bindings.filter((item) => item.parentUserId === parentUser.id && item.status === 'active');
     return bindings.map((binding) => this.getProfile(parentUser, binding.studentId));
+  }
+
+  canReviewStudent(user: InMemoryUserAccount, studentId: string) {
+    return user.role === 'admin' || (user.role === 'teacher' && this.store.teacherAssignments.some((assignment) =>
+      assignment.studentId === studentId && assignment.teacherUserId === user.id && assignment.status === 'active'));
+  }
+
+  assertCanReviewStudent(user: InMemoryUserAccount, studentId: string) {
+    if (!this.canReviewStudent(user, studentId)) throw new ForbiddenException('需要监护人授予此孩子的评分复核权限');
+  }
+
+  private assertGuardian(user: InMemoryUserAccount, studentId: string) {
+    this.assertCanAccessStudent(user, studentId);
+    if (!['parent', 'admin'].includes(user.role)) throw new ForbiddenException('需要监护人权限');
+    if (!this.store.students.some((student) => student.id === studentId)) throw new NotFoundException('孩子档案不存在');
+  }
+
+  reviewerAssignments(user: InMemoryUserAccount, studentId: string) {
+    this.assertGuardian(user, studentId);
+    return this.store.teacherAssignments.filter((item) => item.studentId === studentId).map((assignment) => {
+      const teacher = this.store.users.find((item) => item.id === assignment.teacherUserId);
+      return { ...assignment, displayName: teacher?.displayName ?? '账号已不可用', principal: teacher?.principal ?? '' };
+    });
+  }
+
+  grantReviewer(user: InMemoryUserAccount, studentId: string, input: unknown) {
+    this.assertGuardian(user, studentId);
+    const { principal } = validate(z.object({ principal: z.string().trim().min(3).max(254) }).strict(), input);
+    const teacher = this.store.users.find((item) => item.principal === principal.toLowerCase() && item.role === 'teacher' && item.status === 'active');
+    if (!teacher) throw new BadRequestException('请填写已开通教师身份的账号');
+    const existing = this.store.teacherAssignments.find((item) => item.studentId === studentId && item.teacherUserId === teacher.id && item.status === 'active');
+    if (existing) return existing;
+    const assignment = { id: this.store.nextId('teacher_assignment'), studentId, teacherUserId: teacher.id, grantedBy: user.id,
+      permission: 'scoring_review' as const, status: 'active' as const, createdAt: new Date().toISOString(), revokedAt: null, revokedBy: null };
+    this.store.teacherAssignments.push(assignment);
+    this.eventBus.publish('student.reviewer_granted', { studentId, assignmentId: assignment.id, actorId: user.id });
+    return assignment;
+  }
+
+  revokeReviewer(user: InMemoryUserAccount, studentId: string, assignmentId: string) {
+    this.assertGuardian(user, studentId);
+    const assignment = this.store.teacherAssignments.find((item) => item.id === assignmentId && item.studentId === studentId);
+    if (!assignment) throw new NotFoundException('授权不存在');
+    if (assignment.status === 'active') {
+      assignment.status = 'revoked'; assignment.revokedAt = new Date().toISOString(); assignment.revokedBy = user.id;
+      this.eventBus.publish('student.reviewer_revoked', { studentId, assignmentId, actorId: user.id });
+    }
+    return assignment;
   }
 
   assertCanAccessStudent(requestUser: InMemoryUserAccount, studentId: string) {

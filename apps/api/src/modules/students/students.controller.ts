@@ -57,4 +57,19 @@ export class StudentsController {
 
     return this.studentsService.listChildren(req.user);
   }
+
+  @Get('students/:studentId/reviewers')
+  reviewers(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string) {
+    return this.studentsService.reviewerAssignments(req.user, studentId);
+  }
+
+  @Post('students/:studentId/reviewers')
+  grantReviewer(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: unknown) {
+    return this.studentsService.grantReviewer(req.user, studentId, body);
+  }
+
+  @Post('students/:studentId/reviewers/:assignmentId/revoke')
+  revokeReviewer(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Param('assignmentId') assignmentId: string) {
+    return this.studentsService.revokeReviewer(req.user, studentId, assignmentId);
+  }
 }

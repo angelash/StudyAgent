@@ -10,6 +10,7 @@ import { DiagnosticsService } from '../diagnostics/diagnostics.service';
 import { GuidanceService } from '../diagnostics/guidance.service';
 import { gradeResponse } from '../diagnostics/scoring';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
+import { prepareScoringReview } from '../diagnostics/scoring-review';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -84,7 +85,7 @@ export class LearningService {
     this.students.assertCanAccessStudent(user, session.studentId); return session;
   }
   view(user: InMemoryUserAccount, id: string) {
-    const session = this.requireSession(user, id), attempts = this.store.practiceAttempts.filter((item) => item.sessionId === id);
+    const session = this.requireSession(user, id), attempts = this.store.practiceAttempts.filter((item) => item.sessionId === id).map((item) => this.effectiveAttempt(item));
     const plan = this.store.diagnosticPlans.find((item) => item.id === session.planId), action = plan?.actions.find((item) => item.id === session.actionId);
     const latest = session.questionIds.map((questionId) => [...attempts].reverse().find((item) => item.questionId === questionId));
     return { id, studentId: session.studentId, subject: session.subject, atomId: session.atomId, planId: session.planId,
@@ -144,10 +145,33 @@ export class LearningService {
     return this.feedback(session, attempt);
   }
   private feedback(session: PracticeSession, attempt: PracticeAttempt) {
+    attempt = this.effectiveAttempt(attempt);
     const snapshot = session.snapshots.find((item) => item.id === attempt.questionId)!;
     return { attempt, analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
+      reviewHistory: this.store.practiceScoringRevisions.filter((item) => item.responseId === attempt.id).map(({ requestHash: _hash, ...item }) => item),
       notice: attempt.status === 'pending_review' ? '已保存表达，等待按量规复核。' : attempt.correct ?
         attempt.attempt === 1 && !attempt.hintLevel ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
+  }
+
+  effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt {
+    const revision = this.store.practiceScoringRevisions.filter((item) => item.responseId === attempt.id).sort((a, b) => b.version - a.version)[0];
+    return revision ? { ...attempt, score: revision.score, correct: revision.score === 1, status: 'scored', reason: revision.reason } : attempt;
+  }
+
+  reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown) {
+    const attempt = this.store.practiceAttempts.find((item) => item.id === responseId);
+    if (!attempt) throw new NotFoundException('训练作答不存在');
+    const session = this.store.practiceSessions.find((item) => item.id === attempt.sessionId)!;
+    this.students.assertCanReviewStudent(user, session.studentId);
+    if (attempt.disposition !== 'answered') throw new BadRequestException('跳过的题目不能复核评分');
+    const snapshot = session.snapshots.find((item) => item.id === attempt.questionId)!;
+    const prepared = prepareScoringReview(input, snapshot.answerSchema as QuestionAnswerSchema,
+      this.store.practiceScoringRevisions.filter((item) => item.responseId === attempt.id));
+    if (prepared.existing) return prepared.existing;
+    const revision = { id: this.store.nextId('practice_scoring_revision'), responseId, ...prepared.data!, reviewerId: user.id, createdAt: new Date().toISOString() };
+    this.store.practiceScoringRevisions.push(revision);
+    this.events.publish('learning.score_reviewed', { responseId, revisionId: revision.id, studentId: session.studentId, actorId: user.id });
+    return revision;
   }
   hint(user: InMemoryUserAccount, id: string, questionId: string) {
     const session = this.requireSession(user, id);
@@ -177,7 +201,8 @@ export class LearningService {
       snapshot: this.store.diagnosticSessions.find((session) => session.id === item.sessionId)?.questionSnapshots.find((question) => question.id === item.questionId) }));
     for (const session of this.store.practiceSessions.filter((item) => item.studentId === studentId && item.subject === subject)) {
       for (const questionId of session.questionIds) {
-        const first = this.store.practiceAttempts.find((item) => item.sessionId === session.id && item.questionId === questionId);
+        const original = this.store.practiceAttempts.find((item) => item.sessionId === session.id && item.questionId === questionId);
+        const first = original ? this.effectiveAttempt(original) : null;
         if (!first || (first.correct !== false && first.status !== 'pending_review')) continue;
         rows.push({ id: first.id, kind: 'practice', atomId: session.atomId, questionId, reason: first.reason, status: first.status,
           answer: first.answer, at: first.submittedAt, snapshot: session.snapshots.find((item) => item.id === questionId) });
@@ -186,7 +211,7 @@ export class LearningService {
     return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100).map(({ snapshot, ...item }) => ({ ...item,
       atomName: this.store.knowledgeAtoms.find((atom) => atom.id === item.atomId)?.name ?? item.atomId,
       stem: snapshot?.stem ?? '原始题目暂不可用', analysis: snapshot?.analysis ?? '', referenceAnswer: snapshot?.answer ?? null,
-      hypothesis: this.store.diagnosticHypotheses.find((hypothesis) => hypothesis.studentId === studentId && hypothesis.atomId === item.atomId && !['contradicted', 'resolved'].includes(hypothesis.status)) ?? null }));
+      hypothesis: this.store.diagnosticHypotheses.find((hypothesis) => hypothesis.studentId === studentId && hypothesis.atomId === item.atomId && !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null }));
   }
   overview(user: InMemoryUserAccount) {
     const children = this.store.students.filter((child) => user.role === 'admin' || this.store.bindings.some((binding) =>

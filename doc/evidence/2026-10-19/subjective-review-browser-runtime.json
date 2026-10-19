@@ -1,0 +1,128 @@
+{
+  "capturedAt": "2026-10-19T13:35:48.931Z",
+  "environment": "isolated local SQLite with synthetic profiles; actual browser mutations read back through API",
+  "sessionId": "diagnostic_6853c064-7531-45d1-9197-dbe9589c64f7",
+  "responseId": "response:diagnostic_6853c064-7531-45d1-9197-dbe9589c64f7:measurement:foundation_q_651904e8aeed6f9dadb02a8d",
+  "studentId": "student_68b47514-277c-4e53-9787-ec91f03772e1",
+  "originalResponse": {
+    "score": null,
+    "status": "pending_review",
+    "hintLevel": 0
+  },
+  "revisions": [
+    {
+      "id": "scoring_revision_4eae7b79-c67f-493c-a9e4-44bb22e00709",
+      "score": 0.25,
+      "version": 1,
+      "reason": "能流畅表达，但未概括原文人物、事件和结果。下一步分别找出三项信息，再合成一句话，并用新材料独立验证。",
+      "ratings": [
+        {
+          "criterionIndex": 0,
+          "score": 0,
+          "observation": "未提到小雨和浇水方式变化，人物与事件信息缺失。"
+        },
+        {
+          "criterionIndex": 1,
+          "score": 0,
+          "observation": "未保留花恢复的结果，缺少结果说明。"
+        },
+        {
+          "criterionIndex": 2,
+          "score": 0.75,
+          "observation": "语句通顺，表达较笼统，可压缩成一句具体概括。"
+        }
+      ],
+      "rubricSnapshot": [
+        {
+          "criterion": "主要人物与事件准确",
+          "weight": 0.3333333333333333
+        },
+        {
+          "criterion": "保留结果且不添加无依据情节",
+          "weight": 0.3333333333333333
+        },
+        {
+          "criterion": "语言简洁通顺",
+          "weight": 0.3333333333333333
+        }
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "version": 2,
+      "scoredCount": 1,
+      "pendingReviewCount": 1,
+      "rawScore": 25,
+      "estimates": [
+        {
+          "atomId": "core:chinese:paragraph-summary",
+          "mastery": 41.7,
+          "lower": 3.1,
+          "upper": 89.8,
+          "status": "insufficient",
+          "independentFamilies": 1
+        }
+      ],
+      "hypotheses": [
+        {
+          "status": "proposed",
+          "supportingEvidenceIds": [
+            "response:diagnostic_6853c064-7531-45d1-9197-dbe9589c64f7:measurement:foundation_q_651904e8aeed6f9dadb02a8d"
+          ],
+          "counterEvidenceIds": []
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "scoredCount": 0,
+      "pendingReviewCount": 2,
+      "rawScore": null,
+      "estimates": [
+        {
+          "atomId": "core:chinese:paragraph-summary",
+          "mastery": null,
+          "lower": null,
+          "upper": null,
+          "status": "unknown",
+          "independentFamilies": 0
+        }
+      ],
+      "hypotheses": []
+    }
+  ],
+  "feedback": [
+    {
+      "id": "evidence_feedback_b4327138-5b21-4600-aaba-4db40c8bb39f",
+      "kind": "diagnostic",
+      "responseId": "response:diagnostic_6853c064-7531-45d1-9197-dbe9589c64f7:measurement:foundation_q_651904e8aeed6f9dadb02a8d",
+      "category": "grading",
+      "message": "作答时孩子误把“概括原文”理解为“解释自己的想法”，希望下一次用新材料核查，并说明评分依据。",
+      "requestKey": "b636b3a6-e12d-4457-a3fe-e77b44042ce8",
+      "studentId": "student_68b47514-277c-4e53-9787-ec91f03772e1",
+      "subject": "chinese",
+      "createdBy": "user_b93d4cb4-14fd-449e-9997-1391b4c3baf4",
+      "status": "investigating",
+      "version": 2,
+      "createdAt": "2026-10-19T13:26:11.307Z",
+      "updatedAt": "2026-10-19T13:26:56.268Z",
+      "history": [
+        {
+          "status": "open",
+          "note": "作答时孩子误把“概括原文”理解为“解释自己的想法”，希望下一次用新材料核查，并说明评分依据。",
+          "actorId": "user_b93d4cb4-14fd-449e-9997-1391b4c3baf4",
+          "at": "2026-10-19T13:26:11.307Z",
+          "version": 1
+        },
+        {
+          "status": "investigating",
+          "note": "已核对原文及量规，当前回答缺人物、事件与结果。保留本次评分，下一轮用独立新材料区分题意理解和概括能力，复测前继续核查。",
+          "actorId": "user_b93d4cb4-14fd-449e-9997-1391b4c3baf4",
+          "at": "2026-10-19T13:26:56.268Z",
+          "version": 2
+        }
+      ]
+    }
+  ]
+}

@@ -78,6 +78,7 @@ export class TextbookRegistryService {
     const approved = mappings.filter((m): m is TextbookAtomMapping => !!m && m.status === 'approved' && m.atomIds.every((id) => availableAtoms.has(id)));
     const atomIds = [...new Set(approved.flatMap((m) => m.atomIds))];
     return { atomIds, mappingSnapshots: approved.map((m) => ({ id: m.id, version: m.version, lessonId: m.lessonId, atomIds: [...m.atomIds] })),
+      selectedLessonSnapshots: book.chapters.flatMap((c) => c.lessons.filter((l) => selected.includes(l.id)).map((l) => ({ id: l.id, name: l.name, chapterName: c.name }))),
       uncoveredLessonIds: selected.filter((id) => !approved.some((m) => m.lessonId === id)) };
   }
 }

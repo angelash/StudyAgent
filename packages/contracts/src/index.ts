@@ -1,6 +1,7 @@
 import { z } from 'zod';
 export * from './diagnostics';
 export * from './curriculum';
+export * from './reviews';
 export * from './learning';
 
 export const subjectSchema = z.enum(['chinese', 'math', 'english']);
