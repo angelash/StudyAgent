@@ -52,7 +52,10 @@ export function QuestionRenderer({ renderPayload, answer, onChange }: QuestionRe
         }}
       >
         <div style={{ fontSize: 14, color: '#475569' }}>
-          作答方式：<strong>{mode}</strong>
+          <strong>{({ single_choice: '选择一项', multiple_choice: '选择所有符合的项', boolean: '选择你的判断', text_blank: '填入答案',
+            numeric_blank: '输入数字或分数', formula_blank: '输入算式', multi_blank: '填写各个空位', table_fill: '填写表格', matching: '完成配对',
+            sorting: '排列顺序', drag_drop: '放到合适位置', hotspot: '选择位置', geometry_draw: '画出你的思路', stepwise: '按步骤表达',
+            image_upload: '上传你的作答', short_answer: '写出你的想法', audio_record: '录下你的回答' } as Record<QuestionAnswerMode, string>)[mode]}</strong>
         </div>
         <AnswerInput
           mode={mode}

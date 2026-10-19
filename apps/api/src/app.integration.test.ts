@@ -1386,7 +1386,7 @@ describe('StudyAgent API integration', () => {
     expect(englishMission.questionIds.length).toBeGreaterThan(0);
   });
 
-  it('returns explicit AI configuration error for mission hints without API key', async () => {
+  it('keeps mission hints usable through local guidance without an AI key', async () => {
     const admin = await login('admin@example.com');
     await prepareMathQuestion(admin.token);
 
@@ -1405,11 +1405,12 @@ describe('StudyAgent API integration', () => {
       .send({
         itemId: mission.questionIds[0],
       })
-      .expect(503);
+      .expect(201);
 
-    const payload = hintResponse.body as WrappedResponse<{ hint: string }>;
-    expect(payload.data).toBeNull();
-    expect(payload.error?.message).toContain('OPENAI_API_KEY');
+    const payload = hintResponse.body as WrappedResponse<{ hint: string; source: string }>;
+    expect(payload.data?.source).toBe('rules');
+    expect(payload.data?.hint).toContain('已知条件');
+    expect(payload.error).toBeNull();
   });
 
   it('rejects access from an unbound parent', async () => {

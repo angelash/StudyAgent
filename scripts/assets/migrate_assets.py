@@ -163,7 +163,7 @@ class Migration:
                 '.git', '__pycache__', 'node_modules', '.pytest_cache', '.venv', 'venv'})
             for name in sorted(files):
                 lower = name.lower()
-                if any(word in lower for word in ['cookie', 'credential', 'session', 'token', '.env']):
+                if any(word in lower for word in ['cookie', 'credential', 'session', '.env']) or ('token' in lower and 'tokenizer' not in lower):
                     continue
                 item = Path(directory) / name
                 if allowed and item.suffix.lower() not in allowed:
@@ -178,6 +178,10 @@ class Migration:
         if audit.is_file():
             self.snapshot(audit, 'shijuanbao/audit.sqlite3')
         self.media(snapshot, library)
+        return self.supplement()
+
+    def supplement(self):
+        service = self.source / 're-shijuanbao-service'
         survey = self.source / 'education-app-survey'
         for project in ['education-app-survey', 're-shijuanbao-service', 're-shijuan-lite']:
             root = self.source / project
@@ -187,18 +191,20 @@ class Migration:
             self.tree(root / 'evidence', f'research/{project}/evidence')
         self.tree(survey / 'local/round2/library', 'research/education-app-survey/library')
         self.tree(survey / 'local/round2/extracted', 'research/education-app-survey/extracted')
+        # Keep relative links in public offline research pages usable. Captured headers and
+        # JSON request/session material are deliberately excluded from this page/media tree.
+        self.tree(survey / 'local/round2/http', 'research/education-app-survey/http',
+                  {'.html', '.htm', '.css', '.js', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.pdf', '.woff', '.woff2'})
         for file in (survey / 'local/round2').glob('*'):
             if file.is_file() and file.suffix in {'.json', '.txt', '.jpg'}:
                 self.copy(file, 'research/education-app-survey/catalogs/' + file.name)
-        for name in ['paper_content.py', 'native_processing.py', 'native_papers.py',
-                     'native_documents.py', 'pdf_render.py', 'requirements.txt']:
-            p = service / 'server' / name
-            if p.is_file():
-                self.copy(p, 'tools/shijuanbao/' + name)
+        self.tree(service / 'server', 'tools/shijuanbao', {'.py', '.txt', '.toml'})
+        self.tree(service / 'local/models', 'models/re-shijuanbao-service/local/models',
+                  {'.onnx', '.tflite', '.param', '.bin', '.safetensors', '.json', '.txt', '.model', '.md'})
         # Models and model-side vocabulary/configuration are preserved as assets, never auto-executed.
         for root in [service / 'local', self.source / 're-shijuan-lite/local']:
             for directory, folders, files in os.walk(root):
-                folders[:] = [n for n in folders if n not in {'media', 'pdfs', 'node_modules', '.git', '__pycache__'}]
+                folders[:] = [n for n in folders if n not in {'media', 'pdfs', 'node_modules', '.git', '__pycache__', 'fidelity-clean'}]
                 for name in files:
                     if Path(name).suffix.lower() in {'.onnx', '.tflite', '.param', '.bin'}:
                         p = Path(directory) / name
@@ -209,17 +215,26 @@ class Migration:
         return errors
 
     def verify(self):
-        errors = []
-        for relative, checksum in self.manifest.execute("SELECT path,sha256 FROM files WHERE state='verified'"):
+        errors = [relative for relative, in self.manifest.execute("SELECT path FROM files WHERE state!='verified'")]
+        checked = 0
+        def check(row):
+            relative, checksum = row
             p = self.target / relative
-            if not p.is_file() or digest(p) != checksum:
-                errors.append(relative)
-            self.status('independent-verification', current=relative, errors=len(errors))
+            try:
+                return relative if not p.is_file() or digest(p) != checksum else None
+            except OSError:
+                return relative
+        with ThreadPoolExecutor(max_workers=8) as executor:
+            cursor = self.manifest.execute("SELECT path,sha256 FROM files WHERE state='verified'")
+            while batch := cursor.fetchmany(1000):
+                errors.extend(result for result in executor.map(check, batch) if result)
+                checked += len(batch)
+                self.status('independent-verification', checkedFiles=checked, errors=len(errors))
         for relative, checksum in self.manifest.execute('SELECT path,sha256 FROM snapshots'):
-            if digest(self.target / relative) != checksum:
+            if not (self.target / relative).is_file() or digest(self.target / relative) != checksum:
                 errors.append(relative)
         (self.target / 'verification.json').write_text(json.dumps(
-            {'verifiedAt': now(), 'errors': errors, 'complete': not errors}, ensure_ascii=False, indent=2), encoding='utf-8')
+            {'verifiedAt': now(), 'checkedFiles': checked, 'errors': errors, 'complete': not errors}, ensure_ascii=False, indent=2), encoding='utf-8')
         self.status('verification-completed', errors=len(errors), force=True)
         return len(errors)
 
@@ -229,6 +244,7 @@ if __name__ == '__main__':
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--target', type=Path, default=Path('data/assets'))
     parser.add_argument('--verify', action='store_true')
+    parser.add_argument('--supplement', action='store_true')
     args = parser.parse_args()
     migration = Migration(args.source, args.target)
-    raise SystemExit(1 if (migration.verify() if args.verify else migration.run()) else 0)
+    raise SystemExit(1 if (migration.verify() if args.verify else migration.supplement() if args.supplement else migration.run()) else 0)

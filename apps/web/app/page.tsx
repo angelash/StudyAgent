@@ -19,6 +19,9 @@ export default function HomePage() {
       </p>
 
       <div style={{ marginTop: 24 }}>
+        <a href="/student/assessment" style={{ ...linkStyle, background: '#183e35' }}>
+          知识诊断与指导计划
+        </a>
         <a href="/parent/login" style={linkStyle}>
           家长/管理员登录
         </a>

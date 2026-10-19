@@ -14,9 +14,11 @@ import { ProgressModule } from './modules/progress/progress.module';
 import { PlansModule } from './modules/plans/plans.module';
 import { QuestionWorkspaceModule } from './modules/question-workspace/question-workspace.module';
 import { StoreContextMiddleware } from './infrastructure/store-context.middleware';
+import { DiagnosticsModule } from './modules/diagnostics/diagnostics.module';
+import { LibraryModule } from './modules/library/library.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule, DiagnosticsModule, LibraryModule],
   providers: [
     {
       provide: APP_FILTER,

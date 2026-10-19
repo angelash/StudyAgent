@@ -1,4 +1,5 @@
-import { Body, Controller, ForbiddenException, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
+import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { Question } from '@study-agent/contracts';
 import { AiService } from './ai.service';
@@ -37,12 +38,14 @@ export class AiController {
   }
 
   @Post('assistant/sessions/:sessionId/messages')
-  chat(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: { message: string }) {
+  async chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response,
+    @Param('sessionId') sessionId: string, @Body() body: { message: string }) {
     this.aiService.assertSessionOwner(sessionId, req.user);
-    return this.aiService.chat({
-      sessionId,
-      message: body.message,
-    });
+    const controller = new AbortController();
+    const abort = () => { if (!response.writableEnded) controller.abort(); };
+    response.on('close', abort);
+    try { return await this.aiService.chat({ sessionId, message: body.message, signal: controller.signal }); }
+    finally { response.off('close', abort); }
   }
 
   @Get('assistant/sessions/:sessionId/messages')

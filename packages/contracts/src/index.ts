@@ -1,4 +1,5 @@
 import { z } from 'zod';
+export * from './diagnostics';
 
 export const subjectSchema = z.enum(['chinese', 'math', 'english']);
 export type Subject = z.infer<typeof subjectSchema>;
@@ -675,7 +676,7 @@ export const aiAnalysisResponseSchema = z.object({
   structuredResult: z.record(z.any()),
   confidenceLevel: z.enum(['low', 'medium', 'high']),
   reviewRequired: z.boolean(),
-  source: z.enum(['openai']),
+  source: z.enum(['openai', 'rules']),
 });
 
 export type AIAnalysisResponse = z.infer<typeof aiAnalysisResponseSchema>;

@@ -1,4 +1,4 @@
-import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor, StreamableFile } from '@nestjs/common';
 import { Observable, from, lastValueFrom } from 'rxjs';
 import { InMemoryStoreService } from '../infrastructure/in-memory-store.service';
 
@@ -11,6 +11,7 @@ export class ApiResponseInterceptor<T> implements NestInterceptor<T, unknown> {
     return from((async () => {
       const data = await lastValueFrom(next.handle());
       await this.store.commitRequest();
+      if (data instanceof StreamableFile) return data;
       return {
         data,
         error: null,

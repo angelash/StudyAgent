@@ -351,7 +351,7 @@ export default function AdminContentPage() {
       const currentUser = getCurrentUser<User>();
       const token = getAuthToken();
 
-      if (!currentUser || currentUser.role !== 'admin' || !token) {
+      if (!currentUser || currentUser.role !== 'admin') {
         setImportJobs([]);
         setSelectedImportJobId('');
         setImportRecords([]);

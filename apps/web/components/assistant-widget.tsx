@@ -26,6 +26,11 @@ export function AssistantWidget(props: AssistantWidgetProps) {
   const [input, setInput] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
   const [sending, setSending] = React.useState(false);
+  const pending = React.useRef<AbortController | null>(null);
+  React.useEffect(() => {
+    pending.current?.abort(); setSessionId(null); setMessages([]); setInput(''); setError(null); setSending(false);
+    return () => pending.current?.abort();
+  }, [props.studentId, props.subject, props.pageContext, props.userRole]);
 
   async function ensureSession() {
     if (sessionId) {
@@ -58,11 +63,13 @@ export function AssistantWidget(props: AssistantWidgetProps) {
       setError(null);
       setOpen(true);
       setSending(true);
+      const controller = new AbortController(); pending.current = controller;
       const ensuredSessionId = await ensureSession();
       const response = await apiRequest<{ reply: string; messages: AssistantMessage[] }>(
         `/ai/assistant/sessions/${ensuredSessionId}/messages`,
         {
           method: 'POST',
+          signal: controller.signal,
           body: JSON.stringify({
             message: input.trim(),
           }),
@@ -73,10 +80,10 @@ export function AssistantWidget(props: AssistantWidgetProps) {
       setMessages(response.messages);
       setInput('');
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '助教暂时不可用');
+      setError(caught instanceof Error && caught.name === 'AbortError' ? '已取消本次生成，可以继续修改问题。' : caught instanceof Error ? caught.message : '助教暂时不可用');
       setOpen(true);
     } finally {
-      setSending(false);
+      pending.current = null; setSending(false);
     }
   }
 
@@ -129,6 +136,8 @@ export function AssistantWidget(props: AssistantWidgetProps) {
           onChange={(event) => setInput(event.target.value)}
           rows={4}
           placeholder="输入你的问题..."
+          aria-label="向学习助教提问"
+          maxLength={3000}
           disabled={sending}
           style={{ borderRadius: 12, border: '1px solid #cbd5e1', padding: 10 }}
         />
@@ -146,6 +155,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
         >
           {sending ? '发送中...' : '发送'}
         </button>
+        {sending && <button onClick={() => pending.current?.abort()}>取消本次生成</button>}
       </div>
     </AssistantDock>
   );

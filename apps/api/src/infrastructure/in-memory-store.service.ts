@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
 import { DomainDatabase, DomainState, StateSnapshot } from './domain-database';
+import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
 import {
   AIAnalysisResponse,
   QuestionAnswerSchema,
@@ -21,6 +22,8 @@ import {
   SubjectEnrollment,
   TextbookVolume,
   UserRole,
+  KnowledgeAtom, LearningScope, MeasurementItem, DiagnosticSession, DiagnosticResponse,
+  DiagnosticHypothesis, DiagnosticGuidancePlan, ReviewTask, ScoringRevision, DiagnosticReport,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -184,6 +187,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   get persistence() { return { driver: this.database?.driver ?? 'memory', durable: Boolean(this.database) }; }
   async onModuleDestroy() { await this.database?.close(); }
   users: InMemoryUserAccount[] = [];
+  paperPublications: PaperPublication[] = [];
+  libraryBookmarks: LibraryBookmark[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -209,6 +214,18 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantMessages: AssistantMessage[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];
+  knowledgeAtoms: KnowledgeAtom[] = [];
+  learningScopes: LearningScope[] = [];
+  measurementItems: MeasurementItem[] = [];
+  diagnosticSessions: DiagnosticSession[] = [];
+  diagnosticResponses: DiagnosticResponse[] = [];
+  diagnosticHypotheses: DiagnosticHypothesis[] = [];
+  diagnosticPlans: DiagnosticGuidancePlan[] = [];
+  reviewTasks: ReviewTask[] = [];
+  scoringRevisions: ScoringRevision[] = [];
+  diagnosticHints: Array<{ id: string; sessionId: string; itemId: string; level: number; at: string }> = [];
+  diagnosticReports: Array<{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport }> = [];
+  diagnosticDrafts: Array<{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string }> = [];
 
   nextId(prefix: string): string {
     return `${prefix}_${randomUUID()}`;
@@ -217,6 +234,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   reset() {
     if (this.database) throw new Error('reset is only available in isolated memory tests');
     this.users = [];
+    this.paperPublications = [];
+    this.libraryBookmarks = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];
@@ -242,5 +261,17 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantMessages = [];
     this.aiInsights = [];
     this.events = [];
+    this.knowledgeAtoms = [];
+    this.learningScopes = [];
+    this.measurementItems = [];
+    this.diagnosticSessions = [];
+    this.diagnosticResponses = [];
+    this.diagnosticHypotheses = [];
+    this.diagnosticPlans = [];
+    this.reviewTasks = [];
+    this.scoringRevisions = [];
+    this.diagnosticHints = [];
+    this.diagnosticReports = [];
+    this.diagnosticDrafts = [];
   }
 }
