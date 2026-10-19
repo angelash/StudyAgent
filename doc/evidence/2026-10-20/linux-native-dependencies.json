@@ -1,0 +1,19 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "packages": {
+    "PyMuPDF": "1.28.2",
+    "Pillow": "12.3.0",
+    "rapidocr-onnxruntime": "1.4.4",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.4",
+    "torch": "2.14.1+cpu",
+    "transformers": "4.57.6",
+    "safetensors": "0.8.0"
+  },
+  "node": "24.19.0",
+  "npm": "11.17.0",
+  "nginx": "1.24.0-2ubuntu7.18",
+  "postgres": "16.15-0ubuntu0.24.04.1",
+  "scope": "Native isolated venv and downloaded nginx; existing Ubuntu PostgreSQL executable used only for a new owned cluster. No global dependency changes."
+}

@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-19T18:52:48Z",
+  "passed": true,
+  "scope": "systemd 255 parses production service templates with QA substitutions for user, executable, application, env-file and writable directories. No units installed or started.",
+  "exitCode": 0,
+  "services": [
+    {
+      "file": "studyagent-api.service",
+      "sourceSha256": "541c0bccbf64be3789966f461357a6ff6f67b9c1cabf4e784850241e1f1c05e5"
+    },
+    {
+      "file": "studyagent-web.service",
+      "sourceSha256": "b626fd318fc3992e1f3bf299845bce4414adeb197679d6aafab54b2285e3ce9b"
+    },
+    {
+      "file": "studyagent-worker.service",
+      "sourceSha256": "8e9ffac4e7807909498bbac5111d5e4ca0ccee65400f7372ef7ccaa2c41832ae"
+    }
+  ],
+  "diagnostics": ""
+}

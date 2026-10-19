@@ -13,9 +13,10 @@ import request from 'supertest';
 const require = createRequire(__filename);
 describe('indexed local paper library, review and authenticated media', () => {
   let app: INestApplication, root: string, token: string, adminToken: string;
+  const originalAssetRoot = process.env.STUDY_ASSET_ROOT;
   const imageUrl = 'https://source.example/picture.png', foreignUrl = 'https://source.example/foreign.png';
   beforeAll(async () => {
-    root = mkdtempSync(join(tmpdir(), 'study-library-')); process.env.STUDY_ASSETS_DIR = root;
+    root = mkdtempSync(join(tmpdir(), 'study-library-')); process.env.STUDY_ASSET_ROOT = root;
     mkdirSync(join(root, 'shijuanbao/media'), { recursive: true });
     writeFileSync(join(root, 'shijuanbao/media/picture.png'), 'fixture-image-content');
     const hash = createHash('sha256').update('fixture-image-content').digest('hex');
@@ -53,7 +54,7 @@ describe('indexed local paper library, review and authenticated media', () => {
     app.get(InMemoryStoreService).users.find((user: { id: string }) => user.id === admin.user.id).role = 'admin';
     adminToken = admin.token;
   });
-  afterAll(async () => { await app?.close(); delete process.env.STUDY_ASSETS_DIR; rmSync(root, { recursive: true, force: true }); });
+  afterAll(async () => { await app?.close(); if (originalAssetRoot === undefined) delete process.env.STUDY_ASSET_ROOT; else process.env.STUDY_ASSET_ROOT = originalAssetRoot; rmSync(root, { recursive: true, force: true }); });
   const get = (path: string, privileged = false) => request(app.getHttpServer()).get(`/api/library${path}`).set('Authorization', `Bearer ${privileged ? adminToken : token}`);
   const publication = (id: string, status = 'published') => request(app.getHttpServer()).post(`/api/library/papers/${id}/publication`)
     .set('Authorization', `Bearer ${adminToken}`).send({ status, licenseEvidence: '测试资料为原创构造，仅供集成测试使用', contentReviewed: true, mediaReviewed: true, reason: '测试完整审核并记录版本历史' });

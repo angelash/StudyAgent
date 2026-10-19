@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-10-19T18:50:10Z",
+  "passed": true,
+  "scope": "Real preserved handwriting and offline explanation model execution. Output hashes and manual-review flags; no teaching accuracy acceptance.",
+  "models": [
+    {
+      "mode": "handwriting",
+      "model": "preserved-handwriting-int8",
+      "seconds": 1.47,
+      "resultSha256": "4d160a7e0b0abd0cecd3f0209c4960af39d690ab3f82b53cb13c5bff8716654d",
+      "reviewRequired": true,
+      "verifiedCorrect": false,
+      "imageSha256": "33c01722fe202697f6e38189f86aeb31ef618aa33a1e6d3df715a2cdc1a4c00e",
+      "imageBytes": 87329
+    },
+    {
+      "mode": "local_explain",
+      "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+      "seconds": 23.73,
+      "resultSha256": "dbedce74e7cbde6266f6a2069b9cafc1ce82e157be43e7b04a60b4fa59536f79",
+      "reviewRequired": true,
+      "verifiedCorrect": false,
+      "promptVersion": "import-review-v1",
+      "outputCharacters": 207
+    }
+  ],
+  "completedAt": "2026-10-19T18:50:47Z"
+}

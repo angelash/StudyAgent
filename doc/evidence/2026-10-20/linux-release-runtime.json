@@ -1,0 +1,105 @@
+{
+  "startedAt": "2026-10-19T18:48:43Z",
+  "passed": true,
+  "scope": "Fresh Linux source install, tests and local production HTTP assets. No browser acceptance.",
+  "release": {
+    "format": "study-agent-source-release-v1",
+    "createdAt": "2026-10-19T18:48:40.883862+00:00",
+    "commit": "4e91cbe93f13010121decbfa61b657b91b1cccf0",
+    "fileCount": 389,
+    "sourceBytes": 5513603,
+    "archiveBytes": 2888235,
+    "archiveSha256": "67adb9da0ec8c53bac50a6087fe43c099b43d00642882cab20c2177b564d07e1",
+    "dirtyTracked": [
+      ".env.example",
+      "apps/api/src/app.integration.test.ts",
+      "apps/api/src/main.ts",
+      "apps/api/src/modules/library/library.integration.test.ts",
+      "apps/web/app/admin/content/page.tsx",
+      "packages/config/src/index.ts"
+    ],
+    "scope": "Private source release. Excludes .env, local business data, recovered assets and node_modules; assets are restored separately."
+  },
+  "steps": [
+    {
+      "name": "tool_versions",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/tool_versions.log",
+      "exitCode": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "native_python",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/native_python.log",
+      "exitCode": 0,
+      "seconds": 2.07
+    },
+    {
+      "name": "ffmpeg_version",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/ffmpeg_version.log",
+      "exitCode": 0,
+      "seconds": 0.06
+    },
+    {
+      "name": "ffprobe_version",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/ffprobe_version.log",
+      "exitCode": 0,
+      "seconds": 0.06
+    },
+    {
+      "name": "npm_ci",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/npm_ci.log",
+      "exitCode": 0,
+      "seconds": 11.18
+    },
+    {
+      "name": "npm_audit",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/npm_audit.log",
+      "exitCode": 0,
+      "seconds": 0.52
+    },
+    {
+      "name": "build",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/build.log",
+      "exitCode": 0,
+      "seconds": 27.69
+    },
+    {
+      "name": "lint",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/lint.log",
+      "exitCode": 0,
+      "seconds": 7.28
+    },
+    {
+      "name": "tests",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/tests.log",
+      "exitCode": 0,
+      "seconds": 46.04
+    },
+    {
+      "name": "production_operations",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/production_operations.log",
+      "exitCode": 0,
+      "seconds": 5.84
+    },
+    {
+      "name": "production_web_assets",
+      "state": "passed",
+      "log": "/tmp/studyagent-linux-qa-20261020-01/application03-logs/production_web_assets.log",
+      "exitCode": 0,
+      "seconds": 0.37
+    }
+  ],
+  "platform": "Linux 6.6.87.2-microsoft-standard-WSL2",
+  "application": "/tmp/studyagent-linux-qa-20261020-01/application03",
+  "completedAt": "2026-10-19T18:50:28Z"
+}

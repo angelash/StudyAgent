@@ -1,0 +1,45 @@
+{
+  "startedAt": "2026-10-19T18:47:10Z",
+  "passed": true,
+  "scope": "Owned local Ubuntu PostgreSQL, separate API/worker and Next production processes behind nginx TLS. Synthetic accounts, real migrated assets. HTTP only; no browser or installed-systemd acceptance.",
+  "checks": [
+    {
+      "name": "isolated_postgres_application_role",
+      "passed": true
+    },
+    {
+      "name": "same_origin_tls_secure_cookie_and_protected_login",
+      "passed": true,
+      "nginxConfigSha256": "36b4fa3dfdfbc12ad948cb90eee2457484723d5f948c0354f88a1296d148a91d"
+    },
+    {
+      "name": "postgres_learning_scope_assessment_report_plan_training_and_isolation",
+      "passed": true
+    },
+    {
+      "name": "nginx_four_mebibyte_upload_ranges_and_durable_queue",
+      "passed": true,
+      "uploadBytes": 4548103,
+      "chunkBytes": 4194304
+    },
+    {
+      "name": "api_restart_cookie_draft_queue_recovery_and_separate_native_ocr_worker",
+      "passed": true,
+      "pages": 2,
+      "candidates": 10
+    },
+    {
+      "name": "migrated_paper_catalogue_and_research_access_boundary",
+      "passed": true
+    },
+    {
+      "name": "production_web_scripts_stylesheets_and_fonts_through_tls_proxy",
+      "passed": true
+    }
+  ],
+  "directory": "/tmp/studyagent-linux-qa-20261020-01/deployment01",
+  "application": "/tmp/studyagent-linux-qa-20261020-01/application02",
+  "origin": "https://127.0.0.1:38919",
+  "completedAt": "2026-10-19T18:47:42Z",
+  "ownedProcessesStopped": true
+}

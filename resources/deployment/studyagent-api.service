@@ -1,0 +1,28 @@
+[Unit]
+Description=StudyAgent learning API
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=studyagent
+Group=studyagent
+WorkingDirectory=/opt/studyagent/current
+EnvironmentFile=/etc/studyagent/application.env
+Environment=STUDY_WORKER_ENABLED=false
+ExecStart=/opt/studyagent/node/bin/node apps/api/dist/apps/api/src/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=120
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/studyagent
+
+[Install]
+WantedBy=multi-user.target

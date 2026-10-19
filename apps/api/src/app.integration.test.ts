@@ -31,12 +31,22 @@ describe('StudyAgent API integration', () => {
   const originalOpenAiApiKey = process.env.OPENAI_API_KEY;
   const originalOpenAiBaseUrl = process.env.OPENAI_BASE_URL;
   const originalDataDir = process.env.STUDY_DATA_DIR;
+  const originalTextbookBase = process.env.TEXTBOOK_BASE_PATH;
   const processingRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'study-processing-integration-'));
 
   beforeAll(async () => {
     delete process.env.OPENAI_API_KEY;
     delete process.env.OPENAI_BASE_URL;
     process.env.STUDY_DATA_DIR = path.join(processingRoot, 'data');
+    // The integration suite must not depend on the developer's E: drive or
+    // import real teaching files. These synthetic PDFs exercise the legacy
+    // directory importer; atomic curriculum coverage is tested separately.
+    process.env.TEXTBOOK_BASE_PATH = path.join(processingRoot, 'textbooks');
+    for (const name of ['数学', '语文', '英语']) {
+      const directory = path.join(process.env.TEXTBOOK_BASE_PATH, '小学', name, '原创集成测试版本');
+      fs.mkdirSync(directory, { recursive: true });
+      for (const term of ['上册', '下册']) fs.writeFileSync(path.join(directory, `三年级${term}.pdf`), buildSimplePdf('Synthetic integration fixture. Not a real textbook.'));
+    }
     const { AppModule } = require('../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     app = await NestFactory.create(AppModule, { logger: false });
@@ -56,6 +66,7 @@ describe('StudyAgent API integration', () => {
     }
     fs.rmSync(processingRoot, { recursive: true, force: true });
     if (originalDataDir === undefined) delete process.env.STUDY_DATA_DIR; else process.env.STUDY_DATA_DIR = originalDataDir;
+    if (originalTextbookBase === undefined) delete process.env.TEXTBOOK_BASE_PATH; else process.env.TEXTBOOK_BASE_PATH = originalTextbookBase;
     if (originalOpenAiApiKey) {
       process.env.OPENAI_API_KEY = originalOpenAiApiKey;
     }

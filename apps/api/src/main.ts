@@ -15,7 +15,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
   app.enableShutdownHooks();
-  await app.listen(port);
+  await app.listen(port, env.API_HOST);
 }
 
 void bootstrap();

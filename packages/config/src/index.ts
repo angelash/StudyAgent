@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
 export const apiEnvSchema = z.object({
-  API_PORT: z.coerce.number().optional(),
-  PORT: z.coerce.number().default(4000),
+  API_PORT: z.coerce.number().int().min(1).max(65535).optional(),
+  API_HOST: z.string().trim().min(1).default('127.0.0.1'),
+  PORT: z.coerce.number().int().min(1).max(65535).default(4000),
   DATABASE_URL: z.string().default('postgresql://user:password@localhost:5432/study_agent'),
   OPENAI_API_KEY: z.string().optional(),
   OPENAI_BASE_URL: z.string().default('https://api.openai.com/v1'),
