@@ -14,6 +14,8 @@ delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { AuthService } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
+const { buildFoundationCurriculum } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
+const authoredTasks = buildFoundationCurriculum().reduce((sum, definition) => sum + definition.exercises.length, 0);
 const summary = samples => {
   const sorted = [...samples].sort((a, b) => a - b);
   return { samples: sorted.length, p50Ms: +sorted[Math.ceil(sorted.length * .5) - 1].toFixed(2), p95Ms: +sorted[Math.ceil(sorted.length * .95) - 1].toFixed(2), maxMs: +sorted.at(-1).toFixed(2) };
@@ -31,7 +33,7 @@ async function main() {
         store.bindings.push({ id: `synthetic-binding-${index}`, parentUserId: parentId, studentId: id, relation: 'guardian', status: 'active' });
       }
       for (let index = 0; index < 20000; index++) store.diagnosticResponses.push({ id: `synthetic-evidence-${index}`, studentId: `synthetic-child-${index % 1000}`,
-        sessionId: `synthetic-session-${index % 2000}`, questionId: `synthetic-question-${index % 3435}`, score: 0.5, createdAt: '2026-10-01T00:00:00.000Z',
+        sessionId: `synthetic-session-${index % 2000}`, questionId: `synthetic-question-${index % authoredTasks}`, score: 0.5, createdAt: '2026-10-01T00:00:00.000Z',
         benchmarkPayload: '仅作存储规模与隔离验证的合成证据。'.repeat(28) });
     });
     const routes = ['/auth/me', '/learning/students', '/diagnostics/curriculum?subject=math&grade=3'];
@@ -51,14 +53,16 @@ async function main() {
     const concurrent = [];
     for (let round = 0; round < 4; round++) concurrent.push(...await Promise.all(Array.from({ length: 8 }, () => sample('/auth/me'))));
     metrics.push({ route: '/auth/me', mode: '8 concurrent requests', ...summary(concurrent) });
-    const data = { at: new Date().toISOString(), label, passed: true, scope: 'Synthetic warm local HTTP reads; no production-load, write-contention or browser acceptance claim',
+    const withinTarget = metrics.every(row => row.p95Ms < 500);
+    const data = { at: new Date().toISOString(), label, passed: withinTarget, p95TargetMs: 500, scope: 'Synthetic warm local HTTP reads; no production-load, write-contention or browser acceptance claim',
       runtime: { node: process.version, platform: process.platform, arch: process.arch, cpu: os.cpus()[0]?.model, logicalCpus: os.cpus().length, memoryBytes: os.totalmem() },
-      fixture: { families: 1000, evidenceRecords: 20000, originalTasks: 3435, sqliteBytes: fs.statSync(path.join(directory, 'study-agent.sqlite3')).size },
+      fixture: { families: 1000, evidenceRecords: 20000, originalTasks: authoredTasks, sqliteBytes: fs.statSync(path.join(directory, 'study-agent.sqlite3')).size },
       metrics, storage: store.storageDiagnostics ?? null,
       eventLoop: { p95Ms: +(delay.percentile(95) / 1e6).toFixed(2), maxMs: +(delay.max / 1e6).toFixed(2) },
       memory: process.memoryUsage() };
     fs.mkdirSync(path.dirname(evidencePath), { recursive: true }); fs.writeFileSync(evidencePath, JSON.stringify(data, null, 2) + '\n');
     console.log(JSON.stringify({ label, metrics, storage: data.storage }));
+    if (!withinTarget) throw new Error('Local p95 sample exceeded the 500ms reference target');
   } finally {
     delay.disable(); await app.close();
     const target = path.resolve(directory), tempRoot = path.resolve(os.tmpdir()) + path.sep;

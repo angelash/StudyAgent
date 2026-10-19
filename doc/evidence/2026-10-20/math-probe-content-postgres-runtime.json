@@ -1,0 +1,120 @@
+{
+  "at": "2026-10-19T22:16:18.935Z",
+  "driver": "postgres",
+  "passed": true,
+  "scope": "Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Four selected math points now cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.",
+  "sourceSha256": {
+    "packages/contracts/src/diagnostics.ts": "4305654198e36f8948b0f38c1bea3d509751eddb71b627b45117ba8604ec47ed",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d28907502f8079c3af38df250e45496912faee913f36a6be3f66fd75671ce135",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "72f077ceefdb91491a42962d9a3a58f193e5a07b2780f18b5ca473fca4bad8e6",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "eb82022131e7e9eb5b4ed29a39304bdcb65385fd1475e8a77f33f6edc97e5d85",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "8fbbc5620897838c62e004e45d0f59b0937f6e951c0df3bfcd57a501a2b48756",
+    "apps/web/app/student/assessment/studio.tsx": "4b95008e25f479c69d91abe6e2cfbe077f20fda7aa5cb4e1dee685b48aa0fee9",
+    "apps/web/components/assessment-blueprint.tsx": "251d9005deda36d45dfeb6fbf8416f7cd3f9460d5f3d1fddf1277bc1eeac3771",
+    "apps/web/components/verification-observations.tsx": "dfd2da153c419391851bf9eeb77cee0b452072e010ea3120a7a81e85f9b601d9",
+    "apps/web/components/verification-observations.css": "d702e472486f038e64d5f6154dceefc618870354ab04001f8abdc8a312c4a0cf",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "bf7e57d19c41155bc7ce6416033f1dfa25e5286d267c7c4b227d5fbb0bd72151",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "19324f14bd7f1af5594eed7fc185bc9b958d44dbafd7cbfca5874f65293dbadf",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "73ed0175d8ce03ef7b0ff94fc70318c36286c3812e44ecc8ca41de9c56490890",
+    "scripts/qa/verify-verification-groups.cjs": "eae12484cf2c1a7cb9674710ec994165c4a4cd9de63e69abb59f0b4878133e5b"
+  },
+  "contentUpgrade": {
+    "originalCollections": {
+      "questions": {
+        "count": 3435,
+        "sha256": "373728f40d827429e30cc1d06602c637a4c6d185d5c9292ef699b5d96285e6ab"
+      },
+      "questionDocuments": {
+        "count": 3435,
+        "sha256": "f6fcc8bce2d27e74c4ad379f7c5aae34e2f6701470d51a90cb6ca7278c43f5b7"
+      },
+      "questionAnswerSchemas": {
+        "count": 3435,
+        "sha256": "2447311924d247826950e0689cda07f18b17c8c712d72b34e1f5af1fef942dbf"
+      },
+      "questionSources": {
+        "count": 3435,
+        "sha256": "06bc0f64503cd94435c21c61780eba45c1339a57b739aeb67e94c395a076090e"
+      },
+      "measurementItems": {
+        "count": 3435,
+        "sha256": "b34795b5e7cf163b79629105ce04f1cc6d6fc89a3d6d04afcf0acd2390149a5e"
+      }
+    },
+    "additions": 192,
+    "families": 16,
+    "existingEditsAndDraftMappingPreserved": true,
+    "newQuestionAndMappingAddedExactlyOnce": true,
+    "taskSpecificAnalysisRetained": true,
+    "restarts": 2
+  },
+  "pointJourneys": [
+    {
+      "atomId": "foundation:math:placevalue",
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    }
+  ],
+  "result": {
+    "previewItemCount": 4,
+    "requiredObservationGroups": 2,
+    "observationCoverage": [
+      {
+        "dimensions": [
+          "understanding",
+          "procedure"
+        ],
+        "availableFamilies": 3,
+        "selectedFamilies": 2
+      },
+      {
+        "dimensions": [
+          "transfer"
+        ],
+        "availableFamilies": 3,
+        "selectedFamilies": 2
+      }
+    ],
+    "targetAndAllDirectPrerequisitesCompared": true,
+    "learnerAuthorization": true,
+    "outsiderBlocked": true,
+    "concurrentStartStatuses": [
+      201,
+      201
+    ],
+    "frozenGroupsAndPauseSurviveRestart": true,
+    "hintedAnswerExcludedFromIndependentObservations": true,
+    "revisionUpdatesActualObservations": true,
+    "oldReportAndOriginalBlueprintFrozen": true,
+    "staleBasisPreviewRejected": true,
+    "completedPreviewReceiptReplayed": true,
+    "restarts": 5
+  }
+}

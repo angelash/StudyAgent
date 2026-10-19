@@ -1,0 +1,6151 @@
+{
+  "at": "2026-10-19T22:15:00.725Z",
+  "passed": true,
+  "scope": "All 256 currently authored original knowledge definitions. Teaching completeness is structural and point-level; it is not complete textbook alignment, human field validation or standardized calibration.",
+  "totals": {
+    "points": 256,
+    "teaching": 256,
+    "missingTeaching": 0,
+    "originalExercises": 3627,
+    "pointsNeedingMoreMeasurementMaterials": 252
+  },
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "19324f14bd7f1af5594eed7fc185bc9b958d44dbafd7cbfca5874f65293dbadf",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "bf7e57d19c41155bc7ce6416033f1dfa25e5286d267c7c4b227d5fbb0bd72151",
+    "apps/api/src/modules/diagnostics/authored-teaching.ts": "75c2e93a9558d053c1c6752ef3187525ce17d7378c24dce758bef21912e50310",
+    "apps/api/src/modules/diagnostics/authored-math-teaching.ts": "23fac5b369549efe35b599d1733b490dd35e9b02daa64c91c01fa5cec5ff1a85",
+    "apps/api/src/modules/diagnostics/authored-chinese-teaching.ts": "2a42b9b7ad09212a0283b672550b9c719ca73130d7984f6a42de5e862807f2b2",
+    "apps/api/src/modules/diagnostics/authored-english-teaching.ts": "76437c2f0bf70547327761c78c96ea4d63094b470d612621b46d94812d7cfd42",
+    "apps/api/src/modules/diagnostics/teaching-author.ts": "c43cec970b0e6faca395d93a4bef536f38b57a5df2f8674a0d84e6e01ba6ee1b"
+  },
+  "authoredProbeFamilies": [
+    {
+      "atomId": "foundation:math:placevalue",
+      "family": "placevalue-regroup-units",
+      "dimension": "procedure",
+      "behavior": "把超过十个的一重新打包，保持总数",
+      "structure": "未规范的十和一组成 → 重新打包 → 数值",
+      "distinction": "原有组成题个位数量小于十；此组必须处理满十重新打包，不按输入中的十数直接抄写。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:placevalue",
+      "family": "placevalue-conservation-check",
+      "dimension": "understanding",
+      "behavior": "辨别位值与数字相加的混淆",
+      "structure": "检查表示等式 → 判断数量是否守恒",
+      "distinction": "此组核对一个表示是否成立，不是读取某一数位或直接组成一个数。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:placevalue",
+      "family": "placevalue-inventory-inverse",
+      "dimension": "transfer",
+      "behavior": "从十进包装记录反推整包数",
+      "structure": "实际数量与散件表 → 识别十进包装单位 → 反推整包数",
+      "distinction": "原有题直接给出数位；这里从包装制度和库存记录提取单位，反向恢复数量组成。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:placevalue",
+      "family": "placevalue-permutation-tracking",
+      "dimension": "transfer",
+      "behavior": "位置交换后追踪同一数字表示的数量",
+      "structure": "数字卡换位 → 追踪一个数字的原值与新值",
+      "distinction": "同时看两个数并追踪同一数字的计数单位，不是另问一次十位或个位数字。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "family": "borrow-decision-rule-audit",
+      "dimension": "understanding",
+      "behavior": "区分整数量大小与本位是否够减",
+      "structure": "两个减法反例 → 选择正确的局部判断依据",
+      "distinction": "核对判断规则，并用十位大小相同但个位条件不同的反例排除整数量误判。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "family": "borrow-decision-construct-condition",
+      "dimension": "procedure",
+      "behavior": "根据退位要求确定未知个位的边界",
+      "structure": "给出需要退位的约束 → 构造满足约束的最大个位",
+      "distinction": "已知条件反向求可用数字，需要应用“小于”关系，不能只给一个已有算式贴标签。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "family": "borrow-decision-loose-pieces",
+      "dimension": "transfer",
+      "behavior": "从捆和散根的实物状态判断是否要拆捆",
+      "structure": "十根一捆的实物清单 → 本位需求 → 拆捆决策",
+      "distinction": "先把实物包装识别为十和一，再判断拿散根是否够，改变了符号算式的表示。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "family": "borrow-decision-work-check",
+      "dimension": "transfer",
+      "behavior": "复核解题者使用的退位判断理由",
+      "structure": "给出他人的判断过程 → 找出整数量与个位条件是否冲突",
+      "distinction": "核对一个真实的中间决策及其理由，不要求算出整道减法，避免把减法结果当成判断证据。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "family": "borrow-exchange-balanced-parts",
+      "dimension": "procedure",
+      "behavior": "同时更新被退的十位与增加的个位",
+      "structure": "退一次十 → 联动记录两个计数单位",
+      "distinction": "原有单空只问个位；此组同时记录两个位置，观察是否减少十位并增加十个一。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "family": "borrow-exchange-conservation-audit",
+      "dimension": "understanding",
+      "behavior": "检查换算前后数量守恒",
+      "structure": "给出三个换算记录 → 排除只加不减或减错单位",
+      "distinction": "需要对比错误表示并识别守恒关系，不是照着“退1”在一个空内加10。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "family": "borrow-exchange-reverse-representation",
+      "dimension": "transfer",
+      "behavior": "从换算后的非标准表示还原换算前的状态",
+      "structure": "已知退位后表示 → 逆向追踪一次交换",
+      "distinction": "正向换算的逆问题，要求还原被改变的两个位置，不是换一个物品名称重复正向操作。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "family": "borrow-exchange-subtraction-equivalence",
+      "dimension": "transfer",
+      "behavior": "把退位表示带回减法并保持被减数不变",
+      "structure": "原减法 → 非标准十和一表示的等价减法",
+      "distinction": "从实物换算迁移到运算等价关系，区分换单位与改变被减数，不要求用整题得分代推该步骤。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "family": "multiply-digits-tens-contribution",
+      "dimension": "understanding",
+      "behavior": "解释十位部分积的计数单位",
+      "structure": "错误的数位分解 → 找到十位部分应贡献的数量",
+      "distinction": "原有算式只看最终乘积，此组直接核查把几个十当几个一的混淆。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "family": "multiply-digits-linked-partial-products",
+      "dimension": "procedure",
+      "behavior": "分别算部分积并合并，保留中间观察",
+      "structure": "数位分解 → 两个部分积 → 总积",
+      "distinction": "联动记录部分积与总积，能区分漏掉一个数位、部分积计算和合并，不只是再换一个总分输入框。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "family": "multiply-digits-split-array",
+      "dimension": "transfer",
+      "behavior": "把空间分区的每行数量转为部分积",
+      "structure": "左右分区阵列 → 共同的行数 → 合并两区覆盖数",
+      "distinction": "把分区阵列识别为两块共享行数的量，区别于每袋数量的单层文字题。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "family": "multiply-digits-group-model-selection",
+      "dimension": "transfer",
+      "behavior": "从复合包装情境选择同时作用于十和一的模型",
+      "structure": "每组十进包装与散件 → 多组复制 → 选择正确的分配模型",
+      "distinction": "题目问数量模型而非直接算答案；需要识别两部分都随组数重复，排除只复制散件或忽略计数单位。",
+      "questions": 12,
+      "note": "Authored task-structure distinction; no field calibration or statistical independence claim."
+    }
+  ],
+  "cells": [
+    {
+      "subject": "math",
+      "grade": 1,
+      "points": 16,
+      "authoredTeaching": 16,
+      "exercises": 355,
+      "pointsNeedingMoreMeasurementMaterials": 16
+    },
+    {
+      "subject": "math",
+      "grade": 2,
+      "points": 15,
+      "authoredTeaching": 15,
+      "exercises": 542,
+      "pointsNeedingMoreMeasurementMaterials": 12
+    },
+    {
+      "subject": "math",
+      "grade": 3,
+      "points": 16,
+      "authoredTeaching": 16,
+      "exercises": 442,
+      "pointsNeedingMoreMeasurementMaterials": 15
+    },
+    {
+      "subject": "math",
+      "grade": 4,
+      "points": 15,
+      "authoredTeaching": 15,
+      "exercises": 347,
+      "pointsNeedingMoreMeasurementMaterials": 15
+    },
+    {
+      "subject": "math",
+      "grade": 5,
+      "points": 19,
+      "authoredTeaching": 19,
+      "exercises": 435,
+      "pointsNeedingMoreMeasurementMaterials": 19
+    },
+    {
+      "subject": "math",
+      "grade": 6,
+      "points": 19,
+      "authoredTeaching": 19,
+      "exercises": 450,
+      "pointsNeedingMoreMeasurementMaterials": 19
+    },
+    {
+      "subject": "chinese",
+      "grade": 1,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "chinese",
+      "grade": 2,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "chinese",
+      "grade": 3,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "chinese",
+      "grade": 4,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "chinese",
+      "grade": 5,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "chinese",
+      "grade": 6,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 92,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 1,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 2,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 3,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 4,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 5,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    },
+    {
+      "subject": "english",
+      "grade": 6,
+      "points": 13,
+      "authoredTeaching": 13,
+      "exercises": 84,
+      "pointsNeedingMoreMeasurementMaterials": 13
+    }
+  ],
+  "points": [
+    {
+      "atomId": "foundation:math:decompose10",
+      "name": "10以内的数分解",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 30,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:add20",
+      "name": "20以内加法合并",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 48,
+      "families": 3,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:subtract20",
+      "name": "20以内减法求剩余",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 48,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:placevalue",
+      "name": "十进制位值换算",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 96,
+      "families": 6,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 1,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": []
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "name": "判断个位是否需要退位",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 88,
+      "families": 6,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 1,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": []
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "name": "退一作十的换算",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 96,
+      "families": 6,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 2,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": []
+    },
+    {
+      "atomId": "foundation:math:multiplytable",
+      "name": "乘法等组关系",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 3,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:divisiontable",
+      "name": "平均分与除法",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "name": "多位数乘一位数",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 72,
+      "families": 6,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 2,
+        "transfer": 3
+      },
+      "measurementMaterialGaps": []
+    },
+    {
+      "atomId": "foundation:math:divisiondigits",
+      "name": "多位数除以一位数",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:perimeter",
+      "name": "长方形周长的边界关系",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:multiplytwo",
+      "name": "两位数乘两位数",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:remainder",
+      "name": "余数与除数的约束",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 21,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:rectanglearea",
+      "name": "长方形面积的覆盖关系",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:decimalplace",
+      "name": "小数数位与位值",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:decimaladd",
+      "name": "小数加法数位对齐",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:fractionequivalence",
+      "name": "分数等值变换",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:fractionmultiply",
+      "name": "分数乘法与约分",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 22,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:percentage",
+      "name": "百分率与部分整体",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:math:ratio",
+      "name": "按比分配的份数关系",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g1-locate",
+      "name": "显式信息定位（1年级材料）",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g1-cause",
+      "name": "因果关系识别（1年级材料）",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g2-locate",
+      "name": "显式信息定位（2年级材料）",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g2-cause",
+      "name": "因果关系识别（2年级材料）",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g3-locate",
+      "name": "显式信息定位（3年级材料）",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g3-cause",
+      "name": "因果关系识别（3年级材料）",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g4-locate",
+      "name": "显式信息定位（4年级材料）",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g4-cause",
+      "name": "因果关系识别（4年级材料）",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g5-locate",
+      "name": "显式信息定位（5年级材料）",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g5-cause",
+      "name": "因果关系识别（5年级材料）",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g6-locate",
+      "name": "显式信息定位（6年级材料）",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:chinese:g6-cause",
+      "name": "因果关系识别（6年级材料）",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g1-meaning",
+      "name": "词形与词义联结（基础组1）",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g1-locate",
+      "name": "英语显式信息定位（基础组1）",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g2-meaning",
+      "name": "词形与词义联结（基础组2）",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g2-locate",
+      "name": "英语显式信息定位（基础组2）",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g3-meaning",
+      "name": "词形与词义联结（基础组3）",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g3-locate",
+      "name": "英语显式信息定位（基础组3）",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g4-meaning",
+      "name": "词形与词义联结（基础组4）",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g4-locate",
+      "name": "英语显式信息定位（基础组4）",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g5-meaning",
+      "name": "词形与词义联结（基础组5）",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g5-locate",
+      "name": "英语显式信息定位（基础组5）",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g6-meaning",
+      "name": "词形与词义联结（基础组6）",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "foundation:english:g6-locate",
+      "name": "英语显式信息定位（基础组6）",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 4,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing"
+      ]
+    },
+    {
+      "atomId": "core:math:count",
+      "name": "按一一对应计数",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 9,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:compare20",
+      "name": "20以内数量比较",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:ordinal",
+      "name": "位置序数与数量区分",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 20,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:neighbors",
+      "name": "相邻整数关系",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:tensones",
+      "name": "十和一的组成",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:complement10",
+      "name": "凑成十的补数",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 18,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:unknownadd",
+      "name": "由和求未知加数",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:difference",
+      "name": "两个数量的相差关系",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 8,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:mixed20",
+      "name": "20以内连加连减的顺序",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:planeshapes",
+      "name": "按边角特征识别平面图形",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 7,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:solidshapes",
+      "name": "按表面特征识别立体",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 3,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:wholehour",
+      "name": "整时的时针与分针",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 12,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:money10",
+      "name": "元角十进换算",
+      "subject": "math",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 16,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:carry100",
+      "name": "两位数加法满十进一",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:borrow100",
+      "name": "两位数退位减法",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:multiplymissing",
+      "name": "由积求未知因数",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:multiplerelation",
+      "name": "一个量是另一个的几倍",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:cmmeters",
+      "name": "米与厘米换算",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 21,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:minutes",
+      "name": "时与分的换算",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 10,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 2,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:clockminutes",
+      "name": "钟面分针格与分钟",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 11,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:counttable",
+      "name": "分类计数表读数",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:periodic",
+      "name": "重复排列的周期",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:directions4",
+      "name": "东南西北的相对方位",
+      "subject": "math",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:compare10000",
+      "name": "万以内整数位值比较",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:add1000",
+      "name": "三位数连续进位加法",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:subtract1000",
+      "name": "三位数连续退位减法",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:remainderdivision",
+      "name": "有余数除法求余数",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:mixedorder",
+      "name": "乘除先于加减",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 32,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 2,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:squareperimeter",
+      "name": "正方形周长",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:rectanglecover",
+      "name": "长方形面积",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 41,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:elapsedtime",
+      "name": "同日经过时间",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:mass",
+      "name": "千克与克换算",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 15,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 2,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:fractionunit",
+      "name": "单位分数与平均分",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 22,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:fractioncompare",
+      "name": "同分母分数比较",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 20,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:decimalvalue",
+      "name": "一位两位小数的位值",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:areaconvert",
+      "name": "相邻面积单位换算",
+      "subject": "math",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 2,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:bigplace",
+      "name": "大数的数级与位值",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:round1000",
+      "name": "四舍五入到千位",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:multiply3by2",
+      "name": "三位数乘两位数",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:divide2digit",
+      "name": "除数是两位数的整除",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:brackets",
+      "name": "带括号的四则顺序",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 2,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:distribute",
+      "name": "乘法分配律的对应因数",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:decimalcompare",
+      "name": "小数位值比较",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:decimalsubtract",
+      "name": "小数减法数位对齐",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:anglekind",
+      "name": "锐角直角钝角分类",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 14,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:triangleangles",
+      "name": "三角形内角和",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:average",
+      "name": "平均数的总量等分",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:chartdifference",
+      "name": "两组统计数量的差",
+      "subject": "math",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:decimalmultiply",
+      "name": "小数乘法小数位",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:decimaldivide",
+      "name": "除数为小数的等值变换",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:factor",
+      "name": "因数的整除条件",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:multiple",
+      "name": "求一个数的指定倍数",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:prime",
+      "name": "质数与合数的因数特征",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 20,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:gcd",
+      "name": "最大公因数",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:lcm",
+      "name": "最小公倍数",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:fractionadd",
+      "name": "异分母分数加法",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:fractionsubtract",
+      "name": "异分母分数减法",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 7,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:equation",
+      "name": "等式两边同加同减",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:trianglearea",
+      "name": "三角形面积的底高关系",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:parallelogramarea",
+      "name": "平行四边形面积",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:trapezoidarea",
+      "name": "梯形面积",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:cuboidvolume",
+      "name": "长方体体积",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:cuboidsurface",
+      "name": "长方体表面积",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:volumeconvert",
+      "name": "立方分米与立方厘米",
+      "subject": "math",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:fractiondivide",
+      "name": "分数除法转乘倒数",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 20,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:percentagerate",
+      "name": "由部分与整体求百分率",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:percentagewhole",
+      "name": "由部分和百分率求整体",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:ratioequivalent",
+      "name": "比的等值化简",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:proportion",
+      "name": "比例内外项关系",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:diameter",
+      "name": "圆直径与半径",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:circumference",
+      "name": "圆的周长",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:circlearea",
+      "name": "圆的面积",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:cylindervolume",
+      "name": "圆柱体积",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:cylinderlateral",
+      "name": "圆柱侧面积展开",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:conevolume",
+      "name": "圆锥与等底等高圆柱体积",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:scale",
+      "name": "比例尺与实际距离",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:speed",
+      "name": "路程速度时间关系",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 2
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:negativeorder",
+      "name": "负整数的顺序",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 2,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:sectorcount",
+      "name": "扇形百分比与频数",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:math:possibility",
+      "name": "等可能结果的数量比较",
+      "subject": "math",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 24,
+      "families": 1,
+      "dimensions": {
+        "understanding": 1,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:initial",
+      "name": "声母与韵母区分",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:tone",
+      "name": "拼音声调识别",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:radical",
+      "name": "常用偏旁辨认",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:structure",
+      "name": "左右与上下字形结构",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:antonym",
+      "name": "常用反义词关系",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:classifier",
+      "name": "常见名词量词搭配",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:questionmark",
+      "name": "疑问句末标点",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:person",
+      "name": "人物显式信息定位",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:eventorder",
+      "name": "两步事件先后",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:complete-sentence",
+      "name": "围绕人物写完整句",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:polyphone",
+      "name": "语境中多音字读音",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:homophone",
+      "name": "同音字按词义选字",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:synonym",
+      "name": "常用近义词语境",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:reduplication",
+      "name": "叠词形式辨认",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:because",
+      "name": "因为所以的因果配对",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:pronoun",
+      "name": "相邻句人称指代",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:timeword",
+      "name": "文本中的时间信息",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:listpunctuation",
+      "name": "并列词语的顿号",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:instruction",
+      "name": "两条件指令核对",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:sequence-writing",
+      "name": "用顺序词写两步经过",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "name": "结合上下文解释词义",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:simile",
+      "name": "比喻的本体与喻体",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "name": "拟人与普通动作区分",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:main-sentence",
+      "name": "总分段中的中心句",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "name": "从动作找到直接证据",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:classification",
+      "name": "概括同类词语",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:dialoguepunctuation",
+      "name": "提示语在前的引号冒号",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:factopinion",
+      "name": "可核查事实与感受",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:notice",
+      "name": "通知中的必要条件",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:paragraph-summary",
+      "name": "提炼人物事件结果",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:contrast",
+      "name": "转折关系与重点",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:reference-chain",
+      "name": "跨句指代线索",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:inference",
+      "name": "依据线索作有限推断",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:observation-order",
+      "name": "观察描写的空间顺序",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:comparison-method",
+      "name": "说明中的作比较",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:numbers-method",
+      "name": "说明中的列数字",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:emotion-evidence",
+      "name": "情感判断与文本证据",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:letter-format",
+      "name": "书信称呼与署名",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:remove-redundancy",
+      "name": "重复语意的修改",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:evidence-explanation",
+      "name": "判断后引用具体证据",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:motivation",
+      "name": "人物动机的条件推断",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:environment",
+      "name": "环境描写与后文联系",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:information-combine",
+      "name": "两处信息合并",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:source-reliability",
+      "name": "信息来源的可核查性",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:claim-support",
+      "name": "观点与理由的关联",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:outline",
+      "name": "主要事件与次要细节",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:ambiguity",
+      "name": "句子歧义与明确对象",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:quoted-source",
+      "name": "引用与转述的区别",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:logical-condition",
+      "name": "必要条件与充分条件的语言",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:compare-summary",
+      "name": "合并材料并说明限制",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:viewpoint-compare",
+      "name": "不同观点的共同点与分歧",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:rhetorical-question",
+      "name": "反问句的肯定含义",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:double-negative",
+      "name": "双重否定的基本含义",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:counterevidence",
+      "name": "证据与反证的区分",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:explanation-vs-fact",
+      "name": "观察事实与原因猜测",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:narrative-order",
+      "name": "顺叙与倒叙结构",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:perspective",
+      "name": "叙述人称与信息限制",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:title-theme",
+      "name": "标题与核心内容对应",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:evidence-citation",
+      "name": "引用证据与过度推广",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:chinese:argument-revision",
+      "name": "提出观点并回应另一解释",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:lettercase",
+      "name": "英文字母大小写对应",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:alphabet",
+      "name": "字母表相邻顺序",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:greeting",
+      "name": "基本问候语回应",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:iam",
+      "name": "I与am的搭配",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:color",
+      "name": "颜色词与描述对应",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:numberword",
+      "name": "一至十英语数量词",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:simpleplural",
+      "name": "规则名词复数加s",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:he-she",
+      "name": "he与she指代",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:this",
+      "name": "this介绍单个近物",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:introduce-self",
+      "name": "用简单句介绍自己",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:article",
+      "name": "a与an的基本读音规则",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:be",
+      "name": "am is are与主语匹配",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:demonstrative",
+      "name": "this these与单复数",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:have-has",
+      "name": "have与has的基本人称",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:possessive",
+      "name": "my your his her所属关系",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:can",
+      "name": "can后动词原形",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:placeword",
+      "name": "in on under空间词",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:questionword",
+      "name": "who what where提问对象",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:polite",
+      "name": "感谢道歉与请求",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:object-description",
+      "name": "用两句英语描述物品",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:phonics-a",
+      "name": "常见短元音a词族",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:plural-es",
+      "name": "s x ch结尾复数加es",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:do-does",
+      "name": "一般现在时do does疑问",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:third-s",
+      "name": "一般现在时第三人称单数",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:there-is",
+      "name": "there is are存在句",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:like-ing",
+      "name": "like后动名词形式",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:when",
+      "name": "when与时间回答",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:simple-instruction",
+      "name": "英语课堂指令理解",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:short-text-detail",
+      "name": "短文中人物爱好对照",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:daily-routine",
+      "name": "用现在时写日常活动",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:present-continuous",
+      "name": "现在进行时be doing",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:simple-vs-continuous",
+      "name": "习惯与正在发生的动作",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:some-any",
+      "name": "some any基本肯否语境",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:how-many-much",
+      "name": "how many much与可数性",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:object-pronoun",
+      "name": "动词后宾格代词",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:time-preposition",
+      "name": "at on in时间搭配",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:reading-referent",
+      "name": "英语相邻句代词指代",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:because-so",
+      "name": "英语because与so因果",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:notice-reading",
+      "name": "英语通知的时间地点条件",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:describe-now",
+      "name": "描述当前情景并区别习惯",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:past-regular",
+      "name": "规则动词过去式",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:past-irregular",
+      "name": "常用不规则过去式",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:past-be",
+      "name": "was were与过去主语",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:did-base",
+      "name": "did后动词原形",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:future-going",
+      "name": "be going to计划表达",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:comparative",
+      "name": "规则形容词比较级",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:must-rule",
+      "name": "must must not规则与禁止",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:sequence-reading",
+      "name": "英语事件时间线",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:context-word",
+      "name": "英语词义的语境线索",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:past-account",
+      "name": "用过去时写简短经历",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:tense-discrimination",
+      "name": "过去现在将来的时间一致",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:comparison-irregular",
+      "name": "better worse等不规则比较级",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:conditional",
+      "name": "if条件与结果",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:why-how",
+      "name": "why原因与how方式",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 2,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:inference-text",
+      "name": "短文有限推断",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:mainidea",
+      "name": "短段主旨概括",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:two-source-reading",
+      "name": "英语两信息条件合并",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:evidence-vs-claim",
+      "name": "英语观点与证据相关性",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 3,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 3,
+      "dimensions": {
+        "understanding": 3,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:self-correction",
+      "name": "时态与主谓错误定位",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 4,
+      "dimensions": {
+        "understanding": 4,
+        "procedure": 0,
+        "transfer": 0
+      },
+      "measurementMaterialGaps": [
+        "procedure_family_missing",
+        "two_transfer_families_missing"
+      ]
+    },
+    {
+      "atomId": "core:english:plan-with-reasons",
+      "name": "说明计划理由与备选方案",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-complete",
+      "name": "口头说清人物与动作",
+      "subject": "chinese",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-sequence",
+      "name": "口头说明两步顺序",
+      "subject": "chinese",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-retell",
+      "name": "口头复述关键信息",
+      "subject": "chinese",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-explain",
+      "name": "口头解释原因与依据",
+      "subject": "chinese",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-evidence",
+      "name": "口头用证据回应观点",
+      "subject": "chinese",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:chinese:oral-alternative",
+      "name": "口头比较方案并回应异议",
+      "subject": "chinese",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-greeting",
+      "name": "口头问候与介绍",
+      "subject": "english",
+      "grade": 1,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-object",
+      "name": "口头描述物品",
+      "subject": "english",
+      "grade": 2,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-routine",
+      "name": "口头说日常活动",
+      "subject": "english",
+      "grade": 3,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-now",
+      "name": "口头区分当前动作与习惯",
+      "subject": "english",
+      "grade": 4,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-past",
+      "name": "口头讲述过去经历",
+      "subject": "english",
+      "grade": 5,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    },
+    {
+      "atomId": "core:english:oral-plan",
+      "name": "口头说明计划与备选安排",
+      "subject": "english",
+      "grade": 6,
+      "authoredTeaching": true,
+      "workedSteps": 2,
+      "errorAlternatives": [
+        2
+      ],
+      "exercises": 4,
+      "families": 2,
+      "dimensions": {
+        "understanding": 0,
+        "procedure": 1,
+        "transfer": 1
+      },
+      "measurementMaterialGaps": [
+        "understanding_family_missing",
+        "two_transfer_families_missing",
+        "family_diversity_below_four"
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 完整资产备份已在独立E盘恢复：396,135资产独立SHA-256核验通过，早期合成QA库3→8升级及当前学习流程/两次重启通过，恢复模型实际运行通过。原备份、源资产及恢复目录保留，旧认证已撤销。运行脚本只接受明确的已核验合成对象，边界和复跑命令见 [全量恢复交付](32-full-recovery-delivery.md)。此结果不代替当前真实家庭的最新备份。
 
-评测结束或明确中止后，报告可展开当时原题、实际作答、分项表现、评分修订及支持/反证/自报依据。进行中与暂停状态的正式评分读取返回409，画像也不使用未结束会话。新诊断使用 `diagnosis-rules-v3`，旧原始响应和历史报告保留原版本。两库证据与隔离专项继续使用 `node scripts/qa/verify-adaptive-routing.cjs <证据路径> sqlite|postgres`，详见 [事实与深层验证交付](31-diagnostic-evidence-delivery.md)。
+评测结束或明确中止后，报告可展开当时原题、实际作答、分项表现、评分修订及支持/反证/自报依据。进行中与暂停状态的正式评分读取返回409，画像也不使用未结束会话。新诊断使用 `diagnosis-rules-v4`，基础/迁移支持合计至少四个不同题族；旧原始响应和历史报告保留原版本。规则与冻结观察见 [对照题组交付](33-verification-groups-delivery.md)，原题证据见 [事实与深层验证交付](31-diagnostic-evidence-delivery.md)。
 
 评测范围页可开启按作答逐步核查顺序，并在预览中确认加入的先修基础。题量、范围与题组冻结，结束后可展开每步依据；提示/曝光/跳过等不能当独立对错。旧API不传 `adaptive` 保持固定，间隔复测必须固定。两库专项为 `node scripts/qa/verify-adaptive-routing.cjs <证据路径> sqlite|postgres`，详见 [逐步核查交付](30-adaptive-routing-delivery.md)。
 
@@ -11,6 +11,8 @@
 原卷测量素材页为 `/admin/measurement`，从 `/library` 单题进入，需管理员或教师身份。来源、题面、媒体、评分和知识映射分别审核后才能发布，研究原卷与单题发布资格独立。运行 `node scripts/qa/verify-measurement-content.cjs` 验证生产模式SQLite；第三个参数 `postgres` 使用既有隔离QA集群。第四个参数 `real` 只验证迁入原卷候选与重启，绝不发布。详见 [原卷测量素材交付](28-measurement-content-delivery.md)。
 
 现有256个原创知识点均含教学卡。执行 `node scripts/qa/audit-authored-curriculum.cjs` 可核查教学覆盖和逐点测量素材缺口；先构建contracts/API。旧库仅为精确未编辑的v1补卡，用户修改和草稿保留。教学覆盖与教材审核对齐、测量题族深度、标准化校准分别验收，详见 [教学交付](27-full-teaching-delivery.md)。
+
+数位与退位等4点新增192道原创任务、16种明确结构，启动时幂等补充新题及映射；原3435题与既有编辑不改写。新增素材使用v2内容标识，表格或选项不同不会与同题干/答案碰撞。核对旧内容升级、学生完整核查与五次重启：`node scripts/qa/verify-verification-groups.cjs <证据路径> sqlite|postgres content-upgrade`。当前3627道任务、252点素材仍待补深，见 [测量素材交付](34-authored-math-probes-delivery.md)。
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 

@@ -35,7 +35,7 @@ export class FoundationSeedService implements OnModuleInit {
         const questionId = foundationQuestionId(atom.id, item), mappingId = `measurement:${questionId}`;
         if (!Boolean(this.store.find('questions', { id: questionId }))) {
           const question = { id: questionId, subject: atom.subject, type: item.rubric ? 'subjective' as const : 'objective' as const, stem: item.stem,
-            answer: item.answer, analysis: `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
+            answer: item.answer, analysis: item.analysis ?? `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
             knowledgePointIds: [], status: 'published' as const };
           this.store.append('questions', question);
           const { answerSchema, source, document } = this.workspace.initializeQuestionWorkspace(question, '原创基础练习');

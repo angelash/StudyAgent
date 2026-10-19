@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-19T22:17:45.813Z",
+  "label": "math-probe-content",
+  "passed": true,
+  "p95TargetMs": 500,
+  "scope": "Synthetic warm local HTTP reads; no production-load, write-contention or browser acceptance claim",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "logicalCpus": 32,
+    "memoryBytes": 68446707712
+  },
+  "fixture": {
+    "families": 1000,
+    "evidenceRecords": 20000,
+    "originalTasks": 3627,
+    "sqliteBytes": 60915712
+  },
+  "metrics": [
+    {
+      "route": "/auth/me",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 9.29,
+      "p95Ms": 10.13,
+      "maxMs": 10.13
+    },
+    {
+      "route": "/learning/students",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 17.97,
+      "p95Ms": 21.98,
+      "maxMs": 21.98
+    },
+    {
+      "route": "/diagnostics/curriculum?subject=math&grade=3",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 10,
+      "p95Ms": 12.61,
+      "maxMs": 12.61
+    },
+    {
+      "route": "/auth/me",
+      "mode": "8 concurrent requests",
+      "samples": 32,
+      "p50Ms": 67.66,
+      "p95Ms": 70.95,
+      "maxMs": 71.54
+    }
+  ],
+  "storage": {
+    "revisionChecks": 74,
+    "snapshotLoads": 1,
+    "partialSnapshotLoads": 0,
+    "snapshotRowsLoaded": 0,
+    "cacheHits": 73,
+    "commits": 3,
+    "scopedCommits": 2,
+    "conflicts": 0,
+    "collectionsCloned": 174,
+    "recordsCloned": 13155
+  },
+  "eventLoop": {
+    "p95Ms": 72.74,
+    "maxMs": 1043.86
+  },
+  "memory": {
+    "rss": 422961152,
+    "heapTotal": 298369024,
+    "heapUsed": 115033016,
+    "external": 4836758,
+    "arrayBuffers": 1546424
+  }
+}
