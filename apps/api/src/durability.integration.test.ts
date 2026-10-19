@@ -48,7 +48,7 @@ describe('real API persistence across application restarts', () => {
       for (const item of baseline.items) await call('post', `/diagnostics/sessions/${baseline.id}/responses`, { itemId: item.id, disposition: 'dont_know', elapsedMs: 1000 });
       await call('post', `/diagnostics/sessions/${baseline.id}/complete`, {});
       const plan = await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 15, useAi: false });
-      await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+      await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision });
       const activity = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
       expect(activity.questions.length).toBeGreaterThan(1);
       await call('post', `/learning/practice/${activity.id}/responses`, { questionId: activity.questions[0].id, requestKey: 'first', disposition: 'skip', elapsedMs: 1000 });

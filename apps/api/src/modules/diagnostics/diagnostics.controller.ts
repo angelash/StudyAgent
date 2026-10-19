@@ -82,12 +82,24 @@ export class DiagnosticsController {
   plans(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.guidance.list(req.user, id, parseSubject(subject)); }
   @Patch('diagnostics/plans/:planId')
   updatePlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown) { return this.guidance.update(req.user, id, body); }
+  @Get('diagnostics/plans/:planId')
+  getPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string) { return this.guidance.get(req.user, id); }
+  @Get('diagnostics/plans/:planId/history')
+  planHistory(@Req() req: AuthenticatedRequest, @Param('planId') id: string) { return this.guidance.history(req.user, id); }
+  @Get('diagnostics/plans/:planId/reviews')
+  planReviews(@Req() req: AuthenticatedRequest, @Param('planId') id: string) { return this.guidance.planReviews(req.user, id); }
+  @Post('diagnostics/plans/:planId/adjust')
+  adjustPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown) { return this.guidance.adjust(req.user, id, body); }
   @Get('diagnostics/students/:studentId/reviews')
   reviews(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.guidance.reviews(req.user, id, parseSubject(subject)); }
   @Post('diagnostics/reviews/:reviewId/start')
   review(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string) { return this.guidance.startReview(req.user, id); }
+  @Post('diagnostics/reviews/:reviewId/reschedule')
+  reschedule(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string, @Body() body: unknown) { return this.guidance.reschedule(req.user, id, body); }
   @Get('diagnostics/plans/:planId/retrospective')
   retrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string) { return this.guidance.retrospective(req.user, id); }
+  @Post('diagnostics/plans/:planId/retrospective/acknowledge')
+  acknowledgeRetrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown) { return this.guidance.acknowledgeRetrospective(req.user, id, body); }
   @Post('admin/diagnostic-responses/:responseId/review')
   reviewScore(@Req() req: AuthenticatedRequest, @Param('responseId') id: string, @Body() body: unknown) { return this.diagnostics.reviewScore(req.user, id, body); }
   @Get('diagnostics/sessions/:sessionId/report-history')

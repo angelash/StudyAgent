@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { NestFactory } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
@@ -30,7 +30,7 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
       store.knowledgeAtoms.push({ id, grade, prerequisiteIds, subject: 'math', name: id, strand: '数与运算', term: 'both',
         objective: `独立完成${id}知识点的指定操作`, successCriterion: '在不同题族的新题中独立完成操作', curriculumVersion: 'test-v1', status: 'published', version: 1 });
       if (id === 'unmapped') continue;
-      for (let index = 0; index < 16; index++) {
+      for (let index = 0; index < 32; index++) {
         const qid = `${id}-q${index}`, mid = `${id}-item${index}`;
         store.questions.push({ id: qid, subject: 'math', type: 'objective', stem: `第${index + 1}个变式：3+3=?`, answer: '6',
           analysis: '两组3合并。', difficultyLevel: 1, knowledgePointIds: [], status: 'published' });
@@ -47,6 +47,7 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     });
   });
   afterAll(async () => { await app.close(); if (originalKey) process.env.OPENAI_API_KEY = originalKey; });
+  afterEach(() => { vi.useRealTimers(); });
   async function call(method: 'post' | 'get' | 'put' | 'patch', path: string, body?: unknown, status?: number, actor?: any) {
     let query = request(app.getHttpServer())[method](`/api${path}`).set('Authorization', `Bearer ${(actor ?? owner).token}`);
     if (body !== undefined) query = query.send(body as object);
@@ -135,7 +136,7 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     expect(plan.source).toBe('rules'); expect(plan.aiStatus).toBe('unavailable');
     expect(plan.actions.reduce((sum: number, item: any) => sum + item.minutes, 0)).toBe(15);
     expect(plan.actions[0].atomId).toBe('base');
-    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }));
     const reviews = await call('get', `/diagnostics/students/${studentId}/reviews?subject=math`);
     expect(new Set(reviews.map((item: any) => item.intervalDays))).toEqual(new Set([1, 3, 7, 14]));
     await call('post', `/diagnostics/reviews/${reviews[0].id}/start`, {}, 400);
@@ -173,10 +174,108 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     for (const item of baseline.items) await submit(baseline, item, 0);
     await call('post', `/diagnostics/sessions/${baseline.id}/complete`, {});
     const plan = await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false });
-    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }));
     const activity = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
     return { baseline, plan, activity };
   }
+
+  it('versions parent adjustments, enforces budgets and idempotency, and freezes started activities', async () => {
+    const { plan, activity } = await activatePractice();
+    const schedule = await call('get', `/diagnostics/plans/${plan.id}/reviews`);
+    const originalActivity = structuredClone(activity.action);
+    const adjustment = { expectedRevision: plan.revision, requestKey: 'adjustment-one', reason: '先让孩子口述思路，再缩短连续练习时间。',
+      acknowledgeReportVersion: 1, minutesPerDay: 12,
+      actions: plan.actions.map((a: any) => ({ actionId: a.id, minutes: 12, activity: '先口述已知条件和计算步骤，再分两次独立完成新题。' })) };
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, { ...adjustment, minutesPerDay: 11 }, 400);
+    const outsider = await auth.register({ principal: 'plan-outsider@test', credential: 'outsider-secret-123' }, 'plan-outsider');
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, adjustment, 403, outsider);
+    const updated = await call('post', `/diagnostics/plans/${plan.id}/adjust`, adjustment);
+    expect(updated.revision).toBe(3); expect(updated.source).toBe('human'); expect(updated.actions[0].minutes).toBe(12);
+    expect((await call('post', `/diagnostics/plans/${plan.id}/adjust`, adjustment)).revision).toBe(3);
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, { ...adjustment, reason: '同一请求键不可以覆盖先前的活动内容。' }, 409);
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, { ...adjustment, requestKey: 'stale-adjustment' }, 409);
+    const history = await call('get', `/diagnostics/plans/${plan.id}/history`);
+    expect(history.map((h: any) => h.revision)).toEqual([3, 2, 1]);
+    expect(history[2].snapshot.actions[0].activity).toBe(originalActivity.activity);
+    expect((await call('get', `/diagnostics/plans/${plan.id}/reviews`)).map((r: any) => r.dueAt)).toEqual(schedule.map((r: any) => r.dueAt));
+    const resumed = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
+    expect(resumed.action).toEqual(originalActivity); expect(resumed.planRevision).toBe(2); expect(resumed.currentPlanRevision).toBe(3);
+    await call('get', `/diagnostics/plans/${plan.id}/history`, undefined, 403, outsider);
+  });
+
+  it('retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume', async () => {
+    const { plan } = await activatePractice();
+    const reviews = await call('get', `/diagnostics/plans/${plan.id}/reviews`), review = reviews[0];
+    const command = { expectedPlanRevision: plan.revision, expectedScheduleRevision: 1, requestKey: 'schedule-one',
+      dueAt: new Date(Date.parse(review.dueAt) + 86_400_000).toISOString(), reason: '明天外出，向后调整一天并保留延迟测量间隔。' };
+    await call('post', `/diagnostics/reviews/${review.id}/reschedule`, { ...command, dueAt: new Date(Date.parse(review.dueAt) - 60_000).toISOString() }, 400);
+    await call('post', `/diagnostics/reviews/${review.id}/reschedule`, { ...command, dueAt: new Date(Date.now() + 91 * 86_400_000).toISOString() }, 400);
+    const changed = await call('post', `/diagnostics/reviews/${review.id}/reschedule`, command);
+    expect(changed.scheduleRevision).toBe(2); expect(changed.earliestDueAt).toBe(review.dueAt);
+    expect(changed.scheduleHistory[0].previousDueAt).toBe(review.dueAt);
+    expect((await call('post', `/diagnostics/reviews/${review.id}/reschedule`, command)).scheduleHistory).toHaveLength(1);
+    await call('post', `/diagnostics/reviews/${review.id}/reschedule`, { ...command, reason: '同一请求键不能代表另一种安排。' }, 409);
+    await call('post', `/diagnostics/reviews/${review.id}/reschedule`, { ...command, requestKey: 'schedule-stale' }, 409);
+    await start({ intent: 'retest', reviewTaskId: review.id, targetAtomIds: [review.atomId] }).then(() => { throw new Error('Expected due-time rejection'); }).catch(e => expect(String(e)).toContain('expected 201'));
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'paused', expectedRevision: plan.revision }));
+    expect((await call('get', `/diagnostics/plans/${plan.id}/reviews`))).toHaveLength(4);
+    expect((await call('get', `/diagnostics/students/${studentId}/reviews?subject=math`))).toHaveLength(0);
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }));
+    expect((await call('get', `/diagnostics/plans/${plan.id}/reviews`))[0].dueAt).toBe(changed.dueAt);
+    vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(Date.parse(changed.dueAt) + 1_000);
+    owner = await auth.login({ principal: 'diagnostic-parent@test', credential: 'diagnostic-secret-123' }, 'schedule-renew');
+    const session = await call('post', `/diagnostics/reviews/${review.id}/start`, {});
+    expect(session.planId).toBe(plan.id); expect(session.planRevision).toBe(plan.revision);
+    await call('post', `/diagnostics/reviews/${review.id}/reschedule`, { ...command, requestKey: 'schedule-started', expectedPlanRevision: plan.revision, expectedScheduleRevision: 2,
+      dueAt: new Date(Date.now() + 86_400_000).toISOString() }, 400);
+    expect((await call('post', `/diagnostics/reviews/${review.id}/start`, {})).id).toBe(session.id);
+  });
+
+  it('requires linked independent followups and current evidence acknowledgement before closing a real review cycle', async () => {
+    await call('put', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '通用基础', learnedAtomIds: ['target'], currentAtomId: 'target', minutesPerSession: 15 });
+    const baseline = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of baseline.items) await submit(baseline, item, 6);
+    await call('post', `/diagnostics/sessions/${baseline.id}/complete`, {});
+    const plan = await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false });
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }));
+    const unrelated = await start({ intent: 'verification', targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of unrelated.items) await submit(unrelated, item, 6);
+    await call('post', `/diagnostics/sessions/${unrelated.id}/complete`, {});
+    let retrospective = await call('get', `/diagnostics/plans/${plan.id}/retrospective`);
+    expect(retrospective.followupSessionIds).toEqual([]);
+    const ack = (fingerprint: string, requestKey: string) => ({ expectedRevision: plan.revision, requestKey, fingerprint, reason: '已核对前后证据；迁移和保持样本仍需继续补充，不能宣称完全掌握。' });
+    await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, ack(retrospective.fingerprint, 'ack-empty'), 400);
+    const linked = await start({ intent: 'verification', planId: plan.id, targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of linked.items) await submit(linked, item, 6);
+    await call('post', `/diagnostics/sessions/${linked.id}/complete`, {});
+    retrospective = await call('get', `/diagnostics/plans/${plan.id}/retrospective`);
+    expect(retrospective.followupSessionIds).toEqual([linked.id]); expect(retrospective.comparisons[0].outcome).toBe('insufficient');
+    const firstAcknowledgement = ack(retrospective.fingerprint, 'ack-initial');
+    Object.assign(plan, await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, firstAcknowledgement));
+    expect((await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, firstAcknowledgement)).revision).toBe(plan.revision);
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'completed', expectedRevision: plan.revision }, 400);
+    const reviews = await call('get', `/diagnostics/plans/${plan.id}/reviews`);
+    vi.useFakeTimers({ toFake: ['Date'] });
+    for (const review of reviews) {
+      vi.setSystemTime(Date.parse(review.dueAt) + 60_000);
+      owner = await auth.login({ principal: 'diagnostic-parent@test', credential: 'diagnostic-secret-123' }, `cycle-renew-${review.intervalDays}`);
+      const next = await call('post', `/diagnostics/reviews/${review.id}/start`, {});
+      for (const item of next.items) await submit(next, item, 6);
+      await call('post', `/diagnostics/sessions/${next.id}/complete`, {});
+    }
+    await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, ack(retrospective.fingerprint, 'ack-stale-evidence'), 409);
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'completed', expectedRevision: plan.revision }, 400);
+    retrospective = await call('get', `/diagnostics/plans/${plan.id}/retrospective`);
+    expect(retrospective.reviewed).toBe(false); expect(retrospective.comparisons[0].retentionSamples).toBeGreaterThan(0);
+    expect(retrospective.comparisons[0].outcome).not.toBe('different_dimensions');
+    Object.assign(plan, await call('post', `/diagnostics/plans/${plan.id}/retrospective/acknowledge`, ack(retrospective.fingerprint, 'ack-current')));
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'completed', expectedRevision: plan.revision, requestKey: 'finish-cycle' }));
+    expect(plan.status).toBe('completed');
+    expect((await call('get', `/diagnostics/plans/${plan.id}/reviews`)).every((r: any) => r.status === 'completed')).toBe(true);
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }, 400);
+    expect((await call('get', `/diagnostics/students/${studentId}/profile?subject=math`)).estimates.find((e: any) => e.atomId === 'target').status).not.toBe('secure');
+  });
 
   it('persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence', async () => {
     const { baseline, plan, activity } = await activatePractice();
@@ -218,11 +317,11 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     const outsider = await auth.register({ principal: 'practice-outsider@test', credential: 'outsider-secret-123' }, 'fixture-outsider');
     await call('get', path, undefined, 403, outsider);
     await call('post', `${path}/responses`, { questionId: qid, requestKey: 'x', answer: 6, elapsedMs: 0 }, 403, outsider);
-    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'paused' });
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'paused', expectedRevision: plan.revision }));
     await call('post', `${path}/responses`, { questionId: qid, requestKey: 'x', answer: 6, elapsedMs: 0 }, 400);
     await call('patch', `${path}/questions/${qid}/draft`, { answer: 'x' }, 400);
     await call('post', `${path}/questions/${qid}/hint`, {}, 400);
-    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision }));
     store.practiceSessions.find((item: any) => item.id === activity.id).snapshots[0].answerSchema.mode = 'short_answer';
     const feedback = await call('post', `${path}/responses`, { questionId: qid, requestKey: 'essay', answer: '我把两组数量合在一起', elapsedMs: 2000 });
     expect(feedback.attempt.status).toBe('pending_review'); expect(feedback.attempt.score).toBeNull();

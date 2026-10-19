@@ -44,7 +44,7 @@ export type MeasurementItem = z.infer<typeof measurementItemSchema>;
 export const diagnosticStartSchema = z.object({
   studentId: id, subject, intent: z.enum(['baseline', 'unit', 'verification', 'retest']).default('baseline'),
   targetAtomIds: z.array(id).max(100).optional(), maxItems: z.number().int().min(2).max(30).default(12),
-  includePrerequisites: z.boolean().default(false), hypothesisId: id.optional(), reviewTaskId: id.optional(),
+  includePrerequisites: z.boolean().default(false), hypothesisId: id.optional(), reviewTaskId: id.optional(), planId: id.optional(),
 }).strict();
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
@@ -58,6 +58,7 @@ export type DiagnosticSession = {
   selectionReasons: Record<string, string>; seed: string; algorithmVersion: string;
   startedAt: string; completedAt: string | null; hypothesisId: string | null; reviewTaskId: string | null;
   exposedQuestionIds?: string[];
+  planId?: string; planRevision?: number;
 };
 
 export const diagnosticResponseInputSchema = z.object({
@@ -111,13 +112,27 @@ export type GuidanceAction = {
 };
 export type DiagnosticGuidancePlan = {
   id: string; studentId: string; subject: z.infer<typeof subject>; baselineSessionId: string;
-  version: number; source: 'rules' | 'ai'; status: 'proposed' | 'active' | 'paused' | 'completed';
+  version: number; source: 'rules' | 'ai' | 'human'; status: 'proposed' | 'active' | 'paused' | 'completed';
   minutesPerDay: number; summary: string; actions: GuidanceAction[]; evidenceIds: string[];
   createdAt: string; aiStatus: 'not_requested' | 'available' | 'unavailable' | 'rejected';
+  revision?: number; baselineReportVersion?: number; activatedAt?: string;
+  retrospectiveReview?: { fingerprint: string; reviewedAt: string; actorId: string; note: string };
+};
+export type GuidancePlanView = DiagnosticGuidancePlan & {
+  impact: { needsReview: boolean; baselineReportVersion: number; currentReportVersion: number;
+    pendingReviewCount: number; affectedActionIds: string[]; message: string };
+};
+export type GuidancePlanRevision = {
+  id: string; planId: string; revision: number; kind: 'created' | 'legacy' | 'adjusted' | 'status' | 'retrospective';
+  at: string; actorId: string; reason: string; snapshot: DiagnosticGuidancePlan;
+  requestKey?: string; inputHash?: string;
 };
 export type ReviewTask = {
   id: string; planId: string; studentId: string; subject: z.infer<typeof subject>; atomId: string;
   intervalDays: number; dueAt: string; status: 'pending' | 'in_progress' | 'completed'; sessionId: string | null;
+  planRevision?: number; baselineReportVersion?: number; earliestDueAt?: string; scheduleRevision?: number;
+  scheduleHistory?: Array<{ revision: number; previousDueAt: string; dueAt: string; reason: string;
+    at: string; actorId: string; requestKey: string; inputHash: string }>;
 };
 
 export type DiagnosticReport = {

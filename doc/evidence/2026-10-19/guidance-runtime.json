@@ -1,0 +1,1589 @@
+{
+  "at": "2026-10-19T14:59:04.340Z",
+  "scope": "isolated preauthenticated loopback account and synthetic child",
+  "preparation": "Real HTTP rubric revision on the isolated synthetic fixture; browser will adjust activities and reschedule.",
+  "browserMutations": [
+    "review revised evidence",
+    "adjust daily budget and activity",
+    "view immutable plan snapshots",
+    "reschedule a pending review"
+  ],
+  "original": {
+    "plan": {
+      "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+      "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+      "subject": "chinese",
+      "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+      "version": 1,
+      "source": "rules",
+      "status": "active",
+      "minutesPerDay": 10,
+      "summary": "每天 10 分钟，围绕 提炼人物事件结果 先验证再指导；复测后调整。",
+      "actions": [
+        {
+          "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+          "atomId": "core:chinese:paragraph-summary",
+          "hypothesisId": null,
+          "evidenceIds": [],
+          "title": "先补充证据：提炼人物事件结果",
+          "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+          "minutes": 10,
+          "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+          "resourceQuestionIds": [
+            "foundation_q_acb28795f12a30c7bb95ca2b",
+            "foundation_q_f5540af049604ee3d71e7e41",
+            "foundation_q_651904e8aeed6f9dadb02a8d",
+            "foundation_q_f8a1e9831f677410f46a4929"
+          ],
+          "retestAt": "2026-10-20T14:55:27.579Z"
+        }
+      ],
+      "evidenceIds": [],
+      "createdAt": "2026-10-19T14:55:27.579Z",
+      "aiStatus": "not_requested",
+      "revision": 2,
+      "baselineReportVersion": 1,
+      "activatedAt": "2026-10-19T14:55:27.580Z",
+      "impact": {
+        "needsReview": false,
+        "baselineReportVersion": 1,
+        "currentReportVersion": 1,
+        "pendingReviewCount": 2,
+        "affectedActionIds": [],
+        "message": "还有 2 条作答等待评分；当前指导按已有证据安排。"
+      }
+    },
+    "practice": {
+      "id": "practice_70a2117e-87e1-4b3f-84c3-28d46464bd29",
+      "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+      "subject": "chinese",
+      "atomId": "core:chinese:paragraph-summary",
+      "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+      "actionId": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+      "day": "2026-10-19",
+      "status": "in_progress",
+      "action": {
+        "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+        "atomId": "core:chinese:paragraph-summary",
+        "hypothesisId": null,
+        "evidenceIds": [],
+        "title": "先补充证据：提炼人物事件结果",
+        "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+        "minutes": 10,
+        "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+        "resourceQuestionIds": [
+          "foundation_q_acb28795f12a30c7bb95ca2b",
+          "foundation_q_f5540af049604ee3d71e7e41",
+          "foundation_q_651904e8aeed6f9dadb02a8d",
+          "foundation_q_f8a1e9831f677410f46a4929"
+        ],
+        "retestAt": "2026-10-20T14:55:27.579Z"
+      },
+      "completedAt": null,
+      "planRevision": 2,
+      "currentPlanRevision": 2,
+      "snapshotOrigin": "started",
+      "questions": [
+        {
+          "id": "foundation_q_651904e8aeed6f9dadb02a8d",
+          "attempted": false,
+          "latest": null,
+          "attempts": 0
+        },
+        {
+          "id": "foundation_q_f8a1e9831f677410f46a4929",
+          "attempted": false,
+          "latest": null,
+          "attempts": 0
+        },
+        {
+          "id": "foundation_q_f5540af049604ee3d71e7e41",
+          "attempted": false,
+          "latest": null,
+          "attempts": 0
+        },
+        {
+          "id": "foundation_q_acb28795f12a30c7bb95ca2b",
+          "attempted": false,
+          "latest": null,
+          "attempts": 0
+        }
+      ],
+      "summary": {
+        "attempted": 0,
+        "total": 4,
+        "answered": 0,
+        "skipped": 0,
+        "independentFirstPass": 0,
+        "pendingReview": 0
+      }
+    },
+    "reviews": [
+      {
+        "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:1",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "intervalDays": 1,
+        "dueAt": "2026-10-20T14:55:27.580Z",
+        "status": "pending",
+        "sessionId": null,
+        "earliestDueAt": "2026-10-20T14:55:27.580Z",
+        "planRevision": 2,
+        "baselineReportVersion": 1,
+        "scheduleRevision": 1,
+        "due": false,
+        "atomName": "提炼人物事件结果"
+      },
+      {
+        "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:3",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "intervalDays": 3,
+        "dueAt": "2026-10-22T14:55:27.580Z",
+        "status": "pending",
+        "sessionId": null,
+        "earliestDueAt": "2026-10-22T14:55:27.580Z",
+        "planRevision": 2,
+        "baselineReportVersion": 1,
+        "scheduleRevision": 1,
+        "due": false,
+        "atomName": "提炼人物事件结果"
+      },
+      {
+        "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:7",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "intervalDays": 7,
+        "dueAt": "2026-10-26T14:55:27.580Z",
+        "status": "pending",
+        "sessionId": null,
+        "earliestDueAt": "2026-10-26T14:55:27.580Z",
+        "planRevision": 2,
+        "baselineReportVersion": 1,
+        "scheduleRevision": 1,
+        "due": false,
+        "atomName": "提炼人物事件结果"
+      },
+      {
+        "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:14",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "intervalDays": 14,
+        "dueAt": "2026-11-02T14:55:27.580Z",
+        "status": "pending",
+        "sessionId": null,
+        "earliestDueAt": "2026-11-02T14:55:27.580Z",
+        "planRevision": 2,
+        "baselineReportVersion": 1,
+        "scheduleRevision": 1,
+        "due": false,
+        "atomName": "提炼人物事件结果"
+      }
+    ]
+  },
+  "beforeRestart": {
+    "at": "2026-10-19T14:58:00.481Z",
+    "snapshot": {
+      "plan": {
+        "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+        "version": 1,
+        "source": "human",
+        "status": "active",
+        "minutesPerDay": 12,
+        "summary": "每天 12 分钟，围绕 提炼人物事件结果 执行已调整活动，并用独立新题复测验证。",
+        "actions": [
+          {
+            "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+            "atomId": "core:chinese:paragraph-summary",
+            "hypothesisId": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+            "evidenceIds": [
+              "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            ],
+            "title": "先补充证据：提炼人物事件结果",
+            "activity": "先请孩子用自己的话说清人物、主要事件和结果，再分别引用文本线索，最后用一则新短文独立验证。每完成一步就停下来说明依据。",
+            "minutes": 12,
+            "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+            "resourceQuestionIds": [
+              "foundation_q_acb28795f12a30c7bb95ca2b",
+              "foundation_q_f5540af049604ee3d71e7e41",
+              "foundation_q_651904e8aeed6f9dadb02a8d",
+              "foundation_q_f8a1e9831f677410f46a4929"
+            ],
+            "retestAt": "2026-10-20T14:55:27.579Z"
+          }
+        ],
+        "evidenceIds": [
+          "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+        ],
+        "createdAt": "2026-10-19T14:55:27.579Z",
+        "aiStatus": "not_requested",
+        "revision": 3,
+        "baselineReportVersion": 2,
+        "activatedAt": "2026-10-19T14:55:27.580Z",
+        "impact": {
+          "needsReview": false,
+          "baselineReportVersion": 2,
+          "currentReportVersion": 2,
+          "pendingReviewCount": 1,
+          "affectedActionIds": [],
+          "message": "还有 1 条作答等待评分；当前指导按已有证据安排。"
+        }
+      },
+      "history": [
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:3",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 3,
+          "kind": "adjusted",
+          "at": "2026-10-19T14:57:04.739Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "根据修订后的量规评分，孩子已能引用线索，但解释联系仍需观察；把口述和独立验证分开，每天用十二分钟完成。",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "human",
+            "status": "active",
+            "minutesPerDay": 12,
+            "summary": "每天 12 分钟，围绕 提炼人物事件结果 执行已调整活动，并用独立新题复测验证。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+                "evidenceIds": [
+                  "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+                ],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先请孩子用自己的话说清人物、主要事件和结果，再分别引用文本线索，最后用一则新短文独立验证。每完成一步就停下来说明依据。",
+                "minutes": 12,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [
+              "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            ],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 3,
+            "baselineReportVersion": 2,
+            "activatedAt": "2026-10-19T14:55:27.580Z"
+          },
+          "requestKey": "61aa656d-e400-4038-8559-4adbb9f3ac86",
+          "inputHash": "a9a896ffcf5ffa4b4ddc12fd8a49bc0c14a89eb5c39cdfc69d4a45acbbc418ef"
+        },
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:2",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 2,
+          "kind": "status",
+          "at": "2026-10-19T14:55:27.580Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "确认并启用指导计划",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "rules",
+            "status": "active",
+            "minutesPerDay": 10,
+            "summary": "每天 10 分钟，围绕 提炼人物事件结果 先验证再指导；复测后调整。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": null,
+                "evidenceIds": [],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+                "minutes": 10,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 2,
+            "baselineReportVersion": 1,
+            "activatedAt": "2026-10-19T14:55:27.580Z"
+          },
+          "inputHash": "61738214f53d34c5d0d2673b53d3c78692a17c7c9c84656276f53c2a329bb98f"
+        },
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:1",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 1,
+          "kind": "created",
+          "at": "2026-10-19T14:55:27.580Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "依据当前评测建立指导计划",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "rules",
+            "status": "proposed",
+            "minutesPerDay": 10,
+            "summary": "每天 10 分钟，围绕 提炼人物事件结果 先验证再指导；复测后调整。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": null,
+                "evidenceIds": [],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+                "minutes": 10,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 1,
+            "baselineReportVersion": 1
+          }
+        }
+      ],
+      "practice": {
+        "id": "practice_70a2117e-87e1-4b3f-84c3-28d46464bd29",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "actionId": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+        "day": "2026-10-19",
+        "status": "in_progress",
+        "action": {
+          "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+          "atomId": "core:chinese:paragraph-summary",
+          "hypothesisId": null,
+          "evidenceIds": [],
+          "title": "先补充证据：提炼人物事件结果",
+          "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+          "minutes": 10,
+          "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+          "resourceQuestionIds": [
+            "foundation_q_acb28795f12a30c7bb95ca2b",
+            "foundation_q_f5540af049604ee3d71e7e41",
+            "foundation_q_651904e8aeed6f9dadb02a8d",
+            "foundation_q_f8a1e9831f677410f46a4929"
+          ],
+          "retestAt": "2026-10-20T14:55:27.579Z"
+        },
+        "completedAt": null,
+        "planRevision": 2,
+        "currentPlanRevision": 3,
+        "snapshotOrigin": "started",
+        "questions": [
+          {
+            "id": "foundation_q_651904e8aeed6f9dadb02a8d",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_f8a1e9831f677410f46a4929",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_f5540af049604ee3d71e7e41",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_acb28795f12a30c7bb95ca2b",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          }
+        ],
+        "summary": {
+          "attempted": 0,
+          "total": 4,
+          "answered": 0,
+          "skipped": 0,
+          "independentFirstPass": 0,
+          "pendingReview": 0
+        }
+      },
+      "reviews": [
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:1",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 1,
+          "dueAt": "2026-10-21T11:30:00.000Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-20T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 2,
+          "scheduleHistory": [
+            {
+              "revision": 2,
+              "previousDueAt": "2026-10-20T14:55:27.580Z",
+              "dueAt": "2026-10-21T11:30:00.000Z",
+              "reason": "孩子明天有校外活动，向后调整到次日晚饭后，保留原定的延迟测量间隔。",
+              "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+              "at": "2026-10-19T14:57:28.399Z",
+              "requestKey": "030eba15-dcd1-470e-95e0-80e44d9567ae",
+              "inputHash": "32cef31f0096bbfaf02493d20f8056cd6c282ce884acbfd04fd8b3f1c1cac77a"
+            }
+          ],
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:3",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 3,
+          "dueAt": "2026-10-22T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-22T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:7",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 7,
+          "dueAt": "2026-10-26T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-26T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:14",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 14,
+          "dueAt": "2026-11-02T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-11-02T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        }
+      ],
+      "reportHistory": [
+        {
+          "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "status": "completed",
+          "answeredCount": 2,
+          "totalCount": 2,
+          "scoredCount": 1,
+          "pendingReviewCount": 1,
+          "rawScore": 67,
+          "coverage": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "selected": 2,
+              "required": 2,
+              "role": "target"
+            }
+          ],
+          "estimates": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "atomName": "提炼人物事件结果",
+              "grade": 3,
+              "mastery": 55.6,
+              "lower": 8.7,
+              "upper": 96,
+              "status": "insufficient",
+              "rawCorrect": 0,
+              "scoredCount": 1,
+              "effectiveSamples": 1,
+              "independentFamilies": 1,
+              "dimensions": [
+                {
+                  "dimension": "understanding",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "procedure",
+                  "mastery": 55.6,
+                  "samples": 1
+                },
+                {
+                  "dimension": "transfer",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "retention",
+                  "mastery": null,
+                  "samples": 0
+                }
+              ],
+              "independentRate": 100,
+              "transferVerified": false,
+              "retentionVerified": false,
+              "evidenceIds": [
+                "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+              ],
+              "lastMeasuredAt": "2026-10-19T14:55:27.575Z",
+              "algorithmVersion": "rule-estimate-v1"
+            }
+          ],
+          "hypotheses": [
+            {
+              "id": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "subject": "chinese",
+              "atomId": "core:chinese:paragraph-summary",
+              "cause": "procedure_gap",
+              "status": "proposed",
+              "title": "当前知识点的理解或执行需要核查",
+              "observation": "在“提炼人物事件结果”的 1 道不同题目中观察到未达标响应。",
+              "explanation": "基础题表现可以定位到当前行为，尚不能单独解释产生问题的原因。",
+              "alternatives": [
+                "题意或评分可能需要复核",
+                "作答环境、误触和当日状态尚未测量",
+                "其他知识或策略因素仍待排查"
+              ],
+              "supportingEvidenceIds": [
+                "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+              ],
+              "counterEvidenceIds": [],
+              "probeAtomIds": [
+                "core:chinese:paragraph-summary"
+              ],
+              "nextAction": "用两个不同题族的基础题，分别检查概念理解和关键步骤。",
+              "confidence": "low",
+              "ruleVersion": "diagnosis-rules-v1",
+              "updatedAt": "2026-10-19T14:55:27.575Z",
+              "history": [
+                {
+                  "at": "2026-10-19T14:55:27.575Z",
+                  "status": "proposed",
+                  "reason": "依据独立题族、支持证据及反证重新核查"
+                }
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:source-based-production",
+              "dimension": "procedure",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": 0.666667,
+              "correct": false,
+              "status": "scored",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "合成验收：已按原始量规核对引用线索与解释联系，供家长重新确认指导依据。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "review-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            },
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:personal-production",
+              "dimension": "transfer",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41"
+            }
+          ],
+          "unmeasuredAtomIds": [],
+          "scopeSnapshot": {
+            "subject": "chinese",
+            "grade": 3,
+            "term": "upper",
+            "textbookVolumeId": null,
+            "textbookVersion": "浏览器合成复核范围",
+            "learnedAtomIds": [
+              "core:chinese:paragraph-summary"
+            ],
+            "currentAtomId": "core:chinese:paragraph-summary",
+            "minutesPerSession": 15,
+            "progressMode": "knowledge",
+            "selectedLessonIds": [],
+            "id": "scope_b8a71115-819f-43da-9579-c2cb4864a5bc",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "version": 1,
+            "confirmedAt": "2026-10-19T14:55:27.569Z"
+          },
+          "scoringRevisionIds": [
+            "scoring_revision_c8c3c4c3-7aab-4a7b-a68c-909216b3a47a"
+          ],
+          "summary": "本次已评分 1 题，1 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+          "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。",
+          "revisionReason": "作答证据经人工复核，已重新计算依赖该证据的报告。",
+          "version": 2,
+          "generatedAt": "2026-10-19T14:55:55.937Z"
+        },
+        {
+          "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "status": "completed",
+          "answeredCount": 2,
+          "totalCount": 2,
+          "scoredCount": 0,
+          "pendingReviewCount": 2,
+          "rawScore": null,
+          "coverage": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "selected": 2,
+              "required": 2,
+              "role": "target"
+            }
+          ],
+          "estimates": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "atomName": "提炼人物事件结果",
+              "grade": 3,
+              "mastery": null,
+              "lower": null,
+              "upper": null,
+              "status": "unknown",
+              "rawCorrect": 0,
+              "scoredCount": 0,
+              "effectiveSamples": 0,
+              "independentFamilies": 0,
+              "dimensions": [
+                {
+                  "dimension": "understanding",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "procedure",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "transfer",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "retention",
+                  "mastery": null,
+                  "samples": 0
+                }
+              ],
+              "independentRate": null,
+              "transferVerified": false,
+              "retentionVerified": false,
+              "evidenceIds": [],
+              "lastMeasuredAt": null,
+              "algorithmVersion": "rule-estimate-v1"
+            }
+          ],
+          "hypotheses": [],
+          "evidence": [
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:source-based-production",
+              "dimension": "procedure",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            },
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:personal-production",
+              "dimension": "transfer",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41"
+            }
+          ],
+          "unmeasuredAtomIds": [
+            "core:chinese:paragraph-summary"
+          ],
+          "scopeSnapshot": {
+            "subject": "chinese",
+            "grade": 3,
+            "term": "upper",
+            "textbookVolumeId": null,
+            "textbookVersion": "浏览器合成复核范围",
+            "learnedAtomIds": [
+              "core:chinese:paragraph-summary"
+            ],
+            "currentAtomId": "core:chinese:paragraph-summary",
+            "minutesPerSession": 15,
+            "progressMode": "knowledge",
+            "selectedLessonIds": [],
+            "id": "scope_b8a71115-819f-43da-9579-c2cb4864a5bc",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "version": 1,
+            "confirmedAt": "2026-10-19T14:55:27.569Z"
+          },
+          "scoringRevisionIds": [],
+          "summary": "本次已评分 0 题，2 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+          "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。",
+          "version": 1,
+          "generatedAt": "2026-10-19T14:55:27.575Z"
+        }
+      ]
+    }
+  },
+  "afterRestart": {
+    "at": "2026-10-19T14:59:01.816Z",
+    "snapshot": {
+      "plan": {
+        "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+        "version": 1,
+        "source": "human",
+        "status": "active",
+        "minutesPerDay": 12,
+        "summary": "每天 12 分钟，围绕 提炼人物事件结果 执行已调整活动，并用独立新题复测验证。",
+        "actions": [
+          {
+            "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+            "atomId": "core:chinese:paragraph-summary",
+            "hypothesisId": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+            "evidenceIds": [
+              "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            ],
+            "title": "先补充证据：提炼人物事件结果",
+            "activity": "先请孩子用自己的话说清人物、主要事件和结果，再分别引用文本线索，最后用一则新短文独立验证。每完成一步就停下来说明依据。",
+            "minutes": 12,
+            "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+            "resourceQuestionIds": [
+              "foundation_q_acb28795f12a30c7bb95ca2b",
+              "foundation_q_f5540af049604ee3d71e7e41",
+              "foundation_q_651904e8aeed6f9dadb02a8d",
+              "foundation_q_f8a1e9831f677410f46a4929"
+            ],
+            "retestAt": "2026-10-20T14:55:27.579Z"
+          }
+        ],
+        "evidenceIds": [
+          "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+        ],
+        "createdAt": "2026-10-19T14:55:27.579Z",
+        "aiStatus": "not_requested",
+        "revision": 3,
+        "baselineReportVersion": 2,
+        "activatedAt": "2026-10-19T14:55:27.580Z",
+        "impact": {
+          "needsReview": false,
+          "baselineReportVersion": 2,
+          "currentReportVersion": 2,
+          "pendingReviewCount": 1,
+          "affectedActionIds": [],
+          "message": "还有 1 条作答等待评分；当前指导按已有证据安排。"
+        }
+      },
+      "history": [
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:3",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 3,
+          "kind": "adjusted",
+          "at": "2026-10-19T14:57:04.739Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "根据修订后的量规评分，孩子已能引用线索，但解释联系仍需观察；把口述和独立验证分开，每天用十二分钟完成。",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "human",
+            "status": "active",
+            "minutesPerDay": 12,
+            "summary": "每天 12 分钟，围绕 提炼人物事件结果 执行已调整活动，并用独立新题复测验证。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+                "evidenceIds": [
+                  "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+                ],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先请孩子用自己的话说清人物、主要事件和结果，再分别引用文本线索，最后用一则新短文独立验证。每完成一步就停下来说明依据。",
+                "minutes": 12,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [
+              "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            ],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 3,
+            "baselineReportVersion": 2,
+            "activatedAt": "2026-10-19T14:55:27.580Z"
+          },
+          "requestKey": "61aa656d-e400-4038-8559-4adbb9f3ac86",
+          "inputHash": "a9a896ffcf5ffa4b4ddc12fd8a49bc0c14a89eb5c39cdfc69d4a45acbbc418ef"
+        },
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:2",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 2,
+          "kind": "status",
+          "at": "2026-10-19T14:55:27.580Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "确认并启用指导计划",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "rules",
+            "status": "active",
+            "minutesPerDay": 10,
+            "summary": "每天 10 分钟，围绕 提炼人物事件结果 先验证再指导；复测后调整。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": null,
+                "evidenceIds": [],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+                "minutes": 10,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 2,
+            "baselineReportVersion": 1,
+            "activatedAt": "2026-10-19T14:55:27.580Z"
+          },
+          "inputHash": "61738214f53d34c5d0d2673b53d3c78692a17c7c9c84656276f53c2a329bb98f"
+        },
+        {
+          "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:revision:1",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "revision": 1,
+          "kind": "created",
+          "at": "2026-10-19T14:55:27.580Z",
+          "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+          "reason": "依据当前评测建立指导计划",
+          "snapshot": {
+            "id": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "subject": "chinese",
+            "baselineSessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+            "version": 1,
+            "source": "rules",
+            "status": "proposed",
+            "minutesPerDay": 10,
+            "summary": "每天 10 分钟，围绕 提炼人物事件结果 先验证再指导；复测后调整。",
+            "actions": [
+              {
+                "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+                "atomId": "core:chinese:paragraph-summary",
+                "hypothesisId": null,
+                "evidenceIds": [],
+                "title": "先补充证据：提炼人物事件结果",
+                "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+                "minutes": 10,
+                "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+                "resourceQuestionIds": [
+                  "foundation_q_acb28795f12a30c7bb95ca2b",
+                  "foundation_q_f5540af049604ee3d71e7e41",
+                  "foundation_q_651904e8aeed6f9dadb02a8d",
+                  "foundation_q_f8a1e9831f677410f46a4929"
+                ],
+                "retestAt": "2026-10-20T14:55:27.579Z"
+              }
+            ],
+            "evidenceIds": [],
+            "createdAt": "2026-10-19T14:55:27.579Z",
+            "aiStatus": "not_requested",
+            "revision": 1,
+            "baselineReportVersion": 1
+          }
+        }
+      ],
+      "practice": {
+        "id": "practice_70a2117e-87e1-4b3f-84c3-28d46464bd29",
+        "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+        "subject": "chinese",
+        "atomId": "core:chinese:paragraph-summary",
+        "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+        "actionId": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+        "day": "2026-10-19",
+        "status": "in_progress",
+        "action": {
+          "id": "action_ab650809-5f48-42c5-814f-4cf1aeb0cea4",
+          "atomId": "core:chinese:paragraph-summary",
+          "hypothesisId": null,
+          "evidenceIds": [],
+          "title": "先补充证据：提炼人物事件结果",
+          "activity": "先做两个不同题族的独立小测，观察“用简短语言保留人物、主要事件与结果”。根据表现决定是否需要讲解。",
+          "minutes": 10,
+          "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。；至少两个新题族独立完成，再安排迁移与延迟验证。",
+          "resourceQuestionIds": [
+            "foundation_q_acb28795f12a30c7bb95ca2b",
+            "foundation_q_f5540af049604ee3d71e7e41",
+            "foundation_q_651904e8aeed6f9dadb02a8d",
+            "foundation_q_f8a1e9831f677410f46a4929"
+          ],
+          "retestAt": "2026-10-20T14:55:27.579Z"
+        },
+        "completedAt": null,
+        "planRevision": 2,
+        "currentPlanRevision": 3,
+        "snapshotOrigin": "started",
+        "questions": [
+          {
+            "id": "foundation_q_651904e8aeed6f9dadb02a8d",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_f8a1e9831f677410f46a4929",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_f5540af049604ee3d71e7e41",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          },
+          {
+            "id": "foundation_q_acb28795f12a30c7bb95ca2b",
+            "attempted": false,
+            "latest": null,
+            "attempts": 0
+          }
+        ],
+        "summary": {
+          "attempted": 0,
+          "total": 4,
+          "answered": 0,
+          "skipped": 0,
+          "independentFirstPass": 0,
+          "pendingReview": 0
+        }
+      },
+      "reviews": [
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:1",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 1,
+          "dueAt": "2026-10-21T11:30:00.000Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-20T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 2,
+          "scheduleHistory": [
+            {
+              "revision": 2,
+              "previousDueAt": "2026-10-20T14:55:27.580Z",
+              "dueAt": "2026-10-21T11:30:00.000Z",
+              "reason": "孩子明天有校外活动，向后调整到次日晚饭后，保留原定的延迟测量间隔。",
+              "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+              "at": "2026-10-19T14:57:28.399Z",
+              "requestKey": "030eba15-dcd1-470e-95e0-80e44d9567ae",
+              "inputHash": "32cef31f0096bbfaf02493d20f8056cd6c282ce884acbfd04fd8b3f1c1cac77a"
+            }
+          ],
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:3",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 3,
+          "dueAt": "2026-10-22T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-22T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:7",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 7,
+          "dueAt": "2026-10-26T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-10-26T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        },
+        {
+          "id": "review:guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640:core:chinese:paragraph-summary:14",
+          "planId": "guidance_2d252bc8-dc6b-42b9-bbe5-94417fe7e640",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "atomId": "core:chinese:paragraph-summary",
+          "intervalDays": 14,
+          "dueAt": "2026-11-02T14:55:27.580Z",
+          "status": "pending",
+          "sessionId": null,
+          "earliestDueAt": "2026-11-02T14:55:27.580Z",
+          "planRevision": 2,
+          "baselineReportVersion": 1,
+          "scheduleRevision": 1,
+          "due": false,
+          "atomName": "提炼人物事件结果"
+        }
+      ],
+      "reportHistory": [
+        {
+          "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "status": "completed",
+          "answeredCount": 2,
+          "totalCount": 2,
+          "scoredCount": 1,
+          "pendingReviewCount": 1,
+          "rawScore": 67,
+          "coverage": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "selected": 2,
+              "required": 2,
+              "role": "target"
+            }
+          ],
+          "estimates": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "atomName": "提炼人物事件结果",
+              "grade": 3,
+              "mastery": 55.6,
+              "lower": 8.7,
+              "upper": 96,
+              "status": "insufficient",
+              "rawCorrect": 0,
+              "scoredCount": 1,
+              "effectiveSamples": 1,
+              "independentFamilies": 1,
+              "dimensions": [
+                {
+                  "dimension": "understanding",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "procedure",
+                  "mastery": 55.6,
+                  "samples": 1
+                },
+                {
+                  "dimension": "transfer",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "retention",
+                  "mastery": null,
+                  "samples": 0
+                }
+              ],
+              "independentRate": 100,
+              "transferVerified": false,
+              "retentionVerified": false,
+              "evidenceIds": [
+                "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+              ],
+              "lastMeasuredAt": "2026-10-19T14:55:27.575Z",
+              "algorithmVersion": "rule-estimate-v1"
+            }
+          ],
+          "hypotheses": [
+            {
+              "id": "hypothesis:student_741aeb60-6dc9-4bbd-b853-3db16576408f:core:chinese:paragraph-summary:procedure_gap",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "subject": "chinese",
+              "atomId": "core:chinese:paragraph-summary",
+              "cause": "procedure_gap",
+              "status": "proposed",
+              "title": "当前知识点的理解或执行需要核查",
+              "observation": "在“提炼人物事件结果”的 1 道不同题目中观察到未达标响应。",
+              "explanation": "基础题表现可以定位到当前行为，尚不能单独解释产生问题的原因。",
+              "alternatives": [
+                "题意或评分可能需要复核",
+                "作答环境、误触和当日状态尚未测量",
+                "其他知识或策略因素仍待排查"
+              ],
+              "supportingEvidenceIds": [
+                "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+              ],
+              "counterEvidenceIds": [],
+              "probeAtomIds": [
+                "core:chinese:paragraph-summary"
+              ],
+              "nextAction": "用两个不同题族的基础题，分别检查概念理解和关键步骤。",
+              "confidence": "low",
+              "ruleVersion": "diagnosis-rules-v1",
+              "updatedAt": "2026-10-19T14:55:27.575Z",
+              "history": [
+                {
+                  "at": "2026-10-19T14:55:27.575Z",
+                  "status": "proposed",
+                  "reason": "依据独立题族、支持证据及反证重新核查"
+                }
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:source-based-production",
+              "dimension": "procedure",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": 0.666667,
+              "correct": false,
+              "status": "scored",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "合成验收：已按原始量规核对引用线索与解释联系，供家长重新确认指导依据。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "review-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            },
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:personal-production",
+              "dimension": "transfer",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41"
+            }
+          ],
+          "unmeasuredAtomIds": [],
+          "scopeSnapshot": {
+            "subject": "chinese",
+            "grade": 3,
+            "term": "upper",
+            "textbookVolumeId": null,
+            "textbookVersion": "浏览器合成复核范围",
+            "learnedAtomIds": [
+              "core:chinese:paragraph-summary"
+            ],
+            "currentAtomId": "core:chinese:paragraph-summary",
+            "minutesPerSession": 15,
+            "progressMode": "knowledge",
+            "selectedLessonIds": [],
+            "id": "scope_b8a71115-819f-43da-9579-c2cb4864a5bc",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "version": 1,
+            "confirmedAt": "2026-10-19T14:55:27.569Z"
+          },
+          "scoringRevisionIds": [
+            "scoring_revision_c8c3c4c3-7aab-4a7b-a68c-909216b3a47a"
+          ],
+          "summary": "本次已评分 1 题，1 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+          "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。",
+          "revisionReason": "作答证据经人工复核，已重新计算依赖该证据的报告。",
+          "version": 2,
+          "generatedAt": "2026-10-19T14:55:55.937Z"
+        },
+        {
+          "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+          "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+          "subject": "chinese",
+          "status": "completed",
+          "answeredCount": 2,
+          "totalCount": 2,
+          "scoredCount": 0,
+          "pendingReviewCount": 2,
+          "rawScore": null,
+          "coverage": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "selected": 2,
+              "required": 2,
+              "role": "target"
+            }
+          ],
+          "estimates": [
+            {
+              "atomId": "core:chinese:paragraph-summary",
+              "atomName": "提炼人物事件结果",
+              "grade": 3,
+              "mastery": null,
+              "lower": null,
+              "upper": null,
+              "status": "unknown",
+              "rawCorrect": 0,
+              "scoredCount": 0,
+              "effectiveSamples": 0,
+              "independentFamilies": 0,
+              "dimensions": [
+                {
+                  "dimension": "understanding",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "procedure",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "transfer",
+                  "mastery": null,
+                  "samples": 0
+                },
+                {
+                  "dimension": "retention",
+                  "mastery": null,
+                  "samples": 0
+                }
+              ],
+              "independentRate": null,
+              "transferVerified": false,
+              "retentionVerified": false,
+              "evidenceIds": [],
+              "lastMeasuredAt": null,
+              "algorithmVersion": "rule-estimate-v1"
+            }
+          ],
+          "hypotheses": [],
+          "evidence": [
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_acb28795f12a30c7bb95ca2b",
+              "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:source-based-production",
+              "dimension": "procedure",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_acb28795f12a30c7bb95ca2b",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_acb28795f12a30c7bb95ca2b"
+            },
+            {
+              "id": "response:diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "sessionId": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af",
+              "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+              "itemId": "measurement:foundation_q_f5540af049604ee3d71e7e41",
+              "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+              "atomId": "core:chinese:paragraph-summary",
+              "family": "core:chinese:paragraph-summary:personal-production",
+              "dimension": "transfer",
+              "questionVersion": 1,
+              "mappingVersion": 1,
+              "answer": {
+                "questionId": "foundation_q_f5540af049604ee3d71e7e41",
+                "mode": "short_answer",
+                "response": {
+                  "value": "我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。"
+                }
+              },
+              "score": null,
+              "correct": null,
+              "status": "pending_review",
+              "disposition": "answered",
+              "elapsedMs": 38000,
+              "hintLevel": 0,
+              "observationCode": null,
+              "gradingReason": "已保存，等待依据评分量规复核。",
+              "retentionDelayDays": null,
+              "priorExposure": false,
+              "submittedAt": "2026-10-19T14:55:27.575Z",
+              "gradingVersion": "deterministic-rubric-v1",
+              "requestKey": "diagnostic_763db4fa-6e19-433c-878d-bbd6c888c9af:measurement:foundation_q_f5540af049604ee3d71e7e41"
+            }
+          ],
+          "unmeasuredAtomIds": [
+            "core:chinese:paragraph-summary"
+          ],
+          "scopeSnapshot": {
+            "subject": "chinese",
+            "grade": 3,
+            "term": "upper",
+            "textbookVolumeId": null,
+            "textbookVersion": "浏览器合成复核范围",
+            "learnedAtomIds": [
+              "core:chinese:paragraph-summary"
+            ],
+            "currentAtomId": "core:chinese:paragraph-summary",
+            "minutesPerSession": 15,
+            "progressMode": "knowledge",
+            "selectedLessonIds": [],
+            "id": "scope_b8a71115-819f-43da-9579-c2cb4864a5bc",
+            "studentId": "student_741aeb60-6dc9-4bbd-b853-3db16576408f",
+            "version": 1,
+            "confirmedAt": "2026-10-19T14:55:27.569Z"
+          },
+          "scoringRevisionIds": [],
+          "summary": "本次已评分 0 题，2 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+          "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。",
+          "version": 1,
+          "generatedAt": "2026-10-19T14:55:27.575Z"
+        }
+      ]
+    }
+  },
+  "restartIdentical": true,
+  "validation": {
+    "tests": 80,
+    "testFiles": 15,
+    "typecheck": "passed",
+    "productionBuild": "passed"
+  },
+  "limits": [
+    "The 14-day lifecycle uses real API submissions with a controlled test clock; it is not a 14-day human learning trial.",
+    "This batch does not establish teaching effectiveness, standardized norms, or PostgreSQL runtime acceptance."
+  ]
+}

@@ -29,6 +29,7 @@ import {
   TextbookAtomMapping, CurriculumRevision,
   TeacherStudentAssignment, EvidenceFeedback,
   ImportFile, ImportPageEvidenceRef, ProcessingArtifact,
+  GuidancePlanRevision,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -232,6 +233,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   importFiles: ImportFile[] = [];
   processingArtifacts: ProcessingArtifact[] = [];
   importPages: ImportPageEvidenceRef[] = [];
+  guidancePlanRevisions: GuidancePlanRevision[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -290,6 +292,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.importFiles = [];
     this.processingArtifacts = [];
     this.importPages = [];
+    this.guidancePlanRevisions = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];

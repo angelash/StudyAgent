@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 
 describe('guardian-scoped rubric review and evidence feedback', () => {
@@ -39,6 +39,7 @@ describe('guardian-scoped rubric review and evidence feedback', () => {
       textbookVersion: '原创范围', learnedAtomIds: ['explain'], currentAtomId: 'explain', minutesPerSession: 15 });
   });
   afterAll(async () => { await app.close(); });
+  afterEach(() => { vi.useRealTimers(); });
   async function call(method: 'get' | 'post' | 'put' | 'patch', path: string, body?: unknown, actor = parent, status?: number) {
     let query = request(app.getHttpServer())[method](`/api${path}`).set('Authorization', `Bearer ${actor.token}`);
     if (body !== undefined) query = query.send(body as object);
@@ -53,6 +54,41 @@ describe('guardian-scoped rubric review and evidence feedback', () => {
   const reviewPath = (kind: string, id: string) => `/admin/reviews/${kind}/${encodeURIComponent(id)}`;
   const review = (key: string, expectedVersion = 0) => ({ requestKey: key, expectedVersion, reason: '证据引用完整，联系解释只完成一部分，需要补充。',
     ratings: [{ criterionIndex: 0, score: 1, observation: '明确引用了文本中的线索' }, { criterionIndex: 1, score: 0.5, observation: '给出了结论，但联系尚不完整' }] });
+
+  it('requires rechecking revised baseline evidence while preserving existing practice and its original plan snapshot', async () => {
+    const { session, report } = await baseline();
+    const plan = await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: session.id, minutesPerDay: 10, useAi: false });
+    expect(plan.impact.pendingReviewCount).toBe(2); expect(plan.baselineReportVersion).toBe(1);
+    await call('post', reviewPath('diagnostic', report.evidence[0].id), review('plan-basis-first'), admin);
+    const changed = await call('get', `/diagnostics/plans/${plan.id}`);
+    expect(changed.impact.needsReview).toBe(true); expect(changed.impact.currentReportVersion).toBe(2);
+    expect(changed.impact.affectedActionIds).toEqual(plan.actions.map((a: any) => a.id));
+    await call('patch', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'active' }, parent, 409);
+    const adjustment = { expectedRevision: plan.revision, requestKey: 'confirm-new-basis', reason: '已查看量规评分修订，保留知识目标并按新依据继续观察。', acknowledgeReportVersion: 1,
+      minutesPerDay: 10, actions: plan.actions.map((a: any) => ({ actionId: a.id, minutes: a.minutes, activity: a.activity })) };
+    await call('post', `/diagnostics/plans/${plan.id}/adjust`, adjustment, parent, 409);
+    Object.assign(plan, await call('post', `/diagnostics/plans/${plan.id}/adjust`, { ...adjustment, acknowledgeReportVersion: 2 }));
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'active' }));
+    const practice = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
+    await call('post', reviewPath('diagnostic', report.evidence[1].id), review('plan-basis-second'), admin);
+    expect((await call('get', `/learning/students/${studentId}/today?subject=chinese`)).plan.impact.needsReview).toBe(true);
+    expect((await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {})).id).toBe(practice.id);
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'chinese', intent: 'verification', planId: plan.id, maxItems: 2 }, parent, 409);
+    vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(Date.now() + 86_400_000);
+    parent = await auth.login({ principal: 'review-parent@test', credential: 'review-secret-123' }, 'plan-basis-renew');
+    await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {}, parent, 409);
+    const due = (await call('get', `/diagnostics/plans/${plan.id}/reviews`))[0];
+    await call('post', `/diagnostics/reviews/${due.id}/start`, {}, parent, 409);
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'paused' }));
+    Object.assign(plan, await call('post', `/diagnostics/plans/${plan.id}/adjust`, { ...adjustment, expectedRevision: plan.revision, requestKey: 'confirm-basis-again', acknowledgeReportVersion: 3 }));
+    Object.assign(plan, await call('patch', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'active' }));
+    expect(plan.impact.needsReview).toBe(false); expect(plan.baselineReportVersion).toBe(3);
+    const original = await call('get', `/learning/practice/${practice.id}`);
+    expect(original.action).toEqual(practice.action); expect(original.planRevision).toBe(practice.planRevision);
+    const next = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
+    expect(next.planRevision).toBe(plan.revision); expect(next.id).not.toBe(practice.id);
+    expect((await call('get', `/diagnostics/plans/${plan.id}/history`)).some((h: any) => h.snapshot.baselineReportVersion === 1)).toBe(true);
+  });
 
   it('requires guardian assignment, prevents broader teacher access and revokes access immediately', async () => {
     const { report, session } = await baseline(), path = reviewPath('diagnostic', report.evidence[0].id);

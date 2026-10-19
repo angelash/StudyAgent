@@ -52,6 +52,7 @@ export class LearningService {
     if (!action) throw new NotFoundException('活动不属于当前计划');
     const day = studyDay(), existing = this.store.practiceSessions.find((item) => item.planId === planId && item.actionId === actionId && item.day === day);
     if (existing) return this.view(user, existing.id);
+    if (this.guidance.get(user, planId).impact.needsReview) throw new ConflictException('评测依据已修订，请由家长先核对指导计划');
     const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
     const allowed = new Set([...baseline.scopeSnapshot.learnedAtomIds, ...baseline.coverage.map((item) => item.atomId)]);
     if (!allowed.has(action.atomId)) throw new BadRequestException('活动超出计划确认时的学习范围');
@@ -70,6 +71,7 @@ export class LearningService {
     if (!ids.length) throw new BadRequestException('此活动暂缺审核通过的练习题，请在教研覆盖中补充');
     const session: PracticeSession = { id: this.store.nextId('practice'), studentId: plan.studentId, subject: plan.subject, planId, actionId,
       atomId: action.atomId, day, status: 'in_progress', questionIds: ids,
+      actionSnapshot: structuredClone(action), planRevision: plan.revision ?? 1, snapshotOrigin: 'started',
       snapshots: ids.map((id) => {
         const question = this.store.questions.find((item) => item.id === id)!, payload = this.workspace.buildRenderPayload(id);
         return structuredClone({ id, stem: question.stem, answer: question.answer, analysis: question.analysis,
@@ -86,10 +88,12 @@ export class LearningService {
   }
   view(user: InMemoryUserAccount, id: string) {
     const session = this.requireSession(user, id), attempts = this.store.practiceAttempts.filter((item) => item.sessionId === id).map((item) => this.effectiveAttempt(item));
-    const plan = this.store.diagnosticPlans.find((item) => item.id === session.planId), action = plan?.actions.find((item) => item.id === session.actionId);
+    const plan = this.store.diagnosticPlans.find((item) => item.id === session.planId), action = session.actionSnapshot ?? plan?.actions.find((item) => item.id === session.actionId);
     const latest = session.questionIds.map((questionId) => [...attempts].reverse().find((item) => item.questionId === questionId));
     return { id, studentId: session.studentId, subject: session.subject, atomId: session.atomId, planId: session.planId,
       actionId: session.actionId, day: session.day, status: session.status, action, completedAt: session.completedAt,
+      planRevision: session.planRevision ?? 1, currentPlanRevision: plan?.revision ?? 1,
+      snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
       questions: session.questionIds.map((questionId, index) => ({ id: questionId, attempted: Boolean(latest[index]),
         latest: latest[index] ?? null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
       summary: { attempted: latest.filter(Boolean).length, total: session.questionIds.length,

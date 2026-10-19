@@ -19,6 +19,7 @@ const { hashToken } = require('../../apps/api/dist/apps/api/src/modules/auth/aut
 const { CurriculumService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/curriculum.service.js');
 const { DiagnosticsService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js');
 const { GuidanceService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/guidance.service.js');
+const { LearningService } = require('../../apps/api/dist/apps/api/src/modules/learning/learning.service.js');
 const { writeFileSync, mkdirSync } = require('node:fs');
 async function main() {
   let fixtureToken, reviewFixture;
@@ -57,8 +58,10 @@ async function main() {
       answer: { questionId: item.questionId, mode: 'short_answer', response: { value: '我从文章中的具体线索看到了变化。我还需要把线索和结论之间的联系解释清楚。' } }, elapsedMs: 38000 });
     const report = diagnostics.complete(user, session.id);
     const plan = await app.get(GuidanceService).create(user, childId, { baselineSessionId: session.id, minutesPerDay: 10, useAi: false });
-    app.get(GuidanceService).update(user, plan.id, { status: 'active' });
-    reviewFixture = { studentId: childId, sessionId: session.id, responseId: report.evidence[0].id, atomId: atom.id };
+    const activePlan = app.get(GuidanceService).update(user, plan.id, { status: 'active', expectedRevision: plan.revision });
+    const practice = app.get(LearningService).start(user, plan.id, activePlan.actions[0].id);
+    reviewFixture = { studentId: childId, sessionId: session.id, responseId: report.evidence[0].id, atomId: atom.id,
+      planId: plan.id, practiceId: practice.id };
   });
   await app.listen(14000, '127.0.0.1');
   mkdirSync('data/qa', { recursive: true });

@@ -23,12 +23,26 @@ export class DiagnosticsService {
   start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope) {
     const command = validate(diagnosticStartSchema, input);
     this.students.assertCanAccessStudent(user, command.studentId);
-    const scope = scopeOverride ?? this.curriculum.getScope(user, command.studentId, command.subject);
+    const review = command.reviewTaskId ? this.store.reviewTasks.find(t => t.id === command.reviewTaskId && t.studentId === command.studentId && t.subject === command.subject) : undefined;
+    if (command.reviewTaskId && (!review || command.intent !== 'retest' || (command.planId && command.planId !== review.planId))) throw new BadRequestException('复测任务与当前评测不匹配');
+    const planId = review?.planId ?? command.planId;
+    const plan = planId ? this.store.diagnosticPlans.find(p => p.id === planId && p.studentId === command.studentId && p.subject === command.subject) : undefined;
+    if (planId && !plan) throw new NotFoundException('指导计划不存在');
+    if (review?.sessionId) return this.sessionView(user, review.sessionId);
+    if (plan) {
+      if (!['verification', 'retest'].includes(command.intent)) throw new BadRequestException('指导计划只能关联验证或复测');
+      if (plan.status !== 'active') throw new BadRequestException('请先启用指导计划');
+      const baselineVersion = plan.baselineReportVersion ?? this.store.diagnosticReports.filter(r => r.sessionId === plan.baselineSessionId && r.createdAt <= plan.createdAt)
+        .sort((a, b) => b.version - a.version)[0]?.version ?? 1;
+      if (baselineVersion !== (this.report(user, plan.baselineSessionId).version ?? 1)) throw new ConflictException('评测依据已修订，请先核对指导计划');
+    }
+    if (review && (review.status !== 'pending' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已不可用');
+    const scope = plan ? this.requireSession(user, plan.baselineSessionId).scopeSnapshot : scopeOverride ?? this.curriculum.getScope(user, command.studentId, command.subject);
     if (!scope) throw new BadRequestException('请先确认年级、教材和已学范围，再开始评测');
     const learned = new Set(scope.learnedAtomIds);
     const prerequisites = new Set(this.curriculum.prerequisiteClosure(scope.learnedAtomIds));
     const allowed = new Set([...learned, ...(command.includePrerequisites ? prerequisites : [])]);
-    let targets = command.targetAtomIds ?? scope.learnedAtomIds;
+    let targets = command.targetAtomIds ?? (review ? [review.atomId] : plan ? plan.actions.map(a => a.atomId) : scope.learnedAtomIds);
     if (command.hypothesisId) {
       const hypothesis = this.store.diagnosticHypotheses.find((item) => item.id === command.hypothesisId &&
         item.studentId === command.studentId && item.subject === command.subject);
@@ -37,6 +51,8 @@ export class DiagnosticsService {
       if (targets.some((id) => !hypothesis.probeAtomIds.includes(id))) throw new BadRequestException('验证点超出当前假设的范围');
     }
     targets = [...new Set(targets)];
+    if (review && (targets.length !== 1 || targets[0] !== review.atomId)) throw new BadRequestException('本次复测只针对安排中的知识目标');
+    if (plan && targets.some(id => !plan.actions.some(a => a.atomId === id))) throw new BadRequestException('验证目标不属于当前指导计划');
     if (!targets.length || targets.some((id) => !allowed.has(id))) throw new BadRequestException('评测知识点超出已确认的学习进度');
     const targetSet = new Set(targets);
     if (command.includePrerequisites) for (const id of this.curriculum.prerequisiteClosure(targets)) targetSet.add(id);
@@ -89,6 +105,7 @@ export class DiagnosticsService {
       seed, algorithmVersion: 'scope-blueprint-v1', startedAt: new Date().toISOString(), completedAt: null,
       exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
+      ...(plan ? { planId: plan.id, planRevision: plan.revision ?? 1 } : {}),
     };
     if (session.reviewTaskId) {
       const task = this.store.reviewTasks.find((item) => item.id === session.reviewTaskId && item.studentId === session.studentId);
@@ -123,6 +140,7 @@ export class DiagnosticsService {
     return { id: session.id, studentId: session.studentId, subject: session.subject, intent: session.intent,
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
       startedAt: session.startedAt, completedAt: session.completedAt, answeredCount: responses.length, totalCount: session.itemIds.length,
+      planId: session.planId ?? null, planRevision: session.planRevision ?? null,
       items: session.itemSnapshots.map((item) => ({ id: item.id, questionId: item.questionId, atomId: item.atomId, dimension: item.dimension,
         atomName: this.store.knowledgeAtoms.find((atom) => atom.id === item.atomId)?.name ?? item.atomId,
         reason: session.selectionReasons[item.id], answered: responses.some((response) => response.itemId === item.id) })) };

@@ -1,4 +1,4 @@
-import type { DiagnosticSession } from './diagnostics';
+import type { DiagnosticSession, GuidanceAction } from './diagnostics';
 export type PracticeAttempt = {
   id: string; sessionId: string; questionId: string; requestKey: string; answer: unknown;
   disposition: 'answered' | 'skip'; score: number | null; correct: boolean | null;
@@ -10,5 +10,7 @@ export type PracticeSession = {
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];
   snapshots: DiagnosticSession['questionSnapshots']; createdAt: string; completedAt: string | null;
   drafts?: Record<string, { answer: unknown; savedAt: string }>;
+  actionSnapshot?: GuidanceAction; planRevision?: number;
+  snapshotOrigin?: 'started' | 'legacy_capture';
 };
 export type PracticeHint = { id: string; sessionId: string; questionId: string; level: number; at: string };

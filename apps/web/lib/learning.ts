@@ -1,14 +1,15 @@
-import type { DiagnosticGuidancePlan, DiagnosticHypothesis, GuidanceAction, LearningScope, MasteryEstimate, PracticeAttempt, Subject } from '@study-agent/contracts';
+import type { GuidancePlanView, DiagnosticHypothesis, GuidanceAction, LearningScope, MasteryEstimate, PracticeAttempt, Subject } from '@study-agent/contracts';
 export const subjectNames: Record<Subject, string> = { math: '数学', chinese: '语文', english: '英语' };
 export const masteryNames: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '稳定掌握' };
 export type Child = { id: string; nickname: string; grade: number };
 export type DailyLearning = {
-  studentId: string; subject: Subject; day: string; plan: DiagnosticGuidancePlan | null; awaitingConfirmation: DiagnosticGuidancePlan | null;
+  studentId: string; subject: Subject; day: string; plan: GuidancePlanView | null; awaitingConfirmation: GuidancePlanView | null;
   activities: Array<GuidanceAction & { atomName: string; status: string; sessionId: string | null }>;
   reviews: Array<{ id: string; atomName: string; intervalDays: number; dueAt: string; due: boolean; status: string; sessionId: string | null }>;
   incompleteAssessments: Array<{ id: string; answeredCount: number; totalCount: number }>; notice: string;
 };
-export type Practice = { id: string; planId: string; studentId: string; subject: Subject; status: string; action: GuidanceAction;
+export type Practice = { id: string; planId: string; studentId: string; subject: Subject; status: string; action: GuidanceAction; planRevision: number; currentPlanRevision: number;
+  snapshotOrigin: 'started' | 'legacy_capture';
   questions: Array<{ id: string; attempted: boolean; latest: PracticeAttempt | null; attempts: number }>;
   summary: { attempted: number; total: number; answered: number; skipped: number; independentFirstPass: number; pendingReview: number } };
 export type PracticeFeedback = { attempt: PracticeAttempt; analysis: string; referenceAnswer: unknown; notice: string };
