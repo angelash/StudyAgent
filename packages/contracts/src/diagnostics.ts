@@ -56,6 +56,7 @@ export const measurementItemSchema = z.object({
   reviewStatus: z.enum(['draft', 'approved', 'rejected']), mappingWeight: z.number().positive().max(1),
   observationCode: z.string().min(1).max(100), version: z.number().int().positive(),
   atomDefinitionFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+  contentFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
 });
 export type MeasurementItem = z.infer<typeof measurementItemSchema>;
 

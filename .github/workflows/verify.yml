@@ -42,6 +42,8 @@ jobs:
         run: node scripts/qa/verify-measurement-definitions.cjs data/qa/measurement-definition-runtime.json
       - name: Assessment preview, partial evidence and state recovery
         run: node scripts/qa/verify-assessment-blueprints.cjs data/qa/assessment-blueprint-runtime.json
+      - name: Original paper measurement review and publication recovery
+        run: node scripts/qa/verify-measurement-content.cjs data/qa/measurement-content-runtime.json
       - name: Asset audit tool regression
         run: python scripts/assets/test_audit_archive_sensitive.py
       - name: Independent recovery verifier regression

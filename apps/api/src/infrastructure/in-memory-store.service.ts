@@ -34,6 +34,7 @@ import {
   GuidancePlanRevision,
   StudentLearningAccess, StudentLearningCode, StudentAccessRevision, StudentProgressProposal,
   PrivacyReceipt, StudentMedia,
+  MeasurementContentCandidate,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -378,6 +379,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   knowledgeAtoms: KnowledgeAtom[] = [];
   learningScopes: LearningScope[] = [];
   measurementItems: MeasurementItem[] = [];
+  measurementCandidates: MeasurementContentCandidate[] = [];
   textbookAtomMappings: TextbookAtomMapping[] = [];
   curriculumRevisions: CurriculumRevision[] = [];
   diagnosticSessions: DiagnosticSession[] = [];
@@ -442,6 +444,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.knowledgeAtoms = [];
     this.learningScopes = [];
     this.measurementItems = [];
+    this.measurementCandidates = [];
     this.textbookAtomMappings = [];
     this.curriculumRevisions = [];
     this.diagnosticSessions = [];

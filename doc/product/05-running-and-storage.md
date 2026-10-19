@@ -1,5 +1,7 @@
 # 运行与存储
 
+原卷测量素材页为 `/admin/measurement`，从 `/library` 单题进入，需管理员或教师身份。来源、题面、媒体、评分和知识映射分别审核后才能发布，研究原卷与单题发布资格独立。运行 `node scripts/qa/verify-measurement-content.cjs` 验证生产模式SQLite；第三个参数 `postgres` 使用既有隔离QA集群。第四个参数 `real` 只验证迁入原卷候选与重启，绝不发布。详见 [原卷测量素材交付](28-measurement-content-delivery.md)。
+
 现有256个原创知识点均含教学卡。执行 `node scripts/qa/audit-authored-curriculum.cjs` 可核查教学覆盖和逐点测量素材缺口；先构建contracts/API。旧库仅为精确未编辑的v1补卡，用户修改和草稿保留。教学覆盖与教材审核对齐、测量题族深度、标准化校准分别验收，详见 [教学交付](27-full-teaching-delivery.md)。
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。

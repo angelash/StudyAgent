@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-19T20:40:22.147Z",
+  "driver": "sqlite",
+  "realSource": true,
+  "passed": true,
+  "scope": "Private recovered archive, isolated business database, staging and restart only. No source publication, scoring or measurement-validity claim.",
+  "sourceSha256": {
+    "apps/api/src/modules/library/measurement-content.service.ts": "b2e08c8be135df1b7c3ef1606a3700f49a9455c0af859598b05d65de5428b88c",
+    "apps/api/src/modules/library/measurement-content.controller.ts": "6d778828ab61e3503304de6e7ae56ab516d9a80dd5d1fac45981a94cae96a5c6",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "18872fd127ca51c6943a0e1af4436a7c60e3c4abb8bf2dfdae1b7d911bd108b5",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+    "packages/contracts/src/measurement-content.ts": "d71dff489d65f2426e5fdda88dbba76af6dd9fdae90680edd5ef9a81c9141f71",
+    "apps/web/app/admin/measurement/page.tsx": "dccd067c882bc0c2837b8ebd6266fbb22e5028634bfa98e044b1bb6214570d20"
+  },
+  "result": {
+    "staged": 3,
+    "immutableSourceHashSurvivesRestart": true,
+    "noPublication": true,
+    "noMeasurement": true,
+    "privateResearchAccess": true,
+    "restarts": 1
+  }
+}

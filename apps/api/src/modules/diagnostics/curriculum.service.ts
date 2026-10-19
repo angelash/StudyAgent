@@ -9,7 +9,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { validate } from '../../common/validation';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
-import { atomDefinitionFingerprint, measurementDefinitionMatches } from './measurement-definition';
+import { atomDefinitionFingerprint, measurementDefinitionMatches, measurementContentMatches, questionContentFingerprint } from './measurement-definition';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
@@ -20,11 +20,13 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
   const sources = new Map((atomIds ? store.select('questionSources', { questionId: questionIds }) : store.inspect('questionSources')).map((s) => [s.questionId, s]));
   const documents = new Map((atomIds ? store.select('questionDocuments', { questionId: questionIds }) : store.inspect('questionDocuments')).map((d) => [d.questionId, d]));
   const schemas = new Map((atomIds ? store.select('questionAnswerSchemas', { questionId: questionIds }) : store.inspect('questionAnswerSchemas')).map(schema => [schema.questionId, schema]));
+  const candidates = new Map(store.select('measurementCandidates', { questionId: questionIds }).map(candidate => [candidate.questionId, candidate]));
   return mappings.filter((item) => {
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
       item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && measurementDefinitionMatches(store, item, atom) &&
+      measurementContentMatches(store, item, candidates.get(item.questionId) ?? null) &&
       !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported && mediaModeAvailable(schemas.get(item.questionId)!.mode);
   });
 }
@@ -234,7 +236,8 @@ export class CurriculumService {
     if (item.reviewStatus === 'approved' && (!answerSchema || !answerInputConfiguration(answerSchema).supported)) throw new BadRequestException('请先补齐可用的作答交互配置，再审核量化映射');
     const previous = this.store.find('measurementItems', { id: item.id });
     if (previous && item.version !== previous.version) throw new ConflictException('题目映射版本已变化，请重新核对后保存');
-    const next = { ...item, atomDefinitionFingerprint: atomDefinitionFingerprint(atom), version: previous ? previous.version + 1 : 1 };
+    const next = { ...item, atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
+      contentFingerprint: questionContentFingerprint(this.store, question.id), version: previous ? previous.version + 1 : 1 };
     if (previous && !this.store.find('curriculumRevisions', { entityId: item.id, kind: 'measurement', version: previous.version })) {
       this.recordRevision('measurement', previous.id, previous.version, user.id, previous);
     }
@@ -306,6 +309,7 @@ export class CurriculumService {
         const atom = this.store.find('knowledgeAtoms', { id: mapping.atomId });
         return atom && measurementDefinitionMatches(this.store, mapping, atom) ? null : '知识定义已变化或无法核对，请对照当前目标和标准重新审核此映射';
       })(),
+      contentIssue: measurementContentMatches(this.store, mapping) ? null : '题面、评分或来源已变化，或素材已撤回，请回到测量素材流程核对当前发布版本',
       question: this.store.find('questions', { id: mapping.questionId }),
       answerSchema: this.store.find('questionAnswerSchemas', { questionId: mapping.questionId }),
       source: this.store.find('questionSources', { questionId: mapping.questionId }) }));

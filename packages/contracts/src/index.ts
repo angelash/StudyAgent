@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { createMeasurementDraftSchema } from './measurement-content';
 export * from './diagnostics';
 export * from './curriculum';
 export * from './reviews';
@@ -722,3 +723,5 @@ export * from './privacy';
 export * from './answer-protocol';
 export * from './student-media';
 export * from './operations';
+export * from './measurement-content';
+export const measurementDraftSchema = createMeasurementDraftSchema(subjectSchema, questionBlockSchema, questionAnswerSchemaSchema);

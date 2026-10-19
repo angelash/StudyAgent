@@ -108,7 +108,9 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     store.questions.find((item: any) => item.id === first.questionId).answer = '999';
     store.questions.find((item: any) => item.id === first.questionId).stem = '修改后的题干';
     const rendered = await call('get', `/diagnostics/sessions/${session.id}/items/${first.id}`);
-    expect(JSON.stringify(rendered.payload)).not.toContain('999');
+    expect(rendered.payload).not.toHaveProperty('answer');
+    expect(rendered.payload.answerSchema.gradingConfig).toEqual({});
+    expect(rendered.payload.document.blocks.map((block: any) => block.text ?? '').join('\n')).not.toContain('999');
     expect(rendered.payload.document.blocks[0].text).not.toContain('修改后的题干');
     const saved = await submit(session, first, 6);
     expect((await submit(session, first, 6)).responseId).toBe(saved.responseId);

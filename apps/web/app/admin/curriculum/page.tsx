@@ -16,7 +16,7 @@ type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade:
   notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number } };
 type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; mappedLessonCount: number };
 type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<{ id: string; name: string; lessons: Array<{ id: string; name: string; atomIds: string[]; mappingState: string; mapping: TextbookAtomMapping | null }> }> };
-type Item = { mapping: MeasurementItem; question: Question; answerSchema: unknown; source: unknown; eligible: boolean; inputIssue: string; definitionIssue: string | null };
+type Item = { mapping: MeasurementItem; question: Question; answerSchema: unknown; source: unknown; eligible: boolean; inputIssue: string; definitionIssue: string | null; contentIssue: string | null };
 const req = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }, getAuthToken());
 const subjects = { math: '数学', chinese: '语文', english: '英语' };
 const dimensions = { understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' };
@@ -59,7 +59,7 @@ export default function CurriculumPage() {
     prerequisiteIds: [], curriculumVersion: 'authored-v1', status: 'draft', version: 1 }); setItems([]); setMapping(null); setRevisions(null); }
 
   return <main className="learning-studio"><StudyNav /><div className="admin-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum" aria-current="page">知识与覆盖</Link><Link href="/admin/reviews">评分复核</Link><Link href="/admin/imports">资料导入</Link><Link href="/admin/content">内容生产</Link><Link href="/library">题卷审核</Link><Link href="/admin/analytics">运营观察</Link></nav>
+    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum" aria-current="page">知识与覆盖</Link><Link href="/admin/measurement">测量素材</Link><Link href="/admin/reviews">评分复核</Link><Link href="/admin/imports">资料导入</Link><Link href="/admin/content">内容生产</Link><Link href="/library">题卷审核</Link><Link href="/admin/analytics">运营观察</Link></nav>
     <span className="studio-eyebrow">CURRICULUM / EVIDENCE</span><h1>每一个点，都能追到依据。</h1><p>把知识定义、题目量规与教材进度分别审核。缺题、缺维度和缺映射会保留在覆盖视图中。</p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
     {!role && <p>正在核对教研权限… <Link href="/parent/login">登录</Link></p>}
@@ -93,7 +93,7 @@ export default function CurriculumPage() {
             <label>审核结果<select value={mapping.reviewStatus} onChange={e => setMapping({ ...mapping, reviewStatus: e.target.value as MeasurementItem['reviewStatus'] })}><option value="draft">待审核</option><option value="approved">审核通过</option><option value="rejected">拒绝</option></select></label>
             <button className="studio-primary wide" disabled={busy} onClick={() => act(async () => { await req('/admin/measurement-items', mapping); await reload(); setItems(await req<Item[]>(`/admin/curriculum/atoms/${encodeURIComponent(atom.id)}/items`)); setMapping(null); })}>保存映射版本</button>
           </div>}
-          <div className="admin-items">{items.map(({ mapping: m, question, eligible, inputIssue, definitionIssue }) => <article key={m.id}><div><span>{dimensions[m.dimension]} · {m.reviewStatus} · v{m.version}</span><span>{m.expectedSeconds}秒</span></div><p>{question?.stem ?? '题目不可用'}</p><small>题族：{m.family}</small>{!eligible && <p className="admin-gap">未进入量化题组：{definitionIssue || inputIssue || "请核对题目发布、来源审核及映射版本"}</p>}<details><summary>参考响应与来源</summary><pre>{JSON.stringify({ answer: question?.answer, questionId: m.questionId, version: m.questionVersion }, null, 2)}</pre></details><button className="studio-text-button" onClick={() => setMapping({ ...m })}>复核此映射</button></article>)}</div>
+          <div className="admin-items">{items.map(({ mapping: m, question, eligible, inputIssue, definitionIssue, contentIssue }) => <article key={m.id}><div><span>{dimensions[m.dimension]} · {m.reviewStatus} · v{m.version}</span><span>{m.expectedSeconds}秒</span></div><p>{question?.stem ?? '题目不可用'}</p><small>题族：{m.family}</small>{!eligible && <p className="admin-gap">未进入量化题组：{definitionIssue || contentIssue || inputIssue || "请核对题目发布、来源审核及映射版本"}</p>}<details><summary>参考响应与来源</summary><pre>{JSON.stringify({ answer: question?.answer, questionId: m.questionId, version: m.questionVersion }, null, 2)}</pre></details><button className="studio-text-button" onClick={() => setMapping({ ...m })}>复核此映射</button></article>)}</div>
           <button className="studio-text-button" onClick={() => act(async () => setRevisions(await req<unknown[]>(`/admin/curriculum/revisions/${encodeURIComponent(atom.id)}`)), '已读取历史版本')}>查看定义修改记录</button>
           {revisions && <pre className="admin-revision">{JSON.stringify(revisions, null, 2)}</pre>}
         </>}</section></div>

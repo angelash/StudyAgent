@@ -42,6 +42,7 @@ export class LibraryService {
   }
   overview(user: InMemoryUserAccount) {
     return { ready: this.repo.available, researchAccess: privileged(user),
+      measurementAccess: ['admin', 'teacher'].includes(user.role),
       research: this.repo.available && privileged(user) ? this.repo.stats() : null,
       published: this.store.select('paperPublications', { status: 'published' }).length,
       bookmarks: this.store.select('libraryBookmarks', { userId: user.id }).length,
