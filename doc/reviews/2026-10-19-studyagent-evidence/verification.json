@@ -1,0 +1,86 @@
+{
+  "capturedAt": "2026-10-19T09:28:39.365608+00:00",
+  "head": "4917d580b4286b56e7f95c29a5af925fd4460315",
+  "scope": "current worktree, including pre-existing admin content page changes; no application source edits in this review",
+  "checks": [
+    {
+      "command": "npm.cmd ci --ignore-scripts --no-audit --no-fund",
+      "result": "passed",
+      "note": "346 dependencies installed; lifecycle scripts intentionally skipped for audit setup"
+    },
+    {
+      "command": "npm.cmd run prisma:generate --workspace @study-agent/api",
+      "result": "passed",
+      "note": "Generated client required after skipped lifecycle scripts; does not connect or migrate database"
+    },
+    {
+      "command": "npm.cmd run build",
+      "result": "passed",
+      "note": "contracts/config/API/Web production build; Next.js 15.5.15; no database persistence acceptance implied"
+    },
+    {
+      "command": "npm.cmd test",
+      "result": "passed",
+      "testFiles": 3,
+      "tests": 31,
+      "breakdown": {
+        "apiIntegration": 26,
+        "importUtils": 4,
+        "codexProcessLauncher": 1
+      },
+      "note": "AI key cleared by integration suite; no live model success evaluation"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "result": "passed",
+      "note": "TypeScript checks in API and Web; not a complete lint/security audit"
+    }
+  ],
+  "setupFailureResolved": "An initial test command could not find generated PrismaClient after installing with --ignore-scripts; generation completed, followed by passing build/test/type checks. This was audit setup, not classified as a product defect.",
+  "sourceSha256": {
+    "apps/api/src/modules/auth/auth.service.ts": "f6b6068af8e720f7a8c71ab13f362a6b711e2f4a18b7b082de38e6938e218abe",
+    "apps/api/src/modules/students/students.service.ts": "951892a86821abe733da16061d8a8ee19181900bb18323a0bde5d0e3785773a5",
+    "apps/api/src/modules/ai/ai.controller.ts": "581b1982fc2bc44ae05a0c8e99e70d2136403314fd6ad78a795e66395f97ed4e",
+    "apps/api/src/modules/content/content.service.ts": "6ef1278779b143a75e7e0d4352630a29f3fc227f630def9c849daa9bc7686a9c",
+    "apps/api/src/modules/question-workspace/question-workspace.service.ts": "74dc89826fd23dc1f3dd899a4a8b771ec7209e1be24a704bf529d6881b6e87be",
+    "apps/api/src/modules/missions/missions.service.ts": "d7008f485423930256a407652117264bb761b9865d809b61e1fedb5d71e1e392",
+    "apps/api/src/modules/content/question-coverage.service.ts": "db871150e320e1b28f8beeb8d1d8749c950660036c7295f2bc599b79b6faf349",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "89ca2c11ad703d748eac4873a319327b21ad4e1f7318f3eed2889b62e572fa74",
+    "apps/api/prisma/schema.prisma": "e916cd55548f2ee33eb71f56bc7ceb87baae522b48a48db8592d53542991f783",
+    "apps/web/app/admin/content/page.tsx": "f70b4f156c503a149dce40d4a1f30a9ff5bd9199f24d67f498b20ee90deb91f0",
+    "package-lock.json": "bf89ceec3bfeffa7458bc224b1f12ff30abbcab851de948712ee0f272d37008b"
+  },
+  "evidenceFiles": [
+    "behavior-probes.json",
+    "content-inventory.json"
+  ],
+  "browserScope": [
+    "Isolated Next.js http://localhost:13000 homepage and content admin desktop view",
+    "Isolated API port 14000 without model credentials",
+    "No login, upload, physical print, mobile device or end-to-end family usability acceptance"
+  ],
+  "limitations": [
+    "No production database, backup restore or load test performed",
+    "No new collection or official account activity",
+    "Cross-project historic tests not rerun; source data read with SQLite read-only/query_only",
+    "Full corpus structure classifications come from the existing 2026-10-19 audit, not a fresh full-corpus reclassification",
+    "No commercial redistribution rights inferred from access or membership",
+    "Existing admin content page and code-workspace file preserved"
+  ],
+  "thirdPartySummaryEvidence": {
+    "memberAudit": "F:/workspace/rogue-prototype-lab/prototypes/re-shijuanbao-service/evidence/member-gap-verification.json",
+    "surveyDownloads": "F:/workspace/rogue-prototype-lab/prototypes/education-app-survey/DOWNLOADS.md"
+  },
+  "reportValidation": {
+    "localFileLinks": 37,
+    "brokenLinks": 0,
+    "sections": 11,
+    "tables": 8,
+    "countReconciliation": "passed",
+    "desktopBrowser": "visually inspected",
+    "summaryFilter": "passed",
+    "finalDocumentContent": "passed",
+    "temporaryReviewServices": "stopped",
+    "sourceHashRecheck": "11 source inputs unchanged"
+  }
+}

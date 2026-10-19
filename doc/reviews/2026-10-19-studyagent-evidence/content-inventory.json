@@ -1,0 +1,374 @@
+{
+  "capturedAt": "2026-10-19T09:22:53.342456+00:00",
+  "scope": "read-only primary math metadata and returned top-level fields; presence is not correctness or full-paper usability",
+  "counts": {
+    "papers": 72468,
+    "questions": 885203,
+    "resources": 2175
+  },
+  "paperByGrade": [
+    [
+      "初三",
+      11767
+    ],
+    [
+      "初二",
+      11702
+    ],
+    [
+      "初一",
+      11421
+    ],
+    [
+      "高一",
+      8786
+    ],
+    [
+      "高三",
+      7753
+    ],
+    [
+      "高二",
+      7250
+    ],
+    [
+      "六年级",
+      3715
+    ],
+    [
+      "三年级",
+      2631
+    ],
+    [
+      "五年级",
+      2593
+    ],
+    [
+      "四年级",
+      2452
+    ],
+    [
+      "二年级",
+      1413
+    ],
+    [
+      "一年级",
+      985
+    ]
+  ],
+  "primaryBySubject": [
+    [
+      "数学",
+      9199
+    ],
+    [
+      "语文",
+      3641
+    ],
+    [
+      "英语",
+      559
+    ],
+    [
+      "科学",
+      263
+    ],
+    [
+      "政治",
+      53
+    ],
+    [
+      "物理",
+      25
+    ],
+    [
+      "地理",
+      23
+    ],
+    [
+      "生物",
+      14
+    ],
+    [
+      "化学",
+      9
+    ],
+    [
+      "历史",
+      3
+    ]
+  ],
+  "questionFamilies": [
+    [
+      "bank",
+      59505
+    ],
+    [
+      "paper",
+      825698
+    ]
+  ],
+  "mediaRegistry": [
+    [
+      "image",
+      "done",
+      358417,
+      6601635285
+    ],
+    [
+      "image",
+      "error",
+      204,
+      0
+    ],
+    [
+      "pdf",
+      "done",
+      32117,
+      28040959501
+    ]
+  ],
+  "primaryMathReturnedFields": {
+    "paperRows": 9199,
+    "rowsWithReturnedQuestions": 9199,
+    "returnedTopLevelQuestions": 221305,
+    "titleNonempty": 221299,
+    "answerNonempty": 221170,
+    "detailsNonempty": 0,
+    "optionsNonempty": 0,
+    "nestedChildrenPresent": 0,
+    "questionTypes": {
+      "填空题": 94156,
+      "选择题": 47935,
+      "操作题": 5187,
+      "应用题": 39798,
+      "判断题": 7289,
+      "计算题": 14285,
+      "连线题": 484,
+      "解答题": 11969,
+      "多选题": 23,
+      "口算题": 5,
+      "其他": 168,
+      "比较大小题": 5,
+      "求值题": 1
+    },
+    "stemFeatures": {
+      "image": 60367,
+      "table": 5269,
+      "mathml": 6,
+      "ruby": 66
+    }
+  },
+  "priorAuditPrimaryBySubjectAndState": [
+    [
+      "化学",
+      "complete",
+      3
+    ],
+    [
+      "化学",
+      "partial",
+      6
+    ],
+    [
+      "历史",
+      "complete",
+      2
+    ],
+    [
+      "历史",
+      "partial",
+      1
+    ],
+    [
+      "地理",
+      "complete",
+      6
+    ],
+    [
+      "地理",
+      "partial",
+      17
+    ],
+    [
+      "政治",
+      "complete",
+      33
+    ],
+    [
+      "政治",
+      "partial",
+      20
+    ],
+    [
+      "数学",
+      "complete",
+      6075
+    ],
+    [
+      "数学",
+      "partial",
+      3124
+    ],
+    [
+      "物理",
+      "complete",
+      11
+    ],
+    [
+      "物理",
+      "partial",
+      14
+    ],
+    [
+      "生物",
+      "complete",
+      5
+    ],
+    [
+      "生物",
+      "partial",
+      9
+    ],
+    [
+      "科学",
+      "complete",
+      86
+    ],
+    [
+      "科学",
+      "partial",
+      177
+    ],
+    [
+      "英语",
+      "complete",
+      339
+    ],
+    [
+      "英语",
+      "partial",
+      220
+    ],
+    [
+      "语文",
+      "complete",
+      943
+    ],
+    [
+      "语文",
+      "partial",
+      2698
+    ]
+  ],
+  "priorAuditPrimaryMathByGradeAndState": [
+    [
+      "一年级",
+      "complete",
+      373
+    ],
+    [
+      "一年级",
+      "partial",
+      111
+    ],
+    [
+      "三年级",
+      "complete",
+      1122
+    ],
+    [
+      "三年级",
+      "partial",
+      498
+    ],
+    [
+      "二年级",
+      "complete",
+      629
+    ],
+    [
+      "二年级",
+      "partial",
+      225
+    ],
+    [
+      "五年级",
+      "complete",
+      1159
+    ],
+    [
+      "五年级",
+      "partial",
+      612
+    ],
+    [
+      "六年级",
+      "complete",
+      1722
+    ],
+    [
+      "六年级",
+      "partial",
+      1067
+    ],
+    [
+      "四年级",
+      "complete",
+      1070
+    ],
+    [
+      "四年级",
+      "partial",
+      611
+    ]
+  ],
+  "priorFullAudit": {
+    "sourceEvidenceVerifiedAt": "2026-10-19T03:19:48.416065+00:00",
+    "updated_at": 1792379103,
+    "known_catalog_scanned": 72468,
+    "states": {
+      "complete": 19056,
+      "partial": 23470,
+      "pdf": 29942
+    },
+    "gaps": {
+      "references": 67431,
+      "unique_uuids": 67425,
+      "present_blank": 0,
+      "nested_content": 0,
+      "local_exact_hits": 0
+    },
+    "gap_papers_by_source": {
+      "2": 23470
+    },
+    "partial_missing_histogram": {
+      "1": 8166,
+      "2": 4985,
+      "3": 3574,
+      "4": 2332,
+      "5": 1604,
+      "6": 1118,
+      "7": 713,
+      "8": 391,
+      "9": 226,
+      "10": 114,
+      "11": 82,
+      "12": 61,
+      "13": 34,
+      "14": 27,
+      "15": 10,
+      "16": 10,
+      "17": 6,
+      "18": 5,
+      "19": 3,
+      "20": 1,
+      "21": 4,
+      "24": 1,
+      "27": 1,
+      "28": 2
+    },
+    "source_archive_modified": false,
+    "membership_cause_inferred_from_count_only": false
+  }
+}

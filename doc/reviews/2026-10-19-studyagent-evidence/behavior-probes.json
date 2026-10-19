@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2026-10-19T09:20:02.648Z",
+  "scope": "isolated in-process Nest app; synthetic fixtures; no external AI calls",
+  "adminSelfAssignment": {
+    "role": "admin"
+  },
+  "bindingByKnownStudentId": {
+    "before": 403,
+    "bind": 201,
+    "after": 200
+  },
+  "anonymousContent": {
+    "listStatus": 200,
+    "draftAndAnswerExposed": true,
+    "draftRenderStatus": 200
+  },
+  "anonymousAssistant": {
+    "createStatus": 201,
+    "historyStatus": 200
+  },
+  "repeatedSingleQuestion": {
+    "missionQuestionCount": 3,
+    "distinctAnsweredQuestions": 1,
+    "submits": [
+      201,
+      201,
+      201
+    ],
+    "completeStatus": 201,
+    "resultStatus": "completed"
+  },
+  "emptyNumericAnswer": {
+    "valid": true,
+    "normalizedAnswer": 0
+  }
+}

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>StudyAgent · 产品化改造评估</title>
+<style>
+:root{--paper:#f7f6f1;--ink:#172c2c;--muted:#53645f;--line:#d4d9cf;--accent:#176856;--soft:#e7eee6;--white:#fffefa}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei UI","PingFang SC",sans-serif;font-size:15px;line-height:1.9}
+a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}code{font-family:Consolas,"Microsoft YaHei",monospace;background:var(--soft);padding:2px 5px;font-size:.88em;overflow-wrap:anywhere}p{margin:14px 0}strong{font-weight:650}h1,h2,h3{line-height:1.45}h1,h2{font-family:"Source Han Serif SC","Songti SC",SimSun,serif}h3{font-weight:650;font-size:19px;margin:30px 0 13px}ul,ol{padding-left:24px}li{margin:9px 0}li::marker{color:var(--accent)}
+.topline{max-width:1320px;margin:auto;padding:24px 36px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.brand{font-family:Consolas,monospace;font-size:19px;letter-spacing:.02em}.edition{color:var(--muted);font-size:12px;letter-spacing:.06em}
+.hero{max-width:1320px;margin:auto;padding:48px 36px 34px;display:grid;grid-template-columns:1fr 285px;gap:40px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.16em;margin:0 0 14px}.hero h1{font-size:clamp(30px,3.5vw,46px);font-weight:650;margin:0 0 20px;letter-spacing:-.025em}.hero .lead{max-width:750px;font-size:17px;color:var(--muted)}.stage{border-left:2px solid var(--accent);padding-left:20px;align-self:center}.stage strong{display:block;font-size:18px}.stage p{font-size:13px;color:var(--muted);margin:8px 0}.stage a{font-size:13px}.flow{max-width:1248px;margin:0 auto 36px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);list-style:none;display:flex;justify-content:space-between;gap:16px}.flow li{margin:0;display:flex;gap:12px;align-items:center;white-space:nowrap}.flow span{font:12px Consolas,monospace;color:var(--accent)}
+.flow,.facts,.footer{width:calc(100% - 72px)}.facts{max-width:1248px;margin:0 auto 36px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.fact{padding:0 24px 0 0;border-right:1px solid var(--line)}.fact:last-child{border:0}.fact b{font-family:Consolas,monospace;font-size:32px;font-weight:500;display:block;line-height:1.4}.fact small{display:block;color:var(--muted);font-size:12px;margin-top:6px}.fact span{font-size:14px}
+.workspace{display:grid;grid-template-columns:230px minmax(0,1fr);gap:42px;max-width:1320px;padding:0 36px 80px;margin:auto}.side{align-self:start;position:sticky;top:24px}.side-title{font:12px Consolas,monospace;letter-spacing:.12em;color:var(--muted);margin-bottom:18px}.toc a{display:flex;align-items:baseline;gap:12px;padding:8px 0;text-decoration:none;font-size:13px;line-height:1.65}.toc a span{font-family:Consolas,monospace;font-size:11px;color:var(--muted)}.reading{display:flex;gap:6px;flex-wrap:wrap;margin-top:24px;border-top:1px solid var(--line);padding-top:20px}.reading button{background:transparent;border:1px solid var(--line);color:var(--ink);padding:6px 12px;font-size:12px}.reading button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}.reading-status{font-size:12px;color:var(--muted)}
+main{min-width:0}main>p:first-child{font-size:12px;color:var(--muted);margin:0 0 30px}.chapter{padding:0 0 36px;margin:0 0 36px;border-bottom:1px solid var(--line)}.chapter-heading{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}.chapter-heading>span{font:13px Consolas,monospace;color:var(--accent)}h2{font-size:26px;font-weight:650;margin:0}.table-scroll{overflow-x:auto;margin:22px 0;max-width:100%}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.85}th,td{text-align:left;padding:14px 12px;vertical-align:top;border-bottom:1px solid var(--line);min-width:105px;overflow-wrap:anywhere}th{font-weight:650;background:var(--soft);padding-top:12px;padding-bottom:12px}td:first-child{font-weight:500}table a{overflow-wrap:anywhere}body[data-mode="brief"] .chapter:not([data-chapter="1"]):not([data-chapter="3"]):not([data-chapter="9"]){display:none}.footer{max-width:1248px;margin:auto;border-top:1px solid var(--line);padding:22px 0 36px;display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.stage{max-width:640px}.workspace{grid-template-columns:185px minmax(0,1fr);gap:26px}.flow,.facts,.footer{margin-left:36px;margin-right:36px}.flow{flex-wrap:wrap;justify-content:flex-start;gap:12px 28px}.flow li{min-width:145px}th,td{padding:12px 9px}h2{font-size:23px}}
+@media(max-width:700px){body{font-size:14px}.topline{padding:18px 18px 14px}.hero{padding:32px 18px 24px;gap:20px}.hero .lead{font-size:15px}.flow,.facts,.footer{width:calc(100% - 36px);margin-left:18px;margin-right:18px}.facts{grid-template-columns:1fr;gap:18px}.fact{padding:0 0 16px;border-right:0;border-bottom:1px solid var(--line)}.fact b{font-size:28px}.flow{gap:10px 15px}.flow li{min-width:135px;font-size:13px}.workspace{display:block;padding:0 18px 36px}.side{position:static;margin-bottom:30px}.toc{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.toc a{font-size:12px}.side-title{margin-bottom:8px}.reading{margin-top:14px;padding-top:14px}.chapter{padding-bottom:24px;margin-bottom:26px}.chapter-heading{gap:10px}h2{font-size:22px}h3{font-size:17px}table{font-size:12px;min-width:570px}td,th{padding:12px 10px}.footer{flex-direction:column;gap:6px}main>p:first-child{overflow-wrap:anywhere}}
+@media print{html{scroll-behavior:auto}body{background:white;color:#111;font-size:10pt}.topline,.hero{padding:10px 0}.hero{display:block}.hero h1{font-size:24pt}.stage,.flow,.facts,.side,.reading,.footer{display:none}.workspace{display:block;padding:0}.chapter{display:block!important;break-inside:auto}.chapter-heading{break-after:avoid}h2,h3{break-after:avoid}table{font-size:9pt;min-width:0}thead{display:table-header-group}tr{break-inside:avoid}.table-scroll{overflow:visible}a{color:inherit}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body data-mode="full">
+<div class="topline"><div class="brand">StudyAgent<span style="color:var(--muted)"> / product review</span></div><div class="edition">2026.10.19 · 4917d58 + 当前工作区</div></div>
+<header class="hero"><div><p class="eyebrow">PRODUCT DIRECTION / 工程与内容评估</p><h1>让每份试卷，<br>进入一次可信赖的学习闭环。</h1><p class="lead">保留现有工程骨架，把试卷资料、拍照整理、在线练习和错题复习连接起来。先解决身份、数据与评分，再把已有内容变成长期可用的产品。</p></div><aside class="stage"><strong>评估与建议 · 尚未实施改造</strong><p>工作假设：家长管理，孩子使用平板学习。首次纵切建议从小学数学、一个年级和教材版本开始。</p><a href="2026-10-19-studyagent-productization.md">查看完整 Markdown 原稿 →</a></aside></header>
+<ol class="flow" aria-label="建议的核心产品流程"><li><span>01</span> 找到或导入试卷</li><li><span>02</span> 整理与打印</li><li><span>03</span> 作答与订正</li><li><span>04</span> 错题沉淀</li><li><span>05</span> 到期复习</li><li><span>06</span> 家长反馈</li></ol>
+<div class="facts" aria-label="核对到的关键事实"><div class="fact"><b>31 / 31</b><span>当前 StudyAgent 测试通过</span><small>本轮重跑 · 同时通过全仓构建和类型检查</small></div><div class="fact"><b>6,075</b><span>小学数学结构齐全候选卷</span><small>来源：10 月 19 日已有全量审计 · 尚需质量与权限复核</small></div><div class="fact"><b>23,470</b><span>全库仍存在结构缺题的试卷</span><small>结构缺口不能通过生成题替代后声明恢复</small></div></div>
+<div class="workspace"><aside class="side"><div class="side-title">CONTENTS / 阅读目录</div><nav class="toc" aria-label="报告目录"><a href="#chapter-1"><span>01</span>结论与产品定位</a>
+<a href="#chapter-2"><span>02</span>当前工程已经具备什么</a>
+<a href="#chapter-3"><span>03</span>上线前必须修正的具体问题</a>
+<a href="#chapter-4"><span>04</span>现有试卷资产能带来什么</a>
+<a href="#chapter-5"><span>05</span>从各应用学习哪些能力</a>
+<a href="#chapter-6"><span>06</span>目标产品：三个使用面，一条真实闭环</a>
+<a href="#chapter-7"><span>07</span>试卷与题目如何接入</a>
+<a href="#chapter-8"><span>08</span>技术改造路线</a>
+<a href="#chapter-9"><span>09</span>按验收结果推进的实施顺序</a>
+<a href="#chapter-10"><span>10</span>如何验收“产品级”和“极高可用性”</a>
+<a href="#chapter-11"><span>11</span>本次证据与工作范围</a></nav><div class="reading" role="group" aria-label="阅读范围"><button type="button" data-mode="full" aria-pressed="true">全文</button><button type="button" data-mode="brief" aria-pressed="false">决策重点</button></div><p class="reading-status" id="reading-status" aria-live="polite">显示全部 11 个章节</p></aside><main><p>评估日期：2026-10-19，Asia/Singapore。工程基线：<code>4917d580b4286b56e7f95c29a5af925fd4460315</code> 加当前工作区。本文为评估与实施建议，未执行业务改造。</p>
+<section class="chapter" id="chapter-1" data-chapter="1"><header class="chapter-heading"><span>01</span><h2>结论与产品定位</h2></header>
+<p><strong>建议保留 Next.js + NestJS + 共享题目契约，把 StudyAgent 改造为“试卷与错题驱动的家庭学习工作台”。</strong> 当前工程已经具备学习流程骨架，现有逆向项目提供了真实试卷、图像处理和资料管理经验；最值得补齐的是内容可用性、学习结果可信度和长期使用的可靠性。</p>
+<p>推荐的核心体验是：<strong>家长找到或导入一份可用试卷 → 整理、阅读或打印 → 孩子作答与订正 → 自动形成错题和复习任务 → 家长知道下一步怎么帮助。</strong> 教材知识体系为这条流程提供定位与诊断，助教为具体题目和学习证据提供解释。</p>
+<p>暂按家长管理、孩子在平板上学习的家庭产品评估；这是本次建议的工作假设，不是用户已经选定的商业形态。个人内网版可简化运营与付费设施，机构版则需要另补组织、教师、班级与作业分发权限。</p>
+<p>产品化应先交付一个完整、稳定、可恢复的使用场景，再扩到更多学科和能力。首个纵切建议选择小学数学、一个教材版本和一个年级；三年级是有现成内容支撑的候选，不代表已经决定只支持三年级。</p>
+</section>
+<section class="chapter" id="chapter-2" data-chapter="2"><header class="chapter-heading"><span>02</span><h2>当前工程已经具备什么</h2></header>
+<div class="table-scroll"><table><thead><tr><th scope="col">层次</th><th scope="col">当前实现</th><th scope="col">产品化判断</th></tr></thead><tbody>
+<tr><td>工程结构</td><td>Next.js Web、NestJS API、contracts/config/ui 工作区</td><td>可以保留，先采用模块化单体和独立后台任务，不需要先拆微服务</td></tr>
+<tr><td>账户与学生</td><td>家长/管理员登录、学生档案、监护绑定、三学科选课</td><td>有主流程，身份和绑定方式仍为开发期设计</td></tr>
+<tr><td>内容工作台</td><td>教材结构、知识点、题目、富媒体文档、答案协议、来源记录、导入审核</td><td>已有较好扩展点，应增加试卷、原文件、资源可用性和版本模型</td></tr>
+<tr><td>评估与训练</td><td>入门评估、周计划、今日任务、提示、结果与领域事件</td><td>可作为流程起点，选题、提交计数和判题需要修正</td></tr>
+<tr><td>学习报告</td><td>知识地图、热力图、周报、风险提醒和运营统计</td><td>展示能力已有，结论可信度取决于正确的作答与内容数据</td></tr>
+<tr><td>助教</td><td>悬浮组件、会话、模型调用、外部检索</td><td>需要绑定真实题目、历史与权限，并解除每轮聊天对本地 CLI 的强依赖</td></tr>
+<tr><td>运行数据</td><td>主要业务读写 <code>InMemoryStoreService</code> 数组</td><td>服务重启即失去当前运行数据；Prisma schema 存在不代表已接入持久化</td></tr>
+</tbody></table></div>
+<p>本次完成依赖准备和 Prisma Client 生成后，全仓构建、31 项现有测试以及仓库 <code>lint</code> 命令均通过。当前 <code>lint</code> 实际为 TypeScript 类型检查。31 项包含 26 项 API 集成、4 项导入工具测试和 1 项检索启动测试；AI 成功质量、数据库事务、真实相机、物理打印和多设备离线恢复不在这些测试的证明范围内。</p>
+<p>本次在隔离端口检查了首页和内容后台的桌面页面。后台具备较多操作，但在同一个长页面混合教材、导入、装配、编辑和发布；真实产品应按工作任务拆分，并补充登录拦截、明确的加载与失败状态。未进行完整移动端或真实家庭可用性测试。</p>
+</section>
+<section class="chapter" id="chapter-3" data-chapter="3"><header class="chapter-heading"><span>03</span><h2>上线前必须修正的具体问题</h2></header>
+<p>以下前六项已在独立的内存应用中使用合成数据复现，没有调用外部 AI，也没有修改用户业务数据。它们是当前行为证据，不是仅凭代码风格提出的建议。</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">编号</th><th scope="col">优先级</th><th scope="col">已确认的问题与影响</th><th scope="col">改造与验收</th></tr></thead><tbody>
+<tr><td>R01</td><td>P0</td><td>新账号名包含 <code>admin</code> 就取得管理员角色</td><td>注册与登录分离，管理员由受控初始化/授权产生；普通注册输入任意名称均不能提升权限</td></tr>
+<tr><td>R02</td><td>P0</td><td>未绑定家长访问学生先返回 403，调用自己的绑定接口后返回 201，再访问即为 200</td><td>监护关系需邀请凭证或已有监护人确认；知道学生 ID 不能自行获得访问权</td></tr>
+<tr><td>R03</td><td>P0</td><td>匿名题目列表能读取草稿、答案和解析；草稿 render 也返回 200</td><td>分离公开目录、学生题面、提交后反馈和管理 DTO；草稿及标准答案按身份和作答阶段控制</td></tr>
+<tr><td>R04</td><td>P0</td><td>匿名用户能创建指定学生的助教会话并读取会话消息接口</td><td>会话必须绑定所有者与学生权限，消息读写均检查；补齐配额、限流和日志脱敏</td></tr>
+<tr><td>R05</td><td>P0</td><td>三题训练只重复提交第一题三次，也能完成任务</td><td>按任务题目集合的有效终态判断完成；重复请求用幂等键去重，重练次数与完成题数分别统计</td></tr>
+<tr><td>R06</td><td>P0</td><td>数值题的空字符串通过校验，被规范化为数字 0</td><td>空值、空白、null 与 0 分开；数值、分数、单位和公式建立有版本的判题规则及黄金样例</td></tr>
+<tr><td>R07</td><td>P0</td><td>实际存储和事件均在内存，不能证明重启恢复与跨实例一致性</td><td>完成 PostgreSQL 仓储、迁移、约束、事务与恢复演练；内存实现只用于隔离测试/显式演示</td></tr>
+<tr><td>R08</td><td>P0</td><td>题量补齐会直接生成已发布题，并把同组知识点并入题目映射</td><td>自动产物进入草稿和审核；知识点映射需有依据；发布走统一质量门禁，不能用“每点五题”代表教学覆盖</td></tr>
+<tr><td>R09</td><td>P1</td><td>评估按学科取前 3/5 题，训练在候选中取前 3 题；缺少严格的年级、教材与历史曝光约束</td><td>学生课程范围 → 已审核可作答题 → 知识点/难度蓝图 → 曝光去重；记录选题原因与版本</td></tr>
+<tr><td>R10</td><td>P1</td><td>契约声明 17 种作答模式，部分专业模式仍落到通用输入；文件模式没有对应上传闭环</td><td>发布前按真实设备能力验证题型；先完善核心题型，未支持模式不进入自动练习</td></tr>
+<tr><td>R11</td><td>P1</td><td>PDF 导入仅支持服务器本地路径、文本提取和启发式切题，在 HTTP 请求内执行</td><td>新增用户上传和资源对象；后台任务支持页级状态、失败续跑、OCR/布局提取及原页对照审核</td></tr>
+<tr><td>R12</td><td>P1</td><td>助教虽然保存上下文引用，但聊天请求主要包含学科、页面、当前问题及检索结果</td><td>服务端装配当前题目版本、作答、提示、必要历史和授权报告；检索按需触发，失败时保留可用学习流程</td></tr>
+<tr><td>R13</td><td>P1</td><td>题目接口全量返回当前学科数据，后台分页在浏览器切片；大题库接入会放大传输与内存成本</td><td>服务端筛选、游标分页和索引查询，列表只返回摘要；浏览器不下载全库做分页</td></tr>
+</tbody></table></div>
+<p>主要代码依据：</p>
+<ul>
+<li>R01：<a href="../../apps/api/src/modules/auth/auth.service.ts">auth.service.ts</a>，第 32 行；会话有效性见 <a href="../../apps/api/src/common/auth.guard.ts">auth.guard.ts</a>。</li>
+<li>R02：<a href="../../apps/api/src/modules/students/students.service.ts">students.service.ts</a>，第 85 行起；<a href="../../apps/api/src/modules/students/students.controller.ts">students.controller.ts</a> 的绑定入口。</li>
+<li>R03：<a href="../../apps/api/src/modules/content/content.controller.ts">content.controller.ts</a> 与 <a href="../../apps/api/src/modules/content/content.service.ts">content.service.ts</a>，第 237 行起；<a href="../../apps/api/src/modules/question-workspace/question-workspace.controller.ts">question-workspace.controller.ts</a>，第 145 行起。</li>
+<li>R04/R12：<a href="../../apps/api/src/modules/ai/ai.controller.ts">ai.controller.ts</a>、<a href="../../apps/api/src/modules/ai/ai.service.ts">ai.service.ts</a>，第 187 行起；<a href="../../apps/api/src/modules/ai/codex-search.service.ts">codex-search.service.ts</a>。</li>
+<li>R05：<a href="../../apps/api/src/modules/missions/missions.service.ts">missions.service.ts</a>，第 193 行起。</li>
+<li>R06：<a href="../../apps/api/src/modules/question-workspace/question-workspace.service.ts">question-workspace.service.ts</a>，第 200 行起；客观题目前仍主要比较规范化字符串。</li>
+<li>R07：<a href="../../apps/api/src/infrastructure/in-memory-store.service.ts">in-memory-store.service.ts</a>、<a href="../../apps/api/src/infrastructure/domain-event-bus.service.ts">domain-event-bus.service.ts</a>、<a href="../../apps/api/prisma/schema.prisma">schema.prisma</a>。</li>
+<li>R08：<a href="../../apps/api/src/modules/content/question-coverage.service.ts">question-coverage.service.ts</a>，第 416、449 行及来源生成部分。</li>
+<li>R09：<a href="../../apps/api/src/modules/assessments/assessments.service.ts">assessments.service.ts</a>，第 30 行；<a href="../../apps/api/src/modules/missions/missions.service.ts">missions.service.ts</a>，第 55 行。</li>
+<li>R10/R11：<a href="../../apps/web/components/question-renderer.tsx">question-renderer.tsx</a>、<a href="../../apps/api/src/modules/question-workspace/question-import.service.ts">question-import.service.ts</a>。</li>
+<li>R13：<a href="../../apps/api/src/modules/content/content.service.ts">content.service.ts</a>，第 237 行；当前 <a href="../../apps/web/app/admin/content/page.tsx">内容后台</a>，第 349、1128 行。</li>
+</ul>
+</section>
+<section class="chapter" id="chapter-4" data-chapter="4"><header class="chapter-heading"><span>04</span><h2>现有试卷资产能带来什么</h2></header>
+<h3>4.1 试卷宝：规模已经足够，核心问题是可用性分层</h3>
+<p>本次以 SQLite <code>mode=ro</code> 和查询只读模式检查了原库。元数据及小学数学字段盘点的读取时间为 <strong>2026-10-19 17:22:53 +08:00</strong>，采用一致读事务，未启动或修改原采集任务。</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">资产</th><th scope="col">核对结果</th><th scope="col">使用时必须保留的含义</th></tr></thead><tbody>
+<tr><td>试卷目录</td><td>72,468 条</td><td>已知来源目录记录，不是全部可交互、全部可发布的完整试卷</td></tr>
+<tr><td>既有全量结构审计</td><td>19,056 结构齐全；23,470 缺题；29,942 PDF 类型</td><td>来自当天已保存的全量审计；结构齐全不等于答案、解析、媒体和许可全部合格；PDF 类型不等于本次重新逐文件验读</td></tr>
+<tr><td>小学标签目录</td><td>13,789 条</td><td>数学 9,199、语文 3,641、英语 559，其余 390；部分小学标签出现物理/化学等学科，需进入元数据异常复核</td></tr>
+<tr><td>小学数学结构审计</td><td>6,075 结构齐全、3,124 缺题</td><td>按既有审计库按年级/学科聚合；可以作为首批筛选池，尚不是 6,075 份上线就绪试卷</td></tr>
+<tr><td>三年级数学候选</td><td>1,122 结构齐全、498 缺题</td><td>可支撑首个年级纵切，仍需按教材、知识点、年份和来源复核</td></tr>
+<tr><td>题目存储行</td><td>885,203 行，其中 paper 825,698、bank 59,505</td><td>存储层记录数，跨卷重复、版本、语义去重和教学质量仍需独立处理</td></tr>
+<tr><td>PDF 媒体任务</td><td>32,117 条登记完成</td><td>数据库状态层统计，包含多类材料；本轮没有重新逐文件计算摘要或渲染全部 PDF</td></tr>
+<tr><td>图片媒体任务</td><td>358,417 条登记完成、204 条失败</td><td>文件是否存在、可解码以及是否影响题面，需要接入前重新建立逐资源验证</td></tr>
+</tbody></table></div>
+<p>当天已有缺口审计记录 67,431 个缺题引用、67,425 个 UUID；会员条件下仍有缺题，原 HTML 对应位置为空，本地未找到精确身份的补全来源。后续在线复查在本次读取时仍未结束，不能把这些空位置用生成题填入后声明原卷恢复。</p>
+<h3>4.2 小学数学：有答案，但缺少可直接消费的解析与选项结构</h3>
+<p>本次遍历 9,199 条小学数学试卷记录的已返回顶层题目，累计 <strong>221,305 次题目出现</strong>。这里没有跨卷去重，也没有把缺失位置计为已取得题目。</p>
+<ul>
+<li>221,299 次有非空题面字段，221,170 次有非空答案字段；存在 6 次空题面、135 次空答案。</li>
+<li>独立 <code>details</code> 解析字段非空数为 0，独立 <code>options</code> 选项字段非空数也为 0。选项可能包含在原题面 HTML 或图片中，需要解析，不能将字段为空解释成题目没有选项。</li>
+<li>出现 13 个来源题型；填空 94,156 次、选择 47,935 次、应用 39,798 次、计算 14,285 次、解答 11,969 次、判断 7,289 次、操作 5,187 次，其余为连线、多选、口算等。</li>
+<li>60,367 次题面包含图片标签，5,269 次包含表格，另有 MathML 和注音标签。图片与表格渲染是主链路要求。</li>
+</ul>
+<p>这些数字衡量字段存在和形式特征，不能证明题目正确、图片齐全或能够自动判分。大量内容可以先提供原卷阅读和打印；选项、空位、评分协议完成审核后，再进入在线作答。</p>
+<h3>4.3 其他应用采集：更适合作为补充资料和能力参考</h3>
+<p><code>education-app-survey</code> 的 10 月 19 日记录覆盖 11 款应用，形成 19 项功能候选。该项目明确没有恢复任何一款的完整可构建工程。</p>
+<ul>
+<li>关联旧题库保存了 188 份试卷网页，其中 117 份网页内图片全部取得；700 个题目/片段详情网页。网页数不能当作完整独立试卷数。</li>
+<li>独立整理 680 条题干/答案记录，其中 679 条观察到本题答案、671 条引用图片/公式全部保存；仍未独立证明源题本身完整。</li>
+<li>365 条新版试卷列表及 364 张公开预览图属于目录和预览。</li>
+<li>小猿 AI 的 519 条英语教材组合、智慧中小学的 3,565 条唯一教材元数据属于目录；一起作业《观潮》的 9 个练习 ID 属于小份样例。</li>
+<li>登录、会员、签名、校验、403 和未定位目录分别记录，不能统一理解为“登录后就能拿到全库”。</li>
+</ul>
+<p>接入 StudyAgent 时，应为来源分别建立适配器，先做只读扫描和候选报告。第三方原件继续保留在原私有归档；下载资格、研究授权与面向产品用户的传播/商用权分别登记。</p>
+</section>
+<section class="chapter" id="chapter-5" data-chapter="5"><header class="chapter-heading"><span>05</span><h2>从各应用学习哪些能力</h2></header>
+<div class="table-scroll"><table><thead><tr><th scope="col">参考对象</th><th scope="col">最值得学习的体验</th><th scope="col">StudyAgent 的落点</th><th scope="col">建议阶段与证据边界</th></tr></thead><tbody>
+<tr><td>试卷宝</td><td>试卷多维筛选、整卷与单题关系、文件夹、下载记录、练习/掌握状态</td><td>试卷中心、个人资料库、打印任务、错题本</td><td>P1；已有本地服务和部分原生流程证据，不等于整套产品验收</td></tr>
+<tr><td>试卷轻量版</td><td>相机/相册、多页整理、裁剪旋转、原图与处理图、去笔迹、PDF/DOCX</td><td>移动端导入和纸面工作流</td><td>P1；指定 APK 在指定平板有对照证据；算法要独立接入并重新验收</td></tr>
+<tr><td>作业帮</td><td>错题收集、标签、完成后的下一动作</td><td>学生错题收集与家长整理</td><td>P1；路由/桥接代码参考，不代表取得识别算法</td></tr>
+<tr><td>小猿搜题</td><td>单题详情、练习 PDF 异步任务、导出状态</td><td>题目详情、练习册生成和任务中心</td><td>P1；客户端协议参考，PDF 服务需要自行实现</td></tr>
+<tr><td>小猿 AI</td><td>试卷筛选、打印中心、PDF 预览与历史、教材目录兜底</td><td>资源中心和稳定的版本选择</td><td>P1；下载登录条件和目录元数据分别保留</td></tr>
+<tr><td>快对 AI</td><td>单题、整页、条码教辅分流</td><td>导入入口明确区分“拍一题”“拍整页”“找教辅”</td><td>单题/整页 P1，条码 P2；没有取得在线搜索算法</td></tr>
+<tr><td>作业精灵</td><td>书 → 目录 → 页 → 题 → 答案分层、图文公式模板、词典</td><td>教辅定位与原页对照、语文工具</td><td>结构 P1，词典 P2；网页模板不附带整库</td></tr>
+<tr><td>作业帮家长版</td><td>教材页导航、查看进度和权限状态</td><td>家长快速定位孩子正在做的页/题</td><td>P1；图片页状态模型参考，教材正文服务未恢复</td></tr>
+<tr><td>洋葱学园</td><td>多维试卷筛选与逐层进入</td><td>年级/学科/地区/类型筛选、最近条件</td><td>P1；游客 UI 与正文登录条件有记录</td></tr>
+<tr><td>学科网</td><td>试卷、教案、课件资料分型</td><td>资源类型清晰，用户只看到当前场景相关材料</td><td>P2；首轮主要为可见结构参考</td></tr>
+<tr><td>学而思网校</td><td>课程与媒体内容组织</td><td>后续讲解内容关联到知识点</td><td>P2；课程页可见不代表课堂服务已取得</td></tr>
+<tr><td>一起作业</td><td>课文段落、朗读、重点字词与练习关联</td><td>后续语文阅读、英语听读</td><td>P2；当前只有局部样例和介绍流程</td></tr>
+<tr><td>智慧中小学</td><td>教材版本目录、课程包与多资源关系、缓存</td><td>统一课程目录、资源清单和版本化缓存</td><td>目录 P1，课程包 P2；元数据与受保护正文分开</td></tr>
+</tbody></table></div>
+<p>采用流程、领域建模、原创工具与经审查可复用的能力；第三方 Smali、原生 UI 和服务 DTO 不成为 StudyAgent 的核心领域模型。推荐通过小型适配器与自己的题目契约衔接，保留独立替换空间。</p>
+</section>
+<section class="chapter" id="chapter-6" data-chapter="6"><header class="chapter-heading"><span>06</span><h2>目标产品：三个使用面，一条真实闭环</h2></header>
+<h3>6.1 学生端：打开就知道做什么</h3>
+<p>首页以“继续上次任务”和“今天 10–15 分钟”为主，保留错题复习和学习地图入口。进入任务前明确题数、预计时间和可用输入方式；第一次不强制做长评估，允许从家长选定试卷开始。</p>
+<p>答题页把题面、输入、草稿区、提示和保存状态放在稳定位置。选择题可点选，填空逐空输入，数学提供常用符号与分数键盘；手写可以先保留图片和笔迹，再进入识别/复核，不将识别失败算答错。学生界面不展示 <code>formula_blank</code> 等内部模式名。</p>
+<p>每题支持保存后离开、恢复、修改和清楚的提交反馈。考试模式提交后统一显示答案；训练模式按策略反馈。分步提示先给思路，再给关键步骤，完整解答的开放时机由学习场景决定。</p>
+<p>反馈奖励完成、订正和独立掌握。重试、看答案后的作答和依赖提示的成功分开记录，不把刷提交次数当掌握度。下一步只给一个明确动作，例如“复习这两道错题”。</p>
+<h3>6.2 家长端：低成本安排与理解</h3>
+<p>主要入口为“今日安排、试卷资料、错题复习、学习报告”。首次配置学生、年级和教材版本后，系统记住常用条件；多孩子通过显式切换保持隔离。</p>
+<p>试卷详情同时提供原卷、适用范围、题目/答案取得状态、预览与允许的操作。完整可作答卷可安排练习；只有原 PDF 的材料可阅读/打印；部分缺题材料提供明确说明及可用部分，不能默认作为完整考试。</p>
+<p>报告优先回答：本周完成了什么、哪两个知识点有足够证据需要帮助、建议再花多少时间。展示样本题和比较窗口，证据不足显示待观察；避免由一次错误得出能力标签。</p>
+<h3>6.3 内容运营端：围绕待处理事项组织</h3>
+<p>将当前长页拆为“资源入库、待审核、试卷编排、题目编辑、质量异常、发布版本”。导入审核采用原页与结构化结果对照，能直接定位原页、题号、选项、空位和缺失图片。</p>
+<p>审核任务按异常排队：缺题、缺答案、图像失败、选项未解析、题型未支持、学科年级冲突、许可未核实。审核记录保留修改差异、处理人和版本；批量操作先展示影响范围，并可回滚发布版本。</p>
+<h3>6.4 首个端到端使用示例</h3>
+<p>家长筛选三年级数学 → 打开已审核试卷 → 选择 8 道适合孩子的题或打印原卷 → 孩子完成并保存 → 客观题规则判分、主观题进入待复核 → 错题保留题目版本和原作答 → 依独立作答证据安排延后复习 → 家长看到具体进步与一项建议。</p>
+<p>拍照路径复用同一闭环：相册/拍照 → 多页排序与裁剪 → 保留原图、处理图 → OCR/框题确认 → 选择仅存档打印或进入结构化作答。去笔迹、去印刷答案、OCR 和判题是四种不同能力，分别验收。</p>
+</section>
+<section class="chapter" id="chapter-7" data-chapter="7"><header class="chapter-heading"><span>07</span><h2>试卷与题目如何接入</h2></header>
+<h3>7.1 原始归档、标准资产、学习实例分层</h3>
+<p>建议新增以下领域对象；名称是实施建议，不是当前已存在的模型：</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">对象</th><th scope="col">关键职责与约束</th></tr></thead><tbody>
+<tr><td>SourcePackage / SourceRevision</td><td>来源、取得条件、版本、摘要、原始响应/文件引用；已有原件只读保留</td></tr>
+<tr><td>Asset / AssetDerivative</td><td>原 PDF/图片、字节数、摘要、页数、解码状态；预览、裁剪、去笔迹为独立派生版本</td></tr>
+<tr><td>Paper / PaperRevision</td><td>整卷身份、来源、学科年级、地区年份、结构、原 PDF、完整性和发布版本</td></tr>
+<tr><td>PaperSection / PaperItem</td><td>原顺序、题号、分值、共享材料、子题关系、精确来源题目键、缺失位置</td></tr>
+<tr><td>Question / QuestionRevision</td><td>题目稳定身份、文档块、选项、空位、答案、解析、评分规则和知识点关系</td></tr>
+<tr><td>ResourceQuality / SourceRights</td><td>题面、答案、解析、媒体、元数据、审核与使用范围分别记录，生成可用操作</td></tr>
+<tr><td>Attempt / ItemResponse / GradingDecision</td><td>题目版本快照、原始响应、规范答案、判分来源、置信度、人工改判和时间</td></tr>
+<tr><td>MistakeEntry / ReviewSchedule</td><td>错因、首次/最近错误、订正、独立复习、下次到期和掌握证据</td></tr>
+<tr><td>ExportJob / ExportArtifact</td><td>排版配置、快照版本、状态、实际完成文件、页数/摘要与下载记录</td></tr>
+</tbody></table></div>
+<p>来源身份至少使用 <code>(provider, source, original_id, revision)</code>；同名和相似题不得直接合并。文件可按 SHA256 去重，近似题只产生候选关系，原卷题序与来源引用始终保留。</p>
+<h3>7.2 完整性决定可以做什么</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">内容状态</th><th scope="col">允许的典型用途</th><th scope="col">开放在线练习前的附加条件</th></tr></thead><tbody>
+<tr><td>只有目录/封面</td><td>搜索索引、说明、回到合法来源</td><td>不提供不存在的正文或下载</td></tr>
+<tr><td>仅有预览</td><td>明确标识的预览</td><td>不包装成完整原卷</td></tr>
+<tr><td>原 PDF 已验证可读</td><td>阅读、允许范围内下载/打印</td><td>完成切题、选项/空位、答案协议和审核</td></tr>
+<tr><td>结构化题面存在但缺题</td><td>阅读已有内容、显式选取可用单题</td><td>不作为完整考试；不能通过去掉缺失位置提高原卷完整率</td></tr>
+<tr><td>结构题目齐全</td><td>整卷阅读、候选练习</td><td>答案、媒体、题型、元数据、使用范围和审核继续分别通过</td></tr>
+<tr><td>已审核的可作答资产</td><td>对应支持题型的在线训练/评估</td><td>固定版本、判题协议和设备支持范围</td></tr>
+</tbody></table></div>
+<p>可用性建议从独立维度计算：<code>content / answers / explanations / media / metadata / rights / review / interaction</code>。例如“题面齐全但无解析”可以提供受控客观练习；“只有答案图片”先进入答案查看/人工复核模式。AI 生成解释单独保存为派生内容，标明模型、依据、版本与审核状态。</p>
+<h3>7.3 入库流程与质量门禁</h3>
+<ol>
+<li>扫描已保存来源，生成只读盘点和候选清单，识别精确身份、完整性及许可范围。</li>
+<li>建立媒体清单，验证路径/摘要/可解码状态，并将原图和原 PDF 保存至私有对象存储。</li>
+<li>来源适配器把 HTML、PDF 或图片转换为统一块；保留注音、公式、表格、共享阅读材料、原页和边界框。</li>
+<li>题型映射、选项/空位提取、答案规范化及教材知识点候选分别产生质量标记；不能仅凭标题自动确定教材版本。</li>
+<li>人工在原页对照台复核；未知字段保留未知。生成题与原卷缺失内容分开存储，不冒用来源题目身份。</li>
+<li>发布服务统一检查必要题面、完整媒体、答案协议、支持题型、知识点依据及使用范围。首次发布冻结内容版本。</li>
+<li>评估/训练引用冻结版本；内容修订不会静默改变历史作答、评分和导出结果。题目撤回后保留历史依据，并能重算受影响报告。</li>
+</ol>
+<p>对接首批小学数学时，优先处理选择/判断、可明确评分的数值填空和公式题；应用题、操作题、连线题先支持原题阅读和人工复核，再逐步开放自动评分。</p>
+<p>导入按批次和来源版本推进，保留检查点与错误队列，先发布经审核的选定范围。目录可先建立完整索引，题目正文和大文件按采用范围接入；不把整库 JSON 直接装入当前内存存储。搜索与列表使用服务端分页，默认返回摘要和可用操作，题文按需读取。</p>
+</section>
+<section class="chapter" id="chapter-8" data-chapter="8"><header class="chapter-heading"><span>08</span><h2>技术改造路线</h2></header>
+<h3>8.1 保留主体，补齐可靠性边界</h3>
+<ul>
+<li>Web 保留 Next.js，逐步形成平板/手机自适应的 PWA。家长、学生、内容运营分别组织导航；离线缓存按账号、学生和资源版本隔离。</li>
+<li>API 保留 NestJS，以账户、内容资产、学习记录、复习、报告和 AI 为模块边界。认证从服务端会话恢复，令牌有失效/撤销；跨域使用受控来源和明确的 Cookie/CSRF 或令牌方案。</li>
+<li>PostgreSQL 作为业务真值，Prisma 通过仓储接入。补齐当前 schema 缺少的监护绑定、教材结构、题目关系、作答/结果、计划、消息、导出和审计等实体，并添加外键、唯一约束、索引和迁移。</li>
+<li>搜索先使用数据库索引和经过实测的中文检索方案，保留可替换查询接口；按年级、学科、教材、来源与可用性组合查询，服务端限制页大小。达到真实瓶颈后再决定独立搜索服务。</li>
+<li>私有对象存储保存原件、派生文件和导出；数据库只保存已登记引用。先验证写入再登记完成，定期清理孤儿派生文件，原始资产按保留策略管理。</li>
+<li>单独 Worker 执行导入、OCR、图像处理、PDF、AI 解释和报告。初期可用 PostgreSQL 任务表与租约，吞吐确有需要时再引入 Redis/BullMQ；避免同时维护两套任务真值。</li>
+<li>业务变更与 Outbox 事件在同一事务提交；消费者幂等。导出、作答和复习调度均使用可重放的任务/请求身份，明确“至少一次传递”的去重责任。</li>
+<li>图像/模型能力通过独立服务接口接入，记录算法、模型、参数及输入输出摘要；来源项目的通过记录不直接放行新运行环境。</li>
+</ul>
+<h3>8.2 关键接口与事件建议</h3>
+<p>建议接口包括 <code>POST /uploads</code>、<code>POST /imports</code>、<code>GET /jobs/:id</code>、<code>GET /papers</code>、<code>GET /papers/:id</code>、<code>POST /papers/:id/exports</code>、<code>POST /practice-sessions</code>、<code>PUT /practice-sessions/:id/items/:itemId/response</code>、<code>GET /reviews/due</code>。</p>
+<p>上传采用受控对象身份，不接受用户提交任意服务器路径。导入/导出先返回任务 ID；页级任务可以续跑，用户能看到已完成页、失败原因、重试和取消。完整性与文件生成成功分开记录。</p>
+<p>提交响应携带 <code>Idempotency-Key</code>、题目版本和客户端修订号。区分自动保存草稿与最终提交；冲突时保留两份草稿并提示选择。学生时区用于“今日”与复习到期，服务器保存 UTC 时间，避免跨设备日期不一致。</p>
+<p>事件示例为 <code>content.published</code>、<code>practice.item_submitted</code>、<code>grading.completed</code>、<code>mistake.recorded</code>、<code>review.completed</code>、<code>export.completed</code>。事件记录版本、所有者和幂等身份；报告只消费已确认的学习记录。</p>
+<h3>8.3 AI 的职责</h3>
+<p>优先提供当前题的分步提示、错因解释和家长建议。标准答案来自已审核资产或明确的判题规则；主观题使用评分量规、置信度和待复核状态，人工改判可追踪。</p>
+<p>聊天以授权上下文为输入，必要时检索已审核本地材料；实时外部搜索作为独立可选工具。生产服务不依赖每次启动桌面 CLI。加入任务级超时、预算、限流、取消和熔断；模型不可用时仍可保存作答、规则判分、看原卷、打印和复习，尚未评分的内容显示待处理。</p>
+</section>
+<section class="chapter" id="chapter-9" data-chapter="9"><header class="chapter-heading"><span>09</span><h2>按验收结果推进的实施顺序</h2></header>
+<p>下列顺序是建议，不是已经承诺的排期。以退出条件控制阶段，先不填未经验证的日历工期。</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">任务</th><th scope="col">阶段</th><th scope="col">具体交付</th><th scope="col">退出条件</th></tr></thead><tbody>
+<tr><td>T01 身份与数据隔离</td><td>P0</td><td>受控角色、监护邀请、会话归属、题面/答案 DTO、统一校验</td><td>R01–R04 的复现转为拒绝用例；家长、学生、管理员权限矩阵通过</td></tr>
+<tr><td>T02 作答与判题正确性</td><td>P0</td><td>数值空值修复、按题完成、幂等提交、重试统计、评分快照</td><td>重复提交第一题不能完成整组；空答案不能成为 0；历史评分可复算</td></tr>
+<tr><td>T03 业务持久化</td><td>P0</td><td>完整 Prisma 模型、仓储、迁移、事务、Outbox、备份恢复</td><td>重启后档案/作答/错题/任务保留；写入中断和重复事件不重复计数</td></tr>
+<tr><td>T04 统一发布质量门禁</td><td>P0</td><td>自动题进入草稿、来源与知识点依据、题型能力检查、版本冻结</td><td>R08 的直接发布路径关闭；缺题、缺必要媒体或未支持题型不能被误发布为可用练习</td></tr>
+<tr><td>T05 试卷资产与来源适配</td><td>P1</td><td>原始资产清单、试卷/题目版本、完整性与权限、干跑报告</td><td>代表来源和缺题样卷映射正确；原文件不变；重复导入不重复建对象</td></tr>
+<tr><td>T06 试卷中心与打印</td><td>P1</td><td>服务端分页筛选/搜索、原卷预览、题型定位、异步 PDF 与历史</td><td>完整卷、缺题卷、PDF 卷、坏图均呈现正确状态；大目录不全量传至浏览器；下载文件可回读并对应版本</td></tr>
+<tr><td>T07 平板作答与恢复</td><td>P1</td><td>支持题型输入、草稿保存、错题收集、任务恢复</td><td>刷新/断网/重复点击不丢答案；题目版本改变不污染当前会话</td></tr>
+<tr><td>T08 拍照整理</td><td>P1</td><td>多页导入、裁剪排序、原/处理图、去笔迹接口与原页审核</td><td>相机/相册取消、EXIF、模糊图、部分页失败、处理超时均有可恢复路径</td></tr>
+<tr><td>T09 复习与家长反馈</td><td>P1</td><td>错因、复习到期、独立掌握证据、周报与具体建议</td><td>提示后答对与独立答对分开；到期调度去重；报告可追溯到题目</td></tr>
+<tr><td>T10 上下文助教</td><td>P1</td><td>当前题和作答上下文、历史、分级提示、离线/失败处理</td><td>不串学生数据；引用可核对；AI 失败不阻断基本学习</td></tr>
+<tr><td>T11 学科与渠道扩展</td><td>P2</td><td>语文共享材料、英语音频、教辅条码、课程包与可选客户端</td><td>各学科专用质量集通过，再扩大对外承诺</td></tr>
+</tbody></table></div>
+<p>建议第一个可试用交付包含：一个年级/教材版本、10 份经复核试卷与至少 200 道已审核可作答题、原卷打印和错题复习。另备结构缺题、仅 PDF、坏图、复杂表格、空答案和任务中断等专用样本。这是验证闭环的建议规模，不是目前已完成的内容量，也不是正式产品题库规模。</p>
+</section>
+<section class="chapter" id="chapter-10" data-chapter="10"><header class="chapter-heading"><span>10</span><h2>如何验收“产品级”和“极高可用性”</h2></header>
+<p>以下均是待实施的建议门槛，不是本轮测试成绩。可用性同时覆盖稳定运行、结果可信与家长孩子能顺利操作。</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">维度</th><th scope="col">建议放行条件</th><th scope="col">验证方式</th></tr></thead><tbody>
+<tr><td>权限</td><td>已定义的跨家长/跨学生/草稿/答案/AI 会话越权用例零成功</td><td>权限矩阵、反向测试和接口访问审计</td></tr>
+<tr><td>数据与恢复</td><td>已确认提交不丢、不重复；备份能恢复为一致业务状态</td><td>重启、并发提交、进程中断、备份还原与校验</td></tr>
+<tr><td>内容</td><td>首发资产逐份完整性检查；必要媒体可读；不把未核实内容作为完整考试</td><td>自动逐资源校验 + 内容人员原卷对照；按来源/题型分层抽检</td></tr>
+<tr><td>判题</td><td>首发支持题型黄金集全部通过；低置信度不强判；人工改判有记录</td><td>分数/小数/单位、多空、多选顺序、公式、空值及错误答案边界集</td></tr>
+<tr><td>使用体验</td><td>20 个目标家庭试用中，关键任务独立完成率目标至少 90%</td><td>真实家长和孩子完成导入/选卷/开始/恢复/订正；记录错误和耗时</td></tr>
+<tr><td>性能</td><td>非 AI 核心接口 p95 目标 500ms 内；任务受理目标 1s 内</td><td>明确硬件、数据量和并发后压测，记录失败率与 p95/p99；OCR/PDF 单列预算</td></tr>
+<tr><td>稳定性</td><td>对外试运营核心服务月可用性目标 99.9%</td><td>外部探测、错误率、队列积压、对象文件读取、告警和恢复演练</td></tr>
+<tr><td>移动端</td><td>360px 手机、常用平板横竖屏和键盘遮挡下核心流程可完成</td><td>真机输入、焦点、缩放、返回、网络切换和辅助功能验证</td></tr>
+<tr><td>AI</td><td>有版本的教研质量集、任务成本和失败率；失败后基本能力继续可用</td><td>离线评估、人工复核、异常注入与阶段性真实模型测试</td></tr>
+</tbody></table></div>
+<p>99.9% 服务可用性只衡量运行，不代表教学质量；家庭试用完成率也不能证明学习效果。长期效果需以间隔后的独立作答和真实使用数据验证。</p>
+<p>运营需同时观察：首个任务完成率、首份可用试卷生成时间、导入人工修正量、题目争议率、复习回访、未恢复草稿、任务失败、AI 单次成本及来源内容异常。先建立基线，再据真实瓶颈调整目标。</p>
+</section>
+<section class="chapter" id="chapter-11" data-chapter="11"><header class="chapter-heading"><span>11</span><h2>本次证据与工作范围</h2></header>
+<p>本轮读取代码、设计和逆向资料，准备本地依赖、运行检查与隔离行为探针，新增本评估文档及预览。没有实施本文业务改造，没有操作官方账号或新增采集，没有提交、推送或发布。</p>
+<p>开始时已有 <code>apps/web/app/admin/content/page.tsx</code> 修改和未跟踪的 <code>StudyAgent.code-workspace</code>；本轮保留。浏览器检查使用临时隔离服务，避免占用本机已被其他程序使用的 3000/4000 端口。现有测试中的 AI 缺配置路径不证明真实模型回复质量。</p>
+<p>可复查的本轮产物：</p>
+<ul>
+<li><a href="2026-10-19-studyagent-evidence/behavior-probes.json">行为探针结果</a>：管理员自赋权、学生绑定、匿名草稿/答案、AI 会话、训练计数和空数值六组复现。</li>
+<li><a href="2026-10-19-studyagent-evidence/content-inventory.json">内容只读盘点</a>：时间、总量、年级学科、媒体登记状态与小学数学字段计数；不包含原始题文或账号秘密。</li>
+<li><a href="2026-10-19-studyagent-evidence/verification.json">验证记录</a>：构建、测试、类型检查、审计范围及限制。</li>
+</ul>
+<p>跨项目来源入口：</p>
+<ul>
+<li><code>F:/workspace/rogue-prototype-lab/prototypes/education-app-survey/FEATURES.md</code>、<code>DOWNLOADS.md</code>、<code>REPORT.md</code> 和 <code>DEVELOPMENT.md</code>。</li>
+<li><code>F:/workspace/rogue-prototype-lab/prototypes/re-shijuanbao-service/DEVELOPMENT.md</code>、<code>evidence/member-gap-verification.json</code> 和 <code>local/member-gap-audit/audit.sqlite3</code>。</li>
+<li><code>F:/workspace/rogue-prototype-lab/prototypes/re-shijuanbao-service/local/elementary-library/archive.sqlite3</code>，本轮仅只读访问。</li>
+<li><code>F:/workspace/rogue-prototype-lab/prototypes/re-shijuan-lite/reports/recovery.md</code> 与 <code>intranet/DEVELOPMENT.md</code>。</li>
+</ul>
+<p>来源项目历史测试只用于判断已有可借鉴能力；本轮没有重新跑其完整 Android 或服务端套件，也没有核实旧原生 APK 与当前运行适配版本的一致性。新产品必须使用自己的内容验收、设备测试和运行证据。</p>
+</section></main></div>
+<footer class="footer"><span>来源：StudyAgent 代码与本轮验证；系列原型仓的学习软件研究与私有内容只读盘点。</span><span>结论区分：当前事实 / 历史证据 / 建议目标</span></footer>
+<script>
+document.querySelectorAll('.reading button').forEach(button=>button.addEventListener('click',()=>{
+ const mode=button.dataset.mode;
+ document.body.dataset.mode=mode;
+ document.querySelectorAll('.reading button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+ document.getElementById('reading-status').textContent=mode==='full'?'显示全部 11 个章节':'显示产品结论、上线前问题与实施顺序';
+}));
+document.querySelectorAll('.toc a').forEach(link=>link.addEventListener('click',()=>{
+ const target=document.querySelector(link.getAttribute('href'));
+ if(target&&getComputedStyle(target).display==='none')document.querySelector('.reading button[data-mode="full"]').click();
+}));
+</script>
+</body></html>
