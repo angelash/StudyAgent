@@ -44,6 +44,8 @@ jobs:
         run: node scripts/qa/verify-assessment-blueprints.cjs data/qa/assessment-blueprint-runtime.json
       - name: Original paper measurement review and publication recovery
         run: node scripts/qa/verify-measurement-content.cjs data/qa/measurement-content-runtime.json
+      - name: Mistake organization, frozen redo and independent verification recovery
+        run: node scripts/qa/verify-notebook.cjs data/qa/notebook-runtime.json
       - name: Asset audit tool regression
         run: python scripts/assets/test_audit_archive_sensitive.py
       - name: Independent recovery verifier regression

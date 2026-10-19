@@ -22,7 +22,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia']) {
+    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));

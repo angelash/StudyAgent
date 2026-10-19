@@ -6,5 +6,7 @@ import { LearningController } from './learning.controller';
 import { LearningService } from './learning.service';
 import { RetiredLearningController } from './retired-learning.controller';
 import { StudentMediaModule } from '../student-media/student-media.module';
-@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule], controllers: [LearningController, RetiredLearningController], providers: [LearningService], exports: [LearningService] })
+import { NotebookService } from './notebook.service';
+import { NotebookController } from './notebook.controller';
+@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule], controllers: [LearningController, RetiredLearningController, NotebookController], providers: [LearningService, NotebookService], exports: [LearningService] })
 export class LearningModule {}

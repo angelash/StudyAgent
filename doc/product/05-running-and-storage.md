@@ -1,5 +1,7 @@
 # 运行与存储
 
+错题本位于 `/student/today` 的“错题与思路”，支持知识点/标签筛选、收藏、步骤与反思便签、可恢复移除、原题复做、新题核查记录及打印稿准备。原题复做沿用训练和图片/录音路径，但不增加独立掌握样本；未结束评测不提前开放参考答案。生产SQLite/PG重启专项为 `node scripts/qa/verify-notebook.cjs <证据路径> sqlite|postgres`，详见 [错题本交付](29-notebook-delivery.md)。
+
 原卷测量素材页为 `/admin/measurement`，从 `/library` 单题进入，需管理员或教师身份。来源、题面、媒体、评分和知识映射分别审核后才能发布，研究原卷与单题发布资格独立。运行 `node scripts/qa/verify-measurement-content.cjs` 验证生产模式SQLite；第三个参数 `postgres` 使用既有隔离QA集群。第四个参数 `real` 只验证迁入原卷候选与重启，绝不发布。详见 [原卷测量素材交付](28-measurement-content-delivery.md)。
 
 现有256个原创知识点均含教学卡。执行 `node scripts/qa/audit-authored-curriculum.cjs` 可核查教学覆盖和逐点测量素材缺口；先构建contracts/API。旧库仅为精确未编辑的v1补卡，用户修改和草稿保留。教学覆盖与教材审核对齐、测量题族深度、标准化校准分别验收，详见 [教学交付](27-full-teaching-delivery.md)。

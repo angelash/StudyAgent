@@ -32,7 +32,7 @@ export class StudentMediaService implements OnModuleInit {
       if (!['parent', 'admin', 'student'].includes(user.role)) throw new ForbiddenException('请使用孩子或监护人的学习身份作答');
       this.students.assertCanAccessStudent(user, session.studentId);
       if (session.status !== 'in_progress' || target.kind === 'diagnostic' && Boolean(this.store.find('diagnosticResponses', { sessionId: target.sessionId, itemId: target.itemId }))) throw new ConflictException('这道题已提交，请用新题继续验证');
-      if (target.kind === 'practice' && (!this.store.diagnosticPlans.some(p => p.id === this.store.find('practiceSessions', { id: target.sessionId })!.planId && p.status === 'active') ||
+      if (target.kind === 'practice' && (this.store.find('practiceSessions', { id: target.sessionId })!.origin !== 'notebook' && !this.store.diagnosticPlans.some(p => p.id === this.store.find('practiceSessions', { id: target.sessionId })!.planId && p.status === 'active') ||
         this.store.select('practiceAttempts', { sessionId: target.sessionId, questionId: target.itemId }).length >= 5)) throw new ConflictException('训练已暂停或本题练习次数已满');
     }
     return { session, snapshot, schema: snapshot.answerSchema as QuestionAnswerSchema };

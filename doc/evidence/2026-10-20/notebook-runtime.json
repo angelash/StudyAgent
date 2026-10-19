@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-19T21:05:50.537Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Original synthetic student, production HTTP, independent student access, concurrent organization, frozen redo, unseen verification, scoring revision and three restarts. Browser layout and human educational validity are separate.",
+  "sourceSha256": {
+    "apps/api/src/modules/learning/notebook.service.ts": "1bcd13ea5ad54c111fef394353ae78ff3d6875a194bb079dc1b6892257ec9ef8",
+    "apps/api/src/modules/learning/notebook.controller.ts": "1ea6ff2dd34c6ef7c9340c88b0501f86ad325ed95f7443533d645ca2dfdf26c9",
+    "apps/api/src/modules/learning/learning.service.ts": "268c10bfa2c1769a889268fece4c5ac6c26cdfc2dcc6120d2923b4a8a0058154",
+    "apps/api/src/modules/ai/ai.service.ts": "3265eb1370ff06573de8fcdcf1e7aef87a287a29f34ffae26d3d9032ebe5f292",
+    "apps/api/src/modules/privacy/privacy-records.ts": "f8da1336f34b994e8cfbf9c168736c6504b3fc88312dc3ccf2e4b01573605e06",
+    "apps/web/components/mistake-notebook.tsx": "0e24f8da906b5bb743297e509f1e3509c7628dd98b1483793b03b9e60e1c5a97",
+    "apps/web/components/mistake-notebook.css": "ab74c3edef1fc3693d740806e28d9be9ba6958a465839fa1d36ce4ead3ff832e",
+    "packages/contracts/src/learning.ts": "9f0328ba710d7620ec2c3573d07c337653feff6dc833a1104c8fc9836b2d7082"
+  },
+  "result": {
+    "unfinishedAnswersWithheld": true,
+    "familyAndStudentBoundaries": true,
+    "minimalPaginatedList": true,
+    "parallelOrganizationStatuses": [
+      201,
+      201
+    ],
+    "oneVersionedReceipt": true,
+    "originalRedoWithoutPlan": true,
+    "draftsAndReferenceSurviveRestart": true,
+    "redoDoesNotCountAsIndependent": true,
+    "unseenVerification": true,
+    "previewReplaysAfterRestart": true,
+    "revisedScoreRetainsNotesAndOriginal": true,
+    "reversibleRemoval": true,
+    "portableNotesExcludeInternalDigests": true,
+    "persistedRedoAndVerificationHistory": true,
+    "restarts": 3
+  }
+}

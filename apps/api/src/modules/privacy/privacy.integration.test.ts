@@ -35,6 +35,9 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
       store.practiceSessions.push({ id: `${tag}-practice`, studentId: tag, planId: `${tag}-plan`, drafts: { q: { answer: { value: '训练草稿' } } } });
       store.practiceAttempts.push({ id: `${tag}-attempt`, sessionId: `${tag}-practice`, answer: { value: '独立训练作答' }, score: 1 });
       store.practiceHints.push({ id: `${tag}-practice-hint`, sessionId: `${tag}-practice`, level: 1 });
+      store.mistakeNotebookEntries.push({ id: `${tag}-notebook`, studentId: tag, responseId: `${tag}-response`,
+        metadata: { reflection: '保留的错题步骤便签', tags: ['关系对应'] },
+        history: [{ actorId: parent.user.id, requestKey: 'private-notebook-request', inputHash: 'private-notebook-digest' }] });
       store.practiceScoringRevisions.push({ id: `${tag}-practice-scoring`, responseId: `${tag}-attempt`, score: 1, version: 1 });
       store.evidenceFeedback.push({ id: `${tag}-feedback`, studentId: tag, responseId: `${tag}-response`, message: '请核对表达', history: [{ actorId: parent.user.id }] });
       store.events.push({ eventId: `${tag}-score-event`, eventName: 'diagnostic.score_reviewed', payload: { responseId: `${tag}-response` } });
@@ -74,8 +77,9 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     const records = data.students[0].records;
     expect(records.diagnosticResponses[0].answer).toEqual({ value: '原始作答' }); expect(records.scoringRevisions[0].version).toBe(1);
     expect(records.practiceSessions[0].drafts.q.answer).toEqual({ value: '训练草稿' });
+    expect(records.mistakeNotebookEntries[0].metadata.reflection).toBe('保留的错题步骤便签');
     const serialized = JSON.stringify(data);
-    for (const secret of ['passwordHash', 'tokenHash', 'private-grading-digest', 'private-scope', '另一监护人的私有对话', '另一监护人的AI摘要', sibling.id, credential, student.token]) expect(serialized).not.toContain(secret);
+    for (const secret of ['passwordHash', 'tokenHash', 'private-grading-digest', 'private-notebook-request', 'private-notebook-digest', 'private-scope', '另一监护人的私有对话', '另一监护人的AI摘要', sibling.id, credential, student.token]) expect(serialized).not.toContain(secret);
     expect(await call('post', `/privacy/students/${child.id}/export`, body)).toEqual(data);
     expect(store.privacyRequests).toHaveLength(1);
     await call('post', '/privacy/account/export', body, parent, 409);
@@ -112,7 +116,7 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     expect(await call('post', `/privacy/students/${child.id}/delete`, command(preview, 'delete-child-once'))).toEqual(receipt);
     expect(store.privacyRequests).toHaveLength(1);
     await call('get', '/auth/me', undefined, student, 401); await call('get', '/auth/me');
-    for (const name of ['students', 'diagnosticSessions', 'diagnosticResponses', 'scoringRevisions', 'diagnosticDrafts', 'diagnosticReports', 'guidancePlanRevisions', 'reviewTasks', 'practiceAttempts', 'practiceHints', 'practiceScoringRevisions', 'assistantSessions', 'assistantMessages', 'evidenceFeedback']) {
+    for (const name of ['students', 'diagnosticSessions', 'diagnosticResponses', 'scoringRevisions', 'diagnosticDrafts', 'diagnosticReports', 'guidancePlanRevisions', 'reviewTasks', 'practiceAttempts', 'practiceHints', 'practiceScoringRevisions', 'mistakeNotebookEntries', 'assistantSessions', 'assistantMessages', 'evidenceFeedback']) {
       expect(JSON.stringify(store[name])).not.toContain(child.id); expect(JSON.stringify(store[name])).toContain(sibling.id);
     }
     expect(store.studentLearningAccess).toHaveLength(0); expect(store.studentLearningCodes).toHaveLength(0);

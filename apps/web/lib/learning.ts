@@ -8,7 +8,8 @@ export type DailyLearning = {
   reviews: Array<{ id: string; atomName: string; intervalDays: number; dueAt: string; due: boolean; status: string; sessionId: string | null }>;
   incompleteAssessments: Array<{ id: string; status: 'in_progress' | 'paused'; answeredCount: number; totalCount: number }>; notice: string;
 };
-export type Practice = { id: string; planId: string; studentId: string; subject: Subject; status: string; action: GuidanceAction; planRevision: number; currentPlanRevision: number;
+export type Practice = { id: string; planId: string | null; studentId: string; subject: Subject; status: string; action: GuidanceAction; planRevision: number; currentPlanRevision: number;
+  origin: 'guidance' | 'notebook'; notebookEntryId: string | null;
   snapshotOrigin: 'started' | 'legacy_capture';
   questions: Array<{ id: string; attempted: boolean; latest: PracticeAttempt | null; attempts: number }>;
   summary: { attempted: number; total: number; answered: number; skipped: number; independentFirstPass: number; pendingReview: number } };

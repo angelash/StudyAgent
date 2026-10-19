@@ -107,12 +107,12 @@ export function MediaAnswerInput({ target, mode, response, onChange, onPendingCh
 }
 
 export function StudentMediaEvidence({ id }: { id: string }) {
-  const [media, setMedia] = React.useState<StudentMediaView | null>(null), [error, setError] = React.useState('');
-  React.useEffect(() => { const abort = new AbortController(); setMedia(null); setError('');
+  const [media, setMedia] = React.useState<StudentMediaView | null>(null), [error, setError] = React.useState(''), [ready, setReady] = React.useState(false);
+  React.useEffect(() => { const abort = new AbortController(); setMedia(null); setError(''); setReady(false);
     apiRequest<StudentMediaView>(`/learning/media/${encodeURIComponent(id)}`, { signal: abort.signal }).then(setMedia).catch(e => { if (e.name !== 'AbortError') setError(e.message); });
     return () => abort.abort(); }, [id]);
-  if (error) return <p className="media-answer-error" role="status">附件暂时无法读取：{error}</p>;
-  if (!media?.url) return <p role="status">正在打开作答附件…</p>;
+  if (error) return <p className="media-answer-error" data-student-media-state="error" role="status">附件暂时无法读取：{error}</p>;
+  if (!media?.url) return <p data-student-media-state="loading" role="status">正在打开作答附件…</p>;
   const url = questionMediaUrl(media.url);
-  return <figure className="saved-media-evidence">{media.storedType === 'image/png' ? <a href={url} target="_blank" rel="noopener noreferrer">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={url} alt="孩子保存的作答图片，点击可放大核对" onError={() => setError('图片未能完整显示，请反馈给老师核对。')} /></a> : <audio controls preload="metadata" src={url} aria-label="孩子保存的作答录音" onError={() => setError('录音未能完整读取，请反馈给老师核对。')} />}<figcaption>{media.storedType === 'image/png' ? '作答图片' : `作答录音 · ${Math.round((media.durationMs ?? 0) / 1000)}秒`}</figcaption></figure>;
+  return <figure className="saved-media-evidence" data-student-media-state={ready ? 'ready' : 'loading'}>{media.storedType === 'image/png' ? <a href={url} target="_blank" rel="noopener noreferrer">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={url} alt="孩子保存的作答图片，点击可放大核对" onLoad={() => setReady(true)} onError={() => setError('图片未能完整显示，请反馈给老师核对。')} /></a> : <audio controls preload="metadata" src={url} aria-label="孩子保存的作答录音" onLoadedMetadata={() => setReady(true)} onError={() => setError('录音未能完整读取，请反馈给老师核对。')} />}<figcaption>{media.storedType === 'image/png' ? '作答图片' : `作答录音 · ${Math.round((media.durationMs ?? 0) / 1000)}秒`}</figcaption></figure>;
 }

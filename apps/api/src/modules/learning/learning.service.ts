@@ -75,6 +75,7 @@ export class LearningService {
     const session: PracticeSession = { id: this.store.nextId('practice'), studentId: plan.studentId, subject: plan.subject, planId, actionId,
       atomId: action.atomId, day, status: 'in_progress', questionIds: ids,
       actionSnapshot: structuredClone(action), planRevision: plan.revision ?? 1, snapshotOrigin: 'started',
+      atomSnapshot: baseline.atomSnapshots?.find(atom => atom.id === action.atomId), sourceAssessmentId: baseline.id,
       snapshots: ids.map((id) => {
         const question = this.store.find('questions', { id: id })!, payload = this.workspace.buildRenderPayload(id);
         return structuredClone({ id, stem: question.stem, answer: question.answer, analysis: question.analysis,
@@ -91,12 +92,13 @@ export class LearningService {
   }
   view(user: InMemoryUserAccount, id: string) {
     const session = this.requireSession(user, id), attempts = this.store.select('practiceAttempts', { sessionId: id }).map((item) => this.effectiveAttempt(item));
-    const plan = this.store.find('diagnosticPlans', { id: session.planId }), action = session.actionSnapshot ?? plan?.actions.find((item) => item.id === session.actionId);
+    const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined, action = session.actionSnapshot ?? plan?.actions.find((item) => item.id === session.actionId);
     const latest = session.questionIds.map((questionId) => [...attempts].reverse().find((item) => item.questionId === questionId));
     return { id, studentId: session.studentId, subject: session.subject, atomId: session.atomId, planId: session.planId,
       actionId: session.actionId, day: session.day, status: session.status, action, completedAt: session.completedAt,
-      planRevision: session.planRevision ?? 1, currentPlanRevision: plan?.revision ?? 1,
+      planRevision: session.planRevision ?? 1, currentPlanRevision: session.origin === 'notebook' ? session.planRevision ?? 1 : plan?.revision ?? 1,
       snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
+      origin: session.origin ?? 'guidance', notebookEntryId: session.notebookEntryId ?? null,
       questions: session.questionIds.map((questionId, index) => ({ id: questionId, attempted: Boolean(latest[index]),
         latest: latest[index] ?? null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
       summary: { attempted: latest.filter(Boolean).length, total: session.questionIds.length,
@@ -129,7 +131,7 @@ export class LearningService {
   }
   private assertActive(session: PracticeSession) {
     if (session.status !== 'in_progress') throw new BadRequestException('训练已结束；请使用新题验证');
-    if (!Boolean(this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }))) throw new BadRequestException('计划已暂停，请先恢复计划');
+    if (session.origin !== 'notebook' && !Boolean(this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }))) throw new BadRequestException('计划已暂停，请先恢复计划');
   }
   submit(user: InMemoryUserAccount, id: string, input: unknown) {
     const session = this.requireSession(user, id), command = validate(answerSchema, input);
@@ -149,7 +151,7 @@ export class LearningService {
     const attempt: PracticeAttempt = { id: this.store.nextId('practice-attempt'), sessionId: id, questionId: command.questionId,
       requestKey: command.requestKey, answer: command.answer ?? null, disposition: command.disposition, ...grade,
       hintLevel: Math.max(0, ...this.store.select('practiceHints', { sessionId: id, questionId: command.questionId }).map((item) => item.level)),
-      attempt: previous.length + 1, solutionExposedBefore: previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
+      attempt: previous.length + 1, solutionExposedBefore: session.origin === 'notebook' || previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
     this.store.append('practiceAttempts', attempt);
     this.media.bind(mediaIds, attempt.id);
     if (session.drafts) delete session.drafts[command.questionId];
@@ -162,7 +164,7 @@ export class LearningService {
     return { attempt, analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
       reviewHistory: this.store.select('practiceScoringRevisions', { responseId: attempt.id }).map(({ requestHash: _hash, ...item }) => item),
       notice: attempt.status === 'pending_review' ? '已保存表达，等待按量规复核。' : attempt.correct ?
-        attempt.attempt === 1 && !attempt.hintLevel ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
+        attempt.attempt === 1 && !attempt.hintLevel && !attempt.solutionExposedBefore ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
   }
 
   effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt {
@@ -189,8 +191,8 @@ export class LearningService {
     const session = this.requireSession(user, id);
     this.assertActive(session);
     if (session.status !== 'in_progress' || !session.questionIds.includes(questionId)) throw new BadRequestException('当前题目不可获取提示');
-    const plan = this.store.find('diagnosticPlans', { id: session.planId });
-    const atom = this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId);
+    const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
+    const atom = session.atomSnapshot ?? this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId);
     const level = Math.min(3, 1 + this.store.select('practiceHints', { sessionId: id, questionId: questionId }).length);
     this.store.append('practiceHints', { id: this.store.nextId('practice-hint'), sessionId: id, questionId, level, at: new Date().toISOString() });
     return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom?.name ?? '当前任务'}”的关键条件。` : level === 2 ?
@@ -206,9 +208,10 @@ export class LearningService {
     }
     return this.view(user, id);
   }
-  mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject) {
+  mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false) {
     this.students.assertCanAccessStudent(user, studentId);
-    const diagnostic = this.diagnostics.effectiveResponses(studentId, subject).filter((item) => item.correct === false || item.status === 'pending_review');
+    const ended = new Set(this.store.select('diagnosticSessions', { studentId, subject, status: ['completed', 'aborted'] }).map(session => session.id));
+    const diagnostic = this.diagnostics.effectiveResponses(studentId, subject).filter((item) => ended.has(item.sessionId) && (item.correct === false || item.status === 'pending_review'));
     const rows = diagnostic.map((item) => {
       const session = this.store.find('diagnosticSessions', { id: item.sessionId });
       return { id: item.id, kind: 'measurement', atomId: item.atomId, questionId: item.questionId,
@@ -217,17 +220,18 @@ export class LearningService {
         snapshot: session?.questionSnapshots.find((question) => question.id === item.questionId) };
     });
     for (const session of this.store.select('practiceSessions', { studentId: studentId, subject: subject })) {
+      if (session.origin === 'notebook') continue;
       for (const questionId of session.questionIds) {
         const original = this.store.find('practiceAttempts', { sessionId: session.id, questionId: questionId });
         const first = original ? this.effectiveAttempt(original) : null;
         if (!first || (first.correct !== false && first.status !== 'pending_review')) continue;
-        const plan = this.store.find('diagnosticPlans', { id: session.planId });
+        const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
         rows.push({ id: first.id, kind: 'practice', atomId: session.atomId, questionId, reason: first.reason, status: first.status,
           atomSnapshot: this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId),
           answer: first.answer, at: first.submittedAt, snapshot: session.snapshots.find((item) => item.id === questionId) });
       }
     }
-    return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100).map(({ snapshot, atomSnapshot, ...item }) => ({ ...item,
+    return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, all ? rows.length : 100).map(({ snapshot, atomSnapshot, ...item }) => ({ ...item,
       atomName: atomSnapshot?.name ?? item.atomId,
       stem: snapshot?.stem ?? '原始题目暂不可用', analysis: snapshot?.analysis ?? '', referenceAnswer: snapshot?.answer ?? null,
       hypothesis: atomSnapshot ? this.store.select('diagnosticHypotheses', { studentId, atomId: item.atomId }).find(hypothesis =>

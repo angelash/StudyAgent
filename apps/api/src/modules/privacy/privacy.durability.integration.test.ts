@@ -50,6 +50,8 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         store.diagnosticReports.push({ id: 'shared-report', sessionId: 'shared-session', report: { studentId: shared.id, version: 1 } });
         store.guidancePlanRevisions.push({ id: 'shared-plan-revision', planId: 'shared-plan', actorId: parent.user.id, snapshot: { studentId: shared.id, createdBy: parent.user.id } });
         store.diagnosticPlans.push({ id: 'shared-plan', studentId: shared.id });
+        store.mistakeNotebookEntries.push({ id: 'shared-notebook', studentId: shared.id, metadata: { reflection: '共同监护保留的卡点' }, history: [{ actorId: parent.user.id }] },
+          { id: 'exclusive-notebook', studentId: exclusive.id, metadata: { reflection: '应随档案删除的卡点' }, history: [{ actorId: parent.user.id }] });
         for (const [id, studentId] of [[sharedMediaId, shared.id], [exclusiveMediaId, exclusive.id], [pendingMediaId, shared.id]]) store.studentMedia.push({ id, studentId,
           ownerUserId: parent.user.id, requestKey: id, kind: 'diagnostic', sessionId: studentId === shared.id ? 'shared-session' : 'exclusive-session', itemId: 'item', questionId: 'question',
           name: 'private-answer.png', mediaType: 'image/png', size: mediaBytes.length, chunkSize: 1048576, createdAt: new Date().toISOString(), references: [],
@@ -86,6 +88,8 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
       await recoveredStore.transaction(() => {
         expect(recoveredStore.diagnosticResponses.map((row: any) => row.answer)).toEqual(['保留的原始表达']);
         expect(recoveredStore.guidancePlanRevisions[0].actorId).toBe('deleted-account');
+        expect(recoveredStore.mistakeNotebookEntries.map((row: any) => row.id)).toEqual(['shared-notebook']);
+        expect(recoveredStore.mistakeNotebookEntries[0].history[0].actorId).toBe('deleted-account');
         expect(recoveredStore.privacyRequests.find((row: any) => row.id === receipt.id).kind).toBe('account_delete');
         expect(recoveredStore.events.some((row: any) => row.eventName === 'privacy.restore_deletions_applied')).toBe(true);
         expect(recoveredStore.studentMedia.map((row: any) => row.id).sort()).toEqual([sharedMediaId, pendingMediaId].sort());

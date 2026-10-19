@@ -32,10 +32,10 @@ export class ReviewsService {
     const session = response && this.store.find('practiceSessions', { id: response.sessionId });
     const snapshot = session?.snapshots.find((item) => item.id === response?.questionId);
     if (!response || !session || !snapshot) throw new NotFoundException('训练证据不存在');
-    const plan = this.store.find('diagnosticPlans', { id: session.planId });
+    const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
     const baseline = plan && this.store.find('diagnosticSessions', { id: plan.baselineSessionId });
     return { response, session, snapshot, studentId: session.studentId, atomId: session.atomId,
-      atomName: baseline?.atomSnapshots?.find(atom => atom.id === session.atomId)?.name ?? session.atomId,
+      atomName: session.atomSnapshot?.name ?? baseline?.atomSnapshots?.find(atom => atom.id === session.atomId)?.name ?? session.atomId,
       revisions: this.store.select('practiceScoringRevisions', { responseId: responseId }) };
   }
 

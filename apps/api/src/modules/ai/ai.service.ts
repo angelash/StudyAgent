@@ -233,14 +233,15 @@ export class AiService {
     if (session.contextRefType === 'practice') {
       const practice = this.store.practiceSessions.find(s => s.id === session.contextRefId && matches(s.studentId, s.subject));
       if (!practice) throw new NotFoundException('当前学习上下文不存在');
-      if (practice.status === 'in_progress' && !Boolean(this.store.find('diagnosticPlans', { id: practice.planId, status: 'active' }))) throw new BadRequestException('指导计划已暂停，请先由家长恢复');
+      if (practice.origin !== 'notebook' && practice.status === 'in_progress' && !Boolean(this.store.find('diagnosticPlans', { id: practice.planId, status: 'active' }))) throw new BadRequestException('指导计划已暂停，请先由家长恢复');
       const question = practice.snapshots.find(q => q.id === session.contextItemId);
       if (!question) throw new BadRequestException('请指定这次练习中正在查看的题目');
       const attempts = this.store.select('practiceAttempts', { sessionId: practice.id, questionId: question.id });
       const latest = attempts.at(-1);
       return { kind: 'practice' as const, sessionId: practice.id, itemId: question.id, question, atomId: practice.atomId,
         draft: practice.drafts?.[question.id]?.answer ?? null, response: latest ?? null, assistanceNeeded: practice.status === 'in_progress' && !attempts.length,
-        action: practice.actionSnapshot ?? null, planId: practice.planId };
+        action: practice.actionSnapshot ?? null, planId: practice.planId, atomSnapshot: practice.atomSnapshot,
+        sourceAssessmentId: practice.sourceAssessmentId };
     }
     if (session.contextRefType === 'diagnostic') {
       const assessment = this.store.diagnosticSessions.find(s => s.id === session.contextRefId && matches(s.studentId, s.subject));
@@ -253,7 +254,8 @@ export class AiService {
       const response = this.store.find('diagnosticResponses', { sessionId: assessment.id, itemId: item.id }) ?? null;
       return { kind: 'diagnostic' as const, sessionId: assessment.id, itemId: item.id, question, atomId: item.atomId,
         draft: this.store.find('diagnosticDrafts', { sessionId: assessment.id, itemId: item.id })?.answer ?? null,
-        response, assistanceNeeded: assessment.status === 'in_progress' && !response, action: null, planId: assessment.planId };
+        response, assistanceNeeded: assessment.status === 'in_progress' && !response, action: null, planId: assessment.planId,
+        atomSnapshot: assessment.atomSnapshots?.find(atom => atom.id === item.atomId) };
     }
     if (session.contextRefType === 'plan') {
       if (session.contextItemId || !this.store.diagnosticPlans.some(p => p.id === session.contextRefId && matches(p.studentId, p.subject))) throw new NotFoundException('当前指导计划不存在');
@@ -266,20 +268,20 @@ export class AiService {
     const bound = this.resolveQuestionContext(session);
     const subject = session.subject;
     const selectedPlanId = bound?.planId ?? (session.contextRefType === 'plan' ? session.contextRefId : undefined);
-    const plan = this.store.diagnosticPlans.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject) &&
+    const plan = bound && !selectedPlanId ? undefined : this.store.diagnosticPlans.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject) &&
       (!selectedPlanId || item.id === selectedPlanId))
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
-    const selectedAssessmentId = session.contextRefType === 'diagnostic' ? session.contextRefId : selectedPlanId ? plan?.baselineSessionId : undefined;
-    const reports = this.store.diagnosticReports.filter((item) => item.report.studentId === session.studentId &&
+    const selectedAssessmentId = session.contextRefType === 'diagnostic' ? session.contextRefId : bound?.kind === 'practice' ? bound.sourceAssessmentId ?? plan?.baselineSessionId : selectedPlanId ? plan?.baselineSessionId : undefined;
+    const reports = bound && !selectedAssessmentId ? [] : this.store.diagnosticReports.filter((item) => item.report.studentId === session.studentId &&
       (!subject || item.report.subject === subject) && (!selectedAssessmentId || item.report.sessionId === selectedAssessmentId))
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.version - a.version);
     const latest = reports[0]?.report;
     const definitionSession = this.store.diagnosticSessions.find(s => s.id === (selectedAssessmentId ?? latest?.sessionId ?? plan?.baselineSessionId));
     const frozen = definitionSession?.scopeSnapshot;
-    const scope = frozen ?? this.store.learningScopes.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject))
-      .sort((a, b) => b.confirmedAt.localeCompare(a.confirmedAt))[0];
+    const scope = frozen ?? (bound ? undefined : this.store.learningScopes.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject))
+      .sort((a, b) => b.confirmedAt.localeCompare(a.confirmedAt))[0]);
     const evidenceIds = [...new Set([...(latest?.evidence.map((item) => item.id) ?? []), ...(session.contextRefType !== 'diagnostic' ? plan?.evidenceIds ?? [] : [])])];
-    const atom = bound ? definitionSession?.atomSnapshots?.find(atom => atom.id === bound.atomId) : null;
+    const atom = bound ? bound.atomSnapshot ?? definitionSession?.atomSnapshots?.find(atom => atom.id === bound.atomId) : null;
     const definitions = definitionSession?.atomSnapshots;
     const definitionUnavailable = !!definitionSession && !definitions;
     const definitionChanged = definitions?.some(original => {
