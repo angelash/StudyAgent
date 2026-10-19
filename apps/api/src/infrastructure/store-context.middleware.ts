@@ -6,6 +6,7 @@ import { InMemoryStoreService } from './in-memory-store.service';
 export class StoreContextMiddleware implements NestMiddleware {
   constructor(private readonly store: InMemoryStoreService) {}
   async use(_req: Request, _res: Response, next: NextFunction) {
+    if (_req.originalUrl.split('?')[0] === '/api/health') { next(); return; }
     try { await this.store.requestContext(() => next()); } catch (error) { next(error); }
   }
 }

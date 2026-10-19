@@ -1024,7 +1024,8 @@ describe('StudyAgent API integration', () => {
     }>).data!;
 
     expect(overview.studentCount).toBeGreaterThanOrEqual(1);
-    expect(overview.knowledgePointCount).toBeGreaterThanOrEqual(1);
+    // This legacy fixture has no atomic mappings; do not count broad historical points as them.
+    expect(overview.knowledgePointCount).toBe(0);
     expect(overview.publishedQuestionCount).toBeGreaterThanOrEqual(1);
   });
 

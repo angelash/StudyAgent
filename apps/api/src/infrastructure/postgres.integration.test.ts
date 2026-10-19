@@ -25,7 +25,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       await control.query(`DROP SCHEMA "${schema}" CASCADE`);
     }
     await control?.end();
-    const expectedCases = process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? 4 : 3;
+    const expectedCases = process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? 5 : 4;
     if (process.env.STUDY_POSTGRES_EVIDENCE) writeFileSync(process.env.STUDY_POSTGRES_EVIDENCE, JSON.stringify({ at: new Date().toISOString(), driver: 'postgres', passedAllCases: metrics.length === expectedCases && metrics.every(m => m.passed), metrics,
       limits: 'Small isolated functional sample. Global revision conflicts and whole-domain loading remain production scaling work.' }, null, 2) + '\n');
   });
@@ -61,7 +61,20 @@ suite('real PostgreSQL storage and API recovery', () => {
       try { await upgrade.query('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
       const migrated = new DomainDatabase(target); await migrated.open();
       try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 6 });
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 7 });
+    } finally { await first.close(); await second.close(); }
+  });
+
+  it('enforces security quotas atomically across pools without changing learning revisions', async () => {
+    let now = 1000; const target = await scoped(), first = new DomainDatabase(target, () => now), second = new DomainDatabase(target, () => now);
+    await first.open(); await second.open();
+    try {
+      const key = createHash('sha256').update('PostgreSQL synthetic quota').digest('hex'), before = await first.read();
+      const results = await Promise.all(Array.from({ length: 25 }, (_, index) => (index % 2 ? first : second).limits.consume(key, 8, 1000)));
+      expect(results.filter(result => result.allowed)).toHaveLength(8);
+      expect(await first.read()).toEqual(before);
+      now = 2000; expect((await first.limits.consume(key, 8, 1000)).remaining).toBe(7);
+      metrics.push({ case: 'cross_pool_security_quotas', passed: true, parallelAttempts: 25, admitted: 8 });
     } finally { await first.close(); await second.close(); }
   });
 

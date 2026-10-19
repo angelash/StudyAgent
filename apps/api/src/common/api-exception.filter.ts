@@ -4,6 +4,7 @@ import {
   ExceptionFilter,
   HttpException,
   HttpStatus,
+  Logger,
 } from '@nestjs/common';
 
 type ErrorPayload = {
@@ -14,15 +15,20 @@ type ErrorPayload = {
 
 @Catch()
 export class ApiExceptionFilter implements ExceptionFilter {
+  private readonly logger = new Logger(ApiExceptionFilter.name);
   catch(exception: unknown, host: ArgumentsHost) {
     const http = host.switchToHttp();
     const response = http.getResponse<{
       status: (statusCode: number) => { json: (body: unknown) => void };
+      setHeader: (name: string, value: string) => void;
     }>();
-    const request = http.getRequest<{ requestId?: string }>();
+    const request = http.getRequest<{ requestId?: string; route?: { path?: string } }>();
 
     const statusCode = this.resolveStatusCode(exception);
     const error = this.resolveErrorPayload(exception);
+    if (statusCode === 429 && typeof error.details?.retryAfterSeconds === 'number') response.setHeader('retry-after', String(error.details.retryAfterSeconds));
+    if (statusCode >= 500) this.logger.error(JSON.stringify({ event: 'request.failed', requestId: request.requestId,
+      code: error.code, route: request.route?.path ?? 'unmatched', exceptionType: exception instanceof Error ? exception.constructor.name : 'Unknown' }));
 
     response.status(statusCode).json({
       data: null,

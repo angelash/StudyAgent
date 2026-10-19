@@ -26,7 +26,7 @@
 4. 执行 `npm run dev`，或分别运行 `npm run dev:api`、`npm run dev:web`。
 5. 打开 `http://127.0.0.1:3000/parent/login` 创建家长账号。
 
-默认API端口4000、Web端口3000。Web同站点代理使用 `NEXT_PUBLIC_API_BASE_URL`；自定义来源还需配置 `CORS_ORIGINS`。管理员使用本地 `admin:create` 命令引导创建，详见 [运行与存储](doc/product/05-running-and-storage.md)。
+默认API端口4000、Web端口3000。Web用 `NEXT_PUBLIC_API_BASE_URL` 指定API地址；同站点反向代理部署时设为空。自定义来源还需配置 `CORS_ORIGINS`。管理员使用本地 `admin:create` 命令引导创建，详见 [运行与存储](doc/product/05-running-and-storage.md)。
 
 默认业务存储为 `data/study-agent.sqlite3`，重启保留学习数据；可用 `STUDY_DATA_DIR` 改目录。设置 `STUDY_STORAGE=postgres` 和 `DATABASE_URL` 后使用PostgreSQL并自动迁移。原始大题库使用独立索引。早期Prisma脚手架保留在 `resources/legacy/prisma`，不参与运行和安装。
 

@@ -150,7 +150,7 @@ describe('guardian-managed finite student learning identity', () => {
     vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(Date.now() + 8 * 3600_000 + 1_000);
     await call('get', '/auth/me', undefined, student, 401);
     await call('get', '/auth/me');
-    for (let i = 0; i < 30; i++) expect(() => auth.redeemLearningCode({ code: '0123456789abcdef0123' }, 'synthetic-guesser')).toThrow('学习码不可用');
-    expect(() => auth.redeemLearningCode({ code: '0123456789abcdef0123' }, 'synthetic-guesser')).toThrow('尝试次数过多');
+    for (let i = 0; i < 30; i++) await expect(auth.redeemLearningCode({ code: '0123456789abcdef0123' }, 'synthetic-guesser')).rejects.toThrow('学习码不可用');
+    await expect(auth.redeemLearningCode({ code: '0123456789abcdef0123' }, 'synthetic-guesser')).rejects.toThrow('尝试次数过多');
   });
 });

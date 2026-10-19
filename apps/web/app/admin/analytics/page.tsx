@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { apiRequest, getAuthToken, getCurrentUser } from '../../../lib/api';
+import type { OperationsOverview } from '@study-agent/contracts';
 
 type User = {
   id: string;
@@ -85,6 +86,7 @@ export default function AdminAnalyticsPage() {
   const router = useRouter();
   const [overview, setOverview] = React.useState<AnalyticsOverview | null>(null);
   const [aiQuality, setAiQuality] = React.useState<AIQualityOverview | null>(null);
+  const [operations, setOperations] = React.useState<OperationsOverview | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(true);
 
@@ -104,12 +106,14 @@ export default function AdminAnalyticsPage() {
         return;
       }
 
-      const [overviewResult, aiQualityResult] = await Promise.all([
+      const [overviewResult, aiQualityResult, operationsResult] = await Promise.all([
         apiRequest<AnalyticsOverview>('/admin/analytics/overview', {}, getAuthToken()),
         apiRequest<AIQualityOverview>('/admin/analytics/ai-quality', {}, getAuthToken()),
+        apiRequest<OperationsOverview>('/admin/operations', {}, getAuthToken()),
       ]);
       setOverview(overviewResult);
       setAiQuality(aiQualityResult);
+      setOperations(operationsResult);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : '运营看板加载失败');
     } finally {
@@ -122,7 +126,7 @@ export default function AdminAnalyticsPage() {
   }, []);
 
   return (
-    <main style={{ padding: 40, maxWidth: 1180 }}>
+    <main style={{ padding: 'clamp(16px, 4vw, 40px)', maxWidth: 1180, minWidth: 0 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
           <h1>运营看板</h1>
@@ -162,11 +166,11 @@ export default function AdminAnalyticsPage() {
             { label: '学生数', value: overview.studentCount },
             { label: '活跃家长', value: overview.activeParentCount },
             { label: '教材册次', value: overview.textbookVolumeCount },
-            { label: '知识点', value: overview.knowledgePointCount },
+            { label: '原子知识点', value: overview.knowledgePointCount },
             { label: '已发布题目', value: overview.publishedQuestionCount },
             { label: '完成评估', value: overview.completedAssessmentCount },
-            { label: '完成任务', value: overview.completedMissionCount },
-            { label: '活跃周计划', value: overview.activeStudyPlanCount },
+            { label: '完成训练活动', value: overview.completedMissionCount },
+            { label: '进行中指导计划', value: overview.activeStudyPlanCount },
             { label: 'AI 洞察总数', value: overview.aiInsightCount },
           ].map((item) => (
             <div key={item.label} style={panelStyle}>
@@ -174,6 +178,48 @@ export default function AdminAnalyticsPage() {
               <div style={{ marginTop: 8, fontSize: 28, fontWeight: 700 }}>{item.value}</div>
             </div>
           ))}
+        </section>
+      ) : null}
+
+      {operations ? (
+        <section style={{ ...panelStyle, marginTop: 24 }} aria-label="运行与待办监控">
+          <h2 style={{ marginTop: 0 }}>运行与待办</h2>
+          <p style={{ color: '#475569', lineHeight: 1.7 }}>
+            学习与队列来自当前存储；请求统计从本进程启动累计。更新于 {new Date(operations.at).toLocaleString('zh-CN')}。
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 12 }}>
+            {[
+              { label: '等待量规复核', value: operations.learning.pendingRubrics },
+              { label: '待处理学习反馈', value: operations.learning.feedbackAwaitingReview },
+              { label: '到期复测', value: operations.learning.dueReviews },
+              { label: '排队 / 待重试任务', value: operations.tasks.counts.queued + operations.tasks.counts.retry_wait },
+              { label: '任务运行中', value: operations.tasks.counts.running },
+              { label: '失败任务', value: operations.tasks.counts.failed },
+              { label: '请求 / 服务错误', value: `${operations.requests.total} / ${operations.requests.serverErrors}` },
+              { label: '限流拒绝', value: operations.rateLimits.rejected },
+            ].map(item => <div key={item.label} style={{ borderRadius: 14, padding: 14, background: '#f8fafc' }}>
+              <div style={{ color: '#475569', fontSize: 13 }}>{item.label}</div>
+              <div style={{ fontSize: 25, fontWeight: 700, marginTop: 7 }}>{item.value}</div>
+            </div>)}
+          </div>
+          <p style={{ color: '#475569', lineHeight: 1.8, overflowWrap: 'anywhere' }}>
+            存储：{operations.storage.driver} · {operations.storage.durable ? '持久化已启用' : '隔离测试模式'}<br />
+            可用容量：{operations.storage.capacity.state === 'available' ? `${(operations.storage.capacity.availableBytes / 1024 ** 3).toFixed(1)} GB` : '暂不可读取'} · 进程内存：{Math.round(operations.runtime.memory.rss / 1024 ** 2)} MB<br />
+            最早待办距今：{operations.tasks.pendingAgeSeconds} 秒 · 存储冲突：{operations.storage.counters?.conflicts ?? 0}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+            <Link href="/admin/reviews">处理量规与反馈</Link><Link href="/admin/imports">查看导入任务</Link><Link href="/admin/curriculum">检查课程覆盖</Link>
+          </div>
+          <details style={{ marginTop: 20 }}>
+            <summary style={{ cursor: 'pointer', padding: '10px 0' }}>请求延迟明细</summary>
+            <p style={{ fontSize: 13, color: '#64748b' }}>p95显示直方图区间上限；超过10秒单独提示。仅保存路由模板和汇总计数。</p>
+            <ul style={{ paddingLeft: 20, display: 'grid', gap: 12 }}>
+              {operations.requests.routes.slice(0, 30).map(row => <li key={`${row.method}-${row.route}-${row.statusClass}`} style={{ overflowWrap: 'anywhere', lineHeight: 1.6 }}>
+                <code>{row.method} {row.route}</code><br />
+                {row.statusClass}类 · {row.count}次 · p95 {row.p95UpperMs === null ? '超过10秒' : `≤ ${row.p95UpperMs}ms`} · 最长 {row.maxMs}ms
+              </li>)}
+            </ul>
+          </details>
         </section>
       ) : null}
 
@@ -187,8 +233,7 @@ export default function AdminAnalyticsPage() {
                 { label: '提示生成洞察', value: aiQuality.sourceBreakdown.hint },
                 { label: '助教对话洞察', value: aiQuality.sourceBreakdown.assistant },
                 { label: '需人工复核', value: aiQuality.reviewRequiredCount },
-                { label: '带检索支撑的助教回复', value: aiQuality.searchBackedAssistantCount },
-                { label: '助教检索覆盖率', value: `${aiQuality.searchBackedAssistantRate}%` },
+                { label: '历史检索记录', value: aiQuality.searchBackedAssistantCount },
               ].map((item) => (
                 <div key={item.label} style={{ padding: 14, borderRadius: 16, background: '#f8fafc', border: '1px solid #e2e8f0' }}>
                   <div style={{ fontSize: 12, color: '#64748b' }}>{item.label}</div>
@@ -213,9 +258,7 @@ export default function AdminAnalyticsPage() {
                 <div style={{ marginTop: 10, color: '#475569', lineHeight: 1.8 }}>
                   {aiQuality.totalInsightCount === 0
                     ? '当前还没有形成足够的 AI 洞察数据，建议先完成几轮真实评估、提示和助教交互。'
-                    : aiQuality.searchBackedAssistantRate >= 80
-                      ? '助教回复的检索支撑覆盖比较稳，当前更值得关注低置信或需复核的场景。'
-                      : '助教回复已开始稳定使用检索，但还需要继续观察是否每次关键对话都带足上下文支撑。'}
+                    : '这些记录包含模型输出与规则指导，仍需按作答证据逐项复核。检索次数和模型自述置信度不能证明教学质量；助教依据当前题目、草稿、报告与计划提供帮助。'}
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ const { createHash } = require('node:crypto');
 const base = new URL(process.argv[2] ?? 'http://127.0.0.1:13000');
 if (!['127.0.0.1', 'localhost', '[::1]'].includes(base.hostname)) throw new Error('Only a local QA server is allowed');
 const destination = path.resolve(process.argv[3] ?? 'data/qa/web-delivery.json');
-const routes = ['/parent/login', '/student/login', '/student/assessment', '/parent/data', '/admin/reviews'];
+const routes = ['/parent/login', '/student/login', '/student/assessment', '/parent/data', '/admin/reviews', '/admin/analytics'];
 const evidence = { at: new Date().toISOString(), base: base.origin, scope: 'HTTP pages, generated scripts, CSS and local editor fonts only; no interactive, visual, keyboard, microphone or authenticated workflow acceptance', pages: [], scripts: 0, stylesheets: 0, fonts: [], passed: false };
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 async function get(relative) {

@@ -58,6 +58,16 @@ export class TaskRepository {
   }
 
   async get(id: string) { return this.one('SELECT * FROM durable_tasks WHERE id=?', [id]); }
+  async summary() {
+    const rows = await this.query('SELECT state,COUNT(*) AS count,MIN(created_at) AS oldest FROM durable_tasks GROUP BY state');
+    const counts = Object.fromEntries(['queued', 'running', 'retry_wait', 'cancel_requested', 'cancelled', 'succeeded', 'failed'].map(state => [state, 0]));
+    let oldestPendingAt: string | null = null;
+    for (const item of rows) {
+      counts[item.state] = Number(item.count);
+      if (['queued', 'retry_wait'].includes(item.state) && (!oldestPendingAt || item.oldest < oldestPendingAt)) oldestPendingAt = item.oldest;
+    }
+    return { counts, oldestPendingAt, pendingAgeSeconds: oldestPendingAt ? Math.max(0, Math.floor((this.now() - Date.parse(oldestPendingAt)) / 1000)) : 0 };
+  }
   async history(id: string) {
     return (await this.query('SELECT action,actor_id,at,detail FROM durable_task_history WHERE task_id=? ORDER BY at,id LIMIT 200', [id]))
       .map(r => ({ action: r.action, actorId: r.actor_id, at: r.at, detail: json(r.detail) }));

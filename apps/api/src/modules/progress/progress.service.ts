@@ -291,11 +291,11 @@ export class ProgressService {
       studentCount: this.store.students.length,
       activeParentCount: new Set(this.store.bindings.filter((item) => item.status === 'active').map((item) => item.parentUserId)).size,
       textbookVolumeCount: this.store.textbookVolumes.length,
-      knowledgePointCount: this.store.knowledgePoints.length,
+      knowledgePointCount: this.store.knowledgeAtoms.length,
       publishedQuestionCount: this.store.questions.filter((item) => item.status === 'published').length,
-      completedAssessmentCount: this.store.assessments.filter((item) => item.status === 'completed').length,
-      completedMissionCount: this.store.missions.filter((item) => item.status === 'completed').length,
-      activeStudyPlanCount: this.store.studyPlans.filter((item) => item.status === 'active').length,
+      completedAssessmentCount: this.store.diagnosticSessions.filter((item) => item.status === 'completed').length,
+      completedMissionCount: this.store.practiceSessions.filter((item) => item.status === 'completed').length,
+      activeStudyPlanCount: this.store.diagnosticPlans.filter((item) => item.status === 'active').length,
       aiInsightCount: this.store.aiInsights.length,
     };
   }

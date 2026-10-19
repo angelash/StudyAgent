@@ -2,6 +2,7 @@ import { CanActivate, ExecutionContext, ForbiddenException, Injectable, Unauthor
 import { RequestWithContext } from './request-context.middleware';
 import { InMemoryStoreService, InMemoryUserAccount, InMemoryAuthSession } from '../infrastructure/in-memory-store.service';
 import { hashToken } from '../modules/auth/auth.service';
+import { RateLimitService } from '../infrastructure/rate-limit.service';
 
 export function requestToken(request: { headers: { authorization?: string; cookie?: string } }) {
   const authorization = request.headers.authorization;
@@ -36,9 +37,9 @@ const learningRoutes: Record<string, RegExp[]> = {
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly store: InMemoryStoreService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly limits: RateLimitService) {}
 
-  canActivate(context: ExecutionContext): boolean {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
     const token = requestToken(request);
     const session = token ? this.store.sessions.find((item) => item.tokenHash === hashToken(token)) : undefined;
@@ -60,6 +61,9 @@ export class AuthGuard implements CanActivate {
       if (!learningRoutes[request.method]?.some(pattern => pattern.test(path))) throw new ForbiddenException('这是孩子的学习身份，请由家长登录后管理');
     }
 
+    const writing = !['GET', 'HEAD', 'OPTIONS'].includes(request.method);
+    await this.limits.assert(`request-user:${writing ? 'write' : 'read'}:${user.id}`, writing ? 180 : 600, 60000);
+    if (writing && request.path.startsWith('/api/ai/')) await this.limits.assert(`request-ai:${user.id}`, 60, 600000);
     request.user = user;
     request.authSession = session;
     return true;

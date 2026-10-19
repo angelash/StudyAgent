@@ -1,35 +1,27 @@
-import { BadRequestException, ConflictException, ForbiddenException, HttpException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { hash, compare } from 'bcryptjs';
 import { createHash, randomBytes } from 'crypto';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { credentialsSchema, validate } from '../../common/validation';
 import { z } from 'zod';
+import { RateLimitService } from '../../infrastructure/rate-limit.service';
 
 export const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
 
 @Injectable()
 export class AuthService {
-  private readonly attempts = new Map<string, { count: number; expiresAt: number }>();
   constructor(
     private readonly store: InMemoryStoreService,
     private readonly eventBus: DomainEventBusService,
+    private readonly limits: RateLimitService,
   ) {}
 
-  private rateLimit(key: string) {
-    const current = this.attempts.get(key);
-    const state = current && current.expiresAt > Date.now() ? current : { count: 0, expiresAt: Date.now() + 15 * 60_000 };
-    state.count++;
-    this.attempts.set(key, state);
-    if (this.attempts.size > 10_000) {
-      for (const [entry, value] of this.attempts) if (value.expiresAt <= Date.now()) this.attempts.delete(entry);
-    }
-    if (state.count > 30) throw new HttpException('尝试次数过多，请稍后重试', 429);
-  }
+  private rateLimit(key: string) { return this.limits.assert(`auth:${key}`, 30, 15 * 60_000); }
 
   async register(input: unknown, address = 'local') {
     const command = validate(credentialsSchema, input);
-    this.rateLimit(`register:${address}`);
+    await this.rateLimit(`register:${address}`);
     if (this.store.users.some((item) => item.principal === command.principal)) {
       throw new ConflictException('无法创建该账号，请登录或更换账号');
     }
@@ -46,12 +38,12 @@ export class AuthService {
   async login(input: unknown, address = 'local') {
     const command = validate(credentialsSchema, input);
     const key = `login:${address}:${command.principal}`;
-    this.rateLimit(key);
-    this.rateLimit(`login-ip:${address}`);
+    await this.limits.assert(`auth:login-ip:${address}`, 300, 15 * 60_000);
+    await this.rateLimit(key);
     const user = this.store.users.find((item) => item.principal === command.principal);
     const valid = await compare(command.credential, user?.passwordHash ?? '$2b$12$pAxqI0sYiLqor2F0ILhL1.I9/lYcflo6QwYV6jkz41p0d4ESJ8rN2');
     if (!user || !valid || user.status !== 'active' || user.role === 'student') throw new UnauthorizedException('账号或密码不正确');
-    this.attempts.delete(key);
+    await this.limits.reset(`auth:${key}`);
     return this.createSession(user);
   }
 
@@ -62,15 +54,15 @@ export class AuthService {
   }
 
   async reauthenticate(user: InMemoryUserAccount, credential: string, purpose: string) {
-    this.rateLimit(`reauth:${purpose}:${user.id}`);
+    await this.rateLimit(`reauth:${purpose}:${user.id}`);
     if (!credential || !(await compare(credential, user.passwordHash))) throw new UnauthorizedException('当前账号密码不正确');
   }
 
-  redeemLearningCode(input: unknown, address = 'local') {
+  async redeemLearningCode(input: unknown, address = 'local') {
     const { code } = validate(z.object({ code: z.string().trim().min(20).max(40).transform(s => s.replace(/\s/g, '').toLowerCase()) }).strict(), input);
-    this.rateLimit(`learning-code:${address}`);
+    await this.limits.assert(`auth:learning-code:${address}`, 300, 15 * 60_000);
     const tokenHash = hashToken(code);
-    this.rateLimit(`learning-code-value:${tokenHash}`);
+    await this.rateLimit(`learning-code-value:${tokenHash}`);
     const entry = this.store.studentLearningCodes.find(c => c.tokenHash === tokenHash && !c.usedAt && !c.revokedAt && Date.parse(c.expiresAt) > Date.now());
     const access = entry && this.store.studentLearningAccess.find(a => a.studentId === entry.studentId && a.status === 'enabled' && a.version === entry.accessVersion);
     const user = access && this.store.users.find(u => u.id === access.userId && u.role === 'student' && u.status === 'active');
@@ -96,7 +88,7 @@ export class AuthService {
     if (actor.role !== 'admin') throw new ForbiddenException('需要管理员权限');
     const command = validate(z.object({ role: z.enum(['parent', 'teacher', 'operator', 'admin']), status: z.enum(['active', 'disabled']),
       expectedVersion: z.number().int().positive(), reason: z.string().trim().min(5).max(2000), adminCredential: z.string().min(10).max(128) }).strict(), input);
-    this.rateLimit(`account-change:${actor.id}`);
+    await this.rateLimit(`account-change:${actor.id}`);
     if (!(await compare(command.adminCredential, actor.passwordHash))) throw new UnauthorizedException('管理员密码不正确');
     const target = this.store.users.find((item) => item.id === id);
     if (!target) throw new NotFoundException('账号不存在');

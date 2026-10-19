@@ -1,0 +1,118 @@
+{
+  "at": "2026-10-19T17:57:17.609Z",
+  "scope": "Fresh local production-mode SQLite, formal local admin bootstrap, HTTP and service restart; no browser or remote deployment acceptance",
+  "passed": true,
+  "formalAdminBootstrap": true,
+  "failedGuessesBeforeLimit": 30,
+  "quotaSurvivesRestart": true,
+  "schemaVersion": 7,
+  "healthIndependentOfStorage": true,
+  "readinessRejectsClosedStorage": true,
+  "operations": {
+    "at": "2026-10-19T17:57:24.013Z",
+    "runtime": {
+      "node": "v24.19.0",
+      "uptimeSeconds": 7,
+      "memory": {
+        "rss": 311627776,
+        "heapTotal": 231202816,
+        "heapUsed": 124101800,
+        "external": 4494925,
+        "arrayBuffers": 304549
+      }
+    },
+    "requests": {
+      "startedAt": "2026-10-19T17:57:23.015Z",
+      "scope": "current process since startup; p95 is a histogram upper bound; null means above 10 seconds",
+      "inFlight": 1,
+      "maxInFlight": 1,
+      "total": 4,
+      "serverErrors": 0,
+      "clientErrors": 1,
+      "routes": [
+        {
+          "method": "POST",
+          "route": "/api/auth/learning-code",
+          "statusClass": 400,
+          "count": 1,
+          "meanMs": 10.44,
+          "maxMs": 10.44,
+          "p95UpperMs": 25
+        },
+        {
+          "method": "GET",
+          "route": "/api/auth/me",
+          "statusClass": 200,
+          "count": 1,
+          "meanMs": 15.43,
+          "maxMs": 15.43,
+          "p95UpperMs": 25
+        },
+        {
+          "method": "GET",
+          "route": "/api/health",
+          "statusClass": 200,
+          "count": 1,
+          "meanMs": 0.46,
+          "maxMs": 0.46,
+          "p95UpperMs": 5
+        },
+        {
+          "method": "GET",
+          "route": "/api/ready",
+          "statusClass": 200,
+          "count": 1,
+          "meanMs": 0.48,
+          "maxMs": 0.48,
+          "p95UpperMs": 5
+        }
+      ]
+    },
+    "storage": {
+      "driver": "sqlite",
+      "durable": true,
+      "counters": {
+        "revisionChecks": 5,
+        "snapshotLoads": 1,
+        "snapshotRowsLoaded": 17513,
+        "cacheHits": 4,
+        "commits": 0,
+        "conflicts": 0,
+        "collectionsCloned": 8,
+        "recordsCloned": 4
+      },
+      "capacity": {
+        "availableBytes": 30116048896,
+        "totalBytes": 484945805312,
+        "state": "available"
+      }
+    },
+    "rateLimits": {
+      "accepted": 6,
+      "rejected": 1,
+      "scope": "current process; enforcement counters shared in database"
+    },
+    "tasks": {
+      "counts": {
+        "queued": 0,
+        "running": 0,
+        "retry_wait": 0,
+        "cancel_requested": 0,
+        "cancelled": 0,
+        "succeeded": 0,
+        "failed": 0
+      },
+      "oldestPendingAt": null,
+      "pendingAgeSeconds": 0
+    },
+    "learning": {
+      "completedAssessments": 0,
+      "completedPractice": 0,
+      "activePlans": 0,
+      "dueReviews": 0,
+      "pendingRubrics": 0,
+      "feedbackAwaitingReview": 0,
+      "completedFamilyDeletions": 0
+    }
+  }
+}

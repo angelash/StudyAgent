@@ -2,7 +2,7 @@
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
-默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本6）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
+默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本7）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
 
 兼容注入名 `InMemoryStoreService` 目前仍由旧模块引用，运行时已使用请求隔离的数据库事务；`domain_records` 为具有唯一约束、版本和稳定顺序的领域文档表。原始全量题库使用独立索引库，不能塞入该兼容接口。并发写基线冲突返回409，调用方应重读后重试，不能盲目覆盖。
 
@@ -23,3 +23,5 @@ Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm
 上传分块、完成状态、响应绑定和清理任务一起持久化。清理worker与处理任务一样受 `STUDY_WORKER_ENABLED` 控制，可由独立worker接管。完成后删除原上传分块，保留规范化学习证据；未完成上传24小时后过期，活动中的未绑定文件7天后过期（保存在草稿中的完整文件保留），结束活动中未绑定文件24小时后过期。已绑定响应的证据不随此定时回收。家庭下载包包含JSON、规范化图片/录音与SHA-256清单，不包含原始EXIF或未传完分块；准备后两分钟内由同一登录会话下载一次，中断或重启后重新准备。
 
 Web的 `prebuild` / `predev` 会从已锁定的MathLive依赖生成本地公式字体及许可，产物在 `apps/web/public/vendor/mathlive`。部署时应保留完整 `public` 目录。`scripts/run-web.cjs` 加载根目录配置，避免Next构建worker继承不支持的 `--env-file` 参数。CI门禁与本机升级验收见 [依赖安全交付](19-dependency-security-delivery.md)；配置文件存在不代表远程CI已运行。
+
+请求和身份额度由数据库原子计数，超限429附 `Retry-After`。反向代理部署需用 `STUDY_TRUST_PROXY` 指定自己的代理IP/CIDR；默认忽略转发来源头。管理员可在 `/admin/analytics` 查看运行、任务与复核积压。请求统计仅当前进程，自启动累计；任务和学习计数来自持久库。具体额度、监控口径和故障演练见 [运行监控交付](21-operations-delivery.md)。

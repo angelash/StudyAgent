@@ -90,9 +90,11 @@ describe('verified backup and isolated recovery', () => {
       expect((await database.read()).state.diagnosticResponses).toEqual([{ id: 'original', score: 0.25 }]);
       await database.close();
       const guard = new DatabaseSync(location);
-      expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(6);
-      expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
-      guard.exec("UPDATE study_restore_guard SET state='restoring'"); guard.close();
+      try {
+        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(7);
+        expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
+        guard.exec("UPDATE study_restore_guard SET state='restoring'");
+      } finally { guard.close(); }
       const refused = new DomainDatabase(location);
       await expect(refused.open()).rejects.toThrow('restoration is incomplete');
       await expect(createBundle({ dataDir: directory, destination: join(directory + '-backup') })).rejects.toThrow('source_database_restore_incomplete');

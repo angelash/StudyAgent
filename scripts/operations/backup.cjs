@@ -49,7 +49,7 @@ function summary(db) {
     db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 6) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 7) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
@@ -126,12 +126,14 @@ async function verifyBundle({ bundle, incomplete = false }) {
   if (manifest.format !== FORMAT || !Array.isArray(manifest.files) || manifest.files.length > 1_000_000) fail('unsupported_backup_format');
   if (typeof manifest.assetsIncluded !== 'boolean' || typeof manifest.id !== 'string' || !Number.isFinite(Date.parse(manifest.createdAt))) fail('invalid_manifest_metadata');
   const paths = new Map(), portablePaths = new Set();
+  let verifiedCount = 0;
   for (const file of manifest.files) {
     if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);
     portablePaths.add(file.path.toLowerCase());
+    if (++verifiedCount % 25000 === 0) process.stderr.write(`Verified ${verifiedCount} backup files\n`);
   }
   if (!paths.has('database/study-agent.sqlite3')) fail('database_missing_from_manifest');
   const db = openRead(within(root, 'database/study-agent.sqlite3')); let state;
@@ -149,6 +151,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
 async function restoreBundle({ bundle, destination, deletionLedger }) {
   const ledger = readLedger(deletionLedger), verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
   const marker = within(root, '.study-restore-incomplete'); fs.writeFileSync(marker, 'Restore has not completed. Do not start the application.\n', { flag: 'wx' });
+  let restoredCount = 0;
   for (const file of verified.manifest.files) {
     const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
     copyVerified(within(bundle, file.path), within(root, relative), file);
@@ -159,6 +162,7 @@ async function restoreBundle({ bundle, destination, deletionLedger }) {
         guard.prepare("INSERT INTO study_restore_guard VALUES(1,'restoring',?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state,backup_id=excluded.backup_id,updated_at=excluded.updated_at").run(verified.manifest.id, new Date().toISOString());
       } finally { guard.close(); }
     }
+    if (++restoredCount % 5000 === 0) process.stderr.write(`Restored ${restoredCount} files\n`);
   }
   const db = new DatabaseSync(within(root, 'study-agent.sqlite3')); let counts;
   try {

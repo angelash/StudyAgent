@@ -31,8 +31,8 @@ export class AuthController {
   }
 
   @Post('learning-code')
-  learningCode(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    const result = this.authService.redeemLearningCode(body, req.ip); this.setCookie(res, result); return result;
+  async learningCode(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
+    const result = await this.authService.redeemLearningCode(body, req.ip); this.setCookie(res, result); return result;
   }
 
   @UseGuards(AuthGuard)

@@ -4,6 +4,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { Pool } from 'pg';
 import { TaskFence, TaskIntent, TaskOperation, TaskRepository } from './task-repository';
+import { RateLimitRepository } from './rate-limit-repository';
 
 export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState };
@@ -71,6 +72,7 @@ export class DomainDatabase {
   private cached?: StateSnapshot;
   private readonly counters = { revisionChecks: 0, snapshotLoads: 0, snapshotRowsLoaded: 0, cacheHits: 0, commits: 0, conflicts: 0 };
   tasks!: TaskRepository;
+  limits!: RateLimitRepository;
   readonly driver: 'sqlite' | 'postgres';
 
   constructor(private readonly location: string, private readonly now = () => Date.now()) {
@@ -117,8 +119,11 @@ export class DomainDatabase {
       INSERT INTO study_restore_guard VALUES(1,'ready',NULL,'${new Date().toISOString()}') ON CONFLICT(id) DO NOTHING;`);
     await this.migrateConstraints(5, [{ name: 'privacy_request', collection: 'privacyRequests', fields: ['actorId', 'requestKey'] }]);
     await this.migrateConstraints(6, [{ name: 'student_media_request', collection: 'studentMedia', fields: ['ownerUserId', 'requestKey'] }]);
+    await this.migrateConstraints(7, [], `CREATE TABLE IF NOT EXISTS request_rate_limits(bucket_key TEXT PRIMARY KEY,used INTEGER NOT NULL,expires_at BIGINT NOT NULL);
+      CREATE INDEX IF NOT EXISTS request_rate_expiration ON request_rate_limits(expires_at);`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
     await this.tasks.open();
+    this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
   }
 
   private async assertRestoreReady() {

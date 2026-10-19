@@ -239,6 +239,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   }
 
   get tasks() { const db = this.database ?? this.memoryQueue; if (!db) throw new Error('Task storage is not initialized'); return db.tasks; }
+  get limits() { const db = this.database ?? this.memoryQueue; if (!db) throw new Error('Security storage is not initialized'); return db.limits; }
   async enqueueTask(intent: TaskIntent) {
     const context = this.contexts.getStore();
     if (context) context.enqueue.push(intent);
