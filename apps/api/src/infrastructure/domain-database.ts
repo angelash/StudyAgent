@@ -21,6 +21,10 @@ const learningIdentityConstraints = [
   { name: 'progress_proposal_request', collection: 'studentProgressProposals', fields: ['studentId', 'proposedBy', 'requestKey'] },
   { name: 'progress_proposal_pending', collection: 'studentProgressProposals', fields: ['studentId', 'scope.subject'], pending: true },
 ];
+const assistantConstraints = [
+  { name: 'assistant_scope', collection: 'assistantSessions', fields: ['scopeKey'] },
+  { name: 'assistant_message_request', collection: 'assistantMessages', fields: ['sessionId', 'requestKey'] },
+];
 
 function recordId(item: unknown): string {
   const record = item as Record<string, unknown>;
@@ -88,13 +92,14 @@ export class DomainDatabase {
         CREATE UNIQUE INDEX IF NOT EXISTS assessment_response ON domain_records((body->>'sessionId'),(body->>'questionId')) WHERE collection='assessmentAnswers';
         CREATE UNIQUE INDEX IF NOT EXISTS active_binding ON domain_records((body->>'parentUserId'),(body->>'studentId')) WHERE collection='bindings' AND body->>'status'='active';`);
     }
-    await this.migrateLearningIdentity();
+    await this.migrateConstraints(2, learningIdentityConstraints);
+    await this.migrateConstraints(3, assistantConstraints);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
     await this.tasks.open();
   }
 
-  private async migrateLearningIdentity() {
-    const indexes = (postgres: boolean) => learningIdentityConstraints.map(index => {
+  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>) {
+    const indexes = (postgres: boolean) => constraints.map(index => {
       const extract = (field: string) => postgres ? `(body#>>'{${field.split('.').join(',')}}')` : `json_extract(body,'$.${field}')`;
       return `CREATE UNIQUE INDEX IF NOT EXISTS ${index.name} ON domain_records(${index.fields.map(extract).join(',')})
         WHERE collection='${index.collection}'${index.pending ? ` AND ${extract('status')}='pending'` : ''}`;
@@ -102,9 +107,9 @@ export class DomainDatabase {
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
-        if (!this.sqlite.prepare('SELECT version FROM schema_migrations WHERE version=2').get()) {
+        if (!this.sqlite.prepare('SELECT version FROM schema_migrations WHERE version=?').get(version)) {
           this.sqlite.exec(indexes(false));
-          this.sqlite.exec("INSERT INTO schema_migrations VALUES(2, strftime('%Y-%m-%dT%H:%M:%fZ','now'))");
+          this.sqlite.prepare("INSERT INTO schema_migrations VALUES(?, strftime('%Y-%m-%dT%H:%M:%fZ','now'))").run(version);
         }
         this.sqlite.exec('COMMIT');
       } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
@@ -114,9 +119,9 @@ export class DomainDatabase {
     try {
       await client.query('BEGIN');
       await client.query('SELECT pg_advisory_xact_lock(73199402)');
-      if (!(await client.query('SELECT version FROM schema_migrations WHERE version=2')).rowCount) {
+      if (!(await client.query('SELECT version FROM schema_migrations WHERE version=$1', [version])).rowCount) {
         await client.query(indexes(true));
-        await client.query('INSERT INTO schema_migrations(version) VALUES(2)');
+        await client.query('INSERT INTO schema_migrations(version) VALUES($1)', [version]);
       }
       await client.query('COMMIT');
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }

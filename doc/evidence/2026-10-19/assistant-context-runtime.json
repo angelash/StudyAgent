@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-19T15:27:48.609Z",
+  "fixture": "synthetic loopback API",
+  "checks": [
+    "actual student identity binds current frozen practice question",
+    "resumes same conversation",
+    "reads saved draft without grading secrets",
+    "local guidance remains usable without AI key",
+    "assistance recorded on later response",
+    "same request does not duplicate conversation or assistance",
+    "foreign item rejected"
+  ],
+  "historyCount": 2,
+  "responseHintLevel": 1,
+  "restart": "durability.integration.test.ts passed: same scoped conversation and messages restored; repeated request remains idempotent",
+  "browser": "pending due to Browser Runtime terminal navigation result",
+  "secretsArchived": false
+}

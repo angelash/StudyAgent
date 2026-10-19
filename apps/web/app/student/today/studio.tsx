@@ -111,5 +111,7 @@ export function DailyStudio() {
           {Boolean(today?.reviews.length) && <><h3 className="studio-line-title">过一段时间，再看看。</h3><p className="studio-muted">到期后用新题检查；时间未到时，请继续按计划练习。</p><div className="studio-reviews">{today?.reviews.filter((item) => item.status !== 'completed').map((item) => <div key={item.id}><span className="studio-review-day">+{item.intervalDays}天</span><div><strong>{item.atomName}</strong><small>{new Date(item.dueAt).toLocaleString('zh-CN')}</small></div><button className="studio-secondary" disabled={busy || !item.due || Boolean(today?.plan?.impact.needsReview && !item.sessionId)} onClick={() => run(async () => { const next = await send<{ id: string }>(`/diagnostics/reviews/${encodeURIComponent(item.id)}/start`, {}); window.location.href = `${assessmentHref}&session=${next.id}`; })}>{item.status === 'in_progress' ? '继续复测' : item.due ? '开始复测' : '等待到期'}</button></div>)}</div></>}
         </>}
       </>}
-    </section></div>{loggedIn && studentId && <AssistantWidget userRole="student" studentId={studentId} subject={subject} pageContext="mission" title="学习小助教" subtitle="把你卡住的那一步告诉我" />}</main>;
+    </section></div>{loggedIn && studentId && <AssistantWidget userRole="student" studentId={studentId} subject={subject} pageContext={practice ? 'mission' : 'student_home'}
+      contextRefType={practice && question ? 'practice' : null} contextRefId={practice && question ? practice.id : null} contextItemId={practice && question ? question.id : null}
+      title="学习小助教" subtitle="把你卡住的那一步告诉我" />}</main>;
 }

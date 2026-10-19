@@ -710,6 +710,7 @@ export const assistantSessionSchema = z.object({
   pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report']),
   contextRefType: z.string().nullable(),
   contextRefId: z.string().nullable(),
+  contextItemId: z.string().nullable().optional(),
   status: z.enum(['active', 'closed']),
 });
 

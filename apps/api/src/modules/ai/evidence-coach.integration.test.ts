@@ -27,6 +27,8 @@ describe('evidence coach without search subprocess or a required AI key', () => 
   afterAll(async () => { await app?.close(); if (previousKey) process.env.OPENAI_API_KEY = previousKey; });
   const post = (path: string, body: unknown) => request(app.getHttpServer()).post(`/api/ai${path}`)
     .set('Authorization', `Bearer ${account.token}`).send(body as object);
+  const question = (id: string) => ({ id, stem: '先整理两堆积木的条件，再说明怎样合并。', answer: 731, analysis: 'PRIVATE_REFERENCE_ANALYSIS',
+    answerSchema: { questionId: id, mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} } });
 
   it('validates session scope and gives evidence-based local coaching in all three subjects', async () => {
     await post('/assistant/sessions', { userRole: 'parent', studentId: 'other-child', pageContext: 'review' }).expect(403);
@@ -50,5 +52,73 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     expect(store.assistantMessages).toHaveLength(before);
     ai.client = null;
     await post(`/assistant/sessions/${session.id}/messages`, { message: 'a'.repeat(3001) }).expect(400);
+  });
+
+  it('binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once', async () => {
+    store.knowledgeAtoms.push({ id: 'coach-atom', name: '数的组成', objective: '把已知数量与合并目标对应起来' });
+    store.practiceSessions.push({ id: 'coach-practice', studentId: 'child', subject: 'math', planId: 'plan', actionId: 'action', atomId: 'coach-atom',
+      status: 'in_progress', questionIds: ['coach-q1', 'coach-q2'], snapshots: [question('coach-q1'), question('coach-q2')],
+      drafts: { 'coach-q1': { answer: { value: '我先把数量放在一起' }, savedAt: new Date().toISOString() } } });
+    const input = { userRole: 'student', studentId: 'child', subject: 'math', pageContext: 'mission', contextRefType: 'practice', contextRefId: 'coach-practice', contextItemId: 'coach-q1' };
+    const opened = await post('/assistant/sessions', input).expect(201), id = opened.body.data.id;
+    expect((await post('/assistant/sessions', input).expect(201)).body.data.id).toBe(id);
+    let prompt = '';
+    ai.client = { chat: { completions: { create: async (command: any) => {
+      prompt = JSON.stringify(command.messages);
+      return { choices: [{ message: { content: JSON.stringify({ reply: '最终答案是731，这条泄露答案的回复应当被拒绝。', evidenceIds: [] }) } }] };
+    } } } };
+    const message = { message: '我已经写了想法，怎样检查条件？', requestKey: 'practice-help-1' };
+    const response = (await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data;
+    expect(prompt).toContain('两堆积木'); expect(prompt).toContain('我先把数量');
+    expect(prompt).not.toContain('PRIVATE_REFERENCE_ANALYSIS'); expect(prompt).not.toContain('731'); expect(prompt).not.toContain('gradingConfig');
+    expect(response.source).toBe('rules'); expect(response.assistanceRecorded).toBe(true); expect(response.reply).toContain('草稿');
+    expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(1);
+    expect((await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data.messages).toHaveLength(2);
+    expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(1);
+    await post(`/assistant/sessions/${id}/messages`, { ...message, message: '另一条不同的提问' }).expect(409);
+    const attempt = await request(app.getHttpServer()).post('/api/learning/practice/coach-practice/responses').set('Authorization', `Bearer ${account.token}`)
+      .send({ questionId: 'coach-q1', requestKey: 'after-assistant', answer: 731, elapsedMs: 3000 }).expect(201);
+    expect(attempt.body.data.attempt.hintLevel).toBe(1); expect(attempt.body.data.notice).not.toContain('独立完成');
+    const next = await post('/assistant/sessions', { ...input, contextItemId: 'coach-q2' }).expect(201);
+    expect(next.body.data.id).not.toBe(id);
+    const history = await request(app.getHttpServer()).get(`/api/ai/assistant/sessions/${id}/messages`).set('Authorization', `Bearer ${account.token}`).expect(200);
+    expect(history.body.data).toHaveLength(2);
+    ai.client = null;
+  });
+
+  it('validates reference ownership, subject and item, and preserves revoked access and pause boundaries', async () => {
+    const input = { userRole: 'student', studentId: 'child', subject: 'math', pageContext: 'mission', contextRefType: 'practice', contextRefId: 'coach-practice', contextItemId: 'coach-q2' };
+    await post('/assistant/sessions', { ...input, contextRefType: 'arbitrary' }).expect(400);
+    await post('/assistant/sessions', { ...input, contextRefId: null }).expect(400);
+    await post('/assistant/sessions', { ...input, contextItemId: 'foreign-question' }).expect(400);
+    await post('/assistant/sessions', { ...input, subject: 'english' }).expect(404);
+    store.practiceSessions.push({ ...store.practiceSessions[0], id: 'foreign-practice', studentId: 'other-child' });
+    await post('/assistant/sessions', { ...input, contextRefId: 'foreign-practice' }).expect(404);
+    const session = (await post('/assistant/sessions', input).expect(201)).body.data;
+    store.bindings[0].status = 'inactive';
+    await post(`/assistant/sessions/${session.id}/messages`, { message: '绑定已撤销后不应还能读取题目。' }).expect(403);
+    store.bindings[0].status = 'active'; store.diagnosticPlans[0].status = 'paused';
+    await post('/assistant/sessions', input).expect(400);
+    store.diagnosticPlans[0].status = 'active';
+  });
+
+  it('keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance', async () => {
+    const mapping = { id: 'coach-item', atomId: 'coach-atom', questionId: 'coach-dq', questionVersion: 1, version: 1, family: 'coach-family', dimension: 'understanding', observationCode: 'step_mismatch' };
+    store.diagnosticSessions.push({ id: 'coach-diagnostic', studentId: 'child', subject: 'math', intent: 'baseline', status: 'in_progress',
+      itemIds: [mapping.id], itemSnapshots: [mapping], questionSnapshots: [question('coach-dq')], startedAt: new Date().toISOString(),
+      scopeSnapshot: { grade: 3, subject: 'math', learnedAtomIds: ['coach-atom'], term: 'upper', textbookVersion: 'test' } });
+    const input = { userRole: 'student', studentId: 'child', subject: 'math', pageContext: 'assessment', contextRefType: 'diagnostic', contextRefId: 'coach-diagnostic', contextItemId: mapping.id };
+    const session = (await post('/assistant/sessions', input).expect(201)).body.data;
+    const canceled = new AbortController(); canceled.abort();
+    await expect(ai.chat({ sessionId: session.id, message: '这次请求已取消', signal: canceled.signal })).rejects.toThrow('取消');
+    expect(store.diagnosticHints.filter((h: any) => h.sessionId === 'coach-diagnostic')).toHaveLength(0);
+    let called = false;
+    ai.client = { chat: { completions: { create: async () => { called = true; throw new Error('Must not use a model to supply diagnostic answers'); } } } };
+    const help = await post(`/assistant/sessions/${session.id}/messages`, { message: '帮我整理条件', requestKey: 'diagnostic-help' }).expect(201);
+    expect(help.body.data.assistanceRecorded).toBe(true); expect(called).toBe(false);
+    const answer = await request(app.getHttpServer()).post('/api/diagnostics/sessions/coach-diagnostic/responses').set('Authorization', `Bearer ${account.token}`)
+      .send({ itemId: mapping.id, answer: 731, elapsedMs: 3000 }).expect(201);
+    expect(store.diagnosticResponses.find((r: any) => r.id === answer.body.data.responseId).hintLevel).toBe(1);
+    ai.client = null;
   });
 });

@@ -57,6 +57,10 @@ describe('real API persistence across application restarts', () => {
       await call('post', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: 'restart-learning-access', reason: '家长开启独立学习，检查重启后仍可恢复已保存的学习记录。' });
       const learningCode = await call('post', `/students/${studentId}/learning-access/codes`, { expectedVersion: 1, requestKey: 'restart-learning-code' });
       const learner = (await request(app.getHttpServer()).post('/api/auth/learning-code').send({ code: learningCode.code }).expect(201)).body.data;
+      const assistantInput = { userRole: 'student', studentId, subject: 'math', pageContext: 'mission', contextRefType: 'practice',
+        contextRefId: activity.id, contextItemId: activity.questions[1].id };
+      const assistant = await call('post', '/ai/assistant/sessions', assistantInput);
+      await call('post', `/ai/assistant/sessions/${assistant.id}/messages`, { message: '我已经写下草稿，下一步怎样检查条件？', requestKey: 'restart-assistant-question' });
       await app.close();
       app = await start();
       await request(app.getHttpServer()).get(`/api/students/${studentId}/profile`).set('Authorization', `Bearer ${token}`).expect(200);
@@ -65,6 +69,12 @@ describe('real API persistence across application restarts', () => {
       expect(restored.summary.attempted).toBe(1);
       const learningMe = await request(app.getHttpServer()).get('/api/auth/me').set('Authorization', `Bearer ${learner.token}`).expect(200);
       expect(learningMe.body.data.studentId).toBe(studentId);
+      const resumedAssistant = await call('post', '/ai/assistant/sessions', assistantInput);
+      expect(resumedAssistant.id).toBe(assistant.id);
+      const assistantHistory = await call('get', `/ai/assistant/sessions/${assistant.id}/messages`);
+      expect(assistantHistory).toHaveLength(2); expect(assistantHistory[1].assistanceRecorded).toBe(true);
+      await call('post', `/ai/assistant/sessions/${assistant.id}/messages`, { message: '我已经写下草稿，下一步怎样检查条件？', requestKey: 'restart-assistant-question' });
+      expect(await call('get', `/ai/assistant/sessions/${assistant.id}/messages`)).toHaveLength(2);
       await request(app.getHttpServer()).get(`/api/learning/practice/${activity.id}`).set('Authorization', `Bearer ${learner.token}`).expect(200);
       await request(app.getHttpServer()).get('/api/learning/overview').set('Authorization', `Bearer ${learner.token}`).expect(403);
       const draft = await call('get', `/learning/practice/${activity.id}/questions/${activity.questions[1].id}`);

@@ -72,4 +72,19 @@ describe('durable domain transactions', () => {
       expect((await database.read()).state.studentProgressProposals).toHaveLength(3);
     } finally { await database.close(); }
   });
+
+  it('prevents duplicate scoped assistant conversations and replayed message keys without losing legacy history', async () => {
+    const database = new DomainDatabase(':memory:'); await database.open();
+    try {
+      const empty = await database.read();
+      await expect(database.commit(empty, { assistantSessions: [{ id: 's1', scopeKey: 'same' }, { id: 's2', scopeKey: 'same' }] })).rejects.toThrow();
+      expect(await database.read()).toEqual(empty);
+      await expect(database.commit(empty, { assistantMessages: [{ id: 'm1', sessionId: 's', requestKey: 'key' }, { id: 'm2', sessionId: 's', requestKey: 'key' }] })).rejects.toThrow();
+      expect(await database.read()).toEqual(empty);
+      await database.commit(empty, { assistantSessions: [{ id: 'legacy-1' }, { id: 'legacy-2' }, { id: 'current', scopeKey: 'scope' }],
+        assistantMessages: [{ id: 'old-1', sessionId: 'legacy-1' }, { id: 'old-2', sessionId: 'legacy-1' },
+          { id: 'new-1', sessionId: 'current', requestKey: 'key' }, { id: 'new-2', sessionId: 'other', requestKey: 'key' }] });
+      expect((await database.read()).state.assistantMessages).toHaveLength(4);
+    } finally { await database.close(); }
+  });
 });

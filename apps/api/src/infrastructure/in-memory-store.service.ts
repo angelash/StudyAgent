@@ -121,6 +121,11 @@ export type AssistantMessage = {
   sender: 'user' | 'assistant';
   content: string;
   createdAt: string;
+  requestKey?: string;
+  inReplyTo?: string;
+  source?: 'rules' | 'openai';
+  evidenceIds?: string[];
+  assistanceRecorded?: boolean;
 };
 
 export type AIInsightRecord = {
@@ -261,7 +266,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   studyPlans: StudyPlan[] = [];
   missions: DailyMissionInternal[] = [];
   missionAnswers: MissionAnswerRecord[] = [];
-  assistantSessions: Array<AssistantSession & { ownerUserId: string }> = [];
+  assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string }> = [];
   assistantMessages: AssistantMessage[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];

@@ -14,6 +14,7 @@ import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
 import { ReportHistory } from '../../../components/report-history';
 import { GuidanceManager, ReviewScheduleEditor } from '../../../components/guidance-manager';
 import { useSessionUser } from '../../../lib/session-user';
+import { AssistantWidget } from '../../../components/assistant-widget';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -279,5 +280,11 @@ export function AssessmentStudio() {
         </>}
       </section>
     </div>
+    {loggedIn && studentId && <AssistantWidget userRole={screen === 'assessment' || studentMode ? 'student' : 'parent'} studentId={studentId} subject={subject}
+      pageContext={screen === 'assessment' ? 'assessment' : 'review'}
+      contextRefType={screen === 'assessment' && current || screen === 'report' ? 'diagnostic' : screen === 'plan' && plan ? 'plan' : null}
+      contextRefId={screen === 'assessment' && current || screen === 'report' ? session?.id : screen === 'plan' ? plan?.id : null}
+      contextItemId={screen === 'assessment' ? current?.id : null}
+      title="学习观察助教" subtitle={screen === 'assessment' ? '提示会与独立作答分开记录' : '从具体证据，看清下一步'} />}
   </main>;
 }

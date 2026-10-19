@@ -32,6 +32,7 @@ export class AiController {
       pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report';
       contextRefType?: string | null;
       contextRefId?: string | null;
+      contextItemId?: string | null;
     },
   ) {
     return this.aiService.openAssistantSession(body, req.user);
@@ -39,12 +40,12 @@ export class AiController {
 
   @Post('assistant/sessions/:sessionId/messages')
   async chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response,
-    @Param('sessionId') sessionId: string, @Body() body: { message: string }) {
+    @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string }) {
     this.aiService.assertSessionOwner(sessionId, req.user);
     const controller = new AbortController();
     const abort = () => { if (!response.writableEnded) controller.abort(); };
     response.on('close', abort);
-    try { return await this.aiService.chat({ sessionId, message: body.message, signal: controller.signal }); }
+    try { return await this.aiService.chat({ sessionId, message: body.message, requestKey: body.requestKey, signal: controller.signal }); }
     finally { response.off('close', abort); }
   }
 

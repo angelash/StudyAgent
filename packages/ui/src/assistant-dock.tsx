@@ -15,12 +15,12 @@ export function AssistantDock(props: AssistantDockProps) {
     <div
       style={{
         position: 'fixed',
-        right: 24,
-        bottom: 24,
-        width: open ? 360 : 180,
-        borderRadius: 20,
-        border: '1px solid #d1d5db',
-        background: '#ffffff',
+        right: 'min(24px, 4vw)',
+        bottom: 'max(16px, env(safe-area-inset-bottom))',
+        width: open ? 'min(380px, 92vw)' : 180,
+        borderRadius: 12,
+        border: '1px solid #cdd5c6',
+        background: '#fffef8',
         boxShadow: '0 24px 48px rgba(15, 23, 42, 0.16)',
         overflow: 'hidden',
         zIndex: 50,
@@ -28,12 +28,14 @@ export function AssistantDock(props: AssistantDockProps) {
     >
       <button
         onClick={onToggle}
+        aria-expanded={open}
+        aria-label={`${open ? '收起' : '打开'}${title}`}
         style={{
           width: '100%',
           border: 'none',
           padding: '16px 18px',
           textAlign: 'left',
-          background: 'linear-gradient(135deg, #0f766e, #0f172a)',
+          background: '#2b5244',
           color: '#f8fafc',
           cursor: 'pointer',
         }}
@@ -41,7 +43,7 @@ export function AssistantDock(props: AssistantDockProps) {
         <div style={{ fontWeight: 700 }}>{title}</div>
         <div style={{ fontSize: 12, opacity: 0.85 }}>{subtitle}</div>
       </button>
-      {open ? <div style={{ padding: 16, maxHeight: 420, overflowY: 'auto' }}>{children}</div> : null}
+      {open ? <div style={{ padding: 16, maxHeight: 'min(540px, 65dvh)', overflowY: 'auto' }}>{children}</div> : null}
     </div>
   );
 }
