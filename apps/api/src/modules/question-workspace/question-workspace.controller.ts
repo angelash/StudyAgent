@@ -142,13 +142,16 @@ export class QuestionWorkspaceController {
     return this.questionWorkspaceService.upsertSource(req.user, questionId, body);
   }
 
+  @UseGuards(AuthGuard)
   @Get('questions/:questionId/render')
-  getRenderPayload(@Param('questionId') questionId: string) {
-    return this.questionWorkspaceService.buildRenderPayload(questionId);
+  getRenderPayload(@Req() req: AuthenticatedRequest, @Param('questionId') questionId: string) {
+    return this.questionWorkspaceService.buildAuthorizedRenderPayload(questionId, req.user);
   }
 
+  @UseGuards(AuthGuard)
   @Post('questions/:questionId/answers/validate')
-  validateAnswer(@Param('questionId') questionId: string, @Body() body: { answer: unknown }) {
+  validateAnswer(@Req() req: AuthenticatedRequest, @Param('questionId') questionId: string, @Body() body: { answer: unknown }) {
+    this.questionWorkspaceService.buildAuthorizedRenderPayload(questionId, req.user);
     return this.questionWorkspaceService.validateAnswer(questionId, body.answer);
   }
 }

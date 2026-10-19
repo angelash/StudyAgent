@@ -13,6 +13,7 @@ import { AiModule } from './modules/ai/ai.module';
 import { ProgressModule } from './modules/progress/progress.module';
 import { PlansModule } from './modules/plans/plans.module';
 import { QuestionWorkspaceModule } from './modules/question-workspace/question-workspace.module';
+import { StoreContextMiddleware } from './infrastructure/store-context.middleware';
 
 @Module({
   imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule],
@@ -29,6 +30,6 @@ import { QuestionWorkspaceModule } from './modules/question-workspace/question-w
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RequestContextMiddleware).forRoutes('*');
+    consumer.apply(RequestContextMiddleware, StoreContextMiddleware).forRoutes('*');
   }
 }

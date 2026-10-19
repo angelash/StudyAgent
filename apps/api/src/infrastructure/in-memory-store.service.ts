@@ -1,5 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import { randomUUID } from 'crypto';
+import { AsyncLocalStorage } from 'node:async_hooks';
+import { resolve } from 'node:path';
+import { DomainDatabase, DomainState, StateSnapshot } from './domain-database';
 import {
   AIAnalysisResponse,
   QuestionAnswerSchema,
@@ -31,9 +34,21 @@ export type InMemoryUserAccount = {
 
 export type InMemoryAuthSession = {
   id: string;
-  token: string;
+  tokenHash: string;
   userId: string;
   createdAt: string;
+  expiresAt: string;
+  revokedAt: string | null;
+};
+
+export type StudentInvitation = {
+  id: string;
+  studentId: string;
+  issuerId: string;
+  recipientPrincipal: string;
+  tokenHash: string;
+  expiresAt: string;
+  consumedAt: string | null;
 };
 
 export type ParentStudentBinding = {
@@ -107,11 +122,72 @@ export type AIInsightRecord = {
 };
 
 @Injectable()
-export class InMemoryStoreService {
+export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstrap, OnModuleDestroy {
+  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState }>();
+  private readonly root: DomainState = {};
+  private baseline: StateSnapshot = { revision: 0, state: {} };
+  private database?: DomainDatabase;
+
+  constructor() {
+    // Kept as the injection token for existing modules; production data is transactional and durable.
+    for (const key of Object.keys(this)) {
+      const value = (this as unknown as Record<string, unknown>)[key];
+      if (!Array.isArray(value)) continue;
+      this.root[key] = value;
+      Object.defineProperty(this, key, { enumerable: true,
+        get: () => (this.contexts.getStore()?.state ?? this.root)[key] ??= [],
+        set: (items: unknown[]) => { (this.contexts.getStore()?.state ?? this.root)[key] = items; } });
+    }
+  }
+
+  async onModuleInit() {
+    if (process.env.STUDY_STORAGE === 'memory' || process.env.NODE_ENV === 'test') {
+      if (process.env.NODE_ENV === 'production') throw new Error('Memory storage is not permitted in production');
+      return;
+    }
+    const localRoot = process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? resolve('../..') : process.cwd();
+    const location = process.env.STUDY_STORAGE === 'postgres' ? process.env.DATABASE_URL :
+      resolve(process.env.STUDY_DATA_DIR ?? resolve(localRoot, 'data'), 'study-agent.sqlite3');
+    if (!location) throw new Error('DATABASE_URL is required for PostgreSQL storage');
+    this.database = new DomainDatabase(location);
+    await this.database.open();
+    this.baseline = await this.database.read();
+    for (const [key, rows] of Object.entries(this.baseline.state)) this.root[key] = structuredClone(rows);
+  }
+
+  async onApplicationBootstrap() {
+    if (this.database) {
+      const revision = await this.database.commit(this.baseline, this.root);
+      this.baseline = { revision, state: structuredClone(this.root) };
+    }
+  }
+
+  async requestContext<T>(fn: () => T): Promise<T> {
+    if (!this.database) return fn();
+    const baseline = await this.database.read();
+    const state = structuredClone(baseline.state);
+    return this.contexts.run({ baseline, state }, fn);
+  }
+
+  async commitRequest() {
+    const context = this.contexts.getStore();
+    if (this.database && context) {
+      context.baseline.revision = await this.database.commit(context.baseline, context.state);
+      context.baseline.state = structuredClone(context.state);
+    }
+  }
+
+  async transaction<T>(fn: () => T | Promise<T>): Promise<T> {
+    return this.requestContext(async () => { const result = await fn(); await this.commitRequest(); return result; });
+  }
+
+  get persistence() { return { driver: this.database?.driver ?? 'memory', durable: Boolean(this.database) }; }
+  async onModuleDestroy() { await this.database?.close(); }
   users: InMemoryUserAccount[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
+  studentInvitations: StudentInvitation[] = [];
   subjectEnrollments: SubjectEnrollment[] = [];
   textbookVolumes: TextbookVolume[] = [];
   textbookUnits: TextbookUnit[] = [];
@@ -129,7 +205,7 @@ export class InMemoryStoreService {
   studyPlans: StudyPlan[] = [];
   missions: DailyMissionInternal[] = [];
   missionAnswers: MissionAnswerRecord[] = [];
-  assistantSessions: AssistantSession[] = [];
+  assistantSessions: Array<AssistantSession & { ownerUserId: string }> = [];
   assistantMessages: AssistantMessage[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];
@@ -139,10 +215,12 @@ export class InMemoryStoreService {
   }
 
   reset() {
+    if (this.database) throw new Error('reset is only available in isolated memory tests');
     this.users = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];
+    this.studentInvitations = [];
     this.subjectEnrollments = [];
     this.textbookVolumes = [];
     this.textbookUnits = [];

@@ -34,13 +34,19 @@ export class StudentsController {
   bindStudent(
     @Req() req: AuthenticatedRequest,
     @Param('parentId') parentId: string,
-    @Body() body: { studentId: string },
+    @Body() body: { studentId: string; inviteToken?: string },
   ) {
     if (req.user.id !== parentId && req.user.role !== 'admin') {
       throw new ForbiddenException('Cannot bind student for another parent');
     }
 
-    return this.studentsService.bindStudent(req.user, body.studentId);
+    return this.studentsService.bindStudent(req.user, body.studentId, body.inviteToken);
+  }
+
+  @Post('students/:studentId/invitations')
+  createInvitation(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string,
+    @Body() body: { recipientPrincipal: string }) {
+    return this.studentsService.createInvitation(req.user, studentId, body.recipientPrincipal);
   }
 
   @Get('parents/:parentId/students')

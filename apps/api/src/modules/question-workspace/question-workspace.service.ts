@@ -130,6 +130,19 @@ export class QuestionWorkspaceService {
     };
   }
 
+  buildAuthorizedRenderPayload(questionId: string, user: InMemoryUserAccount): QuestionRenderPayload {
+    const question = this.requireQuestion(questionId);
+    if (user.role !== 'admin' && question.status !== 'published') throw new NotFoundException('Question not found');
+    const payload = structuredClone(this.buildRenderPayload(questionId));
+    if (user.role !== 'admin') {
+      payload.answerSchema.gradingConfig = {};
+      payload.source.sourcePathOrUrl = '';
+      payload.source.importJobId = null;
+      payload.source.notes = null;
+    }
+    return payload;
+  }
+
   coerceStudentAnswerPayload(questionId: string, answer: unknown): StudentAnswerPayload {
     const runtime = this.buildRenderPayload(questionId);
     const parsed = studentAnswerPayloadSchema.safeParse(answer);
@@ -198,6 +211,10 @@ export class QuestionWorkspaceService {
         return this.valid(value);
       }
       case 'numeric_blank': {
+        if ((typeof response.value !== 'string' && typeof response.value !== 'number') ||
+            (typeof response.value === 'string' && !response.value.trim())) {
+          return this.invalid('response.value', '请输入有效数字');
+        }
         const rawValue = typeof response.value === 'number' ? response.value : Number(response.value);
         if (!Number.isFinite(rawValue)) {
           return this.invalid('response.value', '请输入有效数字');

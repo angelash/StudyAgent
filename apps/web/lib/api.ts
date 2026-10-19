@@ -7,39 +7,43 @@ const webEnv = loadWebEnv({
 });
 
 export const apiBaseUrl = webEnv.NEXT_PUBLIC_API_BASE_URL;
+let sessionToken: string | null = null;
 
 export function getAuthToken() {
   if (typeof window === 'undefined') {
     return null;
   }
-  return window.localStorage.getItem('study_agent_token');
+  return sessionToken;
 }
 
 export function setAuthToken(token: string) {
   if (typeof window === 'undefined') {
     return;
   }
-  window.localStorage.setItem('study_agent_token', token);
+  sessionToken = token;
+  window.localStorage.removeItem('study_agent_token');
 }
 
 export function setCurrentUser(user: unknown) {
   if (typeof window === 'undefined') {
     return;
   }
-  window.localStorage.setItem('study_agent_user', JSON.stringify(user));
+  window.sessionStorage.setItem('study_agent_user', JSON.stringify(user));
+  window.localStorage.removeItem('study_agent_user');
 }
 
 export function getCurrentUser<T>() {
   if (typeof window === 'undefined') {
     return null;
   }
-  const raw = window.localStorage.getItem('study_agent_user');
-  return raw ? (JSON.parse(raw) as T) : null;
+  const raw = window.sessionStorage.getItem('study_agent_user');
+  try { return raw ? (JSON.parse(raw) as T) : null; } catch { return null; }
 }
 
 export async function apiRequest<T>(path: string, options: RequestInit = {}, token?: string | null): Promise<T> {
   const response = await fetch(`${apiBaseUrl}/api${path}`, {
     ...options,
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...(token ? { Authorization: `Bearer ${token}` } : {}),

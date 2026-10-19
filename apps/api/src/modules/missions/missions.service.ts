@@ -200,15 +200,17 @@ export class MissionsService {
     if (answers.length === 0) {
       throw new BadRequestException('Mission has no answers');
     }
-    if (answers.length < mission.questionIds.length) {
+    const answeredIds = new Set(answers.map((answer) => answer.questionId));
+    if (!mission.questionIds.every((id) => answeredIds.has(id))) {
       throw new BadRequestException('Mission is not fully answered');
     }
 
-    const correctCount = answers.filter((item) => item.correct).length;
+    const latestAnswers = mission.questionIds.map((id) => answers.filter((item) => item.questionId === id).at(-1)!);
+    const correctCount = latestAnswers.filter((item) => item.correct).length;
     mission.status = 'completed';
 
     const summary =
-      correctCount === answers.length
+      correctCount === latestAnswers.length
         ? '今天这组题已经练稳了，可以继续进入下一组。'
         : '今天已经找到了几个容易卡住的地方，下一轮继续把关键步骤补稳。';
 
@@ -217,14 +219,14 @@ export class MissionsService {
       studentId: mission.studentId,
       subject: mission.subject,
       correctCount,
-      totalCount: answers.length,
+      totalCount: latestAnswers.length,
     });
 
     return {
       ...mission,
       summary,
       correctCount,
-      totalCount: answers.length,
+      totalCount: latestAnswers.length,
     };
   }
 

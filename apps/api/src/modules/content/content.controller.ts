@@ -25,9 +25,12 @@ export class ContentController {
     return this.contentService.listKnowledgePoints(subject ?? 'math');
   }
 
+  @UseGuards(AuthGuard)
   @Get('questions')
-  listQuestions(@Query('subject') subject?: 'math' | 'chinese' | 'english') {
-    return this.contentService.listQuestions(subject ?? 'math');
+  listQuestions(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english') {
+    const questions = this.contentService.listQuestions(subject ?? 'math');
+    if (req.user.role === 'admin') return questions;
+    return questions.filter((item) => item.status === 'published').map(({ answer, analysis, ...question }) => question);
   }
 
   @UseGuards(AuthGuard)

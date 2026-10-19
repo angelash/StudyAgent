@@ -1,4 +1,8 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { randomBytes } from 'crypto';
+import { z } from 'zod';
+import { validate } from '../../common/validation';
+import { hashToken } from '../auth/auth.service';
 import { StudentProfile, SubjectEnrollment } from '@study-agent/contracts';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import {
@@ -26,6 +30,10 @@ export class StudentsService {
   ) {}
 
   createStudent(parentUser: InMemoryUserAccount, command: CreateStudentCommand) {
+    command = validate(z.object({ nickname: z.string().trim().min(1).max(50), grade: z.number().int().min(1).max(6),
+      preferredSessionMinutes: z.number().int().min(5).max(90), defaultVersionMap: z.object({
+        chinese: z.string().max(150), math: z.string().max(150), english: z.string().max(150),
+      }).strict() }).strict(), command);
     if (!['parent', 'admin'].includes(parentUser.role)) {
       throw new ForbiddenException('Only parent or admin can create student profile');
     }
@@ -82,7 +90,19 @@ export class StudentsService {
     };
   }
 
-  bindStudent(parentUser: InMemoryUserAccount, studentId: string) {
+  createInvitation(parentUser: InMemoryUserAccount, studentId: string, recipientPrincipal: string) {
+    this.assertCanAccessStudent(parentUser, studentId);
+    if (!['parent', 'admin'].includes(parentUser.role)) throw new ForbiddenException();
+    const principal = validate(z.string().trim().min(3).max(254), recipientPrincipal).toLowerCase();
+    const token = randomBytes(32).toString('base64url');
+    const invitation = { id: this.store.nextId('invite'), studentId, issuerId: parentUser.id,
+      recipientPrincipal: principal, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + 24 * 3600_000).toISOString(), consumedAt: null };
+    this.store.studentInvitations.push(invitation);
+    this.eventBus.publish('student.invitation_created', { studentId, issuerId: parentUser.id, invitationId: invitation.id });
+    return { id: invitation.id, token, expiresAt: invitation.expiresAt, recipientPrincipal: principal };
+  }
+
+  bindStudent(parentUser: InMemoryUserAccount, studentId: string, inviteToken?: string) {
     const student = this.store.students.find((item) => item.id === studentId);
     if (!student) {
       throw new NotFoundException('Student not found');
@@ -94,6 +114,12 @@ export class StudentsService {
     if (existing) {
       return existing;
     }
+
+    const invitation = inviteToken ? this.store.studentInvitations.find((item) => item.studentId === studentId &&
+      item.tokenHash === hashToken(inviteToken) && item.recipientPrincipal === parentUser.principal &&
+      !item.consumedAt && Date.parse(item.expiresAt) > Date.now()) : undefined;
+    if (!invitation || parentUser.role !== 'parent') throw new ForbiddenException('需要孩子监护人发给当前账号的有效邀请');
+    invitation.consumedAt = new Date().toISOString();
 
     const binding: ParentStudentBinding = {
       id: this.store.nextId('binding'),

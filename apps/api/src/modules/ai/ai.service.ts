@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
   ServiceUnavailableException,
@@ -15,7 +16,7 @@ import {
 } from '@study-agent/contracts';
 import OpenAI from 'openai';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
-import { AIInsightRecord, InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { CodexSearchResult, CodexSearchService } from './codex-search.service';
 
 type AnalyzeAssessmentCommand = {
@@ -164,8 +165,13 @@ export class AiService {
     pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report';
     contextRefType?: string | null;
     contextRefId?: string | null;
-  }): AssistantSession {
-    const session: AssistantSession = {
+  }, user: InMemoryUserAccount): AssistantSession {
+    if (command.studentId && user.role !== 'admin' && !this.store.bindings.some((binding) =>
+      binding.studentId === command.studentId && binding.parentUserId === user.id && binding.status === 'active')) {
+      throw new ForbiddenException('You cannot access this student');
+    }
+    const session: AssistantSession & { ownerUserId: string } = {
+      ownerUserId: user.id,
       id: this.store.nextId('assistant_session'),
       userRole: command.userRole,
       studentId: command.studentId,
@@ -181,6 +187,12 @@ export class AiService {
       sessionId: session.id,
       userRole: session.userRole,
     });
+    return session;
+  }
+
+  assertSessionOwner(sessionId: string, user: InMemoryUserAccount) {
+    const session = this.store.assistantSessions.find((item) => item.id === sessionId);
+    if (!session || session.ownerUserId !== user.id) throw new NotFoundException('Assistant session not found');
     return session;
   }
 

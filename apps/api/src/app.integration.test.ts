@@ -25,6 +25,7 @@ describe('StudyAgent API integration', () => {
     events: Array<Record<string, unknown>>;
     aiInsights: Array<Record<string, unknown>>;
     nextId: (prefix: string) => string;
+    users: Array<{ id: string; role: string }>;
   };
   const tempDirs: string[] = [];
   const originalOpenAiApiKey = process.env.OPENAI_API_KEY;
@@ -58,12 +59,15 @@ describe('StudyAgent API integration', () => {
     }
   });
 
+  // Privileged accounts are explicit fixtures, never inferred by the production auth service.
   async function login(principal: string, credential = 'study-agent') {
-    const response = await request(app.getHttpServer())
-      .post('/api/auth/login')
-      .send({ principal, credential })
-      .expect(201);
-    return (response.body as WrappedResponse<{ token: string; user: { id: string; role: string } }>).data!;
+    const { AuthService } = require('../dist/apps/api/src/modules/auth/auth.service.js');
+    const result = await app.get<any>(AuthService).register({ principal, credential }, principal);
+    if (principal === 'admin@example.com') {
+      store.users.find((user) => user.id === result.user.id)!.role = 'admin';
+      result.user.role = 'admin';
+    }
+    return result as { token: string; user: { id: string; role: string } };
   }
 
   async function createStudent(token: string) {
@@ -453,6 +457,7 @@ describe('StudyAgent API integration', () => {
 
     const renderResponse = await request(app.getHttpServer())
       .get(`/api/questions/${reviewResult.question!.id}/render`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
 
       const payload = (renderResponse.body as WrappedResponse<{
@@ -566,6 +571,7 @@ describe('StudyAgent API integration', () => {
 
     const renderResponse = await request(app.getHttpServer())
       .get(`/api/questions/${questionId}/render`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
 
     const renderPayload = (renderResponse.body as WrappedResponse<{
@@ -581,6 +587,7 @@ describe('StudyAgent API integration', () => {
 
     const validationResponse = await request(app.getHttpServer())
       .post(`/api/questions/${questionId}/answers/validate`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .send({
         answer: {
           questionId,
@@ -741,6 +748,7 @@ describe('StudyAgent API integration', () => {
 
     const renderResponse = await request(app.getHttpServer())
       .get(`/api/questions/${questionId}/render`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
 
     const renderPayload = (renderResponse.body as WrappedResponse<{
@@ -754,6 +762,7 @@ describe('StudyAgent API integration', () => {
 
     const validationResponse = await request(app.getHttpServer())
       .post(`/api/questions/${questionId}/answers/validate`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .send({
         answer: {
           questionId,
@@ -1140,8 +1149,10 @@ describe('StudyAgent API integration', () => {
   });
 
   it('returns explicit AI configuration error without API key', async () => {
+    const admin = await login('admin@example.com');
     const response = await request(app.getHttpServer())
       .post('/api/ai/assessment/analyze')
+      .set('Authorization', `Bearer ${admin.token}`)
       .send({
         question: {
           id: 'q1',

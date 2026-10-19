@@ -77,8 +77,8 @@ export class ApiExceptionFilter implements ExceptionFilter {
 
     if (exception instanceof Error) {
       return {
-        code: this.normalizeCode(exception.name),
-        message: exception.message || 'Unexpected server error',
+        code: 'internal_server_error',
+        message: '服务暂时不可用，请稍后重试',
       };
     }
 
