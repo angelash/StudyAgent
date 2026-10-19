@@ -1,5 +1,7 @@
 # 运行与存储
 
+完整资产备份已在独立E盘恢复：396,135资产独立SHA-256核验通过，早期合成QA库3→8升级及当前学习流程/两次重启通过，恢复模型实际运行通过。原备份、源资产及恢复目录保留，旧认证已撤销。运行脚本只接受明确的已核验合成对象，边界和复跑命令见 [全量恢复交付](32-full-recovery-delivery.md)。此结果不代替当前真实家庭的最新备份。
+
 评测结束或明确中止后，报告可展开当时原题、实际作答、分项表现、评分修订及支持/反证/自报依据。进行中与暂停状态的正式评分读取返回409，画像也不使用未结束会话。新诊断使用 `diagnosis-rules-v3`，旧原始响应和历史报告保留原版本。两库证据与隔离专项继续使用 `node scripts/qa/verify-adaptive-routing.cjs <证据路径> sqlite|postgres`，详见 [事实与深层验证交付](31-diagnostic-evidence-delivery.md)。
 
 评测范围页可开启按作答逐步核查顺序，并在预览中确认加入的先修基础。题量、范围与题组冻结，结束后可展开每步依据；提示/曝光/跳过等不能当独立对错。旧API不传 `adaptive` 保持固定，间隔复测必须固定。两库专项为 `node scripts/qa/verify-adaptive-routing.cjs <证据路径> sqlite|postgres`，详见 [逐步核查交付](30-adaptive-routing-delivery.md)。

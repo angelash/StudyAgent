@@ -1,0 +1,39 @@
+{
+  "startedAt": "2026-10-19T21:48:17Z",
+  "passed": true,
+  "application": "F:\\workspace\\github\\StudyAgent",
+  "assetRoot": "E:\\StudyAgentQA\\full-restore-20261020\\assets",
+  "directory": "E:\\StudyAgentQA\\full-restore-models-20261020-verified",
+  "runtime": {
+    "python": "3.10.8",
+    "platform": "Windows"
+  },
+  "sourceSha256": {
+    "scripts/qa/verify-processing-models.py": "b403c9017d37d8f9f7ea7ed19c28d9ed5f0a2156c6a4939f67c818823eb1c4fb",
+    "scripts/processing/process_document.py": "9da6f669cc616d0ecc54eeba5665bef4cb7580ba60fa77948f2a8e31d47ffe31"
+  },
+  "scope": "Real preserved handwriting and offline explanation model execution. Output hashes and manual-review flags; no teaching accuracy acceptance.",
+  "models": [
+    {
+      "mode": "handwriting",
+      "model": "preserved-handwriting-int8",
+      "seconds": 1.67,
+      "resultSha256": "c0ff76d8eb36b34aeb67d31d9f22838fb474d2ccd048fc19b706bf8d50bbe194",
+      "reviewRequired": true,
+      "verifiedCorrect": false,
+      "imageSha256": "87bf4285078289b7769147d2cea8d8c3a9cacf27562abd5d5e764a40f9af13c7",
+      "imageBytes": 87210
+    },
+    {
+      "mode": "local_explain",
+      "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+      "seconds": 26.83,
+      "resultSha256": "dbedce74e7cbde6266f6a2069b9cafc1ce82e157be43e7b04a60b4fa59536f79",
+      "reviewRequired": true,
+      "verifiedCorrect": false,
+      "promptVersion": "import-review-v1",
+      "outputCharacters": 207
+    }
+  ],
+  "completedAt": "2026-10-19T21:48:46Z"
+}

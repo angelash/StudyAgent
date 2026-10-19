@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
 import time
@@ -15,7 +16,11 @@ import time
 
 def main(args):
     args.directory.mkdir(parents=True, exist_ok=False)
+    source_files = ['scripts/qa/verify-processing-models.py', 'scripts/processing/process_document.py']
     output = {'startedAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'passed': False,
+              'application': str(args.application.resolve()), 'assetRoot': str(args.assets.resolve()), 'directory': str(args.directory.resolve()),
+              'runtime': {'python': platform.python_version(), 'platform': platform.system()},
+              'sourceSha256': {name: hashlib.sha256((args.application / name).read_bytes()).hexdigest() for name in source_files},
               'scope': 'Real preserved handwriting and offline explanation model execution. Output hashes and manual-review flags; no teaching accuracy acceptance.', 'models': []}
     args.evidence.parent.mkdir(parents=True, exist_ok=True)
     try:
@@ -40,7 +45,11 @@ def main(args):
             mode = configuration['mode']
             config = args.directory / (mode + '-config.json')
             config.write_text(json.dumps(configuration), encoding='utf-8')
-            environment = {key: value for key, value in os.environ.items() if key in {'PATH', 'Path', 'SystemRoot', 'WINDIR', 'HOME', 'TEMP', 'TMP', 'LD_LIBRARY_PATH'}}
+            # Windows exposes SYSTEMROOT in uppercase through Python's environ.
+            # Match names without case so a stripped environment still initializes
+            # Python's OS random source; retain only the deployment path allowlist.
+            allowed = {'PATH', 'SYSTEMROOT', 'WINDIR', 'USERPROFILE', 'APPDATA', 'LOCALAPPDATA', 'HOME', 'TEMP', 'TMP', 'LD_LIBRARY_PATH'}
+            environment = {key: value for key, value in os.environ.items() if key.upper() in allowed}
             environment.update({'HF_HUB_OFFLINE': '1', 'TRANSFORMERS_OFFLINE': '1', 'PYTHONIOENCODING': 'utf-8'})
             started = time.monotonic()
             print('Processing models: ' + mode, flush=True)
