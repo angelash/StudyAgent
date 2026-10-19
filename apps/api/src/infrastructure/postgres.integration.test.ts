@@ -47,9 +47,14 @@ suite('real PostgreSQL storage and API recovery', () => {
       await expect(first.commit(empty, { privacyRequests: [{ id: 'a', actorId: 'owner', requestKey: 'same' }, { id: 'b', actorId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
       await expect(first.commit(empty, { studentMedia: [{ id: 'a', ownerUserId: 'owner', requestKey: 'same' }, { id: 'b', ownerUserId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
       await first.commit(empty, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'active' }] });
-      const authorized = await first.read(), latest = await second.read();
+      const authorized = await first.read(), cached = await first.readImmutable(), latest = await second.read();
+      expect(await first.readImmutable()).toBe(cached);
       await second.commit(latest, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }] });
       await expect(first.commit(authorized, { ...authorized.state, responses: [{ id: 'never-published' }] })).rejects.toThrow('数据已更新');
+      const refreshed = await first.readImmutable();
+      expect(refreshed).not.toBe(cached);
+      expect((refreshed.state.bindings[0] as any).status).toBe('inactive');
+      expect(first.diagnostics.cacheHits).toBeGreaterThan(0);
       expect((await first.read()).state.responses ?? []).toHaveLength(0);
       await first.close(); await second.close();
       const upgrade = new Pool({ connectionString: target });

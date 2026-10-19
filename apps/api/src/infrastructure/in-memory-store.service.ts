@@ -142,11 +142,12 @@ export type AIInsightRecord = {
 
 @Injectable()
 export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstrap, OnModuleDestroy {
-  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState; enqueue: TaskIntent[]; taskOperations: TaskOperation[] }>();
+  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState; touched: Set<string>; enqueue: TaskIntent[]; taskOperations: TaskOperation[] }>();
   private readonly root: DomainState = {};
   private baseline: StateSnapshot = { revision: 0, state: {} };
   private database?: DomainDatabase;
   private memoryQueue?: DomainDatabase;
+  private readonly workspaceCounters = { collectionsCloned: 0, recordsCloned: 0 };
 
   constructor() {
     // Kept as the injection token for existing modules; production data is transactional and durable.
@@ -155,8 +156,22 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
       if (!Array.isArray(value)) continue;
       this.root[key] = value;
       Object.defineProperty(this, key, { enumerable: true,
-        get: () => (this.contexts.getStore()?.state ?? this.root)[key] ??= [],
-        set: (items: unknown[]) => { (this.contexts.getStore()?.state ?? this.root)[key] = items; } });
+        get: () => {
+          const context = this.contexts.getStore();
+          if (!context) return this.root[key] ??= [];
+          if (!context.touched.has(key)) {
+            context.state[key] = structuredClone(context.state[key] ?? []);
+            context.touched.add(key);
+            this.workspaceCounters.collectionsCloned++;
+            this.workspaceCounters.recordsCloned += context.state[key].length;
+          }
+          return context.state[key];
+        },
+        set: (items: unknown[]) => {
+          const context = this.contexts.getStore();
+          if (context) { context.state[key] = items; context.touched.add(key); }
+          else this.root[key] = items;
+        } });
     }
   }
 
@@ -187,16 +202,24 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
 
   async requestContext<T>(fn: () => T): Promise<T> {
     if (!this.database) return fn();
-    const baseline = await this.database.read();
-    const state = structuredClone(baseline.state);
-    return this.contexts.run({ baseline, state, enqueue: [], taskOperations: [] }, fn);
+    // Revision is checked in the database on every request. Only accessed
+    // collections are copied; the frozen cache is never a mutable request store.
+    const baseline = await this.database.readImmutable();
+    const state = { ...baseline.state };
+    return this.contexts.run({ baseline, state, touched: new Set(), enqueue: [], taskOperations: [] }, fn);
   }
 
   async commitRequest(fence?: TaskFence) {
     const context = this.contexts.getStore();
     if (this.database && context) {
-      context.baseline.revision = await this.database.commit(context.baseline, context.state, { enqueue: context.enqueue, fence, taskOperations: context.taskOperations });
-      context.baseline.state = structuredClone(context.state);
+      const revision = await this.database.commit(context.baseline, context.state, { enqueue: context.enqueue, fence, taskOperations: context.taskOperations });
+      const cached = this.database.snapshotAt(revision);
+      if (cached) context.baseline = cached;
+      else {
+        const checkpoint = { ...context.state };
+        for (const key of context.touched) checkpoint[key] = structuredClone(context.state[key]);
+        context.baseline = { revision, state: checkpoint };
+      }
       context.enqueue = [];
       context.taskOperations = [];
     } else if (this.memoryQueue && (context || fence)) {
@@ -208,7 +231,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   async transaction<T>(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T> {
     if (!this.database && this.memoryQueue) {
       const state = structuredClone(this.root);
-      return this.contexts.run({ baseline: { revision: 0, state: structuredClone(state) }, state, enqueue: [], taskOperations: [] }, async () => {
+      return this.contexts.run({ baseline: { revision: 0, state: structuredClone(state) }, state, touched: new Set(Object.keys(state)), enqueue: [], taskOperations: [] }, async () => {
         const result = await fn(); await this.commitRequest(fence); return result;
       });
     }
@@ -230,6 +253,10 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   }
 
   get persistence() { return { driver: this.database?.driver ?? 'memory', durable: Boolean(this.database) }; }
+  get storageDiagnostics() {
+    const database = this.database ?? this.memoryQueue;
+    return database ? { ...database.diagnostics, ...this.workspaceCounters } : null;
+  }
   async onModuleDestroy() { await this.database?.close(); await this.memoryQueue?.close(); }
   users: InMemoryUserAccount[] = [];
   paperPublications: PaperPublication[] = [];

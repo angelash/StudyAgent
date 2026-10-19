@@ -36,6 +36,8 @@ function recordId(item: unknown): string {
 function differences(before: DomainState, after: DomainState): Change[] {
   const changes: Change[] = [];
   for (const collection of new Set([...Object.keys(before), ...Object.keys(after)])) {
+    // Request workspaces share untouched immutable collections with their baseline.
+    if (before[collection] === after[collection]) continue;
     const previous = new Map((before[collection] ?? []).map((item) => [recordId(item), JSON.stringify(item)]));
     const positions = new Map((before[collection] ?? []).map((item, index) => [recordId(item), index]));
     const next = new Map<string, string>();
@@ -54,10 +56,20 @@ function differences(before: DomainState, after: DomainState): Change[] {
   return changes;
 }
 
+function freezeJson<T>(value: T): T {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeJson(child);
+    Object.freeze(value);
+  }
+  return value;
+}
+
 /** Transactional domain documents. Large external paper/media catalogs use a separate indexed repository. */
 export class DomainDatabase {
   private sqlite?: DatabaseSync;
   private postgres?: Pool;
+  private cached?: StateSnapshot;
+  private readonly counters = { revisionChecks: 0, snapshotLoads: 0, snapshotRowsLoaded: 0, cacheHits: 0, commits: 0, conflicts: 0 };
   tasks!: TaskRepository;
   readonly driver: 'sqlite' | 'postgres';
 
@@ -149,30 +161,71 @@ export class DomainDatabase {
   }
 
   async read(): Promise<StateSnapshot> {
+    // Public callers retain an independently mutable copy for maintenance/tests.
+    return structuredClone(await this.readImmutable());
+  }
+
+  async readImmutable(): Promise<StateSnapshot> {
     return this.tasks.serial(() => this.readSnapshot());
+  }
+
+  snapshotAt(revision: number): StateSnapshot | undefined {
+    return this.cached?.revision === revision ? this.cached : undefined;
+  }
+
+  get diagnostics() { return { ...this.counters }; }
+
+  private remember(snapshot: StateSnapshot, loadedRows: number): StateSnapshot {
+    this.counters.snapshotLoads++; this.counters.snapshotRowsLoaded += loadedRows;
+    this.cached = freezeJson(snapshot);
+    return this.cached;
+  }
+
+  private rememberCommit(beforeRevision: number, revision: number, changes: Change[]) {
+    this.counters.commits++;
+    if (this.cached?.revision !== beforeRevision) { this.cached = undefined; return; }
+    const state = { ...this.cached.state }, collections = new Map<string, Change[]>();
+    for (const change of changes) {
+      const group = collections.get(change.collection) ?? []; group.push(change); collections.set(change.collection, group);
+    }
+    for (const [collection, group] of collections) {
+      const rows = new Map((state[collection] ?? []).map((item, position) => [recordId(item), { item, position }]));
+      for (const change of group) {
+        if (change.body === null) rows.delete(change.id);
+        else rows.set(change.id, { item: JSON.parse(change.body), position: change.position });
+      }
+      if (!rows.size) delete state[collection];
+      else state[collection] = freezeJson([...rows.values()].sort((a, b) => a.position - b.position).map(row => row.item));
+    }
+    this.cached = freezeJson({ revision, state });
   }
 
   private async readSnapshot(): Promise<StateSnapshot> {
     const state: DomainState = {};
+    this.counters.revisionChecks++;
     if (this.sqlite) {
       this.sqlite.exec('BEGIN');
       try {
         const { revision } = this.sqlite.prepare('SELECT revision FROM store_meta WHERE id=1').get() as { revision: number };
-        for (const row of this.sqlite.prepare('SELECT collection,body FROM domain_records ORDER BY collection,position').all() as Array<{ collection: string; body: string }>) {
+        if (this.cached?.revision === revision) { this.sqlite.exec('COMMIT'); this.counters.cacheHits++; return this.cached; }
+        const rows = this.sqlite.prepare('SELECT collection,body FROM domain_records ORDER BY collection,position').all() as Array<{ collection: string; body: string }>;
+        for (const row of rows) {
           (state[row.collection] ??= []).push(JSON.parse(row.body));
         }
         this.sqlite.exec('COMMIT');
-        return { revision, state };
+        return this.remember({ revision, state }, rows.length);
       } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
     }
     const client = await this.postgres!.connect();
     try {
       await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
       const meta = await client.query('SELECT revision FROM store_meta WHERE id=1');
+      const revision = Number(meta.rows[0].revision);
+      if (this.cached?.revision === revision) { await client.query('COMMIT'); this.counters.cacheHits++; return this.cached; }
       const records = await client.query('SELECT collection,body FROM domain_records ORDER BY collection,position');
       for (const row of records.rows) (state[row.collection] ??= []).push(row.body);
       await client.query('COMMIT');
-      return { revision: Number(meta.rows[0].revision), state };
+      return this.remember({ revision, state }, records.rows.length);
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
@@ -183,7 +236,7 @@ export class DomainDatabase {
   private async commitSnapshot(before: StateSnapshot, after: DomainState, options: { enqueue?: TaskIntent[]; fence?: TaskFence; taskOperations?: TaskOperation[] }): Promise<number> {
     const changes = differences(before.state, after);
     if (changes.length === 0 && !options.enqueue?.length && !options.fence && !options.taskOperations?.length) return before.revision;
-    const conflict = () => new ConflictException('数据已更新，请重试本次操作');
+    const conflict = () => { this.counters.conflicts++; return new ConflictException('数据已更新，请重试本次操作'); };
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
@@ -199,6 +252,7 @@ export class DomainDatabase {
         await this.tasks.insert(options.enqueue ?? []);
         await this.tasks.applyOperations(options.taskOperations ?? []);
         this.sqlite.exec('COMMIT');
+        this.rememberCommit(before.revision, before.revision + 1, changes);
         return before.revision + 1;
       } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
     }
@@ -215,12 +269,13 @@ export class DomainDatabase {
       await this.tasks.insert(options.enqueue ?? [], client);
       await this.tasks.applyOperations(options.taskOperations ?? [], client);
       await client.query('COMMIT');
+      this.rememberCommit(before.revision, before.revision + 1, changes);
       return before.revision + 1;
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
   async close() {
-    const close = async () => { this.sqlite?.close(); this.sqlite = undefined; await this.postgres?.end(); this.postgres = undefined; };
+    const close = async () => { this.cached = undefined; this.sqlite?.close(); this.sqlite = undefined; await this.postgres?.end(); this.postgres = undefined; };
     if (this.tasks) await this.tasks.serial(close); else await close();
   }
 }

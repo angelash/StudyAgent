@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-19T17:35:57.077Z",
+  "label": "baseline",
+  "passed": true,
+  "scope": "Synthetic warm local HTTP reads; no production-load, write-contention or browser acceptance claim",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "logicalCpus": 32,
+    "memoryBytes": 68446707712
+  },
+  "fixture": {
+    "families": 1000,
+    "evidenceRecords": 20000,
+    "originalTasks": 3435,
+    "sqliteBytes": 52068352
+  },
+  "metrics": [
+    {
+      "route": "/auth/me",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 763.31,
+      "p95Ms": 908.5,
+      "maxMs": 908.5
+    },
+    {
+      "route": "/learning/students",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 783.53,
+      "p95Ms": 839.48,
+      "maxMs": 839.48
+    },
+    {
+      "route": "/diagnostics/curriculum?subject=math&grade=3",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 767.29,
+      "p95Ms": 796.08,
+      "maxMs": 796.08
+    },
+    {
+      "route": "/auth/me",
+      "mode": "8 concurrent requests",
+      "samples": 32,
+      "p50Ms": 6150.09,
+      "p95Ms": 6217.43,
+      "maxMs": 6217.97
+    }
+  ],
+  "storage": null,
+  "eventLoop": {
+    "p95Ms": 6153.04,
+    "maxMs": 6220.15
+  },
+  "memory": {
+    "rss": 1950576640,
+    "heapTotal": 1288536064,
+    "heapUsed": 691952512,
+    "external": 3566311,
+    "arrayBuffers": 311894
+  }
+}

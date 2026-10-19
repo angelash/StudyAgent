@@ -6,6 +6,8 @@ Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm
 
 兼容注入名 `InMemoryStoreService` 目前仍由旧模块引用，运行时已使用请求隔离的数据库事务；`domain_records` 为具有唯一约束、版本和稳定顺序的领域文档表。原始全量题库使用独立索引库，不能塞入该兼容接口。并发写基线冲突返回409，调用方应重读后重试，不能盲目覆盖。
 
+当前版本缓存只读快照，每请求仍核对数据库版本；请求只复制访问集合，其他进程提交后重新载入。全域版本冲突门禁仍保留，冷启动与跨进程更新仍可能触发整库读取。性能样本、隔离验证和剩余扩展范围见 [存储性能交付](20-storage-performance-delivery.md)。
+
 管理员只在本机创建：在环境中设置 `STUDY_ADMIN_PASSWORD`（至少10字符），执行 `npm run admin:create --workspace @study-agent/api -- <principal>`。命令不记录密码，不升级已存在账号。普通账号通过 `/parent/login` 的“创建账号”注册。
 
 浏览器会话使用 HttpOnly Cookie；网页不再将令牌存入localStorage。通过反向代理使用同站点部署；生产环境使用HTTPS。`CORS_ORIGINS` 是以逗号分隔的确切来源白名单（默认本地3000端口）；联调其他端口时需显式设置。API可用 `API_PORT` 改端口，Web可用项目启动参数指定端口。
