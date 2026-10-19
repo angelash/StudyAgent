@@ -25,7 +25,7 @@ export class LearningService {
     private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService) {}
 
   studentProfiles(user: InMemoryUserAccount) {
-    return this.store.students.filter((child) => user.role === 'admin' || this.store.bindings.some((binding) =>
+    return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || this.store.bindings.some((binding) =>
       binding.parentUserId === user.id && binding.studentId === child.id && binding.status === 'active'))
       .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
   }

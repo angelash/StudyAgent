@@ -50,7 +50,7 @@ export class AuthService {
     this.rateLimit(`login-ip:${address}`);
     const user = this.store.users.find((item) => item.principal === command.principal);
     const valid = await compare(command.credential, user?.passwordHash ?? '$2b$12$pAxqI0sYiLqor2F0ILhL1.I9/lYcflo6QwYV6jkz41p0d4ESJ8rN2');
-    if (!user || !valid || user.status !== 'active') throw new UnauthorizedException('账号或密码不正确');
+    if (!user || !valid || user.status !== 'active' || user.role === 'student') throw new UnauthorizedException('账号或密码不正确');
     this.attempts.delete(key);
     return this.createSession(user);
   }
@@ -59,6 +59,23 @@ export class AuthService {
     const session = this.store.sessions.find((item) => item.tokenHash === hashToken(token));
     if (session) session.revokedAt = new Date().toISOString();
     return { loggedOut: true };
+  }
+
+  redeemLearningCode(input: unknown, address = 'local') {
+    const { code } = validate(z.object({ code: z.string().trim().min(20).max(40).transform(s => s.replace(/\s/g, '').toLowerCase()) }).strict(), input);
+    this.rateLimit(`learning-code:${address}`);
+    const tokenHash = hashToken(code);
+    this.rateLimit(`learning-code-value:${tokenHash}`);
+    const entry = this.store.studentLearningCodes.find(c => c.tokenHash === tokenHash && !c.usedAt && !c.revokedAt && Date.parse(c.expiresAt) > Date.now());
+    const access = entry && this.store.studentLearningAccess.find(a => a.studentId === entry.studentId && a.status === 'enabled' && a.version === entry.accessVersion);
+    const user = access && this.store.users.find(u => u.id === access.userId && u.role === 'student' && u.status === 'active');
+    const guardian = entry && this.store.users.find(u => u.id === entry.createdBy && u.status === 'active' && ['parent', 'admin'].includes(u.role));
+    const bound = guardian && (guardian.role === 'admin' || this.store.bindings.some(b => b.parentUserId === guardian.id && b.studentId === entry!.studentId && b.status === 'active'));
+    if (!entry || !access || !user || !bound) throw new UnauthorizedException('学习码不可用或已过期，请家长重新生成');
+    entry.usedAt = new Date().toISOString();
+    const result = this.createSession(user, { studentId: entry.studentId, guardianId: entry.createdBy, accessVersion: access.version, lifetimeMs: 8 * 3600_000 });
+    this.eventBus.publish('student.learning_code_used', { studentId: entry.studentId, codeId: entry.id, userId: user.id });
+    return result;
   }
 
   listAccounts(actor: InMemoryUserAccount, input: unknown) {
@@ -98,12 +115,14 @@ export class AuthService {
     return { id: target.id, principal: target.principal, displayName: target.displayName, role: target.role, status: target.status, version: target.version };
   }
 
-  private createSession(user: InMemoryUserAccount) {
+  private createSession(user: InMemoryUserAccount, learning?: { studentId: string; guardianId: string; accessVersion: number; lifetimeMs: number }) {
     const token = randomBytes(32).toString('base64url');
-    const expiresAt = new Date(Date.now() + 12 * 3600_000).toISOString();
+    const expiresAt = new Date(Date.now() + (learning?.lifetimeMs ?? 12 * 3600_000)).toISOString();
     this.store.sessions.push({ id: this.store.nextId('session'), tokenHash: hashToken(token), userId: user.id,
-      createdAt: new Date().toISOString(), expiresAt, revokedAt: null });
+      createdAt: new Date().toISOString(), expiresAt, revokedAt: null,
+      ...(learning ? { studentId: learning.studentId, guardianId: learning.guardianId, accessVersion: learning.accessVersion } : {}) });
     this.eventBus.publish('auth.logged_in', { userId: user.id, role: user.role });
-    return { token, expiresAt, user: { id: user.id, role: user.role, displayName: user.displayName, principal: user.principal } };
+    return { token, expiresAt, user: { id: user.id, role: user.role, displayName: user.displayName,
+      principal: user.role === 'student' ? '' : user.principal, ...(learning ? { studentId: learning.studentId } : {}) } };
   }
 }

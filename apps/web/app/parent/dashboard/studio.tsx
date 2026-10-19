@@ -5,12 +5,15 @@ import type { Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
 import { FamilyOverview, masteryNames, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
+import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import '../../student/assessment/studio.css';
 import '../../student/today/today.css';
 import './family.css';
 
 export function FamilyStudio() {
+  const identity = useSessionUser();
+  React.useEffect(() => { if (identity?.role === 'student') window.location.replace('/student/today'); }, [identity]);
   const [overview, setOverview] = React.useState<FamilyOverview | null>(null), [studentId, setStudentId] = React.useState('');
   const [subject, setSubject] = React.useState<Subject>('math'), [nickname, setNickname] = React.useState(''), [grade, setGrade] = React.useState(3);
   const [loading, setLoading] = React.useState(true), [busy, setBusy] = React.useState(false), [error, setError] = React.useState(''), [showCreate, setShowCreate] = React.useState(false), [expanded, setExpanded] = React.useState('');

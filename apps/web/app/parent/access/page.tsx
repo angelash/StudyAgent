@@ -5,6 +5,8 @@ import type { EvidenceFeedback, TeacherStudentAssignment } from '@study-agent/co
 import { apiRequest } from '../../../lib/api';
 import { Child, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
+import { useSessionUser } from '../../../lib/session-user';
+import { StudentLearningAccess, StudentProgressInbox } from '../../../components/student-learning-access';
 import '../../student/assessment/studio.css';
 import '../../admin/workbench.css';
 import './access.css';
@@ -13,6 +15,8 @@ type Assignment = TeacherStudentAssignment & { displayName: string; principal: s
 const feedbackStates = { open: '已收到', investigating: '核查中', resolved: '已处理', dismissed: '已说明处理依据' };
 const send = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) });
 export default function FamilyAccess() {
+  const identity = useSessionUser();
+  React.useEffect(() => { if (identity?.role === 'student') window.location.replace('/student/today'); }, [identity]);
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState(''), [userId, setUserId] = React.useState('');
   const [assignments, setAssignments] = React.useState<Assignment[]>([]), [feedback, setFeedback] = React.useState<EvidenceFeedback[]>([]), [feedbackTotal, setFeedbackTotal] = React.useState(0), [page, setPage] = React.useState(1);
   const [principal, setPrincipal] = React.useState(''), [recipient, setRecipient] = React.useState(''), [invitation, setInvitation] = React.useState<{ code: string; expiresAt: string; recipient: string } | null>(null), [inviteCode, setInviteCode] = React.useState('');
@@ -32,7 +36,7 @@ export default function FamilyAccess() {
   return <main className="learning-studio"><StudyNav current="family" /><div className="admin-workbench family-access"><Link className="studio-text-button" href="/parent/dashboard">← 返回家长空间</Link><span className="studio-eyebrow">FAMILY & REVIEW / 一起把依据看清楚</span><h1>谁来陪伴，由你确认。</h1><p>管理监护人邀请、教师评分复核权限，并查看每一条反馈的处理依据。</p>
     {error && <div className="studio-error" role="alert">{error}</div>}{notice && <p className="access-notice" role="status">{notice}</p>}{loading && <p role="status">正在读取档案…</p>}
     {children.length > 0 && <label className="access-child">孩子的档案<select value={studentId} disabled={busy} onChange={(e) => { setStudentId(e.target.value); setPage(1); }}>{children.map((c) => <option key={c.id} value={c.id}>{c.nickname} · {c.grade}年级</option>)}</select></label>}
-    {child && <><section className="access-section"><div><span className="studio-eyebrow">01 / 教师复核授权</span><h2>让熟悉孩子的人，核对具体表达。</h2><p>获授权教师可以查看{child.nickname}已完成评测和练习中的作答，按量规复核并处理反馈。你可以随时撤销此权限。</p></div>
+    {child && <><StudentLearningAccess studentId={studentId} nickname={child.nickname} /><StudentProgressInbox studentId={studentId} /><section className="access-section"><div><span className="studio-eyebrow">01 / 教师复核授权</span><h2>让熟悉孩子的人，核对具体表达。</h2><p>获授权教师可以查看{child.nickname}已完成评测和练习中的作答，按量规复核并处理反馈。你可以随时撤销此权限。</p></div>
       <form onSubmit={(event) => { event.preventDefault(); void run(async () => { await send(`/students/${studentId}/reviewers`, { principal }); setPrincipal(''); setAssignments(await send<Assignment[]>(`/students/${studentId}/reviewers`)); setNotice('教师复核权限已保存。'); }); }}><label>已开通教师身份的账号<input required minLength={3} maxLength={254} value={principal} disabled={busy} onChange={(e) => setPrincipal(e.target.value)} autoComplete="off" placeholder="填写教师的登录账号" /></label><button className="studio-primary" disabled={busy || principal.trim().length < 3}>授予复核权限 →</button></form>
       <div className="access-assignments">{assignments.filter((a) => a.status === 'active').map((a) => <article key={a.id}><div><strong>{a.displayName}</strong><p>{a.principal} · {new Date(a.createdAt).toLocaleDateString('zh-CN')} 授权</p></div><button className="studio-secondary" disabled={busy} onClick={() => run(async () => { await send(`/students/${studentId}/reviewers/${a.id}/revoke`, {}); setAssignments(await send<Assignment[]>(`/students/${studentId}/reviewers`)); setNotice('权限已撤销，教师无法再读取或复核这个孩子的作答。'); })}>撤销权限</button></article>)}{!assignments.some((a) => a.status === 'active') && <p>当前尚未授予教师复核权限。</p>}</div>
       {assignments.some((a) => a.status === 'revoked') && <details><summary>已撤销授权记录</summary>{assignments.filter((a) => a.status === 'revoked').map((a) => <p key={a.id}>{a.displayName} · {a.principal} · {a.revokedAt ? new Date(a.revokedAt).toLocaleString('zh-CN') : ''} 已撤销</p>)}</details>}

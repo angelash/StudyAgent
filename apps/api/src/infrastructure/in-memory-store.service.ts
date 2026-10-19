@@ -30,6 +30,7 @@ import {
   TeacherStudentAssignment, EvidenceFeedback,
   ImportFile, ImportPageEvidenceRef, ProcessingArtifact,
   GuidancePlanRevision,
+  StudentLearningAccess, StudentLearningCode, StudentAccessRevision, StudentProgressProposal,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -49,6 +50,7 @@ export type InMemoryAuthSession = {
   createdAt: string;
   expiresAt: string;
   revokedAt: string | null;
+  studentId?: string; guardianId?: string; accessVersion?: number;
 };
 
 export type StudentInvitation = {
@@ -234,6 +236,10 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   processingArtifacts: ProcessingArtifact[] = [];
   importPages: ImportPageEvidenceRef[] = [];
   guidancePlanRevisions: GuidancePlanRevision[] = [];
+  studentLearningAccess: StudentLearningAccess[] = [];
+  studentLearningCodes: StudentLearningCode[] = [];
+  studentAccessRevisions: StudentAccessRevision[] = [];
+  studentProgressProposals: StudentProgressProposal[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -293,6 +299,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.processingArtifacts = [];
     this.importPages = [];
     this.guidancePlanRevisions = [];
+    this.studentLearningAccess = []; this.studentLearningCodes = []; this.studentAccessRevisions = [];
+    this.studentProgressProposals = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];

@@ -1,4 +1,5 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { createHash } from 'node:crypto';
 import { KnowledgeAtom, LearningScope, MeasurementItem, Subject,
   knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
 import { z } from 'zod';
@@ -73,8 +74,7 @@ export class CurriculumService {
       .sort((a, b) => b.version - a.version)[0] ?? null;
   }
 
-  saveScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
-    this.students.assertCanAccessStudent(user, studentId);
+  private prepareScope(input: unknown) {
     const data = validate(learningScopeInputSchema, input);
     const allowed = new Set(this.list(data.subject, data.grade, data.term).map((atom) => atom.id));
     let textbookRevision: string | undefined;
@@ -94,6 +94,12 @@ export class CurriculumService {
     if (data.progressMode === 'knowledge' && data.selectedLessonIds.length) throw new BadRequestException('按知识点确认进度时不能同时提交教材课时');
     if (data.learnedAtomIds.some((id) => !allowed.has(id))) throw new BadRequestException('已学知识点超出所选年级、学期或学科');
     if (data.currentAtomId && !data.learnedAtomIds.includes(data.currentAtomId)) throw new BadRequestException('当前知识点应包含在已学范围中');
+    return { data, textbookRevision, progress };
+  }
+
+  saveScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
+    this.students.assertGuardian(user, studentId);
+    const { data, textbookRevision, progress } = this.prepareScope(input);
     const previous = this.getScope(user, studentId, data.subject);
     const scope: LearningScope = { ...data, learnedAtomIds: [...new Set(data.learnedAtomIds)],
       id: this.store.nextId('scope'), studentId, version: (previous?.version ?? 0) + 1, confirmedAt: new Date().toISOString(),
@@ -102,6 +108,54 @@ export class CurriculumService {
     this.store.learningScopes.push(scope);
     this.events.publish('curriculum.scope_confirmed', { studentId, subject: data.subject, scopeId: scope.id, version: scope.version });
     return scope;
+  }
+
+  progressProposals(user: InMemoryUserAccount, studentId: string) {
+    this.students.assertCanAccessStudent(user, studentId);
+    return this.store.studentProgressProposals.filter(p => p.studentId === studentId).slice(-30).reverse()
+      .map(({ requestHash: _hash, decisionHash: _decisionHash, ...proposal }) => proposal);
+  }
+
+  proposeScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
+    this.students.assertCanAccessStudent(user, studentId);
+    if (user.role !== 'student') throw new ForbiddenException('此入口用于孩子提出进度，由监护人确认');
+    const command = validate(z.object({ scope: learningScopeInputSchema, baseScopeVersion: z.number().int().nonnegative(), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const requestHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
+    const previous = this.store.studentProgressProposals.find(p => p.studentId === studentId && p.proposedBy === user.id && p.requestKey === command.requestKey);
+    if (previous) { if (previous.requestHash !== requestHash) throw new ConflictException('请求键已用于另一份进度'); return previous; }
+    const { data } = this.prepareScope(command.scope);
+    if ((this.getScope(user, studentId, data.subject)?.version ?? 0) !== command.baseScopeVersion) throw new ConflictException('家长确认的进度已变化，请先刷新再提出');
+    for (const p of this.store.studentProgressProposals.filter(p => p.studentId === studentId && p.scope.subject === data.subject && p.status === 'pending')) {
+      p.status = 'superseded'; p.version++;
+    }
+    const proposal = { id: this.store.nextId('progress_proposal'), studentId, proposedBy: user.id, scope: data,
+      knowledgeSnapshot: data.learnedAtomIds.map(id => { const atom = this.store.knowledgeAtoms.find(a => a.id === id)!; return { id, name: atom.name, objective: atom.objective, version: atom.version }; }),
+      baseScopeVersion: command.baseScopeVersion, version: 1, status: 'pending' as const, createdAt: new Date().toISOString(), requestKey: command.requestKey, requestHash };
+    this.store.studentProgressProposals.push(proposal);
+    this.events.publish('curriculum.progress_proposed', { studentId, proposalId: proposal.id, subject: data.subject, actorId: user.id });
+    return proposal;
+  }
+
+  decideProgress(user: InMemoryUserAccount, studentId: string, proposalId: string, input: unknown) {
+    this.students.assertGuardian(user, studentId);
+    const command = validate(z.object({ decision: z.enum(['accept', 'reject']), expectedVersion: z.number().int().positive(), requestKey: z.string().min(8).max(180),
+      note: z.string().trim().min(5).max(1500) }).strict(), input);
+    const proposal = this.store.studentProgressProposals.find(p => p.id === proposalId && p.studentId === studentId);
+    if (!proposal) throw new NotFoundException('进度提议不存在');
+    const decisionHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
+    if (proposal.decisionRequestKey === command.requestKey && proposal.decidedBy === user.id) {
+      if (proposal.decisionHash !== decisionHash) throw new ConflictException('请求键已用于另一确认操作'); return proposal;
+    }
+    if (proposal.version !== command.expectedVersion || proposal.status !== 'pending') throw new ConflictException('进度提议已变化，请重新查看');
+    if (command.decision === 'accept') {
+      if ((this.getScope(user, studentId, proposal.scope.subject)?.version ?? 0) !== proposal.baseScopeVersion) throw new ConflictException('当前确认范围已变化，请核对最新范围后由孩子重新提出进度');
+      proposal.acceptedScopeId = this.saveScope(user, studentId, proposal.scope).id;
+    }
+    proposal.status = command.decision === 'accept' ? 'accepted' : 'rejected'; proposal.version++;
+    proposal.decidedAt = new Date().toISOString(); proposal.decidedBy = user.id; proposal.decisionNote = command.note;
+    proposal.decisionRequestKey = command.requestKey; proposal.decisionHash = decisionHash;
+    this.events.publish('curriculum.progress_decided', { studentId, proposalId, status: proposal.status, actorId: user.id, note: command.note });
+    return proposal;
   }
 
   prerequisiteClosure(atomIds: string[]): string[] {

@@ -1,11 +1,21 @@
 import { Body, Controller, ForbiddenException, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { StudentsService } from './students.service';
+import { StudentAccessService } from './student-access.service';
 
 @UseGuards(AuthGuard)
 @Controller()
 export class StudentsController {
-  constructor(private readonly studentsService: StudentsService) {}
+  constructor(private readonly studentsService: StudentsService, private readonly learningAccess: StudentAccessService) {}
+
+  @Get('students/:studentId/learning-access')
+  learningIdentity(@Req() req: AuthenticatedRequest, @Param('studentId') id: string) { return this.learningAccess.get(req.user, id); }
+  @Post('students/:studentId/learning-access')
+  updateLearningIdentity(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) { return this.learningAccess.set(req.user, id, body); }
+  @Post('students/:studentId/learning-access/codes')
+  issueLearningCode(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) { return this.learningAccess.issueCode(req.user, id, body); }
+  @Post('students/:studentId/learning-access/sessions/:sessionId/revoke')
+  revokeLearningSession(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Param('sessionId') sessionId: string) { return this.learningAccess.revokeSession(req.user, id, sessionId); }
 
   @Post('students')
   createStudent(

@@ -24,7 +24,7 @@ export class GuidanceService {
     private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService, private readonly ai: AiService) {}
 
   async create(user: InMemoryUserAccount, studentId: string, input: unknown) {
-    this.students.assertCanAccessStudent(user, studentId);
+    this.students.assertGuardian(user, studentId);
     const command = validate(createPlanSchema, input);
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
@@ -143,6 +143,7 @@ export class GuidanceService {
 
   adjust(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
+    this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180), reason: reasonSchema,
       minutesPerDay: z.number().int().min(5).max(60), acknowledgeReportVersion: z.number().int().positive(),
       actions: z.array(z.object({ actionId: z.string().max(180), minutes: z.number().int().min(1).max(60),
@@ -173,6 +174,7 @@ export class GuidanceService {
 
   update(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
+    this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ ...versionedCommand, status: z.enum(['active', 'paused', 'completed']) }).strict(), input);
     const command = this.command(user, plan, 'status', data); if (command.replay) return this.view(user, plan);
     const { status } = data;
@@ -225,6 +227,7 @@ export class GuidanceService {
     const task = this.store.reviewTasks.find(t => t.id === reviewId);
     if (!task) throw new NotFoundException('复测任务不存在');
     const plan = this.requirePlan(user, task.planId);
+    this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ expectedPlanRevision: z.number().int().positive(), expectedScheduleRevision: z.number().int().positive(),
       requestKey: z.string().min(8).max(180), dueAt: z.string().datetime({ offset: true }), reason: reasonSchema }).strict(), input);
     const hash = inputHash('reschedule', data), previous = task.scheduleHistory?.find(h => h.actorId === user.id && h.requestKey === data.requestKey);
@@ -307,6 +310,7 @@ export class GuidanceService {
 
   acknowledgeRetrospective(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
+    this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180),
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), reason: reasonSchema }).strict(), input);
     const command = this.command(user, plan, 'retrospective', data); if (command.replay) return this.view(user, plan);

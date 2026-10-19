@@ -9,6 +9,19 @@ export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState };
 type Change = { collection: string; id: string; body: string | null; position: number };
 
+// Each schema version is applied atomically: an invalid old record must stop the
+// upgrade before the version is recorded, without silently discarding evidence.
+const learningIdentityConstraints = [
+  { name: 'learning_access_student', collection: 'studentLearningAccess', fields: ['studentId'] },
+  { name: 'learning_access_user', collection: 'studentLearningAccess', fields: ['userId'] },
+  { name: 'learning_code_token', collection: 'studentLearningCodes', fields: ['tokenHash'] },
+  { name: 'learning_code_request', collection: 'studentLearningCodes', fields: ['studentId', 'createdBy', 'requestKey'] },
+  { name: 'learning_access_version', collection: 'studentAccessRevisions', fields: ['studentId', 'version'] },
+  { name: 'learning_access_request', collection: 'studentAccessRevisions', fields: ['studentId', 'actorId', 'requestKey'] },
+  { name: 'progress_proposal_request', collection: 'studentProgressProposals', fields: ['studentId', 'proposedBy', 'requestKey'] },
+  { name: 'progress_proposal_pending', collection: 'studentProgressProposals', fields: ['studentId', 'scope.subject'], pending: true },
+];
+
 function recordId(item: unknown): string {
   const record = item as Record<string, unknown>;
   const key = record.id ?? record.eventId ?? record.questionId ?? record.sessionId;
@@ -75,8 +88,38 @@ export class DomainDatabase {
         CREATE UNIQUE INDEX IF NOT EXISTS assessment_response ON domain_records((body->>'sessionId'),(body->>'questionId')) WHERE collection='assessmentAnswers';
         CREATE UNIQUE INDEX IF NOT EXISTS active_binding ON domain_records((body->>'parentUserId'),(body->>'studentId')) WHERE collection='bindings' AND body->>'status'='active';`);
     }
+    await this.migrateLearningIdentity();
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
     await this.tasks.open();
+  }
+
+  private async migrateLearningIdentity() {
+    const indexes = (postgres: boolean) => learningIdentityConstraints.map(index => {
+      const extract = (field: string) => postgres ? `(body#>>'{${field.split('.').join(',')}}')` : `json_extract(body,'$.${field}')`;
+      return `CREATE UNIQUE INDEX IF NOT EXISTS ${index.name} ON domain_records(${index.fields.map(extract).join(',')})
+        WHERE collection='${index.collection}'${index.pending ? ` AND ${extract('status')}='pending'` : ''}`;
+    }).join(';');
+    if (this.sqlite) {
+      this.sqlite.exec('BEGIN IMMEDIATE');
+      try {
+        if (!this.sqlite.prepare('SELECT version FROM schema_migrations WHERE version=2').get()) {
+          this.sqlite.exec(indexes(false));
+          this.sqlite.exec("INSERT INTO schema_migrations VALUES(2, strftime('%Y-%m-%dT%H:%M:%fZ','now'))");
+        }
+        this.sqlite.exec('COMMIT');
+      } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
+      return;
+    }
+    const client = await this.postgres!.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('SELECT pg_advisory_xact_lock(73199402)');
+      if (!(await client.query('SELECT version FROM schema_migrations WHERE version=2')).rowCount) {
+        await client.query(indexes(true));
+        await client.query('INSERT INTO schema_migrations(version) VALUES(2)');
+      }
+      await client.query('COMMIT');
+    } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
   async read(): Promise<StateSnapshot> {

@@ -20,6 +20,7 @@ import { validate } from '../../common/validation';
 import OpenAI from 'openai';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { StudentsService } from '../students/students.service';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -56,6 +57,7 @@ export class AiService {
   constructor(
     private readonly store: InMemoryStoreService,
     private readonly eventBus: DomainEventBusService,
+    private readonly students: StudentsService,
   ) {}
 
   async analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse> {
@@ -176,10 +178,8 @@ export class AiService {
       pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report']),
       contextRefType: z.string().max(100).nullable().optional(), contextRefId: z.string().max(180).nullable().optional(),
     }).strict(), command);
-    if (command.studentId && user.role !== 'admin' && !this.store.bindings.some((binding) =>
-      binding.studentId === command.studentId && binding.parentUserId === user.id && binding.status === 'active')) {
-      throw new ForbiddenException('You cannot access this student');
-    }
+    if (user.role === 'student' && (command.userRole !== 'student' || !command.studentId)) throw new ForbiddenException('请使用当前孩子的学习助教');
+    if (command.studentId) this.students.assertCanAccessStudent(user, command.studentId);
     const session: AssistantSession & { ownerUserId: string } = {
       ownerUserId: user.id,
       id: this.store.nextId('assistant_session'),
@@ -203,6 +203,7 @@ export class AiService {
   assertSessionOwner(sessionId: string, user: InMemoryUserAccount) {
     const session = this.store.assistantSessions.find((item) => item.id === sessionId);
     if (!session || session.ownerUserId !== user.id) throw new NotFoundException('Assistant session not found');
+    if (session.studentId) this.students.assertCanAccessStudent(user, session.studentId);
     return session;
   }
 

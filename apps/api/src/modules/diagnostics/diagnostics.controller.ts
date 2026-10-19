@@ -52,6 +52,14 @@ export class DiagnosticsController {
   saveScope(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) {
     return this.curriculum.saveScope(req.user, id, body);
   }
+  @Get('students/:studentId/progress-proposals')
+  progressProposals(@Req() req: AuthenticatedRequest, @Param('studentId') id: string) { return this.curriculum.progressProposals(req.user, id); }
+  @Post('students/:studentId/progress-proposals')
+  proposeProgress(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) { return this.curriculum.proposeScope(req.user, id, body); }
+  @Post('students/:studentId/progress-proposals/:proposalId/decision')
+  decideProgress(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Param('proposalId') proposalId: string, @Body() body: unknown) {
+    return this.curriculum.decideProgress(req.user, id, proposalId, body);
+  }
   @Post('diagnostics/sessions')
   start(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.diagnostics.start(req.user, body); }
   @Get('diagnostics/sessions')

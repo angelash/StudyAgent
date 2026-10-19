@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-19T15:19:05.189Z",
+  "fixture": "synthetic loopback API",
+  "checks": [
+    "one-time code, private cookie, own profile only",
+    "cross-child and management denied; own frozen practice restored",
+    "proposed progress isolated until guardian accepts; old assessment scope unchanged",
+    "guardian device revocation immediately rejects existing learner identity"
+  ],
+  "assertions": "passed",
+  "databaseUniqueness": "8 constraints tested with full rollback",
+  "restart": "durability.integration.test.ts passed: learner identity and own practice survive application restart; overview stays forbidden",
+  "browser": {
+    "status": "pending",
+    "reason": "Browser Runtime navigation returned BROWSER_ACTION_OUTCOME_UNKNOWN and prohibited further browser mutations this turn"
+  },
+  "httpPages": {
+    "/student/login": 200,
+    "/parent/login": 200,
+    "/student/assessment": 200,
+    "/parent/access": 200
+  }
+}

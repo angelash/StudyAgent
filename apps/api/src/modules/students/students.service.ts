@@ -161,7 +161,7 @@ export class StudentsService {
     if (!this.canReviewStudent(user, studentId)) throw new ForbiddenException('需要监护人授予此孩子的评分复核权限');
   }
 
-  private assertGuardian(user: InMemoryUserAccount, studentId: string) {
+  assertGuardian(user: InMemoryUserAccount, studentId: string) {
     this.assertCanAccessStudent(user, studentId);
     if (!['parent', 'admin'].includes(user.role)) throw new ForbiddenException('需要监护人权限');
     if (!this.store.students.some((student) => student.id === studentId)) throw new NotFoundException('孩子档案不存在');
@@ -203,6 +203,11 @@ export class StudentsService {
   assertCanAccessStudent(requestUser: InMemoryUserAccount, studentId: string) {
     if (requestUser.role === 'admin') {
       return;
+    }
+    if (requestUser.role === 'student') {
+      if (this.store.students.some(s => s.id === studentId && s.userId === requestUser.id) &&
+        this.store.studentLearningAccess.some(a => a.studentId === studentId && a.userId === requestUser.id && a.status === 'enabled')) return;
+      throw new ForbiddenException('只能访问当前孩子的学习记录');
     }
 
     const hasBinding = this.store.bindings.some(

@@ -45,4 +45,31 @@ describe('durable domain transactions', () => {
       expect(await database.read()).toEqual(before);
     } finally { await database.close(); }
   });
+
+  it('enforces learning identity and pending-progress uniqueness with atomic rollback', async () => {
+    const database = new DomainDatabase(':memory:'); await database.open();
+    try {
+      const pairs = [
+        { collection: 'studentLearningAccess', a: { studentId: 's', userId: 'u1' }, b: { studentId: 's', userId: 'u2' } },
+        { collection: 'studentLearningAccess', a: { studentId: 's1', userId: 'u' }, b: { studentId: 's2', userId: 'u' } },
+        { collection: 'studentLearningCodes', a: { tokenHash: 'hash' }, b: { tokenHash: 'hash' } },
+        { collection: 'studentLearningCodes', a: { studentId: 's', createdBy: 'p', requestKey: 'key' }, b: { studentId: 's', createdBy: 'p', requestKey: 'key' } },
+        { collection: 'studentAccessRevisions', a: { studentId: 's', version: 1 }, b: { studentId: 's', version: 1 } },
+        { collection: 'studentAccessRevisions', a: { studentId: 's', actorId: 'p', requestKey: 'key' }, b: { studentId: 's', actorId: 'p', requestKey: 'key' } },
+        { collection: 'studentProgressProposals', a: { studentId: 's', proposedBy: 'u', requestKey: 'key' }, b: { studentId: 's', proposedBy: 'u', requestKey: 'key' } },
+        { collection: 'studentProgressProposals', a: { studentId: 's', scope: { subject: 'math' }, status: 'pending' }, b: { studentId: 's', scope: { subject: 'math' }, status: 'pending' } },
+      ];
+      for (const { collection, a, b } of pairs) {
+        const before = await database.read();
+        await expect(database.commit(before, { [collection]: [{ id: 'a', ...a }, { id: 'b', ...b }], events: [{ eventId: 'rollback' }] })).rejects.toThrow();
+        expect(await database.read()).toEqual(before);
+      }
+      await database.commit(await database.read(), { studentProgressProposals: [
+        { id: 'old', studentId: 's', scope: { subject: 'math' }, status: 'superseded' },
+        { id: 'new', studentId: 's', scope: { subject: 'math' }, status: 'pending' },
+        { id: 'other', studentId: 's', scope: { subject: 'english' }, status: 'pending' },
+      ] });
+      expect((await database.read()).state.studentProgressProposals).toHaveLength(3);
+    } finally { await database.close(); }
+  });
 });

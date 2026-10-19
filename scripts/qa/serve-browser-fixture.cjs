@@ -16,6 +16,7 @@ const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { AuthService } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
 const { hashToken } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
+const { requestToken } = require('../../apps/api/dist/apps/api/src/common/auth.guard.js');
 const { CurriculumService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/curriculum.service.js');
 const { DiagnosticsService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js');
 const { GuidanceService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/guidance.service.js');
@@ -26,7 +27,9 @@ async function main() {
   const app = await NestFactory.create(AppModule, { logger: false, cors: { origin: process.env.CORS_ORIGINS.split(','), credentials: true } });
   app.use((req, res, next) => {
     if (!['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress)) return res.status(403).end();
-    if (fixtureToken) req.headers.authorization = `Bearer ${fixtureToken}`;
+    // Explicit learner cookies/tokens must exercise actual learner authorization.
+    // The fixture fallback applies only to requests without a supplied identity.
+    if (fixtureToken && !requestToken(req)) req.headers.authorization = `Bearer ${fixtureToken}`;
     next();
   });
   app.setGlobalPrefix('api'); await app.init();

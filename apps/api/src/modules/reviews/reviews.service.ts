@@ -112,7 +112,9 @@ export class ReviewsService {
     if (reviewer) this.assertReviewer(user);
     if (query.studentId && !reviewer) this.students.assertCanAccessStudent(user, query.studentId);
     const rows = this.store.evidenceFeedback.filter((item) =>
-      (reviewer ? this.students.canReviewStudent(user, item.studentId) : user.role === 'admin' || this.store.bindings.some((b) => b.parentUserId === user.id && b.studentId === item.studentId && b.status === 'active')) &&
+      (reviewer ? this.students.canReviewStudent(user, item.studentId) : user.role === 'admin' ||
+        (user.role === 'student' && this.store.students.some(s => s.id === item.studentId && s.userId === user.id)) ||
+        this.store.bindings.some((b) => b.parentUserId === user.id && b.studentId === item.studentId && b.status === 'active')) &&
       (!query.kind || query.kind === item.kind) && (!query.responseId || query.responseId === item.responseId) &&
       (!query.studentId || query.studentId === item.studentId) && (!query.status || query.status === item.status)).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     return { total: rows.length, page: query.page, rows: rows.slice((query.page - 1) * 25, query.page * 25) };

@@ -30,6 +30,11 @@ export class AuthController {
     return result;
   }
 
+  @Post('learning-code')
+  learningCode(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
+    const result = this.authService.redeemLearningCode(body, req.ip); this.setCookie(res, result); return result;
+  }
+
   @UseGuards(AuthGuard)
   @Post('logout')
   logout(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) res: Response) {
@@ -45,6 +50,7 @@ export class AuthController {
       role: req.user.role,
       displayName: req.user.displayName,
       principal: req.user.principal,
+      ...(req.user.role === 'student' ? { principal: '', studentId: req.authSession.studentId } : {}),
     };
   }
 }
