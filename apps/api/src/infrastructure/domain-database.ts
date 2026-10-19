@@ -73,6 +73,7 @@ export class DomainDatabase {
     if (this.driver === 'sqlite') {
       mkdirSync(dirname(this.location), { recursive: true });
       this.sqlite = new DatabaseSync(this.location);
+      await this.assertRestoreReady();
       this.sqlite.exec(`PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=5000;
         CREATE TABLE IF NOT EXISTS schema_migrations(version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL);
         INSERT OR IGNORE INTO schema_migrations VALUES(1, strftime('%Y-%m-%dT%H:%M:%fZ','now'));
@@ -86,6 +87,7 @@ export class DomainDatabase {
         CREATE UNIQUE INDEX IF NOT EXISTS active_binding ON domain_records(json_extract(body,'$.parentUserId'),json_extract(body,'$.studentId')) WHERE collection='bindings' AND json_extract(body,'$.status')='active';`);
     } else {
       this.postgres = new Pool({ connectionString: this.location, max: 8, connectionTimeoutMillis: 5000 });
+      await this.assertRestoreReady();
       await this.postgres.query(`CREATE TABLE IF NOT EXISTS schema_migrations(version INTEGER PRIMARY KEY, applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW());
         INSERT INTO schema_migrations(version) VALUES(1) ON CONFLICT DO NOTHING;
         CREATE TABLE IF NOT EXISTS store_meta(id INTEGER PRIMARY KEY CHECK(id=1), revision BIGINT NOT NULL);
@@ -96,13 +98,26 @@ export class DomainDatabase {
         CREATE UNIQUE INDEX IF NOT EXISTS assessment_response ON domain_records((body->>'sessionId'),(body->>'questionId')) WHERE collection='assessmentAnswers';
         CREATE UNIQUE INDEX IF NOT EXISTS active_binding ON domain_records((body->>'parentUserId'),(body->>'studentId')) WHERE collection='bindings' AND body->>'status'='active';`);
     }
+    await this.assertRestoreReady();
     await this.migrateConstraints(2, learningIdentityConstraints);
     await this.migrateConstraints(3, assistantConstraints);
+    await this.migrateConstraints(4, [], `CREATE TABLE IF NOT EXISTS study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL);
+      INSERT INTO study_restore_guard VALUES(1,'ready',NULL,'${new Date().toISOString()}') ON CONFLICT(id) DO NOTHING;`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
     await this.tasks.open();
   }
 
-  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>) {
+  private async assertRestoreReady() {
+    if (this.sqlite) {
+      const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
+      if (table && (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state !== 'ready') throw new Error('Database restoration is incomplete');
+    } else {
+      if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
+        (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') throw new Error('Database restoration is incomplete');
+    }
+  }
+
+  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '') {
     const indexes = (postgres: boolean) => constraints.map(index => {
       const extract = (field: string) => postgres ? `(body#>>'{${field.split('.').join(',')}}')` : `json_extract(body,'$.${field}')`;
       return `CREATE UNIQUE INDEX IF NOT EXISTS ${index.name} ON domain_records(${index.fields.map(extract).join(',')})
@@ -112,7 +127,7 @@ export class DomainDatabase {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
         if (!this.sqlite.prepare('SELECT version FROM schema_migrations WHERE version=?').get(version)) {
-          this.sqlite.exec(indexes(false));
+          this.sqlite.exec(indexes(false) + ';' + extraSql);
           this.sqlite.prepare("INSERT INTO schema_migrations VALUES(?, strftime('%Y-%m-%dT%H:%M:%fZ','now'))").run(version);
         }
         this.sqlite.exec('COMMIT');
@@ -124,7 +139,7 @@ export class DomainDatabase {
       await client.query('BEGIN');
       await client.query('SELECT pg_advisory_xact_lock(73199402)');
       if (!(await client.query('SELECT version FROM schema_migrations WHERE version=$1', [version])).rowCount) {
-        await client.query(indexes(true));
+        await client.query(indexes(true) + ';' + extraSql);
         await client.query('INSERT INTO schema_migrations(version) VALUES($1)', [version]);
       }
       await client.query('COMMIT');

@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { createHash, randomUUID } = require('node:crypto');
 const { DatabaseSync, backup } = require('node:sqlite');
+const { fenceRestoredState } = require('./restore-state.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
@@ -43,14 +44,19 @@ function copyVerified(source, target, expected) {
 }
 function openRead(file) { return new DatabaseSync(file, { readOnly: true }); }
 function summary(db) {
+  if (db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get() &&
+    db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 3) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 4) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts')").all());
+}
+function referencesFromRecords(rows) {
   const result = new Map();
   const add = (relative, sha256, size) => {
     within(path.resolve('.'), relative);
@@ -58,8 +64,8 @@ function references(db) {
     const previous = result.get(relative); if (previous && (previous.sha256 !== sha256 || previous.size !== size)) fail('conflicting_file_reference');
     result.set(relative, { sha256, size });
   };
-  for (const row of db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts')").all()) {
-    const value = JSON.parse(row.body);
+  for (const row of rows) {
+    const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
     if (row.collection === 'importFiles') {
       if (value.status === 'ready') add(`processing/blobs/${value.sha256}`, value.sha256, value.size);
       else for (const chunk of value.chunks ?? []) {
@@ -81,6 +87,7 @@ function* walk(root, relative = '') {
 }
 async function createBundle({ dataDir, destination, assets }) {
   const source = noLinks(dataDir), database = within(source, 'study-agent.sqlite3');
+  if (fs.existsSync(within(source, '.study-restore-incomplete'))) fail('source_database_restore_incomplete');
   if (!fs.existsSync(database)) fail('source_database_missing');
   const root = freshDestination(destination, [source, assets]);
   fs.writeFileSync(within(root, '.study-backup-incomplete'), 'Backup has not passed verification.\n', { flag: 'wx' });
@@ -137,37 +144,28 @@ async function restoreBundle({ bundle, destination }) {
   for (const file of verified.manifest.files) {
     const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
     copyVerified(within(bundle, file.path), within(root, relative), file);
+    if (relative === 'study-agent.sqlite3') {
+      const guard = new DatabaseSync(within(root, relative));
+      try {
+        guard.exec('CREATE TABLE IF NOT EXISTS study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL)');
+        guard.prepare("INSERT INTO study_restore_guard VALUES(1,'restoring',?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state,backup_id=excluded.backup_id,updated_at=excluded.updated_at").run(verified.manifest.id, new Date().toISOString());
+      } finally { guard.close(); }
+    }
   }
-  const db = new DatabaseSync(within(root, 'study-agent.sqlite3')), at = new Date().toISOString(), auditId = `restore_${randomUUID()}`;
-  const counts = { revokedSessions: 0, revokedLearningCodes: 0, expiredInvitations: 0, fencedTasks: 0 };
+  const db = new DatabaseSync(within(root, 'study-agent.sqlite3')); let counts;
   try {
     db.exec('BEGIN IMMEDIATE');
-    const update = db.prepare('UPDATE domain_records SET body=? WHERE collection=? AND record_id=?');
-    for (const row of db.prepare("SELECT collection,record_id,body FROM domain_records WHERE collection IN ('sessions','studentLearningCodes','studentInvitations')").all()) {
-      const value = JSON.parse(row.body);
-      if (row.collection === 'studentInvitations' && !value.consumedAt) { value.expiresAt = at; counts.expiredInvitations++; }
-      else if (row.collection === 'sessions' && !value.revokedAt) { value.revokedAt = at; counts.revokedSessions++; }
-      else if (row.collection === 'studentLearningCodes' && !value.usedAt && !value.revokedAt) { value.revokedAt = at; counts.revokedLearningCodes++; }
-      else continue;
-      update.run(JSON.stringify(value), row.collection, row.record_id);
-    }
-    for (const task of db.prepare("SELECT id,state,attempts,max_attempts FROM durable_tasks WHERE state IN ('running','cancel_requested')").all()) {
-      const state = task.state === 'cancel_requested' ? 'cancelled' : task.attempts >= task.max_attempts ? 'failed' : 'retry_wait';
-      db.prepare('UPDATE durable_tasks SET state=?,lease_token=NULL,lease_until=NULL,available_at=?,version=version+1,generation=generation+1,updated_at=?,error_code=? WHERE id=?').run(state, Date.now(), at, state === 'failed' ? 'attempts_exhausted' : state === 'retry_wait' ? 'restored_interruption' : null, task.id);
-      db.prepare('INSERT INTO durable_task_history VALUES(?,?,?,?,?,?)').run(randomUUID(), task.id, 'restored', 'local-restore', at, JSON.stringify({ previousState: task.state, state, backupId: verified.manifest.id })); counts.fencedTasks++;
-    }
-    const event = { eventId: auditId, eventName: 'operations.restored', eventVersion: 1, occurredAt: at,
-      payload: { backupId: verified.manifest.id, sourceRevision: verified.database.revision, ...counts, channel: 'local-cli' } };
-    const position = db.prepare("SELECT COALESCE(MAX(position),-1)+1 AS position FROM domain_records WHERE collection='events'").get().position;
-    db.prepare('INSERT INTO domain_records VALUES(?,?,?,?)').run('events', auditId, JSON.stringify(event), position);
-    db.exec('UPDATE store_meta SET revision=revision+1 WHERE id=1; COMMIT'); summary(db);
+    counts = await fenceRestoredState((sql, params = []) => db.prepare(sql).all(...params), verified.manifest.id, verified.database.revision);
+    if (Number(db.prepare("UPDATE study_restore_guard SET state='ready',updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(counts.restoredAt, verified.manifest.id).changes) !== 1) fail('restore_guard_changed');
+    db.exec('COMMIT'); summary(db);
   } catch (error) { try { db.exec('ROLLBACK'); } catch {} throw error; } finally { db.close(); }
-  const receipt = { format: FORMAT, backupId: verified.manifest.id, restoredAt: at, sourceRevision: verified.database.revision,
+  const receipt = { format: FORMAT, backupId: verified.manifest.id, sourceRevision: verified.database.revision,
     assetsIncluded: verified.manifest.assetsIncluded, verifiedFiles: verified.verifiedFiles, ...counts };
   fs.writeFileSync(within(root, 'restore-receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' }); fs.unlinkSync(marker);
   return receipt;
 }
-module.exports = { createBundle, verifyBundle, restoreBundle };
+module.exports = { createBundle, verifyBundle, restoreBundle,
+  files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } };
 if (require.main === module) {
   (async () => {
     const [command, ...args] = process.argv.slice(2), options = {}, allowed = command === 'create' ? ['data-dir', 'destination', 'assets'] : ['bundle', 'destination'];

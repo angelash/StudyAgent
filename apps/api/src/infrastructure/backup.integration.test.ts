@@ -3,6 +3,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
 import { describe, expect, it } from 'vitest';
 import { DomainDatabase } from './domain-database';
 const require = createRequire(__filename);
@@ -75,5 +76,29 @@ describe('verified backup and isolated recovery', () => {
       await expect(createBundle({ dataDir: source, destination: join(directory, 'missing') })).rejects.toThrow();
       expect(existsSync(join(directory, 'missing', '.study-backup-incomplete'))).toBe(true);
     } finally { await db.close(); rmSync(directory, { recursive: true, force: true }); }
+  });
+
+  it('migrates a version-three database without changing evidence and refuses incomplete source restores even without the file marker', async () => {
+    const directory = mkdtempSync(join(tmpdir(), 'study-restore-guard-')), location = join(directory, 'study-agent.sqlite3');
+    let database = new DomainDatabase(location); await database.open();
+    try {
+      await database.commit(await database.read(), { diagnosticResponses: [{ id: 'original', score: 0.25 }] });
+      await database.close();
+      const old = new DatabaseSync(location);
+      old.exec('DELETE FROM schema_migrations WHERE version=4; DROP TABLE study_restore_guard'); old.close();
+      database = new DomainDatabase(location); await database.open();
+      expect((await database.read()).state.diagnosticResponses).toEqual([{ id: 'original', score: 0.25 }]);
+      await database.close();
+      const guard = new DatabaseSync(location);
+      expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(4);
+      expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
+      guard.exec("UPDATE study_restore_guard SET state='restoring'"); guard.close();
+      const refused = new DomainDatabase(location);
+      await expect(refused.open()).rejects.toThrow('restoration is incomplete');
+      await expect(createBundle({ dataDir: directory, destination: join(directory + '-backup') })).rejects.toThrow('source_database_restore_incomplete');
+      const unblock = new DatabaseSync(location); unblock.exec("UPDATE study_restore_guard SET state='ready'"); unblock.close();
+      writeFileSync(join(directory, '.study-restore-incomplete'), 'pending receipt');
+      await expect(createBundle({ dataDir: directory, destination: join(directory + '-marker') })).rejects.toThrow('source_database_restore_incomplete');
+    } finally { await database.close(); rmSync(directory, { recursive: true, force: true }); rmSync(directory + '-backup', { recursive: true, force: true }); }
   });
 });

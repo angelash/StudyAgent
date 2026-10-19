@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { randomUUID } from 'node:crypto';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash, randomUUID } from 'node:crypto';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { Pool } from 'pg';
 import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -25,7 +25,8 @@ suite('real PostgreSQL storage and API recovery', () => {
       await control.query(`DROP SCHEMA "${schema}" CASCADE`);
     }
     await control?.end();
-    if (process.env.STUDY_POSTGRES_EVIDENCE) writeFileSync(process.env.STUDY_POSTGRES_EVIDENCE, JSON.stringify({ at: new Date().toISOString(), driver: 'postgres', passedAllCases: metrics.length === 3 && metrics.every(m => m.passed), metrics,
+    const expectedCases = process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? 4 : 3;
+    if (process.env.STUDY_POSTGRES_EVIDENCE) writeFileSync(process.env.STUDY_POSTGRES_EVIDENCE, JSON.stringify({ at: new Date().toISOString(), driver: 'postgres', passedAllCases: metrics.length === expectedCases && metrics.every(m => m.passed), metrics,
       limits: 'Small isolated functional sample. Global revision conflicts and whole-domain loading remain production scaling work.' }, null, 2) + '\n');
   });
   async function scoped() {
@@ -48,7 +49,12 @@ suite('real PostgreSQL storage and API recovery', () => {
       await second.commit(latest, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }] });
       await expect(first.commit(authorized, { ...authorized.state, responses: [{ id: 'never-published' }] })).rejects.toThrow('数据已更新');
       expect((await first.read()).state.responses ?? []).toHaveLength(0);
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true });
+      await first.close(); await second.close();
+      const upgrade = new Pool({ connectionString: target });
+      try { await upgrade.query('DELETE FROM schema_migrations WHERE version=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
+      const migrated = new DomainDatabase(target); await migrated.open();
+      try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 4 });
     } finally { await first.close(); await second.close(); }
   });
 
@@ -112,6 +118,71 @@ suite('real PostgreSQL storage and API recovery', () => {
     } finally {
       await app?.close(); for (const [key, value] of Object.entries(prior)) { if (value === undefined) delete process.env[key]; else process.env[key] = value; }
       rmSync(directory, { recursive: true, force: true });
+    }
+  }, 120_000);
+
+  (process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? it : it.skip)('exports a consistent native dump and restores into an empty database with file validation, credential revocation and worker fencing', async () => {
+    const admin = new Pool({ connectionString: process.env.STUDY_TEST_POSTGRES_ADMIN_URL });
+    const tag = randomUUID().replace(/-/g, ''), names = [`study_qa_source_${tag}`, `study_qa_restored_${tag}`, `study_qa_restored_${randomUUID().replace(/-/g, '')}`], created: string[] = [];
+    const directory = mkdtempSync(join(tmpdir(), 'study-pg-backup-')), sourceFiles = join(directory, 'source'), bundle = join(directory, 'bundle'), restoredFiles = join(directory, 'restored');
+    const tools = resolve(__dirname, '../../../../data/tools/postgresql-17.11-5/pgsql/bin');
+    const { createPostgresBundle, verifyPostgresBundle, restorePostgresBundle } = require(resolve(__dirname, '../../../../scripts/operations/postgres-backup.cjs'));
+    const databases: DomainDatabase[] = [];
+    try {
+      if ((await admin.query('SELECT current_user AS name')).rows[0].name !== 'study_qa_admin') throw new Error('Only isolated QA administration is allowed');
+      for (const name of names) { await admin.query(`CREATE DATABASE "${name}" OWNER study_agent_app`); created.push(name); }
+      const source = new URL(location!), restored = new URL(location!); source.pathname = '/' + names[0]; restored.pathname = '/' + names[1];
+      const db = new DomainDatabase(source.toString()); databases.push(db); await db.open();
+      const bytes = Buffer.from('%PDF-1.4 immutable PostgreSQL backup fixture'), sha256 = createHash('sha256').update(bytes).digest('hex');
+      mkdirSync(join(sourceFiles, 'processing/blobs'), { recursive: true }); writeFileSync(join(sourceFiles, 'processing/blobs', sha256), bytes);
+      await db.commit(await db.read(), { users: [{ id: 'owner', principal: 'postgres-backup' }], sessions: [{ id: 'old-session', tokenHash: 'old-token-hash', revokedAt: null }],
+        diagnosticResponses: [{ id: 'original-evidence', score: 0.5 }], diagnosticPlans: [{ id: 'plan', revision: 4 }],
+        importFiles: [{ id: `import_file_${randomUUID()}`, status: 'ready', sha256, size: bytes.length }] },
+      { enqueue: [{ id: 'pending-task', kind: 'pdf.import', ownerUserId: 'owner', requestKey: 'pg-backup-task', payloadHash: 'hash', payload: {}, createdAt: new Date().toISOString(), maxAttempts: 3 }] });
+      const oldWorker = (await db.tasks.claim(['pdf.import']))!;
+      await createPostgresBundle({ connectionString: source.toString(), pgBin: tools, dataDir: sourceFiles, destination: bundle });
+      expect((await verifyPostgresBundle({ bundle, pgBin: tools })).verifiedFiles).toBe(2);
+      const receipt = await restorePostgresBundle({ connectionString: restored.toString(), pgBin: tools, bundle, destination: restoredFiles });
+      expect(receipt).toMatchObject({ revokedSessions: 1, fencedTasks: 1, assetsIncluded: false });
+      expect(existsSync(join(restoredFiles, '.study-restore-incomplete'))).toBe(false);
+      expect(readFileSync(join(restoredFiles, 'processing/blobs', sha256))).toEqual(bytes);
+      const recovered = new DomainDatabase(restored.toString()); databases.push(recovered); await recovered.open();
+      const snapshot = await recovered.read();
+      expect(snapshot.state.diagnosticResponses).toEqual([{ id: 'original-evidence', score: 0.5 }]);
+      expect(snapshot.state.diagnosticPlans).toEqual([{ id: 'plan', revision: 4 }]);
+      expect((snapshot.state.sessions[0] as any).revokedAt).toBeTruthy();
+      await expect(recovered.commit(snapshot, { ...snapshot.state, outputs: [{ id: 'old-worker-output' }] }, { fence: { id: oldWorker.id, token: oldWorker.leaseToken! } })).rejects.toThrow();
+      const fresh = (await recovered.tasks.claim(['pdf.import']))!;
+      await recovered.commit(snapshot, { ...snapshot.state, outputs: [{ id: 'recovered-output' }] }, { fence: { id: fresh.id, token: fresh.leaseToken! } });
+      expect((await recovered.tasks.get(fresh.id))?.state).toBe('succeeded');
+      await expect(restorePostgresBundle({ connectionString: restored.toString(), pgBin: tools, bundle, destination: join(directory, 'must-not-exist') })).rejects.toThrow('empty_database');
+      expect(existsSync(join(directory, 'must-not-exist'))).toBe(false);
+      const before = await db.read(); expect((before.state.sessions[0] as any).revokedAt).toBeNull();
+      // A valid dump with inconsistent expected metadata fails after pg_restore;
+      // changing the configured file directory cannot bypass the database guard.
+      const manifestPath = join(bundle, 'manifest.json'), originalManifest = readFileSync(manifestPath, 'utf8'), manifest = JSON.parse(originalManifest);
+      manifest.database.revision++; writeFileSync(manifestPath, JSON.stringify(manifest));
+      const failed = new URL(restored.toString()); failed.pathname = '/' + names[2];
+      const failedFiles = join(directory, 'failed-restore');
+      await expect(restorePostgresBundle({ connectionString: failed.toString(), pgBin: tools, bundle, destination: failedFiles })).rejects.toThrow('restored_database_summary_mismatch');
+      expect(existsSync(join(failedFiles, '.study-restore-incomplete'))).toBe(true);
+      const failedControl = new Pool({ connectionString: failed.toString() });
+      try {
+        expect((await failedControl.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0].state).toBe('restoring');
+        await expect(new DomainDatabase(failed.toString()).open()).rejects.toThrow('restoration is incomplete');
+        await expect(createPostgresBundle({ connectionString: failed.toString(), pgBin: tools, dataDir: sourceFiles, destination: join(directory, 'refused-backup') })).rejects.toThrow('source_database_restore_incomplete');
+        expect(existsSync(join(directory, 'refused-backup'))).toBe(false);
+        await failedControl.query('DELETE FROM study_restore_guard');
+        await expect(new DomainDatabase(failed.toString()).open()).rejects.toThrow('restoration is incomplete');
+      } finally { await failedControl.end(); }
+      writeFileSync(manifestPath, originalManifest);
+      writeFileSync(join(bundle, 'database/postgres.dump'), 'damaged dump');
+      await expect(verifyPostgresBundle({ bundle, pgBin: tools })).rejects.toThrow('bundle_integrity_failed');
+      metrics.push({ case: 'native_backup_restore', passed: true, verifiedFiles: receipt.verifiedFiles, revokedSessions: receipt.revokedSessions, fencedTasks: receipt.fencedTasks, databaseGuardFailureVerified: true });
+    } finally {
+      for (const db of databases) await db.close();
+      for (const name of created) { if (!/^study_qa_(source|restored)_[a-f0-9]{32}$/.test(name)) throw new Error('Invalid owned database name'); await admin.query(`DROP DATABASE "${name}"`); }
+      await admin.end(); rmSync(directory, { recursive: true, force: true });
     }
   }, 120_000);
 });
