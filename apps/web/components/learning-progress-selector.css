@@ -1,0 +1,14 @@
+.progress-selection{margin:28px 0;border-top:1px solid var(--line);padding-top:16px;min-width:0}
+.progress-selection>label{display:grid;gap:8px;font-size:13px;margin:14px 0;color:var(--muted)}
+.progress-selection select{width:100%;max-width:100%;text-overflow:ellipsis}
+.progress-selection .studio-subjects{margin:18px 0}
+.progress-chapters{max-height:390px;overflow:auto;margin-top:18px;border-block:1px solid var(--line)}
+.progress-chapters details{border-bottom:1px solid var(--line);padding:12px 5px}
+.progress-chapters summary{cursor:pointer;font-weight:bold;display:list-item;margin-left:16px}
+.progress-chapters summary small{float:right;font-weight:normal;color:var(--muted);padding-left:12px}
+.progress-chapters label{display:flex;align-items:flex-start;gap:10px;padding:9px 16px;font-size:13px}
+.progress-chapters label input{margin-top:5px;accent-color:var(--ink)}
+.progress-chapters label span{min-width:0;overflow-wrap:anywhere}
+.progress-chapters label small{display:block;font-size:11px;color:var(--muted)}
+.progress-gap{font-size:12px;background:#f7e9d6;color:#775029;border-left:3px solid #b67439;padding:12px 16px}
+@media(max-width:700px){.progress-chapters{max-height:320px}.progress-selection select{font-size:12px}.progress-chapters label{padding-left:6px}}

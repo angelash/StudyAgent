@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto';
 import { KnowledgeAtom, MeasurementDimension, QuestionAnswerMode, Subject } from '@study-agent/contracts';
+import { buildCoreCurriculum } from './original-core-curriculum';
 
-type Exercise = { stem: string; answer: string | number; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[] };
+export type Exercise = { stem: string; answer: string | number; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
+  rubric?: Array<{ criterion: string; weight: number }> };
 export type FoundationDefinition = { atom: KnowledgeAtom; exercises: Exercise[] };
 type Template = (index: number) => Exercise;
 const exercise = (stem: string, answer: string | number, family: string, dimension: MeasurementDimension = 'procedure', mode?: QuestionAnswerMode): Exercise => ({ stem, answer, family, dimension, mode });
@@ -159,7 +161,7 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
       return exercise(`${sentences[n % 4]}（只填写地点单词）`, place, `english-location-${n % 4}`, n % 4 >= 2 ? 'transfer' : 'understanding', 'text_blank');
     }, 32);
   }
-  return result;
+  return [...result, ...buildCoreCurriculum()];
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {

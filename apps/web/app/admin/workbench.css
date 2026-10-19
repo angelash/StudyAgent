@@ -1,0 +1,42 @@
+.admin-workbench{max-width:1440px;margin:auto;padding:38px 4vw 80px;min-width:0}
+.admin-workbench h1{font:38px/1.3 "SimSun",serif;margin:12px 0 18px;letter-spacing:-.03em}
+.admin-workbench h2{font:25px/1.5 "SimSun",serif;margin:10px 0 20px}
+.admin-workbench h3{font-size:16px;margin:0 0 12px}
+.admin-workbench p{color:var(--muted);max-width:850px;font-size:13px}
+.admin-links{display:flex;gap:22px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:28px;font-size:13px}
+.admin-links [aria-current]{color:var(--accent);font-weight:bold}
+.admin-toolbar{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin:25px 0}
+.admin-workbench label{display:grid;gap:7px;font-size:12px;color:var(--muted);min-width:0}
+.admin-workbench select,.admin-workbench input,.admin-workbench textarea{font:inherit;border:1px solid #b5c4b3;background:#fffdf6;color:var(--ink);padding:10px 12px;max-width:100%;border-radius:3px;min-width:0}
+.admin-workbench textarea{width:100%;resize:vertical;line-height:1.7}
+.admin-metrics{display:flex;gap:30px;padding:24px 0;border-block:1px solid var(--line);flex-wrap:wrap;margin:25px 0}
+.admin-metrics strong{font:34px Georgia,serif;display:block}
+.admin-metrics span{font-size:11px;color:var(--muted)}
+.admin-grade-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--line);margin:28px 0}
+.admin-grade-map button{text-align:left;border:0;border-right:1px solid var(--line);padding:16px 12px;background:transparent;color:var(--ink)}
+.admin-grade-map button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.admin-grade-map small{display:block;font-size:10px;opacity:.75;margin-top:8px}
+.admin-columns{display:grid;grid-template-columns:minmax(240px,.9fr) minmax(0,1.5fr);gap:35px;margin:28px 0}
+.admin-atom-list{max-height:820px;overflow:auto;border-top:1px solid var(--line)}
+.admin-atom-list>button{width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:15px 10px;color:var(--ink);display:grid;gap:5px}
+.admin-atom-list>button[aria-pressed=true]{border-left:3px solid var(--accent);background:#edeedf;padding-left:16px}
+.admin-atom-list small{font-size:11px;color:var(--muted)}
+.admin-atom-list .admin-gap{color:#ab5c2b}
+.admin-editor{border-top:3px solid var(--ink);padding-top:20px;min-width:0}
+.admin-editor>details{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+.admin-workbench summary{cursor:pointer;font-size:14px;font-weight:bold}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.admin-form .wide{grid-column:1/-1}
+.admin-checks{max-height:150px;overflow:auto;border:1px solid var(--line);padding:12px;display:grid;gap:8px}
+.admin-checks label{display:flex;align-items:flex-start;gap:8px;color:var(--ink)}
+.admin-checks input{margin-top:4px;accent-color:var(--ink)}
+.admin-items article{border-top:1px solid var(--line);padding:18px 0}
+.admin-items article>div{display:flex;justify-content:space-between;gap:14px;font-size:11px;color:var(--muted)}
+.admin-items pre,.admin-revision{font:12px/1.7 Consolas,"Microsoft YaHei",monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:260px;overflow:auto;background:#eef0e4;padding:14px}
+.admin-lesson-list{max-height:550px;overflow:auto}
+.admin-lesson-list details{padding:12px 0;border-bottom:1px solid var(--line)}
+.admin-lesson-list button{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);border:0;padding:10px 12px;font-size:12px}
+.admin-lesson-list button[aria-pressed=true]{background:#e4e9da;border-left:3px solid var(--accent)}
+.admin-lesson-list small{display:block;color:var(--muted);font-size:10px}
+.admin-section{margin-top:45px;padding-top:30px;border-top:1px solid var(--line)}
+@media(max-width:800px){.admin-columns{grid-template-columns:1fr;gap:25px}.admin-atom-list{max-height:300px}.admin-grade-map{grid-template-columns:repeat(3,1fr)}.admin-grade-map button{border-bottom:1px solid var(--line)}.admin-metrics{gap:22px}.admin-workbench h1{font-size:29px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-workbench{padding-inline:20px}.admin-toolbar>label{max-width:100%}}

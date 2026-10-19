@@ -5,6 +5,7 @@ import { validate } from '../../common/validation';
 import { CurriculumService } from './curriculum.service';
 import { DiagnosticsService } from './diagnostics.service';
 import { GuidanceService } from './guidance.service';
+import { z } from 'zod';
 
 const parseSubject = (value?: string): Subject => validate(subjectSchema, value ?? 'math');
 
@@ -18,6 +19,27 @@ export class DiagnosticsController {
   curriculumList(@Query('subject') subject?: string, @Query('grade') grade?: string, @Query('term') term?: string) {
     return this.curriculum.list(parseSubject(subject), grade ? Number(grade) : undefined, term);
   }
+  @Get('diagnostics/textbooks')
+  textbooks(@Query('subject') subject?: string, @Query('grade') grade?: string, @Query('term') term?: string) {
+    return this.curriculum.textbooks.list(parseSubject(subject), validate(z.number().int().min(1).max(6), Number(grade)),
+      validate(z.enum(['upper', 'lower']), term));
+  }
+  @Get('diagnostics/textbooks/:bookId')
+  textbook(@Param('bookId') id: string) { return this.curriculum.textbooks.detail(id); }
+  @Get('admin/curriculum/overview')
+  coverage(@Req() req: AuthenticatedRequest, @Query('subject') subject?: string, @Query('grade') grade?: string) {
+    return this.curriculum.overview(req.user, subject ? parseSubject(subject) : undefined, grade ? Number(grade) : undefined);
+  }
+  @Get('admin/curriculum/atoms/:atomId/items')
+  atomItems(@Req() req: AuthenticatedRequest, @Param('atomId') id: string) { return this.curriculum.itemsForAtom(req.user, id); }
+  @Get('admin/curriculum/revisions/:entityId')
+  revisions(@Req() req: AuthenticatedRequest, @Param('entityId') id: string) { return this.curriculum.revisions(req.user, id); }
+  @Get('admin/curriculum/textbooks/:bookId')
+  textbookForEditor(@Req() req: AuthenticatedRequest, @Param('bookId') id: string) {
+    this.curriculum.assertEditor(req.user); return this.curriculum.textbooks.detail(id, true);
+  }
+  @Post('admin/curriculum/textbook-mappings')
+  saveTextbookMapping(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.saveTextbookMapping(req.user, body); }
   @Post('admin/knowledge-atoms')
   saveAtom(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.upsertAtom(req.user, body); }
   @Post('admin/measurement-items')

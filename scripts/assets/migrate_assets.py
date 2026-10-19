@@ -211,6 +211,8 @@ class Migration:
                         p = Path(directory) / name
                         self.copy(p, ('models/' + p.relative_to(self.source).as_posix()))
         self.manifest.commit()
+        from migrate_public_catalogs import run as migrate_public_catalogues
+        migrate_public_catalogues(self.source, self.target, self)
         sanitize_research(self.target)
         errors = self.manifest.execute("SELECT COUNT(*) FROM files WHERE state!='verified'").fetchone()[0]
         self.status('completed' if errors == 0 else 'completed-with-errors', errors=errors, force=True)

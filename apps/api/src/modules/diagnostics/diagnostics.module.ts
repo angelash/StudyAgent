@@ -7,7 +7,8 @@ import { DiagnosticsService } from './diagnostics.service';
 import { GuidanceService } from './guidance.service';
 import { DiagnosticsController } from './diagnostics.controller';
 import { FoundationSeedService } from './foundation-seed.service';
+import { TextbookRegistryService } from './textbook-registry.service';
 
 @Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule], controllers: [DiagnosticsController],
-  providers: [CurriculumService, DiagnosticsService, GuidanceService, FoundationSeedService], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
+  providers: [CurriculumService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}

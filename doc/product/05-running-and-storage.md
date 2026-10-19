@@ -11,3 +11,5 @@ Node.js 24.13+，Python 3.10+。先执行 `npm ci`、`npm run prisma:generate --
 浏览器会话使用 HttpOnly Cookie；网页不再将令牌存入localStorage。通过反向代理使用同站点部署；生产环境使用HTTPS。`CORS_ORIGINS` 是以逗号分隔的确切来源白名单（默认本地3000端口）；联调其他端口时需显式设置。API可用 `API_PORT` 改端口，Web可用项目启动参数指定端口。
 
 `GET /api/health` 检查进程，`GET /api/ready` 检查存储请求上下文。业务备份恢复与PostgreSQL部署的完整运行演练尚列于M10，不能用本说明代替验收。
+
+教材元信息随代码位于 `resources/curriculum/textbooks-v1.json`。可用 `STUDY_TEXTBOOK_REGISTRY` 指定独立只读登记文件；没有登记文件时原创能力路径仍可用。启动时原创课程种子幂等补充，`STUDY_SEED_FOUNDATION=false` 可关闭；已编辑的同标识定义不会被种子静默覆盖。

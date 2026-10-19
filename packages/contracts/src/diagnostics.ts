@@ -19,9 +19,14 @@ export const learningScopeInputSchema = z.object({
   textbookVolumeId: id.nullable(), textbookVersion: z.string().min(1).max(150),
   learnedAtomIds: z.array(id).min(1).max(1000), currentAtomId: id.nullable(),
   minutesPerSession: z.number().int().min(5).max(60),
+  progressMode: z.enum(['knowledge', 'textbook']).default('knowledge'),
+  selectedLessonIds: z.array(id).max(1000).default([]),
 }).strict();
 export const learningScopeSchema = learningScopeInputSchema.extend({
   id, studentId: id, version: z.number().int().positive(), confirmedAt: z.string(),
+  textbookRevision: z.string().optional(),
+  mappingSnapshots: z.array(z.object({ id, version: z.number().int().positive(), lessonId: id, atomIds: z.array(id) })).optional(),
+  uncoveredLessonIds: z.array(id).optional(),
 });
 export type LearningScope = z.infer<typeof learningScopeSchema>;
 

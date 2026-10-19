@@ -8,7 +8,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
-import { CurriculumService } from './curriculum.service';
+import { CurriculumService, eligibleMeasurements } from './curriculum.service';
 import { deriveHypotheses } from './diagnosis';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { gradeResponse } from './scoring';
@@ -47,15 +47,9 @@ export class DiagnosticsService {
       ...this.store.practiceSessions.filter((item) => item.studentId === command.studentId).flatMap((item) => item.questionIds),
     ]);
     const atomMap = new Map(this.store.knowledgeAtoms.map((item) => [item.id, item]));
-    const candidates = this.store.measurementItems.filter((item) => {
+    const candidates = eligibleMeasurements(this.store).filter((item) => {
       const atom = atomMap.get(item.atomId);
-      const question = this.store.questions.find((question) => question.id === item.questionId);
-      const source = this.store.questionSources.find((source) => source.questionId === item.questionId);
-      const document = this.store.questionDocuments.find((document) => document.questionId === item.questionId);
-      return item.reviewStatus === 'approved' && targetSet.has(item.atomId) && atom?.status === 'published' &&
-        atom.subject === scope.subject && atom.grade <= scope.grade && question?.status === 'published' &&
-        source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
-        item.questionVersion === (document?.version ?? 1) &&
+      return targetSet.has(item.atomId) && atom?.subject === scope.subject && atom.grade <= scope.grade &&
         (!['verification', 'retest'].includes(command.intent) || !seen.has(item.questionId));
     });
     const rank = (item: MeasurementItem) => createHash('sha256').update(`${seed}:${item.id}`).digest('hex');

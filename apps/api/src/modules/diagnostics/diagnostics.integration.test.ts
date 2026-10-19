@@ -57,6 +57,46 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     includePrerequisites: true, ...extra });
   const submit = (session: any, item: any, answer: unknown) => call('post', `/diagnostics/sessions/${session.id}/responses`, { itemId: item.id, answer, elapsedMs: 1234 });
 
+  it('isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps', async () => {
+    const books = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');
+    const book = books.find((b: any) => b.source === 'original');
+    const details = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
+    const lessons = details.chapters.flatMap((c: any) => c.lessons);
+    const command = { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: book.id, textbookVersion: '用户填写的显示名',
+      progressMode: 'textbook', selectedLessonIds: lessons.map((l: any) => l.id), learnedAtomIds: ['target', 'unmapped'], currentAtomId: 'target', minutesPerSession: 15 };
+    await call('put', `/students/${studentId}/learning-scope`, { ...command, term: 'lower' }, 400);
+    await call('put', `/students/${studentId}/learning-scope`, { ...command, selectedLessonIds: ['foreign-lesson'] }, 400);
+    await call('post', '/admin/curriculum/textbook-mappings', { bookId: book.id, lessonId: 'target', atomIds: ['target'], status: 'candidate', rationale: '还需要对照课时中实际行为再审核' }, 403);
+    await call('post', '/admin/curriculum/textbook-mappings', { bookId: book.id, lessonId: 'target', atomIds: ['target'], status: 'candidate', rationale: '还需要对照课时中实际行为再审核' }, 201, admin);
+    await call('put', `/students/${studentId}/learning-scope`, command, 400);
+    await call('post', '/admin/curriculum/textbook-mappings', { bookId: book.id, lessonId: 'target', atomIds: ['target'], status: 'approved', rationale: '课时与原子点行为直接一致，原有未测点仍单独保留' }, 201, admin);
+    const scope = await call('put', `/students/${studentId}/learning-scope`, command);
+    expect(scope.textbookVersion).toBe(book.title); expect(scope.textbookRevision).toBe(book.version);
+    expect(scope.mappingSnapshots.find((m: any) => m.lessonId === 'target').version).toBe(2);
+    const session = await start({ includePrerequisites: false });
+    await call('post', '/admin/curriculum/textbook-mappings', { bookId: book.id, lessonId: 'target', atomIds: ['target'], status: 'rejected', rationale: '后续复核发现需要更细分的课时对照' }, 201, admin);
+    expect((await call('get', `/diagnostics/sessions/${session.id}`)).scopeSnapshot.mappingSnapshots).toEqual(scope.mappingSnapshots);
+    expect(session.coverage.find((c: any) => c.atomId === 'unmapped').selected).toBe(0);
+    const coverage = await call('get', '/admin/curriculum/overview?subject=math&grade=3', undefined, 200, admin);
+    expect(coverage.atoms.find((a: any) => a.id === 'unmapped').approvedQuestions).toBe(0);
+    expect(coverage.cells[0].withQuestions).toBe(1);
+    await call('get', '/admin/curriculum/overview', undefined, 403);
+  });
+
+  it('keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies', async () => {
+    const target = store.knowledgeAtoms.find((a: any) => a.id === 'target');
+    const changed = await call('post', '/admin/knowledge-atoms', { ...target, objective: '对照量规逐步完成此项操作并解释关系' }, 201, admin);
+    expect(changed.version).toBe(2);
+    expect((await call('get', '/admin/curriculum/revisions/target', undefined, 200, admin))[0].snapshot.objective).toContain('对照量规');
+    const base = store.knowledgeAtoms.find((a: any) => a.id === 'base');
+    await call('post', '/admin/knowledge-atoms', { ...base, prerequisiteIds: ['target'] }, 400, admin);
+    await call('post', '/admin/knowledge-atoms', { ...base, status: 'retired' }, 400, admin);
+    const mapping = store.measurementItems.find((m: any) => m.atomId === 'target');
+    await call('post', '/admin/measurement-items', { ...mapping, questionVersion: 999 }, 400, admin);
+    await call('post', '/admin/measurement-items', { ...mapping, reviewStatus: 'draft' }, 201, admin);
+    expect((await call('get', `/admin/curriculum/revisions/${encodeURIComponent(mapping.id)}`, undefined, 200, admin))[0].version).toBe(2);
+  });
+
   it('enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions', async () => {
     await start({ targetAtomIds: ['future'] }).then(() => { throw new Error('Expected progress rejection'); }).catch((error) => expect(String(error)).toContain('expected 201'));
     const session = await start();

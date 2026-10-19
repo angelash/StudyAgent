@@ -25,6 +25,7 @@ import {
   KnowledgeAtom, LearningScope, MeasurementItem, DiagnosticSession, DiagnosticResponse,
   DiagnosticHypothesis, DiagnosticGuidancePlan, ReviewTask, ScoringRevision, DiagnosticReport,
   PracticeSession, PracticeAttempt, PracticeHint,
+  TextbookAtomMapping, CurriculumRevision,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -221,6 +222,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   knowledgeAtoms: KnowledgeAtom[] = [];
   learningScopes: LearningScope[] = [];
   measurementItems: MeasurementItem[] = [];
+  textbookAtomMappings: TextbookAtomMapping[] = [];
+  curriculumRevisions: CurriculumRevision[] = [];
   diagnosticSessions: DiagnosticSession[] = [];
   diagnosticResponses: DiagnosticResponse[] = [];
   diagnosticHypotheses: DiagnosticHypothesis[] = [];
@@ -271,6 +274,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.knowledgeAtoms = [];
     this.learningScopes = [];
     this.measurementItems = [];
+    this.textbookAtomMappings = [];
+    this.curriculumRevisions = [];
     this.diagnosticSessions = [];
     this.diagnosticResponses = [];
     this.diagnosticHypotheses = [];

@@ -9,6 +9,7 @@ import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/
 import './studio.css';
 import '../today/today.css';
 import { StudyNav } from '../../../components/study-nav';
+import { LearningProgressSelector, ProgressSelection } from '../../../components/learning-progress-selector';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -26,6 +27,7 @@ export function AssessmentStudio() {
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState('');
   const [subject, setSubject] = React.useState<Subject>('math'), [grade, setGrade] = React.useState(3), [term, setTerm] = React.useState<'upper' | 'lower'>('upper');
   const [nickname, setNickname] = React.useState(''), [textbookVersion, setTextbookVersion] = React.useState('按已学知识点确认');
+  const [progress, setProgress] = React.useState<ProgressSelection>({ bookId: '', mode: 'knowledge', lessonIds: [] });
   const [atoms, setAtoms] = React.useState<KnowledgeAtom[]>([]), [learned, setLearned] = React.useState<string[]>([]);
   const [minutes, setMinutes] = React.useState(15), [maxItems, setMaxItems] = React.useState(12);
   const [sessions, setSessions] = React.useState<Session[]>([]), [session, setSession] = React.useState<Session | null>(null);
@@ -88,8 +90,9 @@ export function AssessmentStudio() {
       request<Review[]>(`/diagnostics/students/${studentId}/reviews?subject=${subject}`)])
       .then(([scope, history, plans, due]) => {
         if (!alive) return;
-        if (scope) { setGrade(scope.grade); setTerm(scope.term); setLearned(scope.learnedAtomIds); setMinutes(scope.minutesPerSession); setTextbookVersion(scope.textbookVersion); }
-        else { setLearned([]); setGrade(children.find((item) => item.id === studentId)?.grade ?? 3); }
+        if (scope) { setGrade(scope.grade); setTerm(scope.term); setLearned(scope.learnedAtomIds); setMinutes(scope.minutesPerSession); setTextbookVersion(scope.textbookVersion);
+          setProgress({ bookId: scope.textbookVolumeId ?? '', mode: scope.progressMode ?? 'knowledge', lessonIds: scope.selectedLessonIds ?? [] }); }
+        else { setLearned([]); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setGrade(children.find((item) => item.id === studentId)?.grade ?? 3); }
         setSessions(history); setPlan(plans[0] ?? null); setReviews(due); setRetrospective(null);
         if (new URLSearchParams(window.location.search).get('view') === 'plan' && plans[0]) setScreen('plan');
       }).catch((caught) => { if (alive) setError(caught.message); });
@@ -136,9 +139,10 @@ export function AssessmentStudio() {
   async function startAssessment() {
     await execute(async () => {
       const allowed = new Set(atoms.map((atom) => atom.id));
-      const ids = learned.filter((id) => allowed.has(id));
+      const ids = progress.mode === 'textbook' ? learned : learned.filter((id) => allowed.has(id));
       if (!ids.length) throw new Error('请先勾选孩子已经学习的知识点');
-      await request(`/students/${studentId}/learning-scope`, { subject, grade, term, textbookVolumeId: null, textbookVersion,
+      await request(`/students/${studentId}/learning-scope`, { subject, grade, term, textbookVolumeId: progress.bookId || null, textbookVersion,
+        progressMode: progress.mode, selectedLessonIds: progress.mode === 'textbook' ? progress.lessonIds : [],
         learnedAtomIds: ids, currentAtomId: ids.at(-1), minutesPerSession: minutes }, 'PUT');
       await openSession(await request<Session>('/diagnostics/sessions', { studentId, subject, intent: 'baseline', maxItems, includePrerequisites: false }));
     });
@@ -184,17 +188,18 @@ export function AssessmentStudio() {
             <div className="studio-config">
               {children.length > 0 ? <label>孩子<select value={studentId} onChange={(event) => { setStudentId(event.target.value); setSession(null); setReport(null); }}>
                 {children.map((item) => <option key={item.id} value={item.id}>{item.nickname}</option>)}</select></label> : <label>孩子的昵称<input value={nickname} onChange={(event) => setNickname(event.target.value)} placeholder="例如：小禾" maxLength={50} /></label>}
-              <label>当前年级<select value={grade} onChange={(event) => setGrade(Number(event.target.value))}>{[1, 2, 3, 4, 5, 6].map((value) => <option key={value} value={value}>{value}年级</option>)}</select></label>
-              <label>学期<select value={term} onChange={(event) => setTerm(event.target.value as 'upper' | 'lower')}><option value="upper">上学期</option><option value="lower">下学期</option></select></label>
+              <label>当前年级<select value={grade} onChange={(event) => { setGrade(Number(event.target.value)); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}>{[1, 2, 3, 4, 5, 6].map((value) => <option key={value} value={value}>{value}年级</option>)}</select></label>
+              <label>学期<select value={term} onChange={(event) => { setTerm(event.target.value as 'upper' | 'lower'); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}><option value="upper">上学期</option><option value="lower">下学期</option></select></label>
               <label>每次时间<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}>{[5, 10, 15, 20, 30].map((value) => <option key={value} value={value}>{value}分钟</option>)}</select></label>
             </div>
             {!children.length ? <button className="studio-primary" disabled={busy || !nickname.trim()} onClick={createChild}>建立学习档案</button> : <>
               <div className="studio-subjects" role="group" aria-label="学科">{subjects.map(([key, title]) => <button key={key} aria-pressed={subject === key} onClick={() => { setSubject(key); setSession(null); setReport(null); }}>{title}</button>)}</div>
-              <label className="studio-textbook">教材版本<input value={textbookVersion} onChange={(event) => setTextbookVersion(event.target.value)} placeholder="填写正在使用的教材版本" maxLength={150} /><small>当前基础能力题按已学知识点选取，教材章节映射会单独标明覆盖情况。</small></label>
-              <div className="studio-point-heading"><h3>勾选已经学过的知识点</h3><button className="studio-text-button" onClick={() => setLearned(atoms.filter((atom) => atom.grade === grade).map((atom) => atom.id))}>选择本年级基础点</button></div>
+              <LearningProgressSelector subject={subject} grade={grade} term={term} selection={progress} onChange={setProgress}
+                version={textbookVersion} onVersion={setTextbookVersion} onLearned={setLearned} />
+              <div className="studio-point-heading"><h3>{progress.mode === 'textbook' ? '已学课时对应的知识点' : '勾选已经学过的知识点'}</h3>{progress.mode === 'knowledge' && <button className="studio-text-button" onClick={() => setLearned(atoms.filter((atom) => atom.grade === grade).map((atom) => atom.id))}>选择本年级能力点</button>}</div>
               <div className="studio-points">{[1, 2, 3, 4, 5, 6].filter((value) => atoms.some((atom) => atom.grade === value)).map((value) => <fieldset key={value}>
                 <legend>{value}年级{value < grade ? ' · 前期基础' : ''}</legend>{atoms.filter((atom) => atom.grade === value).map((atom) => <label key={atom.id}>
-                  <input type="checkbox" checked={learned.includes(atom.id)} onChange={(event) => setLearned((items) => event.target.checked ? [...items, atom.id] : items.filter((id) => id !== atom.id))} />
+                  <input type="checkbox" disabled={progress.mode === 'textbook'} checked={learned.includes(atom.id)} onChange={(event) => setLearned((items) => event.target.checked ? [...items, atom.id] : items.filter((id) => id !== atom.id))} />
                   <span><strong>{atom.name}</strong><small>{atom.objective}</small></span></label>)}</fieldset>)}</div>
               {!atoms.length && <p className="studio-muted">当前范围还没有已发布的原子知识点，可在内容工作台补充。</p>}
               <div className="studio-start"><div><strong>已选 {learned.filter((id) => atoms.some((atom) => atom.id === id)).length} 个点</strong><label>本组最多<select value={maxItems} onChange={(event) => setMaxItems(Number(event.target.value))}>{[6, 12, 20, 30].map((value) => <option key={value} value={value}>{value}题</option>)}</select></label></div>
