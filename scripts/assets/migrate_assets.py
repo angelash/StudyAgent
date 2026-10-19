@@ -12,6 +12,7 @@ from contextlib import closing
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
+from sanitize_research import run as sanitize_research
 
 
 def now():
@@ -166,7 +167,7 @@ class Migration:
                 if any(word in lower for word in ['cookie', 'credential', 'session', '.env']) or ('token' in lower and 'tokenizer' not in lower):
                     continue
                 item = Path(directory) / name
-                if allowed and item.suffix.lower() not in allowed:
+                if allowed and item.suffix.lower() not in allowed and lower not in {'license', 'notice', 'copying'}:
                     continue
                 self.copy(item, (Path(relative) / item.relative_to(src)).as_posix())
 
@@ -210,6 +211,7 @@ class Migration:
                         p = Path(directory) / name
                         self.copy(p, ('models/' + p.relative_to(self.source).as_posix()))
         self.manifest.commit()
+        sanitize_research(self.target)
         errors = self.manifest.execute("SELECT COUNT(*) FROM files WHERE state!='verified'").fetchone()[0]
         self.status('completed' if errors == 0 else 'completed-with-errors', errors=errors, force=True)
         return errors

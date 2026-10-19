@@ -55,6 +55,11 @@ describe('conservative atomic measurement', () => {
     expect(secure.status).toBe('secure');
     expect(secure.lower).toBeGreaterThan(70);
   });
+  it('never turns practice-exposed responses into independent mastery or cause evidence', () => {
+    const records = Array.from({ length: 20 }, (_, index) => evidence(index, { priorExposure: true, correct: false, score: 0 }));
+    expect(weightedEvidence(records, mappings(records), now)).toEqual([]);
+    expect(deriveHypotheses('student', 'math', [atom], records, mappings(records), [], now.toISOString())).toEqual([]);
+  });
   it('rejects prerequisite cycles and missing or cross-subject dependencies', () => {
     const second = { ...atom, id: 'place', prerequisiteIds: ['borrow'] };
     expect(() => assertAcyclic([{ ...atom, prerequisiteIds: ['place'] }, second])).toThrow('循环');

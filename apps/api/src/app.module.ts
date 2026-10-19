@@ -7,18 +7,16 @@ import { CoreModule } from './infrastructure/core.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StudentsModule } from './modules/students/students.module';
 import { ContentModule } from './modules/content/content.module';
-import { AssessmentsModule } from './modules/assessments/assessments.module';
-import { MissionsModule } from './modules/missions/missions.module';
 import { AiModule } from './modules/ai/ai.module';
 import { ProgressModule } from './modules/progress/progress.module';
-import { PlansModule } from './modules/plans/plans.module';
 import { QuestionWorkspaceModule } from './modules/question-workspace/question-workspace.module';
 import { StoreContextMiddleware } from './infrastructure/store-context.middleware';
 import { DiagnosticsModule } from './modules/diagnostics/diagnostics.module';
 import { LibraryModule } from './modules/library/library.module';
+import { LearningModule } from './modules/learning/learning.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AssessmentsModule, MissionsModule, AiModule, ProgressModule, PlansModule, DiagnosticsModule, LibraryModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule],
   providers: [
     {
       provide: APP_FILTER,

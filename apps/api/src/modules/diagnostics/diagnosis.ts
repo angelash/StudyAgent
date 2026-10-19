@@ -5,7 +5,7 @@ const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map((item)
 
 export function deriveHypotheses(studentId: string, subject: Subject, atoms: KnowledgeAtom[],
   responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, previous: DiagnosticHypothesis[], at: string): DiagnosticHypothesis[] {
-  const valid = responses.filter((item) => item.studentId === studentId && item.status === 'scored' && item.hintLevel === 0 &&
+  const valid = responses.filter((item) => item.studentId === studentId && item.status === 'scored' && !item.priorExposure && item.hintLevel === 0 &&
     (mappings.get(`${item.itemId}@${item.mappingVersion}`) ?? mappings.get(item.itemId))?.reviewStatus === 'approved');
   const results: DiagnosticHypothesis[] = [];
   for (const atom of atoms) {

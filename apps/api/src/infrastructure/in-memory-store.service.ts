@@ -24,6 +24,7 @@ import {
   UserRole,
   KnowledgeAtom, LearningScope, MeasurementItem, DiagnosticSession, DiagnosticResponse,
   DiagnosticHypothesis, DiagnosticGuidancePlan, ReviewTask, ScoringRevision, DiagnosticReport,
+  PracticeSession, PracticeAttempt, PracticeHint,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -189,6 +190,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   users: InMemoryUserAccount[] = [];
   paperPublications: PaperPublication[] = [];
   libraryBookmarks: LibraryBookmark[] = [];
+  practiceSessions: PracticeSession[] = [];
+  practiceAttempts: PracticeAttempt[] = [];
+  practiceHints: PracticeHint[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -236,6 +240,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.users = [];
     this.paperPublications = [];
     this.libraryBookmarks = [];
+    this.practiceSessions = [];
+    this.practiceAttempts = [];
+    this.practiceHints = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];

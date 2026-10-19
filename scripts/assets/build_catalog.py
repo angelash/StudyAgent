@@ -18,6 +18,14 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
+CATALOG_VERSION = 'catalog-v2'
+
+
+def paper_year(title):
+    # Embedded exercise IDs and graduation cohorts are not publication years.
+    match = re.search(r'(?<!\d)(20\d{2})(?!\d)(?!\s*届)', title)
+    return int(match.group(1)) if match else None
+
 
 class Layout(HTMLParser):
     def __init__(self):
@@ -34,6 +42,28 @@ def plain(value):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]*>', ' ', str(value or '')))).strip()
 
 
+def publish_recovered(root, temporary, target, fingerprint):
+    if not temporary.is_file():
+        return False
+    with closing(sqlite3.connect(temporary)) as candidate:
+        try:
+            source = candidate.execute("SELECT value FROM metadata WHERE key='source_sha256'").fetchone()
+            version = candidate.execute("SELECT value FROM metadata WHERE key='builder_version'").fetchone()
+            saved = candidate.execute("SELECT value FROM metadata WHERE key='summary'").fetchone()
+            if source != (fingerprint,) or version != (CATALOG_VERSION,) or not saved:
+                return False
+            if candidate.execute('PRAGMA quick_check').fetchone()[0] != 'ok':
+                raise RuntimeError('Recovered catalog integrity failed')
+            candidate.execute('PRAGMA wal_checkpoint(TRUNCATE)')
+            summary = json.loads(saved[0])
+        except sqlite3.OperationalError:
+            return False
+    os.replace(temporary, target)
+    (root / 'catalog-summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(json.dumps({'phase': 'recovered-complete', **summary}, ensure_ascii=False), flush=True)
+    return True
+
+
 def run(root: Path):
     root = root.resolve()
     snapshot = root / 'shijuanbao/archive.sqlite3'
@@ -45,9 +75,11 @@ def run(root: Path):
         fingerprint = identity[0]
     if target.is_file():
         with closing(sqlite3.connect(target)) as existing:
-            if existing.execute("SELECT value FROM metadata WHERE key='source_sha256'").fetchone() == (fingerprint,):
+            if existing.execute("SELECT value FROM metadata WHERE key='source_sha256'").fetchone() == (fingerprint,) and existing.execute("SELECT value FROM metadata WHERE key='builder_version'").fetchone() == (CATALOG_VERSION,):
                 print(json.dumps({'status': 'already-built', 'path': str(target)}), flush=True)
                 return
+    if publish_recovered(root, temporary, target, fingerprint):
+        return
     with closing(sqlite3.connect(snapshot.as_uri() + '?mode=ro', uri=True)) as raw, closing(sqlite3.connect(temporary)) as db:
         db.executescript('''
           PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;
@@ -89,10 +121,9 @@ def run(root: Path):
                 if title_grades and grade not in title_grades: flags.append('title_grade_mismatch')
                 if grade in [f'{v}年级' for v in '一二三四五六'] and subject not in ['语文', '数学', '英语', '科学', '道德与法治']:
                     flags.append('primary_subject_requires_review')
-                year_match = re.search(r'20\d{2}', title)
                 db.execute('INSERT INTO papers VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     (key, title, grade, subject, str(info.get('province', '')), str(info.get('type_name', '')),
-                     int(year_match.group()) if year_match else None, state, len(refs) if refs else None,
+                     paper_year(title), state, len(refs) if refs else None,
                      len(refs & available) if refs else len(available), len(refs - available) if refs else None,
                      pdf, hashlib.sha256((detail or '').encode()).hexdigest(), json.dumps(flags)))
                 ordered = layout.refs or [str(q.get('uuid')) for q in questions if isinstance(q, dict) and q.get('uuid')]
@@ -129,10 +160,10 @@ def run(root: Path):
           INSERT INTO paper_search(paper_search) VALUES('rebuild');
         ''')
         errors = db.execute('SELECT count(*) FROM errors').fetchone()[0]
-        summary = {'builtAt': datetime.now(timezone.utc).isoformat(), 'sourceSha256': fingerprint,
+        summary = {'builtAt': datetime.now(timezone.utc).isoformat(), 'sourceSha256': fingerprint, 'builderVersion': CATALOG_VERSION,
                    'papers': paper_count, 'questions': count, 'states': states, 'errors': errors,
                    'notice': 'Research index. Structural completeness is separate from media, scoring, licensing and teaching validity.'}
-        db.executemany('INSERT INTO metadata VALUES(?,?)', [('source_sha256', fingerprint), ('summary', json.dumps(summary))])
+        db.executemany('INSERT INTO metadata VALUES(?,?)', [('source_sha256', fingerprint), ('builder_version', CATALOG_VERSION), ('summary', json.dumps(summary))])
         db.commit()
         if db.execute('PRAGMA quick_check').fetchone()[0] != 'ok': raise RuntimeError('Catalog integrity failed')
         db.execute('PRAGMA wal_checkpoint(TRUNCATE)')

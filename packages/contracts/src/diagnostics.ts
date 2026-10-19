@@ -51,6 +51,7 @@ export type DiagnosticSession = {
   coverage: Array<{ atomId: string; selected: number; required: number; role: 'target' | 'prerequisite' }>;
   selectionReasons: Record<string, string>; seed: string; algorithmVersion: string;
   startedAt: string; completedAt: string | null; hypothesisId: string | null; reviewTaskId: string | null;
+  exposedQuestionIds?: string[];
 };
 
 export const diagnosticResponseInputSchema = z.object({
@@ -67,6 +68,7 @@ export type DiagnosticResponse = {
   elapsedMs: number; hintLevel: number; observationCode: string | null; gradingReason: string;
   retentionDelayDays: number | null;
   submittedAt: string; gradingVersion: string; requestKey: string;
+  priorExposure?: boolean;
 };
 
 export type ScoringRevision = {

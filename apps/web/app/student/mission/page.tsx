@@ -1,11 +1,6 @@
-import { Suspense } from 'react';
-import { StudentMissionClient } from './student-mission-client';
-
-export default function StudentMissionPage() {
-  return (
-    <Suspense fallback={<main style={{ padding: 40 }}>正在加载学生任务页...</main>}>
-      <StudentMissionClient />
-    </Suspense>
-  );
+import { redirect } from 'next/navigation';
+export default async function StudentMissionPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams, query = new URLSearchParams();
+  for (const key of ['studentId', 'subject']) if (typeof params[key] === 'string') query.set(key, params[key] as string);
+  redirect('/student/today' + (query.size ? '?' + query : ''));
 }
-

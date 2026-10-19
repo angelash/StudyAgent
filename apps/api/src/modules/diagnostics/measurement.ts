@@ -65,7 +65,7 @@ export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<
   const weighted: WeightedEvidence[] = [];
   for (const response of [...responses].sort((a, b) => a.submittedAt.localeCompare(b.submittedAt))) {
     const mapping = mappings.get(`${response.itemId}@${response.mappingVersion}`) ?? mappings.get(response.itemId);
-    if (response.status !== 'scored' || response.score === null || !mapping || mapping.reviewStatus !== 'approved') continue;
+    if (response.status !== 'scored' || response.score === null || response.priorExposure || !mapping || mapping.reviewStatus !== 'approved') continue;
     const key = `${response.studentId}:${response.atomId}:${response.questionId}:${response.questionVersion}`;
     if (seen.has(key)) continue; // A remembered question never becomes a fresh independent sample.
     seen.add(key);

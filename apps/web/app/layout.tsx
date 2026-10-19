@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'StudyAgent',
-  description: '小学语文、数学、英语闭环学习系统',
+  title: '学习观察室 · 看见孩子怎样学会',
+  description: '从学习进度和知识点出发，用评测、指导和间隔复测陪伴孩子学会。',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

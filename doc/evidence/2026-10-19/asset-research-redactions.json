@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-10-19T11:53:47.792237+00:00",
+  "changedFiles": 0,
+  "redactedFiles": 3,
+  "changes": [
+    {
+      "path": "research/education-app-survey/extracted/com.fenbi.android.solar/assets/cn.shuzilm.config.json",
+      "sourceSha256": "fe0c1017403f15de571c097485280a622f9ac218145135b584e82228e2a1fa29",
+      "targetSha256": "54cde0e022e10887f0a3e3e86a3c822523f11713aeb6152ba5c838528502784c",
+      "fields": [
+        ".apiKey"
+      ],
+      "at": "2026-10-19T11:53:25.624223+00:00"
+    },
+    {
+      "path": "research/re-shijuanbao-service/evidence/account-login-verification.json",
+      "sourceSha256": "e9febfe352066c31234d27c67b418814ea9cd64fefc8a1682c7245cb448d3240",
+      "targetSha256": "08313f4bad2d8db0a3dd0ae47b9ead257f62e72cd6e2668206d5823fa04932de",
+      "fields": [
+        ".authorization"
+      ],
+      "at": "2026-10-19T11:53:25.624223+00:00"
+    },
+    {
+      "path": "research/re-shijuanbao-service/evidence/member-gap-verification.json",
+      "sourceSha256": "78079eb621e2fae5c6da769450cc3f4e3d7543009d9842ea27f8efbe0b263e05",
+      "targetSha256": "ab4eabf3f8ea90ac7f9f332e6713ff09c8a33fb60c6fe64c4ad8dee1d33a1054",
+      "fields": [
+        ".authorization"
+      ],
+      "at": "2026-10-19T11:53:25.624223+00:00"
+    }
+  ],
+  "sourceModified": false
+}

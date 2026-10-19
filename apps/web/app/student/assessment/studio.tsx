@@ -7,6 +7,8 @@ import type { DiagnosticGuidancePlan, DiagnosticHypothesis, DiagnosticReport, Kn
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import './studio.css';
+import '../today/today.css';
+import { StudyNav } from '../../../components/study-nav';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -57,11 +59,12 @@ export function AssessmentStudio() {
     let alive = true;
     (async () => {
       try {
-        const user = await request<{ id: string }>('/auth/me');
-        const list = await request<Child[]>(`/parents/${user.id}/students`);
+        const list = await request<Child[]>('/learning/students');
         if (!alive) return;
         setLoggedIn(true); setChildren(list);
         const params = new URLSearchParams(window.location.search), requested = params.get('studentId');
+        const requestedSubject = params.get('subject');
+        if (subjects.some(([key]) => key === requestedSubject)) setSubject(requestedSubject as Subject);
         const selected = list.find((item) => item.id === requested) ?? list[0];
         if (selected) { setStudentId(selected.id); setGrade(selected.grade); }
         const sessionId = params.get('session');
@@ -88,6 +91,7 @@ export function AssessmentStudio() {
         if (scope) { setGrade(scope.grade); setTerm(scope.term); setLearned(scope.learnedAtomIds); setMinutes(scope.minutesPerSession); setTextbookVersion(scope.textbookVersion); }
         else { setLearned([]); setGrade(children.find((item) => item.id === studentId)?.grade ?? 3); }
         setSessions(history); setPlan(plans[0] ?? null); setReviews(due); setRetrospective(null);
+        if (new URLSearchParams(window.location.search).get('view') === 'plan' && plans[0]) setScreen('plan');
       }).catch((caught) => { if (alive) setError(caught.message); });
     return () => { alive = false; };
   }, [studentId, subject, children]);
@@ -163,9 +167,7 @@ export function AssessmentStudio() {
   }
 
   return <main className="learning-studio">
-    <header className="studio-nav"><Link href="/" className="studio-brand"><span aria-hidden="true">禾</span> StudyAgent</Link>
-      <nav aria-label="主要导航"><Link href="/parent/dashboard">家长空间</Link><Link href="/library">试卷与资源</Link><span aria-current="page">知识诊断</span></nav>
-      <span className="studio-nav-note">一小步，也值得看见</span></header>
+    <StudyNav current="assessment" />
     <div className="studio-layout">
       <aside className="studio-rail"><span className="studio-eyebrow">LEARNING / INSIGHT</span><h1>把知识<br /><em>学扎实。</em></h1>
         <p>从学到了哪里开始，找到卡住的那一步，再用新题看看是否真的掌握。</p>

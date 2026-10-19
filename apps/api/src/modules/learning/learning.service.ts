@@ -1,0 +1,214 @@
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { createHash } from 'node:crypto';
+import { z } from 'zod';
+import type { PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, Subject } from '@study-agent/contracts';
+import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
+import { validate } from '../../common/validation';
+import { StudentsService } from '../students/students.service';
+import { DiagnosticsService } from '../diagnostics/diagnostics.service';
+import { GuidanceService } from '../diagnostics/guidance.service';
+import { gradeResponse } from '../diagnostics/scoring';
+import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
+
+export function studyDay(at = new Date()) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
+}
+const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
+  answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000) }).strict();
+
+@Injectable()
+export class LearningService {
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
+    private readonly diagnostics: DiagnosticsService, private readonly guidance: GuidanceService,
+    private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService) {}
+
+  studentProfiles(user: InMemoryUserAccount) {
+    return this.store.students.filter((child) => user.role === 'admin' || this.store.bindings.some((binding) =>
+      binding.parentUserId === user.id && binding.studentId === child.id && binding.status === 'active'))
+      .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
+  }
+
+  today(user: InMemoryUserAccount, studentId: string, subject: Subject) {
+    this.students.assertCanAccessStudent(user, studentId);
+    const day = studyDay();
+    const plans = this.guidance.list(user, studentId, subject), plan = plans.find((item) => item.status === 'active');
+    const reviews = this.guidance.reviews(user, studentId, subject);
+    return { studentId, subject, day, plan: plan ?? null, awaitingConfirmation: plans.find((item) => item.status === 'proposed') ?? null,
+      activities: (plan?.actions ?? []).map((action) => {
+        const session = this.store.practiceSessions.find((item) => item.planId === plan?.id && item.actionId === action.id && item.day === day);
+        return { ...action, atomName: this.store.knowledgeAtoms.find((item) => item.id === action.atomId)?.name ?? action.atomId,
+          status: session?.status ?? 'pending', sessionId: session?.id ?? null };
+      }), reviews, incompleteAssessments: this.diagnostics.listSessions(user, studentId, subject).filter((item) => item.status === 'in_progress'),
+      notice: '训练可以看提示、订正与重试。训练完成不直接证明掌握，之后用独立新题和间隔复测验证。' };
+  }
+  start(user: InMemoryUserAccount, planId: string, actionId: string) {
+    const plan = this.store.diagnosticPlans.find((item) => item.id === planId);
+    if (!plan) throw new NotFoundException('计划不存在');
+    this.students.assertCanAccessStudent(user, plan.studentId);
+    if (plan.status !== 'active') throw new BadRequestException('请先确认并启用指导计划');
+    const action = plan.actions.find((item) => item.id === actionId);
+    if (!action) throw new NotFoundException('活动不属于当前计划');
+    const day = studyDay(), existing = this.store.practiceSessions.find((item) => item.planId === planId && item.actionId === actionId && item.day === day);
+    if (existing) return this.view(user, existing.id);
+    const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
+    const allowed = new Set([...baseline.scopeSnapshot.learnedAtomIds, ...baseline.coverage.map((item) => item.atomId)]);
+    if (!allowed.has(action.atomId)) throw new BadRequestException('活动超出计划确认时的学习范围');
+    const used = new Set([...this.store.practiceSessions.filter((item) => item.studentId === plan.studentId).flatMap((item) => item.questionIds),
+      ...this.store.diagnosticResponses.filter((item) => item.studentId === plan.studentId).map((item) => item.questionId)]);
+    const mappings = this.store.measurementItems.filter((item) => item.atomId === action.atomId && item.reviewStatus === 'approved' &&
+      this.store.questions.some((question) => question.id === item.questionId && question.status === 'published') &&
+      this.store.questionSources.some((source) => source.questionId === item.questionId && source.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY'));
+    const rank = (id: string) => createHash('sha256').update(`${day}:${actionId}:${id}`).digest('hex');
+    mappings.sort((a, b) => Number(used.has(a.questionId)) - Number(used.has(b.questionId)) || rank(a.id).localeCompare(rank(b.id)));
+    const ids: string[] = []; let seconds = 0;
+    for (const item of mappings) if (!ids.includes(item.questionId) && ids.length < 5 && seconds + item.expectedSeconds <= action.minutes * 60 &&
+      item.questionVersion === (this.store.questionDocuments.find((document) => document.questionId === item.questionId)?.version ?? 1)) {
+      ids.push(item.questionId); seconds += item.expectedSeconds;
+    }
+    if (!ids.length) throw new BadRequestException('此活动暂缺审核通过的练习题，请在教研覆盖中补充');
+    const session: PracticeSession = { id: this.store.nextId('practice'), studentId: plan.studentId, subject: plan.subject, planId, actionId,
+      atomId: action.atomId, day, status: 'in_progress', questionIds: ids,
+      snapshots: ids.map((id) => {
+        const question = this.store.questions.find((item) => item.id === id)!, payload = this.workspace.buildRenderPayload(id);
+        return structuredClone({ id, stem: question.stem, answer: question.answer, analysis: question.analysis,
+          document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
+      }), createdAt: new Date().toISOString(), completedAt: null };
+    this.store.practiceSessions.push(session);
+    this.events.publish('learning.practice_started', { studentId: plan.studentId, sessionId: session.id, planId, actionId, day });
+    return this.view(user, session.id);
+  }
+  private requireSession(user: InMemoryUserAccount, id: string) {
+    const session = this.store.practiceSessions.find((item) => item.id === id);
+    if (!session) throw new NotFoundException('训练不存在');
+    this.students.assertCanAccessStudent(user, session.studentId); return session;
+  }
+  view(user: InMemoryUserAccount, id: string) {
+    const session = this.requireSession(user, id), attempts = this.store.practiceAttempts.filter((item) => item.sessionId === id);
+    const plan = this.store.diagnosticPlans.find((item) => item.id === session.planId), action = plan?.actions.find((item) => item.id === session.actionId);
+    const latest = session.questionIds.map((questionId) => [...attempts].reverse().find((item) => item.questionId === questionId));
+    return { id, studentId: session.studentId, subject: session.subject, atomId: session.atomId, planId: session.planId,
+      actionId: session.actionId, day: session.day, status: session.status, action, completedAt: session.completedAt,
+      questions: session.questionIds.map((questionId, index) => ({ id: questionId, attempted: Boolean(latest[index]),
+        latest: latest[index] ?? null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
+      summary: { attempted: latest.filter(Boolean).length, total: session.questionIds.length,
+        answered: latest.filter((item) => item?.disposition === 'answered').length,
+        skipped: latest.filter((item) => item?.disposition === 'skip').length,
+        independentFirstPass: session.questionIds.filter((questionId) => {
+          const first = attempts.find((item) => item.questionId === questionId); return first?.correct && !first.hintLevel && !first.solutionExposedBefore;
+        }).length, pendingReview: latest.filter((item) => item?.status === 'pending_review').length } };
+  }
+  render(user: InMemoryUserAccount, id: string, questionId: string) {
+    const session = this.requireSession(user, id), snapshot = session.snapshots.find((item) => item.id === questionId);
+    if (!snapshot) throw new NotFoundException('题目不属于当前训练');
+    const payload = structuredClone(snapshot.renderPayload) as QuestionRenderPayload;
+    payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
+    const attempt = [...this.store.practiceAttempts].reverse().find((item) => item.sessionId === id && item.questionId === questionId);
+    return { payload, feedback: attempt ? this.feedback(session, attempt) : null, draft: session.drafts?.[questionId] ?? null };
+  }
+  draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown) {
+    const session = this.requireSession(user, id);
+    this.assertActive(session);
+    if (!session.questionIds.includes(questionId)) throw new NotFoundException('题目不属于当前训练');
+    const { answer } = validate(z.object({ answer: z.unknown() }).strict(), input);
+    if (JSON.stringify(answer ?? null).length > 20000) throw new BadRequestException('作答内容过长');
+    session.drafts ??= {};
+    session.drafts[questionId] = { answer, savedAt: new Date().toISOString() };
+    return { savedAt: session.drafts[questionId].savedAt };
+  }
+  private assertActive(session: PracticeSession) {
+    if (session.status !== 'in_progress') throw new BadRequestException('训练已结束；请使用新题验证');
+    if (!this.store.diagnosticPlans.some((plan) => plan.id === session.planId && plan.status === 'active')) throw new BadRequestException('计划已暂停，请先恢复计划');
+  }
+  submit(user: InMemoryUserAccount, id: string, input: unknown) {
+    const session = this.requireSession(user, id), command = validate(answerSchema, input);
+    const priorKey = this.store.practiceAttempts.find((item) => item.sessionId === id && item.requestKey === command.requestKey);
+    if (priorKey) {
+      if (priorKey.questionId !== command.questionId || priorKey.disposition !== command.disposition || JSON.stringify(priorKey.answer) !== JSON.stringify(command.answer ?? null)) throw new ConflictException('请求标识已用于不同的作答');
+      return this.feedback(session, priorKey);
+    }
+    this.assertActive(session);
+    const snapshot = session.snapshots.find((item) => item.id === command.questionId);
+    if (!snapshot) throw new BadRequestException('题目不属于当前训练');
+    const previous = this.store.practiceAttempts.filter((item) => item.sessionId === id && item.questionId === command.questionId);
+    if (previous.length >= 5) throw new BadRequestException('本题已练习五次，先查看指导后换一题');
+    const grade = command.disposition === 'skip' ? { score: null, correct: null, status: 'skipped' as const, reason: '本题跳过，不计为错误。' } :
+      gradeResponse(snapshot.answerSchema as QuestionAnswerSchema, snapshot.answer, command.answer);
+    const attempt: PracticeAttempt = { id: this.store.nextId('practice-attempt'), sessionId: id, questionId: command.questionId,
+      requestKey: command.requestKey, answer: command.answer ?? null, disposition: command.disposition, ...grade,
+      hintLevel: Math.max(0, ...this.store.practiceHints.filter((item) => item.sessionId === id && item.questionId === command.questionId).map((item) => item.level)),
+      attempt: previous.length + 1, solutionExposedBefore: previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
+    this.store.practiceAttempts.push(attempt);
+    if (session.drafts) delete session.drafts[command.questionId];
+    this.events.publish('learning.practice_response', { studentId: session.studentId, sessionId: id, attemptId: attempt.id, questionId: command.questionId });
+    return this.feedback(session, attempt);
+  }
+  private feedback(session: PracticeSession, attempt: PracticeAttempt) {
+    const snapshot = session.snapshots.find((item) => item.id === attempt.questionId)!;
+    return { attempt, analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
+      notice: attempt.status === 'pending_review' ? '已保存表达，等待按量规复核。' : attempt.correct ?
+        attempt.attempt === 1 && !attempt.hintLevel ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
+  }
+  hint(user: InMemoryUserAccount, id: string, questionId: string) {
+    const session = this.requireSession(user, id);
+    this.assertActive(session);
+    if (session.status !== 'in_progress' || !session.questionIds.includes(questionId)) throw new BadRequestException('当前题目不可获取提示');
+    const atom = this.store.knowledgeAtoms.find((item) => item.id === session.atomId)!;
+    const level = Math.min(3, 1 + this.store.practiceHints.filter((item) => item.sessionId === id && item.questionId === questionId).length);
+    this.store.practiceHints.push({ id: this.store.nextId('practice-hint'), sessionId: id, questionId, level, at: new Date().toISOString() });
+    return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom.name}”的关键条件。` : level === 2 ?
+      `把思路拆开：${atom.objective}。每做一步，核对一次条件。` : `可以请家长示范“${atom.name}”中的一个关键步骤，再自己解释并完成剩余部分。提示后的表现会单独记录。` };
+  }
+  complete(user: InMemoryUserAccount, id: string) {
+    const session = this.requireSession(user, id), view = this.view(user, id);
+    if (session.status !== 'completed') this.assertActive(session);
+    if (view.summary.attempted !== view.summary.total) throw new BadRequestException('每一道不同的题都需作答或明确跳过，才能结束活动');
+    if (session.status !== 'completed') {
+      session.status = 'completed'; session.completedAt = new Date().toISOString();
+      this.events.publish('learning.practice_completed', { studentId: session.studentId, sessionId: id, planId: session.planId, actionId: session.actionId });
+    }
+    return this.view(user, id);
+  }
+  mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject) {
+    this.students.assertCanAccessStudent(user, studentId);
+    const diagnostic = this.diagnostics.effectiveResponses(studentId, subject).filter((item) => item.correct === false || item.status === 'pending_review');
+    const rows = diagnostic.map((item) => ({ id: item.id, kind: 'measurement', atomId: item.atomId, questionId: item.questionId,
+      reason: item.gradingReason, status: item.status, answer: item.answer, at: item.submittedAt,
+      snapshot: this.store.diagnosticSessions.find((session) => session.id === item.sessionId)?.questionSnapshots.find((question) => question.id === item.questionId) }));
+    for (const session of this.store.practiceSessions.filter((item) => item.studentId === studentId && item.subject === subject)) {
+      for (const questionId of session.questionIds) {
+        const first = this.store.practiceAttempts.find((item) => item.sessionId === session.id && item.questionId === questionId);
+        if (!first || (first.correct !== false && first.status !== 'pending_review')) continue;
+        rows.push({ id: first.id, kind: 'practice', atomId: session.atomId, questionId, reason: first.reason, status: first.status,
+          answer: first.answer, at: first.submittedAt, snapshot: session.snapshots.find((item) => item.id === questionId) });
+      }
+    }
+    return rows.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100).map(({ snapshot, ...item }) => ({ ...item,
+      atomName: this.store.knowledgeAtoms.find((atom) => atom.id === item.atomId)?.name ?? item.atomId,
+      stem: snapshot?.stem ?? '原始题目暂不可用', analysis: snapshot?.analysis ?? '', referenceAnswer: snapshot?.answer ?? null,
+      hypothesis: this.store.diagnosticHypotheses.find((hypothesis) => hypothesis.studentId === studentId && hypothesis.atomId === item.atomId && !['contradicted', 'resolved'].includes(hypothesis.status)) ?? null }));
+  }
+  overview(user: InMemoryUserAccount) {
+    const children = this.store.students.filter((child) => user.role === 'admin' || this.store.bindings.some((binding) =>
+      binding.parentUserId === user.id && binding.studentId === child.id && binding.status === 'active'));
+    return { generatedAt: new Date().toISOString(), day: studyDay(), children: children.map((child) => ({ id: child.id, nickname: child.nickname,
+      grade: child.grade, subjects: (['math', 'chinese', 'english'] as Subject[]).map((subject) => {
+        const profile = this.diagnostics.profile(user, child.id, subject), today = this.today(user, child.id, subject);
+        const sessions = this.diagnostics.listSessions(user, child.id, subject), last = sessions.find((item) => item.status === 'completed');
+        const learned = new Set(profile.scope?.learnedAtomIds ?? []), estimates = profile.estimates.filter((item) => learned.has(item.atomId));
+        const weekStart = Date.now() - 7 * 86_400_000;
+        return { subject, scope: profile.scope, estimates, hypotheses: profile.hypotheses, today,
+          latestSessionId: last?.id ?? null, latestAt: last?.completedAt ?? null,
+          counts: { selected: learned.size, secure: estimates.filter((item) => item.status === 'secure').length,
+            unknown: estimates.filter((item) => item.status === 'unknown').length,
+            needsEvidence: estimates.filter((item) => item.status === 'insufficient').length },
+          week: { completedAssessments: sessions.filter((item) => item.status === 'completed' && Date.parse(item.completedAt!) >= weekStart).length,
+            completedActivities: this.store.practiceSessions.filter((item) => item.studentId === child.id && item.subject === subject && item.status === 'completed' && Date.parse(item.completedAt!) >= weekStart).length,
+            observations: this.diagnostics.effectiveResponses(child.id, subject).filter((item) => Date.parse(item.submittedAt) >= weekStart).length },
+          trend: this.store.diagnosticReports.filter((item) => item.report.studentId === child.id && item.report.subject === subject)
+            .sort((a, b) => a.createdAt.localeCompare(b.createdAt)).filter((item, index, all) => !all.slice(index + 1).some((other) => other.sessionId === item.sessionId)).slice(-8)
+            .map((item) => ({ at: item.createdAt, sessionId: item.sessionId, measuredPoints: item.report.estimates.filter((estimate) => estimate.scoredCount > 0).length,
+              sufficientPoints: item.report.estimates.filter((estimate) => !['unknown', 'insufficient'].includes(estimate.status)).length })) };
+      }) })) };
+  }
+}

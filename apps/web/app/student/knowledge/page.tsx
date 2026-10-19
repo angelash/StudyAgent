@@ -1,10 +1,6 @@
-import { Suspense } from 'react';
-import { StudentKnowledgeClient } from './student-knowledge-client';
-
-export default function StudentKnowledgePage() {
-  return (
-    <Suspense fallback={<main style={{ padding: 40 }}>正在加载知识体系页...</main>}>
-      <StudentKnowledgeClient />
-    </Suspense>
-  );
+import { redirect } from 'next/navigation';
+export default async function StudentKnowledgePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams, query = new URLSearchParams();
+  for (const key of ['studentId', 'subject']) if (typeof params[key] === 'string') query.set(key, params[key] as string);
+  redirect('/parent/dashboard' + (query.size ? '?' + query : ''));
 }

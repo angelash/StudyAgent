@@ -40,7 +40,12 @@ export class DiagnosticsService {
     const targetSet = new Set(targets);
     if (command.includePrerequisites) for (const id of this.curriculum.prerequisiteClosure(targets)) targetSet.add(id);
     const seed = randomUUID();
-    const seen = new Set(this.store.diagnosticResponses.filter((item) => item.studentId === command.studentId).map((item) => item.questionId));
+    // Rendering a practice item is already exposure, even if its answer was never submitted.
+    // Training and abandoned assessments must not later be presented as independent new probes.
+    const seen = new Set([
+      ...this.store.diagnosticSessions.filter((item) => item.studentId === command.studentId).flatMap((item) => item.questionSnapshots.map((entry) => entry.id)),
+      ...this.store.practiceSessions.filter((item) => item.studentId === command.studentId).flatMap((item) => item.questionIds),
+    ]);
     const atomMap = new Map(this.store.knowledgeAtoms.map((item) => [item.id, item]));
     const candidates = this.store.measurementItems.filter((item) => {
       const atom = atomMap.get(item.atomId);
@@ -87,6 +92,7 @@ export class DiagnosticsService {
       }), coverage, selectionReasons: Object.fromEntries(selected.map((item) => [item.id,
         `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${item.family}${seen.has(item.questionId) ? ' · 曾作答，不增加独立样本' : ''}`])),
       seed, algorithmVersion: 'scope-blueprint-v1', startedAt: new Date().toISOString(), completedAt: null,
+      exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
     };
     if (session.reviewTaskId) {
@@ -181,6 +187,7 @@ export class DiagnosticsService {
       elapsedMs: command.elapsedMs, hintLevel: Math.max(0, ...this.store.diagnosticHints.filter((item) => item.sessionId === sessionId && item.itemId === mapping.id).map((item) => item.level)),
       observationCode: grade.correct === false ? command.disposition === 'dont_know' ? 'reported_dont_know' : mapping.observationCode : null,
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
+      priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v1', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
     };
     this.store.diagnosticResponses.push(response);

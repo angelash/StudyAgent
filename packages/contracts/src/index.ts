@@ -1,5 +1,6 @@
 import { z } from 'zod';
 export * from './diagnostics';
+export * from './learning';
 
 export const subjectSchema = z.enum(['chinese', 'math', 'english']);
 export type Subject = z.infer<typeof subjectSchema>;

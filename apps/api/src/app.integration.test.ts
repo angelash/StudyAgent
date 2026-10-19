@@ -603,42 +603,6 @@ describe('StudyAgent API integration', () => {
     expect(validation.valid).toBe(true);
     expect(validation.normalizedAnswer).toBe('\\\\frac{36}{6}');
 
-    const studentId = await createStudent(parent.token);
-    const assessmentSessionResponse = await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(201);
-
-    const session = (assessmentSessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: session.itemIds[0],
-        answer: {
-          questionId,
-          mode: 'formula_blank',
-          response: {
-            value: '\\\\frac{36}{6}',
-          },
-        },
-        elapsedMs: 2000,
-      })
-      .expect(201);
-
-    const completed = await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const result = (completed.body as WrappedResponse<{ overallScore: number }>).data!;
-    expect(result.overallScore).toBeGreaterThanOrEqual(1);
   });
 
   it('supports multi blank answer schemas end-to-end', async () => {
@@ -782,42 +746,6 @@ describe('StudyAgent API integration', () => {
     expect(validation.normalizedAnswer).toHaveLength(2);
     expect(validation.normalizedAnswer[0].key).toBe('blank_length');
 
-    const studentId = await createStudent(parent.token);
-    const assessmentSessionResponse = await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(201);
-
-    const session = (assessmentSessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: session.itemIds[0],
-        answer: {
-          questionId,
-          mode: 'multi_blank',
-          response: {
-            entries: standardAnswer,
-          },
-        },
-        elapsedMs: 1800,
-      })
-      .expect(201);
-
-    const completed = await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const result = (completed.body as WrappedResponse<{ overallScore: number }>).data!;
-    expect(result.overallScore).toBeGreaterThanOrEqual(1);
   });
 
   it('blocks publishing full question content for reference-only sources', async () => {
@@ -889,142 +817,6 @@ describe('StudyAgent API integration', () => {
       .expect(400);
   });
 
-  it('blocks assessment when there are no published questions', async () => {
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(400);
-  });
-
-  it('completes assessment and emits assessment.completed event', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const sessionResponse = await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(201);
-
-    const session = (sessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: session.itemIds[0],
-        answer: '6',
-        elapsedMs: 2000,
-      })
-      .expect(201);
-
-    const completeResponse = await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const result = (completeResponse.body as WrappedResponse<{ overallScore: number }>).data!;
-    expect(result.overallScore).toBeGreaterThanOrEqual(1);
-    expect(store.events.some((event) => event.eventName === 'assessment.completed')).toBe(true);
-  });
-
-  it('returns assessment progress and knowledge-point result details', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const sessionResponse = await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(201);
-
-    const session = (sessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
-
-    const initialProgressResponse = await request(app.getHttpServer())
-      .get(`/api/assessments/${session.id}/progress`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const initialProgress = (initialProgressResponse.body as WrappedResponse<{
-      answeredCount: number;
-      totalCount: number;
-      currentItemId: string | null;
-      items: Array<{ questionId: string; questionStem: string; answered: boolean }>;
-    }>).data!;
-
-    expect(initialProgress.answeredCount).toBe(0);
-    expect(initialProgress.totalCount).toBeGreaterThan(0);
-    expect(initialProgress.currentItemId).toBe(session.itemIds[0]);
-    expect(initialProgress.items[0].questionStem.length).toBeGreaterThan(0);
-    expect(initialProgress.items[0].answered).toBe(false);
-
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: session.itemIds[0],
-        answer: '6',
-        elapsedMs: 1800,
-      })
-      .expect(201);
-
-    const answeredProgressResponse = await request(app.getHttpServer())
-      .get(`/api/assessments/${session.id}/progress`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const answeredProgress = (answeredProgressResponse.body as WrappedResponse<{
-      answeredCount: number;
-      items: Array<{ questionId: string; answered: boolean; correct: boolean | null }>;
-    }>).data!;
-
-    expect(answeredProgress.answeredCount).toBe(1);
-    expect(answeredProgress.items[0].answered).toBe(true);
-    expect(answeredProgress.items[0].correct).toBe(true);
-    expect(store.events.some((event) => event.eventName === 'assessment.answer_submitted')).toBe(true);
-
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${session.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const resultResponse = await request(app.getHttpServer())
-      .get(`/api/assessments/${session.id}/result`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const result = (resultResponse.body as WrappedResponse<{
-      knowledgeResults: Array<{ knowledgePointId: string; knowledgePointName: string; score: number }>;
-    }>).data!;
-
-    expect(result.knowledgeResults.length).toBeGreaterThan(0);
-    expect(result.knowledgeResults[0].knowledgePointName).toContain('表内除法');
-    expect(result.knowledgeResults[0].score).toBeGreaterThanOrEqual(0);
-  });
-
   it('builds student knowledge map with textbook structure, knowledge points and linked questions', async () => {
     const admin = await login('admin@example.com');
     const volumes = await importTextbooks(admin.token, 'math');
@@ -1041,7 +833,7 @@ describe('StudyAgent API integration', () => {
     const parent = await login('parent@example.com');
     const studentResponse = await request(app.getHttpServer())
       .post('/api/students')
-      .set('Authorization', `Bearer ${parent.token}`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .send({
         nickname: '知识地图学生',
         grade: 3,
@@ -1056,11 +848,11 @@ describe('StudyAgent API integration', () => {
     const studentId = (studentResponse.body as WrappedResponse<{ profile: { id: string } }>).data!.profile.id;
 
     const knowledgeMapResponse = await request(app.getHttpServer())
-      .get(`/api/students/${studentId}/knowledge-map?subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
+      .get(`/api/admin/history/students/${studentId}/knowledge-map?subject=math`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
 
-    const knowledgeMap = (knowledgeMapResponse.body as WrappedResponse<{
+    const knowledgeMap = (knowledgeMapResponse.body.data as WrappedResponse<{
       volume: { id: string } | null;
       summary: { knowledgePointCount: number; questionCount: number };
       units: Array<{
@@ -1112,7 +904,7 @@ describe('StudyAgent API integration', () => {
     const parent = await login('parent@example.com');
     const studentResponse = await request(app.getHttpServer())
       .post('/api/students')
-      .set('Authorization', `Bearer ${parent.token}`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .send({
         nickname: '批量补题学生',
         grade: 1,
@@ -1127,11 +919,11 @@ describe('StudyAgent API integration', () => {
     const studentId = (studentResponse.body as WrappedResponse<{ profile: { id: string } }>).data!.profile.id;
 
     const knowledgeMapResponse = await request(app.getHttpServer())
-      .get(`/api/students/${studentId}/knowledge-map?subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
+      .get(`/api/admin/history/students/${studentId}/knowledge-map?subject=math`)
+      .set('Authorization', `Bearer ${admin.token}`)
       .expect(200);
 
-    const knowledgeMap = (knowledgeMapResponse.body as WrappedResponse<{
+    const knowledgeMap = (knowledgeMapResponse.body.data as WrappedResponse<{
       units: Array<{
         lessons: Array<{
           knowledgePoints: Array<{ questionCount: number }>;
@@ -1174,245 +966,6 @@ describe('StudyAgent API integration', () => {
     expect(payload.error?.message).toContain('OPENAI_API_KEY');
   });
 
-  it('generates a mission and completes training', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/start`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '6',
-        elapsedMs: 2000,
-      })
-      .expect(201);
-
-    const completeResponse = await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const result = (completeResponse.body as WrappedResponse<{ summary: string }>).data!;
-    expect(result.summary.length).toBeGreaterThan(0);
-    expect(store.events.some((event) => event.eventName === 'mission.completed')).toBe(true);
-  });
-
-  it('returns mission result details and blocks further submissions after completion', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/start`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '6',
-        elapsedMs: 1200,
-      })
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const resultResponse = await request(app.getHttpServer())
-      .get(`/api/missions/${mission.id}/result`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const result = (resultResponse.body as WrappedResponse<{
-      targetKnowledgePointNames: string[];
-      itemResults: Array<{ questionStem: string; attemptCount: number; correct: boolean }>;
-      nextActions: string[];
-    }>).data!;
-
-    expect(result.targetKnowledgePointNames.length).toBeGreaterThan(0);
-    expect(result.itemResults[0].questionStem).toContain('36');
-    expect(result.itemResults[0].attemptCount).toBe(1);
-    expect(result.itemResults[0].correct).toBe(true);
-    expect(result.nextActions.length).toBeGreaterThan(0);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '6',
-        elapsedMs: 800,
-      })
-      .expect(400);
-  });
-
-  it('generates weekly plan and reuses it when reading weekly plan', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const generateResponse = await request(app.getHttpServer())
-      .post('/api/plans/weekly/generate')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        availableMinutesPerDay: 18,
-      })
-      .expect(201);
-
-    const plan = (generateResponse.body as WrappedResponse<{
-      id: string;
-      requiredKnowledgePointNames: string[];
-      dailyPlans: Array<{ goal: string }>;
-      availableMinutesPerDay: number;
-    }>).data!;
-
-    expect(plan.availableMinutesPerDay).toBe(18);
-    expect(plan.requiredKnowledgePointNames.length).toBeGreaterThan(0);
-    expect(plan.dailyPlans).toHaveLength(7);
-    expect(plan.dailyPlans[0].goal.length).toBeGreaterThan(0);
-    expect(store.events.some((event) => event.eventName === 'weekly_plan.generated')).toBe(true);
-
-    const readResponse = await request(app.getHttpServer())
-      .get(`/api/plans/weekly?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const readPlan = (readResponse.body as WrappedResponse<{ id: string }>).data!;
-    expect(readPlan.id).toBe(plan.id);
-  });
-
-  it('uses weekly plan goal when creating today mission', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const planGenerateResponse = await request(app.getHttpServer())
-      .post('/api/plans/weekly/generate')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        availableMinutesPerDay: 15,
-      })
-      .expect(201);
-
-    const plan = (planGenerateResponse.body as WrappedResponse<{
-      dailyPlans: Array<{ date: string; goal: string; missionType: string }>;
-    }>).data!;
-    const todayPlan = plan.dailyPlans.find((item) => item.date === formatDateKey(new Date()));
-    expect(todayPlan).toBeTruthy();
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-
-    const mission = (missionResponse.body as WrappedResponse<{
-      missionType: string;
-      studentSummary: string;
-      targetKnowledgePointIds: string[];
-    }>).data!;
-
-    expect(mission.missionType).toBe(todayPlan!.missionType);
-    expect(mission.studentSummary).toBe(todayPlan!.goal);
-    expect(mission.targetKnowledgePointIds.length).toBeGreaterThan(0);
-  });
-
-  it('creates chinese and english missions from subject-specific published questions', async () => {
-    const admin = await login('admin@example.com');
-    await prepareSubjectQuestion(admin.token, 'chinese');
-    await prepareSubjectQuestion(admin.token, 'english');
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const [chineseMissionResponse, englishMissionResponse] = await Promise.all([
-      request(app.getHttpServer())
-        .get(`/api/missions/today?studentId=${studentId}&subject=chinese`)
-        .set('Authorization', `Bearer ${parent.token}`)
-        .expect(200),
-      request(app.getHttpServer())
-        .get(`/api/missions/today?studentId=${studentId}&subject=english`)
-        .set('Authorization', `Bearer ${parent.token}`)
-        .expect(200),
-    ]);
-
-    const chineseMission = (chineseMissionResponse.body as WrappedResponse<{ subject: string; title: string; questionIds: string[] }>).data!;
-    const englishMission = (englishMissionResponse.body as WrappedResponse<{ subject: string; title: string; questionIds: string[] }>).data!;
-
-    expect(chineseMission.subject).toBe('chinese');
-    expect(chineseMission.title).toContain('语文');
-    expect(chineseMission.questionIds.length).toBeGreaterThan(0);
-
-    expect(englishMission.subject).toBe('english');
-    expect(englishMission.title).toContain('英语');
-    expect(englishMission.questionIds.length).toBeGreaterThan(0);
-  });
-
-  it('keeps mission hints usable through local guidance without an AI key', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
-
-    const hintResponse = await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/hints`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-      })
-      .expect(201);
-
-    const payload = hintResponse.body as WrappedResponse<{ hint: string; source: string }>;
-    expect(payload.data?.source).toBe('rules');
-    expect(payload.data?.hint).toContain('已知条件');
-    expect(payload.error).toBeNull();
-  });
-
   it('rejects access from an unbound parent', async () => {
     const parentA = await login('parentA@example.com');
     const studentId = await createStudent(parentA.token);
@@ -1422,136 +975,6 @@ describe('StudyAgent API integration', () => {
       .get(`/api/students/${studentId}/profile`)
       .set('Authorization', `Bearer ${parentB.token}`)
       .expect(403);
-  });
-
-  it('builds weekly report and mastery heatmap for parent dashboard', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const assessmentSessionResponse = await request(app.getHttpServer())
-      .post('/api/assessments/start')
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        studentId,
-        subject: 'math',
-        assessmentType: 'initial',
-      })
-      .expect(201);
-    const assessmentSession = (assessmentSessionResponse.body as WrappedResponse<{ id: string; itemIds: string[] }>).data!;
-
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${assessmentSession.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: assessmentSession.itemIds[0],
-        answer: '6',
-        elapsedMs: 1500,
-      })
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/assessments/${assessmentSession.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/start`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '6',
-        elapsedMs: 1800,
-      })
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/complete`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    const heatmapResponse = await request(app.getHttpServer())
-      .get(`/api/progress/mastery-heatmap?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const heatmap = (heatmapResponse.body as WrappedResponse<{ snapshots: Array<{ knowledgePointName: string }> }>).data!;
-    expect(heatmap.snapshots.length).toBeGreaterThan(0);
-    expect(heatmap.snapshots[0].knowledgePointName).toBeTruthy();
-
-    const reportResponse = await request(app.getHttpServer())
-      .get(`/api/reports/weekly?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const report = (reportResponse.body as WrappedResponse<{ missionCompletedCount: number; parentSummary: string }>).data!;
-    expect(report.missionCompletedCount).toBeGreaterThanOrEqual(1);
-    expect(report.parentSummary.length).toBeGreaterThan(0);
-  });
-
-  it('detects parent alerts after repeated incorrect mission answers', async () => {
-    const admin = await login('admin@example.com');
-    await prepareMathQuestion(admin.token);
-
-    const parent = await login('parent@example.com');
-    const studentId = await createStudent(parent.token);
-
-    const missionResponse = await request(app.getHttpServer())
-      .get(`/api/missions/today?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const mission = (missionResponse.body as WrappedResponse<{ id: string; questionIds: string[] }>).data!;
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/start`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({})
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '7',
-        elapsedMs: 2000,
-        usedHintLevel: 2,
-      })
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post(`/api/missions/${mission.id}/answers`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .send({
-        itemId: mission.questionIds[0],
-        answer: '8',
-        elapsedMs: 2400,
-        usedHintLevel: 2,
-      })
-      .expect(201);
-
-    const alertsResponse = await request(app.getHttpServer())
-      .get(`/api/parents/${parent.user.id}/alerts?studentId=${studentId}&subject=math`)
-      .set('Authorization', `Bearer ${parent.token}`)
-      .expect(200);
-    const alerts = (alertsResponse.body as WrappedResponse<Array<{ type: string }>>).data!;
-
-    expect(alerts.some((item) => item.type === 'retry_failure')).toBe(true);
-    expect(alerts.some((item) => item.type === 'high_hint_dependency')).toBe(true);
   });
 
   it('returns analytics overview for admin', async () => {

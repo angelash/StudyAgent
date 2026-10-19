@@ -7,42 +7,45 @@ import { ProgressService } from './progress.service';
 export class ProgressController {
   constructor(private readonly progressService: ProgressService) {}
 
-  @Get('progress/mastery-heatmap')
+  @Get('admin/history/mastery-heatmap')
   getMasteryHeatmap(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
     @Query('subject') subject?: 'math' | 'chinese' | 'english',
   ) {
-    return this.progressService.getMasteryHeatmap(req.user, studentId, subject ?? 'math');
+    if (req.user.role !== 'admin') throw new ForbiddenException();
+    return { historical: true, notice: '原型历史统计，仅供迁移核对，不是当前能力评价。', data: this.progressService.getMasteryHeatmap(req.user, studentId, subject ?? 'math') };
   }
 
-  @Get('students/:studentId/knowledge-map')
+  @Get('admin/history/students/:studentId/knowledge-map')
   getStudentKnowledgeMap(
     @Req() req: AuthenticatedRequest,
     @Param('studentId') studentId: string,
     @Query('subject') subject?: 'math' | 'chinese' | 'english',
   ) {
-    return this.progressService.getStudentKnowledgeMap(req.user, studentId, subject ?? 'math');
+    if (req.user.role !== 'admin') throw new ForbiddenException();
+    return { historical: true, notice: '原型课程结构与历史统计，仅供内容迁移核对。', data: this.progressService.getStudentKnowledgeMap(req.user, studentId, subject ?? 'math') };
   }
 
-  @Get('reports/weekly')
+  @Get('admin/history/reports/weekly')
   getWeeklyReport(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
     @Query('subject') subject?: 'math' | 'chinese' | 'english',
     @Query('weekStartDate') weekStartDate?: string,
   ) {
-    return this.progressService.getWeeklyReport(req.user, studentId, subject ?? 'math', weekStartDate);
+    if (req.user.role !== 'admin') throw new ForbiddenException();
+    return { historical: true, notice: '历史正确率周报，不代表当前实际能力。', data: this.progressService.getWeeklyReport(req.user, studentId, subject ?? 'math', weekStartDate) };
   }
 
-  @Get('parents/:parentId/alerts')
+  @Get('admin/history/parents/:parentId/alerts')
   getParentAlerts(
     @Req() req: AuthenticatedRequest,
     @Param('parentId') parentId: string,
     @Query('studentId') studentId: string,
     @Query('subject') subject?: 'math' | 'chinese' | 'english',
   ) {
-    if (req.user.id !== parentId && req.user.role !== 'admin') {
+    if (req.user.role !== 'admin') {
       throw new ForbiddenException('Cannot read another parent alerts');
     }
 

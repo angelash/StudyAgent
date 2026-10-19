@@ -49,7 +49,7 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
   afterAll(async () => { await app.close(); if (originalKey) process.env.OPENAI_API_KEY = originalKey; });
   async function call(method: 'post' | 'get' | 'put' | 'patch', path: string, body?: unknown, status?: number, actor?: any) {
     let query = request(app.getHttpServer())[method](`/api${path}`).set('Authorization', `Bearer ${(actor ?? owner).token}`);
-    if (body !== undefined) query = query.send(body);
+    if (body !== undefined) query = query.send(body as object);
     const response = await query.expect(status ?? (method === 'post' ? 201 : 200));
     return response.body.data;
   }
@@ -124,5 +124,81 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     expect(report.pendingReviewCount).toBe(1); expect(report.scoredCount).toBe(1);
     expect(store.diagnosticResponses.find((item: any) => item.id === responseId).score).toBeNull();
     expect(store.diagnosticReports.filter((item: any) => item.sessionId === session.id)).toHaveLength(2);
+  });
+
+  async function activatePractice() {
+    await call('put', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '通用基础', learnedAtomIds: ['target'], currentAtomId: 'target', minutesPerSession: 10 });
+    const baseline = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const item of baseline.items) await submit(baseline, item, 0);
+    await call('post', `/diagnostics/sessions/${baseline.id}/complete`, {});
+    const plan = await call('post', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false });
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+    const activity = await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
+    return { baseline, plan, activity };
+  }
+
+  it('persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence', async () => {
+    const { baseline, plan, activity } = await activatePractice();
+    expect((await call('post', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {})).id).toBe(activity.id);
+    const qid = activity.questions[0].id;
+    const path = `/learning/practice/${activity.id}`;
+    const rendered = await call('get', `${path}/questions/${qid}`);
+    expect(rendered.feedback).toBeNull(); expect(rendered.payload.answerSchema.gradingConfig).toEqual({});
+    await call('patch', `${path}/questions/${qid}/draft`, { answer: { value: '6' } });
+    expect((await call('get', `${path}/questions/${qid}`)).draft.answer).toEqual({ value: '6' });
+    await call('post', `${path}/questions/${qid}/hint`, {});
+    const command = { questionId: qid, requestKey: 'first', answer: 0, elapsedMs: 3000 };
+    const first = await call('post', `${path}/responses`, command);
+    expect(first.attempt.hintLevel).toBe(1); expect(first.attempt.solutionExposedBefore).toBe(false);
+    expect((await call('post', `${path}/responses`, command)).attempt.id).toBe(first.attempt.id);
+    await call('post', `${path}/responses`, { ...command, answer: 6 }, 409);
+    const retry = await call('post', `${path}/responses`, { ...command, requestKey: 'retry', answer: 6 });
+    expect(retry.attempt.correct).toBe(true); expect(retry.attempt.solutionExposedBefore).toBe(true);
+    expect((await call('get', path)).summary.attempted).toBe(1);
+    await call('post', `${path}/complete`, {}, 400);
+    for (const item of activity.questions.slice(1)) await call('post', `${path}/responses`, { questionId: item.id, requestKey: item.id, disposition: 'skip', elapsedMs: 0 });
+    const completed = await call('post', `${path}/complete`, {});
+    expect(completed.summary.independentFirstPass).toBe(0);
+    expect(completed.summary.answered).toBe(1);
+    expect(completed.summary.skipped).toBe(activity.questions.length - 1);
+    expect((await call('post', `${path}/complete`, {})).status).toBe('completed');
+    expect(store.diagnosticResponses).toHaveLength(baseline.items.length);
+    const probe = await start({ intent: 'verification', targetAtomIds: ['target'], includePrerequisites: false, maxItems: 4 });
+    expect(probe.items.every((item: any) => !activity.questions.some((old: any) => old.id === item.questionId))).toBe(true);
+    const today = await call('get', `/learning/students/${studentId}/today?subject=math`);
+    expect(today.activities[0].status).toBe('completed');
+    const mistakes = await call('get', `/learning/students/${studentId}/mistakes?subject=math`);
+    expect(mistakes.some((item: any) => item.kind === 'practice' && item.questionId === qid)).toBe(true);
+  });
+
+  it('enforces practice ownership and pause, and leaves subjective practice pending for review', async () => {
+    const { plan, activity } = await activatePractice();
+    const path = `/learning/practice/${activity.id}`, qid = activity.questions[0].id;
+    const outsider = await auth.register({ principal: 'practice-outsider@test', credential: 'outsider-secret-123' }, 'fixture-outsider');
+    await call('get', path, undefined, 403, outsider);
+    await call('post', `${path}/responses`, { questionId: qid, requestKey: 'x', answer: 6, elapsedMs: 0 }, 403, outsider);
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'paused' });
+    await call('post', `${path}/responses`, { questionId: qid, requestKey: 'x', answer: 6, elapsedMs: 0 }, 400);
+    await call('patch', `${path}/questions/${qid}/draft`, { answer: 'x' }, 400);
+    await call('post', `${path}/questions/${qid}/hint`, {}, 400);
+    await call('patch', `/diagnostics/plans/${plan.id}`, { status: 'active' });
+    store.practiceSessions.find((item: any) => item.id === activity.id).snapshots[0].answerSchema.mode = 'short_answer';
+    const feedback = await call('post', `${path}/responses`, { questionId: qid, requestKey: 'essay', answer: '我把两组数量合在一起', elapsedMs: 2000 });
+    expect(feedback.attempt.status).toBe('pending_review'); expect(feedback.attempt.score).toBeNull();
+    const overview = await call('get', '/learning/overview');
+    expect(overview.children).toHaveLength(1); expect(overview.children[0].subjects[0].week.completedActivities).toBe(0);
+    expect((await call('get', '/learning/overview', undefined, 200, outsider)).children).toHaveLength(0);
+    expect((await call('get', '/learning/students', undefined, 200, outsider))).toHaveLength(0);
+    expect((await call('get', '/learning/students', undefined, 200, admin))[0].id).toBe(studentId);
+  });
+  it('retires the prototype mutation and correctness-report APIs with an explicit upgrade response', async () => {
+    for (const path of ['/assessments/start', '/assessments/old/answers', '/missions/old/answers', '/plans/weekly/generate']) {
+      const response = await request(app.getHttpServer()).post(`/api${path}`).set('Authorization', `Bearer ${owner.token}`).send({ studentId }).expect(410);
+      expect(response.body.error.message).toContain('学习流程已升级');
+    }
+    await call('get', `/reports/weekly?studentId=${studentId}`, undefined, 410);
+    await call('get', `/progress/mastery-heatmap?studentId=${studentId}`, undefined, 410);
+    expect(store.assessments).toHaveLength(0); expect(store.practiceAttempts).toHaveLength(0);
   });
 });

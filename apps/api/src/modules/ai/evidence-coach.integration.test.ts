@@ -26,7 +26,7 @@ describe('evidence coach without search subprocess or a required AI key', () => 
   });
   afterAll(async () => { await app?.close(); if (previousKey) process.env.OPENAI_API_KEY = previousKey; });
   const post = (path: string, body: unknown) => request(app.getHttpServer()).post(`/api/ai${path}`)
-    .set('Authorization', `Bearer ${account.token}`).send(body);
+    .set('Authorization', `Bearer ${account.token}`).send(body as object);
 
   it('validates session scope and gives evidence-based local coaching in all three subjects', async () => {
     await post('/assistant/sessions', { userRole: 'parent', studentId: 'other-child', pageContext: 'review' }).expect(403);

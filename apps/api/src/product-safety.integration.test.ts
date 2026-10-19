@@ -111,20 +111,15 @@ describe('product authorization and measurement safety regressions', () => {
     await request(server).get(url).set('Authorization', `Bearer ${owner.token}`).expect(200);
   });
 
-  it('cannot complete a three-question mission by answering the first question three times', async () => {
+  it('does not permit retired mission requests to mutate historical training', async () => {
     const owner = await account('mission@test');
     const studentId = child(owner.user.id);
-    for (const id of ['q1', 'q2', 'q3']) question(id);
-    store.missions.push({ id: 'mission1', studentId, subject: 'math', missionType: 'practice', title: '任务',
-      targetKnowledgePointIds: [], questionIds: ['q1', 'q2', 'q3'], estimatedMinutes: 10, status: 'in_progress', createdAt: new Date().toISOString(), studentSummary: '' });
+    store.missions.push({ id: 'mission1', studentId, subject: 'math', questionIds: ['q1', 'q2', 'q3'], status: 'in_progress' });
     const server = app.getHttpServer();
     for (let attempt = 0; attempt < 3; attempt++) await request(server).post('/api/missions/mission1/answers')
-      .set('Authorization', `Bearer ${owner.token}`).send({ itemId: 'q1', answer: '6', elapsedMs: 1000 }).expect(201);
-    await request(server).post('/api/missions/mission1/complete').set('Authorization', `Bearer ${owner.token}`).send({}).expect(400);
-    for (const id of ['q2', 'q3']) await request(server).post('/api/missions/mission1/answers')
-      .set('Authorization', `Bearer ${owner.token}`).send({ itemId: id, answer: '6', elapsedMs: 1000 }).expect(201);
-    const result = await request(server).post('/api/missions/mission1/complete').set('Authorization', `Bearer ${owner.token}`).send({}).expect(201);
-    expect(result.body.data.totalCount).toBe(3);
-    expect(result.body.data.correctCount).toBe(3);
+      .set('Authorization', `Bearer ${owner.token}`).send({ itemId: 'q1', answer: '6', elapsedMs: 1000 }).expect(410);
+    await request(server).post('/api/missions/mission1/complete').set('Authorization', `Bearer ${owner.token}`).send({}).expect(410);
+    expect(store.missions[0].status).toBe('in_progress');
+    expect(store.missionAnswers).toHaveLength(0);
   });
 });
