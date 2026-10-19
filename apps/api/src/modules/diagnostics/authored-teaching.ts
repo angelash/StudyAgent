@@ -1,11 +1,15 @@
 import type { AtomTeaching } from '@study-agent/contracts';
 import type { FoundationDefinition } from './foundation-curriculum';
+import { addMathTeaching } from './authored-math-teaching';
+import { addChineseTeaching } from './authored-chinese-teaching';
+import { addEnglishTeaching } from './authored-english-teaching';
 
 // Original instructional examples, separate from scored questions. The checks
 // describe observable classroom actions; they do not diagnose a child by themselves.
 const cards = new Map<string, AtomTeaching>();
 function card(id: string, explanation: string, prompt: string, steps: string[], conclusion: string,
   observation: string, alternatives: string[], checks: [string, string, string, string]) {
+  if (cards.has(id)) throw new Error(`Duplicate authored lesson: ${id}`);
   cards.set(id, { reviewStatus: 'approved', explanation, example: { prompt, steps, conclusion },
     commonErrors: [{ code: id + ':check', observation, alternativeExplanations: alternatives, verification: checks[0] + ' ' + checks[1] }],
     verification: { understanding: checks[0], procedure: checks[1], transfer: checks[2], retention: checks[3] } });
@@ -156,7 +160,13 @@ card('core:english:evidence-vs-claim',
   ['可能只做词语匹配，忽略了范围。', '也可能不理解every的含义，需先核查关键词。'],
   ['先让孩子用中文或简单英文说明each/every与一个实例的范围差异。', '用两个新观点与材料，分别核对对象和量词范围。', '加入一个反例，让孩子修改英文结论并保留证据边界。', '隔周换新主题短文，独立解释材料支持到什么程度。']);
 
+addMathTeaching(card);
+addChineseTeaching(card);
+addEnglishTeaching(card);
+
 export function addAuthoredTeaching(definitions: FoundationDefinition[]) {
+  const ids = new Set(definitions.map(definition => definition.atom.id));
+  for (const id of cards.keys()) if (!ids.has(id)) throw new Error(`Authored lesson has no knowledge definition: ${id}`);
   return definitions.map(definition => {
     const teaching = cards.get(definition.atom.id);
     return teaching ? { ...definition, atom: { ...definition.atom, teaching: structuredClone(teaching) } } : definition;

@@ -48,7 +48,7 @@ async function main() {
   assert.equal(bootstrap.status, 0, 'Formal administrator bootstrap');
   await start(); token = (await call('POST', '/auth/login', { principal: 'qa-curriculum-runtime', credential })).token;
   const original = await store.transaction(() => structuredClone(store.inspect('knowledgeAtoms')));
-  const cards = original.filter(atom => atom.teaching); assert.equal(cards.length, 22);
+  const cards = original.filter(atom => atom.teaching); assert.equal(cards.length, 256);
   evidence.original = { atoms: original.length,
     questions: await store.transaction(() => store.inspect('questions').filter(question => question.id.startsWith('foundation_q_')).length),
     allQuestionsIncludingLegacyFixtures: await store.transaction(() => store.inspect('questions').length),

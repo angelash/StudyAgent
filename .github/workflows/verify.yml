@@ -34,6 +34,8 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run lint
+      - name: Authored teaching coverage and measurement material audit
+        run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
       - name: Curriculum package persistence and safe seed enrichment
         run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
       - name: Frozen measurement definitions and comparable evidence

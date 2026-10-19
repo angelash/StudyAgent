@@ -190,15 +190,19 @@ describe('versioned curriculum packages and instructional evidence', () => {
 
   it('validates authored cards and enriches only exact unedited seed definitions', () => {
     const definitions = buildFoundationCurriculum(), cards = definitions.filter(row => row.atom.teaching);
-    expect(cards).toHaveLength(22);
+    expect(definitions).toHaveLength(256); expect(cards).toHaveLength(definitions.length);
     for (const { atom } of cards) expect(atomTeachingSchema.safeParse(atom.teaching).success, atom.id).toBe(true);
+    for (const { atom, exercises } of definitions) {
+      expect(exercises.some(item => item.stem === atom.teaching!.example.prompt), atom.id).toBe(false);
+      expect(atom.teaching!.commonErrors.every(error => error.alternativeExplanations.length >= 2), atom.id).toBe(true);
+    }
     const originals = cards.map(({ atom }) => { const { teaching: _teaching, ...original } = atom; return original; });
     originals[1].name += '用户修改'; originals[2].version = 2;
     const withTeaching = { ...originals[3], teaching: { ...teaching(), reviewStatus: 'draft' as const } };
     const withRelations = { ...originals[4], transferAtomIds: [] };
     const current = originals.map((atom, i) => i === 3 ? withTeaching : i === 4 ? withRelations : atom);
     const updates = authoredTeachingUpdates(current, definitions);
-    expect(updates).toHaveLength(18); expect(updates.every(row => row.expectedVersion === 1)).toBe(true);
+    expect(updates).toHaveLength(cards.length - 4); expect(updates.every(row => row.expectedVersion === 1)).toBe(true);
     const migrated = current.map(atom => updates.find(row => row.atom.id === atom.id)?.atom ?? atom);
     expect(authoredTeachingUpdates(migrated, definitions)).toHaveLength(0);
   });
