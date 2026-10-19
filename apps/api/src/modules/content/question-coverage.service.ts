@@ -449,7 +449,7 @@ export class QuestionCoverageService {
       status: 'published',
     };
 
-    this.store.questions.push(question);
+    this.store.append('questions', question);
     this.questionWorkspaceService.initializeQuestionWorkspace(
       question,
       '知识点补齐服务',

@@ -1,0 +1,152 @@
+{
+  "at": "2026-10-19T18:28:18.070Z",
+  "passed": true,
+  "functionalPassed": true,
+  "performanceTargetsMet": true,
+  "performanceTargetMs": 500,
+  "driver": "sqlite",
+  "families": 8,
+  "unrelatedFamilies": 1000,
+  "unrelatedResponses": 20000,
+  "conflicts": 0,
+  "requestsAutomaticallyReplayed": 0,
+  "scope": "Actual local HTTP with synthetic data. No browser or production capacity claim.",
+  "metrics": [
+    {
+      "name": "create_child",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 158.19,
+      "p95Ms": 159.75,
+      "maxMs": 159.75
+    },
+    {
+      "name": "save_scope",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 111.75,
+      "p95Ms": 112.5,
+      "maxMs": 112.5
+    },
+    {
+      "name": "start_assessment",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 195.48,
+      "p95Ms": 195.77,
+      "maxMs": 195.77
+    },
+    {
+      "name": "save_assessment_draft_0",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 109.23,
+      "p95Ms": 109.98,
+      "maxMs": 109.98
+    },
+    {
+      "name": "submit_assessment_0",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 216.61,
+      "p95Ms": 216.91,
+      "maxMs": 216.91
+    },
+    {
+      "name": "save_assessment_draft_1",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 104.83,
+      "p95Ms": 105.54,
+      "maxMs": 105.54
+    },
+    {
+      "name": "submit_assessment_1",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 222.17,
+      "p95Ms": 222.46,
+      "maxMs": 222.46
+    },
+    {
+      "name": "complete_assessment",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 171.54,
+      "p95Ms": 179.41,
+      "maxMs": 179.41
+    },
+    {
+      "name": "generate_rule_plan",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 216.72,
+      "p95Ms": 217.25,
+      "maxMs": 217.25
+    },
+    {
+      "name": "activate_plan",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 113.18,
+      "p95Ms": 113.76,
+      "maxMs": 113.76
+    },
+    {
+      "name": "start_practice",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 219.15,
+      "p95Ms": 219.63,
+      "maxMs": 219.63
+    },
+    {
+      "name": "save_practice_draft",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 103.17,
+      "p95Ms": 103.72,
+      "maxMs": 103.72
+    },
+    {
+      "name": "submit_practice",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 123.65,
+      "p95Ms": 124.47,
+      "maxMs": 124.47
+    },
+    {
+      "name": "recover_own_draft_and_report",
+      "concurrency": 8,
+      "samples": 8,
+      "p50Ms": 206.49,
+      "p95Ms": 206.99,
+      "maxMs": 206.99
+    }
+  ],
+  "storage": {
+    "revisionChecks": 139,
+    "snapshotLoads": 1,
+    "partialSnapshotLoads": 0,
+    "snapshotRowsLoaded": 0,
+    "cacheHits": 138,
+    "commits": 114,
+    "scopedCommits": 113,
+    "conflicts": 0,
+    "collectionsCloned": 1021,
+    "recordsCloned": 26064
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX"
+  },
+  "memory": {
+    "rss": 438493184,
+    "heapTotal": 348532736,
+    "heapUsed": 242715632,
+    "external": 3946628,
+    "arrayBuffers": 378114
+  }
+}

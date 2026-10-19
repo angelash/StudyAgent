@@ -58,7 +58,7 @@ export class ProcessingController {
   @Post('tasks/:id/retry') async retry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown) {
     assertImportAdmin(req.user); const data = validate(z.object({ expectedVersion: z.number().int().positive() }).strict(), body);
     const previous = await this.requireTask(id);
-    const owner = this.store.users.find(u => u.id === previous.ownerUserId);
+    const owner = this.store.find('users', { id: previous.ownerUserId });
     if (!owner || owner.status !== 'active' || owner.role !== 'admin') throw new BadRequestException('原任务发起人的权限已变化，请重新发起任务');
     if (previous.version !== data.expectedVersion || !['failed', 'cancelled'].includes(previous.state)) throw new ConflictException('只有已失败或已取消的任务可以重试，请刷新状态');
     await this.store.controlTask({ id, action: 'retry', expectedVersion: data.expectedVersion, actorId: req.user.id });
@@ -74,7 +74,7 @@ export class ProcessingController {
   }
   @Post('local-explain') async explain(@Req() req: AuthenticatedRequest, @Body() body: unknown) {
     assertImportAdmin(req.user); const data = validate(z.object({ recordId: z.string().max(250), requestKey: z.string().min(8).max(100) }).strict(), body);
-    const record = this.store.questionImportRecords.find(r => r.id === data.recordId);
+    const record = this.store.find('questionImportRecords', { id: data.recordId });
     if (!record) throw new BadRequestException('导入候选记录不存在');
     return this.enqueue(req, 'question.local_explain', data.requestKey, { recordId: record.id, reviewVersion: record.reviewVersion ?? 0,
       excerptHash: createHash('sha256').update(record.excerpt).digest('hex') });

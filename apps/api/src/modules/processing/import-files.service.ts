@@ -20,24 +20,24 @@ export class ImportFilesService {
   readonly root = resolve(studyDataRoot(), 'processing');
   constructor(private readonly store: InMemoryStoreService, private readonly events: DomainEventBusService) {}
 
-  list(user: InMemoryUserAccount) { assertImportAdmin(user); return this.store.importFiles.filter(f => f.ownerUserId === user.id).slice(-100).reverse(); }
+  list(user: InMemoryUserAccount) { assertImportAdmin(user); return this.store.select('importFiles', { ownerUserId: user.id }).slice(-100).reverse(); }
   get(user: InMemoryUserAccount, id: string) { assertImportAdmin(user); const file = this.require(id); if (file.ownerUserId !== user.id) throw new ForbiddenException('此上传属于其他账号'); return file; }
-  require(id: string) { const file = this.store.importFiles.find(f => f.id === id); if (!file) throw new NotFoundException('上传文件不存在'); return file; }
+  require(id: string) { const file = this.store.find('importFiles', { id: id }); if (!file) throw new NotFoundException('上传文件不存在'); return file; }
 
   start(user: InMemoryUserAccount, input: unknown) {
     assertImportAdmin(user); const data = validate(initSchema, input);
     const name = basename(data.name.replace(/\\/g, '/')).replace(/[\x00-\x1f\x7f]/g, '');
     const expected = data.mediaType === 'application/pdf' ? ['.pdf'] : data.mediaType === 'image/png' ? ['.png'] : ['.jpg', '.jpeg'];
     if (!name || !expected.includes(extname(name).toLowerCase())) throw new BadRequestException('文件扩展名与选择的类型不一致');
-    const existing = this.store.importFiles.find(f => f.ownerUserId === user.id && f.requestKey === data.requestKey);
+    const existing = this.store.find('importFiles', { ownerUserId: user.id, requestKey: data.requestKey });
     if (existing) {
       if (existing.name !== name || existing.size !== data.size || existing.mediaType !== data.mediaType) throw new ConflictException('上传请求键对应的文件不同');
       return existing;
     }
-    if (this.store.importFiles.filter(f => f.ownerUserId === user.id && f.status === 'uploading').length >= 12) throw new BadRequestException('请先完成现有上传，每个账号最多同时保留 12 个上传');
+    if (this.store.select('importFiles', { ownerUserId: user.id, status: 'uploading' }).length >= 12) throw new BadRequestException('请先完成现有上传，每个账号最多同时保留 12 个上传');
     const file: ImportFile = { ...data, name, id: this.store.nextId('import_file'), ownerUserId: user.id, chunkSize: UPLOAD_CHUNK_SIZE,
       chunks: [], status: 'uploading', sha256: null, createdAt: new Date().toISOString(), completedAt: null };
-    this.store.importFiles.push(file); this.events.publish('content.upload_started', { fileId: file.id, actorId: user.id, size: file.size, mediaType: file.mediaType });
+    this.store.append('importFiles', file); this.events.publish('content.upload_started', { fileId: file.id, actorId: user.id, size: file.size, mediaType: file.mediaType });
     return file;
   }
 
@@ -101,13 +101,13 @@ export class ImportFilesService {
   }
 
   async artifact(user: InMemoryUserAccount, id: string) {
-    assertImportAdmin(user); const artifact = this.store.processingArtifacts.find(a => a.id === id);
+    assertImportAdmin(user); const artifact = this.store.find('processingArtifacts', { id: id });
     if (!artifact) throw new NotFoundException('处理结果不存在或尚未发布');
     const path = this.resolveArtifact(artifact); await this.verifyPath(path, artifact.sha256, artifact.size);
     return { path, mediaType: artifact.mediaType, size: artifact.size, sha256: artifact.sha256 };
   }
   async pageEvidence(id: string): Promise<ImportPageEvidence> {
-    const page = this.store.importPages.find(p => p.id === id); if (!page) throw new NotFoundException('原页证据不存在');
+    const page = this.store.find('importPages', { id: id }); if (!page) throw new NotFoundException('原页证据不存在');
     const path = this.withinRoot(page.relativePath); await this.verifyPath(path, page.sha256, page.size);
     return JSON.parse(await fs.readFile(path, 'utf8'));
   }

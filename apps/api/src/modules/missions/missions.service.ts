@@ -83,7 +83,7 @@ export class MissionsService {
         (weakKnowledgeIds.length > 0 ? '先把最容易错的地方补稳。' : '今天继续把当前知识点练熟。'),
     };
 
-    this.store.missions.push(mission);
+    this.store.append('missions', mission);
     this.eventBus.publish('mission.generated', {
       missionId: mission.id,
       studentId,
@@ -126,7 +126,7 @@ export class MissionsService {
     }
     const question = this.requireQuestion(command.itemId);
 
-    const previous = this.store.missionAnswers.filter((item) => item.missionId === missionId && item.questionId === question.id);
+    const previous = this.store.select('missionAnswers', { missionId: missionId, questionId: question.id });
     const validation = this.questionWorkspaceService.validateAnswer(question.id, command.answer);
     if (!validation.valid) {
       throw new BadRequestException(validation.message ?? 'Invalid answer payload');
@@ -134,7 +134,7 @@ export class MissionsService {
 
     const graded = await this.gradeQuestion(question, validation.normalizedAnswer);
 
-    this.store.missionAnswers.push({
+    this.store.append('missionAnswers', {
       id: this.store.nextId('mission_answer'),
       missionId,
       questionId: question.id,
@@ -196,7 +196,7 @@ export class MissionsService {
       return this.buildMissionResult(mission);
     }
 
-    const answers = this.store.missionAnswers.filter((item) => item.missionId === missionId);
+    const answers = this.store.select('missionAnswers', { missionId: missionId });
     if (answers.length === 0) {
       throw new BadRequestException('Mission has no answers');
     }
@@ -263,7 +263,7 @@ export class MissionsService {
   }
 
   private requireMission(missionId: string) {
-    const mission = this.store.missions.find((item) => item.id === missionId);
+    const mission = this.store.find('missions', { id: missionId });
     if (!mission) {
       throw new NotFoundException('Mission not found');
     }
@@ -271,7 +271,7 @@ export class MissionsService {
   }
 
   private requireQuestion(questionId: string) {
-    const question = this.store.questions.find((item) => item.id === questionId);
+    const question = this.store.find('questions', { id: questionId });
     if (!question) {
       throw new NotFoundException('Question not found');
     }
@@ -295,7 +295,7 @@ export class MissionsService {
 
   private buildMissionResult(mission: DailyMission & { createdAt: string; studentSummary: string }): MissionResultView {
     const groupedAnswers = new Map<string, typeof this.store.missionAnswers>();
-    for (const answer of this.store.missionAnswers.filter((item) => item.missionId === mission.id)) {
+    for (const answer of this.store.select('missionAnswers', { missionId: mission.id })) {
       const list = groupedAnswers.get(answer.questionId) ?? [];
       list.push(answer);
       groupedAnswers.set(answer.questionId, list);

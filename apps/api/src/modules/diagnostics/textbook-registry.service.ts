@@ -43,10 +43,10 @@ export class TextbookRegistryService {
   }
 
   mapping(book: CurriculumBook, lessonId: string): TextbookAtomMapping | null {
-    const override = this.store.textbookAtomMappings.find((m) => m.bookId === book.id && m.lessonId === lessonId && m.bookVersion === book.version);
+    const override = this.store.find('textbookAtomMappings', { bookId: book.id, lessonId: lessonId, bookVersion: book.version });
     if (override) return override;
     if (book.source !== 'original') return null;
-    const atom = this.store.knowledgeAtoms.find((a) => a.id === lessonId && a.status === 'published');
+    const atom = this.store.find('knowledgeAtoms', { id: lessonId, status: 'published' });
     return atom ? { id: `original-mapping:${book.id}:${atom.id}`, bookId: book.id, bookVersion: book.version,
       lessonId, atomIds: [atom.id], status: 'approved', rationale: '原创路径的课时与原子知识定义一一对应',
       version: atom.version, reviewerId: 'original-curriculum', reviewedAt: '2026-10-19T00:00:00.000Z' } : null;
@@ -61,7 +61,7 @@ export class TextbookRegistryService {
 
   detail(id: string, editor = false) {
     const book = this.require(id);
-    const published = new Set(this.store.knowledgeAtoms.filter((a) => a.status === 'published').map((a) => a.id));
+    const published = new Set(this.store.select('knowledgeAtoms', { status: 'published' }).map((a) => a.id));
     return { ...book, chapters: book.chapters.map((c) => ({ ...c, lessons: c.lessons.map((lesson) => {
       const mapping = this.mapping(book, lesson.id);
       const approved = mapping?.status === 'approved' && mapping.atomIds.every((id) => published.has(id));

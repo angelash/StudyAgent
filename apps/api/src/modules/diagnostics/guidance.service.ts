@@ -30,7 +30,7 @@ export class GuidanceService {
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
-    const atomMap = new Map(this.store.knowledgeAtoms.map((atom) => [atom.id, atom]));
+    const atomMap = new Map(this.store.inspect('knowledgeAtoms').map((atom) => [atom.id, atom]));
     const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved', 'withdrawn'].includes(item.status));
     const prioritized = [...report.estimates].sort((a, b) => {
       const rootA = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(a.atomId));
@@ -44,10 +44,10 @@ export class GuidanceService {
       const atom = atomMap.get(estimate.atomId)!;
       const hypothesis = activeHypotheses.find((item) => item.atomId === atom.id || item.probeAtomIds.includes(atom.id));
       const unknown = estimate.status === 'unknown' || estimate.status === 'insufficient';
-      const resourceQuestionIds = eligibleMeasurements(this.store).filter(item => item.atomId === atom.id)
+      const resourceQuestionIds = eligibleMeasurements(this.store, [atom.id])
         .map((item) => item.questionId).filter((id, position, all) => all.indexOf(id) === position &&
-          this.store.questions.some(q => q.id === id && q.status === 'published') &&
-          this.store.questionSources.some(s => s.questionId === id && s.reviewStatus === 'approved' && s.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY')).slice(0, 4);
+          Boolean(this.store.find('questions', { id: id, status: 'published' })) &&
+          this.store.select('questionSources', { questionId: id, reviewStatus: 'approved' }).some(s => s.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY')).slice(0, 4);
       return { id: this.store.nextId('action'), atomId: atom.id, hypothesisId: hypothesis?.id ?? null,
         evidenceIds: estimate.evidenceIds, title: `${unknown ? '先补充证据' : '逐步巩固'}：${atom.name}`,
         activity: unknown ? `先做两个不同题族的独立小测，观察“${atom.objective}”。根据表现决定是否需要讲解。` :
@@ -58,7 +58,7 @@ export class GuidanceService {
     });
     const plan: DiagnosticGuidancePlan = {
       id: this.store.nextId('guidance'), studentId, subject: session.subject, baselineSessionId: session.id,
-      version: this.store.diagnosticPlans.filter((item) => item.studentId === studentId && item.subject === session.subject).length + 1,
+      version: this.store.select('diagnosticPlans', { studentId: studentId, subject: session.subject }).length + 1,
       source: 'rules', status: 'proposed', minutesPerDay: command.minutesPerDay,
       summary: `每天 ${command.minutesPerDay} 分钟，围绕 ${actions.map((item) => atomMap.get(item.atomId)?.name).join('、')} 先验证再指导；复测后调整。`,
       actions, evidenceIds: [...new Set(actions.flatMap((item) => item.evidenceIds))], createdAt: now.toISOString(), aiStatus: 'not_requested',
@@ -72,7 +72,7 @@ export class GuidanceService {
         for (const action of plan.actions) action.activity = enrichment.value.activities.find((item) => item.actionId === action.id)?.activity ?? action.activity;
       }
     }
-    this.store.diagnosticPlans.push(plan);
+    this.store.append('diagnosticPlans', plan);
     this.saveRevision(plan, user.id, 'created', '依据当前评测建立指导计划');
     this.events.publish('guidance.proposed', { planId: plan.id, studentId, source: plan.source, baselineSessionId: session.id });
     return this.view(user, plan);
@@ -80,22 +80,22 @@ export class GuidanceService {
 
   list(user: InMemoryUserAccount, studentId: string, subject: Subject) {
     this.students.assertCanAccessStudent(user, studentId);
-    return this.store.diagnosticPlans.filter((item) => item.studentId === studentId && item.subject === subject)
+    return this.store.select('diagnosticPlans', { studentId: studentId, subject: subject })
       .sort((a, b) => b.version - a.version).map(plan => this.view(user, plan));
   }
 
   get(user: InMemoryUserAccount, planId: string) { return this.view(user, this.requirePlan(user, planId)); }
   history(user: InMemoryUserAccount, planId: string) {
     this.requirePlan(user, planId);
-    return this.store.guidancePlanRevisions.filter(r => r.planId === planId).sort((a, b) => b.revision - a.revision);
+    return this.store.select('guidancePlanRevisions', { planId: planId }).sort((a, b) => b.revision - a.revision);
   }
   private requirePlan(user: InMemoryUserAccount, id: string) {
-    const plan = this.store.diagnosticPlans.find(p => p.id === id);
+    const plan = this.store.find('diagnosticPlans', { id: id });
     if (!plan) throw new NotFoundException('计划不存在');
     this.students.assertCanAccessStudent(user, plan.studentId); return plan;
   }
   private baseVersion(plan: DiagnosticGuidancePlan) {
-    return plan.baselineReportVersion ?? this.store.diagnosticReports.filter(r => r.sessionId === plan.baselineSessionId && r.createdAt <= plan.createdAt)
+    return plan.baselineReportVersion ?? this.store.select('diagnosticReports', { sessionId: plan.baselineSessionId }).filter(r => r.createdAt <= plan.createdAt)
       .sort((a, b) => b.version - a.version)[0]?.version ?? 1;
   }
   private view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView {
@@ -110,14 +110,14 @@ export class GuidanceService {
   }
   private saveRevision(plan: DiagnosticGuidancePlan, actorId: string, kind: GuidancePlanRevision['kind'], reason: string,
     receipt?: { requestKey?: string; inputHash: string }) {
-    this.store.guidancePlanRevisions.push({ id: `${plan.id}:revision:${plan.revision ?? 1}`, planId: plan.id,
+    this.store.append('guidancePlanRevisions', { id: `${plan.id}:revision:${plan.revision ?? 1}`, planId: plan.id,
       revision: plan.revision ?? 1, kind, at: new Date().toISOString(), actorId, reason, snapshot: structuredClone(plan), ...receipt });
   }
   private command(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan, kind: string,
     input: { expectedRevision?: number; requestKey?: string }) {
     const hash = inputHash(kind, input);
     if (input.requestKey) {
-      const previous = this.store.guidancePlanRevisions.find(r => r.planId === plan.id && r.actorId === user.id && r.requestKey === input.requestKey);
+      const previous = this.store.find('guidancePlanRevisions', { planId: plan.id, actorId: user.id, requestKey: input.requestKey });
       if (previous) {
         if (previous.inputHash !== hash) throw new ConflictException('请求键已用于不同的计划操作');
         return { replay: true, receipt: { requestKey: input.requestKey, inputHash: hash } };
@@ -133,11 +133,11 @@ export class GuidanceService {
     this.saveRevision(plan, actorId, kind, reason, receipt);
   }
   private preserveLegacy(plan: DiagnosticGuidancePlan, actorId: string) {
-    for (const session of this.store.practiceSessions.filter(s => s.planId === plan.id && !s.actionSnapshot)) {
+    for (const session of this.store.select('practiceSessions', { planId: plan.id }).filter(s => !s.actionSnapshot)) {
       const action = plan.actions.find(a => a.id === session.actionId);
       if (action) { session.actionSnapshot = structuredClone(action); session.planRevision = plan.revision ?? 1; session.snapshotOrigin = 'legacy_capture'; }
     }
-    if (this.store.guidancePlanRevisions.some(r => r.planId === plan.id)) return;
+    if (Boolean(this.store.find('guidancePlanRevisions', { planId: plan.id }))) return;
     plan.revision ??= 1; plan.baselineReportVersion ??= this.baseVersion(plan);
     this.saveRevision(plan, actorId, 'legacy', '历史计划首次纳入版本记录；此前变化不作追溯推断');
   }
@@ -166,7 +166,7 @@ export class GuidanceService {
         hypothesisId: active.find(h => h.atomId === old.atomId || h.probeAtomIds.includes(old.atomId))?.id ?? null };
     });
     plan.evidenceIds = [...new Set(plan.actions.flatMap(a => a.evidenceIds))];
-    plan.summary = `每天 ${data.minutesPerDay} 分钟，围绕 ${plan.actions.map(a => this.store.knowledgeAtoms.find(k => k.id === a.atomId)?.name ?? a.title).join('、')} 执行已调整活动，并用独立新题复测验证。`;
+    plan.summary = `每天 ${data.minutesPerDay} 分钟，围绕 ${plan.actions.map(a => this.store.find('knowledgeAtoms', { id: a.atomId })?.name ?? a.title).join('、')} 执行已调整活动，并用独立新题复测验证。`;
     delete plan.retrospectiveReview;
     this.bump(plan, user.id, 'adjusted', data.reason, command.receipt);
     this.events.publish('guidance.adjusted', { planId, revision: plan.revision, baselineReportVersion: plan.baselineReportVersion, actorId: user.id });
@@ -182,19 +182,19 @@ export class GuidanceService {
     if (plan.status === 'completed') throw new BadRequestException('已结束计划不能重新启用，请根据新评测另建计划');
     if (status !== 'paused' && this.view(user, plan).impact.needsReview) throw new ConflictException('评测已修订，请先查看新依据并调整或确认计划');
     if (status === 'completed') {
-      const pending = this.store.reviewTasks.filter((item) => item.planId === planId && item.status !== 'completed');
-      if (!this.store.reviewTasks.some((item) => item.planId === planId) || pending.length) throw new BadRequestException('完成复测并复盘后再结束计划');
+      const pending = this.store.select('reviewTasks', { planId }).filter(item => item.status !== 'completed');
+      if (!Boolean(this.store.find('reviewTasks', { planId: planId })) || pending.length) throw new BadRequestException('完成复测并复盘后再结束计划');
       if (plan.retrospectiveReview?.fingerprint !== this.retrospective(user, planId).fingerprint) throw new BadRequestException('请先确认当前版本的前后证据复盘');
     }
     this.preserveLegacy(plan, user.id);
     if (status === 'active') {
-      for (const other of this.store.diagnosticPlans) if (other.studentId === plan.studentId && other.subject === plan.subject && other.status === 'active' && other.id !== plan.id) {
+      for (const other of this.store.select('diagnosticPlans', { studentId: plan.studentId, subject: plan.subject, status: 'active' })) if (other.id !== plan.id) {
         this.preserveLegacy(other, user.id); other.status = 'paused'; this.bump(other, user.id, 'status', '启用另一指导计划后暂停本计划');
       }
       plan.activatedAt ??= new Date().toISOString();
       for (const action of plan.actions) for (const intervalDays of [1, 3, 7, 14]) {
         const id = `review:${plan.id}:${action.atomId}:${intervalDays}`;
-        if (!this.store.reviewTasks.some((item) => item.id === id)) this.store.reviewTasks.push({ id, planId: plan.id,
+        if (!Boolean(this.store.find('reviewTasks', { id: id }))) this.store.append('reviewTasks', { id, planId: plan.id,
           studentId: plan.studentId, subject: plan.subject, atomId: action.atomId, intervalDays,
           dueAt: new Date(Date.parse(plan.activatedAt) + intervalDays * 86_400_000).toISOString(), status: 'pending', sessionId: null,
           earliestDueAt: new Date(Date.parse(plan.activatedAt) + intervalDays * 86_400_000).toISOString(),
@@ -209,23 +209,23 @@ export class GuidanceService {
 
   reviews(user: InMemoryUserAccount, studentId: string, subject: Subject) {
     this.students.assertCanAccessStudent(user, studentId);
-    const active = new Set(this.store.diagnosticPlans.filter((item) => item.status === 'active').map((item) => item.id));
-    return this.reviewViews(this.store.reviewTasks.filter((item) => item.studentId === studentId && item.subject === subject && active.has(item.planId)));
+    const active = new Set(this.store.select('diagnosticPlans', { studentId, subject, status: 'active' }).map((item) => item.id));
+    return this.reviewViews(this.store.select('reviewTasks', { studentId, subject }).filter(item => active.has(item.planId)));
   }
 
   planReviews(user: InMemoryUserAccount, planId: string) {
     this.requirePlan(user, planId);
-    return this.reviewViews(this.store.reviewTasks.filter(item => item.planId === planId));
+    return this.reviewViews(this.store.select('reviewTasks', { planId: planId }));
   }
 
   private reviewViews(tasks: typeof this.store.reviewTasks) {
     return [...tasks]
       .sort((a, b) => a.dueAt.localeCompare(b.dueAt)).map((item) => ({ ...item, due: Date.parse(item.dueAt) <= Date.now(),
-        atomName: this.store.knowledgeAtoms.find((atom) => atom.id === item.atomId)?.name ?? item.atomId }));
+        atomName: this.store.find('knowledgeAtoms', { id: item.atomId })?.name ?? item.atomId }));
   }
 
   reschedule(user: InMemoryUserAccount, reviewId: string, input: unknown) {
-    const task = this.store.reviewTasks.find(t => t.id === reviewId);
+    const task = this.store.find('reviewTasks', { id: reviewId });
     if (!task) throw new NotFoundException('复测任务不存在');
     const plan = this.requirePlan(user, task.planId);
     this.students.assertGuardian(user, plan.studentId);
@@ -248,10 +248,10 @@ export class GuidanceService {
   }
 
   startReview(user: InMemoryUserAccount, reviewId: string) {
-    const task = this.store.reviewTasks.find((item) => item.id === reviewId);
+    const task = this.store.find('reviewTasks', { id: reviewId });
     if (!task) throw new NotFoundException('复测任务不存在');
     this.students.assertCanAccessStudent(user, task.studentId);
-    const plan = this.store.diagnosticPlans.find((item) => item.id === task.planId);
+    const plan = this.store.find('diagnosticPlans', { id: task.planId });
     if (task.sessionId) return this.diagnostics.sessionView(user, task.sessionId);
     if (!plan || plan.status !== 'active') throw new BadRequestException('请先启用指导计划');
     if (this.view(user, plan).impact.needsReview) throw new ConflictException('评测依据已修订，请先确认指导计划再开始新的复测');
@@ -262,21 +262,21 @@ export class GuidanceService {
   }
 
   retrospective(user: InMemoryUserAccount, planId: string) {
-    const plan = this.store.diagnosticPlans.find((item) => item.id === planId);
+    const plan = this.store.find('diagnosticPlans', { id: planId });
     if (!plan) throw new NotFoundException('计划不存在');
     this.students.assertCanAccessStudent(user, plan.studentId);
     const all = this.diagnostics.effectiveResponses(plan.studentId, plan.subject);
     const before = all.filter((item) => item.sessionId === plan.baselineSessionId);
-    const linkedReviewIds = new Set(this.store.reviewTasks.filter(t => t.planId === planId).map(t => t.id));
-    const sessions = this.store.diagnosticSessions.filter((item) => item.studentId === plan.studentId && item.subject === plan.subject &&
+    const linkedReviewIds = new Set(this.store.select('reviewTasks', { planId: planId }).map(t => t.id));
+    const sessions = this.store.select('diagnosticSessions', { studentId: plan.studentId, subject: plan.subject }).filter((item) =>
       item.status === 'completed' && item.id !== plan.baselineSessionId &&
       (item.planId === planId || (item.reviewTaskId && linkedReviewIds.has(item.reviewTaskId))));
     const after = all.filter((item) => sessions.some((session) => session.id === item.sessionId) && !before.some((baseline) => baseline.questionId === item.questionId));
-    const mappings = this.diagnostics.allMappings();
+    const mappings = this.diagnostics.allMappings(plan.studentId);
     // A delayed observation is labelled retention for mastery, but still measures its
     // original skill using a frozen response scale. Compare only matching scales.
     const comparisonKey = (r: typeof all[number]) => {
-      const sourceSession = this.store.diagnosticSessions.find(s => s.id === r.sessionId);
+      const sourceSession = this.store.find('diagnosticSessions', { id: r.sessionId });
       const snapshot = sourceSession?.questionSnapshots.find(q => q.id === r.questionId);
       const schema = snapshot?.answerSchema as { mode?: string; gradingConfig?: unknown } | undefined;
       const dimension = mappings.get(`${r.itemId}@${r.mappingVersion}`)?.dimension ?? r.dimension;
@@ -289,10 +289,10 @@ export class GuidanceService {
       sessions: sessions.map(s => [s.id, this.diagnostics.report(user, s.id).version ?? 1]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
       evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
     return { planId, baselineSessionId: plan.baselineSessionId, followupSessionIds, independentFollowupCount: independent.length, fingerprint,
-      practiceSessionIds: this.store.practiceSessions.filter(s => s.planId === planId).map(s => s.id),
+      practiceSessionIds: this.store.select('practiceSessions', { planId: planId }).map(s => s.id),
       reviewed: plan.retrospectiveReview?.fingerprint === fingerprint,
       comparisons: plan.actions.map((action) => {
-        const atom = this.store.knowledgeAtoms.find((atom) => atom.id === action.atomId)!;
+        const atom = this.store.find('knowledgeAtoms', { id: action.atomId })!;
         const pre = before.filter((item) => item.atomId === atom.id), post = after.filter((item) => item.atomId === atom.id);
         const sharedScales = new Set(pre.map(comparisonKey).filter(key => post.some(item => comparisonKey(item) === key)));
         const preComparable = pre.filter(item => sharedScales.has(comparisonKey(item)));

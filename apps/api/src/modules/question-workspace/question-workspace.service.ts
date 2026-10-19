@@ -38,7 +38,7 @@ export class QuestionWorkspaceService {
   ) {
     this.assertAdmin(requestUser);
     this.requireQuestion(questionId);
-    const current = this.store.questionDocuments.find((item) => item.questionId === questionId);
+    const current = this.store.find('questionDocuments', { questionId: questionId });
     const parsed = questionDocumentSchema.safeParse({
       questionId,
       version: current ? current.version + 1 : 1,
@@ -58,7 +58,7 @@ export class QuestionWorkspaceService {
       return current;
     }
 
-    this.store.questionDocuments.push(parsed.data);
+    this.store.append('questionDocuments', parsed.data);
     return parsed.data;
   }
 
@@ -78,13 +78,13 @@ export class QuestionWorkspaceService {
       throw new BadRequestException(parsed.error.flatten());
     }
 
-    const existing = this.store.questionAnswerSchemas.find((item) => item.questionId === questionId);
+    const existing = this.store.find('questionAnswerSchemas', { questionId: questionId });
     if (existing) {
       Object.assign(existing, parsed.data);
       return existing;
     }
 
-    this.store.questionAnswerSchemas.push(parsed.data);
+    this.store.append('questionAnswerSchemas', parsed.data);
     return parsed.data;
   }
 
@@ -104,13 +104,13 @@ export class QuestionWorkspaceService {
       throw new BadRequestException(parsed.error.flatten());
     }
 
-    const existing = this.store.questionSources.find((item) => item.questionId === questionId);
+    const existing = this.store.find('questionSources', { questionId: questionId });
     if (existing) {
       Object.assign(existing, parsed.data);
       return existing;
     }
 
-    this.store.questionSources.push(parsed.data);
+    this.store.append('questionSources', parsed.data);
     return parsed.data;
   }
 
@@ -311,7 +311,7 @@ export class QuestionWorkspaceService {
   }
 
   private ensureQuestionDocument(question: Question) {
-    const existing = this.store.questionDocuments.find((item) => item.questionId === question.id);
+    const existing = this.store.find('questionDocuments', { questionId: question.id });
     if (existing) {
       return existing;
     }
@@ -332,12 +332,12 @@ export class QuestionWorkspaceService {
       accessibilityConfig: {},
     };
 
-    this.store.questionDocuments.push(document);
+    this.store.append('questionDocuments', document);
     return document;
   }
 
   private ensureQuestionAnswerSchema(question: Question) {
-    const existing = this.store.questionAnswerSchemas.find((item) => item.questionId === question.id);
+    const existing = this.store.find('questionAnswerSchemas', { questionId: question.id });
     if (existing) {
       return existing;
     }
@@ -365,12 +365,12 @@ export class QuestionWorkspaceService {
             : '请输入答案',
     };
 
-    this.store.questionAnswerSchemas.push(answerSchema);
+    this.store.append('questionAnswerSchemas', answerSchema);
     return answerSchema;
   }
 
   private ensureQuestionSource(question: Question, authorDisplayName = '系统') {
-    const existing = this.store.questionSources.find((item) => item.questionId === question.id);
+    const existing = this.store.find('questionSources', { questionId: question.id });
     if (existing) {
       return existing;
     }
@@ -387,7 +387,7 @@ export class QuestionWorkspaceService {
       notes: '系统内手工创建题目',
     };
 
-    this.store.questionSources.push(source);
+    this.store.append('questionSources', source);
     return source;
   }
 
@@ -470,7 +470,7 @@ export class QuestionWorkspaceService {
   }
 
   private requireQuestion(questionId: string) {
-    const question = this.store.questions.find((item) => item.id === questionId);
+    const question = this.store.find('questions', { id: questionId });
     if (!question) {
       throw new NotFoundException('Question not found');
     }

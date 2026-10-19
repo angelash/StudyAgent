@@ -18,16 +18,16 @@ export class OperationsController {
     let capacity: { availableBytes: number; totalBytes: number; state: string } = { availableBytes: 0, totalBytes: 0, state: 'unavailable' };
     try { const disk = await statfs(directory); capacity = { availableBytes: disk.bavail * disk.bsize, totalBytes: disk.blocks * disk.bsize, state: 'available' }; } catch { /* No path or OS error is exposed. */ }
     const now = Date.now();
-    const activePlans = new Set(this.store.diagnosticPlans.filter(row => row.status === 'active').map(row => row.id));
-    const completedAssessments = new Set(this.store.diagnosticSessions.filter(row => row.status === 'completed').map(row => row.id));
+    const activePlans = new Set(this.store.select('diagnosticPlans', { status: 'active' }).map(row => row.id));
+    const completedAssessments = new Set(this.store.select('diagnosticSessions', { status: 'completed' }).map(row => row.id));
     const diagnosticReviews = new Set(this.store.scoringRevisions.filter(row => row.version > 0).map(row => row.responseId));
     const practiceReviews = new Set(this.store.practiceScoringRevisions.filter(row => row.version > 0).map(row => row.responseId));
     return { at: new Date().toISOString(), runtime: { node: process.version, uptimeSeconds: Math.floor(process.uptime()), memory: process.memoryUsage() },
       requests: this.metrics.snapshot(), storage: { ...this.store.persistence, counters: this.store.storageDiagnostics, capacity },
       rateLimits: this.limits.diagnostics, tasks: await this.store.tasks.summary(),
-      learning: { completedAssessments: this.store.diagnosticSessions.filter(row => row.status === 'completed').length,
-        completedPractice: this.store.practiceSessions.filter(row => row.status === 'completed').length,
-        activePlans: this.store.diagnosticPlans.filter(row => row.status === 'active').length,
+      learning: { completedAssessments: this.store.select('diagnosticSessions', { status: 'completed' }).length,
+        completedPractice: this.store.select('practiceSessions', { status: 'completed' }).length,
+        activePlans: this.store.select('diagnosticPlans', { status: 'active' }).length,
         dueReviews: this.store.reviewTasks.filter(row => row.status === 'pending' && activePlans.has(row.planId) && Date.parse(row.dueAt) <= now).length,
         pendingRubrics: this.store.diagnosticResponses.filter(row => row.status === 'pending_review' && completedAssessments.has(row.sessionId) && !diagnosticReviews.has(row.id)).length + this.store.practiceAttempts.filter(row => row.status === 'pending_review' && !practiceReviews.has(row.id)).length,
         feedbackAwaitingReview: this.store.evidenceFeedback.filter(row => ['open', 'investigating'].includes(row.status)).length,

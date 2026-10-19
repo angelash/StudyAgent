@@ -11,13 +11,15 @@ import { TextbookRegistryService } from './textbook-registry.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
-export function eligibleMeasurements(store: InMemoryStoreService) {
-  const atoms = new Map(store.knowledgeAtoms.map((a) => [a.id, a]));
-  const questions = new Map(store.questions.map((q) => [q.id, q]));
-  const sources = new Map(store.questionSources.map((s) => [s.questionId, s]));
-  const documents = new Map(store.questionDocuments.map((d) => [d.questionId, d]));
-  const schemas = new Map(store.questionAnswerSchemas.map(schema => [schema.questionId, schema]));
-  return store.measurementItems.filter((item) => {
+export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
+  const mappings = atomIds ? store.select('measurementItems', { atomId: atomIds }) : store.inspect('measurementItems');
+  const questionIds = [...new Set(mappings.map(item => item.questionId))];
+  const atoms = new Map((atomIds ? store.select('knowledgeAtoms', { id: atomIds }) : store.inspect('knowledgeAtoms')).map((a) => [a.id, a]));
+  const questions = new Map((atomIds ? store.select('questions', { id: questionIds }) : store.inspect('questions')).map((q) => [q.id, q]));
+  const sources = new Map((atomIds ? store.select('questionSources', { questionId: questionIds }) : store.inspect('questionSources')).map((s) => [s.questionId, s]));
+  const documents = new Map((atomIds ? store.select('questionDocuments', { questionId: questionIds }) : store.inspect('questionDocuments')).map((d) => [d.questionId, d]));
+  const schemas = new Map((atomIds ? store.select('questionAnswerSchemas', { questionId: questionIds }) : store.inspect('questionAnswerSchemas')).map(schema => [schema.questionId, schema]));
+  return mappings.filter((item) => {
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
@@ -54,17 +56,17 @@ export class CurriculumService {
     validate(z.enum(['math', 'chinese', 'english']), subject);
     if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
     if (term !== undefined) validate(z.enum(['upper', 'lower']), term);
-    return this.store.knowledgeAtoms.filter((atom) => atom.subject === subject && atom.status === 'published' &&
+    return this.store.inspect('knowledgeAtoms').filter((atom) => atom.subject === subject && atom.status === 'published' &&
       (!grade || atom.grade <= grade) && (!term || !grade || atom.grade < grade || atom.term === 'both' || atom.term === term));
   }
 
   upsertAtom(user: InMemoryUserAccount, input: unknown) {
     this.assertEditor(user);
     const atom = validate(knowledgeAtomSchema.strict(), input);
-    const previous = this.store.knowledgeAtoms.find((item) => item.id === atom.id);
+    const previous = this.store.find('knowledgeAtoms', { id: atom.id });
     const next = { ...atom, version: previous ? previous.version + 1 : 1 };
-    assertAcyclic([...this.store.knowledgeAtoms.filter((item) => item.id !== atom.id), next]);
-    if (previous) Object.assign(previous, next); else this.store.knowledgeAtoms.push(next);
+    assertAcyclic([...this.store.inspect('knowledgeAtoms').filter((item) => item.id !== atom.id), next]);
+    if (previous) Object.assign(previous, next); else this.store.append('knowledgeAtoms', next);
     this.recordRevision('atom', next.id, next.version, user.id, next);
     this.events.publish('curriculum.atom_saved', { atomId: next.id, version: next.version, actorId: user.id });
     return next;
@@ -72,7 +74,7 @@ export class CurriculumService {
 
   getScope(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningScope | null {
     this.students.assertCanAccessStudent(user, studentId);
-    return this.store.learningScopes.filter((scope) => scope.studentId === studentId && scope.subject === subject)
+    return this.store.select('learningScopes', { studentId: studentId, subject: subject })
       .sort((a, b) => b.version - a.version)[0] ?? null;
   }
 
@@ -107,14 +109,14 @@ export class CurriculumService {
       id: this.store.nextId('scope'), studentId, version: (previous?.version ?? 0) + 1, confirmedAt: new Date().toISOString(),
       textbookRevision, ...(progress ? { mappingSnapshots: progress.mappingSnapshots, uncoveredLessonIds: progress.uncoveredLessonIds,
         selectedLessonSnapshots: progress.selectedLessonSnapshots } : {}) };
-    this.store.learningScopes.push(scope);
+    this.store.append('learningScopes', scope);
     this.events.publish('curriculum.scope_confirmed', { studentId, subject: data.subject, scopeId: scope.id, version: scope.version });
     return scope;
   }
 
   progressProposals(user: InMemoryUserAccount, studentId: string) {
     this.students.assertCanAccessStudent(user, studentId);
-    return this.store.studentProgressProposals.filter(p => p.studentId === studentId).slice(-30).reverse()
+    return this.store.select('studentProgressProposals', { studentId: studentId }).slice(-30).reverse()
       .map(({ requestHash: _hash, decisionHash: _decisionHash, ...proposal }) => proposal);
   }
 
@@ -123,17 +125,17 @@ export class CurriculumService {
     if (user.role !== 'student') throw new ForbiddenException('此入口用于孩子提出进度，由监护人确认');
     const command = validate(z.object({ scope: learningScopeInputSchema, baseScopeVersion: z.number().int().nonnegative(), requestKey: z.string().min(8).max(180) }).strict(), input);
     const requestHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
-    const previous = this.store.studentProgressProposals.find(p => p.studentId === studentId && p.proposedBy === user.id && p.requestKey === command.requestKey);
+    const previous = this.store.find('studentProgressProposals', { studentId: studentId, proposedBy: user.id, requestKey: command.requestKey });
     if (previous) { if (previous.requestHash !== requestHash) throw new ConflictException('请求键已用于另一份进度'); return previous; }
     const { data } = this.prepareScope(command.scope);
     if ((this.getScope(user, studentId, data.subject)?.version ?? 0) !== command.baseScopeVersion) throw new ConflictException('家长确认的进度已变化，请先刷新再提出');
-    for (const p of this.store.studentProgressProposals.filter(p => p.studentId === studentId && p.scope.subject === data.subject && p.status === 'pending')) {
+    for (const p of this.store.select('studentProgressProposals', { studentId: studentId, 'scope.subject': data.subject, status: 'pending' })) {
       p.status = 'superseded'; p.version++;
     }
     const proposal = { id: this.store.nextId('progress_proposal'), studentId, proposedBy: user.id, scope: data,
-      knowledgeSnapshot: data.learnedAtomIds.map(id => { const atom = this.store.knowledgeAtoms.find(a => a.id === id)!; return { id, name: atom.name, objective: atom.objective, version: atom.version }; }),
+      knowledgeSnapshot: data.learnedAtomIds.map(id => { const atom = this.store.find('knowledgeAtoms', { id: id })!; return { id, name: atom.name, objective: atom.objective, version: atom.version }; }),
       baseScopeVersion: command.baseScopeVersion, version: 1, status: 'pending' as const, createdAt: new Date().toISOString(), requestKey: command.requestKey, requestHash };
-    this.store.studentProgressProposals.push(proposal);
+    this.store.append('studentProgressProposals', proposal);
     this.events.publish('curriculum.progress_proposed', { studentId, proposalId: proposal.id, subject: data.subject, actorId: user.id });
     return proposal;
   }
@@ -142,7 +144,7 @@ export class CurriculumService {
     this.students.assertGuardian(user, studentId);
     const command = validate(z.object({ decision: z.enum(['accept', 'reject']), expectedVersion: z.number().int().positive(), requestKey: z.string().min(8).max(180),
       note: z.string().trim().min(5).max(1500) }).strict(), input);
-    const proposal = this.store.studentProgressProposals.find(p => p.id === proposalId && p.studentId === studentId);
+    const proposal = this.store.find('studentProgressProposals', { id: proposalId, studentId: studentId });
     if (!proposal) throw new NotFoundException('进度提议不存在');
     const decisionHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
     if (proposal.decisionRequestKey === command.requestKey && proposal.decidedBy === user.id) {
@@ -163,7 +165,7 @@ export class CurriculumService {
   prerequisiteClosure(atomIds: string[]): string[] {
     const found = new Set<string>();
     const visit = (id: string) => {
-      const atom = this.store.knowledgeAtoms.find((item) => item.id === id);
+      const atom = this.store.find('knowledgeAtoms', { id: id });
       if (!atom) throw new NotFoundException('知识点不存在');
       for (const prerequisite of atom.prerequisiteIds) if (!found.has(prerequisite)) { found.add(prerequisite); visit(prerequisite); }
     };
@@ -174,20 +176,20 @@ export class CurriculumService {
   upsertMapping(user: InMemoryUserAccount, input: unknown): MeasurementItem {
     this.assertEditor(user);
     const item = validate(measurementItemSchema.strict(), input);
-    const atom = this.store.knowledgeAtoms.find((atom) => atom.id === item.atomId);
-    const question = this.store.questions.find((question) => question.id === item.questionId);
+    const atom = this.store.find('knowledgeAtoms', { id: item.atomId });
+    const question = this.store.find('questions', { id: item.questionId });
     if (!atom || !question || atom.subject !== question.subject) throw new BadRequestException('题目和原子知识点必须存在并属于同一学科');
-    const source = this.store.questionSources.find((source) => source.questionId === question.id);
-    const document = this.store.questionDocuments.find((document) => document.questionId === question.id);
+    const source = this.store.find('questionSources', { questionId: question.id });
+    const document = this.store.find('questionDocuments', { questionId: question.id });
     if (item.questionVersion !== (document?.version ?? 1)) throw new BadRequestException('映射须引用当前题目文档版本');
     if (item.reviewStatus === 'approved' && (question.status !== 'published' || source?.reviewStatus !== 'approved' || source.licenseClass === 'C_PUBLIC_REFERENCE_ONLY')) {
       throw new BadRequestException('量化题映射审核需要已发布且来源可用的题目');
     }
-    const answerSchema = this.store.questionAnswerSchemas.find(schema => schema.questionId === question.id);
+    const answerSchema = this.store.find('questionAnswerSchemas', { questionId: question.id });
     if (item.reviewStatus === 'approved' && (!answerSchema || !answerInputConfiguration(answerSchema).supported)) throw new BadRequestException('请先补齐可用的作答交互配置，再审核量化映射');
-    const previous = this.store.measurementItems.find((mapping) => mapping.id === item.id);
+    const previous = this.store.find('measurementItems', { id: item.id });
     const next = { ...item, version: previous ? previous.version + 1 : 1 };
-    if (previous) Object.assign(previous, next); else this.store.measurementItems.push(next);
+    if (previous) Object.assign(previous, next); else this.store.append('measurementItems', next);
     this.recordRevision('measurement', next.id, next.version, user.id, next);
     this.events.publish('curriculum.mapping_saved', { itemId: item.id, version: next.version, actorId: user.id });
     return next;
@@ -199,15 +201,15 @@ export class CurriculumService {
     if (!book.chapters.some((c) => c.lessons.some((l) => l.id === data.lessonId))) throw new BadRequestException('课时不属于所选教材');
     if (new Set(data.atomIds).size !== data.atomIds.length) throw new BadRequestException('映射知识点不能重复');
     for (const id of data.atomIds) {
-      const atom = this.store.knowledgeAtoms.find((a) => a.id === id);
+      const atom = this.store.find('knowledgeAtoms', { id: id });
       if (!atom || atom.subject !== book.subject || atom.grade > book.grade || (data.status === 'approved' && atom.status !== 'published')) {
         throw new BadRequestException('映射需引用同科、当前年级以内的有效原子知识点');
       }
     }
-    const previous = this.store.textbookAtomMappings.find((m) => m.bookId === book.id && m.lessonId === data.lessonId && m.bookVersion === book.version);
+    const previous = this.store.find('textbookAtomMappings', { bookId: book.id, lessonId: data.lessonId, bookVersion: book.version });
     const next = { ...data, id: previous?.id ?? this.store.nextId('textbook_mapping'), bookVersion: book.version,
       version: (previous?.version ?? 0) + 1, reviewerId: user.id, reviewedAt: new Date().toISOString() };
-    if (previous) Object.assign(previous, next); else this.store.textbookAtomMappings.push(next);
+    if (previous) Object.assign(previous, next); else this.store.append('textbookAtomMappings', next);
     this.recordRevision('textbook', next.id, next.version, user.id, next);
     this.events.publish('curriculum.textbook_mapping_saved', { id: next.id, actorId: user.id, status: next.status, version: next.version });
     return next;
@@ -218,13 +220,13 @@ export class CurriculumService {
     if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
     const eligible = eligibleMeasurements(this.store), counts = new Map<string, MeasurementItem[]>();
     for (const item of eligible) { const items = counts.get(item.atomId) ?? []; items.push(item); counts.set(item.atomId, items); }
-    const atoms = this.store.knowledgeAtoms.filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade)).map((atom) => {
+    const atoms = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade)).map((atom) => {
       const items = counts.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
         families: new Set(items.map((i) => i.family)).size, dimensions: [...new Set(items.map((i) => i.dimension))],
-        interactionGaps: new Set(this.store.measurementItems.filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
+        interactionGaps: new Set(this.store.inspect('measurementItems').filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
           !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported && mediaModeAvailable(schema.mode))).map(i => i.questionId)).size,
-        draftMappings: this.store.measurementItems.filter((i) => i.atomId === atom.id && i.reviewStatus === 'draft').length };
+        draftMappings: this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'draft' }).length };
     });
     const cells = (['math', 'chinese', 'english'] as Subject[]).flatMap((s) => Array.from({ length: 6 }, (_, i) => {
       const subset = atoms.filter((a) => a.subject === s && a.grade === i + 1 && a.status === 'published');
@@ -236,28 +238,28 @@ export class CurriculumService {
       notice: '覆盖按已发布定义和当前有效审核题映射统计；不代表常模校准或教材全部覆盖。',
       textbookCounts: { imported: this.textbooks.all().filter((b) => b.source !== 'original').length,
         withChapters: this.textbooks.all().filter((b) => b.source !== 'original' && b.chapterState === 'available').length,
-        approvedMappings: this.store.textbookAtomMappings.filter((m) => m.status === 'approved').length } };
+        approvedMappings: this.store.select('textbookAtomMappings', { status: 'approved' }).length } };
   }
 
   itemsForAtom(user: InMemoryUserAccount, atomId: string) {
     this.assertEditor(user);
     const eligible = new Set(eligibleMeasurements(this.store).map(item => item.id));
-    return this.store.measurementItems.filter((i) => i.atomId === atomId).slice(0, 200).map((mapping) => ({ mapping,
+    return this.store.select('measurementItems', { atomId: atomId }).slice(0, 200).map((mapping) => ({ mapping,
       eligible: eligible.has(mapping.id),
-      inputIssue: this.store.questionAnswerSchemas.some(schema => schema.questionId === mapping.questionId) ?
-        answerInputConfiguration(this.store.questionAnswerSchemas.find(schema => schema.questionId === mapping.questionId)!).reason : '尚未配置作答方式',
-      question: this.store.questions.find((q) => q.id === mapping.questionId),
-      answerSchema: this.store.questionAnswerSchemas.find((s) => s.questionId === mapping.questionId),
-      source: this.store.questionSources.find((s) => s.questionId === mapping.questionId) }));
+      inputIssue: Boolean(this.store.find('questionAnswerSchemas', { questionId: mapping.questionId })) ?
+        answerInputConfiguration(this.store.find('questionAnswerSchemas', { questionId: mapping.questionId })!).reason : '尚未配置作答方式',
+      question: this.store.find('questions', { id: mapping.questionId }),
+      answerSchema: this.store.find('questionAnswerSchemas', { questionId: mapping.questionId }),
+      source: this.store.find('questionSources', { questionId: mapping.questionId }) }));
   }
 
   revisions(user: InMemoryUserAccount, entityId: string) {
     this.assertEditor(user);
-    return this.store.curriculumRevisions.filter((r) => r.entityId === entityId).sort((a, b) => b.version - a.version);
+    return this.store.select('curriculumRevisions', { entityId: entityId }).sort((a, b) => b.version - a.version);
   }
 
   private recordRevision(kind: 'atom' | 'measurement' | 'textbook', entityId: string, version: number, actorId: string, snapshot: unknown) {
-    this.store.curriculumRevisions.push({ id: this.store.nextId('curriculum_revision'), kind, entityId, version,
+    this.store.append('curriculumRevisions', { id: this.store.nextId('curriculum_revision'), kind, entityId, version,
       actorId, at: new Date().toISOString(), snapshot: structuredClone(snapshot) });
   }
 

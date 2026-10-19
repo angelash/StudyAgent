@@ -104,7 +104,7 @@ export class QuestionImportService {
     const requestKey = command.requestKey ?? this.store.nextId('request');
     const pipelineVersion = 'study-import-v2';
     const inputHash = createHash('sha256').update(JSON.stringify({ ...command, requestKey: undefined, pipelineVersion })).digest('hex');
-    const existing = this.store.questionImportJobs.find(j => j.ownerUserId === requestUser.id && j.requestKey === requestKey);
+    const existing = this.store.find('questionImportJobs', { ownerUserId: requestUser.id, requestKey: requestKey });
     if (existing) {
       if (existing.inputHash !== inputHash) throw new ConflictException('请求键已用于不同导入，请重新发起');
       return this.withTaskState(existing);
@@ -120,7 +120,7 @@ export class QuestionImportService {
       sourcePathOrUrl: files.map(f => f.name).join('、'), sourcePolicy: { ...command.sourcePolicy, licenseName: command.sourcePolicy.licenseName ?? null },
       status: 'pending', fileCount: files.length, recordCount: 0, warningCount: 0, errorMessage: null, createdAt: now, completedAt: null,
       taskId, fileIds: [...new Set(files.map(f => f.id))], ownerUserId: requestUser.id, requestKey, inputHash, pipelineVersion };
-    this.store.questionImportJobs.push(job);
+    this.store.append('questionImportJobs', job);
     await this.store.enqueueTask({ id: taskId, kind: 'question.pdf.import', ownerUserId: requestUser.id, requestKey, payloadHash: inputHash,
       payload: { jobId: job.id }, createdAt: now, maxAttempts: 3 });
     this.eventBus.publish('question.import_job_created', { jobId: job.id, taskId, subject: job.subject, actorId: requestUser.id });
@@ -296,7 +296,7 @@ export class QuestionImportService {
     knowledgePointIds: string[],
   ) {
     for (const knowledgePointId of knowledgePointIds) {
-      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId && item.subject === job.subject);
+      const exists = Boolean(this.store.find('knowledgePoints', { id: knowledgePointId, subject: job.subject }));
       if (!exists) {
         throw new BadRequestException(`Knowledge point not found: ${knowledgePointId}`);
       }
@@ -316,7 +316,7 @@ export class QuestionImportService {
       status: 'draft',
     };
 
-    this.store.questions.push(question);
+    this.store.append('questions', question);
     this.questionWorkspaceService.initializeQuestionWorkspace(question, requestUser.displayName);
 
     const blocks: QuestionDocument['blocks'] = [];
@@ -594,7 +594,7 @@ export class QuestionImportService {
   }
 
   private requireJob(jobId: string) {
-    const job = this.store.questionImportJobs.find((item) => item.id === jobId);
+    const job = this.store.find('questionImportJobs', { id: jobId });
     if (!job) {
       throw new NotFoundException('Question import job not found');
     }
@@ -602,7 +602,7 @@ export class QuestionImportService {
   }
 
   private requireRecord(recordId: string) {
-    const record = this.store.questionImportRecords.find((item) => item.id === recordId);
+    const record = this.store.find('questionImportRecords', { id: recordId });
     if (!record) {
       throw new NotFoundException('Question import record not found');
     }
@@ -610,7 +610,7 @@ export class QuestionImportService {
   }
 
   private requireQuestion(questionId: string) {
-    const question = this.store.questions.find((item) => item.id === questionId);
+    const question = this.store.find('questions', { id: questionId });
     if (!question) {
       throw new NotFoundException('Question not found');
     }

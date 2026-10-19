@@ -2,11 +2,11 @@
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
-默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本7）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
+默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本8）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
 
 兼容注入名 `InMemoryStoreService` 目前仍由旧模块引用，运行时已使用请求隔离的数据库事务；`domain_records` 为具有唯一约束、版本和稳定顺序的领域文档表。原始全量题库使用独立索引库，不能塞入该兼容接口。并发写基线冲突返回409，调用方应重读后重试，不能盲目覆盖。
 
-当前版本缓存只读快照，每请求仍核对数据库版本；请求只复制访问集合，其他进程提交后重新载入。全域版本冲突门禁仍保留，冷启动与跨进程更新仍可能触发整库读取。性能样本、隔离验证和剩余扩展范围见 [存储性能交付](20-storage-performance-delivery.md)。
+当前版本缓存只读快照，每请求仍核对数据库版本。显式查询只复制匹配记录，并登记内容和成员集合的读取依赖；直接数组访问保留整个集合检查。独立家庭可以合并提交，撤权、暂停、同一行修改和匹配集合变化仍返回409，调用方应重读核对。其他进程提交后仅重载变化集合，冷启动仍加载领域库。实现和8并发实测见 [并发学习交付](22-concurrent-learning-delivery.md)，早期读取基线见 [存储性能交付](20-storage-performance-delivery.md)。
 
 管理员只在本机创建：在环境中设置 `STUDY_ADMIN_PASSWORD`（至少10字符），执行 `npm run admin:create --workspace @study-agent/api -- <principal>`。命令不记录密码，不升级已存在账号。普通账号通过 `/parent/login` 的“创建账号”注册。
 

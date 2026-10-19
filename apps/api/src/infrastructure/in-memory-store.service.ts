@@ -3,8 +3,9 @@ import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
 import { existsSync } from 'node:fs';
-import { DomainDatabase, DomainState, StateSnapshot } from './domain-database';
+import { DomainDatabase, DomainState, StateSnapshot, freezeJson } from './domain-database';
 import { TaskFence, TaskIntent, TaskOperation } from './task-repository';
+import { DomainSelector, ReadDependency, compileSelector, indexedPositions, validateSelector } from './domain-selection';
 import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
 import {
   AIAnalysisResponse,
@@ -140,9 +141,15 @@ export type AIInsightRecord = {
   createdAt: string;
 };
 
+type StoreCollection = { [K in keyof InMemoryStoreService]: InMemoryStoreService[K] extends unknown[] ? K : never }[keyof InMemoryStoreService];
+type StoreRecord<K extends StoreCollection> = InMemoryStoreService[K] extends Array<infer T> ? T : never;
+type RequestWorkspace = { baseline: StateSnapshot; state: DomainState; touched: Set<string>; copied: Set<string>;
+  indexBases: DomainState; dirty: Map<string, Set<number>>; unindexed: Set<string>;
+  reads: Map<string, Map<string, DomainSelector> | null>; enqueue: TaskIntent[]; taskOperations: TaskOperation[] };
+
 @Injectable()
 export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstrap, OnModuleDestroy {
-  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState; touched: Set<string>; enqueue: TaskIntent[]; taskOperations: TaskOperation[] }>();
+  private readonly contexts = new AsyncLocalStorage<RequestWorkspace>();
   private readonly root: DomainState = {};
   private baseline: StateSnapshot = { revision: 0, state: {} };
   private database?: DomainDatabase;
@@ -157,22 +164,86 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
       this.root[key] = value;
       Object.defineProperty(this, key, { enumerable: true,
         get: () => {
-          const context = this.contexts.getStore();
-          if (!context) return this.root[key] ??= [];
-          if (!context.touched.has(key)) {
-            context.state[key] = structuredClone(context.state[key] ?? []);
-            context.touched.add(key);
-            this.workspaceCounters.collectionsCloned++;
-            this.workspaceCounters.recordsCloned += context.state[key].length;
-          }
-          return context.state[key];
+          this.recordRead(key);
+          return this.mutableCollection(key, true);
         },
         set: (items: unknown[]) => {
           const context = this.contexts.getStore();
-          if (context) { context.state[key] = items; context.touched.add(key); }
+          if (context) { this.recordRead(key); context.state[key] = items; context.touched.add(key); context.copied.add(key); }
           else this.root[key] = items;
         } });
     }
+  }
+
+  private recordRead(collection: string, where?: DomainSelector) {
+    const context = this.contexts.getStore(); if (!context) return;
+    if (!where || !Object.keys(where).length) { context.reads.set(collection, null); return; }
+    if (context.reads.get(collection) === null) return;
+    const reads = context.reads.get(collection) ?? new Map<string, DomainSelector>();
+    const key = JSON.stringify(Object.entries(where).sort(([a], [b]) => a.localeCompare(b)).map(([field, expected]) =>
+      [field, (Array.isArray(expected) ? expected : [expected]).map(value => value === undefined ? ['missing'] : ['value', value])]));
+    reads.set(key, structuredClone(where)); context.reads.set(collection, reads);
+  }
+
+  private mutableCollection(collection: string, allRecords: boolean): unknown[] {
+    const context = this.contexts.getStore();
+    if (!context) return this.root[collection] ??= [];
+    if (allRecords && !context.touched.has(collection)) {
+      context.state[collection] = structuredClone(context.state[collection] ?? []);
+      context.touched.add(collection); context.copied.add(collection);
+      this.workspaceCounters.collectionsCloned++; this.workspaceCounters.recordsCloned += context.state[collection].length;
+    } else if (!context.copied.has(collection)) {
+      context.state[collection] = [...(context.state[collection] ?? [])]; context.copied.add(collection);
+      this.workspaceCounters.collectionsCloned++;
+    }
+    return context.state[collection];
+  }
+
+  /** Equality selection records row and membership dependencies, including absent matches. */
+  select<K extends StoreCollection>(collection: K, where: DomainSelector): Array<StoreRecord<K>> {
+    validateSelector(where); this.recordRead(collection, where);
+    const context = this.contexts.getStore(), predicate = compileSelector(where);
+    let rows = (context ? context.state[collection] : this.root[collection]) ?? [];
+    const dirty = context?.dirty.get(collection) ?? new Set<number>(); context?.dirty.set(collection, dirty);
+    const candidates = context && !context.touched.has(collection) && !context.unindexed.has(collection) ? indexedPositions(context.indexBases[collection] ?? [], where) : undefined;
+    const positions = candidates ? [...new Set([...candidates, ...dirty])].sort((a, b) => a - b) : rows.map((_, position) => position);
+    const selected: Array<StoreRecord<K>> = [];
+    for (const position of positions) {
+      let row = rows[position]; if (!predicate(row)) continue;
+      if (Object.isFrozen(row)) { rows = this.mutableCollection(collection, false); row = rows[position] = structuredClone(row); this.workspaceCounters.recordsCloned++; }
+      dirty.add(position); selected.push(row as StoreRecord<K>);
+    }
+    return selected;
+  }
+
+  find<K extends StoreCollection>(collection: K, where: DomainSelector): StoreRecord<K> | undefined { return this.select(collection, where)[0]; }
+
+  /** Immutable analysis view. Edits must use find/select so dependencies and local copies remain explicit. */
+  inspect<K extends StoreCollection>(collection: K): ReadonlyArray<StoreRecord<K>> {
+    this.recordRead(collection);
+    const context = this.contexts.getStore(), rows = (context ? context.state[collection] : this.root[collection]) ?? [];
+    if (Object.isFrozen(rows)) return rows as Array<StoreRecord<K>>;
+    const copy = rows.map(row => {
+      if (Object.isFrozen(row)) return row;
+      if (context) this.workspaceCounters.recordsCloned++;
+      return structuredClone(row);
+    });
+    return freezeJson(copy) as Array<StoreRecord<K>>;
+  }
+
+  /** Append never reads all existing records; the database checks every new identity. */
+  append<K extends StoreCollection>(collection: K, ...records: Array<StoreRecord<K>>) {
+    const rows = this.mutableCollection(collection, false), context = this.contexts.getStore();
+    const dirty = context?.dirty.get(collection) ?? new Set<number>(); context?.dirty.set(collection, dirty);
+    for (const record of records) { dirty.add(rows.length); rows.push(record); }
+  }
+
+  remove<K extends StoreCollection>(collection: K, where: DomainSelector) {
+    validateSelector(where); this.recordRead(collection, where);
+    const rows = this.mutableCollection(collection, false), context = this.contexts.getStore();
+    const predicate = compileSelector(where), retained = rows.filter(row => !predicate(row));
+    if (context) { context.state[collection] = retained; context.unindexed.add(collection); } else this.root[collection] = retained;
+    return rows.length - retained.length;
   }
 
   async onModuleInit() {
@@ -206,20 +277,21 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     // collections are copied; the frozen cache is never a mutable request store.
     const baseline = await this.database.readImmutable();
     const state = { ...baseline.state };
-    return this.contexts.run({ baseline, state, touched: new Set(), enqueue: [], taskOperations: [] }, fn);
+    return this.contexts.run({ baseline, state, touched: new Set(), copied: new Set(), indexBases: baseline.state, dirty: new Map(), unindexed: new Set(), reads: new Map(), enqueue: [], taskOperations: [] }, fn);
   }
 
   async commitRequest(fence?: TaskFence) {
     const context = this.contexts.getStore();
     if (this.database && context) {
-      const revision = await this.database.commit(context.baseline, context.state, { enqueue: context.enqueue, fence, taskOperations: context.taskOperations });
-      const cached = this.database.snapshotAt(revision);
-      if (cached) context.baseline = cached;
-      else {
-        const checkpoint = { ...context.state };
-        for (const key of context.touched) checkpoint[key] = structuredClone(context.state[key]);
-        context.baseline = { revision, state: checkpoint };
-      }
+      const reads: ReadDependency[] = [...context.reads].flatMap(([collection, selections]) => selections === null ? [{ collection }] : [...selections.values()].map(where => ({ collection, where })));
+      const writeHints = Object.fromEntries([...context.copied].filter(collection => !context.touched.has(collection) && !context.unindexed.has(collection))
+        .map(collection => [collection, [...(context.dirty.get(collection) ?? [])]]));
+      const revision = await this.database.commit(context.baseline, context.state, { enqueue: context.enqueue, fence, taskOperations: context.taskOperations, reads, writeHints });
+      // A scoped commit can merge with newer unrelated data. Its checkpoint must
+      // describe this workspace, never pretend that old arrays are the latest snapshot.
+      const checkpoint = { ...context.state };
+      for (const key of context.copied) checkpoint[key] = context.state[key].map(row => Object.isFrozen(row) ? row : structuredClone(row));
+      context.baseline = { revision, state: checkpoint };
       context.enqueue = [];
       context.taskOperations = [];
     } else if (this.memoryQueue && (context || fence)) {
@@ -231,7 +303,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   async transaction<T>(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T> {
     if (!this.database && this.memoryQueue) {
       const state = structuredClone(this.root);
-      return this.contexts.run({ baseline: { revision: 0, state: structuredClone(state) }, state, touched: new Set(Object.keys(state)), enqueue: [], taskOperations: [] }, async () => {
+      return this.contexts.run({ baseline: { revision: 0, state: structuredClone(state) }, state, touched: new Set(Object.keys(state)), copied: new Set(Object.keys(state)), indexBases: {}, dirty: new Map(), unindexed: new Set(), reads: new Map(), enqueue: [], taskOperations: [] }, async () => {
         const result = await fn(); await this.commitRequest(fence); return result;
       });
     }

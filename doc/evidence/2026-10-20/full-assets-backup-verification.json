@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-10-19T18:30:00.152040+00:00",
+  "passed": true,
+  "verification": "The original full-backup command exited 0 after its built-in full verification; the incomplete marker is absent.",
+  "backupId": "ceee8518-e5b8-460e-aeb4-f61d95197441",
+  "verifiedFiles": 396147,
+  "assetFiles": 396135,
+  "bytes": 44626015355,
+  "manifestSha256": "fe427cf2873fcebfbce8f0b7a80507822fa90679c821fd3d8feb63856b62dacc",
+  "databaseSchemaVersions": [
+    1,
+    2,
+    3
+  ],
+  "databaseRevision": 85,
+  "scope": "Complete asset archive plus an older synthetic QA business snapshot; not the current family database.",
+  "restoreStatus": "Separate full restoration and independent asset hashes are still running."
+}

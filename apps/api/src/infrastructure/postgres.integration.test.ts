@@ -9,6 +9,7 @@ import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
 import { DomainDatabase } from './domain-database';
+import { scopedTransactionScenarios } from './scoped-transactions.scenarios';
 const require = createRequire(__filename);
 const location = process.env.STUDY_TEST_POSTGRES_URL;
 const suite = location ? describe : describe.skip;
@@ -25,14 +26,21 @@ suite('real PostgreSQL storage and API recovery', () => {
       await control.query(`DROP SCHEMA "${schema}" CASCADE`);
     }
     await control?.end();
-    const expectedCases = process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? 5 : 4;
+    const expectedCases = process.env.STUDY_TEST_POSTGRES_ADMIN_URL ? 6 : 5;
     if (process.env.STUDY_POSTGRES_EVIDENCE) writeFileSync(process.env.STUDY_POSTGRES_EVIDENCE, JSON.stringify({ at: new Date().toISOString(), driver: 'postgres', passedAllCases: metrics.length === expectedCases && metrics.every(m => m.passed), metrics,
-      limits: 'Small isolated functional sample. Global revision conflicts and whole-domain loading remain production scaling work.' }, null, 2) + '\n');
+      limits: 'Isolated functional acceptance. This does not establish production throughput or clinical measurement validity.' }, null, 2) + '\n');
   });
   async function scoped() {
     const schema = `study_qa_${randomUUID().replace(/-/g, '')}`; await control.query(`CREATE SCHEMA "${schema}"`); schemas.push(schema);
     const url = new URL(location!); url.searchParams.set('options', `-c search_path=${schema}`); return url.toString();
   }
+
+  it('merges independent families across pools while guarding permissions, plans, membership and concurrent edits', async () => {
+    const target = await scoped(), first = new DomainDatabase(target), second = new DomainDatabase(target);
+    await Promise.all([first.open(), second.open()]);
+    try { metrics.push({ case: 'scoped_transactions_and_partial_refresh', passed: true, ...await scopedTransactionScenarios(first, second) }); }
+    finally { await first.close(); await second.close(); }
+  });
 
   it('applies all migrations, rolls back uniqueness failures and rejects authorization snapshots after a concurrent revocation', async () => {
     const target = await scoped(), first = new DomainDatabase(target), second = new DomainDatabase(target);
@@ -61,7 +69,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       try { await upgrade.query('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
       const migrated = new DomainDatabase(target); await migrated.open();
       try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 7 });
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 8 });
     } finally { await first.close(); await second.close(); }
   });
 

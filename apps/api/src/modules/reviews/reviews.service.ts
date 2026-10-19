@@ -20,19 +20,19 @@ export class ReviewsService {
 
   private evidence(kind: EvidenceKind, responseId: string) {
     if (kind === 'diagnostic') {
-      const response = this.store.diagnosticResponses.find((item) => item.id === responseId);
-      const session = response && this.store.diagnosticSessions.find((item) => item.id === response.sessionId);
+      const response = this.store.find('diagnosticResponses', { id: responseId });
+      const session = response && this.store.find('diagnosticSessions', { id: response.sessionId });
       const snapshot = session?.questionSnapshots.find((item) => item.id === response?.questionId);
       if (!response || !session || !snapshot) throw new NotFoundException('作答证据不存在');
       return { response, session, snapshot, studentId: session.studentId, atomId: response.atomId,
-        revisions: this.store.scoringRevisions.filter((item) => item.responseId === responseId) };
+        revisions: this.store.select('scoringRevisions', { responseId: responseId }) };
     }
-    const response = this.store.practiceAttempts.find((item) => item.id === responseId);
-    const session = response && this.store.practiceSessions.find((item) => item.id === response.sessionId);
+    const response = this.store.find('practiceAttempts', { id: responseId });
+    const session = response && this.store.find('practiceSessions', { id: response.sessionId });
     const snapshot = session?.snapshots.find((item) => item.id === response?.questionId);
     if (!response || !session || !snapshot) throw new NotFoundException('训练证据不存在');
     return { response, session, snapshot, studentId: session.studentId, atomId: session.atomId,
-      revisions: this.store.practiceScoringRevisions.filter((item) => item.responseId === responseId) };
+      revisions: this.store.select('practiceScoringRevisions', { responseId: responseId }) };
   }
 
   queue(user: InMemoryUserAccount, input: unknown) {
@@ -54,8 +54,8 @@ export class ReviewsService {
         const pending = response.status === 'pending_review' && !version;
         if (query.state === 'pending' && !pending || query.state === 'reviewed' && !version) continue;
         rows.push({ kind, responseId: response.id, studentId: e.studentId,
-          nickname: this.store.students.find((item) => item.id === e.studentId)?.nickname ?? '孩子', subject: e.session.subject,
-          atomName: this.store.knowledgeAtoms.find((item) => item.id === e.atomId)?.name ?? e.atomId, stem: e.snapshot.stem.slice(0, 240),
+          nickname: this.store.find('students', { id: e.studentId })?.nickname ?? '孩子', subject: e.session.subject,
+          atomName: this.store.find('knowledgeAtoms', { id: e.atomId })?.name ?? e.atomId, stem: e.snapshot.stem.slice(0, 240),
           status: pending ? 'pending_review' : 'scored', submittedAt: response.submittedAt, reviewVersion: version,
           feedbackCount: this.store.evidenceFeedback.filter((item) => item.kind === kind && item.responseId === response.id && ['open', 'investigating'].includes(item.status)).length });
       }
@@ -73,13 +73,13 @@ export class ReviewsService {
     let rubric: ReturnType<typeof frozenRubric> = null, rubricIssue: string | null = null;
     try { rubric = frozenRubric(e.snapshot.answerSchema as QuestionAnswerSchema); }
     catch (error) { if (!(error instanceof BadRequestException)) throw error; rubricIssue = error.message; }
-    return { kind, responseId, student: { id: e.studentId, nickname: this.store.students.find((item) => item.id === e.studentId)?.nickname ?? '孩子' },
-      subject: e.session.subject, atomName: this.store.knowledgeAtoms.find((item) => item.id === e.atomId)?.name ?? e.atomId,
+    return { kind, responseId, student: { id: e.studentId, nickname: this.store.find('students', { id: e.studentId })?.nickname ?? '孩子' },
+      subject: e.session.subject, atomName: this.store.find('knowledgeAtoms', { id: e.atomId })?.name ?? e.atomId,
       payload, referenceAnswer: e.snapshot.answer, analysis: e.snapshot.analysis, response: e.response,
       rubric, rubricIssue, canScore: e.response.disposition === 'answered' && !rubricIssue,
       reviewVersion: Math.max(0, ...e.revisions.map((item) => item.version)),
       revisions: e.revisions.map(({ requestHash: _hash, ...item }) => item),
-      feedback: this.store.evidenceFeedback.filter((item) => item.kind === kind && item.responseId === responseId) };
+      feedback: this.store.select('evidenceFeedback', { kind: kind, responseId: responseId }) };
   }
 
   review(user: InMemoryUserAccount, kind: EvidenceKind, responseId: string, input: unknown) {
@@ -90,7 +90,7 @@ export class ReviewsService {
     const command = validate(evidenceFeedbackInputSchema, input);
     const e = this.evidence(command.kind, command.responseId);
     this.students.assertCanAccessStudent(user, e.studentId);
-    const existing = this.store.evidenceFeedback.find((item) => item.createdBy === user.id && item.requestKey === command.requestKey);
+    const existing = this.store.find('evidenceFeedback', { createdBy: user.id, requestKey: command.requestKey });
     if (existing) {
       if (existing.kind !== command.kind || existing.responseId !== command.responseId || existing.message !== command.message || existing.category !== command.category)
         throw new ConflictException('请求标识已用于另一份反馈');
@@ -100,7 +100,7 @@ export class ReviewsService {
     const feedback: EvidenceFeedback = { id: this.store.nextId('evidence_feedback'), ...command, studentId: e.studentId, subject: e.session.subject,
       createdBy: user.id, status: 'open', version: 1, createdAt: at, updatedAt: at,
       history: [{ status: 'open', note: command.message, actorId: user.id, at, version: 1 }] };
-    this.store.evidenceFeedback.push(feedback);
+    this.store.append('evidenceFeedback', feedback);
     this.events.publish('evidence.feedback_opened', { feedbackId: feedback.id, studentId: e.studentId, actorId: user.id });
     return feedback;
   }
@@ -113,15 +113,15 @@ export class ReviewsService {
     if (query.studentId && !reviewer) this.students.assertCanAccessStudent(user, query.studentId);
     const rows = this.store.evidenceFeedback.filter((item) =>
       (reviewer ? this.students.canReviewStudent(user, item.studentId) : user.role === 'admin' ||
-        (user.role === 'student' && this.store.students.some(s => s.id === item.studentId && s.userId === user.id)) ||
-        this.store.bindings.some((b) => b.parentUserId === user.id && b.studentId === item.studentId && b.status === 'active')) &&
+        (user.role === 'student' && Boolean(this.store.find('students', { id: item.studentId, userId: user.id }))) ||
+        Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: item.studentId, status: 'active' }))) &&
       (!query.kind || query.kind === item.kind) && (!query.responseId || query.responseId === item.responseId) &&
       (!query.studentId || query.studentId === item.studentId) && (!query.status || query.status === item.status)).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     return { total: rows.length, page: query.page, rows: rows.slice((query.page - 1) * 25, query.page * 25) };
   }
 
   resolveFeedback(user: InMemoryUserAccount, id: string, input: unknown) {
-    const feedback = this.store.evidenceFeedback.find((item) => item.id === id);
+    const feedback = this.store.find('evidenceFeedback', { id: id });
     if (!feedback) throw new NotFoundException('反馈不存在');
     this.students.assertCanReviewStudent(user, feedback.studentId);
     const command = validate(z.object({ expectedVersion: z.number().int().positive(),

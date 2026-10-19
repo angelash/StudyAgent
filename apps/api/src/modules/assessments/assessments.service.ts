@@ -42,7 +42,7 @@ export class AssessmentsService {
       startedAt: new Date().toISOString(),
       completedAt: null,
     };
-    this.store.assessments.push(session);
+    this.store.append('assessments', session);
     this.eventBus.publish('assessment.started', {
       sessionId: session.id,
       studentId: session.studentId,
@@ -94,7 +94,7 @@ export class AssessmentsService {
       existing.analysis = graded.analysis;
       existing.elapsedMs = command.elapsedMs;
     } else {
-      this.store.assessmentAnswers.push({
+      this.store.append('assessmentAnswers', {
         id: this.store.nextId('assessment_answer'),
         sessionId,
         questionId: question.id,
@@ -131,11 +131,11 @@ export class AssessmentsService {
   complete(requestUser: InMemoryUserAccount, sessionId: string): AssessmentResult {
     const session = this.requireSession(sessionId);
     this.studentsService.assertCanAccessStudent(requestUser, session.studentId);
-    const existing = this.store.assessmentResults.find((item) => item.sessionId === sessionId);
+    const existing = this.store.find('assessmentResults', { sessionId: sessionId });
     if (session.status === 'completed' && existing) {
       return existing;
     }
-    const answers = this.store.assessmentAnswers.filter((item) => item.sessionId === sessionId);
+    const answers = this.store.select('assessmentAnswers', { sessionId: sessionId });
     if (answers.length === 0) {
       throw new BadRequestException('Assessment has no answers');
     }
@@ -208,7 +208,7 @@ export class AssessmentsService {
     if (existing) {
       Object.assign(existing, result);
     } else {
-      this.store.assessmentResults.push(result);
+      this.store.append('assessmentResults', result);
     }
 
     this.eventBus.publish('assessment.completed', {
@@ -225,7 +225,7 @@ export class AssessmentsService {
   getResult(requestUser: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(sessionId);
     this.studentsService.assertCanAccessStudent(requestUser, session.studentId);
-    const result = this.store.assessmentResults.find((item) => item.sessionId === sessionId);
+    const result = this.store.find('assessmentResults', { sessionId: sessionId });
     if (!result) {
       throw new NotFoundException('Assessment result not found');
     }
@@ -271,7 +271,7 @@ export class AssessmentsService {
   }
 
   private requireSession(sessionId: string) {
-    const session = this.store.assessments.find((item) => item.id === sessionId);
+    const session = this.store.find('assessments', { id: sessionId });
     if (!session) {
       throw new NotFoundException('Assessment session not found');
     }
@@ -279,7 +279,7 @@ export class AssessmentsService {
   }
 
   private requireQuestion(questionId: string) {
-    const question = this.store.questions.find((item) => item.id === questionId);
+    const question = this.store.find('questions', { id: questionId });
     if (!question) {
       throw new NotFoundException('Question not found');
     }

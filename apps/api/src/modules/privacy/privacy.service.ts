@@ -24,12 +24,12 @@ export class PrivacyService {
   }
   private child(actor: InMemoryUserAccount, id: string) {
     this.parent(actor);
-    const child = this.store.students.find(row => row.id === id);
-    if (!child || !this.store.bindings.some(row => row.studentId === id && row.parentUserId === actor.id && row.status === 'active')) throw new NotFoundException('没有可管理的孩子档案');
+    const child = this.store.find('students', { id: id });
+    if (!child || !Boolean(this.store.find('bindings', { studentId: id, parentUserId: actor.id, status: 'active' }))) throw new NotFoundException('没有可管理的孩子档案');
     return child;
   }
   private children(actor: InMemoryUserAccount) {
-    return this.store.students.filter(row => this.store.bindings.some(binding => binding.studentId === row.id && binding.parentUserId === actor.id && binding.status === 'active'));
+    return this.store.students.filter(row => Boolean(this.store.find('bindings', { studentId: row.id, parentUserId: actor.id, status: 'active' })));
   }
   private guardians(id: string) {
     return [...new Set(this.store.bindings.filter(row => row.studentId === id && row.status === 'active' &&
@@ -40,7 +40,7 @@ export class PrivacyService {
     return { account: { id: actor.id, principal: actor.principal, displayName: actor.displayName }, policyVersion, retentionNotice,
       children: this.children(actor).map(child => ({ id: child.id, nickname: child.nickname, grade: child.grade, guardianCount: this.guardians(child.id).length,
         canDelete: this.guardians(child.id).every(id => id === actor.id), counts: selectionCounts(studentRecords(this.store, child.id)) })),
-      receipts: this.store.privacyRequests.filter(row => row.actorId === actor.id).slice(-25).reverse().map(({ id, kind, completedAt, counts }) => ({ id, kind, completedAt, counts })) };
+      receipts: this.store.select('privacyRequests', { actorId: actor.id }).slice(-25).reverse().map(({ id, kind, completedAt, counts }) => ({ id, kind, completedAt, counts })) };
   }
   private previewData(actor: InMemoryUserAccount, studentId?: string) {
     this.parent(actor);
@@ -61,13 +61,13 @@ export class PrivacyService {
   private receipt(actor: InMemoryUserAccount, kind: PrivacyReceipt['kind'], subjectId: string, requestKey: string, inputHash: string, counts: PrivacyReceipt['counts']) {
     const entry: PrivacyReceipt = { id: this.store.nextId('privacy'), actorId: actor.id, kind, subjectHash: privacyHash({ id: subjectId }), requestKey, inputHash,
       completedAt: new Date().toISOString(), counts };
-    this.store.privacyRequests.push(entry); return entry;
+    this.store.append('privacyRequests', entry); return entry;
   }
   async export(actor: InMemoryUserAccount, input: unknown, studentId?: string): Promise<PrivacyExport> {
     this.parent(actor); const command = validate(credentials, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
     const children = studentId ? [this.child(actor, studentId)] : this.children(actor);
     const kind = studentId ? 'student_export' : 'account_export', subjectId = studentId ?? actor.id;
-    const previous = this.store.privacyRequests.find(row => row.actorId === actor.id && row.requestKey === command.requestKey);
+    const previous = this.store.find('privacyRequests', { actorId: actor.id, requestKey: command.requestKey });
     if (previous && (previous.kind !== kind || previous.subjectHash !== privacyHash({ id: subjectId }))) throw new ConflictException('请求标识已用于另一资料操作');
     if (!previous && this.store.privacyRequests.filter(row => row.actorId === actor.id && row.kind.endsWith('_export') && Date.parse(row.completedAt) > Date.now() - 3600_000).length >= 10)
       throw new HttpException('一小时内已导出十次，请稍后再试', 429);
@@ -111,7 +111,7 @@ export class PrivacyService {
     for (const child of prepared.snapshot.students) this.child(actor, child.id);
     for (const child of prepared.snapshot.students) for (const row of (child.records.studentMedia ?? []) as StudentMedia[]) {
       if (row.status !== 'ready') continue;
-      if (!this.store.studentMedia.some(current => current.id === row.id && current.status === 'ready' && current.sha256 === row.sha256 && current.studentId === child.id)) throw new ConflictException('作答附件已变化，请重新准备最新副本');
+      if (!Boolean(this.store.find('studentMedia', { id: row.id, status: 'ready', sha256: row.sha256, studentId: child.id }))) throw new ConflictException('作答附件已变化，请重新准备最新副本');
     }
     const archive = await this.archiveForSnapshot(prepared.snapshot);
     this.preparedArchives.delete(id);
@@ -133,7 +133,7 @@ export class PrivacyService {
     this.parent(actor); const command = validate(deletion, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
     const kind = studentId ? 'student_delete' : 'account_delete', subjectId = studentId ?? actor.id;
     const inputHash = privacyHash({ kind, subjectId, confirmation: command.confirmation, fingerprint: command.fingerprint });
-    const previous = this.store.privacyRequests.find(row => row.actorId === actor.id && row.requestKey === command.requestKey);
+    const previous = this.store.find('privacyRequests', { actorId: actor.id, requestKey: command.requestKey });
     if (previous) { if (previous.kind !== kind || previous.inputHash !== inputHash) throw new ConflictException('请求标识已用于另一资料操作'); return previous; }
     const { selection, preview } = this.previewData(actor, studentId);
     if (!preview.canDelete) throw new ConflictException(preview.blockers.join(' '));

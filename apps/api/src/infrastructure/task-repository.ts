@@ -2,6 +2,7 @@ import { ConflictException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
 import type { Pool, PoolClient } from 'pg';
+import { serializeSqlite } from './sqlite-serialization';
 
 export type TaskIntent = { id: string; kind: string; ownerUserId: string; requestKey: string; payloadHash: string;
   payload: Record<string, unknown>; createdAt: string; maxAttempts: number };
@@ -29,7 +30,7 @@ export const taskColumns = `id TEXT PRIMARY KEY, kind TEXT NOT NULL, owner_id TE
 
 /** The queue is the transactional outbox itself. Claims and heartbeats never rewrite domain documents. */
 export class TaskRepository {
-  constructor(private readonly sqlite?: DatabaseSync, private readonly postgres?: Pool, private readonly now = () => Date.now()) {}
+  constructor(private readonly sqlite?: DatabaseSync, private readonly postgres?: Pool, private readonly now = () => Date.now(), private readonly sqliteQueueKey?: string) {}
 
   async open() {
     const sql = `CREATE TABLE IF NOT EXISTS durable_tasks(${taskColumns});
@@ -37,7 +38,14 @@ export class TaskRepository {
       CREATE INDEX IF NOT EXISTS durable_task_owner ON durable_tasks(owner_id,created_at);
       CREATE TABLE IF NOT EXISTS durable_task_history(id TEXT PRIMARY KEY,task_id TEXT NOT NULL,action TEXT NOT NULL,actor_id TEXT NOT NULL,at TEXT NOT NULL,detail TEXT NOT NULL);
       CREATE INDEX IF NOT EXISTS durable_task_history_task ON durable_task_history(task_id,at);`;
-    if (this.sqlite) this.sqlite.exec(sql); else await this.postgres!.query(sql);
+    if (this.sqlite) this.sqlite.exec(sql);
+    else {
+      const client = await this.postgres!.connect();
+      try {
+        await client.query('BEGIN'); await client.query('SELECT pg_advisory_xact_lock(73199402)');
+        await client.query(sql); await client.query('COMMIT');
+      } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
+    }
   }
 
   /** Call inside the SAME transaction as the requesting domain change. */
@@ -201,5 +209,8 @@ export class TaskRepository {
   }
   private tail: Promise<unknown> = Promise.resolve();
   /** Shared with DomainDatabase so asynchronous SQLite transactions cannot interleave on this connection. */
-  serial<T>(fn: () => Promise<T>) { const pending = this.tail.then(fn, fn); this.tail = pending.catch(() => {}); return pending; }
+  serial<T>(fn: () => Promise<T>) {
+    if (this.sqliteQueueKey) return serializeSqlite(this.sqliteQueueKey, fn);
+    const pending = this.tail.then(fn, fn); this.tail = pending.catch(() => {}); return pending;
+  }
 }

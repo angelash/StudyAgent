@@ -25,26 +25,26 @@ export class LibraryService {
     if (!privileged(user)) throw new ForbiddenException('原始资料仅供教研审核，请在已发布练习库中选卷');
   }
   private requirePaper(user: InMemoryUserAccount, id: string) {
-    const publication = this.store.paperPublications.find((item) => item.paperId === id);
+    const publication = this.store.find('paperPublications', { paperId: id });
     if (!privileged(user) && publication?.status !== 'published') throw new ForbiddenException('此试卷尚未通过发布审核');
     const row = this.repo.paper(id);
     if (!row) throw new NotFoundException('试卷不存在');
     return row;
   }
   private metadata(row: PaperRow, user: InMemoryUserAccount) {
-    const publication = this.store.paperPublications.find((item) => item.paperId === row.id);
+    const publication = this.store.find('paperPublications', { paperId: row.id });
     return { id: row.id, title: row.title, grade: row.grade, subject: row.subject, province: row.province,
       paperType: row.paper_type, year: row.year, state: row.content_state, expected: row.expected,
       available: row.available, missing: row.missing, hasPdf: Boolean(row.pdf_url),
       flags: JSON.parse(row.metadata_flags || '[]') as string[],
       publicationStatus: publication?.status ?? 'unreviewed',
-      bookmarked: this.store.libraryBookmarks.some((item) => item.userId === user.id && item.paperId === row.id) };
+      bookmarked: Boolean(this.store.find('libraryBookmarks', { userId: user.id, paperId: row.id })) };
   }
   overview(user: InMemoryUserAccount) {
     return { ready: this.repo.available, researchAccess: privileged(user),
       research: this.repo.available && privileged(user) ? this.repo.stats() : null,
-      published: this.store.paperPublications.filter((item) => item.status === 'published').length,
-      bookmarks: this.store.libraryBookmarks.filter((item) => item.userId === user.id).length,
+      published: this.store.select('paperPublications', { status: 'published' }).length,
+      bookmarks: this.store.select('libraryBookmarks', { userId: user.id }).length,
       notice: '原始题卷先经过来源、内容和媒体审核。整卷练习与知识点评测的题目审核分别进行。' };
   }
   facets() { return this.repo.facets(); }
@@ -52,7 +52,7 @@ export class LibraryService {
     const query = validate(searchLibrarySchema, input);
     if (query.collection === 'research') this.assertResearch(user);
     const visible = query.collection === 'research' ? undefined : this.store.paperPublications.filter((item) => item.status === 'published' &&
-      (query.collection !== 'bookmarks' || this.store.libraryBookmarks.some((bookmark) => bookmark.userId === user.id && bookmark.paperId === item.paperId)))
+      (query.collection !== 'bookmarks' || Boolean(this.store.find('libraryBookmarks', { userId: user.id, paperId: item.paperId }))))
       .map((item) => item.paperId);
     const result = this.repo.search(query, visible);
     return { ...result, items: result.items.map((item) => this.metadata(item, user)) };
@@ -88,7 +88,7 @@ export class LibraryService {
     } : { position, id: `missing-${position}`, missing: true, html: '', options: [] });
     const pdf = row.pdf_url ? media(row.pdf_url) : null;
     return { ...this.metadata(row, user), questions, pdf, missingMedia: missingMedia.size,
-      publication: privileged(user) ? this.store.paperPublications.find((item) => item.paperId === id) ?? null : null,
+      publication: privileged(user) ? this.store.find('paperPublications', { paperId: id }) ?? null : null,
       source: '本地保存的试卷宝原始资料',
       notice: row.content_state === 'partial' ? `原始资料缺少 ${row.missing ?? '部分'} 道题，已保留缺题位置。` :
         row.content_state === 'pdf' ? '此卷以原始 PDF 保存。尚未完成逐题结构化。' : '结构已恢复；练习结果不自动计入知识点能力评测。' };
@@ -109,10 +109,10 @@ export class LibraryService {
       if (missing.length) throw new BadRequestException(`还有 ${missing.length} 项媒体未完成本地校验，暂不可发布`);
       if (!row.available && !row.pdf_url) throw new BadRequestException('缺少可用的题目或 PDF');
     }
-    let publication = this.store.paperPublications.find((item) => item.paperId === id);
+    let publication = this.store.find('paperPublications', { paperId: id });
     if (!publication) { publication = { id: `paper-publication:${id}`, paperId: id, status: command.status,
       licenseEvidence: command.licenseEvidence, mediaReviewed: true, contentReviewed: true,
-      reviewerId: user.id, reviewedAt: new Date().toISOString(), version: 0, history: [] }; this.store.paperPublications.push(publication); }
+      reviewerId: user.id, reviewedAt: new Date().toISOString(), version: 0, history: [] }; this.store.append('paperPublications', publication); }
     Object.assign(publication, { status: command.status, licenseEvidence: command.licenseEvidence,
       reviewerId: user.id, reviewedAt: new Date().toISOString(), version: publication.version + 1 });
     publication.history.push({ at: publication.reviewedAt, actorId: user.id, status: command.status, reason: command.reason });
@@ -124,7 +124,7 @@ export class LibraryService {
     const { bookmarked } = validate(z.object({ bookmarked: z.boolean() }).strict(), input);
     const key = `bookmark:${user.id}:${id}`;
     this.store.libraryBookmarks = this.store.libraryBookmarks.filter((item) => item.id !== key);
-    if (bookmarked) this.store.libraryBookmarks.push({ id: key, userId: user.id, paperId: id, createdAt: new Date().toISOString() });
+    if (bookmarked) this.store.append('libraryBookmarks', { id: key, userId: user.id, paperId: id, createdAt: new Date().toISOString() });
     return { bookmarked };
   }
 }

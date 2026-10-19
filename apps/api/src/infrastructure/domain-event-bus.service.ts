@@ -16,7 +16,7 @@ export class DomainEventBusService {
       payload,
     };
 
-    this.store.events.push(envelope as Record<string, unknown>);
+    this.store.append('events', envelope as Record<string, unknown>);
     return envelope;
   }
 

@@ -42,20 +42,20 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
     const token = requestToken(request);
-    const session = token ? this.store.sessions.find((item) => item.tokenHash === hashToken(token)) : undefined;
+    const session = token ? this.store.find('sessions', { tokenHash: hashToken(token) }) : undefined;
     if (!session || session.revokedAt || Date.parse(session.expiresAt) <= Date.now()) {
       throw new UnauthorizedException('Invalid session token');
     }
 
-    const user = this.store.users.find((item) => item.id === session.userId);
+    const user = this.store.find('users', { id: session.userId });
     if (!user || user.status !== 'active') {
       throw new UnauthorizedException('User is unavailable');
     }
 
     if (user.role === 'student') {
-      const access = this.store.studentLearningAccess.find(a => a.studentId === session.studentId && a.userId === user.id && a.status === 'enabled' && a.version === session.accessVersion);
-      const guardian = this.store.users.find(u => u.id === session.guardianId && u.status === 'active' && ['parent', 'admin'].includes(u.role));
-      const bound = guardian && (guardian.role === 'admin' || this.store.bindings.some(b => b.parentUserId === guardian.id && b.studentId === session.studentId && b.status === 'active'));
+      const access = this.store.find('studentLearningAccess', { studentId: session.studentId, userId: user.id, status: 'enabled', version: session.accessVersion });
+      const guardian = this.store.find('users', { id: session.guardianId, status: 'active', role: ['parent', 'admin'] });
+      const bound = guardian && (guardian.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: guardian.id, studentId: session.studentId, status: 'active' })));
       if (!access || !bound) throw new UnauthorizedException('学习权限已变更，请由家长重新开启');
       const path = request.path.replace(/^\/api\//, '').replace(/\/$/, '');
       if (!learningRoutes[request.method]?.some(pattern => pattern.test(path))) throw new ForbiddenException('这是孩子的学习身份，请由家长登录后管理');

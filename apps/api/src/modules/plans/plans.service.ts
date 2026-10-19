@@ -95,7 +95,7 @@ export class PlansService {
     if (existingIndex >= 0) {
       this.store.studyPlans[existingIndex] = built;
     } else {
-      this.store.studyPlans.push(built);
+      this.store.append('studyPlans', built);
     }
 
     this.eventBus.publish('weekly_plan.generated', {

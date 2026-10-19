@@ -289,13 +289,13 @@ export class ProgressService {
 
     return {
       studentCount: this.store.students.length,
-      activeParentCount: new Set(this.store.bindings.filter((item) => item.status === 'active').map((item) => item.parentUserId)).size,
+      activeParentCount: new Set(this.store.select('bindings', { status: 'active' }).map((item) => item.parentUserId)).size,
       textbookVolumeCount: this.store.textbookVolumes.length,
       knowledgePointCount: this.store.knowledgeAtoms.length,
-      publishedQuestionCount: this.store.questions.filter((item) => item.status === 'published').length,
-      completedAssessmentCount: this.store.diagnosticSessions.filter((item) => item.status === 'completed').length,
-      completedMissionCount: this.store.practiceSessions.filter((item) => item.status === 'completed').length,
-      activeStudyPlanCount: this.store.diagnosticPlans.filter((item) => item.status === 'active').length,
+      publishedQuestionCount: this.store.select('questions', { status: 'published' }).length,
+      completedAssessmentCount: this.store.select('diagnosticSessions', { status: 'completed' }).length,
+      completedMissionCount: this.store.select('practiceSessions', { status: 'completed' }).length,
+      activeStudyPlanCount: this.store.select('diagnosticPlans', { status: 'active' }).length,
       aiInsightCount: this.store.aiInsights.length,
     };
   }
@@ -306,17 +306,17 @@ export class ProgressService {
     }
 
     const sourceBreakdown = {
-      assessment: this.store.aiInsights.filter((item) => item.sourceType === 'assessment').length,
-      hint: this.store.aiInsights.filter((item) => item.sourceType === 'hint').length,
-      assistant: this.store.aiInsights.filter((item) => item.sourceType === 'assistant').length,
+      assessment: this.store.select('aiInsights', { sourceType: 'assessment' }).length,
+      hint: this.store.select('aiInsights', { sourceType: 'hint' }).length,
+      assistant: this.store.select('aiInsights', { sourceType: 'assistant' }).length,
     };
     const confidenceBreakdown = {
-      low: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'low').length,
-      medium: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'medium').length,
-      high: this.store.aiInsights.filter((item) => item.payload.confidenceLevel === 'high').length,
+      low: this.store.select('aiInsights', { 'payload.confidenceLevel': 'low' }).length,
+      medium: this.store.select('aiInsights', { 'payload.confidenceLevel': 'medium' }).length,
+      high: this.store.select('aiInsights', { 'payload.confidenceLevel': 'high' }).length,
     };
     const reviewRequiredCount = this.store.aiInsights.filter((item) => item.payload.reviewRequired).length;
-    const assistantInsights = this.store.aiInsights.filter((item) => item.sourceType === 'assistant');
+    const assistantInsights = this.store.select('aiInsights', { sourceType: 'assistant' });
     const searchBackedAssistantCount = assistantInsights.filter((item) => this.getSearchResultCount(item) > 0).length;
     const searchBackedAssistantRate =
       assistantInsights.length > 0
@@ -419,7 +419,7 @@ export class ProgressService {
         masteryScore,
         confidenceScore,
         status,
-        updatedAt: latestResults[0]?.completedAt ?? this.store.missions.find((item) => item.studentId === studentId && item.subject === subject)?.createdAt ?? new Date().toISOString(),
+        updatedAt: latestResults[0]?.completedAt ?? this.store.find('missions', { studentId: studentId, subject: subject })?.createdAt ?? new Date().toISOString(),
       };
     });
   }
@@ -642,7 +642,7 @@ export class ProgressService {
     const trend = new Map<string, { firstScore: number; latestScore: number }>();
 
     for (const session of sessions) {
-      const result = this.store.assessmentResults.find((item) => item.sessionId === session.id);
+      const result = this.store.find('assessmentResults', { sessionId: session.id });
       if (!result) {
         continue;
       }

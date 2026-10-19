@@ -47,7 +47,7 @@ export class StudentsService {
       defaultVersionMap: command.defaultVersionMap,
     };
 
-    this.store.students.push(profile);
+    this.store.append('students', profile);
 
     const enrollments: SubjectEnrollment[] = (['chinese', 'math', 'english'] as const).map((subject) => ({
       id: this.store.nextId('enroll'),
@@ -56,7 +56,7 @@ export class StudentsService {
       enabled: Boolean(command.defaultVersionMap[subject]),
       textbookVersionId: command.defaultVersionMap[subject],
     }));
-    this.store.subjectEnrollments.push(...enrollments);
+    this.store.append('subjectEnrollments', ...enrollments);
 
     const binding: ParentStudentBinding = {
       id: this.store.nextId('binding'),
@@ -65,7 +65,7 @@ export class StudentsService {
       relation: 'guardian',
       status: 'active',
     };
-    this.store.bindings.push(binding);
+    this.store.append('bindings', binding);
 
     this.eventBus.publish('student.created', {
       studentId: profile.id,
@@ -97,20 +97,18 @@ export class StudentsService {
     const token = randomBytes(32).toString('base64url');
     const invitation = { id: this.store.nextId('invite'), studentId, issuerId: parentUser.id,
       recipientPrincipal: principal, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + 24 * 3600_000).toISOString(), consumedAt: null };
-    this.store.studentInvitations.push(invitation);
+    this.store.append('studentInvitations', invitation);
     this.eventBus.publish('student.invitation_created', { studentId, issuerId: parentUser.id, invitationId: invitation.id });
     return { id: invitation.id, token, expiresAt: invitation.expiresAt, recipientPrincipal: principal };
   }
 
   bindStudent(parentUser: InMemoryUserAccount, studentId: string, inviteToken?: string) {
-    const student = this.store.students.find((item) => item.id === studentId);
+    const student = this.store.find('students', { id: studentId });
     if (!student) {
       throw new NotFoundException('Student not found');
     }
 
-    const existing = this.store.bindings.find(
-      (item) => item.parentUserId === parentUser.id && item.studentId === studentId && item.status === 'active',
-    );
+    const existing = this.store.find('bindings', { parentUserId: parentUser.id, studentId, status: 'active' });
     if (existing) {
       return existing;
     }
@@ -128,19 +126,19 @@ export class StudentsService {
       relation: 'guardian',
       status: 'active',
     };
-    this.store.bindings.push(binding);
+    this.store.append('bindings', binding);
     return binding;
   }
 
   getProfile(requestUser: InMemoryUserAccount, studentId: string) {
     this.assertCanAccessStudent(requestUser, studentId);
 
-    const profile = this.store.students.find((item) => item.id === studentId);
+    const profile = this.store.find('students', { id: studentId });
     if (!profile) {
       throw new NotFoundException('Student not found');
     }
 
-    const enrollments = this.store.subjectEnrollments.filter((item) => item.studentId === studentId);
+    const enrollments = this.store.select('subjectEnrollments', { studentId: studentId });
     return {
       ...profile,
       enrollments,
@@ -148,13 +146,12 @@ export class StudentsService {
   }
 
   listChildren(parentUser: InMemoryUserAccount) {
-    const bindings = this.store.bindings.filter((item) => item.parentUserId === parentUser.id && item.status === 'active');
+    const bindings = this.store.select('bindings', { parentUserId: parentUser.id, status: 'active' });
     return bindings.map((binding) => this.getProfile(parentUser, binding.studentId));
   }
 
   canReviewStudent(user: InMemoryUserAccount, studentId: string) {
-    return user.role === 'admin' || (user.role === 'teacher' && this.store.teacherAssignments.some((assignment) =>
-      assignment.studentId === studentId && assignment.teacherUserId === user.id && assignment.status === 'active'));
+    return user.role === 'admin' || (user.role === 'teacher' && Boolean(this.store.find('teacherAssignments', { studentId: studentId, teacherUserId: user.id, status: 'active' })));
   }
 
   assertCanReviewStudent(user: InMemoryUserAccount, studentId: string) {
@@ -164,13 +161,13 @@ export class StudentsService {
   assertGuardian(user: InMemoryUserAccount, studentId: string) {
     this.assertCanAccessStudent(user, studentId);
     if (!['parent', 'admin'].includes(user.role)) throw new ForbiddenException('需要监护人权限');
-    if (!this.store.students.some((student) => student.id === studentId)) throw new NotFoundException('孩子档案不存在');
+    if (!Boolean(this.store.find('students', { id: studentId }))) throw new NotFoundException('孩子档案不存在');
   }
 
   reviewerAssignments(user: InMemoryUserAccount, studentId: string) {
     this.assertGuardian(user, studentId);
-    return this.store.teacherAssignments.filter((item) => item.studentId === studentId).map((assignment) => {
-      const teacher = this.store.users.find((item) => item.id === assignment.teacherUserId);
+    return this.store.select('teacherAssignments', { studentId: studentId }).map((assignment) => {
+      const teacher = this.store.find('users', { id: assignment.teacherUserId });
       return { ...assignment, displayName: teacher?.displayName ?? '账号已不可用', principal: teacher?.principal ?? '' };
     });
   }
@@ -178,20 +175,20 @@ export class StudentsService {
   grantReviewer(user: InMemoryUserAccount, studentId: string, input: unknown) {
     this.assertGuardian(user, studentId);
     const { principal } = validate(z.object({ principal: z.string().trim().min(3).max(254) }).strict(), input);
-    const teacher = this.store.users.find((item) => item.principal === principal.toLowerCase() && item.role === 'teacher' && item.status === 'active');
+    const teacher = this.store.find('users', { principal: principal.toLowerCase(), role: 'teacher', status: 'active' });
     if (!teacher) throw new BadRequestException('请填写已开通教师身份的账号');
-    const existing = this.store.teacherAssignments.find((item) => item.studentId === studentId && item.teacherUserId === teacher.id && item.status === 'active');
+    const existing = this.store.find('teacherAssignments', { studentId: studentId, teacherUserId: teacher.id, status: 'active' });
     if (existing) return existing;
     const assignment = { id: this.store.nextId('teacher_assignment'), studentId, teacherUserId: teacher.id, grantedBy: user.id,
       permission: 'scoring_review' as const, status: 'active' as const, createdAt: new Date().toISOString(), revokedAt: null, revokedBy: null };
-    this.store.teacherAssignments.push(assignment);
+    this.store.append('teacherAssignments', assignment);
     this.eventBus.publish('student.reviewer_granted', { studentId, assignmentId: assignment.id, actorId: user.id });
     return assignment;
   }
 
   revokeReviewer(user: InMemoryUserAccount, studentId: string, assignmentId: string) {
     this.assertGuardian(user, studentId);
-    const assignment = this.store.teacherAssignments.find((item) => item.id === assignmentId && item.studentId === studentId);
+    const assignment = this.store.find('teacherAssignments', { id: assignmentId, studentId: studentId });
     if (!assignment) throw new NotFoundException('授权不存在');
     if (assignment.status === 'active') {
       assignment.status = 'revoked'; assignment.revokedAt = new Date().toISOString(); assignment.revokedBy = user.id;
@@ -205,14 +202,12 @@ export class StudentsService {
       return;
     }
     if (requestUser.role === 'student') {
-      if (this.store.students.some(s => s.id === studentId && s.userId === requestUser.id) &&
-        this.store.studentLearningAccess.some(a => a.studentId === studentId && a.userId === requestUser.id && a.status === 'enabled')) return;
+      if (Boolean(this.store.find('students', { id: studentId, userId: requestUser.id })) &&
+        Boolean(this.store.find('studentLearningAccess', { studentId: studentId, userId: requestUser.id, status: 'enabled' }))) return;
       throw new ForbiddenException('只能访问当前孩子的学习记录');
     }
 
-    const hasBinding = this.store.bindings.some(
-      (item) => item.parentUserId === requestUser.id && item.studentId === studentId && item.status === 'active',
-    );
+    const hasBinding = Boolean(this.store.find('bindings', { parentUserId: requestUser.id, studentId, status: 'active' }));
     if (!hasBinding) {
       throw new ForbiddenException('You cannot access this student');
     }

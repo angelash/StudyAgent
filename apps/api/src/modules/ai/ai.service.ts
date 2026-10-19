@@ -207,7 +207,7 @@ export class AiService {
       s.contextRefType === session.contextRefType && s.contextRefId === session.contextRefId && (s.contextItemId ?? null) === session.contextItemId);
     if (existing) { existing.scopeKey = session.scopeKey; return existing; }
 
-    this.store.assistantSessions.push(session);
+    this.store.append('assistantSessions', session);
     this.eventBus.publish('assistant.session_opened', {
       sessionId: session.id,
       userRole: session.userRole,
@@ -216,7 +216,7 @@ export class AiService {
   }
 
   assertSessionOwner(sessionId: string, user: InMemoryUserAccount) {
-    const session = this.store.assistantSessions.find((item) => item.id === sessionId);
+    const session = this.store.find('assistantSessions', { id: sessionId });
     if (!session || session.ownerUserId !== user.id) throw new NotFoundException('Assistant session not found');
     if (session.studentId) this.students.assertCanAccessStudent(user, session.studentId);
     this.resolveQuestionContext(session);
@@ -232,10 +232,10 @@ export class AiService {
     if (session.contextRefType === 'practice') {
       const practice = this.store.practiceSessions.find(s => s.id === session.contextRefId && matches(s.studentId, s.subject));
       if (!practice) throw new NotFoundException('当前学习上下文不存在');
-      if (practice.status === 'in_progress' && !this.store.diagnosticPlans.some(p => p.id === practice.planId && p.status === 'active')) throw new BadRequestException('指导计划已暂停，请先由家长恢复');
+      if (practice.status === 'in_progress' && !Boolean(this.store.find('diagnosticPlans', { id: practice.planId, status: 'active' }))) throw new BadRequestException('指导计划已暂停，请先由家长恢复');
       const question = practice.snapshots.find(q => q.id === session.contextItemId);
       if (!question) throw new BadRequestException('请指定这次练习中正在查看的题目');
-      const attempts = this.store.practiceAttempts.filter(a => a.sessionId === practice.id && a.questionId === question.id);
+      const attempts = this.store.select('practiceAttempts', { sessionId: practice.id, questionId: question.id });
       const latest = attempts.at(-1);
       return { kind: 'practice' as const, sessionId: practice.id, itemId: question.id, question, atomId: practice.atomId,
         draft: practice.drafts?.[question.id]?.answer ?? null, response: latest ?? null, assistanceNeeded: practice.status === 'in_progress' && !attempts.length,
@@ -248,9 +248,9 @@ export class AiService {
       const item = assessment.itemSnapshots.find(i => i.id === session.contextItemId);
       if (!item) throw new BadRequestException('请指定这次评测中正在查看的题目');
       const question = assessment.questionSnapshots.find(q => q.id === item.questionId)!;
-      const response = this.store.diagnosticResponses.find(r => r.sessionId === assessment.id && r.itemId === item.id) ?? null;
+      const response = this.store.find('diagnosticResponses', { sessionId: assessment.id, itemId: item.id }) ?? null;
       return { kind: 'diagnostic' as const, sessionId: assessment.id, itemId: item.id, question, atomId: item.atomId,
-        draft: this.store.diagnosticDrafts.find(d => d.sessionId === assessment.id && d.itemId === item.id)?.answer ?? null,
+        draft: this.store.find('diagnosticDrafts', { sessionId: assessment.id, itemId: item.id })?.answer ?? null,
         response, assistanceNeeded: assessment.status === 'in_progress' && !response, action: null, planId: assessment.planId };
     }
     if (session.contextRefType === 'plan') {
@@ -274,9 +274,9 @@ export class AiService {
     const scope = frozen ?? this.store.learningScopes.filter((item) => item.studentId === session.studentId && (!subject || item.subject === subject))
       .sort((a, b) => b.confirmedAt.localeCompare(a.confirmedAt))[0];
     const evidenceIds = [...new Set([...(latest?.evidence.map((item) => item.id) ?? []), ...(plan?.evidenceIds ?? [])])];
-    const atom = bound ? this.store.knowledgeAtoms.find(a => a.id === bound.atomId) : null;
+    const atom = bound ? this.store.find('knowledgeAtoms', { id: bound.atomId }) : null;
     return { scope: scope ? { grade: scope.grade, term: scope.term, textbookVersion: scope.textbookVersion,
-        learned: scope.learnedAtomIds.map((id) => this.store.knowledgeAtoms.find((item) => item.id === id)?.name) } : null,
+        learned: scope.learnedAtomIds.map((id) => this.store.find('knowledgeAtoms', { id: id })?.name) } : null,
       report: latest ? { summary: latest.summary, estimates: latest.estimates, hypotheses: latest.hypotheses } : null,
       plan: plan ? { summary: plan.summary, status: plan.status, actions: plan.actions } : null,
       currentQuestion: bound ? { kind: bound.kind, stem: bound.question.stem.slice(0, 6000), atomName: atom?.name,
@@ -290,28 +290,28 @@ export class AiService {
     const bound = context.bound;
     if (!bound?.assistanceNeeded) return false;
     const at = new Date().toISOString(), id = `assistant_hint:${messageId}`;
-    if (bound.kind === 'diagnostic') this.store.diagnosticHints.push({ id, sessionId: bound.sessionId, itemId: bound.itemId, level: 1, at });
-    else this.store.practiceHints.push({ id, sessionId: bound.sessionId, questionId: bound.itemId, level: 1, at });
+    if (bound.kind === 'diagnostic') this.store.append('diagnosticHints', { id, sessionId: bound.sessionId, itemId: bound.itemId, level: 1, at });
+    else this.store.append('practiceHints', { id, sessionId: bound.sessionId, questionId: bound.itemId, level: 1, at });
     this.eventBus.publish('assistant.question_assisted', { studentId,
       kind: bound.kind, learningSessionId: bound.sessionId, itemId: bound.itemId, messageId });
     return true;
   }
 
   async chat(command: AssistantChatCommand) {
-    const session = this.store.assistantSessions.find((item) => item.id === command.sessionId);
+    const session = this.store.find('assistantSessions', { id: command.sessionId });
     if (!session || session.status !== 'active') throw new NotFoundException('助教会话不存在');
     const message = validate(z.string().trim().min(1).max(3000), command.message);
     const requestKey = command.requestKey ? validate(z.string().min(8).max(180), command.requestKey) : this.store.nextId('chat_request');
-    const previous = this.store.assistantMessages.find(m => m.sessionId === session.id && m.sender === 'user' && m.requestKey === requestKey);
+    const previous = this.store.find('assistantMessages', { sessionId: session.id, sender: 'user', requestKey: requestKey });
     if (previous) {
       if (previous.content !== message) throw new ConflictException('请求键已用于另一条提问');
-      const answer = this.store.assistantMessages.find(m => m.inReplyTo === previous.id && m.sessionId === session.id);
+      const answer = this.store.find('assistantMessages', { inReplyTo: previous.id, sessionId: session.id });
       if (!answer) throw new ConflictException('提问仍在处理中，请刷新会话');
       return { reply: answer.content, source: answer.source ?? 'rules', evidenceIds: answer.evidenceIds ?? [], assistanceRecorded: answer.assistanceRecorded ?? false, messages: this.listMessages(session.id) };
     }
     if (this.chatting.has(session.ownerUserId)) throw new BadRequestException('上一条回复仍在生成，请等待或取消后重试');
     const today = new Date().toISOString().slice(0, 10);
-    const own = new Set(this.store.assistantSessions.filter((item) => item.ownerUserId === session.ownerUserId).map((item) => item.id));
+    const own = new Set(this.store.select('assistantSessions', { ownerUserId: session.ownerUserId }).map((item) => item.id));
     if (this.store.assistantMessages.filter((item) => own.has(item.sessionId) && item.sender === 'user' && item.createdAt.startsWith(today)).length >= 100) {
       throw new BadRequestException('今天的助教对话已达到使用上限，可以继续使用评测与指导计划');
     }
@@ -325,7 +325,7 @@ export class AiService {
           context.report ? `${context.report.summary} 先看知识点的证据和待验证原因，再制定每天可完成的指导计划。单次答错不足以确定深层原因。` :
             '先确认孩子的年级、教材和已学范围，完成一组知识点评测。还未测到的内容保持未知，再根据具体证据安排验证与指导。';
       let reply = fallback, source: 'rules' | 'openai' = 'rules', citations: string[] = [];
-      const history = this.store.assistantMessages.filter((item) => item.sessionId === session.id).slice(-10)
+      const history = this.store.select('assistantMessages', { sessionId: session.id }).slice(-10)
         .map((item) => ({ role: item.sender === 'user' ? 'user' as const : 'assistant' as const, content: item.content.slice(0, 2000) }));
       // In-progress diagnostic items use deterministic prompts. Any help is
       // recorded before the response is returned and excluded from independent evidence.
@@ -347,7 +347,7 @@ export class AiService {
       if (command.signal?.aborted) throw new BadRequestException('本次对话已取消');
       const userMessageId = this.store.nextId('assistant_message'), assistantMessageId = this.store.nextId('assistant_message');
       const assistanceRecorded = this.recordAssistance(context, assistantMessageId, session.studentId);
-      this.store.assistantMessages.push({ id: userMessageId, sessionId: session.id, sender: 'user', content: message, requestKey, createdAt: new Date().toISOString() },
+      this.store.append('assistantMessages', { id: userMessageId, sessionId: session.id, sender: 'user', content: message, requestKey, createdAt: new Date().toISOString() },
         { id: assistantMessageId, sessionId: session.id, sender: 'assistant', content: reply, inReplyTo: userMessageId, source,
           evidenceIds: citations, assistanceRecorded, createdAt: new Date().toISOString() });
       this.recordInsight('assistant', session.id, session.studentId, reply, { summary: reply,
@@ -360,7 +360,7 @@ export class AiService {
   }
 
   listMessages(sessionId: string) {
-    return this.store.assistantMessages.filter((item) => item.sessionId === sessionId).slice(-50);
+    return this.store.select('assistantMessages', { sessionId: sessionId }).slice(-50);
   }
 
   async structureImportRecord(command: StructureImportRecordCommand): Promise<QuestionImportAiSuggestion> {
@@ -557,7 +557,7 @@ export class AiService {
       createdAt: new Date().toISOString(),
     };
 
-    this.store.aiInsights.push(insight);
+    this.store.append('aiInsights', insight);
     this.eventBus.publish('ai.insight_created', {
       insightId: insight.id,
       sourceType: insight.sourceType,

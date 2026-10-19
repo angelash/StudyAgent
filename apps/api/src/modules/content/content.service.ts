@@ -54,7 +54,7 @@ export class ContentService {
   ) {}
 
   listTextbooks(subject?: Subject) {
-    return subject ? this.store.textbookVolumes.filter((item) => item.subject === subject) : this.store.textbookVolumes;
+    return subject ? this.store.select('textbookVolumes', { subject: subject }) : this.store.textbookVolumes;
   }
 
   importTextbooks(requestUser: InMemoryUserAccount, subject?: Subject, publisherVersion?: string) {
@@ -86,7 +86,7 @@ export class ContentService {
           }
 
           const sourcePath = path.join(versionPath, fileName);
-          const existing = this.store.textbookVolumes.find((item) => item.sourcePath === sourcePath);
+          const existing = this.store.find('textbookVolumes', { sourcePath: sourcePath });
           if (existing) {
             imported.push(existing);
             continue;
@@ -102,7 +102,7 @@ export class ContentService {
             sourcePath,
             status: 'published',
           };
-          this.store.textbookVolumes.push(volume);
+          this.store.append('textbookVolumes', volume);
 
           const unit: TextbookUnit = {
             id: this.store.nextId('unit'),
@@ -116,8 +116,8 @@ export class ContentService {
             title: volume.displayName,
             sortOrder: 1,
           };
-          this.store.textbookUnits.push(unit);
-          this.store.textbookLessons.push(lesson);
+          this.store.append('textbookUnits', unit);
+          this.store.append('textbookLessons', lesson);
           imported.push(volume);
         }
       }
@@ -148,7 +148,7 @@ export class ContentService {
           .sort((a, b) => a.sortOrder - b.sortOrder)
           .map((lesson) => ({
             ...lesson,
-            knowledgePoints: this.store.knowledgePoints.filter((item) => item.lessonId === lesson.id),
+            knowledgePoints: this.store.select('knowledgePoints', { lessonId: lesson.id }),
           })),
       }));
 
@@ -168,7 +168,7 @@ export class ContentService {
   }
 
   listKnowledgePoints(subject: Subject = 'math') {
-    return this.store.knowledgePoints.filter((item) => item.subject === subject);
+    return this.store.select('knowledgePoints', { subject: subject });
   }
 
   getKnowledgePointsByIds(knowledgePointIds: string[]) {
@@ -195,7 +195,7 @@ export class ContentService {
       lessonId: command.lessonId,
       status: command.status ?? 'draft',
     };
-    this.store.knowledgePoints.push(knowledgePoint);
+    this.store.append('knowledgePoints', knowledgePoint);
     return knowledgePoint;
   }
 
@@ -235,7 +235,7 @@ export class ContentService {
   }
 
   listQuestions(subject: Subject = 'math') {
-    return this.store.questions.filter((item) => item.subject === subject);
+    return this.store.select('questions', { subject: subject });
   }
 
   createQuestion(
@@ -259,7 +259,7 @@ export class ContentService {
       status: command.status ?? 'draft',
     };
 
-    this.store.questions.push(question);
+    this.store.append('questions', question);
     this.questionWorkspaceService.initializeQuestionWorkspace(question, requestUser.displayName);
     return question;
   }
@@ -269,7 +269,7 @@ export class ContentService {
 
     const question = this.requireQuestion(questionId);
     for (const knowledgePointId of knowledgePointIds) {
-      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId);
+      const exists = Boolean(this.store.find('knowledgePoints', { id: knowledgePointId }));
       if (!exists) {
         throw new BadRequestException(`Knowledge point not found: ${knowledgePointId}`);
       }
@@ -284,7 +284,7 @@ export class ContentService {
 
     const question = this.requireQuestion(questionId);
     for (const knowledgePointId of knowledgePointIds) {
-      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId);
+      const exists = Boolean(this.store.find('knowledgePoints', { id: knowledgePointId }));
       if (!exists) {
         throw new BadRequestException(`Knowledge point not found: ${knowledgePointId}`);
       }
@@ -350,7 +350,7 @@ export class ContentService {
   }
 
   private requireQuestion(questionId: string) {
-    const question = this.store.questions.find((item) => item.id === questionId);
+    const question = this.store.find('questions', { id: questionId });
     if (!question) {
       throw new NotFoundException('Question not found');
     }
@@ -358,7 +358,7 @@ export class ContentService {
   }
 
   private requireKnowledgePoint(knowledgePointId: string) {
-    const knowledgePoint = this.store.knowledgePoints.find((item) => item.id === knowledgePointId);
+    const knowledgePoint = this.store.find('knowledgePoints', { id: knowledgePointId });
     if (!knowledgePoint) {
       throw new NotFoundException('Knowledge point not found');
     }
@@ -366,7 +366,7 @@ export class ContentService {
   }
 
   private requireVolume(volumeId: string) {
-    const volume = this.store.textbookVolumes.find((item) => item.id === volumeId);
+    const volume = this.store.find('textbookVolumes', { id: volumeId });
     if (!volume) {
       throw new NotFoundException('Volume not found');
     }
@@ -374,7 +374,7 @@ export class ContentService {
   }
 
   private requireLesson(lessonId: string) {
-    const lesson = this.store.textbookLessons.find((item) => item.id === lessonId);
+    const lesson = this.store.find('textbookLessons', { id: lessonId });
     if (!lesson) {
       throw new NotFoundException('Lesson not found');
     }
@@ -388,7 +388,7 @@ export class ContentService {
   }
 
   private ensureVolumeCurriculumScaffold(volume: TextbookVolume) {
-    const volumeUnits = this.store.textbookUnits.filter((item) => item.volumeId === volume.id);
+    const volumeUnits = this.store.select('textbookUnits', { volumeId: volume.id });
     const volumeUnitIds = new Set(volumeUnits.map((item) => item.id));
     const volumeLessons = this.store.textbookLessons.filter((item) => volumeUnitIds.has(item.unitId));
     const volumeLessonIds = new Set(volumeLessons.map((item) => item.id));
@@ -408,7 +408,7 @@ export class ContentService {
     const scaffold = getCurriculumScaffold(volume.subject, volume.grade, volume.term);
     scaffold.units.forEach((unit, unitIndex) => {
       const unitId = this.store.nextId('unit');
-      this.store.textbookUnits.push({
+      this.store.append('textbookUnits', {
         id: unitId,
         volumeId: volume.id,
         title: unit.title,
@@ -417,7 +417,7 @@ export class ContentService {
 
       unit.lessons.forEach((lesson, lessonIndex) => {
         const lessonId = this.store.nextId('lesson');
-        this.store.textbookLessons.push({
+        this.store.append('textbookLessons', {
           id: lessonId,
           unitId,
           title: lesson.title,
@@ -425,7 +425,7 @@ export class ContentService {
         });
 
         lesson.knowledgePoints.forEach((knowledgePointName, knowledgePointIndex) => {
-          this.store.knowledgePoints.push({
+          this.store.append('knowledgePoints', {
             id: this.store.nextId('kp'),
             subject: volume.subject,
             name: knowledgePointName,
@@ -441,7 +441,7 @@ export class ContentService {
   }
 
   private ensureVolumeQuestionScaffold(volume: TextbookVolume) {
-    const unitIds = new Set(this.store.textbookUnits.filter((item) => item.volumeId === volume.id).map((item) => item.id));
+    const unitIds = new Set(this.store.select('textbookUnits', { volumeId: volume.id }).map((item) => item.id));
     const lessonIds = new Set(this.store.textbookLessons.filter((item) => unitIds.has(item.unitId)).map((item) => item.id));
     const knowledgePoints = this.store.knowledgePoints.filter((item) => item.lessonId && lessonIds.has(item.lessonId));
     const knowledgePointIds = new Set(knowledgePoints.map((item) => item.id));
@@ -469,7 +469,7 @@ export class ContentService {
         status: 'published',
       };
 
-      this.store.questions.push(question);
+      this.store.append('questions', question);
       this.questionWorkspaceService.initializeQuestionWorkspace(question, '系统样例题');
       const systemAdmin: InMemoryUserAccount = {
         id: 'system_admin',

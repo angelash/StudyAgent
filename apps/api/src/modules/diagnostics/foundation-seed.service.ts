@@ -13,14 +13,14 @@ export class FoundationSeedService implements OnModuleInit {
     const definitions = buildFoundationCurriculum();
     assertAcyclic(definitions.map((item) => item.atom));
     for (const { atom, exercises } of definitions) {
-      if (!this.store.knowledgeAtoms.some((item) => item.id === atom.id)) this.store.knowledgeAtoms.push(atom);
+      if (!Boolean(this.store.find('knowledgeAtoms', { id: atom.id }))) this.store.append('knowledgeAtoms', atom);
       for (const item of exercises) {
         const questionId = foundationQuestionId(atom.id, item), mappingId = `measurement:${questionId}`;
-        if (!this.store.questions.some((question) => question.id === questionId)) {
+        if (!Boolean(this.store.find('questions', { id: questionId }))) {
           const question = { id: questionId, subject: atom.subject, type: item.rubric ? 'subjective' as const : 'objective' as const, stem: item.stem,
             answer: item.answer, analysis: `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
             knowledgePointIds: [], status: 'published' as const };
-          this.store.questions.push(question);
+          this.store.append('questions', question);
           const { answerSchema, source, document } = this.workspace.initializeQuestionWorkspace(question, '原创基础练习');
           answerSchema.mode = item.mode ?? (atom.subject === 'math' ? 'numeric_blank' : 'text_blank');
           if (item.responseShape) answerSchema.responseShape = structuredClone(item.responseShape);
@@ -33,7 +33,7 @@ export class FoundationSeedService implements OnModuleInit {
           source.notes = '由可核验规则产生的基础练习；不代表教材完整覆盖或已标定难度。';
           if (!item.rubric && gradeResponse(answerSchema, item.answer, item.answer).score !== 1) throw new Error(`Foundation scoring self-check failed: ${questionId}`);
         }
-        if (!this.store.measurementItems.some((mapping) => mapping.id === mappingId)) this.store.measurementItems.push({
+        if (!Boolean(this.store.find('measurementItems', { id: mappingId }))) this.store.append('measurementItems', {
           id: mappingId, questionId, questionVersion: 1, atomId: atom.id, dimension: item.dimension,
           family: `${atom.id}:${item.family}`, probeRole: item.dimension === 'transfer' ? 'transfer' : 'anchor',
           expectedSeconds: atom.subject === 'math' ? 40 : 60, difficulty: 1, reviewStatus: 'approved', mappingWeight: 1,

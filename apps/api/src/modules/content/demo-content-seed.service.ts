@@ -67,7 +67,7 @@ export class DemoContentSeedService implements OnModuleInit {
     const volumeId = this.store.nextId('volume');
     const lessonId = this.store.nextId('lesson');
 
-    this.store.textbookVolumes.push({
+    this.store.append('textbookVolumes', {
       id: volumeId,
       subject: fixture.subject,
       publisherVersion: fixture.volume.publisherVersion,
@@ -78,14 +78,14 @@ export class DemoContentSeedService implements OnModuleInit {
       status: 'published',
     });
 
-    this.store.textbookUnits.push({
+    this.store.append('textbookUnits', {
       id: this.store.nextId('unit'),
       volumeId,
       title: fixture.unitTitle,
       sortOrder: 1,
     });
 
-    this.store.textbookLessons.push({
+    this.store.append('textbookLessons', {
       id: lessonId,
       unitId: this.store.textbookUnits[this.store.textbookUnits.length - 1].id,
       title: fixture.lessonTitle,
@@ -95,7 +95,7 @@ export class DemoContentSeedService implements OnModuleInit {
     const knowledgePointIds = new Map<string, string>();
     fixture.knowledgePointNames.forEach((name, index) => {
       const knowledgePointId = this.store.nextId('kp');
-      this.store.knowledgePoints.push({
+      this.store.append('knowledgePoints', {
         id: knowledgePointId,
         subject: fixture.subject,
         name,
@@ -126,7 +126,7 @@ export class DemoContentSeedService implements OnModuleInit {
         status: 'published',
       };
 
-      this.store.questions.push(question);
+      this.store.append('questions', question);
 
       const workspace = this.questionWorkspaceService.initializeQuestionWorkspace(question, demoSourceName);
       workspace.document.blocks = this.buildQuestionBlocks(questionFixture.blocks);

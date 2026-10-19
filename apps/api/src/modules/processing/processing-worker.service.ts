@@ -50,7 +50,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
           await this.store.transaction(() => {
-            const owner = this.store.users.find(u => u.id === task.ownerUserId);
+            const owner = this.store.find('users', { id: task.ownerUserId });
             if (!owner || owner.status !== 'active' || owner.role !== 'admin') throw new ProcessingError('author_permission_changed');
             publish.apply();
             this.events.publish('processing.task_completed', { taskId: task.id, kind: task.kind, actorId: owner.id, result: publish.result });
@@ -103,10 +103,10 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
         const job = this.imports.requireJobForWorker(input.job.id);
         if (job.inputHash !== input.job.inputHash) throw new ProcessingError('input_changed');
         const records = pages.flatMap(page => this.imports.buildPageRecords(job, page));
-        for (const artifact of artifacts) if (!this.store.processingArtifacts.some(a => a.id === artifact.id)) this.store.processingArtifacts.push(artifact);
-        for (const ref of evidenceRefs) if (!this.store.importPages.some(p => p.id === ref.id)) this.store.importPages.push(ref);
-        for (const record of records) if (!this.store.questionImportRecords.some(r => r.id === record.id)) this.store.questionImportRecords.push(record);
-        job.recordCount = this.store.questionImportRecords.filter(r => r.jobId === job.id).length;
+        for (const artifact of artifacts) if (!Boolean(this.store.find('processingArtifacts', { id: artifact.id }))) this.store.append('processingArtifacts', artifact);
+        for (const ref of evidenceRefs) if (!Boolean(this.store.find('importPages', { id: ref.id }))) this.store.append('importPages', ref);
+        for (const record of records) if (!Boolean(this.store.find('questionImportRecords', { id: record.id }))) this.store.append('questionImportRecords', record);
+        job.recordCount = this.store.select('questionImportRecords', { jobId: job.id }).length;
         job.warningCount = pages.filter(p => p.method !== 'pdf_text').length;
         job.status = 'completed'; job.completedAt = new Date().toISOString(); job.errorMessage = null;
       } };
@@ -118,7 +118,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       const result = await this.process({ mode: 'handwriting', input: path, assets: studyAssetRoot(), output }, runRoot, 'handwriting', signal, progress);
       const artifact = await this.makeArtifact(task.id, file.id, result.imagePath, result.imageSha256, 'handwriting_preview');
       return { result: { fileId: file.id, artifactId: artifact.id, originalPreserved: true, reviewRequired: true, verifiedCorrect: false },
-        apply: () => { if (!this.store.processingArtifacts.some(a => a.id === artifact.id)) this.store.processingArtifacts.push(artifact); } };
+        apply: () => { if (!Boolean(this.store.find('processingArtifacts', { id: artifact.id }))) this.store.append('processingArtifacts', artifact); } };
     }
     const record = await this.store.transaction(() => structuredClone(this.requireRecord(String(task.payload.recordId))));
     if ((record.reviewVersion ?? 0) !== task.payload.reviewVersion) throw new ProcessingError('candidate_changed');
@@ -176,5 +176,5 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     const id = `artifact_${createHash('sha256').update(`${taskId}:${fileId}:${purpose}:${hash}`).digest('hex')}`;
     return { id, taskId, fileId, sha256: hash, relativePath, size: stat.size, mediaType: purpose === 'page' ? 'image/png' : 'image/jpeg', purpose, createdAt: new Date().toISOString() };
   }
-  private requireRecord(id: string): QuestionImportRecord { const record = this.store.questionImportRecords.find(r => r.id === id); if (!record) throw new ProcessingError('missing_candidate'); return record; }
+  private requireRecord(id: string): QuestionImportRecord { const record = this.store.find('questionImportRecords', { id: id }); if (!record) throw new ProcessingError('missing_candidate'); return record; }
 }

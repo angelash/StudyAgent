@@ -22,22 +22,22 @@ export class StudentMediaService implements OnModuleInit {
   capabilities() { return { image: true, audio: mediaModeAvailable('audio_record'), maxUploadBytes: 12 * 1024 * 1024, maxAudioSeconds: 180 }; }
 
   private target(user: InMemoryUserAccount, target: StudentMediaTarget, writing = false) {
-    const session = target.kind === 'diagnostic' ? this.store.diagnosticSessions.find(s => s.id === target.sessionId) : this.store.practiceSessions.find(s => s.id === target.sessionId);
+    const session = target.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: target.sessionId }) : this.store.find('practiceSessions', { id: target.sessionId });
     if (!session) throw new NotFoundException('学习活动不存在');
-    const snapshot = target.kind === 'diagnostic' ? this.store.diagnosticSessions.find(s => s.id === target.sessionId)!.questionSnapshots.find(s =>
-      s.id === this.store.diagnosticSessions.find(s => s.id === target.sessionId)!.itemSnapshots.find(i => i.id === target.itemId)?.questionId) :
-      this.store.practiceSessions.find(s => s.id === target.sessionId)!.snapshots.find(s => s.id === target.itemId);
+    const snapshot = target.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: target.sessionId })!.questionSnapshots.find(s =>
+      s.id === this.store.find('diagnosticSessions', { id: target.sessionId })!.itemSnapshots.find(i => i.id === target.itemId)?.questionId) :
+      this.store.find('practiceSessions', { id: target.sessionId })!.snapshots.find(s => s.id === target.itemId);
     if (!snapshot) throw new NotFoundException('题目不属于当前学习活动');
     if (writing) {
       if (!['parent', 'admin', 'student'].includes(user.role)) throw new ForbiddenException('请使用孩子或监护人的学习身份作答');
       this.students.assertCanAccessStudent(user, session.studentId);
-      if (session.status !== 'in_progress' || target.kind === 'diagnostic' && this.store.diagnosticResponses.some(r => r.sessionId === target.sessionId && r.itemId === target.itemId)) throw new ConflictException('这道题已提交，请用新题继续验证');
-      if (target.kind === 'practice' && (!this.store.diagnosticPlans.some(p => p.id === this.store.practiceSessions.find(s => s.id === target.sessionId)!.planId && p.status === 'active') ||
-        this.store.practiceAttempts.filter(r => r.sessionId === target.sessionId && r.questionId === target.itemId).length >= 5)) throw new ConflictException('训练已暂停或本题练习次数已满');
+      if (session.status !== 'in_progress' || target.kind === 'diagnostic' && Boolean(this.store.find('diagnosticResponses', { sessionId: target.sessionId, itemId: target.itemId }))) throw new ConflictException('这道题已提交，请用新题继续验证');
+      if (target.kind === 'practice' && (!this.store.diagnosticPlans.some(p => p.id === this.store.find('practiceSessions', { id: target.sessionId })!.planId && p.status === 'active') ||
+        this.store.select('practiceAttempts', { sessionId: target.sessionId, questionId: target.itemId }).length >= 5)) throw new ConflictException('训练已暂停或本题练习次数已满');
     }
     return { session, snapshot, schema: snapshot.answerSchema as QuestionAnswerSchema };
   }
-  private require(id: string) { const media = this.store.studentMedia.find(m => m.id === id); if (!media) throw new NotFoundException('作答附件不存在'); return media; }
+  private require(id: string) { const media = this.store.find('studentMedia', { id: id }); if (!media) throw new NotFoundException('作答附件不存在'); return media; }
   private assertRead(user: InMemoryUserAccount, media: StudentMedia) {
     if (!['parent', 'admin', 'student', 'teacher'].includes(user.role)) throw new ForbiddenException('此身份没有学习证据访问权限');
     if (user.role === 'teacher') {
@@ -59,7 +59,7 @@ export class StudentMediaService implements OnModuleInit {
     if (!mediaModeAvailable(schema.mode)) throw new ServiceUnavailableException('本次音频处理暂不可用，请先跳过并反馈给老师');
     const name = basename(command.name.replace(/\\/g, '/')).replace(/[\x00-\x1f\x7f]/g, '');
     if (!name) throw new BadRequestException('请提供有效文件名');
-    const previous = this.store.studentMedia.find(m => m.ownerUserId === user.id && m.requestKey === command.requestKey);
+    const previous = this.store.find('studentMedia', { ownerUserId: user.id, requestKey: command.requestKey });
     if (previous) {
       if (['kind', 'sessionId', 'itemId', 'mediaType', 'size'].some(key => previous[key as keyof StudentMedia] !== command[key as keyof typeof command]) || previous.name !== name) throw new ConflictException('上传请求键已用于另一个文件');
       return this.view(previous);
@@ -70,7 +70,7 @@ export class StudentMediaService implements OnModuleInit {
     const media: StudentMedia = { ...command, name, id: this.store.nextId('student_media'), ownerUserId: user.id, studentId: session.studentId, questionId: snapshot.id,
       chunkSize: STUDENT_MEDIA_CHUNK_SIZE, chunks: [], status: 'uploading', sha256: null, receivedSha256: null, storedSize: null, storedType: null,
       createdAt: new Date().toISOString(), completedAt: null, references: [] };
-    this.store.studentMedia.push(media);
+    this.store.append('studentMedia', media);
     this.events.publish('student_media.upload_started', { mediaId: media.id, studentId: media.studentId, actorId: user.id, size: media.size });
     return this.view(media);
   }
@@ -162,7 +162,7 @@ export class StudentMediaService implements OnModuleInit {
     }
   }
   async purge(id: string) {
-    const retained = this.store.studentMedia.find(m => m.id === id);
+    const retained = this.store.find('studentMedia', { id: id });
     if (retained && (!['cancelled', 'expired'].includes(retained.status) || retained.references.length)) throw new ConflictException('作答附件仍被保留');
     // Persist before removal. An already-running request in another process may
     // still hold a pre-deletion snapshot; its final write must not revive bytes.
@@ -187,7 +187,7 @@ export class StudentMediaService implements OnModuleInit {
     return id;
   }
   async prune(id: string) {
-    const media = this.store.studentMedia.find(m => m.id === id);
+    const media = this.store.find('studentMedia', { id: id });
     if (!media) return;
     if (media.status === 'cancelled' || media.status === 'expired') return;
     if (media.status !== 'ready') throw new ConflictException('附件尚未完成，暂不清理上传分块');
@@ -211,8 +211,8 @@ export class StudentMediaService implements OnModuleInit {
   }
 
   private usedByDraft(media: StudentMedia) {
-    const answer = media.kind === 'diagnostic' ? this.store.diagnosticDrafts.find(d => d.sessionId === media.sessionId && d.itemId === media.itemId)?.answer :
-      this.store.practiceSessions.find(s => s.id === media.sessionId)?.drafts?.[media.itemId]?.answer;
+    const answer = media.kind === 'diagnostic' ? this.store.find('diagnosticDrafts', { sessionId: media.sessionId, itemId: media.itemId })?.answer :
+      this.store.find('practiceSessions', { id: media.sessionId })?.drafts?.[media.itemId]?.answer;
     const value = answer && typeof answer === 'object' && 'response' in answer ? (answer as { response: unknown }).response : answer;
     return !!value && typeof value === 'object' && Array.isArray((value as { mediaIds?: unknown }).mediaIds) && (value as { mediaIds: string[] }).mediaIds.includes(media.id);
   }
@@ -232,7 +232,7 @@ export class StudentMediaService implements OnModuleInit {
       if (media.references.length || ['cancelled', 'expired'].includes(media.status)) return false;
       const age = now - Date.parse(media.createdAt);
       if (media.status === 'uploading') return age > 86400000;
-      const session = media.kind === 'diagnostic' ? this.store.diagnosticSessions.find(s => s.id === media.sessionId) : this.store.practiceSessions.find(s => s.id === media.sessionId);
+      const session = media.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: media.sessionId }) : this.store.find('practiceSessions', { id: media.sessionId });
       return session?.status === 'in_progress' ? age > 7 * 86400000 && !this.usedByDraft(media) : age > 86400000;
     }).slice(0, 100);
     for (const media of expired) { media.status = 'expired'; media.chunks = []; }
