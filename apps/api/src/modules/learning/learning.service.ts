@@ -2,6 +2,7 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, Subject } from '@study-agent/contracts';
+import { answerProtocolIssue } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -11,6 +12,7 @@ import { GuidanceService } from '../diagnostics/guidance.service';
 import { gradeResponse } from '../diagnostics/scoring';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
 import { prepareScoringReview } from '../diagnostics/scoring-review';
+import { eligibleMeasurements } from '../diagnostics/curriculum.service';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -58,9 +60,7 @@ export class LearningService {
     if (!allowed.has(action.atomId)) throw new BadRequestException('活动超出计划确认时的学习范围');
     const used = new Set([...this.store.practiceSessions.filter((item) => item.studentId === plan.studentId).flatMap((item) => item.questionIds),
       ...this.store.diagnosticResponses.filter((item) => item.studentId === plan.studentId).map((item) => item.questionId)]);
-    const mappings = this.store.measurementItems.filter((item) => item.atomId === action.atomId && item.reviewStatus === 'approved' &&
-      this.store.questions.some((question) => question.id === item.questionId && question.status === 'published') &&
-      this.store.questionSources.some((source) => source.questionId === item.questionId && source.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY'));
+    const mappings = eligibleMeasurements(this.store).filter(item => item.atomId === action.atomId);
     const rank = (id: string) => createHash('sha256').update(`${day}:${actionId}:${id}`).digest('hex');
     mappings.sort((a, b) => Number(used.has(a.questionId)) - Number(used.has(b.questionId)) || rank(a.id).localeCompare(rank(b.id)));
     const ids: string[] = []; let seconds = 0;
@@ -116,7 +116,8 @@ export class LearningService {
     this.assertActive(session);
     if (!session.questionIds.includes(questionId)) throw new NotFoundException('题目不属于当前训练');
     const { answer } = validate(z.object({ answer: z.unknown() }).strict(), input);
-    if (JSON.stringify(answer ?? null).length > 20000) throw new BadRequestException('作答内容过长');
+    const snapshot = session.snapshots.find(item => item.id === questionId)!;
+    const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, answer, true); if (issue) throw new BadRequestException(issue);
     session.drafts ??= {};
     session.drafts[questionId] = { answer, savedAt: new Date().toISOString() };
     return { savedAt: session.drafts[questionId].savedAt };

@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-10-19T16:42:27.492Z",
+  "baselineCommit": "da67c4c",
+  "stage": "structured-answer-v1",
+  "tests": {
+    "passed": 109,
+    "failed": 0,
+    "skipped": 4,
+    "total": 113
+  },
+  "curriculum": {
+    "atoms": 244,
+    "exercises": 3379,
+    "modes": [
+      "boolean",
+      "drag_drop",
+      "formula_blank",
+      "geometry_draw",
+      "hotspot",
+      "matching",
+      "multi_blank",
+      "multiple_choice",
+      "numeric_blank",
+      "short_answer",
+      "single_choice",
+      "sorting",
+      "stepwise",
+      "table_fill",
+      "text_blank"
+    ],
+    "newStructuredExercises": 60
+  },
+  "validation": {
+    "fullProductionBuild": true,
+    "typecheck": true,
+    "browserJourney": false,
+    "browserReason": "Prior Runtime mutation returned outcome unknown; requires a new user instruction before retry."
+  },
+  "unsupported": [
+    "image_upload",
+    "audio_record"
+  ],
+  "overallGoal": "active"
+}

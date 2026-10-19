@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { KnowledgeAtom, LearningScope, MeasurementItem, Subject,
-  knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
+  answerInputConfiguration, knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
 import { z } from 'zod';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
@@ -15,11 +15,12 @@ export function eligibleMeasurements(store: InMemoryStoreService) {
   const questions = new Map(store.questions.map((q) => [q.id, q]));
   const sources = new Map(store.questionSources.map((s) => [s.questionId, s]));
   const documents = new Map(store.questionDocuments.map((d) => [d.questionId, d]));
+  const schemas = new Map(store.questionAnswerSchemas.map(schema => [schema.questionId, schema]));
   return store.measurementItems.filter((item) => {
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
-      item.questionVersion === (documents.get(item.questionId)?.version ?? 1);
+      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported;
   });
 }
 
@@ -181,6 +182,8 @@ export class CurriculumService {
     if (item.reviewStatus === 'approved' && (question.status !== 'published' || source?.reviewStatus !== 'approved' || source.licenseClass === 'C_PUBLIC_REFERENCE_ONLY')) {
       throw new BadRequestException('量化题映射审核需要已发布且来源可用的题目');
     }
+    const answerSchema = this.store.questionAnswerSchemas.find(schema => schema.questionId === question.id);
+    if (item.reviewStatus === 'approved' && (!answerSchema || !answerInputConfiguration(answerSchema).supported)) throw new BadRequestException('请先补齐可用的作答交互配置，再审核量化映射');
     const previous = this.store.measurementItems.find((mapping) => mapping.id === item.id);
     const next = { ...item, version: previous ? previous.version + 1 : 1 };
     if (previous) Object.assign(previous, next); else this.store.measurementItems.push(next);
@@ -218,6 +221,8 @@ export class CurriculumService {
       const items = counts.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
         families: new Set(items.map((i) => i.family)).size, dimensions: [...new Set(items.map((i) => i.dimension))],
+        interactionGaps: new Set(this.store.measurementItems.filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
+          !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported)).map(i => i.questionId)).size,
         draftMappings: this.store.measurementItems.filter((i) => i.atomId === atom.id && i.reviewStatus === 'draft').length };
     });
     const cells = (['math', 'chinese', 'english'] as Subject[]).flatMap((s) => Array.from({ length: 6 }, (_, i) => {
@@ -235,7 +240,11 @@ export class CurriculumService {
 
   itemsForAtom(user: InMemoryUserAccount, atomId: string) {
     this.assertEditor(user);
+    const eligible = new Set(eligibleMeasurements(this.store).map(item => item.id));
     return this.store.measurementItems.filter((i) => i.atomId === atomId).slice(0, 200).map((mapping) => ({ mapping,
+      eligible: eligible.has(mapping.id),
+      inputIssue: this.store.questionAnswerSchemas.some(schema => schema.questionId === mapping.questionId) ?
+        answerInputConfiguration(this.store.questionAnswerSchemas.find(schema => schema.questionId === mapping.questionId)!).reason : '尚未配置作答方式',
       question: this.store.questions.find((q) => q.id === mapping.questionId),
       answerSchema: this.store.questionAnswerSchemas.find((s) => s.questionId === mapping.questionId),
       source: this.store.questionSources.find((s) => s.questionId === mapping.questionId) }));

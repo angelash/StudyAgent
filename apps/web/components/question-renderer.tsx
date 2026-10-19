@@ -10,6 +10,8 @@ import type {
   StudentAnswerPayload,
 } from '@study-agent/contracts';
 import { FormulaInput } from './formula-input';
+import { answerInputConfiguration } from '@study-agent/contracts';
+import { StepwiseAnswerInput, StructuredAnswerInput } from './structured-answer-input';
 
 type QuestionRendererProps = {
   renderPayload: QuestionRenderPayload | null;
@@ -39,6 +41,10 @@ export function QuestionRenderer({ renderPayload, answer, onChange }: QuestionRe
         {renderPayload.document.blocks.map((block) => (
           <QuestionBlockView key={block.id} block={block} />
         ))}
+        {renderPayload.document.attachments.filter(attachment => !renderPayload.document.blocks.some(block => block.url === attachment.url)).map(attachment => (
+          attachment.kind === 'file' ? <a key={attachment.id} href={attachment.url} target="_blank" rel="noopener noreferrer">打开题目附件</a> :
+            <QuestionBlockView key={attachment.id} block={{ id: attachment.id, type: attachment.kind, url: attachment.url, alt: attachment.alt ?? '题目附件' }} />
+        ))}
       </div>
 
       <section
@@ -59,6 +65,7 @@ export function QuestionRenderer({ renderPayload, answer, onChange }: QuestionRe
         </div>
         <AnswerInput
           mode={mode}
+          questionId={renderPayload.question.id}
           response={response}
           responseShape={renderPayload.answerSchema.responseShape}
           options={renderPayload.answerSchema.options ?? []}
@@ -98,6 +105,12 @@ export function QuestionBlockView({ block }: { block: QuestionBlock }) {
           {block.caption ? <figcaption style={{ color: '#64748b', fontSize: 14 }}>{block.caption}</figcaption> : null}
         </figure>
       );
+    case 'audio':
+      return <figure style={{ margin: 0 }}><audio controls preload="metadata" src={block.url} style={{ width: '100%' }} aria-label={block.alt ?? '题目音频'} />{(block.caption || block.text) && <figcaption>{block.caption ?? block.text}</figcaption>}</figure>;
+    case 'video':
+      return <figure style={{ margin: 0 }}><video controls playsInline preload="metadata" src={block.url} style={{ maxWidth: '100%' }} aria-label={block.alt ?? '题目视频'} />{(block.caption || block.text) && <figcaption>{block.caption ?? block.text}</figcaption>}</figure>;
+    case 'geometry_canvas':
+      return <QuestionGeometryView block={block} />;
     case 'table':
       return (
         <div style={{ overflowX: 'auto' }}>
@@ -151,7 +164,7 @@ export function QuestionBlockView({ block }: { block: QuestionBlock }) {
     default:
       return (
         <div style={{ padding: 12, borderRadius: 12, background: '#fff7ed', color: '#9a3412' }}>
-          当前题块类型 <code>{block.type}</code> 已建模，前端交互将在下一轮继续增强。
+          这部分题目暂时无法显示，请先跳过，并反馈给老师核对。
         </div>
       );
   }
@@ -163,6 +176,8 @@ function MathBlock({ latex, displayMode }: { latex: string; displayMode: boolean
       katex.renderToString(latex || '\\square', {
         throwOnError: false,
         displayMode,
+        trust: false,
+        maxExpand: 1000,
       }),
     [displayMode, latex],
   );
@@ -182,6 +197,7 @@ function MathBlock({ latex, displayMode }: { latex: string; displayMode: boolean
 
 function AnswerInput({
   mode,
+  questionId,
   response,
   responseShape,
   options,
@@ -189,12 +205,18 @@ function AnswerInput({
   onChange,
 }: {
   mode: QuestionAnswerMode;
+  questionId: string;
   response: Record<string, unknown>;
   responseShape: Record<string, unknown>;
   options: Array<{ id: string; label: string; value: string; content?: string | null }>;
   placeholder?: string;
   onChange: (next: Record<string, unknown>) => void;
 }) {
+  const radioName = React.useId();
+  const config = answerInputConfiguration({ mode, questionId, responseShape, options } as QuestionAnswerSchema);
+  if (!config.supported) return <p className="answer-unsupported" role="status">{config.reason}</p>;
+  if (['sorting', 'matching', 'drag_drop', 'table_fill', 'hotspot', 'geometry_draw'].includes(mode)) return <StructuredAnswerInput config={config} response={response} onChange={onChange} />;
+  if (mode === 'boolean' && !options.length) options = [{ id: 'true', label: 'A', value: 'true', content: '正确' }, { id: 'false', label: 'B', value: 'false', content: '错误' }];
   switch (mode) {
     case 'single_choice':
     case 'boolean':
@@ -215,7 +237,7 @@ function AnswerInput({
             >
               <input
                 type="radio"
-                name="question-choice"
+                name={radioName}
                 checked={response.value === option.value}
                 onChange={() => onChange({ value: option.value })}
               />
@@ -267,10 +289,12 @@ function AnswerInput({
     case 'numeric_blank':
       return (
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
+          aria-label="数字或分数答案"
           value={typeof response.value === 'number' ? response.value : response.value?.toString() ?? ''}
           onChange={(event) => onChange({ value: event.target.value })}
-          placeholder={placeholder ?? '请输入数字'}
+          placeholder={placeholder ?? '请输入数字或分数，例如 0.5 或 1/2'}
           style={inputStyle}
         />
       );
@@ -313,22 +337,7 @@ function AnswerInput({
       );
     }
     case 'stepwise':
-      return (
-        <textarea
-          value={Array.isArray(response.steps) ? response.steps.join('\n') : ''}
-          onChange={(event) =>
-            onChange({
-              steps: event.target.value
-                .split('\n')
-                .map((item) => item.trim())
-                .filter((item) => item.length > 0),
-            })
-          }
-          placeholder={placeholder ?? '每行填写一个步骤'}
-          rows={6}
-          style={textareaStyle}
-        />
-      );
+      return <StepwiseAnswerInput steps={Array.isArray(response.steps) ? response.steps.map(String) : []} onChange={steps => onChange({ steps })} />;
     case 'short_answer':
       return (
         <textarea
@@ -340,14 +349,7 @@ function AnswerInput({
         />
       );
     default:
-      return (
-        <input
-          value={response.value?.toString() ?? ''}
-          onChange={(event) => onChange({ value: event.target.value })}
-          placeholder={placeholder ?? '请输入答案'}
-          style={inputStyle}
-        />
-      );
+      return <p role="status">本题的作答入口暂时不可用，请先跳过。</p>;
   }
 }
 
@@ -369,38 +371,36 @@ function buildEmptyResponse(answerSchema: Pick<QuestionAnswerSchema, 'mode' | 'r
       return { steps: [] };
     case 'image_upload':
     case 'audio_record':
-      return { fileUrl: '' };
+      return { mediaId: '' };
+    case 'matching': return { pairs: [] };
+    case 'drag_drop': return { placements: {} };
+    case 'table_fill': return { cells: {} };
+    case 'geometry_draw': return { strokes: [], description: '' };
     default:
       return { value: '' };
   }
+}
+
+function QuestionGeometryView({ block }: { block: QuestionBlock }) {
+  const shapes = Array.isArray(block.meta?.shapes) ? block.meta.shapes.filter((shape: unknown) => !!shape && typeof shape === 'object') as Array<Record<string, unknown>> : [];
+  const valid = (value: unknown) => typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 1;
+  const drawn = shapes.slice(0, 100).flatMap((shape, index) => {
+    if (shape.type === 'line' && [shape.x1, shape.y1, shape.x2, shape.y2].every(valid)) return [<line key={index} x1={Number(shape.x1) * 640} y1={Number(shape.y1) * 420} x2={Number(shape.x2) * 640} y2={Number(shape.y2) * 420} stroke="#254b3c" strokeWidth="3" />];
+    if (shape.type === 'rectangle' && [shape.x, shape.y, shape.width, shape.height].every(valid)) return [<rect key={index} x={Number(shape.x) * 640} y={Number(shape.y) * 420} width={Number(shape.width) * 640} height={Number(shape.height) * 420} stroke="#254b3c" strokeWidth="3" fill="none" />];
+    if (shape.type === 'circle' && [shape.x, shape.y, shape.radius].every(valid)) return [<circle key={index} cx={Number(shape.x) * 640} cy={Number(shape.y) * 420} r={Number(shape.radius) * 420} stroke="#254b3c" strokeWidth="3" fill="none" />];
+    return [];
+  });
+  return <figure style={{ margin: 0 }}>{drawn.length > 0 ? <svg viewBox="0 0 640 420" role="img" aria-label={block.alt ?? '题目图形'} style={{ display: 'block', width: '100%', border: '1px solid #d1deca', background: '#fffefa' }}><title>{block.alt ?? '题目图形'}</title>{drawn}</svg> : null}<figcaption>{block.prompt ?? block.text ?? (drawn.length ? '观察图形，再表达你的思路。' : '图形资料暂时无法显示，请先跳过，并反馈给老师核对。')}</figcaption></figure>;
 }
 
 function resolveMultiBlankEntries(response: Record<string, unknown>, responseShape: Record<string, unknown>) {
   const templates = resolveMultiBlankTemplates(responseShape);
   const rawEntries = Array.isArray(response.entries) ? response.entries : [];
 
-  if (rawEntries.length > 0) {
-    return rawEntries.map((item, index) => {
-      const template = templates[index];
-      const entry = item && typeof item === 'object' ? (item as Record<string, unknown>) : {};
-      return {
-        key:
-          typeof entry.key === 'string' && entry.key.trim().length > 0
-            ? entry.key.trim()
-            : template?.key ?? `blank_${index + 1}`,
-        label:
-          typeof entry.label === 'string' && entry.label.trim().length > 0
-            ? entry.label.trim()
-            : template?.label ?? `第 ${index + 1} 空`,
-        value: typeof entry.value === 'string' ? entry.value : entry.value?.toString() ?? '',
-      };
-    });
-  }
-
-  return resolveMultiBlankTemplates(responseShape).map((item) => ({
-    ...item,
-    value: '',
-  }));
+  return templates.map(template => {
+    const entry = rawEntries.find(item => item && typeof item === 'object' && item.key === template.key) as Record<string, unknown> | undefined;
+    return { ...template, value: typeof entry?.value === 'string' || typeof entry?.value === 'number' ? String(entry.value) : '' };
+  });
 }
 
 function resolveMultiBlankTemplates(responseShape: Record<string, unknown>) {

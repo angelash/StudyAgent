@@ -1,8 +1,10 @@
 import { createHash } from 'node:crypto';
-import { KnowledgeAtom, MeasurementDimension, QuestionAnswerMode, Subject } from '@study-agent/contracts';
+import { KnowledgeAtom, MeasurementDimension, QuestionAnswerMode, QuestionBlock, Subject } from '@study-agent/contracts';
 import { buildCoreCurriculum } from './original-core-curriculum';
+import { addStructuredExercises } from './structured-curriculum';
 
-export type Exercise = { stem: string; answer: string | number; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
+export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
+  responseShape?: Record<string, unknown>; blocks?: QuestionBlock[];
   rubric?: Array<{ criterion: string; weight: number }> };
 export type FoundationDefinition = { atom: KnowledgeAtom; exercises: Exercise[] };
 type Template = (index: number) => Exercise;
@@ -161,9 +163,10 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
       return exercise(`${sentences[n % 4]}（只填写地点单词）`, place, `english-location-${n % 4}`, n % 4 >= 2 ? 'transfer' : 'understanding', 'text_blank');
     }, 32);
   }
-  return [...result, ...buildCoreCurriculum()];
+  return addStructuredExercises([...result, ...buildCoreCurriculum()]);
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {
-  return `foundation_q_${createHash('sha256').update(`${atomId}:${item.stem}:${item.answer}`).digest('hex').slice(0, 24)}`;
+  const content = typeof item.answer === 'object' ? JSON.stringify([item.answer, item.mode, item.responseShape]) : String(item.answer);
+  return `foundation_q_${createHash('sha256').update(`${atomId}:${item.stem}:${content}`).digest('hex').slice(0, 24)}`;
 }

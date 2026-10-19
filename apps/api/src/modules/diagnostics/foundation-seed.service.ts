@@ -18,11 +18,13 @@ export class FoundationSeedService implements OnModuleInit {
         const questionId = foundationQuestionId(atom.id, item), mappingId = `measurement:${questionId}`;
         if (!this.store.questions.some((question) => question.id === questionId)) {
           const question = { id: questionId, subject: atom.subject, type: item.rubric ? 'subjective' as const : 'objective' as const, stem: item.stem,
-            answer: item.answer, analysis: `${atom.objective}。本题参考响应：${item.answer}。`, difficultyLevel: 1,
+            answer: item.answer, analysis: `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
             knowledgePointIds: [], status: 'published' as const };
           this.store.questions.push(question);
-          const { answerSchema, source } = this.workspace.initializeQuestionWorkspace(question, '原创基础练习');
+          const { answerSchema, source, document } = this.workspace.initializeQuestionWorkspace(question, '原创基础练习');
           answerSchema.mode = item.mode ?? (atom.subject === 'math' ? 'numeric_blank' : 'text_blank');
+          if (item.responseShape) answerSchema.responseShape = structuredClone(item.responseShape);
+          if (item.blocks) document.blocks = [{ id: 'prompt', type: 'text', text: item.stem }, ...structuredClone(item.blocks)];
           if (item.rubric) answerSchema.gradingConfig = { rubric: item.rubric, reviewRequired: true, referenceOnly: true };
           if (item.options) answerSchema.options = [...item.options].sort((a, b) =>
             foundationQuestionId(atom.id, { ...item, stem: a }).localeCompare(foundationQuestionId(atom.id, { ...item, stem: b })))

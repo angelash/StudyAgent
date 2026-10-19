@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
-  LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
+  LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -164,6 +164,9 @@ export class DiagnosticsService {
     if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || this.store.diagnosticResponses.some((item) => item.sessionId === sessionId && item.itemId === itemId)) {
       throw new BadRequestException('只能保存尚未提交的当前评测题目');
     }
+    const mapping = session.itemSnapshots.find(item => item.id === itemId)!;
+    const snapshot = session.questionSnapshots.find(item => item.id === mapping.questionId)!;
+    const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, command.answer, true); if (issue) throw new BadRequestException(issue);
     const existing = this.store.diagnosticDrafts.find((item) => item.sessionId === sessionId && item.itemId === itemId);
     const draft = { id: `draft:${sessionId}:${itemId}`, sessionId, itemId, answer: command.answer, updatedAt: new Date().toISOString() };
     if (existing) Object.assign(existing, draft); else this.store.diagnosticDrafts.push(draft);
@@ -184,6 +187,8 @@ export class DiagnosticsService {
     }
     if (session.status !== 'in_progress') throw new BadRequestException('评测已结束');
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
+    const configuration = answerInputConfiguration(question.answerSchema as QuestionAnswerSchema);
+    if (command.disposition !== 'skip' && !configuration.supported) throw new BadRequestException(configuration.reason);
     const grade = command.disposition === 'answered' ? gradeResponse(question.answerSchema as QuestionAnswerSchema, question.answer, command.answer) :
       command.disposition === 'dont_know' ? { score: 0, correct: false, status: 'scored' as const, reason: '学生选择暂时不会，作为当前任务表现记录。' } :
         { score: null, correct: null, status: 'skipped' as const, reason: '本题已跳过，不计为错误。' };
@@ -201,7 +206,7 @@ export class DiagnosticsService {
       observationCode: grade.correct === false ? command.disposition === 'dont_know' ? 'reported_dont_know' : mapping.observationCode : null,
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
       priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
-      submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v1', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
+      submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
     };
     this.store.diagnosticResponses.push(response);
     this.store.diagnosticDrafts = this.store.diagnosticDrafts.filter((item) => item.sessionId !== sessionId || item.itemId !== mapping.id);

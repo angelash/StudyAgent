@@ -3,7 +3,9 @@ import { QuestionAnswerSchema } from '@study-agent/contracts';
 import { gradeResponse, numericValue } from './scoring';
 
 const schema = (mode: QuestionAnswerSchema['mode'], gradingConfig = {}): QuestionAnswerSchema => ({ questionId: 'q', mode,
-  responseShape: {}, validationRules: {}, gradingConfig });
+  options: ['A', 'B', 'C'].map(value => ({ id: value, value, label: value })),
+  responseShape: mode === 'sorting' ? { items: [{ id: 'A', label: '甲' }, { id: 'C', label: '丙' }] } :
+    mode === 'multi_blank' ? { entries: [{ key: 'a' }, { key: 'b' }] } : {}, validationRules: {}, gradingConfig });
 describe('versioned deterministic scoring', () => {
   it('rejects blank or coercible non-numbers and recognizes finite equivalent fractions', () => {
     for (const input of ['', ' ', null, [], true, {}, '1/0', 'Infinity']) expect(numericValue(input)).toBeNull();

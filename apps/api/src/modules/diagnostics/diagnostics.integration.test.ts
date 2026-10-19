@@ -203,6 +203,25 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     await call('get', `/diagnostics/plans/${plan.id}/history`, undefined, 403, outsider);
   });
 
+  it('excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure', async () => {
+    const session = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
+    for (const schema of store.questionAnswerSchemas.filter((s: any) => s.questionId.startsWith('target-'))) schema.mode = 'sorting';
+    const overview = await call('get', '/admin/curriculum/overview?subject=math&grade=3', undefined, 200, admin);
+    expect(overview.atoms.find((atom: any) => atom.id === 'target')).toMatchObject({ approvedQuestions: 0, interactionGaps: 32 });
+    const mappings = await call('get', '/admin/curriculum/atoms/target/items', undefined, 200, admin);
+    expect(mappings.every((item: any) => !item.eligible && item.inputIssue.includes('排序'))).toBe(true);
+    await call('post', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline', maxItems: 2, targetAtomIds: ['target'], includePrerequisites: false }, 400);
+    const raw = store.diagnosticSessions.find((s: any) => s.id === session.id);
+    for (const snapshot of raw.questionSnapshots) snapshot.answerSchema.mode = 'sorting';
+    for (const item of session.items) {
+      await call('post', `/diagnostics/sessions/${session.id}/responses`, { itemId: item.id, disposition: 'dont_know', elapsedMs: 100 }, 400);
+      await call('post', `/diagnostics/sessions/${session.id}/responses`, { itemId: item.id, disposition: 'skip', elapsedMs: 100 });
+    }
+    const report = await call('post', `/diagnostics/sessions/${session.id}/complete`, {});
+    expect(report.scoredCount).toBe(0); expect(report.rawScore).toBeNull();
+    expect(report.evidence.every((item: any) => item.status === 'skipped' && item.score === null)).toBe(true);
+  });
+
   it('retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume', async () => {
     const { plan } = await activatePractice();
     const reviews = await call('get', `/diagnostics/plans/${plan.id}/reviews`), review = reviews[0];

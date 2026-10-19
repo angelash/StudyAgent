@@ -1,6 +1,6 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
-import { KnowledgePoint, Question, Subject, TextbookVolume } from '@study-agent/contracts';
+import { KnowledgePoint, Question, Subject, TextbookVolume, answerInputConfiguration } from '@study-agent/contracts';
 import * as fs from 'fs';
 import * as path from 'path';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -324,6 +324,8 @@ export class ContentService {
     if (workspace.source.licenseClass === 'C_PUBLIC_REFERENCE_ONLY') {
       throw new BadRequestException('Reference-only public sources cannot be published as full question content');
     }
+    const configuration = answerInputConfiguration(workspace.answerSchema);
+    if (!configuration.supported) throw new BadRequestException(configuration.reason);
 
     question.status = 'published';
     this.eventBus.publish('question.published', {

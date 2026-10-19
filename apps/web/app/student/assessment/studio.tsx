@@ -15,6 +15,7 @@ import { ReportHistory } from '../../../components/report-history';
 import { GuidanceManager, ReviewScheduleEditor } from '../../../components/guidance-manager';
 import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
+import { answerInputConfiguration } from '@study-agent/contracts';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -39,6 +40,7 @@ export function AssessmentStudio() {
   const [minutes, setMinutes] = React.useState(15), [maxItems, setMaxItems] = React.useState(12);
   const [sessions, setSessions] = React.useState<Session[]>([]), [session, setSession] = React.useState<Session | null>(null);
   const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), [answer, setAnswer] = React.useState<StudentAnswerPayload | null>(null);
+  const canAnswer = payload ? answerInputConfiguration(payload.answerSchema).supported : false;
   const [report, setReport] = React.useState<DiagnosticReport | null>(null), [plan, setPlan] = React.useState<GuidancePlanView | null>(null);
   const [reviews, setReviews] = React.useState<Review[]>([]), [retrospective, setRetrospective] = React.useState<Retrospective | null>(null);
   const [screen, setScreen] = React.useState<'setup' | 'assessment' | 'report' | 'plan'>('setup');
@@ -240,7 +242,7 @@ export function AssessmentStudio() {
               {hint && <div className="studio-hint" role="status">{hint}</div>}
               <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => {
                 const result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); setHint(result.hint);
-              })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
+              })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !canAnswer} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer || !canAnswer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
               <button className="studio-text-button studio-skip" disabled={busy} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
             </div> : <button className="studio-primary" disabled={busy} onClick={() => execute(async () => { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${session.id}/complete`, {})); setScreen('report'); })}>生成本次报告</button>}
             <p className="studio-footnote">首次提交会保留为测量证据；提示记录会单独计入。随时可以离开，回来继续。</p>

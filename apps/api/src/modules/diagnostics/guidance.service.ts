@@ -9,6 +9,7 @@ import { StudentsService } from '../students/students.service';
 import { AiService } from '../ai/ai.service';
 import { DiagnosticsService } from './diagnostics.service';
 import { estimateMastery, weightedEvidence } from './measurement';
+import { eligibleMeasurements } from './curriculum.service';
 
 const createPlanSchema = z.object({
   baselineSessionId: z.string().min(1).max(180), minutesPerDay: z.number().int().min(5).max(60),
@@ -43,7 +44,7 @@ export class GuidanceService {
       const atom = atomMap.get(estimate.atomId)!;
       const hypothesis = activeHypotheses.find((item) => item.atomId === atom.id || item.probeAtomIds.includes(atom.id));
       const unknown = estimate.status === 'unknown' || estimate.status === 'insufficient';
-      const resourceQuestionIds = this.store.measurementItems.filter((item) => item.atomId === atom.id && item.reviewStatus === 'approved')
+      const resourceQuestionIds = eligibleMeasurements(this.store).filter(item => item.atomId === atom.id)
         .map((item) => item.questionId).filter((id, position, all) => all.indexOf(id) === position &&
           this.store.questions.some(q => q.id === id && q.status === 'published') &&
           this.store.questionSources.some(s => s.questionId === id && s.reviewStatus === 'approved' && s.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY')).slice(0, 4);
