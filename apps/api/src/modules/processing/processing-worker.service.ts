@@ -113,7 +113,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     }
     if (task.kind === 'image.handwriting.preview') {
       const { file, path } = await this.store.transaction(() => this.files.readyPath(String(task.payload.fileId)));
-      if (file.mediaType === 'application/pdf') throw new ProcessingError('unsupported_image');
+      if (!['image/png', 'image/jpeg'].includes(file.mediaType)) throw new ProcessingError('unsupported_image');
       const output = resolve(runRoot, 'handwriting.json');
       const result = await this.process({ mode: 'handwriting', input: path, assets: studyAssetRoot(), output }, runRoot, 'handwriting', signal, progress);
       const artifact = await this.makeArtifact(task.id, file.id, result.imagePath, result.imageSha256, 'handwriting_preview');

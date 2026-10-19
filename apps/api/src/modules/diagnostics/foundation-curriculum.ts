@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { KnowledgeAtom, MeasurementDimension, QuestionAnswerMode, QuestionBlock, Subject } from '@study-agent/contracts';
 import { buildCoreCurriculum } from './original-core-curriculum';
 import { addStructuredExercises } from './structured-curriculum';
+import { addAuthoredTeaching } from './authored-teaching';
 
 export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
   responseShape?: Record<string, unknown>; blocks?: QuestionBlock[];
@@ -163,7 +164,7 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
       return exercise(`${sentences[n % 4]}（只填写地点单词）`, place, `english-location-${n % 4}`, n % 4 >= 2 ? 'transfer' : 'understanding', 'text_blank');
     }, 32);
   }
-  return addStructuredExercises([...result, ...buildCoreCurriculum()]);
+  return addAuthoredTeaching(addStructuredExercises([...result, ...buildCoreCurriculum()]));
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {

@@ -1,13 +1,29 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { isDeepStrictEqual } from 'node:util';
+import { KnowledgeAtom } from '@study-agent/contracts';
+import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
-import { assertAcyclic } from './curriculum.service';
-import { buildFoundationCurriculum, foundationQuestionId } from './foundation-curriculum';
+import { assertAcyclic, CurriculumService } from './curriculum.service';
+import { buildFoundationCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
+
+// Only the exact, unedited original v1 can receive an automatic enrichment.
+// An editor's missing card or changed relationship is an intentional definition.
+export function authoredTeachingUpdates(atoms: readonly KnowledgeAtom[], definitions: readonly FoundationDefinition[]) {
+  const current = new Map(atoms.map(atom => [atom.id, atom]));
+  return definitions.flatMap(({ atom }) => {
+    const previous = current.get(atom.id), { teaching, ...original } = atom;
+    return teaching && previous?.version === 1 && !previous.teaching && isDeepStrictEqual(previous, original)
+      ? [{ atom: { ...previous, teaching: structuredClone(teaching) }, expectedVersion: 1 }] : [];
+  });
+}
+const seedActor: InMemoryUserAccount = { id: 'system:authored-teaching-v1', principal: '', passwordHash: '',
+  displayName: '原创教学资料迁移', role: 'admin', status: 'active' };
 
 @Injectable()
 export class FoundationSeedService implements OnModuleInit {
-  constructor(private readonly store: InMemoryStoreService, private readonly workspace: QuestionWorkspaceService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly workspace: QuestionWorkspaceService,
+    private readonly curriculum: CurriculumService) {}
   onModuleInit() {
     if (process.env.NODE_ENV === 'test' || process.env.STUDY_SEED_FOUNDATION === 'false') return;
     const definitions = buildFoundationCurriculum();
@@ -41,5 +57,7 @@ export class FoundationSeedService implements OnModuleInit {
         });
       }
     }
+    const updates = authoredTeachingUpdates(this.store.inspect('knowledgeAtoms'), definitions);
+    if (updates.length) this.curriculum.applyAtomDefinitions(seedActor, updates);
   }
 }

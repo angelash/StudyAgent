@@ -34,6 +34,8 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run lint
+      - name: Curriculum package persistence and safe seed enrichment
+        run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
       - name: Asset audit tool regression
         run: python scripts/assets/test_audit_archive_sensitive.py
       - name: Independent recovery verifier regression

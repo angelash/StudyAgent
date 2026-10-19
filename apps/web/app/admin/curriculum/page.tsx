@@ -5,11 +5,14 @@ import Link from 'next/link';
 import type { CurriculumBook, KnowledgeAtom, MeasurementItem, Question, Subject, TextbookAtomMapping } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { StudyNav } from '../../../components/study-nav';
+import { CurriculumPackagePanel } from './package-panel';
+import { TeachingEditor } from './teaching-editor';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
+import './curriculum.css';
 
 type CoverageAtom = KnowledgeAtom & { approvedQuestions: number; families: number; dimensions: string[]; draftMappings: number; interactionGaps: number };
-type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade: number; atoms: number; withQuestions: number; withTransfer: number; withMultipleFamilies: number }>;
+type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade: number; atoms: number; withQuestions: number; withTransfer: number; withMultipleFamilies: number; withTeaching: number; draftTeaching: number; withRelations: number }>;
   notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number } };
 type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; mappedLessonCount: number };
 type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<{ id: string; name: string; lessons: Array<{ id: string; name: string; atomIds: string[]; mappingState: string; mapping: TextbookAtomMapping | null }> }> };
@@ -21,6 +24,7 @@ const dimensions = { understanding: '理解', procedure: '执行', transfer: '�
 export default function CurriculumPage() {
   const [subject, setSubject] = React.useState<Subject>('math'), [grade, setGrade] = React.useState(3), [term, setTerm] = React.useState<'upper' | 'lower'>('upper');
   const [data, setData] = React.useState<Overview | null>(null), [role, setRole] = React.useState(''), [error, setError] = React.useState('');
+  const [userId, setUserId] = React.useState('');
   const [busy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [atom, setAtom] = React.useState<KnowledgeAtom | null>(null), [items, setItems] = React.useState<Item[]>([]), [mapping, setMapping] = React.useState<MeasurementItem | null>(null);
   const [books, setBooks] = React.useState<BookSummary[]>([]), [bookId, setBookId] = React.useState(''), [book, setBook] = React.useState<Detail | null>(null);
@@ -32,7 +36,7 @@ export default function CurriculumPage() {
   async function act(fn: () => Promise<void>, message = '已保存，历史版本已保留') {
     setBusy(true); setError(''); setNotice(''); try { await fn(); setNotice(message); } catch (e) { setError(e instanceof Error ? e.message : '操作未完成'); } finally { setBusy(false); }
   }
-  React.useEffect(() => { let alive = true; req<{ role: string }>('/auth/me').then(u => { if (alive) setRole(u.role); }).catch(e => { if (alive) setError(e.message); }); return () => { alive = false; }; }, []);
+  React.useEffect(() => { let alive = true; req<{ id: string; role: string }>('/auth/me').then(u => { if (alive) { setRole(u.role); setUserId(u.id); } }).catch(e => { if (alive) setError(e.message); }); return () => { alive = false; }; }, []);
   React.useEffect(() => { if (!['admin', 'teacher'].includes(role)) return; let alive = true;
     req<Overview>(`/admin/curriculum/overview?subject=${subject}`).then(d => { if (alive) { setData(d); setAtom(null); setItems([]); setMapping(null); } }).catch(e => { if (alive) setError(e.message); });
     return () => { alive = false; }; }, [role, subject]);
@@ -44,7 +48,9 @@ export default function CurriculumPage() {
     return () => { alive = false; }; }, [bookId]);
   async function openAtom(a: KnowledgeAtom) {
     setAtom({ id: a.id, subject: a.subject, name: a.name, strand: a.strand, grade: a.grade, term: a.term,
-      objective: a.objective, successCriterion: a.successCriterion, prerequisiteIds: [...a.prerequisiteIds], curriculumVersion: a.curriculumVersion, status: a.status, version: a.version });
+      objective: a.objective, successCriterion: a.successCriterion, prerequisiteIds: [...a.prerequisiteIds], curriculumVersion: a.curriculumVersion, status: a.status, version: a.version,
+      ...(a.parentId !== undefined ? { parentId: a.parentId } : {}), ...(a.confusableAtomIds ? { confusableAtomIds: [...a.confusableAtomIds] } : {}),
+      ...(a.transferAtomIds ? { transferAtomIds: [...a.transferAtomIds] } : {}), ...(a.teaching ? { teaching: structuredClone(a.teaching) } : {}) });
     setMapping(null); setRevisions(null); setItems(await req<Item[]>(`/admin/curriculum/atoms/${encodeURIComponent(a.id)}/items`));
   }
   function newMapping() { if (atom) setMapping({ id: `mapping:${crypto.randomUUID()}`, questionId: '', questionVersion: 1, atomId: atom.id,
@@ -60,8 +66,9 @@ export default function CurriculumPage() {
     {role && !['admin', 'teacher'].includes(role) && <p>此页面需要教研权限。<Link href="/parent/dashboard">返回家长空间</Link></p>}
     {data && <>
       <div className="admin-toolbar"><label>学科<select value={subject} onChange={e => setSubject(e.target.value as Subject)}>{Object.entries(subjects).map(([v, t]) => <option key={v} value={v}>{t}</option>)}</select></label><label>学期<select value={term} onChange={e => setTerm(e.target.value as 'upper' | 'lower')}><option value="upper">上学期</option><option value="lower">下学期</option></select></label><button className="studio-secondary" onClick={() => act(reload, '已刷新当前有效覆盖')} disabled={busy}>刷新覆盖</button></div>
-      <div className="admin-grade-map" aria-label="年级覆盖">{data.cells.map(c => <button key={c.grade} aria-pressed={grade === c.grade} onClick={() => { setGrade(c.grade); setAtom(null); }}><strong>{c.grade}年级</strong><small>{c.withQuestions}/{c.atoms} 点有有效题</small><small>{c.withMultipleFamilies} 点有多题族 · {c.withTransfer} 点有迁移题</small></button>)}</div>
+      <div className="admin-grade-map" aria-label="年级覆盖">{data.cells.map(c => <button key={c.grade} aria-pressed={grade === c.grade} onClick={() => { setGrade(c.grade); setAtom(null); }}><strong>{c.grade}年级</strong><small>{c.withQuestions}/{c.atoms} 点有有效题</small><small>{c.withMultipleFamilies} 点有多题族 · {c.withTransfer} 点有迁移题</small><small>{c.withTeaching} 点有已审教学 · {c.draftTeaching} 点待审</small><small>{c.withRelations} 点有拓展知识关系</small></button>)}</div>
       <p>{data.notice}</p>
+      {userId && <CurriculumPackagePanel key={`${subject}:${userId}`} subject={subject} userId={userId} canImport={role === 'admin'} onApplied={async () => { await reload(); setAtom(null); setItems([]); setMapping(null); setRevisions(null); }} />}
       <div className="admin-columns"><section><div className="studio-point-heading"><h2>{grade}年级 · {subjects[subject]}</h2><button className="studio-text-button" onClick={newAtom}>新增原子点</button></div><div className="admin-atom-list">{selected.map(a => <button key={a.id} aria-pressed={atom?.id === a.id} onClick={() => act(() => openAtom(a), '已读取知识定义和题目映射')}><strong>{a.name}</strong><small>{a.strand} · {a.status === 'published' ? '已发布' : a.status === 'draft' ? '草稿' : '已停用'} · v{a.version}</small><small className={a.approvedQuestions ? '' : 'admin-gap'}>{a.approvedQuestions} 道有效题 · {a.families} 个题族 · {a.dimensions.map(d => dimensions[d as keyof typeof dimensions]).join(' / ') || '量化维度待补'}</small>{a.interactionGaps > 0 && <small className="admin-gap">{a.interactionGaps} 道题需补齐作答配置</small>}</button>)}</div></section>
         <section className="admin-editor">{!atom ? <><h2>从一个可观察的行为开始</h2><p>选择左侧知识点查看定义、先修关系和有效题；新增定义后仍需配置题目来源、评分与知识映射。</p></> : <>
           <span className="studio-eyebrow">ATOM / v{atom.version}</span><h2>{atom.name || '新知识点'}</h2><p>{atom.objective}</p><p>达标条件：{atom.successCriterion}</p>
@@ -73,6 +80,9 @@ export default function CurriculumPage() {
             <label className="wide">可观察目标<textarea value={atom.objective} onChange={e => setAtom({ ...atom, objective: e.target.value })} rows={3} maxLength={1000} /></label>
             <label className="wide">成功标准<textarea value={atom.successCriterion} onChange={e => setAtom({ ...atom, successCriterion: e.target.value })} rows={3} maxLength={1000} /></label>
             <div className="wide"><label>前置知识（同科且不高于本点建议年级）</label><div className="admin-checks">{data.atoms.filter(a => a.id !== atom.id && a.grade <= atom.grade).map(a => <label key={a.id}><input type="checkbox" checked={atom.prerequisiteIds.includes(a.id)} onChange={e => setAtom({ ...atom, prerequisiteIds: e.target.checked ? [...atom.prerequisiteIds, a.id] : atom.prerequisiteIds.filter(id => id !== a.id) })} />{a.grade}年级 · {a.name}</label>)}</div></div>
+            <label className="wide">上位知识点<select value={atom.parentId ?? ''} onChange={e => setAtom({ ...atom, parentId: e.target.value || null })}><option value="">未指定</option>{data.atoms.filter(a => a.id !== atom.id).map(a => <option key={a.id} value={a.id}>{a.grade}年级 · {a.name}</option>)}</select></label>
+            {(['confusableAtomIds', 'transferAtomIds'] as const).map((relation, i) => <div className="wide" key={relation}><label>{['易混淆知识点', '迁移关联知识点'][i]}</label><div className="admin-checks">{data.atoms.filter(a => a.id !== atom.id).map(a => <label key={a.id}><input type="checkbox" checked={atom[relation]?.includes(a.id) ?? false} onChange={e => setAtom({ ...atom, [relation]: e.target.checked ? [...(atom[relation] ?? []), a.id] : atom[relation]?.filter(id => id !== a.id) })} />{a.grade}年级 · {a.name}</label>)}</div></div>)}
+            <div className="wide"><TeachingEditor value={atom.teaching} onChange={teaching => { const next = { ...atom }; if (teaching) next.teaching = teaching; else delete next.teaching; setAtom(next); }} /></div>
           </div><button className="studio-primary" disabled={busy} onClick={() => act(async () => { const saved = await req<KnowledgeAtom>('/admin/knowledge-atoms', atom); await reload(); setAtom(saved); })}>保存定义并保留版本</button></details>
           <div className="studio-point-heading"><h3>题目与量化映射</h3><button className="studio-text-button" onClick={newMapping}>新增映射</button></div>
           {mapping && <div className="admin-form"><label className="wide">题目标识<input value={mapping.questionId} onChange={e => setMapping({ ...mapping, questionId: e.target.value })} /></label>

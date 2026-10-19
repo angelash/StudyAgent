@@ -5,12 +5,29 @@ const id = z.string().min(1).max(180);
 export const dimensionSchema = z.enum(['understanding', 'procedure', 'transfer', 'retention']);
 export type MeasurementDimension = z.infer<typeof dimensionSchema>;
 
+export const atomTeachingSchema = z.object({
+  reviewStatus: z.enum(['draft', 'approved']),
+  explanation: z.string().trim().min(10).max(3000),
+  example: z.object({ prompt: z.string().trim().min(5).max(1500),
+    steps: z.array(z.string().trim().min(3).max(800)).min(1).max(12),
+    conclusion: z.string().trim().min(1).max(800) }).strict(),
+  commonErrors: z.array(z.object({ code: z.string().trim().min(1).max(100),
+    observation: z.string().trim().min(5).max(600),
+    alternativeExplanations: z.array(z.string().trim().min(5).max(400)).min(1).max(5),
+    verification: z.string().trim().min(10).max(1000) }).strict()).min(1).max(12),
+  verification: z.object({ understanding: z.string().trim().min(10).max(1000), procedure: z.string().trim().min(10).max(1000),
+    transfer: z.string().trim().min(10).max(1000), retention: z.string().trim().min(10).max(1000) }).strict(),
+}).strict();
+export type AtomTeaching = z.infer<typeof atomTeachingSchema>;
+
 export const knowledgeAtomSchema = z.object({
   id, subject, name: z.string().min(1).max(120), strand: z.string().min(1).max(120),
   grade: z.number().int().min(1).max(6), term: z.enum(['upper', 'lower', 'both']),
   objective: z.string().min(5).max(1000), successCriterion: z.string().min(5).max(1000),
   prerequisiteIds: z.array(id).max(30), curriculumVersion: z.string().min(1).max(120),
   status: z.enum(['draft', 'published', 'retired']), version: z.number().int().positive(),
+  parentId: id.nullable().optional(), confusableAtomIds: z.array(id).max(30).optional(),
+  transferAtomIds: z.array(id).max(30).optional(), teaching: atomTeachingSchema.optional(),
 });
 export type KnowledgeAtom = z.infer<typeof knowledgeAtomSchema>;
 
@@ -109,6 +126,7 @@ export type GuidanceAction = {
   id: string; atomId: string; hypothesisId: string | null; evidenceIds: string[];
   title: string; activity: string; minutes: number; successCriterion: string;
   resourceQuestionIds: string[]; retestAt: string;
+  teachingSnapshot?: { atomVersion: number; teaching: AtomTeaching };
 };
 export type DiagnosticGuidancePlan = {
   id: string; studentId: string; subject: z.infer<typeof subject>; baselineSessionId: string;

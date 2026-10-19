@@ -54,7 +54,8 @@ export class GuidanceService {
           `先让孩子说清“${atom.objective}”，示范一个关键步骤，再完成新题。${hypothesis?.nextAction ?? '逐步减少提示，并让孩子说明为什么这样做。'}`,
         minutes: perAction + (index === 0 ? command.minutesPerDay % Math.max(prioritized.length, 1) : 0),
         successCriterion: `${atom.successCriterion}；至少两个新题族独立完成，再安排迁移与延迟验证。`,
-        resourceQuestionIds, retestAt: new Date(now.getTime() + 86_400_000).toISOString() };
+        resourceQuestionIds, retestAt: new Date(now.getTime() + 86_400_000).toISOString(),
+        ...(atom.teaching?.reviewStatus === 'approved' ? { teachingSnapshot: { atomVersion: atom.version, teaching: structuredClone(atom.teaching) } } : {}) };
     });
     const plan: DiagnosticGuidancePlan = {
       id: this.store.nextId('guidance'), studentId, subject: session.subject, baselineSessionId: session.id,

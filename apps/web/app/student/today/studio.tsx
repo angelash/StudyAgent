@@ -9,6 +9,7 @@ import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { AnswerEvidenceView } from '../../../components/answer-evidence-view';
 import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
+import { TeachingGuide } from '../../../components/teaching-guide';
 import { useSessionUser } from '../../../lib/session-user';
 import { answerInputConfiguration } from '@study-agent/contracts';
 import '../assessment/studio.css';
@@ -98,6 +99,7 @@ export function DailyStudio() {
       {loading ? <div className="studio-empty" role="status">正在取回学习安排…</div> : !loggedIn ? <div className="studio-empty"><h2>继续孩子的学习旅程</h2><p>登录后保存每天的练习和思路。</p><Link className="studio-primary" href="/student/login">使用学习码进入 ↗</Link></div> : !studentId ? <div className="studio-empty"><h2>先建立一个学习档案</h2><p>确认年级和已经学过的知识点后，再安排适合的任务。</p><Link className="studio-primary" href="/student/assessment">建立档案 ↗</Link></div> : practice ? <>
         <div className="studio-section-head"><span className="studio-eyebrow">{practice.status === 'completed' ? '今日活动已完成' : '可以提示，也可以订正'}</span><h2>{practice.action.title}</h2><p>{practice.action.activity}</p></div>{practice.planRevision !== practice.currentPlanRevision && <p className="studio-notice" role="status">{practice.snapshotOrigin === 'started' ? '指导计划已调整。这次练习继续使用开始时保存的活动，完成后按最新计划安排下一步。' : '这是早期练习记录，活动内容在首次版本归档时保存，无法追溯更早的活动变化。'}</p>}
         {practice.status === 'completed' && <div className="daily-complete"><span aria-hidden="true">✓</span><h2>这一步，已经认真走过。</h2><p>已作答 {practice.summary.answered} 道，跳过 {practice.summary.skipped} 道；其中 {practice.summary.independentFirstPass} 道首次独立做对。{practice.summary.pendingReview > 0 && `${practice.summary.pendingReview} 道表达题等待复核。`}</p><p>接下来按计划复测，用新题检查理解和保持。</p><button className="studio-primary" onClick={leave}>查看下一步 ↗</button></div>}<>
+          <TeachingGuide snapshot={practice.action.teachingSnapshot} showObservation={!studentMode} />
           <div className="daily-question-index" aria-label="练习进度">{practice.questions.map((item, i) => <button key={item.id} disabled={busy} aria-current={index === i ? 'step' : undefined} onClick={() => setIndex(i)}>{i + 1}{item.attempted ? ' ✓' : ''}</button>)}</div>
           <div className="studio-progress"><span style={{ width: `${100 * practice.summary.attempted / practice.summary.total}%` }} /></div>
           <div className="studio-question"><div className="studio-question-top"><span>第 {index + 1} / {practice.summary.total} 题</span><span role="status">{saved}</span></div>

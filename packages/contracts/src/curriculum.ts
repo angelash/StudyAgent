@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { knowledgeAtomSchema } from './diagnostics';
 
 const key = z.string().min(1).max(180);
 export type CurriculumBook = {
@@ -18,6 +19,19 @@ export type TextbookAtomMapping = z.infer<typeof textbookMappingInputSchema> & {
 };
 
 export type CurriculumRevision = {
-  id: string; entityId: string; kind: 'atom' | 'measurement' | 'textbook'; version: number;
+  id: string; entityId: string; kind: 'atom' | 'measurement' | 'textbook' | 'package'; version: number;
   actorId: string; at: string; snapshot: unknown;
+};
+
+export const curriculumPackageSchema = z.object({
+  format: z.literal('study-curriculum-package-v1'), title: z.string().trim().min(3).max(200),
+  provenance: z.string().trim().min(10).max(2000),
+  atoms: z.array(z.object({ expectedVersion: z.number().int().min(0), atom: knowledgeAtomSchema.strict() }).strict()).min(1).max(2000),
+}).strict();
+export type CurriculumPackage = z.infer<typeof curriculumPackageSchema>;
+export type CurriculumPackagePreview = {
+  fileId: string; fileSha256: string; title: string; provenance: string; fingerprint: string;
+  total: number; added: number; changed: number; unchanged: number; published: number; draft: number;
+  changes: Array<{ id: string; name: string; kind: 'added' | 'changed' | 'unchanged';
+    previousVersion: number; nextVersion: number; fields: Array<{ field: string; before: unknown; after: unknown }> }>;
 };

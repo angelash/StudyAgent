@@ -6,6 +6,7 @@ import { CurriculumService } from './curriculum.service';
 import { DiagnosticsService } from './diagnostics.service';
 import { GuidanceService } from './guidance.service';
 import { z } from 'zod';
+import { CurriculumPackageService } from './curriculum-package.service';
 
 const parseSubject = (value?: string): Subject => validate(subjectSchema, value ?? 'math');
 
@@ -13,7 +14,14 @@ const parseSubject = (value?: string): Subject => validate(subjectSchema, value 
 @Controller()
 export class DiagnosticsController {
   constructor(private readonly curriculum: CurriculumService, private readonly diagnostics: DiagnosticsService,
-    private readonly guidance: GuidanceService) {}
+    private readonly guidance: GuidanceService, private readonly packages: CurriculumPackageService) {}
+
+  @Get('admin/curriculum/package')
+  exportPackage(@Req() req: AuthenticatedRequest, @Query('subject') subject?: string) { return this.packages.export(req.user, subject ? parseSubject(subject) : undefined); }
+  @Post('admin/curriculum/packages/preview')
+  previewPackage(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.packages.preview(req.user, body); }
+  @Post('admin/curriculum/packages/apply')
+  applyPackage(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.packages.apply(req.user, body); }
 
   @Get('diagnostics/curriculum')
   curriculumList(@Query('subject') subject?: string, @Query('grade') grade?: string, @Query('term') term?: string) {

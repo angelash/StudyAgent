@@ -11,7 +11,7 @@ import { validate } from '../../common/validation';
 
 export const UPLOAD_CHUNK_SIZE = 4 * 1024 * 1024;
 const initSchema = z.object({ name: z.string().trim().min(1).max(180), size: z.number().int().min(1).max(512 * 1024 * 1024),
-  mediaType: z.enum(['application/pdf', 'image/png', 'image/jpeg']), requestKey: z.string().trim().min(8).max(100) }).strict();
+  mediaType: z.enum(['application/pdf', 'application/json', 'image/png', 'image/jpeg']), requestKey: z.string().trim().min(8).max(100) }).strict();
 const hash = (data: Buffer) => createHash('sha256').update(data).digest('hex');
 export function assertImportAdmin(user: InMemoryUserAccount) { if (user.role !== 'admin' || user.status !== 'active') throw new ForbiddenException('内容导入需要管理员权限'); }
 
@@ -26,8 +26,9 @@ export class ImportFilesService {
 
   start(user: InMemoryUserAccount, input: unknown) {
     assertImportAdmin(user); const data = validate(initSchema, input);
+    if (data.mediaType === 'application/json' && data.size > 8 * 1024 * 1024) throw new BadRequestException('单个课程包最多8MB，请按课程范围拆分');
     const name = basename(data.name.replace(/\\/g, '/')).replace(/[\x00-\x1f\x7f]/g, '');
-    const expected = data.mediaType === 'application/pdf' ? ['.pdf'] : data.mediaType === 'image/png' ? ['.png'] : ['.jpg', '.jpeg'];
+    const expected = data.mediaType === 'application/pdf' ? ['.pdf'] : data.mediaType === 'application/json' ? ['.json'] : data.mediaType === 'image/png' ? ['.png'] : ['.jpg', '.jpeg'];
     if (!name || !expected.includes(extname(name).toLowerCase())) throw new BadRequestException('文件扩展名与选择的类型不一致');
     const existing = this.store.find('importFiles', { ownerUserId: user.id, requestKey: data.requestKey });
     if (existing) {
@@ -118,6 +119,12 @@ export class ImportFilesService {
   private blobPath(sha256: string) { if (!/^[a-f0-9]{64}$/.test(sha256)) throw new BadRequestException('文件校验值无效'); return resolve(this.root, 'blobs', sha256); }
   private chunkPath(id: string, index: number, sha256: string) { if (!/^import_file_[a-f0-9-]+$/.test(id)) throw new BadRequestException('上传编号无效'); return resolve(this.root, 'chunks', id, `${index}-${sha256}`); }
   private validHeader(bytes: Buffer, type: ImportFile['mediaType']) {
+    if (type === 'application/json') {
+      const prefix = bytes.toString('utf8').replace(/^\uFEFF/, '').trimStart();
+      // JSON may have leading whitespace beyond this bounded signature sample.
+      // The package service validates the complete UTF-8 document before use.
+      return !prefix || prefix.startsWith('{');
+    }
     return type === 'application/pdf' ? bytes.subarray(0, 5).toString() === '%PDF-' : type === 'image/png' ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) : bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
   }
   private async immutableWrite(path: string, bytes: Buffer) {

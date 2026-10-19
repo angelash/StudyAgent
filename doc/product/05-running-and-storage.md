@@ -27,3 +27,5 @@ Web的 `prebuild` / `predev` 会从已锁定的MathLive依赖生成本地公式�
 请求和身份额度由数据库原子计数，超限429附 `Retry-After`。反向代理部署需用 `STUDY_TRUST_PROXY` 指定自己的代理IP/CIDR；默认忽略转发来源头。管理员可在 `/admin/analytics` 查看运行、任务与复核积压。请求统计仅当前进程，自启动累计；任务和学习计数来自持久库。具体额度、监控口径和故障演练见 [运行监控交付](21-operations-delivery.md)。
 
 API 默认绑定 `127.0.0.1`，可通过 `API_HOST` 显式调整；`API_PORT` / `PORT` 必须为1–65535的整数。Linux生产使用同站点HTTPS、独立API/worker/Web进程及PostgreSQL，完整环境样例、服务模板、构建/管理员引导/升级与运行证据见 [Linux交付](23-linux-deployment-delivery.md)。Web的同站API地址需在构建时令 `NEXT_PUBLIC_API_BASE_URL` 为空；仅修改运行环境不会重写已有浏览器包。
+
+课程定义可在 `/admin/curriculum` 导出及比较课程包；管理员确认后整批导入，单包最多8MiB/2,000点。教学资料有独立审核状态，新计划冻结批准版本。已有库只自动补充精确未编辑的v1原创教学定义，不覆盖用户编辑、较新版本或草稿。格式、冲突恢复、覆盖缺口和真实SQLite/PG重启证据见 [课程包交付](24-curriculum-package-delivery.md)。

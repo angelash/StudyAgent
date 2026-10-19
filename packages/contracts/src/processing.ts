@@ -1,6 +1,6 @@
 export type ImportFile = {
   id: string; ownerUserId: string; requestKey: string; name: string; size: number;
-  mediaType: 'application/pdf' | 'image/png' | 'image/jpeg'; chunkSize: number;
+  mediaType: 'application/pdf' | 'application/json' | 'image/png' | 'image/jpeg'; chunkSize: number;
   chunks: Array<{ index: number; sha256: string; size: number }>;
   status: 'uploading' | 'ready'; sha256: string | null; createdAt: string; completedAt: string | null;
 };

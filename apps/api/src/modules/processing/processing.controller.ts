@@ -69,7 +69,7 @@ export class ProcessingController {
   @Post('handwriting-preview') async handwriting(@Req() req: AuthenticatedRequest, @Body() body: unknown) {
     assertImportAdmin(req.user); const data = validate(z.object({ fileId: z.string().max(100), requestKey: z.string().min(8).max(100) }).strict(), body);
     const file = this.files.get(req.user, data.fileId);
-    if (file.status !== 'ready' || file.mediaType === 'application/pdf') throw new BadRequestException('请选择已上传完成的 PNG 或 JPEG 图片');
+    if (file.status !== 'ready' || !['image/png', 'image/jpeg'].includes(file.mediaType)) throw new BadRequestException('请选择已上传完成的 PNG 或 JPEG 图片');
     return this.enqueue(req, 'image.handwriting.preview', data.requestKey, { fileId: file.id, sha256: file.sha256 });
   }
   @Post('local-explain') async explain(@Req() req: AuthenticatedRequest, @Body() body: unknown) {

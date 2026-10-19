@@ -29,6 +29,17 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
 
 export function assertAcyclic(atoms: KnowledgeAtom[]) {
   const map = new Map(atoms.map((atom) => [atom.id, atom]));
+  if (map.size !== atoms.length) throw new BadRequestException('知识点标识不能重复');
+  for (const atom of atoms) {
+    for (const references of [atom.prerequisiteIds, atom.confusableAtomIds ?? [], atom.transferAtomIds ?? []]) {
+      if (new Set(references).size !== references.length || references.includes(atom.id)) throw new BadRequestException('知识关系不能重复或指向自身');
+    }
+    for (const reference of [...(atom.parentId ? [atom.parentId] : []), ...(atom.confusableAtomIds ?? []), ...(atom.transferAtomIds ?? [])]) {
+      const target = map.get(reference);
+      if (!target || target.subject !== atom.subject) throw new BadRequestException('知识关系需引用存在的同科知识点');
+      if (atom.status === 'published' && target.status !== 'published') throw new BadRequestException('已发布知识点的关联定义也必须已发布');
+    }
+  }
   const visiting = new Set<string>(), done = new Set<string>();
   function visit(id: string, chain: string[]) {
     if (visiting.has(id)) throw new BadRequestException(`先修关系形成循环：${[...chain, id].join(' → ')}`);
@@ -45,6 +56,16 @@ export function assertAcyclic(atoms: KnowledgeAtom[]) {
     visiting.delete(id); done.add(id);
   }
   for (const atom of atoms) visit(atom.id, []);
+  const parentDone = new Set<string>(), parentVisiting = new Set<string>();
+  function visitParent(id: string) {
+    if (parentVisiting.has(id)) throw new BadRequestException('知识点的父子关系形成循环');
+    if (parentDone.has(id)) return;
+    parentVisiting.add(id);
+    const parent = map.get(id)?.parentId;
+    if (parent) visitParent(parent);
+    parentVisiting.delete(id); parentDone.add(id);
+  }
+  atoms.forEach(atom => visitParent(atom.id));
 }
 
 @Injectable()
@@ -57,18 +78,40 @@ export class CurriculumService {
     if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
     if (term !== undefined) validate(z.enum(['upper', 'lower']), term);
     return this.store.inspect('knowledgeAtoms').filter((atom) => atom.subject === subject && atom.status === 'published' &&
-      (!grade || atom.grade <= grade) && (!term || !grade || atom.grade < grade || atom.term === 'both' || atom.term === term));
+      (!grade || atom.grade <= grade) && (!term || !grade || atom.grade < grade || atom.term === 'both' || atom.term === term))
+      .map(({ teaching, ...atom }) => ({ ...atom, ...(teaching?.reviewStatus === 'approved' ? { teaching } : {}) }));
   }
 
   upsertAtom(user: InMemoryUserAccount, input: unknown) {
     this.assertEditor(user);
     const atom = validate(knowledgeAtomSchema.strict(), input);
     const previous = this.store.find('knowledgeAtoms', { id: atom.id });
-    const next = { ...atom, version: previous ? previous.version + 1 : 1 };
-    assertAcyclic([...this.store.inspect('knowledgeAtoms').filter((item) => item.id !== atom.id), next]);
-    if (previous) Object.assign(previous, next); else this.store.append('knowledgeAtoms', next);
-    this.recordRevision('atom', next.id, next.version, user.id, next);
-    this.events.publish('curriculum.atom_saved', { atomId: next.id, version: next.version, actorId: user.id });
+    if (previous && atom.version !== previous.version) throw new ConflictException('知识定义已变化，请刷新并比较后再保存');
+    return this.applyAtomDefinitions(user, [{ atom, expectedVersion: previous?.version ?? 0 }])[0];
+  }
+
+  applyAtomDefinitions(user: InMemoryUserAccount, rows: Array<{ atom: KnowledgeAtom; expectedVersion: number }>) {
+    this.assertEditor(user);
+    const ids = new Set(rows.map(row => row.atom.id));
+    if (ids.size !== rows.length) throw new BadRequestException('课程包内知识标识不能重复');
+    const next = rows.map(row => {
+      const atom = validate(knowledgeAtomSchema.strict(), row.atom), previous = this.store.find('knowledgeAtoms', { id: atom.id });
+      if ((previous?.version ?? 0) !== row.expectedVersion) throw new ConflictException('知识定义版本已变化，请重新比较课程包');
+      return { ...atom, version: (previous?.version ?? 0) + 1 };
+    });
+    assertAcyclic([...this.store.inspect('knowledgeAtoms').filter(atom => !ids.has(atom.id)), ...next]);
+    for (const atom of next) {
+      const previous = this.store.find('knowledgeAtoms', { id: atom.id });
+      if (previous && !this.store.find('curriculumRevisions', { entityId: atom.id, kind: 'atom', version: previous.version })) {
+        this.recordRevision('atom', previous.id, previous.version, user.id, previous);
+      }
+      if (previous) {
+        for (const field of ['parentId', 'confusableAtomIds', 'transferAtomIds', 'teaching'] as const) if (!(field in atom)) delete previous[field];
+        Object.assign(previous, atom);
+      } else this.store.append('knowledgeAtoms', atom);
+      this.recordRevision('atom', atom.id, atom.version, user.id, atom);
+      this.events.publish('curriculum.atom_saved', { atomId: atom.id, version: atom.version, actorId: user.id });
+    }
     return next;
   }
 
@@ -232,7 +275,10 @@ export class CurriculumService {
       const subset = atoms.filter((a) => a.subject === s && a.grade === i + 1 && a.status === 'published');
       return { subject: s, grade: i + 1, atoms: subset.length, withQuestions: subset.filter((a) => a.approvedQuestions > 0).length,
         withTransfer: subset.filter((a) => a.dimensions.includes('transfer')).length,
-        withMultipleFamilies: subset.filter((a) => a.families >= 2).length };
+        withMultipleFamilies: subset.filter((a) => a.families >= 2).length,
+        withTeaching: subset.filter(a => a.teaching?.reviewStatus === 'approved').length,
+        draftTeaching: subset.filter(a => a.teaching?.reviewStatus === 'draft').length,
+        withRelations: subset.filter(a => a.parentId || a.confusableAtomIds?.length || a.transferAtomIds?.length).length };
     })).filter((c) => (!subject || c.subject === subject) && (!grade || c.grade === grade));
     return { generatedAt: new Date().toISOString(), cells, atoms,
       notice: '覆盖按已发布定义和当前有效审核题映射统计；不代表常模校准或教材全部覆盖。',

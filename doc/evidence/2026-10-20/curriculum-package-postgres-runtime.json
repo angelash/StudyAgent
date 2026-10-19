@@ -1,0 +1,233 @@
+{
+  "at": "2026-10-19T19:16:43.915Z",
+  "driver": "postgres",
+  "scope": "Owned production-mode database, real HTTP, exact original seed enrichment and two service restarts; no browser acceptance or curriculum-completeness claim",
+  "passed": true,
+  "original": {
+    "atoms": 256,
+    "questions": 3435,
+    "allQuestionsIncludingLegacyFixtures": 3450,
+    "approvedTeaching": 22,
+    "missingTeaching": 234,
+    "cells": [
+      {
+        "subject": "math",
+        "grade": 1,
+        "atoms": 16,
+        "withQuestions": 16,
+        "withTransfer": 8,
+        "withMultipleFamilies": 10,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "math",
+        "grade": 2,
+        "atoms": 15,
+        "withQuestions": 15,
+        "withTransfer": 7,
+        "withMultipleFamilies": 12,
+        "withTeaching": 3,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "math",
+        "grade": 3,
+        "atoms": 16,
+        "withQuestions": 16,
+        "withTransfer": 9,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "math",
+        "grade": 4,
+        "atoms": 15,
+        "withQuestions": 15,
+        "withTransfer": 8,
+        "withMultipleFamilies": 8,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "math",
+        "grade": 5,
+        "atoms": 19,
+        "withQuestions": 19,
+        "withTransfer": 9,
+        "withMultipleFamilies": 11,
+        "withTeaching": 2,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "math",
+        "grade": 6,
+        "atoms": 19,
+        "withQuestions": 19,
+        "withTransfer": 12,
+        "withMultipleFamilies": 9,
+        "withTeaching": 2,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 1,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 2,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 3,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 4,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 5,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "chinese",
+        "grade": 6,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 1,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 2,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 3,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 4,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 5,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      },
+      {
+        "subject": "english",
+        "grade": 6,
+        "atoms": 13,
+        "withQuestions": 13,
+        "withTransfer": 3,
+        "withMultipleFamilies": 13,
+        "withTeaching": 1,
+        "draftTeaching": 0,
+        "withRelations": 0
+      }
+    ]
+  },
+  "exactSeedMigration": {
+    "upgraded": 19,
+    "customDefinitionPreserved": true,
+    "newerVersionPreserved": true,
+    "draftPreserved": true,
+    "originalAndEnrichedRevisions": true
+  },
+  "packagePersistence": {
+    "fileSha256": "cc496d18fe61f30e53fa9d035630ce2ae21d310be3adc966b1a780b08e94926d",
+    "applied": 2,
+    "receiptSurvivesRestart": true,
+    "tokenSurvivesRestart": true,
+    "retryDoesNotIncrementVersions": true,
+    "seedDoesNotIncrementAgain": true,
+    "concurrentSameKeyStatuses": [
+      201,
+      201
+    ]
+  },
+  "schemaVersion": 8
+}

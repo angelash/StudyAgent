@@ -9,7 +9,9 @@ import { DiagnosticsController } from './diagnostics.controller';
 import { FoundationSeedService } from './foundation-seed.service';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { StudentMediaModule } from '../student-media/student-media.module';
+import { ProcessingFilesModule } from '../processing/processing-files.module';
+import { CurriculumPackageService } from './curriculum-package.service';
 
-@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule], controllers: [DiagnosticsController],
-  providers: [CurriculumService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
+@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController],
+  providers: [CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}
