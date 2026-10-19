@@ -1,13 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import type { CurriculumBook, Subject } from '@study-agent/contracts';
+import type { CurriculumBook, CurriculumChapter, CurriculumLesson, Subject } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../lib/api';
 import './learning-progress-selector.css';
 
 type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; mappedLessonCount: number };
-type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<{ id: string; name: string;
-  lessons: Array<{ id: string; name: string; atomIds: string[]; mappingState: string }> }> };
+type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<Omit<CurriculumChapter, 'lessons'> & {
+  lessons: Array<CurriculumLesson & { atomIds: string[]; mappingState: string }> }> };
 export type ProgressSelection = { bookId: string; mode: 'knowledge' | 'textbook'; lessonIds: string[] };
 const get = <T,>(path: string) => apiRequest<T>(path, {}, getAuthToken());
 
@@ -31,12 +31,12 @@ export function LearningProgressSelector({ subject, grade, term, selection, onCh
       .catch(e => { if (alive) setError(e.message); });
     return () => { alive = false; };
   }, [selection.bookId, grade, subject, term]);
-  const selected = books.find(b => b.id === selection.bookId), lessons = detail?.chapters.flatMap(c => c.lessons) ?? [];
+  const selected = books.find(b => b.id === selection.bookId), lessons = detail?.chapters.flatMap(c => c.lessons).filter(l => l.kind !== 'reference') ?? [];
   const currentIds = new Set(selection.lessonIds), chosen = lessons.filter(l => currentIds.has(l.id));
   const uncovered = chosen.filter(l => !l.atomIds.length).length;
   function selectBook(id: string) {
     const book = books.find(b => b.id === id);
-    onChange({ bookId: id, mode: book?.chapterState === 'available' ? 'textbook' : 'knowledge', lessonIds: [] });
+    onChange({ bookId: id, mode: book?.chapterState === 'available' && book.mappedLessonCount > 0 ? 'textbook' : 'knowledge', lessonIds: [] });
     onLearned([]); if (book) onVersion(book.title);
   }
   function choose(ids: string[]) {
@@ -57,6 +57,7 @@ export function LearningProgressSelector({ subject, grade, term, selection, onCh
     {!selected && <label className="studio-textbook">教材版本<input value={version} onChange={e => onVersion(e.target.value)} maxLength={150} placeholder="填写孩子实际使用的教材版本" /></label>}
     {selected?.source === 'original' && <p className="studio-muted">这是原创能力路径。请以孩子实际学过的内容为准；它与具体教材的章节顺序分别管理。</p>}
     {selected?.chapterState === 'missing' && <p className="progress-gap">已保留这本教材的信息，章节目录仍待补充。请在下方勾选孩子实际学过的知识点。</p>}
+    {selected?.chapterEvidence && <p className="studio-muted">已对照这本书的目录页核对课名和页码。{selected.mappedLessonCount ? `已有 ${selected.mappedLessonCount} 个课时完成知识对齐。` : '课时与知识点的对齐还在审核中，请先在下方确认孩子实际学过的知识点；也可以展开目录查看进度。'}</p>}
     {detail?.chapterState === 'available' && <>
       <div className="studio-subjects" role="group" aria-label="进度确认方式">
         <button aria-pressed={selection.mode === 'textbook'} onClick={() => { onChange({ ...selection, mode: 'textbook' }); const ids = new Set(selection.lessonIds); onLearned([...new Set(lessons.filter(l => ids.has(l.id)).flatMap(l => l.atomIds))]); }}>按已学课时</button>
@@ -64,14 +65,14 @@ export function LearningProgressSelector({ subject, grade, term, selection, onCh
       </div>
       {selection.mode === 'textbook' && <>
         <label>快速确认进度<select value="" onChange={e => { const index = lessons.findIndex(l => l.id === e.target.value); if (index >= 0) choose(lessons.slice(0, index + 1).map(l => l.id)); }}>
-          <option value="">选择“已学到这里”，也可逐课勾选</option>{detail.chapters.map(c => <optgroup key={c.id} label={c.name}>{c.lessons.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}</optgroup>)}
+          <option value="">选择“已学到这里”，也可逐课勾选</option>{detail.chapters.filter(c => c.kind !== 'appendix').map(c => <optgroup key={c.id} label={c.name}>{c.lessons.filter(l => l.kind !== 'reference').map(l => <option key={l.id} value={l.id}>{l.number ? `${l.number}. ` : ''}{l.name}{l.printedPage ? ` · 第${l.printedPage}页` : ''}</option>)}</optgroup>)}
         </select></label>
         <div className="progress-chapters">{detail.chapters.map(chapter => <details key={chapter.id} open={chapter.lessons.some(l => currentIds.has(l.id))}>
-          <summary>{chapter.name}<small>{chapter.lessons.filter(l => currentIds.has(l.id)).length}/{chapter.lessons.length}</small></summary>
-          <button className="studio-text-button" onClick={() => choose(chapter.lessons.every(l => currentIds.has(l.id)) ? selection.lessonIds.filter(id => !chapter.lessons.some(l => l.id === id)) : [...selection.lessonIds, ...chapter.lessons.map(l => l.id)])}>切换本章全部课时</button>
-          {chapter.lessons.map(lesson => <label key={lesson.id}><input type="checkbox" checked={currentIds.has(lesson.id)}
+          <summary>{chapter.name}<small>{chapter.kind === 'appendix' ? '查阅用附录' : `${chapter.lessons.filter(l => currentIds.has(l.id)).length}/${chapter.lessons.length}`}</small></summary>
+          {chapter.kind !== 'appendix' && <button className="studio-text-button" onClick={() => choose(chapter.lessons.every(l => currentIds.has(l.id)) ? selection.lessonIds.filter(id => !chapter.lessons.some(l => l.id === id)) : [...selection.lessonIds, ...chapter.lessons.filter(l => l.kind !== 'reference').map(l => l.id)])}>切换本章全部课时</button>}
+          {chapter.lessons.map(lesson => <label key={lesson.id}>{lesson.kind !== 'reference' && <input type="checkbox" checked={currentIds.has(lesson.id)}
             onChange={e => choose(e.target.checked ? [...selection.lessonIds, lesson.id] : selection.lessonIds.filter(id => id !== lesson.id))} />
-            <span>{lesson.name}<small>{lesson.atomIds.length ? `已对齐${lesson.atomIds.length}个知识点` : '知识映射待审核'}</small></span></label>)}
+            }<span>{lesson.number ? `${lesson.number}. ` : ''}{lesson.name}{lesson.skim && '（略读）'}<small>{lesson.printedPage ? `第 ${lesson.printedPage} 页 · ` : ''}{lesson.kind === 'reference' ? '查阅用，不计入已学课时' : lesson.atomIds.length ? `已对齐${lesson.atomIds.length}个知识点` : '知识映射待审核'}</small>{lesson.parts?.length ? <small>本课包含：{lesson.parts.map(p => `${p.name}（${p.printedPage}页）`).join('、')}</small> : null}</span></label>)}
         </details>)}</div>
         <p className={uncovered ? 'progress-gap' : 'studio-muted'}>已选 {chosen.length} 个课时，对应 {new Set(chosen.flatMap(l => l.atomIds)).size} 个可确认知识点。
           {uncovered > 0 && `其中 ${uncovered} 个课时还缺少审核映射，本次评测无法覆盖；报告会保留这项缺口。`}</p>

@@ -54,31 +54,44 @@ export class TextbookRegistryService {
 
   list(subject: Subject, grade: number, term: 'upper' | 'lower') {
     return this.all().filter((b) => b.subject === subject && b.grade === grade && b.term === term)
-      .map((book) => ({ ...book, chapters: undefined,
-        lessonCount: book.chapters.reduce((n, c) => n + c.lessons.length, 0),
-        mappedLessonCount: book.chapters.flatMap((c) => c.lessons).filter((l) => this.mapping(book, l.id)?.status === 'approved').length }));
+      .map((book) => {
+        const lessons = book.chapters.flatMap(c => c.lessons), available = this.availableAtoms(book);
+        return { ...book, chapters: undefined, entryCount: lessons.length,
+          lessonCount: lessons.filter(l => l.kind !== 'reference').length,
+          referenceCount: lessons.filter(l => l.kind === 'reference').length,
+          mappedLessonCount: lessons.filter(l => l.kind !== 'reference' && this.approved(this.mapping(book, l.id), available)).length };
+      });
   }
 
   detail(id: string, editor = false) {
     const book = this.require(id);
-    const published = new Set(this.store.select('knowledgeAtoms', { status: 'published' }).map((a) => a.id));
+    const published = this.availableAtoms(book);
     return { ...book, chapters: book.chapters.map((c) => ({ ...c, lessons: c.lessons.map((lesson) => {
-      const mapping = this.mapping(book, lesson.id);
-      const approved = mapping?.status === 'approved' && mapping.atomIds.every((id) => published.has(id));
-      return { ...lesson, atomIds: approved ? mapping.atomIds : [], mappingState: approved ? 'approved' : mapping?.status ?? 'unmapped',
+      const mapping = lesson.kind === 'reference' ? null : this.mapping(book, lesson.id);
+      const approved = this.approved(mapping, published);
+      return { ...lesson, atomIds: approved ? mapping!.atomIds : [], mappingState: lesson.kind === 'reference' ? 'reference' : approved ? 'approved' : mapping?.status === 'approved' ? 'stale' : mapping?.status ?? 'unmapped',
         ...(editor ? { mapping } : {}) };
     }) })) };
   }
 
   resolveProgress(book: CurriculumBook, lessonIds: string[]) {
-    const lessons = new Set(book.chapters.flatMap((c) => c.lessons.map((l) => l.id)));
-    if (!lessonIds.length || lessonIds.some((id) => !lessons.has(id))) throw new BadRequestException('已学课时必须属于所选教材版本');
+    const lessons = new Set(book.chapters.flatMap((c) => c.lessons.filter(l => l.kind !== 'reference').map((l) => l.id)));
+    if (!lessonIds.length || lessonIds.some((id) => !lessons.has(id))) throw new BadRequestException('已学课时必须属于所选教材版本，附录和组合课子标题不能作为独立课时');
     const selected = [...new Set(lessonIds)], mappings = selected.map((id) => this.mapping(book, id));
-    const availableAtoms = new Set(this.store.knowledgeAtoms.filter((a) => a.status === 'published' && a.subject === book.subject && a.grade <= book.grade).map((a) => a.id));
-    const approved = mappings.filter((m): m is TextbookAtomMapping => !!m && m.status === 'approved' && m.atomIds.every((id) => availableAtoms.has(id)));
+    const availableAtoms = this.availableAtoms(book);
+    const approved = mappings.filter((m): m is TextbookAtomMapping => this.approved(m, availableAtoms));
     const atomIds = [...new Set(approved.flatMap((m) => m.atomIds))];
     return { atomIds, mappingSnapshots: approved.map((m) => ({ id: m.id, version: m.version, lessonId: m.lessonId, atomIds: [...m.atomIds] })),
       selectedLessonSnapshots: book.chapters.flatMap((c) => c.lessons.filter((l) => selected.includes(l.id)).map((l) => ({ id: l.id, name: l.name, chapterName: c.name }))),
       uncoveredLessonIds: selected.filter((id) => !approved.some((m) => m.lessonId === id)) };
+  }
+
+  private availableAtoms(book: CurriculumBook) {
+    return new Set(this.store.knowledgeAtoms.filter(a => a.status === 'published' && a.subject === book.subject && a.grade <= book.grade &&
+      (a.grade < book.grade || a.term === 'both' || a.term === book.term)).map(a => a.id));
+  }
+
+  private approved(mapping: TextbookAtomMapping | null, available: Set<string>) {
+    return !!mapping && mapping.status === 'approved' && mapping.atomIds.length > 0 && mapping.atomIds.every(id => available.has(id));
   }
 }

@@ -250,12 +250,14 @@ export class CurriculumService {
   saveTextbookMapping(user: InMemoryUserAccount, input: unknown) {
     this.assertEditor(user);
     const data = validate(textbookMappingInputSchema, input), book = this.textbooks.require(data.bookId);
-    if (!book.chapters.some((c) => c.lessons.some((l) => l.id === data.lessonId))) throw new BadRequestException('课时不属于所选教材');
+    const lesson = book.chapters.flatMap(c => c.lessons).find(l => l.id === data.lessonId);
+    if (!lesson || lesson.kind === 'reference') throw new BadRequestException('请关联所选教材中的实际课时，附录和子标题不能独立映射');
     if (new Set(data.atomIds).size !== data.atomIds.length) throw new BadRequestException('映射知识点不能重复');
     for (const id of data.atomIds) {
       const atom = this.store.find('knowledgeAtoms', { id: id });
-      if (!atom || atom.subject !== book.subject || atom.grade > book.grade || (data.status === 'approved' && atom.status !== 'published')) {
-        throw new BadRequestException('映射需引用同科、当前年级以内的有效原子知识点');
+      if (!atom || atom.subject !== book.subject || atom.grade > book.grade ||
+        (atom.grade === book.grade && atom.term !== 'both' && atom.term !== book.term) || (data.status === 'approved' && atom.status !== 'published')) {
+        throw new BadRequestException('映射需引用同科、当前年级以内且符合当前学期的有效原子知识点');
       }
     }
     const previous = this.store.find('textbookAtomMappings', { bookId: book.id, lessonId: data.lessonId, bookVersion: book.version });

@@ -30,6 +30,8 @@ Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm
 
 教材元信息随代码位于 `resources/curriculum/textbooks-v1.json`。可用 `STUDY_TEXTBOOK_REGISTRY` 指定独立只读登记文件；没有登记文件时原创能力路径仍可用。启动时原创课程种子幂等补充，`STUDY_SEED_FOUNDATION=false` 可关闭；已编辑的同标识定义不会被种子静默覆盖。
 
+真实教材448册中已有112册章节，含12册逐页核验的小学语文上下册。页码、略读及组合课层级见 `resources/curriculum/reviewed-textbook-chapters-v1.json`，目录核验不自动批准知识映射。执行 `python -X utf8 scripts/assets/build_textbook_registry.py` 可离线重建，无需旧工程目录；来源缺失或校验失败会停止并保留原登记。新来源在 `data/assets/textbook-sources/public-v1`，需随资产备份，图片不对学生发布；新增121文件的独立恢复不替代旧全量备份。两库范围与版本重启验证为 `node scripts/qa/verify-textbook-chapters.cjs <收据路径> sqlite|postgres`，详见 [目录交付](37-reviewed-chinese-textbooks-delivery.md)。
+
 家庭资料管理位于 `/parent/data`。旧备份恢复应同时提供最新的独立删除记录；生成和应用方法见 [家庭资料交付](16-family-data-delivery.md)。离线备份本身仍需按保留策略管理。
 
 学生图片与录音作答位于 `STUDY_DATA_DIR/student-media`，必须随业务库备份。图片真实解码后校正方向并去掉EXIF，以PNG保存；录音需要PATH中的 `ffmpeg`、`ffprobe`，或设置 `STUDY_FFMPEG`、`STUDY_FFPROBE` 的绝对可执行路径，转成单声道16kHz WAV。缺少工具时音频题退出新选题，旧活动显示跳过提示。部署应固定、更新受支持的FFmpeg发行版；当前验证环境使用本机工具。单个原文件12MB、图片6000边长/2000万像素、录音180秒，两项解码并发上限；视频轨道与网络输入不接受。

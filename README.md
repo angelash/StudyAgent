@@ -16,6 +16,8 @@
 
 原创课程当前包含256个知识点、4347道任务。数位与退位、基础算术、数量与序位等19点已补充对照任务，逐题校验和素材缺口见 [测量素材交付](doc/product/36-authored-number-probes-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
 
+448册真实教材中112册已有章节，新增12册小学语文上下册的课名、页码和组合课层级；目录与知识点映射分别审核，旧评测保留原版本。来源、离线重建与两库运行证据见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md)。
+
 ## 本地运行
 
 需要 Node.js 24.13+（24系列）、npm 11。录音处理还需要 `ffmpeg` 和 `ffprobe`；PDF/OCR/模型处理使用 Python 3.10+，依赖见 `scripts/processing/requirements.txt`。不启用这些处理能力时，普通评测仍可运行。

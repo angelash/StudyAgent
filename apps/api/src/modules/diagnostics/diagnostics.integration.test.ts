@@ -84,6 +84,84 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     await call('get', '/admin/curriculum/overview', undefined, 403);
   });
 
+  it('serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts', async () => {
+    let entries = 0, lessons = 0;
+    for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower']) {
+      const books = await call('get', `/diagnostics/textbooks?subject=chinese&grade=${grade}&term=${term}`);
+      const book = books.find((b: any) => b.source === 'public_catalog');
+      expect(book.chapterState).toBe('available'); expect(book.mappedLessonCount).toBe(0);
+      expect(book.chapterEvidence.method).toBe('agent_visual_review');
+      expect(book.chapterEvidence.mappingReview).toBe('not_reviewed');
+      entries += book.entryCount; lessons += book.lessonCount;
+      const detail = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
+      for (const chapter of detail.chapters) for (const lesson of chapter.lessons) {
+        expect(lesson.atomIds).toEqual([]); expect(lesson.printedPage).toBeGreaterThan(0);
+        expect(lesson.mappingState).toBe(lesson.kind === 'reference' ? 'reference' : 'unmapped');
+        for (const part of lesson.parts ?? []) { expect(part).not.toHaveProperty('id'); expect(part).not.toHaveProperty('atomIds'); }
+      }
+      expect(JSON.stringify(detail)).not.toContain('transcode/image');
+    }
+    expect(entries).toBe(558); expect(lessons).toBe(523);
+  });
+
+  it('requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition', async () => {
+    const atom = { ...store.knowledgeAtoms.find((a: any) => a.id === 'base'), id: 'chinese-fixture', subject: 'chinese', grade: 2, term: 'both', prerequisiteIds: [] };
+    store.knowledgeAtoms.push(atom);
+    for (let index = 0; index < 8; index++) {
+      const questionId = `chinese-fixture-${index}`;
+      store.questions.push({ ...store.questions.find((q: any) => q.id === `base-q${index}`), id: questionId, subject: 'chinese' });
+      store.questionAnswerSchemas.push({ ...store.questionAnswerSchemas.find((s: any) => s.questionId === `base-q${index}`), questionId });
+      store.questionSources.push({ ...store.questionSources.find((s: any) => s.questionId === `base-q${index}`), questionId });
+      store.measurementItems.push({ ...store.measurementItems.find((m: any) => m.questionId === `base-q${index}`),
+        id: `chinese-fixture-item-${index}`, questionId, atomId: atom.id });
+    }
+    const books = await call('get', '/diagnostics/textbooks?subject=chinese&grade=2&term=upper');
+    const book = books.find((b: any) => b.source === 'public_catalog');
+    const detail = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
+    const [first, second] = detail.chapters[0].lessons, reference = detail.chapters.at(-1).lessons[0];
+    const map = { bookId: book.id, lessonId: first.id, atomIds: [atom.id], status: 'candidate', rationale: '合成测试映射仅验证审核门禁，不代表教材教研结论' };
+    await call('post', '/admin/curriculum/textbook-mappings', { ...map, lessonId: reference.id }, 400, admin);
+    await call('post', '/admin/curriculum/textbook-mappings', map, 201, admin);
+    const command = { subject: 'chinese', grade: 2, term: 'upper', textbookVolumeId: book.id, textbookVersion: book.title,
+      progressMode: 'textbook', selectedLessonIds: [first.id, second.id], learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 };
+    await call('put', `/students/${studentId}/learning-scope`, command, 400);
+    await call('post', '/admin/curriculum/textbook-mappings', { ...map, status: 'approved' }, 201, admin);
+    await call('put', `/students/${studentId}/learning-scope`, { ...command, selectedLessonIds: [first.id, reference.id] }, 400);
+    const scope = await call('put', `/students/${studentId}/learning-scope`, command);
+    expect(scope.uncoveredLessonIds).toEqual([second.id]); expect(scope.learnedAtomIds).toEqual([atom.id]);
+    expect(scope.selectedLessonSnapshots.map((l: any) => l.name)).toEqual([first.name, second.name]);
+    const session = await start({ subject: 'chinese', includePrerequisites: false, maxItems: 4 });
+    expect(session.items.every((i: any) => i.atomId === atom.id)).toBe(true);
+    const { TextbookRegistryService } = require('../../../dist/apps/api/src/modules/diagnostics/textbook-registry.service.js');
+    const liveBook = app.get(TextbookRegistryService).require(book.id);
+    const oldVersion = liveBook.version;
+    try {
+      liveBook.version = 'synthetic-later-edition';
+      const latest = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
+      expect(latest.chapters[0].lessons[0].atomIds).toEqual([]);
+      await call('put', `/students/${studentId}/learning-scope`, command, 400);
+      const restored = await call('get', `/diagnostics/sessions/${session.id}`);
+      expect(restored.scopeSnapshot.textbookRevision).toBe(oldVersion);
+      expect(restored.scopeSnapshot.mappingSnapshots).toEqual(scope.mappingSnapshots);
+    } finally { liveBook.version = oldVersion; }
+  });
+
+  it('rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term', async () => {
+    const atom = { ...store.knowledgeAtoms.find((a: any) => a.id === 'base'), id: 'chinese-lower', subject: 'chinese', grade: 2, term: 'lower', prerequisiteIds: [] };
+    store.knowledgeAtoms.push(atom);
+    const book = (await call('get', '/diagnostics/textbooks?subject=chinese&grade=2&term=upper')).find((b: any) => b.source === 'public_catalog');
+    const lesson = (await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`)).chapters[0].lessons[0];
+    const mapping = { bookId: book.id, lessonId: lesson.id, atomIds: [atom.id], status: 'approved', rationale: '合成跨学期错误映射用于验证旧数据隔离' };
+    await call('post', '/admin/curriculum/textbook-mappings', mapping, 400, admin);
+    store.textbookAtomMappings.push({ ...mapping, id: 'historical-cross-term', bookVersion: book.version, version: 1, reviewerId: admin.user.id, reviewedAt: new Date().toISOString() });
+    const latest = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
+    expect(latest.chapters[0].lessons[0].atomIds).toEqual([]);
+    expect(latest.chapters[0].lessons[0].mappingState).toBe('stale');
+    expect((await call('get', '/diagnostics/textbooks?subject=chinese&grade=2&term=upper')).find((b: any) => b.id === book.id).mappedLessonCount).toBe(0);
+    await call('put', `/students/${studentId}/learning-scope`, { subject: 'chinese', grade: 2, term: 'upper', textbookVolumeId: book.id,
+      textbookVersion: book.title, progressMode: 'textbook', selectedLessonIds: [lesson.id], learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 }, 400);
+  });
+
   it('keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies', async () => {
     const target = store.knowledgeAtoms.find((a: any) => a.id === 'target');
     const changed = await call('post', '/admin/knowledge-atoms', { ...target, objective: '对照量规逐步完成此项操作并解释关系' }, 201, admin);

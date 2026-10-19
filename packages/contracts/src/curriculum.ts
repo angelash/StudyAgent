@@ -2,11 +2,28 @@ import { z } from 'zod';
 import { knowledgeAtomSchema } from './diagnostics';
 
 const key = z.string().min(1).max(180);
+export type CurriculumTocPart = { name: string; printedPage: number; tocPage?: number };
+export type CurriculumLesson = {
+  id: string; name: string; printedPage?: number; tocPage?: number;
+  kind?: 'lesson' | 'activity' | 'reference'; number?: number; skim?: boolean;
+  /** Combined texts share one progress entry; parts are not independent evidence. */
+  parts?: CurriculumTocPart[];
+};
+export type CurriculumChapter = {
+  id: string; name: string; lessons: CurriculumLesson[]; printedPage?: number; tocPage?: number;
+  kind?: 'unit' | 'orientation' | 'appendix' | 'anthology';
+  pageBasis?: 'printed_heading' | 'first_entry'; syntheticHeading?: boolean;
+};
 export type CurriculumBook = {
   id: string; subject: 'math' | 'chinese' | 'english'; grade: number; term: 'upper' | 'lower';
   edition: string; title: string; version: string; source: 'archive' | 'public_catalog' | 'original';
   sourceRef: string; sourceSha256: string; chapterState: 'available' | 'missing';
-  chapters: Array<{ id: string; name: string; lessons: Array<{ id: string; name: string }> }>;
+  chapters: CurriculumChapter[];
+  catalogVersion?: string;
+  chapterEvidence?: {
+    reviewId: string; method: 'agent_visual_review'; reviewedAt: string; idScheme: 'local_toc_ids';
+    sourceManifestSha256: string; metadataSha256: string; tocPageSha256s: string[]; mappingReview: 'not_reviewed';
+  };
 };
 
 export const textbookMappingInputSchema = z.object({

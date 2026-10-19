@@ -38,6 +38,8 @@ jobs:
         run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
       - name: Curriculum package persistence and safe seed enrichment
         run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
+      - name: Reviewed textbook TOCs and frozen progress recovery
+        run: node scripts/qa/verify-textbook-chapters.cjs data/qa/textbook-chapters-runtime.json
       - name: Frozen measurement definitions and comparable evidence
         run: node scripts/qa/verify-measurement-definitions.cjs data/qa/measurement-definition-runtime.json
       - name: Assessment preview, partial evidence and state recovery
@@ -48,6 +50,10 @@ jobs:
         run: node scripts/qa/verify-notebook.cjs data/qa/notebook-runtime.json
       - name: Asset audit tool regression
         run: python scripts/assets/test_audit_archive_sensitive.py
+      - name: Public textbook capture and source-bound chapter review
+        run: |
+          python scripts/assets/test_capture_textbook_sources.py
+          python scripts/assets/test_reviewed_textbook_chapters.py
       - name: Independent recovery verifier regression
         run: python scripts/qa/test_verify_restored_assets.py
       - name: Source release privacy and tamper boundary regression

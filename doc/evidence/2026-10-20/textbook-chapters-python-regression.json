@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-19T23:09:51.175194+00:00",
+  "scope": "Observed local Python test commands; private JPEG decode and source hashes recorded separately in the asset audit.",
+  "passed": true,
+  "commands": [
+    {
+      "command": "python -X utf8 -m unittest discover -s scripts/assets -p 'test_*textbook*.py' -q",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -X utf8 scripts/operations/test_package_source.py",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "sourceSha256": {
+    "scripts/assets/build_textbook_registry.py": "5d98d74a9da061bbe8bc350735a0fb16d1face76a1294d1af476a735b0f8738d",
+    "scripts/assets/capture_textbook_sources.py": "69827e6edbebfb7a7df9335ad2abce53cfa8dcda113aae50571187408556176a",
+    "scripts/assets/reviewed_textbook_chapters.py": "40781e9335d99853f05e165eff7cf8eeafbb0d129d7a9b61ecf99abd878493d7",
+    "scripts/assets/audit_textbook_sources.py": "0b3bac49675d3176fe044b50c48de3eb25f28fb4de632d91f99d17fda427495c",
+    "scripts/assets/test_capture_textbook_sources.py": "544e47bceadfa016dfca03bef9fc9394a11f72d282bcca37a7c753638b31b110",
+    "scripts/assets/test_reviewed_textbook_chapters.py": "ac7db6a6e180d62d2a831b5716e4faabfd8a100956c9c92aa4c445c11cb245b8"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-19T23:07:45.558Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Owned synthetic families, reviewed Chinese bibliographic TOCs, synthetic lesson mappings, real production HTTP and two restarts. No pedagogical mapping approval or browser acceptance.",
+  "sourceSha256": {
+    "resources/curriculum/textbooks-v1.json": "87b6166f5fbbe29ae334d3194e6d95f7c0fb3723c982b0ec85914f9dba946118",
+    "resources/curriculum/reviewed-textbook-chapters-v1.json": "948f3fd8fb9afc4f0054d8d69a2882ea8cb0ccef1448b463090ca4086d80fc34",
+    "apps/api/src/modules/diagnostics/textbook-registry.service.ts": "29e3463a32c874e6eae67dfce929844933749a945734e076b0a6167e16966455",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "21dc9a4f48e4e912f529a6b1b9c546cdc7a600dc0416537d4208278337c72f75",
+    "packages/contracts/src/curriculum.ts": "28bcbbce8f83fce46ecdaef599dfeace6c3d7f4760e42b0468a09908334223be",
+    "apps/web/components/learning-progress-selector.tsx": "79500006d286965e66031adfdf43d2b7dc8bd92d6564df0d75d7ee1e79fa9f19",
+    "apps/web/app/admin/curriculum/page.tsx": "232817af5fa7ce9f2a107d7d9638647dd88c73bbe9ec37e09416d01799011a80"
+  },
+  "textbooks": {
+    "books": 12,
+    "entries": 558,
+    "instructionalEntries": 523,
+    "references": 35,
+    "combinedParts": 96
+  },
+  "recovery": {
+    "restarts": 2,
+    "oldBookRevision": "837f368e-fd4e-404a-ae3f-342d75bc0227",
+    "newBookRevision": "31bff353ac6f7c2044598682",
+    "oldAndNewAssessmentScopesPreserved": true,
+    "oldKnowledgeSelectionPreserved": true,
+    "candidateNeverEntersScope": true,
+    "reviewedMapSurvivesRestart": true,
+    "remainingLessonGapPreserved": true,
+    "referencesAndCrossTermMapsRejected": true,
+    "formalRateLimitsEnabled": true
+  },
+  "sourceRecovery": {
+    "scope": "New private textbook sources only; distinct from the previous 396135-asset full-backup candidate",
+    "assets": 121,
+    "bytes": 60875661,
+    "allRestoredSha256VerifiedIndependently": true,
+    "databaseRestoredWithRevocationFence": true,
+    "revokedSessions": 3,
+    "sourceIndexExact": true,
+    "backupId": "ab54e643-5879-4854-8186-7d4f6ab4c729"
+  }
+}

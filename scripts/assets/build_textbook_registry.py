@@ -3,18 +3,20 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sqlite3
 from pathlib import Path
+from uuid import uuid4
+from reviewed_textbook_chapters import apply_reviewed, load_reviewed
 
 
 def checksum(value):
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 
-def run(root: Path, target: Path, source: Path):
+def load_labels(target: Path, source: Path | None):
     # Only these public tag fields are extracted from the old configuration.
-    config = source / 're-shijuanbao-service/local/data/web-anonymous-get_config.json'
     labels = {}
     def visit(node):
         if isinstance(node, dict):
@@ -23,10 +25,21 @@ def run(root: Path, target: Path, source: Path):
             for v in node.values(): visit(v)
         elif isinstance(node, list):
             for v in node: visit(v)
-    visit(json.loads(config.read_text('utf-8')))
-    assert labels['24'] == '上学期' and labels['25'] == '下学期'
+    if source is not None:
+        config = source / 're-shijuanbao-service/local/data/web-anonymous-get_config.json'
+        visit(json.loads(config.read_text('utf-8')))
+    else:
+        saved = json.loads(target.read_text('utf-8')).get('tagEvidence', {})
+        labels = {key: saved[key] for key in ['12', '13', '14', '15', '16', '17', '24', '25'] if key in saved}
     grades = {f'{name}年级': i + 1 for i, name in enumerate('一二三四五六')}
-    for tag in range(12, 18): assert labels[str(tag)] in grades
+    if labels.get('24') != '上学期' or labels.get('25') != '下学期' or any(labels.get(str(tag)) != name for tag, name in zip(range(12, 18), grades)):
+        raise ValueError('Captured grade/term labels are missing or do not match the public tag IDs')
+    return labels
+
+
+def run(root: Path, target: Path, source: Path | None = None, reviewed: Path | None = None, labels_path: Path | None = None):
+    labels = load_labels(labels_path or target, source)
+    grades = {f'{name}年级': i + 1 for i, name in enumerate('一二三四五六')}
     books = []
     db = sqlite3.connect((root.resolve() / 'catalog.sqlite3').as_uri() + '?mode=ro', uri=True)
     snapshot = db.execute("select value from metadata where key='source_sha256'").fetchone()[0]
@@ -68,9 +81,20 @@ def run(root: Path, target: Path, source: Path):
                               'chapterState': 'missing', 'chapters': []})
     # Prefer the last captured version of a public resource; no duplicate identities.
     books = sorted({book['id']: book for book in books}.values(), key=lambda b: (b['subject'], b['grade'], b['term'], b['title'], b['id']))
+    if reviewed is not None:
+        books = apply_reviewed(books, load_reviewed(reviewed, root / 'textbook-sources/public-v1'))
     result = {'schemaVersion': 'textbooks-v1', 'archiveSha256': snapshot, 'tagEvidence': labels, 'books': books}
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    body = json.dumps(result, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    temporary = target.with_name(target.name + '.' + str(uuid4()) + '.tmp')
+    try:
+        with temporary.open('xb') as stream:
+            stream.write(body)
+            stream.flush()
+            os.fsync(stream.fileno())
+        temporary.replace(target)
+    finally:
+        temporary.unlink(missing_ok=True)
     print(json.dumps({'books': len(books), 'withChapters': sum(b['chapterState'] == 'available' for b in books),
                       'subjects': {s: sum(b['subject'] == s for b in books) for s in ['math', 'chinese', 'english']},
                       'bytes': target.stat().st_size}, ensure_ascii=False))
@@ -80,6 +104,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path('data/assets'))
     parser.add_argument('--target', type=Path, default=Path('resources/curriculum/textbooks-v1.json'))
-    parser.add_argument('--source', type=Path, required=True)
+    parser.add_argument('--source', type=Path, help='Optional legacy source; by default reuse captured tagEvidence from the saved registry')
+    parser.add_argument('--labels', type=Path, help='Saved registry whose tagEvidence supplies public grade and term labels')
+    parser.add_argument('--reviewed', type=Path, default=Path('resources/curriculum/reviewed-textbook-chapters-v1.json'))
     args = parser.parse_args()
-    run(args.root, args.target, args.source)
+    run(args.root, args.target, args.source, args.reviewed, args.labels)
