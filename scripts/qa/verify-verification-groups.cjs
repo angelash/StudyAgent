@@ -18,16 +18,17 @@ Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', ST
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
-const { buildAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
+const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
 const { buildFoundationCurriculum, foundationQuestionId } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
   'apps/api/src/modules/diagnostics/verification-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts',
   'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/web/app/student/assessment/studio.tsx',
   'apps/web/components/assessment-blueprint.tsx', 'apps/web/components/verification-observations.tsx', 'apps/web/components/verification-observations.css',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
+  'apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
-  scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Four selected math points now cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
+  scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminPool, qaDatabase;
 const tokens = {};
@@ -57,7 +58,8 @@ async function wrongAnswer(id, item) {
   return -999999;
 }
 async function contentUpgrade() {
-  const additions = buildAuthoredMathProbeFamilies().flatMap(family => family.exercises.map(exercise => ({
+  const authoredFamilies = buildAllAuthoredMathProbeFamilies();
+  const additions = authoredFamilies.flatMap(family => family.exercises.map(exercise => ({
     atomId: family.atomId, id: foundationQuestionId(family.atomId, exercise), analysis: exercise.analysis })));
   const newIds = additions.map(row => row.id), originalIds = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise =>
     foundationQuestionId(definition.atom.id, exercise))).filter(id => !newIds.includes(id));
@@ -81,12 +83,12 @@ async function contentUpgrade() {
   await stop(); await start();
   assert.deepEqual(await fingerprint(), before);
   await store.transaction(() => {
-    assert.equal(store.select('questions', { id: newIds }).length, 192);
-    assert.equal(store.select('measurementItems', { questionId: newIds }).length, 192);
+    assert.equal(store.select('questions', { id: newIds }).length, additions.length);
+    assert.equal(store.select('measurementItems', { questionId: newIds }).length, additions.length);
     for (const addition of additions) assert.equal(store.find('questions', { id: addition.id }).analysis, addition.analysis);
   });
   await stop(); await start(); assert.deepEqual(await fingerprint(), before);
-  evidence.contentUpgrade = { originalCollections: before, additions: 192, families: 16, existingEditsAndDraftMappingPreserved: true,
+  evidence.contentUpgrade = { originalCollections: before, additions: additions.length, families: authoredFamilies.length, existingEditsAndDraftMappingPreserved: true,
     newQuestionAndMappingAddedExactlyOnce: true, taskSpecificAnalysisRetained: true, restarts: 2 };
 }
 const previewRoute = id => `/diagnostics/blueprints/${encodeURIComponent(id)}`;
@@ -118,7 +120,7 @@ async function main() {
   tokens.learner = (await call('POST', '/auth/learning-code', { code: code.code }, 'anonymous')).token;
   if (verifyContentUpgrade) {
     evidence.pointJourneys = [];
-    for (const selectedAtomId of [...new Set(buildAuthoredMathProbeFamilies().map(family => family.atomId))]) {
+    for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))]) {
       await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
         textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 });
       const baseline = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline',

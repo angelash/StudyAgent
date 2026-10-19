@@ -29,9 +29,8 @@ describe('authored math task structures and independently checked responses', ()
   });
 
   it('preserves every original question, answer, family, dimension and interaction', () => {
-    const added = new Set(all.map(row => foundationQuestionId(row.atomId, row.exercise)));
     const original = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise => ({ atomId: definition.atom.id,
-      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).filter(row => !added.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
+      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).filter(row => row.exercise.identityVersion !== 2).sort((a, b) => a.id.localeCompare(b.id));
     expect(original).toHaveLength(3435);
     // Frozen from the ce2dccc candidate before adding probes; this detects silent historical edits.
     expect(createHash('sha256').update(JSON.stringify(original)).digest('hex')).toBe('73b575389c4d309d4a6876337fd583b2e17b3c621d8aa6223393efc4e37efdb9');

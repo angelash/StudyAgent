@@ -12,7 +12,7 @@
 
 现有256个原创知识点均含教学卡。执行 `node scripts/qa/audit-authored-curriculum.cjs` 可核查教学覆盖和逐点测量素材缺口；先构建contracts/API。旧库仅为精确未编辑的v1补卡，用户修改和草稿保留。教学覆盖与教材审核对齐、测量题族深度、标准化校准分别验收，详见 [教学交付](27-full-teaching-delivery.md)。
 
-数位与退位等4点新增192道原创任务、16种明确结构，启动时幂等补充新题及映射；原3435题与既有编辑不改写。新增素材使用v2内容标识，表格或选项不同不会与同题干/答案碰撞。核对旧内容升级、学生完整核查与五次重启：`node scripts/qa/verify-verification-groups.cjs <证据路径> sqlite|postgres content-upgrade`。当前3627道任务、252点素材仍待补深，见 [测量素材交付](34-authored-math-probes-delivery.md)。
+数位与退位等4点新增192道原创任务，基础算术5点再补240题；本批20种补充结构中的分解等式沿用旧题族。当前3867道任务、247点素材仍待补深。启动时幂等补充累计432道新题及映射，原3435题、前批192题快照与既有编辑不改写。新增素材使用v2内容标识，表格或选项不同不会与同题干/答案碰撞。核对旧内容升级、9点学生完整核查与五次重启：`node scripts/qa/verify-verification-groups.cjs <证据路径> sqlite|postgres content-upgrade`。详见 [首批素材交付](34-authored-math-probes-delivery.md) 与 [算术素材交付](35-authored-arithmetic-probes-delivery.md)。
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
