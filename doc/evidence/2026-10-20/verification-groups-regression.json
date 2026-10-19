@@ -1,0 +1,238 @@
+{
+  "at": "2026-10-19T22:06:16.422908+00:00",
+  "scope": "Current verification-groups candidate: full default API regression. PostgreSQL and real production HTTP recorded separately; browser acceptance excluded.",
+  "passed": true,
+  "passedTests": 214,
+  "failedTests": 0,
+  "skippedTests": 6,
+  "testFiles": 35,
+  "reportSha256": "b5ce95711a73c3cbc580c9908772979932c3822b816926d9c53b07415c62121c",
+  "runtimeSourceHashesVerified": true,
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d28907502f8079c3af38df250e45496912faee913f36a6be3f66fd75671ce135",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "eb82022131e7e9eb5b4ed29a39304bdcb65385fd1475e8a77f33f6edc97e5d85",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "8fbbc5620897838c62e004e45d0f59b0937f6e951c0df3bfcd57a501a2b48756",
+    "apps/api/src/modules/diagnostics/measurement.test.ts": "e19229504268ee52b2c3a40de27211d987e391444b8bd1d2239184c49701a21b",
+    "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts": "e8ffbc61c72cef5875910b1dadc29703de49a0e4d87732f9174954ec8c702fe5",
+    "apps/api/src/modules/diagnostics/verification-blueprint.test.ts": "1b39f2b61fa78eedf834be4645f21c22512011a8ef6929a12eb5bdcce7d2e674",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "72f077ceefdb91491a42962d9a3a58f193e5a07b2780f18b5ca473fca4bad8e6",
+    "apps/web/app/student/assessment/studio.tsx": "4b95008e25f479c69d91abe6e2cfbe077f20fda7aa5cb4e1dee685b48aa0fee9",
+    "apps/web/components/assessment-blueprint.tsx": "251d9005deda36d45dfeb6fbf8416f7cd3f9460d5f3d1fddf1277bc1eeac3771",
+    "apps/web/components/verification-observations.css": "d702e472486f038e64d5f6154dceefc618870354ab04001f8abdc8a312c4a0cf",
+    "apps/web/components/verification-observations.tsx": "dfd2da153c419391851bf9eeb77cee0b452072e010ea3120a7a81e85f9b601d9",
+    "packages/contracts/src/diagnostics.ts": "4305654198e36f8948b0f38c1bea3d509751eddb71b627b45117ba8604ec47ed",
+    "scripts/qa/verify-verification-groups.cjs": "2903c582c5d931a78cd79140b0ab54f997514621ca7a04d52445ad8e1812e03f"
+  },
+  "suites": [
+    {
+      "file": "apps/api/src/app.integration.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/product-safety.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/domain-database.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/operations.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/postgres.integration.test.ts",
+      "status": "passed",
+      "passed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/rate-limit.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/scoped-transactions.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/task-repository.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/codex-search.service.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "status": "passed",
+      "passed": 23,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement.test.ts",
+      "status": "passed",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/scoring.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/learning/notebook.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/library.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "status": "passed",
+      "passed": 7,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/processing/processing.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/reviews/reviews.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/media-normalization.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 2,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/students/student-access.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    }
+  ]
+}

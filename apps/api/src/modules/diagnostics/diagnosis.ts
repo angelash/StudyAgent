@@ -4,7 +4,11 @@ import { atomDefinitionFingerprint } from './measurement-definition';
 
 const ids = (evidence: DiagnosticResponse[]) => evidence.map((item) => item.id);
 const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map((item) => item.family)).size;
-export const DIAGNOSIS_VERSION = 'diagnosis-rules-v3';
+export const DIAGNOSIS_VERSION = 'diagnosis-rules-v4';
+
+// A family that merely changes its presentation must not fill both sides of a transfer contrast.
+const independentContrast = (basic: DiagnosticResponse[], transfer: DiagnosticResponse[]) =>
+  families(basic) >= 2 && families(transfer) >= 2 && families([...basic, ...transfer]) >= 4;
 
 export function deriveHypotheses(studentId: string, subject: Subject, atoms: KnowledgeAtom[],
   responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, previous: DiagnosticHypothesis[], at: string): DiagnosticHypothesis[] {
@@ -46,7 +50,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
       explanation: '综合题出错只提出前置知识假设，需要独立前置题检验，不能直接认定。', action: '先单独测前置知识，再用新题验证当前知识点。' });
     if (transferFail.length) proposals.push({ cause: 'representation_gap', title: '表示转换或迁移环节可能受阻',
       supporting: [...procedurePass, ...transferFail], counter: transferPass,
-      supported: families(procedurePass) >= 2 && families(transferFail) >= 2, contradicted: families(transferPass) >= 2,
+      supported: independentContrast(procedurePass, transferFail), contradicted: families(transferPass) >= 2,
       probes: [atom.id], explanation: '只有直接题成功而变式题持续失败的对照模式，才支持迁移环节需要干预。', action: '对照直接题、图示题和文字变式，核对哪次表示转换开始出错。' });
     if (retentionFail.length) proposals.push({ cause: 'retention_gap', title: '延迟保持需要进一步巩固',
       supporting: [...procedurePass, ...retentionFail], counter: retentionPass,
@@ -63,7 +67,8 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
       if (old?.status === 'testing' && status === 'proposed') status = 'testing';
       const corrected = proposal.cause === 'prerequisite_gap' ? allPrerequisitesPassed && families(recentSuccess) >= 2 :
         proposal.cause === 'representation_gap' ? families(transferPass.filter((item) => item.submittedAt > lastFailure)) >= 2 :
-          proposal.cause === 'retention_gap' ? families(retentionPass.filter((item) => item.submittedAt > lastFailure)) >= 2 : families(recentSuccess) >= 2;
+          proposal.cause === 'retention_gap' ? families(retentionPass.filter((item) => item.submittedAt > lastFailure)) >= 2 :
+            families(procedurePass.filter((item) => item.submittedAt > lastFailure)) >= 2;
       if (old && ['supported', 'monitoring', 'reopened', 'resolved'].includes(old.status) && corrected) status = 'resolved';
       if (old?.status === 'resolved' && !corrected && failed.some((item) => item.submittedAt > old.updatedAt)) status = 'reopened';
       const history = [...(old?.history ?? [])];
@@ -81,7 +86,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
   return results;
 }
 
-function verificationConditions(cause: DiagnosticHypothesis['cause'], atom: KnowledgeAtom, probes: string[]): NonNullable<DiagnosticHypothesis['verification']> {
+export function verificationConditions(cause: DiagnosticHypothesis['cause'], atom: KnowledgeAtom, probes: string[]): NonNullable<DiagnosticHypothesis['verification']> {
   const group = (atomIds: string[], dimensions: NonNullable<DiagnosticHypothesis['verification']>['groups'][number]['dimensions'], purpose: string) =>
     ({ atomIds, dimensions, minIndependentFamilies: 2, purpose });
   const undecidedCondition = '单题、同题重复、提示或曝光后的表现，以及暂时不会、未评分表达，不能满足独立验证条件；支持与反证并存时保留未定。缺题时显示缺口。';
@@ -90,7 +95,7 @@ function verificationConditions(cause: DiagnosticHypothesis['cause'], atom: Know
     counterCondition: '每个直接先修点都在至少两个独立题族中达标，构成反证；随后仍须回到当前点验证。',
     groups: [group([atom.id], ['understanding', 'procedure', 'transfer'], '保留当前点的未达标表现'), group(probes, ['understanding', 'procedure'], '分别独立核查先修，避免从综合题代推')] };
   if (cause === 'representation_gap') return { undecidedCondition,
-    supportCondition: '基础理解或操作至少两个独立题族达标，而迁移至少两个独立题族未达标，形成可重复的对照模式。',
+    supportCondition: '基础理解或操作至少两个独立题族达标，而迁移至少两个独立题族未达标，两组共至少四个不同题族，形成可重复的对照模式。',
     counterCondition: '迁移任务至少两个独立新题族达标，构成反证；若与既有失败并存，继续核查时间和条件差异。',
     groups: [group([atom.id], ['understanding', 'procedure'], '减少阅读或表示负担，核查基础行为'), group([atom.id], ['transfer'], '换表示与情境观察迁移')] };
   if (cause === 'retention_gap') return { undecidedCondition,

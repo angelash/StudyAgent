@@ -20,6 +20,7 @@ import { AssistantWidget } from '../../../components/assistant-widget';
 import { answerInputConfiguration } from '@study-agent/contracts';
 import { AssessmentBlueprintCard } from '../../../components/assessment-blueprint';
 import { DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
+import { VerificationObservationReport } from '../../../components/verification-observations';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -262,7 +263,7 @@ export function AssessmentStudio() {
   async function verify(hypothesis?: DiagnosticHypothesis, atomId?: string) {
     await execute(() => showBlueprint({ studentId, subject, intent: 'verification', maxItems: 8,
       includePrerequisites: true, ...(screen === 'plan' && plan ? { planId: plan.id } : {}),
-      ...(hypothesis ? { hypothesisId: hypothesis.id, targetAtomIds: hypothesis.probeAtomIds } : { targetAtomIds: atomId ? [atomId] : learned }) },
+      ...(hypothesis ? { hypothesisId: hypothesis.id } : { targetAtomIds: atomId ? [atomId] : learned }) },
       plan?.id ?? report?.sessionId ?? 'verification'));
   }
   async function reviewTask(review: Review) {
@@ -365,6 +366,7 @@ export function AssessmentStudio() {
                 {report.evidence.filter((item) => item.atomId === estimate.atomId).map((item) => <div key={item.id} className="studio-evidence-item"><b>{item.disposition === 'dont_know' ? '选择暂时不会' : item.status === 'pending_review' ? '待复核' : item.status === 'skipped' ? '已跳过' : item.correct ? '达到本题标准' : '本题需要核查'}</b><ObservedPerformance observation={report.observations?.find(observation => observation.responseId === item.id)} /><span>{item.gradingReason}</span><AnswerEvidenceView answer={item.answer} /><small>{item.disposition !== 'answered' ? '未提交解题过程' : item.priorExposure ? '曾曝光的题目' : item.hintLevel ? `使用${item.hintLevel}级提示` : '独立作答'} · {Math.round(item.elapsedMs / 1000)}秒</small><DiagnosticEvidence studentId={report.studentId} responseId={item.id} /><EvidenceFeedbackForm kind="diagnostic" responseId={item.id} /></div>)}
               </div>}
             </article>)}</div>
+            <VerificationObservationReport result={report.verification} names={new Map(report.estimates.map(estimate => [estimate.atomId, estimate.atomName]))} studentId={report.studentId} />
             {report.hypotheses.length > 0 && <><h3 className="studio-line-title">可能卡在哪里，以及怎样验证</h3><div className="studio-hypotheses">{report.hypotheses.map((hypothesis) => <article key={hypothesis.id}><span className="studio-badge">{hypothesisStatuses[hypothesis.status]}</span><h4>{hypothesis.title}</h4><p>{hypothesis.observation}</p><p>{hypothesis.explanation}</p><small>支持 {hypothesis.supportingEvidenceIds.length} 条 · 反证 {hypothesis.counterEvidenceIds.length} 条</small>
               <details><summary>查看验证条件、依据与其他解释</summary><p>{hypothesis.nextAction}</p>{hypothesis.verification && <dl className="diagnostic-verification"><dt>什么表现支持继续核查</dt><dd>{hypothesis.verification.supportCondition}</dd><dt>什么表现构成反证</dt><dd>{hypothesis.verification.counterCondition}</dd><dt>哪些情况仍然不能下结论</dt><dd>{hypothesis.verification.undecidedCondition}</dd></dl>}<ul>{hypothesis.alternatives.map((item) => <li key={item}>{item}</li>)}</ul>
                 <DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.supportingEvidenceIds} title="支持方向的依据" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.counterEvidenceIds} title="需要同时核对的反证" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.reportedEvidenceIds ?? []} title="孩子报告暂时不会" /></details>

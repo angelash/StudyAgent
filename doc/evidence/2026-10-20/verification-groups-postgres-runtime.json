@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-19T22:04:14.156Z",
+  "driver": "postgres",
+  "passed": true,
+  "scope": "Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Genuine material gaps remain; not browser or standardized measurement acceptance.",
+  "sourceSha256": {
+    "packages/contracts/src/diagnostics.ts": "4305654198e36f8948b0f38c1bea3d509751eddb71b627b45117ba8604ec47ed",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d28907502f8079c3af38df250e45496912faee913f36a6be3f66fd75671ce135",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "72f077ceefdb91491a42962d9a3a58f193e5a07b2780f18b5ca473fca4bad8e6",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "eb82022131e7e9eb5b4ed29a39304bdcb65385fd1475e8a77f33f6edc97e5d85",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "8fbbc5620897838c62e004e45d0f59b0937f6e951c0df3bfcd57a501a2b48756",
+    "apps/web/app/student/assessment/studio.tsx": "4b95008e25f479c69d91abe6e2cfbe077f20fda7aa5cb4e1dee685b48aa0fee9",
+    "apps/web/components/assessment-blueprint.tsx": "251d9005deda36d45dfeb6fbf8416f7cd3f9460d5f3d1fddf1277bc1eeac3771",
+    "apps/web/components/verification-observations.tsx": "dfd2da153c419391851bf9eeb77cee0b452072e010ea3120a7a81e85f9b601d9",
+    "apps/web/components/verification-observations.css": "d702e472486f038e64d5f6154dceefc618870354ab04001f8abdc8a312c4a0cf"
+  },
+  "result": {
+    "previewItemCount": 2,
+    "requiredObservationGroups": 2,
+    "genuineMaterialGaps": [
+      {
+        "dimensions": [
+          "understanding",
+          "procedure"
+        ],
+        "availableFamilies": 1,
+        "selectedFamilies": 1,
+        "gap": "目前仅有1个可用独立题族，至少需要2个。"
+      },
+      {
+        "dimensions": [
+          "transfer"
+        ],
+        "availableFamilies": 1,
+        "selectedFamilies": 1,
+        "gap": "目前仅有1个可用独立题族，至少需要2个。"
+      }
+    ],
+    "targetAndAllDirectPrerequisitesCompared": true,
+    "learnerAuthorization": true,
+    "outsiderBlocked": true,
+    "concurrentStartStatuses": [
+      201,
+      201
+    ],
+    "frozenGroupsAndPauseSurviveRestart": true,
+    "hintedAnswerExcludedFromIndependentObservations": true,
+    "revisionUpdatesActualObservations": true,
+    "oldReportAndOriginalBlueprintFrozen": true,
+    "staleBasisPreviewRejected": true,
+    "completedPreviewReceiptReplayed": true,
+    "restarts": 3
+  }
+}

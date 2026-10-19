@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
-import type { AssessmentBlueprint, DiagnosticSession, DiagnosticStart, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
+import type { AssessmentBlueprint, DiagnosticSession, DiagnosticStart, DiagnosticVerificationBlueprint, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
 import { ROUTING_VERSION } from './adaptive-routing';
+import { selectVerificationItems } from './verification-blueprint';
 
 /** JSONB may reorder object keys. Array order still represents the intended question/group order. */
 export function blueprintContentHash(value: unknown): string {
@@ -24,12 +25,20 @@ export function blueprintPolicy(command: DiagnosticStart, minutes: number, grade
 }
 
 export function selectBlueprintItems(command: DiagnosticStart, candidates: MeasurementItem[], coverage: DiagnosticSession['coverage'],
-  seed: string, seen: Set<string>, minutes: number, grade: number) {
+  seed: string, seen: Set<string>, minutes: number, grade: number, specification?: DiagnosticVerificationBlueprint) {
   const policy = blueprintPolicy(command, minutes, grade), selected: MeasurementItem[] = [], used = new Set<string>();
   const families = new Map<string, Set<string>>(), dimensions = new Map<string, Set<MeasurementDimension>>();
   const rank = (item: MeasurementItem) => createHash('sha256').update(`${seed}:${item.id}`).digest('hex');
-  let seconds = 0;
-  for (let round = 0; round < policy.itemLimit && selected.length < policy.itemLimit; round++) {
+  let seconds = 0, verification: DiagnosticVerificationBlueprint | undefined;
+  if (specification) {
+    const choice = selectVerificationItems(specification, candidates, new Set(coverage.map(point => point.atomId)), seed, policy.itemLimit, policy.minutesLimit * 60);
+    verification = choice.verification; seconds = choice.seconds; selected.push(...choice.selected);
+    for (const point of coverage) {
+      point.required = specification.groups.filter(group => group.atomId === point.atomId).reduce((sum, group) => sum + group.minIndependentFamilies, 0);
+      point.selected = selected.filter(item => item.atomId === point.atomId).length;
+    }
+    for (const item of selected) { used.add(item.questionId); families.set(item.atomId, new Set([...(families.get(item.atomId) ?? []), item.family])); }
+  } else for (let round = 0; round < policy.itemLimit && selected.length < policy.itemLimit; round++) {
     for (const point of coverage) {
       if (selected.length >= policy.itemLimit) break;
       const options = candidates.filter(item => item.atomId === point.atomId && !used.has(item.questionId) &&
@@ -50,23 +59,26 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
     if (point.selected < point.required) point.missingReason = !available.length ? '暂缺可用且已审核的量化题。' :
       new Set(available.map(item => item.family)).size < point.required ? '不同题族不足，不能用同题重复补充独立证据。' : '受本组题量或时间预算限制，本次尚未充分覆盖。';
   }
-  const unused = candidates.some(item => !used.has(item.questionId) && !families.get(item.atomId)?.has(item.family));
-  const stopReason = selected.length >= policy.itemLimit ? 'item_budget' : unused ? 'time_budget' : 'available_families';
+  const unused = candidates.some(item => !used.has(item.questionId) && !families.get(item.atomId)?.has(item.family) && (!verification || verification.groups.some(group =>
+    group.atomId === item.atomId && group.dimensions.includes(item.dimension) && group.selectedFamilies.length < group.minIndependentFamilies)));
+  const stopReason = verification?.fullyCovered ? 'verification_groups' : selected.length >= policy.itemLimit ? 'item_budget' : unused ? 'time_budget' : 'available_families';
   const warnings: string[] = [];
   if (coverage.some(point => point.selected < point.required)) warnings.push(`${coverage.filter(point => point.selected < point.required).length} 个点本次证据覆盖不足，结果会保留未知或待补充。`);
   if (selected.some(item => seen.has(item.questionId))) warnings.push('部分题目曾在学习活动中出现，将保留表现但不增加独立样本。');
   if (command.maxItems && command.maxItems > policy.cap) warnings.push(`此类评测最多安排${policy.cap}题，以保持单次学习负担合适。`);
+  if (verification && !verification.fullyCovered) warnings.push('当前题组尚未完整安排原因核查所需的对照观察；完成后仍须保留缺口，不能仅凭本组确认原因。');
   const groups: AssessmentBlueprint['groups'] = [];
   for (let offset = 0; offset < selected.length; offset += policy.groupSize) groups.push({ id: `group-${groups.length + 1}`,
     title: `第${groups.length + 1}小组`, itemIds: selected.slice(offset, offset + policy.groupSize).map(item => item.id) });
-  const blueprint: AssessmentBlueprint = { version: command.adaptive ? 'scope-blueprint-v3' : 'scope-blueprint-v2', title: policy.title, intent: command.intent, focus: policy.focus,
+  const blueprint: AssessmentBlueprint = { version: verification ? 'verification-blueprint-v1' : command.adaptive ? 'scope-blueprint-v3' : 'scope-blueprint-v2', title: policy.title, intent: command.intent, focus: policy.focus,
     itemLimit: policy.itemLimit, minutesLimit: policy.minutesLimit, expectedSeconds: seconds, groupSize: policy.groupSize,
-    stopReason, stopRule: '达到本组题量或预计时间预算即停止选题；不因缺题使用未学内容。可以暂停，或保留已答证据后结束本组。',
+    stopReason, stopRule: `${verification ? '各观察组达到独立题族要求后停止选题；' : ''}达到本组题量或预计时间预算即停止选题；不因缺题使用未学内容。可以暂停，或保留已答证据后结束本组。`,
     targetAtomIds: coverage.filter(point => point.role === 'target').map(point => point.atomId),
     prerequisiteAtomIds: coverage.filter(point => point.role === 'prerequisite').map(point => point.atomId), groups,
     dimensions: (['understanding', 'procedure', 'transfer', 'retention'] as MeasurementDimension[]).map(dimension => ({ dimension,
       selected: selected.filter(item => item.dimension === dimension).length,
       available: new Set(candidates.filter(item => item.dimension === dimension).map(item => item.questionId)).size })), warnings,
+    ...(verification ? { verification } : {}),
     ...(command.adaptive ? { routing: { mode: 'adaptive' as const, version: ROUTING_VERSION,
       description: '范围与题量已冻结，作答时逐题选择本组中的下一道核查题；先观察基础，再区分先修、步骤和迁移。提示、跳过或待复核表达不当作独立对错。' } } : {}) };
   return { selected, blueprint };

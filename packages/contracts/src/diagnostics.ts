@@ -68,14 +68,28 @@ export const diagnosticStartSchema = z.object({
 }).strict();
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
+export type DiagnosticVerificationBlueprint = {
+  hypothesisId: string; title: string; cause: DiagnosticHypothesis['cause']; ruleVersion: string; sourceRuleVersion: string;
+  basisFingerprint: string; supportCondition: string; counterCondition: string; undecidedCondition: string; fullyCovered: boolean;
+  groups: Array<{ id: string; atomId: string; atomName?: string; dimensions: MeasurementDimension[]; purpose: string; minIndependentFamilies: number;
+    availableFamilies: number; selectedFamilies: string[]; itemIds: string[]; gap?: string }>;
+};
+export type DiagnosticVerificationResult = {
+  blueprint: DiagnosticVerificationBlueprint; independentObservationsComplete: boolean;
+  groups: Array<{ groupId: string; evidenceIds: string[]; independentEvidenceIds: string[]; independentFamilies: number;
+    passedFamilies: number; belowStandardFamilies: number; awaitingReview: number; assistedOrExposed: number; selfReportedOrSkipped: number }>;
+  notice: string;
+};
+
 export type AssessmentBlueprint = {
   version: string; title: string; intent: DiagnosticStart['intent']; focus: string;
   itemLimit: number; minutesLimit: number; expectedSeconds: number; groupSize: number;
-  stopReason: 'item_budget' | 'time_budget' | 'available_families'; stopRule: string;
+  stopReason: 'item_budget' | 'time_budget' | 'available_families' | 'verification_groups'; stopRule: string;
   targetAtomIds: string[]; prerequisiteAtomIds: string[];
   groups: Array<{ id: string; title: string; itemIds: string[] }>;
   dimensions: Array<{ dimension: MeasurementDimension; selected: number; available: number }>;
   warnings: string[];
+  verification?: DiagnosticVerificationBlueprint;
   routing?: { mode: 'adaptive'; version: string; description: string };
 };
 export type DiagnosticBlueprintReservation = {
@@ -208,6 +222,7 @@ export type DiagnosticReport = {
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];
   hypotheses: DiagnosticHypothesis[]; evidence: DiagnosticResponse[]; unmeasuredAtomIds: string[];
   observations?: DiagnosticObservation[];
+  verification?: DiagnosticVerificationResult;
   summary: string; modelNotice: string;
   scopeSnapshot?: LearningScope; version?: number; generatedAt?: string; revisionReason?: string;
   scoringRevisionIds?: string[];

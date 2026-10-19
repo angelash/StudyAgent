@@ -1,6 +1,7 @@
 'use client';
 
 import type { DiagnosticBlueprintView } from '@study-agent/contracts';
+import { VerificationObservationPlan } from './verification-observations';
 import './assessment-blueprint.css';
 
 const dimensionNames = { understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' };
@@ -23,6 +24,7 @@ export function AssessmentBlueprintCard({ preview, busy, onStart, onBack }: {
       <span>{dimensionNames[row.dimension]}</span><strong>{row.selected}<small>题</small></strong>
       <i aria-hidden="true"><b style={{ width: `${preview.itemCount ? row.selected / preview.itemCount * 100 : 0}%` }} /></i></div>)}</div>
     <p className="studio-footnote">保持能力需要真实间隔后的新题证据，本组题量不等于已经验证的能力。</p>
+    <VerificationObservationPlan verification={preview.blueprint.verification} names={names} />
     <div className="blueprint-coverage"><h3>这次观察哪些知识点</h3><ul>{preview.coverage.map(point => <li key={point.atomId} data-gap={point.selected < point.required}>
       <div><strong>{names.get(point.atomId) ?? point.atomId}</strong><small>{point.role === 'prerequisite' ? '前置基础核查' : '已学范围'} · 本组{point.selected}题</small>
         {point.missingReason && <p>{point.missingReason}</p>}</div><span>{point.selected >= point.required ? '已安排' : point.selected ? '仍需补证据' : '本次未覆盖'}</span>

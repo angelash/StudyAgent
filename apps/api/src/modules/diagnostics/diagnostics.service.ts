@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
-  DiagnosticBlueprintReservation, DiagnosticBlueprintView, KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject,
+  DiagnosticBlueprintReservation, DiagnosticBlueprintView, DiagnosticVerificationBlueprint, KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject,
   answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -20,6 +20,7 @@ import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measu
 import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
 import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } from './adaptive-routing';
 import { observedPerformance } from './observations';
+import { verificationBlueprint, verificationResult } from './verification-blueprint';
 
 @Injectable()
 export class DiagnosticsService {
@@ -60,22 +61,29 @@ export class DiagnosticsService {
     let targets = command.targetAtomIds ?? (review ? [review.atomId] : plan ? plan.actions.map(a => a.atomId) :
       command.intent === 'micro' ? [scope.currentAtomId ?? scope.learnedAtomIds.at(-1)!] : scope.learnedAtomIds);
     if (command.intent === 'micro' && targets.length > 3) throw new BadRequestException('微测最多选择3个知识目标；扩大范围时请选择单元或阶段评测');
+    let hypothesis: DiagnosticHypothesis | undefined, specification: DiagnosticVerificationBlueprint | undefined;
     if (command.hypothesisId) {
-      const hypothesis = this.store.find('diagnosticHypotheses', { id: command.hypothesisId, studentId: command.studentId, subject: command.subject });
+      hypothesis = this.store.find('diagnosticHypotheses', { id: command.hypothesisId, studentId: command.studentId, subject: command.subject });
       if (!hypothesis) throw new NotFoundException('待验证问题不存在');
+      if (command.intent !== 'verification') throw new BadRequestException('原因核查应使用验证评测；间隔保持请从复测任务开始');
+      if (hypothesis.cause === 'retention_gap') throw new BadRequestException('保持情况需要真实间隔，请通过指导计划的到期复测验证');
+      if (hypothesis.status === 'withdrawn') throw new ConflictException('该问题已撤回，请根据当前评测重新确认需要核查的行为');
       const definition = this.store.find('knowledgeAtoms', { id: hypothesis.atomId });
       if (!definition || hypothesis.atomDefinitionFingerprint !== atomDefinitionFingerprint(definition)) {
         throw new ConflictException('该问题的知识定义已变化或无法核对，请重新评测后再验证原因');
       }
-      targets = command.targetAtomIds ?? hypothesis.probeAtomIds;
-      if (targets.some((id) => !hypothesis.probeAtomIds.includes(id))) throw new BadRequestException('验证点超出当前假设的范围');
+      specification = verificationBlueprint(hypothesis, definition, blueprintContentHash(hypothesis));
+      for (const group of specification.groups) group.atomName = this.store.find('knowledgeAtoms', { id: group.atomId })?.name;
+      const hypothesisAtoms = new Set(specification.groups.map(group => group.atomId));
+      targets = command.targetAtomIds ?? [...hypothesisAtoms].filter(id => allowed.has(id));
+      if (targets.some((id) => !hypothesisAtoms.has(id))) throw new BadRequestException('验证点超出当前假设的对照范围');
     }
     targets = [...new Set(targets)];
     if (review && (targets.length !== 1 || targets[0] !== review.atomId)) throw new BadRequestException('本次复测只针对安排中的知识目标');
     if (plan && targets.some(id => !plan.actions.some(a => a.atomId === id))) throw new BadRequestException('验证目标不属于当前指导计划');
     if (!targets.length || targets.some((id) => !allowed.has(id))) throw new BadRequestException('评测知识点超出已确认的学习进度');
     const targetSet = new Set(targets);
-    if (command.includePrerequisites) for (const id of this.curriculum.prerequisiteClosure(targets)) targetSet.add(id);
+    if (command.includePrerequisites && !specification) for (const id of this.curriculum.prerequisiteClosure(targets)) targetSet.add(id);
     // Rendering a practice item is already exposure, even if its answer was never submitted.
     // Training and abandoned assessments must not later be presented as independent new probes.
     const seen = new Set([
@@ -89,8 +97,8 @@ export class DiagnosticsService {
         (!['verification', 'retest'].includes(command.intent) || !seen.has(item.questionId));
     });
     const coverage = [...targetSet].map((atomId) => ({ atomId, selected: 0, required: 2,
-      role: (targets.includes(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
-    const { selected, blueprint } = selectBlueprintItems(command, candidates, coverage, seed, seen, scope.minutesPerSession, scope.grade);
+      role: (hypothesis ? atomId === hypothesis.atomId ? 'target' : 'prerequisite' : targets.includes(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
+    const { selected, blueprint } = selectBlueprintItems(command, candidates, coverage, seed, seen, scope.minutesPerSession, scope.grade, specification);
     if (!selected.length && !allowEmpty) throw new BadRequestException({ message: '当前范围缺少审核通过的量化题，请查看覆盖缺口或调整已学范围',
       missingAtomIds: targets, code: 'assessment_coverage_gap' });
     const session: DiagnosticSession = {
@@ -493,6 +501,7 @@ export class DiagnosticsService {
         compatibility.compatible, this.allMappings(session.studentId), previous, measuredAt),
       evidence, unmeasuredAtomIds: estimates.filter((item) => !item.scoredCount).map((item) => item.atomId),
       observations: evidence.map(observedPerformance),
+      ...(session.blueprint?.verification ? { verification: verificationResult(session.blueprint.verification, evidence) } : {}),
       scopeSnapshot: structuredClone(session.scopeSnapshot),
       scoringRevisionIds: this.store.scoringRevisions.filter((revision) => all.some((item) => item.id === revision.responseId)).map((item) => item.id),
       definitionContext: { origin: session.atomSnapshots ? 'started' : 'unavailable',
