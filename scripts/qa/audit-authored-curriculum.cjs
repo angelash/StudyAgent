@@ -36,7 +36,7 @@ const evidence = { at: new Date().toISOString(), passed: true,
   totals: { points: points.length, teaching: points.length, missingTeaching: 0,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
-  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
+  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
     'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];

@@ -1,0 +1,400 @@
+{
+  "at": "2026-10-19T23:39:42.601Z",
+  "driver": "postgres",
+  "passed": true,
+  "scope": "Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.",
+  "sourceSha256": {
+    "packages/contracts/src/diagnostics.ts": "4305654198e36f8948b0f38c1bea3d509751eddb71b627b45117ba8604ec47ed",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d28907502f8079c3af38df250e45496912faee913f36a6be3f66fd75671ce135",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "72f077ceefdb91491a42962d9a3a58f193e5a07b2780f18b5ca473fca4bad8e6",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "eb82022131e7e9eb5b4ed29a39304bdcb65385fd1475e8a77f33f6edc97e5d85",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "8fbbc5620897838c62e004e45d0f59b0937f6e951c0df3bfcd57a501a2b48756",
+    "apps/web/app/student/assessment/studio.tsx": "4b95008e25f479c69d91abe6e2cfbe077f20fda7aa5cb4e1dee685b48aa0fee9",
+    "apps/web/components/assessment-blueprint.tsx": "251d9005deda36d45dfeb6fbf8416f7cd3f9460d5f3d1fddf1277bc1eeac3771",
+    "apps/web/components/verification-observations.tsx": "dfd2da153c419391851bf9eeb77cee0b452072e010ea3120a7a81e85f9b601d9",
+    "apps/web/components/verification-observations.css": "d702e472486f038e64d5f6154dceefc618870354ab04001f8abdc8a312c4a0cf",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "f8c8294887bcb27caa93fc4e9da090ba8c6897ad9e0a2d79b4267b3fbd103be9",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "19324f14bd7f1af5594eed7fc185bc9b958d44dbafd7cbfca5874f65293dbadf",
+    "apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts": "e842ca98a3f8123ae4cefa1b4e945f7aea7b59a77abe4421bc99a22a1ac5ab15",
+    "apps/api/src/modules/diagnostics/authored-number-probes.ts": "135cba049ce9dd1c4caae692bd71240af16b6736d07ed18c418be716082982b9",
+    "apps/api/src/modules/diagnostics/authored-spatial-probes.ts": "ff2813ce8155ef0eaabca86013e347d75dd4d8397a721a1f1b635b266e51f9e7",
+    "apps/api/src/modules/diagnostics/authored-second-grade-probes.ts": "648bdd96ee0ff99f87b189ca6469d71af1df7f1c1ea1d084145b7c0b04bcecdd",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "73ed0175d8ce03ef7b0ff94fc70318c36286c3812e44ecc8ca41de9c56490890",
+    "scripts/qa/verify-verification-groups.cjs": "b87603876aa97452221798f7b620d08881270f39caa29dab8e031e61d6d06901"
+  },
+  "contentUpgrade": {
+    "originalCollections": {
+      "questions": {
+        "count": 3435,
+        "sha256": "373728f40d827429e30cc1d06602c637a4c6d185d5c9292ef699b5d96285e6ab"
+      },
+      "questionDocuments": {
+        "count": 3435,
+        "sha256": "ec34a56537f79bfeac5d2152a7790ff949d96379955d180fe9cc619588878bdd"
+      },
+      "questionAnswerSchemas": {
+        "count": 3435,
+        "sha256": "2447311924d247826950e0689cda07f18b17c8c712d72b34e1f5af1fef942dbf"
+      },
+      "questionSources": {
+        "count": 3435,
+        "sha256": "06bc0f64503cd94435c21c61780eba45c1339a57b739aeb67e94c395a076090e"
+      },
+      "measurementItems": {
+        "count": 3435,
+        "sha256": "b34795b5e7cf163b79629105ce04f1cc6d6fc89a3d6d04afcf0acd2390149a5e"
+      }
+    },
+    "additions": 1279,
+    "families": 112,
+    "existingEditsAndDraftMappingPreserved": true,
+    "newQuestionAndMappingAddedExactlyOnce": true,
+    "taskSpecificAnalysisRetained": true,
+    "restarts": 2
+  },
+  "pointJourneys": [
+    {
+      "atomId": "foundation:math:placevalue",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:borrowdecision",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:borrowexchange",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:multiplydigits",
+      "grade": 3,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:decompose10",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:add20",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:subtract20",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:multiplytable",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "foundation:math:divisiontable",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:count",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:compare20",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:ordinal",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:neighbors",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:tensones",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:complement10",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:unknownadd",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:difference",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:mixed20",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:money10",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:planeshapes",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:solidshapes",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:wholehour",
+      "grade": 1,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:carry100",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:borrow100",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:multiplymissing",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:multiplerelation",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:cmmeters",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    },
+    {
+      "atomId": "core:math:minutes",
+      "grade": 2,
+      "formalIndependentLearner": true,
+      "productionQuotasActive": true,
+      "frozenContrasts": 4,
+      "basicFamilies": 2,
+      "transferFamilies": 2,
+      "independentObservationsComplete": true,
+      "noPrematureSecureMastery": true
+    }
+  ],
+  "result": {
+    "previewItemCount": 4,
+    "requiredObservationGroups": 2,
+    "observationCoverage": [
+      {
+        "dimensions": [
+          "understanding",
+          "procedure"
+        ],
+        "availableFamilies": 3,
+        "selectedFamilies": 2
+      },
+      {
+        "dimensions": [
+          "transfer"
+        ],
+        "availableFamilies": 3,
+        "selectedFamilies": 2
+      }
+    ],
+    "targetAndAllDirectPrerequisitesCompared": true,
+    "learnerAuthorization": true,
+    "outsiderBlocked": true,
+    "concurrentStartStatuses": [
+      201,
+      201
+    ],
+    "frozenGroupsAndPauseSurviveRestart": true,
+    "hintedAnswerExcludedFromIndependentObservations": true,
+    "revisionUpdatesActualObservations": true,
+    "oldReportAndOriginalBlueprintFrozen": true,
+    "staleBasisPreviewRejected": true,
+    "completedPreviewReceiptReplayed": true,
+    "restarts": 5
+  }
+}

@@ -4,6 +4,9 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { answerInputConfiguration, answerProtocolIssue, type DiagnosticHypothesis, type MeasurementItem, type QuestionAnswerSchema } from '@study-agent/contracts';
 import { buildSpatialProbeFamilies, spatialProbeAssets } from './authored-spatial-probes';
+import { buildAuthoredMathProbeFamilies } from './authored-math-probes';
+import { buildArithmeticProbeFamilies } from './authored-arithmetic-probes';
+import { buildNumberProbeFamilies } from './authored-number-probes';
 import { buildFoundationCurriculum, foundationQuestionId, type Exercise } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
 import { selectVerificationItems, verificationBlueprint } from './verification-blueprint';
@@ -58,8 +61,10 @@ const parts = (answer: unknown) => Object.fromEntries((answer as Array<{ key: st
 
 describe('spatial and whole-hour tasks checked against their actual teaching assets', () => {
   it('preserves all 4347 prior tasks verbatim and adds only 79 semantically distinct tasks', () => {
+    const priorAuthored = new Set([...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies()]
+      .flatMap(family => family.exercises.map(task => foundationQuestionId(family.atomId, task))));
     const prior = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise => ({ atomId: definition.atom.id,
-      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).filter(row => !row.exercise.blocks?.some(block => block.url?.includes('/spatial-probes-v1/')))
+      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).filter(row => row.exercise.identityVersion !== 2 || priorAuthored.has(row.id))
       .sort((a, b) => a.id.localeCompare(b.id));
     expect(prior).toHaveLength(4347); expect(digest(JSON.stringify(prior))).toBe('d1b97a9bd02a4d01485e53c70a94bc373fb187932f5de206ea373c6ad218e13b');
     expect(families).toHaveLength(12); expect(new Set(families.map(row => row.atomId)).size).toBe(3);
