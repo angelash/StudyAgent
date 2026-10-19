@@ -9,11 +9,13 @@ process.env.STUDY_DATA_DIR = resolve('data/qa/browser-fixture');
 process.env.STUDY_STORAGE = 'sqlite';
 process.env.NODE_ENV = 'development';
 process.env.CORS_ORIGINS = 'http://localhost:13000,http://127.0.0.1:13000';
+process.env.STUDY_PYTHON ??= process.platform === 'win32' ? 'C:\\Python310\\python.exe' : 'python3';
 delete process.env.OPENAI_API_KEY;
 const { NestFactory } = require('@nestjs/core');
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { AuthService } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
+const { hashToken } = require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
 const { CurriculumService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/curriculum.service.js');
 const { DiagnosticsService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js');
 const { GuidanceService } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/guidance.service.js');
@@ -29,8 +31,11 @@ async function main() {
   app.setGlobalPrefix('api'); await app.init();
   const store = app.get(InMemoryStoreService), auth = app.get(AuthService);
   await store.transaction(async () => {
-    const login = await auth.register({ principal: `qa-${Date.now()}`, credential: randomBytes(24).toString('hex') });
+    const existing = store.users.find((u) => u.principal === 'qa-browser-fixture');
+    const login = existing ? { user: existing, token: randomBytes(32).toString('hex') } :
+      await auth.register({ principal: 'qa-browser-fixture', credential: randomBytes(24).toString('hex') });
     fixtureToken = login.token;
+    if (existing) store.sessions.push({ id: store.nextId('session'), userId: existing.id, tokenHash: hashToken(fixtureToken), createdAt: new Date().toISOString(), expiresAt: new Date(Date.now() + 12 * 3600000).toISOString(), revokedAt: null });
     store.users.find((user) => user.id === login.user.id).role = 'admin';
     const id = store.nextId('student');
     store.students.push({ id, userId: login.user.id, nickname: '测试小禾', grade: 2, preferredSessionMinutes: 15,

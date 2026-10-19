@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import * as path from 'path';
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { createHash } from 'node:crypto';
+import { BadRequestException, ConflictException, ForbiddenException, GoneException, Injectable, NotFoundException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
 import {
   Question,
@@ -12,19 +13,22 @@ import {
   QuestionImportSourcePolicy,
   QuestionImportType,
   QuestionSourceRecord,
-  Subject,
+  Subject, ImportPageEvidence,
 } from '@study-agent/contracts';
-import { PDFParse } from 'pdf-parse';
+import { z } from 'zod';
+import { validate } from '../../common/validation';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
-import { AiService } from '../ai/ai.service';
 import { QuestionWorkspaceService } from './question-workspace.service';
 import { assessImportCandidateQuality, splitTextbookPageCandidates, suggestAnswerModeFromCandidate } from './question-import.utils';
+import { ImportFilesService } from '../processing/import-files.service';
 
-type CreateQuestionImportJobCommand = {
+export type CreateQuestionImportJobCommand = {
   importType: QuestionImportType;
   subject: Subject;
-  sourcePathOrUrl: string;
+  sourcePathOrUrl?: string;
+  fileIds?: string[];
+  requestKey?: string;
   includePreviewImage?: boolean;
   sourcePolicy: QuestionImportSourcePolicy;
 };
@@ -34,21 +38,9 @@ type ReviewQuestionImportRecordCommand = {
   comment?: string | null;
   knowledgePointIds?: string[];
   createDraft?: boolean;
-};
-
-type ImportCandidate = {
-  pageNumber: number;
-  candidateIndexOnPage: number;
-  splitMode: 'page' | 'question';
-  sectionLabel: string | null;
-  qualityLevel: 'low' | 'medium' | 'high';
-  qualityFlags: string[];
-  excerpt: string;
-  candidateStem: string;
-  detectionReason: string;
-  previewImageDataUrl: string | null;
-  aiSuggestion: null;
-  aiSuggestedAt: null;
+  expectedVersion?: number;
+  correctedStem?: string;
+  correctedExcerpt?: string;
 };
 
 @Injectable()
@@ -59,17 +51,17 @@ export class QuestionImportService {
     private readonly store: InMemoryStoreService,
     private readonly eventBus: DomainEventBusService,
     private readonly questionWorkspaceService: QuestionWorkspaceService,
-    private readonly aiService: AiService,
+    private readonly files: ImportFilesService,
   ) {}
 
-  listJobs(requestUser: InMemoryUserAccount) {
+  async listJobs(requestUser: InMemoryUserAccount) {
     this.assertAdmin(requestUser);
-    return [...this.store.questionImportJobs].sort((left, right) => right.createdAt.localeCompare(left.createdAt));
+    return Promise.all([...this.store.questionImportJobs].sort((left, right) => right.createdAt.localeCompare(left.createdAt)).slice(0, 100).map(j => this.withTaskState(j)));
   }
 
-  getJob(requestUser: InMemoryUserAccount, jobId: string) {
+  async getJob(requestUser: InMemoryUserAccount, jobId: string) {
     this.assertAdmin(requestUser);
-    return this.requireJob(jobId);
+    return this.withTaskState(this.requireJob(jobId));
   }
 
   listRecords(requestUser: InMemoryUserAccount, jobId: string) {
@@ -87,94 +79,82 @@ export class QuestionImportService {
       });
   }
 
-  async createJob(requestUser: InMemoryUserAccount, command: CreateQuestionImportJobCommand) {
+  listCandidates(user: InMemoryUserAccount, jobId: string, input: unknown) {
+    this.assertAdmin(user); this.requireJob(jobId);
+    const query = validate(z.object({ page: z.coerce.number().int().min(1).max(100000).default(1), state: z.enum(['pending', 'approved', 'rejected']).optional() }).strict(), input);
+    const rows = this.store.questionImportRecords.filter(r => r.jobId === jobId && (!query.state || r.reviewStatus === query.state))
+      .sort((a, b) => a.sourceName.localeCompare(b.sourceName) || (a.pageNumber ?? 0) - (b.pageNumber ?? 0) || a.candidateIndexOnPage - b.candidateIndexOnPage);
+    return { rows: rows.slice((query.page - 1) * 20, query.page * 20), total: rows.length, page: query.page, pageSize: 20 };
+  }
+  async candidate(user: InMemoryUserAccount, id: string) {
+    this.assertAdmin(user); const record = this.requireRecord(id);
+    return { ...record, ...(record.pageEvidenceId ? { pageEvidence: await this.files.pageEvidence(record.pageEvidenceId) } : {}) };
+  }
+
+  async createJob(requestUser: InMemoryUserAccount, input: CreateQuestionImportJobCommand) {
     this.assertAdmin(requestUser);
-    this.assertSupportedCommand(command);
-
-    const resolvedPaths = await this.resolvePdfPaths(command.sourcePathOrUrl);
-    const now = new Date().toISOString();
-    const job: QuestionImportJob = {
-      id: this.store.nextId('question_import_job'),
-      importType: command.importType,
-      subject: command.subject,
-      sourcePathOrUrl: command.sourcePathOrUrl,
-      sourcePolicy: {
-        sourceType: command.sourcePolicy.sourceType,
-        licenseClass: command.sourcePolicy.licenseClass,
-        licenseName: command.sourcePolicy.licenseName ?? null,
-      },
-      status: 'running',
-      fileCount: resolvedPaths.length,
-      recordCount: 0,
-      warningCount: 0,
-      errorMessage: null,
-      createdAt: now,
-      completedAt: null,
-    };
-
-    this.store.questionImportJobs.push(job);
-    this.eventBus.publish('question.import_job_created', {
-      jobId: job.id,
-      importType: job.importType,
-      subject: job.subject,
-    });
-
-    try {
-      for (const filePath of resolvedPaths) {
-        const candidates = await this.extractCandidatesFromPdf(
-          filePath,
-          job.subject,
-          command.includePreviewImage ?? true,
-        );
-        if (candidates.length === 0) {
-          job.warningCount += 1;
-          continue;
-        }
-
-        for (const candidate of candidates) {
-          const record: QuestionImportRecord = {
-            id: this.store.nextId('question_import_record'),
-            jobId: job.id,
-            subject: job.subject,
-            sourcePath: filePath,
-            sourceName: path.basename(filePath),
-            pageNumber: candidate.pageNumber,
-            candidateIndexOnPage: candidate.candidateIndexOnPage,
-            splitMode: candidate.splitMode,
-            sectionLabel: candidate.sectionLabel,
-            qualityLevel: candidate.qualityLevel,
-            qualityFlags: candidate.qualityFlags,
-            excerpt: candidate.excerpt,
-            previewImageDataUrl: candidate.previewImageDataUrl,
-            detectionReason: candidate.detectionReason,
-            candidateStem: candidate.candidateStem,
-            aiSuggestion: candidate.aiSuggestion,
-            aiSuggestedAt: candidate.aiSuggestedAt,
-            reviewStatus: 'pending',
-            reviewComment: null,
-            candidateQuestionId: null,
-            createdAt: new Date().toISOString(),
-            reviewedAt: null,
-          };
-          this.store.questionImportRecords.push(record);
-          job.recordCount += 1;
-          this.eventBus.publish('question.import_record_generated', {
-            jobId: job.id,
-            recordId: record.id,
-            pageNumber: record.pageNumber,
-          });
-        }
-      }
-
-      job.status = 'completed';
-      job.completedAt = new Date().toISOString();
-      return job;
-    } catch (error) {
-      job.status = 'failed';
-      job.errorMessage = error instanceof Error ? error.message : '教材导入任务失败';
-      job.completedAt = new Date().toISOString();
-      return job;
+    const command = validate(z.object({ importType: z.literal('textbook_pdf'), subject: z.enum(['math', 'chinese', 'english']),
+      sourcePathOrUrl: z.string().trim().max(1000).optional(), fileIds: z.array(z.string().min(1).max(100)).min(1).max(10).optional(),
+      requestKey: z.string().trim().min(8).max(100).optional(), includePreviewImage: z.boolean().optional(),
+      sourcePolicy: z.object({ sourceType: z.enum(['internal_authoring', 'internal_textbook', 'open_content', 'public_reference', 'partner']),
+        licenseClass: z.enum(['A_INTERNAL', 'B_OPEN', 'C_PUBLIC_REFERENCE_ONLY', 'D_COMMERCIAL_PARTNER']), licenseName: z.string().trim().max(200).nullable().optional() }).strict(),
+    }).strict(), input);
+    if (!command.fileIds?.length && !command.sourcePathOrUrl) throw new BadRequestException('请选择已上传的文件或允许的本地教材路径');
+    if (command.fileIds?.length && command.sourcePathOrUrl) throw new BadRequestException('每次导入请选择一种文件来源');
+    const requestKey = command.requestKey ?? this.store.nextId('request');
+    const pipelineVersion = 'study-import-v2';
+    const inputHash = createHash('sha256').update(JSON.stringify({ ...command, requestKey: undefined, pipelineVersion })).digest('hex');
+    const existing = this.store.questionImportJobs.find(j => j.ownerUserId === requestUser.id && j.requestKey === requestKey);
+    if (existing) {
+      if (existing.inputHash !== inputHash) throw new ConflictException('请求键已用于不同导入，请重新发起');
+      return this.withTaskState(existing);
     }
+    const files = command.fileIds ? command.fileIds.map(id => this.files.get(requestUser, id)) : [];
+    if (!files.length) {
+      const paths = await this.resolvePdfPaths(command.sourcePathOrUrl!);
+      for (let i = 0; i < paths.length; i++) files.push(await this.files.adoptLocal(requestUser, paths[i], `${requestKey}:file:${i}`));
+    }
+    for (const file of files) if (file.status !== 'ready' || file.mediaType !== 'application/pdf') throw new BadRequestException('导入只接受上传完成的 PDF 文件');
+    const now = new Date().toISOString(), taskId = this.store.nextId('task');
+    const job: QuestionImportJob = { id: this.store.nextId('question_import_job'), importType: command.importType, subject: command.subject,
+      sourcePathOrUrl: files.map(f => f.name).join('、'), sourcePolicy: { ...command.sourcePolicy, licenseName: command.sourcePolicy.licenseName ?? null },
+      status: 'pending', fileCount: files.length, recordCount: 0, warningCount: 0, errorMessage: null, createdAt: now, completedAt: null,
+      taskId, fileIds: [...new Set(files.map(f => f.id))], ownerUserId: requestUser.id, requestKey, inputHash, pipelineVersion };
+    this.store.questionImportJobs.push(job);
+    await this.store.enqueueTask({ id: taskId, kind: 'question.pdf.import', ownerUserId: requestUser.id, requestKey, payloadHash: inputHash,
+      payload: { jobId: job.id }, createdAt: now, maxAttempts: 3 });
+    this.eventBus.publish('question.import_job_created', { jobId: job.id, taskId, subject: job.subject, actorId: requestUser.id });
+    return job;
+  }
+
+  requireJobForWorker(jobId: string) { return this.requireJob(jobId); }
+
+  buildPageRecords(job: QuestionImportJob, page: ImportPageEvidence): QuestionImportRecord[] {
+    let candidates = splitTextbookPageCandidates(page.text, job.subject);
+    // Unsplit or unreadable pages stay reviewable instead of vanishing from the import.
+    if (!candidates.length) candidates = [{ candidateIndexOnPage: 1, splitMode: 'page' as const, sectionLabel: null,
+      excerpt: page.text || '本页未能识别出文字，请对照原页人工录入。', candidateStem: page.text.split(/\n/).find(s => s.trim())?.slice(0, 150) || '待人工录入的页面',
+      detectionReason: '保留整页供人工确认，不推断题目完整性' }];
+    return candidates.map(candidate => {
+      const quality = assessImportCandidateQuality(candidate);
+      return { id: `import_record_${job.id}_${page.fileId}_${page.pageNumber}_${candidate.candidateIndexOnPage}`, jobId: job.id, subject: job.subject,
+        sourcePath: `upload:${page.fileId}`, sourceName: this.files.require(page.fileId).name, pageNumber: page.pageNumber,
+        candidateIndexOnPage: candidate.candidateIndexOnPage, splitMode: candidate.splitMode, sectionLabel: candidate.sectionLabel,
+        qualityLevel: page.method === 'pdf_text' ? quality.qualityLevel : 'low', qualityFlags: [...new Set([...quality.qualityFlags, ...page.warnings])],
+        excerpt: candidate.excerpt, candidateStem: this.repairCandidateStem(candidate.candidateStem, candidate.excerpt),
+        previewImageDataUrl: page.imageUrl, detectionReason: candidate.detectionReason, aiSuggestion: null, aiSuggestedAt: null,
+        reviewStatus: 'pending', reviewComment: null, candidateQuestionId: null, createdAt: new Date().toISOString(), reviewedAt: null,
+        fileId: page.fileId, sourceSha256: page.fileSha256, extractionMethod: page.method,
+        pageEvidenceId: `page_evidence_${job.id}_${page.fileId}_${page.pageNumber}`, reviewVersion: 0, reviewHistory: [] };
+    });
+  }
+
+  private async withTaskState(job: QuestionImportJob) {
+    const task = job.taskId ? await this.store.tasks.get(job.taskId) : null;
+    if (!task) return job;
+    const status: QuestionImportJob['status'] = task.state === 'succeeded' ? 'completed' : task.state === 'failed' ? 'failed' :
+      ['cancelled', 'cancel_requested'].includes(task.state) ? 'cancelled' : task.state === 'running' ? 'running' : 'pending';
+    return { ...job, status, errorMessage: task.errorCode };
   }
 
   reviewRecord(
@@ -183,14 +163,22 @@ export class QuestionImportService {
     command: ReviewQuestionImportRecordCommand,
   ) {
     this.assertAdmin(requestUser);
+    command = validate(z.object({ decision: z.enum(['approved', 'rejected']), comment: z.string().trim().min(5).max(3000),
+      knowledgePointIds: z.array(z.string().max(100)).max(30).optional(), createDraft: z.boolean().optional(), expectedVersion: z.number().int().nonnegative().optional(),
+      correctedStem: z.string().trim().min(3).max(4000).optional(), correctedExcerpt: z.string().trim().min(3).max(16000).optional() }).strict(), command);
     const record = this.requireRecord(recordId);
+    if (record.fileId && command.expectedVersion === undefined) throw new BadRequestException('请刷新候选记录并提供审核版本');
+    if (command.expectedVersion !== undefined && command.expectedVersion !== (record.reviewVersion ?? 0)) throw new ConflictException('候选已被审核，请刷新后再操作');
     const job = this.requireJob(record.jobId);
     const reviewedAt = new Date().toISOString();
+    const appendReview = () => { record.reviewVersion = (record.reviewVersion ?? 0) + 1;
+      (record.reviewHistory ??= []).push({ version: record.reviewVersion, decision: command.decision, actorId: requestUser.id, at: reviewedAt, comment: command.comment!, candidateStem: record.candidateStem, excerpt: record.excerpt }); };
 
     if (command.decision === 'rejected') {
       record.reviewStatus = 'rejected';
       record.reviewComment = command.comment ?? '人工审核驳回';
       record.reviewedAt = reviewedAt;
+      appendReview();
       this.eventBus.publish('question.review_submitted', {
         recordId: record.id,
         jobId: record.jobId,
@@ -203,6 +191,12 @@ export class QuestionImportService {
     }
 
     let question: Question | null = null;
+    if (record.candidateQuestionId && (command.correctedStem || command.correctedExcerpt)) throw new BadRequestException('此候选已生成草稿，请在题目编辑器修订，候选原文继续保留');
+    if (command.correctedStem || command.correctedExcerpt) {
+      record.originalCandidate ??= { stem: record.candidateStem, excerpt: record.excerpt };
+      if (command.correctedStem) record.candidateStem = command.correctedStem;
+      if (command.correctedExcerpt) record.excerpt = command.correctedExcerpt;
+    }
     if (command.createDraft !== false) {
       question = record.candidateQuestionId ? this.requireQuestion(record.candidateQuestionId) : this.createDraftQuestion(requestUser, job, record, command.knowledgePointIds ?? []);
       record.candidateQuestionId = question.id;
@@ -211,6 +205,7 @@ export class QuestionImportService {
     record.reviewStatus = 'approved';
     record.reviewComment = command.comment ?? '人工审核通过，已生成草稿';
     record.reviewedAt = reviewedAt;
+    appendReview();
     this.eventBus.publish('question.review_submitted', {
       recordId: record.id,
       jobId: record.jobId,
@@ -226,16 +221,8 @@ export class QuestionImportService {
 
   async structureRecordWithAi(requestUser: InMemoryUserAccount, recordId: string) {
     this.assertAdmin(requestUser);
-    const record = this.requireRecord(recordId);
-    const suggestion = await this.aiService.structureImportRecord({ record });
-
-    record.aiSuggestion = suggestion;
-    record.aiSuggestedAt = new Date().toISOString();
-
-    return {
-      record,
-      suggestion,
-    };
+    this.requireRecord(recordId);
+    throw new GoneException('辅助处理已迁入持久任务。请打开“资料导入”页 /admin/imports 发起本地辅助审阅，完成后核对建议。');
   }
 
   private async resolvePdfPaths(sourcePathOrUrl: string) {
@@ -248,26 +235,32 @@ export class QuestionImportService {
       ? normalizedInput
       : path.join(this.env.TEXTBOOK_BASE_PATH, normalizedInput);
 
+    let base: string, canonical: string;
+    try { base = await fs.realpath(this.env.TEXTBOOK_BASE_PATH); canonical = await fs.realpath(resolvedPath); }
+    catch { throw new BadRequestException('教材路径不可用，请使用文件上传，或配置允许的教材目录'); }
+    const within = (target: string) => target === base || target.startsWith(base + path.sep);
+    if (!within(canonical)) throw new ForbiddenException('本地导入仅允许配置的教材目录，请使用文件上传');
+
     let stat;
     try {
-      stat = await fs.stat(resolvedPath);
+      stat = await fs.stat(canonical);
     } catch {
-      throw new BadRequestException(`教材路径不存在：${resolvedPath}`);
+      throw new BadRequestException('教材路径不存在');
     }
 
     if (stat.isFile()) {
-      this.assertSupportedPdfPath(resolvedPath);
-      return [resolvedPath];
+      this.assertSupportedPdfPath(canonical);
+      return [canonical];
     }
 
     if (!stat.isDirectory()) {
       throw new BadRequestException('当前导入源不是有效文件或目录');
     }
 
-    const fileNames = await fs.readdir(resolvedPath);
+    const fileNames = await fs.readdir(canonical);
     const pdfPaths = fileNames
       .filter((item) => item.toLowerCase().endsWith('.pdf'))
-      .map((item) => path.join(resolvedPath, item))
+      .map((item) => path.join(canonical, item))
       .sort((left, right) => left.localeCompare(right, 'zh-CN'));
 
     if (pdfPaths.length === 0) {
@@ -278,11 +271,12 @@ export class QuestionImportService {
       throw new BadRequestException('目录中未找到可导入的 PDF 文件');
     }
 
-    if (pdfPaths.length > 5) {
-      throw new BadRequestException('首版导入任务为控制执行时长，目录导入最多支持 5 本教材，请选择更具体的路径');
+    if (pdfPaths.length > 10) {
+      throw new BadRequestException('一次导入最多 10 本教材，可分批导入');
     }
-
-    return pdfPaths;
+    const realPaths = await Promise.all(pdfPaths.map(p => fs.realpath(p)));
+    if (realPaths.some(p => !within(p))) throw new ForbiddenException('教材目录包含指向允许范围外的文件');
+    return realPaths;
   }
 
   private assertSupportedPdfPath(filePath: string) {
@@ -295,73 +289,6 @@ export class QuestionImportService {
     }
   }
 
-  private assertSupportedCommand(command: CreateQuestionImportJobCommand) {
-    if (command.importType !== 'textbook_pdf') {
-      throw new BadRequestException('当前首版仅支持 textbook_pdf 类型的导入任务');
-    }
-
-    if (command.sourcePolicy.sourceType !== 'internal_textbook' || command.sourcePolicy.licenseClass !== 'A_INTERNAL') {
-      throw new BadRequestException('教材 PDF 导入当前仅允许 internal_textbook + A_INTERNAL 组合');
-    }
-  }
-
-  private async extractCandidatesFromPdf(
-    filePath: string,
-    subject: Subject,
-    includePreviewImage: boolean,
-  ) {
-    const pdfData = await fs.readFile(filePath);
-    const parser = new PDFParse({ data: pdfData });
-
-    try {
-      const textResult = await parser.getText();
-      const candidates: ImportCandidate[] = [];
-      for (const page of textResult.pages) {
-        const pageText = typeof page.text === 'string' ? page.text : '';
-        const pageCandidates = splitTextbookPageCandidates(pageText, subject);
-        if (pageCandidates.length === 0) {
-          continue;
-        }
-
-        let previewImageDataUrl: string | null = null;
-        if (includePreviewImage) {
-          try {
-            const screenshotResult = await parser.getScreenshot({
-              partial: [page.num],
-              desiredWidth: 360,
-              imageBuffer: false,
-            });
-            previewImageDataUrl = screenshotResult.pages[0]?.dataUrl ?? null;
-          } catch {
-            previewImageDataUrl = null;
-          }
-        }
-
-        for (const candidate of pageCandidates) {
-          const quality = assessImportCandidateQuality(candidate);
-          candidates.push({
-            pageNumber: page.num,
-            candidateIndexOnPage: candidate.candidateIndexOnPage,
-            splitMode: candidate.splitMode,
-            sectionLabel: candidate.sectionLabel,
-            qualityLevel: quality.qualityLevel,
-            qualityFlags: quality.qualityFlags,
-            excerpt: candidate.excerpt,
-            candidateStem: this.repairCandidateStem(candidate.candidateStem, candidate.excerpt),
-            detectionReason: candidate.detectionReason,
-            previewImageDataUrl,
-            aiSuggestion: null,
-            aiSuggestedAt: null,
-          });
-        }
-      }
-
-      return candidates;
-    } finally {
-      await parser.destroy();
-    }
-  }
-
   private createDraftQuestion(
     requestUser: InMemoryUserAccount,
     job: QuestionImportJob,
@@ -369,7 +296,7 @@ export class QuestionImportService {
     knowledgePointIds: string[],
   ) {
     for (const knowledgePointId of knowledgePointIds) {
-      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId);
+      const exists = this.store.knowledgePoints.some((item) => item.id === knowledgePointId && item.subject === job.subject);
       if (!exists) {
         throw new BadRequestException(`Knowledge point not found: ${knowledgePointId}`);
       }
@@ -381,7 +308,7 @@ export class QuestionImportService {
       id: this.store.nextId('question'),
       subject: job.subject,
       type: this.resolveDraftQuestionType(suggestedAnswerMode),
-      stem: record.aiSuggestion?.suggestedStem?.trim() || record.candidateStem,
+      stem: record.candidateStem,
       answer: this.buildDraftDefaultAnswer(suggestedAnswerMode),
       analysis: '教材导入候选草稿，需人工补充标准答案、解析和作答协议后再发布。',
       difficultyLevel: 2,
@@ -412,11 +339,12 @@ export class QuestionImportService {
         text: `AI 建议小节：${record.aiSuggestion.suggestedSectionLabel}`,
       });
     }
-    if (record.previewImageDataUrl) {
+    const includeCandidateImage = record.previewImageDataUrl && !record.pageEvidence && !record.pageEvidenceId;
+    if (includeCandidateImage) {
       blocks.push({
         id: this.store.nextId('block'),
         type: 'image',
-        url: record.previewImageDataUrl,
+        url: record.previewImageDataUrl!,
         alt: `${record.sourceName} 第 ${record.pageNumber ?? 1} 页候选截图`,
         caption: `${record.sourceName} 第 ${record.pageNumber ?? 1} 页候选截图`,
       });
@@ -443,7 +371,7 @@ export class QuestionImportService {
       locale: 'zh-CN',
       blocks,
       attachments: [],
-      layoutMode: record.previewImageDataUrl ? 'reading_split' : 'default',
+      layoutMode: includeCandidateImage ? 'reading_split' : 'default',
       accessibilityConfig: {
         importedFromRecordId: record.id,
       },
@@ -459,9 +387,10 @@ export class QuestionImportService {
       licenseClass: job.sourcePolicy.licenseClass,
       licenseName: job.sourcePolicy.licenseName ?? null,
       importJobId: job.id,
-      reviewStatus: 'approved',
+      reviewStatus: 'pending',
       notes: [
         `导入记录 ${record.id}：${record.detectionReason}`,
+        '候选题审核只确认草稿内容，来源许可须另外核实后才可发布',
         record.sectionLabel ? `小节 ${record.sectionLabel}` : null,
         record.qualityFlags.length > 0 ? `质量标记 ${record.qualityFlags.join(',')}` : null,
         record.aiSuggestion ? `AI 建议题干 ${record.aiSuggestion.suggestedStem}` : null,

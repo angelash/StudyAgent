@@ -3,6 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { Pool } from 'pg';
+import { TaskFence, TaskIntent, TaskOperation, TaskRepository } from './task-repository';
 
 export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState };
@@ -40,9 +41,10 @@ function differences(before: DomainState, after: DomainState): Change[] {
 export class DomainDatabase {
   private sqlite?: DatabaseSync;
   private postgres?: Pool;
+  tasks!: TaskRepository;
   readonly driver: 'sqlite' | 'postgres';
 
-  constructor(private readonly location: string) {
+  constructor(private readonly location: string, private readonly now = () => Date.now()) {
     this.driver = /^postgres(ql)?:/.test(location) ? 'postgres' : 'sqlite';
   }
 
@@ -73,9 +75,15 @@ export class DomainDatabase {
         CREATE UNIQUE INDEX IF NOT EXISTS assessment_response ON domain_records((body->>'sessionId'),(body->>'questionId')) WHERE collection='assessmentAnswers';
         CREATE UNIQUE INDEX IF NOT EXISTS active_binding ON domain_records((body->>'parentUserId'),(body->>'studentId')) WHERE collection='bindings' AND body->>'status'='active';`);
     }
+    this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now);
+    await this.tasks.open();
   }
 
   async read(): Promise<StateSnapshot> {
+    return this.tasks.serial(() => this.readSnapshot());
+  }
+
+  private async readSnapshot(): Promise<StateSnapshot> {
     const state: DomainState = {};
     if (this.sqlite) {
       this.sqlite.exec('BEGIN');
@@ -99,13 +107,18 @@ export class DomainDatabase {
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
-  async commit(before: StateSnapshot, after: DomainState): Promise<number> {
+  async commit(before: StateSnapshot, after: DomainState, options: { enqueue?: TaskIntent[]; fence?: TaskFence; taskOperations?: TaskOperation[] } = {}): Promise<number> {
+    return this.tasks.serial(() => this.commitSnapshot(before, after, options));
+  }
+
+  private async commitSnapshot(before: StateSnapshot, after: DomainState, options: { enqueue?: TaskIntent[]; fence?: TaskFence; taskOperations?: TaskOperation[] }): Promise<number> {
     const changes = differences(before.state, after);
-    if (changes.length === 0) return before.revision;
+    if (changes.length === 0 && !options.enqueue?.length && !options.fence && !options.taskOperations?.length) return before.revision;
     const conflict = () => new ConflictException('数据已更新，请重试本次操作');
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
+        if (options.fence) await this.tasks.finish(options.fence);
         const result = this.sqlite.prepare('UPDATE store_meta SET revision=revision+1 WHERE id=1 AND revision=?').run(before.revision);
         if (Number(result.changes) !== 1) throw conflict();
         const upsert = this.sqlite.prepare('INSERT INTO domain_records VALUES(?,?,?,?) ON CONFLICT(collection,record_id) DO UPDATE SET body=excluded.body,position=excluded.position');
@@ -114,6 +127,8 @@ export class DomainDatabase {
           if (change.body === null) remove.run(change.collection, change.id);
           else upsert.run(change.collection, change.id, change.body, change.position);
         }
+        await this.tasks.insert(options.enqueue ?? []);
+        await this.tasks.applyOperations(options.taskOperations ?? []);
         this.sqlite.exec('COMMIT');
         return before.revision + 1;
       } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
@@ -121,16 +136,19 @@ export class DomainDatabase {
     const client = await this.postgres!.connect();
     try {
       await client.query('BEGIN');
+      if (options.fence) await this.tasks.finish(options.fence, client);
       const result = await client.query('UPDATE store_meta SET revision=revision+1 WHERE id=1 AND revision=$1 RETURNING revision', [before.revision]);
       if (result.rowCount !== 1) throw conflict();
       for (const change of changes) {
         if (change.body === null) await client.query('DELETE FROM domain_records WHERE collection=$1 AND record_id=$2', [change.collection, change.id]);
         else await client.query('INSERT INTO domain_records VALUES($1,$2,$3::jsonb,$4) ON CONFLICT(collection,record_id) DO UPDATE SET body=excluded.body,position=excluded.position', [change.collection, change.id, change.body, change.position]);
       }
+      await this.tasks.insert(options.enqueue ?? [], client);
+      await this.tasks.applyOperations(options.taskOperations ?? [], client);
       await client.query('COMMIT');
       return before.revision + 1;
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
   }
 
-  async close() { this.sqlite?.close(); await this.postgres?.end(); }
+  async close() { await this.tasks?.serial(async () => { this.sqlite?.close(); await this.postgres?.end(); }); }
 }

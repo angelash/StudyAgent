@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { QuestionAnswerMode, QuestionAttachment, QuestionBlock, QuestionImportType, Subject } from '@study-agent/contracts';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { QuestionWorkspaceService } from './question-workspace.service';
-import { QuestionImportService } from './question-import.service';
+import { CreateQuestionImportJobCommand, QuestionImportService } from './question-import.service';
 
 @Controller()
 export class QuestionWorkspaceController {
@@ -22,29 +22,9 @@ export class QuestionWorkspaceController {
   createImportJob(
     @Req() req: AuthenticatedRequest,
     @Body()
-    body: {
-      importType: QuestionImportType;
-      subject: Subject;
-      sourcePathOrUrl: string;
-      includePreviewImage?: boolean;
-      sourcePolicy: {
-        sourceType: 'internal_authoring' | 'internal_textbook' | 'open_content' | 'public_reference' | 'partner';
-        licenseClass: 'A_INTERNAL' | 'B_OPEN' | 'C_PUBLIC_REFERENCE_ONLY' | 'D_COMMERCIAL_PARTNER';
-        licenseName?: string | null;
-      };
-    },
+    body: CreateQuestionImportJobCommand,
   ) {
-    return this.questionImportService.createJob(req.user, {
-      importType: body.importType,
-      subject: body.subject,
-      sourcePathOrUrl: body.sourcePathOrUrl,
-      includePreviewImage: body.includePreviewImage ?? true,
-      sourcePolicy: {
-        sourceType: body.sourcePolicy.sourceType,
-        licenseClass: body.sourcePolicy.licenseClass,
-        licenseName: body.sourcePolicy.licenseName ?? null,
-      },
-    });
+    return this.questionImportService.createJob(req.user, body);
   }
 
   @UseGuards(AuthGuard)
@@ -60,6 +40,14 @@ export class QuestionWorkspaceController {
   }
 
   @UseGuards(AuthGuard)
+  @Get('admin/question-import-jobs/:jobId/candidates')
+  listCandidates(@Req() req: AuthenticatedRequest, @Param('jobId') jobId: string, @Query() query: unknown) { return this.questionImportService.listCandidates(req.user, jobId, query); }
+
+  @UseGuards(AuthGuard)
+  @Get('admin/question-import-records/:recordId')
+  getCandidate(@Req() req: AuthenticatedRequest, @Param('recordId') id: string) { return this.questionImportService.candidate(req.user, id); }
+
+  @UseGuards(AuthGuard)
   @Post('admin/question-import-records/:recordId/review')
   reviewImportRecord(
     @Req() req: AuthenticatedRequest,
@@ -70,6 +58,9 @@ export class QuestionWorkspaceController {
       comment?: string | null;
       knowledgePointIds?: string[];
       createDraft?: boolean;
+      expectedVersion?: number;
+      correctedStem?: string;
+      correctedExcerpt?: string;
     },
   ) {
     return this.questionImportService.reviewRecord(req.user, recordId, body);

@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
 import { DomainDatabase, DomainState, StateSnapshot } from './domain-database';
+import { TaskFence, TaskIntent, TaskOperation } from './task-repository';
 import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
 import {
   AIAnalysisResponse,
@@ -27,6 +28,7 @@ import {
   PracticeSession, PracticeAttempt, PracticeHint,
   TextbookAtomMapping, CurriculumRevision,
   TeacherStudentAssignment, EvidenceFeedback,
+  ImportFile, ImportPageEvidenceRef, ProcessingArtifact,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -130,10 +132,11 @@ export type AIInsightRecord = {
 
 @Injectable()
 export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstrap, OnModuleDestroy {
-  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState }>();
+  private readonly contexts = new AsyncLocalStorage<{ baseline: StateSnapshot; state: DomainState; enqueue: TaskIntent[]; taskOperations: TaskOperation[] }>();
   private readonly root: DomainState = {};
   private baseline: StateSnapshot = { revision: 0, state: {} };
   private database?: DomainDatabase;
+  private memoryQueue?: DomainDatabase;
 
   constructor() {
     // Kept as the injection token for existing modules; production data is transactional and durable.
@@ -150,6 +153,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   async onModuleInit() {
     if (process.env.STUDY_STORAGE === 'memory' || process.env.NODE_ENV === 'test') {
       if (process.env.NODE_ENV === 'production') throw new Error('Memory storage is not permitted in production');
+      this.memoryQueue = new DomainDatabase(':memory:');
+      await this.memoryQueue.open();
       return;
     }
     const localRoot = process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? resolve('../..') : process.cwd();
@@ -173,23 +178,48 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     if (!this.database) return fn();
     const baseline = await this.database.read();
     const state = structuredClone(baseline.state);
-    return this.contexts.run({ baseline, state }, fn);
+    return this.contexts.run({ baseline, state, enqueue: [], taskOperations: [] }, fn);
   }
 
-  async commitRequest() {
+  async commitRequest(fence?: TaskFence) {
     const context = this.contexts.getStore();
     if (this.database && context) {
-      context.baseline.revision = await this.database.commit(context.baseline, context.state);
+      context.baseline.revision = await this.database.commit(context.baseline, context.state, { enqueue: context.enqueue, fence, taskOperations: context.taskOperations });
       context.baseline.state = structuredClone(context.state);
+      context.enqueue = [];
+      context.taskOperations = [];
+    } else if (this.memoryQueue && (context || fence)) {
+      await this.memoryQueue.commit(await this.memoryQueue.read(), {}, { enqueue: context?.enqueue, fence, taskOperations: context?.taskOperations });
+      if (context) { for (const [key, value] of Object.entries(context.state)) this.root[key] = value; context.enqueue = []; context.taskOperations = []; }
     }
   }
 
-  async transaction<T>(fn: () => T | Promise<T>): Promise<T> {
-    return this.requestContext(async () => { const result = await fn(); await this.commitRequest(); return result; });
+  async transaction<T>(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T> {
+    if (!this.database && this.memoryQueue) {
+      const state = structuredClone(this.root);
+      return this.contexts.run({ baseline: { revision: 0, state: structuredClone(state) }, state, enqueue: [], taskOperations: [] }, async () => {
+        const result = await fn(); await this.commitRequest(fence); return result;
+      });
+    }
+    return this.requestContext(async () => { const result = await fn(); await this.commitRequest(fence); return result; });
+  }
+
+  get tasks() { const db = this.database ?? this.memoryQueue; if (!db) throw new Error('Task storage is not initialized'); return db.tasks; }
+  async enqueueTask(intent: TaskIntent) {
+    const context = this.contexts.getStore();
+    if (context) context.enqueue.push(intent);
+    else if (this.memoryQueue) await this.memoryQueue.commit(await this.memoryQueue.read(), {}, { enqueue: [intent] });
+    else throw new Error('Tasks must be requested inside a durable transaction');
+  }
+  async controlTask(operation: TaskOperation) {
+    const context = this.contexts.getStore();
+    if (context) context.taskOperations.push(operation);
+    else if (this.memoryQueue) await this.memoryQueue.commit(await this.memoryQueue.read(), {}, { taskOperations: [operation] });
+    else throw new Error('Task controls require a durable request transaction');
   }
 
   get persistence() { return { driver: this.database?.driver ?? 'memory', durable: Boolean(this.database) }; }
-  async onModuleDestroy() { await this.database?.close(); }
+  async onModuleDestroy() { await this.database?.close(); await this.memoryQueue?.close(); }
   users: InMemoryUserAccount[] = [];
   paperPublications: PaperPublication[] = [];
   libraryBookmarks: LibraryBookmark[] = [];
@@ -199,6 +229,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   practiceScoringRevisions: ScoringRevision[] = [];
   teacherAssignments: TeacherStudentAssignment[] = [];
   evidenceFeedback: EvidenceFeedback[] = [];
+  importFiles: ImportFile[] = [];
+  processingArtifacts: ProcessingArtifact[] = [];
+  importPages: ImportPageEvidenceRef[] = [];
   sessions: InMemoryAuthSession[] = [];
   students: StudentProfile[] = [];
   bindings: ParentStudentBinding[] = [];
@@ -254,6 +287,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.practiceScoringRevisions = [];
     this.teacherAssignments = [];
     this.evidenceFeedback = [];
+    this.importFiles = [];
+    this.processingArtifacts = [];
+    this.importPages = [];
     this.sessions = [];
     this.students = [];
     this.bindings = [];

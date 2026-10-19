@@ -56,4 +56,14 @@ describe('question-import.utils', () => {
     expect(candidates).toHaveLength(1);
     expect(candidates[0].candidateStem).toContain('大树高 8 米');
   });
+
+  it('keeps OCR fullwidth markers and standalone numeric content without turning section headings into questions', () => {
+    const candidates = splitTextbookPageCandidates(`一年级数学期末练习\n一、单选题\n1．小丽拼的是（）\nA: 三角形\nB: 正方形\n2. 一个算式的两个加数都是50，和是（）\nA:\n100\nB:\n50\n二、判断题\n1. 一张5元和两张5角合起来是6元。（判断对错）`);
+    expect(candidates).toHaveLength(3);
+    expect(candidates[0].candidateStem).toContain('小丽拼的是');
+    expect(candidates[0].sectionLabel).toBe('一、单选题');
+    expect(candidates[1].excerpt).toContain('100'); expect(candidates[1].excerpt).toContain('50');
+    expect(candidates[2].sectionLabel).toBe('二、判断题');
+    expect(candidates.every(c => !/^[一二]、/.test(c.candidateStem))).toBe(true);
+  });
 });

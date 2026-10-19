@@ -49,6 +49,9 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...(options.headers ?? {}),
     },
+  }).catch((error: Error) => {
+    if (error.name === 'AbortError') throw error;
+    throw new Error('暂时无法连接学习服务，请检查网络后重试。已保存的数据会保留。');
   });
 
   let payload:

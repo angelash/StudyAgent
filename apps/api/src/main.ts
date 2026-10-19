@@ -11,6 +11,7 @@ async function bootstrap() {
   });
 
   app.setGlobalPrefix('api');
+  app.enableShutdownHooks();
   await app.listen(port);
 }
 

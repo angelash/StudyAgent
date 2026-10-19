@@ -30,10 +30,13 @@ describe('StudyAgent API integration', () => {
   const tempDirs: string[] = [];
   const originalOpenAiApiKey = process.env.OPENAI_API_KEY;
   const originalOpenAiBaseUrl = process.env.OPENAI_BASE_URL;
+  const originalDataDir = process.env.STUDY_DATA_DIR;
+  const processingRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'study-processing-integration-'));
 
   beforeAll(async () => {
     delete process.env.OPENAI_API_KEY;
     delete process.env.OPENAI_BASE_URL;
+    process.env.STUDY_DATA_DIR = path.join(processingRoot, 'data');
     const { AppModule } = require('../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     app = await NestFactory.create(AppModule, { logger: false });
@@ -51,6 +54,8 @@ describe('StudyAgent API integration', () => {
     for (const dirPath of tempDirs) {
       fs.rmSync(dirPath, { recursive: true, force: true });
     }
+    fs.rmSync(processingRoot, { recursive: true, force: true });
+    if (originalDataDir === undefined) delete process.env.STUDY_DATA_DIR; else process.env.STUDY_DATA_DIR = originalDataDir;
     if (originalOpenAiApiKey) {
       process.env.OPENAI_API_KEY = originalOpenAiApiKey;
     }
@@ -223,11 +228,21 @@ describe('StudyAgent API integration', () => {
   }
 
   function createTempTextbookPdf(text: string) {
-    const dirPath = fs.mkdtempSync(path.join(os.tmpdir(), 'study-agent-import-'));
+    const dirPath = fs.mkdtempSync(path.join(processingRoot, 'input-'));
     tempDirs.push(dirPath);
     const filePath = path.join(dirPath, 'sample-math.pdf');
     fs.writeFileSync(filePath, buildSimplePdf(text));
     return filePath;
+  }
+
+  async function uploadTempPdf(token: string, filePath: string) {
+    const bytes = fs.readFileSync(filePath);
+    const start = await request(app.getHttpServer()).post('/api/admin/import-files').set('Authorization', `Bearer ${token}`)
+      .send({ name: path.basename(filePath), size: bytes.length, mediaType: 'application/pdf', requestKey: store.nextId('upload') }).expect(201);
+    const id = start.body.data.id;
+    await request(app.getHttpServer()).put(`/api/admin/import-files/${id}/chunks/0`).set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/octet-stream').send(bytes).expect(200);
+    await request(app.getHttpServer()).post(`/api/admin/import-files/${id}/complete`).set('Authorization', `Bearer ${token}`).send({}).expect(201);
+    return id;
   }
 
   it('allows parent login and student creation', async () => {
@@ -354,6 +369,7 @@ describe('StudyAgent API integration', () => {
   it('creates textbook import job and generates candidate records', async () => {
     const admin = await login('admin@example.com');
     const pdfPath = createTempTextbookPdf('Practice 1 1. 36+6= 2. 45-3= 3. 18+9= 4. 60-8=');
+    const fileId = await uploadTempPdf(admin.token, pdfPath);
 
     const createResponse = await request(app.getHttpServer())
       .post('/api/admin/question-import-jobs')
@@ -361,7 +377,7 @@ describe('StudyAgent API integration', () => {
       .send({
         importType: 'textbook_pdf',
         subject: 'math',
-        sourcePathOrUrl: pdfPath,
+        fileIds: [fileId],
         sourcePolicy: {
           sourceType: 'internal_textbook',
           licenseClass: 'A_INTERNAL',
@@ -377,9 +393,14 @@ describe('StudyAgent API integration', () => {
       recordCount: number;
     }>).data!;
 
-    expect(job.status).toBe('completed');
+    expect(job.status).toBe('pending');
     expect(job.fileCount).toBe(1);
-    expect(job.recordCount).toBeGreaterThan(0);
+    expect(job.recordCount).toBe(0);
+    const { ProcessingWorkerService } = require('../dist/apps/api/src/modules/processing/processing-worker.service.js');
+    await app.get<any>(ProcessingWorkerService).runNext();
+    const processed = await request(app.getHttpServer()).get(`/api/admin/question-import-jobs/${job.id}`).set('Authorization', `Bearer ${admin.token}`).expect(200);
+    expect(processed.body.data.status).toBe('completed');
+    expect(processed.body.data.recordCount).toBeGreaterThan(0);
 
     const recordsResponse = await request(app.getHttpServer())
       .get(`/api/admin/question-import-jobs/${job.id}/records`)
@@ -401,15 +422,21 @@ describe('StudyAgent API integration', () => {
       expect(records[0].pageNumber).toBe(1);
       expect(records[0].candidateIndexOnPage).toBe(1);
       expect(records[0].splitMode).toBe('question');
-      expect(records[0].previewImageDataUrl).toContain('data:image/png;base64,');
+      expect(records[0].previewImageDataUrl).toContain('/api/admin/processing/artifacts/');
       expect(records[0].detectionReason.length).toBeGreaterThan(0);
       expect(records[0].candidateStem).toContain('36+6=');
       expect(records[3].candidateStem).toContain('60-8=');
+      const evidence = await request(app.getHttpServer()).get(`/api/admin/question-import-records/${(records[0] as any).id}`).set('Authorization', `Bearer ${admin.token}`).expect(200);
+      expect(evidence.body.data.pageEvidence.method).toBe('pdf_text');
+      expect(evidence.body.data.pageEvidence.text).toContain('36+6=');
+      expect((records[0] as any).pageEvidence).toBeUndefined();
+      expect((records[0] as any).pageEvidenceId).toBeTruthy();
   });
 
   it('approves textbook import record and creates draft question candidate', async () => {
     const admin = await login('admin@example.com');
     const pdfPath = createTempTextbookPdf('Practice 1 1. 36+6= 2. 45-3= 3. 18+9= 4. 60-8=');
+    const fileId = await uploadTempPdf(admin.token, pdfPath);
 
     const createResponse = await request(app.getHttpServer())
       .post('/api/admin/question-import-jobs')
@@ -417,7 +444,7 @@ describe('StudyAgent API integration', () => {
       .send({
         importType: 'textbook_pdf',
         subject: 'math',
-        sourcePathOrUrl: pdfPath,
+        fileIds: [fileId],
         sourcePolicy: {
           sourceType: 'internal_textbook',
           licenseClass: 'A_INTERNAL',
@@ -427,6 +454,8 @@ describe('StudyAgent API integration', () => {
       .expect(201);
 
     const job = (createResponse.body as WrappedResponse<{ id: string }>).data!;
+    const { ProcessingWorkerService } = require('../dist/apps/api/src/modules/processing/processing-worker.service.js');
+    await app.get<any>(ProcessingWorkerService).runNext();
 
     const recordsResponse = await request(app.getHttpServer())
       .get(`/api/admin/question-import-jobs/${job.id}/records`)
@@ -441,6 +470,7 @@ describe('StudyAgent API integration', () => {
       .send({
         decision: 'approved',
         comment: '转为人工完善草稿',
+        expectedVersion: 0,
       })
       .expect(201);
 
@@ -473,7 +503,7 @@ describe('StudyAgent API integration', () => {
       expect(payload.source.sourceType).toBe('internal_textbook');
       expect(payload.source.sourcePathOrUrl).toContain('&candidate=1');
       expect(payload.source.notes).toContain('按题号切分候选');
-      expect(payload.document.blocks.some((item) => item.type === 'image')).toBe(true);
+      expect(payload.document.blocks.some((item) => item.type === 'image')).toBe(false);
     });
 
   it('builds question render payload and validates formula answers', async () => {

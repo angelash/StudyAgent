@@ -291,7 +291,7 @@ export type QuestionSourceRecord = z.infer<typeof questionSourceRecordSchema>;
 export const questionImportTypeSchema = z.enum(['textbook_pdf', 'qti', 'h5p', 'manual_seed']);
 export type QuestionImportType = z.infer<typeof questionImportTypeSchema>;
 
-export const questionImportJobStatusSchema = z.enum(['pending', 'running', 'completed', 'failed']);
+export const questionImportJobStatusSchema = z.enum(['pending', 'running', 'completed', 'failed', 'cancelled']);
 export type QuestionImportJobStatus = z.infer<typeof questionImportJobStatusSchema>;
 
 export const questionImportReviewStatusSchema = z.enum(['pending', 'approved', 'rejected']);
@@ -311,6 +311,10 @@ export const questionImportAiSuggestionSchema = z.object({
   actionablePoints: z.array(z.string()),
   confidenceLevel: z.enum(['low', 'medium', 'high']),
   reviewRequired: z.boolean(),
+  model: z.string().optional(),
+  source: z.string().optional(),
+  promptVersion: z.string().optional(),
+  taskId: z.string().optional(),
 });
 
 export type QuestionImportAiSuggestion = z.infer<typeof questionImportAiSuggestionSchema>;
@@ -336,6 +340,12 @@ export const questionImportJobSchema = z.object({
   errorMessage: z.string().nullable(),
   createdAt: z.string(),
   completedAt: z.string().nullable(),
+  taskId: z.string().optional(),
+  fileIds: z.array(z.string()).optional(),
+  ownerUserId: z.string().optional(),
+  requestKey: z.string().optional(),
+  inputHash: z.string().optional(),
+  pipelineVersion: z.string().optional(),
 });
 
 export type QuestionImportJob = z.infer<typeof questionImportJobSchema>;
@@ -363,6 +373,14 @@ export const questionImportRecordSchema = z.object({
   candidateQuestionId: z.string().nullable(),
   createdAt: z.string(),
   reviewedAt: z.string().nullable(),
+  fileId: z.string().optional(),
+  sourceSha256: z.string().optional(),
+  extractionMethod: z.enum(['pdf_text', 'ocr', 'unreadable']).optional(),
+  pageEvidence: z.custom<import('./processing').ImportPageEvidence>().optional(),
+  pageEvidenceId: z.string().optional(),
+  reviewVersion: z.number().int().nonnegative().optional(),
+  reviewHistory: z.array(z.object({ version: z.number(), decision: z.enum(['approved', 'rejected']), actorId: z.string(), at: z.string(), comment: z.string(), candidateStem: z.string().optional(), excerpt: z.string().optional() })).optional(),
+  originalCandidate: z.object({ stem: z.string(), excerpt: z.string() }).optional(),
 });
 
 export type QuestionImportRecord = z.infer<typeof questionImportRecordSchema>;
@@ -696,3 +714,4 @@ export const assistantSessionSchema = z.object({
 });
 
 export type AssistantSession = z.infer<typeof assistantSessionSchema>;
+export * from './processing';

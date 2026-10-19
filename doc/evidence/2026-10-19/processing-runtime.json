@@ -1,0 +1,348 @@
+{
+  "at": "2026-10-19T14:31:35.324Z",
+  "scope": "isolated synthetic loopback account; real preserved source page and rasterized copy",
+  "browserMutations": [
+    "import creation",
+    "handwriting preview creation",
+    "local review creation",
+    "manual correction and draft creation"
+  ],
+  "upload": {
+    "at": "2026-10-19T14:16:23.363Z",
+    "inputMethod": "real HTTP chunk upload API; synthetic loopback preauthentication; browser file picker not automated",
+    "files": [
+      {
+        "id": "import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88",
+        "name": "native-and-scanned.pdf",
+        "sha256": "7f1addd9a5b1d6d4bfe26b1b09c10395de826997f82f630b81757b636c4bd3f2",
+        "size": 267497,
+        "chunks": 1,
+        "status": "ready"
+      },
+      {
+        "id": "import_file_b273b741-4dc0-4378-b05e-662e929ee3b9",
+        "name": "handwriting-input.png",
+        "sha256": "6cc65c2f18edf52a3edc97984e713b9558986f8012569ad3749183b28073a197",
+        "size": 114932,
+        "chunks": 1,
+        "status": "ready"
+      }
+    ]
+  },
+  "beforeRestart": {
+    "at": "2026-10-19T14:28:49.598Z",
+    "stage": "before-restart",
+    "jobId": "question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6",
+    "candidateCount": 10,
+    "methods": {
+      "pdf_text": 5,
+      "ocr": 5
+    },
+    "corrected": {
+      "id": "import_record_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1_5",
+      "questionId": "question_a1938d18-d6c5-4864-a242-6094a3039692",
+      "reviewVersion": 1,
+      "originalCandidateHash": "05d6496618eb707a99fbe36be8acc0b862a300db0b8da4b021f11943396db23b",
+      "reviewHistoryHash": "9860fbf514bf18e473bdb884886551951c967b6dc044d985d93eac0667c4e663",
+      "questionStatus": "draft",
+      "sourceReviewStatus": "pending",
+      "privatePageImagesInQuestion": false
+    },
+    "pageEvidence": [
+      {
+        "id": "page_evidence_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1",
+        "sha256": "e24e8b56a4a0aa48fd63259dc48877ecce3c913bed966f11952ae17694aedb74",
+        "pageNumber": 1,
+        "method": "pdf_text",
+        "lineCount": 25,
+        "warnings": [
+          "formula_and_layout_require_review"
+        ]
+      },
+      {
+        "id": "page_evidence_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_2",
+        "sha256": "36868af54110e8e20dc4349d48327a41a93208b5efaf266b05bfec634bfbc7ad",
+        "pageNumber": 2,
+        "method": "ocr",
+        "lineCount": 21,
+        "warnings": [
+          "ocr_requires_visual_review",
+          "low_confidence_lines",
+          "formula_and_layout_require_review"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "id": "import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88",
+        "sha256": "7f1addd9a5b1d6d4bfe26b1b09c10395de826997f82f630b81757b636c4bd3f2",
+        "size": 267497,
+        "status": "ready"
+      },
+      {
+        "id": "import_file_b273b741-4dc0-4378-b05e-662e929ee3b9",
+        "sha256": "6cc65c2f18edf52a3edc97984e713b9558986f8012569ad3749183b28073a197",
+        "size": 114932,
+        "status": "ready"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "task_4c71ba7d-657e-41c7-b962-184b73b2ca16",
+        "kind": "question.pdf.import",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "jobId": "question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6",
+          "pages": 2,
+          "fileCount": 1
+        }
+      },
+      {
+        "id": "task_ca4ca4b7-fc92-4795-ae3b-a7114871156c",
+        "kind": "image.handwriting.preview",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "fileId": "import_file_b273b741-4dc0-4378-b05e-662e929ee3b9",
+          "artifactId": "artifact_cce71af800c3b5fda8071659cdd0e83270ad06f6e49e06d32158643e7a82bc57",
+          "originalPreserved": true,
+          "reviewRequired": true,
+          "verifiedCorrect": false
+        }
+      },
+      {
+        "id": "task_8b3a4113-0a21-40b8-a14d-5f2040255afb",
+        "kind": "question.local_explain",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "recordId": "import_record_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1_5",
+          "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+          "source": "local-generated-ai",
+          "reviewRequired": true,
+          "verifiedCorrect": false
+        }
+      }
+    ]
+  },
+  "afterRestart": {
+    "at": "2026-10-19T14:29:36.934Z",
+    "stage": "after-restart",
+    "jobId": "question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6",
+    "candidateCount": 10,
+    "methods": {
+      "pdf_text": 5,
+      "ocr": 5
+    },
+    "corrected": {
+      "id": "import_record_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1_5",
+      "questionId": "question_a1938d18-d6c5-4864-a242-6094a3039692",
+      "reviewVersion": 1,
+      "originalCandidateHash": "05d6496618eb707a99fbe36be8acc0b862a300db0b8da4b021f11943396db23b",
+      "reviewHistoryHash": "9860fbf514bf18e473bdb884886551951c967b6dc044d985d93eac0667c4e663",
+      "questionStatus": "draft",
+      "sourceReviewStatus": "pending",
+      "privatePageImagesInQuestion": false
+    },
+    "pageEvidence": [
+      {
+        "id": "page_evidence_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1",
+        "sha256": "e24e8b56a4a0aa48fd63259dc48877ecce3c913bed966f11952ae17694aedb74",
+        "pageNumber": 1,
+        "method": "pdf_text",
+        "lineCount": 25,
+        "warnings": [
+          "formula_and_layout_require_review"
+        ]
+      },
+      {
+        "id": "page_evidence_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_2",
+        "sha256": "36868af54110e8e20dc4349d48327a41a93208b5efaf266b05bfec634bfbc7ad",
+        "pageNumber": 2,
+        "method": "ocr",
+        "lineCount": 21,
+        "warnings": [
+          "ocr_requires_visual_review",
+          "low_confidence_lines",
+          "formula_and_layout_require_review"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "id": "import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88",
+        "sha256": "7f1addd9a5b1d6d4bfe26b1b09c10395de826997f82f630b81757b636c4bd3f2",
+        "size": 267497,
+        "status": "ready"
+      },
+      {
+        "id": "import_file_b273b741-4dc0-4378-b05e-662e929ee3b9",
+        "sha256": "6cc65c2f18edf52a3edc97984e713b9558986f8012569ad3749183b28073a197",
+        "size": 114932,
+        "status": "ready"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "task_4c71ba7d-657e-41c7-b962-184b73b2ca16",
+        "kind": "question.pdf.import",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "jobId": "question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6",
+          "pages": 2,
+          "fileCount": 1
+        }
+      },
+      {
+        "id": "task_ca4ca4b7-fc92-4795-ae3b-a7114871156c",
+        "kind": "image.handwriting.preview",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "fileId": "import_file_b273b741-4dc0-4378-b05e-662e929ee3b9",
+          "artifactId": "artifact_cce71af800c3b5fda8071659cdd0e83270ad06f6e49e06d32158643e7a82bc57",
+          "originalPreserved": true,
+          "reviewRequired": true,
+          "verifiedCorrect": false
+        }
+      },
+      {
+        "id": "task_8b3a4113-0a21-40b8-a14d-5f2040255afb",
+        "kind": "question.local_explain",
+        "state": "succeeded",
+        "attempts": 1,
+        "generation": 1,
+        "result": {
+          "recordId": "import_record_question_import_job_678f22f2-c25d-4067-9503-f4798b815ad6_import_file_0b1f8a4e-c331-449e-808b-7b9bb01a6d88_1_5",
+          "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+          "source": "local-generated-ai",
+          "reviewRequired": true,
+          "verifiedCorrect": false
+        }
+      }
+    ]
+  },
+  "restartIdentical": true,
+  "recovery": {
+    "at": "2026-10-19T14:29:38.692Z",
+    "jobId": "question_import_job_741c3a25-c5a6-4eed-b481-8ba6f2f3f641",
+    "taskId": "task_289fac9a-8f96-4675-b298-80f36add2eec",
+    "state": "running",
+    "attempt": 1,
+    "leaseUntil": 1792420208687,
+    "simulation": "process exits immediately after committed claim; actual document processor has not started",
+    "exitCode": 17,
+    "requestedExitCode": 17,
+    "observedExitCode": 1,
+    "harnessNote": "Windows Node reported a UV_HANDLE_CLOSING assertion during forced exit. The committed claim remained durable; later harness closes DB before normal nonzero exit.",
+    "task": {
+      "id": "task_289fac9a-8f96-4675-b298-80f36add2eec",
+      "kind": "question.pdf.import",
+      "state": "succeeded",
+      "attempts": 2,
+      "maxAttempts": 3,
+      "generation": 1,
+      "version": 4,
+      "createdAt": "2026-10-19T14:29:38.519Z",
+      "updatedAt": "2026-10-19T14:30:10.202Z",
+      "availableAt": 1792420178597,
+      "progress": {
+        "stage": "completed"
+      },
+      "result": {
+        "jobId": "question_import_job_741c3a25-c5a6-4eed-b481-8ba6f2f3f641",
+        "pages": 2,
+        "fileCount": 1
+      },
+      "errorCode": null
+    },
+    "history": [
+      {
+        "action": "requested",
+        "actorId": "user_b48295b7-0672-4d0b-8931-35a87b14f2e7",
+        "at": "2026-10-19T14:29:38.598Z",
+        "detail": {
+          "kind": "question.pdf.import"
+        }
+      },
+      {
+        "action": "claimed",
+        "actorId": "worker",
+        "at": "2026-10-19T14:29:38.688Z",
+        "detail": {
+          "attempt": 1,
+          "generation": 1
+        }
+      },
+      {
+        "action": "claimed",
+        "actorId": "worker",
+        "at": "2026-10-19T14:30:09.009Z",
+        "detail": {
+          "attempt": 2,
+          "generation": 1
+        }
+      },
+      {
+        "action": "succeeded",
+        "actorId": "worker",
+        "at": "2026-10-19T14:30:10.202Z",
+        "detail": {
+          "jobId": "question_import_job_741c3a25-c5a6-4eed-b481-8ba6f2f3f641",
+          "pages": 2,
+          "fileCount": 1
+        }
+      }
+    ],
+    "candidateCount": 10,
+    "checkpoints": [
+      {
+        "page": 1,
+        "existedBeforeRecovery": true,
+        "modifiedAt": "2026-10-19T14:17:07.789Z"
+      },
+      {
+        "page": 2,
+        "existedBeforeRecovery": true,
+        "modifiedAt": "2026-10-19T14:17:13.332Z"
+      }
+    ]
+  },
+  "modelEvaluations": [
+    {
+      "taskId": "task_ae5ab03e-dba8-431d-a223-5f71f94ffefa",
+      "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+      "promptVersion": "legacy-explain",
+      "output": "这个题目是关于数字的组合问题。答案是错误的。\n\n解析：\n- \"元\"在中国古代货币系统中代表十进制中的“万”单位；\n- \"角\"在古代货币系统中代表十进制中的“千”单位；\n- 因此，“元角”实际上是指“十万一千”，而不是简单的相加。\n\n所以，正确的表达应该是：“一元和一角合起来才是‘一万零一百’。”",
+      "humanEvaluation": "Contains unsupported or incorrect content. Rejected as teaching or scoring evidence; no automated adoption.",
+      "verifiedCorrect": false
+    },
+    {
+      "taskId": "task_8b3a4113-0a21-40b8-a14d-5f2040255afb",
+      "model": "Qwen2.5-1.5B-Instruct / CPU FP32",
+      "promptVersion": "import-review-v1",
+      "output": "- 判断题第2小题中，“张元和张角”应改为“张角和张元”。",
+      "humanEvaluation": "Contains unsupported or incorrect content. Rejected as teaching or scoring evidence; no automated adoption.",
+      "verifiedCorrect": false
+    }
+  ],
+  "validation": {
+    "tests": 76,
+    "testFiles": 15,
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "webProductionBuild": "passed"
+  },
+  "limits": [
+    "Browser file picker was not automated; bytes used the real chunk upload API.",
+    "Model execution is verified; subject accuracy is not verified.",
+    "No PostgreSQL runtime acceptance in this batch."
+  ]
+}

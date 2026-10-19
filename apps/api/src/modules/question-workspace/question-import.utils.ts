@@ -24,8 +24,10 @@ export type QuestionImportQualityAssessment = {
 };
 
 const pageMarkerPattern = /^-- \d+ of \d+ --$/;
-const questionMarkerPattern = /^(?:（\d+）|\(\d+\)|\d+[\.、]|[一二三四五六七八九十]+[\.、])/;
-const pureQuestionIndexPattern = /^(?:（\d+）|\(\d+\)|\d+[\.、]|[一二三四五六七八九十]+[\.、])$/;
+const questionMarkerPattern = /^(?:（\d+）|\(\d+\)|\d+[\.．、]|[一二三四五六七八九十]+[\.．、])/;
+const pureQuestionIndexPattern = /^(?:（\d+）|\(\d+\)|\d+[\.．、]|[一二三四五六七八九十]+[\.．、])$/;
+const sectionHeadingPattern = /^(?:[一二三四五六七八九十]+[\.．、]\s*)?(?:单选题|多选题|选择题|单项选择题|多项选择题|判断题|填空题|计算题|解答题|应用题|阅读理解|完形填空|书面表达|口语交际)(?:\s|[（(，,：:]|$)/;
+function isQuestionMarker(line: string) { return questionMarkerPattern.test(line) && !sectionHeadingPattern.test(line); }
 const boilerplatePattern =
   /(ISBN|版权所有|未经许可|违者必究|出版社|出版|编著|编委会|责任编辑|美术编辑|封面设计|设计工作室|印刷|新华书店|版次|印次|开本|定价|邮编|网址|电话|电子邮件|反馈平台|后记|课程教材研究所|中央美术学院|主编|副主编|主要编写人员)/i;
 const smallNumberPattern = '[0-9一二三四五六七八九十百两]{1,3}';
@@ -110,7 +112,7 @@ export function analyzeTextbookPage(pageText: string, subject: Subject = 'math')
     detectionReasons.push(config.featureReason);
   }
 
-  const questionMarkerCount = cleanedLines.filter((line) => questionMarkerPattern.test(line)).length;
+  const questionMarkerCount = cleanedLines.filter((line) => isQuestionMarker(line)).length;
   if (questionMarkerCount >= 2) {
     detectionReasons.push('检测到多题编号或题序');
   }
@@ -128,7 +130,7 @@ export function analyzeTextbookPage(pageText: string, subject: Subject = 'math')
     rejectionReasons.push('练习题识别信号不足');
   }
 
-  const firstMarkerIndex = cleanedLines.findIndex((line) => questionMarkerPattern.test(line));
+  const firstMarkerIndex = cleanedLines.findIndex((line) => isQuestionMarker(line));
   const introLines =
     firstMarkerIndex > 0
       ? cleanedLines
@@ -164,7 +166,7 @@ export function splitTextbookPageCandidates(pageText: string, subject: Subject =
   }
 
   const markerIndexes = detection.cleanedLines
-    .map((line, index) => (questionMarkerPattern.test(line) ? index : -1))
+    .map((line, index) => (isQuestionMarker(line) ? index : -1))
     .filter((index) => index >= 0);
 
   if (markerIndexes.length === 0) {
@@ -177,13 +179,14 @@ export function splitTextbookPageCandidates(pageText: string, subject: Subject =
     ];
   }
 
-  const segments: string[][] = [];
+  const segments: Array<{ lines: string[]; sectionLabel: string | null }> = [];
   let currentSegment: string[] = [];
-  for (const line of detection.cleanedLines.slice(markerIndexes[0])) {
-    if (questionMarkerPattern.test(line)) {
-      if (currentSegment.length > 0) {
-        segments.push(currentSegment);
-      }
+  let currentSection = detection.sectionLabel;
+  const flush = () => { if (currentSegment.length) segments.push({ lines: currentSegment, sectionLabel: currentSection }); currentSegment = []; };
+  for (const line of detection.cleanedLines) {
+    if (sectionHeadingPattern.test(line)) { flush(); currentSection = line; continue; }
+    if (isQuestionMarker(line)) {
+      flush();
       currentSegment = [line];
       continue;
     }
@@ -193,11 +196,9 @@ export function splitTextbookPageCandidates(pageText: string, subject: Subject =
     }
   }
 
-  if (currentSegment.length > 0) {
-    segments.push(currentSegment);
-  }
+  flush();
 
-  const validSegments = segments.filter((segment) => segment.join('').length >= 4);
+  const validSegments = segments.filter((segment) => segment.lines.join('').length >= 4);
   if (validSegments.length === 0) {
     return [
       buildFallbackCandidate({
@@ -209,14 +210,16 @@ export function splitTextbookPageCandidates(pageText: string, subject: Subject =
   }
 
   return validSegments.map((segment, index) => {
-    const excerptLines = dedupeConsecutiveLines([...detection.introLines, ...segment]).slice(0, 12);
+    const context = [...detection.introLines, ...(segment.sectionLabel ? [segment.sectionLabel] : []), ...segment.lines];
+    const excerptLines = dedupeConsecutiveLines(context).slice(0, 120);
+    const truncated = context.length > 120 || excerptLines.join('\n').length > 16000;
     return {
       candidateIndexOnPage: index + 1,
       splitMode: 'question',
-      sectionLabel: detection.sectionLabel,
+      sectionLabel: segment.sectionLabel,
       candidateStem: buildCandidateStem(excerptLines),
-      excerpt: excerptLines.join('\n').slice(0, 1200),
-      detectionReason: [...detection.detectionReasons, '按题号切分候选'].join('；'),
+      excerpt: excerptLines.join('\n').slice(0, 16000),
+      detectionReason: [...detection.detectionReasons, '按题号切分候选', ...(truncated ? ['候选内容过长已截断，须核对原页'] : [])].join('；'),
     };
   });
 }
@@ -243,7 +246,7 @@ export function assessImportCandidateQuality(candidate: {
     qualityFlags.push('stem_too_short');
   }
 
-  if (/^(?:（\d+）|\(\d+\)|\d+[\.、]|[一二三四五六七八九十]+[\.、])/.test(trimmedStem) && trimmedStem.length < 12) {
+  if (/^(?:（\d+）|\(\d+\)|\d+[\.．、]|[一二三四五六七八九十]+[\.．、])/.test(trimmedStem) && trimmedStem.length < 12) {
     qualityFlags.push('stem_maybe_incomplete');
   }
 
@@ -258,6 +261,7 @@ export function assessImportCandidateQuality(candidate: {
   if (/按整页候选回退|题号切分失败/.test(candidate.detectionReason)) {
     qualityFlags.push('split_fallback');
   }
+  if (/已截断/.test(candidate.detectionReason)) qualityFlags.push('candidate_context_truncated');
 
   const qualityLevel = qualityFlags.some((flag) => ['page_fallback', 'stem_too_short', 'split_fallback'].includes(flag))
     ? 'low'
@@ -335,13 +339,12 @@ function normalizeImportLines(pageText: string) {
     .map((line) => line.replace(/\s+/g, ' ').trim())
     .filter((line) => line.length > 0)
     .filter((line) => !pageMarkerPattern.test(line))
-    .filter((line, index) => !(index === 0 && /^\d+$/.test(line)))
-    .filter((line) => !/^[\d一二三四五六七八九十]{1,2}$/.test(line));
+;
 }
 
 function splitInlineQuestionMarkers(line: string) {
   return line
-    .replace(/\s+(?=(?:（\d+）|\(\d+\)|\d+[\.、]|[一二三四五六七八九十]+[\.、]))/g, '\n')
+    .replace(/\s+(?=(?:（\d+）|\(\d+\)|\d+[\.．、]|[一二三四五六七八九十]+[\.．、]))/g, '\n')
     .split('\n');
 }
 
@@ -361,7 +364,7 @@ function containsArithmeticExpression(line: string) {
 }
 
 function buildCandidateStem(lines: string[]) {
-  const markerIndex = lines.findIndex((line) => questionMarkerPattern.test(line));
+  const markerIndex = lines.findIndex((line) => isQuestionMarker(line));
   if (markerIndex >= 0) {
     const markerLine = lines[markerIndex];
     if (pureQuestionIndexPattern.test(markerLine)) {

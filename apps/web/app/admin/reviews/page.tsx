@@ -64,7 +64,7 @@ export default function ReviewWorkbench() {
   }
   const computed = detail?.rubric && ratings.every((r) => r.score !== '') ? Math.round(ratings.reduce((n, r, i) => n + Number(r.score) * detail.rubric![i].weight, 0) * 100) : null;
   return <main className="learning-studio"><StudyNav /><div className="admin-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum">课程与覆盖</Link><Link href="/admin/reviews" aria-current="page">作答复核与反馈</Link><Link href="/admin/content">内容管理</Link><Link href="/library">题卷资料</Link></nav>
+    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum">课程与覆盖</Link><Link href="/admin/reviews" aria-current="page">作答复核与反馈</Link><Link href="/admin/imports">资料导入</Link><Link href="/admin/content">内容管理</Link><Link href="/library">题卷资料</Link></nav>
     <span className="studio-eyebrow">REVIEW DESK / 每一次评价，都有依据</span><h1>看见表达，再作判断。</h1><p>逐项核对作答与冻结量规。评分、异议处理和新题验证分别记录；训练复核不直接增加能力证据。</p>
     <div className="admin-toolbar"><div className="studio-subjects review-tabs">{([['pending', '待复核'], ['reviewed', '已复核'], ['all', '全部作答'], ['feedback', '反馈记录']] as const).map(([key, name]) => <button key={key} disabled={busy} aria-pressed={tab === key} onClick={() => { setTab(key); setPage(1); }}>{name}</button>)}</div>
       {tab !== 'feedback' && <label>学科<select value={subject} disabled={busy} onChange={(e) => { setSubject(e.target.value); setPage(1); }}><option value="">全部学科</option>{Object.entries(subjectNames).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>}

@@ -3,9 +3,10 @@ import { AiModule } from '../ai/ai.module';
 import { QuestionWorkspaceController } from './question-workspace.controller';
 import { QuestionWorkspaceService } from './question-workspace.service';
 import { QuestionImportService } from './question-import.service';
+import { ProcessingFilesModule } from '../processing/processing-files.module';
 
 @Module({
-  imports: [AiModule],
+  imports: [AiModule, ProcessingFilesModule],
   controllers: [QuestionWorkspaceController],
   providers: [QuestionWorkspaceService, QuestionImportService],
   exports: [QuestionWorkspaceService, QuestionImportService],
