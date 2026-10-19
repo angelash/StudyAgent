@@ -45,7 +45,7 @@ export class LearningService {
         const session = this.store.practiceSessions.find((item) => item.planId === plan?.id && item.actionId === action.id && item.day === day);
         return { ...action, atomName: definitions?.find(atom => atom.id === action.atomId)?.name ?? action.atomId,
           status: session?.status ?? 'pending', sessionId: session?.id ?? null };
-      }), reviews, incompleteAssessments: this.diagnostics.listSessions(user, studentId, subject).filter((item) => item.status === 'in_progress'),
+      }), reviews, incompleteAssessments: this.diagnostics.listSessions(user, studentId, subject).filter((item) => ['in_progress', 'paused'].includes(item.status)),
       notice: '训练可以看提示、订正与重试。训练完成不直接证明掌握，之后用独立新题和间隔复测验证。' };
   }
   start(user: InMemoryUserAccount, planId: string, actionId: string) {

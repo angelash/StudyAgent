@@ -245,6 +245,7 @@ export class AiService {
     if (session.contextRefType === 'diagnostic') {
       const assessment = this.store.diagnosticSessions.find(s => s.id === session.contextRefId && matches(s.studentId, s.subject));
       if (!assessment) throw new NotFoundException('当前学习上下文不存在');
+      if (assessment.status === 'paused') throw new BadRequestException('评测已经暂停，请恢复评测后再获取当前题目的提示');
       if (!session.contextItemId && assessment.status === 'completed') return null;
       const item = assessment.itemSnapshots.find(i => i.id === session.contextItemId);
       if (!item) throw new BadRequestException('请指定这次评测中正在查看的题目');

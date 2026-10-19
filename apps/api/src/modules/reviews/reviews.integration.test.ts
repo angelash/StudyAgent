@@ -161,6 +161,10 @@ describe('guardian-scoped rubric review and evidence feedback', () => {
     const practice = await call('post', '/learning/plans/plan/actions/action/start', {}), q = practice.questions[0].id;
     await call('post', `/learning/practice/${practice.id}/questions/${encodeURIComponent(q)}/hint`, {});
     const feedback = await call('post', `/learning/practice/${practice.id}/responses`, { questionId: q, requestKey: 'practice-answer', answer: '自己的解释', elapsedMs: 2000 });
+    store.knowledgeAtoms.find((a: any) => a.id === 'explain').name = '后来改写的展示名称';
+    const queue = await call('get', '/admin/reviews?state=all', undefined, admin);
+    expect(queue.rows.every((row: any) => row.atomName === '用文本证据说明')).toBe(true);
+    expect((await call('get', reviewPath('practice', feedback.attempt.id), undefined, admin)).atomName).toBe('用文本证据说明');
     const before = await call('get', `/diagnostics/students/${studentId}/profile?subject=chinese`);
     const revision = await call('post', reviewPath('practice', feedback.attempt.id), review('practice-review'), admin);
     expect(revision.score).toBe(0.7);

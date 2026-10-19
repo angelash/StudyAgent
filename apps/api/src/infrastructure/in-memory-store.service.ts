@@ -25,7 +25,7 @@ import {
   SubjectEnrollment,
   TextbookVolume,
   UserRole,
-  KnowledgeAtom, LearningScope, MeasurementItem, DiagnosticSession, DiagnosticResponse,
+  KnowledgeAtom, LearningScope, MeasurementItem, DiagnosticSession, DiagnosticResponse, DiagnosticBlueprintReservation,
   DiagnosticHypothesis, DiagnosticGuidancePlan, ReviewTask, ScoringRevision, DiagnosticReport,
   PracticeSession, PracticeAttempt, PracticeHint,
   TextbookAtomMapping, CurriculumRevision,
@@ -381,6 +381,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   textbookAtomMappings: TextbookAtomMapping[] = [];
   curriculumRevisions: CurriculumRevision[] = [];
   diagnosticSessions: DiagnosticSession[] = [];
+  diagnosticBlueprints: DiagnosticBlueprintReservation[] = [];
   diagnosticResponses: DiagnosticResponse[] = [];
   diagnosticHypotheses: DiagnosticHypothesis[] = [];
   diagnosticPlans: DiagnosticGuidancePlan[] = [];
@@ -444,6 +445,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.textbookAtomMappings = [];
     this.curriculumRevisions = [];
     this.diagnosticSessions = [];
+    this.diagnosticBlueprints = [];
     this.diagnosticResponses = [];
     this.diagnosticHypotheses = [];
     this.diagnosticPlans = [];

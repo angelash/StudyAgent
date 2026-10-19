@@ -43,7 +43,7 @@ export class StudentMediaService implements OnModuleInit {
     if (user.role === 'teacher') {
       this.students.assertCanReviewStudent(user, media.studentId);
       const { session } = this.target(user, media);
-      if (!media.references.length || media.kind === 'diagnostic' && session.status !== 'completed') throw new ForbiddenException('作答结束后才能复核附件');
+      if (!media.references.length || media.kind === 'diagnostic' && !['completed', 'aborted'].includes(session.status)) throw new ForbiddenException('作答结束后才能复核附件');
     } else this.students.assertCanAccessStudent(user, media.studentId);
   }
   private view(media: StudentMedia): StudentMediaView {
@@ -233,7 +233,7 @@ export class StudentMediaService implements OnModuleInit {
       const age = now - Date.parse(media.createdAt);
       if (media.status === 'uploading') return age > 86400000;
       const session = media.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: media.sessionId }) : this.store.find('practiceSessions', { id: media.sessionId });
-      return session?.status === 'in_progress' ? age > 7 * 86400000 && !this.usedByDraft(media) : age > 86400000;
+      return session && ['in_progress', 'paused'].includes(session.status) ? age > 7 * 86400000 && !this.usedByDraft(media) : age > 86400000;
     }).slice(0, 100);
     for (const media of expired) { media.status = 'expired'; media.chunks = []; }
     if (expired.length) await this.schedulePurge(expired.map(media => media.id), 'system:media-expiry', `expire:${randomUUID()}`);

@@ -70,6 +70,14 @@ export class DiagnosticsController {
   }
   @Post('diagnostics/sessions')
   start(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.diagnostics.start(req.user, body); }
+  @Post('diagnostics/blueprints')
+  previewBlueprint(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.diagnostics.previewBlueprint(req.user, body); }
+  @Get('diagnostics/blueprints/:blueprintId')
+  blueprint(@Req() req: AuthenticatedRequest, @Param('blueprintId') id: string) { return this.diagnostics.getBlueprint(req.user, id); }
+  @Post('diagnostics/blueprints/:blueprintId/start')
+  startBlueprint(@Req() req: AuthenticatedRequest, @Param('blueprintId') id: string) { return this.diagnostics.startBlueprint(req.user, id); }
+  @Post('diagnostics/sessions/:sessionId/state')
+  changeState(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown) { return this.diagnostics.changeState(req.user, id, body); }
   @Get('diagnostics/sessions')
   list(@Req() req: AuthenticatedRequest, @Query('studentId') id: string, @Query('subject') subject?: string) {
     return this.diagnostics.listSessions(req.user, id, parseSubject(subject));

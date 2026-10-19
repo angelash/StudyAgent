@@ -60,20 +60,42 @@ export const measurementItemSchema = z.object({
 export type MeasurementItem = z.infer<typeof measurementItemSchema>;
 
 export const diagnosticStartSchema = z.object({
-  studentId: id, subject, intent: z.enum(['baseline', 'unit', 'verification', 'retest']).default('baseline'),
-  targetAtomIds: z.array(id).max(100).optional(), maxItems: z.number().int().min(2).max(30).default(12),
+  studentId: id, subject, intent: z.enum(['baseline', 'unit', 'phase', 'micro', 'verification', 'retest']).default('baseline'),
+  targetAtomIds: z.array(id).max(100).optional(), maxItems: z.number().int().min(2).max(30).optional(),
   includePrerequisites: z.boolean().default(false), hypothesisId: id.optional(), reviewTaskId: id.optional(), planId: id.optional(),
 }).strict();
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
+export type AssessmentBlueprint = {
+  version: string; title: string; intent: DiagnosticStart['intent']; focus: string;
+  itemLimit: number; minutesLimit: number; expectedSeconds: number; groupSize: number;
+  stopReason: 'item_budget' | 'time_budget' | 'available_families'; stopRule: string;
+  targetAtomIds: string[]; prerequisiteAtomIds: string[];
+  groups: Array<{ id: string; title: string; itemIds: string[] }>;
+  dimensions: Array<{ dimension: MeasurementDimension; selected: number; available: number }>;
+  warnings: string[];
+};
+export type DiagnosticBlueprintReservation = {
+  id: string; studentId: string; actorId: string; command: DiagnosticStart; seed: string; fingerprint: string;
+  createdAt: string; expiresAt: string; sessionId: string | null; requestHash: string;
+  blueprint: AssessmentBlueprint; scopeSnapshot: LearningScope; coverage: DiagnosticSession['coverage'];
+  atomNames: Array<{ id: string; name: string }>; itemCount: number;
+};
+export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'actorId' | 'command' | 'seed' | 'fingerprint' | 'requestHash'> & {
+  canStart: boolean; expired: boolean;
+};
+
 export type DiagnosticSession = {
   id: string; studentId: string; subject: z.infer<typeof subject>; intent: DiagnosticStart['intent'];
-  status: 'in_progress' | 'completed' | 'aborted'; scopeSnapshot: LearningScope;
+  status: 'in_progress' | 'paused' | 'completed' | 'aborted'; scopeSnapshot: LearningScope;
+  blueprint?: AssessmentBlueprint; revision?: number; endedAt?: string;
+  stateHistory?: Array<{ action: 'pause' | 'resume' | 'abort'; at: string; actorId: string; reason: string;
+    requestKey: string; requestHash: string; revision: number }>;
   atomSnapshots?: KnowledgeAtom[];
   itemIds: string[]; itemSnapshots: MeasurementItem[];
   questionSnapshots: Array<{ id: string; stem: string; answer: unknown; analysis: string;
     document: unknown; answerSchema: unknown; renderPayload: unknown; questionType: string }>;
-  coverage: Array<{ atomId: string; selected: number; required: number; role: 'target' | 'prerequisite' }>;
+  coverage: Array<{ atomId: string; selected: number; required: number; role: 'target' | 'prerequisite'; available?: number; missingReason?: string }>;
   selectionReasons: Record<string, string>; seed: string; algorithmVersion: string;
   startedAt: string; completedAt: string | null; hypothesisId: string | null; reviewTaskId: string | null;
   exposedQuestionIds?: string[];

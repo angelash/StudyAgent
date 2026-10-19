@@ -179,6 +179,129 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     return { baseline, plan, activity };
   }
 
+  it('previews six bounded purposes without exposing answers, creating observations or consuming fresh questions', async () => {
+    for (const intent of ['baseline', 'unit', 'phase', 'micro', 'verification', 'retest']) {
+      const preview = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', intent, maxItems: 30, requestKey: `blueprint-${intent}` });
+      expect(preview.itemCount).toBeGreaterThan(0); expect(preview.blueprint.intent).toBe(intent);
+      expect(preview.blueprint.expectedSeconds).toBeLessThanOrEqual(preview.blueprint.minutesLimit * 60);
+      expect(preview.blueprint.groups.flatMap((group: any) => group.itemIds)).toHaveLength(preview.itemCount);
+      expect(preview.blueprint.dimensions.reduce((sum: number, row: any) => sum + row.selected, 0)).toBe(preview.itemCount);
+      expect(JSON.stringify(preview)).not.toMatch(/answerSchema|questionSnapshots|correct|requestHash|fingerprint|seed/);
+      if (intent === 'micro') {
+        expect(preview.blueprint.minutesLimit).toBe(3); expect(preview.blueprint.itemLimit).toBe(6);
+        expect(preview.blueprint.targetAtomIds).toEqual(['target']);
+      } else expect(preview.coverage.find((point: any) => point.atomId === 'unmapped')).toMatchObject({ selected: 0, available: 0 });
+    }
+    expect(store.diagnosticSessions).toHaveLength(0); expect(store.diagnosticResponses).toHaveLength(0);
+    expect(store.diagnosticHypotheses).toHaveLength(0);
+    await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'micro', targetAtomIds: ['target', 'base', 'unmapped', 'future'], requestKey: 'micro-too-wide' }, 400);
+  });
+
+  it('starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries', async () => {
+    const command = { studentId, subject: 'math', intent: 'unit', targetAtomIds: ['target'], maxItems: 4, requestKey: 'preview-start-once' };
+    const preview = await call('post', '/diagnostics/blueprints', command);
+    expect((await call('post', '/diagnostics/blueprints', command)).id).toBe(preview.id);
+    await call('post', '/diagnostics/blueprints', { ...command, intent: 'phase' }, 409);
+    await call('get', `/diagnostics/blueprints/${preview.id}`, undefined, 404, admin);
+    await call('post', `/diagnostics/blueprints/${preview.id}/start`, {}, 404, admin);
+    // Simulate a database JSON round trip without changing any semantic value.
+    const reordered = (value: any): any => Array.isArray(value) ? value.map(reordered) : value && typeof value === 'object'
+      ? Object.fromEntries(Object.entries(value).reverse().map(([key, child]) => [key, reordered(child)])) : value;
+    for (const collection of ['knowledgeAtoms', 'learningScopes', 'measurementItems', 'questionDocuments', 'questionAnswerSchemas', 'questionSources'])
+      store[collection] = store[collection].map(reordered);
+    const session = await call('post', `/diagnostics/blueprints/${preview.id}/start`, {});
+    expect(session.items.map((item: any) => item.id)).toEqual(preview.blueprint.groups.flatMap((group: any) => group.itemIds));
+    expect(session.blueprint).toEqual(preview.blueprint);
+    expect((await call('post', `/diagnostics/blueprints/${preview.id}/start`, {})).id).toBe(session.id);
+    expect((await call('get', `/diagnostics/blueprints/${preview.id}`)).sessionId).toBe(session.id);
+    expect(store.diagnosticSessions).toHaveLength(1);
+    const { studentRecords } = require('../../../dist/apps/api/src/modules/privacy/privacy-records.js');
+    expect(studentRecords(store, studentId).diagnosticBlueprints.map((row: any) => row.id)).toContain(preview.id);
+    const access = await call('post', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: 'blueprint-learning-access', reason: '让孩子可以预览和暂停自己的知识点评测。' });
+    const code = await call('post', `/students/${studentId}/learning-access/codes`, { expectedVersion: access.version, requestKey: 'blueprint-learning-code' });
+    const learner = (await request(app.getHttpServer()).post('/api/auth/learning-code').send({ code: code.code }).expect(201)).body.data;
+    const own = await call('post', '/diagnostics/blueprints', { ...command, requestKey: 'learner-blueprint' }, 201, learner);
+    const childSession = await call('post', `/diagnostics/blueprints/${own.id}/start`, {}, 201, learner);
+    const paused = await call('post', `/diagnostics/sessions/${childSession.id}/state`, { action: 'pause', expectedRevision: 1, requestKey: 'learner-pause', reason: '先休息一会儿，之后继续独立完成。' }, 201, learner);
+    expect(paused.status).toBe('paused');
+  });
+
+  it('invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage', async () => {
+    const preview = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', targetAtomIds: ['target'], maxItems: 2, requestKey: 'stale-definition-preview' });
+    const atom = store.knowledgeAtoms.find((atom: any) => atom.id === 'target');
+    await call('post', '/admin/knowledge-atoms', { ...atom, objective: '采用新的知识定义，预览不能沿用旧题组' }, 201, admin);
+    await call('post', `/diagnostics/blueprints/${preview.id}/start`, {}, 409);
+    const empty = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', targetAtomIds: ['unmapped'], requestKey: 'empty-coverage-preview' });
+    expect(empty.canStart).toBe(false); expect(empty.itemCount).toBe(0); expect(empty.coverage[0].missingReason).toContain('已审核');
+    await call('post', `/diagnostics/blueprints/${empty.id}/start`, {}, 400);
+    const basePreview = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', includePrerequisites: true, targetAtomIds: ['base'], requestKey: 'changed-scope-preview' });
+    await call('put', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '通用基础', learnedAtomIds: ['target'], currentAtomId: 'target', minutesPerSession: 10 });
+    await call('post', `/diagnostics/blueprints/${basePreview.id}/start`, {}, 409);
+    const fresh = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', includePrerequisites: true, targetAtomIds: ['base'], intent: 'verification', requestKey: 'changed-exposure-preview' });
+    await start({ targetAtomIds: ['base'], includePrerequisites: true, maxItems: 30 });
+    await call('post', `/diagnostics/blueprints/${fresh.id}/start`, {}, 409);
+  });
+
+  it('expires unused blueprints without expiring a started assessment or losing its idempotent receipt', async () => {
+    const first = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', requestKey: 'expire-unused-preview' });
+    const second = await call('post', '/diagnostics/blueprints', { studentId, subject: 'math', requestKey: 'keep-started-preview' });
+    const session = await call('post', `/diagnostics/blueprints/${second.id}/start`, {});
+    vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(Date.now() + 31 * 60_000);
+    const expired = await call('get', `/diagnostics/blueprints/${first.id}`);
+    expect(expired.expired).toBe(true); expect(expired.canStart).toBe(false);
+    await call('post', `/diagnostics/blueprints/${first.id}/start`, {}, 409);
+    expect((await call('post', `/diagnostics/blueprints/${second.id}/start`, {})).id).toBe(session.id);
+  });
+
+  it('pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure', async () => {
+    const session = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 4 });
+    await submit(session, session.items[0], 0);
+    await call('patch', `/diagnostics/sessions/${session.id}/items/${session.items[1].id}/draft`, { answer: 6 });
+    const pause = { action: 'pause', expectedRevision: 1, requestKey: 'pause-assessment', reason: '先休息一会，保留已经写出的解题思路。' };
+    const paused = await call('post', `/diagnostics/sessions/${session.id}/state`, pause);
+    expect(paused.status).toBe('paused'); expect(paused.revision).toBe(2);
+    expect((await call('post', `/diagnostics/sessions/${session.id}/state`, pause)).revision).toBe(2);
+    await call('post', `/diagnostics/sessions/${session.id}/responses`, { itemId: session.items[1].id, answer: 6, elapsedMs: 1000 }, 400);
+    await call('post', `/diagnostics/sessions/${session.id}/items/${session.items[1].id}/hint`, {}, 400);
+    await call('post', `/diagnostics/sessions/${session.id}/complete`, {}, 400);
+    await call('post', '/ai/assistant/sessions', { userRole: 'student', studentId, subject: 'math', pageContext: 'assessment',
+      contextRefType: 'diagnostic', contextRefId: session.id, contextItemId: session.items[1].id }, 400);
+    const resumed = await call('post', `/diagnostics/sessions/${session.id}/state`, { action: 'resume', expectedRevision: 2,
+      requestKey: 'resume-assessment', reason: '休息结束，继续按原来的题组独立作答。' });
+    expect(resumed.status).toBe('in_progress'); expect(resumed.revision).toBe(3);
+    expect((await call('get', `/diagnostics/sessions/${session.id}/items/${session.items[1].id}`)).draft).toBe(6);
+    await call('post', `/diagnostics/sessions/${session.id}/state`, { ...pause, requestKey: 'stale-pause' }, 409);
+    const ended = await call('post', `/diagnostics/sessions/${session.id}/state`, { action: 'abort', expectedRevision: 3,
+      requestKey: 'abort-assessment', reason: '今天已经疲劳，保留已答内容，之后换新题继续。' });
+    expect(ended.status).toBe('aborted'); expect(ended.stateHistory).toHaveLength(3);
+    const report = await call('get', `/diagnostics/sessions/${session.id}/report`);
+    expect(report.status).toBe('aborted'); expect(report.scoredCount).toBe(1); expect(report.totalCount).toBe(4);
+    expect(report.rawScore).toBe(0); expect(report.evidence).toHaveLength(1);
+    await call('post', `/diagnostics/sessions/${session.id}/complete`, {}, 400);
+    await call('post', `/diagnostics/sessions/${session.id}/state`, { action: 'resume', expectedRevision: 4,
+      requestKey: 'cannot-reopen-aborted', reason: '已结束记录不能再次修改为进行中的评测。' }, 400);
+    await call('post', `/admin/diagnostic-responses/${encodeURIComponent(report.evidence[0].id)}/review`,
+      { score: 1, reason: '提前结束后仍应允许核对已提交的真实作答', requestKey: 'aborted-score-review', expectedVersion: 0 }, 201, admin);
+    expect((await call('get', `/diagnostics/sessions/${session.id}/report`)).rawScore).toBe(100);
+    expect((await call('get', `/diagnostics/sessions/${session.id}/report-history`)).map((report: any) => report.rawScore)).toEqual([100, 0]);
+  });
+
+  it('releases an aborted delayed task for a new probe without reusing exposed questions', async () => {
+    const { plan } = await activatePractice();
+    const reviews = await call('get', `/diagnostics/plans/${plan.id}/reviews`), review = reviews[0];
+    vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(Date.parse(review.dueAt) + 1000);
+    owner = await auth.login({ principal: 'diagnostic-parent@test', credential: 'diagnostic-secret-123' }, 'aborted-review-renew');
+    const first = await call('post', `/diagnostics/reviews/${review.id}/start`, {});
+    await call('post', `/diagnostics/sessions/${first.id}/state`, { action: 'abort', expectedRevision: 1,
+      requestKey: 'abort-delayed-review', reason: '本次环境不合适，保留记录后另用一组新题验证。' });
+    const pending = (await call('get', `/diagnostics/plans/${plan.id}/reviews`)).find((task: any) => task.id === review.id);
+    expect(pending.status).toBe('pending'); expect(pending.sessionId).toBeNull();
+    const next = await call('post', `/diagnostics/reviews/${review.id}/start`, {});
+    expect(next.id).not.toBe(first.id);
+    expect(next.items.every((item: any) => !first.items.some((old: any) => old.questionId === item.questionId))).toBe(true);
+  });
+
   it('freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes', async () => {
     const original = structuredClone(store.knowledgeAtoms.find((atom: any) => atom.id === 'target'));
     const session = await start({ targetAtomIds: ['target'], includePrerequisites: false, maxItems: 4 });

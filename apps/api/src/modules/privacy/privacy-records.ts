@@ -21,7 +21,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const result: Selection = {};
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
-    'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticResponses', 'diagnosticHypotheses',
+    'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia']) {
     add(result, store, name, row => row.studentId === studentId);
   }
@@ -56,6 +56,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'studentLearningCodes', row => row.createdBy === actorId);
   add(result, store, 'teacherAssignments', row => row.grantedBy === actorId || row.teacherUserId === actorId);
   add(result, store, 'libraryBookmarks', row => row.userId === actorId);
+  add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));

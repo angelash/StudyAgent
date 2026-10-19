@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-19T20:01:51.196Z",
+  "driver": "postgres",
+  "passed": true,
+  "scope": "Synthetic family, original authored tasks, real HTTP and three restarts; an explicitly altered QA due date tests queue release, not genuine delayed retention. No browser acceptance.",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "16ffc88ccf07183939868161c3b732bc7c2477f06e0d06b4019a26df6b9ff306",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "a9b9dd651ae3484bbfc9bbbadf171a32d7f032fece069fbcaeb0d2fb8314d6c7",
+    "apps/api/src/modules/privacy/privacy-records.ts": "e8889ad7d4ba9b8d86e6065a6d909cd0076feb2df93488d6d896bdda6033ccb6",
+    "apps/web/app/student/assessment/studio.tsx": "6ca79141060dd9589eb393e8b13cb4b03969ed85a819777ca7c56ee79143a899",
+    "apps/web/components/assessment-blueprint.tsx": "78d7b86b0b7c0a1483cde7d4a44dc9646bfba8eaad40b58c03ae4dbf35fa3e92"
+  },
+  "result": {
+    "concurrentStatuses": [
+      201,
+      201
+    ],
+    "oneSessionPerPreview": true,
+    "previewRestoresBeforeStart": true,
+    "exactGroupsPreserved": true,
+    "previewDoesNotExposeAnswersOrCreateLearningEvidence": true,
+    "actorIsolation": true,
+    "draftAndPausedStateSurviveRestart": true,
+    "lostPauseReceiptReplays": true,
+    "partialReportOnlyCountsAnsweredItems": true,
+    "partialReportRevisionHistory": [
+      100,
+      0
+    ],
+    "changedScopeAndExpiredPreviewBlocked": true,
+    "abortedRetestReleasedAndNewQuestionsSelected": true,
+    "historyAndReceiptsSurviveRestart": true,
+    "restarts": 3
+  }
+}

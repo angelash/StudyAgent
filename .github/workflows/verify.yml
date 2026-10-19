@@ -38,6 +38,8 @@ jobs:
         run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
       - name: Frozen measurement definitions and comparable evidence
         run: node scripts/qa/verify-measurement-definitions.cjs data/qa/measurement-definition-runtime.json
+      - name: Assessment preview, partial evidence and state recovery
+        run: node scripts/qa/verify-assessment-blueprints.cjs data/qa/assessment-blueprint-runtime.json
       - name: Asset audit tool regression
         run: python scripts/assets/test_audit_archive_sensitive.py
       - name: Independent recovery verifier regression

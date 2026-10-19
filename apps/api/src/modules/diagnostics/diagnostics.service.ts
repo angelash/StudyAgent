@@ -2,7 +2,8 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
-  KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject, answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
+  DiagnosticBlueprintReservation, DiagnosticBlueprintView, KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject,
+  answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -16,6 +17,7 @@ import { prepareScoringReview } from './scoring-review';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measurement-definition';
+import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
 
 @Injectable()
 export class DiagnosticsService {
@@ -24,6 +26,10 @@ export class DiagnosticsService {
     private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
 
   start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope) {
+    return this.activateSession(user, this.prepareSession(user, input, scopeOverride));
+  }
+
+  private prepareSession(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope, seed: string = randomUUID(), allowEmpty = false): DiagnosticSession {
     const command = validate(diagnosticStartSchema, input);
     this.students.assertCanAccessStudent(user, command.studentId);
     const review = command.reviewTaskId ? this.store.find('reviewTasks', { id: command.reviewTaskId, studentId: command.studentId, subject: command.subject }) : undefined;
@@ -31,7 +37,7 @@ export class DiagnosticsService {
     const planId = review?.planId ?? command.planId;
     const plan = planId ? this.store.find('diagnosticPlans', { id: planId, studentId: command.studentId, subject: command.subject }) : undefined;
     if (planId && !plan) throw new NotFoundException('指导计划不存在');
-    if (review?.sessionId) return this.sessionView(user, review.sessionId);
+    if (review?.sessionId) return this.requireSession(user, review.sessionId);
     if (plan) {
       if (!['verification', 'retest'].includes(command.intent)) throw new BadRequestException('指导计划只能关联验证或复测');
       if (plan.status !== 'active') throw new BadRequestException('请先启用指导计划');
@@ -48,7 +54,9 @@ export class DiagnosticsService {
     const learned = new Set(scope.learnedAtomIds);
     const prerequisites = new Set(this.curriculum.prerequisiteClosure(scope.learnedAtomIds));
     const allowed = new Set([...learned, ...(command.includePrerequisites ? prerequisites : [])]);
-    let targets = command.targetAtomIds ?? (review ? [review.atomId] : plan ? plan.actions.map(a => a.atomId) : scope.learnedAtomIds);
+    let targets = command.targetAtomIds ?? (review ? [review.atomId] : plan ? plan.actions.map(a => a.atomId) :
+      command.intent === 'micro' ? [scope.currentAtomId ?? scope.learnedAtomIds.at(-1)!] : scope.learnedAtomIds);
+    if (command.intent === 'micro' && targets.length > 3) throw new BadRequestException('微测最多选择3个知识目标；扩大范围时请选择单元或阶段评测');
     if (command.hypothesisId) {
       const hypothesis = this.store.find('diagnosticHypotheses', { id: command.hypothesisId, studentId: command.studentId, subject: command.subject });
       if (!hypothesis) throw new NotFoundException('待验证问题不存在');
@@ -65,7 +73,6 @@ export class DiagnosticsService {
     if (!targets.length || targets.some((id) => !allowed.has(id))) throw new BadRequestException('评测知识点超出已确认的学习进度');
     const targetSet = new Set(targets);
     if (command.includePrerequisites) for (const id of this.curriculum.prerequisiteClosure(targets)) targetSet.add(id);
-    const seed = randomUUID();
     // Rendering a practice item is already exposure, even if its answer was never submitted.
     // Training and abandoned assessments must not later be presented as independent new probes.
     const seen = new Set([
@@ -78,32 +85,14 @@ export class DiagnosticsService {
       return targetSet.has(item.atomId) && atom?.subject === scope.subject && atom.grade <= scope.grade &&
         (!['verification', 'retest'].includes(command.intent) || !seen.has(item.questionId));
     });
-    const rank = (item: MeasurementItem) => createHash('sha256').update(`${seed}:${item.id}`).digest('hex');
-    candidates.sort((a, b) => Number(seen.has(a.questionId)) - Number(seen.has(b.questionId)) ||
-      a.difficulty - b.difficulty || rank(a).localeCompare(rank(b)));
-    const selected: MeasurementItem[] = [], usedQuestions = new Set<string>();
-    const families = new Map<string, Set<string>>();
-    let seconds = 0;
     const coverage = [...targetSet].map((atomId) => ({ atomId, selected: 0, required: 2,
       role: (learned.has(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
-    // Round-robin point coverage precedes extra depth; every unmet target remains visible.
-    for (let round = 0; round < 4 && selected.length < command.maxItems; round++) {
-      for (const point of coverage) {
-        if (selected.length >= command.maxItems) break;
-        const item = candidates.find((candidate) => candidate.atomId === point.atomId && !usedQuestions.has(candidate.questionId) &&
-          !families.get(point.atomId)?.has(candidate.family) && seconds + candidate.expectedSeconds <= scope.minutesPerSession * 60);
-        if (!item) continue;
-        selected.push(structuredClone(item)); usedQuestions.add(item.questionId);
-        const pointFamilies = families.get(point.atomId) ?? new Set<string>();
-        pointFamilies.add(item.family); families.set(point.atomId, pointFamilies);
-        point.selected++; seconds += item.expectedSeconds;
-      }
-    }
-    if (!selected.length) throw new BadRequestException({ message: '当前范围缺少审核通过的量化题，请查看覆盖缺口或调整已学范围',
+    const { selected, blueprint } = selectBlueprintItems(command, candidates, coverage, seed, seen, scope.minutesPerSession, scope.grade);
+    if (!selected.length && !allowEmpty) throw new BadRequestException({ message: '当前范围缺少审核通过的量化题，请查看覆盖缺口或调整已学范围',
       missingAtomIds: targets, code: 'assessment_coverage_gap' });
     const session: DiagnosticSession = {
       id: this.store.nextId('diagnostic'), studentId: command.studentId, subject: command.subject, intent: command.intent,
-      status: 'in_progress', scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id), itemSnapshots: selected,
+      status: 'in_progress', revision: 1, blueprint, scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id), itemSnapshots: selected,
       atomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set([...scope.learnedAtomIds, ...targetSet])] })),
       questionSnapshots: selected.map((item) => {
         const question = this.store.find('questions', { id: item.questionId })!;
@@ -112,14 +101,19 @@ export class DiagnosticsService {
           document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
       }), coverage, selectionReasons: Object.fromEntries(selected.map((item) => [item.id,
         `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${item.family}${seen.has(item.questionId) ? ' · 曾作答，不增加独立样本' : ''}`])),
-      seed, algorithmVersion: 'scope-blueprint-v1', startedAt: new Date().toISOString(), completedAt: null,
+      seed, algorithmVersion: blueprint.version, startedAt: new Date().toISOString(), completedAt: null,
       exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
       ...(plan ? { planId: plan.id, planRevision: plan.revision ?? 1 } : {}),
     };
+    return session;
+  }
+
+  private activateSession(user: InMemoryUserAccount, session: DiagnosticSession) {
+    if (this.store.find('diagnosticSessions', { id: session.id })) return this.sessionView(user, session.id);
     if (session.reviewTaskId) {
       const task = this.store.find('reviewTasks', { id: session.reviewTaskId, studentId: session.studentId });
-      if (!task || task.status !== 'pending' || !targets.includes(task.atomId)) throw new BadRequestException('复测任务不可用');
+      if (!task || task.status !== 'pending' || !session.coverage.some(point => point.atomId === task.atomId)) throw new BadRequestException('复测任务不可用');
       task.status = 'in_progress'; task.sessionId = session.id;
     }
     this.store.append('diagnosticSessions', session);
@@ -127,8 +121,60 @@ export class DiagnosticsService {
       const hypothesis = this.store.find('diagnosticHypotheses', { id: session.hypothesisId })!;
       hypothesis.status = 'testing'; hypothesis.history.push({ at: session.startedAt, status: 'testing', reason: `开始验证评测 ${session.id}` });
     }
-    this.events.publish('diagnostic.started', { sessionId: session.id, studentId: session.studentId, scopeId: scope.id, itemCount: selected.length });
+    this.events.publish('diagnostic.started', { sessionId: session.id, studentId: session.studentId, scopeId: session.scopeSnapshot.id, itemCount: session.itemIds.length });
     return this.sessionView(user, session.id);
+  }
+
+  private blueprintFingerprint(session: DiagnosticSession) {
+    return blueprintContentHash({ scope: session.scopeSnapshot, atoms: session.atomSnapshots,
+      items: session.itemSnapshots, questions: session.questionSnapshots, coverage: session.coverage,
+      blueprint: session.blueprint, exposed: session.exposedQuestionIds, planRevision: session.planRevision, hypothesisId: session.hypothesisId });
+  }
+
+  previewBlueprint(user: InMemoryUserAccount, input: unknown): DiagnosticBlueprintView {
+    const { requestKey, ...command } = validate(diagnosticStartSchema.extend({ requestKey: z.string().min(8).max(180) }).strict(), input);
+    this.students.assertCanAccessStudent(user, command.studentId);
+    const id = `blueprint:${createHash('sha256').update(JSON.stringify([user.id, requestKey])).digest('hex')}`;
+    const requestHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
+    const existing = this.store.find('diagnosticBlueprints', { id });
+    if (existing) {
+      if (existing.requestHash !== requestHash) throw new ConflictException('请求键已用于另一份评测蓝图');
+      return this.blueprintView(user, existing);
+    }
+    const seed = randomUUID(), draft = this.prepareSession(user, command, undefined, seed, true);
+    if (this.store.find('diagnosticSessions', { id: draft.id })) throw new ConflictException('该复测已经开始，请继续原评测');
+    const createdAt = new Date().toISOString();
+    const reservation: DiagnosticBlueprintReservation = { id, studentId: draft.studentId, actorId: user.id, command, seed,
+      fingerprint: this.blueprintFingerprint(draft), createdAt, expiresAt: new Date(Date.now() + 30 * 60_000).toISOString(), sessionId: null, requestHash,
+      blueprint: draft.blueprint!, scopeSnapshot: draft.scopeSnapshot, coverage: draft.coverage,
+      atomNames: draft.atomSnapshots!.filter(atom => draft.coverage.some(point => point.atomId === atom.id)).map(atom => ({ id: atom.id, name: atom.name })), itemCount: draft.itemIds.length };
+    this.store.append('diagnosticBlueprints', reservation);
+    return this.blueprintView(user, reservation);
+  }
+
+  private requireBlueprint(user: InMemoryUserAccount, id: string) {
+    const blueprint = this.store.find('diagnosticBlueprints', { id, actorId: user.id });
+    if (!blueprint) throw new NotFoundException('评测蓝图不存在');
+    this.students.assertCanAccessStudent(user, blueprint.studentId); return blueprint;
+  }
+  private blueprintView(user: InMemoryUserAccount, reservation: DiagnosticBlueprintReservation): DiagnosticBlueprintView {
+    this.students.assertCanAccessStudent(user, reservation.studentId);
+    const { actorId: _actor, command: _command, seed: _seed, fingerprint: _fingerprint, requestHash: _requestHash, ...view } = reservation;
+    const expired = Date.parse(reservation.expiresAt) <= Date.now();
+    return { ...view, expired, canStart: !!reservation.sessionId || reservation.itemCount > 0 && !expired };
+  }
+  getBlueprint(user: InMemoryUserAccount, id: string) { return this.blueprintView(user, this.requireBlueprint(user, id)); }
+  startBlueprint(user: InMemoryUserAccount, id: string) {
+    const reservation = this.requireBlueprint(user, id);
+    if (reservation.sessionId) return this.sessionView(user, reservation.sessionId);
+    if (Date.parse(reservation.expiresAt) <= Date.now()) throw new ConflictException('这份蓝图已过期，请重新查看范围与题组');
+    if (!reservation.itemCount) throw new BadRequestException('当前范围缺少可用题组，请补充覆盖或调整范围后重新预览');
+    const draft = this.prepareSession(user, reservation.command, undefined, reservation.seed, true);
+    if (this.store.find('diagnosticSessions', { id: draft.id }) || this.blueprintFingerprint(draft) !== reservation.fingerprint) {
+      throw new ConflictException('学习范围、题目、定义或已有学习证据发生变化，请重新预览本次题组');
+    }
+    const result = this.activateSession(user, draft); reservation.sessionId = result.id;
+    return result;
   }
 
   requireSession(user: InMemoryUserAccount, id: string) {
@@ -168,11 +214,53 @@ export class DiagnosticsService {
     const responses = this.store.select('diagnosticResponses', { sessionId: id });
     return { id: session.id, studentId: session.studentId, subject: session.subject, intent: session.intent,
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
-      startedAt: session.startedAt, completedAt: session.completedAt, answeredCount: responses.length, totalCount: session.itemIds.length,
+      startedAt: session.startedAt, completedAt: session.completedAt, endedAt: session.endedAt ?? null,
+      revision: session.revision ?? 1, blueprint: session.blueprint,
+      stateHistory: session.stateHistory?.map(({ action, at, reason, revision }) => ({ action, at, reason, revision })) ?? [],
+      answeredCount: responses.length, totalCount: session.itemIds.length,
       planId: session.planId ?? null, planRevision: session.planRevision ?? null,
       items: session.itemSnapshots.map((item) => ({ id: item.id, questionId: item.questionId, atomId: item.atomId, dimension: item.dimension,
         atomName: this.definitionsForSession(session).find(atom => atom.id === item.atomId)?.name ?? item.atomId,
         reason: session.selectionReasons[item.id], answered: responses.some((response) => response.itemId === item.id) })) };
+  }
+
+  changeState(user: InMemoryUserAccount, sessionId: string, input: unknown) {
+    const session = this.requireSession(user, sessionId);
+    const command = validate(z.object({ action: z.enum(['pause', 'resume', 'abort']), expectedRevision: z.number().int().positive(),
+      requestKey: z.string().min(8).max(180), reason: z.string().trim().min(5).max(1000) }).strict(), input);
+    const requestHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
+    const previous = session.stateHistory?.find(event => event.actorId === user.id && event.requestKey === command.requestKey);
+    if (previous) {
+      if (previous.requestHash !== requestHash) throw new ConflictException('请求键已用于另一项评测状态操作');
+      return this.sessionView(user, sessionId);
+    }
+    if ((session.revision ?? 1) !== command.expectedRevision) throw new ConflictException('评测状态已经变化，请刷新后再操作');
+    if (['completed', 'aborted'].includes(session.status)) throw new BadRequestException('已结束评测保留为历史，不能重新开启');
+    if (command.action === 'pause' && session.status !== 'in_progress') throw new BadRequestException('只有进行中的评测可以暂停');
+    if (command.action === 'resume' && session.status !== 'paused') throw new BadRequestException('只有暂停的评测可以继续');
+    const at = new Date().toISOString();
+    session.status = command.action === 'abort' ? 'aborted' : command.action === 'pause' ? 'paused' : 'in_progress';
+    session.revision = (session.revision ?? 1) + 1;
+    (session.stateHistory ??= []).push({ ...command, actorId: user.id, at, requestHash, revision: session.revision });
+    if (session.status === 'aborted') {
+      session.endedAt = at;
+      if (session.reviewTaskId) {
+        const task = this.store.find('reviewTasks', { id: session.reviewTaskId, sessionId });
+        if (task) { task.status = 'pending'; task.sessionId = null; }
+      }
+      if (session.hypothesisId && !this.store.select('diagnosticSessions', { studentId: session.studentId, hypothesisId: session.hypothesisId, status: ['in_progress', 'paused'] }).some(item => item.id !== sessionId)) {
+        const hypothesis = this.store.find('diagnosticHypotheses', { id: session.hypothesisId });
+        if (hypothesis?.status === 'testing') {
+          hypothesis.status = 'proposed'; hypothesis.updatedAt = at;
+          hypothesis.history.push({ at, status: 'proposed', reason: '本轮验证提前结束，已答证据保留，原因仍需进一步核查。' });
+        }
+      }
+      this.refreshHypotheses(session.studentId, session.subject);
+      this.store.append('diagnosticReports', { id: this.store.nextId('report'), sessionId, version: 1, createdAt: at,
+        report: { ...this.buildReport(session), revisionReason: '本组提前结束。仅记录已答表现，未作答内容不计为错误，也不代表评测已完整完成。' } });
+    }
+    this.events.publish(`diagnostic.${command.action}`, { sessionId, studentId: session.studentId, revision: session.revision, actorId: user.id });
+    return this.sessionView(user, sessionId);
   }
 
   renderItem(user: InMemoryUserAccount, sessionId: string, itemId: string) {
@@ -266,6 +354,7 @@ export class DiagnosticsService {
   complete(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
     if (session.status === 'completed') return this.report(user, sessionId);
+    if (session.status !== 'in_progress') throw new BadRequestException('请先恢复进行中的评测；已结束评测保留原始证据');
     const answered = new Set(this.store.select('diagnosticResponses', { sessionId: sessionId }).map((item) => item.itemId));
     if (!session.itemIds.every((id) => answered.has(id))) throw new BadRequestException('请完成剩余题目，或明确选择跳过');
     session.status = 'completed'; session.completedAt = new Date().toISOString();
@@ -345,16 +434,17 @@ export class DiagnosticsService {
   }
 
   private buildReport(session: DiagnosticSession): DiagnosticReport {
-    const all = this.effectiveResponses(session.studentId, session.subject).filter((item) => !session.completedAt || item.submittedAt <= session.completedAt);
+    const endedAt = session.completedAt ?? session.endedAt;
+    const all = this.effectiveResponses(session.studentId, session.subject).filter((item) => !endedAt || item.submittedAt <= endedAt);
     const evidence = all.filter((item) => item.sessionId === session.id);
     const atoms = this.definitionsForSession(session);
     const compatibility = this.definitionEvidence(atoms, all, session.studentId, !!session.atomSnapshots);
-    const weighted = weightedEvidence(compatibility.compatible, this.allMappings(session.studentId), new Date(session.completedAt ?? Date.now()));
+    const weighted = weightedEvidence(compatibility.compatible, this.allMappings(session.studentId), new Date(endedAt ?? Date.now()));
     const estimates = atoms.map((atom) => estimateMastery(atom, weighted));
     const scored = evidence.filter((item) => item.status === 'scored' && item.score !== null);
     const pending = evidence.filter((item) => item.status === 'pending_review').length;
     const insufficient = estimates.filter((item) => item.status === 'unknown' || item.status === 'insufficient').length;
-    const measuredAt = session.completedAt ?? new Date().toISOString();
+    const measuredAt = endedAt ?? new Date().toISOString();
     const previous = this.store.select('diagnosticHypotheses', { studentId: session.studentId, subject: session.subject })
       .flatMap((item) => {
         const history = item.history.filter((entry) => entry.at <= measuredAt), latest = history.at(-1);
@@ -382,7 +472,7 @@ export class DiagnosticsService {
     if (!response) throw new NotFoundException('作答证据不存在');
     this.students.assertCanReviewStudent(user, response.studentId);
     const session = this.store.find('diagnosticSessions', { id: response.sessionId })!;
-    if (session.status !== 'completed' || response.disposition !== 'answered') throw new BadRequestException('只可复核已结束评测中的有效作答');
+    if (!['completed', 'aborted'].includes(session.status) || response.disposition !== 'answered') throw new BadRequestException('只可复核已结束评测中的有效作答');
     const snapshot = session.questionSnapshots.find((item) => item.id === response.questionId)!;
     const previous = this.store.select('scoringRevisions', { responseId: responseId });
     const prepared = prepareScoringReview(input, snapshot.answerSchema as QuestionAnswerSchema, previous);
@@ -393,7 +483,7 @@ export class DiagnosticsService {
     this.refreshHypotheses(response.studentId, session.subject);
     // Later reports also used this evidence. Retain every earlier snapshot when rebuilding them.
     for (const affected of this.store.select('diagnosticSessions', { studentId: session.studentId, subject: session.subject }).filter((item) =>
-      item.status === 'completed' && item.completedAt! >= response.submittedAt && (item.id === session.id ||
+      ['completed', 'aborted'].includes(item.status) && (item.completedAt ?? item.endedAt ?? '') >= response.submittedAt && (item.id === session.id ||
         this.definitionEvidence(this.definitionsForSession(item), [response], item.studentId, !!item.atomSnapshots).compatible.length > 0 ||
         (!item.atomSnapshots && this.store.select('diagnosticReports', { sessionId: item.id }).some(saved =>
           saved.report.estimates.some(estimate => estimate.evidenceIds.includes(response.id))))))) {
