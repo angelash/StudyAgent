@@ -10,7 +10,7 @@ describe.skipIf(!available)('isolated GESP C++ runner', () => {
   it('compiles once and compares multiple independent test runs', () => {
     const receipt = runner.runSubmission({ source: '#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}',
       tests: [{ input: '2 3\n', expected: '5' }, { input: '-4 9\n', expected: '5' }] });
-    expect(receipt).toMatchObject({ format: 'gesp-isolated-run-v1', passed: true, compile: { passed: true } });
+    expect(receipt).toMatchObject({ format: 'gesp-isolated-run-v2', host: 'wsl:Ubuntu', passed: true, compile: { passed: true } });
     expect(receipt.tests.map((row: any) => row.status)).toEqual(['passed', 'passed']);
     expect(JSON.stringify(receipt)).not.toContain('-4 9');
   }, 30_000);

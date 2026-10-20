@@ -1,0 +1,2482 @@
+{
+  "format": "gesp-student-pilot-v2",
+  "version": "2026-10-21-v2",
+  "track": "gesp-cpp",
+  "status": "original_authored_pilot",
+  "notice": "仅含原创试点编程题，用于验证独立范围、隔离运行和证据链；不代表1至4级完整审核课程。 当前扩展为认证1～4级49个原创试点任务，系统/网络等概念由独立探针核查，程序题验证实现；全部内容仍待真人教研逐项审核。",
+  "tasks": [
+    {
+      "id": "gesp-student-cpp-sum-two",
+      "atomId": "gesp-cpp.l1.io",
+      "title": "读入两个整数并输出和",
+      "prompt": "从标准输入读入两个整数，向标准输出写它们的和。不要输出提示语。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-sum-two-concept",
+          "dimension": "understanding",
+          "prompt": "标准输入与标准输出的正确C++对象是？",
+          "options": [
+            "cin 与 cout",
+            "printf 与 scanf",
+            "ifstream 与 getline"
+          ],
+          "answer": "cin 与 cout"
+        },
+        {
+          "id": "gesp-student-cpp-sum-two-trace",
+          "dimension": "procedure",
+          "prompt": "读入“2 3”后，计算a+b并输出的结果是什么？",
+          "options": [
+            "5",
+            "23",
+            "6"
+          ],
+          "answer": "5"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2 3\n",
+          "expected": "5\n"
+        },
+        {
+          "input": "-4 9\n",
+          "expected": "5\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "1000000000 2000000000\n",
+          "expected": "3000000000\n"
+        },
+        {
+          "input": "-10 -15\n",
+          "expected": "-25\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-division",
+      "atomId": "gesp-cpp.l1.division",
+      "title": "输出整除商与余数",
+      "prompt": "读入非负整数a和正整数b，依次输出a除以b的商和余数，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-division-concept",
+          "dimension": "understanding",
+          "prompt": "整数运算17/5的商和17%5的余数分别是？",
+          "options": [
+            "3 和 2",
+            "3.4 和 0",
+            "2 和 3"
+          ],
+          "answer": "3 和 2"
+        },
+        {
+          "id": "gesp-student-cpp-division-trace",
+          "dimension": "procedure",
+          "prompt": "a=3，b=7时，依次输出a/b与a%b的结果是什么？",
+          "options": [
+            "0 3",
+            "3 0",
+            "0.428571 3"
+          ],
+          "answer": "0 3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "17 5\n",
+          "expected": "3 2\n"
+        },
+        {
+          "input": "20 4\n",
+          "expected": "5 0\n"
+        },
+        {
+          "input": "3 7\n",
+          "expected": "0 3\n"
+        },
+        {
+          "input": "0 9\n",
+          "expected": "0 0\n"
+        },
+        {
+          "input": "99 10\n",
+          "expected": "9 9\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-compare",
+      "atomId": "gesp-cpp.l1.relations",
+      "title": "比较两个整数",
+      "prompt": "读入两个整数a和b。若a<b输出-1，若a=b输出0，若a>b输出1。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-compare-concept",
+          "dimension": "understanding",
+          "prompt": "表达式a>b在a=3、b=8时的结果是？",
+          "options": [
+            "false",
+            "true",
+            "无法比较"
+          ],
+          "answer": "false"
+        },
+        {
+          "id": "gesp-student-cpp-compare-trace",
+          "dimension": "procedure",
+          "prompt": "读入“9 2”后，按题目规则输出什么？",
+          "options": [
+            "1",
+            "-1",
+            "0"
+          ],
+          "answer": "1"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2 5\n",
+          "expected": "-1\n"
+        },
+        {
+          "input": "5 5\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "9 2\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "-3 4\n",
+          "expected": "-1\n"
+        },
+        {
+          "input": "-8 -8\n",
+          "expected": "0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-swap",
+      "atomId": "gesp-cpp.l1.sequence",
+      "title": "交换两个变量后输出",
+      "prompt": "依次读入两个整数a和b，交换两个变量的值，然后先输出b的原值，再输出a的原值，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-swap-concept",
+          "dimension": "understanding",
+          "prompt": "交换a、b两个变量的值后，内存中保存的数值有什么变化？",
+          "options": [
+            "两个变量保存的值互换",
+            "只有变量名改变",
+            "两个变量都变成0"
+          ],
+          "answer": "两个变量保存的值互换"
+        },
+        {
+          "id": "gesp-student-cpp-swap-trace",
+          "dimension": "procedure",
+          "prompt": "原输入a=3、b=7，按题目要求先输出b原值再输出a原值，结果是什么？",
+          "options": [
+            "7 3",
+            "3 7",
+            "10 10"
+          ],
+          "answer": "7 3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3 7\n",
+          "expected": "7 3\n"
+        },
+        {
+          "input": "-2 5\n",
+          "expected": "5 -2\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "0 0\n"
+        },
+        {
+          "input": "100 -7\n",
+          "expected": "-7 100\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-sign",
+      "atomId": "gesp-cpp.l1.branch",
+      "title": "判断整数符号",
+      "prompt": "读入一个整数n。n为负数输出negative，为0输出zero，为正数输出positive。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-sign-concept",
+          "dimension": "understanding",
+          "prompt": "要区分负数、零和正数，条件判断必须覆盖几种互斥情况？",
+          "options": [
+            "3种",
+            "2种",
+            "1种"
+          ],
+          "answer": "3种"
+        },
+        {
+          "id": "gesp-student-cpp-sign-trace",
+          "dimension": "procedure",
+          "prompt": "输入n=0时，程序应输出什么？",
+          "options": [
+            "zero",
+            "positive",
+            "negative"
+          ],
+          "answer": "zero"
+        }
+      ],
+      "tests": [
+        {
+          "input": "-6\n",
+          "expected": "negative\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "zero\n"
+        },
+        {
+          "input": "12\n",
+          "expected": "positive\n"
+        },
+        {
+          "input": "-1\n",
+          "expected": "negative\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-sum-range",
+      "atomId": "gesp-cpp.l1.loop",
+      "title": "累加1到n",
+      "prompt": "读入非负整数n，使用循环计算1+2+...+n并输出结果。n为0时输出0。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-sum-range-concept",
+          "dimension": "understanding",
+          "prompt": "使用循环累加1到n时，累加器应在什么时候更新？",
+          "options": [
+            "每一次循环处理当前数时",
+            "只循环结束后一次",
+            "循环开始前一次"
+          ],
+          "answer": "每一次循环处理当前数时"
+        },
+        {
+          "id": "gesp-student-cpp-sum-range-trace",
+          "dimension": "procedure",
+          "prompt": "输入n=5，循环计算1+2+3+4+5的结果是什么？",
+          "options": [
+            "15",
+            "10",
+            "20"
+          ],
+          "answer": "15"
+        }
+      ],
+      "tests": [
+        {
+          "input": "0\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "5\n",
+          "expected": "15\n"
+        },
+        {
+          "input": "100000\n",
+          "expected": "5000050000\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-computer-flow",
+      "atomId": "gesp-cpp.l1.computer",
+      "title": "输入处理与输出的信息流",
+      "prompt": "读入两个整数，计算它们的和，再输出“process=和”。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-computer-flow-concept",
+          "dimension": "understanding",
+          "prompt": "一次程序执行中，内存主要承担什么角色？",
+          "options": [
+            "暂存输入、中间结果和输出前的数据",
+            "永久保存所有网络文件",
+            "只显示文字"
+          ],
+          "answer": "暂存输入、中间结果和输出前的数据",
+          "analysis": "输入数据进入内存，CPU按程序处理，输出设备显示结果。"
+        },
+        {
+          "id": "gesp-student-cpp-computer-flow-trace",
+          "dimension": "procedure",
+          "prompt": "输入2和5时，程序按题目格式输出什么？",
+          "options": [
+            "process=7",
+            "7",
+            "input=25"
+          ],
+          "answer": "process=7"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2 5\n",
+          "expected": "process=7\n"
+        },
+        {
+          "input": "-3 9\n",
+          "expected": "process=6\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "process=0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-ide-compile-run",
+      "atomId": "gesp-cpp.l1.ide",
+      "title": "区分编译错误与运行结果",
+      "prompt": "读入一个正整数n，输出compile-ok；若n不为正，输出invalid。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-ide-compile-run-concept",
+          "dimension": "understanding",
+          "prompt": "源代码缺少分号通常在哪一阶段暴露？",
+          "options": [
+            "编译阶段",
+            "程序已经开始正常输出后",
+            "只能由网络检查"
+          ],
+          "answer": "编译阶段",
+          "analysis": "语法错误由编译器在生成程序前报告。"
+        },
+        {
+          "id": "gesp-student-cpp-ide-compile-run-trace",
+          "dimension": "procedure",
+          "prompt": "输入0时，程序输出什么？",
+          "options": [
+            "invalid",
+            "compile-ok",
+            "程序没有输出"
+          ],
+          "answer": "invalid"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n",
+          "expected": "compile-ok\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "invalid\n"
+        },
+        {
+          "input": "-1\n",
+          "expected": "invalid\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-identifier-validity",
+      "atomId": "gesp-cpp.l1.identifiers",
+      "title": "判断C++标识符是否合法",
+      "prompt": "读入一个不含空格的名称。若它符合C++标识符的简化规则（首字符为字母或下划线，其余为字母、数字或下划线），输出valid；否则输出invalid。本题不把关键字判为合法变量名。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-identifier-validity-concept",
+          "dimension": "understanding",
+          "prompt": "下列哪个名称可以作为普通变量名？",
+          "options": [
+            "score_2",
+            "2score",
+            "int"
+          ],
+          "answer": "score_2",
+          "analysis": "标识符不能以数字开头，int是关键字。"
+        },
+        {
+          "id": "gesp-student-cpp-identifier-validity-trace",
+          "dimension": "procedure",
+          "prompt": "名称“total-score”按本题简化规则应输出什么？",
+          "options": [
+            "invalid",
+            "valid",
+            "keyword"
+          ],
+          "answer": "invalid"
+        }
+      ],
+      "tests": [
+        {
+          "input": "score_2\n",
+          "expected": "valid\n"
+        },
+        {
+          "input": "_tmp9\n",
+          "expected": "valid\n"
+        },
+        {
+          "input": "2score\n",
+          "expected": "invalid\n"
+        },
+        {
+          "input": "int\n",
+          "expected": "invalid\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-variable-state",
+      "atomId": "gesp-cpp.l1.variables",
+      "title": "用变量状态表更新两个值",
+      "prompt": "读入a和b。先令c=a+b，再令a=b、b=c，最后按a、b的当前值用空格分隔输出。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-variable-state-concept",
+          "dimension": "understanding",
+          "prompt": "赋值语句a=b执行后，a保存的是什么？",
+          "options": [
+            "b当时的值",
+            "a原来的值",
+            "两个值相加"
+          ],
+          "answer": "b当时的值",
+          "analysis": "赋值把右侧当前值复制到左侧变量。"
+        },
+        {
+          "id": "gesp-student-cpp-variable-state-trace",
+          "dimension": "procedure",
+          "prompt": "输入a=3、b=7时，最终输出是什么？",
+          "options": [
+            "7 10",
+            "3 7",
+            "10 7"
+          ],
+          "answer": "7 10"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3 7\n",
+          "expected": "7 10\n"
+        },
+        {
+          "input": "-2 5\n",
+          "expected": "5 3\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "0 0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-type-format",
+      "atomId": "gesp-cpp.l1.types",
+      "title": "按类型保存并输出整数、字符与浮点数",
+      "prompt": "依次读入整数、一个字符和一个浮点数，输出int=整数、char=字符、double=浮点数（保留两位小数），三项用分号分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-type-format-concept",
+          "dimension": "understanding",
+          "prompt": "要保存3.50这类带小数的值，更适合使用哪种类型？",
+          "options": [
+            "double",
+            "char",
+            "bool"
+          ],
+          "answer": "double",
+          "analysis": "double保存浮点数；char保存单个字符。"
+        },
+        {
+          "id": "gesp-student-cpp-type-format-trace",
+          "dimension": "procedure",
+          "prompt": "输入42、Z、3.50时应输出什么？",
+          "options": [
+            "int=42;char=Z;double=3.50",
+            "int=Z;char=42;double=3",
+            "42 Z 3.50"
+          ],
+          "answer": "int=42;char=Z;double=3.50"
+        }
+      ],
+      "tests": [
+        {
+          "input": "42 Z 3.50\n",
+          "expected": "int=42;char=Z;double=3.50\n"
+        },
+        {
+          "input": "-7 a 0\n",
+          "expected": "int=-7;char=a;double=0.00\n"
+        },
+        {
+          "input": "9 # 12.345\n",
+          "expected": "int=9;char=#;double=12.35\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-arithmetic-priority",
+      "atomId": "gesp-cpp.l1.arithmetic",
+      "title": "按括号和运算优先级计算",
+      "prompt": "读入整数a、b、c，计算并输出(a+b)*c。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-arithmetic-priority-concept",
+          "dimension": "understanding",
+          "prompt": "表达式(a+b)*c中，先执行哪一步？",
+          "options": [
+            "a+b",
+            "b*c",
+            "a*c"
+          ],
+          "answer": "a+b",
+          "analysis": "括号内运算优先。"
+        },
+        {
+          "id": "gesp-student-cpp-arithmetic-priority-trace",
+          "dimension": "procedure",
+          "prompt": "a=2、b=3、c=4时结果是多少？",
+          "options": [
+            "20",
+            "14",
+            "10"
+          ],
+          "answer": "20"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2 3 4\n",
+          "expected": "20\n"
+        },
+        {
+          "input": "-2 5 3\n",
+          "expected": "9\n"
+        },
+        {
+          "input": "7 -7 100\n",
+          "expected": "0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-logic-bits",
+      "atomId": "gesp-cpp.l1.logic",
+      "title": "计算两个布尔值的与、或",
+      "prompt": "读入两个0或1的整数a和b。依次输出a&&b与a||b，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-logic-bits-concept",
+          "dimension": "understanding",
+          "prompt": "在C++中，0表示什么逻辑值？",
+          "options": [
+            "false",
+            "true",
+            "未知"
+          ],
+          "answer": "false",
+          "analysis": "0转为false，非0转为true。"
+        },
+        {
+          "id": "gesp-student-cpp-logic-bits-trace",
+          "dimension": "procedure",
+          "prompt": "a=0、b=1时，a&&b和a||b分别是？",
+          "options": [
+            "0 1",
+            "1 0",
+            "1 1"
+          ],
+          "answer": "0 1"
+        }
+      ],
+      "tests": [
+        {
+          "input": "0 1\n",
+          "expected": "0 1\n"
+        },
+        {
+          "input": "1 1\n",
+          "expected": "1 1\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "0 0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-loop-continue",
+      "atomId": "gesp-cpp.l1.loop-control",
+      "title": "用continue跳过指定倍数",
+      "prompt": "读入正整数n，累加1到n中不能被3整除的数，输出累加和。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-loop-continue-concept",
+          "dimension": "understanding",
+          "prompt": "continue执行后，本次循环余下语句怎样处理？",
+          "options": [
+            "跳过本次余下语句，进入下一次迭代",
+            "结束整个程序",
+            "回到程序第一行"
+          ],
+          "answer": "跳过本次余下语句，进入下一次迭代"
+        },
+        {
+          "id": "gesp-student-cpp-loop-continue-trace",
+          "dimension": "procedure",
+          "prompt": "n=5时，1到5中排除3后的和是多少？",
+          "options": [
+            "12",
+            "15",
+            "9"
+          ],
+          "answer": "12"
+        }
+      ],
+      "tests": [
+        {
+          "input": "5\n",
+          "expected": "12\n"
+        },
+        {
+          "input": "6\n",
+          "expected": "12\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "1\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-debug-input-output",
+      "atomId": "gesp-cpp.l1.debug",
+      "title": "修复输入输出并完成计算",
+      "prompt": "读入两个整数，输出两数乘积与两数差，用空格分隔。必须从标准输入读取并按标准输出写结果。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-debug-input-output-concept",
+          "dimension": "understanding",
+          "prompt": "程序运行后没有任何输出，首先应检查什么？",
+          "options": [
+            "是否实际执行了输出语句且输入正确",
+            "显卡颜色",
+            "浏览器缓存"
+          ],
+          "answer": "是否实际执行了输出语句且输入正确"
+        },
+        {
+          "id": "gesp-student-cpp-debug-input-output-trace",
+          "dimension": "procedure",
+          "prompt": "输入4和7时，按题目顺序输出什么？",
+          "options": [
+            "28 -3",
+            "-3 28",
+            "11 3"
+          ],
+          "answer": "28 -3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "4 7\n",
+          "expected": "28 -3\n"
+        },
+        {
+          "input": "0 9\n",
+          "expected": "0 -9\n"
+        },
+        {
+          "input": "-2 5\n",
+          "expected": "-10 -7\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-memory-latency-order",
+      "atomId": "gesp-cpp.l2.memory",
+      "title": "按速度排列存储器层次",
+      "prompt": "读入三个编号1、2、3，分别表示RAM、Cache、ROM。按“Cache、RAM、ROM”的速度层次输出这三个编号。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-memory-latency-order-concept",
+          "dimension": "understanding",
+          "prompt": "Cache与内存RAM相比，通常哪一项更快？",
+          "options": [
+            "Cache",
+            "RAM",
+            "两者速度完全相同"
+          ],
+          "answer": "Cache",
+          "analysis": "Cache靠近CPU，延迟通常低于RAM。"
+        },
+        {
+          "id": "gesp-student-cpp-memory-latency-order-trace",
+          "dimension": "procedure",
+          "prompt": "输入仅用于表示三类存储时，题目要求的第一项是什么？",
+          "options": [
+            "Cache",
+            "RAM",
+            "ROM"
+          ],
+          "answer": "Cache"
+        }
+      ],
+      "tests": [
+        {
+          "input": "1 2 3\n",
+          "expected": "2 1 3\n"
+        },
+        {
+          "input": "3 1 2\n",
+          "expected": "2 1 3\n"
+        },
+        {
+          "input": "2 3 1\n",
+          "expected": "2 1 3\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-ipv4-boundary",
+      "atomId": "gesp-cpp.l2.network",
+      "title": "检查IPv4四段范围",
+      "prompt": "读入四个整数，若都在0到255之间（含端点），输出valid，否则输出invalid。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-ipv4-boundary-concept",
+          "dimension": "understanding",
+          "prompt": "IPv4地址由几个0～255的十进制段组成？",
+          "options": [
+            "4",
+            "6",
+            "8"
+          ],
+          "answer": "4",
+          "analysis": "本题使用常见点分十进制IPv4形式。"
+        },
+        {
+          "id": "gesp-student-cpp-ipv4-boundary-trace",
+          "dimension": "procedure",
+          "prompt": "输入192 168 1 255时应输出什么？",
+          "options": [
+            "valid",
+            "invalid",
+            "network"
+          ],
+          "answer": "valid"
+        }
+      ],
+      "tests": [
+        {
+          "input": "192 168 1 255\n",
+          "expected": "valid\n"
+        },
+        {
+          "input": "256 1 1 1\n",
+          "expected": "invalid\n"
+        },
+        {
+          "input": "0 0 0 0\n",
+          "expected": "valid\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-language-class",
+      "atomId": "gesp-cpp.l2.languages",
+      "title": "区分计算机语言层次",
+      "prompt": "读入编号1、2、3，分别代表机器语言、汇编语言、高级语言；输出对应中文名称。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-language-class-concept",
+          "dimension": "understanding",
+          "prompt": "由助记符表示、通常贴近特定硬件的是哪种语言？",
+          "options": [
+            "汇编语言",
+            "高级语言",
+            "自然语言"
+          ],
+          "answer": "汇编语言"
+        },
+        {
+          "id": "gesp-student-cpp-language-class-trace",
+          "dimension": "procedure",
+          "prompt": "输入3时输出什么？",
+          "options": [
+            "高级语言",
+            "汇编语言",
+            "机器语言"
+          ],
+          "answer": "高级语言"
+        }
+      ],
+      "tests": [
+        {
+          "input": "1\n",
+          "expected": "机器语言\n"
+        },
+        {
+          "input": "2\n",
+          "expected": "汇编语言\n"
+        },
+        {
+          "input": "3\n",
+          "expected": "高级语言\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-flowchart-sequence",
+      "atomId": "gesp-cpp.l2.flowchart",
+      "title": "按流程图顺序更新变量",
+      "prompt": "流程图依次执行：读入n；把n乘2；再加1；输出结果。请实现该流程。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-flowchart-sequence-concept",
+          "dimension": "understanding",
+          "prompt": "流程图先乘2再加1与先加1再乘2，结果一般是否相同？",
+          "options": [
+            "不同",
+            "总相同",
+            "无法定义"
+          ],
+          "answer": "不同",
+          "analysis": "运算顺序改变结果，例如3按两种流程分别得7和8。"
+        },
+        {
+          "id": "gesp-student-cpp-flowchart-sequence-trace",
+          "dimension": "procedure",
+          "prompt": "n=3时，按题目流程输出什么？",
+          "options": [
+            "7",
+            "8",
+            "6"
+          ],
+          "answer": "7"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n",
+          "expected": "7\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "-4\n",
+          "expected": "-7\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-ascii-neighbor",
+      "atomId": "gesp-cpp.l2.ascii",
+      "title": "利用字符编码关系转换",
+      "prompt": "读入一个可见ASCII字符c，输出它的后一个字符及该字符的整数编码，两项用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-ascii-neighbor-concept",
+          "dimension": "understanding",
+          "prompt": "若字符a的ASCII编码是97，字符b的编码是？",
+          "options": [
+            "98",
+            "96",
+            "65"
+          ],
+          "answer": "98"
+        },
+        {
+          "id": "gesp-student-cpp-ascii-neighbor-trace",
+          "dimension": "procedure",
+          "prompt": "输入A时，输出字符和编码是什么？",
+          "options": [
+            "B 66",
+            "A 65",
+            "C 67"
+          ],
+          "answer": "B 66"
+        }
+      ],
+      "tests": [
+        {
+          "input": "A\n",
+          "expected": "B 66\n"
+        },
+        {
+          "input": "a\n",
+          "expected": "b 98\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "1 49\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-conversion-order",
+      "atomId": "gesp-cpp.l2.conversion",
+      "title": "观察整数除法与乘法的转换差异",
+      "prompt": "读入整数a与b，先输出整数除法a/b，再输出a/b的浮点数结果（保留三位小数），用空格分隔。b保证非0。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-conversion-order-concept",
+          "dimension": "understanding",
+          "prompt": "C++中两个int做a/b时，3/2的结果是什么？",
+          "options": [
+            "1",
+            "1.5",
+            "2"
+          ],
+          "answer": "1",
+          "analysis": "整数除法舍弃小数部分。"
+        },
+        {
+          "id": "gesp-student-cpp-conversion-order-trace",
+          "dimension": "procedure",
+          "prompt": "a=3、b=2时，按题目两位输出格式结果是什么？",
+          "options": [
+            "1 1.500",
+            "1.5 1",
+            "2 1.500"
+          ],
+          "answer": "1 1.500"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3 2\n",
+          "expected": "1 1.500\n"
+        },
+        {
+          "input": "-7 2\n",
+          "expected": "-3 -3.500\n"
+        },
+        {
+          "input": "9 3\n",
+          "expected": "3 3.000\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-nested-grade-branch",
+      "atomId": "gesp-cpp.l2.branches",
+      "title": "使用多层分支确定等级",
+      "prompt": "读入整数分数s（0～100）。90及以上输出A，80～89输出B，60～79输出C，低于60输出D。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-nested-grade-branch-concept",
+          "dimension": "understanding",
+          "prompt": "多层if/else中，else通常与哪个条件配对？",
+          "options": [
+            "最近的未配对if",
+            "最外层if",
+            "第一个if"
+          ],
+          "answer": "最近的未配对if"
+        },
+        {
+          "id": "gesp-student-cpp-nested-grade-branch-trace",
+          "dimension": "procedure",
+          "prompt": "s=80时输出什么？",
+          "options": [
+            "B",
+            "C",
+            "A"
+          ],
+          "answer": "B"
+        }
+      ],
+      "tests": [
+        {
+          "input": "95\n",
+          "expected": "A\n"
+        },
+        {
+          "input": "80\n",
+          "expected": "B\n"
+        },
+        {
+          "input": "60\n",
+          "expected": "C\n"
+        },
+        {
+          "input": "59\n",
+          "expected": "D\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-nested-star-grid",
+      "atomId": "gesp-cpp.l2.nested-loops",
+      "title": "用两层循环输出行列图形",
+      "prompt": "读入正整数n，输出n行，每行恰好n个星号，行末无多余空格。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-nested-star-grid-concept",
+          "dimension": "understanding",
+          "prompt": "外层循环控制什么？",
+          "options": [
+            "行数",
+            "每行字符数",
+            "程序退出时间"
+          ],
+          "answer": "行数"
+        },
+        {
+          "id": "gesp-student-cpp-nested-star-grid-trace",
+          "dimension": "procedure",
+          "prompt": "n=3时应输出几行星号、每行几个？",
+          "options": [
+            "3行，每行3个",
+            "2行，每行3个",
+            "3行，每行1个"
+          ],
+          "answer": "3行，每行3个"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2\n",
+          "expected": "**\n**\n"
+        },
+        {
+          "input": "3\n",
+          "expected": "***\n***\n***\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "*\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-math-function-choice",
+      "atomId": "gesp-cpp.l2.math-functions",
+      "title": "选择数值函数并保持结果类型",
+      "prompt": "读入两个整数a和b，依次输出a的绝对值、a与b的最大值、a与b的最小值，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-math-function-choice-concept",
+          "dimension": "understanding",
+          "prompt": "求两数的较大值应使用哪个标准库函数？",
+          "options": [
+            "max",
+            "sqrt",
+            "abs"
+          ],
+          "answer": "max"
+        },
+        {
+          "id": "gesp-student-cpp-math-function-choice-trace",
+          "dimension": "procedure",
+          "prompt": "a=-8、b=3时三个结果依次是什么？",
+          "options": [
+            "8 3 -8",
+            "8 -8 3",
+            "-8 3 -8"
+          ],
+          "answer": "8 3 -8"
+        }
+      ],
+      "tests": [
+        {
+          "input": "-8 3\n",
+          "expected": "8 3 -8\n"
+        },
+        {
+          "input": "5 5\n",
+          "expected": "5 5 5\n"
+        },
+        {
+          "input": "12 -20\n",
+          "expected": "12 12 -20\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-lcg-pseudorandom",
+      "atomId": "gesp-cpp.l2.random",
+      "title": "实现可复现的伪随机状态更新",
+      "prompt": "使用线性同余规则state=(state*1103515245+12345)%2147483648。读入初始state和n，更新n次后输出state。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-lcg-pseudorandom-concept",
+          "dimension": "understanding",
+          "prompt": "设置相同种子并使用相同算法时，伪随机序列应怎样？",
+          "options": [
+            "可复现地相同",
+            "每次都必然不同",
+            "只取决于屏幕大小"
+          ],
+          "answer": "可复现地相同",
+          "analysis": "种子和算法确定状态序列。"
+        },
+        {
+          "id": "gesp-student-cpp-lcg-pseudorandom-trace",
+          "dimension": "procedure",
+          "prompt": "本题公式中，新状态由什么决定？",
+          "options": [
+            "旧状态、乘数、增量和模数",
+            "时间与颜色",
+            "输入字符长度"
+          ],
+          "answer": "旧状态、乘数、增量和模数"
+        }
+      ],
+      "tests": [
+        {
+          "input": "1 1\n",
+          "expected": "1103527590\n"
+        },
+        {
+          "input": "0 0\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "42 1\n",
+          "expected": "1250496027\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-twos-complement-byte",
+      "atomId": "gesp-cpp.l3.number-code",
+      "title": "输出8位补码编码",
+      "prompt": "读入-128到127之间的整数，输出它的8位补码二进制串。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-twos-complement-byte-concept",
+          "dimension": "understanding",
+          "prompt": "8位补码中，-1的编码是什么？",
+          "options": [
+            "11111111",
+            "10000001",
+            "00000001"
+          ],
+          "answer": "11111111"
+        },
+        {
+          "id": "gesp-student-cpp-twos-complement-byte-trace",
+          "dimension": "procedure",
+          "prompt": "8位补码“11111011”对应的十进制数是多少？",
+          "options": [
+            "-5",
+            "251",
+            "5"
+          ],
+          "answer": "-5"
+        }
+      ],
+      "tests": [
+        {
+          "input": "5\n",
+          "expected": "00000101\n"
+        },
+        {
+          "input": "-1\n",
+          "expected": "11111111\n"
+        },
+        {
+          "input": "-128\n",
+          "expected": "10000000\n"
+        },
+        {
+          "input": "127\n",
+          "expected": "01111111\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-base-conversion",
+      "atomId": "gesp-cpp.l3.base",
+      "title": "按任意进制2～16输出整数",
+      "prompt": "读入非负整数n与进制b（2～16），输出n的b进制表示，10～15的数位使用大写A～F。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-base-conversion-concept",
+          "dimension": "understanding",
+          "prompt": "十进制10写成十六进制是什么？",
+          "options": [
+            "A",
+            "10",
+            "F"
+          ],
+          "answer": "A"
+        },
+        {
+          "id": "gesp-student-cpp-base-conversion-trace",
+          "dimension": "procedure",
+          "prompt": "十进制13写成二进制是什么？",
+          "options": [
+            "1101",
+            "1011",
+            "1110"
+          ],
+          "answer": "1101"
+        }
+      ],
+      "tests": [
+        {
+          "input": "13 2\n",
+          "expected": "1101\n"
+        },
+        {
+          "input": "255 16\n",
+          "expected": "FF\n"
+        },
+        {
+          "input": "0 7\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "64 8\n",
+          "expected": "100\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-bitwise-three",
+      "atomId": "gesp-cpp.l3.bitwise",
+      "title": "逐位执行与、或、异或",
+      "prompt": "读入两个非负整数a、b，依次输出a&b、a|b、a^b，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-bitwise-three-concept",
+          "dimension": "understanding",
+          "prompt": "与逻辑与相比，按位与的“两位都1才为1”规则作用于哪里？",
+          "options": [
+            "每个二进制位",
+            "整段文字的字符数",
+            "只作用于最低位"
+          ],
+          "answer": "每个二进制位"
+        },
+        {
+          "id": "gesp-student-cpp-bitwise-three-trace",
+          "dimension": "procedure",
+          "prompt": "a=6、b=3时三个结果依次是什么？",
+          "options": [
+            "2 7 5",
+            "0 9 5",
+            "2 5 7"
+          ],
+          "answer": "2 7 5"
+        }
+      ],
+      "tests": [
+        {
+          "input": "6 3\n",
+          "expected": "2 7 5\n"
+        },
+        {
+          "input": "8 8\n",
+          "expected": "8 8 0\n"
+        },
+        {
+          "input": "0 15\n",
+          "expected": "0 15 15\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-shift-left-right",
+      "atomId": "gesp-cpp.l3.shift",
+      "title": "计算有效的左右移位",
+      "prompt": "读入非负整数a与k（0≤k≤10），依次输出a<<k和a>>k，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-shift-left-right-concept",
+          "dimension": "understanding",
+          "prompt": "无符号非负整数左移1位通常等价于什么？",
+          "options": [
+            "乘以2",
+            "除以2",
+            "加2"
+          ],
+          "answer": "乘以2"
+        },
+        {
+          "id": "gesp-student-cpp-shift-left-right-trace",
+          "dimension": "procedure",
+          "prompt": "a=5、k=2时输出什么？",
+          "options": [
+            "20 1",
+            "10 2",
+            "7 3"
+          ],
+          "answer": "20 1"
+        }
+      ],
+      "tests": [
+        {
+          "input": "5 2\n",
+          "expected": "20 1\n"
+        },
+        {
+          "input": "1 0\n",
+          "expected": "1 1\n"
+        },
+        {
+          "input": "1024 10\n",
+          "expected": "1048576 1\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-algorithm-parity-count",
+      "atomId": "gesp-cpp.l3.algorithm-description",
+      "title": "把文字算法实现为有限步骤程序",
+      "prompt": "算法描述：读入n；统计1到n中奇数个数；输出计数。请实现该算法。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-algorithm-parity-count-concept",
+          "dimension": "understanding",
+          "prompt": "算法描述至少应明确什么？",
+          "options": [
+            "输入、输出和有限步骤",
+            "编程软件图标",
+            "显示器分辨率"
+          ],
+          "answer": "输入、输出和有限步骤"
+        },
+        {
+          "id": "gesp-student-cpp-algorithm-parity-count-trace",
+          "dimension": "procedure",
+          "prompt": "n=5时1到5的奇数有几个？",
+          "options": [
+            "3",
+            "2",
+            "5"
+          ],
+          "answer": "3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "5\n",
+          "expected": "3\n"
+        },
+        {
+          "input": "6\n",
+          "expected": "3\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-array-summary",
+      "atomId": "gesp-cpp.l3.array",
+      "title": "遍历一维数组恢复汇总值",
+      "prompt": "读入n与n个整数，输出它们的和、最小值和最大值，用空格分隔。n至少为1。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-array-summary-concept",
+          "dimension": "understanding",
+          "prompt": "合法下标范围通常是什么？",
+          "options": [
+            "0到n-1",
+            "1到n+1",
+            "任意负数"
+          ],
+          "answer": "0到n-1"
+        },
+        {
+          "id": "gesp-student-cpp-array-summary-trace",
+          "dimension": "procedure",
+          "prompt": "数组3、-1、5的和、最小值、最大值依次是什么？",
+          "options": [
+            "7 -1 5",
+            "7 5 -1",
+            "9 -1 5"
+          ],
+          "answer": "7 -1 5"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n3 -1 5\n",
+          "expected": "7 -1 5\n"
+        },
+        {
+          "input": "1\n8\n",
+          "expected": "8 8 8\n"
+        },
+        {
+          "input": "4\n-5 -2 -9 -1\n",
+          "expected": "-17 -9 -1\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-string-word-count",
+      "atomId": "gesp-cpp.l3.strings",
+      "title": "读入整行并统计空白分隔单词",
+      "prompt": "使用getline读入一整行，统计其中由空白分隔的非空单词数并输出。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-string-word-count-concept",
+          "dimension": "understanding",
+          "prompt": "读入包含空格的整行，应优先使用什么？",
+          "options": [
+            "getline",
+            "一次cin>>int",
+            "读取单个char后停止"
+          ],
+          "answer": "getline"
+        },
+        {
+          "id": "gesp-student-cpp-string-word-count-trace",
+          "dimension": "procedure",
+          "prompt": "输入“one  two three”应输出几个单词？",
+          "options": [
+            "3",
+            "2",
+            "6"
+          ],
+          "answer": "3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "one two three\n",
+          "expected": "3\n"
+        },
+        {
+          "input": "  spaced   words  \n",
+          "expected": "2\n"
+        },
+        {
+          "input": "\n",
+          "expected": "0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-enumeration-selected",
+      "atomId": "gesp-cpp.l3.enumeration",
+      "title": "枚举范围内满足规则的数量",
+      "prompt": "读入正整数n，统计1到n中能被3或5整除的整数个数并输出。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-enumeration-selected-concept",
+          "dimension": "understanding",
+          "prompt": "枚举法必须保证候选满足什么要求？",
+          "options": [
+            "不重复且不遗漏指定范围",
+            "只列第一个",
+            "使用随机数"
+          ],
+          "answer": "不重复且不遗漏指定范围"
+        },
+        {
+          "id": "gesp-student-cpp-enumeration-selected-trace",
+          "dimension": "procedure",
+          "prompt": "n=10时符合条件的数有多少个？",
+          "options": [
+            "5",
+            "4",
+            "6"
+          ],
+          "answer": "5"
+        }
+      ],
+      "tests": [
+        {
+          "input": "10\n",
+          "expected": "5\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "15\n",
+          "expected": "7\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-robot-command-simulation",
+      "atomId": "gesp-cpp.l3.simulation",
+      "title": "按命令顺序维护位置状态",
+      "prompt": "读入起点x、y和命令串。U/D/L/R分别令y加1、y减1、x减1、x加1；按顺序执行后输出x y。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-robot-command-simulation-concept",
+          "dimension": "understanding",
+          "prompt": "模拟多个命令时，每一步应基于什么状态更新？",
+          "options": [
+            "上一步更新后的状态",
+            "总是初始状态",
+            "最后一个命令单独决定"
+          ],
+          "answer": "上一步更新后的状态"
+        },
+        {
+          "id": "gesp-student-cpp-robot-command-simulation-trace",
+          "dimension": "procedure",
+          "prompt": "从0 0依次执行U和R后位置是什么？",
+          "options": [
+            "1 1",
+            "0 1",
+            "1 0"
+          ],
+          "answer": "1 1"
+        }
+      ],
+      "tests": [
+        {
+          "input": "0 0\nUR\n",
+          "expected": "1 1\n"
+        },
+        {
+          "input": "2 3\nLD\n",
+          "expected": "1 2\n"
+        },
+        {
+          "input": "-1 4\nRDR\n",
+          "expected": "1 3\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-pointer-value-address",
+      "atomId": "gesp-cpp.l4.pointer",
+      "title": "用指针读取并更新同一变量",
+      "prompt": "读入整数a和b。令指针指向a，通过指针把a加b，然后输出a与b。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-pointer-value-address-concept",
+          "dimension": "understanding",
+          "prompt": "若p=&a，表达式*p表示什么？",
+          "options": [
+            "p所指向变量a的值",
+            "p的地址编号",
+            "b的值"
+          ],
+          "answer": "p所指向变量a的值"
+        },
+        {
+          "id": "gesp-student-cpp-pointer-value-address-trace",
+          "dimension": "procedure",
+          "prompt": "a=3、b=4时经题目更新后输出什么？",
+          "options": [
+            "7 4",
+            "3 4",
+            "7 7"
+          ],
+          "answer": "7 4"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3 4\n",
+          "expected": "7 4\n"
+        },
+        {
+          "input": "-2 9\n",
+          "expected": "7 9\n"
+        },
+        {
+          "input": "0 -5\n",
+          "expected": "-5 -5\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-matrix-boundary",
+      "atomId": "gesp-cpp.l4.matrix",
+      "title": "遍历二维数组求边界元素和",
+      "prompt": "读入n、m和n行m列整数，输出第一行、最后一行、第一列、最后一列元素之和。角落元素只计算一次。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-matrix-boundary-concept",
+          "dimension": "understanding",
+          "prompt": "矩阵a[i][j]中的i通常表示什么？",
+          "options": [
+            "行下标",
+            "列下标",
+            "元素值"
+          ],
+          "answer": "行下标"
+        },
+        {
+          "id": "gesp-student-cpp-matrix-boundary-trace",
+          "dimension": "procedure",
+          "prompt": "矩阵第一行是1 2，第二行是3 4时，边界和是多少？",
+          "options": [
+            "10",
+            "8",
+            "6"
+          ],
+          "answer": "10"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2 2\n1 2\n3 4\n",
+          "expected": "10\n"
+        },
+        {
+          "input": "1 4\n1 2 3 4\n",
+          "expected": "10\n"
+        },
+        {
+          "input": "3 1\n1\n2\n3\n",
+          "expected": "6\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-struct-best-score",
+      "atomId": "gesp-cpp.l4.struct",
+      "title": "用结构体数组保存并比较记录",
+      "prompt": "读入n，再读入n个姓名和不含空格的整数分数。输出分数最高者的姓名；并列时输出最早出现者。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-struct-best-score-concept",
+          "dimension": "understanding",
+          "prompt": "结构体适合把什么放在一起？",
+          "options": [
+            "相关的不同类型字段",
+            "程序外部的所有文件",
+            "只适合单个整数"
+          ],
+          "answer": "相关的不同类型字段"
+        },
+        {
+          "id": "gesp-student-cpp-struct-best-score-trace",
+          "dimension": "procedure",
+          "prompt": "分数8、12、12时按题目规则选择谁？",
+          "options": [
+            "第二个记录",
+            "最后一个记录",
+            "无法区分"
+          ],
+          "answer": "第二个记录"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2\nNora 8\nLeo 12\n",
+          "expected": "Leo\n"
+        },
+        {
+          "input": "3\nAmy 9\nBen 12\nCid 12\n",
+          "expected": "Ben\n"
+        },
+        {
+          "input": "1\nMia 0\n",
+          "expected": "Mia\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-function-factorial",
+      "atomId": "gesp-cpp.l4.function",
+      "title": "拆分函数计算并返回结果",
+      "prompt": "读入整数n（0≤n≤12），用一个函数计算n!并输出。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-function-factorial-concept",
+          "dimension": "understanding",
+          "prompt": "函数返回结果通常通过什么带回调用处？",
+          "options": [
+            "return语句",
+            "修改屏幕颜色",
+            "关闭程序"
+          ],
+          "answer": "return语句"
+        },
+        {
+          "id": "gesp-student-cpp-function-factorial-trace",
+          "dimension": "procedure",
+          "prompt": "5!等于多少？",
+          "options": [
+            "120",
+            "25",
+            "60"
+          ],
+          "answer": "120"
+        }
+      ],
+      "tests": [
+        {
+          "input": "0\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "5\n",
+          "expected": "120\n"
+        },
+        {
+          "input": "10\n",
+          "expected": "3628800\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-scope-shadow",
+      "atomId": "gesp-cpp.l4.scope",
+      "title": "区分外层变量与内层同名变量",
+      "prompt": "读入整数x。在嵌套作用域中定义同名x=x+10；离开作用域后，输出外层x、内层x（按“outer=.. inner=..”格式）。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-scope-shadow-concept",
+          "dimension": "understanding",
+          "prompt": "内层作用域重新定义同名变量时，会怎样？",
+          "options": [
+            "暂时隐藏外层同名变量",
+            "永久修改外层变量名",
+            "程序一定编译失败"
+          ],
+          "answer": "暂时隐藏外层同名变量"
+        },
+        {
+          "id": "gesp-student-cpp-scope-shadow-trace",
+          "dimension": "procedure",
+          "prompt": "输入3时题目的输出格式是什么？",
+          "options": [
+            "outer=3 inner=13",
+            "outer=13 inner=13",
+            "outer=3 inner=3"
+          ],
+          "answer": "outer=3 inner=13"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n",
+          "expected": "outer=3 inner=13\n"
+        },
+        {
+          "input": "-5\n",
+          "expected": "outer=-5 inner=5\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "outer=0 inner=10\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-parameter-value-copy",
+      "atomId": "gesp-cpp.l4.parameter-value",
+      "title": "观察值传递只修改参数副本",
+      "prompt": "写函数addTen(int value)返回value+10。读入整数x，输出函数返回值和原来x（按“returned=.. original=..”格式）。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-parameter-value-copy-concept",
+          "dimension": "understanding",
+          "prompt": "值传递时，函数收到的是什么？",
+          "options": [
+            "实参值的副本",
+            "实参变量本身",
+            "数据库连接"
+          ],
+          "answer": "实参值的副本"
+        },
+        {
+          "id": "gesp-student-cpp-parameter-value-copy-trace",
+          "dimension": "procedure",
+          "prompt": "x=4时输出什么？",
+          "options": [
+            "returned=14 original=4",
+            "returned=14 original=14",
+            "returned=4 original=14"
+          ],
+          "answer": "returned=14 original=4"
+        }
+      ],
+      "tests": [
+        {
+          "input": "4\n",
+          "expected": "returned=14 original=4\n"
+        },
+        {
+          "input": "-3\n",
+          "expected": "returned=7 original=-3\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "returned=10 original=0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-parameter-reference-update",
+      "atomId": "gesp-cpp.l4.parameter-reference",
+      "title": "观察引用参数更新实参",
+      "prompt": "写函数addTen(int& value)把value加10。读入整数x，调用后输出returned=x+10与updated=x+10。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-parameter-reference-update-concept",
+          "dimension": "understanding",
+          "prompt": "引用参数与实参是什么关系？",
+          "options": [
+            "引用成为实参的别名并按需修改它",
+            "永远复制一份隔离值",
+            "只能传字符串常量"
+          ],
+          "answer": "引用成为实参的别名并按需修改它"
+        },
+        {
+          "id": "gesp-student-cpp-parameter-reference-update-trace",
+          "dimension": "procedure",
+          "prompt": "x=4时调用addTen(int&)后x是多少？",
+          "options": [
+            "14",
+            "4",
+            "0"
+          ],
+          "answer": "14"
+        }
+      ],
+      "tests": [
+        {
+          "input": "4\n",
+          "expected": "returned=14 updated=14\n"
+        },
+        {
+          "input": "-3\n",
+          "expected": "returned=7 updated=7\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "returned=10 updated=10\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-fibonacci-recurrence",
+      "atomId": "gesp-cpp.l4.recurrence",
+      "title": "由边界和转移实现递推",
+      "prompt": "定义F(0)=0、F(1)=1、F(n)=F(n-1)+F(n-2)。读入n（0≤n≤45），输出F(n)。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-fibonacci-recurrence-concept",
+          "dimension": "understanding",
+          "prompt": "递推式是否正确实现，至少需要核对什么？",
+          "options": [
+            "初始状态、转移式和终止范围",
+            "终端字体",
+            "文件名长度"
+          ],
+          "answer": "初始状态、转移式和终止范围"
+        },
+        {
+          "id": "gesp-student-cpp-fibonacci-recurrence-trace",
+          "dimension": "procedure",
+          "prompt": "F(6)是多少？",
+          "options": [
+            "8",
+            "13",
+            "5"
+          ],
+          "answer": "8"
+        }
+      ],
+      "tests": [
+        {
+          "input": "0\n",
+          "expected": "0\n"
+        },
+        {
+          "input": "1\n",
+          "expected": "1\n"
+        },
+        {
+          "input": "10\n",
+          "expected": "55\n"
+        },
+        {
+          "input": "20\n",
+          "expected": "6765\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-stable-record-sort",
+      "atomId": "gesp-cpp.l4.sort-concepts",
+      "title": "按关键字保持同分记录原顺序",
+      "prompt": "读入n，再读入n个姓名和不含空格整数分数。按分数升序稳定排序后，每行输出姓名和分数。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-stable-record-sort-concept",
+          "dimension": "understanding",
+          "prompt": "相同关键字记录保持原相对顺序的排序性质叫什么？",
+          "options": [
+            "稳定性",
+            "递推性",
+            "封装性"
+          ],
+          "answer": "稳定性"
+        },
+        {
+          "id": "gesp-student-cpp-stable-record-sort-trace",
+          "dimension": "procedure",
+          "prompt": "输入Nora 8、Leo 5、Mia 8，稳定升序后姓名顺序是什么？",
+          "options": [
+            "Leo Nora Mia",
+            "Leo Mia Nora",
+            "Nora Mia Leo"
+          ],
+          "answer": "Leo Nora Mia"
+        }
+      ],
+      "tests": [
+        {
+          "input": "2\nNora 8\nLeo 5\n",
+          "expected": "Leo 5\nNora 8\n"
+        },
+        {
+          "input": "3\nNora 8\nLeo 5\nMia 8\n",
+          "expected": "Leo 5\nNora 8\nMia 8\n"
+        },
+        {
+          "input": "1\nAmy 7\n",
+          "expected": "Amy 7\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-bubble-sort-impl",
+      "atomId": "gesp-cpp.l4.bubble",
+      "title": "独立实现冒泡排序",
+      "prompt": "读入n与n个整数，使用冒泡排序按升序输出，数字之间用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-bubble-sort-impl-concept",
+          "dimension": "understanding",
+          "prompt": "升序冒泡每轮结束后，哪个位置已确定？",
+          "options": [
+            "本轮比较范围的最右位置",
+            "第一个输入位置",
+            "数组中间"
+          ],
+          "answer": "本轮比较范围的最右位置"
+        },
+        {
+          "id": "gesp-student-cpp-bubble-sort-impl-trace",
+          "dimension": "procedure",
+          "prompt": "3、1、2按升序排序后是什么？",
+          "options": [
+            "1 2 3",
+            "3 2 1",
+            "1 3 2"
+          ],
+          "answer": "1 2 3"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n3 1 2\n",
+          "expected": "1 2 3\n"
+        },
+        {
+          "input": "4\n-1 5 0 5\n",
+          "expected": "-1 0 5 5\n"
+        },
+        {
+          "input": "1\n9\n",
+          "expected": "9\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-insertion-sort-impl",
+      "atomId": "gesp-cpp.l4.insertion",
+      "title": "独立实现插入排序",
+      "prompt": "读入n与n个整数，使用插入排序按升序输出，数字之间用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-insertion-sort-impl-concept",
+          "dimension": "understanding",
+          "prompt": "插入排序过程中，左侧前缀保持什么性质？",
+          "options": [
+            "有序",
+            "永远逆序",
+            "全部为零"
+          ],
+          "answer": "有序"
+        },
+        {
+          "id": "gesp-student-cpp-insertion-sort-impl-trace",
+          "dimension": "procedure",
+          "prompt": "数组2、-1、3的已排序左前缀如何形成？",
+          "options": [
+            "[2]→[-1,2]→[-1,2,3]",
+            "[2,3]→[-1,2,3]",
+            "一次交换全部完成"
+          ],
+          "answer": "[2]→[-1,2]→[-1,2,3]"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n2 -1 3\n",
+          "expected": "-1 2 3\n"
+        },
+        {
+          "input": "4\n4 3 2 1\n",
+          "expected": "1 2 3 4\n"
+        },
+        {
+          "input": "2\n7 7\n",
+          "expected": "7 7\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-selection-sort-impl",
+      "atomId": "gesp-cpp.l4.selection",
+      "title": "独立实现选择排序",
+      "prompt": "读入n与n个整数，使用选择排序按升序输出，数字之间用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-selection-sort-impl-concept",
+          "dimension": "understanding",
+          "prompt": "升序选择排序每轮从剩余部分选出什么？",
+          "options": [
+            "最小元素",
+            "最大元素",
+            "中间元素"
+          ],
+          "answer": "最小元素"
+        },
+        {
+          "id": "gesp-student-cpp-selection-sort-impl-trace",
+          "dimension": "procedure",
+          "prompt": "数组6、2、4第一轮选择后是什么？",
+          "options": [
+            "2、6、4",
+            "6、4、2",
+            "4、2、6"
+          ],
+          "answer": "2、6、4"
+        }
+      ],
+      "tests": [
+        {
+          "input": "3\n6 2 4\n",
+          "expected": "2 4 6\n"
+        },
+        {
+          "input": "4\n-2 8 0 -2\n",
+          "expected": "-2 -2 0 8\n"
+        },
+        {
+          "input": "1\n5\n",
+          "expected": "5\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-loop-count-complexity",
+      "atomId": "gesp-cpp.l4.complexity",
+      "title": "由嵌套循环结构计算执行次数",
+      "prompt": "读入正整数n。输出下面双层循环的内层体执行次数：for(i=1;i<n;i++) for(j=i+1;j<=n;j++) body。同时输出growth=quadratic。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-loop-count-complexity-concept",
+          "dimension": "understanding",
+          "prompt": "n固定时，两层循环各约n次且内层依赖外层，通常是什么增长阶？",
+          "options": [
+            "O(n²)",
+            "O(1)",
+            "O(2ⁿ)"
+          ],
+          "answer": "O(n²)"
+        },
+        {
+          "id": "gesp-student-cpp-loop-count-complexity-trace",
+          "dimension": "procedure",
+          "prompt": "n=4时内层体执行几次？",
+          "options": [
+            "6",
+            "8",
+            "4"
+          ],
+          "answer": "6"
+        }
+      ],
+      "tests": [
+        {
+          "input": "1\n",
+          "expected": "0 growth=quadratic\n"
+        },
+        {
+          "input": "4\n",
+          "expected": "6 growth=quadratic\n"
+        },
+        {
+          "input": "10\n",
+          "expected": "45 growth=quadratic\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-file-roundtrip",
+      "atomId": "gesp-cpp.l4.file",
+      "title": "写入并重新读取本地数据文件",
+      "prompt": "读入整数n，使用文件流把n写入当前工作目录的data.txt，关闭后重新打开读回并输出文件中的值。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-file-roundtrip-concept",
+          "dimension": "understanding",
+          "prompt": "写完文件后立即重新读取前，为什么通常要关闭或flush输出流？",
+          "options": [
+            "确保缓冲内容写入文件",
+            "改变变量类型",
+            "启动网络"
+          ],
+          "answer": "确保缓冲内容写入文件"
+        },
+        {
+          "id": "gesp-student-cpp-file-roundtrip-trace",
+          "dimension": "procedure",
+          "prompt": "若写入12再正确读回，程序输出什么？",
+          "options": [
+            "12",
+            "data.txt",
+            "0"
+          ],
+          "answer": "12"
+        }
+      ],
+      "tests": [
+        {
+          "input": "12\n",
+          "expected": "12\n"
+        },
+        {
+          "input": "-7\n",
+          "expected": "-7\n"
+        },
+        {
+          "input": "0\n",
+          "expected": "0\n"
+        }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-safe-division-exception",
+      "atomId": "gesp-cpp.l4.exception",
+      "title": "用异常处理除数为零",
+      "prompt": "读入整数a、b。若b为0，输出undefined；否则输出a/b的整数商。可使用try/throw/catch或等价显式分支。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        {
+          "id": "gesp-student-cpp-safe-division-exception-concept",
+          "dimension": "understanding",
+          "prompt": "try块中的异常通常由什么接收？",
+          "options": [
+            "对应的catch块",
+            "输出文件名称",
+            "另一个程序进程"
+          ],
+          "answer": "对应的catch块"
+        },
+        {
+          "id": "gesp-student-cpp-safe-division-exception-trace",
+          "dimension": "procedure",
+          "prompt": "a=9、b=0时应输出什么？",
+          "options": [
+            "undefined",
+            "0",
+            "infinity"
+          ],
+          "answer": "undefined"
+        }
+      ],
+      "tests": [
+        {
+          "input": "9 0\n",
+          "expected": "undefined\n"
+        },
+        {
+          "input": "9 2\n",
+          "expected": "4\n"
+        },
+        {
+          "input": "-8 3\n",
+          "expected": "-2\n"
+        }
+      ]
+    }
+  ]
+}

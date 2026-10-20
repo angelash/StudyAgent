@@ -59,6 +59,12 @@ export const gespCodeSubmissionSchema = z.object({
   source: z.string().min(1).max(65536), requestKey: z.string().trim().min(8).max(120),
 }).strict();
 
+export const gespProbeSubmissionSchema = z.object({
+  studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), atomId: z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/),
+  probeId: z.string().regex(/^gesp-student-[a-z0-9-]{3,80}-(concept|trace)$/),
+  answer: z.string().trim().min(1).max(500), requestKey: z.string().trim().min(8).max(120),
+}).strict();
+
 export type GespLearningScope = {
   id: string; studentId: string; level: number; atomIds: string[]; status: 'active';
   version: number; confirmedByUserId: string; confirmedAt: string; updatedAt: string; requestKey: string; reason: string;
@@ -69,10 +75,18 @@ export type GespLearningScopeRevision = GespLearningScope & { scopeId: string };
 export type GespStudentTask = {
   id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17';
   timeLimitSeconds: number; memoryLimitMiB: number; reviewStatus: 'original_authored_pilot';
+  probes: Array<{ id: string; dimension: 'understanding' | 'procedure'; prompt: string; options: string[] }>;
+};
+
+export type GespProbeSubmissionReceipt = {
+  id: string; studentId: string; atomId: string; taskId: string; probeId: string;
+  dimension: 'understanding' | 'procedure'; status: 'correct' | 'incorrect'; requestKey: string; answer: string;
+  createdAt: string; analysis: string;
 };
 
 export type GespCodeSubmissionReceipt = {
   id: string; studentId: string; atomId: string; taskId: string; sourceSha256: string; status: 'passed' | 'failed' | 'error';
   createdAt: string; toolchain: string; compilePassed: boolean; requestKey: string; source: string;
+  compileDiagnostics: string[]; runtimeDiagnostics: Array<{ index: number; status: string; stderr: string }>;
   tests: Array<{ index: number; passed: boolean; status: string; exitCode: number | null; durationMs: number }>;
 };

@@ -1,0 +1,39 @@
+{
+  "format": "study-agent-gesp-student-content-audit-v2",
+  "at": "2026-10-20T19:29:02.900Z",
+  "passed": true,
+  "inputs": {
+    "resources/gesp/student-curriculum-v2.json": "9cc5512a95aa94277dd3c4298d239d6593e8c9c8ab03dee0ea459be68f87349d",
+    "resources/gesp/knowledge-map.json": "0131e9f7ef27755f1edacb6da6b40f1b6e6dc9bacb61760b27c0ba09f7345fb4"
+  },
+  "totals": {
+    "levels": 4,
+    "tasks": 49,
+    "probes": 98,
+    "hiddenTests": 162
+  },
+  "byLevel": {
+    "1": {
+      "atoms": 15,
+      "tasks": 15
+    },
+    "2": {
+      "atoms": 10,
+      "tasks": 10
+    },
+    "3": {
+      "atoms": 9,
+      "tasks": 9
+    },
+    "4": {
+      "atoms": 15,
+      "tasks": 15
+    }
+  },
+  "states": {
+    "publicationStatus": "original_authored_pilot",
+    "humanReviewCompleted": false,
+    "officialQuestionReuse": false
+  },
+  "scope": "Structural authored-pilot audit only; this is not official-syllabus review, psychometric validity or human acceptance."
+}

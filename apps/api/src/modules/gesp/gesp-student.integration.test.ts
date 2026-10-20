@@ -31,6 +31,8 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     const workspace = await call('get', `/gesp/students/${studentId}/workspace`);
     expect(workspace.scope).toMatchObject({ level: 1, atomIds: ['gesp-cpp.l1.division', 'gesp-cpp.l1.io', 'gesp-cpp.l1.loop'] });
     expect(workspace.tasks).toHaveLength(3); expect(JSON.stringify(workspace)).not.toContain('expected'); expect(JSON.stringify(workspace)).not.toContain('tests');
+    expect(workspace.tasks.find((task: any) => task.atomId === 'gesp-cpp.l1.io').probes).toHaveLength(2);
+    expect(JSON.stringify(workspace.tasks)).not.toContain('"answer"');
     await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io'], requestKey: randomUUID(),
       reason: '学生不能自行修改家长确认的范围' }, learner, 403);
     const requestKey = randomUUID(), narrowed = await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io'], requestKey,
@@ -42,6 +44,24 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     const history = await call('get', `/gesp/students/${studentId}/workspace`); expect(history.scopeHistory).toHaveLength(2);
   });
 
+  it('keeps concept and state-tracking evidence independent from code execution', async () => {
+    const probeKey = randomUUID(), answer = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
+      probeId: 'gesp-student-cpp-sum-two-concept', answer: 'cin 与 cout', requestKey: probeKey }, learner);
+    expect(answer).toMatchObject({ status: 'correct', dimension: 'understanding' });
+    const replay = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
+      probeId: 'gesp-student-cpp-sum-two-concept', answer: 'cin 与 cout', requestKey: probeKey }, learner); expect(replay.id).toBe(answer.id);
+    await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io', probeId: 'gesp-student-cpp-sum-two-concept',
+      answer: 'printf 与 scanf', requestKey: probeKey }, learner, 409);
+    const wrong = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
+      probeId: 'gesp-student-cpp-sum-two-trace', answer: '23', requestKey: randomUUID() }, learner); expect(wrong.status).toBe('incorrect');
+    await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io', probeId: 'gesp-student-cpp-sum-two-trace',
+      answer: '5', requestKey: randomUUID() }, parent, 403);
+    const workspace = await call('get', `/gesp/students/${studentId}/workspace`);
+    const capability = workspace.capabilities.find((row: any) => row.atomId === 'gesp-cpp.l1.io');
+    expect(capability.state).toBe('needs_verification'); expect(capability.hypothesis).toContain('状态跟踪');
+    expect(capability.dimensions).toContainEqual({ dimension: 'understanding', status: 'correct', attempts: 1 });
+  }, 30_000);
+
   it('runs source with hidden tests and returns only sanitized evidence', async () => {
     const source = '#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}';
     const requestKey = randomUUID(), first = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source, requestKey }, learner);
@@ -52,6 +72,9 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){return 1;}', requestKey }, learner, 409);
     const wrong = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){return 0;}', requestKey: randomUUID() }, learner);
     expect(wrong.status).toBe('failed'); expect(wrong.tests.some((row: any) => row.status === 'wrong_output')).toBe(true);
+    const compileError = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){ this is invalid; }',
+      requestKey: randomUUID() }, learner); expect(compileError).toMatchObject({ status: 'error', compilePassed: false });
+    expect(compileError.compileDiagnostics.length).toBeGreaterThan(0); expect(JSON.stringify(compileError)).not.toContain('/tmp/study-');
   }, 60_000);
 
   it('rejects points outside scope, parent code submission and unrelated guardians', async () => {

@@ -4,8 +4,8 @@ import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { isAbsolute, relative, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
-import { gespCodeSubmissionSchema, gespLearningScopeSchema, gespSearchSchema, type GespAtom, type GespCodeSubmissionReceipt, type GespOverview,
-  type GespLearningScopeRevision, type GespQuestion, type GespQuestionDetail, type GespStudentTask, type GespTeachingPlan } from '@study-agent/contracts';
+import { gespCodeSubmissionSchema, gespLearningScopeSchema, gespProbeSubmissionSchema, gespSearchSchema, type GespAtom, type GespCodeSubmissionReceipt, type GespOverview,
+  type GespLearningScopeRevision, type GespProbeSubmissionReceipt, type GespQuestion, type GespQuestionDetail, type GespStudentTask, type GespTeachingPlan } from '@study-agent/contracts';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
@@ -13,7 +13,8 @@ import { validate } from '../../common/validation';
 
 type IndexedQuestion = GespQuestion & { textPath: string; textSha256: string; answer: string | null;
   answerBasis: string | null; answerReviewStatus: string; referenceMaterialPresent: boolean; hiddenTestDataStatus: 'not_collected' };
-type PilotTask = GespStudentTask & { tests: Array<{ input: string; expected: string }> };
+type PrivateProbe = { id: string; dimension: 'understanding' | 'procedure'; prompt: string; options: string[]; answer: string; analysis?: string };
+type PilotTask = Omit<GespStudentTask, 'probes'> & { probes: PrivateProbe[]; tests: Array<{ input: string; expected: string }> };
 type PilotCurriculum = { format: string; version: string; status: string; notice: string; tasks: PilotTask[] };
 const hash = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex');
 const notice = '教研研究资料：机器文本可能遗漏公式、图示和代码。题目、答案、题族与知识映射均待审核，尚未用于学生诊断或自动运行程序。';
@@ -43,7 +44,7 @@ export class GespService implements OnModuleDestroy {
     return this.snapshot;
   }
   private studentData() {
-    if (!this.pilot) { const parsed = JSON.parse(readFileSync(this.resource('student-curriculum-v1.json'), 'utf8')) as PilotCurriculum; this.pilot = parsed; return parsed; }
+    if (!this.pilot) { const parsed = JSON.parse(readFileSync(this.resource('student-curriculum-v2.json'), 'utf8')) as PilotCurriculum; this.pilot = parsed; return parsed; }
     return this.pilot;
   }
   private index() {
@@ -104,13 +105,35 @@ export class GespService implements OnModuleDestroy {
   studentWorkspace(user: InMemoryUserAccount, studentId: string) {
     this.students.assertCanAccessStudent(user, studentId);
     const scope = this.store.find('gespLearningScopes', { studentId, status: 'active' }), tasks = this.studentData().tasks,
-      catalog = tasks.map(({ tests: _tests, ...task }) => task);
+      catalog = tasks.map(task => this.publicTask(task));
     if (!scope) return { studentId, scope: null, notice: this.studentData().notice, tasks: user.role === 'student' ? [] : catalog, availableTasks: catalog, submissions: [] };
-    const available = tasks.filter(task => scope.atomIds.includes(task.atomId)).map(({ tests: _tests, ...task }) => task);
+    const available = tasks.filter(task => scope.atomIds.includes(task.atomId)).map(task => this.publicTask(task));
     const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicSubmission(row));
+    const probes = this.store.select('gespProbeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicProbeSubmission(row));
     const scopeHistory = this.store.select('gespLearningScopeRevisions', { studentId }).sort((a, b) => a.version - b.version).map(row => this.scopeView(row));
     return { studentId, scope: this.scopeView(scope), scopeHistory, notice: this.studentData().notice, tasks: available,
-      availableTasks: user.role === 'student' ? [] : catalog, submissions };
+      availableTasks: user.role === 'student' ? [] : catalog, submissions, probeSubmissions: probes,
+      capabilities: this.capabilities(scope.atomIds, probes, submissions) };
+  }
+  submitProbe(user: InMemoryUserAccount, input: unknown) {
+    if (user.role !== 'student') throw new ForbiddenException('编程概念与跟踪任务必须由当前独立学习身份提交');
+    const command = validate(gespProbeSubmissionSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
+    const previous = this.store.find('gespProbeSubmissions', { studentId: command.studentId, requestKey: command.requestKey });
+    if (previous) {
+      if (previous.probeId !== command.probeId || previous.answer !== command.answer) throw new ConflictException('同一请求键不能改变探针答案');
+      return this.publicProbeSubmission(previous);
+    }
+    const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
+    if (!scope || !scope.atomIds.includes(command.atomId)) throw new ForbiddenException('该知识点不在家长已确认的GESP学习范围内');
+    const task = this.studentData().tasks.find(row => row.atomId === command.atomId), probe = task?.probes.find(row => row.id === command.probeId);
+    if (!task || !probe) throw new NotFoundException('探针不存在或不属于当前知识点');
+    if (!probe.options.includes(command.answer)) throw new BadRequestException('请选择一个有效选项');
+    const status = command.answer === probe.answer ? 'correct' as const : 'incorrect' as const;
+    const receipt: GespProbeSubmissionReceipt = { id: this.store.nextId('gesp_probe'), studentId: command.studentId, atomId: command.atomId,
+      taskId: task.id, probeId: probe.id, dimension: probe.dimension, status, requestKey: command.requestKey, answer: command.answer,
+      createdAt: new Date().toISOString(), analysis: status === 'correct' ? (probe.analysis ?? '当前证据支持这一判断。') :
+        `当前判断还不一致。请回到题目材料，核对当前知识点的可观察目标：${task.title}。本结果只针对该探针，不直接确定更深原因。` };
+    this.store.append('gespProbeSubmissions', receipt); return this.publicProbeSubmission(receipt);
   }
   async submitCode(user: InMemoryUserAccount, input: unknown) {
     if (user.role !== 'student') throw new ForbiddenException('编程作答必须由当前独立学习身份提交');
@@ -124,11 +147,42 @@ export class GespService implements OnModuleDestroy {
     const status = receipt.passed ? 'passed' as const : receipt.compile?.passed ? 'failed' as const : 'error' as const;
     const row: GespCodeSubmissionReceipt = { id: this.store.nextId('gesp_submission'), studentId: command.studentId, atomId: command.atomId,
       taskId: task.id, sourceSha256, status, createdAt: now, toolchain: receipt.toolchain, compilePassed: Boolean(receipt.compile?.passed),
-      requestKey: command.requestKey, source: command.source, tests: (receipt.tests ?? []).map((test: any) => ({ index: test.index, passed: test.passed,
+      requestKey: command.requestKey, source: command.source, compileDiagnostics: this.safeDiagnostic(receipt.compile?.stderr),
+      runtimeDiagnostics: (receipt.tests ?? []).filter((test: any) => test.stderr).map((test: any) => ({ index: test.index,
+        status: test.status, stderr: this.safeDiagnostic(test.stderr).join('\n').slice(0, 2000) })),
+      tests: (receipt.tests ?? []).map((test: any) => ({ index: test.index, passed: test.passed,
         status: test.status, exitCode: test.exitCode, durationMs: test.durationMs })) };
     this.store.append('gespCodeSubmissions', row); return this.publicSubmission(row);
   }
   private scopeView(scope: any) { const { confirmedByUserId: _confirmedByUserId, ...safe } = scope; return safe; }
+  private publicTask(task: PilotTask): GespStudentTask {
+    const { tests: _tests, ...publicTask } = task;
+    return { ...publicTask, probes: task.probes.map(({ answer: _answer, analysis: _analysis, ...probe }) => probe) };
+  }
+  private publicProbeSubmission(row: GespProbeSubmissionReceipt) { const { requestKey: _requestKey, ...safe } = row; return safe; }
+  private capabilities(atomIds: string[], probes: any[], submissions: any[]) {
+    return atomIds.map(atomId => {
+      const latestProbe = (dimension: string) => probes.find(row => row.atomId === atomId && row.dimension === dimension);
+      const latestCode = submissions.find(row => row.atomId === atomId), understanding = latestProbe('understanding'), procedure = latestProbe('procedure'),
+        dimensions = [{ dimension: 'understanding', status: understanding?.status ?? 'unknown', attempts: probes.filter(row => row.atomId === atomId && row.dimension === 'understanding').length },
+          { dimension: 'procedure', status: procedure?.status ?? 'unknown', attempts: probes.filter(row => row.atomId === atomId && row.dimension === 'procedure').length },
+          { dimension: 'implementation', status: latestCode?.status ?? 'unknown', attempts: submissions.filter(row => row.atomId === atomId).length }];
+      const known = dimensions.filter(row => row.status !== 'unknown'), met = dimensions.filter(row => row.status === 'correct' || row.status === 'passed'),
+        failed = dimensions.filter(row => row.status === 'incorrect' || row.status === 'failed' || row.status === 'error');
+      const state = !known.length ? 'unknown' : met.length === 3 ? 'current_evidence_met' : failed.length ? 'needs_verification' : 'partial_evidence';
+      let hypothesis = '继续完成未测维度，暂不推断能力原因。', nextAction = '完成三个维度的独立任务后，再比较概念、状态跟踪和代码实现。';
+      if (understanding?.status === 'incorrect') { hypothesis = '规则或概念理解假设仍待验证'; nextAction = '先独立重做概念探针，并用反例解释规则，不立即增加同型代码量。'; }
+      else if (procedure?.status === 'incorrect') { hypothesis = '状态跟踪或步骤执行假设仍待验证'; nextAction = '用状态表逐步跟踪相同小例子，再换输入复测。'; }
+      else if (latestCode?.status === 'error') { hypothesis = '编译或语言形式问题是当前表面障碍'; nextAction = '根据编译器诊断修复语法或类型问题，再运行原有边界。'; }
+      else if (latestCode?.status === 'failed') { hypothesis = '边界、输入输出或实现细节假设仍待验证'; nextAction = '保留概念与跟踪证据，分别检查最小输入、边界和输出格式。'; }
+      else if (state === 'current_evidence_met') { hypothesis = '当前三个维度均有通过证据'; nextAction = '安排同构新任务与延迟复测，验证迁移和保持。'; }
+      return { atomId, state, dimensions, hypothesis, nextAction };
+    });
+  }
+  private safeDiagnostic(value: unknown) {
+    return String(value ?? '').replace(/(?:\/tmp|\/dev\/shm)\/study-(?:agent-)?gesp-[^/\s:]+/g, 'sandbox').split(/\r?\n/)
+      .map(line => line.trim()).filter(Boolean).slice(0, 30).map(line => line.slice(0, 500));
+  }
   private appendScopeRevision(scope: any) {
     const revision: GespLearningScopeRevision = { ...structuredClone(scope), id: this.store.nextId('gesp_scope_revision'), scopeId: scope.id };
     this.store.append('gespLearningScopeRevisions', revision);

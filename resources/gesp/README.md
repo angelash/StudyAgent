@@ -1,6 +1,6 @@
 # GESP C++ 教研资料与教学衔接
 
-状态：资料补充与独立教研轨道已接入；学生课程发布、诊断和程序运行待建设。基准日：2026-10-20。
+状态：资料补充、独立教研轨道、隔离C++运行器和1～4级49点原创学生试点已接入；完整课程审核、规则诊断和间隔复测待建设。基准日：2026-10-21。
 
 ## 查看入口
 
@@ -38,7 +38,7 @@
 
 原始HTML、PDF、完整提取、单题文本、只读SQLite索引与抽查PNG在 `data/gesp`，受现有Git忽略规则控制，**不随提交保存，必须单独备份**。可用 `STUDY_GESP_ROOT` 配置部署后的档案目录；目录内部仍保持 `raw/`、`extracted/`、`questions/`、`catalog.sqlite3` 布局。采集脚本固定写工作区 `data/gesp`，部署时复制经校验的整包到配置目录。
 
-独立GESP轨道不占用小学学科或年级。图谱中的 `runtimeCompatible=false` 指不能导入现有小学课程包；`integrationStatus=research_workbench_only` 指已接入教研读取。既有小学课程仍为258点、6,974道原创任务。
+独立GESP轨道不占用小学学科或年级。图谱中的 `runtimeCompatible=false` 指不能导入现有小学课程包；`integrationStatus=research_workbench_only` 指教研读取与原创试点尚未成为已审核正式课程。学生试点由 `student-curriculum-v2.json` 保存49个任务、98个概念/跟踪探针和162组隐藏测试；所有任务仍标记为 `original_authored_pilot`。既有小学课程仍为258点、15,758道原创任务。
 
 ## 复现与更新
 
@@ -51,7 +51,10 @@ python -X utf8 scripts/gesp/build_knowledge_map.py
 python -X utf8 scripts/gesp/build_catalog.py
 python -X utf8 scripts/gesp/build_runtime_index.py
 python -X utf8 scripts/gesp/validate_preparation.py --report resources/gesp/validation.json
+node scripts/content/build-gesp-student-curriculum.cjs
 ```
+
+最后一条命令从已冻结的六点试点基底重建 `student-curriculum-v2.json`，覆盖1～4级49个原创学生试点任务；重建后运行 `apps/api/src/modules/gesp/student-curriculum.test.ts`，确认覆盖、ID、探针和隐藏测试结构。
 
 重建索引后重启API。在线更新官网资料使用 `capture_sources.py --refresh`；镜像固定在 `supplements.json` 所记提交，不追踪仓库最新分支。更新后审核差异并重建全部派生文件，不自动发布。
 

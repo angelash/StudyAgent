@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { runSubmission } = require('../gesp/run_submission.cjs');
+const { spawnSync } = require('node:child_process');
 
 const output = path.resolve(process.argv[2] ?? 'data/qa/gesp-runner-runtime.json');
 const started = Date.now();
@@ -15,9 +16,18 @@ assert.equal(timeout.passed, false); assert.equal(timeout.tests[0].status, 'time
 const blocked = runSubmission({ source: '#include <fstream>\n#include <iostream>\nint main(){std::ifstream f("/mnt/c/Windows/win.ini");std::cout<<(f?"OPENED":"BLOCKED")<<"\\n";}',
   tests: [{ input: '', expected: 'BLOCKED' }] });
 assert.equal(blocked.passed, true); assert.equal(blocked.tests[0].stdout.trim(), 'BLOCKED');
+let linuxNative = null;
+if (process.platform === 'win32') {
+  const mapped = process.cwd().replace(/^([A-Za-z]):\\/, (_, drive) => `/mnt/${drive.toLowerCase()}/`).replaceAll('\\', '/');
+  const linux = spawnSync('wsl.exe', ['-d', process.env.STUDY_GESP_WSL_DISTRO || 'Ubuntu', 'bash', '-lc', `cd '${mapped}' && node scripts/gesp/run_submission.cjs`],
+    { input: JSON.stringify({ source: '#include <iostream>\nint main(){std::cout<<"linux\\n";}', tests: [{ input: '', expected: 'linux' }] }),
+      encoding: 'utf8', windowsHide: true, timeout: 60_000 });
+  assert.equal(linux.status, 0, linux.stderr); const receipt = JSON.parse(linux.stdout);
+  assert.equal(receipt.host, 'linux-native'); assert.equal(receipt.passed, true); linuxNative = { host: receipt.host, passed: receipt.passed };
+}
 const receipt = { format: 'study-agent-gesp-runner-acceptance-v1', at: new Date().toISOString(), passed: true,
   elapsedMs: Date.now() - started, checks: { valid: valid.passed, wrong: wrong.tests[0].status, timeout: timeout.tests[0].status,
-    filesystemBoundary: blocked.tests[0].stdout.trim() }, toolchain: valid.toolchain, limits: valid.limits,
+    filesystemBoundary: blocked.tests[0].stdout.trim(), linuxNative }, toolchain: valid.toolchain, limits: valid.limits,
   receiptSha256: { valid: valid.sourceSha256, wrong: wrong.sourceSha256, timeout: timeout.sourceSha256, filesystemBoundary: blocked.sourceSha256 },
   scope: 'One local WSL Linux namespace and static C++17 toolchain. This establishes the runner boundary only, not curriculum review or human programming assessment.' };
 fs.mkdirSync(path.dirname(output), { recursive: true }); fs.writeFileSync(output, JSON.stringify(receipt, null, 2) + '\n');

@@ -16,6 +16,7 @@ export class GespController {
     return this.gesp.studentWorkspace(req.user, studentId);
   }
   @Post('code-submissions') submitCode(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.submitCode(req.user, body); }
+  @Post('probe-submissions') submitProbe(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.submitProbe(req.user, body); }
   @Get('atoms') atoms(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.atoms(req.user, query); }
   @Get('questions') search(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.search(req.user, query); }
   @Get('questions/:id') detail(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.gesp.detail(req.user, id); }

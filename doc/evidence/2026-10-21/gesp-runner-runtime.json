@@ -1,13 +1,17 @@
 {
   "format": "study-agent-gesp-runner-acceptance-v1",
-  "at": "2026-10-20T17:48:20.159Z",
+  "at": "2026-10-20T19:14:34.277Z",
   "passed": true,
-  "elapsedMs": 23872,
+  "elapsedMs": 25616,
   "checks": {
     "valid": true,
     "wrong": "wrong_output",
     "timeout": "timeout",
-    "filesystemBoundary": "BLOCKED"
+    "filesystemBoundary": "BLOCKED",
+    "linuxNative": {
+      "host": "linux-native",
+      "passed": true
+    }
   },
   "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
   "limits": {
@@ -19,6 +23,8 @@
     "runSeconds": 2,
     "cpuSeconds": 3,
     "virtualMemoryKb": 262144,
+    "compileMemoryKb": 524288,
+    "compileFileBytesKb": 32768,
     "processes": 32,
     "fileBytesKb": 1024,
     "openFiles": 64

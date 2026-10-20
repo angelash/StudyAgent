@@ -1,0 +1,138 @@
+{
+  "format": "gesp-student-pilot-v1",
+  "version": "2026-10-21-v1",
+  "track": "gesp-cpp",
+  "status": "original_authored_pilot",
+  "notice": "仅含原创试点编程题，用于验证独立范围、隔离运行和证据链；不代表1至4级完整审核课程。",
+  "tasks": [
+    {
+      "id": "gesp-student-cpp-sum-two",
+      "atomId": "gesp-cpp.l1.io",
+      "title": "读入两个整数并输出和",
+      "prompt": "从标准输入读入两个整数，向标准输出写它们的和。不要输出提示语。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-sum-two-concept", "dimension": "understanding", "prompt": "标准输入与标准输出的正确C++对象是？", "options": ["cin 与 cout", "printf 与 scanf", "ifstream 与 getline"], "answer": "cin 与 cout" },
+        { "id": "gesp-student-cpp-sum-two-trace", "dimension": "procedure", "prompt": "读入“2 3”后，计算a+b并输出的结果是什么？", "options": ["5", "23", "6"], "answer": "5" }
+      ],
+      "tests": [
+        { "input": "2 3\n", "expected": "5\n" },
+        { "input": "-4 9\n", "expected": "5\n" },
+        { "input": "0 0\n", "expected": "0\n" },
+        { "input": "1000000000 2000000000\n", "expected": "3000000000\n" },
+        { "input": "-10 -15\n", "expected": "-25\n" }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-division",
+      "atomId": "gesp-cpp.l1.division",
+      "title": "输出整除商与余数",
+      "prompt": "读入非负整数a和正整数b，依次输出a除以b的商和余数，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-division-concept", "dimension": "understanding", "prompt": "整数运算17/5的商和17%5的余数分别是？", "options": ["3 和 2", "3.4 和 0", "2 和 3"], "answer": "3 和 2" },
+        { "id": "gesp-student-cpp-division-trace", "dimension": "procedure", "prompt": "a=3，b=7时，依次输出a/b与a%b的结果是什么？", "options": ["0 3", "3 0", "0.428571 3"], "answer": "0 3" }
+      ],
+      "tests": [
+        { "input": "17 5\n", "expected": "3 2\n" },
+        { "input": "20 4\n", "expected": "5 0\n" },
+        { "input": "3 7\n", "expected": "0 3\n" },
+        { "input": "0 9\n", "expected": "0 0\n" },
+        { "input": "99 10\n", "expected": "9 9\n" }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-compare",
+      "atomId": "gesp-cpp.l1.relations",
+      "title": "比较两个整数",
+      "prompt": "读入两个整数a和b。若a<b输出-1，若a=b输出0，若a>b输出1。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-compare-concept", "dimension": "understanding", "prompt": "表达式a>b在a=3、b=8时的结果是？", "options": ["false", "true", "无法比较"], "answer": "false" },
+        { "id": "gesp-student-cpp-compare-trace", "dimension": "procedure", "prompt": "读入“9 2”后，按题目规则输出什么？", "options": ["1", "-1", "0"], "answer": "1" }
+      ],
+      "tests": [
+        { "input": "2 5\n", "expected": "-1\n" },
+        { "input": "5 5\n", "expected": "0\n" },
+        { "input": "9 2\n", "expected": "1\n" },
+        { "input": "-3 4\n", "expected": "-1\n" },
+        { "input": "-8 -8\n", "expected": "0\n" }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-swap",
+      "atomId": "gesp-cpp.l1.sequence",
+      "title": "交换两个变量后输出",
+      "prompt": "依次读入两个整数a和b，交换两个变量的值，然后先输出b的原值，再输出a的原值，用空格分隔。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-swap-concept", "dimension": "understanding", "prompt": "交换a、b两个变量的值后，内存中保存的数值有什么变化？", "options": ["两个变量保存的值互换", "只有变量名改变", "两个变量都变成0"], "answer": "两个变量保存的值互换" },
+        { "id": "gesp-student-cpp-swap-trace", "dimension": "procedure", "prompt": "原输入a=3、b=7，按题目要求先输出b原值再输出a原值，结果是什么？", "options": ["7 3", "3 7", "10 10"], "answer": "7 3" }
+      ],
+      "tests": [
+        { "input": "3 7\n", "expected": "7 3\n" },
+        { "input": "-2 5\n", "expected": "5 -2\n" },
+        { "input": "0 0\n", "expected": "0 0\n" },
+        { "input": "100 -7\n", "expected": "-7 100\n" }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-sign",
+      "atomId": "gesp-cpp.l1.branch",
+      "title": "判断整数符号",
+      "prompt": "读入一个整数n。n为负数输出negative，为0输出zero，为正数输出positive。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-sign-concept", "dimension": "understanding", "prompt": "要区分负数、零和正数，条件判断必须覆盖几种互斥情况？", "options": ["3种", "2种", "1种"], "answer": "3种" },
+        { "id": "gesp-student-cpp-sign-trace", "dimension": "procedure", "prompt": "输入n=0时，程序应输出什么？", "options": ["zero", "positive", "negative"], "answer": "zero" }
+      ],
+      "tests": [
+        { "input": "-6\n", "expected": "negative\n" },
+        { "input": "0\n", "expected": "zero\n" },
+        { "input": "12\n", "expected": "positive\n" },
+        { "input": "-1\n", "expected": "negative\n" }
+      ]
+    },
+    {
+      "id": "gesp-student-cpp-sum-range",
+      "atomId": "gesp-cpp.l1.loop",
+      "title": "累加1到n",
+      "prompt": "读入非负整数n，使用循环计算1+2+...+n并输出结果。n为0时输出0。",
+      "language": "cpp",
+      "standard": "C++17",
+      "timeLimitSeconds": 2,
+      "memoryLimitMiB": 256,
+      "reviewStatus": "original_authored_pilot",
+      "probes": [
+        { "id": "gesp-student-cpp-sum-range-concept", "dimension": "understanding", "prompt": "使用循环累加1到n时，累加器应在什么时候更新？", "options": ["每一次循环处理当前数时", "只循环结束后一次", "循环开始前一次"], "answer": "每一次循环处理当前数时" },
+        { "id": "gesp-student-cpp-sum-range-trace", "dimension": "procedure", "prompt": "输入n=5，循环计算1+2+3+4+5的结果是什么？", "options": ["15", "10", "20"], "answer": "15" }
+      ],
+      "tests": [
+        { "input": "0\n", "expected": "0\n" },
+        { "input": "1\n", "expected": "1\n" },
+        { "input": "5\n", "expected": "15\n" },
+        { "input": "100000\n", "expected": "5000050000\n" }
+      ]
+    }
+  ]
+}
