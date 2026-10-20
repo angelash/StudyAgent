@@ -46,3 +46,33 @@ export type GespOverview = {
   sourceGaps: Array<{ session: string; level: number; status: string; officialStatus: string }>;
   quarantinedLinks: number; unrecoveredObjectiveAnswers: number; teachingPlan: GespTeachingPlan;
 };
+
+export const gespLearningScopeSchema = z.object({
+  level: z.number().int().min(1).max(4),
+  atomIds: z.array(z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/)).min(1).max(49),
+  requestKey: z.string().trim().min(8).max(120),
+  reason: z.string().trim().min(8).max(500),
+}).strict();
+
+export const gespCodeSubmissionSchema = z.object({
+  studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), atomId: z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/),
+  source: z.string().min(1).max(65536), requestKey: z.string().trim().min(8).max(120),
+}).strict();
+
+export type GespLearningScope = {
+  id: string; studentId: string; level: number; atomIds: string[]; status: 'active';
+  version: number; confirmedByUserId: string; confirmedAt: string; updatedAt: string; requestKey: string; reason: string;
+};
+
+export type GespLearningScopeRevision = GespLearningScope & { scopeId: string };
+
+export type GespStudentTask = {
+  id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17';
+  timeLimitSeconds: number; memoryLimitMiB: number; reviewStatus: 'original_authored_pilot';
+};
+
+export type GespCodeSubmissionReceipt = {
+  id: string; studentId: string; atomId: string; taskId: string; sourceSha256: string; status: 'passed' | 'failed' | 'error';
+  createdAt: string; toolchain: string; compilePassed: boolean; requestKey: string; source: string;
+  tests: Array<{ index: number; passed: boolean; status: string; exitCode: number | null; durationMs: number }>;
+};

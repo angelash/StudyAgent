@@ -19,7 +19,7 @@
 
 教研工作台现显示258点齐备、0点有效素材缺口，并分别核对结构和四题组题预算；两库当前暖HTTP p95均低于500毫秒。后续验收转向教材逐课时映射、真实设备/人员、跨环境候选与最终需求闭环，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新数学收据。
 
-GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。独立学生课程与题族审核尚未发布，隔离C++运行器已完成恶意源码、错误输出、超时和文件系统边界验证，不计入上述小学原创任务数。见 [GESP资料与恢复说明](resources/gesp/README.md)、[隔离运行器交付](doc/product/65-gesp-isolated-runner-delivery.md) 和 [G1～G5计划](doc/product/64-gesp-student-programming-development-plan.md)。
+GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。隔离C++运行器和6个一级原创试点任务已接入独立家长范围与学生工作台，隐藏测试不回传；完整1～4级课程审核仍未发布，也不计入上述小学原创任务数。见 [GESP试点交付](doc/product/66-gesp-student-pilot-delivery.md)、[隔离运行器交付](doc/product/65-gesp-isolated-runner-delivery.md) 和 [G1～G5计划](doc/product/64-gesp-student-programming-development-plan.md)。
 
 448册真实教材中112册已有章节，新增12册小学语文上下册的课名、页码和组合课层级；目录与知识点映射分别审核，旧评测保留原版本。来源、离线重建与两库运行证据见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md)。
 

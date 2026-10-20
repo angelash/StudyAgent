@@ -155,6 +155,11 @@ export class DomainDatabase {
       CREATE INDEX IF NOT EXISTS domain_collection_order ON domain_records(collection,position,record_id);
       ${['studentId', 'sessionId', 'questionId', 'parentUserId', 'userId', 'responseId'].map(field =>
         `CREATE INDEX IF NOT EXISTS domain_lookup_${field.toLowerCase()} ON domain_records(collection,${extract(field)}) WHERE ${extract(field)} IS NOT NULL`).join(';')};`);
+    await this.migrateConstraints(9, [
+      { name: 'gesp_learning_scope_student', collection: 'gespLearningScopes', fields: ['studentId'] },
+      { name: 'gesp_learning_scope_request', collection: 'gespLearningScopeRevisions', fields: ['studentId', 'requestKey'] },
+      { name: 'gesp_code_submission_request', collection: 'gespCodeSubmissions', fields: ['studentId', 'requestKey'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

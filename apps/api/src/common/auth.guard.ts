@@ -20,6 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+    /^gesp\/students\/[^/]+\/workspace$/,
     /^learning\/students\/[^/]+\/notebook(\/[^/]+\/[^/]+)?$/,
     /^students\/[^/]+\/(profile|learning-scope|progress-proposals)$/, /^diagnostics\/curriculum$/, /^diagnostics\/textbooks(\/[^/]+)?$/,
     /^diagnostics\/sessions$/, /^diagnostics\/sessions\/[^/]+(\/(report|report-history|analysis-status)|\/items\/[^/]+)?$/,
@@ -37,7 +38,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/sessions\/[^/]+\/(responses|complete)$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/hint$/,
     /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
-    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/],
+    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/code-submissions$/],
   PUT: [/^learning\/media\/[^/]+\/chunks\/\d+$/],
   PATCH: [/^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };

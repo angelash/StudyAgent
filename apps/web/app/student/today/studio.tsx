@@ -103,6 +103,7 @@ export function DailyStudio() {
       {child && <p>{child.nickname} · {child.grade}年级 · {subjectNames[subject]}</p>}
       {practice && <button className="studio-text-button" onClick={leave}>← 返回今日安排</button>}
       <Link className="studio-text-button" href={assessmentHref}>查看知识诊断与计划 ↗</Link>
+      {studentMode && <Link className="studio-text-button" href="/student/gesp">进入GESP编程试点 ↗</Link>}
     </aside>
     <section className="studio-main" aria-busy={busy}>
       {error && <div className="studio-error" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}

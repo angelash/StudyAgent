@@ -1,0 +1,46 @@
+{
+  "format": "study-agent-gesp-student-pilot-v1",
+  "at": "2026-10-20T18:11:20.314Z",
+  "passed": true,
+  "regression": {
+    "suites": 146,
+    "tests": 684,
+    "passed": 678,
+    "failed": 0,
+    "pending": 6
+  },
+  "postgres": {
+    "passedAllCases": true,
+    "cases": 6,
+    "schemaVersion": 9
+  },
+  "curriculum": {
+    "tasks": 6,
+    "hiddenTests": 27,
+    "atomIds": [
+      "gesp-cpp.l1.io",
+      "gesp-cpp.l1.division",
+      "gesp-cpp.l1.relations",
+      "gesp-cpp.l1.sequence",
+      "gesp-cpp.l1.branch",
+      "gesp-cpp.l1.loop"
+    ]
+  },
+  "uiRoutes": [
+    "/parent/gesp",
+    "/student/gesp"
+  ],
+  "limits": [
+    "Original pilot content only",
+    "Not a reviewed Level 1-4 course",
+    "No human teacher or student validation"
+  ],
+  "build": {
+    "rootBuild": "passed",
+    "rootLint": "passed",
+    "routes": [
+      "/parent/gesp",
+      "/student/gesp"
+    ]
+  }
+}

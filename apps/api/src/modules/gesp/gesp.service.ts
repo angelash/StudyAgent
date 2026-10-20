@@ -3,23 +3,30 @@ import { DatabaseSync } from 'node:sqlite';
 import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { isAbsolute, relative, resolve } from 'node:path';
-import { gespSearchSchema, type GespAtom, type GespOverview, type GespQuestion, type GespQuestionDetail, type GespTeachingPlan } from '@study-agent/contracts';
-import type { InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { spawn } from 'node:child_process';
+import { gespCodeSubmissionSchema, gespLearningScopeSchema, gespSearchSchema, type GespAtom, type GespCodeSubmissionReceipt, type GespOverview,
+  type GespLearningScopeRevision, type GespQuestion, type GespQuestionDetail, type GespStudentTask, type GespTeachingPlan } from '@study-agent/contracts';
+import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { validate } from '../../common/validation';
 
 type IndexedQuestion = GespQuestion & { textPath: string; textSha256: string; answer: string | null;
   answerBasis: string | null; answerReviewStatus: string; referenceMaterialPresent: boolean; hiddenTestDataStatus: 'not_collected' };
+type PilotTask = GespStudentTask & { tests: Array<{ input: string; expected: string }> };
+type PilotCurriculum = { format: string; version: string; status: string; notice: string; tasks: PilotTask[] };
 const hash = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex');
 const notice = '教研研究资料：机器文本可能遗漏公式、图示和代码。题目、答案、题族与知识映射均待审核，尚未用于学生诊断或自动运行程序。';
 
 @Injectable()
 export class GespService implements OnModuleDestroy {
   private db?: DatabaseSync;
+  private pilot?: PilotCurriculum;
   private snapshot?: { graph: { atoms: GespAtom[] }; coverage: {
     coverage: Array<{ session: string; level: number; status: string; officialStatus?: string; questionCount?: number }>;
     quarantinedLinks: unknown[]; unrecoveredObjectiveAnswers: number }; plan: GespTeachingPlan; asOf: string };
   get root() { return resolve(process.env.STUDY_GESP_ROOT ?? resolve(workspaceRoot(), 'data/gesp')); }
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService) {}
   private resource(name: string) { return resolve(workspaceRoot(), 'resources/gesp', name); }
   assertAccess(user: InMemoryUserAccount) {
     if (!['admin', 'teacher'].includes(user.role)) throw new ForbiddenException('GESP资料需要教研权限');
@@ -34,6 +41,10 @@ export class GespService implements OnModuleDestroy {
       } catch { throw new ServiceUnavailableException('GESP版本化资料未安装，请恢复 resources/gesp'); }
     }
     return this.snapshot;
+  }
+  private studentData() {
+    if (!this.pilot) { const parsed = JSON.parse(readFileSync(this.resource('student-curriculum-v1.json'), 'utf8')) as PilotCurriculum; this.pilot = parsed; return parsed; }
+    return this.pilot;
   }
   private index() {
     if (this.db) return this.db;
@@ -68,6 +79,68 @@ export class GespService implements OnModuleDestroy {
         level: c.level, status: c.status, officialStatus: c.officialStatus ?? c.status })),
       quarantinedLinks: data.coverage.quarantinedLinks.length, unrecoveredObjectiveAnswers: data.coverage.unrecoveredObjectiveAnswers,
       teachingPlan: data.plan };
+  }
+  setStudentScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
+    this.students.assertGuardian(user, studentId);
+    const command = validate(gespLearningScopeSchema, input), tasks = this.studentData().tasks;
+    if (!command.atomIds.every(atomId => tasks.some(task => task.atomId === atomId))) throw new BadRequestException('范围包含尚无原创试点题的知识点');
+    if (!command.atomIds.every(atomId => atomId.startsWith(`gesp-cpp.l${command.level}.`))) throw new BadRequestException('认证等级与知识点命名空间不一致');
+    const replayed = this.store.find('gespLearningScopeRevisions', { studentId, requestKey: command.requestKey });
+    if (replayed) return this.scopeView(this.store.find('gespLearningScopes', { studentId })!);
+    const previous = this.store.find('gespLearningScopes', { studentId }), now = new Date().toISOString();
+    if (previous) {
+      previous.level = command.level; previous.atomIds = [...new Set(command.atomIds)].sort(); previous.version++; previous.confirmedByUserId = user.id;
+      previous.confirmedAt = now; previous.updatedAt = now; previous.requestKey = command.requestKey; previous.reason = command.reason;
+      this.appendScopeRevision(previous); return this.scopeView(previous);
+    }
+    const scope = { id: this.store.nextId('gesp_scope'), studentId, level: command.level, atomIds: [...new Set(command.atomIds)].sort(), status: 'active' as const,
+      version: 1, confirmedByUserId: user.id, confirmedAt: now, updatedAt: now, requestKey: command.requestKey, reason: command.reason };
+    this.store.append('gespLearningScopes', scope); this.appendScopeRevision(scope); return this.scopeView(scope);
+  }
+  studentWorkspace(user: InMemoryUserAccount, studentId: string) {
+    this.students.assertCanAccessStudent(user, studentId);
+    const scope = this.store.find('gespLearningScopes', { studentId, status: 'active' }), tasks = this.studentData().tasks,
+      catalog = tasks.map(({ tests: _tests, ...task }) => task);
+    if (!scope) return { studentId, scope: null, notice: this.studentData().notice, tasks: user.role === 'student' ? [] : catalog, availableTasks: catalog, submissions: [] };
+    const available = tasks.filter(task => scope.atomIds.includes(task.atomId)).map(({ tests: _tests, ...task }) => task);
+    const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicSubmission(row));
+    const scopeHistory = this.store.select('gespLearningScopeRevisions', { studentId }).sort((a, b) => a.version - b.version).map(row => this.scopeView(row));
+    return { studentId, scope: this.scopeView(scope), scopeHistory, notice: this.studentData().notice, tasks: available,
+      availableTasks: user.role === 'student' ? [] : catalog, submissions };
+  }
+  async submitCode(user: InMemoryUserAccount, input: unknown) {
+    if (user.role !== 'student') throw new ForbiddenException('编程作答必须由当前独立学习身份提交');
+    const command = validate(gespCodeSubmissionSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
+    const previous = this.store.find('gespCodeSubmissions', { studentId: command.studentId, requestKey: command.requestKey });
+    if (previous) return this.publicSubmission(previous);
+    const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
+    if (!scope || !scope.atomIds.includes(command.atomId)) throw new ForbiddenException('该知识点不在家长已确认的GESP学习范围内');
+    const task = this.studentData().tasks.find(row => row.atomId === command.atomId); if (!task) throw new NotFoundException('该知识点尚无已发布试点题');
+    const receipt = await this.runCpp(command.source, task.tests), now = new Date().toISOString(), sourceSha256 = receipt.sourceSha256;
+    const status = receipt.passed ? 'passed' as const : receipt.compile?.passed ? 'failed' as const : 'error' as const;
+    const row: GespCodeSubmissionReceipt = { id: this.store.nextId('gesp_submission'), studentId: command.studentId, atomId: command.atomId,
+      taskId: task.id, sourceSha256, status, createdAt: now, toolchain: receipt.toolchain, compilePassed: Boolean(receipt.compile?.passed),
+      requestKey: command.requestKey, source: command.source, tests: (receipt.tests ?? []).map((test: any) => ({ index: test.index, passed: test.passed,
+        status: test.status, exitCode: test.exitCode, durationMs: test.durationMs })) };
+    this.store.append('gespCodeSubmissions', row); return this.publicSubmission(row);
+  }
+  private scopeView(scope: any) { const { confirmedByUserId: _confirmedByUserId, ...safe } = scope; return safe; }
+  private appendScopeRevision(scope: any) {
+    const revision: GespLearningScopeRevision = { ...structuredClone(scope), id: this.store.nextId('gesp_scope_revision'), scopeId: scope.id };
+    this.store.append('gespLearningScopeRevisions', revision);
+  }
+  private publicSubmission(row: GespCodeSubmissionReceipt) { const { source: _source, requestKey: _requestKey, ...safe } = row; return safe; }
+  private runCpp(source: string, tests: Array<{ input: string; expected: string }>) {
+    const script = resolve(workspaceRoot(), 'scripts/gesp/run_submission.cjs');
+    return new Promise<any>((resolvePromise, reject) => {
+      const stdout: Buffer[] = [], stderr: Buffer[] = [];
+      const child = spawn(process.execPath, [script], { cwd: workspaceRoot(), windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] }), timer = setTimeout(() => child.kill(), 60_000);
+      child.stdout.on('data', chunk => stdout.push(chunk)); child.stderr.on('data', chunk => stderr.push(chunk));
+      child.on('error', error => { clearTimeout(timer); reject(new ServiceUnavailableException(`GESP运行器不可用：${error.message}`)); });
+      child.on('close', () => { clearTimeout(timer); try { resolvePromise(JSON.parse(Buffer.concat(stdout).toString('utf8'))); }
+        catch { reject(new ServiceUnavailableException(`GESP运行器未返回有效收据：${Buffer.concat(stderr).toString('utf8').slice(0, 500)}`)); } });
+      child.stdin.end(JSON.stringify({ source, tests }));
+    });
   }
   atoms(user: InMemoryUserAccount, input: unknown) {
     this.assertAccess(user);
