@@ -1,0 +1,33 @@
+{
+  "format": "study-agent-gesp-runner-acceptance-v1",
+  "at": "2026-10-20T17:48:20.159Z",
+  "passed": true,
+  "elapsedMs": 23872,
+  "checks": {
+    "valid": true,
+    "wrong": "wrong_output",
+    "timeout": "timeout",
+    "filesystemBoundary": "BLOCKED"
+  },
+  "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "limits": {
+    "sourceBytes": 65536,
+    "tests": 40,
+    "inputBytes": 4096,
+    "outputBytes": 65536,
+    "compileSeconds": 12,
+    "runSeconds": 2,
+    "cpuSeconds": 3,
+    "virtualMemoryKb": 262144,
+    "processes": 32,
+    "fileBytesKb": 1024,
+    "openFiles": 64
+  },
+  "receiptSha256": {
+    "valid": "9f82d1ac459873c582c414e7bf499a96db73cd5cc712dd052e2c8576479cd244",
+    "wrong": "390a0d22293f3f07b4610f3ffaf9881689517f1f551b37702b16eb2802f0ef2b",
+    "timeout": "f48dde3416738d297d3d7899e125d4161edb22292f37e9f0c629a0c76acdf13f",
+    "filesystemBoundary": "07da11f9e8a9f165efeee57e2b5332d20ae9a243bb92203532cd582998f66acb"
+  },
+  "scope": "One local WSL Linux namespace and static C++17 toolchain. This establishes the runner boundary only, not curriculum review or human programming assessment."
+}
