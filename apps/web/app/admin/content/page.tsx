@@ -76,6 +76,7 @@ type QuestionSummary = {
   id: string;
   stem: string;
   status: string;
+  type?: string;
   knowledgePointIds: string[];
   difficultyLevel: number;
 };
@@ -324,10 +325,20 @@ export default function AdminContentPage() {
   const [movingKnowledgePointId, setMovingKnowledgePointId] = React.useState<string | null>(null);
   const [bindingQuestionId, setBindingQuestionId] = React.useState<string | null>(null);
   const [scaffoldingVolumeId, setScaffoldingVolumeId] = React.useState<string | null>(null);
+  const [questionBrowserStatus, setQuestionBrowserStatus] = React.useState<'all' | 'published' | 'draft'>('all');
+  const [questionBrowserScope, setQuestionBrowserScope] = React.useState<'all' | 'volume' | 'lesson' | 'knowledge_point' | 'unbound'>('all');
+  const [questionBrowserSearch, setQuestionBrowserSearch] = React.useState('');
+  const [questionBrowserPage, setQuestionBrowserPage] = React.useState(1);
+  const [selectedQuestionBrowserQuestionId, setSelectedQuestionBrowserQuestionId] = React.useState('');
+  const [selectedQuestionBrowserPayload, setSelectedQuestionBrowserPayload] = React.useState<QuestionRenderPayload | null>(null);
+  const [selectedQuestionBrowserAnswer, setSelectedQuestionBrowserAnswer] = React.useState<StudentAnswerPayload | null>(null);
+  const [loadingQuestionBrowserPreviewId, setLoadingQuestionBrowserPreviewId] = React.useState<string | null>(null);
+  const [questionBrowserPreviewError, setQuestionBrowserPreviewError] = React.useState<string | null>(null);
   const [message, setMessage] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [adminWarning, setAdminWarning] = React.useState<string | null>(null);
   const hasAdminSession = Boolean(getAuthToken() && getCurrentUser<User>()?.role === 'admin' && !adminWarning);
+  const deferredQuestionBrowserSearch = React.useDeferredValue(questionBrowserSearch);
 
   async function reload() {
     try {
@@ -378,6 +389,28 @@ export default function AdminContentPage() {
       }
     } catch (caught) {
       setError(resolveErrorMessage(caught, '内容后台加载失败'));
+    }
+  }
+
+  async function previewQuestionFromBrowser(questionId: string) {
+    if (loadingQuestionBrowserPreviewId === questionId) {
+      return;
+    }
+
+    setSelectedQuestionBrowserQuestionId(questionId);
+    setLoadingQuestionBrowserPreviewId(questionId);
+    setQuestionBrowserPreviewError(null);
+
+    try {
+      const payload = await apiRequest<QuestionRenderPayload>(`/questions/${questionId}/render`);
+      setSelectedQuestionBrowserPayload(payload);
+      setSelectedQuestionBrowserAnswer(createEmptyAnswerPayload(payload));
+    } catch (caught) {
+      setSelectedQuestionBrowserPayload(null);
+      setSelectedQuestionBrowserAnswer(null);
+      setQuestionBrowserPreviewError(resolveErrorMessage(caught, '题面详情加载失败'));
+    } finally {
+      setLoadingQuestionBrowserPreviewId(null);
     }
   }
 
@@ -1044,6 +1077,67 @@ export default function AdminContentPage() {
       questions.filter((question) => question.knowledgePointIds.some((knowledgePointId) => volumeKnowledgePointIds.has(knowledgePointId))).length,
     [questions, volumeKnowledgePointIds],
   );
+  const knowledgePointNameMap = React.useMemo(
+    () => new Map(knowledgePoints.map((knowledgePoint) => [knowledgePoint.id, knowledgePoint.name])),
+    [knowledgePoints],
+  );
+  const questionBrowserScopedQuestions = React.useMemo(() => {
+    switch (questionBrowserScope) {
+      case 'volume':
+        return questions.filter((question) => question.knowledgePointIds.some((knowledgePointId) => volumeKnowledgePointIds.has(knowledgePointId)));
+      case 'lesson':
+        return questions.filter((question) =>
+          question.knowledgePointIds.some((knowledgePointId) => selectedLessonKnowledgePointIds.has(knowledgePointId)),
+        );
+      case 'knowledge_point':
+        return selectedKnowledgePointId
+          ? questions.filter((question) => question.knowledgePointIds.includes(selectedKnowledgePointId))
+          : [];
+      case 'unbound':
+        return questions.filter((question) => question.knowledgePointIds.length === 0);
+      case 'all':
+      default:
+        return questions;
+    }
+  }, [questionBrowserScope, questions, selectedKnowledgePointId, selectedLessonKnowledgePointIds, volumeKnowledgePointIds]);
+  const questionBrowserFilteredQuestions = React.useMemo(() => {
+    const normalizedSearch = deferredQuestionBrowserSearch.trim().toLowerCase();
+
+    return [...questionBrowserScopedQuestions]
+      .reverse()
+      .filter((question) => (questionBrowserStatus === 'all' ? true : question.status === questionBrowserStatus))
+      .filter((question) => {
+        if (!normalizedSearch) {
+          return true;
+        }
+
+        const knowledgeNames = question.knowledgePointIds
+          .map((knowledgePointId) => knowledgePointNameMap.get(knowledgePointId) ?? '')
+          .join(' ');
+        const haystack = `${question.stem} ${question.id} ${question.type ?? ''} ${knowledgeNames}`.toLowerCase();
+        return haystack.includes(normalizedSearch);
+      });
+  }, [deferredQuestionBrowserSearch, knowledgePointNameMap, questionBrowserScopedQuestions, questionBrowserStatus]);
+  const questionBrowserPageSize = 20;
+  const questionBrowserTotalPages = Math.max(1, Math.ceil(questionBrowserFilteredQuestions.length / questionBrowserPageSize));
+  const currentQuestionBrowserPage = Math.min(questionBrowserPage, questionBrowserTotalPages);
+  const selectedQuestionBrowserSummary =
+    questions.find((question) => question.id === selectedQuestionBrowserQuestionId) ?? null;
+  const pagedQuestionBrowserItems = React.useMemo(() => {
+    const startIndex = (currentQuestionBrowserPage - 1) * questionBrowserPageSize;
+    return questionBrowserFilteredQuestions.slice(startIndex, startIndex + questionBrowserPageSize);
+  }, [currentQuestionBrowserPage, questionBrowserFilteredQuestions]);
+
+  React.useEffect(() => {
+    setQuestionBrowserPage(1);
+  }, [selectedSubject, questionBrowserStatus, questionBrowserScope, deferredQuestionBrowserSearch, selectedKnowledgePointId, selectedLessonId, selectedVolumeId]);
+
+  React.useEffect(() => {
+    setSelectedQuestionBrowserQuestionId('');
+    setSelectedQuestionBrowserPayload(null);
+    setSelectedQuestionBrowserAnswer(null);
+    setQuestionBrowserPreviewError(null);
+  }, [selectedSubject]);
 
   return (
     <main style={{ padding: 40, maxWidth: 1320 }}>
@@ -2157,25 +2251,218 @@ export default function AdminContentPage() {
             </article>
 
             <article style={cardStyle}>
-              <div style={cardTitleStyle}>当前题库概览</div>
-              <div style={{ display: 'grid', gap: 10 }}>
-                {questions.slice(-6).reverse().map((question) => (
-                  <div
-                    key={question.id}
-                    style={{
-                      padding: 12,
-                      borderRadius: 14,
-                      border: '1px solid #e2e8f0',
-                      background: '#f8fafc',
-                    }}
-                  >
-                    <div style={{ fontWeight: 700 }}>{question.stem}</div>
-                    <div style={{ color: '#64748b', marginTop: 6 }}>状态：{question.status}</div>
-                    <div style={{ color: '#64748b', marginTop: 4 }}>关联知识点数：{question.knowledgePointIds.length}</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                <div>
+                  <div style={cardTitleStyle}>题库浏览器</div>
+                  <div style={{ color: '#64748b', marginTop: 6 }}>
+                    这里可以在管理界面直接翻页查看当前学科的全量题目，不再只展示最近几条。
                   </div>
-                ))}
-                {questions.length === 0 ? <div style={{ color: '#64748b' }}>当前还没有{subjectProfile.label}题目，先完成上面的创建流程。</div> : null}
+                </div>
+                <div style={{ color: '#475569', fontWeight: 600 }}>
+                  共 {questionBrowserFilteredQuestions.length} / {questions.length} 条
+                </div>
               </div>
+
+              <div
+                style={{
+                  display: 'grid',
+                  gap: 12,
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                  marginTop: 18,
+                }}
+              >
+                <label style={labelStyle}>
+                  <span>状态筛选</span>
+                  <select value={questionBrowserStatus} onChange={(event) => setQuestionBrowserStatus(event.target.value as 'all' | 'published' | 'draft')} style={inputStyle}>
+                    <option value="all">全部状态</option>
+                    <option value="published">仅已发布</option>
+                    <option value="draft">仅草稿</option>
+                  </select>
+                </label>
+
+                <label style={labelStyle}>
+                  <span>范围筛选</span>
+                  <select
+                    value={questionBrowserScope}
+                    onChange={(event) =>
+                      setQuestionBrowserScope(event.target.value as 'all' | 'volume' | 'lesson' | 'knowledge_point' | 'unbound')
+                    }
+                    style={inputStyle}
+                  >
+                    <option value="all">当前学科全部题目</option>
+                    <option value="volume">当前教材范围</option>
+                    <option value="lesson">当前课时范围</option>
+                    <option value="knowledge_point">当前知识点范围</option>
+                    <option value="unbound">仅未绑定题</option>
+                  </select>
+                </label>
+
+                <label style={labelStyle}>
+                  <span>关键字搜索</span>
+                  <input
+                    value={questionBrowserSearch}
+                    onChange={(event) => setQuestionBrowserSearch(event.target.value)}
+                    placeholder="搜索题干、题目 ID、题型或知识点名"
+                    style={inputStyle}
+                  />
+                </label>
+              </div>
+
+              <div style={{ marginTop: 18 }}>
+                <div style={subtleTitleStyle}>题面详情</div>
+                <div style={{ color: '#64748b', marginTop: 6, lineHeight: 1.7 }}>
+                  点下方任意一条题目的“查看题面”，这里会展开真实题面、作答方式和来源信息。
+                </div>
+
+                {loadingQuestionBrowserPreviewId ? (
+                  <div style={{ ...detailCardStyle, marginTop: 12, color: '#475569' }}>题面加载中...</div>
+                ) : null}
+
+                {questionBrowserPreviewError ? (
+                  <div style={{ ...detailCardStyle, marginTop: 12, color: '#b91c1c' }}>{questionBrowserPreviewError}</div>
+                ) : null}
+
+                {selectedQuestionBrowserPayload && selectedQuestionBrowserAnswer ? (
+                  <div style={{ display: 'grid', gap: 14, marginTop: 12 }}>
+                    <div style={detailCardStyle}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                        <div style={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.7 }}>
+                          {selectedQuestionBrowserSummary?.stem ?? '题面详情预览'}
+                        </div>
+                        <span
+                          style={statusPillStyle(
+                            selectedQuestionBrowserPayload.question.status === 'published' ? '#ecfdf5' : '#fef3c7',
+                            selectedQuestionBrowserPayload.question.status === 'published' ? '#166534' : '#92400e',
+                          )}
+                        >
+                          {selectedQuestionBrowserPayload.question.status === 'published' ? '已发布' : '草稿'}
+                        </span>
+                      </div>
+                      <div style={{ color: '#64748b', marginTop: 10, lineHeight: 1.8 }}>
+                        题目 ID：{selectedQuestionBrowserPayload.question.id}
+                        <br />
+                        作答模式：{selectedQuestionBrowserPayload.answerSchema.mode} · 题面块数：{selectedQuestionBrowserPayload.document.blocks.length}
+                        <br />
+                        来源：{selectedQuestionBrowserPayload.source.sourceName}
+                      </div>
+                      <div style={{ color: '#475569', marginTop: 10, lineHeight: 1.8, wordBreak: 'break-all' }}>
+                        来源路径：{selectedQuestionBrowserPayload.source.sourcePathOrUrl}
+                      </div>
+                      {selectedQuestionBrowserPayload.source.notes ? (
+                        <div style={{ color: '#475569', marginTop: 10, lineHeight: 1.8 }}>
+                          来源备注：{selectedQuestionBrowserPayload.source.notes}
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div style={cardStyle}>
+                      <QuestionRenderer
+                        renderPayload={selectedQuestionBrowserPayload}
+                        answer={selectedQuestionBrowserAnswer}
+                        onChange={setSelectedQuestionBrowserAnswer}
+                      />
+                    </div>
+                  </div>
+                ) : loadingQuestionBrowserPreviewId === null && !questionBrowserPreviewError ? (
+                  <div style={{ ...detailCardStyle, marginTop: 12, color: '#64748b' }}>还没有选择题目。</div>
+                ) : null}
+              </div>
+
+              <div style={{ display: 'grid', gap: 10, marginTop: 18 }}>
+                {pagedQuestionBrowserItems.map((question) => {
+                  const knowledgePointNames = question.knowledgePointIds
+                    .map((knowledgePointId) => knowledgePointNameMap.get(knowledgePointId))
+                    .filter((item): item is string => Boolean(item));
+
+                  return (
+                    <div
+                      key={question.id}
+                      style={{
+                        padding: 14,
+                        borderRadius: 16,
+                        border: question.id === selectedQuestionBrowserQuestionId ? '1px solid #0f172a' : '1px solid #e2e8f0',
+                        background: question.id === selectedQuestionBrowserQuestionId ? '#ffffff' : '#f8fafc',
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
+                        <div style={{ fontWeight: 700, lineHeight: 1.7, color: '#0f172a' }}>{question.stem}</div>
+                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'flex-end' }}>
+                          <span
+                            style={statusPillStyle(
+                              question.status === 'published' ? '#ecfdf5' : '#fef3c7',
+                              question.status === 'published' ? '#166534' : '#92400e',
+                            )}
+                          >
+                            {question.status === 'published' ? '已发布' : '草稿'}
+                          </span>
+                          <button
+                            onClick={() => void previewQuestionFromBrowser(question.id)}
+                            style={secondaryButtonStyle}
+                            disabled={loadingQuestionBrowserPreviewId === question.id}
+                          >
+                            {loadingQuestionBrowserPreviewId === question.id
+                              ? '加载中...'
+                              : question.id === selectedQuestionBrowserQuestionId
+                                ? '重新查看题面'
+                                : '查看题面'}
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ color: '#64748b', marginTop: 8, lineHeight: 1.7 }}>
+                        题目 ID：{question.id}
+                        <br />
+                        题型：{question.type ?? '未标注'} · 难度 {question.difficultyLevel} · 关联知识点 {question.knowledgePointIds.length} 个
+                      </div>
+                      <div style={{ color: '#475569', marginTop: 8, lineHeight: 1.7 }}>
+                        {knowledgePointNames.length > 0
+                          ? `知识点：${knowledgePointNames.slice(0, 6).join('、')}${knowledgePointNames.length > 6 ? ` 等 ${knowledgePointNames.length} 个` : ''}`
+                          : '知识点：暂未绑定'}
+                      </div>
+                    </div>
+                  );
+                })}
+                {questionBrowserFilteredQuestions.length === 0 ? (
+                  <div style={{ color: '#64748b' }}>当前筛选条件下还没有可展示的{subjectProfile.label}题目。</div>
+                ) : null}
+              </div>
+
+              {questionBrowserFilteredQuestions.length > 0 ? (
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center', marginTop: 18 }}>
+                  <div style={{ color: '#64748b' }}>
+                    第 {currentQuestionBrowserPage} / {questionBrowserTotalPages} 页，每页 {questionBrowserPageSize} 条
+                  </div>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <button
+                      onClick={() => setQuestionBrowserPage(1)}
+                      style={secondaryButtonStyle}
+                      disabled={currentQuestionBrowserPage <= 1}
+                    >
+                      首页
+                    </button>
+                    <button
+                      onClick={() => setQuestionBrowserPage((current) => Math.max(current - 1, 1))}
+                      style={secondaryButtonStyle}
+                      disabled={currentQuestionBrowserPage <= 1}
+                    >
+                      上一页
+                    </button>
+                    <button
+                      onClick={() => setQuestionBrowserPage((current) => Math.min(current + 1, questionBrowserTotalPages))}
+                      style={secondaryButtonStyle}
+                      disabled={currentQuestionBrowserPage >= questionBrowserTotalPages}
+                    >
+                      下一页
+                    </button>
+                    <button
+                      onClick={() => setQuestionBrowserPage(questionBrowserTotalPages)}
+                      style={secondaryButtonStyle}
+                      disabled={currentQuestionBrowserPage >= questionBrowserTotalPages}
+                    >
+                      末页
+                    </button>
+                  </div>
+                </div>
+              ) : null}
             </article>
           </div>
         </div>
