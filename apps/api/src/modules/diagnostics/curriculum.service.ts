@@ -1,9 +1,12 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { KnowledgeAtom, LearningScope, MeasurementItem, QuestionAnswerSchema, Subject,
   answerInputConfiguration, knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
 import { z } from 'zod';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { StudentsService } from '../students/students.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -111,6 +114,7 @@ export function assertAcyclic(atoms: KnowledgeAtom[]) {
 
 @Injectable()
 export class CurriculumService {
+  private mappingCandidates?: Map<string, { candidateAtomIds: string[]; rationale: string; evidence: unknown[]; reviewStatus: string }>;
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly events: DomainEventBusService, readonly textbooks: TextbookRegistryService) {}
 
@@ -316,11 +320,20 @@ export class CurriculumService {
     const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.coerce.number().int().min(1).max(6).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
       page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
+    if (!this.mappingCandidates) {
+      const file = resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json');
+      if (existsSync(file)) {
+        const document = JSON.parse(readFileSync(file, 'utf8')) as { rows: Array<{ bookId: string; lessonId: string; candidateAtomIds: string[];
+          rationale: string; evidence: unknown[]; reviewStatus: string }> };
+        this.mappingCandidates = new Map(document.rows.map(row => [`${row.bookId}:${row.lessonId}`, row]));
+      } else this.mappingCandidates = new Map();
+    }
     const books = this.textbooks.all().filter(book => book.source !== 'original' && book.chapters.length && (!query.subject || book.subject === query.subject) &&
       (!query.grade || book.grade === query.grade) && (!query.term || book.term === query.term));
     const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published'), rows: Array<{ bookId: string; bookTitle: string; bookVersion: string;
       edition: string; lessonId: string; lessonName: string; printedPage: number | undefined; chapterName: string; state: string;
-      atomIds: string[]; rubric: string; mappingVersion: number | null }> = [];
+      atomIds: string[]; rubric: string; mappingVersion: number | null; candidateAtomIds: string[]; candidateRationale: string;
+      candidateEvidence: unknown[]; candidateReviewStatus: string }> = [];
     for (const book of books) {
       const eligible = new Set(atoms.filter(atom => atom.subject === book.subject && atom.grade <= book.grade &&
         (atom.grade < book.grade || atom.term === 'both' || atom.term === book.term)).map(atom => atom.id));
@@ -329,9 +342,17 @@ export class CurriculumService {
         const mapping = this.textbooks.mapping(book, lesson.id), approved = mapping?.status === 'approved' && mapping.atomIds.length > 0 &&
           mapping.atomIds.every(id => eligible.has(id));
         const state = !mapping ? 'unmapped' : mapping.status === 'approved' ? approved ? 'approved' : 'stale' : mapping.status;
+        const candidate = this.mappingCandidates.get(`${book.id}:${lesson.id}`);
+        const candidateAtomIds = candidate?.candidateAtomIds.filter(id => eligible.has(id)) ?? [];
+        const candidateEvidence = candidate?.evidence.filter(item => {
+          const atomId = item && typeof item === 'object' && 'atomId' in item ? (item as { atomId?: unknown }).atomId : undefined;
+          return typeof atomId === 'string' && candidateAtomIds.includes(atomId);
+        }) ?? [];
         rows.push({ bookId: book.id, bookTitle: book.title, bookVersion: book.version, edition: book.edition, lessonId: lesson.id,
           lessonName: lesson.name, printedPage: lesson.printedPage, chapterName: chapter.name, state,
-          atomIds: approved ? [...mapping!.atomIds] : [], rubric: mapping?.rationale ?? '', mappingVersion: mapping?.version ?? null });
+          atomIds: approved ? [...mapping!.atomIds] : [], rubric: mapping?.rationale ?? '', mappingVersion: mapping?.version ?? null,
+          candidateAtomIds, candidateRationale: candidateAtomIds.length ? candidate?.rationale ?? '' : '', candidateEvidence,
+          candidateReviewStatus: candidateAtomIds.length ? candidate?.reviewStatus ?? 'candidate' : 'not_available' });
       }
     }
     const counts = Object.fromEntries(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale'].map(status =>

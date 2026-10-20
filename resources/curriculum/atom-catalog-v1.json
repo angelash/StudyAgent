@@ -1,0 +1,2586 @@
+{
+  "format": "study-agent-atom-catalog-v1",
+  "count": 258,
+  "atoms": [
+    {
+      "id": "foundation:math:decompose10",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "10以内的数分解",
+      "strand": "数、关系与表示",
+      "objective": "把一个整体分成两个部分，确定缺少的部分",
+      "successCriterion": "在明确条件下独立完成“10以内的数分解”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:add20",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "20以内加法合并",
+      "strand": "数、关系与表示",
+      "objective": "将两个部分合并，确定总数",
+      "successCriterion": "在明确条件下独立完成“20以内加法合并”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:subtract20",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "20以内减法求剩余",
+      "strand": "数、关系与表示",
+      "objective": "从总数中去掉一部分，求剩余数量",
+      "successCriterion": "在明确条件下独立完成“20以内减法求剩余”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:placevalue",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "十进制位值换算",
+      "strand": "数、关系与表示",
+      "objective": "说明十位和个位表示的数量，并进行换算",
+      "successCriterion": "在明确条件下独立完成“十进制位值换算”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:borrowdecision",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "判断个位是否需要退位",
+      "strand": "数、关系与表示",
+      "objective": "比较被减数与减数个位，判断是否需要向十位退位",
+      "successCriterion": "在明确条件下独立完成“判断个位是否需要退位”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:borrowexchange",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "退一作十的换算",
+      "strand": "数、关系与表示",
+      "objective": "十位退去1后，给个位补上10个一",
+      "successCriterion": "在明确条件下独立完成“退一作十的换算”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:multiplytable",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "乘法等组关系",
+      "strand": "数、关系与表示",
+      "objective": "根据相同组数与每组数量确定总量",
+      "successCriterion": "在明确条件下独立完成“乘法等组关系”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:divisiontable",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "平均分与除法",
+      "strand": "数、关系与表示",
+      "objective": "将整体平均分成若干份，求每份数量",
+      "successCriterion": "在明确条件下独立完成“平均分与除法”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:multiplydigits",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "多位数乘一位数",
+      "strand": "数、关系与表示",
+      "objective": "按数位分解并合并部分积",
+      "successCriterion": "在明确条件下独立完成“多位数乘一位数”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:divisiondigits",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "多位数除以一位数",
+      "strand": "数、关系与表示",
+      "objective": "按位分配，确定没有余数时的商",
+      "successCriterion": "在明确条件下独立完成“多位数除以一位数”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:perimeter",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "长方形周长的边界关系",
+      "strand": "数、关系与表示",
+      "objective": "将长方形四条边相加，区别周长与面积",
+      "successCriterion": "在明确条件下独立完成“长方形周长的边界关系”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:multiplytwo",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "两位数乘两位数",
+      "strand": "数、关系与表示",
+      "objective": "将乘数分解成十位和个位分别求积再合并",
+      "successCriterion": "在明确条件下独立完成“两位数乘两位数”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:remainder",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "余数与除数的约束",
+      "strand": "数、关系与表示",
+      "objective": "将不能整分的数量分组，确定余数且检验余数小于除数",
+      "successCriterion": "在明确条件下独立完成“余数与除数的约束”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:rectanglearea",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "长方形面积的覆盖关系",
+      "strand": "数、关系与表示",
+      "objective": "用长乘宽确定单位正方形的数量",
+      "successCriterion": "在明确条件下独立完成“长方形面积的覆盖关系”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:decimalplace",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "小数数位与位值",
+      "strand": "数、关系与表示",
+      "objective": "把十分位和百分位的数量表示为小数",
+      "successCriterion": "在明确条件下独立完成“小数数位与位值”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:decimaladd",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "小数加法数位对齐",
+      "strand": "数、关系与表示",
+      "objective": "按相同数位对齐再合并各位数量",
+      "successCriterion": "在明确条件下独立完成“小数加法数位对齐”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:fractionequivalence",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "分数等值变换",
+      "strand": "数、关系与表示",
+      "objective": "同时扩大分子和分母相同倍数，保持分数大小",
+      "successCriterion": "在明确条件下独立完成“分数等值变换”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:fractionmultiply",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "分数乘法与约分",
+      "strand": "数、关系与表示",
+      "objective": "将分子分母分别相乘，并用等值分数表示结果",
+      "successCriterion": "在明确条件下独立完成“分数乘法与约分”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:percentage",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "百分率与部分整体",
+      "strand": "数、关系与表示",
+      "objective": "把百分率表示为每一百份中的部分，并计算对应数量",
+      "successCriterion": "在明确条件下独立完成“百分率与部分整体”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:math:ratio",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "按比分配的份数关系",
+      "strand": "数、关系与表示",
+      "objective": "先确定总份数，再求各部分数量",
+      "successCriterion": "在明确条件下独立完成“按比分配的份数关系”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g1-locate",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "显式信息定位（1年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（1年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g1-cause",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "因果关系识别（1年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（1年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g2-locate",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "显式信息定位（2年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（2年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g2-cause",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "因果关系识别（2年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（2年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g3-locate",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "显式信息定位（3年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（3年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g3-cause",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "因果关系识别（3年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（3年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g4-locate",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "显式信息定位（4年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（4年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g4-cause",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "因果关系识别（4年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（4年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g5-locate",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "显式信息定位（5年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（5年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g5-cause",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "因果关系识别（5年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（5年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g6-locate",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "显式信息定位（6年级材料）",
+      "strand": "语言与阅读",
+      "objective": "从文本中找到问题要求的地点信息，并排除无关地点",
+      "successCriterion": "在明确条件下独立完成“显式信息定位（6年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:chinese:g6-cause",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "因果关系识别（6年级材料）",
+      "strand": "语言与阅读",
+      "objective": "在明确的因果句中区分原因和结果",
+      "successCriterion": "在明确条件下独立完成“因果关系识别（6年级材料）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g1-meaning",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "词形与词义联结（基础组1）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组1）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g1-locate",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "英语显式信息定位（基础组1）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组1）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g2-meaning",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "词形与词义联结（基础组2）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组2）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g2-locate",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "英语显式信息定位（基础组2）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组2）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g3-meaning",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "词形与词义联结（基础组3）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组3）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g3-locate",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "英语显式信息定位（基础组3）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组3）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g4-meaning",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "词形与词义联结（基础组4）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组4）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g4-locate",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "英语显式信息定位（基础组4）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组4）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g5-meaning",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "词形与词义联结（基础组5）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组5）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g5-locate",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "英语显式信息定位（基础组5）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组5）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g6-meaning",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "词形与词义联结（基础组6）",
+      "strand": "语言形式与意义",
+      "objective": "根据已学习的英语词形识别对应的中文意义",
+      "successCriterion": "在明确条件下独立完成“词形与词义联结（基础组6）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "foundation:english:g6-locate",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "英语显式信息定位（基础组6）",
+      "strand": "语言形式与意义",
+      "objective": "从短句中找到人物所在地点并用原文词语回答",
+      "successCriterion": "在明确条件下独立完成“英语显式信息定位（基础组6）”，能说明所用关系或步骤"
+    },
+    {
+      "id": "core:math:count",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "按一一对应计数",
+      "strand": "数与运算",
+      "objective": "将每个对象计入一次，确定集合基数",
+      "successCriterion": "按题目条件独立完成按一一对应计数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:compare20",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "20以内数量比较",
+      "strand": "数与运算",
+      "objective": "比较两个不相等的数量并确定较大的数",
+      "successCriterion": "按题目条件独立完成20以内数量比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:ordinal",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "位置序数与数量区分",
+      "strand": "数与运算",
+      "objective": "根据从左或从右的指定方向确定序位",
+      "successCriterion": "按题目条件独立完成位置序数与数量区分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:neighbors",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "相邻整数关系",
+      "strand": "数与运算",
+      "objective": "确定给定整数前面或后面的一个数",
+      "successCriterion": "按题目条件独立完成相邻整数关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:tensones",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "十和一的组成",
+      "strand": "数与运算",
+      "objective": "把十个一看作一个十，合成两位数",
+      "successCriterion": "按题目条件独立完成十和一的组成；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:complement10",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "凑成十的补数",
+      "strand": "数与运算",
+      "objective": "由已知部分找出合成十的另一部分",
+      "successCriterion": "按题目条件独立完成凑成十的补数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:unknownadd",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "由和求未知加数",
+      "strand": "数量关系",
+      "objective": "从已知总数与一部分确定另一部分",
+      "successCriterion": "按题目条件独立完成由和求未知加数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:difference",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "两个数量的相差关系",
+      "strand": "数量关系",
+      "objective": "求一个数量比另一个多或少的数量",
+      "successCriterion": "按题目条件独立完成两个数量的相差关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:mixed20",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "20以内连加连减的顺序",
+      "strand": "数与运算",
+      "objective": "从左到右逐步计算没有括号的加减式",
+      "successCriterion": "按题目条件独立完成20以内连加连减的顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:planeshapes",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "按边角特征识别平面图形",
+      "strand": "图形与空间",
+      "objective": "根据明确的边角条件识别图形",
+      "successCriterion": "按题目条件独立完成按边角特征识别平面图形；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:solidshapes",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "按表面特征识别立体",
+      "strand": "图形与空间",
+      "objective": "根据面的形状识别常见立体图形",
+      "successCriterion": "按题目条件独立完成按表面特征识别立体；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:wholehour",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "整时的时针与分针",
+      "strand": "度量与实践",
+      "objective": "由整点时钟的指针位置确定小时数",
+      "successCriterion": "按题目条件独立完成整时的时针与分针；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:money10",
+      "subject": "math",
+      "grade": 1,
+      "term": "both",
+      "name": "元角十进换算",
+      "strand": "度量与实践",
+      "objective": "依据1元等于10角进行单步换算",
+      "successCriterion": "按题目条件独立完成元角十进换算；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:carry100",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "两位数加法满十进一",
+      "strand": "数与运算",
+      "objective": "个位合并满十后向十位进一",
+      "successCriterion": "按题目条件独立完成两位数加法满十进一；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:borrow100",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "两位数退位减法",
+      "strand": "数与运算",
+      "objective": "个位不够减时退一作十，再完成减法",
+      "successCriterion": "按题目条件独立完成两位数退位减法；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:multiplymissing",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "由积求未知因数",
+      "strand": "数量关系",
+      "objective": "利用等组关系确定缺少的每组数或组数",
+      "successCriterion": "按题目条件独立完成由积求未知因数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:multiplerelation",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "一个量是另一个的几倍",
+      "strand": "数量关系",
+      "objective": "把较小数量作为一份求倍数",
+      "successCriterion": "按题目条件独立完成一个量是另一个的几倍；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:cmmeters",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "米与厘米换算",
+      "strand": "度量与实践",
+      "objective": "依据1米等于100厘米在整米和厘米间换算",
+      "successCriterion": "按题目条件独立完成米与厘米换算；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:minutes",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "时与分的换算",
+      "strand": "度量与实践",
+      "objective": "依据1时等于60分完成整时换算",
+      "successCriterion": "按题目条件独立完成时与分的换算；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:clockminutes",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "钟面分针格与分钟",
+      "strand": "度量与实践",
+      "objective": "根据分针所在数字换算分钟",
+      "successCriterion": "按题目条件独立完成钟面分针格与分钟；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:counttable",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "分类计数表读数",
+      "strand": "数据与可能性",
+      "objective": "从含类别和数量的文本表格中取出指定类别数量",
+      "successCriterion": "按题目条件独立完成分类计数表读数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:periodic",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "重复排列的周期",
+      "strand": "数量关系",
+      "objective": "依据完整重复节确定指定位置的对象",
+      "successCriterion": "按题目条件独立完成重复排列的周期；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:directions4",
+      "subject": "math",
+      "grade": 2,
+      "term": "both",
+      "name": "东南西北的相对方位",
+      "strand": "图形与空间",
+      "objective": "根据面向的方向确定相反方向",
+      "successCriterion": "按题目条件独立完成东南西北的相对方位；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:compare10000",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "万以内整数位值比较",
+      "strand": "数与运算",
+      "objective": "先比较最高不同数位以确定较大整数",
+      "successCriterion": "按题目条件独立完成万以内整数位值比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:add1000",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "三位数连续进位加法",
+      "strand": "数与运算",
+      "objective": "逐位合并并传递进位",
+      "successCriterion": "按题目条件独立完成三位数连续进位加法；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:subtract1000",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "三位数连续退位减法",
+      "strand": "数与运算",
+      "objective": "相邻数位借位后求差",
+      "successCriterion": "按题目条件独立完成三位数连续退位减法；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:remainderdivision",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "有余数除法求余数",
+      "strand": "数与运算",
+      "objective": "按每组数量分组，求不足一组的剩余量",
+      "successCriterion": "按题目条件独立完成有余数除法求余数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:mixedorder",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "乘除先于加减",
+      "strand": "数与运算",
+      "objective": "识别并先计算不带括号式子中的乘除部分",
+      "successCriterion": "按题目条件独立完成乘除先于加减；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:squareperimeter",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "正方形周长",
+      "strand": "图形与空间",
+      "objective": "将四条相等的边合计",
+      "successCriterion": "按题目条件独立完成正方形周长；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:rectanglecover",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "长方形面积",
+      "strand": "图形与空间",
+      "objective": "以单位正方形覆盖行数和列数求面积",
+      "successCriterion": "按题目条件独立完成长方形面积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:elapsedtime",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "同日经过时间",
+      "strand": "度量与实践",
+      "objective": "将开始结束时刻转换成分钟再求差",
+      "successCriterion": "按题目条件独立完成同日经过时间；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:mass",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "千克与克换算",
+      "strand": "度量与实践",
+      "objective": "依据1千克等于1000克转换数量",
+      "successCriterion": "按题目条件独立完成千克与克换算；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:fractionunit",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "单位分数与平均分",
+      "strand": "数与运算",
+      "objective": "由平均分的总份数写出一份占整体的分数",
+      "successCriterion": "按题目条件独立完成单位分数与平均分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:fractioncompare",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "同分母分数比较",
+      "strand": "数与运算",
+      "objective": "等分单位相同的情况下比较所取份数",
+      "successCriterion": "按题目条件独立完成同分母分数比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:decimalvalue",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "一位两位小数的位值",
+      "strand": "数与运算",
+      "objective": "把十分之一与百分之一的份数对应到小数位置",
+      "successCriterion": "按题目条件独立完成一位两位小数的位值；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:areaconvert",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "相邻面积单位换算",
+      "strand": "度量与实践",
+      "objective": "区分长度进率与面积进率，按100换算",
+      "successCriterion": "按题目条件独立完成相邻面积单位换算；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:bigplace",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "大数的数级与位值",
+      "strand": "数与运算",
+      "objective": "由万级和个级的数量合成整数",
+      "successCriterion": "按题目条件独立完成大数的数级与位值；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:round1000",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "四舍五入到千位",
+      "strand": "数与运算",
+      "objective": "观察百位数字确定保留千位的近似整数",
+      "successCriterion": "按题目条件独立完成四舍五入到千位；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:multiply3by2",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "三位数乘两位数",
+      "strand": "数与运算",
+      "objective": "按十位和个位分解乘数并合并部分积",
+      "successCriterion": "按题目条件独立完成三位数乘两位数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:divide2digit",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "除数是两位数的整除",
+      "strand": "数与运算",
+      "objective": "试商并用乘法检验商",
+      "successCriterion": "按题目条件独立完成除数是两位数的整除；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:brackets",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "带括号的四则顺序",
+      "strand": "数与运算",
+      "objective": "先求括号中的结果，再进行乘除",
+      "successCriterion": "按题目条件独立完成带括号的四则顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:distribute",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "乘法分配律的对应因数",
+      "strand": "数与运算",
+      "objective": "在乘法分配的两种表示中对应相同因数",
+      "successCriterion": "按题目条件独立完成乘法分配律的对应因数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:decimalcompare",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "小数位值比较",
+      "strand": "数与运算",
+      "objective": "按整数部分、十分位、百分位依次比较小数",
+      "successCriterion": "按题目条件独立完成小数位值比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:decimalsubtract",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "小数减法数位对齐",
+      "strand": "数与运算",
+      "objective": "将相同小数数位对齐再相减",
+      "successCriterion": "按题目条件独立完成小数减法数位对齐；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:anglekind",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "锐角直角钝角分类",
+      "strand": "图形与空间",
+      "objective": "按与90度和180度的关系判断角的类型",
+      "successCriterion": "按题目条件独立完成锐角直角钝角分类；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:triangleangles",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "三角形内角和",
+      "strand": "图形与空间",
+      "objective": "用180度减去已知两个内角求第三角",
+      "successCriterion": "按题目条件独立完成三角形内角和；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:average",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "平均数的总量等分",
+      "strand": "数据与可能性",
+      "objective": "先合计总量再按数据个数平均",
+      "successCriterion": "按题目条件独立完成平均数的总量等分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:chartdifference",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "两组统计数量的差",
+      "strand": "数据与可能性",
+      "objective": "从分类计数中选择正确两类再求差",
+      "successCriterion": "按题目条件独立完成两组统计数量的差；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:decimalmultiply",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "小数乘法小数位",
+      "strand": "数与运算",
+      "objective": "先按整数相乘，再按因数小数位确定结果",
+      "successCriterion": "按题目条件独立完成小数乘法小数位；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:decimaldivide",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "除数为小数的等值变换",
+      "strand": "数与运算",
+      "objective": "同时扩大被除数和除数，使除数化为整数",
+      "successCriterion": "按题目条件独立完成除数为小数的等值变换；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:factor",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "因数的整除条件",
+      "strand": "数与运算",
+      "objective": "用能否整除判断一个整数是否是另一整数的因数",
+      "successCriterion": "按题目条件独立完成因数的整除条件；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:multiple",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "求一个数的指定倍数",
+      "strand": "数与运算",
+      "objective": "把给定整数乘自然数以求倍数",
+      "successCriterion": "按题目条件独立完成求一个数的指定倍数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:prime",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "质数与合数的因数特征",
+      "strand": "数与运算",
+      "objective": "依据正因数个数区别质数和合数，排除1",
+      "successCriterion": "按题目条件独立完成质数与合数的因数特征；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:gcd",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "最大公因数",
+      "strand": "数与运算",
+      "objective": "找出两个整数共有因数中最大的一个",
+      "successCriterion": "按题目条件独立完成最大公因数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:lcm",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "最小公倍数",
+      "strand": "数与运算",
+      "objective": "找出两个整数共同的最小正倍数",
+      "successCriterion": "按题目条件独立完成最小公倍数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:fractionadd",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "异分母分数加法",
+      "strand": "数与运算",
+      "objective": "通分到共同单位后相加",
+      "successCriterion": "按题目条件独立完成异分母分数加法；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:fractionsubtract",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "异分母分数减法",
+      "strand": "数与运算",
+      "objective": "通分后求所占部分的差",
+      "successCriterion": "按题目条件独立完成异分母分数减法；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:equation",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "等式两边同加同减",
+      "strand": "数量关系",
+      "objective": "运用等式性质求形如x+a=b的未知数",
+      "successCriterion": "按题目条件独立完成等式两边同加同减；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:trianglearea",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "三角形面积的底高关系",
+      "strand": "图形与空间",
+      "objective": "用对应底乘高再除以2求面积",
+      "successCriterion": "按题目条件独立完成三角形面积的底高关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:parallelogramarea",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "平行四边形面积",
+      "strand": "图形与空间",
+      "objective": "将对应底和高相乘，排除斜边长度",
+      "successCriterion": "按题目条件独立完成平行四边形面积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:trapezoidarea",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "梯形面积",
+      "strand": "图形与空间",
+      "objective": "将上下底之和乘高再除以2",
+      "successCriterion": "按题目条件独立完成梯形面积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:cuboidvolume",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "长方体体积",
+      "strand": "图形与空间",
+      "objective": "以长宽高确定单位立方体个数",
+      "successCriterion": "按题目条件独立完成长方体体积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:cuboidsurface",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "长方体表面积",
+      "strand": "图形与空间",
+      "objective": "将三组相对面的面积求和",
+      "successCriterion": "按题目条件独立完成长方体表面积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:volumeconvert",
+      "subject": "math",
+      "grade": 5,
+      "term": "both",
+      "name": "立方分米与立方厘米",
+      "strand": "度量与实践",
+      "objective": "依据每边10倍导致体积1000倍完成换算",
+      "successCriterion": "按题目条件独立完成立方分米与立方厘米；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:fractiondivide",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "分数除法转乘倒数",
+      "strand": "数与运算",
+      "objective": "除以非零分数时乘它的倒数",
+      "successCriterion": "按题目条件独立完成分数除法转乘倒数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:percentagerate",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "由部分与整体求百分率",
+      "strand": "数量关系",
+      "objective": "将部分除以整体，再转换成百分数数值",
+      "successCriterion": "按题目条件独立完成由部分与整体求百分率；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:percentagewhole",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "由部分和百分率求整体",
+      "strand": "数量关系",
+      "objective": "把已知部分除以对应的百分率",
+      "successCriterion": "按题目条件独立完成由部分和百分率求整体；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:ratioequivalent",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "比的等值化简",
+      "strand": "数量关系",
+      "objective": "将比的前后项同时除以共同因数",
+      "successCriterion": "按题目条件独立完成比的等值化简；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:proportion",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "比例内外项关系",
+      "strand": "数量关系",
+      "objective": "用两内项之积等于两外项之积求未知项",
+      "successCriterion": "按题目条件独立完成比例内外项关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:diameter",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆直径与半径",
+      "strand": "图形与空间",
+      "objective": "理解直径通过圆心且等于两条半径",
+      "successCriterion": "按题目条件独立完成圆直径与半径；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:circumference",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆的周长",
+      "strand": "图形与空间",
+      "objective": "依据半径或直径求圆的边界长度",
+      "successCriterion": "按题目条件独立完成圆的周长；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:circlearea",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆的面积",
+      "strand": "图形与空间",
+      "objective": "将半径平方乘圆周率，区分直径与半径",
+      "successCriterion": "按题目条件独立完成圆的面积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:cylindervolume",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆柱体积",
+      "strand": "图形与空间",
+      "objective": "以底面积乘高求圆柱体积",
+      "successCriterion": "按题目条件独立完成圆柱体积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:cylinderlateral",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆柱侧面积展开",
+      "strand": "图形与空间",
+      "objective": "将底面周长乘高确定展开侧面的面积",
+      "successCriterion": "按题目条件独立完成圆柱侧面积展开；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:conevolume",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "圆锥与等底等高圆柱体积",
+      "strand": "图形与空间",
+      "objective": "将等底等高圆柱体积除以3求圆锥体积",
+      "successCriterion": "按题目条件独立完成圆锥与等底等高圆柱体积；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:scale",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "比例尺与实际距离",
+      "strand": "数量关系",
+      "objective": "统一长度单位后按比例尺换算实际距离",
+      "successCriterion": "按题目条件独立完成比例尺与实际距离；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:speed",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "路程速度时间关系",
+      "strand": "数量关系",
+      "objective": "由均匀速度与时间求路程",
+      "successCriterion": "按题目条件独立完成路程速度时间关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:negativeorder",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "负整数的顺序",
+      "strand": "数与运算",
+      "objective": "在数轴语义下比较两个负数",
+      "successCriterion": "按题目条件独立完成负整数的顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:sectorcount",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "扇形百分比与频数",
+      "strand": "数据与可能性",
+      "objective": "把扇形统计图中的比例换算为调查人数",
+      "successCriterion": "按题目条件独立完成扇形百分比与频数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:math:possibility",
+      "subject": "math",
+      "grade": 6,
+      "term": "both",
+      "name": "等可能结果的数量比较",
+      "strand": "数据与可能性",
+      "objective": "在每个球被抽到机会相同的条件下比较事件可能性",
+      "successCriterion": "按题目条件独立完成等可能结果的数量比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:initial",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "声母与韵母区分",
+      "strand": "识字与词语",
+      "objective": "在给定音节中找出声母，排除整体音节记忆替代",
+      "successCriterion": "按题目条件独立完成声母与韵母区分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:tone",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "拼音声调识别",
+      "strand": "识字与词语",
+      "objective": "根据标调符号辨认一至四声",
+      "successCriterion": "按题目条件独立完成拼音声调识别；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:radical",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "常用偏旁辨认",
+      "strand": "识字与词语",
+      "objective": "从常用合体字中辨认指定偏旁",
+      "successCriterion": "按题目条件独立完成常用偏旁辨认；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:structure",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "左右与上下字形结构",
+      "strand": "识字与词语",
+      "objective": "根据组成部件排列识别汉字结构",
+      "successCriterion": "按题目条件独立完成左右与上下字形结构；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:antonym",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "常用反义词关系",
+      "strand": "识字与词语",
+      "objective": "选择语义相反且符合句子条件的词",
+      "successCriterion": "按题目条件独立完成常用反义词关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:classifier",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "常见名词量词搭配",
+      "strand": "识字与词语",
+      "objective": "为具体名词选用规范的常用量词",
+      "successCriterion": "按题目条件独立完成常见名词量词搭配；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:questionmark",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "疑问句末标点",
+      "strand": "句段与语言",
+      "objective": "识别直接提问并选择问号",
+      "successCriterion": "按题目条件独立完成疑问句末标点；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:person",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "人物显式信息定位",
+      "strand": "阅读与信息",
+      "objective": "根据“谁”的提问找到对应人物",
+      "successCriterion": "按题目条件独立完成人物显式信息定位；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:eventorder",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "两步事件先后",
+      "strand": "阅读与信息",
+      "objective": "根据“先”“再”等标记辨认事件顺序",
+      "successCriterion": "按题目条件独立完成两步事件先后；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:complete-sentence",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "围绕人物写完整句",
+      "strand": "表达与习作",
+      "objective": "用一个完整句说明谁在做什么",
+      "successCriterion": "按题目条件独立完成围绕人物写完整句；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:polyphone",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "语境中多音字读音",
+      "strand": "识字与词语",
+      "objective": "依据词义选择多音字在具体词语中的读音",
+      "successCriterion": "按题目条件独立完成语境中多音字读音；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:homophone",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "同音字按词义选字",
+      "strand": "识字与词语",
+      "objective": "利用词语意义排除同音字",
+      "successCriterion": "按题目条件独立完成同音字按词义选字；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:synonym",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "常用近义词语境",
+      "strand": "识字与词语",
+      "objective": "根据句中意义选择相近的词",
+      "successCriterion": "按题目条件独立完成常用近义词语境；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:reduplication",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "叠词形式辨认",
+      "strand": "识字与词语",
+      "objective": "识别AABB与ABAB等明确的重复形式",
+      "successCriterion": "按题目条件独立完成叠词形式辨认；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:because",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "因为所以的因果配对",
+      "strand": "句段与语言",
+      "objective": "将表示原因和结果的关联词正确配对",
+      "successCriterion": "按题目条件独立完成因为所以的因果配对；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:pronoun",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "相邻句人称指代",
+      "strand": "阅读与信息",
+      "objective": "依据人物和性别线索还原代词指向",
+      "successCriterion": "按题目条件独立完成相邻句人称指代；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:timeword",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "文本中的时间信息",
+      "strand": "阅读与信息",
+      "objective": "区分活动日期、出发和结束等时间信息",
+      "successCriterion": "按题目条件独立完成文本中的时间信息；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:listpunctuation",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "并列词语的顿号",
+      "strand": "句段与语言",
+      "objective": "在同层并列词语间使用顿号",
+      "successCriterion": "按题目条件独立完成并列词语的顿号；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:instruction",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "两条件指令核对",
+      "strand": "阅读与信息",
+      "objective": "从指令中同时保留对象与操作条件",
+      "successCriterion": "按题目条件独立完成两条件指令核对；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:sequence-writing",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "用顺序词写两步经过",
+      "strand": "表达与习作",
+      "objective": "用先后标记写清楚两个动作及其顺序",
+      "successCriterion": "按题目条件独立完成用顺序词写两步经过；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:contextmeaning",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "结合上下文解释词义",
+      "strand": "识字与词语",
+      "objective": "根据具体语境选出词语在文中的意义",
+      "successCriterion": "按题目条件独立完成结合上下文解释词义；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:simile",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "比喻的本体与喻体",
+      "strand": "句段与语言",
+      "objective": "识别明确比喻中被比对象和所借形象",
+      "successCriterion": "按题目条件独立完成比喻的本体与喻体；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:personification",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "拟人与普通动作区分",
+      "strand": "句段与语言",
+      "objective": "辨认把非人事物赋予人的情感或行为的表达",
+      "successCriterion": "按题目条件独立完成拟人与普通动作区分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:main-sentence",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "总分段中的中心句",
+      "strand": "阅读与信息",
+      "objective": "区分总说句与其下的具体例子",
+      "successCriterion": "按题目条件独立完成总分段中的中心句；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:detail-evidence",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "从动作找到直接证据",
+      "strand": "阅读与信息",
+      "objective": "用文中具体动作支持一个明确判断",
+      "successCriterion": "按题目条件独立完成从动作找到直接证据；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:classification",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "概括同类词语",
+      "strand": "阅读与信息",
+      "objective": "根据共同属性选择上位类别，避免以一例代全部",
+      "successCriterion": "按题目条件独立完成概括同类词语；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:dialoguepunctuation",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "提示语在前的引号冒号",
+      "strand": "句段与语言",
+      "objective": "为提示语在前的直接引语选择冒号与引号",
+      "successCriterion": "按题目条件独立完成提示语在前的引号冒号；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:factopinion",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "可核查事实与感受",
+      "strand": "阅读与信息",
+      "objective": "区分文本中的可计数事实和个人评价",
+      "successCriterion": "按题目条件独立完成可核查事实与感受；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:notice",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "通知中的必要条件",
+      "strand": "阅读与信息",
+      "objective": "从简短通知提取时间地点和携带条件",
+      "successCriterion": "按题目条件独立完成通知中的必要条件；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:paragraph-summary",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "提炼人物事件结果",
+      "strand": "表达与习作",
+      "objective": "用简短语言保留人物、主要事件与结果",
+      "successCriterion": "按题目条件独立完成提炼人物事件结果；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:contrast",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "转折关系与重点",
+      "strand": "句段与语言",
+      "objective": "辨认转折前后信息及转折后的表达重点",
+      "successCriterion": "按题目条件独立完成转折关系与重点；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:reference-chain",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "跨句指代线索",
+      "strand": "阅读与信息",
+      "objective": "利用语义一致和候选对象追踪跨句代词",
+      "successCriterion": "按题目条件独立完成跨句指代线索；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:inference",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "依据线索作有限推断",
+      "strand": "阅读与信息",
+      "objective": "选择由文中线索支持的推断并排除超出证据的猜测",
+      "successCriterion": "按题目条件独立完成依据线索作有限推断；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:observation-order",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "观察描写的空间顺序",
+      "strand": "阅读与信息",
+      "objective": "从方位与位置变化识别观察顺序",
+      "successCriterion": "按题目条件独立完成观察描写的空间顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:comparison-method",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "说明中的作比较",
+      "strand": "阅读与信息",
+      "objective": "识别用两个对象对照突出特征的说明方式",
+      "successCriterion": "按题目条件独立完成说明中的作比较；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:numbers-method",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "说明中的列数字",
+      "strand": "阅读与信息",
+      "objective": "识别具体数字对说明精确性的作用",
+      "successCriterion": "按题目条件独立完成说明中的列数字；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:emotion-evidence",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "情感判断与文本证据",
+      "strand": "阅读与信息",
+      "objective": "用动作和语言判断有依据的当时情感",
+      "successCriterion": "按题目条件独立完成情感判断与文本证据；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:letter-format",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "书信称呼与署名",
+      "strand": "句段与语言",
+      "objective": "根据收信人与写信人区分称呼和署名",
+      "successCriterion": "按题目条件独立完成书信称呼与署名；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:remove-redundancy",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "重复语意的修改",
+      "strand": "句段与语言",
+      "objective": "识别同义成分重复并选择简洁通顺的表达",
+      "successCriterion": "按题目条件独立完成重复语意的修改；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:evidence-explanation",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "判断后引用具体证据",
+      "strand": "表达与习作",
+      "objective": "先提出判断，再引用材料中能支持它的行动或语言",
+      "successCriterion": "按题目条件独立完成判断后引用具体证据；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:motivation",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "人物动机的条件推断",
+      "strand": "阅读与信息",
+      "objective": "结合前后事件判断行动目的并保留证据边界",
+      "successCriterion": "按题目条件独立完成人物动机的条件推断；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:environment",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "环境描写与后文联系",
+      "strand": "阅读与信息",
+      "objective": "依据具体上下文解释环境对情节的作用",
+      "successCriterion": "按题目条件独立完成环境描写与后文联系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:information-combine",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "两处信息合并",
+      "strand": "阅读与信息",
+      "objective": "结合两条互补材料满足同一任务的全部条件",
+      "successCriterion": "按题目条件独立完成两处信息合并；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:source-reliability",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "信息来源的可核查性",
+      "strand": "阅读与信息",
+      "objective": "优先选择与问题相关且能核查原始出处的资料",
+      "successCriterion": "按题目条件独立完成信息来源的可核查性；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:claim-support",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "观点与理由的关联",
+      "strand": "阅读与信息",
+      "objective": "选择直接支持给定观点的事实或理由",
+      "successCriterion": "按题目条件独立完成观点与理由的关联；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:outline",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "主要事件与次要细节",
+      "strand": "阅读与信息",
+      "objective": "为提纲保留推动情节的主要事件",
+      "successCriterion": "按题目条件独立完成主要事件与次要细节；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:ambiguity",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "句子歧义与明确对象",
+      "strand": "句段与语言",
+      "objective": "识别指代不明并选择对象明确的改写",
+      "successCriterion": "按题目条件独立完成句子歧义与明确对象；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:quoted-source",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "引用与转述的区别",
+      "strand": "句段与语言",
+      "objective": "区分保留原话的直接引用和意思转述",
+      "successCriterion": "按题目条件独立完成引用与转述的区别；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:logical-condition",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "必要条件与充分条件的语言",
+      "strand": "句段与语言",
+      "objective": "根据“只有才”“只要就”的明确表达判断条件",
+      "successCriterion": "按题目条件独立完成必要条件与充分条件的语言；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:compare-summary",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "合并材料并说明限制",
+      "strand": "表达与习作",
+      "objective": "合并两条材料形成建议，同时交代适用条件",
+      "successCriterion": "按题目条件独立完成合并材料并说明限制；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:viewpoint-compare",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "不同观点的共同点与分歧",
+      "strand": "阅读与信息",
+      "objective": "分别记录两方主张，辨认真正分歧",
+      "successCriterion": "按题目条件独立完成不同观点的共同点与分歧；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:rhetorical-question",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "反问句的肯定含义",
+      "strand": "句段与语言",
+      "objective": "把明确反问转换为对应陈述含义",
+      "successCriterion": "按题目条件独立完成反问句的肯定含义；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:double-negative",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "双重否定的基本含义",
+      "strand": "句段与语言",
+      "objective": "在明确句子中把双重否定还原为肯定含义",
+      "successCriterion": "按题目条件独立完成双重否定的基本含义；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:counterevidence",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "证据与反证的区分",
+      "strand": "阅读与信息",
+      "objective": "识别能削弱一个全称判断的具体反例",
+      "successCriterion": "按题目条件独立完成证据与反证的区分；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:explanation-vs-fact",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "观察事实与原因猜测",
+      "strand": "阅读与信息",
+      "objective": "分开直接观察和仍需验证的解释",
+      "successCriterion": "按题目条件独立完成观察事实与原因猜测；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:narrative-order",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "顺叙与倒叙结构",
+      "strand": "阅读与信息",
+      "objective": "依据开头与后续事件的时间关系判断叙述方式",
+      "successCriterion": "按题目条件独立完成顺叙与倒叙结构；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:perspective",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "叙述人称与信息限制",
+      "strand": "阅读与信息",
+      "objective": "辨认第一第三人称及叙述可知范围",
+      "successCriterion": "按题目条件独立完成叙述人称与信息限制；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:title-theme",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "标题与核心内容对应",
+      "strand": "阅读与信息",
+      "objective": "选择覆盖主要事件及重点、不过度添加含义的标题",
+      "successCriterion": "按题目条件独立完成标题与核心内容对应；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:evidence-citation",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "引用证据与过度推广",
+      "strand": "阅读与信息",
+      "objective": "区分忠实引用、合理概括与无依据推广",
+      "successCriterion": "按题目条件独立完成引用证据与过度推广；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:argument-revision",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "提出观点并回应另一解释",
+      "strand": "表达与习作",
+      "objective": "用证据说明观点，同时回应一个合理替代解释或限制",
+      "successCriterion": "按题目条件独立完成提出观点并回应另一解释；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:lettercase",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "英文字母大小写对应",
+      "strand": "字母与词语",
+      "objective": "辨认同一个字母的大小写形式（启蒙路径）",
+      "successCriterion": "按题目条件独立完成英文字母大小写对应；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:alphabet",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "字母表相邻顺序",
+      "strand": "字母与词语",
+      "objective": "按英文字母顺序确定相邻字母（启蒙路径）",
+      "successCriterion": "按题目条件独立完成字母表相邻顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:greeting",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "基本问候语回应",
+      "strand": "阅读与语用",
+      "objective": "根据见面时段与交际意图回应问候（启蒙路径）",
+      "successCriterion": "按题目条件独立完成基本问候语回应；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:iam",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "I与am的搭配",
+      "strand": "句法与表达",
+      "objective": "用am完成第一人称单数身份句（启蒙路径）",
+      "successCriterion": "按题目条件独立完成I与am的搭配；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:color",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "颜色词与描述对应",
+      "strand": "字母与词语",
+      "objective": "根据明确的颜色描述选择英语词（启蒙路径）",
+      "successCriterion": "按题目条件独立完成颜色词与描述对应；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:numberword",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "一至十英语数量词",
+      "strand": "字母与词语",
+      "objective": "把书面英语数量词与数字对应（启蒙路径）",
+      "successCriterion": "按题目条件独立完成一至十英语数量词；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:simpleplural",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "规则名词复数加s",
+      "strand": "句法与表达",
+      "objective": "在明确多于一个的语境使用规则复数（启蒙路径）",
+      "successCriterion": "按题目条件独立完成规则名词复数加s；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:he-she",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "he与she指代",
+      "strand": "句法与表达",
+      "objective": "按明确人物线索选择he或she（启蒙路径）",
+      "successCriterion": "按题目条件独立完成he与she指代；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:this",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "this介绍单个近物",
+      "strand": "句法与表达",
+      "objective": "用this is表达一个近处对象（启蒙路径）",
+      "successCriterion": "按题目条件独立完成this介绍单个近物；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:introduce-self",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "用简单句介绍自己",
+      "strand": "书面表达",
+      "objective": "用I am介绍姓名或角色（启蒙路径；不等同必修教材年级）",
+      "successCriterion": "按题目条件独立完成用简单句介绍自己；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:article",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "a与an的基本读音规则",
+      "strand": "句法与表达",
+      "objective": "在明确常见词前按首音选择a或an（启蒙路径）",
+      "successCriterion": "按题目条件独立完成a与an的基本读音规则；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:be",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "am is are与主语匹配",
+      "strand": "句法与表达",
+      "objective": "根据主语人称与单复数选择be形式",
+      "successCriterion": "按题目条件独立完成am is are与主语匹配；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:demonstrative",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "this these与单复数",
+      "strand": "句法与表达",
+      "objective": "用this对应单数、these对应复数",
+      "successCriterion": "按题目条件独立完成this these与单复数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:have-has",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "have与has的基本人称",
+      "strand": "句法与表达",
+      "objective": "按第三人称单数与其他人称选择have或has",
+      "successCriterion": "按题目条件独立完成have与has的基本人称；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:possessive",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "my your his her所属关系",
+      "strand": "句法与表达",
+      "objective": "根据明确的所属对象使用物主限定词",
+      "successCriterion": "按题目条件独立完成my your his her所属关系；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:can",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "can后动词原形",
+      "strand": "句法与表达",
+      "objective": "在能力表达中使用can加动词原形",
+      "successCriterion": "按题目条件独立完成can后动词原形；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:placeword",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "in on under空间词",
+      "strand": "字母与词语",
+      "objective": "把明确的物体位置与英语介词对应",
+      "successCriterion": "按题目条件独立完成in on under空间词；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:questionword",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "who what where提问对象",
+      "strand": "阅读与语用",
+      "objective": "区分人物、事物和地点的提问词",
+      "successCriterion": "按题目条件独立完成who what where提问对象；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:polite",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "感谢道歉与请求",
+      "strand": "阅读与语用",
+      "objective": "根据交际目的选择礼貌表达",
+      "successCriterion": "按题目条件独立完成感谢道歉与请求；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:object-description",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "用两句英语描述物品",
+      "strand": "书面表达",
+      "objective": "写明物品名称并补充颜色或位置",
+      "successCriterion": "按题目条件独立完成用两句英语描述物品；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:phonics-a",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "常见短元音a词族",
+      "strand": "字母与词语",
+      "objective": "从书面常见词识别与cat同类的短元音拼写词族；不代替听说测量",
+      "successCriterion": "按题目条件独立完成常见短元音a词族；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:plural-es",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "s x ch结尾复数加es",
+      "strand": "句法与表达",
+      "objective": "对常见s x ch结尾名词使用es复数",
+      "successCriterion": "按题目条件独立完成s x ch结尾复数加es；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:do-does",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "一般现在时do does疑问",
+      "strand": "句法与表达",
+      "objective": "按主语单复数选择do或does构成疑问",
+      "successCriterion": "按题目条件独立完成一般现在时do does疑问；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:third-s",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "一般现在时第三人称单数",
+      "strand": "句法与表达",
+      "objective": "在肯定句中按主语使用动词第三人称单数",
+      "successCriterion": "按题目条件独立完成一般现在时第三人称单数；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:there-is",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "there is are存在句",
+      "strand": "句法与表达",
+      "objective": "根据存在对象单复数选择is或are",
+      "successCriterion": "按题目条件独立完成there is are存在句；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:like-ing",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "like后动名词形式",
+      "strand": "句法与表达",
+      "objective": "在指定like doing结构中使用动名词",
+      "successCriterion": "按题目条件独立完成like后动名词形式；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:when",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "when与时间回答",
+      "strand": "阅读与语用",
+      "objective": "根据时间词和时间状语回答when问题",
+      "successCriterion": "按题目条件独立完成when与时间回答；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:simple-instruction",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "英语课堂指令理解",
+      "strand": "阅读与语用",
+      "objective": "把简短书面英语指令对应到正确操作",
+      "successCriterion": "按题目条件独立完成英语课堂指令理解；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:short-text-detail",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "短文中人物爱好对照",
+      "strand": "阅读与语用",
+      "objective": "在两个人物的不同爱好间定位对应信息",
+      "successCriterion": "按题目条件独立完成短文中人物爱好对照；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:daily-routine",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "用现在时写日常活动",
+      "strand": "书面表达",
+      "objective": "用简单现在时写出两项日常活动，主语动词一致",
+      "successCriterion": "按题目条件独立完成用现在时写日常活动；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:present-continuous",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "现在进行时be doing",
+      "strand": "句法与表达",
+      "objective": "根据now语境使用be与动词ing",
+      "successCriterion": "按题目条件独立完成现在进行时be doing；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:simple-vs-continuous",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "习惯与正在发生的动作",
+      "strand": "句法与表达",
+      "objective": "依据every day和now选择正确时态形式",
+      "successCriterion": "按题目条件独立完成习惯与正在发生的动作；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:some-any",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "some any基本肯否语境",
+      "strand": "句法与表达",
+      "objective": "在普通陈述肯定与否定语境选择some或any",
+      "successCriterion": "按题目条件独立完成some any基本肯否语境；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:how-many-much",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "how many much与可数性",
+      "strand": "句法与表达",
+      "objective": "在常见名词中按可数复数和不可数选提问形式",
+      "successCriterion": "按题目条件独立完成how many much与可数性；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:object-pronoun",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "动词后宾格代词",
+      "strand": "句法与表达",
+      "objective": "在give help等动词后按指代对象使用宾格",
+      "successCriterion": "按题目条件独立完成动词后宾格代词；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:time-preposition",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "at on in时间搭配",
+      "strand": "句法与表达",
+      "objective": "根据钟点、星期和月份选择常用时间介词",
+      "successCriterion": "按题目条件独立完成at on in时间搭配；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:reading-referent",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "英语相邻句代词指代",
+      "strand": "阅读与语用",
+      "objective": "根据单复数及句意还原短文代词所指",
+      "successCriterion": "按题目条件独立完成英语相邻句代词指代；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:because-so",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "英语because与so因果",
+      "strand": "阅读与语用",
+      "objective": "区分英语因果连接中原因和结果",
+      "successCriterion": "按题目条件独立完成英语because与so因果；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:notice-reading",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "英语通知的时间地点条件",
+      "strand": "阅读与语用",
+      "objective": "从短通知中取出活动时间地点或物品要求",
+      "successCriterion": "按题目条件独立完成英语通知的时间地点条件；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:describe-now",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "描述当前情景并区别习惯",
+      "strand": "书面表达",
+      "objective": "以进行时描述正在发生的动作，再用现在时说明一个习惯",
+      "successCriterion": "按题目条件独立完成描述当前情景并区别习惯；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:past-regular",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "规则动词过去式",
+      "strand": "句法与表达",
+      "objective": "在yesterday等明确过去语境使用规则过去式",
+      "successCriterion": "按题目条件独立完成规则动词过去式；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:past-irregular",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "常用不规则过去式",
+      "strand": "句法与表达",
+      "objective": "对go see eat have使用常用过去式",
+      "successCriterion": "按题目条件独立完成常用不规则过去式；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:past-be",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "was were与过去主语",
+      "strand": "句法与表达",
+      "objective": "根据过去语境和主语选择was或were",
+      "successCriterion": "按题目条件独立完成was were与过去主语；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:did-base",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "did后动词原形",
+      "strand": "句法与表达",
+      "objective": "过去疑问与否定句中在did后还原动词",
+      "successCriterion": "按题目条件独立完成did后动词原形；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:future-going",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "be going to计划表达",
+      "strand": "句法与表达",
+      "objective": "用be going to加动词原形表达明确计划",
+      "successCriterion": "按题目条件独立完成be going to计划表达；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:comparative",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "规则形容词比较级",
+      "strand": "句法与表达",
+      "objective": "在than比较语境中使用常见规则比较级",
+      "successCriterion": "按题目条件独立完成规则形容词比较级；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:must-rule",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "must must not规则与禁止",
+      "strand": "阅读与语用",
+      "objective": "区分必须执行和禁止执行的规则含义",
+      "successCriterion": "按题目条件独立完成must must not规则与禁止；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:sequence-reading",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "英语事件时间线",
+      "strand": "阅读与语用",
+      "objective": "依据before after then还原短文事件先后",
+      "successCriterion": "按题目条件独立完成英语事件时间线；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:context-word",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "英语词义的语境线索",
+      "strand": "阅读与语用",
+      "objective": "利用短句定义或对照选择词在文中的意义",
+      "successCriterion": "按题目条件独立完成英语词义的语境线索；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:past-account",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "用过去时写简短经历",
+      "strand": "书面表达",
+      "objective": "按时间顺序写过去发生的两到三件事",
+      "successCriterion": "按题目条件独立完成用过去时写简短经历；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:tense-discrimination",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "过去现在将来的时间一致",
+      "strand": "句法与表达",
+      "objective": "根据明确时间状语选择过去现在或将来结构",
+      "successCriterion": "按题目条件独立完成过去现在将来的时间一致；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:comparison-irregular",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "better worse等不规则比较级",
+      "strand": "句法与表达",
+      "objective": "将good bad等常见词与不规则比较级对应",
+      "successCriterion": "按题目条件独立完成better worse等不规则比较级；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:conditional",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "if条件与结果",
+      "strand": "句法与表达",
+      "objective": "区分明确if句中的条件及其对应结果",
+      "successCriterion": "按题目条件独立完成if条件与结果；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:why-how",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "why原因与how方式",
+      "strand": "阅读与语用",
+      "objective": "根据提问意图区分原因和方式回答",
+      "successCriterion": "按题目条件独立完成why原因与how方式；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:inference-text",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "短文有限推断",
+      "strand": "阅读与语用",
+      "objective": "选择由行动线索支持的英语推断，排除确定性过度推断",
+      "successCriterion": "按题目条件独立完成短文有限推断；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:mainidea",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "短段主旨概括",
+      "strand": "阅读与语用",
+      "objective": "综合相关细节选择覆盖全段的主题",
+      "successCriterion": "按题目条件独立完成短段主旨概括；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:two-source-reading",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "英语两信息条件合并",
+      "strand": "阅读与语用",
+      "objective": "结合开放时间与限制条件作出可执行选择",
+      "successCriterion": "按题目条件独立完成英语两信息条件合并；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:evidence-vs-claim",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "英语观点与证据相关性",
+      "strand": "阅读与语用",
+      "objective": "选择直接支撑观点的英语事实并尊重样本范围",
+      "successCriterion": "按题目条件独立完成英语观点与证据相关性；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:self-correction",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "时态与主谓错误定位",
+      "strand": "句法与表达",
+      "objective": "在简短句中找出明确的时态或主谓不一致并选改写",
+      "successCriterion": "按题目条件独立完成时态与主谓错误定位；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:plan-with-reasons",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "说明计划理由与备选方案",
+      "strand": "书面表达",
+      "objective": "写出可执行计划、一个理由与条件变化后的安排",
+      "successCriterion": "按题目条件独立完成说明计划理由与备选方案；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-complete",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "both",
+      "name": "口头说清人物与动作",
+      "strand": "口语表达",
+      "objective": "在录音中用完整语句说清谁在做什么，和书面表达分别记录",
+      "successCriterion": "按题目条件独立完成口头说清人物与动作；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-sequence",
+      "subject": "chinese",
+      "grade": 2,
+      "term": "both",
+      "name": "口头说明两步顺序",
+      "strand": "口语表达",
+      "objective": "口头表达两个动作的先后关系，分别观察内容与顺序标记",
+      "successCriterion": "按题目条件独立完成口头说明两步顺序；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-retell",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "both",
+      "name": "口头复述关键信息",
+      "strand": "口语表达",
+      "objective": "依据给定短材料复述对象、问题与处理结果，不补造事实",
+      "successCriterion": "按题目条件独立完成口头复述关键信息；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-explain",
+      "subject": "chinese",
+      "grade": 4,
+      "term": "both",
+      "name": "口头解释原因与依据",
+      "strand": "口语表达",
+      "objective": "用录音区分观察事实和原因解释，避免无依据断言",
+      "successCriterion": "按题目条件独立完成口头解释原因与依据；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-evidence",
+      "subject": "chinese",
+      "grade": 5,
+      "term": "both",
+      "name": "口头用证据回应观点",
+      "strand": "口语表达",
+      "objective": "口头提出判断并引用相关细节，说明细节怎样支持判断",
+      "successCriterion": "按题目条件独立完成口头用证据回应观点；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:chinese:oral-alternative",
+      "subject": "chinese",
+      "grade": 6,
+      "term": "both",
+      "name": "口头比较方案并回应异议",
+      "strand": "口语表达",
+      "objective": "口头比较可行方案，权衡依据并回应一个合理异议",
+      "successCriterion": "按题目条件独立完成口头比较方案并回应异议；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-greeting",
+      "subject": "english",
+      "grade": 1,
+      "term": "both",
+      "name": "口头问候与介绍",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头问候与介绍”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头问候与介绍；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-object",
+      "subject": "english",
+      "grade": 2,
+      "term": "both",
+      "name": "口头描述物品",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头描述物品”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头描述物品；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-routine",
+      "subject": "english",
+      "grade": 3,
+      "term": "both",
+      "name": "口头说日常活动",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头说日常活动”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头说日常活动；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-now",
+      "subject": "english",
+      "grade": 4,
+      "term": "both",
+      "name": "口头区分当前动作与习惯",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头区分当前动作与习惯”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头区分当前动作与习惯；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-past",
+      "subject": "english",
+      "grade": 5,
+      "term": "both",
+      "name": "口头讲述过去经历",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头讲述过去经历”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头讲述过去经历；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "core:english:oral-plan",
+      "subject": "english",
+      "grade": 6,
+      "term": "both",
+      "name": "口头说明计划与备选安排",
+      "strand": "口语表达",
+      "objective": "以口头方式完成“口头说明计划与备选安排”任务，分别观察意义、语言组织和可理解性，不以书面题得分推定口语能力",
+      "successCriterion": "按题目条件独立完成口头说明计划与备选安排；用另一个结构的新题核查，并在延迟复测时再次验证。"
+    },
+    {
+      "id": "atomic:math:divisionregroup",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "把余下的十换成一并合并个位",
+      "strand": "数与运算",
+      "objective": "在剩余十和原个位已给定时，把全部剩余十换成一并合并原个位，保持未分数量不变",
+      "successCriterion": "能分别记录换出的一与合并后的一，包含零余十或零个位；用实物记录和逆向新题核对，并在真实间隔后独立验证。"
+    },
+    {
+      "id": "atomic:math:averagecount",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "明确平均对象并把零数据计入份数",
+      "strand": "统计与概率",
+      "objective": "按问题指定的人、天等平均对象确定份数；参与且为0的记录仍计入，未参加不混入，记录缺失不当成0",
+      "successCriterion": "能从完整记录和参与范围独立选择分母，区分0、未参加与未记录，在对象改变的新题中验证，并经过真实间隔复核。"
+    }
+  ]
+}

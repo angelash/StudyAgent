@@ -1,0 +1,20 @@
+{
+  "format": "study-agent-textbook-mapping-candidate-audit-v1",
+  "at": "2026-10-20T20:06:58.493Z",
+  "passed": true,
+  "candidates": {
+    "books": 12,
+    "lessons": 523,
+    "titleMatched": 316,
+    "lessonsWithCandidates": 233,
+    "candidateMappings": 587,
+    "atomsCovered": 55,
+    "approvedMappings": 0
+  },
+  "sourceSha256": {
+    "candidates": "759144ac32e500d570533dd579ffb8962452bea3f7c55845fbe60f1398bd9258",
+    "atoms": "4650297881d659dc2f09688d6d39a1fcdf8b7e35702d7712139c50626e9f4802",
+    "toc": "948f3fd8fb9afc4f0054d8d69a2882ea8cb0ccef1448b463090ca4086d80fc34"
+  },
+  "scope": "Lexical candidates from complete local PDFs; no mapping is approved or published."
+}

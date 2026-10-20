@@ -52,6 +52,19 @@ describe.sequential('eligible material coverage through real curriculum services
     expect(result.books).toBe(1); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
     expect(result.rows).toHaveLength(20); expect(result.rows.every((row: any) => row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
     expect(result.note).toContain('不根据标题自动批准');
+    const candidates = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=6&term=lower&status=unmapped&page=1&pageSize=100');
+    const candidateRows = candidates.rows.filter((row: any) => row.candidateAtomIds.length > 0);
+    expect(candidateRows.length).toBeGreaterThan(0);
+    for (const row of candidateRows) {
+      expect(row).toMatchObject({ state: 'unmapped', mappingVersion: null, candidateReviewStatus: 'candidate' });
+      expect(row.atomIds).toEqual([]);
+      for (const candidateAtomId of row.candidateAtomIds) {
+        const atom = store.find('knowledgeAtoms', { id: candidateAtomId });
+        expect(atom).toMatchObject({ subject: 'chinese' });
+        expect(atom.grade).toBeLessThanOrEqual(6);
+        expect(atom.grade < 6 || atom.term === 'both' || atom.term === 'lower').toBe(true);
+      }
+    }
     await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1', undefined, parent, 403);
   }, 30_000);
   it('uses every current eligibility gate and restores readiness only when the actual packets are eligible again', async () => {

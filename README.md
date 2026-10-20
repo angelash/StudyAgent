@@ -21,7 +21,7 @@
 
 GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。隔离C++运行器已接入1～4级49个原创试点任务、98个概念/跟踪探针和162组隐藏测试，独立家长范围与学生工作台分别保存理解、步骤和实现证据；隐藏测试不回传。完整1～4级课程仍待真人逐项审核，也不计入上述小学原创任务数。见 [GESP试点交付](doc/product/66-gesp-student-pilot-delivery.md)、[隔离运行器交付](doc/product/65-gesp-isolated-runner-delivery.md) 和 [G1～G5计划](doc/product/64-gesp-student-programming-development-plan.md)。
 
-448册真实教材中112册已有章节，新增12册小学语文上下册的课名、页码和组合课层级；目录与知识点映射分别审核，旧评测保留原版本。来源、离线重建与两库运行证据见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md)。
+448册真实教材中112册已有章节；12册小学语文完整PDF（1601页）已独立迁入和备份，523个教学课时均保留，并生成待人工审核的课时映射候选。目录、完整正文来源与知识点映射分别审计，旧评测保留原版本。见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md) 与 [完整语文教材源交付](doc/product/70-complete-chinese-textbook-source-and-mapping-candidates.md)。
 
 ## 本地运行
 

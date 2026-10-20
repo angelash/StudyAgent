@@ -1,0 +1,40 @@
+{
+  "format": "study-agent-textbook-candidates-regression-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "defaultRegression": {
+    "testFiles": 148,
+    "tests": 689,
+    "passed": 683,
+    "failed": 0,
+    "postgresDefaultSkipped": 6
+  },
+  "postgres": {
+    "cases": 6,
+    "passed": 6,
+    "schemaVersion": 10,
+    "source": "data/qa/textbook-candidates-postgres-regression.json"
+  },
+  "targetedHttp": {
+    "test": "pages the cross-textbook lesson worklist without approving title-based mappings",
+    "passed": true,
+    "asserts": [
+      "candidate IDs are returned for an eligible Chinese grade-six lesson",
+      "candidate lessons remain unmapped with no mapping version or approved atom IDs",
+      "candidate atom IDs are published, same-subject, at or below the book grade, and in the book term",
+      "parent access remains forbidden"
+    ]
+  },
+  "build": true,
+  "lint": true,
+  "candidateAudit": {
+    "books": 12,
+    "lessons": 523,
+    "titleMatched": 316,
+    "lessonsWithCandidates": 233,
+    "candidateMappings": 587,
+    "atomsCovered": 55,
+    "approvedMappings": 0
+  },
+  "limits": "This receipt covers automated source, API, database, build and type checks. It does not claim that all 523 lessons received human curriculum mapping, and it is not a real-browser or human learning-effect study."
+}
