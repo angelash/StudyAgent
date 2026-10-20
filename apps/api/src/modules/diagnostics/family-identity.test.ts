@@ -2,6 +2,9 @@ import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import type { DiagnosticHypothesis, DiagnosticResponse, DiagnosticSession, DiagnosticStart, KnowledgeAtom, MeasurementItem } from '@study-agent/contracts';
 import registry from '../../../../../resources/curriculum/authored-family-identities-v1.json';
+import baseline from '../../../../../resources/curriculum/authored-task-baseline-5678-v1.json';
+import { buildFourthGradeNumberProbeFamilies } from './authored-fourth-grade-number-probes';
+import { buildRemainderDecimalProbeFamilies } from './authored-remainder-decimal-probes';
 import { buildCoreCurriculum } from './original-core-curriculum';
 import { buildFoundationCurriculum, foundationQuestionId } from './foundation-curriculum';
 import { canonicalFamily, FAMILY_IDENTITY_VERSION, familyAnalysisOutdated, independentFamilyKey } from './family-identity';
@@ -41,9 +44,11 @@ describe('reviewed, atom-scoped family identities', () => {
     expect(familyAnalysisOutdated({ estimates: [{ atomId: 'foundation:math:add20', scoredCount: 2 }] } as typeof report)).toBe(false);
   });
   it('preserves every full authored task and its original identifier', () => {
+    const frozenIds = new Set([...baseline.ids, ...[...buildFourthGradeNumberProbeFamilies(), ...buildRemainderDecimalProbeFamilies()]
+      .flatMap(row => row.exercises.map(exercise => foundationQuestionId(row.atomId, exercise)))]);
     const all = buildFoundationCurriculum().flatMap(row => row.exercises.map(exercise => ({ atomId: row.atom.id,
-      id: foundationQuestionId(row.atom.id, exercise), exercise }))).sort((a, b) => a.id.localeCompare(b.id));
-    expect(all).toHaveLength(6158);
+      id: foundationQuestionId(row.atom.id, exercise), exercise }))).filter(row => frozenIds.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
+    expect(frozenIds.size).toBe(6158); expect(all).toHaveLength(6158);
     expect(createHash('sha256').update(JSON.stringify(all)).digest('hex')).toBe('3b1ced64222f14e95d15113dd1c60856ad95031a9adc1e6edea7cf74cc7f73c1');
   });
   it.each(registry.groups)('merges the real legacy structures for $atomId, including seeded prefixes', group => {

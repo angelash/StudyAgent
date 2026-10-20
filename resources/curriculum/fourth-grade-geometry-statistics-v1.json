@@ -1,0 +1,48 @@
+{
+  "version": "fourth-grade-geometry-statistics-v1",
+  "scope": "Original deterministic drawings. Authored task structures and time budgets, without field calibration or standardized measurement claims.",
+  "angles": [
+    { "degrees": 30, "rotation": 0, "lengths": [88, 66] },
+    { "degrees": 90, "rotation": 38, "lengths": [70, 98] },
+    { "degrees": 120, "rotation": 91, "lengths": [96, 72] },
+    { "degrees": 45, "rotation": 145, "lengths": [68, 100] },
+    { "degrees": 90, "rotation": 210, "lengths": [90, 64] },
+    { "degrees": 135, "rotation": 278, "lengths": [72, 94] },
+    { "degrees": 60, "rotation": 330, "lengths": [98, 76] },
+    { "degrees": 90, "rotation": 63, "lengths": [64, 92] },
+    { "degrees": 150, "rotation": 182, "lengths": [92, 70] },
+    { "degrees": 75, "rotation": 244, "lengths": [74, 96] },
+    { "degrees": 90, "rotation": 118, "lengths": [100, 68] },
+    { "degrees": 105, "rotation": 305, "lengths": [66, 88] }
+  ],
+  "isosceles": [
+    { "apex": 40, "given": "C" }, { "apex": 60, "given": "A" },
+    { "apex": 80, "given": "C" }, { "apex": 100, "given": "A" },
+    { "apex": 120, "given": "C" }, { "apex": 140, "given": "A" },
+    { "apex": 30, "given": "C" }, { "apex": 50, "given": "A" },
+    { "apex": 70, "given": "C" }, { "apex": 90, "given": "A" },
+    { "apex": 110, "given": "C" }, { "apex": 130, "given": "A" }
+  ],
+  "exteriorTriangles": [
+    { "a": 30, "b": 70 }, { "a": 40, "b": 60 },
+    { "a": 50, "b": 50 }, { "a": 60, "b": 40 },
+    { "a": 70, "b": 30 }, { "a": 80, "b": 20 },
+    { "a": 35, "b": 55 }, { "a": 45, "b": 65 },
+    { "a": 55, "b": 45 }, { "a": 65, "b": 35 },
+    { "a": 75, "b": 25 }, { "a": 85, "b": 15 }
+  ],
+  "barCharts": [
+    { "step": 5, "labels": ["步行", "骑车", "乘车"], "values": [15, 15, 40], "first": "步行", "second": "骑车" },
+    { "step": 10, "labels": ["骑车", "乘车", "步行"], "values": [40, 10, 90], "first": "骑车", "second": "乘车" },
+    { "step": 2, "labels": ["乘车", "步行", "骑车"], "values": [10, 4, 20], "first": "乘车", "second": "步行" },
+    { "step": 5, "labels": ["步行", "骑车", "乘车"], "values": [30, 0, 40], "first": "步行", "second": "骑车" },
+    { "step": 10, "labels": ["骑车", "乘车", "步行"], "values": [30, 30, 90], "first": "骑车", "second": "乘车" },
+    { "step": 2, "labels": ["乘车", "步行", "骑车"], "values": [8, 4, 20], "first": "乘车", "second": "步行" },
+    { "step": 5, "labels": ["步行", "骑车", "乘车"], "values": [25, 0, 40], "first": "步行", "second": "骑车" },
+    { "step": 10, "labels": ["骑车", "乘车", "步行"], "values": [60, 10, 90], "first": "骑车", "second": "乘车" },
+    { "step": 2, "labels": ["乘车", "步行", "骑车"], "values": [6, 6, 20], "first": "乘车", "second": "步行" },
+    { "step": 5, "labels": ["步行", "骑车", "乘车"], "values": [20, 0, 40], "first": "步行", "second": "骑车" },
+    { "step": 10, "labels": ["骑车", "乘车", "步行"], "values": [50, 10, 90], "first": "骑车", "second": "乘车" },
+    { "step": 2, "labels": ["乘车", "步行", "骑车"], "values": [12, 4, 20], "first": "乘车", "second": "步行" }
+  ]
+}

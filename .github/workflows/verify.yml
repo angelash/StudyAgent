@@ -42,6 +42,8 @@ jobs:
         run: node scripts/qa/verify-data-assets.cjs data/qa/data-assets.json
       - name: Canonical boundary, coverage and area-unit assets and independent image decoding
         run: node scripts/qa/verify-geometry-assets.cjs data/qa/geometry-assets.json
+      - name: Canonical fourth-grade angles, triangles and bar charts and independent image decoding
+        run: node scripts/qa/verify-fourth-grade-geometry-statistics-assets.cjs data/qa/fourth-grade-geometry-statistics-assets.json
       - name: Curriculum package persistence and safe seed enrichment
         run: node scripts/qa/verify-curriculum-packages.cjs data/qa/curriculum-package-runtime.json
       - name: Reviewed textbook TOCs and frozen progress recovery

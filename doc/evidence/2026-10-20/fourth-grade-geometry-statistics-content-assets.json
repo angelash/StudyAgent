@@ -1,0 +1,529 @@
+{
+  "at": "2026-10-20T04:18:56.350Z",
+  "passed": true,
+  "scope": "All 48 original angle, triangle and bar-chart SVGs decoded locally. Contact sheets require separate visual inspection. No browser, accessibility-equivalence, teacher or real-student acceptance.",
+  "sourceSha256": {
+    "scripts/qa/verify-fourth-grade-geometry-statistics-assets.cjs": "a77cb62747839a5f291298cb4e158b6c3cca5de75bbdf930a6ac444eaa1d0504",
+    "scripts/content/build-fourth-grade-geometry-statistics.cjs": "e3049d54bd49f45b2863f2bc61b9cf5e9d08d1e7d998c71fbc3bbeba482fa898",
+    "resources/curriculum/fourth-grade-geometry-statistics-v1.json": "e4cca1e4f684d4ebc54001d0017f4f4af1fdbd519c82da9d972fac693b38b0c5",
+    "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-0.svg": "9b76877aaecbb6d41879c664fdcde576e8cf3fbb995970ff0f5543b083c3e532",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-1.svg": "e0005d2823fea5ef5504c54e3c8325c4c68469b42ed46ef939172d27f04f2376",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-2.svg": "a2e2a09d7e451dc66c206fc2218c5e98ab6d2cd7604110e6ac65c18fe69c8b50",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-3.svg": "15199d058e8ab14db51924b6b39d7b0fd4a96352d4bbe433c076f3f66ee24516",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-4.svg": "804009147fe504febc7fb8488ec7a67944a3a55b3273fb911dad11eec2cd886a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-5.svg": "eb239ed2d26e6a9c8a78f9d340e2429dc6db678913d5609f67b3583914653073",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-6.svg": "8ccbb64494844af645405f04174ea2a5fb6cd8704a47b5dad034e877fff372fe",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-7.svg": "191d499cf4b44c1f22141f8a0413a0152e03ec0ff9e0d166f2300a6955b596e7",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-8.svg": "600d2b6465dfa8699a5dad0fe7feb88e2867c15d8fa609d2927699339c83055f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-9.svg": "179a4ae4f8114894c66488336b2daabbd4134fc86174b2c17b97345f501af879",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-10.svg": "8651a56c3defc9ee3822243ef55c010f97ff690ceee7dd073f8563f87daf7204",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-11.svg": "e06c5af50d99629ba7d91024235d02dce7579734aec609b2ffdae0212eeea8f7",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-0.svg": "8d19972f6e29a00c55b882d54ffd7b8c9e439f55948ea89a5d86d2c3ef063ed0",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-1.svg": "62db970ef5bc05f1b1373f8406f027c99ef542d155652e57e4d406576ed9564e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-2.svg": "87fd00e0d5e3ebb5ecb583f6a3481ab4a0b63ec444c941fabfe47206957084e4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-3.svg": "9c5aa77f09804f200561b18dcc2e14517b77be85b67fb13b0ce6ff130f944954",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-4.svg": "c6dc04519a2fd7d433b02bd94dd9dde1185053c63d7a1818726ca0c537eabb46",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-5.svg": "2a2cd2590b598ec756ecdce883c9c54676a40c3e4557a7b238bf0ca6e540444f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-6.svg": "fca179837d93e8547ab83fed5b6deaac03d48a7be64911e79b5bd1dca2e57829",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-7.svg": "331fd18558fd33dd1be128e75d952f2cc5f6c76c6778f5c22517e0773b0efbd4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-8.svg": "02347b130ed3da83973484e3b1ea25f9f6c48caa079aadc197e0de699da4aa40",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-9.svg": "4ef36da827352bfff768dcbc7d3e0e058322380bb8efcf0c87e277294b922aab",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-10.svg": "da781d7d1bf99333400cbb16f6c10bb5889f4ccefb3d138613dfdfabdbfc4e63",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-11.svg": "ba2ba5945fed7e72f519914003300ec11ff248922546da2e62e60ffb9d22bd3e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-0.svg": "8e4c6bf0649d09fa8b2f61d2de1d01a0696ca6154cf33891a3905107afcdba36",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-1.svg": "e80a96af25bb6fbaf1466ae461b35e42f8a4b0d49963e4587de53fac584d0523",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-2.svg": "98ca07b6f9fd53ed67fd20167fb28ff4673a4c415810083ad7a8e4518474b2a1",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-3.svg": "71632f69ea5f84de26a2b6b7f267723f66761e7e49fe5dfbf1f3097f3f1ff1e3",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-4.svg": "8598960b2af5a4e18507ae58c710fe5952d30ff31281057295472ebcea3afeff",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-5.svg": "dec1229f66d1b1c9db1af996ee2a44b1a1de54c5ed8ab5f1f3385c21a267bafe",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-6.svg": "676393200354006c7c5f0a1b47a63fe1e1ef8e60d0a930adf3f9e32a9fd6a1ab",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-7.svg": "7db9aa1420766ea8960141f25347d401ad1ef2232f986e31373331c34a1a6139",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-8.svg": "d085a7ea3165b04120989e9aecb9fae12c42c8509448f59c3bfdc9dd3434aef1",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-9.svg": "2af4fa9bbdb27a0620c982ca6c2cd3d4a1117e2fcd454ac30fdfa1c758e06978",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-10.svg": "f2742a5623ab6c4959ab6a634c94e2bc436377f200f316c59ad0c21f3928d871",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-11.svg": "70604b510992ba4da6adff8f6f25d134179572c2f06bd1927270a28b8f18fbb2",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-0.svg": "569a23e3ce4e3d2c8ded78709555f7cc7362dc69d646234e58c319604cc1aed4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-1.svg": "303383be1a32ba8e39e1b134afbccfadda62523abaecfb80e33176138338063a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-2.svg": "f99c30417f70bd4146a94acda22f1d2f2ee8f35bd18ca01a2ea3e9677c3308e6",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-3.svg": "fcac49dd4a945390d9279fbe6931601c8a97c7651030ffa7ddc5aa21b0aa5061",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-4.svg": "2f332f286c04148d55183ddf0cb2080b322962f593693fdce9f059d9af094e6e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-5.svg": "4af7e1442c58d987a637ed9dc31fbf9ae7f0701b8459f50b4eeb16e00e303a8f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-6.svg": "a4218b10b3ac13169f697ef8c33b72a7b18ef6575b3a55ef9216caa56e9c7568",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-7.svg": "ba9cf4fc773302fdd9a479b7a2fef670a5302c196317dc2d7897489dbccd7208",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-8.svg": "a161387abf15abe31c69271ea3b14f6fc3f23df2c096544c7a12f3091543163a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-9.svg": "37131d792b2d45c3621df63f5eb044e6716f191c5e0d113a3bade8db105ff098",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-10.svg": "d048757b1c7a6d1c407c161a4c86ca22a14b4d36426045d47198b17987a3238b",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-11.svg": "fd9a590104e322296236c1851e2a8042741629f9112066c9b4cacf87329ed5b1"
+  },
+  "assets": [
+    {
+      "name": "bar-chart-0.svg",
+      "bytes": 4000,
+      "sha256": "9b76877aaecbb6d41879c664fdcde576e8cf3fbb995970ff0f5543b083c3e532",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "2cae3ef73a9bd73f463d69e4c863cf8b1d50f2b3dcc435d7aa546b6e18d08026"
+    },
+    {
+      "name": "bar-chart-1.svg",
+      "bytes": 4006,
+      "sha256": "e0005d2823fea5ef5504c54e3c8325c4c68469b42ed46ef939172d27f04f2376",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "85c069cb1f199b1318351e50f9662d272ee4e536fc6968b963ccd15c8205a408"
+    },
+    {
+      "name": "bar-chart-2.svg",
+      "bytes": 3995,
+      "sha256": "a2e2a09d7e451dc66c206fc2218c5e98ab6d2cd7604110e6ac65c18fe69c8b50",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "09abdf24d28ccf36b8861d69d095b70109f828a4a1318c97705c1ebbc85d603f"
+    },
+    {
+      "name": "bar-chart-3.svg",
+      "bytes": 3998,
+      "sha256": "15199d058e8ab14db51924b6b39d7b0fd4a96352d4bbe433c076f3f66ee24516",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "4247fb07fc0057c2a2115cfbcb85ba5b36da1f973865fc4ac19ddb65847c5b36"
+    },
+    {
+      "name": "bar-chart-4.svg",
+      "bytes": 4006,
+      "sha256": "804009147fe504febc7fb8488ec7a67944a3a55b3273fb911dad11eec2cd886a",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "33f71fb52bd6920e9c70b8c3ee6e33b35cd8d39bb8d396b3fceee50f8a125610"
+    },
+    {
+      "name": "bar-chart-5.svg",
+      "bytes": 3994,
+      "sha256": "eb239ed2d26e6a9c8a78f9d340e2429dc6db678913d5609f67b3583914653073",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "59216f845612bcafc3cfb4cff1e2e3d5c580d51f4fdd70469c6e7ce3b3030c6f"
+    },
+    {
+      "name": "bar-chart-6.svg",
+      "bytes": 3998,
+      "sha256": "8ccbb64494844af645405f04174ea2a5fb6cd8704a47b5dad034e877fff372fe",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "8bf16970b869971ba8ac117ab64a1ae0f6d3671c0b1449d7feabc19e722d7303"
+    },
+    {
+      "name": "bar-chart-7.svg",
+      "bytes": 4006,
+      "sha256": "191d499cf4b44c1f22141f8a0413a0152e03ec0ff9e0d166f2300a6955b596e7",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "9c389cf0e6a2034f390200dab829ecfa89e59ef1a9f09c962a313546ea1fd331"
+    },
+    {
+      "name": "bar-chart-8.svg",
+      "bytes": 3994,
+      "sha256": "600d2b6465dfa8699a5dad0fe7feb88e2867c15d8fa609d2927699339c83055f",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "550de3b26276171b131be3b74d7a0a276b689596d0d2d09866d1275634c462ff"
+    },
+    {
+      "name": "bar-chart-9.svg",
+      "bytes": 3998,
+      "sha256": "179a4ae4f8114894c66488336b2daabbd4134fc86174b2c17b97345f501af879",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "0af07eba386569c6eafc13371239f172d00a5b9c0b67d55fab011e9c54352b65"
+    },
+    {
+      "name": "bar-chart-10.svg",
+      "bytes": 4006,
+      "sha256": "8651a56c3defc9ee3822243ef55c010f97ff690ceee7dd073f8563f87daf7204",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "6c9b649a703ad407d8435c9fb6f636aa0c1ef0b979765d80835a2a1fb59c38d1"
+    },
+    {
+      "name": "bar-chart-11.svg",
+      "bytes": 3995,
+      "sha256": "e06c5af50d99629ba7d91024235d02dce7579734aec609b2ffdae0212eeea8f7",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "c11d34d91941375be7c9309280e387dfb290fb83246261caf03b1995c1028330"
+    },
+    {
+      "name": "equal-angle-triangle-0.svg",
+      "bytes": 1033,
+      "sha256": "8d19972f6e29a00c55b882d54ffd7b8c9e439f55948ea89a5d86d2c3ef063ed0",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "ae0f3fbde0372fc30d3639c6c6e159fe2062abee25ece10f1abc428b512f189f"
+    },
+    {
+      "name": "equal-angle-triangle-1.svg",
+      "bytes": 1033,
+      "sha256": "62db970ef5bc05f1b1373f8406f027c99ef542d155652e57e4d406576ed9564e",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "3fd441302f2ac5864338d06c2a34a0511ee4e1a76242c6c1868e14855a62a51f"
+    },
+    {
+      "name": "equal-angle-triangle-2.svg",
+      "bytes": 1031,
+      "sha256": "87fd00e0d5e3ebb5ecb583f6a3481ab4a0b63ec444c941fabfe47206957084e4",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "9aa73c65e0e430818d440ac118f72d64037e4ed3bb2dcf3f7c031e4dd91239fa"
+    },
+    {
+      "name": "equal-angle-triangle-3.svg",
+      "bytes": 1019,
+      "sha256": "9c5aa77f09804f200561b18dcc2e14517b77be85b67fb13b0ce6ff130f944954",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "d626a127dfe21ec3a08f2cb510e32f69ecd5d3b46f97cbc718f21c8414e43c69"
+    },
+    {
+      "name": "equal-angle-triangle-4.svg",
+      "bytes": 1021,
+      "sha256": "c6dc04519a2fd7d433b02bd94dd9dde1185053c63d7a1818726ca0c537eabb46",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "dbed34adf21ad97679ad24594e8b733c81e140979c7f17b579c9dbb4e614135c"
+    },
+    {
+      "name": "equal-angle-triangle-5.svg",
+      "bytes": 1019,
+      "sha256": "2a2cd2590b598ec756ecdce883c9c54676a40c3e4557a7b238bf0ca6e540444f",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "5c2cca79376117315e1d65684873ebfd1ff1121c23bd35e20b0a14590d8f23ee"
+    },
+    {
+      "name": "equal-angle-triangle-6.svg",
+      "bytes": 1033,
+      "sha256": "fca179837d93e8547ab83fed5b6deaac03d48a7be64911e79b5bd1dca2e57829",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "60586cfd251cd03240513f4d89f0bafb7829c68b6e430132a6cabc68ad475970"
+    },
+    {
+      "name": "equal-angle-triangle-7.svg",
+      "bytes": 1033,
+      "sha256": "331fd18558fd33dd1be128e75d952f2cc5f6c76c6778f5c22517e0773b0efbd4",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "2bd355345027eaf9cc33b9f0f23441da42d9f3b8603f56f7cb78bd56a05bace6"
+    },
+    {
+      "name": "equal-angle-triangle-8.svg",
+      "bytes": 1032,
+      "sha256": "02347b130ed3da83973484e3b1ea25f9f6c48caa079aadc197e0de699da4aa40",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "fc54bbbf0824a410262af3f5fcf6d0e26b461af0578c8368b0d8ffaad4ff867a"
+    },
+    {
+      "name": "equal-angle-triangle-9.svg",
+      "bytes": 1003,
+      "sha256": "4ef36da827352bfff768dcbc7d3e0e058322380bb8efcf0c87e277294b922aab",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "a9a0c2f46dc7d81e316a9047a812d83821ec7c352e20a6f17f37f8aa2db35958"
+    },
+    {
+      "name": "equal-angle-triangle-10.svg",
+      "bytes": 1021,
+      "sha256": "da781d7d1bf99333400cbb16f6c10bb5889f4ccefb3d138613dfdfabdbfc4e63",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "80834f7af07dff71a43c1cf38cb7bcf05aa0831c3d30dc235dd3f7ac16fdafce"
+    },
+    {
+      "name": "equal-angle-triangle-11.svg",
+      "bytes": 1019,
+      "sha256": "ba2ba5945fed7e72f519914003300ec11ff248922546da2e62e60ffb9d22bd3e",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "0d04fd9eb91456e50e1f6c98a6c6ec644567f85dd50b4d1a6a93d5e15075c49e"
+    },
+    {
+      "name": "exterior-triangle-0.svg",
+      "bytes": 1254,
+      "sha256": "8e4c6bf0649d09fa8b2f61d2de1d01a0696ca6154cf33891a3905107afcdba36",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "cd18e2877ca3de57b076215af0d233515fdfa015bcad5c1fcc1c0e9d4c9bd287"
+    },
+    {
+      "name": "exterior-triangle-1.svg",
+      "bytes": 1253,
+      "sha256": "e80a96af25bb6fbaf1466ae461b35e42f8a4b0d49963e4587de53fac584d0523",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "920891ff30ded2eb788c508843abf1c3b187c6511bffd3a0db5198cf2031cc1a"
+    },
+    {
+      "name": "exterior-triangle-2.svg",
+      "bytes": 1274,
+      "sha256": "98ca07b6f9fd53ed67fd20167fb28ff4673a4c415810083ad7a8e4518474b2a1",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "67b72d21d49eda48d3c5bf6f48022a051733b93d4421f57fb8e2b1efda5d4b1b"
+    },
+    {
+      "name": "exterior-triangle-3.svg",
+      "bytes": 1253,
+      "sha256": "71632f69ea5f84de26a2b6b7f267723f66761e7e49fe5dfbf1f3097f3f1ff1e3",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "efce84319fd3b196ef499f5c509e8c3c86a8592ec90544b7a8582ed4267d96f3"
+    },
+    {
+      "name": "exterior-triangle-4.svg",
+      "bytes": 1254,
+      "sha256": "8598960b2af5a4e18507ae58c710fe5952d30ff31281057295472ebcea3afeff",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "5ffbfcecb551a54a2780af81c806be350304e706d57a472188fc0c13c6ef419e"
+    },
+    {
+      "name": "exterior-triangle-5.svg",
+      "bytes": 1255,
+      "sha256": "dec1229f66d1b1c9db1af996ee2a44b1a1de54c5ed8ab5f1f3385c21a267bafe",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "eb7a61b90625d6092bc403d3ba1c9d4e07f0667b5ce0e73e169773de1871cad4"
+    },
+    {
+      "name": "exterior-triangle-6.svg",
+      "bytes": 1254,
+      "sha256": "676393200354006c7c5f0a1b47a63fe1e1ef8e60d0a930adf3f9e32a9fd6a1ab",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "24cad74714f091316fb6de5d0fb69b58376475200d1173975340482cf1d694c4"
+    },
+    {
+      "name": "exterior-triangle-7.svg",
+      "bytes": 1290,
+      "sha256": "7db9aa1420766ea8960141f25347d401ad1ef2232f986e31373331c34a1a6139",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "5e0ce40a6322842c582234cce3ffb74c0935f7cea1e9e2300ae428cf1f5034cb"
+    },
+    {
+      "name": "exterior-triangle-8.svg",
+      "bytes": 1288,
+      "sha256": "d085a7ea3165b04120989e9aecb9fae12c42c8509448f59c3bfdc9dd3434aef1",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "0660284b07378562b0c1e0cfbf7a4c1bdca1e1f9b1d7b2fe62324327b7003795"
+    },
+    {
+      "name": "exterior-triangle-9.svg",
+      "bytes": 1253,
+      "sha256": "2af4fa9bbdb27a0620c982ca6c2cd3d4a1117e2fcd454ac30fdfa1c758e06978",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "fd9b09d2642bf4debaf20286f21cb2b70be32d2fe2cde41b345431e1943ac2bb"
+    },
+    {
+      "name": "exterior-triangle-10.svg",
+      "bytes": 1255,
+      "sha256": "f2742a5623ab6c4959ab6a634c94e2bc436377f200f316c59ad0c21f3928d871",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "2446dfa9fa93e494e1037fd725b94f0a6d75ff7eb435298ad1f1eb7066865009"
+    },
+    {
+      "name": "exterior-triangle-11.svg",
+      "bytes": 1251,
+      "sha256": "70604b510992ba4da6adff8f6f25d134179572c2f06bd1927270a28b8f18fbb2",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "50cfe069d871faf5bbd08ad8db604c4fa4164c4135c429c8c217a17ec856c0b1"
+    },
+    {
+      "name": "rotated-angle-0.svg",
+      "bytes": 1474,
+      "sha256": "569a23e3ce4e3d2c8ded78709555f7cc7362dc69d646234e58c319604cc1aed4",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "a2e835607e9923712db42e8dd8121b4d8f3442721ef5c4007770aaa7eb1b55c2"
+    },
+    {
+      "name": "rotated-angle-1.svg",
+      "bytes": 1512,
+      "sha256": "303383be1a32ba8e39e1b134afbccfadda62523abaecfb80e33176138338063a",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "ec623565b6356e7999b6707a2d72c5baf220c6e4a335d93f5c8136e33f0e2fc5"
+    },
+    {
+      "name": "rotated-angle-2.svg",
+      "bytes": 1511,
+      "sha256": "f99c30417f70bd4146a94acda22f1d2f2ee8f35bd18ca01a2ea3e9677c3308e6",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "067fc8ae4556ead19b7da9ce5867dbae5ecf8fe188e373010e3856664ce2f5d6"
+    },
+    {
+      "name": "rotated-angle-3.svg",
+      "bytes": 1512,
+      "sha256": "fcac49dd4a945390d9279fbe6931601c8a97c7651030ffa7ddc5aa21b0aa5061",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "080e98900758598fab0bd774593bac420cb62ae843bcc83b3efa562c239121cc"
+    },
+    {
+      "name": "rotated-angle-4.svg",
+      "bytes": 1489,
+      "sha256": "2f332f286c04148d55183ddf0cb2080b322962f593693fdce9f059d9af094e6e",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "6d9f51aa0cb8be166781f0e99d647f026b14a4dd972c75a480c17a4d6bf6d4c3"
+    },
+    {
+      "name": "rotated-angle-5.svg",
+      "bytes": 1512,
+      "sha256": "4af7e1442c58d987a637ed9dc31fbf9ae7f0701b8459f50b4eeb16e00e303a8f",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "81820c972be7ebafcc22138dfedbc2bb1eda6c6424de3fd3e99c82c0864628ef"
+    },
+    {
+      "name": "rotated-angle-6.svg",
+      "bytes": 1475,
+      "sha256": "a4218b10b3ac13169f697ef8c33b72a7b18ef6575b3a55ef9216caa56e9c7568",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "34a36874cf013b3dc52582ee85f3f783d2e15b037b8d1b4b884e4fcc047cabf1"
+    },
+    {
+      "name": "rotated-angle-7.svg",
+      "bytes": 1509,
+      "sha256": "ba9cf4fc773302fdd9a479b7a2fef670a5302c196317dc2d7897489dbccd7208",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "9f4098cff2dc2c6cb614c6e47f303aea2fc764b5314cea3b183ef0e934bbdf42"
+    },
+    {
+      "name": "rotated-angle-8.svg",
+      "bytes": 1512,
+      "sha256": "a161387abf15abe31c69271ea3b14f6fc3f23df2c096544c7a12f3091543163a",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "4af1a94be2faf0e6e16c479ef2dbfdfb151de77a9c92c3e5f6fa44ea63f31abe"
+    },
+    {
+      "name": "rotated-angle-9.svg",
+      "bytes": 1512,
+      "sha256": "37131d792b2d45c3621df63f5eb044e6716f191c5e0d113a3bade8db105ff098",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "e219a0dcc0d65ff77a495769b6f717f719c80e0489260c299581c5a9aa87cf14"
+    },
+    {
+      "name": "rotated-angle-10.svg",
+      "bytes": 1510,
+      "sha256": "d048757b1c7a6d1c407c161a4c86ca22a14b4d36426045d47198b17987a3238b",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "18501e82d2ce2881ae0b8000e551d85a52e2d0b749b49fe1ae8404e3931699c1"
+    },
+    {
+      "name": "rotated-angle-11.svg",
+      "bytes": 1511,
+      "sha256": "fd9a590104e322296236c1851e2a8042741629f9112066c9b4cacf87329ed5b1",
+      "width": 480,
+      "height": 340,
+      "decoded": true,
+      "rasterSha256": "a20c2a6a27f8ee1cc71e8800d7a35a29ed78ab45db3d4618173f4ac8633bf95c"
+    }
+  ],
+  "contactSheets": [
+    {
+      "group": "angles",
+      "file": "doc/evidence/2026-10-20/fourth-grade-geometry-statistics-content-images/angles-contact.png",
+      "images": 12,
+      "sha256": "50cc8d9b0c77cd01d140285a9a2fd5e28eac8bcf1d2874ca54549e1f46c01463",
+      "sourceFile": "data/qa/fourth-grade-geometry-statistics-assets-images/angles-contact.png"
+    },
+    {
+      "group": "equal-angles",
+      "file": "doc/evidence/2026-10-20/fourth-grade-geometry-statistics-content-images/equal-angles-contact.png",
+      "images": 12,
+      "sha256": "521c00ad6565cf88bcf038f194abd05f0774a8d4c8821cc6f449aa1a127b19d7",
+      "sourceFile": "data/qa/fourth-grade-geometry-statistics-assets-images/equal-angles-contact.png"
+    },
+    {
+      "group": "exterior-angles",
+      "file": "doc/evidence/2026-10-20/fourth-grade-geometry-statistics-content-images/exterior-angles-contact.png",
+      "images": 12,
+      "sha256": "3b5c1967511b3a7fb5d647d84fe789037caeb6964b09e205ae2854d321369a49",
+      "sourceFile": "data/qa/fourth-grade-geometry-statistics-assets-images/exterior-angles-contact.png"
+    },
+    {
+      "group": "bars",
+      "file": "doc/evidence/2026-10-20/fourth-grade-geometry-statistics-content-images/bars-contact.png",
+      "images": 12,
+      "sha256": "71372846327f1c76bf6d0d8fcff9b5647f45f53f160de7a6512006075f388b31",
+      "sourceFile": "data/qa/fourth-grade-geometry-statistics-assets-images/bars-contact.png"
+    }
+  ],
+  "totals": {
+    "tasks": 240,
+    "assets": 48,
+    "bytes": 93466,
+    "decoded": 48
+  }
+}
