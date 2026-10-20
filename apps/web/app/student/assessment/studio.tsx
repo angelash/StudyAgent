@@ -19,7 +19,7 @@ import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { answerInputConfiguration } from '@study-agent/contracts';
 import { AssessmentBlueprintCard } from '../../../components/assessment-blueprint';
-import { DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
+import { ComponentObservations, DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
 import { VerificationObservationReport } from '../../../components/verification-observations';
 
 type Child = { id: string; nickname: string; grade: number };
@@ -367,6 +367,8 @@ export function AssessmentStudio() {
               </div>}
             </article>)}</div>
             <VerificationObservationReport result={report.verification} names={new Map(report.estimates.map(estimate => [estimate.atomId, estimate.atomName]))} studentId={report.studentId} />
+            <ComponentObservations observations={report.componentObservations} studentId={report.studentId} busy={busy}
+              onVerify={report.status === 'completed' ? atomId => { void verify(undefined, atomId); } : undefined} />
             {report.hypotheses.length > 0 && <><h3 className="studio-line-title">可能卡在哪里，以及怎样验证</h3><div className="studio-hypotheses">{report.hypotheses.map((hypothesis) => <article key={hypothesis.id}><span className="studio-badge">{hypothesisStatuses[hypothesis.status]}</span><h4>{hypothesis.title}</h4><p>{hypothesis.observation}</p><p>{hypothesis.explanation}</p><small>支持 {hypothesis.supportingEvidenceIds.length} 条 · 反证 {hypothesis.counterEvidenceIds.length} 条</small>
               <details><summary>查看验证条件、依据与其他解释</summary><p>{hypothesis.nextAction}</p>{hypothesis.verification && <dl className="diagnostic-verification"><dt>什么表现支持继续核查</dt><dd>{hypothesis.verification.supportCondition}</dd><dt>什么表现构成反证</dt><dd>{hypothesis.verification.counterCondition}</dd><dt>哪些情况仍然不能下结论</dt><dd>{hypothesis.verification.undecidedCondition}</dd></dl>}<ul>{hypothesis.alternatives.map((item) => <li key={item}>{item}</li>)}</ul>
                 <DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.supportingEvidenceIds} title="支持方向的依据" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.counterEvidenceIds} title="需要同时核对的反证" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.reportedEvidenceIds ?? []} title="孩子报告暂时不会" /></details>

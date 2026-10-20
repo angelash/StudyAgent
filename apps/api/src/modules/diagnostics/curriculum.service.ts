@@ -10,6 +10,7 @@ import { validate } from '../../common/validation';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, measurementDefinitionMatches, measurementContentMatches, questionContentFingerprint } from './measurement-definition';
+import { componentBindingsIssue, reviewComponentBindings } from './component-observations';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
@@ -234,14 +235,19 @@ export class CurriculumService {
     }
     const answerSchema = this.store.find('questionAnswerSchemas', { questionId: question.id });
     if (item.reviewStatus === 'approved' && (!answerSchema || !answerInputConfiguration(answerSchema).supported)) throw new BadRequestException('请先补齐可用的作答交互配置，再审核量化映射');
+    const componentBindings = item.componentBindings === undefined ? undefined : reviewComponentBindings(item.componentBindings, atom, answerSchema,
+      this.store.select('knowledgeAtoms', { id: item.componentBindings.map(binding => binding.atomId) }), item.reviewStatus === 'approved');
     const previous = this.store.find('measurementItems', { id: item.id });
     if (previous && item.version !== previous.version) throw new ConflictException('题目映射版本已变化，请重新核对后保存');
-    const next = { ...item, atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
+    const next = { ...item, ...(componentBindings ? { componentBindings } : {}), atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
       contentFingerprint: questionContentFingerprint(this.store, question.id), version: previous ? previous.version + 1 : 1 };
     if (previous && !this.store.find('curriculumRevisions', { entityId: item.id, kind: 'measurement', version: previous.version })) {
       this.recordRevision('measurement', previous.id, previous.version, user.id, previous);
     }
-    if (previous) Object.assign(previous, next); else this.store.append('measurementItems', next);
+    if (previous) {
+      if (!('componentBindings' in next)) delete previous.componentBindings;
+      Object.assign(previous, next);
+    } else this.store.append('measurementItems', next);
     this.recordRevision('measurement', next.id, next.version, user.id, next);
     this.events.publish('curriculum.mapping_saved', { itemId: item.id, version: next.version, actorId: user.id });
     return next;
@@ -312,6 +318,11 @@ export class CurriculumService {
         return atom && measurementDefinitionMatches(this.store, mapping, atom) ? null : '知识定义已变化或无法核对，请对照当前目标和标准重新审核此映射';
       })(),
       contentIssue: measurementContentMatches(this.store, mapping) ? null : '题面、评分或来源已变化，或素材已撤回，请回到测量素材流程核对当前发布版本',
+      componentIssue: (() => {
+        const atom = this.store.find('knowledgeAtoms', { id: mapping.atomId });
+        return atom ? componentBindingsIssue(mapping.componentBindings ?? [], atom, this.store.find('questionAnswerSchemas', { questionId: mapping.questionId }),
+          this.store.select('knowledgeAtoms', { id: mapping.componentBindings?.map(binding => binding.atomId) ?? [] })) : '主测目标不可用';
+      })(),
       question: this.store.find('questions', { id: mapping.questionId }),
       answerSchema: this.store.find('questionAnswerSchemas', { questionId: mapping.questionId }),
       source: this.store.find('questionSources', { questionId: mapping.questionId }) }));

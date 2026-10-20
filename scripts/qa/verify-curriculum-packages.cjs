@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
-const { randomBytes, randomUUID } = require('node:crypto');
+const { randomBytes, randomUUID, createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const { DatabaseSync } = require('node:sqlite');
 const { Pool } = require('pg');
@@ -17,7 +17,10 @@ Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', ST
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
-const evidence = { at: new Date().toISOString(), driver, scope: 'Owned production-mode database, real HTTP, exact original seed enrichment and two service restarts; no browser acceptance or curriculum-completeness claim', passed: false };
+const evidence = { at: new Date().toISOString(), driver, scope: 'Owned production-mode database, real HTTP, exact original v1 seed enrichment, protection of released definitions and two service restarts; no browser acceptance or curriculum-completeness claim', passed: false,
+  sourceSha256: Object.fromEntries(['scripts/qa/verify-curriculum-packages.cjs', 'apps/api/src/modules/diagnostics/foundation-seed.service.ts',
+    'apps/api/src/modules/diagnostics/authored-relation-release.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts']
+    .map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, token, adminPool, qaDatabase;
 async function start() {
   app = await NestFactory.create(AppModule, { logger: false, abortOnError: false }); app.setGlobalPrefix('api'); await app.listen(0, '127.0.0.1');
@@ -48,7 +51,7 @@ async function main() {
   assert.equal(bootstrap.status, 0, 'Formal administrator bootstrap');
   await start(); token = (await call('POST', '/auth/login', { principal: 'qa-curriculum-runtime', credential })).token;
   const original = await store.transaction(() => structuredClone(store.inspect('knowledgeAtoms')));
-  const cards = original.filter(atom => atom.teaching); assert.equal(cards.length, 256);
+  const cards = original.filter(atom => atom.teaching); assert.equal(cards.length, 257);
   evidence.original = { atoms: original.length,
     questions: await store.transaction(() => store.inspect('questions').filter(question => question.id.startsWith('foundation_q_')).length),
     allQuestionsIncludingLegacyFixtures: await store.transaction(() => store.inspect('questions').length),
@@ -66,7 +69,8 @@ async function main() {
   await stop(); await start();
   const restored = await store.transaction(() => structuredClone(store.inspect('knowledgeAtoms')));
   const byId = new Map(restored.map(atom => [atom.id, atom]));
-  const migrated = cards.filter((_, i) => ![1, 2, 3].includes(i));
+  const migrated = cards.filter((atom, i) => atom.version === 1 && ![1, 2, 3].includes(i));
+  const releasedDefinitions = cards.filter(atom => atom.version > 1);
   for (const { id, teaching } of migrated) {
     assert.equal(byId.get(id).version, 2); assert.deepEqual(byId.get(id).teaching, teaching);
     const history = await call('GET', '/admin/curriculum/revisions/' + encodeURIComponent(id));
@@ -75,8 +79,9 @@ async function main() {
   assert(byId.get(cards[1].id).name.endsWith('合成编辑')); assert.equal(byId.get(cards[1].id).teaching, undefined);
   assert.equal(byId.get(cards[2].id).teaching, undefined); assert.equal(byId.get(cards[2].id).version, 2);
   assert.equal(byId.get(cards[3].id).teaching.reviewStatus, 'draft');
+  for (const { teaching: _teaching, ...definition } of releasedDefinitions) assert.deepEqual(byId.get(definition.id), definition);
   evidence.exactSeedMigration = { upgraded: migrated.length, customDefinitionPreserved: true, newerVersionPreserved: true,
-    draftPreserved: true, originalAndEnrichedRevisions: true };
+    draftPreserved: true, originalAndEnrichedRevisions: true, releasedDefinitionsPreserved: releasedDefinitions.map(({ id, version }) => ({ id, version })) };
   const atom = { ...structuredClone(cards[0]), id: 'qa:package:root', name: '合成课程包根节点', version: 1, prerequisiteIds: [] };
   const content = { format: 'study-curriculum-package-v1', title: '持久课程包重启核验', provenance: '合成定义用于检查真实HTTP导入与回执，独立于正式课程内容。',
     atoms: [{ expectedVersion: 0, atom: { ...atom, id: 'qa:package:child', name: '合成课程包子节点', prerequisiteIds: [atom.id], parentId: atom.id } },
@@ -101,6 +106,7 @@ async function main() {
   const exported = await call('GET', '/admin/curriculum/package?subject=math');
   assert.equal(exported.atoms.find(row => row.atom.id === 'qa:package:child').expectedVersion, 1);
   for (const { id } of migrated) assert.equal((await store.transaction(() => store.find('knowledgeAtoms', { id }))).version, 2);
+  for (const { teaching: _teaching, ...definition } of releasedDefinitions) assert.deepEqual(await store.transaction(() => store.find('knowledgeAtoms', { id: definition.id })), definition);
   evidence.packagePersistence = { fileSha256: file.sha256, applied: result.applied, receiptSurvivesRestart: true,
     tokenSurvivesRestart: true, retryDoesNotIncrementVersions: true, seedDoesNotIncrementAgain: true,
     concurrentSameKeyStatuses: submissions.map(row => row.status) };

@@ -190,7 +190,7 @@ describe('versioned curriculum packages and instructional evidence', () => {
 
   it('validates authored cards and enriches only exact unedited seed definitions', () => {
     const definitions = buildFoundationCurriculum(), cards = definitions.filter(row => row.atom.teaching);
-    expect(definitions).toHaveLength(256); expect(cards).toHaveLength(definitions.length);
+    expect(definitions).toHaveLength(257); expect(cards).toHaveLength(definitions.length);
     for (const { atom } of cards) expect(atomTeachingSchema.safeParse(atom.teaching).success, atom.id).toBe(true);
     for (const { atom, exercises } of definitions) {
       expect(exercises.some(item => item.stem === atom.teaching!.example.prompt), atom.id).toBe(false);

@@ -1,0 +1,610 @@
+{
+  "format": "study-authored-relation-release-v1",
+  "releaseId": "authored-atomic-relations-2026-10-20-v1",
+  "createdAt": "2026-10-20T00:52:29.263Z",
+  "reviewKind": "agent_authored_relation_review",
+  "sourceCommit": "ce454f6",
+  "provenance": "Original division tasks checked in stage 43. Component bindings are observation-only; independent child tasks are required for measurement. Not human teacher review.",
+  "hashRule": "blueprintContentHash; only first prompt block opaque ID normalized. seedMappingSha256 explicitly allows the same unedited v1 mapping on a fresh current-definition installation.",
+  "before": {
+    "id": "foundation:math:divisiondigits",
+    "subject": "math",
+    "grade": 3,
+    "name": "多位数除以一位数",
+    "strand": "数、关系与表示",
+    "term": "both",
+    "objective": "按位分配，确定没有余数时的商",
+    "successCriterion": "在明确条件下独立完成“多位数除以一位数”，能说明所用关系或步骤",
+    "prerequisiteIds": [
+      "foundation:math:divisiontable",
+      "foundation:math:placevalue"
+    ],
+    "curriculumVersion": "foundation-v1",
+    "status": "published",
+    "version": 1,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "多位数除以一位数可按位平均分。高位分后剩下的量要换成低一位的单位，再与低位合并继续分。",
+      "example": {
+        "prompt": "把84根小棒平均分成3份。",
+        "steps": [
+          "8捆十根先分，每份2捆，剩2捆。",
+          "剩下20根与4根合成24根，每份再分8根；28×3=84。"
+        ],
+        "conclusion": "84÷3=28。"
+      },
+      "commonErrors": [
+        {
+          "code": "foundation:math:divisiondigits:check",
+          "observation": "高位剩下的2直接当成2个一，或丢掉这个余量。",
+          "alternativeExplanations": [
+            "可能没有理解跨数位的单位转换。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "不用竖式，实际把剩下的2个十拆开，说明为何得到24个一。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "不用竖式，实际把剩下的2个十拆开，说明为何得到24个一。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "在分84元钱的情境中用十元和一元分别表示同样的分配。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "after": {
+    "id": "foundation:math:divisiondigits",
+    "subject": "math",
+    "grade": 3,
+    "name": "多位数除以一位数",
+    "strand": "数、关系与表示",
+    "term": "both",
+    "objective": "按位分配，确定没有余数时的商",
+    "successCriterion": "在明确条件下独立完成“多位数除以一位数”，能说明所用关系或步骤",
+    "prerequisiteIds": [
+      "foundation:math:divisiontable",
+      "foundation:math:placevalue",
+      "atomic:math:divisionregroup"
+    ],
+    "curriculumVersion": "foundation-v2-atomic-2026-10-20",
+    "status": "published",
+    "version": 2,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "多位数除以一位数可按位平均分。高位分后剩下的量要换成低一位的单位，再与低位合并继续分。",
+      "example": {
+        "prompt": "把84根小棒平均分成3份。",
+        "steps": [
+          "8捆十根先分，每份2捆，剩2捆。",
+          "剩下20根与4根合成24根，每份再分8根；28×3=84。"
+        ],
+        "conclusion": "84÷3=28。"
+      },
+      "commonErrors": [
+        {
+          "code": "foundation:math:divisiondigits:check",
+          "observation": "高位剩下的2直接当成2个一，或丢掉这个余量。",
+          "alternativeExplanations": [
+            "可能没有理解跨数位的单位转换。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "不用竖式，实际把剩下的2个十拆开，说明为何得到24个一。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "不用竖式，实际把剩下的2个十拆开，说明为何得到24个一。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "在分84元钱的情境中用十元和一元分别表示同样的分配。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "componentTargetDefinitions": [
+    {
+      "id": "atomic:math:divisionregroup",
+      "subject": "math",
+      "grade": 3,
+      "term": "both",
+      "name": "把余下的十换成一并合并个位",
+      "strand": "数与运算",
+      "objective": "在剩余十和原个位已给定时，把全部剩余十换成一并合并原个位，保持未分数量不变",
+      "successCriterion": "能分别记录换出的一与合并后的一，包含零余十或零个位；用实物记录和逆向新题核对，并在真实间隔后独立验证。",
+      "prerequisiteIds": [
+        "foundation:math:placevalue"
+      ],
+      "parentId": "foundation:math:divisiondigits",
+      "curriculumVersion": "original-atomic-math-v1",
+      "status": "published",
+      "version": 1,
+      "teaching": {
+        "reviewStatus": "approved",
+        "explanation": "先分完高位后，余下的十仍然属于未分的量。每个十换成10个一，再与原个位合并；换单位改变表示，不改变未分总量。本点给定余十，不要求先求高位商。",
+        "example": {
+          "prompt": "高位分后还余2个十，原个位是6个一。合起来还有多少个一待分？",
+          "steps": [
+            "只看未分的2个十与原个位6个一，已经分走的十不再计入。",
+            "2个十全部拆开，换成20个一。",
+            "把同一种单位合并：20个一加6个一是26个一。"
+          ],
+          "conclusion": "还余26个一待分。2与6不能直接相加，因为原来的计数单位不同。"
+        },
+        "commonErrors": [
+          {
+            "code": "regroup_units_added_directly",
+            "observation": "把余十的个数与原个位直接相加，或漏记原个位。",
+            "alternativeExplanations": [
+              "可能未把十换成一，应给定余十单独核查。",
+              "也可能上一步余十已经算错，后续只是沿用错的状态。",
+              "也可能理解换单位但合并或记录时遗漏，应换材料复核。"
+            ],
+            "verification": "先给定正确余十，独立记录换出的一与合并后的一，再用成捆散根和逆向新题验证；若上游余十错误，先核查上游，不据连带错误确定本点问题。"
+          }
+        ],
+        "verification": {
+          "understanding": "给定余十与原个位，核对数量守恒记录，说明同一种单位才可直接合并。",
+          "procedure": "不提供示范，分别记录余十换出的一和合并后的一；加入零余十或零个位。",
+          "transfer": "读取尚未分配的成捆散根清单，再由合并数量反推原个位，用两种不同新题族核查。",
+          "retention": "三天后更换数量与材料，独立完成基础及迁移新题；当天同题重复不能证明保持。"
+        }
+      }
+    }
+  ],
+  "questions": [
+    {
+      "questionId": "foundation_q_v2_02d8c4bde10afedeb2468622",
+      "contentSha256": "1fc320daff3773da2644b9ba835a83a4627a3bb78b6109daf210f1632a423315",
+      "mappingSha256": "661daef69302709c7773064e46e6c7f7ba5cd8da368b5ebbab6e0812f60189a2",
+      "seedMappingSha256": "0364c2bbf6b86cd7404e98bdcfb808b5d30e069aa15b176fc8ba7f19b6dee055"
+    },
+    {
+      "questionId": "foundation_q_v2_0fd4e0da7a54a3ab9ab335ac",
+      "contentSha256": "4119bedd7e6a78386a6c0cbcdba050d81560861a582cc4cffe0b540cba13e9ec",
+      "mappingSha256": "0e97c40621e63c76aecd4bf3ad893382c5b02863384d9531fd4255de5b536aa3",
+      "seedMappingSha256": "9f04f10262021c558c5899d224bb345b632f273e15228954fdff5af63fc5e8f1",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_10cb4a9c90ddeca54f1f536a",
+      "contentSha256": "31da6892af7e0383b8e22e77ca4f358cab26928c39f6f66f582fe0ec0b0382eb",
+      "mappingSha256": "8fad30a131a15f715d45fa1481904cd18cd71c331579a45ee375a80be8074a68",
+      "seedMappingSha256": "882c1a671a4d9579ad1f5ea8cb879f3ad7e7a47701a67720a945eec518bb047f"
+    },
+    {
+      "questionId": "foundation_q_v2_13eba1fdfc259ade335b2355",
+      "contentSha256": "ed964ef8be7c2e22b0315b9284cf5da44edf3d1637e142be57f619b815d23c5e",
+      "mappingSha256": "7edff918801a9a1e0263ce34775e80472645387b46acaf9f958643cf58cfdfa3",
+      "seedMappingSha256": "29be993c5f7654af59084a915ea8883acbab79eb17db908d92c211ae2163b2b8",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_27ab8d3e93e3aa8f321aed48",
+      "contentSha256": "e55d2de3dd7a7d853caf4431d12f87dd4c1659b69f09d18c1eff83197ca32fb2",
+      "mappingSha256": "e0183edd802127ed1f0ecf3ab78e1c6867083dc0620d4c7918a4cfaa3c09b91d",
+      "seedMappingSha256": "14db0d3bcaf112ed79ecee13b14cc037015e075017c723fb03078b5a72304973"
+    },
+    {
+      "questionId": "foundation_q_v2_29b97156c5bd8a2e147ea81c",
+      "contentSha256": "898b0124c204390432b6df532bbd47d25bde7007ef8102c5721c52e780b9f569",
+      "mappingSha256": "41b58f1afd0fd1fe90032e114cb3152af988fcfa6ce687488c34eb9da0decf00",
+      "seedMappingSha256": "f91ad583ee0eabe768d893df33d5d349a9542745599d61f34683ee7f974c16f7"
+    },
+    {
+      "questionId": "foundation_q_v2_2c5cad9682044b5639e10fd7",
+      "contentSha256": "a163e5d1d32c1430088874a21cf081f95dd3b6924f47f7f894f0c9a776cbba39",
+      "mappingSha256": "dc0c105b94a0de28eea8da8aa21628ff61de02aad00634c0a92cde05fb8404a8",
+      "seedMappingSha256": "f7225a9379b416308b1ec8e17d794e3b36bba1c40cdfe676ddf121536332b78f"
+    },
+    {
+      "questionId": "foundation_q_v2_2cf4cc87dcec6ac6511859dc",
+      "contentSha256": "f485b20c96bd9afab051b2d5eac5d0a918b794cf146e62465fb2e0cab8ed5d08",
+      "mappingSha256": "14690f756df6caa8a4dd775287efbdaa8e6c388c95ee5123676ca3ae11a874ef",
+      "seedMappingSha256": "248bf2aca0229af9d3375dc6f5d43095e7f1c06679a2cf118dec2a645537cd0a"
+    },
+    {
+      "questionId": "foundation_q_v2_351525488d53053a889d4ff7",
+      "contentSha256": "f56d105ecfb2c91f2a8bdd96fb374b103ba6958d443a4f0acdc2e95a50f18c42",
+      "mappingSha256": "225c602814ea240108b32792dd0b45985b906bb796eb4a351290ff58028baac3",
+      "seedMappingSha256": "7e417d36374d8701ce48b504a375667aaf90daec240d0eece6844724d008a470"
+    },
+    {
+      "questionId": "foundation_q_v2_38fbe67fdbe059d71338e956",
+      "contentSha256": "51869c937f214293ec682d862550a2eab5d2e4e5c340b334ee3265961e68be69",
+      "mappingSha256": "7c308835a32a5e5cdb350a12e8c59daeaf6ff6d80b3ce7121bdef2317b49fc32",
+      "seedMappingSha256": "caf99737d2951eaa23742118762252d423f0d4af0577adcbe318656b2cdb99e1",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_43780ca902cad9c8d2d40a8f",
+      "contentSha256": "07ff6ff85f2709fddd9cf54d4cb294582bb68ec9646b37587d3742e78e312946",
+      "mappingSha256": "9f4d2f9449ced5e15a3ce0815faa4ef6f2fdfae0d94db81fb19300029b9eb5a9",
+      "seedMappingSha256": "1cfd909c0d5fd910a9c2e10e39a7e6b1bd9516135f7537e2989ddce615a8c3b2"
+    },
+    {
+      "questionId": "foundation_q_v2_50280240af29ea0328a8ffb6",
+      "contentSha256": "fe96925ac6d5fd9473ad91912f9ab024f986784336e0e6226b974a00ef6ec25b",
+      "mappingSha256": "d432ac8b82cef33d884b1674c6fb867c98fd37dcf0ee70086884fe88a0505321",
+      "seedMappingSha256": "65662ceede1d70eaff438c3f3bb02c8346beee7526f738acdca169415e1d62aa"
+    },
+    {
+      "questionId": "foundation_q_v2_526dc3399c8aae23ed53741e",
+      "contentSha256": "8f32d8830b36ff4defad7a33edf8cd50e1216d8ac5324706bf643d3efb948723",
+      "mappingSha256": "8b23afda6647679115332d269876de928a6def8e6ff20f87f76568b9fabf615d",
+      "seedMappingSha256": "0883982505bb464a68ef19aac31dd4d5f1c901f0a1e3374fb69cc81556b3b5e5"
+    },
+    {
+      "questionId": "foundation_q_v2_55286d5050554495022a0888",
+      "contentSha256": "a1d2444231f477421fcc0af9df14d0ea0c5b77702fe14ffc2ae2536ad2765314",
+      "mappingSha256": "a20f2f04025a00485013314661f31d1695eba6bba7095341369f64475eaa5158",
+      "seedMappingSha256": "43afbc75275cea6e70d116b93d64eed5ac26dde53109dafdc582cb34fdf67573"
+    },
+    {
+      "questionId": "foundation_q_v2_5691e06d20cb49650c6f6649",
+      "contentSha256": "986087f1b82c1ac70916e9eca6d8fd239da603279f4d848bdba7b87f92b96bfc",
+      "mappingSha256": "4646e9b767e0a6e516ba8c17d465b302090397d01ca7bb9a39e27b2575939f8b",
+      "seedMappingSha256": "95398e5e8896e8f092188f821025f744a7ce5f594e2954eff5dba1452612ad92"
+    },
+    {
+      "questionId": "foundation_q_v2_5bdeffc95bfa725db0e5baa5",
+      "contentSha256": "5963b05b038c5d3404910669ee54e336b7e9f7757a8e31e0cd1a16db0ab520ad",
+      "mappingSha256": "e70b865d2692c6d0dcd005d3497bc09d68bd8cb3301de4505a272901c432bb85",
+      "seedMappingSha256": "ee7e42f7dc42f763ea1f770fdbcd3c2db736dbd27ad967a8dbfc5950eef22831"
+    },
+    {
+      "questionId": "foundation_q_v2_5d00343e2939326cfb7d64ce",
+      "contentSha256": "314c056cbbfc517e3a541fdfc1e6dc9e217a8fe0edc26459b7daec137111fb08",
+      "mappingSha256": "cbb4ce85d854a6da7323a07f992de698fdc7d490445c4aed9279955dadbaa253",
+      "seedMappingSha256": "7f966637a30ddf9106b8668c83a5b0e00f013d2ae513ad0c16df7ccfdc0bb8ec"
+    },
+    {
+      "questionId": "foundation_q_v2_5ea5c4ccee35f80366dda879",
+      "contentSha256": "fa49b3ac5136cf94108aa4ab3a29a11916b1962df6d49c4da162e1e2ddde3961",
+      "mappingSha256": "65150ebc3726b80bd33be1611562cabc36dff02815df1a1af06a019fb20d5c5b",
+      "seedMappingSha256": "8db4911a0f96853d8e9b92954001385ca9275f33fab752a09e9cc64c4a485e9b"
+    },
+    {
+      "questionId": "foundation_q_v2_62b122b5395ea0d87d4a1017",
+      "contentSha256": "46efeb67481188fff85bfc144499d54bb1c567af48c1a4a0a38376d4ad9b2174",
+      "mappingSha256": "8f1912231412bb960dcd4c5a0f43c8bf6e343f026709eb127a11057aaa196075",
+      "seedMappingSha256": "fa8606b319aa730e01a2d9fe71681f4a1e7400157c4585ca7ab00417c55c09bd"
+    },
+    {
+      "questionId": "foundation_q_v2_6866160daefefbfc0cbd0145",
+      "contentSha256": "c371dcb5973da9bc93514b2e694fbac776dea7b3b4909b9762b0bfdec86ce94a",
+      "mappingSha256": "e1c483336e9262a863fb09a2ea9a51e5638b9432f2f5300cdcca2008922028bd",
+      "seedMappingSha256": "a5a63cfde85a02f201343be38ac99b45df471744d3ad6eef3e8e59461a6ab457"
+    },
+    {
+      "questionId": "foundation_q_v2_6b4a56efb2844b906f1ad937",
+      "contentSha256": "e675a16e571d42fe1d2b09e7a81f33a3d293f263833628bdffeb71b17d025e26",
+      "mappingSha256": "f53374c2a9763dc3a5f402ec0499f4b4b785d3b0aba8e9024a9ed934e39a60d7",
+      "seedMappingSha256": "261777e546b3618bbfc7ad23cddaae87d38f8c3ca968e7e8f02714972794e27b",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_6e7470407c2e0a7ca486f7a5",
+      "contentSha256": "e228c26ec69f56679d15cc60efdaaa4b7c419ad7b3a1879c046aafa103ab9675",
+      "mappingSha256": "479c744dc363e16331368cdbe9a84bb099c3ef4eece5c9a374886fe87c4e0044",
+      "seedMappingSha256": "808c9dcdfc40231637f73d60d9fcdef5040eab3e3a0be9f7f045c9ec23084ede"
+    },
+    {
+      "questionId": "foundation_q_v2_70afd505e058985a611cbabd",
+      "contentSha256": "db77d0cbb7d3ad0eac3af872d3945f5313c23eb52a37bbcb05140220e0b8b253",
+      "mappingSha256": "7174c867e16628c0c798550fded4096564dc43c9033f67e1b6c404712fe5cb26",
+      "seedMappingSha256": "bd0f0560be58a1c8f17b0dfe707bf1a0f2f7cb93c6c7f126f7327d4c87165a05",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_73127b23b77ad329c2134762",
+      "contentSha256": "2b8c32fdef071aff073e48990142fab397f0e65ab2f3b2f6d5b17663782f8a6d",
+      "mappingSha256": "24251187106ece5d3208de405c8ba23ebb96f36f3c3213a7f2c4d9cd67edcbc1",
+      "seedMappingSha256": "1122cb148691495216bddb47569d4d9baa4ab839b505d9c58665968b51bf4d5c"
+    },
+    {
+      "questionId": "foundation_q_v2_826e6eb30116880e5333dae7",
+      "contentSha256": "89fc0f3fc0672a498b9859722ed4b2e8dc61729e570b40da7879443ee93815b3",
+      "mappingSha256": "062f46c78da2a7a65812ad183088d356b0bc0ea7f86eaf77a0da368c234da54c",
+      "seedMappingSha256": "45d8cce48177a597fa6d273ee94a49db9d153bd05cc260b5003aa654ae449c07"
+    },
+    {
+      "questionId": "foundation_q_v2_84aec8e1e4bb19b12eef2999",
+      "contentSha256": "ab7b1cb25385e39a761539da1b2ede0a959f6f36d496ee28df0596c83fa71ed1",
+      "mappingSha256": "38b8bc5cf26e0179832f021bc37fb03d5617029ca005d30b35039e3939611813",
+      "seedMappingSha256": "4421981ceeeaaa1910239011f03cfe0a87eb92dbe8d4c8df9a025d29ab5be985"
+    },
+    {
+      "questionId": "foundation_q_v2_875fc48c975ee154bfb66be0",
+      "contentSha256": "09ae7455135763777bbe35fb41ba6e0d3c9739b36c31837cc70c2e906be69768",
+      "mappingSha256": "3c31cbf06d7d590be85d978848b3baf0e250128b5f21a12d1d09060fb54ebb21",
+      "seedMappingSha256": "38d16b4331fe9c9132d30a8166a81f50326248bc570cb8cb320d4a22d645de36"
+    },
+    {
+      "questionId": "foundation_q_v2_87f65fe3016e34a66c13ec42",
+      "contentSha256": "094a80d05058865bba944c005518bd0465f4e949e20f19698e694647247898a2",
+      "mappingSha256": "bd45d4d288fcc2d99fdd1ece7309c3c990683227f0ffaaa83d0594b4b6612b27",
+      "seedMappingSha256": "f9dbf22d57253e8a0a1a37f30c2975ee30e13a973d58482dd73f529b3889e18a",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_8b589b38ce683d30f1cd3b70",
+      "contentSha256": "3c07a0e583630da8d55b8409f27267a5f4b23fbe9bf52e03cbb51619677039c1",
+      "mappingSha256": "5f7d55d861181df8cbc195f2c8554a53ae505cea37dccac355ce087deb8e0c36",
+      "seedMappingSha256": "3743e88a4668f1d8c269e02c0c0b44e60714df03e9811dfdc93de664f1750a8c"
+    },
+    {
+      "questionId": "foundation_q_v2_992e20ac389e26d7c75fbc31",
+      "contentSha256": "072f590132524ab2c5059451641fef50bf233f712f12d764d795f5e3ebb5e1d7",
+      "mappingSha256": "37f5f12735599ddc814335550da3ea61118ff498d9b98fbbd231a57f8f0b158a",
+      "seedMappingSha256": "0f2d6d8157ce49efcbfc541b5b6774e8f3873e83a92ee725f990476f135c710a",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_a0e63165af8adcf00960b7d7",
+      "contentSha256": "7c94acdb7cbc1e6cde83907c1075bd5333b2bc36dd46a4374eb95dd32602f294",
+      "mappingSha256": "fd0cdb3922d1ce5030a07571d96ab12724bc67556d45909052ffff3460bb5de3",
+      "seedMappingSha256": "04c136afb84b4245cee74f07e0f6f501e5fe6b34ae69f0ed92398c02661ff5b8"
+    },
+    {
+      "questionId": "foundation_q_v2_a0f3d3237aaaa7805405ec71",
+      "contentSha256": "0f52b9261a169eecb6400ba2835d9ef463e969f1331c3f22d860c0d05b872eae",
+      "mappingSha256": "0e3a14bf0d046ed3f0126445d7a485570cb0ab3cdd67bf8e5912ae0aba15e5af",
+      "seedMappingSha256": "7efeeecdf4931129ef6b5485f8973d96d4050acd79bb3e5f077beae2e1676739",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_a66c10d84b00fac810d45d81",
+      "contentSha256": "79e8c5ba29d542493694b177c24b23a666a6a29607e0ccc05404703ff35be74a",
+      "mappingSha256": "cd59f4484c8001e034d451b49b5067a29517fc9f545f8e1c0244acd06e61871c",
+      "seedMappingSha256": "902c23179d5c2344ac42ccc8659cf6c04ed147e0b6d51c2cd47ee33fc6898bf0"
+    },
+    {
+      "questionId": "foundation_q_v2_a76e10c893d3d1317837d550",
+      "contentSha256": "6bcaedc4b7a2619b453817e41d4cce795fcf7b64f4f514abe1d788192fc34d80",
+      "mappingSha256": "2fa8dde0a1277a006dc8892bb24e2dc2cd034dce207e99c5f3699e4766769341",
+      "seedMappingSha256": "0e1d68ff3266290517f40e8d2ea323044ae64d96470ae2bf363b1c7d6949491a"
+    },
+    {
+      "questionId": "foundation_q_v2_ae7a80b0991dae315fd46589",
+      "contentSha256": "e9c91df3a175d3a49bbd263d02b11bb2130d8806f9c017d0294ef512c119f13f",
+      "mappingSha256": "768e3548395966dffc64807eb5f46e96d6f1d85086314318df75924c5b32c918",
+      "seedMappingSha256": "57078c91a2c5f7bf8913cf9a6482e17daf825e686d47cdf4a85fa35b44013dec"
+    },
+    {
+      "questionId": "foundation_q_v2_b5643e431014b6c57aeb57c9",
+      "contentSha256": "ab591f7fddefc2c110bd53dc38df0a3fd96a8f6af17d6d3dbe66aa3c42824957",
+      "mappingSha256": "8081b3069082609de583e93bf61dae13780f9bd9ad47ad78adfa232669bb1ce2",
+      "seedMappingSha256": "1217745c533a6e309917f7b148436f971ce165e3fdc7408ec66640e7a574e853"
+    },
+    {
+      "questionId": "foundation_q_v2_c75792be123a8642bb43dc73",
+      "contentSha256": "a7cfa4a86d3772975e23220a8e8a164a230530c35bd7900e6c94a585e8534464",
+      "mappingSha256": "cfddb9a8088e7e1d60a5d35891f53ae2811956cf4c189df682eab87c3bbb339a",
+      "seedMappingSha256": "9ec21ee06072fdaf2e810eeab6883e2f6b4316a9fc316005ff055194c8a3e2a1",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_ccda88375ff1e5af8cc9d63c",
+      "contentSha256": "6b2f171d31769224a967efc49781031afb54e8e9a10da120a5601a60383c3621",
+      "mappingSha256": "6bae4b7576629ec74a07964a673d9769d02d66daa31ae0270e416e7cf6658a22",
+      "seedMappingSha256": "2f713e2704c9dad3db4f67957026b69f1fc2c6bd3d6f80ef9ee61115f93d4c88"
+    },
+    {
+      "questionId": "foundation_q_v2_d02a68f2974b84ee6386d5ea",
+      "contentSha256": "dea1e4f32222d5e1244aa1dbe63f210b875e1c14fefa6a12cf79b870c377fcd1",
+      "mappingSha256": "007382741f21867d0dfcad40159cea415cd3f1dbf28b5177f1f8ab6df30d9e37",
+      "seedMappingSha256": "5666d37c90faac22bed43668fb53075340531a16288b1e13181a080338b9b8d5",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_d2c438d4a5a582437b924a70",
+      "contentSha256": "3f210b52e3b86f0a5968e8d26577b951ff01e98e73b7693febe2febfc35335df",
+      "mappingSha256": "c6cf6f42f22b36288a24bd6925b4954de445b048673aa3e5e99b01ea0f56edaf",
+      "seedMappingSha256": "7e58a5d92e036ecd34b533f9eb22234eb4c26df6f0da545d3ba6d535f02983a7",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_d5d30d04935f035d0739715c",
+      "contentSha256": "e347b22f741b46167604b0dc54d0483c16cff1d033b26dc7dd9afb6e42691a69",
+      "mappingSha256": "f4cf6897e74722e17fefc8c3bc3a36611d73aab03a65f77ab98e05a9dfcc9995",
+      "seedMappingSha256": "7a8ca547c332d4b0ad89aa23842c40a241577dba8d39b2d134da24dd21a5b2b7"
+    },
+    {
+      "questionId": "foundation_q_v2_e53ff01afd5b7166b3895b5e",
+      "contentSha256": "4c89625d50e0d109707efdb1553bc6935fd981fe07f8941606faa97af68a9aaf",
+      "mappingSha256": "23586d746b1734939186988f6af530874946da3b775458ae0d14e1cd2d236155",
+      "seedMappingSha256": "1dee69b29be0d68c727bdea4d0a8e0da1efbbbbd85d4b0d1077b4f08248f5605"
+    },
+    {
+      "questionId": "foundation_q_v2_e69789518a77b711850db47d",
+      "contentSha256": "b79dd19125e001a0187bec2f85e77750948df224a5e25a5b7c5d73f237c3cc1a",
+      "mappingSha256": "59b5e70fd0aab52c9d7c290dc25c281d7f8e9d27899ee02a8ff674b67d33dab1",
+      "seedMappingSha256": "1ceb139b1ff0de156bc74bbaa92ab9cd23c3ae6f260025da1a3dfe5f6d9b3611",
+      "componentBindings": [
+        {
+          "id": "given-remainder-to-ones",
+          "atomId": "atomic:math:divisionregroup",
+          "scoreKeys": [
+            "combinedOnes"
+          ],
+          "requiresKeys": [
+            "remainingTens"
+          ],
+          "rationale": "先核对高位分后余十；仅在余十正确时观察换单位并合并个位。综合题分项不计子点独立样本。",
+          "atomDefinitionFingerprint": "13600157f39124ddd179ae5cef10c1fb52314b55cbab7965da79fa58f5f26df4"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_e98771f384d84d13175bec86",
+      "contentSha256": "bd4a69d931efff9c01e24819b799806684380d659b2cdcfe1948abee700741c9",
+      "mappingSha256": "2babc8e522f93d6c090b7ea7f430848f3836b878d4ee43618e497c0b86f9acca",
+      "seedMappingSha256": "2a8c60f33696b8e69363f1af0320caff04d4c8cfeb4825bc6701d771963a493d"
+    },
+    {
+      "questionId": "foundation_q_v2_ed911cd59f3046e0ffac515a",
+      "contentSha256": "c4b36f82cd974ead62e42a4387b59d18c0844ab7e09393c1a2d4c8c0ca168ec4",
+      "mappingSha256": "9919ff297bfa485fe65b6998503c3bc9aa25565f4b012dacd9bd5eabd58882d4",
+      "seedMappingSha256": "661e423b950b4f88787ca131faa5508d271508bdc6335dd2100558cc644a0904"
+    },
+    {
+      "questionId": "foundation_q_v2_f0bed2059d78f4f46f6b0303",
+      "contentSha256": "6b0c5cc37894f7bdf5ed41465057e5873cf1e88d8f6b3ad142dfad257790d1c0",
+      "mappingSha256": "db90be71bfa7d2bb9eddc20c422169c4f4b1da942bb90a18a94c97e744a57e88",
+      "seedMappingSha256": "4904e6dd80e29b4328f9a7145ae4ab4e3caf8836963f4f4dfe17b9b3cbb330fb"
+    },
+    {
+      "questionId": "foundation_q_v2_f9f95f58dd6925db88cf30ff",
+      "contentSha256": "c8ed75515a8c9a2adcfdb30382b06160023c198bbf8a6e6a83226cec26f3d271",
+      "mappingSha256": "a4712d91a2e9131bf865dc6c145c1aaa4e3702e864a73890e753b0a6b588b74a",
+      "seedMappingSha256": "71563a831d52f8ff155046b9d7335811d85340bb2c96a822762787d559dd82a5"
+    },
+    {
+      "questionId": "foundation_q_v2_fb3610fb58d76be5ffce922c",
+      "contentSha256": "2deffa8f158d19f12d6beac22b1ef0a3e7b33153ee946e236fb9886db732246a",
+      "mappingSha256": "f3ae923834761d309141183ca2d89b0d50d911db5d8ca50aa2fb6718c44e83e4",
+      "seedMappingSha256": "30043db70cffca43aa499bff29e94660f52495de39c72ba9c580e10fa035c71c"
+    }
+  ]
+}

@@ -48,6 +48,14 @@ export const learningScopeSchema = learningScopeInputSchema.extend({
 });
 export type LearningScope = z.infer<typeof learningScopeSchema>;
 
+/** Component observations route further inquiry; they are never additional independent responses. */
+export const componentBindingSchema = z.object({
+  id, atomId: id, scoreKeys: z.array(id).min(1).max(20), requiresKeys: z.array(id).max(20),
+  rationale: z.string().trim().min(10).max(1500),
+  atomDefinitionFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+}).strict();
+export type ComponentBinding = z.infer<typeof componentBindingSchema>;
+
 export const measurementItemSchema = z.object({
   id, questionId: id, questionVersion: z.number().int().positive(), atomId: id,
   dimension: dimensionSchema, family: z.string().min(1).max(180),
@@ -57,6 +65,7 @@ export const measurementItemSchema = z.object({
   observationCode: z.string().min(1).max(100), version: z.number().int().positive(),
   atomDefinitionFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
   contentFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+  componentBindings: z.array(componentBindingSchema).max(12).optional(),
 });
 export type MeasurementItem = z.infer<typeof measurementItemSchema>;
 
@@ -109,6 +118,8 @@ export type DiagnosticSession = {
   stateHistory?: Array<{ action: 'pause' | 'resume' | 'abort'; at: string; actorId: string; reason: string;
     requestKey: string; requestHash: string; revision: number }>;
   atomSnapshots?: KnowledgeAtom[];
+  /** Frozen observation targets, kept separate from the authorized assessment targets and estimates. */
+  componentAtomSnapshots?: KnowledgeAtom[];
   itemIds: string[]; itemSnapshots: MeasurementItem[];
   questionSnapshots: Array<{ id: string; stem: string; answer: unknown; analysis: string;
     document: unknown; answerSchema: unknown; renderPayload: unknown; questionType: string }>;
@@ -152,6 +163,13 @@ export type DiagnosticResponse = {
 export type ResponseScoreDetail = { key: string; label: string; score: number; origin: 'protocol' | 'review'; observation?: string };
 export type DiagnosticObservation = { responseId: string; atomId: string; kind: 'meets_standard' | 'below_standard' | 'self_reported' | 'skipped' | 'awaiting_review';
   description: string; details: ResponseScoreDetail[] };
+
+export type ComponentObservation = {
+  responseId: string; bindingId: string; sourceAtomId: string; atomId: string; atomName: string;
+  state: 'meets_standard' | 'below_standard' | 'upstream_unverified' | 'assisted_or_exposed' | 'not_observed' | 'definition_unverified';
+  description: string; nextAction: string; scoreDetails: ResponseScoreDetail[]; upstreamDetails: ResponseScoreDetail[];
+  independentEstimateContribution: 0; ruleVersion: string; targetDefinitionFingerprint: string | null;
+};
 
 export type ScoringRevision = {
   id: string; responseId: string; score: number; reason: string; reviewerId: string;
@@ -222,6 +240,7 @@ export type DiagnosticReport = {
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];
   hypotheses: DiagnosticHypothesis[]; evidence: DiagnosticResponse[]; unmeasuredAtomIds: string[];
   observations?: DiagnosticObservation[];
+  componentObservations?: ComponentObservation[];
   verification?: DiagnosticVerificationResult;
   summary: string; modelNotice: string;
   scopeSnapshot?: LearningScope; version?: number; generatedAt?: string; revisionReason?: string;

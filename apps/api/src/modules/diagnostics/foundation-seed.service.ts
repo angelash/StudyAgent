@@ -6,8 +6,7 @@ import { QuestionWorkspaceService } from '../question-workspace/question-workspa
 import { assertAcyclic, CurriculumService } from './curriculum.service';
 import { buildFoundationCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
-import { atomDefinitionFingerprint } from './measurement-definition';
-import { authoredRelationActor, authoredRelationDefinitionUpdate, authoredRelationRelease, reviewedAuthoredRelationMappings } from './authored-relation-release';
+import { authoredRelationDefinitionUpdate, authoredRelationReleases, authoredRelationReleaseActor, authoredRelationTargetsCompatible, authoredSeedMeasurementFingerprint, reviewedAuthoredRelationMappings } from './authored-relation-release';
 
 // Only the exact, unedited original v1 can receive an automatic enrichment.
 // An editor's missing card or changed relationship is an intentional definition.
@@ -33,14 +32,24 @@ export class FoundationSeedService implements OnModuleInit {
   seedAuthoredCurriculum() {
     const definitions = buildFoundationCurriculum();
     assertAcyclic(definitions.map((item) => item.atom));
-    for (const { atom } of definitions) if (!this.store.find('knowledgeAtoms', { id: atom.id })) this.store.append('knowledgeAtoms', atom);
-    const revision = authoredRelationDefinitionUpdate(this.store.find('knowledgeAtoms', { id: authoredRelationRelease.before.id }),
-      this.store.select('curriculumRevisions', { entityId: authoredRelationRelease.before.id }));
-    if (revision) this.curriculum.applyAtomDefinitions(authoredRelationActor, [revision]);
+    for (const { atom } of definitions) if (!this.store.find('knowledgeAtoms', { id: atom.id })) {
+      // A newly introduced child must not republish an editor's retired parent or prerequisite.
+      if (atom.parentId && [atom.parentId, ...atom.prerequisiteIds].some(id => !this.store.find('knowledgeAtoms', { id, status: 'published' }))) continue;
+      this.store.append('knowledgeAtoms', atom);
+    }
+    for (const release of authoredRelationReleases) {
+      if (release.after.prerequisiteIds.some(id => !this.store.find('knowledgeAtoms', { id, status: 'published' })) || !authoredRelationTargetsCompatible(this.store, release)) continue;
+      const revision = authoredRelationDefinitionUpdate(this.store.find('knowledgeAtoms', { id: release.before.id }),
+        this.store.select('curriculumRevisions', { entityId: release.before.id }), release);
+      if (revision) this.curriculum.applyAtomDefinitions(authoredRelationReleaseActor(release), [revision]);
+    }
+    const knownQuestions = new Set(this.store.inspect('questions').map(question => question.id));
+    const knownMappings = new Set(this.store.inspect('measurementItems').map(mapping => mapping.id));
     for (const { atom, exercises } of definitions) {
+      if (!this.store.find('knowledgeAtoms', { id: atom.id })) continue;
       for (const item of exercises) {
         const questionId = foundationQuestionId(atom.id, item), mappingId = `measurement:${questionId}`;
-        if (!Boolean(this.store.find('questions', { id: questionId }))) {
+        if (!knownQuestions.has(questionId)) {
           const question = { id: questionId, subject: atom.subject, type: item.rubric ? 'subjective' as const : 'objective' as const, stem: item.stem,
             answer: item.answer, analysis: item.analysis ?? `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
             knowledgePointIds: [], status: 'published' as const };
@@ -56,18 +65,21 @@ export class FoundationSeedService implements OnModuleInit {
           source.sourceName = '原创基础练习 · 规则估计用，非教材常模';
           source.notes = '由可核验规则产生的基础练习；不代表教材完整覆盖或已标定难度。';
           if (!item.rubric && gradeResponse(answerSchema, item.answer, item.answer).score !== 1) throw new Error(`Foundation scoring self-check failed: ${questionId}`);
+          knownQuestions.add(questionId);
         }
-        if (!Boolean(this.store.find('measurementItems', { id: mappingId }))) this.store.append('measurementItems', {
+        if (!knownMappings.has(mappingId)) { this.store.append('measurementItems', {
           id: mappingId, questionId, questionVersion: 1, atomId: atom.id, dimension: item.dimension,
           family: `${atom.id}:${item.family}`, probeRole: item.dimension === 'transfer' ? 'transfer' : 'anchor',
           expectedSeconds: item.expectedSeconds ?? (atom.subject === 'math' ? 40 : 60), difficulty: 1, reviewStatus: 'approved', mappingWeight: 1,
           observationCode: `${atom.id}:response_mismatch`, version: 1,
-          atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
-        });
+          atomDefinitionFingerprint: authoredSeedMeasurementFingerprint(atom, questionId),
+        }); knownMappings.add(mappingId); }
       }
     }
     const updates = authoredTeachingUpdates(this.store.inspect('knowledgeAtoms'), definitions);
     if (updates.length) this.curriculum.applyAtomDefinitions(seedActor, updates);
-    for (const mapping of reviewedAuthoredRelationMappings(this.store)) this.curriculum.upsertMapping(authoredRelationActor, mapping);
+    for (const release of authoredRelationReleases) for (const mapping of reviewedAuthoredRelationMappings(this.store, release)) {
+      this.curriculum.upsertMapping(authoredRelationReleaseActor(release), mapping);
+    }
   }
 }

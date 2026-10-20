@@ -7,12 +7,15 @@ const { Pool } = require('pg'), { NestFactory } = require('@nestjs/core');
 const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-authored-relations-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/authored-relations-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 assert(['sqlite', 'postgres'].includes(driver));
+const releaseKey = process.argv[4] ?? 'mixed'; assert(['mixed', 'atomic'].includes(releaseKey));
 Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const fromApi = file => require(path.join(root, 'apps/api/dist/apps/api/src', file));
 const { AppModule } = fromApi('app.module.js'), { InMemoryStoreService } = fromApi('infrastructure/in-memory-store.service.js');
 const { CurriculumService } = fromApi('modules/diagnostics/curriculum.service.js');
-const { authoredRelationRelease: release } = fromApi('modules/diagnostics/authored-relation-release.js');
+const { authoredRelationRelease, authoredAtomicRelationRelease } = fromApi('modules/diagnostics/authored-relation-release.js');
+const release = releaseKey === 'atomic' ? authoredAtomicRelationRelease : authoredRelationRelease;
+const newPrerequisite = releaseKey === 'atomic' ? 'atomic:math:divisionregroup' : 'foundation:math:divisiontable';
 const { atomDefinitionFingerprint } = fromApi('modules/diagnostics/measurement-definition.js');
 const { buildFoundationCurriculum, foundationQuestionId } = fromApi('modules/diagnostics/foundation-curriculum.js');
 const { blueprintContentHash } = fromApi('modules/diagnostics/assessment-blueprint.js');
@@ -20,9 +23,11 @@ const { gradeResponse } = fromApi('modules/diagnostics/scoring.js');
 const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['apps/api/src/modules/diagnostics/authored-relation-release.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts', 'apps/api/src/modules/diagnostics/component-observations.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/diagnostics/measurement-definition.ts',
-  'apps/api/src/modules/diagnostics/curriculum.service.ts', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'scripts/qa/verify-authored-relations.cjs'];
-const evidence = { at: new Date().toISOString(), driver, passed: false,
+  'apps/api/src/modules/diagnostics/curriculum.service.ts', 'resources/curriculum/authored-relations-2026-10-20-v1.json',
+  'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json', 'scripts/qa/verify-authored-relations.cjs'];
+const evidence = { at: new Date().toISOString(), driver, releaseId: release.releaseId, passed: false,
   scope: 'Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 const tokens = {}, oldFingerprint = atomDefinitionFingerprint(release.before), newFingerprint = atomDefinitionFingerprint(release.after);
@@ -100,7 +105,14 @@ async function main() {
   const modified = release.questions.slice(0, 8).map(row => row.questionId);
   const editedBefore = await store.transaction(() => {
     Object.assign(store.find('knowledgeAtoms', { id: release.before.id }), structuredClone(release.before));
-    for (const mapping of store.select('measurementItems', { atomId: release.before.id })) mapping.atomDefinitionFingerprint = oldFingerprint;
+    for (const mapping of store.select('measurementItems', { atomId: release.before.id })) {
+      mapping.atomDefinitionFingerprint = oldFingerprint;
+      if (releaseKey === 'atomic' && release.questions.some(review => review.questionId === mapping.questionId)) {
+        mapping.version = 1; delete mapping.contentFingerprint; delete mapping.componentBindings;
+        store.remove('curriculumRevisions', { kind: 'measurement', entityId: mapping.id });
+      }
+    }
+    if (releaseKey === 'atomic') store.remove('curriculumRevisions', { kind: 'atom', entityId: release.before.id });
     packet(modified[0]).question.analysis += '合成旧库中的已有编辑'; packet(modified[1]).document.blocks[0].text += '合成已有题面';
     packet(modified[2]).answerSchema.validationRules.required = false; packet(modified[3]).source.reviewStatus = 'draft';
     packet(modified[4]).mapping.reviewStatus = 'draft'; packet(modified[5]).mapping.expectedSeconds++;
@@ -140,6 +152,11 @@ async function main() {
   const reviewedIds = release.questions.slice(8).map(row => `measurement:${row.questionId}`);
   assert(reviewedIds.every(id => mappings.some(row => row.mapping.id === id && row.eligible)));
   assert(modified.every(id => mappings.some(row => row.mapping.questionId === id && !row.eligible)));
+  if (releaseKey === 'atomic') {
+    const reviewed = new Set(release.questions.map(row => row.questionId)), legacy = mappings.filter(row => !reviewed.has(row.mapping.questionId));
+    assert.equal(legacy.length, legacyMappings.filter(mapping => !reviewed.has(mapping.questionId)).length);
+    assert(legacy.length > 0 && legacy.every(row => !row.eligible));
+  }
   await store.transaction(() => {
     for (const id of reviewedIds) {
       const mapping = store.find('measurementItems', { id }); assert.equal(mapping.version, 2); assert.equal(mapping.atomDefinitionFingerprint, newFingerprint);
@@ -157,13 +174,13 @@ async function main() {
   const oldCompletion = await call('POST', `/diagnostics/sessions/${unfinished.id}/complete`, {}, 'learner');
   assert.equal(oldCompletion.definitionContext.atoms.find(row => row.id === release.before.id).version, 1);
   const current = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline', targetAtomIds: [release.after.id], includePrerequisites: true, maxItems: 12 }, 'learner');
-  assert(current.blueprint.prerequisiteAtomIds.includes('foundation:math:divisiontable'));
+  assert(current.blueprint.prerequisiteAtomIds.includes(newPrerequisite));
   for (const item of current.items) await call('POST', `/diagnostics/sessions/${current.id}/responses`, { itemId: item.id, answer: await answer(current.id, item, true), elapsedMs: 1000 }, 'learner');
   const report = await call('POST', `/diagnostics/sessions/${current.id}/complete`, {}, 'learner');
   const hypothesis = report.hypotheses.find(row => row.atomId === release.after.id && row.cause === 'prerequisite_gap'); assert(hypothesis);
   const check = await call('POST', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
     includePrerequisites: true, maxItems: 12, requestKey: randomUUID() }, 'learner');
-  assert(check.blueprint.verification.groups.some(row => row.atomId === 'foundation:math:divisiontable'));
+  assert(check.blueprint.verification.groups.some(row => row.atomId === newPrerequisite));
   const checkpoint = await store.transaction(() => blueprintContentHash({ atom: store.find('knowledgeAtoms', { id: release.after.id }),
     mappings: store.select('measurementItems', { atomId: release.after.id }), revisions: store.inspect('curriculumRevisions') }));
   await stop(); await start();
@@ -202,7 +219,7 @@ async function main() {
   evidence.result = { originalCollections: originals, reviewedMappings: reviewedIds.length, editedPacketsPreserved: modified.length,
     interruptedStartupDidNotDoubleIncrement: true, newDefinitionVersion: graph.version, oldTargetEvidenceExcludedFromCurrentProfile: oldTargetEvidence,
     oldReportAndUnfinishedSessionFrozen: true, oldPreviewRejected: true, oldPlanRequiresReconfirmation: true,
-    divisionIncludedInNewScopeAndRootVerification: true, repeatedRestartIdempotent: true,
+    newPrerequisite, newPrerequisiteIncludedInNewScopeAndRootVerification: true, repeatedRestartIdempotent: true,
     priorSystemTeachingV2UpgradesToV3WithLineage: true, manualAndEditedV2PreservedAcrossRestart: true,
     restartsIncludingInterrupted: 8 };
   evidence.passed = true;

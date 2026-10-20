@@ -245,7 +245,13 @@ export class LearningService {
         const sessions = this.diagnostics.listSessions(user, child.id, subject), last = sessions.find((item) => item.status === 'completed');
         const learned = new Set(profile.scope?.learnedAtomIds ?? []), estimates = profile.estimates.filter((item) => learned.has(item.atomId));
         const weekStart = Date.now() - 7 * 86_400_000;
-        return { subject, scope: profile.scope, estimates, hypotheses: profile.hypotheses, today,
+        const children = this.store.select('knowledgeAtoms', { subject, status: 'published' }).filter(atom => atom.parentId && learned.has(atom.parentId));
+        const subpointEstimates = children.flatMap(atom => {
+          const estimate = profile.estimates.find(row => row.atomId === atom.id), parent = this.store.find('knowledgeAtoms', { id: atom.parentId! });
+          return estimate && parent?.prerequisiteIds.includes(atom.id) ? [{ ...estimate, parentAtomId: parent.id, parentAtomName: parent.name }] : [];
+        });
+        return { subject, scope: profile.scope, estimates, hypotheses: profile.hypotheses, today, subpointEstimates,
+          componentObservations: profile.componentObservations.filter(row => learned.has(row.sourceAtomId)).slice(-30),
           latestSessionId: last?.id ?? null, latestAt: last?.completedAt ?? null,
           counts: { selected: learned.size, secure: estimates.filter((item) => item.status === 'secure').length,
             unknown: estimates.filter((item) => item.status === 'unknown').length,

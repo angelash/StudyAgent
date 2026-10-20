@@ -20,6 +20,7 @@ import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measu
 import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
 import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } from './adaptive-routing';
 import { observedPerformance } from './observations';
+import { componentObservations } from './component-observations';
 import { verificationBlueprint, verificationResult } from './verification-blueprint';
 
 @Injectable()
@@ -105,6 +106,7 @@ export class DiagnosticsService {
       id: this.store.nextId('diagnostic'), studentId: command.studentId, subject: command.subject, intent: command.intent,
       status: 'in_progress', revision: 1, blueprint, scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id), itemSnapshots: selected,
       atomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set([...scope.learnedAtomIds, ...targetSet])] })),
+      componentAtomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set(selected.flatMap(item => item.componentBindings?.map(binding => binding.atomId) ?? []))] })),
       questionSnapshots: selected.map((item) => {
         const question = this.store.find('questions', { id: item.questionId })!;
         const payload = this.workspace.buildRenderPayload(question.id);
@@ -138,7 +140,7 @@ export class DiagnosticsService {
   }
 
   private blueprintFingerprint(session: DiagnosticSession) {
-    return blueprintContentHash({ scope: session.scopeSnapshot, atoms: session.atomSnapshots,
+    return blueprintContentHash({ scope: session.scopeSnapshot, atoms: session.atomSnapshots, componentAtoms: session.componentAtomSnapshots,
       items: session.itemSnapshots, questions: session.questionSnapshots, coverage: session.coverage,
       blueprint: session.blueprint, exposed: session.exposedQuestionIds, planRevision: session.planRevision, hypothesisId: session.hypothesisId });
   }
@@ -431,7 +433,13 @@ export class DiagnosticsService {
       (!scope || item.grade <= scope.grade));
     const compatibility = this.definitionEvidence(atoms, this.effectiveResponses(studentId, subject), studentId);
     const weighted = weightedEvidence(compatibility.compatible, this.allMappings(studentId), new Date());
+    const responsesBySession = new Map<string, DiagnosticResponse[]>();
+    for (const response of compatibility.compatible) {
+      const rows = responsesBySession.get(response.sessionId) ?? []; rows.push(response); responsesBySession.set(response.sessionId, rows);
+    }
     return { studentId, subject, scope, estimates: atoms.map((atom) => estimateMastery(atom, weighted)),
+      componentObservations: this.store.select('diagnosticSessions', { studentId, subject, status: ['completed', 'aborted'] })
+        .flatMap(session => componentObservations(session, responsesBySession.get(session.id) ?? [], atoms)),
       hypotheses: this.store.select('diagnosticHypotheses', { studentId, subject }).filter(hypothesis => atoms.some(atom =>
         atom.id === hypothesis.atomId && atomDefinitionFingerprint(atom) === hypothesis.atomDefinitionFingerprint)),
       definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
@@ -463,7 +471,7 @@ export class DiagnosticsService {
     const mapping = session.itemSnapshots.find(item => item.id === original.itemId)!;
     const payload = question.renderPayload ? structuredClone(question.renderPayload) as QuestionRenderPayload : null;
     if (payload) { payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null; }
-    return { response, originalResponse: original, observation: observedPerformance(response), payload, stem: question.stem,
+    return { response, originalResponse: original, observation: observedPerformance(response), componentObservations: componentObservations(session, [response]), payload, stem: question.stem,
       referenceAnswer: question.answer, analysis: question.analysis, mapping, scopeSnapshot: session.scopeSnapshot,
       atomSnapshot: session.atomSnapshots?.find(atom => atom.id === original.atomId) ?? null,
       revisions: this.store.select('scoringRevisions', { responseId }).sort((a, b) => a.version - b.version)
@@ -501,6 +509,7 @@ export class DiagnosticsService {
         compatibility.compatible, this.allMappings(session.studentId), previous, measuredAt),
       evidence, unmeasuredAtomIds: estimates.filter((item) => !item.scoredCount).map((item) => item.atomId),
       observations: evidence.map(observedPerformance),
+      componentObservations: componentObservations(session, evidence),
       ...(session.blueprint?.verification ? { verification: verificationResult(session.blueprint.verification, evidence) } : {}),
       scopeSnapshot: structuredClone(session.scopeSnapshot),
       scoringRevisionIds: this.store.scoringRevisions.filter((revision) => all.some((item) => item.id === revision.responseId)).map((item) => item.id),

@@ -2,11 +2,12 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import type { CurriculumBook, CurriculumChapter, CurriculumLesson, KnowledgeAtom, MeasurementItem, Question, Subject, TextbookAtomMapping } from '@study-agent/contracts';
+import type { CurriculumBook, CurriculumChapter, CurriculumLesson, KnowledgeAtom, MeasurementItem, Question, QuestionAnswerSchema, Subject, TextbookAtomMapping } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { StudyNav } from '../../../components/study-nav';
 import { CurriculumPackagePanel } from './package-panel';
 import { TeachingEditor } from './teaching-editor';
+import { ComponentBindingEditor } from './component-binding-editor';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
 import './curriculum.css';
@@ -16,7 +17,7 @@ type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade:
   notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number } };
 type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; mappedLessonCount: number };
 type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<Omit<CurriculumChapter, 'lessons'> & { lessons: Array<CurriculumLesson & { atomIds: string[]; mappingState: string; mapping: TextbookAtomMapping | null }> }> };
-type Item = { mapping: MeasurementItem; question: Question; answerSchema: unknown; source: unknown; eligible: boolean; inputIssue: string; definitionIssue: string | null; contentIssue: string | null };
+type Item = { mapping: MeasurementItem; question: Question; answerSchema: QuestionAnswerSchema; source: unknown; eligible: boolean; inputIssue: string; definitionIssue: string | null; contentIssue: string | null; componentIssue: string | null };
 const req = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }, getAuthToken());
 const subjects = { math: '数学', chinese: '语文', english: '英语' };
 const dimensions = { understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' };
@@ -91,9 +92,11 @@ export default function CurriculumPage() {
             <label className="wide">题族（相同生成或解法结构共用同一题族）<input value={mapping.family} onChange={e => setMapping({ ...mapping, family: e.target.value })} maxLength={180} /></label>
             <label>预计秒数<input type="number" min={5} max={1200} value={mapping.expectedSeconds} onChange={e => setMapping({ ...mapping, expectedSeconds: Number(e.target.value) })} /></label>
             <label>审核结果<select value={mapping.reviewStatus} onChange={e => setMapping({ ...mapping, reviewStatus: e.target.value as MeasurementItem['reviewStatus'] })}><option value="draft">待审核</option><option value="approved">审核通过</option><option value="rejected">拒绝</option></select></label>
+            <ComponentBindingEditor value={mapping.componentBindings} onChange={componentBindings => setMapping({ ...mapping, componentBindings })} atom={atom} atoms={data.atoms}
+              schema={items.find(item => item.mapping.questionId === mapping.questionId)?.answerSchema} />
             <button className="studio-primary wide" disabled={busy} onClick={() => act(async () => { await req('/admin/measurement-items', mapping); await reload(); setItems(await req<Item[]>(`/admin/curriculum/atoms/${encodeURIComponent(atom.id)}/items`)); setMapping(null); })}>保存映射版本</button>
           </div>}
-          <div className="admin-items">{items.map(({ mapping: m, question, eligible, inputIssue, definitionIssue, contentIssue }) => <article key={m.id}><div><span>{dimensions[m.dimension]} · {m.reviewStatus} · v{m.version}</span><span>{m.expectedSeconds}秒</span></div><p>{question?.stem ?? '题目不可用'}</p><small>题族：{m.family}</small>{!eligible && <p className="admin-gap">未进入量化题组：{definitionIssue || contentIssue || inputIssue || "请核对题目发布、来源审核及映射版本"}</p>}<details><summary>参考响应与来源</summary><pre>{JSON.stringify({ answer: question?.answer, questionId: m.questionId, version: m.questionVersion }, null, 2)}</pre></details><button className="studio-text-button" onClick={() => setMapping({ ...m })}>复核此映射</button></article>)}</div>
+          <div className="admin-items">{items.map(({ mapping: m, question, eligible, inputIssue, definitionIssue, contentIssue, componentIssue }) => <article key={m.id}><div><span>{dimensions[m.dimension]} · {m.reviewStatus} · v{m.version}</span><span>{m.expectedSeconds}秒</span></div><p>{question?.stem ?? '题目不可用'}</p><small>题族：{m.family}</small>{!eligible && <p className="admin-gap">未进入量化题组：{definitionIssue || contentIssue || inputIssue || "请核对题目发布、来源审核及映射版本"}</p>}{componentIssue && <p className="admin-gap">分项观察需复核：{componentIssue}</p>}{!!m.componentBindings?.length && <p>已关联 {m.componentBindings.length} 个步骤观察，独立测量仍使用子点自己的题目。</p>}<details><summary>参考响应与来源</summary><pre>{JSON.stringify({ answer: question?.answer, questionId: m.questionId, version: m.questionVersion }, null, 2)}</pre></details><button className="studio-text-button" onClick={() => setMapping({ ...m })}>复核此映射</button></article>)}</div>
           <button className="studio-text-button" onClick={() => act(async () => setRevisions(await req<unknown[]>(`/admin/curriculum/revisions/${encodeURIComponent(atom.id)}`)), '已读取历史版本')}>查看定义修改记录</button>
           {revisions && <pre className="admin-revision">{JSON.stringify(revisions, null, 2)}</pre>}
         </>}</section></div>

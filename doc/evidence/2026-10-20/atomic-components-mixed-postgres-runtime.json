@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-20T01:09:24.357Z",
+  "driver": "postgres",
+  "releaseId": "authored-relations-2026-10-20-v1",
+  "passed": true,
+  "scope": "Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "a3457a6c59e52fe4d06042e7077e9ec5c7c974385b55a180541986d536e34dc5",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "e5ee7f1412af20fe6fe77d46ada02ba286082b050330e71d6dc5034a27ae8f54",
+    "apps/api/src/modules/diagnostics/authored-unit-probes.ts": "1109a9bb869bdb1d243dc6d71d6b4a6d09ab74582ee2faf5bb1e0dfbf9e352e1",
+    "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "a04b7df89caf72e67db67137240a3f28750a9359db61da5569bb5eb190d4e7f7",
+    "apps/api/src/modules/diagnostics/component-observations.ts": "e3e308561d779f7265fe34b7373ce7eb9ecc7496e7b8d7940aa2a3d4a79ee4aa",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "235ea821df4213a82cf7d122fe75b613761de048bd83ed758d50706f052e70e7",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+    "scripts/qa/verify-authored-relations.cjs": "92d76db8c7683209585defe86a0e1843650895184104bc693e804e34d68af8f8"
+  },
+  "result": {
+    "originalCollections": {
+      "questions": {
+        "count": 3435,
+        "sha256": "9481aa8b24480d1cf7cc6b0b3cd0dd211e34dc02b5b703dea268461cec4e8d0e"
+      },
+      "questionDocuments": {
+        "count": 3435,
+        "sha256": "6af7de210715803a48f392dc725392be901096fd68ab8d45d5feeda6e063ecec"
+      },
+      "questionAnswerSchemas": {
+        "count": 3435,
+        "sha256": "e1be2770d3c385db5a1bbee26b5d8e3df85c68c8f91d71a4fa0504b4325c42fb"
+      },
+      "questionSources": {
+        "count": 3435,
+        "sha256": "55c89b05613bf38275d676a1213af63b8d795bb38dc5e38fa0de861aa9f76b2e"
+      },
+      "measurementItems": {
+        "count": 3435,
+        "sha256": "8045b01b89aa996b470c56309224a8dffef51e9b4d16ed9c0491c5507bf02e75"
+      }
+    },
+    "reviewedMappings": 52,
+    "editedPacketsPreserved": 8,
+    "interruptedStartupDidNotDoubleIncrement": true,
+    "newDefinitionVersion": 2,
+    "oldTargetEvidenceExcludedFromCurrentProfile": 6,
+    "oldReportAndUnfinishedSessionFrozen": true,
+    "oldPreviewRejected": true,
+    "oldPlanRequiresReconfirmation": true,
+    "newPrerequisite": "foundation:math:divisiontable",
+    "newPrerequisiteIncludedInNewScopeAndRootVerification": true,
+    "repeatedRestartIdempotent": true,
+    "priorSystemTeachingV2UpgradesToV3WithLineage": true,
+    "manualAndEditedV2PreservedAcrossRestart": true,
+    "restartsIncludingInterrupted": 8
+  }
+}
