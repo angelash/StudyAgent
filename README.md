@@ -19,6 +19,8 @@
 
 教研工作台现已呈现183点的有效素材缺口，并分别核对结构和四题组题预算，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新英语素材收据。
 
+GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。学生课程发布、诊断和程序运行待建设，不计入上述小学原创任务数。见 [GESP资料与恢复说明](resources/gesp/README.md) 和 [本轮交付](doc/product/55-gesp-research-delivery.md)。
+
 448册真实教材中112册已有章节，新增12册小学语文上下册的课名、页码和组合课层级；目录与知识点映射分别审核，旧评测保留原版本。来源、离线重建与两库运行证据见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md)。
 
 ## 本地运行
@@ -43,7 +45,7 @@
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 
-已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)，混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需继续拆解细粒度知识点、编写独立探针并审核分项绑定，完成教材与课时审核映射、其余183点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
+已完成的原有资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)；新增GESP原始档案须单独备份，不在该历史恢复证据中。混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需继续拆解细粒度知识点、编写独立探针并审核分项绑定，完成教材与课时审核映射、其余183点的测量素材深度、当前候选的跨环境复验、真实浏览器流程、原52项及新增GESP需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
 
 ## 工程目录
 

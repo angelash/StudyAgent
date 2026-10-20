@@ -18,9 +18,10 @@ import { ReviewsModule } from './modules/reviews/reviews.module';
 import { ProcessingModule } from './modules/processing/processing.module';
 import { PrivacyModule } from './modules/privacy/privacy.module';
 import { RequestRateMiddleware } from './infrastructure/request-rate.middleware';
+import { GespModule } from './modules/gesp/gesp.module';
 
 @Module({
-  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule, ReviewsModule, ProcessingModule, PrivacyModule],
+  imports: [CoreModule, AuthModule, StudentsModule, ContentModule, QuestionWorkspaceModule, AiModule, ProgressModule, DiagnosticsModule, LibraryModule, LearningModule, ReviewsModule, ProcessingModule, PrivacyModule, GespModule],
   providers: [
     {
       provide: APP_FILTER,

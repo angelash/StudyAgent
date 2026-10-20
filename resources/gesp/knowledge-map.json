@@ -1,0 +1,4361 @@
+{
+  "format": "gesp-knowledge-preparation-v1",
+  "version": "2026-10-20-v1",
+  "track": "gesp-cpp",
+  "runtimeCompatible": false,
+  "integrationStatus": "research_workbench_only",
+  "languageStandard": "C++11 unless an exam explicitly specifies otherwise",
+  "officialScope": "CCF syllabus PDF linked by the 2026-01-28 revision announcement",
+  "scopeConstraints": [
+    {
+      "levels": [
+        1
+      ],
+      "rule": "Bitwise operations removed from level 1 in the 2026-01-28 revision."
+    },
+    {
+      "levels": [
+        3,
+        4
+      ],
+      "rule": "C++ arrays exclude variable-length arrays."
+    },
+    {
+      "levels": [
+        4
+      ],
+      "rule": "Functions exclude anonymous functions and class call-operator overloading."
+    },
+    {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "rule": "Do not execute undefined behavior to establish an answer. Review historical questions against their original syllabus/version."
+    }
+  ],
+  "atoms": [
+    {
+      "id": "gesp-cpp.l1.computer",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "计算机组成、操作系统与历史",
+      "prerequisiteIds": [],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "输入和输出的生活经验"
+      ],
+      "successCriterion": "区分CPU、内存、输入输出设备并说明一次信息流动",
+      "commonErrorToInvestigate": "把存储设备、输入设备和输出设备混为一谈",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause01"
+        }
+      ],
+      "searchTerms": [
+        "CPU",
+        "内存",
+        "操作系统",
+        "计算机",
+        "输入设备",
+        "输出设备"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.ide",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "编辑、编译、运行与调试环境",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "独立创建保存源文件并区分编译错误和运行结果",
+      "commonErrorToInvestigate": "将编辑、编译、运行或解释视为同一步",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause02"
+        }
+      ],
+      "searchTerms": [
+        "IDE",
+        "集成开发环境",
+        "编译",
+        "Dev"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.io",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "输入输出与赋值",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.ide",
+        "gesp-cpp.l1.variables"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按指定次序读取输入并精确输出所需格式",
+      "commonErrorToInvestigate": "把读取输入与输出提示文字混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause03"
+        }
+      ],
+      "searchTerms": [
+        "cin",
+        "cout",
+        "scanf",
+        "printf"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.identifiers",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "标识符、关键字、常量和表达式",
+      "prerequisiteIds": [],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "能判断名称是否合法并区分关键字、变量名和表达式",
+      "commonErrorToInvestigate": "把cout当语言关键字或让名称以数字开头",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause04"
+        }
+      ],
+      "searchTerms": [
+        "标识符",
+        "关键字",
+        "常量",
+        "表达式"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.variables",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "变量定义、初始化与赋值",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.identifiers"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "等号与赋值的区别"
+      ],
+      "successCriterion": "用状态表说明每次赋值后变量的值",
+      "commonErrorToInvestigate": "把赋值当等式或使用未初始化变量",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause05"
+        }
+      ],
+      "searchTerms": [
+        "变量",
+        "初始化",
+        "赋值"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.types",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "整型、浮点型、字符型和布尔型",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "整数与小数"
+      ],
+      "successCriterion": "为数据选择int、long long、double、char、bool并解释范围",
+      "commonErrorToInvestigate": "把类型、取值和显示格式混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause09"
+        }
+      ],
+      "searchTerms": [
+        "int",
+        "long long",
+        "double",
+        "float",
+        "char",
+        "bool",
+        "数据类型"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.arithmetic",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "算术运算、优先级与自增自减",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables",
+        "gesp-cpp.l1.types"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "四则运算与运算顺序"
+      ],
+      "successCriterion": "逐步跟踪带括号、优先级和自增的表达式",
+      "commonErrorToInvestigate": "忽略优先级或混淆自增前后使用的值",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause05",
+        "gesp-cpp.l1.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause05"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause06"
+        }
+      ],
+      "searchTerms": [
+        "算术",
+        "优先级",
+        "自增",
+        "自减",
+        "++",
+        "--",
+        "乘",
+        "除"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.division",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "整除与求余",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "带余除法和奇偶"
+      ],
+      "successCriterion": "能解释商与余数并独立处理数位或奇偶任务",
+      "commonErrorToInvestigate": "把整数除法结果当作小数或漏掉余数条件",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause06"
+        }
+      ],
+      "searchTerms": [
+        "求余",
+        "整除",
+        "取模",
+        "%",
+        "余数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.relations",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "关系运算与相等比较",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "大小关系"
+      ],
+      "successCriterion": "用边界值判断六种比较表达式真假",
+      "commonErrorToInvestigate": "混淆=与==或漏掉等于边界",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause08"
+        }
+      ],
+      "searchTerms": [
+        "大于",
+        "小于",
+        "==",
+        "!=",
+        ">=",
+        "<="
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.logic",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "逻辑与、或、非",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.relations"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "且、或、非的语言含义"
+      ],
+      "successCriterion": "把复合条件翻译为逻辑表达式并举反例",
+      "commonErrorToInvestigate": "把或者理解为必须同时满足",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause07"
+        }
+      ],
+      "searchTerms": [
+        "&&",
+        "逻辑",
+        "非"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.sequence",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "顺序结构与程序状态跟踪",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.io",
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按执行顺序用状态表说明每一步输入、计算和输出",
+      "commonErrorToInvestigate": "用最后结果倒推并跳过中间状态",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause10"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause10"
+        }
+      ],
+      "searchTerms": [
+        "顺序结构",
+        "顺序执行"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.branch",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "if、switch 与条件选择",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.logic",
+        "gesp-cpp.l1.sequence"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "独立编写含互斥条件的分支并验证边界",
+      "commonErrorToInvestigate": "多个if与if-else链的语义混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause11"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause11"
+        }
+      ],
+      "searchTerms": [
+        "if",
+        "switch",
+        "else",
+        "三目",
+        "条件"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.loop",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "for、while、do-while",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "有限次重复、数列和计数"
+      ],
+      "successCriterion": "说明初值、条件、更新及终止原因并独立实现累加",
+      "commonErrorToInvestigate": "漏一次、重复一次或循环条件不变",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause12"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause12"
+        }
+      ],
+      "searchTerms": [
+        "for",
+        "while",
+        "循环"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.loop-control",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "break 与 continue",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.loop"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "用同一例子解释结束整个循环与跳过本次迭代的区别",
+      "commonErrorToInvestigate": "把continue当作退出循环",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause12"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause12"
+        }
+      ],
+      "searchTerms": [
+        "break",
+        "continue"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l1.debug",
+      "track": "gesp-cpp",
+      "level": 1,
+      "name": "注释、测试与基础调试",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.sequence"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "用正常和边界输入复现问题并解释修改原因",
+      "commonErrorToInvestigate": "只试一个样例或仅改到输出碰巧一致",
+      "sourceClauseIds": [
+        "gesp-cpp.l1.clause13"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause13"
+        }
+      ],
+      "searchTerms": [
+        "注释",
+        "调试",
+        "错误"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.memory",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "RAM、ROM 与 Cache",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "存储容量单位"
+      ],
+      "successCriterion": "说明三类存储的作用与区别",
+      "commonErrorToInvestigate": "认为所有存储都断电保留数据",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause01"
+        }
+      ],
+      "searchTerms": [
+        "RAM",
+        "ROM",
+        "Cache",
+        "存储器"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.network",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "网络分类、分层、协议及 IP",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "二进制与地址的直观认识"
+      ],
+      "successCriterion": "区分WAN、MAN、LAN及TCP/IP和OSI层级并解释地址作用",
+      "commonErrorToInvestigate": "混淆网络范围、协议层和地址",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause02"
+        }
+      ],
+      "searchTerms": [
+        "TCP",
+        "UDP",
+        "OSI",
+        "IP",
+        "局域网",
+        "广域网",
+        "网络"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.languages",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "程序设计语言分类",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.ide"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分机器语言、汇编语言和高级语言",
+      "commonErrorToInvestigate": "认为C++源文件可不经转换直接被CPU执行",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause03"
+        }
+      ],
+      "searchTerms": [
+        "机器语言",
+        "汇编",
+        "高级语言",
+        "程序设计语言"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.flowchart",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "流程图符号与控制流程",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch",
+        "gesp-cpp.l1.loop"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按流程图逐步跟踪并能画出分支和循环",
+      "commonErrorToInvestigate": "忽略条件出口或把图形位置当执行顺序",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause04"
+        }
+      ],
+      "searchTerms": [
+        "流程图"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.ascii",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "ASCII 及字符转换",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "整数差和顺序"
+      ],
+      "successCriterion": "利用0、A、a的编码关系处理字符转换",
+      "commonErrorToInvestigate": "混淆字符0与整数0",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause05"
+        }
+      ],
+      "searchTerms": [
+        "ASCII",
+        "字符",
+        "大小写",
+        "'A'",
+        "'a'",
+        "'0'"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.conversion",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "隐式与显式类型转换",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "整数与小数运算"
+      ],
+      "successCriterion": "解释先计算后转换与先转换后计算的区别",
+      "commonErrorToInvestigate": "在整数除法之后转换却期望找回小数",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause06"
+        }
+      ],
+      "searchTerms": [
+        "类型转换",
+        "强制转换",
+        "隐式转换",
+        "(double)",
+        "(int)"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.branches",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "多层分支",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "独立写出嵌套条件并解释else的绑定关系",
+      "commonErrorToInvestigate": "因缩进误判else配对或漏条件",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause07"
+        }
+      ],
+      "searchTerms": [
+        "if",
+        "else",
+        "switch",
+        "分支"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.nested-loops",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "多层循环与图形输出",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.loop"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "行列、数位和有序枚举"
+      ],
+      "successCriterion": "将行号与列号对应到两层循环并保持状态更新正确",
+      "commonErrorToInvestigate": "内层计数不重置或把行列关系写反",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause08"
+        }
+      ],
+      "searchTerms": [
+        "for",
+        "while",
+        "嵌套",
+        "三角形",
+        "图案"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.math-functions",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "abs、sqrt、max、min",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l2.conversion"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "绝对值、平方与平方根的直观概念"
+      ],
+      "successCriterion": "正确选择函数并解释参数范围和结果类型",
+      "commonErrorToInvestigate": "忽略平方根定义域或浮点误差",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause09"
+        }
+      ],
+      "searchTerms": [
+        "abs",
+        "sqrt",
+        "max",
+        "min",
+        "平方根",
+        "绝对值"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l2.random",
+      "track": "gesp-cpp",
+      "level": 2,
+      "name": "rand 与 srand",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释伪随机序列与种子并理解简单范围映射",
+      "commonErrorToInvestigate": "认为相同种子一定产生不同序列",
+      "sourceClauseIds": [
+        "gesp-cpp.l2.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause09"
+        }
+      ],
+      "searchTerms": [
+        "rand",
+        "srand",
+        "随机"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.number-code",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "原码、反码与补码",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.ascii"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "符号、二进制位和定长表示"
+      ],
+      "successCriterion": "在指定位宽下解释正负数编码",
+      "commonErrorToInvestigate": "忽略位宽或将数学负号当符号位本身",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause01"
+        }
+      ],
+      "searchTerms": [
+        "原码",
+        "反码",
+        "补码"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.base",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "二、八、十、十六进制转换",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "位值与乘方"
+      ],
+      "successCriterion": "解释按权展开及除基取余并能双向检验",
+      "commonErrorToInvestigate": "余数顺序倒置或混淆数码和进制",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause02"
+        }
+      ],
+      "searchTerms": [
+        "进制",
+        "二进制",
+        "八进制",
+        "十六进制"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.bitwise",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "按位与、或、非和异或",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.number-code",
+        "gesp-cpp.l3.base"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "逐位计算并与逻辑运算区分",
+      "commonErrorToInvestigate": "把按位运算与逻辑运算混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause03"
+        }
+      ],
+      "searchTerms": [
+        "位运算",
+        "异或",
+        "按位",
+        "&",
+        "^",
+        "~"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.shift",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "左右移与位宽边界",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.bitwise"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "二的幂"
+      ],
+      "successCriterion": "在明确类型和有效移位范围内说明移位结果",
+      "commonErrorToInvestigate": "把所有左移都当安全乘二而忽略标准边界",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause03"
+        }
+      ],
+      "searchTerms": [
+        "左移",
+        "右移",
+        "<<",
+        ">>"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.algorithm-description",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "自然语言、流程图与伪代码",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.flowchart"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "写出有输入、输出、有限步骤的解题过程",
+      "commonErrorToInvestigate": "只描述目标而不给出可执行步骤",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause04"
+        }
+      ],
+      "searchTerms": [
+        "伪代码",
+        "算法",
+        "流程图"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.array",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "定长一维数组与遍历",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.loop"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "编号与下标"
+      ],
+      "successCriterion": "正确使用下标并说明数组范围和初始化",
+      "commonErrorToInvestigate": "从1数到n却访问长度n的a[n]",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause05"
+        }
+      ],
+      "searchTerms": [
+        "数组",
+        "下标",
+        "array",
+        "[]"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.strings",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "字符串遍历、查找、分割和替换",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.ascii",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分读入单词与整行并正确处理空串和空格",
+      "commonErrorToInvestigate": "cin读入丢失空格或把子串与子序列混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause06"
+        }
+      ],
+      "searchTerms": [
+        "string",
+        "字符串",
+        "find",
+        "substr",
+        "getline",
+        "replace"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.enumeration",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "枚举候选与条件检查",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.nested-loops",
+        "gesp-cpp.l3.algorithm-description"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "有限分类与不重不漏计数"
+      ],
+      "successCriterion": "给出候选范围并说明枚举不重不漏",
+      "commonErrorToInvestigate": "忽略零值候选或重复计算对称方案",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause07"
+        }
+      ],
+      "searchTerms": [
+        "枚举",
+        "所有可能",
+        "方案"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l3.simulation",
+      "track": "gesp-cpp",
+      "level": 3,
+      "name": "按规则维护状态的模拟",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.algorithm-description",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "将题目每步规则落实为状态更新并检查先后顺序",
+      "commonErrorToInvestigate": "就地更新让后续步骤读取了错误状态",
+      "sourceClauseIds": [
+        "gesp-cpp.l3.clause07",
+        "gesp-cpp.l3.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause07"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause08"
+        }
+      ],
+      "searchTerms": [
+        "模拟",
+        "规则",
+        "依次",
+        "操作"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.pointer",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "指针定义、赋值与解引用",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.variables"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "画出变量、地址和指针关系并解释解引用",
+      "commonErrorToInvestigate": "把指针值与所指对象值混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause01"
+        }
+      ],
+      "searchTerms": [
+        "指针",
+        "解引用",
+        "int *",
+        "nullptr"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.matrix",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "二维与多维定长数组",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "行列坐标"
+      ],
+      "successCriterion": "遍历矩阵并正确转换行列和邻接位置",
+      "commonErrorToInvestigate": "颠倒行列或越过边界",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause02"
+        }
+      ],
+      "searchTerms": [
+        "二维",
+        "多维",
+        "矩阵",
+        "网格"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.struct",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "结构体及结构体数组、指针和参数",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l4.pointer"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "将关联字段组织为记录并完成按字段访问",
+      "commonErrorToInvestigate": "排序一个字段后破坏记录对应关系",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause02"
+        }
+      ],
+      "searchTerms": [
+        "struct",
+        "结构体"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.function",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "函数声明、定义、调用及形实参",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.sequence"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "将任务拆成函数并解释输入、返回值和调用过程",
+      "commonErrorToInvestigate": "把函数声明当执行或混淆形参和实参",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause03"
+        }
+      ],
+      "searchTerms": [
+        "函数",
+        "返回值",
+        "形参",
+        "实参",
+        "return"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.scope",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "全局和局部作用域",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "用嵌套同名变量说明可见性和生命周期",
+      "commonErrorToInvestigate": "用变量名相同推断它们是同一对象",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause04"
+        }
+      ],
+      "searchTerms": [
+        "作用域",
+        "全局",
+        "局部"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.parameter-value",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "函数值传递",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明参数副本修改为何不改变调用者变量",
+      "commonErrorToInvestigate": "以为所有形参修改都会传回",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause05"
+        }
+      ],
+      "searchTerms": [
+        "值传递",
+        "参数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.parameter-reference",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "引用传递与指针传递",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function",
+        "gesp-cpp.l4.pointer",
+        "gesp-cpp.l4.parameter-value"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释实参如何被函数修改并避免悬空引用",
+      "commonErrorToInvestigate": "把地址传递误解为复制整个数组",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause05"
+        }
+      ],
+      "searchTerms": [
+        "引用",
+        "指针传递",
+        "引用传递"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.recurrence",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "递推状态、边界与转移",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l1.loop"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "数列规律和分类计数"
+      ],
+      "successCriterion": "从最后一步分类推导递推式并给出初始状态",
+      "commonErrorToInvestigate": "只背斐波那契或遗漏n为0、1的边界",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause06"
+        }
+      ],
+      "searchTerms": [
+        "递推",
+        "台阶",
+        "斐波那契",
+        "汉诺塔"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.sort-concepts",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "排序概念、稳定性与内外排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "用带相同关键字的记录解释排序稳定性",
+      "commonErrorToInvestigate": "把数值有序等同于记录相对次序稳定",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause07"
+        }
+      ],
+      "searchTerms": [
+        "排序",
+        "稳定性",
+        "稳定",
+        "内排序",
+        "外排序"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.bubble",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "冒泡排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明一轮交换后的已确定位置并独立实现",
+      "commonErrorToInvestigate": "内层终点错误或比较方向反了",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "searchTerms": [
+        "冒泡",
+        "bubble"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.insertion",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "插入排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "维护有序前缀并正确移动元素",
+      "commonErrorToInvestigate": "移动时覆盖待插入值",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "searchTerms": [
+        "插入排序",
+        "insertion"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.selection",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "选择排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "每轮选出剩余最小元素并解释稳定性",
+      "commonErrorToInvestigate": "把找到最小值与交换的位置混淆",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "searchTerms": [
+        "选择排序",
+        "selection"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.complexity",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "简单时间和空间效率估算",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "乘法、乘方和增长比较"
+      ],
+      "successCriterion": "根据实际循环次数区分多项式和指数增长",
+      "commonErrorToInvestigate": "看见两层循环就断言一定是n平方",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause09"
+        }
+      ],
+      "searchTerms": [
+        "复杂度",
+        "效率",
+        "O(",
+        "指数",
+        "空间"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.file",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "文件重定向与读写",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.io"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分标准输入输出重定向与文件流读写",
+      "commonErrorToInvestigate": "文件打开失败后仍认为读入有效",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause10"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause10"
+        }
+      ],
+      "searchTerms": [
+        "freopen",
+        "ifstream",
+        "ofstream",
+        "文件",
+        "重定向"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l4.exception",
+      "track": "gesp-cpp",
+      "level": 4,
+      "name": "异常处理基础",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释try、throw、catch的基本控制流",
+      "commonErrorToInvestigate": "以为catch能处理全部逻辑错误",
+      "sourceClauseIds": [
+        "gesp-cpp.l4.clause11"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause11"
+        }
+      ],
+      "searchTerms": [
+        "try",
+        "throw",
+        "catch",
+        "异常"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "initial_track"
+    },
+    {
+      "id": "gesp-cpp.l5.number-theory",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "素数、合数、约数、倍数与奇偶",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.division",
+        "gesp-cpp.l3.enumeration"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "整除、因数和倍数"
+      ],
+      "successCriterion": "判断基本数论条件并处理1等特殊值",
+      "commonErrorToInvestigate": "将1当素数或漏掉平方根因数",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause01"
+        }
+      ],
+      "searchTerms": [
+        "素数",
+        "质数",
+        "合数",
+        "约数",
+        "因数",
+        "倍数",
+        "奇偶"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.gcd-lcm",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "最大公约数与最小公倍数",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.number-theory"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "公因数、公倍数"
+      ],
+      "successCriterion": "解释gcd与lcm关系并避免先乘溢出",
+      "commonErrorToInvestigate": "混淆公因数与公倍数",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause01"
+        }
+      ],
+      "searchTerms": [
+        "最大公约数",
+        "最小公倍数",
+        "gcd",
+        "lcm"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.congruence",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "同余与模运算",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释同余关系并正确处理加减乘取模",
+      "commonErrorToInvestigate": "直接对除法套取模规则",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause01"
+        }
+      ],
+      "searchTerms": [
+        "同余",
+        "模运算"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.factorization",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "质因数分解与唯一分解定理",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.number-theory"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "给出分解并解释质因子指数的含义",
+      "commonErrorToInvestigate": "把因子集合当作带重数分解",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause01",
+        "gesp-cpp.l5.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause01"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause04"
+        }
+      ],
+      "searchTerms": [
+        "质因数",
+        "分解定理",
+        "质因子"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.big-add",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "数组模拟高精度加法",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "竖式加法和进位"
+      ],
+      "successCriterion": "按位存储并传播进位",
+      "commonErrorToInvestigate": "末位进位未输出",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause02"
+        }
+      ],
+      "searchTerms": [
+        "高精度",
+        "进位",
+        "大整数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.big-subtract",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "数组模拟高精度减法",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.big-add"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "借位减法"
+      ],
+      "successCriterion": "正确比较大小、借位并处理前导零",
+      "commonErrorToInvestigate": "遗漏借位或结果符号",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause02"
+        }
+      ],
+      "searchTerms": [
+        "高精度",
+        "借位"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.big-multiply",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "数组模拟高精度乘法",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.big-add"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "竖式乘法"
+      ],
+      "successCriterion": "解释每一位乘积的累积位置和进位",
+      "commonErrorToInvestigate": "边累加边错误覆盖中间位",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause02"
+        }
+      ],
+      "searchTerms": [
+        "高精度",
+        "大整数",
+        "乘法"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.big-divide",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "数组模拟高精度除法",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.big-subtract"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "长除法、余数"
+      ],
+      "successCriterion": "说明从高位到低位确定商与余数的过程",
+      "commonErrorToInvestigate": "只支持整除却忽略余数",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause02"
+        }
+      ],
+      "searchTerms": [
+        "高精度",
+        "大整数",
+        "除法"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.linked-list",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "单链表、双链表与循环链表",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.pointer",
+        "gesp-cpp.l4.struct"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "实现建立、插入、删除、遍历与反转并维护边界",
+      "commonErrorToInvestigate": "修改链接顺序导致剩余节点丢失",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause03"
+        }
+      ],
+      "searchTerms": [
+        "链表",
+        "节点",
+        "next",
+        "prev"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.euclid",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "欧几里得算法",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.gcd-lcm"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释取余后公约数集合不变及终止条件",
+      "commonErrorToInvestigate": "除数为0时仍做取余",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause04"
+        }
+      ],
+      "searchTerms": [
+        "欧几里得",
+        "辗转相除",
+        "gcd"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.eratosthenes",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "埃氏筛",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.number-theory",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明筛去合数与遍历范围",
+      "commonErrorToInvestigate": "把质数本身也划掉",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause04"
+        }
+      ],
+      "searchTerms": [
+        "埃氏",
+        "筛法",
+        "素数表"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.linear-sieve",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "线性筛",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.eratosthenes"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明每个合数由其最小质因子唯一筛去",
+      "commonErrorToInvestigate": "缺失break导致复杂度变化",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause04"
+        }
+      ],
+      "searchTerms": [
+        "线性筛"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.complexity",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "多项式、对数和递归效率",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "对数与指数增长的直观概念"
+      ],
+      "successCriterion": "比较线性、对数和递归算法的资源增长",
+      "commonErrorToInvestigate": "把递归深度等同于总调用次数",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause05"
+        }
+      ],
+      "searchTerms": [
+        "复杂度",
+        "对数",
+        "O("
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.binary-search",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "有序范围的二分查找",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l4.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "维持区间不变量并处理不存在和重复值",
+      "commonErrorToInvestigate": "端点更新不收缩导致死循环",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause06"
+        }
+      ],
+      "searchTerms": [
+        "二分查找",
+        "lower_bound",
+        "upper_bound"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.binary-answer",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "单调判定与二分答案",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.binary-search"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "把最优化转为单调可行性检查并证明边界",
+      "commonErrorToInvestigate": "未经验证就假设可行性单调",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause06"
+        }
+      ],
+      "searchTerms": [
+        "二分答案",
+        "木材",
+        "切割",
+        "单调"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.recursion",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "递归基例、调用与返回",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function",
+        "gesp-cpp.l4.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明基例和规模缩小并跟踪调用栈",
+      "commonErrorToInvestigate": "没有终止条件或重复子问题失控",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause07"
+        }
+      ],
+      "searchTerms": [
+        "递归",
+        "调用栈"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.greedy",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "贪心选择与正确性理由",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l3.enumeration"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明局部选择为何不损害最优解并检验反例",
+      "commonErrorToInvestigate": "将看起来最大的局部收益当全局最优",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause08"
+        }
+      ],
+      "searchTerms": [
+        "贪心",
+        "最优子结构"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.merge-sort",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "分治与归并排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.recursion",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释分解、递归与合并并分析额外空间",
+      "commonErrorToInvestigate": "合并时遗漏剩余元素",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause09"
+        }
+      ],
+      "searchTerms": [
+        "归并",
+        "分治"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l5.quick-sort",
+      "track": "gesp-cpp",
+      "level": 5,
+      "name": "分治与快速排序",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.recursion",
+        "gesp-cpp.l4.sort-concepts"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "完成分区并解释最坏情况与重复元素",
+      "commonErrorToInvestigate": "分区端点不收缩或误认为永远nlogn",
+      "sourceClauseIds": [
+        "gesp-cpp.l5.clause09"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            22
+          ],
+          "clauseId": "gesp-cpp.l5.clause09"
+        }
+      ],
+      "searchTerms": [
+        "快速排序",
+        "快排",
+        "分治"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.tree",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "树的定义、构造与遍历",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.recursion",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释根、父子、深度和叶子并完成遍历",
+      "commonErrorToInvestigate": "把一般图默认当树",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause01"
+        }
+      ],
+      "searchTerms": [
+        "树",
+        "叶子",
+        "父节点",
+        "子树"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.complete-tree",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "完全二叉树",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.tree"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分完全二叉树与满二叉树",
+      "commonErrorToInvestigate": "认为节点数相同就具有相同结构",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause02"
+        }
+      ],
+      "searchTerms": [
+        "完全二叉树",
+        "满二叉树"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.bst",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "二叉排序树与搜索",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.tree",
+        "gesp-cpp.l5.binary-search"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "维护左右子树次序并分析不平衡情况",
+      "commonErrorToInvestigate": "把二叉排序树误认为总是平衡",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause02",
+        "gesp-cpp.l6.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause02"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause04"
+        }
+      ],
+      "searchTerms": [
+        "二叉排序树",
+        "二叉搜索树",
+        "BST"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.huffman-tree",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "哈夫曼树",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.tree",
+        "gesp-cpp.l5.greedy"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "用权重构造树并解释带权路径长度",
+      "commonErrorToInvestigate": "将频率高的字符分配更深路径",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause02"
+        }
+      ],
+      "searchTerms": [
+        "哈夫曼树",
+        "带权路径"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.huffman-code",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "哈夫曼编码",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.huffman-tree",
+        "gesp-cpp.l3.bitwise"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明前缀编码与树路径的关系",
+      "commonErrorToInvestigate": "用定长编码性质解释变长编码",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause03"
+        }
+      ],
+      "searchTerms": [
+        "哈夫曼编码",
+        "前缀编码"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.gray-code",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "格雷编码",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.bitwise"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "验证相邻编码仅一位变化",
+      "commonErrorToInvestigate": "将普通二进制序列当格雷码",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause03"
+        }
+      ],
+      "searchTerms": [
+        "格雷",
+        "Gray"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.dfs",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "深度优先搜索",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.recursion",
+        "gesp-cpp.l6.tree"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "定义状态、访问或回溯规则并避免重复",
+      "commonErrorToInvestigate": "返回时忘记恢复需回溯的状态",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause04"
+        }
+      ],
+      "searchTerms": [
+        "DFS",
+        "深度优先",
+        "回溯"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.bfs",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "广度优先搜索",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.queue"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按层扩展并说明无权最短步数条件",
+      "commonErrorToInvestigate": "把有权最短路直接套BFS",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause04"
+        }
+      ],
+      "searchTerms": [
+        "BFS",
+        "广度优先",
+        "宽度优先"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.dp-linear",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "一维动态规划",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.recurrence",
+        "gesp-cpp.l4.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "定义状态含义、转移、初值及计算顺序",
+      "commonErrorToInvestigate": "只套公式而不说明状态和边界",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause05"
+        }
+      ],
+      "searchTerms": [
+        "动态规划",
+        "dp[",
+        "状态转移"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.knapsack",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "简单背包",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.dp-linear",
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明容量状态和每件物品次数约束",
+      "commonErrorToInvestigate": "0/1背包按错误方向更新变成可重复选",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause05"
+        }
+      ],
+      "searchTerms": [
+        "背包",
+        "容量",
+        "重量",
+        "价值"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.class",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "面向对象思想及类的创建与初始化",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.struct",
+        "gesp-cpp.l4.function"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分类与对象并正确初始化成员",
+      "commonErrorToInvestigate": "把类当某个对象的实例",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause06"
+        }
+      ],
+      "searchTerms": [
+        "class",
+        "对象",
+        "构造函数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.encapsulation",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "封装",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.class"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明访问控制和接口作用",
+      "commonErrorToInvestigate": "将所有成员公开当成封装",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause06"
+        }
+      ],
+      "searchTerms": [
+        "封装",
+        "public",
+        "private",
+        "protected"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.inheritance",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "继承",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.class"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释派生类与基类的关系",
+      "commonErrorToInvestigate": "混淆继承与包含一个成员对象",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause06"
+        }
+      ],
+      "searchTerms": [
+        "继承",
+        "基类",
+        "派生类"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.polymorphism",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "多态基础",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.inheritance",
+        "gesp-cpp.l4.pointer"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分静态类型与动态派发的基本情形",
+      "commonErrorToInvestigate": "认为所有同名函数都会动态派发",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause06"
+        }
+      ],
+      "searchTerms": [
+        "多态",
+        "virtual",
+        "虚函数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.stack",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "栈",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按后进先出处理入栈出栈并检查空栈",
+      "commonErrorToInvestigate": "将出栈顺序当作入栈顺序",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause07"
+        }
+      ],
+      "searchTerms": [
+        "栈",
+        "stack",
+        "LIFO"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.queue",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "队列",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按先进先出管理队首队尾",
+      "commonErrorToInvestigate": "删除队首却不更新状态",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause07"
+        }
+      ],
+      "searchTerms": [
+        "队列",
+        "queue",
+        "FIFO"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l6.circular-queue",
+      "track": "gesp-cpp",
+      "level": 6,
+      "name": "循环队列",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.queue",
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释环形索引和判空判满约定",
+      "commonErrorToInvestigate": "头尾重合时无法区分空与满",
+      "sourceClauseIds": [
+        "gesp-cpp.l6.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            25
+          ],
+          "clauseId": "gesp-cpp.l6.clause07"
+        }
+      ],
+      "searchTerms": [
+        "循环队列"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.trigonometry",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "三角函数库",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.math-functions"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "角、弧度和基本三角函数"
+      ],
+      "successCriterion": "以弧度调用sin、cos并解释值域",
+      "commonErrorToInvestigate": "把角度值直接当弧度",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause01"
+        }
+      ],
+      "searchTerms": [
+        "sin",
+        "cos",
+        "tan",
+        "三角函数",
+        "弧度"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.logarithm",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "对数函数库",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.math-functions"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "指数与对数、定义域"
+      ],
+      "successCriterion": "区分log、log2、log10的底与定义域",
+      "commonErrorToInvestigate": "把自然对数当十进制对数",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause01"
+        }
+      ],
+      "searchTerms": [
+        "log",
+        "对数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.exponential",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "指数函数库",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.math-functions"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "e与指数函数的概念"
+      ],
+      "successCriterion": "区分exp与一般幂计算并考虑范围",
+      "commonErrorToInvestigate": "把exp(x)当x的平方",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause01"
+        }
+      ],
+      "searchTerms": [
+        "exp",
+        "pow",
+        "指数函数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.dp-two-dimensional",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "二维动态规划",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.dp-linear",
+        "gesp-cpp.l4.matrix"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "定义双维状态并选择合法计算顺序",
+      "commonErrorToInvestigate": "使用尚未计算的状态",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "二维动态规划",
+        "dp[",
+        "状态"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.dp-interval",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "区间动态规划",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.dp-two-dimensional"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按区间长度计算并解释分割点",
+      "commonErrorToInvestigate": "区间边界或合并代价重复计算",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "区间动态规划",
+        "区间DP",
+        "区间dp"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.lis",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "最长上升子序列",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.dp-linear",
+        "gesp-cpp.l5.binary-search"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分严格上升和非降及子序列与连续段",
+      "commonErrorToInvestigate": "把连续递增段的扫描方法当LIS",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "LIS",
+        "最长上升",
+        "最长递增子序列"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.lcs",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "最长公共子序列",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.dp-two-dimensional",
+        "gesp-cpp.l3.strings"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按末字符是否相同推导二维转移",
+      "commonErrorToInvestigate": "把公共子串与公共子序列混为一谈",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "LCS",
+        "最长公共子序列"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.dp-extrema",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "动态规划最值优化",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.dp-two-dimensional"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明优化所利用的状态结构及成立前提",
+      "commonErrorToInvestigate": "未经证明丢弃候选转移",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "最值优化",
+        "动态规划优化"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.rolling-array",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "滚动数组与空间优化",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.dp-two-dimensional"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释转移依赖并避免覆盖仍需的旧状态",
+      "commonErrorToInvestigate": "按错误方向覆盖上一层值",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause02"
+        }
+      ],
+      "searchTerms": [
+        "滚动数组",
+        "空间优化"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.graph-model",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "有向图、无向图、度与存储表示",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.tree",
+        "gesp-cpp.l4.matrix"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "由问题建立顶点和边并比较矩阵与邻接表",
+      "commonErrorToInvestigate": "漏反向边或混淆入度与出度",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause03"
+        }
+      ],
+      "searchTerms": [
+        "图",
+        "邻接表",
+        "邻接矩阵",
+        "入度",
+        "出度",
+        "顶点"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.graph-dfs",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "图的深度优先遍历",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.dfs",
+        "gesp-cpp.l7.graph-model"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "在有环或不连通图中处理访问标记",
+      "commonErrorToInvestigate": "缺访问标记导致重复递归",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause03"
+        }
+      ],
+      "searchTerms": [
+        "DFS",
+        "深度优先遍历"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.graph-bfs",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "图的广度优先遍历",
+      "prerequisiteIds": [
+        "gesp-cpp.l6.bfs",
+        "gesp-cpp.l7.graph-model"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按入队时标记避免重复扩展并覆盖分量",
+      "commonErrorToInvestigate": "出队才标记造成大量重复入队",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause03"
+        }
+      ],
+      "searchTerms": [
+        "BFS",
+        "广度优先遍历"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.flood-fill",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "泛洪与连通区域",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.graph-dfs",
+        "gesp-cpp.l4.matrix"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "明确邻接规则并统计区域",
+      "commonErrorToInvestigate": "将四邻接和八邻接混用",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause03"
+        }
+      ],
+      "searchTerms": [
+        "泛洪",
+        "Flood",
+        "flood",
+        "连通块",
+        "区域"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l7.hash",
+      "track": "gesp-cpp",
+      "level": 7,
+      "name": "哈希表与冲突处理",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l1.division"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "说明键到槽位映射和冲突处理",
+      "commonErrorToInvestigate": "把哈希相等当成键一定相同",
+      "sourceClauseIds": [
+        "gesp-cpp.l7.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            27
+          ],
+          "clauseId": "gesp-cpp.l7.clause04"
+        }
+      ],
+      "searchTerms": [
+        "哈希",
+        "散列",
+        "hash",
+        "unordered"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.count-add",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "加法原理",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.enumeration"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "不相交分类计数"
+      ],
+      "successCriterion": "说明分类互斥且覆盖全部结果",
+      "commonErrorToInvestigate": "有交集的类别直接相加",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause01"
+        }
+      ],
+      "searchTerms": [
+        "加法原理",
+        "计数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.count-multiply",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "乘法原理",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.count-add"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "分步选择计数"
+      ],
+      "successCriterion": "说明各步骤选择数和限制关系",
+      "commonErrorToInvestigate": "把相关选择错误当独立固定选择",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause01"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause01"
+        }
+      ],
+      "searchTerms": [
+        "乘法原理",
+        "计数"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.permutation",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "排列",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.count-multiply"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "阶乘与有序选择"
+      ],
+      "successCriterion": "区分是否计顺序并计算排列数",
+      "commonErrorToInvestigate": "将不同顺序错误合并",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause02"
+        }
+      ],
+      "searchTerms": [
+        "排列",
+        "阶乘"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.combination",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "组合",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.permutation"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释从排列到组合的重复计数修正",
+      "commonErrorToInvestigate": "把选择顺序计入组合结果",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause02"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause02"
+        }
+      ],
+      "searchTerms": [
+        "组合",
+        "二项式"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.pascal",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "杨辉三角及其实现",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.recurrence",
+        "gesp-cpp.l8.combination"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "解释相邻求和与组合数关系",
+      "commonErrorToInvestigate": "边界初始化遗漏",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause03"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause03"
+        }
+      ],
+      "searchTerms": [
+        "杨辉",
+        "帕斯卡",
+        "Pascal"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.doubling",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "倍增",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.bitwise",
+        "gesp-cpp.l4.recurrence",
+        "gesp-cpp.l5.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "二进制分解"
+      ],
+      "successCriterion": "预处理倍数步转移并按二进制组合查询",
+      "commonErrorToInvestigate": "把预处理层数或查询位数设错",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause04"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause04"
+        }
+      ],
+      "searchTerms": [
+        "倍增",
+        "快速幂"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.algebra",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "一元一次与二元一次方程",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "初中代数、方程和消元"
+      ],
+      "successCriterion": "把条件转为方程并处理无解和特殊系数",
+      "commonErrorToInvestigate": "未检查除数或忽略解的范围",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause05"
+        }
+      ],
+      "searchTerms": [
+        "方程",
+        "消元"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.geometry",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "三角形、圆与长方形面积",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.math-functions"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "初中平面几何"
+      ],
+      "successCriterion": "正确建立面积表达式并处理单位与精度",
+      "commonErrorToInvestigate": "混淆长度与面积或忽略浮点误差",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause05"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause05"
+        }
+      ],
+      "searchTerms": [
+        "面积",
+        "圆",
+        "三角形",
+        "几何"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.mst",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "最小生成树的定义",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.graph-model",
+        "gesp-cpp.l5.greedy"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "区分生成树和最短路径树并说明连通前提",
+      "commonErrorToInvestigate": "把最短路树当最小生成树",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause06"
+        }
+      ],
+      "searchTerms": [
+        "最小生成树",
+        "生成树",
+        "MST"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.kruskal",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "Kruskal 算法",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.mst",
+        "gesp-cpp.l4.sort-concepts"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按边权选择不形成环的边并处理不连通图",
+      "commonErrorToInvestigate": "仅选最小边而不检测环",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause06"
+        }
+      ],
+      "searchTerms": [
+        "Kruskal",
+        "kruskal"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.prim",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "Prim 算法",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.mst"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "维护已选集合到外部的最小连接边",
+      "commonErrorToInvestigate": "误用从源点起的路径长度更新",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause06"
+        }
+      ],
+      "searchTerms": [
+        "Prim",
+        "prim"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.dijkstra",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "Dijkstra 单源最短路",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.graph-model",
+        "gesp-cpp.l5.greedy"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "在非负边权前提下维护松弛与定点过程",
+      "commonErrorToInvestigate": "含负边时仍直接使用Dijkstra",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause06"
+        }
+      ],
+      "searchTerms": [
+        "Dijkstra",
+        "dijkstra",
+        "单源最短"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.floyd",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "Floyd 多源最短路",
+      "prerequisiteIds": [
+        "gesp-cpp.l7.dp-two-dimensional",
+        "gesp-cpp.l7.graph-model"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "按中间点递推解释全点对最短路",
+      "commonErrorToInvestigate": "将Floyd误称为仅单源或循环顺序不当",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause06"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause06"
+        }
+      ],
+      "searchTerms": [
+        "Floyd",
+        "floyd"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.complexity",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "综合时间与空间效率分析",
+      "prerequisiteIds": [
+        "gesp-cpp.l5.complexity",
+        "gesp-cpp.l7.dp-two-dimensional",
+        "gesp-cpp.l7.graph-model"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [],
+      "successCriterion": "分析排序、查找、树图、搜索、分治与DP的整体资源",
+      "commonErrorToInvestigate": "只看一段局部循环而漏掉外层调用",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause07"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause07"
+        }
+      ],
+      "searchTerms": [
+        "时间复杂度",
+        "空间复杂度",
+        "效率"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    },
+    {
+      "id": "gesp-cpp.l8.optimization",
+      "track": "gesp-cpp",
+      "level": 8,
+      "name": "算法与数学优化",
+      "prerequisiteIds": [
+        "gesp-cpp.l8.complexity"
+      ],
+      "prerequisiteBasis": "instructional_proposal_not_official_order",
+      "mathPrerequisites": [
+        "等差、等比求和与代数变换"
+      ],
+      "successCriterion": "比较等价方案并说明优化的前提和代价",
+      "commonErrorToInvestigate": "先优化却改变原问题语义或忽略溢出",
+      "sourceClauseIds": [
+        "gesp-cpp.l8.clause08"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            29
+          ],
+          "clauseId": "gesp-cpp.l8.clause08"
+        }
+      ],
+      "searchTerms": [
+        "优化",
+        "等差",
+        "等比",
+        "求和公式"
+      ],
+      "decompositionBasis": "agent_prepared_from_official_syllabus",
+      "reviewStatus": "draft",
+      "publicationStatus": "research_only",
+      "measurementStatus": "independent_probes_not_authored",
+      "priority": "reference_track"
+    }
+  ]
+}

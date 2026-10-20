@@ -1,0 +1,238 @@
+{
+  "format": "gesp-teaching-plan-v1",
+  "track": "gesp-cpp",
+  "version": "2026-10-20-v1",
+  "reviewStatus": "instructional_draft",
+  "audience": "零基础学习起点，优先研究1～4级；不根据年龄或年级预判考级能力。",
+  "principles": [
+    "认证等级独立于小学年级，先核实家长确认的已学范围。",
+    "少量新知识、独立应用、延迟复测；不按题量或看懂解析认定掌握。",
+    "区分纸笔推理、代码跟踪、独立编写与陌生任务迁移。",
+    "真实学习后再决定节奏，不预设六年级考出4级或固定倍速。"
+  ],
+  "evidenceCycle": [
+    "先独立作答，保存条件理解、过程和错误。",
+    "提示和看过解析的作答保留暴露记录。",
+    "至少用不同结构任务核查理解、操作和迁移，题族审核后才计独立证据。",
+    "次日、3/7/14日以新材料复查保持；不足时保留未知。"
+  ],
+  "units": [
+    {
+      "id": "gesp-cpp.unit01",
+      "level": 1,
+      "title": "从编辑到运行",
+      "atomIds": [
+        "gesp-cpp.l1.computer",
+        "gesp-cpp.l1.ide"
+      ],
+      "observableGoal": "说明输入、处理、输出；能独立新建、编译并运行一个程序。",
+      "discussionPrompt": "编译报错和运行结果错误有什么区别？",
+      "mathReadiness": "设备与信息流；不要求竞赛数学。",
+      "independentCheck": "亲自修复一个拼写错误，再说明程序从哪里开始执行。"
+    },
+    {
+      "id": "gesp-cpp.unit02",
+      "level": 1,
+      "title": "输入、变量与状态",
+      "atomIds": [
+        "gesp-cpp.l1.io",
+        "gesp-cpp.l1.identifiers",
+        "gesp-cpp.l1.variables",
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.sequence"
+      ],
+      "observableGoal": "用状态表解释输入和每次赋值后的变量；能选择基本类型并写出输出。",
+      "discussionPrompt": "交换两次赋值顺序，结果是否相同？",
+      "mathReadiness": "整数、小数和符号；区分名字与数值。",
+      "independentCheck": "独立完成读入两个数、保存中间结果并输出的完整程序。"
+    },
+    {
+      "id": "gesp-cpp.unit03",
+      "level": 1,
+      "title": "运算、整除与条件",
+      "atomIds": [
+        "gesp-cpp.l1.arithmetic",
+        "gesp-cpp.l1.division",
+        "gesp-cpp.l1.relations",
+        "gesp-cpp.l1.logic"
+      ],
+      "observableGoal": "解释整除与求余的含义，用多个边界数核对关系和逻辑表达式。",
+      "discussionPrompt": "“至少”“大于”“并且”“或者”分别如何表达？",
+      "mathReadiness": "四则、余数、大小关系；先检查整数范围和除数不为零。",
+      "independentCheck": "对照奇偶、整除和边界条件；记录错在哪一步，不只记录答案。"
+    },
+    {
+      "id": "gesp-cpp.unit04",
+      "level": 1,
+      "title": "分支、循环与调试",
+      "atomIds": [
+        "gesp-cpp.l1.branch",
+        "gesp-cpp.l1.loop",
+        "gesp-cpp.l1.loop-control",
+        "gesp-cpp.l1.debug"
+      ],
+      "observableGoal": "先写循环边界和每次改变的状态，再独立完成选择与重复任务。",
+      "discussionPrompt": "第一次、最后一次和一次也不执行时分别会怎样？",
+      "mathReadiness": "按顺序计数、分组与累计。",
+      "independentCheck": "以用户糖果和偶数求和例题起步，再换成不同规则的统计任务；提示作答单独记录。"
+    },
+    {
+      "id": "gesp-cpp.unit05",
+      "level": 2,
+      "title": "存储与网络常识",
+      "atomIds": [
+        "gesp-cpp.l2.memory",
+        "gesp-cpp.l2.network",
+        "gesp-cpp.l2.languages"
+      ],
+      "observableGoal": "区分存储层次、语言类别与基本网络概念；能解释而非只背缩写。",
+      "discussionPrompt": "内存、缓存和持久存储的作用有什么不同？",
+      "mathReadiness": "分类与层次；网络分层、IP和子网以官方二级条款为边界。",
+      "independentCheck": "使用设备情境和图示核对基本概念；不因循环题通过就认为常识已覆盖。"
+    },
+    {
+      "id": "gesp-cpp.unit06",
+      "level": 2,
+      "title": "字符、转换与函数",
+      "atomIds": [
+        "gesp-cpp.l2.ascii",
+        "gesp-cpp.l2.conversion",
+        "gesp-cpp.l2.math-functions",
+        "gesp-cpp.l2.random"
+      ],
+      "observableGoal": "解释字符编码、类型转换和常见函数结果；随机数不按一次输出猜规律。",
+      "discussionPrompt": "整数除法后再转换，能否找回已经丢掉的小数？",
+      "mathReadiness": "数轴、绝对值、平方根的具体含义。",
+      "independentCheck": "给出相邻编码与不同转换顺序作对照；rand/srand说明种子与序列。"
+    },
+    {
+      "id": "gesp-cpp.unit07",
+      "level": 2,
+      "title": "多层条件与循环",
+      "atomIds": [
+        "gesp-cpp.l2.flowchart",
+        "gesp-cpp.l2.branches",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "observableGoal": "用流程图或状态表跟踪嵌套结构，解释内外循环职责并检查边界。",
+      "discussionPrompt": "内层循环的次数怎样由外层状态决定？",
+      "mathReadiness": "行列与分情况讨论。",
+      "independentCheck": "用户数字三角形只是起点；改变每行规则后独立设计，不照抄模板。"
+    },
+    {
+      "id": "gesp-cpp.unit08",
+      "level": 3,
+      "title": "进制、表示与位运算",
+      "atomIds": [
+        "gesp-cpp.l3.number-code",
+        "gesp-cpp.l3.base",
+        "gesp-cpp.l3.bitwise",
+        "gesp-cpp.l3.shift"
+      ],
+      "observableGoal": "在明确位宽和非负输入边界下转换进制、解释按位操作，区分数值与表示。",
+      "discussionPrompt": "同一个数换一种进制后，数值是否变化？",
+      "mathReadiness": "除法余数、按位权展开、二的幂。",
+      "independentCheck": "用纸笔追踪小整数；不得通过执行未定义行为建立答案。"
+    },
+    {
+      "id": "gesp-cpp.unit09",
+      "level": 3,
+      "title": "数组和字符串",
+      "atomIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l3.strings"
+      ],
+      "observableGoal": "独立完成定长一维数组和字符串的遍历，检查空边界、末尾和下标。",
+      "discussionPrompt": "连续片段和可跳过元素的子序列有什么区别？",
+      "mathReadiness": "序号、位置与比较；不要求提前学习LIS。",
+      "independentCheck": "用户最长递增段代码采用流式读取；另外安排实际存储、访问和修改数组的任务。"
+    },
+    {
+      "id": "gesp-cpp.unit10",
+      "level": 3,
+      "title": "枚举与模拟",
+      "atomIds": [
+        "gesp-cpp.l3.algorithm-description",
+        "gesp-cpp.l3.enumeration",
+        "gesp-cpp.l3.simulation"
+      ],
+      "observableGoal": "先说明候选集合或状态含义，再把自然规则写成有限、可复核的步骤。",
+      "discussionPrompt": "怎样说明没有漏掉合法候选，又没有重复计数？",
+      "mathReadiness": "分类、穷举和事件顺序。",
+      "independentCheck": "用陌生规则检查能否独立设计算法；关键字命中不作为知识点审核依据。"
+    },
+    {
+      "id": "gesp-cpp.unit11",
+      "level": 4,
+      "title": "函数、参数与指针",
+      "atomIds": [
+        "gesp-cpp.l4.function",
+        "gesp-cpp.l4.scope",
+        "gesp-cpp.l4.parameter-value",
+        "gesp-cpp.l4.parameter-reference",
+        "gesp-cpp.l4.pointer"
+      ],
+      "observableGoal": "区分局部状态与调用者状态，解释值、引用和指针传递的差别。",
+      "discussionPrompt": "函数内部改变一个变量，调用者什么时候会受影响？",
+      "mathReadiness": "对应关系与作用范围；先画对象和引用关系。",
+      "independentCheck": "用地址关系图核对后再读代码；不包含匿名函数和类括号运算符重载。"
+    },
+    {
+      "id": "gesp-cpp.unit12",
+      "level": 4,
+      "title": "矩阵与结构体",
+      "atomIds": [
+        "gesp-cpp.l4.matrix",
+        "gesp-cpp.l4.struct"
+      ],
+      "observableGoal": "组织行列数据和一组对象属性，正确选择下标与结构体字段。",
+      "discussionPrompt": "行数与列数互换，访问范围会发生什么变化？",
+      "mathReadiness": "行列、坐标和属性分类。",
+      "independentCheck": "优先对照二维表和有属性的记录；数组不使用变长数组。"
+    },
+    {
+      "id": "gesp-cpp.unit13",
+      "level": 4,
+      "title": "递推状态与边界",
+      "atomIds": [
+        "gesp-cpp.l4.recurrence"
+      ],
+      "observableGoal": "解释一个状态代表什么、起始条件为何成立，以及如何由已有状态得到新状态。",
+      "discussionPrompt": "台阶最后一步是1级或2级，为什么能分成两类？",
+      "mathReadiness": "加法原理、分类无重叠与找规律后的解释。",
+      "independentCheck": "走4级台阶与走5级台阶的两个练习属于同一题族；另找不同结构任务核查迁移，不能重复算两份独立证据。"
+    },
+    {
+      "id": "gesp-cpp.unit14",
+      "level": 4,
+      "title": "排序与效率",
+      "atomIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l4.bubble",
+        "gesp-cpp.l4.insertion",
+        "gesp-cpp.l4.selection",
+        "gesp-cpp.l4.complexity"
+      ],
+      "observableGoal": "跟踪三种基本排序的过程，比较结果、稳定性和操作次数。",
+      "discussionPrompt": "相等元素的相对顺序保留了吗？输入增大后比较次数如何变化？",
+      "mathReadiness": "序关系、计数与增长比较。",
+      "independentCheck": "用记录键和附属标签核对稳定性；2024年9月四级区间排序可作待审核参考。"
+    },
+    {
+      "id": "gesp-cpp.unit15",
+      "level": 4,
+      "title": "文件与异常",
+      "atomIds": [
+        "gesp-cpp.l4.file",
+        "gesp-cpp.l4.exception"
+      ],
+      "observableGoal": "区分标准输入输出与文件流，理解基本异常抛出、捕获和错误路径。",
+      "discussionPrompt": "正常路径和失败路径分别输出什么？",
+      "mathReadiness": "顺序、条件与可恢复错误。",
+      "independentCheck": "使用最小可解释程序核对；文件读写不意味着可以访问孩子设备的任意文件。"
+    }
+  ],
+  "advancedReference": "5～8级保留完整候选图谱；完成1～4级真实学习与审核后再确定算法进阶路径。",
+  "studentPublicationStatus": "not_published",
+  "programExecution": "not_enabled"
+}
