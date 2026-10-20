@@ -8,6 +8,8 @@ const { randomBytes, randomUUID, createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const { Pool } = require('pg');
 const { NestFactory } = require('@nestjs/core');
+const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
+const { answerInputConfiguration } = require('@study-agent/contracts');
 const root = path.resolve(__dirname, '../..');
 const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-definition-runtime-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/measurement-definition-runtime.json');
@@ -20,7 +22,8 @@ const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infra
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Owned production-mode database, synthetic family, original authored tasks, real HTTP and two restarts; no browser or content-completeness claim',
   sourceSha256: Object.fromEntries(['apps/api/src/modules/diagnostics/measurement-definition.ts', 'apps/api/src/modules/diagnostics/diagnostics.service.ts',
-    'apps/api/src/modules/diagnostics/guidance.service.ts', 'apps/api/src/modules/ai/ai.service.ts', 'apps/api/src/modules/learning/learning.service.ts'].map(file =>
+    'apps/api/src/modules/diagnostics/guidance.service.ts', 'apps/api/src/modules/ai/ai.service.ts', 'apps/api/src/modules/learning/learning.service.ts',
+    'scripts/qa/verify-measurement-definitions.cjs'].map(file =>
     [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminToken, parentToken, adminPool, qaDatabase;
 async function start() {
@@ -36,10 +39,35 @@ async function call(method, route, body, actor = 'parent', expected = method ===
   const result = await response.json();
   assert.equal(response.status, expected, `${method} ${route}: ${result.error?.message ?? ''}`); return result.data;
 }
+function legalWrongAnswer(schema, expected) {
+  const mode = schema.mode, config = answerInputConfiguration(schema);
+  const wrongValue = value => Number.isFinite(Number(value)) ? String(Number(value) + 1) : 'QA未达标';
+  let answer;
+  if (mode === 'boolean') answer = gradeResponse(schema, expected, true).score === 1 ? false : true;
+  else if (mode === 'single_choice') answer = schema.options.find(option => option.value !== expected)?.value;
+  else if (mode === 'hotspot') answer = config.targets.find(target => target.id !== expected)?.id;
+  else if (mode === 'multiple_choice') answer = [schema.options.find(option => !expected.includes(option.value))?.value ?? expected[0]];
+  else if (mode === 'multi_blank') answer = expected.map(entry => ({ ...entry, value: wrongValue(entry.value) }));
+  else if (mode === 'sorting') answer = [...expected].reverse();
+  else if (mode === 'matching') answer = { pairs: expected.pairs.map(pair => ({ ...pair,
+    right: config.right[(config.right.findIndex(option => option.id === pair.right) + 1) % config.right.length].id })) };
+  else if (mode === 'table_fill') answer = { cells: Object.fromEntries(Object.entries(expected.cells).map(([key, value]) => [key, wrongValue(value)])) };
+  else if (mode === 'drag_drop') answer = { placements: Object.fromEntries(Object.entries(expected.placements).map(([key, value]) =>
+    [key, config.groups.find(group => group.id !== value)?.id])) };
+  else if (mode === 'text_blank') answer = 'QA未达标';
+  else if (mode === 'formula_blank') answer = '-999999';
+  else if (mode === 'numeric_blank') answer = -999999;
+  else throw new Error(`Definition QA fixture needs a dedicated manual response for ${mode}`);
+  assert.equal(gradeResponse(schema, expected, answer).score, 0, `QA wrong response must be legal and score zero: ${schema.questionId} / ${mode}`);
+  return answer;
+}
 async function finish(session, correct = false) {
   const snapshots = await store.transaction(() => structuredClone(store.find('diagnosticSessions', { id: session.id }).questionSnapshots));
-  for (const item of session.items) await call('POST', `/diagnostics/sessions/${session.id}/responses`,
-    { itemId: item.id, answer: correct ? snapshots.find(q => q.id === item.questionId).answer : 0, elapsedMs: 2000 });
+  for (const item of session.items) {
+    const snapshot = snapshots.find(q => q.id === item.questionId);
+    await call('POST', `/diagnostics/sessions/${session.id}/responses`,
+      { itemId: item.id, answer: correct ? snapshot.answer : legalWrongAnswer(snapshot.answerSchema, snapshot.answer), elapsedMs: 2000 });
+  }
   return call('POST', `/diagnostics/sessions/${session.id}/complete`, {});
 }
 async function main() {

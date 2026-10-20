@@ -96,6 +96,10 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
       const detail = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
       for (const chapter of detail.chapters) for (const lesson of chapter.lessons) {
         expect(lesson.atomIds).toEqual([]); expect(lesson.printedPage).toBeGreaterThan(0);
+        if (lesson.kind !== 'reference') {
+          expect(lesson.sourcePageRange.start).toBeGreaterThan(0); expect(lesson.sourcePageRange.end).toBeGreaterThanOrEqual(lesson.sourcePageRange.start);
+          expect(lesson.sourcePageRange.end).toBeLessThanOrEqual(detail.sourceDocument.pages);
+        }
         expect(lesson.mappingState).toBe(lesson.kind === 'reference' ? 'reference' : 'unmapped');
         for (const part of lesson.parts ?? []) { expect(part).not.toHaveProperty('id'); expect(part).not.toHaveProperty('atomIds'); }
       }

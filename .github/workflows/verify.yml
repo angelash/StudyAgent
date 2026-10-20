@@ -36,6 +36,8 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run lint
+      - name: Local documentation links
+        run: npm run qa:docs
       - name: Authored teaching coverage and measurement material audit
         run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
       - name: Current eligible material coverage, formal teacher roles and read-only history across restarts

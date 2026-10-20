@@ -8,11 +8,13 @@ import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-pa
 
 const names = { math: '数学', chinese: '语文', english: '英语' };
 type SourceDocument = { subject: Subject; grade: number; term: 'upper' | 'lower'; assetPath: string; sha256: string; pages: number };
+type SourcePageRange = { start: number; end: number };
 
 @Injectable()
 export class TextbookRegistryService {
   private imported?: CurriculumBook[];
   private sourceDocuments?: SourceDocument[];
+  private sourcePageRanges?: Map<string, SourcePageRange>;
   private verifiedDocuments = new Map<string, { size: number; modifiedMs: number; sha256: string }>();
   constructor(private readonly store: InMemoryStoreService) {}
 
@@ -74,7 +76,8 @@ export class TextbookRegistryService {
     return { ...book, sourceDocument: this.documentMetadata(book), chapters: book.chapters.map((c) => ({ ...c, lessons: c.lessons.map((lesson) => {
       const mapping = lesson.kind === 'reference' ? null : this.mapping(book, lesson.id);
       const approved = this.approved(mapping, published);
-      return { ...lesson, atomIds: approved ? mapping!.atomIds : [], mappingState: lesson.kind === 'reference' ? 'reference' : approved ? 'approved' : mapping?.status === 'approved' ? 'stale' : mapping?.status ?? 'unmapped',
+      return { ...lesson, sourcePageRange: this.sourcePageRange(book, lesson.id), atomIds: approved ? mapping!.atomIds : [],
+        mappingState: lesson.kind === 'reference' ? 'reference' : approved ? 'approved' : mapping?.status === 'approved' ? 'stale' : mapping?.status ?? 'unmapped',
         ...(editor ? { mapping } : {}) };
     }) })) };
   }
@@ -140,6 +143,23 @@ export class TextbookRegistryService {
     }
     if (book.source === 'original') return null;
     return this.sourceDocuments.find(document => document.subject === book.subject && document.grade === book.grade && document.term === book.term) ?? null;
+  }
+
+  private sourcePageRange(book: CurriculumBook, lessonId: string) {
+    const source = this.sourceDocument(book);
+    if (!source) return undefined;
+    if (!this.sourcePageRanges) {
+      const file = resolve(process.env.STUDY_TEXTBOOK_MAPPING_CANDIDATES ?? resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json'));
+      if (!existsSync(file)) this.sourcePageRanges = new Map();
+      else {
+        const document = JSON.parse(readFileSync(file, 'utf8')) as { rows?: Array<{ bookId: string; lessonId: string; pdfStartPage: number; pdfEndPage: number }> };
+        this.sourcePageRanges = new Map((document.rows ?? []).filter(row => Number.isSafeInteger(row.pdfStartPage) && Number.isSafeInteger(row.pdfEndPage)
+          && row.pdfStartPage >= 1 && row.pdfStartPage <= row.pdfEndPage).map(row => [`${row.bookId}:${row.lessonId}`,
+          { start: row.pdfStartPage, end: row.pdfEndPage }]));
+      }
+    }
+    const range = this.sourcePageRanges.get(`${book.id}:${lessonId}`);
+    return range && range.end <= source.pages ? range : undefined;
   }
 
   private resolveSourcePath(assetPath: string) {
