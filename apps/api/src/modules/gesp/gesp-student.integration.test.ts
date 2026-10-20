@@ -37,6 +37,8 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
       reason: '家长完成首次核对后只保留输入输出试点' }, parent); expect(narrowed).toMatchObject({ version: 2, atomIds: ['gesp-cpp.l1.io'] });
     const replay = await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io'], requestKey,
       reason: '家长完成首次核对后只保留输入输出试点' }, parent); expect(replay.version).toBe(2);
+    await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.loop'], requestKey,
+      reason: '同一请求键不能改变范围内容' }, parent, 409);
     const history = await call('get', `/gesp/students/${studentId}/workspace`); expect(history.scopeHistory).toHaveLength(2);
   });
 
@@ -47,6 +49,7 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     expect(JSON.stringify(first)).not.toContain('expected'); expect(JSON.stringify(first)).not.toContain(source);
     const replay = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source, requestKey }, learner);
     expect(replay.id).toBe(first.id);
+    await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){return 1;}', requestKey }, learner, 409);
     const wrong = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){return 0;}', requestKey: randomUUID() }, learner);
     expect(wrong.status).toBe('failed'); expect(wrong.tests.some((row: any) => row.status === 'wrong_output')).toBe(true);
   }, 60_000);

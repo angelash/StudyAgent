@@ -1,0 +1,73 @@
+{
+  "format": "study-agent-release-runtime-v1",
+  "at": "2026-10-20T19:06:59.152Z",
+  "node": "v24.19.0",
+  "regression": {
+    "suites": 146,
+    "tests": 684,
+    "passed": 678,
+    "failed": 0,
+    "pending": 6
+  },
+  "postgres": {
+    "passedAllCases": true,
+    "cases": 6,
+    "schemaVersion": 9
+  },
+  "curriculum": {
+    "points": 258,
+    "exercises": 15758,
+    "readyMaterials": 258,
+    "needingMaterials": 0
+  },
+  "databases": {
+    "sqlite": {
+      "passed": true,
+      "pointJourneys": 258,
+      "contentUpgradeAdditions": 12323,
+      "manualReviewJourneys": 184,
+      "wavs": 120,
+      "restarts": 5,
+      "sourceFiles": 188,
+      "sourceHashesMatchCurrent": true,
+      "p95Ms": 321.72
+    },
+    "postgres": {
+      "passed": true,
+      "pointJourneys": 258,
+      "contentUpgradeAdditions": 12323,
+      "manualReviewJourneys": 187,
+      "wavs": 120,
+      "restarts": 5,
+      "sourceFiles": 188,
+      "sourceHashesMatchCurrent": true,
+      "p95Ms": 313.62
+    }
+  },
+  "gesp": {
+    "runnerPassed": true,
+    "studentTasks": 6,
+    "hiddenTests": 27,
+    "backupBytes": 191735767,
+    "offlineRestorePassed": true
+  },
+  "build": {
+    "rootBuild": "passed",
+    "rootLint": "passed",
+    "npmAudit": "0 vulnerabilities"
+  },
+  "receiptSha256": {
+    "release-materials-postgres.json": "1ba5a6c7e6ce1fb7bc5762a138003e67cc71537c20e0fa346eaf96a7394c6476",
+    "release-materials-sqlite.json": "173266a158159e5e8d1ffd59b3029bafa717b85c3be8fad95e2064205ee1fc52",
+    "release-postgres-regression.json": "6925f8b84390c55a5affc7896b80c52f619e452625292966ae59ad1fab31a44a",
+    "release-regression.json": "b9ab00fad0d5d514a886a6c72f9d87feec259886c9795d088996908d196e7445",
+    "release-runtime-postgres.json": "bede35482b603effa0d5c92aa955d8b43f92f4c53ab141bc60c4d7208c70fd1b",
+    "release-runtime-sqlite.json": "68f1e5b3796f5a97f1a9d637ad7b8d00db4b066b5ef2e2efe3e864473864889e"
+  },
+  "limits": [
+    "Synthetic formal identities, not human students or teachers",
+    "Original curriculum is not full textbook lesson coverage",
+    "Browser/device and GESP Level 1-4 content review remain outstanding",
+    "No standardized psychometric norm"
+  ]
+}

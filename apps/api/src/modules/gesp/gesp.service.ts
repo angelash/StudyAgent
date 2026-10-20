@@ -1,4 +1,4 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException, OnModuleDestroy, ServiceUnavailableException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException, OnModuleDestroy, ServiceUnavailableException } from '@nestjs/common';
 import { DatabaseSync } from 'node:sqlite';
 import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -86,7 +86,11 @@ export class GespService implements OnModuleDestroy {
     if (!command.atomIds.every(atomId => tasks.some(task => task.atomId === atomId))) throw new BadRequestException('范围包含尚无原创试点题的知识点');
     if (!command.atomIds.every(atomId => atomId.startsWith(`gesp-cpp.l${command.level}.`))) throw new BadRequestException('认证等级与知识点命名空间不一致');
     const replayed = this.store.find('gespLearningScopeRevisions', { studentId, requestKey: command.requestKey });
-    if (replayed) return this.scopeView(this.store.find('gespLearningScopes', { studentId })!);
+    if (replayed) {
+      if (replayed.level !== command.level || JSON.stringify([...replayed.atomIds].sort()) !== JSON.stringify([...new Set(command.atomIds)].sort()))
+        throw new ConflictException('同一范围请求键不能改变范围内容');
+      return this.scopeView(this.store.find('gespLearningScopes', { studentId })!);
+    }
     const previous = this.store.find('gespLearningScopes', { studentId }), now = new Date().toISOString();
     if (previous) {
       previous.level = command.level; previous.atomIds = [...new Set(command.atomIds)].sort(); previous.version++; previous.confirmedByUserId = user.id;
@@ -112,7 +116,7 @@ export class GespService implements OnModuleDestroy {
     if (user.role !== 'student') throw new ForbiddenException('编程作答必须由当前独立学习身份提交');
     const command = validate(gespCodeSubmissionSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
     const previous = this.store.find('gespCodeSubmissions', { studentId: command.studentId, requestKey: command.requestKey });
-    if (previous) return this.publicSubmission(previous);
+    if (previous) { if (previous.sourceSha256 !== hash(command.source)) throw new ConflictException('同一提交请求键不能改变源代码'); return this.publicSubmission(previous); }
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
     if (!scope || !scope.atomIds.includes(command.atomId)) throw new ForbiddenException('该知识点不在家长已确认的GESP学习范围内');
     const task = this.studentData().tasks.find(row => row.atomId === command.atomId); if (!task) throw new NotFoundException('该知识点尚无已发布试点题');

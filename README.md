@@ -2,7 +2,7 @@
 
 围绕原子知识点建立的小学语文、数学、英语学习诊断与指导系统。学生按年级、学期、教材和已学范围完成评测；报告保留作答证据、掌握估计与不确定性，针对原因假设安排验证、指导、训练、间隔复测和家长复盘。
 
-当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
+当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。当前逐项状态见 [完整验收审计](doc/product/68-final-product-acceptance-audit.md)；完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
 
 ## 已实现的主要路径
 
