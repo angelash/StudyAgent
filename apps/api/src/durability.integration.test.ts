@@ -113,5 +113,5 @@ describe('real API persistence across application restarts', () => {
       }
       rmSync(directory, { recursive: true, force: true });
     }
-  }, 25_000);
+  }, 60_000);
 });

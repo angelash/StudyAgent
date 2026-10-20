@@ -61,11 +61,21 @@ describe('read-only material structure coverage and real selector examples', () 
     const result = knowledgeMaterialCoverage(atom, tasks); expect(JSON.stringify(result)).not.toContain('secret_question:');
     expect(blueprintContentHash({ atom, tasks })).toBe(before); expect(knowledgeMaterialCoverage(atom, tasks)).toEqual(result);
   });
+  it('reuses immutable coverage but immediately recalculates when a frozen mapping is replaced', () => {
+    const frozenAtom = Object.freeze(structuredClone(atom));
+    const initial = complete().map(row => Object.freeze(row));
+    const first = knowledgeMaterialCoverage(frozenAtom, initial); expect(first.ready).toBe(true);
+    expect(knowledgeMaterialCoverage(frozenAtom, [...initial])).toBe(first);
+    const replaced = initial.map((row, index) => index === initial.length - 1
+      ? Object.freeze(item('t1', 'transfer', { id: 'item:t1:replacement', questionId: 'secret_question:replacement' })) : row);
+    const changed = knowledgeMaterialCoverage(frozenAtom, replaced);
+    expect(changed).not.toBe(first); expect(changed.structure.transferFamilies).toBe(1); expect(changed.ready).toBe(false);
+  });
   it('preserves the complete authored material range rather than classifying question count as coverage', () => {
     const definitions = buildFoundationCurriculum(), results = definitions.map(row => materialStructureCoverage(row.atom.id,
       row.exercises.map(task => ({ atomId: row.atom.id, family: task.family, dimension: task.dimension })),
       row.atom.strand === '口语表达' ? 'oral-production-v1' : 'written-contrast-v1'));
-    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(101); expect(results.filter(row => !row.ready)).toHaveLength(157);
+    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(127); expect(results.filter(row => !row.ready)).toHaveLength(131);
     for (const [index, result] of results.entries()) {
       const source = definitions[index], byDimension = (dimension: MeasurementDimension) => new Set(source.exercises.filter(task => task.dimension === dimension).map(task => task.family));
       if (result.ready) {

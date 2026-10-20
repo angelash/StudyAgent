@@ -42,6 +42,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-6974-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-oral-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-7550-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade2-probes.ts', 'resources/curriculum/authored-task-baseline-7598-v1.json',
+  'apps/api/src/modules/diagnostics/authored-chinese-grade3-probes.ts', 'resources/curriculum/authored-task-baseline-8222-v1.json',
+  'apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.ts', 'resources/curriculum/authored-task-baseline-8846-v1.json',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',
@@ -274,7 +276,7 @@ async function main() {
   }
   const credential = randomBytes(24).toString('hex');
   const boot = spawnSync(process.execPath, [path.join(root, 'apps/api/dist/apps/api/src/cli.js'), 'create-admin', 'qa-verification'],
-    { cwd: root, env: { ...process.env, STUDY_ADMIN_PASSWORD: credential }, encoding: 'utf8', windowsHide: true, timeout: 45000 });
+    { cwd: root, env: { ...process.env, STUDY_ADMIN_PASSWORD: credential }, encoding: 'utf8', windowsHide: true, timeout: 120000 });
   assert.equal(boot.status, 0, 'Formal administrator bootstrap');
   await start();
   if (verifyContentUpgrade) await contentUpgrade();

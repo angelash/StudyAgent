@@ -31,7 +31,7 @@ describe('Chinese grade-one written contrasts reconstructed from actual records'
     const previousIds = new Set(baseline.ids), previous = all.filter(row => previousIds.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(6974); expect(baseline.sha256).toBe('64e113ac60d6e5adcb20139475a5d338af1d918bdf41f02d264b910abde24bc3');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(8222); expect(new Set(all.map(row => row.id)).size).toBe(8222);
+    expect(all).toHaveLength(9470); expect(new Set(all.map(row => row.id)).size).toBe(9470);
     expect(families).toHaveLength(48); expect(new Set(families.map(row => row.atomId)).size).toBe(12);
     expect(families.reduce((count, family) => count + family.exercises.length, 0)).toBe(576);
     for (const family of families) expect(new Set(family.exercises.map(task => foundationQuestionId(family.atomId, task))).size).toBe(12);

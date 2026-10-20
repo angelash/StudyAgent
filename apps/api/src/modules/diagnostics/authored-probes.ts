@@ -5,11 +5,13 @@ import { buildEnglishLexicalProbeFamilies } from './authored-english-lexical-pro
 import { buildChineseGrade1ProbeFamilies } from './authored-chinese-grade1-probes';
 import { buildChineseOralGrade1ProbeFamilies } from './authored-chinese-oral-grade1-probes';
 import { buildChineseGrade2ProbeFamilies, buildChineseOralGrade2ProbeFamilies } from './authored-chinese-grade2-probes';
+import { buildChineseGrade3ProbeFamilies } from './authored-chinese-grade3-probes';
+import { buildChineseGrade4ProbeFamilies } from './authored-chinese-grade4-probes';
 
 export function buildAllAuthoredProbeFamilies() {
   return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies(),
     ...buildChineseGrade1ProbeFamilies(), ...buildChineseOralGrade1ProbeFamilies(), ...buildChineseGrade2ProbeFamilies(),
-    ...buildChineseOralGrade2ProbeFamilies()];
+    ...buildChineseOralGrade2ProbeFamilies(), ...buildChineseGrade3ProbeFamilies(), ...buildChineseGrade4ProbeFamilies()];
 }
 
 export function addAuthoredProbes(definitions: FoundationDefinition[]) {
