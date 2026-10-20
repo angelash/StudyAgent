@@ -10,6 +10,7 @@ import { buildUnitProbeFamilies } from './authored-unit-probes';
 import { buildAtomicProbeFamilies } from './authored-atomic-curriculum';
 import { buildGeometryProbeFamilies } from './authored-geometry-probes';
 import { buildFourthGradeNumberProbeFamilies } from './authored-fourth-grade-number-probes';
+import { buildRemainderDecimalProbeFamilies } from './authored-remainder-decimal-probes';
 
 export type AuthoredProbeFamily = { atomId: string; family: string; dimension: MeasurementDimension; behavior: string;
   structure: string; distinction: string; exercises: Exercise[] };
@@ -145,7 +146,7 @@ export function buildAuthoredMathProbeFamilies(): AuthoredProbeFamily[] {
 }
 
 export function buildAllAuthoredMathProbeFamilies() {
-  return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies(), ...buildSpatialProbeFamilies(), ...buildSecondGradeProbeFamilies(), ...buildDataProbeFamilies(), ...buildThirdGradeProbeFamilies(), ...buildUnitProbeFamilies(), ...buildAtomicProbeFamilies(), ...buildGeometryProbeFamilies(), ...buildFourthGradeNumberProbeFamilies()];
+  return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies(), ...buildSpatialProbeFamilies(), ...buildSecondGradeProbeFamilies(), ...buildDataProbeFamilies(), ...buildThirdGradeProbeFamilies(), ...buildUnitProbeFamilies(), ...buildAtomicProbeFamilies(), ...buildGeometryProbeFamilies(), ...buildFourthGradeNumberProbeFamilies(), ...buildRemainderDecimalProbeFamilies()];
 }
 
 export function addAuthoredMathProbes(definitions: FoundationDefinition[]) {

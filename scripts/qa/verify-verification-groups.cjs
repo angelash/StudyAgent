@@ -39,6 +39,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-third-grade-probes.ts',
   'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
   'apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.ts',
   'apps/api/src/modules/diagnostics/authored-geometry-probes.ts', 'resources/curriculum/geometry-probes-v1.json',
   'scripts/content/build-geometry-probes.cjs',
   ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name),

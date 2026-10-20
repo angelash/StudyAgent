@@ -37,7 +37,7 @@ const evidence = { at: new Date().toISOString(), passed: true,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
   sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'original-core-curriculum.ts', 'structured-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
-    'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
+    'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-remainder-decimal-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];
   }).concat(['scripts/qa/audit-authored-curriculum.cjs', 'resources/curriculum/authored-task-baseline-5678-v1.json', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
