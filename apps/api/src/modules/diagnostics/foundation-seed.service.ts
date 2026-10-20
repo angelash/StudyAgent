@@ -58,6 +58,7 @@ export class FoundationSeedService implements OnModuleInit {
           answerSchema.mode = item.mode ?? (atom.subject === 'math' ? 'numeric_blank' : 'text_blank');
           if (item.responseShape) answerSchema.responseShape = structuredClone(item.responseShape);
           if (item.blocks) document.blocks = [{ id: 'prompt', type: 'text', text: item.stem }, ...structuredClone(item.blocks)];
+          if (item.gradingConfig) answerSchema.gradingConfig = { ...answerSchema.gradingConfig, ...structuredClone(item.gradingConfig) };
           if (item.rubric) answerSchema.gradingConfig = { rubric: item.rubric, reviewRequired: true, referenceOnly: true };
           if (item.options) answerSchema.options = [...item.options].sort((a, b) =>
             foundationQuestionId(atom.id, { ...item, stem: a }).localeCompare(foundationQuestionId(atom.id, { ...item, stem: b })))

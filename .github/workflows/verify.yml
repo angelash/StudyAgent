@@ -15,7 +15,7 @@ concurrency:
 jobs:
   application:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -38,6 +38,8 @@ jobs:
         run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
       - name: Current eligible material coverage, formal teacher roles and read-only history across restarts
         run: node scripts/qa/verify-material-coverage.cjs data/qa/material-coverage-runtime.json sqlite
+      - name: All authored math and English contrasts, persisted case grading and historical content upgrade
+        run: node scripts/qa/verify-verification-groups.cjs data/qa/verification-groups-content-upgrade-runtime.json sqlite content-upgrade
       - name: Canonical original spatial assets and independent image decoding
         run: node scripts/qa/verify-spatial-assets.cjs data/qa/spatial-assets.json
       - name: Canonical minute-hand and oriented-map assets and independent image decoding

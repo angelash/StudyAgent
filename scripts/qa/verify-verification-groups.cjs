@@ -19,9 +19,9 @@ Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', ST
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
-const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
+const { buildAllAuthoredProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-probes.js');
 const { buildFoundationCurriculum, foundationQuestionId } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
-if (pointFilter && (!verifyContentUpgrade || !buildAllAuthoredMathProbeFamilies().some(family => family.atomId === pointFilter))) throw new Error('The optional smoke-test filter must name an existing authored point in content-upgrade mode');
+if (pointFilter && (!verifyContentUpgrade || !buildAllAuthoredProbeFamilies().some(family => family.atomId === pointFilter))) throw new Error('The optional smoke-test filter must name an existing authored point in content-upgrade mode');
 const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
 const { FAMILY_IDENTITY_VERSION } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/family-identity.js');
 const { verifyFamilyIdentityUpgrade } = require('./verification-family-identity.cjs');
@@ -37,6 +37,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/verification-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts',
   'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/web/app/student/assessment/studio.tsx',
   'apps/web/components/assessment-blueprint.tsx', 'apps/web/components/verification-observations.tsx', 'apps/web/components/verification-observations.css',
+  'apps/api/src/modules/diagnostics/authored-probes.ts', 'apps/api/src/modules/diagnostics/authored-english-foundation-probes.ts',
+  'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',
   'apps/api/src/modules/diagnostics/scoring.ts',
@@ -68,7 +70,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   familyIdentityVersion: FAMILY_IDENTITY_VERSION,
   pointFilter: pointFilter ?? null,
-  scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
+  scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected original points cover basic/transfer contrasts in their actual subject and grade; not complete curriculum, oral/listening, browser or standardized measurement acceptance.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminPool, qaDatabase;
 const tokens = {};
@@ -207,7 +209,7 @@ async function originalImageFixture(studentId, actor, correct) {
     originalEligibilityRestored: true, originalFamilyUnchanged: true, learnerScopeUnchanged: true, noPrematureMastery: report.estimates.every(row => row.status !== 'secure') });
 }
 async function contentUpgrade() {
-  const authoredFamilies = buildAllAuthoredMathProbeFamilies();
+  const authoredFamilies = buildAllAuthoredProbeFamilies();
   const additions = authoredFamilies.flatMap(family => family.exercises.map(exercise => ({
     atomId: family.atomId, id: foundationQuestionId(family.atomId, exercise), analysis: exercise.analysis })));
   const newIds = additions.map(row => row.id), originalIds = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise =>
@@ -261,7 +263,7 @@ async function main() {
   if (verifyContentUpgrade) await contentUpgrade();
   evidence.responseFixtures = await store.transaction(() => {
     const manual = ['short_answer', 'stepwise', 'geometry_draw', 'image_upload', 'audio_record'], counts = {};
-    let explicitDurationTasks = 0;
+    let explicitDurationTasks = 0, explicitGradingTasks = 0, caseSensitiveTasks = 0;
     for (const { atom, exercises } of buildFoundationCurriculum()) for (const task of exercises) {
       const id = foundationQuestionId(atom.id, task), schema = store.find('questionAnswerSchemas', { questionId: id });
       if (manual.includes(schema.mode)) continue;
@@ -271,10 +273,25 @@ async function main() {
         explicitDurationTasks++;
       }
       assert.equal(gradeResponse(schema, question.answer, question.answer).score, 1, `Persisted standard answer: ${id}`);
+      if (task.gradingConfig) {
+        assert.equal(schema.gradingConfig.caseSensitive, task.gradingConfig.caseSensitive, `Persisted case requirement: ${id}`);
+        explicitGradingTasks++;
+        if (task.gradingConfig.caseSensitive) {
+          assert.equal(schema.mode, 'multi_blank');
+          const changedCase = question.answer.map(entry => ({ ...entry, value: String(entry.value).toLowerCase() }));
+          assert.notDeepEqual(changedCase, question.answer, `The fixture must actually change letter case: ${id}`);
+          assert(gradeResponse(schema, question.answer, changedCase).score < 1, `Required uppercase cannot receive full credit as lowercase: ${id}`);
+          caseSensitiveTasks++;
+        } else {
+          const changedCase = question.answer.map(entry => ({ ...entry, value: String(entry.value).toLowerCase() }));
+          assert.equal(gradeResponse(schema, question.answer, changedCase).score, 1, `Greeting case alone must not invalidate communication: ${id}`);
+        }
+      }
       legalWrongAnswer(schema, question.answer); counts[schema.mode] = (counts[schema.mode] ?? 0) + 1;
     }
     return { scope: 'Every persisted objective original task; manual and media answers require their separate review journeys.',
-      modes: counts, correctStandardsAndLegalZeroScoreFixturesChecked: true, explicitDurationTasks, durationEstimatesAreNotFieldCalibration: true };
+      modes: counts, correctStandardsAndLegalZeroScoreFixturesChecked: true, explicitDurationTasks, durationEstimatesAreNotFieldCalibration: true,
+      explicitGradingTasks, caseSensitiveTasks, caseRequirementsPersistedAndExercised: true };
   });
   tokens.admin = (await call('POST', '/auth/login', { principal: 'qa-verification', credential }, 'anonymous')).token;
   for (const actor of ['parent', 'outsider']) tokens[actor] = (await call('POST', '/auth/register', {
@@ -286,29 +303,29 @@ async function main() {
   tokens.learner = (await call('POST', '/auth/learning-code', { code: code.code }, 'anonymous')).token;
   if (verifyContentUpgrade) {
     evidence.pointJourneys = [];
-    const pointGrades = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom.grade]));
-    for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))].filter(id => !pointFilter || id === pointFilter)) {
+    const pointDefinitions = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom]));
+    for (const selectedAtomId of [...new Set(buildAllAuthoredProbeFamilies().map(family => family.atomId))].filter(id => !pointFilter || id === pointFilter)) {
       // At most 12 children per synthetic guardian cohort; do not exhaust one parent's write quota by managing the whole curriculum.
       // Every guardian and learner uses the formal identity flow. Production quotas remain active.
       const cohort = Math.floor(evidence.pointJourneys.length / 12), pointParent = `point-parent-${cohort}`;
       if (!tokens[pointParent]) tokens[pointParent] = (await call('POST', '/auth/register', {
         principal: `qa-verification-${pointParent}`, credential: randomBytes(24).toString('hex') }, 'anonymous')).token;
-      const grade = pointGrades.get(selectedAtomId), pointStudentId = (await call('POST', '/students', {
-        nickname: '合成知识点核查', grade, preferredSessionMinutes: 15, defaultVersionMap: { math: 'original', chinese: '', english: '' } }, pointParent)).profile.id;
+      const { grade, subject } = pointDefinitions.get(selectedAtomId), pointStudentId = (await call('POST', '/students', {
+        nickname: '合成知识点核查', grade, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '', [subject]: 'original' } }, pointParent)).profile.id;
       const pointAccess = await call('POST', `/students/${pointStudentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '逐点核查独立学生身份与正式限流' }, pointParent);
       const pointCode = await call('POST', `/students/${pointStudentId}/learning-access/codes`, { expectedVersion: pointAccess.version, requestKey: randomUUID() }, pointParent);
       const actor = `point-${evidence.pointJourneys.length}`;
       tokens[actor] = (await call('POST', '/auth/learning-code', { code: pointCode.code }, 'anonymous')).token;
-      await call('PUT', `/students/${pointStudentId}/learning-scope`, { subject: 'math', grade, term: 'upper', textbookVolumeId: null,
+      await call('PUT', `/students/${pointStudentId}/learning-scope`, { subject, grade, term: 'upper', textbookVolumeId: null,
         textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 }, pointParent);
       if (selectedAtomId === 'core:math:rectanglecover') {
         await originalImageFixture(pointStudentId, actor, false); await originalImageFixture(pointStudentId, actor, true);
       }
-      const baseline = await call('POST', '/diagnostics/sessions', { studentId: pointStudentId, subject: 'math', intent: 'baseline',
+      const baseline = await call('POST', '/diagnostics/sessions', { studentId: pointStudentId, subject, intent: 'baseline',
         targetAtomIds: [selectedAtomId], includePrerequisites: false, maxItems: 8 }, actor);
       const source = await completePointSession(baseline, actor, false);
       const hypothesis = source.hypotheses.find(row => row.atomId === selectedAtomId && row.cause === 'representation_gap'); assert(hypothesis);
-      const preview = await call('POST', '/diagnostics/blueprints', { studentId: pointStudentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
+      const preview = await call('POST', '/diagnostics/blueprints', { studentId: pointStudentId, subject, intent: 'verification', hypothesisId: hypothesis.id,
         includePrerequisites: true, maxItems: 8, requestKey: randomUUID() }, actor);
       assert.equal(preview.blueprint.verification.fullyCovered, true); assert.equal(preview.itemCount, 4);
       assert.equal(preview.blueprint.familyIdentityVersion, FAMILY_IDENTITY_VERSION);
@@ -320,7 +337,7 @@ async function main() {
       assert.equal(result.verification.distinctFamilyRequirementsMet, true);
       assert(result.verification.groups.every(group => group.independentFamilies === 2 && group.passedFamilies === 2));
       assert.notEqual(result.estimates.find(row => row.atomId === selectedAtomId).status, 'secure');
-      evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalGuardianCohort: cohort, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
+      evidence.pointJourneys.push({ atomId: selectedAtomId, subject, grade, formalGuardianCohort: cohort, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
         independentObservationsComplete: true, noPrematureSecureMastery: true });
     }
   }

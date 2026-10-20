@@ -5,7 +5,7 @@ const path = require('node:path');
 const { createHash } = require('node:crypto');
 const { atomTeachingSchema } = require('@study-agent/contracts');
 const { buildFoundationCurriculum } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
-const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
+const { buildAllAuthoredProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-probes.js');
 const { FAMILY_IDENTITY_VERSION, canonicalFamily } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/family-identity.js');
 const { materialStructureCoverage, MATERIAL_COVERAGE_VERSION } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/verification-materials.js');
 const root = path.resolve(__dirname, '../..'), definitions = buildFoundationCurriculum();
@@ -38,18 +38,18 @@ const evidence = { at: new Date().toISOString(), passed: true,
   totals: { points: points.length, teaching: points.length, missingTeaching: 0,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
-  sourceSha256: Object.fromEntries(['verification-materials.ts', 'verification-blueprint.ts', 'diagnosis.ts', 'family-identity.ts', 'foundation-curriculum.ts', 'original-core-curriculum.ts', 'structured-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
+  sourceSha256: Object.fromEntries(['verification-materials.ts', 'verification-blueprint.ts', 'diagnosis.ts', 'family-identity.ts', 'foundation-curriculum.ts', 'original-core-curriculum.ts', 'structured-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-probes.ts', 'authored-english-foundation-probes.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
     'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-remainder-decimal-probes.ts', 'authored-fourth-grade-geometry-statistics-probes.ts', 'authored-average-atomic.ts', 'authored-factor-multiple-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];
   }).concat(['scripts/qa/audit-authored-curriculum.cjs', 'resources/curriculum/authored-family-identities-v1.json', 'resources/curriculum/authored-task-baseline-5678-v1.json', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
     'resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json', 'resources/curriculum/authored-task-baseline-6398-v1.json',
-    'resources/curriculum/authored-task-baseline-6446-v1.json',
+    'resources/curriculum/authored-task-baseline-6446-v1.json', 'resources/curriculum/authored-task-baseline-6686-v1.json',
     'resources/curriculum/geometry-probes-v1.json', 'scripts/content/build-geometry-probes.cjs',
     ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name),
     'resources/curriculum/fourth-grade-geometry-statistics-v1.json', 'scripts/content/build-fourth-grade-geometry-statistics.cjs',
     ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/fourth-grade-geometry-statistics-v1')).sort().map(name => 'apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/' + name)]
-    .map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')]))), authoredProbeFamilies: buildAllAuthoredMathProbeFamilies().map(({ exercises, ...family }) => ({ ...family,
+    .map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')]))), authoredProbeFamilies: buildAllAuthoredProbeFamilies().map(({ exercises, ...family }) => ({ ...family,
     canonicalFamily: canonicalFamily(family), questions: exercises.length,
     note: 'Authored task-structure distinction under the recorded identity rules; no field calibration or statistical independence claim.' })), cells, points };
 const output = path.resolve(process.argv[2] ?? 'data/qa/authored-curriculum-audit.json');

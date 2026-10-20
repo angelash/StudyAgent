@@ -3,13 +3,14 @@ import { KnowledgeAtom, MeasurementDimension, QuestionAnswerMode, QuestionBlock,
 import { buildCoreCurriculum } from './original-core-curriculum';
 import { addStructuredExercises } from './structured-curriculum';
 import { addAuthoredTeaching } from './authored-teaching';
-import { addAuthoredMathProbes } from './authored-math-probes';
+import { addAuthoredProbes } from './authored-probes';
 import { addAuthoredRelationRelease } from './authored-relation-release';
 import { buildAtomicMathDefinitions } from './authored-atomic-curriculum';
 
 export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
   analysis?: string;
   expectedSeconds?: number;
+  gradingConfig?: { caseSensitive: boolean };
   identityVersion?: 2;
   responseShape?: Record<string, unknown>; blocks?: QuestionBlock[];
   rubric?: Array<{ criterion: string; weight: number }> };
@@ -170,13 +171,14 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
       return exercise(`${sentences[n % 4]}（只填写地点单词）`, place, `english-location-${n % 4}`, n % 4 >= 2 ? 'transfer' : 'understanding', 'text_blank');
     }, 32);
   }
-  return addAuthoredRelationRelease(addAuthoredTeaching(addAuthoredMathProbes(addStructuredExercises([...result, ...buildCoreCurriculum(), ...buildAtomicMathDefinitions()]))));
+  return addAuthoredRelationRelease(addAuthoredTeaching(addAuthoredProbes(addStructuredExercises([...result, ...buildCoreCurriculum(), ...buildAtomicMathDefinitions()]))));
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {
   // New content includes its document and options. Historical v1 IDs remain immutable.
   if (item.identityVersion === 2) return `foundation_q_v2_${createHash('sha256').update(JSON.stringify({ atomId, stem: item.stem,
-    answer: item.answer, mode: item.mode, responseShape: item.responseShape, blocks: item.blocks, options: item.options })).digest('hex').slice(0, 24)}`;
+    answer: item.answer, mode: item.mode, responseShape: item.responseShape, blocks: item.blocks, options: item.options,
+    ...(item.gradingConfig ? { gradingConfig: item.gradingConfig } : {}) })).digest('hex').slice(0, 24)}`;
   const content = typeof item.answer === 'object' ? JSON.stringify([item.answer, item.mode, item.responseShape]) : String(item.answer);
   return `foundation_q_${createHash('sha256').update(`${atomId}:${item.stem}:${content}`).digest('hex').slice(0, 24)}`;
 }
