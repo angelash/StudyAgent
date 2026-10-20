@@ -10,4 +10,6 @@
 
 最近交付：[五年级整除关系与极值约束评测](./51-factor-multiple-delivery.md)，实施前 [计划](./51-factor-multiple-development-plan.md) 已归档提交。此前为 [平均数对象与零记录的独立诊断](./50-average-count-atomic-delivery.md)、[四年级面积、角与统计对照](./49-fourth-grade-geometry-statistics-delivery.md) 和 [独立题族身份与历史重分析](./48-family-identity-delivery.md)。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
 
+下一阶段：[教研对照素材完整度工作台计划](./52-material-coverage-development-plan.md)。
+
 完成的定义：全部需求有对应实现、适当测试与真实运行证据，资产清单可核验，安装与备份恢复可执行。演示题通过、构建成功、文档齐备中的任何一项都不等于产品目标完成。
