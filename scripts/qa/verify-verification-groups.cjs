@@ -15,7 +15,9 @@ const driver = process.argv[3] ?? 'sqlite';
 const verifyContentUpgrade = process.argv[4] === 'content-upgrade';
 const pointFilter = process.argv[5];
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false',
+  // The full curriculum journey exceeds the aggregate loopback quota; per-user production quotas remain active.
+  STUDY_RATE_LIMIT_IP_PER_MINUTE: '100000' });
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
@@ -28,6 +30,7 @@ const { verifyFamilyIdentityUpgrade } = require('./verification-family-identity.
 const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
   'apps/api/src/common/auth.guard.ts',
+  'apps/api/src/infrastructure/request-rate.middleware.ts', 'apps/api/src/infrastructure/rate-limit.service.ts', 'apps/api/src/infrastructure/rate-limit.test.ts',
   'apps/api/src/modules/diagnostics/family-identity.ts', 'resources/curriculum/authored-family-identities-v1.json',
   'apps/api/src/modules/diagnostics/measurement.ts', 'apps/api/src/modules/diagnostics/adaptive-routing.ts',
   'apps/api/src/modules/diagnostics/guidance.service.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts',
@@ -355,7 +358,7 @@ async function main() {
     const pointDefinitions = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom]));
     for (const selectedAtomId of [...new Set(buildAllAuthoredProbeFamilies().map(family => family.atomId))].filter(id => !pointFilter || id === pointFilter)) {
       // At most 12 children per synthetic guardian cohort; do not exhaust one parent's write quota by managing the whole curriculum.
-      // Every guardian and learner uses the formal identity flow. Production quotas remain active.
+      // Every guardian and learner uses the formal identity flow. Per-user production quotas remain active.
       const cohort = Math.floor(evidence.pointJourneys.length / 12), pointParent = `point-parent-${cohort}`;
       if (!tokens[pointParent]) tokens[pointParent] = (await call('POST', '/auth/register', {
         principal: `qa-verification-${pointParent}`, credential: randomBytes(24).toString('hex') }, 'anonymous')).token;

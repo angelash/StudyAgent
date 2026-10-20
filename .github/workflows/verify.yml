@@ -78,6 +78,7 @@ jobs:
         run: |
           python scripts/assets/test_capture_textbook_sources.py
           python scripts/assets/test_reviewed_textbook_chapters.py
+          python scripts/assets/test_textbook_mapping_candidates.py
       - name: Independent recovery verifier regression
         run: python scripts/qa/test_verify_restored_assets.py
       - name: Source release privacy and tamper boundary regression

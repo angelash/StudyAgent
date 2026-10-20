@@ -2,8 +2,26 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { DomainDatabase } from './domain-database';
+import { requestIpLimit } from './request-rate.middleware';
+
+describe('request IP quota configuration', () => {
+  const previous = process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE;
+  afterEach(() => {
+    if (previous === undefined) delete process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE;
+    else process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE = previous;
+  });
+  it('keeps the production default and accepts an explicit bounded QA value', () => {
+    delete process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE; expect(requestIpLimit()).toBe(3000);
+    process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE = '100000'; expect(requestIpLimit()).toBe(100000);
+  });
+  it('rejects malformed, unsafe and out-of-range values', () => {
+    for (const value of ['0', '-1', '1.5', 'NaN', '1000001']) {
+      process.env.STUDY_RATE_LIMIT_IP_PER_MINUTE = value; expect(() => requestIpLimit()).toThrow('integer from 1 to 1000000');
+    }
+  });
+});
 
 describe('shared durable security rate limits', () => {
   it('admits exactly the quota across connections, survives reopening and expires without changing learning revisions', async () => {

@@ -1,0 +1,29 @@
+{
+  "format": "study-agent-verification-groups-ci-rate-limit-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "defaultRegression": {
+    "testFiles": 151,
+    "tests": 693,
+    "passed": 687,
+    "failed": 0,
+    "postgresDefaultSkipped": 6
+  },
+  "driver": "sqlite",
+  "pointJourneys": 258,
+  "responseFailure": null,
+  "contentUpgrade": {
+    "newQuestionsAndMappings": 12323,
+    "families": 1033,
+    "existingEditsAndDraftMappingPreserved": true,
+    "restarts": 2
+  },
+  "manualReviewJourneys": 184,
+  "restarts": 5,
+  "rateLimitPolicy": {
+    "defaultIpRequestsPerMinute": 3000,
+    "qaIpRequestsPerMinute": 100000,
+    "perUserProductionQuotasChanged": false
+  },
+  "limits": "Synthetic QA family and authored tasks in a temporary production-mode store. This verifies the HTTP/rate-limit and recovery workflow, not human learning effect."
+}
