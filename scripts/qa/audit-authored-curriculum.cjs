@@ -36,11 +36,11 @@ const evidence = { at: new Date().toISOString(), passed: true,
   totals: { points: points.length, teaching: points.length, missingTeaching: 0,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
-  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
-    'authored-geometry-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
+  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'original-core-curriculum.ts', 'structured-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
+    'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];
-  }).concat(['resources/curriculum/authored-relations-2026-10-20-v1.json', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
+  }).concat(['scripts/qa/audit-authored-curriculum.cjs', 'resources/curriculum/authored-task-baseline-5678-v1.json', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
     'resources/curriculum/geometry-probes-v1.json', 'scripts/content/build-geometry-probes.cjs',
     ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name)]
     .map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')]))), authoredProbeFamilies: buildAllAuthoredMathProbeFamilies().map(({ exercises, ...family }) => ({ ...family,

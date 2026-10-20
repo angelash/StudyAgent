@@ -7,6 +7,7 @@ import { buildGeometryProbeFamilies } from './authored-geometry-probes';
 import { buildFoundationCurriculum, foundationQuestionId, type Exercise } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
 import { selectVerificationItems, verificationBlueprint } from './verification-blueprint';
+import baseline from '../../../../../resources/curriculum/authored-task-baseline-5678-v1.json';
 
 const families = buildGeometryProbeFamilies();
 const tasks = (name: string) => families.find(row => row.family === name)!.exercises;
@@ -49,10 +50,11 @@ describe('third-grade boundary, coverage and square-unit observations', () => {
     const additions = families.flatMap(row => row.exercises.map(exercise => ({ atomId: row.atomId, id: foundationQuestionId(row.atomId, exercise), exercise })));
     const ids = new Set(additions.map(row => row.id));
     const all = buildFoundationCurriculum().flatMap(row => row.exercises.map(exercise => ({ atomId: row.atom.id, id: foundationQuestionId(row.atom.id, exercise), exercise })));
-    const previous = all.filter(row => !ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
+    const frozenIds = new Set(baseline.ids);
+    const previous = all.filter(row => frozenIds.has(row.id) && !ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(5486); expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe('d54f6a6804cfa393d49e51ac4117acb6f84b5cb671af994b36fec209e176dfe3');
     expect(families).toHaveLength(16); expect(new Set(families.map(row => row.atomId)).size).toBe(4);
-    expect(additions).toHaveLength(192); expect(ids.size).toBe(192); expect(all).toHaveLength(5678);
+    expect(additions).toHaveLength(192); expect(ids.size).toBe(192); expect(all.filter(row => frozenIds.has(row.id))).toHaveLength(5678);
     const semantic = (row: typeof all[number]) => JSON.stringify([row.atomId, row.exercise.stem, row.exercise.blocks, row.exercise.responseShape]);
     const oldSemantics = new Set(previous.map(semantic)); expect(new Set(additions.map(semantic)).size).toBe(192);
     for (const row of additions) expect(oldSemantics.has(semantic(row)), row.exercise.stem).toBe(false);
