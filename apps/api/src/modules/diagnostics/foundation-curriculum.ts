@@ -4,6 +4,7 @@ import { buildCoreCurriculum } from './original-core-curriculum';
 import { addStructuredExercises } from './structured-curriculum';
 import { addAuthoredTeaching } from './authored-teaching';
 import { addAuthoredMathProbes } from './authored-math-probes';
+import { addAuthoredRelationRelease } from './authored-relation-release';
 
 export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
   analysis?: string;
@@ -168,7 +169,7 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
       return exercise(`${sentences[n % 4]}（只填写地点单词）`, place, `english-location-${n % 4}`, n % 4 >= 2 ? 'transfer' : 'understanding', 'text_blank');
     }, 32);
   }
-  return addAuthoredTeaching(addAuthoredMathProbes(addStructuredExercises([...result, ...buildCoreCurriculum()])));
+  return addAuthoredRelationRelease(addAuthoredTeaching(addAuthoredMathProbes(addStructuredExercises([...result, ...buildCoreCurriculum()]))));
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {

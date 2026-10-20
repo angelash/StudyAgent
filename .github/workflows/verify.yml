@@ -46,6 +46,8 @@ jobs:
         run: node scripts/qa/verify-textbook-chapters.cjs data/qa/textbook-chapters-runtime.json
       - name: Frozen measurement definitions and comparable evidence
         run: node scripts/qa/verify-measurement-definitions.cjs data/qa/measurement-definition-runtime.json
+      - name: Reviewed authored prerequisite upgrade, interrupted startup and historical evidence
+        run: node scripts/qa/verify-authored-relations.cjs data/qa/authored-relations-runtime.json sqlite
       - name: Assessment preview, partial evidence and state recovery
         run: node scripts/qa/verify-assessment-blueprints.cjs data/qa/assessment-blueprint-runtime.json
       - name: Original paper measurement review and publication recovery

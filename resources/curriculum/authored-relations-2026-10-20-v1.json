@@ -1,0 +1,404 @@
+{
+  "format": "study-authored-relation-release-v1",
+  "releaseId": "authored-relations-2026-10-20-v1",
+  "createdAt": "2026-10-20T00:14:08.094Z",
+  "reviewKind": "agent_authored_relation_review",
+  "sourceCommit": "65b5743",
+  "provenance": "Original tasks and independent arithmetic/protocol checks archived in stage 41; not third-party publication or human teacher review.",
+  "hashRule": "blueprintContentHash; only document.blocks[0].id is normalized to original-prompt. Every other content and mapping field is included.",
+  "before": {
+    "id": "core:math:mixedorder",
+    "subject": "math",
+    "grade": 3,
+    "term": "both",
+    "name": "乘除先于加减",
+    "strand": "数与运算",
+    "objective": "识别并先计算不带括号式子中的乘除部分",
+    "successCriterion": "按题目条件独立完成乘除先于加减；用另一个结构的新题核查，并在延迟复测时再次验证。",
+    "prerequisiteIds": [
+      "foundation:math:multiplytable",
+      "core:math:mixed20"
+    ],
+    "curriculumVersion": "original-core-v2",
+    "status": "published",
+    "version": 1,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "乘法先组成一个等组总量，再与其他部分相加减。先乘除的顺序对应关系，不能任意扩大被重复的范围。",
+      "example": {
+        "prompt": "计算9+4×6。",
+        "steps": [
+          "先算4×6=24，表示4组6个。",
+          "再算9+24=33，9个散件没有被重复。"
+        ],
+        "conclusion": "结果33。"
+      },
+      "commonErrors": [
+        {
+          "code": "core:math:mixedorder:check",
+          "observation": "先把9+4相加再乘6。",
+          "alternativeExplanations": [
+            "可能没有识别被乘法重复的部分。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "对照9+4×6与(9+4)×6，画图说明重复范围。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "对照9+4×6与(9+4)×6，画图说明重复范围。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "从购物中单价、份数与额外费用独立列式，再解释先算部分。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "after": {
+    "id": "core:math:mixedorder",
+    "subject": "math",
+    "grade": 3,
+    "term": "both",
+    "name": "乘除先于加减",
+    "strand": "数与运算",
+    "objective": "识别并先计算不带括号式子中的乘除部分",
+    "successCriterion": "按题目条件独立完成乘除先于加减；用另一个结构的新题核查，并在延迟复测时再次验证。",
+    "prerequisiteIds": [
+      "foundation:math:multiplytable",
+      "foundation:math:divisiontable",
+      "core:math:mixed20"
+    ],
+    "curriculumVersion": "original-core-v3-relations-2026-10-20",
+    "status": "published",
+    "version": 2,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "乘法先组成一个等组总量，再与其他部分相加减。先乘除的顺序对应关系，不能任意扩大被重复的范围。",
+      "example": {
+        "prompt": "计算9+4×6。",
+        "steps": [
+          "先算4×6=24，表示4组6个。",
+          "再算9+24=33，9个散件没有被重复。"
+        ],
+        "conclusion": "结果33。"
+      },
+      "commonErrors": [
+        {
+          "code": "core:math:mixedorder:check",
+          "observation": "先把9+4相加再乘6。",
+          "alternativeExplanations": [
+            "可能没有识别被乘法重复的部分。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "对照9+4×6与(9+4)×6，画图说明重复范围。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "对照9+4×6与(9+4)×6，画图说明重复范围。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "从购物中单价、份数与额外费用独立列式，再解释先算部分。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "questions": [
+    {
+      "questionId": "foundation_q_v2_53e3f7f8494be15a7e3b93a6",
+      "contentSha256": "5b0ec775b34020fa3e0e6c443b7bed3e33c079d0515c321d7a43d1d8a286570c",
+      "mappingSha256": "e46dc2c34322cc09eb306cf44043fe95e43f4bd5f12f25f162a00185d3f0e704"
+    },
+    {
+      "questionId": "foundation_q_v2_05ab7335ac5e4dc8534424d7",
+      "contentSha256": "5163177c4ae07358de0a422b90e4678229c41f34b578c7d35d6b998cbf236952",
+      "mappingSha256": "9d088489d2f1fb603706b6bf58f812c20c6aae25768f6b57817686617d688921"
+    },
+    {
+      "questionId": "foundation_q_v2_3dcc060648708375b8bb672d",
+      "contentSha256": "cf51bcd72f3b3b2b68e76cfbf1226f93bfc773cf97ef60e471d167bffdf80b4f",
+      "mappingSha256": "8a54a24f6afacfbb7dbcac708e04887ebfa680335c9307f249fbb0de28f601c8"
+    },
+    {
+      "questionId": "foundation_q_v2_ed44e88dda4d76481b08eb9f",
+      "contentSha256": "126b8c32da141cb72abc623a13b81e76097a2a332b93424b27217d9c4fc5b709",
+      "mappingSha256": "383431f30c203d21639795ac6aa13ff91788dadad34e5eac54a606bda66b25f0"
+    },
+    {
+      "questionId": "foundation_q_v2_2bf7ac718225b2238046bea7",
+      "contentSha256": "721af406ea18f33dd4ca0bbfb4fefec65b8f33b4a27bb35ada9d5adebbb3801d",
+      "mappingSha256": "32426bb7dfe3b7fd24cdbe1e198ae594a63943ccfc5c767837cca2167737d800"
+    },
+    {
+      "questionId": "foundation_q_v2_00a6089438a55e1eb110c49e",
+      "contentSha256": "200689f668f8e586814d13c0ff2f1678660897b3a3a2d4b45cd8e47a00da57c5",
+      "mappingSha256": "ded691377a0ba19be673c6cbc6014d04884e1e2f7f1d270a67d5b1589e89b37e"
+    },
+    {
+      "questionId": "foundation_q_v2_ac4f29701b4e20d6a9543ec8",
+      "contentSha256": "32d228ae8aa20ef109ce27ea7d8ddb5b3d007c44c2d1dc3de6e39288b0c3454b",
+      "mappingSha256": "7418f63dc0d481f46f9945dee3190c23ad9507bdcad5864524216f6bc6580c72"
+    },
+    {
+      "questionId": "foundation_q_v2_eae8ac8bb529674c56173520",
+      "contentSha256": "78fee5099d52e7a029342daf9c8966dbfe565f14d72d88da421d4f064d30d256",
+      "mappingSha256": "ea83fb5492747e781865f2c33fd9a257d1de82b1ade13cd03101fa071e35a7b4"
+    },
+    {
+      "questionId": "foundation_q_v2_962ee783c113ae4390c73253",
+      "contentSha256": "47430f6aaaaaaa453521698e153e7c1e1f0ae9bacbabfc18b725da8691a198f3",
+      "mappingSha256": "5435e1dfc89de79e4ab3c981ea778d19ddd3c73c5c6e944a83af9f548ecbfdd6"
+    },
+    {
+      "questionId": "foundation_q_v2_42c42ad5bb53e6444d9c7b28",
+      "contentSha256": "5fedf732f2c3551f24ecf5baeca4fc830498cce4b82e3a5e5919725a71a4cd58",
+      "mappingSha256": "36497a30bb5505b3bfc6748fc1a19c176921d38543f08650bd28bc6c506720d9"
+    },
+    {
+      "questionId": "foundation_q_v2_3706952eae62e46ee45c94ad",
+      "contentSha256": "51e2c2706e8c7bf50f6b843f79698e524e7ad3294db2e3c4be5c18d6e2f2fae5",
+      "mappingSha256": "d9e84ef03eb4e123a119020ee61d50050f8ec96a0f1af09b4f0343f8952fe36e"
+    },
+    {
+      "questionId": "foundation_q_v2_0e2ba10e65629f4b363faedd",
+      "contentSha256": "53ccb12497b24547bb46b15928ffb9cc0b70b750d2262c8e269092a16a7c4163",
+      "mappingSha256": "a2250584a28f2ef179a875cbb224b086db82335787480acff3dede92080b3a0a"
+    },
+    {
+      "questionId": "foundation_q_v2_9cd5efed7b3e14442e39495d",
+      "contentSha256": "841a2ac64f04584a9a33af109c65c3f60d641d3775077a98f78078badabbaff7",
+      "mappingSha256": "c881582d14d0728550c2f93a512f40f75e28d9c06a5a55d1fbd41ede06c60610"
+    },
+    {
+      "questionId": "foundation_q_v2_c9e2f3bc25ef9d836a7cdde9",
+      "contentSha256": "38e88857e71f4b562dd4a2db4898eac3a6ed4b4db9ef8619151d74dd51e7cdf1",
+      "mappingSha256": "c8261ebab51435bf04264d3b804e62407e52a34558c7cdfe15a4f46b7f76e4b1"
+    },
+    {
+      "questionId": "foundation_q_v2_448d6aaed7babdb62ef51d36",
+      "contentSha256": "a2a6d616e0bc03f38c1cc6fad7c5df244e2c899e8d958a82b893637490c12ec9",
+      "mappingSha256": "be53709391965ef3e29112ff68ea6f740fbb14d95c88450bea7cee254d9c073b"
+    },
+    {
+      "questionId": "foundation_q_v2_38d47021a7bcbcff20e57a1a",
+      "contentSha256": "edc86e320becf841279068e1de4f5637739339e162adb935552447506eca20d7",
+      "mappingSha256": "677d9a767f6ae2a009ddefcc967d657817a9a5be2ffb4f591d9e2b6b83ffba35"
+    },
+    {
+      "questionId": "foundation_q_v2_82090406febc2eb115db230d",
+      "contentSha256": "4cf8bb769073945473f359501451b02aabedb0a3a182631b188ca9462d2e93c1",
+      "mappingSha256": "c7087230a06d12dae30b23e16d4c37f5bca0415fed43b0b26e52804648a0a722"
+    },
+    {
+      "questionId": "foundation_q_v2_3e86edc999e4874b0445f6e7",
+      "contentSha256": "37dee07edec6dc5316501f5dcb348294bc2824c6fd1c1376ed8fab576e6da95a",
+      "mappingSha256": "4094cc8c3c6213d2dc5d92a29f4bd4fea0084cc4016f584dec60d88d73b57216"
+    },
+    {
+      "questionId": "foundation_q_v2_d9983440dc8e9f78a6558f1e",
+      "contentSha256": "d70d409711bbf34200eb38eb41db84deda7dc68593127e9eff235990a0ba1e7f",
+      "mappingSha256": "70e22fb7e6e94b27ba3c70015a798d850a516da1b7f12f9ca849bb5b69a4ea4d"
+    },
+    {
+      "questionId": "foundation_q_v2_7d38c66f01649c3e64c23c68",
+      "contentSha256": "3b38c2d24c7b4060ce1fb0fd235ec9d9e41e91671160d73691780dfaf8fe69f3",
+      "mappingSha256": "3a8a133f40beae4235335592ebf7f8d1373420aecf069c2a513108df8afc24b6"
+    },
+    {
+      "questionId": "foundation_q_v2_092ef895c3face562b592470",
+      "contentSha256": "8a2739e3d0300ebee7901fbb5886c3ff8f966ff030fb42f1e019957526d02f74",
+      "mappingSha256": "0465934ab948182c490072a8cdb59e4129440b1003817d6c4d1a75a8af64864b"
+    },
+    {
+      "questionId": "foundation_q_v2_e328e7daa55bf30035a0ce7b",
+      "contentSha256": "3176724e200a60430ef0e283a54aa33197d61191bf4edec6d5a452f4971aad24",
+      "mappingSha256": "bb1d7daec735b15904224c6275809c11e655d1c076619da5f893ddc7c917d310"
+    },
+    {
+      "questionId": "foundation_q_v2_32a35236df38359dac4e3500",
+      "contentSha256": "15631aa170d6c1162d1fbb005145a6a2721c83ac13cbb1d56b6b9c741c3557c8",
+      "mappingSha256": "376efe423bab86f7ce44a50c92090368a40f803f4b9e70ef411d831745ad60f1"
+    },
+    {
+      "questionId": "foundation_q_v2_43df7124367ec1d5623dd4ab",
+      "contentSha256": "f58a8bfecbea541bd4dfc23f464509ae2d2c7511b91c9312e20d6d03230b4c04",
+      "mappingSha256": "2c6c1cf06bfa4580396027f407425b5d79002d7c3512d467a1ccdb4cac8608b6"
+    },
+    {
+      "questionId": "foundation_q_v2_2af9745cfc76ba0ee8d58204",
+      "contentSha256": "38a9d31960e83a30984520d0e63a5ad56d0bbde43b16f5b2a4e3952992f7de05",
+      "mappingSha256": "281584f3abb22ea99726dc35defc02e9bc3581cff6fee78214b8e1698975bb3b"
+    },
+    {
+      "questionId": "foundation_q_v2_4e2c8573f8c841cd0587de06",
+      "contentSha256": "60f868c5512205b9db3a72280a5d1592fde7021856a23d85ab48a06df95a3c4c",
+      "mappingSha256": "157aefa1113152fafeac0eb3d542924cdcb9335fa0bbdec1cc098bf789336491"
+    },
+    {
+      "questionId": "foundation_q_v2_416879c1d557487887d68af8",
+      "contentSha256": "f8b4f573a90229285184bfe4c6a38e760c5399a149a26216a7d90fab8f2f870f",
+      "mappingSha256": "ff2a7483e3c66835fea5e27ea7ce0b135267352420a179289969fd635c1d6078"
+    },
+    {
+      "questionId": "foundation_q_v2_7b8885ae1b7fb95e7ca6272d",
+      "contentSha256": "33a25e1b042d4a8ace2bd1ed645c1244f66d61b06f452cea011bc22bb6100c1c",
+      "mappingSha256": "280da1c2607830060a97c5e92054f6af7f6aecc367e6675d3a2d6a9456306edf"
+    },
+    {
+      "questionId": "foundation_q_v2_a3d1398a7771affe1a60e4d9",
+      "contentSha256": "91f67af2f05317c953a98483fe31c4bd1dba79c3d1861e46595261228147b605",
+      "mappingSha256": "ec0aecd28190ceb8321ef6ec114a2fb3607077bd3ee776cb0036537c8b092e29"
+    },
+    {
+      "questionId": "foundation_q_v2_ca8c38502d155942abd88e0d",
+      "contentSha256": "6bec9a83b0871adf07b67541ee942f39b9d10c3a4be83416e8b5db7fbf17d2a9",
+      "mappingSha256": "84ec79665021dda4a890a5b96aee40b0223b6963a592ba125545b4b2aa64bb5e"
+    },
+    {
+      "questionId": "foundation_q_v2_20b9ea27701e06a0edee0380",
+      "contentSha256": "7f7d94c5e4a2d8b8ad354482da7f1d8ca3e4a652cb2464ae37b9138eb2b9f5c5",
+      "mappingSha256": "8d5b9beefca95f5146c74d82dcec76dddb63bb8c062910cf4d660d8e18668b14"
+    },
+    {
+      "questionId": "foundation_q_v2_b0212f45b8e22800c6555a37",
+      "contentSha256": "948ae163f3c109c3d91eb6c2303324dd7969d892885a03d991b880457ee115a8",
+      "mappingSha256": "e9a004d9b66f92bc22c6b133289a868c56dc82c178f648277b649f19ead85e0c"
+    },
+    {
+      "questionId": "foundation_q_v2_391dbad41fe6f432afd4dd9b",
+      "contentSha256": "49fc4e074fd29582a250042f2923686bfa26a31059b4f00ee87f6e498b078861",
+      "mappingSha256": "61a4b82c825d12ca3a6efc9fac25b3d9efdca4085801c0e076077b8bf8fdd0df"
+    },
+    {
+      "questionId": "foundation_q_v2_71078c0d64c7eb48406a0825",
+      "contentSha256": "c2442527addb2fe685e6ee5240874df853777dc94b1d2a07f14f9e776a4a8e50",
+      "mappingSha256": "0459720b710f9a53be730d9e5fe853aa82e453e084a8e8b821e02994bf5fde41"
+    },
+    {
+      "questionId": "foundation_q_v2_5f667136c824050efe1c3334",
+      "contentSha256": "0af1e204f1a52eca5301499fcac3eefd4ed267f817111805ab1e48af96c0ac24",
+      "mappingSha256": "e66cfde10d3cd422ada94a7b7d5f36e4150befa5027836c56aec9933f0350c7f"
+    },
+    {
+      "questionId": "foundation_q_v2_7c010c6d7924321129ea1f67",
+      "contentSha256": "af2cd2ec94e0358f95d10b2140e1ec5e07a8a812aa90cddb2102fc6ccea4b50b",
+      "mappingSha256": "42528a859e009fad119abc2fa38503770fd8f2e482ad019927013f2afa40d1ec"
+    },
+    {
+      "questionId": "foundation_q_v2_a23f60f71f4cc3fd4400527a",
+      "contentSha256": "71822dde7c4a3b485a99de86306042ab553bfa03594aa0accc2bc7fa88adcffa",
+      "mappingSha256": "515c78bec0ab8b1ba0edec71f846bc8274552c803a91b62de5c5f61174d9de64"
+    },
+    {
+      "questionId": "foundation_q_v2_9cd9c7402d7f374b52fac383",
+      "contentSha256": "e4fd064b729fbc56e2895a10162d1ab40e2be863bf502e82dadeec75b10efd72",
+      "mappingSha256": "b8a16c4dbfbb1d6f160a0a6af6510bfe3a4e7342de3db9b10da68666299798b2"
+    },
+    {
+      "questionId": "foundation_q_v2_3b0b68a35193d1648d182307",
+      "contentSha256": "d1e1461e7c5b2eadcc968f6c44c95eb0bd08105a93879da3ef6ca789c0512d24",
+      "mappingSha256": "21e7c66dac8167ecd04d5af67bfd722bfabef6f80ecb7f79f3cabef833dea8a5"
+    },
+    {
+      "questionId": "foundation_q_v2_f0a0766fa11afe32089230b5",
+      "contentSha256": "9aef0c24abb7ef397d7802a84c8f1e65bb2afbbc5898126f3eee47aa4c3b3bdc",
+      "mappingSha256": "0f24b59e683c25057371b299cfc2d5c0160c8a01649d46b29edff33895597acf"
+    },
+    {
+      "questionId": "foundation_q_v2_def00626b4a066c512eeae60",
+      "contentSha256": "447f3091fda4f0b2c045181d3cf4fc5cdcb006e475f247dd0b116a9c7abb9716",
+      "mappingSha256": "8d28d6e0279f3da242d6861d7a554a6b3223d9dfd7e815015dc5b4d2c710a754"
+    },
+    {
+      "questionId": "foundation_q_v2_585edd95614304d724b70fa1",
+      "contentSha256": "5c7e52f02359b5c2916b51199538308487bf046b5a6b8c0a16803909e3a524b0",
+      "mappingSha256": "c3be781ad3d10ddb8bcfc08bf393de1e864d5e3591dc4c4bf4db8db2ff7d3fc4"
+    },
+    {
+      "questionId": "foundation_q_v2_f84b797676bb47ed8616b810",
+      "contentSha256": "fb43e8c7711913a19f40b1b151ebf28289c1d011d83f62dbcc119413270dcdd9",
+      "mappingSha256": "92d11cddf9f9acbc58baf79ed1ac2827f1da10f5b8bf53b5a2ed66c65002874c"
+    },
+    {
+      "questionId": "foundation_q_v2_21718d274870f54b775cfdbd",
+      "contentSha256": "d491ddce1b890b05cae33e1b6943693a870593311faa71e13c647feba8fa321e",
+      "mappingSha256": "681616d63de32c87a50da3b99feb3b8988a1098c2ca2a1a90a4b561f511b20d5"
+    },
+    {
+      "questionId": "foundation_q_v2_3fecb2947cd67a70d4b80f60",
+      "contentSha256": "7e4f12a637af2dc39b02c3b66e81d1656d459d922aa8c08c6f678eb1985ef04e",
+      "mappingSha256": "f780c3d64eb55157127737df97a9bdc0f6c29568ced36df310232dff6e698fca"
+    },
+    {
+      "questionId": "foundation_q_v2_248652830fb43b47663be7cd",
+      "contentSha256": "8e09d75bb96fb029ddab918ebce0904277783dea075dd80350f3e0c1e3d486d9",
+      "mappingSha256": "a42b62da8205ef6399a1b45167dd049cde1a8767d83fe5021c3e05eae99b8b3d"
+    },
+    {
+      "questionId": "foundation_q_v2_15ba77a48f7a6d84609cd9f8",
+      "contentSha256": "c28d48e360c93a01256ec3ace28f0f36a89d15bbd600bf695a8f3d336ce90a45",
+      "mappingSha256": "7a00b199778e31843d91604f5183c3b76b6cfe7bbe8d5e9f082bda5d72655d40"
+    },
+    {
+      "questionId": "foundation_q_v2_3ea3285ddef3c0352f0b856f",
+      "contentSha256": "5b18bb462cf4cfb12ed0b6725f19bdee24615c0ba04da5865e79e3c38326fa33",
+      "mappingSha256": "15353eed746ce62f33478f3850752d6dfcb50fb33b1427b1fdcdcadbcea885cc"
+    },
+    {
+      "questionId": "foundation_q_v2_a3200b18aa42c3c7b4644328",
+      "contentSha256": "5e0d69908206fce3bacf83e1598e2cc8f6c5ab58027d92ebcf00d144cbc28ecb",
+      "mappingSha256": "741b34ef59c61a76a0164725e9ae666c3bb5c0c72d93e0a29e9af4b587a66056"
+    },
+    {
+      "questionId": "foundation_q_v2_93af07e28157d2bfa855fde8",
+      "contentSha256": "db81e9b6d97dc7d892cd53e26c530691b512fbc74a45ed5aa34cb7f131aea621",
+      "mappingSha256": "c00afe216c212bf3d2ff7620c55f5425a3508d5d16ba9557c1129f3ea7f15886"
+    },
+    {
+      "questionId": "foundation_q_v2_a2e6f9a2bf90c6f858a5851a",
+      "contentSha256": "1f4d85bbbc8dd3b89cc45e7b08e10c0ec4c96f9e501300d0e72f78633c5bb3a4",
+      "mappingSha256": "c1ecb9712ff41e50a3c3d841915e2f5f11769a9e5e07656e24df3d0f326fb577"
+    },
+    {
+      "questionId": "foundation_q_v2_ff6d6ebb1047788d80318882",
+      "contentSha256": "b126cc4bd24906311efe89e03bf4eb75f8476cf67b08aba55c454e99cc448578",
+      "mappingSha256": "51b04e67d500f12bddda0edf0f725ad3f66b84d1e3e6556f30f0ce2d1a6b79e6"
+    },
+    {
+      "questionId": "foundation_q_v2_9d1d2c90446c50da5ee8b796",
+      "contentSha256": "8134504f463082cc5a09dc600de74623ef8abb192ddf6a7ded61104cfd9462ca",
+      "mappingSha256": "ca1e2de370b34d397cddbd43654d6b49154f7c42c316e94e074b96779e4d5ed5"
+    },
+    {
+      "questionId": "foundation_q_v2_d00a36b778eff7f8d7d9f5b9",
+      "contentSha256": "44dbe670bdf17eec64dd22589849cca33c219dc2004113895fefe8122950ee24",
+      "mappingSha256": "b956ee13c789c85594164bd20c365fdc4fa8f7268227f8e6e8f8b4db6a5ae5fb"
+    },
+    {
+      "questionId": "foundation_q_v2_3e99af347a5fb1110d8ee373",
+      "contentSha256": "3ee61bef2565f947164a6f2deee5101ccb74ca8f1cce63c8166352f68decaf69",
+      "mappingSha256": "ce3079657084d0ff8a0236db0d7a209f32630301ef1a8cb2c1ba71efeada1df3"
+    },
+    {
+      "questionId": "foundation_q_v2_2f08657c923337bdca896dd7",
+      "contentSha256": "3d7df0ebd00363986b7d707b4cd61c96a2042966a03e6bb14949ddd19b7a8ee7",
+      "mappingSha256": "fadc8974e6c681cc35ba7e52ec9869b29e05ca7e1caec6769a1d34c3dd8e9654"
+    },
+    {
+      "questionId": "foundation_q_v2_ea7a70de2f221ad9806fd17f",
+      "contentSha256": "83c417e1003f3b05a3e1ca7be12dccace71895d0182c17d2b7d4d26ec914132e",
+      "mappingSha256": "df4bfb11f322fae7676f560742927865645f7e2fec120dcf5f8da58c1ef27eb5"
+    },
+    {
+      "questionId": "foundation_q_v2_259b85cfd1543073a9692231",
+      "contentSha256": "5e0bdc0a9df8e8d26ec66473375a1a1f0bd442424b1dbb4afb83c2428d92a74b",
+      "mappingSha256": "73e449b8ad87a6c297a0799db3482f439e5c61e002da06b510f717a5f92385e2"
+    },
+    {
+      "questionId": "foundation_q_v2_b56c1281ecf15521607c4f8b",
+      "contentSha256": "4f595569af342d028e2e0d868e2cbd325d442c7323680727b030e232816b47b6",
+      "mappingSha256": "c2f025051fcfb900af9891d7f5589dc275e012330ed24ac24cd00a769ba9d745"
+    },
+    {
+      "questionId": "foundation_q_v2_94f524b208c81a35264f4f73",
+      "contentSha256": "aedd73fc3303f7bba002e1297917a16b628e559f53a5b1a25ff779aa24392a3f",
+      "mappingSha256": "e01458d77e8edb1cc2b29f3e3fd4f17ded6754118c4c232f0ef981921e7a5d21"
+    }
+  ]
+}

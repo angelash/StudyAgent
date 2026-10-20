@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-20T00:27:38.619Z",
+  "label": "authored-relations",
+  "passed": true,
+  "p95TargetMs": 500,
+  "scope": "Synthetic warm local HTTP reads; no production-load, write-contention or browser acceptance claim",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "logicalCpus": 32,
+    "memoryBytes": 68446707712
+  },
+  "fixture": {
+    "families": 1000,
+    "evidenceRecords": 20000,
+    "originalTasks": 5198,
+    "sqliteBytes": 66666496
+  },
+  "metrics": [
+    {
+      "route": "/auth/me",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 9.25,
+      "p95Ms": 9.77,
+      "maxMs": 9.77
+    },
+    {
+      "route": "/learning/students",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 18.79,
+      "p95Ms": 26.94,
+      "maxMs": 26.94
+    },
+    {
+      "route": "/diagnostics/curriculum?subject=math&grade=3",
+      "mode": "sequential",
+      "samples": 12,
+      "p50Ms": 9.8,
+      "p95Ms": 12.22,
+      "maxMs": 12.22
+    },
+    {
+      "route": "/auth/me",
+      "mode": "8 concurrent requests",
+      "samples": 32,
+      "p50Ms": 62.19,
+      "p95Ms": 67.43,
+      "maxMs": 67.81
+    }
+  ],
+  "storage": {
+    "revisionChecks": 74,
+    "snapshotLoads": 1,
+    "partialSnapshotLoads": 0,
+    "snapshotRowsLoaded": 0,
+    "cacheHits": 73,
+    "commits": 3,
+    "scopedCommits": 2,
+    "conflicts": 0,
+    "collectionsCloned": 174,
+    "recordsCloned": 13155
+  },
+  "eventLoop": {
+    "p95Ms": 68.42,
+    "maxMs": 1131.41
+  },
+  "memory": {
+    "rss": 397443072,
+    "heapTotal": 298893312,
+    "heapUsed": 128595896,
+    "external": 4837553,
+    "arrayBuffers": 1547219
+  },
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "da692cb00f606e45a6af1c2f5b2801bd57fede6260065e11d0cdd21c06457f0c",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "ad8a91517b16f5ad39dc9e1bf619ba048b5e73e30d28a6407d3ff37013c3dd99",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "8b9544dbb11d0f376d59b1725343924d42906d8ed1680e9448dbf97a145a8e6d",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "21dc9a4f48e4e912f529a6b1b9c546cdc7a600dc0416537d4208278337c72f75",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "scripts/qa/verify-authored-relations.cjs": "6301ff97825231d075a630f89e82aaa28bfabb42782095456fb405ef307e5288"
+  }
+}

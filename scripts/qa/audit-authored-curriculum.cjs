@@ -36,11 +36,11 @@ const evidence = { at: new Date().toISOString(), passed: true,
   totals: { points: points.length, teaching: points.length, missingTeaching: 0,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
-  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
+  sourceSha256: Object.fromEntries(['foundation-curriculum.ts', 'authored-relation-release.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
     'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];
-  })), authoredProbeFamilies: buildAllAuthoredMathProbeFamilies().map(({ exercises, ...family }) => ({ ...family,
+  }).concat([['resources/curriculum/authored-relations-2026-10-20-v1.json', createHash('sha256').update(fs.readFileSync(path.join(root, 'resources/curriculum/authored-relations-2026-10-20-v1.json'))).digest('hex')]])), authoredProbeFamilies: buildAllAuthoredMathProbeFamilies().map(({ exercises, ...family }) => ({ ...family,
     questions: exercises.length, note: 'Authored task-structure distinction; no field calibration or statistical independence claim.' })), cells, points };
 const output = path.resolve(process.argv[2] ?? 'data/qa/authored-curriculum-audit.json');
 fs.mkdirSync(path.dirname(output), { recursive: true }); fs.writeFileSync(output, JSON.stringify(evidence, null, 2) + '\n');

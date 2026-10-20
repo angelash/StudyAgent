@@ -33,6 +33,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-second-grade-probes.ts',
   'apps/api/src/modules/diagnostics/authored-data-probes.ts',
   'apps/api/src/modules/diagnostics/authored-third-grade-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-relation-release.ts',
+  'resources/curriculum/authored-relations-2026-10-20-v1.json',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',

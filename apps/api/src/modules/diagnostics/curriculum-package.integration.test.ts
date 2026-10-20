@@ -202,7 +202,7 @@ describe('versioned curriculum packages and instructional evidence', () => {
     const withRelations = { ...originals[4], transferAtomIds: [] };
     const current = originals.map((atom, i) => i === 3 ? withTeaching : i === 4 ? withRelations : atom);
     const updates = authoredTeachingUpdates(current, definitions);
-    expect(updates).toHaveLength(cards.length - 4); expect(updates.every(row => row.expectedVersion === 1)).toBe(true);
+    expect(updates).toHaveLength(cards.filter(row => row.atom.version === 1).length - 4); expect(updates.every(row => row.expectedVersion === 1)).toBe(true);
     const migrated = current.map(atom => updates.find(row => row.atom.id === atom.id)?.atom ?? atom);
     expect(authoredTeachingUpdates(migrated, definitions)).toHaveLength(0);
   });

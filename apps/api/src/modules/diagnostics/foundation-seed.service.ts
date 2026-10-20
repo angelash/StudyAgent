@@ -7,6 +7,7 @@ import { assertAcyclic, CurriculumService } from './curriculum.service';
 import { buildFoundationCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
 import { atomDefinitionFingerprint } from './measurement-definition';
+import { authoredRelationActor, authoredRelationDefinitionUpdate, authoredRelationRelease, reviewedAuthoredRelationMappings } from './authored-relation-release';
 
 // Only the exact, unedited original v1 can receive an automatic enrichment.
 // An editor's missing card or changed relationship is an intentional definition.
@@ -27,10 +28,16 @@ export class FoundationSeedService implements OnModuleInit {
     private readonly curriculum: CurriculumService) {}
   onModuleInit() {
     if (process.env.NODE_ENV === 'test' || process.env.STUDY_SEED_FOUNDATION === 'false') return;
+    this.seedAuthoredCurriculum();
+  }
+  seedAuthoredCurriculum() {
     const definitions = buildFoundationCurriculum();
     assertAcyclic(definitions.map((item) => item.atom));
+    for (const { atom } of definitions) if (!this.store.find('knowledgeAtoms', { id: atom.id })) this.store.append('knowledgeAtoms', atom);
+    const revision = authoredRelationDefinitionUpdate(this.store.find('knowledgeAtoms', { id: authoredRelationRelease.before.id }),
+      this.store.select('curriculumRevisions', { entityId: authoredRelationRelease.before.id }));
+    if (revision) this.curriculum.applyAtomDefinitions(authoredRelationActor, [revision]);
     for (const { atom, exercises } of definitions) {
-      if (!Boolean(this.store.find('knowledgeAtoms', { id: atom.id }))) this.store.append('knowledgeAtoms', atom);
       for (const item of exercises) {
         const questionId = foundationQuestionId(atom.id, item), mappingId = `measurement:${questionId}`;
         if (!Boolean(this.store.find('questions', { id: questionId }))) {
@@ -61,5 +68,6 @@ export class FoundationSeedService implements OnModuleInit {
     }
     const updates = authoredTeachingUpdates(this.store.inspect('knowledgeAtoms'), definitions);
     if (updates.length) this.curriculum.applyAtomDefinitions(seedActor, updates);
+    for (const mapping of reviewedAuthoredRelationMappings(this.store)) this.curriculum.upsertMapping(authoredRelationActor, mapping);
   }
 }

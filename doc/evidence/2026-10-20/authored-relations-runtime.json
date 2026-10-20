@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-20T00:26:14.187Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "da692cb00f606e45a6af1c2f5b2801bd57fede6260065e11d0cdd21c06457f0c",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "ad8a91517b16f5ad39dc9e1bf619ba048b5e73e30d28a6407d3ff37013c3dd99",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "8b9544dbb11d0f376d59b1725343924d42906d8ed1680e9448dbf97a145a8e6d",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "21dc9a4f48e4e912f529a6b1b9c546cdc7a600dc0416537d4208278337c72f75",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "scripts/qa/verify-authored-relations.cjs": "6301ff97825231d075a630f89e82aaa28bfabb42782095456fb405ef307e5288"
+  },
+  "result": {
+    "originalCollections": {
+      "questions": {
+        "count": 3435,
+        "sha256": "9481aa8b24480d1cf7cc6b0b3cd0dd211e34dc02b5b703dea268461cec4e8d0e"
+      },
+      "questionDocuments": {
+        "count": 3435,
+        "sha256": "9174a23b229a9adc19bac73bad96938922e81bcec2cef404151a0bd811a77c46"
+      },
+      "questionAnswerSchemas": {
+        "count": 3435,
+        "sha256": "e1be2770d3c385db5a1bbee26b5d8e3df85c68c8f91d71a4fa0504b4325c42fb"
+      },
+      "questionSources": {
+        "count": 3435,
+        "sha256": "55c89b05613bf38275d676a1213af63b8d795bb38dc5e38fa0de861aa9f76b2e"
+      },
+      "measurementItems": {
+        "count": 3435,
+        "sha256": "8045b01b89aa996b470c56309224a8dffef51e9b4d16ed9c0491c5507bf02e75"
+      }
+    },
+    "reviewedMappings": 52,
+    "editedPacketsPreserved": 8,
+    "interruptedStartupDidNotDoubleIncrement": true,
+    "newDefinitionVersion": 2,
+    "oldTargetEvidenceExcludedFromCurrentProfile": 6,
+    "oldReportAndUnfinishedSessionFrozen": true,
+    "oldPreviewRejected": true,
+    "oldPlanRequiresReconfirmation": true,
+    "divisionIncludedInNewScopeAndRootVerification": true,
+    "repeatedRestartIdempotent": true,
+    "priorSystemTeachingV2UpgradesToV3WithLineage": true,
+    "manualAndEditedV2PreservedAcrossRestart": true,
+    "restartsIncludingInterrupted": 8
+  }
+}

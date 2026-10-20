@@ -40,7 +40,7 @@
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 
-已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)。当前仍需补充教材与课时审核映射、其余218点的测量素材深度、混合运算先修关系修订、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
+已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)，混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需补充教材与课时审核映射、其余218点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
 
 ## 工程目录
 
