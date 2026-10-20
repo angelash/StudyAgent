@@ -1,0 +1,25 @@
+{
+  "format": "study-agent-gesp-backup-restore-v1",
+  "at": "2026-10-20T18:24:43.422Z",
+  "passed": true,
+  "backup": {
+    "path": "I:\\StudyAgent-backups\\gesp-20261021-v1",
+    "fileCount": 3658,
+    "bytes": 191735767,
+    "manifestSha256": "c3bbc27e0ace38fbe23f5c57f1633433b388c08522a47d4a889eac825fe1fd53"
+  },
+  "restore": {
+    "freshRoot": true,
+    "manifestFilesVerified": 3658,
+    "sourceFilesVerified": 162,
+    "rawBytesVerified": 164011235,
+    "pdfPages": 1487,
+    "questionPayloads": 3132,
+    "examQuestions": 2916,
+    "sampleQuestions": 216,
+    "networkRequired": false,
+    "indexIntegrity": "ok",
+    "validation": "passed"
+  },
+  "scope": "Separate raw GESP archive backup restored into an empty temporary source tree and rebuilt offline. Not application database backup or human content review."
+}

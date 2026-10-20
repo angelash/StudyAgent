@@ -1,0 +1,52 @@
+{
+  "format": "gesp-preparation-validation-v1",
+  "status": "passed",
+  "verifiedAt": "2026-10-20T18:24:27.596514+00:00",
+  "networkRequired": false,
+  "inputSha256": {
+    "sources.json": "fc222236f34f95d69f70915cce26d07be3887b68075486ac1d56ceb15ca2952c",
+    "questions.jsonl": "1bfb663c4b6395530a7f8bca489dec44e704f02a7631a8ac1b1a5faeda696703",
+    "coverage.json": "53ac180095e8a6d8aaaa8e0f83e698b366008887cd16ace783006237a77ccf91",
+    "knowledge-map.json": "0131e9f7ef27755f1edacb6da6b40f1b6e6dc9bacb61760b27c0ba09f7345fb4",
+    "syllabus-clauses.json": "3ffa074a299bb9da41818351229e5d84ecd9a5dc21ce3cfcc8bdd7d8ef2a4067",
+    "user-exercises.json": "9238049bf6582332d8c193778eaa8d5d2b8a66053aaeb0bc56606d0c422f71f4",
+    "supplements.json": "0d57608410a0b380e6824ff5482e5fa75ec1a457d1fdfd7c26003840273173f8",
+    "teaching-plan.json": "02db35058be11b05b59adeba0c37edad826b559c4536bf0b34083520f78284e8"
+  },
+  "sourcesVerified": 162,
+  "rawBytesVerified": 164011235,
+  "officialPdfDocuments": 131,
+  "mirrorPdfDocuments": 3,
+  "pdfPagesCaptured": 1487,
+  "questionPayloadsVerified": 3132,
+  "examQuestions": 2916,
+  "sampleQuestions": 216,
+  "questionKinds": {
+    "choice": 1740,
+    "programming": 232,
+    "true-false": 1160
+  },
+  "coverage": {
+    "original_paper": 105,
+    "official_explanation_fallback": 2,
+    "public_mirror_fallback": 1
+  },
+  "unrecoveredObjectiveAnswers": 1070,
+  "programmingWithReferenceMaterial": 230,
+  "quarantinedLinks": 1,
+  "syllabusClausesCovered": 69,
+  "draftAtoms": 114,
+  "draftPrerequisiteEdges": 170,
+  "prerequisiteGraph": "acyclic",
+  "nonofficialUserExercises": 11,
+  "initialTeachingUnits": 15,
+  "initialTeachingAtoms": 49,
+  "limits": [
+    "Machine extraction can omit formulas, diagrams, code and answer glyphs.",
+    "No question has completed full content or teaching review.",
+    "Keyword matches are not approved question-to-knowledge mappings.",
+    "Hidden programming test data was not collected.",
+    "Archive integrity is not student measurement validity."
+  ],
+  "runtimeIntegration": "research_workbench_only"
+}

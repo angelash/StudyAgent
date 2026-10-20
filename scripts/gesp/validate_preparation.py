@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from capture_sources import ROOT, OUT, checked, sha, write_json
+from capture_sources import ROOT, REPO_ROOT, OUT, checked, sha, write_json
 from build_catalog import EXPECTED, expected_slots, joined_pages
 
 
@@ -129,7 +129,7 @@ def main():
     for item in user_exercises:
         require(item['sourceKind'] == 'user_supplied_nonofficial' and item['publicationStatus'] == 'research_only', 'User example mislabeled as official')
     # Whitespace checks include new untracked files, unlike git diff --check.
-    for folder in [ROOT / 'scripts/gesp', ROOT / 'resources/gesp', ROOT / 'doc/gesp']:
+    for folder in [REPO_ROOT / 'scripts/gesp', OUT, REPO_ROOT / 'doc/gesp']:
         for path in folder.rglob('*'):
             if path.suffix not in {'.py', '.md', '.json', '.jsonl', '.txt'}:
                 continue

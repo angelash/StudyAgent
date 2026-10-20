@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import urllib.error
 import urllib.parse
@@ -18,10 +19,11 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(os.environ.get('STUDY_GESP_SOURCE_ROOT', str(REPO_ROOT))).resolve()
 BASE = 'https://gesp.ccf.org.cn'
 RAW = ROOT / 'data/gesp'
-OUT = ROOT / 'resources/gesp'
+OUT = Path(os.environ.get('STUDY_GESP_RESOURCES_ROOT', str(REPO_ROOT / 'resources/gesp'))).resolve()
 MANIFEST = OUT / 'sources.json'
 SEEDS = [
     ('/101/1010/index.html', 'exam_index'),
