@@ -12,7 +12,7 @@ Next升级后实际构建发现 `--env-file` 被传入构建worker的 `NODE_OPTI
 
 未被领域存储使用的Prisma脚手架原样归档到 `resources/legacy/prisma`；移除其安装依赖和可误执行的旧种子命令。SQLite/PostgreSQL当前迁移仍在应用启动时执行。README已按真实实现重写，区分已实现路径、资产统计和待验收项目。
 
-新增GitHub Actions配置，安排Node24上的安装、审计、构建、测试、类型检查及Python审计工具回归；另设隔离PostgreSQL16数据库运行迁移/恢复测试。恢复测试的客户端工具路径可用 `STUDY_TEST_PG_BIN` 设置。此配置尚未远程运行，不能视为Linux或云端CI验收通过。本机PostgreSQL17实测单独记录。
+新增GitHub Actions配置，安排Node24上的安装、审计、构建、测试、类型检查及Python审计工具回归；另设隔离PostgreSQL16数据库运行迁移/恢复测试。恢复测试的客户端工具路径可用 `STUDY_TEST_PG_BIN` 设置。GitHub Ubuntu 24.04 与 PostgreSQL 16 已完整远程通过（run 39500754720），本机 PostgreSQL 17 实测另行保留。
 
 ## 本机验证
 
@@ -35,7 +35,7 @@ Next升级后实际构建发现 `--env-file` 被传入构建worker的 `NODE_OPTI
 
 CI 现通过独立 `scripts/processing/requirements-ci.txt` 安装 PyMuPDF 与 Pillow，只覆盖确定性的文本型 PDF 测试路径；生产环境仍使用包含 OCR、ONNX 和本地模型依赖的 `requirements.txt`。这样既让真实 worker 走完整上传、任务租约、页面渲染、候选生成和事务发布路径，也避免为两个文本 PDF 用例安装整套模型栈。
 
-本机使用同一最小依赖目标复跑两项教材导入测试通过。远端 Linux 结果在新推送的 Verify 运行完成后单独记录；在该运行通过前，不把本地通过写成跨环境 CI 已验收。
+本机使用同一最小依赖目标复跑两项教材导入测试通过，远端 Ubuntu 的完整 Verify 随后也通过。跨平台 CI 收据见 [CI运行](../evidence/2026-10-21/ci-verify-runtime.json)。
 
 ## 2026-10-21 / 全课程 QA 聚合限流
 

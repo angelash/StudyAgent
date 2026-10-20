@@ -10,6 +10,7 @@
 6. [教材课时映射核对清单](./69-textbook-mapping-worklist-delivery.md)：跨教材定位待审课时并跳转到逐课时人工审核。
 7. [完整语文教材源与映射候选](./70-complete-chinese-textbook-source-and-mapping-candidates.md)：12册完整PDF、独立备份和523课时候选证据。
 8. [教材课时审核工作台](./71-textbook-review-workbench-delivery.md)：候选证据筛选、受控原页阅读、字节校验和审核进度。
+9. [GitHub Linux CI完整通过](../evidence/2026-10-21/ci-verify-runtime.json)：Ubuntu 24.04、Node 24、PostgreSQL 16 的完整远端流水线收据。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。

@@ -68,7 +68,7 @@
 - `linux-release-runtime.json`：389文件的私有源码候选逐文件核验；全新目录 `npm ci`、依赖审计0项、完整构建/类型检查、132项默认测试及SQLite生产运行/故障检查通过。6项PostgreSQL专项在默认测试中跳过；其既有专项结果与本次独立PostgreSQL部署运行证据分开保存。源码包 SHA-256 为 `67adb9da0ec8c53bac50a6087fe43c099b43d00642882cab20c2177b564d07e1`。
 - `linux-processing-models-runtime.json`：手写模型约1.47秒、Qwen CPU审阅约23.73秒实际运行通过。前者输出图片已独立核对哈希并解码，后者生成207字建议；两者均保留 `reviewRequired=true` / `verifiedCorrect=false`，未被用于教学评分。
 - `linux-systemd-syntax.json`：systemd 255 对三个模板作路径/用户替换后检查通过；没有安装或启动系统unit。
-- `scripts/operations/test_package_source.py`：Linux上4项安全边界回归通过，覆盖Git已跟踪的私密配置排除、可核对源码往返、内容篡改、外部源链接、tar路径逃逸/链接/重名拒绝。新增CI步骤尚未远程运行。
+- `scripts/operations/test_package_source.py`：Linux上4项安全边界回归通过，覆盖Git已跟踪的私密配置排除、可核对源码往返、内容篡改、外部源链接、tar路径逃逸/链接/重名拒绝。新增CI步骤已在 GitHub Ubuntu 24.04 远端运行通过。
 - 首轮发现 Next 构建被验证器强制设置为开发环境；第二轮修正后构建通过，测试揭示旧集成测试依赖开发机 E 盘教材和旧资产别名。已改成隔离合成教材和显式资产目录，重新执行全量验收。
 
 本证据验证的是已有 Ubuntu / WSL2 主机上的全新应用和依赖目录，不称为另一台物理机器或远程发布验收。systemd 模板尚未安装到系统服务管理器；TLS 只在隔离进程中演练。真实浏览器、课程教材完整覆盖和 E 盘全量恢复仍按各自缺口继续推进，不由 HTTP 成功替代。
