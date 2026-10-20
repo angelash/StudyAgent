@@ -1,0 +1,25 @@
+{
+  "format": "study-agent-gesp-privacy-scope-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "integrationTests": {
+    "file": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+    "tests": 5,
+    "passed": 5
+  },
+  "durabilityTests": {
+    "file": "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+    "tests": 1,
+    "passed": 1,
+    "restarts": 1,
+    "backupRecovery": true
+  },
+  "covered": [
+    "GESP source code, probes, hints, plans, plan revisions and reviews enter family exports",
+    "request keys are scrubbed from portable exports",
+    "child permanent deletion removes GESP learning history",
+    "account closure preserves a shared child and anonymizes the closed guardian attribution",
+    "restore with the deletion ledger does not resurrect the deleted child GESP history"
+  ],
+  "limits": "Synthetic family data. This proves data-scope relations and recovery semantics, not external media retention or human learning-effect validity."
+}
