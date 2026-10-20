@@ -13,6 +13,8 @@ const from = file => require(path.join(root, 'apps/api/dist/apps/api/src', file)
 const { AppModule } = from('app.module.js'), { InMemoryStoreService } = from('infrastructure/in-memory-store.service.js');
 const { blueprintContentHash } = from('modules/diagnostics/assessment-blueprint.js');
 const files = ['packages/contracts/src/curriculum.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts',
+  'apps/api/src/modules/diagnostics/diagnostics.controller.ts', 'apps/api/src/modules/diagnostics/textbook-registry.service.ts',
+  'apps/api/src/modules/diagnostics/textbook-registry-document.test.ts', 'apps/api/src/common/stream-file.ts',
   'apps/api/src/modules/diagnostics/verification-materials.ts', 'apps/api/src/modules/diagnostics/verification-blueprint.ts',
   'apps/api/src/modules/diagnostics/measurement-definition.ts', 'apps/api/src/modules/diagnostics/family-identity.ts',
   'apps/api/src/modules/diagnostics/diagnosis.ts', 'apps/web/app/admin/curriculum/page.tsx',

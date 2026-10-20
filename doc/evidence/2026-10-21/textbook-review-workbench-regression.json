@@ -1,0 +1,23 @@
+{
+  "format": "study-agent-textbook-review-workbench-regression-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "defaultRegression": {
+    "testFiles": 150,
+    "tests": 691,
+    "passed": 685,
+    "failed": 0,
+    "postgresDefaultSkipped": 6
+  },
+  "build": true,
+  "lint": true,
+  "targeted": {
+    "candidateFilter": true,
+    "sourceDocumentUnitTests": 2,
+    "crossTextbookHttp": true,
+    "rangeResponseStatus": 206,
+    "parentAccessDenied": true,
+    "tamperRejected": true
+  },
+  "limits": "Automated API, permission, byte-integrity and build checks only. Browser layout, embedded PDF viewer behavior and human curriculum review remain outstanding."
+}

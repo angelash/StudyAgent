@@ -52,9 +52,11 @@ describe.sequential('eligible material coverage through real curriculum services
     expect(result.books).toBe(1); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
     expect(result.rows).toHaveLength(20); expect(result.rows.every((row: any) => row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
     expect(result.note).toContain('不根据标题自动批准');
-    const candidates = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=6&term=lower&status=unmapped&page=1&pageSize=100');
+    const candidates = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=6&term=lower&status=unmapped&candidate=with&page=1&pageSize=100');
     const candidateRows = candidates.rows.filter((row: any) => row.candidateAtomIds.length > 0);
     expect(candidateRows.length).toBeGreaterThan(0);
+    expect(candidates.rows).toHaveLength(candidates.total); expect(candidates.candidateCounts.with).toBe(candidates.total);
+    expect(candidates.note).toContain('有候选不等于已映射');
     for (const row of candidateRows) {
       expect(row).toMatchObject({ state: 'unmapped', mappingVersion: null, candidateReviewStatus: 'candidate' });
       expect(row.atomIds).toEqual([]);
@@ -65,6 +67,10 @@ describe.sequential('eligible material coverage through real curriculum services
         expect(atom.grade < 6 || atom.term === 'both' || atom.term === 'lower').toBe(true);
       }
     }
+    const withoutCandidates = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=6&term=lower&status=unmapped&candidate=without&page=1&pageSize=100');
+    expect(withoutCandidates.rows.every((row: any) => row.candidateAtomIds.length === 0)).toBe(true);
+    expect(withoutCandidates.candidateCounts.with).toBe(candidates.candidateCounts.with);
+    expect(candidates.total + withoutCandidates.total).toBe(candidates.candidateCounts.all);
     await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1', undefined, parent, 403);
   }, 30_000);
   it('uses every current eligibility gate and restores readiness only when the actual packets are eligible again', async () => {

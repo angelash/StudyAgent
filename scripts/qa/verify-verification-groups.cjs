@@ -32,6 +32,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/measurement.ts', 'apps/api/src/modules/diagnostics/adaptive-routing.ts',
   'apps/api/src/modules/diagnostics/guidance.service.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts',
   'apps/api/src/modules/diagnostics/diagnostics.controller.ts', 'apps/api/src/infrastructure/in-memory-store.service.ts',
+  'apps/api/src/modules/diagnostics/textbook-registry.service.ts', 'apps/api/src/modules/diagnostics/textbook-registry-document.test.ts',
+  'apps/api/src/common/stream-file.ts',
   'apps/api/src/modules/learning/learning.service.ts', 'apps/api/src/modules/learning/notebook.service.ts',
   'scripts/qa/verification-family-identity.cjs', 'apps/web/components/report-analysis-update.tsx', 'apps/web/components/guidance-manager.tsx',
   'apps/api/src/modules/diagnostics/verification-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts',

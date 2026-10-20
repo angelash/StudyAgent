@@ -102,6 +102,17 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
       expect(JSON.stringify(detail)).not.toContain('transcode/image');
     }
     expect(entries).toBe(558); expect(lessons).toBe(523);
+    const sourceBook = (await call('get', '/diagnostics/textbooks?subject=chinese&grade=1&term=upper')).find((b: any) => b.source === 'public_catalog');
+    expect(sourceBook.sourceDocument).toMatchObject({ pages: 127 });
+    expect(sourceBook.sourceDocument.sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(JSON.stringify(sourceBook.sourceDocument)).not.toContain('data/assets');
+    if (sourceBook.sourceDocument.available) {
+      const documentPath = `/api/admin/curriculum/textbooks/${encodeURIComponent(sourceBook.id)}/document`;
+      const range = await request(app.getHttpServer()).get(documentPath).set('Authorization', `Bearer ${admin.token}`).set('Range', 'bytes=0-7').expect(206);
+      expect(range.headers['content-type']).toContain('application/pdf'); expect(range.headers['content-range']).toMatch(/^bytes 0-7\/\d+$/);
+      expect(range.headers['cache-control']).toContain('no-store'); expect(range.headers.etag).toContain(sourceBook.sourceDocument.sha256);
+      await request(app.getHttpServer()).get(documentPath).set('Authorization', `Bearer ${owner.token}`).expect(403);
+    }
   });
 
   it('requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition', async () => {

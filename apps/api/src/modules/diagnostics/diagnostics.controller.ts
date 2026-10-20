@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Param, Patch, Post, Put, Query, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Param, Patch, Post, Put, Query, Req, Res, UseGuards } from '@nestjs/common';
+import type { Response } from 'express';
 import { Subject, subjectSchema } from '@study-agent/contracts';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
+import { streamFile } from '../../common/stream-file';
 import { validate } from '../../common/validation';
 import { CurriculumService } from './curriculum.service';
 import { DiagnosticsService } from './diagnostics.service';
@@ -45,6 +47,13 @@ export class DiagnosticsController {
   @Get('admin/curriculum/textbooks/:bookId')
   textbookForEditor(@Req() req: AuthenticatedRequest, @Param('bookId') id: string) {
     this.curriculum.assertEditor(req.user); return this.curriculum.textbooks.detail(id, true);
+  }
+  @Get('admin/curriculum/textbooks/:bookId/document')
+  async textbookDocument(@Req() req: AuthenticatedRequest, @Param('bookId') id: string, @Headers('range') range: string | undefined,
+    @Res({ passthrough: true }) response: Response) {
+    this.curriculum.assertEditor(req.user);
+    const document = await this.curriculum.textbooks.document(id);
+    return streamFile({ ...document, mediaType: 'application/pdf' }, range, response);
   }
   @Post('admin/curriculum/textbook-mappings')
   saveTextbookMapping(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.saveTextbookMapping(req.user, body); }

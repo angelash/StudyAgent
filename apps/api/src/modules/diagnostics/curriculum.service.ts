@@ -319,6 +319,7 @@ export class CurriculumService {
     this.assertEditor(user);
     const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.coerce.number().int().min(1).max(6).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
+      candidate: z.enum(['all', 'with', 'without']).default('all'),
       page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
     if (!this.mappingCandidates) {
       const file = resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json');
@@ -357,10 +358,14 @@ export class CurriculumService {
     }
     const counts = Object.fromEntries(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale'].map(status =>
       [status, status === 'all' ? rows.length : rows.filter(row => row.state === status).length]));
-    const selected = query.status === 'all' ? rows : rows.filter(row => row.state === query.status);
-    return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null }, counts, books: books.length,
+    const statusRows = query.status === 'all' ? rows : rows.filter(row => row.state === query.status);
+    const candidateCounts = { all: statusRows.length, with: statusRows.filter(row => row.candidateAtomIds.length > 0).length,
+      without: statusRows.filter(row => row.candidateAtomIds.length === 0).length };
+    const selected = query.candidate === 'all' ? statusRows : statusRows.filter(row => query.candidate === 'with' ? row.candidateAtomIds.length > 0 : row.candidateAtomIds.length === 0);
+    return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null, status: query.status, candidate: query.candidate },
+      counts, candidateCounts, books: books.length,
       total: selected.length, page: query.page, pageSize: query.pageSize, rows: selected.slice((query.page - 1) * query.pageSize, query.page * query.pageSize),
-      note: '该清单只定位待核对课时；状态变化必须通过逐课时映射审核，不根据标题自动批准知识映射。' };
+      note: '该清单只定位待核对课时；有候选不等于已映射，状态变化必须通过逐课时映射审核，不根据标题自动批准知识映射。' };
   }
 
   overview(user: InMemoryUserAccount, subject?: Subject, grade?: number) {
