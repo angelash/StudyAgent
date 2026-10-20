@@ -23,8 +23,17 @@ const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/
 const { buildFoundationCurriculum, foundationQuestionId } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
 if (pointFilter && (!verifyContentUpgrade || !buildAllAuthoredMathProbeFamilies().some(family => family.atomId === pointFilter))) throw new Error('The optional smoke-test filter must name an existing authored point in content-upgrade mode');
 const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
+const { FAMILY_IDENTITY_VERSION } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/family-identity.js');
+const { verifyFamilyIdentityUpgrade } = require('./verification-family-identity.cjs');
 const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
+  'apps/api/src/common/auth.guard.ts',
+  'apps/api/src/modules/diagnostics/family-identity.ts', 'resources/curriculum/authored-family-identities-v1.json',
+  'apps/api/src/modules/diagnostics/measurement.ts', 'apps/api/src/modules/diagnostics/adaptive-routing.ts',
+  'apps/api/src/modules/diagnostics/guidance.service.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts',
+  'apps/api/src/modules/diagnostics/diagnostics.controller.ts', 'apps/api/src/infrastructure/in-memory-store.service.ts',
+  'apps/api/src/modules/learning/learning.service.ts', 'apps/api/src/modules/learning/notebook.service.ts',
+  'scripts/qa/verification-family-identity.cjs', 'apps/web/components/report-analysis-update.tsx', 'apps/web/components/guidance-manager.tsx',
   'apps/api/src/modules/diagnostics/verification-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnosis.ts',
   'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/web/app/student/assessment/studio.tsx',
   'apps/web/components/assessment-blueprint.tsx', 'apps/web/components/verification-observations.tsx', 'apps/web/components/verification-observations.css',
@@ -51,6 +60,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/student-media/student-media.service.ts', 'apps/api/src/modules/student-media/media-normalization.ts',
   'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
+  familyIdentityVersion: FAMILY_IDENTITY_VERSION,
   pointFilter: pointFilter ?? null,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
@@ -295,9 +305,13 @@ async function main() {
       const preview = await call('POST', '/diagnostics/blueprints', { studentId: pointStudentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
         includePrerequisites: true, maxItems: 8, requestKey: randomUUID() }, actor);
       assert.equal(preview.blueprint.verification.fullyCovered, true); assert.equal(preview.itemCount, 4);
+      assert.equal(preview.blueprint.familyIdentityVersion, FAMILY_IDENTITY_VERSION);
+      assert.equal(preview.blueprint.verification.familyIdentityVersion, FAMILY_IDENTITY_VERSION);
       const session = await call('POST', previewRoute(preview.id) + '/start', {}, actor);
       const result = await completePointSession(session, actor, true);
       assert.equal(result.verification.independentObservationsComplete, true);
+      assert.equal(result.familyIdentityVersion, FAMILY_IDENTITY_VERSION);
+      assert.equal(result.verification.distinctFamilyRequirementsMet, true);
       assert(result.verification.groups.every(group => group.independentFamilies === 2 && group.passedFamilies === 2));
       assert.notEqual(result.estimates.find(row => row.atomId === selectedAtomId).status, 'secure');
       evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalGuardianCohort: cohort, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
@@ -369,10 +383,12 @@ async function main() {
   assert.deepEqual(latestReport.verification.blueprint, preview.blueprint.verification);
   const history = await call('GET', sessionRoute(session.id) + '/report-history', undefined, 'learner'); assert.deepEqual(history.at(-1), firstReport);
   await call('POST', previewRoute(rootPreview.id) + '/start', {}, 'parent', 409);
+  const identityUpgrade = await verifyFamilyIdentityUpgrade({ call, getStore: () => store, getApp: () => app, tokens });
   await stop(); await start();
   assert.deepEqual(await call('GET', sessionRoute(session.id) + '/report', undefined, 'learner'), latestReport);
   assert.deepEqual(await call('GET', sessionRoute(session.id) + '/report-history', undefined, 'learner'), history);
   assert.equal((await call('POST', previewRoute(preview.id) + '/start', {}, 'learner')).id, session.id);
+  evidence.familyIdentityUpgrade = { ...identityUpgrade.receipt, ...await identityUpgrade.verifyAfterRestart() };
   evidence.result = { previewItemCount: preview.itemCount, requiredObservationGroups: preview.blueprint.verification.groups.length,
     observationCoverage: preview.blueprint.verification.groups.map(row => ({ dimensions: row.dimensions, availableFamilies: row.availableFamilies, selectedFamilies: row.selectedFamilies.length, gap: row.gap })),
     targetAndAllDirectPrerequisitesCompared: true, learnerAuthorization: true, outsiderBlocked: true,

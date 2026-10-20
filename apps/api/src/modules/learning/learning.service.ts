@@ -16,6 +16,7 @@ import { eligibleMeasurements } from '../diagnostics/curriculum.service';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
+import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -235,7 +236,8 @@ export class LearningService {
       atomName: atomSnapshot?.name ?? item.atomId,
       stem: snapshot?.stem ?? '原始题目暂不可用', analysis: snapshot?.analysis ?? '', referenceAnswer: snapshot?.answer ?? null,
       hypothesis: atomSnapshot ? this.store.select('diagnosticHypotheses', { studentId, atomId: item.atomId }).find(hypothesis =>
-        hypothesis.atomDefinitionFingerprint === atomDefinitionFingerprint(atomSnapshot) && !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null : null }));
+        hypothesis.ruleVersion === DIAGNOSIS_VERSION && hypothesis.atomDefinitionFingerprint === atomDefinitionFingerprint(atomSnapshot) &&
+        !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null : null }));
   }
   overview(user: InMemoryUserAccount) {
     const children = this.store.students.filter((child) => user.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })));

@@ -92,7 +92,7 @@ describe('conservative atomic measurement', () => {
       evidence(2, { atomId: 'place', correct: false, score: 0 }), evidence(3, { atomId: 'place', correct: false, score: 0 })];
     const hypotheses = deriveHypotheses('student', 'math', [definition], records, mappings(records), [], now.toISOString());
     expect(hypotheses).toHaveLength(1); expect(hypotheses[0]).toMatchObject({ cause: 'procedure_gap', status: 'proposed', confidence: 'low',
-      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v4' });
+      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v5' });
     expect(hypotheses[0].verification!.supportCondition).toContain('两个独立题族');
     expect(hypotheses[0].verification!.undecidedCondition).toContain('暂时不会');
   });

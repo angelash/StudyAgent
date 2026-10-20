@@ -1,6 +1,7 @@
 import type { DiagnosticResponse, DiagnosticRoutingDecision, DiagnosticSession, MeasurementItem } from '@study-agent/contracts';
+import { canonicalFamily } from './family-identity';
 
-export const ROUTING_VERSION = 'frozen-evidence-routing-v1';
+export const ROUTING_VERSION = 'frozen-evidence-routing-v2';
 const anchor = (item?: MeasurementItem) => !!item && ['understanding', 'procedure'].includes(item.dimension);
 const independent = (response: DiagnosticResponse) => response.status === 'scored' && response.disposition === 'answered' && !response.hintLevel && !response.priorExposure;
 
@@ -22,8 +23,10 @@ export function routeNext(session: DiagnosticSession, responses: readonly Diagno
   const last = session.routing ? byItem.get(session.routing.currentItemId ?? '') ??
     session.routing.decisions.slice().reverse().map(decision => byItem.get(decision.itemId)).find(Boolean) : responses.at(-1);
   const positions = new Map((session.routing?.initialItemIds ?? session.itemIds).map((id, index) => [id, index]));
+  // Already-started v1 routes keep their original ordering semantics and recorded decisions.
+  const family = (item: { atomId: string; family: string }) => session.routing?.version === 'frozen-evidence-routing-v1' ? item.family : canonicalFamily(item);
   const order = (items: MeasurementItem[]) => items.slice().sort((a, b) => Number(!!session.exposedQuestionIds?.includes(a.questionId)) - Number(!!session.exposedQuestionIds?.includes(b.questionId)) ||
-    Number(a.atomId === last?.atomId && a.family === last.family) - Number(b.atomId === last?.atomId && b.family === last.family) ||
+    Number(a.atomId === last?.atomId && family(a) === family(last)) - Number(b.atomId === last?.atomId && family(b) === family(last)) ||
     Number(!anchor(a)) - Number(!anchor(b)) || a.difficulty - b.difficulty || (positions.get(a.id) ?? 0) - (positions.get(b.id) ?? 0));
   const lastItem = last && session.itemSnapshots.find(item => item.id === last.itemId);
   const previousDecision = session.routing?.decisions.find(decision => decision.itemId === last?.itemId);

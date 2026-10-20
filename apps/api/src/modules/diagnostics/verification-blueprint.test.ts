@@ -25,7 +25,7 @@ const response = (row: MeasurementItem, patch: Partial<DiagnosticResponse> = {})
 describe('frozen, falsifiable verification observation groups', () => {
   it('uses current rules and all direct prerequisites, with a separate target contrast', () => {
     const blueprint = verificationBlueprint(hypothesis('prerequisite_gap'), atom, 'basis');
-    expect(blueprint.sourceRuleVersion).toBe('source-rule'); expect(blueprint.ruleVersion).toBe('diagnosis-rules-v4');
+    expect(blueprint.sourceRuleVersion).toBe('source-rule'); expect(blueprint.ruleVersion).toBe('diagnosis-rules-v5');
     expect(blueprint.groups.map(group => group.atomId)).toEqual(['target', 'base-a', 'base-b']);
     expect(blueprint.groups.every(group => group.minIndependentFamilies === 2)).toBe(true);
     expect(blueprint.supportCondition).toContain('同时'); expect(blueprint.counterCondition).toContain('每个直接先修点');

@@ -1,0 +1,22 @@
+{
+  "version": "authored-family-identity-v1",
+  "scope": "Only the following reviewed authored aliases are merged. This is a task-structure rule, not field calibration or statistical independence. Unknown labels remain unchanged.",
+  "groups": [
+    {
+      "atomId": "core:math:brackets",
+      "canonical": "bracket-left",
+      "aliases": ["bracket-left", "bracket-right"],
+      "source": "apps/api/src/modules/diagnostics/original-core-curriculum.ts",
+      "examples": ["(a+b)×c", "c×(a+b)"],
+      "rationale": "两者均先计算括号内的和，再与同一外部因数相乘；只交换乘法因数位置，不能增加独立任务结构。"
+    },
+    {
+      "atomId": "core:math:bigplace",
+      "canonical": "number-class-compose",
+      "aliases": ["number-class-compose", "ten-thousand-compose"],
+      "source": "apps/api/src/modules/diagnostics/original-core-curriculum.ts",
+      "examples": ["a个万与b个一合起来是多少", "万级是a、个级是b的数是多少"],
+      "rationale": "两者均把万级分量乘10000后加个级分量，只有措辞变化；分量过程任务也沿用这一结构。"
+    }
+  ]
+}

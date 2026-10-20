@@ -8,6 +8,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { StudentsService } from '../students/students.service';
 import { DiagnosticsService } from '../diagnostics/diagnostics.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
+import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { blueprintContentHash as hash } from '../diagnostics/assessment-blueprint';
 import { LearningService, studyDay } from './learning.service';
 
@@ -117,7 +118,8 @@ export class NotebookService {
       referenceAnswer: source.snapshot.answer, analysis: source.snapshot.analysis, payload,
       atomSnapshot: source.atomSnapshot, sourceSessionId: source.sourceSessionId,
       hypotheses: source.atomSnapshot ? this.store.select('diagnosticHypotheses', { studentId, atomId: source.atomId }).filter(hypothesis =>
-        hypothesis.atomDefinitionFingerprint === atomDefinitionFingerprint(source.atomSnapshot!) && !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) : [],
+        hypothesis.ruleVersion === DIAGNOSIS_VERSION && hypothesis.atomDefinitionFingerprint === atomDefinitionFingerprint(source.atomSnapshot!) &&
+        !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) : [],
       history: (entry?.history ?? []).map(({ requestKey: _key, inputHash: _hash, ...history }) => history),
       redos: (entry?.redoSessionIds ?? []).map(id => { const practice = this.store.find('practiceSessions', { id, studentId });
         return practice ? { id, createdAt: practice.createdAt, completedAt: practice.completedAt, status: practice.status,

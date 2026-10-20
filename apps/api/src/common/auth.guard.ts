@@ -22,7 +22,7 @@ const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/students\/[^/]+\/notebook(\/[^/]+\/[^/]+)?$/,
     /^students\/[^/]+\/(profile|learning-scope|progress-proposals)$/, /^diagnostics\/curriculum$/, /^diagnostics\/textbooks(\/[^/]+)?$/,
-    /^diagnostics\/sessions$/, /^diagnostics\/sessions\/[^/]+(\/(report|report-history)|\/items\/[^/]+)?$/,
+    /^diagnostics\/sessions$/, /^diagnostics\/sessions\/[^/]+(\/(report|report-history|analysis-status)|\/items\/[^/]+)?$/,
     /^diagnostics\/blueprints\/[^/]+$/,
     /^diagnostics\/students\/[^/]+\/(profile|plans|reviews)$/,
     /^diagnostics\/students\/[^/]+\/evidence\/[^/]+$/,

@@ -10,7 +10,7 @@ import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
 import { CurriculumService, eligibleMeasurements } from './curriculum.service';
-import { deriveHypotheses } from './diagnosis';
+import { deriveHypotheses, DIAGNOSIS_VERSION } from './diagnosis';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { gradeResponse } from './scoring';
 import { prepareScoringReview } from './scoring-review';
@@ -22,6 +22,7 @@ import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } f
 import { observedPerformance } from './observations';
 import { componentObservations } from './component-observations';
 import { verificationBlueprint, verificationResult } from './verification-blueprint';
+import { FAMILY_IDENTITY_VERSION, LEGACY_FAMILY_IDENTITY_VERSION, canonicalFamily, familyAnalysisOutdated, familyIdentityAffectsAtom } from './family-identity';
 
 @Injectable()
 export class DiagnosticsService {
@@ -48,7 +49,9 @@ export class DiagnosticsService {
       if (plan.status !== 'active') throw new BadRequestException('请先启用指导计划');
       const baselineVersion = plan.baselineReportVersion ?? this.store.diagnosticReports.filter(r => r.sessionId === plan.baselineSessionId && r.createdAt <= plan.createdAt)
         .sort((a, b) => b.version - a.version)[0]?.version ?? 1;
-      if (baselineVersion !== (this.report(user, plan.baselineSessionId).version ?? 1)) throw new ConflictException('评测依据已修订，请先核对指导计划');
+      const baselineReport = this.report(user, plan.baselineSessionId);
+      if (familyAnalysisOutdated(baselineReport)) throw new ConflictException('题族计量方法已更新，请先重新分析原报告并核对指导计划');
+      if (baselineVersion !== (baselineReport.version ?? 1)) throw new ConflictException('评测依据已修订，请先核对指导计划');
       const baseline = this.requireSession(user, plan.baselineSessionId);
       if (!baseline.atomSnapshots) throw new ConflictException('历史计划未保存知识定义，请重新评测后建立新计划');
       if (this.changedPlanDefinitions(baseline, plan.actions.map(action => action.atomId)).length) throw new ConflictException('知识定义已调整，请按当前定义重新评测并建立计划');
@@ -66,6 +69,9 @@ export class DiagnosticsService {
     if (command.hypothesisId) {
       hypothesis = this.store.find('diagnosticHypotheses', { id: command.hypothesisId, studentId: command.studentId, subject: command.subject });
       if (!hypothesis) throw new NotFoundException('待验证问题不存在');
+      if (hypothesis.ruleVersion !== DIAGNOSIS_VERSION && familyIdentityAffectsAtom(hypothesis.atomId)) {
+        throw new ConflictException('原因核查方法已更新，请先重新分析原报告或完成新评测');
+      }
       if (command.intent !== 'verification') throw new BadRequestException('原因核查应使用验证评测；间隔保持请从复测任务开始');
       if (hypothesis.cause === 'retention_gap') throw new BadRequestException('保持情况需要真实间隔，请通过指导计划的到期复测验证');
       if (hypothesis.status === 'withdrawn') throw new ConflictException('该问题已撤回，请根据当前评测重新确认需要核查的行为');
@@ -113,7 +119,7 @@ export class DiagnosticsService {
         return structuredClone({ id: question.id, stem: question.stem, answer: question.answer, analysis: question.analysis,
           document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
       }), coverage, selectionReasons: Object.fromEntries(selected.map((item) => [item.id,
-        `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${item.family}${seen.has(item.questionId) ? ' · 曾作答，不增加独立样本' : ''}`])),
+        `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${canonicalFamily(item)}${seen.has(item.questionId) ? ' · 曾作答，不增加独立样本' : ''}`])),
       seed, algorithmVersion: blueprint.version, startedAt: new Date().toISOString(), completedAt: null,
       exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
@@ -133,7 +139,8 @@ export class DiagnosticsService {
     this.store.append('diagnosticSessions', session);
     if (session.hypothesisId) {
       const hypothesis = this.store.find('diagnosticHypotheses', { id: session.hypothesisId })!;
-      hypothesis.status = 'testing'; hypothesis.history.push({ at: session.startedAt, status: 'testing', reason: `开始验证评测 ${session.id}` });
+      hypothesis.status = 'testing'; hypothesis.history.push({ at: session.startedAt, status: 'testing', ruleVersion: hypothesis.ruleVersion,
+        reason: `开始验证评测 ${session.id}` });
     }
     this.events.publish('diagnostic.started', { sessionId: session.id, studentId: session.studentId, scopeId: session.scopeSnapshot.id, itemCount: session.itemIds.length });
     return this.sessionView(user, session.id);
@@ -269,7 +276,8 @@ export class DiagnosticsService {
         const hypothesis = this.store.find('diagnosticHypotheses', { id: session.hypothesisId });
         if (hypothesis?.status === 'testing') {
           hypothesis.status = 'proposed'; hypothesis.updatedAt = at;
-          hypothesis.history.push({ at, status: 'proposed', reason: '本轮验证提前结束，已答证据保留，原因仍需进一步核查。' });
+          hypothesis.history.push({ at, status: 'proposed', ruleVersion: hypothesis.ruleVersion,
+            reason: '本轮验证提前结束，已答证据保留，原因仍需进一步核查。' });
         }
       }
       this.refreshHypotheses(session.studentId, session.subject);
@@ -421,7 +429,9 @@ export class DiagnosticsService {
     }
     for (const old of this.store.select('diagnosticHypotheses', { studentId, subject }).filter(entry => !next.some(item => item.id === entry.id) && entry.status !== 'withdrawn')) {
       old.status = 'withdrawn'; old.updatedAt = new Date().toISOString();
-      old.history.push({ at: old.updatedAt, status: 'withdrawn', reason: '当前有效评分不再支持原假设，保留历史供追溯，不作为已验证改善。' });
+      old.ruleVersion = DIAGNOSIS_VERSION; old.familyIdentityVersion = FAMILY_IDENTITY_VERSION;
+      old.history.push({ at: old.updatedAt, status: 'withdrawn', ruleVersion: DIAGNOSIS_VERSION,
+        reason: '当前有效评分不再支持原假设，保留历史供追溯，不作为已验证改善。' });
     }
     return next;
   }
@@ -440,10 +450,10 @@ export class DiagnosticsService {
     return { studentId, subject, scope, estimates: atoms.map((atom) => estimateMastery(atom, weighted)),
       componentObservations: this.store.select('diagnosticSessions', { studentId, subject, status: ['completed', 'aborted'] })
         .flatMap(session => componentObservations(session, responsesBySession.get(session.id) ?? [], atoms)),
-      hypotheses: this.store.select('diagnosticHypotheses', { studentId, subject }).filter(hypothesis => atoms.some(atom =>
-        atom.id === hypothesis.atomId && atomDefinitionFingerprint(atom) === hypothesis.atomDefinitionFingerprint)),
+      hypotheses: deriveHypotheses(studentId, subject, atoms, compatibility.compatible, this.allMappings(studentId),
+        this.store.select('diagnosticHypotheses', { studentId, subject }), new Date().toISOString()),
       definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
-      modelVersion: MEASUREMENT_VERSION };
+      modelVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION };
   }
 
   report(user: InMemoryUserAccount, sessionId: string) {
@@ -458,6 +468,41 @@ export class DiagnosticsService {
     if (!['completed', 'aborted'].includes(session.status)) throw new ConflictException('本组结束后才能查看评分与报告历史');
     return this.store.select('diagnosticReports', { sessionId: sessionId }).sort((a, b) => b.version - a.version)
       .map((item) => ({ ...this.reportOrigin(item.report), version: item.version, generatedAt: item.createdAt }));
+  }
+
+  analysisStatus(user: InMemoryUserAccount, sessionId: string) {
+    const report = this.report(user, sessionId);
+    return { requiresReanalysis: familyAnalysisOutdated(report), reportVersion: report.version ?? 1,
+      reportFamilyIdentityVersion: report.familyIdentityVersion ?? LEGACY_FAMILY_IDENTITY_VERSION,
+      currentFamilyIdentityVersion: FAMILY_IDENTITY_VERSION,
+      canReanalyze: !!this.requireSession(user, sessionId).atomSnapshots && ['parent', 'admin'].includes(user.role) };
+  }
+
+  /** A requested rule update appends a report; it cannot manufacture an intervention or overwrite the old result. */
+  reanalyzeReport(user: InMemoryUserAccount, sessionId: string, input: unknown) {
+    const session = this.requireSession(user, sessionId);
+    this.students.assertGuardian(user, session.studentId);
+    const command = validate(z.object({ requestKey: z.string().min(8).max(180), expectedReportVersion: z.number().int().positive(),
+      reason: z.string().trim().min(5).max(1000) }).strict(), input);
+    const inputHash = blueprintContentHash(command);
+    const previousRequest = this.store.select('diagnosticReports', { sessionId }).find(row =>
+      row.reanalysis?.actorId === user.id && row.reanalysis.requestKey === command.requestKey);
+    if (previousRequest) {
+      if (previousRequest.reanalysis!.inputHash !== inputHash) throw new ConflictException('请求键已用于另一份报告重分析');
+      return { ...this.reportOrigin(previousRequest.report), version: previousRequest.version, generatedAt: previousRequest.createdAt };
+    }
+    const report = this.report(user, sessionId);
+    if ((report.version ?? 1) !== command.expectedReportVersion) throw new ConflictException('报告已有新版本，请重新查看后再分析');
+    if (!session.atomSnapshots) throw new ConflictException('历史评测缺少冻结知识定义，请保留原报告并完成新评测');
+    if (report.familyIdentityVersion === FAMILY_IDENTITY_VERSION) return report;
+    this.refreshHypotheses(session.studentId, session.subject);
+    const version = (report.version ?? 1) + 1, createdAt = new Date().toISOString();
+    this.store.append('diagnosticReports', { id: this.store.nextId('report'), sessionId, version, createdAt,
+      reanalysis: { actorId: user.id, requestKey: command.requestKey, inputHash },
+      report: { ...this.buildReport(session), revisionReason: `题族计量规则更新，依据原始作答重新分析；数值变化不等同于学习改善。${command.reason}` } });
+    this.events.publish('diagnostic.report_reanalyzed', { sessionId, studentId: session.studentId, actorId: user.id,
+      previousVersion: report.version ?? 1, version, familyIdentityVersion: FAMILY_IDENTITY_VERSION });
+    return this.report(user, sessionId);
   }
 
   evidenceView(user: InMemoryUserAccount, studentId: string, responseId: string) {
@@ -499,9 +544,11 @@ export class DiagnosticsService {
     const previous = this.store.select('diagnosticHypotheses', { studentId: session.studentId, subject: session.subject })
       .flatMap((item) => {
         const history = item.history.filter((entry) => entry.at <= measuredAt), latest = history.at(-1);
-        return latest ? [{ ...item, status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
+        return latest ? [{ ...item, ruleVersion: latest.ruleVersion ?? (item.history.some(entry => entry.ruleVersion) ? 'legacy-unversioned' : item.ruleVersion),
+          status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
       });
     return { sessionId: session.id, studentId: session.studentId, subject: session.subject, status: session.status,
+      familyIdentityVersion: FAMILY_IDENTITY_VERSION,
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,
       coverage: session.coverage, estimates,

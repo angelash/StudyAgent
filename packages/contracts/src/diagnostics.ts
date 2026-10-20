@@ -78,12 +78,14 @@ export const diagnosticStartSchema = z.object({
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
 export type DiagnosticVerificationBlueprint = {
+  familyIdentityVersion?: string;
   hypothesisId: string; title: string; cause: DiagnosticHypothesis['cause']; ruleVersion: string; sourceRuleVersion: string;
   basisFingerprint: string; supportCondition: string; counterCondition: string; undecidedCondition: string; fullyCovered: boolean;
   groups: Array<{ id: string; atomId: string; atomName?: string; dimensions: MeasurementDimension[]; purpose: string; minIndependentFamilies: number;
     availableFamilies: number; selectedFamilies: string[]; itemIds: string[]; gap?: string }>;
 };
 export type DiagnosticVerificationResult = {
+  familyIdentityVersion?: string; distinctFamilyRequirementsMet?: boolean;
   blueprint: DiagnosticVerificationBlueprint; independentObservationsComplete: boolean;
   groups: Array<{ groupId: string; evidenceIds: string[]; independentEvidenceIds: string[]; independentFamilies: number;
     passedFamilies: number; belowStandardFamilies: number; awaitingReview: number; assistedOrExposed: number; selfReportedOrSkipped: number }>;
@@ -91,6 +93,7 @@ export type DiagnosticVerificationResult = {
 };
 
 export type AssessmentBlueprint = {
+  familyIdentityVersion?: string;
   version: string; title: string; intent: DiagnosticStart['intent']; focus: string;
   itemLimit: number; minutesLimit: number; expectedSeconds: number; groupSize: number;
   stopReason: 'item_budget' | 'time_budget' | 'available_families' | 'verification_groups'; stopRule: string;
@@ -180,6 +183,7 @@ export type ScoringRevision = {
 };
 
 export type MasteryEstimate = {
+  familyIdentityVersion?: string;
   atomId: string; atomName: string; grade: number; mastery: number | null; lower: number | null; upper: number | null;
   status: 'unknown' | 'insufficient' | 'learning' | 'fragile' | 'secure';
   rawCorrect: number; scoredCount: number; effectiveSamples: number; independentFamilies: number;
@@ -189,6 +193,7 @@ export type MasteryEstimate = {
 };
 
 export type DiagnosticHypothesis = {
+  familyIdentityVersion?: string;
   id: string; studentId: string; subject: z.infer<typeof subject>; atomId: string;
   cause: 'prerequisite_gap' | 'procedure_gap' | 'representation_gap' | 'retention_gap';
   status: 'proposed' | 'testing' | 'supported' | 'contradicted' | 'inconclusive' | 'monitoring' | 'resolved' | 'reopened' | 'withdrawn';
@@ -198,7 +203,7 @@ export type DiagnosticHypothesis = {
   verification?: { supportCondition: string; counterCondition: string; undecidedCondition: string;
     groups: Array<{ atomIds: string[]; dimensions: MeasurementDimension[]; minIndependentFamilies: number; purpose: string }> };
   nextAction: string; confidence: 'low' | 'medium'; ruleVersion: string; updatedAt: string;
-  history: Array<{ at: string; status: string; reason: string }>;
+  history: Array<{ at: string; status: string; reason: string; ruleVersion?: string }>;
   atomDefinitionFingerprint?: string;
 };
 
@@ -218,6 +223,7 @@ export type DiagnosticGuidancePlan = {
 };
 export type GuidancePlanView = DiagnosticGuidancePlan & {
   impact: { needsReview: boolean; baselineReportVersion: number; currentReportVersion: number;
+    measurementRulesChanged?: boolean;
     pendingReviewCount: number; affectedActionIds: string[]; message: string; definitionChangedActionIds?: string[];
     definitionUnverifiedActionIds?: string[] };
 };
@@ -235,6 +241,7 @@ export type ReviewTask = {
 };
 
 export type DiagnosticReport = {
+  familyIdentityVersion?: string;
   sessionId: string; studentId: string; subject: z.infer<typeof subject>; status: DiagnosticSession['status'];
   answeredCount: number; totalCount: number; scoredCount: number; pendingReviewCount: number;
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];

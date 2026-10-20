@@ -1,10 +1,11 @@
 import { DiagnosticHypothesis, DiagnosticResponse, KnowledgeAtom, MeasurementItem, Subject } from '@study-agent/contracts';
 import { createHash } from 'node:crypto';
 import { atomDefinitionFingerprint } from './measurement-definition';
+import { FAMILY_IDENTITY_VERSION, independentFamilyKey } from './family-identity';
 
 const ids = (evidence: DiagnosticResponse[]) => evidence.map((item) => item.id);
-const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map((item) => item.family)).size;
-export const DIAGNOSIS_VERSION = 'diagnosis-rules-v4';
+const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map(independentFamilyKey)).size;
+export const DIAGNOSIS_VERSION = 'diagnosis-rules-v5';
 
 // A family that merely changes its presentation must not fill both sides of a transfer contrast.
 const independentContrast = (basic: DiagnosticResponse[], transfer: DiagnosticResponse[]) =>
@@ -62,17 +63,19 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
       const fingerprint = atomDefinitionFingerprint(atom);
       const id = `hypothesis:${createHash('sha256').update(JSON.stringify([studentId, atom.id, proposal.cause, fingerprint])).digest('hex')}`;
       const old = previous.find((item) => item.id === id);
+      const sameRules = old?.ruleVersion === DIAGNOSIS_VERSION;
       let status: DiagnosticHypothesis['status'] = proposal.supported && proposal.contradicted ? 'inconclusive' :
         proposal.contradicted ? 'contradicted' : proposal.supported ? 'supported' : 'proposed';
-      if (old?.status === 'testing' && status === 'proposed') status = 'testing';
+      if (sameRules && old?.status === 'testing' && status === 'proposed') status = 'testing';
       const corrected = proposal.cause === 'prerequisite_gap' ? allPrerequisitesPassed && families(recentSuccess) >= 2 :
         proposal.cause === 'representation_gap' ? families(transferPass.filter((item) => item.submittedAt > lastFailure)) >= 2 :
           proposal.cause === 'retention_gap' ? families(retentionPass.filter((item) => item.submittedAt > lastFailure)) >= 2 :
             families(procedurePass.filter((item) => item.submittedAt > lastFailure)) >= 2;
-      if (old && ['supported', 'monitoring', 'reopened', 'resolved'].includes(old.status) && corrected) status = 'resolved';
-      if (old?.status === 'resolved' && !corrected && failed.some((item) => item.submittedAt > old.updatedAt)) status = 'reopened';
+      if (sameRules && old && ['supported', 'monitoring', 'reopened', 'resolved'].includes(old.status) && corrected) status = 'resolved';
+      if (sameRules && old?.status === 'resolved' && !corrected && failed.some((item) => item.submittedAt > old.updatedAt)) status = 'reopened';
       const history = [...(old?.history ?? [])];
-      if (!old || old.status !== status) history.push({ at, status, reason: '依据独立题族、支持证据及反证重新核查' });
+      if (!old || old.status !== status || !sameRules) history.push({ at, status, ruleVersion: DIAGNOSIS_VERSION,
+        reason: old && !sameRules ? '题族计量规则已更新，依据原始证据重新核查；规则变化不表示学习改善。' : '依据独立题族、支持证据及反证重新核查' });
       results.push({ id, studentId, subject, atomId: atom.id, cause: proposal.cause, status, title: proposal.title,
         observation: `在“${atom.name}”的 ${new Set(failed.map((item) => item.questionId)).size} 道不同题目中观察到未达标作答。${reported.length ? `另有 ${reported.length} 次选择暂时不会，尚无过程可以核对。` : ''}`,
         explanation: proposal.explanation, alternatives: ['题意或评分可能需要复核', '作答环境、误触和当日状态尚未测量', '其他知识或策略因素仍待排查'],
@@ -80,7 +83,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
         reportedEvidenceIds: proposal.cause === 'procedure_gap' ? ids(reported) : [],
         verification: verificationConditions(proposal.cause, atom, proposal.probes),
         probeAtomIds: proposal.probes, nextAction: proposal.action, confidence: proposal.supported ? 'medium' : 'low',
-        ruleVersion: DIAGNOSIS_VERSION, atomDefinitionFingerprint: fingerprint, updatedAt: at, history });
+        ruleVersion: DIAGNOSIS_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION, atomDefinitionFingerprint: fingerprint, updatedAt: at, history });
     }
   }
   return results;

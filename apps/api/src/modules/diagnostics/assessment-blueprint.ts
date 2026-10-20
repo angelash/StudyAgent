@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import type { AssessmentBlueprint, DiagnosticSession, DiagnosticStart, DiagnosticVerificationBlueprint, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
 import { ROUTING_VERSION } from './adaptive-routing';
 import { selectVerificationItems } from './verification-blueprint';
+import { FAMILY_IDENTITY_VERSION, canonicalFamily } from './family-identity';
 
 /** JSONB may reorder object keys. Array order still represents the intended question/group order. */
 export function blueprintContentHash(value: unknown): string {
@@ -37,19 +38,19 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
       point.required = specification.groups.filter(group => group.atomId === point.atomId).reduce((sum, group) => sum + group.minIndependentFamilies, 0);
       point.selected = selected.filter(item => item.atomId === point.atomId).length;
     }
-    for (const item of selected) { used.add(item.questionId); families.set(item.atomId, new Set([...(families.get(item.atomId) ?? []), item.family])); }
+    for (const item of selected) { used.add(item.questionId); families.set(item.atomId, new Set([...(families.get(item.atomId) ?? []), canonicalFamily(item)])); }
   } else for (let round = 0; round < policy.itemLimit && selected.length < policy.itemLimit; round++) {
     for (const point of coverage) {
       if (selected.length >= policy.itemLimit) break;
       const options = candidates.filter(item => item.atomId === point.atomId && !used.has(item.questionId) &&
-        !families.get(point.atomId)?.has(item.family) && seconds + item.expectedSeconds <= policy.minutesLimit * 60);
+        !families.get(point.atomId)?.has(canonicalFamily(item)) && seconds + item.expectedSeconds <= policy.minutesLimit * 60);
       const anchor = (item: MeasurementItem) => round === 0 && command.intent !== 'phase' && ['understanding', 'procedure'].includes(item.dimension) ? 0 : 1;
       options.sort((a, b) => Number(seen.has(a.questionId)) - Number(seen.has(b.questionId)) || anchor(a) - anchor(b) ||
         Number(dimensions.get(point.atomId)?.has(a.dimension) ?? false) - Number(dimensions.get(point.atomId)?.has(b.dimension) ?? false) ||
         policy.dimensions.indexOf(a.dimension) - policy.dimensions.indexOf(b.dimension) || a.difficulty - b.difficulty || rank(a).localeCompare(rank(b)));
       const item = options[0]; if (!item) continue;
       selected.push(structuredClone(item)); used.add(item.questionId); seconds += item.expectedSeconds; point.selected++;
-      families.set(point.atomId, new Set([...(families.get(point.atomId) ?? []), item.family]));
+      families.set(point.atomId, new Set([...(families.get(point.atomId) ?? []), canonicalFamily(item)]));
       dimensions.set(point.atomId, new Set([...(dimensions.get(point.atomId) ?? []), item.dimension]));
     }
   }
@@ -57,9 +58,9 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
     const available = candidates.filter(item => item.atomId === point.atomId);
     point.available = new Set(available.map(item => item.questionId)).size;
     if (point.selected < point.required) point.missingReason = !available.length ? '暂缺可用且已审核的量化题。' :
-      new Set(available.map(item => item.family)).size < point.required ? '不同题族不足，不能用同题重复补充独立证据。' : '受本组题量或时间预算限制，本次尚未充分覆盖。';
+      new Set(available.map(canonicalFamily)).size < point.required ? '不同题族不足，不能用同题重复补充独立证据。' : '受本组题量或时间预算限制，本次尚未充分覆盖。';
   }
-  const unused = candidates.some(item => !used.has(item.questionId) && !families.get(item.atomId)?.has(item.family) && (!verification || verification.groups.some(group =>
+  const unused = candidates.some(item => !used.has(item.questionId) && !families.get(item.atomId)?.has(canonicalFamily(item)) && (!verification || verification.groups.some(group =>
     group.atomId === item.atomId && group.dimensions.includes(item.dimension) && group.selectedFamilies.length < group.minIndependentFamilies)));
   const stopReason = verification?.fullyCovered ? 'verification_groups' : selected.length >= policy.itemLimit ? 'item_budget' : unused ? 'time_budget' : 'available_families';
   const warnings: string[] = [];
@@ -70,7 +71,8 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
   const groups: AssessmentBlueprint['groups'] = [];
   for (let offset = 0; offset < selected.length; offset += policy.groupSize) groups.push({ id: `group-${groups.length + 1}`,
     title: `第${groups.length + 1}小组`, itemIds: selected.slice(offset, offset + policy.groupSize).map(item => item.id) });
-  const blueprint: AssessmentBlueprint = { version: verification ? 'verification-blueprint-v1' : command.adaptive ? 'scope-blueprint-v3' : 'scope-blueprint-v2', title: policy.title, intent: command.intent, focus: policy.focus,
+  const blueprint: AssessmentBlueprint = { version: verification ? 'verification-blueprint-v2' : command.adaptive ? 'scope-blueprint-v5' : 'scope-blueprint-v4',
+    familyIdentityVersion: FAMILY_IDENTITY_VERSION, title: policy.title, intent: command.intent, focus: policy.focus,
     itemLimit: policy.itemLimit, minutesLimit: policy.minutesLimit, expectedSeconds: seconds, groupSize: policy.groupSize,
     stopReason, stopRule: `${verification ? '各观察组达到独立题族要求后停止选题；' : ''}达到本组题量或预计时间预算即停止选题；不因缺题使用未学内容。可以暂停，或保留已答证据后结束本组。`,
     targetAtomIds: coverage.filter(point => point.role === 'target').map(point => point.atomId),

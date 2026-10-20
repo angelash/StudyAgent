@@ -11,6 +11,7 @@ import { TextbookRegistryService } from './textbook-registry.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, measurementDefinitionMatches, measurementContentMatches, questionContentFingerprint } from './measurement-definition';
 import { componentBindingsIssue, reviewComponentBindings } from './component-observations';
+import { FAMILY_IDENTITY_VERSION, canonicalFamily } from './family-identity';
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
@@ -283,7 +284,8 @@ export class CurriculumService {
     const atoms = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade)).map((atom) => {
       const items = counts.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
-        families: new Set(items.map((i) => i.family)).size, dimensions: [...new Set(items.map((i) => i.dimension))],
+        families: new Set(items.map(canonicalFamily)).size, familyIdentityVersion: FAMILY_IDENTITY_VERSION,
+        dimensions: [...new Set(items.map((i) => i.dimension))],
         definitionGaps: new Set(this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'approved' })
           .filter(mapping => !measurementDefinitionMatches(this.store, mapping, atom)).map(mapping => mapping.questionId)).size,
         interactionGaps: new Set(this.store.inspect('measurementItems').filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&

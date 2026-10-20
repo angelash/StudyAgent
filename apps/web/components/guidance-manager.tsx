@@ -52,7 +52,7 @@ export function GuidanceManager({ plan, onChange }: { plan: GuidancePlanView; on
         : `/student/assessment?studentId=${plan.studentId}&subject=${plan.subject}&session=${plan.baselineSessionId}`}>{requiresNewAssessment ? '重新确认范围与评测 ↗' : '查看修订后的报告 ↗'}</a>}
     </div>}
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status" className="studio-notice">{notice}</p>}
-    <div className="guidance-controls">{plan.status !== 'completed' && <button className="studio-secondary" disabled={busy || requiresNewAssessment} onClick={begin}>{plan.impact?.needsReview ? '核对依据并调整计划' : '调整时间与指导活动'}</button>}
+    <div className="guidance-controls">{plan.status !== 'completed' && <button className="studio-secondary" disabled={busy || requiresNewAssessment || plan.impact.measurementRulesChanged} onClick={begin}>{plan.impact?.needsReview ? '核对依据并调整计划' : '调整时间与指导活动'}</button>}
       <button className="studio-text-button" disabled={busy} onClick={() => run(async () => setHistory(history ? null : await send<GuidancePlanRevision[]>(`/diagnostics/plans/${plan.id}/history`)))}>{history ? '收起历史' : '查看每次调整 ↗'}</button></div>
     {editing && <form className="guidance-edit" onSubmit={save}>
       <div className="guidance-edit-heading"><span className="studio-eyebrow">下一步，按实际情况调整</span><h3>让指导时间合适，也让每一步有依据。</h3><p>可调整当前知识目标的活动和时间。需要更换知识目标时，请根据最新评测建立新计划。</p></div>

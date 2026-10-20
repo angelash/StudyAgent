@@ -392,7 +392,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   reviewTasks: ReviewTask[] = [];
   scoringRevisions: ScoringRevision[] = [];
   diagnosticHints: Array<{ id: string; sessionId: string; itemId: string; level: number; at: string }> = [];
-  diagnosticReports: Array<{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport }> = [];
+  diagnosticReports: Array<{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport;
+    reanalysis?: { actorId: string; requestKey: string; inputHash: string } }> = [];
   diagnosticDrafts: Array<{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string }> = [];
 
   nextId(prefix: string): string {

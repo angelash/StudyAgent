@@ -1,6 +1,7 @@
 import { DiagnosticResponse, KnowledgeAtom, MasteryEstimate, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
+import { FAMILY_IDENTITY_VERSION, independentFamilyKey } from './family-identity';
 
-export const MEASUREMENT_VERSION = 'rule-estimate-v1';
+export const MEASUREMENT_VERSION = 'rule-estimate-v2';
 const round = (value: number, digits = 1) => Number(value.toFixed(digits));
 const dimensions: MeasurementDimension[] = ['understanding', 'procedure', 'transfer', 'retention'];
 
@@ -69,7 +70,7 @@ export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<
     const key = `${response.studentId}:${response.atomId}:${response.questionId}:${response.questionVersion}`;
     if (seen.has(key)) continue; // A remembered question never becomes a fresh independent sample.
     seen.add(key);
-    const familyKey = `${response.studentId}:${response.atomId}:${response.family}`;
+    const familyKey = JSON.stringify([response.studentId, independentFamilyKey(response)]);
     const count = families.get(familyKey) ?? 0;
     families.set(familyKey, count + 1);
     const independence = response.hintLevel >= 3 ? 0 : response.hintLevel === 2 ? 0.3 : response.hintLevel === 1 ? 0.6 : 1;
@@ -88,10 +89,10 @@ export function estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[
   const lower = n ? betaQuantile(0.025, a, b) * 100 : null;
   const upper = n ? betaQuantile(0.975, a, b) * 100 : null;
   const mean = n ? a / (a + b) * 100 : null;
-  const families = new Set(evidence.filter((item) => item.evidence.hintLevel === 0).map((item) => item.evidence.family)).size;
-  const transferVerified = new Set(evidence.filter(({ evidence: e }) => e.dimension === 'transfer' && e.correct && e.hintLevel === 0).map(({ evidence: e }) => e.family)).size >= 2;
+  const families = new Set(evidence.filter((item) => item.evidence.hintLevel === 0).map((item) => independentFamilyKey(item.evidence))).size;
+  const transferVerified = new Set(evidence.filter(({ evidence: e }) => e.dimension === 'transfer' && e.correct && e.hintLevel === 0).map(({ evidence: e }) => independentFamilyKey(e))).size >= 2;
   const retentionVerified = new Set(evidence.filter(({ evidence: e }) => e.dimension === 'retention' &&
-    (e.retentionDelayDays ?? 0) >= 1 && e.correct && e.hintLevel === 0).map(({ evidence: e }) => e.family)).size >= 2;
+    (e.retentionDelayDays ?? 0) >= 1 && e.correct && e.hintLevel === 0).map(({ evidence: e }) => independentFamilyKey(e))).size >= 2;
   const status: MasteryEstimate['status'] = !n ? 'unknown' : n < 3 || families < 2 ? 'insufficient' :
     n >= 6 && lower! >= 70 && transferVerified && retentionVerified ? 'secure' : mean! >= 70 ? 'fragile' : 'learning';
   return { atomId: atom.id, atomName: atom.name, grade: atom.grade, mastery: mean === null ? null : round(mean),
@@ -103,5 +104,5 @@ export function estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[
       return { dimension, mastery: count ? round((1 + group.reduce((sum, item) => sum + item.weight * item.evidence.score!, 0)) / (2 + count) * 100) : null, samples: round(count, 2) };
     }), independentRate: evidence.length ? round(evidence.filter(({ evidence: e }) => e.hintLevel === 0).length / evidence.length * 100) : null,
     transferVerified, retentionVerified, evidenceIds: evidence.map((item) => item.evidence.id),
-    lastMeasuredAt: evidence.at(-1)?.evidence.submittedAt ?? null, algorithmVersion: MEASUREMENT_VERSION };
+    lastMeasuredAt: evidence.at(-1)?.evidence.submittedAt ?? null, algorithmVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION };
 }

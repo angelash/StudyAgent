@@ -102,6 +102,10 @@ export class DiagnosticsController {
   complete(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.diagnostics.complete(req.user, id); }
   @Get('diagnostics/sessions/:sessionId/report')
   report(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.diagnostics.report(req.user, id); }
+  @Get('diagnostics/sessions/:sessionId/analysis-status')
+  analysisStatus(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.diagnostics.analysisStatus(req.user, id); }
+  @Post('diagnostics/sessions/:sessionId/reanalyze')
+  reanalyze(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown) { return this.diagnostics.reanalyzeReport(req.user, id, body); }
   @Get('diagnostics/students/:studentId/profile')
   profile(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.diagnostics.profile(req.user, id, parseSubject(subject)); }
   @Post('diagnostics/students/:studentId/plans')

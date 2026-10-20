@@ -2,11 +2,13 @@ import { createHash } from 'node:crypto';
 import type { DiagnosticHypothesis, DiagnosticResponse, DiagnosticVerificationBlueprint, DiagnosticVerificationResult,
   KnowledgeAtom, MeasurementItem } from '@study-agent/contracts';
 import { DIAGNOSIS_VERSION, verificationConditions } from './diagnosis';
+import { FAMILY_IDENTITY_VERSION, canonicalFamily, independentFamilyKey } from './family-identity';
 
 /** Requirements come from the current diagnosis rule, never from client-submitted labels. */
 export function verificationBlueprint(hypothesis: DiagnosticHypothesis, atom: KnowledgeAtom, basisFingerprint: string): DiagnosticVerificationBlueprint {
   const conditions = verificationConditions(hypothesis.cause, atom, atom.prerequisiteIds);
   return { hypothesisId: hypothesis.id, title: hypothesis.title, cause: hypothesis.cause, ruleVersion: DIAGNOSIS_VERSION,
+    familyIdentityVersion: FAMILY_IDENTITY_VERSION,
     sourceRuleVersion: hypothesis.ruleVersion, basisFingerprint, supportCondition: conditions.supportCondition,
     counterCondition: conditions.counterCondition, undecidedCondition: conditions.undecidedCondition, fullyCovered: false,
     groups: conditions.groups.flatMap((group, index) => group.atomIds.map(atomId => ({ id: `verification-${index}-${atomId}`,
@@ -20,8 +22,8 @@ export function selectVerificationItems(specification: DiagnosticVerificationBlu
   const questions = new Set<string>(), families = new Set<string>(); let seconds = 0;
   const matches = (group: DiagnosticVerificationBlueprint['groups'][number], item: MeasurementItem) =>
     item.atomId === group.atomId && group.dimensions.includes(item.dimension);
-  const familyKey = (item: MeasurementItem) => `${item.atomId}\u0000${item.family}`;
-  for (const group of verification.groups) group.availableFamilies = new Set(candidates.filter(item => matches(group, item)).map(item => item.family)).size;
+  const familyKey = independentFamilyKey;
+  for (const group of verification.groups) group.availableFamilies = new Set(candidates.filter(item => matches(group, item)).map(familyKey)).size;
   // Fill scarce observation groups first and prefer a family unique to its group.
   // Reusing a family under another dimension cannot create a second independent contrast.
   const groups = [...verification.groups].sort((a, b) => a.availableFamilies - b.availableFamilies || a.id.localeCompare(b.id));
@@ -37,7 +39,7 @@ export function selectVerificationItems(specification: DiagnosticVerificationBlu
     options.sort((a, b) => familyGroups.get(familyKey(a))!.size - familyGroups.get(familyKey(b))!.size || a.difficulty - b.difficulty || ranks.get(a.id)!.localeCompare(ranks.get(b.id)!));
     const item = options[0]; if (!item) continue;
     selected.push(structuredClone(item)); questions.add(item.questionId); families.add(familyKey(item)); seconds += item.expectedSeconds;
-    group.selectedFamilies.push(item.family); group.itemIds.push(item.id);
+    group.selectedFamilies.push(canonicalFamily(item)); group.itemIds.push(item.id);
   }
   for (const group of verification.groups) if (group.selectedFamilies.length < group.minIndependentFamilies) {
     group.gap = !selectedAtomIds.has(group.atomId) ? '本次只选择了部分核查范围，此观察组未安排。' :
@@ -51,11 +53,13 @@ export function selectVerificationItems(specification: DiagnosticVerificationBlu
 
 /** Counts actual independent observations without turning completion into a causal conclusion. */
 export function verificationResult(blueprint: DiagnosticVerificationBlueprint, responses: DiagnosticResponse[]): DiagnosticVerificationResult {
+  const independentGroups: DiagnosticResponse[][] = [];
   const groups = blueprint.groups.map(group => {
-    const evidence = responses.filter(response => group.itemIds.includes(response.itemId));
+    const evidence = responses.filter(response => group.itemIds.includes(response.itemId) && response.atomId === group.atomId && group.dimensions.includes(response.dimension));
     const independent = evidence.filter(response => response.disposition === 'answered' && response.status === 'scored' &&
       response.score !== null && !response.hintLevel && !response.priorExposure);
-    const count = (rows: DiagnosticResponse[]) => new Set(rows.map(response => response.family)).size;
+    independentGroups.push(independent);
+    const count = (rows: DiagnosticResponse[]) => new Set(rows.map(independentFamilyKey)).size;
     return { groupId: group.id, evidenceIds: evidence.map(response => response.id), independentEvidenceIds: independent.map(response => response.id),
       independentFamilies: count(independent), passedFamilies: count(independent.filter(response => response.correct)),
       belowStandardFamilies: count(independent.filter(response => response.correct === false)),
@@ -63,7 +67,24 @@ export function verificationResult(blueprint: DiagnosticVerificationBlueprint, r
       assistedOrExposed: evidence.filter(response => response.disposition === 'answered' && (response.hintLevel > 0 || response.priorExposure)).length,
       selfReportedOrSkipped: evidence.filter(response => response.disposition !== 'answered').length };
   });
-  return { blueprint, groups, independentObservationsComplete: blueprint.fullyCovered && groups.every(group =>
-    group.independentFamilies >= blueprint.groups.find(required => required.id === group.groupId)!.minIndependentFamilies),
-    notice: '这里说明本组实际收集到的对照证据。完成题组不等于原因已证实；原因状态还须结合支持、反证、历史条件和评分修订核对。' };
+  // Legacy frozen blueprints may contain two aliases, even on opposite sides of a contrast.
+  // Match one structure to at most one required slot; a union count alone misses subset conflicts.
+  const options = independentGroups.map(rows => [...new Set(rows.map(independentFamilyKey))]);
+  const slots = blueprint.groups.flatMap((group, index) => Array.from({ length: group.minIndependentFamilies }, () => index));
+  const occupied = new Map<string, number>();
+  const place = (slot: number, seen: Set<string>): boolean => {
+    for (const family of options[slots[slot]]) if (!seen.has(family)) {
+      seen.add(family);
+      const previous = occupied.get(family);
+      if (previous === undefined || place(previous, seen)) { occupied.set(family, slot); return true; }
+    }
+    return false;
+  };
+  const distinctFamilyRequirementsMet = slots.length > 0 && slots.every((_, index) => place(index, new Set()));
+  const shared = groups.every((group, index) => group.independentFamilies >= blueprint.groups[index].minIndependentFamilies) && !distinctFamilyRequirementsMet;
+  return { blueprint, groups, familyIdentityVersion: FAMILY_IDENTITY_VERSION, distinctFamilyRequirementsMet,
+    independentObservationsComplete: blueprint.fullyCovered && distinctFamilyRequirementsMet,
+    notice: '这里说明本组实际收集到的对照证据。完成题组不等于原因已证实；原因状态还须结合支持、反证、历史条件和评分修订核对。' +
+      (blueprint.familyIdentityVersion !== FAMILY_IDENTITY_VERSION ? ' 开始时的题组原样保留；实际证据已按当前题族归并规则核对，规则变化不表示学习改善。' : '') +
+      (shared ? ' 各组的结构数分别列出，其中有结构跨组重复，不能重复充当独立对照，仍需补充新结构。' : '') };
 }

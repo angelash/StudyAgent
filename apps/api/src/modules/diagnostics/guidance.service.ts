@@ -8,8 +8,9 @@ import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { AiService } from '../ai/ai.service';
 import { DiagnosticsService } from './diagnostics.service';
-import { estimateMastery, weightedEvidence } from './measurement';
+import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { eligibleMeasurements } from './curriculum.service';
+import { FAMILY_IDENTITY_VERSION, familyAnalysisOutdated } from './family-identity';
 
 const createPlanSchema = z.object({
   baselineSessionId: z.string().min(1).max(180), minutesPerDay: z.number().int().min(5).max(60),
@@ -30,6 +31,7 @@ export class GuidanceService {
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
+    if (familyAnalysisOutdated(report)) throw new ConflictException('题族计量方法已更新，请先重新分析原报告，再制定指导计划');
     if (!session.atomSnapshots) throw new BadRequestException('历史评测未保存知识定义，请完成一轮新评测后建立指导计划');
     if (this.diagnostics.changedPlanDefinitions(session, report.estimates.map(estimate => estimate.atomId)).length) {
       throw new ConflictException('知识定义已调整，请按当前定义重新评测后建立计划');
@@ -111,16 +113,19 @@ export class GuidanceService {
   private view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView {
     const report = this.diagnostics.report(user, plan.baselineSessionId), version = this.baseVersion(plan);
     const changed = version !== (report.version ?? 1);
+    const measurementRulesChanged = familyAnalysisOutdated(report);
     const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
     const definitionChangedActionIds = plan.actions.filter(action => this.diagnostics.changedPlanDefinitions(baseline, [action.atomId]).length).map(action => action.id);
     const definitionUnverifiedActionIds = baseline.atomSnapshots ? [] : plan.actions.map(action => action.id);
     const definitionIssues = [...definitionChangedActionIds, ...definitionUnverifiedActionIds];
     return { ...plan, revision: plan.revision ?? 1, baselineReportVersion: version, impact: {
-      needsReview: changed || definitionIssues.length > 0, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
-      pendingReviewCount: report.pendingReviewCount, affectedActionIds: changed ? plan.actions.map(a => a.id) : definitionIssues,
+      needsReview: changed || measurementRulesChanged || definitionIssues.length > 0, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
+      measurementRulesChanged, pendingReviewCount: report.pendingReviewCount,
+      affectedActionIds: changed || measurementRulesChanged ? plan.actions.map(a => a.id) : definitionIssues,
       definitionChangedActionIds, definitionUnverifiedActionIds,
       message: definitionUnverifiedActionIds.length ? '历史计划未保存知识定义，暂不能核对新旧证据。请重新评测后建立新计划；已开始的练习可继续回看。' :
         definitionChangedActionIds.length ? '知识点的目标或测量条件已调整。请重新评测当前定义，再建立新指导计划；原计划和已开始练习保留。' :
+        measurementRulesChanged ? '题族计量方法已更新。请先按原始作答重新分析报告，再核对计划；方法更新带来的数值变化不表示学习进步。' :
         changed ? '作为依据的评测已修订。请查看新证据，再确认或调整指导计划。' :
         report.pendingReviewCount ? `还有 ${report.pendingReviewCount} 条作答等待评分；当前指导按已有证据安排。` : '指导依据与当前评测版本一致。',
     } };
@@ -164,6 +169,7 @@ export class GuidanceService {
     this.students.assertGuardian(user, plan.studentId);
     const impact = this.view(user, plan).impact;
     if (impact.definitionChangedActionIds?.length || impact.definitionUnverifiedActionIds?.length) throw new ConflictException('知识定义已变化或无法核对，修改活动不能替代重新评测，请建立新计划');
+    if (impact.measurementRulesChanged) throw new ConflictException('请先重新分析原报告，再核对和调整指导活动');
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180), reason: reasonSchema,
       minutesPerDay: z.number().int().min(5).max(60), acknowledgeReportVersion: z.number().int().positive(),
       actions: z.array(z.object({ actionId: z.string().max(180), minutes: z.number().int().min(1).max(60),
@@ -305,15 +311,18 @@ export class GuidanceService {
       const dimension = mappings.get(`${r.itemId}@${r.mappingVersion}`)?.dimension ?? r.dimension;
       return inputHash('comparison-scale-v1', { atomId: r.atomId, dimension, mode: schema?.mode, gradingConfig: schema?.gradingConfig ?? {} });
     };
-    const independent = after.filter(r => r.status === 'scored' && r.score !== null && !r.hintLevel && !r.priorExposure);
+    const independent = after.filter(r => r.disposition === 'answered' && r.status === 'scored' && r.score !== null && !r.hintLevel && !r.priorExposure);
     const followupSessionIds = [...new Set(independent.map(r => r.sessionId))];
-    const fingerprint = inputHash('retrospective-v1', { planId, actions: plan.actions.map(a => [a.id, a.atomId]),
+    const fingerprint = inputHash('retrospective-v2', { planId, measurementVersion: MEASUREMENT_VERSION,
+      familyIdentityVersion: FAMILY_IDENTITY_VERSION, actions: plan.actions.map(a => [a.id, a.atomId]),
       reportVersion: this.diagnostics.report(user, plan.baselineSessionId).version ?? 1,
       sessions: sessions.map(s => [s.id, this.diagnostics.report(user, s.id).version ?? 1]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
       definitionContext: { baseline: baseline.atomSnapshots?.map(atom => [atom.id, atom.objective, atom.successCriterion, atom.prerequisiteIds]),
         incompatible: compatibility.incompatibleEvidenceIds, unverified: compatibility.unverifiedEvidenceIds },
       evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
     return { planId, baselineSessionId: plan.baselineSessionId, followupSessionIds, independentFollowupCount: independent.length, fingerprint,
+      measurementContext: { measurementVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION,
+        notice: '前后估计都按同一套当前题族规则从原始作答重新计算；历史报告数值不直接相减，规则更新不表示学习改善。' },
       practiceSessionIds: this.store.select('practiceSessions', { planId: planId }).map(s => s.id),
       reviewed: plan.retrospectiveReview?.fingerprint === fingerprint,
       definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
