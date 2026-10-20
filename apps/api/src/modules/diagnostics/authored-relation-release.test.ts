@@ -6,6 +6,13 @@ import { authoredRelationDefinitionUpdate, authoredRelationRelease, reviewedAuth
 import { atomDefinitionFingerprint, measurementDefinitionMatches } from './measurement-definition';
 import { blueprintContentHash } from './assessment-blueprint';
 import { buildFoundationCurriculum, foundationQuestionId } from './foundation-curriculum';
+import { buildAuthoredMathProbeFamilies } from './authored-math-probes';
+import { buildArithmeticProbeFamilies } from './authored-arithmetic-probes';
+import { buildNumberProbeFamilies } from './authored-number-probes';
+import { buildSpatialProbeFamilies } from './authored-spatial-probes';
+import { buildSecondGradeProbeFamilies } from './authored-second-grade-probes';
+import { buildDataProbeFamilies } from './authored-data-probes';
+import { buildThirdGradeProbeFamilies } from './authored-third-grade-probes';
 
 const release = authoredRelationRelease;
 const oldFingerprint = atomDefinitionFingerprint(release.before), newFingerprint = atomDefinitionFingerprint(release.after);
@@ -18,8 +25,12 @@ describe('explicit authored relation release and immutable content review', () =
     expect(atom).toEqual(release.after); expect(newFingerprint).not.toBe(oldFingerprint);
     expect(atom.prerequisiteIds).toEqual(['foundation:math:multiplytable', 'foundation:math:divisiontable', 'core:math:mixed20']);
     expect(release.reviewKind).toBe('agent_authored_relation_review'); expect(release.questions).toHaveLength(60);
+    const historicalAuthoredIds = new Set([...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies(),
+      ...buildSpatialProbeFamilies(), ...buildSecondGradeProbeFamilies(), ...buildDataProbeFamilies(), ...buildThirdGradeProbeFamilies()]
+      .flatMap(family => family.exercises.map(task => foundationQuestionId(family.atomId, task))));
     const rows = definitions.flatMap(definition => definition.exercises.map(exercise => ({ atomId: definition.atom.id,
-      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).sort((a, b) => a.id.localeCompare(b.id));
+      id: foundationQuestionId(definition.atom.id, exercise), exercise }))).filter(row => row.exercise.identityVersion !== 2 || historicalAuthoredIds.has(row.id))
+      .sort((a, b) => a.id.localeCompare(b.id));
     expect(rows).toHaveLength(5198);
     // The historical snapshot uses the preexisting JSON serialization, not canonical object-key ordering.
     const { createHash } = require('node:crypto');

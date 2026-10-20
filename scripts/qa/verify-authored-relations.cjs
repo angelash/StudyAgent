@@ -19,6 +19,7 @@ const { blueprintContentHash } = fromApi('modules/diagnostics/assessment-bluepri
 const { gradeResponse } = fromApi('modules/diagnostics/scoring.js');
 const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['apps/api/src/modules/diagnostics/authored-relation-release.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
+  'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/diagnostics/measurement-definition.ts',
   'apps/api/src/modules/diagnostics/curriculum.service.ts', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'scripts/qa/verify-authored-relations.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,

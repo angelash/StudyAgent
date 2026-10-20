@@ -33,6 +33,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-second-grade-probes.ts',
   'apps/api/src/modules/diagnostics/authored-data-probes.ts',
   'apps/api/src/modules/diagnostics/authored-third-grade-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
   'apps/api/src/modules/diagnostics/authored-relation-release.ts',
   'resources/curriculum/authored-relations-2026-10-20-v1.json',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
@@ -179,15 +180,19 @@ async function main() {
     evidence.pointJourneys = [];
     const pointGrades = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom.grade]));
     for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))]) {
-      // Each synthetic child has a formal, independent learner identity. Keep production quotas active.
+      // At most 12 children per synthetic guardian cohort; do not exhaust one parent's write quota by managing the whole curriculum.
+      // Every guardian and learner uses the formal identity flow. Production quotas remain active.
+      const cohort = Math.floor(evidence.pointJourneys.length / 12), pointParent = `point-parent-${cohort}`;
+      if (!tokens[pointParent]) tokens[pointParent] = (await call('POST', '/auth/register', {
+        principal: `qa-verification-${pointParent}`, credential: randomBytes(24).toString('hex') }, 'anonymous')).token;
       const grade = pointGrades.get(selectedAtomId), pointStudentId = (await call('POST', '/students', {
-        nickname: '合成知识点核查', grade, preferredSessionMinutes: 15, defaultVersionMap: { math: 'original', chinese: '', english: '' } })).profile.id;
-      const pointAccess = await call('POST', `/students/${pointStudentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '逐点核查独立学生身份与正式限流' });
-      const pointCode = await call('POST', `/students/${pointStudentId}/learning-access/codes`, { expectedVersion: pointAccess.version, requestKey: randomUUID() });
+        nickname: '合成知识点核查', grade, preferredSessionMinutes: 15, defaultVersionMap: { math: 'original', chinese: '', english: '' } }, pointParent)).profile.id;
+      const pointAccess = await call('POST', `/students/${pointStudentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '逐点核查独立学生身份与正式限流' }, pointParent);
+      const pointCode = await call('POST', `/students/${pointStudentId}/learning-access/codes`, { expectedVersion: pointAccess.version, requestKey: randomUUID() }, pointParent);
       const actor = `point-${evidence.pointJourneys.length}`;
       tokens[actor] = (await call('POST', '/auth/learning-code', { code: pointCode.code }, 'anonymous')).token;
       await call('PUT', `/students/${pointStudentId}/learning-scope`, { subject: 'math', grade, term: 'upper', textbookVolumeId: null,
-        textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 });
+        textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 }, pointParent);
       const baseline = await call('POST', '/diagnostics/sessions', { studentId: pointStudentId, subject: 'math', intent: 'baseline',
         targetAtomIds: [selectedAtomId], includePrerequisites: false, maxItems: 8 }, actor);
       for (const item of baseline.items) await call('POST', sessionRoute(baseline.id) + '/responses', { itemId: item.id,
@@ -204,7 +209,7 @@ async function main() {
       assert.equal(result.verification.independentObservationsComplete, true);
       assert(result.verification.groups.every(group => group.independentFamilies === 2 && group.passedFamilies === 2));
       assert.notEqual(result.estimates.find(row => row.atomId === selectedAtomId).status, 'secure');
-      evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
+      evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalGuardianCohort: cohort, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
         independentObservationsComplete: true, noPrematureSecureMastery: true });
     }
   }
