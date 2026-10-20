@@ -30,4 +30,4 @@ node scripts/operations/postgres-backup.cjs restore --connection-env DATABASE_UR
 - 故障注入：有效dump配上不一致预期版本，在实际恢复后核对失败；数据库保持 restoring，应用连接和再次备份均拒绝；门禁行缺失也拒绝。已有目标和损坏包拒绝。
 - SQLite备份/恢复和版本3→4迁移通过；两种驱动均验证历史证据保留。全仓类型检查通过，API生产构建通过。本批未改变Web实现，沿用前批已构建版本。
 
-证据：`doc/evidence/2026-10-19/postgres-runtime.json`（内部时间为本次真实运行时间）。完整资产备份仍在 `data/backups/full-20261019` 复制/校验，不能与本批小规模数据库恢复测试混为全库完成。性能、升级部署、数据管理、复杂题型和新增界面的浏览器验收等继续开发。
+证据：`doc/evidence/2026-10-19/postgres-runtime.json`（内部时间为本次真实运行时间）。完整资产备份现位于 `I:\StudyAgent-backups\full-20261019`；迁移清册与备份内部清单分别核验，不能与本批小规模数据库恢复测试混为全库完成。性能、升级部署、数据管理、复杂题型和新增界面的浏览器验收等继续开发。
