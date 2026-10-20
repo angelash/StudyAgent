@@ -7,11 +7,14 @@ import { buildChineseOralGrade1ProbeFamilies } from './authored-chinese-oral-gra
 import { buildChineseGrade2ProbeFamilies, buildChineseOralGrade2ProbeFamilies } from './authored-chinese-grade2-probes';
 import { buildChineseGrade3ProbeFamilies } from './authored-chinese-grade3-probes';
 import { buildChineseGrade4ProbeFamilies } from './authored-chinese-grade4-probes';
+import { buildChineseGrade5ProbeFamilies } from './authored-chinese-grade5-probes';
+import { buildChineseGrade6ProbeFamilies } from './authored-chinese-grade6-probes';
 
 export function buildAllAuthoredProbeFamilies() {
   return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies(),
     ...buildChineseGrade1ProbeFamilies(), ...buildChineseOralGrade1ProbeFamilies(), ...buildChineseGrade2ProbeFamilies(),
-    ...buildChineseOralGrade2ProbeFamilies(), ...buildChineseGrade3ProbeFamilies(), ...buildChineseGrade4ProbeFamilies()];
+    ...buildChineseOralGrade2ProbeFamilies(), ...buildChineseGrade3ProbeFamilies(), ...buildChineseGrade4ProbeFamilies(),
+    ...buildChineseGrade5ProbeFamilies(), ...buildChineseGrade6ProbeFamilies()];
 }
 
 export function addAuthoredProbes(definitions: FoundationDefinition[]) {

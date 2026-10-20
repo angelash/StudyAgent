@@ -21,7 +21,7 @@ describe('Chinese grade-two complete written and oral contrasts', () => {
     const ids = new Set(baseline.ids), previous = all.filter(row => ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(7598); expect(baseline.sha256).toBe('dd1e4f21d3bfe9ec79a1f2e36a6dc56ec9d71c168cc5e9db2f4cbe21143194e1');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(9470); expect(new Set(all.map(row => row.id)).size).toBe(9470);
+    expect(all).toHaveLength(10718); expect(new Set(all.map(row => row.id)).size).toBe(10718);
     expect(families).toHaveLength(52); expect(families.reduce((n, family) => n + family.exercises.length, 0)).toBe(624);
     expect(new Set(families.flatMap(family => family.exercises.map(task => foundationQuestionId(family.atomId, task)))).size).toBe(624);
   });

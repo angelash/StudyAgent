@@ -33,7 +33,7 @@ describe('English foundation written task contrasts with independently reconstru
     const ids = new Set(baseline.ids), previous = all.filter(row => ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(6686); expect(baseline.sha256).toBe('e390a1a5e5bb4978db738c3312e73fe3d88390a3b1bda5ba24c62f7925e11d35');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(9470); expect(new Set(all.map(row => row.id)).size).toBe(9470);
+    expect(all).toHaveLength(10718); expect(new Set(all.map(row => row.id)).size).toBe(10718);
     expect(families).toHaveLength(12); expect(new Set(families.map(row => row.atomId)).size).toBe(3);
     for (const family of families) {
       expect(family.exercises).toHaveLength(12); expect(family.structure).toContain('→'); expect(family.distinction.length).toBeGreaterThan(15);

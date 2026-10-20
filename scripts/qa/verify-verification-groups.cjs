@@ -44,6 +44,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-chinese-grade2-probes.ts', 'resources/curriculum/authored-task-baseline-7598-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade3-probes.ts', 'resources/curriculum/authored-task-baseline-8222-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.ts', 'resources/curriculum/authored-task-baseline-8846-v1.json',
+  'apps/api/src/modules/diagnostics/authored-chinese-grade5-probes.ts', 'apps/api/src/modules/diagnostics/authored-chinese-grade6-probes.ts',
+  'resources/curriculum/authored-task-baseline-9470-v1.json',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',

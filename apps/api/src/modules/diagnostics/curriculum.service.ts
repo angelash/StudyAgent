@@ -37,7 +37,11 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
   const schemaRows = atomIds ? store.select('questionAnswerSchemas', { questionId: questionIds }) : store.inspect('questionAnswerSchemas');
   const sources = new Map(sourceRows.map((s) => [s.questionId, s])), documents = new Map(documentRows.map((d) => [d.questionId, d]));
   const schemas = new Map(schemaRows.map(schema => [schema.questionId, schema]));
-  const candidates = new Map(store.select('measurementCandidates', { questionId: questionIds }).map(candidate => [candidate.questionId, candidate]));
+  // The unfiltered overview can contain more than the selector's bounded
+  // value-array limit. Its other source collections are already full inspected
+  // snapshots, so use the same immutable full view for candidate rows.
+  const candidateRows = atomIds ? store.select('measurementCandidates', { questionId: questionIds }) : store.inspect('measurementCandidates');
+  const candidates = new Map(candidateRows.map(candidate => [candidate.questionId, candidate]));
   // Match find()'s first-record semantics for the same complete reviewed packet, without per-item mutable lookups.
   const firstByQuestion = <T extends { questionId: string }>(rows: readonly T[]) => {
     const first = new Map<string, T>(); for (const row of rows) if (!first.has(row.questionId)) first.set(row.questionId, row); return first;

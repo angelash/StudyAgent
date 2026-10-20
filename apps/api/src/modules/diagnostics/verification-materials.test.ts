@@ -75,7 +75,7 @@ describe('read-only material structure coverage and real selector examples', () 
     const definitions = buildFoundationCurriculum(), results = definitions.map(row => materialStructureCoverage(row.atom.id,
       row.exercises.map(task => ({ atomId: row.atom.id, family: task.family, dimension: task.dimension })),
       row.atom.strand === '口语表达' ? 'oral-production-v1' : 'written-contrast-v1'));
-    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(127); expect(results.filter(row => !row.ready)).toHaveLength(131);
+    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(153); expect(results.filter(row => !row.ready)).toHaveLength(105);
     for (const [index, result] of results.entries()) {
       const source = definitions[index], byDimension = (dimension: MeasurementDimension) => new Set(source.exercises.filter(task => task.dimension === dimension).map(task => task.family));
       if (result.ready) {
