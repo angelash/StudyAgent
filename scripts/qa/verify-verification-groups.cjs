@@ -32,6 +32,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-spatial-probes.ts',
   'apps/api/src/modules/diagnostics/authored-second-grade-probes.ts',
   'apps/api/src/modules/diagnostics/authored-data-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-third-grade-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
@@ -149,15 +150,20 @@ async function main() {
   if (verifyContentUpgrade) await contentUpgrade();
   evidence.responseFixtures = await store.transaction(() => {
     const manual = ['short_answer', 'stepwise', 'geometry_draw', 'image_upload', 'audio_record'], counts = {};
+    let explicitDurationTasks = 0;
     for (const { atom, exercises } of buildFoundationCurriculum()) for (const task of exercises) {
       const id = foundationQuestionId(atom.id, task), schema = store.find('questionAnswerSchemas', { questionId: id });
       if (manual.includes(schema.mode)) continue;
       const question = store.find('questions', { id });
+      if (task.expectedSeconds) {
+        assert.equal(store.find('measurementItems', { id: `measurement:${id}` }).expectedSeconds, task.expectedSeconds);
+        explicitDurationTasks++;
+      }
       assert.equal(gradeResponse(schema, question.answer, question.answer).score, 1, `Persisted standard answer: ${id}`);
       legalWrongAnswer(schema, question.answer); counts[schema.mode] = (counts[schema.mode] ?? 0) + 1;
     }
     return { scope: 'Every persisted objective original task; manual and media answers require their separate review journeys.',
-      modes: counts, correctStandardsAndLegalZeroScoreFixturesChecked: true };
+      modes: counts, correctStandardsAndLegalZeroScoreFixturesChecked: true, explicitDurationTasks, durationEstimatesAreNotFieldCalibration: true };
   });
   tokens.admin = (await call('POST', '/auth/login', { principal: 'qa-verification', credential }, 'anonymous')).token;
   for (const actor of ['parent', 'outsider']) tokens[actor] = (await call('POST', '/auth/register', {

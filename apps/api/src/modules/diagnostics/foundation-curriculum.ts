@@ -7,6 +7,7 @@ import { addAuthoredMathProbes } from './authored-math-probes';
 
 export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
   analysis?: string;
+  expectedSeconds?: number;
   identityVersion?: 2;
   responseShape?: Record<string, unknown>; blocks?: QuestionBlock[];
   rubric?: Array<{ criterion: string; weight: number }> };

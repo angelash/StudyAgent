@@ -5,6 +5,7 @@ import { buildNumberProbeFamilies } from './authored-number-probes';
 import { buildSpatialProbeFamilies } from './authored-spatial-probes';
 import { buildSecondGradeProbeFamilies } from './authored-second-grade-probes';
 import { buildDataProbeFamilies } from './authored-data-probes';
+import { buildThirdGradeProbeFamilies } from './authored-third-grade-probes';
 
 export type AuthoredProbeFamily = { atomId: string; family: string; dimension: MeasurementDimension; behavior: string;
   structure: string; distinction: string; exercises: Exercise[] };
@@ -140,7 +141,7 @@ export function buildAuthoredMathProbeFamilies(): AuthoredProbeFamily[] {
 }
 
 export function buildAllAuthoredMathProbeFamilies() {
-  return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies(), ...buildSpatialProbeFamilies(), ...buildSecondGradeProbeFamilies(), ...buildDataProbeFamilies()];
+  return [...buildAuthoredMathProbeFamilies(), ...buildArithmeticProbeFamilies(), ...buildNumberProbeFamilies(), ...buildSpatialProbeFamilies(), ...buildSecondGradeProbeFamilies(), ...buildDataProbeFamilies(), ...buildThirdGradeProbeFamilies()];
 }
 
 export function addAuthoredMathProbes(definitions: FoundationDefinition[]) {

@@ -53,7 +53,7 @@ export class FoundationSeedService implements OnModuleInit {
         if (!Boolean(this.store.find('measurementItems', { id: mappingId }))) this.store.append('measurementItems', {
           id: mappingId, questionId, questionVersion: 1, atomId: atom.id, dimension: item.dimension,
           family: `${atom.id}:${item.family}`, probeRole: item.dimension === 'transfer' ? 'transfer' : 'anchor',
-          expectedSeconds: atom.subject === 'math' ? 40 : 60, difficulty: 1, reviewStatus: 'approved', mappingWeight: 1,
+          expectedSeconds: item.expectedSeconds ?? (atom.subject === 'math' ? 40 : 60), difficulty: 1, reviewStatus: 'approved', mappingWeight: 1,
           observationCode: `${atom.id}:response_mismatch`, version: 1,
           atomDefinitionFingerprint: atomDefinitionFingerprint(atom),
         });
