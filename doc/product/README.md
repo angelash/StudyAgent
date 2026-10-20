@@ -7,6 +7,7 @@
 3. [开发计划与验收矩阵](./03-development-plan.md)：全量里程碑、依赖、证据和交付条件。
 4. [实施记录](./04-delivery-log.md)：实现后逐次记录提交、验证、剩余事项，不能以计划代替交付。
 5. [当前完整验收审计](./68-final-product-acceptance-audit.md)：逐项区分已通过、规则估计和仍需真实教材、人员或设备验证的部分。
+6. [教材课时映射核对清单](./69-textbook-mapping-worklist-delivery.md)：跨教材定位待审课时并跳转到逐课时人工审核。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。

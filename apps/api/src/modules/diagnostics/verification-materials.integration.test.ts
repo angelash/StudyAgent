@@ -47,6 +47,13 @@ describe.sequential('eligible material coverage through real curriculum services
       expect(result.atoms.every((row: any) => row.subject === subject && row.grade === 1)).toBe(true);
     }
   }, 30_000);
+  it('pages the cross-textbook lesson worklist without approving title-based mappings', async () => {
+    const result = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1&term=upper&status=unmapped&page=1&pageSize=20');
+    expect(result.books).toBe(1); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
+    expect(result.rows).toHaveLength(20); expect(result.rows.every((row: any) => row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
+    expect(result.note).toContain('不根据标题自动批准');
+    await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1', undefined, parent, 403);
+  }, 30_000);
   it('uses every current eligibility gate and restores readiness only when the actual packets are eligible again', async () => {
     const mappings = store.select('measurementItems', { atomId }).filter((row: any) => row.dimension === 'understanding'); expect(mappings).toHaveLength(12);
     const packets = mappings.map((mapping: any) => ({ mapping, question: store.find('questions', { id: mapping.questionId }),

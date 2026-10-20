@@ -64,6 +64,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'scripts/content/build-gesp-student-curriculum.cjs', 'scripts/qa/audit-gesp-student-curriculum.cjs',
   'apps/api/src/modules/gesp/student-curriculum.test.ts',
   'apps/web/app/parent/gesp/page.tsx', 'apps/web/app/student/gesp/page.tsx',
+  'apps/web/app/admin/curriculum/mapping-worklist.tsx', 'apps/web/app/admin/curriculum/mapping-worklist.css',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',

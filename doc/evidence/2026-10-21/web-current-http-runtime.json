@@ -1,0 +1,43 @@
+{
+  "format": "study-agent-current-web-http-v1",
+  "at": "2026-10-20T19:53:54.300Z",
+  "passed": true,
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/parent/gesp",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/student/gesp",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/student/assessment",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/parent/dashboard",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/admin/curriculum",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/admin/gesp",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "scope": "Current production Next.js build served locally over HTTP. Static SSR response only; Browser Runtime visual and interaction acceptance remains blocked."
+}

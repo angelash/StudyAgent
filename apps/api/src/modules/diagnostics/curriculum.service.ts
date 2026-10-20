@@ -311,6 +311,37 @@ export class CurriculumService {
     return next;
   }
 
+  textbookMappingWorklist(user: InMemoryUserAccount, input: unknown) {
+    this.assertEditor(user);
+    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.coerce.number().int().min(1).max(6).optional(),
+      term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
+      page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
+    const books = this.textbooks.all().filter(book => book.source !== 'original' && book.chapters.length && (!query.subject || book.subject === query.subject) &&
+      (!query.grade || book.grade === query.grade) && (!query.term || book.term === query.term));
+    const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published'), rows: Array<{ bookId: string; bookTitle: string; bookVersion: string;
+      edition: string; lessonId: string; lessonName: string; printedPage: number | undefined; chapterName: string; state: string;
+      atomIds: string[]; rubric: string; mappingVersion: number | null }> = [];
+    for (const book of books) {
+      const eligible = new Set(atoms.filter(atom => atom.subject === book.subject && atom.grade <= book.grade &&
+        (atom.grade < book.grade || atom.term === 'both' || atom.term === book.term)).map(atom => atom.id));
+      for (const chapter of book.chapters) for (const lesson of chapter.lessons) {
+        if (lesson.kind === 'reference') continue;
+        const mapping = this.textbooks.mapping(book, lesson.id), approved = mapping?.status === 'approved' && mapping.atomIds.length > 0 &&
+          mapping.atomIds.every(id => eligible.has(id));
+        const state = !mapping ? 'unmapped' : mapping.status === 'approved' ? approved ? 'approved' : 'stale' : mapping.status;
+        rows.push({ bookId: book.id, bookTitle: book.title, bookVersion: book.version, edition: book.edition, lessonId: lesson.id,
+          lessonName: lesson.name, printedPage: lesson.printedPage, chapterName: chapter.name, state,
+          atomIds: approved ? [...mapping!.atomIds] : [], rubric: mapping?.rationale ?? '', mappingVersion: mapping?.version ?? null });
+      }
+    }
+    const counts = Object.fromEntries(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale'].map(status =>
+      [status, status === 'all' ? rows.length : rows.filter(row => row.state === status).length]));
+    const selected = query.status === 'all' ? rows : rows.filter(row => row.state === query.status);
+    return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null }, counts, books: books.length,
+      total: selected.length, page: query.page, pageSize: query.pageSize, rows: selected.slice((query.page - 1) * query.pageSize, query.page * query.pageSize),
+      note: '该清单只定位待核对课时；状态变化必须通过逐课时映射审核，不根据标题自动批准知识映射。' };
+  }
+
   overview(user: InMemoryUserAccount, subject?: Subject, grade?: number) {
     this.assertEditor(user);
     if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);

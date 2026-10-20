@@ -48,6 +48,8 @@ export class DiagnosticsController {
   }
   @Post('admin/curriculum/textbook-mappings')
   saveTextbookMapping(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.saveTextbookMapping(req.user, body); }
+  @Get('admin/curriculum/textbook-mapping-worklist')
+  textbookMappingWorklist(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.curriculum.textbookMappingWorklist(req.user, query); }
   @Post('admin/knowledge-atoms')
   saveAtom(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.upsertAtom(req.user, body); }
   @Post('admin/measurement-items')
