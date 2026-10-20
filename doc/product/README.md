@@ -8,6 +8,6 @@
 4. [实施记录](./04-delivery-log.md)：实现后逐次记录提交、验证、剩余事项，不能以计划代替交付。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
-最近交付：[分项观察与原子子点的独立诊断](./44-atomic-components-delivery.md)，实施前计划见 [分项与独立验证计划](./44-atomic-component-development-plan.md)。
+最近交付：[三年级周长、覆盖与面积单位对照](./45-geometry-measurement-delivery.md)，实施前计划见 [几何测量计划](./45-geometry-measurement-development-plan.md)。原子子点与分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
 
 完成的定义：全部需求有对应实现、适当测试与真实运行证据，资产清单可核验，安装与备份恢复可执行。演示题通过、构建成功、文档齐备中的任何一项都不等于产品目标完成。

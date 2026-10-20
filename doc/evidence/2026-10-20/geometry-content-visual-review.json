@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-20T01:47:48.689912+00:00",
+  "passed": true,
+  "reviewer": "assistant_visual_inspection",
+  "scope": "All 38 rendered original figures viewed across four contact sheets using local image inspection. No browser, mobile interaction, accessibility equivalence, teacher review or real-student validity claim.",
+  "reviewedImages": 38,
+  "contactSheets": [
+    {
+      "group": "gates",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/gates-contact.png",
+      "images": 12,
+      "sha256": "59de666b52deb86162529d30e140d8d9005056d3a5a30febe64c17bd20e1b921",
+      "sourceFile": "data/qa/geometry-assets-images/gates-contact.png"
+    },
+    {
+      "group": "boundaries",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/boundaries-contact.png",
+      "images": 12,
+      "sha256": "f23835af7daf8e706743a04f941fcba36fe68700f285701cd8901c9ea0ef0d0d",
+      "sourceFile": "data/qa/geometry-assets-images/boundaries-contact.png"
+    },
+    {
+      "group": "coverage",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/coverage-contact.png",
+      "images": 12,
+      "sha256": "97bc143547fd9461e1acd3eae7db292bfa267c37561a0f6e132f67f8f0f9640e",
+      "sourceFile": "data/qa/geometry-assets-images/coverage-contact.png"
+    },
+    {
+      "group": "units",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/units-contact.png",
+      "images": 2,
+      "sha256": "770e6bf967c72c37127a8a8e8a88b302fc3a0f551f8b6ecf9b36cd872e914391",
+      "sourceFile": "data/qa/geometry-assets-images/units-contact.png"
+    }
+  ],
+  "checks": [
+    "Gate gaps and internal paths visible and separately labeled",
+    "Square external boundaries distinct from interior grid lines",
+    "All coverage footprints and unfilled cells visible",
+    "Both area-unit grids legible with their side units",
+    "No visible clipped labels or overlapping units in these local rasters"
+  ],
+  "sourceSha256": {
+    "scripts/qa/verify-geometry-assets.cjs": "37d8dd5b487bc74bd1c9b70bc7b88df8150cebca34bfc61b140a711d26539e37",
+    "scripts/content/build-geometry-probes.cjs": "0f263936b662df156d2b8406ca42a0efdfa33baa94fe1060b54e19dd8d112220",
+    "resources/curriculum/geometry-probes-v1.json": "3d8ed50c9d04061bde3b5522adbc79f88cec11c889fad7b0df38c30e7a1b9c7c",
+    "apps/api/src/modules/diagnostics/authored-geometry-probes.ts": "fd17d056b4c67de19e9d3c5946d632bdbb319808c9e04a34f3e04cb37bbba553",
+    "apps/web/public/question-assets/geometry-probes-v1/area-unit-dm-cm.svg": "28d79946568173d95bc75da890f065022c811a135d2def17437a32d3ce36e0c8",
+    "apps/web/public/question-assets/geometry-probes-v1/area-unit-m-dm.svg": "8389d3f6e90b67b88537122c97764c53f1aab34e294cacf303bcaeae0373f35f",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-0.svg": "444f59214955448227e1dcfbda7c3e48ea3435e38edce03a1cf48739bcc638a1",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-1.svg": "b666af7188cc3ff311eea71ada219d8c0b8606a9cb0c22b846b1382c91be7142",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-2.svg": "d77a3c78c71adda995da6156f96580d8a6f53da671685b85e3d29478617d2b5f",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-3.svg": "8e1c26c5815fe7ec372ec681dff5f467b6370da5b0350f8a88212212f86b0ee6",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-4.svg": "3088ed7802d719b2d298e88123eedc375f6574463add79ea9d183b06b880ac89",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-5.svg": "bcc5ca30657a95285d322120148fb8763c0b96bc2bc84fbf4c190011b8584e8b",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-6.svg": "05601eb783b6ed6a8a0a7e4333d95926adee89aae8875680eab3aa30f77cb747",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-7.svg": "61a4cff6a97220769d6ec8d50246502b62b2595abe875e8c4b3a8a0bf55e03a1",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-8.svg": "31e5f6f5af05f6b8e22f8ab06693eec79eae162fa1806dc9fc54497188504644",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-9.svg": "15ae3d5c3870788ebf70db297691a8e2d3f25c4e5b6968e747081236b7a5ccbc",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-10.svg": "0cf1bc555831ead2ff4b815ac2f5d03e0873c8e26841720609a800ecf7e8235d",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-11.svg": "ae96fdb1b899481570793f78611bd3736445cc0fc46aed97d9ba6add92bd326e",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-0.svg": "f0350b8211fa5d5edd4b523760c1e6a3810ee113b3a5a6e5c69960b85d174e96",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-1.svg": "4d2678e0d1c9b8a1ce2a0791899d2148f04442f1437bd9712c7f2d3c1938647b",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-2.svg": "75d67a6778dba25b0beb1388059771b8412135876b432cb4b54d9d977f2d9a6a",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-3.svg": "cbb9399a688d1a6ab62a3953ae734b3ac72e986566181033d710a4dc31cfb086",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-4.svg": "a73a9d10f9af96e2dd046e690baccabac8b96c9484bd058f721c288f0b8f8e83",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-5.svg": "35e40111d814f36685e30d6468162f3b573a10ad39f2686ad5470bcdf2d35444",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-6.svg": "81a1d5f99dd5a40db7e3f29f055fb7d107d3f4db39a58068dc6f21cded38831a",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-7.svg": "4211ca06a53435d010148caad580273057991abeade038b1de2e730af3ee5a58",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-8.svg": "fe4da504c986b95206b991731f0eaba875eb5c63950f767342285be8f67cdf8d",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-9.svg": "82e1a3303e81e14ce225dcce8ee9e489afc56a9ddaea19f4030d66fb3a0cefd7",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-10.svg": "61b71a616a2211027c457fb1a9f31e6d04372a14da7de60674b87906dff51228",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-11.svg": "008dea51caa05c682064df58456bef9f7429f9831fcac2777157d4c3eb4264cc",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-0.svg": "27154f2429a8c479ba6d00049bd35e6275fe1288a642bcebf49cf8c36e3a86de",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-1.svg": "4377ad781325e028fdfcab3b3a6466fc58395210cbba3f08a309067938efc3ff",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-2.svg": "1110310c154bd08c410a35ff1a48fcc32aefb51193e43815f1217a8f50143ac5",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-3.svg": "a9c1d3c8edb6080a55fddaf3979e25f6e6de12ab72d954ae1f89b79f7212e71b",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-4.svg": "f720cb95890a92485b447b270d6600586af69b74e3619d6f9a7f2f7166e0be8f",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-5.svg": "d6a5ff45956450adac38daf97620f48ee1c3133e3d0da8209ec94b43ae56fd30",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-6.svg": "92b1dfbe679179cef20934a3a58c856ba7794354b81b5dcd3b5274c775162b70",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-7.svg": "a128e84dc2be63a3114a73f9bc5c5e26782972811e4d6cd0841e16726320209d",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-8.svg": "b7e5a41a1423cdf4fd9fa160fd9cf135b6050fcc6a9f99377f1d0d9e170f60a7",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-9.svg": "06fdb396213b295993d3452ee075739e82b0b8c76194adfa7bf0df946941cbec",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-10.svg": "4713a2083b7e368a0417de84095fd332a00c9a7d0d086ec060daafa8931829cb",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-11.svg": "d9ac21fc9dfd43daaed318bf8bd9d0132529aa904ea7d7e77d9fd13226f38c9c"
+  }
+}

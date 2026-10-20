@@ -1,0 +1,391 @@
+{
+  "at": "2026-10-20T01:32:22.379Z",
+  "passed": true,
+  "scope": "Canonical original boundary and unit-grid SVGs and independent local raster decoding. Contact sheets require visual inspection; not browser, accessibility-equivalence, human-teacher or student-validity acceptance.",
+  "sourceSha256": {
+    "scripts/qa/verify-geometry-assets.cjs": "37d8dd5b487bc74bd1c9b70bc7b88df8150cebca34bfc61b140a711d26539e37",
+    "scripts/content/build-geometry-probes.cjs": "0f263936b662df156d2b8406ca42a0efdfa33baa94fe1060b54e19dd8d112220",
+    "resources/curriculum/geometry-probes-v1.json": "3d8ed50c9d04061bde3b5522adbc79f88cec11c889fad7b0df38c30e7a1b9c7c",
+    "apps/api/src/modules/diagnostics/authored-geometry-probes.ts": "fd17d056b4c67de19e9d3c5946d632bdbb319808c9e04a34f3e04cb37bbba553"
+  },
+  "assets": [
+    {
+      "name": "area-unit-dm-cm.svg",
+      "bytes": 19218,
+      "sha256": "28d79946568173d95bc75da890f065022c811a135d2def17437a32d3ce36e0c8",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "2922cd74638bdb2de9a975f15360848aca0b3dd6b7df99e821e47a8e4759136f"
+    },
+    {
+      "name": "area-unit-m-dm.svg",
+      "bytes": 19212,
+      "sha256": "8389d3f6e90b67b88537122c97764c53f1aab34e294cacf303bcaeae0373f35f",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "101d8ea03d13bbf84a14551f8d50cb7753f3d08ac866bb3e5296ee959e809ad6"
+    },
+    {
+      "name": "rectangle-coverage-0.svg",
+      "bytes": 4480,
+      "sha256": "444f59214955448227e1dcfbda7c3e48ea3435e38edce03a1cf48739bcc638a1",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "1cfff731029918b2c6e399c7356cb5da188c8f4a590fad26559a9bb58f3c8ed9"
+    },
+    {
+      "name": "rectangle-coverage-1.svg",
+      "bytes": 5573,
+      "sha256": "b666af7188cc3ff311eea71ada219d8c0b8606a9cb0c22b846b1382c91be7142",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "0e03c5d7113c79c74bad610c0a346c271031ab1b295f2b16170287d36a07c3da"
+    },
+    {
+      "name": "rectangle-coverage-2.svg",
+      "bytes": 6486,
+      "sha256": "d77a3c78c71adda995da6156f96580d8a6f53da671685b85e3d29478617d2b5f",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "e1f14c805c601deef54491b6438ac61fb288f1d98d6441c2b62419208796137a"
+    },
+    {
+      "name": "rectangle-coverage-3.svg",
+      "bytes": 6587,
+      "sha256": "8e1c26c5815fe7ec372ec681dff5f467b6370da5b0350f8a88212212f86b0ee6",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "65008f4c9b2ba9ee7088323a32ab4664045f41d6fc4d7e2ddf2a0b4801f2c2e8"
+    },
+    {
+      "name": "rectangle-coverage-4.svg",
+      "bytes": 5681,
+      "sha256": "3088ed7802d719b2d298e88123eedc375f6574463add79ea9d183b06b880ac89",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "3f13d57e0bf4b6676d8a6fc24c3ab2c242189c080b3508c243443aed9cfb71dd"
+    },
+    {
+      "name": "rectangle-coverage-5.svg",
+      "bytes": 6850,
+      "sha256": "bcc5ca30657a95285d322120148fb8763c0b96bc2bc84fbf4c190011b8584e8b",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "b44819e83e6eff5267dbf9f25acacbedf673e456758a6b0eca93b0872ff82cf3"
+    },
+    {
+      "name": "rectangle-coverage-6.svg",
+      "bytes": 7790,
+      "sha256": "05601eb783b6ed6a8a0a7e4333d95926adee89aae8875680eab3aa30f77cb747",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "961b134c0c16d28df4a65bdc0fe6f837ec8111ddeb2c0b85eae76d2339a73432"
+    },
+    {
+      "name": "rectangle-coverage-7.svg",
+      "bytes": 7834,
+      "sha256": "61a4cff6a97220769d6ec8d50246502b62b2595abe875e8c4b3a8a0bf55e03a1",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "43cce7849adf02f28a83c383007a5c996742d066304a8392bde26fa779659a99"
+    },
+    {
+      "name": "rectangle-coverage-8.svg",
+      "bytes": 6300,
+      "sha256": "31e5f6f5af05f6b8e22f8ab06693eec79eae162fa1806dc9fc54497188504644",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "5dc04c90252076bcb3d297b1c6660d98ac5ee278460a5efd1aa3f71c013862d4"
+    },
+    {
+      "name": "rectangle-coverage-9.svg",
+      "bytes": 7041,
+      "sha256": "15ae3d5c3870788ebf70db297691a8e2d3f25c4e5b6968e747081236b7a5ccbc",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "a18a4496e1f7a0cffe583254ff6a914cc9d050a487b37fe2893c189f27acb42f"
+    },
+    {
+      "name": "rectangle-coverage-10.svg",
+      "bytes": 9171,
+      "sha256": "0cf1bc555831ead2ff4b815ac2f5d03e0873c8e26841720609a800ecf7e8235d",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "7394ee397440c955d54df7243d4947a6773474d7fdce99429da16e72515ac38b"
+    },
+    {
+      "name": "rectangle-coverage-11.svg",
+      "bytes": 9325,
+      "sha256": "ae96fdb1b899481570793f78611bd3736445cc0fc46aed97d9ba6add92bd326e",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "f98e73defa4f8d18c789e51744ee4e9a8e0255cc2a900bbb3b88d7d8e24cda7d"
+    },
+    {
+      "name": "rectangle-gate-0.svg",
+      "bytes": 1936,
+      "sha256": "f0350b8211fa5d5edd4b523760c1e6a3810ee113b3a5a6e5c69960b85d174e96",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "0db2e2caf9a0dd5b10a7fed305ea3ae8125b059cb1bf2c408c296113a523b7fe"
+    },
+    {
+      "name": "rectangle-gate-1.svg",
+      "bytes": 2002,
+      "sha256": "4d2678e0d1c9b8a1ce2a0791899d2148f04442f1437bd9712c7f2d3c1938647b",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "8ab21cf1ff9c6a2e71cc67ddf9e484d63a57bd0facd1c2310817fe9f845aa0c3"
+    },
+    {
+      "name": "rectangle-gate-2.svg",
+      "bytes": 1851,
+      "sha256": "75d67a6778dba25b0beb1388059771b8412135876b432cb4b54d9d977f2d9a6a",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "9e67a19a9d48316da16b148dcb626c7aae81cbb93279a8e3db2d37014140b036"
+    },
+    {
+      "name": "rectangle-gate-3.svg",
+      "bytes": 1958,
+      "sha256": "cbb9399a688d1a6ab62a3953ae734b3ac72e986566181033d710a4dc31cfb086",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "a14866562534db22b5eec8bc435a1f131f0e2121a49363864e197d9f8f99805c"
+    },
+    {
+      "name": "rectangle-gate-4.svg",
+      "bytes": 1951,
+      "sha256": "a73a9d10f9af96e2dd046e690baccabac8b96c9484bd058f721c288f0b8f8e83",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "444d9989201cb7c9767e5ee1557d0575d45aac8f2788bc82f6f235ac3a35461c"
+    },
+    {
+      "name": "rectangle-gate-5.svg",
+      "bytes": 2004,
+      "sha256": "35e40111d814f36685e30d6468162f3b573a10ad39f2686ad5470bcdf2d35444",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "773cd7e22f0605674549b517dce31f72839fba87997fbdb7928f55ba5377fdb9"
+    },
+    {
+      "name": "rectangle-gate-6.svg",
+      "bytes": 2005,
+      "sha256": "81a1d5f99dd5a40db7e3f29f055fb7d107d3f4db39a58068dc6f21cded38831a",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "13bf1d584dc08dab4e32c2f0f665e65c63a3523e379a4bee1914c09edf16e056"
+    },
+    {
+      "name": "rectangle-gate-7.svg",
+      "bytes": 1903,
+      "sha256": "4211ca06a53435d010148caad580273057991abeade038b1de2e730af3ee5a58",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "3975aa784ea377140b596b879acbdf22c3f484cfd727f1805aec0251aa1ef85e"
+    },
+    {
+      "name": "rectangle-gate-8.svg",
+      "bytes": 1960,
+      "sha256": "fe4da504c986b95206b991731f0eaba875eb5c63950f767342285be8f67cdf8d",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "fb3532d64c36310273c6c22b00a7edb15b193ceefb67edb32763d96f5e7691c2"
+    },
+    {
+      "name": "rectangle-gate-9.svg",
+      "bytes": 2002,
+      "sha256": "82e1a3303e81e14ce225dcce8ee9e489afc56a9ddaea19f4030d66fb3a0cefd7",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "9ed498043351bb7a9faeff67988006e931b71aa948a01f23ee74bbf6c5195d1c"
+    },
+    {
+      "name": "rectangle-gate-10.svg",
+      "bytes": 2001,
+      "sha256": "61b71a616a2211027c457fb1a9f31e6d04372a14da7de60674b87906dff51228",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "4b9edfc6e9eda1efda29d3b18bdf63c20065846d2a0c8ef88492aa8b11baa266"
+    },
+    {
+      "name": "rectangle-gate-11.svg",
+      "bytes": 2002,
+      "sha256": "008dea51caa05c682064df58456bef9f7429f9831fcac2777157d4c3eb4264cc",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "10e68e598cc48f773406437a7c01f29cfc504daf5da48920360a053b5b1196d3"
+    },
+    {
+      "name": "square-grid-0.svg",
+      "bytes": 2091,
+      "sha256": "27154f2429a8c479ba6d00049bd35e6275fe1288a642bcebf49cf8c36e3a86de",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "78bc5a8fa054dba33a14bff947d486d3b58391f77525c36d4ee244d16efd5ef3"
+    },
+    {
+      "name": "square-grid-1.svg",
+      "bytes": 3435,
+      "sha256": "4377ad781325e028fdfcab3b3a6466fc58395210cbba3f08a309067938efc3ff",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "75a2caa5686184b347bc15c30df44b22edbe89f71a672d67ce25569d09c800fc"
+    },
+    {
+      "name": "square-grid-2.svg",
+      "bytes": 4737,
+      "sha256": "1110310c154bd08c410a35ff1a48fcc32aefb51193e43815f1217a8f50143ac5",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "90b0d300eab5ad89cb8187575ab35489dd9f3f814429874de5526d7808b9cdce"
+    },
+    {
+      "name": "square-grid-3.svg",
+      "bytes": 6252,
+      "sha256": "a9c1d3c8edb6080a55fddaf3979e25f6e6de12ab72d954ae1f89b79f7212e71b",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "0a32e7377a41263d2fae237d9c320bda0c20c39d56aaf865999b5b87c1d511d5"
+    },
+    {
+      "name": "square-grid-4.svg",
+      "bytes": 9037,
+      "sha256": "f720cb95890a92485b447b270d6600586af69b74e3619d6f9a7f2f7166e0be8f",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "4e3d0f72e0aaf89caa413f368cbecf7b056ac74b603792cf5fc6bdf6bf1205db"
+    },
+    {
+      "name": "square-grid-5.svg",
+      "bytes": 11684,
+      "sha256": "d6a5ff45956450adac38daf97620f48ee1c3133e3d0da8209ec94b43ae56fd30",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "9cd7f1562b46576df4ea57bd037b1cc66f5eba5771c9b0a23b620cdf2eb63a43"
+    },
+    {
+      "name": "square-grid-6.svg",
+      "bytes": 13829,
+      "sha256": "92b1dfbe679179cef20934a3a58c856ba7794354b81b5dcd3b5274c775162b70",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "59eba25974f2e6f5fdf536b10ee67c0ba9933a006eed9f46eb8c99b919a567bb"
+    },
+    {
+      "name": "square-grid-7.svg",
+      "bytes": 17731,
+      "sha256": "a128e84dc2be63a3114a73f9bc5c5e26782972811e4d6cd0841e16726320209d",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "cd0484e525965cf6b8fb077bee94b6d3f0a71d86c52fbaa0eb601eb6ca36cebd"
+    },
+    {
+      "name": "square-grid-8.svg",
+      "bytes": 19185,
+      "sha256": "b7e5a41a1423cdf4fd9fa160fd9cf135b6050fcc6a9f99377f1d0d9e170f60a7",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "61cba44caa97af5a2016334b851a852ccc891470a20cbb6ac5078bc1b9c90a23"
+    },
+    {
+      "name": "square-grid-9.svg",
+      "bytes": 25064,
+      "sha256": "06fdb396213b295993d3452ee075739e82b0b8c76194adfa7bf0df946941cbec",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "9e9fd8b0de1a6a1e3e97491359012b3725c22cc689e6ad8b7745a20ceac8e001"
+    },
+    {
+      "name": "square-grid-10.svg",
+      "bytes": 28867,
+      "sha256": "4713a2083b7e368a0417de84095fd332a00c9a7d0d086ec060daafa8931829cb",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "a4d4bbb425408eb4a83fe82fdd49c3e62a2a5456072db3fb7cc62fdc7b313f61"
+    },
+    {
+      "name": "square-grid-11.svg",
+      "bytes": 33696,
+      "sha256": "d9ac21fc9dfd43daaed318bf8bd9d0132529aa904ea7d7e77d9fd13226f38c9c",
+      "width": 420,
+      "height": 300,
+      "decoded": true,
+      "rasterSha256": "4bb1fc10482341c852995aa5b52c47626bd82468251d931ecfcc6a75a941b71e"
+    }
+  ],
+  "contactSheets": [
+    {
+      "group": "gates",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/gates-contact.png",
+      "images": 12,
+      "sha256": "59de666b52deb86162529d30e140d8d9005056d3a5a30febe64c17bd20e1b921",
+      "sourceFile": "data/qa/geometry-assets-images/gates-contact.png"
+    },
+    {
+      "group": "boundaries",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/boundaries-contact.png",
+      "images": 12,
+      "sha256": "f23835af7daf8e706743a04f941fcba36fe68700f285701cd8901c9ea0ef0d0d",
+      "sourceFile": "data/qa/geometry-assets-images/boundaries-contact.png"
+    },
+    {
+      "group": "coverage",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/coverage-contact.png",
+      "images": 12,
+      "sha256": "97bc143547fd9461e1acd3eae7db292bfa267c37561a0f6e132f67f8f0f9640e",
+      "sourceFile": "data/qa/geometry-assets-images/coverage-contact.png"
+    },
+    {
+      "group": "units",
+      "file": "doc/evidence/2026-10-20/geometry-content-images/units-contact.png",
+      "images": 2,
+      "sha256": "770e6bf967c72c37127a8a8e8a88b302fc3a0f551f8b6ecf9b36cd872e914391",
+      "sourceFile": "data/qa/geometry-assets-images/units-contact.png"
+    }
+  ],
+  "totals": {
+    "tasks": 192,
+    "assets": 38,
+    "bytes": 320731,
+    "decoded": 38
+  }
+}

@@ -13,6 +13,7 @@ const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-verification-runt
 const output = path.resolve(process.argv[2] ?? 'data/qa/verification-groups-runtime.json');
 const driver = process.argv[3] ?? 'sqlite';
 const verifyContentUpgrade = process.argv[4] === 'content-upgrade';
+const pointFilter = process.argv[5];
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
 Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY;
@@ -20,6 +21,7 @@ const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
 const { buildAllAuthoredMathProbeFamilies } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/authored-math-probes.js');
 const { buildFoundationCurriculum, foundationQuestionId } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/foundation-curriculum.js');
+if (pointFilter && (!verifyContentUpgrade || !buildAllAuthoredMathProbeFamilies().some(family => family.atomId === pointFilter))) throw new Error('The optional smoke-test filter must name an existing authored point in content-upgrade mode');
 const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
 const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/assessment-blueprint.ts',
@@ -34,12 +36,18 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-data-probes.ts',
   'apps/api/src/modules/diagnostics/authored-third-grade-probes.ts',
   'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-geometry-probes.ts', 'resources/curriculum/geometry-probes-v1.json',
+  'scripts/content/build-geometry-probes.cjs',
+  ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name),
   'apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts', 'apps/api/src/modules/diagnostics/component-observations.ts',
   'apps/api/src/modules/diagnostics/authored-relation-release.ts',
   'resources/curriculum/authored-relations-2026-10-20-v1.json',
   'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
-  'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'scripts/qa/verify-verification-groups.cjs'];
+  'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/reviews/reviews.service.ts',
+  'apps/api/src/modules/student-media/student-media.service.ts', 'apps/api/src/modules/student-media/media-normalization.ts',
+  'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
+  pointFilter: pointFilter ?? null,
   scope: 'Synthetic family accounts, real authored questions, formal administrator bootstrap, production-mode HTTP, concurrent requests and restarts. Selected authored math points cover basic/transfer contrasts; not complete curriculum, browser or standardized measurement acceptance.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminPool, qaDatabase;
@@ -50,8 +58,8 @@ async function start() {
 }
 async function stop() { await app?.close(); app = undefined; }
 async function raw(method, route, body, actor = 'parent') {
-  const response = await fetch(base + route, { method, signal: AbortSignal.timeout(15000), headers: { 'Content-Type': 'application/json',
-    ...(tokens[actor] ? { Authorization: `Bearer ${tokens[actor]}` } : {}) }, ...(body !== undefined ? { body: JSON.stringify(body) } : {}) });
+  const response = await fetch(base + route, { method, signal: AbortSignal.timeout(15000), headers: { 'Content-Type': Buffer.isBuffer(body) ? 'application/octet-stream' : 'application/json',
+    ...(tokens[actor] ? { Authorization: `Bearer ${tokens[actor]}` } : {}) }, ...(body !== undefined ? { body: Buffer.isBuffer(body) ? body : JSON.stringify(body) } : {}) });
   const result = await response.json(); return { status: response.status, data: result.data, error: result.error?.message };
 }
 async function call(method, route, body, actor = 'parent', expected = method === 'POST' ? 201 : 200) {
@@ -99,6 +107,84 @@ function legalWrongAnswer(schema, expected) {
 async function wrongAnswer(id, item) {
   const snapshot = await store.transaction(() => structuredClone(store.find('diagnosticSessions', { id }).questionSnapshots.find(row => row.id === item.questionId)));
   return legalWrongAnswer(snapshot.answerSchema, snapshot.answer);
+}
+const manualModes = new Set(['short_answer', 'stepwise', 'geometry_draw', 'image_upload', 'audio_record']);
+async function pointAnswer(id, item, actor, correct) {
+  const snapshot = await store.transaction(() => structuredClone(store.find('diagnosticSessions', { id }).questionSnapshots.find(row => row.id === item.questionId)));
+  const schema = snapshot.answerSchema;
+  if (!manualModes.has(schema.mode)) return { answer: correct ? snapshot.answer : legalWrongAnswer(schema, snapshot.answer), manual: false };
+  const description = correct ? (typeof snapshot.answer === 'object' ? snapshot.answer.description ?? String(snapshot.answer) : String(snapshot.answer)) : '合成未达标作答：没有说明本题要求的行列覆盖关系。';
+  let response;
+  if (schema.mode === 'short_answer') response = { value: description };
+  else if (schema.mode === 'stepwise') response = { steps: correct ? snapshot.answer.map(String) : [description] };
+  else if (schema.mode === 'geometry_draw') response = { strokes: [], description };
+  else if (schema.mode === 'image_upload') {
+    const dimensions = snapshot.stem.match(/长(\d+)格、宽(\d+)格/); assert(dimensions, 'An image answer needs an explicit original drawing fixture');
+    const columns = correct ? Number(dimensions[1]) : 1, rows = correct ? Number(dimensions[2]) : 1, cells = [];
+    for (let row = 0; row < rows; row++) for (let col = 0; col < columns; col++) cells.push(`<rect x="${20 + col * 24}" y="${20 + row * 24}" width="24" height="24" fill="white" stroke="black"/>`);
+    const diagram = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220"><rect width="420" height="220" fill="white"/>${cells.join('')}<text x="20" y="190" font-family="sans-serif" font-size="15">${correct ? `${columns} x ${rows} = ${columns * rows} square units` : 'Incomplete: one square only'}</text></svg>`;
+    const bytes = await require('sharp')(Buffer.from(diagram)).png().toBuffer();
+    const upload = await call('POST', '/learning/media', { kind: 'diagnostic', sessionId: id, itemId: item.id,
+      name: '合成面积作答.png', mediaType: 'image/png', size: bytes.length, requestKey: randomUUID() }, actor);
+    for (let index = 0; index < Math.ceil(bytes.length / upload.chunkSize); index++) await call('PUT', `/learning/media/${upload.id}/chunks/${index}`,
+      bytes.subarray(index * upload.chunkSize, (index + 1) * upload.chunkSize), actor);
+    const ready = await call('POST', `/learning/media/${upload.id}/complete`, {}, actor); assert.equal(ready.status, 'ready');
+    response = { mediaIds: [ready.id], description };
+  } else throw new Error('Audio needs its dedicated recording and rubric journey');
+  return { answer: { questionId: item.questionId, mode: schema.mode, response }, manual: true, mode: schema.mode };
+}
+async function completePointSession(session, actor, correct) {
+  const pending = [];
+  for (const item of session.items) {
+    const fixture = await pointAnswer(session.id, item, actor, correct);
+    const submitted = await call('POST', sessionRoute(session.id) + '/responses', { itemId: item.id, answer: fixture.answer, elapsedMs: 1000 }, actor);
+    if (fixture.manual) { assert.equal(submitted.status, 'pending_review'); pending.push({ id: submitted.responseId, mode: fixture.mode }); }
+  }
+  await call('POST', sessionRoute(session.id) + '/complete', {}, actor);
+  const before = await call('GET', sessionRoute(session.id) + '/report', undefined, actor);
+  for (const row of pending) {
+    const original = before.evidence.find(item => item.id === row.id); assert.equal(original.score, null); assert.equal(original.status, 'pending_review');
+    const detail = await call('GET', `/admin/reviews/diagnostic/${encodeURIComponent(row.id)}`, undefined, 'admin');
+    assert(detail.canScore && detail.rubric?.length, 'The original frozen rubric must support every manual fixture');
+    await call('POST', `/admin/reviews/diagnostic/${encodeURIComponent(row.id)}`, { expectedVersion: detail.reviewVersion, requestKey: randomUUID(),
+      reason: '合成面积表示按冻结量规逐项核对，用于验证上传、待评分与复核链，不代表真人教师审核。',
+      ratings: detail.rubric.map((_, criterionIndex) => ({ criterionIndex, score: correct ? 1 : 0,
+        observation: correct ? '合成图示或说明完整对应题目中的行列与面积。' : '合成作答只有一个单位格或没有完整关系，未满足该项要求。' })) }, 'admin');
+  }
+  const report = pending.length ? await call('GET', sessionRoute(session.id) + '/report', undefined, actor) : before;
+  if (pending.length) {
+    const history = await call('GET', sessionRoute(session.id) + '/report-history', undefined, actor); assert.deepEqual(history.find(row => row.version === before.version), before);
+    for (const row of pending) {
+      assert.equal(report.evidence.find(item => item.id === row.id).score, correct ? 1 : 0);
+      const original = await store.transaction(() => structuredClone(store.find('diagnosticResponses', { id: row.id })));
+      assert.equal(original.status, 'pending_review'); assert.equal(original.score, null);
+      (evidence.manualReviewJourneys ??= []).push({ mode: row.mode, intendedRubricScore: correct ? 1 : 0, frozenRubricUsed: true,
+        submittedPendingBeforeScoring: true, originalFirstResponseAndReportPreserved: true, source: 'owned synthetic deterministic fixture, not a human teacher or real student' });
+    }
+  }
+  return report;
+}
+async function originalImageFixture(studentId, actor, correct) {
+  // In this owned temporary QA store, make only existing original image mappings eligible for selection.
+  // Restore every mapping immediately after freezing the session. Never add families or alter learner scope.
+  const mappings = await store.transaction(() => structuredClone(store.select('measurementItems', { atomId: 'core:math:rectanglecover' })));
+  let session;
+  try {
+    await store.transaction(() => {
+      for (const mapping of store.select('measurementItems', { atomId: 'core:math:rectanglecover' })) {
+        if (store.find('questionAnswerSchemas', { questionId: mapping.questionId })?.mode !== 'image_upload') mapping.reviewStatus = 'draft';
+      }
+    });
+    session = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline', targetAtomIds: ['core:math:rectanglecover'], includePrerequisites: false, maxItems: 2 }, actor);
+  } finally {
+    await store.transaction(() => { for (const mapping of mappings) Object.assign(store.find('measurementItems', { id: mapping.id }), structuredClone(mapping)); });
+    assert.deepEqual(await store.transaction(() => structuredClone(store.select('measurementItems', { atomId: 'core:math:rectanglecover' }))), mappings);
+  }
+  const modes = await store.transaction(() => store.find('diagnosticSessions', { id: session.id }).questionSnapshots.map(row => row.answerSchema.mode));
+  assert(modes.length && modes.every(mode => mode === 'image_upload'));
+  const report = await completePointSession(session, actor, correct); assert.equal(report.pendingReviewCount, 0);
+  (evidence.forcedImageFixtures ??= []).push({ intendedRubricScore: correct ? 1 : 0, originalImageTasks: modes.length,
+    originalEligibilityRestored: true, originalFamilyUnchanged: true, learnerScopeUnchanged: true, noPrematureMastery: report.estimates.every(row => row.status !== 'secure') });
 }
 async function contentUpgrade() {
   const authoredFamilies = buildAllAuthoredMathProbeFamilies();
@@ -181,7 +267,7 @@ async function main() {
   if (verifyContentUpgrade) {
     evidence.pointJourneys = [];
     const pointGrades = new Map(buildFoundationCurriculum().map(definition => [definition.atom.id, definition.atom.grade]));
-    for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))]) {
+    for (const selectedAtomId of [...new Set(buildAllAuthoredMathProbeFamilies().map(family => family.atomId))].filter(id => !pointFilter || id === pointFilter)) {
       // At most 12 children per synthetic guardian cohort; do not exhaust one parent's write quota by managing the whole curriculum.
       // Every guardian and learner uses the formal identity flow. Production quotas remain active.
       const cohort = Math.floor(evidence.pointJourneys.length / 12), pointParent = `point-parent-${cohort}`;
@@ -195,25 +281,30 @@ async function main() {
       tokens[actor] = (await call('POST', '/auth/learning-code', { code: pointCode.code }, 'anonymous')).token;
       await call('PUT', `/students/${pointStudentId}/learning-scope`, { subject: 'math', grade, term: 'upper', textbookVolumeId: null,
         textbookVersion: '原创能力路径', learnedAtomIds: [selectedAtomId], currentAtomId: selectedAtomId, minutesPerSession: 15 }, pointParent);
+      if (selectedAtomId === 'core:math:rectanglecover') {
+        await originalImageFixture(pointStudentId, actor, false); await originalImageFixture(pointStudentId, actor, true);
+      }
       const baseline = await call('POST', '/diagnostics/sessions', { studentId: pointStudentId, subject: 'math', intent: 'baseline',
         targetAtomIds: [selectedAtomId], includePrerequisites: false, maxItems: 8 }, actor);
-      for (const item of baseline.items) await call('POST', sessionRoute(baseline.id) + '/responses', { itemId: item.id,
-        answer: await wrongAnswer(baseline.id, item), elapsedMs: 1000 }, actor);
-      const source = await call('POST', sessionRoute(baseline.id) + '/complete', {}, actor);
+      const source = await completePointSession(baseline, actor, false);
       const hypothesis = source.hypotheses.find(row => row.atomId === selectedAtomId && row.cause === 'representation_gap'); assert(hypothesis);
       const preview = await call('POST', '/diagnostics/blueprints', { studentId: pointStudentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id,
         includePrerequisites: true, maxItems: 8, requestKey: randomUUID() }, actor);
       assert.equal(preview.blueprint.verification.fullyCovered, true); assert.equal(preview.itemCount, 4);
       const session = await call('POST', previewRoute(preview.id) + '/start', {}, actor);
-      for (const item of session.items) await call('POST', sessionRoute(session.id) + '/responses', { itemId: item.id,
-        answer: await snapshotAnswer(session.id, item.questionId), elapsedMs: 1000 }, actor);
-      const result = await call('POST', sessionRoute(session.id) + '/complete', {}, actor);
+      const result = await completePointSession(session, actor, true);
       assert.equal(result.verification.independentObservationsComplete, true);
       assert(result.verification.groups.every(group => group.independentFamilies === 2 && group.passedFamilies === 2));
       assert.notEqual(result.estimates.find(row => row.atomId === selectedAtomId).status, 'secure');
       evidence.pointJourneys.push({ atomId: selectedAtomId, grade, formalGuardianCohort: cohort, formalIndependentLearner: true, productionQuotasActive: true, frozenContrasts: 4, basicFamilies: 2, transferFamilies: 2,
         independentObservationsComplete: true, noPrematureSecureMastery: true });
     }
+  }
+  if (verifyContentUpgrade && (!pointFilter || pointFilter === 'core:math:rectanglecover')) {
+    assert.equal(evidence.forcedImageFixtures.length, 2);
+    assert(evidence.forcedImageFixtures.every(row => row.noPrematureMastery));
+    assert(evidence.manualReviewJourneys.some(row => row.mode === 'image_upload' && row.intendedRubricScore === 0));
+    assert(evidence.manualReviewJourneys.some(row => row.mode === 'image_upload' && row.intendedRubricScore === 1));
   }
   const atomId = 'foundation:math:multiplydigits';
   await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,

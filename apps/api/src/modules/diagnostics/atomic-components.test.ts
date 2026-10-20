@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { answerInputConfiguration, type ComponentBinding, type DiagnosticHypothesis, type DiagnosticResponse, type DiagnosticSession,
   type MeasurementItem, type QuestionAnswerSchema, type ResponseScoreDetail } from '@study-agent/contracts';
 import { buildAtomicProbeFamilies, divisionRegroupAtom } from './authored-atomic-curriculum';
+import { buildGeometryProbeFamilies } from './authored-geometry-probes';
 import { buildFoundationCurriculum, foundationQuestionId } from './foundation-curriculum';
 import { componentBindingsIssue, componentObservations, reviewComponentBindings } from './component-observations';
 import { authoredAtomicRelationRelease as release, authoredRelationDefinitionUpdate } from './authored-relation-release';
@@ -37,8 +38,10 @@ const session = { id: 'session', atomSnapshots: [release.after], componentAtomSn
 
 describe('independently authored atomic regroup tasks', () => {
   it('preserves all 5438 historical task objects and IDs and adds exactly four distinct structures', () => {
+    const additions = new Set(buildGeometryProbeFamilies().flatMap(row => row.exercises.map(task => foundationQuestionId(row.atomId, task))));
     const definitions = buildFoundationCurriculum(), historical = definitions.filter(row => row.atom.id !== child.id)
       .flatMap(row => row.exercises.map(exercise => ({ atomId: row.atom.id, id: foundationQuestionId(row.atom.id, exercise), exercise })))
+      .filter(row => !additions.has(row.id))
       .sort((a, b) => a.id.localeCompare(b.id));
     expect(historical).toHaveLength(5438);
     expect(createHash('sha256').update(JSON.stringify(historical)).digest('hex')).toBe('8755da5854b7131fcc69832a4603eee80b99b3cc593649a5015b00c36a752ae1');

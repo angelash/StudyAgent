@@ -1,0 +1,37 @@
+{
+  "format": "study-original-geometry-probe-figures-v1",
+  "provenance": "StudyAgent原创有限图示；线段、单位格和开口只提供题目条件，不包含作答结论。",
+  "rectangleGates": [
+    { "length": 8, "width": 3, "gate": 1 },
+    { "length": 9, "width": 4, "gate": 2 },
+    { "length": 10, "width": 5, "gate": 3 },
+    { "length": 11, "width": 6, "gate": 1 },
+    { "length": 12, "width": 3, "gate": 2 },
+    { "length": 13, "width": 4, "gate": 3 },
+    { "length": 14, "width": 5, "gate": 1 },
+    { "length": 15, "width": 6, "gate": 2 },
+    { "length": 16, "width": 3, "gate": 3 },
+    { "length": 17, "width": 4, "gate": 1 },
+    { "length": 18, "width": 5, "gate": 2 },
+    { "length": 19, "width": 6, "gate": 3 }
+  ],
+  "squareGrids": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  "rectangleCoverage": [
+    { "columns": 5, "rows": 3, "emptyCells": [1, 7] },
+    { "columns": 6, "rows": 3, "emptyCells": [1, 8, 16] },
+    { "columns": 7, "rows": 3, "emptyCells": [1, 9, 19, 6] },
+    { "columns": 8, "rows": 3, "emptyCells": [1, 10, 22, 7, 17] },
+    { "columns": 5, "rows": 4, "emptyCells": [1, 7] },
+    { "columns": 6, "rows": 4, "emptyCells": [1, 8, 22] },
+    { "columns": 7, "rows": 4, "emptyCells": [1, 9, 26, 6] },
+    { "columns": 8, "rows": 4, "emptyCells": [1, 10, 30, 7, 25] },
+    { "columns": 5, "rows": 5, "emptyCells": [1, 7] },
+    { "columns": 6, "rows": 5, "emptyCells": [1, 8, 28] },
+    { "columns": 7, "rows": 5, "emptyCells": [1, 9, 33, 6] },
+    { "columns": 8, "rows": 5, "emptyCells": [1, 10, 38, 7, 33] }
+  ],
+  "areaUnitGrids": [
+    { "id": "dm-cm", "largeLengthUnit": "分米", "smallLengthUnit": "厘米", "largeAreaUnit": "平方分米", "smallAreaUnit": "平方厘米" },
+    { "id": "m-dm", "largeLengthUnit": "米", "smallLengthUnit": "分米", "largeAreaUnit": "平方米", "smallAreaUnit": "平方分米" }
+  ]
+}
