@@ -1,0 +1,113 @@
+{
+  "at": "2026-10-20T04:48:11.349Z",
+  "driver": "sqlite",
+  "releaseId": "authored-average-atomic-relations-2026-10-20-v1",
+  "passed": true,
+  "scope": "Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+    "apps/api/src/modules/diagnostics/authored-unit-probes.ts": "1109a9bb869bdb1d243dc6d71d6b4a6d09ab74582ee2faf5bb1e0dfbf9e352e1",
+    "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+    "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+    "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+    "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+    "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+    "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+    "scripts/qa/verify-authored-relations.cjs": "a643bf8218d3cfa30dfb330f897fe7ea21c6e1b1f148480fec7e17d76a0b2e19"
+  },
+  "result": {
+    "originalCollections": {
+      "questions": {
+        "count": 3435,
+        "sha256": "8945d6dc45392bcc5244507c51507bfd2a4d2c30baef2c58ee41e7c9d92171ad"
+      },
+      "questionDocuments": {
+        "count": 3435,
+        "sha256": "c4af30ebc724f75f1641fe6004470792730b9268ab39c8a59d98d5e281230784"
+      },
+      "questionAnswerSchemas": {
+        "count": 3435,
+        "sha256": "16e2f1477f1c56e7073631374769c76718def47fa4f2c71692e1726b67dedb9a"
+      },
+      "questionSources": {
+        "count": 3435,
+        "sha256": "40c185586cc65f27e7059fd452ffbbbe492559495937b8bc6566ae795e16fc94"
+      },
+      "measurementItems": {
+        "count": 3435,
+        "sha256": "91421be7e17260328e8047a4447bc3f1831d6a9189a680fd03ec1170ba441b06"
+      }
+    },
+    "originalMappingVerification": {
+      "total": 3435,
+      "unchanged": 3419,
+      "explicitlyReviewedRebindings": 16,
+      "frozenReviewHistoricalIds": [
+        "foundation_q_015088e88a672bb97dfa786d",
+        "foundation_q_166e8bd817153a378495c10a",
+        "foundation_q_2b932decad3869d991e1c646",
+        "foundation_q_2bd389a13341e926ebff6994",
+        "foundation_q_2f55124c53f870ee4a167ebe",
+        "foundation_q_2f8121199df0f73d04473ef3",
+        "foundation_q_3ef5f664befb4e216057f55c",
+        "foundation_q_3f4e6a3bd4e5094b297d4ea5",
+        "foundation_q_43b928dadc2a5d0355f16fb0",
+        "foundation_q_645c2239457de8a3a7cc7ca0",
+        "foundation_q_66b7eb037199a9626c56af49",
+        "foundation_q_6b978f6549438e591c1c839d",
+        "foundation_q_7f976654457aa5b5ec1df808",
+        "foundation_q_8a05004362e9c0c378caf3b2",
+        "foundation_q_8d62b0a25dc49217e58b640c",
+        "foundation_q_8f4efd63846ab8d2e6641d03",
+        "foundation_q_a6c911356d61faa2733f7814",
+        "foundation_q_b6b7128abe8b30ad79bfe845",
+        "foundation_q_ce1a602271ff7ecaa5267f13",
+        "foundation_q_db6dc6bff8bf3a15c33ff6a4",
+        "foundation_q_dd6a5322848748f0b22a9425",
+        "foundation_q_e1e64f180901b2041a64194f",
+        "foundation_q_f1cd438a1f00e2460d64b8c6",
+        "foundation_q_f6ebfd43a288cdf5d69af017"
+      ],
+      "protectedEditedHistoricalIds": [
+        "foundation_q_015088e88a672bb97dfa786d",
+        "foundation_q_166e8bd817153a378495c10a",
+        "foundation_q_2b932decad3869d991e1c646",
+        "foundation_q_2bd389a13341e926ebff6994",
+        "foundation_q_2f55124c53f870ee4a167ebe",
+        "foundation_q_2f8121199df0f73d04473ef3",
+        "foundation_q_3ef5f664befb4e216057f55c",
+        "foundation_q_3f4e6a3bd4e5094b297d4ea5"
+      ],
+      "before": {
+        "count": 3435,
+        "sha256": "91421be7e17260328e8047a4447bc3f1831d6a9189a680fd03ec1170ba441b06"
+      },
+      "after": {
+        "count": 3435,
+        "sha256": "f90c7cac8a69adb1240da6601eb71d9203d7c684a92457aadea0bb61e15bbe79"
+      },
+      "exactFieldAndRevisionValidation": true
+    },
+    "reviewedMappings": 64,
+    "editedPacketsPreserved": 8,
+    "interruptedStartupDidNotDoubleIncrement": true,
+    "newDefinitionVersion": 2,
+    "oldTargetEvidenceExcludedFromCurrentProfile": 4,
+    "oldReportAndUnfinishedSessionFrozen": true,
+    "oldPreviewRejected": true,
+    "oldPlanRequiresReconfirmation": true,
+    "newPrerequisite": "atomic:math:averagecount",
+    "newPrerequisiteIncludedInNewScopeAndRootVerification": true,
+    "repeatedRestartIdempotent": true,
+    "priorSystemTeachingV2UpgradesToV3WithLineage": true,
+    "manualAndEditedV2PreservedAcrossRestart": true,
+    "restartsIncludingInterrupted": 8
+  }
+}

@@ -3,6 +3,7 @@ import { componentBindingSchema, knowledgeAtomSchema, type ComponentBinding, typ
   type QuestionDocument, type QuestionSourceRecord } from '@study-agent/contracts';
 import rawRelease from '../../../../../resources/curriculum/authored-relations-2026-10-20-v1.json';
 import rawAtomicRelease from '../../../../../resources/curriculum/authored-atomic-relations-2026-10-20-v1.json';
+import rawAverageRelease from '../../../../../resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json';
 import type { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import type { FoundationDefinition } from './foundation-curriculum';
 import { blueprintContentHash } from './assessment-blueprint';
@@ -17,7 +18,12 @@ const parseRelease = <T extends RawRelease>(raw: T): Omit<T, 'before' | 'after' 
     ...(review.componentBindings ? { componentBindings: review.componentBindings.map(binding => componentBindingSchema.parse(binding)) } : {}) })) });
 export const authoredRelationRelease = parseRelease(rawRelease);
 export const authoredAtomicRelationRelease = parseRelease(rawAtomicRelease);
-export const authoredRelationReleases = [authoredRelationRelease, authoredAtomicRelationRelease];
+export const authoredAverageRelationRelease = parseRelease(rawAverageRelease);
+export const authoredRelationReleases = [authoredRelationRelease, authoredAtomicRelationRelease, authoredAverageRelationRelease];
+const componentTargets = new Map<string, KnowledgeAtom[]>([
+  [authoredAtomicRelationRelease.releaseId, rawAtomicRelease.componentTargetDefinitions.map(definition => knowledgeAtomSchema.strict().parse(definition))],
+  [authoredAverageRelationRelease.releaseId, rawAverageRelease.componentTargetDefinitions.map(definition => knowledgeAtomSchema.strict().parse(definition))],
+]);
 type AuthoredRelease = typeof authoredRelationReleases[number];
 export const authoredRelationReleaseActor = (release: AuthoredRelease): InMemoryUserAccount => ({ id: `system:${release.releaseId}`, principal: '', passwordHash: '',
   displayName: '原创先修关系与对应题目复核', role: 'admin', status: 'active' });
@@ -25,16 +31,15 @@ export const authoredRelationActor = authoredRelationReleaseActor(authoredRelati
 
 /** This release does not grant a fresh install broader approval than the frozen reviewed list. */
 export function authoredSeedMeasurementFingerprint(atom: KnowledgeAtom, questionId: string) {
-  const release = authoredAtomicRelationRelease;
-  return atom.id === release.after.id && !release.questions.some(review => review.questionId === questionId)
+  const release = authoredRelationReleases.find(candidate => componentTargets.has(candidate.releaseId) && atom.id === candidate.after.id);
+  return release && !release.questions.some(review => review.questionId === questionId)
     ? atomDefinitionFingerprint(release.before) : atomDefinitionFingerprint(atom);
 }
 
 export function authoredRelationTargetsCompatible(store: InMemoryStoreService, release: AuthoredRelease) {
-  if (release.releaseId !== authoredAtomicRelationRelease.releaseId) return true;
-  return rawAtomicRelease.componentTargetDefinitions.every(definition => {
+  return (componentTargets.get(release.releaseId) ?? []).every(definition => {
     const target = store.find('knowledgeAtoms', { id: definition.id });
-    return target?.status === 'published' && target.parentId === definition.parentId && atomDefinitionFingerprint(target) === atomDefinitionFingerprint(knowledgeAtomSchema.parse(definition));
+    return target?.status === 'published' && target.parentId === definition.parentId && atomDefinitionFingerprint(target) === atomDefinitionFingerprint(definition);
   });
 }
 

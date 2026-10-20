@@ -50,6 +50,8 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.ts',
   'apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.ts',
   'apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-average-atomic.ts', 'resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json',
+  'resources/curriculum/authored-task-baseline-6398-v1.json',
   'resources/curriculum/fourth-grade-geometry-statistics-v1.json', 'scripts/content/build-fourth-grade-geometry-statistics.cjs',
   ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/fourth-grade-geometry-statistics-v1')).sort().map(name => 'apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/' + name),
   'apps/api/src/modules/diagnostics/authored-geometry-probes.ts', 'resources/curriculum/geometry-probes-v1.json',

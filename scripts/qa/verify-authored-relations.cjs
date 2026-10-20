@@ -7,16 +7,16 @@ const { Pool } = require('pg'), { NestFactory } = require('@nestjs/core');
 const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-authored-relations-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/authored-relations-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 assert(['sqlite', 'postgres'].includes(driver));
-const releaseKey = process.argv[4] ?? 'mixed'; assert(['mixed', 'atomic'].includes(releaseKey));
+const releaseKey = process.argv[4] ?? 'mixed'; assert(['mixed', 'atomic', 'average'].includes(releaseKey));
 Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const fromApi = file => require(path.join(root, 'apps/api/dist/apps/api/src', file));
 const { AppModule } = fromApi('app.module.js'), { InMemoryStoreService } = fromApi('infrastructure/in-memory-store.service.js');
 const { CurriculumService } = fromApi('modules/diagnostics/curriculum.service.js');
-const { authoredRelationRelease, authoredAtomicRelationRelease } = fromApi('modules/diagnostics/authored-relation-release.js');
-const release = releaseKey === 'atomic' ? authoredAtomicRelationRelease : authoredRelationRelease;
-const newPrerequisite = releaseKey === 'atomic' ? 'atomic:math:divisionregroup' : 'foundation:math:divisiontable';
-const { atomDefinitionFingerprint } = fromApi('modules/diagnostics/measurement-definition.js');
+const { authoredRelationRelease, authoredAtomicRelationRelease, authoredAverageRelationRelease } = fromApi('modules/diagnostics/authored-relation-release.js');
+const release = { mixed: authoredRelationRelease, atomic: authoredAtomicRelationRelease, average: authoredAverageRelationRelease }[releaseKey];
+const newPrerequisite = { mixed: 'foundation:math:divisiontable', atomic: 'atomic:math:divisionregroup', average: 'atomic:math:averagecount' }[releaseKey];
+const { atomDefinitionFingerprint, questionContentFingerprint } = fromApi('modules/diagnostics/measurement-definition.js');
 const { buildFoundationCurriculum, foundationQuestionId } = fromApi('modules/diagnostics/foundation-curriculum.js');
 const { blueprintContentHash } = fromApi('modules/diagnostics/assessment-blueprint.js');
 const { gradeResponse } = fromApi('modules/diagnostics/scoring.js');
@@ -24,9 +24,11 @@ const { answerInputConfiguration } = require('@study-agent/contracts');
 const files = ['apps/api/src/modules/diagnostics/authored-relation-release.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/authored-unit-probes.ts',
   'apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts', 'apps/api/src/modules/diagnostics/component-observations.ts',
+  'apps/api/src/modules/diagnostics/authored-average-atomic.ts', 'apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/diagnostics/measurement-definition.ts',
   'apps/api/src/modules/diagnostics/curriculum.service.ts', 'resources/curriculum/authored-relations-2026-10-20-v1.json',
-  'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json', 'scripts/qa/verify-authored-relations.cjs'];
+  'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json', 'resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json',
+  'resources/curriculum/authored-task-baseline-6398-v1.json', 'scripts/qa/verify-authored-relations.cjs'];
 const evidence = { at: new Date().toISOString(), driver, releaseId: release.releaseId, passed: false,
   scope: 'Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
@@ -49,6 +51,10 @@ async function call(method, route, body, actor = 'parent', expected = method ===
   const result = await response.json(); assert.equal(response.status, expected, `${method} ${route}: ${result.error?.message ?? ''}`); return result.data;
 }
 const allOriginalIds = new Set(buildFoundationCurriculum().flatMap(row => row.exercises.filter(task => task.identityVersion !== 2).map(task => foundationQuestionId(row.atom.id, task))));
+// The average release explicitly reviews 24 historical tasks. This positive list is the only
+// permitted historical mapping change; all 3435 question packets and all other mappings remain bound.
+const reviewedOriginalIds = new Set(release.questions.filter(row => allOriginalIds.has(row.questionId)).map(row => row.questionId));
+assert.equal(reviewedOriginalIds.size, releaseKey === 'average' ? 24 : 0);
 const packet = id => ({ question: store.find('questions', { id }), document: store.find('questionDocuments', { questionId: id }),
   answerSchema: store.find('questionAnswerSchemas', { questionId: id }), source: store.find('questionSources', { questionId: id }),
   mapping: store.find('measurementItems', { id: `measurement:${id}` }) });
@@ -56,6 +62,31 @@ const originalSnapshot = () => store.transaction(() => Object.fromEntries(['ques
   const rows = store.inspect(collection).filter(row => allOriginalIds.has(collection === 'questions' ? row.id : row.questionId));
   return [collection, { count: rows.length, sha256: blueprintContentHash(rows) }];
 })));
+async function verifyOriginals(before, originalMappings, protectedIds) {
+  const after = await originalSnapshot();
+  for (const collection of ['questions', 'questionDocuments', 'questionAnswerSchemas', 'questionSources']) assert.deepEqual(after[collection], before[collection]);
+  const protectedSet = new Set(protectedIds), allowed = new Set([...reviewedOriginalIds].filter(id => !protectedSet.has(id)));
+  await store.transaction(() => {
+    const current = store.inspect('measurementItems').filter(row => allOriginalIds.has(row.questionId));
+    assert.equal(current.length, 3435); assert.equal(originalMappings.length, 3435);
+    assert.deepEqual(current.map(row => row.id).sort(), originalMappings.map(row => row.id).sort());
+    for (const previous of originalMappings) {
+      const actual = store.find('measurementItems', { id: previous.id });
+      if (!allowed.has(previous.questionId)) { assert.deepEqual(actual, previous); continue; }
+      const review = release.questions.find(row => row.questionId === previous.questionId);
+      assert(review, 'Only an explicit frozen review may change a historical mapping');
+      assert.deepEqual(actual, { ...previous, ...(review.componentBindings ? { componentBindings: review.componentBindings } : {}),
+        atomDefinitionFingerprint: newFingerprint, contentFingerprint: questionContentFingerprint(store, previous.questionId), version: previous.version + 1 });
+      const history = store.select('curriculumRevisions', { entityId: previous.id, kind: 'measurement' });
+      assert.deepEqual(history.map(row => row.version), [1, 2]);
+      assert.deepEqual(history[0].snapshot, previous); assert.deepEqual(history[1].snapshot, actual);
+    }
+  });
+  if (!allowed.size) assert.deepEqual(after.measurementItems, before.measurementItems);
+  return { total: 3435, unchanged: 3435 - allowed.size, explicitlyReviewedRebindings: allowed.size,
+    frozenReviewHistoricalIds: [...reviewedOriginalIds], protectedEditedHistoricalIds: [...reviewedOriginalIds].filter(id => protectedSet.has(id)),
+    before: before.measurementItems, after: after.measurementItems, exactFieldAndRevisionValidation: true };
+}
 const stableRows = rows => [...rows].sort((a, b) => String(a.id ?? a.eventId).localeCompare(String(b.id ?? b.eventId)));
 const releaseCheckpoint = () => store.transaction(() => structuredClone({ atom: store.find('knowledgeAtoms', { id: release.after.id }),
   mappings: stableRows(store.select('measurementItems', { atomId: release.after.id })),
@@ -107,12 +138,12 @@ async function main() {
     Object.assign(store.find('knowledgeAtoms', { id: release.before.id }), structuredClone(release.before));
     for (const mapping of store.select('measurementItems', { atomId: release.before.id })) {
       mapping.atomDefinitionFingerprint = oldFingerprint;
-      if (releaseKey === 'atomic' && release.questions.some(review => review.questionId === mapping.questionId)) {
+      if (releaseKey !== 'mixed' && release.questions.some(review => review.questionId === mapping.questionId)) {
         mapping.version = 1; delete mapping.contentFingerprint; delete mapping.componentBindings;
         store.remove('curriculumRevisions', { kind: 'measurement', entityId: mapping.id });
       }
     }
-    if (releaseKey === 'atomic') store.remove('curriculumRevisions', { kind: 'atom', entityId: release.before.id });
+    if (releaseKey !== 'mixed') store.remove('curriculumRevisions', { kind: 'atom', entityId: release.before.id });
     packet(modified[0]).question.analysis += '合成旧库中的已有编辑'; packet(modified[1]).document.blocks[0].text += '合成已有题面';
     packet(modified[2]).answerSchema.validationRules.required = false; packet(modified[3]).source.reviewStatus = 'draft';
     packet(modified[4]).mapping.reviewStatus = 'draft'; packet(modified[5]).mapping.expectedSeconds++;
@@ -121,12 +152,13 @@ async function main() {
   });
   const legacyMappings = await store.transaction(() => structuredClone(store.select('measurementItems', { atomId: release.before.id })));
   const originals = await originalSnapshot(); assert.equal(originals.questions.count, 3435);
-  const studentId = (await call('POST', '/students', { nickname: '合成关系升级学生', grade: 3, preferredSessionMinutes: 15,
+  const originalMappings = await store.transaction(() => structuredClone(store.inspect('measurementItems').filter(row => allOriginalIds.has(row.questionId))));
+  const studentId = (await call('POST', '/students', { nickname: '合成关系升级学生', grade: release.after.grade, preferredSessionMinutes: 15,
     defaultVersionMap: { math: 'original', chinese: '', english: '' } })).profile.id;
   const access = await call('POST', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '核对先修关系升级后的旧证据与新验证' });
   const code = await call('POST', `/students/${studentId}/learning-access/codes`, { expectedVersion: access.version, requestKey: randomUUID() });
   tokens.learner = (await call('POST', '/auth/learning-code', { code: code.code }, 'anonymous')).token;
-  await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+  await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: release.after.grade, term: 'upper', textbookVolumeId: null,
     textbookVersion: '原创能力路径', learnedAtomIds: [release.before.id], currentAtomId: release.before.id, minutesPerSession: 15 });
   // Bind the old plan to this target; the new baseline below independently checks prerequisite inclusion.
   const baseline = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline', targetAtomIds: [release.before.id], includePrerequisites: false, maxItems: 12 }, 'learner');
@@ -144,9 +176,9 @@ async function main() {
   assert.deepEqual(await releaseCheckpoint(), beforeInterruption, 'Interrupted startup must not persist a partial release');
   await stop(); delete process.env.STUDY_SEED_FOUNDATION;
   await start();
-  const graph = (await call('GET', '/diagnostics/curriculum?subject=math&grade=3')).find(row => row.id === release.after.id);
+  const graph = (await call('GET', `/diagnostics/curriculum?subject=math&grade=${release.after.grade}`)).find(row => row.id === release.after.id);
   assert.deepEqual(graph, release.after);
-  assert.deepEqual(await originalSnapshot(), originals);
+  const originalMappingVerification = await verifyOriginals(originals, originalMappings, modified);
   assert.deepEqual(await store.transaction(() => modified.map(id => blueprintContentHash(packet(id)))), editedBefore);
   const mappings = await call('GET', `/admin/curriculum/atoms/${encodeURIComponent(release.after.id)}/items`, undefined, 'admin');
   const reviewedIds = release.questions.slice(8).map(row => `measurement:${row.questionId}`);
@@ -182,10 +214,10 @@ async function main() {
     includePrerequisites: true, maxItems: 12, requestKey: randomUUID() }, 'learner');
   assert(check.blueprint.verification.groups.some(row => row.atomId === newPrerequisite));
   const checkpoint = await store.transaction(() => blueprintContentHash({ atom: store.find('knowledgeAtoms', { id: release.after.id }),
-    mappings: store.select('measurementItems', { atomId: release.after.id }), revisions: store.inspect('curriculumRevisions') }));
+    mappings: stableRows(store.select('measurementItems', { atomId: release.after.id })), revisions: stableRows(store.inspect('curriculumRevisions')) }));
   await stop(); await start();
   assert.equal(await store.transaction(() => blueprintContentHash({ atom: store.find('knowledgeAtoms', { id: release.after.id }),
-    mappings: store.select('measurementItems', { atomId: release.after.id }), revisions: store.inspect('curriculumRevisions') })), checkpoint);
+    mappings: stableRows(store.select('measurementItems', { atomId: release.after.id })), revisions: stableRows(store.inspect('curriculumRevisions')) })), checkpoint);
   assert.deepEqual(await call('GET', `/diagnostics/sessions/${baseline.id}/report`, undefined, 'learner'), oldReport);
   // Exercise the actual v2 produced by the previous teaching-card migration, including its persisted lineage.
   const { teaching: _teaching, ...withoutTeaching } = release.before;
@@ -216,7 +248,7 @@ async function main() {
   assert.deepEqual(await releaseCheckpoint(), manualV2Checkpoint);
   await writeLegacyV2('system:authored-teaching-v1', { name: '合成教师已修改的定义' });
   const editedV2Checkpoint = await releaseCheckpoint(); await stop(); await start(); assert.deepEqual(await releaseCheckpoint(), editedV2Checkpoint);
-  evidence.result = { originalCollections: originals, reviewedMappings: reviewedIds.length, editedPacketsPreserved: modified.length,
+  evidence.result = { originalCollections: originals, originalMappingVerification, reviewedMappings: reviewedIds.length, editedPacketsPreserved: modified.length,
     interruptedStartupDidNotDoubleIncrement: true, newDefinitionVersion: graph.version, oldTargetEvidenceExcludedFromCurrentProfile: oldTargetEvidence,
     oldReportAndUnfinishedSessionFrozen: true, oldPreviewRejected: true, oldPlanRequiresReconfirmation: true,
     newPrerequisite, newPrerequisiteIncludedInNewScopeAndRootVerification: true, repeatedRestartIdempotent: true,

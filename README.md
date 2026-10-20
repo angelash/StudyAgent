@@ -14,7 +14,7 @@
 - 家庭资料下载与删除、持久任务、SQLite和PostgreSQL迁移、业务与媒体备份恢复。
 - 助教绑定当前学习证据，模型不可用时返回明确的规则指导；确定性评分不依赖AI。
 
-原创课程当前包含257个知识点、5678道任务，48点具有基础与迁移对照结构。现有一至三年级数学原创点的结构审计无缺口，新增周长、覆盖与面积单位对照及38幅原创图，见 [几何与单位交付](doc/product/45-geometry-measurement-delivery.md)；其他素材见 [数与单位交付](doc/product/43-authored-unit-probes-delivery.md)。原子子点贯通综合题分项线索、独立验证、指导与复盘，见 [原子子点交付](doc/product/44-atomic-components-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
+原创课程当前包含258个知识点、6446道任务，64点具有基础与迁移对照结构。现有一至四年级数学原创点的素材结构审计无缺口，最近新增面积、角与统计对照及48幅原创图，见 [四年级几何与统计交付](doc/product/49-fourth-grade-geometry-statistics-delivery.md)。平均数的对象与零记录已拆成独立子点，综合题分项只作为核查线索，独立题组才计入子点能力，见 [平均数原子诊断交付](doc/product/50-average-count-atomic-delivery.md)；此前原子协议见 [原子子点交付](doc/product/44-atomic-components-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
 
 448册真实教材中112册已有章节，新增12册小学语文上下册的课名、页码和组合课层级；目录与知识点映射分别审核，旧评测保留原版本。来源、离线重建与两库运行证据见 [教材目录交付](doc/product/37-reviewed-chinese-textbooks-delivery.md)。
 
@@ -40,7 +40,7 @@
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 
-已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)，混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需继续拆解细粒度知识点、编写独立探针并审核分项绑定，完成教材与课时审核映射、其余209点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
+已完成的资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)，混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需继续拆解细粒度知识点、编写独立探针并审核分项绑定，完成教材与课时审核映射、其余194点的测量素材深度、当前候选的跨环境复验、真实浏览器流程及52项需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
 
 ## 工程目录
 

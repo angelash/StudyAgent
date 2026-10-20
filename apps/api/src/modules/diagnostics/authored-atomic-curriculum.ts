@@ -1,6 +1,7 @@
 import type { KnowledgeAtom, MeasurementDimension } from '@study-agent/contracts';
 import type { Exercise, FoundationDefinition } from './foundation-curriculum';
 import type { AuthoredProbeFamily } from './authored-math-probes';
+import { averageCountAtom } from './authored-average-atomic';
 
 export const divisionRegroupAtom: KnowledgeAtom = {
   id: 'atomic:math:divisionregroup', subject: 'math', grade: 3, term: 'both', name: '把余下的十换成一并合并个位', strand: '数与运算',
@@ -27,7 +28,7 @@ export const divisionRegroupAtom: KnowledgeAtom = {
 };
 
 export function buildAtomicMathDefinitions(): FoundationDefinition[] {
-  return [{ atom: structuredClone(divisionRegroupAtom), exercises: [] }];
+  return [divisionRegroupAtom, averageCountAtom].map(atom => ({ atom: structuredClone(atom), exercises: [] }));
 }
 
 /** These tasks give the remaining tens explicitly; a failed upstream division is not a child-point observation. */

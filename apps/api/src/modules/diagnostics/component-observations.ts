@@ -2,7 +2,7 @@ import { BadRequestException } from '@nestjs/common';
 import type { ComponentBinding, ComponentObservation, DiagnosticResponse, DiagnosticSession, KnowledgeAtom, QuestionAnswerSchema } from '@study-agent/contracts';
 import { atomDefinitionFingerprint } from './measurement-definition';
 
-export const COMPONENT_OBSERVATION_VERSION = 'component-observations-v1';
+export const COMPONENT_OBSERVATION_VERSION = 'component-observations-v2';
 
 /** Review binds real protocol fields to a direct child; free-text error tags never act as scores. */
 export function reviewComponentBindings(bindings: readonly ComponentBinding[], atom: KnowledgeAtom,
@@ -71,7 +71,7 @@ export function componentObservations(session: DiagnosticSession, responses: rea
         return result('not_observed', '本次评分未保留完整且可匹配的客观分项，不能还原该步骤。', '核对评分修订与协议，或用独立新题观察该子点。');
       }
       if (upstreamDetails.some(detail => detail.score !== 1)) {
-        return result('upstream_unverified', '前面的必要记录未达标，后续可能沿用错误状态，本题不能单独判断这个子点。', '先核对上游记录，再给定正确的上游量，用独立题检验换单位的步骤。');
+        return result('upstream_unverified', '前面的必要记录未达标，后续可能沿用错误状态，本题不能单独判断这个子点。', `先核对上游记录，再给定正确的上游条件，用独立题核查“${common.atomName}”。`);
       }
       return scoreDetails.every(detail => detail.score === 1)
         ? result('meets_standard', '在上游记录达标的条件下，这道综合题的对应分项达到标准。子点掌握仍需独立题组测量。', '用两个基础和两个迁移题族核查，再安排真实间隔后的新题。')

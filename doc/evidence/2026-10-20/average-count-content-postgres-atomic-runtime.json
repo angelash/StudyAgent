@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-20T04:41:55.101Z",
+  "driver": "postgres",
+  "releaseKey": "average",
+  "parentId": "core:math:average",
+  "childId": "atomic:math:averagecount",
+  "passed": true,
+  "scope": "Owned synthetic accounts, genuine authored tasks, formal learning codes, production-mode HTTP and durable restarts. Two-day clock advance tests retention rules; it is not a real student longitudinal or browser validation.",
+  "sourceSha256": {
+    "packages/contracts/src/diagnostics.ts": "56f7c2ec803e6b1531aaabd08837c7e1ea71b164fe9a74c9c433d53b2890c9a4",
+    "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+    "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+    "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "e9673228b1566f5204951e25e7f7ec30b7436a9952fdf1d782f3428048944cd3",
+    "apps/api/src/modules/learning/learning.service.ts": "242cbb493ceeb557f51650b35d0ccf6b886d8c30f4e7d02ae8af79d9cdf96e1c",
+    "apps/web/components/diagnostic-evidence.tsx": "c2cbf55ee2b1f44d444b06fe483ef72def66b22710af45b127552ab7f7a83ac4",
+    "apps/web/app/student/assessment/studio.tsx": "3df0c571687cc0f69b157c2c64d93a759af7938d250a521461e219a0e7aae2de",
+    "apps/web/app/parent/dashboard/studio.tsx": "01b1201a7c5d04e6d7150d3e23388cbc13a4ff67f28e14b8d498cc7275188c30",
+    "apps/web/app/admin/curriculum/component-binding-editor.tsx": "35af5e6c3e96a6fd31d47606d7ac65cdc1ba061e67490152fb62a6179d25e4f3",
+    "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+    "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+    "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+    "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+    "scripts/qa/verify-atomic-components.cjs": "c90f531ee8c2badaf03ef627af661c6bb58b2d6a5d18bf843bdeee74adaf1fef"
+  },
+  "result": {
+    "originalEligibleCompositeTasks": 72,
+    "reviewedComponentBindings": 12,
+    "compositeClueDoesNotAddChildEvidence": true,
+    "scopeRemainsExplicit": true,
+    "independentChildTasks": 4,
+    "independentChildFamilies": 4,
+    "childEstimate": {
+      "atomId": "atomic:math:averagecount",
+      "atomName": "明确平均对象并把零数据计入份数",
+      "grade": 4,
+      "mastery": 50,
+      "lower": 14.7,
+      "upper": 85.3,
+      "status": "learning",
+      "rawCorrect": 2,
+      "scoredCount": 4,
+      "effectiveSamples": 4,
+      "independentFamilies": 4,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "procedure",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "transfer",
+          "mastery": 75,
+          "samples": 2
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": 100,
+      "transferVerified": true,
+      "retentionVerified": false,
+      "evidenceIds": [
+        "response:diagnostic_7ecc40aa-fce0-4dc5-8bb0-381d288b45ff:measurement:foundation_q_v2_bce38dddb6f77dcd33369d36",
+        "response:diagnostic_7ecc40aa-fce0-4dc5-8bb0-381d288b45ff:measurement:foundation_q_v2_9cf5b5db2708f1023243fdb2",
+        "response:diagnostic_7ecc40aa-fce0-4dc5-8bb0-381d288b45ff:measurement:foundation_q_v2_d966a7457372c7d4fcb331f1",
+        "response:diagnostic_7ecc40aa-fce0-4dc5-8bb0-381d288b45ff:measurement:foundation_q_v2_b29ca7ab09ee25825c15b2a0"
+      ],
+      "lastMeasuredAt": "2026-10-20T04:42:30.203Z",
+      "algorithmVersion": "rule-estimate-v2",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    },
+    "allDirectPrerequisitesStillRequired": true,
+    "rulePlanAvailableWithoutAi": true,
+    "trainingQuestions": 3,
+    "trainingDoesNotAddDiagnosticSamples": true,
+    "reviewIntervals": [
+      1,
+      3,
+      7,
+      14
+    ],
+    "simulatedClockAdvanceDays": 2,
+    "delayedIndependentChildFamilies": 2,
+    "reviewUsesUnexposedQuestions": true,
+    "retrospectivePersisted": true,
+    "historicalReportSha256": "c852a2e62cf79ff3daece44da2f92dcca57671d4ec8191bbcbf092343f5b541c",
+    "historicalReportUnchanged": true,
+    "activePlanRevision": 2,
+    "otherFamilyDenied": true,
+    "restarts": 4
+  }
+}

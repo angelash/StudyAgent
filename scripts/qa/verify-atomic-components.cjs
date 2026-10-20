@@ -6,20 +6,29 @@ const { NestFactory } = require('@nestjs/core'), { Pool } = require('pg');
 const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-atomic-components-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/atomic-components-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 assert(['sqlite', 'postgres'].includes(driver));
+const releaseKey = process.argv[4] ?? 'division'; assert(['division', 'average'].includes(releaseKey));
+const configuration = releaseKey === 'average' ? { parentId: 'core:math:average', childId: 'atomic:math:averagecount', grade: 4,
+  field: 'count', eligible: 72, childPrerequisite: 'core:math:count', directPrerequisites: ['foundation:math:divisiondigits'], teachingMarker: '未记录当0' } : {
+  parentId: 'foundation:math:divisiondigits', childId: 'atomic:math:divisionregroup', grade: 3,
+  field: 'combinedOnes', eligible: 48, childPrerequisite: 'foundation:math:placevalue', directPrerequisites: ['foundation:math:divisiontable', 'foundation:math:placevalue'], teachingMarker: '本点给定余十' };
 Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const fromApi = file => require(path.join(root, 'apps/api/dist/apps/api/src', file + '.js'));
 const { AppModule } = fromApi('app.module'), { InMemoryStoreService } = fromApi('infrastructure/in-memory-store.service');
 const { blueprintContentHash } = fromApi('modules/diagnostics/assessment-blueprint');
-const parentId = 'foundation:math:divisiondigits', childId = 'atomic:math:divisionregroup';
+const { parentId, childId } = configuration;
 const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts',
   'apps/api/src/modules/diagnostics/component-observations.ts', 'apps/api/src/modules/diagnostics/authored-relation-release.ts',
   'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/diagnostics/curriculum.service.ts',
   'apps/api/src/modules/diagnostics/diagnostics.service.ts', 'apps/api/src/modules/learning/learning.service.ts',
   'apps/web/components/diagnostic-evidence.tsx', 'apps/web/app/student/assessment/studio.tsx', 'apps/web/app/parent/dashboard/studio.tsx',
   'apps/web/app/admin/curriculum/component-binding-editor.tsx', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
+  'apps/api/src/modules/diagnostics/authored-average-atomic.ts', 'resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json',
+  'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
+  'apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts', 'resources/curriculum/authored-relations-2026-10-20-v1.json',
+  'resources/curriculum/authored-task-baseline-6398-v1.json',
   'scripts/qa/verify-atomic-components.cjs'];
-const evidence = { at: new Date().toISOString(), driver, passed: false,
+const evidence = { at: new Date().toISOString(), driver, releaseKey, parentId, childId, passed: false,
   scope: 'Owned synthetic accounts, genuine authored tasks, formal learning codes, production-mode HTTP and durable restarts. Two-day clock advance tests retention rules; it is not a real student longitudinal or browser validation.',
   sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 const tokens = {}, parentPrincipal = 'qa-atomic-parent', parentCredential = randomBytes(24).toString('hex');
@@ -44,7 +53,7 @@ const rawSession = id => store.transaction(() => structuredClone(store.find('dia
 function wrong(expected, schema) {
   if (schema.mode === 'boolean') return !expected;
   if (schema.mode === 'single_choice') return schema.options.find(option => option.value !== expected).value;
-  if (schema.mode === 'multi_blank') return expected.map(entry => ({ ...entry, value: String(Number(entry.value) + 1) }));
+  if (schema.mode === 'multi_blank') return expected.map(entry => ({ ...entry, value: Number.isFinite(Number(entry.value)) ? String(Number(entry.value) + 1) : 'QA未达标' }));
   return Number(expected) + 1;
 }
 async function complete(session, transform = (_item, expected) => expected) {
@@ -80,17 +89,17 @@ async function main() {
   tokens.admin = (await call('POST', '/auth/login', { principal: 'qa-atomic-admin', credential }, 'anonymous')).token;
   tokens.parent = (await call('POST', '/auth/register', { principal: parentPrincipal, credential: parentCredential }, 'anonymous')).token;
   tokens.stranger = (await call('POST', '/auth/register', { principal: 'qa-atomic-stranger', credential: randomBytes(24).toString('hex') }, 'anonymous')).token;
-  const studentId = (await call('POST', '/students', { nickname: '合成子点评测学生', grade: 3, preferredSessionMinutes: 15,
+  const studentId = (await call('POST', '/students', { nickname: '合成子点评测学生', grade: configuration.grade, preferredSessionMinutes: 15,
     defaultVersionMap: { math: 'original', chinese: '', english: '' } }, 'parent')).profile.id;
   await call('POST', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '独立核对子点评测与指导计划的持久化' }, 'parent');
   await learningCode(studentId);
-  const scope = await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null,
+  const scope = await call('PUT', `/students/${studentId}/learning-scope`, { subject: 'math', grade: configuration.grade, term: 'upper', textbookVolumeId: null,
     textbookVersion: '原创能力路径', learnedAtomIds: [parentId], currentAtomId: parentId, minutesPerSession: 15 }, 'parent');
   const items = await call('GET', `/admin/curriculum/atoms/${encodeURIComponent(parentId)}/items`, undefined, 'admin');
-  assert.equal(items.filter(row => row.eligible).length, 48); assert.equal(items.filter(row => row.mapping.componentBindings?.length).length, 12);
+  assert.equal(items.filter(row => row.eligible).length, configuration.eligible); assert.equal(items.filter(row => row.mapping.componentBindings?.length).length, 12);
   const baseline = await call('POST', '/diagnostics/sessions', { studentId, subject: 'math', intent: 'baseline', targetAtomIds: [parentId], includePrerequisites: false, maxItems: 12 });
   await complete(baseline, (_item, expected, schema, mapping) => mapping.componentBindings?.length
-    ? expected.map(entry => entry.key === 'combinedOnes' ? { ...entry, value: String(Number(entry.value) + 1) } : entry) : wrong(expected, schema));
+    ? expected.map(entry => entry.key === configuration.field ? { ...entry, value: String(Number(entry.value) + 1) } : entry) : wrong(expected, schema));
   const initial = await call('GET', `/diagnostics/sessions/${baseline.id}/report`);
   assert.equal(initial.componentObservations.length, 1); assert.equal(initial.componentObservations[0].state, 'below_standard');
   assert.equal(initial.componentObservations[0].independentEstimateContribution, 0);
@@ -104,7 +113,7 @@ async function main() {
   assert.equal(blueprintContentHash(await call('GET', `/diagnostics/sessions/${baseline.id}/report`)), originalReportHash);
   await call('POST', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'verification', targetAtomIds: [childId], includePrerequisites: false, requestKey: randomUUID() }, 'learner', 400);
   const preview = await call('POST', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'verification', targetAtomIds: [childId], includePrerequisites: true, maxItems: 12, requestKey: randomUUID() });
-  assert.deepEqual(preview.blueprint.targetAtomIds, [childId]); assert(preview.blueprint.prerequisiteAtomIds.includes('foundation:math:placevalue'));
+  assert.deepEqual(preview.blueprint.targetAtomIds, [childId]); assert(preview.blueprint.prerequisiteAtomIds.includes(configuration.childPrerequisite));
   await restart();
   const independent = await call('POST', `/diagnostics/blueprints/${preview.id}/start`, {});
   const frozen = await rawSession(independent.id), childMappings = frozen.itemSnapshots.filter(row => row.atomId === childId);
@@ -116,10 +125,10 @@ async function main() {
   assert.equal(hypothesis.status, 'supported'); assert.deepEqual(hypothesis.probeAtomIds, [childId]);
   const cause = await call('POST', '/diagnostics/blueprints', { studentId, subject: 'math', intent: 'verification', hypothesisId: hypothesis.id, includePrerequisites: true, maxItems: 12, requestKey: randomUUID() });
   const required = cause.blueprint.verification.groups.map(row => row.atomId);
-  for (const atomId of [parentId, childId, 'foundation:math:divisiontable', 'foundation:math:placevalue']) assert(required.includes(atomId));
+  for (const atomId of [parentId, childId, ...configuration.directPrerequisites]) assert(required.includes(atomId));
   const plan = await call('POST', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: independent.id, minutesPerDay: 5, useAi: true }, 'parent');
   assert.equal(plan.source, 'rules'); assert.equal(plan.aiStatus, 'unavailable'); assert.deepEqual(plan.actions.map(row => row.atomId), [childId]);
-  assert.deepEqual(plan.actions[0].evidenceIds, estimate.evidenceIds); assert(plan.actions[0].teachingSnapshot.teaching.explanation.includes('本点给定余十'));
+  assert.deepEqual(plan.actions[0].evidenceIds, estimate.evidenceIds); assert(plan.actions[0].teachingSnapshot.teaching.explanation.includes(configuration.teachingMarker));
   const active = await call('PATCH', `/diagnostics/plans/${plan.id}`, { status: 'active', expectedRevision: plan.revision, requestKey: randomUUID() }, 'parent');
   const practice = await call('POST', `/learning/plans/${plan.id}/actions/${plan.actions[0].id}/start`, {});
   const practiceSnapshot = await store.transaction(() => structuredClone(store.find('practiceSessions', { id: practice.id })));
@@ -154,7 +163,7 @@ async function main() {
   const overview = await call('GET', '/learning/overview', undefined, 'parent'), math = overview.children[0].subjects.find(row => row.subject === 'math');
   assert.equal(math.subpointEstimates.length, 1); assert(math.subpointEstimates[0].scoredCount >= 6); assert.equal(math.componentObservations[0].independentEstimateContribution, 0);
   assert.equal(blueprintContentHash(await call('GET', `/diagnostics/sessions/${baseline.id}/report`)), originalReportHash);
-  evidence.result = { originalEligibleCompositeTasks: 48, reviewedComponentBindings: 12, compositeClueDoesNotAddChildEvidence: true,
+  evidence.result = { originalEligibleCompositeTasks: configuration.eligible, reviewedComponentBindings: 12, compositeClueDoesNotAddChildEvidence: true,
     scopeRemainsExplicit: true, independentChildTasks: 4, independentChildFamilies: 4, childEstimate: estimate,
     allDirectPrerequisitesStillRequired: true, rulePlanAvailableWithoutAi: true, trainingQuestions: practice.questions.length,
     trainingDoesNotAddDiagnosticSamples: true, reviewIntervals: [1, 3, 7, 14], simulatedClockAdvanceDays: 2,

@@ -28,7 +28,7 @@ const points = definitions.map(({ atom, exercises }) => {
     exercises: exercises.length, families: families.length, rawFamilyLabels: new Set(exercises.map(item => item.family)).size,
     dimensions, measurementMaterialGaps: gaps };
 });
-assert.equal(points.length, 257); assert.equal(new Set(points.map(point => point.atomId)).size, points.length);
+assert.equal(points.length, 258); assert.equal(new Set(points.map(point => point.atomId)).size, points.length);
 const cells = ['math', 'chinese', 'english'].flatMap(subject => [1, 2, 3, 4, 5, 6].map(grade => {
   const rows = points.filter(point => point.subject === subject && point.grade === grade);
   return { subject, grade, points: rows.length, authoredTeaching: rows.filter(row => row.authoredTeaching).length,
@@ -41,10 +41,11 @@ const evidence = { at: new Date().toISOString(), passed: true,
     originalExercises: points.reduce((sum, point) => sum + point.exercises, 0),
     pointsNeedingMoreMeasurementMaterials: points.filter(point => point.measurementMaterialGaps.length).length },
   sourceSha256: Object.fromEntries(['family-identity.ts', 'foundation-curriculum.ts', 'original-core-curriculum.ts', 'structured-curriculum.ts', 'authored-relation-release.ts', 'authored-atomic-curriculum.ts', 'authored-math-probes.ts', 'authored-arithmetic-probes.ts', 'authored-number-probes.ts', 'authored-spatial-probes.ts', 'authored-second-grade-probes.ts', 'authored-data-probes.ts', 'authored-third-grade-probes.ts', 'authored-unit-probes.ts', 'authored-teaching.ts', 'authored-math-teaching.ts',
-    'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-remainder-decimal-probes.ts', 'authored-fourth-grade-geometry-statistics-probes.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
+    'authored-geometry-probes.ts', 'authored-fourth-grade-number-probes.ts', 'authored-remainder-decimal-probes.ts', 'authored-fourth-grade-geometry-statistics-probes.ts', 'authored-average-atomic.ts', 'authored-chinese-teaching.ts', 'authored-english-teaching.ts', 'teaching-author.ts'].map(file => {
     const source = 'apps/api/src/modules/diagnostics/' + file;
     return [source, createHash('sha256').update(fs.readFileSync(path.join(root, source))).digest('hex')];
   }).concat(['scripts/qa/audit-authored-curriculum.cjs', 'resources/curriculum/authored-family-identities-v1.json', 'resources/curriculum/authored-task-baseline-5678-v1.json', 'resources/curriculum/authored-relations-2026-10-20-v1.json', 'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
+    'resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json', 'resources/curriculum/authored-task-baseline-6398-v1.json',
     'resources/curriculum/geometry-probes-v1.json', 'scripts/content/build-geometry-probes.cjs',
     ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name),
     'resources/curriculum/fourth-grade-geometry-statistics-v1.json', 'scripts/content/build-fourth-grade-geometry-statistics.cjs',

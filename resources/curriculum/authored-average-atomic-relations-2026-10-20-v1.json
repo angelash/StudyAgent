@@ -1,0 +1,728 @@
+{
+  "format": "study-authored-relation-release-v1",
+  "releaseId": "authored-average-atomic-relations-2026-10-20-v1",
+  "createdAt": "2026-10-20T04:30:21.384Z",
+  "reviewKind": "agent_authored_relation_review",
+  "sourceCommit": "db790b0",
+  "provenance": "Original average tasks checked in stage 49 plus the preserved 24 direct tasks. Count fields are observation-only; independent child questions required. Not human teacher review.",
+  "hashRule": "blueprintContentHash; only the first prompt block opaque ID normalized. Fresh-install mapping compatibility is explicitly enumerated.",
+  "before": {
+    "id": "core:math:average",
+    "subject": "math",
+    "grade": 4,
+    "term": "both",
+    "name": "平均数的总量等分",
+    "strand": "数据与可能性",
+    "objective": "先合计总量再按数据个数平均",
+    "successCriterion": "按题目条件独立完成平均数的总量等分；用另一个结构的新题核查，并在延迟复测时再次验证。",
+    "prerequisiteIds": [
+      "foundation:math:divisiondigits"
+    ],
+    "curriculumVersion": "original-core-v2",
+    "status": "published",
+    "version": 1,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "平均数由总量平均分成数据个数份得到，移多补少保持总量；各组人数不同时不能直接平均组平均数。",
+      "example": {
+        "prompt": "三人读14、20、17页，平均每人几页？",
+        "steps": [
+          "总量14+20+17=51页。",
+          "共3人，51÷3=17页。"
+        ],
+        "conclusion": "平均17页。"
+      },
+      "commonErrors": [
+        {
+          "code": "core:math:average:check",
+          "observation": "用最大页数作除数，或遗漏一人的数据。",
+          "alternativeExplanations": [
+            "可能未分清总量与份数。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "用条形块移多补少，解释总量为何不变。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "用条形块移多补少，解释总量为何不变。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "合并两个人数不同的组，先还原总量再求整体平均。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "after": {
+    "id": "core:math:average",
+    "subject": "math",
+    "grade": 4,
+    "term": "both",
+    "name": "平均数的总量等分",
+    "strand": "数据与可能性",
+    "objective": "先合计总量再按数据个数平均",
+    "successCriterion": "按题目条件独立完成平均数的总量等分；用另一个结构的新题核查，并在延迟复测时再次验证。",
+    "prerequisiteIds": [
+      "foundation:math:divisiondigits",
+      "atomic:math:averagecount"
+    ],
+    "curriculumVersion": "original-core-v2-average-count-2026-10-20",
+    "status": "published",
+    "version": 2,
+    "teaching": {
+      "reviewStatus": "approved",
+      "explanation": "平均数由总量平均分成数据个数份得到，移多补少保持总量；各组人数不同时不能直接平均组平均数。",
+      "example": {
+        "prompt": "三人读14、20、17页，平均每人几页？",
+        "steps": [
+          "总量14+20+17=51页。",
+          "共3人，51÷3=17页。"
+        ],
+        "conclusion": "平均17页。"
+      },
+      "commonErrors": [
+        {
+          "code": "core:math:average:check",
+          "observation": "用最大页数作除数，或遗漏一人的数据。",
+          "alternativeExplanations": [
+            "可能未分清总量与份数。",
+            "也可能已经理解关系，但读数、计算或记录出现遗漏，应分开检查。"
+          ],
+          "verification": "用条形块移多补少，解释总量为何不变。 撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。"
+        }
+      ],
+      "verification": {
+        "understanding": "用条形块移多补少，解释总量为何不变。",
+        "procedure": "撤去示范，用新数值独立完成同一操作，记录关键步骤，再用逆运算、实物或图形核对。",
+        "transfer": "合并两个人数不同的组，先还原总量再求整体平均。",
+        "retention": "三天后更换数值与材料，用基础题和新情境各检查一次；不先给提示，分别保留步骤与受助记录。"
+      }
+    }
+  },
+  "componentTargetDefinitions": [
+    {
+      "id": "atomic:math:averagecount",
+      "subject": "math",
+      "grade": 4,
+      "term": "both",
+      "name": "明确平均对象并把零数据计入份数",
+      "strand": "统计与概率",
+      "objective": "按问题指定的人、天等平均对象确定份数；参与且为0的记录仍计入，未参加不混入，记录缺失不当成0",
+      "successCriterion": "能从完整记录和参与范围独立选择分母，区分0、未参加与未记录，在对象改变的新题中验证，并经过真实间隔复核。",
+      "prerequisiteIds": [
+        "core:math:count"
+      ],
+      "parentId": "core:math:average",
+      "curriculumVersion": "original-atomic-average-v1",
+      "status": "published",
+      "version": 1,
+      "teaching": {
+        "reviewStatus": "approved",
+        "explanation": "先说清平均给谁或平均到哪一天，再把这些对象各计一次。某位参与者的数量为0，仍然是一个参与对象；明确未参加的人不属于本次平均范围。参加但未记录的人仍在对象中，数据尚不完整，不能把未记录当0来算平均。本点只隔离对象和份数，不用求和或除法正确代替这一判断。",
+        "example": {
+          "prompt": "甲、乙、丙都参加投篮，分别命中5次、0次、7次；丁没有参加。求全部参加者平均命中次数，分给几个对象？",
+          "steps": [
+            "问题指定全部参加者，先列出甲、乙、丙；丁没有参加。",
+            "乙命中0次仍然参与，不能因数量为0删掉乙。",
+            "三个参与者每人计一次，分母应为3。若有人参加但没有记录，需先补齐数据。"
+          ],
+          "conclusion": "平均到3名参与者，0表示数量，不表示这个人不存在。此结论还没有证明总量合计或除法都会做。"
+        },
+        "commonErrors": [
+          {
+            "code": "average_population_or_zero_count",
+            "observation": "只数非零数据、把未参加者混入，或把未记录误作0。",
+            "alternativeExplanations": [
+              "可能把数量0误认为没有平均对象。",
+              "也可能没有读清平均到每人还是每天，需要保持同一张表改变问题核查。",
+              "也可能对象理解正确而逐一计数遗漏，应另测计数；总量或除法错误需分开验证。"
+            ],
+            "verification": "先不要求求和或除法，只让孩子指出参与范围与分母，再用零记录、未参加、未记录的对照和同表不同对象的新题验证。"
+          }
+        ],
+        "verification": {
+          "understanding": "在同一份含0记录的数据中，核对保留全部对象与只保留非零对象的两种主张。",
+          "procedure": "从连续完整记录中分别记出零记录个数和平均到的总份数，两个空仍只是一份响应。",
+          "transfer": "把参与0、未参加和未记录分开，再用多人多天的同一张表分别确定每人与每天的分母。",
+          "retention": "三天后换新记录与平均对象，独立完成基础及两类迁移；即时重复或有提示不能证明保持。"
+        }
+      }
+    }
+  ],
+  "questions": [
+    {
+      "questionId": "foundation_q_015088e88a672bb97dfa786d",
+      "contentSha256": "197e53f928b11aeb29e79c1514c8b5572a48a20aadbf90295d813fdc0abbdb4f",
+      "mappingSha256": "a838af627f8212a41f54bd1257858ba64155198d939bf0310cad06a7be6e16de",
+      "seedMappingSha256": "5eedd93a52e0fda086efb46bf2c6840f8c72dc33942edb59f22b642c732b1574"
+    },
+    {
+      "questionId": "foundation_q_166e8bd817153a378495c10a",
+      "contentSha256": "161e0ada1ed1f1a6446af85a286b3f807472be3ee9a8a2af9a9c6e3058409e67",
+      "mappingSha256": "0835505424acacd5e977ea2d38267a8d275add0086edb104f15be92db6303202",
+      "seedMappingSha256": "fa5bf5829379cf649bb566ccdcd77794518e0adc9708f091c3c467aa1a11f013"
+    },
+    {
+      "questionId": "foundation_q_2b932decad3869d991e1c646",
+      "contentSha256": "3d6c5c247f7c3f874808a636fef0ebc6a9faa8b7d4224d63d87eaf7d8f0a1c0d",
+      "mappingSha256": "1a2d2eea9f0b721c4976b31f1c0d4a13d0850e76327310c0cdcd6f96ff2a4bef",
+      "seedMappingSha256": "7bbcfcbc0deda052a1c496683072b32f100527dcc3059fbc484e3214a6833b2e"
+    },
+    {
+      "questionId": "foundation_q_2bd389a13341e926ebff6994",
+      "contentSha256": "cfa4511b8e32e6b8eb0ba290b46bb658eab96c418ffff5ed15d38b2865bd8298",
+      "mappingSha256": "7d7bf7b12b01d66a63abbce2f27ada909a4c6682066dbba41f5562c2294d8d9d",
+      "seedMappingSha256": "70e4a9ca0362d78fa677b06153dd4e5d1725100441471872fd569496abce3801"
+    },
+    {
+      "questionId": "foundation_q_2f55124c53f870ee4a167ebe",
+      "contentSha256": "4e6a13b1c5a641bf236094bf6dd0c7b2f8835fd3226750cbcc804bbab480e760",
+      "mappingSha256": "ac09ff94ac53e8969a852471e8e6e09da9154e1c0c3c7efced717600a1e1ec25",
+      "seedMappingSha256": "b15401fe319f3c640b199c752b3e3778ecfc54c50cac9ca84776b937c40a246e"
+    },
+    {
+      "questionId": "foundation_q_2f8121199df0f73d04473ef3",
+      "contentSha256": "ab613dbf081f2613b2feeb9d1f44f08e1682285385d955da77e64f65718a9acc",
+      "mappingSha256": "b5e95e645fb6fbc03caf0d54f6446081290b7f144aa3d2f9250cff5190b88a8c",
+      "seedMappingSha256": "7cb833329fc0b76d5e95d89c643dcf2e7784580567cfb933e4fe8b419c5cc043"
+    },
+    {
+      "questionId": "foundation_q_3ef5f664befb4e216057f55c",
+      "contentSha256": "48abc3987d2b7353734c1e63a09b0cea77e29d82c520c3279fa22f582e20a5f2",
+      "mappingSha256": "60823c7c2e9b5437f460b79c4982af8bf5ed36a3c12358955c5d69399359e143",
+      "seedMappingSha256": "24b1b47045be409a60996e1068daab6f284961f509ca96915b958df4aea8c11a"
+    },
+    {
+      "questionId": "foundation_q_3f4e6a3bd4e5094b297d4ea5",
+      "contentSha256": "eb361c2a7c434544b56062e2a698ad8a467c52111252c2cfbf9bc24419559423",
+      "mappingSha256": "0b6fb7f0b784dca8204a93e005296dfa5426c9e3193444a4de017a6d515ee90a",
+      "seedMappingSha256": "94fef1189ae4ccc185724964096607b6ec62e760c77461bea0fa84dc1b856d4c"
+    },
+    {
+      "questionId": "foundation_q_43b928dadc2a5d0355f16fb0",
+      "contentSha256": "a92da13d5e41fceb33ae6fe6b3b996e43bd9056965bf635a5dc86d0953c3dd4e",
+      "mappingSha256": "0b0f92d0a0b90bdbf8ca6d1a186945f978bad73d3fff097bc11e4f454051696d",
+      "seedMappingSha256": "fed2bbd83cdfb0ed14d73a5b10ed4fb908fad6543b910cf792c4f8fb0de5bf3b"
+    },
+    {
+      "questionId": "foundation_q_645c2239457de8a3a7cc7ca0",
+      "contentSha256": "a7421971c080081e6fca29ca691e4101732ab89f9ba948b76c2dcb26e90947aa",
+      "mappingSha256": "eb0c6d42a604f743a494cb4326032c7db9f39c3f74f8022162075fe506c54145",
+      "seedMappingSha256": "2424d9092efe9ed111bd2efb1522038d1152e1a8db0ee84cdc988958ecf6a7a8"
+    },
+    {
+      "questionId": "foundation_q_66b7eb037199a9626c56af49",
+      "contentSha256": "28c1d1e69ceecf70b2d2baeab682fe6e93313a7f873683d09b4509f3d2e02d45",
+      "mappingSha256": "11c46c658714c271aca47fb3571667be55c41939374538fa8bf16995d1c76ab8",
+      "seedMappingSha256": "2b4d9a7015ea8570c31ae5881311d02d0bd808a241e34e8ccd9a90b3c70f6e39"
+    },
+    {
+      "questionId": "foundation_q_6b978f6549438e591c1c839d",
+      "contentSha256": "5602e8696467f0814a76f48efebedfa95775435f877104fbabe4ed614111209c",
+      "mappingSha256": "584eb2bbd1378f8e4a2955a99d52d68521e4999746abc65098523f0d761e8d53",
+      "seedMappingSha256": "e75fd94c4ec9470adf58974872c6560f1170046e5992976f143b4dfded2b8a04"
+    },
+    {
+      "questionId": "foundation_q_7f976654457aa5b5ec1df808",
+      "contentSha256": "9892a06dd90e52d08c4b712e34bd51f49edc731f0c1944d7913bd727ffb991e8",
+      "mappingSha256": "541cb99adc31ecb43b58d90a736538fedec7f029d026b37ef547960f1b7e8031",
+      "seedMappingSha256": "62cebc2d4742d4576b5f8b6b440da87c56badb88edd24d9f50c2a52c64c7181e"
+    },
+    {
+      "questionId": "foundation_q_8a05004362e9c0c378caf3b2",
+      "contentSha256": "f0d5fe6007d01f9ce7ddfb4293113b564a9178edfff1c2061a86492ade06bbbf",
+      "mappingSha256": "ffc9c986065b2c1725a9cdb39398d95226f9be6c5b330e7fd29bca7ce22b79b2",
+      "seedMappingSha256": "d30593d5114d7714f73384d4a704304ca05f9bcefcdc08232ffea90c706af799"
+    },
+    {
+      "questionId": "foundation_q_8d62b0a25dc49217e58b640c",
+      "contentSha256": "c22176095930660abe6bc1f094b05e6d9920c83e41760f95b6c12c894ac51140",
+      "mappingSha256": "9069a79b186efa417b8a703e76a1414d73e6968391688b487de675ae11f72f26",
+      "seedMappingSha256": "5a19712ba8d5d5699e6f1b0ab81679960baadb06ffb7000faa378d23b53fab80"
+    },
+    {
+      "questionId": "foundation_q_8f4efd63846ab8d2e6641d03",
+      "contentSha256": "95821af6883e553c5cd8e440336c1c22f994f66f5cd608ecbbebff9c95eb0b22",
+      "mappingSha256": "6e4bf4158e05bc2cd52f7bb608c8578328b1e76f59db7a25f6ced79cca5b82a4",
+      "seedMappingSha256": "d9abd4b26b4d6a7ee7b5278016d5d8cddf35628c25377cf160e16bafe4aafee8"
+    },
+    {
+      "questionId": "foundation_q_a6c911356d61faa2733f7814",
+      "contentSha256": "48527193e7077a79af5e274fc922e42ae9be118930ffb30558d767fb3a8c1758",
+      "mappingSha256": "2c98fdb5632e0fe7569cf2eee696b1a9dea94d1001b9d22cc3ec52b5036cb729",
+      "seedMappingSha256": "b8a7ed50a657268621227d90364f90bc9126431022555b09eaafb4cf5dea00ae"
+    },
+    {
+      "questionId": "foundation_q_b6b7128abe8b30ad79bfe845",
+      "contentSha256": "ab1a34a22616f7f4e1f2e3084a6b87a54480fceec119d2ac191bfbae5bd92e5f",
+      "mappingSha256": "70ade0e137c85d6dfcddedbf91c889ea1a21147c6359826d817c3074f780689a",
+      "seedMappingSha256": "3d4149b4e893a985a776addb103ed83bd5cc505ca38626b8f22a4d9da13e4526"
+    },
+    {
+      "questionId": "foundation_q_ce1a602271ff7ecaa5267f13",
+      "contentSha256": "f0c645009bf905bad155456b189d7a1d7b6c338c0a17e53aa53d8a3b424dcff4",
+      "mappingSha256": "60a20ef5070aa748843e4e1501590a50e8622d7f90c4e2206bf040146b4ffdb3",
+      "seedMappingSha256": "83e3606091ce93e832b13cf8d35b95aeca8a83127cfa9be7aefdff422090628b"
+    },
+    {
+      "questionId": "foundation_q_db6dc6bff8bf3a15c33ff6a4",
+      "contentSha256": "5cbbee13cbbb4fba83076d4fb800f0cff668a6daf5969194ba8e42d226f8ed66",
+      "mappingSha256": "867f628f53f447cf96d350d33c4823b8b4afa0335706d3e77cae5cbbef0788ce",
+      "seedMappingSha256": "d98a74d78ab3f8dda096218315517afab8977c85a5ffb16c9b69c48e43ef181c"
+    },
+    {
+      "questionId": "foundation_q_dd6a5322848748f0b22a9425",
+      "contentSha256": "0e38a367818f925ac7966a9b541e3a2c30173212a6f9d9518ebd907319d450ba",
+      "mappingSha256": "4b128c52be87a2df3b7c082264f34280cd24bfd7e4503cbeac4ebd9752e57dda",
+      "seedMappingSha256": "0cde48c50c59473b360685c54922601e90364d1fdf97169bbf914d0c22cdb2e5"
+    },
+    {
+      "questionId": "foundation_q_e1e64f180901b2041a64194f",
+      "contentSha256": "79e6f87a1cff342c1167d25f1262ca8dd836b52715056a045eb6cde5f18fcfeb",
+      "mappingSha256": "3cf1c9259cd810a3bbf9f880a839ec5066b6b8ae8343d8ecb61ff8897cf4f336",
+      "seedMappingSha256": "0776dc98710fbff6078c7931c400c2b9d642e81c721d0a6d41e8ab9132462895"
+    },
+    {
+      "questionId": "foundation_q_f1cd438a1f00e2460d64b8c6",
+      "contentSha256": "6b309b5706b0170f3b4ac770249692a0544d5faa3f4dafeaaae8d98ffaf47cb8",
+      "mappingSha256": "a78d7e83de842b65d7391b41a3d0ce84d503112ef397b49374e8ea234bff515e",
+      "seedMappingSha256": "2c73514d119dbc3d7a7e3ed5fefc63fac4890c8435280807ee13aa477aa36e00"
+    },
+    {
+      "questionId": "foundation_q_f6ebfd43a288cdf5d69af017",
+      "contentSha256": "beb78bbc023b22f2c6ac927fe1582b719e6129ed036a09210e0618cdb60a7c4f",
+      "mappingSha256": "3250c42e2ce894ca9e47f2aa26b0ed392759a0a22b367188f97ec25b6470e0a7",
+      "seedMappingSha256": "2ad41fc4b38b53101c7289f95835062698e490dc1fd7bd5388d04fef39001ccd"
+    },
+    {
+      "questionId": "foundation_q_v2_103b110cb95f6020a0d805bc",
+      "contentSha256": "8f78f113797edce04fbcabdc00e06f5fd71d5988867d04d42dcbab52f8da394d",
+      "mappingSha256": "7303c32185763824462bed2aab0c83a86cca19fb9188039bef965c0577d0c8de",
+      "seedMappingSha256": "7dd692624e848a4a8ee66ae9b5382e872848e72080ec8f2ee6f8000f56ebc535"
+    },
+    {
+      "questionId": "foundation_q_v2_1455c15d215eb4ddff8dac4e",
+      "contentSha256": "66477cb7c6dbf1dc63fe8e163fdecc621c0f7556babf3f5a22eb308177b97297",
+      "mappingSha256": "09f7aa0f4ebcfb67878a632379624d54e48eb526f4b2b2ed24eff7bfeefeff29",
+      "seedMappingSha256": "592920c1134810c657380c8e63fcbc62b3a0080de19ec39a5f82ff2ad2514e44"
+    },
+    {
+      "questionId": "foundation_q_v2_18a3176f8fa3f827d4fbe2b7",
+      "contentSha256": "6867485aa36fa5fc9d2d1b900951e948f4d661b6af71c222ef380aaca2d2f184",
+      "mappingSha256": "1918366f1ce4735b7b0c84443aa528a7b0705c7d02223db8c03812c028c58f9b",
+      "seedMappingSha256": "08be9fc0b286bec5c68ccde2a6fb165213e5f47f0dea68e4fad6ccc3f05ee176"
+    },
+    {
+      "questionId": "foundation_q_v2_1bb975e1ae192650fa522867",
+      "contentSha256": "63113b918d2b9544d019774e86492a10810438a5a7879752b523654b52dbfbf9",
+      "mappingSha256": "d8a49251182e6edef6fa4240c9dd3a6a2668f56de30d21c35c933fe8d73e9704",
+      "seedMappingSha256": "d5f783e66013e7556e27aca3e97a5c00624033aaeaf7c3fd9ef3f376f759e2c8",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_2307babc547192ee440228cf",
+      "contentSha256": "17d7882aef4b93ebbe1ee74e5cb4a3e56b57cbeab7a970ab331d7ce048d1a67e",
+      "mappingSha256": "e3b40201041a26380b4a240578db8539e025d7372acbde691e5888d7d91bb12f",
+      "seedMappingSha256": "57c19a672b8ec42eb121ffe7ced10362329e76fe5edffcaa76cde89ba55b8d2e"
+    },
+    {
+      "questionId": "foundation_q_v2_2866c4c397445b1a80f03fd7",
+      "contentSha256": "eff5ff5bafc95d7b9517a66f3d40011811cc29a3524cc0a56225376d63d6a415",
+      "mappingSha256": "99e9c2eeff05d8bd5e924c9217066ddfdd8e257693c4875439ba50d0ef9e3c82",
+      "seedMappingSha256": "020e347c635c21bc3f3a7cbaed03bc663e3375ebbc8a6ba8341de7ef4ba45a8e"
+    },
+    {
+      "questionId": "foundation_q_v2_2966cd9c3f355339348c082d",
+      "contentSha256": "b071c94fb1435397f40ed9dab25be7eec5019b1c1a7f822ed01d7a2e638e6d49",
+      "mappingSha256": "0303975c3a99b06d719b79cbdedbf8a7037e1f32f1fc8bfb1b049354c19d3066",
+      "seedMappingSha256": "9f21cbd217bfb9cc64da6f24554114f1d66f60ad90ef434bedb5962fd8ca5a79"
+    },
+    {
+      "questionId": "foundation_q_v2_2a9d2c1da26d3951c0e86880",
+      "contentSha256": "6fa1c6a92296d22c14a1dba04c4df7ad0b5842f961403ebb40f3b64afb495087",
+      "mappingSha256": "715f8d118691120ed2fd38d8fc35c127d7729ccfc35ddfe5c8bbfcb4dfff15aa",
+      "seedMappingSha256": "142e038afa1fed900dfd57ad94307a3810ab11f8d9ae32f395d0dd1b1fdcd67e",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_327699f60c72b3910e8f32a3",
+      "contentSha256": "687213e52330032190e86786cedd7f7aa0dac50fd7e623179b31bc5ac9a0d9df",
+      "mappingSha256": "d2ea08e65b38b1329d918c27e8c505740675861a8e3f6b6869a6ea30d33c0d8e",
+      "seedMappingSha256": "8f2317314bd953e693429e497e70d79e4af1d0266bd8b6e6d26ba9497348dcdb"
+    },
+    {
+      "questionId": "foundation_q_v2_3815805bfe3b4fc7ec701d26",
+      "contentSha256": "06658fe818225622638201c7b52046a60c88117cea695d9f635c41bbb55501ec",
+      "mappingSha256": "0e9997d69f28e4228a85b7fe6928a4ea49d40110e6187386804004c2085d0b69",
+      "seedMappingSha256": "fe3b7d6de73d83999e7a9561b10dc4764fb42c94a5512518d7935316cf99bf10",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_38f31f254039118f1e0d6277",
+      "contentSha256": "c5878f2129013afd9bd8ace54b6d463c1e8f2a2c948a7174b9814533ec969bd1",
+      "mappingSha256": "940946e16b782aece86782b0f5f5171863dd78bc5a1f43d773cacba09182676d",
+      "seedMappingSha256": "c7a2dbef6d91cde3259f3a46d25b2e4e1ac3189679e2a8161f7fdf75a6896f59",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_3cdb9453c254e7566d21fa68",
+      "contentSha256": "ebef23a46e6b4d41e0f19dcd4ffac0d5fd5a6ba3e547fc39ef459f7226506cb2",
+      "mappingSha256": "7c1a06d1efbb6bc1d986644a4bf03a89c7486d3ea96a9da5d7e5ce019644c645",
+      "seedMappingSha256": "924c1376ab47e701c2ff433f497d8e907b8ddfcef9c1c2d7b33e8b62f1c9b91e"
+    },
+    {
+      "questionId": "foundation_q_v2_4568bc60f994073778a0cb53",
+      "contentSha256": "d020c7d982b702b132c464f0d90beae6582c2a5fc9da1ae38c6ec51550372985",
+      "mappingSha256": "02dac4c9fa841bc631c618685988e34ce0faf8ee7b86eab2252825bd65f34ceb",
+      "seedMappingSha256": "3ae86189cabe4dea4f3deea0a5d7e05308fa7c8e6f026019debdccd12b30de5d"
+    },
+    {
+      "questionId": "foundation_q_v2_4fb5d90e7a9a3b8877374f77",
+      "contentSha256": "aa21b1c0aa673d52f7582926aecc7c85a3cebcf3f6ad73f177e7492876bf8120",
+      "mappingSha256": "9fa449f8bb4afa0a74ba195af010d32c73ec38d8f4329fd2a983ec02cc4db39c",
+      "seedMappingSha256": "415c223fa0d51da14d529672c06d5dae351bb4613819eca12c3e8afb1f64024e",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_504459433a372286c3355564",
+      "contentSha256": "9f1a7da3b319ae9c1a86939e0b6c72eb2c2108360e5b42ab5519bb21aebde5ca",
+      "mappingSha256": "564666b6817126d17655359abf2033378d51ef14eb77871664adce2bcd59406b",
+      "seedMappingSha256": "5d6d3fd60957615af72730c087ae3982f73a025db8c58658183a09974479a2f4",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_50b8884ee770435abb622be0",
+      "contentSha256": "34488b7cb8d5c86bdb69917b14eab10d490f8cee35b907f15953bcc452c604c1",
+      "mappingSha256": "45e1fa339dca8efc53517c266b6e0fbf3a6dbde4f16edaf615c08cb142975b18",
+      "seedMappingSha256": "36b39b70345b031cf81b7acca2a89631f8e34d2829b45de6a1ce3766657c0f59"
+    },
+    {
+      "questionId": "foundation_q_v2_56c190c4e569a1ca95e7a6be",
+      "contentSha256": "5323881d4aafcf7cd50d1fcbef61a9f727a1ddad3e3aceb600388c517259ad3c",
+      "mappingSha256": "1f154313080523ede5764bfd5728db1f104be7806840dab77bba3d3bf96094fe",
+      "seedMappingSha256": "0425ce4cad251f1623af79b100022d964935ed8131a934c802a623b67a35152d",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_59c1ded6d3596f31b3874674",
+      "contentSha256": "3c3abeca6846a7a646afa9c36d27c9eb8714a083828c7ee2215fcae0f47689ea",
+      "mappingSha256": "266c050535eab5f22e2f29887828bc1b3f8ceba0306c2db3b011fb211bbf0ff2",
+      "seedMappingSha256": "82df4c98e0e0d6265eff7834d8ec58fe3df4b1574f5e97cff9f45182884be643"
+    },
+    {
+      "questionId": "foundation_q_v2_5b280c43fa3b824d08f90f3f",
+      "contentSha256": "d743ee0209ef6fde662f8606356ad21109e7c07941409be05868845d3d6938f6",
+      "mappingSha256": "02d8c01799e81461a127c2f315f4a6fcccf32a5b107dea25c130d41e82e36c27",
+      "seedMappingSha256": "390a77199baccd1bfad20259e0e5e46646d11551741be2c46ba10754cd8216e6"
+    },
+    {
+      "questionId": "foundation_q_v2_6180a5486cc23421910b6b4a",
+      "contentSha256": "5ee76a04cf99ceb523e4c69489741eece4f65c593d481ff9ad0b8f48373d37fc",
+      "mappingSha256": "a21d50ea8ef77b17d6e29f5ba9cdc6823fdc1e2551109980e9f2bc039d79daa5",
+      "seedMappingSha256": "14f373ef623671e055687e067ea663cbb189006b48ee0dc3d5ef89edc9480c2b"
+    },
+    {
+      "questionId": "foundation_q_v2_62a8d829218e398708293a99",
+      "contentSha256": "665749f20878e572692db605fb0bff4b9e4de70ceb4bbed756585de9191c0994",
+      "mappingSha256": "420914caf5aba793c60b78f52651e70d98f0feae488bd80d9aa35163c7403c04",
+      "seedMappingSha256": "fb5987466a110b217296e66524223e08c25235606bcc6f6fe7572a98aece9926"
+    },
+    {
+      "questionId": "foundation_q_v2_643b187e212118be9588a1a6",
+      "contentSha256": "f14921da2354e066e88d6ef62883ba98f051e042db1b4534e80f92cf945dfcc1",
+      "mappingSha256": "5c5f46fb0fc85040f93e45d2dc394a8cf8b266547feaa2c0274e1a32a9b8bd91",
+      "seedMappingSha256": "d67e26f069dcc51f3c919e1cf224288aa923f5685889c58e0982b0e3731f3037"
+    },
+    {
+      "questionId": "foundation_q_v2_6458b23459ed17a231447c6d",
+      "contentSha256": "be99fa7225b04bbaff0457452b20958b4744f7d16ff3175e2baeceda94690e0e",
+      "mappingSha256": "0efcadcb5a174d4f8778b7793e12c432f86e36c31a8ce76d0a149ece821371e4",
+      "seedMappingSha256": "5cf7f05bd9922754b3934c14f76e20c0ee4cd79696a5f6c41c3f37f9f0cfea3b"
+    },
+    {
+      "questionId": "foundation_q_v2_6dc6883fd38efc9600401357",
+      "contentSha256": "f21b6fad9b1b13c3fad0dc9e5ee93aae08595cc6539e0e2a81e7a3905a8059f6",
+      "mappingSha256": "4148f959ffcc34414b4bf544959a7ab57fde626627abb04b204953749dc31dd7",
+      "seedMappingSha256": "860a7878620f80ab4f4726316f04d6abe1960664aa0f727da1dc8f06c8ed4bf1"
+    },
+    {
+      "questionId": "foundation_q_v2_777801951a44eaaef1792bcc",
+      "contentSha256": "b0e5d2921d2abc9bfe26090be70fa8b4c2236e8b7d797b02180e397bc9c21d07",
+      "mappingSha256": "69cf7276d75fc863020317ae24c857d7a8b00f8e7121afd525c896c35226ecf6",
+      "seedMappingSha256": "15ecf78cd2e48240772498415f6792e0057eddf48af07ebb22fe17bfbb32e111",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_7a04b3e4551fb440f6a8301a",
+      "contentSha256": "1716490c70af3247c41aa3ddb6f34ffb0a102c13becb0b9555e07d262460b507",
+      "mappingSha256": "cb395e99b6e9403f116e6e1473dec3f2908b5c8ad542c84904a7ec5dcfb3520a",
+      "seedMappingSha256": "0da496f8c8064bd0dd209aaee3dfa75ddb1ee95a8e5826696e5e0c49e3f36c0e",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_8817c8fbf1206a19eb27a0eb",
+      "contentSha256": "12d8c04748880663376e141f5742afda04521aa33a677786e1c5c8c1cb7dbf12",
+      "mappingSha256": "62da0f2cefb9b3f65fed4d2fb9cf59108833a17eb1a64acfdc3e9c0aff23a614",
+      "seedMappingSha256": "2d9645c58f4d3597e230a592e63f749b0db5bcea9e890932fe91205f175a403f"
+    },
+    {
+      "questionId": "foundation_q_v2_89da3e9af664bb0de57b6196",
+      "contentSha256": "e26a5870f8582ce31b0e4cdb49e9e383b88143087e8c24054527d43e031e7371",
+      "mappingSha256": "9c7bafd8e895d1b32497b24b916a4cc67d9fc1fd99cd89c46b2d9dabdd811d15",
+      "seedMappingSha256": "149d589d048aaa64c62f9da60cd047328c8679f49cd70502f7089979d15c0ac8"
+    },
+    {
+      "questionId": "foundation_q_v2_9406c4c0ac3c98e86c554ff4",
+      "contentSha256": "a8692826dab68ddb79762bdf1d249682bb0d306ba7ebfdc70bc102e0b09d7779",
+      "mappingSha256": "e7c6dc90ef753ab7163782d790d7e6a8601a693a9802c0ee33163b2e8189a2e8",
+      "seedMappingSha256": "654128819476e118639b8afe5f2f7089f0f5b9398c0a2a5ef1fa4e222dec3cad"
+    },
+    {
+      "questionId": "foundation_q_v2_a8191d557296332991cbeb00",
+      "contentSha256": "f5ee79b852c84901e75be0d1c26d91153bbc099e13e9d41d4d13fb23f9630e35",
+      "mappingSha256": "aaec80f8ac417a1cd24d42216e5183e131b1ffbf8bd85c6994d4daf5d0e4ac7f",
+      "seedMappingSha256": "4b6d76eba365c44e9738652d5f75fa91cfd4744ec2ef49624d40044c2bb044ce",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "contentSha256": "0207cd6970557f3383baadfb92dfeb9b1915bb620cc21640b1f61b0ac9965202",
+      "mappingSha256": "ae1505c908acf5ee08b24eb92f7c09f73dae26eed2e6af8283b1ebc2b2474e37",
+      "seedMappingSha256": "2d4cd48fbf82fcef6b451f0459866c245f1b53bccf4142ad900c6ef5debcaadb"
+    },
+    {
+      "questionId": "foundation_q_v2_b97f7fc5ac4d7da1174d29f6",
+      "contentSha256": "1dc27c74ec41fc3b7e27ac00cfb9caa394542e38e1e6d402540affbfe6bb81c0",
+      "mappingSha256": "839a4db800122470eb65a4b08062a7ec720b1d0f710da4858aea9020774449d4",
+      "seedMappingSha256": "da4ee2ed2c3cc202db50ee85ad56d556e2b5aa63336c807911e80753499de053"
+    },
+    {
+      "questionId": "foundation_q_v2_ba2b5b739496463afba1593e",
+      "contentSha256": "f2d4d8aa53d94954f1a80b97c463241eb2f3420f44af9f40f80f81c0a09039ed",
+      "mappingSha256": "bbab9b7c54cd9c123a3f5c83b9eb246538cec1d0ffa53a3806abe0d98151ed19",
+      "seedMappingSha256": "25145d22b3db9ed0727d252aa4d07d6cb2d911f6e7758d753c0aad57a84b75f1"
+    },
+    {
+      "questionId": "foundation_q_v2_ba6c38a728bc66b0b29fb822",
+      "contentSha256": "538b7682b1f428dcd0c1af6e1c18a8d424f74c916484b9100be5e9464c56b0b0",
+      "mappingSha256": "b8b31db70ecefe6b02f7ace0a8a3b55943792420e2f9582181c8aa47c523d17e",
+      "seedMappingSha256": "71cc80815b0cecb3c2c1a53a198a4db3d23c064549089ca6579e5c27b676aa69"
+    },
+    {
+      "questionId": "foundation_q_v2_bbce5e2eb390d0e987314149",
+      "contentSha256": "34c00dd4a9baf94d0c4eb496c0f471c81bf2ef6a6a1ee363ae3e570816b05379",
+      "mappingSha256": "e2f4966d534ed05b5889d863d309b0557f3ca965710c7f4d944c711620e7aeaa",
+      "seedMappingSha256": "3ebdddf3946c9614eb5646b775ea2611868496ced2b6665f6bff23c9d0fab747"
+    },
+    {
+      "questionId": "foundation_q_v2_bd302aaf71ed655a2d47c47f",
+      "contentSha256": "146c8f7b06aa54cbc66dee90f6480fdddbb93b83fd21d416f7740329409274d5",
+      "mappingSha256": "8346ee014a628fa107907c2be56960953d6e5c1d7cda4302e0d73cf3081a0162",
+      "seedMappingSha256": "c22c7416dfb01be29360324a72c1316800dd8d3480c64e59a352e83a3b977a2e"
+    },
+    {
+      "questionId": "foundation_q_v2_befb4691f3f8812c09b55df1",
+      "contentSha256": "1af18ceb4b31c1a98f1d0e493402b12d2110ab567ed7bacaac00f014b1ccca34",
+      "mappingSha256": "198c97ab52160658c6fc12796a4dafebcbd1d4da13bcd85467e820ae2f09e9e5",
+      "seedMappingSha256": "11d31e011e6ef251133fc2b0439c8dd283862ad1e3726b28d3b747e31cdd9684"
+    },
+    {
+      "questionId": "foundation_q_v2_c237c478849f2adfe6748723",
+      "contentSha256": "ee3860eb48693cb6246796f5a41b25732168aa0a661a8bbace29e8754a57b4ac",
+      "mappingSha256": "4c2547635ee941c33b489c3196cc259985868b0778202b1c424bd77989f052d3",
+      "seedMappingSha256": "c615dfdb391b58a6b9949528c11c67b2d4f0b52904281cdf36ac72114f6fefb2"
+    },
+    {
+      "questionId": "foundation_q_v2_c3ab7ee22af05eea89501003",
+      "contentSha256": "a8c3a0e5041651fc9adce9b3293b1d13119e2e03a288b61fb5b99c1ad01ae00d",
+      "mappingSha256": "1e66befdb8caa83c2d882a2ed8f754a1811d9a8d0d6291d43f8996b2f2c92194",
+      "seedMappingSha256": "9413fe5a77fd3ad54c994df76e17470ebb9a18480cf94d44929120652adc7795"
+    },
+    {
+      "questionId": "foundation_q_v2_ca12c49faa39013443550b78",
+      "contentSha256": "61606788c09a7a43f57ef853f253a9ccaa3bfd1b3bcc3bce48313405502e3c87",
+      "mappingSha256": "c587778fff82deebc05754b5d66d141b109b942205ebe0a0597c149d503f6320",
+      "seedMappingSha256": "2a2017055f1ca8bde671b75db95167c7dac072afc9392ae1fd41b18774a347c0"
+    },
+    {
+      "questionId": "foundation_q_v2_cc595e8200c831078a886644",
+      "contentSha256": "dab0a89a3a045f898a36924760ddb907d948028017e07db156ad7ef3b3655a42",
+      "mappingSha256": "fced077ac885efe85eb7d9f22774debf147818ec2e13abb6f6ae7b5316c0b28c",
+      "seedMappingSha256": "6c0627f40ea564df7149d81c6fd6503c10dc3c72888efd13699bac123df4e652"
+    },
+    {
+      "questionId": "foundation_q_v2_d8457f639551316788fcff7e",
+      "contentSha256": "5b2b64f1fd6374d53336184cc20b8f7afa7ae04d70c7cd9de11cc5075fd0483e",
+      "mappingSha256": "6b5af7aadf609a2ed2c0d1acabad2c0ecb2578308ac40d454a88bd1523d05e8f",
+      "seedMappingSha256": "b9d9a3078e841c91d4e558f59406c451b85a89240e2ec691cd7159ed1a1ee3f8"
+    },
+    {
+      "questionId": "foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "contentSha256": "3f75512ed5971740be1929af5e5538c90732c4afd06631b7a67b949e0a1a672c",
+      "mappingSha256": "0db45e58729fac33329b84ee7417b481acf93fcaa106c49b34e4ed5d8e4c45a0",
+      "seedMappingSha256": "cae2fe056904a1f6d38694c32df2fffe2ffd7700e793c4772c45c9c32a9e8f3f",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_e464d67d4ab6a064e9432cd5",
+      "contentSha256": "210876b591d5deac0b21202efd040346d7c2620a47e3ffa1e47bbfb33fdaf961",
+      "mappingSha256": "27299d26c260cfe4f350ec6e90aa58397823aa94e30b9dadd499858dceb9e105",
+      "seedMappingSha256": "5b22197c44ed106ecf510812263f6e36ad440cae1b8cb54e348220c7ee135e32"
+    },
+    {
+      "questionId": "foundation_q_v2_e4cbd6650237ea1ce77121f8",
+      "contentSha256": "1fbf16e0f92bbc86c46b3bf0cf0fe67ae064a740da3a19e5f0dcfbdf0074d8c5",
+      "mappingSha256": "47965ba0e19b0283def0ced72cb9c6c48dbaf0a2ad8bdeaa326e1e9f995bf572",
+      "seedMappingSha256": "759957b654bb1980016f8097419f996409f33a89cb2b572df4e26e5150ac627d",
+      "componentBindings": [
+        {
+          "id": "average-object-count",
+          "atomId": "atomic:math:averagecount",
+          "scoreKeys": [
+            "count"
+          ],
+          "requiresKeys": [],
+          "rationale": "三天均有明确记录，0页也计一天；只观察已指定平均对象的计数，综合题分项不作为子点独立测量。",
+          "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+        }
+      ]
+    },
+    {
+      "questionId": "foundation_q_v2_f768dc54c0888eb42f93a77d",
+      "contentSha256": "b9781f7eba4b4a33a838441febf680009248debefd170fb9e7642ceeeeb57f7e",
+      "mappingSha256": "069c8797edd0c066cc7884acdba3b41fbb399ff6eb714ec4245473f2678a7884",
+      "seedMappingSha256": "00198d91d8e15a66737c544c12724ae09e7615b31a82d207ac7e4dbd0f31411e"
+    },
+    {
+      "questionId": "foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "contentSha256": "25a65b8c3a3c516bc3b3af066137c9bf092b52836695835a47ba4292b0e3e134",
+      "mappingSha256": "a204f3a3608e75704ab78020dd056138d9a847807cc98acef6675664881a9bf5",
+      "seedMappingSha256": "1bac81f812b4cd34b350bc8394a202dce61345a7de364afe7cb5cd83f131b6ca"
+    },
+    {
+      "questionId": "foundation_q_v2_fe4998150f99c136af4a9f7a",
+      "contentSha256": "7c4f1829589956c27faf0d1f4a6de7d61622d048c32ea33283bbad924583e118",
+      "mappingSha256": "ffeac1f7d6d91e81faffed9a2f0855f1244f0b8f0c9567f7f574aa1bd02311ee",
+      "seedMappingSha256": "59d095aa9da7c8b721eda4c51fbf238ea0f9dc56e744e30bfcb555ecdff12d87"
+    }
+  ]
+}

@@ -1,0 +1,379 @@
+{
+  "at": "2026-10-20T04:50:14.331912+00:00",
+  "passed": true,
+  "scope": "Existing division atomic journey on both durable drivers and both earlier explicit relationship releases on SQLite using the extended shared verifiers.",
+  "divisionAtomic": [
+    {
+      "at": "2026-10-20T04:45:05.458Z",
+      "driver": "sqlite",
+      "releaseKey": "division",
+      "parentId": "foundation:math:divisiondigits",
+      "childId": "atomic:math:divisionregroup",
+      "passed": true,
+      "scope": "Owned synthetic accounts, genuine authored tasks, formal learning codes, production-mode HTTP and durable restarts. Two-day clock advance tests retention rules; it is not a real student longitudinal or browser validation.",
+      "sourceSha256": {
+        "packages/contracts/src/diagnostics.ts": "56f7c2ec803e6b1531aaabd08837c7e1ea71b164fe9a74c9c433d53b2890c9a4",
+        "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+        "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+        "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+        "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts": "e9673228b1566f5204951e25e7f7ec30b7436a9952fdf1d782f3428048944cd3",
+        "apps/api/src/modules/learning/learning.service.ts": "242cbb493ceeb557f51650b35d0ccf6b886d8c30f4e7d02ae8af79d9cdf96e1c",
+        "apps/web/components/diagnostic-evidence.tsx": "c2cbf55ee2b1f44d444b06fe483ef72def66b22710af45b127552ab7f7a83ac4",
+        "apps/web/app/student/assessment/studio.tsx": "3df0c571687cc0f69b157c2c64d93a759af7938d250a521461e219a0e7aae2de",
+        "apps/web/app/parent/dashboard/studio.tsx": "01b1201a7c5d04e6d7150d3e23388cbc13a4ff67f28e14b8d498cc7275188c30",
+        "apps/web/app/admin/curriculum/component-binding-editor.tsx": "35af5e6c3e96a6fd31d47606d7ac65cdc1ba061e67490152fb62a6179d25e4f3",
+        "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+        "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+        "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+        "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+        "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+        "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+        "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+        "scripts/qa/verify-atomic-components.cjs": "c90f531ee8c2badaf03ef627af661c6bb58b2d6a5d18bf843bdeee74adaf1fef"
+      },
+      "result": {
+        "originalEligibleCompositeTasks": 48,
+        "reviewedComponentBindings": 12,
+        "compositeClueDoesNotAddChildEvidence": true,
+        "scopeRemainsExplicit": true,
+        "independentChildTasks": 4,
+        "independentChildFamilies": 4,
+        "childEstimate": {
+          "atomId": "atomic:math:divisionregroup",
+          "atomName": "把余下的十换成一并合并个位",
+          "grade": 3,
+          "mastery": 50,
+          "lower": 14.7,
+          "upper": 85.3,
+          "status": "learning",
+          "rawCorrect": 2,
+          "scoredCount": 4,
+          "effectiveSamples": 4,
+          "independentFamilies": 4,
+          "dimensions": [
+            {
+              "dimension": "understanding",
+              "mastery": 33.3,
+              "samples": 1
+            },
+            {
+              "dimension": "procedure",
+              "mastery": 33.3,
+              "samples": 1
+            },
+            {
+              "dimension": "transfer",
+              "mastery": 75,
+              "samples": 2
+            },
+            {
+              "dimension": "retention",
+              "mastery": null,
+              "samples": 0
+            }
+          ],
+          "independentRate": 100,
+          "transferVerified": true,
+          "retentionVerified": false,
+          "evidenceIds": [
+            "response:diagnostic_4c4700e3-31fc-4f46-a405-6dcb914b0ec9:measurement:foundation_q_v2_a3abcb0a0914ce9706423071",
+            "response:diagnostic_4c4700e3-31fc-4f46-a405-6dcb914b0ec9:measurement:foundation_q_v2_4313b1610f8b857f077b6186",
+            "response:diagnostic_4c4700e3-31fc-4f46-a405-6dcb914b0ec9:measurement:foundation_q_v2_b19ec4fcc4c8fd346548042b",
+            "response:diagnostic_4c4700e3-31fc-4f46-a405-6dcb914b0ec9:measurement:foundation_q_v2_4a8c500d5c1d1217d4681a7a"
+          ],
+          "lastMeasuredAt": "2026-10-20T04:45:33.299Z",
+          "algorithmVersion": "rule-estimate-v2",
+          "familyIdentityVersion": "authored-family-identity-v1"
+        },
+        "allDirectPrerequisitesStillRequired": true,
+        "rulePlanAvailableWithoutAi": true,
+        "trainingQuestions": 4,
+        "trainingDoesNotAddDiagnosticSamples": true,
+        "reviewIntervals": [
+          1,
+          3,
+          7,
+          14
+        ],
+        "simulatedClockAdvanceDays": 2,
+        "delayedIndependentChildFamilies": 2,
+        "reviewUsesUnexposedQuestions": true,
+        "retrospectivePersisted": true,
+        "historicalReportSha256": "5396bf16f1dfe6e5deb167c01dc6ffdaace0b6b0be990644574c23e931c18bc9",
+        "historicalReportUnchanged": true,
+        "activePlanRevision": 2,
+        "otherFamilyDenied": true,
+        "restarts": 4
+      }
+    },
+    {
+      "at": "2026-10-20T04:45:05.555Z",
+      "driver": "postgres",
+      "releaseKey": "division",
+      "parentId": "foundation:math:divisiondigits",
+      "childId": "atomic:math:divisionregroup",
+      "passed": true,
+      "scope": "Owned synthetic accounts, genuine authored tasks, formal learning codes, production-mode HTTP and durable restarts. Two-day clock advance tests retention rules; it is not a real student longitudinal or browser validation.",
+      "sourceSha256": {
+        "packages/contracts/src/diagnostics.ts": "56f7c2ec803e6b1531aaabd08837c7e1ea71b164fe9a74c9c433d53b2890c9a4",
+        "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+        "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+        "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+        "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts": "e9673228b1566f5204951e25e7f7ec30b7436a9952fdf1d782f3428048944cd3",
+        "apps/api/src/modules/learning/learning.service.ts": "242cbb493ceeb557f51650b35d0ccf6b886d8c30f4e7d02ae8af79d9cdf96e1c",
+        "apps/web/components/diagnostic-evidence.tsx": "c2cbf55ee2b1f44d444b06fe483ef72def66b22710af45b127552ab7f7a83ac4",
+        "apps/web/app/student/assessment/studio.tsx": "3df0c571687cc0f69b157c2c64d93a759af7938d250a521461e219a0e7aae2de",
+        "apps/web/app/parent/dashboard/studio.tsx": "01b1201a7c5d04e6d7150d3e23388cbc13a4ff67f28e14b8d498cc7275188c30",
+        "apps/web/app/admin/curriculum/component-binding-editor.tsx": "35af5e6c3e96a6fd31d47606d7ac65cdc1ba061e67490152fb62a6179d25e4f3",
+        "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+        "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+        "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+        "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+        "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+        "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+        "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+        "scripts/qa/verify-atomic-components.cjs": "c90f531ee8c2badaf03ef627af661c6bb58b2d6a5d18bf843bdeee74adaf1fef"
+      },
+      "result": {
+        "originalEligibleCompositeTasks": 48,
+        "reviewedComponentBindings": 12,
+        "compositeClueDoesNotAddChildEvidence": true,
+        "scopeRemainsExplicit": true,
+        "independentChildTasks": 4,
+        "independentChildFamilies": 4,
+        "childEstimate": {
+          "atomId": "atomic:math:divisionregroup",
+          "atomName": "把余下的十换成一并合并个位",
+          "grade": 3,
+          "mastery": 50,
+          "lower": 14.7,
+          "upper": 85.3,
+          "status": "learning",
+          "rawCorrect": 2,
+          "scoredCount": 4,
+          "effectiveSamples": 4,
+          "independentFamilies": 4,
+          "dimensions": [
+            {
+              "dimension": "understanding",
+              "mastery": 33.3,
+              "samples": 1
+            },
+            {
+              "dimension": "procedure",
+              "mastery": 33.3,
+              "samples": 1
+            },
+            {
+              "dimension": "transfer",
+              "mastery": 75,
+              "samples": 2
+            },
+            {
+              "dimension": "retention",
+              "mastery": null,
+              "samples": 0
+            }
+          ],
+          "independentRate": 100,
+          "transferVerified": true,
+          "retentionVerified": false,
+          "evidenceIds": [
+            "response:diagnostic_115e0589-8aea-4a95-8aa3-005ad6563f32:measurement:foundation_q_v2_6670f6d60822bd9eb36e2e91",
+            "response:diagnostic_115e0589-8aea-4a95-8aa3-005ad6563f32:measurement:foundation_q_v2_fd687912c2b00b8c2258fde5",
+            "response:diagnostic_115e0589-8aea-4a95-8aa3-005ad6563f32:measurement:foundation_q_v2_b4cb5a1bb8f86ea9fefbecae",
+            "response:diagnostic_115e0589-8aea-4a95-8aa3-005ad6563f32:measurement:foundation_q_v2_19a44f83a4080bbbcee85c97"
+          ],
+          "lastMeasuredAt": "2026-10-20T04:45:48.793Z",
+          "algorithmVersion": "rule-estimate-v2",
+          "familyIdentityVersion": "authored-family-identity-v1"
+        },
+        "allDirectPrerequisitesStillRequired": true,
+        "rulePlanAvailableWithoutAi": true,
+        "trainingQuestions": 4,
+        "trainingDoesNotAddDiagnosticSamples": true,
+        "reviewIntervals": [
+          1,
+          3,
+          7,
+          14
+        ],
+        "simulatedClockAdvanceDays": 2,
+        "delayedIndependentChildFamilies": 2,
+        "reviewUsesUnexposedQuestions": true,
+        "retrospectivePersisted": true,
+        "historicalReportSha256": "da5f7cc73e68165a73c1741f93bf714559757571209bad3d9ff48612e7a90ca9",
+        "historicalReportUnchanged": true,
+        "activePlanRevision": 2,
+        "otherFamilyDenied": true,
+        "restarts": 4
+      }
+    }
+  ],
+  "previousRelations": [
+    {
+      "at": "2026-10-20T04:48:11.513Z",
+      "driver": "sqlite",
+      "releaseId": "authored-relations-2026-10-20-v1",
+      "passed": true,
+      "scope": "Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.",
+      "sourceSha256": {
+        "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+        "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+        "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+        "apps/api/src/modules/diagnostics/authored-unit-probes.ts": "1109a9bb869bdb1d243dc6d71d6b4a6d09ab74582ee2faf5bb1e0dfbf9e352e1",
+        "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+        "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+        "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+        "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+        "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+        "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+        "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+        "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+        "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+        "scripts/qa/verify-authored-relations.cjs": "a643bf8218d3cfa30dfb330f897fe7ea21c6e1b1f148480fec7e17d76a0b2e19"
+      },
+      "result": {
+        "originalCollections": {
+          "questions": {
+            "count": 3435,
+            "sha256": "9481aa8b24480d1cf7cc6b0b3cd0dd211e34dc02b5b703dea268461cec4e8d0e"
+          },
+          "questionDocuments": {
+            "count": 3435,
+            "sha256": "fb12aefff308599d37b451da67ea6c49912697fbebe40061e87925e1caefcfe0"
+          },
+          "questionAnswerSchemas": {
+            "count": 3435,
+            "sha256": "e1be2770d3c385db5a1bbee26b5d8e3df85c68c8f91d71a4fa0504b4325c42fb"
+          },
+          "questionSources": {
+            "count": 3435,
+            "sha256": "55c89b05613bf38275d676a1213af63b8d795bb38dc5e38fa0de861aa9f76b2e"
+          },
+          "measurementItems": {
+            "count": 3435,
+            "sha256": "7b9f631c0d66f2f6b42607078a666266fce74714d02d0516ab15ce8a2df3cd8e"
+          }
+        },
+        "originalMappingVerification": {
+          "total": 3435,
+          "unchanged": 3435,
+          "explicitlyReviewedRebindings": 0,
+          "frozenReviewHistoricalIds": [],
+          "protectedEditedHistoricalIds": [],
+          "before": {
+            "count": 3435,
+            "sha256": "7b9f631c0d66f2f6b42607078a666266fce74714d02d0516ab15ce8a2df3cd8e"
+          },
+          "after": {
+            "count": 3435,
+            "sha256": "7b9f631c0d66f2f6b42607078a666266fce74714d02d0516ab15ce8a2df3cd8e"
+          },
+          "exactFieldAndRevisionValidation": true
+        },
+        "reviewedMappings": 52,
+        "editedPacketsPreserved": 8,
+        "interruptedStartupDidNotDoubleIncrement": true,
+        "newDefinitionVersion": 2,
+        "oldTargetEvidenceExcludedFromCurrentProfile": 6,
+        "oldReportAndUnfinishedSessionFrozen": true,
+        "oldPreviewRejected": true,
+        "oldPlanRequiresReconfirmation": true,
+        "newPrerequisite": "foundation:math:divisiontable",
+        "newPrerequisiteIncludedInNewScopeAndRootVerification": true,
+        "repeatedRestartIdempotent": true,
+        "priorSystemTeachingV2UpgradesToV3WithLineage": true,
+        "manualAndEditedV2PreservedAcrossRestart": true,
+        "restartsIncludingInterrupted": 8
+      }
+    },
+    {
+      "at": "2026-10-20T04:47:00.425Z",
+      "driver": "sqlite",
+      "releaseId": "authored-atomic-relations-2026-10-20-v1",
+      "passed": true,
+      "scope": "Owned legacy records, unchanged original content, real production HTTP, interrupted startup and restarts; no browser, human-teacher review or complete curriculum claim.",
+      "sourceSha256": {
+        "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+        "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+        "apps/api/src/modules/diagnostics/authored-math-probes.ts": "d4f243e3f59282707f6313b8d97e12f0db243527d93172d4befeeb6a246e6092",
+        "apps/api/src/modules/diagnostics/authored-unit-probes.ts": "1109a9bb869bdb1d243dc6d71d6b4a6d09ab74582ee2faf5bb1e0dfbf9e352e1",
+        "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+        "apps/api/src/modules/diagnostics/component-observations.ts": "7e91800734367cc2eb65ec10ecbf9167a02e6412607b7773b02a5170778bfc64",
+        "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+        "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "26691c69fdb32843439a33f91188c2aec2a38e994a0aaa44425ed9c64520b2e4",
+        "apps/api/src/modules/diagnostics/measurement-definition.ts": "764a701b759c6d4debd67fa348874ba0c6588e5e1599363329dfe2a34f75666a",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts": "695e91f6d227c2d6557e324f9c889df31c0e4e79d89292f948f770b338ba364c",
+        "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+        "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+        "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+        "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+        "scripts/qa/verify-authored-relations.cjs": "a643bf8218d3cfa30dfb330f897fe7ea21c6e1b1f148480fec7e17d76a0b2e19"
+      },
+      "result": {
+        "originalCollections": {
+          "questions": {
+            "count": 3435,
+            "sha256": "9481aa8b24480d1cf7cc6b0b3cd0dd211e34dc02b5b703dea268461cec4e8d0e"
+          },
+          "questionDocuments": {
+            "count": 3435,
+            "sha256": "a7b354df7ef8c45e8817a4041223f599437c1bcc806b59ef4b6936d490a33376"
+          },
+          "questionAnswerSchemas": {
+            "count": 3435,
+            "sha256": "e1be2770d3c385db5a1bbee26b5d8e3df85c68c8f91d71a4fa0504b4325c42fb"
+          },
+          "questionSources": {
+            "count": 3435,
+            "sha256": "55c89b05613bf38275d676a1213af63b8d795bb38dc5e38fa0de861aa9f76b2e"
+          },
+          "measurementItems": {
+            "count": 3435,
+            "sha256": "8bb6adb39de6bc99bc5d538a04b8e4fd7a2925b5f1377e2b1462862575ef7860"
+          }
+        },
+        "originalMappingVerification": {
+          "total": 3435,
+          "unchanged": 3435,
+          "explicitlyReviewedRebindings": 0,
+          "frozenReviewHistoricalIds": [],
+          "protectedEditedHistoricalIds": [],
+          "before": {
+            "count": 3435,
+            "sha256": "8bb6adb39de6bc99bc5d538a04b8e4fd7a2925b5f1377e2b1462862575ef7860"
+          },
+          "after": {
+            "count": 3435,
+            "sha256": "8bb6adb39de6bc99bc5d538a04b8e4fd7a2925b5f1377e2b1462862575ef7860"
+          },
+          "exactFieldAndRevisionValidation": true
+        },
+        "reviewedMappings": 40,
+        "editedPacketsPreserved": 8,
+        "interruptedStartupDidNotDoubleIncrement": true,
+        "newDefinitionVersion": 2,
+        "oldTargetEvidenceExcludedFromCurrentProfile": 5,
+        "oldReportAndUnfinishedSessionFrozen": true,
+        "oldPreviewRejected": true,
+        "oldPlanRequiresReconfirmation": true,
+        "newPrerequisite": "atomic:math:divisionregroup",
+        "newPrerequisiteIncludedInNewScopeAndRootVerification": true,
+        "repeatedRestartIdempotent": true,
+        "priorSystemTeachingV2UpgradesToV3WithLineage": true,
+        "manualAndEditedV2PreservedAcrossRestart": true,
+        "restartsIncludingInterrupted": 8
+      }
+    }
+  ]
+}
