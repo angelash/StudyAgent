@@ -64,7 +64,7 @@ describe('read-only material structure coverage and real selector examples', () 
   it('preserves the complete authored material range rather than classifying question count as coverage', () => {
     const definitions = buildFoundationCurriculum(), results = definitions.map(row => materialStructureCoverage(row.atom.id,
       row.exercises.map(task => ({ atomId: row.atom.id, family: task.family, dimension: task.dimension }))));
-    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(72); expect(results.filter(row => !row.ready)).toHaveLength(186);
+    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(75); expect(results.filter(row => !row.ready)).toHaveLength(183);
     for (const [index, result] of results.entries()) {
       const source = definitions[index], byDimension = (dimension: MeasurementDimension) => new Set(source.exercises.filter(task => task.dimension === dimension).map(task => task.family));
       if (result.ready) { expect(byDimension('understanding').size).toBeGreaterThan(0); expect(byDimension('procedure').size).toBeGreaterThan(0); expect(byDimension('transfer').size).toBeGreaterThanOrEqual(2); }

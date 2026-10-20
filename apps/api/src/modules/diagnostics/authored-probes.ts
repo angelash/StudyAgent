@@ -1,9 +1,10 @@
 import type { FoundationDefinition } from './foundation-curriculum';
 import { buildAllAuthoredMathProbeFamilies } from './authored-math-probes';
 import { buildEnglishFoundationProbeFamilies } from './authored-english-foundation-probes';
+import { buildEnglishLexicalProbeFamilies } from './authored-english-lexical-probes';
 
 export function buildAllAuthoredProbeFamilies() {
-  return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies()];
+  return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies()];
 }
 
 export function addAuthoredProbes(definitions: FoundationDefinition[]) {

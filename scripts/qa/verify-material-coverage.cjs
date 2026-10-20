@@ -17,6 +17,7 @@ const files = ['packages/contracts/src/curriculum.ts', 'apps/api/src/modules/dia
   'apps/api/src/modules/diagnostics/measurement-definition.ts', 'apps/api/src/modules/diagnostics/family-identity.ts',
   'apps/api/src/modules/diagnostics/diagnosis.ts', 'apps/web/app/admin/curriculum/page.tsx',
   'apps/api/src/modules/diagnostics/authored-probes.ts', 'apps/api/src/modules/diagnostics/authored-english-foundation-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-english-lexical-probes.ts', 'resources/curriculum/authored-task-baseline-6830-v1.json',
   'apps/api/src/modules/diagnostics/foundation-curriculum.ts', 'apps/api/src/modules/diagnostics/foundation-seed.service.ts',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/web/app/admin/curriculum/material-coverage.tsx', 'apps/web/app/admin/curriculum/curriculum.css',
@@ -46,11 +47,11 @@ const fingerprint = () => store.transaction(() => Object.fromEntries(collections
 })));
 async function verifyPublishedCounts() {
   const result = await overview(); assert.equal(result.atoms.length, 258); assert.equal(result.cells.length, 18);
-  assert.equal(result.atoms.filter(row => row.materialCoverage.ready).length, 72);
-  assert.equal(result.cells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 186);
+  assert.equal(result.atoms.filter(row => row.materialCoverage.ready).length, 75);
+  assert.equal(result.cells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 183);
   assert(result.cells.every(cell => cell.withVerificationMaterials + cell.needingVerificationMaterials === cell.atoms));
   assert(result.atoms.every(row => row.materialCoverage.version === 'verification-materials-v1'));
-  for (const [subject, count, ready, gap] of [['math', 19, 5, 14], ['chinese', 13, 0, 13], ['english', 13, 3, 10]]) {
+  for (const [subject, count, ready, gap] of [['math', 19, 5, 14], ['chinese', 13, 0, 13], ['english', 13, 6, 7]]) {
     const filtered = await overview(`?subject=${subject}&grade=${subject === 'math' ? 5 : 1}`);
     assert.equal(filtered.atoms.length, count); assert.equal(filtered.cells.length, 1);
     assert.equal(filtered.cells[0].withVerificationMaterials, ready); assert.equal(filtered.cells[0].needingVerificationMaterials, gap);
@@ -150,7 +151,7 @@ async function main() {
     samples: samples.length, p50Ms: +sorted[Math.ceil(sorted.length * .5) - 1].toFixed(2), p95Ms: +p95Ms.toFixed(2), maxMs: +sorted.at(-1).toFixed(2), referenceTargetMs: 500 };
   assert(p95Ms < 500, `Warm material overview p95 ${p95Ms.toFixed(2)}ms exceeded local 500ms reference`);
   assert.deepEqual(await fingerprint(), revisedState);
-  evidence.result = { points: 258, cells: 18, readyMaterials: 72, needingMaterials: 186, currentEligibilityAndBudget: true,
+  evidence.result = { points: 258, cells: 18, readyMaterials: 75, needingMaterials: 183, currentEligibilityAndBudget: true,
     formalTeacherGrantAndRevocation: true, parentLearnerAndAnonymousDenied: true, reviewedWithdrawalAndRestoration: mappings.length,
     withdrawnStateSurvivesRestart: true, restoredStateSurvivesRestart: true, nonemptyStudentHistoryAndPreviewUnchanged: true,
     allBusinessRecordHashesUnchangedByReads: true, restarts: 2 };
