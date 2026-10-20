@@ -63,11 +63,17 @@ describe('read-only material structure coverage and real selector examples', () 
   });
   it('preserves the complete authored material range rather than classifying question count as coverage', () => {
     const definitions = buildFoundationCurriculum(), results = definitions.map(row => materialStructureCoverage(row.atom.id,
-      row.exercises.map(task => ({ atomId: row.atom.id, family: task.family, dimension: task.dimension }))));
-    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(87); expect(results.filter(row => !row.ready)).toHaveLength(171);
+      row.exercises.map(task => ({ atomId: row.atom.id, family: task.family, dimension: task.dimension })),
+      row.atom.strand === '口语表达' ? 'oral-production-v1' : 'written-contrast-v1'));
+    expect(definitions).toHaveLength(258); expect(results.filter(row => row.ready)).toHaveLength(88); expect(results.filter(row => !row.ready)).toHaveLength(170);
     for (const [index, result] of results.entries()) {
       const source = definitions[index], byDimension = (dimension: MeasurementDimension) => new Set(source.exercises.filter(task => task.dimension === dimension).map(task => task.family));
-      if (result.ready) { expect(byDimension('understanding').size).toBeGreaterThan(0); expect(byDimension('procedure').size).toBeGreaterThan(0); expect(byDimension('transfer').size).toBeGreaterThanOrEqual(2); }
+      if (result.ready) {
+        if (source.atom.strand === '口语表达') expect(byDimension('understanding').size).toBe(0);
+        else expect(byDimension('understanding').size).toBeGreaterThan(0);
+        expect(byDimension('procedure').size).toBeGreaterThanOrEqual(source.atom.strand === '口语表达' ? 2 : 1);
+        expect(byDimension('transfer').size).toBeGreaterThanOrEqual(2);
+      }
     }
   });
 });

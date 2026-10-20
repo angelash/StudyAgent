@@ -40,6 +40,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-probes.ts', 'apps/api/src/modules/diagnostics/authored-english-foundation-probes.ts',
   'apps/api/src/modules/diagnostics/authored-english-lexical-probes.ts', 'resources/curriculum/authored-task-baseline-6830-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-6974-v1.json',
+  'apps/api/src/modules/diagnostics/authored-chinese-oral-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-7550-v1.json',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',
@@ -142,6 +143,19 @@ async function pointAnswer(id, item, actor, correct) {
   if (schema.mode === 'short_answer') response = { value: description };
   else if (schema.mode === 'stepwise') response = { steps: correct ? snapshot.answer.map(String) : [description] };
   else if (schema.mode === 'geometry_draw') response = { strokes: [], description };
+  else if (schema.mode === 'audio_record') {
+    const ffmpeg = process.env.STUDY_FFMPEG ?? 'ffmpeg';
+    const encoded = spawnSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', `sine=frequency=${correct ? 520 : 280}:duration=${correct ? 0.8 : 0.5}`,
+      '-ac', '1', '-ar', '16000', '-f', 'wav', 'pipe:1'], { windowsHide: true, timeout: 10000, maxBuffer: 12 * 1024 * 1024 });
+    assert.equal(encoded.status, 0, 'Real WAV fixture generation'); assert(Buffer.isBuffer(encoded.stdout) && encoded.stdout.length > 1000);
+    const upload = await call('POST', '/learning/media', { kind: 'diagnostic', sessionId: id, itemId: item.id,
+      name: '合成口头作答.wav', mediaType: 'audio/wav', size: encoded.stdout.length, requestKey: randomUUID() }, actor);
+    for (let index = 0; index < Math.ceil(encoded.stdout.length / upload.chunkSize); index++) await call('PUT', `/learning/media/${upload.id}/chunks/${index}`,
+      encoded.stdout.subarray(index * upload.chunkSize, (index + 1) * upload.chunkSize), actor);
+    const ready = await call('POST', `/learning/media/${upload.id}/complete`, {}, actor); assert.equal(ready.status, 'ready');
+    assert.equal(ready.storedType, 'audio/wav'); assert(ready.durationMs >= 400 && ready.durationMs <= 1000);
+    response = { mediaIds: [ready.id], description };
+  }
   else if (schema.mode === 'image_upload') {
     const dimensions = snapshot.stem.match(/长(\d+)格、宽(\d+)格/); assert(dimensions, 'An image answer needs an explicit original drawing fixture');
     const columns = correct ? Number(dimensions[1]) : 1, rows = correct ? Number(dimensions[2]) : 1, cells = [];
@@ -268,12 +282,12 @@ async function main() {
     let explicitDurationTasks = 0, explicitGradingTasks = 0, caseSensitiveTasks = 0;
     for (const { atom, exercises } of buildFoundationCurriculum()) for (const task of exercises) {
       const id = foundationQuestionId(atom.id, task), schema = store.find('questionAnswerSchemas', { questionId: id });
-      if (manual.includes(schema.mode)) continue;
       const question = store.find('questions', { id });
       if (task.expectedSeconds) {
         assert.equal(store.find('measurementItems', { id: `measurement:${id}` }).expectedSeconds, task.expectedSeconds);
         explicitDurationTasks++;
       }
+      if (manual.includes(schema.mode)) continue;
       assert.equal(gradeResponse(schema, question.answer, question.answer).score, 1, `Persisted standard answer: ${id}`);
       if (task.gradingConfig) {
         assert.equal(schema.gradingConfig.caseSensitive, task.gradingConfig.caseSensitive, `Persisted case requirement: ${id}`);

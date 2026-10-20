@@ -19,7 +19,8 @@ const points = definitions.map(({ atom, exercises }) => {
   const families = [...new Set(exercises.map(identity))].sort();
   const dimensions = Object.fromEntries(['understanding', 'procedure', 'transfer'].map(dimension =>
     [dimension, new Set(exercises.filter(item => item.dimension === dimension).map(identity)).size]));
-  const structure = materialStructureCoverage(atom.id, exercises.map(item => ({ atomId: atom.id, family: item.family, dimension: item.dimension })));
+  const structure = materialStructureCoverage(atom.id, exercises.map(item => ({ atomId: atom.id, family: item.family, dimension: item.dimension })),
+    atom.strand === '口语表达' ? 'oral-production-v1' : 'written-contrast-v1');
   return { atomId: atom.id, name: atom.name, subject: atom.subject, grade: atom.grade, authoredTeaching: true,
     workedSteps: atom.teaching.example.steps.length, errorAlternatives: atom.teaching.commonErrors.map(row => row.alternativeExplanations.length),
     exercises: exercises.length, families: families.length, rawFamilyLabels: new Set(exercises.map(item => item.family)).size,
@@ -47,6 +48,7 @@ const evidence = { at: new Date().toISOString(), passed: true,
     'resources/curriculum/authored-task-baseline-6446-v1.json', 'resources/curriculum/authored-task-baseline-6686-v1.json',
     'apps/api/src/modules/diagnostics/authored-english-lexical-probes.ts', 'resources/curriculum/authored-task-baseline-6830-v1.json',
     'apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-6974-v1.json',
+    'apps/api/src/modules/diagnostics/authored-chinese-oral-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-7550-v1.json',
     'resources/curriculum/geometry-probes-v1.json', 'scripts/content/build-geometry-probes.cjs',
     ...fs.readdirSync(path.join(root, 'apps/web/public/question-assets/geometry-probes-v1')).sort().map(name => 'apps/web/public/question-assets/geometry-probes-v1/' + name),
     'resources/curriculum/fourth-grade-geometry-statistics-v1.json', 'scripts/content/build-fourth-grade-geometry-statistics.cjs',

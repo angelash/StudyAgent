@@ -29,7 +29,7 @@ describe('English lexical written contrasts reconstructed from actual object, st
     const previousIds = new Set(baseline.ids), previous = all.filter(row => previousIds.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(6830); expect(baseline.sha256).toBe('3391222dcdd2d36468923ebd4ce9c2ac4bb0b2673973674ff1e10970ddc557ce');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(7550); expect(new Set(all.map(row => row.id)).size).toBe(7550);
+    expect(all).toHaveLength(7598); expect(new Set(all.map(row => row.id)).size).toBe(7598);
     const targetAtoms = new Set(families.map(row => row.atomId));
     expect(all.filter(row => !previousIds.has(row.id) && targetAtoms.has(row.atomId))).toHaveLength(144);
   });
