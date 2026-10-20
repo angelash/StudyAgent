@@ -162,6 +162,12 @@ export class DomainDatabase {
     ]);
     await this.migrateConstraints(10, [{ name: 'gesp_probe_submission_request', collection: 'gespProbeSubmissions',
       fields: ['studentId', 'requestKey'] }]);
+    await this.migrateConstraints(11, [
+      { name: 'gesp_hint_request', collection: 'gespHintEvents', fields: ['studentId', 'requestKey'] },
+      { name: 'gesp_guidance_request', collection: 'gespGuidancePlans', fields: ['studentId', 'requestKey'] },
+      { name: 'gesp_guidance_revision', collection: 'gespGuidancePlanRevisions', fields: ['planId', 'version'] },
+      { name: 'gesp_review_schedule', collection: 'gespReviewTasks', fields: ['studentId', 'atomId', 'stageDay', 'sourceSubmissionId'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

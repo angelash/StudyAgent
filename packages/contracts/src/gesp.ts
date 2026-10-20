@@ -57,12 +57,31 @@ export const gespLearningScopeSchema = z.object({
 export const gespCodeSubmissionSchema = z.object({
   studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), atomId: z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/),
   source: z.string().min(1).max(65536), requestKey: z.string().trim().min(8).max(120),
+  hintEventId: z.string().regex(/^gesp_hint_[0-9a-f-]{36}$/).optional(),
+  reviewTaskId: z.string().regex(/^gesp_review_[0-9a-f-]{36}$/).optional(),
 }).strict();
 
 export const gespProbeSubmissionSchema = z.object({
   studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), atomId: z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/),
   probeId: z.string().regex(/^gesp-student-[a-z0-9-]{3,80}-(concept|trace)$/),
   answer: z.string().trim().min(1).max(500), requestKey: z.string().trim().min(8).max(120),
+}).strict();
+
+export const gespHintRequestSchema = z.object({
+  studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), atomId: z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/),
+  taskId: z.string().regex(/^gesp-student-[a-z0-9-]{3,100}$/), level: z.number().int().min(1).max(3),
+  requestKey: z.string().trim().min(8).max(120),
+}).strict();
+
+export const gespGuidancePlanCreateSchema = z.object({
+  studentId: z.string().regex(/^student_[0-9a-f-]{36}$/), scopeVersion: z.number().int().positive(),
+  minutesPerDay: z.number().int().min(5).max(60), requestKey: z.string().trim().min(8).max(120),
+  reason: z.string().trim().min(8).max(500),
+}).strict();
+
+export const gespGuidancePlanDecisionSchema = z.object({
+  status: z.enum(['active', 'completed']), expectedVersion: z.number().int().positive(),
+  requestKey: z.string().trim().min(8).max(120), reason: z.string().trim().min(8).max(500),
 }).strict();
 
 export type GespLearningScope = {
@@ -89,4 +108,31 @@ export type GespCodeSubmissionReceipt = {
   createdAt: string; toolchain: string; compilePassed: boolean; requestKey: string; source: string;
   compileDiagnostics: string[]; runtimeDiagnostics: Array<{ index: number; status: string; stderr: string }>;
   tests: Array<{ index: number; passed: boolean; status: string; exitCode: number | null; durationMs: number }>;
+  hintEventId: string | null; hintLevel: number; independent: boolean; reviewTaskId: string | null;
+};
+
+export type GespHintEvent = {
+  id: string; studentId: string; atomId: string; taskId: string; level: number; text: string;
+  revealsAnswer: false; requestKey: string; createdAt: string;
+};
+
+export type GespGuidanceAction = {
+  id: string; atomId: string; title: string; activity: string; successCriterion: string;
+  dimensionGaps: string[]; evidenceIds: string[]; minutes: number;
+};
+
+export type GespGuidancePlan = {
+  id: string; studentId: string; scopeVersion: number; evidenceFingerprint: string;
+  source: 'rules'; status: 'awaiting_confirmation' | 'active' | 'completed'; version: number;
+  minutesPerDay: number; requestKey: string; reason: string; createdAt: string; updatedAt: string;
+  actions: GespGuidanceAction[];
+};
+
+export type GespGuidancePlanRevision = GespGuidancePlan & { planId: string };
+
+export type GespReviewTask = {
+  id: string; studentId: string; atomId: string; taskId: string; sourceSubmissionId: string;
+  stageDay: 1 | 3 | 7 | 14; dueAt: string; createdAt: string; status: 'scheduled' | 'completed';
+  testPackSha256: string; attemptCount: number; lastSubmissionId: string | null; lastStatus: 'passed' | 'failed' | 'error' | null;
+  completedSubmissionId: string | null; completedAt: string | null;
 };

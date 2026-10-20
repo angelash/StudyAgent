@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Query, Req, Res, StreamableFile, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put, Query, Req, Res, StreamableFile, UseGuards } from '@nestjs/common';
 import { createReadStream } from 'node:fs';
 import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
@@ -17,6 +17,11 @@ export class GespController {
   }
   @Post('code-submissions') submitCode(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.submitCode(req.user, body); }
   @Post('probe-submissions') submitProbe(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.submitProbe(req.user, body); }
+  @Post('hints') requestHint(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.requestHint(req.user, body); }
+  @Post('guidance-plans') createGuidancePlan(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.createGuidancePlan(req.user, body); }
+  @Patch('guidance-plans/:planId') decideGuidancePlan(@Req() req: AuthenticatedRequest, @Param('planId') planId: string, @Body() body: unknown) {
+    return this.gesp.decideGuidancePlan(req.user, planId, body);
+  }
   @Get('atoms') atoms(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.atoms(req.user, query); }
   @Get('questions') search(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.search(req.user, query); }
   @Get('questions/:id') detail(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.gesp.detail(req.user, id); }

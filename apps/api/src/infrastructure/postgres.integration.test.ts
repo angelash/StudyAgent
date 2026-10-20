@@ -69,7 +69,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       try { await upgrade.query('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
       const migrated = new DomainDatabase(target); await migrated.open();
       try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 10 });
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 11 });
     } finally { await first.close(); await second.close(); }
   });
 

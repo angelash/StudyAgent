@@ -1,0 +1,25 @@
+{
+  "format": "study-agent-gesp-learning-loop-regression-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "defaultRegression": {
+    "testFiles": 155,
+    "tests": 698,
+    "passed": 692,
+    "failed": 0,
+    "postgresDefaultSkipped": 6
+  },
+  "postgres": {
+    "cases": 6,
+    "passed": 6,
+    "schemaVersion": 11,
+    "source": "data/qa/gesp-learning-loop-postgres-regression.json"
+  },
+  "realRunner": {
+    "testFiles": 2,
+    "tests": 8,
+    "passed": 8,
+    "platform": "Windows/WSL2 isolated C++17"
+  },
+  "limits": "Automated synthetic QA. Real curriculum review, human learning-effect study and browser/device acceptance remain outstanding."
+}

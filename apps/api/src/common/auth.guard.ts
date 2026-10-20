@@ -38,7 +38,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/sessions\/[^/]+\/(responses|complete)$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/hint$/,
     /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
-    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/],
+    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
   PUT: [/^learning\/media\/[^/]+\/chunks\/\d+$/],
   PATCH: [/^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
