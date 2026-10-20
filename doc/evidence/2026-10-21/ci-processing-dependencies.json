@@ -1,0 +1,14 @@
+{
+  "format": "study-agent-ci-processing-dependencies-v1",
+  "date": "2026-10-21",
+  "localMinimalDependencyTarget": true,
+  "tests": {
+    "createsTextbookImportJob": "passed",
+    "approvesTextbookImportRecord": "passed"
+  },
+  "requirements": [
+    "PyMuPDF>=1.24,<2",
+    "Pillow>=10,<13"
+  ],
+  "limits": "Local Windows verification with the same minimal package set. Remote Ubuntu acceptance is recorded only after the pushed Verify workflow completes successfully."
+}

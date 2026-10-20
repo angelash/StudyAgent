@@ -1,0 +1,4 @@
+# Minimal native dependencies for deterministic PDF-text integration tests.
+# Production OCR/model dependencies remain in requirements.txt.
+PyMuPDF>=1.24,<2
+Pillow>=10,<13
