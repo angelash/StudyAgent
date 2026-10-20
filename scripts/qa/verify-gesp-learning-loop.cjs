@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { randomBytes, randomUUID, createHash } = require('node:crypto');
+const { spawnSync } = require('node:child_process');
 const { NestFactory } = require('@nestjs/core');
 const { Pool } = require('pg');
 const root = path.resolve(__dirname, '../..');
@@ -21,7 +22,7 @@ const task = curriculum.tasks.find(row => row.atomId === 'gesp-cpp.l1.io');
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Owned production-mode SQLite, formal HTTP roles, persistent restarts and deterministic control receipt; not a substitute for the real isolated runner, human review or learning-effect study.'
 };
-let app, store, base, parent, learner, studentId;
+let app, store, base, parent, learner, reviewer, studentId;
 async function start() {
   const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
   const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
@@ -53,7 +54,12 @@ async function configureDatabase() {
 }
 async function main() {
   await configureDatabase();
+  const reviewerCredential = randomBytes(24).toString('hex');
+  const boot = spawnSync(process.execPath, [path.join(root, 'apps/api/dist/apps/api/src/cli.js'), 'create-admin', 'qa-gesp-reviewer'],
+    { cwd: root, env: { ...process.env, STUDY_ADMIN_PASSWORD: reviewerCredential }, encoding: 'utf8', windowsHide: true, timeout: 120000 });
+  assert.equal(boot.status, 0, 'Formal administrator bootstrap');
   await start();
+  reviewer = await call('POST', '/auth/login', { principal: 'qa-gesp-reviewer', credential: reviewerCredential }, null);
   parent = await call('POST', '/auth/register', { principal: `gesp-loop-${randomUUID()}`, credential: randomBytes(18).toString('hex') }, null);
   const created = await call('POST', '/students', { nickname: 'GESP持久化闭环', grade: 4, preferredSessionMinutes: 15,
     defaultVersionMap: { math: '', chinese: '', english: '' } });
@@ -65,6 +71,13 @@ async function main() {
   await call('PUT', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: [task.atomId], requestKey: randomUUID(),
     reason: '家长确认测试知识点的一级原创编程范围' });
   const hint = await call('POST', '/gesp/hints', { studentId, atomId: task.atomId, taskId: task.id, level: 1, requestKey: randomUUID() }, learner);
+  const content = await call('GET', '/gesp/student-content?level=1', undefined, reviewer);
+  const reviewTask = content.tasks.find(row => row.id === task.id);
+  assert(reviewTask && reviewTask.tests.length === task.tests.length);
+  const contentReview = await call('POST', '/gesp/student-content/reviews', { taskId: task.id, expectedVersion: 0,
+    gates: { atomAlignment: 'approved', instructions: 'approved', probes: 'approved', hiddenTests: 'approved', executionSafety: 'approved' },
+    rationale: 'QA正式核对知识目标、学生说明、探针、隐藏输入输出边界及隔离运行资源，结论只用于测试发布门禁。', requestKey: randomUUID() }, reviewer);
+  assert.equal(contentReview.status, 'approved');
   for (const probe of task.probes) await call('POST', '/gesp/probe-submissions', { studentId, atomId: task.atomId, probeId: probe.id,
     answer: probe.answer, requestKey: randomUUID() }, learner);
   const assisted = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){}',
@@ -88,9 +101,11 @@ async function main() {
   const review = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){}',
     requestKey: randomUUID(), reviewTaskId: due.id }, learner);
   assert.equal(review.reviewTaskId, due.id); assert.equal(review.independent, false);
-  evidence.beforeRestart = { hintId: hint.id, planId: plan.id, reviewId: due.id, stages: workspace.reviewTasks.map(row => row.stageDay) };
+  evidence.beforeRestart = { hintId: hint.id, planId: plan.id, reviewId: due.id, contentReviewVersion: contentReview.version, stages: workspace.reviewTasks.map(row => row.stageDay) };
   await stop(); await start();
   workspace = await call('GET', `/gesp/students/${studentId}/workspace`, undefined, learner);
+  assert.equal(workspace.tasks.find(row => row.id === task.id).contentReviewStatus, 'approved');
+  assert.equal(workspace.tasks.find(row => row.id === task.id).reviewStatus, 'instructional_approved');
   assert.equal(workspace.hintEvents.find(row => row.id === hint.id).revealsAnswer, false);
   assert.equal(workspace.guidancePlans.find(row => row.id === plan.id).status, 'active');
   assert.deepEqual(workspace.reviewTasks.find(row => row.id === due.id), { ...workspace.reviewTasks.find(row => row.id === due.id),
@@ -101,7 +116,7 @@ async function main() {
   assert.equal(serialized.includes('"expected"'), false, 'hidden expected output'); assert.equal(serialized.includes('requestKey'), false, 'request key');
   assert(workspace.tasks.every(row => !Object.prototype.hasOwnProperty.call(row, 'tests')));
   assert(workspace.reviewTasks.every(row => !Object.prototype.hasOwnProperty.call(row, 'tests')));
-  evidence.result = { assistedSeparated: true, hintPersists: true, planConfirmedByParent: true, reviewStages: 4,
+  evidence.result = { assistedSeparated: true, hiddenContentReviewerOnly: true, contentReviewPersists: true, hintPersists: true, planConfirmedByParent: true, reviewStages: 4,
     differentPackHashes: new Set(workspace.reviewTasks.map(row => row.testPackSha256)).size, dueReviewCompleted: true,
     retentionDimensionSeparated: true, privateSourceAndTestsWithheld: true, restarts: 1 };
   evidence.passed = true;

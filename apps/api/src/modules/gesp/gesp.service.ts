@@ -4,11 +4,12 @@ import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { isAbsolute, relative, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
-import { gespCodeSubmissionSchema, gespGuidancePlanCreateSchema, gespGuidancePlanDecisionSchema, gespHintRequestSchema,
+import { gespCodeSubmissionSchema, gespGuidancePlanCreateSchema, gespGuidancePlanDecisionSchema, gespHintRequestSchema, gespTaskReviewInputSchema,
   gespLearningScopeSchema, gespProbeSubmissionSchema, gespSearchSchema, type GespAtom, type GespCodeSubmissionReceipt,
   type GespGuidanceAction, type GespGuidancePlan, type GespGuidancePlanRevision, type GespHintEvent, type GespOverview,
   type GespLearningScopeRevision, type GespProbeSubmissionReceipt, type GespQuestion, type GespQuestionDetail,
-  type GespReviewTask, type GespStudentTask, type GespTeachingPlan } from '@study-agent/contracts';
+  type GespReviewTask, type GespStudentTask, type GespTaskReview, type GespTaskReviewRevision, type GespTeachingPlan,
+  type GespPilotTaskReviewView } from '@study-agent/contracts';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
@@ -83,6 +84,39 @@ export class GespService implements OnModuleDestroy {
         level: c.level, status: c.status, officialStatus: c.officialStatus ?? c.status })),
       quarantinedLinks: data.coverage.quarantinedLinks.length, unrecoveredObjectiveAnswers: data.coverage.unrecoveredObjectiveAnswers,
       teachingPlan: data.plan };
+  }
+  studentContentReview(user: InMemoryUserAccount, input: unknown): { tasks: GespPilotTaskReviewView[] } {
+    this.assertAccess(user);
+    const query = validate(gespSearchSchema.pick({ level: true }).strict(), input);
+    const tasks = this.studentData().tasks.filter(task => query.level === undefined || task.atomId.startsWith(`gesp-cpp.l${query.level}.`));
+    return { tasks: tasks.map(task => {
+      const contentSha256 = hash(JSON.stringify(task)), stored = this.store.find('gespTaskReviews', { taskId: task.id });
+      const review = stored ? this.publicTaskReview(stored, contentSha256) : null;
+      return { id: task.id, atomId: task.atomId, title: task.title, prompt: task.prompt, language: task.language, standard: task.standard,
+        timeLimitSeconds: task.timeLimitSeconds, memoryLimitMiB: task.memoryLimitMiB, contentSha256, probes: task.probes.map(probe => ({ ...probe })),
+        tests: task.tests.map(test => ({ ...test })), review };
+    }) };
+  }
+  reviewStudentTask(user: InMemoryUserAccount, input: unknown) {
+    this.assertAccess(user);
+    const command = validate(gespTaskReviewInputSchema, input), task = this.studentData().tasks.find(row => row.id === command.taskId);
+    if (!task) throw new NotFoundException('编程试点任务不存在');
+    const replay = this.store.select('gespTaskReviewRevisions', { taskId: task.id }).find(row => row.requestKey === command.requestKey);
+    if (replay) {
+      if (JSON.stringify(replay.gates) !== JSON.stringify(command.gates) || replay.rationale !== command.rationale)
+        throw new ConflictException('同一审核请求键不能改变审核结论或理由');
+      return this.publicTaskReview(replay, hash(JSON.stringify(task)));
+    }
+    const previous = this.store.find('gespTaskReviews', { taskId: task.id }), expected = previous?.version ?? 0;
+    if (command.expectedVersion !== expected) throw new ConflictException('内容审核已变化，请刷新后重新核对');
+    const status = Object.values(command.gates).every(decision => decision === 'approved') ? 'approved' as const : 'rejected' as const;
+    const review: GespTaskReview = { id: previous?.id ?? this.store.nextId('gesp_task_review'), taskId: task.id, atomId: task.atomId,
+      taskContentSha256: hash(JSON.stringify(task)), gates: command.gates, status, reviewerId: user.id,
+      reviewedAt: new Date().toISOString(), version: expected + 1, rationale: command.rationale, requestKey: command.requestKey };
+    if (previous) Object.assign(previous, review); else this.store.append('gespTaskReviews', review);
+    const revision: GespTaskReviewRevision = { ...structuredClone(review), id: this.store.nextId('gesp_task_review_revision'), reviewId: review.id };
+    this.store.append('gespTaskReviewRevisions', revision);
+    return this.publicTaskReview(review, review.taskContentSha256);
   }
   setStudentScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
     this.students.assertGuardian(user, studentId);
@@ -268,7 +302,15 @@ export class GespService implements OnModuleDestroy {
   private publicPlanSnapshot(row: GespGuidancePlanRevision) { return { ...this.publicPlan(row), id: row.planId }; }
   private publicTask(task: PilotTask): GespStudentTask {
     const { tests: _tests, ...publicTask } = task;
-    return { ...publicTask, probes: task.probes.map(({ answer: _answer, analysis: _analysis, ...probe }) => probe) };
+    const contentSha256 = hash(JSON.stringify(task)), stored = this.store.find('gespTaskReviews', { taskId: task.id }),
+      current = stored?.taskContentSha256 === contentSha256, status = stored ? current ? stored.status : 'stale' : 'unreviewed';
+    return { ...publicTask, reviewStatus: status === 'approved' ? 'instructional_approved' : 'original_authored_pilot',
+      contentReviewStatus: status, contentReviewVersion: stored?.version ?? 0,
+      probes: task.probes.map(({ answer: _answer, analysis: _analysis, ...probe }) => probe) };
+  }
+  private publicTaskReview(row: GespTaskReview, contentSha256: string) {
+    const { requestKey: _requestKey, reviewId: _reviewId, ...safe } = row as GespTaskReview & { reviewId?: string };
+    return { ...safe, current: row.taskContentSha256 === contentSha256 };
   }
   private publicProbeSubmission(row: GespProbeSubmissionReceipt) { const { requestKey: _requestKey, ...safe } = row; return safe; }
   private capabilities(atomIds: string[], probes: any[], submissions: any[], reviews: any[] = []) {

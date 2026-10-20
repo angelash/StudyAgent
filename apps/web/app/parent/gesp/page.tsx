@@ -7,7 +7,7 @@ import { useSessionUser } from '../../../lib/session-user';
 import '../../student/gesp/gesp-student.css';
 
 type Child = { id: string; nickname: string; grade: number };
-type Task = { id: string; atomId: string; title: string; prompt: string; standard: string };
+type Task = { id: string; atomId: string; title: string; prompt: string; standard: string; reviewStatus: 'original_authored_pilot' | 'instructional_approved' };
 type Capability = { atomId: string; state: string; dimensions: Array<{ dimension: string; status: string; attempts: number }>; hypothesis: string; nextAction: string };
 type Plan = { id: string; status: string; version: number; minutesPerDay: number; actions: Array<{ id: string; atomId: string; title: string; activity: string; successCriterion: string; dimensionGaps: string[] }> };
 type Review = { id: string; atomId: string; stageDay: number; dueAt: string; status: string; due: boolean };
@@ -48,7 +48,7 @@ export default function ParentGespPage() {
     <section className="gesp-panel"><label>学生<select value={studentId} onChange={event => setStudentId(event.target.value)}>{children.map(child => <option key={child.id} value={child.id}>{child.nickname} · {child.grade}年级</option>)}</select></label>
       {busy && !workspace ? <p role="status">正在读取GESP范围…</p> : workspace && <><div className="gesp-panel-head"><div><h2>认证{level}级原创试点范围</h2><p>{workspace.notice}</p></div><span className="studio-badge">v{workspace.scope?.version ?? 0}</span></div>
         <label>认证等级<select value={level} onChange={event => { setLevel(Number(event.target.value)); setSelected(current => current.filter(id => id.startsWith(`gesp-cpp.l${event.target.value}.`))); }}>{[1,2,3,4].map(value => <option key={value} value={value}>{value}级</option>)}</select></label>
-        <div className="gesp-task-grid">{workspace.availableTasks.filter(task => task.atomId.startsWith(`gesp-cpp.l${level}.`)).map(task => <label key={task.id} className="gesp-task-card"><input type="checkbox" checked={selected.includes(task.atomId)} onChange={event => setSelected(current => event.target.checked ? [...new Set([...current, task.atomId])] : current.filter(id => id !== task.atomId))} /><span><small>{task.atomId}</small><strong>{task.title}</strong><p>{task.prompt}</p><em>{task.standard}</em></span></label>)}</div>
+        <div className="gesp-task-grid">{workspace.availableTasks.filter(task => task.atomId.startsWith(`gesp-cpp.l${level}.`)).map(task => <label key={task.id} className="gesp-task-card"><input type="checkbox" checked={selected.includes(task.atomId)} onChange={event => setSelected(current => event.target.checked ? [...new Set([...current, task.atomId])] : current.filter(id => id !== task.atomId))} /><span><small>{task.atomId}</small><strong>{task.title}</strong><p>{task.prompt}</p><em>{task.standard} · {task.reviewStatus === 'instructional_approved' ? '教研内容已审核' : '原创试点 · 尚未内容审核'}</em></span></label>)}</div>
         <div className="gesp-actions"><button className="studio-primary" disabled={busy || !selected.length} onClick={() => void save()}>{busy ? '正在保存…' : '确认并保存范围'}</button><Link className="studio-secondary" href="/student/login">打开孩子学习入口 ↗</Link></div></>}
       {!children.length && <p>还没有孩子档案。请先在家长空间建立档案。</p>}</section>
     {workspace && <section className="gesp-panel"><div className="gesp-panel-head"><div><h2>证据到下一步</h2><p>规则根据当前独立证据生成活动；计划必须由家长确认后孩子才能看到。提示后通过和到期复测分别留证。</p></div><button className="studio-primary" disabled={busy || !workspace.scope} onClick={() => void createPlan()}>生成待确认计划</button></div>

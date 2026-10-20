@@ -84,6 +84,22 @@ export const gespGuidancePlanDecisionSchema = z.object({
   requestKey: z.string().trim().min(8).max(120), reason: z.string().trim().min(8).max(500),
 }).strict();
 
+const gespTaskReviewGateSchema = z.object({
+  atomAlignment: z.enum(['approved', 'rejected']),
+  instructions: z.enum(['approved', 'rejected']),
+  probes: z.enum(['approved', 'rejected']),
+  hiddenTests: z.enum(['approved', 'rejected']),
+  executionSafety: z.enum(['approved', 'rejected']),
+}).strict();
+
+export const gespTaskReviewInputSchema = z.object({
+  taskId: z.string().regex(/^gesp-student-[a-z0-9-]{3,100}$/),
+  expectedVersion: z.number().int().min(0),
+  gates: gespTaskReviewGateSchema,
+  rationale: z.string().trim().min(20).max(3000),
+  requestKey: z.string().trim().min(8).max(120),
+}).strict();
+
 export type GespLearningScope = {
   id: string; studentId: string; level: number; atomIds: string[]; status: 'active';
   version: number; confirmedByUserId: string; confirmedAt: string; updatedAt: string; requestKey: string; reason: string;
@@ -93,8 +109,26 @@ export type GespLearningScopeRevision = GespLearningScope & { scopeId: string };
 
 export type GespStudentTask = {
   id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17';
-  timeLimitSeconds: number; memoryLimitMiB: number; reviewStatus: 'original_authored_pilot';
+  timeLimitSeconds: number; memoryLimitMiB: number; reviewStatus: 'original_authored_pilot' | 'instructional_approved';
   probes: Array<{ id: string; dimension: 'understanding' | 'procedure'; prompt: string; options: string[] }>;
+  contentReviewStatus: 'unreviewed' | 'approved' | 'rejected' | 'stale';
+  contentReviewVersion: number;
+};
+
+export const gespTaskReviewGates = ['atomAlignment', 'instructions', 'probes', 'hiddenTests', 'executionSafety'] as const;
+export type GespTaskReviewGate = typeof gespTaskReviewGates[number];
+export type GespTaskReview = {
+  id: string; taskId: string; atomId: string; taskContentSha256: string;
+  gates: Record<GespTaskReviewGate, 'approved' | 'rejected'>; status: 'approved' | 'rejected';
+  reviewerId: string; reviewedAt: string; version: number; rationale: string; requestKey: string;
+};
+export type GespTaskReviewRevision = GespTaskReview & { reviewId: string };
+export type GespPilotTaskReviewView = {
+  id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17';
+  timeLimitSeconds: number; memoryLimitMiB: number; contentSha256: string;
+  probes: Array<{ id: string; dimension: 'understanding' | 'procedure'; prompt: string; options: string[]; answer: string; analysis?: string }>;
+  tests: Array<{ input: string; expected: string }>;
+  review: null | Omit<GespTaskReview, 'requestKey'> & { current: boolean };
 };
 
 export type GespProbeSubmissionReceipt = {

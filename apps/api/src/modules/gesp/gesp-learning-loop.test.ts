@@ -7,7 +7,7 @@ import { StudentsService } from '../students/students.service';
 import { GespService } from './gesp.service';
 
 describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
-  let store: InMemoryStoreService, service: GespService, parent: InMemoryUserAccount, learner: InMemoryUserAccount, studentId: string;
+  let store: InMemoryStoreService, service: GespService, parent: InMemoryUserAccount, learner: InMemoryUserAccount, reviewer: InMemoryUserAccount, studentId: string;
   const atomId = 'gesp-cpp.l1.io';
   const task = curriculum.tasks.find(row => row.atomId === atomId)!;
 
@@ -15,6 +15,7 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     store = new InMemoryStoreService(); store.reset();
     parent = { id: 'user-parent', principal: 'parent@test', passwordHash: 'hash', role: 'parent', displayName: '家长', status: 'active' };
     learner = { id: 'user-learner', principal: 'learner@test', passwordHash: 'hash', role: 'student', displayName: '学生', status: 'active' };
+    reviewer = { id: 'user-reviewer', principal: 'reviewer@test', passwordHash: 'hash', role: 'admin', displayName: '教研员', status: 'active' };
     studentId = store.nextId('student');
     store.students.push({ id: studentId, userId: learner.id, nickname: '测试学生', grade: 4, preferredSessionMinutes: 15,
       defaultVersionMap: { math: '', chinese: '', english: '' } });
@@ -55,6 +56,29 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(workspace.reviewTasks.find((row: any) => row.id === first.id)).toMatchObject({ status: 'completed', attemptCount: 1 });
     expect(workspace.capabilities[0].dimensions.find((row: any) => row.dimension === 'retention')).toMatchObject({ status: 'correct', attempts: 1 });
     expect(workspace.capabilities[0].state).toBe('current_evidence_met');
+  });
+
+  it('exposes hidden task evidence only to reviewers and publishes only a complete content approval', () => {
+    const content = service.studentContentReview(reviewer, { level: 1 });
+    expect(content.tasks).toHaveLength(15);
+    const target = content.tasks.find(row => row.id === task.id)!;
+    expect(target.tests).toEqual(task.tests); expect(target.probes.map(probe => probe.answer)).toEqual(task.probes.map(probe => probe.answer));
+    expect(target.review).toBeNull();
+    const rejected = service.reviewStudentTask(reviewer, { taskId: task.id, expectedVersion: 0,
+      gates: { atomAlignment: 'approved', instructions: 'approved', probes: 'approved', hiddenTests: 'rejected', executionSafety: 'approved' },
+      rationale: '测试已核对题面、探针和运行边界，但一个隐藏测试边界需要教研继续确认。', requestKey: randomUUID() });
+    expect(rejected).toMatchObject({ status: 'rejected', version: 1, current: true });
+    const approved = service.reviewStudentTask(reviewer, { taskId: task.id, expectedVersion: 1,
+      gates: { atomAlignment: 'approved', instructions: 'approved', probes: 'approved', hiddenTests: 'approved', executionSafety: 'approved' },
+      rationale: '已逐项对照知识目标、学生说明、概念与跟踪探针、所有隐藏边界及隔离运行资源。', requestKey: randomUUID() });
+    expect(approved).toMatchObject({ status: 'approved', version: 2, current: true });
+    const current = service.studentWorkspace(parent, studentId).tasks.find(row => row.id === task.id);
+    expect(current).toMatchObject({ reviewStatus: 'instructional_approved', contentReviewStatus: 'approved', contentReviewVersion: 2 });
+    expect(store.select('gespTaskReviewRevisions', { taskId: task.id })).toHaveLength(2);
+    const mutable = (service as any).studentData().tasks.find((row: any) => row.id === task.id);
+    mutable.tests[0].expected += '\n';
+    const stale = service.studentWorkspace(parent, studentId).tasks.find(row => row.id === task.id);
+    expect(stale).toMatchObject({ reviewStatus: 'original_authored_pilot', contentReviewStatus: 'stale', contentReviewVersion: 2 });
   });
 
   it('prevents hint skipping, marks assisted work separately, and requires parent plan confirmation', async () => {

@@ -168,6 +168,10 @@ export class DomainDatabase {
       { name: 'gesp_guidance_revision', collection: 'gespGuidancePlanRevisions', fields: ['planId', 'version'] },
       { name: 'gesp_review_schedule', collection: 'gespReviewTasks', fields: ['studentId', 'atomId', 'stageDay', 'sourceSubmissionId'] },
     ]);
+    await this.migrateConstraints(12, [
+      { name: 'gesp_task_review_task', collection: 'gespTaskReviews', fields: ['taskId'] },
+      { name: 'gesp_task_review_request', collection: 'gespTaskReviewRevisions', fields: ['taskId', 'requestKey'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
