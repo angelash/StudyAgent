@@ -1,0 +1,199 @@
+{
+  "at": "2026-10-20T05:31:43.382Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Synthetic family, existing original tasks, formal administrator/teacher HTTP, complete business-record hashes and two persistent restarts. Warm local read samples only; no browser, classroom, calibration or complete textbook claim.",
+  "sourceSha256": {
+    "packages/contracts/src/curriculum.ts": "d8993b824937af407a0e002ba6304dacf82f9b2b487f7da0ef71dfdc12fb96ae",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "fd0bde92625e206c07e539a713ea5017af00ce00f6e459f003a7915a6407a72a",
+    "apps/api/src/modules/diagnostics/verification-materials.ts": "e744d0647aa5e59efa3dc36f8d9ac9a08f4548ed1cbe83fae4a8465cb34ac972",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "adbf171807128e6e10045759749c8ca5570513b01425ba02c0667708f87bf71b",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "45261cd4db79d8dfd677df97302a508a81edb56eedcfbf943723db767431eb4e",
+    "apps/api/src/modules/diagnostics/family-identity.ts": "8dd26b0f7de560f596653d275d59785b269827193629036cd33dc3dd57b8e9e0",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "7044ad9b5fd04894eefd9e16747fc22f8a5c075d1db0af126b7d062905457b9f",
+    "apps/web/app/admin/curriculum/page.tsx": "8ff95efbdbe094d7434133820f2e448a3970e3fa1aed941ed34875368b38457d",
+    "apps/web/app/admin/curriculum/material-coverage.tsx": "e22e8de2431be5cc2cc04788777394b41318ffb6c6c664ce3b01e3928cc02e92",
+    "apps/web/app/admin/curriculum/curriculum.css": "211a0b3a8c8ee0edcb7e90a7676b6dd2f88d28432a1b34bbdde4da24e34dda43",
+    "scripts/qa/audit-authored-curriculum.cjs": "207bfd5715e91e9a4590275fbe0842d4cb785405be824eb904a7f18002826cba",
+    "scripts/qa/verify-material-coverage.cjs": "642c39d7336cc45271f4eb8c7bd0127e7bc8e1d8b261efd31d42b287f6baa8af"
+  },
+  "readOnlyBefore": {
+    "knowledgeAtoms": {
+      "records": 258,
+      "sha256": "79030829b9ff501c8fb8cb058af8491896824ae20536fd83d19e879da7a8275b"
+    },
+    "questions": {
+      "records": 6701,
+      "sha256": "c7a479826926e935e430de7e8726e7d26547e6fedd8f66d30bd31d6d315e8e9f"
+    },
+    "questionDocuments": {
+      "records": 6701,
+      "sha256": "a77671633a2022e318632a5dc3284f70377a2395c903dfc3206597bc518e15ca"
+    },
+    "questionAnswerSchemas": {
+      "records": 6701,
+      "sha256": "8b8d08a23007a8f310599529688a661aae28b6e1fe5bb71e8eece76b4bd60725"
+    },
+    "questionSources": {
+      "records": 6701,
+      "sha256": "a6d526507e1c13fc27469cd680a638222c9b51fbe0d314281e934cbfa048b051"
+    },
+    "measurementItems": {
+      "records": 6686,
+      "sha256": "cb373e7e89413591384fa1aa7bcf70b340138ec02531e344d4191e7929ae498e"
+    },
+    "measurementCandidates": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "curriculumRevisions": {
+      "records": 240,
+      "sha256": "8b6bd78a4212ff2a147fc9347abd23f336ec6679db247cc777b85435026bf78a"
+    },
+    "textbookAtomMappings": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "learningScopes": {
+      "records": 1,
+      "sha256": "d9af51a05b748d82c478fad1fad4e6cc3470684d2ce6f0e4ce6685659306cbd3"
+    },
+    "diagnosticSessions": {
+      "records": 1,
+      "sha256": "6b5bd304382ef841bad7f9ada7e699482b9cdf19445a44dd949ba146214bf013"
+    },
+    "diagnosticResponses": {
+      "records": 2,
+      "sha256": "7055d6e4a6fcfcd18a0e69455cef1507858bb07dc64ebd321241f560cd0fb598"
+    },
+    "diagnosticBlueprints": {
+      "records": 1,
+      "sha256": "a39842de77bcb5b6d4d3178e733e42ee89e745bc658f99bf3f706fd01da71178"
+    },
+    "diagnosticReports": {
+      "records": 1,
+      "sha256": "03376f03038a1e35154f385c77f215035fe60403687fb791baa89811d9ec1cbd"
+    },
+    "diagnosticHypotheses": {
+      "records": 2,
+      "sha256": "d96a49fb2166c97887a97505ca3d2cbafcb7bb24d1d1b15d75309da49164d4d4"
+    },
+    "diagnosticPlans": {
+      "records": 1,
+      "sha256": "1dcf167913929296eab81425662bcefe1724d55106975f150b8ae09340defff6"
+    },
+    "guidancePlanRevisions": {
+      "records": 2,
+      "sha256": "c8fa23f51f7f3dada95162161dba37f362854b2d4aa13fcca894a27a4804baa0"
+    },
+    "reviewTasks": {
+      "records": 8,
+      "sha256": "bffa3e933da48a12dc566c8fa163d16c0e21103175eeb20fe7d277687ac8c413"
+    },
+    "scoringRevisions": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "performance": {
+    "scope": "12 warm sequential production HTTP overview reads on owned local database; excludes startup and hash verification",
+    "samples": 12,
+    "p50Ms": 237.64,
+    "p95Ms": 401.96,
+    "maxMs": 401.96,
+    "referenceTargetMs": 500
+  },
+  "result": {
+    "points": 258,
+    "cells": 18,
+    "readyMaterials": 69,
+    "needingMaterials": 189,
+    "currentEligibilityAndBudget": true,
+    "formalTeacherGrantAndRevocation": true,
+    "parentLearnerAndAnonymousDenied": true,
+    "reviewedWithdrawalAndRestoration": 12,
+    "withdrawnStateSurvivesRestart": true,
+    "restoredStateSurvivesRestart": true,
+    "nonemptyStudentHistoryAndPreviewUnchanged": true,
+    "allBusinessRecordHashesUnchangedByReads": true,
+    "restarts": 2
+  },
+  "readOnlyAfter": {
+    "knowledgeAtoms": {
+      "records": 258,
+      "sha256": "79030829b9ff501c8fb8cb058af8491896824ae20536fd83d19e879da7a8275b"
+    },
+    "questions": {
+      "records": 6701,
+      "sha256": "c7a479826926e935e430de7e8726e7d26547e6fedd8f66d30bd31d6d315e8e9f"
+    },
+    "questionDocuments": {
+      "records": 6701,
+      "sha256": "a77671633a2022e318632a5dc3284f70377a2395c903dfc3206597bc518e15ca"
+    },
+    "questionAnswerSchemas": {
+      "records": 6701,
+      "sha256": "8b8d08a23007a8f310599529688a661aae28b6e1fe5bb71e8eece76b4bd60725"
+    },
+    "questionSources": {
+      "records": 6701,
+      "sha256": "a6d526507e1c13fc27469cd680a638222c9b51fbe0d314281e934cbfa048b051"
+    },
+    "measurementItems": {
+      "records": 6686,
+      "sha256": "e7b35c627f2842f6761c3ddd5fd46900543bfc4fdbd3beb000217f2d21397465"
+    },
+    "measurementCandidates": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "curriculumRevisions": {
+      "records": 276,
+      "sha256": "ed24b1359be77b4507b96a365fdd81c3e737bd5095462652bac59bc1c710c1ed"
+    },
+    "textbookAtomMappings": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "learningScopes": {
+      "records": 1,
+      "sha256": "d9af51a05b748d82c478fad1fad4e6cc3470684d2ce6f0e4ce6685659306cbd3"
+    },
+    "diagnosticSessions": {
+      "records": 1,
+      "sha256": "6b5bd304382ef841bad7f9ada7e699482b9cdf19445a44dd949ba146214bf013"
+    },
+    "diagnosticResponses": {
+      "records": 2,
+      "sha256": "7055d6e4a6fcfcd18a0e69455cef1507858bb07dc64ebd321241f560cd0fb598"
+    },
+    "diagnosticBlueprints": {
+      "records": 1,
+      "sha256": "a39842de77bcb5b6d4d3178e733e42ee89e745bc658f99bf3f706fd01da71178"
+    },
+    "diagnosticReports": {
+      "records": 1,
+      "sha256": "03376f03038a1e35154f385c77f215035fe60403687fb791baa89811d9ec1cbd"
+    },
+    "diagnosticHypotheses": {
+      "records": 2,
+      "sha256": "d96a49fb2166c97887a97505ca3d2cbafcb7bb24d1d1b15d75309da49164d4d4"
+    },
+    "diagnosticPlans": {
+      "records": 1,
+      "sha256": "1dcf167913929296eab81425662bcefe1724d55106975f150b8ae09340defff6"
+    },
+    "guidancePlanRevisions": {
+      "records": 2,
+      "sha256": "c8fa23f51f7f3dada95162161dba37f362854b2d4aa13fcca894a27a4804baa0"
+    },
+    "reviewTasks": {
+      "records": 8,
+      "sha256": "bffa3e933da48a12dc566c8fa163d16c0e21103175eeb20fe7d277687ac8c413"
+    },
+    "scoringRevisions": {
+      "records": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  }
+}

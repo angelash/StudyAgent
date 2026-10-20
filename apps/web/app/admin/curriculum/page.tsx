@@ -2,18 +2,19 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import type { CurriculumBook, CurriculumChapter, CurriculumLesson, KnowledgeAtom, MeasurementItem, Question, QuestionAnswerSchema, Subject, TextbookAtomMapping } from '@study-agent/contracts';
+import type { CurriculumBook, CurriculumChapter, CurriculumLesson, KnowledgeAtom, KnowledgeMaterialCoverage, MeasurementItem, Question, QuestionAnswerSchema, Subject, TextbookAtomMapping } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { StudyNav } from '../../../components/study-nav';
 import { CurriculumPackagePanel } from './package-panel';
 import { TeachingEditor } from './teaching-editor';
 import { ComponentBindingEditor } from './component-binding-editor';
+import { MaterialCoverageSummary } from './material-coverage';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
 import './curriculum.css';
 
-type CoverageAtom = KnowledgeAtom & { approvedQuestions: number; families: number; dimensions: string[]; draftMappings: number; interactionGaps: number; definitionGaps: number };
-type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade: number; atoms: number; withQuestions: number; withTransfer: number; withMultipleFamilies: number; withTeaching: number; draftTeaching: number; withRelations: number }>;
+type CoverageAtom = KnowledgeAtom & { approvedQuestions: number; families: number; dimensions: string[]; draftMappings: number; interactionGaps: number; definitionGaps: number; materialCoverage?: KnowledgeMaterialCoverage };
+type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade: number; atoms: number; withQuestions: number; withTransfer: number; withMultipleFamilies: number; withTeaching: number; draftTeaching: number; withRelations: number; withVerificationMaterials?: number; needingVerificationMaterials?: number }>;
   notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number } };
 type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; mappedLessonCount: number };
 type Detail = Omit<CurriculumBook, 'chapters'> & { chapters: Array<Omit<CurriculumChapter, 'lessons'> & { lessons: Array<CurriculumLesson & { atomIds: string[]; mappingState: string; mapping: TextbookAtomMapping | null }> }> };
@@ -31,7 +32,12 @@ export default function CurriculumPage() {
   const [books, setBooks] = React.useState<BookSummary[]>([]), [bookId, setBookId] = React.useState(''), [book, setBook] = React.useState<Detail | null>(null);
   const [lessonId, setLessonId] = React.useState(''), [mappedIds, setMappedIds] = React.useState<string[]>([]), [rationale, setRationale] = React.useState('');
   const [revisions, setRevisions] = React.useState<unknown[] | null>(null);
-  const selected = data?.atoms.filter(a => a.grade === grade) ?? [], lesson = book?.chapters.flatMap(c => c.lessons).find(l => l.id === lessonId);
+  const [materialFilter, setMaterialFilter] = React.useState<'all' | 'gaps' | 'ready'>('all');
+  const gradeAtoms = data?.atoms.filter(a => a.grade === grade) ?? [];
+  const materialReady = (a: CoverageAtom) => a.status === 'published' && a.materialCoverage?.version === 'verification-materials-v1' && a.materialCoverage.ready;
+  const materialGap = (a: CoverageAtom) => a.status === 'published' && !materialReady(a);
+  const selected = gradeAtoms.filter(a => materialFilter === 'all' || (materialFilter === 'ready' ? materialReady(a) : materialGap(a)));
+  const lesson = book?.chapters.flatMap(c => c.lessons).find(l => l.id === lessonId);
 
   async function reload() { const overview = await req<Overview>(`/admin/curriculum/overview?subject=${subject}`); setData(overview); }
   async function act(fn: () => Promise<void>, message = '已保存，历史版本已保留') {
@@ -67,10 +73,19 @@ export default function CurriculumPage() {
     {role && !['admin', 'teacher'].includes(role) && <p>此页面需要教研权限。<Link href="/parent/dashboard">返回家长空间</Link></p>}
     {data && <>
       <div className="admin-toolbar"><label>学科<select value={subject} onChange={e => setSubject(e.target.value as Subject)}>{Object.entries(subjects).map(([v, t]) => <option key={v} value={v}>{t}</option>)}</select></label><label>学期<select value={term} onChange={e => setTerm(e.target.value as 'upper' | 'lower')}><option value="upper">上学期</option><option value="lower">下学期</option></select></label><button className="studio-secondary" onClick={() => act(reload, '已刷新当前有效覆盖')} disabled={busy}>刷新覆盖</button></div>
-      <div className="admin-grade-map" aria-label="年级覆盖">{data.cells.map(c => <button key={c.grade} aria-pressed={grade === c.grade} onClick={() => { setGrade(c.grade); setAtom(null); }}><strong>{c.grade}年级</strong><small>{c.withQuestions}/{c.atoms} 点有有效题</small><small>{c.withMultipleFamilies} 点有多题族 · {c.withTransfer} 点有迁移题</small><small>{c.withTeaching} 点有已审教学 · {c.draftTeaching} 点待审</small><small>{c.withRelations} 点有拓展知识关系</small></button>)}</div>
+      <div className="admin-grade-map" aria-label="年级覆盖">{data.cells.map(c => <button key={c.grade} aria-pressed={grade === c.grade} onClick={() => { setGrade(c.grade); setAtom(null); }}><strong>{c.grade}年级</strong><small>{c.withQuestions}/{c.atoms} 点有有效题</small><small>{c.withVerificationMaterials === undefined ? '素材结构待核对' : `${c.withVerificationMaterials} 点对照素材齐备`}</small>{c.needingVerificationMaterials !== undefined && <small className={c.needingVerificationMaterials ? 'admin-gap' : ''}>{c.needingVerificationMaterials} 点待补对照素材</small>}<small>{c.withTeaching} 点有已审教学 · {c.draftTeaching} 点待审</small><small>{c.withRelations} 点有拓展知识关系</small></button>)}</div>
       <p>{data.notice}</p>
       {userId && <CurriculumPackagePanel key={`${subject}:${userId}`} subject={subject} userId={userId} canImport={role === 'admin'} onApplied={async () => { await reload(); setAtom(null); setItems([]); setMapping(null); setRevisions(null); }} />}
-      <div className="admin-columns"><section><div className="studio-point-heading"><h2>{grade}年级 · {subjects[subject]}</h2><button className="studio-text-button" onClick={newAtom}>新增原子点</button></div><div className="admin-atom-list">{selected.map(a => <button key={a.id} aria-pressed={atom?.id === a.id} onClick={() => act(() => openAtom(a), '已读取知识定义和题目映射')}><strong>{a.name}</strong><small>{a.strand} · {a.status === 'published' ? '已发布' : a.status === 'draft' ? '草稿' : '已停用'} · v{a.version}</small><small className={a.approvedQuestions ? '' : 'admin-gap'}>{a.approvedQuestions} 道有效题 · {a.families} 个题族 · {a.dimensions.map(d => dimensions[d as keyof typeof dimensions]).join(' / ') || '量化维度待补'}</small>{a.definitionGaps > 0 && <small className="admin-gap">{a.definitionGaps} 道题需对照当前知识定义重新审核</small>}{a.interactionGaps > 0 && <small className="admin-gap">{a.interactionGaps} 道题需补齐作答配置</small>}</button>)}</div></section>
+      <div className="admin-columns"><section><div className="studio-point-heading"><h2>{grade}年级 · {subjects[subject]}</h2><button className="studio-text-button" onClick={newAtom}>新增原子点</button></div>
+        <fieldset className="material-filter"><legend>按对照素材筛选知识点</legend><div>
+          <button type="button" aria-pressed={materialFilter === 'all'} onClick={() => setMaterialFilter('all')}>全部 <span>{gradeAtoms.length}</span></button>
+          <button type="button" aria-pressed={materialFilter === 'gaps'} onClick={() => setMaterialFilter('gaps')}>待补 / 待核对 <span>{gradeAtoms.filter(materialGap).length}</span></button>
+          <button type="button" aria-pressed={materialFilter === 'ready'} onClick={() => setMaterialFilter('ready')}>素材齐备 <span>{gradeAtoms.filter(materialReady).length}</span></button>
+        </div></fieldset>
+        <p className="material-filter-result" role="status" aria-live="polite">显示 {selected.length} 个知识点；素材状态只统计已发布点，全部列表保留草稿与停用定义。</p>
+        <div className="admin-atom-list">{selected.map(a => <button key={a.id} aria-pressed={atom?.id === a.id} onClick={() => act(() => openAtom(a), '已读取知识定义和题目映射')}><strong>{a.name}</strong><small>{a.strand} · {a.status === 'published' ? '已发布' : a.status === 'draft' ? '草稿' : '已停用'} · v{a.version}</small><small className={a.approvedQuestions ? '' : 'admin-gap'}>{a.approvedQuestions} 道有效题 · {a.families} 个题族 · {a.dimensions.map(d => dimensions[d as keyof typeof dimensions]).join(' / ') || '量化维度待补'}</small><MaterialCoverageSummary coverage={a.materialCoverage} status={a.status} />{a.definitionGaps > 0 && <small className="admin-gap">{a.definitionGaps} 道题需对照当前知识定义重新审核</small>}{a.interactionGaps > 0 && <small className="admin-gap">{a.interactionGaps} 道题需补齐作答配置</small>}</button>)}</div>
+        {!selected.length && <div className="material-filter-empty"><p>当前年级在此筛选下没有知识点。</p>{materialFilter !== 'all' && <button type="button" className="studio-text-button" onClick={() => setMaterialFilter('all')}>查看全部知识点</button>}</div>}
+      </section>
         <section className="admin-editor">{!atom ? <><h2>从一个可观察的行为开始</h2><p>选择左侧知识点查看定义、先修关系和有效题；新增定义后仍需配置题目来源、评分与知识映射。</p></> : <>
           <span className="studio-eyebrow">ATOM / v{atom.version}</span><h2>{atom.name || '新知识点'}</h2><p>{atom.objective}</p><p>达标条件：{atom.successCriterion}</p>
           <details><summary>编辑定义与先修关系</summary><div className="admin-form">

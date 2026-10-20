@@ -52,3 +52,17 @@ export type CurriculumPackagePreview = {
   changes: Array<{ id: string; name: string; kind: 'added' | 'changed' | 'unchanged';
     previousVersion: number; nextVersion: number; fields: Array<{ field: string; before: unknown; after: unknown }> }>;
 };
+
+/** Read-only material coverage. It is not a student estimate or standardized calibration. */
+export type MaterialStructureGap = 'understanding_family_missing' | 'procedure_family_missing' | 'two_basic_families_missing' |
+  'two_transfer_families_missing' | 'four_contrast_families_missing';
+export type MaterialStructureCoverage = {
+  version: 'verification-materials-v1'; familyIdentityVersion: string;
+  families: number; understandingFamilies: number; procedureFamilies: number; basicFamilies: number;
+  transferFamilies: number; contrastFamilies: number; ready: boolean; gaps: MaterialStructureGap[];
+};
+export type KnowledgeMaterialCoverage = {
+  version: 'verification-materials-v1'; ready: boolean; structure: MaterialStructureCoverage;
+  sample: { ready: boolean; ruleVersion: string; itemLimit: number; secondsLimit: number; items: number; expectedSeconds: number;
+    groups: Array<{ purpose: string; availableFamilies: number; selectedFamilies: number; requiredFamilies: number; gap?: string }> };
+};

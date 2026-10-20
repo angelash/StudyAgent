@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
-import { KnowledgeAtom, LearningScope, MeasurementItem, Subject,
+import { KnowledgeAtom, LearningScope, MeasurementItem, QuestionAnswerSchema, Subject,
   answerInputConfiguration, knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
 import { z } from 'zod';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
@@ -12,6 +12,19 @@ import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint, measurementDefinitionMatches, measurementContentMatches, questionContentFingerprint } from './measurement-definition';
 import { componentBindingsIssue, reviewComponentBindings } from './component-observations';
 import { FAMILY_IDENTITY_VERSION, canonicalFamily } from './family-identity';
+import { knowledgeMaterialCoverage } from './verification-materials';
+
+const immutableInputSupport = new WeakMap<QuestionAnswerSchema, boolean>();
+function availableMeasurementInput(schema: QuestionAnswerSchema) {
+  // inspect() exposes deeply frozen snapshots. An edited schema is a different snapshot; mutable rows are never cached.
+  let supported = Object.isFrozen(schema) ? immutableInputSupport.get(schema) : undefined;
+  if (supported === undefined) {
+    supported = answerInputConfiguration(schema).supported;
+    if (Object.isFrozen(schema)) immutableInputSupport.set(schema, supported);
+  }
+  // Tool availability can change independently of the immutable answer configuration.
+  return supported && mediaModeAvailable(schema.mode);
+}
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
 export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: string[]) {
@@ -19,17 +32,26 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
   const questionIds = [...new Set(mappings.map(item => item.questionId))];
   const atoms = new Map((atomIds ? store.select('knowledgeAtoms', { id: atomIds }) : store.inspect('knowledgeAtoms')).map((a) => [a.id, a]));
   const questions = new Map((atomIds ? store.select('questions', { id: questionIds }) : store.inspect('questions')).map((q) => [q.id, q]));
-  const sources = new Map((atomIds ? store.select('questionSources', { questionId: questionIds }) : store.inspect('questionSources')).map((s) => [s.questionId, s]));
-  const documents = new Map((atomIds ? store.select('questionDocuments', { questionId: questionIds }) : store.inspect('questionDocuments')).map((d) => [d.questionId, d]));
-  const schemas = new Map((atomIds ? store.select('questionAnswerSchemas', { questionId: questionIds }) : store.inspect('questionAnswerSchemas')).map(schema => [schema.questionId, schema]));
+  const sourceRows = atomIds ? store.select('questionSources', { questionId: questionIds }) : store.inspect('questionSources');
+  const documentRows = atomIds ? store.select('questionDocuments', { questionId: questionIds }) : store.inspect('questionDocuments');
+  const schemaRows = atomIds ? store.select('questionAnswerSchemas', { questionId: questionIds }) : store.inspect('questionAnswerSchemas');
+  const sources = new Map(sourceRows.map((s) => [s.questionId, s])), documents = new Map(documentRows.map((d) => [d.questionId, d]));
+  const schemas = new Map(schemaRows.map(schema => [schema.questionId, schema]));
   const candidates = new Map(store.select('measurementCandidates', { questionId: questionIds }).map(candidate => [candidate.questionId, candidate]));
+  // Match find()'s first-record semantics for the same complete reviewed packet, without per-item mutable lookups.
+  const firstByQuestion = <T extends { questionId: string }>(rows: readonly T[]) => {
+    const first = new Map<string, T>(); for (const row of rows) if (!first.has(row.questionId)) first.set(row.questionId, row); return first;
+  };
+  const contentDocuments = firstByQuestion(documentRows), contentSchemas = firstByQuestion(schemaRows), contentSources = firstByQuestion(sourceRows);
   return mappings.filter((item) => {
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
       item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && measurementDefinitionMatches(store, item, atom) &&
-      measurementContentMatches(store, item, candidates.get(item.questionId) ?? null) &&
-      !!schemas.get(item.questionId) && answerInputConfiguration(schemas.get(item.questionId)!).supported && mediaModeAvailable(schemas.get(item.questionId)!.mode);
+      measurementContentMatches(store, item, candidates.get(item.questionId) ?? null, { question: question ?? null,
+        document: contentDocuments.get(item.questionId) ?? null, answerSchema: contentSchemas.get(item.questionId) ?? null,
+        source: contentSources.get(item.questionId) ?? null }) &&
+      !!schemas.get(item.questionId) && availableMeasurementInput(schemas.get(item.questionId)!);
   });
 }
 
@@ -279,33 +301,42 @@ export class CurriculumService {
   overview(user: InMemoryUserAccount, subject?: Subject, grade?: number) {
     this.assertEditor(user);
     if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
-    const eligible = eligibleMeasurements(this.store), counts = new Map<string, MeasurementItem[]>();
+    const definitions = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade));
+    const eligible = eligibleMeasurements(this.store, subject || grade ? definitions.map(atom => atom.id) : undefined), counts = new Map<string, MeasurementItem[]>();
     for (const item of eligible) { const items = counts.get(item.atomId) ?? []; items.push(item); counts.set(item.atomId, items); }
-    const atoms = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade)).map((atom) => {
-      const items = counts.get(atom.id) ?? [];
+    const mappingsByAtom = new Map<string, MeasurementItem[]>();
+    for (const item of this.store.inspect('measurementItems')) {
+      const items = mappingsByAtom.get(item.atomId) ?? []; items.push(item); mappingsByAtom.set(item.atomId, items);
+    }
+    const availableInteractions = new Set(this.store.inspect('questionAnswerSchemas').filter(availableMeasurementInput).map(schema => schema.questionId));
+    const atoms = definitions.map((atom) => {
+      const items = counts.get(atom.id) ?? [], mappings = mappingsByAtom.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
         families: new Set(items.map(canonicalFamily)).size, familyIdentityVersion: FAMILY_IDENTITY_VERSION,
+        materialCoverage: knowledgeMaterialCoverage(atom, items),
         dimensions: [...new Set(items.map((i) => i.dimension))],
-        definitionGaps: new Set(this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'approved' })
+        definitionGaps: new Set(mappings.filter(mapping => mapping.reviewStatus === 'approved')
           .filter(mapping => !measurementDefinitionMatches(this.store, mapping, atom)).map(mapping => mapping.questionId)).size,
-        interactionGaps: new Set(this.store.inspect('measurementItems').filter(i => i.atomId === atom.id && i.reviewStatus === 'approved' &&
-          !this.store.questionAnswerSchemas.some(schema => schema.questionId === i.questionId && answerInputConfiguration(schema).supported && mediaModeAvailable(schema.mode))).map(i => i.questionId)).size,
-        draftMappings: this.store.select('measurementItems', { atomId: atom.id, reviewStatus: 'draft' }).length };
+        interactionGaps: new Set(mappings.filter(i => i.reviewStatus === 'approved' && !availableInteractions.has(i.questionId)).map(i => i.questionId)).size,
+        draftMappings: mappings.filter(i => i.reviewStatus === 'draft').length };
     });
     const cells = (['math', 'chinese', 'english'] as Subject[]).flatMap((s) => Array.from({ length: 6 }, (_, i) => {
       const subset = atoms.filter((a) => a.subject === s && a.grade === i + 1 && a.status === 'published');
       return { subject: s, grade: i + 1, atoms: subset.length, withQuestions: subset.filter((a) => a.approvedQuestions > 0).length,
         withTransfer: subset.filter((a) => a.dimensions.includes('transfer')).length,
         withMultipleFamilies: subset.filter((a) => a.families >= 2).length,
+        withVerificationMaterials: subset.filter(a => a.materialCoverage.ready).length,
+        needingVerificationMaterials: subset.filter(a => !a.materialCoverage.ready).length,
         withTeaching: subset.filter(a => a.teaching?.reviewStatus === 'approved').length,
         draftTeaching: subset.filter(a => a.teaching?.reviewStatus === 'draft').length,
         withRelations: subset.filter(a => a.parentId || a.confusableAtomIds?.length || a.transferAtomIds?.length).length };
     })).filter((c) => (!subject || c.subject === subject) && (!grade || c.grade === grade));
+    const importedBooks = this.textbooks.all().filter(book => book.source !== 'original');
     return { generatedAt: new Date().toISOString(), cells, atoms,
-      notice: '覆盖按已发布定义和当前有效审核题映射统计；不代表常模校准或教材全部覆盖。',
-      textbookCounts: { imported: this.textbooks.all().filter((b) => b.source !== 'original').length,
-        withChapters: this.textbooks.all().filter((b) => b.source !== 'original' && b.chapterState === 'available').length,
-        approvedMappings: this.store.select('textbookAtomMappings', { status: 'approved' }).length } };
+      notice: '按已发布定义与当前有效审核题映射核对素材。结构齐备还须能在四题、600秒内安排基础和迁移各两个不同题族；样例未考虑个人曝光与学习范围，不代表学生掌握、常模校准或教材全部覆盖。',
+      textbookCounts: { imported: importedBooks.length,
+        withChapters: importedBooks.filter(book => book.chapterState === 'available').length,
+        approvedMappings: this.store.inspect('textbookAtomMappings').filter(mapping => mapping.status === 'approved').length } };
   }
 
   itemsForAtom(user: InMemoryUserAccount, atomId: string) {

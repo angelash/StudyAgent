@@ -5,7 +5,7 @@ import { DIAGNOSIS_VERSION, verificationConditions } from './diagnosis';
 import { FAMILY_IDENTITY_VERSION, canonicalFamily, independentFamilyKey } from './family-identity';
 
 /** Requirements come from the current diagnosis rule, never from client-submitted labels. */
-export function verificationBlueprint(hypothesis: DiagnosticHypothesis, atom: KnowledgeAtom, basisFingerprint: string): DiagnosticVerificationBlueprint {
+export function verificationBlueprint(hypothesis: Pick<DiagnosticHypothesis, 'id' | 'title' | 'cause' | 'ruleVersion'>, atom: KnowledgeAtom, basisFingerprint: string): DiagnosticVerificationBlueprint {
   const conditions = verificationConditions(hypothesis.cause, atom, atom.prerequisiteIds);
   return { hypothesisId: hypothesis.id, title: hypothesis.title, cause: hypothesis.cause, ruleVersion: DIAGNOSIS_VERSION,
     familyIdentityVersion: FAMILY_IDENTITY_VERSION,
@@ -22,7 +22,9 @@ export function selectVerificationItems(specification: DiagnosticVerificationBlu
   const questions = new Set<string>(), families = new Set<string>(); let seconds = 0;
   const matches = (group: DiagnosticVerificationBlueprint['groups'][number], item: MeasurementItem) =>
     item.atomId === group.atomId && group.dimensions.includes(item.dimension);
-  const familyKey = independentFamilyKey;
+  // Identity is immutable during one selection; sorting and repeated rounds reuse the exact same keys.
+  const familyKeys = new Map(candidates.map(item => [item, independentFamilyKey(item)]));
+  const familyKey = (item: MeasurementItem) => familyKeys.get(item)!;
   for (const group of verification.groups) group.availableFamilies = new Set(candidates.filter(item => matches(group, item)).map(familyKey)).size;
   // Fill scarce observation groups first and prefer a family unique to its group.
   // Reusing a family under another dimension cannot create a second independent contrast.

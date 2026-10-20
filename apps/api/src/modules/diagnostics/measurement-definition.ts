@@ -1,21 +1,30 @@
 import { createHash } from 'node:crypto';
-import type { DiagnosticResponse, DiagnosticSession, KnowledgeAtom, MeasurementItem, MeasurementContentCandidate } from '@study-agent/contracts';
+import type { DiagnosticResponse, DiagnosticSession, KnowledgeAtom, MeasurementItem, MeasurementContentCandidate,
+  Question, QuestionDocument, QuestionAnswerSchema, QuestionSourceRecord } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { blueprintContentHash } from './assessment-blueprint';
 
+type QuestionContentPacket = { question: Question | null; document: QuestionDocument | null;
+  answerSchema: QuestionAnswerSchema | null; source: QuestionSourceRecord | null };
+
+function packetContentFingerprint(packet: QuestionContentPacket) {
+  return blueprintContentHash({ format: 'reviewed-question-content-v1', ...packet });
+}
+
 /** Binds a new approval to the full rendered and scored content, including source eligibility. */
 export function questionContentFingerprint(store: InMemoryStoreService, questionId: string) {
-  return blueprintContentHash({ format: 'reviewed-question-content-v1',
+  return packetContentFingerprint({
     question: store.find('questions', { id: questionId }) ?? null,
     document: store.find('questionDocuments', { questionId }) ?? null,
     answerSchema: store.find('questionAnswerSchemas', { questionId }) ?? null,
     source: store.find('questionSources', { questionId }) ?? null });
 }
 
-export function measurementContentMatches(store: InMemoryStoreService, mapping: MeasurementItem, knownCandidate?: MeasurementContentCandidate | null) {
+export function measurementContentMatches(store: InMemoryStoreService, mapping: MeasurementItem, knownCandidate?: MeasurementContentCandidate | null,
+  knownPacket?: QuestionContentPacket) {
   const candidate = knownCandidate === undefined ? store.find('measurementCandidates', { questionId: mapping.questionId }) : knownCandidate;
   if (!mapping.contentFingerprint && !candidate) return true;
-  const fingerprint = questionContentFingerprint(store, mapping.questionId);
+  const fingerprint = knownPacket ? packetContentFingerprint(knownPacket) : questionContentFingerprint(store, mapping.questionId);
   return (!mapping.contentFingerprint || mapping.contentFingerprint === fingerprint) &&
     (!candidate || candidate.status === 'published' && candidate.publishedHash === fingerprint);
 }

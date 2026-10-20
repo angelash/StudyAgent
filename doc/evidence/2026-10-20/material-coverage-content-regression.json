@@ -1,0 +1,513 @@
+{
+  "at": "2026-10-20T05:39:33.284790+00:00",
+  "passed": true,
+  "passedTests": 533,
+  "failedTests": 0,
+  "skippedTests": 6,
+  "newTests": 18,
+  "scope": "Current eligible materials, canonical structure counts, real four-item/600-second selector, eight eligibility gates, immutable answer-snapshot replacement, full inspected history hashes and permissions. No psychometric, textbook-completeness or browser claim.",
+  "reportSha256": "0bd9c3508d8f27e87c099d855817e815645e11df8d402ca7f3b570cfc5116f07",
+  "sourceSha256": {
+    "apps/api/src/modules/diagnostics/verification-materials.ts": "e744d0647aa5e59efa3dc36f8d9ac9a08f4548ed1cbe83fae4a8465cb34ac972",
+    "apps/api/src/modules/diagnostics/verification-blueprint.ts": "adbf171807128e6e10045759749c8ca5570513b01425ba02c0667708f87bf71b",
+    "apps/api/src/modules/diagnostics/diagnosis.ts": "7044ad9b5fd04894eefd9e16747fc22f8a5c075d1db0af126b7d062905457b9f",
+    "apps/api/src/modules/diagnostics/family-identity.ts": "8dd26b0f7de560f596653d275d59785b269827193629036cd33dc3dd57b8e9e0",
+    "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "1527a93e034c4439b44f183bf9d3153af0df1141864675fede07bc796189eff6",
+    "apps/api/src/modules/diagnostics/original-core-curriculum.ts": "9ac0833a40f7463341156456e2637ef4bd9ba7f69a55237f3ce9380cb10b281b",
+    "apps/api/src/modules/diagnostics/structured-curriculum.ts": "c2852e80c2679b1d572ddf1af60a2615ffd09f72dfdb385563c011a8ad03beba",
+    "apps/api/src/modules/diagnostics/authored-relation-release.ts": "2b9b94a079f7f598d2d8008a248c77be731fd2abec168c296e102cc27fd4ec8b",
+    "apps/api/src/modules/diagnostics/authored-atomic-curriculum.ts": "f86008f2c030fdc96bda777d35960329bc07f9ab2ab1503f93061e25b3be65c3",
+    "apps/api/src/modules/diagnostics/authored-math-probes.ts": "b3109542bc866de145cb21afa93a7469415e607ff965460ec04251a838e9631e",
+    "apps/api/src/modules/diagnostics/authored-arithmetic-probes.ts": "e842ca98a3f8123ae4cefa1b4e945f7aea7b59a77abe4421bc99a22a1ac5ab15",
+    "apps/api/src/modules/diagnostics/authored-number-probes.ts": "135cba049ce9dd1c4caae692bd71240af16b6736d07ed18c418be716082982b9",
+    "apps/api/src/modules/diagnostics/authored-spatial-probes.ts": "ff2813ce8155ef0eaabca86013e347d75dd4d8397a721a1f1b635b266e51f9e7",
+    "apps/api/src/modules/diagnostics/authored-second-grade-probes.ts": "648bdd96ee0ff99f87b189ca6469d71af1df7f1c1ea1d084145b7c0b04bcecdd",
+    "apps/api/src/modules/diagnostics/authored-data-probes.ts": "39c50dbfc8e4b149956941a15513d494c74e773d135029cea0a4ba9d327570d1",
+    "apps/api/src/modules/diagnostics/authored-third-grade-probes.ts": "c6716e8685af8dcd853bf586ef709c1371663d3fd1d572356787b49d199dc080",
+    "apps/api/src/modules/diagnostics/authored-unit-probes.ts": "1109a9bb869bdb1d243dc6d71d6b4a6d09ab74582ee2faf5bb1e0dfbf9e352e1",
+    "apps/api/src/modules/diagnostics/authored-teaching.ts": "75c2e93a9558d053c1c6752ef3187525ce17d7378c24dce758bef21912e50310",
+    "apps/api/src/modules/diagnostics/authored-math-teaching.ts": "23fac5b369549efe35b599d1733b490dd35e9b02daa64c91c01fa5cec5ff1a85",
+    "apps/api/src/modules/diagnostics/authored-geometry-probes.ts": "fd17d056b4c67de19e9d3c5946d632bdbb319808c9e04a34f3e04cb37bbba553",
+    "apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.ts": "d940ada752af7ef6487cf4b13d0c861c1a439da03281d14db67d7c29b1a54aad",
+    "apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.ts": "a98492dd36cba35846e097ca19b4a083c9589c3a5d10fec7837032b5166225b1",
+    "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.ts": "2d45e3f8219ae1f70f103f1dd78948206652b85cc19884c2ffd966e9cea1881b",
+    "apps/api/src/modules/diagnostics/authored-average-atomic.ts": "4031e70a9d7a5f2d33838fa2fed33db52318c1871bb737e0483d1ba81bb7767e",
+    "apps/api/src/modules/diagnostics/authored-factor-multiple-probes.ts": "aa3145bb66b204e3bab7676f9e1616e40e334ec7606aabe5b1c95cf42ddcd3b3",
+    "apps/api/src/modules/diagnostics/authored-chinese-teaching.ts": "2a42b9b7ad09212a0283b672550b9c719ca73130d7984f6a42de5e862807f2b2",
+    "apps/api/src/modules/diagnostics/authored-english-teaching.ts": "76437c2f0bf70547327761c78c96ea4d63094b470d612621b46d94812d7cfd42",
+    "apps/api/src/modules/diagnostics/teaching-author.ts": "c43cec970b0e6faca395d93a4bef536f38b57a5df2f8674a0d84e6e01ba6ee1b",
+    "scripts/qa/audit-authored-curriculum.cjs": "207bfd5715e91e9a4590275fbe0842d4cb785405be824eb904a7f18002826cba",
+    "resources/curriculum/authored-family-identities-v1.json": "6192ba15be4524de5c63edabbcfa3e7a24cdc9259597499843e0bd7ff235dcf7",
+    "resources/curriculum/authored-task-baseline-5678-v1.json": "eb7cb64197fd85d2597c142be80f7c6845e459775e37a5e5526109067401d9a2",
+    "resources/curriculum/authored-relations-2026-10-20-v1.json": "874bd9ab4be81e7a6ec562ce81e38732ccff6ea71c50afb95f6deb577a65cd8c",
+    "resources/curriculum/authored-atomic-relations-2026-10-20-v1.json": "2e9a0b7c2e8d0f4f68da8fd44fc411516ee9bdbd71f42755b6c5428f12fa115e",
+    "resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json": "6022913120d52a0e03a47e614877564befd01d3b249b9209ddd4d7d88c41bc37",
+    "resources/curriculum/authored-task-baseline-6398-v1.json": "177add235062e7cacfd619d9fd52618af61eff32204c9fd410c3266a92e34bd6",
+    "resources/curriculum/authored-task-baseline-6446-v1.json": "6412e488fd31b83f26b1a9c61149fc8f00ee3bbfd417839ebefe4d96c5c30c77",
+    "resources/curriculum/geometry-probes-v1.json": "3d8ed50c9d04061bde3b5522adbc79f88cec11c889fad7b0df38c30e7a1b9c7c",
+    "scripts/content/build-geometry-probes.cjs": "0f263936b662df156d2b8406ca42a0efdfa33baa94fe1060b54e19dd8d112220",
+    "apps/web/public/question-assets/geometry-probes-v1/area-unit-dm-cm.svg": "28d79946568173d95bc75da890f065022c811a135d2def17437a32d3ce36e0c8",
+    "apps/web/public/question-assets/geometry-probes-v1/area-unit-m-dm.svg": "8389d3f6e90b67b88537122c97764c53f1aab34e294cacf303bcaeae0373f35f",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-0.svg": "444f59214955448227e1dcfbda7c3e48ea3435e38edce03a1cf48739bcc638a1",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-1.svg": "b666af7188cc3ff311eea71ada219d8c0b8606a9cb0c22b846b1382c91be7142",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-10.svg": "0cf1bc555831ead2ff4b815ac2f5d03e0873c8e26841720609a800ecf7e8235d",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-11.svg": "ae96fdb1b899481570793f78611bd3736445cc0fc46aed97d9ba6add92bd326e",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-2.svg": "d77a3c78c71adda995da6156f96580d8a6f53da671685b85e3d29478617d2b5f",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-3.svg": "8e1c26c5815fe7ec372ec681dff5f467b6370da5b0350f8a88212212f86b0ee6",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-4.svg": "3088ed7802d719b2d298e88123eedc375f6574463add79ea9d183b06b880ac89",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-5.svg": "bcc5ca30657a95285d322120148fb8763c0b96bc2bc84fbf4c190011b8584e8b",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-6.svg": "05601eb783b6ed6a8a0a7e4333d95926adee89aae8875680eab3aa30f77cb747",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-7.svg": "61a4cff6a97220769d6ec8d50246502b62b2595abe875e8c4b3a8a0bf55e03a1",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-8.svg": "31e5f6f5af05f6b8e22f8ab06693eec79eae162fa1806dc9fc54497188504644",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-coverage-9.svg": "15ae3d5c3870788ebf70db297691a8e2d3f25c4e5b6968e747081236b7a5ccbc",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-0.svg": "f0350b8211fa5d5edd4b523760c1e6a3810ee113b3a5a6e5c69960b85d174e96",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-1.svg": "4d2678e0d1c9b8a1ce2a0791899d2148f04442f1437bd9712c7f2d3c1938647b",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-10.svg": "61b71a616a2211027c457fb1a9f31e6d04372a14da7de60674b87906dff51228",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-11.svg": "008dea51caa05c682064df58456bef9f7429f9831fcac2777157d4c3eb4264cc",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-2.svg": "75d67a6778dba25b0beb1388059771b8412135876b432cb4b54d9d977f2d9a6a",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-3.svg": "cbb9399a688d1a6ab62a3953ae734b3ac72e986566181033d710a4dc31cfb086",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-4.svg": "a73a9d10f9af96e2dd046e690baccabac8b96c9484bd058f721c288f0b8f8e83",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-5.svg": "35e40111d814f36685e30d6468162f3b573a10ad39f2686ad5470bcdf2d35444",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-6.svg": "81a1d5f99dd5a40db7e3f29f055fb7d107d3f4db39a58068dc6f21cded38831a",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-7.svg": "4211ca06a53435d010148caad580273057991abeade038b1de2e730af3ee5a58",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-8.svg": "fe4da504c986b95206b991731f0eaba875eb5c63950f767342285be8f67cdf8d",
+    "apps/web/public/question-assets/geometry-probes-v1/rectangle-gate-9.svg": "82e1a3303e81e14ce225dcce8ee9e489afc56a9ddaea19f4030d66fb3a0cefd7",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-0.svg": "27154f2429a8c479ba6d00049bd35e6275fe1288a642bcebf49cf8c36e3a86de",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-1.svg": "4377ad781325e028fdfcab3b3a6466fc58395210cbba3f08a309067938efc3ff",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-10.svg": "4713a2083b7e368a0417de84095fd332a00c9a7d0d086ec060daafa8931829cb",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-11.svg": "d9ac21fc9dfd43daaed318bf8bd9d0132529aa904ea7d7e77d9fd13226f38c9c",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-2.svg": "1110310c154bd08c410a35ff1a48fcc32aefb51193e43815f1217a8f50143ac5",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-3.svg": "a9c1d3c8edb6080a55fddaf3979e25f6e6de12ab72d954ae1f89b79f7212e71b",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-4.svg": "f720cb95890a92485b447b270d6600586af69b74e3619d6f9a7f2f7166e0be8f",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-5.svg": "d6a5ff45956450adac38daf97620f48ee1c3133e3d0da8209ec94b43ae56fd30",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-6.svg": "92b1dfbe679179cef20934a3a58c856ba7794354b81b5dcd3b5274c775162b70",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-7.svg": "a128e84dc2be63a3114a73f9bc5c5e26782972811e4d6cd0841e16726320209d",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-8.svg": "b7e5a41a1423cdf4fd9fa160fd9cf135b6050fcc6a9f99377f1d0d9e170f60a7",
+    "apps/web/public/question-assets/geometry-probes-v1/square-grid-9.svg": "06fdb396213b295993d3452ee075739e82b0b8c76194adfa7bf0df946941cbec",
+    "resources/curriculum/fourth-grade-geometry-statistics-v1.json": "e4cca1e4f684d4ebc54001d0017f4f4af1fdbd519c82da9d972fac693b38b0c5",
+    "scripts/content/build-fourth-grade-geometry-statistics.cjs": "e3049d54bd49f45b2863f2bc61b9cf5e9d08d1e7d998c71fbc3bbeba482fa898",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-0.svg": "9b76877aaecbb6d41879c664fdcde576e8cf3fbb995970ff0f5543b083c3e532",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-1.svg": "e0005d2823fea5ef5504c54e3c8325c4c68469b42ed46ef939172d27f04f2376",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-10.svg": "8651a56c3defc9ee3822243ef55c010f97ff690ceee7dd073f8563f87daf7204",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-11.svg": "e06c5af50d99629ba7d91024235d02dce7579734aec609b2ffdae0212eeea8f7",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-2.svg": "a2e2a09d7e451dc66c206fc2218c5e98ab6d2cd7604110e6ac65c18fe69c8b50",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-3.svg": "15199d058e8ab14db51924b6b39d7b0fd4a96352d4bbe433c076f3f66ee24516",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-4.svg": "804009147fe504febc7fb8488ec7a67944a3a55b3273fb911dad11eec2cd886a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-5.svg": "eb239ed2d26e6a9c8a78f9d340e2429dc6db678913d5609f67b3583914653073",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-6.svg": "8ccbb64494844af645405f04174ea2a5fb6cd8704a47b5dad034e877fff372fe",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-7.svg": "191d499cf4b44c1f22141f8a0413a0152e03ec0ff9e0d166f2300a6955b596e7",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-8.svg": "600d2b6465dfa8699a5dad0fe7feb88e2867c15d8fa609d2927699339c83055f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/bar-chart-9.svg": "179a4ae4f8114894c66488336b2daabbd4134fc86174b2c17b97345f501af879",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-0.svg": "8d19972f6e29a00c55b882d54ffd7b8c9e439f55948ea89a5d86d2c3ef063ed0",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-1.svg": "62db970ef5bc05f1b1373f8406f027c99ef542d155652e57e4d406576ed9564e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-10.svg": "da781d7d1bf99333400cbb16f6c10bb5889f4ccefb3d138613dfdfabdbfc4e63",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-11.svg": "ba2ba5945fed7e72f519914003300ec11ff248922546da2e62e60ffb9d22bd3e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-2.svg": "87fd00e0d5e3ebb5ecb583f6a3481ab4a0b63ec444c941fabfe47206957084e4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-3.svg": "9c5aa77f09804f200561b18dcc2e14517b77be85b67fb13b0ce6ff130f944954",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-4.svg": "c6dc04519a2fd7d433b02bd94dd9dde1185053c63d7a1818726ca0c537eabb46",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-5.svg": "2a2cd2590b598ec756ecdce883c9c54676a40c3e4557a7b238bf0ca6e540444f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-6.svg": "fca179837d93e8547ab83fed5b6deaac03d48a7be64911e79b5bd1dca2e57829",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-7.svg": "331fd18558fd33dd1be128e75d952f2cc5f6c76c6778f5c22517e0773b0efbd4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-8.svg": "02347b130ed3da83973484e3b1ea25f9f6c48caa079aadc197e0de699da4aa40",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/equal-angle-triangle-9.svg": "4ef36da827352bfff768dcbc7d3e0e058322380bb8efcf0c87e277294b922aab",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-0.svg": "8e4c6bf0649d09fa8b2f61d2de1d01a0696ca6154cf33891a3905107afcdba36",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-1.svg": "e80a96af25bb6fbaf1466ae461b35e42f8a4b0d49963e4587de53fac584d0523",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-10.svg": "f2742a5623ab6c4959ab6a634c94e2bc436377f200f316c59ad0c21f3928d871",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-11.svg": "70604b510992ba4da6adff8f6f25d134179572c2f06bd1927270a28b8f18fbb2",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-2.svg": "98ca07b6f9fd53ed67fd20167fb28ff4673a4c415810083ad7a8e4518474b2a1",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-3.svg": "71632f69ea5f84de26a2b6b7f267723f66761e7e49fe5dfbf1f3097f3f1ff1e3",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-4.svg": "8598960b2af5a4e18507ae58c710fe5952d30ff31281057295472ebcea3afeff",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-5.svg": "dec1229f66d1b1c9db1af996ee2a44b1a1de54c5ed8ab5f1f3385c21a267bafe",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-6.svg": "676393200354006c7c5f0a1b47a63fe1e1ef8e60d0a930adf3f9e32a9fd6a1ab",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-7.svg": "7db9aa1420766ea8960141f25347d401ad1ef2232f986e31373331c34a1a6139",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-8.svg": "d085a7ea3165b04120989e9aecb9fae12c42c8509448f59c3bfdc9dd3434aef1",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/exterior-triangle-9.svg": "2af4fa9bbdb27a0620c982ca6c2cd3d4a1117e2fcd454ac30fdfa1c758e06978",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-0.svg": "569a23e3ce4e3d2c8ded78709555f7cc7362dc69d646234e58c319604cc1aed4",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-1.svg": "303383be1a32ba8e39e1b134afbccfadda62523abaecfb80e33176138338063a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-10.svg": "d048757b1c7a6d1c407c161a4c86ca22a14b4d36426045d47198b17987a3238b",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-11.svg": "fd9a590104e322296236c1851e2a8042741629f9112066c9b4cacf87329ed5b1",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-2.svg": "f99c30417f70bd4146a94acda22f1d2f2ee8f35bd18ca01a2ea3e9677c3308e6",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-3.svg": "fcac49dd4a945390d9279fbe6931601c8a97c7651030ffa7ddc5aa21b0aa5061",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-4.svg": "2f332f286c04148d55183ddf0cb2080b322962f593693fdce9f059d9af094e6e",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-5.svg": "4af7e1442c58d987a637ed9dc31fbf9ae7f0701b8459f50b4eeb16e00e303a8f",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-6.svg": "a4218b10b3ac13169f697ef8c33b72a7b18ef6575b3a55ef9216caa56e9c7568",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-7.svg": "ba9cf4fc773302fdd9a479b7a2fef670a5302c196317dc2d7897489dbccd7208",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-8.svg": "a161387abf15abe31c69271ea3b14f6fc3f23df2c096544c7a12f3091543163a",
+    "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-9.svg": "37131d792b2d45c3621df63f5eb044e6716f191c5e0d113a3bade8db105ff098",
+    "packages/contracts/src/curriculum.ts": "d8993b824937af407a0e002ba6304dacf82f9b2b487f7da0ef71dfdc12fb96ae",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts": "fd0bde92625e206c07e539a713ea5017af00ce00f6e459f003a7915a6407a72a",
+    "apps/api/src/modules/diagnostics/measurement-definition.ts": "45261cd4db79d8dfd677df97302a508a81edb56eedcfbf943723db767431eb4e",
+    "apps/web/app/admin/curriculum/page.tsx": "8ff95efbdbe094d7434133820f2e448a3970e3fa1aed941ed34875368b38457d",
+    "apps/web/app/admin/curriculum/material-coverage.tsx": "e22e8de2431be5cc2cc04788777394b41318ffb6c6c664ce3b01e3928cc02e92",
+    "apps/web/app/admin/curriculum/curriculum.css": "211a0b3a8c8ee0edcb7e90a7676b6dd2f88d28432a1b34bbdde4da24e34dda43",
+    "scripts/qa/verify-material-coverage.cjs": "642c39d7336cc45271f4eb8c7bd0127e7bc8e1d8b261efd31d42b287f6baa8af",
+    "apps/api/src/modules/diagnostics/verification-materials.test.ts": "cec04bcb07d1fec3918a3fb27f043811b2f520d8ec502861a53e69df850126fe",
+    "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts": "498e027799a81172c51630f1f8547d321a311f83efae37c5d3b2e10262856a12",
+    "apps/api/src/modules/diagnostics/verification-blueprint.test.ts": "be452cb56c8b4e3155c983b59c400da9d00e313c3ce33f433d26b9a5730cb645",
+    "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts": "e8ffbc61c72cef5875910b1dadc29703de49a0e4d87732f9174954ec8c702fe5",
+    ".github/workflows/verify.yml": "57c4b5a5de3fcb1f4b91f3f90dff562c74ed6003e62e592829350d55f6dc971c"
+  },
+  "productionBuildsPassed": [
+    "contracts",
+    "api",
+    "web"
+  ],
+  "typeChecksPassed": [
+    "api",
+    "web"
+  ],
+  "remoteCiRun": false,
+  "browserChecked": false,
+  "buildVerification": "Successful local candidate commands. Web build contains the excluded user-owned admin content page change; not a clean checkout or cross-environment/browser acceptance.",
+  "excludedUserOwnedWebChange": {
+    "path": "apps/web/app/admin/content/page.tsx",
+    "sha256": "7c60653ca705889e01ba6bbbcbcf53e26b571fdcbd51b4a2ab774698f73937ec",
+    "diffAdded": 303,
+    "diffDeleted": 16
+  },
+  "inspectedBusinessCollections": 19,
+  "suites": [
+    {
+      "file": "apps/api/src/app.integration.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/product-safety.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/domain-database.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/operations.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/postgres.integration.test.ts",
+      "status": "passed",
+      "passed": 0,
+      "skipped": 6
+    },
+    {
+      "file": "apps/api/src/infrastructure/rate-limit.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/scoped-transactions.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/infrastructure/task-repository.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/codex-search.service.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/atomic-components.test.ts",
+      "status": "passed",
+      "passed": 19,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-arithmetic-probes.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-data-probes.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-factor-multiple-probes.test.ts",
+      "status": "passed",
+      "passed": 26,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts",
+      "status": "passed",
+      "passed": 27,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.test.ts",
+      "status": "passed",
+      "passed": 29,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-geometry-probes.test.ts",
+      "status": "passed",
+      "passed": 22,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-math-probes.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-number-probes.test.ts",
+      "status": "passed",
+      "passed": 14,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-relation-release.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.test.ts",
+      "status": "passed",
+      "passed": 21,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-second-grade-probes.test.ts",
+      "status": "passed",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-spatial-probes.test.ts",
+      "status": "passed",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-third-grade-probes.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/authored-unit-probes.test.ts",
+      "status": "passed",
+      "passed": 19,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/average-atomic.integration.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/average-atomic.test.ts",
+      "status": "passed",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "status": "passed",
+      "passed": 26,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+      "status": "passed",
+      "passed": 8,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/family-identity.test.ts",
+      "status": "passed",
+      "passed": 16,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement.test.ts",
+      "status": "passed",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/scoring.test.ts",
+      "status": "passed",
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+      "status": "passed",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "status": "passed",
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-materials.test.ts",
+      "status": "passed",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/learning/notebook.integration.test.ts",
+      "status": "passed",
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/library.integration.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "status": "passed",
+      "passed": 7,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/processing/processing.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/reviews/reviews.integration.test.ts",
+      "status": "passed",
+      "passed": 10,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/students/student-access.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/media-normalization.test.ts",
+      "status": "passed",
+      "passed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+      "status": "passed",
+      "passed": 2,
+      "skipped": 0
+    },
+    {
+      "file": "apps/api/src/modules/student-media/student-media.integration.test.ts",
+      "status": "passed",
+      "passed": 5,
+      "skipped": 0
+    }
+  ]
+}
