@@ -1,0 +1,32 @@
+{
+  "format": "study-agent-gesp-learning-loop-ci-v1",
+  "date": "2026-10-21",
+  "runId": 39513186306,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39513186306",
+  "headSha": "d8b00dae09096651ff6f69a3d029c5dd63c84cac",
+  "status": "completed",
+  "conclusion": "success",
+  "application": {
+    "runner": "ubuntu-24.04",
+    "node": 24,
+    "conclusion": "success",
+    "covered": [
+      "full production build and default test suite",
+      "all workspace type checks and local documentation links",
+      "258 authored points with zero current material gaps",
+      "GESP assisted guidance and retention SQLite journey",
+      "all authored contrast, definition, blueprint, notebook and asset audits",
+      "source privacy and tamper boundaries"
+    ]
+  },
+  "postgres": {
+    "image": "postgres:16-bookworm",
+    "conclusion": "success",
+    "schemaVersion": 11,
+    "covered": [
+      "migration, recovery and fencing",
+      "GESP guidance and retention persistent journey"
+    ]
+  },
+  "limits": "Automated Linux CI only. Human curriculum review, real browser/device acceptance and learning-effect studies remain outstanding."
+}

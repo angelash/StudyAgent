@@ -32,4 +32,6 @@
 
 
 全仓生产构建和类型检查通过；默认回归155个文件、698项，692通过、0失败、6项PostgreSQL默认跳过。PostgreSQL实机6项通过，schema为11；Windows/WSL2真实隔离C++专项8项通过。汇总收据见 [GESP闭环回归](../evidence/2026-10-21/gesp-learning-loop-regression.json) 与 [PostgreSQL迁移回归](../evidence/2026-10-21/gesp-learning-loop-postgres-regression.json)。
+GitHub Ubuntu 24.04 / Node 24 与 PostgreSQL 16 的完整 Verify 已在run `39513186306`通过，包含全仓回归、GESP双库旅程、迁移恢复和发布隐私边界，收据见 [GESP CI](../evidence/2026-10-21/gesp-learning-loop-ci.json)。
+
 真实隔离运行器、恶意源码和资源限制仍由现有Windows/WSL专项测试证明；持久化QA脚本只替换可执行收据为确定性控制流，以独立验证数据库、权限和状态机。仍未完成的是49点真人教研逐项审核、正式多任务迁移题族、真实学生/教师使用和跨设备浏览器/录音验收，这些不能由自动测试替代。
