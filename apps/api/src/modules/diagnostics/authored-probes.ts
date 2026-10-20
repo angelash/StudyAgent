@@ -2,9 +2,11 @@ import type { FoundationDefinition } from './foundation-curriculum';
 import { buildAllAuthoredMathProbeFamilies } from './authored-math-probes';
 import { buildEnglishFoundationProbeFamilies } from './authored-english-foundation-probes';
 import { buildEnglishLexicalProbeFamilies } from './authored-english-lexical-probes';
+import { buildChineseGrade1ProbeFamilies } from './authored-chinese-grade1-probes';
 
 export function buildAllAuthoredProbeFamilies() {
-  return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies()];
+  return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies(),
+    ...buildChineseGrade1ProbeFamilies()];
 }
 
 export function addAuthoredProbes(definitions: FoundationDefinition[]) {

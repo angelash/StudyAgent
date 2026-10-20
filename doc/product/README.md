@@ -8,9 +8,9 @@
 4. [实施记录](./04-delivery-log.md)：实现后逐次记录提交、验证、剩余事项，不能以计划代替交付。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
-最近交付：[GESP C++独立教研轨道与资料补充](./55-gesp-research-delivery.md)，包含题源、1～8级候选知识与1～4级教学衔接。此前为 [英语数量、颜色与规则复数书面对照](./54-english-lexical-delivery.md)、[英语启蒙书面对照评测](./53-english-foundation-delivery.md)、[教研对照素材完整度工作台](./52-material-coverage-delivery.md)、[五年级整除关系与极值约束评测](./51-factor-multiple-delivery.md)、[平均数对象与零记录的独立诊断](./50-average-count-atomic-delivery.md)、[四年级面积、角与统计对照](./49-fourth-grade-geometry-statistics-delivery.md) 和 [独立题族身份与历史重分析](./48-family-identity-delivery.md)。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
+最近交付：[一年级语文书面对照评测](./56-chinese-grade1-delivery.md)，实施前 [计划与6974题冻结基线](./56-chinese-grade1-development-plan.md) 已归档提交。此前为 [GESP C++独立教研轨道](./55-gesp-research-delivery.md)、[英语数量、颜色与规则复数书面对照](./54-english-lexical-delivery.md)、[英语启蒙书面对照评测](./53-english-foundation-delivery.md)、[教研对照素材完整度工作台](./52-material-coverage-delivery.md)、[五年级整除关系与极值约束评测](./51-factor-multiple-delivery.md)、[平均数对象与零记录的独立诊断](./50-average-count-atomic-delivery.md)、[四年级面积、角与统计对照](./49-fourth-grade-geometry-statistics-delivery.md) 和 [独立题族身份与历史重分析](./48-family-identity-delivery.md)。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
 
-下一阶段继续补齐语文书面基础对照与其余数学、英语缺口，分别验证书面、听辨和口语证据。
+下一阶段补齐一年级语文口头表达独立录音链，再推进二至六年级语文及其他剩余素材，分别验证书面、听辨和口语证据。
 
 GESP后续按 [集成验收](../gesp/integration-handoff.md) 继续内容审核、独立学习范围及程序评测建设；研究题不自动发布到学生诊断。
 

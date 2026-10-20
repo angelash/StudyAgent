@@ -15,9 +15,9 @@
 - 家庭资料下载与删除、持久任务、SQLite和PostgreSQL迁移、业务与媒体备份恢复。
 - 助教绑定当前学习证据，模型不可用时返回明确的规则指导；确定性评分不依赖AI。
 
-原创课程当前包含258个知识点、6974道任务，75点具有基础与迁移对照结构。最近补充颜色词、数量词与规则复数的144道书面对照题，见 [英语词汇与复数交付](doc/product/54-english-lexical-delivery.md)；此前字母大小写、字母表顺序与问候回应见 [英语启蒙评测交付](doc/product/53-english-foundation-delivery.md)。现有一至四年级数学原创点的素材结构审计无缺口，五年级整除关系见 [整除关系评测交付](doc/product/51-factor-multiple-delivery.md)。此前面积、角与统计的48幅原创图见 [四年级几何与统计交付](doc/product/49-fourth-grade-geometry-statistics-delivery.md)。平均数的对象与零记录已拆成独立子点，综合题分项只作为核查线索，独立题组才计入子点能力，见 [平均数原子诊断交付](doc/product/50-average-count-atomic-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
+原创课程当前包含258个知识点、7550道任务，87点具有基础与迁移对照结构。最近补充一年级语文12个书面点的576道对照题，见 [语文一年级书面评测交付](doc/product/56-chinese-grade1-delivery.md)；此前英语词汇与复数见 [英语词汇交付](doc/product/54-english-lexical-delivery.md)，字母大小写、字母表顺序与问候回应见 [英语启蒙评测交付](doc/product/53-english-foundation-delivery.md)。现有一至四年级数学原创点的素材结构审计无缺口，五年级整除关系见 [整除关系评测交付](doc/product/51-factor-multiple-delivery.md)。此前面积、角与统计的48幅原创图见 [四年级几何与统计交付](doc/product/49-fourth-grade-geometry-statistics-delivery.md)。平均数的对象与零记录已拆成独立子点，综合题分项只作为核查线索，独立题组才计入子点能力，见 [平均数原子诊断交付](doc/product/50-average-count-atomic-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
 
-教研工作台现已呈现183点的有效素材缺口，并分别核对结构和四题组题预算，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新英语素材收据。
+教研工作台现已呈现171点的有效素材缺口，并分别核对结构和四题组题预算，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新语英素材收据。
 
 GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。学生课程发布、诊断和程序运行待建设，不计入上述小学原创任务数。见 [GESP资料与恢复说明](resources/gesp/README.md) 和 [本轮交付](doc/product/55-gesp-research-delivery.md)。
 
@@ -45,7 +45,7 @@ GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级11
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 
-已完成的原有资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)；新增GESP原始档案须单独备份，不在该历史恢复证据中。混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需继续拆解细粒度知识点、编写独立探针并审核分项绑定，完成教材与课时审核映射、其余183点的测量素材深度、当前候选的跨环境复验、真实浏览器流程、原52项及新增GESP需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
+已完成的原有资产全量恢复见 [独立恢复证据](doc/product/32-full-recovery-delivery.md)；新增GESP原始档案须单独备份，不在该历史恢复证据中。混合运算的除法先修与旧记录升级见 [关系修订](doc/product/42-authored-relation-release-delivery.md)。当前仍需完成一年级口头表达与其余171点的测量素材、继续拆解细粒度知识点和审核分项绑定、教材与课时审核映射、当前候选跨环境、真实浏览器、真实学生/教师、原52项及GESP需求交叉验收。规则估计尚无标准化常模，完整目标继续进行。
 
 ## 工程目录
 

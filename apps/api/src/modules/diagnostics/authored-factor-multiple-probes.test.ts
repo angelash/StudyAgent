@@ -36,7 +36,7 @@ describe('fifth-grade divisibility, classification and extremal constraints', ()
     const meaning = (row: typeof all[number]) => JSON.stringify([row.atomId, row.exercise.stem, row.exercise.blocks, row.exercise.responseShape]);
     const historicalMeaning = new Set(previous.map(meaning)); expect(new Set(additions.map(meaning)).size).toBe(240);
     for (const row of additions) { expect(previousIds.has(row.id)).toBe(false); expect(historicalMeaning.has(meaning(row)), row.exercise.stem).toBe(false); }
-    expect(all).toHaveLength(6974); expect(new Set(all.map(row => row.id)).size).toBe(6974);
+    expect(all).toHaveLength(7550); expect(new Set(all.map(row => row.id)).size).toBe(7550);
   });
 
   it('checks actual directed factor claims including one and equality with both outcomes', () => {

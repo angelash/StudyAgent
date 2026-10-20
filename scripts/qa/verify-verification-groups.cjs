@@ -39,6 +39,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/web/components/assessment-blueprint.tsx', 'apps/web/components/verification-observations.tsx', 'apps/web/components/verification-observations.css',
   'apps/api/src/modules/diagnostics/authored-probes.ts', 'apps/api/src/modules/diagnostics/authored-english-foundation-probes.ts',
   'apps/api/src/modules/diagnostics/authored-english-lexical-probes.ts', 'resources/curriculum/authored-task-baseline-6830-v1.json',
+  'apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.ts', 'resources/curriculum/authored-task-baseline-6974-v1.json',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',
