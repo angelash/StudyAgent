@@ -61,7 +61,10 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(() => service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 2, requestKey: randomUUID() })).toThrow('上一级提示');
     const first = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });
     const second = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 2, requestKey: randomUUID() });
+    const third = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 3, requestKey: randomUUID() });
     expect(first).toMatchObject({ level: 1, revealsAnswer: false }); expect(second.text).not.toContain(JSON.stringify(task.tests));
+    expect(third.text).toContain(task.probes.find(probe => probe.dimension === 'procedure')!.prompt);
+    expect(task.probes.find(probe => probe.dimension === 'procedure')!.options.some(option => third.text.includes(option))).toBe(false);
     submitProbes();
     await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(), hintEventId: first.id });
     const workspace = service.studentWorkspace(learner, studentId);

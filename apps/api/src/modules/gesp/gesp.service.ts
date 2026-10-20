@@ -140,9 +140,10 @@ export class GespService implements OnModuleDestroy {
     const taskHints = this.store.select('gespHintEvents', { studentId: command.studentId, taskId: task.id });
     if (command.level > 1 && !taskHints.some(row => row.level === command.level - 1)) throw new BadRequestException('请先获取上一级提示，再按顺序加深');
     const prior = task.probes.find(probe => probe.dimension === 'understanding') ?? task.probes[0];
+    const trace = task.probes.find(probe => probe.dimension === 'procedure');
     const text = command.level === 1 ? `先分开写出输入、输出与转换步骤。题目要求：${task.prompt}`
       : command.level === 2 ? `回到概念，不直接猜输出：${prior.prompt} 请用题面中的规则支持或否定每个选项。`
-        : '先用一个最小合法例子走完状态变化，再检查输入边界、输出格式和首次运行结果。提示不会显示隐藏测试或最终答案。';
+        : `${trace ? `先在纸上独立跟踪这个状态问题：${trace.prompt} ` : ''}再用最小合法输入检查边界和输出格式。提示不会显示隐藏测试、选项答案或最终代码。`;
     const event: GespHintEvent = { id: this.store.nextId('gesp_hint'), studentId: command.studentId, atomId: command.atomId,
       taskId: task.id, level: command.level, text, revealsAnswer: false, requestKey: command.requestKey, createdAt: new Date().toISOString() };
     this.store.append('gespHintEvents', event); return this.publicHint(event);
