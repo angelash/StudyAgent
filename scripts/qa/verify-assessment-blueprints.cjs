@@ -8,6 +8,8 @@ const { randomBytes, randomUUID, createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const { Pool } = require('pg');
 const { NestFactory } = require('@nestjs/core');
+const { gradeResponse } = require('../../apps/api/dist/apps/api/src/modules/diagnostics/scoring.js');
+const { answerInputConfiguration } = require('@study-agent/contracts');
 const root = path.resolve(__dirname, '../..');
 const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-blueprint-runtime-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/assessment-blueprint-runtime.json');
@@ -20,7 +22,8 @@ const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infra
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Synthetic family, original authored tasks, real HTTP and three restarts; an explicitly altered QA due date tests queue release, not genuine delayed retention. No browser acceptance.',
   sourceSha256: Object.fromEntries(['apps/api/src/modules/diagnostics/assessment-blueprint.ts', 'apps/api/src/modules/diagnostics/diagnostics.service.ts',
-    'apps/api/src/modules/privacy/privacy-records.ts', 'apps/web/app/student/assessment/studio.tsx', 'apps/web/components/assessment-blueprint.tsx'].map(file =>
+    'apps/api/src/modules/privacy/privacy-records.ts', 'apps/web/app/student/assessment/studio.tsx', 'apps/web/components/assessment-blueprint.tsx',
+    'scripts/qa/verify-assessment-blueprints.cjs'].map(file =>
     [file, createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')])) };
 let app, store, base, adminPool, qaDatabase;
 const tokens = {};
@@ -43,6 +46,45 @@ const preview = command => call('POST', '/diagnostics/blueprints', { ...command,
 const begin = id => call('POST', `/diagnostics/blueprints/${encodeURIComponent(id)}/start`, {});
 const state = (id, action, revision, key) => call('POST', `/diagnostics/sessions/${id}/state`, { action, expectedRevision: revision,
   requestKey: key, reason: '合成环境核对评测状态、草稿、首次作答和幂等回执的持久恢复。' });
+async function questionSnapshot(sessionId, item) {
+  return store.transaction(() => structuredClone(store.find('diagnosticSessions', { id: sessionId }).questionSnapshots.find(row => row.id === item.questionId)));
+}
+function legalWrongAnswer(schema, expected) {
+  const mode = schema.mode, config = answerInputConfiguration(schema);
+  const wrongValue = value => Number.isFinite(Number(value)) ? String(Number(value) + 1) : 'QA未达标';
+  let answer;
+  if (mode === 'boolean') answer = gradeResponse(schema, expected, true).score === 1 ? false : true;
+  else if (mode === 'single_choice') answer = schema.options.find(option => option.value !== expected)?.value;
+  else if (mode === 'hotspot') answer = config.targets.find(target => target.id !== expected)?.id;
+  else if (mode === 'multiple_choice') answer = [schema.options.find(option => !expected.includes(option.value))?.value ?? expected[0]];
+  else if (mode === 'multi_blank') answer = expected.map(entry => ({ ...entry, value: wrongValue(entry.value) }));
+  else if (mode === 'sorting') answer = [...expected].reverse();
+  else if (mode === 'matching') answer = { pairs: expected.pairs.map(pair => ({ ...pair,
+    right: config.right[(config.right.findIndex(option => option.id === pair.right) + 1) % config.right.length].id })) };
+  else if (mode === 'table_fill') answer = { cells: Object.fromEntries(Object.entries(expected.cells).map(([key, value]) => [key, wrongValue(value)])) };
+  else if (mode === 'drag_drop') answer = { placements: Object.fromEntries(Object.entries(expected.placements).map(([key, value]) =>
+    [key, config.groups.find(group => group.id !== value)?.id])) };
+  else if (mode === 'text_blank') answer = 'QA未达标';
+  else if (mode === 'formula_blank') answer = '-999999';
+  else if (mode === 'numeric_blank') answer = -999999;
+  else throw new Error(`Assessment QA fixture needs a dedicated manual response for ${mode}`);
+  assert.equal(gradeResponse(schema, expected, answer).score, 0, `QA wrong response must be legal and score zero: ${schema.questionId} / ${mode}`);
+  return answer;
+}
+function partialAnswer(snapshot) {
+  const mode = snapshot.answerSchema.mode;
+  if (['numeric_blank', 'boolean', 'text_blank', 'formula_blank', 'short_answer', 'single_choice', 'hotspot'].includes(mode)) return { value: '' };
+  if (mode === 'multiple_choice') return { values: [] };
+  if (mode === 'stepwise') return { steps: [] };
+  if (mode === 'geometry_draw') return { strokes: [], description: '' };
+  if (['image_upload', 'audio_record'].includes(mode)) return { mediaIds: [], description: '' };
+  if (mode === 'matching') return { pairs: [] };
+  if (mode === 'drag_drop') return { placements: {} };
+  if (mode === 'table_fill') return { cells: {} };
+  if (mode === 'multi_blank') return { entries: [] };
+  if (mode === 'sorting') return { values: [] };
+  throw new Error(`Assessment QA draft needs support for ${mode}`);
+}
 async function main() {
   if (driver === 'postgres') {
     const config = JSON.parse(fs.readFileSync(path.join(root, 'data/qa/postgres/credentials.json'), 'utf8'));
@@ -71,8 +113,9 @@ async function main() {
   await call('PUT', `/students/${studentId}/learning-scope`, scope);
   const command = { studentId, subject: 'math', intent: 'baseline', maxItems: 4, includePrerequisites: false };
   const initial = await preview(command);
-  // This authored atom has two independent families; extra number variants cannot fill the budget.
-  assert.equal(initial.itemCount, 2); assert(initial.canStart);
+  // Selection must respect the four-item budget while using only selected independent groups.
+  assert(initial.itemCount >= 1 && initial.itemCount <= 4); assert(initial.canStart);
+  assert.equal(initial.itemCount, new Set(initial.blueprint.groups.flatMap(group => group.itemIds)).size);
   assert(!JSON.stringify(initial).includes('gradingConfig')); assert(!('command' in initial));
   assert.equal(await store.transaction(() => store.inspect('diagnosticSessions').length), 0);
   await call('GET', `/diagnostics/blueprints/${encodeURIComponent(initial.id)}`, undefined, 'outsider', 404);
@@ -87,8 +130,11 @@ async function main() {
   assert.deepEqual(session.blueprint, initial.blueprint);
   assert.deepEqual(session.items.map(item => item.id), initial.blueprint.groups.flatMap(group => group.itemIds));
   assert.equal(await store.transaction(() => store.inspect('diagnosticSessions').length), 1);
-  await call('POST', `/diagnostics/sessions/${session.id}/responses`, { itemId: session.items[0].id, answer: 0, elapsedMs: 1800 });
-  const draft = { questionId: session.items[1].questionId, mode: 'numeric_blank', response: { value: '42' } };
+  const firstSnapshot = await questionSnapshot(session.id, session.items[0]);
+  await call('POST', `/diagnostics/sessions/${session.id}/responses`, { itemId: session.items[0].id,
+    answer: legalWrongAnswer(firstSnapshot.answerSchema, firstSnapshot.answer), elapsedMs: 1800 });
+  const draftSnapshot = await questionSnapshot(session.id, session.items[1]);
+  const draft = { questionId: draftSnapshot.id, mode: draftSnapshot.answerSchema.mode, response: partialAnswer(draftSnapshot) };
   await call('PATCH', `/diagnostics/sessions/${session.id}/items/${session.items[1].id}/draft`, { answer: draft });
   const paused = await state(session.id, 'pause', 1, 'qa-blueprint-pause');
   assert.equal(paused.status, 'paused'); assert.equal(paused.revision, 2);
@@ -112,7 +158,9 @@ async function main() {
   await store.transaction(() => { store.find('diagnosticBlueprints', { id: expired.id }).expiresAt = new Date(Date.now() - 1).toISOString(); });
   await call('POST', `/diagnostics/blueprints/${encodeURIComponent(expired.id)}/start`, {}, 'parent', 409);
   const baseline = await begin((await preview({ ...command, maxItems: 2 })).id);
-  for (const item of baseline.items) await call('POST', `/diagnostics/sessions/${baseline.id}/responses`, { itemId: item.id, answer: 0, elapsedMs: 1000 });
+  for (const item of baseline.items) { const snapshot = await questionSnapshot(baseline.id, item);
+    await call('POST', `/diagnostics/sessions/${baseline.id}/responses`, { itemId: item.id,
+      answer: legalWrongAnswer(snapshot.answerSchema, snapshot.answer), elapsedMs: 1000 }); }
   await call('POST', `/diagnostics/sessions/${baseline.id}/complete`, {});
   const plan = await call('POST', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false });
   await call('PATCH', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'active' });
