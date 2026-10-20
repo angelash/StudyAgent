@@ -46,6 +46,32 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
       store.assistantSessions.push({ id: `${tag}-chat-other`, ownerUserId: other.user.id, studentId: tag });
       store.assistantMessages.push({ id: `${tag}-chat-other-message`, sessionId: `${tag}-chat-other`, content: '另一监护人的私有对话' });
       store.aiInsights.push({ id: `${tag}-other-insight`, sourceType: 'assistant', sourceId: `${tag}-chat-other`, studentId: tag, summary: '另一监护人的AI摘要' });
+      store.gespLearningScopes.push({ id: `${tag}-gesp-scope`, studentId: tag, level: 1, atomIds: ['gesp-cpp.l1.io'],
+        status: 'active', version: 1, confirmedByUserId: parent.user.id, confirmedAt: '2026-10-21T00:00:00.000Z',
+        updatedAt: '2026-10-21T00:00:00.000Z', requestKey: 'private-gesp-scope-request', reason: '家庭私有编程范围' } as any);
+      store.gespLearningScopeRevisions.push({ ...store.gespLearningScopes.at(-1), id: `${tag}-gesp-scope-v1`, scopeId: `${tag}-gesp-scope` } as any);
+      store.gespCodeSubmissions.push({ id: `${tag}-gesp-code`, studentId: tag, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two',
+        sourceSha256: 'private-source-hash', status: 'passed', createdAt: '2026-10-21T00:00:00.000Z', toolchain: 'test', compilePassed: true,
+        requestKey: 'private-gesp-code-request', source: 'int main(){ /* private source */ }', compileDiagnostics: [], runtimeDiagnostics: [],
+        tests: [{ index: 0, passed: true, status: 'passed', exitCode: 0, durationMs: 1 }], hintEventId: null, hintLevel: 0,
+        independent: true, reviewTaskId: null } as any);
+      store.gespProbeSubmissions.push({ id: `${tag}-gesp-probe`, studentId: tag, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two',
+        probeId: 'gesp-student-cpp-sum-two-concept', dimension: 'understanding', status: 'correct', requestKey: 'private-probe-request',
+        answer: '家庭私有探针回答', createdAt: '2026-10-21T00:00:00.000Z', analysis: '独立理解证据' });
+      store.gespHintEvents.push({ id: `${tag}-gesp-hint`, studentId: tag, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two',
+        level: 1, text: '家庭私有提示记录', revealsAnswer: false, requestKey: 'private-hint-request', createdAt: '2026-10-21T00:00:00.000Z' });
+      store.gespGuidancePlans.push({ id: `${tag}-gesp-plan`, studentId: tag, scopeVersion: 1, evidenceFingerprint: 'private-gesp-fingerprint',
+        source: 'rules', status: 'active', version: 2, minutesPerDay: 20, requestKey: 'private-plan-request', reason: '家庭私有计划原因',
+        createdAt: '2026-10-21T00:00:00.000Z', updatedAt: '2026-10-21T00:00:00.000Z', createdByUserId: parent.user.id,
+        decidedByUserId: parent.user.id, decidedAt: '2026-10-21T00:00:00.000Z', actions: [] });
+      store.gespGuidancePlanRevisions.push({ ...store.gespGuidancePlans.at(-1), id: `${tag}-gesp-plan-v2`, planId: `${tag}-gesp-plan`,
+        requestKey: 'private-plan-decision' });
+      store.gespReviewTasks.push({ id: `${tag}-gesp-review`, studentId: tag, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two',
+        sourceSubmissionId: `${tag}-gesp-code`, stageDay: 1, dueAt: '2026-10-22T00:00:00.000Z', createdAt: '2026-10-21T00:00:00.000Z',
+        status: 'scheduled', testPackSha256: 'private-test-pack-hash', attemptCount: 0, lastSubmissionId: null, lastStatus: null,
+        completedSubmissionId: null, completedAt: null });
+      store.events.push({ eventId: `${tag}-gesp-event`, eventName: 'gesp.plan_updated', payload: { planId: `${tag}-gesp-plan`,
+        hintId: `${tag}-gesp-hint` } });
     }
     store.knowledgeAtoms.push({ id: 'shared-curriculum', name: '不随家庭删除的共享课程' });
     store.libraryBookmarks.push({ id: 'own-bookmark', userId: parent.user.id, paperId: 'shared-paper' }, { id: 'other-bookmark', userId: other.user.id, paperId: 'shared-paper' });
@@ -78,8 +104,13 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     expect(records.diagnosticResponses[0].answer).toEqual({ value: '原始作答' }); expect(records.scoringRevisions[0].version).toBe(1);
     expect(records.practiceSessions[0].drafts.q.answer).toEqual({ value: '训练草稿' });
     expect(records.mistakeNotebookEntries[0].metadata.reflection).toBe('保留的错题步骤便签');
+    expect(records.gespCodeSubmissions[0].source).toContain('private source');
+    expect(records.gespHintEvents[0].text).toBe('家庭私有提示记录');
+    expect(records.gespGuidancePlans[0].reason).toBe('家庭私有计划原因');
+    expect(records.gespGuidancePlanRevisions[0].planId).toBe(`${child.id}-gesp-plan`);
+    expect(records.gespReviewTasks[0].stageDay).toBe(1);
     const serialized = JSON.stringify(data);
-    for (const secret of ['passwordHash', 'tokenHash', 'private-grading-digest', 'private-notebook-request', 'private-notebook-digest', 'private-scope', '另一监护人的私有对话', '另一监护人的AI摘要', sibling.id, credential, student.token]) expect(serialized).not.toContain(secret);
+    for (const secret of ['passwordHash', 'tokenHash', 'private-grading-digest', 'private-notebook-request', 'private-notebook-digest', 'private-scope', 'private-gesp-scope-request', 'private-gesp-code-request', 'private-probe-request', 'private-hint-request', 'private-plan-request', 'private-plan-decision', '另一监护人的私有对话', '另一监护人的AI摘要', sibling.id, credential, student.token]) expect(serialized).not.toContain(secret);
     expect(await call('post', `/privacy/students/${child.id}/export`, body)).toEqual(data);
     expect(store.privacyRequests).toHaveLength(1);
     await call('post', '/privacy/account/export', body, parent, 409);
@@ -116,7 +147,7 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     expect(await call('post', `/privacy/students/${child.id}/delete`, command(preview, 'delete-child-once'))).toEqual(receipt);
     expect(store.privacyRequests).toHaveLength(1);
     await call('get', '/auth/me', undefined, student, 401); await call('get', '/auth/me');
-    for (const name of ['students', 'diagnosticSessions', 'diagnosticResponses', 'scoringRevisions', 'diagnosticDrafts', 'diagnosticReports', 'guidancePlanRevisions', 'reviewTasks', 'practiceAttempts', 'practiceHints', 'practiceScoringRevisions', 'mistakeNotebookEntries', 'assistantSessions', 'assistantMessages', 'evidenceFeedback']) {
+    for (const name of ['students', 'diagnosticSessions', 'diagnosticResponses', 'scoringRevisions', 'diagnosticDrafts', 'diagnosticReports', 'guidancePlanRevisions', 'reviewTasks', 'practiceAttempts', 'practiceHints', 'practiceScoringRevisions', 'mistakeNotebookEntries', 'assistantSessions', 'assistantMessages', 'evidenceFeedback', 'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks']) {
       expect(JSON.stringify(store[name])).not.toContain(child.id); expect(JSON.stringify(store[name])).toContain(sibling.id);
     }
     expect(store.studentLearningAccess).toHaveLength(0); expect(store.studentLearningCodes).toHaveLength(0);
@@ -142,6 +173,9 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     expect(store.libraryBookmarks.map((row: any) => row.id)).toEqual(['other-bookmark']);
     expect(store.diagnosticResponses[0].answer).toEqual({ value: '原始作答' });
     expect(store.guidancePlanRevisions[0].actorId).toBe('deleted-account'); expect(store.guidancePlanRevisions[0].snapshot.retrospectiveReview.actorId).toBe('deleted-account');
+    expect(store.gespLearningScopes.every((row: any) => row.confirmedByUserId === 'deleted-account')).toBe(true);
+    expect(store.gespCodeSubmissions.every((row: any) => row.studentId === child.id)).toBe(true);
+    expect(store.gespCodeSubmissions.some((row: any) => row.studentId === sibling.id)).toBe(false);
     expect(store.events.filter((row: any) => row.eventName === 'privacy.deletion_completed')).toHaveLength(1);
   });
 });

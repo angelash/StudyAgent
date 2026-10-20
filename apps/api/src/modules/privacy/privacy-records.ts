@@ -22,7 +22,8 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia']) {
+    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -35,7 +36,9 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const diagnosticResponses = ids(result, 'diagnosticResponses'), practiceResponses = ids(result, 'practiceAttempts');
   add(result, store, 'scoringRevisions', row => diagnosticResponses.has(row.responseId));
   add(result, store, 'practiceScoringRevisions', row => practiceResponses.has(row.responseId));
-  const plans = ids(result, 'diagnosticPlans'); add(result, store, 'guidancePlanRevisions', row => plans.has(row.planId));
+  const plans = ids(result, 'diagnosticPlans'), gespPlans = ids(result, 'gespGuidancePlans');
+  add(result, store, 'guidancePlanRevisions', row => plans.has(row.planId));
+  add(result, store, 'gespGuidancePlanRevisions', row => gespPlans.has(row.planId));
   const assessments = ids(result, 'assessments'), missions = ids(result, 'missions');
   add(result, store, 'assessmentAnswers', row => assessments.has(row.sessionId));
   add(result, store, 'missionAnswers', row => missions.has(row.missionId));
@@ -75,7 +78,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   const count = (...names: string[]) => names.reduce((sum, name) => sum + (selected[name]?.length ?? 0), 0);
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
-    activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions'),
+    activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
     conversations: count('assistantMessages'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
@@ -110,7 +113,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
 
 /** Retain shared children's learning history while removing a closed account's attribution. */
 export function anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string) {
-  const actorFields = new Set(['actorId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy', 'ownerUserId']);
+  const actorFields = new Set(['actorId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy', 'ownerUserId', 'confirmedByUserId', 'createdByUserId', 'decidedByUserId']);
   const replace = (value: unknown): unknown => {
     if (Array.isArray(value)) return value.map(replace);
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, child]) =>

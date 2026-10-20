@@ -52,6 +52,18 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         store.diagnosticPlans.push({ id: 'shared-plan', studentId: shared.id });
         store.mistakeNotebookEntries.push({ id: 'shared-notebook', studentId: shared.id, metadata: { reflection: '共同监护保留的卡点' }, history: [{ actorId: parent.user.id }] },
           { id: 'exclusive-notebook', studentId: exclusive.id, metadata: { reflection: '应随档案删除的卡点' }, history: [{ actorId: parent.user.id }] });
+        for (const [student, suffix] of [[shared, 'shared'], [exclusive, 'exclusive']]) {
+          store.gespLearningScopes.push({ id: `${student.id}-gesp-scope`, studentId: student.id, level: 1, atomIds: ['gesp-cpp.l1.io'],
+            status: 'active', version: 1, confirmedByUserId: parent.user.id, confirmedAt: new Date().toISOString(), updatedAt: new Date().toISOString(),
+            requestKey: `${suffix}-gesp-scope-request`, reason: '持久化隐私测试范围' } as any);
+          store.gespHintEvents.push({ id: `${student.id}-gesp-hint`, studentId: student.id, atomId: 'gesp-cpp.l1.io',
+            taskId: 'gesp-student-cpp-sum-two', level: 1, text: `${suffix} private hint`, revealsAnswer: false,
+            requestKey: `${suffix}-gesp-hint-request`, createdAt: new Date().toISOString() } as any);
+          store.gespCodeSubmissions.push({ id: `${student.id}-gesp-code`, studentId: student.id, atomId: 'gesp-cpp.l1.io',
+            taskId: 'gesp-student-cpp-sum-two', sourceSha256: `${suffix}-source-hash`, status: 'passed', createdAt: new Date().toISOString(),
+            toolchain: 'qa', compilePassed: true, requestKey: `${suffix}-gesp-code-request`, source: `${suffix} private source`,
+            compileDiagnostics: [], runtimeDiagnostics: [], tests: [], hintEventId: null, hintLevel: 0, independent: true, reviewTaskId: null } as any);
+        }
         for (const [id, studentId] of [[sharedMediaId, shared.id], [exclusiveMediaId, exclusive.id], [pendingMediaId, shared.id]]) store.studentMedia.push({ id, studentId,
           ownerUserId: parent.user.id, requestKey: id, kind: 'diagnostic', sessionId: studentId === shared.id ? 'shared-session' : 'exclusive-session', itemId: 'item', questionId: 'question',
           name: 'private-answer.png', mediaType: 'image/png', size: mediaBytes.length, chunkSize: 1048576, createdAt: new Date().toISOString(), references: [],
@@ -60,6 +72,7 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
       });
       const exported = await call('post', '/privacy/account/export', { credential, requestKey: 'before-deletion-export' });
       expect(exported.students).toHaveLength(2);
+      expect(exported.students.every((student: any) => student.records.gespHintEvents.length === 1 && student.records.gespCodeSubmissions.length === 1)).toBe(true);
       await createBundle({ dataDir: source, destination: bundle });
       const preview = await call('get', '/privacy/account/deletion-preview');
       const receipt = await call('post', '/privacy/account/delete', { credential, requestKey: 'close-durable-parent', confirmation: preview.confirmation, fingerprint: preview.fingerprint });
@@ -93,6 +106,10 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         expect(recoveredStore.privacyRequests.find((row: any) => row.id === receipt.id).kind).toBe('account_delete');
         expect(recoveredStore.events.some((row: any) => row.eventName === 'privacy.restore_deletions_applied')).toBe(true);
         expect(recoveredStore.studentMedia.map((row: any) => row.id).sort()).toEqual([sharedMediaId, pendingMediaId].sort());
+        expect(recoveredStore.gespLearningScopes).toHaveLength(1);
+        expect(recoveredStore.gespLearningScopes[0]).toMatchObject({ studentId: shared.id, confirmedByUserId: 'deleted-account' });
+        expect(recoveredStore.gespHintEvents).toHaveLength(1); expect(recoveredStore.gespHintEvents[0].studentId).toBe(shared.id);
+        expect(recoveredStore.gespCodeSubmissions).toHaveLength(1); expect(recoveredStore.gespCodeSubmissions[0].source).toBe('shared private source');
         expect(recoveredStore.studentMedia.every((row: any) => row.ownerUserId === `deleted-account:${row.id}`)).toBe(true);
       });
       expect((await verifyBundle({ bundle })).manifest.database.collections.some((row: any) => row.collection === 'users' && row.count >= 3)).toBe(true);

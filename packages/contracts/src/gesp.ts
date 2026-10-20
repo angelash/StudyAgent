@@ -125,6 +125,7 @@ export type GespGuidancePlan = {
   id: string; studentId: string; scopeVersion: number; evidenceFingerprint: string;
   source: 'rules'; status: 'awaiting_confirmation' | 'active' | 'completed'; version: number;
   minutesPerDay: number; requestKey: string; reason: string; createdAt: string; updatedAt: string;
+  createdByUserId: string; decidedByUserId: string | null; decidedAt: string | null;
   actions: GespGuidanceAction[];
 };
 

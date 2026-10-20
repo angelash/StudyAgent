@@ -153,7 +153,9 @@ export class GespService implements OnModuleDestroy {
     if (replayed) {
       if (replayed.scopeVersion !== command.scopeVersion || replayed.minutesPerDay !== command.minutesPerDay)
         throw new ConflictException('同一指导计划请求键不能改变范围版本或每日时长');
-      return this.publicPlan(replayed);
+      const original = this.store.select('gespGuidancePlanRevisions', { planId: replayed.id, version: 1 })
+        .find(row => row.requestKey === command.requestKey);
+      return original ? this.publicPlanSnapshot(original) : this.publicPlan(replayed);
     }
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
     if (!scope) throw new BadRequestException('请先确认GESP独立学习范围');
@@ -177,7 +179,8 @@ export class GespService implements OnModuleDestroy {
     });
     const plan: GespGuidancePlan = { id: this.store.nextId('gesp_guidance'), studentId: command.studentId, scopeVersion: scope.version,
       evidenceFingerprint: fingerprint, source: 'rules', status: 'awaiting_confirmation', version: 1,
-      minutesPerDay: command.minutesPerDay, requestKey: command.requestKey, reason: command.reason, createdAt: now, updatedAt: now, actions };
+      minutesPerDay: command.minutesPerDay, requestKey: command.requestKey, reason: command.reason, createdAt: now, updatedAt: now,
+      createdByUserId: user.id, decidedByUserId: null, decidedAt: null, actions };
     this.store.append('gespGuidancePlans', plan); this.appendGuidanceRevision(plan); return this.publicPlan(plan);
   }
   decideGuidancePlan(user: InMemoryUserAccount, planId: string, input: unknown) {
@@ -187,12 +190,13 @@ export class GespService implements OnModuleDestroy {
     const replayed = this.store.select('gespGuidancePlanRevisions', { planId }).find(row => row.requestKey === command.requestKey);
     if (replayed) {
       if (replayed.status !== command.status) throw new ConflictException('同一计划请求键不能改变决策');
-      return this.publicPlan(plan);
+      return this.publicPlanSnapshot(replayed);
     }
     if (plan.version !== command.expectedVersion) throw new ConflictException('指导计划已更新，请刷新后核对');
     const valid = plan.status === 'awaiting_confirmation' && command.status === 'active' || plan.status === 'active' && command.status === 'completed';
     if (!valid) throw new BadRequestException('指导计划只能由家长从待确认启用，再由启用状态结束');
     plan.status = command.status; plan.version++; plan.reason = command.reason; plan.updatedAt = new Date().toISOString();
+    plan.decidedByUserId = user.id; plan.decidedAt = plan.updatedAt;
     this.appendGuidanceRevision({ ...plan, requestKey: command.requestKey }); return this.publicPlan(plan);
   }
   submitProbe(user: InMemoryUserAccount, input: unknown) {
@@ -259,7 +263,8 @@ export class GespService implements OnModuleDestroy {
   }
   private scopeView(scope: any) { const { confirmedByUserId: _confirmedByUserId, requestKey: _requestKey, ...safe } = scope; return safe; }
   private publicHint(row: GespHintEvent) { const { requestKey: _requestKey, ...safe } = row; return safe; }
-  private publicPlan(row: GespGuidancePlan) { const { requestKey: _requestKey, ...safe } = row; return safe; }
+  private publicPlan(row: GespGuidancePlan) { const { requestKey: _requestKey, createdByUserId: _createdBy, decidedByUserId: _decidedBy, ...safe } = row; return safe; }
+  private publicPlanSnapshot(row: GespGuidancePlanRevision) { return { ...this.publicPlan(row), id: row.planId }; }
   private publicTask(task: PilotTask): GespStudentTask {
     const { tests: _tests, ...publicTask } = task;
     return { ...publicTask, probes: task.probes.map(({ answer: _answer, analysis: _analysis, ...probe }) => probe) };

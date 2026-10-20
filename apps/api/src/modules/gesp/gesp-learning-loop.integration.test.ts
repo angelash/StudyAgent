@@ -44,6 +44,7 @@ describe('GESP learning support HTTP boundaries', () => {
     await call('post', '/gesp/guidance-plans', create, learner, 403);
     const active = await call('patch', `/gesp/guidance-plans/${plan.id}`, { status: 'active', expectedVersion: 1,
       requestKey: randomUUID(), reason: '家长核对计划目标、证据、活动和每日时长后启用' }); expect(active).toMatchObject({ status: 'active', version: 2 });
+    expect(await call('post', '/gesp/guidance-plans', create)).toMatchObject({ id: plan.id, status: 'awaiting_confirmation', version: 1 });
     const workspace = await call('get', `/gesp/students/${studentId}/workspace`, undefined, learner);
     expect(workspace.guidancePlans[0].status).toBe('active'); expect(JSON.stringify(workspace.guidancePlans)).not.toContain('requestKey');
   });
