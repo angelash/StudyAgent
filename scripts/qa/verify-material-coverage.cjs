@@ -25,7 +25,17 @@ const files = ['packages/contracts/src/curriculum.ts', 'apps/api/src/modules/dia
   'apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.ts', 'resources/curriculum/authored-task-baseline-8846-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade5-probes.ts', 'apps/api/src/modules/diagnostics/authored-chinese-grade6-probes.ts',
   'resources/curriculum/authored-task-baseline-9470-v1.json',
+  'apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.test.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.test.ts',
+  'resources/curriculum/authored-task-baseline-10718-v1.json',
+  'resources/curriculum/authored-task-baseline-14174-v1.json',
+  'apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.test.ts',
+  'resources/curriculum/authored-task-baseline-15758-v1.json',
   'apps/api/src/modules/diagnostics/foundation-curriculum.ts', 'apps/api/src/modules/diagnostics/foundation-seed.service.ts',
+  'apps/api/src/modules/question-workspace/question-workspace.service.ts',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/web/app/admin/curriculum/material-coverage.tsx', 'apps/web/app/admin/curriculum/curriculum.css',
   'scripts/qa/audit-authored-curriculum.cjs', 'scripts/qa/verify-material-coverage.cjs'];
@@ -54,11 +64,11 @@ const fingerprint = () => store.transaction(() => Object.fromEntries(collections
 })));
 async function verifyPublishedCounts() {
   const result = await overview(); assert.equal(result.atoms.length, 258); assert.equal(result.cells.length, 18);
-  assert.equal(result.atoms.filter(row => row.materialCoverage.ready).length, 153);
-  assert.equal(result.cells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 105);
+  assert.equal(result.atoms.filter(row => row.materialCoverage.ready).length, 258);
+  assert.equal(result.cells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 0);
   assert(result.cells.every(cell => cell.withVerificationMaterials + cell.needingVerificationMaterials === cell.atoms));
   assert(result.atoms.every(row => row.materialCoverage.version === 'verification-materials-v1'));
-  for (const [subject, count, ready, gap] of [['math', 19, 5, 14], ['chinese', 13, 13, 0], ['english', 13, 6, 7]]) {
+  for (const [subject, count, ready, gap] of [['math', 19, 19, 0], ['chinese', 13, 13, 0], ['english', 13, 13, 0]]) {
     const filtered = await overview(`?subject=${subject}&grade=${subject === 'math' ? 5 : 1}`);
     assert.equal(filtered.atoms.length, count); assert.equal(filtered.cells.length, 1);
     assert.equal(filtered.cells[0].withVerificationMaterials, ready); assert.equal(filtered.cells[0].needingVerificationMaterials, gap);
@@ -133,7 +143,7 @@ async function main() {
   const withGap = await overview('?subject=math&grade=5');
   assert.equal(target(withGap).materialCoverage.ready, false); assert.equal(target(withGap).materialCoverage.structure.understandingFamilies, 0);
   assert(target(withGap).materialCoverage.structure.gaps.includes('understanding_family_missing'));
-  assert.equal(withGap.cells[0].withVerificationMaterials, 4); assert.equal(withGap.cells[0].needingVerificationMaterials, 15);
+  assert.equal(withGap.cells[0].withVerificationMaterials, 18); assert.equal(withGap.cells[0].needingVerificationMaterials, 1);
   const withdrawnState = await fingerprint();
   await stop(); await start(); assert.deepEqual(await fingerprint(), withdrawnState);
   const restoredGap = await overview('?subject=math&grade=5'); assert.deepEqual(restoredGap.atoms, withGap.atoms); assert.deepEqual(restoredGap.cells, withGap.cells); await verifyDenied();
@@ -158,7 +168,7 @@ async function main() {
     samples: samples.length, p50Ms: +sorted[Math.ceil(sorted.length * .5) - 1].toFixed(2), p95Ms: +p95Ms.toFixed(2), maxMs: +sorted.at(-1).toFixed(2), referenceTargetMs: 500 };
   assert(p95Ms < 500, `Warm material overview p95 ${p95Ms.toFixed(2)}ms exceeded local 500ms reference`);
   assert.deepEqual(await fingerprint(), revisedState);
-  evidence.result = { points: 258, cells: 18, readyMaterials: 153, needingMaterials: 105, currentEligibilityAndBudget: true,
+  evidence.result = { points: 258, cells: 18, readyMaterials: 258, needingMaterials: 0, currentEligibilityAndBudget: true,
     formalTeacherGrantAndRevocation: true, parentLearnerAndAnonymousDenied: true, reviewedWithdrawalAndRestoration: mappings.length,
     withdrawnStateSurvivesRestart: true, restoredStateSurvivesRestart: true, nonemptyStudentHistoryAndPreviewUnchanged: true,
     allBusinessRecordHashesUnchangedByReads: true, restarts: 2 };

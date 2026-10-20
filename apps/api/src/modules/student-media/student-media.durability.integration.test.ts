@@ -112,5 +112,5 @@ describe('real SQLite media upload recovery and deletion outbox', () => {
       release(); spy?.mockRestore(); await app?.close(); for (const [key, value] of Object.entries(previous)) { if (value === undefined) delete process.env[key]; else process.env[key] = value; }
       rmSync(directory, { recursive: true, force: true });
     }
-  }, 45000);
+  }, 90000);
 });

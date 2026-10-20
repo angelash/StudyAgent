@@ -1,0 +1,65 @@
+{
+  "format": "study-agent-final-build-runtime-v1",
+  "at": "2026-10-20T17:34:07.078Z",
+  "node": "v24.19.0",
+  "commands": {
+    "rootBuild": "passed",
+    "rootLint": "passed",
+    "apiRegression": {
+      "suites": 142,
+      "passedSuites": 142,
+      "tests": 677,
+      "passed": 671,
+      "failed": 0,
+      "pending": 6
+    },
+    "postgresRegression": {
+      "passedAllCases": true,
+      "cases": 6
+    },
+    "npmAudit": "0 vulnerabilities"
+  },
+  "coverage": {
+    "audit": {
+      "points": 258,
+      "exercises": 15758,
+      "readyMaterials": 258,
+      "needingMaterials": 0
+    },
+    "sqlite": {
+      "passed": true,
+      "pointJourneys": 258,
+      "contentUpgradeAdditions": 12323,
+      "manualReviewJourneys": 187,
+      "wavs": 120,
+      "restarts": 5
+    },
+    "postgres": {
+      "passed": true,
+      "pointJourneys": 258,
+      "contentUpgradeAdditions": 12323,
+      "manualReviewJourneys": 185,
+      "wavs": 120,
+      "restarts": 5
+    },
+    "materials": {
+      "sqliteP95Ms": 264.24,
+      "postgresP95Ms": 283.25,
+      "targetMs": 500
+    }
+  },
+  "evidenceSha256": {
+    "final-curriculum-audit.json": "0f64a4b03614eba0c584750a84c65514bd071909d4a93cc2868227e0239e01a8",
+    "final-materials-postgres.json": "121e1c8ea0fc686dd2f4bd26417f0925d537230bbc2bda51cbda08c502110d49",
+    "final-materials-sqlite.json": "2c6a8558bc1f84d77ff582074198f2aaea14be55219a66e28015e91aed01e547",
+    "final-postgres-regression.json": "fc549ed0678f22cf4d2eee10b8a4455f824cafdf16d46d351f912826575fbb8b",
+    "final-regression.json": "925a90a14dc77fae0b3afab1a923929d1509abc087b69b222d9349db59f74ea8",
+    "final-runtime-postgres.json": "cd1291b3efae7763b86a6ef0a89f92974d22e82abaf5be9dd07c12c34ab67e9c",
+    "final-runtime-sqlite.json": "d2d9a066f6aaf662882aec5b6b71b5471514f2ad000747501101587976b9ca68"
+  },
+  "limits": [
+    "Synthetic formal identities, not human students or teachers",
+    "No standardized norm or psychometric calibration",
+    "Browser Runtime visual/interaction acceptance remains outstanding"
+  ]
+}

@@ -31,6 +31,22 @@ export class QuestionWorkspaceService {
     };
   }
 
+  /** Fast path for a caller that has already established that all three records are absent. */
+  initializeNewQuestionWorkspace(question: Question, authorDisplayName = '系统') {
+    const document: QuestionDocument = { questionId: question.id, version: 1, locale: 'zh-CN',
+      blocks: [{ id: this.store.nextId('block'), type: 'text', text: question.stem }], attachments: [],
+      layoutMode: 'default', accessibilityConfig: {} };
+    const answerSchema: QuestionAnswerSchema = { questionId: question.id, mode: this.resolveDefaultMode(question),
+      responseShape: question.type === 'stepwise' ? { steps: 'string[]' } : question.type === 'oral' ? { fileUrl: 'string' } : { value: 'string' },
+      validationRules: { required: true }, gradingConfig: { legacyQuestionType: question.type },
+      placeholder: question.type === 'stepwise' ? '请按步骤填写思路' : question.type === 'oral' ? '请录音后提交' : '请输入答案' };
+    const source: QuestionSourceRecord = { questionId: question.id, sourceType: 'internal_authoring',
+      sourceName: `${authorDisplayName}创建`, sourcePathOrUrl: `manual://${question.id}`, licenseClass: 'A_INTERNAL',
+      licenseName: 'internal-authoring', importJobId: null, reviewStatus: 'approved', notes: '系统内手工创建题目' };
+    this.store.append('questionDocuments', document); this.store.append('questionAnswerSchemas', answerSchema); this.store.append('questionSources', source);
+    return { question, document, answerSchema, source };
+  }
+
   upsertDocument(
     requestUser: InMemoryUserAccount,
     questionId: string,

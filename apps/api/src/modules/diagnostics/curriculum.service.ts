@@ -15,6 +15,7 @@ import { FAMILY_IDENTITY_VERSION, canonicalFamily } from './family-identity';
 import { knowledgeMaterialCoverage } from './verification-materials';
 
 const immutableInputSupport = new WeakMap<QuestionAnswerSchema, boolean>();
+const immutableDefinitionMatches = new WeakMap<MeasurementItem, WeakMap<KnowledgeAtom, boolean>>();
 function availableMeasurementInput(schema: QuestionAnswerSchema) {
   // inspect() exposes deeply frozen snapshots. An edited schema is a different snapshot; mutable rows are never cached.
   let supported = Object.isFrozen(schema) ? immutableInputSupport.get(schema) : undefined;
@@ -24,6 +25,14 @@ function availableMeasurementInput(schema: QuestionAnswerSchema) {
   }
   // Tool availability can change independently of the immutable answer configuration.
   return supported && mediaModeAvailable(schema.mode);
+}
+
+function measuredAgainstDefinition(store: InMemoryStoreService, mapping: MeasurementItem, atom: KnowledgeAtom) {
+  if (!Object.isFrozen(mapping) || !Object.isFrozen(atom)) return measurementDefinitionMatches(store, mapping, atom);
+  let matches = immutableDefinitionMatches.get(mapping);
+  if (!matches) { matches = new WeakMap(); immutableDefinitionMatches.set(mapping, matches); }
+  const previous = matches.get(atom); if (previous !== undefined) return previous;
+  const current = measurementDefinitionMatches(store, mapping, atom); matches.set(atom, current); return current;
 }
 
 /** A reviewed map is usable only while its question, source and document version remain eligible. */
@@ -51,7 +60,7 @@ export function eligibleMeasurements(store: InMemoryStoreService, atomIds?: stri
     const atom = atoms.get(item.atomId), question = questions.get(item.questionId), source = sources.get(item.questionId);
     return item.reviewStatus === 'approved' && atom?.status === 'published' && question?.status === 'published' &&
       question.subject === atom.subject && source?.reviewStatus === 'approved' && source.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY' &&
-      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && measurementDefinitionMatches(store, item, atom) &&
+      item.questionVersion === (documents.get(item.questionId)?.version ?? 1) && measuredAgainstDefinition(store, item, atom) &&
       measurementContentMatches(store, item, candidates.get(item.questionId) ?? null, { question: question ?? null,
         document: contentDocuments.get(item.questionId) ?? null, answerSchema: contentSchemas.get(item.questionId) ?? null,
         source: contentSources.get(item.questionId) ?? null }) &&
@@ -320,7 +329,7 @@ export class CurriculumService {
         materialCoverage: knowledgeMaterialCoverage(atom, items),
         dimensions: [...new Set(items.map((i) => i.dimension))],
         definitionGaps: new Set(mappings.filter(mapping => mapping.reviewStatus === 'approved')
-          .filter(mapping => !measurementDefinitionMatches(this.store, mapping, atom)).map(mapping => mapping.questionId)).size,
+          .filter(mapping => !measuredAgainstDefinition(this.store, mapping, atom)).map(mapping => mapping.questionId)).size,
         interactionGaps: new Set(mappings.filter(i => i.reviewStatus === 'approved' && !availableInteractions.has(i.questionId)).map(i => i.questionId)).size,
         draftMappings: mappings.filter(i => i.reviewStatus === 'draft').length };
     });
@@ -352,7 +361,7 @@ export class CurriculumService {
         answerInputConfiguration(this.store.find('questionAnswerSchemas', { questionId: mapping.questionId })!).reason : '尚未配置作答方式',
       definitionIssue: (() => {
         const atom = this.store.find('knowledgeAtoms', { id: mapping.atomId });
-        return atom && measurementDefinitionMatches(this.store, mapping, atom) ? null : '知识定义已变化或无法核对，请对照当前目标和标准重新审核此映射';
+        return atom && measuredAgainstDefinition(this.store, mapping, atom) ? null : '知识定义已变化或无法核对，请对照当前目标和标准重新审核此映射';
       })(),
       contentIssue: measurementContentMatches(this.store, mapping) ? null : '题面、评分或来源已变化，或素材已撤回，请回到测量素材流程核对当前发布版本',
       componentIssue: (() => {

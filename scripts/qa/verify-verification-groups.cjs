@@ -46,6 +46,15 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.ts', 'resources/curriculum/authored-task-baseline-8846-v1.json',
   'apps/api/src/modules/diagnostics/authored-chinese-grade5-probes.ts', 'apps/api/src/modules/diagnostics/authored-chinese-grade6-probes.ts',
   'resources/curriculum/authored-task-baseline-9470-v1.json',
+  'apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.test.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.test.ts',
+  'resources/curriculum/authored-task-baseline-10718-v1.json',
+  'resources/curriculum/authored-task-baseline-14174-v1.json',
+  'apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.ts',
+  'apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.test.ts',
+  'resources/curriculum/authored-task-baseline-15758-v1.json',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/api/src/modules/diagnostics/authored-math-probes.ts', 'apps/api/src/modules/diagnostics/foundation-curriculum.ts',
   'apps/api/src/modules/diagnostics/original-core-curriculum.ts', 'apps/api/src/modules/diagnostics/structured-curriculum.ts',
@@ -72,7 +81,7 @@ const files = ['packages/contracts/src/diagnostics.ts', 'apps/api/src/modules/di
   'apps/api/src/modules/diagnostics/authored-relation-release.ts',
   'resources/curriculum/authored-relations-2026-10-20-v1.json',
   'resources/curriculum/authored-atomic-relations-2026-10-20-v1.json',
-  'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/reviews/reviews.service.ts',
+  'apps/api/src/modules/diagnostics/foundation-seed.service.ts', 'apps/api/src/modules/question-workspace/question-workspace.service.ts', 'apps/api/src/modules/reviews/reviews.service.ts',
   'apps/api/src/modules/student-media/student-media.service.ts', 'apps/api/src/modules/student-media/media-normalization.ts',
   'scripts/qa/verify-verification-groups.cjs'];
 const evidence = { at: new Date().toISOString(), driver, passed: false,
@@ -233,11 +242,12 @@ async function contentUpgrade() {
   const authoredFamilies = buildAllAuthoredProbeFamilies();
   const additions = authoredFamilies.flatMap(family => family.exercises.map(exercise => ({
     atomId: family.atomId, id: foundationQuestionId(family.atomId, exercise), analysis: exercise.analysis })));
-  const newIds = additions.map(row => row.id), originalIds = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise =>
-    foundationQuestionId(definition.atom.id, exercise))).filter(id => !newIds.includes(id));
+  const newIds = additions.map(row => row.id), newIdSet = new Set(newIds), originalIds = buildFoundationCurriculum().flatMap(definition => definition.exercises.map(exercise =>
+    foundationQuestionId(definition.atom.id, exercise))).filter(id => !newIdSet.has(id));
+  const chunks = (values, size = 5000) => Array.from({ length: Math.ceil(values.length / size) }, (_, index) => values.slice(index * size, (index + 1) * size));
   const collections = ['questions', 'questionDocuments', 'questionAnswerSchemas', 'questionSources', 'measurementItems'];
   await store.transaction(() => {
-    for (const collection of collections) store.remove(collection, { [collection === 'questions' ? 'id' : 'questionId']: newIds });
+    for (const collection of collections) for (const ids of chunks(newIds)) store.remove(collection, { [collection === 'questions' ? 'id' : 'questionId']: ids });
     // This owned synthetic fixture represents genuine preexisting edits, not an edit to a real user's store.
     const id = originalIds[0]; store.find('questions', { id }).analysis = 'QA既有编辑，升级不得改写';
     store.find('questionSources', { questionId: id }).notes = 'QA既有来源说明';
@@ -255,8 +265,10 @@ async function contentUpgrade() {
   await stop(); await start();
   assert.deepEqual(await fingerprint(), before);
   await store.transaction(() => {
-    assert.equal(store.select('questions', { id: newIds }).length, additions.length);
-    assert.equal(store.select('measurementItems', { questionId: newIds }).length, additions.length);
+    for (const ids of chunks(newIds)) {
+      assert.equal(store.select('questions', { id: ids }).length, ids.length);
+      assert.equal(store.select('measurementItems', { questionId: ids }).length, ids.length);
+    }
     for (const addition of additions) assert.equal(store.find('questions', { id: addition.id }).analysis, addition.analysis);
   });
   await stop(); await start(); assert.deepEqual(await fingerprint(), before);

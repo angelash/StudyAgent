@@ -4,6 +4,7 @@ import type { MeasurementItem, QuestionAnswerSchema } from '@study-agent/contrac
 import { answerInputConfiguration } from '@study-agent/contracts';
 import baseline from '../../../../../resources/curriculum/authored-task-baseline-6686-v1.json';
 import { buildEnglishFoundationProbeFamilies } from './authored-english-foundation-probes';
+import { buildMathGrade5Grade6ProbeFamilies } from './authored-math-grade5-grade6-probes';
 import { buildFoundationCurriculum, foundationQuestionId, type Exercise } from './foundation-curriculum';
 import { buildAllAuthoredProbeFamilies } from './authored-probes';
 import { buildAllAuthoredMathProbeFamilies } from './authored-math-probes';
@@ -33,7 +34,7 @@ describe('English foundation written task contrasts with independently reconstru
     const ids = new Set(baseline.ids), previous = all.filter(row => ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(6686); expect(baseline.sha256).toBe('e390a1a5e5bb4978db738c3312e73fe3d88390a3b1bda5ba24c62f7925e11d35');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(10718); expect(new Set(all.map(row => row.id)).size).toBe(10718);
+    expect(all).toHaveLength(15758); expect(new Set(all.map(row => row.id)).size).toBe(15758);
     expect(families).toHaveLength(12); expect(new Set(families.map(row => row.atomId)).size).toBe(3);
     for (const family of families) {
       expect(family.exercises).toHaveLength(12); expect(family.structure).toContain('→'); expect(family.distinction.length).toBeGreaterThan(15);
@@ -43,7 +44,8 @@ describe('English foundation written task contrasts with independently reconstru
   it('retains six historical basic identities and appends English after the complete unchanged math registry', () => {
     const basic = families.filter(row => row.dimension !== 'transfer').map(row => row.family).sort();
     expect(basic).toEqual(['alphabet-next', 'alphabet-previous', 'greeting-response', 'greeting-time', 'lower-to-upper', 'upper-to-lower']);
-    expect(buildAllAuthoredProbeFamilies().filter(row => row.atomId.includes(':math:'))).toEqual(buildAllAuthoredMathProbeFamilies());
+    const newMathFamilies = new Set(buildMathGrade5Grade6ProbeFamilies().map(row => row.family));
+    expect(buildAllAuthoredProbeFamilies().filter(row => row.atomId.includes(':math:') && !newMathFamilies.has(row.family))).toEqual(buildAllAuthoredMathProbeFamilies());
     expect(families.filter(row => row.dimension === 'transfer')).toHaveLength(6);
   });
   it('reconstructs each same-letter claim and includes both outcomes', () => {

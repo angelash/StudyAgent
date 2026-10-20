@@ -18,7 +18,7 @@ describe('Chinese grade-four written and oral contrasts', () => {
     const all = buildFoundationCurriculum().flatMap(row => row.exercises.map(exercise => ({ atomId: row.atom.id, id: foundationQuestionId(row.atom.id, exercise), exercise })));
     const ids = new Set(baseline.ids), previous = all.filter(row => ids.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(8846); expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(10718); expect(new Set(all.map(row => row.id)).size).toBe(10718);
+    expect(all).toHaveLength(15758); expect(new Set(all.map(row => row.id)).size).toBe(15758);
     expect(families).toHaveLength(52); expect(new Set(families.map(row => row.atomId)).size).toBe(13);
     expect(new Set(families.flatMap(row => row.exercises.map(task => foundationQuestionId(row.atomId, task)))).size).toBe(624);
   });

@@ -54,7 +54,7 @@ export class FoundationSeedService implements OnModuleInit {
             answer: item.answer, analysis: item.analysis ?? `${atom.objective}。本题参考响应：${typeof item.answer === 'object' ? JSON.stringify(item.answer) : item.answer}。`, difficultyLevel: 1,
             knowledgePointIds: [], status: 'published' as const };
           this.store.append('questions', question);
-          const { answerSchema, source, document } = this.workspace.initializeQuestionWorkspace(question, '原创基础练习');
+          const { answerSchema, source, document } = this.workspace.initializeNewQuestionWorkspace(question, '原创基础练习');
           answerSchema.mode = item.mode ?? (atom.subject === 'math' ? 'numeric_blank' : 'text_blank');
           if (item.responseShape) answerSchema.responseShape = structuredClone(item.responseShape);
           if (item.blocks) document.blocks = [{ id: 'prompt', type: 'text', text: item.stem }, ...structuredClone(item.blocks)];
