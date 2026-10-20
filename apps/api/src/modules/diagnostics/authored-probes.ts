@@ -4,10 +4,12 @@ import { buildEnglishFoundationProbeFamilies } from './authored-english-foundati
 import { buildEnglishLexicalProbeFamilies } from './authored-english-lexical-probes';
 import { buildChineseGrade1ProbeFamilies } from './authored-chinese-grade1-probes';
 import { buildChineseOralGrade1ProbeFamilies } from './authored-chinese-oral-grade1-probes';
+import { buildChineseGrade2ProbeFamilies, buildChineseOralGrade2ProbeFamilies } from './authored-chinese-grade2-probes';
 
 export function buildAllAuthoredProbeFamilies() {
   return [...buildAllAuthoredMathProbeFamilies(), ...buildEnglishFoundationProbeFamilies(), ...buildEnglishLexicalProbeFamilies(),
-    ...buildChineseGrade1ProbeFamilies(), ...buildChineseOralGrade1ProbeFamilies()];
+    ...buildChineseGrade1ProbeFamilies(), ...buildChineseOralGrade1ProbeFamilies(), ...buildChineseGrade2ProbeFamilies(),
+    ...buildChineseOralGrade2ProbeFamilies()];
 }
 
 export function addAuthoredProbes(definitions: FoundationDefinition[]) {

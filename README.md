@@ -15,9 +15,9 @@
 - 家庭资料下载与删除、持久任务、SQLite和PostgreSQL迁移、业务与媒体备份恢复。
 - 助教绑定当前学习证据，模型不可用时返回明确的规则指导；确定性评分不依赖AI。
 
-原创课程当前包含258个知识点、7598道任务，88点具有适配其证据类型的对照结构。最近补齐一年级语文12个书面点和口头表达点，共624道新任务，见 [语文一年级书面评测交付](doc/product/56-chinese-grade1-delivery.md) 与 [口头表达评测交付](doc/product/57-chinese-oral-grade1-delivery.md)。此前英语词汇与复数见 [英语词汇交付](doc/product/54-english-lexical-delivery.md)，字母大小写、字母表顺序与问候回应见 [英语启蒙评测交付](doc/product/53-english-foundation-delivery.md)。现有一至四年级数学原创点的素材结构审计无缺口，五年级整除关系见 [整除关系评测交付](doc/product/51-factor-multiple-delivery.md)。此前面积、角与统计的48幅原创图见 [四年级几何与统计交付](doc/product/49-fourth-grade-geometry-statistics-delivery.md)。平均数的对象与零记录已拆成独立子点，综合题分项只作为核查线索，独立题组才计入子点能力，见 [平均数原子诊断交付](doc/product/50-average-count-atomic-delivery.md)。已迁入的研究资料与题卷资产独立保存在 `data/assets`，学生可见内容受来源资格和教学审核门禁控制。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
+原创课程当前包含258个知识点、8222道任务，101点具有适配其证据类型的对照结构。最近补齐一年级语文13点和二年级语文13点，共1248道新任务，见 [二年级语文交付](doc/product/58-chinese-grade2-delivery.md)、[一年级口头表达交付](doc/product/57-chinese-oral-grade1-delivery.md) 与 [一年级书面评测交付](doc/product/56-chinese-grade1-delivery.md)。此前英语词汇、启蒙评测、数学各阶段交付及 GESP 独立教研轨道继续保留。资产总量、教材登记数、原创任务数均不能代替全教材教学覆盖或真实学生测量效度验证。
 
-教研工作台现已呈现170点的有效素材缺口，并分别核对结构和四题组题预算，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新语英素材收据。
+教研工作台现已呈现157点的有效素材缺口，并分别核对结构和四题组题预算，见 [对照素材工作台交付](doc/product/52-material-coverage-delivery.md) 及最新语英素材收据。
 
 GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级114个候选知识点、3,132条待审核题目索引，并补充1～4级15单元教学衔接草案。支持分级检索、知识先修、原卷页码与来源核对；官网原卷、官方解析、公开镜像分别标识。学生课程发布、诊断和程序运行待建设，不计入上述小学原创任务数。见 [GESP资料与恢复说明](resources/gesp/README.md) 和 [本轮交付](doc/product/55-gesp-research-delivery.md)。
 

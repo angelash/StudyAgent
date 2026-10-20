@@ -33,10 +33,10 @@ describe('eligible material coverage through real curriculum services and HTTP',
     'diagnosticBlueprints', 'diagnosticHypotheses', 'diagnosticPlans', 'guidancePlanRevisions', 'reviewTasks'].map(name => [name, store.inspect(name)])));
   const target = (result: any) => result.atoms.find((row: any) => row.id === atomId);
 
-  it('returns all 258 points and exactly 88 complete published materials without mutating business data', async () => {
+  it('returns all 258 points and exactly 101 complete published materials without mutating business data', async () => {
     const before = fingerprint(), result = await overview(); expect(result.atoms).toHaveLength(258); expect(result.cells).toHaveLength(18);
-    expect(result.atoms.filter((row: any) => row.materialCoverage.ready)).toHaveLength(88);
-    expect(result.cells.reduce((sum: number, row: any) => sum + row.needingVerificationMaterials, 0)).toBe(170);
+    expect(result.atoms.filter((row: any) => row.materialCoverage.ready)).toHaveLength(101);
+    expect(result.cells.reduce((sum: number, row: any) => sum + row.needingVerificationMaterials, 0)).toBe(157);
     expect(result.cells.every((row: any) => row.withVerificationMaterials + row.needingVerificationMaterials === row.atoms)).toBe(true);
     const other = await overview('', teacher); expect(other.atoms).toEqual(result.atoms); expect(other.cells).toEqual(result.cells); expect(fingerprint()).toBe(before);
   }, 30_000);

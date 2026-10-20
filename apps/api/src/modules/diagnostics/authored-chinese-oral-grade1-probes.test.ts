@@ -20,7 +20,7 @@ describe('Chinese grade-one oral production contrasts and modality profile', () 
     const previousIds = new Set(baseline.ids), previous = all.filter(row => previousIds.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));
     expect(previous).toHaveLength(7550); expect(baseline.sha256).toBe('447f39ae3b8669de31eff44e500d41114f311646ed59a6f6c7ce75f8123bd37f');
     expect(createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(baseline.sha256);
-    expect(all).toHaveLength(7598); expect(new Set(all.map(row => row.id)).size).toBe(7598);
+    expect(all).toHaveLength(8222); expect(new Set(all.map(row => row.id)).size).toBe(8222);
     expect(families).toHaveLength(4); expect(new Set(families.map(row => row.atomId))).toEqual(new Set(['core:chinese:oral-complete']));
     expect(new Set(families.flatMap(row => row.exercises.map(task => foundationQuestionId(row.atomId, task)))).size).toBe(48);
   });
