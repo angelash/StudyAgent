@@ -11,6 +11,9 @@ export class GespController {
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.gesp.overview(req.user); }
   @Get('student-content') studentContent(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.studentContentReview(req.user, query); }
   @Post('student-content/reviews') reviewStudentContent(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.reviewStudentTask(req.user, body); }
+  @Get('student-content/:taskId/reviews') studentContentReviews(@Req() req: AuthenticatedRequest, @Param('taskId') taskId: string) {
+    return this.gesp.studentTaskReviewHistory(req.user, taskId);
+  }
   @Put('students/:studentId/scope') setScope(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: unknown) {
     return this.gesp.setStudentScope(req.user, studentId, body);
   }

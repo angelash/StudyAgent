@@ -99,6 +99,10 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     const current = service.studentWorkspace(parent, studentId).tasks.find(row => row.id === task.id);
     expect(current).toMatchObject({ reviewStatus: 'instructional_approved', contentReviewStatus: 'approved', contentReviewVersion: 2 });
     expect(store.select('gespTaskReviewRevisions', { taskId: task.id })).toHaveLength(2);
+    const history = service.studentTaskReviewHistory(reviewer, task.id);
+    expect(history.map(row => row.version)).toEqual([2, 1]);
+    expect(history[0]).toMatchObject({ status: 'approved', current: true });
+    expect(history[1]).toMatchObject({ status: 'rejected', current: true });
     const mutable = (service as any).studentData().tasks.find((row: any) => row.id === task.id);
     mutable.tests[0].expected += '\n';
     const stale = service.studentWorkspace(parent, studentId).tasks.find(row => row.id === task.id);

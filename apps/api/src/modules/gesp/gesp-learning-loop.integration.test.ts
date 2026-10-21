@@ -62,6 +62,8 @@ describe('GESP learning support HTTP boundaries', () => {
     const review = await call('post', '/gesp/student-content/reviews', { taskId: task.id, expectedVersion: 0, gates,
       rationale: '已核对知识目标、学生说明、两类探针、隐藏输入输出边界和隔离运行资源限制。', requestKey: randomUUID() }, reviewer);
     expect(review).toMatchObject({ status: 'approved', version: 1, current: true });
+    const history = await call('get', `/gesp/student-content/${task.id}/reviews`, undefined, reviewer);
+    expect(history).toHaveLength(1); expect(history[0]).toMatchObject({ status: 'approved', version: 1, current: true });
     await call('post', '/gesp/student-content/reviews', { taskId: task.id, expectedVersion: 0, gates,
       rationale: '旧版本请求不能覆盖已经保存并生效的审核结论，必须先刷新最新内容审核版本。', requestKey: randomUUID() }, reviewer, 409);
   });

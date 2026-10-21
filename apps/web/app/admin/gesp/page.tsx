@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import type { GespAtom, GespOverview, GespPilotTaskReviewView, GespQuestionDetail, GespSearchResult } from '@study-agent/contracts';
+import type { GespAtom, GespOverview, GespPilotTaskReviewView, GespQuestionDetail, GespSearchResult, GespTaskReviewHistoryItem } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
 import { StudyNav } from '../../../components/study-nav';
@@ -32,7 +32,7 @@ export default function GespWorkbench() {
   const [pilotLoading, setPilotLoading] = React.useState(false), [reviewNotice, setReviewNotice] = React.useState('');
   const [reviewRationale, setReviewRationale] = React.useState('');
   const [reviewGates, setReviewGates] = React.useState<Partial<Record<ReviewGate, 'approved' | 'rejected'>>>({});
-  const [reviewBusy, setReviewBusy] = React.useState(false);
+  const [reviewBusy, setReviewBusy] = React.useState(false), [reviewHistory, setReviewHistory] = React.useState<GespTaskReviewHistoryItem[] | null>(null);
   React.useEffect(() => {
     if (!allowed) return;
     const controller = new AbortController(); setError('');
@@ -73,10 +73,12 @@ export default function GespWorkbench() {
   const atom = currentAtoms.find(a => a.id === atomId);
   function changeLevel(value: number) { setLevel(value); setAtomId(''); setPage(1); }
   function openAtom(value: GespAtom) { changeLevel(value.level); setAtomId(value.id); setTab('knowledge'); }
-  const pilotTask = pilot.find(task => task.id === pilotSelected);
-  function openPilotTask(task: GespPilotTaskReviewView) {
+  const pilotTask = pilot.find(task => task.id === pilotSelected), pilotAtom = atoms.find(atom => atom.id === pilotTask?.atomId);
+  async function openPilotTask(task: GespPilotTaskReviewView) {
     setPilotSelected(task.id); setReviewNotice(''); setReviewRationale(task.review?.rationale ?? '');
-    setReviewGates(task.review ? { ...task.review.gates } : {});
+    setReviewGates(task.review ? { ...task.review.gates } : {}); setReviewHistory(null);
+    try { setReviewHistory(await req<GespTaskReviewHistoryItem[]>(`/gesp/student-content/${encodeURIComponent(task.id)}/reviews`)); }
+    catch (reason) { setError((reason as Error).message); }
   }
   async function savePilotReview() {
     if (!pilotTask) return; setReviewBusy(true); setError(''); setReviewNotice('');
@@ -109,12 +111,14 @@ export default function GespWorkbench() {
       {tab === 'pilot' && <section className="gesp-panel"><div className="gesp-panel-head"><div><span className="studio-eyebrow">AUTHORED PILOT / REVIEW GATE</span><h2>{level}级学生试题目审核</h2><p>教研人员查看完整题面、探针答案和隐藏测试后，分别确认五个门禁。只有五项全部批准才记为正式审核；文件内容变化会自动使结论失效。审核不会替代真实学生或学习效果验证。</p></div><span className="studio-badge">{pilot.filter(task => task.review?.status === 'approved').length} / {pilot.length} 已审</span></div>
         {level > 4 && <p>学生试题目目前只覆盖认证1～4级；5～8级保留研究索引。</p>}
         {pilotLoading && <p role="status">正在读取完整试点内容…</p>}{reviewNotice && <p className="studio-notice" role="status">{reviewNotice}</p>}
-        {level <= 4 && <div className="gesp-columns"><section><div className="gesp-atom-list">{pilot.map(task => <button key={task.id} aria-pressed={pilotSelected === task.id} onClick={() => openPilotTask(task)}><strong>{task.title}</strong><small>{task.atomId} · v{task.review?.version ?? 0} · {task.review?.current === false ? '内容已变化，审核失效' : task.review?.status ?? '尚未审核'}</small></button>)}</div></section><section>
+        {level <= 4 && <div className="gesp-columns"><section><div className="gesp-atom-list">{pilot.map(task => <button key={task.id} aria-pressed={pilotSelected === task.id} onClick={() => void openPilotTask(task)}><strong>{task.title}</strong><small>{task.atomId} · v{task.review?.version ?? 0} · {task.review?.current === false ? '内容已变化，审核失效' : task.review?.status ?? '尚未审核'}</small></button>)}</div></section><section>
           {!pilotTask ? <><h2>选择一道试点题</h2><p>完整隐藏测试仅对教研身份开放。逐项确认后写入带指纹的审核修订。</p></> : <><h2>{pilotTask.title}</h2><p>{pilotTask.prompt}</p><p className="gesp-fingerprint">内容 SHA-256：{pilotTask.contentSha256}</p>
+            {pilotAtom && <aside className="gesp-review-atom"><span className="studio-eyebrow">对应知识目标 · 候选定义</span><h3>{pilotAtom.name}</h3><p>{pilotAtom.successCriterion}</p><p><strong>常见待核实表现：</strong>{pilotAtom.commonErrorToInvestigate}</p><p><strong>先修建议：</strong>{pilotAtom.prerequisiteIds.map(id => atomNames.get(id) ?? id).join('、') || '无'}</p><p><strong>官方条款：</strong>{pilotAtom.sourceEvidence.map(evidence => <a key={evidence.clauseId} href={`${evidence.pdfUrl}#page=${evidence.pdfPages[0]}`} target="_blank" rel="noreferrer">{evidence.clauseId}</a>)}</p></aside>}
             <h3>概念与跟踪探针</h3>{pilotTask.probes.map(probe => <article key={probe.id} className="gesp-review-evidence"><strong>{probe.dimension} · {probe.prompt}</strong><small>选项：{probe.options.join(' / ')}</small><small>答案：{probe.answer}</small>{probe.analysis && <p>{probe.analysis}</p>}</article>)}
             <h3>隐藏测试与边界</h3><div className="gesp-review-tests">{pilotTask.tests.map((test, index) => <article key={index}><strong>测试 {index + 1}</strong><small>输入：{test.input || '（空）'}</small><small>期望输出：{test.expected || '（空）'}</small></article>)}</div>
             <h3>五项审核门禁</h3><div className="gesp-review-gates">{(Object.keys(reviewGateLabels) as ReviewGate[]).map(gate => <label key={gate}>{reviewGateLabels[gate]}<select value={reviewGates[gate] ?? ''} onChange={event => setReviewGates(current => ({ ...current, [gate]: event.target.value ? event.target.value as 'approved' | 'rejected' : undefined }))}><option value="">请选择</option><option value="approved">通过</option><option value="rejected">拒绝</option></select></label>)}</div>
             <label>审核理由与证据<textarea rows={5} minLength={20} maxLength={3000} value={reviewRationale} onChange={event => setReviewRationale(event.target.value)} placeholder="说明知识目标、题面、探针、隐藏边界和运行资源分别核对了什么；拒绝时指出需要修改的具体位置" /></label>
+            <details className="gesp-review-history"><summary>审核历史（{reviewHistory?.length ?? 0}）</summary>{reviewHistory === null ? <p role="status">正在读取历史…</p> : reviewHistory.length === 0 ? <p>尚无审核记录。</p> : reviewHistory.map(item => <article key={item.id}><strong>v{item.version} · {item.status === 'approved' ? '通过' : '拒绝'} · {item.current ? '对应当前内容' : '对应旧内容'}</strong><small>{new Date(item.reviewedAt).toLocaleString('zh-CN')} · 审核人 {item.reviewerId}</small><p>{(Object.keys(reviewGateLabels) as ReviewGate[]).map(gate => `${reviewGateLabels[gate]}：${item.gates[gate] === 'approved' ? '通过' : '拒绝'}`).join('；')}</p><p>{item.rationale}</p></article>)}</details>
             <div className="gesp-actions"><small>版本 {pilotTask.review?.version ?? 0} · 已变化内容不能沿用旧审核</small><button className="studio-primary" disabled={reviewBusy || Object.keys(reviewGateLabels).some(gate => !reviewGates[gate as ReviewGate]) || reviewRationale.trim().length < 20} onClick={() => void savePilotReview()}>{reviewBusy ? '正在保存审核…' : '保存审核结论'}</button></div>
           </>}
         </section></div>}

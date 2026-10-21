@@ -9,7 +9,7 @@ import { gespCodeSubmissionSchema, gespGuidancePlanCreateSchema, gespGuidancePla
   type GespGuidanceAction, type GespGuidancePlan, type GespGuidancePlanRevision, type GespHintEvent, type GespOverview,
   type GespLearningScopeRevision, type GespProbeSubmissionReceipt, type GespQuestion, type GespQuestionDetail,
   type GespReviewTask, type GespStudentTask, type GespTaskReview, type GespTaskReviewRevision, type GespTeachingPlan,
-  type GespPilotTaskReviewView, type GespTaskProvenance } from '@study-agent/contracts';
+  type GespPilotTaskReviewView, type GespTaskProvenance, type GespTaskReviewHistoryItem } from '@study-agent/contracts';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
@@ -117,6 +117,13 @@ export class GespService implements OnModuleDestroy {
     const revision: GespTaskReviewRevision = { ...structuredClone(review), id: this.store.nextId('gesp_task_review_revision'), reviewId: review.id };
     this.store.append('gespTaskReviewRevisions', revision);
     return this.publicTaskReview(review, review.taskContentSha256);
+  }
+  studentTaskReviewHistory(user: InMemoryUserAccount, taskId: string): GespTaskReviewHistoryItem[] {
+    this.assertAccess(user);
+    const task = this.studentData().tasks.find(row => row.id === taskId); if (!task) throw new NotFoundException('编程试点任务不存在');
+    const contentSha256 = hash(JSON.stringify(task));
+    return this.store.select('gespTaskReviewRevisions', { taskId }).sort((left, right) => right.version - left.version)
+      .map(row => { const { requestKey: _requestKey, ...safe } = row; return { ...safe, current: row.taskContentSha256 === contentSha256 }; });
   }
   setStudentScope(user: InMemoryUserAccount, studentId: string, input: unknown) {
     this.students.assertGuardian(user, studentId);

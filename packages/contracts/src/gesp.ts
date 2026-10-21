@@ -128,6 +128,7 @@ export type GespTaskReview = {
   reviewerId: string; reviewedAt: string; version: number; rationale: string; requestKey: string;
 };
 export type GespTaskReviewRevision = GespTaskReview & { reviewId: string };
+export type GespTaskReviewHistoryItem = Omit<GespTaskReviewRevision, 'requestKey'> & { current: boolean };
 export type GespPilotTaskReviewView = {
   id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17';
   timeLimitSeconds: number; memoryLimitMiB: number; contentSha256: string;
