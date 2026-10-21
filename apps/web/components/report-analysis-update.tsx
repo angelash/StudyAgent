@@ -4,6 +4,8 @@ import type { DiagnosticReport } from '@study-agent/contracts';
 import { apiRequest } from '../lib/api';
 
 type AnalysisStatus = { requiresReanalysis: boolean; reportVersion: number; canReanalyze: boolean };
+type AnalysisCacheEntry = { status?: AnalysisStatus; error?: string; promise?: Promise<AnalysisStatus> };
+const analysisCache = new Map<string, AnalysisCacheEntry>();
 
 export function ReportAnalysisUpdate({ report, studentMode, onChange, onRequiresUpdate }: {
   report: DiagnosticReport; studentMode: boolean; onChange: (report: DiagnosticReport) => void; onRequiresUpdate: (required: boolean) => void;
@@ -12,13 +14,26 @@ export function ReportAnalysisUpdate({ report, studentMode, onChange, onRequires
   const [error, setError] = React.useState(''), [reload, setReload] = React.useState(0);
   const requestKey = React.useRef('');
   React.useEffect(() => {
+    const signature = `${report.sessionId}:${report.version ?? 1}:${reload}`;
     let active = true;
     onRequiresUpdate(true);
-    apiRequest<AnalysisStatus>(`/diagnostics/sessions/${encodeURIComponent(report.sessionId)}/analysis-status`).then(value => {
+    const cached = analysisCache.get(signature);
+    if (cached?.status) {
+      setStatus(cached.status); setError(''); onRequiresUpdate(cached.status.requiresReanalysis || cached.status.reportVersion !== (report.version ?? 1));
+      return () => { active = false; };
+    }
+    if (cached?.error) { setError(cached.error); return () => { active = false; }; }
+    const pending = cached?.promise ?? apiRequest<AnalysisStatus>(`/diagnostics/sessions/${encodeURIComponent(report.sessionId)}/analysis-status`);
+    if (!cached?.promise) analysisCache.set(signature, { promise: pending });
+    pending.then(value => {
+      analysisCache.set(signature, { status: value });
       if (active) { setStatus(value); setError(''); onRequiresUpdate(value.requiresReanalysis || value.reportVersion !== (report.version ?? 1)); }
-    }).catch(caught => { if (active) setError((caught as Error).message); });
+    }).catch(caught => {
+      const message = (caught as Error).message; analysisCache.set(signature, { error: message });
+      if (active) setError(message);
+    });
     return () => { active = false; };
-  }, [report.sessionId, report.version, reload, onRequiresUpdate]);
+  }, [reload]);
   if (error && !status) return <div className="studio-hint" role="alert"><p>暂时无法核对这份报告的分析依据：{error}</p><button className="studio-secondary" onClick={() => setReload(value => value + 1)}>重新核对</button></div>;
   if (!status) return <p className="studio-muted" role="status">正在核对报告依据…</p>;
   if (!status.requiresReanalysis && status.reportVersion === (report.version ?? 1)) return null;

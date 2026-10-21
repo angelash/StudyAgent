@@ -26,6 +26,8 @@ test('public product shell remains usable at phone, tablet and desktop widths', 
 
 test('a parent can create a learning profile and complete an evidence-limited assessment', async ({ page }) => {
   test.setTimeout(120_000);
+  let analysisStatusRequests = 0;
+  page.on('request', request => { if (request.url().includes('/analysis-status')) analysisStatusRequests += 1; });
   const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
   const principal = `browser-${suffix}@local.test`;
   const credential = `Browser-only-${suffix}`;
@@ -69,8 +71,16 @@ test('a parent can create a learning profile and complete an evidence-limited as
     await dontKnow.click();
   }
   await expect(reportHeading).toBeVisible();
+  expect(analysisStatusRequests).toBeLessThanOrEqual(1);
   await expect(page.getByRole('heading', { name: '知识掌握与证据范围' })).toBeVisible();
   await expect(page.getByRole('heading', { name: '可能卡在哪里，以及怎样验证' })).toBeVisible();
+  await page.getByRole('button', { name: /制定指导计划/ }).click();
+  await expect(page.getByRole('heading', { name: /每天 .*分钟/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: '确认并开始计划' })).toBeVisible();
+  await page.getByRole('button', { name: '确认并开始计划' }).click();
+  await expect(page.getByRole('button', { name: '暂停计划' })).toBeVisible();
+  await expect(page.getByText('D+1', { exact: true }).first()).toBeVisible();
+  await expect(page.getByText('D+14', { exact: true }).first()).toBeVisible();
 });
 
 test('an administrator can reach the curriculum review workbench', async ({ page }) => {

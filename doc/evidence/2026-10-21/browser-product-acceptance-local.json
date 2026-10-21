@@ -1,6 +1,6 @@
 {
   "format": "browser-product-acceptance-v1",
-  "recordedAt": "2026-10-21T04:38:57.000Z",
+  "recordedAt": "2026-10-21T04:58:08.000Z",
   "host": "Windows local production build",
   "browser": "Chromium 156.0.8078.4",
   "runner": "@playwright/test 1.64.1",
@@ -11,12 +11,12 @@
     "unexpected": 0,
     "skipped": 0,
     "flaky": 0,
-    "durationMs": 18422.108
+    "durationMs": 16661.816
   },
   "journeys": [
     "Public product shell at 360, 768 and 1280 CSS pixels with no horizontal document overflow",
     "Login form reachable from the public shell at phone width",
-    "Synthetic parent login, learning-profile creation, grade-point selection, blueprint preview, eleven-item assessment and evidence report",
+    "Synthetic parent login through eleven-item assessment, report, offline guidance plan, guardian activation and D+1/D+14 review scheduling",
     "CLI administrator login redirect and curriculum review workbench navigation"
   ],
   "remainingExternalValidation": [
@@ -24,5 +24,6 @@
     "Microphone permission, recording, playback and noisy-network recovery on target browsers",
     "Real student, guardian and teacher usability and learning-effect studies",
     "Public production deployment capacity and long-running operations"
-  ]
+  ],
+  "analysisStatusRequestsPerReport": 1
 }

@@ -16,6 +16,7 @@
 12. [小学数学与英语完整教材源](./74-primary-source-textbook-migration-delivery.md)：295册完整PDF、28002页、独立备份、来源绑定与无页码伪造门禁。
 13. [浏览器产品验收](./75-browser-product-acceptance.md)：三档视口、家长建档、管理员教研入口和 CI 自动浏览器门禁。
 14. [教材来源版本绑定防护](./76-textbook-source-version-guard.md)：显式年份、唯一版本、可见冲突原因与安全来源计数。
+15. [报告核对请求去重与指导闭环](./77-report-analysis-request-dedup.md)：完整浏览器评测、离线指导、复测排期与同报告单次核对请求。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
