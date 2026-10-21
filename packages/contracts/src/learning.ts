@@ -18,6 +18,16 @@ export type PracticeSession = {
 };
 export type PracticeHint = { id: string; sessionId: string; questionId: string; level: number; at: string };
 
+export type LearningMemory = {
+  generatedAt: string; revision: string; student: { id: string; nickname: string; grade: number; preferredSessionMinutes: number };
+  subject: 'math' | 'chinese' | 'english'; consent: 'derived_evidence_only'; summary: string;
+  facts: Array<{ id: string; kind: string; text: string; provenance: string }>;
+  unknowns: Array<{ atomId: string; atomName: string; status: string; reason: string }>;
+  openHypotheses: Array<{ id: string; title: string; status: string; observation: string; explanation: string; nextAction: string }>;
+  feed: Array<{ id: string; kind: string; priority: number; title: string; reason: string;
+    target: 'today' | 'assessment' | 'plan' | 'scope'; sessionId?: string; planId?: string }>;
+};
+
 export type NotebookMetadata = { tags: string[]; favorite: boolean; removed: boolean; errorSteps: string[]; reflection: string; reviewState: 'open' | 'reviewed' };
 export type MistakeNotebookEntry = {
   id: string; studentId: string; subject: 'math' | 'chinese' | 'english'; kind: 'diagnostic' | 'practice'; responseId: string;

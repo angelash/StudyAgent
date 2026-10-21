@@ -293,11 +293,25 @@ export class AiService {
     }) ?? false;
     const definitionNotice = definitionUnavailable ? '历史记录未保存知识定义；原报告供历史查阅，请重新评测后判断当前掌握并建立计划。' :
       definitionChanged ? '记录中的知识定义与当前定义不同；只能解释当时的表现，请重新评测后判断当前掌握并建立计划。' : null;
+    const reviews = session.studentId ? this.store.select('reviewTasks', { studentId: session.studentId, subject })
+      .filter(item => item.status !== 'completed').sort((a, b) => a.dueAt.localeCompare(b.dueAt)).slice(0, 8) : [];
+    const student = session.studentId ? this.store.find('students', { id: session.studentId }) : undefined;
+    const memory = scope || latest || plan ? {
+      facts: [
+        scope ? `当前范围：${scope.grade}年级${scope.term === 'upper' ? '上' : '下'}学期，已确认${scope.learnedAtomIds.length}个已学点。` : null,
+        latest ? `最近完成评测：${latest.totalCount}题，${latest.estimates.filter(estimate => !['unknown', 'insufficient'].includes(estimate.status)).length}个点已有初步判断。` : null,
+        plan ? `当前指导计划：${plan.status}，每天${plan.minutesPerDay ?? student?.preferredSessionMinutes ?? '未设置'}分钟。` : null,
+      ].filter(Boolean), unknowns: latest?.estimates.filter(estimate => ['unknown', 'insufficient'].includes(estimate.status)).slice(0, 8).map(estimate => ({
+        atomId: estimate.atomId, atomName: estimate.atomName, status: estimate.status })) ?? [],
+      hypotheses: latest?.hypotheses.filter(hypothesis => !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status)).slice(0, 5) ?? [],
+      reviews: reviews.map(review => ({ id: review.id, dueAt: review.dueAt, status: review.status })),
+    } : null;
     return { scope: scope ? { grade: scope.grade, term: scope.term, textbookVersion: scope.textbookVersion,
         learned: scope.learnedAtomIds.map((id) => frozen ? definitions?.find(atom => atom.id === id)?.name ?? id : this.store.find('knowledgeAtoms', { id })?.name ?? id) } : null,
       report: latest ? { summary: latest.summary, estimates: latest.estimates, hypotheses: latest.hypotheses,
         definitionContext: latest.definitionContext, definitionNotice } : null,
       plan: plan && session.contextRefType !== 'diagnostic' ? { summary: plan.summary, status: plan.status, actions: plan.actions, definitionNotice } : null,
+      memory,
       definitionNotice,
       currentQuestion: bound ? { kind: bound.kind, stem: bound.question.stem.slice(0, 6000), atomName: atom?.name,
         objective: atom?.objective, draft: JSON.stringify(bound.draft).slice(0, 4000),
@@ -343,6 +357,7 @@ export class AiService {
         `${context.currentQuestion?.atomName ? `我们先看“${context.currentQuestion.atomName}”。${context.currentQuestion.objective ?? ''}。` : ''}${context.currentQuestion?.draft && context.currentQuestion.draft !== 'null' ? '你已经留下了思路草稿。先指出其中哪一步用到了题目的条件。' : '先用自己的话说一说题目要解决什么，再列出已知条件。'}你可以告诉我卡在哪一步；完成后再用一道新题检查。` :
         context.plan ? `当前计划：${context.plan.summary} 陪伴时先请孩子解释思路，只在卡住的一步给提示，再用独立新题验证。${context.report?.summary ?? ''}` :
           context.report ? `${context.report.summary} 先看知识点的证据和待验证原因，再制定每天可完成的指导计划。单次答错不足以确定深层原因。` :
+            context.memory ? `${context.memory.facts.join(' ')} 当前${context.memory.unknowns.length}个已学点仍待补充证据；先围绕这些点做一组独立作答，再根据结果安排下一步。` :
             '先确认孩子的年级、教材和已学范围，完成一组知识点评测。还未测到的内容保持未知，再根据具体证据安排验证与指导。';
       let reply = fallback, source: 'rules' | 'openai' = 'rules', citations: string[] = [];
       const history = this.store.select('assistantMessages', { sessionId: session.id }).slice(-10)

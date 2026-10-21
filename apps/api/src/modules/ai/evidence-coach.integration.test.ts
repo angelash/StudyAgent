@@ -71,6 +71,8 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     const response = (await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data;
     expect(prompt).toContain('两堆积木'); expect(prompt).toContain('我先把数量');
     expect(prompt).not.toContain('PRIVATE_REFERENCE_ANALYSIS'); expect(prompt).not.toContain('731'); expect(prompt).not.toContain('gradingConfig');
+    expect(prompt).toContain('\\"memory\\"'); expect(prompt).toContain('当前指导计划');
+    expect(prompt).not.toContain('undefined分钟');
     expect(response.source).toBe('rules'); expect(response.assistanceRecorded).toBe(true); expect(response.reply).toContain('草稿');
     expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(1);
     expect((await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data.messages).toHaveLength(2);

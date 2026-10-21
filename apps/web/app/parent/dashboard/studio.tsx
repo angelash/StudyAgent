@@ -3,11 +3,12 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
-import { FamilyOverview, masteryNames, subjectNames } from '../../../lib/learning';
+import { FamilyOverview, LearningMemory, masteryNames, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
 import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { ComponentObservations } from '../../../components/diagnostic-evidence';
+import { LearningMemoryCard } from '../../../components/learning-memory';
 import '../../student/assessment/studio.css';
 import '../../student/today/today.css';
 import './family.css';
@@ -16,6 +17,7 @@ export function FamilyStudio() {
   const identity = useSessionUser();
   React.useEffect(() => { if (identity?.role === 'student') window.location.replace('/student/today'); }, [identity]);
   const [overview, setOverview] = React.useState<FamilyOverview | null>(null), [studentId, setStudentId] = React.useState('');
+  const [memory, setMemory] = React.useState<LearningMemory | null>(null);
   const [subject, setSubject] = React.useState<Subject>('math'), [nickname, setNickname] = React.useState(''), [grade, setGrade] = React.useState(3);
   const [loading, setLoading] = React.useState(true), [busy, setBusy] = React.useState(false), [error, setError] = React.useState(''), [showCreate, setShowCreate] = React.useState(false), [expanded, setExpanded] = React.useState('');
   React.useEffect(() => { let alive = true;
@@ -23,6 +25,12 @@ export function FamilyStudio() {
       .catch((caught) => { if (alive) setError(caught.message); }).finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, []);
+  React.useEffect(() => { let alive = true; setMemory(null);
+    if (!studentId) return () => { alive = false; };
+    apiRequest<LearningMemory>(`/learning/students/${encodeURIComponent(studentId)}/memory?subject=${subject}`)
+      .then(value => { if (alive) setMemory(value); }).catch(() => { if (alive) setMemory(null); });
+    return () => { alive = false; };
+  }, [studentId, subject]);
   const child = overview?.children.find((item) => item.id === studentId), data = child?.subjects.find((item) => item.subject === subject);
   const diagnosticsHref = `/student/assessment?studentId=${studentId}&subject=${subject}`, todayHref = `/student/today?studentId=${studentId}&subject=${subject}`;
   const due = data?.today.reviews.filter((item) => item.due && item.status !== 'completed') ?? [];
@@ -48,6 +56,7 @@ export function FamilyStudio() {
           <div className="studio-section-head"><span className="studio-eyebrow">{overview.day} / 学习观察</span><h2>{child.nickname}的每一步，<br />都有迹可循。</h2><p>当前 {child.grade} 年级。先看学过什么，再看有哪些证据，最后决定下一步。</p></div>
           <div className="studio-subjects">{Object.entries(subjectNames).map(([key, name]) => <button key={key} aria-pressed={subject === key} onClick={() => { setSubject(key as Subject); setExpanded(''); }}>{name}</button>)}</div>
           <div className="family-next"><div><span className="studio-eyebrow">NEXT SMALL STEP / 接下来</span><h3>{!data.scope ? '先确认当前学习进度' : due.length ? `${due.length} 组复测已经到期` : data.today.incompleteAssessments.length ? '继续上次保存的小测' : data.today.plan ? '按计划，练习一个具体知识点' : data.today.awaitingConfirmation ? '查看并确认指导计划' : '做一组适合当前进度的小测'}</h3><p>{!data.scope ? '选择教材与已学范围，让题目适合孩子当前的进度。' : data.today.plan?.summary ?? '用独立作答观察具体表现；证据不足时，先补充测量。'}</p></div><Link className="studio-primary" href={due.length || data.today.plan ? todayHref : diagnosticsHref}>{due.length ? '去复测' : data.today.plan ? '进入今日学习' : '进入知识诊断'} ↗</Link></div>
+          {memory && <LearningMemoryCard memory={memory} studentId={studentId} diagnosticsHref={diagnosticsHref} todayHref={todayHref} />}
           {data.today.plan?.impact.needsReview && <div className="studio-hint" role="status"><strong>指导计划需要重新核对</strong><p>{data.today.plan.impact.message}</p><Link className="studio-secondary" href={`${diagnosticsHref}&view=plan&planId=${data.today.plan.id}`}>查看新依据并调整计划 ↗</Link></div>}<div className="family-metrics">{[[data.counts.selected, '已确认学习的知识点'], [data.estimates.filter((item) => item.scoredCount > 0).length, '已有观察证据'], [data.counts.secure, '通过迁移与保持验证'], [data.counts.unknown + data.counts.needsEvidence, '仍需补充测量']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
           <div className="family-section-title"><div><span className="studio-eyebrow">KNOWLEDGE & EVIDENCE</span><h3>把知识揉碎，把依据展开。</h3></div><Link className="studio-text-button" href={diagnosticsHref}>调整学习范围 ↗</Link></div>
           {data.scope ? <p className="studio-muted">{subjectNames[subject]} · {data.scope.grade}年级{data.scope.term === 'upper' ? '上' : '下'}学期 · {data.scope.textbookVersion} · {data.counts.selected} 个已学点</p> : <p className="studio-muted">尚未确认该科进度；完成确认后，再展示范围内的知识点。</p>}

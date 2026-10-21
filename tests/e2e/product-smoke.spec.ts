@@ -70,6 +70,11 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await page.getByRole('button', { name: '保存档案 ↗' }).click();
   await expect(page.getByRole('heading', { name: /浏览器验收的每一步/ })).toBeVisible();
   await expect(page.getByText('当前 2 年级。')).toBeVisible();
+  const memory = page.getByRole('region', { name: '证据化学习记忆' });
+  await expect(memory).toBeVisible();
+  await expect(memory.getByRole('heading', { name: '这次从哪里继续。' })).toBeVisible();
+  await expect(memory.getByText('先确认当前学习进度', { exact: true })).toBeVisible();
+  if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/learning-memory-dashboard.png', fullPage: true });
 
   await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
   await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();
@@ -84,10 +89,9 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await expect(page.getByRole('progressbar', { name: '评测进度' })).toBeVisible();
 
   const reportHeading = page.getByRole('heading', { name: '从知识点看清下一步。' });
-  for (let index = 0; index < 20; index += 1) {
+  for (let index = 0; index < 11; index += 1) {
     const dontKnow = page.getByRole('button', { name: '暂时不会' });
-    await expect.poll(async () => await reportHeading.isVisible() || await dontKnow.isEnabled().catch(() => false)).toBe(true);
-    if (await reportHeading.isVisible()) break;
+    await expect(dontKnow).toBeEnabled();
     await dontKnow.click();
   }
   await expect(reportHeading).toBeVisible();
@@ -101,6 +105,11 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await expect(page.getByRole('button', { name: '暂停计划' })).toBeVisible();
   await expect(page.getByText('D+1', { exact: true }).first()).toBeVisible();
   await expect(page.getByText('D+14', { exact: true }).first()).toBeVisible();
+  await page.goto('/parent/dashboard');
+  const refreshedMemory = page.getByRole('region', { name: '证据化学习记忆' });
+  await expect(refreshedMemory.getByText(/指导计划正在执行/)).toBeVisible();
+  await expect(refreshedMemory.getByText(/今天还有\d+个指导活动/)).toBeVisible();
+  if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/learning-memory-populated.png', fullPage: true });
 });
 
 test('an administrator can reach the curriculum review workbench', async ({ page }) => {

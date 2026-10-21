@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, Subject } from '@study-agent/contracts';
+import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, Subject } from '@study-agent/contracts';
 import { answerProtocolIssue } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -33,6 +33,66 @@ export class LearningService {
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
       .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
+  }
+
+  memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory {
+    this.students.assertCanAccessStudent(user, studentId);
+    const student = this.store.find('students', { id: studentId });
+    if (!student) throw new NotFoundException('学生档案不存在');
+    const profile = this.diagnostics.profile(user, studentId, subject);
+    const today = this.today(user, studentId, subject);
+    const learned = new Set(profile.scope?.learnedAtomIds ?? []);
+    const estimates = profile.estimates.filter(estimate => learned.has(estimate.atomId));
+    const sessions = this.diagnostics.listSessions(user, studentId, subject);
+    const latestSession = sessions.find(session => session.status === 'completed') ?? null;
+    const dueReviews = today.reviews.filter(review => review.due && review.status !== 'completed');
+    const incomplete = today.incompleteAssessments[0] ?? null;
+    const openHypotheses = profile.hypotheses.filter(hypothesis => !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status));
+    const unknowns = estimates.filter(estimate => ['unknown', 'insufficient'].includes(estimate.status)).slice(0, 12).map(estimate => ({
+      atomId: estimate.atomId, atomName: estimate.atomName, status: estimate.status,
+      reason: estimate.status === 'unknown' ? '尚无本题知识点的独立有效证据' : '已有证据，但样本或题族仍不足以形成稳定判断',
+    }));
+    const facts = [
+      profile.scope ? { id: `scope:${profile.scope.studentId}:${profile.scope.subject}`, kind: 'scope',
+        text: `${profile.scope.grade}年级${profile.scope.term === 'upper' ? '上' : '下'}学期，已确认${learned.size}个已学知识点，教材范围为${profile.scope.textbookVersion}`,
+        provenance: `learningScope:${profile.scope.confirmedAt}` } : null,
+      today.plan ? { id: `plan:${today.plan.id}:v${today.plan.revision ?? 1}`, kind: 'plan',
+        text: `指导计划${today.plan.status === 'active' ? '正在执行' : today.plan.status === 'proposed' ? '等待确认' : '已暂停'}，每天${today.plan.minutesPerDay}分钟`,
+        provenance: `diagnosticPlan:${today.plan.id}:v${today.plan.revision ?? 1}` } : null,
+      latestSession ? { id: `assessment:${latestSession.id}`, kind: 'assessment',
+        text: `最近一次完成评测在${latestSession.completedAt?.slice(0, 10) ?? '未记录日期'}，覆盖${latestSession.totalCount}道题`,
+        provenance: `diagnosticSession:${latestSession.id}` } : null,
+      today.reviews.length ? { id: `reviews:${today.plan?.id ?? 'planless'}:${today.reviews.length}`, kind: 'review',
+        text: `已安排${today.reviews.length}组间隔复测，其中${dueReviews.length}组当前到期`,
+        provenance: `reviewQueue:${today.plan?.id ?? 'unbound'}` } : null,
+    ].filter((fact): fact is NonNullable<typeof fact> => Boolean(fact));
+    const feed: LearningMemory['feed'] = [];
+    if (dueReviews.length) feed.push({ id: `due:${today.plan?.id ?? 'unbound'}`, kind: 'review', priority: 100,
+      title: `${dueReviews.length}组复测到期`, reason: '到期的独立新题或延迟复测优先于继续追加训练。', target: 'today' });
+    if (today.awaitingConfirmation) feed.push({ id: `confirm:${today.awaitingConfirmation.id}`, kind: 'plan_confirmation', priority: 90,
+      title: '核对并确认指导计划', reason: '计划已依据当前评测生成，需要家长或教师确认后才会生效。', target: 'plan', planId: today.awaitingConfirmation.id });
+    if (incomplete) feed.push({ id: `resume:${incomplete.id}`, kind: 'assessment', priority: 80,
+      title: `继续上次保存的评测 ${incomplete.answeredCount}/${incomplete.totalCount}`, reason: '原范围、题组和草稿均已保存，完成后才能形成当前报告。',
+      target: 'assessment', sessionId: incomplete.id });
+    if (today.plan?.status === 'active') {
+      const pending = today.activities.filter(activity => activity.status === 'pending');
+      if (pending.length) feed.push({ id: `today:${today.plan.id}:${studyDay()}`, kind: 'activity', priority: 70,
+        title: `今天还有${pending.length}个指导活动`, reason: '从计划中的具体活动和当前知识点继续，不用重新选择范围。', target: 'today', planId: today.plan.id });
+    }
+    if (!profile.scope) feed.push({ id: `scope:${studentId}:${subject}`, kind: 'scope', priority: 60,
+      title: '先确认当前学习进度', reason: '没有可核对的年级、教材和已学范围时，系统不会把未学内容当作薄弱项。', target: 'scope' });
+    else if (unknowns.length) feed.push({ id: `unknown:${subject}:${unknowns.length}`, kind: 'evidence', priority: 50,
+      title: `${unknowns.length}个已学点仍需补充证据`, reason: '未知或样本不足不是低能力；下一组评测会优先补齐可用的独立题族。', target: 'assessment' });
+    feed.sort((a, b) => b.priority - a.priority);
+    const revision = createHash('sha256').update(JSON.stringify({ scope: profile.scope, facts,
+      estimates: estimates.map(({ atomId, status, scoredCount, independentFamilies }) => ({ atomId, status, scoredCount, independentFamilies })),
+      hypotheses: openHypotheses.map(({ id, status, ruleVersion, updatedAt }) => ({ id, status, ruleVersion, updatedAt })), feed })).digest('hex');
+    return { generatedAt: new Date().toISOString(), revision, student: { id: student.id, nickname: student.nickname, grade: student.grade,
+      preferredSessionMinutes: student.preferredSessionMinutes }, subject, consent: 'derived_evidence_only',
+      summary: profile.scope ? `${profile.scope.grade}年级${profile.scope.term === 'upper' ? '上' : '下'}学期，已确认${learned.size}个已学点；${unknowns.length}个点仍待证据，${openHypotheses.length}个原因假设待验证。` :
+        '尚未确认该学科学习范围，当前没有可用于个性化指导的学习记忆。', facts, unknowns, openHypotheses: openHypotheses.slice(0, 8).map(hypothesis => ({
+          id: hypothesis.id, title: hypothesis.title, status: hypothesis.status, observation: hypothesis.observation,
+          explanation: hypothesis.explanation, nextAction: hypothesis.nextAction })), feed };
   }
 
   today(user: InMemoryUserAccount, studentId: string, subject: Subject) {

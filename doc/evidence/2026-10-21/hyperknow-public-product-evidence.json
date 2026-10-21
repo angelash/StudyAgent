@@ -1,0 +1,48 @@
+{
+  "format": "study-agent-competitor-public-evidence-v1",
+  "observedAt": "2026-10-21T05:56:57.1935837Z",
+  "subject": "Hyperknow",
+  "method": "Public unauthenticated sign-in page and its published static JavaScript bundle; no account, private API, login bypass or user data were used.",
+  "publicSources": [
+    {
+      "url": "https://agent.hyperknow.io/",
+      "observed": "Redirected to /signin; public messaging describes an agent organizing and explaining lecture slides and readings, deep research, citations and learning-style adaptation."
+    },
+    {
+      "url": "https://agent.hyperknow.io/signup",
+      "sha256": "f778c545435b86ccb9ec047863067b0aaacd1b15a08652a78a7651173d61d384"
+    },
+    {
+      "url": "https://agent.hyperknow.io/assets/js/index-BRFrkplq.js",
+      "sha256": "63970f235dfa767e46ac42dd7d623bf070169c8a3415ec5d8248e259830dc564",
+      "bytes": 3203333
+    }
+  ],
+  "observedProductSignals": {
+    "navigation": ["Courses", "Learning Feed", "History", "Marketplace"],
+    "entryModes": ["course generation", "Deep Learn Session", "whiteboard lesson", "quiz and flashcards"],
+    "knowledgeSources": ["user uploads", "PDF", "Word", "PowerPoint", "Excel", "Markdown", "plain text", "Canvas LMS files and courses"],
+    "memory": ["conversation memory toggle", "structured learning progress and preferences", "profile memory management", "external memory import", "clear stored memory"],
+    "studyContinuity": ["Learning Feed", "Google Calendar sync", "Canvas assignments/deadlines", "recommended next course or assignment"],
+    "courseStructure": ["units", "lectures", "sessions", "practice", "unit exam", "project stages", "outline-first confirmation"],
+    "progressLabels": ["Attempted", "Familiar", "Proficient", "Mastered"],
+    "tutorExperience": ["whiteboard tutor", "AI narration", "source citations with page preview", "notes export", "quick checks"],
+    "authoring": ["build course blueprint", "regenerate structure", "extend from new files", "publish and unpublish", "share course"]
+  },
+  "mechanismInference": [
+    "The public strings and route/API names indicate a pipeline from source ingestion to course outline, generated teaching sessions, practice, unit exams and a persistent learning feed.",
+    "Course progression gates unit exams on prior learning and uses a four-level completion-derived label rather than a diagnostic construct.",
+    "Memory combines explicit user controls, saved profile facts and an editable external-memory document; exact backend retrieval and ranking are not publicly verified."
+  ],
+  "notVerified": [
+    "Authenticated UI behavior and generated content quality",
+    "Stability or validity of its mastery labels",
+    "Prompt-injection, privacy or tenant isolation controls for imported memory and LMS data",
+    "Whether observed routes and strings correspond exactly to the currently deployed product flow"
+  ],
+  "integrationDecision": {
+    "adopted": "Transparent, provenance-backed learning memory and a prioritized learning feed in StudyAgent.",
+    "deferred": ["family knowledge-base ingestion", "whiteboard tutoring", "calendar/LMS synchronization", "course marketplace"],
+    "rejected": ["opaque persona inference", "treating completion or score alone as mastery", "automatic publication of generated content"]
+  }
+}

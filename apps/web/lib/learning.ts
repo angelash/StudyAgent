@@ -1,4 +1,4 @@
-import type { ComponentObservation, GuidancePlanView, DiagnosticHypothesis, GuidanceAction, LearningScope, MasteryEstimate, PracticeAttempt, Subject } from '@study-agent/contracts';
+import type { ComponentObservation, GuidancePlanView, DiagnosticHypothesis, GuidanceAction, LearningMemory, LearningScope, MasteryEstimate, PracticeAttempt, Subject } from '@study-agent/contracts';
 export const subjectNames: Record<Subject, string> = { math: '数学', chinese: '语文', english: '英语' };
 export const masteryNames: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '稳定掌握' };
 export type Child = { id: string; nickname: string; grade: number };
@@ -22,6 +22,7 @@ export type FamilySubject = { subject: Subject; scope: LearningScope | null; est
   week: { completedAssessments: number; completedActivities: number; observations: number };
   trend: Array<{ at: string; sessionId: string; measuredPoints: number; sufficientPoints: number }> };
 export type FamilyOverview = { generatedAt: string; day: string; children: Array<Child & { subjects: FamilySubject[] }> };
+export type { LearningMemory } from '@study-agent/contracts';
 export function readableAnswer(value: unknown): string {
   if (value === null || value === undefined) return '未作答';
   if (typeof value !== 'object') return String(value);

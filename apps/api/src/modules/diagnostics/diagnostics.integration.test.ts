@@ -58,6 +58,17 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     includePrerequisites: true, ...extra });
   const submit = (session: any, item: any, answer: unknown) => call('post', `/diagnostics/sessions/${session.id}/responses`, { itemId: item.id, answer, elapsedMs: 1234 });
 
+  it('builds a provenance-backed learning memory and next-action feed without treating unknown as weakness', async () => {
+    const memory = await call('get', `/learning/students/${studentId}/memory?subject=math`);
+    expect(memory).toMatchObject({ student: { id: studentId, nickname: '小禾', grade: 3 }, subject: 'math', consent: 'derived_evidence_only' });
+    expect(memory.facts).toEqual(expect.arrayContaining([expect.objectContaining({ kind: 'scope', provenance: expect.stringContaining('learningScope:') })]));
+    expect(memory.unknowns).toEqual(expect.arrayContaining([expect.objectContaining({ atomId: 'target', status: 'unknown' })]));
+    expect(memory.feed[0]).toMatchObject({ target: 'assessment', kind: 'evidence' });
+    expect(memory.summary).toContain('仍待证据'); expect(memory.revision).toMatch(/^[a-f0-9]{64}$/);
+    const outsider = await auth.register({ principal: 'memory-outsider@test', credential: 'memory-outsider-secret' }, 'memory-outsider');
+    await call('get', `/learning/students/${studentId}/memory?subject=math`, undefined, 403, outsider);
+  });
+
   it('isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps', async () => {
     const books = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');
     const book = books.find((b: any) => b.source === 'original');

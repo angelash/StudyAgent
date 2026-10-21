@@ -8,6 +8,9 @@ import { LearningService } from './learning.service';
 export class LearningController {
   constructor(private readonly learning: LearningService) {}
   @Get('students') students(@Req() req: AuthenticatedRequest) { return this.learning.studentProfiles(req.user); }
+  @Get('students/:id/memory') memory(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
+    return this.learning.memory(req.user, id, validate(subjectSchema, subject ?? 'math'));
+  }
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.learning.overview(req.user); }
   @Get('students/:id/today') today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.today(req.user, id, validate(subjectSchema, subject ?? 'math'));

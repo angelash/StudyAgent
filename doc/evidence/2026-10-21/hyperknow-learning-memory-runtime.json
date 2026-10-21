@@ -1,0 +1,38 @@
+{
+  "format": "study-agent-learning-memory-runtime-v1",
+  "recordedAt": "2026-10-21T06:20:00.000Z",
+  "competitorEvidence": "hyperknow-public-product-evidence.json",
+  "focusedRegression": {
+    "files": 2,
+    "tests": 34,
+    "passed": 34,
+    "failed": 0
+  },
+  "fullRegression": {
+    "files": 155,
+    "tests": 706,
+    "passed": 700,
+    "failed": 0,
+    "postgresSkippedByDefault": 6
+  },
+  "browserJourneys": {
+    "tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "flaky": 0,
+    "durationMs": 19437.178
+  },
+  "documentationLinks": {
+    "checked": 203,
+    "missing": 0
+  },
+  "verified": [
+    "memory facts are built only from confirmed scope, reports, plans, hypotheses and review tasks",
+    "unknown and insufficient evidence remain explicitly unknown",
+    "an unbound account receives 403 for another student's memory",
+    "the assistant safe context includes memory facts and pending reviews without raw answer leakage",
+    "the parent dashboard renders the memory card and proactive feed at desktop width without horizontal overflow",
+    "the browser flow completes assessment, report, offline guidance, guardian activation and review scheduling then reloads the populated memory"
+  ],
+  "limits": "This proves the derived-memory product flow, not opaque persona memory, real learning-effect validity, imported third-party memory safety, or a production LMS/calendar integration."
+}
