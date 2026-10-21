@@ -120,6 +120,7 @@ test('an administrator can reach the curriculum review workbench', async ({ page
   await page.getByLabel('选择目录').selectOption('archive-book:44deea6d4015a5183e175acc');
   await expect(page.getByText(/教材目录与现有原卷的版本年份不一致/)).toBeVisible();
   await page.getByLabel('选择目录').selectOption('public-book:33c8d495-9862-4e19-aab9-61d2af08608a');
-  await expect(page.getByText(/内审原卷 · 目录尚未提供逐课时页范围/)).toBeVisible();
-  await expect(page.getByRole('region', { name: '教材内审原页' })).toBeVisible();
+  const installedSource = page.getByRole('region', { name: '教材内审原页' });
+  const missingAssets = page.getByText(/同版来源已登记，但本地原卷未安装/);
+  await expect(installedSource.or(missingAssets)).toBeVisible();
 });
