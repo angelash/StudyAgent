@@ -1,32 +1,45 @@
 {
   "format": "study-agent-github-actions-verify-v1",
   "date": "2026-10-21",
-  "runId": 39500754720,
-  "url": "https://github.com/angelash/StudyAgent/actions/runs/39500754720",
-  "headSha": "3ec34ea0cb01ad9241cf0c8459b9dc6b885f4303",
+  "runId": 39548220690,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39548220690",
+  "headSha": "20e45b87b8e0f6757c60fce8464703a508e57907",
   "status": "completed",
   "conclusion": "success",
-  "createdAt": "2026-10-20T21:29:19Z",
-  "updatedAt": "2026-10-20T21:42:43Z",
+  "createdAt": "2026-10-21T05:12:13Z",
+  "updatedAt": "2026-10-21T05:27:50Z",
   "application": {
     "runner": "ubuntu-24.04",
     "node": 24,
-    "steps": 35,
-    "conclusion": "success"
+    "coreSteps": 36,
+    "jobSteps": 41,
+    "conclusion": "success",
+    "durationSeconds": 849
+  },
+  "browser": {
+    "runner": "ubuntu-24.04",
+    "browser": "Chromium for Testing",
+    "jobSteps": 10,
+    "conclusion": "success",
+    "durationSeconds": 111,
+    "journeys": 4
   },
   "postgres": {
     "image": "postgres:16-bookworm",
-    "steps": 11,
-    "conclusion": "success"
+    "jobSteps": 16,
+    "conclusion": "success",
+    "durationSeconds": 104
   },
   "covered": [
     "npm ci and zero-vulnerability audit",
     "full production build and default test suite",
     "TypeScript lint and local Markdown links",
+    "four Chromium journeys covering public layouts, touch/keyboard access, complete assessment/guidance/review flow and the curriculum workbench",
+    "curriculum source metadata without Git-ignored PDF assets, including explicit missing-asset UI",
     "document processor PDF-text integration",
     "all authored material, assessment, guidance, notebook and asset audits",
     "public textbook source, mapping candidate and recovery checks",
     "PostgreSQL migration, recovery and fencing"
   ],
-  "limits": "This is a passed Linux CI run. It does not replace real-browser, physical-device, human curriculum review, live student or teacher testing, standardized measurement calibration, or a production public launch."
+  "limits": "This is a passed Linux CI run. It does not replace representative physical-device testing, human curriculum review, live student or teacher testing, standardized measurement calibration, or a production public launch."
 }
