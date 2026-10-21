@@ -1,0 +1,27 @@
+{
+  "format": "study-agent-gesp-review-history-ci-v1",
+  "date": "2026-10-21",
+  "runId": 39531199068,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39531199068",
+  "headSha": "ebef6e7891a41ddf5a7323c525bef25fcbd93bb6",
+  "status": "completed",
+  "conclusion": "success",
+  "application": {
+    "runner": "ubuntu-24.04",
+    "build": true,
+    "tests": true,
+    "typeChecks": true,
+    "reviewHistory": true,
+    "currentEvidenceVersionFiltered": true,
+    "reviewFailsClosedOnTaskChange": true
+  },
+  "postgres": {
+    "image": "postgres:16-bookworm",
+    "schemaVersion": 12,
+    "migrationRecoveryFencing": true,
+    "reviewHistory": true,
+    "currentEvidenceVersionFiltered": true,
+    "reviewFailsClosedOnTaskChange": true
+  },
+  "limits": "Automated CI only. Human content approval and real learner/device validation remain outstanding."
+}

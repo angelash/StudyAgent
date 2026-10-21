@@ -30,4 +30,6 @@ GitHub Ubuntu/PostgreSQL完整流水线已在run `39520410926`通过，覆盖全
 
 最终GESP来源快照CI已在run `39524647811`通过，应用job和PostgreSQL job均覆盖任务内容哈希、测试包哈希、审核版本、每日预算、双库重启和迁移门禁，收据见 [GESP来源快照CI](../evidence/2026-10-21/gesp-provenance-ci.json)。
 
+审核历史与证据版本隔离已在run `39531199068`通过Ubuntu/PostgreSQL完整流水线，收据见 [GESP审核历史CI](../evidence/2026-10-21/gesp-review-history-ci.json)。
+
 当前剩余外部验收仍是49题真人教研审核、正式迁移题族、真实学生/教师、多设备浏览器与学习效果研究。本批提升的是审核可用性、版本完整性和发布门禁，不代表这些外部结论已经取得。
