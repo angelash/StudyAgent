@@ -1,0 +1,45 @@
+{
+  "format": "chinatextbook-coldarchive-index-evidence-v1",
+  "observedAt": "2026-10-21T07:47:57.289293+00:00",
+  "sourceRoot": "H:\\ColdArchive\\2026-10-21\\ChinaTextbook",
+  "compareRoot": "E:\\ChinaTextbook",
+  "upstream": "https://github.com/TapXWorld/ChinaTextbook",
+  "commit": "5a80345f2043ba6f8db8d7be9cf3db82725ff1f7",
+  "tree": "0208bcf3e92c46dbfdc421a280f6509986c905a4",
+  "trackedIdentitySha256": "c54cf2cfff02058e8a05f489bef1c54c6096ec817fe5498a68cf8b7b94afebd5",
+  "replicaEquivalence": {
+    "sameCommit": true,
+    "sameTree": true,
+    "sameTrackedFileCount": true,
+    "sameTrackedBytes": true,
+    "sameTrackedIdentities": true
+  },
+  "index": {
+    "path": "resources/curriculum/chinatextbook-coldarchive-index-v1.json",
+    "bytes": 2930545,
+    "sha256": "70a6df1f7e4921f9c07afd6b14d62d2400b17abda761a558f22428b327b661ca"
+  },
+  "summary": {
+    "trackedFiles": 2375,
+    "trackedBytes": 46620763323,
+    "pdfFiles": 1905,
+    "splitPdfParts": 466,
+    "splitGroups": 182,
+    "splitGroupsWithTrackedPdf": 26,
+    "splitGroupsRequiringAssembly": 156,
+    "logicalPdfBooks": 2061,
+    "djvuFiles": 1
+  },
+  "licensing": {
+    "status": "unverified",
+    "suggestedProductClass": "C_PUBLIC_REFERENCE_ONLY",
+    "licenseFilesTracked": false
+  },
+  "verification": {
+    "pythonUnitTests": {"passed": 5, "failed": 0},
+    "apiVitest": {"passed": 2, "failed": 0},
+    "apiBuild": "passed",
+    "documentLinks": "passed"
+  },
+  "scope": "Indexes local textbook metadata and Git content identities. It does not read, extract, OCR, publish or license-review textbook contents, and does not establish textbook-to-course completeness."
+}

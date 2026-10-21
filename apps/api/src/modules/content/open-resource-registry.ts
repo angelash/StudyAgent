@@ -79,6 +79,18 @@ const externalSourceRegistry: ExternalSourceReference[] = [
     allowedUsage: 'disallow_import',
     notes: '官方明确限制 scraping 及将其内容用于训练/开发 AI，不纳入题库导入方案。',
   },
+  {
+    id: 'chinatextbook-coldarchive',
+    label: 'ChinaTextbook 本地冷归档',
+    subjects: ['chinese', 'math', 'english'],
+    sourceType: 'public_reference',
+    licenseClass: 'C_PUBLIC_REFERENCE_ONLY',
+    licenseName: null,
+    sourcePathOrUrl: 'https://github.com/TapXWorld/ChinaTextbook',
+    verifiedAt: '2026-10-21',
+    allowedUsage: 'reference_only',
+    notes: 'H:\\ColdArchive\\2026-10-21\\ChinaTextbook 与 E:\\ChinaTextbook 为同一Git提交的教材冷/热副本；完整元数据索引在 resources/curriculum/chinatextbook-coldarchive-index-v1.json。未跟踪明确LICENSE，仅用于来源存在核查、人工教材映射候选和教研参考，不直接导入或发布。',
+  },
 ];
 
 export function listExternalSourceReferences() {

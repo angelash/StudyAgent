@@ -87,6 +87,7 @@ jobs:
           python scripts/assets/test_textbook_mapping_candidates.py
           python scripts/assets/test_chinatextbook_primary_sources.py
           python scripts/assets/test_chinatextbook_source_metadata.py
+          python scripts/assets/test_chinatextbook_coldarchive_index.py
       - name: Independent recovery verifier regression
         run: python scripts/qa/test_verify_restored_assets.py
       - name: Source release privacy and tamper boundary regression

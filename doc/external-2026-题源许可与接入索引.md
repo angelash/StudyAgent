@@ -25,6 +25,7 @@
 |---|---|---|---|
 | 国家中小学智慧教育平台 | `C_PUBLIC_REFERENCE_ONLY` | 适合教研参考与链接跳转，未获授权前不做批量抓取或重建型题库 | https://user.smartedu.cn/register |
 | Khan Academy | `C_PUBLIC_REFERENCE_ONLY` | 官方条款明确限制 scraping 以及将内容用于训练/开发 AI | https://support.khanacademy.org/hc/en-us/articles/42929097425037-What-s-allowed-and-not-allowed-under-Khan-Academy-s-Terms-of-Service |
+| ChinaTextbook 本地冷归档 | `C_PUBLIC_REFERENCE_ONLY` | H/E同提交离线教材线索；未跟踪明确LICENSE，仅作来源存在核查和人工映射候选 | https://github.com/TapXWorld/ChinaTextbook |
 
 ## 接入策略
 
@@ -32,6 +33,8 @@
 2. 开放资源只作为 `B_OPEN` 补充来源，且必须保留 `sourceName`、`sourcePathOrUrl`、`licenseName`。
 3. 公开可访问但未明确授权的资源，统一归档为 `C_PUBLIC_REFERENCE_ONLY`，只能做教研参考。
 4. 若后续接入商业合作方，统一纳入 `D_COMMERCIAL_PARTNER`，并保留合同或 API 授权边界。
+
+ChinaTextbook 冷归档的提交、文件、拆分卷、来源边界及机器可读索引见 [来源索引](product/79-chinatextbook-coldarchive-index.md)。
 
 ## 当前系统使用方式
 
