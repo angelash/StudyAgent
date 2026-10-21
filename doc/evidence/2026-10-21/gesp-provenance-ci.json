@@ -1,0 +1,27 @@
+{
+  "format": "study-agent-gesp-provenance-ci-v1",
+  "date": "2026-10-21",
+  "runId": 39524647811,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39524647811",
+  "headSha": "9141d63e07ea024bbcfaf80fbcba2c9f32ec3ea4",
+  "status": "completed",
+  "conclusion": "success",
+  "application": {
+    "runner": "ubuntu-24.04",
+    "build": true,
+    "tests": true,
+    "typeChecks": true,
+    "gespReviewAndRetention": true,
+    "taskAndTestProvenance": true,
+    "guidanceDailyBudget": true
+  },
+  "postgres": {
+    "image": "postgres:16-bookworm",
+    "schemaVersion": 12,
+    "migrationRecoveryFencing": true,
+    "gespReviewAndRetention": true,
+    "taskAndTestProvenance": true,
+    "guidanceDailyBudget": true
+  },
+  "limits": "Automated CI only. Human task approval, real student/teacher effects, and physical browser/device acceptance remain outstanding."
+}
