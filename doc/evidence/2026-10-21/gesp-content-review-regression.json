@@ -4,8 +4,8 @@
   "passed": true,
   "defaultRegression": {
     "testFiles": 155,
-    "tests": 701,
-    "passed": 695,
+    "tests": 702,
+    "passed": 696,
     "failed": 0,
     "postgresDefaultSkipped": 6
   },
@@ -21,7 +21,9 @@
     "contentReviewPersists": true,
     "hiddenContentReviewerOnly": true,
     "submissionProvenanceFrozen": true,
-    "guidanceBudgetMinutes": 20
+    "guidanceBudgetMinutes": 20,
+    "currentEvidenceVersionFiltered": true,
+    "reviewTaskFailsClosedOnProvenanceChange": true
   },
   "limits": "Automated review workflow, permission, provenance and persistence acceptance only. This does not assert that any of the 49 candidate tasks received human curriculum approval."
 }

@@ -175,6 +175,6 @@ export type GespGuidancePlanRevision = GespGuidancePlan & { planId: string };
 export type GespReviewTask = {
   id: string; studentId: string; atomId: string; taskId: string; sourceSubmissionId: string;
   stageDay: 1 | 3 | 7 | 14; dueAt: string; createdAt: string; status: 'scheduled' | 'completed';
-  testPackSha256: string; attemptCount: number; lastSubmissionId: string | null; lastStatus: 'passed' | 'failed' | 'error' | null;
+  taskContentSha256?: string; testPackSha256: string; attemptCount: number; lastSubmissionId: string | null; lastStatus: 'passed' | 'failed' | 'error' | null;
   completedSubmissionId: string | null; completedAt: string | null;
 };

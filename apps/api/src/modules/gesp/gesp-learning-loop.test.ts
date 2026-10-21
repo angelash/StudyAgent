@@ -55,12 +55,31 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(review.provenance).toEqual(expect.objectContaining({ contentReviewStatus: 'unreviewed', contentReviewVersion: 0,
       taskContentSha256: expect.stringMatching(/^[a-f0-9]{64}$/), testPackSha256: expect.stringMatching(/^[a-f0-9]{64}$/) }));
     const frozenProvenance = structuredClone(review.provenance);
-    (service as any).studentData().tasks.find((row: any) => row.id === task.id).title += '（后续修改）';
-    expect(service.studentWorkspace(learner, studentId).submissions.find((row: any) => row.id === review.id)!.provenance).toEqual(frozenProvenance);
+    const mutableTask = (service as any).studentData().tasks.find((row: any) => row.id === task.id), originalTitle = mutableTask.title;
+    mutableTask.title += '（后续修改）';
+    workspace = service.studentWorkspace(learner, studentId);
+    expect(workspace.submissions.find((row: any) => row.id === review.id)!.provenance).toEqual(frozenProvenance);
+    expect(workspace.capabilities[0].state).toBe('unknown');
+    expect(workspace.capabilities[0].invalidatedEvidenceIds.length).toBeGreaterThan(0);
+    mutableTask.title = originalTitle;
     workspace = service.studentWorkspace(learner, studentId);
     expect(workspace.reviewTasks.find((row: any) => row.id === first.id)).toMatchObject({ status: 'completed', attemptCount: 1 });
     expect(workspace.capabilities[0].dimensions.find((row: any) => row.dimension === 'retention')).toMatchObject({ status: 'correct', attempts: 1 });
     expect(workspace.capabilities[0].state).toBe('current_evidence_met');
+  });
+
+  it('fails closed when a scheduled review no longer matches its frozen task or test pack', async () => {
+    submitProbes();
+    await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
+    let workspace = service.studentWorkspace(learner, studentId);
+    const scheduled = workspace.reviewTasks[0]!;
+    store.transaction(() => { store.find('gespReviewTasks', { id: scheduled.id })!.dueAt = new Date(Date.now() - 1).toISOString(); });
+    const beforeCount = store.select('gespCodeSubmissions', { studentId }).length;
+    const mutableTask = (service as any).studentData().tasks.find((row: any) => row.id === task.id);
+    mutableTask.tests[0].expected += '\n';
+    await expect(service.submitCode(learner, { studentId, atomId, source: 'int main(){return 0;}', requestKey: randomUUID(),
+      reviewTaskId: scheduled.id })).rejects.toThrow('隐藏测试包已变化');
+    expect(store.select('gespCodeSubmissions', { studentId })).toHaveLength(beforeCount);
   });
 
   it('exposes hidden task evidence only to reviewers and publishes only a complete content approval', () => {

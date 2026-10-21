@@ -18,13 +18,13 @@
 
 ## 提交来源快照
 
-探针和代码提交冻结当时的任务内容SHA-256、隐藏测试包SHA-256、审核版本和审核状态。任务或隐藏边界之后再变化，历史证据仍指向原作答时的上下文，不会用新内容重新解释旧表现。旧数据未保存这些字段时保持缺失，不根据当前文件倒填来源。
+探针和代码提交冻结当时的任务内容SHA-256、隐藏测试包SHA-256、审核版本和审核状态。能力汇总只复用内容指纹与当前任务一致的证据；旧版本证据继续留档，但以失效证据 ID 明示，不计入当前能力。任务或隐藏边界之后再变化，历史证据仍指向原作答时的上下文，不会用新内容重新解释旧表现。旧数据未保存这些字段时保持缺失，不根据当前文件倒填来源。
 
 ## 持久化与验证
 
-新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效；提交携带的内容与测试包来源快照在重启后保持不变。
+新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效；提交携带的内容与测试包来源快照在重启后保持不变。已排程复测在执行前再次核对来源提交、任务内容和测试包哈希，任一变化即拒绝执行，避免用新任务解释旧保持结果。
 
-全仓构建与类型检查通过。默认回归155个文件、701项，695通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
+全仓构建与类型检查通过。默认回归155个文件、702项，696通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
 
 GitHub Ubuntu/PostgreSQL完整流水线已在run `39520410926`通过，覆盖全仓回归、五门禁内容审核、每日计划预算、schema 12迁移恢复与发布隐私边界，收据见 [GESP内容审核CI](../evidence/2026-10-21/gesp-content-review-ci.json)。
 
