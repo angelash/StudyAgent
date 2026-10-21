@@ -1,40 +1,40 @@
 {
   "format": "study-agent-github-actions-verify-v1",
   "date": "2026-10-21",
-  "runId": 39548220690,
-  "url": "https://github.com/angelash/StudyAgent/actions/runs/39548220690",
-  "headSha": "20e45b87b8e0f6757c60fce8464703a508e57907",
+  "runId": 39554979143,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39554979143",
+  "headSha": "d41c2537273f286fa774bb75bc7c2605925a2e8b",
   "status": "completed",
   "conclusion": "success",
-  "createdAt": "2026-10-21T05:12:13Z",
-  "updatedAt": "2026-10-21T05:27:50Z",
+  "createdAt": "2026-10-21T06:22:14Z",
+  "updatedAt": "2026-10-21T06:37:55Z",
   "application": {
     "runner": "ubuntu-24.04",
     "node": 24,
-    "coreSteps": 36,
-    "jobSteps": 41,
+    "jobSteps": 40,
     "conclusion": "success",
-    "durationSeconds": 849
+    "durationSeconds": 937
   },
   "browser": {
     "runner": "ubuntu-24.04",
     "browser": "Chromium for Testing",
     "jobSteps": 10,
     "conclusion": "success",
-    "durationSeconds": 111,
+    "durationSeconds": 106,
     "journeys": 4
   },
   "postgres": {
     "image": "postgres:16-bookworm",
     "jobSteps": 16,
     "conclusion": "success",
-    "durationSeconds": 104
+    "durationSeconds": 139
   },
   "covered": [
     "npm ci and zero-vulnerability audit",
     "full production build and default test suite",
     "TypeScript lint and local Markdown links",
     "four Chromium journeys covering public layouts, touch/keyboard access, complete assessment/guidance/review flow and the curriculum workbench",
+    "evidence-backed learning memory and refreshed study feed across assessment, guidance and review scheduling",
     "curriculum source metadata without Git-ignored PDF assets, including explicit missing-asset UI",
     "document processor PDF-text integration",
     "all authored material, assessment, guidance, notebook and asset audits",
