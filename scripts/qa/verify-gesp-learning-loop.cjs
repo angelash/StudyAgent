@@ -92,6 +92,8 @@ async function main() {
   const plan = await call('POST', '/gesp/guidance-plans', { studentId, scopeVersion: 1, minutesPerDay: 20,
     requestKey: randomUUID(), reason: '家长依据当前GESP独立证据生成待确认计划' });
   assert.equal(plan.status, 'awaiting_confirmation');
+  assert.equal(plan.totalActionMinutes, 20);
+  assert.equal(plan.actions.reduce((sum, action) => sum + action.minutes, 0), plan.totalActionMinutes);
   await call('PATCH', `/gesp/guidance-plans/${plan.id}`, { status: 'active', expectedVersion: 1, requestKey: randomUUID(),
     reason: '家长核对知识点、活动、成功标准和每日时长' });
   const due = workspace.reviewTasks[0];
@@ -116,7 +118,7 @@ async function main() {
   assert.equal(serialized.includes('"expected"'), false, 'hidden expected output'); assert.equal(serialized.includes('requestKey'), false, 'request key');
   assert(workspace.tasks.every(row => !Object.prototype.hasOwnProperty.call(row, 'tests')));
   assert(workspace.reviewTasks.every(row => !Object.prototype.hasOwnProperty.call(row, 'tests')));
-  evidence.result = { assistedSeparated: true, hiddenContentReviewerOnly: true, contentReviewPersists: true, hintPersists: true, planConfirmedByParent: true, reviewStages: 4,
+  evidence.result = { assistedSeparated: true, hiddenContentReviewerOnly: true, contentReviewPersists: true, hintPersists: true, planConfirmedByParent: true, planBudgetMinutes: plan.totalActionMinutes, reviewStages: 4,
     differentPackHashes: new Set(workspace.reviewTasks.map(row => row.testPackSha256)).size, dueReviewCompleted: true,
     retentionDimensionSeparated: true, privateSourceAndTestsWithheld: true, restarts: 1 };
   evidence.passed = true;

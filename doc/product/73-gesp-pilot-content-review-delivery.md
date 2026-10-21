@@ -20,6 +20,6 @@
 
 新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效。
 
-全仓构建与类型检查通过。默认回归155个文件、700项，694通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
+全仓构建与类型检查通过。默认回归155个文件、701项，695通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
 
 当前剩余外部验收仍是49题真人教研审核、正式迁移题族、真实学生/教师、多设备浏览器与学习效果研究。本批提升的是审核可用性、版本完整性和发布门禁，不代表这些外部结论已经取得。

@@ -81,6 +81,17 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(stale).toMatchObject({ reviewStatus: 'original_authored_pilot', contentReviewStatus: 'stale', contentReviewVersion: 2 });
   });
 
+  it('keeps every guidance cycle inside the parent daily minute budget and defers extra points', () => {
+    const atoms = curriculum.tasks.filter(row => row.atomId.startsWith('gesp-cpp.l1.')).slice(0, 10).map(row => row.atomId);
+    service.setStudentScope(parent, studentId, { level: 1, atomIds: atoms, requestKey: randomUUID(), reason: '家长确认十个测试知识点的编程范围' });
+    const plan = service.createGuidancePlan(parent, { studentId, scopeVersion: 2, minutesPerDay: 20,
+      requestKey: randomUUID(), reason: '预算测试需要按证据优先级安排当前周期可完成行动' });
+    expect(plan.actions.length).toBeLessThanOrEqual(4);
+    expect(plan.actions.reduce((sum, action) => sum + action.minutes, 0)).toBe(20);
+    expect(plan.totalActionMinutes).toBe(20);
+    expect(plan.deferredAtomIds).toHaveLength(10 - plan.actions.length);
+  });
+
   it('prevents hint skipping, marks assisted work separately, and requires parent plan confirmation', async () => {
     expect(() => service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 2, requestKey: randomUUID() })).toThrow('上一级提示');
     const first = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });

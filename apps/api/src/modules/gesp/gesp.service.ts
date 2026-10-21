@@ -200,7 +200,12 @@ export class GespService implements OnModuleDestroy {
     const capabilities = this.capabilities(scope.atomIds, probes, submissions, this.store.select('gespReviewTasks', { studentId: command.studentId })), now = new Date().toISOString();
     const fingerprint = hash(JSON.stringify({ scopeVersion: scope.version, capabilities,
       evidenceIds: [...probes, ...submissions].map(row => row.id).sort() }));
-    const actions: GespGuidanceAction[] = capabilities.map(capability => {
+    const priority = { needs_verification: 0, unknown: 1, partial_evidence: 2, current_evidence_met: 3 } as Record<string, number>;
+    const ordered = [...capabilities].sort((left, right) => priority[left.state] - priority[right.state] || left.atomId.localeCompare(right.atomId));
+    const maxActions = Math.max(1, Math.min(ordered.length, Math.floor(command.minutesPerDay / 5), 6));
+    const selected = ordered.slice(0, maxActions), deferredAtomIds = ordered.slice(maxActions).map(capability => capability.atomId);
+    const baseMinutes = Math.floor(command.minutesPerDay / maxActions), remainder = command.minutesPerDay % maxActions;
+    const actions: GespGuidanceAction[] = selected.map((capability, index) => {
       const gaps = capability.dimensions.filter((dimension: any) => !['correct', 'passed'].includes(dimension.status)).map((dimension: any) => dimension.dimension);
       const evidenceIds = this.latestEvidenceIds(capability.atomId, probes, submissions);
       const title = gaps.length ? `补齐${capability.atomId}的独立证据` : `为${capability.atomId}安排延迟复测`;
@@ -210,12 +215,14 @@ export class GespService implements OnModuleDestroy {
             : '按到期复测任务使用不同隐藏边界重跑程序，并回看原先三个维度的证据。';
       return { id: `gesp_guidance_action_${createHash('sha256').update(`${scope.studentId}:${capability.atomId}:${fingerprint}`).digest('hex').slice(0, 24)}`,
         atomId: capability.atomId, title, activity, dimensionGaps: gaps, evidenceIds,
-        successCriterion: '新作答独立完成且解释与冻结知识目标一致；提示后结果单独记录，不冒充独立掌握。', minutes: Math.min(20, command.minutesPerDay) };
+        successCriterion: '新作答独立完成且解释与冻结知识目标一致；提示后结果单独记录，不冒充独立掌握。',
+        minutes: baseMinutes + (index < remainder ? 1 : 0) };
     });
     const plan: GespGuidancePlan = { id: this.store.nextId('gesp_guidance'), studentId: command.studentId, scopeVersion: scope.version,
       evidenceFingerprint: fingerprint, source: 'rules', status: 'awaiting_confirmation', version: 1,
       minutesPerDay: command.minutesPerDay, requestKey: command.requestKey, reason: command.reason, createdAt: now, updatedAt: now,
-      createdByUserId: user.id, decidedByUserId: null, decidedAt: null, actions };
+      createdByUserId: user.id, decidedByUserId: null, decidedAt: null, actions,
+      totalActionMinutes: actions.reduce((sum, action) => sum + action.minutes, 0), deferredAtomIds };
     this.store.append('gespGuidancePlans', plan); this.appendGuidanceRevision(plan); return this.publicPlan(plan);
   }
   decideGuidancePlan(user: InMemoryUserAccount, planId: string, input: unknown) {
@@ -298,7 +305,11 @@ export class GespService implements OnModuleDestroy {
   }
   private scopeView(scope: any) { const { confirmedByUserId: _confirmedByUserId, requestKey: _requestKey, ...safe } = scope; return safe; }
   private publicHint(row: GespHintEvent) { const { requestKey: _requestKey, ...safe } = row; return safe; }
-  private publicPlan(row: GespGuidancePlan) { const { requestKey: _requestKey, createdByUserId: _createdBy, decidedByUserId: _decidedBy, ...safe } = row; return safe; }
+  private publicPlan(row: GespGuidancePlan) {
+    const { requestKey: _requestKey, createdByUserId: _createdBy, decidedByUserId: _decidedBy, ...safe } = row;
+    return { ...safe, totalActionMinutes: row.totalActionMinutes ?? row.actions.reduce((sum, action) => sum + action.minutes, 0),
+      deferredAtomIds: row.deferredAtomIds ?? [] };
+  }
   private publicPlanSnapshot(row: GespGuidancePlanRevision) { return { ...this.publicPlan(row), id: row.planId }; }
   private publicTask(task: PilotTask): GespStudentTask {
     const { tests: _tests, ...publicTask } = task;

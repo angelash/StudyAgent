@@ -1,12 +1,12 @@
 {
-  "at": "2026-10-20T23:43:51.084Z",
+  "at": "2026-10-21T00:15:40.067Z",
   "driver": "postgres",
   "passed": true,
   "scope": "Owned production-mode SQLite, formal HTTP roles, persistent restarts and deterministic control receipt; not a substitute for the real isolated runner, human review or learning-effect study.",
   "beforeRestart": {
-    "hintId": "gesp_hint_f915eaf6-2209-41eb-a2dd-798d987f2701",
-    "planId": "gesp_guidance_9cd3bb6c-d7f3-4588-a674-455fcbb6dfe6",
-    "reviewId": "gesp_review_62a95e0e180421621e1b9a9a7e87eec0b068",
+    "hintId": "gesp_hint_9abe0a47-03f7-477d-8fea-5081e30c07ac",
+    "planId": "gesp_guidance_1000fef7-1e75-4071-97b4-3916a197d88a",
+    "reviewId": "gesp_review_f88dd7136d267959e303649d0cc32115c93b",
     "contentReviewVersion": 1,
     "stages": [
       1,
@@ -21,6 +21,7 @@
     "contentReviewPersists": true,
     "hintPersists": true,
     "planConfirmedByParent": true,
+    "planBudgetMinutes": 20,
     "reviewStages": 4,
     "differentPackHashes": 4,
     "dueReviewCompleted": true,

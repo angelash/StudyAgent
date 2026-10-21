@@ -63,7 +63,7 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
       store.gespGuidancePlans.push({ id: `${tag}-gesp-plan`, studentId: tag, scopeVersion: 1, evidenceFingerprint: 'private-gesp-fingerprint',
         source: 'rules', status: 'active', version: 2, minutesPerDay: 20, requestKey: 'private-plan-request', reason: '家庭私有计划原因',
         createdAt: '2026-10-21T00:00:00.000Z', updatedAt: '2026-10-21T00:00:00.000Z', createdByUserId: parent.user.id,
-        decidedByUserId: parent.user.id, decidedAt: '2026-10-21T00:00:00.000Z', actions: [] });
+        decidedByUserId: parent.user.id, decidedAt: '2026-10-21T00:00:00.000Z', actions: [], totalActionMinutes: 0, deferredAtomIds: [] });
       store.gespGuidancePlanRevisions.push({ ...store.gespGuidancePlans.at(-1), id: `${tag}-gesp-plan-v2`, planId: `${tag}-gesp-plan`,
         requestKey: 'private-plan-decision' });
       store.gespReviewTasks.push({ id: `${tag}-gesp-review`, studentId: tag, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two',
