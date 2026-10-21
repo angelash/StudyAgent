@@ -1,0 +1,17 @@
+{
+  "format": "study-agent-learning-studio-runtime-v1",
+  "recordedAt": "2026-10-21T10:41:00.000Z",
+  "route": "/studio",
+  "visual": {
+    "home": { "path": "studio-home.png", "sha256": "404ea99b2994473525476d04e3d001901695f5cefe734b3293afe75200a80d65" },
+    "course": { "path": "studio-course.png", "sha256": "faaa870e54553d1436f831cafb702b1ad82b39061717f6eaecaf94fe4300bf5b" }
+  },
+  "browser": { "tests": 6, "passed": 6, "failed": 0, "flaky": 0, "durationMs": 25513.965 },
+  "verified": [
+    "a logged-in parent can open the studio at 1440px without horizontal overflow",
+    "the studio previews and creates a two-unit course from confirmed published atoms",
+    "the course is persisted and can be reopened with all activity links",
+    "the browser journey emits no 401 response after login"
+  ],
+  "limits": "The current independent studio does not yet reproduce every HyperKnow capability. Family file ingestion, free-form whiteboard video, LMS sync, billing, publishing and marketplace authoring remain future work."
+}

@@ -1,7 +1,8 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, Subject } from '@study-agent/contracts';
+import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
+  StudioCourse, StudioOverview, Subject } from '@study-agent/contracts';
 import { answerProtocolIssue } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -17,6 +18,7 @@ import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
+import { buildStudioCourse } from './studio-course';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -33,6 +35,101 @@ export class LearningService {
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
       .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
+  }
+
+  studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject): StudioOverview {
+    const children = this.studentProfiles(user);
+    const selected = children.find(child => child.id === studentId) ?? children[0];
+    const day = studyDay();
+    if (!selected) return { generatedAt: new Date().toISOString(), day, children, selected: null, courses: [], feed: [], activities: [] };
+    this.students.assertCanAccessStudent(user, selected.id);
+    const profile = this.diagnostics.profile(user, selected.id, subject), scope = profile.scope;
+    const learned = new Set(scope?.learnedAtomIds ?? []);
+    const atoms = learned.size ? this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published' && learned.has(atom.id))
+      .map(({ id, name, strand, objective, grade, teaching }) => ({ id, name, strand, objective, grade,
+        ...(teaching?.reviewStatus === 'approved' ? { teaching: structuredClone(teaching) } : {}) })) : [];
+    const memory = this.memory(user, selected.id, subject);
+    const feed = memory.feed.map(item => {
+      const base = `/student/assessment?studentId=${encodeURIComponent(selected.id)}&subject=${subject}`;
+      const href = item.target === 'plan' ? `${base}&view=plan${item.planId ? `&planId=${encodeURIComponent(item.planId)}` : ''}` :
+        item.target === 'assessment' ? `${base}${item.sessionId ? `&session=${encodeURIComponent(item.sessionId)}` : ''}` :
+          item.target === 'today' ? `/student/today?studentId=${encodeURIComponent(selected.id)}&subject=${subject}` : base;
+      const kind: StudioOverview['feed'][number]['kind'] = ['review', 'plan_confirmation', 'assessment', 'activity', 'scope', 'evidence'].includes(item.kind)
+        ? item.kind as StudioOverview['feed'][number]['kind'] : 'evidence';
+      return { id: item.id, kind, priority: item.priority, title: item.title, reason: item.reason, href };
+    });
+    const courses = this.store.select('studioCourses', { studentId: selected.id, subject })
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    const activities = this.store.select('studioActivities', { studentId: selected.id, subject })
+      .sort((a, b) => b.at.localeCompare(a.at)).slice(0, 50);
+    return { generatedAt: new Date().toISOString(), day, children,
+      selected: { id: selected.id, nickname: selected.nickname, grade: selected.grade, subject, scope, atoms,
+        estimates: profile.estimates.filter(estimate => learned.has(estimate.atomId)) },
+      courses, feed, activities };
+  }
+
+  previewStudioCourse(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      focusAtomIds: z.array(z.string().min(1).max(180)).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
+      objective: z.string().trim().min(5).max(1000).optional() }).strict(), input);
+    const { scope, atoms } = this.studioScope(user, command.studentId, command.subject);
+    const focusAtomIds = [...new Set(command.focusAtomIds?.length ? command.focusAtomIds : atoms.map(atom => atom.id))];
+    const allowed = new Set(atoms.map(atom => atom.id));
+    if (!focusAtomIds.length) throw new BadRequestException('当前学习范围没有可生成课程的知识点，请先确认学习进度');
+    if (focusAtomIds.some(id => !allowed.has(id))) throw new BadRequestException('只能使用当前已确认学习范围内发布的知识点');
+    const course = buildStudioCourse({ id: 'studio_preview', studentId: command.studentId, subject: command.subject, scope, atoms,
+      focusAtomIds, title: command.title, objective: command.objective });
+    return { ...course, canCreate: course.units.length > 0,
+      warnings: [...(scope.mappingSnapshots?.length ? [] : ['当前范围没有已审核课时映射，课程只依据知识原子组织。']),
+        ...(atoms.some(atom => !atom.teaching) ? ['部分知识点尚无已审核教学卡，将只提供测量与练习入口。'] : [])] };
+  }
+
+  createStudioCourse(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      focusAtomIds: z.array(z.string().min(1).max(180)).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
+      objective: z.string().trim().min(5).max(1000).optional(), previewFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+      requestKey: z.string().min(8).max(180) }).strict(), input);
+    const { scope, atoms } = this.studioScope(user, command.studentId, command.subject);
+    const focusAtomIds = [...new Set(command.focusAtomIds?.length ? command.focusAtomIds : atoms.map(atom => atom.id))];
+    const course = buildStudioCourse({ id: this.store.nextId('studio_course'), studentId: command.studentId, subject: command.subject,
+      scope, atoms, focusAtomIds, title: command.title, objective: command.objective });
+    if (course.fingerprint !== command.previewFingerprint) throw new ConflictException('课程蓝图已变化，请重新预览并确认');
+    const existing = this.store.select('studioCourses', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === course.fingerprint);
+    if (existing) return existing;
+    course.status = 'active';
+    const activity: StudioActivity = { id: this.store.nextId('studio_activity'), studentId: command.studentId, subject: command.subject,
+      kind: 'course_created', title: `创建课程「${course.title}」`, detail: `${course.units.length} 个单元 · ${course.focusAtomIds.length} 个知识目标`, href: `/studio?course=${course.id}`,
+      at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey };
+    this.store.append('studioCourses', course);
+    this.store.append('studioActivities', activity);
+    this.events.publish('studio.course_created', { courseId: course.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
+    return course;
+  }
+
+  startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown) {
+    const course = this.store.find('studioCourses', { id: courseId });
+    if (!course) throw new NotFoundException('课程不存在');
+    this.students.assertCanAccessStudent(user, course.studentId);
+    const command = validate(z.object({ requestKey: z.string().min(8).max(180) }).strict(), input);
+    const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (existing) return { course, activity: existing };
+    const lesson = course.units.flatMap(unit => unit.lessons).find(item => item.id === lessonId);
+    if (!lesson) throw new NotFoundException('课程活动不存在');
+    lesson.state = lesson.kind === 'exam' ? 'attempted' : 'attempted'; course.updatedAt = new Date().toISOString();
+    const activity: StudioActivity = { id: this.store.nextId('studio_activity'), studentId: course.studentId, subject: course.subject,
+      kind: 'lesson_started', title: lesson.title, detail: `${course.title} · ${({ learn: '学习', practice: '练习', project: '项目', exam: '核查' } as const)[lesson.kind]}`,
+      href: lesson.href, at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey };
+    this.store.append('studioActivities', activity);
+    return { course, activity };
+  }
+
+  private studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject) {
+    this.students.assertCanAccessStudent(user, studentId);
+    const scope = this.diagnostics.profile(user, studentId, subject).scope;
+    if (!scope) throw new BadRequestException('请先确认孩子的年级、教材和已学范围');
+    const learned = new Set(scope.learnedAtomIds);
+    const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published' && learned.has(atom.id));
+    return { scope, atoms };
   }
 
   memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory {

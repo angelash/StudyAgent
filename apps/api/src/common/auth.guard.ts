@@ -20,6 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+    /^learning\/studio\/overview$/,
     /^gesp\/students\/[^/]+\/workspace$/,
     /^learning\/students\/[^/]+\/notebook(\/[^/]+\/[^/]+)?$/,
     /^students\/[^/]+\/(profile|learning-scope|progress-proposals)$/, /^diagnostics\/curriculum$/, /^diagnostics\/textbooks(\/[^/]+)?$/,
@@ -32,6 +33,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+    /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/students\/[^/]+\/notebook\/[^/]+\/[^/]+\/(organize|redo|verification)$/,
     /^diagnostics\/blueprints(\/[^/]+\/start)?$/,
     /^diagnostics\/sessions\/[^/]+\/state$/,

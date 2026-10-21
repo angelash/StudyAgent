@@ -38,6 +38,7 @@ import {
   MistakeNotebookEntry,
   GespLearningScope, GespLearningScopeRevision, GespCodeSubmissionReceipt, GespProbeSubmissionReceipt,
   GespHintEvent, GespGuidancePlan, GespGuidancePlanRevision, GespReviewTask, GespTaskReview, GespTaskReviewRevision,
+  StudioCourse, StudioActivity,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -407,6 +408,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   gespReviewTasks: GespReviewTask[] = [];
   gespTaskReviews: GespTaskReview[] = [];
   gespTaskReviewRevisions: GespTaskReviewRevision[] = [];
+  studioCourses: StudioCourse[] = [];
+  studioActivities: StudioActivity[] = [];
 
   nextId(prefix: string): string {
     return `${prefix}_${randomUUID()}`;
@@ -483,5 +486,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.gespReviewTasks = [];
     this.gespTaskReviews = [];
     this.gespTaskReviewRevisions = [];
+    this.studioCourses = [];
+    this.studioActivities = [];
   }
 }

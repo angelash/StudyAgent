@@ -12,6 +12,20 @@ export class LearningController {
     return this.learning.memory(req.user, id, validate(subjectSchema, subject ?? 'math'));
   }
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.learning.overview(req.user); }
+  @Get('studio/overview') studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string,
+    @Query('subject') subject?: string) {
+    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'));
+  }
+  @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.learning.previewStudioCourse(req.user, input);
+  }
+  @Post('studio/courses') studioCourseCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.learning.createStudioCourse(req.user, input);
+  }
+  @Post('studio/courses/:courseId/lessons/:lessonId/start') studioLessonStart(@Req() req: AuthenticatedRequest,
+    @Param('courseId') courseId: string, @Param('lessonId') lessonId: string, @Body() input: unknown) {
+    return this.learning.startStudioLesson(req.user, courseId, lessonId, input);
+  }
   @Get('students/:id/today') today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.today(req.user, id, validate(subjectSchema, subject ?? 'math'));
   }

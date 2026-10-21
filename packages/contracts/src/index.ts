@@ -4,6 +4,7 @@ export * from './diagnostics';
 export * from './curriculum';
 export * from './reviews';
 export * from './learning';
+export * from './studio';
 
 export const subjectSchema = z.enum(['chinese', 'math', 'english']);
 export type Subject = z.infer<typeof subjectSchema>;
