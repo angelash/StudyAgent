@@ -8,9 +8,10 @@
   "assetFilesIncludingExtractions": 590,
   "assetBytesIncludingExtractions": 5618235399,
   "bySubject": {
-    "math": {"books": 87, "pages": 10061, "bytes": 1867126760, "registryBooksWithSource": 132},
+    "math": {"books": 87, "pages": 10061, "bytes": 1867126760, "registryBooksWithSource": 113},
     "english": {"books": 208, "pages": 17941, "bytes": 3739619958, "registryBooksWithSource": 125}
   },
+  "sourceBindingPolicy": "A locally unique PDF is not sufficient. Catalog editions with an explicit year bind only to a source with the same explicit year; mismatched or missing source-year evidence fails closed.",
   "independentBackup": "I:\\StudyAgent-backups\\chinatextbook-primary-20261021-v1\\textbook-sources\\chinatextbook-primary-v1",
   "sourceVerification": "doc/evidence/2026-10-21/chinatextbook-primary-verification.json",
   "backupVerification": "doc/evidence/2026-10-21/chinatextbook-primary-backup-verification.json",

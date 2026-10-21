@@ -61,4 +61,6 @@ test('an administrator can reach the curriculum review workbench', async ({ page
   await expect(page.getByRole('navigation', { name: '教研导航' })).toBeVisible();
   await expect(page.getByRole('heading', { name: '教材课时与知识映射' })).toBeVisible();
   await expect(page.getByRole('link', { name: '运营观察' })).toBeVisible();
+  await page.getByLabel('选择目录').selectOption('archive-book:44deea6d4015a5183e175acc');
+  await expect(page.getByText(/教材目录与现有原卷的版本年份不一致/)).toBeVisible();
 });

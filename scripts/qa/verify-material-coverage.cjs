@@ -52,7 +52,7 @@ const files = ['packages/contracts/src/curriculum.ts', 'apps/api/src/modules/dia
   'resources/curriculum/atom-catalog-v1.json', 'resources/curriculum/chinatextbook-chinese-v1.json',
   'resources/curriculum/textbook-mapping-candidates-v1.json', 'scripts/assets/import_chinatextbook.py',
   'scripts/assets/verify_chinatextbook_manifest.py', 'scripts/assets/build_textbook_mapping_candidates.py', 'scripts/assets/import_chinatextbook_primary_sources.py', 'scripts/assets/verify_chinatextbook_primary_manifest.py',
-    'scripts/assets/test_chinatextbook_primary_sources.py', 'resources/curriculum/chinatextbook-primary-v1.json',
+    'scripts/assets/test_chinatextbook_primary_sources.py', 'scripts/assets/test_chinatextbook_source_metadata.py', 'resources/curriculum/chinatextbook-primary-v1.json',
   'scripts/assets/test_textbook_mapping_candidates.py', 'scripts/content/export-foundation-atoms.cjs',
   'apps/api/src/modules/diagnostics/foundation-curriculum.ts', 'apps/api/src/modules/diagnostics/foundation-seed.service.ts',
   'apps/api/src/modules/question-workspace/question-workspace.service.ts',

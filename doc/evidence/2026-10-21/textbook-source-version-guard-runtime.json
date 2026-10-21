@@ -1,0 +1,38 @@
+{
+  "format": "study-agent-textbook-source-version-guard-v1",
+  "recordedAt": "2026-10-21T04:15:33.000Z",
+  "focusedRegression": {
+    "files": 2,
+    "tests": 31,
+    "passed": 31,
+    "failed": 0
+  },
+  "fullRegression": {
+    "files": 155,
+    "tests": 705,
+    "passed": 699,
+    "failed": 0,
+    "postgresSkippedByDefault": 6
+  },
+  "materialCoverageRuntime": {
+    "passed": true,
+    "points": 258,
+    "readyMaterials": 258,
+    "needingMaterials": 0,
+    "restarts": 2,
+    "warmHttpP95Ms": 124.79
+  },
+  "sourceBindings": {
+    "math": 113,
+    "english": 125,
+    "chineseReviewedManifest": 12
+  },
+  "guardedCases": [
+    "A year-labelled catalog edition is not bound to an undated source",
+    "A catalog edition and source with different explicit years are not bound",
+    "The prior single-candidate shortcut no longer bypasses edition matching",
+    "The curriculum workbench exposes version-conflict, ambiguous, unverified-edition and no-candidate reasons",
+    "Chinese source records carry the explicit 统编版 edition used by the reviewed TOCs"
+  ],
+  "limits": "These checks prove fail-closed source eligibility, not equivalence of every platform catalog variant, human lesson-page review, redistribution rights or student-facing textbook use."
+}

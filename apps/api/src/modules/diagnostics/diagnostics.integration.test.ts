@@ -129,7 +129,13 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
         if (!sample && subject === 'math') sample = sourced.find((book: any) => book.chapterState === 'available') ?? sourced[0];
       }
     }
-    expect(mathSources).toBe(132); expect(englishSources).toBe(125); expect(sample).toBeTruthy();
+    expect(mathSources).toBe(113); expect(englishSources).toBe(125); expect(sample).toBeTruthy();
+    const gradeThreeMath = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');
+    const undatedPeopleEducation = gradeThreeMath.find((book: any) => book.source === 'public_catalog' && book.edition === '人教版');
+    const datedPeopleEducation = gradeThreeMath.find((book: any) => book.source === 'archive' && book.edition === '人教版(2024)');
+    expect(undatedPeopleEducation.sourceDocument).not.toBeNull();
+    expect(datedPeopleEducation.sourceDocument).toBeNull();
+    expect(datedPeopleEducation.sourceAvailability).toMatchObject({ status: 'version_conflict' });
     const detail = await call('get', `/admin/curriculum/textbooks/${encodeURIComponent(sample.id)}`, undefined, 200, admin);
     expect(detail.sourceDocument.pages).toBeGreaterThan(0); expect(detail.sourceDocument.sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(detail.chapters.flatMap((chapter: any) => chapter.lessons).every((lesson: any) => lesson.sourcePageRange === undefined)).toBe(true);

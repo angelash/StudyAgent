@@ -10,11 +10,14 @@ const names = { math: '数学', chinese: '语文', english: '英语' };
 type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
   assetPath: string; sha256: string; pages: number };
 type SourcePageRange = { start: number; end: number };
+type SourceAvailabilityStatus = 'matched' | 'original' | 'no_candidate' | 'ambiguous' | 'edition_unverified' | 'version_conflict';
+type SourceMatch = { status: SourceAvailabilityStatus; reason: string; document: SourceDocument | null };
 
 @Injectable()
 export class TextbookRegistryService {
   private imported?: CurriculumBook[];
   private sourceDocuments?: SourceDocument[];
+  private sourceMatches = new Map<string, SourceMatch>();
   private sourcePageRanges?: Map<string, SourcePageRange>;
   private verifiedDocuments = new Map<string, { size: number; modifiedMs: number; sha256: string }>();
   constructor(private readonly store: InMemoryStoreService) {}
@@ -67,14 +70,14 @@ export class TextbookRegistryService {
           lessonCount: lessons.filter(l => l.kind !== 'reference').length,
           referenceCount: lessons.filter(l => l.kind === 'reference').length,
           mappedLessonCount: lessons.filter(l => l.kind !== 'reference' && this.approved(this.mapping(book, l.id), available)).length,
-          sourceDocument: this.documentMetadata(book) };
+          sourceDocument: this.documentMetadata(book), sourceAvailability: this.publicSourceMatch(book) };
       });
   }
 
   detail(id: string, editor = false) {
     const book = this.require(id);
     const published = this.availableAtoms(book);
-    return { ...book, sourceDocument: this.documentMetadata(book), chapters: book.chapters.map((c) => ({ ...c, lessons: c.lessons.map((lesson) => {
+    return { ...book, sourceDocument: this.documentMetadata(book), sourceAvailability: this.publicSourceMatch(book), chapters: book.chapters.map((c) => ({ ...c, lessons: c.lessons.map((lesson) => {
       const mapping = lesson.kind === 'reference' ? null : this.mapping(book, lesson.id);
       const approved = this.approved(mapping, published);
       return { ...lesson, sourcePageRange: this.sourcePageRange(book, lesson.id), atomIds: approved ? mapping!.atomIds : [],
@@ -84,7 +87,7 @@ export class TextbookRegistryService {
   }
 
   documentMetadata(book: CurriculumBook) {
-    const source = this.sourceDocument(book);
+    const source = this.sourceMatch(book).document;
     if (!source) return null;
     try {
       const path = this.resolveSourcePath(source.assetPath);
@@ -93,8 +96,8 @@ export class TextbookRegistryService {
   }
 
   async document(bookId: string) {
-    const book = this.require(bookId), source = this.sourceDocument(book);
-    if (!source) throw new NotFoundException('此教材没有已迁入的本地内审原卷');
+    const book = this.require(bookId), match = this.sourceMatch(book), source = match.document;
+    if (!source) throw new NotFoundException(`此教材没有已迁入的同版内审原卷：${match.reason}`);
     const path = this.resolveSourcePath(source.assetPath);
     if (!path || !existsSync(path)) throw new NotFoundException('本地内审原卷未安装，请恢复教材源资产后重试');
     const stat = statSync(path);
@@ -131,7 +134,14 @@ export class TextbookRegistryService {
     return !!mapping && mapping.status === 'approved' && mapping.atomIds.length > 0 && mapping.atomIds.every(id => available.has(id));
   }
 
-  private sourceDocument(book: CurriculumBook) {
+  private publicSourceMatch(book: CurriculumBook) {
+    const match = this.sourceMatch(book);
+    return { status: match.status, reason: match.reason };
+  }
+
+  private sourceMatch(book: CurriculumBook): SourceMatch {
+    const cached = this.sourceMatches.get(book.id);
+    if (cached) return cached;
     if (!this.sourceDocuments) {
       const sources: SourceDocument[] = [];
       const manifests = [
@@ -147,27 +157,61 @@ export class TextbookRegistryService {
       }
       this.sourceDocuments = sources;
     }
-    if (book.source === 'original') return null;
+    if (book.source === 'original') return this.rememberSourceMatch(book, {
+      status: 'original', reason: '原创能力路径不关联教材原卷', document: null,
+    });
     const candidates = this.sourceDocuments.filter(document => document.subject === book.subject && document.grade === book.grade && document.term === book.term);
-    if (candidates.length <= 1) return candidates[0] ?? null;
-    const normalize = (value: string) => value.normalize('NFKC').toLowerCase().replace(/[（(]\s*(?:19|20)\d{2}\s*[）)]/g, '')
+    if (!candidates.length) return this.rememberSourceMatch(book, {
+      status: 'no_candidate', reason: '未找到同学科、年级和学期的本地完整原卷', document: null,
+    });
+    const normalize = (value: string) => value.normalize('NFKC').toLowerCase()
       .replace(/\s+/g, '').replace(/[·・.]/g, '');
+    const editionYear = (value: string) => value.normalize('NFKC').match(/(?:19|20)\d{2}/)?.[0];
+    const compatibleYear = (document: SourceDocument) => {
+      const requestedYear = editionYear(book.edition) ?? editionYear(book.title);
+      const sourceYear = editionYear(document.edition) ?? editionYear(document.title);
+      return requestedYear === sourceYear;
+    };
     const exact = candidates.filter(document => document.edition && normalize(document.edition) === normalize(book.edition));
-    if (exact.length === 1) return exact[0];
+    if (exact.length === 1) return this.rememberSourceMatch(book, { status: 'matched',
+      reason: '已按版本名称和年份证据唯一绑定本地原卷', document: exact[0] });
+    if (exact.length > 1) return this.rememberSourceMatch(book, { status: 'ambiguous',
+      reason: '存在多个完全同名且同年版的原卷候选，需要人工确认', document: null });
     const base = (value: string) => normalize(value).split(/[（(]/)[0];
-    const sameBase = candidates.filter(document => document.edition && base(document.edition) === base(book.edition));
-    if (sameBase.length === 1) return sameBase[0];
+    const sameBase = candidates.filter(document => document.edition && base(document.edition) === base(book.edition) && compatibleYear(document));
+    if (sameBase.length === 1) return this.rememberSourceMatch(book, { status: 'matched',
+      reason: '已按版本基名和年份证据唯一绑定本地原卷', document: sameBase[0] });
+    if (sameBase.length > 1) return this.rememberSourceMatch(book, { status: 'ambiguous',
+      reason: '存在多个同年版的相近原卷候选，需要人工确认', document: null });
     const edition = normalize(book.edition);
     const distinctive = sameBase.filter(document => {
       const source = normalize(document.edition + document.title);
       const tokens = edition.match(/[\u4e00-\u9fff]{2,}/g) ?? [];
       return tokens.some(token => source.includes(token));
     });
-    return distinctive.length === 1 ? distinctive[0] : null;
+    if (distinctive.length === 1) return this.rememberSourceMatch(book, { status: 'matched',
+      reason: '已按版本与标题证据唯一绑定本地原卷', document: distinctive[0] });
+    const missingEdition = candidates.some(document => !document.edition.trim());
+    const requestedYear = editionYear(book.edition) ?? editionYear(book.title);
+    const conflict = requestedYear && candidates.some(document => {
+      const sourceYear = editionYear(document.edition) ?? editionYear(document.title);
+      return sourceYear !== requestedYear;
+    });
+    if (missingEdition) return this.rememberSourceMatch(book, { status: 'edition_unverified',
+      reason: '本地原卷缺少可核对的版本名称，不能安全绑定该教材目录', document: null });
+    if (conflict) return this.rememberSourceMatch(book, { status: 'version_conflict',
+      reason: `教材目录与现有原卷的版本年份不一致（目录年份 ${requestedYear}），请补入同年版原卷`, document: null });
+    return this.rememberSourceMatch(book, { status: 'ambiguous',
+      reason: '现有原卷无法通过版本名称唯一确认，需要人工核对', document: null });
+  }
+
+  private rememberSourceMatch(book: CurriculumBook, match: SourceMatch) {
+    this.sourceMatches.set(book.id, match);
+    return match;
   }
 
   private sourcePageRange(book: CurriculumBook, lessonId: string) {
-    const source = this.sourceDocument(book);
+    const source = this.sourceMatch(book).document;
     if (!source) return undefined;
     if (!this.sourcePageRanges) {
       const file = resolve(process.env.STUDY_TEXTBOOK_MAPPING_CANDIDATES ?? resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json'));

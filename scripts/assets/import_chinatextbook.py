@@ -67,7 +67,7 @@ def main() -> None:
         body = json.dumps(extracted, ensure_ascii=False, indent=2).encode('utf-8')
         text_path = extracted_dir / f'{identity.replace(":", "-")}.json'
         text_path.write_bytes(body)
-        books.append({'id': identity, 'grade': grade, 'term': term,
+        books.append({'id': identity, 'grade': grade, 'term': term, 'edition': '统编版',
           'title': f'义务教育教科书·语文{grade}年级{"上" if term == "upper" else "下"}册',
           'sourceOriginal': str(original), 'assetPath': str(target.relative_to(ROOT)).replace(os.sep, '/'),
           'extractedPath': str(text_path.relative_to(ROOT)).replace(os.sep, '/'), 'bytes': target.stat().st_size,
