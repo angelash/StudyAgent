@@ -95,6 +95,10 @@ export class TextbookRegistryService {
     } catch { return { available: false, pages: source.pages, sha256: source.sha256 }; }
   }
 
+  availability(book: CurriculumBook) {
+    return this.publicSourceMatch(book);
+  }
+
   async document(bookId: string) {
     const book = this.require(bookId), match = this.sourceMatch(book), source = match.document;
     if (!source) throw new NotFoundException(`此教材没有已迁入的同版内审原卷：${match.reason}`);

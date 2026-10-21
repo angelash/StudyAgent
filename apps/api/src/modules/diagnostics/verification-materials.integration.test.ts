@@ -51,7 +51,12 @@ describe.sequential('eligible material coverage through real curriculum services
     const result = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1&term=upper&status=unmapped&page=1&pageSize=20');
     expect(result.books).toBe(1); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
     expect(result.rows).toHaveLength(20); expect(result.rows.every((row: any) => row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
+    expect(result.sourceCounts).toEqual({ all: result.counts.all, matched: result.counts.all, unavailable: 0 });
+    expect(result.rows.every((row: any) => row.sourceStatus === 'matched' && row.sourceReason.length > 0)).toBe(true);
     expect(result.note).toContain('不根据标题自动批准');
+    const unavailableMath = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=math&grade=3&term=upper&status=all&source=unavailable&page=1&pageSize=100');
+    expect(unavailableMath.sourceCounts.matched).toBe(0); expect(unavailableMath.sourceCounts.unavailable).toBeGreaterThan(0);
+    expect(unavailableMath.rows.every((row: any) => row.sourceStatus === 'version_conflict' && row.sourceReason.includes('版本年份不一致'))).toBe(true);
     const candidates = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=6&term=lower&status=unmapped&candidate=with&page=1&pageSize=100');
     const candidateRows = candidates.rows.filter((row: any) => row.candidateAtomIds.length > 0);
     expect(candidateRows.length).toBeGreaterThan(0);

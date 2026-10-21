@@ -319,7 +319,7 @@ export class CurriculumService {
     this.assertEditor(user);
     const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.coerce.number().int().min(1).max(6).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
-      candidate: z.enum(['all', 'with', 'without']).default('all'),
+      candidate: z.enum(['all', 'with', 'without']).default('all'), source: z.enum(['all', 'matched', 'unavailable']).default('all'),
       page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
     if (!this.mappingCandidates) {
       const file = resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json');
@@ -334,8 +334,9 @@ export class CurriculumService {
     const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published'), rows: Array<{ bookId: string; bookTitle: string; bookVersion: string;
       edition: string; lessonId: string; lessonName: string; printedPage: number | undefined; chapterName: string; state: string;
       atomIds: string[]; rubric: string; mappingVersion: number | null; candidateAtomIds: string[]; candidateRationale: string;
-      candidateEvidence: unknown[]; candidateReviewStatus: string }> = [];
+      candidateEvidence: unknown[]; candidateReviewStatus: string; sourceStatus: string; sourceReason: string }> = [];
     for (const book of books) {
+      const sourceAvailability = this.textbooks.availability(book);
       const eligible = new Set(atoms.filter(atom => atom.subject === book.subject && atom.grade <= book.grade &&
         (atom.grade < book.grade || atom.term === 'both' || atom.term === book.term)).map(atom => atom.id));
       for (const chapter of book.chapters) for (const lesson of chapter.lessons) {
@@ -353,7 +354,8 @@ export class CurriculumService {
           lessonName: lesson.name, printedPage: lesson.printedPage, chapterName: chapter.name, state,
           atomIds: approved ? [...mapping!.atomIds] : [], rubric: mapping?.rationale ?? '', mappingVersion: mapping?.version ?? null,
           candidateAtomIds, candidateRationale: candidateAtomIds.length ? candidate?.rationale ?? '' : '', candidateEvidence,
-          candidateReviewStatus: candidateAtomIds.length ? candidate?.reviewStatus ?? 'candidate' : 'not_available' });
+          candidateReviewStatus: candidateAtomIds.length ? candidate?.reviewStatus ?? 'candidate' : 'not_available',
+          sourceStatus: sourceAvailability.status, sourceReason: sourceAvailability.reason });
       }
     }
     const counts = Object.fromEntries(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale'].map(status =>
@@ -361,9 +363,12 @@ export class CurriculumService {
     const statusRows = query.status === 'all' ? rows : rows.filter(row => row.state === query.status);
     const candidateCounts = { all: statusRows.length, with: statusRows.filter(row => row.candidateAtomIds.length > 0).length,
       without: statusRows.filter(row => row.candidateAtomIds.length === 0).length };
-    const selected = query.candidate === 'all' ? statusRows : statusRows.filter(row => query.candidate === 'with' ? row.candidateAtomIds.length > 0 : row.candidateAtomIds.length === 0);
-    return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null, status: query.status, candidate: query.candidate },
-      counts, candidateCounts, books: books.length,
+    const candidateRows = query.candidate === 'all' ? statusRows : statusRows.filter(row => query.candidate === 'with' ? row.candidateAtomIds.length > 0 : row.candidateAtomIds.length === 0);
+    const sourceCounts = { all: candidateRows.length, matched: candidateRows.filter(row => row.sourceStatus === 'matched').length,
+      unavailable: candidateRows.filter(row => row.sourceStatus !== 'matched').length };
+    const selected = query.source === 'all' ? candidateRows : candidateRows.filter(row => query.source === 'matched' ? row.sourceStatus === 'matched' : row.sourceStatus !== 'matched');
+    return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null, status: query.status,
+      candidate: query.candidate, source: query.source }, counts, candidateCounts, sourceCounts, books: books.length,
       total: selected.length, page: query.page, pageSize: query.pageSize, rows: selected.slice((query.page - 1) * query.pageSize, query.page * query.pageSize),
       note: '该清单只定位待核对课时；有候选不等于已映射，状态变化必须通过逐课时映射审核，不根据标题自动批准知识映射。' };
   }
