@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 const apiUrl = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`;
+const webUrl = `http://localhost:${process.env.E2E_WEB_PORT ?? '3107'}`;
 
 test('public product shell remains usable at phone, tablet and desktop widths', async ({ page }) => {
   for (const viewport of [
@@ -22,6 +23,25 @@ test('public product shell remains usable at phone, tablet and desktop widths', 
   await expect(page.getByLabel('登录账号')).toBeVisible();
   await expect(page.getByLabel('密码')).toBeVisible();
   await expect(page.getByRole('button', { name: '登录，查看学习记录 →' })).toBeVisible();
+});
+
+test('a touch and keyboard user can enter the family access flow', async ({ browser }) => {
+  const context = await browser.newContext({ baseURL: webUrl, viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  await page.goto('/');
+  await page.getByRole('link', { name: '登录', exact: true }).tap();
+  await expect(page.getByRole('heading', { name: '继续孩子的学习旅程。' })).toBeVisible();
+  await page.getByRole('button', { name: '首次使用，创建家长账号' }).tap();
+  await expect(page.getByRole('heading', { name: '从一份学习档案开始。' })).toBeVisible();
+  const principal = page.getByLabel('登录账号');
+  await principal.focus();
+  await page.keyboard.type('touch-keyboard@local.test');
+  await page.keyboard.press('Tab');
+  await page.keyboard.type('Touch-keyboard-only-20261021');
+  await expect(principal).toHaveValue('touch-keyboard@local.test');
+  await expect(page.getByLabel('密码')).toHaveValue('Touch-keyboard-only-20261021');
+  await expect(page.getByRole('button', { name: '创建家长账号 →' })).toBeEnabled();
+  await context.close();
 });
 
 test('a parent can create a learning profile and complete an evidence-limited assessment', async ({ page }) => {

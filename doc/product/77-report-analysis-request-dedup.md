@@ -8,4 +8,4 @@
 
 E2E 启动器还显式清空 `OPENAI_API_KEY` 与 `CODEX_MODEL`，让 CI 验证无模型时仍可完成的确定性计划和复测排期，避免本机密钥或外部网络决定结果。
 
-最终生产构建下三条 Chromium 旅程 3/3 通过、0 失败、0 flaky，总用时 16.66 秒。收据见 [浏览器验收](../evidence/2026-10-21/browser-product-acceptance-local.json)。该结果证明离线降级和界面链路可用，不证明在线模型质量、真实教师指导效果或间隔学习效度。
+最终生产构建下四条 Chromium 旅程 4/4 通过、0 失败、0 flaky，总用时 17.16 秒，包含移动触摸与键盘焦点。收据见 [浏览器验收](../evidence/2026-10-21/browser-product-acceptance-local.json)。该结果证明离线降级和界面链路可用，不证明在线模型质量、代表机型实机、真实教师指导效果或间隔学习效度。

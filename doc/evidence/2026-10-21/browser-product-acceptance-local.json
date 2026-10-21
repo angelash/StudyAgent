@@ -1,26 +1,27 @@
 {
   "format": "browser-product-acceptance-v1",
-  "recordedAt": "2026-10-21T04:58:08.000Z",
+  "recordedAt": "2026-10-21T05:00:29.000Z",
   "host": "Windows local production build",
   "browser": "Chromium 156.0.8078.4",
   "runner": "@playwright/test 1.64.1",
   "dataIsolation": "Unique SQLite directory under data/qa; synthetic parent and local CLI administrator only",
   "stats": {
-    "tests": 3,
-    "expected": 3,
+    "tests": 4,
+    "expected": 4,
     "unexpected": 0,
     "skipped": 0,
     "flaky": 0,
-    "durationMs": 16661.816
+    "durationMs": 17158.071
   },
   "journeys": [
     "Public product shell at 360, 768 and 1280 CSS pixels with no horizontal document overflow",
     "Login form reachable from the public shell at phone width",
+    "Touch tapping plus keyboard focus and typing in the mobile family-access flow",
     "Synthetic parent login through eleven-item assessment, report, offline guidance plan, guardian activation and D+1/D+14 review scheduling",
     "CLI administrator login redirect and curriculum review workbench navigation"
   ],
   "remainingExternalValidation": [
-    "Real touch and keyboard assistive-technology sessions on representative phones and tablets",
+    "Representative physical phones/tablets and assistive-technology sessions beyond browser touch emulation",
     "Microphone permission, recording, playback and noisy-network recovery on target browsers",
     "Real student, guardian and teacher usability and learning-effect studies",
     "Public production deployment capacity and long-running operations"
