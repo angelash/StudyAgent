@@ -2,6 +2,7 @@
   "format": "study-agent-hyperknow-visual-guidance-runtime-v1",
   "recordedAt": "2026-10-21T08:30:00.000Z",
   "baseCommit": "589a472e1951ff9b802e2de174e72e312b31e76a",
+  "ciRun": { "id": 39572021761, "commit": "906a5197fc75a4d61f9271d96417b226b8cf5d49", "status": "success" },
   "focusedRegression": { "files": 2, "tests": 7, "passed": 7, "failed": 0 },
   "fullRegression": { "files": 77, "activeFiles": 76, "tests": 712, "passed": 706, "failed": 0, "postgresSkippedByDefault": 6 },
   "typechecks": { "api": "passed", "web": "passed" },
