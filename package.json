@@ -13,6 +13,7 @@
     "dev:api": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run dev --workspace @study-agent/api",
     "build": "npm run build --workspace @study-agent/contracts && npm run build --workspace @study-agent/config && npm run build --workspace @study-agent/api && npm run build --workspace @study-agent/web",
     "test": "npm run test --workspace @study-agent/api",
+    "test:e2e": "node scripts/qa/run-browser-acceptance.cjs",
     "lint": "npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web",
     "qa:docs": "node scripts/qa/verify-doc-links.cjs"
   },
@@ -25,6 +26,7 @@
     "esbuild": "0.28.2"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "@types/node": "^22.15.18",
     "concurrently": "^9.1.2",
     "tsup": "^8.5.0",

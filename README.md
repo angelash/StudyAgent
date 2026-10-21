@@ -41,7 +41,7 @@ GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级11
 
 执行 `npm run build` 后，分别运行 `npm run start --workspace @study-agent/api`、`npm run start --workspace @study-agent/web`。正式部署应设置 `NODE_ENV=production`、同站点HTTPS和持久目录。可将 `STUDY_WORKER_ENABLED=false`，另行运行 `npm run worker --workspace @study-agent/api`。
 
-运行检查：`npm test`、`npm run lint`、`npm run build`、`npm audit`。默认测试包含真实SQLite和媒体处理；PostgreSQL实机测试须显式配置专用 `study_agent_qa` 数据库。健康与就绪地址为 `/api/health`、`/api/ready`。
+运行检查：`npm test`、`npm run lint`、`npm run build`、`npm audit`。`npm run test:e2e` 会构建生产包并在独立 SQLite 中执行 Chromium 首页、家长建档和管理员教研旅程；首次使用先运行 `npx playwright install chromium`。默认测试包含真实SQLite和媒体处理；PostgreSQL实机测试须显式配置专用 `study_agent_qa` 数据库。健康与就绪地址为 `/api/health`、`/api/ready`。
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 

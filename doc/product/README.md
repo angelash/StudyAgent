@@ -14,13 +14,14 @@
 10. [GESP辅助指导与间隔复测](./72-gesp-assisted-guidance-retention-delivery.md)：逐级提示、家长确认计划、四阶段复测和双库持久恢复。
 11. [GESP试点内容审核发布门禁](./73-gesp-pilot-content-review-delivery.md)：五项教研门禁、内容指纹、版本化审核与双库发布状态。
 12. [小学数学与英语完整教材源](./74-primary-source-textbook-migration-delivery.md)：295册完整PDF、28002页、独立备份、来源绑定与无页码伪造门禁。
+13. [浏览器产品验收](./75-browser-product-acceptance.md)：三档视口、家长建档、管理员教研入口和 CI 自动浏览器门禁。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
 
 存储运维：[备份跨盘迁移与空间复核](./59-storage-relocation-and-space-audit.md) 记录全量备份当前位于 `I:\StudyAgent-backups\full-20261019`，以及F盘可迁移与不可清理文件的边界。
 
-下一阶段继续完善教材课时逐项映射、当前候选跨环境、真人录音与听辨、不同设备浏览器验收、真实学生/教师评价和GESP学生编程闭环。
+下一阶段继续完善教材课时逐项映射、当前候选跨环境、真人录音与听辨、移动触屏和辅助技术验收、真实学生/教师评价和GESP学生编程闭环。
 
 GESP扩展当前包括 [独立教研轨道](./55-gesp-research-delivery.md)、[隔离C++运行器](./65-gesp-isolated-runner-delivery.md)、[一级学生编程试点](./66-gesp-student-pilot-delivery.md) 和 [原始资产独立备份恢复](./67-gesp-backup-restore-delivery.md)。1～4级49点仍需完成逐项内容审核。
 
