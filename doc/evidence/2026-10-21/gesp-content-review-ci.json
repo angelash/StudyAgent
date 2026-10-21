@@ -1,0 +1,26 @@
+{
+  "format": "study-agent-gesp-content-review-ci-v1",
+  "date": "2026-10-21",
+  "runId": 39520410926,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/39520410926",
+  "headSha": "c55f2bed1d8ab88061f5d527b94ee9d8e1582a71",
+  "status": "completed",
+  "conclusion": "success",
+  "application": {
+    "runner": "ubuntu-24.04",
+    "build": true,
+    "tests": true,
+    "typeChecks": true,
+    "documentLinks": true,
+    "contentReviewJourney": true,
+    "guidanceBudgetJourney": true
+  },
+  "postgres": {
+    "image": "postgres:16-bookworm",
+    "schemaVersion": 12,
+    "migrationRecoveryFencing": true,
+    "contentReviewJourney": true,
+    "guidanceBudgetJourney": true
+  },
+  "limits": "Automated CI. Human curriculum approvals, real browser/device acceptance and learning-effect studies remain outstanding."
+}

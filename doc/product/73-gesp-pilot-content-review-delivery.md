@@ -22,4 +22,6 @@
 
 全仓构建与类型检查通过。默认回归155个文件、701项，695通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
 
+GitHub Ubuntu/PostgreSQL完整流水线已在run `39520410926`通过，覆盖全仓回归、五门禁内容审核、每日计划预算、schema 12迁移恢复与发布隐私边界，收据见 [GESP内容审核CI](../evidence/2026-10-21/gesp-content-review-ci.json)。
+
 当前剩余外部验收仍是49题真人教研审核、正式迁移题族、真实学生/教师、多设备浏览器与学习效果研究。本批提升的是审核可用性、版本完整性和发布门禁，不代表这些外部结论已经取得。
