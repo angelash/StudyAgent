@@ -37,6 +37,7 @@ describe.sequential('eligible material coverage through real curriculum services
     expect(result.cells.reduce((sum: number, row: any) => sum + row.needingVerificationMaterials, 0)).toBe(0);
     expect(result.cells.every((row: any) => row.withVerificationMaterials + row.needingVerificationMaterials === row.atoms)).toBe(true);
     const other = await overview('', teacher); expect(other.atoms).toEqual(result.atoms); expect(other.cells).toEqual(result.cells); expect(fingerprint()).toBe(before);
+    expect(result.textbookCounts).toMatchObject({ imported: 448, sourceMatched: 250, sourceUnavailable: 198 });
   }, 30_000);
   it('filters both atoms and published aggregates by subject and grade', async () => {
     const math = await overview('?subject=math&grade=5'); expect(math.atoms).toHaveLength(19); expect(math.cells).toHaveLength(1);

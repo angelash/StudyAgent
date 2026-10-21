@@ -407,11 +407,16 @@ export class CurriculumService {
         withRelations: subset.filter(a => a.parentId || a.confusableAtomIds?.length || a.transferAtomIds?.length).length };
     })).filter((c) => (!subject || c.subject === subject) && (!grade || c.grade === grade));
     const importedBooks = this.textbooks.all().filter(book => book.source !== 'original');
+    const sourceStatuses = importedBooks.map(book => this.textbooks.availability(book).status);
+    const countSource = (status: string) => sourceStatuses.filter(value => value === status).length;
     return { generatedAt: new Date().toISOString(), cells, atoms,
       notice: '按已发布定义与当前有效审核题映射核对素材。结构齐备还须能在四题、600秒内安排基础和迁移各两个不同题族；样例未考虑个人曝光与学习范围，不代表学生掌握、常模校准或教材全部覆盖。',
       textbookCounts: { imported: importedBooks.length,
         withChapters: importedBooks.filter(book => book.chapterState === 'available').length,
-        approvedMappings: this.store.inspect('textbookAtomMappings').filter(mapping => mapping.status === 'approved').length } };
+        approvedMappings: this.store.inspect('textbookAtomMappings').filter(mapping => mapping.status === 'approved').length,
+        sourceMatched: countSource('matched'), sourceUnavailable: sourceStatuses.length - countSource('matched'),
+        sourceVersionConflict: countSource('version_conflict'), sourceNoCandidate: countSource('no_candidate'),
+        sourceAmbiguous: countSource('ambiguous'), sourceEditionUnverified: countSource('edition_unverified') } };
   }
 
   itemsForAtom(user: InMemoryUserAccount, atomId: string) {

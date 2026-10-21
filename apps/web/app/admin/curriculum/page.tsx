@@ -16,7 +16,8 @@ import './curriculum.css';
 
 type CoverageAtom = KnowledgeAtom & { approvedQuestions: number; families: number; dimensions: string[]; draftMappings: number; interactionGaps: number; definitionGaps: number; materialCoverage?: KnowledgeMaterialCoverage };
 type Overview = { atoms: CoverageAtom[]; cells: Array<{ subject: Subject; grade: number; atoms: number; withQuestions: number; withTransfer: number; withMultipleFamilies: number; withTeaching: number; draftTeaching: number; withRelations: number; withVerificationMaterials?: number; needingVerificationMaterials?: number }>;
-  notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number } };
+  notice: string; textbookCounts: { imported: number; withChapters: number; approvedMappings: number; sourceMatched: number;
+    sourceUnavailable: number; sourceVersionConflict: number; sourceNoCandidate: number; sourceAmbiguous: number; sourceEditionUnverified: number } };
 type SourceDocument = { available: boolean; pages: number; sha256: string };
 type SourceAvailability = { status: 'matched' | 'original' | 'no_candidate' | 'ambiguous' | 'edition_unverified' | 'version_conflict'; reason: string };
 type SourcePageRange = { start: number; end: number };
@@ -123,6 +124,7 @@ export default function CurriculumPage() {
           {revisions && <pre className="admin-revision">{JSON.stringify(revisions, null, 2)}</pre>}
         </>}</section></div>
       <section className="admin-section"><span className="studio-eyebrow">TEXTBOOK / PROGRESS</span><h2>教材课时与知识映射</h2><p>已迁入 {data.textbookCounts.imported} 条教材记录，其中 {data.textbookCounts.withChapters} 条具有章节；已审核 {data.textbookCounts.approvedMappings} 条映射。只有审核通过且知识定义仍有效的映射进入学生范围。</p>
+        <div className="studio-hint" role="status"><strong>来源总览：{data.textbookCounts.sourceMatched} 条有同版原卷，{data.textbookCounts.sourceUnavailable} 条仍需补来源。</strong><p>版本年份冲突 {data.textbookCounts.sourceVersionConflict} 条 · 同学期无候选 {data.textbookCounts.sourceNoCandidate} 条 · 候选歧义 {data.textbookCounts.sourceAmbiguous} 条 · 来源缺版本 {data.textbookCounts.sourceEditionUnverified} 条。</p></div>
         <TextbookMappingWorklist subject={subject} grade={grade} term={term} atoms={data.atoms} onOpen={(nextBookId, nextLessonId, candidateAtomIds) => { setBookId(nextBookId); setLessonId(nextLessonId); setBook(null); setMappedIds(candidateAtomIds); setRationale(candidateAtomIds.length ? 'PDF候选仅供复核；请对照实际课时逐项确认或删除，并说明证据范围。' : ''); }} />
         <label>选择目录<select value={bookId} onChange={e => { setBookId(e.target.value); setLessonId(''); setBook(null); }}><option value="">请选择</option>{books.map(b => <option key={b.id} value={b.id}>{b.edition} · {b.title} · {b.mappedLessonCount}/{b.lessonCount}课时 · {b.sourceAvailability?.status === 'matched' ? '有同版原卷' : '无同版原卷'}</option>)}</select></label>
         {book && book.source !== 'original' && !book.sourceDocument && <p className="admin-gap" role="status"><strong>未绑定内审原卷：</strong>{book.sourceAvailability.reason}。目录和已有课时信息仍保留，学生范围不会因此获得未审核映射。</p>}
