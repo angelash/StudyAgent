@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-21T23:56:54+08:00",
+  "baseCommit": "f3ac4de6470cb2be57c2a6ce9853e7414948b776",
+  "scope": [
+    "HyperKnow-style Studio layout and interaction calibration",
+    "narrated whiteboard preview and WebM/SRT export",
+    "optional server TTS audio track with captioned fallback",
+    "LMS and external calendar ICS import/sync/revoke/export",
+    "StudyAgent study tasks on the same calendar",
+    "guardian-only connector management with encrypted feed URLs",
+    "idempotent whiteboard, connector and study-event commands",
+    "SQLite restart and backup/restore persistence"
+  ],
+  "verification": {
+    "fullApi": {
+      "command": "npm test",
+      "result": "passed",
+      "testFilesPassed": 80,
+      "testFilesSkipped": 1,
+      "testsPassed": 717,
+      "testsSkipped": 6,
+      "durationSeconds": 218.1
+    },
+    "browser": {
+      "command": "npm run test:e2e",
+      "result": "passed",
+      "testsPassed": 6,
+      "testsFailed": 0,
+      "durationSeconds": 50.9,
+      "covered": [
+        "production web build",
+        "parent login and synthetic student setup",
+        "course blueprint preview and persistence",
+        "whiteboard preview and idempotent save",
+        "1280x720 captioned WebM download",
+        "SRT subtitle download",
+        "study-task creation",
+        "LMS ICS paste/import",
+        "desktop visual screenshots"
+      ]
+    },
+    "security": [
+      "HTTP subscription URLs rejected",
+      "localhost, LAN, documentation, multicast and reserved IP ranges rejected",
+      "IPv4-mapped and NAT64 private targets rejected",
+      "DNS result pinned for HTTPS request while preserving hostname certificate checks",
+      "student connector management blocked",
+      "cross-family whiteboard and calendar access blocked",
+      "subscription URLs encrypted with AES-256-GCM and omitted from API views"
+    ],
+    "persistence": [
+      "whiteboard scenes restored after application restart",
+      "LMS connector and events restored after application restart",
+      "whiteboard and connector events restored after backup bundle recovery"
+    ]
+  },
+  "artifacts": [
+    "studio-home-polished.png",
+    "studio-course-polished.png",
+    "studio-whiteboard-preview.png",
+    "studio-whiteboard-player.png",
+    "studio-calendar-polished.png"
+  ],
+  "limitations": [
+    "LMS integration uses interoperable ICS import and subscription rather than vendor OAuth APIs",
+    "external refresh is explicit rather than background scheduled",
+    "real TTS audio requires OPENAI_API_KEY and a compatible speech endpoint; tests verify the captioned fallback",
+    "visible completion and watched whiteboards do not establish mastery"
+  ]
+}

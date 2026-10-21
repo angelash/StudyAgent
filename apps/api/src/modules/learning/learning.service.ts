@@ -1,8 +1,8 @@
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
-  StudioCourse, StudioOverview, Subject } from '@study-agent/contracts';
+  StudioCourse, StudioOverview, StudioWhiteboard, Subject } from '@study-agent/contracts';
 import { answerProtocolIssue } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -19,6 +19,9 @@ import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { buildStudioCourse } from './studio-course';
+import { buildStudioWhiteboard } from './studio-whiteboard';
+import { StudioIntegrationService } from './studio-integration.service';
+import { AiService } from '../ai/ai.service';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -30,7 +33,8 @@ const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestK
 export class LearningService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly diagnostics: DiagnosticsService, private readonly guidance: GuidanceService,
-    private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
+    private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService,
+    private readonly integrations: StudioIntegrationService, private readonly ai: AiService) {}
 
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
@@ -41,7 +45,8 @@ export class LearningService {
     const children = this.studentProfiles(user);
     const selected = children.find(child => child.id === studentId) ?? children[0];
     const day = studyDay();
-    if (!selected) return { generatedAt: new Date().toISOString(), day, children, selected: null, courses: [], feed: [], activities: [] };
+    if (!selected) return { generatedAt: new Date().toISOString(), day, narrationAvailable: this.ai.narrationAvailable, children, selected: null, courses: [], feed: [], activities: [],
+      whiteboards: [], integrations: { connectors: [], events: [] } };
     this.students.assertCanAccessStudent(user, selected.id);
     const profile = this.diagnostics.profile(user, selected.id, subject), scope = profile.scope;
     const learned = new Set(scope?.learnedAtomIds ?? []);
@@ -62,10 +67,58 @@ export class LearningService {
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     const activities = this.store.select('studioActivities', { studentId: selected.id, subject })
       .sort((a, b) => b.at.localeCompare(a.at)).slice(0, 50);
-    return { generatedAt: new Date().toISOString(), day, children,
+    const whiteboards = this.store.select('studioWhiteboards', { studentId: selected.id, subject })
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    return { generatedAt: new Date().toISOString(), day, narrationAvailable: this.ai.narrationAvailable, children,
       selected: { id: selected.id, nickname: selected.nickname, grade: selected.grade, subject, scope, atoms,
         estimates: profile.estimates.filter(estimate => learned.has(estimate.atomId)) },
-      courses, feed, activities };
+      courses, feed, activities, whiteboards, integrations: this.integrations.overview(user, selected.id, subject) };
+  }
+
+  previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional() }).strict(), input);
+    const { atoms } = this.studioScope(user, command.studentId, command.subject);
+    const atom = command.atomId ? atoms.find(item => item.id === command.atomId) : atoms
+      .map(item => ({ item, score: promptAtomScore(command.prompt, item.name) }))
+      .sort((a, b) => b.score - a.score || Number(Boolean(b.item.teaching?.visual)) - Number(Boolean(a.item.teaching?.visual)))[0];
+    if (command.atomId && !atom) throw new BadRequestException('白板只能使用当前已确认范围内的已发布知识点');
+    return buildStudioWhiteboard({ id: 'studio_whiteboard_preview', studentId: command.studentId, subject: command.subject,
+      prompt: command.prompt, atom: atom && ('item' in atom ? atom.score >= 2 ? atom.item : undefined : atom) });
+  }
+
+  createStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional(),
+      fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (existing) {
+      const whiteboard = this.store.select('studioWhiteboards', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === command.fingerprint);
+      if (whiteboard) return whiteboard;
+    }
+    const preview = this.previewStudioWhiteboard(user, { studentId: command.studentId, subject: command.subject,
+      prompt: command.prompt, atomId: command.atomId });
+    if (preview.fingerprint !== command.fingerprint) throw new ConflictException('白板内容已变化，请重新预览');
+    const existingWhiteboard = this.store.select('studioWhiteboards', { studentId: command.studentId, subject: command.subject })
+      .find(item => item.fingerprint === command.fingerprint);
+    if (existingWhiteboard) return existingWhiteboard;
+    const whiteboard: StudioWhiteboard = { ...preview, id: this.store.nextId('studio_whiteboard'), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    const activity: StudioActivity = { id: this.store.nextId('studio_activity'), studentId: command.studentId, subject: command.subject,
+      kind: 'lesson_started', title: `白板视频「${whiteboard.title}」`, detail: `${whiteboard.scenes.length} 幕 · ${Math.ceil(whiteboard.durationMs / 1000)} 秒`,
+      href: `/studio?whiteboard=${whiteboard.id}`, at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey };
+    this.store.append('studioWhiteboards', whiteboard); this.store.append('studioActivities', activity);
+    this.events.publish('studio.whiteboard_created', { whiteboardId: whiteboard.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
+    return whiteboard;
+  }
+
+  async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string) {
+    const whiteboard = this.store.find('studioWhiteboards', { id });
+    if (!whiteboard) throw new NotFoundException('白板不存在');
+    this.students.assertCanAccessStudent(user, whiteboard.studentId);
+    const scene = whiteboard.scenes.find(item => item.id === sceneId);
+    if (!scene) throw new NotFoundException('白板场景不存在');
+    const audio = await this.ai.speech(scene.narration);
+    return new StreamableFile(audio, { type: 'audio/mpeg', disposition: 'inline', length: audio.length });
   }
 
   previewStudioCourse(user: InMemoryUserAccount, input: unknown) {
@@ -424,4 +477,12 @@ export class LearningService {
               sufficientPoints: item.report.estimates.filter((estimate) => !['unknown', 'insufficient'].includes(estimate.status)).length })) };
       }) })) };
   }
+}
+
+function promptAtomScore(prompt: string, name: string) {
+  const clean = (value: string) => value.toLocaleLowerCase('zh-CN').replace(/[\s\p{P}\p{S}]/gu, '');
+  const source = clean(prompt), target = clean(name); let best = 0;
+  for (let start = 0; start < target.length; start += 1) for (let length = 2; length <= target.length - start; length += 1)
+    if (source.includes(target.slice(start, start + length))) best = Math.max(best, length);
+  return best;
 }

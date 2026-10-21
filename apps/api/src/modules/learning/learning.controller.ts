@@ -3,10 +3,11 @@ import { subjectSchema } from '@study-agent/contracts';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { validate } from '../../common/validation';
 import { LearningService } from './learning.service';
+import { StudioIntegrationService } from './studio-integration.service';
 @UseGuards(AuthGuard)
 @Controller('learning')
 export class LearningController {
-  constructor(private readonly learning: LearningService) {}
+  constructor(private readonly learning: LearningService, private readonly integrations: StudioIntegrationService) {}
   @Get('students') students(@Req() req: AuthenticatedRequest) { return this.learning.studentProfiles(req.user); }
   @Get('students/:id/memory') memory(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.memory(req.user, id, validate(subjectSchema, subject ?? 'math'));
@@ -25,6 +26,35 @@ export class LearningController {
   @Post('studio/courses/:courseId/lessons/:lessonId/start') studioLessonStart(@Req() req: AuthenticatedRequest,
     @Param('courseId') courseId: string, @Param('lessonId') lessonId: string, @Body() input: unknown) {
     return this.learning.startStudioLesson(req.user, courseId, lessonId, input);
+  }
+  @Post('studio/whiteboards/preview') studioWhiteboardPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.learning.previewStudioWhiteboard(req.user, input);
+  }
+  @Post('studio/whiteboards') studioWhiteboardCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.learning.createStudioWhiteboard(req.user, input);
+  }
+  @Post('studio/whiteboards/:id/narration/:sceneId') studioWhiteboardNarration(@Req() req: AuthenticatedRequest,
+    @Param('id') id: string, @Param('sceneId') sceneId: string) {
+    return this.learning.studioWhiteboardNarration(req.user, id, sceneId);
+  }
+  @Post('studio/integrations') studioIntegrationConnect(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.integrations.connect(req.user, input);
+  }
+  @Post('studio/integrations/:id/sync') studioIntegrationSync(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
+    return this.integrations.sync(req.user, id);
+  }
+  @Post('studio/integrations/:id/disconnect') studioIntegrationDisconnect(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
+    return this.integrations.disconnect(req.user, id);
+  }
+  @Post('studio/calendar/events') studioCalendarEventCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.integrations.createStudyEvent(req.user, input);
+  }
+  @Post('studio/calendar/events/:id/remove') studioCalendarEventRemove(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
+    return this.integrations.removeStudyEvent(req.user, id);
+  }
+  @Get('studio/calendar/export') studioCalendarExport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string,
+    @Query('subject') subject?: string) {
+    return { filename: 'studyagent-calendar.ics', content: this.integrations.exportCalendar(req.user, studentId, validate(subjectSchema, subject ?? 'math')) };
   }
   @Get('students/:id/today') today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.today(req.user, id, validate(subjectSchema, subject ?? 'math'));

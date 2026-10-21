@@ -1,4 +1,4 @@
-import type { AtomTeaching, KnowledgeAtom, LearningScope, MasteryEstimate } from './diagnostics';
+import type { AtomTeaching, KnowledgeAtom, LearningScope, MasteryEstimate, TeachingVisual } from './diagnostics';
 
 export type StudioSubject = 'chinese' | 'math' | 'english';
 export type StudioLessonKind = 'learn' | 'practice' | 'project' | 'exam';
@@ -67,9 +67,74 @@ export type StudioFeedItem = {
   href: string;
 };
 
+export type StudioWhiteboardScene = {
+  id: string;
+  kind: 'title' | 'concept' | 'steps' | 'fraction_bars' | 'check';
+  title: string;
+  narration: string;
+  body?: string;
+  bullets?: string[];
+  visual?: TeachingVisual;
+  durationMs: number;
+};
+
+export type StudioWhiteboard = {
+  id: string;
+  studentId: string;
+  subject: StudioSubject;
+  atomId: string | null;
+  title: string;
+  prompt: string;
+  scenes: StudioWhiteboardScene[];
+  durationMs: number;
+  width: number;
+  height: number;
+  fingerprint: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type StudioConnectorKind = 'lms_ics' | 'calendar_ics';
+export type StudioConnector = {
+  id: string;
+  studentId: string;
+  subject: StudioSubject;
+  kind: StudioConnectorKind;
+  label: string;
+  sourceHost: string;
+  status: 'connected' | 'syncing' | 'error' | 'revoked';
+  lastSyncedAt: string | null;
+  eventCount: number;
+  lastError: string | null;
+  version: number;
+  createdAt: string;
+};
+
+export type StudioScheduleEvent = {
+  id: string;
+  connectorId: string;
+  studentId: string;
+  subject: StudioSubject;
+  title: string;
+  description: string;
+  startsAt: string;
+  endsAt: string;
+  allDay: boolean;
+  externalUid: string;
+  source: 'lms' | 'calendar' | 'studyagent';
+  createdAt: string;
+  requestKey?: string;
+};
+
+export type StudioIntegrationOverview = {
+  connectors: StudioConnector[];
+  events: StudioScheduleEvent[];
+};
+
 export type StudioOverview = {
   generatedAt: string;
   day: string;
+  narrationAvailable: boolean;
   children: Array<{ id: string; nickname: string; grade: number }>;
   selected: {
     id: string; nickname: string; grade: number; subject: StudioSubject;
@@ -80,4 +145,6 @@ export type StudioOverview = {
   courses: StudioCourse[];
   feed: StudioFeedItem[];
   activities: StudioActivity[];
+  whiteboards: StudioWhiteboard[];
+  integrations: StudioIntegrationOverview;
 };

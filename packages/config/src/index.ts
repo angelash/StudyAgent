@@ -8,6 +8,8 @@ export const apiEnvSchema = z.object({
   OPENAI_API_KEY: z.string().optional(),
   OPENAI_BASE_URL: z.string().default('https://api.openai.com/v1'),
   OPENAI_MODEL: z.string().default('gpt-4.1-mini'),
+  OPENAI_TTS_MODEL: z.string().default('tts-1'),
+  OPENAI_TTS_VOICE: z.string().default('alloy'),
   CODEX_COMMAND: z.string().default('codex'),
   CODEX_MODEL: z.string().optional(),
   CODEX_TIMEOUT_MS: z.coerce.number().int().positive().default(120000),

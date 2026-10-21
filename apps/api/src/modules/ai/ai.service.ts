@@ -65,6 +65,8 @@ export class AiService {
     private readonly students: StudentsService,
   ) {}
 
+  get narrationAvailable() { return Boolean(this.client); }
+
   async analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse> {
     const client = this.requireClient('AI 评估分析');
     const subjectName = this.getSubjectLabel(command.question.subject);
@@ -113,6 +115,17 @@ export class AiService {
       return response;
     } catch (error) {
       throw this.wrapAiError('AI 评估分析', error);
+    }
+  }
+
+  async speech(text: string) {
+    const client = this.requireClient('白板旁白');
+    try {
+      const speech = await client.audio.speech.create({ model: this.env.OPENAI_TTS_MODEL, voice: this.env.OPENAI_TTS_VOICE,
+        input: text.slice(0, 4096), response_format: 'mp3' });
+      return Buffer.from(await speech.arrayBuffer());
+    } catch {
+      throw new ServiceUnavailableException('AI 旁白暂时不可用，可以继续导出字幕视频或稍后重试');
     }
   }
 

@@ -58,6 +58,12 @@ describe('real API persistence across application restarts', () => {
       await call('post', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: 'restart-learning-access', reason: '家长开启独立学习，检查重启后仍可恢复已保存的学习记录。' });
       const learningCode = await call('post', `/students/${studentId}/learning-access/codes`, { expectedVersion: 1, requestKey: 'restart-learning-code' });
       const learner = (await request(app.getHttpServer()).post('/api/auth/learning-code').send({ code: learningCode.code }).expect(201)).body.data;
+      const boardPreview = await call('post', '/learning/studio/whiteboards/preview', { studentId, subject: 'math', prompt: '整理当前观察记录' });
+      const whiteboard = await call('post', '/learning/studio/whiteboards', { studentId, subject: 'math', prompt: '整理当前观察记录',
+        fingerprint: boardPreview.fingerprint, requestKey: 'restart-whiteboard' });
+      const calendarConnector = await call('post', '/learning/studio/integrations', { studentId, subject: 'math', kind: 'lms_ics',
+        label: '重启验收课程', requestKey: 'restart-calendar-connection', icsText: ['BEGIN:VCALENDAR', 'BEGIN:VEVENT', 'UID:restart-lesson',
+          'DTSTART:20261101T080000+0800', 'DTEND:20261101T084500+0800', 'SUMMARY:持久化学校课程', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n') });
       const assistantInput = { userRole: 'student', studentId, subject: 'math', pageContext: 'mission', contextRefType: 'practice',
         contextRefId: activity.id, contextItemId: activity.questions[1].id };
       const assistant = await call('post', '/ai/assistant/sessions', assistantInput);
@@ -70,6 +76,10 @@ describe('real API persistence across application restarts', () => {
       expect(restored.summary.attempted).toBe(1);
       const learningMe = await request(app.getHttpServer()).get('/api/auth/me').set('Authorization', `Bearer ${learner.token}`).expect(200);
       expect(learningMe.body.data.studentId).toBe(studentId);
+      const restoredStudio = await call('get', `/learning/studio/overview?studentId=${studentId}&subject=math`);
+      expect(restoredStudio.whiteboards.find((item: any) => item.id === whiteboard.id).scenes).toHaveLength(whiteboard.scenes.length);
+      expect(restoredStudio.integrations.connectors.find((item: any) => item.id === calendarConnector.connector.id).eventCount).toBe(1);
+      expect(restoredStudio.integrations.events.some((item: any) => item.title === '持久化学校课程')).toBe(true);
       const resumedAssistant = await call('post', '/ai/assistant/sessions', assistantInput);
       expect(resumedAssistant.id).toBe(assistant.id);
       const assistantHistory = await call('get', `/ai/assistant/sessions/${assistant.id}/messages`);
@@ -105,6 +115,9 @@ describe('real API persistence across application restarts', () => {
       expect(recoveredActivity.summary.attempted).toBe(1);
       expect((await call('get', `/learning/practice/${activity.id}/questions/${activity.questions[1].id}`)).draft.answer).toEqual({ value: '正在思考' });
       expect((await call('get', `/diagnostics/sessions/${baseline.id}/report`)).evidence).toHaveLength(baseline.items.length);
+      const recoveredStudio = await call('get', `/learning/studio/overview?studentId=${studentId}&subject=math`);
+      expect(recoveredStudio.whiteboards.some((item: any) => item.id === whiteboard.id)).toBe(true);
+      expect(recoveredStudio.integrations.events.some((item: any) => item.title === '持久化学校课程')).toBe(true);
       expect(await call('get', `/ai/assistant/sessions/${assistant.id}/messages`)).toHaveLength(2);
     } finally {
       await app.close();

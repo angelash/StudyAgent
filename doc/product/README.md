@@ -21,6 +21,7 @@
 17. [ChinaTextbook 冷归档来源索引](./79-chinatextbook-coldarchive-index.md)：H/E同提交、2,061个逻辑PDF书目的存在清单、拆分卷、教材范围和许可边界。
 18. [证据化图形讲解与教材引用](./80-evidence-grounded-visual-guidance-delivery.md)：受限分数条图卡、教学三步讲解、计划引用冻结和页码候选边界。
 19. [独立学习工作台](./81-learning-studio-hyperknow-mode.md)：HyperKnow 式门户、持久化课程蓝图、学习 Feed、助教与既有测量闭环整合。
+20. [自由白板视频与LMS日历同步](./82-whiteboard-lms-calendar-delivery.md)：逐幕白板、可选AI旁白音轨、字幕视频、学校ICS互通、监护权限与像素校准证据。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
