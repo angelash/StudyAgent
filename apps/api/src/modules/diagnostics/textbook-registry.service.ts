@@ -7,7 +7,8 @@ import { InMemoryStoreService } from '../../infrastructure/in-memory-store.servi
 import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-paths';
 
 const names = { math: '数学', chinese: '语文', english: '英语' };
-type SourceDocument = { subject: Subject; grade: number; term: 'upper' | 'lower'; assetPath: string; sha256: string; pages: number };
+type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
+  assetPath: string; sha256: string; pages: number };
 type SourcePageRange = { start: number; end: number };
 
 @Injectable()
@@ -132,17 +133,37 @@ export class TextbookRegistryService {
 
   private sourceDocument(book: CurriculumBook) {
     if (!this.sourceDocuments) {
-      const file = resolve(process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST ?? resolve(workspaceRoot(), 'resources/curriculum/chinatextbook-chinese-v1.json'));
-      if (!existsSync(file)) this.sourceDocuments = [];
-      else {
-        const manifest = JSON.parse(readFileSync(file, 'utf8')) as { books?: Array<{ id: string; grade: number; term: 'upper' | 'lower';
-          assetPath: string; sha256: string; pages: number }> };
-        this.sourceDocuments = (manifest.books ?? []).map(document => ({ subject: 'chinese' as const, grade: document.grade,
-          term: document.term, assetPath: document.assetPath, sha256: document.sha256, pages: document.pages }));
+      const sources: SourceDocument[] = [];
+      const manifests = [
+        { file: process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST ?? resolve(workspaceRoot(), 'resources/curriculum/chinatextbook-chinese-v1.json'), subject: 'chinese' as const },
+        { file: process.env.STUDY_PRIMARY_TEXTBOOK_SOURCE_MANIFEST ?? resolve(workspaceRoot(), 'resources/curriculum/chinatextbook-primary-v1.json'), subject: null },
+      ];
+      for (const manifest of manifests) if (existsSync(manifest.file)) {
+        const document = JSON.parse(readFileSync(manifest.file, 'utf8')) as { books?: Array<{ id: string; subject?: Subject; grade: number;
+          term: 'upper' | 'lower'; title?: string; edition?: string; assetPath: string; sha256: string; pages: number }> };
+        sources.push(...(document.books ?? []).map(book => ({ id: book.id, subject: book.subject ?? manifest.subject!, grade: book.grade,
+          term: book.term, title: book.title ?? '', edition: book.edition ?? '', assetPath: book.assetPath,
+          sha256: book.sha256, pages: book.pages })));
       }
+      this.sourceDocuments = sources;
     }
     if (book.source === 'original') return null;
-    return this.sourceDocuments.find(document => document.subject === book.subject && document.grade === book.grade && document.term === book.term) ?? null;
+    const candidates = this.sourceDocuments.filter(document => document.subject === book.subject && document.grade === book.grade && document.term === book.term);
+    if (candidates.length <= 1) return candidates[0] ?? null;
+    const normalize = (value: string) => value.normalize('NFKC').toLowerCase().replace(/[（(]\s*(?:19|20)\d{2}\s*[）)]/g, '')
+      .replace(/\s+/g, '').replace(/[·・.]/g, '');
+    const exact = candidates.filter(document => document.edition && normalize(document.edition) === normalize(book.edition));
+    if (exact.length === 1) return exact[0];
+    const base = (value: string) => normalize(value).split(/[（(]/)[0];
+    const sameBase = candidates.filter(document => document.edition && base(document.edition) === base(book.edition));
+    if (sameBase.length === 1) return sameBase[0];
+    const edition = normalize(book.edition);
+    const distinctive = sameBase.filter(document => {
+      const source = normalize(document.edition + document.title);
+      const tokens = edition.match(/[\u4e00-\u9fff]{2,}/g) ?? [];
+      return tokens.some(token => source.includes(token));
+    });
+    return distinctive.length === 1 ? distinctive[0] : null;
   }
 
   private sourcePageRange(book: CurriculumBook, lessonId: string) {

@@ -119,6 +119,22 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     }
   });
 
+  it('maps complete local math and English source books without inventing lesson page offsets', async () => {
+    let mathSources = 0, englishSources = 0, sample: any;
+    for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower'] as const) {
+      for (const subject of ['math', 'english'] as const) {
+        const books = await call('get', `/diagnostics/textbooks?subject=${subject}&grade=${grade}&term=${term}`);
+        const sourced = books.filter((book: any) => book.sourceDocument);
+        if (subject === 'math') mathSources += sourced.length; else englishSources += sourced.length;
+        if (!sample && subject === 'math') sample = sourced.find((book: any) => book.chapterState === 'available') ?? sourced[0];
+      }
+    }
+    expect(mathSources).toBe(132); expect(englishSources).toBe(125); expect(sample).toBeTruthy();
+    const detail = await call('get', `/admin/curriculum/textbooks/${encodeURIComponent(sample.id)}`, undefined, 200, admin);
+    expect(detail.sourceDocument.pages).toBeGreaterThan(0); expect(detail.sourceDocument.sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(detail.chapters.flatMap((chapter: any) => chapter.lessons).every((lesson: any) => lesson.sourcePageRange === undefined)).toBe(true);
+  });
+
   it('requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition', async () => {
     const atom = { ...store.knowledgeAtoms.find((a: any) => a.id === 'base'), id: 'chinese-fixture', subject: 'chinese', grade: 2, term: 'both', prerequisiteIds: [] };
     store.knowledgeAtoms.push(atom);

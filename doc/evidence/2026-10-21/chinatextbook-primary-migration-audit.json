@@ -1,0 +1,18 @@
+{
+  "format": "study-agent-primary-source-migration-audit-v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "sourcePdfs": 295,
+  "sourceBytes": 5606746718,
+  "pages": 28002,
+  "assetFilesIncludingExtractions": 590,
+  "assetBytesIncludingExtractions": 5618235399,
+  "bySubject": {
+    "math": {"books": 87, "pages": 10061, "bytes": 1867126760, "registryBooksWithSource": 132},
+    "english": {"books": 208, "pages": 17941, "bytes": 3739619958, "registryBooksWithSource": 125}
+  },
+  "independentBackup": "I:\\StudyAgent-backups\\chinatextbook-primary-20261021-v1\\textbook-sources\\chinatextbook-primary-v1",
+  "sourceVerification": "doc/evidence/2026-10-21/chinatextbook-primary-verification.json",
+  "backupVerification": "doc/evidence/2026-10-21/chinatextbook-primary-backup-verification.json",
+  "limits": "Exact file and page verification only. It does not establish redistribution rights, human lesson mapping or that all 448 platform registry variants have a unique source edition."
+}

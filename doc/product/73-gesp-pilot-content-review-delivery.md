@@ -24,7 +24,7 @@
 
 新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效；提交携带的内容与测试包来源快照在重启后保持不变。已排程复测在执行前再次核对来源提交、任务内容和测试包哈希，任一变化即拒绝执行，避免用新任务解释旧保持结果。
 
-全仓构建与类型检查通过。默认回归155个文件、702项，696通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
+全仓构建与类型检查通过。默认回归155个文件、703项，697通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
 
 GitHub Ubuntu/PostgreSQL完整流水线已在run `39520410926`通过，覆盖全仓回归、五门禁内容审核、每日计划预算、schema 12迁移恢复与发布隐私边界，收据见 [GESP内容审核CI](../evidence/2026-10-21/gesp-content-review-ci.json)。
 
