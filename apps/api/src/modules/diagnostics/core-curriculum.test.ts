@@ -48,4 +48,16 @@ describe('original curriculum content integrity', () => {
     expect(first('core:english:did-base').answer).toBe('go');
     expect(first('core:english:inference-text').answer).toBe('He expects rain.');
   });
+  it('attaches only schema-bounded fraction visuals to authored teaching', () => {
+    const equivalence = byId.get('foundation:math:fractionequivalence')!.atom.teaching!.visual;
+    const addition = byId.get('core:math:fractionadd')!.atom.teaching!.visual;
+    const subtraction = byId.get('core:math:fractionsubtract')!.atom.teaching!.visual;
+    expect(equivalence).toMatchObject({ kind: 'fraction_bars', operator: '=', commonDenominator: 12,
+      result: { numerator: 9, denominator: 12 } });
+    expect(addition).toMatchObject({ kind: 'fraction_bars', operator: '+', commonDenominator: 12,
+      terms: [{ numerator: 2, denominator: 3 }, { numerator: 1, denominator: 4 }], result: { numerator: 11, denominator: 12 } });
+    expect(subtraction).toMatchObject({ kind: 'fraction_bars', operator: '-', commonDenominator: 12,
+      result: { numerator: 7, denominator: 12 } });
+    expect(byId.get('core:math:count')!.atom.teaching!.visual).toBeUndefined();
+  });
 });

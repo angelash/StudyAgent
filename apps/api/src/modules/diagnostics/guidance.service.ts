@@ -1,7 +1,8 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import { DiagnosticGuidancePlan, GuidanceAction, GuidancePlanRevision, GuidancePlanView, Subject } from '@study-agent/contracts';
+import { DiagnosticGuidancePlan, GuidanceAction, GuidancePlanRevision, GuidancePlanView, LearningScope,
+  LearningSourceCitation, Subject } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -11,6 +12,8 @@ import { DiagnosticsService } from './diagnostics.service';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { eligibleMeasurements } from './curriculum.service';
 import { FAMILY_IDENTITY_VERSION, familyAnalysisOutdated } from './family-identity';
+import { TextbookRegistryService } from './textbook-registry.service';
+import { textbookSourceCitations } from './learning-source-citation';
 
 const createPlanSchema = z.object({
   baselineSessionId: z.string().min(1).max(180), minutesPerDay: z.number().int().min(5).max(60),
@@ -23,7 +26,16 @@ const inputHash = (kind: string, input: unknown) => createHash('sha256').update(
 @Injectable()
 export class GuidanceService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService, private readonly ai: AiService) {}
+    private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService, private readonly ai: AiService,
+    private readonly textbooks: TextbookRegistryService) {}
+
+  private sourceCitations(scope: LearningScope, atomId: string): LearningSourceCitation[] {
+    if (!scope.textbookVolumeId) return [];
+    const book = this.textbooks.all().find(candidate => candidate.id === scope.textbookVolumeId);
+    if (!book) return [];
+    const detail = this.textbooks.detail(book.id);
+    return textbookSourceCitations(scope, atomId, book, detail);
+  }
 
   async create(user: InMemoryUserAccount, studentId: string, input: unknown) {
     this.students.assertGuardian(user, studentId);
@@ -49,6 +61,7 @@ export class GuidanceService {
     const effectiveResponses = new Map(this.diagnostics.effectiveResponses(studentId, session.subject).map(response => [response.id, response]));
     const actions: GuidanceAction[] = prioritized.map((estimate, index) => {
       const atom = atomMap.get(estimate.atomId)!;
+      const sourceCitations = this.sourceCitations(session.scopeSnapshot, atom.id);
       const hypothesis = activeHypotheses.find((item) => item.atomId === atom.id || item.probeAtomIds.includes(atom.id));
       const observedIndependentAnswer = estimate.evidenceIds.some(id => {
         const response = effectiveResponses.get(id);
@@ -66,7 +79,9 @@ export class GuidanceService {
         minutes: perAction + (index === 0 ? command.minutesPerDay % Math.max(prioritized.length, 1) : 0),
         successCriterion: `${atom.successCriterion}；至少两个新题族独立完成，再安排迁移与延迟验证。`,
         resourceQuestionIds, retestAt: new Date(now.getTime() + 86_400_000).toISOString(),
-        ...(atom.teaching?.reviewStatus === 'approved' ? { teachingSnapshot: { atomVersion: atom.version, teaching: structuredClone(atom.teaching) } } : {}) };
+        sourceCitations,
+        ...(atom.teaching?.reviewStatus === 'approved' ? { teachingSnapshot: { atomVersion: atom.version,
+          teaching: structuredClone(atom.teaching), sourceCitations } } : {}) };
     });
     const plan: DiagnosticGuidancePlan = {
       id: this.store.nextId('guidance'), studentId, subject: session.subject, baselineSessionId: session.id,

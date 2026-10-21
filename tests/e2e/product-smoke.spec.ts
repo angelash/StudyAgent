@@ -112,6 +112,45 @@ test('a parent can create a learning profile and complete an evidence-limited as
   if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/learning-memory-populated.png', fullPage: true });
 });
 
+test('an approved fraction teaching card renders a safe step-by-step visual', async ({ page }) => {
+  test.setTimeout(120_000);
+  const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
+  const principal = `fraction-${suffix}@local.test`, credential = `Fraction-only-${suffix}`;
+  expect((await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ principal, credential }) })).status).toBe(201);
+  await page.goto('/parent/login');
+  await page.getByLabel('登录账号').fill(principal);
+  await page.getByLabel('密码').fill(credential);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
+  await expect(page.getByRole('heading', { name: '建立孩子的学习档案' })).toBeVisible();
+  await page.getByLabel('孩子昵称').fill('分数图验收');
+  await page.getByLabel('当前年级').selectOption('5');
+  await page.getByRole('button', { name: '保存档案 ↗' }).click();
+  await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
+  await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();
+  const fractionPoint = page.getByRole('checkbox', { name: /异分母分数加法/ }).first();
+  await fractionPoint.check();
+  await page.getByLabel('这次想怎样了解孩子').selectOption('micro');
+  const microTarget = page.locator('.assessment-targets').getByRole('checkbox', { name: /异分母分数加法/ });
+  await microTarget.check();
+  await page.getByRole('checkbox', { name: /加入必要的前置基础核查/ }).uncheck();
+  await page.getByRole('button', { name: /确认进度，查看题组/ }).click();
+  await page.getByRole('button', { name: /准备好了，开始这一组/ }).click();
+  await expect(page.getByRole('progressbar', { name: '评测进度' })).toBeVisible();
+  const reportHeading = page.getByRole('heading', { name: '从知识点看清下一步。' });
+  for (let index = 0; index < 3; index += 1) {
+    const skip = page.getByRole('button', { name: '暂时不会' });
+    await expect(skip).toBeEnabled();
+    await skip.click();
+  }
+  await expect(reportHeading).toBeVisible();
+  await page.getByRole('button', { name: /制定指导计划/ }).click();
+  await expect(page.getByRole('button', { name: '确认并开始计划' })).toBeVisible();
+  await page.getByText('先看讲解和示例', { exact: true }).first().click();
+  await expect(page.getByRole('heading', { name: '先统一切法，再合并份数' })).toBeVisible();
+  if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/teaching-visual.png', fullPage: true });
+});
+
 test('an administrator can reach the curriculum review workbench', async ({ page }) => {
   await page.goto('/parent/login');
   await page.getByLabel('登录账号').fill(process.env.E2E_ADMIN_PRINCIPAL ?? 'browser-admin');

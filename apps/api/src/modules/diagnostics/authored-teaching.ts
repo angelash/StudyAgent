@@ -1,4 +1,4 @@
-import type { AtomTeaching } from '@study-agent/contracts';
+import type { AtomTeaching, TeachingVisual } from '@study-agent/contracts';
 import type { FoundationDefinition } from './foundation-curriculum';
 import { addMathTeaching } from './authored-math-teaching';
 import { addChineseTeaching } from './authored-chinese-teaching';
@@ -164,11 +164,43 @@ addMathTeaching(card);
 addChineseTeaching(card);
 addEnglishTeaching(card);
 
+/**
+ * Visuals are authored alongside the approved teaching card. The renderer only
+ * accepts this schema and never executes generated SVG/HTML from a model.
+ */
+const teachingVisuals: Record<string, TeachingVisual> = {
+  'foundation:math:fractionequivalence': {
+    kind: 'fraction_bars', title: '同一个整体，换一种切法',
+    note: '分母变大只是把同一整体切得更细，阴影覆盖的长度没有改变。', operator: '=',
+    commonDenominator: 12,
+    terms: [{ numerator: 3, denominator: 4, label: '原来的四等份' }],
+    result: { numerator: 9, denominator: 12 },
+  },
+  'core:math:fractionadd': {
+    kind: 'fraction_bars', title: '先统一切法，再合并份数',
+    note: '三段中的两段不能直接和四段中的一段相加；都改写成十二分之一后，才能数总份数。', operator: '+',
+    commonDenominator: 12,
+    terms: [{ numerator: 2, denominator: 3, label: '第一段' },
+      { numerator: 1, denominator: 4, label: '第二段' }],
+    result: { numerator: 11, denominator: 12 },
+  },
+  'core:math:fractionsubtract': {
+    kind: 'fraction_bars', title: '先统一切法，再减去份数',
+    note: '两张条带表示同一个整体；先换成十二分之一，再从中减去三份。', operator: '-',
+    commonDenominator: 12,
+    terms: [{ numerator: 5, denominator: 6, label: '原来有' },
+      { numerator: 1, denominator: 4, label: '减去' }],
+    result: { numerator: 7, denominator: 12 },
+  },
+};
+
 export function addAuthoredTeaching(definitions: FoundationDefinition[]) {
   const ids = new Set(definitions.map(definition => definition.atom.id));
   for (const id of cards.keys()) if (!ids.has(id)) throw new Error(`Authored lesson has no knowledge definition: ${id}`);
   return definitions.map(definition => {
     const teaching = cards.get(definition.atom.id);
-    return teaching ? { ...definition, atom: { ...definition.atom, teaching: structuredClone(teaching) } } : definition;
+    const visual = teachingVisuals[definition.atom.id];
+    return teaching ? { ...definition, atom: { ...definition.atom,
+      teaching: structuredClone(visual ? { ...teaching, visual } : teaching) } } : definition;
   });
 }

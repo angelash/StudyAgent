@@ -1,0 +1,20 @@
+{
+  "format": "study-agent-hyperknow-visual-guidance-runtime-v1",
+  "recordedAt": "2026-10-21T08:30:00.000Z",
+  "baseCommit": "589a472e1951ff9b802e2de174e72e312b31e76a",
+  "focusedRegression": { "files": 2, "tests": 7, "passed": 7, "failed": 0 },
+  "fullRegression": { "files": 77, "activeFiles": 76, "tests": 712, "passed": 706, "failed": 0, "postgresSkippedByDefault": 6 },
+  "typechecks": { "api": "passed", "web": "passed" },
+  "productionBuild": "passed",
+  "browserJourneys": { "tests": 5, "passed": 5, "failed": 0, "flaky": 0, "durationMs": 28234.042 },
+  "visualScreenshot": { "path": "teaching-visual-runtime.png", "sha256": "7ae96262597b8c4749991f82ec83eced8e430d055ebcbcb35ee4531cd72863f1" },
+  "documentationLinks": { "checked": 210, "missing": 0 },
+  "verified": [
+    "fraction visuals are author-defined schema data rather than generated SVG, HTML or script",
+    "only fraction equivalence, unlike-denominator addition and unlike-denominator subtraction receive the first visual set",
+    "guidance actions freeze lesson mappings and expose candidate page ranges with a needs-review status",
+    "approved source mappings remain visible when page location is missing, while out-of-scope mappings do not attach",
+    "the browser product journey still completes profile, assessment, report, guidance, review scheduling and parent memory reload"
+  ],
+  "limits": "This proves the renderer contract, citation derivation and existing product journey. It does not prove content correctness for every exercise, human review of candidate page ranges, assistive-technology equivalence, real-student learning gains, family upload safety or production source licensing."
+}

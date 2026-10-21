@@ -1,0 +1,90 @@
+{
+  "format": "study-agent-competitor-authenticated-ui-evidence-v1",
+  "subject": "Hyperknow",
+  "observedAt": "2026-10-21T08:10:00.000Z",
+  "account": "User-provided logged-in session; no account identity is recorded in this file.",
+  "productVersionVisible": "v1.3.13",
+  "method": "Manual ordinary-UI inspection in the user-authorized Browser Runtime tab. Only visible controls, accessible snapshots and screenshots were used. No cookies, local storage, tokens, hidden APIs, network interception or private data export were read.",
+  "session": {
+    "urls": [
+      "https://agent.hyperknow.io/",
+      "https://agent.hyperknow.io/response/550bdedf-705c-4371-9689-c456e2070080",
+      "https://agent.hyperknow.io/learning-feed",
+      "https://agent.hyperknow.io/courses",
+      "https://agent.hyperknow.io/marketplace/2f2b0715-6318-4205-ae35-fac328658dcc/preview"
+    ],
+    "navigation": ["Home", "Courses", "Learning Feed", "History", "Marketplace"],
+    "sidebar": ["Recent Activities", "What's new", "More options"]
+  },
+  "visualizationTrial": {
+    "prompt": "Explain visually why 1/2 + 1/3 = 5/6 with a simple diagram.",
+    "visibleStages": [
+      "Loading skills",
+      "conceptExplanation",
+      "Recalling Memory",
+      "Retrieved memory with an explicit no-relevant-memory state",
+      "Visualizing Fraction Addition",
+      "Diagram is generating after explanatory text appears"
+    ],
+    "responseStructure": [
+      "headings and step boundaries",
+      "definition callout",
+      "narrative explanation before the diagram",
+      "fraction bars plus equivalent-fraction equations",
+      "important-takeaways block",
+      "suggested follow-up questions",
+      "voice, language, share and issue-report controls"
+    ],
+    "continuity": [
+      "the system records the activity in the left rail",
+      "follow-up prompts remain available above the composer",
+      "response speed can be selected",
+      "memory retrieval status is visible rather than hidden"
+    ],
+    "qualityBoundary": "The response is visually legible and progressive, but the observed UI alone does not establish factual correctness, pedagogical validity or stable retention."
+  },
+  "learningFeed": {
+    "visibleSections": ["Calendar", "Today's To-Dos", "Completed", "Confirmed Tasks", "Pending Tasks", "Bulk delete"],
+    "countsForThisAccount": { "dues": 0, "tasks": 0 },
+    "planUsageVisible": ["File generation", "Deep Learn sessions", "Free-plan reset date"],
+    "recommendationBasis": "Not observable in this empty account state; no ranking or recommendation rationale is claimed."
+  },
+  "coursePreview": {
+    "courseMetadataVisible": ["curated-by label", "description", "five-unit outline", "Units/Materials/Practices tabs"],
+    "unitStructure": ["lectures", "learn sessions", "per-session practice", "project", "comprehensive or mastery exam"],
+    "progressLabels": ["Not started", "Attempted", "Familiar", "Proficient", "Mastered"],
+    "interactionNotes": [
+      "the full unit outline is visible before joining",
+      "Materials can be extended with PDFs or a natural-language change request",
+      "Practices are grouped by unit and include practice, project and exam roles",
+      "opening a practice while unjoined displays a confirm dialog with course language choice",
+      "the dialog states that language cannot be changed after joining"
+    ],
+    "costBoundary": "No join confirmation, paid generation, purchase or course-content export was performed."
+  },
+  "mechanismInference": [
+    "A visible stage stream separates retrieval, explanation and media generation and lets text arrive before the diagram is ready.",
+    "Course outline, learning, practice, project, exam and a cross-session feed are presented as one continuous product rather than separate tools.",
+    "Completion-derived labels provide quick navigation but are insufficient for StudyAgent's measurement claims.",
+    "Source and memory affordances increase continuity; their truthfulness and privacy controls still require source-level validation."
+  ],
+  "studyAgentIntegration": {
+    "implementedInThisBatch": [
+      "author-defined structured teaching visual schema",
+      "safe fraction-bar renderer with same-whole, common-unit and count steps",
+      "accessibility labels and responsive layout",
+      "explicit instruction that viewing a visual is not evidence of mastery"
+    ],
+    "deferred": [
+      "free-form generated visual code in student pages",
+      "family upload ingestion and page-level source preview",
+      "LMS and calendar connectors",
+      "course marketplace publication"
+    ],
+    "rejected": [
+      "copying course text or media",
+      "awarding mastery from viewing, completion or a single practice score",
+      "using hidden account data or private endpoints for benchmark evidence"
+    ]
+  }
+}

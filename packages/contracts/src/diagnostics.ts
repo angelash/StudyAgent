@@ -5,6 +5,35 @@ const id = z.string().min(1).max(180);
 export const dimensionSchema = z.enum(['understanding', 'procedure', 'transfer', 'retention']);
 export type MeasurementDimension = z.infer<typeof dimensionSchema>;
 
+export const teachingVisualSchema = z.object({
+  kind: z.literal('fraction_bars'),
+  title: z.string().trim().min(3).max(160),
+  note: z.string().trim().min(10).max(600),
+  operator: z.enum(['+', '-', '=']),
+  commonDenominator: z.number().int().min(2).max(24),
+  terms: z.array(z.object({
+    numerator: z.number().int().min(0).max(24),
+    denominator: z.number().int().min(2).max(24),
+    label: z.string().trim().min(1).max(80),
+  }).strict()).min(1).max(3),
+  result: z.object({ numerator: z.number().int().min(0).max(48),
+    denominator: z.number().int().min(2).max(24) }).strict(),
+}).strict().superRefine((visual, context) => {
+  for (const [index, term] of visual.terms.entries()) {
+    if (term.numerator > term.denominator) context.addIssue({ code: z.ZodIssueCode.custom,
+      path: ['terms', index, 'numerator'], message: '教学分数必须位于 0 与同一整体之间' });
+    if (visual.commonDenominator % term.denominator !== 0) context.addIssue({ code: z.ZodIssueCode.custom,
+      path: ['commonDenominator'], message: '共同分母必须能由每个分母等值切分得到' });
+  }
+  if (visual.result.numerator > visual.result.denominator) context.addIssue({ code: z.ZodIssueCode.custom,
+    path: ['result', 'numerator'], message: '本图暂只呈现不超过同一整体的结果' });
+  if (visual.operator === '=' && visual.terms.length !== 1) context.addIssue({ code: z.ZodIssueCode.custom,
+    path: ['terms'], message: '等值图只能展示一个原分数' });
+  if (visual.operator !== '=' && visual.terms.length < 2) context.addIssue({ code: z.ZodIssueCode.custom,
+    path: ['terms'], message: '加减图至少需要两个分数' });
+});
+export type TeachingVisual = z.infer<typeof teachingVisualSchema>;
+
 export const atomTeachingSchema = z.object({
   reviewStatus: z.enum(['draft', 'approved']),
   explanation: z.string().trim().min(10).max(3000),
@@ -17,6 +46,8 @@ export const atomTeachingSchema = z.object({
     verification: z.string().trim().min(10).max(1000) }).strict()).min(1).max(12),
   verification: z.object({ understanding: z.string().trim().min(10).max(1000), procedure: z.string().trim().min(10).max(1000),
     transfer: z.string().trim().min(10).max(1000), retention: z.string().trim().min(10).max(1000) }).strict(),
+  /** Optional, author-defined visual attached to an approved teaching card. */
+  visual: teachingVisualSchema.optional(),
 }).strict();
 export type AtomTeaching = z.infer<typeof atomTeachingSchema>;
 
@@ -207,11 +238,31 @@ export type DiagnosticHypothesis = {
   atomDefinitionFingerprint?: string;
 };
 
+export type LearningSourceCitation = {
+  id: string;
+  kind: 'textbook';
+  bookId: string;
+  bookVersion: string;
+  title: string;
+  edition: string;
+  chapterName: string;
+  lessonId: string;
+  lessonName: string;
+  mappingId: string;
+  mappingVersion: number;
+  pageStart: number | null;
+  pageEnd: number | null;
+  locatorStatus: 'candidate_needs_review' | 'not_located' | 'source_unavailable';
+  sourceAvailability: 'matched' | 'original' | 'no_candidate' | 'ambiguous' | 'edition_unverified' | 'version_conflict';
+  note: string;
+};
+
 export type GuidanceAction = {
   id: string; atomId: string; hypothesisId: string | null; evidenceIds: string[];
   title: string; activity: string; minutes: number; successCriterion: string;
   resourceQuestionIds: string[]; retestAt: string;
-  teachingSnapshot?: { atomVersion: number; teaching: AtomTeaching };
+  teachingSnapshot?: { atomVersion: number; teaching: AtomTeaching; sourceCitations?: LearningSourceCitation[] };
+  sourceCitations?: LearningSourceCitation[];
 };
 export type DiagnosticGuidancePlan = {
   id: string; studentId: string; subject: z.infer<typeof subject>; baselineSessionId: string;
