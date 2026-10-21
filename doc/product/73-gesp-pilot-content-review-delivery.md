@@ -16,9 +16,13 @@
 
 该工作台解决“49点如何被逐项、可追溯审核”的产品流程；实际的教学准确性仍必须由真实教研人员完成。仓库当前没有伪造任何一条真人通过结论。
 
+## 提交来源快照
+
+探针和代码提交冻结当时的任务内容SHA-256、隐藏测试包SHA-256、审核版本和审核状态。任务或隐藏边界之后再变化，历史证据仍指向原作答时的上下文，不会用新内容重新解释旧表现。旧数据未保存这些字段时保持缺失，不根据当前文件倒填来源。
+
 ## 持久化与验证
 
-新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效。
+新增`gespTaskReviews`、`gespTaskReviewRevisions`集合，schema升级至12；任务审核和审核修订分别有唯一约束。SQLite与PostgreSQL均完成正式HTTP旅程：管理员读取隐藏内容、保存完整审核、重启后学生工作台仍显示正式审核状态；父母访问隐藏内容被拒绝；旧版本请求不能覆盖新审核；修改任务内容后审核立即失效；提交携带的内容与测试包来源快照在重启后保持不变。
 
 全仓构建与类型检查通过。默认回归155个文件、701项，695通过、0失败、6项PostgreSQL默认跳过；PostgreSQL实机6项通过。收据见 [汇总回归](../evidence/2026-10-21/gesp-content-review-regression.json)、[SQLite双库旅程](../evidence/2026-10-21/gesp-learning-loop-sqlite.json) 和 [PostgreSQL旅程](../evidence/2026-10-21/gesp-learning-loop-postgres.json)。
 

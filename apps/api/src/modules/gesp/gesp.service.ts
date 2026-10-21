@@ -9,7 +9,7 @@ import { gespCodeSubmissionSchema, gespGuidancePlanCreateSchema, gespGuidancePla
   type GespGuidanceAction, type GespGuidancePlan, type GespGuidancePlanRevision, type GespHintEvent, type GespOverview,
   type GespLearningScopeRevision, type GespProbeSubmissionReceipt, type GespQuestion, type GespQuestionDetail,
   type GespReviewTask, type GespStudentTask, type GespTaskReview, type GespTaskReviewRevision, type GespTeachingPlan,
-  type GespPilotTaskReviewView } from '@study-agent/contracts';
+  type GespPilotTaskReviewView, type GespTaskProvenance } from '@study-agent/contracts';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
@@ -255,8 +255,10 @@ export class GespService implements OnModuleDestroy {
     if (!task || !probe) throw new NotFoundException('探针不存在或不属于当前知识点');
     if (!probe.options.includes(command.answer)) throw new BadRequestException('请选择一个有效选项');
     const status = command.answer === probe.answer ? 'correct' as const : 'incorrect' as const;
+    const provenance = this.taskProvenance(task);
     const receipt: GespProbeSubmissionReceipt = { id: this.store.nextId('gesp_probe'), studentId: command.studentId, atomId: command.atomId,
       taskId: task.id, probeId: probe.id, dimension: probe.dimension, status, requestKey: command.requestKey, answer: command.answer,
+      provenance,
       createdAt: new Date().toISOString(), analysis: status === 'correct' ? (probe.analysis ?? '当前证据支持这一判断。') :
         `当前判断还不一致。请回到题目材料，核对当前知识点的可观察目标：${task.title}。本结果只针对该探针，不直接确定更深原因。` };
     this.store.append('gespProbeSubmissions', receipt); return this.publicProbeSubmission(receipt);
@@ -280,6 +282,7 @@ export class GespService implements OnModuleDestroy {
     if (review && hint) throw new BadRequestException('间隔复测必须独立完成，请关闭提示记录后重新作答');
     if (review && (review.status !== 'scheduled' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已经完成');
     const tests = review ? this.reviewTests(task, review.stageDay) : task.tests;
+    const provenance = this.taskProvenance(task, tests);
     const receipt = await this.runCpp(command.source, tests), now = new Date().toISOString(), sourceSha256 = receipt.sourceSha256;
     const status = receipt.passed ? 'passed' as const : receipt.compile?.passed ? 'failed' as const : 'error' as const;
     const row: GespCodeSubmissionReceipt = { id: this.store.nextId('gesp_submission'), studentId: command.studentId, atomId: command.atomId,
@@ -290,6 +293,7 @@ export class GespService implements OnModuleDestroy {
       tests: (receipt.tests ?? []).map((test: any) => ({ index: test.index, passed: test.passed,
         status: test.status, exitCode: test.exitCode, durationMs: test.durationMs })), hintEventId: hint?.id ?? null,
       hintLevel: hint?.level ?? 0, independent: !hint && !review, reviewTaskId: review?.id ?? null };
+    row.provenance = provenance;
     this.store.append('gespCodeSubmissions', row);
     if (review) {
       review.attemptCount++; review.lastSubmissionId = row.id; review.lastStatus = status;
@@ -322,6 +326,12 @@ export class GespService implements OnModuleDestroy {
   private publicTaskReview(row: GespTaskReview, contentSha256: string) {
     const { requestKey: _requestKey, reviewId: _reviewId, ...safe } = row as GespTaskReview & { reviewId?: string };
     return { ...safe, current: row.taskContentSha256 === contentSha256 };
+  }
+  private taskProvenance(task: PilotTask, tests?: Array<{ input: string; expected: string }>): GespTaskProvenance {
+    const taskContentSha256 = hash(JSON.stringify(task)), review = this.store.find('gespTaskReviews', { taskId: task.id });
+    const contentReviewStatus = !review ? 'unreviewed' : review.taskContentSha256 === taskContentSha256 ? review.status : 'stale';
+    return { taskContentSha256, testPackSha256: tests ? hash(JSON.stringify(tests)) : null,
+      contentReviewVersion: review?.version ?? 0, contentReviewStatus };
   }
   private publicProbeSubmission(row: GespProbeSubmissionReceipt) { const { requestKey: _requestKey, ...safe } = row; return safe; }
   private capabilities(atomIds: string[], probes: any[], submissions: any[], reviews: any[] = []) {

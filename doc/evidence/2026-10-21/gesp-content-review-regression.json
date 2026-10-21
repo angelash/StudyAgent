@@ -13,13 +13,15 @@
     "cases": 6,
     "passed": 6,
     "schemaVersion": 12,
-    "source": "data/qa/gesp-content-review-postgres-regression.json"
+    "source": "data/qa/gesp-provenance-postgres-regression.json"
   },
   "persistentJourneys": {
     "sqlite": "doc/evidence/2026-10-21/gesp-learning-loop-sqlite.json",
     "postgres": "doc/evidence/2026-10-21/gesp-learning-loop-postgres.json",
     "contentReviewPersists": true,
-    "hiddenContentReviewerOnly": true
+    "hiddenContentReviewerOnly": true,
+    "submissionProvenanceFrozen": true,
+    "guidanceBudgetMinutes": 20
   },
-  "limits": "Automated review workflow, permission and persistence acceptance only. This does not assert that any of the 49 candidate tasks have received human curriculum approval; the development fixtures exercise the machinery."
+  "limits": "Automated review workflow, permission, provenance and persistence acceptance only. This does not assert that any of the 49 candidate tasks received human curriculum approval."
 }

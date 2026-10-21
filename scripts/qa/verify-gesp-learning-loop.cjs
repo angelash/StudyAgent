@@ -83,6 +83,10 @@ async function main() {
   const assisted = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){}',
     requestKey: randomUUID(), hintEventId: hint.id }, learner);
   assert.equal(assisted.independent, false); assert.equal(assisted.hintLevel, 1);
+  assert.match(assisted.provenance.taskContentSha256, /^[a-f0-9]{64}$/);
+  assert.match(assisted.provenance.testPackSha256, /^[a-f0-9]{64}$/);
+  assert.equal(assisted.provenance.contentReviewStatus, 'approved');
+  assert.equal(assisted.provenance.contentReviewVersion, 1);
   const independent = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){return 0;}', requestKey: randomUUID() }, learner);
   assert.equal(independent.independent, true);
   let workspace = await call('GET', `/gesp/students/${studentId}/workspace`, undefined, learner);
@@ -109,6 +113,7 @@ async function main() {
   assert.equal(workspace.tasks.find(row => row.id === task.id).contentReviewStatus, 'approved');
   assert.equal(workspace.tasks.find(row => row.id === task.id).reviewStatus, 'instructional_approved');
   assert.equal(workspace.hintEvents.find(row => row.id === hint.id).revealsAnswer, false);
+  assert.equal(workspace.submissions.find(row => row.id === assisted.id).provenance.taskContentSha256, assisted.provenance.taskContentSha256);
   assert.equal(workspace.guidancePlans.find(row => row.id === plan.id).status, 'active');
   assert.deepEqual(workspace.reviewTasks.find(row => row.id === due.id), { ...workspace.reviewTasks.find(row => row.id === due.id),
     status: 'completed', attemptCount: 1, lastStatus: 'passed' });

@@ -115,6 +115,11 @@ export type GespStudentTask = {
   contentReviewVersion: number;
 };
 
+export type GespTaskProvenance = {
+  taskContentSha256: string; testPackSha256: string | null;
+  contentReviewVersion: number; contentReviewStatus: 'unreviewed' | 'approved' | 'rejected' | 'stale';
+};
+
 export const gespTaskReviewGates = ['atomAlignment', 'instructions', 'probes', 'hiddenTests', 'executionSafety'] as const;
 export type GespTaskReviewGate = typeof gespTaskReviewGates[number];
 export type GespTaskReview = {
@@ -135,6 +140,7 @@ export type GespProbeSubmissionReceipt = {
   id: string; studentId: string; atomId: string; taskId: string; probeId: string;
   dimension: 'understanding' | 'procedure'; status: 'correct' | 'incorrect'; requestKey: string; answer: string;
   createdAt: string; analysis: string;
+  provenance?: GespTaskProvenance;
 };
 
 export type GespCodeSubmissionReceipt = {
@@ -143,6 +149,7 @@ export type GespCodeSubmissionReceipt = {
   compileDiagnostics: string[]; runtimeDiagnostics: Array<{ index: number; status: string; stderr: string }>;
   tests: Array<{ index: number; passed: boolean; status: string; exitCode: number | null; durationMs: number }>;
   hintEventId: string | null; hintLevel: number; independent: boolean; reviewTaskId: string | null;
+  provenance?: GespTaskProvenance;
 };
 
 export type GespHintEvent = {

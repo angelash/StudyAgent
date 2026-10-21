@@ -52,6 +52,11 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
       reviewTaskId: first.id, hintEventId: reviewHint.id })).rejects.toThrow('独立完成');
     const review = await service.submitCode(learner, { studentId, atomId, source: 'int main(){return 0;}', requestKey: randomUUID(), reviewTaskId: first.id });
     expect(review).toMatchObject({ status: 'passed', independent: false, reviewTaskId: first.id });
+    expect(review.provenance).toEqual(expect.objectContaining({ contentReviewStatus: 'unreviewed', contentReviewVersion: 0,
+      taskContentSha256: expect.stringMatching(/^[a-f0-9]{64}$/), testPackSha256: expect.stringMatching(/^[a-f0-9]{64}$/) }));
+    const frozenProvenance = structuredClone(review.provenance);
+    (service as any).studentData().tasks.find((row: any) => row.id === task.id).title += '（后续修改）';
+    expect(service.studentWorkspace(learner, studentId).submissions.find((row: any) => row.id === review.id)!.provenance).toEqual(frozenProvenance);
     workspace = service.studentWorkspace(learner, studentId);
     expect(workspace.reviewTasks.find((row: any) => row.id === first.id)).toMatchObject({ status: 'completed', attemptCount: 1 });
     expect(workspace.capabilities[0].dimensions.find((row: any) => row.dimension === 'retention')).toMatchObject({ status: 'correct', attempts: 1 });
