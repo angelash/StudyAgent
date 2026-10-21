@@ -41,12 +41,16 @@ export function getCurrentUser<T>() {
 }
 
 export async function apiRequest<T>(path: string, options: RequestInit = {}, token?: string | null): Promise<T> {
+  // Callers may inject a token for tests or alternate clients. Otherwise use
+  // the token received at login so cross-origin API deployments do not depend
+  // solely on SameSite cookies.
+  const bearer = token === undefined ? getAuthToken() : token;
   const response = await fetch(`${apiBaseUrl}/api${path}`, {
     ...options,
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(bearer ? { Authorization: `Bearer ${bearer}` } : {}),
       ...(options.headers ?? {}),
     },
   }).catch((error: Error) => {
