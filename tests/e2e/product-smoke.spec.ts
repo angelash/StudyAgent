@@ -24,7 +24,8 @@ test('public product shell remains usable at phone, tablet and desktop widths', 
   await expect(page.getByRole('button', { name: '登录，查看学习记录 →' })).toBeVisible();
 });
 
-test('a parent can sign in and create an isolated learning profile', async ({ page }) => {
+test('a parent can create a learning profile and complete an evidence-limited assessment', async ({ page }) => {
+  test.setTimeout(120_000);
   const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
   const principal = `browser-${suffix}@local.test`;
   const credential = `Browser-only-${suffix}`;
@@ -47,6 +48,29 @@ test('a parent can sign in and create an isolated learning profile', async ({ pa
   await page.getByRole('button', { name: '保存档案 ↗' }).click();
   await expect(page.getByRole('heading', { name: /浏览器验收的每一步/ })).toBeVisible();
   await expect(page.getByText('当前 2 年级。')).toBeVisible();
+
+  await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
+  await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();
+  const gradePoint = page.getByRole('checkbox', { name: /十进制位值换算/ });
+  await expect(gradePoint).toBeVisible();
+  await gradePoint.check();
+  const previewButton = page.getByRole('button', { name: /确认进度，查看题组/ });
+  await expect(previewButton).toBeEnabled();
+  await previewButton.click();
+  await expect(page.getByRole('region', { name: '本次评测范围与题组' })).toBeVisible();
+  await page.getByRole('button', { name: /准备好了，开始这一组/ }).click();
+  await expect(page.getByRole('progressbar', { name: '评测进度' })).toBeVisible();
+
+  const reportHeading = page.getByRole('heading', { name: '从知识点看清下一步。' });
+  for (let index = 0; index < 20; index += 1) {
+    const dontKnow = page.getByRole('button', { name: '暂时不会' });
+    await expect.poll(async () => await reportHeading.isVisible() || await dontKnow.isEnabled().catch(() => false)).toBe(true);
+    if (await reportHeading.isVisible()) break;
+    await dontKnow.click();
+  }
+  await expect(reportHeading).toBeVisible();
+  await expect(page.getByRole('heading', { name: '知识掌握与证据范围' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '可能卡在哪里，以及怎样验证' })).toBeVisible();
 });
 
 test('an administrator can reach the curriculum review workbench', async ({ page }) => {
