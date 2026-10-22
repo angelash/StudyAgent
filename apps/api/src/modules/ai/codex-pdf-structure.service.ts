@@ -1,12 +1,13 @@
 import { Injectable, ServiceUnavailableException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { homedir, tmpdir } from 'node:os';
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import readline from 'node:readline';
 import { z } from 'zod';
 import { resolveCodexInvocation } from './codex-command';
+import { XiaojiuModelsService } from './xiaojiu-models.service';
 
 export type PdfStructurePageInput = {
   pageNumber: number;
@@ -69,31 +70,16 @@ const resultSchema = z.object({
   })),
 }).strict();
 
-function codexHome() {
-  return process.env.CODEX_HOME ?? resolve(homedir(), '.codex');
-}
-
-function compatibleCatalog(sourcePath: string, targetPath: string) {
-  const catalog = JSON.parse(readFileSync(sourcePath, 'utf8')) as Record<string, unknown>;
-  const models = Array.isArray(catalog.models) ? catalog.models : [];
-  for (const value of models) {
-    if (!value || typeof value !== 'object') continue;
-    const model = value as Record<string, unknown>;
-    if (!Object.prototype.hasOwnProperty.call(model, 'supports_reasoning_summaries'))
-      model.supports_reasoning_summaries = false;
-    if (!Object.prototype.hasOwnProperty.call(model, 'supports_parallel_tool_calls'))
-      model.supports_parallel_tool_calls = false;
-  }
-  writeFileSync(targetPath, JSON.stringify(catalog));
-}
-
 @Injectable()
 export class CodexPdfStructureService {
   private readonly env = loadApiEnv();
 
+  constructor(private readonly models: XiaojiuModelsService) {}
+
   async structure(input: {
     materialTitle: string;
     pages: PdfStructurePageInput[];
+    modelId?: string;
   }): Promise<PdfStructureModelResult> {
     const directory = mkdtempSync(resolve(tmpdir(), 'study-agent-pdf-structure-'));
     const schemaPath = resolve(directory, 'output.schema.json');
@@ -103,9 +89,10 @@ export class CodexPdfStructureService {
       'exec', '--ephemeral', '--json', '--sandbox', 'read-only', '--skip-git-repo-check',
       '--color', 'never', '-C', process.cwd(),
     ];
-    args.push('-m', this.env.CODEX_PDF_MODEL);
+    const model = this.models.resolve(input.modelId ?? this.env.CODEX_PDF_MODEL);
+    args.push('-m', model.id);
     try {
-      const configured = this.compatibleCatalogOverride(configPath);
+      const configured = this.models.writeCompatibleCatalog(configPath);
       if (configured) args.push('-c', configured);
       const reviewPages = input.pages.filter(page => ['ocr', 'hybrid'].includes(page.method) ||
         page.warnings.includes('table_structure_requires_review') ||
@@ -129,20 +116,6 @@ export class CodexPdfStructureService {
         (lastError instanceof Error ? '：' + lastError.message.slice(0, 120) : ''));
     } finally {
       rmSync(directory, { recursive: true, force: true });
-    }
-  }
-
-  private compatibleCatalogOverride(targetPath: string) {
-    const configPath = resolve(codexHome(), 'config.toml');
-    if (!existsSync(configPath)) return null;
-    const config = readFileSync(configPath, 'utf8');
-    const match = config.match(/^\s*model_catalog_json\s*=\s*"([^"]+)"\s*$/m);
-    if (!match || !match[1] || !existsSync(match[1])) return null;
-    try {
-      compatibleCatalog(match[1], targetPath);
-      return 'model_catalog_json="' + targetPath.replace(/\\/g, '/') + '"';
-    } catch {
-      return null;
     }
   }
 

@@ -13,6 +13,7 @@ const environment = {
   NEXT_TELEMETRY_DISABLED: '1',
   OPENAI_API_KEY: '',
   MINIMAX_API_KEY: '',
+  XIAOJIU_CHAT_ENABLED: 'false',
   CODEX_MODEL: '',
   STUDY_PDF_STRUCTURE_MODEL: 'false',
   NEXT_PUBLIC_API_BASE_URL: `http://localhost:${apiPort}`,

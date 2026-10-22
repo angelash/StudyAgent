@@ -75,6 +75,16 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await expect(memory.getByRole('heading', { name: '这次从哪里继续。' })).toBeVisible();
   await expect(memory.getByText('先确认当前学习进度', { exact: true })).toBeVisible();
   if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/learning-memory-dashboard.png', fullPage: true });
+  await page.getByRole('button', { name: '打开家长陪伴助教' }).click();
+  const modelSelect = page.getByLabel('选择大模型');
+  await expect(modelSelect).toHaveValue('deepseek-v4-flash');
+  expect(await modelSelect.locator('option').count()).toBeGreaterThanOrEqual(23);
+  await modelSelect.selectOption('claude-opus-5.5');
+  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-model-selector.png', fullPage: true });
+  await page.getByLabel('想一起看看什么').fill('请根据当前学习记录告诉我下一步。');
+  await page.getByRole('button', { name: '一起想一想 →' }).click();
+  await expect(page.getByText('先确认孩子的年级、教材和已学范围', { exact: false })).toBeVisible();
+  await page.getByRole('button', { name: '收起家长陪伴助教' }).click();
 
   await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
   await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();

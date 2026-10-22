@@ -13,6 +13,7 @@ vi.mock('@study-agent/config', () => ({
 }));
 
 import { CodexPdfStructureService } from './codex-pdf-structure.service';
+import { XiaojiuModelsService } from './xiaojiu-models.service';
 
 class MockChildProcess extends EventEmitter {
   stdin = new PassThrough();
@@ -36,7 +37,7 @@ describe('CodexPdfStructureService', () => {
     process.env.CODEX_HOME = directory;
     const child = new MockChildProcess();
     spawnMock.mockReturnValue(child);
-    const service = new CodexPdfStructureService();
+    const service = new CodexPdfStructureService(new XiaojiuModelsService());
     let prompt = '';
     child.stdin.on('data', chunk => { prompt += chunk.toString(); });
     const promise = service.structure({ materialTitle: '分数讲义', pages: [{
@@ -77,7 +78,7 @@ describe('CodexPdfStructureService', () => {
     process.env.CODEX_HOME = directory;
     const first = new MockChildProcess(), second = new MockChildProcess();
     spawnMock.mockReturnValueOnce(first).mockReturnValueOnce(second);
-    const service = new CodexPdfStructureService();
+    const service = new CodexPdfStructureService(new XiaojiuModelsService());
     const promise = service.structure({ materialTitle: 'Retry fixture', pages: [{
       pageNumber: 1, text: '1/2 + 1/3 = 5/6', method: 'ocr', lines: [], imagePath: '',
       warnings: ['formula_structure_requires_review'],

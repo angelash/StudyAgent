@@ -31,7 +31,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/students\/[^/]+\/evidence\/[^/]+$/,
     /^diagnostics\/plans\/[^/]+(\/(reviews|retrospective))?$/,
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
-    /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
+    /^ai\/models$/, /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,

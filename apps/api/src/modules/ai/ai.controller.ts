@@ -9,6 +9,9 @@ import { AiService } from './ai.service';
 export class AiController {
   constructor(private readonly aiService: AiService) {}
 
+  @Get('models')
+  models() { return this.aiService.modelCatalog(); }
+
   @Post('assessment/analyze')
   analyzeAssessment(@Req() req: AuthenticatedRequest, @Body() body: { question: Question; answer: unknown }) {
     if (req.user.role !== 'admin') throw new ForbiddenException('该工具仅供教研使用');
@@ -40,12 +43,15 @@ export class AiController {
 
   @Post('assistant/sessions/:sessionId/messages')
   async chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response,
-    @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string }) {
+    @Param('sessionId') sessionId: string,
+    @Body() body: { message: string; requestKey?: string; modelId?: string },
+  ) {
     this.aiService.assertSessionOwner(sessionId, req.user);
     const controller = new AbortController();
     const abort = () => { if (!response.writableEnded) controller.abort(); };
     response.on('close', abort);
-    try { return await this.aiService.chat({ sessionId, message: body.message, requestKey: body.requestKey, signal: controller.signal }); }
+    try { return await this.aiService.chat({ sessionId, message: body.message, modelId: body.modelId,
+      requestKey: body.requestKey, signal: controller.signal }); }
     finally { response.off('close', abort); }
   }
 

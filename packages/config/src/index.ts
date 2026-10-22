@@ -24,6 +24,9 @@ export const apiEnvSchema = z.object({
   CODEX_TIMEOUT_MS: z.coerce.number().int().positive().default(120000),
   CODEX_PDF_TIMEOUT_MS: z.coerce.number().int().positive().default(240000),
   CODEX_PDF_MODEL: z.string().trim().min(1).default('deepseek-v4-flash'),
+  XIAOJIU_CHAT_ENABLED: z.enum(['true', 'false']).default('true'),
+  XIAOJIU_CHAT_DEFAULT_MODEL: z.string().trim().min(1).default('deepseek-v4-flash'),
+  XIAOJIU_CHAT_TIMEOUT_MS: z.coerce.number().int().positive().default(90000),
   JWT_SECRET: z.string().default('study-agent-dev-secret'),
   TEXTBOOK_BASE_PATH: z.string().default('E:\\ChinaTextbook'),
 });

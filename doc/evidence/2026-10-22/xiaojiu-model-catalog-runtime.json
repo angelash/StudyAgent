@@ -1,0 +1,210 @@
+{
+  "at": "2026-10-22T10:06:08.568Z",
+  "catalogSha256": "614668a7bc120620a4a1860345e74102e4981506acc19c8692de36abe9c1516e",
+  "modelCount": 22,
+  "concurrency": 3,
+  "allPassed": true,
+  "passed": 22,
+  "failed": 0,
+  "models": [
+    {
+      "slug": "gpt-6-astra",
+      "displayName": "GPT-6-Astra",
+      "description": "Frontier intelligence for the most demanding work.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 14656,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-6.1-sol",
+      "displayName": "GPT-6.1-Sol",
+      "description": "Latest workhorse model for coding and everyday work.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 7267,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-6-sol",
+      "displayName": "GPT-6-Sol",
+      "description": "Previous generation workhorse model.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 14846,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-6-luna",
+      "displayName": "GPT-6-Luna",
+      "description": "Fast and affordable model for easier tasks.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 7396,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-5.6-sol",
+      "displayName": "GPT-5.6-Sol",
+      "description": "Older generation workhorse model.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 19664,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-5.6-terra",
+      "displayName": "GPT-5.6-Terra",
+      "description": "Older balanced model for straightforward work.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 21039,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-5.6-luna",
+      "displayName": "GPT-5.6-Luna",
+      "description": "Older fast and efficient model.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 3307,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "gpt-5.5",
+      "displayName": "GPT-5.5",
+      "description": "Legacy coding model.",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 3882,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "glm-5.2",
+      "displayName": "GLM-5.2",
+      "description": "智谱 GLM-5.2 旗舰模型",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 23639,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "glm-5.3-flash",
+      "displayName": "GLM-5.3 Flash",
+      "description": "智谱 GLM-5.3 Flash",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 7154,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "glm-5.3",
+      "displayName": "GLM-5.3",
+      "description": "智谱 GLM-5.3 旗舰模型",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 40183,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "grok-4.6",
+      "displayName": "Grok-4.6",
+      "description": "xAI Grok-4.6",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 13357,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "grok-4.7",
+      "displayName": "Grok-4.7",
+      "description": "xAI Grok-4.7",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 7172,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "displayName": "DeepSeek V4 Flash",
+      "description": "DeepSeek V4 Flash",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 6900,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "claude-opus-5",
+      "displayName": "Claude Opus 5",
+      "description": "Anthropic Claude Opus 5",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 7617,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "claude-opus-5.5",
+      "displayName": "Claude Opus 5.5",
+      "description": "Anthropic Claude Opus 5.5",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 8284,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "claude-fable-5-1",
+      "displayName": "Claude Fable 5.1",
+      "description": "Anthropic Claude Fable 5.1",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 10085,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "mimo-v2.6-pro",
+      "displayName": "MiMo V2.6 Pro",
+      "description": "小米 MiMo V2.6 Pro",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 4548,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "mimo-v2.6-flash",
+      "displayName": "MiMo V2.6 Flash",
+      "description": "小米 MiMo V2.6 Flash",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 6993,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "mimo-v2.6-pro-ultraspeed",
+      "displayName": "MiMo V2.6 Pro Ultraspeed",
+      "description": "小米 MiMo V2.6 Pro Ultraspeed（高速版）",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 3558,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "qwen3.8-max",
+      "displayName": "Qwen3.8 Max",
+      "description": "通义千问 Qwen3.8 Max",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 8619,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "slug": "claude-sonnet-5",
+      "displayName": "Claude Sonnet 5",
+      "description": "Anthropic Claude Sonnet 5",
+      "supportedInApi": true,
+      "passed": true,
+      "latencyMs": 5714,
+      "responseSha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    }
+  ],
+  "completedAt": "2026-10-22T10:06:08.572Z"
+}

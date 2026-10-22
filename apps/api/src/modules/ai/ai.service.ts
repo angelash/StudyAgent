@@ -25,6 +25,8 @@ import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../.
 import { StudentsService } from '../students/students.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 import { routedItemAvailable } from '../diagnostics/adaptive-routing';
+import { XiaojiuChatService } from './xiaojiu-chat.service';
+import { XiaojiuModelsService } from './xiaojiu-models.service';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -39,6 +41,7 @@ type GenerateHintCommand = {
 type AssistantChatCommand = {
   sessionId: string;
   message: string;
+  modelId?: string;
   signal?: AbortSignal;
   requestKey?: string;
 };
@@ -63,7 +66,11 @@ export class AiService {
     private readonly store: InMemoryStoreService,
     private readonly eventBus: DomainEventBusService,
     private readonly students: StudentsService,
+    private readonly xiaojiu: XiaojiuChatService,
+    private readonly models: XiaojiuModelsService,
   ) {}
+
+  modelCatalog() { return this.models.catalog(); }
 
   async analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse> {
     const client = this.requireClient('AI 评估分析');
@@ -335,13 +342,16 @@ export class AiService {
     const session = this.store.find('assistantSessions', { id: command.sessionId });
     if (!session || session.status !== 'active') throw new NotFoundException('助教会话不存在');
     const message = validate(z.string().trim().min(1).max(3000), command.message);
+    if (command.modelId) this.models.resolve(validate(z.string().trim().min(1).max(180), command.modelId));
     const requestKey = command.requestKey ? validate(z.string().min(8).max(180), command.requestKey) : this.store.nextId('chat_request');
     const previous = this.store.find('assistantMessages', { sessionId: session.id, sender: 'user', requestKey: requestKey });
     if (previous) {
       if (previous.content !== message) throw new ConflictException('请求键已用于另一条提问');
       const answer = this.store.find('assistantMessages', { inReplyTo: previous.id, sessionId: session.id });
       if (!answer) throw new ConflictException('提问仍在处理中，请刷新会话');
-      return { reply: answer.content, source: answer.source ?? 'rules', evidenceIds: answer.evidenceIds ?? [], assistanceRecorded: answer.assistanceRecorded ?? false, messages: this.listMessages(session.id) };
+      return { reply: answer.content, source: answer.source ?? 'rules', evidenceIds: answer.evidenceIds ?? [],
+        modelId: answer.modelId ?? null, modelName: answer.modelName ?? null,
+        assistanceRecorded: answer.assistanceRecorded ?? false, messages: this.listMessages(session.id) };
     }
     if (this.chatting.has(session.ownerUserId)) throw new BadRequestException('上一条回复仍在生成，请等待或取消后重试');
     const today = new Date().toISOString().slice(0, 10);
@@ -359,12 +369,38 @@ export class AiService {
           context.report ? `${context.report.summary} 先看知识点的证据和待验证原因，再制定每天可完成的指导计划。单次答错不足以确定深层原因。` :
             context.memory ? `${context.memory.facts.join(' ')} 当前${context.memory.unknowns.length}个已学点仍待补充证据；先围绕这些点做一组独立作答，再根据结果安排下一步。` :
             '先确认孩子的年级、教材和已学范围，完成一组知识点评测。还未测到的内容保持未知，再根据具体证据安排验证与指导。';
-      let reply = fallback, source: 'rules' | 'openai' = 'rules', citations: string[] = [];
+      let reply = fallback, source: 'rules' | 'openai' | 'xiaojiu' = 'rules', citations: string[] = [];
+      let selectedModelId: string | null = null, selectedModelName: string | null = null;
       const history = this.store.select('assistantMessages', { sessionId: session.id }).slice(-10)
         .map((item) => ({ role: item.sender === 'user' ? 'user' as const : 'assistant' as const, content: item.content.slice(0, 2000) }));
       // In-progress diagnostic items use deterministic prompts. Any help is
       // recorded before the response is returned and excluded from independent evidence.
-      if (this.client && (session.userRole === 'parent' || bound) && !(bound?.kind === 'diagnostic' && ['in_progress', 'paused'].includes(bound.assessmentStatus))) {
+      const modelEligible = (session.userRole === 'parent' || bound) &&
+        !(bound?.kind === 'diagnostic' && ['in_progress', 'paused'].includes(bound.assessmentStatus));
+      if (command.modelId && this.xiaojiu.enabled && modelEligible) {
+        try {
+          const result = await this.xiaojiu.reply({ modelId: command.modelId,
+            system: '你是小学' + this.getSubjectLabel(session.subject) +
+              (session.userRole === 'student' ? '学习助教，给下一步提示，不给完整答案' : '家长陪伴教练') +
+              '。只根据给定学习证据回答，区分观察、可能原因和验证动作。不诊断智力、人格或疾病。' +
+              '不把未知写成薄弱，不凭一次错题确定根因。引用只能来自上下文 evidenceIds。',
+            context: JSON.stringify(safeContext), history, message, signal: command.signal });
+          const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
+            ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
+          if (result.evidenceIds.some(id => !context.evidenceIds.includes(id)) || reveals ||
+              /(智力低|ADHD|笨|懒惰|确诊|一定是)/i.test(result.reply))
+            throw new ServiceUnavailableException('所选模型返回了不符合证据边界的回答，请重试或切换模型');
+          reply = result.reply;
+          citations = result.evidenceIds;
+          selectedModelId = result.modelId;
+          selectedModelName = result.modelName;
+          source = 'xiaojiu';
+        } catch (error) {
+          if (command.signal?.aborted) throw new BadRequestException('本次对话已取消');
+          if (error instanceof ServiceUnavailableException) throw error;
+          throw new ServiceUnavailableException(error instanceof Error ? error.message : '所选模型暂时不可用');
+        }
+      } else if (this.client && modelEligible) {
         try {
           const completion = await this.client.chat.completions.create({ model: this.env.OPENAI_MODEL,
             temperature: 0.2, max_tokens: 1200, response_format: { type: 'json_object' }, messages: [
@@ -377,6 +413,7 @@ export class AiService {
             ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
           if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || /(智力低|ADHD|笨|懒惰|确诊|一定是)/i.test(result.reply)) throw new Error('Unsupported output');
           reply = result.reply; citations = result.evidenceIds; source = 'openai';
+          selectedModelId = this.env.OPENAI_MODEL; selectedModelName = this.env.OPENAI_MODEL;
         } catch { /* A usable local guidance response remains available. */ }
       }
       if (command.signal?.aborted) throw new BadRequestException('本次对话已取消');
@@ -384,13 +421,16 @@ export class AiService {
       const assistanceRecorded = this.recordAssistance(context, assistantMessageId, session.studentId);
       this.store.append('assistantMessages', { id: userMessageId, sessionId: session.id, sender: 'user', content: message, requestKey, createdAt: new Date().toISOString() },
         { id: assistantMessageId, sessionId: session.id, sender: 'assistant', content: reply, inReplyTo: userMessageId, source,
-          evidenceIds: citations, assistanceRecorded, createdAt: new Date().toISOString() });
+          modelId: selectedModelId, modelName: selectedModelName, evidenceIds: citations,
+          assistanceRecorded, createdAt: new Date().toISOString() });
       this.recordInsight('assistant', session.id, session.studentId, reply, { summary: reply,
-        structuredResult: { pageContext: session.pageContext, model: source === 'openai' ? this.env.OPENAI_MODEL : 'local-guidance',
+        structuredResult: { pageContext: session.pageContext, model: selectedModelId ?? 'local-guidance',
+          modelName: selectedModelName,
           promptVersion: 'evidence-coach-v2', evidenceIds: citations, usedLocalContext: Boolean(context.scope || context.report || context.plan || bound),
           contextRefType: session.contextRefType, contextRefId: session.contextRefId, contextItemId: session.contextItemId ?? null, assistanceRecorded },
-        confidenceLevel: 'low', reviewRequired: true, source });
-      return { reply, source, evidenceIds: citations, assistanceRecorded, messages: this.listMessages(session.id) };
+        confidenceLevel: 'low', reviewRequired: true, source: source === 'rules' ? 'rules' : 'openai' });
+      return { reply, source, evidenceIds: citations, modelId: selectedModelId, modelName: selectedModelName,
+        assistanceRecorded, messages: this.listMessages(session.id) };
     } finally { this.chatting.delete(session.ownerUserId); }
   }
 

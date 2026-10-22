@@ -131,7 +131,9 @@ export type AssistantMessage = {
   createdAt: string;
   requestKey?: string;
   inReplyTo?: string;
-  source?: 'rules' | 'openai';
+  source?: 'rules' | 'openai' | 'xiaojiu';
+  modelId?: string | null;
+  modelName?: string | null;
   evidenceIds?: string[];
   assistanceRecorded?: boolean;
 };

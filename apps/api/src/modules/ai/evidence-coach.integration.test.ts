@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { beforeAll, afterAll, describe, expect, it } from 'vitest';
+import { beforeAll, afterAll, describe, expect, it, vi } from 'vitest';
 import { NestFactory } from '@nestjs/core';
 import type { INestApplication } from '@nestjs/common';
 import request from 'supertest';
@@ -29,6 +29,33 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     .set('Authorization', `Bearer ${account.token}`).send(body as object);
   const question = (id: string) => ({ id, stem: '先整理两堆积木的条件，再说明怎样合并。', answer: 731, analysis: 'PRIVATE_REFERENCE_ANALYSIS',
     answerSchema: { questionId: id, mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} } });
+
+  it('lists all Xiaojiu models and keeps the selected model on the saved assistant reply', async () => {
+    const catalog = await request(app.getHttpServer()).get('/api/ai/models')
+      .set('Authorization', 'Bearer ' + account.token).expect(200);
+    expect(catalog.body.data.defaultModel).toBe('deepseek-v4-flash');
+    expect(catalog.body.data.models.length).toBeGreaterThanOrEqual(22);
+    expect(catalog.body.data.models.find((model: any) => model.id === 'deepseek-v4-flash')).toMatchObject({
+      label: 'DeepSeek V4.1 Flash', catalogLabel: 'DeepSeek V4 Flash', provider: 'DeepSeek' });
+    const { XiaojiuChatService } = require('../../../dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
+    const runner = app.get(XiaojiuChatService);
+    const reply = vi.spyOn(runner, 'reply').mockResolvedValue({ reply: '先核对已有证据，再用新题验证。',
+      evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'DeepSeek V4.1 Flash' });
+    const opened = await post('/assistant/sessions', { userRole: 'parent', studentId: 'child',
+      subject: 'math', pageContext: 'review' }).expect(201);
+    await post('/assistant/sessions/' + opened.body.data.id + '/messages',
+      { message: '不应执行未知模型', modelId: 'arbitrary-command', requestKey: 'reject-model' }).expect(400);
+    const response = await post('/assistant/sessions/' + opened.body.data.id + '/messages',
+      { message: '下一步做什么？', modelId: 'deepseek-v4-flash', requestKey: 'selected-model-chat' }).expect(201);
+    expect(response.body.data).toMatchObject({ source: 'xiaojiu', modelId: 'deepseek-v4-flash',
+      modelName: 'DeepSeek V4.1 Flash' });
+    expect(response.body.data.messages[1]).toMatchObject({ source: 'xiaojiu',
+      modelId: 'deepseek-v4-flash', modelName: 'DeepSeek V4.1 Flash' });
+    expect(reply).toHaveBeenCalledWith(expect.objectContaining({ modelId: 'deepseek-v4-flash' }));
+    reply.mockRestore();
+    store.assistantSessions = [];
+    store.assistantMessages = [];
+  });
 
   it('validates session scope and gives evidence-based local coaching in all three subjects', async () => {
     await post('/assistant/sessions', { userRole: 'parent', studentId: 'other-child', pageContext: 'review' }).expect(403);

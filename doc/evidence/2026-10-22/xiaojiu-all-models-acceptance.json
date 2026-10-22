@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22",
+  "scope": "all enabled Xiaojiu models exposed through authenticated StudyAgent chat",
+  "catalogModelCount": 22,
+  "probePassed": 22,
+  "probeFailed": 0,
+  "defaultModel": {
+    "id": "deepseek-v4-flash",
+    "label": "DeepSeek V4.1 Flash",
+    "catalogLabel": "DeepSeek V4 Flash"
+  },
+  "models": [
+    "gpt-6-astra",
+    "gpt-6.1-sol",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-5.5",
+    "glm-5.2",
+    "glm-5.3-flash",
+    "glm-5.3",
+    "grok-4.6",
+    "grok-4.7",
+    "deepseek-v4-flash",
+    "claude-opus-5",
+    "claude-opus-5.5",
+    "claude-sonnet-5",
+    "claude-fable-5-1",
+    "mimo-v2.6-pro",
+    "mimo-v2.6-flash",
+    "mimo-v2.6-pro-ultraspeed",
+    "qwen3.8-max"
+  ],
+  "chatRuntime": {
+    "service": "XiaojiuChatService",
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "structuredReplyValidated": true,
+    "evidenceIdsValidatedByBusinessLayer": true
+  },
+  "frontend": {
+    "selectorOptionsIncludingAuto": 23,
+    "defaultValue": "deepseek-v4-flash",
+    "persistsSelection": true,
+    "groups": ["常用模型", "OpenAI", "xAI", "智谱", "DeepSeek", "Anthropic", "小米", "通义千问"]
+  },
+  "tests": {
+    "apiFilesPassed": 85,
+    "apiFilesSkipped": 1,
+    "apiTestsPassed": 733,
+    "apiTestsSkipped": 6,
+    "apiDurationSeconds": 242.97,
+    "browserTestsPassed": 6,
+    "browserTestsFailed": 0,
+    "browserDurationSeconds": 57.7
+  },
+  "boundaries": [
+    "Unknown model IDs are rejected before process execution.",
+    "Only authenticated accounts can read the model catalog.",
+    "The active diagnostic question keeps deterministic guidance and stays excluded from independent evidence.",
+    "Model calls inherit the current Codex provider and settings while overriding only the selected model slug.",
+    "A failed selected model call returns a recoverable error rather than claiming a local answer came from that model."
+  ]
+}

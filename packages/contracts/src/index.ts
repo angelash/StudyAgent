@@ -723,6 +723,7 @@ export * from './student-access';
 export * from './privacy';
 export * from './answer-protocol';
 export * from './student-media';
+export * from './ai-models';
 export * from './operations';
 export * from './measurement-content';
 export * from './gesp';
