@@ -117,6 +117,10 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByRole('tab', { name: 'PDF 页级资料' })).toHaveAttribute('aria-selected', 'true');
   await page.locator('input[type=file]').setInputFiles(pdf.path);
   await expect(page.getByText('分数讲义', { exact: true }).first()).toBeVisible({ timeout: 30_000 });
+  await page.waitForFunction(() => Boolean(document.querySelector('.sa-pdf-paper img') || document.querySelector('.sa-pdf-failed')),
+    undefined, { timeout: 30_000 });
+  if (await page.locator('.sa-pdf-failed').count())
+    throw new Error('PDF processing failed: ' + await page.locator('.sa-pdf-failed').innerText());
   await expect(page.locator('.sa-pdf-paper img')).toBeVisible({ timeout: 30_000 });
   await page.getByRole('button', { name: '结构恢复' }).click();
   await expect(page.getByText('公式结构', { exact: true })).toBeVisible();
