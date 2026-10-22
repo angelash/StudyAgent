@@ -27,9 +27,18 @@
     "browserRegression": "6 passed",
     "externalSpeechDisabledInAutomatedBrowser": true
   },
+  "browserExport": {
+    "provider": "minimax",
+    "voice": "Chinese (Mandarin)_Warm_Girl",
+    "filename": "异分母分数加法.webm",
+    "bytes": 7120642,
+    "streams": ["video", "audio"],
+    "validatedWith": "ffprobe",
+    "status": "passed"
+  },
   "limitations": [
     "A successful API call proves transport and audio validity, not teaching quality or pronunciation suitability for every student.",
-    "Automated browser tests intentionally use captioned fallback rather than making paid external calls.",
+    "CI browser tests intentionally use captioned fallback rather than making paid external calls; one manual browser export verified the real MiniMax audio track.",
     "Voice telemetry and cost monitoring remain product operations work."
   ]
 }

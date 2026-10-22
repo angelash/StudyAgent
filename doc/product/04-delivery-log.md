@@ -2,7 +2,7 @@
 
 ## 2026-10-22 / Live Avatar MiniMax 语音迁移与目标审计
 
-从本地 `live-avatar` 迁移已验证的 MiniMax T2A v2 中文语音调用，而不是另写占位接口。StudyAgent 现支持 MiniMax优先、OpenAI回退、五种普通话音色、16kHz PCM转WAV、流式SSE校验、错误追踪及首个音频前重试；实际国际站调用返回132,306字节有效WAV。自动化环境显式禁用外部语音，字幕WebM/SRT降级继续由浏览器验证。当前完整目标与未完成项见 [语音迁移与目标审计](83-live-avatar-speech-and-current-goal-audit.md)。
+从本地 `live-avatar` 迁移已验证的 MiniMax T2A v2 中文语音调用，而不是另写占位接口。StudyAgent 现支持 MiniMax优先、OpenAI回退、五种普通话音色、16kHz PCM转WAV、流式SSE校验、错误追踪及首个音频前重试；实际国际站调用返回132,306字节有效WAV，并在Chromium中导出7,120,642字节、经ffprobe确认包含视频与音频流的WebM。自动化环境显式禁用外部语音，字幕WebM/SRT降级继续由浏览器验证。当前完整目标与未完成项见 [语音迁移与目标审计](83-live-avatar-speech-and-current-goal-audit.md)。
 
 ## 2026-10-21 / 自由白板视频与LMS日历同步
 

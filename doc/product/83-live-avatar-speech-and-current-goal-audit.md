@@ -14,7 +14,7 @@ StudyAgent 当前语音顺序：
 
 MiniMax 支持五种普通话音色：温柔学姐、温暖少女、柔和少女、俏皮萌妹、知性御姐。播放器将保存白板的每个场景旁白转为服务端 WAV，再组合为带音轨的 WebM。音色、模型、速度、音量、音高、情绪、地址和重试次数均来自环境配置，密钥不进入契约、日志或界面。
 
-真实调用验证：`speech-2.8-turbo`、`Chinese (Mandarin)_Warm_Girl`、国际站，返回 `audio/wav`、16,000 Hz、132,306 字节，RIFF/WAVE 头有效。机器收据见 [运行证据](../evidence/2026-10-22/live-avatar-minimax-speech-runtime.json)。
+真实调用验证：`speech-2.8-turbo`、`Chinese (Mandarin)_Warm_Girl`、国际站，返回 `audio/wav`、16,000 Hz、132,306 字节，RIFF/WAVE 头有效。进一步在 Chromium 中实际导出 7,120,642 字节 WebM，`ffprobe` 确认同时包含 `video` 和 `audio` 流。机器收据见 [运行证据](../evidence/2026-10-22/live-avatar-minimax-speech-runtime.json)。
 
 ## 当前产品进度
 
