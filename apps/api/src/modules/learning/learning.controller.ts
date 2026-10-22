@@ -34,8 +34,8 @@ export class LearningController {
     return this.learning.createStudioWhiteboard(req.user, input);
   }
   @Post('studio/whiteboards/:id/narration/:sceneId') studioWhiteboardNarration(@Req() req: AuthenticatedRequest,
-    @Param('id') id: string, @Param('sceneId') sceneId: string) {
-    return this.learning.studioWhiteboardNarration(req.user, id, sceneId);
+    @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown) {
+    return this.learning.studioWhiteboardNarration(req.user, id, sceneId, input);
   }
   @Post('studio/integrations') studioIntegrationConnect(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.integrations.connect(req.user, input);

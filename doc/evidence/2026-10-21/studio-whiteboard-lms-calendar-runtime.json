@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "createdAt": "2026-10-21T23:56:54+08:00",
+  "revalidatedAt": "2026-10-22T09:02:43+08:00",
   "baseCommit": "f3ac4de6470cb2be57c2a6ce9853e7414948b776",
   "scope": [
     "HyperKnow-style Studio layout and interaction calibration",
@@ -16,11 +17,11 @@
     "fullApi": {
       "command": "npm test",
       "result": "passed",
-      "testFilesPassed": 80,
+      "testFilesPassed": 81,
       "testFilesSkipped": 1,
-      "testsPassed": 717,
+      "testsPassed": 721,
       "testsSkipped": 6,
-      "durationSeconds": 218.1
+      "durationSeconds": 236.24
     },
     "browser": {
       "command": "npm run test:e2e",
@@ -65,7 +66,7 @@
   "limitations": [
     "LMS integration uses interoperable ICS import and subscription rather than vendor OAuth APIs",
     "external refresh is explicit rather than background scheduled",
-    "real TTS audio requires OPENAI_API_KEY and a compatible speech endpoint; tests verify the captioned fallback",
+    "real TTS audio uses MiniMax T2A v2 when configured, with OpenAI as fallback; automated browser runs disable providers and verify the captioned fallback",
     "visible completion and watched whiteboards do not establish mastery"
   ]
 }

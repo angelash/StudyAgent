@@ -11,8 +11,9 @@ describe('whiteboard video and LMS calendar integrations', () => {
   let app: any, store: any, auth: any, parent: any, other: any, learner: any;
   const credential = 'studio-integration-secret', directory = mkdtempSync(join(tmpdir(), 'study-studio-'));
   const previousRoot = process.env.STUDY_DATA_DIR, previousKey = process.env.OPENAI_API_KEY;
+  const previousMiniMaxKey = process.env.MINIMAX_API_KEY;
   beforeAll(async () => {
-    process.env.STUDY_DATA_DIR = directory; delete process.env.OPENAI_API_KEY;
+    process.env.STUDY_DATA_DIR = directory; delete process.env.OPENAI_API_KEY; delete process.env.MINIMAX_API_KEY;
     const { AppModule } = require('../../../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     const { AuthService } = require('../../../dist/apps/api/src/modules/auth/auth.service.js');
@@ -23,6 +24,7 @@ describe('whiteboard video and LMS calendar integrations', () => {
     await app?.close();
     if (previousRoot === undefined) delete process.env.STUDY_DATA_DIR; else process.env.STUDY_DATA_DIR = previousRoot;
     if (previousKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = previousKey;
+    if (previousMiniMaxKey === undefined) delete process.env.MINIMAX_API_KEY; else process.env.MINIMAX_API_KEY = previousMiniMaxKey;
     rmSync(directory, { recursive: true, force: true });
   });
   beforeEach(async () => {
@@ -82,6 +84,7 @@ describe('whiteboard video and LMS calendar integrations', () => {
     const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
     expect(overview.whiteboards[0]).toMatchObject({ id: saved.id, width: 1280, height: 720 });
     expect(overview.narrationAvailable).toBe(false);
+    expect(overview.speech).toMatchObject({ available: false, provider: null, voices: [] });
     await request(app.getHttpServer()).post('/api/learning/studio/whiteboards/' + saved.id + '/narration/scene:1')
       .set('Authorization', 'Bearer ' + other.token).expect(403);
     await request(app.getHttpServer()).post('/api/learning/studio/whiteboards/' + saved.id + '/narration/scene:1')

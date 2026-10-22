@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-22T09:00:00+08:00",
+  "sourceProject": "F:\\workspace\\github\\live-avatar",
+  "sourceLicense": "MIT (repository code; upstream dependencies retain their own licenses)",
+  "portedCapability": [
+    "MiniMax T2A v2 request protocol",
+    "16 kHz mono PCM16 SSE transport",
+    "Mandarin voice allowlist",
+    "first-audio-before-retry policy",
+    "API status and trace error reporting",
+    "OpenAI fallback and captioned WebM/SRT fallback"
+  ],
+  "liveCall": {
+    "provider": "minimax",
+    "endpointRegion": "international",
+    "model": "speech-2.8-turbo",
+    "voice": "Chinese (Mandarin)_Warm_Girl",
+    "contentType": "audio/wav",
+    "bytes": 132306,
+    "sampleRate": 16000,
+    "header": "RIFF",
+    "secretRecorded": false
+  },
+  "automatedCoverage": {
+    "speechUnitAndStudioTests": "12 passed",
+    "browserRegression": "6 passed",
+    "externalSpeechDisabledInAutomatedBrowser": true
+  },
+  "limitations": [
+    "A successful API call proves transport and audio validity, not teaching quality or pronunciation suitability for every student.",
+    "Automated browser tests intentionally use captioned fallback rather than making paid external calls.",
+    "Voice telemetry and cost monitoring remain product operations work."
+  ]
+}

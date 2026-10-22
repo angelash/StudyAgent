@@ -12,6 +12,7 @@ const environment = {
   CI: process.env.CI || '',
   NEXT_TELEMETRY_DISABLED: '1',
   OPENAI_API_KEY: '',
+  MINIMAX_API_KEY: '',
   CODEX_MODEL: '',
   NEXT_PUBLIC_API_BASE_URL: `http://localhost:${apiPort}`,
   E2E_API_PORT: apiPort,

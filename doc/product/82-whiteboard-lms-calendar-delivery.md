@@ -31,7 +31,9 @@
 
 播放器使用 1280×720 Canvas，支持逐幕切换、完整时间轴、播放/暂停、上一幕/下一幕、设备中文语音和速度控制。导出结果是实际可下载的 WebM，每幕旁白烧入画面字幕，并可另存标准 SRT。
 
-配置 OPENAI_API_KEY 后，播放器会请求受控的服务端 TTS。所有场景音轨可用时，Canvas 视频流与合成音频流一起交给 MediaRecorder，导出带 AI 旁白的 WebM；任一步不可用时自动退回字幕视频，不会阻断交付。服务端只接受已保存、当前用户有权访问的白板场景旁白。
+语音服务优先复用 `live-avatar` 已验证的 MiniMax T2A v2 中文流式协议：16 kHz、单声道、PCM16、SSE 音频块、模型/音色/速度/音量/音高/情绪配置、首个音频前重试和 API trace 错误。StudyAgent 将音频块组装成 WAV，提供五种普通话音色；没有 MiniMax 时可回退 OpenAI TTS，两者均不可用时仍可导出烧录字幕视频。
+
+所有场景音轨可用时，Canvas 视频流与合成音频流一起交给 MediaRecorder，导出带 AI 旁白的 WebM；任一步不可用时自动退回字幕视频，不会阻断交付。服务端只接受已保存、当前用户有权访问的白板场景旁白，并只允许能力列表中的音色。
 
 白板预览与播放器证据：
 
@@ -82,7 +84,7 @@
 - StudyAgent 学习任务创建、幂等、删除和 ICS 导出。
 - 生产构建 Chromium 旅程完成课程、白板预览、保存、播放器、真实 WebM 下载、SRT 下载、学习计划、LMS ICS 导入和刷新。
 
-机器可读最终收据见 [白板与同步运行收据](../evidence/2026-10-21/studio-whiteboard-lms-calendar-runtime.json)。
+机器可读最终收据见 [白板与同步运行收据](../evidence/2026-10-21/studio-whiteboard-lms-calendar-runtime.json) 与 [MiniMax 语音调用收据](../evidence/2026-10-22/live-avatar-minimax-speech-runtime.json)。
 
 ## 明确边界
 

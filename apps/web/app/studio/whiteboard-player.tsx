@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import type { StudioWhiteboard, StudioWhiteboardScene } from '@study-agent/contracts';
+import type { StudioSpeechCapabilities, StudioWhiteboard, StudioWhiteboardScene } from '@study-agent/contracts';
 import { apiBaseUrl, getAuthToken } from '../../lib/api';
 
-type Props = { whiteboard: StudioWhiteboard; narrationAvailable?: boolean; onClose?: () => void };
+type Props = { whiteboard: StudioWhiteboard; narrationAvailable?: boolean; speech?: StudioSpeechCapabilities; onClose?: () => void };
 
 function wrap(context: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number,
   lineHeight: number, maxLines = 5) {
@@ -127,7 +127,7 @@ function saveBlob(blob: Blob, filename: string) {
   setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
 
-export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClose }: Props) {
+export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speech, onClose }: Props) {
   const canvas = React.useRef<HTMLCanvasElement | null>(null);
   const frame = React.useRef<number | null>(null), cancelled = React.useRef(false);
   const [sceneIndex, setSceneIndex] = React.useState(0);
@@ -135,6 +135,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClo
   const [progress, setProgress] = React.useState(0);
   const [voice, setVoice] = React.useState(true);
   const [speed, setSpeed] = React.useState(1);
+  const [narrationVoice, setNarrationVoice] = React.useState(speech?.defaultVoice || '');
   const [exporting, setExporting] = React.useState<number | null>(null);
   const [notice, setNotice] = React.useState('');
   const scene = whiteboard.scenes[sceneIndex];
@@ -197,6 +198,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClo
     if (!mimeType) { setNotice('当前浏览器没有可用的 WebM 编码器。'); return; }
     setExporting(0); setNotice('正在准备白板与旁白音轨…');
     const audioContext = typeof AudioContext === 'undefined' ? null : new AudioContext();
+    const audioStart = audioContext?.resume();
     let narration: Blob[] | null = null;
     if (narrationAvailable) {
       const collected: Blob[] = [];
@@ -205,7 +207,8 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClo
           const token = getAuthToken();
           const response = await fetch(apiBaseUrl + '/api/learning/studio/whiteboards/' + encodeURIComponent(whiteboard.id) +
             '/narration/' + encodeURIComponent(item.id), { method: 'POST', credentials: 'include',
-            headers: token ? { Authorization: 'Bearer ' + token } : {} });
+            headers: { 'content-type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) },
+            body: JSON.stringify({ ...(narrationVoice ? { voice: narrationVoice } : {}) }) });
           if (!response.ok) { collected.length = 0; break; }
           collected.push(await response.blob());
         }
@@ -215,7 +218,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClo
     let buffers: AudioBuffer[] | null = null;
     if (narration?.length && audioContext) {
       try {
-        await audioContext.resume();
+        await audioStart;
         buffers = await Promise.all(narration.map(async blob => audioContext.decodeAudioData(await blob.arrayBuffer())));
       } catch { buffers = null; }
     }
@@ -291,6 +294,10 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, onClo
       <button aria-label="下一幕" onClick={() => go(sceneIndex + 1)}>→</button>
       <span>{sceneIndex + 1} / {whiteboard.scenes.length}</span><span className="sa-spacer" />
       <button data-active={voice} onClick={() => setVoice(!voice)}>{voice ? '语音开启' : '语音关闭'}</button>
+      {narrationAvailable && speech?.voices.length ? <select aria-label="旁白音色" value={narrationVoice}
+        onChange={event => setNarrationVoice(event.target.value)}>
+        {speech.voices.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+      </select> : null}
       <select aria-label="播放速度" value={speed} onChange={event => setSpeed(Number(event.target.value))}>
         <option value={.75}>0.75×</option><option value={1}>1×</option><option value={1.25}>1.25×</option>
       </select>

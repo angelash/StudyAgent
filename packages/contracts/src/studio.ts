@@ -131,10 +131,19 @@ export type StudioIntegrationOverview = {
   events: StudioScheduleEvent[];
 };
 
+export type StudioSpeechVoice = { id: string; label: string };
+export type StudioSpeechCapabilities = {
+  available: boolean;
+  provider: 'minimax' | 'openai' | null;
+  voices: StudioSpeechVoice[];
+  defaultVoice: string | null;
+};
+
 export type StudioOverview = {
   generatedAt: string;
   day: string;
   narrationAvailable: boolean;
+  speech: StudioSpeechCapabilities;
   children: Array<{ id: string; nickname: string; grade: number }>;
   selected: {
     id: string; nickname: string; grade: number; subject: StudioSubject;

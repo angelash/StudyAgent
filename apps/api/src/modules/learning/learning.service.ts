@@ -21,7 +21,7 @@ import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { buildStudioCourse } from './studio-course';
 import { buildStudioWhiteboard } from './studio-whiteboard';
 import { StudioIntegrationService } from './studio-integration.service';
-import { AiService } from '../ai/ai.service';
+import { SpeechService } from '../ai/speech.service';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -34,7 +34,7 @@ export class LearningService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly diagnostics: DiagnosticsService, private readonly guidance: GuidanceService,
     private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService,
-    private readonly integrations: StudioIntegrationService, private readonly ai: AiService) {}
+    private readonly integrations: StudioIntegrationService, private readonly speech: SpeechService) {}
 
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
@@ -45,7 +45,10 @@ export class LearningService {
     const children = this.studentProfiles(user);
     const selected = children.find(child => child.id === studentId) ?? children[0];
     const day = studyDay();
-    if (!selected) return { generatedAt: new Date().toISOString(), day, narrationAvailable: this.ai.narrationAvailable, children, selected: null, courses: [], feed: [], activities: [],
+    const speechCapabilities = this.speech.capabilities();
+    if (!selected) return { generatedAt: new Date().toISOString(), day, narrationAvailable: speechCapabilities.available,
+      speech: speechCapabilities,
+      children, selected: null, courses: [], feed: [], activities: [],
       whiteboards: [], integrations: { connectors: [], events: [] } };
     this.students.assertCanAccessStudent(user, selected.id);
     const profile = this.diagnostics.profile(user, selected.id, subject), scope = profile.scope;
@@ -69,7 +72,8 @@ export class LearningService {
       .sort((a, b) => b.at.localeCompare(a.at)).slice(0, 50);
     const whiteboards = this.store.select('studioWhiteboards', { studentId: selected.id, subject })
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
-    return { generatedAt: new Date().toISOString(), day, narrationAvailable: this.ai.narrationAvailable, children,
+    return { generatedAt: new Date().toISOString(), day, narrationAvailable: speechCapabilities.available,
+      speech: speechCapabilities, children,
       selected: { id: selected.id, nickname: selected.nickname, grade: selected.grade, subject, scope, atoms,
         estimates: profile.estimates.filter(estimate => learned.has(estimate.atomId)) },
       courses, feed, activities, whiteboards, integrations: this.integrations.overview(user, selected.id, subject) };
@@ -111,14 +115,15 @@ export class LearningService {
     return whiteboard;
   }
 
-  async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string) {
+  async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown) {
     const whiteboard = this.store.find('studioWhiteboards', { id });
     if (!whiteboard) throw new NotFoundException('白板不存在');
     this.students.assertCanAccessStudent(user, whiteboard.studentId);
     const scene = whiteboard.scenes.find(item => item.id === sceneId);
     if (!scene) throw new NotFoundException('白板场景不存在');
-    const audio = await this.ai.speech(scene.narration);
-    return new StreamableFile(audio, { type: 'audio/mpeg', disposition: 'inline', length: audio.length });
+    const command = validate(z.object({ voice: z.string().min(1).max(120).optional() }).strict(), input ?? {});
+    const audio = await this.speech.synthesize(scene.narration, command.voice);
+    return new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length });
   }
 
   previewStudioCourse(user: InMemoryUserAccount, input: unknown) {
