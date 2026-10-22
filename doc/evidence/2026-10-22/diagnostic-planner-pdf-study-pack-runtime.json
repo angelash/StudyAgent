@@ -10,16 +10,16 @@
     "command": "npm test",
     "test_files_passed": 83,
     "test_files_skipped": 1,
-    "tests_passed": 729,
+    "tests_passed": 730,
     "tests_skipped": 6,
-    "duration_seconds": 240.52,
+    "duration_seconds": 275.53,
     "passed": true
   },
   "browser_acceptance": {
     "command": "npm run test:e2e",
     "tests_passed": 6,
     "tests_failed": 0,
-    "duration_seconds": 58.3,
+    "duration_seconds": 57.8,
     "passed": true,
     "verified_flows": [
       "diagnostic multi-session plan preview and confirmed calendar write",

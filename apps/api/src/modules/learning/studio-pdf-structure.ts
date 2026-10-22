@@ -20,7 +20,7 @@ function average(values: Array<number | null>) {
 }
 
 export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructureModelResult | null,
-  options: { modelAttempted?: boolean } = {}) {
+  options: { modelAttempted?: boolean; modelId?: string | null } = {}) {
   const modeled = new Map((model?.pages ?? []).map(page => [page.pageNumber, page]));
   const unmodeledReviewPages = model ? raw.filter(page => (page.method === 'ocr' || page.method === 'hybrid' ||
     page.tables.length > 0 || page.formulas.length > 0) && !modeled.has(page.pageNumber)).length : 0;
@@ -60,6 +60,7 @@ export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructure
     reviewRequired: warnings.length > 0,
     modelAssisted: Boolean(model),
     modelSource: model ? 'xiaojiu_cli' : options.modelAttempted === false ? null : 'local_fallback',
+    modelId: options.modelId ?? null,
     warnings: options.modelAttempted === false ? warnings : model ? warnings : [...warnings, 'model_structure_review_unavailable'],
   };
   return { pages, structure };

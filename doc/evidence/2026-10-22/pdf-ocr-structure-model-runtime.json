@@ -1,8 +1,13 @@
 {
-  "at": "2026-10-22T05:52:44.741Z",
+  "at": "2026-10-22T08:55:57.723Z",
   "fixture": "synthetic table and fraction formula; no learner data",
   "inheritsCurrentCliConfig": true,
-  "modelOverrideApplied": false,
+  "modelOverrideApplied": true,
+  "selectedModel": "deepseek-v4-flash",
+  "requestedModelLabel": "DS V4.1 Flash",
+  "requestedModelId": "deepseek-v4.1-flash",
+  "requestedModelAvailable": false,
+  "fallbackReason": "Gateway returned 503: no available channel for deepseek-v4.1-flash",
   "codexVersion": "codex-cli 0.144.1",
   "passed": true,
   "local": {
@@ -16,7 +21,7 @@
     "paragraphCount": 0,
     "tableCount": 1,
     "formulaCount": 1,
-    "outputSha256": "66d537045dd702099a4ebf745cf6bb051e3f35b556fcb968e818fd17cfdac32d"
+    "outputSha256": "4edbdc598e5190f816cb074a6637219fed3b89151fe6c7901bdcba2b682325c9"
   },
-  "completedAt": "2026-10-22T05:52:53.032Z"
+  "completedAt": "2026-10-22T08:56:14.817Z"
 }

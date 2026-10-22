@@ -103,6 +103,7 @@ export class CodexPdfStructureService {
       'exec', '--ephemeral', '--json', '--sandbox', 'read-only', '--skip-git-repo-check',
       '--color', 'never', '-C', process.cwd(),
     ];
+    args.push('-m', this.env.CODEX_PDF_MODEL);
     try {
       const configured = this.compatibleCatalogOverride(configPath);
       if (configured) args.push('-c', configured);
@@ -111,10 +112,21 @@ export class CodexPdfStructureService {
         page.warnings.includes('formula_structure_requires_review')).slice(0, 8);
       for (const page of reviewPages) if (existsSync(page.imagePath)) args.push('--image', page.imagePath);
       args.push('--output-schema', schemaPath, '-');
-      const finalMessage = await this.run(args, this.buildPrompt({ materialTitle: input.materialTitle, pages: reviewPages }));
-      const parsed = this.parseJson(finalMessage);
-      try { return resultSchema.parse(parsed); }
-      catch { throw new ServiceUnavailableException('小九AI PDF 结构复核返回了无效结构'); }
+      let lastError: unknown;
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          const finalMessage = await this.run(args, this.buildPrompt({
+            materialTitle: input.materialTitle, pages: reviewPages, strictRetry: attempt > 0,
+          }));
+          const checked = resultSchema.safeParse(this.parseJson(finalMessage));
+          if (checked.success) return checked.data;
+          lastError = checked.error;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw new ServiceUnavailableException('小九AI PDF 结构复核连续两次返回无效结构' +
+        (lastError instanceof Error ? '：' + lastError.message.slice(0, 120) : ''));
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -183,7 +195,7 @@ export class CodexPdfStructureService {
     });
   }
 
-  private buildPrompt(input: { materialTitle: string; pages: PdfStructurePageInput[] }) {
+  private buildPrompt(input: { materialTitle: string; pages: PdfStructurePageInput[]; strictRetry?: boolean }) {
     const materials = input.pages.map(page => ({
       pageNumber: page.pageNumber,
       extractionMethod: page.method,
@@ -198,6 +210,7 @@ export class CodexPdfStructureService {
       '表格必须保持原页行列关系；没有足够证据时不要猜测合并单元格。公式输出可用于 KaTeX 的 LaTeX，并保留 plainText。',
       'confidence 是 0 到 1 的提取置信度，不代表知识正确性。所有 OCR、表格和公式结果均为待人工核对候选。',
       '只返回 schema 要求的 JSON，不要解释。',
+      ...(input.strictRetry ? ['这是结构校验失败后的唯一重试。所有字段必须存在；confidence 只能是 0 到 1 的数字或 null。'] : []),
       '材料名称：' + input.materialTitle,
       '页面候选：' + JSON.stringify(materials),
     ].join('\n');

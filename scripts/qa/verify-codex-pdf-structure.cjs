@@ -17,7 +17,12 @@ const evidence = {
   at: new Date().toISOString(),
   fixture: 'synthetic table and fraction formula; no learner data',
   inheritsCurrentCliConfig: true,
-  modelOverrideApplied: false,
+  modelOverrideApplied: true,
+  selectedModel: process.env.CODEX_PDF_MODEL ?? 'deepseek-v4-flash',
+  requestedModelLabel: 'DS V4.1 Flash',
+  requestedModelId: 'deepseek-v4.1-flash',
+  requestedModelAvailable: false,
+  fallbackReason: 'Gateway returned 503: no available channel for deepseek-v4.1-flash',
   codexVersion: execFileSync(codex.command, ['--version'], { encoding: 'utf8', shell: codex.shell }).trim(),
   passed: false,
 };

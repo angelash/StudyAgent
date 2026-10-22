@@ -123,6 +123,7 @@ export type StudioMaterialStructure = {
   reviewRequired: boolean;
   modelAssisted: boolean;
   modelSource: 'xiaojiu_cli' | 'local_fallback' | null;
+  modelId?: string | null;
   reviewedAt?: string;
   warnings: string[];
 };

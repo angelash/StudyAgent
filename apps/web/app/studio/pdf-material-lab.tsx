@@ -200,7 +200,8 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
             material.structure.tableCount + ' 个表格', material.structure.formulaCount + ' 个公式'].filter(Boolean).join(' · ') : '等待结构摘要'}</small></div>
           <div data-review={material.structure?.reviewRequired}><span>STRUCTURE</span>
             <b>{material.structure?.reviewRequired ? '需要对照原页' : '结构已恢复'}</b>
-            <small>{material.structure?.modelSource === 'xiaojiu_cli' ? '小九AI 模型辅助复核' :
+            <small>{material.structure?.modelSource === 'xiaojiu_cli' ? '小九AI · ' +
+              (material.structure.modelId === 'deepseek-v4-flash' ? 'DeepSeek V4 Flash' : material.structure.modelId ?? '模型复核') :
               material.structure?.modelSource === 'local_fallback' ? '本地结构恢复' : '本地版面恢复'}</small>
             {material.structure?.modelSource === 'local_fallback' && <button disabled={busy}
               onClick={() => void retryProcessing()}>重新用小九AI复核</button>}

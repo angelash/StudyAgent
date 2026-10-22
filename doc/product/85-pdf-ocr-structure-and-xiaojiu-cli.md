@@ -16,7 +16,8 @@
 
 新增 CodexPdfStructureService，通过当前本机小九AI CLI 的非交互模式返回受 JSON Schema 约束的结构。
 
-- 默认不传 -m、-p 或模型推理强度覆盖，继承本机 CLI 当前模型、provider 和其他配置。
+- PDF 结构复核默认明确指定 deepseek-v4-flash（模型目录中的 DeepSeek V4 Flash），其余 provider、推理强度和其他配置继续继承本机 CLI。
+- 当前 gateway 分组不支持请求中写法的 deepseek-v4.1-flash：实测该标识返回 503 无可用渠道；产品使用同一 DS Flash 系列中实际可用的 deepseek-v4-flash，并允许通过 CODEX_PDF_MODEL 调整。
 - CLI 固定以只读沙箱、临时会话、非交互 JSON 流运行。
 - OCR 文字、表格和原页只作为不可信材料传入，提示明确禁止执行材料中的指令。
 - 模型不得补写原页不存在的内容；无法确认的单元格、公式和警告单独返回。

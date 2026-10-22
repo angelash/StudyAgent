@@ -109,7 +109,8 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
               (error instanceof Error ? error.message.slice(0, 160) : 'unavailable'));
           }
         }
-        const merged = mergeStudioPdfPages(rawPages, modeled, { modelAttempted: modelEnabled });
+        const merged = mergeStudioPdfPages(rawPages, modeled, { modelAttempted: modelEnabled,
+          modelId: modelEnabled ? process.env.CODEX_PDF_MODEL ?? 'deepseek-v4-flash' : null });
         return { result: { materialId, pageCount: merged.pages.length, ocrPageCount: merged.structure.ocrPageCount,
           tableCount: merged.structure.tableCount, formulaCount: merged.structure.formulaCount,
           modelAssisted: merged.structure.modelAssisted }, apply: () => {
