@@ -66,6 +66,7 @@ export function AssessmentStudio() {
   const [retrospectiveNote, setRetrospectiveNote] = React.useState('');
   const [endOpen, setEndOpen] = React.useState(false), [endReason, setEndReason] = React.useState('');
   const previewRequest = React.useRef({ signature: '', key: '' }), stateRequest = React.useRef({ signature: '', key: '' });
+  const atomDeepLinkDone = React.useRef(false);
   const openedAt = React.useRef(Date.now()), draftTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const currentGroup = session?.routing ? `第 ${Math.floor(session.answeredCount / (session.blueprint?.groupSize ?? 3)) + 1} 小组` :
@@ -159,6 +160,18 @@ export function AssessmentStudio() {
       .then((items) => { if (alive) setAtoms(items); }).catch((caught) => { if (alive) setError(caught.message); });
     return () => { alive = false; };
   }, [loggedIn, grade, term, subject]);
+
+  React.useEffect(() => {
+    if (atomDeepLinkDone.current || !confirmedScope || !atoms.length || session || blueprint) return;
+    const atomId = new URLSearchParams(window.location.search).get('atom');
+    if (!atomId) { atomDeepLinkDone.current = true; return; }
+    if (!confirmedScope.learnedAtomIds.includes(atomId) || !atoms.some(atom => atom.id === atomId)) {
+      setError('计划中的知识点已不在当前确认范围内，请先复核学习进度'); atomDeepLinkDone.current = true; return;
+    }
+    atomDeepLinkDone.current = true; setIntent('micro'); setMaxItems(4); setAdaptive(true); setAssessmentTargets([atomId]);
+    void execute(() => showBlueprint({ studentId: confirmedScope.studentId, subject: confirmedScope.subject, intent: 'micro',
+      maxItems: 4, includePrerequisites: true, adaptive: true, targetAtomIds: [atomId] }, confirmedScope.id));
+  }, [confirmedScope, atoms, session, blueprint]);
 
   React.useEffect(() => {
     if (!session || session.status !== 'in_progress' || !current) return;

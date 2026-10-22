@@ -34,7 +34,8 @@ function subtitleLines(context: CanvasRenderingContext2D, text: string, maxWidth
   return lines.slice(-2);
 }
 
-export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: StudioWhiteboardScene, progress: number) {
+export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: StudioWhiteboardScene, progress: number,
+  pageImages?: Map<string, HTMLImageElement>) {
   const width = 1280, height = 720;
   context.clearRect(0, 0, width, height);
   const paper = context.createLinearGradient(0, 0, width, height);
@@ -51,9 +52,27 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
   context.fillStyle = '#718474'; context.fillRect(145, 120, 96 * progress, 2);
   context.font = '500 47px Georgia, "Microsoft YaHei UI", serif'; context.fillStyle = '#111712';
   const titleBottom = wrap(context, scene.title, 88, 194, 1020, 58, 2);
-  context.font = '23px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
-  let contentBottom = titleBottom + 16;
-  if (scene.body) contentBottom = wrap(context, scene.body, 92, contentBottom + 27, 1014, 36, 3);
+  const sourceImage = scene.source ? pageImages?.get(scene.source.materialId + ':' + scene.source.page) : undefined;
+  if (scene.source) {
+    context.font = '600 14px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#516857';
+    context.fillText('来源页 · ' + scene.source.page, 92, titleBottom + 18);
+    context.font = '13px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#778179';
+    context.fillText(scene.source.label, 198, titleBottom + 18);
+  }
+  let contentBottom = titleBottom + (scene.source ? 38 : 16);
+  if (scene.kind === 'pdf_page' && sourceImage?.complete && sourceImage.naturalWidth) {
+    const box = { x: 88, y: 276, width: 430, height: 318 }, scale = Math.min(box.width / sourceImage.naturalWidth,
+      box.height / sourceImage.naturalHeight), drawWidth = sourceImage.naturalWidth * scale, drawHeight = sourceImage.naturalHeight * scale;
+    context.fillStyle = '#fff'; context.fillRect(box.x, box.y, box.width, box.height);
+    context.strokeStyle = '#d9dfd7'; context.lineWidth = 1; context.strokeRect(box.x, box.y, box.width, box.height);
+    context.drawImage(sourceImage, box.x + (box.width - drawWidth) / 2, box.y + (box.height - drawHeight) / 2, drawWidth, drawHeight);
+    context.font = '22px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
+    if (scene.body) contentBottom = wrap(context, scene.body, 552, 320, 618, 37, 6);
+    contentBottom = Math.max(contentBottom, 500);
+  } else {
+    context.font = '23px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
+    if (scene.body) contentBottom = wrap(context, scene.body, 92, contentBottom + 27, 1014, 36, 3);
+  }
   const bulletsTop = scene.visual ? 500 : Math.max(350, contentBottom + 34);
   if (scene.bullets?.length) {
     scene.bullets.slice(0, 4).forEach((bullet, index) => {
@@ -136,18 +155,40 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
   const [voice, setVoice] = React.useState(true);
   const [speed, setSpeed] = React.useState(1);
   const [narrationVoice, setNarrationVoice] = React.useState(speech?.defaultVoice || '');
+  const [pageImages, setPageImages] = React.useState<Map<string, HTMLImageElement>>(() => new Map());
   const [exporting, setExporting] = React.useState<number | null>(null);
   const [notice, setNotice] = React.useState('');
   const scene = whiteboard.scenes[sceneIndex];
   const total = whiteboard.scenes.reduce((sum, item) => sum + item.durationMs, 0);
   const before = whiteboard.scenes.slice(0, sceneIndex).reduce((sum, item) => sum + item.durationMs, 0);
   const timeline = Math.min(1, (before + progress * scene.durationMs) / total);
+  const sourceKey = whiteboard.scenes.map(item => item.source ? item.source.materialId + ':' + item.source.page : '')
+    .filter(Boolean).join('|');
   const render = React.useCallback(() => {
     const context = canvas.current?.getContext('2d');
-    if (context) drawWhiteboardScene(context, scene, progress);
-  }, [scene, progress]);
+    if (context) drawWhiteboardScene(context, scene, progress, pageImages);
+  }, [scene, progress, pageImages]);
 
   React.useEffect(() => render(), [render]);
+  React.useEffect(() => {
+    const sources = [...new Map(whiteboard.scenes.flatMap(item => item.source
+      ? [[item.source.materialId + ':' + item.source.page, item.source] as const] : [])).entries()];
+    if (!sources.length) { setPageImages(new Map()); return; }
+    const urls: string[] = []; let alive = true;
+    void Promise.all(sources.map(async ([key, source]) => {
+      const token = getAuthToken();
+      const response = await fetch(apiBaseUrl + '/api/learning/studio/materials/' + encodeURIComponent(source.materialId) +
+        '/pages/' + source.page, { credentials: 'include', headers: token ? { authorization: 'Bearer ' + token } : {} });
+      if (!response.ok) return null;
+      const url = URL.createObjectURL(await response.blob()); urls.push(url);
+      const image = new Image();
+      await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error('page image')); image.src = url; });
+      return [key, image] as const;
+    })).then(rows => {
+      if (alive) setPageImages(new Map(rows.filter((row): row is readonly [string, HTMLImageElement] => Boolean(row))));
+    }).catch(() => { if (alive) setPageImages(new Map()); });
+    return () => { alive = false; urls.forEach(url => URL.revokeObjectURL(url)); };
+  }, [whiteboard.id, sourceKey]);
   React.useEffect(() => () => {
     cancelled.current = true;
     if (frame.current) cancelAnimationFrame(frame.current);
@@ -242,7 +283,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
           const draw = (now: number) => {
             if (cancelled.current) { resolve(); return; }
             const local = Math.min(1, (now - start) / duration), context = target.getContext('2d');
-            if (context) drawWhiteboardScene(context, item, local);
+            if (context) drawWhiteboardScene(context, item, local, pageImages);
             if (local < 1) requestAnimationFrame(draw); else resolve();
           };
           requestAnimationFrame(draw);
@@ -261,7 +302,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
       setExporting(null);
       if (audioContext) void audioContext.close();
       const context = target.getContext('2d');
-      if (context) drawWhiteboardScene(context, scene, progress);
+      if (context) drawWhiteboardScene(context, scene, progress, pageImages);
     }
   }
 

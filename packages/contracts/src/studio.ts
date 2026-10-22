@@ -49,14 +49,111 @@ export type StudioActivity = {
   id: string;
   studentId: string;
   subject: StudioSubject;
-  kind: 'course_created' | 'lesson_started' | 'assessment' | 'plan' | 'review' | 'memory';
+  kind: 'course_created' | 'lesson_started' | 'assessment' | 'plan' | 'review' | 'memory' | 'material';
   title: string;
   detail: string;
   href: string;
   at: string;
   status: 'new' | 'opened' | 'complete';
   requestKey?: string;
+  referenceId?: string;
 };
+
+export type StudioPlanSessionKind = 'learn' | 'practice' | 'transfer' | 'review';
+export type StudioPlanSession = {
+  id: string;
+  index: number;
+  title: string;
+  kind: StudioPlanSessionKind;
+  atomIds: string[];
+  objective: string;
+  successCriterion: string;
+  startsAt: string;
+  endsAt: string;
+  status: 'scheduled' | 'completed' | 'skipped';
+  calendarEventId: string;
+  evidenceBasis: string;
+  reviewForSessionId?: string;
+  reviewOffsetDays?: 1 | 3 | 7 | 14;
+};
+
+export type StudioStudyPlan = {
+  id: string;
+  studentId: string;
+  subject: StudioSubject;
+  title: string;
+  goal: string;
+  targetDate: string;
+  minutesPerDay: number;
+  status: 'active' | 'completed' | 'archived';
+  sessions: StudioPlanSession[];
+  fingerprint: string;
+  createdAt: string;
+  updatedAt: string;
+  revision: number;
+};
+
+export type StudioStudyPlanPreview = StudioStudyPlan & {
+  warnings: string[];
+  evidence: Array<{ atomId: string; atomName: string; status: MasteryEstimate['status']; reason: string }>;
+};
+
+export type StudioSourceMaterial = {
+  id: string;
+  studentId: string;
+  subject: StudioSubject;
+  filename: string;
+  title: string;
+  pageCount: number;
+  pages: Array<{ page: number; text: string }>;
+  sha256: string;
+  byteSize: number;
+  hasPageImages?: boolean;
+  createdAt: string;
+};
+
+export type StudioLearningCitation = {
+  atomId: string;
+  atomName: string;
+  materialId?: string;
+  page?: number;
+  label: string;
+};
+
+export type StudioLearningSection = {
+  id: string;
+  kind: 'explain' | 'example' | 'misconception' | 'transfer';
+  title: string;
+  body: string;
+  bullets: string[];
+  citations: StudioLearningCitation[];
+};
+
+export type StudioFlashcard = {
+  id: string;
+  prompt: string;
+  answer: string;
+  hint: string;
+  citations: StudioLearningCitation[];
+};
+
+export type StudioLearningPack = {
+  id: string;
+  studentId: string;
+  subject: StudioSubject;
+  title: string;
+  atomIds: string[];
+  sourceMaterialId: string | null;
+  sections: StudioLearningSection[];
+  flashcards: StudioFlashcard[];
+  practiceSteps: Array<{ id: string; title: string; detail: string; atomId: string; minutes: number }>;
+  reviewDays: Array<1 | 3 | 7 | 14>;
+  fingerprint: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type StudioLearningPackPreview = StudioLearningPack & { warnings: string[] };
 
 export type StudioFeedItem = {
   id: string;
@@ -69,12 +166,13 @@ export type StudioFeedItem = {
 
 export type StudioWhiteboardScene = {
   id: string;
-  kind: 'title' | 'concept' | 'steps' | 'fraction_bars' | 'check';
+  kind: 'title' | 'concept' | 'steps' | 'fraction_bars' | 'pdf_page' | 'check';
   title: string;
   narration: string;
   body?: string;
   bullets?: string[];
   visual?: TeachingVisual;
+  source?: { materialId: string; page: number; label: string };
   durationMs: number;
 };
 
@@ -83,6 +181,7 @@ export type StudioWhiteboard = {
   studentId: string;
   subject: StudioSubject;
   atomId: string | null;
+  sourceMaterialId?: string | null;
   title: string;
   prompt: string;
   scenes: StudioWhiteboardScene[];
@@ -124,6 +223,9 @@ export type StudioScheduleEvent = {
   source: 'lms' | 'calendar' | 'studyagent';
   createdAt: string;
   requestKey?: string;
+  planId?: string;
+  planSessionId?: string;
+  status?: 'scheduled' | 'completed' | 'skipped';
 };
 
 export type StudioIntegrationOverview = {
@@ -154,6 +256,9 @@ export type StudioOverview = {
   courses: StudioCourse[];
   feed: StudioFeedItem[];
   activities: StudioActivity[];
+  plans: StudioStudyPlan[];
+  materials: StudioSourceMaterial[];
+  studyPacks: StudioLearningPack[];
   whiteboards: StudioWhiteboard[];
   integrations: StudioIntegrationOverview;
 };

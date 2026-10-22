@@ -38,7 +38,7 @@ import {
   MistakeNotebookEntry,
   GespLearningScope, GespLearningScopeRevision, GespCodeSubmissionReceipt, GespProbeSubmissionReceipt,
   GespHintEvent, GespGuidancePlan, GespGuidancePlanRevision, GespReviewTask, GespTaskReview, GespTaskReviewRevision,
-  StudioCourse, StudioActivity, StudioWhiteboard, StudioConnector, StudioScheduleEvent,
+  StudioCourse, StudioActivity, StudioWhiteboard, StudioConnector, StudioScheduleEvent, StudioStudyPlan, StudioSourceMaterial, StudioLearningPack,
 } from '@study-agent/contracts';
 
 export type InMemoryUserAccount = {
@@ -410,6 +410,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   gespTaskReviewRevisions: GespTaskReviewRevision[] = [];
   studioCourses: StudioCourse[] = [];
   studioActivities: StudioActivity[] = [];
+  studioStudyPlans: StudioStudyPlan[] = [];
+  studioSourceMaterials: StudioSourceMaterial[] = [];
+  studioLearningPacks: StudioLearningPack[] = [];
   studioWhiteboards: StudioWhiteboard[] = [];
   studioConnectors: Array<StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }> = [];
   studioScheduleEvents: Array<StudioScheduleEvent & { createdBy?: string; requestHash?: string }> = [];
@@ -491,6 +494,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.gespTaskReviewRevisions = [];
     this.studioCourses = [];
     this.studioActivities = [];
+    this.studioStudyPlans = [];
+    this.studioSourceMaterials = [];
+    this.studioLearningPacks = [];
     this.studioWhiteboards = [];
     this.studioConnectors = [];
     this.studioScheduleEvents = [];

@@ -1,12 +1,15 @@
 'use client';
 import * as React from 'react';
-import type { StudioIntegrationOverview, StudioSubject } from '@study-agent/contracts';
+import type { KnowledgeAtom, StudioIntegrationOverview, StudioStudyPlan, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
 import { apiRequest } from '../../lib/api';
+import { StudyPlanner } from './study-planner';
 
 type Props = { studentId: string; subject: StudioSubject; value: StudioIntegrationOverview;
-  canManage: boolean; openPlanner?: number; onChanged: () => Promise<void>; onError: (message: string) => void };
+  plans: StudioStudyPlan[]; atoms: Array<Pick<KnowledgeAtom, 'id' | 'name' | 'objective'>>;
+  canManage: boolean; openPlanner?: number; onChanged: () => Promise<void>; onError: (message: string) => void;
+  onOpenWhiteboard: (whiteboard: StudioWhiteboard) => void };
 
-export function IntegrationCalendar({ studentId, subject, value, canManage, openPlanner = 0, onChanged, onError }: Props) {
+export function IntegrationCalendar({ studentId, subject, value, plans, atoms, canManage, openPlanner = 0, onChanged, onError, onOpenWhiteboard }: Props) {
   const [adding, setAdding] = React.useState(false);
   const [planning, setPlanning] = React.useState(false);
   const [kind, setKind] = React.useState<'lms_ics' | 'calendar_ics'>('calendar_ics');
@@ -73,6 +76,8 @@ export function IntegrationCalendar({ studentId, subject, value, canManage, open
       <p>支持 Canvas/Schoology 等 LMS 导出的 ICS，也可连接公开或带令牌的日历订阅。</p></div>
       <div className="sa-page-actions">{canManage && <button onClick={() => openForm('plan')}>＋ 新建学习安排</button>}{canManage && <button onClick={() => openForm('sync')}>连接 LMS / 日历</button>}<button disabled={busy} onClick={() => void exportCalendar()}>导出 ICS</button></div></header>
     <div className="sa-calendar-summary"><article><span>UPCOMING</span><strong>{upcoming}</strong><small>待开始安排</small></article><article><span>SCHOOL</span><strong>{lmsCount}</strong><small>学校 LMS 任务</small></article><article><span>SOURCES</span><strong>{value.connectors.length}</strong><small>已连接来源</small></article><div><b>同步边界</b><p>订阅内容只读取日历字段；不上传学生作答，不把课程完成自动计为知识掌握。</p></div></div>
+    <StudyPlanner studentId={studentId} subject={subject} plans={plans} atoms={atoms} canCreate={canManage}
+      openRequest={openPlanner} onChanged={onChanged} onError={onError} onOpenWhiteboard={onOpenWhiteboard} />
     <div className="sa-connectors">{value.connectors.map(connector => <article key={connector.id}>
       <span data-kind={connector.kind}>{connector.kind === 'lms_ics' ? 'LMS' : 'ICS'}</span><div><strong>{connector.label}</strong>
         <small>{connector.sourceHost} · {connector.eventCount} 个日程 · {connector.lastSyncedAt ? new Date(connector.lastSyncedAt).toLocaleString('zh-CN') : '尚未同步'}</small>

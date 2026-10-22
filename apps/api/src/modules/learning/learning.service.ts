@@ -1,8 +1,11 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 import { z } from 'zod';
 import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
-  StudioCourse, StudioOverview, StudioWhiteboard, Subject } from '@study-agent/contracts';
+  StudioCourse, StudioLearningPack, StudioLearningPackPreview, StudioOverview, StudioSourceMaterial, StudioStudyPlan,
+  StudioStudyPlanPreview, StudioWhiteboard, Subject } from '@study-agent/contracts';
 import { answerProtocolIssue } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -21,10 +24,31 @@ import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { buildStudioCourse } from './studio-course';
 import { buildStudioWhiteboard } from './studio-whiteboard';
 import { StudioIntegrationService } from './studio-integration.service';
+import { buildStudioStudyPlan } from './studio-study-plan';
 import { SpeechService } from '../ai/speech.service';
+import { PDFParse } from 'pdf-parse';
+import { buildPdfWhiteboard } from './studio-pdf-whiteboard';
+import { buildStudioLearningPack } from './studio-learning-pack';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
+}
+function uploadFilename(value: string) {
+  if ([...value].every(char => (char.codePointAt(0) ?? 0) <= 255)) {
+    const decoded = Buffer.from(value, 'latin1').toString('utf8');
+    if (!decoded.includes('\ufffd') && decoded !== value) return decoded;
+  }
+  return value;
+}
+function studioMaterialFile(sha256: string) {
+  const root = process.env.STUDY_DATA_DIR ?? resolve(process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? '../..' : '.', 'data');
+  return resolve(root, 'studio-materials', sha256 + '.pdf');
+}
+async function persistStudioMaterial(sha256: string, bytes: Buffer) {
+  const path = studioMaterialFile(sha256); await mkdir(dirname(path), { recursive: true });
+  try { await writeFile(path, bytes, { flag: 'wx', mode: 0o600 }); }
+  catch (error) { if ((error as NodeJS.ErrnoException).code !== 'EEXIST') throw error; }
+  return path;
 }
 const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
   answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000) }).strict();
@@ -48,7 +72,7 @@ export class LearningService {
     const speechCapabilities = this.speech.capabilities();
     if (!selected) return { generatedAt: new Date().toISOString(), day, narrationAvailable: speechCapabilities.available,
       speech: speechCapabilities,
-      children, selected: null, courses: [], feed: [], activities: [],
+      children, selected: null, courses: [], feed: [], activities: [], plans: [], materials: [], studyPacks: [],
       whiteboards: [], integrations: { connectors: [], events: [] } };
     this.students.assertCanAccessStudent(user, selected.id);
     const profile = this.diagnostics.profile(user, selected.id, subject), scope = profile.scope;
@@ -72,11 +96,116 @@ export class LearningService {
       .sort((a, b) => b.at.localeCompare(a.at)).slice(0, 50);
     const whiteboards = this.store.select('studioWhiteboards', { studentId: selected.id, subject })
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    const plans = this.store.select('studioStudyPlans', { studentId: selected.id, subject })
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    const materials = this.store.select('studioSourceMaterials', { studentId: selected.id, subject })
+      .map(row => { const { requestKey: _requestKey, pageImages: _pageImages, ...material } = row as StudioSourceMaterial & {
+        requestKey?: string; pageImages?: Record<string, string>; }; return { ...material, hasPageImages: Boolean(Object.keys(_pageImages ?? {}).length) }; })
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    const studyPacks = this.store.select('studioLearningPacks', { studentId: selected.id, subject })
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     return { generatedAt: new Date().toISOString(), day, narrationAvailable: speechCapabilities.available,
       speech: speechCapabilities, children,
       selected: { id: selected.id, nickname: selected.nickname, grade: selected.grade, subject, scope, atoms,
         estimates: profile.estimates.filter(estimate => learned.has(estimate.atomId)) },
-      courses, feed, activities, whiteboards, integrations: this.integrations.overview(user, selected.id, subject) };
+      courses, feed, activities, plans, materials, studyPacks, whiteboards, integrations: this.integrations.overview(user, selected.id, subject) };
+  }
+
+  previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      title: z.string().trim().min(3).max(180).optional(), goal: z.string().trim().min(5).max(1000),
+      targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), firstSessionAt: z.string().datetime({ offset: true }),
+      minutesPerDay: z.number().int().min(10).max(60) }).strict(), input);
+    const { atoms } = this.studioScope(user, command.studentId, command.subject);
+    if (!atoms.length) throw new BadRequestException('当前学习范围没有已发布知识点，请先确认学习进度');
+    const profile = this.diagnostics.profile(user, command.studentId, command.subject);
+    try {
+      return buildStudioStudyPlan({ id: 'studio_plan_preview', studentId: command.studentId, subject: command.subject,
+        title: command.title, goal: command.goal, targetDate: command.targetDate, firstSessionAt: command.firstSessionAt,
+        minutesPerDay: command.minutesPerDay, atoms, estimates: profile.estimates,
+        existingEvents: this.store.select('studioScheduleEvents', { studentId: command.studentId, subject: command.subject }) });
+    } catch (error) { throw new BadRequestException(error instanceof Error ? error.message : '学习计划参数无效'); }
+  }
+
+  createStudioStudyPlan(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      title: z.string().trim().min(3).max(180).optional(), goal: z.string().trim().min(5).max(1000),
+      targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), firstSessionAt: z.string().datetime({ offset: true }),
+      minutesPerDay: z.number().int().min(10).max(60), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+      requestKey: z.string().min(8).max(180) }).strict(), input);
+    this.students.assertGuardian(user, command.studentId);
+    const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (existing?.referenceId) {
+      const plan = this.store.find('studioStudyPlans', { id: existing.referenceId });
+      if (plan) return plan;
+    }
+    const preview = this.previewStudioStudyPlan(user, {
+      studentId: command.studentId,
+      subject: command.subject,
+      title: command.title,
+      goal: command.goal,
+      targetDate: command.targetDate,
+      firstSessionAt: command.firstSessionAt,
+      minutesPerDay: command.minutesPerDay,
+    });
+    if (preview.fingerprint !== command.fingerprint) throw new ConflictException('学习计划已变化，请重新预览并确认');
+    const now = new Date().toISOString(), id = this.store.nextId('studio_plan');
+    const { warnings: _warnings, evidence: _evidence, ...storedPreview } = preview;
+    const plan: StudioStudyPlan = { ...storedPreview, id, revision: 1, createdAt: now, updatedAt: now,
+      sessions: preview.sessions.map(session => ({ ...session, calendarEventId: `${id}:${session.id}` })) };
+    this.store.append('studioStudyPlans', plan);
+    for (const session of plan.sessions) this.store.append('studioScheduleEvents', { id: session.calendarEventId,
+      connectorId: 'studyagent', studentId: plan.studentId, subject: plan.subject, title: session.title,
+      description: `${session.objective}\n完成标准：${session.successCriterion}`, startsAt: session.startsAt, endsAt: session.endsAt,
+      allDay: false, externalUid: `studyagent:plan:${id}:${session.id}`, source: 'studyagent' as const,
+      createdAt: now, planId: id, planSessionId: session.id, status: session.status });
+    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: plan.studentId,
+      subject: plan.subject, kind: 'plan', title: `创建学习计划「${plan.title}」`, detail: `${plan.sessions.length} 个任务 · 至 ${plan.targetDate}`,
+      href: '/studio?view=calendar', at: now, status: 'opened', requestKey: command.requestKey, referenceId: id });
+    return plan;
+  }
+
+  updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown) {
+    const plan = this.store.find('studioStudyPlans', { id: planId });
+    if (!plan) throw new NotFoundException('学习计划不存在');
+    this.students.assertCanAccessStudent(user, plan.studentId);
+    const command = validate(z.object({ action: z.enum(['complete', 'skip', 'reopen']), expectedRevision: z.number().int().positive(),
+      requestKey: z.string().min(8).max(180) }).strict(), input);
+    const session = plan.sessions.find(row => row.id === sessionId); if (!session) throw new NotFoundException('计划任务不存在');
+    const previous = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (previous) return plan;
+    if (plan.revision !== command.expectedRevision) throw new ConflictException('计划已更新，请刷新后再操作');
+    const status = command.action === 'complete' ? 'completed' : command.action === 'skip' ? 'skipped' : 'scheduled';
+    session.status = status; const event = this.store.find('studioScheduleEvents', { id: session.calendarEventId });
+    if (event) event.status = status;
+    if (command.action === 'complete' && !plan.sessions.some(row => row.reviewForSessionId)) {
+      const nowAt = Date.now(), atom = this.store.find('knowledgeAtoms', { id: session.atomIds[0] });
+      const offsets = [1, 3, 7, 14] as const;
+      for (const offset of offsets) {
+        const starts = new Date(nowAt + offset * 86_400_000), ends = new Date(starts.getTime() + plan.minutesPerDay * 60_000);
+        const id = 'plan-review:' + session.index + ':' + offset;
+        plan.sessions.push({ id, index: plan.sessions.length + 1, title: 'D+' + offset + ' 延迟复测：' + (atom?.name ?? session.atomIds[0]),
+          kind: 'review', atomIds: [...session.atomIds], objective: atom?.objective ?? session.objective,
+          successCriterion: '用未见过的新题独立完成，记录提示、错误步骤与迁移表现；查看原题或讲解不计为掌握。',
+          startsAt: starts.toISOString(), endsAt: ends.toISOString(), status: 'scheduled',
+          calendarEventId: plan.id + ':' + id, evidenceBasis: '以“' + session.title + '”实际完成时间安排 D+' + offset + '，等待独立新题证据',
+          reviewForSessionId: session.id, reviewOffsetDays: offset });
+      }
+      for (const review of plan.sessions.filter(row => row.reviewForSessionId === session.id)) {
+        this.store.append('studioScheduleEvents', { id: review.calendarEventId, connectorId: 'studyagent', studentId: plan.studentId,
+          subject: plan.subject, title: review.title, description: review.objective + '\n完成标准：' + review.successCriterion,
+          startsAt: review.startsAt, endsAt: review.endsAt, allDay: false,
+          externalUid: 'studyagent:plan:' + plan.id + ':' + review.id, source: 'studyagent', createdAt: new Date().toISOString(),
+          planId: plan.id, planSessionId: review.id, status: review.status });
+      }
+    }
+    plan.status = plan.sessions.every(row => row.status === 'completed' || row.status === 'skipped') ? 'completed' : 'active';
+    plan.revision += 1; plan.updatedAt = new Date().toISOString();
+    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: plan.studentId, subject: plan.subject,
+      kind: 'plan', title: `${status === 'completed' ? '完成' : status === 'skipped' ? '跳过' : '重新打开'}「${session.title}」`,
+      detail: `${plan.title} · 任务 ${session.index}`, href: '/studio?view=calendar', at: new Date().toISOString(),
+      status: status === 'completed' ? 'complete' : 'opened', requestKey: command.requestKey, referenceId: plan.id });
+    return plan;
   }
 
   previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {
@@ -113,6 +242,151 @@ export class LearningService {
     this.store.append('studioWhiteboards', whiteboard); this.store.append('studioActivities', activity);
     this.events.publish('studio.whiteboard_created', { whiteboardId: whiteboard.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
     return whiteboard;
+  }
+
+  async uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined,
+    input: { studentId?: string; subject?: string; requestKey?: string }) {
+    if (!file || !Buffer.isBuffer(file.buffer) || file.size <= 0) throw new BadRequestException('请选择 PDF 文件');
+    if (file.size > 10 * 1024 * 1024) throw new BadRequestException('PDF 不能超过 10MB');
+    if (file.mimetype !== 'application/pdf' || file.buffer.subarray(0, 5).toString('ascii') !== '%PDF-') throw new BadRequestException('只接受有效的 PDF 文件');
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      requestKey: z.string().min(8).max(180) }).strict(), input);
+    this.students.assertCanAccessStudent(user, command.studentId);
+    const sha256 = createHash('sha256').update(file.buffer).digest('hex');
+    const duplicate = this.store.select('studioSourceMaterials', { studentId: command.studentId, subject: command.subject })
+      .find(row => row.sha256 === sha256);
+    if (duplicate) {
+      await persistStudioMaterial(sha256, file.buffer);
+      const { requestKey: _requestKey, pageImages: _pageImages, ...safe } = duplicate as StudioSourceMaterial & {
+        requestKey?: string; pageImages?: Record<string, string>; };
+      return { ...safe, hasPageImages: Boolean(Object.keys(_pageImages ?? {}).length) };
+    }
+    let parsed: Awaited<ReturnType<PDFParse['getText']>>;
+    let screenshots: Awaited<ReturnType<PDFParse['getScreenshot']>> | null = null;
+    const parser = new PDFParse({ data: file.buffer });
+    try {
+      parsed = await parser.getText({ first: 30 });
+      screenshots = await parser.getScreenshot({ first: 30, desiredWidth: 1100 }).catch(() => null);
+    }
+    catch { throw new BadRequestException('PDF 无法解析；若为纯扫描页，请先完成文字识别'); }
+    finally { await parser.destroy().catch(() => undefined); }
+    const pages = parsed.pages.map(page => ({ page: page.num,
+      text: page.text.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 8000) }))
+      .filter(page => page.text.length > 20);
+    if (!pages.length) throw new BadRequestException('PDF 中没有可读文本；纯图片页请先完成 OCR');
+    const pageImages = Object.fromEntries((screenshots?.pages ?? []).map(page => [String(page.pageNumber), page.dataUrl]));
+    const originalName = uploadFilename(file.originalname);
+    await persistStudioMaterial(sha256, file.buffer);
+    const material: StudioSourceMaterial & { requestKey: string; pageImages: Record<string, string> } = { id: this.store.nextId('studio_material'),
+      studentId: command.studentId, subject: command.subject, filename: originalName.replace(/[\\/]/g, '').slice(0, 255),
+      title: originalName.replace(/\.[^.]+$/, '').replace(/[\\/]/g, '').slice(0, 180) || '课程材料',
+      pageCount: parsed.total, pages, sha256, byteSize: file.size, hasPageImages: Object.keys(pageImages).length > 0,
+      createdAt: new Date().toISOString(), requestKey: command.requestKey, pageImages };
+    this.store.append('studioSourceMaterials', material);
+    const { requestKey: _requestKey, pageImages: _pageImages, ...safe } = material; return safe;
+  }
+
+  studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number) {
+    const material = this.store.find('studioSourceMaterials', { id: materialId }) as (StudioSourceMaterial & {
+      pageImages?: Record<string, string>; }) | undefined;
+    if (!material) throw new NotFoundException('PDF 材料不存在');
+    this.students.assertCanAccessStudent(user, material.studentId);
+    if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > material.pageCount) throw new BadRequestException('页码无效');
+    const dataUrl = material.pageImages?.[String(pageNumber)];
+    if (!dataUrl?.startsWith('data:image/png;base64,')) throw new NotFoundException('这一页没有可用的原页预览');
+    return new StreamableFile(Buffer.from(dataUrl.slice('data:image/png;base64,'.length), 'base64'), {
+      type: 'image/png', disposition: 'inline' });
+  }
+
+  async studioPdfOriginal(user: InMemoryUserAccount, materialId: string) {
+    const material = this.store.find('studioSourceMaterials', { id: materialId });
+    if (!material) throw new NotFoundException('PDF 材料不存在');
+    this.students.assertCanAccessStudent(user, material.studentId);
+    try {
+      const bytes = await readFile(studioMaterialFile(material.sha256));
+      return new StreamableFile(bytes, { type: 'application/pdf', length: bytes.length,
+        disposition: 'attachment; filename="study-material-' + material.sha256.slice(0, 12) + '.pdf"' });
+    } catch {
+      throw new NotFoundException('原始 PDF 文件不可用；材料文字层与页级白板仍已保留');
+    }
+  }
+
+  previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ materialId: z.string().min(1).max(180), atomId: z.string().min(1).max(180).optional() }).strict(), input);
+    const material = this.store.find('studioSourceMaterials', { id: command.materialId });
+    if (!material) throw new NotFoundException('PDF 材料不存在');
+    this.students.assertCanAccessStudent(user, material.studentId);
+    const { atoms } = this.studioScope(user, material.studentId, material.subject);
+    const atom = command.atomId ? atoms.find(item => item.id === command.atomId) : atoms.find(item => item.teaching) ?? atoms[0];
+    if (command.atomId && !atom) throw new BadRequestException('页级白板只能使用当前范围内已发布知识点');
+    try { return buildPdfWhiteboard({ id: 'studio_pdf_whiteboard_preview', material, atom }); }
+    catch (error) { throw new BadRequestException(error instanceof Error ? error.message : 'PDF 白板生成失败'); }
+  }
+
+  createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ materialId: z.string().min(1).max(180), atomId: z.string().min(1).max(180).optional(),
+      fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const material = this.store.find('studioSourceMaterials', { id: command.materialId });
+    if (!material) throw new NotFoundException('PDF 材料不存在');
+    this.students.assertCanAccessStudent(user, material.studentId);
+    const existing = this.store.find('studioWhiteboards', { studentId: material.studentId, sourceMaterialId: material.id });
+    if (existing?.fingerprint === command.fingerprint) return existing;
+    const preview = this.previewStudioPdfWhiteboard(user, { materialId: command.materialId, atomId: command.atomId });
+    if (preview.fingerprint !== command.fingerprint) throw new ConflictException('页级白板已变化，请重新预览');
+    const board: StudioWhiteboard = { ...preview, id: this.store.nextId('studio_whiteboard'),
+      createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    this.store.append('studioWhiteboards', board);
+    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
+      subject: material.subject, kind: 'lesson_started', title: `页级白板「${board.title}」`,
+      detail: `${material.pageCount} 页材料 · ${board.scenes.length} 幕`, href: `/studio?whiteboard=${board.id}`,
+      at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey });
+    return board;
+  }
+
+  previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      title: z.string().trim().min(3).max(180).optional(), focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(4).optional(),
+      sourceMaterialId: z.string().min(1).max(180).optional() }).strict(), input);
+    const { atoms } = this.studioScope(user, command.studentId, command.subject);
+    const profile = this.diagnostics.profile(user, command.studentId, command.subject);
+    const material = command.sourceMaterialId ? this.store.find('studioSourceMaterials', { id: command.sourceMaterialId }) : undefined;
+    if (command.sourceMaterialId && (!material || material.studentId !== command.studentId || material.subject !== command.subject))
+      throw new NotFoundException('PDF 材料不存在或不属于当前学习档案');
+    if (command.focusAtomIds?.some(id => !atoms.some(atom => atom.id === id)))
+      throw new BadRequestException('个性化学案只能使用当前确认范围内的知识点');
+    try {
+      return buildStudioLearningPack({ id: 'studio_pack_preview', studentId: command.studentId, subject: command.subject,
+        title: command.title, atoms, estimates: profile.estimates, focusAtomIds: command.focusAtomIds, material });
+    } catch (error) {
+      throw new BadRequestException(error instanceof Error ? error.message : '个性化学案生成失败');
+    }
+  }
+
+  createStudioLearningPack(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+      title: z.string().trim().min(3).max(180).optional(), focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(4).optional(),
+      sourceMaterialId: z.string().min(1).max(180).optional(), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+      requestKey: z.string().min(8).max(180) }).strict(), input);
+    this.students.assertCanAccessStudent(user, command.studentId);
+    const previous = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (previous?.referenceId) {
+      const saved = this.store.find('studioLearningPacks', { id: previous.referenceId });
+      if (saved) return saved;
+    }
+    const preview = this.previewStudioLearningPack(user, { studentId: command.studentId, subject: command.subject,
+      title: command.title, focusAtomIds: command.focusAtomIds, sourceMaterialId: command.sourceMaterialId });
+    if (preview.fingerprint !== command.fingerprint) throw new ConflictException('个性化学案内容已变化，请重新预览');
+    const existing = this.store.select('studioLearningPacks', { studentId: command.studentId, subject: command.subject })
+      .find(row => row.fingerprint === command.fingerprint);
+    if (existing) return existing;
+    const now = new Date().toISOString(), { warnings: _warnings, ...stored } = preview;
+    const pack: StudioLearningPack = { ...stored, id: this.store.nextId('studio_pack'), createdAt: now, updatedAt: now };
+    this.store.append('studioLearningPacks', pack);
+    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: pack.studentId,
+      subject: pack.subject, kind: 'material', title: '生成个性化学案「' + pack.title + '」',
+      detail: pack.sections.length + ' 个学习段落 · ' + pack.flashcards.length + ' 张闪卡',
+      href: '/studio?view=materials&tab=packs', at: now, status: 'opened', requestKey: command.requestKey, referenceId: pack.id });
+    return pack;
   }
 
   async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown) {

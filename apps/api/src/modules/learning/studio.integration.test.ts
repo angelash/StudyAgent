@@ -67,6 +67,24 @@ describe('whiteboard video and LMS calendar integrations', () => {
       'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
   }
 
+  function textPdf() {
+    const stream = 'BT /F1 18 Tf 72 700 Td (Fraction addition review sheet) Tj 0 -28 Td ' +
+      '(First unify the unit. Then combine equal parts and check the result.) Tj ET';
+    const objects = [
+      '<< /Type /Catalog /Pages 2 0 R >>',
+      '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+      '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+      '<< /Length ' + Buffer.byteLength(stream) + ' >>\nstream\n' + stream + '\nendstream',
+    ];
+    let body = '%PDF-1.4\n', offsets: number[] = [0];
+    objects.forEach((object, index) => { offsets.push(Buffer.byteLength(body)); body += (index + 1) + ' 0 obj\n' + object + '\nendobj\n'; });
+    const xref = Buffer.byteLength(body); body += 'xref\n0 ' + (objects.length + 1) + '\n0000000000 65535 f \n';
+    offsets.slice(1).forEach(offset => { body += String(offset).padStart(10, '0') + ' 00000 n \n'; });
+    body += 'trailer\n<< /Size ' + (objects.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF\n';
+    return Buffer.from(body, 'ascii');
+  }
+
   it('previews, saves and reads a uniquely grounded whiteboard with student access', async () => {
     const preview = await call('post', '/learning/studio/whiteboards/preview',
       { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
@@ -91,6 +109,92 @@ describe('whiteboard video and LMS calendar integrations', () => {
       .set('Authorization', 'Bearer ' + learner.token).expect(503);
     await call('post', '/learning/studio/whiteboards/preview',
       { studentId: 'child', subject: 'math', prompt: '越权白板', atomId: 'fraction-add' }, other, 403);
+  });
+
+  it('previews, persists and executes an evidence-driven plan with delayed reviews', async () => {
+    const command = { studentId: 'child', subject: 'math', goal: '先用新题核对分数单位，再完成迁移与延迟检查',
+      targetDate: '2099-01-08', firstSessionAt: '2099-01-05T10:00:00.000Z', minutesPerDay: 20 };
+    const preview = await call('post', '/learning/studio/study-plans/preview', command);
+    expect(preview.sessions.length).toBeGreaterThanOrEqual(3);
+    expect(preview.evidence[0]).toMatchObject({ atomId: 'fraction-add' });
+    expect(preview.warnings.join(' ')).toContain('计划完成只表示');
+    const create = { ...command, fingerprint: preview.fingerprint, requestKey: randomUUID() };
+    const plan = await call('post', '/learning/studio/study-plans', create);
+    const replay = await call('post', '/learning/studio/study-plans', create);
+    expect(replay.id).toBe(plan.id);
+    expect(store.studioStudyPlans).toHaveLength(1);
+    expect(store.studioScheduleEvents).toHaveLength(plan.sessions.length);
+    await call('post', '/learning/studio/study-plans', { ...create, requestKey: randomUUID() }, learner, 403);
+    const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math');
+    expect(overview.plans[0].id).toBe(plan.id);
+    await call('post', '/learning/studio/calendar/events/' + plan.sessions[0].calendarEventId + '/remove', {}, parent, 409);
+    const completed = await call('post', '/learning/studio/study-plans/' + plan.id + '/sessions/' + plan.sessions[0].id,
+      { action: 'complete', expectedRevision: plan.revision, requestKey: randomUUID() });
+    expect(completed.revision).toBe(2);
+    expect(completed.sessions.filter((row: any) => row.reviewForSessionId === plan.sessions[0].id)
+      .map((row: any) => row.reviewOffsetDays)).toEqual([1, 3, 7, 14]);
+    await call('post', '/learning/studio/study-plans/' + plan.id + '/sessions/' + plan.sessions[1].id,
+      { action: 'skip', expectedRevision: 1, requestKey: randomUUID() }, parent, 409);
+    const learnerUpdated = await call('post', '/learning/studio/study-plans/' + plan.id + '/sessions/' + plan.sessions[1].id,
+      { action: 'complete', expectedRevision: 2, requestKey: randomUUID() }, learner);
+    expect(learnerUpdated.sessions[1].status).toBe('completed');
+  });
+
+  it('renders, saves and grounds page-level whiteboards from an uploaded PDF', async () => {
+    const pdf = textPdf();
+    const response = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
+      .set('Authorization', 'Bearer ' + parent.token).field('studentId', 'child').field('subject', 'math')
+      .field('requestKey', randomUUID()).attach('file', pdf, { filename: '分数讲义.pdf', contentType: 'application/pdf' }).expect(201);
+    const material = response.body.data;
+    expect(material).toMatchObject({ pageCount: 1, hasPageImages: true, filename: '分数讲义.pdf', title: '分数讲义' });
+    expect(material.pages[0].text).toContain('Fraction addition review');
+    expect(material).not.toHaveProperty('pageImages');
+    const duplicate = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
+      .set('Authorization', 'Bearer ' + parent.token).field('studentId', 'child').field('subject', 'math')
+      .field('requestKey', randomUUID()).attach('file', pdf, { filename: '重复讲义.pdf', contentType: 'application/pdf' }).expect(201);
+    expect(duplicate.body.data.id).toBe(material.id);
+    expect(duplicate.body.data).not.toHaveProperty('pageImages');
+    expect(duplicate.body.data).not.toHaveProperty('requestKey');
+    expect(store.studioSourceMaterials).toHaveLength(1);
+    await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
+      .set('Authorization', 'Bearer ' + other.token).field('studentId', 'child').field('subject', 'math')
+      .field('requestKey', randomUUID()).attach('file', Buffer.from('%PDF-1.4\ninvalid'), 'bad.pdf').expect(403);
+    const image = await request(app.getHttpServer()).get('/api/learning/studio/materials/' + material.id + '/pages/1')
+      .set('Authorization', 'Bearer ' + learner.token).expect(200);
+    expect(image.headers['content-type']).toContain('image/png');
+    expect(Number(image.headers['content-length'])).toBeGreaterThan(1000);
+    const original = await request(app.getHttpServer()).get('/api/learning/studio/materials/' + material.id + '/original')
+      .set('Authorization', 'Bearer ' + learner.token).expect(200);
+    expect(original.headers['content-type']).toContain('application/pdf');
+    expect(original.headers['content-disposition']).toContain('attachment');
+    expect(Buffer.from(original.body).subarray(0, 5).toString('ascii')).toBe('%PDF-');
+    const preview = await call('post', '/learning/studio/materials/' + material.id + '/whiteboard/preview',
+      { atomId: 'fraction-add' }, learner);
+    expect(preview.scenes.filter((scene: any) => scene.kind === 'pdf_page')).toEqual([
+      expect.objectContaining({ title: '第 1 页', source: expect.objectContaining({ page: 1, materialId: material.id }) }),
+    ]);
+    const board = await call('post', '/learning/studio/materials/' + material.id + '/whiteboard',
+      { atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() }, learner);
+    expect(board.sourceMaterialId).toBe(material.id);
+    const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
+    expect(overview.materials[0]).toMatchObject({ id: material.id, hasPageImages: true });
+    expect(overview.materials[0]).not.toHaveProperty('pageImages');
+    await call('post', '/learning/studio/materials/' + material.id + '/whiteboard/preview', { atomId: 'fraction-add' }, other, 403);
+    const packPreview = await call('post', '/learning/studio/study-packs/preview',
+      { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'], sourceMaterialId: material.id }, learner);
+    expect(packPreview).toMatchObject({ atomIds: ['fraction-add'], sourceMaterialId: material.id });
+    expect(packPreview.sections).toHaveLength(4);
+    expect(packPreview.flashcards).toHaveLength(3);
+    expect(packPreview.sections[0].citations[0]).toMatchObject({ atomId: 'fraction-add', page: 1 });
+    const packCommand = { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'], sourceMaterialId: material.id,
+      fingerprint: packPreview.fingerprint, requestKey: randomUUID() };
+    const pack = await call('post', '/learning/studio/study-packs', packCommand, learner);
+    const packReplay = await call('post', '/learning/studio/study-packs', packCommand, learner);
+    expect(packReplay.id).toBe(pack.id);
+    const packOverview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
+    expect(packOverview.studyPacks[0]).toMatchObject({ id: pack.id, reviewDays: [1, 3, 7, 14] });
+    await call('post', '/learning/studio/study-packs/preview',
+      { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'] }, other, 403);
   });
 
   it('keeps connector creation idempotent, isolated, revocable and student read-only', async () => {

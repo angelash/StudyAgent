@@ -20,7 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
-    /^learning\/studio\/overview$/,
+    /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
     /^learning\/studio\/calendar\/export$/,
     /^gesp\/students\/[^/]+\/workspace$/,
     /^learning\/students\/[^/]+\/notebook(\/[^/]+\/[^/]+)?$/,
@@ -36,6 +36,9 @@ const learningRoutes: Record<string, RegExp[]> = {
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,
+    /^learning\/studio\/materials\/pdf$/, /^learning\/studio\/materials\/[^/]+\/whiteboard(\/preview)?$/,
+    /^learning\/studio\/study-packs(\/preview)?$/,
+    /^learning\/studio\/study-plans\/preview$/, /^learning\/studio\/study-plans\/[^/]+\/sessions\/[^/]+$/,
     /^learning\/students\/[^/]+\/notebook\/[^/]+\/[^/]+\/(organize|redo|verification)$/,
     /^diagnostics\/blueprints(\/[^/]+\/start)?$/,
     /^diagnostics\/sessions\/[^/]+\/state$/,

@@ -147,6 +147,7 @@ export class StudioIntegrationService {
     const event = this.store.find('studioScheduleEvents', { id, source: 'studyagent' });
     if (!event) throw new NotFoundException('学习安排不存在或不是 StudyAgent 任务');
     this.students.assertGuardian(user, event.studentId);
+    if (event.planId) throw new ConflictException('这是学习计划任务，请在计划中使用完成、跳过或重新打开');
     this.store.remove('studioScheduleEvents', { id }); return { removed: true, id };
   }
 
