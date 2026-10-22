@@ -98,6 +98,35 @@ export type StudioStudyPlanPreview = StudioStudyPlan & {
   evidence: Array<{ atomId: string; atomName: string; status: MasteryEstimate['status']; reason: string }>;
 };
 
+export type StudioPdfBBox = [number, number, number, number];
+
+export type StudioPdfStructureBlock =
+  | { id: string; kind: 'paragraph'; text: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean }
+  | { id: string; kind: 'formula'; latex: string; plainText: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean }
+  | { id: string; kind: 'table'; headers: string[]; rows: string[][]; plainText: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean };
+
+export type StudioSourcePage = {
+  page: number;
+  text: string;
+  method?: 'pdf_text' | 'ocr' | 'hybrid' | 'unreadable';
+  confidence?: number | null;
+  blocks?: StudioPdfStructureBlock[];
+  warnings?: string[];
+};
+
+export type StudioMaterialStructure = {
+  method: 'native_text' | 'ocr' | 'hybrid' | 'unreadable';
+  ocrPageCount: number;
+  tableCount: number;
+  formulaCount: number;
+  confidence: number | null;
+  reviewRequired: boolean;
+  modelAssisted: boolean;
+  modelSource: 'xiaojiu_cli' | 'local_fallback' | null;
+  reviewedAt?: string;
+  warnings: string[];
+};
+
 export type StudioSourceMaterial = {
   id: string;
   studentId: string;
@@ -105,11 +134,16 @@ export type StudioSourceMaterial = {
   filename: string;
   title: string;
   pageCount: number;
-  pages: Array<{ page: number; text: string }>;
+  pages: StudioSourcePage[];
   sha256: string;
   byteSize: number;
   hasPageImages?: boolean;
+  status?: 'queued' | 'processing' | 'ready' | 'needs_review' | 'failed';
+  structure?: StudioMaterialStructure;
+  processingTaskId?: string;
+  error?: string | null;
   createdAt: string;
+  updatedAt?: string;
 };
 
 export type StudioLearningCitation = {

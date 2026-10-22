@@ -14,6 +14,7 @@ const environment = {
   OPENAI_API_KEY: '',
   MINIMAX_API_KEY: '',
   CODEX_MODEL: '',
+  STUDY_PDF_STRUCTURE_MODEL: 'false',
   NEXT_PUBLIC_API_BASE_URL: `http://localhost:${apiPort}`,
   E2E_API_PORT: apiPort,
   E2E_WEB_PORT: webPort,

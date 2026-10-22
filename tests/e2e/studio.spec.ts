@@ -9,7 +9,7 @@ function writeTextPdf() {
   const directory = mkdtempSync(join(tmpdir(), 'studio-browser-pdf-'));
   const path = join(directory, '分数讲义.pdf');
   const stream = 'BT /F1 20 Tf 72 700 Td (Fractions: unify the unit, combine equal parts,) Tj 0 -30 Td ' +
-    '(then check the result with another representation.) Tj ET';
+    '(then check the result with another representation.) Tj 0 -30 Td (1/2 + 1/3 = 5/6) Tj ET';
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
     '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
@@ -118,6 +118,13 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.locator('input[type=file]').setInputFiles(pdf.path);
   await expect(page.getByText('分数讲义', { exact: true }).first()).toBeVisible({ timeout: 30_000 });
   await expect(page.locator('.sa-pdf-paper img')).toBeVisible({ timeout: 30_000 });
+  await page.getByRole('button', { name: '结构恢复' }).click();
+  await expect(page.getByText('公式结构', { exact: true })).toBeVisible();
+  await expect(page.getByText(/候选 LaTeX/)).toBeVisible();
+  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-pdf-structure-review.png', fullPage: true });
+  await page.getByRole('button', { name: '已对照原页确认结构' }).click();
+  await expect(page.getByText('结构已恢复')).toBeVisible();
+  await page.getByRole('button', { name: '原版页面' }).click();
   const originalDownload = page.waitForEvent('download');
   await page.getByRole('button', { name: '下载原文件' }).click();
   expect((await originalDownload).suggestedFilename()).toMatch(/\.pdf$/);

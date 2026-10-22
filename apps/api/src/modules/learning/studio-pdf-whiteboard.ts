@@ -13,8 +13,15 @@ export function buildPdfWhiteboard(input: { id: string; material: StudioSourceMa
     narration: '现在开始逐页讲解《' + input.material.title + '》。先看材料怎样呈现，再联系' + (input.atom?.name ?? '当前知识点') + '。', durationMs: 3600 }];
   for (const page of pages) {
     const text = excerpt(page.text, 760);
-    scenes.push({ kind: 'pdf_page', title: '第 ' + page.page + ' 页', body: text,
-      narration: '第 ' + page.page + ' 页写道：' + excerpt(text, 260) + '。请先找出条件和目标，再判断这一步与' + (input.atom?.name ?? '当前知识点') + '的关系。',
+    const tables = page.blocks?.filter(block => block.kind === 'table') ?? [];
+    const formulas = page.blocks?.filter(block => block.kind === 'formula') ?? [];
+    const structureNote = [tables.length ? tables.length + ' 个表格' : '', formulas.length ? formulas.length + ' 个公式' : '']
+      .filter(Boolean).join('、');
+    const body = text + (structureNote ? '\n\n结构恢复候选：' + structureNote + '。请对照原页核对。' : '');
+    scenes.push({ kind: 'pdf_page', title: '第 ' + page.page + ' 页', body,
+      narration: '第 ' + page.page + ' 页写道：' + excerpt(text, 260) +
+        (structureNote ? '。原页还恢复了' + structureNote + '，请先核对行列和符号。' : '') +
+        '请找出条件和目标，再判断这一步与' + (input.atom?.name ?? '当前知识点') + '的关系。',
       source: { materialId: input.material.id, page: page.page, label: input.material.title + ' · 第 ' + page.page + ' 页' }, durationMs: 5600 });
   }
   scenes.push({ kind: 'check', title: '用自己的话核对', body: input.atom?.successCriterion ?? '关掉材料，说出本页最关键的条件、步骤和结果。',

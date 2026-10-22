@@ -10,8 +10,12 @@ import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-pa
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { ImportFilesService } from './import-files.service';
 import { QuestionImportService } from '../question-workspace/question-import.service';
+import { CodexPdfStructureService } from '../ai/codex-pdf-structure.service';
+import { mergeStudioPdfPages, RawStudioPdfPage } from '../learning/studio-pdf-structure';
+import { studioMaterialCache, studioMaterialFile } from '../learning/studio-material-storage';
+import type { StudioSourceMaterial } from '@study-agent/contracts';
 
-const kinds = ['question.pdf.import', 'image.handwriting.preview', 'question.local_explain'];
+const kinds = ['question.pdf.import', 'image.handwriting.preview', 'question.local_explain', 'studio.material.process'];
 class ProcessingError extends Error { constructor(readonly code: string, readonly retryable = false) { super(code); } }
 
 @Injectable()
@@ -22,7 +26,8 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
   private stopping = false;
   private readonly logger = new Logger(ProcessingWorkerService.name);
   constructor(private readonly store: InMemoryStoreService, private readonly files: ImportFilesService,
-    private readonly imports: QuestionImportService, private readonly events: DomainEventBusService) {}
+    private readonly imports: QuestionImportService, private readonly events: DomainEventBusService,
+    private readonly codexPdf: CodexPdfStructureService) {}
 
   onApplicationBootstrap() {
     if (process.env.STUDY_WORKER_ENABLED === 'false' || !this.store.persistence.durable) return;
@@ -51,7 +56,11 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
         try {
           await this.store.transaction(() => {
             const owner = this.store.find('users', { id: task.ownerUserId });
-            if (!owner || owner.status !== 'active' || owner.role !== 'admin') throw new ProcessingError('author_permission_changed');
+            const ownerActive = owner?.status === 'active';
+            const studioAccess = task.kind === 'studio.material.process' && ownerActive && this.canAccessStudioMaterial(
+              owner!, String(task.payload.materialId ?? ''));
+            if (!ownerActive || (task.kind === 'studio.material.process' ? !studioAccess : owner!.role !== 'admin'))
+              throw new ProcessingError('author_permission_changed');
             publish.apply();
             this.events.publish('processing.task_completed', { taskId: task.id, kind: task.kind, actorId: owner.id, result: publish.result });
           }, { id: task.id, token: task.leaseToken!, result: publish.result });
@@ -70,6 +79,52 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
 
   private async prepare(task: TaskRow, signal: AbortSignal, progress: (data: Record<string, unknown>) => void): Promise<{ apply: () => void; result: Record<string, unknown> }> {
     const runRoot = this.files.withinRoot(`runs/${task.id}/${task.leaseToken}`); await fs.mkdir(runRoot, { recursive: true });
+    if (task.kind === 'studio.material.process') {
+      const materialId = String(task.payload.materialId ?? '');
+      let material = await this.store.transaction(() => structuredClone(
+        this.store.find('studioSourceMaterials', { id: materialId })));
+      for (let attempt = 0; !material && attempt < 4; attempt += 1) {
+        await new Promise(resolve => setTimeout(resolve, 75));
+        material = await this.store.transaction(() => structuredClone(
+          this.store.find('studioSourceMaterials', { id: materialId })));
+      }
+      if (!material) throw new ProcessingError('missing_studio_material');
+      const output = resolve(runRoot, 'studio-pdf-structure.json');
+      try {
+        const raw = await this.process({ mode: 'pdf_structure', input: studioMaterialFile(material.sha256),
+          sha256: material.sha256, cache: studioMaterialCache(material.sha256), output }, runRoot, 'studio-pdf', signal, progress);
+        if (!Array.isArray(raw.pages) || !raw.pages.length) throw new ProcessingError('invalid_processor_output');
+        const rawPages = raw.pages as RawStudioPdfPage[];
+        let modeled = null;
+        const needsModelReview = rawPages.some(page => page.method === 'ocr' || page.method === 'hybrid' ||
+          page.tables.length > 0 || page.formulas.length > 0);
+        const modelEnabled = needsModelReview && process.env.STUDY_PDF_STRUCTURE_MODEL !== 'false';
+        if (modelEnabled) {
+          try {
+            modeled = await this.codexPdf.structure({ materialTitle: material.title,
+              pages: rawPages.map(page => ({ pageNumber: page.pageNumber, text: page.text, method: page.method,
+                lines: page.lines, imagePath: page.imagePath, warnings: page.warnings })) });
+          } catch (error) {
+            this.logger.warn('Studio PDF model structure review fell back to local extraction: ' +
+              (error instanceof Error ? error.message.slice(0, 160) : 'unavailable'));
+          }
+        }
+        const merged = mergeStudioPdfPages(rawPages, modeled, { modelAttempted: modelEnabled });
+        return { result: { materialId, pageCount: merged.pages.length, ocrPageCount: merged.structure.ocrPageCount,
+          tableCount: merged.structure.tableCount, formulaCount: merged.structure.formulaCount,
+          modelAssisted: merged.structure.modelAssisted }, apply: () => {
+            const current = this.store.find('studioSourceMaterials', { id: materialId });
+            if (!current || current.sha256 !== material.sha256) throw new ProcessingError('studio_material_changed');
+            const target = current as StudioSourceMaterial & { pageImages?: Record<string, string> };
+            target.pages = merged.pages; target.hasPageImages = merged.pages.length > 0;
+            target.status = merged.structure.reviewRequired ? 'needs_review' : 'ready';
+            target.structure = merged.structure; target.error = null; target.updatedAt = new Date().toISOString();
+          } };
+      } catch (error) {
+        await this.markStudioMaterialFailed(materialId, error);
+        throw error;
+      }
+    }
     if (task.kind === 'question.pdf.import') {
       const input = await this.store.transaction(async () => {
         const job = structuredClone(this.imports.requireJobForWorker(String(task.payload.jobId)));
@@ -175,6 +230,23 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     const hash = createHash('sha256').update(await fs.readFile(path)).digest('hex'); if (hash !== expected) throw new ProcessingError('artifact_checksum');
     const id = `artifact_${createHash('sha256').update(`${taskId}:${fileId}:${purpose}:${hash}`).digest('hex')}`;
     return { id, taskId, fileId, sha256: hash, relativePath, size: stat.size, mediaType: purpose === 'page' ? 'image/png' : 'image/jpeg', purpose, createdAt: new Date().toISOString() };
+  }
+  private canAccessStudioMaterial(owner: { id: string; role: string }, materialId: string) {
+    const material = this.store.find('studioSourceMaterials', { id: materialId });
+    if (!material) return false;
+    if (owner.role === 'admin') return true;
+    const student = this.store.find('students', { id: material.studentId });
+    return Boolean(student && (student.userId === owner.id || this.store.find('bindings', {
+      parentUserId: owner.id, studentId: material.studentId, status: 'active' })));
+  }
+  private async markStudioMaterialFailed(materialId: string, error: unknown) {
+    if (!materialId) return;
+    await this.store.transaction(() => {
+      const material = this.store.find('studioSourceMaterials', { id: materialId });
+      if (!material) return;
+      const code = error instanceof ProcessingError ? error.code : 'processing_failed';
+      material.status = 'failed'; material.error = code; material.updatedAt = new Date().toISOString();
+    }).catch(() => undefined);
   }
   private requireRecord(id: string): QuestionImportRecord { const record = this.store.find('questionImportRecords', { id: id }); if (!record) throw new ProcessingError('missing_candidate'); return record; }
 }

@@ -8,23 +8,26 @@
   },
   "api_tests": {
     "command": "npm test",
-    "test_files_passed": 81,
+    "test_files_passed": 83,
     "test_files_skipped": 1,
-    "tests_passed": 724,
+    "tests_passed": 729,
     "tests_skipped": 6,
-    "duration_seconds": 258.49,
+    "duration_seconds": 240.52,
     "passed": true
   },
   "browser_acceptance": {
     "command": "npm run test:e2e",
     "tests_passed": 6,
     "tests_failed": 0,
-    "duration_seconds": 57.0,
+    "duration_seconds": 58.3,
     "passed": true,
     "verified_flows": [
       "diagnostic multi-session plan preview and confirmed calendar write",
       "task completion and D+1/D+3/D+7/D+14 scheduling",
       "Chinese PDF filename upload and de-duplication",
+      "durable OCR processing for an image-only PDF",
+      "native table rows, columns and fraction formula recovery",
+      "page structure confirmation and failed processing retry",
       "PDF original page PNG rendering",
       "private original PDF download",
       "grounded learning pack generation and saved Materials card",
@@ -39,7 +42,7 @@
   },
   "quality_checks": {
     "npm_run_lint": "passed",
-    "qa_docs_checked": 228,
+    "qa_docs_checked": 232,
     "qa_docs_missing": 0,
     "npm_audit_vulnerabilities": 0
   },
@@ -48,12 +51,14 @@
     "studio-course-polished.png": 111790,
     "studio-whiteboard-preview.png": 139914,
     "studio-whiteboard-player.png": 140694,
-    "studio-calendar-polished.png": 396640,
-    "studio-materials-and-pack.png": 83711
+    "studio-calendar-polished.png": 396160,
+    "studio-materials-and-pack.png": 83711,
+    "studio-pdf-structure-review.png": 90619
   },
   "boundaries": [
-    "PDF text extraction is not OCR or semantic layout restoration.",
-    "Rendered pages and private original bytes are retained, but tables and formulas still require source-page review.",
+    "OCR, table and formula recovery produce reviewable extraction candidates rather than verified source facts.",
+    "Complex merged tables, handwriting, cross-page tables and advanced formula layout still require source-page review.",
+    "The xiaojiu CLI inherits current model settings, and model failure falls back to local extraction.",
     "Learning packs use approved teaching definitions and examples; they do not replace authored measurement items.",
     "Completing tasks, watching whiteboards or using flashcards does not directly change mastery.",
     "Only ICS compatibility is claimed; Canvas/Schoology native OAuth and two-way writeback remain out of scope."

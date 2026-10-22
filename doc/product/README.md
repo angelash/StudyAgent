@@ -24,6 +24,7 @@
 20. [自由白板视频与LMS日历同步](./82-whiteboard-lms-calendar-delivery.md)：逐幕白板、可选AI旁白音轨、字幕视频、学校ICS互通、监护权限与像素校准证据。
 21. [MiniMax语音迁移与当前目标审计](./83-live-avatar-speech-and-current-goal-audit.md)：复用live-avatar已验证TTS、真实语音调用、当前完成边界与下一阶段优先级。
 22. [诊断计划、PDF页级白板与个性化学案](./84-diagnostic-planner-pdf-and-study-pack-delivery.md)：薄弱点编排、D+1/3/7/14复测、原页与文字层核对、已审核学案/闪卡/微测和移动端验收。
+23. [PDF OCR、表格公式恢复与小九AI CLI](./85-pdf-ocr-structure-and-xiaojiu-cli.md)：durable后台任务、扫描页OCR、表格行列与KaTeX公式候选、当前CLI配置继承、人工核对和失败重试。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。

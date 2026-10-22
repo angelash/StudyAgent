@@ -1,4 +1,6 @@
-# Minimal native dependencies for deterministic PDF-text integration tests.
-# Production OCR/model dependencies remain in requirements.txt.
+# Native dependencies for PDF-text and scanned-page OCR integration tests.
 PyMuPDF>=1.24,<2
 Pillow>=10,<13
+rapidocr-onnxruntime>=1.3,<2
+onnxruntime>=1.18,<2
+numpy>=1.24,<3

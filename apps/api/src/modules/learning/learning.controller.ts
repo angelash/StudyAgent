@@ -43,6 +43,14 @@ export class LearningController {
   @Get('studio/materials/:id/original') studioPdfOriginal(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
     return this.learning.studioPdfOriginal(req.user, id);
   }
+  @Post('studio/materials/:id/structure/review') studioPdfStructureReview(@Req() req: AuthenticatedRequest,
+    @Param('id') id: string, @Body() input: unknown) {
+    return this.learning.reviewStudioPdfStructure(req.user, id, input);
+  }
+  @Post('studio/materials/:id/process/retry') studioPdfProcessRetry(@Req() req: AuthenticatedRequest,
+    @Param('id') id: string, @Body() input: unknown) {
+    return this.learning.retryStudioPdfProcessing(req.user, id, input);
+  }
   @Post('studio/materials/:id/whiteboard/preview') studioPdfWhiteboardPreview(@Req() req: AuthenticatedRequest,
     @Param('id') id: string, @Body() input: { atomId?: string }) { return this.learning.previewStudioPdfWhiteboard(req.user, { ...input, materialId: id }); }
   @Post('studio/materials/:id/whiteboard') studioPdfWhiteboardCreate(@Req() req: AuthenticatedRequest,

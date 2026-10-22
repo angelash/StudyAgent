@@ -37,6 +37,8 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,
     /^learning\/studio\/materials\/pdf$/, /^learning\/studio\/materials\/[^/]+\/whiteboard(\/preview)?$/,
+    /^learning\/studio\/materials\/[^/]+\/structure\/review$/,
+    /^learning\/studio\/materials\/[^/]+\/process\/retry$/,
     /^learning\/studio\/study-packs(\/preview)?$/,
     /^learning\/studio\/study-plans\/preview$/, /^learning\/studio\/study-plans\/[^/]+\/sessions\/[^/]+$/,
     /^learning\/students\/[^/]+\/notebook\/[^/]+\/[^/]+\/(organize|redo|verification)$/,

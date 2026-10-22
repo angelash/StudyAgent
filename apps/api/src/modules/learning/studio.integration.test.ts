@@ -3,28 +3,34 @@ import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import request from 'supertest';
 import { randomUUID } from 'node:crypto';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 describe('whiteboard video and LMS calendar integrations', () => {
-  let app: any, store: any, auth: any, parent: any, other: any, learner: any;
+  let app: any, store: any, auth: any, worker: any, parent: any, other: any, learner: any;
   const credential = 'studio-integration-secret', directory = mkdtempSync(join(tmpdir(), 'study-studio-'));
   const previousRoot = process.env.STUDY_DATA_DIR, previousKey = process.env.OPENAI_API_KEY;
   const previousMiniMaxKey = process.env.MINIMAX_API_KEY;
+  const previousStructureModel = process.env.STUDY_PDF_STRUCTURE_MODEL;
   beforeAll(async () => {
     process.env.STUDY_DATA_DIR = directory; delete process.env.OPENAI_API_KEY; delete process.env.MINIMAX_API_KEY;
+    process.env.STUDY_PDF_STRUCTURE_MODEL = 'false';
     const { AppModule } = require('../../../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     const { AuthService } = require('../../../dist/apps/api/src/modules/auth/auth.service.js');
+    const { ProcessingWorkerService } = require('../../../dist/apps/api/src/modules/processing/processing-worker.service.js');
     app = await NestFactory.create(AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init();
-    store = app.get(InMemoryStoreService); auth = app.get(AuthService);
+    store = app.get(InMemoryStoreService); auth = app.get(AuthService); worker = app.get(ProcessingWorkerService);
   });
   afterAll(async () => {
     await app?.close();
     if (previousRoot === undefined) delete process.env.STUDY_DATA_DIR; else process.env.STUDY_DATA_DIR = previousRoot;
     if (previousKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = previousKey;
     if (previousMiniMaxKey === undefined) delete process.env.MINIMAX_API_KEY; else process.env.MINIMAX_API_KEY = previousMiniMaxKey;
+    if (previousStructureModel === undefined) delete process.env.STUDY_PDF_STRUCTURE_MODEL;
+    else process.env.STUDY_PDF_STRUCTURE_MODEL = previousStructureModel;
     rmSync(directory, { recursive: true, force: true });
   });
   beforeEach(async () => {
@@ -83,6 +89,45 @@ describe('whiteboard video and LMS calendar integrations', () => {
     offsets.slice(1).forEach(offset => { body += String(offset).padStart(10, '0') + ' 00000 n \n'; });
     body += 'trailer\n<< /Size ' + (objects.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF\n';
     return Buffer.from(body, 'ascii');
+  }
+
+  function scannedPdf() {
+    const path = join(directory, 'scanned-page.pdf'), imagePath = join(directory, 'scan-source.png');
+    execFileSync(process.env.STUDY_PYTHON ?? (process.platform === 'win32' ? 'python' : 'python3'),
+      ['-X', 'utf8', '-c', 'from PIL import Image, ImageDraw; import fitz, sys; ' +
+        'img=Image.new("RGB",(1224,1584),"white"); draw=ImageDraw.Draw(img); ' +
+        'draw.text((100,120),"Fraction addition review",fill="black"); ' +
+        'draw.text((100,210),"First unify the unit, then combine equal parts.",fill="black"); ' +
+        'draw.text((100,300),"12 + 7 = 19",fill="black"); img.save(sys.argv[2]); ' +
+        'doc=fitz.open(); page=doc.new_page(width=612,height=792); page.insert_image(page.rect,filename=sys.argv[2]); ' +
+        'doc.save(sys.argv[1]); doc.close()', path, imagePath], { windowsHide: true, timeout: 30_000 });
+    return readFileSync(path);
+  }
+
+  function tablePdf() {
+    const path = join(directory, 'table-and-formula.pdf');
+    execFileSync(process.env.STUDY_PYTHON ?? (process.platform === 'win32' ? 'python' : 'python3'),
+      ['-X', 'utf8', '-c', 'import fitz, sys; doc=fitz.open(); page=doc.new_page(width=612,height=792); ' +
+        'xs=[72,240,408,540]; ys=[80,125,170]; ' +
+        '[page.draw_line((x,60),(x,190),color=(0,0,0),width=1) for x in xs]; ' +
+        '[page.draw_line((72,y),(540,y),color=(0,0,0),width=1) for y in [60,105,150,190]]; ' +
+        'values=[(82,84,"Name"),(250,84,"Score"),(418,84,"Check"),(82,130,"Ada"),(250,130,"95"),(418,130,"yes"),(82,176,"Lin"),(250,176,"88"),(418,176,"yes")]; ' +
+        '[page.insert_text((x,y),text,fontsize=12) for x,y,text in values]; ' +
+        'page.insert_text((72,260),"1/2 + 1/3 = 5/6",fontsize=16); doc.save(sys.argv[1]); doc.close()', path],
+      { windowsHide: true, timeout: 30_000 });
+    return readFileSync(path);
+  }
+
+  async function processedMaterial(id: string) {
+    for (let attempt = 0; attempt < 180; attempt += 1) {
+      await worker.runNext().catch(() => false);
+      const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math');
+      const material = overview.materials.find((row: any) => row.id === id);
+      if (material?.status === 'failed') throw new Error('PDF processing failed: ' + material.error);
+      if (material && ['ready', 'needs_review'].includes(material.status)) return material;
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    throw new Error('PDF processing did not finish');
   }
 
   it('previews, saves and reads a uniquely grounded whiteboard with student access', async () => {
@@ -145,8 +190,10 @@ describe('whiteboard video and LMS calendar integrations', () => {
     const response = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
       .set('Authorization', 'Bearer ' + parent.token).field('studentId', 'child').field('subject', 'math')
       .field('requestKey', randomUUID()).attach('file', pdf, { filename: '分数讲义.pdf', contentType: 'application/pdf' }).expect(201);
-    const material = response.body.data;
+    expect(response.body.data).toMatchObject({ pageCount: 1, status: 'queued', filename: '分数讲义.pdf', title: '分数讲义' });
+    const material = await processedMaterial(response.body.data.id);
     expect(material).toMatchObject({ pageCount: 1, hasPageImages: true, filename: '分数讲义.pdf', title: '分数讲义' });
+    expect(material.structure).toMatchObject({ modelAssisted: false, modelSource: null });
     expect(material.pages[0].text).toContain('Fraction addition review');
     expect(material).not.toHaveProperty('pageImages');
     const duplicate = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
@@ -179,6 +226,29 @@ describe('whiteboard video and LMS calendar integrations', () => {
     const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
     expect(overview.materials[0]).toMatchObject({ id: material.id, hasPageImages: true });
     expect(overview.materials[0]).not.toHaveProperty('pageImages');
+    const reviewed = await call('post', '/learning/studio/materials/' + material.id + '/structure/review',
+      { expectedUpdatedAt: material.updatedAt, requestKey: randomUUID() }, learner);
+    expect(reviewed).toMatchObject({ id: material.id, status: 'ready', structure: { reviewRequired: false } });
+    expect(reviewed.structure.reviewedAt).toBeTruthy();
+    await call('post', '/learning/studio/materials/' + material.id + '/structure/review',
+      { expectedUpdatedAt: material.updatedAt, requestKey: randomUUID() }, learner, 409);
+    await call('post', '/learning/studio/materials/' + material.id + '/structure/review',
+      { expectedUpdatedAt: reviewed.updatedAt, requestKey: randomUUID() }, other, 403);
+    const failed = store.find('studioSourceMaterials', { id: material.id });
+    Object.assign(failed, { status: 'failed', error: 'processor_dependency_missing', updatedAt: new Date().toISOString() });
+    await call('post', '/learning/studio/materials/' + material.id + '/process/retry',
+      { expectedUpdatedAt: failed.updatedAt, requestKey: randomUUID() }, other, 403);
+    const retried = await call('post', '/learning/studio/materials/' + material.id + '/process/retry',
+      { expectedUpdatedAt: failed.updatedAt, requestKey: randomUUID() }, learner);
+    expect(retried.status).toBe('queued');
+    expect((await processedMaterial(material.id)).status).toBe('ready');
+    const fallback = store.find('studioSourceMaterials', { id: material.id });
+    Object.assign(fallback.structure, { modelSource: 'local_fallback', modelAssisted: false });
+    Object.assign(fallback, { status: 'needs_review', updatedAt: new Date().toISOString() });
+    const modelRetried = await call('post', '/learning/studio/materials/' + material.id + '/process/retry',
+      { expectedUpdatedAt: fallback.updatedAt, requestKey: randomUUID() }, learner);
+    expect(modelRetried.status).toBe('queued');
+    expect((await processedMaterial(material.id)).status).toBe('ready');
     await call('post', '/learning/studio/materials/' + material.id + '/whiteboard/preview', { atomId: 'fraction-add' }, other, 403);
     const packPreview = await call('post', '/learning/studio/study-packs/preview',
       { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'], sourceMaterialId: material.id }, learner);
@@ -195,6 +265,38 @@ describe('whiteboard video and LMS calendar integrations', () => {
     expect(packOverview.studyPacks[0]).toMatchObject({ id: pack.id, reviewDays: [1, 3, 7, 14] });
     await call('post', '/learning/studio/study-packs/preview',
       { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'] }, other, 403);
+  });
+
+  it('OCRs an image-only PDF and returns reviewable page structures', async () => {
+    const bytes = scannedPdf();
+    const response = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
+      .set('Authorization', 'Bearer ' + parent.token).field('studentId', 'child').field('subject', 'math')
+      .field('requestKey', randomUUID()).attach('file', bytes, { filename: '扫描讲义.pdf', contentType: 'application/pdf' }).expect(201);
+    const material = await processedMaterial(response.body.data.id);
+    expect(material.pages).toHaveLength(1);
+    expect(['ocr', 'hybrid']).toContain(material.pages[0].method);
+    expect(material.pages[0].text.length).toBeGreaterThan(8);
+    expect(material.structure).toMatchObject({ ocrPageCount: 1, reviewRequired: true, modelAssisted: false });
+    expect(material.pages[0].warnings).toContain('ocr_requires_visual_review');
+  });
+
+  it('recovers native table cells and formula candidates while preserving source coordinates', async () => {
+    const bytes = tablePdf();
+    const response = await request(app.getHttpServer()).post('/api/learning/studio/materials/pdf')
+      .set('Authorization', 'Bearer ' + parent.token).field('studentId', 'child').field('subject', 'math')
+      .field('requestKey', randomUUID()).attach('file', bytes, { filename: '表格与公式.pdf', contentType: 'application/pdf' }).expect(201);
+    const material = await processedMaterial(response.body.data.id);
+    expect(material.pages[0].method).toBe('pdf_text');
+    expect(material.structure.tableCount).toBeGreaterThanOrEqual(1);
+    expect(material.structure.formulaCount).toBeGreaterThanOrEqual(1);
+    const table = material.pages[0].blocks.find((block: any) => block.kind === 'table');
+    expect(table.headers).toEqual(expect.arrayContaining(['Name', 'Score']));
+    expect(JSON.stringify(table.rows)).toContain('Ada');
+    expect(JSON.stringify(material.pages[0].blocks.filter((block: any) => block.kind === 'paragraph'))).not.toContain('Ada');
+    const formula = material.pages[0].blocks.find((block: any) => block.kind === 'formula');
+    expect(formula.plainText).toContain('1/2 + 1/3 = 5/6');
+    expect(formula.latex).toContain('= 5/6');
+    expect(formula.reviewRequired).toBe(true);
   });
 
   it('keeps connector creation idempotent, isolated, revocable and student read-only', async () => {
