@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import { randomUUID } from 'node:crypto';
 import { mkdtempSync, rmSync } from 'node:fs';
@@ -76,6 +76,28 @@ describe('classroom teaching sessions and persistent isolation', () => {
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     const store = app.get(InMemoryStoreService);
     await store.requestContext(() => { expect(store.inspect('diagnosticResponses')).toHaveLength(0); expect(store.inspect('diagnosticPlans')).toHaveLength(0); });
+  });
+
+  it('persists supplemental board with its original page and keeps it private after restart', async () => {
+    const session = await call('post', base + '/sessions', { lessonId: 'soc-3-1-1' });
+    await call('patch', base + '/sessions/' + session.id, { expectedRevision: 0, cursor: 3, revealed: 4 });
+    const { XiaojiuChatService } = require('../../../dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
+    const board = { title: '先观察规则，再核查解释', points: ['记录情境中的规则与反例。'], diagram: null };
+    const reply = vi.spyOn(app.get(XiaojiuChatService), 'reply').mockResolvedValue({ reply: '可以比较两个匿名情境中的规则。',
+      evidenceIds: [], modelId: 'fixture', modelName: '课堂测试模型', board });
+    const command = { message: '如何验证规则的影响？', requestKey: randomUUID() };
+    try {
+      const answered = await call('post', base + '/sessions/' + session.id + '/messages', command);
+      expect(answered.messages.at(-1).board).toEqual({ ...board, page: 1 });
+      expect(reply).toHaveBeenCalledWith(expect.objectContaining({ classroomBoard: true }));
+      const replay = await call('post', base + '/sessions/' + session.id + '/messages', command);
+      expect(replay.messages).toEqual(answered.messages); expect(reply).toHaveBeenCalledTimes(1);
+      await call('get', base + '/sessions/' + session.id, undefined, other, 403);
+      await call('post', base + '/sessions/' + session.id + '/messages', command, other, 403);
+    } finally { reply.mockRestore(); }
+    await app.close(); await boot();
+    const reloaded = await call('get', base + '/sessions/' + session.id);
+    expect(reloaded.messages.at(-1).board).toEqual({ ...board, page: 1 });
   });
 
   it('rejects invalid or stale progress, then restores frozen content, answers and project text after restart', async () => {

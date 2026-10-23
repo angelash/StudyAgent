@@ -119,7 +119,8 @@ export class ClassroomService {
       if (previous.kind !== 'chat' || previous.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
       return this.view(row);
     }
-    const response = await this.chat.reply({ modelId: command.modelId, signal,
+    const boardPage = Math.floor(row.cursor / 3);
+    const response = await this.chat.reply({ modelId: command.modelId, signal, classroomBoard: true,
       system: '你是课堂陪伴老师。仅根据本节讲解解释概念与例子，先诊断学生困惑，再给一个可验证的小步骤。不要替学生选择未作答题目的选项，不声称其已经掌握，不输出可执行HTML或工具调用。',
       context: JSON.stringify({ title: row.lesson.title, objective: row.lesson.objective,
         teaching: row.lesson.steps.slice(0, Math.max(1, row.revealed)).map(item => ({ title: item.title, narration: item.narration })),
@@ -127,8 +128,10 @@ export class ClassroomService {
       history: row.messages.map(message => ({ role: message.role, content: message.content })), message: command.message });
     if (signal?.aborted) throw new BadRequestException('课堂插问已停止');
     const now = new Date().toISOString();
+    const board = response.board;
     row.messages.push({ id: this.store.nextId('classroom_message'), role: 'user', content: command.message, at: now },
-      { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, modelName: response.modelName, at: now });
+      { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, modelName: response.modelName, at: now,
+        ...(board ? { board: { ...board, page: boardPage } } : {}) });
     row.requests.push({ key: command.requestKey, hash, kind: 'chat', messageId: row.messages.at(-1)?.id });
     row.revision++; row.updatedAt = now;
     return this.view(row);

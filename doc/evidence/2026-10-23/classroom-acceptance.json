@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-23T02:10:51.136Z",
+  "at": "2026-10-23T02:36:14.514Z",
   "scope": "Observed HyperKnow course organization and a working StudyAgent teaching classroom; not a claim of identical proprietary source, audio or all dynamic pixels",
   "catalog": {
     "units": 5,
@@ -55,6 +55,30 @@
         "study-agent-health"
       ],
       "allOnline": true
+    },
+    "supplementalBoard": {
+      "apiFiles": 4,
+      "apiPassed": 22,
+      "classroomBrowserPassed": 3,
+      "checks": [
+        "validated model board schema",
+        "bounded rejection of unsupported fields and diagrams",
+        "original-page persistence after API restart",
+        "cross-account access denied",
+        "page links and reload rendering",
+        "model text rendered without HTML execution",
+        "Markdown and print notes",
+        "desktop font and toolbar refinement"
+      ],
+      "screenshot": "classroom-ai-board.png",
+      "screenshotScope": "Browser fixture with safe structured output; real DeepSeek board recorded separately in classroom-runtime.json",
+      "priorCommitCI": {
+        "commit": "206bee310839d3ae987c00110de133a70919f404",
+        "run": "39888223461",
+        "application": "success",
+        "browser": "success",
+        "postgres": "success"
+      }
     }
   },
   "limitations": [

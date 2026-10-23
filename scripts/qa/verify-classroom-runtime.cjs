@@ -53,11 +53,15 @@ async function main() {
   const last = reply.messages.at(-1);
   evidence.checks.realModelChat = { modelName: last?.modelName, replyCharacters: last?.content?.length,
     pairedMessages: reply.messages.length, persistedCursor: reply.cursor, persistedRevealed: reply.revealed,
+    board: { titleCharacters: last?.board?.title?.length, points: last?.board?.points?.length,
+      page: last?.board?.page, diagram: last?.board?.diagram?.kind ?? null },
     answerKeysHidden: !('answerKeys' in reply), diagnosticEvidenceUnchanged: JSON.stringify(await counts()) === JSON.stringify(baselineCounts) };
   if (last?.role !== 'assistant' || !last.modelName || last.content.length < 20 || reply.cursor !== 1) throw new Error('Model response or lesson resume was invalid');
+  if (!last.board?.title || !last.board.points?.length || last.board.page !== 0) throw new Error('Structured teaching board was missing');
   const reloaded = await call('GET', '/learning/classroom/sessions/' + session.id);
   evidence.checks.chatReloaded = reloaded.messages.at(-1)?.id === last.id;
-  evidence.passed = evidence.checks.chatReloaded;
+  evidence.checks.boardReloaded = JSON.stringify(reloaded.messages.at(-1)?.board) === JSON.stringify(last.board);
+  evidence.passed = evidence.checks.chatReloaded && evidence.checks.boardReloaded;
 }
 main().catch(error => { evidence.error = error.message; process.exitCode = 1; }).finally(async () => {
   await app?.close(); fs.mkdirSync(path.dirname(target), { recursive: true }); fs.writeFileSync(target, JSON.stringify(evidence, null, 2) + '\n');

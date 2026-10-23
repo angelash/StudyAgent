@@ -133,7 +133,7 @@ const course: ClassroomCourse = {
         const options = answer === 0 ? [inference, misconception] : [misconception, inference];
         keys.set(questionId, { answer, explanation: inference + ' ' + concept });
         const diagram: ClassroomDiagram = id === 'soc-1-1-1'
-          ? { kind: 'venn', title: '个人处境与社会条件的交汇', labels: ['个人经历', '社会条件', '社会学想象力'] }
+          ? { kind: 'venn', title: '个人处境与社会条件的交汇', labels: ['个人经历', '社会条件', '社会学想象力'], captions: ['传记 · Biography', '历史 · History'] }
           : { kind: 'flow', title: '从观察走向可以核查的解释', labels: [name, '情境与规则', '证据与替代解释'] };
         const steps = [
           step(id + ':orient', 'orient', '本节课导航', `今天一起研究“${name}”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？`),

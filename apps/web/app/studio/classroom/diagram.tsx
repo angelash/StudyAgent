@@ -9,8 +9,8 @@ export function ClassroomFigure({ diagram }: { diagram: ClassroomDiagram }) {
       <text x="205" y="165" textAnchor="middle" fill="#2869a0">{labels[0]}</text>
       <text x="435" y="165" textAnchor="middle" fill="#996326">{labels[1]}</text>
       <text x="320" y="183" textAnchor="middle" fill="#6948bd" fontSize="17">{labels[2]}</text>
-      <text x="205" y="196" textAnchor="middle" className="cl-svg-small">传记 · Biography</text>
-      <text x="435" y="196" textAnchor="middle" className="cl-svg-small">历史 · History</text>
+      {diagram.captions?.[0] && <text x="205" y="196" textAnchor="middle" className="cl-svg-small">{diagram.captions[0]}</text>}
+      {diagram.captions?.[1] && <text x="435" y="196" textAnchor="middle" className="cl-svg-small">{diagram.captions[1]}</text>}
     </> : kind === 'bars' ? <>
       <text x="40" y="38" className="cl-svg-small">示意尺度 · 非统计数据</text>
       {labels.map((label, index) => <g key={index}>

@@ -1,6 +1,6 @@
 import type { StudioSpeechCapabilities } from './studio';
 
-export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[] };
+export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[]; captions?: string[] };
 export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'diagram' | 'code' | 'table'; text: string;
   diagram?: ClassroomDiagram; code?: string; table?: { headers: string[]; rows: string[][] } };
 export type ClassroomStep = { id: string; title: string; narration: string; blocks: ClassroomBlock[];
@@ -15,7 +15,8 @@ export type ClassroomCourse = { id: string; title: string; description: string; 
   provenance: string; units: ClassroomUnit[]; references: Array<{ title: string; url: string }> };
 export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number | null; correct: boolean; skipped: boolean;
   explanation: string; hintUsed: boolean; at: string };
-export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string };
+export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;
+  board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
   cursor: number; revealed: number; status: 'paused' | 'completed'; revision: number;

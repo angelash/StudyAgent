@@ -101,3 +101,55 @@ test('audio playback ends drive teaching progress and pause prevents later autom
   await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
   await expect(page.getByRole('dialog', { name: '课堂学习里程碑' })).toBeVisible();
 });
+
+test('question replies add safe board notes with page links, export and restored session rendering', async ({ page }) => {
+  test.setTimeout(90000); await page.setViewportSize({ width: 1552, height: 1199 }); await login(page);
+  await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+  const board = { title: '把困惑拆成可核查的问题', points: ['比较不同条件，再找相同处境中的反例。', '<img src=x onerror="window.boardExecuted=true">'],
+    page: 0, diagram: { kind: 'flow', title: '核查路线', labels: ['观察处境', '比较条件', '寻找反例'] } };
+  let messages: unknown[] | undefined;
+  const withBoardNotes = async (route: import('@playwright/test').Route) => {
+    const response = await route.fetch(), body = await response.json();
+    if (messages) body.data.messages = messages;
+    await route.fulfill({ response, json: body });
+  };
+  await page.route('**/api/learning/classroom/sessions', withBoardNotes);
+  await page.route('**/api/learning/classroom/sessions/*', withBoardNotes);
+  await page.route('**/api/learning/classroom/sessions/*/messages', async route => {
+    const response = await route.fetch({ method: 'GET', url: route.request().url().replace(/\/messages$/, '') });
+    const body = await response.json(), at = new Date().toISOString();
+    messages = [{ id: 'question-fixture', role: 'user', content: route.request().postDataJSON().message, at },
+      { id: 'answer-fixture', role: 'assistant', content: '先比较情境中的条件，再寻找能否排除其他解释的证据。', at, modelName: '课堂测试模型', board }];
+    body.data.messages = messages;
+    await route.fulfill({ status: 201, json: body });
+  });
+  await page.goto('/studio/classroom?lesson=soc-1-1-1');
+  await page.getByLabel('向课堂老师提问').fill('如何把解释变成可验证的问题？');
+  await page.getByRole('button', { name: '发送课堂问题' }).click();
+  await expect(page.locator('.cl-ai-board')).toContainText(board.title);
+  await expect(page.locator('.cl-ai-board')).toContainText(board.points[1]);
+  await expect(page.locator('.cl-ai-board img')).toHaveCount(0);
+  await expect(page.locator('.cl-ai-board').getByRole('img', { name: '核查路线' })).toBeVisible();
+  for (let index = 0; index < 3; index++) {
+    await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+    await expect(page.locator('.cl-session-navigation')).toContainText((index + 2) + ' / 8');
+  }
+  await expect(page.locator('.cl-ai-board')).toHaveCount(0);
+  await page.getByRole('button', { name: '♧ ' + board.title, exact: true }).click();
+  await expect(page.locator('.cl-ai-board')).toBeVisible();
+  await page.reload();
+  await page.getByRole('button', { name: '♧ ' + board.title, exact: true }).click();
+  await expect(page.locator('.cl-ai-board')).toContainText(board.points[0]);
+  await expect(page.locator('.cl-print-notes')).toContainText(board.title);
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '导出课堂笔记' }).click();
+  const stream = await (await download).createReadStream(); let markdown = '';
+  for await (const chunk of stream!) markdown += chunk.toString();
+  expect(markdown).toContain('### ' + board.title); expect(markdown).toContain('核查路线：观察处境 / 比较条件 / 寻找反例');
+  if (!process.env.CI) {
+    board.points[1] = '用新的匿名情境检验解释，保留反例。'; await page.reload();
+    await page.getByRole('button', { name: '♧ ' + board.title, exact: true }).click();
+    await expect(page.locator('.cl-ai-board')).toContainText(board.points[1]);
+    await expect(page.locator('.cl-ai-board')).toHaveCSS('opacity', '1');
+    await page.screenshot({ path: evidenceDirectory + '/classroom-ai-board.png', fullPage: true });
+  }
+});

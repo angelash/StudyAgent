@@ -270,7 +270,7 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
       await revisionQueue.current.catch(() => undefined);
       const value = await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + row.current.id + '/messages', {
         method: 'POST', signal: controller.signal, body: JSON.stringify({ message, modelId, requestKey: crypto.randomUUID() }) });
-      if (!controller.signal.aborted) { receive(value); setQuestion(''); setTab('history'); setMobile('chat'); setNotice('插问已回答；点击继续，回到原来的讲解。'); }
+      if (!controller.signal.aborted) { receive(value); setQuestion(''); setTab('history'); setMobile('chat'); setPage(Math.floor(value.cursor / 3)); setNotice('老师已补写这页白板。点击继续，回到原来的讲解。'); }
     } catch (error) { if (!controller.signal.aborted) setNotice((error as Error).message); }
     finally { if (chatAbort.current === controller) { chatAbort.current = null; setBusy(false); } }
   }
@@ -296,7 +296,9 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
   }
   function exportNotes() {
     const source = ['# ' + lesson.title, '\n' + lesson.objective, ...lesson.steps.slice(0, session.revealed).map(step => '\n## ' + step.title + '\n\n' + step.narration),
-      '\n## 课堂插问', ...session.messages.map(message => '\n**' + (message.role === 'user' ? '我' : '老师') + '** ' + message.content),
+      '\n## 课堂插问', ...session.messages.map(message => '\n**' + (message.role === 'user' ? '我' : '老师') + '** ' + message.content +
+        (message.board ? '\n\n### ' + message.board.title + '\n' + message.board.points.map(point => '- ' + point).join('\n') +
+          (message.board.diagram ? '\n\n' + message.board.diagram.title + '：' + message.board.diagram.labels.join(' / ') : '') : '')),
       '\n## 项目草稿\n' + projectDraft, '\n学习记录仅表示接触和本次课堂题目表现，不代表经过校准的能力掌握。'].join('\n');
     const url = URL.createObjectURL(new Blob([source], { type: 'text/markdown;charset=utf-8' })), anchor = document.createElement('a');
     anchor.href = url; anchor.download = lesson.title + '.md'; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -320,6 +322,10 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
             (!playing || step.id !== current.id || writingProgress >= 0.3) && <ClassroomFigure key={block.id} diagram={block.diagram}/> : block.kind === 'code' && block.code ? <CodeWorkbench key={block.id} initialCode={block.code}/> :
               <p key={block.id} data-writing={playing && step.id === current.id}>{playing && step.id === current.id ? block.text.slice(0, Math.max(1, Math.floor(block.text.length * writingProgress))) : block.text}</p>)}
         </section>)}
+        {session.messages.filter(message => message.board?.page === page).map(message => <section className="cl-board-step cl-ai-board" key={message.id} id={'board-' + message.id}>
+          <span className="cl-step-phase">AI 补充 · 回到问题本身</span><h2><span>{message.board!.title}</span></h2>
+          {message.board!.points.map((point, index) => <p key={index}>{point}</p>)}
+          {message.board!.diagram && <ClassroomFigure diagram={message.board!.diagram}/>}</section>)}
       </div></div>
       <footer className="cl-board-footer"><button aria-label={muted ? '开启讲解声音' : '静音讲解'} onClick={() => { pause(); setMuted(!muted); }} disabled={!session.speech.available}>{muted ? '♩' : '♪'}</button>
         <p className="cl-subtitle" aria-live="off">{session.revealed ? current.narration : '准备好后，点击 ▶ 开始。你可以随时暂停、插问或切到练习。'}</p></footer>
@@ -337,6 +343,7 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
             {lesson.steps.slice(0, session.revealed).map((step, index) => <article className="cl-teacher-turn" key={step.id} data-current={step.id === current.id}><small>{index === 0 ? time(session.createdAt) : 'TEACHER'}</small><p>{step.narration}</p>
               <button className="cl-board-link" onClick={() => { setPage(Math.floor(index / 3)); setMobile('board'); }}>♧ {step.title}</button></article>)}
             {session.messages.map(message => <article className="cl-chat-turn" key={message.id} data-role={message.role}><small>{message.role === 'user' ? '我' : '老师'} · {time(message.at)}</small><p>{message.content}</p>{message.modelName && <small>{message.modelName}</small>}
+              {message.board && <button className="cl-board-link" onClick={() => { setPage(message.board!.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + message.id)?.scrollIntoView({ block: 'nearest' })); }}>♧ {message.board.title}</button>}
               {message.role === 'assistant' && session.speech.available && <button className="cl-read-reply" onClick={() => readingReply === message.id ? pause() : void readReply(message.id)}>{readingReply === message.id ? '■ 停止朗读' : '♪ 朗读这段回答'}</button>}</article>)}
             <div className="cl-speaking" role="status">{busy ? '● 正在思考你的问题…' : readingReply ? '● 正在朗读回答…' : playing ? '● ' + audioState : '••• Paused'}{session.status === 'completed' ? ' · 讲解已读' : ''}</div>
           </>}
@@ -379,6 +386,6 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
     {exit && <div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存。</p><footer><button autoFocus onClick={() => setExit(false)}>继续学习</button><button disabled={busy} onClick={() => { setBusy(true); void save({ projectDraft }).then(onClose).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div>}
     {award && <div className="cl-modal-backdrop"><section className="cl-award" role="dialog" aria-modal="true" aria-label="课堂学习里程碑"><span>✧</span><small>YOU FINISHED A LESSON</small><h2>{lesson.title}</h2><p>已走完这段概念路线。接下来用新的情境检查理解，看看哪些地方还需要回顾。</p><button autoFocus onClick={() => { setAward(false); setTab('practice'); }}>去检查理解 →</button><button onClick={() => setAward(false)}>稍后再做</button></section></div>}
     <article className="cl-print-notes"><h1>{lesson.title}</h1><p>{lesson.objective}</p>{lesson.steps.slice(0, session.revealed).map(step => <section key={step.id}><h2>{step.title}</h2><p>{step.narration}</p>{step.blocks.filter(block => block.diagram).map(block => <ClassroomFigure key={block.id} diagram={block.diagram!}/>)}</section>)}
-      <h2>课堂插问</h2>{session.messages.map(message => <p key={message.id}><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>
+      <h2>课堂插问</h2>{session.messages.map(message => <section key={message.id}><p><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>{message.board && <><h3>{message.board.title}</h3>{message.board.points.map((point, index) => <p key={index}>{point}</p>)}{message.board.diagram && <ClassroomFigure diagram={message.board.diagram}/>}</>}</section>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>
   </main>;
 }

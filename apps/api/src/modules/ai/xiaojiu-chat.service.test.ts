@@ -1,9 +1,9 @@
 import { EventEmitter } from 'node:events';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { PassThrough } from 'node:stream';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const { spawnMock } = vi.hoisted(() => ({ spawnMock: vi.fn() }));
 vi.mock('node:child_process', () => ({ spawn: spawnMock }));
@@ -21,10 +21,58 @@ class MockChildProcess extends EventEmitter {
 
 describe('XiaojiuChatService', () => {
   const previousCatalog = process.env.XIAOJIU_MODEL_CATALOG;
+  const previousEnabled = process.env.XIAOJIU_CHAT_ENABLED;
+  beforeEach(() => { process.env.XIAOJIU_CHAT_ENABLED = 'true'; });
   afterEach(() => {
     spawnMock.mockReset();
+    if (previousEnabled === undefined) delete process.env.XIAOJIU_CHAT_ENABLED;
+    else process.env.XIAOJIU_CHAT_ENABLED = previousEnabled;
     if (previousCatalog === undefined) delete process.env.XIAOJIU_MODEL_CATALOG;
     else process.env.XIAOJIU_MODEL_CATALOG = previousCatalog;
+  });
+
+  const board = { title: '个人行动与社会条件', points: ['先比较岗位变化，再核查个人条件。'],
+    diagram: { kind: 'flow', title: '可核查的分析路线', labels: ['观察处境', '比较条件', '核对证据'] } };
+
+  function respondWith(payload: unknown) {
+    spawnMock.mockImplementation(() => {
+      const child = new MockChildProcess();
+      child.stdin.on('finish', () => queueMicrotask(() => {
+        child.stdout.write(JSON.stringify({ type: 'item.completed', item: { type: 'agent_message',
+          text: JSON.stringify(payload) } }) + '\n');
+        child.stdout.end(); child.stderr.end(); child.emit('close', 0);
+      }));
+      return child;
+    });
+  }
+
+  it('retains validated classroom board and requests its structured output schema', async () => {
+    respondWith({ reply: '从一个匿名社区的岗位变化开始核查。', evidenceIds: [], board });
+    let schema: { required: string[] } | undefined;
+    const implementation = spawnMock.getMockImplementation()!;
+    spawnMock.mockImplementation((...args: unknown[]) => {
+      const cliArgs = args[1] as string[];
+      schema = JSON.parse(readFileSync(cliArgs[cliArgs.indexOf('--output-schema') + 1], 'utf8'));
+      return implementation(...args);
+    });
+    const service = new XiaojiuChatService(new XiaojiuModelsService());
+    const result = await service.reply({ modelId: 'deepseek-v4-flash', classroomBoard: true,
+      system: '解释概念', context: '', history: [], message: '如何比较？' });
+    expect(result.board).toEqual(board);
+    expect(schema?.required).toContain('board');
+    expect(spawnMock).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    { ...board, html: '<script>alert(1)</script>' },
+    { ...board, diagram: { ...board.diagram, kind: 'script' } },
+    { ...board, diagram: { ...board.diagram, labels: ['一', '二', '三', '四'] } },
+  ])('rejects unsupported board fields or diagrams after a bounded retry', async invalidBoard => {
+    respondWith({ reply: '补充说明', evidenceIds: [], board: invalidBoard });
+    const service = new XiaojiuChatService(new XiaojiuModelsService());
+    await expect(service.reply({ modelId: 'deepseek-v4-flash', classroomBoard: true,
+      system: '', context: '', history: [], message: '继续' })).rejects.toThrow('连续两次');
+    expect(spawnMock).toHaveBeenCalledTimes(2);
   });
 
   it('runs the selected model through the current Xiaojiu CLI and validates evidence JSON', async () => {
