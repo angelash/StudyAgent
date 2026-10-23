@@ -1,6 +1,6 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-24。实现基线：`5551169f650474d34e9b1742b09b990cceef2beb`。
+整理日期：2026-10-24。实现基线：`d6d0542e0e19e01f3cdf929f1634b91c7177dfb9`。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
@@ -77,7 +77,7 @@ node scripts/architecture/project-design-inventory.cjs
 node scripts/architecture/build-project-design.cjs
 node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json
 node scripts/architecture/project-content-snapshot.cjs
-node scripts/architecture/validate-project-design.cjs doc/evidence/2026-10-24/classroom-review-acceptance.json
+node scripts/architecture/validate-project-design.cjs doc/evidence/2026-10-24/course-library-acceptance.json
 npm run qa:docs
 ```
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
+  "sourceRevision": "d6d0542e0e19e01f3cdf929f1634b91c7177dfb9",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 256,
@@ -16,7 +16,7 @@
     "webPages": 24,
     "webRouteHandlers": 1,
     "apiTestFiles": 90,
-    "browserTestFiles": 6
+    "browserTestFiles": 7
   },
   "modules": [
     {
@@ -16601,8 +16601,8 @@
           "decorators": [],
           "calls": [
             "this.studentProfiles",
-            "this.speech.capabilities",
             "this.students.assertCanAccessStudent",
+            "this.speech.capabilities",
             "this.diagnostics.profile",
             "this.store.inspect",
             "this.memory",
@@ -16612,7 +16612,7 @@
         },
         {
           "name": "previewStudioStudyPlan",
-          "line": 115,
+          "line": 116,
           "signature": "previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview",
           "access": "public",
           "decorators": [],
@@ -16624,7 +16624,7 @@
         },
         {
           "name": "createStudioStudyPlan",
-          "line": 131,
+          "line": 132,
           "signature": "createStudioStudyPlan(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16638,7 +16638,7 @@
         },
         {
           "name": "updateStudioPlanSession",
-          "line": 169,
+          "line": 170,
           "signature": "updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16651,7 +16651,7 @@
         },
         {
           "name": "previewStudioWhiteboard",
-          "line": 212,
+          "line": 213,
           "signature": "previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16661,7 +16661,7 @@
         },
         {
           "name": "createStudioWhiteboard",
-          "line": 224,
+          "line": 225,
           "signature": "createStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16676,7 +16676,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 248,
+          "line": 249,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string })",
           "access": "public",
           "decorators": [],
@@ -16691,7 +16691,7 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 305,
+          "line": 306,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
@@ -16702,7 +16702,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 319,
+          "line": 320,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
@@ -16713,7 +16713,7 @@
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 332,
+          "line": 333,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16726,7 +16726,7 @@
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 356,
+          "line": 357,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16740,7 +16740,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 383,
+          "line": 384,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16752,7 +16752,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 397,
+          "line": 398,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16766,7 +16766,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 417,
+          "line": 418,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -16778,7 +16778,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 438,
+          "line": 439,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16793,7 +16793,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 465,
+          "line": 466,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16805,7 +16805,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 476,
+          "line": 477,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16815,7 +16815,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 492,
+          "line": 493,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16829,7 +16829,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 514,
+          "line": 515,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16842,7 +16842,7 @@
         },
         {
           "name": "studioScope",
-          "line": 531,
+          "line": 532,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -16854,7 +16854,7 @@
         },
         {
           "name": "memory",
-          "line": 540,
+          "line": 541,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -16868,7 +16868,7 @@
         },
         {
           "name": "today",
-          "line": 600,
+          "line": 601,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -16883,7 +16883,7 @@
         },
         {
           "name": "start",
-          "line": 614,
+          "line": 615,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -16902,7 +16902,7 @@
         },
         {
           "name": "requireSession",
-          "line": 651,
+          "line": 652,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -16913,7 +16913,7 @@
         },
         {
           "name": "view",
-          "line": 656,
+          "line": 657,
           "signature": "view(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -16926,7 +16926,7 @@
         },
         {
           "name": "render",
-          "line": 674,
+          "line": 675,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -16938,7 +16938,7 @@
         },
         {
           "name": "draft",
-          "line": 683,
+          "line": 684,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16950,7 +16950,7 @@
         },
         {
           "name": "assertActive",
-          "line": 695,
+          "line": 696,
           "signature": "assertActive(session: PracticeSession)",
           "access": "private",
           "decorators": [],
@@ -16960,7 +16960,7 @@
         },
         {
           "name": "submit",
-          "line": 699,
+          "line": 700,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -16979,7 +16979,7 @@
         },
         {
           "name": "feedback",
-          "line": 724,
+          "line": 725,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -16990,7 +16990,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 733,
+          "line": 734,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -17000,7 +17000,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 738,
+          "line": 739,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17015,7 +17015,7 @@
         },
         {
           "name": "hint",
-          "line": 753,
+          "line": 754,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -17030,7 +17030,7 @@
         },
         {
           "name": "complete",
-          "line": 764,
+          "line": 765,
           "signature": "complete(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -17043,7 +17043,7 @@
         },
         {
           "name": "mistakes",
-          "line": 774,
+          "line": 775,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -17057,7 +17057,7 @@
         },
         {
           "name": "overview",
-          "line": 804,
+          "line": 805,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -23850,7 +23850,7 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 834,
+      "line": 835,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
@@ -32445,6 +32445,7 @@
   "e2eTests": [
     "tests/e2e/classroom-review.spec.ts",
     "tests/e2e/classroom.spec.ts",
+    "tests/e2e/course-library.spec.ts",
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/product-smoke.spec.ts",
     "tests/e2e/studio.spec.ts",

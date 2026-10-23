@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
+  "sourceRevision": "d6d0542e0e19e01f3cdf929f1634b91c7177dfb9",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -2396,12 +2396,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 804
+              "line": 805
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 540
+              "line": 541
             }
           ],
           "sourceFiles": [
@@ -2459,12 +2459,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 600
+              "line": 601
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 614
+              "line": 615
             }
           ],
           "sourceFiles": [
@@ -2555,32 +2555,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 656
+              "line": 657
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 674
+              "line": 675
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 683
+              "line": 684
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 699
+              "line": 700
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 753
+              "line": 754
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 764
+              "line": 765
             }
           ],
           "sourceFiles": [
@@ -2630,7 +2630,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 774
+              "line": 775
             }
           ],
           "sourceFiles": [
@@ -4126,12 +4126,13 @@
         "tests/e2e/studio.spec.ts",
         "tests/e2e/classroom.spec.ts",
         "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/course-library.spec.ts",
         "tests/e2e/workspace.spec.ts"
       ],
       "features": [
         {
           "id": "STUDIO-01",
-          "title": "统一工作台、我的课程与续学",
+          "title": "统一工作台、课程筛选与连续学习",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生；成人课程目录限家长/管理员",
@@ -4139,15 +4140,15 @@
             "/studio",
             "/studio/classroom"
           ],
-          "inputs": "view、student、subject、course及账号课程进度",
-          "implementation": "共享导航；独立成人课程与孩子课程进入同一列表；搜索和状态筛选；当前账号阅读进度驱动下一讲；地址与浏览器历史同步。",
-          "outputs": "课程列表、最近活动、当前范围总览",
+          "inputs": "view、student、subject、course、关键词、状态、类型、来源、最近学习与排序",
+          "implementation": "成人与当前档案小学课统一列表；真实记录区分未开始/进行中/讲解已读；关键词覆盖名称目标教材，组合筛选可清空；地址记条件，刷新/历史/进入目录及课堂返回保留；断点标题与目标一致；按身份连接GESP独立轨道；显式档案先校验授权，不回退另一孩子。",
+          "outputs": "可恢复课程列表、真实阅读计数、最近活动与范围总览",
           "collections": [
             "studioCourses",
             "studioActivities",
             "classroomSessions"
           ],
-          "limits": "阅读进度不是掌握率；成人目录不写入孩子诊断证据。",
+          "limits": "筛选针对当前授权课程；完成表示讲解已读，不能当掌握或所有项目完成；GESP与成人记录不合并进小学测量。",
           "endpoints": [
             {
               "verb": "GET",
@@ -4166,6 +4167,8 @@
             }
           ],
           "sourceFiles": [
+            "apps/web/app/studio/course-library-state.ts",
+            "apps/web/app/studio/course-library.css",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
@@ -4175,6 +4178,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4226,17 +4230,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 476
+              "line": 477
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 492
+              "line": 493
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 514
+              "line": 515
             }
           ],
           "sourceFiles": [
@@ -4250,6 +4254,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4297,6 +4302,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4383,6 +4389,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4430,6 +4437,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4493,6 +4501,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4527,6 +4536,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4557,6 +4567,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4600,12 +4611,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 212
+              "line": 213
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 224
+              "line": 225
             }
           ],
           "sourceFiles": [
@@ -4619,6 +4630,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4653,7 +4665,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 465
+              "line": 466
             }
           ],
           "sourceFiles": [
@@ -4667,6 +4679,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4719,17 +4732,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 248
+              "line": 249
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 305
+              "line": 306
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 319
+              "line": 320
             }
           ],
           "sourceFiles": [
@@ -4742,6 +4755,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4776,6 +4790,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4818,12 +4833,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 332
+              "line": 333
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 356
+              "line": 357
             }
           ],
           "sourceFiles": [
@@ -4836,6 +4851,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4879,12 +4895,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 383
+              "line": 384
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 397
+              "line": 398
             }
           ],
           "sourceFiles": [
@@ -4898,6 +4914,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4941,12 +4958,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 417
+              "line": 418
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 438
+              "line": 439
             }
           ],
           "sourceFiles": [
@@ -4960,6 +4977,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5012,17 +5030,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 115
+              "line": 116
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 131
+              "line": 132
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 169
+              "line": 170
             }
           ],
           "sourceFiles": [
@@ -5036,6 +5054,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5111,6 +5130,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5200,6 +5220,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5247,6 +5268,7 @@
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/course-library.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         }

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T16:45:33.815Z",
+  "sourceRevision": "d6d0542e0e19e01f3cdf929f1634b91c7177dfb9",
+  "planRevision": "3775c8d",
+  "batch": "E02 course library and continuous return paths",
+  "goalComplete": false,
+  "requirements": [
+    "XP-B01",
+    "XP-B03",
+    "XP-B04",
+    "XP-A02",
+    "XP-A05"
+  ],
+  "scope": "Authorized adult/primary-course filtering, truthful reading states, URL recovery, classroom return conditions, role-specific programming links and explicit profile authorization. No full course generation or whole-product parity claim.",
+  "builds": {
+    "webTypes": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "daemonProductionWeb": true
+  },
+  "api": {
+    "command": "node ../../node_modules/vitest/vitest.mjs run src/modules/learning/studio.integration.test.ts",
+    "cwd": "apps/api",
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 12.41,
+    "outputEvidence": "Completed tool session 79411. All studio integration scenarios, including explicit inaccessible selection, approved classroom, PDF processing, plans and integrations.",
+    "fullApplicationSuiteNewlyRun": false,
+    "priorFullApplicationEvidence": "classroom-review-acceptance.json"
+  },
+  "browser": {
+    "fullSuite": {
+      "artifact": "data/qa/course-library-browser-final.json",
+      "stats": {
+        "startTime": "2026-10-23T16:40:00.169Z",
+        "duration": 108284.44900000001,
+        "expected": 25,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "dataDirectory": "data/qa/course-library-final-20261024"
+    },
+    "finalCourseChecks": {
+      "artifact": "data/qa/course-library-browser-focused.json",
+      "stats": {
+        "startTime": "2026-10-23T16:42:35.349Z",
+        "duration": 16520.701999999997,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "dataDirectory": "data/qa/course-library-focus-20261024"
+    },
+    "note": "Full25 passed after responsive fix. Final3 passed after reserving label width, with explicit visible reading-count bounds. Fresh isolated databases and real API, no family data or paid model calls.",
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "screenshotVisualReview": true,
+    "screenshots": [
+      "course-library-1440.png",
+      "course-library-768.png",
+      "course-library-390.png"
+    ]
+  },
+  "fixesFoundByAcceptance": [
+    "A 768px minimum-content layout overflow was corrected by flexible filters and min-width constraints.",
+    "Reading-count labels now stay within their own card, checked at all three widths."
+  ],
+  "artifactSha256": {
+    "data/qa/course-library-browser-final.json": "b82eac9812edc5809bed499abd2aa880c819ebc8d31b9b00d48f9e8ee18613cc",
+    "data/qa/course-library-browser-focused.json": "6aa0ea5fed5b89a0248844a16b31a3ec1ba2dddb4dfc247afff221ec21371ba1"
+  },
+  "runtime": {
+    "at": "2026-10-23T16:45:33.817Z",
+    "url": "http://127.0.0.1:3217",
+    "checks": [
+      {
+        "route": "/learn",
+        "status": 200
+      },
+      {
+        "route": "/studio?view=courses",
+        "status": 200
+      },
+      {
+        "route": "/studio/classroom",
+        "status": 200
+      },
+      {
+        "route": "/api/ready",
+        "status": 200
+      },
+      {
+        "route": "/api/learning/studio/overview",
+        "status": 401
+      }
+    ],
+    "guestBrowserErrors": [],
+    "pm2Services": [
+      "study-agent-api",
+      "study-agent-web",
+      "study-agent-health"
+    ]
+  },
+  "pending": [
+    "Blueprint editing, language/budget and source-to-course generation",
+    "Complete course lifecycle, broader Practice, progressive hints and project rubrics",
+    "Unified programming-course cards remain separate track links",
+    "Full pixel/state parity, teacher content approval, real learner/device and spaced retention verification"
+  ]
+}

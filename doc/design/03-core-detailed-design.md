@@ -196,6 +196,8 @@ flowchart LR
 
 `/studio`使用`view/student/subject/course`维护当前页面和学习档案；单元与面板保留在查询参数。加载代次丢弃过期响应，切换档案/学科清理旧活动状态。成人课程与学生课程共享导航，课堂学习结束返回原学生、学科、课程、单元和面板。
 
+课程库以`courseQuery/courseState/courseType/courseSource/courseRecent/courseSort`保存组合条件，允许值与长度受控；搜索替换历史条目，条件选择增加条目。当前课时集合与真实记录区分未开始、进行中、讲解已读，不使用课程创建时间冒充学习时间。类型/来源/近7或30天与排序共同作用，空结果可清空。进入成人/小学目录及课堂返回保留条件；GESP按身份提供独立轨道入口。显式无权限档案返回403，不退回另一个孩子。见[课程库交付](../product/94-course-library-continuity.md)。
+
 ### 10.2 播放与中断
 
 课件由`ClassroomStep`组成，讲稿与板书blocks分离。`cursor`指当前步骤，`revealed`指已揭示步骤，`sentenceCursor`指当前句。每句单独请求音频，结束后推进；只预取下一句。静音使用阅读节奏；暂停停止自动推进；刷新恢复持久断点，当前句从头继续。
