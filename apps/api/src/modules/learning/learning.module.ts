@@ -10,5 +10,7 @@ import { AiModule } from '../ai/ai.module';
 import { NotebookService } from './notebook.service';
 import { NotebookController } from './notebook.controller';
 import { StudioIntegrationService } from './studio-integration.service';
-@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController], providers: [LearningService, NotebookService, StudioIntegrationService], exports: [LearningService, StudioIntegrationService] })
+import { ClassroomController } from './classroom.controller';
+import { ClassroomService } from './classroom.service';
+@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService], exports: [LearningService, StudioIntegrationService] })
 export class LearningModule {}

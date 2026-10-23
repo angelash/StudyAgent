@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-23T02:10:51.136Z",
+  "scope": "Observed HyperKnow course organization and a working StudyAgent teaching classroom; not a claim of identical proprietary source, audio or all dynamic pixels",
+  "catalog": {
+    "units": 5,
+    "lectures": 15,
+    "microLessons": 60,
+    "authoredLearningChecks": 60,
+    "unitReviewGroups": 5,
+    "questionsPerReview": 12,
+    "unitReviewReusesLearningChecks": true,
+    "projectStages": 5
+  },
+  "verification": {
+    "apiFullSuite": {
+      "passed": 737,
+      "skipped": 6,
+      "note": "Full suite before final teaching checkpoint refinements; relevant suites rerun below"
+    },
+    "apiFocusedAfterFinalServerChanges": {
+      "files": 3,
+      "passed": 16
+    },
+    "classroomBrowserAfterRapidClickFix": {
+      "passed": 2,
+      "scope": [
+        "step reveal",
+        "diagram",
+        "JavaScript execution",
+        "DOM unavailable",
+        "2-second termination",
+        "settings",
+        "first-answer recovery",
+        "project recovery",
+        "notes download",
+        "mobile layout",
+        "audio ended advances",
+        "pause cancels",
+        "checkpoint waits",
+        "milestone"
+      ]
+    },
+    "existingBrowserRegressions": {
+      "passed": 6,
+      "scope": "Existing shell, login, assessment, visual teaching, admin, Studio; from full browser run before final focused rerun"
+    },
+    "realProviders": "classroom-runtime.json",
+    "production": {
+      "web": "http://127.0.0.1:3217/studio/classroom",
+      "apiReady": "http://127.0.0.1:4217/api/ready",
+      "httpStatus": 200,
+      "pm2": [
+        "study-agent-api",
+        "study-agent-web",
+        "study-agent-health"
+      ],
+      "allOnline": true
+    }
+  },
+  "limitations": [
+    "Original platform audio not captured for voice similarity measurement",
+    "Only one original lesson partially played, with one explicitly confirmed anonymous continuation request",
+    "No original arbitrary-code runner source retrieved",
+    "Own JavaScript worker is not a Python or C++ backend",
+    "Visual differences remain in cover, icons, fonts and generated content",
+    "Real microphone, human listening and 60-topic teaching review remain manual acceptance items"
+  ]
+}

@@ -20,6 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+    /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
     /^learning\/studio\/calendar\/export$/,
     /^gesp\/students\/[^/]+\/workspace$/,
@@ -34,6 +35,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^ai\/models$/, /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+    /^learning\/classroom\/sessions(\/[^/]+\/(answers|messages|narration\/[^/]+))?$/,
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,
     /^learning\/studio\/materials\/pdf$/, /^learning\/studio\/materials\/[^/]+\/whiteboard(\/preview)?$/,
@@ -49,7 +51,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
   PUT: [/^learning\/media\/[^/]+\/chunks\/\d+$/],
-  PATCH: [/^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
+  PATCH: [/^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 
 @Injectable()
@@ -80,7 +82,8 @@ export class AuthGuard implements CanActivate {
 
     const writing = !['GET', 'HEAD', 'OPTIONS'].includes(request.method);
     await this.limits.assert(`request-user:${writing ? 'write' : 'read'}:${user.id}`, writing ? 180 : 600, 60000);
-    if (writing && request.path.startsWith('/api/ai/')) await this.limits.assert(`request-ai:${user.id}`, 60, 600000);
+    if (writing && (request.path.startsWith('/api/ai/') || /^\/api\/learning\/classroom\/sessions\/[^/]+\/messages$/.test(request.path)))
+      await this.limits.assert(`request-ai:${user.id}`, 60, 600000);
     request.user = user;
     request.authSession = session;
     return true;

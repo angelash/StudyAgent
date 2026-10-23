@@ -1,4 +1,5 @@
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
+import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
@@ -411,6 +412,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   gespTaskReviews: GespTaskReview[] = [];
   gespTaskReviewRevisions: GespTaskReviewRevision[] = [];
   studioCourses: StudioCourse[] = [];
+  classroomSessions: ClassroomSessionRecord[] = [];
   studioActivities: StudioActivity[] = [];
   studioStudyPlans: StudioStudyPlan[] = [];
   studioSourceMaterials: StudioSourceMaterial[] = [];
@@ -495,6 +497,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.gespTaskReviews = [];
     this.gespTaskReviewRevisions = [];
     this.studioCourses = [];
+    this.classroomSessions = [];
     this.studioActivities = [];
     this.studioStudyPlans = [];
     this.studioSourceMaterials = [];

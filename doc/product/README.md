@@ -26,6 +26,9 @@
 22. [诊断计划、PDF页级白板与个性化学案](./84-diagnostic-planner-pdf-and-study-pack-delivery.md)：薄弱点编排、D+1/3/7/14复测、原页与文字层核对、已审核学案/闪卡/微测和移动端验收。
 23. [PDF OCR、表格公式恢复与小九AI CLI](./85-pdf-ocr-structure-and-xiaojiu-cli.md)：durable后台任务、扫描页OCR、表格行列与KaTeX公式候选、当前CLI配置继承、人工核对和失败重试。
 24. [小九AI全模型接入与聊天选型](./86-all-xiaojiu-models-and-chat-selector.md)：22个真实模型探测、统一目录、按消息选型、Auto默认模型、模型持久化和聊天证据边界。
+25. [Windows本地守护与自动恢复](./87-local-windows-daemon.md)：PM2进程守护、健康探针、登录恢复、日志与启停命令。
+26. [HyperKnow课堂观察与实施计划](./88-hyperknow-classroom-observation-and-plan.md)：五单元60主题、实时白板课堂、语音、插问、练习、项目与执行边界。
+27. [独立教学课堂交付](./89-interactive-classroom-delivery.md)：逐步板书与音画时序、课堂插问、60主题课程、核查项目、代码实验与验证边界。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。

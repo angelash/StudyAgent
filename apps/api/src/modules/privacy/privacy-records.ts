@@ -23,7 +23,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks']) {
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -61,6 +61,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'libraryBookmarks', row => row.userId === actorId);
   add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
+  add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
@@ -105,6 +106,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events'].includes(name)) continue;
     if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
+    else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
+      (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
+      .map(({ answerKeys: _answerKeys, requests: _requests, ...row }) => row);
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }

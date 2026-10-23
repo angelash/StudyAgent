@@ -156,6 +156,22 @@ describe('whiteboard video and LMS calendar integrations', () => {
       { studentId: 'child', subject: 'math', prompt: '越权白板', atomId: 'fraction-add' }, other, 403);
   });
 
+  it('opens an approved course lesson in the shared classroom without replacing independent measurement', async () => {
+    const preview = await call('post', '/learning/studio/courses/preview', { studentId: 'child', subject: 'math' });
+    const course = await call('post', '/learning/studio/courses', { studentId: 'child', subject: 'math', title: preview.title,
+      objective: preview.objective, previewFingerprint: preview.fingerprint, requestKey: randomUUID() });
+    const lesson = course.units[0].lessons.find((row: any) => row.kind === 'learn');
+    const session = await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: lesson.id }, learner);
+    expect(session.lesson.steps.some((step: any) => step.narration.includes('不同分母'))).toBe(true);
+    expect(session.lesson.verificationHref).toBe(lesson.href);
+    expect(session.studentId).toBe('child');
+    await call('get', '/learning/classroom/sessions/' + session.id, undefined, parent, 403);
+    await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: lesson.id }, other, 403);
+    await call('post', '/learning/classroom/sessions', { lessonId: 'soc-1-1-1' }, learner, 403);
+    await call('get', '/learning/classroom/catalog', undefined, learner, 403);
+    expect(store.diagnosticResponses).toHaveLength(0);
+  });
+
   it('previews, persists and executes an evidence-driven plan with delayed reviews', async () => {
     const command = { studentId: 'child', subject: 'math', goal: '先用新题核对分数单位，再完成迁移与延迟检查',
       targetDate: '2099-01-08', firstSessionAt: '2099-01-05T10:00:00.000Z', minutesPerDay: 20 };
