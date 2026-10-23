@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "3b67695853276ab06f33923dce75ad72bb72db87",
+  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 255,
-    "activeHttpRoutes": 242,
-    "activeBusinessHttpRoutes": 234,
+    "declaredHttpRoutes": 256,
+    "activeHttpRoutes": 243,
+    "activeBusinessHttpRoutes": 235,
     "retiredHttpRoutes": 8,
     "activeModules": 17,
     "activeControllers": 23,
     "apiClasses": 99,
     "apiFunctions": 224,
     "domainCollections": 80,
-    "contractTypes": 206,
+    "contractTypes": 207,
     "webPages": 24,
     "webRouteHandlers": 1,
-    "apiTestFiles": 89,
-    "browserTestFiles": 5
+    "apiTestFiles": 90,
+    "browserTestFiles": 6
   },
   "modules": [
     {
@@ -4128,11 +4128,40 @@
     },
     {
       "verb": "POST",
+      "path": "/api/learning/classroom/sessions/:id/hints",
+      "controller": "ClassroomController",
+      "method": "hint",
+      "file": "apps/api/src/modules/learning/classroom.controller.ts",
+      "line": 18,
+      "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "classroom",
+          "type": "ClassroomService"
+        }
+      ],
+      "calls": [
+        "this.classroom.hint"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
       "path": "/api/learning/classroom/sessions/:id/messages",
       "controller": "ClassroomController",
       "method": "ask",
       "file": "apps/api/src/modules/learning/classroom.controller.ts",
-      "line": 18,
+      "line": 21,
       "signature": "ask(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -4161,7 +4190,7 @@
       "controller": "ClassroomController",
       "method": "narration",
       "file": "apps/api/src/modules/learning/classroom.controller.ts",
-      "line": 25,
+      "line": 28,
       "signature": "narration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('stepId') stepId: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -15490,8 +15519,25 @@
           ]
         },
         {
-          "name": "ask",
+          "name": "hint",
           "line": 18,
+          "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'sessions/:id/hints'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.classroom.hint"
+          ]
+        },
+        {
+          "name": "ask",
+          "line": 21,
           "signature": "ask(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -15508,7 +15554,7 @@
         },
         {
           "name": "narration",
-          "line": 25,
+          "line": 28,
           "signature": "narration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('stepId') stepId: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -15566,7 +15612,7 @@
         },
         {
           "name": "record",
-          "line": 33,
+          "line": 37,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -15577,17 +15623,18 @@
         },
         {
           "name": "view",
-          "line": 41,
+          "line": 45,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
           "calls": [
+            "this.store.find",
             "this.speech.capabilities"
           ]
         },
         {
           "name": "get",
-          "line": 46,
+          "line": 57,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -15598,7 +15645,7 @@
         },
         {
           "name": "open",
-          "line": 48,
+          "line": 59,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15606,13 +15653,14 @@
             "this.store.find",
             "this.students.assertCanAccessStudent",
             "this.view",
+            "this.store.select",
             "this.store.nextId",
             "this.store.append"
           ]
         },
         {
           "name": "progress",
-          "line": 76,
+          "line": 93,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15623,7 +15671,7 @@
         },
         {
           "name": "answer",
-          "line": 95,
+          "line": 112,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15633,8 +15681,19 @@
           ]
         },
         {
+          "name": "hint",
+          "line": 136,
+          "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.view"
+          ]
+        },
+        {
           "name": "ask",
-          "line": 119,
+          "line": 155,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -15647,7 +15706,7 @@
         },
         {
           "name": "narration",
-          "line": 151,
+          "line": 187,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -23677,37 +23736,37 @@
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "step",
-      "line": 112,
+      "line": 113,
       "signature": "step(id: string, phase: ClassroomStep['phase'], title: string, narration: string, diagram?: ClassroomDiagram, notes?: string[]): ClassroomStep"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomCourse",
-      "line": 200,
+      "line": 225,
       "signature": "classroomCourse(): ClassroomCourse"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomLesson",
-      "line": 201,
+      "line": 226,
       "signature": "classroomLesson(id: string): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomAnswerKey",
-      "line": 211,
+      "line": 232,
       "signature": "classroomAnswerKey(id: string)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomFingerprint",
-      "line": 212,
+      "line": 233,
       "signature": "classroomFingerprint(lesson: ClassroomLesson)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "curriculumClassroomLesson",
-      "line": 214,
+      "line": 235,
       "signature": "curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined"
     },
     {
@@ -24976,13 +25035,23 @@
           "name": "hint",
           "optional": false,
           "type": "string"
+        },
+        {
+          "name": "topic",
+          "optional": true,
+          "type": "{ lessonId: string; title: string }"
+        },
+        {
+          "name": "purpose",
+          "optional": true,
+          "type": "'application' | 'evidence' | 'boundary'"
         }
       ]
     },
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 10,
+      "line": 11,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25019,13 +25088,18 @@
           "name": "verificationHref",
           "optional": true,
           "type": "string"
+        },
+        {
+          "name": "assessment",
+          "optional": true,
+          "type": "{ kind: 'unit-check'; version: string; notice: string }"
         }
       ]
     },
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 12,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25053,7 +25127,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 13,
+      "line": 15,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25086,7 +25160,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 15,
+      "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25134,7 +25208,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 17,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25177,7 +25251,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 19,
+      "line": 21,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25215,7 +25289,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 21,
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25318,14 +25392,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 27,
+      "line": 29,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 28,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25337,6 +25411,74 @@
           "name": "progress",
           "optional": false,
           "type": "Array<{ lessonId: string; sessionId: string;\n  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>"
+        },
+        {
+          "name": "archivedSessions",
+          "optional": true,
+          "type": "Array<{ sessionId: string; lessonId: string; title: string; total: number; answered: number; updatedAt: string }>"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomPracticeSummary",
+      "file": "packages/contracts/src/classroom.ts",
+      "line": 35,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "total",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "answered",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "remaining",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "correct",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "incorrect",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "skipped",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "assisted",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "independentCorrect",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "complete",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "nextQuestionIndex",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "reviewQuestionIds",
+          "optional": false,
+          "type": "string[]"
         }
       ]
     },
@@ -32277,6 +32419,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
     "apps/api/src/modules/learning/learning-home.integration.test.ts",
@@ -32300,6 +32443,7 @@
     "apps/api/src/product-safety.integration.test.ts"
   ],
   "e2eTests": [
+    "tests/e2e/classroom-review.spec.ts",
     "tests/e2e/classroom.spec.ts",
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/product-smoke.spec.ts",

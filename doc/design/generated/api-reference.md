@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。共 255 个 HTTP 路由声明，当前 AppModule 可达 234 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`5551169f650474d34e9b1742b09b990cceef2beb`。共 256 个 HTTP 路由声明，当前 AppModule 可达 235 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -978,9 +978,18 @@
 - 方法装饰器：`[]`
 - 调用：`this.classroom.answer`
 
+### POST /api/learning/classroom/sessions/:id/hints
+
+实现：[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)，方法 `hint`。
+
+- 签名：`hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.classroom.hint`
+
 ### POST /api/learning/classroom/sessions/:id/messages
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)，方法 `ask`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)，方法 `ask`。
 
 - 签名：`ask(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -989,7 +998,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/narration/:stepId
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:25](../../../apps/api/src/modules/learning/classroom.controller.ts#L25)，方法 `narration`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:28](../../../apps/api/src/modules/learning/classroom.controller.ts#L28)，方法 `narration`。
 
 - 签名：`narration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('stepId') stepId: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`

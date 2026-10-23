@@ -1,6 +1,6 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-23。实现基线：`3b67695853276ab06f33923dce75ad72bb72db87`。
+整理日期：2026-10-24。实现基线：`5551169f650474d34e9b1742b09b990cceef2beb`。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
@@ -35,9 +35,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：255个源码路由声明中，当前正常接入234个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [全部接口](generated/api-reference.md)：256个源码路由声明中，当前正常接入235个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
 - [页面职责](generated/page-reference.md)：24个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与206个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [领域集合与207个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构
@@ -77,7 +77,7 @@ node scripts/architecture/project-design-inventory.cjs
 node scripts/architecture/build-project-design.cjs
 node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json
 node scripts/architecture/project-content-snapshot.cjs
-node scripts/architecture/validate-project-design.cjs
+node scripts/architecture/validate-project-design.cjs doc/evidence/2026-10-24/classroom-review-acceptance.json
 npm run qa:docs
 ```
 

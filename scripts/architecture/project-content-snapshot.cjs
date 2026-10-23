@@ -16,11 +16,12 @@ const audit = json(auditPath);
 assert.equal(audit.passed, true, 'Authored content audit must pass');
 for (const [file, expected] of Object.entries(audit.sourceSha256)) assert.equal(hash(file), expected, 'Stale authored content audit: ' + file);
 
-// Execute only the two pure versioned classroom-content modules, directly from TypeScript.
+// Execute only the allowlisted pure versioned classroom-content modules, directly from TypeScript.
 // No application bootstrap, API, persistence, network or environment configuration is loaded.
 const classroomFile = 'apps/api/src/modules/learning/classroom-curriculum.ts';
 const boardFile = 'apps/api/src/modules/learning/classroom-board-notes.ts';
-const allowed = new Set([classroomFile, boardFile]), cache = new Map();
+const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
+const allowed = new Set([classroomFile, boardFile, checksFile]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
@@ -38,6 +39,9 @@ const classroom = loadContent(classroomFile), course = classroom.classroomCourse
 const lectures = course.units.flatMap(unit => unit.lectures), lessons = lectures.flatMap(lecture => lecture.lessons);
 const questionIds = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions.map(question => question.id));
 assert.equal(new Set(questionIds).size, questionIds.length, 'Unexpected duplicate lesson question IDs');
+const unitQuestionIds = course.units.flatMap(unit => classroom.classroomLesson('unit-exam:' + unit.id).questions.map(question => question.id));
+assert.equal(new Set(unitQuestionIds).size, unitQuestionIds.length, 'Unexpected duplicate unit-check question IDs');
+assert(unitQuestionIds.every(id => !questionIds.includes(id)), 'Unit check must not reuse classroom practice IDs');
 const textbooksPath = 'resources/curriculum/textbooks-v1.json';
 const gespKnowledgePath = 'resources/gesp/knowledge-map.json', gespTasksPath = 'resources/gesp/student-curriculum-v2.json';
 const gespQuestionsPath = 'resources/gesp/questions.jsonl';
@@ -63,9 +67,10 @@ const snapshot = {
   },
   adultClassroom: {
     courseId: course.id, courseVersion: course.version, units: course.units.length, lectures: lectures.length,
-    microLessons: lessons.length, lessonQuestions: questionIds.length,
-    sourceSha256: Object.fromEntries([classroomFile, boardFile].map(file => [file, hash(file)])),
-    interpretation: 'Authored lesson questions only; unit-exam reuse is not additional independent questions or student measurement evidence.'
+    microLessons: lessons.length, lessonQuestions: questionIds.length, unitCheckQuestions: unitQuestionIds.length,
+    distinctQuestionIds: questionIds.length + unitQuestionIds.length,
+    sourceSha256: Object.fromEntries([classroomFile, boardFile, checksFile].map(file => [file, hash(file)])),
+    interpretation: 'Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course.'
   }
 };
 fs.writeFileSync(path.join(root, 'doc/design/generated/content-snapshot.json'), JSON.stringify(snapshot, null, 2) + '\n');

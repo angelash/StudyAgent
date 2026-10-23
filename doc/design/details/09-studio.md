@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。角色：家长、学生；成人课程目录限家长/管理员。
+源码基线：`5551169f650474d34e9b1742b09b990cceef2beb`。角色：家长、学生；成人课程目录限家长/管理员。
 
 产品入口：`/studio`、`/studio/classroom`。
 
@@ -25,8 +25,10 @@
 
 - [apps/api/src/modules/learning/studio.integration.test.ts](../../../apps/api/src/modules/learning/studio.integration.test.ts)
 - [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
+- [apps/api/src/modules/learning/classroom-unit-checks.test.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.test.ts)
 - [tests/e2e/studio.spec.ts](../../../tests/e2e/studio.spec.ts)
 - [tests/e2e/classroom.spec.ts](../../../tests/e2e/classroom.spec.ts)
+- [tests/e2e/classroom-review.spec.ts](../../../tests/e2e/classroom-review.spec.ts)
 - [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
 
 ## STUDIO-01 统一工作台、我的课程与续学
@@ -114,14 +116,14 @@
 - `POST /api/learning/classroom/sessions` → `ClassroomController.open`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
 - `GET /api/learning/classroom/sessions/:id` → `ClassroomController.get`；[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)。
 - `PATCH /api/learning/classroom/sessions/:id` → `ClassroomController.progress`；[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)。
-- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:25](../../../apps/api/src/modules/learning/classroom.controller.ts#L25)。
+- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:28](../../../apps/api/src/modules/learning/classroom.controller.ts#L28)。
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:48](../../../apps/api/src/modules/learning/classroom.service.ts#L48)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:46](../../../apps/api/src/modules/learning/classroom.service.ts#L46)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:76](../../../apps/api/src/modules/learning/classroom.service.ts#L76)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:151](../../../apps/api/src/modules/learning/classroom.service.ts#L151)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:59](../../../apps/api/src/modules/learning/classroom.service.ts#L59)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:57](../../../apps/api/src/modules/learning/classroom.service.ts#L57)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:93](../../../apps/api/src/modules/learning/classroom.service.ts#L93)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:187](../../../apps/api/src/modules/learning/classroom.service.ts#L187)。
 
 ## STUDIO-05 课堂插问与补充板书
 
@@ -137,31 +139,39 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
+- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)。
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:119](../../../apps/api/src/modules/learning/classroom.service.ts#L119)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:155](../../../apps/api/src/modules/learning/classroom.service.ts#L155)。
 
-## STUDIO-06 独立课堂练习与项目草稿
+## STUDIO-06 课堂练习、单元核查与复盘
 
-**输入**：questionId、selectedIndex/null、hintUsed、projectDraft。
+**输入**：questionId、selectedIndex/null、hintUsed、requestKey、projectDraft。
 
-**处理与实现**：四选一题卡支持Check/Skip、键盘和题目进度；首次作答、跳过和提示记录持久化；项目草稿保存后可继续，单元核查复用现有题目。
+**处理与实现**：保留64道微课题，另编60道单元新情境题；提示先保存再显示，服务端合并辅助事实；首次作答锁定，恢复首个未答题；完成后区分独立正确、答错、跳过和辅助，回看解释并返回对应微课；旧会话按冻结量规恢复，明确切换才进入新版本；项目草稿可恢复。
 
-**输出**：本次题目表现和项目草稿。
+**输出**：124个不同题目ID、本次表现复盘、旧版学习记录与项目草稿。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：60微课共64道课堂题，单元题复用不算新的独立测量；不能当作完整标准化题库。
+**权限、失败与边界**：多数微课仍只有一道课堂题；新题需教师审核和真人验证，内容不重复不等于已标定的测量独立性；不直接推断稳定掌握。
 
 **关联接口**：
 
 - `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)。
+- `POST /api/learning/classroom/sessions/:id/hints` → `ClassroomController.hint`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:95](../../../apps/api/src/modules/learning/classroom.service.ts#L95)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:112](../../../apps/api/src/modules/learning/classroom.service.ts#L112)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:136](../../../apps/api/src/modules/learning/classroom.service.ts#L136)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/classroom-unit-checks.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.ts)
+- [apps/web/app/studio/classroom/practice-panel.tsx](../../../apps/web/app/studio/classroom/practice-panel.tsx)
+- [apps/web/app/studio/classroom/practice-review.css](../../../apps/web/app/studio/classroom/practice-review.css)
 
 ## STUDIO-07 课堂图片、表格与代码实验
 

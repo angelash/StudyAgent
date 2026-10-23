@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "3b67695853276ab06f33923dce75ad72bb72db87",
+  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-23T15:35:57.786Z",
+    "auditAt": "2026-10-23T16:22:32.721Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "04ebe3e97008cf65553b056106e0b589ca72f349b9c35d0226a847d8ed304dc5",
+    "localAuditSha256": "0828e650ce48edc828db22790e6d1cec04d47836c326103ddee42b73f533e991",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -251,7 +251,7 @@
       "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "78f8f67305a85b2f937047aeb9aa1d0aa4bc94139e52400d2795dce704bc8fc0",
       "apps/api/src/infrastructure/in-memory-store.service.ts": "3753554e773cfc23229b8777448721eb7fe1a72a581bd9396688e647dbe80931",
       "apps/api/src/infrastructure/domain-database.ts": "7b17f255e936c1537ce6eecc9caf3853fb02f0724ff694c44fd30b85f1e09f8f",
-      "apps/api/src/common/auth.guard.ts": "f4b685f41be02838880e93f295c27f413558f5ef96b30f30b70d556227c418e7",
+      "apps/api/src/common/auth.guard.ts": "e7c6576c0d77056feb69d4072ac8ef01212f8a75581d5f54ab83b6e3bb086522",
       "apps/web/app/admin/gesp/page.tsx": "fcdd3220568d33c70a9337293edff91dc4e652384afc7ca42d82c80b4957114d",
       "apps/web/app/admin/gesp/gesp.css": "030fdebce5ee2ad8cac16d141ea923a6e3311daca732465bc47ef0b505a6d91a",
       "apps/api/src/modules/privacy/privacy-records.ts": "6713579a3d370114ba908a0bd6504b9fee729692443437e67d526b08f20261f3",
@@ -396,15 +396,18 @@
   },
   "adultClassroom": {
     "courseId": "sociology-foundations",
-    "courseVersion": "2026-10-23.2",
+    "courseVersion": "2026-10-23.3",
     "units": 5,
     "lectures": 15,
     "microLessons": 60,
     "lessonQuestions": 64,
+    "unitCheckQuestions": 60,
+    "distinctQuestionIds": 124,
     "sourceSha256": {
-      "apps/api/src/modules/learning/classroom-curriculum.ts": "e431146b015fd2293cda48f7cd103b51a760d49c75b0fda1cbd015b0d5efe383",
-      "apps/api/src/modules/learning/classroom-board-notes.ts": "c0de31588957e9d96fb536b2996cefd56db701a0cf3d010882a1403a0c4d67ed"
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "ad7f9b2807b4c3c983994a882f1c6d390a4cc84962b601b02fb65ffba6cbae6e",
+      "apps/api/src/modules/learning/classroom-board-notes.ts": "c0de31588957e9d96fb536b2996cefd56db701a0cf3d010882a1403a0c4d67ed",
+      "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428"
     },
-    "interpretation": "Authored lesson questions only; unit-exam reuse is not additional independent questions or student measurement evidence."
+    "interpretation": "Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course."
   }
 }

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T16:25:34.395Z",
+  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
+  "planRevision": "3775c8d",
+  "batch": "E02/E03 classroom practice, independent unit scenarios and review",
+  "goalComplete": false,
+  "requirements": [
+    "XP-B04",
+    "XP-B06",
+    "XP-E02",
+    "XP-E03",
+    "XP-E05"
+  ],
+  "scope": "Classroom content, durable assistance, first-answer summaries, exact snapshot recovery and explicit version switching. Not full product parity, calibrated measurement or teacher content approval.",
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "webTypes": true,
+    "isolatedProductionWeb": true,
+    "daemonProductionWeb": true
+  },
+  "api": {
+    "fullSuite": {
+      "command": "node ../../node_modules/vitest/vitest.mjs run",
+      "cwd": "apps/api",
+      "passed": 775,
+      "skipped": 6,
+      "failed": 0,
+      "filesPassed": 89,
+      "filesSkipped": 1,
+      "durationSeconds": 240.65,
+      "outputEvidence": "Completed tool session 86715 before final ordinary-old-URL recovery refinement."
+    },
+    "finalFocused": {
+      "command": "node ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-unit-checks.test.ts src/modules/learning/classroom.integration.test.ts",
+      "cwd": "apps/api",
+      "passed": 22,
+      "failed": 0,
+      "durationSeconds": 6.96,
+      "outputEvidence": "Final terminal run at local 2026-10-24 00:15:08 after old-URL refinement."
+    },
+    "fixture": "Real isolated SQLite with a prior frozen unit-question snapshot and private rubric; verifies restart, prior scoring, ordinary URL recovery, opt-in current content and disjoint question IDs.",
+    "environment": "Independent QA databases. No real family data or live paid model calls."
+  },
+  "browser": {
+    "fullSuite": {
+      "artifact": "data/qa/classroom-review-browser-final.json",
+      "stats": {
+        "startTime": "2026-10-23T16:08:27.584Z",
+        "duration": 102212.274,
+        "expected": 22,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "finalClassroomChecks": {
+      "artifact": "data/qa/classroom-review-release-final.json",
+      "stats": {
+        "startTime": "2026-10-23T16:21:02.730Z",
+        "duration": 42151.366,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "dataDirectory": "data/qa/classroom-review-release-20261024"
+    },
+    "note": "Full suite ran before final scroll and old-URL refinements; final eight classroom journeys passed on rebuilt isolated Web and fresh QA database. An intermediate reused-database run hit registration limits; product limits were retained.",
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "screenshotVisualReview": true,
+    "screenshots": [
+      "classroom-review-desktop.png",
+      "classroom-review-mobile.png"
+    ]
+  },
+  "content": {
+    "courseId": "sociology-foundations",
+    "courseVersion": "2026-10-23.3",
+    "units": 5,
+    "lectures": 15,
+    "microLessons": 60,
+    "lessonQuestions": 64,
+    "unitCheckQuestions": 60,
+    "distinctQuestionIds": 124,
+    "sourceSha256": {
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "ad7f9b2807b4c3c983994a882f1c6d390a4cc84962b601b02fb65ffba6cbae6e",
+      "apps/api/src/modules/learning/classroom-board-notes.ts": "c0de31588957e9d96fb536b2996cefd56db701a0cf3d010882a1403a0c4d67ed",
+      "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428"
+    },
+    "interpretation": "Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course.",
+    "lessonUnitQuestionIdOverlap": 0,
+    "uniqueMicroLessonTopicCoverage": 60
+  },
+  "runtime": {
+    "at": "2026-10-23T16:25:34.395Z",
+    "url": "http://127.0.0.1:3217",
+    "checks": [
+      {
+        "route": "/learn",
+        "status": 200
+      },
+      {
+        "route": "/studio/classroom",
+        "status": 200
+      },
+      {
+        "route": "/api/ready",
+        "status": 200
+      },
+      {
+        "route": "/api/learning/home",
+        "status": 401
+      },
+      {
+        "route": "/api/learning/classroom/sessions/:id/hints",
+        "status": 401
+      }
+    ],
+    "guestBrowserErrors": [],
+    "pm2Services": [
+      "study-agent-api",
+      "study-agent-web",
+      "study-agent-health"
+    ],
+    "deployment": "Previous production Web build retained by verified deployment helper; no family data mutation in smoke."
+  },
+  "artifactSha256": {
+    "data/qa/classroom-review-browser-final.json": "037f2130fdd57b3f35c9d021f717726d66f9bd948036af86bdf70bdba903db6d",
+    "data/qa/classroom-review-release-final.json": "d439f9a2322e8e91d98b40871605c8232fca2198b0a9fdbe5dbd2955a37c34d5"
+  },
+  "pending": [
+    "Most micro-lessons still have one practice question; full Practice expansion remains planned.",
+    "Progressive hints, explicit do-not-know and broader course lifecycle remain incomplete.",
+    "All new content needs teacher review and real learner validation; unique scenarios are not calibrated independent measurement.",
+    "Full HyperKnow state and pixel parity, full textbook coverage, physical-device and real spaced-retention acceptance remain unfinished."
+  ]
+}

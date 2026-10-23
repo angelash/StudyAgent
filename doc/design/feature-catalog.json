@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "3b67695853276ab06f33923dce75ad72bb72db87",
+  "sourceRevision": "5551169f650474d34e9b1742b09b990cceef2beb",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 104,
-    "activeNormalApiRoutes": 234,
-    "coveredApiRoutes": 234
+    "activeNormalApiRoutes": 235,
+    "coveredApiRoutes": 235
   },
   "areas": [
     {
@@ -4122,8 +4122,10 @@
       "tests": [
         "apps/api/src/modules/learning/studio.integration.test.ts",
         "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
         "tests/e2e/studio.spec.ts",
         "tests/e2e/classroom.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
         "tests/e2e/workspace.spec.ts"
       ],
       "features": [
@@ -4169,8 +4171,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4242,8 +4246,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4287,8 +4293,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4340,29 +4348,29 @@
               "controller": "ClassroomController",
               "method": "narration",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 25
+              "line": 28
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 48
+              "line": 59
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 46
+              "line": 57
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 76
+              "line": 93
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 151
+              "line": 187
             }
           ],
           "sourceFiles": [
@@ -4371,8 +4379,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4400,14 +4410,14 @@
               "controller": "ClassroomController",
               "method": "ask",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 18
+              "line": 21
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 119
+              "line": 155
             }
           ],
           "sourceFiles": [
@@ -4416,14 +4426,16 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
         {
           "id": "STUDIO-06",
-          "title": "独立课堂练习与项目草稿",
+          "title": "课堂练习、单元核查与复盘",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生；成人课程目录限家长/管理员",
@@ -4431,13 +4443,13 @@
             "/studio",
             "/studio/classroom"
           ],
-          "inputs": "questionId、selectedIndex/null、hintUsed、projectDraft",
-          "implementation": "四选一题卡支持Check/Skip、键盘和题目进度；首次作答、跳过和提示记录持久化；项目草稿保存后可继续，单元核查复用现有题目。",
-          "outputs": "本次题目表现和项目草稿",
+          "inputs": "questionId、selectedIndex/null、hintUsed、requestKey、projectDraft",
+          "implementation": "保留64道微课题，另编60道单元新情境题；提示先保存再显示，服务端合并辅助事实；首次作答锁定，恢复首个未答题；完成后区分独立正确、答错、跳过和辅助，回看解释并返回对应微课；旧会话按冻结量规恢复，明确切换才进入新版本；项目草稿可恢复。",
+          "outputs": "124个不同题目ID、本次表现复盘、旧版学习记录与项目草稿",
           "collections": [
             "classroomSessions"
           ],
-          "limits": "60微课共64道课堂题，单元题复用不算新的独立测量；不能当作完整标准化题库。",
+          "limits": "多数微课仍只有一道课堂题；新题需教师审核和真人验证，内容不重复不等于已标定的测量独立性；不直接推断稳定掌握。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4446,23 +4458,41 @@
               "method": "answer",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
               "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:id/hints",
+              "controller": "ClassroomController",
+              "method": "hint",
+              "file": "apps/api/src/modules/learning/classroom.controller.ts",
+              "line": 18
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 95
+              "line": 112
+            },
+            {
+              "name": "ClassroomService.hint",
+              "file": "apps/api/src/modules/learning/classroom.service.ts",
+              "line": 136
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/learning/classroom-unit-checks.ts",
+            "apps/web/app/studio/classroom/practice-panel.tsx",
+            "apps/web/app/studio/classroom/practice-review.css",
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4493,8 +4523,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4521,8 +4553,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4581,8 +4615,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4627,8 +4663,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4700,8 +4738,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4732,8 +4772,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4790,8 +4832,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4850,8 +4894,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4910,8 +4956,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4984,8 +5032,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5057,8 +5107,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5144,8 +5196,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5189,8 +5243,10 @@
           "tests": [
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         }

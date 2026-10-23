@@ -8,6 +8,9 @@ const { createHash } = require('node:crypto');
 const { chromium } = require('@playwright/test');
 const root = path.resolve(__dirname, '../..');
 const design = path.join(root, 'doc/design');
+const applicationReceipt = path.resolve(root, process.argv[2] || 'doc/evidence/2026-10-23/learning-home-acceptance.json');
+assert(applicationReceipt.startsWith(root + path.sep), 'Application receipt must stay inside the repository');
+const applicationEvidence = JSON.parse(fs.readFileSync(applicationReceipt, 'utf8'));
 const json = file => JSON.parse(fs.readFileSync(path.join(design, file), 'utf8'));
 const inventory = json('generated/source-inventory.json'), catalog = json('feature-catalog.json');
 const coverage = json('generated/coverage.json'), snapshot = json('generated/content-snapshot.json');
@@ -136,8 +139,8 @@ async function main() {
       staticContent: { receipt: 'content-snapshot.json', authoredAuditAt: snapshot.authored.auditAt, totals: snapshot.authored.totals },
       offlineViewer: { checks, browserErrors, externalNetworkRequests: networkRequests, viewports: [1440, 768, 390], screenshots: ['data/qa/project-design-viewer/desktop.png', 'data/qa/project-design-viewer/mobile.png'] },
       applicationBaselineEvidence: { newlyRunByThisScript: false,
-        receipt: '../evidence/2026-10-23/learning-home-acceptance.json',
-        revision: JSON.parse(fs.readFileSync(path.join(root, 'doc/evidence/2026-10-23/learning-home-acceptance.json'), 'utf8')).sourceRevision,
+        receipt: path.relative(design, applicationReceipt).split(path.sep).join('/'),
+        revision: applicationEvidence.sourceRevision,
         note: 'Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result.' }
     };
     fs.writeFileSync(path.join(design, 'generated/design-validation.json'), JSON.stringify(receipt, null, 2) + '\n');

@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`5551169f650474d34e9b1742b09b990cceef2beb`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -105,16 +105,17 @@
 - `ClassroomDiagram`：[packages/contracts/src/classroom.ts:3](../../../packages/contracts/src/classroom.ts#L3)；字段：`kind`、`title`、`labels`、`values?`、`captions?`。
 - `ClassroomBlock`：[packages/contracts/src/classroom.ts:4](../../../packages/contracts/src/classroom.ts#L4)；字段：`id`、`kind`、`text`、`atSentence?`、`items?`、`image?`、`diagram?`、`code?`、`table?`。
 - `ClassroomStep`：[packages/contracts/src/classroom.ts:7](../../../packages/contracts/src/classroom.ts#L7)；字段：`id`、`title`、`narration`、`blocks`、`phase`、`durationMs`。
-- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:9](../../../packages/contracts/src/classroom.ts#L9)；字段：`id`、`prompt`、`options`、`hint`。
-- `ClassroomLesson`：[packages/contracts/src/classroom.ts:10](../../../packages/contracts/src/classroom.ts#L10)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`questions`、`verificationHref?`。
-- `ClassroomLecture`：[packages/contracts/src/classroom.ts:12](../../../packages/contracts/src/classroom.ts#L12)；字段：`id`、`title`、`description`、`lessons`。
-- `ClassroomUnit`：[packages/contracts/src/classroom.ts:13](../../../packages/contracts/src/classroom.ts#L13)；字段：`id`、`title`、`objective`、`lectures`、`project`。
-- `ClassroomCourse`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
-- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:17](../../../packages/contracts/src/classroom.ts#L17)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`explanation`、`hintUsed`、`at`。
-- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:19](../../../packages/contracts/src/classroom.ts#L19)；字段：`id`、`role`、`content`、`at`、`modelName?`、`board?`。
-- `ClassroomSession`：[packages/contracts/src/classroom.ts:21](../../../packages/contracts/src/classroom.ts#L21)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`createdAt`、`updatedAt`。
-- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:27](../../../packages/contracts/src/classroom.ts#L27)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:28](../../../packages/contracts/src/classroom.ts#L28)；字段：`course`、`progress`。
+- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:9](../../../packages/contracts/src/classroom.ts#L9)；字段：`id`、`prompt`、`options`、`hint`、`topic?`、`purpose?`。
+- `ClassroomLesson`：[packages/contracts/src/classroom.ts:11](../../../packages/contracts/src/classroom.ts#L11)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`questions`、`verificationHref?`、`assessment?`。
+- `ClassroomLecture`：[packages/contracts/src/classroom.ts:14](../../../packages/contracts/src/classroom.ts#L14)；字段：`id`、`title`、`description`、`lessons`。
+- `ClassroomUnit`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；字段：`id`、`title`、`objective`、`lectures`、`project`。
+- `ClassroomCourse`：[packages/contracts/src/classroom.ts:17](../../../packages/contracts/src/classroom.ts#L17)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
+- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:19](../../../packages/contracts/src/classroom.ts#L19)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`explanation`、`hintUsed`、`at`。
+- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:21](../../../packages/contracts/src/classroom.ts#L21)；字段：`id`、`role`、`content`、`at`、`modelName?`、`board?`。
+- `ClassroomSession`：[packages/contracts/src/classroom.ts:23](../../../packages/contracts/src/classroom.ts#L23)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`createdAt`、`updatedAt`。
+- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:29](../../../packages/contracts/src/classroom.ts#L29)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:31](../../../packages/contracts/src/classroom.ts#L31)；字段：`course`、`progress`、`archivedSessions?`。
+- `ClassroomPracticeSummary`：[packages/contracts/src/classroom.ts:35](../../../packages/contracts/src/classroom.ts#L35)；字段：`total`、`answered`、`remaining`、`correct`、`incorrect`、`skipped`、`assisted`、`independentCorrect`、`complete`、`nextQuestionIndex`、`reviewQuestionIds`。
 
 ### packages/contracts/src/curriculum.ts
 
