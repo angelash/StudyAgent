@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-23T04:59:32.086Z",
+  "scope": "Classroom notes, sentence audio/subtitles, generated images, comparison table and independent practice refinement",
+  "catalog": {
+    "units": 5,
+    "lectures": 15,
+    "microLessons": 60,
+    "authoredQuestions": 64,
+    "firstLessonQuestions": 5,
+    "optionsPerQuestion": 4,
+    "unitReviewCounts": [
+      16,
+      12,
+      12,
+      12,
+      12
+    ],
+    "reviewsReuseClassroomQuestions": true
+  },
+  "verification": {
+    "apiFull": {
+      "passed": 743,
+      "skipped": 6
+    },
+    "wholeProductBrowserBeforeFinalClassroomScrollRefinement": {
+      "passed": 11
+    },
+    "finalClassroomBrowser": {
+      "passed": 6,
+      "pending": false
+    },
+    "typeChecks": "API and Web passed",
+    "referenceCapture": {
+      "cssViewport": [
+        1000,
+        959
+      ],
+      "deviceScaleFactor": 1.25,
+      "imageSize": [
+        1250,
+        1199
+      ],
+      "sourceScale": "Inferred from visible screenshot and element coordinates; not original device scripting"
+    },
+    "realProviders": "classroom-runtime-v2.json",
+    "generatedAssets": "classroom-generated-assets-v2.json"
+  },
+  "limitations": [
+    "No original CSS or downloadable assets extracted; current Browser Runtime does not expose source or resource export",
+    "Only first lesson parts and one practice surface observed",
+    "Two generated illustrations are curated assets; on-demand bitmap generation is not part of every live question",
+    "Original font, course cover, voices and all dynamic pixels are not identical"
+  ]
+}

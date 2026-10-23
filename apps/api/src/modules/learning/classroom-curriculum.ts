@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { ClassroomCourse, ClassroomDiagram, ClassroomLesson, ClassroomStep, StudioCourse, StudioLesson } from '@study-agent/contracts';
+import { conceptNotes } from './classroom-board-notes';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -108,18 +109,25 @@ const seeds: Array<{ title: string; objective: string; project: string; lectures
   ] },
 ];
 
-function step(id: string, phase: ClassroomStep['phase'], title: string, narration: string, diagram?: ClassroomDiagram): ClassroomStep {
+function step(id: string, phase: ClassroomStep['phase'], title: string, narration: string, diagram?: ClassroomDiagram, notes?: string[]): ClassroomStep {
   return { id, phase, title, narration, durationMs: Math.max(5500, narration.length * 165), blocks: [
     { id: id + ':heading', kind: 'heading', text: title },
-    { id: id + ':text', kind: 'text', text: narration },
-    ...(diagram ? [{ id: id + ':diagram', kind: 'diagram' as const, text: diagram.title, diagram }] : []),
+    { id: id + ':points', kind: 'points', text: title, items: notes ?? {
+      orient: ['概念是什么？', '怎样解释生活？', '用什么证据核查？'],
+      concept: ['识别关键概念', '区分适用条件与边界'],
+      example: ['先记录观察事实', '再提出机制与替代解释'],
+      contrast: ['警惕“全部、必然、唯一”等绝对判断', '补足条件，再检查证据'],
+      check: ['独立判断', '说明理由', '对照反馈，修正解释'],
+      transfer: ['新情境：观察 → 解释 → 证据', '加入项目，再用新题核查'],
+    }[phase] },
+    ...(diagram ? [{ id: id + ':diagram', kind: 'diagram' as const, text: diagram.title, diagram, atSentence: 1 }] : []),
   ] };
 }
 
 const lessonMap = new Map<string, ClassroomLesson>();
 const keys = new Map<string, { answer: number; explanation: string }>();
 const course: ClassroomCourse = {
-  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: '2026-10-23.1',
+  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: '2026-10-23.2',
   description: '从自己的生活出发，看见文化、关系和制度如何共同塑造社会。五个单元串起概念、案例、练习与一个持续推进的社区研究。',
   provenance: 'StudyAgent 自编教学内容；课程层级与交互参考用户指定HyperKnow页面的可见观察。成人课程记录独立于小学能力评测。',
   references: [{ title: 'OpenStax · Introduction to Sociology 3e', url: 'https://openstax.org/details/books/introduction-sociology-3e' }],
@@ -129,25 +137,34 @@ const course: ClassroomCourse = {
     lectures: unit.lectures.map(([title, topics], li) => ({ id: `soc-u${ui + 1}-l${li + 1}`, title, description: `围绕${title}，通过四段微课完成概念辨析与情境应用。`,
       lessons: topics.map(([name, concept, example, misconception, inference], ti) => {
         const id = `soc-${ui + 1}-${li + 1}-${ti + 1}`, questionId = id + ':check';
-        const answer = (ui + li + ti) % 2;
-        const options = answer === 0 ? [inference, misconception] : [misconception, inference];
+        const answer = (ui + li + ti) % 4;
+        const options = [misconception, '只描述个人态度，不必比较情境或规则。', '只记录结果，不需要区分观察与解释。'];
+        options.splice(answer, 0, inference);
         keys.set(questionId, { answer, explanation: inference + ' ' + concept });
         const diagram: ClassroomDiagram = id === 'soc-1-1-1'
           ? { kind: 'venn', title: '个人处境与社会条件的交汇', labels: ['个人经历', '社会条件', '社会学想象力'], captions: ['传记 · Biography', '历史 · History'] }
           : { kind: 'flow', title: '从观察走向可以核查的解释', labels: [name, '情境与规则', '证据与替代解释'] };
         const steps = [
           step(id + ':orient', 'orient', '本节课导航', `今天一起研究“${name}”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？`),
-          step(id + ':concept', 'concept', name, concept, diagram),
+          step(id + ':concept', 'concept', name, concept, diagram, conceptNotes[name]),
           step(id + ':example', 'example', '把概念放进生活', example),
           step(id + ':contrast', 'contrast', '一个常见的误区', `先检验这句话：“${misconception}” 它省略了哪些条件？${inference}`),
           step(id + ':check', 'check', '停下来，检查理解', '请先用自己的话解释这个情境，再打开右侧的课堂练习。答错时先比较两种解释；使用提示也会记录下来，这只是学习记录。'),
           step(id + ':transfer', 'transfer', '带到一个新情境', `选择另一个与${name}有关的匿名日常情境。写清观察、解释和还需要的证据，然后把它加入本单元项目。看完讲解只表示接触过内容，能否迁移要用新情境再核查。`),
         ];
         if (id === 'soc-1-1-1') {
+          steps[1].blocks = steps[1].blocks.filter(block => block.kind !== 'diagram');
+          steps[1].blocks.push({ id: id + ':concept-image', kind: 'image', text: '个人处境与社会条件的交汇', atSentence: 1,
+            image: { src: '/classroom/venn-d8b3f1.webp', alt: '个人处境与社会条件的交汇', caption: '传记与历史的交汇点 · 社会学想象力' } });
           steps.splice(2, 0, step(id + ':scale', 'example', '先看问题的规模', '一个人找不到工作时，可以调查技能和求职过程；同一产业大量岗位一起消失时，还必须检查需求、投资与政策。规模变化提示我们扩大解释范围，但规模本身还不是因果证明。',
             { kind: 'bars', title: '相同现象，不同分析层次', labels: ['个人处境', '行业岗位变化'], values: [1, 80] }));
           steps.splice(4, 0, step(id + ':agency', 'contrast', '行动仍然有位置', '看见结构不是放弃行动。把船放在河流中：你能调整划桨方式，也能与他人改善航道；但水流和航道决定行动需要面对什么条件。',
-            { kind: 'flow', title: '条件与行动相互影响', labels: ['现有条件', '个人与集体行动', '条件被重新塑造'] }));
+            undefined, ['划桨：个人能动性', '水流与航道：结构条件', '集体行动：也能改变航道']));
+          steps[4].blocks.push({ id: id + ':agency-image', kind: 'image', text: '能动性与结构', atSentence: 1,
+            image: { src: '/classroom/agency-river-c7a9e2.webp', alt: '划船者选择划桨方式，水流限制前进条件，岸边的人合作改善航道', caption: '划桨、河流与航道 · 概念示意' } });
+          steps[2].blocks[1].items = ['个体处境：检查经历与求职过程', '群体变化：检查行业与制度条件', '规模提示分析层次，不直接证明因果'];
+          steps[3].blocks[1].items = ['观察：多家工厂同时关闭', '问题：岗位变化还是个体差异？'];
+          steps[5].blocks[1].items = ['个人困扰：近处情境中的经历', '公共议题：群体与制度层面的模式'];
           steps[2].blocks.push({ id: id + ':code', kind: 'code', text: '用数值比较数量与比例：可编辑的演示，不是真实社会数据',
             code: 'const groups = [{name: "甲地区", unemployed: 20, population: 100}, {name: "乙地区", unemployed: 40, population: 1000}];\nfor (const g of groups) console.log(g.name + ": " + (g.unemployed / g.population * 100).toFixed(1) + "%");' });
           steps[5].blocks.push({ id: id + ':comparison', kind: 'table', text: '个人困扰与公共议题', table: {
@@ -159,6 +176,20 @@ const course: ClassroomCourse = {
         const lesson: ClassroomLesson = { id, lectureId: `soc-u${ui + 1}-l${li + 1}`, title: name,
           objective: `能在新情境中区分关于“${name}”的解释，并指出需要进一步核查的证据。`, steps,
           questions: [{ id: questionId, prompt: example + '\n哪一种分析更符合本节概念？', options, hint: '先区分观察事实和解释，再检查哪一项把有条件的关系说成了绝对关系。' }] };
+        if (id === 'soc-1-1-1') {
+          const checks = [
+            ['个人与历史', '根据 C. Wright Mills 的分析，“社会学想象力”帮助我们怎样理解个人经历与社会环境之间的关系？', ['把个人经历与时代、制度联系起来', '只研究人的性格', '证明个人没有任何选择', '用个人成功证明所有制度公平'], 0, '个人处境与社会条件需要放在一起分析。'],
+            ['层次辨析', '同一行业多家工厂关闭，许多熟练工同时失业。下一步优先核查什么？', ['每个人是否都懒惰', '产业需求与岗位结构如何变化', '只看一个工人的简历', '直接认定所有个人因素都不相关'], 1, '群体模式提示结构层面的问题，但仍需比较证据。'],
+            ['能动性', '划船比喻中，哪一项最能体现“结构中的能动性”？', ['水流完全决定结局', '划桨能无视所有水流', '调整划法，并合作改善航道', '只要努力，所有人的条件就相同'], 2, '行动发生在条件中，也可能改变条件。'],
+            ['证据边界', '为什么不能仅凭大量失业就宣布已经证明某个原因？', ['人数没有研究价值', '个人经历才是唯一证据', '所有原因永远无法研究', '还需要比较时期、条件与替代解释'], 3, '规模是分析线索，因果判断还需其他证据。'],
+            ['迁移应用', '一项相同作业在不同家庭中完成难度不同。哪种研究设计更合理？', ['比较安静空间、设备与成人支持', '只给学生贴上努力程度标签', '假定所有家庭的资源相同', '只收集一个成功故事就结束'], 0, '比较具体条件，才能解释相同任务中的机会差异。'],
+          ] as const;
+          lesson.questions = checks.map(([label, prompt, answers, correct, explanation], index) => {
+            const checkId = index === 0 ? questionId : id + ':check:' + index;
+            keys.set(checkId, { answer: correct, explanation });
+            return { id: checkId, prompt, options: [...answers], hint: '回想“' + label + '”的分析边界，排除忽略条件或把关系说成绝对的解释。' };
+          });
+        }
         lessonMap.set(id, lesson);
         return { id, title: name, objective: lesson.objective };
       }),
@@ -186,8 +217,8 @@ export function curriculumClassroomLesson(studioCourse: StudioCourse, source: St
   const id = source.id;
   const steps = [
     step(id + ':orient', 'orient', '本节课导航', source.objective),
-    step(id + ':concept', 'concept', source.title, teaching.explanation),
-    step(id + ':example', 'example', teaching.example.prompt, teaching.example.steps.join('。') + '。' + teaching.example.conclusion),
+    step(id + ':concept', 'concept', source.title, teaching.explanation, undefined, [source.title, '注意适用条件与易混概念']),
+    step(id + ':example', 'example', teaching.example.prompt, teaching.example.steps.join('。') + '。' + teaching.example.conclusion, undefined, teaching.example.steps),
     ...teaching.commonErrors.slice(0, 2).map((error, index) => step(id + ':contrast:' + index, 'contrast', '常见误区：' + error.observation,
       error.alternativeExplanations.join('；') + '。核查方法：' + error.verification)),
     step(id + ':check', 'check', '用新题检查', teaching.verification.understanding + '。' + teaching.verification.procedure),

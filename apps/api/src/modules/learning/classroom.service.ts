@@ -2,6 +2,7 @@ import { BadRequestException, ConflictException, ForbiddenException, Injectable,
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView } from '@study-agent/contracts';
+import { classroomSentences } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
@@ -64,7 +65,7 @@ export class ClassroomService {
     }));
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
-      contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, status: 'paused', revision: 0,
+      contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);
     return this.view(session);
@@ -73,12 +74,15 @@ export class ClassroomService {
   progress(user: InMemoryUserAccount, id: string, input: unknown) {
     const row = this.record(user, id);
     const command = validate(z.object({ expectedRevision: z.number().int().min(0), cursor: z.number().int().min(0),
-      revealed: z.number().int().min(0), completed: z.boolean().optional(), projectDraft: z.string().max(20000).optional() }).strict(), input);
+      revealed: z.number().int().min(0), sentenceCursor: z.number().int().min(0).optional(), completed: z.boolean().optional(), projectDraft: z.string().max(20000).optional() }).strict(), input);
     if (command.expectedRevision !== row.revision) throw new ConflictException('课堂已在其他页面更新，请重新载入断点');
     const count = row.lesson.steps.length;
     if (command.cursor >= count || command.revealed > count || command.cursor > command.revealed)
       throw new BadRequestException('课堂断点超出范围');
     if (command.completed && command.revealed !== count) throw new BadRequestException('请先完成所有讲解步骤');
+    const sentenceCursor = command.sentenceCursor ?? (command.cursor === row.cursor ? row.sentenceCursor ?? 0 : 0);
+    if (sentenceCursor >= classroomSentences(row.lesson.steps[command.cursor].narration).length) throw new BadRequestException('字幕句子超出范围');
+    row.sentenceCursor = sentenceCursor;
     row.cursor = command.cursor; row.revealed = Math.max(row.revealed, command.revealed);
     if (command.completed) row.status = 'completed';
     if (command.projectDraft !== undefined) row.projectDraft = command.projectDraft;
@@ -102,7 +106,8 @@ export class ClassroomService {
     // The first submitted answer is immutable. Reopening a lesson cannot erase an error or hint.
     if (!row.answers.some(answer => answer.questionId === command.questionId)) {
       row.answers.push({ questionId: question.id, selectedIndex: command.selectedIndex, correct: command.selectedIndex === key.answer,
-        skipped: command.selectedIndex === null, explanation: key.explanation, hintUsed: command.hintUsed, at: new Date().toISOString() });
+        skipped: command.selectedIndex === null, explanation: key.explanation,
+        hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)), at: new Date().toISOString() });
       row.revision++; row.updatedAt = new Date().toISOString();
     }
     row.requests.push({ key: command.requestKey, hash, kind: 'answer', questionId: command.questionId });
@@ -112,9 +117,11 @@ export class ClassroomService {
   async ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal) {
     const row = this.record(user, id);
     const command = validate(z.object({ message: z.string().trim().min(1).max(2000), modelId: z.string().max(180).default('auto'),
-      requestKey: z.string().min(8).max(180) }).strict(), input);
+      questionId: z.string().max(200).optional(), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const question = command.questionId ? row.lesson.questions.find(item => item.id === command.questionId) : undefined;
+    if (command.questionId && !question) throw new BadRequestException('练习题目不存在');
     if (row.messages.length >= 100) throw new BadRequestException('本节对话已达到上限，请开始新的微课');
-    const hash = createHash('sha256').update(JSON.stringify([command.message, command.modelId])).digest('hex'), previous = row.requests.find(request => request.key === command.requestKey);
+    const hash = createHash('sha256').update(JSON.stringify([command.message, command.modelId, command.questionId ?? null])).digest('hex'), previous = row.requests.find(request => request.key === command.requestKey);
     if (previous) {
       if (previous.kind !== 'chat' || previous.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
       return this.view(row);
@@ -123,12 +130,14 @@ export class ClassroomService {
     const response = await this.chat.reply({ modelId: command.modelId, signal, classroomBoard: true,
       system: '你是课堂陪伴老师。仅根据本节讲解解释概念与例子，先诊断学生困惑，再给一个可验证的小步骤。不要替学生选择未作答题目的选项，不声称其已经掌握，不输出可执行HTML或工具调用。',
       context: JSON.stringify({ title: row.lesson.title, objective: row.lesson.objective,
+        ...(question ? { practiceQuestion: question, submitted: row.answers.some(answer => answer.questionId === question.id) } : {}),
         teaching: row.lesson.steps.slice(0, Math.max(1, row.revealed)).map(item => ({ title: item.title, narration: item.narration })),
         projectDraft: row.projectDraft.slice(0, 10000) }),
       history: row.messages.map(message => ({ role: message.role, content: message.content })), message: command.message });
     if (signal?.aborted) throw new BadRequestException('课堂插问已停止');
     const now = new Date().toISOString();
     const board = response.board;
+    if (question) row.hintedQuestionIds = [...new Set([...(row.hintedQuestionIds ?? []), question.id])];
     row.messages.push({ id: this.store.nextId('classroom_message'), role: 'user', content: command.message, at: now },
       { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, modelName: response.modelName, at: now,
         ...(board ? { board: { ...board, page: boardPage } } : {}) });
@@ -141,8 +150,11 @@ export class ClassroomService {
     const row = this.record(user, id), step = row.lesson.steps.find(item => item.id === stepId);
     const message = row.messages.find(item => item.id === stepId && item.role === 'assistant');
     if (!step && !message) throw new NotFoundException('讲解步骤不存在');
-    const command = validate(z.object({ voice: z.string().min(1).max(120).optional() }).strict(), input ?? {});
-    const audio = await this.speech.synthesize(step?.narration ?? message!.content, command.voice);
+    const command = validate(z.object({ voice: z.string().min(1).max(120).optional(), sentenceIndex: z.number().int().min(0).optional() }).strict(), input ?? {});
+    const text = step?.narration ?? message!.content;
+    const sentence = command.sentenceIndex === undefined ? text : classroomSentences(text)[command.sentenceIndex];
+    if (!sentence) throw new BadRequestException('讲解句子不存在');
+    const audio = await this.speech.synthesize(sentence, command.voice);
     return new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length });
   }
 }

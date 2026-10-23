@@ -46,7 +46,7 @@ test('course classroom supports teaching, executable examples, learning checks a
   await page.getByRole('switch', { name: /Background dots/ }).click();
   if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-settings.png', fullPage: true });
   await page.getByRole('button', { name: '关闭课堂设置' }).click();
-  await page.getByRole('tab', { name: '课堂练习' }).click(); await page.locator('.cl-quiz input[type=radio]').first().check();
+  await page.getByRole('tab', { name: '课堂练习' }).click(); await page.locator('.cl-practice-options input[type=radio]').first().check();
   await page.getByRole('button', { name: '先给我一个提示' }).click(); await page.getByRole('button', { name: 'Check →' }).click();
   await expect(page.locator('.cl-answer-feedback')).toContainText('使用过提示');
   const receipt = await page.locator('.cl-answer-feedback').innerText();
@@ -95,7 +95,7 @@ test('audio playback ends drive teaching progress and pause prevents later autom
   await expect(page.getByRole('tab', { name: '课堂练习' })).toHaveAttribute('aria-selected', 'true');
   await expect(page.getByRole('button', { name: '继续讲解' })).toBeVisible();
   await expect(page.locator('.cl-session-navigation')).toContainText('7 / 8');
-  await page.locator('.cl-quiz input[type=radio]').first().check(); await page.getByRole('button', { name: 'Check →' }).click();
+  await page.locator('.cl-practice-options input[type=radio]').first().check(); await page.getByRole('button', { name: 'Check →' }).click();
   await expect(page.locator('.cl-answer-feedback')).toBeVisible();
   await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
   await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
@@ -152,4 +152,102 @@ test('question replies add safe board notes with page links, export and restored
     await expect(page.locator('.cl-ai-board')).toHaveCSS('opacity', '1');
     await page.screenshot({ path: evidenceDirectory + '/classroom-ai-board.png', fullPage: true });
   }
+});
+
+test('board notes reveal whole items and subtitle advances only at spoken sentence boundaries', async ({ page }) => {
+  test.setTimeout(60000); await login(page);
+  await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+  const withSpeech = async (route: import('@playwright/test').Route) => {
+    const response = await route.fetch(), body = await response.json();
+    body.data.speech = { available: true, provider: 'minimax', defaultVoice: 'fixture', voices: [{ id: 'fixture', label: '测试音轨' }] };
+    await route.fulfill({ response, json: body });
+  };
+  await page.route('**/api/learning/classroom/sessions', withSpeech);
+  await page.route('**/api/learning/classroom/sessions/*', withSpeech);
+  const requested: number[] = [];
+  await page.route('**/api/learning/classroom/sessions/*/narration/*', async route => {
+    requested.push(route.request().postDataJSON().sentenceIndex);
+    await route.fulfill({ contentType: 'audio/wav', body: wav(3) });
+  });
+  await page.goto('/studio/classroom?lesson=soc-1-1-1');
+  await page.getByRole('button', { name: '▶ 开始学习' }).click();
+  await expect(page.locator('.cl-subtitle')).toHaveText('今天一起研究“社会学想象力”。');
+  await expect(page.locator('.cl-board-area .cl-board-points li')).toHaveCount(1);
+  await expect(page.locator('.cl-board-area .cl-board-points li')).toHaveText('概念是什么？');
+  await page.waitForTimeout(600);
+  await expect(page.locator('.cl-subtitle')).toHaveText('今天一起研究“社会学想象力”。');
+  await expect(page.locator('.cl-board-area .cl-board-points li')).toHaveCount(1);
+  await expect(page.locator('.cl-subtitle')).toHaveAttribute('data-sentence', '1');
+  await page.getByRole('button', { name: '暂停讲解' }).click();
+  await expect(page.locator('.cl-board-area .cl-board-points li')).toHaveCount(2);
+  await expect(page.locator('.cl-board-area .cl-board-points li').nth(1)).toHaveText('怎样解释生活？');
+  const subtitle = await page.locator('.cl-subtitle').innerText();
+  await page.waitForTimeout(3500); await expect(page.locator('.cl-subtitle')).toHaveText(subtitle);
+  await page.reload(); await expect(page.locator('.cl-subtitle')).toHaveText(subtitle);
+  await expect(page.locator('.cl-board-area .cl-board-points li')).toHaveCount(2);
+  expect(requested.slice(0, 2)).toEqual([0, 1]);
+  await page.getByRole('button', { name: '继续讲解' }).click();
+  await expect.poll(() => requested.filter(index => index === 1).length).toBe(2);
+  await expect(page.locator('.cl-subtitle')).toHaveText(subtitle);
+  await page.getByRole('button', { name: '暂停讲解' }).click();
+});
+
+test('independent practice matches four-option illustrated question flow on desktop and phone', async ({ page }) => {
+  await page.setViewportSize({ width: 1250, height: 1199 }); await login(page);
+  await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+  await page.goto('/studio/classroom?lesson=soc-1-1-1&tab=practice');
+  await expect(page.getByRole('region', { name: '课堂练习题目' })).toBeVisible();
+  await expect(page.locator('.cl-practice-progress button')).toHaveCount(5);
+  await expect(page.locator('.cl-practice-options label')).toHaveCount(4);
+  await expect(page.locator('.cl-practice-image img')).toHaveJSProperty('complete', true);
+  await expect(page.locator('.cl-practice-image img')).toHaveJSProperty('naturalWidth', 1024);
+  await expect(page.getByRole('button', { name: 'Check →' })).toBeDisabled();
+  if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-practice-v2.png', fullPage: true });
+  await page.locator('.cl-practice-prompt h2').click(); await page.keyboard.press('1');
+  await page.getByRole('button', { name: 'Check →' }).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');
+  await page.getByRole('button', { name: '下一题 →' }).click();
+  await page.getByRole('button', { name: 'Skip', exact: true }).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('已跳过');
+  await page.getByRole('button', { name: '☏ Assistant' }).click();
+  await expect(page.getByLabel('向课堂老师提问')).toBeVisible();
+  await page.getByRole('button', { name: '隐藏对话面板' }).click();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-practice-phone-v2.png', fullPage: true });
+  await page.reload(); await page.getByRole('button', { name: '第2题', exact: true }).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('已跳过');
+});
+
+test.describe('reference viewport and display scaling', () => {
+  test.use({ viewport: { width: 1000, height: 959 }, deviceScaleFactor: 1.25 });
+  test('practice geometry, whiteboard image and comparison table use the observed display scale', async ({ page }) => {
+    await login(page); await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+    await page.goto('/studio/classroom?lesson=soc-1-1-1&tab=practice');
+    await expect(page.locator('.cl-practice-options')).toBeVisible();
+    const card = await page.locator('.cl-practice-card').boundingBox();
+    expect(card?.x).toBe(36); expect(card?.y).toBe(52); expect(card?.width).toBe(928);
+    if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-practice-reference-scale-v2.png' });
+    await page.goto('/studio/classroom?lesson=soc-1-1-1');
+    await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+    await page.getByRole('button', { name: '放大图片：传记与历史的交汇点 · 社会学想象力' }).click();
+    await expect(page.getByRole('dialog', { name: '传记与历史的交汇点 · 社会学想象力' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog', { name: '传记与历史的交汇点 · 社会学想象力' })).toHaveCount(0);
+    await expect(page.locator('.cl-board-area .cl-board-step[data-current=true]')).toHaveCSS('opacity', '1');
+    await page.locator('.cl-board-area .cl-lesson-image').scrollIntoViewIfNeeded();
+    await expect(page.locator('.cl-board-area .cl-lesson-image')).toBeInViewport({ ratio: 0.8 });
+    if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-board-reference-scale-v2.png' });
+    for (let index = 0; index < 4; index++) {
+      const before = await page.locator('.cl-session-navigation').innerText();
+      await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+      await expect(page.locator('.cl-session-navigation')).not.toHaveText(before, { useInnerText: true });
+    }
+    await expect(page.locator('.cl-board-area table')).toBeVisible();
+    await expect(page.locator('.cl-board-area table tbody tr')).toHaveCount(2);
+    await expect(page.locator('.cl-board-area .cl-board-step[data-current=true]')).toHaveCSS('opacity', '1');
+    await page.locator('.cl-board-area table').scrollIntoViewIfNeeded();
+    await expect(page.locator('.cl-board-area table')).toBeInViewport({ ratio: 0.8 });
+    if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-table-reference-scale-v2.png' });
+  });
 });

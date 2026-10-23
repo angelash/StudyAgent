@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-23T04:40:10.756Z",
+  "scope": "Owned synthetic account, temporary SQLite database, real Xiaojiu model and configured speech provider; not original HyperKnow audio or human listening comparison",
+  "checks": {
+    "realSessionOpened": true,
+    "speech": {
+      "provider": "minimax",
+      "sentenceIndex": 0,
+      "contentType": "audio/wav",
+      "bytes": 102212,
+      "sha256": "231cdcf06491449024cfc5909b1cbdedad7264ac11ce4eeb5fdf8d450249ccda",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "3.192750"
+        }
+      },
+      "artifact": "classroom-runtime-v2-narration.wav"
+    },
+    "realModelChat": {
+      "modelName": "DeepSeek V4.1 Flash",
+      "replyCharacters": 180,
+      "pairedMessages": 2,
+      "persistedCursor": 1,
+      "persistedRevealed": 2,
+      "board": {
+        "titleCharacters": 13,
+        "points": 3,
+        "page": 0,
+        "diagram": null
+      },
+      "answerKeysHidden": true,
+      "diagnosticEvidenceUnchanged": true
+    },
+    "chatReloaded": true,
+    "boardReloaded": true
+  },
+  "passed": true
+}

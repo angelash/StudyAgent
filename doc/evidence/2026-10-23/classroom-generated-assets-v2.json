@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-23T04:50:23.205Z",
+  "skill": "aigw-imagegen",
+  "transport": "Xiaojiu local proxyv2",
+  "assets": [
+    {
+      "name": "agency-river-c7a9e2",
+      "model": "gpt-image-2",
+      "path": "apps/web/public/classroom/agency-river-c7a9e2.webp",
+      "sha256": "a752e19fd064980f246332d55d2eb6f9c5dd756474377177961d281196fd4ee7",
+      "original": "artifacts/classroom/agency-river-c7a9e2.png",
+      "prompt": "artifacts/classroom/agency-river-prompt-c7a9e2.txt"
+    },
+    {
+      "name": "venn-d8b3f1",
+      "model": "gpt-image-2",
+      "path": "apps/web/public/classroom/venn-d8b3f1.webp",
+      "sha256": "579a69179408733b44737aef42598a6db8a67dd431494ee39a88e28acac98b76",
+      "original": "artifacts/classroom/venn-d8b3f1.png",
+      "prompt": "artifacts/classroom/venn-prompt-d8b3f1.txt"
+    }
+  ],
+  "scope": "Independently generated classroom illustrations, not extracted HyperKnow assets"
+}

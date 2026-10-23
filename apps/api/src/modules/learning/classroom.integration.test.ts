@@ -7,6 +7,8 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { classroomCourse, classroomLesson } from './classroom-curriculum';
+import { classroomSentences } from '@study-agent/contracts';
+import { conceptNotes } from './classroom-board-notes';
 
 describe('classroom teaching sessions and persistent isolation', () => {
   const directory = mkdtempSync(join(tmpdir(), 'study-classroom-'));
@@ -48,9 +50,15 @@ describe('classroom teaching sessions and persistent isolation', () => {
       const lesson = classroomLesson(id)!;
       expect(lesson.steps.length).toBeGreaterThanOrEqual(6);
       expect(new Set(lesson.steps.map(step => step.id)).size).toBe(lesson.steps.length);
-      expect(lesson.questions[0].options).toHaveLength(2);
+      expect(lesson.questions[0].options).toHaveLength(4);
+      expect(conceptNotes[lesson.title]?.length).toBeGreaterThanOrEqual(2);
+      for (const step of lesson.steps) {
+        expect(step.blocks.some(block => block.kind === 'text' && block.text === step.narration)).toBe(false);
+        expect(classroomSentences(step.narration).join('').replace(/\s/g, '')).toBe(step.narration.replace(/\s/g, ''));
+      }
     }
-    for (const unit of classroomCourse().units) expect(classroomLesson('unit-exam:' + unit.id)?.questions).toHaveLength(12);
+    for (const [index, unit] of classroomCourse().units.entries()) expect(classroomLesson('unit-exam:' + unit.id)?.questions).toHaveLength(index === 0 ? 16 : 12);
+    expect(classroomLesson('soc-1-1-1')?.questions).toHaveLength(5);
     const session = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
     const replay = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
     expect(replay.id).toBe(session.id);
@@ -78,6 +86,24 @@ describe('classroom teaching sessions and persistent isolation', () => {
     await store.requestContext(() => { expect(store.inspect('diagnosticResponses')).toHaveLength(0); expect(store.inspect('diagnosticPlans')).toHaveLength(0); });
   });
 
+  it('synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor', async () => {
+    const session = await call('post', base + '/sessions', { lessonId: 'soc-4-1-1' });
+    const step = session.lesson.steps[0], sentences = classroomSentences(step.narration);
+    const { SpeechService } = require('../../../dist/apps/api/src/modules/ai/speech.service.js');
+    const synthesize = vi.spyOn(app.get(SpeechService), 'synthesize').mockResolvedValue({ content: Buffer.alloc(44), contentType: 'audio/wav', provider: 'minimax' });
+    try {
+      await request(app.getHttpServer()).post('/api' + base + '/sessions/' + session.id + '/narration/' + step.id)
+        .set('Authorization', 'Bearer ' + parent.token).send({ sentenceIndex: 1 }).expect(201);
+      expect(synthesize).toHaveBeenCalledWith(sentences[1], undefined);
+      await call('post', base + '/sessions/' + session.id + '/narration/' + step.id, { sentenceIndex: sentences.length }, parent, 400);
+      expect(synthesize).toHaveBeenCalledTimes(1);
+      await call('patch', base + '/sessions/' + session.id, { expectedRevision: 0, cursor: 0, revealed: 1, sentenceCursor: sentences.length }, parent, 400);
+      await call('patch', base + '/sessions/' + session.id, { expectedRevision: 0, cursor: 0, revealed: 1, sentenceCursor: 1 });
+    } finally { synthesize.mockRestore(); }
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + session.id)).sentenceCursor).toBe(1);
+  });
+
   it('persists supplemental board with its original page and keeps it private after restart', async () => {
     const session = await call('post', base + '/sessions', { lessonId: 'soc-3-1-1' });
     await call('patch', base + '/sessions/' + session.id, { expectedRevision: 0, cursor: 3, revealed: 4 });
@@ -85,11 +111,12 @@ describe('classroom teaching sessions and persistent isolation', () => {
     const board = { title: '先观察规则，再核查解释', points: ['记录情境中的规则与反例。'], diagram: null };
     const reply = vi.spyOn(app.get(XiaojiuChatService), 'reply').mockResolvedValue({ reply: '可以比较两个匿名情境中的规则。',
       evidenceIds: [], modelId: 'fixture', modelName: '课堂测试模型', board });
-    const command = { message: '如何验证规则的影响？', requestKey: randomUUID() };
+    const command = { message: '如何验证规则的影响？', questionId: session.lesson.questions[0].id, requestKey: randomUUID() };
     try {
       const answered = await call('post', base + '/sessions/' + session.id + '/messages', command);
       expect(answered.messages.at(-1).board).toEqual({ ...board, page: 1 });
       expect(reply).toHaveBeenCalledWith(expect.objectContaining({ classroomBoard: true }));
+      expect(JSON.parse((reply.mock.calls[0][0] as { context: string }).context).practiceQuestion.id).toBe(command.questionId);
       const replay = await call('post', base + '/sessions/' + session.id + '/messages', command);
       expect(replay.messages).toEqual(answered.messages); expect(reply).toHaveBeenCalledTimes(1);
       await call('get', base + '/sessions/' + session.id, undefined, other, 403);
@@ -98,6 +125,8 @@ describe('classroom teaching sessions and persistent isolation', () => {
     await app.close(); await boot();
     const reloaded = await call('get', base + '/sessions/' + session.id);
     expect(reloaded.messages.at(-1).board).toEqual({ ...board, page: 1 });
+    const assistedAnswer = await call('post', base + '/sessions/' + session.id + '/answers', { questionId: command.questionId, selectedIndex: 0, requestKey: randomUUID(), hintUsed: false });
+    expect(assistedAnswer.answers[0].hintUsed).toBe(true);
   });
 
   it('rejects invalid or stale progress, then restores frozen content, answers and project text after restart', async () => {
