@@ -29,6 +29,7 @@ import { PDFParse } from 'pdf-parse';
 import { buildPdfWhiteboard } from './studio-pdf-whiteboard';
 import { buildStudioLearningPack } from './studio-learning-pack';
 import { persistStudioMaterial, studioMaterialCache, studioMaterialFile } from './studio-material-storage';
+import { assertMaterialAccess, studioMaterialView, StudioMaterialRecord } from './studio-material-access';
 
 export function studyDay(at = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: process.env.STUDY_TIMEZONE ?? 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' }).format(at);
@@ -39,12 +40,6 @@ function uploadFilename(value: string) {
     if (!decoded.includes('\ufffd') && decoded !== value) return decoded;
   }
   return value;
-}
-function studioMaterialView(row: StudioSourceMaterial & { requestKey?: string; requestHash?: string;
-  pageImages?: Record<string, string> }): StudioSourceMaterial {
-  const { requestKey: _requestKey, requestHash: _requestHash, pageImages, ...material } = row;
-  return { ...material, status: material.status ?? 'ready',
-    hasPageImages: Boolean(pageImages && Object.keys(pageImages).length) || material.hasPageImages };
 }
 const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
   answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000) }).strict();
@@ -254,24 +249,27 @@ export class LearningService {
     if (!file || !Buffer.isBuffer(file.buffer) || file.size <= 0) throw new BadRequestException('请选择 PDF 文件');
     if (file.size > 10 * 1024 * 1024) throw new BadRequestException('PDF 不能超过 10MB');
     if (file.mimetype !== 'application/pdf' || file.buffer.subarray(0, 5).toString('ascii') !== '%PDF-') throw new BadRequestException('只接受有效的 PDF 文件');
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
-      requestKey: z.string().min(8).max(180) }).strict(), input);
-    this.students.assertCanAccessStudent(user, command.studentId);
+    const command = validate(z.object({ studentId: z.string().min(1).max(180).optional(), subject: z.enum(['math', 'chinese', 'english']).optional(),
+      requestKey: z.string().min(8).max(180) }).strict().refine(value => Boolean(value.studentId) === Boolean(value.subject), '档案和学科需要同时选择'), input);
+    if (command.studentId) this.students.assertCanAccessStudent(user, command.studentId);
+    else if (user.role === 'student') throw new BadRequestException('请从自己的学习档案上传资料');
     const sha256 = createHash('sha256').update(file.buffer).digest('hex');
     const originalName = uploadFilename(file.originalname);
     const requestHash = createHash('sha256').update(JSON.stringify({ studentId: command.studentId, subject: command.subject,
       sha256, filename: originalName })).digest('hex');
-    const requested = this.store.select('studioSourceMaterials', { studentId: command.studentId, subject: command.subject })
-      .find(row => (row as StudioSourceMaterial & { requestKey?: string }).requestKey === command.requestKey) as
-      (StudioSourceMaterial & { requestKey?: string; requestHash?: string; pageImages?: Record<string, string> }) | undefined;
+    const scope = command.studentId ? { studentId: command.studentId, subject: command.subject } : { studentId: null, ownerUserId: user.id };
+    const requested = this.store.select('studioSourceMaterials', scope)
+      .find(row => (row as StudioMaterialRecord).requestKey === command.requestKey || (row as StudioMaterialRecord).commands?.some(item=>item.key===command.requestKey)) as StudioMaterialRecord | undefined;
     if (requested) {
-      if (requested.requestHash !== requestHash) throw new ConflictException('请求标识已用于不同的 PDF 上传');
+      const receipt=requested.commands?.find(item=>item.key===command.requestKey);
+      if (requested.requestKey===command.requestKey?requested.requestHash!==requestHash:receipt?.kind!=='upload'||receipt.hash!==requestHash) throw new ConflictException('请求标识已用于不同的 PDF 上传');
       return studioMaterialView(requested);
     }
-    const duplicate = this.store.select('studioSourceMaterials', { studentId: command.studentId, subject: command.subject })
+    const duplicate = this.store.select('studioSourceMaterials', scope)
       .find(row => row.sha256 === sha256);
     if (duplicate) {
       await persistStudioMaterial(sha256, file.buffer);
+      const record=duplicate as StudioMaterialRecord;record.commands=[...(record.commands??[]),{key:command.requestKey,hash:requestHash,kind:'upload'}];
       return studioMaterialView(duplicate as StudioSourceMaterial & { requestKey?: string;
         requestHash?: string; pageImages?: Record<string, string> });
     }
@@ -291,7 +289,7 @@ export class LearningService {
     const now = new Date().toISOString(), id = this.store.nextId('studio_material'), taskId = this.store.nextId('task');
     const payload = { materialId: id, sha256 };
     const material: StudioSourceMaterial & { requestKey: string; requestHash: string; pageImages?: Record<string, string> } = { id,
-      studentId: command.studentId, subject: command.subject, filename: originalName.replace(/[\\/]/g, '').slice(0, 255),
+      studentId: command.studentId ?? null, subject: command.subject ?? null, ownerUserId: user.id, kind: 'pdf', filename: originalName.replace(/[\\/]/g, '').slice(0, 255),
       title: originalName.replace(/\.[^.]+$/, '').replace(/[\\/]/g, '').slice(0, 180) || '课程材料',
       pageCount: parsed.total, pages, sha256, byteSize: file.size, hasPageImages: false, status: 'queued',
       structure: { method: 'native_text', ocrPageCount: 0, tableCount: 0, formulaCount: 0, confidence: null,
@@ -310,7 +308,7 @@ export class LearningService {
     const material = this.store.find('studioSourceMaterials', { id: materialId }) as (StudioSourceMaterial & {
       pageImages?: Record<string, string>; }) | undefined;
     if (!material) throw new NotFoundException('PDF 材料不存在');
-    this.students.assertCanAccessStudent(user, material.studentId);
+    assertMaterialAccess(user, material, this.students);
     if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > material.pageCount) throw new BadRequestException('页码无效');
     const dataUrl = material.pageImages?.[String(pageNumber)];
     const bytes = dataUrl?.startsWith('data:image/png;base64,')
@@ -323,7 +321,7 @@ export class LearningService {
   async studioPdfOriginal(user: InMemoryUserAccount, materialId: string) {
     const material = this.store.find('studioSourceMaterials', { id: materialId });
     if (!material) throw new NotFoundException('PDF 材料不存在');
-    this.students.assertCanAccessStudent(user, material.studentId);
+    assertMaterialAccess(user, material, this.students);
     try {
       const bytes = await readFile(studioMaterialFile(material.sha256));
       return new StreamableFile(bytes, { type: 'application/pdf', length: bytes.length,
@@ -334,13 +332,16 @@ export class LearningService {
   }
 
   reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown) {
-    const material = this.store.find('studioSourceMaterials', { id: materialId });
+    const material = this.store.find('studioSourceMaterials', { id: materialId }) as StudioMaterialRecord | undefined;
     if (!material) throw new NotFoundException('PDF 材料不存在');
-    this.students.assertCanAccessStudent(user, material.studentId);
+    assertMaterialAccess(user, material, this.students);
     const command = validate(z.object({ expectedUpdatedAt: z.string().datetime({ offset: true }),
       requestKey: z.string().min(8).max(180) }).strict(), input);
     const previous = this.store.find('studioActivities', { requestKey: command.requestKey });
     if (previous?.referenceId === material.id) return studioMaterialView(material);
+    const hash = createHash('sha256').update(command.expectedUpdatedAt).digest('hex');
+    const replay = material.commands?.find(item => item.key === command.requestKey);
+    if (replay) { if (replay.kind !== 'review' || replay.hash !== hash) throw new ConflictException('请求标识已使用'); return studioMaterialView(material); }
     if (!material.structure || !['ready', 'needs_review'].includes(material.status ?? 'ready'))
       throw new BadRequestException('PDF 结构尚未完成，暂时不能确认');
     if ((material.updatedAt ?? material.createdAt) !== command.expectedUpdatedAt)
@@ -350,7 +351,8 @@ export class LearningService {
     material.structure.reviewedAt = now;
     material.status = 'ready';
     material.updatedAt = now;
-    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
+    material.commands = [...(material.commands ?? []), { key: command.requestKey, hash, kind: 'review' }];
+    if (material.studentId && material.subject) this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
       subject: material.subject, kind: 'material', title: '确认 PDF 结构「' + material.title + '」',
       detail: '已对照原页确认段落、表格与公式提取结构；本确认不代表知识内容或答案正确性。',
       href: '/studio?view=materials', at: now, status: 'complete', requestKey: command.requestKey, referenceId: material.id });
@@ -358,13 +360,15 @@ export class LearningService {
   }
 
   async retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown) {
-    const material = this.store.find('studioSourceMaterials', { id: materialId });
+    const material = this.store.find('studioSourceMaterials', { id: materialId }) as StudioMaterialRecord | undefined;
     if (!material) throw new NotFoundException('PDF 材料不存在');
-    this.students.assertCanAccessStudent(user, material.studentId);
+    assertMaterialAccess(user, material, this.students);
     const command = validate(z.object({ expectedUpdatedAt: z.string().datetime({ offset: true }),
       requestKey: z.string().min(8).max(180) }).strict(), input);
     const previous = this.store.find('studioActivities', { requestKey: command.requestKey });
     if (previous?.referenceId === material.id) return studioMaterialView(material);
+    const hash = createHash('sha256').update(command.expectedUpdatedAt).digest('hex'), replay = material.commands?.find(item => item.key === command.requestKey);
+    if (replay) { if (replay.kind !== 'retry' || replay.hash !== hash) throw new ConflictException('请求标识已使用'); return studioMaterialView(material); }
     const modelRetry = material.status === 'needs_review' && material.structure?.modelSource === 'local_fallback' &&
       !material.structure.modelAssisted;
     if (material.status !== 'failed' && !modelRetry)
@@ -377,7 +381,8 @@ export class LearningService {
       requestKey: command.requestKey, payloadHash: createHash('sha256').update(JSON.stringify(payload)).digest('hex'),
       payload, createdAt: now, maxAttempts: 2 });
     material.status = 'queued'; material.error = null; material.processingTaskId = taskId; material.updatedAt = now;
-    this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
+    material.commands = [...(material.commands ?? []), { key: command.requestKey, hash, kind: 'retry' }];
+    if (material.studentId && material.subject) this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
       subject: material.subject, kind: 'material', title: '重试 PDF 处理「' + material.title + '」',
       detail: '重新执行 OCR、表格和公式结构恢复', href: '/studio?view=materials', at: now,
       status: 'opened', requestKey: command.requestKey, referenceId: material.id });
@@ -388,6 +393,7 @@ export class LearningService {
     const command = validate(z.object({ materialId: z.string().min(1).max(180), atomId: z.string().min(1).max(180).optional() }).strict(), input);
     const material = this.store.find('studioSourceMaterials', { id: command.materialId });
     if (!material) throw new NotFoundException('PDF 材料不存在');
+    if (!material.studentId || !material.subject) throw new BadRequestException('私人资料请从资料课程入口生成课堂');
     this.students.assertCanAccessStudent(user, material.studentId);
     if (!['ready', 'needs_review'].includes(material.status ?? 'ready'))
       throw new BadRequestException('PDF OCR 与结构恢复尚未完成');
@@ -403,6 +409,7 @@ export class LearningService {
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
     const material = this.store.find('studioSourceMaterials', { id: command.materialId });
     if (!material) throw new NotFoundException('PDF 材料不存在');
+    if (!material.studentId || !material.subject) throw new BadRequestException('私人资料请从资料课程入口生成课堂');
     this.students.assertCanAccessStudent(user, material.studentId);
     const existing = this.store.find('studioWhiteboards', { studentId: material.studentId, sourceMaterialId: material.id });
     if (existing?.fingerprint === command.fingerprint) return existing;

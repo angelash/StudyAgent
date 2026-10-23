@@ -33,7 +33,7 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: 'npm run start --workspace @study-agent/api',
+      command: process.env.E2E_API_COMMAND ?? 'npm run start --workspace @study-agent/api',
       url: `${apiUrl}/api/health`,
       timeout: 180_000,
       reuseExistingServer: false,

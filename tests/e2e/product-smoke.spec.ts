@@ -1,3 +1,4 @@
+import { browserEvidence } from './evidence';
 import { expect, test } from '@playwright/test';
 
 const apiUrl = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`;
@@ -80,7 +81,7 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await expect(modelSelect).toHaveValue('deepseek-v4-flash');
   expect(await modelSelect.locator('option').count()).toBeGreaterThanOrEqual(23);
   await modelSelect.selectOption('claude-opus-5.5');
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-model-selector.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-model-selector.png', fullPage: true });
   await page.getByLabel('想一起看看什么').fill('请根据当前学习记录告诉我下一步。');
   await page.getByRole('button', { name: '一起想一想 →' }).click();
   await expect(page.getByText('先确认孩子的年级、教材和已学范围', { exact: false })).toBeVisible();

@@ -10,6 +10,8 @@ export type ClassroomQuestion = { id: string; prompt: string; options: string[];
   hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
 export type ClassroomLesson = { id: string; title: string; objective: string; lectureId: string; steps: ClassroomStep[];
+  generatedNotice?: string; nextLessonId?: string;
+  sourceReferences?: Array<{ sourceKey: string; title: string; page: number; quote: string; href: string }>;
   questions: ClassroomQuestion[]; verificationHref?: string; practiceVersion?: string;
   assessment?: { kind: 'unit-check'; version: string; notice: string } };
 export type ClassroomLecture = { id: string; title: string; description: string; lessons: Array<Pick<ClassroomLesson, 'id' | 'title' | 'objective'>> };
@@ -24,6 +26,7 @@ export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; con
   board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
+  sourceCourseId?: string;
   cursor: number; revealed: number; sentenceCursor?: number; status: 'paused' | 'completed'; revision: number;
   messages: ClassroomChatMessage[]; answers: ClassroomAnswerReceipt[]; projectDraft: string;
   hintedQuestionIds?: string[];

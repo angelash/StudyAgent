@@ -143,8 +143,10 @@ export type StudioMaterialStructure = {
 
 export type StudioSourceMaterial = {
   id: string;
-  studentId: string;
-  subject: StudioSubject;
+  studentId: string | null;
+  subject: StudioSubject | null;
+  ownerUserId?: string;
+  kind?: 'pdf' | 'text';
   filename: string;
   title: string;
   pageCount: number;

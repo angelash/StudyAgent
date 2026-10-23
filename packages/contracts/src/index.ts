@@ -731,3 +731,4 @@ export const measurementDraftSchema = createMeasurementDraftSchema(subjectSchema
 export * from './classroom';
 export * from './learning-home';
 export * from './course-project';
+export * from './source-course';

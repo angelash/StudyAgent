@@ -1,7 +1,8 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { ClassroomCatalog, StudioCourse, StudioSubject } from '@study-agent/contracts';
+import type { ClassroomCatalog, StudioCourse, StudioSubject,SourceCourseSummary } from '@study-agent/contracts';
+import {apiRequest} from '../../lib/api';
 import { CourseCover } from './classroom/diagram';
 import { defaultCourseFilters, filterLibraryCourses, libraryCourses, readCourseFilters, writeCourseFilters, type CourseFilters, type LibraryCourse } from './course-library-state';
 import './classroom/classroom.css';
@@ -10,13 +11,16 @@ import './course-library.css';
 export function MyCourses({ courses, classroom, studentId, subject, programmingHref, onOpen, onCreate }: { courses: StudioCourse[]; classroom: ClassroomCatalog | null;
   studentId: string; subject: StudioSubject; programmingHref: string; onOpen: (course: StudioCourse) => void; onCreate: () => void }) {
   const [filters, setFilters] = React.useState<CourseFilters>(defaultCourseFilters), [weekOffset, setWeekOffset] = React.useState(0);
+  const[sourceCourses,setSourceCourses]=React.useState<SourceCourseSummary[]>([]);
+  const[sourceError,setSourceError]=React.useState(''),[sourceRefresh,setSourceRefresh]=React.useState(0);
+  React.useEffect(()=>{const controller=new AbortController();setSourceCourses([]);setSourceError('');void apiRequest<SourceCourseSummary[]>('/learning/source-courses?'+new URLSearchParams(studentId?{studentId,subject}:{}),{signal:controller.signal}).then(value=>{if(!controller.signal.aborted)setSourceCourses(value);}).catch(caught=>{if(!controller.signal.aborted)setSourceError(caught.message);});return()=>controller.abort();},[studentId,subject,sourceRefresh]);
   React.useEffect(() => { const restore = () => setFilters(readCourseFilters(window.location.search)); restore(); window.addEventListener('popstate', restore); return () => window.removeEventListener('popstate', restore); }, []);
   function update(patch: Partial<CourseFilters>, replace = false) {
     const next = { ...filters, ...patch }; setFilters(next);
     const params = writeCourseFilters(new URLSearchParams(window.location.search), next);
     window.history[replace ? 'replaceState' : 'pushState'](null, '', '/studio?' + params);
   }
-  const rows = libraryCourses(courses, classroom), visible = filterLibraryCourses(rows, filters);
+  const rows = libraryCourses(courses, classroom,sourceCourses), visible = filterLibraryCourses(rows, filters);
   const lessonList = classroom?.course.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons)) ?? [];
   const reading = classroom?.readingProgress ?? classroom?.progress ?? [];
   const progress = new Map(reading.map(row => [row.lessonId, row]));
@@ -29,6 +33,7 @@ export function MyCourses({ courses, classroom, studentId, subject, programmingH
     return pathname + '?' + params;
   }
   function resume(row: LibraryCourse) {
+    if(row.sourceCourse)return link('/studio/classroom?'+new URLSearchParams({sourceCourseId:row.id,lesson:row.sourceCourse.nextLessonId??`source:${row.id}:1`}));
     const course = row.course;
     if (!course) {
       const saved = progress.get(nextLesson?.id);
@@ -47,24 +52,25 @@ export function MyCourses({ courses, classroom, studentId, subject, programmingH
   const days = Array.from({ length: 7 }, (_, index) => { const day = new Date(reference); day.setDate(day.getDate() + index); return day; });
   const dayCounts = days.map(day => reading.filter(row => row.completed && lessonList.some(lesson => lesson.id === row.lessonId) && new Date(row.updatedAt).toDateString() === day.toDateString()).length);
   const filtered = Object.keys(filters).some(key => filters[key as keyof CourseFilters] !== defaultCourseFilters[key as keyof CourseFilters]);
-  return <section className="ws-courses"><div className="ws-course-main"><header className="ws-page-title"><h1>我的课程</h1><button onClick={onCreate}>＋ 创建课程</button></header>
+  return <section className="ws-courses"><div className="ws-course-main"><header className="ws-page-title"><h1>我的课程</h1><Link className="ws-source-course-entry" href={link('/studio/source-courses?new=1')}>从资料创建 →</Link><button onClick={onCreate}>＋ 创建课程</button></header>
     <div className="ws-course-filters"><div role="tablist" aria-label="课程状态">{(['all', 'new', 'active', 'complete'] as const).map((value, index) => <button key={value} role="tab" aria-selected={filters.state === value} onClick={() => update({ state: value })}>{['全部', '未开始', '进行中', '已完成'][index]}</button>)}</div>
       <label>⌕<input aria-label="搜索课程" maxLength={180} placeholder="搜索名称、目标、教材…" value={filters.query} onChange={event => update({ query: event.target.value }, true)}/></label></div>
     <div className="ws-library-options">
       <label>课程类型<select aria-label="课程类型" value={filters.type} onChange={event => update({ type: event.target.value as CourseFilters['type'] })}><option value="all">全部类型</option><option value="adult">成人独立课</option><option value="primary">小学学习课</option></select></label>
-      <label>内容来源<select aria-label="内容来源" value={filters.source} onChange={event => update({ source: event.target.value as CourseFilters['source'] })}><option value="all">全部来源</option><option value="authored">自编主题课程</option><option value="curriculum">已确认范围课程</option></select></label>
+      <label>内容来源<select aria-label="内容来源" value={filters.source} onChange={event => update({ source: event.target.value as CourseFilters['source'] })}><option value="all">全部来源</option><option value="authored">自编主题课程</option><option value="curriculum">已确认范围课程</option><option value="material">自己的资料课程</option></select></label>
       <label>最近学习<select aria-label="最近学习" value={filters.recent} onChange={event => update({ recent: event.target.value as CourseFilters['recent'] })}><option value="all">不限时间</option><option value="7">近7天</option><option value="30">近30天</option></select></label>
       <label>排序<select aria-label="课程排序" value={filters.sort} onChange={event => update({ sort: event.target.value as CourseFilters['sort'] })}><option value="recent">最近学习</option><option value="added">最近添加</option><option value="title">课程名称</option></select></label>
     </div>
     <div className="ws-library-result"><p role="status">显示 {visible.length} / {rows.length} 门课程</p>{filtered && <button onClick={() => update(defaultCourseFilters)}>清除筛选</button>}</div>
     <p className="ws-library-meaning">“已完成”指本课程讲解已读；课堂练习、项目和独立测量分别保留记录。</p>
+    {sourceError&&<p role="alert" className="ws-library-source-error">资料课程暂未读取，尚未计入上面的列表。{sourceError}<button onClick={()=>setSourceRefresh(value=>value+1)}>重试读取资料课程</button></p>}
     <div className="ws-course-library">{visible.map(row => {
-      const body = <><div><small>{row.type === 'adult' ? '成人独立课' : `${row.course?.grade}年级 · ${ { math: '数学', chinese: '语文', english: '英语' }[row.course!.subject]}`}</small><h2>{row.title} {row.state === 'new' && <em>新</em>}</h2><div className="ws-ticket-meta"><span><small>来源</small>{row.source === 'authored' ? 'StudyAgent 自编' : '已确认学习范围'}</span><span><small>课程结构</small>{row.course?.units.length ?? classroom?.course.units.length} 单元 · {row.total} 微课</span></div><p className="ws-ticket-state">{row.state === 'complete' ? '讲解已读' : row.state === 'active' ? '进行中' : '未开始'}{row.lastStudied && <time> · {new Date(row.lastStudied).toLocaleDateString('zh-CN')}</time>}</p></div><CourseCover/>
+      const body = <><div><small>{row.sourceCourse?(row.sourceCourse.studentId?'学生资料课':'成人资料课'):row.type === 'adult' ? '成人独立课' : `${row.course?.grade}年级 · ${ { math: '数学', chinese: '语文', english: '英语' }[row.course!.subject]}`}</small><h2>{row.title} {row.state === 'new' && <em>新</em>}</h2><div className="ws-ticket-meta"><span><small>来源</small>{row.source==='material'?'自己的资料 · AI编排':row.source === 'authored' ? 'StudyAgent 自编' : '已确认学习范围'}</span><span><small>课程结构</small>{row.sourceCourse?1:row.course?.units.length ?? classroom?.course.units.length} 单元 · {row.total} 微课</span></div><p className="ws-ticket-state">{row.state === 'complete' ? '讲解已读' : row.state === 'active' ? '进行中' : '未开始'}{row.lastStudied && <time> · {new Date(row.lastStudied).toLocaleDateString('zh-CN')}</time>}</p></div><CourseCover/>
         <div className="ws-ticket-progress" aria-label={`讲解已读 ${row.viewed} / ${row.total}`}><i style={{ width: (row.viewed / Math.max(1, row.total) * 100) + '%' }}/><span>{row.viewed} / {row.total} 讲</span></div></>;
-      const nextTitle = row.course ? nextFor(row.course)?.title : nextLesson?.title;
+      const nextTitle = row.sourceCourse?row.sourceCourse.nextLessonTitle??'继续资料课程中的课时':row.course ? nextFor(row.course)?.title : nextLesson?.title;
       return <article className="ws-course-ticket" key={row.id} data-course-type={row.type} data-course-state={row.state}>
-        {row.course ? <button className="ws-ticket-main" onClick={() => onOpen(row.course!)} aria-label={'打开课程：' + row.title}>{body}</button> : <Link className="ws-ticket-main" href={link('/studio/classroom')} aria-label={'打开课程：' + row.title}>{body}</Link>}
-        <Link className="ws-ticket-next" href={row.state === 'complete' ? row.course ? link('/studio?view=courses&course=' + encodeURIComponent(row.id)) : link('/studio/classroom?panel=practices') : resume(row)}><small>{row.state === 'complete' ? '接下来' : row.state === 'active' ? '继续断点' : '接下来'}</small><em>{row.state === 'complete' ? '复盘' : '讲座'}</em><b>{row.state === 'complete' ? '核对练习与单元表现' : nextTitle ?? '查看课程'}</b><span>{row.state === 'complete' ? '查看课程记录 →' : row.state === 'new' ? '开始学习 →' : '继续学习 →'}</span></Link>
+        {row.course ? <button className="ws-ticket-main" onClick={() => onOpen(row.course!)} aria-label={'打开课程：' + row.title}>{body}</button> : <Link className="ws-ticket-main" href={row.sourceCourse?link('/studio/source-courses?course='+row.id):link('/studio/classroom')} aria-label={'打开课程：' + row.title}>{body}</Link>}
+        <Link className="ws-ticket-next" href={row.state === 'complete' ? row.sourceCourse?link('/studio/source-courses?course='+row.id):row.course ? link('/studio?view=courses&course=' + encodeURIComponent(row.id)) : link('/studio/classroom?panel=practices') : resume(row)}><small>{row.state === 'complete' ? '接下来' : row.state === 'active' ? '继续断点' : '接下来'}</small><em>{row.state === 'complete' ? '复盘' : '讲座'}</em><b>{row.state === 'complete' ? '核对练习与单元表现' : nextTitle ?? '查看课程'}</b><span>{row.state === 'complete' ? '查看课程记录 →' : row.state === 'new' ? '开始学习 →' : '继续学习 →'}</span></Link>
       </article>;
     })}
       {visible.length === 0 && <div className="ws-empty"><h2>{filters.query ? '没有匹配的课程' : filters.state === 'complete' ? '还没有完成的课程' : '当前条件下没有课程'}</h2><p>清除筛选，或调整类型、来源和学习时间。</p><button onClick={() => update(defaultCourseFilters)}>查看全部课程</button></div>}

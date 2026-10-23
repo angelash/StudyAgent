@@ -46,6 +46,31 @@ describe('XiaojiuChatService', () => {
     });
   }
 
+  it('includes custom schema in the model prompt and retries with the missing field path', async () => {
+    const prompts: string[] = [];
+    spawnMock.mockImplementation(() => {
+      const child = new MockChildProcess(); let prompt = '';
+      child.stdin.on('data', chunk => { prompt += String(chunk); });
+      child.stdin.on('finish', () => queueMicrotask(() => {
+        prompts.push(prompt);
+        const payload = prompts.length === 1 ? { title: 'Incomplete' } : { title: 'Complete', overview: 'From the supplied source' };
+        child.stdout.write(JSON.stringify({ type: 'item.completed', item: { type: 'agent_message', text: JSON.stringify(payload) } }) + '\n');
+        child.stdout.end(); child.stderr.end(); child.emit('close', 0);
+      }));
+      return child;
+    });
+    const { z } = await import('zod');
+    const schema = { type: 'object', properties: { title: { type: 'string' }, overview: { type: 'string' } }, required: ['title', 'overview'], additionalProperties: false };
+    const result = await new XiaojiuChatService(new XiaojiuModelsService()).structured({ modelId: 'deepseek-v4-flash',
+      system: 'Create a source-backed course', context: '', history: [], message: 'Generate' }, schema,
+      value => z.object({ title: z.string(), overview: z.string() }).strict().parse(value));
+    expect(result.overview).toBe('From the supplied source');
+    expect(prompts).toHaveLength(2);
+    expect(prompts[0]).toContain('<输出schema>' + JSON.stringify(schema));
+    expect(prompts[1]).toContain('"path":["overview"]');
+    expect(prompts[0]).not.toContain('{"reply":string');
+  });
+
   it('retains validated classroom board and requests its structured output schema', async () => {
     respondWith({ reply: '从一个匿名社区的岗位变化开始核查。', evidenceIds: [], board });
     let schema: { required: string[] } | undefined;

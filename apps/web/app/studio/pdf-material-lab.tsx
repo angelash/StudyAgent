@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import Link from 'next/link';
 import katex from 'katex';
 import type { StudioOverview, StudioPdfStructureBlock, StudioSourceMaterial, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../lib/api';
@@ -218,6 +219,7 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
           onClick={() => setPage(item.page)}>{item.page}</button>)}</div>
         <article className="sa-pdf-page"><header><div><span className="studio-kicker">PAGE {current.page}/{material.pageCount}</span>
           <h2>{material.title}</h2></div><small>{material.filename} · {Math.max(1, Math.ceil(material.byteSize / 1024))} KB</small></header>
+          <Link className="sc-material-create-link" href={'/studio/source-courses?'+new URLSearchParams({new:'1',studentId,subject,material:material.id,page:String(current.page)})}>从这一页创建完整资料课程 →</Link>
           <div className="sa-pdf-paper">{pageView === 'page' ? (pageImage ? <img
             alt={material.title + ' 第 ' + current.page + ' 页原版预览'} src={pageImage} /> :
             <div className="sa-pdf-paper-loading">{pageImageError || (material.hasPageImages ? '正在打开原版页面…' : '该页未能生成原版预览；文字层仍可核对。')}</div>)

@@ -57,6 +57,7 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
   return <WorkspaceDialog onClose={close} busy={creating}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程蓝图">
     <header><div><small>COURSE BLUEPRINT</small><h2>{preview ? '审阅课程蓝图' : '设计这次学习'}</h2></div><button type="button" aria-label="关闭课程蓝图" disabled={creating} onClick={close}>×</button></header>
     <ol className="ws-blueprint-steps" aria-label="创建课程步骤"><li aria-current={!preview ? 'step' : undefined}>1 · 目标与范围</li><li aria-current={preview ? 'step' : undefined}>2 · 审阅后确认</li></ol>
+    {!preview&&<p className="ws-source-course-entry"><Link href={'/studio/source-courses?'+new URLSearchParams({new:'1',...(studentId?{studentId,subject}:{})})}>用自己的 PDF 或文字资料创建课程 →</Link></p>}
     {error && <div className="ws-builder-error" role="alert"><p>{error}</p>{preview && <small>尚未取得确认回执。重试会沿用同一确认标识；也可以返回修改并重新预览。</small>}<button type="button" disabled={locked} onClick={() => { edit(); void onRefresh(); }}>重新核对学习范围</button></div>}
     {preview ? <>
       <div className="ws-blueprint-summary"><small>{preview.grade}年级 · { { math: '数学', chinese: '语文', english: '英语' }[preview.subject]} · {selected?.nickname}</small><h3>{preview.title}</h3><p>{preview.objective}</p>

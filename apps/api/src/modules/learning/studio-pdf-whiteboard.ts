@@ -4,6 +4,7 @@ import type { KnowledgeAtom, StudioSourceMaterial, StudioWhiteboard, StudioWhite
 function excerpt(value: string, max = 520) { return value.replace(/\s+/g, ' ').trim().slice(0, max); }
 
 export function buildPdfWhiteboard(input: { id: string; material: StudioSourceMaterial; atom?: KnowledgeAtom | null; now?: string }): StudioWhiteboard {
+  if (!input.material.studentId || !input.material.subject) throw new Error('页级白板需要已选择的学习档案和学科');
   const now = input.now ?? new Date().toISOString();
   const pages = input.material.pages.filter(page => excerpt(page.text).length > 20).slice(0, 8);
   if (!pages.length) throw new Error('PDF 中没有可讲解的文本页，请先完成文字识别后再试');

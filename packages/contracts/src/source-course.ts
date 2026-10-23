@@ -1,0 +1,15 @@
+import type { ClassroomLesson } from './classroom';
+import type { StudioPdfStructureBlock, StudioSubject } from './studio';
+export type CourseSourceSnapshot = { key: string; materialId: string; page: number; title: string; kind: 'pdf' | 'text';
+  text: string; blocks: StudioPdfStructureBlock[]; sha256: string; version: string; fingerprint: string; structureReviewRequired: boolean };
+export type SourceCourseInput = { title: string; goal: string; language: 'source' | 'zh-CN' | 'en'; minutesPerSession: number;
+  modelId: string; targetAtomIds: string[] };
+export type SourceCourseSummary = { id: string; studentId: string | null; subject: StudioSubject | null; title: string;
+  goal: string; status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived';
+  lessonCount: number; viewed: number; lastLessonId: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
+export type SourceCourseView = SourceCourseSummary & { revision: number; input: SourceCourseInput; sources: CourseSourceSnapshot[];
+  permissions: { manage: boolean };
+  contentReview: 'pending'; formalMeasurementEligible: false; sourceStatus: 'current' | 'changed' | 'unavailable';
+  fingerprint: string | null; modelName: string | null; lessons: ClassroomLesson[];
+  task: { id: string; state: string; version: number; generation: number; errorCode: string | null } | null;
+  confirmedAt: string | null };

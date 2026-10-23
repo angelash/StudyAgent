@@ -9,6 +9,8 @@ import { StudentsService } from '../students/students.service';
 import { SpeechService } from '../ai/speech.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
 import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomHintKeys, classroomLesson, classroomTeachingFingerprint, curriculumClassroomLesson } from './classroom-curriculum';
+import { sourceCourseLesson, sourceCourseAnswerKeys } from './source-course-content';
+import { assertSourceCourseAccess } from './source-course.service';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number; explanation: string }>;
@@ -62,6 +64,9 @@ export class ClassroomService {
       const source = course?.units.flatMap(unit => unit.lessons).find(lesson => lesson.id === row.lessonId);
       current = course && source ? curriculumClassroomLesson(course, source) : undefined;
     }
+    if(row.sourceCourseId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId});
+      const index=course?.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===row.lessonId)??-1;
+      current=course&&index>=0&&course.status==='active'?sourceCourseLesson(course,index):undefined;}
     const projectUnit = row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId })?.units
       .find(unit => unit.lessons.some(lesson => lesson.id === row.lessonId) && unit.lessons.some(lesson => lesson.kind === 'project'))?.id :
       classroomCourse().units.find(unit => row.lessonId === 'unit-exam:' + unit.id || unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === row.lessonId)))?.id;
@@ -80,9 +85,10 @@ export class ClassroomService {
   }
 
   open(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),
-      useCurrentVersion: z.boolean().default(false) }).strict(), input);
+    const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),sourceCourseId:z.string().min(1).max(180).optional(),
+      useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源'), input);
     let lesson = classroomLesson(command.lessonId), courseId = 'sociology-foundations', studentId: string | null = null;
+    let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|undefined;
     if (command.studioCourseId) {
       const course = this.store.find('studioCourses', { id: command.studioCourseId });
       if (!course) throw new NotFoundException('课程不存在');
@@ -91,6 +97,10 @@ export class ClassroomService {
       lesson = source && curriculumClassroomLesson(course, source);
       courseId = course.id; studentId = course.studentId;
       if (!lesson) throw new BadRequestException('该活动没有已审核的教学讲解，请使用独立练习入口');
+    } else if(command.sourceCourseId){const course=this.store.find('sourceCourses',{id:command.sourceCourseId});if(!course)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,course,this.students);
+      if(course.status!=='active')throw new ConflictException('请先确认课程，已归档课程只能查看已有课堂记录');
+      const index=course.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===command.lessonId)??-1;
+      if(index<0)throw new NotFoundException('资料课时不存在');lesson=sourceCourseLesson(course,index);generatedKeys=sourceCourseAnswerKeys(course,index);courseId=course.id;studentId=course.studentId;
     } else if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
     if (!lesson) throw new NotFoundException('微课不存在');
     const fingerprint = classroomFingerprint(lesson);
@@ -102,12 +112,13 @@ export class ClassroomService {
       if (archived) return this.view(archived);
     }
     const now = new Date().toISOString();
-    const answerKeys = Object.fromEntries(lesson.questions.flatMap(question => {
+    const answerKeys = generatedKeys?.answers??Object.fromEntries(lesson.questions.flatMap(question => {
       const key = classroomAnswerKey(question.id); return key ? [[question.id, structuredClone(key)]] : [];
     }));
-    const hintKeys = Object.fromEntries(lesson.questions.map(question => [question.id, structuredClone(classroomHintKeys(question.id) ?? (question.hint ? [question.hint] : []))]));
+    const hintKeys = generatedKeys?.hints??Object.fromEntries(lesson.questions.map(question => [question.id, structuredClone(classroomHintKeys(question.id) ?? (question.hint ? [question.hint] : []))]));
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
+      ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId}:{}),
       contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);

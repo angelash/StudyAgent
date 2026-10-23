@@ -235,6 +235,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
   private canAccessStudioMaterial(owner: { id: string; role: string }, materialId: string) {
     const material = this.store.find('studioSourceMaterials', { id: materialId });
     if (!material) return false;
+    if (!material.studentId) return owner.role !== 'student' && material.ownerUserId === owner.id;
     if (owner.role === 'admin') return true;
     const student = this.store.find('students', { id: material.studentId });
     return Boolean(student && (student.userId === owner.id || this.store.find('bindings', {

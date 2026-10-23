@@ -115,10 +115,14 @@ export class LearningHomeService {
 
   private courseAction(user: InMemoryUserAccount, studentId?: string, subject?: Subject): LearningHomeAction | null {
     const courses = studentId ? this.store.select('studioCourses', { studentId, subject }) : [];
+    const sourceCourses=this.store.select('sourceCourses',studentId?{studentId,subject,status:'active'}:{ownerUserId:user.id,studentId:null,status:'active'});
     const sessions = this.store.select('classroomSessions', { ownerUserId: user.id })
-      .filter(row => row.status !== 'completed' && (studentId ? courses.some(course => course.id === row.courseId) : !row.studentId))
+      .filter(row => row.status !== 'completed' && (studentId ? courses.some(course => course.id === row.courseId)||sourceCourses.some(course=>course.id===row.courseId) : !row.studentId))
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     for (const session of sessions) {
+      const source=sourceCourses.find(course=>course.id===session.sourceCourseId);
+      if(source)return{id:'source-course:'+session.id,kind:'course',title:'继续学习：'+session.lesson.title,reason:'从已确认资料课程的保存断点继续，生成练习与正式评测分开。',
+        href:'/studio/classroom?'+new URLSearchParams({sourceCourseId:source.id,lesson:session.lessonId,session:session.id}),label:'回到资料课堂',estimatedMinutes:null,saved:'按已保存的课堂句子恢复'};
       const course = courses.find(course => course.id === session.courseId);
       if (!studentId) {
         const lesson = classroomLesson(session.lessonId);

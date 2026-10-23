@@ -1,11 +1,13 @@
+import { browserEvidence } from './evidence';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
-const evidence = 'doc/evidence/2026-10-23';
+const evidence = browserEvidence('workspace');
+let fixtureAddress=0;
 async function account(page: Page, child = false) {
   const key = `${Date.now()}-${Math.floor(Math.random() * 100000)}`, principal = `workspace-${key}@local.test`, credential = `Workspace-${key}`;
-  const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({principal, credential}) });
+  const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'content-type': 'application/json','x-forwarded-for':'127.22.0.'+(++fixtureAddress) }, body: JSON.stringify({principal, credential}) });
   expect(response.status).toBe(201); const {data} = await response.json();
   const headers = { 'content-type': 'application/json', authorization: 'Bearer ' + data.token };
   let studentId = '';

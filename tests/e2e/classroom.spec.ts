@@ -1,8 +1,9 @@
+import { browserEvidence } from './evidence';
 import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
 const apiUrl = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`;
-const evidenceDirectory = 'doc/evidence/2026-10-23';
+const evidenceDirectory = browserEvidence('classroom');
 async function login(page: import('@playwright/test').Page) {
   const suffix = Date.now() + '-' + Math.floor(Math.random() * 100000), principal = 'classroom-' + suffix + '@local.test', credential = 'Classroom-' + suffix;
   const registered = await fetch(apiUrl + '/api/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ principal, credential }) });

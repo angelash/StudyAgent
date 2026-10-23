@@ -1,3 +1,4 @@
+import { browserEvidence } from './evidence';
 import { expect, test } from '@playwright/test';
 import { mkdtempSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -58,7 +59,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.goto('/studio');
   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Instant Assistance' })).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-home-polished.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-home-polished.png', fullPage: true });
   await page.getByRole('button', { name: '生成第一门课程' }).click();
   await page.getByLabel('课程名称', {exact:true}).fill('分数关系与证据');
   await page.getByRole('button', { name: '预览课程蓝图' }).click();
@@ -66,7 +67,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('button', { name: '确认并创建' }).click();
   await expect(page.getByRole('heading', { name: '分数关系与证据' })).toBeVisible();
   await expect(page.getByText('Unit 1:', { exact: false }).first()).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-course-polished.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-course-polished.png', fullPage: true });
 
   await page.getByRole('button', { name: 'Courses', exact: true }).click();
   const ticket = page.locator('.ws-course-ticket').filter({ has: page.getByRole('button', { name: '打开课程：分数关系与证据', exact: true }) });
@@ -84,10 +85,10 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.locator('.sa-composer textarea').fill('解释异分母分数加法');
   await page.locator('.sa-composer > div > button:last-child').click();
   await expect(page.getByText('WHITEBOARD SESSION', { exact: true })).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-whiteboard-preview.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-preview.png', fullPage: true });
   await page.getByRole('button', { name: '保存到学习工作台' }).click();
   await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-whiteboard-player.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-player.png', fullPage: true });
   const videoDownload = page.waitForEvent('download', { timeout: 45_000 });
   await page.getByRole('button', { name: '导出视频' }).click();
   const video = await videoDownload;
@@ -122,7 +123,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.locator('.sa-plan-actions').getByRole('button', { name: '完成', exact: true }).first().click();
   await expect(page.getByText('D+1 延迟复测', { exact: false }).first()).toBeVisible();
   await expect(page.getByText(/D\+14/).last()).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-calendar-polished.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-calendar-polished.png', fullPage: true });
 
   const pdf = writeTextPdf();
   await page.getByRole('button', { name: 'Materials' }).click();
@@ -137,7 +138,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('button', { name: '结构恢复' }).click();
   await expect(page.getByText('公式结构', { exact: true })).toBeVisible();
   await expect(page.getByText(/候选 LaTeX/)).toBeVisible();
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-pdf-structure-review.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-pdf-structure-review.png', fullPage: true });
   await page.getByRole('button', { name: '已对照原页确认结构' }).click();
   await expect(page.getByText('结构已恢复')).toBeVisible();
   await page.getByRole('button', { name: '原版页面' }).click();
@@ -149,7 +150,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByText('REVIEW BEFORE SAVING')).toBeVisible();
   await page.getByRole('button', { name: '保存到 Materials' }).click();
   await expect(page.locator('.sa-pack-library')).toContainText('个性化学案');
-  if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-materials-and-pack.png', fullPage: true });
+  if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-materials-and-pack.png', fullPage: true });
   pdf.cleanup();
 
   await page.setViewportSize({ width: 390, height: 844 });

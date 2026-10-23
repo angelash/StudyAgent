@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto';
 import type { PrivacyCounts } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { sourceCourseLesson } from '../learning/source-course-content';
+import { studioMaterialView } from '../learning/studio-material-access';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -23,7 +25,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'courseProjects']) {
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'courseProjects','studioSourceMaterials','sourceCourses']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -63,6 +65,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
   add(result, store, 'courseProjects', row => row.ownerUserId === actorId);
+  add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status)));
+  add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
@@ -109,9 +113,13 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
-      .map(({ answerKeys: _answerKeys, requests: _requests, ...row }) => row);
+      .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...row }) => row);
     else if (name === 'courseProjects') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, ...row }) => row);
+    else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
+    else if(name==='sourceCourses')result[name]=records.filter(row=>row.ownerUserId===actorId||
+      (selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status))
+      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,...row})=>({...row,lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result} as any,index))??[]}));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }
