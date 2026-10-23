@@ -1,0 +1,126 @@
+{
+  "sourceRevision": "a004859578227acac4f833387119e9bc8488de7b",
+  "activeNormalApiRoutes": 233,
+  "coveredApiRoutes": 233,
+  "uncoveredApiRoutes": [],
+  "features": 103,
+  "areas": 14,
+  "sourceReferenceProblems": [],
+  "declaredRoutes": 254,
+  "disconnectedRoutes": [
+    {
+      "verb": "POST",
+      "path": "/api/assessments/start",
+      "controller": "AssessmentsController",
+      "method": "start"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/assessments/:sessionId/answers",
+      "controller": "AssessmentsController",
+      "method": "submitAnswer"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/assessments/:sessionId/complete",
+      "controller": "AssessmentsController",
+      "method": "complete"
+    },
+    {
+      "verb": "GET",
+      "path": "/api/assessments/:sessionId/progress",
+      "controller": "AssessmentsController",
+      "method": "progress"
+    },
+    {
+      "verb": "GET",
+      "path": "/api/assessments/:sessionId/result",
+      "controller": "AssessmentsController",
+      "method": "result"
+    },
+    {
+      "verb": "GET",
+      "path": "/api/missions/today",
+      "controller": "MissionsController",
+      "method": "getTodayMission"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/missions/:missionId/start",
+      "controller": "MissionsController",
+      "method": "startMission"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/missions/:missionId/answers",
+      "controller": "MissionsController",
+      "method": "submitAnswer"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/missions/:missionId/hints",
+      "controller": "MissionsController",
+      "method": "requestHint"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/missions/:missionId/complete",
+      "controller": "MissionsController",
+      "method": "completeMission"
+    },
+    {
+      "verb": "GET",
+      "path": "/api/missions/:missionId/result",
+      "controller": "MissionsController",
+      "method": "getMissionResult"
+    },
+    {
+      "verb": "GET",
+      "path": "/api/plans/weekly",
+      "controller": "PlansController",
+      "method": "getWeeklyPlan"
+    },
+    {
+      "verb": "POST",
+      "path": "/api/plans/weekly/generate",
+      "controller": "PlansController",
+      "method": "generateWeeklyPlan"
+    }
+  ],
+  "retiredRoutes": [
+    {
+      "verb": "ALL",
+      "path": "/api/assessments/*path"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/missions/*path"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/plans/weekly"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/plans/weekly/generate"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/progress/mastery-heatmap"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/reports/weekly"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/parents/:parentId/alerts"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/students/:studentId/knowledge-map"
+    }
+  ],
+  "sourceInventory": "generated/source-inventory.json",
+  "featureCatalog": "feature-catalog.json"
+}

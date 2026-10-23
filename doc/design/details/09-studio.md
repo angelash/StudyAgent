@@ -1,0 +1,472 @@
+# 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
+
+源码基线：`a004859578227acac4f833387119e9bc8488de7b`。角色：家长、学生；成人课程目录限家长/管理员。
+
+产品入口：`/studio`、`/studio/classroom`。
+
+## 模块实现
+
+- [apps/web/app/studio/studio.tsx](../../../apps/web/app/studio/studio.tsx)
+- [apps/web/app/studio/my-courses.tsx](../../../apps/web/app/studio/my-courses.tsx)
+- [apps/web/app/studio/studio-navigation.tsx](../../../apps/web/app/studio/studio-navigation.tsx)
+- [apps/web/app/studio/classroom/workbench.tsx](../../../apps/web/app/studio/classroom/workbench.tsx)
+- [apps/api/src/modules/learning/learning.service.ts](../../../apps/api/src/modules/learning/learning.service.ts)
+- [apps/api/src/modules/learning/classroom.service.ts](../../../apps/api/src/modules/learning/classroom.service.ts)
+- [apps/api/src/modules/learning/studio-integration.service.ts](../../../apps/api/src/modules/learning/studio-integration.service.ts)
+
+## 共享契约
+
+- [packages/contracts/src/studio.ts](../../../packages/contracts/src/studio.ts)
+- [packages/contracts/src/classroom.ts](../../../packages/contracts/src/classroom.ts)
+
+## 关联验证
+
+以下是对应功能领域的测试入口；测试文件存在不等于每个子场景已由真人或所有设备验证。
+
+- [apps/api/src/modules/learning/studio.integration.test.ts](../../../apps/api/src/modules/learning/studio.integration.test.ts)
+- [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
+- [tests/e2e/studio.spec.ts](../../../tests/e2e/studio.spec.ts)
+- [tests/e2e/classroom.spec.ts](../../../tests/e2e/classroom.spec.ts)
+- [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
+
+## STUDIO-01 统一工作台、我的课程与续学
+
+**输入**：view、student、subject、course及账号课程进度。
+
+**处理与实现**：共享导航；独立成人课程与孩子课程进入同一列表；搜索和状态筛选；当前账号阅读进度驱动下一讲；地址与浏览器历史同步。
+
+**输出**：课程列表、最近活动、当前范围总览。
+
+**状态与持久化**：`studioCourses`、`studioActivities`、`classroomSessions`
+
+**权限、失败与边界**：阅读进度不是掌握率；成人目录不写入孩子诊断证据。
+
+**关联接口**：
+
+- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:18](../../../apps/api/src/modules/learning/learning.controller.ts#L18)。
+
+**服务方法**：
+
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:64](../../../apps/api/src/modules/learning/learning.service.ts#L64)。
+
+## STUDIO-02 课程蓝图预览、确认和活动分流
+
+**输入**：当前范围、目标点、标题、预览指纹和请求键。
+
+**处理与实现**：使用批准知识与教学卡生成learn/practice/project/exam结构；预览后复核指纹再幂等保存；学习进入批准课堂，练习/核查进入既有测量路径。
+
+**输出**：可持久化课程与逐课入口。
+
+**状态与持久化**：`studioCourses`、`studioActivities`
+
+**权限、失败与边界**：现有课程由规则与教学资产组合，不是任意资料一键生成全部高质量课程。
+
+**关联接口**：
+
+- `POST /api/learning/studio/courses/preview` → `LearningController.studioCoursePreview`；[apps/api/src/modules/learning/learning.controller.ts:22](../../../apps/api/src/modules/learning/learning.controller.ts#L22)。
+- `POST /api/learning/studio/courses` → `LearningController.studioCourseCreate`；[apps/api/src/modules/learning/learning.controller.ts:25](../../../apps/api/src/modules/learning/learning.controller.ts#L25)。
+- `POST /api/learning/studio/courses/:courseId/lessons/:lessonId/start` → `LearningController.studioLessonStart`；[apps/api/src/modules/learning/learning.controller.ts:28](../../../apps/api/src/modules/learning/learning.controller.ts#L28)。
+
+**服务方法**：
+
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:476](../../../apps/api/src/modules/learning/learning.service.ts#L476)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:492](../../../apps/api/src/modules/learning/learning.service.ts#L492)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:514](../../../apps/api/src/modules/learning/learning.service.ts#L514)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-course.ts](../../../apps/api/src/modules/learning/studio-course.ts)
+
+## STUDIO-03 课程目录、单元、资料与帮助
+
+**输入**：unit、panel、lesson、tab与可选studioCourseId。
+
+**处理与实现**：展示封面、策划信息、单元、讲座、微课、项目与单元核查；可点开学习目标；帮助带入目标提问草稿；保留刷新、前进/后退与原课程返回路径。
+
+**输出**：完整目录到课堂的导航。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：原站封面和字体尚未完全复用，当前基于可见截图重建。
+
+**关联接口**：
+
+- `GET /api/learning/classroom/catalog` → `ClassroomController.catalog`；[apps/api/src/modules/learning/classroom.controller.ts:9](../../../apps/api/src/modules/learning/classroom.controller.ts#L9)。
+
+**服务方法**：
+
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:23](../../../apps/api/src/modules/learning/classroom.service.ts#L23)。
+
+## STUDIO-04 课堂会话、板书与按句字幕
+
+**输入**：lessonId、expectedRevision、cursor/revealed/sentenceCursor。
+
+**处理与实现**：首次打开冻结课件与私有答案；板书要点与讲稿分开；音轨结束才推进下一句；按行/项展示板书；只预取下一句；保存断点。
+
+**输出**：可恢复讲解、当前字幕、完整笔记。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：刷新从当前句开头恢复；语音不可用时走文字节奏，不能伪造真实语音对齐。
+
+**关联接口**：
+
+- `POST /api/learning/classroom/sessions` → `ClassroomController.open`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
+- `GET /api/learning/classroom/sessions/:id` → `ClassroomController.get`；[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)。
+- `PATCH /api/learning/classroom/sessions/:id` → `ClassroomController.progress`；[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)。
+- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:25](../../../apps/api/src/modules/learning/classroom.controller.ts#L25)。
+
+**服务方法**：
+
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:48](../../../apps/api/src/modules/learning/classroom.service.ts#L48)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:46](../../../apps/api/src/modules/learning/classroom.service.ts#L46)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:76](../../../apps/api/src/modules/learning/classroom.service.ts#L76)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:151](../../../apps/api/src/modules/learning/classroom.service.ts#L151)。
+
+## STUDIO-05 课堂插问与补充板书
+
+**输入**：当前课/步骤/问题、modelId、请求键。
+
+**处理与实现**：插问暂停自动讲解；发送当前课件和允许证据；模型返回reply与最多5条要点、可选三标签关系图；服务器保存消息与补充板书。
+
+**输出**：对话历史、可定位笔记、补充关系图。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：板书不是逐字转写；模型输出不执行HTML；私有答案键不送给练习助教。
+
+**关联接口**：
+
+- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
+
+**服务方法**：
+
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:119](../../../apps/api/src/modules/learning/classroom.service.ts#L119)。
+
+## STUDIO-06 独立课堂练习与项目草稿
+
+**输入**：questionId、selectedIndex/null、hintUsed、projectDraft。
+
+**处理与实现**：四选一题卡支持Check/Skip、键盘和题目进度；首次作答、跳过和提示记录持久化；项目草稿保存后可继续，单元核查复用现有题目。
+
+**输出**：本次题目表现和项目草稿。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：60微课共64道课堂题，单元题复用不算新的独立测量；不能当作完整标准化题库。
+
+**关联接口**：
+
+- `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)。
+
+**服务方法**：
+
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:95](../../../apps/api/src/modules/learning/classroom.service.ts#L95)。
+
+## STUDIO-07 课堂图片、表格与代码实验
+
+**输入**：受控image/table/code blocks。
+
+**处理与实现**：使用已生成本地WebP与受控SVG；图片可放大；表格逐行展示；JS示例放入独立runner页面和Worker，限制网络与DOM并设置超时。
+
+**输出**：图表表达、浏览器代码日志。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：代码实验是JavaScript，不是GESP C++；当前不按每次问题在线生图。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/app/studio/classroom/runner/route.ts](../../../apps/web/app/studio/classroom/runner/route.ts)
+- [apps/web/app/studio/classroom/code-workbench.tsx](../../../apps/web/app/studio/classroom/code-workbench.tsx)
+- [apps/web/app/studio/classroom/board-step.tsx](../../../apps/web/app/studio/classroom/board-step.tsx)
+
+## STUDIO-08 课堂控制、导出与移动交互
+
+**输入**：音色、倍速、字体、背景、显示面板和导出命令。
+
+**处理与实现**：支持播放/暂停/停止、静音阅读、音色和倍速；持久化显示偏好；导出已读板书及插问Markdown、打印PDF；退出确认保存项目。
+
+**输出**：可下载笔记与跨设备尺寸适配。
+
+**状态与持久化**：`classroomSessions`
+
+**权限、失败与边界**：显示偏好存在浏览器本地；学习事实保存在服务端，导出只包含已揭示内容。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+## STUDIO-09 自由主题白板预览与持久保存
+
+**输入**：学生、学科、主题、可选已审核知识点。
+
+**处理与实现**：规则生成分幕标题、概念、步骤、图形和检查点；预览和保存使用内容指纹、请求键；保存后可继续播放。
+
+**输出**：StudioWhiteboard与幕序。
+
+**状态与持久化**：`studioWhiteboards`、`studioActivities`
+
+**权限、失败与边界**：自由主题不等同于模型已核验知识正确性；有批准教学时优先使用。
+
+**关联接口**：
+
+- `POST /api/learning/studio/whiteboards/preview` → `LearningController.studioWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:32](../../../apps/api/src/modules/learning/learning.controller.ts#L32)。
+- `POST /api/learning/studio/whiteboards` → `LearningController.studioWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:35](../../../apps/api/src/modules/learning/learning.controller.ts#L35)。
+
+**服务方法**：
+
+- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:212](../../../apps/api/src/modules/learning/learning.service.ts#L212)。
+- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:224](../../../apps/api/src/modules/learning/learning.service.ts#L224)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-whiteboard.ts](../../../apps/api/src/modules/learning/studio-whiteboard.ts)
+
+## STUDIO-10 白板视频、SRT与AI旁白
+
+**输入**：白板ID、幕ID、可用语音与浏览器录制能力。
+
+**处理与实现**：Canvas按时间绘制；可请求每幕旁白并与画面合成MediaStream；MediaRecorder输出WebM；始终可导出SRT；finally释放音频上下文与轨道。
+
+**输出**：字幕视频、旁白视频、SRT。
+
+**状态与持久化**：`studioWhiteboards`
+
+**权限、失败与边界**：没有AI语音时生成字幕视频并明确提示；需要支持录制的浏览器。
+
+**关联接口**：
+
+- `POST /api/learning/studio/whiteboards/:id/narration/:sceneId` → `LearningController.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.controller.ts:66](../../../apps/api/src/modules/learning/learning.controller.ts#L66)。
+
+**服务方法**：
+
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:465](../../../apps/api/src/modules/learning/learning.service.ts#L465)。
+
+**补充实现文件**：
+
+- [apps/web/app/studio/whiteboard-player.tsx](../../../apps/web/app/studio/whiteboard-player.tsx)
+
+## STUDIO-11 PDF上传、原文与逐页阅读
+
+**输入**：multipart PDF、studentId、subject、requestKey。
+
+**处理与实现**：10MiB以内单PDF受控上传；保存私有原件并创建持久处理任务；每页图像和原件由学生授权接口读取。
+
+**输出**：原始PDF、页图、处理状态。
+
+**状态与持久化**：`studioSourceMaterials`、`importFiles`、`processingArtifacts`
+
+**权限、失败与边界**：资料属于所选档案；不能按任意本机路径读取文件。
+
+**关联接口**：
+
+- `POST /api/learning/studio/materials/pdf` → `LearningController.studioPdfUpload`；[apps/api/src/modules/learning/learning.controller.ts:38](../../../apps/api/src/modules/learning/learning.controller.ts#L38)。
+- `GET /api/learning/studio/materials/:id/pages/:page` → `LearningController.studioPdfPage`；[apps/api/src/modules/learning/learning.controller.ts:41](../../../apps/api/src/modules/learning/learning.controller.ts#L41)。
+- `GET /api/learning/studio/materials/:id/original` → `LearningController.studioPdfOriginal`；[apps/api/src/modules/learning/learning.controller.ts:43](../../../apps/api/src/modules/learning/learning.controller.ts#L43)。
+
+**服务方法**：
+
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:248](../../../apps/api/src/modules/learning/learning.service.ts#L248)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:305](../../../apps/api/src/modules/learning/learning.service.ts#L305)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:319](../../../apps/api/src/modules/learning/learning.service.ts#L319)。
+
+## STUDIO-12 PDF文字层、OCR与表格公式恢复
+
+**输入**：PDF原页、文字层、扫描图像。
+
+**处理与实现**：Python优先文字层，扫描页OCR；保留bbox/置信度/页图；本地表格网格和公式候选与可选模型复核合并；前端用HTML表格和KaTeX呈现。
+
+**输出**：按页paragraph/table/formula blocks。
+
+**状态与持久化**：`studioSourceMaterials`、`processingArtifacts`
+
+**权限、失败与边界**：OCR和公式是候选，不能把恢复结构当成已审核教学内容。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-pdf-structure.ts](../../../apps/api/src/modules/learning/studio-pdf-structure.ts)
+- [scripts/processing/process_document.py](../../../scripts/processing/process_document.py)
+
+## STUDIO-13 结构人工确认与失败重试
+
+**输入**：expectedUpdatedAt、requestKey、人工核对决定。
+
+**处理与实现**：用户对照原页确认恢复结果；失败或本地降级可重新排队；更新时比较资料版本并保留原件。
+
+**输出**：review状态与新任务。
+
+**状态与持久化**：`studioSourceMaterials`
+
+**权限、失败与边界**：不能用旧页面确认已变化的结构；复核能力不可用仍展示本地候选与警告。
+
+**关联接口**：
+
+- `POST /api/learning/studio/materials/:id/structure/review` → `LearningController.studioPdfStructureReview`；[apps/api/src/modules/learning/learning.controller.ts:46](../../../apps/api/src/modules/learning/learning.controller.ts#L46)。
+- `POST /api/learning/studio/materials/:id/process/retry` → `LearningController.studioPdfProcessRetry`；[apps/api/src/modules/learning/learning.controller.ts:50](../../../apps/api/src/modules/learning/learning.controller.ts#L50)。
+
+**服务方法**：
+
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:332](../../../apps/api/src/modules/learning/learning.service.ts#L332)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:356](../../../apps/api/src/modules/learning/learning.service.ts#L356)。
+
+## STUDIO-14 PDF页级白板
+
+**输入**：资料ID、知识点、页级依据与预览指纹。
+
+**处理与实现**：选定原页与批准知识；以原页图和文字核对为基础生成白板幕；保存页码、来源及主题。
+
+**输出**：原页与提炼解释结合的白板。
+
+**状态与持久化**：`studioSourceMaterials`、`studioWhiteboards`
+
+**权限、失败与边界**：关键词匹配只能提供候选页，不能声称精确教学引用已审核。
+
+**关联接口**：
+
+- `POST /api/learning/studio/materials/:id/whiteboard/preview` → `LearningController.studioPdfWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:54](../../../apps/api/src/modules/learning/learning.controller.ts#L54)。
+- `POST /api/learning/studio/materials/:id/whiteboard` → `LearningController.studioPdfWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:56](../../../apps/api/src/modules/learning/learning.controller.ts#L56)。
+
+**服务方法**：
+
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:383](../../../apps/api/src/modules/learning/learning.service.ts#L383)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:397](../../../apps/api/src/modules/learning/learning.service.ts#L397)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-pdf-whiteboard.ts](../../../apps/api/src/modules/learning/studio-pdf-whiteboard.ts)
+
+## STUDIO-15 个性化讲义、闪卡与微测
+
+**输入**：当前范围、薄弱/未知点、可选资料来源。
+
+**处理与实现**：最多选4个批准教学点；组合解释、例题、易错、迁移章节和闪卡/微测；关联真实知识ID及候选页；指纹预览后保存。
+
+**输出**：StudioLearningPack及打印材料。
+
+**状态与持久化**：`studioLearningPacks`、`studioSourceMaterials`
+
+**权限、失败与边界**：规则编排为主；闪卡或阅读完成不改变掌握结论。
+
+**关联接口**：
+
+- `POST /api/learning/studio/study-packs/preview` → `LearningController.studioLearningPackPreview`；[apps/api/src/modules/learning/learning.controller.ts:60](../../../apps/api/src/modules/learning/learning.controller.ts#L60)。
+- `POST /api/learning/studio/study-packs` → `LearningController.studioLearningPackCreate`；[apps/api/src/modules/learning/learning.controller.ts:63](../../../apps/api/src/modules/learning/learning.controller.ts#L63)。
+
+**服务方法**：
+
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:417](../../../apps/api/src/modules/learning/learning.service.ts#L417)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:438](../../../apps/api/src/modules/learning/learning.service.ts#L438)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-learning-pack.ts](../../../apps/api/src/modules/learning/studio-learning-pack.ts)
+
+## STUDIO-16 工作台计划排程与阶段执行
+
+**输入**：目标、截止日期、首次时间、每天10–60分钟、版本和请求键。
+
+**处理与实现**：按薄弱与证据不足优先选点；编排learn/practice/transfer/review，跳过可识别冲突；完成后追加1/3/7/14日复盘；同步日历事件状态。
+
+**输出**：可确认、完成、跳过、重开的学习安排。
+
+**状态与持久化**：`studioStudyPlans`、`studioScheduleEvents`、`studioActivities`
+
+**权限、失败与边界**：这是排程计划，不是DiagnosticGuidancePlan；极端冲突会保留起点并提示，不是通用排课优化器。
+
+**关联接口**：
+
+- `POST /api/learning/studio/study-plans/preview` → `LearningController.studioStudyPlanPreview`；[apps/api/src/modules/learning/learning.controller.ts:91](../../../apps/api/src/modules/learning/learning.controller.ts#L91)。
+- `POST /api/learning/studio/study-plans` → `LearningController.studioStudyPlanCreate`；[apps/api/src/modules/learning/learning.controller.ts:94](../../../apps/api/src/modules/learning/learning.controller.ts#L94)。
+- `POST /api/learning/studio/study-plans/:planId/sessions/:sessionId` → `LearningController.studioStudyPlanSession`；[apps/api/src/modules/learning/learning.controller.ts:97](../../../apps/api/src/modules/learning/learning.controller.ts#L97)。
+
+**服务方法**：
+
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:115](../../../apps/api/src/modules/learning/learning.service.ts#L115)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:131](../../../apps/api/src/modules/learning/learning.service.ts#L131)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:169](../../../apps/api/src/modules/learning/learning.service.ts#L169)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-study-plan.ts](../../../apps/api/src/modules/learning/studio-study-plan.ts)
+
+## STUDIO-17 ICS日历连接、刷新与撤销
+
+**输入**：ICS文本或HTTPS订阅URL、来源名称、类型、请求键。
+
+**处理与实现**：校验地址、重定向、大小和内容；拒绝本机/私网地址；订阅URL加密保存；UID归并事件；手动同步后替换该来源事件，撤销清理来源事件。
+
+**输出**：只读外部课程和日历事件。
+
+**状态与持久化**：`studioConnectors`、`studioScheduleEvents`
+
+**权限、失败与边界**：没有Canvas/Schoology OAuth、后台自动刷新、双向作业或成绩回写。
+
+**关联接口**：
+
+- `POST /api/learning/studio/integrations` → `LearningController.studioIntegrationConnect`；[apps/api/src/modules/learning/learning.controller.ts:70](../../../apps/api/src/modules/learning/learning.controller.ts#L70)。
+- `POST /api/learning/studio/integrations/:id/sync` → `LearningController.studioIntegrationSync`；[apps/api/src/modules/learning/learning.controller.ts:73](../../../apps/api/src/modules/learning/learning.controller.ts#L73)。
+- `POST /api/learning/studio/integrations/:id/disconnect` → `LearningController.studioIntegrationDisconnect`；[apps/api/src/modules/learning/learning.controller.ts:76](../../../apps/api/src/modules/learning/learning.controller.ts#L76)。
+
+**服务方法**：
+
+- `StudioIntegrationService.connect`；[apps/api/src/modules/learning/studio-integration.service.ts:83](../../../apps/api/src/modules/learning/studio-integration.service.ts#L83)。
+- `StudioIntegrationService.sync`；[apps/api/src/modules/learning/studio-integration.service.ts:107](../../../apps/api/src/modules/learning/studio-integration.service.ts#L107)。
+- `StudioIntegrationService.disconnect`；[apps/api/src/modules/learning/studio-integration.service.ts:124](../../../apps/api/src/modules/learning/studio-integration.service.ts#L124)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/ics-calendar.ts](../../../apps/api/src/modules/learning/ics-calendar.ts)
+
+## STUDIO-18 日历月周视图与任务生命周期
+
+**输入**：所选日期、任务内容/时间、确认/完成状态、expectedRevision。
+
+**处理与实现**：本地日期生成月/周格和当日待办；手动事件支持编辑、待确认、完成、重开；批删先校验全部ID，切换范围清空选择；计划事件走计划服务，订阅只读。
+
+**输出**：持久任务及日期状态。
+
+**状态与持久化**：`studioScheduleEvents`、`studioStudyPlans`
+
+**权限、失败与边界**：手动任务时长5分钟至8小时；日历仍绑定学生档案；权限由服务端监护校验。
+
+**关联接口**：
+
+- `POST /api/learning/studio/calendar/events` → `LearningController.studioCalendarEventCreate`；[apps/api/src/modules/learning/learning.controller.ts:79](../../../apps/api/src/modules/learning/learning.controller.ts#L79)。
+- `POST /api/learning/studio/calendar/events/:id/update` → `LearningController.studioCalendarEventUpdate`；[apps/api/src/modules/learning/learning.controller.ts:85](../../../apps/api/src/modules/learning/learning.controller.ts#L85)。
+- `POST /api/learning/studio/calendar/events/:id/remove` → `LearningController.studioCalendarEventRemove`；[apps/api/src/modules/learning/learning.controller.ts:82](../../../apps/api/src/modules/learning/learning.controller.ts#L82)。
+- `POST /api/learning/studio/calendar/batch-remove` → `LearningController.studioCalendarBatchRemove`；[apps/api/src/modules/learning/learning.controller.ts:88](../../../apps/api/src/modules/learning/learning.controller.ts#L88)。
+
+**服务方法**：
+
+- `StudioIntegrationService.createStudyEvent`；[apps/api/src/modules/learning/studio-integration.service.ts:130](../../../apps/api/src/modules/learning/studio-integration.service.ts#L130)。
+- `StudioIntegrationService.updateStudyEvent`；[apps/api/src/modules/learning/studio-integration.service.ts:154](../../../apps/api/src/modules/learning/studio-integration.service.ts#L154)。
+- `StudioIntegrationService.removeStudyEvent`；[apps/api/src/modules/learning/studio-integration.service.ts:146](../../../apps/api/src/modules/learning/studio-integration.service.ts#L146)。
+- `StudioIntegrationService.batchRemoveStudyEvents`；[apps/api/src/modules/learning/studio-integration.service.ts:172](../../../apps/api/src/modules/learning/studio-integration.service.ts#L172)。
+
+**补充实现文件**：
+
+- [apps/web/app/studio/calendar-board.tsx](../../../apps/web/app/studio/calendar-board.tsx)
+- [apps/web/app/studio/workspace-dialog.tsx](../../../apps/web/app/studio/workspace-dialog.tsx)
+
+## STUDIO-19 学习安排导出ICS
+
+**输入**：学生与学科。
+
+**处理与实现**：授权后读取对应安排；转义文本和折行；以稳定UID、开始结束和全天属性生成ICS并由浏览器下载。
+
+**输出**：可导入外部日历的ICS文件。
+
+**状态与持久化**：`studioScheduleEvents`
+
+**权限、失败与边界**：文件互通不表示与外部日历建立持续双向同步。
+
+**关联接口**：
+
+- `GET /api/learning/studio/calendar/export` → `LearningController.studioCalendarExport`；[apps/api/src/modules/learning/learning.controller.ts:101](../../../apps/api/src/modules/learning/learning.controller.ts#L101)。
+
+**服务方法**：
+
+- `StudioIntegrationService.exportCalendar`；[apps/api/src/modules/learning/studio-integration.service.ts:185](../../../apps/api/src/modules/learning/studio-integration.service.ts#L185)。
