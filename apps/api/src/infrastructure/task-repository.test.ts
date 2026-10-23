@@ -9,6 +9,37 @@ const intent = (id = 'task-one', key = 'request-one'): TaskIntent => ({ id, kind
   payloadHash: 'same-input', payload: { jobId: 'import-one' }, createdAt: new Date().toISOString(), maxAttempts: 3 });
 
 describe('transactional task outbox and fenced workers', () => {
+  it('reopens an atomic checkpoint without completing its task and resumes with a new lease', async () => {
+    const dir=mkdtempSync(join(tmpdir(),'task-checkpoint-')),location=join(dir,'state.sqlite3');let time=1000;
+    let db=new DomainDatabase(location,()=>time);await db.open();
+    try {
+      await db.commit(await db.read(),{courses:[{id:'course',completedLessons:0}]},{enqueue:[intent()]});
+      const first=(await db.tasks.claim(['pdf.import'],100))!;
+      await db.commit(await db.read(),{courses:[{id:'course',completedLessons:1}]},{fence:{id:first.id,token:first.leaseToken!,mode:'checkpoint',progress:{stage:'reviewing',completed:1,total:2}}});
+      expect(await db.tasks.get(first.id)).toMatchObject({state:'running',leaseToken:first.leaseToken,leaseUntil:1100,version:first.version,progress:{completed:1}});
+      await db.close();time=1200;db=new DomainDatabase(location,()=>time);await db.open();
+      expect((await db.read()).state.courses).toEqual([{id:'course',completedLessons:1}]);const resumed=(await db.tasks.claim(['pdf.import'],100))!;
+      await expect(db.commit(await db.read(),{courses:[{id:'course',completedLessons:99}]},{fence:{id:first.id,token:first.leaseToken!,mode:'checkpoint',progress:{completed:99}}})).rejects.toThrow('检查点未保存');
+      expect((await db.read()).state.courses).toEqual([{id:'course',completedLessons:1}]);
+      await db.commit(await db.read(),{courses:[{id:'course',completedLessons:2}]},{fence:{id:resumed.id,token:resumed.leaseToken!,result:{lessons:2}}});
+      expect((await db.tasks.get(first.id))?.state).toBe('succeeded');expect((await db.tasks.history(first.id)).filter(event=>event.action==='checkpoint')).toHaveLength(1);
+    } finally {await db.close();rmSync(dir,{recursive:true,force:true});}
+  });
+
+  it('rolls progress and audit back with domain conflicts and rejects cancelled or expired checkpoints', async () => {
+    let time=1000;const db=new DomainDatabase(':memory:',()=>time);await db.open();
+    try {
+      await db.commit(await db.read(),{courses:[{id:'course',completedLessons:0}]},{enqueue:[intent()]});const first=(await db.tasks.claim(['pdf.import'],100))!,stale=await db.read();
+      await db.commit(stale,{courses:[{id:'course',completedLessons:1}]});
+      await expect(db.commit(stale,{courses:[{id:'course',completedLessons:2}]},{fence:{id:first.id,token:first.leaseToken!,mode:'checkpoint',progress:{completed:2}}})).rejects.toThrow('数据已更新');
+      expect((await db.tasks.get(first.id))?.progress).toEqual({});expect((await db.tasks.history(first.id)).some(event=>event.action==='checkpoint')).toBe(false);
+      time=1200;await expect(db.commit(await db.read(),{courses:[{id:'course',completedLessons:3}]},{fence:{id:first.id,token:first.leaseToken!,mode:'checkpoint',progress:{completed:3}}})).rejects.toThrow('检查点未保存');
+      const fresh=(await db.tasks.claim(['pdf.import'],100))!;await db.tasks.cancel(fresh.id,fresh.version);
+      await expect(db.commit(await db.read(),{courses:[{id:'course',completedLessons:4}]},{fence:{id:fresh.id,token:fresh.leaseToken!,mode:'checkpoint',progress:{completed:4}}})).rejects.toThrow('检查点未保存');
+      expect((await db.read()).state.courses).toEqual([{id:'course',completedLessons:1}]);expect((await db.tasks.get(first.id))?.progress).toEqual({});
+    } finally {await db.close();}
+  });
+
   it('atomically persists domain intent and task; duplicate key cannot commit a different domain result', async () => {
     const db = new DomainDatabase(':memory:'); await db.open();
     try {

@@ -308,7 +308,7 @@ export class DomainDatabase {
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
-        if (options.fence) await this.tasks.finish(options.fence);
+        if (options.fence) await this.tasks.applyFence(options.fence);
         const current = Number((this.sqlite.prepare('SELECT revision FROM store_meta WHERE id=1').get() as { revision: number }).revision);
         if (options.reads) await this.assertDependencies(before, changes, options.reads, async (collection, where) => {
           const query = selectionSql(collection, where, false);
@@ -336,7 +336,7 @@ export class DomainDatabase {
     const client = await this.postgres!.connect();
     try {
       await client.query('BEGIN');
-      if (options.fence) await this.tasks.finish(options.fence, client);
+      if (options.fence) await this.tasks.applyFence(options.fence, client);
       // The metadata row serializes only validation and SQL writes, not request execution.
       const current = Number((await client.query('SELECT revision FROM store_meta WHERE id=1 FOR UPDATE')).rows[0].revision);
       if (options.reads) await this.assertDependencies(before, changes, options.reads, async (collection, where) => {

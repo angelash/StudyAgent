@@ -10,7 +10,9 @@ export type TaskState = 'queued' | 'running' | 'retry_wait' | 'cancel_requested'
 export type TaskRow = TaskIntent & { state: TaskState; attempts: number; generation: number; version: number;
   availableAt: number; leaseToken: string | null; leaseUntil: number | null; progress: Record<string, unknown>;
   result: Record<string, unknown> | null; errorCode: string | null; updatedAt: string };
-export type TaskFence = { id: string; token: string; result?: Record<string, unknown> };
+export type TaskCompletionFence = { id: string; token: string; mode?: 'complete'; result?: Record<string, unknown> };
+export type TaskCheckpointFence = { id: string; token: string; mode: 'checkpoint'; progress: Record<string, unknown> };
+export type TaskFence = TaskCompletionFence | TaskCheckpointFence;
 export type TaskOperation = { id: string; action: 'cancel' | 'retry'; expectedVersion: number; actorId: string };
 type RawRow = { id: string; kind: string; owner_id: string; request_key: string; payload_hash: string; payload: string | object;
   state: TaskState; attempts: number; max_attempts: number; generation: number; version: number; available_at: number | string;
@@ -170,8 +172,19 @@ export class TaskRepository {
     });
   }
 
+  /** Both modes run inside the SAME transaction as the domain outputs. */
+  async applyFence(fence: TaskFence, client?: PoolClient) {
+    if (fence.mode !== 'checkpoint') return this.finish(fence, client);
+    const sql = `UPDATE durable_tasks SET progress=?,updated_at=?
+      WHERE id=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id`;
+    const args = [JSON.stringify(fence.progress), new Date(this.now()).toISOString(), fence.id, fence.token, this.now()];
+    const rows = this.sqlite ? this.sqlite.prepare(sql).all(...args) : (await client!.query(this.pg(sql), args)).rows;
+    if (rows.length !== 1) throw new ConflictException('任务租约已过期或已取消，检查点未保存');
+    await this.audit(fence.id, 'checkpoint', 'worker', {}, client);
+  }
+
   /** Fenced completion shares a transaction with all published domain outputs. */
-  async finish(fence: TaskFence, client?: PoolClient) {
+  async finish(fence: TaskCompletionFence, client?: PoolClient) {
     const sql = `UPDATE durable_tasks SET state='succeeded',result=?,progress=?,lease_token=NULL,lease_until=NULL,version=version+1,updated_at=?
       WHERE id=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id`;
     const args = [JSON.stringify(fence.result ?? {}), JSON.stringify({ stage: 'completed' }), new Date(this.now()).toISOString(), fence.id, fence.token, this.now()];

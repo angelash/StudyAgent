@@ -97,9 +97,19 @@ suite('real PostgreSQL storage and API recovery', () => {
       const before = await first.read();
       await expect(first.commit(before, { imports: [{ id: 'import', status: 'stale' }] }, { fence: { id: old.id, token: old.leaseToken! } })).rejects.toThrow();
       expect(await first.read()).toEqual(before);
-      await second.commit(before, { imports: [{ id: 'import', status: 'complete' }] }, { fence: { id: fresh.id, token: fresh.leaseToken! } });
+      await expect(first.commit(before,{imports:[{id:'import',status:'stale-checkpoint'}]},{fence:{id:old.id,token:old.leaseToken!,mode:'checkpoint',progress:{stage:'stale'}}})).rejects.toThrow('检查点未保存');
+      await second.commit(before,{imports:[{id:'import',status:'first-lesson'}]},{fence:{id:fresh.id,token:fresh.leaseToken!,mode:'checkpoint',progress:{completed:1,total:2}}});
+      expect(await first.tasks.get('job')).toMatchObject({state:'running',leaseToken:fresh.leaseToken,progress:{completed:1}});
+      await expect(first.commit(before,{imports:[{id:'import',status:'must-rollback'}]},{fence:{id:fresh.id,token:fresh.leaseToken!,mode:'checkpoint',progress:{completed:99}}})).rejects.toThrow('数据已更新');
+      expect((await first.tasks.get('job'))?.progress).toEqual({completed:1,total:2});
+      expect((await first.tasks.history('job')).filter(event=>event.action==='checkpoint')).toHaveLength(1);
+      await second.commit(await second.read(), { imports: [{ id: 'import', status: 'complete' }] }, { fence: { id: fresh.id, token: fresh.leaseToken! } });
       expect((await first.tasks.get('job'))?.state).toBe('succeeded');
-      metrics.push({ case: 'cross_pool_queue_fencing', passed: true });
+      await first.commit(await first.read(),{imports:[{id:'import',status:'complete'}]},{enqueue:[{...fresh,id:'job-cancel',requestKey:'cancel-checkpoint'}]});
+      const cancelling=(await second.tasks.claim(['pdf.import'],100))!;await first.tasks.cancel(cancelling.id,cancelling.version);
+      await expect(second.commit(await second.read(),{imports:[{id:'import',status:'cancelled-write'}]},{fence:{id:cancelling.id,token:cancelling.leaseToken!,mode:'checkpoint',progress:{completed:99}}})).rejects.toThrow('检查点未保存');
+      expect((await first.read()).state.imports).toEqual([{id:'import',status:'complete'}]);
+      metrics.push({ case: 'cross_pool_queue_fencing', passed: true, checkpointVerified: true });
     } finally { await first.close(); await second.close(); }
   });
 
