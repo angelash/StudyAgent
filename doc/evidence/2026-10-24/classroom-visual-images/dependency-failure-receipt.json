@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T22:42:46.325Z",
+  "passed": false,
+  "scope": "One actual gpt-image-2 request via the installed Xiaojiu skill, actual durable worker and isolated anonymous classroom. Not teacher approval, content accuracy certification or stability study.",
+  "contentReview": "pending",
+  "capabilities": {
+    "modelId": "gpt-image-2",
+    "available": true,
+    "reason": "ready",
+    "message": "可生成讲解参考图，标注仍需核对。"
+  },
+  "durationMs": 2877,
+  "status": "failed",
+  "errorCode": "image_provider_failed",
+  "qaSourceReceipt": "data/qa/classroom-image-live-1792795366325-10336/receipt.json"
+}

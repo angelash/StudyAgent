@@ -1,0 +1,445 @@
+{
+  "at": "2026-10-23T23:49:43.779Z",
+  "passed": true,
+  "runId": 40040404744,
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744/job/120709876918",
+      "startedAt": "2026-10-23T23:34:10Z",
+      "completedAt": "2026-10-23T23:40:25Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install PDF dependencies for browser worker",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install browser runtime",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Browser product journey at phone, tablet and desktop widths",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "testSummaries": [
+        "47 passed (4.6m)"
+      ]
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744/job/120709877162",
+      "startedAt": "2026-10-23T23:34:11Z",
+      "completedAt": "2026-10-23T23:36:44Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare isolated PostgreSQL roles and client tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/contracts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/config",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/api",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "PostgreSQL migration, recovery and fencing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install source-course PDF test dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source-course staged generation and checkpoint recovery on PostgreSQL",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Classroom image task lifecycle and private references on PostgreSQL",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "GESP assisted guidance and retention PostgreSQL journey",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "testSummaries": [
+        "      Tests  6 passed (6)",
+        "      Tests  23 passed (23)",
+        "      Tests  11 passed (11)"
+      ]
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744/job/120709877289",
+      "startedAt": "2026-10-23T23:34:11Z",
+      "completedAt": "2026-10-23T23:48:38Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install document test dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install media tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm audit --audit-level=low",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run lint",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local documentation links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Authored teaching coverage and measurement material audit",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Current eligible material coverage, formal teacher roles and read-only history across restarts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "GESP authored content and assisted guidance retention journey",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "All authored math and English contrasts, persisted case grading and historical content upgrade",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical original spatial assets and independent image decoding",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical minute-hand and oriented-map assets and independent image decoding",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical boundary, coverage and area-unit assets and independent image decoding",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical fourth-grade angles, triangles and bar charts and independent image decoding",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Curriculum package persistence and safe seed enrichment",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed textbook TOCs and frozen progress recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Frozen measurement definitions and comparable evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed authored prerequisite upgrade, interrupted startup and historical evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed atomic child relationship and component bindings across upgrades",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Atomic component observation, independent measurement and delayed review recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed average denominator relationship and historical mapping protection",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Average denominator independent measurement and delayed review recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Assessment preview, partial evidence and state recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Original paper measurement review and publication recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Mistake organization, frozen redo and independent verification recovery",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Asset audit tool regression",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Public textbook capture and source-bound chapter review",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Independent recovery verifier regression",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source release privacy and tamper boundary regression",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "testSummaries": [
+        "      Tests  853 passed | 14 skipped (867)"
+      ],
+      "skipSummaries": [
+        "↓ src/infrastructure/postgres.integration.test.ts (6 tests | 6 skipped)",
+        "✓ keeps prompted, self-reported, skipped and pending work out of independent counts  1040ms",
+        "↓ src/modules/gesp/gesp-student.integration.test.ts (4 tests | 4 skipped)",
+        "↓ src/modules/gesp/isolated-runner.test.ts (4 tests | 4 skipped)",
+        "Test Files  97 passed | 3 skipped (100)",
+        "Tests  853 passed | 14 skipped (867)"
+      ]
+    }
+  ],
+  "counts": {
+    "application": {
+      "passed": 853,
+      "skipped": 14,
+      "total": 867
+    },
+    "browser": {
+      "passed": 47,
+      "skipped": 0
+    },
+    "postgres": {
+      "infrastructure": 6,
+      "sourceCourses": 23,
+      "classroomVisuals": 11
+    }
+  }
+}

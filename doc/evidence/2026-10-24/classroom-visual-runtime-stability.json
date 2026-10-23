@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-23T23:55:43.173Z",
+  "passed": true,
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+  "observedMilliseconds": 252170,
+  "sameProcessesAndRestartCounts": true,
+  "services": [
+    {
+      "name": "study-agent-api",
+      "pid": 69032,
+      "status": "online",
+      "restarts": 1162,
+      "uptimeSeconds": 280
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 69292,
+      "status": "online",
+      "restarts": 3,
+      "uptimeSeconds": 280
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 51352,
+      "status": "online",
+      "restarts": 1,
+      "uptimeSeconds": 279
+    }
+  ],
+  "imageEnvironmentPresence": {
+    "hasIntegratedSkillHome": true,
+    "hasXiaojiuProxy": true,
+    "xiaojiuEnvironment": true,
+    "proxyMatchesCurrentEnvironment": true
+  },
+  "scope": "Short post-deployment observation and anonymous readiness only; does not prove indefinite stability or a production-family generation."
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T22:51:05.952Z",
+  "passed": true,
+  "scope": "One actual gpt-image-2 request via the installed Xiaojiu skill, actual durable worker and isolated anonymous classroom. Not teacher approval, content accuracy certification or stability study.",
+  "contentReview": "pending",
+  "capabilities": {
+    "modelId": "gpt-image-2",
+    "available": true,
+    "reason": "ready",
+    "message": "可生成讲解参考图，标注仍需核对。"
+  },
+  "durationMs": 47123,
+  "status": "ready",
+  "errorCode": null,
+  "artifacts": {
+    "image": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-image.png",
+    "original": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-original.png",
+    "prompt": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-prompt.txt"
+  },
+  "sha256": "9895f700af69f062c49b9b813d2e78a5c612cefe20badd4b23385647efc16e29",
+  "width": 1024,
+  "height": 1024,
+  "modelId": "gpt-image-2",
+  "stepTitle": "社会学想象力",
+  "teachingProgressUnchanged": true,
+  "qaSourceReceipt": "data/qa/classroom-image-live-1792795865952-60448/receipt.json",
+  "artifactSha256": {
+    "image": "9895f700af69f062c49b9b813d2e78a5c612cefe20badd4b23385647efc16e29",
+    "original": "d4b3edfc61ebae7860bc2c8fd7d3be75d0b1bb6325c307099700fae3bea4dba9",
+    "prompt": "9a9abf62e1d7d4bbbc5c31ef3adc7e8d0234ced744290c9e22ec449de714842a"
+  }
+}

@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`c2650eb7fbe334206125ca98ff180f07356e11a9`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -600,7 +600,47 @@
 - [apps/web/app/studio/source-courses/original-manuscript.tsx](../../../apps/web/app/studio/source-courses/original-manuscript.tsx)
 - [apps/web/app/studio/source-courses/source-courses.css](../../../apps/web/app/studio/source-courses/source-courses.css)
 - [apps/api/src/common/http-body.ts](../../../apps/api/src/common/http-body.ts)
+- [apps/api/src/common/http-body.integration.test.ts](../../../apps/api/src/common/http-body.integration.test.ts)
 - [scripts/qa/source-course-fixture.cjs](../../../scripts/qa/source-course-fixture.cjs)
 - [scripts/qa/source-course-test-api.cjs](../../../scripts/qa/source-course-test-api.cjs)
 - [scripts/qa/run-source-course-browser.cjs](../../../scripts/qa/run-source-course-browser.cjs)
 - [tests/e2e/source-course.spec.ts](../../../tests/e2e/source-course.spec.ts)
+
+## STUDIO-22 当前节点配图、候选版本与离线笔记
+
+**输入**：已授权会话/当前已展示节点、用途与补充要求、冻结内容身份、请求键和修订号。
+
+**处理与实现**：仅用当前讲解及已出现要点构造少文字提示词；持久任务按租约隔离暂存并在最终事务重查权限和原节点，解码/哈希校验与去元数据后发布；失败/取消/重启恢复，取消请求与真正结束分开显示；版本只在原节点显式选用，并发选用保持唯一；下载鉴权与范围请求，损坏图可取消选用；放大支持键盘焦点，选图进入打印和嵌入PNG的离线HTML笔记；家庭导出/删除账本、双库备份和保守暂存回收贯通。
+
+**输出**：可恢复生成任务、原节点参考图版本、授权实际字节、含图片的离线笔记。
+
+**状态与持久化**：`classroomVisuals`、`classroomSessions`
+
+**权限、失败与边界**：个人选用不等于教师批准或测量标定；初版图像可能有文字/关系错误，需核对；尚未实现插问自动生图、原页参考输入或可编辑图像迭代；浏览器替身只证交互。
+
+**关联接口**：
+
+- `GET /api/learning/classroom/sessions/:sessionId/visuals` → `ClassroomVisualController.list`；[apps/api/src/modules/learning/classroom-visual.controller.ts:10](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L10)。
+- `POST /api/learning/classroom/sessions/:sessionId/visuals` → `ClassroomVisualController.create`；[apps/api/src/modules/learning/classroom-visual.controller.ts:16](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L16)。
+- `POST /api/learning/classroom/sessions/:sessionId/visuals/:id/:action` → `ClassroomVisualController.action`；[apps/api/src/modules/learning/classroom-visual.controller.ts:24](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L24)。
+- `GET /api/learning/classroom/sessions/:sessionId/visuals/:id/file` → `ClassroomVisualController.file`；[apps/api/src/modules/learning/classroom-visual.controller.ts:37](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L37)。
+
+**服务方法**：
+
+- `ClassroomVisualService.list`；[apps/api/src/modules/learning/classroom-visual.service.ts:24](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L24)。
+- `ClassroomVisualService.create`；[apps/api/src/modules/learning/classroom-visual.service.ts:25](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L25)。
+- `ClassroomVisualService.action`；[apps/api/src/modules/learning/classroom-visual.service.ts:54](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L54)。
+- `ClassroomVisualService.file`；[apps/api/src/modules/learning/classroom-visual.service.ts:121](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L121)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/classroom-visual.ts](../../../packages/contracts/src/classroom-visual.ts)
+- [apps/api/src/modules/learning/classroom-visual-worker.service.ts](../../../apps/api/src/modules/learning/classroom-visual-worker.service.ts)
+- [apps/api/src/modules/learning/classroom-visual-storage.ts](../../../apps/api/src/modules/learning/classroom-visual-storage.ts)
+- [apps/api/src/modules/learning/classroom-visual-context.ts](../../../apps/api/src/modules/learning/classroom-visual-context.ts)
+- [apps/api/src/modules/learning/classroom-visual-context.test.ts](../../../apps/api/src/modules/learning/classroom-visual-context.test.ts)
+- [apps/api/src/modules/learning/classroom-visual.integration.test.ts](../../../apps/api/src/modules/learning/classroom-visual.integration.test.ts)
+- [apps/api/src/modules/learning/classroom-visual-storage.test.ts](../../../apps/api/src/modules/learning/classroom-visual-storage.test.ts)
+- [apps/web/app/studio/classroom/visuals.tsx](../../../apps/web/app/studio/classroom/visuals.tsx)
+- [apps/web/app/studio/classroom/visuals.css](../../../apps/web/app/studio/classroom/visuals.css)
+- [tests/e2e/classroom-visual.spec.ts](../../../tests/e2e/classroom-visual.spec.ts)

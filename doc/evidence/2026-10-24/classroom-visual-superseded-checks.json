@@ -1,0 +1,105 @@
+[
+  {
+    "label": "archive-field-check",
+    "note": "One overbroad assertion rejected a public prompt-version identifier. Replaced with exact checks for private prompt, request records and prompt-file descriptor; no runtime privacy defect was found.",
+    "reportSha256": "128bda6582ddac00fb27c37d4269a7b1da66cdfa1744795deca25842f0336185",
+    "counts": {
+      "numPassedTests": 22,
+      "numFailedTests": 1,
+      "success": false
+    }
+  },
+  {
+    "label": "registration-buckets",
+    "note": "44 passed, 2 registration calls were rate-limited. New QA registrations now use distinct loopback fixture addresses; production limits unchanged.",
+    "reportSha256": "052946604cb72d2008fe6dbc37eef1aab5de484ff8c18d855f326bc894c58811",
+    "stats": {
+      "startTime": "2026-10-23T22:57:41.833Z",
+      "duration": 269561.864,
+      "expected": 44,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "errors": [
+      {
+        "title": "an approved fraction teaching card renders a safe step-by-step visual",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  129 |   const principal = `fraction-${suffix}@local.test`, credential = `Fraction-only-${suffix}`;\n  130 |   expect((await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' },\n> 131 |     body: JSON.stringify({ principal, credential }) })).status).toBe(201);\n      |                                                                 ^\n  132 |   await page.goto('/parent/login');\n  133 |   await page.getByLabel('登录账号').fill(principal);\n  134 |   await page.getByLabel('密码').fill(credential);\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\product-smoke.spec.ts:131:65"
+        ]
+      },
+      {
+        "title": "a parent can build and reopen an evidence-backed learning studio course",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  37 |   const registration = await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' },\n  38 |     body: JSON.stringify({ principal, credential }) });\n> 39 |   expect(registration.status).toBe(201);\n     |                               ^\n  40 |   const auth = await registration.json();\n  41 |   const headers = { 'content-type': 'application/json', authorization: `Bearer ${auth.data.token}` };\n  42 |   const studentResponse = await fetch(`${apiUrl}/api/students`, { method: 'POST', headers,\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\studio.spec.ts:39:31"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "runtime-rebuild",
+    "note": "Invalidated run: the agent rebuilt the same isolated Web while acceptance was running. Added and exercised a runtime rebuild lock. Not accepted as product regression evidence.",
+    "reportSha256": "35c71ee076689dd24cd0788be2cfd10d846c5b7adfbf6c4c6aa331e5ba321bc9",
+    "stats": {
+      "startTime": "2026-10-23T23:02:54.072Z",
+      "duration": 285861.10099999997,
+      "expected": 41,
+      "skipped": 0,
+      "unexpected": 5,
+      "flaky": 0
+    },
+    "errors": [
+      {
+        "title": "learning home offers clear entry and works on phone, tablet and desktop",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('link', { name: '孩子使用学习码进入 →' })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('link', { name: '孩子使用学习码进入 →' }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('link', { name: '孩子使用学习码进入 →' })\u001b[22m\n\n\n  25 |   for (const width of [390, 768, 1440]) {\n  26 |     await page.setViewportSize({ width, height: 900 }); await page.goto('/learn');\n> 27 |     await expect(page.getByRole('link', { name: '孩子使用学习码进入 →' })).toBeVisible();\n     |                                                                   ^\n  28 |     await expect(page.getByRole('link', { name: '家长 / 教师登录 →' })).toBeVisible();\n  29 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n  30 |   }\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\learning-home.spec.ts:27:67"
+        ]
+      },
+      {
+        "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 4\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Event\",\u001b[39m\n\u001b[31m+   \"Event\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  27 |  await page.getByRole('link',{name:'进入课堂练习',exact:true}).first().click();await expect(page.locator('.cl-practice-options label')).toHaveCount(4);await page.getByRole('button',{name:'先给我一个提示',exact:true}).click();await expect(page.locator('.cl-hint')).toHaveCount(1);await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('使用过提示');await page.reload();await page.getByRole('button',{name:'第1题',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toBeVisible();\n  28 |  await page.getByRole('button',{name:'关闭独立练习',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await page.locator('.sc-citations button').first().click();await expect(page.locator('.sc-source-reader pre')).toHaveText(text);\n> 29 |  await page.getByRole('link',{name:'‹ 返回我的课程',exact:true}).click();await expect(page.getByRole('link',{name:'打开课程：审阅后保留的课程',exact:true})).toBeVisible();await page.getByLabel('内容来源').selectOption('material');await expect(page.locator('.ws-course-ticket')).toHaveCount(1);expect(errors).toEqual([]);\n     |                                                                                                                                                                                                                                                                                              ^\n  30 | });\n  31 | test('in-flight cancellation and retry survive reload and never publish the cancelled attempt',async({page})=>{\n  32 |  test.setTimeout(90000);await login(page);await source(page,'比较来源里的观察与解释 [pause-once] '+Date.now());await page.getByRole('button',{name:'生成课程蓝图 →',exact:true}).click();await expect(page.getByRole('heading',{name:'正在把原文整理成讲解与练习。'})).toBeVisible({timeout:30000});const courseId=new URL(page.url()).searchParams.get('course');await page.reload();await expect(page.getByRole('button',{name:'取消这次生成',exact:true})).toBeVisible();await page.getByRole('button',{name:'取消这次生成',exact:true}).click();await expect(page.getByRole('heading',{name:'这次生成已经停止。'})).toBeVisible();await expect(page.getByRole('button',{name:'重试已保存任务',exact:true})).toBeVisible({timeout:15000});await expect(page.locator('.sc-lesson')).toHaveCount(0);\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\source-course.spec.ts:29:286"
+        ]
+      },
+      {
+        "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Event\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  57 |  let lost=false;const keys:string[]=[];await page.route('**/api/learning/source-courses/*/content',async route=>{keys.push(route.request().postDataJSON().requestKey);if(!lost){lost=true;const response=await route.fetch();expect(response.status()).toBe(200);await route.abort('failed');}else await route.continue();});await page.getByRole('button',{name:'保存教学内容',exact:true}).click();await expect(page.locator('.sc-error').first()).toContainText('暂时无法连接');await expect(page.getByLabel('第1题解释',{exact:true})).toHaveValue('核对后的解释：第二项保留证据和替代解释。');await page.getByRole('button',{name:'保存教学内容',exact:true}).click();await expect(editor).toHaveCount(0);expect(keys).toHaveLength(2);expect(keys[0]).toBe(keys[1]);await page.reload();await expect(page.locator('.sc-course-overview')).toHaveText('核对来源与解释后保留的教学路线。');\n  58 |  const courseId=new URL(page.url()).searchParams.get('course')!,publicResponse=await fetch(api+'/learning/source-courses/'+courseId,{headers:{authorization:'Bearer '+actor.token}}),publicCourse=(await publicResponse.json()).data;expect(JSON.stringify(publicCourse)).not.toContain('核对后的解释：第二项');expect(publicCourse).not.toHaveProperty('content');\n> 59 |  await page.getByRole('button',{name:'编辑讲解与练习',exact:true}).click();await expect(page.getByLabel('概念讲解',{exact:true})).toHaveValue('修订后：先记录真实观察，再比较尚未验证的解释。');await page.getByRole('button',{name:'返回蓝图',exact:true}).click();await expect(editor).toHaveCount(0);await page.getByRole('button',{name:'确认课程，开始学习 →',exact:true}).click();await page.getByRole('link',{name:'进入课堂练习',exact:true}).first().click();await page.locator('.cl-practice-options label').nth(1).click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('核对后的解释：第二项保留证据和替代解释。');await expect(page.locator('.cl-answer-feedback')).toContainText('不计独立成功');expect(errors).toEqual([]);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^\n  60 | });\n  61 |\n  62 | test('staged generation retains reviewed work through failure, retry and manuscript correction',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\source-course.spec.ts:59:710"
+        ]
+      },
+      {
+        "title": "a parent can build and reopen an evidence-backed learning studio course",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Event\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  168 |   await page.reload();\n  169 |   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();\n> 170 |   expect(errors).toEqual([]);\n      |                  ^\n  171 | });\n  172 |\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\studio.spec.ts:170:18"
+        ]
+      },
+      {
+        "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Event\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  48 |   await page.locator('.ws-navigation').getByRole('link',{name:'Courses',exact:true}).click();await expect(page.getByRole('heading',{name:'我的课程'})).toBeVisible();\n  49 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await screenshot(page,'workspace-courses-mobile');\n> 50 |   expect(errors).toEqual([]);\n     |                  ^\n  51 | });\n  52 |\n  53 | test('calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\workspace.spec.ts:50:18"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "cancel-claim-race",
+    "note": "45 passed; cancellation of a queued card conflicted after the worker claimed the same generation. Bound cancellation to generation, retaining stale-retry rejection and acknowledgement replay.",
+    "reportSha256": "14d39fa068ebe6d74e42b7d44deced95735d25797399cec200fb9ccabce37422",
+    "stats": {
+      "startTime": "2026-10-23T23:08:43.599Z",
+      "duration": 257681.002,
+      "expected": 45,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "errors": [
+      {
+        "title": "failed and cancelled classroom image tasks retry their saved version",
+        "messages": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: '当前讲解参考图', exact: true }).getByText('生成已取消', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: '当前讲解参考图', exact: true }).getByText('生成已取消', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: '当前讲解参考图', exact: true }).getByText('生成已取消', { exact: true })\u001b[22m\n\n\n  48 | test('failed and cancelled classroom image tasks retry their saved version',async({page})=>{\n  49 |   test.setTimeout(120000);await enter(page);await open(page);await generate(page,'[image-fail-once] 失败恢复验证。');await expect(panel(page).getByText('生成未完成',{exact:true})).toBeVisible();await panel(page).getByRole('button',{name:'重试图片任务',exact:true}).click();await ready(page);await expect(panel(page).locator('.cl-visual-candidate')).toHaveCount(1);\n> 50 |   await generate(page,'[image-pause-once] 取消恢复验证。');await expect(panel(page).locator('.cl-visual-candidate')).toHaveCount(2);await panel(page).getByRole('button',{name:'取消生成',exact:true}).click();await expect(panel(page).getByText('生成已取消',{exact:true})).toBeVisible();await page.reload();await open(page);await expect(panel(page).getByText('生成已取消',{exact:true})).toBeVisible();await panel(page).getByRole('button',{name:'重试图片任务',exact:true}).click();await expect(panel(page).getByRole('button',{name:'选作当前环节参考',exact:true})).toHaveCount(2,{timeout:45000});await expect(panel(page).locator('.cl-visual-candidate')).toHaveCount(2);\n     |                                                                                                                                                                                                                                                               ^\n  51 | });\n  52 |\n  53 | test('lost image creation acknowledgement recovers the single saved task',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-visual.spec.ts:50:255"
+        ]
+      }
+    ]
+  }
+]

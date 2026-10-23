@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-23T23:51:31.006Z",
+  "passed": true,
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+  "scope": "Anonymous deployed Web/API smoke only. No production family authentication, learning writes or generation.",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3217/learn",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio?view=courses",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio/classroom",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/learning/classroom/sessions/anonymous-smoke/visuals",
+      "status": 401
+    }
+  ],
+  "anonymousBrowserErrors": [],
+  "services": [
+    {
+      "name": "study-agent-api",
+      "pid": 69032,
+      "status": "online",
+      "restarts": 1162,
+      "uptimeSeconds": 31
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 69292,
+      "status": "online",
+      "restarts": 3,
+      "uptimeSeconds": 31
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 51352,
+      "status": "online",
+      "restarts": 1,
+      "uptimeSeconds": 30
+    }
+  ],
+  "webBuildIdSha256": "4154203226cb1f4d1fdbdaac09fe7c27ed74363be454b4ef99a5b1a34580f307"
+}

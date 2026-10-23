@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 276,
-    "activeHttpRoutes": 263,
-    "activeBusinessHttpRoutes": 255,
+    "declaredHttpRoutes": 280,
+    "activeHttpRoutes": 267,
+    "activeBusinessHttpRoutes": 259,
     "retiredHttpRoutes": 8,
     "activeModules": 17,
-    "activeControllers": 25,
-    "apiClasses": 104,
-    "apiFunctions": 249,
-    "domainCollections": 82,
-    "contractTypes": 232,
+    "activeControllers": 26,
+    "apiClasses": 108,
+    "apiFunctions": 264,
+    "domainCollections": 83,
+    "contractTypes": 237,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 95,
-    "browserTestFiles": 11
+    "apiTestFiles": 100,
+    "browserTestFiles": 12
   },
   "modules": [
     {
@@ -210,7 +210,8 @@
         "ClassroomController",
         "LearningHomeController",
         "CourseProjectController",
-        "SourceCourseController"
+        "SourceCourseController",
+        "ClassroomVisualController"
       ],
       "providers": [
         "LearningService",
@@ -220,7 +221,10 @@
         "LearningHomeService",
         "CourseProjectService",
         "SourceCourseService",
-        "SourceCourseWorkerService"
+        "SourceCourseWorkerService",
+        "ClassroomVisualService",
+        "ClassroomVisualWorkerService",
+        "ClassroomImageService"
       ],
       "exports": [
         "LearningService",
@@ -3982,6 +3986,122 @@
       ],
       "calls": [
         "this.gesp.document"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/classroom/sessions/:sessionId/visuals",
+      "controller": "ClassroomVisualController",
+      "method": "list",
+      "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+      "line": 10,
+      "signature": "list(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "visuals",
+          "type": "ClassroomVisualService"
+        }
+      ],
+      "calls": [
+        "this.visuals.list"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/classroom/sessions/:sessionId/visuals",
+      "controller": "ClassroomVisualController",
+      "method": "create",
+      "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+      "line": 16,
+      "signature": "create(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "visuals",
+          "type": "ClassroomVisualService"
+        }
+      ],
+      "calls": [
+        "this.visuals.create"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/classroom/sessions/:sessionId/visuals/:id/:action",
+      "controller": "ClassroomVisualController",
+      "method": "action",
+      "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+      "line": 24,
+      "signature": "action(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Param('action') action: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "visuals",
+          "type": "ClassroomVisualService"
+        }
+      ],
+      "calls": [
+        "this.visuals.action"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/classroom/sessions/:sessionId/visuals/:id/file",
+      "controller": "ClassroomVisualController",
+      "method": "file",
+      "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+      "line": 37,
+      "signature": "file(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Res({ passthrough: true }) response: Response)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "visuals",
+          "type": "ClassroomVisualService"
+        }
+      ],
+      "calls": [
+        "this.visuals.file"
       ],
       "active": true,
       "retired": false
@@ -9568,7 +9688,7 @@
         },
         {
           "name": "assertRestoreReady",
-          "line": 180,
+          "line": 183,
           "signature": "assertRestoreReady()",
           "access": "private",
           "decorators": [],
@@ -9578,7 +9698,7 @@
         },
         {
           "name": "migrateConstraints",
-          "line": 190,
+          "line": 193,
           "signature": "migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '')",
           "access": "private",
           "decorators": [],
@@ -9589,7 +9709,7 @@
         },
         {
           "name": "read",
-          "line": 219,
+          "line": 222,
           "signature": "read(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -9599,7 +9719,7 @@
         },
         {
           "name": "readImmutable",
-          "line": 224,
+          "line": 227,
           "signature": "readImmutable(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -9610,7 +9730,7 @@
         },
         {
           "name": "snapshotAt",
-          "line": 228,
+          "line": 231,
           "signature": "snapshotAt(revision: number): StateSnapshot | undefined",
           "access": "public",
           "decorators": [],
@@ -9618,7 +9738,7 @@
         },
         {
           "name": "remember",
-          "line": 234,
+          "line": 237,
           "signature": "remember(snapshot: StateSnapshot, loadedRows: number, partial = false): StateSnapshot",
           "access": "private",
           "decorators": [],
@@ -9626,7 +9746,7 @@
         },
         {
           "name": "rememberCommit",
-          "line": 241,
+          "line": 244,
           "signature": "rememberCommit(beforeRevision: number, revision: number, changes: Change[])",
           "access": "private",
           "decorators": [],
@@ -9634,7 +9754,7 @@
         },
         {
           "name": "readSnapshot",
-          "line": 262,
+          "line": 265,
           "signature": "readSnapshot(): Promise<StateSnapshot>",
           "access": "private",
           "decorators": [],
@@ -9646,7 +9766,7 @@
         },
         {
           "name": "commit",
-          "line": 300,
+          "line": 303,
           "signature": "commit(before: StateSnapshot, after: DomainState, options: CommitOptions = {}): Promise<number>",
           "access": "public",
           "decorators": [],
@@ -9657,7 +9777,7 @@
         },
         {
           "name": "commitSnapshot",
-          "line": 304,
+          "line": 307,
           "signature": "commitSnapshot(before: StateSnapshot, after: DomainState, options: CommitOptions): Promise<number>",
           "access": "private",
           "decorators": [],
@@ -9674,7 +9794,7 @@
         },
         {
           "name": "assertDependencies",
-          "line": 365,
+          "line": 368,
           "signature": "assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[], query: (collection: string, where?: DomainSelector) => Promise<unknown[]>, conflict: () => Error, version: (collection: string) => Promise<number>)",
           "access": "private",
           "decorators": [],
@@ -9682,7 +9802,7 @@
         },
         {
           "name": "rebaseAppends",
-          "line": 395,
+          "line": 398,
           "signature": "rebaseAppends(before: StateSnapshot, changes: Change[], options: CommitOptions, maximum: (collection: string) => number)",
           "access": "private",
           "decorators": [],
@@ -9690,7 +9810,7 @@
         },
         {
           "name": "close",
-          "line": 407,
+          "line": 410,
           "signature": "close()",
           "access": "public",
           "decorators": [],
@@ -9966,7 +10086,7 @@
         },
         {
           "name": "nextId",
-          "line": 428,
+          "line": 429,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -9974,7 +10094,7 @@
         },
         {
           "name": "reset",
-          "line": 432,
+          "line": 433,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -10943,6 +11063,79 @@
             "this.store.nextId",
             "this.store.append",
             "this.eventBus.publish"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ClassroomImageService",
+      "file": "apps/api/src/modules/ai/classroom-image.service.ts",
+      "line": 8,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [],
+      "methods": [
+        {
+          "name": "skill",
+          "line": 14,
+          "signature": "skill()",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "python",
+          "line": 15,
+          "signature": "python()",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "capabilities",
+          "line": 16,
+          "signature": "capabilities(): Promise<ClassroomVisualCapabilities>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.probe"
+          ]
+        },
+        {
+          "name": "probe",
+          "line": 18,
+          "signature": "probe(): Promise<ClassroomVisualCapabilities>",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.skill",
+            "this.run"
+          ]
+        },
+        {
+          "name": "generate",
+          "line": 38,
+          "signature": "generate(prompt: string, directory: string, signal: AbortSignal)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.probe",
+            "this.run",
+            "this.skill"
+          ]
+        },
+        {
+          "name": "run",
+          "line": 52,
+          "signature": "run(args: string[], signal?: AbortSignal, timeoutMs = 240000): Promise<string>",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.python"
           ]
         }
       ]
@@ -16018,6 +16211,293 @@
       ]
     },
     {
+      "name": "ClassroomVisualWorkerService",
+      "file": "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+      "line": 8,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "images",
+          "type": "ClassroomImageService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "onApplicationBootstrap",
+          "line": 17,
+          "signature": "onApplicationBootstrap()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.runNext",
+            "this.logger.warn",
+            "this.timer.unref"
+          ]
+        },
+        {
+          "name": "onModuleDestroy",
+          "line": 19,
+          "signature": "onModuleDestroy()",
+          "access": "public",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "runNext",
+          "line": 21,
+          "signature": "runNext()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.execute"
+          ]
+        },
+        {
+          "name": "execute",
+          "line": 28,
+          "signature": "execute()",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.requestContext",
+            "this.store.find",
+            "this.store.tasks.get",
+            "this.store.tasks.claim",
+            "this.store.tasks.heartbeat",
+            "this.store.transaction",
+            "this.images.generate",
+            "this.store.tasks.fail"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ClassroomVisualController",
+      "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+      "line": 6,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/classroom/sessions/:sessionId/visuals'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "visuals",
+          "type": "ClassroomVisualService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "list",
+          "line": 10,
+          "signature": "list(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.visuals.list"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 16,
+          "signature": "create(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.visuals.create"
+          ]
+        },
+        {
+          "name": "action",
+          "line": 24,
+          "signature": "action(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Param('action') action: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/:action'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.visuals.action"
+          ]
+        },
+        {
+          "name": "file",
+          "line": 37,
+          "signature": "file(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Res({ passthrough: true }) response: Response)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/file'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.visuals.file"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ClassroomVisualService",
+      "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+      "line": 15,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "images",
+          "type": "ClassroomImageService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "record",
+          "line": 18,
+          "signature": "record(user: InMemoryUserAccount, sessionId: string, id: string, deleted = false)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 20,
+          "signature": "view(row: ClassroomVisualRecord, provisional?: NonNullable<ClassroomVisualView['task']>): Promise<ClassroomVisualView>",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.get"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 24,
+          "signature": "list(user: InMemoryUserAccount, sessionId: string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.select",
+            "this.images.capabilities",
+            "this.view"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 25,
+          "signature": "create(user: InMemoryUserAccount, sessionId: string, input: unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.view",
+            "this.images.capabilities",
+            "this.store.select",
+            "this.store.tasks.get",
+            "this.store.nextId",
+            "this.store.append",
+            "this.store.enqueueTask"
+          ]
+        },
+        {
+          "name": "action",
+          "line": 54,
+          "signature": "action(user: InMemoryUserAccount, sessionId: string, id: string, action: 'select' | 'unselect' | 'cancel' | 'retry' | 'delete', input: unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.view",
+            "this.store.tasks.get",
+            "this.checkedImage",
+            "this.store.select",
+            "this.store.controlTask",
+            "this.schedulePurge"
+          ]
+        },
+        {
+          "name": "checkedImage",
+          "line": 115,
+          "signature": "checkedImage(row: ClassroomVisualRecord)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "file",
+          "line": 121,
+          "signature": "file(user: InMemoryUserAccount, sessionId: string, id: string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.checkedImage"
+          ]
+        },
+        {
+          "name": "schedulePurge",
+          "line": 123,
+          "signature": "schedulePurge(ids: string[], ownerUserId: string, key: string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.enqueueTask",
+            "this.store.nextId"
+          ]
+        }
+      ]
+    },
+    {
       "name": "ClassroomController",
       "file": "apps/api/src/modules/learning/classroom.controller.ts",
       "line": 5,
@@ -17529,12 +18009,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 22,
+      "line": 26,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -20810,7 +21290,7 @@
     {
       "name": "PrivacyService",
       "file": "apps/api/src/modules/privacy/privacy.service.ts",
-      "line": 20,
+      "line": 22,
       "decorators": [
         {
           "name": "Injectable",
@@ -20838,7 +21318,7 @@
       "methods": [
         {
           "name": "parent",
-          "line": 24,
+          "line": 26,
           "signature": "parent(actor: InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -20846,7 +21326,7 @@
         },
         {
           "name": "child",
-          "line": 27,
+          "line": 29,
           "signature": "child(actor: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -20857,7 +21337,7 @@
         },
         {
           "name": "children",
-          "line": 33,
+          "line": 35,
           "signature": "children(actor: InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -20868,7 +21348,7 @@
         },
         {
           "name": "guardians",
-          "line": 36,
+          "line": 38,
           "signature": "guardians(id: string)",
           "access": "private",
           "decorators": [],
@@ -20879,7 +21359,7 @@
         },
         {
           "name": "overview",
-          "line": 40,
+          "line": 42,
           "signature": "overview(actor: InMemoryUserAccount): PrivacyOverview",
           "access": "public",
           "decorators": [],
@@ -20892,7 +21372,7 @@
         },
         {
           "name": "previewData",
-          "line": 47,
+          "line": 49,
           "signature": "previewData(actor: InMemoryUserAccount, studentId?: string)",
           "access": "private",
           "decorators": [],
@@ -20905,7 +21385,7 @@
         },
         {
           "name": "preview",
-          "line": 61,
+          "line": 63,
           "signature": "preview(actor: InMemoryUserAccount, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20915,7 +21395,7 @@
         },
         {
           "name": "receipt",
-          "line": 63,
+          "line": 65,
           "signature": "receipt(actor: InMemoryUserAccount, kind: PrivacyReceipt['kind'], subjectId: string, requestKey: string, inputHash: string, counts: PrivacyReceipt['counts'])",
           "access": "private",
           "decorators": [],
@@ -20926,7 +21406,7 @@
         },
         {
           "name": "export",
-          "line": 68,
+          "line": 70,
           "signature": "export(actor: InMemoryUserAccount, input: unknown, studentId?: string): Promise<PrivacyExport>",
           "access": "public",
           "decorators": [],
@@ -20942,7 +21422,7 @@
         },
         {
           "name": "exportArchive",
-          "line": 96,
+          "line": 98,
           "signature": "exportArchive(actor: InMemoryUserAccount, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20953,7 +21433,7 @@
         },
         {
           "name": "prepareArchive",
-          "line": 100,
+          "line": 102,
           "signature": "prepareArchive(actor: InMemoryUserAccount, sessionId: string, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20966,7 +21446,7 @@
         },
         {
           "name": "downloadArchive",
-          "line": 109,
+          "line": 111,
           "signature": "downloadArchive(actor: InMemoryUserAccount, sessionId: string, id: string)",
           "access": "public",
           "decorators": [],
@@ -20981,7 +21461,7 @@
         },
         {
           "name": "archiveForSnapshot",
-          "line": 122,
+          "line": 124,
           "signature": "archiveForSnapshot(snapshot: PrivacyExport)",
           "access": "private",
           "decorators": [],
@@ -20992,7 +21472,7 @@
         },
         {
           "name": "delete",
-          "line": 143,
+          "line": 151,
           "signature": "delete(actor: InMemoryUserAccount, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -21003,6 +21483,8 @@
             "this.previewData",
             "this.receipt",
             "this.media.schedulePurge",
+            "this.store.enqueueTask",
+            "this.store.nextId",
             "this.events.publish"
           ]
         }
@@ -25351,6 +25833,96 @@
       "signature": "evidence(...[prompt, options, answer, hints, explanation, visual]: Content): PracticeSeed"
     },
     {
+      "file": "apps/api/src/modules/learning/classroom-visual-context.ts",
+      "name": "visualTeachingContext",
+      "line": 3,
+      "signature": "visualTeachingContext(step: ClassroomStep, sentence: number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "ordered",
+      "line": 10,
+      "signature": "ordered(value: any): any"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "visualNoLinks",
+      "line": 13,
+      "signature": "visualNoLinks(path: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "visualDirectory",
+      "line": 18,
+      "signature": "visualDirectory(id: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "visualStage",
+      "line": 21,
+      "signature": "visualStage(id: string, token: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "checkedFile",
+      "line": 23,
+      "signature": "checkedFile(id: string, file: ClassroomVisualFile)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "visualFile",
+      "line": 27,
+      "signature": "visualFile(record: Pick<ClassroomVisualRecord, 'id' | 'files'>, part: 'image' | 'original' | 'prompt' = 'image')"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "save",
+      "line": 29,
+      "signature": "save(id: string, bytes: Buffer, extension: 'png' | 'txt'): ClassroomVisualFile"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "publishVisual",
+      "line": 31,
+      "signature": "publishVisual(id: string, imagePath: string, prompt: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "removeVisualStage",
+      "line": 41,
+      "signature": "removeVisualStage(id: string, stage: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "purgeVisual",
+      "line": 43,
+      "signature": "purgeVisual(id: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "pruneVisualFiles",
+      "line": 47,
+      "signature": "pruneVisualFiles(record: ClassroomVisualRecord)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "visualDirectories",
+      "line": 57,
+      "signature": "visualDirectories(minimumAgeMs = 0)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual-storage.ts",
+      "name": "pruneVisualStages",
+      "line": 58,
+      "signature": "pruneVisualStages(id: string, activeToken: string | null, minimumAgeMs = 3600000)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+      "name": "visualSession",
+      "line": 11,
+      "signature": "visualSession(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, id: string)"
+    },
+    {
       "file": "apps/api/src/modules/learning/course-project-content.ts",
       "name": "define",
       "line": 60,
@@ -25755,43 +26327,43 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 77,
+      "line": 78,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 84,
+      "line": 85,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 91,
+      "line": 92,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 94,
+      "line": 95,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 102,
+      "line": 103,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 107,
+      "line": 108,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 131,
+      "line": 135,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -26349,58 +26921,64 @@
       "line": 417
     },
     {
+      "name": "classroomVisuals",
+      "type": "ClassroomVisualRecord",
+      "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "line": 418
+    },
+    {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 419
     },
     {
       "name": "sourceCourses",
       "type": "SourceCourseRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 420
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 421
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 422
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 422
+      "line": 423
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 424
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 425
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 425
+      "line": 426
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 426
+      "line": 427
     }
   ],
   "contractTypes": [
@@ -26594,6 +27172,199 @@
         },
         {
           "name": "imageAlt",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomVisualPurpose",
+      "file": "packages/contracts/src/classroom-visual.ts",
+      "line": 1,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "ClassroomVisualFile",
+      "file": "packages/contracts/src/classroom-visual.ts",
+      "line": 2,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sha256",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "optional": false,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomVisualRecord",
+      "file": "packages/contracts/src/classroom-visual.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "ownerUserId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "studentId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "sessionId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "stepId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "stepTitle",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "stepFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "inputHash",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "purpose",
+          "optional": false,
+          "type": "ClassroomVisualPurpose"
+        },
+        {
+          "name": "requirements",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "prompt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "promptVersion",
+          "optional": false,
+          "type": "'classroom-image-v1'"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "'gpt-image-2'"
+        },
+        {
+          "name": "taskId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "revision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "type": "'queued' | 'generating' | 'ready' | 'deleted'"
+        },
+        {
+          "name": "selectionKey",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "createdAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "updatedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "files",
+          "optional": false,
+          "type": "{\n        original: ClassroomVisualFile;\n        image: ClassroomVisualFile;\n        prompt: ClassroomVisualFile;\n    } | null"
+        },
+        {
+          "name": "width",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "height",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "requests",
+          "optional": false,
+          "type": "Array<{\n        key: string;\n        hash: string;\n    }>"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomVisualView",
+      "file": "packages/contracts/src/classroom-visual.ts",
+      "line": 40,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "ClassroomVisualCapabilities",
+      "file": "packages/contracts/src/classroom-visual.ts",
+      "line": 53,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "available",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "'gpt-image-2'"
+        },
+        {
+          "name": "reason",
+          "optional": false,
+          "type": "'ready' | 'skill_missing' | 'python_unavailable' | 'environment_unavailable'"
+        },
+        {
+          "name": "message",
           "optional": false,
           "type": "string"
         }
@@ -35076,6 +35847,7 @@
   ],
   "tests": [
     "apps/api/src/app.integration.test.ts",
+    "apps/api/src/common/http-body.integration.test.ts",
     "apps/api/src/common/validation.test.ts",
     "apps/api/src/durability.integration.test.ts",
     "apps/api/src/infrastructure/backup.integration.test.ts",
@@ -35086,6 +35858,7 @@
     "apps/api/src/infrastructure/scoped-transactions.test.ts",
     "apps/api/src/infrastructure/snapshot-isolation.test.ts",
     "apps/api/src/infrastructure/task-repository.test.ts",
+    "apps/api/src/modules/ai/classroom-image.service.test.ts",
     "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",
     "apps/api/src/modules/ai/codex-search.service.test.ts",
     "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
@@ -35147,6 +35920,9 @@
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
     "apps/api/src/modules/learning/classroom-practice-content.test.ts",
     "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+    "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+    "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+    "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
     "apps/api/src/modules/learning/course-project.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
@@ -35174,6 +35950,7 @@
   "e2eTests": [
     "tests/e2e/classroom-practice.spec.ts",
     "tests/e2e/classroom-review.spec.ts",
+    "tests/e2e/classroom-visual.spec.ts",
     "tests/e2e/classroom.spec.ts",
     "tests/e2e/course-builder.spec.ts",
     "tests/e2e/course-library.spec.ts",

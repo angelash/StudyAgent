@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-23T23:34:47.280312+00:00",
+  "passed": false,
+  "scope": "Initial regression after dependency upgrade exposed native parser statuses being projected as 500. Fixed by translating parser 400/415 into sanitized Nest exceptions.",
+  "counts": {
+    "numPassedTests": 37,
+    "numFailedTests": 0
+  },
+  "failures": []
+}

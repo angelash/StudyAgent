@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 106,
-    "activeNormalApiRoutes": 255,
-    "coveredApiRoutes": 255
+    "features": 108,
+    "activeNormalApiRoutes": 259,
+    "coveredApiRoutes": 259
   },
   "areas": [
     {
@@ -4095,6 +4095,41 @@
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
             "apps/api/src/modules/ai/speech.service.test.ts"
           ]
+        },
+        {
+          "id": "AI-07",
+          "title": "课堂真实生图技能适配",
+          "area": "ai",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/student/assessment",
+            "/student/today"
+          ],
+          "inputs": "当前节点提示词、固定图像规格、取消信号",
+          "implementation": "每次真实生成前重新检查集成aigw-imagegen环境；通过参数数组、shell=false启动原技能；固定gpt-image-2/1024方图/medium/PNG，提示词文件、随机产物路径、4分钟超时和有界输出；项目内独立Python环境检查SDK参数兼容性，不修改技能或全局依赖。",
+          "outputs": "真实PNG、私有提示词、能力缺失原因和安全错误类别",
+          "collections": [
+            "classroomVisuals"
+          ],
+          "limits": "环境自检不证明远端可用；实际调用独立验证；失败不静默换模型，原始代理错误不公开。",
+          "endpoints": [],
+          "implementations": [],
+          "sourceFiles": [
+            "apps/api/src/modules/ai/classroom-image.service.ts",
+            "apps/api/src/modules/ai/classroom-image.service.test.ts",
+            "scripts/operations/setup-imagegen.cjs",
+            "scripts/processing/requirements-imagegen.txt",
+            "scripts/qa/classroom-image-live.cjs"
+          ],
+          "tests": [
+            "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+            "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/ai/speech.service.test.ts"
+          ]
         }
       ]
     },
@@ -5782,10 +5817,117 @@
             "apps/web/app/studio/source-courses/original-manuscript.tsx",
             "apps/web/app/studio/source-courses/source-courses.css",
             "apps/api/src/common/http-body.ts",
+            "apps/api/src/common/http-body.integration.test.ts",
             "scripts/qa/source-course-fixture.cjs",
             "scripts/qa/source-course-test-api.cjs",
             "scripts/qa/run-source-course-browser.cjs",
             "tests/e2e/source-course.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-22",
+          "title": "当前节点配图、候选版本与离线笔记",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "已授权会话/当前已展示节点、用途与补充要求、冻结内容身份、请求键和修订号",
+          "implementation": "仅用当前讲解及已出现要点构造少文字提示词；持久任务按租约隔离暂存并在最终事务重查权限和原节点，解码/哈希校验与去元数据后发布；失败/取消/重启恢复，取消请求与真正结束分开显示；版本只在原节点显式选用，并发选用保持唯一；下载鉴权与范围请求，损坏图可取消选用；放大支持键盘焦点，选图进入打印和嵌入PNG的离线HTML笔记；家庭导出/删除账本、双库备份和保守暂存回收贯通。",
+          "outputs": "可恢复生成任务、原节点参考图版本、授权实际字节、含图片的离线笔记",
+          "collections": [
+            "classroomVisuals",
+            "classroomSessions"
+          ],
+          "limits": "个人选用不等于教师批准或测量标定；初版图像可能有文字/关系错误，需核对；尚未实现插问自动生图、原页参考输入或可编辑图像迭代；浏览器替身只证交互。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/classroom/sessions/:sessionId/visuals",
+              "controller": "ClassroomVisualController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:sessionId/visuals",
+              "controller": "ClassroomVisualController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:sessionId/visuals/:id/:action",
+              "controller": "ClassroomVisualController",
+              "method": "action",
+              "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+              "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/classroom/sessions/:sessionId/visuals/:id/file",
+              "controller": "ClassroomVisualController",
+              "method": "file",
+              "file": "apps/api/src/modules/learning/classroom-visual.controller.ts",
+              "line": 37
+            }
+          ],
+          "implementations": [
+            {
+              "name": "ClassroomVisualService.list",
+              "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+              "line": 24
+            },
+            {
+              "name": "ClassroomVisualService.create",
+              "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+              "line": 25
+            },
+            {
+              "name": "ClassroomVisualService.action",
+              "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+              "line": 54
+            },
+            {
+              "name": "ClassroomVisualService.file",
+              "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
+              "line": 121
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/classroom-visual.ts",
+            "apps/api/src/modules/learning/classroom-visual.service.ts",
+            "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+            "apps/api/src/modules/learning/classroom-visual-storage.ts",
+            "apps/api/src/modules/learning/classroom-visual-context.ts",
+            "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+            "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+            "apps/web/app/studio/classroom/visuals.tsx",
+            "apps/web/app/studio/classroom/visuals.css",
+            "tests/e2e/classroom-visual.spec.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio-course.test.ts",
@@ -6717,17 +6859,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 40
+              "line": 42
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 61
+              "line": 63
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 68
+              "line": 70
             }
           ],
           "sourceFiles": [
@@ -6807,7 +6949,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 100
+              "line": 102
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -6817,7 +6959,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 109
+              "line": 111
             }
           ],
           "sourceFiles": [
@@ -6870,7 +7012,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 143
+              "line": 151
             }
           ],
           "sourceFiles": [

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T23:25:16.504939+00:00",
+  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+  "passed": true,
+  "status": "verified-scoped-delivery",
+  "scope": "Private current-node classroom image generation, version selection, authenticated bytes, recoverable tasks, offline notes, print readiness and deletion/restore. Not complete product parity, teacher approval or calibrated measurement.",
+  "specificationCommit": "9784b52",
+  "requirements": {
+    "XP-D03": "implemented",
+    "XP-D04": "in_progress",
+    "XP-C06": "in_progress"
+  },
+  "backendFull": {
+    "command": "node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run --reporter=json --outputFile=../../data/qa/classroom-visual-full-api-final.json",
+    "testsPassed": 858,
+    "testsSkipped": 6,
+    "testsFailed": 0,
+    "files": 99,
+    "report": "classroom-visual-api-full.json",
+    "sha256": "9279dfd1c0b6ec084cc585b06bc96fd2c0fa396cad02c1c2a5788786435ec592",
+    "sourceRevision": "d3e183dd28f8a8753ebd500cb8f51e1f0de36265"
+  },
+  "backendFocused": {
+    "testsPassed": 23,
+    "testsFailed": 0,
+    "report": "classroom-visual-api-focused.json",
+    "sha256": "b7572554d586adb610000fd9893ffd17cba16b5b2864f0e893dbc10e86d23185",
+    "sourceRevision": "d3e183dd28f8a8753ebd500cb8f51e1f0de36265"
+  },
+  "browserFull": {
+    "startTime": "2026-10-23T23:14:58.176Z",
+    "duration": 281086.581,
+    "expected": 46,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "node scripts/qa/run-source-course-browser.cjs --full",
+    "report": "classroom-visual-browser-full.json",
+    "scope": "Complete 46-test run after generation-bound cancellation fix; final print readiness enhancement is covered by the subsequent 4-test feature run.",
+    "sourceRevision": "d3e183dd28f8a8753ebd500cb8f51e1f0de36265"
+  },
+  "browserFocused": {
+    "startTime": "2026-10-23T23:21:26.287Z",
+    "duration": 70757.929,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "node scripts/qa/run-source-course-browser.cjs --visuals",
+    "report": "classroom-visual-browser-focused.json",
+    "scope": "Final Web build, 4 full image journeys including delayed image bytes before print and closing settings before bytes arrive. Explicit synthetic image/audio fixtures, not real-provider quality evidence.",
+    "sourceRevision": "d3e183dd28f8a8753ebd500cb8f51e1f0de36265"
+  },
+  "checks": [
+    "Only the current authorized revealed teaching node can enqueue; request-key replay and one active task per node.",
+    "Prompts use narration and currently revealed board points/table rows, omitting private answers, code and family profile.",
+    "Decoded 1024-square PNG, metadata-stripped display, content hashes, private authorized range requests and corruption refusal.",
+    "Generation-bound cancellation tolerates a worker claim but cannot cancel a later retry; replay does not repeat cancellation.",
+    "Concurrent explicit selections preserve one selected version and leave classroom progress/answers unchanged.",
+    "Lease-specific stages, atomic completion fences, cancellation, expired worker and revoked child authorization refuse late publication.",
+    "SQLite restart, actual family TAR bytes, isolated backup restore of selected bytes and deletion ledger non-resurrection.",
+    "Owned path bounds, invalid IDs, oversized files, junction refusal, orphan grace and active-stage retention.",
+    "Browser reload/navigation/node binding, lightbox focus, offline embedded PNG HTML, mobile modal scroll and print readiness/cancellation."
+  ],
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "apiAndWebTypes": true,
+    "isolatedProductionWeb": true,
+    "daemonWeb": true
+  },
+  "realImages": {
+    "modelId": "gpt-image-2",
+    "path": "installed integrated aigw-imagegen skill; no public fallback",
+    "sampleSource": "Implementation worktree before final context visibility, cancellation and print refinements; archived prompt files record the exact submitted inputs.",
+    "successfulRequests": 2,
+    "durationMs": [
+      50189,
+      47123
+    ],
+    "receipts": [
+      "classroom-visual-images/text-heavy-6491c897-receipt.json",
+      "classroom-visual-images/scene-reference-33c0b195-receipt.json"
+    ],
+    "viewedWithViewImage": true,
+    "review": "First image was text-heavy and showed awkward small lettering. Prompt was tightened; second uses clearer scenes and fewer labels, although its center label exceeds the requested short-label limit. Both remain pending human content review. No exact diagram correctness or typography guarantee is claimed.",
+    "dependencyFailure": "classroom-visual-images/dependency-failure-receipt.json",
+    "dependencyDiagnosis": "Base SDK 1.54.3 did not support output_format. Created project-local Python venv with OpenAI 2.54.0 and Pillow 12.3.0; actual generation then succeeded. Original failed stderr was not retained."
+  },
+  "visualReview": {
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "screenshots": [
+      "classroom-visual-candidate-1440.png",
+      "classroom-visual-candidate-390.png",
+      "classroom-visual-candidate-768.png",
+      "classroom-visual-candidate-actions-1440.png",
+      "classroom-visual-candidate-actions-390.png",
+      "classroom-visual-candidate-actions-768.png",
+      "classroom-visual-selected-mobile.png"
+    ],
+    "syntheticFixtureImages": true,
+    "reviewed": "Candidate panel/scroll controls at desktop and phone and selected mobile board inspected. Fixed primary-button text contrast, sticky close header and mobile toolbar label wrapping."
+  },
+  "qaGuard": "classroom-visual-qa-guard.json",
+  "supersededChecks": "classroom-visual-superseded-checks.json",
+  "postgres": {
+    "status": "passed",
+    "runId": 40040404744,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744",
+    "classroomVisualCasesPassed": 11
+  },
+  "limitations": [
+    "Personal selection is not teacher approval. AI pictures can contain wrong text, counts or relationships.",
+    "Automatic visual choice for questions, source-page image references, image editing and course-level review/publishing remain.",
+    "Long-material chunking, English caption timing, complete curriculum/human review, real devices and real 1/3/7/14-day outcomes remain in the 72-item ledger.",
+    "Existing five user configuration/daemon edits excluded; no production family data used for acceptance.",
+    "Classroom-image byte backup/restore was exercised with SQLite. Actual PostgreSQL task lifecycle and generic PostgreSQL backups passed; a dedicated PostgreSQL restore drill containing classroom image bytes remains in XP-K05."
+  ],
+  "overallGoal": "active",
+  "featureCommit": "d3e183dd28f8a8753ebd500cb8f51e1f0de36265",
+  "httpSafetyCommit": "0503d8d",
+  "introCopyCommit": "c3bcfb8",
+  "httpSafety": {
+    "dependency": "body-parser 2.4.0, iconv-lite 0.7.3",
+    "advisory": "https://github.com/advisories/GHSA-27r3-jxmh-p828",
+    "audit": "classroom-visual-audit-fixed.json",
+    "vulnerabilities": 0,
+    "focusedReport": "classroom-visual-parser-upgrade-api.json",
+    "focusedPassed": 37,
+    "focusedFailed": 0,
+    "covered": "Valid/malformed gzip, late compressed trailing bytes, unsupported charset and decompressed 512KB limit in a separate actual API process; subsequent health/request checks. Long manuscript and visual lifecycle also rerun.",
+    "initialStatusFailure": "classroom-visual-parser-status-initial.json"
+  },
+  "initialCI": {
+    "receipt": "classroom-visual-ci-initial.json",
+    "browserPassed": 47,
+    "postgres": "passed",
+    "application": "failed at dependency audit before tests"
+  },
+  "finalCI": {
+    "passed": true,
+    "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+    "receipt": "classroom-visual-ci.json",
+    "runId": 40040404744,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40040404744",
+    "application": {
+      "passed": 853,
+      "skipped": 14,
+      "notes": "6 PostgreSQL cases run in the dedicated job; 8 GESP isolated-runner/student cases skipped by the application-job environment. Local earlier suite had 858 passed/6 skipped, before the three parser cases."
+    },
+    "browserPassed": 47,
+    "postgresPassed": {
+      "infrastructure": 6,
+      "sourceCourses": 23,
+      "classroomVisuals": 11
+    }
+  },
+  "runtime": {
+    "passed": true,
+    "receipt": "classroom-visual-runtime.json",
+    "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+    "web": "http://localhost:3217/learn",
+    "api": "http://127.0.0.1:4217",
+    "scope": "Anonymous deployed Web/API only; no production family writes or generation.",
+    "stabilityReceipt": "classroom-visual-runtime-stability.json",
+    "postDeploymentObservationMilliseconds": 252170
+  },
+  "archiveIntegrity": "classroom-visual-archive-integrity.json"
+}

@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-23T23:57:36.642639+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-image.png",
+      "sha256": "9895f700af69f062c49b9b813d2e78a5c612cefe20badd4b23385647efc16e29",
+      "workingAndStagedMatch": true
+    },
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-original.png",
+      "sha256": "d4b3edfc61ebae7860bc2c8fd7d3be75d0b1bb6325c307099700fae3bea4dba9",
+      "workingAndStagedMatch": true
+    },
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-prompt.txt",
+      "sha256": "9a9abf62e1d7d4bbbc5c31ef3adc7e8d0234ced744290c9e22ec449de714842a",
+      "workingAndStagedMatch": true
+    },
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/text-heavy-6491c897-image.png",
+      "sha256": "9031363a39bf2a28611e50592d64460c5f50a865e16cddb4ebed7b25469345a1",
+      "workingAndStagedMatch": true
+    },
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/text-heavy-6491c897-original.png",
+      "sha256": "e738f938a1825f370d8172808252c6d851640414b56ed224a18a79ad83a9f9ed",
+      "workingAndStagedMatch": true
+    },
+    {
+      "path": "doc/evidence/2026-10-24/classroom-visual-images/text-heavy-6491c897-prompt.txt",
+      "sha256": "6c69a0843424ccec19e76b1ff2e4bdc24f453741ee51f00e79c436e02db72221",
+      "workingAndStagedMatch": true
+    }
+  ],
+  "scope": "Exact original/display/prompt bytes in the working tree and staged Git objects. Scoped LF attributes preserve textual evidence across Windows checkout."
+}

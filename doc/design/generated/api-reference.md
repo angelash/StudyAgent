@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`c2650eb7fbe334206125ca98ff180f07356e11a9`。共 276 个 HTTP 路由声明，当前 AppModule 可达 255 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae`。共 280 个 HTTP 路由声明，当前 AppModule 可达 259 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -930,6 +930,44 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
+
+## ClassroomVisualController — 当前接入
+
+### GET /api/learning/classroom/sessions/:sessionId/visuals
+
+实现：[apps/api/src/modules/learning/classroom-visual.controller.ts:10](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L10)，方法 `list`。
+
+- 签名：`list(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.visuals.list`
+
+### POST /api/learning/classroom/sessions/:sessionId/visuals
+
+实现：[apps/api/src/modules/learning/classroom-visual.controller.ts:16](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L16)，方法 `create`。
+
+- 签名：`create(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.visuals.create`
+
+### POST /api/learning/classroom/sessions/:sessionId/visuals/:id/:action
+
+实现：[apps/api/src/modules/learning/classroom-visual.controller.ts:24](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L24)，方法 `action`。
+
+- 签名：`action(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Param('action') action: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.visuals.action`
+
+### GET /api/learning/classroom/sessions/:sessionId/visuals/:id/file
+
+实现：[apps/api/src/modules/learning/classroom-visual.controller.ts:37](../../../apps/api/src/modules/learning/classroom-visual.controller.ts#L37)，方法 `file`。
+
+- 签名：`file(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Res({ passthrough: true }) response: Response)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.visuals.file`
 
 ## ClassroomController — 当前接入
 

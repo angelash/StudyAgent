@@ -27,6 +27,7 @@
 - [开发顺序、验收与完成审计](experience/05-delivery-and-acceptance.md)。
 - [逐项需求与验收账本](experience/requirements.md)：后续实施以编号关联代码、测试和运行证据。
 - [实施进度](experience/implementation-log.md)：记录实际完成范围，未验收条目继续保留。
+- 连续细化规格：[运行期课堂配图](101-runtime-classroom-visuals.md)、[中英文字幕单元与旧断点](102-classroom-sentence-timeline.md)。每份规格先归档，交付证据追加到实施记录。
 
 本方案是现有[功能与设计总册](../design/README.md)之上的增量目标，不替换原始需求，不将现有功能重新描述为已经完成本轮目标。
 

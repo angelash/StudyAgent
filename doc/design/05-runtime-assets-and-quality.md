@@ -51,7 +51,7 @@ Python本地结果 → 挑选需模型核对页（最多8） → CLI视觉结构
 
 ### 生图
 
-当前已交付两张开发期生成的课程位图，原图和提示词在`artifacts/classroom`，运行WebP在`apps/web/public/classroom`。产品运行时不自动对所有课件或插问生图。后续如接运行期生成，需要独立任务、来源/成本/失败及审核设计。
+两张开发期位图继续作为自编课程资产。运行期已增加当前节点“配图”：通过原样集成aigw-imagegen技能生成gpt-image-2参考候选，私有文件保存于数据目录的`classroom-visuals`。运行`node scripts/operations/setup-imagegen.cjs`建立项目独立Python环境；探针检查SDK所需参数及技能环境，真实连通另验。失败不切换模型，文字课堂继续。已选图片进入打印及嵌入PNG的离线HTML笔记，原图/展示图进入家庭导出，完整备份另保留私有提示词；删除和旧备份恢复联动账本。详细边界见[课堂配图规格](../product/101-runtime-classroom-visuals.md)。
 
 ## 5. 资产现状与复用方式
 
@@ -118,7 +118,7 @@ CI三组：
 - `browser`：独立测试数据和真实Chromium页面，包括手机/桌面、课堂、工作台、日历、PDF和学案。
 - `postgres`：原生PG迁移、恢复、任务栅栏与GESP学习闭环。
 
-设计册更新执行AST清单生成、106项功能到255个接口的覆盖校验、实际源文件引用检查、内容静态审计、离线查阅工具和文档链接检查。业务交付测试另见对应收据；文档生成脚本本身不重新执行全部业务测试或付费模型调用。
+设计册更新执行AST清单生成、108项功能到259个接口的覆盖校验、实际源文件引用检查、内容静态审计、离线查阅工具和文档链接检查。业务交付测试另见对应收据；文档生成脚本本身不重新执行全部业务测试或付费模型调用。
 
 ## 10. 后续变更应触发的检查
 
@@ -143,4 +143,14 @@ CI三组：
 
 依赖迁移的明确回归见[集合边界测试](../../apps/api/src/common/validation.test.ts)与[兼容SDK传输测试](../../apps/api/src/modules/ai/openai-compatibility.test.ts)；课程阶段、私有复核及原始稿的端到端领域验证见[课程套件](../../apps/api/src/modules/learning/source-course.integration.test.ts)。
 
-本地守护Web/API/health已部署c2650eb，访客页、ready与匿名拒绝访问正常，见[本批烟测](../evidence/2026-10-24/source-course-pipeline-runtime.json)。本次自动验收均使用独立QA数据；设计册不能用局部技术成功替代完整产品和真人学习效果验收。
+该批当时的本地守护Web/API/health部署c2650eb，访客页、ready与匿名拒绝访问正常，见[本批烟测](../evidence/2026-10-24/source-course-pipeline-runtime.json)。本次自动验收均使用独立QA数据；设计册不能用局部技术成功替代完整产品和真人学习效果验收。
+
+## 13. 按需配图与HTTP解析最近交付
+
+运行期课堂配图实现`d3e183d`，HTTP压缩体依赖/安全错误修复`0503d8d`，笔记引导文案`c3bcfb8`。完整本地API858通过/6跳过、浏览器46通过；最后打印等图新增后4项配图流程复验通过。原实现远端浏览器47项及实际PG组通过，application被新披露的body-parser公告阻止；已升级2.4.0和兼容iconv-lite 0.7.3，审计零已知漏洞，独立子进程压缩请求/长稿/配图专项37项通过。最终CI和部署结果分别归档，不能用前一版通过代替后一版。
+
+真实小九生图两次约50秒/47秒；首张文字过密，第二张场景更清楚，但仍有标注长度未完全服从提示的情况。图和精确提示词均保留在[图片证据](../evidence/2026-10-24/classroom-visual-images/scene-reference-33c0b195-receipt.json)，继续待内容核对。浏览器候选使用明确的合成PNG，只证明界面与数据生命周期。
+
+完整收据：[配图验收](../evidence/2026-10-24/classroom-visual-acceptance.json)。运行期任务、元数据/字节校验、范围下载、离线笔记、打印等待、家庭TAR、双库备份、删除账本与暂存回收均有相应验证；全教材、真人教学、真实设备和所有参考状态的像素验收继续保留。
+
+最终`c3bcfb8`的application、browser和postgres三组CI全部通过，见[最终CI收据](../evidence/2026-10-24/classroom-visual-ci.json)。浏览器47项通过；应用853项通过/14项按环境跳过，其中6项PG在独立PG组运行，另外8项为GESP隔离运行/学生专项；PG基础6项、来源课程23项、配图11项通过。不能把环境跳过称为实测通过。守护Web/API/health已更新，Web3217/API4217匿名页面与ready为200，新配图路由匿名请求401，访客浏览器无运行异常；见[烟测](../evidence/2026-10-24/classroom-visual-runtime.json)。
