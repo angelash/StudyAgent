@@ -204,3 +204,9 @@ stateDiagram-v2
 ## 7. 数据设计已知取舍
 
 领域JSON文档便于保存异构协议与历史快照，也意味着跨实体约束不能全由传统外键承担。当前用服务校验、事务、读取依赖、唯一索引和专项恢复测试共同保证；需要更大规模时，应先度量查询与快照开销，再决定拆表或专用仓储，不能只因类名InMemory而误判持久化现状。
+
+### 7.1 来源稿修订的额外事实
+
+`sourceCourses.authoringExposedAt`保留成人创建者首次打开完整答案或提交完整修订的时刻，不改写原始生成结果。`classroomSessions.authoringAnswerExposure`及`ClassroomAnswerReceipt.answerExposure`冻结这一已知辅助事实，与hintUsed分别保存；旧记录缺失时不猜测。修改标题/目标不自动等同已见答案。原始私有生成稿与完整修订流水不进入普通portable输出。
+
+候选编辑与确认仍是两步；编辑内容不会把contentReview从pending改成教师审核通过。详细版本与来源约束见[资料课程稿件](../product/99-source-course-content-editor.md)。

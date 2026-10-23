@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`cbc95bc2784af78f17fd3053970ec159fbf90e0e`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`84911bc2098127605d300d289703d3c5c96c17a3`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -551,7 +551,7 @@
 
 **输入**：授权来源页/段与版本、目标、source/zh-CN/en、时间预算、模型、可选已确认知识目标、修订号和请求键。
 
-**处理与实现**：成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务调用统一CLI结构化生成1至6课；核对短引用确实出现在选中原文；候选可改标题/目标/选课后确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。
+**处理与实现**：成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务调用统一CLI结构化生成1至6课；核对短引用确实出现在选中原文；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留原始稿；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。
 
 **输出**：可恢复资料课程、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口。
 
@@ -566,22 +566,26 @@
 - `GET /api/learning/source-courses` → `SourceCourseController.list`；[apps/api/src/modules/learning/source-course.controller.ts:10](../../../apps/api/src/modules/learning/source-course.controller.ts#L10)。
 - `POST /api/learning/source-courses` → `SourceCourseController.create`；[apps/api/src/modules/learning/source-course.controller.ts:11](../../../apps/api/src/modules/learning/source-course.controller.ts#L11)。
 - `GET /api/learning/source-courses/:id` → `SourceCourseController.get`；[apps/api/src/modules/learning/source-course.controller.ts:12](../../../apps/api/src/modules/learning/source-course.controller.ts#L12)。
-- `PATCH /api/learning/source-courses/:id` → `SourceCourseController.edit`；[apps/api/src/modules/learning/source-course.controller.ts:13](../../../apps/api/src/modules/learning/source-course.controller.ts#L13)。
-- `POST /api/learning/source-courses/:id/confirm` → `SourceCourseController.confirm`；[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)。
-- `POST /api/learning/source-courses/:id/cancel` → `SourceCourseController.cancel`；[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)。
-- `POST /api/learning/source-courses/:id/retry` → `SourceCourseController.retry`；[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)。
-- `POST /api/learning/source-courses/:id/archive` → `SourceCourseController.archive`；[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)。
+- `PATCH /api/learning/source-courses/:id` → `SourceCourseController.edit`；[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)。
+- `POST /api/learning/source-courses/:id/authoring` → `SourceCourseController.authoring`；[apps/api/src/modules/learning/source-course.controller.ts:13](../../../apps/api/src/modules/learning/source-course.controller.ts#L13)。
+- `PATCH /api/learning/source-courses/:id/content` → `SourceCourseController.content`；[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)。
+- `POST /api/learning/source-courses/:id/confirm` → `SourceCourseController.confirm`；[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)。
+- `POST /api/learning/source-courses/:id/cancel` → `SourceCourseController.cancel`；[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)。
+- `POST /api/learning/source-courses/:id/retry` → `SourceCourseController.retry`；[apps/api/src/modules/learning/source-course.controller.ts:18](../../../apps/api/src/modules/learning/source-course.controller.ts#L18)。
+- `POST /api/learning/source-courses/:id/archive` → `SourceCourseController.archive`；[apps/api/src/modules/learning/source-course.controller.ts:19](../../../apps/api/src/modules/learning/source-course.controller.ts#L19)。
 
 **服务方法**：
 
-- `SourceCourseService.materials`；[apps/api/src/modules/learning/source-course.service.ts:20](../../../apps/api/src/modules/learning/source-course.service.ts#L20)。
-- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:29](../../../apps/api/src/modules/learning/source-course.service.ts#L29)。
-- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:60](../../../apps/api/src/modules/learning/source-course.service.ts#L60)。
-- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:69](../../../apps/api/src/modules/learning/source-course.service.ts#L69)。
-- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:59](../../../apps/api/src/modules/learning/source-course.service.ts#L59)。
-- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:106](../../../apps/api/src/modules/learning/source-course.service.ts#L106)。
-- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:115](../../../apps/api/src/modules/learning/source-course.service.ts#L115)。
-- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:122](../../../apps/api/src/modules/learning/source-course.service.ts#L122)。
+- `SourceCourseService.materials`；[apps/api/src/modules/learning/source-course.service.ts:21](../../../apps/api/src/modules/learning/source-course.service.ts#L21)。
+- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:30](../../../apps/api/src/modules/learning/source-course.service.ts#L30)。
+- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:61](../../../apps/api/src/modules/learning/source-course.service.ts#L61)。
+- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:70](../../../apps/api/src/modules/learning/source-course.service.ts#L70)。
+- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:60](../../../apps/api/src/modules/learning/source-course.service.ts#L60)。
+- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:107](../../../apps/api/src/modules/learning/source-course.service.ts#L107)。
+- `SourceCourseService.authoring`；[apps/api/src/modules/learning/source-course.service.ts:116](../../../apps/api/src/modules/learning/source-course.service.ts#L116)。
+- `SourceCourseService.editContent`；[apps/api/src/modules/learning/source-course.service.ts:123](../../../apps/api/src/modules/learning/source-course.service.ts#L123)。
+- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:136](../../../apps/api/src/modules/learning/source-course.service.ts#L136)。
+- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:143](../../../apps/api/src/modules/learning/source-course.service.ts#L143)。
 
 **补充实现文件**：
 
@@ -590,7 +594,9 @@
 - [apps/api/src/modules/learning/source-course-worker.service.ts](../../../apps/api/src/modules/learning/source-course-worker.service.ts)
 - [apps/api/src/modules/learning/source-course.integration.test.ts](../../../apps/api/src/modules/learning/source-course.integration.test.ts)
 - [apps/web/app/studio/source-courses/workbench.tsx](../../../apps/web/app/studio/source-courses/workbench.tsx)
+- [apps/web/app/studio/source-courses/content-editor.tsx](../../../apps/web/app/studio/source-courses/content-editor.tsx)
 - [apps/web/app/studio/source-courses/source-courses.css](../../../apps/web/app/studio/source-courses/source-courses.css)
+- [apps/api/src/common/http-body.ts](../../../apps/api/src/common/http-body.ts)
 - [scripts/qa/source-course-fixture.cjs](../../../scripts/qa/source-course-fixture.cjs)
 - [scripts/qa/source-course-test-api.cjs](../../../scripts/qa/source-course-test-api.cjs)
 - [scripts/qa/run-source-course-browser.cjs](../../../scripts/qa/run-source-course-browser.cjs)

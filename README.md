@@ -4,7 +4,7 @@
 
 当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域106项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
 
-当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。本轮完整目标见[体验与内容总计划](doc/product/92-experience-and-content-master-plan.md)，当前72项状态见[逐项需求账本](doc/product/experience/requirements.md)；原验收基线保留在[先前审计](doc/product/68-final-product-acceptance-audit.md)。GitHub Actions 已在 Ubuntu 24.04 上完整通过 application、browser、PostgreSQL 三组门禁，见 [CI 收据](doc/evidence/2026-10-21/ci-verify-runtime.json)。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
+当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。本轮完整目标见[体验与内容总计划](doc/product/92-experience-and-content-master-plan.md)，当前72项状态见[逐项需求账本](doc/product/experience/requirements.md)；原验收基线保留在[先前审计](doc/product/68-final-product-acceptance-audit.md)。业务基线a5844ae的GitHub Actions已在Ubuntu 24.04通过application、browser、PostgreSQL三组门禁，见[最新CI收据](doc/evidence/2026-10-24/source-course-editor-ci.json)。后续Web历史修正有最终本地浏览器复验，远端结果与具体提交分别记录。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
 
 ## 已实现的主要路径
 
@@ -12,7 +12,7 @@
 - 成人课堂：60微课、182道课堂练习和60道另编单元情境题，两级私有提示、不会/跳过、首次答案、具体复盘和旧版恢复分别记录，见[Practice交付](doc/product/96-classroom-practice-and-progressive-help.md)。
 - 课程项目：五个成人项目共15阶段，以及小学迁移活动；支持草稿、自评、证据引用、提交修订、人工复核与独立AI建议，见[项目交付](doc/product/97-versioned-course-projects.md)。
 - 课程蓝图：编辑目标、选择已确认知识点和单次预算，审阅结构与来源缺口后创建；支持取消和确认回执恢复，见[蓝图交付](doc/product/95-course-blueprint-editor.md)。
-- 资料课程 `/studio/source-courses`：成人私人文本/PDF及孩子授权资料，选页生成、蓝图审阅编辑、引用核对、课堂与练习、取消重试及旧断点；默认模型已用匿名英文材料真实调用，生成内容仍待人工审核，见[资料课程交付](doc/product/98-source-backed-course-generation.md)。
+- 资料课程 `/studio/source-courses`：成人私人文本/PDF及孩子授权资料，选页生成、蓝图审阅编辑、引用核对、课堂与练习、取消重试及旧断点；默认模型已用匿名英文材料真实调用，生成内容仍待人工审核，完整教学稿、选项/答案/帮助及引用可人工修订，创建者已见答案单独记录；见[资料课程交付](doc/product/98-source-backed-course-generation.md)和[编辑复核](doc/product/99-source-course-content-editor.md)。
 - 家长注册、监护绑定、教师授权与撤销、独立学生学习码和设备撤销。
 - 证据化学习记忆：当前范围、未知点、待验证原因、计划和复测由同一份可核对上下文驱动家长首页与助教。
 - 课程进度、知识先修图、评测蓝图、断点作答、评分复核、证据报告与原因验证。

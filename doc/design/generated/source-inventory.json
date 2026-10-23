@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "cbc95bc2784af78f17fd3053970ec159fbf90e0e",
+  "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 274,
-    "activeHttpRoutes": 261,
-    "activeBusinessHttpRoutes": 253,
+    "declaredHttpRoutes": 276,
+    "activeHttpRoutes": 263,
+    "activeBusinessHttpRoutes": 255,
     "retiredHttpRoutes": 8,
     "activeModules": 17,
     "activeControllers": 25,
     "apiClasses": 104,
-    "apiFunctions": 239,
+    "apiFunctions": 240,
     "domainCollections": 82,
-    "contractTypes": 225,
+    "contractTypes": 228,
     "webPages": 26,
     "webRouteHandlers": 1,
     "apiTestFiles": 93,
@@ -6240,12 +6240,70 @@
       "retired": false
     },
     {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/authoring",
+      "controller": "SourceCourseController",
+      "method": "authoring",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 13,
+      "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.authoring"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/learning/source-courses/:id/content",
+      "controller": "SourceCourseController",
+      "method": "content",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 14,
+      "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.editContent"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
       "verb": "PATCH",
       "path": "/api/learning/source-courses/:id",
       "controller": "SourceCourseController",
       "method": "edit",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 13,
+      "line": 15,
       "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6274,7 +6332,7 @@
       "controller": "SourceCourseController",
       "method": "confirm",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 14,
+      "line": 16,
       "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6303,7 +6361,7 @@
       "controller": "SourceCourseController",
       "method": "cancel",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 15,
+      "line": 17,
       "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6332,7 +6390,7 @@
       "controller": "SourceCourseController",
       "method": "retry",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 16,
+      "line": 18,
       "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6361,7 +6419,7 @@
       "controller": "SourceCourseController",
       "method": "archive",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 17,
+      "line": 19,
       "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -18522,8 +18580,42 @@
           ]
         },
         {
-          "name": "edit",
+          "name": "authoring",
           "line": 13,
+          "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/authoring'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.authoring"
+          ]
+        },
+        {
+          "name": "content",
+          "line": 14,
+          "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Patch",
+              "args": [
+                "':id/content'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.editContent"
+          ]
+        },
+        {
+          "name": "edit",
+          "line": 15,
           "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -18540,7 +18632,7 @@
         },
         {
           "name": "confirm",
-          "line": 14,
+          "line": 16,
           "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -18557,7 +18649,7 @@
         },
         {
           "name": "cancel",
-          "line": 15,
+          "line": 17,
           "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -18574,7 +18666,7 @@
         },
         {
           "name": "retry",
-          "line": 16,
+          "line": 18,
           "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -18591,7 +18683,7 @@
         },
         {
           "name": "archive",
-          "line": 17,
+          "line": 19,
           "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -18611,7 +18703,7 @@
     {
       "name": "SourceCourseService",
       "file": "apps/api/src/modules/learning/source-course.service.ts",
-      "line": 16,
+      "line": 17,
       "decorators": [
         {
           "name": "Injectable",
@@ -18631,7 +18723,7 @@
       "methods": [
         {
           "name": "record",
-          "line": 19,
+          "line": 20,
           "signature": "record(user:InMemoryUserAccount, courseId:string, editing=false)",
           "access": "private",
           "decorators": [],
@@ -18641,7 +18733,7 @@
         },
         {
           "name": "materials",
-          "line": 20,
+          "line": 21,
           "signature": "materials(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18652,7 +18744,7 @@
         },
         {
           "name": "addText",
-          "line": 29,
+          "line": 30,
           "signature": "addText(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18665,7 +18757,7 @@
         },
         {
           "name": "sourceStatus",
-          "line": 42,
+          "line": 43,
           "signature": "sourceStatus(row:SourceCourseRecord): SourceCourseView['sourceStatus']",
           "access": "private",
           "decorators": [],
@@ -18675,7 +18767,7 @@
         },
         {
           "name": "view",
-          "line": 45,
+          "line": 46,
           "signature": "view(row:SourceCourseRecord, provisional?:{state:string;version:number;generation:number;errorCode:string|null}, viewerId=row.ownerUserId): Promise<SourceCourseView>",
           "access": "private",
           "decorators": [],
@@ -18687,7 +18779,7 @@
         },
         {
           "name": "get",
-          "line": 59,
+          "line": 60,
           "signature": "get(user:InMemoryUserAccount, courseId:string)",
           "access": "public",
           "decorators": [],
@@ -18698,7 +18790,7 @@
         },
         {
           "name": "list",
-          "line": 60,
+          "line": 61,
           "signature": "list(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseSummary[]>",
           "access": "public",
           "decorators": [],
@@ -18710,7 +18802,7 @@
         },
         {
           "name": "create",
-          "line": 69,
+          "line": 70,
           "signature": "create(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18726,7 +18818,7 @@
         },
         {
           "name": "replay",
-          "line": 100,
+          "line": 101,
           "signature": "replay(row:SourceCourseRecord, command:{expectedRevision:number;requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -18734,7 +18826,7 @@
         },
         {
           "name": "finish",
-          "line": 105,
+          "line": 106,
           "signature": "finish(row:SourceCourseRecord, command:{requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -18742,7 +18834,7 @@
         },
         {
           "name": "edit",
-          "line": 106,
+          "line": 107,
           "signature": "edit(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18754,8 +18846,32 @@
           ]
         },
         {
+          "name": "authoring",
+          "line": 116,
+          "signature": "authoring(user:InMemoryUserAccount, courseId:string): SourceCourseAuthoring",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record"
+          ]
+        },
+        {
+          "name": "editContent",
+          "line": 123,
+          "signature": "editContent(user:InMemoryUserAccount, courseId:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.replay",
+            "this.sourceStatus",
+            "this.finish",
+            "this.view"
+          ]
+        },
+        {
           "name": "confirm",
-          "line": 115,
+          "line": 136,
           "signature": "confirm(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18769,7 +18885,7 @@
         },
         {
           "name": "control",
-          "line": 122,
+          "line": 143,
           "signature": "control(user:InMemoryUserAccount, courseId:string, action:'cancel'|'retry'|'archive', input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24254,6 +24370,12 @@
       "signature": "requestToken(request: { headers: { authorization?: string; cookie?: string } })"
     },
     {
+      "file": "apps/api/src/common/http-body.ts",
+      "name": "configureJsonBody",
+      "line": 6,
+      "signature": "configureJsonBody(app: NestExpressApplication)"
+    },
+    {
       "file": "apps/api/src/common/stream-file.ts",
       "name": "streamFile",
       "line": 5,
@@ -24358,7 +24480,7 @@
     {
       "file": "apps/api/src/main.ts",
       "name": "bootstrap",
-      "line": 7,
+      "line": 9,
       "signature": "bootstrap()"
     },
     {
@@ -25270,37 +25392,37 @@
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseModelContext",
-      "line": 30,
+      "line": 22,
       "signature": "sourceCourseModelContext(row:SourceCourseRecord)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "checkGeneratedCourse",
-      "line": 33,
+      "line": 25,
       "signature": "checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[]): GeneratedSourceCourse"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseLesson",
-      "line": 45,
+      "line": 37,
       "signature": "sourceCourseLesson(row: SourceCourseRecord, index: number): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseAnswerKeys",
-      "line": 70,
+      "line": 62,
       "signature": "sourceCourseAnswerKeys(row: SourceCourseRecord, index:number)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course.service.ts",
       "name": "materialVersion",
-      "line": 11,
+      "line": 12,
       "signature": "materialVersion(material:StudioSourceMaterial)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course.service.ts",
       "name": "assertSourceCourseAccess",
-      "line": 12,
+      "line": 13,
       "signature": "assertSourceCourseAccess(user:InMemoryUserAccount, row:SourceCourseRecord, students:StudentsService, editing=false)"
     },
     {
@@ -26770,6 +26892,11 @@
           "name": "hintLevel",
           "optional": true,
           "type": "number"
+        },
+        {
+          "name": "answerExposure",
+          "optional": true,
+          "type": "'authorship'"
         }
       ]
     },
@@ -26891,6 +27018,11 @@
           "type": "string"
         },
         {
+          "name": "authoringAnswerExposure",
+          "optional": true,
+          "type": "boolean"
+        },
+        {
           "name": "cursor",
           "optional": false,
           "type": "number"
@@ -26973,7 +27105,7 @@
         {
           "name": "progress",
           "optional": false,
-          "type": "Array<{ lessonId: string; sessionId: string;\n  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>"
+          "type": "Array<{ lessonId: string; sessionId: string;\r\n  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>"
         },
         {
           "name": "readingProgress",
@@ -32473,9 +32605,23 @@
       ]
     },
     {
+      "name": "SourceCourseContent",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 13,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "SourceCourseLessonContent",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 14,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
       "name": "CourseSourceSnapshot",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 3,
+      "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32538,7 +32684,7 @@
     {
       "name": "SourceCourseInput",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 5,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32576,7 +32722,7 @@
     {
       "name": "SourceCourseSummary",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 7,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32654,9 +32800,42 @@
     {
       "name": "SourceCourseView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 10,
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": []
+    },
+    {
+      "name": "SourceCourseAuthoring",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 30,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "courseId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "revision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "content",
+          "optional": false,
+          "type": "SourceCourseContent"
+        },
+        {
+          "name": "originalContent",
+          "optional": false,
+          "type": "SourceCourseContent"
+        },
+        {
+          "name": "contentReview",
+          "optional": false,
+          "type": "'pending'"
+        }
+      ]
     },
     {
       "name": "StudentLearningAccess",

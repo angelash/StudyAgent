@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`cbc95bc2784af78f17fd3053970ec159fbf90e0e`。共 274 个 HTTP 路由声明，当前 AppModule 可达 253 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`84911bc2098127605d300d289703d3c5c96c17a3`。共 276 个 HTTP 路由声明，当前 AppModule 可达 255 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1611,9 +1611,27 @@
 - 方法装饰器：`[]`
 - 调用：`this.courses.get`
 
+### POST /api/learning/source-courses/:id/authoring
+
+实现：[apps/api/src/modules/learning/source-course.controller.ts:13](../../../apps/api/src/modules/learning/source-course.controller.ts#L13)，方法 `authoring`。
+
+- 签名：`authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.courses.authoring`
+
+### PATCH /api/learning/source-courses/:id/content
+
+实现：[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)，方法 `content`。
+
+- 签名：`content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.courses.editContent`
+
 ### PATCH /api/learning/source-courses/:id
 
-实现：[apps/api/src/modules/learning/source-course.controller.ts:13](../../../apps/api/src/modules/learning/source-course.controller.ts#L13)，方法 `edit`。
+实现：[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)，方法 `edit`。
 
 - 签名：`edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1622,7 +1640,7 @@
 
 ### POST /api/learning/source-courses/:id/confirm
 
-实现：[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)，方法 `confirm`。
+实现：[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)，方法 `confirm`。
 
 - 签名：`confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1631,7 +1649,7 @@
 
 ### POST /api/learning/source-courses/:id/cancel
 
-实现：[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)，方法 `cancel`。
+实现：[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)，方法 `cancel`。
 
 - 签名：`cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1640,7 +1658,7 @@
 
 ### POST /api/learning/source-courses/:id/retry
 
-实现：[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)，方法 `retry`。
+实现：[apps/api/src/modules/learning/source-course.controller.ts:18](../../../apps/api/src/modules/learning/source-course.controller.ts#L18)，方法 `retry`。
 
 - 签名：`retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1649,7 +1667,7 @@
 
 ### POST /api/learning/source-courses/:id/archive
 
-实现：[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)，方法 `archive`。
+实现：[apps/api/src/modules/learning/source-course.controller.ts:19](../../../apps/api/src/modules/learning/source-course.controller.ts#L19)，方法 `archive`。
 
 - 签名：`archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`

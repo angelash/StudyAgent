@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T20:30:08.531882+00:00",
+  "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3",
+  "passed": true,
+  "scope": "Complete candidate manuscript editing, privacy/version safeguards, known author answer exposure and isolated browser journeys. Not teacher content approval, new model quality or full product parity.",
+  "specificationCommit": "613b0d9",
+  "backendFull": {
+    "passed": 824,
+    "skipped": 6,
+    "filesPassed": 92,
+    "filesSkipped": 1,
+    "localStart": "2026-10-24 04:21:13 +08:00",
+    "durationSeconds": 260.39,
+    "command": "npm test",
+    "sourceRevision": "a5844ae889364177c42bd8dfd81b1e8cae8e514d",
+    "note": "Final following change is Web history only; final six browser journeys rerun."
+  },
+  "browserFull": {
+    "startTime": "2026-10-23T20:22:32.203Z",
+    "duration": 200765.531,
+    "expected": 41,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "npm run test:e2e -- --skip-build",
+    "model": "deterministic source-course fixture",
+    "webEnvironment": "Prior to final production NODE_ENV pin; followed by final six source journeys on the production-mode isolated build.",
+    "sourceRevision": "a5844ae889364177c42bd8dfd81b1e8cae8e514d"
+  },
+  "browserFinalSource": {
+    "startTime": "2026-10-23T20:32:57.454Z",
+    "duration": 39287.623999999996,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "node scripts/qa/run-source-course-browser.cjs --skip-build",
+    "webEnvironment": "NODE_ENV=production; API pinned to isolated localhost:4107",
+    "model": "deterministic source-course fixture",
+    "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3"
+  },
+  "checks": [
+    "Adult creator edits the whole manuscript, options, correct answer, explanations, hints and source quotations.",
+    "Original generation remains immutable, stale confirmation fails and edited private keys grade the new classroom.",
+    "Cross-account/student/guardian-revocation denial, source changes and already confirmed edits are rejected.",
+    "Invalid or invented references reject the complete save without partial writes.",
+    "Six-lesson body over 100KB saves intact; over 512KB returns413 and malformed private JSON returns sanitized400.",
+    "Lost save receipt replays the same request key; refreshed public state cannot advance the stale editor baseline.",
+    "Sections/lesson changes retain local fields; browser Back and links offer draft export before leaving.",
+    "Known answer access is recorded for the author, cannot be cleared by client false and does not contaminate a child first attempt.",
+    "Keyboard tabs and field-level validation tested; no browser runtime errors in the manuscript journey."
+  ],
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "productionDaemonWeb": true,
+    "webTypeCheck": true
+  },
+  "runtimeReceipt": "source-course-editor-runtime.json",
+  "humanReviewStatus": "pending",
+  "newPaidModelCalls": 0,
+  "manualVisualReview": [
+    "editor-1440.png",
+    "editor-390.png"
+  ],
+  "screenshots": {
+    "source-course-editor-1440.png": "f62fd29f211fd407c4ecd259b6faa7815bbb2b18c6bf1d051a9597fa0ea0b8a6",
+    "source-course-editor-768.png": "515869deb548e38119e4a898a4499b0d1604bf3775f6b9712ae1e018570ea791",
+    "source-course-editor-390.png": "bc399c75d58f15924a7339f3ac72d22b6a33a6625452fa89d44db23e3e03507e"
+  },
+  "ci": {
+    "previousRun": "https://github.com/angelash/StudyAgent/actions/runs/40015761609",
+    "previousJobs": {
+      "application": "success",
+      "postgres": "success",
+      "browser": "failure during prerendering with inherited development NODE_ENV"
+    },
+    "fix": "Isolated Next build/start force production NODE_ENV, while fixture API remains in its test configuration; isolated API address is also pinned.",
+    "currentRun": "https://github.com/angelash/StudyAgent/actions/runs/40019360469",
+    "currentStatus": "All three jobs passed on a5844ae. Subsequent 84911bc Web history fix has final local verification.",
+    "verifiedCodeCommit": "a5844ae889364177c42bd8dfd81b1e8cae8e514d",
+    "currentJobs": {
+      "browser": "success",
+      "application": "success",
+      "postgres": "success"
+    },
+    "receipt": "source-course-editor-ci.json"
+  },
+  "limits": [
+    "Editing and user confirmation never grant teacher approval or formal measurement eligibility.",
+    "Only known in-app author exposure can be tracked, not offline access to answers.",
+    "Partial failed generation recovery, long-source chunking, semantic model review and course-package lifecycle remain unfinished.",
+    "No physical device, teacher or true delayed learner study claimed."
+  ]
+}

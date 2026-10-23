@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T20:38:13.674689+00:00",
+  "sourceRevision": "a5844ae889364177c42bd8dfd81b1e8cae8e514d",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40019360469",
+  "passed": true,
+  "scope": "GitHub Ubuntu application/browser/PostgreSQL workflow on a5844ae. Subsequent 84911bc changes only Web history, with six final local browser checks; this receipt is not a claim about future pushes or human product validation.",
+  "jobs": [
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40019360469/job/120639591844",
+      "startedAt": "2026-10-23T20:27:33Z",
+      "completedAt": "2026-10-23T20:32:31Z"
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40019360469/job/120639592274",
+      "startedAt": "2026-10-23T20:27:34Z",
+      "completedAt": "2026-10-23T20:37:10Z"
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40019360469/job/120639592433",
+      "startedAt": "2026-10-23T20:27:33Z",
+      "completedAt": "2026-10-23T20:29:28Z"
+    }
+  ]
+}

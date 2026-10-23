@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T20:37:15.937Z",
+  "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3",
+  "scope": "Anonymous smoke after local daemon deployment; no production family sessions or records used.",
+  "checks": [
+    {
+      "route": "http://127.0.0.1:3217/learn",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/source-courses",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/classroom",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses/materials",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "POST /api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "POST /api/learning/source-courses/:id/authoring",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "Malformed anonymous JSON",
+      "status": 400,
+      "privateInputNotEchoed": true,
+      "passed": true
+    }
+  ],
+  "browserErrors": [],
+  "webBuildId": "7nx_ZVM3wZFWISsjKE50l",
+  "passed": true
+}
