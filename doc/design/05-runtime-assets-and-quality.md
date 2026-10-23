@@ -102,9 +102,9 @@ PDF、OCR、手写预览、本地解释、工作台PDF结构和媒体回收有�
 
 ## 9. 测试与证据
 
-源码包含90个API测试文件和7个浏览器测试文件。文件数表示组织规模，不是功能点数或有效性比例。
+源码包含90个API测试文件和8个浏览器测试文件。文件数表示组织规模，不是功能点数或有效性比例。
 
-基线`d6d0542`的课程库交付：11项工作台后端集成全部通过，完整浏览器25项通过；最后课时计数布局调整后3项课程库复验通过。API、Web类型与独立/正式Web生产构建通过，见[本批收据](../evidence/2026-10-24/course-library-acceptance.json)。本批未重新跑全量API；此前`5551169`批次全量775通过/6跳过、最终相关22项复验的准确范围见[课堂收据](../evidence/2026-10-24/classroom-review-acceptance.json)。此前统一首页和远端CI保留于[原收据](../evidence/2026-10-23/learning-home-acceptance.json)及[原CI](https://github.com/angelash/StudyAgent/actions/runs/39926809939)，不将旧CI当成本次提交的远端结果。
+基线`5740ef0`的课程蓝图交付：全量API787项通过、6项按配置跳过；完整浏览器28项通过，最后底栏CSS调整后3项蓝图复验通过。契约/API、Web类型与独立/正式Web生产构建通过，见[本批收据](../evidence/2026-10-24/course-blueprint-acceptance.json)。课程库和课堂批次沿革见[课程库收据](../evidence/2026-10-24/course-library-acceptance.json)及[课堂收据](../evidence/2026-10-24/classroom-review-acceptance.json)。此前统一首页和远端CI保留于[原收据](../evidence/2026-10-23/learning-home-acceptance.json)及[原CI](https://github.com/angelash/StudyAgent/actions/runs/39926809939)，不将旧CI当成本次提交的远端结果。
 
 CI三组：
 

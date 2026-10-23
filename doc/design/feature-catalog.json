@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "d6d0542e0e19e01f3cdf929f1634b91c7177dfb9",
+  "sourceRevision": "5740ef0a180d16b0bd0077ba2076ede1b3852b8e",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -339,7 +339,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 59
+              "line": 62
             }
           ],
           "sourceFiles": [
@@ -2396,12 +2396,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 805
+              "line": 815
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 541
+              "line": 551
             }
           ],
           "sourceFiles": [
@@ -2459,12 +2459,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 601
+              "line": 611
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 615
+              "line": 625
             }
           ],
           "sourceFiles": [
@@ -2555,32 +2555,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 657
+              "line": 667
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 675
+              "line": 685
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 684
+              "line": 694
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 700
+              "line": 710
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 754
+              "line": 764
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 765
+              "line": 775
             }
           ],
           "sourceFiles": [
@@ -2630,7 +2630,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 775
+              "line": 785
             }
           ],
           "sourceFiles": [
@@ -4120,6 +4120,7 @@
         "packages/contracts/src/classroom.ts"
       ],
       "tests": [
+        "apps/api/src/modules/learning/studio-course.test.ts",
         "apps/api/src/modules/learning/studio.integration.test.ts",
         "apps/api/src/modules/learning/classroom.integration.test.ts",
         "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4127,6 +4128,7 @@
         "tests/e2e/classroom.spec.ts",
         "tests/e2e/classroom-review.spec.ts",
         "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
         "tests/e2e/workspace.spec.ts"
       ],
       "features": [
@@ -4163,7 +4165,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 64
+              "line": 67
             }
           ],
           "sourceFiles": [
@@ -4172,6 +4174,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4179,12 +4182,13 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
         {
           "id": "STUDIO-02",
-          "title": "课程蓝图预览、确认和活动分流",
+          "title": "可编辑课程蓝图、预算与确认恢复",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生；成人课程目录限家长/管理员",
@@ -4192,14 +4196,14 @@
             "/studio",
             "/studio/classroom"
           ],
-          "inputs": "当前范围、目标点、标题、预览指纹和请求键",
-          "implementation": "使用批准知识与教学卡生成learn/practice/project/exam结构；预览后复核指纹再幂等保存；学习进入批准课堂，练习/核查进入既有测量路径。",
-          "outputs": "可持久化课程与逐课入口",
+          "inputs": "当前范围、所选1～30点、标题/目标、可选5～60分钟预算、预览指纹和请求键",
+          "implementation": "先编辑再审阅来源与缺口，取消预览不建课；保留所有所选分组，按参考时长生成预算内学习时段；预览和创建共用范围与资格校验；确认绑定主体/命令摘要与课程ID，同键重试恢复原课，旧预览或变更命令冲突；学习时段链接真实课堂与测量活动。",
+          "outputs": "带可选节奏的课程、单元/活动预览、缺口说明和幂等回执",
           "collections": [
             "studioCourses",
             "studioActivities"
           ],
-          "limits": "现有课程由规则与教学资产组合，不是任意资料一键生成全部高质量课程。",
+          "limits": "语言沿用已审核材料；预算为估计和建议，不是日历或独立测量；任意资料生成、多语言改写、专用项目与量规仍需开发；缺少绑定字段的旧回执须重新预览。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4230,24 +4234,27 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 477
+              "line": 480
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 493
+              "line": 496
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 515
+              "line": 525
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/learning/studio-course.ts",
+            "apps/web/app/studio/course-builder.tsx",
+            "apps/web/app/studio/course-builder.css",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4255,6 +4262,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4296,6 +4304,7 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4303,6 +4312,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4383,6 +4393,7 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4390,6 +4401,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4431,6 +4443,7 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4438,6 +4451,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4495,6 +4509,7 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4502,6 +4517,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4530,6 +4546,7 @@
             "apps/web/app/studio/classroom/board-step.tsx"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4537,6 +4554,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4561,6 +4579,7 @@
           "implementations": [],
           "sourceFiles": [],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4568,6 +4587,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4611,12 +4631,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 213
+              "line": 216
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 225
+              "line": 228
             }
           ],
           "sourceFiles": [
@@ -4624,6 +4644,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4631,6 +4652,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4665,7 +4687,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 466
+              "line": 469
             }
           ],
           "sourceFiles": [
@@ -4673,6 +4695,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4680,6 +4703,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4732,23 +4756,24 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 249
+              "line": 252
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 306
+              "line": 309
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 320
+              "line": 323
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4756,6 +4781,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4784,6 +4810,7 @@
             "scripts/processing/process_document.py"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4791,6 +4818,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4833,18 +4861,19 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 333
+              "line": 336
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 357
+              "line": 360
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4852,6 +4881,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4895,12 +4925,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 384
+              "line": 387
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 398
+              "line": 401
             }
           ],
           "sourceFiles": [
@@ -4908,6 +4938,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4915,6 +4946,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -4958,12 +4990,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 418
+              "line": 421
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 439
+              "line": 442
             }
           ],
           "sourceFiles": [
@@ -4971,6 +5003,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -4978,6 +5011,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5030,17 +5064,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 116
+              "line": 119
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 132
+              "line": 135
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 170
+              "line": 173
             }
           ],
           "sourceFiles": [
@@ -5048,6 +5082,7 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -5055,6 +5090,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5124,6 +5160,7 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -5131,6 +5168,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5214,6 +5252,7 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -5221,6 +5260,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         },
@@ -5262,6 +5302,7 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
@@ -5269,6 +5310,7 @@
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
             "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
         }

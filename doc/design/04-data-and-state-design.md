@@ -99,6 +99,8 @@ erDiagram
 
 `studioCourses`按档案/学科保存课程；列表中的`learningProgress`由当前主体的课堂会话派生，不能把家长的课堂阅读复制成学生的能力证据。
 
+新课程可带`pace`，保存估计版本、单次预算、材料语言、总参考时长及活动分段；既有无该字段的记录保持可读。课程创建活动新增可选`actorId/requestHash/referenceId`，将同一确认命令绑定原课程；重放先复核当前访问权限，不能把后来变化的范围替换为一次新的创建。旧记录缺少绑定字段时要求重新预览，不猜测原命令。
+
 `classroomSessions`同时保存课件快照、私有答案键、请求回执、步骤/句子断点、消息、练习和项目草稿。公开视图移除私有答案键与内部请求表。成人课程以固定courseId隔离，孩子批准课堂带studentId及studioCourseId。
 
 `studioWhiteboards/studioSourceMaterials/studioLearningPacks/studioStudyPlans/studioActivities`分别保存白板、PDF资料、学案、排程和活动。`studioConnectors`中的订阅URL加密，响应剔除敏感字段；`studioScheduleEvents`是任务和外部事件的统一呈现模型。

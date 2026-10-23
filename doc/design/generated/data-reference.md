@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`d6d0542e0e19e01f3cdf929f1634b91c7177dfb9`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`5740ef0a180d16b0bd0077ba2076ede1b3852b8e`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -317,30 +317,31 @@
 - `StudioLessonState`：[packages/contracts/src/studio.ts:5](../../../packages/contracts/src/studio.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `StudioLesson`：[packages/contracts/src/studio.ts:7](../../../packages/contracts/src/studio.ts#L7)；字段：`id`、`atomId`、`title`、`objective`、`kind`、`state`、`href`、`teaching?`。
 - `StudioUnit`：[packages/contracts/src/studio.ts:18](../../../packages/contracts/src/studio.ts#L18)；字段：`id`、`title`、`objective`、`lessons`。
-- `StudioCourse`：[packages/contracts/src/studio.ts:25](../../../packages/contracts/src/studio.ts#L25)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`focusAtomIds`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`。
-- `StudioCoursePreview`：[packages/contracts/src/studio.ts:47](../../../packages/contracts/src/studio.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioActivity`：[packages/contracts/src/studio.ts:49](../../../packages/contracts/src/studio.ts#L49)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`。
-- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:63](../../../packages/contracts/src/studio.ts#L63)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPlanSession`：[packages/contracts/src/studio.ts:64](../../../packages/contracts/src/studio.ts#L64)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
-- `StudioStudyPlan`：[packages/contracts/src/studio.ts:81](../../../packages/contracts/src/studio.ts#L81)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
-- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:97](../../../packages/contracts/src/studio.ts#L97)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfBBox`：[packages/contracts/src/studio.ts:102](../../../packages/contracts/src/studio.ts#L102)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:104](../../../packages/contracts/src/studio.ts#L104)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioSourcePage`：[packages/contracts/src/studio.ts:109](../../../packages/contracts/src/studio.ts#L109)；字段：`page`、`text`、`method?`、`confidence?`、`blocks?`、`warnings?`。
-- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:118](../../../packages/contracts/src/studio.ts#L118)；字段：`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
-- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:132](../../../packages/contracts/src/studio.ts#L132)；字段：`id`、`studentId`、`subject`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
-- `StudioLearningCitation`：[packages/contracts/src/studio.ts:151](../../../packages/contracts/src/studio.ts#L151)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
-- `StudioLearningSection`：[packages/contracts/src/studio.ts:159](../../../packages/contracts/src/studio.ts#L159)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
-- `StudioFlashcard`：[packages/contracts/src/studio.ts:168](../../../packages/contracts/src/studio.ts#L168)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
-- `StudioLearningPack`：[packages/contracts/src/studio.ts:176](../../../packages/contracts/src/studio.ts#L176)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:192](../../../packages/contracts/src/studio.ts#L192)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioFeedItem`：[packages/contracts/src/studio.ts:194](../../../packages/contracts/src/studio.ts#L194)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
-- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:203](../../../packages/contracts/src/studio.ts#L203)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`source?`、`durationMs`。
-- `StudioWhiteboard`：[packages/contracts/src/studio.ts:215](../../../packages/contracts/src/studio.ts#L215)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioConnectorKind`：[packages/contracts/src/studio.ts:232](../../../packages/contracts/src/studio.ts#L232)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioConnector`：[packages/contracts/src/studio.ts:233](../../../packages/contracts/src/studio.ts#L233)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
-- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:248](../../../packages/contracts/src/studio.ts#L248)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`。
-- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:269](../../../packages/contracts/src/studio.ts#L269)；字段：`connectors`、`events`。
-- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:274](../../../packages/contracts/src/studio.ts#L274)；字段：`id`、`label`。
-- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:275](../../../packages/contracts/src/studio.ts#L275)；字段：`available`、`provider`、`voices`、`defaultVoice`。
-- `StudioOverview`：[packages/contracts/src/studio.ts:282](../../../packages/contracts/src/studio.ts#L282)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+- `StudioCoursePace`：[packages/contracts/src/studio.ts:25](../../../packages/contracts/src/studio.ts#L25)；字段：`version`、`minutesPerSession`、`teachingLanguage`、`estimatedMinutes`、`notice`、`sessions`。
+- `StudioCourse`：[packages/contracts/src/studio.ts:34](../../../packages/contracts/src/studio.ts#L34)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`focusAtomIds`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`、`pace?`。
+- `StudioCoursePreview`：[packages/contracts/src/studio.ts:57](../../../packages/contracts/src/studio.ts#L57)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioActivity`：[packages/contracts/src/studio.ts:59](../../../packages/contracts/src/studio.ts#L59)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`、`actorId?`、`requestHash?`。
+- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:75](../../../packages/contracts/src/studio.ts#L75)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPlanSession`：[packages/contracts/src/studio.ts:76](../../../packages/contracts/src/studio.ts#L76)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
+- `StudioStudyPlan`：[packages/contracts/src/studio.ts:93](../../../packages/contracts/src/studio.ts#L93)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
+- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:109](../../../packages/contracts/src/studio.ts#L109)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfBBox`：[packages/contracts/src/studio.ts:114](../../../packages/contracts/src/studio.ts#L114)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:116](../../../packages/contracts/src/studio.ts#L116)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioSourcePage`：[packages/contracts/src/studio.ts:121](../../../packages/contracts/src/studio.ts#L121)；字段：`page`、`text`、`method?`、`confidence?`、`blocks?`、`warnings?`。
+- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:130](../../../packages/contracts/src/studio.ts#L130)；字段：`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
+- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:144](../../../packages/contracts/src/studio.ts#L144)；字段：`id`、`studentId`、`subject`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
+- `StudioLearningCitation`：[packages/contracts/src/studio.ts:163](../../../packages/contracts/src/studio.ts#L163)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
+- `StudioLearningSection`：[packages/contracts/src/studio.ts:171](../../../packages/contracts/src/studio.ts#L171)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
+- `StudioFlashcard`：[packages/contracts/src/studio.ts:180](../../../packages/contracts/src/studio.ts#L180)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
+- `StudioLearningPack`：[packages/contracts/src/studio.ts:188](../../../packages/contracts/src/studio.ts#L188)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:204](../../../packages/contracts/src/studio.ts#L204)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioFeedItem`：[packages/contracts/src/studio.ts:206](../../../packages/contracts/src/studio.ts#L206)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
+- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:215](../../../packages/contracts/src/studio.ts#L215)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`source?`、`durationMs`。
+- `StudioWhiteboard`：[packages/contracts/src/studio.ts:227](../../../packages/contracts/src/studio.ts#L227)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioConnectorKind`：[packages/contracts/src/studio.ts:244](../../../packages/contracts/src/studio.ts#L244)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioConnector`：[packages/contracts/src/studio.ts:245](../../../packages/contracts/src/studio.ts#L245)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
+- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:260](../../../packages/contracts/src/studio.ts#L260)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`。
+- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:281](../../../packages/contracts/src/studio.ts#L281)；字段：`connectors`、`events`。
+- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:286](../../../packages/contracts/src/studio.ts#L286)；字段：`id`、`label`。
+- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:287](../../../packages/contracts/src/studio.ts#L287)；字段：`available`、`provider`、`voices`、`defaultVoice`。
+- `StudioOverview`：[packages/contracts/src/studio.ts:294](../../../packages/contracts/src/studio.ts#L294)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
