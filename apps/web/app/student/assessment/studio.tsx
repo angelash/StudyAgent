@@ -297,7 +297,7 @@ export function AssessmentStudio() {
   }
 
   return <main className="learning-studio">
-    <StudyNav current="assessment" />
+    <StudyNav current="assessment" context={{ studentId: studentId || undefined, subject }} />
     <div className="studio-layout">
       <aside className="studio-rail"><span className="studio-eyebrow">LEARNING / INSIGHT</span><h1>把知识<br /><em>学扎实。</em></h1>
         <p>从学到了哪里开始，找到卡住的那一步，再用新题看看是否真的掌握。</p>

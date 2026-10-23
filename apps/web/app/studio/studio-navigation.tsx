@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
+import { useSessionUser } from '../../lib/session-user';
+import { learningContextHref, readLearningContext, saveLearningContext, type LearningContext } from '../../lib/learning-context';
 import './workspace.css';
 
 export type StudioView = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
@@ -14,9 +16,17 @@ const navigation: Array<[StudioView, string, string, string]> = [
 export function StudioSymbol({ path, size = 20 }: { path: string; size?: number }) {
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={path}/></svg>;
 }
-export function StudioNavigation({ active, recent, onNavigate, onCreate }: { active: StudioView;
-  recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: () => void }) {
+export function StudioNavigation({ active, recent, onNavigate, onCreate, context }: { active: StudioView;
+  recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: () => void; context?: LearningContext }) {
   const [mobile, setMobile] = React.useState(false);
+  const user = useSessionUser();
+  const [homeHref, setHomeHref] = React.useState('/learn');
+  React.useEffect(() => {
+    if (!user) { setHomeHref('/learn'); return; }
+    const selected = context?.studentId ? context : readLearningContext(user.id, window.location.search);
+    setHomeHref(learningContextHref('/learn', selected));
+    saveLearningContext(user.id, selected);
+  }, [user?.id, context?.studentId, context?.subject]);
   return <><button className="ws-mobile-menu" aria-label="打开学习导航" aria-expanded={mobile} onClick={() => setMobile(!mobile)}>☰</button>
     {mobile && <button className="ws-nav-backdrop" aria-label="关闭学习导航" onClick={() => setMobile(false)}/>}
     <aside className="ws-navigation" data-open={mobile} aria-label="学习工作台导航">
@@ -26,6 +36,6 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate }: { act
       {onCreate && <button className="ws-create-course" onClick={onCreate}>＋ 创建课程</button>}
       <section className="ws-continue"><h2>继续学习</h2><Link href={recent?.[0]?.href ?? '/studio/classroom'}><small>讲座</small><b>{recent?.[0]?.title ?? '社会学想象力'}</b><span>{recent?.[0]?.detail ?? '社会学概论'}</span></Link></section>
       <section className="ws-recents"><h2>近期活动</h2>{recent?.length ? recent.slice(1, 4).map((item, index) => <Link href={item.href} key={index} title={item.title}>{item.title}</Link>) : <p>开始学习后，活动会出现在这里。</p>}</section>
-      <footer><span/> 内部学习工作台</footer>
+      <footer><Link href={homeHref}>返回学习首页 →</Link></footer>
     </aside></>;
 }

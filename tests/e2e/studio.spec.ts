@@ -54,7 +54,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByLabel('登录账号').fill(principal);
   await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await expect(page).toHaveURL(/\/parent\/dashboard$/);
+  await expect(page).toHaveURL(/\/learn(?:\?|$)/);
   await page.goto('/studio');
   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Instant Assistance' })).toBeVisible();

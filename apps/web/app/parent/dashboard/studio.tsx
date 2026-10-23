@@ -21,7 +21,7 @@ export function FamilyStudio() {
   const [subject, setSubject] = React.useState<Subject>('math'), [nickname, setNickname] = React.useState(''), [grade, setGrade] = React.useState(3);
   const [loading, setLoading] = React.useState(true), [busy, setBusy] = React.useState(false), [error, setError] = React.useState(''), [showCreate, setShowCreate] = React.useState(false), [expanded, setExpanded] = React.useState('');
   React.useEffect(() => { let alive = true;
-    apiRequest<FamilyOverview>('/learning/overview').then((value) => { if (alive) { setOverview(value); const requested = new URLSearchParams(window.location.search).get('studentId'); setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
+    apiRequest<FamilyOverview>('/learning/overview').then((value) => { if (alive) { setOverview(value); const query = new URLSearchParams(window.location.search), requested = query.get('studentId'); const requestedSubject = query.get('subject'); if (requestedSubject && requestedSubject in subjectNames) setSubject(requestedSubject as Subject); setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
       .catch((caught) => { if (alive) setError(caught.message); }).finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, []);
@@ -43,7 +43,7 @@ export function FamilyStudio() {
       setOverview(await apiRequest<FamilyOverview>('/learning/overview')); setStudentId(created.profile.id); setNickname(''); setShowCreate(false);
     } catch (caught) { setError(caught instanceof Error ? caught.message : '建档未完成，请重试'); } finally { setBusy(false); }
   }
-  return <main className="learning-studio family-studio"><StudyNav current="family" /><div className="family-layout">
+  return <main className="learning-studio family-studio"><StudyNav current="family" context={{ studentId: studentId || undefined, subject }} /><div className="family-layout">
     <aside className="family-rail"><span className="studio-eyebrow">FAMILY JOURNAL / 看见每一步</span><h1>看见孩子，<br /><em>怎样学会。</em></h1><p>从具体知识点出发，陪孩子找到问题，试一试，再验证。</p>
       {overview && <><label>孩子的学习档案<select value={studentId} onChange={(e) => { setStudentId(e.target.value); setExpanded(''); }} aria-label="选择学生">{overview.children.map((item) => <option key={item.id} value={item.id}>{item.nickname} · {item.grade}年级</option>)}</select></label><button className="studio-text-button" onClick={() => setShowCreate(!showCreate)}>{showCreate ? '收起建档' : '＋ 添加孩子档案'}</button></>}
       <div className="family-support"><strong>陪伴小提醒</strong><p>先问“你是怎么想的”，再一起找卡住的步骤。一次表现只能告诉我们当时的情况。</p></div>

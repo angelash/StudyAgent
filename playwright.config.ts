@@ -45,7 +45,7 @@ export default defineConfig({
       },
     },
     {
-      command: 'npm run start --workspace @study-agent/web',
+      command: process.env.E2E_WEB_COMMAND ?? 'npm run start --workspace @study-agent/web',
       url: webUrl,
       timeout: 180_000,
       reuseExistingServer: false,

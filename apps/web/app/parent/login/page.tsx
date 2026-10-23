@@ -16,7 +16,7 @@ export default function ParentLoginPage() {
         method: 'POST', body: JSON.stringify({ principal, credential }),
       });
       setAuthToken(result.token); setCurrentUser(result.user); await refreshSessionUser();
-      router.push(result.user.role === 'admin' ? '/admin/analytics' : result.user.role === 'student' ? '/student/today' : '/parent/dashboard');
+      router.push(result.user.role === 'admin' ? '/admin/analytics' : '/learn');
     } catch (caught) { setError((caught as Error).message); } finally { setBusy(false); }
   }
   return <main className="learning-login"><aside><Link href="/" className="login-brand"><span>学</span>学习观察室</Link><div><span className="login-eyebrow">FAMILY / 每一步，都看得见</span><h1>先看见孩子，<br /><em>怎样学会。</em></h1><p>从一个具体知识点开始，找到卡住的一步，再通过新题和时间，看看是否真的留下来。</p></div><Link href="/student/login" className="login-other">孩子自己来学习？使用学习码进入 ↗</Link></aside>

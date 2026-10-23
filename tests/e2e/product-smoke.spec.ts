@@ -62,7 +62,7 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await page.getByLabel('登录账号').fill(principal);
   await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await expect(page).toHaveURL(/\/parent\/dashboard$/);
+  await expect(page).toHaveURL(/\/learn(?:\?|$)/); await page.getByRole('link', { name: '建立学习档案 →', exact: true }).click();
   await expect(page.getByRole('heading', { name: '建立孩子的学习档案' })).toBeVisible();
 
   await page.getByLabel('孩子昵称').fill('浏览器验收');
@@ -132,6 +132,7 @@ test('an approved fraction teaching card renders a safe step-by-step visual', as
   await page.getByLabel('登录账号').fill(principal);
   await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
+  await page.getByRole('link', { name: '建立学习档案 →', exact: true }).click();
   await expect(page.getByRole('heading', { name: '建立孩子的学习档案' })).toBeVisible();
   await page.getByLabel('孩子昵称').fill('分数图验收');
   await page.getByLabel('当前年级').selectOption('5');
