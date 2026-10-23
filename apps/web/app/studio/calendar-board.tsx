@@ -25,6 +25,7 @@ export function CalendarBoard({ events, plans, canManage, onNew, onSources, onPl
   const [dialogError, setDialogError] = React.useState('');
   const [deleting, setDeleting] = React.useState(false), [busy, setBusy] = React.useState(false), [editing, setEditing] = React.useState(false);
   const [title, setTitle] = React.useState(''), [description, setDescription] = React.useState(''), [start, setStart] = React.useState(''), [end, setEnd] = React.useState('');
+  React.useEffect(() => { setChecked([]); setDeleting(false); }, [day, mode, filter]);
   React.useEffect(() => { const restore = () => { setDay(queryDay()); const params = new URLSearchParams(window.location.search); setMode(params.get('mode') === 'week' ? 'week' : 'month'); setFilter(params.get('tasks') === 'pending' ? 'pending' : 'confirmed'); setChecked([]); }; restore(); window.addEventListener('popstate', restore); return () => window.removeEventListener('popstate', restore); }, []);
   function selectDate(value: string) { setDay(value); const url = new URL(window.location.href); url.searchParams.set('date', value); window.history.replaceState(null, '', url.pathname + url.search); }
   function changeMode(value: typeof mode) { setMode(value); const url = new URL(window.location.href); url.searchParams.set('mode', value); window.history.replaceState(null, '', url.pathname + url.search); }

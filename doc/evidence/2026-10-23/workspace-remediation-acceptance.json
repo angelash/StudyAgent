@@ -191,14 +191,14 @@
     "Reading completion does not establish knowledge mastery."
   ],
   "production": {
-    "checkedAt": "2026-10-23T08:29:28.900Z",
+    "checkedAt": "2026-10-23T08:44:20.485Z",
     "web": [
       {
         "path": "/studio?view=courses",
         "status": 200,
         "assets": [
           {
-            "src": "/_next/static/chunks/app/studio/page-06dc00c1ab11f701.js",
+            "src": "/_next/static/chunks/app/studio/page-cf2b27dc06569cb9.js",
             "status": 200
           },
           {
@@ -234,7 +234,7 @@
         "status": 200,
         "assets": [
           {
-            "src": "/_next/static/chunks/app/studio/page-06dc00c1ab11f701.js",
+            "src": "/_next/static/chunks/app/studio/page-cf2b27dc06569cb9.js",
             "status": 200
           },
           {
@@ -252,5 +252,16 @@
       "status": 200,
       "readiness": "ready"
     }
+  },
+  "finalBatchSelectionRegression": {
+    "passed": true,
+    "checks": [
+      "range clears batch selection",
+      "filter clears batch selection",
+      "events remain unchanged"
+    ],
+    "isolatedApi": true,
+    "productionDataUntouched": true,
+    "checkedAt": "2026-10-23T08:43:55.590Z"
   }
 }

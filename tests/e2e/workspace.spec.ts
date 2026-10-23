@@ -72,7 +72,9 @@ test('calendar supports real date navigation, edit, confirmation, completion, ex
   await expect(page.getByRole('dialog')).toContainText('已完成');await page.getByRole('button',{name:'重新打开',exact:true}).click();await expect(page.getByRole('dialog')).toContainText('已确认');await page.keyboard.press('Escape');
   await page.reload();await expect(page.locator('.ws-month-grid').getByText('跨月移动后的任务',{exact:false})).toBeVisible();
   const download=page.waitForEvent('download');await page.getByRole('button',{name:'导出 ICS',exact:true}).click();expect((await download).suggestedFilename()).toMatch(/\.ics$/);
-  await page.getByRole('button',{name:'上一个日期范围'}).click();await page.getByRole('button',{name:'批量删除日程'}).click();await page.getByLabel('选择当前范围的手动安排').check();await page.getByRole('button',{name:'删除所选'}).click();
+  await page.getByRole('button',{name:'上一个日期范围'}).click();await page.getByRole('button',{name:'批量删除日程'}).click();await page.getByLabel('选择当前范围的手动安排').check();
+  await page.getByRole('button',{name:'下一个日期范围'}).click();await expect(page.getByRole('button',{name:'删除所选'})).toBeDisabled();
+  await page.getByRole('button',{name:'上一个日期范围'}).click();await page.getByLabel('选择当前范围的手动安排').check();await page.getByRole('button',{name:'删除所选'}).click();
   await expect(page.getByRole('dialog',{name:'确认删除学习安排'})).toBeVisible();await page.getByRole('button',{name:'取消',exact:true}).click();await expect(page.locator('.ws-month-grid').getByText('整改任务乙',{exact:false})).toBeVisible();
   await page.getByRole('button',{name:'删除所选'}).click();await page.getByRole('button',{name:'确认删除',exact:true}).click();await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.locator('.ws-month-grid').getByText('整改任务乙',{exact:false})).toHaveCount(0);
