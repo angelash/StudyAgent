@@ -63,6 +63,7 @@ export class LearningService {
 
   studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject): StudioOverview {
     const children = this.studentProfiles(user);
+    if (studentId) this.students.assertCanAccessStudent(user, studentId);
     const selected = children.find(child => child.id === studentId) ?? children[0];
     const day = studyDay();
     const speechCapabilities = this.speech.capabilities();

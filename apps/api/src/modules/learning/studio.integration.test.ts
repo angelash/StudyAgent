@@ -156,6 +156,15 @@ describe('whiteboard video and LMS calendar integrations', () => {
       { studentId: 'child', subject: 'math', prompt: '越权白板', atomId: 'fraction-add' }, other, 403);
   });
 
+  it('does not substitute another child for an explicit inaccessible studio selection', async () => {
+    const own = await call('get', '/learning/studio/overview?subject=math');
+    expect(own.selected.id).toBe('child');
+    await call('get', '/learning/studio/overview?studentId=missing-child&subject=math', undefined, parent, 403);
+    await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, other, 403);
+    await call('get', '/learning/studio/overview?studentId=missing-child&subject=math', undefined, learner, 403);
+    expect((await call('get', '/learning/studio/overview?studentId=child&subject=math')).selected.id).toBe('child');
+  });
+
   it('opens an approved course lesson in the shared classroom without replacing independent measurement', async () => {
     const preview = await call('post', '/learning/studio/courses/preview', { studentId: 'child', subject: 'math' });
     const course = await call('post', '/learning/studio/courses', { studentId: 'child', subject: 'math', title: preview.title,

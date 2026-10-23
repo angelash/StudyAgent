@@ -14,6 +14,7 @@ import './classroom.css';
 import { StudioNavigation } from '../studio-navigation';
 import '../workspace.css';
 import { WorkspaceDialog } from '../workspace-dialog';
+import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
 
 const tour = [
   ['连接与断点', '左上角显示课堂状态。离开后再回来，会恢复已经保存的讲解位置。'],
@@ -41,6 +42,7 @@ export function ClassroomWorkbench() {
   const [loading, setLoading] = React.useState(false), [panel, setPanel] = React.useState<'units' | 'materials' | 'practices'>('units');
   const [initialTab, setInitialTab] = React.useState<'history' | 'practice' | 'project'>('history');
   const [expanded, setExpanded] = React.useState<string[]>([]);
+  const [libraryHref, setLibraryHref] = React.useState('/studio?view=courses');
   const [lessonInfo, setLessonInfo] = React.useState<Pick<ClassroomLesson, 'id' | 'title' | 'objective'> | null>(null), [help, setHelp] = React.useState(false);
   const studio = React.useRef<string | undefined>(undefined), loadController = React.useRef<AbortController | null>(null);
   const refresh = React.useCallback(async () => {
@@ -68,6 +70,7 @@ export function ClassroomWorkbench() {
     if (!identity) return;
     void refresh();
     const restore = () => {
+      setLibraryHref(courseLibraryHref(window.location.search));
       const params = new URLSearchParams(window.location.search), id = params.get('lesson');
       const requestedUnit = Number(params.get('unit') ?? 0); if (requestedUnit >= 0 && requestedUnit < 5) setUnitIndex(requestedUnit);
       setPanel(params.get('panel') === 'materials' || params.get('panel') === 'practices' ? params.get('panel') as 'materials' | 'practices' : 'units');
@@ -82,14 +85,15 @@ export function ClassroomWorkbench() {
   function close() {
     setSession(null);
     if (studio.current) {
-      const params=new URLSearchParams(window.location.search), query=new URLSearchParams({view:'courses',course:studio.current});
+      const params=new URLSearchParams(window.location.search), query=copyCourseFilters(window.location.search,new URLSearchParams({view:'courses',course:studio.current}));
       if(session?.studentId)query.set('student',session.studentId);const subject=params.get('returnSubject')??new URL(session?.lesson.verificationHref??'/studio',window.location.origin).searchParams.get('subject');if(subject)query.set('subject',subject);
       if(params.get('returnUnit'))query.set('unit',params.get('returnUnit')!);if(params.get('returnPanel'))query.set('panel',params.get('returnPanel')!);
       window.location.assign('/studio?'+query); return;
     }
     const unit = catalog?.course.units.findIndex(item => item.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session?.lessonId)) || session?.lessonId === 'unit-exam:' + item.id) ?? unitIndex;
     const selectedUnit = unit >= 0 ? unit : unitIndex; setUnitIndex(selectedUnit);
-    window.history.replaceState(null, '', '/studio/classroom?' + new URLSearchParams({unit:String(selectedUnit),panel})); void refresh();
+    const query=new URLSearchParams(window.location.search);for(const key of ['lesson','session','tab','help'])query.delete(key);query.set('unit',String(selectedUnit));query.set('panel',panel);
+    window.history.replaceState(null, '', '/studio/classroom?' + query); void refresh();
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
   if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><Link href="/parent/login">登录学习工作台 →</Link></div>;
@@ -104,12 +108,12 @@ export function ClassroomWorkbench() {
   const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !progress.get(lesson.id)?.completed);
   return <main className="cl-shell ws-classroom-shell">
     <StudioNavigation active="courses" recent={[{title:catalog?.course.units.flatMap(unit=>unit.lectures.flatMap(lecture=>lecture.lessons)).find(lesson=>lesson.id===[...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?lesson='+([...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId??'soc-1-1-1')}]} />
-    <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href="/studio?view=courses">× <span>退出课程</span></Link>
+    <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
       <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
       <div className="cl-panel-label">面板</div><div className="cl-course-tabs" role="tablist" aria-label="课程面板">
-        {(['units', 'materials', 'practices'] as const).map((item, index) => <button key={item} role="tab" aria-selected={panel === item} onClick={() => {setPanel(item);const params=new URLSearchParams({unit:String(unitIndex),panel:item});window.history.replaceState(null,'','/studio/classroom?'+params);}}>{['单元', '资料', '练习'][index]}</button>)}
-      </div><div className="cl-unit-nav">{course?.units.map((item, index) => <button key={item.id} data-active={unitIndex === index} onClick={() => {setUnitIndex(index);const params=new URLSearchParams({unit:String(index),panel});window.history.replaceState(null,'','/studio/classroom?'+params);}}><b>{index + 1}</b>{item.title}</button>)}</div>
+        {(['units', 'materials', 'practices'] as const).map((item, index) => <button key={item} role="tab" aria-selected={panel === item} onClick={() => {setPanel(item);const params=new URLSearchParams(window.location.search);params.set('unit',String(unitIndex));params.set('panel',item);window.history.replaceState(null,'','/studio/classroom?'+params);}}>{['单元', '资料', '练习'][index]}</button>)}
+      </div><div className="cl-unit-nav">{course?.units.map((item, index) => <button key={item.id} data-active={unitIndex === index} onClick={() => {setUnitIndex(index);const params=new URLSearchParams(window.location.search);params.set('unit',String(index));params.set('panel',panel);window.history.replaceState(null,'','/studio/classroom?'+params);}}><b>{index + 1}</b>{item.title}</button>)}</div>
     </aside><section className="cl-outline">
       {error && <div className="cl-error" role="alert">{error}<button onClick={() => void refresh()}>重试</button></div>}
       {loading && <div className="cl-open-status" role="status">正在恢复课堂…</div>}
@@ -137,7 +141,7 @@ export function ClassroomWorkbench() {
             </div>)}</div>}
           </article>)}
           <article className="cl-lecture cl-project"><span className="cl-timeline-icon">▣</span><small>PROJECT · {unitIndex + 1} / 5</small><h3>{unit.project.title}</h3><p>{unit.project.brief}</p><button onClick={() => void open('unit-exam:' + unit.id, 'project')}>Start →</button></article>
-          <article className="cl-lecture cl-exam"><span className="cl-timeline-icon">♙</span><small>UNIT CHECK</small><h3>{unit.title}综合核查</h3><p>覆盖本单元的 12 个主题。{unitIndex === 0 ? '16' : '12'} 道复盘题保留首次作答、跳过与提示记录。</p><button onClick={() => void open('unit-exam:' + unit.id, 'practice')}>Start →</button></article>
+          <article className="cl-lecture cl-exam"><span className="cl-timeline-icon">♙</span><small>UNIT CHECK</small><h3>{unit.title}综合核查</h3><p>覆盖本单元的 12 个主题，12 道新情境题保留首次作答、跳过与提示记录。</p><button onClick={() => void open('unit-exam:' + unit.id, 'practice')}>Start →</button></article>
         </div>}
       </>}
     </section></div>
