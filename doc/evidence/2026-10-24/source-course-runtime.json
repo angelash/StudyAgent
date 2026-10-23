@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T19:56:30.823Z",
+  "sourceRevision": "cbc95bc2784af78f17fd3053970ec159fbf90e0e",
+  "scope": "Anonymous smoke after local daemon deployment; no production family sessions or records used.",
+  "checks": [
+    {
+      "route": "http://127.0.0.1:3217/learn",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/source-courses",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/classroom",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses/materials",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "POST /api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    }
+  ],
+  "browserErrors": [],
+  "webBuildId": "LYhFc6RISf6AZC0QTuHU7",
+  "passed": true
+}

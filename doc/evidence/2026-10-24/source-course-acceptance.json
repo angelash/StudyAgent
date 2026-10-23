@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T19:55:41.473102+00:00",
+  "sourceRevision": "cbc95bc2784af78f17fd3053970ec159fbf90e0e",
+  "passed": true,
+  "scope": "Source-backed course technical lifecycle, isolated fixture browser routes, one real default-model anonymous-text sample. Not full product parity, content approval, measured student validity, all models or all source sizes.",
+  "specificationCommit": "e06355b",
+  "database": "Unique isolated SQLite directories; no production family records accessed",
+  "backendFull": {
+    "passed": 817,
+    "skipped": 6,
+    "filesPassed": 92,
+    "filesSkipped": 1,
+    "durationSeconds": 250.05,
+    "localStart": "2026-10-24 03:33:00 +08:00",
+    "finalRevisionRun": false,
+    "note": "Before final prompt/schema correction, English scaffold and answer-position check. Final affected tests were rerun separately."
+  },
+  "backendFinalFocused": {
+    "passed": 17,
+    "failed": 0,
+    "durationSeconds": 5.25,
+    "localStart": "2026-10-24 03:51:08 +08:00",
+    "command": "npm run test --workspace @study-agent/api -- src/modules/ai/xiaojiu-chat.service.test.ts src/modules/learning/source-course.integration.test.ts"
+  },
+  "browserFull": {
+    "startTime": "2026-10-23T19:47:50.481Z",
+    "duration": 164358.641,
+    "expected": 39,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "npm run test:e2e -- --skip-build",
+    "fixtureOnlyModel": true,
+    "note": "39 real browser journeys against the application using deterministic source-course generation. Followed by final four source journeys after language/answer checks."
+  },
+  "browserFinalSource": {
+    "startTime": "2026-10-23T19:52:00.214Z",
+    "duration": 30271.094999999998,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "node scripts/qa/run-source-course-browser.cjs --skip-build",
+    "fixtureOnlyModel": true
+  },
+  "liveDefaultModel": {
+    "receipt": "source-course-live.json",
+    "result": "source-course-live-result.json",
+    "passed": true,
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "lessons": 2,
+    "questions": 6,
+    "durationMs": 75336,
+    "providerResponses": 1,
+    "sourceCharacters": 665,
+    "language": "en",
+    "englishTeachingDirectionsChecked": true,
+    "sourceQuotesChecked": true,
+    "contentApproval": "pending-human-review",
+    "review": "Checked this sample arithmetic, correct choices, hints and citations; no repeat of the earlier fraction error found. This is agent inspection, not teacher approval or model reliability certification."
+  },
+  "earlierLiveFindings": [
+    {
+      "result": "source-course-first-live-result.json",
+      "technicalRoutePassed": true,
+      "contentApproval": "rejected-for-use",
+      "issues": [
+        "For 1/2 -> 4/8, an explanation described splitting each half into two parts; it should be four.",
+        "A hint said multiplying numerator and denominator by 2 turns 1/2 into 4/8; the factor is 4.",
+        "All six correct options were first."
+      ],
+      "response": "Strengthened numerical consistency instructions, enforced varying answer positions, added explicit schema and validation feedback, and repeated the anonymous live sample. These checks cannot guarantee semantic correctness."
+    }
+  ],
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "typeChecks": true,
+    "productionDeployment": "passed; source-course-runtime.json"
+  },
+  "viewports": [
+    1440,
+    768,
+    390
+  ],
+  "manualVisualInspection": [
+    "create desktop and phone",
+    "course phone",
+    "PDF original preview"
+  ],
+  "artifactSha256": {
+    "source-course-course-1440.png": "351345455a2a8150a5641b5755913c4fbfe7c2ee7d1a0f67b8e23ada9690bf48",
+    "source-course-course-390.png": "53977c9e177ed2f683df461ed3e34bb38ca06d2dc93cc7e1d2f3bb9ca51c0b87",
+    "source-course-course-768.png": "03568a76880301f698a2a5f73e513814ed6ea2d52481c965a21977151618ab2c",
+    "source-course-create-1440.png": "635ac163790deef7692284e407c3590130874b845561c1fbe29aa923b4b7e407",
+    "source-course-create-390.png": "1c74cbebadd4328a288e672a8d31a70c5c77e41615b47a3fd896b1310d0f50f5",
+    "source-course-create-768.png": "816e5c8f8558e791c4b0ef560f6d025acda2e339feeeedd75a94ba99efed6f0c",
+    "source-course-first-live-result.json": "34f0006265d71545bf22b189e1308296b87ea1b8b2a9809fed861b866c5fb88b",
+    "source-course-live-result.json": "d4f828759fdae44cf478db37f44cd8caa9e84937c643a8969bfed10df0ca5fac",
+    "source-course-live.json": "71db022b817b72c0a70a24b1b4fa873a55a1e2a467d6999a305c9d63dd8a8105",
+    "source-course-pdf-original.png": "ee795cdb123c629fbde84ff3918674f77ac0bc4baf95984b164c7593daa9fd82"
+  },
+  "limits": [
+    "Generated sources/quotes are structurally verified; correctness still needs human review.",
+    "One real 665-character English two-lesson sample; six-lesson/long-document generation, all languages and repeated provider reliability remain unverified.",
+    "Imported/generated questions never enter formal ability measurement automatically.",
+    "No full textbook mapping or teacher review claimed.",
+    "Physical deletion of unreferenced source PDF bytes remains unfinished; metadata access/deletion and in-flight publication protection are covered.",
+    "All reference-product visual states, physical devices and real 1/3/7/14-day learner studies remain incomplete."
+  ],
+  "runtimeReceipt": "source-course-runtime.json"
+}

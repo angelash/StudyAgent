@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T19:51:21.847Z",
+  "passed": true,
+  "scope": "One real default-model source-course generation, on isolated anonymous text. Not a content-review or reliability study.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "durationMs": 75336,
+      "errorCode": null
+    }
+  ],
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "lessons": 2,
+  "questions": 6,
+  "sourceCharacters": 665,
+  "sourceSha256": "f413e777350822a9177fa74ec39be2bc0429b7aa0201398affca99ee49fa8978",
+  "englishTitles": [
+    "Equivalent Fractions",
+    "Adding Fractions with Unlike Denominators"
+  ],
+  "courseFingerprint": "689536164b4404785308d0b2d063eb42e923bb00fcbe14e7dcd57103896a0d96",
+  "privateAnswersStripped": true,
+  "formalMeasurementEligible": false,
+  "dataDirectory": "data/qa/source-course-live-1792785081847"
+}

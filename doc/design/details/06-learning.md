@@ -1,6 +1,6 @@
 # 06 家庭首页、今日训练、学习记忆与错题 — 详细设计
 
-源码基线：`b344ff0aae0f01cbb04427d63ea641069a06e909`。角色：学生、家长、授权教师。
+源码基线：`cbc95bc2784af78f17fd3053970ec159fbf90e0e`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -70,8 +70,8 @@
 
 **服务方法**：
 
-- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:815](../../../apps/api/src/modules/learning/learning.service.ts#L815)。
-- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:551](../../../apps/api/src/modules/learning/learning.service.ts#L551)。
+- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:822](../../../apps/api/src/modules/learning/learning.service.ts#L822)。
+- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:558](../../../apps/api/src/modules/learning/learning.service.ts#L558)。
 
 ## LEARN-02 今日任务与练习入口
 
@@ -92,8 +92,8 @@
 
 **服务方法**：
 
-- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:611](../../../apps/api/src/modules/learning/learning.service.ts#L611)。
-- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:625](../../../apps/api/src/modules/learning/learning.service.ts#L625)。
+- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:618](../../../apps/api/src/modules/learning/learning.service.ts#L618)。
+- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:632](../../../apps/api/src/modules/learning/learning.service.ts#L632)。
 
 ## LEARN-03 训练作答、草稿、提示与完成
 
@@ -118,12 +118,12 @@
 
 **服务方法**：
 
-- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:667](../../../apps/api/src/modules/learning/learning.service.ts#L667)。
-- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:685](../../../apps/api/src/modules/learning/learning.service.ts#L685)。
-- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:694](../../../apps/api/src/modules/learning/learning.service.ts#L694)。
-- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:710](../../../apps/api/src/modules/learning/learning.service.ts#L710)。
-- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:764](../../../apps/api/src/modules/learning/learning.service.ts#L764)。
-- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:775](../../../apps/api/src/modules/learning/learning.service.ts#L775)。
+- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:674](../../../apps/api/src/modules/learning/learning.service.ts#L674)。
+- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:692](../../../apps/api/src/modules/learning/learning.service.ts#L692)。
+- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:701](../../../apps/api/src/modules/learning/learning.service.ts#L701)。
+- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:717](../../../apps/api/src/modules/learning/learning.service.ts#L717)。
+- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:771](../../../apps/api/src/modules/learning/learning.service.ts#L771)。
+- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:782](../../../apps/api/src/modules/learning/learning.service.ts#L782)。
 
 ## LEARN-04 错题与待复核入口
 
@@ -143,7 +143,7 @@
 
 **服务方法**：
 
-- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:785](../../../apps/api/src/modules/learning/learning.service.ts#L785)。
+- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:792](../../../apps/api/src/modules/learning/learning.service.ts#L792)。
 
 ## LEARN-05 错题组织、复做与新题验证
 

@@ -2,9 +2,9 @@
 
 围绕原子知识点建立的小学语文、数学、英语学习诊断与指导系统。学生按年级、学期、教材和已学范围完成评测；报告保留作答证据、掌握估计与不确定性，针对原因假设安排验证、指导、训练、间隔复测和家长复盘。
 
-当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域105项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
+当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域106项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
 
-当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。当前逐项状态见 [完整验收审计](doc/product/68-final-product-acceptance-audit.md)；GitHub Actions 已在 Ubuntu 24.04 上完整通过 application、browser、PostgreSQL 三组门禁，见 [CI 收据](doc/evidence/2026-10-21/ci-verify-runtime.json)。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
+当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。本轮完整目标见[体验与内容总计划](doc/product/92-experience-and-content-master-plan.md)，当前72项状态见[逐项需求账本](doc/product/experience/requirements.md)；原验收基线保留在[先前审计](doc/product/68-final-product-acceptance-audit.md)。GitHub Actions 已在 Ubuntu 24.04 上完整通过 application、browser、PostgreSQL 三组门禁，见 [CI 收据](doc/evidence/2026-10-21/ci-verify-runtime.json)。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
 
 ## 已实现的主要路径
 
@@ -12,6 +12,7 @@
 - 成人课堂：60微课、182道课堂练习和60道另编单元情境题，两级私有提示、不会/跳过、首次答案、具体复盘和旧版恢复分别记录，见[Practice交付](doc/product/96-classroom-practice-and-progressive-help.md)。
 - 课程项目：五个成人项目共15阶段，以及小学迁移活动；支持草稿、自评、证据引用、提交修订、人工复核与独立AI建议，见[项目交付](doc/product/97-versioned-course-projects.md)。
 - 课程蓝图：编辑目标、选择已确认知识点和单次预算，审阅结构与来源缺口后创建；支持取消和确认回执恢复，见[蓝图交付](doc/product/95-course-blueprint-editor.md)。
+- 资料课程 `/studio/source-courses`：成人私人文本/PDF及孩子授权资料，选页生成、蓝图审阅编辑、引用核对、课堂与练习、取消重试及旧断点；默认模型已用匿名英文材料真实调用，生成内容仍待人工审核，见[资料课程交付](doc/product/98-source-backed-course-generation.md)。
 - 家长注册、监护绑定、教师授权与撤销、独立学生学习码和设备撤销。
 - 证据化学习记忆：当前范围、未知点、待验证原因、计划和复测由同一份可核对上下文驱动家长首页与助教。
 - 课程进度、知识先修图、评测蓝图、断点作答、评分复核、证据报告与原因验证。
@@ -48,7 +49,7 @@ GESP C++以独立认证轨道接入教研后台 `/admin/gesp`：整理1～8级11
 
 执行 `npm run build` 后，分别运行 `npm run start --workspace @study-agent/api`、`npm run start --workspace @study-agent/web`。正式部署应设置 `NODE_ENV=production`、同站点HTTPS和持久目录。可将 `STUDY_WORKER_ENABLED=false`，另行运行 `npm run worker --workspace @study-agent/api`。
 
-运行检查：`npm test`、`npm run lint`、`npm run build`、`npm audit`。`npm run test:e2e` 会构建生产包并在独立 SQLite 中执行 Chromium 首页、家长建档和管理员教研旅程；首次使用先运行 `npx playwright install chromium`。默认测试包含真实SQLite和媒体处理；PostgreSQL实机测试须显式配置专用 `study_agent_qa` 数据库。健康与就绪地址为 `/api/health`、`/api/ready`。
+运行检查：`npm test`、`npm run lint`、`npm run build`、`npm audit`。`npm run test:e2e` 会构建隔离的生产 Web 副本，在独立 SQLite 中执行 Chromium 学习旅程；资料课程生成使用明确的测试替身，真实模型调用另用 `node --env-file=.env scripts/qa/source-course-live.cjs` 验证。测试不覆盖守护服务的 `.next`；首次使用先运行 `npx playwright install chromium`。默认测试包含真实SQLite和媒体处理；PostgreSQL实机测试须显式配置专用 `study_agent_qa` 数据库。健康与就绪地址为 `/api/health`、`/api/ready`。
 
 备份恢复命令、独立删除记录和运行边界见 [运行与存储](doc/product/05-running-and-storage.md)、[PostgreSQL恢复](doc/product/15-postgres-backup-delivery.md)、[家庭资料](doc/product/16-family-data-delivery.md)、[图片与录音](doc/product/18-student-media-delivery.md)。数据库、作答媒体与原始资产均需纳入恢复演练。
 

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b344ff0aae0f01cbb04427d63ea641069a06e909",
+  "sourceRevision": "cbc95bc2784af78f17fd3053970ec159fbf90e0e",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 105,
-    "activeNormalApiRoutes": 243,
-    "coveredApiRoutes": 243
+    "features": 106,
+    "activeNormalApiRoutes": 253,
+    "coveredApiRoutes": 253
   },
   "areas": [
     {
@@ -339,7 +339,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 62
+              "line": 57
             }
           ],
           "sourceFiles": [
@@ -2396,12 +2396,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 815
+              "line": 822
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 551
+              "line": 558
             }
           ],
           "sourceFiles": [
@@ -2459,12 +2459,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 611
+              "line": 618
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 625
+              "line": 632
             }
           ],
           "sourceFiles": [
@@ -2555,32 +2555,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 667
+              "line": 674
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 685
+              "line": 692
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 694
+              "line": 701
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 710
+              "line": 717
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 764
+              "line": 771
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 775
+              "line": 782
             }
           ],
           "sourceFiles": [
@@ -2630,7 +2630,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 785
+              "line": 792
             }
           ],
           "sourceFiles": [
@@ -4105,7 +4105,8 @@
       "pages": [
         "/studio",
         "/studio/classroom",
-        "/studio/projects"
+        "/studio/projects",
+        "/studio/source-courses"
       ],
       "files": [
         "apps/web/app/studio/studio.tsx",
@@ -4147,7 +4148,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "view、student、subject、course、关键词、状态、类型、来源、最近学习与排序",
           "implementation": "成人与当前档案小学课统一列表；真实记录区分未开始/进行中/讲解已读；关键词覆盖名称目标教材，组合筛选可清空；地址记条件，刷新/历史/进入目录及课堂返回保留；断点标题与目标一致；按身份连接GESP独立轨道；显式档案先校验授权，不回退另一孩子。",
@@ -4172,7 +4174,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 67
+              "line": 62
             }
           ],
           "sourceFiles": [
@@ -4206,7 +4208,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "当前范围、所选1～30点、标题/目标、可选5～60分钟预算、预览指纹和请求键",
           "implementation": "先编辑再审阅来源与缺口，取消预览不建课；保留所有所选分组，按参考时长生成预算内学习时段；预览和创建共用范围与资格校验；确认绑定主体/命令摘要与课程ID，同键重试恢复原课，旧预览或变更命令冲突；学习时段链接真实课堂与测量活动。",
@@ -4246,17 +4249,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 480
+              "line": 487
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 496
+              "line": 503
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 525
+              "line": 532
             }
           ],
           "sourceFiles": [
@@ -4291,7 +4294,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "unit、panel、lesson、tab与可选studioCourseId",
           "implementation": "展示封面、策划信息、单元、讲座、微课、项目与单元核查；可点开学习目标；帮助带入目标提问草稿；保留刷新、前进/后退与原课程返回路径。",
@@ -4314,7 +4318,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 24
+              "line": 26
             }
           ],
           "sourceFiles": [
@@ -4346,7 +4350,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "lessonId、expectedRevision、cursor/revealed/sentenceCursor",
           "implementation": "冻结课件、私有答案与提示；讲稿与逐项板书分开，音轨结束推进下一句，只预取下一句并保存断点；讲解内容身份与练习身份分开，练习变更不清除完全相同讲解的已读事实。",
@@ -4393,22 +4398,22 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 82
+              "line": 87
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 73
+              "line": 78
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 117
+              "line": 128
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 221
+              "line": 232
             }
           ],
           "sourceFiles": [
@@ -4440,7 +4445,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "当前课/步骤/问题、modelId、请求键",
           "implementation": "插问暂停自动讲解；发送当前课件和允许证据；模型返回reply与最多5条要点、可选三标签关系图；服务器保存消息与补充板书。",
@@ -4463,7 +4469,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 189
+              "line": 200
             }
           ],
           "sourceFiles": [
@@ -4495,7 +4501,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "questionId、selectedIndex/null、answered/skip/dont_know、提示level、requestKey、projectDraft",
           "implementation": "微课182题与独立编写单元60题分开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见且成功重试清除旧错误。",
@@ -4526,12 +4533,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 136
+              "line": 147
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 164
+              "line": 175
             }
           ],
           "sourceFiles": [
@@ -4573,7 +4580,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "受控image/table/code blocks",
           "implementation": "使用已生成本地WebP与受控SVG；图片可放大；表格逐行展示；JS示例放入独立runner页面和Worker，限制网络与DOM并设置超时。",
@@ -4615,7 +4623,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "音色、倍速、字体、背景、显示面板和导出命令",
           "implementation": "支持播放/暂停/停止、静音阅读、音色和倍速；持久化显示偏好；导出已读板书及插问Markdown、打印PDF；退出确认保存项目。",
@@ -4653,7 +4662,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "学生、学科、主题、可选已审核知识点",
           "implementation": "规则生成分幕标题、概念、步骤、图形和检查点；预览和保存使用内容指纹、请求键；保存后可继续播放。",
@@ -4685,12 +4695,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 216
+              "line": 211
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 228
+              "line": 223
             }
           ],
           "sourceFiles": [
@@ -4723,7 +4733,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "白板ID、幕ID、可用语音与浏览器录制能力",
           "implementation": "Canvas按时间绘制；可请求每幕旁白并与画面合成MediaStream；MediaRecorder输出WebM；始终可导出SRT；finally释放音频上下文与轨道。",
@@ -4746,7 +4757,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 469
+              "line": 476
             }
           ],
           "sourceFiles": [
@@ -4779,17 +4790,18 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
-          "inputs": "multipart PDF、studentId、subject、requestKey",
-          "implementation": "10MiB以内单PDF受控上传；保存私有原件并创建持久处理任务；每页图像和原件由学生授权接口读取。",
-          "outputs": "原始PDF、页图、处理状态",
+          "inputs": "multipart PDF、可选studentId/subject、requestKey",
+          "implementation": "10MiB以内单PDF受控上传，最多30页；保存原件并创建持久处理任务；孩子资料按当前档案权限读取，成人私人资料用真实空studentId及ownerUserId隔离；重复文件返回原材料并保存新的请求回执，改命令不能复用旧键。",
+          "outputs": "受控原始PDF、页图、OCR/结构状态",
           "collections": [
             "studioSourceMaterials",
             "importFiles",
             "processingArtifacts"
           ],
-          "limits": "资料属于所选档案；不能按任意本机路径读取文件。",
+          "limits": "不能按任意本机路径读取；大文件分块、更多页数和未引用PDF物理擦除仍待后续。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4820,20 +4832,21 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 252
+              "line": 247
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 309
+              "line": 307
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 323
+              "line": 321
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/learning/studio-material-access.ts",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
@@ -4862,7 +4875,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "PDF原页、文字层、扫描图像",
           "implementation": "Python优先文字层，扫描页OCR；保留bbox/置信度/页图；本地表格网格和公式候选与可选模型复核合并；前端用HTML表格和KaTeX呈现。",
@@ -4904,7 +4918,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "expectedUpdatedAt、requestKey、人工核对决定",
           "implementation": "用户对照原页确认恢复结果；失败或本地降级可重新排队；更新时比较资料版本并保留原件。",
@@ -4935,12 +4950,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 336
+              "line": 334
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 360
+              "line": 362
             }
           ],
           "sourceFiles": [
@@ -4972,7 +4987,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "资料ID、知识点、页级依据与预览指纹",
           "implementation": "选定原页与批准知识；以原页图和文字核对为基础生成白板幕；保存页码、来源及主题。",
@@ -5004,12 +5020,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 387
+              "line": 392
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 401
+              "line": 407
             }
           ],
           "sourceFiles": [
@@ -5042,7 +5058,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "当前范围、薄弱/未知点、可选资料来源",
           "implementation": "最多选4个批准教学点；组合解释、例题、易错、迁移章节和闪卡/微测；关联真实知识ID及候选页；指纹预览后保存。",
@@ -5074,12 +5091,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 421
+              "line": 428
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 442
+              "line": 449
             }
           ],
           "sourceFiles": [
@@ -5112,7 +5129,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "目标、截止日期、首次时间、每天10–60分钟、版本和请求键",
           "implementation": "按薄弱与证据不足优先选点；编排learn/practice/transfer/review，跳过可识别冲突；完成后追加1/3/7/14日复盘；同步日历事件状态。",
@@ -5153,17 +5171,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 119
+              "line": 114
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 135
+              "line": 130
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 173
+              "line": 168
             }
           ],
           "sourceFiles": [
@@ -5196,7 +5214,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "ICS文本或HTTPS订阅URL、来源名称、类型、请求键",
           "implementation": "校验地址、重定向、大小和内容；拒绝本机/私网地址；订阅URL加密保存；UID归并事件；手动同步后替换该来源事件，撤销清理来源事件。",
@@ -5279,7 +5298,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "所选日期、任务内容/时间、确认/完成状态、expectedRevision",
           "implementation": "本地日期生成月/周格和当日待办；手动事件支持编辑、待确认、完成、重开；批删先校验全部ID，切换范围清空选择；计划事件走计划服务，订阅只读。",
@@ -5376,7 +5396,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "学生与学科",
           "implementation": "授权后读取对应安排；转义文本和折行；以稳定UID、开始结束和全天属性生成ICS并由浏览器下载。",
@@ -5431,7 +5452,8 @@
           "pages": [
             "/studio",
             "/studio/classroom",
-            "/studio/projects"
+            "/studio/projects",
+            "/studio/source-courses"
           ],
           "inputs": "课程/单元、阶段产物、文字/链接证据、自评、修订号、请求键和模型",
           "implementation": "成人五项目各三阶段；小学课程构造迁移解释核查模板；草稿与自评准备同步持久保存，提交冻结产物/量规/前版本；指定提交可由授权家长或教师逐维度复核；旧课堂草稿主动复制成参考；AI仅建议并标记所针对的稿本；重复写入可重放，冲突保留本地导出后恢复。",
@@ -5556,6 +5578,183 @@
             "apps/api/src/modules/learning/course-project-content.ts",
             "apps/web/app/studio/projects/workbench.tsx",
             "apps/web/app/studio/projects/projects.css"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-21",
+          "title": "原文到资料课程与生成任务",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "授权来源页/段与版本、目标、source/zh-CN/en、时间预算、模型、可选已确认知识目标、修订号和请求键",
+          "implementation": "成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务调用统一CLI结构化生成1至6课；核对短引用确实出现在选中原文；候选可改标题/目标/选课后确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。",
+          "outputs": "可恢复资料课程、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口",
+          "collections": [
+            "sourceCourses",
+            "studioSourceMaterials",
+            "classroomSessions",
+            "learningScopes",
+            "knowledgeAtoms"
+          ],
+          "limits": "生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；未引用PDF物理擦除与大文件分块尚未完成。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/materials",
+              "controller": "SourceCourseController",
+              "method": "materials",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 8
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/materials/text",
+              "controller": "SourceCourseController",
+              "method": "text",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses",
+              "controller": "SourceCourseController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses",
+              "controller": "SourceCourseController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/:id",
+              "controller": "SourceCourseController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/learning/source-courses/:id",
+              "controller": "SourceCourseController",
+              "method": "edit",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/confirm",
+              "controller": "SourceCourseController",
+              "method": "confirm",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/cancel",
+              "controller": "SourceCourseController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/retry",
+              "controller": "SourceCourseController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/archive",
+              "controller": "SourceCourseController",
+              "method": "archive",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 17
+            }
+          ],
+          "implementations": [
+            {
+              "name": "SourceCourseService.materials",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 20
+            },
+            {
+              "name": "SourceCourseService.addText",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 29
+            },
+            {
+              "name": "SourceCourseService.list",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 60
+            },
+            {
+              "name": "SourceCourseService.create",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 69
+            },
+            {
+              "name": "SourceCourseService.get",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 59
+            },
+            {
+              "name": "SourceCourseService.edit",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 106
+            },
+            {
+              "name": "SourceCourseService.confirm",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 115
+            },
+            {
+              "name": "SourceCourseService.control",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 122
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/source-course.ts",
+            "apps/api/src/modules/learning/source-course.service.ts",
+            "apps/api/src/modules/learning/source-course-content.ts",
+            "apps/api/src/modules/learning/source-course-worker.service.ts",
+            "apps/api/src/modules/learning/source-course.integration.test.ts",
+            "apps/web/app/studio/source-courses/workbench.tsx",
+            "apps/web/app/studio/source-courses/source-courses.css",
+            "scripts/qa/source-course-fixture.cjs",
+            "scripts/qa/source-course-test-api.cjs",
+            "scripts/qa/run-source-course-browser.cjs",
+            "tests/e2e/source-course.spec.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio-course.test.ts",
@@ -6487,17 +6686,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 38
+              "line": 40
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 59
+              "line": 61
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 66
+              "line": 68
             }
           ],
           "sourceFiles": [
@@ -6518,13 +6717,14 @@
             "/parent/data"
           ],
           "inputs": "再次验证密码、当前会话、准备归档请求",
-          "implementation": "收集规范化媒体及哈希清单；生成tar归档；准备接口仅在当前进程内保存短期快照；同登录会话两分钟内一次下载。",
-          "outputs": "JSON、规范化附件、校验清单",
+          "implementation": "收集规范化媒体及哈希清单；核对所选来源记录和原始PDF字节哈希，按内容摘要去重写入tar并列出来源清单；缺原件拒绝而不输出看似完整的归档；同登录会话两分钟内一次下载。",
+          "outputs": "JSON、规范化附件、原始PDF及校验清单",
           "collections": [
             "privacyRequests",
-            "studentMedia"
+            "studentMedia",
+            "studioSourceMaterials"
           ],
-          "limits": "准备句柄重启失效，需重新准备；离线副本需自行管理。",
+          "limits": "准备句柄重启失效，需重新准备；离线副本需自行管理；原文元数据删除与未引用PDF物理擦除是不同步骤。",
           "endpoints": [
             {
               "verb": "POST",
@@ -6576,7 +6776,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 98
+              "line": 100
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -6586,7 +6786,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 107
+              "line": 109
             }
           ],
           "sourceFiles": [
@@ -6639,7 +6839,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 132
+              "line": 143
             }
           ],
           "sourceFiles": [
@@ -6807,7 +7007,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 330
+              "line": 331
             },
             {
               "name": "DomainEventBusService.publish",
@@ -6817,7 +7017,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 228
+              "line": 229
             }
           ],
           "sourceFiles": [
@@ -7010,7 +7210,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 228
+              "line": 229
             }
           ],
           "sourceFiles": [
@@ -7087,7 +7287,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 212
+              "line": 213
             },
             {
               "name": "RuntimeMetricsService.snapshot",

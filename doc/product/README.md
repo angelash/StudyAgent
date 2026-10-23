@@ -42,6 +42,7 @@
 26. [HyperKnow课堂观察与实施计划](./88-hyperknow-classroom-observation-and-plan.md)：五单元60主题、实时白板课堂、语音、插问、练习、项目与执行边界。
 27. [独立教学课堂交付](./89-interactive-classroom-delivery.md)：逐步板书与音画时序、课堂插问、60主题课程、核查项目、代码实验与验证边界。
 28. [分阶段课程项目与版本化量规](./97-versioned-course-projects.md)：五项目15阶段、产物/证据/自评、提交修订、授权人工复核、默认模型真实调用及旧稿兼容。
+29. [资料到课程、来源快照与真实模型](./98-source-backed-course-generation.md)：成人私人文本/PDF、精确选页、生成任务、审阅确认、引用与旧课堂恢复；保留真实样本中的质量问题与后续修正边界。
 5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。

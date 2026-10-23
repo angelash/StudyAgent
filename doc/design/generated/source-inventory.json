@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b344ff0aae0f01cbb04427d63ea641069a06e909",
+  "sourceRevision": "cbc95bc2784af78f17fd3053970ec159fbf90e0e",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 264,
-    "activeHttpRoutes": 251,
-    "activeBusinessHttpRoutes": 243,
+    "declaredHttpRoutes": 274,
+    "activeHttpRoutes": 261,
+    "activeBusinessHttpRoutes": 253,
     "retiredHttpRoutes": 8,
     "activeModules": 17,
-    "activeControllers": 24,
-    "apiClasses": 101,
-    "apiFunctions": 232,
-    "domainCollections": 81,
-    "contractTypes": 221,
-    "webPages": 25,
+    "activeControllers": 25,
+    "apiClasses": 104,
+    "apiFunctions": 239,
+    "domainCollections": 82,
+    "contractTypes": 225,
+    "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 92,
-    "browserTestFiles": 10
+    "apiTestFiles": 93,
+    "browserTestFiles": 11
   },
   "modules": [
     {
@@ -209,7 +209,8 @@
         "NotebookController",
         "ClassroomController",
         "LearningHomeController",
-        "CourseProjectController"
+        "CourseProjectController",
+        "SourceCourseController"
       ],
       "providers": [
         "LearningService",
@@ -217,7 +218,9 @@
         "StudioIntegrationService",
         "ClassroomService",
         "LearningHomeService",
-        "CourseProjectService"
+        "CourseProjectService",
+        "SourceCourseService",
+        "SourceCourseWorkerService"
       ],
       "exports": [
         "LearningService",
@@ -6093,6 +6096,296 @@
     },
     {
       "verb": "GET",
+      "path": "/api/learning/source-courses/materials",
+      "controller": "SourceCourseController",
+      "method": "materials",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 8,
+      "signature": "materials(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.materials"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/materials/text",
+      "controller": "SourceCourseController",
+      "method": "text",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 9,
+      "signature": "text(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.addText"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/source-courses",
+      "controller": "SourceCourseController",
+      "method": "list",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 10,
+      "signature": "list(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.list"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses",
+      "controller": "SourceCourseController",
+      "method": "create",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 11,
+      "signature": "create(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.create"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/source-courses/:id",
+      "controller": "SourceCourseController",
+      "method": "get",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 12,
+      "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/learning/source-courses/:id",
+      "controller": "SourceCourseController",
+      "method": "edit",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 13,
+      "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.edit"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/confirm",
+      "controller": "SourceCourseController",
+      "method": "confirm",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 14,
+      "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.confirm"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/cancel",
+      "controller": "SourceCourseController",
+      "method": "cancel",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 15,
+      "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/retry",
+      "controller": "SourceCourseController",
+      "method": "retry",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 16,
+      "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/archive",
+      "controller": "SourceCourseController",
+      "method": "archive",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 17,
+      "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "calls": [
+        "this.courses.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
       "path": "/api/library/overview",
       "controller": "LibraryController",
       "method": "overview",
@@ -9094,7 +9387,7 @@
     {
       "name": "AuthGuard",
       "file": "apps/api/src/common/auth.guard.ts",
-      "line": 59,
+      "line": 61,
       "decorators": [
         {
           "name": "Injectable",
@@ -9114,7 +9407,7 @@
       "methods": [
         {
           "name": "canActivate",
-          "line": 63,
+          "line": 65,
           "signature": "canActivate(context: ExecutionContext): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -9438,7 +9731,7 @@
     {
       "name": "InMemoryStoreService",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 159,
+      "line": 160,
       "decorators": [
         {
           "name": "Injectable",
@@ -9449,7 +9742,7 @@
       "methods": [
         {
           "name": "recordRead",
-          "line": 187,
+          "line": 188,
           "signature": "recordRead(collection: string, where?: DomainSelector)",
           "access": "private",
           "decorators": [],
@@ -9459,7 +9752,7 @@
         },
         {
           "name": "mutableCollection",
-          "line": 197,
+          "line": 198,
           "signature": "mutableCollection(collection: string, allRecords: boolean): unknown[]",
           "access": "private",
           "decorators": [],
@@ -9469,7 +9762,7 @@
         },
         {
           "name": "select",
-          "line": 212,
+          "line": 213,
           "signature": "select(collection: K, where: DomainSelector): Array<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -9481,7 +9774,7 @@
         },
         {
           "name": "find",
-          "line": 228,
+          "line": 229,
           "signature": "find(collection: K, where: DomainSelector): StoreRecord<K> | undefined",
           "access": "public",
           "decorators": [],
@@ -9491,7 +9784,7 @@
         },
         {
           "name": "inspect",
-          "line": 231,
+          "line": 232,
           "signature": "inspect(collection: K): ReadonlyArray<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -9502,7 +9795,7 @@
         },
         {
           "name": "append",
-          "line": 244,
+          "line": 245,
           "signature": "append(collection: K, ...records: Array<StoreRecord<K>>)",
           "access": "public",
           "decorators": [],
@@ -9513,7 +9806,7 @@
         },
         {
           "name": "remove",
-          "line": 250,
+          "line": 251,
           "signature": "remove(collection: K, where: DomainSelector)",
           "access": "public",
           "decorators": [],
@@ -9525,7 +9818,7 @@
         },
         {
           "name": "onModuleInit",
-          "line": 258,
+          "line": 259,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -9537,7 +9830,7 @@
         },
         {
           "name": "onApplicationBootstrap",
-          "line": 276,
+          "line": 277,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -9547,7 +9840,7 @@
         },
         {
           "name": "requestContext",
-          "line": 283,
+          "line": 284,
           "signature": "requestContext(fn: () => T): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -9558,7 +9851,7 @@
         },
         {
           "name": "commitRequest",
-          "line": 292,
+          "line": 293,
           "signature": "commitRequest(fence?: TaskFence)",
           "access": "public",
           "decorators": [],
@@ -9571,7 +9864,7 @@
         },
         {
           "name": "transaction",
-          "line": 312,
+          "line": 313,
           "signature": "transaction(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -9583,7 +9876,7 @@
         },
         {
           "name": "enqueueTask",
-          "line": 324,
+          "line": 325,
           "signature": "enqueueTask(intent: TaskIntent)",
           "access": "public",
           "decorators": [],
@@ -9595,7 +9888,7 @@
         },
         {
           "name": "controlTask",
-          "line": 330,
+          "line": 331,
           "signature": "controlTask(operation: TaskOperation)",
           "access": "public",
           "decorators": [],
@@ -9607,7 +9900,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 342,
+          "line": 343,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -9615,7 +9908,7 @@
         },
         {
           "name": "nextId",
-          "line": 426,
+          "line": 428,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -9623,7 +9916,7 @@
         },
         {
           "name": "reset",
-          "line": 430,
+          "line": 432,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -10766,6 +11059,16 @@
           "access": "public",
           "decorators": [],
           "calls": [
+            "this.structured"
+          ]
+        },
+        {
+          "name": "structured",
+          "line": 72,
+          "signature": "structured(input: XiaojiuChatRequest, schema: object, check: (value: unknown) => T, custom = true): Promise<T & {modelId:string;modelName:string}>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
             "this.models.resolve",
             "this.models.writeCompatibleCatalog",
             "this.prompt",
@@ -10775,15 +11078,15 @@
         },
         {
           "name": "prompt",
-          "line": 100,
-          "signature": "prompt(input: XiaojiuChatRequest)",
+          "line": 113,
+          "signature": "prompt(input: XiaojiuChatRequest, custom = false, schema?: object)",
           "access": "private",
           "decorators": [],
           "calls": []
         },
         {
           "name": "run",
-          "line": 114,
+          "line": 127,
           "signature": "run(args: string[], prompt: string, signal?: AbortSignal)",
           "access": "private",
           "decorators": [],
@@ -10791,7 +11094,7 @@
         },
         {
           "name": "parse",
-          "line": 176,
+          "line": 189,
           "signature": "parse(value: string)",
           "access": "private",
           "decorators": [],
@@ -15808,7 +16111,7 @@
     {
       "name": "ClassroomService",
       "file": "apps/api/src/modules/learning/classroom.service.ts",
-      "line": 19,
+      "line": 21,
       "decorators": [
         {
           "name": "Injectable",
@@ -15836,7 +16139,7 @@
       "methods": [
         {
           "name": "catalog",
-          "line": 24,
+          "line": 26,
           "signature": "catalog(user: InMemoryUserAccount): ClassroomCatalog",
           "access": "public",
           "decorators": [],
@@ -15846,7 +16149,7 @@
         },
         {
           "name": "record",
-          "line": 48,
+          "line": 50,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -15857,7 +16160,7 @@
         },
         {
           "name": "view",
-          "line": 56,
+          "line": 58,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
@@ -15869,7 +16172,7 @@
         },
         {
           "name": "get",
-          "line": 73,
+          "line": 78,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -15880,7 +16183,7 @@
         },
         {
           "name": "hintLevels",
-          "line": 75,
+          "line": 80,
           "signature": "hintLevels(row: ClassroomSessionRecord, questionId: string)",
           "access": "private",
           "decorators": [],
@@ -15888,7 +16191,7 @@
         },
         {
           "name": "open",
-          "line": 82,
+          "line": 87,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15903,7 +16206,7 @@
         },
         {
           "name": "progress",
-          "line": 117,
+          "line": 128,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15914,7 +16217,7 @@
         },
         {
           "name": "answer",
-          "line": 136,
+          "line": 147,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15925,7 +16228,7 @@
         },
         {
           "name": "hint",
-          "line": 164,
+          "line": 175,
           "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15937,7 +16240,7 @@
         },
         {
           "name": "ask",
-          "line": 189,
+          "line": 200,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -15950,7 +16253,7 @@
         },
         {
           "name": "narration",
-          "line": 221,
+          "line": 232,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17154,12 +17457,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 19,
+      "line": 22,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -17169,7 +17472,7 @@
     {
       "name": "LearningService",
       "file": "apps/api/src/modules/learning/learning.service.ts",
-      "line": 55,
+      "line": 50,
       "decorators": [
         {
           "name": "Injectable",
@@ -17217,7 +17520,7 @@
       "methods": [
         {
           "name": "studentProfiles",
-          "line": 62,
+          "line": 57,
           "signature": "studentProfiles(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -17228,7 +17531,7 @@
         },
         {
           "name": "studioOverview",
-          "line": 67,
+          "line": 62,
           "signature": "studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject): StudioOverview",
           "access": "public",
           "decorators": [],
@@ -17245,7 +17548,7 @@
         },
         {
           "name": "previewStudioStudyPlan",
-          "line": 119,
+          "line": 114,
           "signature": "previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview",
           "access": "public",
           "decorators": [],
@@ -17257,7 +17560,7 @@
         },
         {
           "name": "createStudioStudyPlan",
-          "line": 135,
+          "line": 130,
           "signature": "createStudioStudyPlan(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17271,7 +17574,7 @@
         },
         {
           "name": "updateStudioPlanSession",
-          "line": 173,
+          "line": 168,
           "signature": "updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17284,7 +17587,7 @@
         },
         {
           "name": "previewStudioWhiteboard",
-          "line": 216,
+          "line": 211,
           "signature": "previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17294,7 +17597,7 @@
         },
         {
           "name": "createStudioWhiteboard",
-          "line": 228,
+          "line": 223,
           "signature": "createStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17309,7 +17612,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 252,
+          "line": 247,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string })",
           "access": "public",
           "decorators": [],
@@ -17324,48 +17627,44 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 309,
+          "line": 307,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
           "calls": [
-            "this.store.find",
-            "this.students.assertCanAccessStudent"
+            "this.store.find"
           ]
         },
         {
           "name": "studioPdfOriginal",
-          "line": 323,
+          "line": 321,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
           "calls": [
-            "this.store.find",
-            "this.students.assertCanAccessStudent"
+            "this.store.find"
           ]
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 336,
+          "line": 334,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.store.find",
-            "this.students.assertCanAccessStudent",
             "this.store.append",
             "this.store.nextId"
           ]
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 360,
+          "line": 362,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.store.find",
-            "this.students.assertCanAccessStudent",
             "this.store.nextId",
             "this.store.enqueueTask",
             "this.store.append"
@@ -17373,7 +17672,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 387,
+          "line": 392,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17385,7 +17684,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 401,
+          "line": 407,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17399,7 +17698,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 421,
+          "line": 428,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -17411,7 +17710,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 442,
+          "line": 449,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17426,7 +17725,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 469,
+          "line": 476,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17438,7 +17737,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 480,
+          "line": 487,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17448,7 +17747,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 496,
+          "line": 503,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17464,7 +17763,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 525,
+          "line": 532,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17477,7 +17776,7 @@
         },
         {
           "name": "studioScope",
-          "line": 542,
+          "line": 549,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -17489,7 +17788,7 @@
         },
         {
           "name": "memory",
-          "line": 551,
+          "line": 558,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -17503,7 +17802,7 @@
         },
         {
           "name": "today",
-          "line": 611,
+          "line": 618,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -17518,7 +17817,7 @@
         },
         {
           "name": "start",
-          "line": 625,
+          "line": 632,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -17537,7 +17836,7 @@
         },
         {
           "name": "requireSession",
-          "line": 662,
+          "line": 669,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -17548,7 +17847,7 @@
         },
         {
           "name": "view",
-          "line": 667,
+          "line": 674,
           "signature": "view(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -17561,7 +17860,7 @@
         },
         {
           "name": "render",
-          "line": 685,
+          "line": 692,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -17573,7 +17872,7 @@
         },
         {
           "name": "draft",
-          "line": 694,
+          "line": 701,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17585,7 +17884,7 @@
         },
         {
           "name": "assertActive",
-          "line": 706,
+          "line": 713,
           "signature": "assertActive(session: PracticeSession)",
           "access": "private",
           "decorators": [],
@@ -17595,7 +17894,7 @@
         },
         {
           "name": "submit",
-          "line": 710,
+          "line": 717,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17614,7 +17913,7 @@
         },
         {
           "name": "feedback",
-          "line": 735,
+          "line": 742,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -17625,7 +17924,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 744,
+          "line": 751,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -17635,7 +17934,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 749,
+          "line": 756,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17650,7 +17949,7 @@
         },
         {
           "name": "hint",
-          "line": 764,
+          "line": 771,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -17665,7 +17964,7 @@
         },
         {
           "name": "complete",
-          "line": 775,
+          "line": 782,
           "signature": "complete(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -17678,7 +17977,7 @@
         },
         {
           "name": "mistakes",
-          "line": 785,
+          "line": 792,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -17692,7 +17991,7 @@
         },
         {
           "name": "overview",
-          "line": 815,
+          "line": 822,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -18040,6 +18339,449 @@
             }
           ],
           "calls": []
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseWorkerService",
+      "file": "apps/api/src/modules/learning/source-course-worker.service.ts",
+      "line": 8,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "models",
+          "type": "XiaojiuChatService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "onApplicationBootstrap",
+          "line": 13,
+          "signature": "onApplicationBootstrap()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.runNext",
+            "this.logger.warn",
+            "this.timer.unref"
+          ]
+        },
+        {
+          "name": "onModuleDestroy",
+          "line": 14,
+          "signature": "onModuleDestroy()",
+          "access": "public",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "runNext",
+          "line": 15,
+          "signature": "runNext(): Promise<boolean>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.execute"
+          ]
+        },
+        {
+          "name": "execute",
+          "line": 16,
+          "signature": "execute()",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.claim",
+            "this.store.tasks.heartbeat",
+            "this.store.transaction",
+            "this.store.find",
+            "this.models.structured",
+            "this.store.tasks.fail",
+            "this.logger.warn"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseController",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 4,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/source-courses'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "materials",
+          "line": 8,
+          "signature": "materials(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'materials'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.materials"
+          ]
+        },
+        {
+          "name": "text",
+          "line": 9,
+          "signature": "text(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'materials/text'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.addText"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 10,
+          "signature": "list(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.courses.list"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 11,
+          "signature": "create(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.courses.create"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 12,
+          "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.get"
+          ]
+        },
+        {
+          "name": "edit",
+          "line": 13,
+          "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Patch",
+              "args": [
+                "':id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.edit"
+          ]
+        },
+        {
+          "name": "confirm",
+          "line": 14,
+          "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/confirm'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.confirm"
+          ]
+        },
+        {
+          "name": "cancel",
+          "line": 15,
+          "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/cancel'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.control"
+          ]
+        },
+        {
+          "name": "retry",
+          "line": 16,
+          "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/retry'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.control"
+          ]
+        },
+        {
+          "name": "archive",
+          "line": 17,
+          "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/archive'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.control"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseService",
+      "file": "apps/api/src/modules/learning/source-course.service.ts",
+      "line": 16,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "record",
+          "line": 19,
+          "signature": "record(user:InMemoryUserAccount, courseId:string, editing=false)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "materials",
+          "line": 20,
+          "signature": "materials(user:InMemoryUserAccount, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.students.assertCanAccessStudent",
+            "this.store.select"
+          ]
+        },
+        {
+          "name": "addText",
+          "line": 29,
+          "signature": "addText(user:InMemoryUserAccount, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.students.assertCanAccessStudent",
+            "this.store.select",
+            "this.store.nextId",
+            "this.store.append"
+          ]
+        },
+        {
+          "name": "sourceStatus",
+          "line": 42,
+          "signature": "sourceStatus(row:SourceCourseRecord): SourceCourseView['sourceStatus']",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 45,
+          "signature": "view(row:SourceCourseRecord, provisional?:{state:string;version:number;generation:number;errorCode:string|null}, viewerId=row.ownerUserId): Promise<SourceCourseView>",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.get",
+            "this.store.select",
+            "this.sourceStatus"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 59,
+          "signature": "get(user:InMemoryUserAccount, courseId:string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.view",
+            "this.record"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 60,
+          "signature": "list(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseSummary[]>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.students.assertCanAccessStudent",
+            "this.store.select",
+            "this.view"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 69,
+          "signature": "create(user:InMemoryUserAccount, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.select",
+            "this.view",
+            "this.students.assertCanAccessStudent",
+            "this.store.find",
+            "this.store.nextId",
+            "this.store.append",
+            "this.store.enqueueTask"
+          ]
+        },
+        {
+          "name": "replay",
+          "line": 100,
+          "signature": "replay(row:SourceCourseRecord, command:{expectedRevision:number;requestKey:string}, kind:string)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "finish",
+          "line": 105,
+          "signature": "finish(row:SourceCourseRecord, command:{requestKey:string}, kind:string)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "edit",
+          "line": 106,
+          "signature": "edit(user:InMemoryUserAccount, courseId:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.replay",
+            "this.finish",
+            "this.view"
+          ]
+        },
+        {
+          "name": "confirm",
+          "line": 115,
+          "signature": "confirm(user:InMemoryUserAccount, courseId:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.replay",
+            "this.sourceStatus",
+            "this.finish",
+            "this.view"
+          ]
+        },
+        {
+          "name": "control",
+          "line": 122,
+          "signature": "control(user:InMemoryUserAccount, courseId:string, action:'cancel'|'retry'|'archive', input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.replay",
+            "this.view",
+            "this.finish",
+            "this.store.tasks.get",
+            "this.sourceStatus",
+            "this.store.controlTask"
+          ]
         }
       ]
     },
@@ -19895,7 +20637,7 @@
     {
       "name": "PrivacyService",
       "file": "apps/api/src/modules/privacy/privacy.service.ts",
-      "line": 18,
+      "line": 20,
       "decorators": [
         {
           "name": "Injectable",
@@ -19923,7 +20665,7 @@
       "methods": [
         {
           "name": "parent",
-          "line": 22,
+          "line": 24,
           "signature": "parent(actor: InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -19931,7 +20673,7 @@
         },
         {
           "name": "child",
-          "line": 25,
+          "line": 27,
           "signature": "child(actor: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -19942,7 +20684,7 @@
         },
         {
           "name": "children",
-          "line": 31,
+          "line": 33,
           "signature": "children(actor: InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -19953,7 +20695,7 @@
         },
         {
           "name": "guardians",
-          "line": 34,
+          "line": 36,
           "signature": "guardians(id: string)",
           "access": "private",
           "decorators": [],
@@ -19964,7 +20706,7 @@
         },
         {
           "name": "overview",
-          "line": 38,
+          "line": 40,
           "signature": "overview(actor: InMemoryUserAccount): PrivacyOverview",
           "access": "public",
           "decorators": [],
@@ -19977,7 +20719,7 @@
         },
         {
           "name": "previewData",
-          "line": 45,
+          "line": 47,
           "signature": "previewData(actor: InMemoryUserAccount, studentId?: string)",
           "access": "private",
           "decorators": [],
@@ -19990,7 +20732,7 @@
         },
         {
           "name": "preview",
-          "line": 59,
+          "line": 61,
           "signature": "preview(actor: InMemoryUserAccount, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20000,7 +20742,7 @@
         },
         {
           "name": "receipt",
-          "line": 61,
+          "line": 63,
           "signature": "receipt(actor: InMemoryUserAccount, kind: PrivacyReceipt['kind'], subjectId: string, requestKey: string, inputHash: string, counts: PrivacyReceipt['counts'])",
           "access": "private",
           "decorators": [],
@@ -20011,7 +20753,7 @@
         },
         {
           "name": "export",
-          "line": 66,
+          "line": 68,
           "signature": "export(actor: InMemoryUserAccount, input: unknown, studentId?: string): Promise<PrivacyExport>",
           "access": "public",
           "decorators": [],
@@ -20027,7 +20769,7 @@
         },
         {
           "name": "exportArchive",
-          "line": 94,
+          "line": 96,
           "signature": "exportArchive(actor: InMemoryUserAccount, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20038,7 +20780,7 @@
         },
         {
           "name": "prepareArchive",
-          "line": 98,
+          "line": 100,
           "signature": "prepareArchive(actor: InMemoryUserAccount, sessionId: string, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20051,7 +20793,7 @@
         },
         {
           "name": "downloadArchive",
-          "line": 107,
+          "line": 109,
           "signature": "downloadArchive(actor: InMemoryUserAccount, sessionId: string, id: string)",
           "access": "public",
           "decorators": [],
@@ -20066,17 +20808,18 @@
         },
         {
           "name": "archiveForSnapshot",
-          "line": 120,
+          "line": 122,
           "signature": "archiveForSnapshot(snapshot: PrivacyExport)",
           "access": "private",
           "decorators": [],
           "calls": [
-            "this.media.verifiedContent"
+            "this.media.verifiedContent",
+            "this.store.find"
           ]
         },
         {
           "name": "delete",
-          "line": 132,
+          "line": 143,
           "signature": "delete(actor: InMemoryUserAccount, input: unknown, studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -20467,7 +21210,7 @@
         },
         {
           "name": "markStudioMaterialFailed",
-          "line": 243,
+          "line": 244,
           "signature": "markStudioMaterialFailed(materialId: string, error: unknown)",
           "access": "private",
           "decorators": [],
@@ -20478,7 +21221,7 @@
         },
         {
           "name": "requireRecord",
-          "line": 252,
+          "line": 253,
           "signature": "requireRecord(id: string): QuestionImportRecord",
           "access": "private",
           "decorators": [],
@@ -24509,26 +25252,56 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "studyDay",
-      "line": 33,
+      "line": 34,
       "signature": "studyDay(at = new Date())"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "uploadFilename",
-      "line": 36,
+      "line": 37,
       "signature": "uploadFilename(value: string)"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
-      "name": "studioMaterialView",
-      "line": 43,
-      "signature": "studioMaterialView(row: StudioSourceMaterial & { requestKey?: string; requestHash?: string; pageImages?: Record<string, string> }): StudioSourceMaterial"
+      "name": "promptAtomScore",
+      "line": 852,
+      "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
-      "file": "apps/api/src/modules/learning/learning.service.ts",
-      "name": "promptAtomScore",
-      "line": 845,
-      "signature": "promptAtomScore(prompt: string, name: string)"
+      "file": "apps/api/src/modules/learning/source-course-content.ts",
+      "name": "sourceCourseModelContext",
+      "line": 30,
+      "signature": "sourceCourseModelContext(row:SourceCourseRecord)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-content.ts",
+      "name": "checkGeneratedCourse",
+      "line": 33,
+      "signature": "checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[]): GeneratedSourceCourse"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-content.ts",
+      "name": "sourceCourseLesson",
+      "line": 45,
+      "signature": "sourceCourseLesson(row: SourceCourseRecord, index: number): ClassroomLesson | undefined"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-content.ts",
+      "name": "sourceCourseAnswerKeys",
+      "line": 70,
+      "signature": "sourceCourseAnswerKeys(row: SourceCourseRecord, index:number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course.service.ts",
+      "name": "materialVersion",
+      "line": 11,
+      "signature": "materialVersion(material:StudioSourceMaterial)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course.service.ts",
+      "name": "assertSourceCourseAccess",
+      "line": 12,
+      "signature": "assertSourceCourseAccess(user:InMemoryUserAccount, row:SourceCourseRecord, students:StudentsService, editing=false)"
     },
     {
       "file": "apps/api/src/modules/learning/studio-course.ts",
@@ -24607,6 +25380,18 @@
       "name": "buildStudioLearningPack",
       "line": 38,
       "signature": "buildStudioLearningPack(input: Input): StudioLearningPackPreview"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-access.ts",
+      "name": "assertMaterialAccess",
+      "line": 8,
+      "signature": "assertMaterialAccess(user: InMemoryUserAccount, material: StudioSourceMaterial, students: StudentsService)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-access.ts",
+      "name": "studioMaterialView",
+      "line": 12,
+      "signature": "studioMaterialView(row: StudioMaterialRecord): StudioSourceMaterial"
     },
     {
       "file": "apps/api/src/modules/learning/studio-material-storage.ts",
@@ -24713,67 +25498,67 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "add",
-      "line": 11,
+      "line": 13,
       "signature": "add(result: Selection, store: InMemoryStoreService, name: string, predicate: (row: Row) => boolean)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "ids",
-      "line": 14,
+      "line": 16,
       "signature": "ids(result: Selection, ...names: string[])"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "studentRecords",
-      "line": 20,
+      "line": 22,
       "signature": "studentRecords(store: InMemoryStoreService, studentId: string): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "accountRecords",
-      "line": 53,
+      "line": 55,
       "signature": "accountRecords(store: InMemoryStoreService, actorId: string, principal: string): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 72,
+      "line": 76,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 79,
+      "line": 83,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 86,
+      "line": 90,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 89,
+      "line": 93,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 97,
+      "line": 101,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 102,
+      "line": 106,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 122,
+      "line": 130,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -24896,487 +25681,493 @@
       "name": "users",
       "type": "InMemoryUserAccount",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 343
+      "line": 344
     },
     {
       "name": "paperPublications",
       "type": "PaperPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 344
+      "line": 345
     },
     {
       "name": "libraryBookmarks",
       "type": "LibraryBookmark",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 345
+      "line": 346
     },
     {
       "name": "practiceSessions",
       "type": "PracticeSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 346
+      "line": 347
     },
     {
       "name": "practiceAttempts",
       "type": "PracticeAttempt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 347
+      "line": 348
     },
     {
       "name": "practiceHints",
       "type": "PracticeHint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 348
+      "line": 349
     },
     {
       "name": "practiceScoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 349
+      "line": 350
     },
     {
       "name": "teacherAssignments",
       "type": "TeacherStudentAssignment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 350
+      "line": 351
     },
     {
       "name": "evidenceFeedback",
       "type": "EvidenceFeedback",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 351
+      "line": 352
     },
     {
       "name": "importFiles",
       "type": "ImportFile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 352
+      "line": 353
     },
     {
       "name": "processingArtifacts",
       "type": "ProcessingArtifact",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 353
+      "line": 354
     },
     {
       "name": "importPages",
       "type": "ImportPageEvidenceRef",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 354
+      "line": 355
     },
     {
       "name": "guidancePlanRevisions",
       "type": "GuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 355
+      "line": 356
     },
     {
       "name": "studentLearningAccess",
       "type": "StudentLearningAccess",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 356
+      "line": 357
     },
     {
       "name": "studentLearningCodes",
       "type": "StudentLearningCode",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 357
+      "line": 358
     },
     {
       "name": "studentAccessRevisions",
       "type": "StudentAccessRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 358
+      "line": 359
     },
     {
       "name": "studentProgressProposals",
       "type": "StudentProgressProposal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 359
+      "line": 360
     },
     {
       "name": "privacyRequests",
       "type": "PrivacyReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 360
+      "line": 361
     },
     {
       "name": "studentMedia",
       "type": "StudentMedia",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 361
+      "line": 362
     },
     {
       "name": "sessions",
       "type": "InMemoryAuthSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 362
+      "line": 363
     },
     {
       "name": "students",
       "type": "StudentProfile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 363
+      "line": 364
     },
     {
       "name": "bindings",
       "type": "ParentStudentBinding",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 364
+      "line": 365
     },
     {
       "name": "studentInvitations",
       "type": "StudentInvitation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 365
+      "line": 366
     },
     {
       "name": "subjectEnrollments",
       "type": "SubjectEnrollment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 366
+      "line": 367
     },
     {
       "name": "textbookVolumes",
       "type": "TextbookVolume",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 367
+      "line": 368
     },
     {
       "name": "textbookUnits",
       "type": "TextbookUnit",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 368
+      "line": 369
     },
     {
       "name": "textbookLessons",
       "type": "TextbookLesson",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 369
+      "line": 370
     },
     {
       "name": "knowledgePoints",
       "type": "KnowledgePoint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 370
+      "line": 371
     },
     {
       "name": "questions",
       "type": "Question",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 371
+      "line": 372
     },
     {
       "name": "questionDocuments",
       "type": "QuestionDocument",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 372
+      "line": 373
     },
     {
       "name": "questionAnswerSchemas",
       "type": "QuestionAnswerSchema",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 373
+      "line": 374
     },
     {
       "name": "questionSources",
       "type": "QuestionSourceRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 374
+      "line": 375
     },
     {
       "name": "questionImportJobs",
       "type": "QuestionImportJob",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 375
+      "line": 376
     },
     {
       "name": "questionImportRecords",
       "type": "QuestionImportRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 376
+      "line": 377
     },
     {
       "name": "assessments",
       "type": "AssessmentSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 377
+      "line": 378
     },
     {
       "name": "assessmentAnswers",
       "type": "AssessmentAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 378
+      "line": 379
     },
     {
       "name": "assessmentResults",
       "type": "AssessmentResult",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 379
+      "line": 380
     },
     {
       "name": "studyPlans",
       "type": "StudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 380
+      "line": 381
     },
     {
       "name": "missions",
       "type": "DailyMissionInternal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 381
+      "line": 382
     },
     {
       "name": "missionAnswers",
       "type": "MissionAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 382
+      "line": 383
     },
     {
       "name": "assistantSessions",
       "type": "AssistantSession & { ownerUserId: string; scopeKey?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 383
+      "line": 384
     },
     {
       "name": "assistantMessages",
       "type": "AssistantMessage",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 384
+      "line": 385
     },
     {
       "name": "aiInsights",
       "type": "AIInsightRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 385
+      "line": 386
     },
     {
       "name": "events",
       "type": "Record<string, unknown>",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 386
+      "line": 387
     },
     {
       "name": "knowledgeAtoms",
       "type": "KnowledgeAtom",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 387
+      "line": 388
     },
     {
       "name": "learningScopes",
       "type": "LearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 388
+      "line": 389
     },
     {
       "name": "measurementItems",
       "type": "MeasurementItem",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 389
+      "line": 390
     },
     {
       "name": "measurementCandidates",
       "type": "MeasurementContentCandidate",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 390
+      "line": 391
     },
     {
       "name": "mistakeNotebookEntries",
       "type": "MistakeNotebookEntry",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 391
+      "line": 392
     },
     {
       "name": "textbookAtomMappings",
       "type": "TextbookAtomMapping",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 392
+      "line": 393
     },
     {
       "name": "curriculumRevisions",
       "type": "CurriculumRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 393
+      "line": 394
     },
     {
       "name": "diagnosticSessions",
       "type": "DiagnosticSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 394
+      "line": 395
     },
     {
       "name": "diagnosticBlueprints",
       "type": "DiagnosticBlueprintReservation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 395
+      "line": 396
     },
     {
       "name": "diagnosticResponses",
       "type": "DiagnosticResponse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 396
+      "line": 397
     },
     {
       "name": "diagnosticHypotheses",
       "type": "DiagnosticHypothesis",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 397
+      "line": 398
     },
     {
       "name": "diagnosticPlans",
       "type": "DiagnosticGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 398
+      "line": 399
     },
     {
       "name": "reviewTasks",
       "type": "ReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 399
+      "line": 400
     },
     {
       "name": "scoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 400
+      "line": 401
     },
     {
       "name": "diagnosticHints",
       "type": "{ id: string; sessionId: string; itemId: string; level: number; at: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 401
+      "line": 402
     },
     {
       "name": "diagnosticReports",
       "type": "{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 402
+      "line": 403
     },
     {
       "name": "diagnosticDrafts",
       "type": "{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 404
+      "line": 405
     },
     {
       "name": "gespLearningScopes",
       "type": "GespLearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 405
+      "line": 406
     },
     {
       "name": "gespLearningScopeRevisions",
       "type": "GespLearningScopeRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 406
+      "line": 407
     },
     {
       "name": "gespCodeSubmissions",
       "type": "GespCodeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 407
+      "line": 408
     },
     {
       "name": "gespProbeSubmissions",
       "type": "GespProbeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 408
+      "line": 409
     },
     {
       "name": "gespHintEvents",
       "type": "GespHintEvent",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 409
+      "line": 410
     },
     {
       "name": "gespGuidancePlans",
       "type": "GespGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 410
+      "line": 411
     },
     {
       "name": "gespGuidancePlanRevisions",
       "type": "GespGuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 411
+      "line": 412
     },
     {
       "name": "gespReviewTasks",
       "type": "GespReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 412
+      "line": 413
     },
     {
       "name": "gespTaskReviews",
       "type": "GespTaskReview",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 413
+      "line": 414
     },
     {
       "name": "gespTaskReviewRevisions",
       "type": "GespTaskReviewRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 414
+      "line": 415
     },
     {
       "name": "studioCourses",
       "type": "StudioCourse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 415
+      "line": 416
     },
     {
       "name": "classroomSessions",
       "type": "ClassroomSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 416
+      "line": 417
     },
     {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 417
+      "line": 418
+    },
+    {
+      "name": "sourceCourses",
+      "type": "SourceCourseRecord",
+      "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "line": 419
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 420
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 421
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 422
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 423
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 422
+      "line": 424
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 425
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 426
     }
   ],
   "contractTypes": [
@@ -25784,6 +26575,21 @@
           "type": "ClassroomStep[]"
         },
         {
+          "name": "generatedNotice",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "nextLessonId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "sourceReferences",
+          "optional": true,
+          "type": "Array<{ sourceKey: string; title: string; page: number; quote: string; href: string }>"
+        },
+        {
           "name": "questions",
           "optional": false,
           "type": "ClassroomQuestion[]"
@@ -25808,7 +26614,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 15,
+      "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25836,7 +26642,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 16,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25869,7 +26675,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 18,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25917,7 +26723,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 20,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25970,7 +26776,7 @@
     {
       "name": "ClassroomHintReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 22,
+      "line": 24,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25998,7 +26804,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 23,
+      "line": 25,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -26036,7 +26842,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 25,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -26078,6 +26884,11 @@
           "name": "lesson",
           "optional": false,
           "type": "ClassroomLesson"
+        },
+        {
+          "name": "sourceCourseId",
+          "optional": true,
+          "type": "string"
         },
         {
           "name": "cursor",
@@ -26144,14 +26955,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 32,
+      "line": 35,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 35,
+      "line": 38,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -26179,7 +26990,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 40,
+      "line": 43,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31662,6 +32473,192 @@
       ]
     },
     {
+      "name": "CourseSourceSnapshot",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 3,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "key",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "materialId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'pdf' | 'text'"
+        },
+        {
+          "name": "text",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "blocks",
+          "optional": false,
+          "type": "StudioPdfStructureBlock[]"
+        },
+        {
+          "name": "sha256",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "version",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "structureReviewRequired",
+          "optional": false,
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseInput",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "goal",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "language",
+          "optional": false,
+          "type": "'source' | 'zh-CN' | 'en'"
+        },
+        {
+          "name": "minutesPerSession",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "targetAtomIds",
+          "optional": false,
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseSummary",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "studentId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "subject",
+          "optional": false,
+          "type": "StudioSubject | null"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "goal",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "type": "'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'"
+        },
+        {
+          "name": "lessonCount",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "viewed",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "lastLessonId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "nextLessonId",
+          "optional": true,
+          "type": "string | null"
+        },
+        {
+          "name": "nextLessonTitle",
+          "optional": true,
+          "type": "string | null"
+        },
+        {
+          "name": "lastStudied",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "createdAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "updatedAt",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseView",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 10,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
       "name": "StudentLearningAccess",
       "file": "packages/contracts/src/student-access.ts",
       "line": 1,
@@ -32556,12 +33553,22 @@
         {
           "name": "studentId",
           "optional": false,
-          "type": "string"
+          "type": "string | null"
         },
         {
           "name": "subject",
           "optional": false,
-          "type": "StudioSubject"
+          "type": "StudioSubject | null"
+        },
+        {
+          "name": "ownerUserId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": true,
+          "type": "'pdf' | 'text'"
         },
         {
           "name": "filename",
@@ -32633,7 +33640,7 @@
     {
       "name": "StudioLearningCitation",
       "file": "packages/contracts/src/studio.ts",
-      "line": 163,
+      "line": 165,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32666,7 +33673,7 @@
     {
       "name": "StudioLearningSection",
       "file": "packages/contracts/src/studio.ts",
-      "line": 171,
+      "line": 173,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32704,7 +33711,7 @@
     {
       "name": "StudioFlashcard",
       "file": "packages/contracts/src/studio.ts",
-      "line": 180,
+      "line": 182,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32737,7 +33744,7 @@
     {
       "name": "StudioLearningPack",
       "file": "packages/contracts/src/studio.ts",
-      "line": 188,
+      "line": 190,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32810,14 +33817,14 @@
     {
       "name": "StudioLearningPackPreview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 204,
+      "line": 206,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "StudioFeedItem",
       "file": "packages/contracts/src/studio.ts",
-      "line": 206,
+      "line": 208,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32855,7 +33862,7 @@
     {
       "name": "StudioWhiteboardScene",
       "file": "packages/contracts/src/studio.ts",
-      "line": 215,
+      "line": 217,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32908,7 +33915,7 @@
     {
       "name": "StudioWhiteboard",
       "file": "packages/contracts/src/studio.ts",
-      "line": 227,
+      "line": 229,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32986,14 +33993,14 @@
     {
       "name": "StudioConnectorKind",
       "file": "packages/contracts/src/studio.ts",
-      "line": 244,
+      "line": 246,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "StudioConnector",
       "file": "packages/contracts/src/studio.ts",
-      "line": 245,
+      "line": 247,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33061,7 +34068,7 @@
     {
       "name": "StudioScheduleEvent",
       "file": "packages/contracts/src/studio.ts",
-      "line": 260,
+      "line": 262,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33159,7 +34166,7 @@
     {
       "name": "StudioIntegrationOverview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 281,
+      "line": 283,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33177,7 +34184,7 @@
     {
       "name": "StudioSpeechVoice",
       "file": "packages/contracts/src/studio.ts",
-      "line": 286,
+      "line": 288,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33195,7 +34202,7 @@
     {
       "name": "StudioSpeechCapabilities",
       "file": "packages/contracts/src/studio.ts",
-      "line": 287,
+      "line": 289,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33223,7 +34230,7 @@
     {
       "name": "StudioOverview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 294,
+      "line": 296,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -33606,6 +34613,14 @@
       "imports": [
         "./workbench"
       ]
+    },
+    {
+      "path": "/studio/source-courses",
+      "kind": "page",
+      "file": "apps/web/app/studio/source-courses/page.tsx",
+      "imports": [
+        "./workbench"
+      ]
     }
   ],
   "tests": [
@@ -33685,6 +34700,7 @@
     "apps/api/src/modules/learning/learning-home.integration.test.ts",
     "apps/api/src/modules/learning/learning-home.test.ts",
     "apps/api/src/modules/learning/notebook.integration.test.ts",
+    "apps/api/src/modules/learning/source-course.integration.test.ts",
     "apps/api/src/modules/learning/studio-course.test.ts",
     "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
     "apps/api/src/modules/learning/studio-whiteboard.test.ts",
@@ -33711,6 +34727,7 @@
     "tests/e2e/course-project.spec.ts",
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/product-smoke.spec.ts",
+    "tests/e2e/source-course.spec.ts",
     "tests/e2e/studio.spec.ts",
     "tests/e2e/workspace.spec.ts"
   ]

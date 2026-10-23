@@ -181,6 +181,12 @@ stateDiagram-v2
 
 媒体从创建上传、接收分块、完成规范化，到绑定响应或取消/过期回收；是否已完成上传与是否已绑定答案分别判断。PDF资料具有`queued/processing/ready/needs_review/failed`等处理状态，恢复结构的人工确认与知识教学审核仍是不同状态。
 
+### 4.6 资料课程
+
+`studioSourceMaterials`增加明确所有者及pdf/text类型；私人资料studentId/subject为null。`sourceCourses`保留输入、目标、冻结来源、候选/原始结果、模型、修订、请求回执与任务ID。状态为queued → generating → ready → active → archived；任务失败/取消由实际任务状态推导，授权重试回到queued。生成内容不因确认而成为教师批准内容。
+
+`classroomSessions.sourceCourseId`连接来源课，但课文、答案与两级帮助仍冻结在会话内。portable导出剔除生成私有结果、课堂answerKeys/hintKeys及内部请求表；TAR另加入按SHA-256验证的原始PDF。账号关闭保留共同监护孩子的已确认来源课并匿名署名。无引用PDF物理字节清理尚未接入，不能将元数据删除称为完整物理擦除。
+
 ## 5. 版本和并发语义
 
 - `version`常用于定义、课程/映射和内容审核；`revision`常用于运行会话、计划或日程。
