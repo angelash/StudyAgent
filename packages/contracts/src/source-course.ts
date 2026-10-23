@@ -12,6 +12,13 @@ export const sourceCourseLessonContentSchema = z.object({ title: text(100), obje
 export const sourceCourseContentSchema = z.object({ title: text(180), overview: text(700), lessons: z.array(sourceCourseLessonContentSchema).min(1).max(6) }).strict();
 export type SourceCourseContent = z.infer<typeof sourceCourseContentSchema>;
 export type SourceCourseLessonContent = z.infer<typeof sourceCourseLessonContentSchema>;
+export type SourceCourseReviewField = 'title'|'objective'|'introduction'|'concept'|'notes'|'example'|'misconception'|'transfer'|'summary'|'takeaways'|'questions'|'citations';
+export type SourceCourseReviewIssue = { field: SourceCourseReviewField; questionIndex: number | null; quote: string; detail: string };
+export type SourceCourseLessonReview = { decision: 'pass'|'revised'|'uncertain'; issues: SourceCourseReviewIssue[]; at: string; modelId: string; modelName: string; inputFingerprint: string; outputFingerprint: string };
+export type SourceCourseGenerationView = { version: string; inputCapture: 'creation'|'worker-start'; stage: 'planning'|'writing'|'reviewing'|'integrating'|'completed';
+  plannedLessons: number | null; draftedLessons: number; reviewedLessons: number; scopeNote: string | null; uncoveredSourceKeys: string[];
+  modelId: string | null; modelName: string | null; reviewCurrent: boolean;
+  reviews: Array<{ lessonIndex: number; lessonTitle: string; decision: SourceCourseLessonReview['decision']; issueCount: number }> };
 
 export type CourseSourceSnapshot = { key: string; materialId: string; page: number; title: string; kind: 'pdf' | 'text';
   text: string; blocks: StudioPdfStructureBlock[]; sha256: string; version: string; fingerprint: string; structureReviewRequired: boolean };
@@ -22,9 +29,12 @@ export type SourceCourseSummary = { id: string; studentId: string | null; subjec
   lessonCount: number; viewed: number; lastLessonId: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
 export type SourceCourseView = SourceCourseSummary & { revision: number; input: SourceCourseInput; sources: CourseSourceSnapshot[];
   permissions: { manage: boolean }; overview: string | null;
+  generation: SourceCourseGenerationView | null;
+  generationInput: SourceCourseInput | null;
   contentReview: 'pending'; formalMeasurementEligible: false; sourceStatus: 'current' | 'changed' | 'unavailable';
   fingerprint: string | null; modelName: string | null; lessons: ClassroomLesson[];
   task: { id: string; state: string; version: number; generation: number; errorCode: string | null } | null;
   confirmedAt: string | null };
 
-export type SourceCourseAuthoring = { courseId: string; revision: number; content: SourceCourseContent; originalContent: SourceCourseContent; contentReview: 'pending' };
+export type SourceCourseAuthoring = { courseId: string; revision: number; content: SourceCourseContent; originalContent: SourceCourseContent; contentReview: 'pending';
+  generationInput: SourceCourseInput | null; generationReviews: Array<{ lessonIndex: number; lessonTitle: string; review: SourceCourseLessonReview }>; reviewCurrent: boolean };

@@ -210,3 +210,9 @@ stateDiagram-v2
 `sourceCourses.authoringExposedAt`保留成人创建者首次打开完整答案或提交完整修订的时刻，不改写原始生成结果。`classroomSessions.authoringAnswerExposure`及`ClassroomAnswerReceipt.answerExposure`冻结这一已知辅助事实，与hintUsed分别保存；旧记录缺失时不猜测。修改标题/目标不自动等同已见答案。原始私有生成稿与完整修订流水不进入普通portable输出。
 
 候选编辑与确认仍是两步；编辑内容不会把contentReview从pending改成教师审核通过。详细版本与来源约束见[资料课程稿件](../product/99-source-course-content-editor.md)。
+
+### 7.2 分课检查点身份
+
+`sourceCourses.generation`保存私有原始输入与捕获方式、流水线版本、路线、逐课初稿/复核稿、阶段时间、实际模型与摘要。输入和内容摘要对对象键排序，保持数组顺序，避免PG JSONB重排对象键后把相同检查点误判为不兼容。原有内容身份继续沿用其原版本规则。
+
+checkpoint与completion两种TaskFence都在领域数据库的同一事务检查任务ID、token、running与未过期租约；checkpoint保留任务与租约，只写安全计数，completion结束任务。心跳省略progress时只续租，不覆盖原子检查点。普通课程视图与portable导出不包含私有逐课初稿或问题摘录；显式作者入口才取得完整复核详情。详见[分课流水线](../product/100-source-course-generation-pipeline.md)。

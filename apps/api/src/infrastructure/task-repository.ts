@@ -115,9 +115,9 @@ export class TaskRepository {
     });
   }
 
-  async heartbeat(id: string, token: string, progress: Record<string, unknown>, leaseMs = 30_000) {
-    const result = await this.query(`UPDATE durable_tasks SET lease_until=?,progress=?,updated_at=? WHERE id=? AND lease_token=?
-      AND state='running' AND lease_until>? RETURNING id`, [this.now() + leaseMs, JSON.stringify(progress), new Date(this.now()).toISOString(), id, token, this.now()]);
+  async heartbeat(id: string, token: string, progress?: Record<string, unknown>, leaseMs = 30_000) {
+    const result = await this.query(`UPDATE durable_tasks SET lease_until=?${progress===undefined?'':',progress=?'},updated_at=? WHERE id=? AND lease_token=?
+      AND state='running' AND lease_until>? RETURNING id`, [this.now() + leaseMs, ...(progress===undefined?[]:[JSON.stringify(progress)]), new Date(this.now()).toISOString(), id, token, this.now()]);
     return result.length === 1;
   }
 

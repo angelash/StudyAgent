@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
-import { sourceCourseContentSchema, type CourseSourceSnapshot, type SourceCourseContent, type SourceCourseLessonContent } from '@study-agent/contracts';
+import { OriginalManuscript } from './original-manuscript';
+import { sourceCourseContentSchema, type CourseSourceSnapshot, type SourceCourseContent, type SourceCourseLessonContent, type SourceCourseAuthoring } from '@study-agent/contracts';
 
 type Section = 'teaching' | 'example' | 'questions' | 'citations';
 const sections: Array<[Section, string]> = [['teaching', '讲解与板书'], ['example', '例子与误区'], ['questions', '练习与答案'], ['citations', '来源引用']];
@@ -18,7 +19,7 @@ function Field({label,path,value,max,onChange,short=false}:{label:string;path:st
 function Lines({label,path,value,min,max,length,onChange}:{label:string;path:string;value:string[];min:number;max:number;length:number;onChange:(value:string[])=>void}) {
   return <label className="sc-editor-field"><span>{label}<small>{value.length} 条</small></span><textarea aria-label={label} name={path} required value={value.join('\n')} maxLength={max*(length+1)} onChange={event=>onChange(event.target.value.split(/\r?\n/))}/><small>每行一条，共{min===max?min:min+'～'+max}条，每条最多{length}字。</small></label>;
 }
-export function SourceCourseContentEditor({courseId,revision,content,sources,busy,dirty,onChange,onSave,onCancel}:{courseId:string;revision:number;content:SourceCourseContent;sources:CourseSourceSnapshot[];busy:boolean;dirty:boolean;onChange:(value:SourceCourseContent)=>void;onSave:(value:SourceCourseContent)=>Promise<void>;onCancel:()=>void}) {
+export function SourceCourseContentEditor({courseId,revision,content,sources,busy,dirty,generationInfo,onChange,onSave,onCancel}:{courseId:string;revision:number;content:SourceCourseContent;sources:CourseSourceSnapshot[];busy:boolean;dirty:boolean;generationInfo?:SourceCourseAuthoring;onChange:(value:SourceCourseContent)=>void;onSave:(value:SourceCourseContent)=>Promise<void>;onCancel:()=>void}) {
   const [lessonIndex,setLessonIndex]=React.useState(0),[section,setSection]=React.useState<Section>('teaching'),[issue,setIssue]=React.useState('');
   const lesson=content.lessons[lessonIndex]??content.lessons[0],prefix='lessons.'+lessonIndex+'.';
   function navigateTabs(event:React.KeyboardEvent){if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const current=sections.findIndex(([key])=>key===section),index=event.key==='Home'?0:event.key==='End'?sections.length-1:(current+(event.key==='ArrowRight'?1:-1)+sections.length)%sections.length;const next=sections[index][0];setSection(next);document.getElementById('editor-tab-'+next)?.focus();}
@@ -31,6 +32,7 @@ export function SourceCourseContentEditor({courseId,revision,content,sources,bus
   }setIssue('');await onSave(parsed.data);}
   return <form className="sc-content-editor" aria-label="完整教学稿编辑器" onSubmit={event=>void submit(event)} noValidate>
     <header className="sc-editor-heading"><div><small>TEACHING MANUSCRIPT</small><h2>逐段核对，再交给课堂。</h2><p>这里显示练习答案，供你编写与核查。修改和确认不会替代教师审核。</p></div><span role="status">{busy?'正在保存…':dirty?'有未保存修改':'与打开时的稿件一致'}</span></header>
+    {generationInfo&&<details className="sc-editor-review"><summary>查看生成稿复核记录（{generationInfo.generationReviews.length}课）</summary><p>{generationInfo.generationReviews.length===0?'这份旧稿没有逐课模型复核记录。':generationInfo.reviewCurrent&&!dirty?'复核针对当前保存的生成稿。':'复核针对修改前的生成稿，不能套用于本页的新修改。'}这份记录不表示教师批准。</p>{generationInfo.generationReviews.map(({lessonIndex,lessonTitle,review})=><section key={lessonIndex}><h3>{lessonTitle} · {review.decision==='pass'?'模型未报告问题':review.decision==='revised'?'模型提供了修订':'仍需人工核对'}</h3>{review.issues.map((item,index)=><article key={index}><b>{labels[item.field]}{item.questionIndex!==null?' · 第'+(item.questionIndex+1)+'题':''}</b><blockquote>{item.quote}</blockquote><p>{item.detail}</p></article>)}</section>)}<OriginalManuscript content={generationInfo.originalContent} sources={sources}/></details>}
     {issue&&<p className="sc-error" role="alert">{issue}</p>}
     <fieldset disabled={busy} className="sc-editor-course"><Field label="教学稿课程名称" path="title" value={content.title} max={180} short onChange={title=>onChange({...content,title})}/><Field label="课程概览" path="overview" value={content.overview} max={700} onChange={overview=>onChange({...content,overview})}/></fieldset>
     <div className="sc-editor-navigation"><label>正在编辑的课时<select aria-label="教学稿课时" disabled={busy} value={lessonIndex} onChange={event=>{setLessonIndex(Number(event.target.value));setIssue('');}}>{content.lessons.map((item,index)=><option key={index} value={index}>{index+1}. {item.title}</option>)}</select></label><div role="tablist" aria-label="教学稿环节" onKeyDown={navigateTabs}>{sections.map(([key,title])=><button type="button" role="tab" id={'editor-tab-'+key} aria-controls="sc-editor-panel" aria-selected={section===key} tabIndex={section===key?0:-1} key={key} disabled={busy} onClick={()=>setSection(key)}>{title}</button>)}</div></div>

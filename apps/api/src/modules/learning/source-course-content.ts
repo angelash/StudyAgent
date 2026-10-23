@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { sourceCourseContentSchema as generatedCourseSchema, type SourceCourseContent } from '@study-agent/contracts';
 import type { ClassroomLesson, ClassroomStep, CourseSourceSnapshot, SourceCourseInput, StudioSubject } from '@study-agent/contracts';
+import type { SourceCourseGenerationState } from './source-course-pipeline';
 
 export { sourceCourseLessonContentSchema as generatedLessonSchema, sourceCourseContentSchema as generatedCourseSchema } from '@study-agent/contracts';
 export type GeneratedSourceCourse = SourceCourseContent;
@@ -12,6 +13,7 @@ export const generatedCourseJsonSchema = object({title:string(180),overview:stri
 export type SourceCourseRecord = { id: string; ownerUserId: string; studentId: string | null; subject: StudioSubject | null;
   audience: string; targetGoals: Array<{id:string;name:string;objective:string;version:number}>;
   input: SourceCourseInput; sources: CourseSourceSnapshot[]; revision: number;
+  generation?: SourceCourseGenerationState;
   status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string;
   result: GeneratedSourceCourse | null; originalResult: GeneratedSourceCourse | null;
   edits: Array<{at:string;changes:unknown}>; fingerprint: string | null; modelName: string | null;

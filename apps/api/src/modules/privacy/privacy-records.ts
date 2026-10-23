@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { PrivacyCounts } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { generationView } from '../learning/source-course-pipeline';
 import { sourceCourseLesson } from '../learning/source-course-content';
 import { studioMaterialView } from '../learning/studio-material-access';
 
@@ -119,7 +120,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
     else if(name==='sourceCourses')result[name]=records.filter(row=>row.ownerUserId===actorId||
       (selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status))
-      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,...row})=>({...row,lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result} as any,index))??[]}));
+      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,...row})=>({...row,generation:generationView({...row,result:_result,generation:_generation} as any),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result} as any,index))??[]}));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }

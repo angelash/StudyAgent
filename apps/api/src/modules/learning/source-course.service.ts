@@ -6,6 +6,7 @@ import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { assertMaterialAccess, studioMaterialView } from './studio-material-access';
+import { SOURCE_COURSE_PIPELINE, generationFingerprint, generationView, newCourseGeneration } from './source-course-pipeline';
 import { sourceCourseLesson, checkGeneratedCourse, sourceDigest, sourceCourseModelContext, SourceCourseRecord } from './source-course-content';
 
 const id=z.string().min(1).max(180),key=z.string().min(8).max(180),revision=z.number().int().min(0);
@@ -52,7 +53,7 @@ export class SourceCourseService {
     const next=lessons.find(lesson=>lesson.id===recent?.lessonId&&!viewed.has(lesson.id))??lessons.find(lesson=>!viewed.has(lesson.id))??lessons[0];
     return{id:row.id,studentId:row.studentId,subject:row.subject,title:row.result?.title??row.input.title,goal:row.input.goal,status:status as SourceCourseView['status'],
       lessonCount:lessons.length,viewed:lessons.filter(lesson=>viewed.has(lesson.id)).length,lastLessonId:recent?.lessonId??null,nextLessonId:next?.id??null,nextLessonTitle:next?.title??null,lastStudied:recent?.updatedAt??null,
-      revision:row.revision,overview:row.result?.overview??null,input:structuredClone(row.input),sources:structuredClone(row.sources),permissions:{manage:viewerId===row.ownerUserId},contentReview:'pending',formalMeasurementEligible:false,
+      revision:row.revision,generation:generationView(row),generationInput:viewerId===row.ownerUserId?structuredClone(row.generation?.input??null):null,overview:row.result?.overview??null,input:structuredClone(row.input),sources:structuredClone(row.sources),permissions:{manage:viewerId===row.ownerUserId},contentReview:'pending',formalMeasurementEligible:false,
       sourceStatus:this.sourceStatus(row),fingerprint:row.fingerprint,modelName:row.modelName,lessons,
       task:task?{id:row.taskId,state:task.state,version:task.version,generation:task.generation,errorCode:task.errorCode}:null,
       confirmedAt:row.confirmedAt,createdAt:row.createdAt,updatedAt:row.updatedAt};
@@ -65,7 +66,7 @@ export class SourceCourseService {
     const rows=[...new Map(candidates.map(row=>[row.id,row])).values()].filter(row=>query.studentId?row.studentId===query.studentId&&(!query.subject||row.subject===query.subject)||user.role!=='student'&&!row.studentId:!row.studentId&&user.role!=='student')
       .filter(row=>row.ownerUserId===user.id||['active','archived'].includes(row.status))
       .sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt));
-    const output:SourceCourseSummary[]=[];for(const row of rows){assertSourceCourseAccess(user,row,this.students);const {revision:_r,overview:_overview,input:_i,sources:_s,lessons:_l,permissions:_p,contentReview:_c,formalMeasurementEligible:_f,sourceStatus:_ss,fingerprint:_fp,modelName:_m,task:_t,confirmedAt:_ct,...summary}=await this.view(row,undefined,user.id);output.push(summary);}return output;
+    const output:SourceCourseSummary[]=[];for(const row of rows){assertSourceCourseAccess(user,row,this.students);const {revision:_r,generation:_generation,generationInput:_generationInput,overview:_overview,input:_i,sources:_s,lessons:_l,permissions:_p,contentReview:_c,formalMeasurementEligible:_f,sourceStatus:_ss,fingerprint:_fp,modelName:_m,task:_t,confirmedAt:_ct,...summary}=await this.view(row,undefined,user.id);output.push(summary);}return output;
   }
   async create(user:InMemoryUserAccount,input:unknown){
     const command=validate(z.object({title:z.string().trim().min(1).max(180),goal:z.string().trim().min(5).max(1000),language:z.enum(['source','zh-CN','en']),minutesPerSession:z.number().int().min(5).max(60),
@@ -95,6 +96,7 @@ export class SourceCourseService {
       input:{title:command.title,goal:command.goal,language:command.language,minutesPerSession:command.minutesPerSession,modelId:command.modelId,targetAtomIds:command.targetAtomIds},sources,
       revision:0,status:'queued',taskId:this.store.nextId('task'),result:null,originalResult:null,edits:[],fingerprint:null,modelName:null,confirmedAt:null,createdAt:now,updatedAt:now,requests:[{key:requestKey,hash,kind:'generate'}]};
     if(sourceCourseModelContext(row).length>18000)throw new BadRequestException('所选内容含较多格式字符，超出一次可完整读取的范围，请进一步缩小选择；系统不会截断来源。');
+    row.generation=newCourseGeneration(row,'creation');
     this.store.append('sourceCourses',row);await this.store.enqueueTask({id:row.taskId,kind:'learning.source-course.generate',ownerUserId:user.id,requestKey,payloadHash:sourceDigest({courseId:row.id}),payload:{courseId:row.id},createdAt:now,maxAttempts:2});
     return this.view(row,{state:'queued',version:1,generation:1,errorCode:null});
   }
@@ -118,7 +120,7 @@ export class SourceCourseService {
     const row=this.record(user,courseId,true);
     if(row.status!=='ready'||!row.result)throw new ConflictException('只有等待审阅的候选可以打开完整教学稿');
     row.authoringExposedAt??=new Date().toISOString();
-    return{courseId:row.id,revision:row.revision,content:structuredClone(row.result),originalContent:structuredClone(row.originalResult??row.result),contentReview:'pending'};
+    return{courseId:row.id,revision:row.revision,content:structuredClone(row.result),originalContent:structuredClone(row.originalResult??row.result),contentReview:'pending',generationInput:structuredClone(row.generation?.input??null),generationReviews:row.generation?.lessons.flatMap((lesson,index)=>lesson.review?[{lessonIndex:index,lessonTitle:row.generation!.outline!.lessons[index].title,review:structuredClone(lesson.review)}]:[])??[],reviewCurrent:generationView(row)?.reviewCurrent??false};
   }
   async editContent(user:InMemoryUserAccount,courseId:string,input:unknown){
     if(user.role==='student')throw new ForbiddenException('完整教学稿请由成人创建者修订');
@@ -146,7 +148,7 @@ export class SourceCourseService {
     if(action==='archive'){if(row.status!=='active')throw new ConflictException('只有已确认课程可以归档');row.status='archived';this.finish(row,command,action);return this.view(row);}
     const task=await this.store.tasks.get(row.taskId);if(!task||task.version!==command.expectedTaskVersion)throw new ConflictException('生成任务已变化，请刷新状态');
     if(action==='cancel'){if(!['queued','running','retry_wait','cancel_requested'].includes(task.state)||['active','archived'].includes(row.status))throw new ConflictException('当前任务不能取消');row.status='cancelled';}
-    else{if(!['failed','cancelled'].includes(task.state)||this.sourceStatus(row)!=='current')throw new ConflictException('请先核对失败/取消状态及当前来源，再重试');row.status='queued';}
+    else{if(!['failed','cancelled'].includes(task.state)||this.sourceStatus(row)!=='current')throw new ConflictException('请先核对失败/取消状态及当前来源，再重试');if(row.generation&&(row.generation.version!==SOURCE_COURSE_PIPELINE||row.generation.inputFingerprint!==generationFingerprint(row,row.generation.input)))throw new ConflictException('生成进度与当前流水线不兼容，请按原始目标重新创建课程。来源快照仍保留。');row.status='queued';}
     await this.store.controlTask({id:task.id,action,expectedVersion:task.version,actorId:user.id});this.finish(row,command,action);
     return this.view(row,{state:action==='retry'?'queued':task.state==='running'?'cancel_requested':'cancelled',version:task.version+1,generation:task.generation+(action==='retry'?1:0),errorCode:null});
   }

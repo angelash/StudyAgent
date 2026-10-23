@@ -99,6 +99,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       expect(await first.read()).toEqual(before);
       await expect(first.commit(before,{imports:[{id:'import',status:'stale-checkpoint'}]},{fence:{id:old.id,token:old.leaseToken!,mode:'checkpoint',progress:{stage:'stale'}}})).rejects.toThrow('检查点未保存');
       await second.commit(before,{imports:[{id:'import',status:'first-lesson'}]},{fence:{id:fresh.id,token:fresh.leaseToken!,mode:'checkpoint',progress:{completed:1,total:2}}});
+      expect(await first.tasks.heartbeat(fresh.id,fresh.leaseToken!)).toBe(true);
       expect(await first.tasks.get('job')).toMatchObject({state:'running',leaseToken:fresh.leaseToken,progress:{completed:1}});
       await expect(first.commit(before,{imports:[{id:'import',status:'must-rollback'}]},{fence:{id:fresh.id,token:fresh.leaseToken!,mode:'checkpoint',progress:{completed:99}}})).rejects.toThrow('数据已更新');
       expect((await first.tasks.get('job'))?.progress).toEqual({completed:1,total:2});

@@ -159,6 +159,16 @@ jobs:
           STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
           STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/postgres.integration.test.ts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install source-course PDF test dependencies
+        run: python -m pip install --disable-pip-version-check "PyMuPDF>=1.24,<2" "Pillow>=10,<13"
+      - name: Source-course staged generation and checkpoint recovery on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_SOURCE_COURSE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course.integration.test.ts
       - name: GESP assisted guidance and retention PostgreSQL journey
         env:
           STUDY_STORAGE: postgres

@@ -16,6 +16,7 @@ describe('transactional task outbox and fenced workers', () => {
       await db.commit(await db.read(),{courses:[{id:'course',completedLessons:0}]},{enqueue:[intent()]});
       const first=(await db.tasks.claim(['pdf.import'],100))!;
       await db.commit(await db.read(),{courses:[{id:'course',completedLessons:1}]},{fence:{id:first.id,token:first.leaseToken!,mode:'checkpoint',progress:{stage:'reviewing',completed:1,total:2}}});
+      expect(await db.tasks.heartbeat(first.id,first.leaseToken!,undefined,100)).toBe(true);
       expect(await db.tasks.get(first.id)).toMatchObject({state:'running',leaseToken:first.leaseToken,leaseUntil:1100,version:first.version,progress:{completed:1}});
       await db.close();time=1200;db=new DomainDatabase(location,()=>time);await db.open();
       expect((await db.read()).state.courses).toEqual([{id:'course',completedLessons:1}]);const resumed=(await db.tasks.claim(['pdf.import'],100))!;
