@@ -67,8 +67,8 @@ export function SourceCourseWorkbench(){
     mounted.current=true;setAuthor(null);authorDirtyRef.current=false;if(!identity){setLoading(false);return;}
     const controller=new AbortController();
     const restore=async(force:unknown=false)=>{
-      if(force!==true&&authorDirtyRef.current){const target=window.location.href;window.history.replaceState(null,'',displayedHref.current);
-        setLeave(()=>()=>{authorDirtyRef.current=false;setAuthor(null);window.history.replaceState(null,'',target);void restore(true);});return;}
+      if(force!==true&&authorDirtyRef.current){window.history.pushState(null,'',displayedHref.current);
+        setLeave(()=>()=>{authorDirtyRef.current=false;setAuthor(null);window.history.back();});return;}
       displayedHref.current=window.location.href;setAuthor(null);const version=++generation.current;setLoading(true);setError('');setRow(null);setEditing(false);
       try{const params=new URLSearchParams(window.location.search);setSearch(params.toString());const available=await apiRequest<Array<{id:string;nickname:string;grade:number}>>('/learning/students',{signal:controller.signal});
         if(version!==generation.current)return;setProfiles(available);const selected=params.get('studentId')??params.get('student')??(identity.role==='student'?available[0]?.id??'':'');
