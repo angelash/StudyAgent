@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
+  "sourceRevision": "b344ff0aae0f01cbb04427d63ea641069a06e909",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 104,
-    "activeNormalApiRoutes": 235,
-    "coveredApiRoutes": 235
+    "features": 105,
+    "activeNormalApiRoutes": 243,
+    "coveredApiRoutes": 243
   },
   "areas": [
     {
@@ -4101,10 +4101,11 @@
     {
       "id": "studio",
       "title": "学习工作台、实时课堂、白板、学案与日历",
-      "actors": "家长、学生；成人课程目录限家长/管理员",
+      "actors": "家长、学生与授权教师；成人课程需成人身份",
       "pages": [
         "/studio",
-        "/studio/classroom"
+        "/studio/classroom",
+        "/studio/projects"
       ],
       "files": [
         "apps/web/app/studio/studio.tsx",
@@ -4117,7 +4118,8 @@
       ],
       "contracts": [
         "packages/contracts/src/studio.ts",
-        "packages/contracts/src/classroom.ts"
+        "packages/contracts/src/classroom.ts",
+        "packages/contracts/src/course-project.ts"
       ],
       "tests": [
         "apps/api/src/modules/learning/studio-course.test.ts",
@@ -4125,6 +4127,8 @@
         "apps/api/src/modules/learning/classroom.integration.test.ts",
         "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
         "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "tests/e2e/course-project.spec.ts",
         "tests/e2e/studio.spec.ts",
         "tests/e2e/classroom.spec.ts",
         "tests/e2e/classroom-review.spec.ts",
@@ -4139,10 +4143,11 @@
           "title": "统一工作台、课程筛选与连续学习",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "view、student、subject、course、关键词、状态、类型、来源、最近学习与排序",
           "implementation": "成人与当前档案小学课统一列表；真实记录区分未开始/进行中/讲解已读；关键词覆盖名称目标教材，组合筛选可清空；地址记条件，刷新/历史/进入目录及课堂返回保留；断点标题与目标一致；按身份连接GESP独立轨道；显式档案先校验授权，不回退另一孩子。",
@@ -4181,6 +4186,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4195,10 +4202,11 @@
           "title": "可编辑课程蓝图、预算与确认恢复",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "当前范围、所选1～30点、标题/目标、可选5～60分钟预算、预览指纹和请求键",
           "implementation": "先编辑再审阅来源与缺口，取消预览不建课；保留所有所选分组，按参考时长生成预算内学习时段；预览和创建共用范围与资格校验；确认绑定主体/命令摘要与课程ID，同键重试恢复原课，旧预览或变更命令冲突；学习时段链接真实课堂与测量活动。",
@@ -4263,6 +4271,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4277,10 +4287,11 @@
           "title": "课程目录、单元、资料与帮助",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "unit、panel、lesson、tab与可选studioCourseId",
           "implementation": "展示封面、策划信息、单元、讲座、微课、项目与单元核查；可点开学习目标；帮助带入目标提问草稿；保留刷新、前进/后退与原课程返回路径。",
@@ -4315,6 +4326,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4329,10 +4342,11 @@
           "title": "课堂会话、板书与按句字幕",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "lessonId、expectedRevision、cursor/revealed/sentenceCursor",
           "implementation": "冻结课件、私有答案与提示；讲稿与逐项板书分开，音轨结束推进下一句，只预取下一句并保存断点；讲解内容身份与练习身份分开，练习变更不清除完全相同讲解的已读事实。",
@@ -4379,22 +4393,22 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 78
+              "line": 82
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 69
+              "line": 73
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 113
+              "line": 117
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 217
+              "line": 221
             }
           ],
           "sourceFiles": [
@@ -4406,6 +4420,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4420,10 +4436,11 @@
           "title": "课堂插问与补充板书",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "当前课/步骤/问题、modelId、请求键",
           "implementation": "插问暂停自动讲解；发送当前课件和允许证据；模型返回reply与最多5条要点、可选三标签关系图；服务器保存消息与补充板书。",
@@ -4446,7 +4463,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 185
+              "line": 189
             }
           ],
           "sourceFiles": [
@@ -4458,6 +4475,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4472,10 +4491,11 @@
           "title": "全微课练习、逐级帮助与复盘",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "questionId、selectedIndex/null、answered/skip/dont_know、提示level、requestKey、projectDraft",
           "implementation": "微课182题与独立编写单元60题分开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见且成功重试清除旧错误。",
@@ -4506,12 +4526,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 132
+              "line": 136
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 160
+              "line": 164
             }
           ],
           "sourceFiles": [
@@ -4533,6 +4553,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4547,10 +4569,11 @@
           "title": "课堂图片、表格与代码实验",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "受控image/table/code blocks",
           "implementation": "使用已生成本地WebP与受控SVG；图片可放大；表格逐行展示；JS示例放入独立runner页面和Worker，限制网络与DOM并设置超时。",
@@ -4572,6 +4595,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4586,10 +4611,11 @@
           "title": "课堂控制、导出与移动交互",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "音色、倍速、字体、背景、显示面板和导出命令",
           "implementation": "支持播放/暂停/停止、静音阅读、音色和倍速；持久化显示偏好；导出已读板书及插问Markdown、打印PDF；退出确认保存项目。",
@@ -4607,6 +4633,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4621,10 +4649,11 @@
           "title": "自由主题白板预览与持久保存",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "学生、学科、主题、可选已审核知识点",
           "implementation": "规则生成分幕标题、概念、步骤、图形和检查点；预览和保存使用内容指纹、请求键；保存后可继续播放。",
@@ -4674,6 +4703,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4688,10 +4719,11 @@
           "title": "白板视频、SRT与AI旁白",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "白板ID、幕ID、可用语音与浏览器录制能力",
           "implementation": "Canvas按时间绘制；可请求每幕旁白并与画面合成MediaStream；MediaRecorder输出WebM；始终可导出SRT；finally释放音频上下文与轨道。",
@@ -4727,6 +4759,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4741,10 +4775,11 @@
           "title": "PDF上传、原文与逐页阅读",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "multipart PDF、studentId、subject、requestKey",
           "implementation": "10MiB以内单PDF受控上传；保存私有原件并创建持久处理任务；每页图像和原件由学生授权接口读取。",
@@ -4807,6 +4842,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4821,10 +4858,11 @@
           "title": "PDF文字层、OCR与表格公式恢复",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "PDF原页、文字层、扫描图像",
           "implementation": "Python优先文字层，扫描页OCR；保留bbox/置信度/页图；本地表格网格和公式候选与可选模型复核合并；前端用HTML表格和KaTeX呈现。",
@@ -4846,6 +4884,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4860,10 +4900,11 @@
           "title": "结构人工确认与失败重试",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "expectedUpdatedAt、requestKey、人工核对决定",
           "implementation": "用户对照原页确认恢复结果；失败或本地降级可重新排队；更新时比较资料版本并保留原件。",
@@ -4911,6 +4952,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4925,10 +4968,11 @@
           "title": "PDF页级白板",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "资料ID、知识点、页级依据与预览指纹",
           "implementation": "选定原页与批准知识；以原页图和文字核对为基础生成白板幕；保存页码、来源及主题。",
@@ -4978,6 +5022,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -4992,10 +5038,11 @@
           "title": "个性化讲义、闪卡与微测",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "当前范围、薄弱/未知点、可选资料来源",
           "implementation": "最多选4个批准教学点；组合解释、例题、易错、迁移章节和闪卡/微测；关联真实知识ID及候选页；指纹预览后保存。",
@@ -5045,6 +5092,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -5059,10 +5108,11 @@
           "title": "工作台计划排程与阶段执行",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "目标、截止日期、首次时间、每天10–60分钟、版本和请求键",
           "implementation": "按薄弱与证据不足优先选点；编排learn/practice/transfer/review，跳过可识别冲突；完成后追加1/3/7/14日复盘；同步日历事件状态。",
@@ -5126,6 +5176,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -5140,10 +5192,11 @@
           "title": "ICS日历连接、刷新与撤销",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "ICS文本或HTTPS订阅URL、来源名称、类型、请求键",
           "implementation": "校验地址、重定向、大小和内容；拒绝本机/私网地址；订阅URL加密保存；UID归并事件；手动同步后替换该来源事件，撤销清理来源事件。",
@@ -5206,6 +5259,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -5220,10 +5275,11 @@
           "title": "日历月周视图与任务生命周期",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "所选日期、任务内容/时间、确认/完成状态、expectedRevision",
           "implementation": "本地日期生成月/周格和当日待办；手动事件支持编辑、待确认、完成、重开；批删先校验全部ID，切换范围清空选择；计划事件走计划服务，订阅只读。",
@@ -5300,6 +5356,8 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -5314,10 +5372,11 @@
           "title": "学习安排导出ICS",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
-          "actors": "家长、学生；成人课程目录限家长/管理员",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
           "pages": [
             "/studio",
-            "/studio/classroom"
+            "/studio/classroom",
+            "/studio/projects"
           ],
           "inputs": "学生与学科",
           "implementation": "授权后读取对应安排；转义文本和折行；以稳定UID、开始结束和全天属性生成ICS并由浏览器下载。",
@@ -5352,6 +5411,160 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-20",
+          "title": "阶段项目、产物版本与量规复核",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects"
+          ],
+          "inputs": "课程/单元、阶段产物、文字/链接证据、自评、修订号、请求键和模型",
+          "implementation": "成人五项目各三阶段；小学课程构造迁移解释核查模板；草稿与自评准备同步持久保存，提交冻结产物/量规/前版本；指定提交可由授权家长或教师逐维度复核；旧课堂草稿主动复制成参考；AI仅建议并标记所针对的稿本；重复写入可重放，冲突保留本地导出后恢复。",
+          "outputs": "15阶段原创项目、自评/提交历史/人工复核、旧稿引用、模型建议与受控隐私导出删除",
+          "collections": [
+            "courseProjects",
+            "classroomSessions",
+            "studioCourses",
+            "teacherAssignments"
+          ],
+          "limits": "内容和量规待教师审核，文字/链接证据已接入，二进制附件仍待统一媒体接入；AI真实供应商调用和真人效果另验；项目不写正式掌握度。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/projects/catalog",
+              "controller": "CourseProjectController",
+              "method": "catalog",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/projects/:id",
+              "controller": "CourseProjectController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects",
+              "controller": "CourseProjectController",
+              "method": "open",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/learning/projects/:id",
+              "controller": "CourseProjectController",
+              "method": "save",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects/:id/submissions",
+              "controller": "CourseProjectController",
+              "method": "submit",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects/:id/reviews",
+              "controller": "CourseProjectController",
+              "method": "review",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects/:id/legacy",
+              "controller": "CourseProjectController",
+              "method": "legacy",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects/:id/advice",
+              "controller": "CourseProjectController",
+              "method": "advice",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 16
+            }
+          ],
+          "implementations": [
+            {
+              "name": "CourseProjectService.catalog",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 69
+            },
+            {
+              "name": "CourseProjectService.get",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 67
+            },
+            {
+              "name": "CourseProjectService.open",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 79
+            },
+            {
+              "name": "CourseProjectService.save",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 125
+            },
+            {
+              "name": "CourseProjectService.submit",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 139
+            },
+            {
+              "name": "CourseProjectService.review",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 157
+            },
+            {
+              "name": "CourseProjectService.importLegacy",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 174
+            },
+            {
+              "name": "CourseProjectService.advise",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 188
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/course-project.service.ts",
+            "apps/api/src/modules/learning/course-project-content.ts",
+            "apps/web/app/studio/projects/workbench.tsx",
+            "apps/web/app/studio/projects/projects.css"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
             "tests/e2e/classroom.spec.ts",
             "tests/e2e/classroom-review.spec.ts",
@@ -6594,7 +6807,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 329
+              "line": 330
             },
             {
               "name": "DomainEventBusService.publish",
@@ -6604,7 +6817,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 227
+              "line": 228
             }
           ],
           "sourceFiles": [
@@ -6797,7 +7010,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 227
+              "line": 228
             }
           ],
           "sourceFiles": [
@@ -6874,7 +7087,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 211
+              "line": 212
             },
             {
               "name": "RuntimeMetricsService.snapshot",

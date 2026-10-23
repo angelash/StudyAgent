@@ -21,8 +21,9 @@ for (const [file, expected] of Object.entries(audit.sourceSha256)) assert.equal(
 const classroomFile = 'apps/api/src/modules/learning/classroom-curriculum.ts';
 const boardFile = 'apps/api/src/modules/learning/classroom-board-notes.ts';
 const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
+const projectsFile = 'apps/api/src/modules/learning/course-project-content.ts';
 const practiceFiles = ['content', 'model', 'u1', 'u2', 'u3', 'u4', 'u5'].map(name => 'apps/api/src/modules/learning/classroom-practice-' + name + '.ts');
-const allowed = new Set([classroomFile, boardFile, checksFile, ...practiceFiles]), cache = new Map();
+const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, ...practiceFiles]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
@@ -37,6 +38,7 @@ function loadContent(file) {
   return module.exports;
 }
 const classroom = loadContent(classroomFile), course = classroom.classroomCourse();
+const projects = loadContent(projectsFile).adultProjectDefinitions();
 const lectures = course.units.flatMap(unit => unit.lectures), lessons = lectures.flatMap(lecture => lecture.lessons);
 const practiceQuestions = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions);
 const questionIds = practiceQuestions.map(question => question.id);
@@ -67,6 +69,9 @@ const snapshot = {
     sourceSha256: Object.fromEntries([gespKnowledgePath, gespQuestionsPath, gespTasksPath].map(file => [file, hash(file)])),
     interpretation: 'Research index and authored pilot tasks are separate. Counts do not assert review approval or complete student curricula.'
   },
+  courseProjects: { originalAdultProjects: projects.length, stages: projects.reduce((sum,item)=>sum+item.stages.length,0),
+    rubricDimensions: projects.reduce((sum,item)=>sum+item.rubric.length,0), teacherApprovedProjects: projects.filter(item=>item.contentReview!=='pending').length,
+    sourceSha256: { [projectsFile]: hash(projectsFile) }, interpretation: 'Authored candidate projects and descriptive rubrics. Not teacher approval, calibrated grades or evidence of learner outcomes.' },
   adultClassroom: {
     courseId: course.id, courseVersion: course.version, units: course.units.length, lectures: lectures.length,
     microLessons: lessons.length, lessonQuestions: questionIds.length, unitCheckQuestions: unitQuestionIds.length,

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T18:41:08.178Z",
+  "sourceRevision": "b344ff0aae0f01cbb04427d63ea641069a06e909",
+  "passed": true,
+  "requirements": [
+    "XP-E06",
+    "XP-B03",
+    "XP-B04"
+  ],
+  "scope": "Versioned project workflows and original candidate content. No teacher content approval, calibrated ratings, full textbook coverage or full product parity claim.",
+  "content": {
+    "originalAdultProjects": 5,
+    "stages": 15,
+    "rubricDimensions": 20,
+    "teacherApprovedProjects": 0,
+    "sourceSha256": {
+      "apps/api/src/modules/learning/course-project-content.ts": "5c9a9fa2d7f6a4644d3e43a1189055fb2eb693e77d43bdcb107db526a1fc1fd4"
+    },
+    "interpretation": "Authored candidate projects and descriptive rubrics. Not teacher approval, calibrated grades or evidence of learner outcomes."
+  },
+  "api": {
+    "command": "node ../../node_modules/vitest/vitest.mjs run",
+    "workingDirectory": "apps/api",
+    "passed": 807,
+    "skipped": 6,
+    "testFilesPassed": 91,
+    "testFilesSkipped": 1,
+    "durationSeconds": 243.3,
+    "startLocal": "2026-10-24 02:25:34",
+    "evidence": "Observed terminal result; skipped tests remain conditional, not passing evidence."
+  },
+  "browser": {
+    "full": {
+      "result": "data/qa/course-project-full-browser.json",
+      "stats": {
+        "startTime": "2026-10-23T18:29:38.351Z",
+        "duration": 133684.141,
+        "expected": 34,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "finalFocused": {
+      "result": "data/qa/course-project-final-browser.json",
+      "stats": {
+        "startTime": "2026-10-23T18:37:26.448Z",
+        "duration": 37747.140999999996,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "reason": "Final Web navigation and saved-project-record links changed after the full run; project and course-library suites repeated.",
+      "includes": "Five adult projects, all 15 stages, prior-version excerpt references, save/reload/revisions, lost save acknowledgment, stale-page preservation, unavailable AI and real guardian review via course entry."
+    }
+  },
+  "model": {
+    "schemaVersion": 1,
+    "at": "2026-10-23T18:33:53.359Z",
+    "passed": true,
+    "scope": "One real default-model advice call on an isolated anonymous course-project draft. No family production data.",
+    "modelId": "deepseek-v4-flash",
+    "durationMs": 15234,
+    "modelName": "DeepSeek V4.1 Flash",
+    "replyCharacters": 719,
+    "replySha256": "57c94066bb4e8c2f1f38275f9b62af2ae5d1d484f170631a3b61b81100315a8a",
+    "adviceRemainsSeparateFromReviews": true,
+    "draftUnchanged": true,
+    "observedAttempts": [
+      {
+        "status": 503,
+        "detail": "Earlier real request failed; detailed upstream reason not captured."
+      },
+      {
+        "status": 201,
+        "detail": "A separate real default-model request succeeded."
+      }
+    ],
+    "persistedDraftComparedWithOriginal": true,
+    "replySemanticsReviewed": true,
+    "allProvidersRetested": false
+  },
+  "builds": [
+    "contracts",
+    "API",
+    "isolated production Web with type checking",
+    "daemon production Web with type checking"
+  ],
+  "runtime": {
+    "web": "http://127.0.0.1:3217",
+    "api": "http://127.0.0.1:4217",
+    "checks": [
+      {
+        "route": "/learn",
+        "status": 200
+      },
+      {
+        "route": "/studio?view=courses",
+        "status": 200
+      },
+      {
+        "route": "/studio/classroom",
+        "status": 200
+      },
+      {
+        "route": "/studio/projects?unitId=soc-u1",
+        "status": 200
+      },
+      {
+        "route": "/api/ready",
+        "status": 200,
+        "readiness": "ready"
+      },
+      {
+        "route": "POST /api/learning/projects",
+        "status": 401
+      }
+    ],
+    "anonymousPageErrors": [],
+    "productionAuthenticatedDataUsed": false,
+    "pm2Services": [
+      "study-agent-api",
+      "study-agent-web",
+      "study-agent-health"
+    ],
+    "previousWebBuild": "data/qa/learning-home-deployment-20261024-023908/previous-next"
+  },
+  "screenshots": [
+    "doc/evidence/2026-10-24/course-project-project-1440.png",
+    "doc/evidence/2026-10-24/course-project-project-390.png",
+    "doc/evidence/2026-10-24/course-project-submission-v1.png",
+    "doc/evidence/2026-10-24/course-project-guardian-review.png"
+  ],
+  "sourceSha256": {
+    "apps/api/src/common/auth.guard.ts": "29357a062f8100f9f9265f02428b666819e0b3ff06e3cfec44f7f4fb723db5f7",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "02d02f1a944025c35ebcc8db2f41116a86625fa8284720bb58887ba89cd688b1",
+    "apps/api/src/modules/learning/classroom.service.ts": "d9dea268252df2d8e29296c3494169b8ed711017784fc3cce581e8b45cd8a82e",
+    "apps/api/src/modules/learning/course-project-content.ts": "5c9a9fa2d7f6a4644d3e43a1189055fb2eb693e77d43bdcb107db526a1fc1fd4",
+    "apps/api/src/modules/learning/course-project.controller.ts": "5599cfdbaad20b9b3f86537f1f33020a4e7a9d54943e534bec4ddc48db9f3991",
+    "apps/api/src/modules/learning/course-project.integration.test.ts": "edbe7ec04c1cc736fac73067e80b41ab7e253951b20e1a7310bb1ef4c5be5e4b",
+    "apps/api/src/modules/learning/course-project.service.ts": "4bb7833301cf6491eaa14b5ea10340404e60552b02e3e0a33a25d0a5987a3370",
+    "apps/api/src/modules/learning/learning.module.ts": "7927e1d88062e4c395d85daa4672638bee8e6f0f98bf53aeb25bc24dccdd9b33",
+    "apps/api/src/modules/privacy/privacy-records.ts": "8434e6e0123c0d13a29b19758f0af54001e78600f9f76ed6f9dd57420428f7d1",
+    "apps/web/app/studio/classroom/workbench.tsx": "151ac4204367fd7ea699cbec1a25c3efa35a34ba9aba6a1840b8cd933e67aff0",
+    "apps/web/app/studio/projects/page.tsx": "d329af75f0a69aad272d8d2a8fdd6dc2f442bcce4cf4cc7c8ba07b904acbbc51",
+    "apps/web/app/studio/projects/projects.css": "f1ce28a84c38e7f0eb4d5d164912feb183258d6e3ed4ed73bee90394a950e4d0",
+    "apps/web/app/studio/projects/workbench.tsx": "6c23645581016a466265675f0e3b9937dd5b685d4f6454129228672b742fd786",
+    "apps/web/app/studio/studio.tsx": "580c573c09baabe51aecb35b5176aafe0f9554e30413ca0f74ada0868f5460fc",
+    "packages/contracts/src/classroom.ts": "827f9d2b79890359de761b685135bef829e1b1779f850ca91b76ec3619d5241c",
+    "packages/contracts/src/course-project.ts": "4ad2dcd51a794ff93a0b8c53c9cdf6e0b121f5a775d50be3e4d6c278fa876254",
+    "packages/contracts/src/index.ts": "cb2a0ad3261e6142c66502b9279d5f8fb9e2b2f8533de1abc76a085c67e9baba",
+    "tests/e2e/course-project.spec.ts": "cf625d742701c7180c8d30cfa106f8d1b4d151ea1dd9c6cbd5ccf0a8b8932d76"
+  },
+  "excludedExistingEdits": [
+    ".env.example",
+    "apps/web/next.config.ts",
+    "doc/product/87-local-windows-daemon.md",
+    "ecosystem.config.cjs",
+    "scripts/operations/start-daemon.ps1"
+  ],
+  "limits": {
+    "teacherReview": "pending",
+    "learnerValidation": "pending",
+    "binaryAttachments": "not integrated",
+    "projectResultsEnterFormalMastery": false,
+    "referencePixelParity": "not verified",
+    "postgresSpecificNewProjectRun": false,
+    "realModelStability": "one success after one 503; not a reliability study"
+  },
+  "goalComplete": false
+}

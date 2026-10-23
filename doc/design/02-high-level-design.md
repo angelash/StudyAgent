@@ -97,6 +97,8 @@ AppModule当前可达17个模块，包含AppModule与CoreModule；23个控制器
 
 `classroomSessions`表示当前账号读到哪里、课堂题怎样回答；`studioStudyPlans`和`studioScheduleEvents`表示学习安排是否执行；`diagnosticResponses`及其有效评分才进入正式量化计算。课堂题、重复原题、闪卡阅读和计划完成不能自动写成掌握提升。
 
+`courseProjects`独立保存冻结的项目定义、各阶段草稿、自评准备、提交快照、人工复核和AI建议。项目修订不覆盖已提交作品，量规自评不转换为正式掌握度。课程和课堂入口共享同一单元项目，旧课堂草稿可主动引用。教师读取和复核依赖当前有效授权，不能凭项目地址绕过。
+
 ## 6. 三类计划
 
 - **DiagnosticGuidancePlan**：来自正式报告，冻结证据、教学、来源和成功标准，家长确认，进入训练与正式复测。

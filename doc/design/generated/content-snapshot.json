@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
+  "sourceRevision": "b344ff0aae0f01cbb04427d63ea641069a06e909",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-23T16:22:32.721Z",
+    "auditAt": "2026-10-23T18:39:07.749Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "0828e650ce48edc828db22790e6d1cec04d47836c326103ddee42b73f533e991",
+    "localAuditSha256": "fec4773db1fabb1e1b9017b00ba6bf2e7ea01456865674aa27e87604774adc76",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -249,12 +249,12 @@
       "apps/api/src/modules/gesp/student-curriculum.test.ts": "b6ce3c19625638531003bd8a7ab07daf42340d3cdbe962fef5960081642d977d",
       "apps/api/src/modules/gesp/gesp-learning-loop.test.ts": "eeb4b3f89e089a04a1c6b60cd62fe6ef2444100dbcb491db464a8e72366295a5",
       "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "78f8f67305a85b2f937047aeb9aa1d0aa4bc94139e52400d2795dce704bc8fc0",
-      "apps/api/src/infrastructure/in-memory-store.service.ts": "3753554e773cfc23229b8777448721eb7fe1a72a581bd9396688e647dbe80931",
+      "apps/api/src/infrastructure/in-memory-store.service.ts": "02d02f1a944025c35ebcc8db2f41116a86625fa8284720bb58887ba89cd688b1",
       "apps/api/src/infrastructure/domain-database.ts": "7b17f255e936c1537ce6eecc9caf3853fb02f0724ff694c44fd30b85f1e09f8f",
-      "apps/api/src/common/auth.guard.ts": "e7c6576c0d77056feb69d4072ac8ef01212f8a75581d5f54ab83b6e3bb086522",
+      "apps/api/src/common/auth.guard.ts": "29357a062f8100f9f9265f02428b666819e0b3ff06e3cfec44f7f4fb723db5f7",
       "apps/web/app/admin/gesp/page.tsx": "fcdd3220568d33c70a9337293edff91dc4e652384afc7ca42d82c80b4957114d",
       "apps/web/app/admin/gesp/gesp.css": "030fdebce5ee2ad8cac16d141ea923a6e3311daca732465bc47ef0b505a6d91a",
-      "apps/api/src/modules/privacy/privacy-records.ts": "6713579a3d370114ba908a0bd6504b9fee729692443437e67d526b08f20261f3",
+      "apps/api/src/modules/privacy/privacy-records.ts": "8434e6e0123c0d13a29b19758f0af54001e78600f9f76ed6f9dd57420428f7d1",
       "apps/api/src/modules/privacy/privacy.integration.test.ts": "ea3932136d5ea4d5cb491b6097f7a2e92f7998e16a54c83ea10abecdfb323134",
       "scripts/qa/verify-gesp-learning-loop.cjs": "3c4a28d44577e6cf7467da3753769963a682f3a68cef28a743e601da8e8d081b",
       "apps/web/app/parent/gesp/page.tsx": "4fc099891dd273448a293a61ce06a0c2b9c43894e07423182d709edd13f10604",
@@ -393,6 +393,16 @@
       "resources/gesp/student-curriculum-v2.json": "9cc5512a95aa94277dd3c4298d239d6593e8c9c8ab03dee0ea459be68f87349d"
     },
     "interpretation": "Research index and authored pilot tasks are separate. Counts do not assert review approval or complete student curricula."
+  },
+  "courseProjects": {
+    "originalAdultProjects": 5,
+    "stages": 15,
+    "rubricDimensions": 20,
+    "teacherApprovedProjects": 0,
+    "sourceSha256": {
+      "apps/api/src/modules/learning/course-project-content.ts": "5c9a9fa2d7f6a4644d3e43a1189055fb2eb693e77d43bdcb107db526a1fc1fd4"
+    },
+    "interpretation": "Authored candidate projects and descriptive rubrics. Not teacher approval, calibrated grades or evidence of learner outcomes."
   },
   "adultClassroom": {
     "courseId": "sociology-foundations",

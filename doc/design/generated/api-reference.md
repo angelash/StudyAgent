@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`9c2821c8b706e2417703061b378e961cef8c3412`。共 256 个 HTTP 路由声明，当前 AppModule 可达 235 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`b344ff0aae0f01cbb04427d63ea641069a06e909`。共 264 个 HTTP 路由声明，当前 AppModule 可达 243 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1004,6 +1004,80 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.classroom.narration`
+
+## CourseProjectController — 当前接入
+
+### GET /api/learning/projects/catalog
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:9](../../../apps/api/src/modules/learning/course-project.controller.ts#L9)，方法 `catalog`。
+
+- 签名：`catalog(@Req() req: AuthenticatedRequest, @Query() query: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.catalog`
+
+### GET /api/learning/projects/:id
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:10](../../../apps/api/src/modules/learning/course-project.controller.ts#L10)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.get`
+
+### POST /api/learning/projects
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:11](../../../apps/api/src/modules/learning/course-project.controller.ts#L11)，方法 `open`。
+
+- 签名：`open(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.open`
+
+### PATCH /api/learning/projects/:id
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:12](../../../apps/api/src/modules/learning/course-project.controller.ts#L12)，方法 `save`。
+
+- 签名：`save(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.save`
+
+### POST /api/learning/projects/:id/submissions
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:13](../../../apps/api/src/modules/learning/course-project.controller.ts#L13)，方法 `submit`。
+
+- 签名：`submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.submit`
+
+### POST /api/learning/projects/:id/reviews
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:14](../../../apps/api/src/modules/learning/course-project.controller.ts#L14)，方法 `review`。
+
+- 签名：`review(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.review`
+
+### POST /api/learning/projects/:id/legacy
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:15](../../../apps/api/src/modules/learning/course-project.controller.ts#L15)，方法 `legacy`。
+
+- 签名：`legacy(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.importLegacy`
+
+### POST /api/learning/projects/:id/advice
+
+实现：[apps/api/src/modules/learning/course-project.controller.ts:16](../../../apps/api/src/modules/learning/course-project.controller.ts#L16)，方法 `advice`。
+
+- 签名：`advice(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.projects.advise`
 
 ## LearningHomeController — 当前接入
 

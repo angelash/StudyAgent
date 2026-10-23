@@ -1,8 +1,8 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`9c2821c8b706e2417703061b378e961cef8c3412`。角色：家长、学生；成人课程目录限家长/管理员。
+源码基线：`b344ff0aae0f01cbb04427d63ea641069a06e909`。角色：家长、学生与授权教师；成人课程需成人身份。
 
-产品入口：`/studio`、`/studio/classroom`。
+产品入口：`/studio`、`/studio/classroom`、`/studio/projects`。
 
 ## 模块实现
 
@@ -18,6 +18,7 @@
 
 - [packages/contracts/src/studio.ts](../../../packages/contracts/src/studio.ts)
 - [packages/contracts/src/classroom.ts](../../../packages/contracts/src/classroom.ts)
+- [packages/contracts/src/course-project.ts](../../../packages/contracts/src/course-project.ts)
 
 ## 关联验证
 
@@ -28,6 +29,8 @@
 - [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
 - [apps/api/src/modules/learning/classroom-unit-checks.test.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.test.ts)
 - [apps/api/src/modules/learning/classroom-practice-content.test.ts](../../../apps/api/src/modules/learning/classroom-practice-content.test.ts)
+- [apps/api/src/modules/learning/course-project.integration.test.ts](../../../apps/api/src/modules/learning/course-project.integration.test.ts)
+- [tests/e2e/course-project.spec.ts](../../../tests/e2e/course-project.spec.ts)
 - [tests/e2e/studio.spec.ts](../../../tests/e2e/studio.spec.ts)
 - [tests/e2e/classroom.spec.ts](../../../tests/e2e/classroom.spec.ts)
 - [tests/e2e/classroom-review.spec.ts](../../../tests/e2e/classroom-review.spec.ts)
@@ -132,10 +135,10 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:78](../../../apps/api/src/modules/learning/classroom.service.ts#L78)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:69](../../../apps/api/src/modules/learning/classroom.service.ts#L69)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:113](../../../apps/api/src/modules/learning/classroom.service.ts#L113)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:217](../../../apps/api/src/modules/learning/classroom.service.ts#L217)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:82](../../../apps/api/src/modules/learning/classroom.service.ts#L82)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:73](../../../apps/api/src/modules/learning/classroom.service.ts#L73)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:117](../../../apps/api/src/modules/learning/classroom.service.ts#L117)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:221](../../../apps/api/src/modules/learning/classroom.service.ts#L221)。
 
 ## STUDIO-05 课堂插问与补充板书
 
@@ -155,7 +158,7 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:185](../../../apps/api/src/modules/learning/classroom.service.ts#L185)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:189](../../../apps/api/src/modules/learning/classroom.service.ts#L189)。
 
 ## STUDIO-06 全微课练习、逐级帮助与复盘
 
@@ -176,8 +179,8 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:132](../../../apps/api/src/modules/learning/classroom.service.ts#L132)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:160](../../../apps/api/src/modules/learning/classroom.service.ts#L160)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:136](../../../apps/api/src/modules/learning/classroom.service.ts#L136)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:164](../../../apps/api/src/modules/learning/classroom.service.ts#L164)。
 
 **补充实现文件**：
 
@@ -499,3 +502,43 @@
 **服务方法**：
 
 - `StudioIntegrationService.exportCalendar`；[apps/api/src/modules/learning/studio-integration.service.ts:185](../../../apps/api/src/modules/learning/studio-integration.service.ts#L185)。
+
+## STUDIO-20 阶段项目、产物版本与量规复核
+
+**输入**：课程/单元、阶段产物、文字/链接证据、自评、修订号、请求键和模型。
+
+**处理与实现**：成人五项目各三阶段；小学课程构造迁移解释核查模板；草稿与自评准备同步持久保存，提交冻结产物/量规/前版本；指定提交可由授权家长或教师逐维度复核；旧课堂草稿主动复制成参考；AI仅建议并标记所针对的稿本；重复写入可重放，冲突保留本地导出后恢复。
+
+**输出**：15阶段原创项目、自评/提交历史/人工复核、旧稿引用、模型建议与受控隐私导出删除。
+
+**状态与持久化**：`courseProjects`、`classroomSessions`、`studioCourses`、`teacherAssignments`
+
+**权限、失败与边界**：内容和量规待教师审核，文字/链接证据已接入，二进制附件仍待统一媒体接入；AI真实供应商调用和真人效果另验；项目不写正式掌握度。
+
+**关联接口**：
+
+- `GET /api/learning/projects/catalog` → `CourseProjectController.catalog`；[apps/api/src/modules/learning/course-project.controller.ts:9](../../../apps/api/src/modules/learning/course-project.controller.ts#L9)。
+- `GET /api/learning/projects/:id` → `CourseProjectController.get`；[apps/api/src/modules/learning/course-project.controller.ts:10](../../../apps/api/src/modules/learning/course-project.controller.ts#L10)。
+- `POST /api/learning/projects` → `CourseProjectController.open`；[apps/api/src/modules/learning/course-project.controller.ts:11](../../../apps/api/src/modules/learning/course-project.controller.ts#L11)。
+- `PATCH /api/learning/projects/:id` → `CourseProjectController.save`；[apps/api/src/modules/learning/course-project.controller.ts:12](../../../apps/api/src/modules/learning/course-project.controller.ts#L12)。
+- `POST /api/learning/projects/:id/submissions` → `CourseProjectController.submit`；[apps/api/src/modules/learning/course-project.controller.ts:13](../../../apps/api/src/modules/learning/course-project.controller.ts#L13)。
+- `POST /api/learning/projects/:id/reviews` → `CourseProjectController.review`；[apps/api/src/modules/learning/course-project.controller.ts:14](../../../apps/api/src/modules/learning/course-project.controller.ts#L14)。
+- `POST /api/learning/projects/:id/legacy` → `CourseProjectController.legacy`；[apps/api/src/modules/learning/course-project.controller.ts:15](../../../apps/api/src/modules/learning/course-project.controller.ts#L15)。
+- `POST /api/learning/projects/:id/advice` → `CourseProjectController.advice`；[apps/api/src/modules/learning/course-project.controller.ts:16](../../../apps/api/src/modules/learning/course-project.controller.ts#L16)。
+
+**服务方法**：
+
+- `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:69](../../../apps/api/src/modules/learning/course-project.service.ts#L69)。
+- `CourseProjectService.get`；[apps/api/src/modules/learning/course-project.service.ts:67](../../../apps/api/src/modules/learning/course-project.service.ts#L67)。
+- `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:79](../../../apps/api/src/modules/learning/course-project.service.ts#L79)。
+- `CourseProjectService.save`；[apps/api/src/modules/learning/course-project.service.ts:125](../../../apps/api/src/modules/learning/course-project.service.ts#L125)。
+- `CourseProjectService.submit`；[apps/api/src/modules/learning/course-project.service.ts:139](../../../apps/api/src/modules/learning/course-project.service.ts#L139)。
+- `CourseProjectService.review`；[apps/api/src/modules/learning/course-project.service.ts:157](../../../apps/api/src/modules/learning/course-project.service.ts#L157)。
+- `CourseProjectService.importLegacy`；[apps/api/src/modules/learning/course-project.service.ts:174](../../../apps/api/src/modules/learning/course-project.service.ts#L174)。
+- `CourseProjectService.advise`；[apps/api/src/modules/learning/course-project.service.ts:188](../../../apps/api/src/modules/learning/course-project.service.ts#L188)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/course-project-content.ts](../../../apps/api/src/modules/learning/course-project-content.ts)
+- [apps/web/app/studio/projects/workbench.tsx](../../../apps/web/app/studio/projects/workbench.tsx)
+- [apps/web/app/studio/projects/projects.css](../../../apps/web/app/studio/projects/projects.css)

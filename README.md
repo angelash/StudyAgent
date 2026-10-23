@@ -2,7 +2,7 @@
 
 围绕原子知识点建立的小学语文、数学、英语学习诊断与指导系统。学生按年级、学期、教材和已学范围完成评测；报告保留作答证据、掌握估计与不确定性，针对原因假设安排验证、指导、训练、间隔复测和家长复盘。
 
-当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域104项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
+当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域105项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
 
 当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。当前逐项状态见 [完整验收审计](doc/product/68-final-product-acceptance-audit.md)；GitHub Actions 已在 Ubuntu 24.04 上完整通过 application、browser、PostgreSQL 三组门禁，见 [CI 收据](doc/evidence/2026-10-21/ci-verify-runtime.json)。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
 
@@ -10,6 +10,7 @@
 
 - 统一学习首页 `/learn`：恢复档案与学科，连接保存的评测、到期复测、计划核对、今日训练和课堂断点；家长与学生登录后直接进入。
 - 成人课堂：60微课、182道课堂练习和60道另编单元情境题，两级私有提示、不会/跳过、首次答案、具体复盘和旧版恢复分别记录，见[Practice交付](doc/product/96-classroom-practice-and-progressive-help.md)。
+- 课程项目：五个成人项目共15阶段，以及小学迁移活动；支持草稿、自评、证据引用、提交修订、人工复核与独立AI建议，见[项目交付](doc/product/97-versioned-course-projects.md)。
 - 课程蓝图：编辑目标、选择已确认知识点和单次预算，审阅结构与来源缺口后创建；支持取消和确认回执恢复，见[蓝图交付](doc/product/95-course-blueprint-editor.md)。
 - 家长注册、监护绑定、教师授权与撤销、独立学生学习码和设备撤销。
 - 证据化学习记忆：当前范围、未知点、待验证原因、计划和复测由同一份可核对上下文驱动家长首页与助教。
