@@ -8,10 +8,11 @@ import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { SpeechService } from '../ai/speech.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
-import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomLesson, curriculumClassroomLesson } from './classroom-curriculum';
+import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomHintKeys, classroomLesson, classroomTeachingFingerprint, curriculumClassroomLesson } from './classroom-curriculum';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number; explanation: string }>;
+  hintKeys?: Record<string, string[]>;
   requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'hint'; messageId?: string; questionId?: string }>;
 };
 
@@ -26,9 +27,19 @@ export class ClassroomService {
     const sessions = allSessions
       .filter(row => { const lesson = classroomLesson(row.lessonId); return lesson && row.contentFingerprint === classroomFingerprint(lesson); })
       .sort((a,b) => a.updatedAt.localeCompare(b.updatedAt));
+    const microLessonIds = new Set(classroomCourse().units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons.map(lesson => lesson.id))));
+    const reading = new Map<string, ClassroomSessionRecord>();
+    for (const row of [...allSessions].sort((a,b) => b.updatedAt.localeCompare(a.updatedAt))) {
+      const current = classroomLesson(row.lessonId);
+      if (!microLessonIds.has(row.lessonId) || !current || classroomTeachingFingerprint(current) !== classroomTeachingFingerprint(row.lesson)) continue;
+      const previous = reading.get(row.lessonId);
+      if (!previous || row.status === 'completed' && previous.status !== 'completed') reading.set(row.lessonId, row);
+    }
     return { course: classroomCourse(), progress: sessions.map(row => ({ lessonId: row.lessonId, sessionId: row.id,
       cursor: row.cursor, completed: row.status === 'completed', correct: row.answers.filter(answer => answer.correct).length,
       answered: row.answers.length, updatedAt: row.updatedAt, createdAt: row.createdAt })),
+      readingProgress: [...reading.values()].map(row => ({ lessonId: row.lessonId, sessionId: row.id, cursor: row.cursor,
+        completed: row.status === 'completed', updatedAt: row.updatedAt })),
       archivedSessions: allSessions.filter(row => !sessions.includes(row)).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt))
         .map(row => ({ sessionId: row.id, lessonId: row.lessonId, title: row.lesson.title, total: row.lesson.questions.length,
           answered: row.answers.length, updatedAt: row.updatedAt })) };
@@ -43,7 +54,8 @@ export class ClassroomService {
   }
 
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
-    const { answerKeys: _answerKeys, requests: _requests, ...safe } = structuredClone(row);
+    const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...safe } = structuredClone(row);
+    safe.lesson.questions = safe.lesson.questions.map(question => ({ ...question, hint: '', hintCount: this.hintLevels(row, question.id).length }));
     let current = classroomLesson(row.lessonId);
     if (row.studioCourseId) {
       const course = this.store.find('studioCourses', { id: row.studioCourseId });
@@ -55,6 +67,13 @@ export class ClassroomService {
   }
 
   get(user: InMemoryUserAccount, id: string) { return this.view(this.record(user, id)); }
+
+  private hintLevels(row: ClassroomSessionRecord, questionId: string) {
+    const saved = row.hintKeys?.[questionId];
+    if (saved) return saved;
+    const legacy = row.lesson.questions.find(question => question.id === questionId)?.hint;
+    return legacy ? [legacy] : [];
+  }
 
   open(user: InMemoryUserAccount, input: unknown) {
     const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),
@@ -82,10 +101,11 @@ export class ClassroomService {
     const answerKeys = Object.fromEntries(lesson.questions.flatMap(question => {
       const key = classroomAnswerKey(question.id); return key ? [[question.id, structuredClone(key)]] : [];
     }));
+    const hintKeys = Object.fromEntries(lesson.questions.map(question => [question.id, structuredClone(classroomHintKeys(question.id) ?? (question.hint ? [question.hint] : []))]));
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
       contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
-      messages: [], answers: [], projectDraft: '', answerKeys, requests: [], createdAt: now, updatedAt: now };
+      messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);
     return this.view(session);
   }
@@ -112,8 +132,11 @@ export class ClassroomService {
   answer(user: InMemoryUserAccount, id: string, input: unknown) {
     const row = this.record(user, id);
     const command = validate(z.object({ questionId: z.string().min(1).max(200), selectedIndex: z.number().int().min(0).max(20).nullable(),
-      hintUsed: z.boolean().default(false), requestKey: z.string().min(8).max(180) }).strict(), input);
-    const hash = createHash('sha256').update(JSON.stringify([command.questionId, command.selectedIndex, command.hintUsed])).digest('hex');
+      hintUsed: z.boolean().default(false), disposition: z.enum(['answered', 'skip', 'dont_know']).optional(), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const disposition = command.disposition ?? (command.selectedIndex === null ? 'skip' : 'answered');
+    if ((disposition === 'answered') !== (command.selectedIndex !== null)) throw new BadRequestException('作答状态与选项不一致');
+    const hash = createHash('sha256').update(JSON.stringify([command.questionId, command.selectedIndex, command.hintUsed,
+      ...(command.disposition === undefined ? [] : [command.disposition])])).digest('hex');
     const replay = row.requests.find(request => request.key === command.requestKey);
     if (replay) {
       if (replay.kind !== 'answer' || replay.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
@@ -126,7 +149,8 @@ export class ClassroomService {
     if (!row.answers.some(answer => answer.questionId === command.questionId)) {
       row.answers.push({ questionId: question.id, selectedIndex: command.selectedIndex, correct: command.selectedIndex === key.answer,
         skipped: command.selectedIndex === null, explanation: key.explanation,
-        hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)), at: new Date().toISOString() });
+        hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)) || Boolean(row.hintReceipts?.some(hint => hint.questionId === question.id)), disposition,
+        hintLevel: Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === question.id).map(hint => hint.level)), at: new Date().toISOString() });
       row.revision++; row.updatedAt = new Date().toISOString();
     }
     row.requests.push({ key: command.requestKey, hash, kind: 'answer', questionId: command.questionId });
@@ -135,8 +159,8 @@ export class ClassroomService {
 
   hint(user: InMemoryUserAccount, id: string, input: unknown) {
     const row = this.record(user, id);
-    const command = validate(z.object({ questionId: z.string().min(1).max(200), requestKey: z.string().min(8).max(180) }).strict(), input);
-    const hash = createHash('sha256').update(command.questionId).digest('hex');
+    const command = validate(z.object({ questionId: z.string().min(1).max(200), level: z.number().int().min(1).max(5).optional(), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const hash = createHash('sha256').update(command.level === undefined ? command.questionId : JSON.stringify([command.questionId, command.level])).digest('hex');
     const replay = row.requests.find(request => request.key === command.requestKey);
     if (replay) {
       if (replay.kind !== 'hint' || replay.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
@@ -144,9 +168,15 @@ export class ClassroomService {
     }
     if (!row.lesson.questions.some(question => question.id === command.questionId)) throw new NotFoundException('课堂题目不存在');
     if (row.answers.some(answer => answer.questionId === command.questionId)) throw new BadRequestException('本题已提交，请查看作答反馈');
-    if (!row.hintedQuestionIds?.includes(command.questionId)) {
-      row.hintedQuestionIds = [...(row.hintedQuestionIds ?? []), command.questionId];
-      row.revision++; row.updatedAt = new Date().toISOString();
+    const levels = this.hintLevels(row, command.questionId), target = command.level ?? 1;
+    const current = Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === command.questionId).map(hint => hint.level));
+    if (target > levels.length) throw new BadRequestException('本题没有这个级别的提示');
+    if (target > current + 1) throw new ConflictException('请先读取前一级提示，再决定是否继续');
+    if (target > current) {
+      const now = new Date().toISOString();
+      row.hintReceipts = [...(row.hintReceipts ?? []), { questionId: command.questionId, level: target, text: levels[target - 1], at: now }];
+      row.hintedQuestionIds = [...new Set([...(row.hintedQuestionIds ?? []), command.questionId])];
+      row.revision++; row.updatedAt = now;
     }
     row.requests.push({ key: command.requestKey, hash, kind: 'hint', questionId: command.questionId });
     return this.view(row);

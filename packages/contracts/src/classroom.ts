@@ -7,9 +7,10 @@ export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' |
 export type ClassroomStep = { id: string; title: string; narration: string; blocks: ClassroomBlock[];
   phase: 'orient' | 'concept' | 'example' | 'contrast' | 'check' | 'transfer'; durationMs: number };
 export type ClassroomQuestion = { id: string; prompt: string; options: string[]; hint: string;
+  hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
 export type ClassroomLesson = { id: string; title: string; objective: string; lectureId: string; steps: ClassroomStep[];
-  questions: ClassroomQuestion[]; verificationHref?: string;
+  questions: ClassroomQuestion[]; verificationHref?: string; practiceVersion?: string;
   assessment?: { kind: 'unit-check'; version: string; notice: string } };
 export type ClassroomLecture = { id: string; title: string; description: string; lessons: Array<Pick<ClassroomLesson, 'id' | 'title' | 'objective'>> };
 export type ClassroomUnit = { id: string; title: string; objective: string; lectures: ClassroomLecture[];
@@ -17,7 +18,8 @@ export type ClassroomUnit = { id: string; title: string; objective: string; lect
 export type ClassroomCourse = { id: string; title: string; description: string; level: string; version: string;
   provenance: string; units: ClassroomUnit[]; references: Array<{ title: string; url: string }> };
 export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number | null; correct: boolean; skipped: boolean;
-  explanation: string; hintUsed: boolean; at: string };
+  explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number };
+export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
 export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;
   board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
@@ -25,15 +27,17 @@ export type ClassroomSession = { id: string; ownerUserId: string; studentId: str
   cursor: number; revealed: number; sentenceCursor?: number; status: 'paused' | 'completed'; revision: number;
   messages: ClassroomChatMessage[]; answers: ClassroomAnswerReceipt[]; projectDraft: string;
   hintedQuestionIds?: string[];
+  hintReceipts?: ClassroomHintReceipt[];
   createdAt: string; updatedAt: string };
 export type ClassroomSessionView = ClassroomSession & { speech: StudioSpeechCapabilities;
   contentStatus?: 'current' | 'archived' | 'unavailable' };
 export type ClassroomCatalog = { course: ClassroomCourse; progress: Array<{ lessonId: string; sessionId: string;
   cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>;
+  readingProgress?: Array<{ lessonId: string; sessionId: string; cursor: number; completed: boolean; updatedAt: string }>;
   archivedSessions?: Array<{ sessionId: string; lessonId: string; title: string; total: number; answered: number; updatedAt: string }> };
 
 export type ClassroomPracticeSummary = {
-  total: number; answered: number; remaining: number; correct: number; incorrect: number; skipped: number;
+  total: number; answered: number; remaining: number; correct: number; incorrect: number; skipped: number; dontKnow: number;
   assisted: number; independentCorrect: number; complete: boolean; nextQuestionIndex: number; reviewQuestionIds: string[];
 };
 
@@ -43,13 +47,16 @@ export function classroomPracticeSummary(questions: ClassroomQuestion[], answers
   for (const answer of answers) if (!receipts.has(answer.questionId)) receipts.set(answer.questionId, answer);
   const valid = questions.flatMap(question => { const answer = receipts.get(question.id); return answer ? [answer] : []; });
   const next = questions.findIndex(question => !receipts.has(question.id));
+  const attempted = (answer: ClassroomAnswerReceipt) => answer.disposition ? answer.disposition === 'answered' : !answer.skipped;
   return { total: questions.length, answered: valid.length, remaining: questions.length - valid.length,
-    correct: valid.filter(answer => answer.correct && !answer.skipped).length,
-    incorrect: valid.filter(answer => !answer.correct && !answer.skipped).length, skipped: valid.filter(answer => answer.skipped).length,
+    correct: valid.filter(answer => answer.correct && attempted(answer)).length,
+    incorrect: valid.filter(answer => !answer.correct && attempted(answer)).length,
+    skipped: valid.filter(answer => answer.disposition === 'skip' || !answer.disposition && answer.skipped).length,
+    dontKnow: valid.filter(answer => answer.disposition === 'dont_know').length,
     assisted: valid.filter(answer => answer.hintUsed).length,
-    independentCorrect: valid.filter(answer => answer.correct && !answer.skipped && !answer.hintUsed).length,
+    independentCorrect: valid.filter(answer => answer.correct && attempted(answer) && !answer.hintUsed).length,
     complete: questions.length > 0 && next < 0, nextQuestionIndex: next < 0 ? 0 : next,
-    reviewQuestionIds: valid.filter(answer => !answer.correct || answer.skipped || answer.hintUsed).map(answer => answer.questionId) };
+    reviewQuestionIds: valid.filter(answer => !answer.correct || !attempted(answer) || answer.hintUsed).map(answer => answer.questionId) };
 }
 
 /** Spoken units stay intact: no per-character reveal or estimated audio alignment. */

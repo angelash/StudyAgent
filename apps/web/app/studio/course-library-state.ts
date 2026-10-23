@@ -56,7 +56,7 @@ export function libraryCourses(courses: StudioCourse[], classroom: ClassroomCata
   });
   if (classroom) {
     const lessons = classroom.course.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons));
-    const completed = new Set(classroom.progress.filter(row => row.completed).map(row => row.lessonId));
+    const completed = new Set((classroom.readingProgress ?? classroom.progress).filter(row => row.completed).map(row => row.lessonId));
     const viewed = lessons.filter(lesson => completed.has(lesson.id)).length;
     const lastStudied = latest([...classroom.progress.map(row => row.updatedAt), ...(classroom.archivedSessions ?? []).map(row => row.updatedAt)]);
     rows.push({ id: classroom.course.id, title: classroom.course.title, type: 'adult', source: 'authored',

@@ -35,7 +35,7 @@ test('unit check resumes holes, persists help and provides a faithful review wit
   await select(1, false);
   await page.getByRole('button', { name: '第3题', exact: true }).click();
   await page.getByRole('button', { name: '先给我一个提示', exact: true }).click();
-  await expect(page.getByRole('button', { name: '已记录提示', exact: true })).toBeDisabled();
+  await expect(page.getByRole('button', { name: '再给我一个提示', exact: true })).toBeEnabled();
   await page.reload(); await expect(page.getByRole('button', { name: '第3题', exact: true })).toHaveAttribute('aria-current', 'step');
   await expect(page.locator('.cl-hint')).toBeVisible();
   await select(2, true); await expect(page.locator('.cl-answer-feedback')).toContainText('记为辅助作答');
@@ -76,7 +76,10 @@ test('saved-session links restore the exact activity and reject a mismatched les
   await login(page); await page.goto('/studio/classroom?lesson=soc-2-1-2&tab=practice');
   await expect(page.locator('.cl-practice-options')).toBeVisible();
   const saved = new URL(page.url()).searchParams.get('session'); expect(saved).toBeTruthy();
-  await page.getByRole('button', { name: 'Skip', exact: true }).click();
+  for (let index = 0; index < 3; index++) {
+    await page.getByRole('button', { name: `第${index + 1}题`, exact: true }).click();
+    await page.getByRole('button', { name: 'Skip', exact: true }).click();
+  }
   await expect(page.getByRole('region', { name: '课堂练习复盘' })).toBeVisible();
   await page.goto('/studio/classroom?session=' + encodeURIComponent(saved!) + '&tab=practice');
   await expect(page.getByRole('region', { name: '课堂练习复盘' }).locator('.cl-review-items')).toContainText('第1题 · 跳过');

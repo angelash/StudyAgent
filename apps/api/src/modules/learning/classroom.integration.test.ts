@@ -101,6 +101,64 @@ describe('classroom teaching sessions and persistent isolation', () => {
     await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey: randomUUID() }, parent, 400);
   });
 
+  it('grants sequential frozen hints once and keeps dont-know separate from skip and wrong', async () => {
+    const session = await call('post', base + '/sessions', { lessonId: 'soc-5-2-1' });
+    const question = session.lesson.questions[1], questionId = question.id;
+    const { classroomHintKeys } = require('../../../dist/apps/api/src/modules/learning/classroom-curriculum.js');
+    const privateHints = classroomHintKeys(questionId);
+    expect(session).not.toHaveProperty('hintKeys'); expect(question.hint).toBe(''); expect(question.hintCount).toBe(2);
+    expect(JSON.stringify(session)).not.toContain(privateHints[0]); expect(JSON.stringify(session)).not.toContain(privateHints[1]);
+    await call('post', base + '/sessions/' + session.id + '/hints', { questionId, level: 2, requestKey: randomUUID() }, parent, 409);
+    const key = randomUUID(), command = { questionId, level: 1, requestKey: key };
+    const first = await call('post', base + '/sessions/' + session.id + '/hints', command);
+    expect(first.hintReceipts).toHaveLength(1); expect(first.hintReceipts[0].text).toBe(privateHints[0]);
+    expect(JSON.stringify(first)).not.toContain(privateHints[1]);
+    expect((await call('post', base + '/sessions/' + session.id + '/hints', command)).revision).toBe(first.revision);
+    expect((await call('post', base + '/sessions/' + session.id + '/hints', { ...command, requestKey: randomUUID() })).hintReceipts).toHaveLength(1);
+    expect((await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey: randomUUID() })).hintReceipts).toHaveLength(1);
+    await call('post', base + '/sessions/' + session.id + '/hints', { ...command, level: 2 }, parent, 409);
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + session.id)).hintReceipts).toEqual(first.hintReceipts);
+    const second = await call('post', base + '/sessions/' + session.id + '/hints', { questionId, level: 2, requestKey: randomUUID() });
+    expect(second.hintReceipts.map((hint: any) => hint.text)).toEqual(privateHints);
+    const answer = { questionId, selectedIndex: null, disposition: 'dont_know', hintUsed: false, requestKey: randomUUID() };
+    const submitted = await call('post', base + '/sessions/' + session.id + '/answers', answer);
+    expect(submitted.answers[0]).toMatchObject({ disposition: 'dont_know', selectedIndex: null, correct: false, hintUsed: true, hintLevel: 2 });
+    expect((await call('post', base + '/sessions/' + session.id + '/answers', answer)).answers).toEqual(submitted.answers);
+    await call('post', base + '/sessions/' + session.id + '/answers', { ...answer, selectedIndex: 0 }, parent, 400);
+    await call('post', base + '/sessions/' + session.id + '/answers', { ...answer, disposition: 'answered', requestKey: randomUUID() }, parent, 400);
+    const skipped = await call('post', base + '/sessions/' + session.id + '/answers', { questionId: session.lesson.questions[2].id, selectedIndex: null, requestKey: randomUUID() });
+    expect(skipped.answers[1].disposition).toBe('skip');
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + session.id)).answers).toEqual(skipped.answers);
+  });
+
+  it('retains identical teaching progress while old practice and legacy hints remain frozen', async () => {
+    const saved = await call('post', base + '/sessions', { lessonId: 'soc-2-3-4' });
+    const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
+    const store = app.get(InMemoryStoreService);
+    await store.transaction(() => {
+      const row = store.find('classroomSessions', { id: saved.id }); row.contentFingerprint = 'legacy-practice';
+      row.lesson.questions = row.lesson.questions.slice(0, 1); row.lesson.questions[0].hint = '旧版原始提示，只按原快照提供。';
+      delete row.lesson.practiceVersion; delete row.hintKeys; delete row.hintReceipts;
+      row.status = 'completed'; row.cursor = row.lesson.steps.length - 1; row.revealed = row.lesson.steps.length;
+    });
+    const current = await call('post', base + '/sessions', { lessonId: saved.lessonId, useCurrentVersion: true });
+    expect(current.lesson.questions).toHaveLength(3); expect(current.answers).toEqual([]);
+    const catalog = await call('get', base + '/catalog');
+    expect(catalog.readingProgress).toContainEqual(expect.objectContaining({ lessonId: saved.lessonId, sessionId: saved.id, completed: true }));
+    expect(catalog.progress).toContainEqual(expect.objectContaining({ sessionId: current.id, answered: 0, completed: false }));
+    expect(catalog.archivedSessions).toContainEqual(expect.objectContaining({ sessionId: saved.id, total: 1 }));
+    const old = await call('get', base + '/sessions/' + saved.id); expect(old.lesson.questions[0]).toMatchObject({ hint: '', hintCount: 1 });
+    await call('post', base + '/sessions/' + saved.id + '/hints', { questionId: old.lesson.questions[0].id, level: 2, requestKey: randomUUID() }, parent, 400);
+    const hint = await call('post', base + '/sessions/' + saved.id + '/hints', { questionId: old.lesson.questions[0].id, level: 1, requestKey: randomUUID() });
+    expect(hint.hintReceipts[0].text).toBe('旧版原始提示，只按原快照提供。');
+    await store.transaction(() => { store.find('classroomSessions', { id: saved.id }).lesson.steps[0].narration += '原讲解已不同'; });
+    expect((await call('get', base + '/catalog')).readingProgress).not.toContainEqual(expect.objectContaining({ sessionId: saved.id }));
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + saved.id)).hintReceipts).toEqual(hint.hintReceipts);
+  });
+
   it('keeps old unit questions and scoring readable after a new check is published', async () => {
     const saved = await call('post', base + '/sessions', { lessonId: 'unit-exam:soc-u2' });
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');

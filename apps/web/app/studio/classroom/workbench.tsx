@@ -102,12 +102,14 @@ export function ClassroomWorkbench() {
     onClose={close} onNext={(id, tab = 'history', useCurrentVersion = false) => void open(id, tab, studio.current, 'push', false, undefined, useCurrentVersion)} />;
   const course = catalog?.course, unit = course?.units[unitIndex];
   const progress = new Map(catalog?.progress.map(row => [row.lessonId, row]) ?? []);
-  function state(id: string) { const row = progress.get(id); return row?.completed ? 'viewed' as const : row ? 'started' as const : 'new' as const; }
+  const readingProgress = catalog?.readingProgress ?? catalog?.progress ?? [];
+  const reading = new Map(readingProgress.map(row => [row.lessonId, row]));
+  function state(id: string) { const row = reading.get(id); return row?.completed ? 'viewed' as const : row ? 'started' as const : 'new' as const; }
   const allLessons = course?.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons)) ?? [];
-  const recent = [...(catalog?.progress ?? [])].filter(row => allLessons.some(lesson => lesson.id === row.lessonId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
-  const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !progress.get(lesson.id)?.completed);
+  const recent = [...readingProgress].filter(row => allLessons.some(lesson => lesson.id === row.lessonId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
+  const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !reading.get(lesson.id)?.completed);
   return <main className="cl-shell ws-classroom-shell">
-    <StudioNavigation active="courses" recent={[{title:catalog?.course.units.flatMap(unit=>unit.lectures.flatMap(lecture=>lecture.lessons)).find(lesson=>lesson.id===[...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?lesson='+([...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId??'soc-1-1-1')}]} />
+    <StudioNavigation active="courses" recent={[{title:allLessons.find(lesson=>lesson.id===recent?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?'+new URLSearchParams({lesson:recent?.lessonId??'soc-1-1-1',...(recent?{session:recent.sessionId}:{})})}]} />
     <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
       <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
@@ -136,7 +138,7 @@ export function ClassroomWorkbench() {
               讲次 {index + 1}：{lecture.title}</button><button className="cl-assist" onClick={() => void open(lecture.lessons[0].id, 'history', undefined, 'push', true)}>获取帮助</button></header>
             <p>{lecture.description}</p>
             {(expanded.includes(lecture.id) || panel === 'practices') && <div className="cl-microlessons">{lecture.lessons.map(lesson => <div className="cl-micro" key={lesson.id}>
-              <span className="ws-micro-title">{lesson.title}<button className="ws-lesson-info" aria-label={'查看学习目标：' + lesson.title} onClick={() => setLessonInfo(lesson)}>⊙</button></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{progress.has(lesson.id) ? '▶ 继续学习' : '▶ 学习'}</button>
+              <span className="ws-micro-title">{lesson.title}<button className="ws-lesson-info" aria-label={'查看学习目标：' + lesson.title} onClick={() => setLessonInfo(lesson)}>⊙</button></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{reading.has(lesson.id) ? '▶ 继续学习' : '▶ 学习'}</button>
               <button className="cl-practice" disabled={loading} onClick={() => void open(lesson.id, 'practice')}>♧ 练习{Boolean(progress.get(lesson.id)?.answered) && <span title="已有练习记录"> ·</span>}</button><Ring state={state(lesson.id)}/>
             </div>)}</div>}
           </article>)}
@@ -334,22 +336,22 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     } catch (error) { if (!controller.signal.aborted) setNotice((error as Error).message); }
     finally { if (chatAbort.current === controller) { chatAbort.current = null; setBusy(false); } }
   }
-  async function answer(selectedIndex: number | null) {
+  async function answer(selectedIndex: number | null, disposition?: 'skip' | 'dont_know') {
     const item = lesson.questions[questionIndex]; if (!item || busy) return;
-    pause(); setBusy(true);
+    pause(); setBusy(true); setNotice('');
     try {
       await revisionQueue.current.catch(() => undefined);
       receive(await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + row.current.id + '/answers', { method: 'POST',
-        body: JSON.stringify({ questionId: item.id, selectedIndex, hintUsed: hinted.includes(item.id), requestKey: crypto.randomUUID() }) }));
+        body: JSON.stringify({ questionId: item.id, selectedIndex, hintUsed: hinted.includes(item.id), ...(disposition ? { disposition } : {}), requestKey: crypto.randomUUID() }) }));
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
-  async function hint(questionId: string) {
+  async function hint(questionId: string, level: number) {
     if (busy) return;
-    pause(); setBusy(true);
+    pause(); setBusy(true); setNotice('');
     try {
       await revisionQueue.current.catch(() => undefined);
       receive(await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + row.current.id + '/hints', {
-        method: 'POST', body: JSON.stringify({ questionId, requestKey: crypto.randomUUID() }) }));
+        method: 'POST', body: JSON.stringify({ questionId, level, requestKey: crypto.randomUUID() }) }));
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
   function microphone() {
@@ -376,10 +378,10 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const questionItem = lesson.questions[questionIndex], receipt = session.answers.find(answer => answer.questionId === questionItem?.id);
   const nextLesson = unit?.lectures.flatMap(lecture => lecture.lessons).find((_, index, list) => list[index - 1]?.id === lesson.id);
   function practice(standalone: boolean) { return <PracticePanel questions={lesson.questions} answers={session.answers} questionIndex={questionIndex}
-    selected={selected} hinted={hinted} busy={busy} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
+    selected={selected} hinted={hinted} hintReceipts={session.hintReceipts} busy={busy} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
     onSelect={(id, index) => setSelected(value => ({ ...value, [id]: index }))}
-    assessment={lesson.assessment} contentStatus={session.contentStatus} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
-    onHint={id => void hint(id)} onAnswer={index => void answer(index)}
+    assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
+    onHint={(id,level) => void hint(id,level)} onAnswer={(index,disposition) => void answer(index,disposition)}
     onClose={() => setExit(true)} onAssistant={() => { setShowChat(!showChat); setTab('history'); }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomSentences(current.narration)[session.sentenceCursor ?? 0] : '准备好后，点击 ▶ 开始。');
   return <main className="cl-room" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>

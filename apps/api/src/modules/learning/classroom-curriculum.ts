@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import type { ClassroomCourse, ClassroomDiagram, ClassroomLesson, ClassroomStep, StudioCourse, StudioLesson } from '@study-agent/contracts';
 import { conceptNotes } from './classroom-board-notes';
 import { UNIT_CHECK_VERSION, unitChecks } from './classroom-unit-checks';
+import { CLASSROOM_PRACTICE_VERSION, practiceVariations } from './classroom-practice-content';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -127,8 +128,9 @@ function step(id: string, phase: ClassroomStep['phase'], title: string, narratio
 
 const lessonMap = new Map<string, ClassroomLesson>();
 const keys = new Map<string, { answer: number; explanation: string }>();
+const hints = new Map<string, string[]>();
 const course: ClassroomCourse = {
-  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: '2026-10-23.3',
+  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: CLASSROOM_PRACTICE_VERSION,
   description: '从自己的生活出发，看见文化、关系和制度如何共同塑造社会。五个单元串起概念、案例、练习与一个持续推进的社区研究。',
   provenance: 'StudyAgent 自编教学内容；课程层级与交互参考用户指定HyperKnow页面的可见观察。成人课程记录独立于小学能力评测。',
   references: [{ title: 'OpenStax · Introduction to Sociology 3e', url: 'https://openstax.org/details/books/introduction-sociology-3e' }],
@@ -191,6 +193,27 @@ const course: ClassroomCourse = {
             return { id: checkId, prompt, options: [...answers], hint: '回想“' + label + '”的分析边界，排除忽略条件或把关系说成绝对的解释。' };
           });
         }
+        for (const [index, question] of lesson.questions.entries()) {
+          question.topic = { lessonId: id, title: name };
+          question.purpose = id === 'soc-1-1-1' ? (['boundary', 'evidence', 'application', 'evidence', 'application'] as const)[index] : 'application';
+          question.hintCount = 2; hints.set(question.id, [question.hint, concept]);
+        }
+        const variations = practiceVariations[id];
+        if (id !== 'soc-1-1-1' && (!variations || variations.length !== 2)) throw new Error('微课练习未补齐：' + id);
+        for (const variation of variations ?? []) {
+          if (variation.options.length !== 4 || new Set(variation.options).size !== 4 || variation.hints.length !== 2 ||
+            !Number.isInteger(variation.answer) || variation.answer < 0 || variation.answer > 3) throw new Error('微课练习内容无效：' + id);
+          const questionId = id + ':practice:v1:' + variation.purpose;
+          const rotation = createHash('sha256').update(questionId).digest()[0] % 4;
+          const options = [...variation.options.slice(rotation), ...variation.options.slice(0, rotation)];
+          keys.set(questionId, { answer: (variation.answer - rotation + 4) % 4, explanation: variation.explanation });
+          hints.set(questionId, [...variation.hints]);
+          lesson.questions.push({ id: questionId, prompt: variation.prompt, options, hint: variation.hints[0], hintCount: 2,
+            purpose: variation.purpose, topic: { lessonId: id, title: name },
+            ...(variation.table ? { table: structuredClone(variation.table) } : {}), ...(variation.diagram ? { diagram: structuredClone(variation.diagram) } : {}) });
+        }
+        lesson.practiceVersion = CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(lesson.questions.map(question =>
+          [question, keys.get(question.id), hints.get(question.id)]))).digest('hex').slice(0, 16);
         lessonMap.set(id, lesson);
         return { id, title: name, objective: lesson.objective };
       }),
@@ -213,11 +236,14 @@ for (const unit of course.units) {
     const rotation = createHash('sha256').update(questionId).digest()[0] % 4;
     const options = [...item.options.slice(rotation), ...item.options.slice(0, rotation)];
     keys.set(questionId, { answer: (item.answer - rotation + 4) % 4, explanation: item.explanation });
-    return { id: questionId, prompt: item.prompt, options, hint: item.hint, purpose: item.purpose, topic: { lessonId: topic.id, title: topic.title } };
+    hints.set(questionId, [item.purpose === 'evidence' ? '先明确要核查哪一种解释，区分直接观察、指标和进一步推断。' :
+      item.purpose === 'boundary' ? '先比较相邻概念和适用条件，不把一个现象直接当作全部机制。' : '先指出情境中的规则、关系或资源，再用概念逐步核对。', item.hint]);
+    return { id: questionId, prompt: item.prompt, options, hint: item.hint, hintCount: 2, purpose: item.purpose, topic: { lessonId: topic.id, title: topic.title } };
   });
   unitLessons.set(id, { id, title: unit.title + ' · 单元核查', lectureId: unit.id, objective: unit.objective,
     assessment: { kind: 'unit-check', version: UNIT_CHECK_VERSION + ':' + createHash('sha256').update(JSON.stringify(definitions)).digest('hex').slice(0, 16),
       notice: '这组题采用不同于课堂练习的新情境。提示、跳过和首次作答分别保留；结果只说明本组表现，不是标准化能力等级。' },
+    practiceVersion: CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(questions.map(question => [question, hints.get(question.id)]))).digest('hex').slice(0, 16),
     steps: [step(id + ':orient', 'orient', '单元核查', '用十二个新情境核查本单元各个主题。可以先独立判断，需要帮助时再使用提示。结果保留首次答案和辅助情况，不将这次正确率直接称为掌握。'),
       step(id + ':transfer', 'transfer', unit.project.title, unit.project.brief)], questions });
 }
@@ -230,7 +256,12 @@ export function classroomLesson(id: string): ClassroomLesson | undefined {
   return check ? structuredClone(check) : undefined;
 }
 export function classroomAnswerKey(id: string) { return keys.get(id); }
+export function classroomHintKeys(id: string) { return hints.get(id); }
 export function classroomFingerprint(lesson: ClassroomLesson) { return createHash('sha256').update(JSON.stringify(lesson)).digest('hex'); }
+export function classroomTeachingFingerprint(lesson: ClassroomLesson) {
+  return createHash('sha256').update(JSON.stringify({ id: lesson.id, lectureId: lesson.lectureId, title: lesson.title,
+    objective: lesson.objective, steps: lesson.steps, verificationHref: lesson.verificationHref })).digest('hex');
+}
 
 export function curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined {
   const teaching = source.teaching?.teaching;

@@ -18,8 +18,9 @@ export function MyCourses({ courses, classroom, studentId, subject, programmingH
   }
   const rows = libraryCourses(courses, classroom), visible = filterLibraryCourses(rows, filters);
   const lessonList = classroom?.course.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons)) ?? [];
-  const progress = new Map(classroom?.progress.map(row => [row.lessonId, row]) ?? []);
-  const recent = [...(classroom?.progress ?? [])].filter(row => lessonList.some(lesson => lesson.id === row.lessonId)).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0];
+  const reading = classroom?.readingProgress ?? classroom?.progress ?? [];
+  const progress = new Map(reading.map(row => [row.lessonId, row]));
+  const recent = [...reading].filter(row => lessonList.some(lesson => lesson.id === row.lessonId)).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0];
   const nextLesson = lessonList.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? lessonList.find(lesson => !progress.get(lesson.id)?.completed) ?? lessonList[0];
   function link(base: string) {
     const [pathname, query] = base.split('?'), params = writeCourseFilters(new URLSearchParams(query), filters);
@@ -44,7 +45,7 @@ export function MyCourses({ courses, classroom, studentId, subject, programmingH
   }
   const reference = new Date(); reference.setHours(0, 0, 0, 0); reference.setDate(reference.getDate() - (reference.getDay() + 6) % 7 + weekOffset * 7);
   const days = Array.from({ length: 7 }, (_, index) => { const day = new Date(reference); day.setDate(day.getDate() + index); return day; });
-  const dayCounts = days.map(day => (classroom?.progress ?? []).filter(row => row.completed && lessonList.some(lesson => lesson.id === row.lessonId) && new Date(row.updatedAt).toDateString() === day.toDateString()).length);
+  const dayCounts = days.map(day => reading.filter(row => row.completed && lessonList.some(lesson => lesson.id === row.lessonId) && new Date(row.updatedAt).toDateString() === day.toDateString()).length);
   const filtered = Object.keys(filters).some(key => filters[key as keyof CourseFilters] !== defaultCourseFilters[key as keyof CourseFilters]);
   return <section className="ws-courses"><div className="ws-course-main"><header className="ws-page-title"><h1>我的课程</h1><button onClick={onCreate}>＋ 创建课程</button></header>
     <div className="ws-course-filters"><div role="tablist" aria-label="课程状态">{(['all', 'new', 'active', 'complete'] as const).map((value, index) => <button key={value} role="tab" aria-selected={filters.state === value} onClick={() => update({ state: value })}>{['全部', '未开始', '进行中', '已完成'][index]}</button>)}</div>
