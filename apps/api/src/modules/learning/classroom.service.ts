@@ -88,7 +88,7 @@ export class ClassroomService {
     const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),sourceCourseId:z.string().min(1).max(180).optional(),
       useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源'), input);
     let lesson = classroomLesson(command.lessonId), courseId = 'sociology-foundations', studentId: string | null = null;
-    let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|undefined;
+    let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|undefined;let authoringAnswerExposure=false;
     if (command.studioCourseId) {
       const course = this.store.find('studioCourses', { id: command.studioCourseId });
       if (!course) throw new NotFoundException('课程不存在');
@@ -100,7 +100,7 @@ export class ClassroomService {
     } else if(command.sourceCourseId){const course=this.store.find('sourceCourses',{id:command.sourceCourseId});if(!course)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,course,this.students);
       if(course.status!=='active')throw new ConflictException('请先确认课程，已归档课程只能查看已有课堂记录');
       const index=course.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===command.lessonId)??-1;
-      if(index<0)throw new NotFoundException('资料课时不存在');lesson=sourceCourseLesson(course,index);generatedKeys=sourceCourseAnswerKeys(course,index);courseId=course.id;studentId=course.studentId;
+      if(index<0)throw new NotFoundException('资料课时不存在');lesson=sourceCourseLesson(course,index);generatedKeys=sourceCourseAnswerKeys(course,index);authoringAnswerExposure=course.ownerUserId===user.id&&Boolean(course.authoringExposedAt);courseId=course.id;studentId=course.studentId;
     } else if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
     if (!lesson) throw new NotFoundException('微课不存在');
     const fingerprint = classroomFingerprint(lesson);
@@ -118,7 +118,7 @@ export class ClassroomService {
     const hintKeys = generatedKeys?.hints??Object.fromEntries(lesson.questions.map(question => [question.id, structuredClone(classroomHintKeys(question.id) ?? (question.hint ? [question.hint] : []))]));
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
-      ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId}:{}),
+      ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId,...(authoringAnswerExposure?{authoringAnswerExposure:true}:{})}:{}),
       contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);
@@ -163,7 +163,7 @@ export class ClassroomService {
     // The first submitted answer is immutable. Reopening a lesson cannot erase an error or hint.
     if (!row.answers.some(answer => answer.questionId === command.questionId)) {
       row.answers.push({ questionId: question.id, selectedIndex: command.selectedIndex, correct: command.selectedIndex === key.answer,
-        skipped: command.selectedIndex === null, explanation: key.explanation,
+        skipped: command.selectedIndex === null, explanation: key.explanation,...(row.authoringAnswerExposure?{answerExposure:'authorship' as const}:{}),
         hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)) || Boolean(row.hintReceipts?.some(hint => hint.questionId === question.id)), disposition,
         hintLevel: Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === question.id).map(hint => hint.level)), at: new Date().toISOString() });
       row.revision++; row.updatedAt = new Date().toISOString();

@@ -10,6 +10,8 @@ export class SourceCourseController {
   @Get() list(@Req()req:AuthenticatedRequest,@Query()query:unknown){return this.courses.list(req.user,query);}
   @Post() create(@Req()req:AuthenticatedRequest,@Body()body:unknown){return this.courses.create(req.user,body);}
   @Get(':id') get(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.courses.get(req.user,id);}
+  @Post(':id/authoring') authoring(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.courses.authoring(req.user,id);}
+  @Patch(':id/content') content(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.courses.editContent(req.user,id,body);}
   @Patch(':id') edit(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.courses.edit(req.user,id,body);}
   @Post(':id/confirm') confirm(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.courses.confirm(req.user,id,body);}
   @Post(':id/cancel') cancel(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.courses.control(req.user,id,'cancel',body);}

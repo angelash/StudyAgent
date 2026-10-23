@@ -1,17 +1,9 @@
 import { createHash } from 'node:crypto';
-import { z } from 'zod';
+import { sourceCourseContentSchema as generatedCourseSchema, type SourceCourseContent } from '@study-agent/contracts';
 import type { ClassroomLesson, ClassroomStep, CourseSourceSnapshot, SourceCourseInput, StudioSubject } from '@study-agent/contracts';
 
-const text = (max: number) => z.string().trim().min(1).max(max);
-export const generatedLessonSchema = z.object({ title: text(100), objective: text(350), introduction: text(400), concept: text(900),
-  notes: z.array(text(80)).min(2).max(5), example: z.object({ scenario: text(500), steps: z.array(text(200)).min(2).max(6), board: z.array(text(80)).min(2).max(6), conclusion: text(350) }).strict(),
-  misconception: z.object({ claim: text(250), correction: text(500),board:z.array(text(80)).min(2).max(3) }).strict(), transfer: text(500), summary: text(300),takeaways:z.array(text(80)).min(2).max(4),
-  citations: z.array(z.object({ sourceKey: text(100), quote: text(500) }).strict()).min(1).max(5),
-  questions: z.array(z.object({ prompt: text(700), options: z.array(text(220)).length(4), answer: z.number().int().min(0).max(3),
-    explanation: text(600), hints: z.array(text(200)).length(2) }).strict()).min(2).max(4),
-}).strict();
-export const generatedCourseSchema = z.object({ title: text(180), overview: text(700), lessons: z.array(generatedLessonSchema).min(1).max(6) }).strict();
-export type GeneratedSourceCourse = z.infer<typeof generatedCourseSchema>;
+export { sourceCourseLessonContentSchema as generatedLessonSchema, sourceCourseContentSchema as generatedCourseSchema } from '@study-agent/contracts';
+export type GeneratedSourceCourse = SourceCourseContent;
 const string = (maxLength: number) => ({ type: 'string', minLength: 1, maxLength }), array = (items: unknown, minItems: number, maxItems: number) => ({ type:'array', items, minItems, maxItems });
 const object = (properties: Record<string,unknown>) => ({ type:'object', properties, required:Object.keys(properties), additionalProperties:false });
 export const generatedCourseJsonSchema = object({title:string(180),overview:string(700),lessons:array(object({title:string(100),objective:string(350),introduction:string(400),concept:string(900),
@@ -23,7 +15,7 @@ export type SourceCourseRecord = { id: string; ownerUserId: string; studentId: s
   status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string;
   result: GeneratedSourceCourse | null; originalResult: GeneratedSourceCourse | null;
   edits: Array<{at:string;changes:unknown}>; fingerprint: string | null; modelName: string | null;
-  confirmedAt: string | null; createdAt: string; updatedAt: string;
+  authoringExposedAt?: string; confirmedAt: string | null; createdAt: string; updatedAt: string;
   requests: Array<{key:string;hash:string;kind:string}>;
 };
 export const sourceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');

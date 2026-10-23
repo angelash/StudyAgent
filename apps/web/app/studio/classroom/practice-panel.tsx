@@ -78,7 +78,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
         <span className="cl-option-shape" data-shape={index % 4} aria-hidden="true">{['▲', '◆', '●', '■'][index % 4]}</span><span>{option}</span><b>{index + 1}</b>
       </label>)}</fieldset></div>
       <div className="cl-practice-support">{receipt ? <div className="cl-answer-feedback" data-correct={receipt.correct} role="status">
-        <b>{receipt.disposition === 'dont_know' ? '已记录不会，回到概念再核查' : receipt.skipped ? '已跳过，保留待复习' : receipt.correct ? '这次区分正确' : '对照概念，再看一次'}</b><p>{receipt.explanation}</p><small>{receipt.hintUsed ? receipt.hintLevel ? `本题使用过提示，已读${receipt.hintLevel}级提示，记为辅助作答。` : '本题使用过帮助，记为辅助作答。' : '已保留首次作答。'}</small>
+        <b>{receipt.disposition === 'dont_know' ? '已记录不会，回到概念再核查' : receipt.skipped ? '已跳过，保留待复习' : receipt.correct ? '这次区分正确' : '对照概念，再看一次'}</b><p>{receipt.explanation}</p><small>{receipt.answerExposure==='authorship'?'你曾打开这份教学稿的答案，作答保留为已接触答案的学习记录，不计独立成功。':receipt.hintUsed ? receipt.hintLevel ? `本题使用过提示，已读${receipt.hintLevel}级提示，记为辅助作答。` : '本题使用过帮助，记为辅助作答。' : '已保留首次作答。'}</small>
       </div> : <><button className="cl-hint-button" disabled={busy || helpLevel >= helpCount} onClick={() => onHint(item.id, helpLevel + 1)}>{helpLevel >= helpCount ? '提示已读完' : helpLevel ? '再给我一个提示' : '先给我一个提示'}</button>
         {help.map(hint => <div className="cl-hint" key={hint.level}><small>第{hint.level}级 · {hint.level === 1 ? '判断方向' : '关键线索'}</small><p>{hint.text}</p></div>)}
         {hinted.includes(item.id) && !help.length && <p className="cl-legacy-help">此前使用过帮助，仍可逐级查看本题提示。</p>}</>}</div>

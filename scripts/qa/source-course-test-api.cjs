@@ -6,7 +6,7 @@ if(!directory.startsWith(path.join(root,'data','qa')+path.sep)||process.env.STUD
 const{sourceCourseFixture}=require('./source-course-fixture.cjs');
 (async()=>{
   const{AppModule}=require('../../apps/api/dist/apps/api/src/app.module.js'),{XiaojiuChatService}=require('../../apps/api/dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
-  const app=await NestFactory.create(AppModule,{logger:false});app.setGlobalPrefix('api');
+  const app=await NestFactory.create(AppModule,{logger:false});require('../../apps/api/dist/apps/api/src/common/http-body.js').configureJsonBody(app);app.setGlobalPrefix('api');
   app.getHttpAdapter().getInstance().set('trust proxy','loopback');
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
   provider.structured=async(input,schema,check,custom=true)=>{

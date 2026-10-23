@@ -20,13 +20,13 @@ export type ClassroomUnit = { id: string; title: string; objective: string; lect
 export type ClassroomCourse = { id: string; title: string; description: string; level: string; version: string;
   provenance: string; units: ClassroomUnit[]; references: Array<{ title: string; url: string }> };
 export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number | null; correct: boolean; skipped: boolean;
-  explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number };
+  explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number; answerExposure?: 'authorship' };
 export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
 export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;
   board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
-  sourceCourseId?: string;
+  sourceCourseId?: string; authoringAnswerExposure?: boolean;
   cursor: number; revealed: number; sentenceCursor?: number; status: 'paused' | 'completed'; revision: number;
   messages: ClassroomChatMessage[]; answers: ClassroomAnswerReceipt[]; projectDraft: string;
   hintedQuestionIds?: string[];
@@ -57,10 +57,10 @@ export function classroomPracticeSummary(questions: ClassroomQuestion[], answers
     incorrect: valid.filter(answer => !answer.correct && attempted(answer)).length,
     skipped: valid.filter(answer => answer.disposition === 'skip' || !answer.disposition && answer.skipped).length,
     dontKnow: valid.filter(answer => answer.disposition === 'dont_know').length,
-    assisted: valid.filter(answer => answer.hintUsed).length,
-    independentCorrect: valid.filter(answer => answer.correct && attempted(answer) && !answer.hintUsed).length,
+    assisted: valid.filter(answer => answer.hintUsed || answer.answerExposure === 'authorship').length,
+    independentCorrect: valid.filter(answer => answer.correct && attempted(answer) && !answer.hintUsed && !answer.answerExposure).length,
     complete: questions.length > 0 && next < 0, nextQuestionIndex: next < 0 ? 0 : next,
-    reviewQuestionIds: valid.filter(answer => !answer.correct || !attempted(answer) || answer.hintUsed).map(answer => answer.questionId) };
+    reviewQuestionIds: valid.filter(answer => !answer.correct || !attempted(answer) || answer.hintUsed || answer.answerExposure).map(answer => answer.questionId) };
 }
 
 /** Spoken units stay intact: no per-character reveal or estimated audio alignment. */
