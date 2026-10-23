@@ -36,7 +36,7 @@ import {
   ImportFile, ImportPageEvidenceRef, ProcessingArtifact,
   GuidancePlanRevision,
   StudentLearningAccess, StudentLearningCode, StudentAccessRevision, StudentProgressProposal,
-  PrivacyReceipt, StudentMedia,
+  PrivacyReceipt, StudentMedia, ClassroomVisualRecord,
   MeasurementContentCandidate,
   MistakeNotebookEntry,
   GespLearningScope, GespLearningScopeRevision, GespCodeSubmissionReceipt, GespProbeSubmissionReceipt,
@@ -415,6 +415,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   gespTaskReviewRevisions: GespTaskReviewRevision[] = [];
   studioCourses: StudioCourse[] = [];
   classroomSessions: ClassroomSessionRecord[] = [];
+  classroomVisuals: ClassroomVisualRecord[] = [];
   courseProjects: CourseProjectRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
   studioActivities: StudioActivity[] = [];
@@ -502,6 +503,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.gespTaskReviewRevisions = [];
     this.studioCourses = [];
     this.classroomSessions = [];
+    this.classroomVisuals = [];
     this.courseProjects = [];
     this.sourceCourses = [];
     this.studioActivities = [];

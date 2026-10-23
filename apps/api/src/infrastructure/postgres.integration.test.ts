@@ -54,6 +54,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       await expect(first.commit(empty, { assistantSessions: [{ id: 'a', scopeKey: 'same' }, { id: 'b', scopeKey: 'same' }] })).rejects.toThrow();
       await expect(first.commit(empty, { privacyRequests: [{ id: 'a', actorId: 'owner', requestKey: 'same' }, { id: 'b', actorId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
       await expect(first.commit(empty, { studentMedia: [{ id: 'a', ownerUserId: 'owner', requestKey: 'same' }, { id: 'b', ownerUserId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
+      await expect(first.commit(empty, { classroomVisuals: [{ id: 'a', ownerUserId: 'owner', requestKey: 'same' }, { id: 'b', ownerUserId: 'owner', requestKey: 'same' }] })).rejects.toThrow();
       await first.commit(empty, { bindings: [{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'active' }] });
       const authorized = await first.read(), cached = await first.readImmutable(), latest = await second.read();
       expect(await first.readImmutable()).toBe(cached);
@@ -69,7 +70,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       try { await upgrade.query('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); } finally { await upgrade.end(); }
       const migrated = new DomainDatabase(target); await migrated.open();
       try { expect((await migrated.read()).state.bindings).toEqual([{ id: 'binding', parentUserId: 'owner', studentId: 'child', status: 'inactive' }]); } finally { await migrated.close(); }
-      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 12 });
+      metrics.push({ case: 'migrations_uniqueness_revocation', passed: true, upgradedFromVersion: 3, currentVersion: 13 });
     } finally { await first.close(); await second.close(); }
   });
 

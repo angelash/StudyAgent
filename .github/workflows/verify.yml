@@ -169,6 +169,11 @@ jobs:
         env:
           STUDY_TEST_SOURCE_COURSE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course.integration.test.ts
+      - name: Classroom image task lifecycle and private references on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_CLASSROOM_VISUAL_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-visual.integration.test.ts
       - name: GESP assisted guidance and retention PostgreSQL journey
         env:
           STUDY_STORAGE: postgres

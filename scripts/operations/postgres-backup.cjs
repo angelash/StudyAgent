@@ -26,7 +26,7 @@ function native(name, args, pgBin, connectionString) {
 }
 async function summary(client) {
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
-  if (!versions.length || versions.at(-1) > 12) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 13) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
     collections: (await client.query('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection')).rows.map(r => ({ collection: r.collection, count: Number(r.count) })),
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
@@ -39,7 +39,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
       (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
     database = await summary(client);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -98,7 +98,7 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
     await native('pg_restore', ['--no-owner', '--no-acl', '--no-tablespaces', '--exit-on-error', '--single-transaction', '--dbname=' + config(connectionString).PGDATABASE, within(bundle, 'database/postgres.dump')], pgBin, connectionString);
     await client.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
     if (JSON.stringify(await summary(client)) !== JSON.stringify(verified.manifest.database)) fail('restored_database_summary_mismatch');
-    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia')")).rows);
+    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals')")).rows);
     for (const [relative, expected] of refs) {
       const item = verified.manifest.references.find(r => r.path === `data/${relative}`);
       if (!item || expected.sha256 !== item.sha256 || expected.size !== item.size) fail('restored_file_reference_mismatch');

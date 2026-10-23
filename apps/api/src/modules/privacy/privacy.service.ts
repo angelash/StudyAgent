@@ -11,6 +11,8 @@ import { accountRecords, anonymizeSharedAttribution, mergeSelections, portableRe
 import { StudentMediaService } from '../student-media/student-media.service';
 import { tarArchive } from './tar-archive';
 import { studioMaterialFile } from '../learning/studio-material-storage';
+import { visualFile,visualDigest } from '../learning/classroom-visual-storage';
+import type { ClassroomVisualRecord } from '@study-agent/contracts';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -136,7 +138,13 @@ export class PrivacyService {
       const name='sources/'+source.sha256+'.pdf';sourceManifests.push({materialId:source.id,name,sha256:source.sha256,size:bytes.length});
       if(!included.has(source.sha256)){included.add(source.sha256);entries.push({name,path,size:bytes.length});}
     }
-    const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests }, null, 2) + '\n');
+    const visuals=[...(snapshot.accountRecords.classroomVisuals??[]),...snapshot.students.flatMap(child=>child.records.classroomVisuals??[])] as ClassroomVisualRecord[],visualManifests:unknown[]=[];
+    for(const record of new Map(visuals.filter(row=>row.status==='ready'&&row.files).map(row=>[row.id,row])).values()){
+      const current=this.store.find('classroomVisuals',{id:record.id,status:'ready',ownerUserId:record.ownerUserId});
+      if(!current?.files||current.files.image.sha256!==record.files!.image.sha256)throw new ConflictException('课堂图片已变化，请重新准备副本');
+      for(const part of ['original','image'] as const){const file=visualFile(record,part),name=`visuals/${record.id}-${part}.png`;entries.push({name,path:file.path,size:file.size});visualManifests.push({visualId:record.id,part,name,size:file.size,sha256:file.sha256});}
+    }
+    const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests }, null, 2) + '\n');
     entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
     return { stream: tarArchive(entries, snapshot.exportedAt), receiptId: snapshot.receipt.id };
   }
@@ -156,6 +164,8 @@ export class PrivacyService {
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
     await this.media.schedulePurge((selection.studentMedia ?? []).map(row => String(row.id)), actor.id, receipt.id);
+    const visualIds=(selection.classroomVisuals??[]).map(row=>String(row.id));
+    if(visualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:'classroom.visual.purge',ownerUserId:actor.id,requestKey:'visual-purge:'+receipt.id,payloadHash:visualDigest(visualIds),payload:{ids:visualIds},createdAt:new Date().toISOString(),maxAttempts:5});
     this.events.publish('privacy.deletion_completed', { receiptId: receipt.id, kind, subjectHash: receipt.subjectHash, counts: receipt.counts, policyVersion });
     return receipt;
   }

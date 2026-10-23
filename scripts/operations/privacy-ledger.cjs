@@ -89,13 +89,13 @@ async function applyDeletionLedger(query, ledger) {
   await query('INSERT INTO domain_records VALUES(?,?,?,?)', ['events', event.eventId, JSON.stringify(event), position]);
   const retainedMedia = new Set((store.studentMedia ?? []).map(row => row.id));
   const removedMediaIds = records.filter(row => row.collection === 'studentMedia' && !retainedMedia.has(row.record_id)).map(row => row.record_id);
-  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds };
+  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds: [...removedMediaIds,...records.filter(row=>row.collection==='classroomVisuals'&&!(store.classroomVisuals??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
 }
 function purgeRestoredMedia(root, ids = []) {
   const { within } = require('./backup.cjs').files;
   for (const id of ids) {
-    if (!/^student_media_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
-    const directory = within(root, `student-media/${id}`);
+    if (!/^(?:student_media|classroom_visual)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
+    const directory = within(root, `${id.startsWith('classroom_visual_')?'classroom-visuals':'student-media'}/${id}`);
     if (fs.existsSync(directory)) fs.rmSync(directory, { recursive: true, force: true });
   }
   return ids.length;

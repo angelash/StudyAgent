@@ -19,5 +19,9 @@ import { CourseProjectService } from './course-project.service';
 import { SourceCourseController } from './source-course.controller';
 import { SourceCourseService } from './source-course.service';
 import { SourceCourseWorkerService } from './source-course-worker.service';
-@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService], exports: [LearningService, StudioIntegrationService] })
+import { ClassroomVisualService } from './classroom-visual.service';
+import { ClassroomVisualWorkerService } from './classroom-visual-worker.service';
+import { ClassroomVisualController } from './classroom-visual.controller';
+import { ClassroomImageService } from '../ai/classroom-image.service';
+@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] })
 export class LearningModule {}
