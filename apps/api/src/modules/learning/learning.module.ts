@@ -14,5 +14,7 @@ import { ClassroomController } from './classroom.controller';
 import { ClassroomService } from './classroom.service';
 import { LearningHomeController } from './learning-home.controller';
 import { LearningHomeService } from './learning-home.service';
-@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService], exports: [LearningService, StudioIntegrationService] })
+import { CourseProjectController } from './course-project.controller';
+import { CourseProjectService } from './course-project.service';
+@Module({ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService], exports: [LearningService, StudioIntegrationService] })
 export class LearningModule {}

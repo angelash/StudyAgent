@@ -62,7 +62,11 @@ export class ClassroomService {
       const source = course?.units.flatMap(unit => unit.lessons).find(lesson => lesson.id === row.lessonId);
       current = course && source ? curriculumClassroomLesson(course, source) : undefined;
     }
+    const projectUnit = row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId })?.units
+      .find(unit => unit.lessons.some(lesson => lesson.id === row.lessonId) && unit.lessons.some(lesson => lesson.kind === 'project'))?.id :
+      classroomCourse().units.find(unit => row.lessonId === 'unit-exam:' + unit.id || unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === row.lessonId)))?.id;
     return { ...safe, speech: this.speech.capabilities(),
+      ...(projectUnit ? { projectHref: '/studio/projects?' + new URLSearchParams({ unitId: projectUnit, legacy: row.id, ...(row.studioCourseId ? { studioCourseId: row.studioCourseId } : {}) }) } : {}),
       contentStatus: current ? classroomFingerprint(current) === row.contentFingerprint ? 'current' : 'archived' : 'unavailable' };
   }
 

@@ -125,7 +125,7 @@ export function ClassroomWorkbench() {
         <Link className="cl-extend" href="/studio?view=materials"><span>▤</span><div><b>把自己的资料带进课堂</b><small>PDF、页级阅读、个性化学案与白板</small></div><span>↗</span></Link>
         <div className="cl-legend"><span><Ring state="viewed"/>讲解已读</span><span><Ring state="started"/>已接触</span><span><Ring/>未开始</span><span>▣ Project</span><span>♙ Exam</span></div>
         <div className="ws-course-route"><div className="cl-status-strip">{unit.lectures.flatMap(lecture => lecture.lessons).map(lesson => <button key={lesson.id} title={lesson.title} onClick={() => void open(lesson.id)}><Ring state={state(lesson.id)}/></button>)}
-          <button title="单元项目" onClick={() => void open('unit-exam:' + unit.id, 'project')}>▣</button><button title="单元核查" onClick={() => void open('unit-exam:' + unit.id, 'practice')}>♙</button></div>
+          <Link title="单元项目" href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>▣</Link><button title="单元核查" onClick={() => void open('unit-exam:' + unit.id, 'practice')}>♙</button></div>
         {next && <button className="cl-next" onClick={() => void open(next.id)}>▶ <span>下一步：{next.title}</span> ›</button>}</div>
 
         {Boolean(catalog?.archivedSessions?.length) && <details className="cl-archived-sessions"><summary>查看保留的旧版学习记录（{catalog!.archivedSessions!.length}）</summary><p>旧题和首次作答按当时版本保存。打开旧记录不会换成新题。</p><ul>{catalog!.archivedSessions!.map(saved => <li key={saved.sessionId}>
@@ -142,7 +142,7 @@ export function ClassroomWorkbench() {
               <button className="cl-practice" disabled={loading} onClick={() => void open(lesson.id, 'practice')}>♧ 练习{Boolean(progress.get(lesson.id)?.answered) && <span title="已有练习记录"> ·</span>}</button><Ring state={state(lesson.id)}/>
             </div>)}</div>}
           </article>)}
-          <article className="cl-lecture cl-project"><span className="cl-timeline-icon">▣</span><small>PROJECT · {unitIndex + 1} / 5</small><h3>{unit.project.title}</h3><p>{unit.project.brief}</p><button onClick={() => void open('unit-exam:' + unit.id, 'project')}>Start →</button></article>
+          <article className="cl-lecture cl-project"><span className="cl-timeline-icon">▣</span><small>PROJECT · {unitIndex + 1} / 5</small><h3>{unit.project.title}</h3><p>{unit.project.brief}</p><Link className="ws-open-activity" href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>开始项目 →</Link></article>
           <article className="cl-lecture cl-exam"><span className="cl-timeline-icon">♙</span><small>UNIT CHECK</small><h3>{unit.title}综合核查</h3><p>覆盖本单元的 12 个主题，12 道新情境题保留首次作答、跳过与提示记录。</p><button onClick={() => void open('unit-exam:' + unit.id, 'practice')}>Start →</button></article>
         </div>}
       </>}
@@ -426,6 +426,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           </>}
           {tab === 'practice' && <><button className="cl-expand-practice" onClick={() => { pause(); setStandalonePractice(true); setShowChat(false); setTab('history'); }}>展开独立练习 ↗</button>{practice(false)}</>}
           {tab === 'project' && <div className="cl-project-editor"><small>COMMUNITY PROJECT</small><h2>{unit?.project.title ?? '把知识带到新情境'}</h2><p>{unit?.project.brief ?? '写一个新的例子，说明你使用了什么概念，以及还需要哪些证据。'}</p><ul>{unit?.project.rubric.map(item => <li key={item}>{item}</li>)}</ul>
+            {session.projectHref && <Link className="ws-open-activity" href={session.projectHref}>打开分阶段项目、量规与提交历史 →</Link>}<p>下面保留原课堂草稿；可在项目工作区主动带入参考区。</p>
             <label>我的项目草稿<textarea value={projectDraft} maxLength={20000} onChange={event => { setProjectDraft(event.target.value); setProjectSaved(false); }}/></label>
             <button disabled={busy} onClick={() => { pause(); setBusy(true); void save({ projectDraft }).then(() => setProjectSaved(true)).catch(error => setNotice(error.message)).finally(() => setBusy(false)); }}>保存项目草稿</button>
             <button disabled={busy || !projectDraft.trim()} onClick={() => { pause(); setBusy(true); void save({ projectDraft }).then(() => { setProjectSaved(true); setQuestion('请按事实与推断、概念运用、替代解释、证据局限四方面核对我的项目草稿，指出下一步需要验证什么。'); setTab('history'); }).catch(error => setNotice(error.message)).finally(() => setBusy(false)); }}>请老师核对草稿</button>{projectSaved && <p role="status">草稿已保存，重新打开仍可继续。</p>}

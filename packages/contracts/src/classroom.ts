@@ -30,6 +30,7 @@ export type ClassroomSession = { id: string; ownerUserId: string; studentId: str
   hintReceipts?: ClassroomHintReceipt[];
   createdAt: string; updatedAt: string };
 export type ClassroomSessionView = ClassroomSession & { speech: StudioSpeechCapabilities;
+  projectHref?: string;
   contentStatus?: 'current' | 'archived' | 'unavailable' };
 export type ClassroomCatalog = { course: ClassroomCourse; progress: Array<{ lessonId: string; sessionId: string;
   cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>;
