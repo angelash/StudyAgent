@@ -110,7 +110,15 @@ suite('real PostgreSQL storage and API recovery', () => {
       const cancelling=(await second.tasks.claim(['pdf.import'],100))!;await first.tasks.cancel(cancelling.id,cancelling.version);
       await expect(second.commit(await second.read(),{imports:[{id:'import',status:'cancelled-write'}]},{fence:{id:cancelling.id,token:cancelling.leaseToken!,mode:'checkpoint',progress:{completed:99}}})).rejects.toThrow('检查点未保存');
       expect((await first.read()).state.imports).toEqual([{id:'import',status:'complete'}]);
-      metrics.push({ case: 'cross_pool_queue_fencing', passed: true, checkpointVerified: true });
+      await first.tasks.fail(cancelling.id,cancelling.leaseToken!,'cancel_probe',false);expect((await first.tasks.get(cancelling.id))?.state).toBe('cancelled');
+      now=Date.UTC(2026,9,24);const epoch=now;
+      const failureBase=await first.read();await first.commit(failureBase,failureBase.state,{enqueue:[{...fresh,id:'job-failure',requestKey:'epoch-failure'}]});
+      const failing=(await second.tasks.claim(['pdf.import'],100))!;expect(await second.tasks.fail(failing.id,failing.leaseToken!,'temporary_provider',true)).toBe(true);
+      expect(await first.tasks.get(failing.id)).toMatchObject({state:'retry_wait',availableAt:epoch+2000,errorCode:'temporary_provider'});
+      expect(await first.tasks.claim(['pdf.import'],100)).toBeNull();now=epoch+2001;
+      const retrying=(await first.tasks.claim(['pdf.import'],100))!;expect(retrying.attempts).toBe(2);expect(await first.tasks.fail(retrying.id,retrying.leaseToken!,'permanent_provider',false)).toBe(true);
+      expect(await second.tasks.get(retrying.id)).toMatchObject({state:'failed',availableAt:epoch+2001+8000,errorCode:'permanent_provider'});
+      metrics.push({ case: 'cross_pool_queue_fencing', passed: true, checkpointVerified: true, wallClockFailureVerified:true });
     } finally { await first.close(); await second.close(); }
   });
 

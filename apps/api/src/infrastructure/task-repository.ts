@@ -164,7 +164,7 @@ export class TaskRepository {
       WHERE id=? AND lease_token=? AND state='cancel_requested' RETURNING id`, [new Date(now).toISOString(), id, token]);
     if (cancelled.length) await this.auditWith(query, id, 'cancelled', 'worker', {});
     const rows = await query(`UPDATE durable_tasks SET state=CASE WHEN ?=1 AND attempts<max_attempts THEN 'retry_wait' ELSE 'failed' END,
-      available_at=? + (attempts * attempts * 2000),lease_token=NULL,lease_until=NULL,error_code=?,version=version+1,updated_at=?
+      available_at=CAST(? AS BIGINT) + (attempts * attempts * 2000),lease_token=NULL,lease_until=NULL,error_code=?,version=version+1,updated_at=?
       WHERE id=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id`,
       [retryable ? 1 : 0, now, code, new Date(now).toISOString(), id, token, now]);
     if (rows.length) await this.auditWith(query, id, 'attempt_failed', 'worker', { code, retryable });

@@ -95,7 +95,7 @@ describe('transactional task outbox and fenced workers', () => {
   });
 
   it('backs off retryable failures, terminates exhausted crashes and keeps concurrent claims exclusive', async () => {
-    let time = 1000; const db = new DomainDatabase(':memory:', () => time); await db.open();
+    const epoch=Date.UTC(2026,9,24);let time = epoch; const db = new DomainDatabase(':memory:', () => time); await db.open();
     try {
       await db.commit(await db.read(), {}, { enqueue: [intent()] });
       const claims = await Promise.all([db.tasks.claim(['pdf.import'], 100), db.tasks.claim(['pdf.import'], 100)]);
@@ -103,10 +103,11 @@ describe('transactional task outbox and fenced workers', () => {
       const first = claims.find(Boolean)!;
       await db.tasks.fail(first.id, first.leaseToken!, 'temporary_io', true);
       expect((await db.tasks.get(first.id))?.state).toBe('retry_wait');
+      expect((await db.tasks.get(first.id))?.availableAt).toBe(epoch+2000);
       expect(await db.tasks.claim(['pdf.import'])).toBeNull();
-      time = 4000; expect((await db.tasks.claim(['pdf.import'], 100))?.attempts).toBe(2);
-      time = 4200; expect((await db.tasks.claim(['pdf.import'], 100))?.attempts).toBe(3);
-      time = 4400; expect(await db.tasks.claim(['pdf.import'])).toBeNull();
+      time = epoch+3000; expect((await db.tasks.claim(['pdf.import'], 100))?.attempts).toBe(2);
+      time = epoch+3200; expect((await db.tasks.claim(['pdf.import'], 100))?.attempts).toBe(3);
+      time = epoch+3400; expect(await db.tasks.claim(['pdf.import'])).toBeNull();
       expect((await db.tasks.get(first.id))?.state).toBe('failed');
       expect((await db.tasks.get(first.id))?.errorCode).toBe('attempts_exhausted');
     } finally { await db.close(); }
