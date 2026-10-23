@@ -26,7 +26,7 @@ export type ClassroomSession = { id: string; ownerUserId: string; studentId: str
   createdAt: string; updatedAt: string };
 export type ClassroomSessionView = ClassroomSession & { speech: StudioSpeechCapabilities };
 export type ClassroomCatalog = { course: ClassroomCourse; progress: Array<{ lessonId: string; sessionId: string;
-  cursor: number; completed: boolean; correct: number; answered: number }> };
+  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }> };
 
 /** Spoken units stay intact: no per-character reveal or estimated audio alignment. */
 export function classroomSentences(text: string): string[] {

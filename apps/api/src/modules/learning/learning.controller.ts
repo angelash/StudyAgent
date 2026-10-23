@@ -82,6 +82,12 @@ export class LearningController {
   @Post('studio/calendar/events/:id/remove') studioCalendarEventRemove(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
     return this.integrations.removeStudyEvent(req.user, id);
   }
+  @Post('studio/calendar/events/:id/update') studioCalendarEventUpdate(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
+    return this.integrations.updateStudyEvent(req.user, id, input);
+  }
+  @Post('studio/calendar/batch-remove') studioCalendarBatchRemove(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+    return this.integrations.batchRemoveStudyEvents(req.user, input);
+  }
   @Post('studio/study-plans/preview') studioStudyPlanPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.learning.previewStudioStudyPlan(req.user, input);
   }

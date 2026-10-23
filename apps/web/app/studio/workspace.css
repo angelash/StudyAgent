@@ -1,0 +1,1688 @@
+/* Shared learning workspace: course library, outline and calendar. */
+.ws-app,.ws-classroom-shell {
+  --ws-ink: #172031;
+  --ws-muted: #7d8799;
+  --ws-line: #e9ecf1;
+  --ws-blue: #4e6da2;
+  --ws-selected: #e8f0fa;
+  color: var(--ws-ink);
+  font-family: "Microsoft YaHei UI","PingFang SC",sans-serif;
+  background: #fafafa;
+  min-height: 100dvh
+}
+.ws-app.sa-app {
+  display: block;
+  padding-left: 264px
+}
+.ws-app .sa-stage {
+  min-width: 0
+}
+.ws-app .sa-top {
+  top: 0;
+  height: 48px;
+  border: 0;
+  background: transparent;
+  position: relative;
+  padding: 0 38px;
+  color: #7b8493
+}
+.ws-app .sa-top strong {
+  display: none
+}
+.ws-app .sa-top select {
+  background: #f0f2f5;
+  max-width: 150px
+}
+.ws-app .sa-top a {
+  color: #6c778b
+}
+.ws-app .sa-page:has(.ws-calendar-view) {
+  max-width: none;
+  padding: 0 32px 30px 40px
+}
+.ws-app button,.ws-classroom-shell button {
+  font-family: inherit;
+  cursor: pointer
+}
+.ws-app button:disabled,.ws-classroom-shell button:disabled {
+  cursor: default;
+  opacity: .45
+}
+.ws-app :focus-visible,.ws-classroom-shell :focus-visible {
+  outline: 2px solid #4e6da2;
+  outline-offset: 3px
+}
+.ws-app a,.ws-classroom-shell a {
+  color: inherit;
+  text-decoration: none
+}
+.ws-navigation {
+  position: fixed;
+  z-index: 35;
+  left: 12px;
+  top: 12px;
+  bottom: 12px;
+  width: 240px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ebedf0;
+  border-radius: 18px;
+  box-shadow: 0 2px 3px #17203107,0 8px 32px #17203104;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 12px;
+  color: #414754;
+  font-size: 13px
+}
+.ws-brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 6px 20px;
+  color: #21232a!important;
+  letter-spacing: -.5px;
+  font-size: 17px
+}
+.ws-brand b {
+  font-weight: 550
+}
+.ws-navigation nav {
+  display: grid;
+  gap: 3px
+}
+.ws-navigation nav>a,.ws-navigation nav>button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  color: #535960;
+  font-size: 13px;
+  min-height: 34px
+}
+.ws-navigation nav>[aria-current=page] {
+  background: #e8f0fa;
+  color: #4c67a0
+}
+.ws-navigation nav>a:hover,.ws-navigation nav>button:hover {
+  background: #f0f3f8
+}
+.ws-create-course {
+  margin: 12px 5px 0;
+  padding: 8px;
+  border: 1px solid #e8ecf2;
+  border-radius: 8px;
+  background: #fff;
+  color: #6d7890;
+  font-size: 12px
+}
+.ws-continue {
+  margin: 24px 5px 0
+}
+.ws-navigation h2 {
+  font-size: 12px;
+  margin: 0 0 9px;
+  font-weight: 650;
+  color: #343b45
+}
+.ws-continue>a {
+  border: 1px solid #e3e9f2;
+  box-shadow: 0 1px 2px #17203105;
+  border-radius: 11px;
+  padding: 10px 11px;
+  display: block;
+  line-height: 1.5
+}
+.ws-continue small {
+  font-size: 10px;
+  color: #6380b1;
+  border: 1px solid #d8e2f0;
+  border-radius: 9px;
+  background: #f0f5fb;
+  padding: 1px 6px;
+  margin-right: 7px
+}
+.ws-continue b {
+  font-size: 12px
+}
+.ws-continue span {
+  display: block;
+  color: #8d94a2;
+  font-size: 11px;
+  margin-top: 4px
+}
+.ws-recents {
+  margin: 17px 5px
+}
+.ws-recents a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px 0;
+  color: #6d737d;
+  font-size: 12px
+}
+.ws-recents p {
+  color: #a0a6af;
+  font-size: 11px;
+  line-height: 1.6
+}
+.ws-navigation footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #a2a7b0;
+  font-size: 10px
+}
+.ws-navigation footer span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #5472a7
+}
+.ws-mobile-menu,.ws-nav-backdrop {
+  display: none
+}
+.ws-course-page {
+  padding: 0 30px 60px
+}
+.ws-courses {
+  display: grid;
+  grid-template-columns: minmax(0,620px) 320px;
+  gap: 68px;
+  max-width: 1008px;
+  margin: 0 auto
+}
+.ws-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 24px
+}
+.ws-page-title h1 {
+  font-size: 21px;
+  margin: 0;
+  font-weight: 650
+}
+.ws-page-title>button {
+  background: white;
+  border: 1px solid var(--ws-line);
+  border-radius: 9px;
+  color: #6c7c94;
+  padding: 7px 10px;
+  font-size: 12px
+}
+.ws-course-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px
+}
+.ws-course-filters [role=tablist] {
+  display: flex;
+  gap: 5px
+}
+.ws-course-filters [role=tab] {
+  border: 0;
+  background: transparent;
+  border-radius: 20px;
+  padding: 8px 15px;
+  color: #6f7784;
+  font-size: 13px;
+  white-space: nowrap
+}
+.ws-course-filters [aria-selected=true] {
+  background: white;
+  box-shadow: 0 2px 6px #18253a0a;
+  color: #172031
+}
+.ws-course-filters>label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ebedf1;
+  background: white;
+  border-radius: 20px;
+  padding: 7px 12px;
+  color: #a2a5ad;
+  width: 212px
+}
+.ws-course-filters input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  font: 12px inherit;
+  background: none
+}
+.ws-course-library {
+  display: grid;
+  gap: 22px
+}
+.ws-course-ticket {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 184px;
+  background: white;
+  border-radius: 14px;
+  min-height: 210px;
+  filter: drop-shadow(0 4px 7px #17203102);
+  overflow: hidden
+}
+.ws-ticket-main {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 42%;
+  grid-template-rows: 1fr 24px;
+  padding: 0 0 12px 16px;
+  border: 0;
+  background: white;
+  text-align: left;
+  color: inherit;
+  min-width: 0
+}
+.ws-ticket-main>div:first-child {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 12px 10px 0
+}
+.ws-ticket-main small,.ws-ticket-next>small {
+  font-size: 10px;
+  color: #8b94a3
+}
+.ws-ticket-main h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 1px 0 0;
+  line-height: 1.5
+}
+.ws-ticket-main h2 em {
+  display: inline-block;
+  font-size: 9px;
+  font-style: normal;
+  padding: 1px 6px;
+  background: #dce9fb;
+  color: #436594;
+  border-radius: 9px;
+  vertical-align: middle
+}
+.ws-ticket-meta {
+  display: flex;
+  gap: 25px;
+  margin-top: auto;
+  padding-top: 28px;
+  font-size: 12px;
+  line-height: 1.5
+}
+.ws-ticket-meta>span {
+  flex: 1
+}
+.ws-ticket-meta small {
+  display: block
+}
+.ws-ticket-main .cl-cover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0 0 10px 10px
+}
+.ws-ticket-progress {
+  grid-column: 1/-1;
+  position: relative;
+  align-self: end;
+  height: 4px;
+  border-radius: 4px;
+  background: #e8f0fc;
+  margin-right: 40px
+}
+.ws-ticket-progress i {
+  display: block;
+  height: 4px;
+  border-radius: 4px;
+  background: #6386bb
+}
+.ws-ticket-progress>span {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: -5px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #98a3b1
+}
+.ws-ticket-next {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border: 0;
+  border-left: 2px dashed #edf0f4;
+  background: white;
+  text-align: left;
+  color: inherit;
+  padding: 18px 18px;
+  font-size: 13px;
+  min-width: 0
+}
+.ws-ticket-next:before,.ws-ticket-next:after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fafafa;
+  left: -10px;
+  top: -9px
+}
+.ws-ticket-next:after {
+  top: auto;
+  bottom: -9px
+}
+.ws-ticket-next em {
+  font-size: 9px;
+  font-style: normal;
+  background: #eaf0fb;
+  color: #57739e;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-top: 4px
+}
+.ws-ticket-next>b {
+  font-weight: 500;
+  line-height: 1.7;
+  margin-top: 2px
+}
+.ws-ticket-next>span {
+  margin-top: auto;
+  color: #6a80a5;
+  font-size: 11px;
+  padding-top: 20px
+}
+.ws-ticket-main:hover,.ws-ticket-next:hover {
+  background: #fcfdff
+}
+.ws-course-summary {
+  padding-top: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px
+}
+.ws-course-summary>section {
+  background: #fff;
+  border-radius: 19px;
+  padding: 16px
+}
+.ws-course-summary header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #909aab;
+  font-size: 12px
+}
+.ws-course-summary header button {
+  background: none;
+  border: 0;
+  color: #5572a6;
+  font-size: 22px;
+  padding: 0 8px
+}
+.ws-course-summary h2 {
+  font-size: 18px;
+  margin: 4px 0;
+  font-weight: 600
+}
+.ws-course-summary p {
+  font-size: 12px;
+  color: #8a96a8;
+  line-height: 1.6;
+  margin: 4px 0 12px
+}
+.ws-week-strip {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 5px;
+  margin: 12px 0
+}
+.ws-week-strip>div {
+  display: grid;
+  text-align: center;
+  gap: 4px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  padding: 6px 0;
+  color: #9aa6b9
+}
+.ws-week-strip small {
+  font-size: 10px
+}
+.ws-week-strip b {
+  font-size: 15px
+}
+.ws-week-strip [data-today=true] {
+  background: #e9f0fb;
+  color: #5777a9
+}
+.ws-resume-card {
+  display: grid;
+  gap: 6px;
+  border: 1px solid #e7ebf2;
+  border-radius: 14px;
+  padding: 12px;
+  font-size: 13px
+}
+.ws-resume-card small,.ws-resume-card span {
+  font-size: 11px;
+  color: #8b97aa
+}
+.ws-tool-link {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e9ecf2;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 13px
+}
+.ws-tool-link span {
+  color: #8a9ab3
+}
+.ws-empty {
+  padding: 35px 20px;
+  text-align: center;
+  background: white;
+  border: 1px dashed #dce2eb;
+  border-radius: 15px
+}
+.ws-empty h2 {
+  font-size: 18px
+}
+.ws-empty p {
+  font-size: 13px;
+  color: #8a94a5;
+  line-height: 1.7
+}
+.ws-empty button {
+  background: #eaf0fa;
+  color: #5574a5;
+  border: 0;
+  padding: 9px 16px;
+  border-radius: 9px
+}
+.ws-classroom-shell {
+  display: block;
+  padding: 30px 32px 60px 280px
+}
+.ws-classroom-shell .cl-course-layout,.ws-student-course.cl-course-layout {
+  margin: 0 auto;
+  max-width: 1072px;
+  grid-template-columns: 250px minmax(0,1fr);
+  gap: 62px;
+  padding: 0
+}
+.ws-classroom-shell .cl-course-sidebar {
+  position: static;
+  max-height: none;
+  width: auto
+}
+.ws-classroom-shell .cl-outline {
+  padding: 0;
+  min-width: 0
+}
+.ws-classroom-shell .cl-cover,.ws-student-course .cl-cover {
+  width: 250px;
+  height: 250px;
+  margin: 20px 0 16px;
+  border-radius: 14px
+}
+.ws-classroom-shell .cl-course-sidebar h1,.ws-student-course .cl-course-sidebar h1 {
+  font-size: 16px;
+  font-weight: 650;
+  margin: 12px 0 8px
+}
+.ws-classroom-shell .cl-course-sidebar>p,.ws-student-course .cl-course-sidebar>p {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #7d8799
+}
+.ws-classroom-shell .cl-unit-nav button,.ws-student-course .cl-unit-nav button {
+  min-height: 37px;
+  font-size: 13px;
+  padding: 8px;
+  gap: 10px
+}
+.ws-classroom-shell .cl-unit-heading h2,.ws-student-course .cl-unit-heading h2 {
+  font-size: 20px;
+  margin: 8px 0
+}
+.ws-classroom-shell .cl-unit-heading>small,.ws-student-course .cl-unit-heading>small {
+  background: #e8f0fb;
+  color: #5473a7;
+  letter-spacing: 0;
+  border-radius: 12px;
+  padding: 3px 9px;
+  font-size: 11px
+}
+.ws-classroom-shell .cl-unit-heading p,.ws-student-course .cl-unit-heading p {
+  font-size: 14px;
+  color: #647187
+}
+.ws-classroom-shell .cl-extend,.ws-student-course .cl-extend {
+  margin: 6px 0 18px;
+  padding: 15px 18px;
+  border-radius: 16px
+}
+.ws-classroom-shell .cl-legend,.ws-student-course .cl-legend {
+  gap: 18px;
+  font-size: 11px;
+  flex-wrap: wrap;
+  margin-bottom: 20px
+}
+.ws-classroom-shell .cl-status-strip {
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px
+}
+.ws-classroom-shell .cl-next {
+  margin: 0 0 25px auto;
+  max-width: 100%;
+  font-size: 12px
+}
+.ws-classroom-shell .cl-timeline,.ws-student-course .cl-timeline {
+  margin-left: 20px;
+  padding-left: 42px;
+  gap: 32px
+}
+.ws-classroom-shell .cl-timeline-icon,.ws-student-course .cl-timeline-icon {
+  width: 32px;
+  height: 32px;
+  left: -62px;
+  font-size: 17px
+}
+.ws-classroom-shell .cl-lecture,.ws-student-course .cl-lecture {
+  padding: 20px;
+  border-radius: 16px
+}
+.ws-classroom-shell .cl-lecture header>button:first-child {
+  font-size: 16px
+}
+.ws-classroom-shell .cl-lecture>p,.ws-student-course .cl-lecture>p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 7px 0 12px
+}
+.ws-classroom-shell .cl-micro,.ws-student-course .cl-micro {
+  grid-template-columns: minmax(0,1fr) 96px 78px 22px;
+  gap: 12px;
+  padding: 5px 0
+}
+.ws-classroom-shell .cl-micro>span:first-child,.ws-student-course .cl-micro>span:first-child {
+  font-size: 13px
+}
+.ws-classroom-shell .cl-micro small {
+  display: none
+}
+.ws-classroom-shell .cl-micro button,.ws-student-course .cl-micro a {
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 6px 9px
+}
+.ws-student-course {
+  padding-top: 0!important
+}
+.ws-student-course .cl-outline {
+  min-width: 0
+}
+.ws-student-course .cl-learn,.ws-student-course .cl-practice {
+  display: block;
+  text-align: center;
+  background: #eaf0fb;
+  border: 1px solid #d4e0f2;
+  color: #5675a6
+}
+.ws-student-course .cl-lecture h3 {
+  margin: 0;
+  font-size: 16px
+}
+.ws-student-course .cl-exit-course {
+  background: white;
+  border: 0
+}
+.ws-micro-title {
+  display: flex;
+  align-items: center;
+  gap: 6px
+}
+.ws-lesson-info {
+  border: 0!important;
+  background: none!important;
+  color: #9ba8ba!important;
+  padding: 0!important;
+  min-width: 22px
+}
+.ws-help-dialog {
+  width: min(520px,100%)
+}
+.ws-calendar {
+  display: grid;
+  grid-template-columns: 260px minmax(0,1fr);
+  gap: 16px;
+  min-height: calc(100dvh - 78px)
+}
+.ws-day-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+.ws-date-card,.ws-day-todo,.ws-day-done {
+  background: white;
+  border: 1px solid #eff0f3;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 6px 20px #17203102
+}
+.ws-date-card {
+  position: relative
+}
+.ws-date-card h1 {
+  font-size: 15px;
+  margin: 0 0 12px;
+  color: #172031
+}
+.ws-date-card>button {
+  position: absolute;
+  right: 18px;
+  top: 50px;
+  border: 0;
+  background: #eef3fb;
+  color: #5578ae;
+  font-size: 11px;
+  border-radius: 15px;
+  padding: 5px 10px
+}
+.ws-date-card>strong {
+  display: block;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -2px
+}
+.ws-date-card>p {
+  font-size: 12px;
+  color: #6a7f9d;
+  margin: 9px 0 18px
+}
+.ws-date-card>div {
+  display: flex;
+  gap: 7px
+}
+.ws-date-card>div>span {
+  font-size: 11px;
+  background: #f6f7f8;
+  border-radius: 15px;
+  padding: 7px 9px;
+  color: #73819a
+}
+.ws-day-todo {
+  flex: 1;
+  min-height: 260px
+}
+.ws-day-todo header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.ws-day-sidebar h2 {
+  font-size: 13px;
+  margin: 0
+}
+.ws-day-todo header>button {
+  border: 0;
+  background: none;
+  color: #8993a6;
+  font-size: 20px
+}
+.ws-day-empty {
+  text-align: center;
+  color: #a4a9b1;
+  font-size: 14px;
+  padding: 25px 0
+}
+.ws-day-done {
+  min-height: 120px
+}
+.ws-day-event {
+  display: grid;
+  width: 100%;
+  text-align: left;
+  background: #f6f9fd;
+  border: 1px solid #e4ebf7;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  color: #486086;
+  gap: 5px
+}
+.ws-day-event time,.ws-day-event small {
+  font-size: 10px;
+  color: #8c9cb4
+}
+.ws-day-event b {
+  font-size: 12px;
+  font-weight: 500
+}
+.ws-calendar-paper {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column
+}
+.ws-calendar-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  min-height: 30px
+}
+.ws-calendar-toolbar [role=tablist],.ws-calendar-modes {
+  display: flex;
+  gap: 3px;
+  background: #f7f7f8;
+  border-radius: 10px;
+  padding: 3px
+}
+.ws-calendar-toolbar button {
+  border: 0;
+  background: transparent;
+  color: #63718a;
+  font-size: 11px;
+  border-radius: 8px;
+  padding: 6px 9px;
+  white-space: nowrap
+}
+.ws-calendar-toolbar [role=tab][aria-selected=true] {
+  background: #4f6c9f;
+  color: white;
+  box-shadow: 0 2px 5px #4f6c9f30
+}
+.ws-calendar-toolbar .ws-batch-delete {
+  border: 1px solid #f0caca;
+  color: #d67b7b;
+  background: white
+}
+.ws-calendar-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-left: auto
+}
+.ws-calendar-month h2 {
+  font-size: 16px;
+  white-space: nowrap;
+  margin: 0;
+  font-weight: 600
+}
+.ws-calendar-month button {
+  font-size: 19px;
+  padding: 0 7px;
+  background: #f7f7f8;
+  border-radius: 50%
+}
+.ws-calendar-modes [aria-pressed=true] {
+  background: white;
+  box-shadow: 0 1px 4px #17203115;
+  color: #172031
+}
+.ws-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7,minmax(0,1fr));
+  text-align: center;
+  color: #a1a7b3;
+  font-size: 11px;
+  padding: 4px 0 12px
+}
+.ws-month-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7,minmax(0,1fr));
+  grid-template-rows: repeat(var(--calendar-rows),minmax(116px,1fr));
+  gap: 5px
+}
+.ws-calendar-day {
+  border: 1px solid #eceef1;
+  border-radius: 13px;
+  position: relative;
+  background: #fbfbfc;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden
+}
+.ws-calendar-day[data-outside=true] {
+  background: #fcfcfc
+}
+.ws-calendar-day[data-outside=true] .ws-calendar-date {
+  color: #c8ccd2
+}
+.ws-calendar-day[data-selected=true] {
+  border-color: #5472a9;
+  box-shadow: inset 0 0 0 1px #5472a940;
+  background: white
+}
+.ws-calendar-date {
+  align-self: flex-end;
+  background: none;
+  border: 0;
+  color: #4e668a;
+  font-size: 11px;
+  min-height: 28px;
+  min-width: 28px;
+  position: relative;
+  margin: 2px
+}
+.ws-calendar-day[data-today=true] .ws-calendar-date {
+  border-radius: 50%;
+  background: #5472a9;
+  color: white;
+  min-height: 21px;
+  min-width: 21px;
+  margin: 5px
+}
+.ws-calendar-day-events {
+  max-height: 115px;
+  overflow: auto;
+  scrollbar-width: thin
+}
+.ws-grid-event {
+  display: flex;
+  gap: 2px;
+  padding: 2px 3px
+}
+.ws-grid-event>button {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  color: #4d6b9d;
+  background: #eaf1fc;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px
+}
+.ws-grid-event[data-completed=true]>button {
+  background: #edf5f0;
+  color: #6d8b77;
+  text-decoration: line-through
+}
+.ws-grid-event time {
+  font-size: 9px
+}
+.ws-grid-event input {
+  max-width: 12px;
+  flex-shrink: 0
+}
+.ws-calendar-tools {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-top: 13px
+}
+.ws-calendar-tools>button {
+  border: 0;
+  background: none;
+  color: #7184a4;
+  padding: 2px;
+  font-size: 11px
+}
+.ws-batch-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background: #f6f8fc;
+  margin-bottom: 10px;
+  border-radius: 9px;
+  font-size: 12px
+}
+.ws-batch-actions label {
+  display: flex;
+  align-items: center;
+  gap: 6px
+}
+.ws-batch-actions button {
+  border: 1px solid #eabcbc;
+  background: white;
+  color: #c76d6d;
+  border-radius: 6px;
+  padding: 5px 10px
+}
+.ws-batch-actions small {
+  color: #8d96a7
+}
+.ws-calendar-management {
+  margin: 20px 0;
+  border: 1px solid #e8ecf2;
+  border-radius: 15px;
+  padding: 14px;
+  background: #fff
+}
+.ws-calendar-management>summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: #637c9f
+}
+.ws-calendar-management .sa-plan-card {
+  margin-top: 15px
+}
+.ws-dialog-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 75;
+  background: #17203150;
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  padding: 20px
+}
+.ws-dialog-layer>section,.ws-dialog-layer>form {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  max-height: 90dvh;
+  overflow: auto;
+  box-shadow: 0 20px 70px #17203130;
+  width: min(580px,100%);
+  margin: 0;
+  box-sizing: border-box
+}
+.ws-event-dialog header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px
+}
+.ws-event-dialog h2 {
+  font-size: 19px;
+  margin: 0
+}
+.ws-event-dialog header>button {
+  background: none;
+  border: 0;
+  font-size: 24px;
+  color: #8b96a9
+}
+.ws-event-dialog p {
+  font-size: 13px;
+  color: #6f7d93;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere
+}
+.ws-event-dialog small {
+  color: #9ba4b4;
+  font-size: 11px
+}
+.ws-event-dialog footer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px
+}
+.ws-event-dialog footer button,.ws-event-dialog form>button {
+  background: #edf2fa;
+  border: 1px solid #dce5f3;
+  border-radius: 9px;
+  color: #5675a6;
+  padding: 8px 12px;
+  font-size: 12px
+}
+.ws-event-dialog form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px
+}
+.ws-event-dialog label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+  color: #6c7890
+}
+.ws-event-dialog input {
+  font: 13px inherit;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e2e7ee;
+  border-radius: 8px;
+  padding: 10px
+}
+.ws-dialog-error {
+  padding: 9px;
+  border-radius: 8px;
+  background: #fff1ed;
+  color: #ad6350;
+  font-size: 12px;
+  line-height: 1.6
+}
+@media(min-width:1500px) {
+  .ws-course-page {
+    padding-top: 0
+  }
+  .ws-classroom-shell .cl-course-layout {
+    max-width: 1072px
+  }
+  .ws-classroom-shell {
+    padding-left: 320px
+  }
+  .ws-month-grid {
+    grid-template-rows: repeat(var(--calendar-rows),minmax(140px,1fr))
+  }
+}
+@media(max-width:1300px) {
+  .ws-courses {
+    gap: 30px;
+    grid-template-columns: minmax(0,1fr) 280px
+  }
+  .ws-course-ticket {
+    grid-template-columns: minmax(0,1fr) 145px
+  }
+  .ws-ticket-meta {
+    gap: 10px
+  }
+  .ws-calendar {
+    grid-template-columns: 210px minmax(0,1fr)
+  }
+  .ws-classroom-shell .cl-course-layout,.ws-student-course.cl-course-layout {
+    gap: 30px;
+    grid-template-columns: 220px minmax(0,1fr)
+  }
+  .ws-classroom-shell .cl-cover,.ws-student-course .cl-cover {
+    width: 220px;
+    height: 220px
+  }
+  .ws-classroom-shell .cl-micro,.ws-student-course .cl-micro {
+    grid-template-columns: minmax(0,1fr) 82px 70px 18px;
+    gap: 6px
+  }
+  .ws-classroom-shell .cl-timeline {
+    padding-left: 25px
+  }
+  .ws-classroom-shell .cl-timeline-icon {
+    left: -45px
+  }
+  .ws-app .sa-page:has(.ws-calendar-view) {
+    padding-left: 20px;
+    padding-right: 20px
+  }
+}
+@media(max-width:1050px) {
+  .ws-courses {
+    grid-template-columns: 1fr
+  }
+  .ws-course-summary {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px
+  }
+  .ws-calendar {
+    grid-template-columns: 1fr
+  }
+  .ws-day-sidebar {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px
+  }
+  .ws-day-todo {
+    min-height: 0
+  }
+  .ws-day-done {
+    display: none
+  }
+  .ws-classroom-shell .cl-course-layout,.ws-student-course.cl-course-layout {
+    grid-template-columns: 180px minmax(0,1fr);
+    gap: 22px
+  }
+  .ws-classroom-shell .cl-cover,.ws-student-course .cl-cover {
+    width: 180px;
+    height: 180px
+  }
+  .ws-classroom-shell .cl-timeline {
+    margin-left: 0;
+    padding-left: 0;
+    border: 0
+  }
+  .ws-classroom-shell .cl-timeline-icon {
+    display: none
+  }
+  .ws-classroom-shell .cl-micro,.ws-student-course .cl-micro {
+    grid-template-columns: minmax(0,1fr) 82px 70px
+  }
+  .ws-classroom-shell .cl-micro>.cl-ring,.ws-student-course .cl-micro>.cl-ring {
+    display: none
+  }
+}
+@media(max-width:760px) {
+  .ws-app.sa-app {
+    padding-left: 0;
+    padding-top: 112px
+  }
+  .ws-navigation {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: 108px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #e7ebf2;
+    padding: 9px 12px;
+    box-shadow: 0 2px 8px #17203107
+  }
+  .ws-brand {
+    font-size: 15px;
+    padding: 0 3px 8px
+  }
+  .ws-brand svg {
+    width: 22px;
+    height: 22px
+  }
+  .ws-navigation nav {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between
+  }
+  .ws-navigation nav>a,.ws-navigation nav>button {
+    width: auto;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 10px;
+    min-width: 0;
+    padding: 5px 7px;
+    min-height: 46px;
+    justify-content: center
+  }
+  .ws-navigation nav svg {
+    width: 18px;
+    height: 18px
+  }
+  .ws-navigation .ws-create-course,.ws-continue,.ws-recents,.ws-navigation footer {
+    display: none
+  }
+  .ws-app .sa-top {
+    height: auto;
+    min-height: 46px;
+    padding: 5px 14px;
+    gap: 5px;
+    flex-wrap: wrap
+  }
+  .ws-app .sa-top>div {
+    gap: 8px
+  }
+  .ws-app .sa-top select {
+    max-width: 100px;
+    padding: 6px;
+    font-size: 11px
+  }
+  .ws-app .sa-top a {
+    font-size: 10px
+  }
+  .ws-course-page {
+    padding: 14px 14px 40px
+  }
+  .ws-courses {
+    gap: 24px
+  }
+  .ws-page-title h1 {
+    font-size: 20px
+  }
+  .ws-page-title {
+    margin-bottom: 20px
+  }
+  .ws-course-filters {
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px
+  }
+  .ws-course-filters>label {
+    width: 140px
+  }
+  .ws-course-filters [role=tab] {
+    padding: 7px 10px;
+    font-size: 12px
+  }
+  .ws-course-ticket {
+    grid-template-columns: minmax(0,1fr) 108px;
+    min-height: 190px
+  }
+  .ws-ticket-main {
+    padding-left: 12px;
+    grid-template-columns: minmax(0,1fr) 35%
+  }
+  .ws-ticket-main h2 {
+    font-size: 15px
+  }
+  .ws-ticket-main .cl-cover {
+    height: 112px;
+    align-self: center
+  }
+  .ws-ticket-meta {
+    display: block;
+    padding-top: 14px;
+    font-size: 10px
+  }
+  .ws-ticket-meta>span {
+    display: block
+  }
+  .ws-ticket-meta>span+span {
+    margin-top: 5px
+  }
+  .ws-ticket-meta small {
+    display: inline;
+    margin-right: 5px;
+    font-size: 9px
+  }
+  .ws-ticket-next {
+    padding: 16px 10px;
+    font-size: 11px
+  }
+  .ws-ticket-next span {
+    font-size: 10px
+  }
+  .ws-course-summary {
+    display: block
+  }
+  .ws-course-summary>section {
+    margin-bottom: 18px
+  }
+  .ws-classroom-shell {
+    padding: 130px 14px 40px
+  }
+  .ws-classroom-shell .cl-course-layout,.ws-student-course.cl-course-layout {
+    display: block;
+    padding: 0
+  }
+  .ws-classroom-shell .cl-course-sidebar,.ws-student-course .cl-course-sidebar {
+    width: 100%;
+    max-height: none;
+    position: static
+  }
+  .ws-classroom-shell .cl-cover,.ws-student-course .cl-cover {
+    width: 130px;
+    height: 130px;
+    float: left;
+    margin: 15px 16px 15px 0
+  }
+  .ws-classroom-shell .cl-curator,.ws-student-course .cl-curator {
+    padding-top: 16px
+  }
+  .ws-classroom-shell .cl-panel-label,.ws-student-course .cl-panel-label {
+    clear: both
+  }
+  .ws-classroom-shell .cl-unit-nav,.ws-student-course .cl-unit-nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 5px 0 18px
+  }
+  .ws-classroom-shell .cl-unit-nav button,.ws-student-course .cl-unit-nav button {
+    flex-shrink: 0;
+    max-width: 190px;
+    white-space: nowrap
+  }
+  .ws-classroom-shell .cl-outline,.ws-student-course .cl-outline {
+    padding: 12px 0
+  }
+  .ws-classroom-shell .cl-lecture,.ws-student-course .cl-lecture {
+    padding: 16px
+  }
+  .ws-classroom-shell .cl-micro,.ws-student-course .cl-micro {
+    grid-template-columns: minmax(0,1fr) 74px 65px;
+    gap: 6px
+  }
+  .ws-classroom-shell .cl-micro>span:first-child,.ws-student-course .cl-micro>span:first-child {
+    font-size: 12px
+  }
+  .ws-classroom-shell .cl-micro button,.ws-student-course .cl-micro a {
+    font-size: 11px;
+    padding: 6px
+  }
+  .ws-classroom-shell .cl-unit-heading h2 {
+    font-size: 18px
+  }
+  .ws-classroom-shell .cl-lecture header {
+    align-items: center
+  }
+  .ws-classroom-shell .cl-lecture header>button:first-child {
+    font-size: 14px
+  }
+  .ws-classroom-shell .cl-lecture .cl-assist {
+    font-size: 10px;
+    padding: 4px 6px
+  }
+  .ws-classroom-shell .cl-status-strip {
+    gap: 6px
+  }
+  .ws-classroom-shell .cl-legend {
+    gap: 10px
+  }
+  .ws-app .sa-page:has(.ws-calendar-view) {
+    padding: 10px 12px 35px
+  }
+  .ws-day-sidebar {
+    grid-template-columns: 120px minmax(0,1fr)
+  }
+  .ws-date-card,.ws-day-todo {
+    padding: 12px;
+    border-radius: 15px
+  }
+  .ws-date-card h1 {
+    font-size: 13px
+  }
+  .ws-date-card>strong {
+    font-size: 35px
+  }
+  .ws-date-card>button {
+    top: 42px;
+    right: 9px;
+    font-size: 9px;
+    padding: 4px 6px
+  }
+  .ws-date-card>p {
+    font-size: 10px
+  }
+  .ws-date-card>div {
+    display: block
+  }
+  .ws-date-card>div>span {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding: 4px;
+    font-size: 9px
+  }
+  .ws-day-empty {
+    font-size: 12px;
+    padding: 15px 0
+  }
+  .ws-calendar-paper {
+    padding: 10px;
+    border-radius: 15px
+  }
+  .ws-calendar-toolbar {
+    gap: 8px
+  }
+  .ws-calendar-toolbar button {
+    font-size: 10px;
+    padding: 6px
+  }
+  .ws-calendar-month {
+    order: 3;
+    margin: 3px 0;
+    width: 55%;
+    gap: 5px
+  }
+  .ws-calendar-month h2 {
+    font-size: 14px
+  }
+  .ws-calendar-modes {
+    order: 4;
+    margin-left: auto
+  }
+  .ws-weekdays {
+    font-size: 10px;
+    padding: 8px 0
+  }
+  .ws-month-grid {
+    gap: 3px;
+    grid-template-rows: repeat(var(--calendar-rows),minmax(76px,1fr))
+  }
+  .ws-calendar-day {
+    border-radius: 7px
+  }
+  .ws-calendar-date {
+    font-size: 10px;
+    min-width: 22px;
+    min-height: 22px;
+    margin: 1px
+  }
+  .ws-calendar-day[data-today=true] .ws-calendar-date {
+    margin: 2px
+  }
+  .ws-grid-event {
+    padding: 1px
+  }
+  .ws-grid-event>button {
+    font-size: 9px;
+    padding: 3px 1px
+  }
+  .ws-grid-event time {
+    display: none
+  }
+  .ws-calendar-tools {
+    gap: 10px;
+    line-height: 1.5
+  }
+  .ws-calendar-tools>button {
+    font-size: 10px
+  }
+  .ws-dialog-layer {
+    padding: 12px
+  }
+  .ws-dialog-layer>section,.ws-dialog-layer>form {
+    padding: 20px 16px
+  }
+  .ws-event-dialog h2 {
+    font-size: 17px
+  }
+  .ws-dialog-layer .sa-sync-form>div {
+    grid-template-columns: 1fr
+  }
+  .ws-dialog-layer .sa-sync-form header {
+    gap: 10px
+  }
+  .ws-dialog-layer .sa-sync-form h2 {
+    font-size: 20px
+  }
+  .ws-dialog-layer .sa-sync-form footer {
+    align-items: stretch;
+    flex-direction: column
+  }
+  .ws-dialog-layer .sa-sync-form footer button {
+    margin: 0
+  }
+}
+.ws-loading {
+  padding: 30px;
+  color: #8a96a9;
+  font-size: 13px
+}
+.ws-builder header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.ws-builder h2 {
+  font-size: 21px;
+  margin: 0
+}
+.ws-builder header button {
+  border: 0;
+  background: none;
+  font-size: 24px
+}
+.ws-builder>input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e1e7f0;
+  border-radius: 9px;
+  padding: 12px;
+  font: 14px inherit;
+  margin-top: 20px
+}
+.ws-builder>p {
+  font-size: 13px;
+  color: #8894a6;
+  line-height: 1.7
+}
+.ws-builder>button {
+  border: 0;
+  background: #e9f0fa;
+  color: #5574a5;
+  padding: 10px 16px;
+  border-radius: 10px
+}
+.ws-builder dl {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #7c8aa2
+}
+.ws-evidence-footnote {
+  font-size: 11px;
+  color: #929dad;
+  line-height: 1.7;
+  margin: 25px 0
+}
+@media(max-width:760px) {
+  .ws-classroom-shell .cl-course-sidebar,.ws-student-course .cl-course-sidebar {
+    display: block
+  }
+  .ws-classroom-shell .cl-course-tabs,.ws-student-course .cl-course-tabs {
+    display: flex
+  }
+  .ws-classroom-shell .cl-course-sidebar>details,.ws-student-course .cl-course-sidebar>details {
+    clear: both
+  }
+}
+.ws-app .sa-composer {
+  position: relative
+}
+.ws-app .sa-tools-popover {
+  left: 8px;
+  top: calc(100% + 8px);
+  z-index: 45;
+  max-height: min(500px,65dvh);
+  overflow: auto
+}
+.ws-classroom-shell .cl-exit-course {
+  font-size: 16px;
+  padding: 5px 13px;
+  margin-bottom: 20px
+}
+.ws-classroom-shell .cl-exit-course span {
+  font-size: 13px
+}
+.ws-classroom-shell .cl-cover {
+  margin-top: 0
+}
+.ws-course-route {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px
+}
+.ws-course-route .cl-status-strip {
+  gap: 7px;
+  margin: 0
+}
+.ws-classroom-shell .cl-ring {
+  width: 21px;
+  height: 21px;
+  border-width: 2.5px
+}
+.ws-classroom-shell .cl-ring[data-state=viewed]:after {
+  font-size: 12px;
+  line-height: 16px
+}
+.ws-classroom-shell .cl-legend {
+  margin-bottom: 16px
+}
+.ws-classroom-shell .cl-next {
+  margin: 0 0 0 auto;
+  font-size: 11px!important;
+  padding: 7px 12px
+}
+.ws-classroom-shell .cl-microlessons {
+  margin-top: 20px;
+  gap: 8px
+}
+.ws-classroom-shell .cl-unit-heading {
+  padding-bottom: 16px
+}
+.ws-classroom-shell .cl-extend {
+  padding: 12px 16px
+}
+.ws-classroom-shell .cl-extend>span:first-child {
+  font-size: 26px;
+  width: 40px;
+  height: 42px
+}
+.ws-classroom-shell .cl-extend b {
+  font-size: 14px
+}
+.ws-classroom-shell .cl-extend small {
+  font-size: 12px
+}
+@media(min-width:761px) {
+  .ws-classroom-shell {
+    padding-top: 15px
+  }
+  .ws-classroom-shell .cl-unit-heading h2 {
+    margin-top: 12px
+  }
+  .ws-classroom-shell .cl-micro {
+    min-height: 36px
+  }
+  .ws-classroom-shell .cl-legend .cl-ring {
+    width: 20px;
+    height: 20px
+  }
+  .ws-classroom-shell .cl-status-strip button {
+    min-width: 23px;
+    height: 26px
+  }
+}
+@media(max-width:760px) {
+  .ws-classroom-shell .cl-cover {
+    margin-top: 15px
+  }
+  .ws-classroom-shell .cl-next {
+    margin-left: auto
+  }
+  .ws-course-route {
+    gap: 10px
+  }
+  .ws-classroom-shell .cl-ring {
+    display: inline-block
+  }
+  .ws-classroom-shell .cl-micro>.cl-ring {
+    display: none
+  }
+  .ws-classroom-shell .cl-exit-course {
+    margin-bottom: 15px
+  }
+  .ws-classroom-shell .cl-micro {
+    min-height: 38px
+  }
+  .ws-classroom-shell .cl-legend {
+    font-size: 10px
+  }
+  .ws-classroom-shell .cl-status-strip {
+    gap: 5px
+  }
+}

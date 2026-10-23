@@ -25,6 +25,7 @@ export default defineConfig({
   ],
   outputDir: 'test-results/browser-product-acceptance',
   use: {
+    actionTimeout: 15_000,
     baseURL: webUrl,
     browserName: 'chromium',
     screenshot: 'only-on-failure',

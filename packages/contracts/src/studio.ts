@@ -41,6 +41,7 @@ export type StudioCourse = {
   fingerprint: string;
   createdAt: string;
   updatedAt: string;
+  learningProgress?: { viewedLessonIds: string[]; startedLessonIds: string[]; lastLessonId: string | null; updatedAt: string | null };
 };
 
 export type StudioCoursePreview = StudioCourse & { canCreate: boolean; warnings: string[] };
@@ -261,6 +262,8 @@ export type StudioScheduleEvent = {
   planId?: string;
   planSessionId?: string;
   status?: 'scheduled' | 'completed' | 'skipped';
+  confirmed?: boolean;
+  revision?: number;
 };
 
 export type StudioIntegrationOverview = {

@@ -133,13 +133,13 @@ export class StudioIntegrationService {
     const previous = this.store.find('studioScheduleEvents', { createdBy: user.id, requestKey: command.requestKey });
     if (previous) {
       if (previous.requestHash !== requestHash) throw new ConflictException('请求标识已用于不同的学习安排，请重新发起');
-      return previous;
+      return this.eventView(previous);
     }
     const now = new Date().toISOString(), id = this.store.nextId('studio_event');
     const event: StudioScheduleEvent & { createdBy: string; requestHash: string } = { id, connectorId: 'studyagent', studentId: command.studentId,
       subject: command.subject, title: command.title, description: command.description, startsAt: command.startsAt,
       endsAt: command.endsAt, allDay: false, externalUid: `studyagent:${id}`, source: 'studyagent', createdAt: now,
-      requestKey: command.requestKey, createdBy: user.id, requestHash };
+      requestKey: command.requestKey, createdBy: user.id, requestHash, confirmed: true, status: 'scheduled', revision: 0 };
     this.store.append('studioScheduleEvents', event); return this.eventView(event);
   }
 
@@ -149,6 +149,37 @@ export class StudioIntegrationService {
     this.students.assertGuardian(user, event.studentId);
     if (event.planId) throw new ConflictException('这是学习计划任务，请在计划中使用完成、跳过或重新打开');
     this.store.remove('studioScheduleEvents', { id }); return { removed: true, id };
+  }
+
+  updateStudyEvent(user: InMemoryUserAccount, id: string, input: unknown) {
+    const command = validate(z.object({ expectedRevision: z.number().int().min(0), title: z.string().trim().min(2).max(160).optional(),
+      description: z.string().trim().max(1500).optional(), startsAt: z.string().datetime({ offset: true }).optional(),
+      endsAt: z.string().datetime({ offset: true }).optional(), confirmed: z.boolean().optional(),
+      status: z.enum(['scheduled', 'completed', 'skipped']).optional() }).strict(), input);
+    const row = this.store.find('studioScheduleEvents', { id });
+    if (!row) throw new NotFoundException('日程不存在');
+    this.students.assertGuardian(user, row.studentId);
+    if (row.source !== 'studyagent' || row.planId) throw new ConflictException('订阅日程只读；计划任务请通过学习计划更新');
+    if ((row.revision ?? 0) !== command.expectedRevision) throw new ConflictException('日程已更新，请刷新后重试');
+    const startsAt = command.startsAt ?? row.startsAt, endsAt = command.endsAt ?? row.endsAt;
+    const duration = Date.parse(endsAt) - Date.parse(startsAt);
+    if (duration < 5 * 60_000 || duration > 8 * 60 * 60_000) throw new BadRequestException('学习安排需持续 5 分钟至 8 小时');
+    const { expectedRevision, ...updates } = command;
+    Object.assign(row, updates, { revision: expectedRevision + 1 });
+    return this.eventView(row);
+  }
+
+  batchRemoveStudyEvents(user: InMemoryUserAccount, input: unknown) {
+    const command = validate(z.object({ ids: z.array(z.string().min(1).max(200)).min(1).max(100) }).strict(), input);
+    const rows = [...new Set(command.ids)].map(id => {
+      const row = this.store.find('studioScheduleEvents', { id });
+      if (!row) throw new NotFoundException('日程不存在');
+      this.students.assertGuardian(user, row.studentId);
+      if (row.source !== 'studyagent' || row.planId) throw new ConflictException('批量删除只适用于手动学习安排');
+      return row;
+    });
+    for (const row of rows) this.store.remove('studioScheduleEvents', { id: row.id });
+    return { removed: rows.length };
   }
 
   exportCalendar(user: InMemoryUserAccount, studentId: string, subject: StudioSubject) {

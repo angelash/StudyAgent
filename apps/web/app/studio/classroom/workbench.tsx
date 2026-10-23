@@ -11,6 +11,9 @@ import { BoardStep } from './board-step';
 import { PracticePanel } from './practice-panel';
 import { ClassroomIcon } from './icons';
 import './classroom.css';
+import { StudioNavigation } from '../studio-navigation';
+import '../workspace.css';
+import { WorkspaceDialog } from '../workspace-dialog';
 
 const tour = [
   ['连接与断点', '左上角显示课堂状态。离开后再回来，会恢复已经保存的讲解位置。'],
@@ -38,81 +41,94 @@ export function ClassroomWorkbench() {
   const [loading, setLoading] = React.useState(false), [panel, setPanel] = React.useState<'units' | 'materials' | 'practices'>('units');
   const [initialTab, setInitialTab] = React.useState<'history' | 'practice' | 'project'>('history');
   const [expanded, setExpanded] = React.useState<string[]>([]);
+  const [lessonInfo, setLessonInfo] = React.useState<Pick<ClassroomLesson, 'id' | 'title' | 'objective'> | null>(null), [help, setHelp] = React.useState(false);
   const studio = React.useRef<string | undefined>(undefined), loadController = React.useRef<AbortController | null>(null);
   const refresh = React.useCallback(async () => {
     if (!identity || identity.role === 'student') return;
     try { setCatalog(await apiRequest<ClassroomCatalog>('/learning/classroom/catalog')); }
     catch (caught) { setError((caught as Error).message); }
   }, [identity]);
-  const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string) => {
+  const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string, history: 'push' | 'none' = 'push', assistance = false) => {
     loadController.current?.abort(); const controller = new AbortController(); loadController.current = controller;
     setLoading(true); setError('');
     try {
       const row = await apiRequest<ClassroomSessionView>('/learning/classroom/sessions', { method: 'POST',
         signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId } : {}) }) });
       if (controller.signal.aborted) return;
-      setInitialTab(tab); setSession(row); studio.current = studioCourseId;
-      const query = new URLSearchParams({ lesson: lessonId, tab }); if (studioCourseId) query.set('studioCourseId', studioCourseId);
-      window.history.replaceState(null, '', '/studio/classroom?' + query);
+      setInitialTab(tab); setHelp(assistance); setSession(row); studio.current = studioCourseId;
+      const query = new URLSearchParams(window.location.search); query.set('lesson', lessonId); query.set('tab', tab); if (studioCourseId) query.set('studioCourseId', studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
+      if(history==='push') window.history.pushState(null, '', '/studio/classroom?' + query);
     } catch (caught) { if (!controller.signal.aborted) setError((caught as Error).message); }
     finally { if (!controller.signal.aborted) setLoading(false); }
   }, []);
   React.useEffect(() => {
     if (!identity) return;
     void refresh();
-    const params = new URLSearchParams(window.location.search), id = params.get('lesson');
-    if (id) void open(id, params.get('tab') === 'practice' ? 'practice' : params.get('tab') === 'project' ? 'project' : 'history', params.get('studioCourseId') ?? undefined);
-    return () => loadController.current?.abort();
+    const restore = () => {
+      const params = new URLSearchParams(window.location.search), id = params.get('lesson');
+      const requestedUnit = Number(params.get('unit') ?? 0); if (requestedUnit >= 0 && requestedUnit < 5) setUnitIndex(requestedUnit);
+      setPanel(params.get('panel') === 'materials' || params.get('panel') === 'practices' ? params.get('panel') as 'materials' | 'practices' : 'units');
+      if (id) void open(id, params.get('tab') === 'practice' ? 'practice' : params.get('tab') === 'project' ? 'project' : 'history', params.get('studioCourseId') ?? undefined, 'none', params.get('help') === '1');
+      else { loadController.current?.abort(); setLoading(false); setSession(null); void refresh(); }
+    };
+    restore(); window.addEventListener('popstate', restore);
+    return () => { loadController.current?.abort(); window.removeEventListener('popstate', restore); };
   }, [identity, refresh, open]);
-  React.useEffect(() => {
-    const first = catalog?.course.units[unitIndex]?.lectures[0]; if (first) setExpanded([first.id]);
-  }, [catalog, unitIndex]);
+  const firstLecture = catalog?.course.units[unitIndex]?.lectures[0]?.id;
+  React.useEffect(() => { if (firstLecture) setExpanded([firstLecture]); }, [firstLecture]);
   function close() {
-    setSession(null); window.history.replaceState(null, '', studio.current ? '/studio?course=' + encodeURIComponent(studio.current) : '/studio/classroom');
-    if (studio.current) window.location.assign('/studio?course=' + encodeURIComponent(studio.current));
-    else void refresh();
+    setSession(null);
+    if (studio.current) {
+      const params=new URLSearchParams(window.location.search), query=new URLSearchParams({view:'courses',course:studio.current});
+      if(session?.studentId)query.set('student',session.studentId);const subject=params.get('returnSubject')??new URL(session?.lesson.verificationHref??'/studio',window.location.origin).searchParams.get('subject');if(subject)query.set('subject',subject);
+      if(params.get('returnUnit'))query.set('unit',params.get('returnUnit')!);if(params.get('returnPanel'))query.set('panel',params.get('returnPanel')!);
+      window.location.assign('/studio?'+query); return;
+    }
+    const unit = catalog?.course.units.findIndex(item => item.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session?.lessonId)) || session?.lessonId === 'unit-exam:' + item.id) ?? unitIndex;
+    const selectedUnit = unit >= 0 ? unit : unitIndex; setUnitIndex(selectedUnit);
+    window.history.replaceState(null, '', '/studio/classroom?' + new URLSearchParams({unit:String(selectedUnit),panel})); void refresh();
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
   if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><Link href="/parent/login">登录学习工作台 →</Link></div>;
-  if (session) return <ClassroomSession key={session.id} initial={session} initialTab={initialTab} unit={catalog?.course.units.find(unit =>
+  if (session) return <ClassroomSession key={session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
     unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session.lessonId)) || session.lessonId === 'unit-exam:' + unit.id)}
-    onClose={close} onNext={id => void open(id)} />;
+    onClose={close} onNext={id => void open(id, 'history', studio.current)} />;
   const course = catalog?.course, unit = course?.units[unitIndex];
   const progress = new Map(catalog?.progress.map(row => [row.lessonId, row]) ?? []);
   function state(id: string) { const row = progress.get(id); return row?.completed ? 'viewed' as const : row ? 'started' as const : 'new' as const; }
-  const next = course?.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons)).find(lesson => !progress.get(lesson.id)?.completed);
-  return <main className="cl-shell">
-    <nav className="cl-rail" aria-label="课堂导航"><Link href="/studio" className="cl-brand" aria-label="StudyAgent 工作台">S</Link>
-      <Link href="/studio" title="Home">⌂</Link><Link href="/studio?view=courses" title="Courses">♧</Link>
-      <Link href="/studio?view=calendar" title="Calendar">▦</Link><Link href="/studio?view=history" title="History">◷</Link>
-      <span className="cl-rail-bottom">学习</span></nav>
-    <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href="/studio">× <span>Exit Course</span></Link>
-      <CourseCover /><div className="cl-curator"><span>S</span><div><small>curated by</small><b>StudyAgent Learning Studio</b></div></div>
-      <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>Show more</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
-      <div className="cl-panel-label">PANEL</div><div className="cl-course-tabs" role="tablist" aria-label="课程面板">
-        {(['units', 'materials', 'practices'] as const).map((item, index) => <button key={item} role="tab" aria-selected={panel === item} onClick={() => setPanel(item)}>{['☷ Units', '▤ Materials', '✎ Practices'][index]}</button>)}
-      </div><div className="cl-unit-nav">{course?.units.map((item, index) => <button key={item.id} data-active={unitIndex === index} onClick={() => setUnitIndex(index)}><b>{index + 1}</b>{item.title}</button>)}</div>
+  const allLessons = course?.units.flatMap(unit => unit.lectures.flatMap(lecture => lecture.lessons)) ?? [];
+  const recent = [...(catalog?.progress ?? [])].filter(row => allLessons.some(lesson => lesson.id === row.lessonId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
+  const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !progress.get(lesson.id)?.completed);
+  return <main className="cl-shell ws-classroom-shell">
+    <StudioNavigation active="courses" recent={[{title:catalog?.course.units.flatMap(unit=>unit.lectures.flatMap(lecture=>lecture.lessons)).find(lesson=>lesson.id===[...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?lesson='+([...(catalog?.progress??[])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0]?.lessonId??'soc-1-1-1')}]} />
+    <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href="/studio?view=courses">× <span>退出课程</span></Link>
+      <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
+      <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
+      <div className="cl-panel-label">面板</div><div className="cl-course-tabs" role="tablist" aria-label="课程面板">
+        {(['units', 'materials', 'practices'] as const).map((item, index) => <button key={item} role="tab" aria-selected={panel === item} onClick={() => {setPanel(item);const params=new URLSearchParams({unit:String(unitIndex),panel:item});window.history.replaceState(null,'','/studio/classroom?'+params);}}>{['单元', '资料', '练习'][index]}</button>)}
+      </div><div className="cl-unit-nav">{course?.units.map((item, index) => <button key={item.id} data-active={unitIndex === index} onClick={() => {setUnitIndex(index);const params=new URLSearchParams({unit:String(index),panel});window.history.replaceState(null,'','/studio/classroom?'+params);}}><b>{index + 1}</b>{item.title}</button>)}</div>
     </aside><section className="cl-outline">
       {error && <div className="cl-error" role="alert">{error}<button onClick={() => void refresh()}>重试</button></div>}
       {loading && <div className="cl-open-status" role="status">正在恢复课堂…</div>}
       {identity.role === 'student' && !loading && <div className="cl-empty">请从你的学习课程中打开已审核微课。<Link href="/studio">返回课程</Link></div>}
       {course && unit && <>
+        <div className="cl-unit-heading"><small>第 {unitIndex + 1} 单元，共 {course.units.length} 单元</small><h2>单元 {unitIndex + 1}：{unit.title}</h2><p>{unit.objective}</p></div>
         <Link className="cl-extend" href="/studio?view=materials"><span>▤</span><div><b>把自己的资料带进课堂</b><small>PDF、页级阅读、个性化学案与白板</small></div><span>↗</span></Link>
         <div className="cl-legend"><span><Ring state="viewed"/>讲解已读</span><span><Ring state="started"/>已接触</span><span><Ring/>未开始</span><span>▣ Project</span><span>♙ Exam</span></div>
-        <div className="cl-status-strip">{unit.lectures.flatMap(lecture => lecture.lessons).map(lesson => <button key={lesson.id} title={lesson.title} onClick={() => void open(lesson.id)}><Ring state={state(lesson.id)}/></button>)}
+        <div className="ws-course-route"><div className="cl-status-strip">{unit.lectures.flatMap(lecture => lecture.lessons).map(lesson => <button key={lesson.id} title={lesson.title} onClick={() => void open(lesson.id)}><Ring state={state(lesson.id)}/></button>)}
           <button title="单元项目" onClick={() => void open('unit-exam:' + unit.id, 'project')}>▣</button><button title="单元核查" onClick={() => void open('unit-exam:' + unit.id, 'practice')}>♙</button></div>
-        {next && <button className="cl-next" onClick={() => void open(next.id)}>▶ <span>Next: {next.title}</span> ›</button>}
-        <div className="cl-unit-heading"><small>UNIT {unitIndex + 1} OF {course.units.length}</small><h2>Unit {unitIndex + 1}: {unit.title}</h2><p>{unit.objective}</p></div>
-        {panel === 'materials' ? <div className="cl-card"><h2>References & Materials</h2><p>自编讲解以通用概念和匿名情境教学。以下为开放的进一步阅读入口，未逐节宣称页码引用。</p>
+        {next && <button className="cl-next" onClick={() => void open(next.id)}>▶ <span>下一步：{next.title}</span> ›</button>}</div>
+
+        {panel === 'materials' ? <div className="cl-card"><h2>参考资料</h2><p>自编讲解以通用概念和匿名情境教学。以下为开放的进一步阅读入口，未逐节宣称页码引用。</p>
           {course.references.map(reference => <a key={reference.url} href={reference.url} target="_blank" rel="noreferrer">{reference.title} ↗</a>)}
           <Link href="/studio?view=materials">打开我的 PDF 与学案 →</Link></div> : <div className="cl-timeline">
           {unit.lectures.map((lecture, index) => <article className="cl-lecture" key={lecture.id}>
-            <span className="cl-timeline-icon">♧</span><header><button onClick={() => setExpanded(rows => rows.includes(lecture.id) ? rows.filter(id => id !== lecture.id) : [...rows, lecture.id])} aria-expanded={expanded.includes(lecture.id)}>
-              Lecture {index + 1}: {lecture.title}</button><button className="cl-assist" onClick={() => void open(lecture.lessons[0].id)}>▤ Get Assistance</button></header>
+            <span className="cl-timeline-icon">▧</span><header><button onClick={() => setExpanded(rows => rows.includes(lecture.id) ? rows.filter(id => id !== lecture.id) : [...rows, lecture.id])} aria-expanded={expanded.includes(lecture.id)}>
+              讲次 {index + 1}：{lecture.title}</button><button className="cl-assist" onClick={() => void open(lecture.lessons[0].id, 'history', undefined, 'push', true)}>获取帮助</button></header>
             <p>{lecture.description}</p>
             {(expanded.includes(lecture.id) || panel === 'practices') && <div className="cl-microlessons">{lecture.lessons.map(lesson => <div className="cl-micro" key={lesson.id}>
-              <span>{lesson.title}<small>{lesson.objective}</small></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{progress.has(lesson.id) ? '▶ Resume' : '▶ Learn'}</button>
-              <button className="cl-practice" disabled={loading} onClick={() => void open(lesson.id, 'practice')}>♧ Practice</button><Ring state={state(lesson.id)}/>
+              <span className="ws-micro-title">{lesson.title}<button className="ws-lesson-info" aria-label={'查看学习目标：' + lesson.title} onClick={() => setLessonInfo(lesson)}>⊙</button></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{progress.has(lesson.id) ? '▶ 继续学习' : '▶ 学习'}</button>
+              <button className="cl-practice" disabled={loading} onClick={() => void open(lesson.id, 'practice')}>♧ 练习{Boolean(progress.get(lesson.id)?.answered) && <span title="已有练习记录"> ·</span>}</button><Ring state={state(lesson.id)}/>
             </div>)}</div>}
           </article>)}
           <article className="cl-lecture cl-project"><span className="cl-timeline-icon">▣</span><small>PROJECT · {unitIndex + 1} / 5</small><h3>{unit.project.title}</h3><p>{unit.project.brief}</p><button onClick={() => void open('unit-exam:' + unit.id, 'project')}>Start →</button></article>
@@ -120,6 +136,7 @@ export function ClassroomWorkbench() {
         </div>}
       </>}
     </section></div>
+    {lessonInfo && <WorkspaceDialog onClose={() => setLessonInfo(null)}><section className="ws-event-dialog ws-help-dialog" role="dialog" aria-modal="true" aria-label="微课学习目标"><header><h2>{lessonInfo.title}</h2><button aria-label="关闭学习目标" onClick={() => setLessonInfo(null)}>×</button></header><p>{lessonInfo.objective}</p><p>通过讲解理解概念，再用课堂题目检查。课堂记录会保留在当前账号下。</p><footer><button onClick={() => { setLessonInfo(null); void open(lessonInfo.id); }}>开始学习</button><button onClick={() => { setLessonInfo(null); void open(lessonInfo.id, 'practice'); }}>检查理解</button></footer></section></WorkspaceDialog>}
   </main>;
 }
 
@@ -127,8 +144,8 @@ type SpeechRecognitionSession = { lang: string; interimResults: boolean; continu
   onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
   onerror: ((event: { error: string }) => void) | null; onend: (() => void) | null };
 
-function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { initial: ClassroomSessionView;
-  initialTab: 'history' | 'practice' | 'project'; unit?: ClassroomUnit; onClose: () => void; onNext: (id: string) => void }) {
+function ClassroomSession({ initial, initialTab, assistance = false, unit, onClose, onNext }: { initial: ClassroomSessionView;
+  initialTab: 'history' | 'practice' | 'project'; assistance?: boolean; unit?: ClassroomUnit; onClose: () => void; onNext: (id: string) => void }) {
   const [session, setSession] = React.useState(initial), row = React.useRef(initial);
   const [playing, setPlaying] = React.useState(false), [muted, setMuted] = React.useState(!initial.speech.available);
   const [speed, setSpeed] = React.useState(1), [voice, setVoice] = React.useState(initial.speech.defaultVoice ?? '');
@@ -136,7 +153,7 @@ function ClassroomSession({ initial, initialTab, unit, onClose, onNext }: { init
   const [page, setPage] = React.useState(0), [chatWidth, setChatWidth] = React.useState(360), [mobile, setMobile] = React.useState<'board' | 'chat'>('board');
   const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourIndex, setTourIndex] = React.useState<number | null>(null);
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
-  const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(''), [busy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
+  const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [busy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
   const [selected, setSelected] = React.useState<Record<string, number>>({}), [hinted, setHinted] = React.useState<string[]>(initial.hintedQuestionIds ?? []), [questionIndex, setQuestionIndex] = React.useState(0);
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);

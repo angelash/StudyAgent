@@ -28,6 +28,7 @@ function writeTextPdf() {
 
 test('a parent can build and reopen an evidence-backed learning studio course', async ({ page }) => {
   test.setTimeout(120_000);
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
   const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
   const principal = `studio-${suffix}@local.test`;
@@ -59,13 +60,22 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByRole('button', { name: 'Instant Assistance' })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-home-polished.png', fullPage: true });
   await page.getByRole('button', { name: '生成第一门课程' }).click();
-  await page.locator('.sa-modal input').fill('分数关系与证据');
+  await page.getByRole('dialog', {name:'课程蓝图'}).locator('input').fill('分数关系与证据');
   await page.getByRole('button', { name: '预览课程蓝图' }).click();
   await expect(page.getByText('Unit 1:', { exact: false }).first()).toBeVisible();
   await page.getByRole('button', { name: '确认并创建' }).click();
   await expect(page.getByRole('heading', { name: '分数关系与证据' })).toBeVisible();
   await expect(page.getByText('Unit 1:', { exact: false }).first()).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: 'doc/evidence/2026-10-22/studio-course-polished.png', fullPage: true });
+
+  await page.getByRole('button', { name: 'Courses', exact: true }).click();
+  const ticket = page.locator('.ws-course-ticket').filter({ has: page.getByRole('button', { name: '打开课程：分数关系与证据', exact: true }) });
+  await page.evaluate(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+  await ticket.locator('.ws-ticket-next').click();
+  await expect(page.locator('.cl-room')).toBeVisible();
+  await page.getByRole('button', { name: '离开课堂', exact: true }).click();
+  await page.getByRole('button', { name: '保存并离开' }).click();
+  await expect(page.getByRole('heading', { name: '分数关系与证据' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Home' }).click();
   await page.getByRole('button', { name: 'Instant Assistance' }).click();
@@ -93,13 +103,15 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByLabel('任务名称').fill('分数复习安排');
   await page.getByLabel('完成标准').fill('独立完成 5 道新题并说出关键步骤');
   await page.getByRole('button', { name: '加入学习日历' }).click();
-  await expect(page.getByText('分数复习安排')).toBeVisible();
+  await expect(page.locator('.ws-month-grid').getByText('分数复习安排')).toBeVisible();
   await page.getByRole('button', { name: '连接 LMS / 日历' }).click();
   await page.getByLabel('来源类型').selectOption('lms_ics');
   await page.getByLabel('或粘贴 ICS 文件内容').fill('BEGIN:VCALENDAR\nBEGIN:VEVENT\nUID:school-1\nDTSTART:20261103T080000+0800\nDTEND:20261103T084500+0800\nSUMMARY:学校单元复习\nEND:VEVENT\nEND:VCALENDAR');
   await page.getByRole('button', { name: '连接并同步' }).click();
-  await expect(page.locator('.sa-calendar-grid').getByText('学校单元复习')).toBeVisible();
+  await page.getByRole('button', {name:'下一个日期范围'}).click();
+  await expect(page.locator('.ws-month-grid').getByText('学校单元复习')).toBeVisible();
   await expect(page.getByRole('button', { name: '连接并同步' })).toHaveCount(0);
+  await page.locator('.ws-calendar-management > summary').click();
   await page.getByRole('button', { name: '＋ 生成诊断学习计划' }).click();
   await expect(page.getByLabel('计划目标')).toBeVisible();
   await page.getByRole('button', { name: '预览学习计划' }).click();
@@ -147,10 +159,12 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.locator('.sa-pack-layout')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
   await page.getByRole('button', { name: 'Calendar' }).click();
+  await page.locator('.ws-calendar-management > summary').click();
   await expect(page.locator('.sa-plan-card')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
 
   await page.getByRole('button', { name: 'Home' }).click();
   await page.reload();
   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();
+  expect(errors).toEqual([]);
 });

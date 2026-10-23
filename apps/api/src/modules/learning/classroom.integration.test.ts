@@ -153,4 +153,21 @@ describe('classroom teaching sessions and persistent isolation', () => {
       expect(JSON.stringify(exported.classroomSessions)).not.toContain('requestKey');
     });
   });
+
+  it('restores edited calendar confirmation, time and completion after a SQLite restart', async () => {
+    const created = await call('post', '/students', { nickname: '日历持久化', grade: 5, preferredSessionMinutes: 15,
+      defaultVersionMap: { math: '', chinese: '', english: '' } });
+    const studentId = created.profile.id;
+    const event = await call('post', '/learning/studio/calendar/events', { studentId, subject: 'math',
+      title: '日历重启验证', description: '核对完成状态', startsAt: '2026-11-02T10:00:00Z', endsAt: '2026-11-02T10:25:00Z', requestKey: randomUUID() });
+    const changed = await call('post', '/learning/studio/calendar/events/' + event.id + '/update', { expectedRevision: 0,
+      startsAt: '2026-11-03T11:00:00Z', endsAt: '2026-11-03T11:40:00Z', confirmed: false, status: 'completed' });
+    await app.close(); await boot();
+    const overview = await call('get', '/learning/studio/overview?studentId=' + studentId + '&subject=math');
+    expect(overview.integrations.events.find((row: any) => row.id === event.id)).toEqual(changed);
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [event.id] });
+    await app.close(); await boot();
+    const removed = await call('get', '/learning/studio/overview?studentId=' + studentId + '&subject=math');
+    expect(removed.integrations.events).toHaveLength(0);
+  });
 });

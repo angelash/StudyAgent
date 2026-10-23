@@ -87,7 +87,12 @@ export class LearningService {
       return { id: item.id, kind, priority: item.priority, title: item.title, reason: item.reason, href };
     });
     const courses = this.store.select('studioCourses', { studentId: selected.id, subject })
-      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).map(course => {
+        const sessions = this.store.select('classroomSessions', { ownerUserId: user.id, courseId: course.id })
+          .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+        return { ...course, learningProgress: { viewedLessonIds: [...new Set(sessions.filter(row => row.status === 'completed').map(row => row.lessonId))],
+          startedLessonIds: [...new Set(sessions.map(row => row.lessonId))], lastLessonId: sessions[0]?.lessonId ?? null, updatedAt: sessions[0]?.updatedAt ?? null } };
+      });
     const activities = this.store.select('studioActivities', { studentId: selected.id, subject })
       .sort((a, b) => b.at.localeCompare(a.at)).slice(0, 50);
     const whiteboards = this.store.select('studioWhiteboards', { studentId: selected.id, subject })

@@ -239,7 +239,7 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
     if (!mimeType) { setNotice('当前浏览器没有可用的 WebM 编码器。'); return; }
     setExporting(0); setNotice('正在准备白板与旁白音轨…');
     const audioContext = typeof AudioContext === 'undefined' ? null : new AudioContext();
-    const audioStart = audioContext?.resume();
+    const audioStart = audioContext?.resume().catch(() => undefined);
     let narration: Blob[] | null = null;
     if (narrationAvailable) {
       const collected: Blob[] = [];
@@ -263,7 +263,6 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
         buffers = await Promise.all(narration.map(async blob => audioContext.decodeAudioData(await blob.arrayBuffer())));
       } catch { buffers = null; }
     }
-    if (!buffers) void audioContext?.close();
     const destination = buffers && audioContext ? audioContext.createMediaStreamDestination() : null;
     const stream = new MediaStream([...target.captureStream(24).getVideoTracks(), ...(destination?.stream.getAudioTracks() ?? [])]);
     const chunks: Blob[] = [];
@@ -300,7 +299,8 @@ export function WhiteboardPlayer({ whiteboard, narrationAvailable = false, speec
       setNotice('视频导出中断，请重试或导出 SRT 字幕。');
     } finally {
       setExporting(null);
-      if (audioContext) void audioContext.close();
+      if (audioContext && audioContext.state !== 'closed') await audioContext.close().catch(() => undefined);
+      stream.getTracks().forEach(track => track.stop());
       const context = target.getContext('2d');
       if (context) drawWhiteboardScene(context, scene, progress, pageImages);
     }

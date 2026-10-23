@@ -26,7 +26,7 @@ test('course classroom supports teaching, executable examples, learning checks a
   await expect(page.getByRole('heading', { name: '社会学概论', exact: true })).toBeVisible();
   await expect(page.locator('.cl-unit-nav button')).toHaveCount(5); await expect(page.locator('.cl-lecture')).toHaveCount(5);
   if (!process.env.CI) { mkdirSync(evidenceDirectory, { recursive: true }); await page.screenshot({ path: evidenceDirectory + '/classroom-course.png', fullPage: true }); }
-  await page.getByRole('button', { name: '▶ Learn', exact: true }).first().click();
+  await page.getByRole('button', { name: '▶ 学习', exact: true }).first().click();
   await expect(page.getByRole('dialog', { name: '课堂新手引导' })).toBeVisible(); await page.getByRole('button', { name: '跳过', exact: true }).click();
   await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
   await expect(page.getByRole('img', { name: '个人处境与社会条件的交汇' })).toBeVisible();

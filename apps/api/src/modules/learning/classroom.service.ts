@@ -22,10 +22,12 @@ export class ClassroomService {
 
   catalog(user: InMemoryUserAccount): ClassroomCatalog {
     if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
-    const sessions = this.store.select('classroomSessions', { ownerUserId: user.id, courseId: 'sociology-foundations' });
+    const sessions = this.store.select('classroomSessions', { ownerUserId: user.id, courseId: 'sociology-foundations' })
+      .filter(row => { const lesson = classroomLesson(row.lessonId); return lesson && row.contentFingerprint === classroomFingerprint(lesson); })
+      .sort((a,b) => a.updatedAt.localeCompare(b.updatedAt));
     return { course: classroomCourse(), progress: sessions.map(row => ({ lessonId: row.lessonId, sessionId: row.id,
       cursor: row.cursor, completed: row.status === 'completed', correct: row.answers.filter(answer => answer.correct).length,
-      answered: row.answers.length })) };
+      answered: row.answers.length, updatedAt: row.updatedAt, createdAt: row.createdAt })) };
   }
 
   private record(user: InMemoryUserAccount, id: string) {

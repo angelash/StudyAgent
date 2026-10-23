@@ -1,0 +1,256 @@
+{
+  "date": "2026-10-23",
+  "recordedAt": "2026-10-23T08:27:55.616175+00:00",
+  "scope": [
+    "course library",
+    "course outline and classroom navigation",
+    "calendar lifecycle"
+  ],
+  "backend": {
+    "fullSuite": {
+      "passed": 746,
+      "skipped": 6,
+      "failed": 0,
+      "filesPassed": 86,
+      "filesSkipped": 1
+    },
+    "focusedFinal": {
+      "passed": 16,
+      "failed": 0
+    }
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-23T08:24:15.701Z",
+      "duration": 103839.928,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "desktopViewport": {
+      "width": 1645,
+      "height": 954
+    },
+    "phoneViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "tests": [
+      {
+        "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "question replies add safe board notes with page links, export and restored session rendering",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "public product shell remains usable at phone, tablet and desktop widths",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "a touch and keyboard user can enter the family access flow",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "a parent can create a learning profile and complete an evidence-limited assessment",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "an approved fraction teaching card renders a safe step-by-step visual",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "an administrator can reach the curriculum review workbench",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "a parent can build and reopen an evidence-backed learning studio course",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      },
+      {
+        "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+        "ok": true,
+        "statuses": [
+          "expected"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    "guardian and account isolation",
+    "student read-only calendar management",
+    "manual event optimistic revision conflict",
+    "batch validation before any deletion",
+    "subscribed and plan events protected",
+    "SQLite edit and delete recovery after restart",
+    "course continuing and approved lesson return",
+    "unit/panel refresh and browser back/forward",
+    "date and scope refresh",
+    "calendar editing across months",
+    "confirmation and completed/reopened states",
+    "batch cancellation and deletion",
+    "ICS imports and exports",
+    "mobile overflow and visible navigation",
+    "video export and AudioContext cleanup"
+  ],
+  "screenshots": [
+    {
+      "path": "doc/evidence/2026-10-23/workspace-calendar-empty-desktop.png",
+      "sha256": "1bb59c0bd189f16a7c2dea02c9ce3ba6b8369750aa2ab15a54131a75f61929da"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-calendar-mobile.png",
+      "sha256": "c90191bf18742542eaefc3e61f459f478217a5661aecf5a2ee6296432910ee9b"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-calendar-tasks-desktop.png",
+      "sha256": "807eded69375a594f29f5e5722f71fe68a3cda87986409d76ecc77de619744b3"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-courses-desktop.png",
+      "sha256": "0f1023220801ac648c59b77a2b2ca280776fc62922d5ceebbf9eca12a1d49cd4"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-courses-mobile.png",
+      "sha256": "0f82f0592cf9222022424b8cf048fd6b637c96c90679eab3b12daf6e99ae146f"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-outline-desktop.png",
+      "sha256": "fb39d1288136a68021431e0c3baff2e72904d3a13431c10645fc19f39a25418d"
+    },
+    {
+      "path": "doc/evidence/2026-10-23/workspace-outline-mobile.png",
+      "sha256": "185a898ceff1d7a09f748dde7e276d16c4dd4f18568e24ae4e1acb2355eb50c8"
+    }
+  ],
+  "limits": [
+    "Screenshot-based implementation, not an export of HyperKnow source CSS or private assets.",
+    "Own SVG course cover; no claim of 100 percent asset or typography parity.",
+    "Calendar remains bound to learning profiles; ICS does not provide native school OAuth.",
+    "Reading completion does not establish knowledge mastery."
+  ],
+  "production": {
+    "checkedAt": "2026-10-23T08:29:28.900Z",
+    "web": [
+      {
+        "path": "/studio?view=courses",
+        "status": 200,
+        "assets": [
+          {
+            "src": "/_next/static/chunks/app/studio/page-06dc00c1ab11f701.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/webpack-dff34a1c42b7070b.js",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "path": "/studio/classroom",
+        "status": 200,
+        "assets": [
+          {
+            "src": "/_next/static/chunks/app/studio/classroom/page-b59757ccde1256c9.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/webpack-dff34a1c42b7070b.js",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "path": "/studio?view=calendar",
+        "status": 200,
+        "assets": [
+          {
+            "src": "/_next/static/chunks/app/studio/page-06dc00c1ab11f701.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+            "status": 200
+          },
+          {
+            "src": "/_next/static/chunks/webpack-dff34a1c42b7070b.js",
+            "status": 200
+          }
+        ]
+      }
+    ],
+    "api": {
+      "status": 200,
+      "readiness": "ready"
+    }
+  }
+}

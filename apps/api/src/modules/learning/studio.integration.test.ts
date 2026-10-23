@@ -165,6 +165,10 @@ describe('whiteboard video and LMS calendar integrations', () => {
     expect(session.lesson.steps.some((step: any) => step.narration.includes('不同分母'))).toBe(true);
     expect(session.lesson.verificationHref).toBe(lesson.href);
     expect(session.studentId).toBe('child');
+    const learnerOverview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
+    expect(learnerOverview.courses[0].learningProgress.startedLessonIds).toEqual([lesson.id]);
+    const parentOverview = await call('get', '/learning/studio/overview?studentId=child&subject=math');
+    expect(parentOverview.courses[0].learningProgress.startedLessonIds).toEqual([]);
     await call('get', '/learning/classroom/sessions/' + session.id, undefined, parent, 403);
     await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: lesson.id }, other, 403);
     await call('post', '/learning/classroom/sessions', { lessonId: 'soc-1-1-1' }, learner, 403);
@@ -189,6 +193,8 @@ describe('whiteboard video and LMS calendar integrations', () => {
     const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math');
     expect(overview.plans[0].id).toBe(plan.id);
     await call('post', '/learning/studio/calendar/events/' + plan.sessions[0].calendarEventId + '/remove', {}, parent, 409);
+    await call('post', '/learning/studio/calendar/events/' + plan.sessions[0].calendarEventId + '/update', { expectedRevision: 0, confirmed: false }, parent, 409);
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [plan.sessions[0].calendarEventId] }, parent, 409);
     const completed = await call('post', '/learning/studio/study-plans/' + plan.id + '/sessions/' + plan.sessions[0].id,
       { action: 'complete', expectedRevision: plan.revision, requestKey: randomUUID() });
     expect(completed.revision).toBe(2);
@@ -345,6 +351,8 @@ describe('whiteboard video and LMS calendar integrations', () => {
     const event = await call('post', '/learning/studio/calendar/events', command);
     const replay = await call('post', '/learning/studio/calendar/events', command);
     expect(replay.id).toBe(event.id);
+    expect(replay).not.toHaveProperty('createdBy');
+    expect(replay).not.toHaveProperty('requestHash');
     expect(store.studioScheduleEvents).toHaveLength(1);
     await call('post', '/learning/studio/calendar/events', { ...command, title: '不同任务' }, parent, 409);
     await call('post', '/learning/studio/calendar/events', { ...command, requestKey: randomUUID() }, learner, 403);
@@ -353,5 +361,43 @@ describe('whiteboard video and LMS calendar integrations', () => {
     expect(exported.content).toContain('DTSTART:20261102T100000Z');
     await call('post', '/learning/studio/calendar/events/' + event.id + '/remove', {});
     expect((await call('get', '/learning/studio/overview?studentId=child&subject=math')).integrations.events).toEqual([]);
+  });
+
+  it('edits manual calendar tasks with revision checks and guardian isolation', async () => {
+    const event = await call('post', '/learning/studio/calendar/events', { studentId: 'child', subject: 'math',
+      title: '复习分数', description: '', startsAt: '2026-11-02T10:00:00Z', endsAt: '2026-11-02T10:25:00Z', requestKey: randomUUID() });
+    const path = '/learning/studio/calendar/events/' + event.id + '/update';
+    await call('post', path, { expectedRevision: 0, confirmed: false }, learner, 403);
+    await call('post', path, { expectedRevision: 0, confirmed: false }, other, 403);
+    await call('post', path, { expectedRevision: 0, endsAt: '2026-11-02T09:00:00Z' }, parent, 400);
+    await call('post', path, { expectedRevision: 0, studentId: 'other' }, parent, 400);
+    const edited = await call('post', path, { expectedRevision: 0, title: '调整后的复习', confirmed: false,
+      startsAt: '2026-11-03T10:00:00Z', endsAt: '2026-11-03T10:40:00Z' });
+    expect(edited).toMatchObject({ revision: 1, confirmed: false, title: '调整后的复习' });
+    await call('post', path, { expectedRevision: 0, confirmed: true }, parent, 409);
+    await call('post', path, { expectedRevision: 1, status: 'completed', confirmed: true });
+    const reopened = await call('post', path, { expectedRevision: 2, status: 'scheduled' });
+    expect(reopened).toMatchObject({ revision: 3, status: 'scheduled', confirmed: true });
+    const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
+    expect(overview.integrations.events[0]).toEqual(reopened);
+    expect(store.diagnosticResponses).toHaveLength(0);
+  });
+
+  it('validates every batch target before deleting and protects subscribed and plan events', async () => {
+    const make = async (title: string) => call('post', '/learning/studio/calendar/events', { studentId: 'child', subject: 'math',
+      title, description: '', startsAt: '2026-11-02T10:00:00Z', endsAt: '2026-11-02T10:25:00Z', requestKey: randomUUID() });
+    const first = await make('复习任务一'), second = await make('复习任务二');
+    const connected = await call('post', '/learning/studio/integrations', { studentId: 'child', subject: 'math',
+      kind: 'calendar_ics', label: '订阅日历', icsText: calendar(), requestKey: randomUUID() });
+    const external = connected.events[0];
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [first.id, 'missing'] }, parent, 404);
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [first.id, external.id] }, parent, 409);
+    await call('post', '/learning/studio/calendar/events/' + external.id + '/update', { expectedRevision: 0, title: '不能修改' }, parent, 409);
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [first.id] }, learner, 403);
+    await call('post', '/learning/studio/calendar/batch-remove', { ids: [first.id] }, other, 403);
+    expect(store.studioScheduleEvents).toHaveLength(3);
+    const removed = await call('post', '/learning/studio/calendar/batch-remove', { ids: [first.id, second.id, first.id] });
+    expect(removed.removed).toBe(2);
+    expect(store.studioScheduleEvents.map((row: any) => row.id)).toEqual([external.id]);
   });
 });
