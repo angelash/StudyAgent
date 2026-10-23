@@ -12,7 +12,7 @@ import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomLes
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number; explanation: string }>;
-  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat'; messageId?: string; questionId?: string }>;
+  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'hint'; messageId?: string; questionId?: string }>;
 };
 
 @Injectable()
@@ -22,12 +22,16 @@ export class ClassroomService {
 
   catalog(user: InMemoryUserAccount): ClassroomCatalog {
     if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
-    const sessions = this.store.select('classroomSessions', { ownerUserId: user.id, courseId: 'sociology-foundations' })
+    const allSessions = this.store.select('classroomSessions', { ownerUserId: user.id, courseId: 'sociology-foundations' });
+    const sessions = allSessions
       .filter(row => { const lesson = classroomLesson(row.lessonId); return lesson && row.contentFingerprint === classroomFingerprint(lesson); })
       .sort((a,b) => a.updatedAt.localeCompare(b.updatedAt));
     return { course: classroomCourse(), progress: sessions.map(row => ({ lessonId: row.lessonId, sessionId: row.id,
       cursor: row.cursor, completed: row.status === 'completed', correct: row.answers.filter(answer => answer.correct).length,
-      answered: row.answers.length, updatedAt: row.updatedAt, createdAt: row.createdAt })) };
+      answered: row.answers.length, updatedAt: row.updatedAt, createdAt: row.createdAt })),
+      archivedSessions: allSessions.filter(row => !sessions.includes(row)).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt))
+        .map(row => ({ sessionId: row.id, lessonId: row.lessonId, title: row.lesson.title, total: row.lesson.questions.length,
+          answered: row.answers.length, updatedAt: row.updatedAt })) };
   }
 
   private record(user: InMemoryUserAccount, id: string) {
@@ -40,13 +44,21 @@ export class ClassroomService {
 
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
     const { answerKeys: _answerKeys, requests: _requests, ...safe } = structuredClone(row);
-    return { ...safe, speech: this.speech.capabilities() };
+    let current = classroomLesson(row.lessonId);
+    if (row.studioCourseId) {
+      const course = this.store.find('studioCourses', { id: row.studioCourseId });
+      const source = course?.units.flatMap(unit => unit.lessons).find(lesson => lesson.id === row.lessonId);
+      current = course && source ? curriculumClassroomLesson(course, source) : undefined;
+    }
+    return { ...safe, speech: this.speech.capabilities(),
+      contentStatus: current ? classroomFingerprint(current) === row.contentFingerprint ? 'current' : 'archived' : 'unavailable' };
   }
 
   get(user: InMemoryUserAccount, id: string) { return this.view(this.record(user, id)); }
 
   open(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional() }).strict(), input);
+    const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),
+      useCurrentVersion: z.boolean().default(false) }).strict(), input);
     let lesson = classroomLesson(command.lessonId), courseId = 'sociology-foundations', studentId: string | null = null;
     if (command.studioCourseId) {
       const course = this.store.find('studioCourses', { id: command.studioCourseId });
@@ -61,6 +73,11 @@ export class ClassroomService {
     const fingerprint = classroomFingerprint(lesson);
     const previous = this.store.find('classroomSessions', { ownerUserId: user.id, courseId, lessonId: lesson.id, contentFingerprint: fingerprint });
     if (previous) return this.view(previous);
+    if (!command.useCurrentVersion) {
+      const archived = this.store.select('classroomSessions', { ownerUserId: user.id, courseId, lessonId: lesson.id })
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0];
+      if (archived) return this.view(archived);
+    }
     const now = new Date().toISOString();
     const answerKeys = Object.fromEntries(lesson.questions.flatMap(question => {
       const key = classroomAnswerKey(question.id); return key ? [[question.id, structuredClone(key)]] : [];
@@ -113,6 +130,25 @@ export class ClassroomService {
       row.revision++; row.updatedAt = new Date().toISOString();
     }
     row.requests.push({ key: command.requestKey, hash, kind: 'answer', questionId: command.questionId });
+    return this.view(row);
+  }
+
+  hint(user: InMemoryUserAccount, id: string, input: unknown) {
+    const row = this.record(user, id);
+    const command = validate(z.object({ questionId: z.string().min(1).max(200), requestKey: z.string().min(8).max(180) }).strict(), input);
+    const hash = createHash('sha256').update(command.questionId).digest('hex');
+    const replay = row.requests.find(request => request.key === command.requestKey);
+    if (replay) {
+      if (replay.kind !== 'hint' || replay.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
+      return this.view(row);
+    }
+    if (!row.lesson.questions.some(question => question.id === command.questionId)) throw new NotFoundException('课堂题目不存在');
+    if (row.answers.some(answer => answer.questionId === command.questionId)) throw new BadRequestException('本题已提交，请查看作答反馈');
+    if (!row.hintedQuestionIds?.includes(command.questionId)) {
+      row.hintedQuestionIds = [...(row.hintedQuestionIds ?? []), command.questionId];
+      row.revision++; row.updatedAt = new Date().toISOString();
+    }
+    row.requests.push({ key: command.requestKey, hash, kind: 'hint', questionId: command.questionId });
     return this.view(row);
   }
 

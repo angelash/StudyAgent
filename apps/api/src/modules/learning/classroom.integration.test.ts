@@ -57,7 +57,7 @@ describe('classroom teaching sessions and persistent isolation', () => {
         expect(classroomSentences(step.narration).join('').replace(/\s/g, '')).toBe(step.narration.replace(/\s/g, ''));
       }
     }
-    for (const [index, unit] of classroomCourse().units.entries()) expect(classroomLesson('unit-exam:' + unit.id)?.questions).toHaveLength(index === 0 ? 16 : 12);
+    for (const unit of classroomCourse().units) expect(classroomLesson('unit-exam:' + unit.id)?.questions).toHaveLength(12);
     expect(classroomLesson('soc-1-1-1')?.questions).toHaveLength(5);
     const session = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
     const replay = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
@@ -84,6 +84,52 @@ describe('classroom teaching sessions and persistent isolation', () => {
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
     const store = app.get(InMemoryStoreService);
     await store.requestContext(() => { expect(store.inspect('diagnosticResponses')).toHaveLength(0); expect(store.inspect('diagnosticPlans')).toHaveLength(0); });
+  });
+
+  it('saves hints before submission and preserves assistance after refresh and restart', async () => {
+    const session = await call('post', base + '/sessions', { lessonId: 'soc-2-2-3' });
+    const questionId = session.lesson.questions[0].id, requestKey = randomUUID();
+    await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey }, other, 403);
+    const hinted = await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey });
+    expect(hinted.hintedQuestionIds).toContain(questionId); expect(hinted.answers).toEqual([]);
+    expect((await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey })).revision).toBe(hinted.revision);
+    await call('post', base + '/sessions/' + session.id + '/hints', { questionId: 'foreign-question', requestKey }, parent, 409);
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + session.id)).hintedQuestionIds).toContain(questionId);
+    const submitted = await call('post', base + '/sessions/' + session.id + '/answers', { questionId, selectedIndex: 0, hintUsed: false, requestKey: randomUUID() });
+    expect(submitted.answers[0].hintUsed).toBe(true);
+    await call('post', base + '/sessions/' + session.id + '/hints', { questionId, requestKey: randomUUID() }, parent, 400);
+  });
+
+  it('keeps old unit questions and scoring readable after a new check is published', async () => {
+    const saved = await call('post', base + '/sessions', { lessonId: 'unit-exam:soc-u2' });
+    const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
+    const store = app.get(InMemoryStoreService);
+    // Simulate an actual pre-update snapshot in the isolated database.
+    await store.transaction(() => {
+      const row = store.find('classroomSessions', { id: saved.id });
+      row.contentFingerprint = 'legacy-unit-content'; delete row.lesson.assessment;
+      row.lesson.questions = [{ id: 'legacy-unit-q', prompt: '旧版保留题：共享规范与情境。', options: ['甲', '乙', '丙', '丁'], hint: '旧提示' }];
+      row.answerKeys = { 'legacy-unit-q': { answer: 2, explanation: '旧版量规：丙。' } };
+    });
+    const resumed = await call('post', base + '/sessions', { lessonId: 'unit-exam:soc-u2' });
+    expect(resumed.id).toBe(saved.id); expect(resumed.lesson.questions[0].id).toBe('legacy-unit-q');
+    const current = await call('post', base + '/sessions', { lessonId: 'unit-exam:soc-u2', useCurrentVersion: true });
+    expect(current.id).not.toBe(saved.id); expect(current.lesson.questions).toHaveLength(12);
+    expect(current.contentStatus).toBe('current');
+    const old = await call('get', base + '/sessions/' + saved.id);
+    expect(old.contentStatus).toBe('archived'); expect(old.lesson.questions).toHaveLength(1);
+    expect(old).not.toHaveProperty('answerKeys');
+    const answer = await call('post', base + '/sessions/' + saved.id + '/answers', { questionId: 'legacy-unit-q', selectedIndex: 2, requestKey: randomUUID() });
+    expect(answer.answers[0]).toMatchObject({ correct: true, explanation: '旧版量规：丙。' });
+    await call('post', base + '/sessions/' + saved.id + '/answers', { questionId: current.lesson.questions[0].id, selectedIndex: 0, requestKey: randomUUID() }, parent, 404);
+    const catalog = await call('get', base + '/catalog');
+    expect(catalog.archivedSessions).toContainEqual(expect.objectContaining({ sessionId: saved.id, total: 1, answered: 1 }));
+    expect(catalog.progress.some((row: any) => row.sessionId === saved.id)).toBe(false);
+    expect((await call('get', base + '/catalog', undefined, other)).archivedSessions).toEqual([]);
+    await app.close(); await boot();
+    expect((await call('get', base + '/sessions/' + saved.id)).answers).toEqual(answer.answers);
+    expect((await call('get', base + '/sessions/' + current.id)).lesson).toEqual(current.lesson);
   });
 
   it('synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor', async () => {

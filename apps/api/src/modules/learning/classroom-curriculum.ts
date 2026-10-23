@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { ClassroomCourse, ClassroomDiagram, ClassroomLesson, ClassroomStep, StudioCourse, StudioLesson } from '@study-agent/contracts';
 import { conceptNotes } from './classroom-board-notes';
+import { UNIT_CHECK_VERSION, unitChecks } from './classroom-unit-checks';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -127,7 +128,7 @@ function step(id: string, phase: ClassroomStep['phase'], title: string, narratio
 const lessonMap = new Map<string, ClassroomLesson>();
 const keys = new Map<string, { answer: number; explanation: string }>();
 const course: ClassroomCourse = {
-  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: '2026-10-23.2',
+  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: '2026-10-23.3',
   description: '从自己的生活出发，看见文化、关系和制度如何共同塑造社会。五个单元串起概念、案例、练习与一个持续推进的社区研究。',
   provenance: 'StudyAgent 自编教学内容；课程层级与交互参考用户指定HyperKnow页面的可见观察。成人课程记录独立于小学能力评测。',
   references: [{ title: 'OpenStax · Introduction to Sociology 3e', url: 'https://openstax.org/details/books/introduction-sociology-3e' }],
@@ -197,16 +198,36 @@ const course: ClassroomCourse = {
   })),
 };
 
+const unitLessons = new Map<string, ClassroomLesson>();
+for (const unit of course.units) {
+  const definitions = unitChecks[unit.id];
+  const topics = unit.lectures.flatMap(lecture => lecture.lessons);
+  if (!definitions || definitions.length !== topics.length || new Set(definitions.map(item => item.lessonId)).size !== topics.length)
+    throw new Error('单元核查未覆盖全部微课：' + unit.id);
+  const id = 'unit-exam:' + unit.id;
+  const questions = definitions.map((item, index) => {
+    const topic = topics.find(topic => topic.id === item.lessonId);
+    if (!topic || item.options.length !== 4 || new Set(item.options).size !== 4 || !Number.isInteger(item.answer) || item.answer < 0 || item.answer > 3)
+      throw new Error('单元核查内容无效：' + item.lessonId);
+    const questionId = id + ':v1:' + (index + 1);
+    const rotation = createHash('sha256').update(questionId).digest()[0] % 4;
+    const options = [...item.options.slice(rotation), ...item.options.slice(0, rotation)];
+    keys.set(questionId, { answer: (item.answer - rotation + 4) % 4, explanation: item.explanation });
+    return { id: questionId, prompt: item.prompt, options, hint: item.hint, purpose: item.purpose, topic: { lessonId: topic.id, title: topic.title } };
+  });
+  unitLessons.set(id, { id, title: unit.title + ' · 单元核查', lectureId: unit.id, objective: unit.objective,
+    assessment: { kind: 'unit-check', version: UNIT_CHECK_VERSION + ':' + createHash('sha256').update(JSON.stringify(definitions)).digest('hex').slice(0, 16),
+      notice: '这组题采用不同于课堂练习的新情境。提示、跳过和首次作答分别保留；结果只说明本组表现，不是标准化能力等级。' },
+    steps: [step(id + ':orient', 'orient', '单元核查', '用十二个新情境核查本单元各个主题。可以先独立判断，需要帮助时再使用提示。结果保留首次答案和辅助情况，不将这次正确率直接称为掌握。'),
+      step(id + ':transfer', 'transfer', unit.project.title, unit.project.brief)], questions });
+}
+
 export function classroomCourse(): ClassroomCourse { return structuredClone(course); }
 export function classroomLesson(id: string): ClassroomLesson | undefined {
   const lesson = lessonMap.get(id);
   if (lesson) return structuredClone(lesson);
-  const unit = course.units.find(item => id === 'unit-exam:' + item.id);
-  if (!unit) return undefined;
-  return { id, title: unit.title + ' · 单元核查', lectureId: unit.id, objective: unit.objective,
-    steps: [step(id + ':orient', 'orient', '单元核查', '用本单元不同主题的情境检查理解。先独立判断再提交；需要帮助时可以使用提示。课堂正确率只反映这些题目的表现。'),
-      step(id + ':transfer', 'transfer', unit.project.title, unit.project.brief)],
-    questions: unit.lectures.flatMap(lecture => lecture.lessons.flatMap(row => lessonMap.get(row.id)?.questions ?? [])) };
+  const check = unitLessons.get(id);
+  return check ? structuredClone(check) : undefined;
 }
 export function classroomAnswerKey(id: string) { return keys.get(id); }
 export function classroomFingerprint(lesson: ClassroomLesson) { return createHash('sha256').update(JSON.stringify(lesson)).digest('hex'); }

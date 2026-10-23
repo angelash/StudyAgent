@@ -54,7 +54,7 @@ test('course classroom supports teaching, executable examples, learning checks a
   await page.getByRole('button', { name: '保存项目草稿' }).click(); await expect(page.getByText('草稿已保存，重新打开仍可继续。')).toBeVisible();
   await page.reload(); await expect(page.getByText('2 / 8', { exact: true })).toHaveCount(0);
   await expect(page.locator('.cl-session-navigation')).toContainText('3 / 8');
-  await page.getByRole('tab', { name: '课堂练习' }).click(); await expect(page.locator('.cl-answer-feedback')).toHaveText(receipt, { useInnerText: true });
+  await page.getByRole('tab', { name: '课堂练习' }).click(); await page.getByRole('button', { name: '第1题', exact: true }).click(); await expect(page.locator('.cl-answer-feedback')).toHaveText(receipt, { useInnerText: true });
   await page.getByRole('tab', { name: '单元项目' }).click(); await expect(page.getByLabel('我的项目草稿')).toHaveValue(/社区图书馆/);
   const notes = page.waitForEvent('download'); await page.getByRole('button', { name: '导出课堂笔记' }).click(); expect((await notes).suggestedFilename()).toMatch(/\.md$/);
   await page.setViewportSize({ width: 390, height: 844 }); await page.getByRole('button', { name: '对话与练习', exact: true }).click();

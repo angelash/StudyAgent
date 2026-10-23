@@ -15,6 +15,9 @@ export class ClassroomController {
   @Post('sessions/:id/answers') answer(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     return this.classroom.answer(req.user, id, input);
   }
+  @Post('sessions/:id/hints') hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
+    return this.classroom.hint(req.user, id, input);
+  }
   @Post('sessions/:id/messages') async ask(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     const controller = new AbortController();
     const disconnect = () => { if (!req.res?.writableEnded) controller.abort(); };
