@@ -165,6 +165,53 @@ describe('whiteboard video and LMS calendar integrations', () => {
     expect((await call('get', '/learning/studio/overview?studentId=child&subject=math')).selected.id).toBe('child');
   });
 
+  it('previews selected goals and pace without persisting a course and rejects invalid confirmation targets', async () => {
+    const draft = { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'], title: '先统一单位再计算', objective: '说明共同分数单位并用新情境核对', minutesPerSession: 5 };
+    const preview = await call('post', '/learning/studio/courses/preview', draft);
+    expect(preview.title).toBe(draft.title); expect(preview.objective).toBe(draft.objective);
+    expect(preview.pace.sessions.every((session: any) => session.minutes <= 5)).toBe(true);
+    expect(preview.warnings.join(' ')).toContain('项目');
+    expect(store.studioCourses).toHaveLength(0); expect(store.studioActivities).toHaveLength(0);
+    const command = { ...draft, previewFingerprint: preview.fingerprint, requestKey: randomUUID() };
+    await call('post', '/learning/studio/courses', { ...command, focusAtomIds: ['outside-scope'] }, parent, 400);
+    await call('post', '/learning/studio/courses', { ...command, focusAtomIds: [] }, parent, 400);
+    await call('post', '/learning/studio/courses', { ...command, minutesPerSession: 0 }, parent, 400);
+    await call('post', '/learning/studio/courses', { ...command, minutesPerSession: 15 }, parent, 409);
+    await call('post', '/learning/studio/courses', command, other, 403);
+    expect(store.studioCourses).toHaveLength(0);
+  });
+
+  it('replays the original confirmation after scope changes and rejects changed commands with the same key', async () => {
+    const draft = { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'], title: '先统一单位再计算', minutesPerSession: 10 };
+    const preview = await call('post', '/learning/studio/courses/preview', draft);
+    const command = { ...draft, previewFingerprint: preview.fingerprint, requestKey: randomUUID() };
+    const course = await call('post', '/learning/studio/courses', command);
+    expect((await call('post', '/learning/studio/courses', command)).id).toBe(course.id);
+    expect(store.studioCourses).toHaveLength(1); expect(store.studioActivities).toHaveLength(1);
+    await call('post', '/learning/studio/courses', { ...command, title: '修改后需要新预览' }, parent, 409);
+    await call('put', '/students/child/learning-scope', { subject: 'math', grade: 5, term: 'upper', textbookVolumeId: null,
+      textbookVersion: 'Studio QA 新范围', learnedAtomIds: ['fraction-add'], currentAtomId: 'fraction-add', minutesPerSession: 15 });
+    expect((await call('post', '/learning/studio/courses', command)).id).toBe(course.id);
+    await call('post', '/learning/studio/courses', { ...command, requestKey: randomUUID() }, parent, 409);
+    expect(store.studioCourses).toHaveLength(1); expect(store.studioActivities).toHaveLength(1);
+    const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math');
+    expect(overview.courses[0].pace).toEqual(course.pace);
+  });
+
+  it('warns only for selected unapproved teaching and preserves every selected strand', async () => {
+    const original = structuredClone(store.knowledgeAtoms[0]);
+    for (let index = 0; index < 6; index++) store.knowledgeAtoms.push({ ...structuredClone(original), id: 'point:' + index,
+      name: '学习领域' + index, strand: '领域' + index, teaching: { ...structuredClone(original.teaching), reviewStatus: index === 5 ? 'draft' : 'approved' } });
+    const ids = store.knowledgeAtoms.map((atom: any) => atom.id);
+    await call('put', '/students/child/learning-scope', { subject: 'math', grade: 5, term: 'upper', textbookVolumeId: null,
+      textbookVersion: 'Studio QA 全范围', learnedAtomIds: ids, currentAtomId: 'fraction-add', minutesPerSession: 15 });
+    const selected = await call('post', '/learning/studio/courses/preview', { studentId: 'child', subject: 'math', focusAtomIds: ['fraction-add'] });
+    expect(selected.warnings.join(' ')).not.toContain('尚无已审核教学卡');
+    const all = await call('post', '/learning/studio/courses/preview', { studentId: 'child', subject: 'math', focusAtomIds: ids });
+    expect(all.units).toHaveLength(7); expect(all.units.flatMap((unit: any) => unit.lessons).filter((lesson: any) => lesson.kind === 'learn')).toHaveLength(7);
+    expect(all.warnings.join(' ')).toContain('尚无已审核教学卡');
+  });
+
   it('opens an approved course lesson in the shared classroom without replacing independent measurement', async () => {
     const preview = await call('post', '/learning/studio/courses/preview', { studentId: 'child', subject: 'math' });
     const course = await call('post', '/learning/studio/courses', { studentId: 'child', subject: 'math', title: preview.title,

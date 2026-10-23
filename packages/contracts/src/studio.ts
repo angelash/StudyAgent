@@ -22,6 +22,15 @@ export type StudioUnit = {
   lessons: StudioLesson[];
 };
 
+export type StudioCoursePace = {
+  version: 'course-pace-v1';
+  minutesPerSession: number;
+  teachingLanguage: 'source';
+  estimatedMinutes: number;
+  notice: string;
+  sessions: Array<{ id: string; minutes: number; activities: Array<{ lessonId: string; title: string; kind: StudioLessonKind; part: number; parts: number; minutes: number }> }>;
+};
+
 export type StudioCourse = {
   id: string;
   studentId: string;
@@ -42,6 +51,7 @@ export type StudioCourse = {
   createdAt: string;
   updatedAt: string;
   learningProgress?: { viewedLessonIds: string[]; startedLessonIds: string[]; lastLessonId: string | null; updatedAt: string | null };
+  pace?: StudioCoursePace;
 };
 
 export type StudioCoursePreview = StudioCourse & { canCreate: boolean; warnings: string[] };
@@ -58,6 +68,8 @@ export type StudioActivity = {
   status: 'new' | 'opened' | 'complete';
   requestKey?: string;
   referenceId?: string;
+  actorId?: string;
+  requestHash?: string;
 };
 
 export type StudioPlanSessionKind = 'learn' | 'practice' | 'transfer' | 'review';

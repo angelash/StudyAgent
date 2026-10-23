@@ -48,6 +48,9 @@ function studioMaterialView(row: StudioSourceMaterial & { requestKey?: string; r
 }
 const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
   answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000) }).strict();
+const studioCourseDraftSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+  focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
+  objective: z.string().trim().min(5).max(1000).optional(), minutesPerSession: z.number().int().min(5).max(60).optional() }).strict();
 
 @Injectable()
 export class LearningService {
@@ -475,40 +478,47 @@ export class LearningService {
   }
 
   previewStudioCourse(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
-      focusAtomIds: z.array(z.string().min(1).max(180)).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
-      objective: z.string().trim().min(5).max(1000).optional() }).strict(), input);
+    const command = validate(studioCourseDraftSchema, input);
     const { scope, atoms } = this.studioScope(user, command.studentId, command.subject);
     const focusAtomIds = [...new Set(command.focusAtomIds?.length ? command.focusAtomIds : atoms.map(atom => atom.id))];
     const allowed = new Set(atoms.map(atom => atom.id));
     if (!focusAtomIds.length) throw new BadRequestException('当前学习范围没有可生成课程的知识点，请先确认学习进度');
+    if (focusAtomIds.length > 30) throw new BadRequestException('请为这一门课程选择不超过30个知识点，其余内容可以另建课程');
     if (focusAtomIds.some(id => !allowed.has(id))) throw new BadRequestException('只能使用当前已确认学习范围内发布的知识点');
     const course = buildStudioCourse({ id: 'studio_preview', studentId: command.studentId, subject: command.subject, scope, atoms,
-      focusAtomIds, title: command.title, objective: command.objective });
+      focusAtomIds, title: command.title, objective: command.objective, minutesPerSession: command.minutesPerSession });
     return { ...course, canCreate: course.units.length > 0,
       warnings: [...(scope.mappingSnapshots?.length ? [] : ['当前范围没有已审核课时映射，课程只依据知识原子组织。']),
-        ...(atoms.some(atom => !atom.teaching) ? ['部分知识点尚无已审核教学卡，将只提供测量与练习入口。'] : [])] };
+        ...(atoms.some(atom => focusAtomIds.includes(atom.id) && atom.teaching?.reviewStatus !== 'approved') ? ['部分所选知识点尚无已审核教学卡，只提供已有测量入口，不能进入已审核课堂。'] : []),
+        '项目与单元核查当前连接既有独立评测；专用项目产物与单元量规仍需完善。'] };
   }
 
   createStudioCourse(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
-      focusAtomIds: z.array(z.string().min(1).max(180)).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
-      objective: z.string().trim().min(5).max(1000).optional(), previewFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+    const command = validate(studioCourseDraftSchema.extend({ previewFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
       requestKey: z.string().min(8).max(180) }).strict(), input);
-    const { scope, atoms } = this.studioScope(user, command.studentId, command.subject);
-    const focusAtomIds = [...new Set(command.focusAtomIds?.length ? command.focusAtomIds : atoms.map(atom => atom.id))];
-    const course = buildStudioCourse({ id: this.store.nextId('studio_course'), studentId: command.studentId, subject: command.subject,
-      scope, atoms, focusAtomIds, title: command.title, objective: command.objective });
-    if (course.fingerprint !== command.previewFingerprint) throw new ConflictException('课程蓝图已变化，请重新预览并确认');
-    const existing = this.store.select('studioCourses', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === course.fingerprint);
-    if (existing) return existing;
+    this.students.assertCanAccessStudent(user, command.studentId);
+    const { requestKey, ...draftAndFingerprint } = command;
+    const requestHash = createHash('sha256').update(JSON.stringify(draftAndFingerprint)).digest('hex');
+    const replay = this.store.find('studioActivities', { requestKey });
+    if (replay) {
+      if (replay.kind !== 'course_created' || replay.actorId !== user.id || replay.studentId !== command.studentId || replay.subject !== command.subject || replay.requestHash !== requestHash)
+        throw new ConflictException('确认标识已用于其他课程或操作，请重新预览');
+      const previous = this.store.find('studioCourses', { id: replay.referenceId });
+      if (!previous) throw new ConflictException('原课程已不可用，请重新载入课程列表');
+      return previous;
+    }
+    const { previewFingerprint, ...draft } = draftAndFingerprint;
+    const { canCreate, warnings: _warnings, ...preview } = this.previewStudioCourse(user, draft);
+    if (!canCreate || preview.fingerprint !== previewFingerprint) throw new ConflictException('课程蓝图已变化，请重新预览并确认');
+    const existing = this.store.select('studioCourses', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === preview.fingerprint);
+    const course: StudioCourse = existing ?? { ...preview, id: this.store.nextId('studio_course'), status: 'active' };
     course.status = 'active';
     const activity: StudioActivity = { id: this.store.nextId('studio_activity'), studentId: command.studentId, subject: command.subject,
-      kind: 'course_created', title: `创建课程「${course.title}」`, detail: `${course.units.length} 个单元 · ${course.focusAtomIds.length} 个知识目标`, href: `/studio?course=${course.id}`,
-      at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey };
-    this.store.append('studioCourses', course);
+      kind: 'course_created', title: `${existing ? '恢复已有课程' : '创建课程'}「${course.title}」`, detail: `${course.units.length} 个单元 · ${course.focusAtomIds.length} 个知识目标`, href: `/studio?course=${course.id}`,
+      at: new Date().toISOString(), status: 'opened', requestKey, requestHash, actorId: user.id, referenceId: course.id };
+    if (!existing) this.store.append('studioCourses', course);
     this.store.append('studioActivities', activity);
-    this.events.publish('studio.course_created', { courseId: course.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
+    if (!existing) this.events.publish('studio.course_created', { courseId: course.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
     return course;
   }
 

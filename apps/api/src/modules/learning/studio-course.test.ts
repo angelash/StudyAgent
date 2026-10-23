@@ -27,4 +27,27 @@ describe('studio course generation', () => {
     const two = buildStudioCourse({ id: 'course', studentId: 'student', subject: 'math', scope, atoms, focusAtomIds: ['fraction-subtract'] });
     expect(one.fingerprint).not.toBe(two.fingerprint);
   });
+
+  it('keeps every selected strand and schedules all activities within the chosen budget', () => {
+    const spread = Array.from({ length: 7 }, (_, index) => ({ ...atoms[0], id: 'point-' + index, strand: '领域' + index }));
+    const input = { id: 'course', studentId: 'student', subject: 'math' as const, scope, atoms: spread, focusAtomIds: spread.map(atom => atom.id) };
+    const course = buildStudioCourse({ ...input, minutesPerSession: 5 });
+    expect(course.units).toHaveLength(7);
+    const lessons = course.units.flatMap(unit => unit.lessons);
+    const pace = course.pace!;
+    expect(new Set(pace.sessions.flatMap(session => session.activities.map(activity => activity.lessonId)))).toEqual(new Set(lessons.map(lesson => lesson.id)));
+    expect(pace.sessions.every(session => session.minutes > 0 && session.minutes <= 5)).toBe(true);
+    for (const lesson of lessons) {
+      const parts = pace.sessions.flatMap(session => session.activities).filter(activity => activity.lessonId === lesson.id);
+      expect(parts.map(activity => activity.part)).toEqual(Array.from({ length: parts[0].parts }, (_, index) => index + 1));
+    }
+    expect(pace.estimatedMinutes).toBe(pace.sessions.reduce((sum, session) => sum + session.minutes, 0));
+    expect(buildStudioCourse({ ...input, minutesPerSession: 15 }).fingerprint).not.toBe(course.fingerprint);
+    expect(buildStudioCourse(input).pace).toBeUndefined();
+  });
+
+  it.each([0, -5, 4, 61, Number.NaN, Infinity, 7.5])('rejects a non-executable time budget %s', budget => {
+    expect(() => buildStudioCourse({ id: 'course', studentId: 'student', subject: 'math', scope, atoms,
+      focusAtomIds: ['fraction-add'], minutesPerSession: budget })).toThrow('课程时间预算');
+  });
 });

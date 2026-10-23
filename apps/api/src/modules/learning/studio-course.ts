@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import type { KnowledgeAtom, LearningScope, StudioCourse, StudioLesson, StudioUnit } from '@study-agent/contracts';
+import type { KnowledgeAtom, LearningScope, StudioCourse, StudioCoursePace, StudioLesson, StudioUnit } from '@study-agent/contracts';
 
 type StudioCourseInput = {
   id: string;
@@ -10,6 +10,7 @@ type StudioCourseInput = {
   focusAtomIds: string[];
   title?: string;
   objective?: string;
+  minutesPerSession?: number;
   now?: string;
 };
 
@@ -45,7 +46,7 @@ export function buildStudioCourse(input: StudioCourseInput): StudioCourse {
   const grouped = new Map<string, KnowledgeAtom[]>();
   for (const atom of focus) grouped.set(atom.strand, [...(grouped.get(atom.strand) ?? []), atom]);
 
-  const units: StudioUnit[] = [...grouped.entries()].slice(0, 5).map(([strand, atoms], index) => {
+  const units: StudioUnit[] = [...grouped.entries()].map(([strand, atoms], index) => {
     const lessons: StudioLesson[] = atoms.flatMap(atom => [createLesson(atom, 'learn'), createLesson(atom, 'practice')]);
     const first = atoms[0];
     lessons.push({
@@ -91,6 +92,7 @@ export function buildStudioCourse(input: StudioCourseInput): StudioCourse {
     textbookVersion: input.scope.textbookVersion,
     focusAtomIds: focus.map(atom => atom.id),
     units,
+    ...(input.minutesPerSession === undefined ? {} : { pace: buildCoursePace(units, input.minutesPerSession) }),
     materials: [
       { id: 'scope', title: '已确认学习范围', detail: `${input.scope.grade}年级 · ${input.scope.term === 'upper' ? '上' : '下'}学期 · ${input.scope.textbookVersion}`, status: 'available' as const },
       { id: 'mapping', title: '教材课时映射快照', detail: `${input.scope.mappingSnapshots?.length ?? 0} 个已审核课时快照；页码仍需教研逐页确认。`, status: 'needs_review' as const },
@@ -98,6 +100,27 @@ export function buildStudioCourse(input: StudioCourseInput): StudioCourse {
   };
   const fingerprint = createHash('sha256').update(JSON.stringify(base)).digest('hex');
   return { id: input.id, ...base, fingerprint, createdAt: now, updatedAt: now };
+}
+
+function buildCoursePace(units: StudioUnit[], budget: number): StudioCoursePace {
+  if (!Number.isInteger(budget) || budget < 5 || budget > 60) throw new Error('课程时间预算须为5至60的整数分钟');
+  const sessions: StudioCoursePace['sessions'] = [];
+  for (const lesson of units.flatMap(unit => unit.lessons)) {
+    const teaching = lesson.teaching?.teaching;
+    const text = teaching ? [teaching.explanation, teaching.example.prompt, ...teaching.example.steps, teaching.example.conclusion].join('') : lesson.objective;
+    const minutes = lesson.kind === 'learn' ? Math.max(3, Math.ceil(text.length / 180) + 2) : lesson.kind === 'practice' ? 5 : 10;
+    const parts = Math.ceil(minutes / budget);
+    let remaining = minutes;
+    for (let part = 1; part <= parts; part++) {
+      const portion = Math.min(budget, remaining); remaining -= portion;
+      let session = sessions.at(-1);
+      if (!session || session.minutes + portion > budget) { session = { id: 'pace:' + (sessions.length + 1), minutes: 0, activities: [] }; sessions.push(session); }
+      session.activities.push({ lessonId: lesson.id, title: lesson.title, kind: lesson.kind, part, parts, minutes: portion }); session.minutes += portion;
+    }
+  }
+  return { version: 'course-pace-v1', minutesPerSession: budget, teachingLanguage: 'source',
+    estimatedMinutes: sessions.reduce((sum, session) => sum + session.minutes, 0), sessions,
+    notice: '参考时长按讲解篇幅和活动类型估算，可按自己的节奏分段。沿用已审核材料的语言；这不是实际耗时、学习效果保证或已加入日历的安排。' };
 }
 
 export function studioLessonCount(course: Pick<StudioCourse, 'units'>) {

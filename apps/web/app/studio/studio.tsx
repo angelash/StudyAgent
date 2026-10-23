@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { ClassroomCatalog, StudioCourse, StudioCoursePreview, StudioOverview, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
+import type { ClassroomCatalog, StudioCourse, StudioOverview, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
 import { apiRequest } from '../../lib/api';
 import { useSessionUser } from '../../lib/session-user';
 import { TeachingGuide } from '../../components/teaching-guide';
@@ -15,7 +15,7 @@ import { StudioNavigation } from './studio-navigation';
 import { MyCourses } from './my-courses';
 import { CourseCover } from './classroom/diagram';
 import './workspace.css';
-import { WorkspaceDialog } from './workspace-dialog';
+import { CourseBuilder } from './course-builder';
 import { copyCourseFilters } from './course-library-state';
 
 type View = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
@@ -36,7 +36,7 @@ export function LearningStudio() {
   const [overview,setOverview] = React.useState<StudioOverview|null>(null), [active,setActive] = React.useState<StudioCourse|null>(null);
   const [prompt,setPrompt] = React.useState(''), [busy,setBusy] = React.useState(false), [error,setError] = React.useState('');
   const [tool,setTool] = React.useState('Concept Explanation'), [toolsOpen,setToolsOpen] = React.useState(false);
-  const [showBuilder,setShowBuilder] = React.useState(false), [preview,setPreview] = React.useState<StudioCoursePreview|null>(null);
+  const [showBuilder,setShowBuilder] = React.useState(false);
   const [messages,setMessages] = React.useState<Array<{id:string;sender:string;content:string;modelId?:string|null;modelName?:string|null}>>([]), [session,setSession] = React.useState('');
   const [visual,setVisual] = React.useState<StudioOverview['selected'] extends infer T ? T extends {atoms:Array<infer A>} ? A|null : never : never>(null);
   const [whiteboardPreview,setWhiteboardPreview] = React.useState<StudioWhiteboard|null>(null);
@@ -45,7 +45,7 @@ export function LearningStudio() {
   const [plannerRequest,setPlannerRequest] = React.useState(0);
   const [materialsTab,setMaterialsTab] = React.useState<'files'|'packs'>('files');
   function navigate(next:View, course?:StudioCourse) { setView(next);setActive(course??null);const params=copyCourseFilters(window.location.search,new URLSearchParams({view:next,subject}));if(studentId)params.set('student',studentId);if(course)params.set('course',course.id);window.history.pushState(null,'','/studio?'+params); }
-  function changeScope(id:string, nextSubject:StudioSubject) { const requestedView=new URLSearchParams(window.location.search).get('view');const nextView=Object.keys(labels).includes(requestedView??'')?requestedView as View:view;setView(nextView);loadGeneration.current++;setOverview(null);setActive(null);setStudentId(id);setSubject(nextSubject);setShowBuilder(false);setPreview(null);setMessages([]);setSession('');setError('');const params=new URLSearchParams({view:nextView,subject:nextSubject});if(id)params.set('student',id);window.history.replaceState(null,'','/studio?'+params); }
+  function changeScope(id:string, nextSubject:StudioSubject) { const requestedView=new URLSearchParams(window.location.search).get('view');const nextView=Object.keys(labels).includes(requestedView??'')?requestedView as View:view;setView(nextView);loadGeneration.current++;setOverview(null);setActive(null);setStudentId(id);setSubject(nextSubject);setShowBuilder(false);setMessages([]);setSession('');setError('');const params=new URLSearchParams({view:nextView,subject:nextSubject});if(id)params.set('student',id);window.history.replaceState(null,'','/studio?'+params); }
   React.useEffect(()=>{const params=new URLSearchParams(window.location.search);const initialView=params.get('view');if(Object.keys(labels).includes(initialView??''))setView(initialView as View);const selectedSubject=params.get('subject');if(subjects.some(([value])=>value===selectedSubject))setSubject(selectedSubject as StudioSubject);if(params.get('student'))setStudentId(params.get('student')!);},[]);
   React.useEffect(()=>{const changed=()=>{const params=new URLSearchParams(window.location.search);const nextSubject=params.get('subject');if(subjects.some(([value])=>value===nextSubject))setSubject(nextSubject as StudioSubject);if(params.get('student'))setStudentId(params.get('student')!);setLocationVersion(value=>value+1);};window.addEventListener('popstate',changed);return()=>window.removeEventListener('popstate',changed);},[]);
   React.useEffect(()=>{if(identity&&identity.role!=='student')void apiRequest<ClassroomCatalog>('/learning/classroom/catalog').then(setClassroom).catch(error=>setError(error.message));},[identity]);
@@ -97,8 +97,6 @@ export function LearningStudio() {
       whiteboardRequestKey.current=''; setWhiteboardPreview(null); setActiveWhiteboard(saved); await load(); }
     catch (caught) { setError((caught as Error).message); } finally { setBusy(false); }
   }
-  async function makePreview() { setBusy(true); try{setPreview(await apiRequest<StudioCoursePreview>('/learning/studio/courses/preview',{method:'POST',body:JSON.stringify({studentId,subject,focusAtomIds:overview?.selected?.atoms.map(a=>a.id),title:prompt||undefined})}));}catch(e){setError((e as Error).message);}finally{setBusy(false);} }
-  async function makeCourse() { if(!preview)return; setBusy(true); try{const c=await apiRequest<StudioCourse>('/learning/studio/courses',{method:'POST',body:JSON.stringify({studentId,subject,focusAtomIds:preview.focusAtomIds,title:preview.title,objective:preview.objective,previewFingerprint:preview.fingerprint,requestKey:crypto.randomUUID()})});setShowBuilder(false);setPreview(null);navigate('courses',c);await load();}catch(e){setError((e as Error).message);}finally{setBusy(false);} }
   function submit(e:React.FormEvent){e.preventDefault();if(mode==='instant'){if(tool==='Whiteboard session'){void makeWhiteboard();return;}if(tool==='Study Planner'){navigate('calendar');setPlannerRequest(value=>value+1);setToolsOpen(false);return;}const atom=overview?.selected?.atoms.find(a=>a.teaching?.visual);if(atom&&tool==='Visualization'){setVisual(atom);}else void ask();}else setShowBuilder(true);}
 
   if(identity===undefined)return <div className="sa-loading"><Mark/>正在打开学习工作台…</div>;
@@ -130,7 +128,7 @@ export function LearningStudio() {
         atoms={overview.selected.atoms} estimates={overview.selected.estimates} materials={overview.materials} packs={overview.studyPacks}
         onChanged={load} onError={setError}/>}</section>}
     </section>
-    {showBuilder&&<WorkspaceDialog onClose={()=>{setShowBuilder(false);setPreview(null)}} busy={busy}><section className="ws-builder" role="dialog" aria-modal="true" aria-label="课程蓝图"><header><h2>{preview?'审阅课程蓝图':'生成课程蓝图'}</h2><button onClick={()=>{setShowBuilder(false);setPreview(null)}}>×</button></header>{preview?<><p>{preview.title}</p><dl><dt>单元</dt><dd>{preview.units.length}</dd><dt>活动</dt><dd>{preview.units.reduce((n,u)=>n+u.lessons.length,0)}</dd></dl><div className="sa-unit-preview">{preview.units.map(u=><article key={u.id}><h3>{u.title}</h3><p>{u.objective}</p></article>)}</div><button disabled={busy} onClick={()=>void makeCourse()}>确认并创建</button></>:<><input value={prompt} onChange={e=>setPrompt(e.target.value)} placeholder="课程名称或学习目标"/><p>将使用当前学生已确认范围内的 {overview?.selected?.atoms.length??0} 个知识点。</p>{!overview?.selected&&<p><Link href="/parent/dashboard">先创建学习档案 →</Link></p>}{overview?.selected&&!overview.selected.atoms.length&&<p><Link href="/student/assessment">先确认学习范围 →</Link></p>}<button disabled={busy||!overview?.selected?.atoms.length} onClick={()=>void makePreview()}>预览课程蓝图</button></>}</section></WorkspaceDialog>}
+    {showBuilder&&<CourseBuilder key={studentId+subject} studentId={studentId} subject={subject} selected={overview?.selected??null} initialTitle={prompt} onClose={()=>setShowBuilder(false)} onRefresh={load} onCreated={course=>{setShowBuilder(false);navigate('courses',course);void load();}}/>}
     {activeWhiteboard&&<WhiteboardPlayer whiteboard={activeWhiteboard} narrationAvailable={overview?.narrationAvailable} speech={overview?.speech} onClose={()=>setActiveWhiteboard(null)}/>}
     {whiteboardPreview&&<div className="sa-whiteboard-preview-modal"><button className="sa-scrim" onClick={()=>setWhiteboardPreview(null)}/><section><header><div><span className="studio-kicker">WHITEBOARD SESSION</span><h2>{whiteboardPreview.title}</h2></div><button aria-label="关闭预览" onClick={()=>setWhiteboardPreview(null)}>×</button></header><WhiteboardScenePreview scene={whiteboardPreview.scenes[0]} /><div className="sa-whiteboard-preview-copy"><strong>{whiteboardPreview.scenes.length} 幕 · {Math.ceil(whiteboardPreview.durationMs/1000)} 秒</strong><p>即时播放使用设备中文语音；配置 TTS 时导出带 AI 音轨的 1280×720 WebM，并始终烧入旁白字幕。SRT 可单独保存。</p></div><footer><button onClick={()=>setActiveWhiteboard(whiteboardPreview)}>播放预览</button><button disabled={busy} onClick={()=>void saveWhiteboard()}>{busy?'正在保存…':'保存到学习工作台'}</button></footer></section></div>}
   </main>;
@@ -152,6 +150,7 @@ function CourseView({course,back}:{course:StudioCourse;back:()=>void}) {
     <nav className="cl-unit-nav" aria-label="课程单元">{course.units.map((item,index)=><button key={item.id} data-active={item.id===unitId} onClick={()=>select(item.id,tab)}><b>{index+1}</b>{item.title.replace(/^Unit \d+: /,'')}</button>)}</nav>
   </aside><section className="cl-outline"><header className="cl-unit-heading"><small>第 {course.units.indexOf(unit)+1} 单元，共 {course.units.length} 单元</small><h2>{unit?.title}</h2><p>{unit?.objective}</p></header>
     <Link className="cl-extend" href="/studio?view=materials"><span>▤</span><div><b>上传材料，扩展这门课程</b><small>阅读PDF、核对结构并生成学案</small></div><span>↗</span></Link>
+    {course.pace&&<details className="ws-course-pace"><summary>每次约 {course.pace.minutesPerSession} 分钟 · {course.pace.sessions.length} 个建议时段</summary><p>{course.pace.notice}</p><ol>{course.pace.sessions.map((session,index)=><li key={session.id}><b>第 {index+1} 次 · 约 {session.minutes} 分钟</b><div>{session.activities.map(activity=>{const target=course.units.flatMap(unit=>unit.lessons).find(lesson=>lesson.id===activity.lessonId);return target&&<Link key={activity.lessonId+':'+activity.part} href={href(target)}>{activity.title}{activity.parts>1&&`（${activity.part}/${activity.parts}）`} →</Link>;})}</div></li>)}</ol></details>}
     <div className="cl-legend"><span><i className="cl-ring" data-state="viewed"/>讲解已读</span><span><i className="cl-ring" data-state="started"/>已接触</span><span><i className="cl-ring"/>未开始</span></div>
     {tab==='materials'?<div className="cl-card"><h2>课程资料</h2>{course.materials.map(item=><article key={item.id}><h3>{item.title}</h3><p>{item.detail}</p><small>{item.status==='available'?'已绑定来源':'等待核对'}</small></article>)}<Link href="/studio?view=materials">打开我的资料与学案 →</Link></div>:
       <div className="cl-timeline"><article className="cl-lecture"><span className="cl-timeline-icon">▧</span><header><strong>{tab==='practices'?'独立练习':'本单元讲座'}</strong></header><p>{unit?.objective}</p><div className="cl-microlessons">{unit?.lessons.filter(lesson=>tab==='practices'?lesson.kind==='practice':lesson.kind==='learn').map(lesson=>{
