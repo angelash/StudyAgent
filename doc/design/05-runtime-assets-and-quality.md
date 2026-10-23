@@ -134,3 +134,13 @@ CI三组：
 基线`a5844ae`全量API824通过/6跳过，完整浏览器41通过；随后仅Web历史保护调整到`84911bc`，最终6项资料课程浏览器复验通过。共享契约/API、Web类型、生产模式隔离构建和本地守护构建通过。Linux远端a5844ae的application、browser和postgres三组通过，见[CI收据](../evidence/2026-10-24/source-course-editor-ci.json)；84911bc的Web历史修正另有最终本地复验。
 
 浏览器替身API不承担真实模型质量证明，隔离Next子进程固定NODE_ENV=production及测试API地址。明确的教学稿打开动作记录创建者答案接触，后续汇总不算独立成功；真实学生第一答不继承该标记。[运行烟测](../evidence/2026-10-24/source-course-editor-runtime.json)只用访客上下文。
+
+## 12. 分课流水线与验证依赖最近验收
+
+`c2650eb`本地全量API838通过/6跳过、浏览器43通过；最终远端application、browser、postgres三组均通过，见[CI收据](../evidence/2026-10-24/source-course-pipeline-ci.json)，PG使用专用QA库。真实默认DS两课/六题约86秒，独立刻意错误修订探针约23秒；均为匿名有界材料，保留原始、诊断及最终产物，不作为教师批准或稳定性认证。详见[流水线收据](../evidence/2026-10-24/source-course-pipeline-acceptance.json)。
+
+实际PG负例暴露任务失败时间戳的32位算术推断，已显式改用BIGINT并验退避、取消与永久失败。随后Zod依赖公告触发升级到4.6.7、兼容SDK7.43.0，当前审计零已知漏洞；新增超长集合提前拒绝和实际SDK拦截传输测试，默认文本模型不变。SDK测试不代表新供应商在线连通。
+
+依赖迁移的明确回归见[集合边界测试](../../apps/api/src/common/validation.test.ts)与[兼容SDK传输测试](../../apps/api/src/modules/ai/openai-compatibility.test.ts)；课程阶段、私有复核及原始稿的端到端领域验证见[课程套件](../../apps/api/src/modules/learning/source-course.integration.test.ts)。
+
+本地守护Web/API/health已部署c2650eb，访客页、ready与匿名拒绝访问正常，见[本批烟测](../evidence/2026-10-24/source-course-pipeline-runtime.json)。本次自动验收均使用独立QA数据；设计册不能用局部技术成功替代完整产品和真人学习效果验收。

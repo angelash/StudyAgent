@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`84911bc2098127605d300d289703d3c5c96c17a3`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`c2650eb7fbe334206125ca98ff180f07356e11a9`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -551,9 +551,9 @@
 
 **输入**：授权来源页/段与版本、目标、source/zh-CN/en、时间预算、模型、可选已确认知识目标、修订号和请求键。
 
-**处理与实现**：成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务调用统一CLI结构化生成1至6课；核对短引用确实出现在选中原文；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留原始稿；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。
+**处理与实现**：成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务冻结初始输入并固定实际模型，先规划1至6课与明确来源缺口，再逐课编写、逐课独立AI复核；以不结束租约的原子检查点保存路线、初稿与复核，失败/重启只补未完成阶段；复核按字段或单题应用修订并重新验证，uncertain仍需人工核查；核对短引用确实出现在选中原文，拒绝内部来源键混入讲解；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留初始稿与生成输入、时间和摘要，人工改稿后旧复核标明针对旧版；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。
 
-**输出**：可恢复资料课程、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口。
+**输出**：可恢复分阶段资料课程、实际进度/安全复核概况、私有首次稿对照、原始目标溯源、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口。
 
 **状态与持久化**：`sourceCourses`、`studioSourceMaterials`、`classroomSessions`、`learningScopes`、`knowledgeAtoms`
 
@@ -576,25 +576,28 @@
 
 **服务方法**：
 
-- `SourceCourseService.materials`；[apps/api/src/modules/learning/source-course.service.ts:21](../../../apps/api/src/modules/learning/source-course.service.ts#L21)。
-- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:30](../../../apps/api/src/modules/learning/source-course.service.ts#L30)。
-- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:61](../../../apps/api/src/modules/learning/source-course.service.ts#L61)。
-- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:70](../../../apps/api/src/modules/learning/source-course.service.ts#L70)。
-- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:60](../../../apps/api/src/modules/learning/source-course.service.ts#L60)。
-- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:107](../../../apps/api/src/modules/learning/source-course.service.ts#L107)。
-- `SourceCourseService.authoring`；[apps/api/src/modules/learning/source-course.service.ts:116](../../../apps/api/src/modules/learning/source-course.service.ts#L116)。
-- `SourceCourseService.editContent`；[apps/api/src/modules/learning/source-course.service.ts:123](../../../apps/api/src/modules/learning/source-course.service.ts#L123)。
-- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:136](../../../apps/api/src/modules/learning/source-course.service.ts#L136)。
-- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:143](../../../apps/api/src/modules/learning/source-course.service.ts#L143)。
+- `SourceCourseService.materials`；[apps/api/src/modules/learning/source-course.service.ts:22](../../../apps/api/src/modules/learning/source-course.service.ts#L22)。
+- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:31](../../../apps/api/src/modules/learning/source-course.service.ts#L31)。
+- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:62](../../../apps/api/src/modules/learning/source-course.service.ts#L62)。
+- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:71](../../../apps/api/src/modules/learning/source-course.service.ts#L71)。
+- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:61](../../../apps/api/src/modules/learning/source-course.service.ts#L61)。
+- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:109](../../../apps/api/src/modules/learning/source-course.service.ts#L109)。
+- `SourceCourseService.authoring`；[apps/api/src/modules/learning/source-course.service.ts:118](../../../apps/api/src/modules/learning/source-course.service.ts#L118)。
+- `SourceCourseService.editContent`；[apps/api/src/modules/learning/source-course.service.ts:125](../../../apps/api/src/modules/learning/source-course.service.ts#L125)。
+- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:138](../../../apps/api/src/modules/learning/source-course.service.ts#L138)。
+- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:145](../../../apps/api/src/modules/learning/source-course.service.ts#L145)。
 
 **补充实现文件**：
 
 - [packages/contracts/src/source-course.ts](../../../packages/contracts/src/source-course.ts)
 - [apps/api/src/modules/learning/source-course-content.ts](../../../apps/api/src/modules/learning/source-course-content.ts)
 - [apps/api/src/modules/learning/source-course-worker.service.ts](../../../apps/api/src/modules/learning/source-course-worker.service.ts)
+- [apps/api/src/modules/learning/source-course-pipeline.ts](../../../apps/api/src/modules/learning/source-course-pipeline.ts)
 - [apps/api/src/modules/learning/source-course.integration.test.ts](../../../apps/api/src/modules/learning/source-course.integration.test.ts)
 - [apps/web/app/studio/source-courses/workbench.tsx](../../../apps/web/app/studio/source-courses/workbench.tsx)
 - [apps/web/app/studio/source-courses/content-editor.tsx](../../../apps/web/app/studio/source-courses/content-editor.tsx)
+- [apps/web/app/studio/source-courses/generation-panel.tsx](../../../apps/web/app/studio/source-courses/generation-panel.tsx)
+- [apps/web/app/studio/source-courses/original-manuscript.tsx](../../../apps/web/app/studio/source-courses/original-manuscript.tsx)
 - [apps/web/app/studio/source-courses/source-courses.css](../../../apps/web/app/studio/source-courses/source-courses.css)
 - [apps/api/src/common/http-body.ts](../../../apps/api/src/common/http-body.ts)
 - [scripts/qa/source-course-fixture.cjs](../../../scripts/qa/source-course-fixture.cjs)

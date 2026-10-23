@@ -1,0 +1,488 @@
+{
+  "input": {
+    "title": "Fractions: meaning and addition",
+    "goal": "Create exactly two short lessons in English: first equivalent fractions, then adding unlike denominators. Use only the supplied source. Keep board notes below 80 characters each, and every passage concise.",
+    "language": "en",
+    "minutesPerSession": 10,
+    "modelId": "auto",
+    "targetAtomIds": []
+  },
+  "content": {
+    "title": "Fractions: Meaning, Equivalent Forms, and Addition",
+    "overview": "This two-lesson route helps adult learners read fractions as equal parts of one whole, recognize equivalent fractions, and add fractions with unlike denominators by choosing a common unit. Learners compare and check results using the source's examples, including 1/2 = 2/4 and 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+    "lessons": [
+      {
+        "title": "Fractions as Equal Parts and Equivalent Names",
+        "objective": "Understand that a fraction names equal parts of one whole, identify the numerator and denominator, and recognize that equivalent fractions name the same quantity.",
+        "introduction": "A fraction names equal parts of one whole. This lesson shows how to read a fraction, identify its numerator and denominator, and recognize different names for the same quantity.",
+        "concept": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole, while the numerator 1 counts the selected parts. So 1/3 means one selected part when a whole is divided into three equal parts. Equivalent fractions name the same quantity even when the number of parts differs. Multiplying the numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4.",
+        "notes": [
+          "Denominator: number of equal parts in one whole",
+          "Numerator: number of selected equal parts",
+          "Equivalent fractions name the same quantity",
+          "Multiplying top and bottom by the same positive integer keeps value"
+        ],
+        "example": {
+          "scenario": "One whole rectangle is divided into equal parts. Use the parts to explain why 1/2 and 2/4 can name the same shaded amount.",
+          "steps": [
+            "Start with one whole divided into 2 equal parts; select 1 part, so the fraction is 1/2.",
+            "Split each half into 2 equal parts. The whole now has 4 equal parts.",
+            "The selected amount covers 2 of those 4 parts, so it is 2/4.",
+            "Compare the two names: 1/2 and 2/4 describe the same quantity."
+          ],
+          "board": [
+            "One whole: split into equal parts",
+            "1/2: 1 selected of 2 equal parts",
+            "2/4: 2 selected of 4 equal parts",
+            "Same amount: 1/2 = 2/4"
+          ],
+          "conclusion": "The two fractions name the same quantity. Multiplying numerator and denominator by 2 changed the partition, not the selected amount."
+        },
+        "misconception": {
+          "claim": "If the numerator and denominator both change, the fraction must name a different quantity.",
+          "correction": "Multiplying numerator and denominator by the same positive integer does not change the quantity. It changes the partition, not the amount selected. So 1/2 becomes 2/4, and both name the same quantity.",
+          "board": [
+            "Changing parts is not always changing amount",
+            "Same positive factor on top and bottom",
+            "1/2 and 2/4 name the same quantity"
+          ]
+        },
+        "transfer": "Try 1/3 = 2/6. Split each third into 2 equal parts; the whole now has 6 equal parts. The selected amount covers 2 of them, so 1/3 = 2/6. The partition changed, but the quantity did not.",
+        "summary": "A fraction names equal parts of one whole. The denominator counts equal parts; the numerator counts selected parts. Multiplying both by the same positive integer gives an equivalent fraction, such as 1/2 = 2/4.",
+        "takeaways": [
+          "A fraction names equal parts of one whole.",
+          "The denominator counts the equal parts in one whole.",
+          "The numerator counts selected equal parts.",
+          "Equivalent fractions name the same quantity."
+        ],
+        "citations": [
+          {
+            "sourceKey": "src-1-1",
+            "quote": "A fraction describes a number of equal parts of the same whole."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "Equivalent fractions name the same quantity"
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "For example, 1/2 = 2/4."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "In the fraction 1/3, what does the denominator 3 count?",
+            "options": [
+              "The selected parts",
+              "The equal parts in one whole",
+              "The equivalent fractions",
+              "The whole numbers"
+            ],
+            "answer": 1,
+            "explanation": "The denominator counts the equal parts in one whole. In 1/3, the whole is divided into 3 equal parts, and the numerator 1 counts the selected part.",
+            "hints": [
+              "Look at the number below the fraction line.",
+              "The denominator counts the equal parts in one whole."
+            ]
+          },
+          {
+            "prompt": "Which fraction is equivalent to 1/2?",
+            "options": [
+              "2/4",
+              "1/4",
+              "2/3",
+              "3/2"
+            ],
+            "answer": 0,
+            "explanation": "Multiplying numerator and denominator by the same positive integer keeps the quantity the same. Thus 1/2 = 2/4.",
+            "hints": [
+              "Use the same positive factor on the numerator and denominator.",
+              "The source gives 1/2 = 2/4."
+            ]
+          },
+          {
+            "prompt": "What happens when you multiply the numerator and denominator of 1/2 by 2?",
+            "options": [
+              "The quantity changes to a different amount.",
+              "The quantity changes only because the denominator changes.",
+              "The partition changes, but the quantity stays the same; 2/4 = 1/2.",
+              "The fraction becomes undefined."
+            ],
+            "answer": 2,
+            "explanation": "Multiplying both parts by 2 changes the partition, not the quantity. The result is 2/4, which names the same amount as 1/2.",
+            "hints": [
+              "Think about splitting each part into smaller equal parts.",
+              "The selected amount stays the same even though there are more parts."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Adding Fractions with Unlike Denominators",
+        "objective": "Add 1/2 and 1/3 by rewriting both fractions with a common unit of sixths, then explain why adding denominators does not correctly combine equal-sized units.",
+        "introduction": "Halves and thirds use different-sized parts, so they cannot be counted together directly. In this lesson, you will choose sixths as a common unit and add 1/2 and 1/3.",
+        "concept": "To add fractions, the parts must have the same size. The denominator names the unit size, while the numerator counts selected parts. Halves and thirds are unlike units, so choose a shared unit: sixths. Multiply numerator and denominator of 1/2 by 3 to get 3/6. Multiply numerator and denominator of 1/3 by 2 to get 2/6. Both fractions now count sixths, so add the numerators: 3/6 + 2/6 = 5/6. The sum is 5/6. It is less than one whole and greater than either addend, a useful check for these positive fractions.",
+        "notes": [
+          "Denominator = size of the unit.",
+          "Numerator = number of selected parts.",
+          "Use sixths for 1/2 and 1/3.",
+          "Add only after the units match."
+        ],
+        "example": {
+          "scenario": "Find 1/2 + 1/3. The parts are halves and thirds, so they are not the same size yet.",
+          "steps": [
+            "Choose sixths, because both halves and thirds can be expressed in sixths.",
+            "Rewrite 1/2 as 3/6 by multiplying numerator and denominator by 3.",
+            "Rewrite 1/3 as 2/6 by multiplying numerator and denominator by 2.",
+            "Add equal-sized parts: 3/6 + 2/6 = 5/6."
+          ],
+          "board": [
+            "1/2 = 3/6",
+            "1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Match units, then add numerators."
+          ],
+          "conclusion": "So 1/2 + 1/3 = 5/6. The sum is less than one whole and greater than either addend."
+        },
+        "misconception": {
+          "claim": "A learner may add 1/2 + 1/3 by adding across: 1 + 1 = 2 and 2 + 3 = 5, getting 2/5.",
+          "correction": "That treats halves and thirds as if they were the same-sized parts. The denominator names unit size, so 2 and 3 cannot be added as counts of equal parts. Use sixths: 3/6 + 2/6 = 5/6. Check that 5/6 is less than one and greater than both 1/2 and 1/3.",
+          "board": [
+            "Do not add denominators as if they were counts.",
+            "1/2 + 1/3 = 3/6 + 2/6",
+            "= 5/6"
+          ]
+        },
+        "transfer": "Try the same reasoning with 1/4 + 1/2. Choose fourths as the common unit: 1/2 = 2/4, so 1/4 + 2/4 = 3/4. The check: 3/4 is less than one whole and greater than either addend.",
+        "summary": "To add fractions with unlike denominators, rewrite them with a common unit. For 1/2 + 1/3, use sixths: 3/6 + 2/6 = 5/6. Add numerators only when the units match.",
+        "takeaways": [
+          "Choose a common unit before adding.",
+          "Rewrite each fraction without changing its value.",
+          "Add numerators and keep the common denominator.",
+          "Check that the result fits the quantities."
+        ],
+        "citations": [
+          {
+            "sourceKey": "src-1-1",
+            "quote": "A fraction describes a number of equal parts of the same whole."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "multiplying numerator and denominator by the same positive integer changes the partition, not the quantity"
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "To add 1/2 and 1/3, represent both quantities with sixths: 3/6 + 2/6 = 5/6."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "The denominator names the size of the unit; adding denominators does not combine equal-sized units correctly."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Which first step correctly prepares 1/2 + 1/3 for addition?",
+            "options": [
+              "Add the numerators and denominators to get 2/5.",
+              "Rewrite both fractions with sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+              "Subtract 1/3 from 1/2.",
+              "Multiply the two fractions and keep the larger denominator."
+            ],
+            "answer": 1,
+            "explanation": "The parts must have the same size before they can be added. Sixths work because 1/2 = 3/6 and 1/3 = 2/6. Adding numerators and denominators would treat unlike units as if they matched.",
+            "hints": [
+              "Ask whether halves and thirds are the same-sized parts.",
+              "Look for a shared unit that both fractions can use."
+            ]
+          },
+          {
+            "prompt": "Which equation correctly rewrites 1/3 with a denominator of 6?",
+            "options": [
+              "1/3 = 2/6",
+              "1/3 = 3/6",
+              "1/3 = 1/6",
+              "1/3 = 6/2"
+            ],
+            "answer": 0,
+            "explanation": "Multiply numerator and denominator by 2: (1 x 2)/(3 x 2) = 2/6. This changes the number and size of the parts while keeping the same quantity.",
+            "hints": [
+              "Multiply both 1 and 3 by the same positive integer.",
+              "Since 3 x 2 = 6, apply the same factor to the numerator."
+            ]
+          },
+          {
+            "prompt": "Which statement gives the correct sum of 1/2 + 1/3 and a valid check?",
+            "options": [
+              "The sum is 2/5, which is less than 1/2.",
+              "The sum is 5/6, which is greater than one whole.",
+              "The sum is 5/6, which is greater than 1/2 and less than one whole.",
+              "The sum is 3/5, which equals one whole."
+            ],
+            "answer": 2,
+            "explanation": "Using sixths, 3/6 + 2/6 = 5/6. The result 5/6 is greater than 1/2 and less than one whole.",
+            "hints": [
+              "Rewrite both addends with a common denominator before adding.",
+              "Compare the result with 1/2 and with 1 to check it."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "originalContent": {
+    "title": "Fractions: Meaning, Equivalent Forms, and Addition",
+    "overview": "This two-lesson route helps adult learners read fractions as equal parts of one whole, recognize equivalent fractions, and add fractions with unlike denominators by choosing a common unit. Learners compare and check results using the source's examples, including 1/2 = 2/4 and 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+    "lessons": [
+      {
+        "title": "Fractions as Equal Parts and Equivalent Names",
+        "objective": "Understand that a fraction names equal parts of one whole, identify the numerator and denominator, and recognize that equivalent fractions name the same quantity.",
+        "introduction": "A fraction names equal parts of one whole. This lesson shows how to read a fraction, identify its numerator and denominator, and recognize different names for the same quantity.",
+        "concept": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole, while the numerator 1 counts the selected parts. So 1/3 means one selected part when a whole is divided into three equal parts. Equivalent fractions name the same quantity even when the number of parts differs. Multiplying the numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4.",
+        "notes": [
+          "Denominator: number of equal parts in one whole",
+          "Numerator: number of selected equal parts",
+          "Equivalent fractions name the same quantity",
+          "Multiplying top and bottom by the same positive integer keeps value"
+        ],
+        "example": {
+          "scenario": "One whole rectangle is divided into equal parts. Use the parts to explain why 1/2 and 2/4 can name the same shaded amount.",
+          "steps": [
+            "Start with one whole divided into 2 equal parts; select 1 part, so the fraction is 1/2.",
+            "Split each half into 2 equal parts. The whole now has 4 equal parts.",
+            "The selected amount covers 2 of those 4 parts, so it is 2/4.",
+            "Compare the two names: 1/2 and 2/4 describe the same quantity."
+          ],
+          "board": [
+            "One whole: split into equal parts",
+            "1/2: 1 selected of 2 equal parts",
+            "2/4: 2 selected of 4 equal parts",
+            "Same amount: 1/2 = 2/4"
+          ],
+          "conclusion": "The two fractions name the same quantity. Multiplying numerator and denominator by 2 changed the partition, not the selected amount."
+        },
+        "misconception": {
+          "claim": "If the numerator and denominator both change, the fraction must name a different quantity.",
+          "correction": "Multiplying numerator and denominator by the same positive integer does not change the quantity. It changes the partition, not the amount selected. So 1/2 becomes 2/4, and both name the same quantity.",
+          "board": [
+            "Changing parts is not always changing amount",
+            "Same positive factor on top and bottom",
+            "1/2 and 2/4 name the same quantity"
+          ]
+        },
+        "transfer": "Try 1/3 = 2/6. Split each third into 2 equal parts; the whole now has 6 equal parts. The selected amount covers 2 of them, so 1/3 = 2/6. The partition changed, but the quantity did not.",
+        "summary": "A fraction names equal parts of one whole. The denominator counts equal parts; the numerator counts selected parts. Multiplying both by the same positive integer gives an equivalent fraction, such as 1/2 = 2/4.",
+        "takeaways": [
+          "A fraction names equal parts of one whole.",
+          "The denominator counts the equal parts in one whole.",
+          "The numerator counts selected equal parts.",
+          "Equivalent fractions name the same quantity."
+        ],
+        "citations": [
+          {
+            "sourceKey": "src-1-1",
+            "quote": "A fraction describes a number of equal parts of the same whole."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "Equivalent fractions name the same quantity"
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "For example, 1/2 = 2/4."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "In the fraction 1/3, what does the denominator 3 count?",
+            "options": [
+              "The selected parts",
+              "The equal parts in one whole",
+              "The equivalent fractions",
+              "The whole numbers"
+            ],
+            "answer": 1,
+            "explanation": "The denominator counts the equal parts in one whole. In 1/3, the whole is divided into 3 equal parts, and the numerator 1 counts the selected part.",
+            "hints": [
+              "Look at the number below the fraction line.",
+              "The denominator counts the equal parts in one whole."
+            ]
+          },
+          {
+            "prompt": "Which fraction is equivalent to 1/2?",
+            "options": [
+              "2/4",
+              "1/4",
+              "2/3",
+              "3/2"
+            ],
+            "answer": 0,
+            "explanation": "Multiplying numerator and denominator by the same positive integer keeps the quantity the same. Thus 1/2 = 2/4.",
+            "hints": [
+              "Use the same positive factor on the numerator and denominator.",
+              "The source gives 1/2 = 2/4."
+            ]
+          },
+          {
+            "prompt": "What happens when you multiply the numerator and denominator of 1/2 by 2?",
+            "options": [
+              "The quantity changes to a different amount.",
+              "The quantity changes only because the denominator changes.",
+              "The partition changes, but the quantity stays the same; 2/4 = 1/2.",
+              "The fraction becomes undefined."
+            ],
+            "answer": 2,
+            "explanation": "Multiplying both parts by 2 changes the partition, not the quantity. The result is 2/4, which names the same amount as 1/2.",
+            "hints": [
+              "Think about splitting each part into smaller equal parts.",
+              "The selected amount stays the same even though there are more parts."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Adding Fractions with Unlike Denominators",
+        "objective": "Add 1/2 and 1/3 by rewriting both fractions with a common unit of sixths, then explain why adding denominators does not correctly combine equal-sized units.",
+        "introduction": "Halves and thirds use different-sized parts, so they cannot be counted together directly. In this lesson, you will choose sixths as a common unit and add 1/2 and 1/3.",
+        "concept": "To add fractions, the parts must have the same size. The denominator names the unit size, while the numerator counts selected parts. Halves and thirds are unlike units, so choose a shared unit: sixths. Multiply numerator and denominator of 1/2 by 3 to get 3/6. Multiply numerator and denominator of 1/3 by 2 to get 2/6. Both fractions now count sixths, so add the numerators: 3/6 + 2/6 = 5/6. The sum is 5/6. It is less than one whole and greater than either addend, a useful check for these positive fractions.",
+        "notes": [
+          "Denominator = size of the unit.",
+          "Numerator = number of selected parts.",
+          "Use sixths for 1/2 and 1/3.",
+          "Add only after the units match."
+        ],
+        "example": {
+          "scenario": "Find 1/2 + 1/3. The parts are halves and thirds, so they are not the same size yet.",
+          "steps": [
+            "Choose sixths, because both halves and thirds can be expressed in sixths.",
+            "Rewrite 1/2 as 3/6 by multiplying numerator and denominator by 3.",
+            "Rewrite 1/3 as 2/6 by multiplying numerator and denominator by 2.",
+            "Add equal-sized parts: 3/6 + 2/6 = 5/6."
+          ],
+          "board": [
+            "1/2 = 3/6",
+            "1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Match units, then add numerators."
+          ],
+          "conclusion": "So 1/2 + 1/3 = 5/6. The sum is less than one whole and greater than either addend."
+        },
+        "misconception": {
+          "claim": "A learner may add 1/2 + 1/3 by adding across: 1 + 1 = 2 and 2 + 3 = 5, getting 2/5.",
+          "correction": "That treats halves and thirds as if they were the same-sized parts. The denominator names unit size, so 2 and 3 cannot be added as counts of equal parts. Use sixths: 3/6 + 2/6 = 5/6. Check that 5/6 is less than one and greater than both 1/2 and 1/3.",
+          "board": [
+            "Do not add denominators as if they were counts.",
+            "1/2 + 1/3 = 3/6 + 2/6",
+            "= 5/6"
+          ]
+        },
+        "transfer": "Try the same reasoning with 1/4 + 1/2. Choose fourths as the common unit: 1/2 = 2/4, so 1/4 + 2/4 = 3/4. The check: 3/4 is less than one whole and greater than either addend.",
+        "summary": "To add fractions with unlike denominators, rewrite them with a common unit. For 1/2 + 1/3, use sixths: 3/6 + 2/6 = 5/6. Add numerators only when the units match.",
+        "takeaways": [
+          "Choose a common unit before adding.",
+          "Rewrite each fraction without changing its value.",
+          "Add numerators and keep the common denominator.",
+          "Check that the result fits the quantities."
+        ],
+        "citations": [
+          {
+            "sourceKey": "src-1-1",
+            "quote": "A fraction describes a number of equal parts of the same whole."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "multiplying numerator and denominator by the same positive integer changes the partition, not the quantity"
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "To add 1/2 and 1/3, represent both quantities with sixths: 3/6 + 2/6 = 5/6."
+          },
+          {
+            "sourceKey": "src-1-1",
+            "quote": "The denominator names the size of the unit; adding denominators does not combine equal-sized units correctly."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Which first step correctly prepares 1/2 + 1/3 for addition?",
+            "options": [
+              "Add the numerators and denominators to get 2/5.",
+              "Rewrite both fractions with sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+              "Subtract 1/3 from 1/2.",
+              "Multiply the two fractions and keep the larger denominator."
+            ],
+            "answer": 1,
+            "explanation": "The parts must have the same size before they can be added. Sixths work because 1/2 = 3/6 and 1/3 = 2/6. Adding numerators and denominators would treat unlike units as if they matched.",
+            "hints": [
+              "Ask whether halves and thirds are the same-sized parts.",
+              "Look for a shared unit that both fractions can use."
+            ]
+          },
+          {
+            "prompt": "Which equation correctly rewrites 1/3 with a denominator of 6?",
+            "options": [
+              "1/3 = 2/6",
+              "1/3 = 3/6",
+              "1/3 = 1/6",
+              "1/3 = 6/2"
+            ],
+            "answer": 0,
+            "explanation": "Multiply numerator and denominator by 2: (1 x 2)/(3 x 2) = 2/6. This changes the number and size of the parts while keeping the same quantity.",
+            "hints": [
+              "Multiply both 1 and 3 by the same positive integer.",
+              "Since 3 x 2 = 6, apply the same factor to the numerator."
+            ]
+          },
+          {
+            "prompt": "Which statement gives the correct sum of 1/2 + 1/3 and a valid check?",
+            "options": [
+              "The sum is 2/5, which is less than 1/2.",
+              "The sum is 5/6, which is greater than one whole.",
+              "The sum is 5/6, which is greater than 1/2 and less than one whole.",
+              "The sum is 3/5, which equals one whole."
+            ],
+            "answer": 2,
+            "explanation": "Using sixths, 3/6 + 2/6 = 5/6. The result 5/6 is greater than 1/2 and less than one whole.",
+            "hints": [
+              "Rewrite both addends with a common denominator before adding.",
+              "Compare the result with 1/2 and with 1 to check it."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "lessonIndex": 0,
+      "review": {
+        "decision": "pass",
+        "issues": [],
+        "at": "2026-10-23T21:35:56.649Z",
+        "modelId": "deepseek-v4-flash",
+        "modelName": "DeepSeek V4.1 Flash",
+        "inputFingerprint": "9e051c2a9010714e462c39f4ee00536f3b75288135b1dd7cd47ce2702dbddf0e",
+        "outputFingerprint": "9e051c2a9010714e462c39f4ee00536f3b75288135b1dd7cd47ce2702dbddf0e"
+      }
+    },
+    {
+      "lessonIndex": 1,
+      "review": {
+        "decision": "pass",
+        "issues": [],
+        "at": "2026-10-23T21:36:45.286Z",
+        "modelId": "deepseek-v4-flash",
+        "modelName": "DeepSeek V4.1 Flash",
+        "inputFingerprint": "3686a8bb56d23b6b76a4c835f688cea868e44346f29b61516b5b0c3bcdcb2662",
+        "outputFingerprint": "3686a8bb56d23b6b76a4c835f688cea868e44346f29b61516b5b0c3bcdcb2662"
+      }
+    }
+  ]
+}

@@ -44,7 +44,9 @@
 28. [分阶段课程项目与版本化量规](./97-versioned-course-projects.md)：五项目15阶段、产物/证据/自评、提交修订、授权人工复核、默认模型真实调用及旧稿兼容。
 29. [资料到课程、来源快照与真实模型](./98-source-backed-course-generation.md)：成人私人文本/PDF、精确选页、生成任务、审阅确认、引用与旧课堂恢复；保留真实样本中的质量问题与后续修正边界。
 30. [资料课程完整教学稿编辑与复核](./99-source-course-content-editor.md)：原始稿、逐课/环节修订、答案与提示私有性、作者曝光标记、冲突/导出/后退及完整回归。
-5. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
+31. [资料课程逐课生成、AI复核与恢复](./100-source-course-generation-pipeline.md)：原子检查点、冻结输入与实际模型、首次稿对照、按字段修订、进度/失败恢复、双库与真实模型验证。
+32. [课堂按需图片实施前规格](./101-runtime-classroom-visuals.md)：小九生图接入、节点绑定、候选选用、权限、受控文件、持久任务、删除/导出与恢复验收；尚未实施。
+33. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
 

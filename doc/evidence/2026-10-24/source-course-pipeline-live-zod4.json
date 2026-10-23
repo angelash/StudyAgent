@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 2,
+  "at": "2026-10-23T22:03:51.401Z",
+  "passed": true,
+  "contentApproval": "pending-human-review",
+  "scope": "One real default-model staged source-course generation and per-lesson checks, on isolated anonymous text. Not a content-review or reliability study.",
+  "dataDirectory": "data/qa/source-course-pipeline-live-1792793031401-38184",
+  "artifacts": {
+    "receipt": "data/qa/source-course-pipeline-live-1792793031401-38184/receipt.json",
+    "result": "data/qa/source-course-pipeline-live-1792793031401-38184/result.json",
+    "course": "data/qa/source-course-pipeline-live-1792793031401-38184/course.json",
+    "stages": "data/qa/source-course-pipeline-live-1792793031401-38184/stages.jsonl",
+    "raw": "data/qa/source-course-pipeline-live-1792793031401-38184/raw.jsonl",
+    "calls": "data/qa/source-course-pipeline-live-1792793031401-38184/calls.jsonl"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "durationMs": 86381,
+      "errorCode": null
+    }
+  ],
+  "providerCalls": 5,
+  "stageCalls": 5,
+  "validationFailures": [],
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "generation": {
+    "version": "source-course-v2",
+    "inputCapture": "creation",
+    "stage": "completed",
+    "plannedLessons": 2,
+    "draftedLessons": 2,
+    "reviewedLessons": 2,
+    "scopeNote": "Covers fractions as equal parts of one whole, equivalent fractions through changed partitions, and addition with unlike denominators by using a common unit. Does not cover subtraction, multiplication or division of fractions, mixed numbers, negative fractions, percentages, or formal fraction proofs.",
+    "uncoveredSourceKeys": [],
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "reviewCurrent": true,
+    "reviews": [
+      {
+        "lessonIndex": 0,
+        "lessonTitle": "Equivalent Fractions",
+        "decision": "pass",
+        "issueCount": 0
+      },
+      {
+        "lessonIndex": 1,
+        "lessonTitle": "Adding Fractions with Unlike Denominators",
+        "decision": "pass",
+        "issueCount": 0
+      }
+    ]
+  },
+  "lessons": 2,
+  "questions": 6,
+  "sourceCharacters": 665,
+  "sourceSha256": "f413e777350822a9177fa74ec39be2bc0429b7aa0201398affca99ee49fa8978",
+  "englishTitles": [
+    "Equivalent Fractions",
+    "Adding Fractions with Unlike Denominators"
+  ],
+  "courseFingerprint": "ff1d40fe90bdd8a2d01047eaa13b63506deb871c801c71efc7c60ab113e171dc",
+  "privateAnswersStripped": true,
+  "formalMeasurementEligible": false
+}

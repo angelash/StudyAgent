@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T22:09:14.242Z",
+  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+  "scope": "Anonymous smoke after local daemon deployment; no production family sessions or records used.",
+  "checks": [
+    {
+      "route": "http://127.0.0.1:3217/learn",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/source-courses",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/studio/classroom",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "http://127.0.0.1:4217/api/learning/source-courses/materials",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "POST /api/learning/source-courses",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "POST /api/learning/source-courses/:id/authoring",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "route": "Malformed anonymous JSON",
+      "status": 400,
+      "privateInputNotEchoed": true,
+      "passed": true
+    }
+  ],
+  "browserErrors": [],
+  "webBuildId": "X3txm0a_Voz0SU-TL4COZ",
+  "passed": true,
+  "continuedHealthyAt": "2026-10-23T22:20:30.878307+00:00",
+  "daemonSnapshot": [
+    {
+      "name": "study-agent-api",
+      "pid": 70672,
+      "status": "online",
+      "restartCount": 1161,
+      "uptimeStartedAt": 1792793330299
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 40680,
+      "status": "online",
+      "restartCount": 3,
+      "uptimeStartedAt": 1792793330379
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 62344,
+      "status": "online",
+      "restartCount": 1,
+      "uptimeStartedAt": 1792793331003
+    }
+  ],
+  "limits": "Anonymous point-in-time and post-deployment process checks; not a long-duration stability or real-device study."
+}

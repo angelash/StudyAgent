@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T21:43:13.351Z",
+  "passed": true,
+  "scope": "One changed-field model review with an explicitly injected false fraction equivalence, using the fixed anonymous source. Not end-to-end generation, reliability, teacher approval or measurement validation.",
+  "contentApproval": "pending-human-review",
+  "calls": [
+    {
+      "durationMs": 7710,
+      "success": true,
+      "outputCharacters": 1256
+    }
+  ],
+  "validationFailures": [],
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "baselineReceipt": "data/qa/source-course-pipeline-live-1792791275710-67760/receipt.json",
+  "injectedError": "1/2 = 3/4 because the numerator and denominator both grow.",
+  "decision": "revised",
+  "issueCount": 1,
+  "changedFields": [
+    "concept"
+  ],
+  "questionChanges": 0,
+  "unchangedQuestionsPreserved": true,
+  "artifacts": {
+    "receipt": "data/qa/source-course-review-live-1792791793351-47288/receipt.json",
+    "result": "data/qa/source-course-review-live-1792791793351-47288/result.json",
+    "raw": "data/qa/source-course-review-live-1792791793351-47288/raw.jsonl"
+  }
+}

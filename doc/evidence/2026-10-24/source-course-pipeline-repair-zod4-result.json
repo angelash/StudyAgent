@@ -1,0 +1,239 @@
+{
+  "sourceText": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts. Equivalent fractions name the same quantity: multiplying numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4. To add 1/2 and 1/3, represent both quantities with sixths: 3/6 + 2/6 = 5/6. The denominator names the size of the unit; adding denominators does not combine equal-sized units correctly. The result 5/6 is less than one whole and greater than either addend, which provides a useful check for these positive fractions.",
+  "initial": {
+    "title": "Equivalent Fractions",
+    "objective": "Understand a fraction as equal parts of one whole and recognize when different fractions name the same quantity.",
+    "introduction": "A fraction names a part of one whole. Today, let's use equal-sized pieces to see why two different fractions can describe exactly the same amount.",
+    "concept": "A fraction names equal parts of one whole. The denominator tells how many equal parts make one whole; it fixes the size of each unit. The numerator counts how many of those units we select. Suppose each half is split into two smaller equal pieces. Multiplying both 1 and 2 in 1/2 by 2 gives 2/4: there are twice as many pieces, and each piece is half as large. Because the numerator and denominator are multiplied by the same positive integer, the written fraction changes while its value stays the same. Also, 1/2 = 3/4 because the numerator and denominator both grow.",
+    "notes": [
+      "Denominator: equal parts in one whole",
+      "Numerator: selected equal parts",
+      "Multiply both terms: same quantity",
+      "More pieces can mean smaller pieces"
+    ],
+    "example": {
+      "scenario": "One half of a strip is shaded. Split each half into two equal parts without changing which area is shaded.",
+      "steps": [
+        "Start with 1/2: one selected part out of two equal parts.",
+        "Split every half into two equal parts, so the whole now has four equal parts.",
+        "The original shaded half becomes two of the four new parts: 2/4.",
+        "Compare the shaded area: 1/2 and 2/4 cover the same strip length."
+      ],
+      "board": [
+        "One whole -> 2 halves",
+        "Split each half -> 4 parts",
+        "1/2 = 2/4"
+      ],
+      "conclusion": "Finer partitions create more, smaller parts. Because both counts increase by the same factor, 1/2 equals 2/4."
+    },
+    "misconception": {
+      "claim": "Making more equal parts always makes the fraction larger.",
+      "correction": "More parts can mean smaller pieces, so comparing denominators alone does not compare fraction sizes. Compare the quantity. One half and two quarters cover the same area, so 1/2 equals 2/4.",
+      "board": [
+        "Count parts, then compare sizes",
+        "1/2 and 2/4 cover the same area"
+      ]
+    },
+    "transfer": "Imagine a 1/3 bar divided into two equal parts. Each third becomes 2/6, so 1/3 equals 2/6. There are more pieces, but each is smaller and the shaded quantity stays the same.",
+    "summary": "A denominator fixes the size of equal parts, and a numerator counts selected parts. Multiplying both by the same positive integer changes the partition while preserving the fraction's quantity.",
+    "takeaways": [
+      "The denominator names the unit size",
+      "The numerator counts selected units",
+      "Equivalent fractions describe equal quantities",
+      "Use the same positive factor for both terms"
+    ],
+    "citations": [
+      {
+        "sourceKey": "src-1-1",
+        "quote": "A fraction describes a number of equal parts of the same whole."
+      },
+      {
+        "sourceKey": "src-1-1",
+        "quote": "Equivalent fractions name the same quantity: multiplying numerator and denominator by the same positive integer changes the partition, not the quantity."
+      },
+      {
+        "sourceKey": "src-1-1",
+        "quote": "For example, 1/2 = 2/4."
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Which pair of fractions names the same quantity?",
+        "options": [
+          "1/2 and 2/3",
+          "2/3 and 3/4",
+          "3/5 and 6/10",
+          "4/5 and 5/4"
+        ],
+        "answer": 2,
+        "explanation": "In 3/5, multiplying both 3 and 5 by 2 gives 6/10. The parts become smaller, but the selected quantity remains the same.",
+        "hints": [
+          "Check whether both numbers in a pair can be multiplied by the same positive integer.",
+          "Try multiplying the numerator and denominator of 3/5 by 2."
+        ]
+      },
+      {
+        "prompt": "To rename 1/3 with a denominator of 6, by what number should you multiply both the numerator and denominator?",
+        "options": [
+          "2",
+          "3",
+          "6",
+          "1"
+        ],
+        "answer": 0,
+        "explanation": "The denominator changes from 3 to 6, and 3 times 2 equals 6. Multiply the numerator by the same factor: 1 times 2 equals 2, giving 2/6.",
+        "hints": [
+          "Find what number changes 3 into 6.",
+          "Use that same number on the numerator."
+        ]
+      },
+      {
+        "prompt": "Which explanation correctly shows that 2/5 equals 4/10?",
+        "options": [
+          "Only the denominator is doubled, making the pieces larger.",
+          "Only the numerator is doubled, adding more whole pieces.",
+          "Both numbers are multiplied by 3, preserving the quantity.",
+          "Both numbers are multiplied by 2, preserving the quantity."
+        ],
+        "answer": 3,
+        "explanation": "Multiplying 2/5's numerator and denominator by 2 gives 4/10. Both the number of smaller pieces and the selected pieces double, so the quantity is unchanged.",
+        "hints": [
+          "Compare each numerator with its partner and each denominator with its partner.",
+          "Look for the choice that applies one positive factor to both terms."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "decision": "revised",
+    "issues": [
+      {
+        "field": "concept",
+        "questionIndex": null,
+        "quote": "Also, 1/2 = 3/4 because the numerator and denominator both grow.",
+        "detail": "This is mathematically incorrect. 1/2 is not equal to 3/4, and merely increasing both terms does not preserve a fraction's value. The source says equivalence requires multiplying the numerator and denominator by the same positive integer."
+      }
+    ],
+    "changes": {
+      "title": null,
+      "objective": null,
+      "introduction": null,
+      "concept": "A fraction names equal parts of one whole. The denominator tells how many equal parts make one whole; it fixes the size of each unit. The numerator counts how many of those units we select. Suppose each half is split into two smaller equal pieces. Multiplying both 1 and 2 in 1/2 by 2 gives 2/4: there are twice as many pieces, and each piece is half as large. Because the numerator and denominator are multiplied by the same positive integer, the written fraction changes while its value stays the same. Thus 1/2 = 2/4.",
+      "notes": null,
+      "example": null,
+      "misconception": null,
+      "transfer": null,
+      "summary": null,
+      "takeaways": null,
+      "citations": null,
+      "questions": null
+    },
+    "questionChanges": [],
+    "lesson": {
+      "title": "Equivalent Fractions",
+      "objective": "Understand a fraction as equal parts of one whole and recognize when different fractions name the same quantity.",
+      "introduction": "A fraction names a part of one whole. Today, let's use equal-sized pieces to see why two different fractions can describe exactly the same amount.",
+      "concept": "A fraction names equal parts of one whole. The denominator tells how many equal parts make one whole; it fixes the size of each unit. The numerator counts how many of those units we select. Suppose each half is split into two smaller equal pieces. Multiplying both 1 and 2 in 1/2 by 2 gives 2/4: there are twice as many pieces, and each piece is half as large. Because the numerator and denominator are multiplied by the same positive integer, the written fraction changes while its value stays the same. Thus 1/2 = 2/4.",
+      "notes": [
+        "Denominator: equal parts in one whole",
+        "Numerator: selected equal parts",
+        "Multiply both terms: same quantity",
+        "More pieces can mean smaller pieces"
+      ],
+      "example": {
+        "scenario": "One half of a strip is shaded. Split each half into two equal parts without changing which area is shaded.",
+        "steps": [
+          "Start with 1/2: one selected part out of two equal parts.",
+          "Split every half into two equal parts, so the whole now has four equal parts.",
+          "The original shaded half becomes two of the four new parts: 2/4.",
+          "Compare the shaded area: 1/2 and 2/4 cover the same strip length."
+        ],
+        "board": [
+          "One whole -> 2 halves",
+          "Split each half -> 4 parts",
+          "1/2 = 2/4"
+        ],
+        "conclusion": "Finer partitions create more, smaller parts. Because both counts increase by the same factor, 1/2 equals 2/4."
+      },
+      "misconception": {
+        "claim": "Making more equal parts always makes the fraction larger.",
+        "correction": "More parts can mean smaller pieces, so comparing denominators alone does not compare fraction sizes. Compare the quantity. One half and two quarters cover the same area, so 1/2 equals 2/4.",
+        "board": [
+          "Count parts, then compare sizes",
+          "1/2 and 2/4 cover the same area"
+        ]
+      },
+      "transfer": "Imagine a 1/3 bar divided into two equal parts. Each third becomes 2/6, so 1/3 equals 2/6. There are more pieces, but each is smaller and the shaded quantity stays the same.",
+      "summary": "A denominator fixes the size of equal parts, and a numerator counts selected parts. Multiplying both by the same positive integer changes the partition while preserving the fraction's quantity.",
+      "takeaways": [
+        "The denominator names the unit size",
+        "The numerator counts selected units",
+        "Equivalent fractions describe equal quantities",
+        "Use the same positive factor for both terms"
+      ],
+      "citations": [
+        {
+          "sourceKey": "src-1-1",
+          "quote": "A fraction describes a number of equal parts of the same whole."
+        },
+        {
+          "sourceKey": "src-1-1",
+          "quote": "Equivalent fractions name the same quantity: multiplying numerator and denominator by the same positive integer changes the partition, not the quantity."
+        },
+        {
+          "sourceKey": "src-1-1",
+          "quote": "For example, 1/2 = 2/4."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "Which pair of fractions names the same quantity?",
+          "options": [
+            "1/2 and 2/3",
+            "2/3 and 3/4",
+            "3/5 and 6/10",
+            "4/5 and 5/4"
+          ],
+          "answer": 2,
+          "explanation": "In 3/5, multiplying both 3 and 5 by 2 gives 6/10. The parts become smaller, but the selected quantity remains the same.",
+          "hints": [
+            "Check whether both numbers in a pair can be multiplied by the same positive integer.",
+            "Try multiplying the numerator and denominator of 3/5 by 2."
+          ]
+        },
+        {
+          "prompt": "To rename 1/3 with a denominator of 6, by what number should you multiply both the numerator and denominator?",
+          "options": [
+            "2",
+            "3",
+            "6",
+            "1"
+          ],
+          "answer": 0,
+          "explanation": "The denominator changes from 3 to 6, and 3 times 2 equals 6. Multiply the numerator by the same factor: 1 times 2 equals 2, giving 2/6.",
+          "hints": [
+            "Find what number changes 3 into 6.",
+            "Use that same number on the numerator."
+          ]
+        },
+        {
+          "prompt": "Which explanation correctly shows that 2/5 equals 4/10?",
+          "options": [
+            "Only the denominator is doubled, making the pieces larger.",
+            "Only the numerator is doubled, adding more whole pieces.",
+            "Both numbers are multiplied by 3, preserving the quantity.",
+            "Both numbers are multiplied by 2, preserving the quantity."
+          ],
+          "answer": 3,
+          "explanation": "Multiplying 2/5's numerator and denominator by 2 gives 4/10. Both the number of smaller pieces and the selected pieces double, so the quantity is unchanged.",
+          "hints": [
+            "Compare each numerator with its partner and each denominator with its partner.",
+            "Look for the choice that applies one positive factor to both terms."
+          ]
+        }
+      ]
+    },
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash"
+  }
+}

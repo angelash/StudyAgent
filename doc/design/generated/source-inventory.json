@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3",
+  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 276,
@@ -10,12 +10,12 @@
     "activeModules": 17,
     "activeControllers": 25,
     "apiClasses": 104,
-    "apiFunctions": 240,
+    "apiFunctions": 249,
     "domainCollections": 82,
-    "contractTypes": 228,
+    "contractTypes": 232,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 93,
+    "apiTestFiles": 95,
     "browserTestFiles": 11
   },
   "modules": [
@@ -9663,7 +9663,7 @@
           "decorators": [],
           "calls": [
             "this.sqlite.exec",
-            "this.tasks.finish",
+            "this.tasks.applyFence",
             "this.sqlite.prepare",
             "this.assertDependencies",
             "this.rebaseAppends",
@@ -10243,7 +10243,7 @@
     {
       "name": "TaskRepository",
       "file": "apps/api/src/infrastructure/task-repository.ts",
-      "line": 32,
+      "line": 34,
       "decorators": [],
       "dependencies": [
         {
@@ -10266,7 +10266,7 @@
       "methods": [
         {
           "name": "open",
-          "line": 35,
+          "line": 37,
           "signature": "open()",
           "access": "public",
           "decorators": [],
@@ -10276,7 +10276,7 @@
         },
         {
           "name": "insert",
-          "line": 52,
+          "line": 54,
           "signature": "insert(intents: TaskIntent[], client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -10289,7 +10289,7 @@
         },
         {
           "name": "get",
-          "line": 68,
+          "line": 70,
           "signature": "get(id: string)",
           "access": "public",
           "decorators": [],
@@ -10299,7 +10299,7 @@
         },
         {
           "name": "summary",
-          "line": 69,
+          "line": 71,
           "signature": "summary()",
           "access": "public",
           "decorators": [],
@@ -10310,7 +10310,7 @@
         },
         {
           "name": "history",
-          "line": 79,
+          "line": 81,
           "signature": "history(id: string)",
           "access": "public",
           "decorators": [],
@@ -10320,7 +10320,7 @@
         },
         {
           "name": "find",
-          "line": 83,
+          "line": 85,
           "signature": "find(ownerId: string, kind: string, requestKey: string)",
           "access": "public",
           "decorators": [],
@@ -10330,7 +10330,7 @@
         },
         {
           "name": "list",
-          "line": 86,
+          "line": 88,
           "signature": "list(page = 1, state?: string)",
           "access": "public",
           "decorators": [],
@@ -10340,7 +10340,7 @@
         },
         {
           "name": "claim",
-          "line": 93,
+          "line": 95,
           "signature": "claim(kinds: string[], leaseMs = 30_000): Promise<TaskRow | null>",
           "access": "public",
           "decorators": [],
@@ -10352,8 +10352,8 @@
         },
         {
           "name": "heartbeat",
-          "line": 116,
-          "signature": "heartbeat(id: string, token: string, progress: Record<string, unknown>, leaseMs = 30_000)",
+          "line": 118,
+          "signature": "heartbeat(id: string, token: string, progress?: Record<string, unknown>, leaseMs = 30_000)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -10363,7 +10363,7 @@
         },
         {
           "name": "cancel",
-          "line": 122,
+          "line": 124,
           "signature": "cancel(id: string, expectedVersion: number, actorId = 'system')",
           "access": "public",
           "decorators": [],
@@ -10374,7 +10374,7 @@
         },
         {
           "name": "cancelUsing",
-          "line": 125,
+          "line": 127,
           "signature": "cancelUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -10385,7 +10385,7 @@
         },
         {
           "name": "retry",
-          "line": 136,
+          "line": 138,
           "signature": "retry(id: string, expectedVersion: number, actorId = 'system')",
           "access": "public",
           "decorators": [],
@@ -10396,7 +10396,7 @@
         },
         {
           "name": "retryUsing",
-          "line": 139,
+          "line": 141,
           "signature": "retryUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -10407,7 +10407,7 @@
         },
         {
           "name": "applyOperations",
-          "line": 149,
+          "line": 151,
           "signature": "applyOperations(operations: TaskOperation[], client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -10420,7 +10420,7 @@
         },
         {
           "name": "fail",
-          "line": 157,
+          "line": 159,
           "signature": "fail(id: string, token: string, code: string, retryable: boolean)",
           "access": "public",
           "decorators": [],
@@ -10431,9 +10431,23 @@
           ]
         },
         {
+          "name": "applyFence",
+          "line": 176,
+          "signature": "applyFence(fence: TaskFence, client?: PoolClient)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.finish",
+            "this.now",
+            "this.sqlite.prepare",
+            "this.pg",
+            "this.audit"
+          ]
+        },
+        {
           "name": "finish",
-          "line": 174,
-          "signature": "finish(fence: TaskFence, client?: PoolClient)",
+          "line": 187,
+          "signature": "finish(fence: TaskCompletionFence, client?: PoolClient)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -10445,7 +10459,7 @@
         },
         {
           "name": "audit",
-          "line": 183,
+          "line": 196,
           "signature": "audit(taskId: string, action: string, actorId: string, detail: Record<string, unknown>, client?: PoolClient, id: string = randomUUID())",
           "access": "private",
           "decorators": [],
@@ -10457,7 +10471,7 @@
         },
         {
           "name": "auditWith",
-          "line": 188,
+          "line": 201,
           "signature": "auditWith(query: (sql: string, args?: any[]) => Promise<any[]>, taskId: string, action: string, actorId: string, detail: Record<string, unknown>)",
           "access": "private",
           "decorators": [],
@@ -10467,7 +10481,7 @@
         },
         {
           "name": "pg",
-          "line": 192,
+          "line": 205,
           "signature": "pg(sql: string)",
           "access": "private",
           "decorators": [],
@@ -10475,7 +10489,7 @@
         },
         {
           "name": "query",
-          "line": 193,
+          "line": 206,
           "signature": "query(sql: string, args: any[] = []): Promise<any[]>",
           "access": "private",
           "decorators": [],
@@ -10486,7 +10500,7 @@
         },
         {
           "name": "one",
-          "line": 196,
+          "line": 209,
           "signature": "one(sql: string, args: any[])",
           "access": "private",
           "decorators": [],
@@ -10496,7 +10510,7 @@
         },
         {
           "name": "locked",
-          "line": 197,
+          "line": 210,
           "signature": "locked(fn: (query: (sql: string, args?: any[]) => Promise<any[]>) => Promise<T>): Promise<T>",
           "access": "private",
           "decorators": [],
@@ -10507,7 +10521,7 @@
         },
         {
           "name": "serial",
-          "line": 212,
+          "line": 225,
           "signature": "serial(fn: () => Promise<T>)",
           "access": "public",
           "decorators": [],
@@ -18403,7 +18417,7 @@
     {
       "name": "SourceCourseWorkerService",
       "file": "apps/api/src/modules/learning/source-course-worker.service.ts",
-      "line": 8,
+      "line": 13,
       "decorators": [
         {
           "name": "Injectable",
@@ -18420,14 +18434,18 @@
           "type": "StudentsService"
         },
         {
-          "name": "models",
+          "name": "chat",
           "type": "XiaojiuChatService"
+        },
+        {
+          "name": "catalog",
+          "type": "XiaojiuModelsService"
         }
       ],
       "methods": [
         {
           "name": "onApplicationBootstrap",
-          "line": 13,
+          "line": 18,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -18439,7 +18457,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 14,
+          "line": 19,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -18447,7 +18465,7 @@
         },
         {
           "name": "runNext",
-          "line": 15,
+          "line": 20,
           "signature": "runNext(): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -18456,17 +18474,56 @@
           ]
         },
         {
+          "name": "persist",
+          "line": 22,
+          "signature": "persist(task:TaskRow, change:(row:SourceCourseRecord)=>void, complete=false)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "message",
+          "line": 35,
+          "signature": "message(value:object)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "request",
+          "line": 36,
+          "signature": "request(row:SourceCourseRecord, signal:AbortSignal, system:string, message:object)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.message"
+          ]
+        },
+        {
+          "name": "validateCheckpoint",
+          "line": 41,
+          "signature": "validateCheckpoint(row:SourceCourseRecord)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
           "name": "execute",
-          "line": 16,
+          "line": 53,
           "signature": "execute()",
           "access": "private",
           "decorators": [],
           "calls": [
             "this.store.tasks.claim",
             "this.store.tasks.heartbeat",
-            "this.store.transaction",
-            "this.store.find",
-            "this.models.structured",
+            "this.persist",
+            "this.validateCheckpoint",
+            "this.catalog.resolve",
+            "this.chat.structured",
+            "this.request",
             "this.store.tasks.fail",
             "this.logger.warn"
           ]
@@ -18703,7 +18760,7 @@
     {
       "name": "SourceCourseService",
       "file": "apps/api/src/modules/learning/source-course.service.ts",
-      "line": 17,
+      "line": 18,
       "decorators": [
         {
           "name": "Injectable",
@@ -18723,7 +18780,7 @@
       "methods": [
         {
           "name": "record",
-          "line": 20,
+          "line": 21,
           "signature": "record(user:InMemoryUserAccount, courseId:string, editing=false)",
           "access": "private",
           "decorators": [],
@@ -18733,7 +18790,7 @@
         },
         {
           "name": "materials",
-          "line": 21,
+          "line": 22,
           "signature": "materials(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18744,7 +18801,7 @@
         },
         {
           "name": "addText",
-          "line": 30,
+          "line": 31,
           "signature": "addText(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18757,7 +18814,7 @@
         },
         {
           "name": "sourceStatus",
-          "line": 43,
+          "line": 44,
           "signature": "sourceStatus(row:SourceCourseRecord): SourceCourseView['sourceStatus']",
           "access": "private",
           "decorators": [],
@@ -18767,7 +18824,7 @@
         },
         {
           "name": "view",
-          "line": 46,
+          "line": 47,
           "signature": "view(row:SourceCourseRecord, provisional?:{state:string;version:number;generation:number;errorCode:string|null}, viewerId=row.ownerUserId): Promise<SourceCourseView>",
           "access": "private",
           "decorators": [],
@@ -18779,7 +18836,7 @@
         },
         {
           "name": "get",
-          "line": 60,
+          "line": 61,
           "signature": "get(user:InMemoryUserAccount, courseId:string)",
           "access": "public",
           "decorators": [],
@@ -18790,7 +18847,7 @@
         },
         {
           "name": "list",
-          "line": 61,
+          "line": 62,
           "signature": "list(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseSummary[]>",
           "access": "public",
           "decorators": [],
@@ -18802,7 +18859,7 @@
         },
         {
           "name": "create",
-          "line": 70,
+          "line": 71,
           "signature": "create(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18818,7 +18875,7 @@
         },
         {
           "name": "replay",
-          "line": 101,
+          "line": 103,
           "signature": "replay(row:SourceCourseRecord, command:{expectedRevision:number;requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -18826,7 +18883,7 @@
         },
         {
           "name": "finish",
-          "line": 106,
+          "line": 108,
           "signature": "finish(row:SourceCourseRecord, command:{requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -18834,7 +18891,7 @@
         },
         {
           "name": "edit",
-          "line": 107,
+          "line": 109,
           "signature": "edit(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18847,7 +18904,7 @@
         },
         {
           "name": "authoring",
-          "line": 116,
+          "line": 118,
           "signature": "authoring(user:InMemoryUserAccount, courseId:string): SourceCourseAuthoring",
           "access": "public",
           "decorators": [],
@@ -18857,7 +18914,7 @@
         },
         {
           "name": "editContent",
-          "line": 123,
+          "line": 125,
           "signature": "editContent(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18871,7 +18928,7 @@
         },
         {
           "name": "confirm",
-          "line": 136,
+          "line": 138,
           "signature": "confirm(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -18885,7 +18942,7 @@
         },
         {
           "name": "control",
-          "line": 143,
+          "line": 145,
           "signature": "control(user:InMemoryUserAccount, courseId:string, action:'cancel'|'retry'|'archive', input:unknown)",
           "access": "public",
           "decorators": [],
@@ -25392,37 +25449,91 @@
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseModelContext",
-      "line": 22,
+      "line": 24,
       "signature": "sourceCourseModelContext(row:SourceCourseRecord)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "checkGeneratedCourse",
-      "line": 25,
+      "line": 27,
       "signature": "checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[]): GeneratedSourceCourse"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseLesson",
-      "line": 37,
+      "line": 39,
       "signature": "sourceCourseLesson(row: SourceCourseRecord, index: number): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseAnswerKeys",
-      "line": 62,
+      "line": 64,
       "signature": "sourceCourseAnswerKeys(row: SourceCourseRecord, index:number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "ordered",
+      "line": 31,
+      "signature": "ordered(value:unknown): unknown"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "generationFingerprint",
+      "line": 34,
+      "signature": "generationFingerprint(row:SourceCourseRecord, input:SourceCourseInput)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "newCourseGeneration",
+      "line": 35,
+      "signature": "newCourseGeneration(row:SourceCourseRecord, capture:'creation'|'worker-start'): SourceCourseGenerationState"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "checkCourseOutline",
+      "line": 39,
+      "signature": "checkCourseOutline(raw:unknown, row:SourceCourseRecord)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "checkPipelineLesson",
+      "line": 48,
+      "signature": "checkPipelineLesson(raw:unknown, row:SourceCourseRecord, index:number): SourceCourseLessonContent"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "strings",
+      "line": 60,
+      "signature": "strings(value:unknown): string[]"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "checkCourseReview",
+      "line": 61,
+      "signature": "checkCourseReview(raw:unknown, row:SourceCourseRecord, index:number): CourseReviewResult"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "savedReviewPayload",
+      "line": 78,
+      "signature": "savedReviewPayload(initial:SourceCourseLessonContent, final:SourceCourseLessonContent, review:SourceCourseLessonReview)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
+      "name": "generationView",
+      "line": 80,
+      "signature": "generationView(row:SourceCourseRecord): SourceCourseGenerationView|null"
     },
     {
       "file": "apps/api/src/modules/learning/source-course.service.ts",
       "name": "materialVersion",
-      "line": 12,
+      "line": 13,
       "signature": "materialVersion(material:StudioSourceMaterial)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course.service.ts",
       "name": "assertSourceCourseAccess",
-      "line": 13,
+      "line": 14,
       "signature": "assertSourceCourseAccess(user:InMemoryUserAccount, row:SourceCourseRecord, students:StudentsService, editing=false)"
     },
     {
@@ -25620,67 +25731,67 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "add",
-      "line": 13,
+      "line": 14,
       "signature": "add(result: Selection, store: InMemoryStoreService, name: string, predicate: (row: Row) => boolean)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "ids",
-      "line": 16,
+      "line": 17,
       "signature": "ids(result: Selection, ...names: string[])"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "studentRecords",
-      "line": 22,
+      "line": 23,
       "signature": "studentRecords(store: InMemoryStoreService, studentId: string): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "accountRecords",
-      "line": 55,
+      "line": 56,
       "signature": "accountRecords(store: InMemoryStoreService, actorId: string, principal: string): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 76,
+      "line": 77,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 83,
+      "line": 84,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 90,
+      "line": 91,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 93,
+      "line": 94,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 101,
+      "line": 102,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 106,
+      "line": 107,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 130,
+      "line": 131,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -30819,7 +30930,7 @@
         {
           "name": "meta",
           "optional": false,
-          "type": "{\n    requestId: string;\n    timestamp: string;\n  }"
+          "type": "{\r\n    requestId: string;\r\n    timestamp: string;\r\n  }"
         }
       ]
     },
@@ -32619,9 +32730,155 @@
       "fields": []
     },
     {
-      "name": "CourseSourceSnapshot",
+      "name": "SourceCourseReviewField",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 15,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "SourceCourseReviewIssue",
       "file": "packages/contracts/src/source-course.ts",
       "line": 16,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "field",
+          "optional": false,
+          "type": "SourceCourseReviewField"
+        },
+        {
+          "name": "questionIndex",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "quote",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "detail",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseLessonReview",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 17,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "decision",
+          "optional": false,
+          "type": "'pass'|'revised'|'uncertain'"
+        },
+        {
+          "name": "issues",
+          "optional": false,
+          "type": "SourceCourseReviewIssue[]"
+        },
+        {
+          "name": "at",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelName",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "inputFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "outputFingerprint",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseGenerationView",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 18,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "version",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "inputCapture",
+          "optional": false,
+          "type": "'creation'|'worker-start'"
+        },
+        {
+          "name": "stage",
+          "optional": false,
+          "type": "'planning'|'writing'|'reviewing'|'integrating'|'completed'"
+        },
+        {
+          "name": "plannedLessons",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "draftedLessons",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "reviewedLessons",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "scopeNote",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "uncoveredSourceKeys",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "modelName",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "reviewCurrent",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "reviews",
+          "optional": false,
+          "type": "Array<{ lessonIndex: number; lessonTitle: string; decision: SourceCourseLessonReview['decision']; issueCount: number }>"
+        }
+      ]
+    },
+    {
+      "name": "CourseSourceSnapshot",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32684,7 +32941,7 @@
     {
       "name": "SourceCourseInput",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 18,
+      "line": 25,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32722,7 +32979,7 @@
     {
       "name": "SourceCourseSummary",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 20,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32800,14 +33057,14 @@
     {
       "name": "SourceCourseView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 23,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseAuthoring",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 30,
+      "line": 39,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -32834,6 +33091,21 @@
           "name": "contentReview",
           "optional": false,
           "type": "'pending'"
+        },
+        {
+          "name": "generationInput",
+          "optional": false,
+          "type": "SourceCourseInput | null"
+        },
+        {
+          "name": "generationReviews",
+          "optional": false,
+          "type": "Array<{ lessonIndex: number; lessonTitle: string; review: SourceCourseLessonReview }>"
+        },
+        {
+          "name": "reviewCurrent",
+          "optional": false,
+          "type": "boolean"
         }
       ]
     },
@@ -34804,6 +35076,7 @@
   ],
   "tests": [
     "apps/api/src/app.integration.test.ts",
+    "apps/api/src/common/validation.test.ts",
     "apps/api/src/durability.integration.test.ts",
     "apps/api/src/infrastructure/backup.integration.test.ts",
     "apps/api/src/infrastructure/domain-database.test.ts",
@@ -34816,6 +35089,7 @@
     "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",
     "apps/api/src/modules/ai/codex-search.service.test.ts",
     "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+    "apps/api/src/modules/ai/openai-compatibility.test.ts",
     "apps/api/src/modules/ai/speech.service.test.ts",
     "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
     "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T21:14:11.114Z",
+  "passed": true,
+  "contentApproval": "pending-human-review",
+  "scope": "One real default-model staged source-course generation and per-lesson checks, on isolated anonymous text. Not a content-review or reliability study.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "durationMs": 382978,
+      "errorCode": null
+    }
+  ],
+  "providerCalls": 7,
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "generation": {
+    "version": "source-course-v2",
+    "inputCapture": "creation",
+    "stage": "completed",
+    "plannedLessons": 2,
+    "draftedLessons": 2,
+    "reviewedLessons": 2,
+    "scopeNote": "This outline covers only the single supplied source, src-1-1, and only the two requested topics: equivalent fractions and adding fractions with unlike denominators. It does not extend to simplifying, subtracting, multiplying, dividing, mixed numbers, negative fractions, or formal assessment. The planned sessions are lesson routes, not complete scripts or answer keys, and neither generation nor AI review implies teacher approval, full curriculum coverage, or formal measurement of ability.",
+    "uncoveredSourceKeys": [],
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "reviewCurrent": true,
+    "reviews": [
+      {
+        "lessonIndex": 0,
+        "lessonTitle": "Equivalent Fractions Name the Same Quantity",
+        "decision": "revised",
+        "issueCount": 1
+      },
+      {
+        "lessonIndex": 1,
+        "lessonTitle": "Adding 1/2 and 1/3 with Unlike Denominators",
+        "decision": "pass",
+        "issueCount": 0
+      }
+    ]
+  },
+  "lessons": 2,
+  "questions": 7,
+  "sourceCharacters": 665,
+  "sourceSha256": "f413e777350822a9177fa74ec39be2bc0429b7aa0201398affca99ee49fa8978",
+  "englishTitles": [
+    "Equivalent Fractions Name the Same Quantity",
+    "Adding 1/2 and 1/3 with Unlike Denominators"
+  ],
+  "courseFingerprint": "2be1c11863734bc09a44338b7060a7d80e21182105bd8ce753f606b0716ac6e4",
+  "privateAnswersStripped": true,
+  "formalMeasurementEligible": false,
+  "dataDirectory": "data/qa/source-course-pipeline-live-1792790051114"
+}

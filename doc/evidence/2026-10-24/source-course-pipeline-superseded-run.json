@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "scope": "Superseded local full test run during metadata development; retained as failure evidence. Not the final validation.",
+  "command": "npm test",
+  "localStart": "2026-10-24T05:37:28+08:00",
+  "durationSeconds": 297.98,
+  "passed": false,
+  "testsPassed": 832,
+  "testsFailed": 1,
+  "testsSkipped": 6,
+  "filesPassed": 91,
+  "filesFailed": 1,
+  "filesSkipped": 1,
+  "failure": "source-course integration stage timestamp assertion received undefined",
+  "cause": "The source assertion was added during the run after its API build; integration tests load compiled dist. The subsequent complete rerun rebuilds final metadata code before testing.",
+  "resolutionStatus": "final rebuilt full run passed",
+  "finalReceipt": "source-course-pipeline-acceptance.json"
+}

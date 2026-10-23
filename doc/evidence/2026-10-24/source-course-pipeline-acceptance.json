@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T22:19:58.123690+00:00",
+  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+  "passed": true,
+  "status": "verified-scoped-delivery",
+  "scope": "Recoverable per-lesson source-course generation, private initial input/manuscript, AI checks, isolated persistence and browser routes. Not complete product parity, teacher approval or calibrated measurement.",
+  "specificationCommit": "45a99cc",
+  "checkpointFoundationCommit": "11d829c",
+  "backendFull": {
+    "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+    "command": "npm run test --workspace @study-agent/api -- --reporter=default --reporter=json --outputFile=../../data/qa/source-course-pipeline-api-zod4.json",
+    "testsPassed": 838,
+    "testsSkipped": 6,
+    "testsFailed": 0,
+    "startTime": 1792792988884,
+    "filesPassed": 94,
+    "filesSkipped": 1,
+    "durationSeconds": 272.39,
+    "reportSha256": "d1ef69fba4235847efe629a4b69a27462304f639ba650c209dcc212d87aa5a38"
+  },
+  "browserFull": {
+    "startTime": "2026-10-23T22:03:08.063Z",
+    "duration": 230607.78900000002,
+    "expected": 43,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+    "command": "node scripts/qa/run-source-course-browser.cjs --skip-build --full",
+    "model": "explicit deterministic fixture",
+    "environment": "isolated SQLite/API and production-mode QA Web; production family data unused"
+  },
+  "checks": [
+    "Atomic SQLite checkpoint reopen, lost/expired/cancelled lease rejection and transaction conflict rollback.",
+    "Per-course outline, each draft and each review saved privately; completed work reused after failure/restart.",
+    "Six lessons and thirteen structured stage calls; original Auto model pinned after default changes.",
+    "Canonical value identities tolerate nested JSON object key reordering, retaining array order.",
+    "First input, first manuscript, per-stage timestamps and content digests retained.",
+    "Field/question repairs reapplied and revalidated; unchanged repairs and fabricated issue excerpts rejected.",
+    "Internal source identifiers cannot become teaching prose; incompatible cache cannot restart silently.",
+    "Stale workers cannot replace new results; guardian revocation, account deletion and cancelled generation refuse publishing.",
+    "Public/portable outputs omit private checkpoint drafts and review issue excerpts. Author answer-exposure rules remain in force.",
+    "Actual progress and failure counts survive reload/retry; uncertain/revised reviews, initial manuscript and stale review identity appear in UI."
+  ],
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "apiAndWebTypes": true,
+    "productionDaemonWeb": true
+  },
+  "realModel": {
+    "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+    "default": "DeepSeek V4.1 Flash",
+    "generationReceipt": "source-course-pipeline-live-zod4.json",
+    "generationResult": "source-course-pipeline-live-zod4-result.json",
+    "providerCallDetails": "source-course-pipeline-live-zod4-calls.json",
+    "lessons": 2,
+    "questions": 6,
+    "durationMs": 86381,
+    "structuredStages": 5,
+    "cliAttempts": 5,
+    "validationFailures": 0,
+    "transportFailures": 0,
+    "repairProbeReceipt": "source-course-pipeline-repair-zod4.json",
+    "repairProbeResult": "source-course-pipeline-repair-zod4-result.json",
+    "repairProbeDurationMs": 22660,
+    "repairProbeCliAttempts": 1,
+    "repairProbeScope": "Independent structured-provider probe with deliberate false concept, not full worker generation.",
+    "repairChangedFields": [
+      "concept"
+    ],
+    "repairPreservedQuestions": true,
+    "manualInspection": "Checked 3/5=6/10, 2/5=4/10, 1/2+1/3=5/6, 1/3=4/12, 1/4=3/12, 1/4+1/6=5/12, six unique-answer option sets, hints and source excerpts; no internal-key narration found. Finite sample remains pending human content review."
+  },
+  "supersededEvidence": {
+    "initialDiagnosticReceipt": "source-course-pipeline-first-live.json",
+    "initialDiagnosticResult": "source-course-pipeline-first-live-result.json",
+    "initialDiagnosticLimit": "Old full-lesson review response; 382978ms, seven CLI attempts, internal source-key narration and practice-count inconsistency. Two unsuccessful raw attempts were not classified. Technical passed flag is not final acceptance.",
+    "localFailure": "source-course-pipeline-superseded-run.json",
+    "postgresFailure": "source-course-pipeline-ci-postgres-failure.json",
+    "dependencyFailure": "source-course-pipeline-ci-dependency-failure.json"
+  },
+  "visualReview": {
+    "manuallyOpened": [
+      "source-course-pipeline-progress.png",
+      "source-course-pipeline-review-1440.png",
+      "source-course-pipeline-review-390.png",
+      "source-course-pipeline-review-768.png"
+    ],
+    "viewportsExercised": [
+      1440,
+      768,
+      390
+    ],
+    "pixelParityClaim": false,
+    "screenshotsCodeRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9"
+  },
+  "screenshots": {
+    "source-course-pipeline-failed.png": "98f36b4f8b866dad23839023d766e75c38a92f072fc528a4c49c2fa654986fa2",
+    "source-course-pipeline-progress.png": "a3ca22e437e96a7218e744d8c73743d7138af3b46724c7e2e8a9f79ebeb69ae8",
+    "source-course-pipeline-review-1440.png": "b56d9f80553685b0b75a320d7c836bcdf9334d00fcce57a6b9e50e6c696dc5e4",
+    "source-course-pipeline-review-390.png": "7733ef002c7efebd763d7ba47ceb8c527b137fd34fa905fc9013a5c56997fd2a",
+    "source-course-pipeline-review-768.png": "5beb152ffe52901b995443de26f8bd39d6d655415fe181e60cc8bad28382bf97"
+  },
+  "ci": {
+    "status": "completed",
+    "runId": 40031132365,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40031132365",
+    "verifiedCodeCommit": "c2650eb7fbe334206125ca98ff180f07356e11a9",
+    "postgres": "success",
+    "application": "success",
+    "browser": "success",
+    "receipt": "source-course-pipeline-ci.json"
+  },
+  "humanReviewStatus": "pending",
+  "limits": [
+    "Input still limited to ten selected pages/sections, 12000 source characters, 18000 serialized source-context characters and one to six lessons. Long-material chunking remains unfinished.",
+    "AI checking and author confirmation do not grant teacher approval or formal measurement eligibility.",
+    "No new physical-device study, real delayed student study, full textbook coverage or complete pixel parity claimed.",
+    "Runtime image generation, broader package lifecycle and unreferenced PDF byte collection remain in the full goal."
+  ],
+  "previousBackendFull": {
+    "command": "npm run test --workspace @study-agent/api -- --reporter=default --reporter=json --outputFile=../../data/qa/source-course-pipeline-api-final.json",
+    "testsPassed": 833,
+    "testsSkipped": 6,
+    "testsFailed": 0,
+    "startTime": 1792791819443,
+    "filesPassed": 92,
+    "filesSkipped": 1,
+    "durationSeconds": 274.63,
+    "reportSha256": "a65ffd3d3fc6cd998cfbda405d47f868a03c6f96b7239a82b3a8a0f9aa429564",
+    "sourceRevision": "ce8b1c28bc212ea9af4d2670d62ee36bd2bad53f"
+  },
+  "previousBrowserFull": {
+    "startTime": "2026-10-23T21:37:28.823Z",
+    "duration": 251943.883,
+    "expected": 43,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "node scripts/qa/run-source-course-browser.cjs --skip-build --full",
+    "model": "explicit deterministic fixture",
+    "environment": "isolated SQLite/API and production-mode QA Web; production family data unused",
+    "sourceRevision": "ce8b1c28bc212ea9af4d2670d62ee36bd2bad53f"
+  },
+  "previousRealModel": {
+    "default": "DeepSeek V4.1 Flash",
+    "generationReceipt": "source-course-pipeline-live.json",
+    "generationResult": "source-course-pipeline-live-result.json",
+    "providerCallDetails": "source-course-pipeline-live-calls.json",
+    "lessons": 2,
+    "questions": 6,
+    "durationMs": 127717,
+    "structuredStages": 5,
+    "cliAttempts": 7,
+    "validationRetries": [
+      {
+        "stage": "outline",
+        "field": "lessons.0.focus",
+        "reason": "too_big"
+      },
+      {
+        "stage": "lesson.0",
+        "field": "takeaways.3",
+        "reason": "too_big"
+      }
+    ],
+    "transportFailures": 0,
+    "repairProbeReceipt": "source-course-pipeline-repair-live.json",
+    "repairProbeResult": "source-course-pipeline-repair-live-result.json",
+    "repairProbeDurationMs": 7710,
+    "repairProbeCliAttempts": 1,
+    "repairProbeScope": "Independent structured-provider probe with deliberate false concept, not full worker generation.",
+    "manualInspection": "Checked equations, unique option answers, hints, source excerpts and removal of internal-key narration in this finite sample; content remains pending human review.",
+    "implementationBoundary": "Real samples used final prompts and changed-field review schema, before private stage timestamp/digest metadata was added. Final metadata has API and later CI verification."
+  },
+  "implementationCommit": "ce8b1c2",
+  "postgresFixCommit": "1d4a428",
+  "dependencyFixCommit": "c2650eb",
+  "dependencies": {
+    "zod": "4.6.7",
+    "openaiCompatibilitySdk": "7.43.0",
+    "defaultTextModelUnchanged": true,
+    "auditReceipt": "source-course-pipeline-dependency-audit.json",
+    "vulnerabilities": 0,
+    "checks": [
+      "Oversized teaching array rejected before any element read.",
+      "Configured SDK chat JSON, binary speech and sanitized failures verified through intercepted transport; no provider-connectivity claim.",
+      "String-keyed records and editor error paths migrated; one deduplicated Zod copy retained."
+    ]
+  },
+  "runtimeReceipt": "source-course-pipeline-runtime.json",
+  "runtimeWebBuildId": "X3txm0a_Voz0SU-TL4COZ",
+  "wholeProductGoal": "active-incomplete"
+}

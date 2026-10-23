@@ -1,0 +1,251 @@
+{
+  "sourceText": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts. Equivalent fractions name the same quantity: multiplying numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4. To add 1/2 and 1/3, represent both quantities with sixths: 3/6 + 2/6 = 5/6. The denominator names the size of the unit; adding denominators does not combine equal-sized units correctly. The result 5/6 is less than one whole and greater than either addend, which provides a useful check for these positive fractions.",
+  "initial": {
+    "title": "Fractions as Equal Parts and Equivalent Names",
+    "objective": "Understand that a fraction names equal parts of one whole, identify the numerator and denominator, and recognize that equivalent fractions name the same quantity.",
+    "introduction": "A fraction names equal parts of one whole. This lesson shows how to read a fraction, identify its numerator and denominator, and recognize different names for the same quantity.",
+    "concept": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole, while the numerator 1 counts the selected parts. So 1/3 means one selected part when a whole is divided into three equal parts. Equivalent fractions name the same quantity even when the number of parts differs. Multiplying the numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4. Also, 1/2 = 3/4 because the numerator and denominator both grow.",
+    "notes": [
+      "Denominator: number of equal parts in one whole",
+      "Numerator: number of selected equal parts",
+      "Equivalent fractions name the same quantity",
+      "Multiplying top and bottom by the same positive integer keeps value"
+    ],
+    "example": {
+      "scenario": "One whole rectangle is divided into equal parts. Use the parts to explain why 1/2 and 2/4 can name the same shaded amount.",
+      "steps": [
+        "Start with one whole divided into 2 equal parts; select 1 part, so the fraction is 1/2.",
+        "Split each half into 2 equal parts. The whole now has 4 equal parts.",
+        "The selected amount covers 2 of those 4 parts, so it is 2/4.",
+        "Compare the two names: 1/2 and 2/4 describe the same quantity."
+      ],
+      "board": [
+        "One whole: split into equal parts",
+        "1/2: 1 selected of 2 equal parts",
+        "2/4: 2 selected of 4 equal parts",
+        "Same amount: 1/2 = 2/4"
+      ],
+      "conclusion": "The two fractions name the same quantity. Multiplying numerator and denominator by 2 changed the partition, not the selected amount."
+    },
+    "misconception": {
+      "claim": "If the numerator and denominator both change, the fraction must name a different quantity.",
+      "correction": "Multiplying numerator and denominator by the same positive integer does not change the quantity. It changes the partition, not the amount selected. So 1/2 becomes 2/4, and both name the same quantity.",
+      "board": [
+        "Changing parts is not always changing amount",
+        "Same positive factor on top and bottom",
+        "1/2 and 2/4 name the same quantity"
+      ]
+    },
+    "transfer": "Try 1/3 = 2/6. Split each third into 2 equal parts; the whole now has 6 equal parts. The selected amount covers 2 of them, so 1/3 = 2/6. The partition changed, but the quantity did not.",
+    "summary": "A fraction names equal parts of one whole. The denominator counts equal parts; the numerator counts selected parts. Multiplying both by the same positive integer gives an equivalent fraction, such as 1/2 = 2/4.",
+    "takeaways": [
+      "A fraction names equal parts of one whole.",
+      "The denominator counts the equal parts in one whole.",
+      "The numerator counts selected equal parts.",
+      "Equivalent fractions name the same quantity."
+    ],
+    "citations": [
+      {
+        "sourceKey": "src-1-1",
+        "quote": "A fraction describes a number of equal parts of the same whole."
+      },
+      {
+        "sourceKey": "src-1-1",
+        "quote": "In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts."
+      },
+      {
+        "sourceKey": "src-1-1",
+        "quote": "Equivalent fractions name the same quantity"
+      },
+      {
+        "sourceKey": "src-1-1",
+        "quote": "For example, 1/2 = 2/4."
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "In the fraction 1/3, what does the denominator 3 count?",
+        "options": [
+          "The selected parts",
+          "The equal parts in one whole",
+          "The equivalent fractions",
+          "The whole numbers"
+        ],
+        "answer": 1,
+        "explanation": "The denominator counts the equal parts in one whole. In 1/3, the whole is divided into 3 equal parts, and the numerator 1 counts the selected part.",
+        "hints": [
+          "Look at the number below the fraction line.",
+          "The denominator counts the equal parts in one whole."
+        ]
+      },
+      {
+        "prompt": "Which fraction is equivalent to 1/2?",
+        "options": [
+          "2/4",
+          "1/4",
+          "2/3",
+          "3/2"
+        ],
+        "answer": 0,
+        "explanation": "Multiplying numerator and denominator by the same positive integer keeps the quantity the same. Thus 1/2 = 2/4.",
+        "hints": [
+          "Use the same positive factor on the numerator and denominator.",
+          "The source gives 1/2 = 2/4."
+        ]
+      },
+      {
+        "prompt": "What happens when you multiply the numerator and denominator of 1/2 by 2?",
+        "options": [
+          "The quantity changes to a different amount.",
+          "The quantity changes only because the denominator changes.",
+          "The partition changes, but the quantity stays the same; 2/4 = 1/2.",
+          "The fraction becomes undefined."
+        ],
+        "answer": 2,
+        "explanation": "Multiplying both parts by 2 changes the partition, not the quantity. The result is 2/4, which names the same amount as 1/2.",
+        "hints": [
+          "Think about splitting each part into smaller equal parts.",
+          "The selected amount stays the same even though there are more parts."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "decision": "revised",
+    "issues": [
+      {
+        "field": "concept",
+        "questionIndex": null,
+        "quote": "Also, 1/2 = 3/4 because the numerator and denominator both grow.",
+        "detail": "This statement is false: 3/4 is greater than 1/2. Increasing both terms does not preserve a fraction's quantity unless both are multiplied by the same positive integer. For example, multiplying both terms of 1/2 by 2 gives 2/4, which equals 1/2."
+      }
+    ],
+    "changes": {
+      "title": null,
+      "objective": null,
+      "introduction": null,
+      "concept": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole, while the numerator 1 counts the selected parts. So 1/3 means one selected part when a whole is divided into three equal parts. Equivalent fractions name the same quantity even when the number of parts differs. Multiplying the numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4. The numerator and denominator must be multiplied by the same positive factor; merely increasing both numbers does not produce an equivalent fraction.",
+      "notes": null,
+      "example": null,
+      "misconception": null,
+      "transfer": null,
+      "summary": null,
+      "takeaways": null,
+      "citations": null,
+      "questions": null
+    },
+    "questionChanges": [],
+    "lesson": {
+      "title": "Fractions as Equal Parts and Equivalent Names",
+      "objective": "Understand that a fraction names equal parts of one whole, identify the numerator and denominator, and recognize that equivalent fractions name the same quantity.",
+      "introduction": "A fraction names equal parts of one whole. This lesson shows how to read a fraction, identify its numerator and denominator, and recognize different names for the same quantity.",
+      "concept": "A fraction describes a number of equal parts of the same whole. In 1/3, the denominator 3 counts the equal parts in one whole, while the numerator 1 counts the selected parts. So 1/3 means one selected part when a whole is divided into three equal parts. Equivalent fractions name the same quantity even when the number of parts differs. Multiplying the numerator and denominator by the same positive integer changes the partition, not the quantity. For example, 1/2 = 2/4. The numerator and denominator must be multiplied by the same positive factor; merely increasing both numbers does not produce an equivalent fraction.",
+      "notes": [
+        "Denominator: number of equal parts in one whole",
+        "Numerator: number of selected equal parts",
+        "Equivalent fractions name the same quantity",
+        "Multiplying top and bottom by the same positive integer keeps value"
+      ],
+      "example": {
+        "scenario": "One whole rectangle is divided into equal parts. Use the parts to explain why 1/2 and 2/4 can name the same shaded amount.",
+        "steps": [
+          "Start with one whole divided into 2 equal parts; select 1 part, so the fraction is 1/2.",
+          "Split each half into 2 equal parts. The whole now has 4 equal parts.",
+          "The selected amount covers 2 of those 4 parts, so it is 2/4.",
+          "Compare the two names: 1/2 and 2/4 describe the same quantity."
+        ],
+        "board": [
+          "One whole: split into equal parts",
+          "1/2: 1 selected of 2 equal parts",
+          "2/4: 2 selected of 4 equal parts",
+          "Same amount: 1/2 = 2/4"
+        ],
+        "conclusion": "The two fractions name the same quantity. Multiplying numerator and denominator by 2 changed the partition, not the selected amount."
+      },
+      "misconception": {
+        "claim": "If the numerator and denominator both change, the fraction must name a different quantity.",
+        "correction": "Multiplying numerator and denominator by the same positive integer does not change the quantity. It changes the partition, not the amount selected. So 1/2 becomes 2/4, and both name the same quantity.",
+        "board": [
+          "Changing parts is not always changing amount",
+          "Same positive factor on top and bottom",
+          "1/2 and 2/4 name the same quantity"
+        ]
+      },
+      "transfer": "Try 1/3 = 2/6. Split each third into 2 equal parts; the whole now has 6 equal parts. The selected amount covers 2 of them, so 1/3 = 2/6. The partition changed, but the quantity did not.",
+      "summary": "A fraction names equal parts of one whole. The denominator counts equal parts; the numerator counts selected parts. Multiplying both by the same positive integer gives an equivalent fraction, such as 1/2 = 2/4.",
+      "takeaways": [
+        "A fraction names equal parts of one whole.",
+        "The denominator counts the equal parts in one whole.",
+        "The numerator counts selected equal parts.",
+        "Equivalent fractions name the same quantity."
+      ],
+      "citations": [
+        {
+          "sourceKey": "src-1-1",
+          "quote": "A fraction describes a number of equal parts of the same whole."
+        },
+        {
+          "sourceKey": "src-1-1",
+          "quote": "In 1/3, the denominator 3 counts the equal parts in one whole and the numerator 1 counts the selected parts."
+        },
+        {
+          "sourceKey": "src-1-1",
+          "quote": "Equivalent fractions name the same quantity"
+        },
+        {
+          "sourceKey": "src-1-1",
+          "quote": "For example, 1/2 = 2/4."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "In the fraction 1/3, what does the denominator 3 count?",
+          "options": [
+            "The selected parts",
+            "The equal parts in one whole",
+            "The equivalent fractions",
+            "The whole numbers"
+          ],
+          "answer": 1,
+          "explanation": "The denominator counts the equal parts in one whole. In 1/3, the whole is divided into 3 equal parts, and the numerator 1 counts the selected part.",
+          "hints": [
+            "Look at the number below the fraction line.",
+            "The denominator counts the equal parts in one whole."
+          ]
+        },
+        {
+          "prompt": "Which fraction is equivalent to 1/2?",
+          "options": [
+            "2/4",
+            "1/4",
+            "2/3",
+            "3/2"
+          ],
+          "answer": 0,
+          "explanation": "Multiplying numerator and denominator by the same positive integer keeps the quantity the same. Thus 1/2 = 2/4.",
+          "hints": [
+            "Use the same positive factor on the numerator and denominator.",
+            "The source gives 1/2 = 2/4."
+          ]
+        },
+        {
+          "prompt": "What happens when you multiply the numerator and denominator of 1/2 by 2?",
+          "options": [
+            "The quantity changes to a different amount.",
+            "The quantity changes only because the denominator changes.",
+            "The partition changes, but the quantity stays the same; 2/4 = 1/2.",
+            "The fraction becomes undefined."
+          ],
+          "answer": 2,
+          "explanation": "Multiplying both parts by 2 changes the partition, not the quantity. The result is 2/4, which names the same amount as 1/2.",
+          "hints": [
+            "Think about splitting each part into smaller equal parts.",
+            "The selected amount stays the same even though there are more parts."
+          ]
+        }
+      ]
+    },
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash"
+  }
+}

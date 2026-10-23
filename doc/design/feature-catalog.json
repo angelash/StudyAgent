@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "84911bc2098127605d300d289703d3c5c96c17a3",
+  "sourceRevision": "c2650eb7fbe334206125ca98ff180f07356e11a9",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -5609,8 +5609,8 @@
             "/studio/source-courses"
           ],
           "inputs": "授权来源页/段与版本、目标、source/zh-CN/en、时间预算、模型、可选已确认知识目标、修订号和请求键",
-          "implementation": "成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务调用统一CLI结构化生成1至6课；核对短引用确实出现在选中原文；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留原始稿；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。",
-          "outputs": "可恢复资料课程、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口",
+          "implementation": "成人无需儿童档案可存文字/PDF；冻结所选原文，最多10页/段及12000原文字符，序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务冻结初始输入并固定实际模型，先规划1至6课与明确来源缺口，再逐课编写、逐课独立AI复核；以不结束租约的原子检查点保存路线、初稿与复核，失败/重启只补未完成阶段；复核按字段或单题应用修订并重新验证，uncertain仍需人工核查；核对短引用确实出现在选中原文，拒绝内部来源键混入讲解；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留初始稿与生成输入、时间和摘要，人工改稿后旧复核标明针对旧版；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。",
+          "outputs": "可恢复分阶段资料课程、实际进度/安全复核概况、私有首次稿对照、原始目标溯源、原文快照、蓝图审阅、实际课堂/私有练习、来源对照与课程库入口",
           "collections": [
             "sourceCourses",
             "studioSourceMaterials",
@@ -5721,52 +5721,52 @@
             {
               "name": "SourceCourseService.materials",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 21
+              "line": 22
             },
             {
               "name": "SourceCourseService.addText",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 30
+              "line": 31
             },
             {
               "name": "SourceCourseService.list",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 61
+              "line": 62
             },
             {
               "name": "SourceCourseService.create",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 70
+              "line": 71
             },
             {
               "name": "SourceCourseService.get",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 60
+              "line": 61
             },
             {
               "name": "SourceCourseService.edit",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 107
+              "line": 109
             },
             {
               "name": "SourceCourseService.authoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 116
+              "line": 118
             },
             {
               "name": "SourceCourseService.editContent",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 123
+              "line": 125
             },
             {
               "name": "SourceCourseService.confirm",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 136
+              "line": 138
             },
             {
               "name": "SourceCourseService.control",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 143
+              "line": 145
             }
           ],
           "sourceFiles": [
@@ -5774,9 +5774,12 @@
             "apps/api/src/modules/learning/source-course.service.ts",
             "apps/api/src/modules/learning/source-course-content.ts",
             "apps/api/src/modules/learning/source-course-worker.service.ts",
+            "apps/api/src/modules/learning/source-course-pipeline.ts",
             "apps/api/src/modules/learning/source-course.integration.test.ts",
             "apps/web/app/studio/source-courses/workbench.tsx",
             "apps/web/app/studio/source-courses/content-editor.tsx",
+            "apps/web/app/studio/source-courses/generation-panel.tsx",
+            "apps/web/app/studio/source-courses/original-manuscript.tsx",
             "apps/web/app/studio/source-courses/source-courses.css",
             "apps/api/src/common/http-body.ts",
             "scripts/qa/source-course-fixture.cjs",

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "at": "2026-10-23T21:34:35.711Z",
+  "passed": true,
+  "contentApproval": "pending-human-review",
+  "scope": "One real default-model staged source-course generation and per-lesson checks, on isolated anonymous text. Not a content-review or reliability study.",
+  "dataDirectory": "data/qa/source-course-pipeline-live-1792791275710-67760",
+  "artifacts": {
+    "receipt": "data/qa/source-course-pipeline-live-1792791275710-67760/receipt.json",
+    "result": "data/qa/source-course-pipeline-live-1792791275710-67760/result.json",
+    "course": "data/qa/source-course-pipeline-live-1792791275710-67760/course.json",
+    "stages": "data/qa/source-course-pipeline-live-1792791275710-67760/stages.jsonl",
+    "raw": "data/qa/source-course-pipeline-live-1792791275710-67760/raw.jsonl",
+    "calls": "data/qa/source-course-pipeline-live-1792791275710-67760/calls.jsonl"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "durationMs": 127717,
+      "errorCode": null
+    }
+  ],
+  "providerCalls": 7,
+  "stageCalls": 5,
+  "validationFailures": [
+    {
+      "stageCall": 1,
+      "stage": "outline",
+      "lessonIndex": null,
+      "providerCall": 1,
+      "code": "validation_failed",
+      "issues": [
+        {
+          "path": [
+            "lessons",
+            0,
+            "focus"
+          ],
+          "code": "too_big"
+        }
+      ]
+    },
+    {
+      "stageCall": 2,
+      "stage": "lesson",
+      "lessonIndex": 0,
+      "providerCall": 3,
+      "code": "validation_failed",
+      "issues": [
+        {
+          "path": [
+            "takeaways",
+            3
+          ],
+          "code": "too_big"
+        }
+      ]
+    }
+  ],
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "generation": {
+    "version": "source-course-v2",
+    "inputCapture": "creation",
+    "stage": "completed",
+    "plannedLessons": 2,
+    "draftedLessons": 2,
+    "reviewedLessons": 2,
+    "scopeNote": "Covers fraction meaning, numerator and denominator roles, equivalent fractions, and addition of 1/2 and 1/3 using sixths. Does not cover negative fractions, mixed numbers, subtraction, multiplication, division, or simplifying results.",
+    "uncoveredSourceKeys": [],
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "reviewCurrent": true,
+    "reviews": [
+      {
+        "lessonIndex": 0,
+        "lessonTitle": "Fractions as Equal Parts and Equivalent Names",
+        "decision": "pass",
+        "issueCount": 0
+      },
+      {
+        "lessonIndex": 1,
+        "lessonTitle": "Adding Fractions with Unlike Denominators",
+        "decision": "pass",
+        "issueCount": 0
+      }
+    ]
+  },
+  "lessons": 2,
+  "questions": 6,
+  "sourceCharacters": 665,
+  "sourceSha256": "f413e777350822a9177fa74ec39be2bc0429b7aa0201398affca99ee49fa8978",
+  "englishTitles": [
+    "Fractions as Equal Parts and Equivalent Names",
+    "Adding Fractions with Unlike Denominators"
+  ],
+  "courseFingerprint": "baa8d5850b4ba2a2935b05823aa29e23cb2904dc981fc79edc441379254b2e10",
+  "privateAnswersStripped": true,
+  "formalMeasurementEligible": false
+}
