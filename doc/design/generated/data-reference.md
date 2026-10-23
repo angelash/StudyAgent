@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`a004859578227acac4f833387119e9bc8488de7b`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -247,6 +247,11 @@
 - `AIQualityOverview`：[packages/contracts/src/index.ts:696](../../../packages/contracts/src/index.ts#L696)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `AIAnalysisResponse`：[packages/contracts/src/index.ts:706](../../../packages/contracts/src/index.ts#L706)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `AssistantSession`：[packages/contracts/src/index.ts:720](../../../packages/contracts/src/index.ts#L720)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/learning-home.ts
+
+- `LearningHomeAction`：[packages/contracts/src/learning-home.ts:4](../../../packages/contracts/src/learning-home.ts#L4)；字段：`id`、`kind`、`title`、`reason`、`href`、`label`、`estimatedMinutes`、`saved`。
+- `LearningHome`：[packages/contracts/src/learning-home.ts:13](../../../packages/contracts/src/learning-home.ts#L13)；字段：`generatedAt`、`day`、`subject`、`actor`、`children`、`selected`、`scope`、`primary`、`secondary`、`memory`、`counts`、`notice`。
 
 ### packages/contracts/src/learning.ts
 

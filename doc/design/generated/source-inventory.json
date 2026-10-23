@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a004859578227acac4f833387119e9bc8488de7b",
+  "sourceRevision": "3b67695853276ab06f33923dce75ad72bb72db87",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 254,
-    "activeHttpRoutes": 241,
-    "activeBusinessHttpRoutes": 233,
+    "declaredHttpRoutes": 255,
+    "activeHttpRoutes": 242,
+    "activeBusinessHttpRoutes": 234,
     "retiredHttpRoutes": 8,
     "activeModules": 17,
-    "activeControllers": 22,
-    "apiClasses": 97,
-    "apiFunctions": 223,
+    "activeControllers": 23,
+    "apiClasses": 99,
+    "apiFunctions": 224,
     "domainCollections": 80,
-    "contractTypes": 204,
-    "webPages": 23,
+    "contractTypes": 206,
+    "webPages": 24,
     "webRouteHandlers": 1,
-    "apiTestFiles": 87,
-    "browserTestFiles": 4
+    "apiTestFiles": 89,
+    "browserTestFiles": 5
   },
   "modules": [
     {
@@ -207,13 +207,15 @@
         "LearningController",
         "RetiredLearningController",
         "NotebookController",
-        "ClassroomController"
+        "ClassroomController",
+        "LearningHomeController"
       ],
       "providers": [
         "LearningService",
         "NotebookService",
         "StudioIntegrationService",
-        "ClassroomService"
+        "ClassroomService",
+        "LearningHomeService"
       ],
       "exports": [
         "LearningService",
@@ -4178,6 +4180,35 @@
       ],
       "calls": [
         "this.classroom.narration"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/home",
+      "controller": "LearningHomeController",
+      "method": "get",
+      "file": "apps/api/src/modules/learning/learning-home.controller.ts",
+      "line": 12,
+      "signature": "get(@Req() req: AuthenticatedRequest, @Query() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "home",
+          "type": "LearningHomeService"
+        }
+      ],
+      "calls": [
+        "this.home.home"
       ],
       "active": true,
       "retired": false
@@ -15628,6 +15659,107 @@
       ]
     },
     {
+      "name": "LearningHomeController",
+      "file": "apps/api/src/modules/learning/learning-home.controller.ts",
+      "line": 8,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "home",
+          "type": "LearningHomeService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "get",
+          "line": 12,
+          "signature": "get(@Req() req: AuthenticatedRequest, @Query() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'home'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.home.home"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LearningHomeService",
+      "file": "apps/api/src/modules/learning/learning-home.service.ts",
+      "line": 69,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "learning",
+          "type": "LearningService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "diagnostics",
+          "type": "DiagnosticsService"
+        },
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "home",
+          "line": 74,
+          "signature": "home(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject): LearningHome",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.learning.studentProfiles",
+            "this.students.assertCanAccessStudent",
+            "this.courseAction",
+            "this.diagnostics.profile",
+            "this.learning.today",
+            "this.learning.memory",
+            "this.diagnostics.listSessions"
+          ]
+        },
+        {
+          "name": "courseAction",
+          "line": 116,
+          "signature": "courseAction(user: InMemoryUserAccount, studentId?: string, subject?: Subject): LearningHomeAction | null",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.select"
+          ]
+        }
+      ]
+    },
+    {
       "name": "LearningController",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
       "line": 9,
@@ -16330,12 +16462,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 15,
+      "line": 17,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController], providers: [LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -23633,6 +23765,12 @@
       "signature": "renderIcs(calendarName: string, events: Array<{ uid: string; title: string; description: string; startsAt: string; endsAt: string; allDay?: boolean }>)"
     },
     {
+      "file": "apps/api/src/modules/learning/learning-home.service.ts",
+      "name": "learningHomeActions",
+      "line": 20,
+      "signature": "learningHomeActions(input: ActionInput): LearningHomeAction[]"
+    },
+    {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "studyDay",
       "line": 33,
@@ -28794,6 +28932,122 @@
       "fields": []
     },
     {
+      "name": "LearningHomeAction",
+      "file": "packages/contracts/src/learning-home.ts",
+      "line": 4,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'resume_assessment' | 'due_review' | 'plan_review' | 'resume_practice' | 'practice' | 'report' | 'course' | 'scope' | 'assessment'"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "reason",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "estimatedMinutes",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "saved",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "LearningHome",
+      "file": "packages/contracts/src/learning-home.ts",
+      "line": 13,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "generatedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "day",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "subject",
+          "optional": false,
+          "type": "Subject"
+        },
+        {
+          "name": "actor",
+          "optional": false,
+          "type": "{ id: string; role: string; canManage: boolean; canUseAdultCourses: boolean }"
+        },
+        {
+          "name": "children",
+          "optional": false,
+          "type": "Array<{ id: string; nickname: string; grade: number }>"
+        },
+        {
+          "name": "selected",
+          "optional": false,
+          "type": "{ id: string; nickname: string; grade: number } | null"
+        },
+        {
+          "name": "scope",
+          "optional": false,
+          "type": "{ confirmed: boolean; summary: string; minutesPerSession: number | null; learnedPoints: number }"
+        },
+        {
+          "name": "primary",
+          "optional": false,
+          "type": "LearningHomeAction | null"
+        },
+        {
+          "name": "secondary",
+          "optional": false,
+          "type": "LearningHomeAction[]"
+        },
+        {
+          "name": "memory",
+          "optional": false,
+          "type": "LearningMemory | null"
+        },
+        {
+          "name": "counts",
+          "optional": false,
+          "type": "{ dueReviews: number; unfinishedAssessments: number; pendingActivities: number; unknownPoints: number; insufficientPoints: number }"
+        },
+        {
+          "name": "notice",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
       "name": "PracticeAttempt",
       "file": "packages/contracts/src/learning.ts",
       "line": 3,
@@ -31779,6 +32033,14 @@
       ]
     },
     {
+      "path": "/learn",
+      "kind": "page",
+      "file": "apps/web/app/learn/page.tsx",
+      "imports": [
+        "./screen"
+      ]
+    },
+    {
       "path": "/library",
       "kind": "page",
       "file": "apps/web/app/library/page.tsx",
@@ -32017,6 +32279,8 @@
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
+    "apps/api/src/modules/learning/learning-home.integration.test.ts",
+    "apps/api/src/modules/learning/learning-home.test.ts",
     "apps/api/src/modules/learning/notebook.integration.test.ts",
     "apps/api/src/modules/learning/studio-course.test.ts",
     "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
@@ -32037,6 +32301,7 @@
   ],
   "e2eTests": [
     "tests/e2e/classroom.spec.ts",
+    "tests/e2e/learning-home.spec.ts",
     "tests/e2e/product-smoke.spec.ts",
     "tests/e2e/studio.spec.ts",
     "tests/e2e/workspace.spec.ts"

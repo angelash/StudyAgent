@@ -1,8 +1,10 @@
 # 核心业务详细设计
 
-本文补充 [103项功能实现目录](01-functional-framework.md) 中跨模块的处理顺序、算法和失败行为。各接口完整参数签名与实现行号见 [接口索引](generated/api-reference.md)。
+本文补充 [104项功能实现目录](01-functional-framework.md) 中跨模块的处理顺序、算法和失败行为。各接口完整参数签名与实现行号见 [接口索引](generated/api-reference.md)。
 
 ## 1. 通用请求与事务
+
+统一首页`GET /learning/home`是只读聚合：明确选择档案时先检查授权，不能以列表第一项替代无效选择；读取当前范围、今日安排和证据记忆，优先提供未完成评测、到期复测、监护决定、训练和课堂断点。链接指向已有对象，打开首页不创建活动。浏览器以显式URL优先、按主体隔离的标签页选择其次，校验缓存结构；切换时清空旧数据并取消请求，过期响应不能覆盖新档案。完整行为见 [E01交付](../product/experience/implementation-log.md)。
 
 ```mermaid
 sequenceDiagram

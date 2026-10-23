@@ -1,6 +1,6 @@
 # 完成边界与待完善项
 
-本册描述基线 `a004859578227acac4f833387119e9bc8488de7b` 的当前实现。接口覆盖、内容结构和自动化测试分别回答不同问题，不能互相替代。功能级边界见 [14个领域的详细设计](01-functional-framework.md)，可复算的内容数量见 [内容快照](generated/content-snapshot.json)。
+本册描述基线 `3b67695853276ab06f33923dce75ad72bb72db87` 的当前实现。接口覆盖、内容结构和自动化测试分别回答不同问题，不能互相替代。功能级边界见 [14个领域的详细设计](01-functional-framework.md)，可复算的内容数量见 [内容快照](generated/content-snapshot.json)。
 
 ## 1. 当前已形成的产品路径
 

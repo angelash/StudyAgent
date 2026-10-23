@@ -1,8 +1,8 @@
 # 06 家庭首页、今日训练、学习记忆与错题 — 详细设计
 
-源码基线：`a004859578227acac4f833387119e9bc8488de7b`。角色：学生、家长、授权教师。
+源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。角色：学生、家长、授权教师。
 
-产品入口：`/`、`/parent/dashboard`、`/student/today`。
+产品入口：`/`、`/learn`、`/parent/dashboard`、`/student/today`。
 
 ## 模块实现
 
@@ -13,7 +13,7 @@
 ## 共享契约
 
 - [packages/contracts/src/learning.ts](../../../packages/contracts/src/learning.ts)
-- [packages/contracts/src/learning.ts](../../../packages/contracts/src/learning.ts)
+- [packages/contracts/src/learning-home.ts](../../../packages/contracts/src/learning-home.ts)
 
 ## 关联验证
 
@@ -21,7 +21,35 @@
 
 - [apps/api/src/modules/learning/notebook.integration.test.ts](../../../apps/api/src/modules/learning/notebook.integration.test.ts)
 - [apps/api/src/modules/ai/evidence-coach.integration.test.ts](../../../apps/api/src/modules/ai/evidence-coach.integration.test.ts)
+- [apps/api/src/modules/learning/learning-home.test.ts](../../../apps/api/src/modules/learning/learning-home.test.ts)
+- [apps/api/src/modules/learning/learning-home.integration.test.ts](../../../apps/api/src/modules/learning/learning-home.integration.test.ts)
+- [tests/e2e/learning-home.spec.ts](../../../tests/e2e/learning-home.spec.ts)
 - [tests/e2e/product-smoke.spec.ts](../../../tests/e2e/product-smoke.spec.ts)
+
+## LEARN-07 统一学习首页与精确下一步
+
+**输入**：当前身份、可选studentId、subject；URL与标签页的档案选择。
+
+**处理与实现**：服务端重新校验档案权限；只读取当前孩子与当前账号的学习事实；按未完成评测、到期复测、计划核对、训练、报告和课堂断点构造真实目标链接；浏览器按身份隔离轻量缓存，取消旧请求并防止过期响应覆盖。
+
+**输出**：LearningHome、一个主要行动及可展开待办、可核对事实和范围摘要。
+
+**状态与持久化**：`learningScopes`、`diagnosticSessions`、`diagnosticPlans`、`practiceSessions`、`reviewTasks`、`classroomSessions`、`studioCourses`
+
+**权限、失败与边界**：读取不启动题组或确认计划；显式无效档案不静默回退；学生不获得监护管理入口；独立成人课可无孩子直接进入；完整真人可用性仍待后续验收。
+
+**关联接口**：
+
+- `GET /api/learning/home` → `LearningHomeController.get`；[apps/api/src/modules/learning/learning-home.controller.ts:12](../../../apps/api/src/modules/learning/learning-home.controller.ts#L12)。
+
+**服务方法**：
+
+- `LearningHomeService.home`；[apps/api/src/modules/learning/learning-home.service.ts:74](../../../apps/api/src/modules/learning/learning-home.service.ts#L74)。
+
+**补充实现文件**：
+
+- [apps/web/app/learn/screen.tsx](../../../apps/web/app/learn/screen.tsx)
+- [apps/web/lib/learning-context.ts](../../../apps/web/lib/learning-context.ts)
 
 ## LEARN-01 家庭总览与证据化学习记忆
 

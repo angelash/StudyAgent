@@ -1,12 +1,12 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-23。实现基线：`a004859578227acac4f833387119e9bc8488de7b`。
+整理日期：2026-10-23。实现基线：`3b67695853276ab06f33923dce75ad72bb72db87`。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、103项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、104项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
 - [数据与状态设计](04-data-and-state-design.md)：实体关系、80个领域集合、SQL结构、版本与状态机。
@@ -35,9 +35,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：254个源码路由声明中，当前正常接入233个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
-- [页面职责](generated/page-reference.md)：23个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与204个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [全部接口](generated/api-reference.md)：255个源码路由声明中，当前正常接入234个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [页面职责](generated/page-reference.md)：24个页面和1个课堂runner处理器；部分页面是兼容重定向。
+- [领域集合与206个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构

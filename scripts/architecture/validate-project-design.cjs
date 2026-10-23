@@ -135,7 +135,10 @@ async function main() {
       markdownLinks: docs,
       staticContent: { receipt: 'content-snapshot.json', authoredAuditAt: snapshot.authored.auditAt, totals: snapshot.authored.totals },
       offlineViewer: { checks, browserErrors, externalNetworkRequests: networkRequests, viewports: [1440, 768, 390], screenshots: ['data/qa/project-design-viewer/desktop.png', 'data/qa/project-design-viewer/mobile.png'] },
-      applicationBaselineEvidence: { newlyRunThisTurn: false, revision: 'a004859578227acac4f833387119e9bc8488de7b', ci: 'https://github.com/angelash/StudyAgent/actions/runs/39926809939', note: 'Historical baseline evidence; this documentation validation does not rerun or replace it.' }
+      applicationBaselineEvidence: { newlyRunByThisScript: false,
+        receipt: '../evidence/2026-10-23/learning-home-acceptance.json',
+        revision: JSON.parse(fs.readFileSync(path.join(root, 'doc/evidence/2026-10-23/learning-home-acceptance.json'), 'utf8')).sourceRevision,
+        note: 'Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result.' }
     };
     fs.writeFileSync(path.join(design, 'generated/design-validation.json'), JSON.stringify(receipt, null, 2) + '\n');
     console.log(JSON.stringify({ passed: receipt.passed, features: receipt.features, sourceFiles: sourceHashes.size, markdownLinks: docs.checked, viewerChecks: checks.length, browserErrors, externalNetworkRequests: networkRequests }, null, 2));

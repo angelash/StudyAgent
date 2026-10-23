@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`a004859578227acac4f833387119e9bc8488de7b`。共 254 个 HTTP 路由声明，当前 AppModule 可达 233 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`3b67695853276ab06f33923dce75ad72bb72db87`。共 255 个 HTTP 路由声明，当前 AppModule 可达 234 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -995,6 +995,17 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.classroom.narration`
+
+## LearningHomeController — 当前接入
+
+### GET /api/learning/home
+
+实现：[apps/api/src/modules/learning/learning-home.controller.ts:12](../../../apps/api/src/modules/learning/learning-home.controller.ts#L12)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.home.home`
 
 ## LearningController — 当前接入
 

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T15:37:25.724Z",
+  "sourceRevision": "3b67695853276ab06f33923dce75ad72bb72db87",
+  "planRevision": "3775c8d",
+  "batch": "E01 first implementation",
+  "goalComplete": false,
+  "scope": "Unified home, exact next-action links, role and scope isolation, context navigation and cache recovery. Broader course/content/parity goal remains active.",
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "daemonProductionWeb": true,
+    "webTypes": true
+  },
+  "api": {
+    "command": "node ../../node_modules/vitest/vitest.mjs run",
+    "cwd": "apps/api",
+    "environment": "Dedicated test data, no OpenAI/MiniMax credentials; Xiaojiu enabled for the existing mocked model-selection test. No live model calls.",
+    "passed": 759,
+    "failed": 0,
+    "skipped": 6,
+    "filesPassed": 88,
+    "filesSkipped": 1,
+    "outputEvidence": "Observed completed tool session 92986; 244.91 seconds. Counts recorded from its terminal result."
+  },
+  "browser": {
+    "fullSuite": {
+      "artifact": "data/qa/experience-home-browser-clean.json",
+      "stats": {
+        "startTime": "2026-10-23T15:28:53.225Z",
+        "duration": 102700.87700000001,
+        "expected": 19,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "finalHomeChecks": {
+      "artifact": "data/qa/experience-home-browser-focused.json",
+      "stats": {
+        "startTime": "2026-10-23T15:32:14.173Z",
+        "duration": 16303.421,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "distinctScenarios": 20,
+    "scenarios": [
+      "a delayed old selection and a failed request cannot replace the current child",
+      "a parent can build and reopen an evidence-backed learning studio course",
+      "a parent can create a learning profile and complete an evidence-limited assessment",
+      "a student resumes the exact saved assessment and sees only their profile",
+      "a touch and keyboard user can enter the family access flow",
+      "adult can enter a course without creating a child and restore its classroom",
+      "an administrator can reach the curriculum review workbench",
+      "an approved fraction teaching card renders a safe step-by-step visual",
+      "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+      "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+      "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "corrupt or different-account cached choices cannot select another profile",
+      "course classroom supports teaching, executable examples, learning checks and durable resume",
+      "course library and outline preserve navigation, panels, help and classroom back/forward",
+      "independent practice matches four-option illustrated question flow on desktop and phone",
+      "learning home offers clear entry and works on phone, tablet and desktop",
+      "parent selection, navigation, refresh, history and invalid profile recovery keep context",
+      "practice geometry, whiteboard image and comparison table use the observed display scale",
+      "public product shell remains usable at phone, tablet and desktop widths",
+      "question replies add safe board notes with page links, export and restored session rendering"
+    ],
+    "note": "Full suite passed before the final browser cache validation; all six home scenarios then passed against the rebuilt final Web. The remaining fourteen scenarios cover unchanged application behavior."
+  },
+  "runtime": {
+    "at": "2026-10-23T15:36:01.301Z",
+    "checks": [
+      {
+        "route": "/learn",
+        "status": 200
+      },
+      {
+        "route": "/api/ready",
+        "status": 200,
+        "ready": "ready"
+      },
+      {
+        "route": "/api/learning/home",
+        "status": 401
+      }
+    ],
+    "pageErrors": [],
+    "scope": "Guest smoke and same-origin proxy only. No real family data queried or altered."
+  },
+  "screenshots": [
+    "doc/evidence/2026-10-23/learning-home-desktop.png",
+    "doc/evidence/2026-10-23/learning-home-phone.png"
+  ],
+  "sourceSha256": {
+    "apps/api/src/common/auth.guard.ts": "f4b685f41be02838880e93f295c27f413558f5ef96b30f30b70d556227c418e7",
+    "apps/api/src/modules/learning/learning-home.controller.ts": "4d35a6f1d6b9b29720493c64297224b623b65d5f7617f46f1660544f49fc57fc",
+    "apps/api/src/modules/learning/learning-home.integration.test.ts": "12b838c625ca831ed62deb4c12222631bd2888171ed5512f82b858beec9982f3",
+    "apps/api/src/modules/learning/learning-home.service.ts": "5938a9d4d364794465f93259932aab9307492fea093f3aad1f5d042d2d3f71f3",
+    "apps/api/src/modules/learning/learning-home.test.ts": "27a82328c88a9e5e60c0f299cbc1eb89140cde7d63ae45e5e314643be1a338b9",
+    "apps/api/src/modules/learning/learning.module.ts": "7c897e9bda3194fc0dad93e71c22290e7211f3bcd440add6014c43135d0dd991",
+    "apps/web/app/learn/home.css": "64cfb312e706fbd50fe4b31506dfc0be48936edc8ce2776dde2eee90dc9dc09e",
+    "apps/web/app/learn/page.tsx": "1b08a91c457aa0b613ddb1b6c7f4fdfa72be87de3eb2ad88db98d91def06fe59",
+    "apps/web/app/learn/screen.tsx": "b55ac3e4cb35b4eff97b6e0db69407323f30c29929f03f23504d2b5e15bcd953",
+    "apps/web/app/page.tsx": "afe6c6ab03698c0b8a6d413ee6667275a6b9396b2e62800979ccfb88f1de5037",
+    "apps/web/app/parent/dashboard/studio.tsx": "32853abaaff0afba63e6f54827dc478f67eef2a08351a8eb816d7191b4fde5f1",
+    "apps/web/app/parent/login/page.tsx": "c803f22c9ee67cc27b0bba3c10c20b9c68e228d2466b3bb9ac9381a389d1bcda",
+    "apps/web/app/student/assessment/studio.tsx": "51952b7739cbd1c697d02be747c7e763359ab093f3ed22bcf57c87cad000c249",
+    "apps/web/app/student/login/page.tsx": "389049ef998efb0013f056c9f6ff2e62879e14056a0dba4199dddf8e81d3d0ac",
+    "apps/web/app/student/today/studio.tsx": "ab9dda6fdb482d4443a802fb02b07b9b9b7ef584404667241571e5ca72d6ab07",
+    "apps/web/app/studio/studio-navigation.tsx": "8e77b8727debf396407965f738d906b1d7d2f60cb897451cc7ef48b08612b82e",
+    "apps/web/app/studio/studio.tsx": "dd231082373c9d3ffb516825bf0f5c8d4e421be0a35671ecdda69476263b2e96",
+    "apps/web/components/session-control.tsx": "012fb0442d0d114cba8a671eea1b8a13836d1008e91bfb1114f3deeb05bb2898",
+    "apps/web/components/study-nav.tsx": "a9c0b6d00bac32bab63764d0be2f50618de5b75f084924c9d4f60cd5e673b806",
+    "apps/web/lib/learning-context.ts": "532cea5d8a74192b5cde06af5b7f16820530c8348707c529dcbebb466c190269",
+    "packages/contracts/src/index.ts": "8357a45c4fc204eb15e215eefa3bc92e06b889d0d16fcc3a06ec832954227163",
+    "packages/contracts/src/learning-home.ts": "a540379393ad5e3789aa67b89a9a2c8652aaddd8b8d74b10bae64b7d42f5fe6e",
+    "playwright.config.ts": "2b0600e089e13d7328710b591d38c19c1ea6a4c4682e2a36f3a5b394a82a07b6",
+    "scripts/qa/experience-web.cjs": "dd86637c157dcd83e7be829f850b0c117bb86060dc0acaad817b27c69bc9333a",
+    "tests/e2e/classroom.spec.ts": "62276631e5944f17a33c3ebc3ff51b516023e058623a5b9f5a7c0048dd74ef7a",
+    "tests/e2e/learning-home.spec.ts": "20219b6678f0af1f11a81be14b6af79dd51754e6ae2bc85657bd3c71225cfe48",
+    "tests/e2e/product-smoke.spec.ts": "5818d7aacdc496967bd8f96fa4b8b1a73168045efd2fc7abc83cb8d413ca0da1",
+    "tests/e2e/studio.spec.ts": "dc97ff8158fb58040a39d6d61a05fbafe979fa3fc4caff9591dcdf08a672ff86",
+    "tests/e2e/workspace.spec.ts": "5c60444bc441c99928257905d7d39cded85acbe2415e736cd57ecf10c642c8f3"
+  },
+  "preservedLocalChanges": [
+    ".env.example",
+    "apps/web/next.config.ts",
+    "doc/product/87-local-windows-daemon.md",
+    "ecosystem.config.cjs",
+    "scripts/operations/start-daemon.ps1"
+  ],
+  "remaining": [
+    "All later E02-E10 requirements remain tracked.",
+    "Whole-product real-device and student/teacher validation is not replaced by these synthetic browser tests.",
+    "Full original-platform content, voice and all-state pixel parity remain unverified."
+  ]
+}
