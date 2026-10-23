@@ -6,7 +6,7 @@ import { sourceCourseContentSchema, type CourseSourceSnapshot, type SourceCourse
 type Section = 'teaching' | 'example' | 'questions' | 'citations';
 const sections: Array<[Section, string]> = [['teaching', '讲解与板书'], ['example', '例子与误区'], ['questions', '练习与答案'], ['citations', '来源引用']];
 const labels: Record<string,string> = { title:'名称',overview:'课程概览',lessons:'课时',objective:'目标',introduction:'开场',concept:'概念讲解',notes:'概念板书',example:'示例',scenario:'情境',steps:'步骤',board:'板书',conclusion:'结论',misconception:'误区',claim:'错误说法',correction:'纠正讲解',transfer:'迁移',summary:'总结',takeaways:'要点',questions:'练习',prompt:'题干',options:'选项',answer:'正确选项',explanation:'解释',hints:'帮助',citations:'引用',sourceKey:'来源页',quote:'短引文' };
-const describe = (path: Array<string|number>) => path.map(part => typeof part === 'number' ? String(part+1) : labels[part]??part).join(' · ');
+const describe = (path: PropertyKey[]) => path.map(part => typeof part === 'number' ? String(part+1) : labels[String(part)]??String(part)).join(' · ');
 export function downloadTeachingDraft(content: SourceCourseContent, courseId: string, revision: number) {
   const url=URL.createObjectURL(new Blob([JSON.stringify({format:'study-agent-source-course-draft-v1',courseId,basedOnRevision:revision,contentReview:'pending',content},null,2)],{type:'application/json;charset=utf-8'}));
   const link=document.createElement('a');link.href=url;link.download='teaching-draft-'+courseId+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);

@@ -15,7 +15,7 @@ export type UserRole = z.infer<typeof roleSchema>;
 export const apiErrorSchema = z.object({
   code: z.string(),
   message: z.string(),
-  details: z.record(z.any()).optional(),
+  details: z.record(z.string(), z.any()).optional(),
 });
 
 export type ApiError = z.infer<typeof apiErrorSchema>;
@@ -34,7 +34,7 @@ export const domainEventEnvelopeSchema = z.object({
   eventVersion: z.number().int().positive(),
   eventId: z.string(),
   occurredAt: z.string(),
-  payload: z.record(z.any()),
+  payload: z.record(z.string(), z.any()),
 });
 
 export type DomainEventEnvelope<T> = {
@@ -148,7 +148,7 @@ const questionBlockBaseSchema = z.object({
   prompt: z.string().optional(),
   headers: z.array(z.string()).optional(),
   rows: z.array(z.array(z.string())).optional(),
-  meta: z.record(z.any()).optional(),
+  meta: z.record(z.string(), z.any()).optional(),
 });
 
 export const questionBlockSchema: z.ZodType<{
@@ -209,7 +209,7 @@ export const questionDocumentSchema = z.object({
   blocks: z.array(questionBlockSchema),
   attachments: z.array(questionAttachmentSchema),
   layoutMode: questionLayoutModeSchema,
-  accessibilityConfig: z.record(z.any()),
+  accessibilityConfig: z.record(z.string(), z.any()),
 });
 
 export type QuestionDocument = z.infer<typeof questionDocumentSchema>;
@@ -248,9 +248,9 @@ export type QuestionOption = z.infer<typeof questionOptionSchema>;
 export const questionAnswerSchemaSchema = z.object({
   questionId: z.string(),
   mode: questionAnswerModeSchema,
-  responseShape: z.record(z.any()),
-  validationRules: z.record(z.any()),
-  gradingConfig: z.record(z.any()),
+  responseShape: z.record(z.string(), z.any()),
+  validationRules: z.record(z.string(), z.any()),
+  gradingConfig: z.record(z.string(), z.any()),
   options: z.array(questionOptionSchema).optional(),
   placeholder: z.string().nullable().optional(),
 });
@@ -400,7 +400,7 @@ export type QuestionRenderPayload = z.infer<typeof questionRenderPayloadSchema>;
 export const studentAnswerPayloadSchema = z.object({
   questionId: z.string(),
   mode: questionAnswerModeSchema,
-  response: z.record(z.any()),
+  response: z.record(z.string(), z.any()),
   clientMeta: z
     .object({
       elapsedMs: z.number().int().positive().optional(),
@@ -697,7 +697,7 @@ export type AIQualityOverview = z.infer<typeof aiQualityOverviewSchema>;
 
 export const aiAnalysisResponseSchema = z.object({
   summary: z.string(),
-  structuredResult: z.record(z.any()),
+  structuredResult: z.record(z.string(), z.any()),
   confidenceLevel: z.enum(['low', 'medium', 'high']),
   reviewRequired: z.boolean(),
   source: z.enum(['openai', 'rules']),

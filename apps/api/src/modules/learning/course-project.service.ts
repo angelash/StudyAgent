@@ -14,7 +14,7 @@ const id = z.string().min(1).max(200), requestKey = z.string().min(8).max(180);
 const source = z.string().trim().max(2000).refine(value => !value || /^https?:\/\//i.test(value) && (() => {
   try { const url = new URL(value); return !url.username && !url.password; } catch { return false; }
 })(), '来源链接需为不含账号密码的 HTTP(S) 地址');
-const artifactSchema = z.object({ values: z.record(z.string().max(12000)), evidence: z.array(z.object({
+const artifactSchema = z.object({ values: z.record(z.string(), z.string().max(12000)), evidence: z.array(z.object({
   id, label: z.string().trim().min(1).max(160), content: z.string().trim().min(1).max(6000), source,
 }).strict()).max(20) }).strict();
 const draftArtifactSchema = artifactSchema.extend({ evidence: z.array(z.object({ id,
