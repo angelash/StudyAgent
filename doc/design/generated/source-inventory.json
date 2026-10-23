@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "5740ef0a180d16b0bd0077ba2076ede1b3852b8e",
+  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 256,
@@ -10,13 +10,13 @@
     "activeModules": 17,
     "activeControllers": 23,
     "apiClasses": 99,
-    "apiFunctions": 225,
+    "apiFunctions": 229,
     "domainCollections": 80,
-    "contractTypes": 208,
+    "contractTypes": 209,
     "webPages": 24,
     "webRouteHandlers": 1,
-    "apiTestFiles": 90,
-    "browserTestFiles": 8
+    "apiTestFiles": 91,
+    "browserTestFiles": 9
   },
   "modules": [
     {
@@ -15574,7 +15574,7 @@
     {
       "name": "ClassroomService",
       "file": "apps/api/src/modules/learning/classroom.service.ts",
-      "line": 18,
+      "line": 19,
       "decorators": [
         {
           "name": "Injectable",
@@ -15602,7 +15602,7 @@
       "methods": [
         {
           "name": "catalog",
-          "line": 23,
+          "line": 24,
           "signature": "catalog(user: InMemoryUserAccount): ClassroomCatalog",
           "access": "public",
           "decorators": [],
@@ -15612,7 +15612,7 @@
         },
         {
           "name": "record",
-          "line": 37,
+          "line": 48,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -15623,18 +15623,19 @@
         },
         {
           "name": "view",
-          "line": 45,
+          "line": 56,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
           "calls": [
+            "this.hintLevels",
             "this.store.find",
             "this.speech.capabilities"
           ]
         },
         {
           "name": "get",
-          "line": 57,
+          "line": 69,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -15644,8 +15645,16 @@
           ]
         },
         {
+          "name": "hintLevels",
+          "line": 71,
+          "signature": "hintLevels(row: ClassroomSessionRecord, questionId: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
           "name": "open",
-          "line": 59,
+          "line": 78,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15660,7 +15669,7 @@
         },
         {
           "name": "progress",
-          "line": 93,
+          "line": 113,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15671,7 +15680,7 @@
         },
         {
           "name": "answer",
-          "line": 112,
+          "line": 132,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -15682,18 +15691,19 @@
         },
         {
           "name": "hint",
-          "line": 136,
+          "line": 160,
           "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.record",
-            "this.view"
+            "this.view",
+            "this.hintLevels"
           ]
         },
         {
           "name": "ask",
-          "line": 155,
+          "line": 185,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -15706,7 +15716,7 @@
         },
         {
           "name": "narration",
-          "line": 187,
+          "line": 217,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -23738,38 +23748,62 @@
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "step",
-      "line": 113,
+      "line": 114,
       "signature": "step(id: string, phase: ClassroomStep['phase'], title: string, narration: string, diagram?: ClassroomDiagram, notes?: string[]): ClassroomStep"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomCourse",
-      "line": 225,
+      "line": 251,
       "signature": "classroomCourse(): ClassroomCourse"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomLesson",
-      "line": 226,
+      "line": 252,
       "signature": "classroomLesson(id: string): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomAnswerKey",
-      "line": 232,
+      "line": 258,
       "signature": "classroomAnswerKey(id: string)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
+      "name": "classroomHintKeys",
+      "line": 259,
+      "signature": "classroomHintKeys(id: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomFingerprint",
-      "line": 233,
+      "line": 260,
       "signature": "classroomFingerprint(lesson: ClassroomLesson)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
+      "name": "classroomTeachingFingerprint",
+      "line": 261,
+      "signature": "classroomTeachingFingerprint(lesson: ClassroomLesson)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "curriculumClassroomLesson",
-      "line": 235,
+      "line": 266,
       "signature": "curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-practice-model.ts",
+      "name": "boundary",
+      "line": 10,
+      "signature": "boundary(...[prompt, options, answer, hints, explanation, visual]: Content): PracticeSeed"
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-practice-model.ts",
+      "name": "evidence",
+      "line": 13,
+      "signature": "evidence(...[prompt, options, answer, hints, explanation, visual]: Content): PracticeSeed"
     },
     {
       "file": "apps/api/src/modules/learning/ics-calendar.ts",
@@ -25045,6 +25079,21 @@
           "type": "string"
         },
         {
+          "name": "hintCount",
+          "optional": true,
+          "type": "number"
+        },
+        {
+          "name": "table",
+          "optional": true,
+          "type": "{ caption: string; headers: string[]; rows: string[][] }"
+        },
+        {
+          "name": "diagram",
+          "optional": true,
+          "type": "ClassroomDiagram"
+        },
+        {
           "name": "topic",
           "optional": true,
           "type": "{ lessonId: string; title: string }"
@@ -25059,7 +25108,7 @@
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 11,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25098,6 +25147,11 @@
           "type": "string"
         },
         {
+          "name": "practiceVersion",
+          "optional": true,
+          "type": "string"
+        },
+        {
           "name": "assessment",
           "optional": true,
           "type": "{ kind: 'unit-check'; version: string; notice: string }"
@@ -25107,7 +25161,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 14,
+      "line": 15,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25135,7 +25189,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 15,
+      "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25168,7 +25222,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 17,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25216,7 +25270,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 19,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25253,13 +25307,51 @@
           "name": "at",
           "optional": false,
           "type": "string"
+        },
+        {
+          "name": "disposition",
+          "optional": true,
+          "type": "'answered' | 'skip' | 'dont_know'"
+        },
+        {
+          "name": "hintLevel",
+          "optional": true,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomHintReceipt",
+      "file": "packages/contracts/src/classroom.ts",
+      "line": 22,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "questionId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "level",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "text",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "at",
+          "optional": false,
+          "type": "string"
         }
       ]
     },
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 21,
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25297,7 +25389,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 23,
+      "line": 25,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25386,6 +25478,11 @@
           "type": "string[]"
         },
         {
+          "name": "hintReceipts",
+          "optional": true,
+          "type": "ClassroomHintReceipt[]"
+        },
+        {
           "name": "createdAt",
           "optional": false,
           "type": "string"
@@ -25400,14 +25497,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 29,
+      "line": 32,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 31,
+      "line": 34,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25421,6 +25518,11 @@
           "type": "Array<{ lessonId: string; sessionId: string;\n  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>"
         },
         {
+          "name": "readingProgress",
+          "optional": true,
+          "type": "Array<{ lessonId: string; sessionId: string; cursor: number; completed: boolean; updatedAt: string }>"
+        },
+        {
           "name": "archivedSessions",
           "optional": true,
           "type": "Array<{ sessionId: string; lessonId: string; title: string; total: number; answered: number; updatedAt: string }>"
@@ -25430,7 +25532,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 35,
+      "line": 39,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -25460,6 +25562,11 @@
         },
         {
           "name": "skipped",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "dontKnow",
           "optional": false,
           "type": "number"
         },
@@ -32480,6 +32587,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/classroom-practice-content.test.ts",
     "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
@@ -32504,6 +32612,7 @@
     "apps/api/src/product-safety.integration.test.ts"
   ],
   "e2eTests": [
+    "tests/e2e/classroom-practice.spec.ts",
     "tests/e2e/classroom-review.spec.ts",
     "tests/e2e/classroom.spec.ts",
     "tests/e2e/course-builder.spec.ts",

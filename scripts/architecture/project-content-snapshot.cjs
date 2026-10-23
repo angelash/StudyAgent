@@ -21,7 +21,8 @@ for (const [file, expected] of Object.entries(audit.sourceSha256)) assert.equal(
 const classroomFile = 'apps/api/src/modules/learning/classroom-curriculum.ts';
 const boardFile = 'apps/api/src/modules/learning/classroom-board-notes.ts';
 const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
-const allowed = new Set([classroomFile, boardFile, checksFile]), cache = new Map();
+const practiceFiles = ['content', 'model', 'u1', 'u2', 'u3', 'u4', 'u5'].map(name => 'apps/api/src/modules/learning/classroom-practice-' + name + '.ts');
+const allowed = new Set([classroomFile, boardFile, checksFile, ...practiceFiles]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
@@ -37,7 +38,8 @@ function loadContent(file) {
 }
 const classroom = loadContent(classroomFile), course = classroom.classroomCourse();
 const lectures = course.units.flatMap(unit => unit.lectures), lessons = lectures.flatMap(lecture => lecture.lessons);
-const questionIds = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions.map(question => question.id));
+const practiceQuestions = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions);
+const questionIds = practiceQuestions.map(question => question.id);
 assert.equal(new Set(questionIds).size, questionIds.length, 'Unexpected duplicate lesson question IDs');
 const unitQuestionIds = course.units.flatMap(unit => classroom.classroomLesson('unit-exam:' + unit.id).questions.map(question => question.id));
 assert.equal(new Set(unitQuestionIds).size, unitQuestionIds.length, 'Unexpected duplicate unit-check question IDs');
@@ -69,7 +71,11 @@ const snapshot = {
     courseId: course.id, courseVersion: course.version, units: course.units.length, lectures: lectures.length,
     microLessons: lessons.length, lessonQuestions: questionIds.length, unitCheckQuestions: unitQuestionIds.length,
     distinctQuestionIds: questionIds.length + unitQuestionIds.length,
-    sourceSha256: Object.fromEntries([classroomFile, boardFile, checksFile].map(file => [file, hash(file)])),
+    microLessonsWithAtLeastThreeQuestions: lessons.filter(lesson => classroom.classroomLesson(lesson.id).questions.length >= 3).length,
+    tableQuestions: practiceQuestions.filter(question => question.table).length,
+    diagramQuestions: practiceQuestions.filter(question => question.diagram).length,
+    hintLevels: questionIds.concat(unitQuestionIds).reduce((sum, id) => sum + classroom.classroomHintKeys(id).length, 0),
+    sourceSha256: Object.fromEntries([classroomFile, boardFile, checksFile, ...practiceFiles].map(file => [file, hash(file)])),
     interpretation: 'Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course.'
   }
 };

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "5740ef0a180d16b0bd0077ba2076ede1b3852b8e",
+  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
     "auditAt": "2026-10-23T16:22:32.721Z",
@@ -396,17 +396,28 @@
   },
   "adultClassroom": {
     "courseId": "sociology-foundations",
-    "courseVersion": "2026-10-23.3",
+    "courseVersion": "2026-10-24.1",
     "units": 5,
     "lectures": 15,
     "microLessons": 60,
-    "lessonQuestions": 64,
+    "lessonQuestions": 182,
     "unitCheckQuestions": 60,
-    "distinctQuestionIds": 124,
+    "distinctQuestionIds": 242,
+    "microLessonsWithAtLeastThreeQuestions": 60,
+    "tableQuestions": 30,
+    "diagramQuestions": 2,
+    "hintLevels": 484,
     "sourceSha256": {
-      "apps/api/src/modules/learning/classroom-curriculum.ts": "ad7f9b2807b4c3c983994a882f1c6d390a4cc84962b601b02fb65ffba6cbae6e",
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "b247035d59145720c1817e7532178d3daca7d263e8368ed25bd2f0cf72e2b727",
       "apps/api/src/modules/learning/classroom-board-notes.ts": "c0de31588957e9d96fb536b2996cefd56db701a0cf3d010882a1403a0c4d67ed",
-      "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428"
+      "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428",
+      "apps/api/src/modules/learning/classroom-practice-content.ts": "d56db1a5d917d0921fb6f87ebea34218d996a9df64bc4b446b68549c2e1a2954",
+      "apps/api/src/modules/learning/classroom-practice-model.ts": "16eee00f6cde41dcadd3cf77d251d71fab3b1277f86f646172408fbc1b633095",
+      "apps/api/src/modules/learning/classroom-practice-u1.ts": "97527122f77eee5a4c4da987f8e1375d2b1a5403a0e175598aa12f73ca232169",
+      "apps/api/src/modules/learning/classroom-practice-u2.ts": "cf89c73315ebc04c83d57f7615c9c8afa21b37d5486529f16985c8ab9b9b4fdf",
+      "apps/api/src/modules/learning/classroom-practice-u3.ts": "0c4401f4828158af16f7bf449f50f3b018ccda3acd3e3a205134449595b8889d",
+      "apps/api/src/modules/learning/classroom-practice-u4.ts": "0d9eff15766e55a3bf0a94a894ea406d154a6170a22624babdfbd5eacae2d6b4",
+      "apps/api/src/modules/learning/classroom-practice-u5.ts": "2dc90e9429ae275e9b7d62a4264acd2ab0976e776b236242e8fff90ef2d8f1ff"
     },
     "interpretation": "Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course."
   }

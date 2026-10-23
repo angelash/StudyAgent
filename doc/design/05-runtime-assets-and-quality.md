@@ -57,7 +57,7 @@ Python本地结果 → 挑选需模型核对页（最多8） → CLI视觉结构
 
 本轮对可复算的版本化课程做静态审计：258个原子知识点、15758个原创任务，258点均有结构完整的批准教学，当前素材结构缺口为0。对应 [课程审计收据](generated/content-snapshot.json)。
 
-这只证明当前自编结构和组题素材条件，不等于全教材覆盖或真实测量标定。教材登记JSON当前448条；GESP知识图114候选点，试点任务49条；成人社会学课程5单元、15讲座、60微课，64道课堂题与另编60道单元情境题，共124个不同题目ID。成人课堂、小学测量和研究索引分别计数。
+这只证明当前自编结构和组题素材条件，不等于全教材覆盖或真实测量标定。教材登记JSON当前448条；GESP知识图114候选点，试点任务49条；成人社会学课程5单元、15讲座、60微课，182道微课题与另编60道单元情境题，共242个不同题目ID、484级提示。每课至少3题，含30表格题与2图示题；内容仍待逐题审核。成人课堂、小学测量和研究索引分别计数。
 
 资产分工：
 
@@ -102,9 +102,9 @@ PDF、OCR、手写预览、本地解释、工作台PDF结构和媒体回收有�
 
 ## 9. 测试与证据
 
-源码包含90个API测试文件和8个浏览器测试文件。文件数表示组织规模，不是功能点数或有效性比例。
+源码包含91个API测试文件和9个浏览器测试文件。文件数表示组织规模，不是功能点数或有效性比例。
 
-基线`5740ef0`的课程蓝图交付：全量API787项通过、6项按配置跳过；完整浏览器28项通过，最后底栏CSS调整后3项蓝图复验通过。契约/API、Web类型与独立/正式Web生产构建通过，见[本批收据](../evidence/2026-10-24/course-blueprint-acceptance.json)。课程库和课堂批次沿革见[课程库收据](../evidence/2026-10-24/course-library-acceptance.json)及[课堂收据](../evidence/2026-10-24/classroom-review-acceptance.json)。此前统一首页和远端CI保留于[原收据](../evidence/2026-10-23/learning-home-acceptance.json)及[原CI](https://github.com/angelash/StudyAgent/actions/runs/39926809939)，不将旧CI当成本次提交的远端结果。
+基线`9c2821c`的Practice与帮助交付：全量API798项通过、6项按配置跳过；完整浏览器30项通过。契约/API、Web类型与独立/正式Web生产构建通过，见[本批收据](../evidence/2026-10-24/classroom-practice-acceptance.json)。其中真实SQLite验证私有提示、重放/重启、不会和旧版阅读兼容；浏览器模拟提示已提交但回执丢失，并检查五单元图表、三档视口与原参考几何。历史蓝图、课程库及远端CI分别见[蓝图收据](../evidence/2026-10-24/course-blueprint-acceptance.json)、[课程库收据](../evidence/2026-10-24/course-library-acceptance.json)及[原CI](https://github.com/angelash/StudyAgent/actions/runs/39926809939)，不将旧CI当成本次提交的远端结果。
 
 CI三组：
 

@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`5740ef0a180d16b0bd0077ba2076ede1b3852b8e`。角色：家长、学生；成人课程目录限家长/管理员。
+源码基线：`9c2821c8b706e2417703061b378e961cef8c3412`。角色：家长、学生；成人课程目录限家长/管理员。
 
 产品入口：`/studio`、`/studio/classroom`。
 
@@ -27,9 +27,11 @@
 - [apps/api/src/modules/learning/studio.integration.test.ts](../../../apps/api/src/modules/learning/studio.integration.test.ts)
 - [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
 - [apps/api/src/modules/learning/classroom-unit-checks.test.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.test.ts)
+- [apps/api/src/modules/learning/classroom-practice-content.test.ts](../../../apps/api/src/modules/learning/classroom-practice-content.test.ts)
 - [tests/e2e/studio.spec.ts](../../../tests/e2e/studio.spec.ts)
 - [tests/e2e/classroom.spec.ts](../../../tests/e2e/classroom.spec.ts)
 - [tests/e2e/classroom-review.spec.ts](../../../tests/e2e/classroom-review.spec.ts)
+- [tests/e2e/classroom-practice.spec.ts](../../../tests/e2e/classroom-practice.spec.ts)
 - [tests/e2e/course-library.spec.ts](../../../tests/e2e/course-library.spec.ts)
 - [tests/e2e/course-builder.spec.ts](../../../tests/e2e/course-builder.spec.ts)
 - [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
@@ -107,19 +109,19 @@
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:23](../../../apps/api/src/modules/learning/classroom.service.ts#L23)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:24](../../../apps/api/src/modules/learning/classroom.service.ts#L24)。
 
 ## STUDIO-04 课堂会话、板书与按句字幕
 
 **输入**：lessonId、expectedRevision、cursor/revealed/sentenceCursor。
 
-**处理与实现**：首次打开冻结课件与私有答案；板书要点与讲稿分开；音轨结束才推进下一句；按行/项展示板书；只预取下一句；保存断点。
+**处理与实现**：冻结课件、私有答案与提示；讲稿与逐项板书分开，音轨结束推进下一句，只预取下一句并保存断点；讲解内容身份与练习身份分开，练习变更不清除完全相同讲解的已读事实。
 
-**输出**：可恢复讲解、当前字幕、完整笔记。
+**输出**：可恢复讲解、当前字幕、完整笔记、兼容阅读记录。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：刷新从当前句开头恢复；语音不可用时走文字节奏，不能伪造真实语音对齐。
+**权限、失败与边界**：刷新从当前句开头恢复；讲解实质改变则旧读记录不算新内容已读；语音不可用时走文字节奏，不能伪造真实语音对齐。
 
 **关联接口**：
 
@@ -130,10 +132,10 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:59](../../../apps/api/src/modules/learning/classroom.service.ts#L59)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:57](../../../apps/api/src/modules/learning/classroom.service.ts#L57)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:93](../../../apps/api/src/modules/learning/classroom.service.ts#L93)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:187](../../../apps/api/src/modules/learning/classroom.service.ts#L187)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:78](../../../apps/api/src/modules/learning/classroom.service.ts#L78)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:69](../../../apps/api/src/modules/learning/classroom.service.ts#L69)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:113](../../../apps/api/src/modules/learning/classroom.service.ts#L113)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:217](../../../apps/api/src/modules/learning/classroom.service.ts#L217)。
 
 ## STUDIO-05 课堂插问与补充板书
 
@@ -153,19 +155,19 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:155](../../../apps/api/src/modules/learning/classroom.service.ts#L155)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:185](../../../apps/api/src/modules/learning/classroom.service.ts#L185)。
 
-## STUDIO-06 课堂练习、单元核查与复盘
+## STUDIO-06 全微课练习、逐级帮助与复盘
 
-**输入**：questionId、selectedIndex/null、hintUsed、requestKey、projectDraft。
+**输入**：questionId、selectedIndex/null、answered/skip/dont_know、提示level、requestKey、projectDraft。
 
-**处理与实现**：保留64道微课题，另编60道单元新情境题；提示先保存再显示，服务端合并辅助事实；首次作答锁定，恢复首个未答题；完成后区分独立正确、答错、跳过和辅助，回看解释并返回对应微课；旧会话按冻结量规恢复，明确切换才进入新版本；项目草稿可恢复。
+**处理与实现**：微课182题与独立编写单元60题分开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见且成功重试清除旧错误。
 
-**输出**：124个不同题目ID、本次表现复盘、旧版学习记录与项目草稿。
+**输出**：242个不同题目ID、逐级提示回执、具体复盘、旧版记录和项目草稿。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：多数微课仍只有一道课堂题；新题需教师审核和真人验证，内容不重复不等于已标定的测量独立性；不直接推断稳定掌握。
+**权限、失败与边界**：题目待逐题教师审核与真人验证；3题和不同情境不代表心理测量齐备；仍为单选，不能替代主观理由、项目量规或直接推断稳定掌握。
 
 **关联接口**：
 
@@ -174,12 +176,19 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:112](../../../apps/api/src/modules/learning/classroom.service.ts#L112)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:136](../../../apps/api/src/modules/learning/classroom.service.ts#L136)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:132](../../../apps/api/src/modules/learning/classroom.service.ts#L132)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:160](../../../apps/api/src/modules/learning/classroom.service.ts#L160)。
 
 **补充实现文件**：
 
 - [apps/api/src/modules/learning/classroom-unit-checks.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.ts)
+- [apps/api/src/modules/learning/classroom-practice-content.ts](../../../apps/api/src/modules/learning/classroom-practice-content.ts)
+- [apps/api/src/modules/learning/classroom-practice-model.ts](../../../apps/api/src/modules/learning/classroom-practice-model.ts)
+- [apps/api/src/modules/learning/classroom-practice-u1.ts](../../../apps/api/src/modules/learning/classroom-practice-u1.ts)
+- [apps/api/src/modules/learning/classroom-practice-u2.ts](../../../apps/api/src/modules/learning/classroom-practice-u2.ts)
+- [apps/api/src/modules/learning/classroom-practice-u3.ts](../../../apps/api/src/modules/learning/classroom-practice-u3.ts)
+- [apps/api/src/modules/learning/classroom-practice-u4.ts](../../../apps/api/src/modules/learning/classroom-practice-u4.ts)
+- [apps/api/src/modules/learning/classroom-practice-u5.ts](../../../apps/api/src/modules/learning/classroom-practice-u5.ts)
 - [apps/web/app/studio/classroom/practice-panel.tsx](../../../apps/web/app/studio/classroom/practice-panel.tsx)
 - [apps/web/app/studio/classroom/practice-review.css](../../../apps/web/app/studio/classroom/practice-review.css)
 

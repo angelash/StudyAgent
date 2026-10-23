@@ -103,6 +103,8 @@ erDiagram
 
 `classroomSessions`同时保存课件快照、私有答案键、请求回执、步骤/句子断点、消息、练习和项目草稿。公开视图移除私有答案键与内部请求表。成人课程以固定courseId隔离，孩子批准课堂带studentId及studioCourseId。
 
+课堂新增可选私有`hintKeys`与公开已读`hintReceipts`，逐级正文和实际时间先持久化再返回；原始题面hint在公开视图置空。作答回执可带disposition与hintLevel，保留旧skip语义；旧布尔辅助事实不被猜为某一级提示或时间。当前练习与严格兼容的讲解阅读分开聚合，均不修改原始会话快照。
+
 `studioWhiteboards/studioSourceMaterials/studioLearningPacks/studioStudyPlans/studioActivities`分别保存白板、PDF资料、学案、排程和活动。`studioConnectors`中的订阅URL加密，响应剔除敏感字段；`studioScheduleEvents`是任务和外部事件的统一呈现模型。
 
 ### 3.6 GESP

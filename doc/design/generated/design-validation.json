@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-23T17:13:10.316Z",
-  "sourceRevision": "5740ef0a180d16b0bd0077ba2076ede1b3852b8e",
+  "at": "2026-10-23T18:03:34.694Z",
+  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -12,13 +12,13 @@
     "activeModules": 17,
     "activeControllers": 23,
     "apiClasses": 99,
-    "apiFunctions": 225,
+    "apiFunctions": 229,
     "domainCollections": 80,
-    "contractTypes": 208,
+    "contractTypes": 209,
     "webPages": 24,
     "webRouteHandlers": 1,
-    "apiTestFiles": 90,
-    "browserTestFiles": 8
+    "apiTestFiles": 91,
+    "browserTestFiles": 9
   },
   "features": {
     "areas": 14,
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 235
   },
   "sourceReferences": {
-    "uniqueFiles": 188,
+    "uniqueFiles": 197,
     "problems": [],
     "sha256": {
       ".github/workflows/verify.yml": "5f333eed9f9711a51a257c819d7c7221c34b563828868dd25c8b9b0625e6a15e",
@@ -97,11 +97,19 @@
       "apps/api/src/modules/gesp/gesp.integration.test.ts": "1f9227fc03c8e98d690d70cd366020a6a050caf0865b9479267bdc2d1604a19e",
       "apps/api/src/modules/gesp/gesp.service.ts": "0b98cf7e7fa8f81c6180f9dec2795dfbd976c49914b5f221463882fba6c0569d",
       "apps/api/src/modules/gesp/isolated-runner.test.ts": "60d4828953de26b71c60b29978167c3aab7af10f2eccf2c98bc72d5eface754a",
+      "apps/api/src/modules/learning/classroom-practice-content.test.ts": "3e198a6e0c630219a3bce545d5c8a4c0596e29004326931515f152ef1856b0ec",
+      "apps/api/src/modules/learning/classroom-practice-content.ts": "d56db1a5d917d0921fb6f87ebea34218d996a9df64bc4b446b68549c2e1a2954",
+      "apps/api/src/modules/learning/classroom-practice-model.ts": "16eee00f6cde41dcadd3cf77d251d71fab3b1277f86f646172408fbc1b633095",
+      "apps/api/src/modules/learning/classroom-practice-u1.ts": "97527122f77eee5a4c4da987f8e1375d2b1a5403a0e175598aa12f73ca232169",
+      "apps/api/src/modules/learning/classroom-practice-u2.ts": "cf89c73315ebc04c83d57f7615c9c8afa21b37d5486529f16985c8ab9b9b4fdf",
+      "apps/api/src/modules/learning/classroom-practice-u3.ts": "0c4401f4828158af16f7bf449f50f3b018ccda3acd3e3a205134449595b8889d",
+      "apps/api/src/modules/learning/classroom-practice-u4.ts": "0d9eff15766e55a3bf0a94a894ea406d154a6170a22624babdfbd5eacae2d6b4",
+      "apps/api/src/modules/learning/classroom-practice-u5.ts": "2dc90e9429ae275e9b7d62a4264acd2ab0976e776b236242e8fff90ef2d8f1ff",
       "apps/api/src/modules/learning/classroom-unit-checks.test.ts": "7369ab1d4097418ec9a031c452dc97608b7a5311f37a8f6c8b785a1b4498631c",
       "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428",
       "apps/api/src/modules/learning/classroom.controller.ts": "c50adb6862f244f81de370864efb235dea27d35da09fc9d4c89349f291bc2ee9",
-      "apps/api/src/modules/learning/classroom.integration.test.ts": "60413d8c33016c623193069d3b656224fd2080483aeab83d6b530e1b743926e9",
-      "apps/api/src/modules/learning/classroom.service.ts": "ac3b0a5230b22309a4488e05d444468158945bc979ad550864726dedd4fb5acf",
+      "apps/api/src/modules/learning/classroom.integration.test.ts": "5019f4b1078b0faaccb39c55b0075d739fb12e40bb6dfb3f5cc14aab98f3e064",
+      "apps/api/src/modules/learning/classroom.service.ts": "50c02a1ac11132f8637162412bbe43ed9cd0438da6fc8220ffda32e6de90266a",
       "apps/api/src/modules/learning/ics-calendar.ts": "1e012f10843243c469356db828ed50337b4e8bda89a8016df98c53ea0ccb2b18",
       "apps/api/src/modules/learning/learning-home.controller.ts": "4d35a6f1d6b9b29720493c64297224b623b65d5f7617f46f1660544f49fc57fc",
       "apps/api/src/modules/learning/learning-home.integration.test.ts": "12b838c625ca831ed62deb4c12222631bd2888171ed5512f82b858beec9982f3",
@@ -164,17 +172,17 @@
       "apps/web/app/studio/calendar-board.tsx": "ff7bf9b30c80429c26ee603fd37a1d6c61b8e3e69b3c44fb51ddc9028a3684a3",
       "apps/web/app/studio/classroom/board-step.tsx": "e12f4b01816c895bf1af604376f7a20ceb49ca8526ccec57c9d0a904f168c401",
       "apps/web/app/studio/classroom/code-workbench.tsx": "4e7cb99a8238d32fd13dd5fea03fa9e0c162d18a18dc08aed90ba13470d81222",
-      "apps/web/app/studio/classroom/practice-panel.tsx": "4057297084326b6a5ef8c58e99fb69eda33b4885aebcac5a2d9d7d1e020b3e39",
-      "apps/web/app/studio/classroom/practice-review.css": "f813ab6a31faa9d813bdf719e836252624ead8aad8e8fa0ea438763ebfa24cec",
+      "apps/web/app/studio/classroom/practice-panel.tsx": "764ee9c107c1b1240f323eedeffda0fb170176da60858e6813e3ba4b91e5d483",
+      "apps/web/app/studio/classroom/practice-review.css": "fdd2dede5eff1d1177e3073c26b486bb7b7a81b41141fb0a45fd4443bdae0da8",
       "apps/web/app/studio/classroom/runner/route.ts": "7cbb7da5d4104ce243ea6422bde9c6dd5408cd85b8cff72f9be9e986beee467b",
-      "apps/web/app/studio/classroom/workbench.tsx": "427f2a10388fb4cb709b32ff2f9bfa14652474aa640eab715762fae5c11caa38",
+      "apps/web/app/studio/classroom/workbench.tsx": "3c4a954471cba711230621379ca69469e9c1e07a4151329a0a2ebdfc302b541e",
       "apps/web/app/studio/course-builder.css": "70556bf2e44e8b29934e9afca0264f17dda130ab69429032ed078f1b66609f27",
       "apps/web/app/studio/course-builder.tsx": "772b5c474740f8869eca88935a4926aebf8bbfe2d8404d82dd46f95e5cf8899a",
-      "apps/web/app/studio/course-library-state.ts": "7c43d9c3a5fe001bb9971e90ff57245f4cc743b2155db38d36ceb48fcec369d6",
+      "apps/web/app/studio/course-library-state.ts": "5d120bc1a17c00227391d7bbc2ebf4f96651dfd0a5c9f0f713242ce67cae6b7f",
       "apps/web/app/studio/course-library.css": "6c9409bd5a577db46f7e365821c353e67a1919c989465083a956e92f47b4fe73",
-      "apps/web/app/studio/my-courses.tsx": "2864f17ef8f6e1210f091768ed3d49d4a031de9de198a945fd0c9001b310dfca",
+      "apps/web/app/studio/my-courses.tsx": "4912968a369cc595449cc7371b60bcce2d4f0e75bb98d484b81764efd70bf437",
       "apps/web/app/studio/studio-navigation.tsx": "8e77b8727debf396407965f738d906b1d7d2f60cb897451cc7ef48b08612b82e",
-      "apps/web/app/studio/studio.tsx": "a8220aa28986cfb23e6c18baac7caaf4d152f7e602b748740d6ae6242fa4adbf",
+      "apps/web/app/studio/studio.tsx": "cbfe5d1016ddc7524f18ccc2415917130564aacb65662072cc9790793c4e9acf",
       "apps/web/app/studio/whiteboard-player.tsx": "1c16d70b0a5404e68e4fb772994d6eaf9325e82e0fe32c7ca4cc25d21e399f01",
       "apps/web/app/studio/workspace-dialog.tsx": "715abc9f7b4986127a020d8a6f334ba0657e18a25c5c8ae9c8c463906899d178",
       "apps/web/components/structured-answer-input.tsx": "f92c89b0d71bc0546673379226a5169085ae7346cf0f90b21c5a5da137e5516e",
@@ -184,7 +192,7 @@
       "apps/web/lib/learning-context.ts": "532cea5d8a74192b5cde06af5b7f16820530c8348707c529dcbebb466c190269",
       "packages/contracts/src/ai-models.ts": "41c03388fb4dcf552328bba4e2aa257e1442c42691e3ea8cd7cfc0a05b19c4b9",
       "packages/contracts/src/answer-protocol.ts": "2dcf81ace80abad1db97bd0163c196726b378ebb26aefd886f23b397570d78b4",
-      "packages/contracts/src/classroom.ts": "51786dbaa6d2f1677d904c57459002276edcc32f359c5605a78a306d6fe244d9",
+      "packages/contracts/src/classroom.ts": "992b3c19e49e13a75501fc43d20af2803e30d185ded2e67d3cdf3e73cc130dc5",
       "packages/contracts/src/curriculum.ts": "d8993b824937af407a0e002ba6304dacf82f9b2b487f7da0ef71dfdc12fb96ae",
       "packages/contracts/src/diagnostics.ts": "e7a1fcc4cfb091b445260e2f6272ab6523468a3d871df5d0571ecfaf790cded9",
       "packages/contracts/src/gesp.ts": "bbfe0b961826f83550cb6d1c4c763a9b2b1008125b31a7746b36ba1cf6aaccc0",
@@ -210,7 +218,8 @@
       "scripts/operations/start-daemon.ps1": "d27f62b3f0846fbaa532c055861823ae31b0489da8bb7177af2a94cfa83b054f",
       "scripts/processing/process_document.py": "400d2fe1280dfff21fcc5805749b6f53f0894ce0226f3e324840101f00cc1c62",
       "scripts/qa/run-browser-acceptance.cjs": "389266cc0b686033679f937c90b6b9f792e06849115f1e5ea90b197f7bc60c6a",
-      "tests/e2e/classroom-review.spec.ts": "e801b3c28b6249dfde602165052dc78ed8ddb61fc8b6b81f769a83956311f635",
+      "tests/e2e/classroom-practice.spec.ts": "9088ca47b9ad395a3099be90f104212cfd94eee7f4640682339fc543ded0d81f",
+      "tests/e2e/classroom-review.spec.ts": "79b6e718b21f7585c297b8bacbc35adcaebc5a983b49c1dd252260064751b0d1",
       "tests/e2e/classroom.spec.ts": "54798a81da2b4771763a511abfd6b7ca050281e141badc7df67db0bbed6b6123",
       "tests/e2e/course-builder.spec.ts": "56c2076971deb51d57bd0de53b8e01bdb813d262dafcb8c638ec3eaaefa9b182",
       "tests/e2e/course-library.spec.ts": "809d1f90312d55ebc5b346dfb19bd744310d38a6b59f010c091b2aa098f29a49",
@@ -226,7 +235,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 1639,
+    "checked": 1668,
     "missing": []
   },
   "staticContent": {
@@ -297,8 +306,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-24/course-blueprint-acceptance.json",
-    "revision": "5740ef0a180d16b0bd0077ba2076ede1b3852b8e",
+    "receipt": "../evidence/2026-10-24/classroom-practice-acceptance.json",
+    "revision": "9c2821c8b706e2417703061b378e961cef8c3412",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

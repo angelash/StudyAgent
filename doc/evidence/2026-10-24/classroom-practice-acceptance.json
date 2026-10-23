@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-23T18:02:41.750Z",
+  "sourceRevision": "9c2821c8b706e2417703061b378e961cef8c3412",
+  "planRevision": "3775c8d",
+  "batch": "E02/E03 full micro-lesson Practice sets and progressive help",
+  "goalComplete": false,
+  "requirements": [
+    "XP-E03",
+    "XP-E04",
+    "XP-E05",
+    "XP-B04",
+    "XP-B06"
+  ],
+  "requirementStatus": {
+    "XP-E03": "implemented",
+    "XP-E04": "in_progress"
+  },
+  "scope": "118 additional authored questions, 60 micro-lessons each with at least three questions, private sequential hints, separate dont-know/skip/wrong, lost-response recovery and exact teaching-content progress compatibility. Not calibrated independent measurement, teacher approval or full product parity.",
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "webTypes": true,
+    "isolatedProductionWeb": true,
+    "daemonProductionWeb": true
+  },
+  "api": {
+    "command": "node ../../node_modules/vitest/vitest.mjs run",
+    "cwd": "apps/api",
+    "passed": 798,
+    "failed": 0,
+    "skipped": 6,
+    "filesPassed": 90,
+    "filesSkipped": 1,
+    "durationSeconds": 238.73,
+    "outputEvidence": "Completed tool session 33481, local start 2026-10-24 01:48:32. Final backend code; subsequent changes only expose and clear errors on the Web.",
+    "focusedBeforeFull": {
+      "passed": 33,
+      "files": [
+        "classroom-practice-content.test.ts",
+        "classroom-unit-checks.test.ts",
+        "classroom.integration.test.ts"
+      ],
+      "durationSeconds": 7.91
+    },
+    "persistenceScope": "Real isolated SQLite, API restart, sequential/replayed help, hidden ungranted hints, dont-know vs skip, first receipts, archived one-question practice, frozen legacy hint and strict teaching identity."
+  },
+  "browser": {
+    "fullSuite": {
+      "artifact": "data/qa/classroom-practice-browser-final.json",
+      "stats": {
+        "startTime": "2026-10-23T17:54:56.616Z",
+        "duration": 118423.425,
+        "expected": 30,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "dataDirectory": "data/qa/classroom-practice-final-20261024"
+    },
+    "scenarios": [
+      "Server commits hint level1 then response is aborted; explicit level1 retry does not advance.",
+      "Both help levels survive reload and remain assisted after a correct answer.",
+      "Dont-know, skip and assisted correct are reviewed separately and cannot overwrite first answers.",
+      "Data/diagram examples from each of five units render at 1440/768/390 and permit answer actions.",
+      "Existing teaching, subtitle/audio timing, practice reference geometry, course library, blueprint, assessment and calendar journeys remain passing."
+    ],
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "screenshots": [
+      "classroom-practice-review-1440.png",
+      "classroom-practice-review-390.png",
+      "classroom-practice-sequential-hints.png",
+      "classroom-practice-soc-2-3-3-1440.png",
+      "classroom-practice-soc-3-3-3-390.png",
+      "classroom-practice-soc-5-2-1-390.png"
+    ],
+    "screenshotVisualReview": true,
+    "firstRunFinding": "Initial focused run exposed invisible network errors on standalone practice and a feedback label mismatch. Both were corrected; final full30 passed."
+  },
+  "content": {
+    "courseId": "sociology-foundations",
+    "courseVersion": "2026-10-24.1",
+    "units": 5,
+    "lectures": 15,
+    "microLessons": 60,
+    "lessonQuestions": 182,
+    "unitCheckQuestions": 60,
+    "distinctQuestionIds": 242,
+    "microLessonsWithAtLeastThreeQuestions": 60,
+    "tableQuestions": 30,
+    "diagramQuestions": 2,
+    "hintLevels": 484,
+    "sourceSha256": {
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "b247035d59145720c1817e7532178d3daca7d263e8368ed25bd2f0cf72e2b727",
+      "apps/api/src/modules/learning/classroom-board-notes.ts": "c0de31588957e9d96fb536b2996cefd56db701a0cf3d010882a1403a0c4d67ed",
+      "apps/api/src/modules/learning/classroom-unit-checks.ts": "164751fcf2353581448d96f4fb68a1e8c926f68eac1e394675034fe65a036428",
+      "apps/api/src/modules/learning/classroom-practice-content.ts": "d56db1a5d917d0921fb6f87ebea34218d996a9df64bc4b446b68549c2e1a2954",
+      "apps/api/src/modules/learning/classroom-practice-model.ts": "16eee00f6cde41dcadd3cf77d251d71fab3b1277f86f646172408fbc1b633095",
+      "apps/api/src/modules/learning/classroom-practice-u1.ts": "97527122f77eee5a4c4da987f8e1375d2b1a5403a0e175598aa12f73ca232169",
+      "apps/api/src/modules/learning/classroom-practice-u2.ts": "cf89c73315ebc04c83d57f7615c9c8afa21b37d5486529f16985c8ab9b9b4fdf",
+      "apps/api/src/modules/learning/classroom-practice-u3.ts": "0c4401f4828158af16f7bf449f50f3b018ccda3acd3e3a205134449595b8889d",
+      "apps/api/src/modules/learning/classroom-practice-u4.ts": "0d9eff15766e55a3bf0a94a894ea406d154a6170a22624babdfbd5eacae2d6b4",
+      "apps/api/src/modules/learning/classroom-practice-u5.ts": "2dc90e9429ae275e9b7d62a4264acd2ab0976e776b236242e8fff90ef2d8f1ff"
+    },
+    "interpretation": "Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course.",
+    "additionalMicroLessonQuestions": 118,
+    "teacherReview": "pending",
+    "learnerValidation": "pending",
+    "primaryMeasurementQuestionCountIncreased": false
+  },
+  "artifactSha256": {
+    "data/qa/classroom-practice-browser-final.json": "c3b742595734430b46822d4ef7adcff895dd8ff15a051e5cb62f9f44beb02b95"
+  },
+  "runtime": {
+    "at": "2026-10-23T18:02:41.751Z",
+    "url": "http://127.0.0.1:3217",
+    "checks": [
+      {
+        "route": "/learn",
+        "status": 200
+      },
+      {
+        "route": "/studio?view=courses",
+        "status": 200
+      },
+      {
+        "route": "/studio/classroom",
+        "status": 200
+      },
+      {
+        "route": "/api/ready",
+        "status": 200
+      },
+      {
+        "route": "/api/learning/classroom/sessions/:id/hints",
+        "status": 401
+      }
+    ],
+    "guestBrowserErrors": [],
+    "pm2Services": [
+      "study-agent-api",
+      "study-agent-web",
+      "study-agent-health"
+    ],
+    "authenticatedJourneys": "Isolated real API only; production smoke used a clean guest context."
+  },
+  "environment": "No real family data or paid live model calls during QA. Six environment-dependent tests remain skipped, not counted as passing.",
+  "pending": [
+    "Question-by-question teacher review, distractor quality and learner validation",
+    "More response formats, dedicated projects/rubrics and independent follow-up measurement",
+    "Arbitrary-source multilingual courses, dynamic teaching and generated visuals",
+    "Full asset/state/pixel parity, real devices and real spaced-retention evidence"
+  ]
+}
