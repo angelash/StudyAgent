@@ -2,7 +2,6 @@ import { BadRequestException, ConflictException, ForbiddenException, Injectable,
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView } from '@study-agent/contracts';
-import { classroomSentences } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
@@ -11,11 +10,12 @@ import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
 import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomHintKeys, classroomLesson, classroomTeachingFingerprint, curriculumClassroomLesson } from './classroom-curriculum';
 import { sourceCourseLesson, sourceCourseAnswerKeys } from './source-course-content';
 import { assertSourceCourseAccess } from './source-course.service';
+import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, verifySpeechTrack } from './classroom-presentation';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number; explanation: string }>;
   hintKeys?: Record<string, string[]>;
-  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'hint'; messageId?: string; questionId?: string }>;
+  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'hint' | 'presentation'; messageId?: string; questionId?: string }>;
 };
 
 @Injectable()
@@ -57,6 +57,10 @@ export class ClassroomService {
 
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
     const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...safe } = structuredClone(row);
+    safe.presentation = structuredClone(sessionPresentation(row));
+    safe.messages = safe.messages.map(message => message.role === 'assistant' ? {
+      ...message, speech: message.speech ? verifySpeechTrack(message.content,message.speech) : freezeSpeechTrack(message.content,'legacy-v1'),
+    } : message);
     safe.lesson.questions = safe.lesson.questions.map(question => ({ ...question, hint: '', hintCount: this.hintLevels(row, question.id).length }));
     let current = classroomLesson(row.lessonId);
     if (row.studioCourseId) {
@@ -119,7 +123,7 @@ export class ClassroomService {
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
       ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId,...(authoringAnswerExposure?{authoringAnswerExposure:true}:{})}:{}),
-      contentFingerprint: fingerprint, lesson, cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
+      contentFingerprint: fingerprint, lesson, presentation: freezeClassroomPresentation(lesson,now), cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);
     return this.view(session);
@@ -128,19 +132,43 @@ export class ClassroomService {
   progress(user: InMemoryUserAccount, id: string, input: unknown) {
     const row = this.record(user, id);
     const command = validate(z.object({ expectedRevision: z.number().int().min(0), cursor: z.number().int().min(0),
-      revealed: z.number().int().min(0), sentenceCursor: z.number().int().min(0).optional(), completed: z.boolean().optional(), projectDraft: z.string().max(20000).optional() }).strict(), input);
+      revealed: z.number().int().min(0), sentenceCursor: z.number().int().min(0).optional(), completed: z.boolean().optional(), projectDraft: z.string().max(20000).optional(),
+      presentationVersion:z.enum(['legacy-v1','speech-v2']).optional(),unitId:z.string().min(1).max(100).optional() }).strict(), input);
     if (command.expectedRevision !== row.revision) throw new ConflictException('课堂已在其他页面更新，请重新载入断点');
     const count = row.lesson.steps.length;
     if (command.cursor >= count || command.revealed > count || command.cursor > command.revealed)
       throw new BadRequestException('课堂断点超出范围');
     if (command.completed && command.revealed !== count) throw new BadRequestException('请先完成所有讲解步骤');
     const sentenceCursor = command.sentenceCursor ?? (command.cursor === row.cursor ? row.sentenceCursor ?? 0 : 0);
-    if (sentenceCursor >= classroomSentences(row.lesson.steps[command.cursor].narration).length) throw new BadRequestException('字幕句子超出范围');
+    const presentation=sessionPresentation(row),units=presentation.tracks[row.lesson.steps[command.cursor].id].units;
+    if (sentenceCursor >= units.length) throw new BadRequestException('字幕句子超出范围');
+    const movesSentence=command.sentenceCursor!==undefined||command.cursor!==row.cursor;
+    if(presentation.version==='speech-v2'&&movesSentence&&(command.presentationVersion!==presentation.version||command.unitId!==units[sentenceCursor].id)||
+      command.presentationVersion!==undefined&&command.presentationVersion!==presentation.version||command.unitId!==undefined&&command.unitId!==units[sentenceCursor].id)
+      throw new ConflictException('字幕版本已变化，请重新读取课堂后继续');
     row.sentenceCursor = sentenceCursor;
     row.cursor = command.cursor; row.revealed = Math.max(row.revealed, command.revealed);
     if (command.completed) row.status = 'completed';
     if (command.projectDraft !== undefined) row.projectDraft = command.projectDraft;
     row.updatedAt = new Date().toISOString(); row.revision++;
+    return this.view(row);
+  }
+
+  upgradePresentation(user:InMemoryUserAccount,id:string,input:unknown){
+    const row=this.record(user,id),command=validate(z.object({expectedRevision:z.number().int().min(0),expectedVersion:z.literal('legacy-v1'),requestKey:z.string().min(8).max(180)}).strict(),input);
+    const hash=createHash('sha256').update(JSON.stringify([command.expectedRevision,command.expectedVersion])).digest('hex'),previous=row.requests.find(request=>request.key===command.requestKey);
+    if(previous){if(previous.kind!=='presentation'||previous.hash!==hash)throw new ConflictException('请求标识已被其他操作使用');return this.view(row);}
+    const old=sessionPresentation(row);
+    if(row.revision!==command.expectedRevision||old.version!==command.expectedVersion)throw new ConflictException('字幕已在其他页面更新，请读取当前版本后再操作');
+    const step=row.lesson.steps[row.cursor],fromCursor=row.sentenceCursor??0,original=old.tracks[step.id].units[fromCursor];
+    if(!original)throw new ConflictException('原字幕断点无法定位，已保留旧课堂');
+    const now=new Date().toISOString(),next=freezeClassroomPresentation(row.lesson,now),units=next.tracks[step.id].units;
+    let sourceStart=original.start;while(sourceStart<original.end&&/\s/u.test(step.narration[sourceStart]))sourceStart++;
+    const toCursor=units.findIndex(unit=>unit.start<=sourceStart&&sourceStart<unit.end);
+    if(toCursor<0)throw new ConflictException('原字幕范围无法映射，已保留旧课堂');
+    row.presentationRevisions=[...(row.presentationRevisions??[]),{id:this.store.nextId('presentation_revision'),at:now,stepId:step.id,fromCursor,toCursor,fromVersion:old.version,toVersion:next.version,previous:structuredClone(old)}];
+    row.presentation=next;row.sentenceCursor=toCursor;row.revision++;row.updatedAt=now;
+    row.requests.push({key:command.requestKey,hash,kind:'presentation'});
     return this.view(row);
   }
 
@@ -222,22 +250,31 @@ export class ClassroomService {
     const board = response.board;
     if (question) row.hintedQuestionIds = [...new Set([...(row.hintedQuestionIds ?? []), question.id])];
     row.messages.push({ id: this.store.nextId('classroom_message'), role: 'user', content: command.message, at: now },
-      { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, modelName: response.modelName, at: now,
+      { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, speech: freezeSpeechTrack(response.reply), modelName: response.modelName, at: now,
         ...(board ? { board: { ...board, page: boardPage } } : {}) });
     row.requests.push({ key: command.requestKey, hash, kind: 'chat', messageId: row.messages.at(-1)?.id });
     row.revision++; row.updatedAt = now;
     return this.view(row);
   }
 
-  async narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown) {
+  async narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal) {
     const row = this.record(user, id), step = row.lesson.steps.find(item => item.id === stepId);
     const message = row.messages.find(item => item.id === stepId && item.role === 'assistant');
     if (!step && !message) throw new NotFoundException('讲解步骤不存在');
-    const command = validate(z.object({ voice: z.string().min(1).max(120).optional(), sentenceIndex: z.number().int().min(0).optional() }).strict(), input ?? {});
+    const command = validate(z.object({ voice: z.string().min(1).max(120).optional(), sentenceIndex: z.number().int().min(0).optional(),
+      presentationVersion:z.enum(['legacy-v1','speech-v2']).optional(),unitId:z.string().min(1).max(100).optional() }).strict(), input ?? {});
     const text = step?.narration ?? message!.content;
-    const sentence = command.sentenceIndex === undefined ? text : classroomSentences(text)[command.sentenceIndex];
+    const track=step?sessionPresentation(row).tracks[step.id]:message!.speech?verifySpeechTrack(text,message!.speech):freezeSpeechTrack(text,'legacy-v1');
+    if(command.sentenceIndex!==undefined&&command.sentenceIndex>=track.units.length)throw new BadRequestException('讲解句子不存在');
+    const unit=command.sentenceIndex===undefined?undefined:track.units[command.sentenceIndex];
+    if(track.version==='speech-v2'&&(!unit||command.presentationVersion!==track.version||command.unitId!==unit.id)||
+      command.presentationVersion!==undefined&&command.presentationVersion!==track.version||command.unitId!==undefined&&command.unitId!==unit?.id)
+      throw new ConflictException('字幕版本已变化，请重新读取课堂后继续朗读');
+    const sentence = unit?.text??text;
     if (!sentence) throw new BadRequestException('讲解句子不存在');
-    const audio = await this.speech.synthesize(sentence, command.voice);
+    if(signal?.aborted)throw new BadRequestException('朗读已停止');
+    const audio = await this.speech.synthesize(sentence, command.voice, signal);
+    if(signal?.aborted)throw new BadRequestException('朗读已停止');
     return new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length });
   }
 }

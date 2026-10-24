@@ -1,4 +1,5 @@
 import type { StudioSpeechCapabilities } from './studio';
+import type { ClassroomPresentation, ClassroomPresentationRevision, ClassroomSpeechTrack } from './classroom-speech';
 
 export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[]; captions?: string[] };
 export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' | 'image' | 'diagram' | 'code' | 'table'; text: string;
@@ -23,10 +24,12 @@ export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number
   explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number; answerExposure?: 'authorship' };
 export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
 export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;
+  speech?: ClassroomSpeechTrack;
   board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
   sourceCourseId?: string; authoringAnswerExposure?: boolean;
+  presentation?: ClassroomPresentation; presentationRevisions?: ClassroomPresentationRevision[];
   cursor: number; revealed: number; sentenceCursor?: number; status: 'paused' | 'completed'; revision: number;
   messages: ClassroomChatMessage[]; answers: ClassroomAnswerReceipt[]; projectDraft: string;
   hintedQuestionIds?: string[];

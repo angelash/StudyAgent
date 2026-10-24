@@ -4,8 +4,8 @@ import { classroomSentences, type ClassroomBlock, type ClassroomStep } from '@st
 import { ClassroomFigure } from './diagram';
 import { CodeWorkbench } from './code-workbench';
 
-export function BoardStep({ step, sentence, full = false, print = false }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean }) {
-  const last = Math.max(0, classroomSentences(step.narration).length - 1);
+export function BoardStep({ step, sentence, full = false, print = false,unitCount }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean;unitCount?:number }) {
+  const last = Math.max(0, (unitCount??classroomSentences(step.narration).length) - 1);
   const visible = (index: number) => full || sentence >= Math.min(index, last);
   return <>{step.blocks.map(block => {
     if (!visible(block.atSentence ?? 0)) return null;

@@ -90,25 +90,27 @@ export class SpeechService {
       defaultVoice: provider === 'minimax' ? this.env.MINIMAX_TTS_VOICE : provider === 'openai' ? this.env.OPENAI_TTS_VOICE : null };
   }
 
-  async synthesize(text: string, requestedVoice?: string): Promise<SpeechResult> {
-    const clean = text.replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 4096);
+  async synthesize(text: string, requestedVoice?: string, signal?:AbortSignal): Promise<SpeechResult> {
+    if(signal?.aborted)throw new BadRequestException('朗读已停止');
+    const clean = text.replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim();
     if (!clean) throw new BadRequestException('旁白文本不能为空');
+    if(clean.length>4096)throw new BadRequestException('单段朗读超过4096字，请拆分讲解后重试，文字内容仍可阅读');
     const capabilities = this.capabilities();
     if (!capabilities.provider) throw new ServiceUnavailableException('未配置白板语音服务');
     if (requestedVoice && !capabilities.voices.some(voice => voice.id === requestedVoice)) {
       throw new BadRequestException('不支持的旁白音色');
     }
-    if (capabilities.provider === 'minimax') return { content: await this.minimax(clean, requestedVoice),
+    if (capabilities.provider === 'minimax') return { content: await this.minimax(clean, requestedVoice,signal),
       contentType: 'audio/wav', provider: 'minimax' };
     if (!this.openai) throw new ServiceUnavailableException('OpenAI 语音服务不可用');
     try {
       const speech = await this.openai.audio.speech.create({ model: this.env.OPENAI_TTS_MODEL,
-        voice: requestedVoice || this.env.OPENAI_TTS_VOICE, input: clean, response_format: 'mp3' });
+        voice: requestedVoice || this.env.OPENAI_TTS_VOICE, input: clean, response_format: 'mp3' },{signal});
       return { content: Buffer.from(await speech.arrayBuffer()), contentType: 'audio/mpeg', provider: 'openai' };
-    } catch { throw new ServiceUnavailableException('OpenAI 旁白暂时不可用，可以稍后重试或使用字幕视频'); }
+    } catch { if(signal?.aborted)throw new BadRequestException('朗读已停止');throw new ServiceUnavailableException('OpenAI 旁白暂时不可用，可以稍后重试或使用字幕视频'); }
   }
 
-  private async minimax(text: string, requestedVoice?: string) {
+  private async minimax(text: string, requestedVoice?: string, signal?:AbortSignal) {
     const base = new URL(this.env.MINIMAX_TTS_BASE_URL);
     if (base.protocol !== 'https:' || base.username || base.password) throw new ServiceUnavailableException('语音服务地址配置无效');
     const emotion = this.env.MINIMAX_TTS_EMOTION?.trim().toLowerCase();
@@ -116,15 +118,17 @@ export class SpeechService {
     const body = JSON.stringify(buildMiniMaxRequest(this.env, text, requestedVoice));
     let lastError: unknown;
     for (let attempt = 0; attempt <= this.env.MINIMAX_TTS_MAX_RETRIES; attempt += 1) {
+      if(signal?.aborted)throw new BadRequestException('朗读已停止');
       const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 30_000);
       try {
-        const response = await fetch(base, { method: 'POST', signal: controller.signal,
+        const response = await fetch(base, { method: 'POST', signal: signal?AbortSignal.any([signal,controller.signal]):controller.signal,
           headers: { authorization: `Bearer ${this.env.MINIMAX_API_KEY}`, 'content-type': 'application/json', accept: 'text/event-stream' }, body });
         if (!response.ok) throw new ServiceUnavailableException(`语音服务请求失败（HTTP ${response.status}）`);
         const payload = await response.text();
         if (Buffer.byteLength(payload, 'utf8') > maxSseBytes) throw new ServiceUnavailableException('语音服务响应过大');
         return pcm16ToWav(decodeMiniMaxSse(payload));
       } catch (error) {
+        if(signal?.aborted)throw new BadRequestException('朗读已停止');
         lastError = error;
         if (attempt >= this.env.MINIMAX_TTS_MAX_RETRIES) break;
       } finally { clearTimeout(timeout); }

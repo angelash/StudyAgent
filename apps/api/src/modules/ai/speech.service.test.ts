@@ -8,7 +8,7 @@ function sse(audio: Buffer, code = 0) {
 }
 
 describe('whiteboard speech providers', () => {
-  afterEach(() => vi.unstubAllEnvs());
+  afterEach(() => {vi.unstubAllEnvs();vi.unstubAllGlobals();vi.restoreAllMocks();});
 
   it('ports MiniMax T2A v2 constrained PCM request settings', () => {
     const env = loadApiEnv({ MINIMAX_API_KEY: 'fixture-key' });
@@ -55,5 +55,12 @@ describe('whiteboard speech providers', () => {
     const service = new SpeechService();
     expect(service.capabilities()).toMatchObject({ available: true, provider: 'openai', defaultVoice: 'alloy' });
     expect(service.capabilities().voices.map(voice => voice.id)).toContain('coral');
+  });
+  it('forwards cancellation to MiniMax and stops retries instead of continuing a cancelled sentence',async()=>{
+    vi.stubEnv('MINIMAX_API_KEY','fixture-key');vi.stubEnv('MINIMAX_TTS_BASE_URL','https://api.minimaxi.com/v1/t2a_v2');vi.stubEnv('MINIMAX_TTS_MAX_RETRIES','2');
+    let entered!:()=>void;const arrival=new Promise<void>(resolve=>{entered=resolve;}),fetcher=vi.fn((_url:unknown,options:any)=>new Promise<Response>((_resolve,reject)=>{options.signal.addEventListener('abort',()=>reject(new DOMException('Cancelled','AbortError')),{once:true});entered();}));vi.stubGlobal('fetch',fetcher);const service=new SpeechService(),controller=new AbortController(),pending=service.synthesize('Keep this exact sentence.',undefined,controller.signal);const rejected=expect(pending).rejects.toThrow('朗读已停止');await arrival;controller.abort();await rejected;expect(fetcher).toHaveBeenCalledOnce();
+  });
+  it('rejects oversized or already cancelled text before invoking a speech provider',async()=>{
+    vi.stubEnv('MINIMAX_API_KEY','fixture-key');const fetcher=vi.fn();vi.stubGlobal('fetch',fetcher);const service=new SpeechService(),controller=new AbortController();controller.abort();await expect(service.synthesize('Test',undefined,controller.signal)).rejects.toThrow('朗读已停止');await expect(service.synthesize('a'.repeat(4097))).rejects.toThrow('4096');expect(fetcher).not.toHaveBeenCalled();
   });
 });

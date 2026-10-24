@@ -12,6 +12,9 @@ export class ClassroomController {
   @Patch('sessions/:id') progress(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     return this.classroom.progress(req.user, id, input);
   }
+  @Post('sessions/:id/presentation') presentation(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Body() input:unknown){
+    return this.classroom.upgradePresentation(req.user,id,input);
+  }
   @Post('sessions/:id/answers') answer(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     return this.classroom.answer(req.user, id, input);
   }
@@ -25,6 +28,9 @@ export class ClassroomController {
     try { return await this.classroom.ask(req.user, id, input, controller.signal); }
     finally { req.res?.off('close', disconnect); }
   }
-  @Post('sessions/:id/narration/:stepId') narration(@Req() req: AuthenticatedRequest, @Param('id') id: string,
-    @Param('stepId') stepId: string, @Body() input: unknown) { return this.classroom.narration(req.user, id, stepId, input); }
+  @Post('sessions/:id/narration/:stepId') async narration(@Req() req: AuthenticatedRequest, @Param('id') id: string,
+    @Param('stepId') stepId: string, @Body() input: unknown) {
+    const controller=new AbortController(),disconnect=()=>{if(!req.res?.writableEnded)controller.abort();};req.res?.once('close',disconnect);
+    try{return await this.classroom.narration(req.user,id,stepId,input,controller.signal);}finally{req.res?.off('close',disconnect);}
+  }
 }

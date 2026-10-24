@@ -13,7 +13,12 @@ describe('classroom generated images, private files and durable task lifecycle',
     const directory = mkdtempSync(join(tmpdir(), 'study-visuals-')), names = ['NODE_ENV', 'STUDY_STORAGE', 'DATABASE_URL', 'STUDY_DATA_DIR', 'STUDY_WORKER_ENABLED', 'STUDY_SEED_FOUNDATION', 'XIAOJIU_CHAT_ENABLED'] as const, prior = Object.fromEntries(names.map(name => [name, process.env[name]]));
     let app: any, store: any, worker: any, images: any, parent: any, other: any, session: any, counter = 0, pg: Pool | undefined, schema: string | undefined;
     const base = () => '/learning/classroom/sessions/' + session.id + '/visuals';
-    async function call(method: 'get' | 'post' | 'patch', path: string, body?: unknown, actor = parent, status = method === 'post' ? 201 : 200) { let query = request(app.getHttpServer())[method]('/api' + path); if (actor)
+    async function call(method: 'get' | 'post' | 'patch', path: string, body?: unknown, actor = parent, status = method === 'post' ? 201 : 200) {
+      if(method==='patch'&&/^\/learning\/classroom\/sessions\/[^/]+$/.test(path)&&body&&typeof body==='object'){
+        const response=await request(app.getHttpServer()).get('/api'+path).set('Authorization','Bearer '+actor.token),saved=response.body.data,command=body as any;
+        if(response.status===200&&saved.presentation){const step=saved.lesson.steps[command.cursor??saved.cursor],index=command.sentenceCursor??((command.cursor??saved.cursor)===saved.cursor?saved.sentenceCursor??0:0);body={...command,presentationVersion:saved.presentation.version,unitId:saved.presentation.tracks[step?.id]?.units[index]?.id};}
+      }
+      let query = request(app.getHttpServer())[method]('/api' + path); if (actor)
         query = query.set('Authorization', 'Bearer ' + actor.token); if (body !== undefined)
         query = query.send(body as object); return (await query.expect(status)).body.data; }
     async function boot() { const { AppModule } = require('../../../dist/apps/api/src/app.module.js'), { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js'), { ClassroomImageService } = require('../../../dist/apps/api/src/modules/ai/classroom-image.service.js'), { ClassroomVisualWorkerService } = require('../../../dist/apps/api/src/modules/learning/classroom-visual-worker.service.js'); app = await NestFactory.create(AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init(); store = app.get(InMemoryStoreService); worker = app.get(ClassroomVisualWorkerService); images = app.get(ClassroomImageService); vi.spyOn(images, 'capabilities').mockResolvedValue({ available: true, modelId: 'gpt-image-2', reason: 'ready', message: 'Test fixture only' }); }

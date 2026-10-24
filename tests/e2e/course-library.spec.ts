@@ -21,7 +21,7 @@ async function fixture(page: Page, withCourses = true) {
       courses.push(await call('/learning/studio/courses', { studentId, subject: 'math', title, objective: preview.objective, previewFingerprint: preview.fingerprint, requestKey: crypto.randomUUID() }));
     }
     const finished = await call('/learning/classroom/sessions', { studioCourseId: courses[2].id, lessonId: courses[2].units[0].lessons.find((lesson: any) => lesson.kind === 'learn').id });
-    const complete = await fetch(api + '/learning/classroom/sessions/' + finished.id, { method: 'PATCH', headers, body: JSON.stringify({ expectedRevision: finished.revision, cursor: finished.lesson.steps.length - 1, revealed: finished.lesson.steps.length, completed: true }) });
+    const complete = await fetch(api + '/learning/classroom/sessions/' + finished.id, { method: 'PATCH', headers, body: JSON.stringify({ expectedRevision: finished.revision, cursor: finished.lesson.steps.length - 1, revealed: finished.lesson.steps.length, completed: true,presentationVersion:finished.presentation.version,unitId:finished.presentation.tracks[finished.lesson.steps.at(-1).id].units[0].id }) });
     expect(complete.status).toBe(200);
     await call('/learning/classroom/sessions', { studioCourseId: courses[1].id, lessonId: courses[1].units[0].lessons.find((lesson: any) => lesson.kind === 'learn').id });
   }

@@ -21,6 +21,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
+    /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
     /^learning\/projects\/(catalog|[^/]+)$/,
     /^learning\/source-courses(\/(materials|[^/]+))?$/,
     /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
@@ -37,7 +38,8 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^ai\/models$/, /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
   POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
-    /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|narration\/[^/]+))?$/,
+    /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|narration\/[^/]+))?$/,
+    /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice))?$/,
     /^learning\/source-courses(\/materials\/text|\/[^/]+\/(confirm|cancel|retry|archive))?$/,
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,

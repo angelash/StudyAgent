@@ -37,9 +37,9 @@ async function main() {
   const counts = () => store.requestContext(() => ['diagnosticResponses', 'diagnosticPlans', 'scoringRevisions'].map(name => store.inspect(name).length));
   const baselineCounts = await counts();
   evidence.checks.realSessionOpened = session.lesson.steps.length === 8;
-  const revealed = await call('PATCH', '/learning/classroom/sessions/' + session.id, { expectedRevision: 0, cursor: 1, revealed: 2 });
+  const revealed = await call('PATCH', '/learning/classroom/sessions/' + session.id, { expectedRevision: 0, cursor: 1, revealed: 2, presentationVersion:session.presentation.version,unitId:session.presentation.tracks[session.lesson.steps[1].id].units[0].id });
   const speechResponse = await fetch(base + '/learning/classroom/sessions/' + session.id + '/narration/' + encodeURIComponent(session.lesson.steps[0].id), {
-    method: 'POST', signal: AbortSignal.timeout(90000), headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: JSON.stringify({ sentenceIndex: 0 }) });
+    method: 'POST', signal: AbortSignal.timeout(90000), headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: JSON.stringify({ sentenceIndex: 0,presentationVersion:session.presentation.version,unitId:session.presentation.tracks[session.lesson.steps[0].id].units[0].id }) });
   if (!speechResponse.ok) throw new Error('Speech HTTP ' + speechResponse.status);
   const audio = Buffer.from(await speechResponse.arrayBuffer());
   if (!speechResponse.headers.get('content-type')?.startsWith('audio/') || audio.length < 1000) throw new Error('Invalid speech payload');

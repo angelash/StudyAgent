@@ -35,6 +35,10 @@ describe('classroom teaching sessions and persistent isolation', () => {
   });
   async function call(method: 'get' | 'post' | 'patch', path: string, body?: unknown, actor = parent,
     status = method === 'post' ? 201 : 200) {
+    if(method==='patch'&&/^\/learning\/classroom\/sessions\/[^/]+$/.test(path)&&body&&typeof body==='object'){
+      const response=await request(app.getHttpServer()).get('/api'+path).set('Authorization','Bearer '+actor.token),saved=response.body.data,command=body as any;
+      if(response.status===200&&saved.presentation&&command.presentationVersion===undefined){const step=saved.lesson.steps[command.cursor??saved.cursor],index=command.sentenceCursor??((command.cursor??saved.cursor)===saved.cursor?saved.sentenceCursor??0:0);body={...command,presentationVersion:saved.presentation.version,unitId:saved.presentation.tracks[step?.id]?.units[index]?.id};}
+    }
     let query = request(app.getHttpServer())[method]('/api' + path).set('Authorization', 'Bearer ' + actor.token);
     if (body !== undefined) query = query.send(body as object);
     return (await query.expect(status)).body.data;
@@ -141,6 +145,7 @@ describe('classroom teaching sessions and persistent isolation', () => {
       const row = store.find('classroomSessions', { id: saved.id }); row.contentFingerprint = 'legacy-practice';
       row.lesson.questions = row.lesson.questions.slice(0, 1); row.lesson.questions[0].hint = '旧版原始提示，只按原快照提供。';
       delete row.lesson.practiceVersion; delete row.hintKeys; delete row.hintReceipts;
+      delete row.presentation;
       row.status = 'completed'; row.cursor = row.lesson.steps.length - 1; row.revealed = row.lesson.steps.length;
     });
     const current = await call('post', base + '/sessions', { lessonId: saved.lessonId, useCurrentVersion: true });
@@ -192,13 +197,13 @@ describe('classroom teaching sessions and persistent isolation', () => {
 
   it('synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor', async () => {
     const session = await call('post', base + '/sessions', { lessonId: 'soc-4-1-1' });
-    const step = session.lesson.steps[0], sentences = classroomSentences(step.narration);
+    const step = session.lesson.steps[0], units=session.presentation.tracks[step.id].units,sentences = units.map((unit:any)=>unit.text);
     const { SpeechService } = require('../../../dist/apps/api/src/modules/ai/speech.service.js');
     const synthesize = vi.spyOn(app.get(SpeechService), 'synthesize').mockResolvedValue({ content: Buffer.alloc(44), contentType: 'audio/wav', provider: 'minimax' });
     try {
       await request(app.getHttpServer()).post('/api' + base + '/sessions/' + session.id + '/narration/' + step.id)
-        .set('Authorization', 'Bearer ' + parent.token).send({ sentenceIndex: 1 }).expect(201);
-      expect(synthesize).toHaveBeenCalledWith(sentences[1], undefined);
+        .set('Authorization', 'Bearer ' + parent.token).send({ sentenceIndex: 1,presentationVersion:session.presentation.version,unitId:units[1].id }).expect(201);
+      expect(synthesize).toHaveBeenCalledWith(sentences[1], undefined,expect.any(AbortSignal));
       await call('post', base + '/sessions/' + session.id + '/narration/' + step.id, { sentenceIndex: sentences.length }, parent, 400);
       expect(synthesize).toHaveBeenCalledTimes(1);
       await call('patch', base + '/sessions/' + session.id, { expectedRevision: 0, cursor: 0, revealed: 1, sentenceCursor: sentences.length }, parent, 400);
