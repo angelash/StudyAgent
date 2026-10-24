@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T05:27:15.083Z",
-  "sourceRevision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
+  "at": "2026-10-24T05:50:47.347Z",
+  "sourceRevision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -12,12 +12,12 @@
     "activeModules": 18,
     "activeControllers": 27,
     "apiClasses": 114,
-    "apiFunctions": 308,
+    "apiFunctions": 313,
     "domainCollections": 86,
     "contractTypes": 251,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 108,
+    "apiTestFiles": 109,
     "browserTestFiles": 15
   },
   "features": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 276
   },
   "sourceReferences": {
-    "uniqueFiles": 273,
+    "uniqueFiles": 276,
     "problems": [],
     "sha256": {
       ".github/workflows/verify.yml": "e1fa131073f75eff8131002f3dfc59f1658e734698a832d1f18ce5efc145dc62",
@@ -46,8 +46,11 @@
       "apps/api/src/infrastructure/runtime-metrics.service.ts": "7f237345ed1890c0234f148fc05f13d436b90da004aa41b21ae7e8f9893675df",
       "apps/api/src/infrastructure/scoped-transactions.test.ts": "32168d384b03ce88e08bc44b7196c86d1c52bce447ec8bb2e5b64a9605550848",
       "apps/api/src/infrastructure/source-material-backup.integration.test.ts": "ede414486fd9305c1fb3d4f9eea930e5ae29dad7173374a1230adb2c25e44b4b",
-      "apps/api/src/infrastructure/studio-file-coordination.ts": "6d3467ac7be2784e70d585c2a303eb2f99e72a696af0fe592cdc187c46fd8c4e",
+      "apps/api/src/infrastructure/studio-atomic-marker.test.ts": "5970742018ca49a159dd16057f8a5a53a44ea319a83119f137ef93ee9c64fdb4",
+      "apps/api/src/infrastructure/studio-atomic-marker.ts": "3c4ab70af94a8e4f277b399655cc465c8a68b10a2fea33433773aead2fc57873",
+      "apps/api/src/infrastructure/studio-file-coordination.ts": "5276a0cae8469822d2de0bffbfbeef9ed162113c6bddd4a8ec155cbccc216835",
       "apps/api/src/infrastructure/studio-file-inventory.ts": "71b54de34bab806e71541a78bc4bb8acd4d29354583aa405b3c247b8805a18d8",
+      "apps/api/src/infrastructure/studio-file-paths.ts": "0ab767da049aa90776849fe438e344bcbacbebe5dfcf5ac21a8ef5ab48cef4e2",
       "apps/api/src/infrastructure/task-repository.test.ts": "d3b047ebf00fca254c6c5a8dd24d0e3f35e0e9ecb3ce2b4a136a2176c203748f",
       "apps/api/src/infrastructure/task-repository.ts": "86b9e76a323d11409f7aa282c1fd278959a90eda1b26b1a49aeeefc87e79e385",
       "apps/api/src/modules/ai/ai.controller.ts": "0f96f971bc0ea8f13e99cf073f16c3313fe81ebeeb37dc343529616895d7e56d",
@@ -159,7 +162,7 @@
       "apps/api/src/modules/learning/studio-integration.service.ts": "61ed0df63db99a1d116c88ed7a1ea741e14360a97d19ff2ad5e8035b8cec5303",
       "apps/api/src/modules/learning/studio-learning-pack.ts": "2d3993e070e731a8bb2f9246e5b00c9e12fc000903cffac8bdd72a070d7fcab4",
       "apps/api/src/modules/learning/studio-material-access.ts": "68dbe7454a942d7042c65fc13caf9249c4aee53b42ded17824f05cbe95b6fae4",
-      "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts": "7d17ba26c9792091fc58d638bf25d6aaa4ea5afc2ac50fa2b4215c22bdae3d25",
+      "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts": "5fd2dda693fbe6f65dfcea941f8fbee78f90ddec0c6b1670c21cad2241d18312",
       "apps/api/src/modules/learning/studio-material-maintenance.service.ts": "e47b42600526f5de9ba5e57ed7692331f05b3a44b79ce67c5fc22dab20a57952",
       "apps/api/src/modules/learning/studio-material-storage.ts": "38230f2da24a97ac1ea96c39a6e75971ec8f6c7d1541cc37cdd03ca28646e1aa",
       "apps/api/src/modules/learning/studio-material-upload.controller.ts": "c6b0f246b8e3810d94da05433b2fdd43983ef8e2c7db9e3e4300c17cb9bc143e",
@@ -272,14 +275,14 @@
       "scripts/gesp/backup_archive.py": "60fa56fb900da4d6df134489065a55b038d5e3e59c4d72c29660a3d40956ce6f",
       "scripts/gesp/run_submission.cjs": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571",
       "scripts/operations/backup.cjs": "8157c28e0c962bb6c3db77fbce9bdbc6b4c58c3f590a8cd2218dc327412678c1",
-      "scripts/operations/material-audit.cjs": "1473c3ac9967045a16de41a2ef09abb56eb3db27245d479506e47f061dcb1236",
+      "scripts/operations/material-audit.cjs": "86c48ceaf7209c88eeb2c06fee03138ec7e120c41b320d4c27d0f1ce9d4c3c4c",
       "scripts/operations/package-source.py": "bc635a1b53f4e51661010cf147018beb8cff943d7cac8f852feb6c0587530928",
       "scripts/operations/postgres-backup.cjs": "f14b0739353f468eca347866459160991e857663b69593b04ea0547d8a518510",
       "scripts/operations/privacy-ledger.cjs": "4106d0e1144a6c3115c663fd8682071898fca741080ab4a4f51502712297509a",
       "scripts/operations/restore-state.cjs": "c99d0c41f3b1e1d66c672ef0b0195ce09aa3c4624daae207018dbb5d317f7032",
       "scripts/operations/setup-imagegen.cjs": "2309f53d9bc7b1aeee6c0f6deef202958dbaf59d18d599088e435f11f4e22dfa",
       "scripts/operations/start-daemon.ps1": "929b62cd8b6ecc7e6778b196e44d852992a8a2197c651b04ba3f686c567ce2c5",
-      "scripts/processing/file_leases.py": "01fad4700360683b9a3acf7c8023443a298c900c9b810da128b1f919e3992369",
+      "scripts/processing/file_leases.py": "4ee24ba318df2c053ff04bfd98ecf7f1bbd1ee24a54008f73a1e9a732a932e26",
       "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
       "scripts/processing/requirements-imagegen.txt": "e58941612ba4560fd888182684d3404684ed6643b86e3c4ad61d7233840ff2bf",
       "scripts/qa/classroom-caption-live.cjs": "2f17e3cfea19ff626ffdadc2f8f8c6edf8c82ec12e0087a5fc04964d5b3175f2",
@@ -311,12 +314,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2029,
+    "checked": 2039,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-24T05:21:53.959Z",
+    "authoredAuditAt": "2026-10-24T05:50:43.728Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -382,8 +385,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-24/material-collection-acceptance.json",
-    "revision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
+    "receipt": "../evidence/2026-10-24/material-atomic-marker-acceptance.json",
+    "revision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

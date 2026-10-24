@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
+  "sourceRevision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 297,
@@ -10,12 +10,12 @@
     "activeModules": 18,
     "activeControllers": 27,
     "apiClasses": 114,
-    "apiFunctions": 308,
+    "apiFunctions": 313,
     "domainCollections": 86,
     "contractTypes": 251,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 108,
+    "apiTestFiles": 109,
     "browserTestFiles": 15
   },
   "modules": [
@@ -10970,7 +10970,7 @@
     {
       "name": "StudioFileCollectionPending",
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
-      "line": 59,
+      "line": 65,
       "decorators": [],
       "dependencies": [
         {
@@ -26608,63 +26608,81 @@
       "signature": "serializeSqlite(key: string, work: () => Promise<T>): Promise<T>"
     },
     {
-      "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
-      "name": "assertNoFileLinks",
-      "line": 8,
-      "signature": "assertNoFileLinks(input:string)"
+      "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
+      "name": "parseStudioMarkerStagingName",
+      "line": 10,
+      "signature": "parseStudioMarkerStagingName(name: string)"
     },
     {
-      "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
-      "name": "studioCoordinationRoot",
-      "line": 12,
-      "signature": "studioCoordinationRoot(root:string, kind:FileKind, key:string)"
+      "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
+      "name": "releaseOwnStudioMarker",
+      "line": 17,
+      "signature": "releaseOwnStudioMarker(file: string, value: Record<string, unknown>)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
+      "name": "publishStudioMarker",
+      "line": 33,
+      "signature": "publishStudioMarker(control: string, file: string, purpose: StudioMarkerPurpose, value: Record<string, unknown> & { nonce: string; pid: number }, afterPhase?: StudioMarkerPhaseHook)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "exists",
-      "line": 16,
+      "line": 9,
       "signature": "exists(file:string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "marker",
-      "line": 17,
+      "line": 10,
       "signature": "marker(file:string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "acquireStudioFileLease",
-      "line": 21,
+      "line": 14,
       "signature": "acquireStudioFileLease(root:string, kind:FileKind, key:string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "withStudioFileLease",
-      "line": 33,
+      "line": 25,
       "signature": "withStudioFileLease(root:string, kind:FileKind, key:string, action:()=>Promise<T>)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "revokeStudioUploadFiles",
-      "line": 36,
+      "line": 28,
       "signature": "revokeStudioUploadFiles(root:string, id:string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "inspectStudioFileLeases",
-      "line": 42,
+      "line": 34,
       "signature": "inspectStudioFileLeases(root:string, kind:FileKind, key:string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
+      "name": "markerNames",
+      "line": 58,
+      "signature": "markerNames(directory:string)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
+      "name": "processStatus",
+      "line": 63,
+      "signature": "processStatus(pid:number): 'active'|'dead'|'unknown'"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "acquireStudioPurgeFence",
-      "line": 60,
+      "line": 66,
       "signature": "acquireStudioPurgeFence(root:string, kind:FileKind, key:string, identity:{generation:number;taskId:string;token:string})"
     },
     {
       "file": "apps/api/src/infrastructure/studio-file-coordination.ts",
       "name": "pruneDeadStudioFileLeases",
-      "line": 81,
+      "line": 86,
       "signature": "pruneDeadStudioFileLeases(root:string, kind:FileKind, key:string)"
     },
     {
@@ -26684,6 +26702,18 @@
       "name": "removeEmptyStudioDirectory",
       "line": 51,
       "signature": "removeEmptyStudioDirectory(directory:string)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-file-paths.ts",
+      "name": "assertNoFileLinks",
+      "line": 7,
+      "signature": "assertNoFileLinks(input: string)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-file-paths.ts",
+      "name": "studioCoordinationRoot",
+      "line": 21,
+      "signature": "studioCoordinationRoot(root: string, kind: FileKind, key: string)"
     },
     {
       "file": "apps/api/src/infrastructure/trusted-proxy.ts",
@@ -38308,6 +38338,7 @@
     "apps/api/src/infrastructure/scoped-transactions.test.ts",
     "apps/api/src/infrastructure/snapshot-isolation.test.ts",
     "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+    "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
     "apps/api/src/infrastructure/studio-file-coordination.test.ts",
     "apps/api/src/infrastructure/task-repository.test.ts",
     "apps/api/src/modules/ai/classroom-image.service.test.ts",

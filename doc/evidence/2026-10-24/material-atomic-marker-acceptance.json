@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T05:49:55.324891+00:00",
+  "sourceRevision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
+  "implementationCommit": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
+  "specificationCommit": "19f8fff",
+  "passed": true,
+  "status": "verified-atomic-publication-increment-not-specification-104-complete",
+  "reports": {
+    "material-atomic-marker-sqlite.json": {
+      "sha256": "94fe0451958e1959f92ce5db10dacea1cc6c4a6bda1df3b42d78c03875897a5c",
+      "passed": 41,
+      "failed": 1,
+      "pending": 0
+    },
+    "material-atomic-marker-sqlite-final.json": {
+      "sha256": "ae9e27914aa31f1279d25983a660902d5920abd01daeafaebec78ea369c2ebbf",
+      "passed": 48,
+      "failed": 0,
+      "pending": 0
+    },
+    "material-atomic-marker-postgres.json": {
+      "sha256": "cd3d4ed5179db1aed26d6124b43fff6bae9539936d5e651396f02a1b4e8a22b2",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/api/src/infrastructure/studio-atomic-marker.test.ts": "5970742018ca49a159dd16057f8a5a53a44ea319a83119f137ef93ee9c64fdb4",
+    "apps/api/src/infrastructure/studio-atomic-marker.ts": "3c4ab70af94a8e4f277b399655cc465c8a68b10a2fea33433773aead2fc57873",
+    "apps/api/src/infrastructure/studio-file-coordination.ts": "5276a0cae8469822d2de0bffbfbeef9ed162113c6bddd4a8ec155cbccc216835",
+    "apps/api/src/infrastructure/studio-file-paths.ts": "0ab767da049aa90776849fe438e344bcbacbebe5dfcf5ac21a8ef5ab48cef4e2",
+    "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts": "5fd2dda693fbe6f65dfcea941f8fbee78f90ddec0c6b1670c21cad2241d18312",
+    "scripts/architecture/project-feature-definitions.cjs": "2902864e1d5999bf18ffdd40657989d90dbc29560f698f2080613d70074fa7df",
+    "scripts/operations/material-audit.cjs": "86c48ceaf7209c88eeb2c06fee03138ec7e120c41b320d4c27d0f1ce9d4c3c4c",
+    "scripts/operations/material-audit.test.cjs": "96370a73ef3eb23a282c458b5a1074819f6c33c6e9ce50eaafc3089c0d028c32",
+    "scripts/processing/file_leases.py": "4ee24ba318df2c053ff04bfd98ecf7f1bbd1ee24a54008f73a1e9a732a932e26",
+    "scripts/processing/test_file_leases.py": "563bb681b1bb9bce3d60ac009000baa4f6acedeb6ab2940c27c95ce57863253c",
+    "scripts/qa/fixtures/studio-marker-child.cjs": "f937e9ef0dbb1a7ecf5af591b0cf5aad160717310c321b65f5bd7e21951da57b",
+    "scripts/qa/fixtures/studio-marker-child.py": "52a9d86886c059e3366273d9fe5f28191609d9cefc83a4644debe2c32dac1318"
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "node --test scripts/operations/material-audit.test.cjs",
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "command": "python -X utf8 -m unittest test_file_leases.py test_studio_checkpoints.py",
+      "cwd": "scripts/processing",
+      "passed": 7,
+      "failed": 0
+    }
+  ],
+  "crashMatrix": {
+    "nodePurposes": [
+      "lease",
+      "purge",
+      "revoked"
+    ],
+    "pythonPurposes": [
+      "lease"
+    ],
+    "phases": [
+      "created",
+      "written",
+      "synced",
+      "published",
+      "cleaned"
+    ],
+    "actualChildProcessKills": 20,
+    "scope": "Actual OS process termination on this Windows filesystem; no hardware power-loss guarantee."
+  },
+  "coverage": [
+    "Official markers are absent or complete JSON, published by same-volume exclusive hard link after fsync and handle close. Existing owners are never overwritten.",
+    "All canonical staged purposes protect the key while the producer lives, including empty/partial JSON. Exact dead-PID staged regular files within 4096 bytes can be pruned under the purge fence.",
+    "Unknown names, oversized files and Windows junctions remain untouched. Legacy malformed official markers remain unknown. PID reuse is conservatively active.",
+    "Exceptions before handoff clean owned ephemeral final/staged markers at all five phases. A published revocation remains permanent.",
+    "Real maintenance task waits with its original bytes intact while an independent producer is paused at an empty stage, then completes after the child dies on SQLite and PostgreSQL.",
+    "Independent audit and Python/Node agree on canonical names. Normal Python page processing, large upload/checkpoints, guardian revocation, shared-source preservation and legacy studio privacy regressions pass."
+  ],
+  "initialFailure": {
+    "report": "material-atomic-marker-sqlite.json",
+    "reason": "The new integration assertion assumed the next maintenance claim was this task, but earlier queued tasks were eligible. The test now waits until this exact task reports its pending reason. No product code was changed for this assertion. The original failure is retained."
+  },
+  "previousIncrementCI": {
+    "headSha": "5cadd306d66a5ab240fb4b72e674c7566421846c",
+    "runId": 40066318010,
+    "conclusion": "success",
+    "report": "material-collection-ci.json",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40066318010"
+  },
+  "validationNotes": [
+    "SQLite 48 and PostgreSQL 25 overlap; do not add them as independent product coverage.",
+    "The new increment has not yet received its own remote full CI result.",
+    "Synthetic isolated families and filesystem roots only; no production family data was used."
+  ],
+  "pending": [
+    "Legacy page hash backfill and explicit missing/corrupt recovery state.",
+    "Latest deletion-ledger application to restored originals/chunks/revocations while preserving shared/frozen references.",
+    "Final specification 104 full regression, handbook validation, merge and daemon delivery.",
+    "Master-plan reference pixel/state coverage, content depth, course lifecycle, teacher/device and real spaced learning evidence."
+  ],
+  "productionChanged": false,
+  "qaClusterRestoredToInitialStoppedState": true,
+  "goalStatus": "active"
+}

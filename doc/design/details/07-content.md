@@ -1,6 +1,6 @@
 # 07 题卷资产、内容编辑、导入与发布 — 详细设计
 
-源码基线：`9c2fd792922ed35abdb6cd5b55eebecc949efd99`。角色：教研、教师、运营、管理员；家长查看已发布内容。
+源码基线：`2c49e8422d03239b33caa37af516b4e7ab2fccf3`。角色：教研、教师、运营、管理员；家长查看已发布内容。
 
 产品入口：`/library`、`/admin/content`、`/admin/imports`、`/admin/measurement`。
 

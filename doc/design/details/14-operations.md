@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`9c2fd792922ed35abdb6cd5b55eebecc949efd99`。角色：运维、管理员、教研。
+源码基线：`2c49e8422d03239b33caa37af516b4e7ab2fccf3`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -230,7 +230,7 @@
 
 **输入**：来源SHA或上传ID、领域删除/取消/完成/过期和只读审计命令。
 
-**处理与实现**：审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入。
+**处理与实现**：审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入；Node/Python先独占写staging、同步关闭，再以同卷独占hard link发布完整控制标记；所有用途的活PID暂存都保护对象，确切死亡的受控暂存才可清理，旧损坏正式标记继续保留。
 
 **输出**：可审计引用/宽限/活跃/未知清单、自动续跑回收结果、共享资料保留与进程栅栏。
 
@@ -243,6 +243,10 @@
 **补充实现文件**：
 
 - [scripts/operations/material-audit.cjs](../../../scripts/operations/material-audit.cjs)
+- [apps/api/src/infrastructure/studio-atomic-marker.ts](../../../apps/api/src/infrastructure/studio-atomic-marker.ts)
+- [apps/api/src/infrastructure/studio-file-paths.ts](../../../apps/api/src/infrastructure/studio-file-paths.ts)
+- [scripts/processing/file_leases.py](../../../scripts/processing/file_leases.py)
+- [apps/api/src/infrastructure/studio-atomic-marker.test.ts](../../../apps/api/src/infrastructure/studio-atomic-marker.test.ts)
 - [apps/api/src/infrastructure/studio-file-coordination.ts](../../../apps/api/src/infrastructure/studio-file-coordination.ts)
 - [apps/api/src/infrastructure/studio-file-inventory.ts](../../../apps/api/src/infrastructure/studio-file-inventory.ts)
 - [apps/api/src/modules/learning/studio-material-maintenance.service.ts](../../../apps/api/src/modules/learning/studio-material-maintenance.service.ts)

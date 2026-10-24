@@ -170,3 +170,5 @@ CI三组：
 后续基础提交已补`studioMaterialAssets`、取得文件租约后的最新generation检查、Node与Python分别持有的文件租约，以及永久上传撤销工具。基础验证见[文件租约收据](../evidence/2026-10-24/long-pdf-write-fences-acceptance.json)。
 
 最新独立分支已接入OPS-10持久回收worker，开启worker后3秒轮询、60秒扫描，等待活进程/未知对象不耗尽失败次数。受控原件、缓存、组装暂存和明确studio.material.process任务的配置/原文JSON逐项处理，其他题卷处理产物保留；共享学习依赖不删除。实际自动启动约7秒执行指定任务；不是生产长时负载结论。控制标记原子发布、旧页图摘要回填、恢复账本后的来源字节处理及规格104最终交付仍待，见[最新验收](../evidence/2026-10-24/material-collection-acceptance.json)。
+
+后续`2c49e84`已完成控制标记原子发布：Node/Python采用staging同步关闭后独占hard link，全部用途的活PID暂存保护资料，受控死亡残留才可清理。20组真实强制退出、SQLite48/PG25相关测试、只读审计11与Python7通过；异常返回不留下同一活进程的临时锁，永久撤销保持。旧损坏正式标记继续unknown，测试不代表硬件掉电保证。旧页图、恢复账本物理处理及最终交付仍待，见[原子发布验收](../evidence/2026-10-24/material-atomic-marker-acceptance.json)。
