@@ -39,7 +39,7 @@ function uploadAuthorized(row, users, students, bindings, learning) {
   return owner.role === 'student' && Boolean(guardian && (guardian.role === 'admin' || bound(guardian.id))) && learning.some(access => access.studentId === row.studentId && access.userId === owner.id && access.status === 'enabled' && access.version === row.accessVersion);
 }
 
-async function cleanupRestoredMaterials({ root, query, manifest, before, now = Date.now() }) {
+async function cleanupRestoredMaterials({ root, query, manifest, before, now = Date.now(), restoreContext, afterPhase }) {
   const { files: { within, digest } } = require('./backup.cjs');
   const { acquireStudioPurgeFence, pruneDeadStudioFileLeases, revokeStudioUploadFiles } = require('../../apps/api/dist/apps/api/src/infrastructure/studio-file-coordination.js');
   const { inventoryStudioCollection, removeInventoriedStudioFile, removeEmptyStudioDirectory } = require('../../apps/api/dist/apps/api/src/infrastructure/studio-file-inventory.js');
@@ -110,7 +110,22 @@ async function cleanupRestoredMaterials({ root, query, manifest, before, now = D
     if (after.ino !== before.ino || after.dev !== before.dev || after.size !== before.size || after.mtimeMs !== before.mtimeMs) fail('restore_material_file_changed');
   }
   // Check the entire inventory before deleting any file; each planned deletion is checked again below.
-  for (const entry of report.entries) verifyCopied(entry.path);
+  const controlParts=new Set(['lease','purge','revocation','marker_staging']);
+  for (const entry of report.entries) {
+    if (!controlParts.has(entry.part)) { verifyCopied(entry.path); continue; }
+    if (!restoreContext) fail('restore_material_unexpected_control');
+    const location=within(root,entry.path),stat=fs.lstatSync(location);
+    if (!stat.isFile()||stat.size>4096) fail('restore_material_control_unknown');
+    if(entry.part==='marker_staging') {
+      const parsed=require('../../apps/api/dist/apps/api/src/infrastructure/studio-atomic-marker.js').parseStudioMarkerStagingName(path.basename(location));
+      if(!parsed||!(sources.has(entry.key)||uploads.has(entry.key)))fail('restore_material_control_unknown');
+      try{process.kill(parsed.pid,0);fail('restore_material_control_active');}catch(error){if(error.code!=='ESRCH')throw error;}
+    } else {
+      const value=JSON.parse(fs.readFileSync(location,'utf8'));
+      if(value.restoreId!==restoreContext.restoreId||value.restoreContextHash!==restoreContext.bindingHash||entry.part==='lease')fail('restore_material_control_unknown');
+      if(entry.part==='purge'&&value.taskId!=='restore_'+manifest.id)fail('restore_material_control_unknown');
+    }
+  }
   const plans=[];
   for (const key of uploads) {
     if (references.uploads.get(key)?.active) { counts.materialUploadsRetained++; continue; }
@@ -123,16 +138,25 @@ async function cleanupRestoredMaterials({ root, query, manifest, before, now = D
   }
   for (const plan of plans) for (const file of plan.inventory.files) verifyCopied(path.relative(root,file.path).replaceAll('\\','/'));
   for (const plan of plans) {
-    if (plan.kind==='upload') { await revokeStudioUploadFiles(root,plan.key); counts.materialUploadsRevoked++; }
-    const release=await acquireStudioPurgeFence(root,plan.kind,plan.key,{generation:0,taskId:'restore_'+manifest.id,token:randomUUID()});
+    if (plan.kind==='upload') {
+      if(restoreContext){
+        const {studioCoordinationRoot}=require('../../apps/api/dist/apps/api/src/infrastructure/studio-file-paths.js');
+        const {publishStudioMarker}=require('../../apps/api/dist/apps/api/src/infrastructure/studio-atomic-marker.js');
+        const directory=studioCoordinationRoot(root,'upload',plan.key),file=path.resolve(directory,'revoked.json');
+        try{await publishStudioMarker(directory,file,'revoked',{format:'study-upload-revocation-v1',id:plan.key,nonce:randomUUID(),pid:process.pid,createdAt:at,restoreId:restoreContext.restoreId,restoreContextHash:restoreContext.bindingHash});}
+        catch(error){if(error.code!=='EEXIST')throw error;const value=JSON.parse(fs.readFileSync(within(root,path.relative(root,file)),'utf8'));if(value.id!==plan.key||value.restoreId!==restoreContext.restoreId||value.restoreContextHash!==restoreContext.bindingHash)fail('restore_material_control_unknown');}
+      }else await revokeStudioUploadFiles(root,plan.key);
+      counts.materialUploadsRevoked++;
+    }
+    const release=await acquireStudioPurgeFence(root,plan.kind,plan.key,{generation:0,taskId:'restore_'+manifest.id,token:randomUUID(),...(restoreContext?{restoreId:restoreContext.restoreId,restoreContextHash:restoreContext.bindingHash}:{})});
     try {
       await pruneDeadStudioFileLeases(root,plan.kind,plan.key);
-      for (const file of plan.inventory.files) { verifyCopied(path.relative(root,file.path).replaceAll('\\','/')); if (await removeInventoriedStudioFile(file)) { counts.materialFilesDeleted++; counts.materialBytesDeleted+=file.stat.size; } }
+      for (const file of plan.inventory.files) { const relative=path.relative(root,file.path).replaceAll('\\','/');verifyCopied(relative); if (await removeInventoriedStudioFile(file)) { counts.materialFilesDeleted++; counts.materialBytesDeleted+=file.stat.size;await afterPhase?.('material_file_deleted',relative); } }
       for (const directory of plan.inventory.directories) await removeEmptyStudioDirectory(directory);
     } finally { await release(); }
     if (plan.kind==='source') counts.materialSourcesCollected++;
   }
-  counts.materialFilesRetained=report.entries.length-counts.materialFilesDeleted;
+  counts.materialFilesRetained=report.entries.filter(entry=>!controlParts.has(entry.part)).length-counts.materialFilesDeleted;
   return counts;
 }
 module.exports={captureMaterialKeys,omitRestoredMaterialControl,cleanupRestoredMaterials};

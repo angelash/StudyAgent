@@ -4,16 +4,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { createHash, randomUUID } = require('node:crypto');
 const { DatabaseSync, backup } = require('node:sqlite');
-const { fenceRestoredState } = require('./restore-state.cjs');
-const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
-const { captureMaterialKeys, omitRestoredMaterialControl, cleanupRestoredMaterials } = require('./restored-materials.cjs');
-const { createRestoreContext } = require('./restore-context.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
   let cursor = path.resolve(input);
   for (;;) {
-    if (fs.existsSync(cursor) && fs.lstatSync(cursor).isSymbolicLink()) fail('symbolic_link_not_allowed');
+    try { if (fs.lstatSync(cursor).isSymbolicLink()) fail('symbolic_link_not_allowed'); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
     const parent = path.dirname(cursor); if (parent === cursor) break; cursor = parent;
   }
   return path.resolve(input);
@@ -185,42 +182,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   } finally { db.close(); }
   return { manifest, database: state, verifiedFiles: paths.size };
 }
-async function restoreBundle({ bundle, destination, deletionLedger }) {
-  const ledger = readLedger(deletionLedger), verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
-  const marker = within(root, '.study-restore-incomplete'); fs.writeFileSync(marker, 'Restore has not completed. Do not start the application.\n', { flag: 'wx' });
-  await createRestoreContext({root,driver:'sqlite',manifest:verified.manifest,ledger});
-  let restoredCount = 0, omittedControlFiles = 0;
-  for (const file of verified.manifest.files) {
-    const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
-    if (file.path.startsWith('data/') && omitRestoredMaterialControl(relative)) { omittedControlFiles++; continue; }
-    copyVerified(within(bundle, file.path), within(root, relative), file);
-    if (relative === 'study-agent.sqlite3') {
-      const guard = new DatabaseSync(within(root, relative));
-      try {
-        guard.exec('CREATE TABLE IF NOT EXISTS study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL)');
-        guard.prepare("INSERT INTO study_restore_guard VALUES(1,'restoring',?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state,backup_id=excluded.backup_id,updated_at=excluded.updated_at").run(verified.manifest.id, new Date().toISOString());
-      } finally { guard.close(); }
-    }
-    if (++restoredCount % 5000 === 0) process.stderr.write(`Restored ${restoredCount} files\n`);
-  }
-  const db = new DatabaseSync(within(root, 'study-agent.sqlite3')); let counts;
-  try {
-    db.exec('BEGIN IMMEDIATE');
-    const query = (sql, params = []) => db.prepare(sql).all(...params);
-    const before = await captureMaterialKeys(query);
-    const { removedMediaIds, ...privacy } = await applyDeletionLedger(query, ledger);
-    const access = await fenceRestoredState(query, verified.manifest.id, verified.database.revision);
-    const materials = await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before});
-    privacy.mediaDirectoriesPurged = purgeRestoredMedia(root, removedMediaIds);
-    counts = { ...access, ...privacy, ...materials, copiedFiles:restoredCount, omittedControlFiles };
-    if (Number(db.prepare("UPDATE study_restore_guard SET state='ready',updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(counts.restoredAt, verified.manifest.id).changes) !== 1) fail('restore_guard_changed');
-    db.exec('COMMIT'); summary(db);
-  } catch (error) { try { db.exec('ROLLBACK'); } catch {} throw error; } finally { db.close(); }
-  const receipt = { format: FORMAT, backupId: verified.manifest.id, sourceRevision: verified.database.revision,
-    assetsIncluded: verified.manifest.assetsIncluded, verifiedFiles: verified.verifiedFiles, ...counts };
-  fs.writeFileSync(within(root, 'restore-receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' }); fs.unlinkSync(marker);
-  return receipt;
-}
+async function restoreBundle(options) { return require('./sqlite-restore.cjs').restoreSqlite(options); }
 module.exports = { createBundle, verifyBundle, restoreBundle,
   files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } };
 if (require.main === module) {
@@ -228,10 +190,11 @@ if (require.main === module) {
     const [command, ...args] = process.argv.slice(2), options = {}, allowed = command === 'create' ? ['data-dir', 'destination', 'assets'] : ['bundle', 'destination', 'deletion-ledger'];
     for (let i = 0; i < args.length; i += 2) {
       const key = args[i].slice(2);
+      if (command === 'restore' && args[i] === '--resume' && !options.resume) { options.resume = true; i--; continue; }
       if (!args[i].startsWith('--') || !args[i + 1] || !allowed.includes(key) || options[key]) fail('invalid_arguments'); options[key] = args[i + 1];
     }
     return command === 'create' ? createBundle({ dataDir: options['data-dir'], destination: options.destination, assets: options.assets }) :
       command === 'verify' ? verifyBundle({ bundle: options.bundle }).then(r => ({ verifiedFiles: r.verifiedFiles, database: r.database, assetsIncluded: r.manifest.assetsIncluded })) :
-      command === 'restore' ? restoreBundle({ bundle: options.bundle, destination: options.destination, deletionLedger: options['deletion-ledger'] }) : fail('usage_create_verify_restore');
+      command === 'restore' ? restoreBundle({ bundle: options.bundle, destination: options.destination, deletionLedger: options['deletion-ledger'], resume: options.resume }) : fail('usage_create_verify_restore');
   })().then(result => process.stdout.write(JSON.stringify(result) + '\n')).catch(error => { process.stderr.write(`Backup operation failed: ${error.code ?? error.message}\n`); process.exitCode = 1; });
 }

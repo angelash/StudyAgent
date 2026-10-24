@@ -91,12 +91,26 @@ async function applyDeletionLedger(query, ledger) {
   const removedMediaIds = records.filter(row => row.collection === 'studentMedia' && !retainedMedia.has(row.record_id)).map(row => row.record_id);
   return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds: [...removedMediaIds,...records.filter(row=>row.collection==='classroomVisuals'&&!(store.classroomVisuals??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
 }
-function purgeRestoredMedia(root, ids = []) {
+function purgeRestoredMedia(root, ids = [], manifest, onDelete) {
   const { within } = require('./backup.cjs').files;
   for (const id of ids) {
     if (!/^(?:student_media|classroom_visual)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
     const directory = within(root, `${id.startsWith('classroom_visual_')?'classroom-visuals':'student-media'}/${id}`);
-    if (fs.existsSync(directory)) fs.rmSync(directory, { recursive: true, force: true });
+    if (fs.existsSync(directory)) {
+      if(!manifest)fs.rmSync(directory,{recursive:true,force:true});
+      else {
+        const {walk,digest,within}=require('./backup.cjs').files,expected=new Map(manifest.files.map(file=>[file.path,file])),files=[...walk(directory)],directories=new Set();
+        for(const item of files){const relative=path.relative(root,item.path).replaceAll('\\','/'),entry=expected.get('data/'+relative),stat=fs.lstatSync(item.path);if(!entry||stat.size!==entry.size||digest(item.path)!==entry.sha256)fail('restore_media_inventory_unknown');}
+        for(const item of files){
+          const relative=path.relative(root,item.path).replaceAll('\\','/'),file=within(root,relative),entry=expected.get('data/'+relative),before=fs.lstatSync(file);
+          if(!before.isFile()||before.size!==entry.size||digest(file)!==entry.sha256)fail('restore_media_file_changed');
+          const after=fs.lstatSync(within(root,relative));if(before.ino!==after.ino||before.dev!==after.dev||before.size!==after.size||before.mtimeMs!==after.mtimeMs)fail('restore_media_file_changed');
+          let parent=path.dirname(file);while(parent===directory||parent.startsWith(directory+path.sep)){directories.add(parent);parent=path.dirname(parent);}fs.unlinkSync(file);onDelete?.(relative);
+        }
+        for(const target of [...directories].sort((a,b)=>b.length-a.length))fs.rmdirSync(target);
+        if(!files.length)fs.rmdirSync(directory);
+      }
+    }
   }
   return ids.length;
 }
