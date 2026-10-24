@@ -19,13 +19,17 @@ async function lockRestoreController(client) {
   if(!(await client.query('SELECT pg_try_advisory_lock($1::bigint) AS acquired',[locks.control])).rows[0].acquired)fail('postgres_restore_controller_active');
   return async()=>{if(!(await client.query('SELECT pg_advisory_unlock($1::bigint) AS released',[locks.control])).rows[0].released)fail('postgres_restore_controller_changed');};
 }
-async function initializeImport(client,context) {
+async function initializeImport(client,context,{createGuard=false}={}) {
   validateContext(context);
   await client.query('BEGIN');
   try{
+    if(createGuard){
+      await client.query('CREATE TABLE study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL)');
+      await client.query("INSERT INTO study_restore_guard VALUES(1,'restoring',$1,$2)",[context.backupId,new Date().toISOString()]);
+    }
     await client.query('CREATE SCHEMA study_restore_runtime');
     await client.query(`CREATE TABLE study_restore_runtime.identity(id INTEGER PRIMARY KEY CHECK(id=1),context_id TEXT NOT NULL,context_hash TEXT NOT NULL,epoch TEXT NOT NULL);
-      CREATE TABLE study_restore_runtime.imports(context_id TEXT PRIMARY KEY,phase TEXT NOT NULL CHECK(phase IN ('prepared','importing','imported')),epoch TEXT,data_digest TEXT);`);
+      CREATE TABLE study_restore_runtime.imports(context_id TEXT PRIMARY KEY,phase TEXT NOT NULL CHECK(phase IN ('prepared','importing','imported')),epoch TEXT,data_digest TEXT,final_receipt JSONB,final_files JSONB);`);
     await client.query('INSERT INTO study_restore_runtime.identity VALUES(1,$1,$2,$3)',[context.restoreId,context.bindingHash,randomUUID()]);
     await client.query("INSERT INTO study_restore_runtime.imports(context_id,phase) VALUES($1,'prepared')",[context.restoreId]);
     await client.query(`CREATE FUNCTION study_restore_runtime.require_complete_import() RETURNS trigger LANGUAGE plpgsql AS $restore$
@@ -54,7 +58,7 @@ function contentDigestSql() {
 }
 async function importedState(client,context) {
   validateContext(context);
-  const value=(await client.query('SELECT i.phase,i.epoch,i.data_digest,c.context_hash FROM study_restore_runtime.imports i JOIN study_restore_runtime.identity c ON c.context_id=i.context_id WHERE i.context_id=$1',[context.restoreId])).rows[0];
+  const value=(await client.query('SELECT i.phase,i.epoch,i.data_digest,i.final_receipt,i.final_files,c.context_hash FROM study_restore_runtime.imports i JOIN study_restore_runtime.identity c ON c.context_id=i.context_id WHERE i.context_id=$1',[context.restoreId])).rows[0];
   if(!value||value.context_hash!==context.bindingHash)fail('postgres_restore_context_changed');return value;
 }
 async function runFencedImport({client,context,epoch,archive,pgBin,connectionString,afterPhase}) {
