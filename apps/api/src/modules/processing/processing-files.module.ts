@@ -8,6 +8,6 @@ export class ProcessingFilesModule implements NestModule {
     const parser = raw({ type: 'application/octet-stream', limit: UPLOAD_CHUNK_SIZE });
     consumer.apply((req: Request, res: Response, next: NextFunction) => parser(req, res, error => {
       next(error?.status === 413 ? new PayloadTooLargeException('单个上传分块最多 4 MB，请按文件分块续传') : error);
-    })).forRoutes({ path: 'admin/import-files/:id/chunks/:index', method: RequestMethod.PUT });
+    })).forRoutes({ path: 'admin/import-files/:id/chunks/:index', method: RequestMethod.PUT },{path:'learning/material-uploads/:id/chunks/:index',method:RequestMethod.PUT});
   }
 }

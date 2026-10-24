@@ -121,6 +121,7 @@ export type StudioPdfStructureBlock =
 export type StudioSourcePage = {
   page: number;
   text: string;
+  textCharacters?:number;
   method?: 'pdf_text' | 'ocr' | 'hybrid' | 'unreadable';
   confidence?: number | null;
   blocks?: StudioPdfStructureBlock[];
@@ -128,6 +129,7 @@ export type StudioSourcePage = {
 };
 
 export type StudioMaterialStructure = {
+  modelReviewedPages?:number[];
   method: 'native_text' | 'ocr' | 'hybrid' | 'unreadable';
   ocrPageCount: number;
   tableCount: number;
@@ -142,6 +144,7 @@ export type StudioMaterialStructure = {
 };
 
 export type StudioSourceMaterial = {
+  contentVersion?:string;
   id: string;
   studentId: string | null;
   subject: StudioSubject | null;
@@ -155,7 +158,7 @@ export type StudioSourceMaterial = {
   sha256: string;
   byteSize: number;
   hasPageImages?: boolean;
-  status?: 'queued' | 'processing' | 'ready' | 'needs_review' | 'failed';
+  status?: 'queued' | 'processing' | 'ready' | 'needs_review' | 'failed' | 'cancelled';
   structure?: StudioMaterialStructure;
   processingTaskId?: string;
   error?: string | null;

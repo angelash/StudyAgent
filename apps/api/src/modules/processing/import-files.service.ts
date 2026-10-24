@@ -8,6 +8,7 @@ import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/
 import { studyDataRoot } from '../../infrastructure/workspace-paths';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
+import { writeImmutableBytes,verifyImmutableFile } from '../../infrastructure/immutable-files';
 
 export const UPLOAD_CHUNK_SIZE = 4 * 1024 * 1024;
 const initSchema = z.object({ name: z.string().trim().min(1).max(180), size: z.number().int().min(1).max(512 * 1024 * 1024),
@@ -128,12 +129,9 @@ export class ImportFilesService {
     return type === 'application/pdf' ? bytes.subarray(0, 5).toString() === '%PDF-' : type === 'image/png' ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) : bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
   }
   private async immutableWrite(path: string, bytes: Buffer) {
-    try { const handle = await fs.open(path, 'wx'); try { await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); } }
-    catch (error) { if ((error as NodeJS.ErrnoException).code !== 'EEXIST') throw error; if (hash(await fs.readFile(path)) !== hash(bytes)) throw new ConflictException('文件分块已有不同数据'); }
+    return writeImmutableBytes(path,bytes);
   }
   private async verifyPath(path: string, expected: string, size: number) {
-    const stat = await fs.lstat(path); if (!stat.isFile() || stat.isSymbolicLink() || stat.size !== size) throw new BadRequestException('文件完整性检查失败');
-    const digest = createHash('sha256'); for await (const chunk of createReadStream(path)) digest.update(chunk);
-    if (digest.digest('hex') !== expected) throw new BadRequestException('文件完整性检查失败');
+    return verifyImmutableFile(path,expected,size);
   }
 }

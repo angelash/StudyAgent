@@ -53,7 +53,7 @@ export function LearningStudio() {
   const load = React.useCallback(async () => {
     if (!identity) return;
     const generation=++loadGeneration.current;
-    try { const q=new URLSearchParams({subject}); if(studentId)q.set('studentId',studentId); const data=await apiRequest<StudioOverview>(`/learning/studio/overview?${q}`); if(generation!==loadGeneration.current)return;setOverview(data); if(!studentId&&data.selected)setStudentId(data.selected.id); }
+    try { const q=new URLSearchParams({subject,materialView:'catalog'}); if(studentId)q.set('studentId',studentId); const data=await apiRequest<StudioOverview>(`/learning/studio/overview?${q}`); if(generation!==loadGeneration.current)return;setOverview(data); if(!studentId&&data.selected)setStudentId(data.selected.id); }
     catch(e){if(generation===loadGeneration.current)setError((e as Error).message);}
   },[identity,subject,studentId]);
   React.useEffect(()=>{void load()},[load]);

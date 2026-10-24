@@ -51,6 +51,7 @@ export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructure
   const warnings = [...new Set([...pages.flatMap(page => page.warnings ?? []),
     ...(unmodeledReviewPages ? ['model_review_page_limit'] : [])])];
   const structure: StudioMaterialStructure = {
+    modelReviewedPages:[...modeled.keys()].sort((a,b)=>a-b),
     method: pages.some(page => page.method === 'hybrid') ? 'hybrid' :
       pages.some(page => page.method === 'ocr') ? 'ocr' :
       pages.some(page => page.method === 'pdf_text') ? 'native_text' : 'unreadable',

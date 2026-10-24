@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { promises as fs } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import type { ImportPageEvidence, ImportPageEvidenceRef, ProcessingArtifact, QuestionImportRecord } from '@study-agent/contracts';
-import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
+import { InMemoryStoreService,type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { TaskRow } from '../../infrastructure/task-repository';
 import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-paths';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -14,6 +14,10 @@ import { CodexPdfStructureService } from '../ai/codex-pdf-structure.service';
 import { mergeStudioPdfPages, RawStudioPdfPage } from '../learning/studio-pdf-structure';
 import { studioMaterialCache, studioMaterialFile } from '../learning/studio-material-storage';
 import type { StudioSourceMaterial } from '@study-agent/contracts';
+import { z } from 'zod';
+import { StudentsService } from '../students/students.service';
+import { assertMaterialAccess,type StudioMaterialRecord } from '../learning/studio-material-access';
+import { verifyImmutableFile } from '../../infrastructure/immutable-files';
 
 const kinds = ['question.pdf.import', 'image.handwriting.preview', 'question.local_explain', 'studio.material.process'];
 class ProcessingError extends Error { constructor(readonly code: string, readonly retryable = false) { super(code); } }
@@ -27,7 +31,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
   private readonly logger = new Logger(ProcessingWorkerService.name);
   constructor(private readonly store: InMemoryStoreService, private readonly files: ImportFilesService,
     private readonly imports: QuestionImportService, private readonly events: DomainEventBusService,
-    private readonly codexPdf: CodexPdfStructureService) {}
+    private readonly codexPdf: CodexPdfStructureService,private readonly students:StudentsService) {}
 
   onApplicationBootstrap() {
     if (process.env.STUDY_WORKER_ENABLED === 'false' || !this.store.persistence.durable) return;
@@ -89,10 +93,11 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
           this.store.find('studioSourceMaterials', { id: materialId })));
       }
       if (!material) throw new ProcessingError('missing_studio_material');
+      await this.studioCheckpoint(task,()=>{});
       const output = resolve(runRoot, 'studio-pdf-structure.json');
       try {
         const raw = await this.process({ mode: 'pdf_structure', input: studioMaterialFile(material.sha256),
-          sha256: material.sha256, cache: studioMaterialCache(material.sha256), output }, runRoot, 'studio-pdf', signal, progress);
+          sha256: material.sha256, cache: studioMaterialCache(material.sha256), output }, runRoot, 'studio-pdf', signal, progress,data=>this.saveStudioPage(task,data));
         if (!Array.isArray(raw.pages) || !raw.pages.length) throw new ProcessingError('invalid_processor_output');
         const rawPages = raw.pages as RawStudioPdfPage[];
         let modeled = null;
@@ -111,20 +116,22 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
         }
         const merged = mergeStudioPdfPages(rawPages, modeled, { modelAttempted: modelEnabled,
           modelId: modelEnabled ? process.env.CODEX_PDF_MODEL ?? 'deepseek-v4-flash' : null });
-        const pageFiles=await Promise.all(rawPages.map(async page=>{const bytes=await fs.readFile(resolve(studioMaterialCache(material.sha256),'page-'+page.pageNumber+'.png'));return{page:page.pageNumber,sha256:createHash('sha256').update(bytes).digest('hex'),size:bytes.length};}));
+        const pageFiles=await Promise.all(rawPages.map(async page=>{const name=relative(studioMaterialCache(material.sha256),page.imagePath).replace(/\\/g,'/');if(!/^study-pdf-structure-v\d+\/page-\d+\.png$/u.test(name))throw new ProcessingError('invalid_processor_output');const bytes=await fs.readFile(page.imagePath);return{page:page.pageNumber,name,sha256:createHash('sha256').update(bytes).digest('hex'),size:bytes.length};}));
         return { result: { materialId, pageCount: merged.pages.length, ocrPageCount: merged.structure.ocrPageCount,
           tableCount: merged.structure.tableCount, formulaCount: merged.structure.formulaCount,
           modelAssisted: merged.structure.modelAssisted }, apply: () => {
             const current = this.store.find('studioSourceMaterials', { id: materialId });
             if (!current || current.sha256 !== material.sha256) throw new ProcessingError('studio_material_changed');
-            const target = current as StudioSourceMaterial & { pageImages?: Record<string, string>;pageFiles:typeof pageFiles };
+            if(current.processingTaskId!==task.id||current.status==='cancelled')throw new ProcessingError('studio_material_changed');
+            const target = current as StudioMaterialRecord;
             target.pageFiles=pageFiles;
             target.pages = merged.pages; target.hasPageImages = merged.pages.length > 0;
+            target.pageCount=raw.pageCount as number;
             target.status = merged.structure.reviewRequired ? 'needs_review' : 'ready';
             target.structure = merged.structure; target.error = null; target.updatedAt = new Date().toISOString();
           } };
       } catch (error) {
-        await this.markStudioMaterialFailed(materialId, error);
+        await this.markStudioMaterialFailed(task, error);
         throw error;
       }
     }
@@ -193,10 +200,10 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     } };
   }
 
-  private async process(config: Record<string, unknown>, runRoot: string, name: string, signal: AbortSignal, progress: (data: Record<string, unknown>) => void) {
+  private async process(config: Record<string, unknown>, runRoot: string, name: string, signal: AbortSignal, progress: (data: Record<string, unknown>) => void,onPage?:(data:Record<string,unknown>)=>Promise<void>) {
     const configPath = resolve(runRoot, `${name}-config.json`); await fs.writeFile(configPath, JSON.stringify(config), { flag: 'wx' });
-    let failureCode = 'processor_failed';
-    await new Promise<void>((done, reject) => {
+    let failureCode = 'processor_failed',checkpointPending=Promise.resolve(),checkpointError:unknown,processingError:unknown;
+    try{await new Promise<void>((done, reject) => {
       const python = process.env.STUDY_PYTHON ?? (process.platform === 'win32' ? 'python' : 'python3');
       const childEnv = Object.fromEntries(['PATH', 'Path', 'SystemRoot', 'WINDIR', 'USERPROFILE', 'APPDATA', 'LOCALAPPDATA', 'TEMP', 'TMP', 'HOME', 'PYTHONPATH', 'LD_LIBRARY_PATH']
         .filter(key => process.env[key] !== undefined).map(key => [key, process.env[key]!]));
@@ -213,14 +220,16 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
           try {
             const data = JSON.parse(line);
             if (data.stage === 'error' && typeof data.code === 'string') failureCode = ['encrypted_pdf', 'page_limit', 'source_checksum_mismatch', 'image_pixel_limit', 'processor_dependency_missing', 'model_assets_missing'].includes(data.code) ? data.code : 'invalid_document_or_processor';
-            if (['ocr', 'extracting', 'local_model', 'processed'].includes(data.stage)) progress({ stage: data.stage, ...(Number.isSafeInteger(data.page) ? { page: data.page, pages: data.pages, resumedPage: data.resumedPage === true } : {}) });
+            if (['ocr', 'extracting', 'local_model', 'processed','checkpoint','metadata'].includes(data.stage)) progress({ stage: data.stage, ...(Number.isSafeInteger(data.page) ? { page: data.page, pages: data.pages, resumedPage: data.resumedPage === true } : {}) });
+            if(onPage&&['checkpoint','metadata'].includes(data.stage))checkpointPending=checkpointPending.then(async()=>{if(!checkpointError)await onPage(data);}).catch(error=>{checkpointError??=error;child.kill();});
           } catch { /* Model-library startup logs are deliberately not published as source data. */ }
         }
       });
       child.stderr.resume();
       child.once('error', error => { clearTimeout(timeout); reject(new ProcessingError((error as NodeJS.ErrnoException).code === 'ENOENT' ? 'processor_unavailable' : 'interrupted')); });
       child.once('close', code => { clearTimeout(timeout); code === 0 ? done() : reject(new ProcessingError(failureCode, failureCode === 'processor_timeout')); });
-    });
+    });}catch(error){processingError=error;}
+    await checkpointPending;if(checkpointError)throw checkpointError;if(processingError)throw processingError;
     const path = String(config.output), stat = await fs.stat(path);
     if (stat.size > 80 * 1024 * 1024) throw new ProcessingError('processor_output_limit');
     return JSON.parse(await fs.readFile(path, 'utf8'));
@@ -234,20 +243,44 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     const id = `artifact_${createHash('sha256').update(`${taskId}:${fileId}:${purpose}:${hash}`).digest('hex')}`;
     return { id, taskId, fileId, sha256: hash, relativePath, size: stat.size, mediaType: purpose === 'page' ? 'image/png' : 'image/jpeg', purpose, createdAt: new Date().toISOString() };
   }
-  private canAccessStudioMaterial(owner: { id: string; role: string }, materialId: string) {
-    const material = this.store.find('studioSourceMaterials', { id: materialId });
+  private canAccessStudioMaterial(owner: InMemoryUserAccount, materialId: string) {
+    const material = this.store.find('studioSourceMaterials', { id: materialId }) as StudioMaterialRecord|undefined;
     if (!material) return false;
-    if (!material.studentId) return owner.role !== 'student' && material.ownerUserId === owner.id;
-    if (owner.role === 'admin') return true;
-    const student = this.store.find('students', { id: material.studentId });
-    return Boolean(student && (student.userId === owner.id || this.store.find('bindings', {
-      parentUserId: owner.id, studentId: material.studentId, status: 'active' })));
+    try{assertMaterialAccess(owner,material,this.students);if(owner.role==='student'){
+      const access=material.processingAccess,guardian=access&&this.store.find('users',{id:access.guardianId,status:'active'});
+      if(!access||!guardian||!this.store.find('studentLearningAccess',{studentId:material.studentId,userId:owner.id,status:'enabled',version:access.accessVersion})||guardian.role!=='admin'&&!this.store.find('bindings',{studentId:material.studentId,parentUserId:guardian.id,status:'active'}))return false;
+    }return true;}catch{return false;}
   }
-  private async markStudioMaterialFailed(materialId: string, error: unknown) {
+  private async studioCheckpoint(task:TaskRow,change:(row:StudioMaterialRecord)=>void){
+    const progress:Record<string,unknown>={};
+    for(let attempt=0;attempt<4;attempt++)try{return await this.store.transaction(()=>{
+      const row=this.store.find('studioSourceMaterials',{id:String(task.payload.materialId)}) as StudioMaterialRecord|undefined,owner=this.store.find('users',{id:task.ownerUserId,status:'active'});
+      if(!row||row.processingTaskId!==task.id||row.sha256!==task.payload.sha256||row.status==='cancelled')throw new ProcessingError('studio_material_changed');
+      if(!owner||!this.canAccessStudioMaterial(owner,row.id))throw new ProcessingError('author_permission_changed');
+      if(['queued','failed'].includes(row.status??''))row.status='processing';change(row);row.updatedAt=new Date().toISOString();
+      Object.assign(progress,{stage:row.status==='failed'?'failed':'extracting',pages:row.pageCount,processedPages:row.processingPages?.length??0});
+    },{id:task.id,token:task.leaseToken!,mode:'checkpoint',progress});}catch(error){if(attempt===3||!(error instanceof ConflictException)||!error.message.includes('数据已更新'))throw error;}
+  }
+  private async saveStudioPage(task:TaskRow,input:Record<string,unknown>){
+    const common={stage:z.enum(['metadata','checkpoint']),pages:z.number().int().min(1).max(100000),purpose:z.literal('studio_material'),processorVersion:z.string().regex(/^study-pdf-structure-v\d+$/u)};
+    if(input.stage==='metadata'){
+      const data=z.object(common).strict().parse(input);await this.studioCheckpoint(task,row=>{row.pageCount=data.pages;if(row.processingVersion!==data.processorVersion){row.processingVersion=data.processorVersion;row.processingPages=[];row.pageFiles=[];row.checkpointFiles=[];}});return;
+    }
+    const data=z.object({...common,stage:z.literal('checkpoint'),page:z.number().int().min(1).max(120),method:z.enum(['pdf_text','ocr','hybrid','unreadable']),warnings:z.array(z.string().max(180)).max(30),completedAt:z.string().datetime({offset:true}),resumedPage:z.boolean(),imageName:z.string(),imageSha256:z.string().regex(/^[a-f0-9]{64}$/),imageSize:z.number().int().min(1).max(30*1024*1024),checkpointName:z.string(),checkpointSha256:z.string().regex(/^[a-f0-9]{64}$/),checkpointSize:z.number().int().min(1).max(40*1024*1024)}).strict().parse(input);
+    if(data.page>data.pages||data.pages>120||data.imageName!==`${data.processorVersion}/page-${data.page}.png`||data.checkpointName!==`${data.processorVersion}/page-${data.page}.json`)throw new ProcessingError('invalid_processor_output');
+    const root=studioMaterialCache(String(task.payload.sha256));
+    await verifyImmutableFile(resolve(root,data.imageName),data.imageSha256,data.imageSize);await verifyImmutableFile(resolve(root,data.checkpointName),data.checkpointSha256,data.checkpointSize);
+    await this.studioCheckpoint(task,row=>{
+      if(row.processingVersion!==data.processorVersion||row.pageCount!==data.pages)throw new ProcessingError('studio_material_changed');
+      row.processingPages=[...(row.processingPages??[]).filter(page=>page.page!==data.page),{page:data.page,method:data.method,warnings:data.warnings,completedAt:data.completedAt,resumed:data.resumedPage}].sort((a,b)=>a.page-b.page);
+      row.pageFiles=[...(row.pageFiles??[]).filter(page=>page.page!==data.page),{page:data.page,name:data.imageName,sha256:data.imageSha256,size:data.imageSize}].sort((a,b)=>a.page-b.page);
+      row.checkpointFiles=[...(row.checkpointFiles??[]).filter(page=>page.page!==data.page),{page:data.page,name:data.checkpointName,sha256:data.checkpointSha256,size:data.checkpointSize}].sort((a,b)=>a.page-b.page);
+    });
+  }
+  private async markStudioMaterialFailed(task:TaskRow, error: unknown) {
+    const materialId=String(task.payload.materialId);
     if (!materialId) return;
-    await this.store.transaction(() => {
-      const material = this.store.find('studioSourceMaterials', { id: materialId });
-      if (!material) return;
+    await this.studioCheckpoint(task,material=>{
       const code = error instanceof ProcessingError ? error.code : 'processing_failed';
       material.status = 'failed'; material.error = code; material.updatedAt = new Date().toISOString();
     }).catch(() => undefined);

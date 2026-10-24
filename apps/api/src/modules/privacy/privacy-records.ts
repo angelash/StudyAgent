@@ -27,7 +27,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomVisuals', 'courseProjects','studioSourceMaterials','sourceCourses','sourceCourseStages']) {
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','sourceCourses','sourceCourseStages']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -70,6 +70,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'courseProjects', row => row.ownerUserId === actorId);
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
+  add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
@@ -123,6 +124,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .map(({prompt:_prompt,requestKey:_key,inputHash:_hash,requests:_requests,selectionKey,files,...row})=>({...row,selected:selectionKey!==null,files:files?{image:files.image,original:files.original}:null}));
     else if (name === 'courseProjects') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, ...row }) => row);
+    else if(name==='studioMaterialUploads')result[name]=records.filter(row=>row.ownerUserId===actorId||row.status==='completed').map(({requestKey:_key,requestHash:_hash,aliases:_aliases,guardianId:_guardian,accessVersion:_version,...row})=>row);
     else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
     else if(name==='sourceCourses')result[name]=records.filter(row=>row.ownerUserId===actorId||
       (selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status))

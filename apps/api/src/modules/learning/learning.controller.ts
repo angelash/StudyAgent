@@ -16,8 +16,8 @@ export class LearningController {
   }
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.learning.overview(req.user); }
   @Get('studio/overview') studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string,
-    @Query('subject') subject?: string) {
-    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'));
+    @Query('subject') subject?: string,@Query('materialView') materialView?:string) {
+    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog');
   }
   @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.learning.previewStudioCourse(req.user, input);
@@ -37,7 +37,7 @@ export class LearningController {
   }
   @Post('studio/materials/pdf') @UseInterceptors(FileInterceptor('file', { storage: memoryStorage(), limits: { fileSize: 10 * 1024 * 1024, files: 1 } }))
   studioPdfUpload(@Req() req: AuthenticatedRequest, @UploadedFile() file: Express.Multer.File | undefined,
-    @Body() input: { studentId?: string; subject?: string; requestKey?: string }) { return this.learning.uploadStudioPdf(req.user, file, input); }
+    @Body() input: { studentId?: string; subject?: string; requestKey?: string }) { return this.learning.uploadStudioPdf(req.user, file, input,req.authSession); }
   @Get('studio/materials/:id/pages/:page') studioPdfPage(@Req() req: AuthenticatedRequest, @Param('id') id: string,
     @Param('page') page: string) { return this.learning.studioPdfPageImage(req.user, id, Number(page)); }
   @Get('studio/materials/:id/original') studioPdfOriginal(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
@@ -49,7 +49,7 @@ export class LearningController {
   }
   @Post('studio/materials/:id/process/retry') studioPdfProcessRetry(@Req() req: AuthenticatedRequest,
     @Param('id') id: string, @Body() input: unknown) {
-    return this.learning.retryStudioPdfProcessing(req.user, id, input);
+    return this.learning.retryStudioPdfProcessing(req.user, id, input,req.authSession);
   }
   @Post('studio/materials/:id/whiteboard/preview') studioPdfWhiteboardPreview(@Req() req: AuthenticatedRequest,
     @Param('id') id: string, @Body() input: { atomId?: string }) { return this.learning.previewStudioPdfWhiteboard(req.user, { ...input, materialId: id }); }

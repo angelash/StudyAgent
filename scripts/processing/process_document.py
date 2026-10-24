@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 
 VERSION = 'study-document-v3'
-STRUCTURE_VERSION = 'study-pdf-structure-v2'
+STRUCTURE_VERSION = 'study-pdf-structure-v3'
 
 
 def digest(path):
@@ -146,10 +146,47 @@ def inside_bbox(line, bbox):
     return bbox[0] - 0.005 <= x <= bbox[2] + 0.005 and bbox[1] - 0.005 <= y <= bbox[3] + 0.005
 
 
+def structure_checkpoint(cache, source_hash, page_number):
+    checkpoint = cache / f'page-{page_number}.json'
+    image = cache / f'page-{page_number}.png'
+    try:
+        if checkpoint.is_symlink() or image.is_symlink() or checkpoint.stat().st_size > 40 * 1024 * 1024:
+            return None
+        wrapper = json.loads(checkpoint.read_text(encoding='utf-8'))
+        value = wrapper['payload']
+        canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+        if (wrapper['payloadSha256'] != hashlib.sha256(canonical).hexdigest()
+                or value['processorVersion'] != STRUCTURE_VERSION or value['sourceSha256'] != source_hash
+                or value['pageNumber'] != page_number or not isinstance(value['text'], str)
+                or not isinstance(value['lines'], list) or not isinstance(value['blocks'], list)
+                or value['method'] not in ('pdf_text', 'ocr', 'hybrid', 'unreadable')
+                or not isinstance(value['tables'], list) or not isinstance(value['formulas'], list)
+                or not isinstance(value['warnings'], list) or not all(isinstance(warning, str) for warning in value['warnings'])
+                or not isinstance(value['completedAt'], str) or not isinstance(value['width'], int)
+                or not isinstance(value['height'], int) or value['width'] <= 0 or value['height'] <= 0
+                or not image.is_file() or image.stat().st_size != value['imageSize']
+                or digest(image) != value['imageSha256']):
+            return None
+        return {**value, 'imagePath': str(image), 'checkpointPath': str(checkpoint),
+                'checkpointSha256': digest(checkpoint), 'checkpointSize': checkpoint.stat().st_size}
+    except (ValueError, KeyError, OSError, TypeError):
+        return None
+
+
+def structure_progress(value, total, resumed):
+    event(stage='checkpoint', purpose='studio_material', page=value['pageNumber'], pages=total,
+          processorVersion=STRUCTURE_VERSION, method=value['method'], warnings=value['warnings'],
+          completedAt=value['completedAt'], resumedPage=resumed,
+          imageName=STRUCTURE_VERSION + '/page-' + str(value['pageNumber']) + '.png',
+          imageSha256=value['imageSha256'], imageSize=value['imageSize'],
+          checkpointName=STRUCTURE_VERSION + '/page-' + str(value['pageNumber']) + '.json',
+          checkpointSha256=value['checkpointSha256'], checkpointSize=value['checkpointSize'])
+
+
 def pdf_structure(config):
     import fitz
     source = Path(config['input'])
-    cache = Path(config['cache'])
+    cache = Path(config['cache']) / STRUCTURE_VERSION
     cache.mkdir(parents=True, exist_ok=True)
     if digest(source) != config['sha256']:
         raise ValueError('source_checksum_mismatch')
@@ -158,11 +195,17 @@ def pdf_structure(config):
     try:
         if doc.needs_pass:
             raise ValueError('encrypted_pdf')
-        if not 0 < len(doc) <= 30:
+        event(stage='metadata', pages=len(doc), purpose='studio_material', processorVersion=STRUCTURE_VERSION)
+        if not 0 < len(doc) <= 120:
             raise ValueError('page_limit')
         output_pages = []
         for index, page in enumerate(doc):
             page_number = index + 1
+            saved = structure_checkpoint(cache, config['sha256'], page_number)
+            if saved is not None:
+                output_pages.append(saved)
+                structure_progress(saved, len(doc), True)
+                continue
             if page.rect.width <= 0 or page.rect.height <= 0:
                 raise ValueError('invalid_page_size')
             scale = min(2.2, 1600 / max(page.rect.width, page.rect.height))
@@ -292,12 +335,20 @@ def pdf_structure(config):
                 warnings.append('formula_structure_requires_review')
             if tables:
                 warnings.append('table_structure_requires_review')
-            output_pages.append({'pageNumber': page_number, 'method': method, 'text': text,
+            from datetime import datetime, timezone
+            value = {'processorVersion': STRUCTURE_VERSION, 'sourceSha256': config['sha256'],
+                'completedAt': datetime.now(timezone.utc).isoformat(timespec='milliseconds'), 'pageNumber': page_number, 'method': method, 'text': text,
                 'lines': lines, 'blocks': paragraphs + formulas + tables, 'tables': tables, 'formulas': formulas,
                 'confidence': confidence, 'warnings': warnings, 'imagePath': str(image_path),
                 'imageSha256': digest(image_path), 'imageSize': image_path.stat().st_size,
-                'width': pixmap.width, 'height': pixmap.height})
-            event(stage='extracting', page=page_number, pages=len(doc), purpose='studio_material')
+                'width': pixmap.width, 'height': pixmap.height}
+            payload = {key: item for key, item in value.items() if key != 'imagePath'}
+            canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+            checkpoint = cache / f'page-{page_number}.json'
+            atomic_json(checkpoint, {'payload': payload, 'payloadSha256': hashlib.sha256(canonical).hexdigest()})
+            value.update(checkpointPath=str(checkpoint), checkpointSha256=digest(checkpoint), checkpointSize=checkpoint.stat().st_size)
+            output_pages.append(value)
+            structure_progress(value, len(doc), False)
 
         warnings = sorted({warning for page in output_pages for warning in page['warnings']})
         atomic_json(Path(config['output']), {'processorVersion': STRUCTURE_VERSION, 'pageCount': len(doc),

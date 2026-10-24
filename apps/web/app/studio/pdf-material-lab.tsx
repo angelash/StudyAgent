@@ -2,7 +2,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import katex from 'katex';
-import type { StudioOverview, StudioPdfStructureBlock, StudioSourceMaterial, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
+import {PdfMaterialUploader,PdfProcessingProgress} from './source-courses/pdf-material';
+import type { CourseSourceSnapshot, StudioSourcePage, StudioOverview, StudioPdfStructureBlock, StudioSourceMaterial, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../lib/api';
 
 type Props = {
@@ -21,6 +22,7 @@ const statusNames = {
   ready: '可核对',
   needs_review: '结构待核对',
   failed: '处理失败',
+  cancelled:'已停止',
 } as const;
 const methodNames = {
   native_text: '原生文字层',
@@ -64,6 +66,7 @@ function StructureBlock({ block }: { block: StudioPdfStructureBlock }) {
 }
 
 export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged, onOpenWhiteboard, onError }: Props) {
+  const scopeIdentity=studentId+':'+subject,scopeIdentityRef=React.useRef(scopeIdentity);scopeIdentityRef.current=scopeIdentity;
   const [selectedId, setSelectedId] = React.useState(materials[0]?.id ?? '');
   const [atomId, setAtomId] = React.useState(atoms.find(atom => atom.teaching)?.id ?? atoms[0]?.id ?? '');
   const [page, setPage] = React.useState(1);
@@ -72,9 +75,10 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
   const [pageImage, setPageImage] = React.useState('');
   const [pageImageError, setPageImageError] = React.useState('');
   const [pageView, setPageView] = React.useState<'page' | 'text' | 'structure'>('page');
-  const input = React.useRef<HTMLInputElement | null>(null);
+  const [pageData,setPageData]=React.useState<StudioSourcePage|null>(null),[pageLoading,setPageLoading]=React.useState(false),[pageFailure,setPageFailure]=React.useState(''),[pageAttempt,setPageAttempt]=React.useState(0);
   const material = materials.find(item => item.id === selectedId) ?? materials[0];
-  const current = material?.pages.find(item => item.page === page) ?? material?.pages[0];
+  const selectedPage = material?.pages.find(item => item.page === page) ?? material?.pages[0];
+  const current=pageData?.page===selectedPage?.page?pageData:selectedPage;
   const status = material?.status ?? 'ready';
   const processing = status === 'queued' || status === 'processing';
 
@@ -82,11 +86,8 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
     if (!materials.some(item => item.id === selectedId)) setSelectedId(materials[0]?.id ?? '');
   }, [materials, selectedId]);
 
-  React.useEffect(() => {
-    if (!materials.some(item => ['queued', 'processing'].includes(item.status ?? 'ready'))) return;
-    const timer = window.setInterval(() => void onChanged().catch(() => undefined), 1200);
-    return () => window.clearInterval(timer);
-  }, [materials, onChanged]);
+  React.useEffect(()=>{setPageData(null);setPageFailure('');if(!material?.contentVersion||selectedPage?.textCharacters===undefined){setPageLoading(false);return;}const controller=new AbortController();setPageLoading(true);void apiRequest<CourseSourceSnapshot>('/learning/source-courses/materials/'+material.id+'/pages/'+selectedPage.page+'?version='+material.contentVersion,{signal:controller.signal}).then(value=>{if(!controller.signal.aborted)setPageData({page:value.page,text:value.text,blocks:value.blocks,method:selectedPage.method,confidence:selectedPage.confidence,warnings:selectedPage.warnings});}).catch(caught=>{if(!controller.signal.aborted)setPageFailure(caught.message);}).finally(()=>{if(!controller.signal.aborted)setPageLoading(false);});return()=>controller.abort();},[material?.id,material?.contentVersion,selectedPage?.page,pageAttempt]);
+
 
   React.useEffect(() => {
     setPageImage(''); setPageImageError('');
@@ -98,7 +99,7 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
     }).then(response => {
       if (!response.ok) throw new Error('原页预览不可用');
       return response.blob();
-    }).then(blob => { objectUrl = URL.createObjectURL(blob); setPageImage(objectUrl); })
+    }).then(blob => { if(controller.signal.aborted)return;objectUrl = URL.createObjectURL(blob); setPageImage(objectUrl); })
       .catch(error => {
         if ((error as Error).name !== 'AbortError') {
           setPageImage(''); setPageImageError('原版页面暂时无法打开，可切换到文字层或结构层继续核对。');
@@ -106,24 +107,6 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
       });
     return () => { controller.abort(); if (objectUrl) URL.revokeObjectURL(objectUrl); };
   }, [material?.id, material?.hasPageImages, current?.page]);
-
-  async function upload(file: File) {
-    if (file.size > 10 * 1024 * 1024) { onError('PDF 不能超过 10MB'); return; }
-    setBusy(true);
-    try {
-      const body = new FormData();
-      body.append('file', file); body.append('studentId', studentId); body.append('subject', subject);
-      body.append('requestKey', crypto.randomUUID());
-      const token = getAuthToken();
-      const response = await fetch(apiBaseUrl + '/api/learning/studio/materials/pdf', {
-        method: 'POST', credentials: 'include', headers: token ? { authorization: 'Bearer ' + token } : {}, body,
-      });
-      const payload = await response.json();
-      if (!response.ok || payload.error) throw new Error(payload.error?.message || 'PDF 上传失败');
-      setSelectedId(payload.data.id); setPage(1); setPageView('page'); await onChanged();
-    } catch (error) { onError((error as Error).message); }
-    finally { setBusy(false); if (input.current) input.current.value = ''; }
-  }
 
   async function makePreview() {
     if (!material) return;
@@ -177,23 +160,16 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
     <header className="sa-page-head sa-calendar-heading"><div><span className="studio-kicker">SOURCE MATERIALS</span>
       <h1>把 PDF 变成逐页课堂。</h1><p>上传讲义或课件后，系统会识别文字层或扫描页，恢复段落、表格与公式候选，并保留原页供逐项核对。
         <span className="sa-pdf-privacy">启用小九AI复核时，最多 8 页原图与 OCR 文字会交给当前 CLI 配置的模型服务。</span></p></div>
-      <div className="sa-page-actions"><input ref={input} type="file" accept="application/pdf" hidden
-        onChange={event => { const file = event.target.files?.[0]; if (file) void upload(file); }} />
-        <button disabled={busy} onClick={() => input.current?.click()}>{busy ? '上传中…' : '＋ 上传 PDF'}</button></div></header>
+      </header>
+    <PdfMaterialUploader key={studentId+':'+subject} scope={{studentId,subject}} disabled={busy} onSaved={value=>{const selectedScope=scopeIdentity;void onChanged().then(()=>{if(scopeIdentityRef.current===selectedScope){setSelectedId(value.material.id);setPage(1);setPageView('page');}}).catch(caught=>{if(scopeIdentityRef.current===selectedScope)onError(caught.message);});}}/>
     <div className="sa-pdf-workbench"><aside><span className="studio-kicker">YOUR FILES</span>
       {materials.length ? materials.map(item => {
         const itemStatus = item.status ?? 'ready';
         return <button key={item.id} data-active={item.id === material?.id} onClick={() => {
           setSelectedId(item.id); setPage(item.pages[0]?.page ?? 1);
         }}><span>PDF</span><div><b>{item.title}</b><small>{item.pageCount} 页 · {statusNames[itemStatus]}</small></div></button>;
-      }) : <div className="sa-pdf-empty"><b>还没有材料</b><p>上传 10MB 以内的文字型或扫描型 PDF。处理结果始终保留来源页与核对边界。</p></div>}
-    </aside><main>{material && processing ? <div className="sa-pdf-processing">
-      <span className="studio-kicker">PROCESSING PDF</span><h2>正在拆开文字与版面。</h2>
-      <p>{material.status === 'queued' ? '文件已安全保存，等待后台任务开始。' : '正在执行 OCR、表格识别和公式结构恢复。复杂扫描页可能需要更长时间。'}</p>
-      <div><i /><i /><i /></div><small>离开页面不会中断任务；完成后会自动刷新。</small>
-    </div> : material?.status === 'failed' ? <div className="sa-pdf-failed"><span className="studio-kicker">PROCESSING FAILED</span>
-      <h2>这份 PDF 还没有完成结构恢复。</h2><p>{material.error || '处理任务中断，请重新上传或检查文件。'}</p>
-      <button disabled={busy} onClick={() => void retryProcessing()}>{busy ? '正在重新排队…' : '重试处理'}</button></div>
+      }) : <div className="sa-pdf-empty"><b>还没有材料</b><p>上传50MB以内、最多120页的文字型或扫描型PDF。处理结果始终保留来源页与核对边界。</p></div>}
+    </aside><main>{material&&<PdfProcessingProgress material={material} onRefresh={()=>void onChanged().catch(caught=>onError(caught.message))}/>}{material&&processing?<div className="sa-pdf-processing"><h2>原件已保存，正在整理原页。</h2><p>已保存的页可在上方查看。全部处理完成后可以核对结构并创建课程。</p></div>:material&&['failed','cancelled'].includes(material.status??'')?<div className="sa-pdf-failed"><h2>这份PDF的处理已停止。</h2></div>
       : material && current ? <>
         <div className="sa-pdf-summary"><div><span className="studio-kicker">EXTRACTION</span>
           <b>{methodNames[material.structure?.method ?? (current.method === 'ocr' ? 'ocr' : 'native_text')]}</b>
@@ -202,7 +178,7 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
           <div data-review={material.structure?.reviewRequired}><span>STRUCTURE</span>
             <b>{material.structure?.reviewRequired ? '需要对照原页' : '结构已恢复'}</b>
             <small>{material.structure?.modelSource === 'xiaojiu_cli' ? '小九AI · ' +
-              (material.structure.modelId === 'deepseek-v4-flash' ? 'DeepSeek V4 Flash' : material.structure.modelId ?? '模型复核') :
+              (material.structure.modelId === 'deepseek-v4-flash' ? 'DeepSeek V4.1 Flash' : material.structure.modelId ?? '模型复核') :
               material.structure?.modelSource === 'local_fallback' ? '本地结构恢复' : '本地版面恢复'}</small>
             {material.structure?.modelSource === 'local_fallback' && <button disabled={busy}
               onClick={() => void retryProcessing()}>重新用小九AI复核</button>}
@@ -220,7 +196,7 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
         <article className="sa-pdf-page"><header><div><span className="studio-kicker">PAGE {current.page}/{material.pageCount}</span>
           <h2>{material.title}</h2></div><small>{material.filename} · {Math.max(1, Math.ceil(material.byteSize / 1024))} KB</small></header>
           <Link className="sc-material-create-link" href={'/studio/source-courses?'+new URLSearchParams({new:'1',studentId,subject,material:material.id,page:String(current.page)})}>从这一页创建完整资料课程 →</Link>
-          <div className="sa-pdf-paper">{pageView === 'page' ? (pageImage ? <img
+          <div className="sa-pdf-paper">{pageLoading?<p role="status">正在读取当前原页的正文和结构…</p>:pageFailure?<div role="alert"><p>{pageFailure}</p><button onClick={()=>setPageAttempt(value=>value+1)}>重新读取这一页</button></div>:pageView === 'page' ? (pageImage ? <img
             alt={material.title + ' 第 ' + current.page + ' 页原版预览'} src={pageImage} /> :
             <div className="sa-pdf-paper-loading">{pageImageError || (material.hasPageImages ? '正在打开原版页面…' : '该页未能生成原版预览；文字层仍可核对。')}</div>)
             : pageView === 'text' ? <p>{current.text || '这一页没有识别出可读文字，请对照原页。'}</p> :

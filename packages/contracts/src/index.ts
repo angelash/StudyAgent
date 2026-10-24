@@ -734,4 +734,5 @@ export * from './learning-home';
 export * from './course-project';
 export * from './source-course';
 export * from './source-course-compilation';
+export * from './studio-material-upload';
 export * from './classroom-visual';

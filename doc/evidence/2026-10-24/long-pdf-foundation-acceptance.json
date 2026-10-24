@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T03:32:22.536855+00:00",
+  "sourceRevision": "pending-foundation-commit",
+  "baseRevision": "7ca4b71114a1fa2b80a224b916980d16e7934a9c",
+  "specificationCommit": "648a96d",
+  "passed": true,
+  "status": "locally-verified-development-foundation",
+  "scope": "Specification 104 upload / page-checkpoint / lazy-source first increment in isolated worktree. Not the whole specification or product, not production deployment, not actual PostgreSQL validation.",
+  "reports": {
+    "long-pdf-compatibility.json": {
+      "sha256": "0c70ff56443faebb88e88233552092de7006f9fb2c2eef6527e5a6de7623845c",
+      "success": true,
+      "passed": 29,
+      "failed": 0,
+      "failedSuites": 0,
+      "skipped": 0,
+      "stats": null
+    },
+    "long-pdf-upload-first.json": {
+      "sha256": "74aef9bec9ca488c510073ad7ef7c2a4775fd67c9e728a956e2edcf15cdaa29b",
+      "success": true,
+      "passed": 4,
+      "failed": 0,
+      "failedSuites": 0,
+      "skipped": 0,
+      "stats": null
+    },
+    "long-pdf-upload-expanded.json": {
+      "sha256": "443862a516b6203f83f77a44b20100710fbaa0af9ab064e4053dadf567afcae5",
+      "success": true,
+      "passed": 42,
+      "failed": 0,
+      "failedSuites": 0,
+      "skipped": 0,
+      "stats": null
+    },
+    "long-pdf-foundation-api.json": {
+      "sha256": "666232d502ba708ef8a1c43f8248ccdeea324b883675dc6701ae658216af0000",
+      "success": true,
+      "passed": 21,
+      "failed": 0,
+      "failedSuites": 0,
+      "skipped": 0,
+      "stats": null
+    },
+    "long-pdf-final-upload-api.json": {
+      "sha256": "b3437f6ddca24d268f01730c39cc60275388640f380bea2ab23332923d766155",
+      "success": true,
+      "passed": 5,
+      "failed": 0,
+      "failedSuites": 0,
+      "skipped": 0,
+      "stats": null
+    },
+    "long-pdf-browser-five.json": {
+      "sha256": "b504094ca613244e67636791c7d202dcf8aeeeba5f23dfa1b675a41e96d861aa",
+      "success": null,
+      "passed": null,
+      "failed": null,
+      "failedSuites": null,
+      "skipped": null,
+      "stats": {
+        "startTime": "2026-10-24T03:16:59.063Z",
+        "duration": 52939.268000000004,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "long-pdf-browser.json": {
+      "sha256": "94860070de3b6353cc4fe7768ba72e2d2ab866f9392a4f5109495f94565cc8cd",
+      "success": null,
+      "passed": null,
+      "failed": null,
+      "failedSuites": null,
+      "skipped": null,
+      "stats": {
+        "startTime": "2026-10-24T03:24:56.943Z",
+        "duration": 33361.81,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "long-pdf-python-checkpoints.log": {
+      "sha256": "95c4f7eb592d02893db64dc1e428301e7b4063b4291f03b8420be8b825273912"
+    }
+  },
+  "coverage": [
+    "4MiB binary chunks, declared whole-file SHA, duplicate command aliases, missing / conflicting chunks and upload cancellation / expiry.",
+    "Actual native PDF over 10MiB with 120 pages; exact original download and final-page text / image.",
+    "Actual database reopen, cancel fencing, backup to an empty root, restore and resume only registered original checkpoints.",
+    "Learning-code permissions, guardian revocation before publication and authorized guardian recovery.",
+    "Catalogs carry page metadata; page reads bind current material version. Both UI entry points use lazy source loading.",
+    "Browser interruption / lost completion acknowledgment / page range / cancel-retry / original text and structure at multiple widths.",
+    "Real 120-page Python checkpoints reject corrupt JSON, corrupt image and structurally incomplete payloads; over-limit and encrypted originals fail explicitly."
+  ],
+  "notComplete": [
+    "Reference-aware physical erasure, asset state reservation and live processing leases.",
+    "Expired / cancelled upload chunk cleanup and deletion-ledger filesystem cleanup.",
+    "Historical image digest backfill / missing-source audit.",
+    "Actual PostgreSQL upload / checkpoint / recovery tests and final full regression / CI.",
+    "Long OCR-book quality, real model structure checks, teacher approval and actual device / learning outcomes."
+  ],
+  "productionUnchanged": {
+    "web": "http://localhost:3217",
+    "deployedCode": "648a96d"
+  },
+  "priorFeatureBaselineCi": {
+    "runId": 40054645141,
+    "sourceRevision": "7ca4b71114a1fa2b80a224b916980d16e7934a9c",
+    "allJobsPassed": true,
+    "scope": "Prior mainline only; does not validate this feature branch."
+  }
+}

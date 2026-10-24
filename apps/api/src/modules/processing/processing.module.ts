@@ -4,5 +4,6 @@ import { QuestionWorkspaceModule } from '../question-workspace/question-workspac
 import { ProcessingController } from './processing.controller';
 import { ProcessingWorkerService } from './processing-worker.service';
 import { AiModule } from '../ai/ai.module';
-@Module({ imports: [ProcessingFilesModule, QuestionWorkspaceModule, AiModule], controllers: [ProcessingController], providers: [ProcessingWorkerService], exports: [ProcessingWorkerService] })
+import { StudentsModule } from '../students/students.module';
+@Module({ imports: [ProcessingFilesModule, QuestionWorkspaceModule, AiModule,StudentsModule], controllers: [ProcessingController], providers: [ProcessingWorkerService], exports: [ProcessingWorkerService] })
 export class ProcessingModule {}

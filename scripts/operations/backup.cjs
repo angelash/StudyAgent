@@ -55,7 +55,7 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -67,7 +67,13 @@ function referencesFromRecords(rows) {
   };
   for (const row of rows) {
     const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
-    if (row.collection === 'studioSourceMaterials') {
+    if (row.collection === 'studioMaterialUploads') {
+      if (!/^studio_upload_[a-f0-9-]+$/.test(value.id)) fail('invalid_material_upload_reference');
+      if (value.status === 'uploading') for (const chunk of value.chunks ?? []) {
+        if (!Number.isSafeInteger(chunk.index) || chunk.index < 0) fail('invalid_chunk_reference');
+        add(`studio-uploads/${value.id}/${chunk.index}-${chunk.sha256}`,chunk.sha256,chunk.size);
+      }
+    } else if (row.collection === 'studioSourceMaterials') {
       if (value.kind !== 'text' || value.originalFormat === 'txt') {
         const format = value.originalFormat ?? 'pdf';
         if (!['pdf','txt'].includes(format)) fail('invalid_material_format');
@@ -75,7 +81,13 @@ function referencesFromRecords(rows) {
       }
       for (const file of value.pageFiles ?? []) {
         if (!Number.isSafeInteger(file.page) || file.page < 1 || file.page > 500 || !/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_page_reference');
-        add(`studio-materials/processed/${value.sha256}/page-${file.page}.png`,file.sha256,file.size);
+        const name=file.name??`page-${file.page}.png`;
+        if (name!==`page-${file.page}.png`&&!new RegExp('^study-pdf-structure-v\\d+/page-'+file.page+'\\.png$').test(name)) fail('invalid_material_page_reference');
+        add(`studio-materials/processed/${value.sha256}/${name}`,file.sha256,file.size);
+      }
+      for (const file of value.checkpointFiles ?? []) {
+        if (!Number.isSafeInteger(file.page)||file.page<1||file.page>500||!new RegExp('^study-pdf-structure-v\\d+/page-'+file.page+'\\.json$').test(file.name)||!/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_checkpoint_reference');
+        add(`studio-materials/processed/${value.sha256}/${file.name}`,file.sha256,file.size);
       }
     } else if (row.collection === 'classroomVisuals') {
       if (!/^classroom_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id)) fail('invalid_visual_reference');
@@ -144,7 +156,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|studio-materials)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|studio-materials|studio-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);

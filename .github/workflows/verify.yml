@@ -28,7 +28,9 @@ jobs:
       - name: Install document test dependencies
         run: python -m pip install --disable-pip-version-check -r scripts/processing/requirements-ci.txt
       - name: Dense PDF originals retain complete text and lines
-        run: python scripts/processing/test_complete_pdf_text.py
+        run: |
+          python scripts/processing/test_complete_pdf_text.py
+          python scripts/processing/test_studio_checkpoints.py
       - name: Install media tools
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
       - name: Prepare configuration

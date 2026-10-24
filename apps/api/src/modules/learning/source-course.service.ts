@@ -6,7 +6,7 @@ import type { CourseSourceSnapshot, SourceCourseSummary, SourceCourseView, Studi
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
-import { assertMaterialAccess, studioMaterialView } from './studio-material-access';
+import { assertMaterialAccess, studioMaterialView,materialTaskStatus } from './studio-material-access';
 import { SOURCE_COURSE_PIPELINE, generationDigest,generationFingerprint, generationView, newCourseGeneration } from './source-course-pipeline';
 import { sourceCourseLesson, courseCitationSources, checkGeneratedCourse, sourceDigest, sourceCourseModelContext, SourceCourseRecord } from './source-course-content';
 
@@ -25,14 +25,13 @@ export function assertSourceCourseAccess(user:InMemoryUserAccount,row:SourceCour
 export class SourceCourseService {
   constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService){}
   private record(user:InMemoryUserAccount,courseId:string,editing=false){const row=this.store.find('sourceCourses',{id:courseId});if(!row)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,row,this.students,editing);return row;}
-  materials(user:InMemoryUserAccount,input:unknown){
-    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional()}).strict(),input);
+  async materials(user:InMemoryUserAccount,input:unknown){
+    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional(),view:z.literal('catalog').optional()}).strict(),input);
     if(query.studentId)this.students.assertCanAccessStudent(user,query.studentId);
     if(user.role==='student'&&!query.studentId)throw new BadRequestException('请先选择自己的学习档案');
     const rows=[...(query.studentId?this.store.select('studioSourceMaterials',{studentId:query.studentId,...(query.subject?{subject:query.subject}:{})}):[]),
       ...(user.role!=='student'?this.store.select('studioSourceMaterials',{studentId:null,ownerUserId:user.id}):[])];
-    return rows
-      .sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).map(row=>({material:studioMaterialView(row),version:materialVersion(row)}));
+    return Promise.all(rows.sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).map(async row=>{const view=studioMaterialView(row,query.view==='catalog');if(query.view==='catalog'&&row.processingTaskId)view.status=materialTaskStatus(row,(await this.store.tasks.get(row.processingTaskId))?.state);return{material:view,version:materialVersion(row)};}));
   }
   addText(user:InMemoryUserAccount,input:unknown){
     const command=validate(z.object({title:z.string().trim().min(1).max(180),sections:z.array(z.string().trim().min(20).max(8000)).min(1).max(8),

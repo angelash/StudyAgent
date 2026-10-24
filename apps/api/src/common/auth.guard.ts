@@ -19,7 +19,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // Student sessions deny new management routes by default. Resource-level checks
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
-  GET: [/^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+  GET: [/^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
     /^learning\/projects\/(catalog|[^/]+)$/,
@@ -38,7 +38,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
     /^ai\/models$/, /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
-  POST: [/^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+  POST: [/^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|narration\/[^/]+))?$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice))?$/,
@@ -57,7 +57,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
-  PUT: [/^learning\/media\/[^/]+\/chunks\/\d+$/],
+  PUT: [/^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
   PATCH: [/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 

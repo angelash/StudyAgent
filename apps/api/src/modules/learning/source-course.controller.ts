@@ -3,11 +3,16 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { SourceCourseService } from './source-course.service';
+import { StudioMaterialUploadService } from './studio-material-upload.service';
 @UseGuards(AuthGuard)
 @Controller('learning/source-courses')
 export class SourceCourseController {
-  constructor(private readonly courses:SourceCourseService){}
+  constructor(private readonly courses:SourceCourseService,private readonly uploads:StudioMaterialUploadService){}
   @Get('materials') materials(@Req()req:AuthenticatedRequest,@Query()query:unknown){return this.courses.materials(req.user,query);}
+  @Get('materials/:id/progress') materialProgress(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.uploads.progress(req.user,id);}
+  @Get('materials/:id') material(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.uploads.material(req.user,id);}
+  @Get('materials/:id/pages/:page') materialPage(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Param('page')page:string,@Query()query:unknown){return this.uploads.page(req.user,id,Number(page),query);}
+  @Post('materials/:id/process/cancel') cancelMaterialProcessing(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.uploads.cancelProcessing(req.user,id,body);}
   @Post('materials/text') text(@Req()req:AuthenticatedRequest,@Body()body:unknown){return this.courses.addText(req.user,body);}
   @Post('materials/text-file') @UseInterceptors(FileInterceptor('file',{storage:memoryStorage(),limits:{fileSize:1024*1024,files:1}}))
   textFile(@Req()req:AuthenticatedRequest,@Body()body:unknown,@UploadedFile()file:Express.Multer.File|undefined){return this.courses.addTextFile(req.user,file,body);}
