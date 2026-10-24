@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a12d6dfb3329866c6a2f403795e9e0d0dad57d65",
+  "sourceRevision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 299,
@@ -10,12 +10,12 @@
     "activeModules": 18,
     "activeControllers": 27,
     "apiClasses": 115,
-    "apiFunctions": 322,
+    "apiFunctions": 323,
     "domainCollections": 86,
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 111,
+    "apiTestFiles": 113,
     "browserTestFiles": 15
   },
   "modules": [
@@ -26771,6 +26771,18 @@
       "signature": "validate(schema: T, input: unknown): z.infer<T>"
     },
     {
+      "file": "apps/api/src/infrastructure/atomic-marker-publication.ts",
+      "name": "releaseOwnAtomicMarker",
+      "line": 9,
+      "signature": "releaseOwnAtomicMarker(file: string, value: Record<string, unknown>)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/atomic-marker-publication.ts",
+      "name": "publishAtomicMarker",
+      "line": 21,
+      "signature": "publishAtomicMarker(input: { directory: string; file: string; purpose: string; value: AtomicMarkerValue; persistent?: boolean; afterPhase?: AtomicMarkerPhaseHook })"
+    },
+    {
       "file": "apps/api/src/infrastructure/domain-database.ts",
       "name": "differences",
       "line": 35,
@@ -26875,19 +26887,13 @@
     {
       "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
       "name": "parseStudioMarkerStagingName",
-      "line": 10,
+      "line": 9,
       "signature": "parseStudioMarkerStagingName(name: string)"
     },
     {
       "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
-      "name": "releaseOwnStudioMarker",
-      "line": 17,
-      "signature": "releaseOwnStudioMarker(file: string, value: Record<string, unknown>)"
-    },
-    {
-      "file": "apps/api/src/infrastructure/studio-atomic-marker.ts",
       "name": "publishStudioMarker",
-      "line": 33,
+      "line": 19,
       "signature": "publishStudioMarker(control: string, file: string, purpose: StudioMarkerPurpose, value: Record<string, unknown> & { nonce: string; pid: number }, afterPhase?: StudioMarkerPhaseHook)"
     },
     {
@@ -38697,8 +38703,10 @@
     "apps/api/src/infrastructure/backup.integration.test.ts",
     "apps/api/src/infrastructure/domain-database.test.ts",
     "apps/api/src/infrastructure/operations.integration.test.ts",
+    "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
     "apps/api/src/infrastructure/postgres.integration.test.ts",
     "apps/api/src/infrastructure/rate-limit.test.ts",
+    "apps/api/src/infrastructure/restore-context.test.ts",
     "apps/api/src/infrastructure/restored-materials.integration.test.ts",
     "apps/api/src/infrastructure/scoped-transactions.test.ts",
     "apps/api/src/infrastructure/snapshot-isolation.test.ts",

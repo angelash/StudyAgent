@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T07:43:55.130444+00:00",
+  "sourceRevision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+  "implementationCommit": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+  "specificationCommit": "3fedbac",
+  "passed": true,
+  "status": "verified-native-import-foundation-not-complete-resume",
+  "reports": {
+    "restore-import-atomic-regression.json": {
+      "sha256": "975f030854b8af9da9e5617f9cfdad4f9be2354ccd12ffd9f07c528d412cc013",
+      "passed": 28,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-cold-postgres-initial.json": {
+      "sha256": "3d2ac6af02d89b5f36608d3703ce0cd29b917864cf1b50b4f59a8dcc00bcccf5",
+      "passed": 11,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-context-final.json": {
+      "sha256": "50352b142e9f44065791b060834118c97b70a92f4722dc7a2f9a4aeb3e994874",
+      "passed": 35,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-native-postgres-final-runtime.json": {
+      "sha256": "6e2b8c1f786022ebc68df4de3fc911fd3cda49fcdc0bc409e7309c592fbbfe23",
+      "scope": "runtime environment record; not an additional test count"
+    },
+    "restore-import-native-postgres-final.json": {
+      "sha256": "5799eceac25723097022ced51d65339071622f28cdb290e912f0f22e639e5296",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-native-postgres-initial.json": {
+      "sha256": "f3935a1889069f7aa095ec9bf322b9ca5296525643e06739ad7048b51371791c",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-native-postgres-last.json": {
+      "sha256": "0c14769f1c9401697d74a43aae833b938a2f8c8fc31833dda7e06abb6ae1f005",
+      "passed": 9,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-import-native-postgres-runtime.json": {
+      "sha256": "ad1af30a4ee7aa7def3c853247416d1a72f0978b9c10ffbcd4cdd9b7d2828faf",
+      "scope": "runtime environment record; not an additional test count"
+    },
+    "restore-import-postgres-runtime.json": {
+      "sha256": "084b38a8b6351bd5dce10efe04575e758945c7d2f22f91f0a25af90c01e51dcc",
+      "scope": "runtime environment record; not an additional test count"
+    },
+    "restore-import-sqlite-regression.json": {
+      "sha256": "87b9ea3be510dd4fbbcd9e9c9b6047f8aac850ebe44e594d90c7ae053df78c30",
+      "passed": 39,
+      "failed": 0,
+      "pending": 0
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "bc3eb38dc400d263294dd637347a1e9412e76baaf5f8e9791d579d9bd651bf9f",
+    "apps/api/src/infrastructure/atomic-marker-publication.ts": "b58f8e295b28157547fbfa4c40bef1fcc5610c299f222f6cd912fcbf130fe166",
+    "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts": "45a95e423216db087a2c05350a194fca3934a947c04e9b28db05af9273bc0835",
+    "apps/api/src/infrastructure/restore-context.test.ts": "d8dec6c1ab1941d6678b7b4520f12d93678a81edf9c55daa08c05aa40709e2e6",
+    "apps/api/src/infrastructure/studio-atomic-marker.ts": "d23087908244a92d8b93efa843940837d383492a2c8a670314a241ddc6fe0ea2",
+    "scripts/architecture/project-feature-definitions.cjs": "10fca3639f1e49b68f53ea51bc22ffb0539f0c2151c5d8e42fe4f88e868f6b59",
+    "scripts/operations/backup.cjs": "06de926fdf122b10e76b628566bbbc07d4b27dcbce8c86894579c10cb1bea363",
+    "scripts/operations/postgres-backup.cjs": "0c25bfe5d6db2b9d54361abc4930fd2be55f34a75435997b7acf12f547fe2ba8",
+    "scripts/operations/postgres-restore-import.cjs": "63b6872151ad3ee2e9cd2c3da8e27d5941d671125fc081b85be34bb4cfe7a335",
+    "scripts/operations/restore-context.cjs": "50e80693bf8328d7e6d83273214c3ad84667d4cb7eee8fc386a7166b5fc63558",
+    "scripts/qa/fixtures/postgres-import-child.cjs": "e462090d39c8b46d0310d610019d8c163e4b8cfff6b04be7947804174b48210d",
+    "scripts/qa/run-material-postgres.cjs": "80665116f74349ae3b12acd4b69cbdde63ab6a47811479c05de19f41da19e3c1"
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    }
+  ],
+  "coverage": [
+    "Immutable restore identity binds backup, full manifest, optional deletion ledger, driver and target before private bytes are copied; passwords and connection URLs are excluded.",
+    "PG session controller lock, independent native transaction lock and reserved epoch reject competing or delayed old writers.",
+    "pg_restore SQL is consumed by psql in one transaction. A deferred constraint rejects EOF without the successful producer epilogue. Core-table data digest commits with imported state.",
+    "Nine real native PG cases cover complete commit, live controller/native competition, delayed old epoch, parent SIGKILL at prefix/archive/committed boundaries, producer failure, consumer failure and backup excluding old technical schemas.",
+    "Atomic marker extraction preserves existing studio Node/Python protocols. Read-only bundle verification does not load compiled API runtime."
+  ],
+  "limits": [
+    "Local native validation uses isolated Windows PostgreSQL 17.11 and synthetic data. Linux/PostgreSQL 16 CI is tracked separately.",
+    "Report combinations overlap; counts must not be added.",
+    "CLI --resume, operation lock, atomic copy continuation, deletion-cleanup retry and final transactional receipt remain unimplemented.",
+    "Import data digest describes pre-cleanup database contents, not final deletion-ledger state.",
+    "No production switch, full specification 104 completion, pixel parity or real-student retention acceptance is claimed."
+  ]
+}
