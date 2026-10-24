@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T00:55:53.104Z",
+  "sourceRevision": "9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2",
+  "specificationCommit": "0b99c72",
+  "passed": true,
+  "status": "verified-scoped-delivery",
+  "scope": "Frozen bilingual classroom captions, original-source cursor upgrade, narration cancellation and student access; not complete HyperKnow parity, all-language segmentation, teacher approval, calibrated measurement, human listening or physical-device acceptance.",
+  "requirements": {
+    "XP-C01": "in_progress",
+    "XP-C02": "in_progress",
+    "XP-C04": "in_progress",
+    "XP-C05": "in_progress",
+    "XP-C06": "in_progress",
+    "XP-D02": "in_progress",
+    "XP-D04": "in_progress"
+  },
+  "backendFull": {
+    "report": "classroom-caption-api-full.json",
+    "sha256": "ef5c3162737880b88162c127ec18225766450852f7192e7dedb0de22b21b23cd",
+    "testsPassed": 880,
+    "testsSkipped": 6,
+    "testsFailed": 0,
+    "files": 102,
+    "scope": "Complete local API run before the Multer 2.5.0 dependency change and its additional HTTP test. Feature code is unchanged; final dependency-specific checks and exact-commit CI are separate."
+  },
+  "backendFocused": {
+    "report": "classroom-caption-api-focused.json",
+    "sha256": "3376fda628834a0e9d24a897c0f9023f7ad728d1b14b3c56dd7c5958afa33763",
+    "testsPassed": 45,
+    "testsSkipped": 0,
+    "testsFailed": 0,
+    "files": 5
+  },
+  "backendUploadFinal": {
+    "report": "classroom-caption-upload-final.json",
+    "sha256": "44e90aa6b0e61220585f8ba750b4a9face11ef863de88fa243ebf4a881f56642",
+    "testsPassed": 41,
+    "testsSkipped": 0,
+    "testsFailed": 0,
+    "files": 3,
+    "scope": "Final HTTP parser/multipart survival, studio PDF flow and staged source courses with Multer 2.5.0."
+  },
+  "browserFull": {
+    "report": "classroom-caption-browser-full.json",
+    "sha256": "4a954967dd2a2b48e10dd917f9fe3d98f539c2daf910fade2e51c9f568ecd7ca",
+    "startTime": "2026-10-24T00:40:01.761Z",
+    "duration": 282859.61299999995,
+    "expected": 52,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "scope": "Full 52 journeys before the final sticky header/page counter CSS and additional muted-English journey."
+  },
+  "browserFinal": {
+    "report": "classroom-caption-browser-final.json",
+    "sha256": "cc7240c411737abc68a3601750552d0cc54b7ddaccdfc56d3edb4554142fbf03",
+    "startTime": "2026-10-24T00:45:38.044Z",
+    "duration": 88913.947,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "scope": "Final 6 captions + 4 image journeys after the CSS refinements; explicit synthetic WAV/PNG for browser event and layout behavior. Real provider audio is separate."
+  },
+  "speech": {
+    "report": "classroom-caption-real-audio.json",
+    "sha256": "d3ab172b71baf8b375cc1638fb9804b8a7208a4fb9ba5b4b1b78684e5b2b4300",
+    "samples": 6,
+    "listening": "pending",
+    "provider": "configured MiniMax through authenticated actual classroom HTTP",
+    "scope": "Real configured speech provider, owned anonymous classroom in temporary SQLite; decoding is not a human listening or device acceptance"
+  },
+  "dependencyAudit": {
+    "report": "classroom-caption-audit.json",
+    "sha256": "a9ede78e2d8c1f6a585bcbd3efbf01369277d60b3901fa37d26569fb36d07274",
+    "productionVulnerabilities": 0,
+    "multer": "2.5.0",
+    "cleanInstall": {
+      "passed": true,
+      "command": "npm ci --ignore-scripts --prefix <owned QA manifest checkout>",
+      "lockSha256": "0e834dd4fecd962c37283ccc553838350e1024c066856c18b70a4200a20844ef",
+      "scope": "Fresh independent node_modules with the final reviewed lock; application source and CI validation separate."
+    },
+    "previousAudit": "classroom-caption-audit-before-patch.json",
+    "advisory": "https://github.com/advisories/GHSA-q7qp-rjg7-q26m",
+    "note": "The multipart survival regression is a bounded request-teardown check; it is not a claimed reproduction of the advisory PoC.",
+    "previousCommitCi": {
+      "runId": 40042695328,
+      "sourceRevision": "0b99c72d502e05d412d36ef98c76ba54b4b37b08",
+      "conclusion": "failure",
+      "step": "npm audit --audit-level=low",
+      "reason": "Multer GHSA-q7qp-rjg7-q26m; patched in 9c31c74"
+    },
+    "resolution": {
+      "runtimeNestMulter": "2.5.0",
+      "runtimeApplicationMulter": "2.5.0",
+      "cleanInstall": "passed",
+      "npmLs": "ELSPROBLEMS: reports the upstream Nest exact 2.4.0 spec despite the explicit root override; same diagnostic reproduced in fresh QA install",
+      "interpretation": "Do not label all package-manager diagnostics clean. The override is intentional; clean npm ci, zero advisories, actual module resolution and application regressions/CI provide separate evidence."
+    }
+  },
+  "failuresPreserved": [
+    {
+      "report": "classroom-caption-browser-fixture-failure.json",
+      "sha256": "61826dad5fb97f8731d46b908a0ff46ad6daa3a22e0c8f67a3c86e2594999635"
+    },
+    {
+      "report": "classroom-caption-browser-recovery-failure.json",
+      "sha256": "b3cfdb249858aa0f46dedafe77e45c3e37be56f7f6395fe0a5f02dd1d61abe82"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "classroom-caption-screens/english-1440.png",
+      "sha256": "fb43f9a5416a6dbf1dfa389dd36feb79392877c75029ec9f549b009150515fd8",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/english-390.png",
+      "sha256": "97183767e86fb5fbd42b28b95aa8a15a76062a80efaebb18dcce8078c28fba31",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/english-768.png",
+      "sha256": "650c4b0de143416bb88743651f41b45a69a7c18c640ed306e5080aead2d0624c",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/legacy-confirm.png",
+      "sha256": "dc27bf6ccc1f804e2c5862d7b7a7af43c8d58ac4995889836e633cb1f5469c75",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/long-token-1440.png",
+      "sha256": "edc0bb9ffa12d68d52d99e639de29238b1ad8a4ce4887dbcd20c25c42da18f5a",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/long-token-390.png",
+      "sha256": "4ed2e6e5bb1162e8b00dd89c2bd66cd0fca72869a661b2541f1ff83539e5b597",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    },
+    {
+      "file": "classroom-caption-screens/long-token-768.png",
+      "sha256": "2c7de74c52a3fefc4dac49c3a45466d4cb0a37f7e1c89a8217b271ce060e2381",
+      "visualInspection": "viewed-agent-screenshots; not reference pixel comparison"
+    }
+  ],
+  "checks": [
+    "UTF-16 ranges retain original bilingual narration and protect bounded abbreviation/number/URL/code/math samples.",
+    "New sessions and assistant replies freeze stable identities; legacy reads project exact old behavior without writing a migration.",
+    "Upgrade maps the old source start, preserves hints/answers/read status and retains the prior snapshot; same-command replay and stale/conflicting commands are checked.",
+    "New positional progress and speech reject missing/stale presentation metadata; real HTTP disconnect aborts speech generation.",
+    "An actual learning-code student can use only their own caption and allowed image actions; other accounts, revoked access and unknown actions are refused.",
+    "Pause and upgrade abort old/prefetched audio and late results; reply completion returns to the frozen original lesson unit.",
+    "Settings keyboard containment, opener focus restoration, sticky close control, long-token overflow and three viewport widths were inspected.",
+    "SQLite reopen and portable export retain original snapshot, upgraded units and history; PostgreSQL has a separate exact-commit CI suite."
+  ],
+  "limits": [
+    "No claim of all languages or ambiguous abbreviation correctness.",
+    "No human listening assessment, physical mobile playback permissions, teacher content approval or long-term learning efficacy.",
+    "Muted timing is a reading estimate; no word-level or forced acoustic alignment.",
+    "Closing an upgrade request stops waiting; an already committed server change is recovered by read/replay rather than claimed rollback.",
+    "Full textbook/long-source coverage, course-package lifecycle, unused PDF byte cleanup, image iteration and other master-plan items remain incomplete.",
+    "The 390px zoom percentage remains crowded beside the plus control; tablet tables require horizontal scrolling. These are follow-ups for the complete touch/layout pass, not pixel-parity acceptance. Some long-token screenshots captured existing entry animation opacity and are not stable reference-diff artifacts."
+  ],
+  "originalLocalChanges": {
+    "excludedFiles": 5,
+    "preserved": true
+  },
+  "ci": {
+    "passed": true,
+    "runId": 40047296660,
+    "sourceRevision": "9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2",
+    "report": "classroom-caption-ci.json"
+  },
+  "runtime": {
+    "passed": true,
+    "report": "classroom-caption-runtime.json",
+    "processObservation": "classroom-caption-processes.json",
+    "startupObservation": "classroom-caption-runtime-startup.json",
+    "note": "Initial read occurred before API finished bootstrapping and the Web proxy returned 500. API ready and all anonymous smoke checks subsequently passed without another restart."
+  },
+  "builds": {
+    "contracts": true,
+    "api": true,
+    "apiAndWebTypes": true,
+    "isolatedProductionWeb": true,
+    "daemonWeb": true
+  }
+}

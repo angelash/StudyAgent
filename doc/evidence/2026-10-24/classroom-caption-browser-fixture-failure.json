@@ -1,0 +1,484 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-captions.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-captions.spec.ts",
+      "file": "classroom-captions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17162,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:18:173",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 461,
+                      "line": 9
+                    },
+                    "snippet": "   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / 8');return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 461,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n\n   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / 8');return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:18:173"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:34:52.384Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-frozen--55416-election-and-reply-playback\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-frozen--55416-election-and-reply-playback\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-frozen--55416-election-and-reply-playback\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 461,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-90d0a2d5c6565a5056a5",
+          "file": "classroom-captions.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16526,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:29:40",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 461,
+                      "line": 9
+                    },
+                    "snippet": "   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / 8');return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 461,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n\n   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / 8');return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:29:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:35:10.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 461,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-82c41aa5cde583a1daef",
+          "file": "classroom-captions.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16506,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    33 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    33 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:36:40",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 461,
+                      "line": 9
+                    },
+                    "snippet": "   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 461,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    33 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n\n   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:36:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:35:28.975Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-lost-up-7ad57--the-current-frozen-version\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-lost-up-7ad57--the-current-frozen-version\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-lost-up-7ad57--the-current-frozen-version\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 461,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-b0d5ad3e9b20a13279fb",
+          "file": "classroom-captions.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "closing an upgrade before dispatch preserves the old session and keyboard focus stays inside settings",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16538,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:42:40",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 461,
+                      "line": 9
+                    },
+                    "snippet": "   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 461,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n\n   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:42:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:35:46.909Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 461,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-7291f5c6aea753ad325d",
+          "file": "classroom-captions.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16560,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:49:26",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 461,
+                      "line": 9
+                    },
+                    "snippet": "   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 461,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-session-navigation')\nExpected substring: \u001b[32m\"1 / 8\"\u001b[39m\nReceived string:    \u001b[31m\"‹ 上一步1 / 6下一步 ›\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-session-navigation') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-session-navigation')\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-session-navigation\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"‹ 上一步1 / 6下一步 ›\"\u001b[22m\n\n\n   7 | async function enter(page:Page,mode='current'):Promise<Fixture>{const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='captions-'+suffix+'@local.test',credential='Captions-only-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.23.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n   8 |   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n>  9 |   const fixture=await fetch(api+'/qa/classroom-captions',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+actor.token},body:JSON.stringify({mode})});expect(fixture.status).toBe(201);const session=(await fixture.json()).data;await decorate(page,session.id);const url='/studio/classroom?'+new URLSearchParams({lesson:session.lessonId,session:session.id});await page.goto(url);await expect(page.locator('.cl-session-navigation')).toContainText('1 / '+session.lesson.steps.length);return{session,actor,url};\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  10 | }\n  11 | async function saved(fixture:Fixture){const response=await fetch(api+'/learning/classroom/sessions/'+fixture.session.id,{headers:{authorization:'Bearer '+fixture.actor.token}});expect(response.status).toBe(200);return(await response.json()).data;}\n  12 | const settings=(page:Page)=>page.getByRole('dialog',{name:'课堂设置',exact:true});\n    at enter (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:9:461)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:49:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:36:04.941Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-long-pr-ac61c-transcript-on-small-screens\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-long-pr-ac61c-transcript-on-small-screens\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-long-pr-ac61c-transcript-on-small-screens\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 461,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-521043bca69aa8891512",
+          "file": "classroom-captions.spec.ts",
+          "line": 48,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T00:34:46.909Z",
+    "duration": 96456.74399999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

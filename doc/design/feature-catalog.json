@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae",
+  "sourceRevision": "9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 108,
-    "activeNormalApiRoutes": 259,
-    "coveredApiRoutes": 259
+    "activeNormalApiRoutes": 260,
+    "coveredApiRoutes": 260
   },
   "areas": [
     {
@@ -4052,11 +4052,11 @@
             "/student/assessment",
             "/student/today"
           ],
-          "inputs": "讲稿句子、受支持音色、语速配置",
-          "implementation": "优先MiniMax streaming PCM；解析SSE十六进制音频并封装16kHz单声道WAV；未配置MiniMax时可用OpenAI MP3；校验文本长度和音色。",
+          "inputs": "冻结字幕单元、受支持音色、语速配置与取消信号",
+          "implementation": "优先MiniMax streaming PCM；解析SSE十六进制音频并封装16kHz单声道WAV；未配置MiniMax时可用OpenAI MP3；校验文本和音色，超过4096字显式拒绝而不截断；HTTP断开将取消传递到供应商，取消后不继续重试。",
           "outputs": "WAV/MP3与能力列表",
           "collections": [],
-          "limits": "服务端收齐一段音轨后返回；MiniMax失败不会自动切到另一个付费供应商；无配置时文字继续。",
+          "limits": "服务端收齐一段音轨后返回；MiniMax失败不会自动切到另一个付费供应商；无配置时文字继续；真实解码与人工听感分别验收。",
           "endpoints": [],
           "implementations": [],
           "sourceFiles": [],
@@ -4378,7 +4378,7 @@
         },
         {
           "id": "STUDIO-04",
-          "title": "课堂会话、板书与按句字幕",
+          "title": "课堂会话、冻结双语字幕与旧断点升级",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生与授权教师；成人课程需成人身份",
@@ -4388,13 +4388,13 @@
             "/studio/projects",
             "/studio/source-courses"
           ],
-          "inputs": "lessonId、expectedRevision、cursor/revealed/sentenceCursor",
-          "implementation": "冻结课件、私有答案与提示；讲稿与逐项板书分开，音轨结束推进下一句，只预取下一句并保存断点；讲解内容身份与练习身份分开，练习变更不清除完全相同讲解的已读事实。",
-          "outputs": "可恢复讲解、当前字幕、完整笔记、兼容阅读记录",
+          "inputs": "lessonId、expectedRevision、cursor/revealed/sentenceCursor、presentationVersion/unitId及升级requestKey",
+          "implementation": "冻结课件、私有答案与提示；新会话服务端保存中英文单元的原文UTF-16范围、源哈希与稳定ID，保护数字/缩写/URL/代码；字幕、音轨、进度、表格行和配图上下文共用单元，音轨结束推进，只预取下一句；暂停同步中止旧请求和晚到音轨。旧会话保留确切旧规则，设置中显式按原句起点映射升级，保留原表现快照、答案与提示；同键重放和冲突后读取保护恢复。",
+          "outputs": "可恢复逐句讲解、完整提炼笔记、版本历史与原始练习事实",
           "collections": [
             "classroomSessions"
           ],
-          "limits": "刷新从当前句开头恢复；讲解实质改变则旧读记录不算新内容已读；语音不可用时走文字节奏，不能伪造真实语音对齐。",
+          "limits": "刷新从当前句开头恢复，升级后暂停；关闭窗口只停止等待，不能撤销服务端已提交操作；静音用字符/词数估计，不是强制声学对齐；有限分句规则不保证所有语言或缩写；教师/听感/实机仍需验收。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4426,32 +4426,53 @@
               "controller": "ClassroomController",
               "method": "narration",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 28
+              "line": 31
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:id/presentation",
+              "controller": "ClassroomController",
+              "method": "presentation",
+              "file": "apps/api/src/modules/learning/classroom.controller.ts",
+              "line": 15
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 87
+              "line": 91
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 78
+              "line": 82
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 128
+              "line": 132
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 232
+              "line": 260
+            },
+            {
+              "name": "ClassroomService.upgradePresentation",
+              "file": "apps/api/src/modules/learning/classroom.service.ts",
+              "line": 157
             }
           ],
           "sourceFiles": [
+            "packages/contracts/src/classroom-speech.ts",
+            "apps/api/src/modules/learning/classroom-presentation.ts",
+            "apps/api/src/modules/learning/classroom-presentation.test.ts",
+            "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+            "apps/web/app/studio/classroom/captions.tsx",
+            "apps/web/app/studio/classroom/captions.css",
+            "tests/e2e/classroom-captions.spec.ts",
+            "scripts/qa/classroom-caption-live.cjs",
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
@@ -4497,14 +4518,14 @@
               "controller": "ClassroomController",
               "method": "ask",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 21
+              "line": 24
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 200
+              "line": 228
             }
           ],
           "sourceFiles": [
@@ -4553,7 +4574,7 @@
               "controller": "ClassroomController",
               "method": "answer",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 15
+              "line": 18
             },
             {
               "verb": "POST",
@@ -4561,19 +4582,19 @@
               "controller": "ClassroomController",
               "method": "hint",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 18
+              "line": 21
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 147
+              "line": 175
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 175
+              "line": 203
             }
           ],
           "sourceFiles": [
@@ -5898,22 +5919,22 @@
             {
               "name": "ClassroomVisualService.list",
               "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
-              "line": 24
+              "line": 25
             },
             {
               "name": "ClassroomVisualService.create",
               "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
-              "line": 25
+              "line": 26
             },
             {
               "name": "ClassroomVisualService.action",
               "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
-              "line": 54
+              "line": 55
             },
             {
               "name": "ClassroomVisualService.file",
               "file": "apps/api/src/modules/learning/classroom-visual.service.ts",
-              "line": 121
+              "line": 122
             }
           ],
           "sourceFiles": [

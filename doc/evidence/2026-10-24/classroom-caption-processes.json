@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-24T01:10:21.572Z",
+  "secondsObserved": 236,
+  "passed": true,
+  "processes": [
+    {
+      "name": "study-agent-api",
+      "pid": 49900,
+      "status": "online",
+      "restarts": 1163,
+      "startedAt": 1792803967196
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 58688,
+      "status": "online",
+      "restarts": 3,
+      "startedAt": 1792803967270
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 11260,
+      "status": "online",
+      "restarts": 1,
+      "startedAt": 1792803967847
+    }
+  ],
+  "scope": "Short post-deploy process observation; not a long-term stability certification."
+}

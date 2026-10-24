@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-24T01:06:58.264Z",
+  "sourceRevision": "9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2",
+  "scope": "Anonymous deployed Web/API only; no production family authentication, learning writes, models or speech generation.",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3217/learn",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio/classroom",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio/source-courses",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/learning/classroom/sessions/anonymous-smoke/presentation",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/learning/classroom/sessions/anonymous-smoke/visuals",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/qa/classroom-captions",
+      "status": 404,
+      "expected": 404
+    }
+  ],
+  "browserErrors": [],
+  "passed": true
+}

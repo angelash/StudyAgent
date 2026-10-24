@@ -1,0 +1,364 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-captions.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-captions.spec.ts",
+      "file": "classroom-captions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7628,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:37:00.567Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-90d0a2d5c6565a5056a5",
+          "file": "classroom-captions.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17816,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '课堂设置', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '课堂设置', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '课堂设置', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button aria-label=\"课堂设置\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '课堂设置', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '课堂设置', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '课堂设置', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button aria-label=\"课堂设置\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:31:326",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 326,
+                      "line": 31
+                    },
+                    "snippet": "  29 |   test.setTimeout(90000);const fixture=await enter(page,'legacy'),old=fixture.session;let release!:()=>void,arrive!:()=>void;const held=new Promise<void>(resolve=>{release=resolve;}),arrival=new Promise<void>(resolve=>{arrive=resolve;}),requests:any[]=[];\n  30 |   await page.route('**/api/learning/classroom/sessions/*/narration/*',async route=>{const body=route.request().postDataJSON();requests.push(body);if(body.presentationVersion==='legacy-v1'){arrive();await held;}try{await route.fulfill({contentType:'audio/wav',body:wav(4)});}catch{/* The browser deliberately aborted the old request. */}});\n> 31 |   await page.getByRole('button',{name:'继续讲解',exact:true}).click();await arrival;await startUpgrade(page);await screen(page,'legacy-confirm');await settings(page).getByRole('button',{name:'确认更新字幕',exact:true}).click();await expect(settings(page)).toHaveCount(0);await expect(page.getByRole('button',{name:'课堂设置',exact:true})).toBeFocused();const updated=await saved(fixture),unit=updated.presentation.tracks[old.lesson.steps[0].id].units[updated.sentenceCursor];expect(updated.presentation.version).toBe('speech-v2');expect(updated.presentationRevisions).toHaveLength(1);expect(updated.cursor).toBe(old.cursor);expect(updated.revealed).toBe(old.revealed);release();await page.waitForTimeout(400);await expect(page.locator('.cl-subtitle')).toHaveText(unit.text);await expect(page.getByRole('button',{name:'继续讲解',exact:true})).toBeVisible();\n     |                                                                                                                                                                                                                                                                                                                                      ^\n  32 |   await page.getByRole('button',{name:'继续讲解',exact:true}).click();await expect.poll(()=>requests.some(row=>row.presentationVersion==='speech-v2'&&row.unitId===unit.id)).toBe(true);await page.getByRole('button',{name:'暂停讲解',exact:true}).click();await page.reload();await expect(page.locator('.cl-subtitle')).toHaveText(unit.text);\n  33 | });\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 326,
+                        "line": 31
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '课堂设置', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '课堂设置', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '课堂设置', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button aria-label=\"课堂设置\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  29 |   test.setTimeout(90000);const fixture=await enter(page,'legacy'),old=fixture.session;let release!:()=>void,arrive!:()=>void;const held=new Promise<void>(resolve=>{release=resolve;}),arrival=new Promise<void>(resolve=>{arrive=resolve;}),requests:any[]=[];\n  30 |   await page.route('**/api/learning/classroom/sessions/*/narration/*',async route=>{const body=route.request().postDataJSON();requests.push(body);if(body.presentationVersion==='legacy-v1'){arrive();await held;}try{await route.fulfill({contentType:'audio/wav',body:wav(4)});}catch{/* The browser deliberately aborted the old request. */}});\n> 31 |   await page.getByRole('button',{name:'继续讲解',exact:true}).click();await arrival;await startUpgrade(page);await screen(page,'legacy-confirm');await settings(page).getByRole('button',{name:'确认更新字幕',exact:true}).click();await expect(settings(page)).toHaveCount(0);await expect(page.getByRole('button',{name:'课堂设置',exact:true})).toBeFocused();const updated=await saved(fixture),unit=updated.presentation.tracks[old.lesson.steps[0].id].units[updated.sentenceCursor];expect(updated.presentation.version).toBe('speech-v2');expect(updated.presentationRevisions).toHaveLength(1);expect(updated.cursor).toBe(old.cursor);expect(updated.revealed).toBe(old.revealed);release();await page.waitForTimeout(400);await expect(page.locator('.cl-subtitle')).toHaveText(unit.text);await expect(page.getByRole('button',{name:'继续讲解',exact:true})).toBeVisible();\n     |                                                                                                                                                                                                                                                                                                                                      ^\n  32 |   await page.getByRole('button',{name:'继续讲解',exact:true}).click();await expect.poll(()=>requests.some(row=>row.presentationVersion==='speech-v2'&&row.unitId===unit.id)).toBe(true);await page.getByRole('button',{name:'暂停讲解',exact:true}).click();await page.reload();await expect(page.locator('.cl-subtitle')).toHaveText(unit.text);\n  33 | });\n  34 |\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:31:326"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:37:08.598Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-an-expl-1370a-ocus-at-the-mapped-sentence\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 326,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-82c41aa5cde583a1daef",
+          "file": "classroom-captions.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:37:27.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-b0d5ad3e9b20a13279fb",
+          "file": "classroom-captions.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "closing an upgrade before dispatch preserves the old session and keyboard focus stays inside settings",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2801,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mlegacy\u001b[27m-v\u001b[7m1\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mspeech\u001b[27m-v\u001b[7m2\u001b[27m\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mlegacy\u001b[27m-v\u001b[7m1\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mspeech\u001b[27m-v\u001b[7m2\u001b[27m\"\u001b[39m\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:45:265",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                      "column": 265,
+                      "line": 45
+                    },
+                    "snippet": "  43 |   await page.route('**/api/learning/classroom/sessions/*/presentation',async route=>{entered();await gate;try{await route.continue();}catch{/* Deliberate client cancellation before the fixture forwards this request. */}});\n  44 |   await startUpgrade(page);for(let index=0;index<18;index++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>Boolean(document.activeElement?.closest('[role=\"dialog\"][aria-label=\"课堂设置\"]')))).toBe(true);}\n> 45 |   await settings(page).getByRole('button',{name:'确认更新字幕',exact:true}).click();await arrival;await page.getByRole('button',{name:'关闭课堂设置',exact:true}).click();release();await expect(settings(page)).toHaveCount(0);expect((await saved(fixture)).presentation.version).toBe('legacy-v1');await openSettings(page);await settings(page).getByRole('button',{name:'读取已保存的字幕状态',exact:true}).click();await expect(settings(page).getByText('保留的旧版节奏',{exact:true})).toBeVisible();await expect(settings(page).getByRole('alert')).toHaveCount(0);await page.keyboard.press('Escape');await expect(settings(page)).toHaveCount(0);await expect(page.getByRole('button',{name:'课堂设置',exact:true})).toBeFocused();\n     |                                                                                                                                                                                                                                                                         ^\n  46 | });\n  47 |\n  48 | test('long protected tokens remain readable without widening the board or transcript on small screens',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                        "column": 265,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mlegacy\u001b[27m-v\u001b[7m1\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mspeech\u001b[27m-v\u001b[7m2\u001b[27m\"\u001b[39m\n\n  43 |   await page.route('**/api/learning/classroom/sessions/*/presentation',async route=>{entered();await gate;try{await route.continue();}catch{/* Deliberate client cancellation before the fixture forwards this request. */}});\n  44 |   await startUpgrade(page);for(let index=0;index<18;index++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>Boolean(document.activeElement?.closest('[role=\"dialog\"][aria-label=\"课堂设置\"]')))).toBe(true);}\n> 45 |   await settings(page).getByRole('button',{name:'确认更新字幕',exact:true}).click();await arrival;await page.getByRole('button',{name:'关闭课堂设置',exact:true}).click();release();await expect(settings(page)).toHaveCount(0);expect((await saved(fixture)).presentation.version).toBe('legacy-v1');await openSettings(page);await settings(page).getByRole('button',{name:'读取已保存的字幕状态',exact:true}).click();await expect(settings(page).getByText('保留的旧版节奏',{exact:true})).toBeVisible();await expect(settings(page).getByRole('alert')).toHaveCount(0);await page.keyboard.press('Escape');await expect(settings(page)).toHaveCount(0);await expect(page.getByRole('button',{name:'课堂设置',exact:true})).toBeFocused();\n     |                                                                                                                                                                                                                                                                         ^\n  46 | });\n  47 |\n  48 | test('long protected tokens remain readable without widening the board or transcript on small screens',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts:45:265"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:37:31.272Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\classroom-captions-closing-4871d-focus-stays-inside-settings\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\classroom-captions.spec.ts",
+                    "column": 265,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-7291f5c6aea753ad325d",
+          "file": "classroom-captions.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1950,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T00:37:35.383Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-521043bca69aa8891512",
+          "file": "classroom-captions.spec.ts",
+          "line": 48,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T00:36:54.982Z",
+    "duration": 44382.815,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

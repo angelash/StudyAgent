@@ -1,6 +1,6 @@
 # 06 家庭首页、今日训练、学习记忆与错题 — 详细设计
 
-源码基线：`c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae`。角色：学生、家长、授权教师。
+源码基线：`9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/learn`、`/parent/dashboard`、`/student/today`。
 

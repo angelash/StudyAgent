@@ -1,0 +1,169 @@
+{
+  "at": "2026-10-24T00:36:29.368Z",
+  "scope": "Real configured speech provider, owned anonymous classroom in temporary SQLite; decoding is not a human listening or device acceptance",
+  "samples": [
+    {
+      "language": "zh",
+      "sentenceIndex": 0,
+      "text": "先统一比较的条件。",
+      "unitId": "speech_df0ce10b072180f9ae89b7eea9a62395a778f21392697816e5daab23c8d8181f",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 1156,
+      "bytes": 76948,
+      "sha256": "cbcd170d56387a85dad470823348c3ff950a34b17bb4dc8e2aa0a0ccfc66cac6",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "2.403250"
+        }
+      },
+      "artifact": "caption-audio/zh-1.wav",
+      "listening": "pending"
+    },
+    {
+      "language": "zh",
+      "sentenceIndex": 1,
+      "text": "再观察不同情境中的证据。",
+      "unitId": "speech_1330e92ea58cf7577ec75019958f63e6c50fec587f0f37d66d05d82ef69293c2",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 1242,
+      "bytes": 92552,
+      "sha256": "72764cc5bfec40e4a385536dc3fd1997eac6b936ad841c795cd17b15fa999244",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "2.890875"
+        }
+      },
+      "artifact": "caption-audio/zh-2.wav",
+      "listening": "pending"
+    },
+    {
+      "language": "zh",
+      "sentenceIndex": 2,
+      "text": "最后保留一个反例。",
+      "unitId": "speech_5d02dc63a9033c053edd11d673acab097a95a2fd719b972a3abd770f35b146e1",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 1013,
+      "bytes": 70634,
+      "sha256": "ef1809a6bfb276f375edc9f9c2096ef64b3fc66a49203c0360e1ae011cefc59e",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "2.205938"
+        }
+      },
+      "artifact": "caption-audio/zh-3.wav",
+      "listening": "pending"
+    },
+    {
+      "language": "en",
+      "sentenceIndex": 0,
+      "text": "Dr. Lee measured 3.14 cm.",
+      "unitId": "speech_28d70d68951a4ff0c6068b4d0e5d06bb435594ec73b8b510307bbee4712401cc",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 1340,
+      "bytes": 123018,
+      "sha256": "d55a2a413c1e444a9bc8c348b393ab5435cc87a820021a459922a93e506d6851",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "3.842938"
+        }
+      },
+      "artifact": "caption-audio/en-1.wav",
+      "listening": "pending"
+    },
+    {
+      "language": "en",
+      "sentenceIndex": 1,
+      "text": "Next, compare one half and fifty percent.",
+      "unitId": "speech_440480d0c4df8220308a2c6a4f3ef6aa626cc59c3fb8fd84742c6d4c04fbb74d",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 2447,
+      "bytes": 120574,
+      "sha256": "8a33c593d5d58479fc6ebdeb56791379de41465bf2453eef56266ab875d3adaf",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "3.766563"
+        }
+      },
+      "artifact": "caption-audio/en-2.wav",
+      "listening": "pending"
+    },
+    {
+      "language": "en",
+      "sentenceIndex": 2,
+      "text": "Finally, retain a counterexample.",
+      "unitId": "speech_3dca61158784c9dfd85013213717e8f9333ddb7ae3258a8974239cfcc8e0cedb",
+      "version": "speech-v2",
+      "provider": "minimax",
+      "milliseconds": 1211,
+      "bytes": 100726,
+      "sha256": "00fe98a7816bddf1108e6b0ba4800b814d17a65600fffabac106cf43787118f4",
+      "decoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "16000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "3.146313"
+        }
+      },
+      "artifact": "caption-audio/en-3.wav",
+      "listening": "pending"
+    }
+  ],
+  "passed": true
+}

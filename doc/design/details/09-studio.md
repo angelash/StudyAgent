@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`c3bcfb8ad95ae02aa928d1ce9c38252e21ae28ae`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`9c31c74fc34f3c65bf36d5fc2f19978a86c7a8f2`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -114,31 +114,44 @@
 
 - `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:26](../../../apps/api/src/modules/learning/classroom.service.ts#L26)。
 
-## STUDIO-04 课堂会话、板书与按句字幕
+## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
-**输入**：lessonId、expectedRevision、cursor/revealed/sentenceCursor。
+**输入**：lessonId、expectedRevision、cursor/revealed/sentenceCursor、presentationVersion/unitId及升级requestKey。
 
-**处理与实现**：冻结课件、私有答案与提示；讲稿与逐项板书分开，音轨结束推进下一句，只预取下一句并保存断点；讲解内容身份与练习身份分开，练习变更不清除完全相同讲解的已读事实。
+**处理与实现**：冻结课件、私有答案与提示；新会话服务端保存中英文单元的原文UTF-16范围、源哈希与稳定ID，保护数字/缩写/URL/代码；字幕、音轨、进度、表格行和配图上下文共用单元，音轨结束推进，只预取下一句；暂停同步中止旧请求和晚到音轨。旧会话保留确切旧规则，设置中显式按原句起点映射升级，保留原表现快照、答案与提示；同键重放和冲突后读取保护恢复。
 
-**输出**：可恢复讲解、当前字幕、完整笔记、兼容阅读记录。
+**输出**：可恢复逐句讲解、完整提炼笔记、版本历史与原始练习事实。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：刷新从当前句开头恢复；讲解实质改变则旧读记录不算新内容已读；语音不可用时走文字节奏，不能伪造真实语音对齐。
+**权限、失败与边界**：刷新从当前句开头恢复，升级后暂停；关闭窗口只停止等待，不能撤销服务端已提交操作；静音用字符/词数估计，不是强制声学对齐；有限分句规则不保证所有语言或缩写；教师/听感/实机仍需验收。
 
 **关联接口**：
 
 - `POST /api/learning/classroom/sessions` → `ClassroomController.open`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
 - `GET /api/learning/classroom/sessions/:id` → `ClassroomController.get`；[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)。
 - `PATCH /api/learning/classroom/sessions/:id` → `ClassroomController.progress`；[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)。
-- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:28](../../../apps/api/src/modules/learning/classroom.controller.ts#L28)。
+- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:31](../../../apps/api/src/modules/learning/classroom.controller.ts#L31)。
+- `POST /api/learning/classroom/sessions/:id/presentation` → `ClassroomController.presentation`；[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)。
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:87](../../../apps/api/src/modules/learning/classroom.service.ts#L87)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:78](../../../apps/api/src/modules/learning/classroom.service.ts#L78)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:128](../../../apps/api/src/modules/learning/classroom.service.ts#L128)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:232](../../../apps/api/src/modules/learning/classroom.service.ts#L232)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:82](../../../apps/api/src/modules/learning/classroom.service.ts#L82)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:132](../../../apps/api/src/modules/learning/classroom.service.ts#L132)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:260](../../../apps/api/src/modules/learning/classroom.service.ts#L260)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:157](../../../apps/api/src/modules/learning/classroom.service.ts#L157)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/classroom-speech.ts](../../../packages/contracts/src/classroom-speech.ts)
+- [apps/api/src/modules/learning/classroom-presentation.ts](../../../apps/api/src/modules/learning/classroom-presentation.ts)
+- [apps/api/src/modules/learning/classroom-presentation.test.ts](../../../apps/api/src/modules/learning/classroom-presentation.test.ts)
+- [apps/api/src/modules/learning/classroom-presentation.integration.test.ts](../../../apps/api/src/modules/learning/classroom-presentation.integration.test.ts)
+- [apps/web/app/studio/classroom/captions.tsx](../../../apps/web/app/studio/classroom/captions.tsx)
+- [apps/web/app/studio/classroom/captions.css](../../../apps/web/app/studio/classroom/captions.css)
+- [tests/e2e/classroom-captions.spec.ts](../../../tests/e2e/classroom-captions.spec.ts)
+- [scripts/qa/classroom-caption-live.cjs](../../../scripts/qa/classroom-caption-live.cjs)
 
 ## STUDIO-05 课堂插问与补充板书
 
@@ -154,11 +167,11 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)。
+- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:24](../../../apps/api/src/modules/learning/classroom.controller.ts#L24)。
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:200](../../../apps/api/src/modules/learning/classroom.service.ts#L200)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:228](../../../apps/api/src/modules/learning/classroom.service.ts#L228)。
 
 ## STUDIO-06 全微课练习、逐级帮助与复盘
 
@@ -174,13 +187,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)。
-- `POST /api/learning/classroom/sessions/:id/hints` → `ClassroomController.hint`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
+- `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
+- `POST /api/learning/classroom/sessions/:id/hints` → `ClassroomController.hint`；[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)。
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:147](../../../apps/api/src/modules/learning/classroom.service.ts#L147)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:175](../../../apps/api/src/modules/learning/classroom.service.ts#L175)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:175](../../../apps/api/src/modules/learning/classroom.service.ts#L175)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:203](../../../apps/api/src/modules/learning/classroom.service.ts#L203)。
 
 **补充实现文件**：
 
@@ -627,10 +640,10 @@
 
 **服务方法**：
 
-- `ClassroomVisualService.list`；[apps/api/src/modules/learning/classroom-visual.service.ts:24](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L24)。
-- `ClassroomVisualService.create`；[apps/api/src/modules/learning/classroom-visual.service.ts:25](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L25)。
-- `ClassroomVisualService.action`；[apps/api/src/modules/learning/classroom-visual.service.ts:54](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L54)。
-- `ClassroomVisualService.file`；[apps/api/src/modules/learning/classroom-visual.service.ts:121](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L121)。
+- `ClassroomVisualService.list`；[apps/api/src/modules/learning/classroom-visual.service.ts:25](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L25)。
+- `ClassroomVisualService.create`；[apps/api/src/modules/learning/classroom-visual.service.ts:26](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L26)。
+- `ClassroomVisualService.action`；[apps/api/src/modules/learning/classroom-visual.service.ts:55](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L55)。
+- `ClassroomVisualService.file`；[apps/api/src/modules/learning/classroom-visual.service.ts:122](../../../apps/api/src/modules/learning/classroom-visual.service.ts#L122)。
 
 **补充实现文件**：
 
