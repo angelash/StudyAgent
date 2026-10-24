@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T07:44:07.589Z",
-  "sourceRevision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+  "at": "2026-10-24T08:07:27.317Z",
+  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -17,7 +17,7 @@
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 113,
+    "apiTestFiles": 114,
     "browserTestFiles": 15
   },
   "features": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 278
   },
   "sourceReferences": {
-    "uniqueFiles": 286,
+    "uniqueFiles": 289,
     "problems": [],
     "sha256": {
       ".github/workflows/verify.yml": "bc3eb38dc400d263294dd637347a1e9412e76baaf5f8e9791d579d9bd651bf9f",
@@ -46,10 +46,11 @@
       "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts": "45a95e423216db087a2c05350a194fca3934a947c04e9b28db05af9273bc0835",
       "apps/api/src/infrastructure/request-rate.middleware.ts": "a920966d54c356434a2a9cbecb8e2a57c676fc259b6350140b9245411b7c8ac3",
       "apps/api/src/infrastructure/restore-context.test.ts": "d8dec6c1ab1941d6678b7b4520f12d93678a81edf9c55daa08c05aa40709e2e6",
-      "apps/api/src/infrastructure/restored-materials.integration.test.ts": "ab3e4ca8bbb5253c1f9eb3096fe4dd4d2c9afd3d29366eea06eb4cf25c058535",
+      "apps/api/src/infrastructure/restored-materials.integration.test.ts": "a5ca8763affb67ae1b01c0ac23662af2e31ecaa45984ff0c2c714d49eb2aba42",
       "apps/api/src/infrastructure/runtime-metrics.service.ts": "7f237345ed1890c0234f148fc05f13d436b90da004aa41b21ae7e8f9893675df",
       "apps/api/src/infrastructure/scoped-transactions.test.ts": "32168d384b03ce88e08bc44b7196c86d1c52bce447ec8bb2e5b64a9605550848",
       "apps/api/src/infrastructure/source-material-backup.integration.test.ts": "e4cc58c4107df7d9d667eb6e9734a8744a6df09839feca83bfc34809fcb78175",
+      "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts": "65c1ec476edf5266f986e717415b66797ae8163d521f3c3b89b6d2d2d7083faa",
       "apps/api/src/infrastructure/studio-atomic-marker.test.ts": "5970742018ca49a159dd16057f8a5a53a44ea319a83119f137ef93ee9c64fdb4",
       "apps/api/src/infrastructure/studio-atomic-marker.ts": "d23087908244a92d8b93efa843940837d383492a2c8a670314a241ddc6fe0ea2",
       "apps/api/src/infrastructure/studio-file-coordination.ts": "5276a0cae8469822d2de0bffbfbeef9ed162113c6bddd4a8ec155cbccc216835",
@@ -281,16 +282,18 @@
       "resources/gesp/student-curriculum-v2.json": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a",
       "scripts/gesp/backup_archive.py": "60fa56fb900da4d6df134489065a55b038d5e3e59c4d72c29660a3d40956ce6f",
       "scripts/gesp/run_submission.cjs": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571",
-      "scripts/operations/backup.cjs": "b33d971675cbaa04e53695712192cf6d9bff5e9afa37605b5b1df1c58f332aec",
+      "scripts/operations/backup.cjs": "2b2b9ec49367ba0fce908f43172629dc97686ad59f34593eb75c814c99d18319",
       "scripts/operations/material-audit.cjs": "fc49b45cb09c543d021393f5299dba89e1b07fefae44ac815b80aa6f34a7f724",
       "scripts/operations/package-source.py": "bc635a1b53f4e51661010cf147018beb8cff943d7cac8f852feb6c0587530928",
       "scripts/operations/postgres-backup.cjs": "32c4d6db827e4131ee2f06718efd0f2b188a1f03a21a9362273d0343c09147af",
       "scripts/operations/postgres-restore-import.cjs": "63b6872151ad3ee2e9cd2c3da8e27d5941d671125fc081b85be34bb4cfe7a335",
-      "scripts/operations/privacy-ledger.cjs": "4106d0e1144a6c3115c663fd8682071898fca741080ab4a4f51502712297509a",
+      "scripts/operations/privacy-ledger.cjs": "23c591437435612cd9498f06197e1362ce7a9c874f9df82b3953ac80083478ae",
       "scripts/operations/restore-context.cjs": "50e80693bf8328d7e6d83273214c3ad84667d4cb7eee8fc386a7166b5fc63558",
+      "scripts/operations/restore-files.cjs": "ab3929e08cc161f2fe6bb76a184634702b50c7c99d81d6920f8f4d8c8f346784",
       "scripts/operations/restore-state.cjs": "c99d0c41f3b1e1d66c672ef0b0195ce09aa3c4624daae207018dbb5d317f7032",
-      "scripts/operations/restored-materials.cjs": "88b4e5940a72334f2f675d472d416c2fb02a487559089abc071db53f34c7d182",
+      "scripts/operations/restored-materials.cjs": "64d5b793981cb1313e9cffccf43eeb13a516e93a075a157bdec0376d808c5917",
       "scripts/operations/setup-imagegen.cjs": "2309f53d9bc7b1aeee6c0f6deef202958dbaf59d18d599088e435f11f4e22dfa",
+      "scripts/operations/sqlite-restore.cjs": "7b4deb74f94667946b7c24d1060087cb28a261c3815a392a35469ad3b8cda00b",
       "scripts/operations/start-daemon.ps1": "929b62cd8b6ecc7e6778b196e44d852992a8a2197c651b04ba3f686c567ce2c5",
       "scripts/processing/file_leases.py": "4ee24ba318df2c053ff04bfd98ecf7f1bbd1ee24a54008f73a1e9a732a932e26",
       "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
@@ -324,12 +327,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2076,
+    "checked": 2086,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-24T07:44:03.934Z",
+    "authoredAuditAt": "2026-10-24T08:07:23.553Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -395,8 +398,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-24/restore-import-acceptance.json",
-    "revision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+    "receipt": "../evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+    "revision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

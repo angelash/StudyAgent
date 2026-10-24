@@ -61,6 +61,10 @@ API 默认绑定 `127.0.0.1`，可通过 `API_HOST` 显式调整；`API_PORT` / 
 
 `STUDY_RATE_LIMIT_IP_PER_MINUTE` controls the aggregate request-IP quota; the production default is 3000, and synthetic CI may set a larger validated value while per-user quotas remain active.
 
-资料来源的最新冷恢复见[规格104第20/21节](104-long-pdf-processing-and-source-lifecycle.md)。恢复命令仍接收新目标与最新删除账本；在发布ready前核对并清理已撤回的源原件、页图/检查点、可定位工作文件和上传块，保留共享/冻结PDF与有效上传。冻结PDF原件即使原资料行已移除也进入双库备份。未知/链接/变化或中断保留文件与数据库门禁，不能删marker强行启动；当前不覆盖已有不完整目录，可用同一原备份/账本另选空目录重做。原地resume及损坏原件替换仍待第22节后续实现，原备份和其他离线副本由持有者保留。
+资料来源的最新冷恢复见[规格104第20/21节](104-long-pdf-processing-and-source-lifecycle.md)。恢复命令仍接收新目标与最新删除账本；在发布ready前核对并清理已撤回的源原件、页图/检查点、可定位工作文件和上传块，保留共享/冻结PDF与有效上传。冻结PDF原件即使原资料行已移除也进入双库备份。未知/链接/变化或中断保留文件与数据库门禁，不能删marker强行启动；SQLite新协议目录可用下述显式resume继续，PG仍不覆盖已有不完整目录，可用同一原备份/账本另选空目录重做。PG原地resume及损坏原件替换仍待后续实现，原备份和其他离线副本由持有者保留。
 
-PG原生恢复现在需要同版本的`pg_dump`、`pg_restore`和`psql`（由`--pg-bin`指定同一目录）。导入经psql单事务执行，恢复专用技术schema与原有guard不进入新备份；失败只报告工具/SQLSTATE。复制前会写入绑定备份、清单、账本及目标的恢复身份，但当前身份基础不提供CLI `--resume`；不要把上下文创建者PID当作操作锁或手动删除恢复门禁。详见[规格104第23/24节](104-long-pdf-processing-and-source-lifecycle.md)。
+PG原生恢复现在需要同版本的`pg_dump`、`pg_restore`和`psql`（由`--pg-bin`指定同一目录）。导入经psql单事务执行，恢复专用技术schema与原有guard不进入新备份；失败只报告工具/SQLSTATE。复制前会写入绑定备份、清单、账本及目标的恢复身份，但PG当前不提供CLI `--resume`；不要把上下文创建者PID当作操作锁或手动删除恢复门禁。详见[规格104第23/24节](104-long-pdf-processing-and-source-lifecycle.md)。
+
+SQLite新建恢复仍使用`node scripts/operations/backup.cjs restore --bundle <备份目录> --destination <新目标> --deletion-ledger <最新账本>`；同一新协议目标中断后，在相同参数加`--resume`继续。原先没有账本则继续省略账本参数，不能中途换账本。恢复身份、独立控制SQLite库、复制意图和业务库导入指纹都必须能核对；未知旧目录继续拒绝。运行前按本节要求构建API，文件发布复用已构建的原子标记助手。
+
+SQL已提交的收据会从数据库原样恢复，文件收据与门禁完成后才允许应用启动。完成后再次resume只返回原收据，应用已有的合法后续学习不会重新撤销或删除。不要手工修改控制库、收据、暂存或marker来跳过失败；看到已有不同字节、链接或未知文件时保留现场。具体验证范围和统计口径见[规格104第25/26节](104-long-pdf-processing-and-source-lifecycle.md)及[本批收据](../evidence/2026-10-24/restore-resume-sqlite-acceptance.json)。

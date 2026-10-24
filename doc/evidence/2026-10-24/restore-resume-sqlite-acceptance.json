@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T08:06:27.972600+00:00",
+  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+  "implementationCommit": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+  "specificationCommit": "89ca6af",
+  "passed": true,
+  "status": "verified-sqlite-resume-increment-not-complete-specification-104",
+  "reports": {
+    "restore-resume-postgres-regression.json": {
+      "sha256": "5618976e60f28d18ccf0c73970293d19ada833b45cdebb41f74e335147ad5628",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0,
+      "purpose": "acceptance"
+    },
+    "restore-resume-postgres-runtime.json": {
+      "sha256": "893765a8bd4bdcb6e26e81ca3a1ca177a4204c324fc94d9d82fa0474dbfb05a2",
+      "purpose": "runtime record; not an additional test count"
+    },
+    "restore-resume-sqlite-final.json": {
+      "sha256": "7643c8d6c682bfe29de6b094aa106ff8ec16fb290637f35c2b4836b022c01814",
+      "passed": 38,
+      "failed": 0,
+      "pending": 0,
+      "purpose": "acceptance"
+    },
+    "restore-resume-sqlite-initial.json": {
+      "sha256": "3d422f27638140e87a604e1b48149627eede0e2bf796cd1bd42fb6787b4eaf69",
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "purpose": "diagnostic history or earlier scoped run"
+    },
+    "restore-resume-sqlite-process-final.json": {
+      "sha256": "5b6fdac7a4326eab3544f6c1baa83f873e34040c100168b6c7820f3247402027",
+      "passed": 18,
+      "failed": 0,
+      "pending": 0,
+      "purpose": "diagnostic history or earlier scoped run"
+    },
+    "restore-resume-sqlite-process-initial.json": {
+      "sha256": "d1db157ada0818fb399a1d2cc8d8749163d39d3617c8b0563e694adbdc927101",
+      "passed": 9,
+      "failed": 14,
+      "pending": 0,
+      "purpose": "diagnostic history or earlier scoped run"
+    },
+    "restore-resume-sqlite-regression.json": {
+      "sha256": "b9134b10f742c2a977abed2e5a6d9bcede7b4a0f9913f1b81ad27585fc2d7ad5",
+      "passed": 36,
+      "failed": 1,
+      "pending": 0,
+      "purpose": "diagnostic history or earlier scoped run"
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/api/src/infrastructure/restored-materials.integration.test.ts": "a5ca8763affb67ae1b01c0ac23662af2e31ecaa45984ff0c2c714d49eb2aba42",
+    "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts": "a9facb66c14567fdf004046f54c9986583b8419b576af314ecb3480a1390e68b",
+    "scripts/architecture/project-feature-definitions.cjs": "fbbc691d2d1ca17ce7e9806cef341c11448bfba3361c141935aad08254af61d5",
+    "scripts/operations/backup.cjs": "3bd31d701ac7fa30a970eb6b14ca307b743139126de2f680dc78ddf588a44c97",
+    "scripts/operations/privacy-ledger.cjs": "9ceff5cc53281a363082bfc80e80b65c31274b6b2bc07151d1f0e968de259ffd",
+    "scripts/operations/restore-files.cjs": "ab3929e08cc161f2fe6bb76a184634702b50c7c99d81d6920f8f4d8c8f346784",
+    "scripts/operations/restored-materials.cjs": "64d5b793981cb1313e9cffccf43eeb13a516e93a075a157bdec0376d808c5917",
+    "scripts/operations/sqlite-restore.cjs": "7b4deb74f94667946b7c24d1060087cb28a261c3815a392a35469ad3b8cda00b",
+    "scripts/qa/fixtures/sqlite-restore-child.cjs": "a26b977727961d760e969aa7142bad1edf457bb831d43ba0ce4dfa9cf1df812e"
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "node --test scripts/operations/material-audit.test.cjs",
+      "passed": 11,
+      "failed": 0
+    }
+  ],
+  "coverage": [
+    "SQLite CLI --resume binds the same verified backup, full manifest, deletion ledger and target identity. A separate SQLite control transaction holds process-independent operation exclusion.",
+    "Each copy has an immutable bound intent; partial private staging is recopied after operation-lock acquisition, complete matching files are skipped, and final files publish exclusively as complete inodes.",
+    "SQLite database is guarded and fingerprinted before publication. Interrupted cleanup restores missing files from the backup and reapplies the same ledger under a fresh transaction. Restore-bound permanent revocations/dead purge markers remain verifiable.",
+    "Receipt and final retained/deleted file states commit atomically with the ready guard. A later process finishes JSON receipt publication without repeating fences, deletion or generation increments.",
+    "Thirteen actual child SIGKILL boundaries plus live-operation competition, altered identities, unknown files/controls/database, linked directories/sidecars, SQL content mutation, conflicting receipt and CLI recovery were exercised.",
+    "After successful recovery, real DomainDatabase learning writes survive idempotent resume unchanged. Application store startup rejects the file marker even after SQL commit. Backup manifest and original database hashes remain unchanged.",
+    "Private student media cleanup checks every manifest entry and each deletion again, preserves unknown bytes, and can replenish source files after a media-cleanup failure."
+  ],
+  "diagnosticHistory": [
+    "The initial process suite exposed assertions expecting persisted empty arrays; DomainDatabase omits empty collections. Assertions now normalize absent empty collections and verify actual row removal.",
+    "The first expanded regression failed while Windows refused creation of an unprivileged file symlink. The sidecar-link test now uses a real directory junction; no Windows file-symlink privilege is claimed.",
+    "Final acceptance is the latest 38-case SQLite combination and 20-case actual PostgreSQL compatibility run. Earlier overlapping runs are retained and their failures are not counted as passing acceptance."
+  ],
+  "environment": {
+    "nativeRegression": "isolated Windows PostgreSQL 17.11 with synthetic data",
+    "qaPostgresInitially": "stopped",
+    "qaPostgresFinally": "stopped; pg_ctl status confirmed no server running",
+    "productionSwitch": false
+  },
+  "limits": [
+    "PG CLI resume remains unimplemented; its 20-case run validates existing native import/cold-restore compatibility only.",
+    "Process termination is tested; hardware power loss and arbitrary hostile same-user filesystem mutation are outside this acceptance.",
+    "Old incomplete targets without the new context/runtime protocol remain refused. Different existing bytes and unknown/linked paths are preserved.",
+    "copiedFiles/skippedFiles count ordinary files in the final successful attempt; databaseImported is separate, not a cumulative retry-byte total.",
+    "Linux CI for this new SQLite increment is tracked separately. No full specification 104, pixel/content parity, teacher/device or long-term student acceptance is claimed."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -7877,7 +7877,7 @@
             "/admin/analytics"
           ],
           "inputs": "独立目标、业务库/媒体/资产清单、删除账本",
-          "implementation": "SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；复制前独占原子发布备份/清单/账本/目标绑定身份；PG控制端持会话锁、原生导入持事务锁和代次；pg_restore输出经psql单事务导入，延迟约束与核心表指纹保证完整SQL和imported共同提交，备份排除旧技术schema；应用删除账本并拒绝不完整恢复启动；冻结PDF即使原资料记录已删除也纳入备份；冷恢复核对当前引用，终止失去归属的处理任务、推进资产版本，逐项清理已撤回原件/分块/缓存，重建上传撤销并保留共享/冻结来源和有效续跑。",
+          "implementation": "SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；复制前独占原子发布备份/清单/账本/目标绑定身份；SQLite显式resume持独立控制库事务锁，按意图与原子文件发布继续复制，完整导入指纹阻止重复导库，清理中断补足文件后重做，完成收据/文件终态与ready共同提交，已完成再次执行只读原结果；PG控制端持会话锁、原生导入持事务锁和代次；pg_restore输出经psql单事务导入，延迟约束与核心表指纹保证完整SQL和imported共同提交，备份排除旧技术schema；应用删除账本并拒绝不完整恢复启动；冻结PDF即使原资料记录已删除也纳入备份；冷恢复核对当前引用，终止失去归属的处理任务、推进资产版本，逐项清理已撤回原件/分块/缓存，重建上传撤销并保留共享/冻结来源和有效续跑。",
           "outputs": "可审计备份、恢复收据和资产清单",
           "collections": [
             "privacyRequests",
@@ -7886,13 +7886,16 @@
             "studioSourceMaterials",
             "sourceCourses"
           ],
-          "limits": "目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；导入基础不代表完整原地续恢复，CLI resume及损坏原件替换仍待。",
+          "limits": "目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；SQLite原地resume仅限有绑定身份的新协议目录，未知/链接/不同字节不覆盖；PG完整resume及损坏原件替换仍待。",
           "endpoints": [],
           "implementations": [],
           "sourceFiles": [
             "scripts/operations/backup.cjs",
             "scripts/operations/postgres-backup.cjs",
             "scripts/operations/restore-context.cjs",
+            "scripts/operations/restore-files.cjs",
+            "scripts/operations/sqlite-restore.cjs",
+            "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
             "scripts/operations/postgres-restore-import.cjs",
             "apps/api/src/infrastructure/atomic-marker-publication.ts",
             "apps/api/src/infrastructure/restore-context.test.ts",

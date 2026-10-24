@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "f3ef4048a3bb304103c7c5b7a137662f316959fd",
+  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 299,
@@ -15,7 +15,7 @@
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 113,
+    "apiTestFiles": 114,
     "browserTestFiles": 15
   },
   "modules": [
@@ -38711,6 +38711,7 @@
     "apps/api/src/infrastructure/scoped-transactions.test.ts",
     "apps/api/src/infrastructure/snapshot-isolation.test.ts",
     "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+    "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
     "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
     "apps/api/src/infrastructure/studio-file-coordination.test.ts",
     "apps/api/src/infrastructure/task-repository.test.ts",
