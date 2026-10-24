@@ -6,6 +6,7 @@ const { createHash, randomUUID } = require('node:crypto');
 const { DatabaseSync, backup } = require('node:sqlite');
 const { fenceRestoredState } = require('./restore-state.cjs');
 const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
+const { captureMaterialKeys, omitRestoredMaterialControl, cleanupRestoredMaterials } = require('./restored-materials.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
@@ -36,10 +37,11 @@ function digest(file) {
 function copyVerified(source, target, expected) {
   noLinks(source); const before = fs.statSync(source); if (!before.isFile()) fail('source_not_regular_file');
   fs.mkdirSync(path.dirname(target), { recursive: true, mode: 0o700 }); fs.copyFileSync(source, target, fs.constants.COPYFILE_EXCL);
+  noLinks(target);
   fs.chmodSync(target, (before.mode & 0o700) | 0o600);
   const hash = digest(target), after = fs.statSync(source), size = fs.statSync(target).size;
   if (before.size !== after.size || before.mtimeMs !== after.mtimeMs || size !== before.size || hash !== digest(source)) fail('source_changed_during_backup');
-  if (expected && (size !== expected.size || hash !== expected.sha256)) fail('referenced_file_integrity_failed');
+  if (expected && (expected.size !== null && size !== expected.size || hash !== expected.sha256)) fail('referenced_file_integrity_failed');
   const fd = fs.openSync(target, 'r+'); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
   return { size, sha256: hash };
 }
@@ -55,19 +57,25 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
-  const add = (relative, sha256, size) => {
+  const add = (relative, sha256, size, unknownSize = false) => {
     within(path.resolve('.'), relative);
-    if (!/^[a-f0-9]{64}$/.test(sha256) || !Number.isSafeInteger(size) || size < 0) fail('invalid_file_reference');
-    const previous = result.get(relative); if (previous && (previous.sha256 !== sha256 || previous.size !== size)) fail('conflicting_file_reference');
-    result.set(relative, { sha256, size });
+    if (!/^[a-f0-9]{64}$/.test(sha256) || !(unknownSize && size === null) && (!Number.isSafeInteger(size) || size < 0)) fail('invalid_file_reference');
+    const previous = result.get(relative); if (previous && (previous.sha256 !== sha256 || previous.size !== null && size !== null && previous.size !== size)) fail('conflicting_file_reference');
+    result.set(relative, { sha256, size: size === null && previous ? previous.size : size });
   };
   for (const row of rows) {
     const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
-    if (row.collection === 'studioMaterialUploads') {
+    if (row.collection === 'sourceCourses') {
+      if (!Array.isArray(value.sources)) fail('invalid_frozen_course_sources');
+      for (const source of value.sources) if (source.kind === 'pdf') {
+        if (!/^[a-f0-9]{64}$/.test(source.sha256)) fail('invalid_file_reference');
+        add(`studio-materials/${source.sha256}.pdf`,source.sha256,null,true);
+      }
+    } else if (row.collection === 'studioMaterialUploads') {
       if (!/^studio_upload_[a-f0-9-]+$/.test(value.id)) fail('invalid_material_upload_reference');
       if (value.status === 'uploading') for (const chunk of value.chunks ?? []) {
         if (!Number.isSafeInteger(chunk.index) || chunk.index < 0) fail('invalid_chunk_reference');
@@ -171,7 +179,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
     const refs = references(db);
     if (manifest.referencedFileCount !== refs.size || manifest.assetCount !== [...paths.keys()].filter(p => p.startsWith('assets/')).length || !manifest.assetsIncluded && manifest.assetCount) fail('manifest_count_mismatch');
     for (const [relative, expected] of refs) {
-      const actual = paths.get(`data/${relative}`); if (!actual || actual.sha256 !== expected.sha256 || actual.size !== expected.size) fail('database_file_missing_from_bundle');
+      const actual = paths.get(`data/${relative}`); if (!actual || actual.sha256 !== expected.sha256 || expected.size !== null && actual.size !== expected.size) fail('database_file_missing_from_bundle');
     }
   } finally { db.close(); }
   return { manifest, database: state, verifiedFiles: paths.size };
@@ -179,9 +187,10 @@ async function verifyBundle({ bundle, incomplete = false }) {
 async function restoreBundle({ bundle, destination, deletionLedger }) {
   const ledger = readLedger(deletionLedger), verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
   const marker = within(root, '.study-restore-incomplete'); fs.writeFileSync(marker, 'Restore has not completed. Do not start the application.\n', { flag: 'wx' });
-  let restoredCount = 0;
+  let restoredCount = 0, omittedControlFiles = 0;
   for (const file of verified.manifest.files) {
     const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
+    if (file.path.startsWith('data/') && omitRestoredMaterialControl(relative)) { omittedControlFiles++; continue; }
     copyVerified(within(bundle, file.path), within(root, relative), file);
     if (relative === 'study-agent.sqlite3') {
       const guard = new DatabaseSync(within(root, relative));
@@ -196,9 +205,12 @@ async function restoreBundle({ bundle, destination, deletionLedger }) {
   try {
     db.exec('BEGIN IMMEDIATE');
     const query = (sql, params = []) => db.prepare(sql).all(...params);
+    const before = await captureMaterialKeys(query);
     const { removedMediaIds, ...privacy } = await applyDeletionLedger(query, ledger);
+    const access = await fenceRestoredState(query, verified.manifest.id, verified.database.revision);
+    const materials = await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before});
     privacy.mediaDirectoriesPurged = purgeRestoredMedia(root, removedMediaIds);
-    counts = { ...await fenceRestoredState(query, verified.manifest.id, verified.database.revision), ...privacy };
+    counts = { ...access, ...privacy, ...materials, copiedFiles:restoredCount, omittedControlFiles };
     if (Number(db.prepare("UPDATE study_restore_guard SET state='ready',updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(counts.restoredAt, verified.manifest.id).changes) !== 1) fail('restore_guard_changed');
     db.exec('COMMIT'); summary(db);
   } catch (error) { try { db.exec('ROLLBACK'); } catch {} throw error; } finally { db.close(); }

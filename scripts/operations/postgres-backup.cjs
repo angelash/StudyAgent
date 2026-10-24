@@ -4,6 +4,7 @@ const path = require('node:path');
 const { randomUUID } = require('node:crypto');
 const { spawn } = require('node:child_process');
 const { Pool } = require('pg');
+const { captureMaterialKeys, omitRestoredMaterialControl, cleanupRestoredMaterials } = require('./restored-materials.cjs');
 const { files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } } = require('./backup.cjs');
 const { fenceRestoredState } = require('./restore-state.cjs');
 const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
@@ -39,7 +40,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
       (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
     database = await summary(client);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -56,8 +57,9 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     files.push({ path: `assets/${item.relative}`, ...copyVerified(item.path, within(root, `assets/${item.relative}`)) });
     if (++assetCount % 5000 === 0) process.stderr.write(`Copied ${assetCount} asset files\n`);
   }
+  const copied = new Map(files.map(file => [file.path,file]));
   const manifest = { format: FORMAT, id: randomUUID(), createdAt: new Date().toISOString(), database, assetsIncluded: Boolean(assets), assetCount, referencedFileCount: refs.size,
-    references: [...refs].map(([relative, expected]) => ({ path: `data/${relative}`, ...expected })), files };
+    references: [...refs.keys()].map(relative => copied.get(`data/${relative}`)), files };
   fs.writeFileSync(within(root, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
   await verifyPostgresBundle({ bundle: root, pgBin, incomplete: true }); fs.unlinkSync(within(root, '.study-backup-incomplete'));
   return { format: FORMAT, id: manifest.id, database, verifiedFiles: files.length, assetsIncluded: Boolean(assets) };
@@ -82,7 +84,7 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
 }
 async function restorePostgresBundle({ bundle, destination, connectionString, pgBin, deletionLedger }) {
   config(connectionString); const ledger = readLedger(deletionLedger), verified = await verifyPostgresBundle({ bundle, pgBin }), pool = new Pool({ connectionString, max: 1 });
-  const client = await pool.connect(); let root, counts;
+  const client = await pool.connect(); let root, counts, copiedFiles=0, omittedControlFiles=0;
   try {
     const existing = (await client.query("SELECT COUNT(*) AS count FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname NOT LIKE 'pg_%' AND n.nspname<>'information_schema' AND c.relkind IN ('r','p','v','m','S','f')")).rows[0];
     if (Number(existing.count)) fail('restore_requires_empty_database');
@@ -93,21 +95,26 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
     for (const file of verified.manifest.files) {
       if (file.path.startsWith('database/')) continue;
       const relative = file.path.startsWith('data/') ? file.path.slice(5) : file.path;
+      if (file.path.startsWith('data/') && omitRestoredMaterialControl(relative)) { omittedControlFiles++; continue; }
       copyVerified(within(bundle, file.path), within(root, relative), file);
+      copiedFiles++;
     }
     await native('pg_restore', ['--no-owner', '--no-acl', '--no-tablespaces', '--exit-on-error', '--single-transaction', '--dbname=' + config(connectionString).PGDATABASE, within(bundle, 'database/postgres.dump')], pgBin, connectionString);
     await client.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
     if (JSON.stringify(await summary(client)) !== JSON.stringify(verified.manifest.database)) fail('restored_database_summary_mismatch');
-    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads')")).rows);
+    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses')")).rows);
     for (const [relative, expected] of refs) {
       const item = verified.manifest.references.find(r => r.path === `data/${relative}`);
-      if (!item || expected.sha256 !== item.sha256 || expected.size !== item.size) fail('restored_file_reference_mismatch');
+      if (!item || expected.sha256 !== item.sha256 || expected.size !== null && expected.size !== item.size) fail('restored_file_reference_mismatch');
     }
     if (refs.size !== verified.manifest.referencedFileCount) fail('restored_file_reference_mismatch');
     const query = async (sql, params = []) => { let index = 0; return (await client.query(sql.replace(/\?/g, () => `$${++index}`), params)).rows; };
+    const before = await captureMaterialKeys(query);
     const { removedMediaIds, ...privacy } = await applyDeletionLedger(query, ledger);
+    const access = await fenceRestoredState(query, verified.manifest.id, verified.manifest.database.revision);
+    const materials = await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before});
     privacy.mediaDirectoriesPurged = purgeRestoredMedia(root, removedMediaIds);
-    counts = { ...await fenceRestoredState(query, verified.manifest.id, verified.manifest.database.revision), ...privacy };
+    counts = { ...access, ...privacy, ...materials, copiedFiles, databaseImported:true, omittedControlFiles };
     if ((await client.query("UPDATE study_restore_guard SET state='ready',updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'", [counts.restoredAt, verified.manifest.id])).rowCount !== 1) fail('restore_guard_changed');
     await client.query('COMMIT');
   } catch (error) { await client.query('ROLLBACK').catch(() => {}); throw error; } finally { client.release(); await pool.end(); }

@@ -263,5 +263,5 @@ async function main(args) {
   }
   return report;
 }
-module.exports = { readMaterialSnapshot, materialReferences, managedEntry, parseMarkerStagingName, auditMaterials, main };
+module.exports = { materialCollections: COLLECTIONS, readMaterialSnapshot, materialReferences, managedEntry, parseMarkerStagingName, auditMaterials, main };
 if (require.main === module) main(process.argv.slice(2)).then(report => console.log(JSON.stringify(report, null, 2))).catch(error => { console.error('Material audit failed: ' + (error.code ?? error.message)); process.exitCode = 1; });
