@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T05:21:57.599Z",
-  "sourceRevision": "6e5dc75c5630bd43c91ca06d7ab4e19743e4f834",
+  "at": "2026-10-24T05:27:15.083Z",
+  "sourceRevision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -383,7 +383,7 @@
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
     "receipt": "../evidence/2026-10-24/material-collection-acceptance.json",
-    "revision": "6e5dc75c5630bd43c91ca06d7ab4e19743e4f834",
+    "revision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

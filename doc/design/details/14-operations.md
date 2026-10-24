@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`6e5dc75c5630bd43c91ca06d7ab4e19743e4f834`。角色：运维、管理员、教研。
+源码基线：`9c2fd792922ed35abdb6cd5b55eebecc949efd99`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 

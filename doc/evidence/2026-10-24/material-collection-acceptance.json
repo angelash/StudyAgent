@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "at": "2026-10-24T05:21:23.181541+00:00",
-  "sourceRevision": "6e5dc75c5630bd43c91ca06d7ab4e19743e4f834",
+  "sourceRevision": "9c2fd792922ed35abdb6cd5b55eebecc949efd99",
   "implementationBaseRevision": "f6bcdaca14dd002b1fd07cf78746598bb13586ff",
-  "sourceRevisionNote": "Working-tree implementation snapshot bound by normalized sourceDigests; final code commit is recorded in implementation history and subsequent CI.",
+  "sourceRevisionNote": "Implementation code commit bound by normalized sourceDigests. Documentation and acceptance metadata are re-anchored in the following documentation commit.",
   "passed": true,
   "status": "verified-durable-collection-increment-not-specification-104-complete",
   "reports": {
@@ -131,5 +131,6 @@
   ],
   "productionChanged": false,
   "qaClusterRestoredToInitialStoppedState": true,
-  "goalStatus": "active"
+  "goalStatus": "active",
+  "implementationCommit": "9c2fd792922ed35abdb6cd5b55eebecc949efd99"
 }
