@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`2c49e8422d03239b33caa37af516b4e7ab2fccf3`。角色：家长、学生、管理员、授权教师。
+源码基线：`22a78f6d6d2c57e69cd261c2dbeab5e9274ad378`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -122,7 +122,7 @@
 - `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:32](../../../apps/api/src/modules/students/students.service.ts#L32)。
 - `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:133](../../../apps/api/src/modules/students/students.service.ts#L133)。
 - `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:148](../../../apps/api/src/modules/students/students.service.ts#L148)。
-- `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:58](../../../apps/api/src/modules/learning/learning.service.ts#L58)。
+- `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:59](../../../apps/api/src/modules/learning/learning.service.ts#L59)。
 
 ## AUTH-05 邀请与共同监护绑定
 

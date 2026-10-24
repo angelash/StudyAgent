@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`2c49e8422d03239b33caa37af516b4e7ab2fccf3`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`22a78f6d6d2c57e69cd261c2dbeab5e9274ad378`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -376,6 +376,8 @@
 
 - `StudioMaterialUpload`：[packages/contracts/src/studio-material-upload.ts:4](../../../packages/contracts/src/studio-material-upload.ts#L4)；字段：`id`、`ownerUserId`、`studentId`、`subject`、`name`、`size`、`sha256`、`chunkSize`、`chunks`、`status`、`revision`、`createdAt`、`expiresAt`、`completedAt`、`materialId`。
 - `StudioMaterialProgress`：[packages/contracts/src/studio-material-upload.ts:9](../../../packages/contracts/src/studio-material-upload.ts#L9)；字段：`materialId`、`status`、`pageCount`、`processedPages`、`ocrPages`、`unreadablePages`、`pages`、`task`。
+- `StudioMaterialFileState`：[packages/contracts/src/studio-material-upload.ts:15](../../../packages/contracts/src/studio-material-upload.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioMaterialFileReport`：[packages/contracts/src/studio-material-upload.ts:16](../../../packages/contracts/src/studio-material-upload.ts#L16)；字段：`materialId`、`version`、`checkedAt`、`original`、`pages`、`canRegenerate`。
 
 ### packages/contracts/src/studio.ts
 

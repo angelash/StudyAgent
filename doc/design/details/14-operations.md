@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`2c49e8422d03239b33caa37af516b4e7ab2fccf3`。角色：运维、管理员、教研。
+源码基线：`22a78f6d6d2c57e69cd261c2dbeab5e9274ad378`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -236,7 +236,7 @@
 
 **状态与持久化**：`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`、`studioLearningPacks`、`studioWhiteboards`
 
-**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；旧页图回填及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。
+**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；损坏原件替换及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 

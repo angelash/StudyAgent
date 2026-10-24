@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
+  "sourceRevision": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 111,
-    "activeNormalApiRoutes": 276,
-    "coveredApiRoutes": 276
+    "activeNormalApiRoutes": 278,
+    "coveredApiRoutes": 278
   },
   "areas": [
     {
@@ -339,7 +339,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 58
+              "line": 59
             }
           ],
           "sourceFiles": [
@@ -2396,12 +2396,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 831
+              "line": 826
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 567
+              "line": 562
             }
           ],
           "sourceFiles": [
@@ -2459,12 +2459,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 627
+              "line": 622
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 641
+              "line": 636
             }
           ],
           "sourceFiles": [
@@ -2555,32 +2555,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 683
+              "line": 678
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 701
+              "line": 696
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 710
+              "line": 705
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 726
+              "line": 721
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 780
+              "line": 775
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 791
+              "line": 786
             }
           ],
           "sourceFiles": [
@@ -2630,7 +2630,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 801
+              "line": 796
             }
           ],
           "sourceFiles": [
@@ -4209,7 +4209,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 63
+              "line": 64
             }
           ],
           "sourceFiles": [
@@ -4284,17 +4284,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 496
+              "line": 491
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 512
+              "line": 507
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 541
+              "line": 536
             }
           ],
           "sourceFiles": [
@@ -4751,12 +4751,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 211
+              "line": 212
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 223
+              "line": 224
             }
           ],
           "sourceFiles": [
@@ -4813,7 +4813,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 485
+              "line": 480
             }
           ],
           "sourceFiles": [
@@ -4888,17 +4888,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 247
+              "line": 248
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 308
+              "line": 309
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 325
+              "line": 319
             }
           ],
           "sourceFiles": [
@@ -5006,12 +5006,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 340
+              "line": 334
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 368
+              "line": 362
             }
           ],
           "sourceFiles": [
@@ -5076,12 +5076,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 401
+              "line": 396
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 416
+              "line": 411
             }
           ],
           "sourceFiles": [
@@ -5147,12 +5147,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 437
+              "line": 432
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 458
+              "line": 453
             }
           ],
           "sourceFiles": [
@@ -5227,17 +5227,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 114
+              "line": 115
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 130
+              "line": 131
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 168
+              "line": 169
             }
           ],
           "sourceFiles": [
@@ -5674,7 +5674,7 @@
             "learningScopes",
             "knowledgeAtoms"
           ],
-          "limits": "生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；长PDF分块与引用回收见STUDIO-24/OPS-10，旧页图及恢复物理清理仍待。",
+          "limits": "生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；长PDF分块与引用回收见STUDIO-24/OPS-10，旧页图核对见STUDIO-24；损坏原件替换及恢复物理清理仍待。",
           "endpoints": [
             {
               "verb": "GET",
@@ -5682,7 +5682,7 @@
               "controller": "SourceCourseController",
               "method": "materials",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 11
+              "line": 12
             },
             {
               "verb": "POST",
@@ -5690,7 +5690,7 @@
               "controller": "SourceCourseController",
               "method": "text",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 16
+              "line": 19
             },
             {
               "verb": "GET",
@@ -5698,7 +5698,7 @@
               "controller": "SourceCourseController",
               "method": "list",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 19
+              "line": 22
             },
             {
               "verb": "POST",
@@ -5706,7 +5706,7 @@
               "controller": "SourceCourseController",
               "method": "create",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 20
+              "line": 23
             },
             {
               "verb": "GET",
@@ -5714,7 +5714,7 @@
               "controller": "SourceCourseController",
               "method": "get",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 24
+              "line": 27
             },
             {
               "verb": "PATCH",
@@ -5722,7 +5722,7 @@
               "controller": "SourceCourseController",
               "method": "edit",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 29
+              "line": 32
             },
             {
               "verb": "POST",
@@ -5730,7 +5730,7 @@
               "controller": "SourceCourseController",
               "method": "authoring",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 25
+              "line": 28
             },
             {
               "verb": "PATCH",
@@ -5738,7 +5738,7 @@
               "controller": "SourceCourseController",
               "method": "content",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 28
+              "line": 31
             },
             {
               "verb": "POST",
@@ -5746,7 +5746,7 @@
               "controller": "SourceCourseController",
               "method": "confirm",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 30
+              "line": 33
             },
             {
               "verb": "POST",
@@ -5754,7 +5754,7 @@
               "controller": "SourceCourseController",
               "method": "cancel",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 31
+              "line": 34
             },
             {
               "verb": "POST",
@@ -5762,7 +5762,7 @@
               "controller": "SourceCourseController",
               "method": "retry",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 32
+              "line": 35
             },
             {
               "verb": "POST",
@@ -5770,7 +5770,7 @@
               "controller": "SourceCourseController",
               "method": "archive",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 33
+              "line": 36
             }
           ],
           "implementations": [
@@ -5881,7 +5881,7 @@
             "sourceCourseStages",
             "studioSourceMaterials"
           ],
-          "limits": "单次模型上下文18000字符；小课程保留旧v2语义；长PDF上传与续跑见STUDIO-24；新页图有摘要，旧页图回填、恢复删除账本后的物理清理和全教材语义覆盖仍待。",
+          "limits": "单次模型上下文18000字符；小课程保留旧v2语义；长PDF上传与续跑见STUDIO-24；新页图有摘要，旧页图核对见STUDIO-24，损坏原件替换、恢复删除账本后的物理清理和全教材语义覆盖仍待。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5889,7 +5889,7 @@
               "controller": "SourceCourseController",
               "method": "preflight",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 21
+              "line": 24
             },
             {
               "verb": "POST",
@@ -5897,7 +5897,7 @@
               "controller": "SourceCourseController",
               "method": "textFile",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 17
+              "line": 20
             },
             {
               "verb": "GET",
@@ -5905,7 +5905,7 @@
               "controller": "SourceCourseController",
               "method": "progress",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 22
+              "line": 25
             },
             {
               "verb": "GET",
@@ -5913,7 +5913,7 @@
               "controller": "SourceCourseController",
               "method": "source",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 23
+              "line": 26
             },
             {
               "verb": "POST",
@@ -5921,7 +5921,7 @@
               "controller": "SourceCourseController",
               "method": "lessonAuthoring",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 26
+              "line": 29
             },
             {
               "verb": "PATCH",
@@ -5929,7 +5929,7 @@
               "controller": "SourceCourseController",
               "method": "lessonContent",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 27
+              "line": 30
             }
           ],
           "implementations": [
@@ -6114,14 +6114,14 @@
             "/studio/source-courses"
           ],
           "inputs": "学习范围、文件SHA、4MiB分块、请求键、页码、资料版本和任务版本",
-          "implementation": "原件流式组装并核对完整字节；上传完成只排后台任务；最多120页按原件/算法身份保存完整JSON检查点与页图摘要，恢复时核验并只补缺失/损坏页；目录只发概要，按页且绑定版本取正文；两处入口支持中断重选、丢失回执恢复、范围批选和取消续跑；注册原件持文件租约并核对最新generation；学生入口沿学习授权验证。",
+          "implementation": "原件流式组装并核对完整字节；上传完成只排后台任务；最多120页按原件/算法身份保存完整JSON检查点与页图摘要，恢复时核验并只补缺失/损坏页；目录只发概要，按页且绑定版本取正文；两处入口支持中断重选、丢失回执恢复、范围批选和取消续跑；注册原件持文件租约并核对最新generation；学生入口沿学习授权验证；显式检查原件/逐页文件，旧可读图像回填带legacy_observed来源的摘要，嵌入页单独登记；校验不符不重设摘要，检查不改来源版本；两处入口提供缺失/损坏页图重生成，处理前再次核对原件。",
           "outputs": "50MiB受控上传、120页真实进度、原件/正文/结构对照与可恢复选课",
           "collections": [
             "studioMaterialUploads",
             "studioSourceMaterials",
             "studioMaterialAssets"
           ],
-          "limits": "运行预算不是静默裁切；旧30页/10MB同步接口兼容；OCR/模型结构仍为候选，旧页图摘要回填与删除账本恢复后的物理清理仍待。",
+          "limits": "运行预算不是静默裁切；旧30页/10MB同步接口兼容；OCR/模型结构仍为候选，旧页图回填只建立本次可读文件基线，不证明历史未变或与原件语义一致；损坏原件的显式替换及删除账本恢复后的物理清理仍待。",
           "endpoints": [
             {
               "verb": "GET",
@@ -6177,7 +6177,7 @@
               "controller": "SourceCourseController",
               "method": "material",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 13
+              "line": 16
             },
             {
               "verb": "GET",
@@ -6185,7 +6185,7 @@
               "controller": "SourceCourseController",
               "method": "materialProgress",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 12
+              "line": 13
             },
             {
               "verb": "GET",
@@ -6193,13 +6193,29 @@
               "controller": "SourceCourseController",
               "method": "materialPage",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 14
+              "line": 17
             },
             {
               "verb": "POST",
               "path": "/api/learning/source-courses/materials/:id/process/cancel",
               "controller": "SourceCourseController",
               "method": "cancelMaterialProcessing",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/materials/:id/files",
+              "controller": "SourceCourseController",
+              "method": "materialFiles",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/materials/:id/files/check",
+              "controller": "SourceCourseController",
+              "method": "checkMaterialFiles",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
               "line": 15
             }
@@ -6254,12 +6270,25 @@
               "name": "StudioMaterialUploadService.cancelProcessing",
               "file": "apps/api/src/modules/learning/studio-material-upload.service.ts",
               "line": 75
+            },
+            {
+              "name": "StudioMaterialIntegrityService.get",
+              "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+              "line": 103
+            },
+            {
+              "name": "StudioMaterialIntegrityService.check",
+              "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+              "line": 104
             }
           ],
           "sourceFiles": [
             "packages/contracts/src/studio-material-upload.ts",
             "apps/api/src/modules/learning/studio-material-upload.service.ts",
             "apps/api/src/modules/learning/studio-material-storage.ts",
+            "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+            "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
+            "apps/web/app/studio/source-courses/pdf-material-files.tsx",
             "apps/api/src/modules/learning/studio-material-upload.integration.test.ts",
             "scripts/processing/process_document.py",
             "scripts/processing/file_leases.py",
@@ -7946,7 +7975,7 @@
             "studioLearningPacks",
             "studioWhiteboards"
           ],
-          "limits": "只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；旧页图回填及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。",
+          "limits": "只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；损坏原件替换及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。",
           "endpoints": [],
           "implementations": [],
           "sourceFiles": [

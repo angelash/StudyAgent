@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T06:14:59.394707+00:00",
+  "sourceRevision": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
+  "implementationCommit": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
+  "specificationCommit": "0b640b0",
+  "passed": true,
+  "status": "verified-file-integrity-and-page-repair-increment-not-specification-104-complete",
+  "reports": {
+    "material-integrity-sqlite-initial.json": {
+      "sha256": "c72c6c6ebfa09192d90a102612afaf5bcf44949c83dfc2f9b77ea80546e33e93",
+      "passed": 6,
+      "failed": 1,
+      "pending": 0
+    },
+    "material-integrity-sqlite-regression.json": {
+      "sha256": "f4f8db0ed2293805a762789275737e243969a957b5624c1bce7aaf49f0358349",
+      "passed": 37,
+      "failed": 0,
+      "pending": 0
+    },
+    "material-integrity-sqlite-final.json": {
+      "sha256": "188debd9546c5392ec7fd0a3a4bb7ab722418e997d07981643d8f9afae5d627e",
+      "passed": 8,
+      "failed": 0,
+      "pending": 0
+    },
+    "material-integrity-workbench-regression.json": {
+      "sha256": "88a0fe1c2d63431aafbd67ddd0013ff0138fd2f7468383d743c27ac5198b0e05",
+      "passed": 16,
+      "failed": 0,
+      "pending": 0
+    },
+    "material-integrity-postgres.json": {
+      "sha256": "dfcfb75fb3521edd3861f639dcce7be8720814378ed3b40cd8ea47f101f124f6",
+      "passed": 33,
+      "failed": 0,
+      "pending": 0
+    },
+    "material-integrity-browser-initial.json": {
+      "sha256": "0113651a0e86d96652c5c2726ea65809357600493c566d52f758c72b5f322aa7",
+      "stats": {
+        "startTime": "2026-10-24T06:07:45.046Z",
+        "duration": 37035.005999999994,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "material-integrity-browser-final.json": {
+      "sha256": "362ef635a72464d94f32e81bd4eb34dd694c8eb12b00ec3b20146bcc1e877c18",
+      "stats": {
+        "startTime": "2026-10-24T06:12:00.726Z",
+        "duration": 35351.027,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "c7ee201584f6b19f66928fce050184b49e896041db5c596aff86f021996aca6a",
+    "apps/api/src/modules/learning/learning.module.ts": "abe75f7924f94990b90c615868354d32a8e76c03d9b4e9894a74c27f211cf893",
+    "apps/api/src/modules/learning/learning.service.ts": "73c3c546663f3e6c689bc2f2b79ceb327529e51bda2f4131e46466e00c09ee0a",
+    "apps/api/src/modules/learning/source-course.controller.ts": "dbda1af4d3166b19d3b7837e8808c609f8f0248869797632ad6fc0dcb031eeec",
+    "apps/api/src/modules/learning/studio-material-access.ts": "d5b507df02c1e2b2b06e13c17e6729a5a3ba822ee7c625fd01b7f9d0d53174c2",
+    "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts": "7b56c35f923a535b193e8e8549d34c98b24435ebf0292b338f63105c27951a97",
+    "apps/api/src/modules/learning/studio-material-integrity.service.ts": "c6b71fd08272e40f6df8a99f59b94befdc13bc6c992d8c6e9f233aadbb237498",
+    "apps/api/src/modules/processing/processing-worker.service.ts": "f78d4c1875b59e667f6968a909485743c14eba7dbfa90e5869b9a924d099508c",
+    "apps/web/app/studio/source-courses/pdf-material-files.tsx": "eb8408aef2775213f20b57c4879c2a5c264719647572bc0862c4fa99c372afaf",
+    "apps/web/app/studio/source-courses/pdf-material.css": "27e4e5e6d43ac72539504768bebf495b89a54bbe585cdbc4db1e54546dd2c43b",
+    "apps/web/app/studio/source-courses/pdf-material.tsx": "78fae3f9d2dc8d43d9d469236fd6e2086e232b8177aab9892d789e2900c4c151",
+    "packages/contracts/src/studio-material-upload.ts": "709144a3c8c4ee7705950626b0c307d81220f6655616e264163ca3ae4330d4dc",
+    "scripts/architecture/project-feature-definitions.cjs": "639369c2809418a1674998a7099fd9b2a2caef4941f02ba8871018bc6decf744",
+    "scripts/qa/run-material-postgres.cjs": "040e9ae4974134861ef951c51923508477dd8fae49e37b0eed25455f73159571",
+    "tests/e2e/pdf-material.spec.ts": "3b7c383fd4db5a63053742e5b310de130bf33b6d20bbdb980927f803684d01ee"
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/contracts",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/qa/experience-web.cjs build",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/web",
+      "result": "passed"
+    },
+    {
+      "command": "node --test scripts/operations/material-audit.test.cjs",
+      "passed": 11,
+      "failed": 0
+    }
+  ],
+  "coverage": [
+    "Authenticated explicit original/page checks, no file scan in repeated progress polling; original hashes are streamed and images have byte/pixel budgets.",
+    "Readable legacy PNG baselines carry legacy_observed; existing digests are never rebased after a mismatch. Embedded pages retain their bytes in the source record with separate digests.",
+    "Source text, structure, updatedAt and selection version remain unchanged by file checks. Current acknowledgment replay preserves checkedAt; expired keys cannot re-execute a check. Latest expired-key assertion is SQLite-only; the earlier PostgreSQL run covered immediate replay.",
+    "Missing/mismatch/unknown paths and Windows directory junctions remain untouched. Changed embedded bytes and malformed images cannot be downloaded as verified.",
+    "A second real store revokes the guardian binding while verification holds an open file; the stale request cannot persist its check or digests.",
+    "Real persistent processing repairs a missing and a damaged page. The worker verifies the original again at execution, rejecting bytes changed after the last check.",
+    "Native SQLite and pg_dump/pg_restore backups to empty roots retain actual newly recorded image files, embedded bytes and check records; application restart verifies them.",
+    "Both material-course and original PDF workbench use the same check UI. Browser tests cover lost acknowledgment/replay, keyboard activation, real missing-page regeneration, reload recovery, missing-original upload anchor and explicit corrupted-original limitation.",
+    "Desktop/tablet/phone geometry checks and inspected desktop/phone/workbench images; this is not a reference-product pixel-parity claim."
+  ],
+  "initialFailure": {
+    "report": "material-integrity-sqlite-initial.json",
+    "reason": "The new negative-test helper tried an unauthorized material GET with its default 200 expectation before sending the intended forbidden POST. The helper now uses an explicit command without that preliminary GET; product permission checks were correct."
+  },
+  "screenshots": {
+    "file-check-1440.png": "6e2654e6e044c8dfebe2926d0c882caf4a4853fcbffdc3f16ed7db461133cadc",
+    "file-check-390.png": "cd3f6769a40464b1f1bb3f91bfee6707a43ec9aed304fc9b1a729261fcf2af13",
+    "workbench.png": "a3b71222e31d7ca3b0b5c8f4621d76adf8d511c06941851321199d07019bca1c"
+  },
+  "previousIncrementCI": {
+    "headSha": "2c80291a852364926b4e22dafdbc3dc14254953d",
+    "runId": 40067899214,
+    "conclusion": "success",
+    "report": "material-atomic-marker-ci.json",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40067899214"
+  },
+  "validationNotes": [
+    "SQLite related combination 37, final integrity 8, original workbench/structure 16, PostgreSQL 33, audit 11 and browser 4 overlap; do not add as independent product coverage.",
+    "After the PostgreSQL run, the final acknowledgment-expiry message/assertion, button CSS and an unused import were refined; final SQLite 8, browser 4, builds and typechecks passed. Remote CI will cover the final combined source.",
+    "The browser report uses deterministic teaching/image providers and a real PDF processor; it does not claim a new live-model test.",
+    "Only explicitly isolated synthetic family files and QA databases were used; production and its five unrelated modifications remain untouched."
+  ],
+  "pending": [
+    "Explicit repair/replacement of corrupt original bytes; the UI reports the limitation and will not overwrite unknown files.",
+    "Latest deletion-ledger application to restored source/chunk bytes and upload revocation markers, preserving shared/frozen dependencies.",
+    "Final specification 104 regression, current remote CI, merge and daemon delivery.",
+    "Full master-plan reference pixel/state fidelity, deeper content and course lifecycle, teacher/device and actual spaced-learning validation."
+  ],
+  "productionChanged": false,
+  "qaClusterRestoredToInitialStoppedState": true,
+  "goalStatus": "active",
+  "sourceRevisionNote": "Implementation code is bound by sourceDigests; evolving specification and delivery prose are archived separately in their Git commits.",
+  "designValidation": {
+    "sourceRevision": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
+    "report": "../../design/generated/design-validation.json",
+    "sourceFiles": 279,
+    "markdownLinks": 2055,
+    "offlineViewerChecks": 10,
+    "browserErrors": 0,
+    "externalNetworkRequests": 0
+  }
+}

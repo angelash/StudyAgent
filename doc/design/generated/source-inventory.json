@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2c49e8422d03239b33caa37af516b4e7ab2fccf3",
+  "sourceRevision": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 297,
-    "activeHttpRoutes": 284,
-    "activeBusinessHttpRoutes": 276,
+    "declaredHttpRoutes": 299,
+    "activeHttpRoutes": 286,
+    "activeBusinessHttpRoutes": 278,
     "retiredHttpRoutes": 8,
     "activeModules": 18,
     "activeControllers": 27,
-    "apiClasses": 114,
-    "apiFunctions": 313,
+    "apiClasses": 115,
+    "apiFunctions": 322,
     "domainCollections": 86,
-    "contractTypes": 251,
+    "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 109,
+    "apiTestFiles": 110,
     "browserTestFiles": 15
   },
   "modules": [
@@ -216,6 +216,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "StudioMaterialIntegrityService",
         "StudioMaterialUploadService",
         "LearningService",
         "NotebookService",
@@ -6268,7 +6269,7 @@
       "controller": "SourceCourseController",
       "method": "materials",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 11,
+      "line": 12,
       "signature": "materials(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
       "classDecorators": [
         {
@@ -6287,6 +6288,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6301,7 +6306,7 @@
       "controller": "SourceCourseController",
       "method": "materialProgress",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 12,
+      "line": 13,
       "signature": "materialProgress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -6320,6 +6325,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6330,11 +6339,85 @@
     },
     {
       "verb": "GET",
+      "path": "/api/learning/source-courses/materials/:id/files",
+      "controller": "SourceCourseController",
+      "method": "materialFiles",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 14,
+      "signature": "materialFiles(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        },
+        {
+          "name": "uploads",
+          "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
+        }
+      ],
+      "calls": [
+        "this.integrity.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/materials/:id/files/check",
+      "controller": "SourceCourseController",
+      "method": "checkMaterialFiles",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 15,
+      "signature": "checkMaterialFiles(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        },
+        {
+          "name": "uploads",
+          "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
+        }
+      ],
+      "calls": [
+        "this.integrity.check"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
       "path": "/api/learning/source-courses/materials/:id",
       "controller": "SourceCourseController",
       "method": "material",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 13,
+      "line": 16,
       "signature": "material(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -6353,6 +6436,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6367,7 +6454,7 @@
       "controller": "SourceCourseController",
       "method": "materialPage",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 14,
+      "line": 17,
       "signature": "materialPage(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('page')page:string, @Query()query:unknown)",
       "classDecorators": [
         {
@@ -6386,6 +6473,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6400,7 +6491,7 @@
       "controller": "SourceCourseController",
       "method": "cancelMaterialProcessing",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 15,
+      "line": 18,
       "signature": "cancelMaterialProcessing(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6419,6 +6510,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6433,7 +6528,7 @@
       "controller": "SourceCourseController",
       "method": "text",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 16,
+      "line": 19,
       "signature": "text(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6452,6 +6547,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6466,7 +6565,7 @@
       "controller": "SourceCourseController",
       "method": "textFile",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 17,
+      "line": 20,
       "signature": "textFile(@Req()req:AuthenticatedRequest, @Body()body:unknown, @UploadedFile()file:Express.Multer.File|undefined)",
       "classDecorators": [
         {
@@ -6492,6 +6591,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6506,7 +6609,7 @@
       "controller": "SourceCourseController",
       "method": "list",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 19,
+      "line": 22,
       "signature": "list(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
       "classDecorators": [
         {
@@ -6525,6 +6628,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6539,7 +6646,7 @@
       "controller": "SourceCourseController",
       "method": "create",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 20,
+      "line": 23,
       "signature": "create(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6558,6 +6665,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6572,7 +6683,7 @@
       "controller": "SourceCourseController",
       "method": "preflight",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 21,
+      "line": 24,
       "signature": "preflight(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6591,6 +6702,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6605,7 +6720,7 @@
       "controller": "SourceCourseController",
       "method": "progress",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 22,
+      "line": 25,
       "signature": "progress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -6624,6 +6739,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6638,7 +6757,7 @@
       "controller": "SourceCourseController",
       "method": "source",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 23,
+      "line": 26,
       "signature": "source(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('key')key:string)",
       "classDecorators": [
         {
@@ -6657,6 +6776,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6671,7 +6794,7 @@
       "controller": "SourceCourseController",
       "method": "get",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 24,
+      "line": 27,
       "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -6690,6 +6813,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6704,7 +6831,7 @@
       "controller": "SourceCourseController",
       "method": "authoring",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 25,
+      "line": 28,
       "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -6723,6 +6850,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6737,7 +6868,7 @@
       "controller": "SourceCourseController",
       "method": "lessonAuthoring",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 26,
+      "line": 29,
       "signature": "lessonAuthoring(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string)",
       "classDecorators": [
         {
@@ -6756,6 +6887,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6770,7 +6905,7 @@
       "controller": "SourceCourseController",
       "method": "lessonContent",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 27,
+      "line": 30,
       "signature": "lessonContent(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6789,6 +6924,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6803,7 +6942,7 @@
       "controller": "SourceCourseController",
       "method": "content",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 28,
+      "line": 31,
       "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6822,6 +6961,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6836,7 +6979,7 @@
       "controller": "SourceCourseController",
       "method": "edit",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 29,
+      "line": 32,
       "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6855,6 +6998,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6869,7 +7016,7 @@
       "controller": "SourceCourseController",
       "method": "confirm",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 30,
+      "line": 33,
       "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6888,6 +7035,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6902,7 +7053,7 @@
       "controller": "SourceCourseController",
       "method": "cancel",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 31,
+      "line": 34,
       "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6921,6 +7072,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6935,7 +7090,7 @@
       "controller": "SourceCourseController",
       "method": "retry",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 32,
+      "line": 35,
       "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6954,6 +7109,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -6968,7 +7127,7 @@
       "controller": "SourceCourseController",
       "method": "archive",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 33,
+      "line": 36,
       "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -6987,6 +7146,10 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "calls": [
@@ -18710,12 +18873,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 30,
+      "line": 31,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -18725,7 +18888,7 @@
     {
       "name": "LearningService",
       "file": "apps/api/src/modules/learning/learning.service.ts",
-      "line": 51,
+      "line": 52,
       "decorators": [
         {
           "name": "Injectable",
@@ -18773,7 +18936,7 @@
       "methods": [
         {
           "name": "studentProfiles",
-          "line": 58,
+          "line": 59,
           "signature": "studentProfiles(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -18784,7 +18947,7 @@
         },
         {
           "name": "studioOverview",
-          "line": 63,
+          "line": 64,
           "signature": "studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject, catalog=false): StudioOverview",
           "access": "public",
           "decorators": [],
@@ -18801,7 +18964,7 @@
         },
         {
           "name": "previewStudioStudyPlan",
-          "line": 114,
+          "line": 115,
           "signature": "previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview",
           "access": "public",
           "decorators": [],
@@ -18813,7 +18976,7 @@
         },
         {
           "name": "createStudioStudyPlan",
-          "line": 130,
+          "line": 131,
           "signature": "createStudioStudyPlan(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18827,7 +18990,7 @@
         },
         {
           "name": "updateStudioPlanSession",
-          "line": 168,
+          "line": 169,
           "signature": "updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18840,7 +19003,7 @@
         },
         {
           "name": "previewStudioWhiteboard",
-          "line": 211,
+          "line": 212,
           "signature": "previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18850,7 +19013,7 @@
         },
         {
           "name": "createStudioWhiteboard",
-          "line": 223,
+          "line": 224,
           "signature": "createStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18865,7 +19028,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 247,
+          "line": 248,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string }, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -18880,7 +19043,7 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 308,
+          "line": 309,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
@@ -18890,7 +19053,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 325,
+          "line": 319,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
@@ -18900,7 +19063,7 @@
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 340,
+          "line": 334,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18912,7 +19075,7 @@
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 368,
+          "line": 362,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -18926,7 +19089,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 401,
+          "line": 396,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18938,7 +19101,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 416,
+          "line": 411,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18952,7 +19115,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 437,
+          "line": 432,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -18964,7 +19127,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 458,
+          "line": 453,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18979,7 +19142,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 485,
+          "line": 480,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -18991,7 +19154,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 496,
+          "line": 491,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19001,7 +19164,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 512,
+          "line": 507,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19017,7 +19180,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 541,
+          "line": 536,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19030,7 +19193,7 @@
         },
         {
           "name": "studioScope",
-          "line": 558,
+          "line": 553,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -19042,7 +19205,7 @@
         },
         {
           "name": "memory",
-          "line": 567,
+          "line": 562,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -19056,7 +19219,7 @@
         },
         {
           "name": "today",
-          "line": 627,
+          "line": 622,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -19071,7 +19234,7 @@
         },
         {
           "name": "start",
-          "line": 641,
+          "line": 636,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -19090,7 +19253,7 @@
         },
         {
           "name": "requireSession",
-          "line": 678,
+          "line": 673,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -19101,7 +19264,7 @@
         },
         {
           "name": "view",
-          "line": 683,
+          "line": 678,
           "signature": "view(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -19114,7 +19277,7 @@
         },
         {
           "name": "render",
-          "line": 701,
+          "line": 696,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -19126,7 +19289,7 @@
         },
         {
           "name": "draft",
-          "line": 710,
+          "line": 705,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19138,7 +19301,7 @@
         },
         {
           "name": "assertActive",
-          "line": 722,
+          "line": 717,
           "signature": "assertActive(session: PracticeSession)",
           "access": "private",
           "decorators": [],
@@ -19148,7 +19311,7 @@
         },
         {
           "name": "submit",
-          "line": 726,
+          "line": 721,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19167,7 +19330,7 @@
         },
         {
           "name": "feedback",
-          "line": 751,
+          "line": 746,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -19178,7 +19341,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 760,
+          "line": 755,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -19188,7 +19351,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 765,
+          "line": 760,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19203,7 +19366,7 @@
         },
         {
           "name": "hint",
-          "line": 780,
+          "line": 775,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -19218,7 +19381,7 @@
         },
         {
           "name": "complete",
-          "line": 791,
+          "line": 786,
           "signature": "complete(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -19231,7 +19394,7 @@
         },
         {
           "name": "mistakes",
-          "line": 801,
+          "line": 796,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -19245,7 +19408,7 @@
         },
         {
           "name": "overview",
-          "line": 831,
+          "line": 826,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -19818,7 +19981,7 @@
     {
       "name": "SourceCourseController",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 7,
+      "line": 8,
       "decorators": [
         {
           "name": "UseGuards",
@@ -19841,12 +20004,16 @@
         {
           "name": "uploads",
           "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
         }
       ],
       "methods": [
         {
           "name": "materials",
-          "line": 11,
+          "line": 12,
           "signature": "materials(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
           "access": "public",
           "decorators": [
@@ -19863,7 +20030,7 @@
         },
         {
           "name": "materialProgress",
-          "line": 12,
+          "line": 13,
           "signature": "materialProgress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -19879,8 +20046,42 @@
           ]
         },
         {
+          "name": "materialFiles",
+          "line": 14,
+          "signature": "materialFiles(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'materials/:id/files'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.integrity.get"
+          ]
+        },
+        {
+          "name": "checkMaterialFiles",
+          "line": 15,
+          "signature": "checkMaterialFiles(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'materials/:id/files/check'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.integrity.check"
+          ]
+        },
+        {
           "name": "material",
-          "line": 13,
+          "line": 16,
           "signature": "material(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -19897,7 +20098,7 @@
         },
         {
           "name": "materialPage",
-          "line": 14,
+          "line": 17,
           "signature": "materialPage(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('page')page:string, @Query()query:unknown)",
           "access": "public",
           "decorators": [
@@ -19914,7 +20115,7 @@
         },
         {
           "name": "cancelMaterialProcessing",
-          "line": 15,
+          "line": 18,
           "signature": "cancelMaterialProcessing(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -19931,7 +20132,7 @@
         },
         {
           "name": "text",
-          "line": 16,
+          "line": 19,
           "signature": "text(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -19948,7 +20149,7 @@
         },
         {
           "name": "textFile",
-          "line": 17,
+          "line": 20,
           "signature": "textFile(@Req()req:AuthenticatedRequest, @Body()body:unknown, @UploadedFile()file:Express.Multer.File|undefined)",
           "access": "public",
           "decorators": [
@@ -19971,7 +20172,7 @@
         },
         {
           "name": "list",
-          "line": 19,
+          "line": 22,
           "signature": "list(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
           "access": "public",
           "decorators": [
@@ -19986,7 +20187,7 @@
         },
         {
           "name": "create",
-          "line": 20,
+          "line": 23,
           "signature": "create(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20001,7 +20202,7 @@
         },
         {
           "name": "preflight",
-          "line": 21,
+          "line": 24,
           "signature": "preflight(@Req()req:AuthenticatedRequest, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20018,7 +20219,7 @@
         },
         {
           "name": "progress",
-          "line": 22,
+          "line": 25,
           "signature": "progress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -20035,7 +20236,7 @@
         },
         {
           "name": "source",
-          "line": 23,
+          "line": 26,
           "signature": "source(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('key')key:string)",
           "access": "public",
           "decorators": [
@@ -20052,7 +20253,7 @@
         },
         {
           "name": "get",
-          "line": 24,
+          "line": 27,
           "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -20069,7 +20270,7 @@
         },
         {
           "name": "authoring",
-          "line": 25,
+          "line": 28,
           "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -20086,7 +20287,7 @@
         },
         {
           "name": "lessonAuthoring",
-          "line": 26,
+          "line": 29,
           "signature": "lessonAuthoring(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string)",
           "access": "public",
           "decorators": [
@@ -20103,7 +20304,7 @@
         },
         {
           "name": "lessonContent",
-          "line": 27,
+          "line": 30,
           "signature": "lessonContent(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20120,7 +20321,7 @@
         },
         {
           "name": "content",
-          "line": 28,
+          "line": 31,
           "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20137,7 +20338,7 @@
         },
         {
           "name": "edit",
-          "line": 29,
+          "line": 32,
           "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20154,7 +20355,7 @@
         },
         {
           "name": "confirm",
-          "line": 30,
+          "line": 33,
           "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20171,7 +20372,7 @@
         },
         {
           "name": "cancel",
-          "line": 31,
+          "line": 34,
           "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20188,7 +20389,7 @@
         },
         {
           "name": "retry",
-          "line": 32,
+          "line": 35,
           "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20205,7 +20406,7 @@
         },
         {
           "name": "archive",
-          "line": 33,
+          "line": 36,
           "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -20683,6 +20884,70 @@
           "access": "private",
           "decorators": [],
           "calls": []
+        }
+      ]
+    },
+    {
+      "name": "StudioMaterialIntegrityService",
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "line": 89,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "record",
+          "line": 92,
+          "signature": "record(user: InMemoryUserAccount, id: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 98,
+          "signature": "view(check: StudioMaterialRecord['fileCheck']): StudioMaterialFileReport | null",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "get",
+          "line": 103,
+          "signature": "get(user: InMemoryUserAccount, id: string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.view",
+            "this.record"
+          ]
+        },
+        {
+          "name": "check",
+          "line": 104,
+          "signature": "check(user: InMemoryUserAccount, id: string, input: unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.view",
+            "this.store.tasks.get"
+          ]
         }
       ]
     },
@@ -23395,7 +23660,7 @@
         },
         {
           "name": "process",
-          "line": 206,
+          "line": 209,
           "signature": "process(config: Record<string, unknown>, runRoot: string, name: string, signal: AbortSignal, progress: (data: Record<string, unknown>) => void, onPage?:(data:Record<string,unknown>)=>Promise<void>)",
           "access": "private",
           "decorators": [],
@@ -23403,7 +23668,7 @@
         },
         {
           "name": "makeArtifact",
-          "line": 241,
+          "line": 244,
           "signature": "makeArtifact(taskId: string, fileId: string, input: unknown, expected: unknown, purpose: ProcessingArtifact['purpose']): Promise<ProcessingArtifact>",
           "access": "private",
           "decorators": [],
@@ -23413,7 +23678,7 @@
         },
         {
           "name": "canAccessStudioMaterial",
-          "line": 249,
+          "line": 252,
           "signature": "canAccessStudioMaterial(owner: InMemoryUserAccount, materialId: string)",
           "access": "private",
           "decorators": [],
@@ -23423,7 +23688,7 @@
         },
         {
           "name": "studioCheckpoint",
-          "line": 257,
+          "line": 260,
           "signature": "studioCheckpoint(task:TaskRow, change:(row:StudioMaterialRecord)=>void)",
           "access": "private",
           "decorators": [],
@@ -23435,7 +23700,7 @@
         },
         {
           "name": "saveStudioPage",
-          "line": 268,
+          "line": 271,
           "signature": "saveStudioPage(task:TaskRow, input:Record<string,unknown>)",
           "access": "private",
           "decorators": [],
@@ -23445,7 +23710,7 @@
         },
         {
           "name": "markStudioMaterialFailed",
-          "line": 284,
+          "line": 287,
           "signature": "markStudioMaterialFailed(task:TaskRow, error: unknown)",
           "access": "private",
           "decorators": [],
@@ -23455,7 +23720,7 @@
         },
         {
           "name": "requireRecord",
-          "line": 292,
+          "line": 295,
           "signature": "requireRecord(id: string): QuestionImportRecord",
           "access": "private",
           "decorators": [],
@@ -27738,19 +28003,19 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "studyDay",
-      "line": 35,
+      "line": 36,
       "signature": "studyDay(at = new Date())"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "uploadFilename",
-      "line": 38,
+      "line": 39,
       "signature": "uploadFilename(value: string)"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 861,
+      "line": 856,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
@@ -28044,20 +28309,74 @@
     {
       "file": "apps/api/src/modules/learning/studio-material-access.ts",
       "name": "assertMaterialAccess",
-      "line": 13,
+      "line": 15,
       "signature": "assertMaterialAccess(user: InMemoryUserAccount, material: StudioSourceMaterial, students: StudentsService)"
     },
     {
       "file": "apps/api/src/modules/learning/studio-material-access.ts",
       "name": "studioMaterialView",
-      "line": 17,
+      "line": 19,
       "signature": "studioMaterialView(row: StudioMaterialRecord, catalog=false): StudioSourceMaterial"
     },
     {
       "file": "apps/api/src/modules/learning/studio-material-access.ts",
       "name": "materialTaskStatus",
-      "line": 22,
+      "line": 24,
       "signature": "materialTaskStatus(row:StudioSourceMaterial, state?:string|null): StudioSourceMaterial['status']"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "digest",
+      "line": 20,
+      "signature": "digest(bytes: Buffer): Digest"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "validDigest",
+      "line": 21,
+      "signature": "validDigest(value: Digest)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "matches",
+      "line": 22,
+      "signature": "matches(value: Digest, expected: Digest)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "imageObservation",
+      "line": 23,
+      "signature": "imageObservation(bytes: Buffer, expected?: Digest): Promise<Observation>"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "inspectFile",
+      "line": 35,
+      "signature": "inspectFile(file: string, expected: Digest | undefined, image: boolean): Promise<Observation>"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "pagePath",
+      "line": 61,
+      "signature": "pagePath(row: StudioMaterialRecord, page: number, expected?: { name?: string })"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "inspectPage",
+      "line": 66,
+      "signature": "inspectPage(row: StudioMaterialRecord, page: number): Promise<Observation & { storage: 'file' | 'embedded' }>"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "canRegenerateStudioPages",
+      "line": 80,
+      "signature": "canRegenerateStudioPages(row: StudioMaterialRecord)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+      "name": "readVerifiedStudioPage",
+      "line": 83,
+      "signature": "readVerifiedStudioPage(row: StudioMaterialRecord, page: number)"
     },
     {
       "file": "apps/api/src/modules/learning/studio-material-storage.ts",
@@ -36619,6 +36938,51 @@
       ]
     },
     {
+      "name": "StudioMaterialFileState",
+      "file": "packages/contracts/src/studio-material-upload.ts",
+      "line": 15,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "StudioMaterialFileReport",
+      "file": "packages/contracts/src/studio-material-upload.ts",
+      "line": 16,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "materialId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "version",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "checkedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "original",
+          "optional": false,
+          "type": "StudioMaterialFileState"
+        },
+        {
+          "name": "pages",
+          "optional": false,
+          "type": "Array<{ page: number; state: StudioMaterialFileState; storage: 'file' | 'embedded' }>"
+        },
+        {
+          "name": "canRegenerate",
+          "optional": false,
+          "type": "boolean"
+        }
+      ]
+    },
+    {
       "name": "StudioSubject",
       "file": "packages/contracts/src/studio.ts",
       "line": 3,
@@ -38418,6 +38782,7 @@
     "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
     "apps/api/src/modules/learning/source-course.integration.test.ts",
     "apps/api/src/modules/learning/studio-course.test.ts",
+    "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
     "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
     "apps/api/src/modules/learning/studio-material-upload.integration.test.ts",
     "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
