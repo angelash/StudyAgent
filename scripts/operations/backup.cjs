@@ -55,7 +55,7 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -67,7 +67,17 @@ function referencesFromRecords(rows) {
   };
   for (const row of rows) {
     const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
-    if (row.collection === 'classroomVisuals') {
+    if (row.collection === 'studioSourceMaterials') {
+      if (value.kind !== 'text' || value.originalFormat === 'txt') {
+        const format = value.originalFormat ?? 'pdf';
+        if (!['pdf','txt'].includes(format)) fail('invalid_material_format');
+        add(`studio-materials/${value.sha256}.${format}`,value.sha256,value.byteSize);
+      }
+      for (const file of value.pageFiles ?? []) {
+        if (!Number.isSafeInteger(file.page) || file.page < 1 || file.page > 500 || !/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_page_reference');
+        add(`studio-materials/processed/${value.sha256}/page-${file.page}.png`,file.sha256,file.size);
+      }
+    } else if (row.collection === 'classroomVisuals') {
       if (!/^classroom_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id)) fail('invalid_visual_reference');
       if (value.status === 'ready' && value.files) for (const file of Object.values(value.files)) {
         if (!/^[a-f0-9]{64}\.(?:png|txt)$/.test(file.name) || !file.name.startsWith(file.sha256 + '.')) fail('invalid_visual_file_reference');
@@ -134,7 +144,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|studio-materials)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);

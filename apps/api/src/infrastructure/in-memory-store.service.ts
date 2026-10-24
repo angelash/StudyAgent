@@ -2,6 +2,7 @@ import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } fro
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import type { CourseProjectRecord } from '../modules/learning/course-project.service';
 import type { SourceCourseRecord } from '../modules/learning/source-course-content';
+import type { SourceCourseStageRecord } from '../modules/learning/source-course-compilation';
 import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
@@ -418,6 +419,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   classroomVisuals: ClassroomVisualRecord[] = [];
   courseProjects: CourseProjectRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
+  sourceCourseStages: SourceCourseStageRecord[] = [];
   studioActivities: StudioActivity[] = [];
   studioStudyPlans: StudioStudyPlan[] = [];
   studioSourceMaterials: StudioSourceMaterial[] = [];
@@ -506,6 +508,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.classroomVisuals = [];
     this.courseProjects = [];
     this.sourceCourses = [];
+    this.sourceCourseStages = [];
     this.studioActivities = [];
     this.studioStudyPlans = [];
     this.studioSourceMaterials = [];

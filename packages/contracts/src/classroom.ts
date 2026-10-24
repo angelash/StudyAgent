@@ -12,7 +12,7 @@ export type ClassroomQuestion = { id: string; prompt: string; options: string[];
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
 export type ClassroomLesson = { id: string; title: string; objective: string; lectureId: string; steps: ClassroomStep[];
   generatedNotice?: string; nextLessonId?: string;
-  sourceReferences?: Array<{ sourceKey: string; title: string; page: number; quote: string; href: string }>;
+  sourceReferences?: Array<{ sourceKey: string; title: string; page: number; quote: string; href: string; chunkKey?:string;start?:number;end?:number }>;
   questions: ClassroomQuestion[]; verificationHref?: string; practiceVersion?: string;
   assessment?: { kind: 'unit-check'; version: string; notice: string } };
 export type ClassroomLecture = { id: string; title: string; description: string; lessons: Array<Pick<ClassroomLesson, 'id' | 'title' | 'objective'>> };

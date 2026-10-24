@@ -283,7 +283,7 @@ export class LearningService {
     if (!parsed.total) throw new BadRequestException('PDF 没有可读取的页面');
     if (parsed.total > 30) throw new BadRequestException('PDF 最多处理 30 页；请拆分后上传');
     const pages = parsed.pages.map(page => ({ page: page.num,
-      text: page.text.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 8000) }))
+      text: page.text.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim() }))
       .filter(page => page.text.length > 20);
     await persistStudioMaterial(sha256, file.buffer);
     const now = new Date().toISOString(), id = this.store.nextId('studio_material'), taskId = this.store.nextId('task');
@@ -322,12 +322,14 @@ export class LearningService {
     const material = this.store.find('studioSourceMaterials', { id: materialId });
     if (!material) throw new NotFoundException('PDF 材料不存在');
     assertMaterialAccess(user, material, this.students);
+    if(material.kind==='text'&&material.originalFormat!=='txt')throw new NotFoundException('这份粘贴资料以文字页保存，没有单独的原始文件');
     try {
-      const bytes = await readFile(studioMaterialFile(material.sha256));
-      return new StreamableFile(bytes, { type: 'application/pdf', length: bytes.length,
-        disposition: 'attachment; filename="study-material-' + material.sha256.slice(0, 12) + '.pdf"' });
+      const format=material.originalFormat??'pdf',bytes = await readFile(studioMaterialFile(material.sha256,format));
+      if(createHash('sha256').update(bytes).digest('hex')!==material.sha256)throw new Error('material_checksum_mismatch');
+      return new StreamableFile(bytes, { type: format==='txt'?'text/plain; charset=utf-8':'application/pdf', length: bytes.length,
+        disposition: 'attachment; filename="study-material-' + material.sha256.slice(0, 12) + '.'+format+'"' });
     } catch {
-      throw new NotFoundException('原始 PDF 文件不可用；材料文字层与页级白板仍已保留');
+      throw new NotFoundException('原始文件不可用；已保存的文字与页级材料仍保留');
     }
   }
 

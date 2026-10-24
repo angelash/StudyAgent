@@ -12,4 +12,13 @@ function sourceCoursePipelineFixture(context,message){
   }
   throw new Error('Unknown source-course fixture stage');
 }
-module.exports={sourceCourseFixture,sourceCoursePipelineFixture};
+function sourceCourseLongFixture(context,message){
+  const task=typeof message==='string'?JSON.parse(message):message;
+  if(task.stage==='source-index'){const source=context.sources[0];return{title:'原文索引',topics:['比较观察与条件'],conditions:['不能只从一次记录推断唯一原因'],quotes:[source.text.trim().slice(0,50)],uncertainties:context.goal.includes('[long-uncertain]')?['需要核对原页中的记录范围']:[]};}
+  if(task.stage==='chunk-plan'){
+    const count=Math.min(task.maximumLessons,task.indices.length),lessons=Array.from({length:count},(_,index)=>({title:'第'+(task.groupIndex+1)+'组 · 主题'+(index+1),objective:'保留必要条件和替代解释。',focus:'比较匿名观察中的条件与反例。',sourceKeys:task.indices.filter((_,item)=>item%count===index).map(source=>source.sourceKey),after:index?[index-1]:[]}));
+    return{title:'长资料匿名课程',overview:'按原文范围分课，比较条件与可核查的反例。',scopeNote:'每节保留对应原文范围；索引与模型复核不能替代完整的内容审核。',omitted:[],lessons};
+  }
+  return sourceCoursePipelineFixture(context,task);
+}
+module.exports={sourceCourseFixture,sourceCoursePipelineFixture,sourceCourseLongFixture};

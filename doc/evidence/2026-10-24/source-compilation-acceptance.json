@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24",
+  "sourceRevision": "pending-feature-commit",
+  "specificationCommit": "eec36f6",
+  "passed": true,
+  "status": "scoped-local-validation-remote-and-live-pending",
+  "scope": "First long-source increment: lossless text/chunks, independent stages, 120-page boundary, stable lesson authoring and private originals recovery. Not complete specification 103 or complete product parity.",
+  "reports": {
+    "source-compilation-api-boundaries.json": {
+      "sha256": "33f9ba74d5b85916e984c086eb61a5b09e93bb4f6cb01c4f0ff082c97d13a170",
+      "testsPassed": 40,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "stats": null
+    },
+    "source-compilation-storage-api.json": {
+      "sha256": "d20b9b016a32bbbb2e1732d3b92c9050d8f552588508d34e762c84787887a891",
+      "testsPassed": 52,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "stats": null
+    },
+    "source-compilation-final-storage.json": {
+      "sha256": "594be3a527739d4b519abcba4d9d7572661a8b6ff36aee2651ec465571eaf6e5",
+      "testsPassed": 9,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "stats": null
+    },
+    "source-compilation-api-full.json": {
+      "sha256": "0bba87657bc16bdc7ff2a9e0b7da6bf03308ca0c7a907b7ddff2e1cda9656278",
+      "testsPassed": 899,
+      "testsFailed": 0,
+      "testsSkipped": 6,
+      "stats": null
+    },
+    "source-compilation-alias-api.json": {
+      "sha256": "2073068fc0a4ccdd2a45757910dcf05b35fec9bb0d8f83413a077b418cd0529e",
+      "testsPassed": 17,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "stats": null
+    },
+    "source-compilation-browser-full.json": {
+      "sha256": "e128d35c5603211dbf7e6f7d02875276b907805ed8974ead1f1d661be9301c47",
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null,
+      "stats": {
+        "startTime": "2026-10-24T02:05:43.663Z",
+        "duration": 317464.521,
+        "expected": 55,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "source-compilation-browser-final.json": {
+      "sha256": "531722451048c8a34d2dc1695e3ed208f545357e11ccb0ec90be50beafcbda9f",
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null,
+      "stats": {
+        "startTime": "2026-10-24T02:12:05.061Z",
+        "duration": 32588.885000000002,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "source-compilation-invalid-concurrent-build.json": {
+      "sha256": "32ee177285db4e8a9d6f395759b76d3d9f14376a9453a2aaf07d4a55627b29c3",
+      "testsPassed": 6,
+      "testsFailed": 0,
+      "testsSkipped": 32,
+      "stats": null
+    },
+    "source-compilation-fixture-failure.json": {
+      "sha256": "a831df005029ad27c9c89b0cf25637bfd64e694d1b760e0a107e0949e4b66c86",
+      "testsPassed": 37,
+      "testsFailed": 1,
+      "testsSkipped": 0,
+      "stats": null
+    }
+  },
+  "fullApiScope": "899 passed / 6 skipped before the final source-alias planning fix; final focused/API and exact-commit CI are recorded separately.",
+  "browserScope": "55 complete journeys before the server-side alias change; two long-source journeys rerun after it.",
+  "densePdf": {
+    "passed": true,
+    "tests": 1,
+    "durationSeconds": 54.563,
+    "scope": "Real native PDF with over 100000 characters and 3301 lines, both paper and studio processors; complete extraction and final record preserved.",
+    "initialFixtureFailure": "First synthetic PDF used overlapping tiny line spacing; extraction reordered words. Fixture corrected before passing."
+  },
+  "limits": [
+    "Single studio PDF still 30 pages / 10MB; long PDF processing is pending.",
+    "New processed page images have backup hashes; historical page-image metadata still needs migration.",
+    "Unreferenced PDF/TXT physical erasure remains pending.",
+    "Mechanical block assignment/citations and model checks are not complete semantic coverage or teacher approval.",
+    "Real devices, human listening, curriculum review and longitudinal learning validation remain pending."
+  ],
+  "diagnostics": [
+    "Invalid concurrent-build API run retained but excluded from acceptance.",
+    "Upload test helper and missing export request key were corrected before valid reruns.",
+    "First real DS run indexed all pages but failed route planning; original failure is retained."
+  ],
+  "requirements": {
+    "XP-B02": "in_progress",
+    "XP-B05": "in_progress",
+    "XP-B06": "in_progress",
+    "XP-F03": "in_progress",
+    "XP-F05": "in_progress",
+    "XP-G04": "in_progress",
+    "XP-J01": "in_progress",
+    "XP-J03": "in_progress",
+    "XP-K05": "in_progress",
+    "XP-K06": "in_progress"
+  },
+  "preservedLocalChanges": [
+    ".env.example",
+    "apps/web/next.config.ts",
+    "doc/product/87-local-windows-daemon.md",
+    "ecosystem.config.cjs",
+    "scripts/operations/start-daemon.ps1"
+  ],
+  "ci": "pending",
+  "runtime": "unchanged pending final validation"
+}

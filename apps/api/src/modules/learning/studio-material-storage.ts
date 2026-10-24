@@ -7,16 +7,17 @@ export function studioMaterialRoot() {
     resolve(process.cwd().replace(/\\/g, '/').endsWith('/apps/api') ? '../..' : '.', 'data');
 }
 
-export function studioMaterialFile(sha256: string) {
-  return resolve(studioMaterialRoot(), 'studio-materials', sha256 + '.pdf');
+export function studioMaterialFile(sha256: string,format:'pdf'|'txt'='pdf') {
+  if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
+  return resolve(studioMaterialRoot(), 'studio-materials', sha256 + '.'+format);
 }
 
 export function studioMaterialCache(sha256: string) {
   return resolve(studioMaterialRoot(), 'studio-materials', 'processed', sha256);
 }
 
-export async function persistStudioMaterial(sha256: string, bytes: Buffer) {
-  const path = studioMaterialFile(sha256);
+export async function persistStudioMaterial(sha256: string, bytes: Buffer,format:'pdf'|'txt'='pdf') {
+  const path = studioMaterialFile(sha256,format);
   await mkdir(dirname(path), { recursive: true });
   try {
     await writeFile(path, bytes, { flag: 'wx', mode: 0o600 });

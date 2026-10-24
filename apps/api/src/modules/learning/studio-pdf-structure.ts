@@ -42,10 +42,11 @@ export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructure
         (paragraph.confidence !== null && paragraph.confidence < 0.95),
     })) : page.blocks.filter(block => block.kind === 'paragraph');
     const blocks = [...paragraphs, ...formulas, ...tables];
-    const text = next?.paragraphs.length ? next.paragraphs.map(paragraph => paragraph.text).join('\n') : page.text;
+    // Model paragraphs are a recovery candidate. The extracted original remains the selection evidence.
+    const text = page.text;
     return { page: page.pageNumber, text, method: page.method,
       confidence: next ? average([...next.paragraphs, ...next.formulas, ...next.tables].map(item => item.confidence)) : page.confidence,
-      blocks, warnings: [...new Set([...page.warnings, ...(next?.warnings ?? [])])] };
+      blocks, warnings: [...new Set([...page.warnings, ...(next?.warnings ?? []),...(next?.paragraphs.length&&next.paragraphs.map(paragraph=>paragraph.text).join('\n')!==page.text?['model_paragraphs_require_original_review']:[])])] };
   });
   const warnings = [...new Set([...pages.flatMap(page => page.warnings ?? []),
     ...(unmodeledReviewPages ? ['model_review_page_limit'] : [])])];

@@ -184,6 +184,8 @@ suite('real PostgreSQL storage and API recovery', () => {
       const db = new DomainDatabase(source.toString()); databases.push(db); await db.open();
       const bytes = Buffer.from('%PDF-1.4 immutable PostgreSQL backup fixture'), sha256 = createHash('sha256').update(bytes).digest('hex');
       mkdirSync(join(sourceFiles, 'processing/blobs'), { recursive: true }); writeFileSync(join(sourceFiles, 'processing/blobs', sha256), bytes);
+      const originalText=Buffer.from('\ufeffOriginal conditions and final counterexample.\r\n'.repeat(2000)),textHash=createHash('sha256').update(originalText).digest('hex');
+      mkdirSync(join(sourceFiles,'studio-materials','processed',sha256),{recursive:true});writeFileSync(join(sourceFiles,'studio-materials',sha256+'.pdf'),bytes);writeFileSync(join(sourceFiles,'studio-materials',textHash+'.txt'),originalText);writeFileSync(join(sourceFiles,'studio-materials','processed',sha256,'page-1.png'),bytes);
       const keptMediaId = `student_media_${randomUUID()}`, erasedMediaId = `student_media_${randomUUID()}`, pendingMediaId = `student_media_${randomUUID()}`;
       for (const id of [keptMediaId, erasedMediaId, pendingMediaId]) {
         const directory = join(sourceFiles, 'student-media', id, id === pendingMediaId ? 'chunks' : 'ready'); mkdirSync(directory, { recursive: true });
@@ -193,12 +195,14 @@ suite('real PostgreSQL storage and API recovery', () => {
         students: [{ id: 'erase-child', nickname: '私有恢复样本' }],
         diagnosticResponses: [{ id: 'original-evidence', score: 0.5 }, { id: 'erased-evidence', studentId: 'erase-child', score: 0 }], diagnosticPlans: [{ id: 'plan', revision: 4 }],
         importFiles: [{ id: `import_file_${randomUUID()}`, status: 'ready', sha256, size: bytes.length }],
+        studioSourceMaterials:[{id:'pdf-original',kind:'pdf',sha256,byteSize:bytes.length,pageFiles:[{page:1,sha256,size:bytes.length}]},{id:'text-original',kind:'text',originalFormat:'txt',sha256:textHash,byteSize:originalText.length}],
+        sourceCourseStages:[{id:'saved-source-stage',courseId:'course',kind:'draft',payload:{concept:'Original conditions',answer:'private-answer'}}],
         studentMedia: [keptMediaId, erasedMediaId, pendingMediaId].map(id => ({ id, studentId: id === erasedMediaId ? 'erase-child' : 'keep-child', ownerUserId: 'owner', requestKey: id,
           status: id === pendingMediaId ? 'uploading' : 'ready', sha256, size: bytes.length, storedSize: bytes.length, chunks: id === pendingMediaId ? [{ index: 0, size: bytes.length, sha256 }] : [] })) },
       { enqueue: [{ id: 'pending-task', kind: 'pdf.import', ownerUserId: 'owner', requestKey: 'pg-backup-task', payloadHash: 'hash', payload: {}, createdAt: new Date().toISOString(), maxAttempts: 3 }] });
       const oldWorker = (await db.tasks.claim(['pdf.import']))!;
       await createPostgresBundle({ connectionString: source.toString(), pgBin: tools, dataDir: sourceFiles, destination: bundle });
-      expect((await verifyPostgresBundle({ bundle, pgBin: tools })).verifiedFiles).toBe(5);
+      expect((await verifyPostgresBundle({ bundle, pgBin: tools })).verifiedFiles).toBe(8);
       const subjectHash = createHash('sha256').update(JSON.stringify({ id: 'erase-child' })).digest('hex'), ledgerPath = join(directory, 'deletions.json');
       writeFileSync(ledgerPath, JSON.stringify(makeLedger([{ id: 'privacy-test-receipt', actorId: 'owner', kind: 'student_delete', subjectHash, requestKey: 'postgres-delete-child', inputHash: 'a'.repeat(64),
         completedAt: new Date().toISOString(), counts: { records: 2, observations: 1, activities: 0, plans: 0, conversations: 0, accessRecords: 0 }, erasedStudentHashes: [subjectHash], retainedStudentHashes: [] }])));
@@ -206,6 +210,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       expect(receipt).toMatchObject({ revokedSessions: 1, fencedTasks: 1, assetsIncluded: false });
       expect(existsSync(join(restoredFiles, '.study-restore-incomplete'))).toBe(false);
       expect(readFileSync(join(restoredFiles, 'processing/blobs', sha256))).toEqual(bytes);
+      expect(readFileSync(join(restoredFiles,'studio-materials',sha256+'.pdf'))).toEqual(bytes);expect(readFileSync(join(restoredFiles,'studio-materials',textHash+'.txt'))).toEqual(originalText);expect(readFileSync(join(restoredFiles,'studio-materials','processed',sha256,'page-1.png'))).toEqual(bytes);
       expect(readFileSync(join(restoredFiles, 'student-media', keptMediaId, 'ready', sha256))).toEqual(bytes);
       expect(readFileSync(join(restoredFiles, 'student-media', pendingMediaId, 'chunks', `0-${sha256}`))).toEqual(bytes);
       expect(existsSync(join(restoredFiles, 'student-media', erasedMediaId))).toBe(false); expect(receipt.mediaDirectoriesPurged).toBe(1);
@@ -214,6 +219,7 @@ suite('real PostgreSQL storage and API recovery', () => {
       expect(snapshot.state.diagnosticResponses).toEqual([{ id: 'original-evidence', score: 0.5 }]);
       expect(snapshot.state.students ?? []).toHaveLength(0); expect(receipt.appliedDeletionReceipts).toBe(1);
       expect(snapshot.state.diagnosticPlans).toEqual([{ id: 'plan', revision: 4 }]);
+      expect(snapshot.state.sourceCourseStages).toEqual([{id:'saved-source-stage',courseId:'course',kind:'draft',payload:{concept:'Original conditions',answer:'private-answer'}}]);
       expect((snapshot.state.sessions[0] as any).revokedAt).toBeTruthy();
       await expect(recovered.commit(snapshot, { ...snapshot.state, outputs: [{ id: 'old-worker-output' }] }, { fence: { id: oldWorker.id, token: oldWorker.leaseToken! } })).rejects.toThrow();
       const fresh = (await recovered.tasks.claim(['pdf.import']))!;

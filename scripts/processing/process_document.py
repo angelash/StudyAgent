@@ -7,8 +7,8 @@ import re
 from pathlib import Path
 import sys
 
-VERSION = 'study-document-v2'
-STRUCTURE_VERSION = 'study-pdf-structure-v1'
+VERSION = 'study-document-v3'
+STRUCTURE_VERSION = 'study-pdf-structure-v2'
 
 
 def digest(path):
@@ -105,7 +105,7 @@ def pdf(config):
                         warnings.append('no_readable_text')
                 warnings.append('formula_and_layout_require_review')
                 value = {'processorVersion': VERSION, 'sourceSha256': config['sha256'], 'pageNumber': index + 1,
-                         'method': method, 'text': text[:100000], 'lines': lines[:3000], 'warnings': warnings,
+                         'method': method, 'text': text, 'lines': lines, 'warnings': warnings,
                          'imageName': image_name, 'imageSha256': digest(image), 'imageSize': image.stat().st_size,
                          'imagePath': str(image), 'width': pixmap.width, 'height': pixmap.height,
                          'boxSpace': 'pdf_points' if method == 'pdf_text' else 'image_pixels'}
@@ -292,8 +292,8 @@ def pdf_structure(config):
                 warnings.append('formula_structure_requires_review')
             if tables:
                 warnings.append('table_structure_requires_review')
-            output_pages.append({'pageNumber': page_number, 'method': method, 'text': text[:100000],
-                'lines': lines[:3000], 'blocks': paragraphs + formulas + tables, 'tables': tables, 'formulas': formulas,
+            output_pages.append({'pageNumber': page_number, 'method': method, 'text': text,
+                'lines': lines, 'blocks': paragraphs + formulas + tables, 'tables': tables, 'formulas': formulas,
                 'confidence': confidence, 'warnings': warnings, 'imagePath': str(image_path),
                 'imageSha256': digest(image_path), 'imageSize': image_path.stat().st_size,
                 'width': pixmap.width, 'height': pixmap.height})

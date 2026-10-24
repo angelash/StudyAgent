@@ -27,6 +27,8 @@ jobs:
           python-version: '3.10'
       - name: Install document test dependencies
         run: python -m pip install --disable-pip-version-check -r scripts/processing/requirements-ci.txt
+      - name: Dense PDF originals retain complete text and lines
+        run: python scripts/processing/test_complete_pdf_text.py
       - name: Install media tools
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
       - name: Prepare configuration
@@ -174,6 +176,11 @@ jobs:
         env:
           STUDY_TEST_CLASSROOM_VISUAL_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-visual.integration.test.ts
+      - name: Long-source chunks, independent checkpoints and original files on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_SOURCE_COMPILATION_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course-compilation.integration.test.ts
       - name: Frozen classroom captions, historical upgrade and narration guards on PostgreSQL
         working-directory: apps/api
         env:

@@ -59,7 +59,10 @@ export function checkPipelineLesson(raw:unknown,row:SourceCourseRecord,index:num
 const normalize=(value:string)=>value.replace(/\s+/gu,' ').trim();
 function strings(value:unknown):string[]{return typeof value==='string'?[value]:Array.isArray(value)?value.flatMap(strings):value&&typeof value==='object'?Object.values(value).flatMap(strings):[];}
 export function checkCourseReview(raw:unknown,row:SourceCourseRecord,index:number):CourseReviewResult {
-  const result=courseReviewSchema.parse(raw),initial=row.generation!.lessons[index].initial;
+  return checkLessonReview(raw,row.generation!.lessons[index].initial,value=>checkPipelineLesson(value,row,index));
+}
+export function checkLessonReview(raw:unknown,initial:SourceCourseLessonContent,validateLesson:(value:unknown)=>SourceCourseLessonContent):CourseReviewResult {
+  const result=courseReviewSchema.parse(raw);
   if(result.decision==='pass'&&(result.issues.length||result.changes!==null||result.questionChanges.length)||result.decision==='revised'&&(!result.issues.length||result.changes===null&&!result.questionChanges.length)||result.decision==='uncertain'&&(!result.issues.length||result.changes!==null||result.questionChanges.length))throw new Error('复核结论、问题列表与修订内容不一致');
   for(const issue of result.issues){if(issue.questionIndex!==null&&(issue.field!=='questions'||issue.questionIndex>=initial.questions.length))throw new Error('复核题号与实际练习不一致');
     const part=issue.questionIndex!==null?initial.questions[issue.questionIndex]:initial[issue.field];
@@ -70,7 +73,7 @@ export function checkCourseReview(raw:unknown,row:SourceCourseRecord,index:numbe
     if(new Set(result.questionChanges.map(change=>change.questionIndex)).size!==result.questionChanges.length||result.questionChanges.some(change=>change.questionIndex>=initial.questions.length))throw new Error('修订题号重复或不存在');
     const candidate={...structuredClone(initial),...Object.fromEntries(Object.entries(result.changes??{}).filter(([,value])=>value!==null))};
     for(const change of result.questionChanges)candidate.questions[change.questionIndex]=structuredClone(change.question);
-    lesson=checkPipelineLesson(candidate,row,index);if(generationDigest(lesson)===generationDigest(initial))throw new Error('revised需要实际修订课文，不能把原样返回说成已修正');
+    lesson=validateLesson(candidate);if(generationDigest(lesson)===generationDigest(initial))throw new Error('revised需要实际修订课文，不能把原样返回说成已修正');
   }
   return{...result,lesson};
 }

@@ -53,6 +53,8 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         store.mistakeNotebookEntries.push({ id: 'shared-notebook', studentId: shared.id, metadata: { reflection: '共同监护保留的卡点' }, history: [{ actorId: parent.user.id }] },
           { id: 'exclusive-notebook', studentId: exclusive.id, metadata: { reflection: '应随档案删除的卡点' }, history: [{ actorId: parent.user.id }] });
         for (const [student, suffix] of [[shared, 'shared'], [exclusive, 'exclusive']]) {
+          store.sourceCourses.push({id:`${suffix}-source-course`,studentId:student.id,ownerUserId:parent.user.id,status:'active',sources:[],input:{title:'匿名课程',goal:'保留原始条件。'},targetGoals:[],audience:'测试学习者',lessonIds:[],result:null} as any);
+          store.sourceCourseStages.push({id:`${suffix}-source-stage`,courseId:`${suffix}-source-course`,studentId:student.id,ownerUserId:parent.user.id,kind:'draft',key:`${suffix}-lesson`,inputFingerprint:'fixture-input',outputFingerprint:'fixture-output',payload:{concept:`${suffix} original draft`,answer:'private-answer'},modelId:'fixture',modelName:'Fixture',createdAt:new Date().toISOString()} as any);
           store.gespLearningScopes.push({ id: `${student.id}-gesp-scope`, studentId: student.id, level: 1, atomIds: ['gesp-cpp.l1.io'],
             status: 'active', version: 1, confirmedByUserId: parent.user.id, confirmedAt: new Date().toISOString(), updatedAt: new Date().toISOString(),
             requestKey: `${suffix}-gesp-scope-request`, reason: '持久化隐私测试范围' } as any);
@@ -73,6 +75,7 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
       const exported = await call('post', '/privacy/account/export', { credential, requestKey: 'before-deletion-export' });
       expect(exported.students).toHaveLength(2);
       expect(exported.students.every((student: any) => student.records.gespHintEvents.length === 1 && student.records.gespCodeSubmissions.length === 1)).toBe(true);
+      expect(exported.students.every((student:any)=>student.records.sourceCourseStages.length===1&&!('payload'in student.records.sourceCourseStages[0]))).toBe(true);
       await createBundle({ dataDir: source, destination: bundle });
       const preview = await call('get', '/privacy/account/deletion-preview');
       const receipt = await call('post', '/privacy/account/delete', { credential, requestKey: 'close-durable-parent', confirmation: preview.confirmation, fingerprint: preview.fingerprint });
@@ -110,6 +113,8 @@ describe('family deletion survives restart and old-snapshot recovery', () => {
         expect(recoveredStore.gespLearningScopes[0]).toMatchObject({ studentId: shared.id, confirmedByUserId: 'deleted-account' });
         expect(recoveredStore.gespHintEvents).toHaveLength(1); expect(recoveredStore.gespHintEvents[0].studentId).toBe(shared.id);
         expect(recoveredStore.gespCodeSubmissions).toHaveLength(1); expect(recoveredStore.gespCodeSubmissions[0].source).toBe('shared private source');
+        expect(recoveredStore.sourceCourseStages).toHaveLength(1);expect(recoveredStore.sourceCourseStages[0]).toMatchObject({id:'shared-source-stage',studentId:shared.id,payload:{concept:'shared original draft',answer:'private-answer'}});
+        expect(recoveredStore.sourceCourseStages[0].ownerUserId).not.toBe(parent.user.id);expect(recoveredStore.sourceCourses.map((row:any)=>row.id)).toEqual(['shared-source-course']);
         expect(recoveredStore.studentMedia.every((row: any) => row.ownerUserId === `deleted-account:${row.id}`)).toBe(true);
       });
       expect((await verifyBundle({ bundle })).manifest.database.collections.some((row: any) => row.collection === 'users' && row.count >= 3)).toBe(true);

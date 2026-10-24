@@ -3,7 +3,7 @@ require('reflect-metadata');
 const path=require('node:path'),{NestFactory}=require('@nestjs/core');
 const root=path.resolve(__dirname,'../..'),directory=path.resolve(process.env.STUDY_DATA_DIR??'.');
 if(!directory.startsWith(path.join(root,'data','qa')+path.sep)||process.env.STUDY_STORAGE!=='sqlite'||process.env.XIAOJIU_CHAT_ENABLED!=='false')throw new Error('Source course fixture server requires an isolated QA directory, SQLite and disabled live models');
-const{sourceCoursePipelineFixture}=require('./source-course-fixture.cjs');
+const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
 (async()=>{
   const{AppModule}=require('../../apps/api/dist/apps/api/src/app.module.js'),{XiaojiuChatService}=require('../../apps/api/dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
   const app=await NestFactory.create(AppModule,{logger:false});require('../../apps/api/dist/apps/api/src/common/http-body.js').configureJsonBody(app);app.setGlobalPrefix('api');
@@ -20,7 +20,7 @@ const{sourceCoursePipelineFixture}=require('./source-course-fixture.cjs');
       const abort=()=>{clearTimeout(timer);reject(new Error('fixture cancelled'));},timer=setTimeout(()=>{input.signal?.removeEventListener('abort',abort);resolve();},reviewPause?12000:20000);
       if(input.signal?.aborted)abort();else input.signal?.addEventListener('abort',abort,{once:true});
     });
-    return{...check(sourceCoursePipelineFixture(context,input.message)),modelId:input.modelId,modelName:'Browser fixture · not a real model'};
+    return{...check(sourceCourseLongFixture(context,input.message)),modelId:input.modelId,modelName:'Browser fixture · not a real model'};
   };
   const {ClassroomImageService}=require('../../apps/api/dist/apps/api/src/modules/ai/classroom-image.service.js'),sharp=require('sharp'),fs=require('node:fs'),imageService=app.get(ClassroomImageService),imageAttempts=new Map();
   imageService.capabilities=async()=>({available:true,modelId:'gpt-image-2',reason:'ready',message:'Browser image fixture, not a real provider'});

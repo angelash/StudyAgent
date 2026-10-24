@@ -20,6 +20,9 @@ describe('mergeStudioPdfPages', () => {
     expect(result.pages[1].blocks?.[0].id).toBe('raw-formula');
     expect(result.structure.modelSource).toBe('xiaojiu_cli');
     expect(result.structure.warnings).toContain('model_review_page_limit');
+    expect(result.pages[0].text).toBe(page(1).text);
+    expect(result.pages[0].blocks?.some(block=>block.kind==='paragraph'&&block.text==='分数加法')).toBe(true);
+    expect(result.pages[0].warnings).toContain('model_paragraphs_require_original_review');
   });
 
   it('keeps local structure explicit when model review was not requested', () => {

@@ -39,7 +39,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
       (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
     database = await summary(client);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -70,7 +70,7 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   if (manifest.format !== FORMAT || !Array.isArray(manifest.files) || manifest.files.length > 1_000_000 || !Array.isArray(manifest.references) || typeof manifest.assetsIncluded !== 'boolean' || typeof manifest.id !== 'string') fail('unsupported_backup_format');
   const paths = new Map(), portable = new Set();
   for (const file of manifest.files) {
-    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media|classroom-visuals|studio-materials)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const actual = within(root, file.path), stat = fs.statSync(actual);
     if (!stat.isFile() || stat.size !== file.size || digest(actual) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file); portable.add(file.path.toLowerCase());
@@ -98,7 +98,7 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
     await native('pg_restore', ['--no-owner', '--no-acl', '--no-tablespaces', '--exit-on-error', '--single-transaction', '--dbname=' + config(connectionString).PGDATABASE, within(bundle, 'database/postgres.dump')], pgBin, connectionString);
     await client.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
     if (JSON.stringify(await summary(client)) !== JSON.stringify(verified.manifest.database)) fail('restored_database_summary_mismatch');
-    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals')")).rows);
+    const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials')")).rows);
     for (const [relative, expected] of refs) {
       const item = verified.manifest.references.find(r => r.path === `data/${relative}`);
       if (!item || expected.sha256 !== item.sha256 || expected.size !== item.size) fail('restored_file_reference_mismatch');

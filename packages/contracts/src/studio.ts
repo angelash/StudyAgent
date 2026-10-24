@@ -147,6 +147,7 @@ export type StudioSourceMaterial = {
   subject: StudioSubject | null;
   ownerUserId?: string;
   kind?: 'pdf' | 'text';
+  originalFormat?:'txt';
   filename: string;
   title: string;
   pageCount: number;

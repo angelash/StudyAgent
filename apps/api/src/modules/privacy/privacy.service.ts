@@ -131,11 +131,11 @@ export class PrivacyService {
     }
     const sources=[...(snapshot.accountRecords.studioSourceMaterials??[]),...snapshot.students.flatMap(child=>child.records.studioSourceMaterials??[])] as StudioSourceMaterial[];
     const sourceManifests:Array<{materialId:string;name:string;sha256:string;size:number}>=[],included=new Set<string>();
-    for(const source of sources.filter(source=>source.kind!=='text')){
+    for(const source of sources.filter(source=>source.kind!=='text'||source.originalFormat==='txt')){
       if(!/^[a-f0-9]{64}$/.test(source.sha256)||!this.store.find('studioSourceMaterials',{id:source.id,sha256:source.sha256}))throw new ConflictException('来源资料已变化，请重新准备最新副本');
-      const path=studioMaterialFile(source.sha256),bytes=await readFile(path).catch(()=>null);
+      const format=source.originalFormat??'pdf',path=studioMaterialFile(source.sha256,format),bytes=await readFile(path).catch(()=>null);
       if(!bytes||createHash('sha256').update(bytes).digest('hex')!==source.sha256)throw new ConflictException('原始 PDF 不完整，不能生成缺少原件的资料归档');
-      const name='sources/'+source.sha256+'.pdf';sourceManifests.push({materialId:source.id,name,sha256:source.sha256,size:bytes.length});
+      const name='sources/'+source.sha256+'.'+format;sourceManifests.push({materialId:source.id,name,sha256:source.sha256,size:bytes.length});
       if(!included.has(source.sha256)){included.add(source.sha256);entries.push({name,path,size:bytes.length});}
     }
     const visuals=[...(snapshot.accountRecords.classroomVisuals??[]),...snapshot.students.flatMap(child=>child.records.classroomVisuals??[])] as ClassroomVisualRecord[],visualManifests:unknown[]=[];

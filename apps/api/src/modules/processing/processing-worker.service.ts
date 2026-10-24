@@ -111,12 +111,14 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
         }
         const merged = mergeStudioPdfPages(rawPages, modeled, { modelAttempted: modelEnabled,
           modelId: modelEnabled ? process.env.CODEX_PDF_MODEL ?? 'deepseek-v4-flash' : null });
+        const pageFiles=await Promise.all(rawPages.map(async page=>{const bytes=await fs.readFile(resolve(studioMaterialCache(material.sha256),'page-'+page.pageNumber+'.png'));return{page:page.pageNumber,sha256:createHash('sha256').update(bytes).digest('hex'),size:bytes.length};}));
         return { result: { materialId, pageCount: merged.pages.length, ocrPageCount: merged.structure.ocrPageCount,
           tableCount: merged.structure.tableCount, formulaCount: merged.structure.formulaCount,
           modelAssisted: merged.structure.modelAssisted }, apply: () => {
             const current = this.store.find('studioSourceMaterials', { id: materialId });
             if (!current || current.sha256 !== material.sha256) throw new ProcessingError('studio_material_changed');
-            const target = current as StudioSourceMaterial & { pageImages?: Record<string, string> };
+            const target = current as StudioSourceMaterial & { pageImages?: Record<string, string>;pageFiles:typeof pageFiles };
+            target.pageFiles=pageFiles;
             target.pages = merged.pages; target.hasPageImages = merged.pages.length > 0;
             target.status = merged.structure.reviewRequired ? 'needs_review' : 'ready';
             target.structure = merged.structure; target.error = null; target.updatedAt = new Date().toISOString();
