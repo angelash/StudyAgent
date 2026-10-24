@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T06:51:54.478888+00:00",
+  "sourceRevision": "a12d6dfb3329866c6a2f403795e9e0d0dad57d65",
+  "implementationCommit": "a12d6dfb3329866c6a2f403795e9e0d0dad57d65",
+  "specificationCommit": "254c889",
+  "passed": true,
+  "status": "verified-cold-material-restore-increment-not-specification-104-complete",
+  "reports": {
+    "restored-materials-foundation.json": {
+      "sha256": "50707b9cc248c6cbaffd51d78b7b2ceaa2690b85dab1d3c135035c0a267431de",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-sqlite-initial.json": {
+      "sha256": "6ae48e8110bd486a6a16f32159e7961d3e38b3fa2035566bdd77c287587fc110",
+      "passed": 5,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-sqlite-regression.json": {
+      "sha256": "17a0b39aff542885974eac7d0021662bb52cdbf1b90f6343e6a350211f8ec0cd",
+      "passed": 16,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-sqlite-final.json": {
+      "sha256": "9f101880cd997d05868913fbd14022765f0fb31e5c946f1859ef10bfbc103b44",
+      "passed": 9,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-frozen-backup.json": {
+      "sha256": "a8efe71545298ad1bb715383de7f0d24e6a18e9809473d4c10f6b0e7242359d5",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-frozen-backup-final.json": {
+      "sha256": "72d510170cf1261057d4d51bb707e92c6dc5405d7ff1e6f56ad4a82eb31fa878",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-postgres.json": {
+      "sha256": "395cfa49505429d2fccb1ed38d61f38101edfae4f576dcddef61a1b297455f89",
+      "passed": 38,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-postgres-final.json": {
+      "sha256": "b35d577ba809057766177512a60cca2334d43ea1a01e91ab500f396e9f3db1aa",
+      "passed": 11,
+      "failed": 0,
+      "pending": 0
+    },
+    "restored-materials-postgres-runtime.json": {
+      "sha256": "6cb929678a75367e697e49f3b670146d1180a9a006713eb0677ea39e52d78b67",
+      "passedAllCases": true
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "8a6e113b8cef628f7af91e7d69c31f3c7c14278add290490d7eed4a49316b2ba",
+    "apps/api/src/infrastructure/restored-materials.integration.test.ts": "ab3e4ca8bbb5253c1f9eb3096fe4dd4d2c9afd3d29366eea06eb4cf25c058535",
+    "apps/api/src/infrastructure/source-material-backup.integration.test.ts": "e4cc58c4107df7d9d667eb6e9734a8744a6df09839feca83bfc34809fcb78175",
+    "scripts/architecture/project-feature-definitions.cjs": "e488d4e36d5d6d0ed643387431488af58c922cc49ed78530b7e04fc75f0ff91d",
+    "scripts/operations/backup.cjs": "6886fd19f2c0c19b6ab6b0e170a8d6584d891fc469a25dc8b8de5ec3e9b8b698",
+    "scripts/operations/material-audit.cjs": "fc49b45cb09c543d021393f5299dba89e1b07fefae44ac815b80aa6f34a7f724",
+    "scripts/operations/postgres-backup.cjs": "9101e8d9d1911cea6cfa05ef28c5e5d1ee0c1b4072c959f35b7de82cb10a225b",
+    "scripts/operations/restored-materials.cjs": "88b4e5940a72334f2f675d472d416c2fb02a487559089abc071db53f34c7d182",
+    "scripts/qa/run-material-postgres.cjs": "1085e968522d47c5c2b4c047bd19461ab9b1324a7c6ffd8cdb74b81498ac5f5e"
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "node --test scripts/operations/material-audit.test.cjs",
+      "passed": 11,
+      "failed": 0
+    }
+  ],
+  "coverage": [
+    "SQLite and native pg_dump/pg_restore to brand-new roots apply actual account/child deletion receipts before the restore guard becomes ready. Private originals, page/checkpoint directories, source-bound working JSON and ended/revoked upload chunks are removed.",
+    "Shared-family source SHA, shared child material, a frozen PDF with no mutable material record, valid pending upload and a legitimate queued PDF job remain usable. Fresh login, real upload completion and actual three-page processing succeed after restore.",
+    "Every asset generation advances, former deleting ownership is cleared and stale source/collection tasks are fenced. Old login tokens fail; rebuilt permanent revocations reject late writes.",
+    "Old lease/purge/staging metadata is omitted from the new root. A current active upload conflicting with an old permanent revocation fails closed rather than restoring write permission.",
+    "Complete current reference and file inventories are checked before unlink. Every source deletion is checked against the verified manifest and file identity; unrelated administrator bytes survive.",
+    "Unknown verified-backup files remain, an injected directory junction during copying is not chmodded or deleted through, and an interrupted cleanup after one unlink leaves both restore guards pending. Existing target overwrite is refused; the same original backup/ledger can restore into a different empty root.",
+    "Frozen PDF originals are included in both backup formats even when only course snapshots retain the SHA. Actual bytes are hashed before their size is recorded. Explicit material sizes remain authoritative; frozen text of unspecified historical format is not guessed to require a TXT file."
+  ],
+  "validationNotes": [
+    "Runs overlap: SQLite related 16, final cold/old backup 9, latest frozen backup 4, PostgreSQL related 38, final cold/baseline PostgreSQL 11 and audit 11 must not be added as unique product coverage.",
+    "Final CJS changes pre-indexed source tasks and corrected PostgreSQL copied-file accounting. Final SQLite 9 and PostgreSQL 11 cover those changes. Three later focused frozen-reference cases and a stronger text-snapshot assertion passed on SQLite, with the main frozen-PDF case already passing on PostgreSQL.",
+    "An older synthetic fixture used a non-SHA pasted-text marker and a course without a sources array; it now uses valid source metadata. New checks still reject unknown identities rather than inferring file ownership.",
+    "The final test-only text-snapshot assertion needed a TypeScript-safe full-object comparison; final API build/typecheck passed.",
+    "Synthetic isolated families, brand-new target folders and explicitly marked QA databases only; no production family files were used.",
+    "This is cold restore. It does not claim hardware power-loss durability, independent offline backup erasure, teacher/content acceptance or in-place restore resumption."
+  ],
+  "previousIncrementCI": {
+    "headSha": "6306b973a7f3cb2e2026b57a4848b8513e0a4fda",
+    "runId": 40069667366,
+    "conclusion": "success",
+    "report": "material-integrity-ci.json",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40069667366"
+  },
+  "pending": [
+    "Identity-bound resumption inside an existing incomplete restore target, including copy/transaction/receipt crash stages.",
+    "Explicit replacement/recovery of corrupt original source bytes.",
+    "Final specification 104 regression, current full remote CI, merge and daemon delivery.",
+    "Master-plan pixel/state fidelity, deeper content, course lifecycle and teacher/device/real spaced-learning acceptance."
+  ],
+  "productionChanged": false,
+  "qaClusterRestoredToInitialStoppedState": true,
+  "goalStatus": "active",
+  "designValidation": {
+    "sourceRevision": "a12d6dfb3329866c6a2f403795e9e0d0dad57d65",
+    "report": "../../design/generated/design-validation.json",
+    "sourceFiles": 281,
+    "markdownLinks": 2065,
+    "offlineViewerChecks": 10,
+    "browserErrors": 0,
+    "externalNetworkRequests": 0
+  }
+}

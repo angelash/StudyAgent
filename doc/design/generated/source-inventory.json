@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "22a78f6d6d2c57e69cd261c2dbeab5e9274ad378",
+  "sourceRevision": "a12d6dfb3329866c6a2f403795e9e0d0dad57d65",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 299,
@@ -15,7 +15,7 @@
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 110,
+    "apiTestFiles": 111,
     "browserTestFiles": 15
   },
   "modules": [
@@ -38699,6 +38699,7 @@
     "apps/api/src/infrastructure/operations.integration.test.ts",
     "apps/api/src/infrastructure/postgres.integration.test.ts",
     "apps/api/src/infrastructure/rate-limit.test.ts",
+    "apps/api/src/infrastructure/restored-materials.integration.test.ts",
     "apps/api/src/infrastructure/scoped-transactions.test.ts",
     "apps/api/src/infrastructure/snapshot-isolation.test.ts",
     "apps/api/src/infrastructure/source-material-backup.integration.test.ts",

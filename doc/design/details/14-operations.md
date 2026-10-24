@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`22a78f6d6d2c57e69cd261c2dbeab5e9274ad378`。角色：运维、管理员、教研。
+源码基线：`a12d6dfb3329866c6a2f403795e9e0d0dad57d65`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -176,13 +176,13 @@
 
 **输入**：独立目标、业务库/媒体/资产清单、删除账本。
 
-**处理与实现**：SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；恢复校验版本、路径和任务fence；应用删除账本并拒绝不完整恢复启动。
+**处理与实现**：SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；恢复校验版本、路径和任务fence；应用删除账本并拒绝不完整恢复启动；冻结PDF即使原资料记录已删除也纳入备份，实际哈希核验后记录大小；冷恢复在事务/文件门禁内核对当前引用，终止失去归属的处理任务、推进资产版本，逐项清理已撤回原件/分块/缓存，重建上传撤销并保留共享/冻结来源和有效续跑。
 
 **输出**：可审计备份、恢复收据和资产清单。
 
-**状态与持久化**：`privacyRequests`
+**状态与持久化**：`privacyRequests`、`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`
 
-**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复。
+**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；原地续恢复及损坏原件替换仍待。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 
@@ -191,6 +191,9 @@
 - [scripts/operations/backup.cjs](../../../scripts/operations/backup.cjs)
 - [scripts/operations/postgres-backup.cjs](../../../scripts/operations/postgres-backup.cjs)
 - [scripts/operations/restore-state.cjs](../../../scripts/operations/restore-state.cjs)
+- [scripts/operations/restored-materials.cjs](../../../scripts/operations/restored-materials.cjs)
+- [apps/api/src/infrastructure/restored-materials.integration.test.ts](../../../apps/api/src/infrastructure/restored-materials.integration.test.ts)
+- [apps/api/src/infrastructure/source-material-backup.integration.test.ts](../../../apps/api/src/infrastructure/source-material-backup.integration.test.ts)
 - [scripts/gesp/backup_archive.py](../../../scripts/gesp/backup_archive.py)
 
 ## OPS-08 Windows守护与Linux部署
@@ -236,7 +239,7 @@
 
 **状态与持久化**：`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`、`studioLearningPacks`、`studioWhiteboards`
 
-**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；损坏原件替换及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。
+**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；冷恢复账本按当前引用逐项清理源字节见OPS-07；损坏原件替换及原地续恢复仍待；生产尚未切换此分支。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 

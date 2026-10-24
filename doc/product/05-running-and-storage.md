@@ -60,3 +60,5 @@ API 默认绑定 `127.0.0.1`，可通过 `API_HOST` 显式调整；`API_PORT` / 
 原因核查传入 `hypothesisId` 时，服务端安排基础/迁移或目标/全部直接先修对照，冻结条件与依据；支持只选部分范围但显示其余缺口。完成报告单独统计实际独立观察，量规复核生成新版本。保持原因须通过到期复测核查，不支持当天换题替代。接口、缺口和两库重启证据见 [对照观察交付](33-verification-groups-delivery.md)。
 
 `STUDY_RATE_LIMIT_IP_PER_MINUTE` controls the aggregate request-IP quota; the production default is 3000, and synthetic CI may set a larger validated value while per-user quotas remain active.
+
+资料来源的最新冷恢复见[规格104第20/21节](104-long-pdf-processing-and-source-lifecycle.md)。恢复命令仍接收新目标与最新删除账本；在发布ready前核对并清理已撤回的源原件、页图/检查点、可定位工作文件和上传块，保留共享/冻结PDF与有效上传。冻结PDF原件即使原资料行已移除也进入双库备份。未知/链接/变化或中断保留文件与数据库门禁，不能删marker强行启动；当前不覆盖已有不完整目录，可用同一原备份/账本另选空目录重做。原地resume及损坏原件替换仍待第22节后续实现，原备份和其他离线副本由持有者保留。
