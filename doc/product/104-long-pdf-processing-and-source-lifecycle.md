@@ -127,3 +127,11 @@ purge标记保存本次持有者PID/nonce、key、generation和回收身份，�
 验证使用隔离SQLite和实际PG：只删除最后一个引用、冻结课程保留、写入/处理租约等待、超过maxAttempts轮等待仍可续跑、旧worker/旧请求栅栏、事务回滚不写revoked不删文件、完整任务重开、账号关闭后执行、未知文件/Windows联接保留、SHA可定位暂存与空目录清理。恢复删除账本及旧页图回填在本worker基础上分别验证，不以本节worker通过代替整个规格104完成。
 
 实现检查发现`processing/runs/<task-id>/<lease-token>`也会保存包含原文的`studio-pdf-structure.json`和处理配置。因此source回收同时纳入**SQL任务类型确为studio.material.process、payload SHA确切匹配本次原件**的运行目录；仅允许已知UUID任务/租约目录及确切工作文件/受控临时名，继续逐个unlink和空目录rmdir。其他管理员导入、图像和解释任务、未能确认归属的目录全部保留；不把整个processing目录递归清空。该扩展先归档，再实现，测试必须检查真实处理JSON的存在与清除，以及同目录其他任务的哨兵仍在。
+
+## 14. 旧工作台关联补全（实施前补充）
+
+源回收的关联检查确认，现有隐私关系注册表遗漏了studioCourses、studioActivities、studioStudyPlans、studioLearningPacks、studioWhiteboards、studioConnectors、studioScheduleEvents。这些记录保存儿童学习内容、原页依赖与日历，不能在档案删除后只靠访问权限失效来视为清除。补入儿童导出、删除和恢复删除账本关系；共同监护档案继续保留记录，关闭账号的历史署名匿名。
+
+新纳入的订阅记录不能通过通用导出带出encryptedFeedUrl。导出明确剔除凭据和内部命令字段；关闭账号时，对其在共同监护档案中创建的订阅取消连接并清除加密URL，保留已导入的学习日历历史；其他监护人创建的来源继续保留。该处理不发起外部同步请求。
+
+来源审计和回收读依赖增加旧学案、闪卡引用和页级白板的sourceMaterialId；原件仍有合法依赖时保留，依赖指向已缺失的材料且无法确认SHA时标unknown，不猜成无引用。验证包括真实档案的删除/导出、共同监护关闭账号、凭据剔除与保留其他监护人的来源，以及缺失材料引用使回收保守等待。此补充先归档再编码，继续不把本节局部通过当作全目标完成。
