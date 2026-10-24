@@ -120,6 +120,25 @@ test('live file-process leases protect otherwise unreferenced bytes, while malfo
   assert.equal(report.entries.find(e => e.part === 'lease').reason, 'unverifiable_coordination_marker');
 });
 
+test('recognizes empty and partial staged JSON by producer name, protecting all three purposes without changing bytes', async t => {
+  const f = fixture(t), material = f.original('atomic orphan', 'gone');
+  for (const purpose of ['lease', 'purge', 'revoked']) {
+    const marker = `studio-materials/control/${material.sha256}/staging/${purpose}-${process.pid}-${randomUUID()}.pending`;
+    const content = purpose === 'lease' ? '' : '{"partial":'; f.write(marker, content);
+    const report = await f.audit(); assert.equal(report.complete, true);
+    assert.equal(report.entries.find(e => e.path === marker).reason, 'live_marker_producer');
+    assert.equal(report.entries.find(e => e.part === 'original').state, 'active');
+    assert.equal(fs.readFileSync(path.join(f.data, marker), 'utf8'), content);
+    fs.unlinkSync(path.join(f.data, marker));
+  }
+  const { spawn } = require('node:child_process'), { once } = require('node:events');
+  const child = spawn(process.execPath, ['-e', 'process.exit(0)'], { windowsHide: true, stdio: 'ignore' }), pid = child.pid; await once(child, 'close');
+  const dead = `studio-materials/control/${material.sha256}/staging/lease-${pid}-${randomUUID()}.pending`; f.write(dead, '{');
+  let report = await f.audit(); assert.equal(report.complete, true); assert.equal(report.entries.find(e => e.path === dead).reason, 'dead_marker_staging_retained');
+  assert.equal(fs.readFileSync(path.join(f.data, dead), 'utf8'), '{');
+  f.write(dead, Buffer.alloc(4097)); report = await f.audit(); assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0);
+});
+
 test('audits only source-bound processor working files and preserves unrelated processing task directories', async t => {
   const f = fixture(t), taskId = 'task_' + randomUUID(), lease = randomUUID(), sha = 'd'.repeat(64), working = `processing/runs/${taskId}/${lease}`;
   f.tasks.push({ id: taskId, kind: 'studio.material.process', state: 'succeeded', payload: { sha256: sha } });

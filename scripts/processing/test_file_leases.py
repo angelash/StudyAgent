@@ -9,11 +9,37 @@ import unittest
 from unittest.mock import patch
 
 import fitz
-from file_leases import file_lease
+from file_leases import file_lease, publish_marker
 import process_document as processor
 
 
 class ProcessLeases(unittest.TestCase):
+    def test_exceptions_at_each_publish_phase_leave_no_live_phantom_lease(self):
+        for stop in ('created', 'written', 'synced', 'published', 'cleaned'):
+            with self.subTest(phase=stop), tempfile.TemporaryDirectory(prefix='study-python-atomic-') as directory:
+                root = Path(directory)
+
+                def phase(name):
+                    if name == stop:
+                        raise RuntimeError('controlled publisher failure')
+
+                with self.assertRaisesRegex(RuntimeError, 'publisher failure'):
+                    with file_lease(root, after_phase=phase):
+                        self.fail('publisher must not hand the lease to the caller')
+                self.assertEqual(list((root / 'leases').iterdir()), [])
+                self.assertEqual(list((root / 'staging').iterdir()), [])
+
+    def test_exclusive_link_preserves_another_owner(self):
+        import uuid
+        with tempfile.TemporaryDirectory(prefix='study-python-atomic-') as directory:
+            root = Path(directory)
+            marker = root / 'purge.json'
+            marker.write_bytes(b'operator-owned bytes')
+            with self.assertRaises(FileExistsError):
+                publish_marker(root, marker, 'purge', {'nonce': str(uuid.uuid4()), 'pid': os.getpid()})
+            self.assertEqual(marker.read_bytes(), b'operator-owned bytes')
+            self.assertEqual(list((root / 'staging').iterdir()), [])
+
     def test_purge_before_start_produces_no_cache_and_removes_only_own_lease(self):
         with tempfile.TemporaryDirectory(prefix='study-python-file-lease-') as directory:
             root = Path(directory)

@@ -132,13 +132,18 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
 function managedEntry(relative, directory) {
   if (directory) {
     if (['studio-materials', 'studio-materials/processed', 'studio-uploads', 'studio-materials/control', 'studio-uploads/control'].includes(relative)) return { container: true };
-    const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)(?:\/leases)?$/);
+    const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)(?:\/(?:leases|staging))?$/);
     if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', container: true };
     let match = relative.match(/^studio-materials\/processed\/([a-f0-9]{64})(?:\/study-pdf-structure-v[1-9]\d*)?$/);
     if (match) return { key: match[1], kind: 'source' };
     match = relative.match(/^studio-uploads\/(studio_upload_[a-f0-9-]+)$/);
     if (match && UPLOAD.test(match[1])) return { key: match[1], kind: 'upload' };
     return null;
+  }
+  const pending = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)\/staging\/(.+)$/);
+  if (pending && (pending[1] === 'studio-materials' ? HASH.test(pending[2]) : UPLOAD.test(pending[2]))) {
+    const producer = parseMarkerStagingName(pending[3]);
+    if (producer) return { key: pending[2], kind: pending[1] === 'studio-materials' ? 'source' : 'upload', part: 'marker_staging', producer };
   }
   const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)\/(purge\.json|revoked\.json|leases\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\.json)$/);
   if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) && control[3] !== 'revoked.json' : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', part: control[3] === 'purge.json' ? 'purge' : control[3] === 'revoked.json' ? 'revocation' : 'lease' };
@@ -151,6 +156,11 @@ function managedEntry(relative, directory) {
   match = relative.match(/^studio-uploads\/(studio_upload_[a-f0-9-]+)\/(0|[1-9]\d*)-([a-f0-9]{64})$/);
   if (match && UPLOAD.test(match[1]) && Number(match[2]) <= 100000) return { key: match[1], kind: 'upload', part: 'chunk' };
   return null;
+}
+
+function parseMarkerStagingName(name) {
+  const match = /^(lease|purge|revoked)-([1-9]\d*)-([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})\.pending$/.exec(name);
+  return match && Number.isSafeInteger(Number(match[2])) ? { purpose: match[1], pid: Number(match[2]), nonce: match[3] } : null;
 }
 
 async function fileDigest(file) {
@@ -183,12 +193,15 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
       return;
     }
     seen.add(relative);
-    if (['lease', 'purge', 'revocation'].includes(managed.part)) {
+    if (['lease', 'purge', 'revocation', 'marker_staging'].includes(managed.part)) {
       let state = 'active', reason = 'collection_fence';
       try {
         noLinks(location); if (stat.size > 4096) throw new Error('invalid_marker');
-        const value = JSON.parse(await fsp.readFile(location, 'utf8'));
-        if (managed.part === 'lease') {
+        const value = managed.part === 'marker_staging' ? null : JSON.parse(await fsp.readFile(location, 'utf8'));
+        if (managed.part === 'marker_staging') {
+          try { process.kill(managed.producer.pid, 0); reason = 'live_marker_producer'; }
+          catch (error) { if (error.code === 'ESRCH') { state = 'grace'; reason = 'dead_marker_staging_retained'; } else throw error; }
+        } else if (managed.part === 'lease') {
           if (value.format !== 'study-file-lease-v1' || path.basename(relative) !== value.nonce + '.json' || !Number.isSafeInteger(value.pid) || value.pid < 1 || !Number.isFinite(Date.parse(value.createdAt))) throw new Error('invalid_marker');
           try { process.kill(value.pid, 0); reason = 'live_file_process'; }
           catch (error) { if (error.code === 'ESRCH') { state = 'grace'; reason = 'dead_process_marker_retained'; } else throw error; }
@@ -219,7 +232,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
   }
   await visit('studio-materials'); await visit('studio-uploads');
   for (const taskId of workingSources.keys()) await visit('processing/runs/' + taskId);
-  for (const entry of entries) if (entry.key && !['lease', 'purge', 'revocation'].includes(entry.part) && coordination.has(entry.key)) { entry.state = coordination.get(entry.key); entry.reason = 'file_coordination_pending'; }
+  for (const entry of entries) if (entry.key && !['lease', 'purge', 'revocation', 'marker_staging'].includes(entry.part) && coordination.has(entry.key)) { entry.state = coordination.get(entry.key); entry.reason = 'file_coordination_pending'; }
   for (const [relative, expected] of references.expected) if (!seen.has(relative)) {
     entries.push({ path: relative, state: 'unknown', reason: 'registered_file_missing_or_unreachable', bytes: 0, expectedBytes: expected.size }); complete = false;
   }
@@ -250,5 +263,5 @@ async function main(args) {
   }
   return report;
 }
-module.exports = { readMaterialSnapshot, materialReferences, managedEntry, auditMaterials, main };
+module.exports = { readMaterialSnapshot, materialReferences, managedEntry, parseMarkerStagingName, auditMaterials, main };
 if (require.main === module) main(process.argv.slice(2)).then(report => console.log(JSON.stringify(report, null, 2))).catch(error => { console.error('Material audit failed: ' + (error.code ?? error.message)); process.exitCode = 1; });

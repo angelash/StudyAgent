@@ -8,10 +8,11 @@ import { mkdtempSync,readFileSync,rmSync,existsSync,mkdirSync,writeFileSync,unli
 import { tmpdir } from 'node:os';
 import { join,resolve,sep } from 'node:path';
 import { setTimeout as pause } from 'node:timers/promises';
+import { once } from 'node:events';
 import { Pool } from 'pg';
 
 describe('durable private source collection with shared references and process/write fences',()=>{
- const directory=mkdtempSync(join(tmpdir(),'study-material-collection-')),data=join(directory,'data'),names=['NODE_ENV','STUDY_STORAGE','DATABASE_URL','STUDY_DATA_DIR','STUDY_WORKER_ENABLED','STUDY_SEED_FOUNDATION','STUDY_PDF_STRUCTURE_MODEL','XIAOJIU_CHAT_ENABLED']as const,prior=Object.fromEntries(names.map(name=>[name,process.env[name]]));
+ const directory=mkdtempSync(join(tmpdir(),'study-atomic-marker-maintenance-')),data=join(directory,'data'),names=['NODE_ENV','STUDY_STORAGE','DATABASE_URL','STUDY_DATA_DIR','STUDY_WORKER_ENABLED','STUDY_SEED_FOUNDATION','STUDY_PDF_STRUCTURE_MODEL','XIAOJIU_CHAT_ENABLED']as const,prior=Object.fromEntries(names.map(name=>[name,process.env[name]]));
  const credential='Material-collection-fixture-only',base='/learning/material-uploads';let app:any,store:any,maintenance:any,processing:any,uploads:any,parent:any,other:any,pdf:Buffer,pg:Pool|undefined,schema:string|undefined;
  const digest=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
  async function boot(){const{AppModule}=require('../../../dist/apps/api/src/app.module.js');app=await NestFactory.create(AppModule,{logger:false});require('../../../dist/apps/api/src/common/http-body.js').configureJsonBody(app);app.setGlobalPrefix('api');await app.init();store=app.get(require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js').InMemoryStoreService);maintenance=app.get(require('../../../dist/apps/api/src/modules/learning/studio-material-maintenance.service.js').StudioMaterialMaintenanceService);processing=app.get(require('../../../dist/apps/api/src/modules/processing/processing-worker.service.js').ProcessingWorkerService);uploads=app.get(require('../../../dist/apps/api/src/modules/learning/studio-material-upload.service.js').StudioMaterialUploadService);maintenance.pendingDelayMs=2;}
@@ -118,6 +119,16 @@ describe('durable private source collection with shared references and process/w
   expect(JSON.stringify(exported)).not.toContain('encryptedFeedUrl');expect(JSON.stringify(exported)).not.toContain('opaque-private-feed');expect(JSON.stringify(exported)).not.toContain('private-internal-hash');
   const preview=await call('get',`/privacy/students/${studentId}/deletion-preview`);await call('post',`/privacy/students/${studentId}/delete`,{credential,confirmation:preview.confirmation,fingerprint:preview.fingerprint,requestKey:randomUUID()});
   await store.requestContext(()=>{for(const collection of studioCollections)expect(store.find(collection,{id:rows[collection].id})).toBeUndefined();});
+ });
+
+ it('waits for an actual producer paused at an empty atomic staging file and recovers the durable task after its death',async()=>{
+  const source=await orphan(),child=spawn(process.execPath,[resolve(__dirname,'../../../../../scripts/qa/fixtures/studio-marker-child.cjs'),data,'source',source.sha,'lease','created'],{windowsHide:true,stdio:['ignore','pipe','pipe']});
+  try{
+   await new Promise<void>((ready,reject)=>{let stdout='',stderr='';const timer=setTimeout(()=>reject(new Error('Staged producer timeout: '+stderr)),15000);child.once('error',error=>{clearTimeout(timer);reject(error);});child.once('exit',code=>{clearTimeout(timer);reject(new Error('Staged producer exited '+code+': '+stderr));});child.stderr!.on('data',chunk=>{stderr+=chunk;});child.stdout!.on('data',chunk=>{stdout+=chunk;if(stdout.includes('\n')){clearTimeout(timer);try{expect(JSON.parse(stdout.trim()).phase).toBe('created');ready();}catch(error){reject(error);}}});});
+   const id=await schedule('source',source.sha);for(let turn=0;turn<150&&(await store.tasks.get(id)).errorCode!=='material_file_process_active_or_unknown';turn++)await maintenance.runNext(false);expect(readFileSync(source.file)).toEqual(source.bytes);expect((await store.tasks.get(id)).errorCode).toBe('material_file_process_active_or_unknown');
+   const closed=once(child,'close');child.kill('SIGKILL');await closed;await runTo(id);expect(existsSync(source.file)).toBe(false);
+   const {inspectStudioFileLeases}=require('../../../dist/apps/api/src/infrastructure/studio-file-coordination.js');expect(await inspectStudioFileLeases(data,'source',source.sha)).toEqual([]);
+  }finally{if(child.exitCode===null&&child.signalCode===null){const closed=once(child,'close');child.kill('SIGKILL');await closed;}}
  });
 
  it('executes a committed cleanup after an actual worker-enabled application bootstrap without a manual run call',async()=>{
