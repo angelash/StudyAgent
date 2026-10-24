@@ -4,12 +4,15 @@ import { memoryStorage } from 'multer';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { SourceCourseService } from './source-course.service';
 import { StudioMaterialUploadService } from './studio-material-upload.service';
+import { StudioMaterialIntegrityService } from './studio-material-integrity.service';
 @UseGuards(AuthGuard)
 @Controller('learning/source-courses')
 export class SourceCourseController {
-  constructor(private readonly courses:SourceCourseService,private readonly uploads:StudioMaterialUploadService){}
+  constructor(private readonly courses:SourceCourseService,private readonly uploads:StudioMaterialUploadService,private readonly integrity:StudioMaterialIntegrityService){}
   @Get('materials') materials(@Req()req:AuthenticatedRequest,@Query()query:unknown){return this.courses.materials(req.user,query);}
   @Get('materials/:id/progress') materialProgress(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.uploads.progress(req.user,id);}
+  @Get('materials/:id/files') materialFiles(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.integrity.get(req.user,id);}
+  @Post('materials/:id/files/check') checkMaterialFiles(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.integrity.check(req.user,id,body);}
   @Get('materials/:id') material(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.uploads.material(req.user,id);}
   @Get('materials/:id/pages/:page') materialPage(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Param('page')page:string,@Query()query:unknown){return this.uploads.page(req.user,id,Number(page),query);}
   @Post('materials/:id/process/cancel') cancelMaterialProcessing(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Body()body:unknown){return this.uploads.cancelProcessing(req.user,id,body);}

@@ -11,3 +11,11 @@ export type StudioMaterialProgress={
   pages:Array<{page:number;method:'pdf_text'|'ocr'|'hybrid'|'unreadable';warnings:string[];completedAt:string;resumed:boolean}>;
   task:{id:string;state:string;version:number;errorCode:string|null}|null;
 };
+
+export type StudioMaterialFileState = 'verified' | 'baseline_recorded' | 'missing' | 'mismatch' | 'unknown' | 'not_required';
+export type StudioMaterialFileReport = {
+  materialId: string; version: string; checkedAt: string;
+  original: StudioMaterialFileState;
+  pages: Array<{ page: number; state: StudioMaterialFileState; storage: 'file' | 'embedded' }>;
+  canRegenerate: boolean;
+};

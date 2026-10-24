@@ -13,7 +13,7 @@ import { QuestionImportService } from '../question-workspace/question-import.ser
 import { CodexPdfStructureService } from '../ai/codex-pdf-structure.service';
 import { mergeStudioPdfPages, RawStudioPdfPage } from '../learning/studio-pdf-structure';
 import { assertStudioAssetAvailable,studioMaterialRoot,studioMaterialCache, studioMaterialFile } from '../learning/studio-material-storage';
-import { acquireStudioFileLease,studioCoordinationRoot } from '../../infrastructure/studio-file-coordination';
+import { acquireStudioFileLease,studioCoordinationRoot,assertNoFileLinks } from '../../infrastructure/studio-file-coordination';
 import type { StudioSourceMaterial } from '@study-agent/contracts';
 import { z } from 'zod';
 import { StudentsService } from '../students/students.service';
@@ -99,6 +99,8 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       await this.studioCheckpoint(task,()=>{});
       const output = resolve(runRoot, 'studio-pdf-structure.json');
       try {
+        try { await assertNoFileLinks(studioMaterialFile(material.sha256)); await verifyImmutableFile(studioMaterialFile(material.sha256),material.sha256,material.byteSize); }
+        catch { throw new ProcessingError('material_original_integrity'); }
         const raw = await this.process({ mode: 'pdf_structure', input: studioMaterialFile(material.sha256),
           sha256: material.sha256, cache: studioMaterialCache(material.sha256), leaseRoot:studioCoordinationRoot(studioMaterialRoot(),'source',material.sha256),output }, runRoot, 'studio-pdf', signal, progress,data=>this.saveStudioPage(task,data));
         if (!Array.isArray(raw.pages) || !raw.pages.length) throw new ProcessingError('invalid_processor_output');
@@ -128,6 +130,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
             if(current.processingTaskId!==task.id||current.status==='cancelled')throw new ProcessingError('studio_material_changed');
             const target = current as StudioMaterialRecord;
             target.pageFiles=pageFiles;
+            delete target.pageImages; delete target.embeddedPageFiles; delete target.fileCheck;
             target.pages = merged.pages; target.hasPageImages = merged.pages.length > 0;
             target.pageCount=raw.pageCount as number;
             target.status = merged.structure.reviewRequired ? 'needs_review' : 'ready';

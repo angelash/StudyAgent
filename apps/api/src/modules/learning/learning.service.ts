@@ -1,3 +1,4 @@
+import { canRegenerateStudioPages,readVerifiedStudioPage } from './studio-material-integrity.service';
 import { BadRequestException, ConflictException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { materialVersion } from './source-course-selection';
@@ -29,7 +30,7 @@ import { SpeechService } from '../ai/speech.service';
 import { PDFParse } from 'pdf-parse';
 import { buildPdfWhiteboard } from './studio-pdf-whiteboard';
 import { buildStudioLearningPack } from './studio-learning-pack';
-import { persistStudioMaterial, studioMaterialCache, studioMaterialFile } from './studio-material-storage';
+import { persistStudioMaterial, studioMaterialFile } from './studio-material-storage';
 import { assertMaterialAccess, studioMaterialView, StudioMaterialRecord } from './studio-material-access';
 
 export function studyDay(at = new Date()) {
@@ -311,14 +312,7 @@ export class LearningService {
     if (!material) throw new NotFoundException('PDF 材料不存在');
     assertMaterialAccess(user, material, this.students);
     if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > material.pageCount) throw new BadRequestException('页码无效');
-    const record=material as StudioMaterialRecord,file=record.pageFiles?.find(file=>file.page===pageNumber),name=file?.name??'page-'+pageNumber+'.png';
-    if(name!==`page-${pageNumber}.png`&&!new RegExp('^study-pdf-structure-v\\d+/page-'+pageNumber+'\\.png$','u').test(name))throw new NotFoundException('原页文件位置不完整');
-    const dataUrl = material.pageImages?.[String(pageNumber)];
-    const bytes = dataUrl?.startsWith('data:image/png;base64,')
-      ? Buffer.from(dataUrl.slice('data:image/png;base64,'.length), 'base64')
-      : await readFile(studioMaterialCache(material.sha256) + '/'+name).catch(() => null);
-    if (!bytes) throw new NotFoundException('这一页还没有可用的原页预览');
-    if(file&&(bytes.length!==file.size||createHash('sha256').update(bytes).digest('hex')!==file.sha256))throw new NotFoundException('原页文件未通过完整性核对，请重新处理资料');
+    const bytes = await readVerifiedStudioPage(material as StudioMaterialRecord,pageNumber);
     return new StreamableFile(bytes, { type: 'image/png', disposition: 'inline', length: bytes.length });
   }
 
@@ -378,9 +372,10 @@ export class LearningService {
     const modelRetry = material.status === 'needs_review' && material.structure?.modelSource === 'local_fallback' &&
       !material.structure.modelAssisted;
     const previousTask=material.processingTaskId?await this.store.tasks.get(material.processingTaskId):null;
+    if(material.fileCheck?.version===materialVersion(material)&&material.fileCheck.original!=='verified')throw new ConflictException('原件未通过文件核对，请先恢复原件并重新检查');
     if(previousTask&&['queued','running','retry_wait','cancel_requested'].includes(previousTask.state))throw new ConflictException('请先等待当前处理真正停止，再重试');
-    if (!['failed','cancelled'].includes(material.status??'') && !['failed','cancelled'].includes(previousTask?.state??'') && !modelRetry)
-      throw new ConflictException('只有处理失败或本地降级的 PDF 可以重试');
+    if (!['failed','cancelled'].includes(material.status??'') && !['failed','cancelled'].includes(previousTask?.state??'') && !modelRetry && !canRegenerateStudioPages(material))
+      throw new ConflictException('仅处理失败、本地降级或已核对页图缺失/损坏的PDF可以重新处理');
     if ((material.updatedAt ?? material.createdAt) !== command.expectedUpdatedAt)
       throw new ConflictException('PDF 状态已更新，请刷新后重试');
     const now = new Date().toISOString(), taskId = this.store.nextId('task');
