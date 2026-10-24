@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
+  "sourceRevision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 299,
@@ -10,12 +10,12 @@
     "activeModules": 18,
     "activeControllers": 27,
     "apiClasses": 115,
-    "apiFunctions": 323,
+    "apiFunctions": 337,
     "domainCollections": 86,
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 115,
+    "apiTestFiles": 116,
     "browserTestFiles": 15
   },
   "modules": [
@@ -26987,6 +26987,90 @@
       "signature": "studioCoordinationRoot(root: string, kind: FileKind, key: string)"
     },
     {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "validateIdentity",
+      "line": 16,
+      "signature": "validateIdentity(value:OriginalRepairIdentity)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "binding",
+      "line": 19,
+      "signature": "binding(value:OriginalRepairIdentity)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "paths",
+      "line": 20,
+      "signature": "paths(root:string, value:OriginalRepairIdentity)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "exists",
+      "line": 24,
+      "signature": "exists(file:string)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "validObservation",
+      "line": 25,
+      "signature": "validObservation(value:Observation)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "observe",
+      "line": 27,
+      "signature": "observe(file:string): Promise<Observation>"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "sameOriginal",
+      "line": 40,
+      "signature": "sameOriginal(left:Observation, right:Observation)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "correct",
+      "line": 45,
+      "signature": "correct(value:Observation, identity:OriginalRepairIdentity)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "readIntent",
+      "line": 46,
+      "signature": "readIntent(file:string, identity:OriginalRepairIdentity): Promise<Intent>"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "dead",
+      "line": 53,
+      "signature": "dead(pid:number)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "prunePending",
+      "line": 55,
+      "signature": "prunePending(directory:string, pattern:RegExp, limit:number)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "inventory",
+      "line": 67,
+      "signature": "inventory(directory:string, boundIntent:boolean)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "candidate",
+      "line": 78,
+      "signature": "candidate(input:Input, target:ReturnType<typeof paths>)"
+    },
+    {
+      "file": "apps/api/src/infrastructure/studio-original-repair.ts",
+      "name": "recoverStudioOriginal",
+      "line": 102,
+      "signature": "recoverStudioOriginal(input:Input)"
+    },
+    {
       "file": "apps/api/src/infrastructure/trusted-proxy.ts",
       "name": "trustedProxies",
       "line": 3,
@@ -38715,6 +38799,7 @@
     "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
     "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
     "apps/api/src/infrastructure/studio-file-coordination.test.ts",
+    "apps/api/src/infrastructure/studio-original-repair.test.ts",
     "apps/api/src/infrastructure/task-repository.test.ts",
     "apps/api/src/modules/ai/classroom-image.service.test.ts",
     "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",

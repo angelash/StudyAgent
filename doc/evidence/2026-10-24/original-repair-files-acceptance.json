@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T09:37:21.701434+00:00",
+  "sourceRevision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
+  "implementationCommit": "a3ba56cc7e7ec02905036f5b573602b15506a661",
+  "specificationCommit": "2fd932f",
+  "passed": true,
+  "status": "verified-original-repair-byte-foundation-not-product-repair-complete",
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/api/src/infrastructure/studio-original-repair.test.ts": "8065d7dbfa3594499549ed6d247f38c8cb4dde3fff263c6dbab8c130c9cdc101",
+    "apps/api/src/infrastructure/studio-original-repair.ts": "301720c87e3623c5edec50445bb373f1b245878e8fc86cd8026fcfd858aaef11",
+    "scripts/architecture/project-feature-definitions.cjs": "858a83aba9e41ede5478a904e5aef63115ef4b20b29d1f87c08da73919f3b327",
+    "scripts/qa/fixtures/original-repair-child.cjs": "a4050980afca7fd94140301389dcb98ad8eb030386ec6f591107932b26d13b17"
+  },
+  "reports": {
+    "original-repair-files-initial.json": {
+      "sha256": "7f6ae2eea919e08c5e4be3a9be3c9049b00da4172c4602270cc70f76adac257e",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 418502.7473144531
+    },
+    "original-repair-files-final.json": {
+      "sha256": "f7186d9d58cbe9ab7b4ce3e646a305175260939d2086ae7516f5905d285a206a",
+      "passed": 54,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": "parallel file durations are not summed"
+    }
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    }
+  ],
+  "coverage": [
+    "The helper acquires a source purge fence, rejects live/unknown source file leases and uses an immutable context-bound intent before writing private candidate bytes.",
+    "Candidate chunks are hashed in bounded memory, checked for full expected SHA/size/PDF header and fsynced before exclusive hard-link publication. Each critical publication invokes a required caller guard.",
+    "The old known inode/bytes are retained through an exclusive hard link before original unlink. Interrupted retries recognize original-plus-retained, retained-only, correct-published and cleaned states. Unknown replacement/candidate/retained bytes and links are preserved.",
+    "An absent or different immutable intent cannot authorize pruning private candidate staging. Dead producer names are checked twice before known pending files are removed.",
+    "Fifteen real Node SIGKILL boundaries, a competing live writer/live reader, explicit guard revocation injections, corrupt chunks/header, changed external original/candidate/retained files, altered binding, unknown files, junction substitution and upload loss after successful publication are covered.",
+    "Latest 26 file-protocol tests plus 23 existing atomic-publication and 5 file-coordination cases pass. The initial 25-case run also passed."
+  ],
+  "diagnostics": [
+    "An initial TypeScript nullability failure in staged-name parsing was corrected before runtime validation.",
+    "Initial 5MiB Buffer deep equality used 418.5 seconds for 25 tests. It was replaced with full byte-wise Buffer.equals assertions, retaining equality scope; the latest 54-case combination completed in 15.9 seconds.",
+    "An ownership-checked attempt to stop the slow test found it already exited and did not terminate any process. The initial run completed successfully and remains archived."
+  ],
+  "limits": [
+    "This is an unconnected file helper, not a usable repair endpoint or workbench feature. Required guard callbacks in this suite simulate the future task/authorization checks.",
+    "Durable repair records, repairing asset state, real permissions/revocation/privacy, maintenance/audit/backup integration, task receipts and both workbench flows remain unimplemented.",
+    "The fixtures contain a PDF header and 5MiB byte payload. Actual 120-page PDF processing and end-to-end repair must be verified after product integration.",
+    "Only process interruption is tested, not hardware power loss or an adversarial concurrent same-user filesystem writer.",
+    "Existing Node/Python coordination tests ran; no new PostgreSQL or live browser acceptance is claimed.",
+    "Production and the main worktree were not switched; the isolated PostgreSQL cluster remains stopped."
+  ]
+}

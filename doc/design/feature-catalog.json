@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
+  "sourceRevision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -7982,7 +7982,7 @@
             "/admin/analytics"
           ],
           "inputs": "来源SHA或上传ID、领域删除/取消/完成/过期和只读审计命令",
-          "implementation": "审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入；Node/Python先独占写staging、同步关闭，再以同卷独占hard link发布完整控制标记；所有用途的活PID暂存都保护对象，确切死亡的受控暂存才可清理，旧损坏正式标记继续保留。",
+          "implementation": "审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入；Node/Python先独占写staging、同步关闭，再以同卷独占hard link发布完整控制标记；所有用途的活PID暂存都保护对象，确切死亡的受控暂存才可清理，旧损坏正式标记继续保留；原件修复的独立文件辅助函数已验证绑定意图、旧文件身份、完整候选独占发布及强退续跑，尚未接入持久修复任务和产品入口。",
           "outputs": "可审计引用/宽限/活跃/未知清单、自动续跑回收结果、共享资料保留与进程栅栏",
           "collections": [
             "studioMaterialAssets",
@@ -7997,6 +7997,9 @@
           "implementations": [],
           "sourceFiles": [
             "scripts/operations/material-audit.cjs",
+            "apps/api/src/infrastructure/studio-original-repair.ts",
+            "apps/api/src/infrastructure/studio-original-repair.test.ts",
+            "scripts/qa/fixtures/original-repair-child.cjs",
             "apps/api/src/infrastructure/studio-atomic-marker.ts",
             "apps/api/src/infrastructure/studio-file-paths.ts",
             "scripts/processing/file_leases.py",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T08:19:45.472Z",
-  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
+  "at": "2026-10-24T09:37:27.873Z",
+  "sourceRevision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -12,12 +12,12 @@
     "activeModules": 18,
     "activeControllers": 27,
     "apiClasses": 115,
-    "apiFunctions": 323,
+    "apiFunctions": 337,
     "domainCollections": 86,
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 115,
+    "apiTestFiles": 116,
     "browserTestFiles": 15
   },
   "features": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 278
   },
   "sourceReferences": {
-    "uniqueFiles": 291,
+    "uniqueFiles": 294,
     "problems": [],
     "sha256": {
       ".github/workflows/verify.yml": "d15e2347b571c254549bff4e036e0610b55dd4821363b6eee6ee66cfd0771a1b",
@@ -57,6 +57,8 @@
       "apps/api/src/infrastructure/studio-file-coordination.ts": "5276a0cae8469822d2de0bffbfbeef9ed162113c6bddd4a8ec155cbccc216835",
       "apps/api/src/infrastructure/studio-file-inventory.ts": "71b54de34bab806e71541a78bc4bb8acd4d29354583aa405b3c247b8805a18d8",
       "apps/api/src/infrastructure/studio-file-paths.ts": "0ab767da049aa90776849fe438e344bcbacbebe5dfcf5ac21a8ef5ab48cef4e2",
+      "apps/api/src/infrastructure/studio-original-repair.test.ts": "77c96bf5eddb6c631978f51db33546b8cdde29559364a49fc95e3fe66434b12d",
+      "apps/api/src/infrastructure/studio-original-repair.ts": "301720c87e3623c5edec50445bb373f1b245878e8fc86cd8026fcfd858aaef11",
       "apps/api/src/infrastructure/task-repository.test.ts": "d3b047ebf00fca254c6c5a8dd24d0e3f35e0e9ecb3ce2b4a136a2176c203748f",
       "apps/api/src/infrastructure/task-repository.ts": "86b9e76a323d11409f7aa282c1fd278959a90eda1b26b1a49aeeefc87e79e385",
       "apps/api/src/modules/ai/ai.controller.ts": "0f96f971bc0ea8f13e99cf073f16c3313fe81ebeeb37dc343529616895d7e56d",
@@ -302,6 +304,7 @@
       "scripts/processing/requirements-imagegen.txt": "e58941612ba4560fd888182684d3404684ed6643b86e3c4ad61d7233840ff2bf",
       "scripts/qa/classroom-caption-live.cjs": "2f17e3cfea19ff626ffdadc2f8f8c6edf8c82ec12e0087a5fc04964d5b3175f2",
       "scripts/qa/classroom-image-live.cjs": "af1bbf8d168ed9f26ad959e2bd81e9c07c05489f4e97ffdb1ee0e791320846b1",
+      "scripts/qa/fixtures/original-repair-child.cjs": "a4050980afca7fd94140301389dcb98ad8eb030386ec6f591107932b26d13b17",
       "scripts/qa/run-browser-acceptance.cjs": "10bd7349a6834bc48db6c2ba7016479fb4cb2f5aefd20263eb7cefc01f3f51ec",
       "scripts/qa/run-source-course-browser.cjs": "51b3eb22a7a7d4b83c22eb517db6bf768bba1fc85ef99a5c3717252089b6b36c",
       "scripts/qa/source-course-fixture.cjs": "02ff16750164e6568d875877f731b5838d78d2eac6133092d51f0c962a2fb41b",
@@ -329,12 +332,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2093,
+    "checked": 2102,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-24T08:19:41.805Z",
+    "authoredAuditAt": "2026-10-24T09:37:23.901Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -400,8 +403,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-24/restore-resume-postgres-acceptance.json",
-    "revision": "b85a268720c75047b0099b05b37615b655d01b50",
+    "receipt": "../evidence/2026-10-24/original-repair-files-acceptance.json",
+    "revision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }
