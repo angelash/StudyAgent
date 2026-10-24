@@ -95,7 +95,9 @@ test('bad references and invalid budgets fail conservatively; inline text requir
   f.add('studioSourceMaterials', { id: 'paste', kind: 'text', sha256: 'a'.repeat(64), byteSize: 40 });
   assert.equal((await f.audit()).complete, true);
   f.add('sourceCourses', { id: 'bad', sources: [{ sha256: '../bad' }] });
+  f.add('studioMaterialAssets', { id: 'a'.repeat(64), state: 'unrecognized', generation: 1 });
   const report = await f.audit(); assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0);
+  assert.equal(report.issues.includes('invalid_material_asset_state'), true);
   await assert.rejects(f.audit({ graceHours: -1 }), /invalid_material_audit_budget/);
 });
 
@@ -106,4 +108,14 @@ test('missing originals remain visible when only a frozen PDF course references 
   fs.unlinkSync(path.join(f.data, `studio-materials/${material.sha256}.pdf`));
   const report = await f.audit(); assert.equal(report.complete, false);
   assert.equal(report.entries[0].reason, 'registered_file_missing_or_unreachable');
+});
+
+test('live file-process leases protect otherwise unreferenced bytes, while malformed markers keep the inventory incomplete', async t => {
+  const f = fixture(t), material = f.original('leased orphan', 'gone'), nonce = randomUUID();
+  const marker = `studio-materials/control/${material.sha256}/leases/${nonce}.json`;
+  f.write(marker, JSON.stringify({ format: 'study-file-lease-v1', nonce, pid: process.pid, createdAt: new Date(stamp).toISOString() }));
+  let report = await f.audit(); assert.equal(report.complete, true); assert.equal(report.entries.find(e => e.part === 'original').state, 'active');
+  assert.equal(report.entries.find(e => e.part === 'lease').reason, 'live_file_process');
+  f.write(marker, '{incomplete'); report = await f.audit(); assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0);
+  assert.equal(report.entries.find(e => e.part === 'lease').reason, 'unverifiable_coordination_marker');
 });

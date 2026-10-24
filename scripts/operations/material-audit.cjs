@@ -106,7 +106,8 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
         expect(`studio-uploads/${row.id}/${chunk.index}-${chunk.sha256}`, chunk.sha256, chunk.size);
       }
     } else if (entry.collection === 'studioMaterialAssets') {
-      if (row.state === 'deleting') { const ref = asset(row.id); if (ref) ref.active = true; }
+      if (!HASH.test(row.id ?? '') || !['available', 'deleting'].includes(row.state) || !Number.isSafeInteger(row.generation) || row.generation < 1) issues.push('invalid_material_asset_state');
+      else if (row.state === 'deleting') { const ref = asset(row.id); if (ref) ref.active = true; }
     }
   }
   for (const task of tasks) {
@@ -121,13 +122,17 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
 
 function managedEntry(relative, directory) {
   if (directory) {
-    if (['studio-materials', 'studio-materials/processed', 'studio-uploads'].includes(relative)) return { container: true };
+    if (['studio-materials', 'studio-materials/processed', 'studio-uploads', 'studio-materials/control', 'studio-uploads/control'].includes(relative)) return { container: true };
+    const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)(?:\/leases)?$/);
+    if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', container: true };
     let match = relative.match(/^studio-materials\/processed\/([a-f0-9]{64})(?:\/study-pdf-structure-v[1-9]\d*)?$/);
     if (match) return { key: match[1], kind: 'source' };
     match = relative.match(/^studio-uploads\/(studio_upload_[a-f0-9-]+)$/);
     if (match && UPLOAD.test(match[1])) return { key: match[1], kind: 'upload' };
     return null;
   }
+  const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)\/(purge\.json|revoked\.json|leases\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\.json)$/);
+  if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) && control[3] !== 'revoked.json' : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', part: control[3] === 'purge.json' ? 'purge' : control[3] === 'revoked.json' ? 'revocation' : 'lease' };
   let match = relative.match(/^studio-materials\/([a-f0-9]{64})\.(pdf|txt)$/);
   if (match) return { key: match[1], kind: 'source', part: 'original' };
   match = relative.match(/^studio-materials\/processed\/([a-f0-9]{64})\/(?:study-pdf-structure-v[1-9]\d*\/)?page-([1-9]\d*)\.(png|json)$/);
@@ -142,7 +147,7 @@ async function fileDigest(file) {
 }
 async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.now(), verify = true }) {
   if (!Number.isFinite(now) || !Number.isFinite(graceHours) || graceHours < 0 || graceHours > 8760) fail('invalid_material_audit_budget');
-  const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set();
+  const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set(), coordination = new Map();
   let count = 0, complete = references.issues.length === 0;
   async function visit(relative) {
     if (++count > MAX_ENTRIES) fail('material_audit_file_limit');
@@ -158,6 +163,24 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
       return;
     }
     seen.add(relative);
+    if (['lease', 'purge', 'revocation'].includes(managed.part)) {
+      let state = 'active', reason = 'collection_fence';
+      try {
+        noLinks(location); if (stat.size > 4096) throw new Error('invalid_marker');
+        const value = JSON.parse(await fsp.readFile(location, 'utf8'));
+        if (managed.part === 'lease') {
+          if (value.format !== 'study-file-lease-v1' || path.basename(relative) !== value.nonce + '.json' || !Number.isSafeInteger(value.pid) || value.pid < 1 || !Number.isFinite(Date.parse(value.createdAt))) throw new Error('invalid_marker');
+          try { process.kill(value.pid, 0); reason = 'live_file_process'; }
+          catch (error) { if (error.code === 'ESRCH') { state = 'grace'; reason = 'dead_process_marker_retained'; } else throw error; }
+        } else if (managed.part === 'revocation') {
+          if (value.format !== 'study-upload-revocation-v1' || value.id !== managed.key) throw new Error('invalid_marker');
+          state = 'referenced'; reason = 'permanent_upload_revocation';
+        } else if (value.format !== 'study-file-purge-v1' || value.key !== managed.key) throw new Error('invalid_marker');
+      } catch { state = 'unknown'; reason = 'unverifiable_coordination_marker'; complete = false; }
+      entries.push({ path: relative, key: managed.key, part: managed.part, state, reason, bytes: stat.size });
+      if (state === 'active' || state === 'unknown') coordination.set(managed.key, state === 'unknown' || coordination.get(managed.key) === 'unknown' ? 'unknown' : 'active');
+      return;
+    }
     const ref = managed.kind === 'source' ? references.assets.get(managed.key) : undefined, upload = managed.kind === 'upload' ? references.uploads.get(managed.key) : undefined;
     const state = ref?.active || upload?.active ? 'active' : ref?.references.size ? 'referenced' : now - stat.mtimeMs < graceHours * 3600000 ? 'grace' : 'eligible';
     const entry = { path: relative, key: managed.key, part: managed.part, state, bytes: stat.size, references: ref?.references.size ?? (upload?.active ? 1 : 0) };
@@ -175,6 +198,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
     entries.push(entry);
   }
   await visit('studio-materials'); await visit('studio-uploads');
+  for (const entry of entries) if (entry.key && !['lease', 'purge', 'revocation'].includes(entry.part) && coordination.has(entry.key)) { entry.state = coordination.get(entry.key); entry.reason = 'file_coordination_pending'; }
   for (const [relative, expected] of references.expected) if (!seen.has(relative)) {
     entries.push({ path: relative, state: 'unknown', reason: 'registered_file_missing_or_unreachable', bytes: 0, expectedBytes: expected.size }); complete = false;
   }

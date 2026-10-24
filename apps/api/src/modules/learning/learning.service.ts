@@ -268,7 +268,7 @@ export class LearningService {
     const duplicate = this.store.select('studioSourceMaterials', scope)
       .find(row => row.sha256 === sha256);
     if (duplicate) {
-      await persistStudioMaterial(sha256, file.buffer);
+      await persistStudioMaterial(this.store,sha256, file.buffer);
       const record=duplicate as StudioMaterialRecord;record.commands=[...(record.commands??[]),{key:command.requestKey,hash:requestHash,kind:'upload'}];
       return studioMaterialView(duplicate as StudioSourceMaterial & { requestKey?: string;
         requestHash?: string; pageImages?: Record<string, string> });
@@ -285,7 +285,7 @@ export class LearningService {
     const pages = parsed.pages.map(page => ({ page: page.num,
       text: page.text.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim() }))
       .filter(page => page.text.length > 20);
-    await persistStudioMaterial(sha256, file.buffer);
+    await persistStudioMaterial(this.store,sha256, file.buffer);
     const now = new Date().toISOString(), id = this.store.nextId('studio_material'), taskId = this.store.nextId('task');
     const payload = { materialId: id, sha256 };
     const material: StudioMaterialRecord = { id,

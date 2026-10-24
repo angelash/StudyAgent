@@ -12,7 +12,8 @@ import { ImportFilesService } from './import-files.service';
 import { QuestionImportService } from '../question-workspace/question-import.service';
 import { CodexPdfStructureService } from '../ai/codex-pdf-structure.service';
 import { mergeStudioPdfPages, RawStudioPdfPage } from '../learning/studio-pdf-structure';
-import { studioMaterialCache, studioMaterialFile } from '../learning/studio-material-storage';
+import { assertStudioAssetAvailable,studioMaterialRoot,studioMaterialCache, studioMaterialFile } from '../learning/studio-material-storage';
+import { acquireStudioFileLease,studioCoordinationRoot } from '../../infrastructure/studio-file-coordination';
 import type { StudioSourceMaterial } from '@study-agent/contracts';
 import { z } from 'zod';
 import { StudentsService } from '../students/students.service';
@@ -51,7 +52,9 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     const heartbeat = setInterval(() => {
       void this.store.tasks.heartbeat(task.id, task.leaseToken!, progress).then(ok => { if (!ok) abort.abort(); }).catch(() => abort.abort());
     }, 4000); heartbeat.unref();
+    let releaseFileLease:(()=>Promise<void>)|undefined;
     try {
+      if(task.kind==='studio.material.process')releaseFileLease=await acquireStudioFileLease(studioMaterialRoot(),'source',String(task.payload.sha256));
       const publish = await this.prepare(task, signal, data => { progress = data; });
       if (signal.aborted) throw new ProcessingError('interrupted');
       let last: unknown;
@@ -78,7 +81,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       await this.store.tasks.fail(task.id, task.leaseToken!, code, retryable).catch(() => {});
       this.logger.warn(`Task ${task.id}: ${code}`);
       return true;
-    } finally { clearInterval(heartbeat); this.abort = undefined; }
+    } finally { clearInterval(heartbeat); this.abort = undefined;await releaseFileLease?.(); }
   }
 
   private async prepare(task: TaskRow, signal: AbortSignal, progress: (data: Record<string, unknown>) => void): Promise<{ apply: () => void; result: Record<string, unknown> }> {
@@ -97,7 +100,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       const output = resolve(runRoot, 'studio-pdf-structure.json');
       try {
         const raw = await this.process({ mode: 'pdf_structure', input: studioMaterialFile(material.sha256),
-          sha256: material.sha256, cache: studioMaterialCache(material.sha256), output }, runRoot, 'studio-pdf', signal, progress,data=>this.saveStudioPage(task,data));
+          sha256: material.sha256, cache: studioMaterialCache(material.sha256), leaseRoot:studioCoordinationRoot(studioMaterialRoot(),'source',material.sha256),output }, runRoot, 'studio-pdf', signal, progress,data=>this.saveStudioPage(task,data));
         if (!Array.isArray(raw.pages) || !raw.pages.length) throw new ProcessingError('invalid_processor_output');
         const rawPages = raw.pages as RawStudioPdfPage[];
         let modeled = null;
@@ -256,6 +259,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
     for(let attempt=0;attempt<4;attempt++)try{return await this.store.transaction(()=>{
       const row=this.store.find('studioSourceMaterials',{id:String(task.payload.materialId)}) as StudioMaterialRecord|undefined,owner=this.store.find('users',{id:task.ownerUserId,status:'active'});
       if(!row||row.processingTaskId!==task.id||row.sha256!==task.payload.sha256||row.status==='cancelled')throw new ProcessingError('studio_material_changed');
+      assertStudioAssetAvailable(this.store,row.sha256);
       if(!owner||!this.canAccessStudioMaterial(owner,row.id))throw new ProcessingError('author_permission_changed');
       if(['queued','failed'].includes(row.status??''))row.status='processing';change(row);row.updatedAt=new Date().toISOString();
       Object.assign(progress,{stage:row.status==='failed'?'failed':'extracting',pages:row.pageCount,processedPages:row.processingPages?.length??0});

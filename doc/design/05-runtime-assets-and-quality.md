@@ -165,4 +165,6 @@ CI三组：
 
 独立开发分支增加`npm run materials:audit -- --data-dir <目录>`；实际实现为`scripts/operations/material-audit.cjs`。SQLite与PG都读取一致的只读快照，按材料、冻结课程、未完成上传和活跃处理任务保护原件SHA。只扫描受控资料目录，验证已登记原件、页图、JSON检查点、分块的完整性；未知文件和链接保守保留，候选默认24小时宽限。不完整清单没有可直接删除的对象。
 
-审计与物理回收是两个交付阶段。当前只读报告不含删除动作，仍待资产generation、子进程/写入租约及恢复删除账本的文件处理。新上传/检查点链路已有独立PG6项实际运行，包含原生备份到空库与空目录继续处理；它与旧基础CI分开归档。详见[规格104](../product/104-long-pdf-processing-and-source-lifecycle.md)和[专项收据](../evidence/2026-10-24/long-pdf-audit-acceptance.json)。
+审计与物理回收是两个交付阶段。只读报告不含删除动作；资产状态及租约进展见下段，持久回收和恢复删除账本的文件处理仍待。新上传/检查点链路已有独立PG6项实际运行，包含原生备份到空库与空目录继续处理；它与旧基础CI分开归档。详见[规格104](../product/104-long-pdf-processing-and-source-lifecycle.md)和[专项收据](../evidence/2026-10-24/long-pdf-audit-acceptance.json)。
+
+后续独立分支已补`studioMaterialAssets`技术集合、取得文件租约后的最新generation检查、Node与Python分别持有的文件租约，以及永久上传撤销工具。它们是物理回收的前置基础；审计保护活进程，未知/死进程标记仍保留，尚无执行物理删除的worker。具体边界与双库并发、真实Python进程验证见[文件租约收据](../evidence/2026-10-24/long-pdf-write-fences-acceptance.json)。

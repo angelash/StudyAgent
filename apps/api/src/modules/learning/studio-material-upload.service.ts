@@ -8,7 +8,8 @@ import { assembleImmutableFile,bytesDigest,writeImmutableBytes } from '../../inf
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { assertMaterialAccess,studioMaterialView,materialTaskStatus,type StudioMaterialRecord } from './studio-material-access';
-import { studioMaterialFile,studioMaterialRoot } from './studio-material-storage';
+import { assertStudioAssetAvailable,withStudioSourceFileWrite,studioMaterialFile,studioMaterialRoot } from './studio-material-storage';
+import { withStudioFileLease } from '../../infrastructure/studio-file-coordination';
 import { materialVersion } from './source-course-selection';
 import { sourceDigest } from './source-course-content';
 
@@ -41,7 +42,7 @@ export class StudioMaterialUploadService {
     const existing=owned.find(row=>row.status==='uploading'&&row.requestHash===hash&&Date.parse(row.expiresAt)>Date.now());if(existing){this.record(user,existing.id,true);if((existing.aliases?.length??0)>=1000)throw new ConflictException('相同文件已有上传，请读取该记录继续');existing.aliases=[...(existing.aliases??[]),{key:command.requestKey,hash}];return this.view(existing);}
     if(this.store.select('studioMaterialUploads',{ownerUserId:user.id,status:'uploading'}).filter(row=>Date.parse(row.expiresAt)>Date.now()).length>=12)throw new BadRequestException('请先完成或取消现有上传');
     const now=new Date(),row:StudioMaterialUploadRecord={id:this.store.nextId('studio_upload'),ownerUserId:user.id,studentId:command.studentId??null,subject:command.subject??null,name,size:command.size,sha256:command.sha256,chunkSize:studioMaterialLimits.chunkBytes,chunks:[],status:'uploading',revision:0,createdAt:now.toISOString(),expiresAt:new Date(now.getTime()+studioMaterialLimits.expiresHours*3600000).toISOString(),completedAt:null,materialId:null,requestKey:command.requestKey,requestHash:hash,...(user.role==='student'?{guardianId:session.guardianId!,accessVersion:session.accessVersion!}:{})};
-    this.store.append('studioMaterialUploads',row);return this.view(row);
+    assertStudioAssetAvailable(this.store,row.sha256);this.store.append('studioMaterialUploads',row);return this.view(row);
   }
   get(user:InMemoryUserAccount,id:string){return this.view(this.record(user,id));}
   async material(user:InMemoryUserAccount,id:string){const row=this.store.find('studioSourceMaterials',{id});if(!row)throw new NotFoundException('来源资料不存在');assertMaterialAccess(user,row,this.students);const material=studioMaterialView(row,true);if(row.processingTaskId)material.status=materialTaskStatus(row,(await this.store.tasks.get(row.processingTaskId))?.state);return{material,version:materialVersion(row)};}
@@ -56,14 +57,15 @@ export class StudioMaterialUploadService {
     const row=this.record(user,id,true);if(row.status!=='uploading')throw new ConflictException('上传已经结束');
     if(!Number.isSafeInteger(index)||index<0||index>=Math.ceil(row.size/row.chunkSize)||!Buffer.isBuffer(body)||body.length!==Math.min(row.chunkSize,row.size-index*row.chunkSize))throw new BadRequestException('分块序号或大小不匹配，请重新选择相同原文件');
     const sha256=bytesDigest(body),prior=row.chunks.find(chunk=>chunk.index===index);if(prior){if(prior.sha256!==sha256)throw new ConflictException('这个分块已写入不同内容');return this.view(row);}
-    await writeImmutableBytes(this.chunkPath(id,index,sha256),body);row.chunks.push({index,sha256,size:body.length});row.chunks.sort((a,b)=>a.index-b.index);row.revision++;return this.view(row);
+    await withStudioFileLease(studioMaterialRoot(),'upload',row.id,()=>writeImmutableBytes(this.chunkPath(id,index,sha256),body));row.chunks.push({index,sha256,size:body.length});row.chunks.sort((a,b)=>a.index-b.index);row.revision++;return this.view(row);
   }
   cancel(user:InMemoryUserAccount,id:string,input:unknown){const row=this.record(user,id),command=validate(z.object({expectedRevision:z.number().int().min(0)}).strict(),input);if(row.status==='cancelled')return this.view(row);if(row.status!=='uploading'||row.revision!==command.expectedRevision)throw new ConflictException('上传状态已变化，请读取保存状态');row.status='cancelled';row.revision++;return this.view(row);}
   async complete(user:InMemoryUserAccount,id:string){
     const row=this.record(user,id,true);if(row.status==='cancelled')throw new ConflictException('上传已取消，请重新开始');
     if(row.status==='completed'){const material=this.store.find('studioSourceMaterials',{id:row.materialId});if(!material)throw new NotFoundException('对应资料已不可用');assertMaterialAccess(user,material,this.students);return{upload:this.view(row),material:studioMaterialView(material),version:materialVersion(material)};}
     if(row.chunks.length!==Math.ceil(row.size/row.chunkSize))throw new BadRequestException('还有分块未上传，请继续上传');
-    await assembleImmutableFile({size:row.size,sha256:row.sha256,target:studioMaterialFile(row.sha256),chunks:row.chunks.map(chunk=>({...chunk,path:this.chunkPath(row.id,chunk.index,chunk.sha256)})),validHeader:header=>header.subarray(0,5).toString()==='%PDF-'});
+    assertStudioAssetAvailable(this.store,row.sha256);
+    await withStudioFileLease(studioMaterialRoot(),'upload',row.id,()=>withStudioSourceFileWrite(this.store,row.sha256,()=>assembleImmutableFile({size:row.size,sha256:row.sha256,target:studioMaterialFile(row.sha256),chunks:row.chunks.map(chunk=>({...chunk,path:this.chunkPath(row.id,chunk.index,chunk.sha256)})),validHeader:header=>header.subarray(0,5).toString()==='%PDF-'})));
     const now=new Date().toISOString(),materialId=this.store.nextId('studio_material'),taskId=this.store.nextId('task'),payload={materialId,sha256:row.sha256};
     const material:StudioMaterialRecord={id:materialId,ownerUserId:user.id,studentId:row.studentId,subject:row.subject,kind:'pdf',filename:row.name,title:row.name.replace(/\.pdf$/iu,'').slice(0,180),sha256:row.sha256,byteSize:row.size,pageCount:0,pages:[],hasPageImages:false,status:'queued',processingTaskId:taskId,error:null,createdAt:now,updatedAt:now,processingAccess:row.guardianId?{guardianId:row.guardianId,accessVersion:row.accessVersion!}:undefined,processingPages:[]};
     this.store.append('studioSourceMaterials',material);await this.store.enqueueTask({id:taskId,kind:'studio.material.process',ownerUserId:user.id,requestKey:'material-upload:'+row.id,payloadHash:sourceDigest(payload),payload,createdAt:now,maxAttempts:2});row.materialId=materialId;row.status='completed';row.completedAt=now;row.revision++;return{upload:this.view(row),material:studioMaterialView(material),version:materialVersion(material)};

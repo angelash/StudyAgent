@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T04:11:48.475526+00:00",
+  "implementationBaseRevision": "dc6a73129f709a243b5db9cb97a2ad519e00cbc5",
+  "passed": true,
+  "status": "verified-file-fence-foundation-not-physical-collector",
+  "reports": {
+    "long-pdf-write-fences-sqlite.json": {
+      "sha256": "4b812d94f5039d20c08cf23756c545812bf7f0bda5f52059914b024f178308e3",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 72981.23706054688
+    },
+    "long-pdf-write-fences-postgres.json": {
+      "sha256": "c8295df53205bb4771b4bba43eb2a6eca264fb98807bce1f92fa9f19533b35af",
+      "passed": 6,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 61037.002685546875
+    },
+    "long-pdf-write-fences-postgres-expanded.json": {
+      "sha256": "a105126ad1bdfb87da0009b1e1becc0c2f79331c039276a547cbbe485e899e8d",
+      "passed": 11,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 76011.76025390625
+    },
+    "long-pdf-write-fences-compatibility.json": {
+      "sha256": "c68a6fbfafcd529432ac0c77a37f200d9583bdc015b9b65bfeee52d59489848a",
+      "passed": 47,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 18778.28271484375
+    },
+    "long-pdf-write-fences-tools.json": {
+      "sha256": "401660162576aed8900dda294c8898d37e17627967916cca516a76c7917b0db7",
+      "passed": true,
+      "auditTestsAtThatRevision": 8,
+      "pythonLeaseTests": 3,
+      "pythonCheckpointTests": 2
+    },
+    "long-pdf-write-fences-audit-final.json": {
+      "sha256": "781212d2593544077fa34987b29e9ca4c631b3d6a19065ee9583fef403ef5ce3",
+      "passed": 8,
+      "failed": 0
+    }
+  },
+  "initialFailure": {
+    "report": "long-pdf-write-fences-sqlite-initial.json",
+    "sha256": "0b84f95ccb9fbb56cf6ce475d6497345e8d2c508d95f696d7f53faa1c600c72e",
+    "failed": 1,
+    "reason": "Initial conflict test committed a read-only workspace. Corrected it to perform an actual stale material registration; final SQLite and PostgreSQL cases verify conflict and no late original write."
+  },
+  "sourceDigests": {
+    "apps/api/src/infrastructure/studio-file-coordination.ts": "974a1df77f38f1c411e8673f8413272de1a12276f911b455adf9a6a2316ccf96",
+    "apps/api/src/infrastructure/studio-file-coordination.test.ts": "973b033f0b45494779c106d95506b414bb1f8c4fbe0b6fe1ec6a878fec9421b9",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "a3918cc36ce4dcdd7a52997105c2a17880555e2359507d149dc9c817e9d7b9a8",
+    "apps/api/src/modules/learning/studio-material-storage.ts": "38230f2da24a97ac1ea96c39a6e75971ec8f6c7d1541cc37cdd03ca28646e1aa",
+    "apps/api/src/modules/learning/studio-material-upload.service.ts": "3d83af1632f41c8184eacfe5785aee5300471fbd453b267348c1f76d0864f32f",
+    "apps/api/src/modules/processing/processing-worker.service.ts": "d3b7fe9ca3fc85c5d5a741303f922b4b445e9d278d77965a7f17e3bc3a08baaa",
+    "scripts/processing/file_leases.py": "01fad4700360683b9a3acf7c8023443a298c900c9b810da128b1f919e3992369",
+    "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
+    "scripts/processing/test_file_leases.py": "a07803d42e2bde4d34b9a958a6dffefee350ceb46861c9eb7cae71ccca473688",
+    "scripts/operations/material-audit.cjs": "576dfab093725e39c7d3b6841eb1ffbbb89bef606858575be66733a0eb4ad981",
+    "scripts/operations/material-audit.test.cjs": "e3f81f2c92d7dd614ae28e01108b0003defbe9eae59db61b8dc2778508966707"
+  },
+  "previousIncrementCI": {
+    "runId": 40060236200,
+    "headSha": "dc6a73129f709a243b5db9cb97a2ad519e00cbc5",
+    "conclusion": "success",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40060236200"
+  },
+  "coverage": [
+    "Versioned SHA registration on new chunk completion and existing PDF/TXT import paths.",
+    "Write lease then fresh generation read prevents delayed stale requests writing bytes after an entire generation cycle. SQLite and actual PostgreSQL independent-store cases.",
+    "Parent Node worker and Python child retain independent process leases; real PDF checkpoint interruption and abrupt child exit.",
+    "Only own nonce marker is released; live and unknown markers protect files. Windows junctions refused.",
+    "Permanent upload revocation helper blocks late writes after chunks are removed. This helper is not yet scheduled by HTTP cancellation or privacy deletion.",
+    "Actual 120-page over-10MiB PDF, native PostgreSQL backup recovery into empty database and directory, page resume, guardian permissions and read-only integrity audit.",
+    "Legacy PDF/OCR/table/formula/studio, source-course, processing and privacy compatibility."
+  ],
+  "pending": [
+    "Persistent collector with reference transaction, purge ownership and resumable non-exhausting pending work.",
+    "Wire revocation only after committed cancellation/expiry/privacy deletion; sweep orphaned source and upload bytes.",
+    "Legacy page-file digest backfill and missing-file reporting.",
+    "Apply latest deletion ledger to restored source/upload files while retaining shared frozen sources.",
+    "Final specification 104 regression, merge and daemon release.",
+    "Full master-plan reference/UI/content/teacher/device/real learning acceptance."
+  ],
+  "productionRevision": "648a96d",
+  "productionChanged": false,
+  "qaClusterRestoredToInitialStoppedState": true,
+  "goalStatus": "active"
+}

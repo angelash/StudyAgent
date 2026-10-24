@@ -6,6 +6,7 @@ import os
 import re
 from pathlib import Path
 import sys
+from file_leases import file_lease
 
 VERSION = 'study-document-v3'
 STRUCTURE_VERSION = 'study-pdf-structure-v3'
@@ -184,6 +185,13 @@ def structure_progress(value, total, resumed):
 
 
 def pdf_structure(config):
+    if config.get('leaseRoot'):
+        with file_lease(config['leaseRoot']):
+            return _pdf_structure(config)
+    return _pdf_structure(config)
+
+
+def _pdf_structure(config):
     import fitz
     source = Path(config['input'])
     cache = Path(config['cache']) / STRUCTURE_VERSION
