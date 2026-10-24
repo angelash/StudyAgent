@@ -1,0 +1,2973 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T10:03:41.396649+00:00",
+  "sourceRevision": "2960d16b0015d5f42359f07c458a411e0f1d8342",
+  "implementationRevision": "a3ba56cc7e7ec02905036f5b573602b15506a661",
+  "branch": "feat/resumable-long-pdf",
+  "purpose": "Reconcile the complete development plan, progress and follow-up work.",
+  "method": "Cross-check all 72 requirement texts and statuses against current generated design/catalog, archived acceptance, selected live source inspection and final CI. Not an exhaustive per-function code review or fresh runtime/content/human acceptance.",
+  "snapshots": {
+    "doc/design/feature-catalog.json": {
+      "sha256WithNormalizedLf": "905f83303bbaa0ff09c4a02b981cd11a1e6bced5aa6dd3ae8d6839e4a1efec8b"
+    },
+    "doc/design/generated/source-inventory.json": {
+      "sha256WithNormalizedLf": "c40baa708e963b409b07a90bc2e5a610dbc5db9c427b15d49863aac50dccd06e"
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "sha256WithNormalizedLf": "4bbeb13ee007f54736cc01869dcc4567d48cfc71b63b59306cadeaea3e19b88c"
+    }
+  },
+  "ledgerSha256WithNormalizedLf": "e695391fcf79b1ac78e28673593ae97098a34d50e7b18882edcb1d15389bbf2a",
+  "countsBefore": {
+    "implemented": 11,
+    "in_progress": 20,
+    "planned": 41
+  },
+  "countsAfter": {
+    "implemented": 11,
+    "in_progress": 46,
+    "planned": 15,
+    "verified": 0,
+    "blocked": 0
+  },
+  "requirements": 72,
+  "correctedStatuses": 26,
+  "completionPercentage": null,
+  "completionPercentageReason": "Requirement statuses, feature counts and test counts are not a product completion rate.",
+  "latestCompletedCi": {
+    "runId": "40082706606",
+    "headSha": "62322b2317fb3b2beaf8570daa7ff88ff626a5be",
+    "status": "completed",
+    "conclusion": "success",
+    "receipt": "doc/evidence/2026-10-24/original-repair-files-ci.json"
+  },
+  "mainWorktree": {
+    "branch": "main",
+    "headShort": "7ca4b71",
+    "preservedDirtyPaths": [
+      ".env.example",
+      "apps/web/next.config.ts",
+      "doc/product/87-local-windows-daemon.md",
+      "ecosystem.config.cjs",
+      "scripts/operations/start-daemon.ps1"
+    ]
+  },
+  "runtimeBoundary": {
+    "latestArchivedDaemonHead": "648a96d",
+    "liveRuntimeCheckedThisAudit": false,
+    "developmentBranchDeployed": false
+  },
+  "productComplete": false,
+  "milestones": [
+    "M0 durable original repair, final long-PDF acceptance and deployment",
+    "M1 complete classroom and reference-state parity",
+    "M2 course lifecycle, input controls and content workflow",
+    "M3 atomic assessment, falsifiable diagnosis and guidance",
+    "M4 complete textbook and GESP curriculum coverage",
+    "M5 paper workflows and full asset reconciliation",
+    "M6 AI, inspectable memory and calendar continuity",
+    "M7 real devices, real spaced learning and final handoff"
+  ],
+  "excluded": [
+    "billing",
+    "Marketplace",
+    "school OAuth",
+    "institutional tenancy",
+    "school background sync",
+    "bidirectional school grades and homework writeback"
+  ],
+  "items": [
+    {
+      "id": "XP-A01",
+      "area": "A",
+      "title": "统一学习首页",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有统一首页及成人/学生身份入口，真人入口可用性未完全验收。",
+      "fullRequirementAndAcceptance": "家长、学生、教师/管理员可从`/learn`进入适合其身份的学习入口；无孩子的成人能直接学独立课程。验收：真实身份访问、空档案与有档案均有可执行操作，学生没有家庭管理入口。",
+      "existingFeatureIds": [
+        "LEARN-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-A02",
+      "area": "A",
+      "title": "档案与学科上下文",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有账号隔离上下文、URL优先级和过期响应保护，完整旧页面矩阵待验。",
+      "fullRequirementAndAcceptance": "URL、标签页恢复与授权列表有明确优先级；跨页面链接携带上下文，换号/退出清理选择。验收：两孩子三学科、刷新/前后退、无效ID、撤权和延迟响应均不串数据。",
+      "existingFeatureIds": [
+        "LEARN-07",
+        "AUTH-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/students/students.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "apps/api/src/modules/students/student-access.integration.test.ts",
+        "apps/api/src/product-safety.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-A03",
+      "area": "A",
+      "title": "一个主要下一步",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有只读下一步编排，不会读首页即建活动，真人理解度待验。",
+      "fullRequirementAndAcceptance": "按未完成评测、到期复测、监护决定、训练与课程断点生成可解释行动。验收：每种状态进入准确对象，暂停/失效计划不推荐继续，访问首页不创建活动。",
+      "existingFeatureIds": [
+        "LEARN-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-A04",
+      "area": "A",
+      "title": "今日负担与次要行动",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有预计负担、状态与可展开待办，实际负担及所有状态仍待核查。",
+      "fullRequirementAndAcceptance": "显示当前范围、预计题量/时长、保存状态和可展开待办；未确认范围先引导确认。验收：预计与实际活动约定一致，未知值不伪造，首屏不堆全部报告字段。",
+      "existingFeatureIds": [
+        "LEARN-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-A05",
+      "area": "A",
+      "title": "全状态与身份边界",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有错误/撤权/换号与授权负例，完整中途状态和设备待验。",
+      "fullRequirementAndAcceptance": "加载、无数据、无权限、超时、版本冲突、重试与换号均有正确界面。验收：失败不显示成功，旧孩子数据立即清空，错误恢复不重复写入。",
+      "existingFeatureIds": [
+        "LEARN-07",
+        "AUTH-03"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/auth/auth.controller.ts",
+        "apps/api/src/modules/auth/auth.service.ts",
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/api/src/modules/students/student-access.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "apps/api/src/modules/students/student-access.integration.test.ts",
+        "apps/api/src/product-safety.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-A06",
+      "area": "A",
+      "title": "旧入口与导航统一",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有旧入口衔接和上下文，任意旧页面中途返回仍待全量核对。",
+      "fullRequirementAndAcceptance": "现有家长、诊断、今日、工作台、资料入口互相衔接并保留地址兼容。验收：从每条主路径进入/返回保留档案学科，学生按钮与实际资格一致。",
+      "existingFeatureIds": [
+        "LEARN-07",
+        "LEARN-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/api/src/modules/progress/progress.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-23/learning-home-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B01",
+      "area": "B",
+      "title": "课程列表完整筛选",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "课程组合筛选及地址恢复已接入，全身份和真实可用性验收不足。",
+      "fullRequirementAndAcceptance": "搜索、类型、进行中/完成、来源和最近条件一致工作。验收：成人/小学/编程课程身份清楚，刷新恢复条件，无结果可恢复筛选。",
+      "existingFeatureIds": [
+        "STUDIO-01"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/web/app/studio/course-library-state.ts",
+        "apps/web/app/studio/course-library.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B02",
+      "area": "B",
+      "title": "创建与蓝图确认",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "蓝图预览确认及资料生成已有实现，长来源/语言/完整质量仍未验收。",
+      "fullRequirementAndAcceptance": "目标、资料、语言、预算、单元讲次及缺口可预览修改后确认。验收：取消不建正式课，修改使旧预览失效，重复确认只建一份。",
+      "existingFeatureIds": [
+        "STUDIO-02",
+        "STUDIO-21",
+        "STUDIO-23"
+      ],
+      "sourceReferences": [
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-compiler.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course-selection.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/api/src/modules/learning/studio-course.ts",
+        "apps/web/app/studio/course-builder.css",
+        "apps/web/app/studio/course-builder.tsx",
+        "apps/web/app/studio/source-courses/compilation-panel.tsx",
+        "apps/web/app/studio/source-courses/compilation.css",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "packages/contracts/src/source-course-compilation.ts",
+        "packages/contracts/src/source-course.ts",
+        "scripts/qa/run-source-course-browser.cjs",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "tests/e2e/source-course-long.spec.ts",
+        "tests/e2e/source-course.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B03",
+      "area": "B",
+      "title": "完整课程导航",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "目录到学习/练习/项目已有连接，全部返回位置和资料状态待补。",
+      "fullRequirementAndAcceptance": "Learn、Practice、资料、项目和单元核查同目录。验收：各活动返回原单元面板，触屏可查看目标，私有答案不随目录返回。",
+      "existingFeatureIds": [
+        "STUDIO-03",
+        "STUDIO-06",
+        "STUDIO-20"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/api/src/modules/learning/course-project-content.ts",
+        "apps/api/src/modules/learning/course-project.service.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css",
+        "apps/web/app/studio/projects/projects.css",
+        "apps/web/app/studio/projects/workbench.tsx"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B04",
+      "area": "B",
+      "title": "进度语义与继续学习",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "阅读/辅助/练习/项目分轨及冻结断点已有，全部活动恢复仍待核查。",
+      "fullRequirementAndAcceptance": "阅读、练习、辅助与独立测量分别显示；定位实际断点。验收：重开当前课句、当前题与项目草稿均准确，不把看完写为稳定掌握。",
+      "existingFeatureIds": [
+        "STUDIO-04",
+        "STUDIO-06",
+        "STUDIO-20"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/api/src/modules/learning/course-project-content.ts",
+        "apps/api/src/modules/learning/course-project.service.ts",
+        "apps/web/app/studio/classroom/captions.css",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css",
+        "apps/web/app/studio/projects/projects.css",
+        "apps/web/app/studio/projects/workbench.tsx",
+        "packages/contracts/src/classroom-speech.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "tests/e2e/classroom-captions.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B05",
+      "area": "B",
+      "title": "来源材料到课程",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "来源选页、候选编辑、确认与引用已接入，全教材映射/语义质量待验。",
+      "fullRequirementAndAcceptance": "选原页、教材课时和知识目标生成有依据课程；保留资料版本。验收：点击来源到对应页，缺映射显式阻止正式测量，不混入旧版本正文。",
+      "existingFeatureIds": [
+        "STUDIO-21",
+        "STUDIO-23"
+      ],
+      "sourceReferences": [
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-compiler.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course-selection.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/web/app/studio/source-courses/compilation-panel.tsx",
+        "apps/web/app/studio/source-courses/compilation.css",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "packages/contracts/src/source-course-compilation.ts",
+        "packages/contracts/src/source-course.ts",
+        "scripts/qa/run-source-course-browser.cjs",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "tests/e2e/source-course-long.spec.ts",
+        "tests/e2e/source-course.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-B06",
+      "area": "B",
+      "title": "课程包与版本变更",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "导入/归档/冻结快照和恢复已有基础，完整修订撤回影响及媒体生命周期待补。",
+      "fullRequirementAndAcceptance": "课程导入、修订、撤回、归档有影响预览与版本。验收：新课程使用新版本，旧课堂可恢复旧快照，删除不造成悬空媒体。",
+      "existingFeatureIds": [
+        "CUR-08",
+        "STUDIO-21",
+        "OPS-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "packages/contracts/src/source-course.ts",
+        "scripts/gesp/backup_archive.py",
+        "scripts/operations/backup.cjs",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "scripts/qa/run-source-course-browser.cjs",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "tests/e2e/source-course.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/course-library-acceptance.json",
+        "doc/evidence/2026-10-24/course-blueprint-acceptance.json",
+        "doc/evidence/2026-10-24/source-compilation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C01",
+      "area": "C",
+      "title": "完整课堂状态机",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "句子时序和暂停/取消已有，全部播放插问失败完成状态未完整验收。",
+      "fullRequirementAndAcceptance": "准备、等待、播放、暂停、插问、检查点、失败、完成使用同一时序。验收：音频结束驱动推进、暂停无延迟跳步、停止中断在途请求。",
+      "existingFeatureIds": [
+        "STUDIO-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/captions.css",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "packages/contracts/src/classroom-speech.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "tests/e2e/classroom-captions.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C02",
+      "area": "C",
+      "title": "提炼板书与逐句字幕",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "字幕按句、板书按项已有，全部知识内容与声音同步仍待逐状态核对。",
+      "fullRequirementAndAcceptance": "讲稿和板书独立，板书逐行/项、字幕当前完整句。验收：长句语义拆分、重放/静音/倍速不堆字幕、不逐字抄讲稿。",
+      "existingFeatureIds": [
+        "STUDIO-04",
+        "STUDIO-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/captions.css",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "packages/contracts/src/classroom-speech.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "tests/e2e/classroom-captions.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C03",
+      "area": "C",
+      "title": "插问与自适应讲法",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "当前节点插问和补充板书已有，换例子/降语言/补先修完整策略未交付。",
+      "fullRequirementAndAcceptance": "插问绑定当前节点和证据，能换例子、降低语言难度、补先修和对照表征。验收：回答有依据、笔记去重、原课停在原句、学习者决定继续。",
+      "existingFeatureIds": [
+        "STUDIO-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C04",
+      "area": "C",
+      "title": "音色、语速与听感",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "音色/倍速/静音和取消已有，真实听感及手机打断仍待验收。",
+      "fullRequirementAndAcceptance": "选音色、倍速、静音、重试与偏好恢复；句间连续。验收：真实音轨试听、手机播放/打断、配置缺失可文字继续，失败不静默换供应商。",
+      "existingFeatureIds": [
+        "AI-05",
+        "STUDIO-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/captions.css",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "packages/contracts/src/classroom-speech.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "tests/e2e/classroom-captions.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C05",
+      "area": "C",
+      "title": "工具与多端布局",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "工具与三档模拟视口已有，真实触屏/辅助技术及全部细节待补。",
+      "fullRequirementAndAcceptance": "缩放、翻页、背景、字体、对话宽度、新手引导与键盘均可用。验收：三档视口与真实触屏，字幕/操作不遮挡，焦点和减少动画正确。",
+      "existingFeatureIds": [
+        "STUDIO-08"
+      ],
+      "sourceReferences": [],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-C06",
+      "area": "C",
+      "title": "保存、导出与安全分享",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已揭示内容导出、离线图与断点已有，安全分享全生命周期待补。",
+      "fullRequirementAndAcceptance": "当前句、已出现板书、补充笔记和导出版本一致。验收：退出/重启/重开恢复，分享不含儿童私有对话与答案，失效分享不可读。",
+      "existingFeatureIds": [
+        "STUDIO-08",
+        "STUDIO-22"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.ts",
+        "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.service.ts",
+        "apps/web/app/studio/classroom/visuals.css",
+        "apps/web/app/studio/classroom/visuals.tsx",
+        "packages/contracts/src/classroom-visual.ts",
+        "tests/e2e/classroom-visual.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-caption-acceptance.json",
+        "doc/evidence/2026-10-23/classroom-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D01",
+      "area": "D",
+      "title": "受控图示表达",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "受控分数及课堂关系/流程图已有，要求的各类图示真实课程和审核待补。",
+      "fullRequirementAndAcceptance": "支持分数、数轴、关系、流程、比较、坐标/几何等教学表达。验收：每类有真实课程样例、缩放导出一致、图示含义经审核。",
+      "existingFeatureIds": [
+        "CUR-02",
+        "STUDIO-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/teaching-author.ts",
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "apps/web/app/studio/classroom/code-workbench.tsx",
+        "apps/web/app/studio/classroom/runner/route.ts",
+        "apps/web/components/teaching-guide.tsx"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D02",
+      "area": "D",
+      "title": "表格与公式结构",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "结构候选、人工核对和按句表格行已有，跨页/合并/复杂公式待标注验收。",
+      "fullRequirementAndAcceptance": "表格逐行/列、合并单元、手机滚动和公式结构可读。验收：原页/候选/渲染可对照，长公式不溢出，关键条件不截断。",
+      "existingFeatureIds": [
+        "STUDIO-12",
+        "STUDIO-13",
+        "STUDIO-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-pdf-structure.ts",
+        "apps/web/app/studio/classroom/captions.css",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "packages/contracts/src/classroom-speech.ts",
+        "scripts/processing/process_document.py",
+        "scripts/qa/classroom-caption-live.cjs",
+        "tests/e2e/classroom-captions.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D03",
+      "area": "D",
+      "title": "运行期生图",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "运行期生图及实际产物/任务取消恢复已有，完整条目证据仍不足。",
+      "fullRequirementAndAcceptance": "复用小九生图路径，以持久任务生成插画并保存来源和审核状态。验收：真实生成产物、取消/重试/重启、权限与任务去重，失败课堂继续。",
+      "existingFeatureIds": [
+        "AI-07",
+        "STUDIO-22"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/ai/classroom-image.service.test.ts",
+        "apps/api/src/modules/ai/classroom-image.service.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.ts",
+        "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.service.ts",
+        "apps/web/app/studio/classroom/visuals.css",
+        "apps/web/app/studio/classroom/visuals.tsx",
+        "packages/contracts/src/classroom-visual.ts",
+        "scripts/operations/setup-imagegen.cjs",
+        "scripts/processing/requirements-imagegen.txt",
+        "scripts/qa/classroom-image-live.cjs",
+        "tests/e2e/classroom-visual.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D04",
+      "area": "D",
+      "title": "教学视觉选择与后补",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "当前节点配图选择与原页已有，自动选择/原页参考/图像编辑迭代待补。",
+      "fullRequirementAndAcceptance": "按知识需求选择图表、原页或插画，先可读后补图。验收：图像插回正确节点、不挤走当前操作，精确测量图不用不可靠位图替代。",
+      "existingFeatureIds": [
+        "STUDIO-22",
+        "STUDIO-14"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.ts",
+        "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-pdf-whiteboard.ts",
+        "apps/web/app/studio/classroom/visuals.css",
+        "apps/web/app/studio/classroom/visuals.tsx",
+        "packages/contracts/src/classroom-visual.ts",
+        "tests/e2e/classroom-visual.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D05",
+      "area": "D",
+      "title": "浏览器代码实验",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "JS worker编辑/运行/停止/限时限输出已有，输入和草稿恢复及手机体验待补。",
+      "fullRequirementAndAcceptance": "JS编辑、输入、运行、停止、错误和输出有完整课堂路径。验收：超时/限输出/隔离负例、刷新恢复、手机编辑与重复运行。",
+      "existingFeatureIds": [
+        "STUDIO-07"
+      ],
+      "sourceReferences": [
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "apps/web/app/studio/classroom/code-workbench.tsx",
+        "apps/web/app/studio/classroom/runner/route.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-D06",
+      "area": "D",
+      "title": "C++独立执行体验",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "真实隔离C++和分层反馈已有，完整课堂路径/设备与分级课程待补。",
+      "fullRequirementAndAcceptance": "GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真实Linux/WSL、隐藏测试不泄露、工具链失效有明确状态、不降级宿主执行。",
+      "existingFeatureIds": [
+        "GESP-04",
+        "GESP-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/gesp/gesp.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp.integration.test.ts",
+        "apps/api/src/modules/gesp/isolated-runner.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-visual-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E01",
+      "area": "E",
+      "title": "专用答题交互",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "17类作答协议与控件已有，逐类键盘触屏媒体实机旅程待验。",
+      "fullRequirementAndAcceptance": "17类协议的适用题都有可用控件、草稿、反馈和恢复。验收：每类合法/错误/部分输入、键盘触屏、提交重放和媒体实机。",
+      "existingFeatureIds": [
+        "ASM-07",
+        "ASM-08",
+        "MEDIA-01",
+        "MEDIA-02"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/student-media/student-media.service.ts",
+        "packages/contracts/src/answer-protocol.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/student-media/media-normalization.test.ts",
+        "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+        "apps/api/src/modules/student-media/student-media.integration.test.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E02",
+      "area": "E",
+      "title": "练习页面与反馈",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "完整练习反馈页面已有，全部内容与真人验收不足。",
+      "fullRequirementAndAcceptance": "题干/图/选项/进度/Check/Skip/助教形成完整流程。验收：提交前保密、提交后解释具体、提示辅助标记、反馈后下一动作。",
+      "existingFeatureIds": [
+        "STUDIO-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E03",
+      "area": "E",
+      "title": "逐级提示与不会",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "逐级帮助/不会/跳过/首次答案和辅助事实已有，全范围验收不足。",
+      "fullRequirementAndAcceptance": "提示从方向到关键步骤，支持跳过/不会与后续核查。验收：各级提示不混成独立成功，重复请求不增加层级或重复曝光。",
+      "existingFeatureIds": [
+        "STUDIO-06",
+        "ASM-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/product-smoke.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E04",
+      "area": "E",
+      "title": "成人完整Practice",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "60微课至少3题已有，逐题教师审核和结构独立性待验。",
+      "fullRequirementAndAcceptance": "60微课各有足够不同结构练习，当前单题模式补齐。验收：逐课内容审核、非仅换词换数、首课之外同样有图表与误区核查。",
+      "existingFeatureIds": [
+        "STUDIO-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E05",
+      "area": "E",
+      "title": "独立单元测验",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "60道单元新情境题已有，未曝光独立题族及效果待验。",
+      "fullRequirementAndAcceptance": "每单元有未曝光独立题族、固定规则与可追溯反馈。验收：练习/复习/测验区别明确，复用课堂题不算独立增量。",
+      "existingFeatureIds": [
+        "STUDIO-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-E06",
+      "area": "E",
+      "title": "项目阶段与量规",
+      "previousStatus": "implemented",
+      "status": "implemented",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "五项目15阶段/草稿修订/人工复核已有，附件、量规教师审核和真人待验。",
+      "fullRequirementAndAcceptance": "项目有阶段目标、草稿/提交/修订、素材证据与审核量规。验收：五阶段成人项目及课程项目真实产物恢复，AI建议与正式结论分离。",
+      "existingFeatureIds": [
+        "STUDIO-20"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/course-project-content.ts",
+        "apps/api/src/modules/learning/course-project.service.ts",
+        "apps/web/app/studio/projects/projects.css",
+        "apps/web/app/studio/projects/workbench.tsx"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/classroom-practice-acceptance.json",
+        "doc/evidence/2026-10-24/classroom-review-acceptance.json",
+        "doc/evidence/2026-10-24/course-project-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F01",
+      "area": "F",
+      "title": "全范围课时覆盖清单",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "教材登记/章节/映射工作台已有，三科六年级逐课时完整覆盖待补。",
+      "fullRequirementAndAcceptance": "小学三科六年级按版本/学期/课时展开正文、映射、教学和测量状态。验收：18格之外继续到具体课时，缺源/待审保留，不能整册一键通过。",
+      "existingFeatureIds": [
+        "CUR-06",
+        "CUR-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F02",
+      "area": "F",
+      "title": "原子知识深拆与先修",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "258知识点/先修/分项观察已有，全部课时可观察深拆和教师核对待补。",
+      "fullRequirementAndAcceptance": "按可观察行为拆分目标，绑定先修和评分观察。验收：教师核对可测性、无环、综合题上游阻断与独立探针正确。",
+      "existingFeatureIds": [
+        "CUR-01",
+        "CUR-03",
+        "MEA-03"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F03",
+      "area": "F",
+      "title": "完整课时教学包",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "教学卡和资料课程教学包已有，全课时内容完整性/语义/教师审核待补。",
+      "fullRequirementAndAcceptance": "每课具备目标/激活/概念/示例/误区/图示/检查/练习/总结/保持。验收：逐课审核与浏览器学习，字段存在不等于内容准确。",
+      "existingFeatureIds": [
+        "CUR-02",
+        "STUDIO-21",
+        "STUDIO-23"
+      ],
+      "sourceReferences": [
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-author.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-compiler.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course-selection.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/web/app/studio/source-courses/compilation-panel.tsx",
+        "apps/web/app/studio/source-courses/compilation.css",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "apps/web/components/teaching-guide.tsx",
+        "packages/contracts/src/source-course-compilation.ts",
+        "packages/contracts/src/source-course.ts",
+        "scripts/qa/run-source-course-browser.cjs",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "tests/e2e/source-course-long.spec.ts",
+        "tests/e2e/source-course.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F04",
+      "area": "F",
+      "title": "题族多样性与素材预算",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "题族规范化和当前素材预算已有，深度多样性/跨表征/评分金样本待扩。",
+      "fullRequirementAndAcceptance": "理解/执行/迁移/保持有独立结构，变式不冒充新题族。验收：题族人工抽核、预算不足行为、评分金样本与跨表征实例。",
+      "existingFeatureIds": [
+        "CUR-09",
+        "MEA-01"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/verification-materials.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F05",
+      "area": "F",
+      "title": "包格式与审核生产线",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "版本包、候选编辑、五门禁已有，完整撤回旧快照媒体和双库验收待补。",
+      "fullRequirementAndAcceptance": "内容以版本化课程包导入编辑审核发布，保留生成信息与原件。验收：重复导入、撤回、旧快照、五门禁和媒体完整性双库验证。",
+      "existingFeatureIds": [
+        "CUR-08",
+        "CONTENT-10",
+        "STUDIO-21"
+      ],
+      "sourceReferences": [
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/api/src/modules/library/measurement-content.service.ts",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "packages/contracts/src/source-course.ts",
+        "scripts/qa/run-source-course-browser.cjs",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "tests/e2e/source-course.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-F06",
+      "area": "F",
+      "title": "GESP1～4级完整课程",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "114研究点/49原创试点为前置基础，完整GESP1至4级课程仍待实施。",
+      "fullRequirementAndAcceptance": "从研究和49试点任务扩展完整目标、教学、调试、迁移与保持。验收：逐目标真人内容审核、真实隔离测试、独立学习与复测结果。",
+      "existingFeatureIds": [
+        "GESP-01",
+        "GESP-02",
+        "GESP-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/gesp/gesp.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp.integration.test.ts",
+        "apps/api/src/modules/gesp/isolated-runner.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/source-course-pipeline-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G01",
+      "area": "G",
+      "title": "全量资料复用对账",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "已有部分资产迁入/索引与恢复记录，全资产字节/缺口/独立备份未重新对账。",
+      "fullRequirementAndAcceptance": "核对研究工程与本项目全部可复用原卷、媒体、模型、工具、教材和证据。验收：来源/目标清单、一致性与哈希、缺口、独立备份，不只复制样例。",
+      "existingFeatureIds": [
+        "CONTENT-06",
+        "CUR-06",
+        "OPS-09"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+        "apps/api/src/modules/library/library.service.ts",
+        "scripts/operations/package-source.py",
+        "scripts/qa/run-browser-acceptance.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G02",
+      "area": "G",
+      "title": "一题/整页/教辅采集分流",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "文件上传为前置基础，手机一题/整页/教辅采集完整分流仍待实施。",
+      "fullRequirementAndAcceptance": "相机相册、多页PDF、已知题卷和教材有明确入口。验收：真实手机权限、取消、旋转、模糊、页序与中断恢复。",
+      "existingFeatureIds": [
+        "CONTENT-04",
+        "STUDIO-11"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-material-access.ts",
+        "apps/api/src/modules/question-workspace/question-import.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G03",
+      "area": "G",
+      "title": "原图与处理图",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "原件保留和擦除预览已有，裁剪旋转多页及原图处理图恢复链待补。",
+      "fullRequirementAndAcceptance": "裁剪、旋转、去笔迹和修订不覆盖原件。验收：变换可恢复、低清和阴影样本、误擦内容对照、隐私元数据清理。",
+      "existingFeatureIds": [
+        "OPS-05",
+        "CONTENT-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/modules/processing/import-files.service.ts",
+        "apps/api/src/modules/processing/processing.controller.ts",
+        "apps/api/src/modules/question-workspace/question-import.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G04",
+      "area": "G",
+      "title": "OCR表格公式恢复",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "PDF OCR/表格公式候选与人工核对已有，复杂结构及手写标注验收未完成。",
+      "fullRequirementAndAcceptance": "按区域保留文字、表格单元和公式原图/候选/确认。验收：扫描混排、跨页表、合并单元、复杂公式与手写样本人工标注对比。",
+      "existingFeatureIds": [
+        "STUDIO-12",
+        "STUDIO-13"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-pdf-structure.ts",
+        "scripts/processing/process_document.py"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G05",
+      "area": "G",
+      "title": "教材页题答案层级",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "书章/原页/题/答案和缺失状态有基础，课时页题精确全量互通待补。",
+      "fullRequirementAndAcceptance": "书→章→课时→页→题/答案与原页引用互通。验收：准确版本年份、缺页、无答案、正文未取得与来源冲突均显示真实状态。",
+      "existingFeatureIds": [
+        "CUR-06",
+        "CONTENT-07",
+        "STUDIO-14"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-pdf-whiteboard.ts",
+        "apps/api/src/modules/library/library.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-G06",
+      "area": "G",
+      "title": "文档任务与人工核对",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "长PDF页级任务/核对/重试/回收已有，持久原件修复与最终产品交付待补。",
+      "fullRequirementAndAcceptance": "上传、进度、取消、失败重试、页级核对与修改影响闭环。验收：重启/重复提交/旧页确认/撤权，不发布过期识别结果。",
+      "existingFeatureIds": [
+        "STUDIO-24",
+        "STUDIO-13",
+        "OPS-10"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.ts",
+        "apps/api/src/infrastructure/studio-file-coordination.ts",
+        "apps/api/src/infrastructure/studio-file-inventory.ts",
+        "apps/api/src/infrastructure/studio-file-paths.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-integrity.service.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.service.ts",
+        "apps/api/src/modules/learning/studio-material-storage.ts",
+        "apps/api/src/modules/learning/studio-material-upload.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-upload.service.ts",
+        "apps/web/app/studio/source-courses/pdf-material-files.tsx",
+        "apps/web/app/studio/source-courses/pdf-material.tsx",
+        "packages/contracts/src/studio-material-upload.ts",
+        "scripts/operations/material-audit.cjs",
+        "scripts/processing/file_leases.py",
+        "scripts/processing/process_document.py",
+        "scripts/qa/fixtures/original-repair-child.cjs",
+        "tests/e2e/pdf-material.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/long-pdf-foundation-acceptance.json",
+        "doc/evidence/2026-10-24/material-integrity-acceptance.json",
+        "doc/evidence/2026-10-24/original-repair-files-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H01",
+      "area": "H",
+      "title": "多维试卷与资源检索",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "服务端题卷筛选分页已有，完整筛选/记条件和大索引实测待补。",
+      "fullRequirementAndAcceptance": "年级/学科/版本/地区/类型/年份/完整度服务端分页，记住条件。验收：大索引实测、空结果、缺题卷与只有预览资源不误导。",
+      "existingFeatureIds": [
+        "CONTENT-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/library/library.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H02",
+      "area": "H",
+      "title": "个人组织与选题清单",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "收藏及错题组织已有，个人文件夹/最近/跨卷选题完整链待补。",
+      "fullRequirementAndAcceptance": "收藏、文件夹、最近阅读/下载和跨卷选题独立保存。验收：重复添加、移动删除、撤回来源、多孩子隔离与恢复。",
+      "existingFeatureIds": [
+        "CONTENT-08",
+        "LEARN-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/notebook.service.ts",
+        "apps/api/src/modules/library/library.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H03",
+      "area": "H",
+      "title": "整卷单题练习",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "原卷阅读打印为前置基础，整卷到逐题作答/反馈完整旅程仍待实施。",
+      "fullRequirementAndAcceptance": "整卷阅读、选题、分题作答、反馈与原卷定位连贯。验收：完整/部分/PDF卷分别走通，缺答案不自动评分。",
+      "existingFeatureIds": [
+        "CONTENT-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/library/library.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H04",
+      "area": "H",
+      "title": "错题整理与订正",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "错题标签/原证据/复做/新题验证已有，纸面与库内跨来源订正待深化。",
+      "fullRequirementAndAcceptance": "原始表现、标签、错误步骤、订正、复做、来源和计划关联。验收：不同来源题保持身份，提示/看答案后订正不算新独立成功。",
+      "existingFeatureIds": [
+        "LEARN-04",
+        "LEARN-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/learning/notebook.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H05",
+      "area": "H",
+      "title": "PDF/DOCX与打印",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "原卷及课堂浏览器打印/导出已有，异步PDF/DOCX排版与实体打印待补。",
+      "fullRequirementAndAcceptance": "题序、留白、答案分离、公式表格、页码来源可预览，异步产物受控下载。验收：实际渲染/打开及实体打印，无截断/丢图/错分页。",
+      "existingFeatureIds": [
+        "CONTENT-07",
+        "STUDIO-08"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/library/library.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-H06",
+      "area": "H",
+      "title": "异步中心与复习回流",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "底层持久任务已有，统一异步中心与导出历史/复习回流仍待实施。",
+      "fullRequirementAndAcceptance": "导出/处理记录可取消、恢复、重试，错题能进入新题复习。验收：完成文件真实存在且可读，任务成功不等于教学审核通过。",
+      "existingFeatureIds": [
+        "OPS-03",
+        "OPS-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/domain-event-bus.service.ts",
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/modules/processing/import-files.service.ts",
+        "apps/api/src/modules/processing/processing.controller.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I01",
+      "area": "I",
+      "title": "范围与蓝图低负担体验",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "年级教材进度范围/蓝图预算/冻结题组已有，新用户低负担界面待验。",
+      "fullRequirementAndAcceptance": "按年级/教材/进度确认范围，预览题量时长和未测缺口。验收：新用户理解流程、未学不混入、旧预览/曝光变化失效。",
+      "existingFeatureIds": [
+        "CUR-04",
+        "ASM-01",
+        "ASM-02"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I02",
+      "area": "I",
+      "title": "自适应与步骤观察深化",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "组内自适应和原子分项/原因探针已有，更多独立行为与预算分支待深化。",
+      "fullRequirementAndAcceptance": "预算内核查基础、先修、迁移、保持与显式分项。验收：路由理由可追溯、无题/待复核/提示分支正确、分项不重复计样本。",
+      "existingFeatureIds": [
+        "ASM-03",
+        "MEA-03",
+        "MEA-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/adaptive-routing.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I03",
+      "area": "I",
+      "title": "普通语言报告与证据",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "报告/证据展开/未知与下一步已有，普通语言和家长理解度待验。",
+      "fullRequirementAndAcceptance": "家长能看到已知/未知/待验证及单一主要下一步。验收：无证据不判弱、区间和版本可展开、报告重算不改原始答案。",
+      "existingFeatureIds": [
+        "ASM-11",
+        "MEA-04",
+        "LEARN-07"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/app/learn/screen.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I04",
+      "area": "I",
+      "title": "更多原因与反证探针",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "四类原因/替代解释/反证基础已有，更多解释和教师误报漏报验证待补。",
+      "fullRequirementAndAcceptance": "新错误解释先定义可观察条件、替代解释和反证，不直接给心理标签。验收：支持/冲突/反驳/无法判断、教师核对与后续重开。",
+      "existingFeatureIds": [
+        "MEA-04",
+        "MEA-05"
+      ],
+      "sourceReferences": [],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I05",
+      "area": "I",
+      "title": "个性指导与预算",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "指导确认/预算/训练/复测/复盘已有，卡点讲法与真实资源效果待深化。",
+      "fullRequirementAndAcceptance": "根据真实卡点选择讲法、资源、训练、成功标准与复测，家长确认修改。验收：资源可用、先修优先、日预算、暂停、旧定义不兼容和无模型降级。",
+      "existingFeatureIds": [
+        "PLAN-01",
+        "PLAN-02",
+        "PLAN-03",
+        "PLAN-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/guidance.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-I06",
+      "area": "I",
+      "title": "真实复测与干预复盘",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "技术复测队列和合成验证为基础，真实1/3/7/14日干预结果仍待开展。",
+      "fullRequirementAndAcceptance": "1/3/7/14日真实间隔、独立题族、前后可比、原因关闭/重开。验收：真实时间学生结果、保持失败、反向结果、不足样本均保留。",
+      "existingFeatureIds": [
+        "PLAN-03",
+        "PLAN-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/guidance.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J01",
+      "area": "J",
+      "title": "统一全模型路径",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "小九目录聊天/PDF/资料课程已接入，兼容分析/计划遗留路径仍未统一。",
+      "fullRequirementAndAcceptance": "逐项统一聊天/插问/计划/兼容分析/PDF的适配与能力目录。验收：各路径真实小调用、默认模型、视觉支持、持久选型和不可用原因。",
+      "existingFeatureIds": [
+        "AI-01",
+        "AI-03",
+        "AI-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/ai/codex-command.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J02",
+      "area": "J",
+      "title": "流式反馈与可靠取消",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "完整回复与请求取消为前置基础，面向浏览器的流式反馈未实现。",
+      "fullRequirementAndAcceptance": "首个可读状态及时显示，安全回复分段或增量，最终验证后保存。验收：取消/断网/重连/重试无重复消息，非法结构不成为正式指导。",
+      "existingFeatureIds": [
+        "AI-03"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/ai/codex-command.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J03",
+      "area": "J",
+      "title": "来源引用与上下文控制",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "授权证据引用/预算/原页已有，各调用超长和来源变更矩阵待验。",
+      "fullRequirementAndAcceptance": "模型只收到授权、相关、预算内证据；引用可点击原题/原页。验收：跨家庭负例、答案阶段保护、伪引用拒绝、超长上下文与资料变更。",
+      "existingFeatureIds": [
+        "AI-02",
+        "AI-06",
+        "STUDIO-23"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-compiler.service.ts",
+        "apps/api/src/modules/learning/source-course-selection.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/web/app/studio/source-courses/compilation-panel.tsx",
+        "apps/web/app/studio/source-courses/compilation.css",
+        "packages/contracts/src/source-course-compilation.ts",
+        "tests/e2e/source-course-long.spec.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J04",
+      "area": "J",
+      "title": "可检查学习记忆",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "业务证据投影式记忆已有，可检查来源/偏好/假设与删除影响待补。",
+      "fullRequirementAndAcceptance": "事实、偏好、未知、假设、来源和删除影响可查看。验收：不凭模型生成固定能力标签，修改/撤权/删除后新会话上下文同步。",
+      "existingFeatureIds": [
+        "LEARN-01"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "tests/e2e/learning-home.spec.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J05",
+      "area": "J",
+      "title": "连续日历与手动ICS",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "月周/完成重开/手动ICS已有，角色/时区/冲突完整矩阵待补。",
+      "fullRequirementAndAcceptance": "月周、确认/待处理、完成/重开、计划/订阅边界和手动同步闭环。验收：身份可见性、冲突、时区、全天跨日、批删范围和版本冲突。",
+      "existingFeatureIds": [
+        "STUDIO-17",
+        "STUDIO-18",
+        "STUDIO-19"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/ics-calendar.ts",
+        "apps/api/src/modules/learning/studio-integration.service.ts",
+        "apps/web/app/studio/calendar-board.tsx",
+        "apps/web/app/studio/workspace-dialog.tsx"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-J06",
+      "area": "J",
+      "title": "历史、下一问与跨会话恢复",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "工作台历史/持久助教和课堂断点已有，历史检索及下一问跨会话定位待补。",
+      "fullRequirementAndAcceptance": "历史可检索并恢复对象，推荐问题绑定当前目标。验收：换页/刷新/重启恢复，不因建议点击自动发送外部请求或改变学习事实。",
+      "existingFeatureIds": [
+        "STUDIO-01",
+        "AI-02"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/web/app/studio/course-library-state.ts",
+        "apps/web/app/studio/course-library.css"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-22/xiaojiu-all-models-acceptance.json",
+        "doc/evidence/2026-10-23/workspace-remediation-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K01",
+      "area": "K",
+      "title": "固定参考视觉验收",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "局部参考截图为前置基础，固定全状态像素差异矩阵尚未完成建设。",
+      "fullRequirementAndAcceptance": "页面状态矩阵、统一视口字体DPR与截图差异记录。验收：逐状态人工核对，差异明确修复或保留未完成，不以单图声称100%。",
+      "existingFeatureIds": [
+        "STUDIO-03",
+        "STUDIO-08"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "tests/e2e/classroom-practice.spec.ts",
+        "tests/e2e/classroom-review.spec.ts",
+        "tests/e2e/classroom.spec.ts",
+        "tests/e2e/course-builder.spec.ts",
+        "tests/e2e/course-library.spec.ts",
+        "tests/e2e/course-project.spec.ts",
+        "tests/e2e/studio.spec.ts",
+        "tests/e2e/workspace.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K02",
+      "area": "K",
+      "title": "真实设备与辅助技术",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "自动模拟和语义标签为前置基础，真实设备/读屏/触屏/听感仍待开展。",
+      "fullRequirementAndAcceptance": "手机/平板/桌面、键盘、读屏、相机和录音权限、听感。验收：设备型号/浏览器/步骤/结果可追溯，自动模拟不替代实机。",
+      "existingFeatureIds": [
+        "ASM-07",
+        "MEDIA-02"
+      ],
+      "sourceReferences": [
+        "packages/contracts/src/answer-protocol.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/student-media/media-normalization.test.ts",
+        "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+        "apps/api/src/modules/student-media/student-media.integration.test.ts",
+        "tests/e2e/product-smoke.spec.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K03",
+      "area": "K",
+      "title": "性能与长时稳定",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "运行指标和历史定向测试为基础，当前完整性能/长时课堂/泄漏实测待开展。",
+      "fullRequirementAndAcceptance": "页面、首个反馈、语音、文档处理、并发评测和长时课堂实测。验收：明确负载/机器/冷暖、资源泄漏与失败恢复，无凭空承诺指标。",
+      "existingFeatureIds": [
+        "OPS-06"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/infrastructure/runtime-metrics.service.ts",
+        "apps/api/src/modules/progress/progress.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K04",
+      "area": "K",
+      "title": "依赖自检与故障修复",
+      "previousStatus": "planned",
+      "status": "in_progress",
+      "changeReason": "Correcting existing partial implementation; no new feature delivery claimed.",
+      "observedFoundationAndRemaining": "部分能力/依赖探测已有，全新配置和全部可选能力故障修复矩阵待补。",
+      "fullRequirementAndAcceptance": "库/资产/CLI/语音/Python/OCR/FFmpeg/图像/C++分别检查。验收：全新配置及缺依赖场景给准确修复建议，普通学习不被可选能力阻断。",
+      "existingFeatureIds": [
+        "MEDIA-01",
+        "AI-05",
+        "GESP-04",
+        "OPS-05"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/modules/gesp/gesp.service.ts",
+        "apps/api/src/modules/processing/import-files.service.ts",
+        "apps/api/src/modules/processing/processing.controller.ts",
+        "apps/api/src/modules/student-media/student-media.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp.integration.test.ts",
+        "apps/api/src/modules/gesp/isolated-runner.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/student-media/media-normalization.test.ts",
+        "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+        "apps/api/src/modules/student-media/student-media.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K05",
+      "area": "K",
+      "title": "升级、守护与一致性恢复",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "双库原地续恢复、守护和回收已有，真实原件修复集成/最终交付/新机仍待。",
+      "fullRequirementAndAcceptance": "双库迁移、任务栅栏、库/媒体/资产备份、删除账本、守护重启。验收：独立空目录恢复并继续学习、旧任务不能覆盖新结果。",
+      "existingFeatureIds": [
+        "OPS-07",
+        "OPS-08",
+        "OPS-10"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.ts",
+        "apps/api/src/infrastructure/studio-file-coordination.ts",
+        "apps/api/src/infrastructure/studio-file-inventory.ts",
+        "apps/api/src/infrastructure/studio-file-paths.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.service.ts",
+        "scripts/gesp/backup_archive.py",
+        "scripts/operations/backup.cjs",
+        "scripts/operations/material-audit.cjs",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "scripts/processing/file_leases.py",
+        "scripts/qa/fixtures/original-repair-child.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-K06",
+      "area": "K",
+      "title": "隐私、安全与可维护性",
+      "previousStatus": "in_progress",
+      "status": "in_progress",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "权限/隐私/隔离负例及恢复防护已有，修复撤权收尾和服务拆分待补。",
+      "fullRequirementAndAcceptance": "权限负例、上传/渲染/代码隔离、日志脱敏和服务职责拆分。验收：跨家庭/撤权/答案泄漏负例，拆分不改变事务与快照语义。",
+      "existingFeatureIds": [
+        "AUTH-06",
+        "PRIVACY-03",
+        "OPS-10"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.ts",
+        "apps/api/src/infrastructure/studio-file-coordination.ts",
+        "apps/api/src/infrastructure/studio-file-inventory.ts",
+        "apps/api/src/infrastructure/studio-file-paths.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.service.ts",
+        "apps/api/src/modules/privacy/privacy-records.ts",
+        "apps/api/src/modules/privacy/privacy.service.ts",
+        "apps/api/src/modules/students/students.service.ts",
+        "scripts/operations/material-audit.cjs",
+        "scripts/processing/file_leases.py",
+        "scripts/qa/fixtures/original-repair-child.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+        "apps/api/src/modules/privacy/privacy.integration.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/students/student-access.integration.test.ts",
+        "apps/api/src/product-safety.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [
+        "doc/evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
+        "doc/evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+        "doc/evidence/2026-10-24/material-collection-acceptance.json"
+      ],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L01",
+      "area": "L",
+      "title": "教材与课堂逐项教师审核",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "审核工具是基础，要求范围逐课真人教师审核仍待完成。",
+      "fullRequirementAndAcceptance": "对要求范围每课内容、题目、映射、量规与先修有真实审核。验收：审核人、版本、原页和问题修订可核对，候选不当批准。",
+      "existingFeatureIds": [
+        "CUR-07",
+        "CONTENT-10"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/library/measurement-content.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L02",
+      "area": "L",
+      "title": "连续真实学习试用",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "自动旅程与真实时间门禁是基础，真人连续试用及实际间隔结果仍待开展。",
+      "fullRequirementAndAcceptance": "家长/学生连续使用覆盖真实1/3/7/14日学习和复测。验收：输入障碍、求助/退出、实际负担、成功和失败均保留，不能合成替代。",
+      "existingFeatureIds": [
+        "PLAN-03",
+        "PLAN-04"
+      ],
+      "sourceReferences": [
+        "apps/api/src/modules/diagnostics/guidance.service.ts"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L03",
+      "area": "L",
+      "title": "诊断与评分有效性检查",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "规则可解释和证据留存是基础，教师评分分歧/误报漏报效度研究仍待开展。",
+      "fullRequirementAndAcceptance": "教师对照误报/漏报、评分分歧和验证结论改变。验收：原始结果、替代解释、样本边界和规则修订，不宣称已建立常模。",
+      "existingFeatureIds": [
+        "MEA-02",
+        "MEA-04"
+      ],
+      "sourceReferences": [],
+      "existingTestReferences": [
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L04",
+      "area": "L",
+      "title": "全资产与安装交接",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有部署和恢复工具，全部资产交接及实际新环境安装验收仍待完成。",
+      "fullRequirementAndAcceptance": "所有采用来源有迁入、缺口与备份记录，换机器可安装并使用。验收：实际新环境、资源完整性、缺源说明与恢复演练。",
+      "existingFeatureIds": [
+        "OPS-07",
+        "OPS-09"
+      ],
+      "sourceReferences": [
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "scripts/gesp/backup_archive.py",
+        "scripts/operations/backup.cjs",
+        "scripts/operations/package-source.py",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "scripts/qa/run-browser-acceptance.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L05",
+      "area": "L",
+      "title": "跨需求最终审计",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "当前分项核对不是最终验收，全部原始目标/72需求最终审计仍待完成。",
+      "fullRequirementAndAcceptance": "合并用户目标、原始需求与本账本逐项核对。验收：每要求对应当前代码、运行、内容和所需真人证据，缺失/间接证据保留未完成。",
+      "existingFeatureIds": [
+        "OPS-09"
+      ],
+      "sourceReferences": [
+        "scripts/operations/package-source.py",
+        "scripts/qa/run-browser-acceptance.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    },
+    {
+      "id": "XP-L06",
+      "area": "L",
+      "title": "全量归档与完成声明",
+      "previousStatus": "planned",
+      "status": "planned",
+      "changeReason": "Full acceptance boundary retained.",
+      "observedFoundationAndRemaining": "已有分批归档，本轮完整产品归档/提交运行一致与完成声明仍未达到。",
+      "fullRequirementAndAcceptance": "方案、实现、素材清单、验证、已知限制、提交与运行版本一致。验收：没有将待审、待观察、待真实间隔或排除项混作完成，目标仅在全部满足后标complete。",
+      "existingFeatureIds": [
+        "OPS-09"
+      ],
+      "sourceReferences": [
+        "scripts/operations/package-source.py",
+        "scripts/qa/run-browser-acceptance.cjs"
+      ],
+      "existingTestReferences": [
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts"
+      ],
+      "existingEvidenceReferences": [],
+      "evidenceScope": "References show existing foundations only. Historical tests and partial receipts do not prove the entire requirement. No new runtime acceptance was executed for this audit."
+    }
+  ]
+}

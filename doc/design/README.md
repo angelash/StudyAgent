@@ -1,6 +1,6 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-24。实现基线：长PDF上传与持久回收开发分支，尚未切生产；具体范围、提交与CI见[本批收据](../evidence/2026-10-24/material-collection-acceptance.json)。
+整理日期：2026-10-24。实现基线：长PDF、持久回收与双库原地续恢复开发分支，原件修复仅文件基础，尚未切生产；当前进度与剩余项见[计划核对105](../product/105-development-plan-status-and-next-milestones.md)，最近实现与CI见[文件基础收据](../evidence/2026-10-24/original-repair-files-acceptance.json)及[最新CI](../evidence/2026-10-24/original-repair-files-ci.json)。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
@@ -35,9 +35,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：297个源码路由声明中，当前正常接入276个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [全部接口](generated/api-reference.md)：299个源码路由声明中，当前正常接入278个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
 - [页面职责](generated/page-reference.md)：26个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与251个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [领域集合与253个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T10:05:36.862504+00:00",
+  "passed": true,
+  "scope": "Documentation and audit-data consistency only; no new product runtime/human acceptance.",
+  "checks": {
+    "requirementIds": 72,
+    "areas": 12,
+    "statusCounts": {
+      "implemented": 11,
+      "in_progress": 46,
+      "planned": 15,
+      "verified": 0,
+      "blocked": 0
+    },
+    "correctedStatuses": 26,
+    "requirementBodiesPreserved": true,
+    "distinctExistingReferences": 226,
+    "sourceSnapshotHashesMatch": true,
+    "ledgerHashMatches": true,
+    "latestBusinessCiAllJobsSucceeded": true,
+    "noApplicationOrScriptDifferencesFromVerifiedCi": true,
+    "localDocumentationLinksChecked": 2161,
+    "missingDocumentationLinks": 0
+  },
+  "validatedAuditSha256": "fdf634ad47befd2dbebbcbee0e2fbd340833410a4566cca8ec7d2c1e4436783c"
+}
