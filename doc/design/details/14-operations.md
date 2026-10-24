@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`730abf88ce874337bcc372d4a13cfa631d36d9e8`。角色：运维、管理员、教研。
+源码基线：`6e5dc75c5630bd43c91ca06d7ab4e19743e4f834`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -86,9 +86,9 @@
 **服务方法**：
 
 - `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:82](../../../apps/api/src/modules/processing/processing.controller.ts#L82)。
-- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:332](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L332)。
+- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:334](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L334)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:230](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L230)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:232](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L232)。
 
 ## OPS-04 导入文件分块与处理产物
 
@@ -114,13 +114,13 @@
 
 **服务方法**：
 
-- `ImportFilesService.list`；[apps/api/src/modules/processing/import-files.service.ts:23](../../../apps/api/src/modules/processing/import-files.service.ts#L23)。
-- `ImportFilesService.start`；[apps/api/src/modules/processing/import-files.service.ts:27](../../../apps/api/src/modules/processing/import-files.service.ts#L27)。
-- `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:24](../../../apps/api/src/modules/processing/import-files.service.ts#L24)。
-- `ImportFilesService.chunk`；[apps/api/src/modules/processing/import-files.service.ts:45](../../../apps/api/src/modules/processing/import-files.service.ts#L45)。
-- `ImportFilesService.complete`；[apps/api/src/modules/processing/import-files.service.ts:59](../../../apps/api/src/modules/processing/import-files.service.ts#L59)。
-- `ImportFilesService.readyPath`；[apps/api/src/modules/processing/import-files.service.ts:83](../../../apps/api/src/modules/processing/import-files.service.ts#L83)。
-- `ImportFilesService.artifact`；[apps/api/src/modules/processing/import-files.service.ts:104](../../../apps/api/src/modules/processing/import-files.service.ts#L104)。
+- `ImportFilesService.list`；[apps/api/src/modules/processing/import-files.service.ts:24](../../../apps/api/src/modules/processing/import-files.service.ts#L24)。
+- `ImportFilesService.start`；[apps/api/src/modules/processing/import-files.service.ts:28](../../../apps/api/src/modules/processing/import-files.service.ts#L28)。
+- `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:25](../../../apps/api/src/modules/processing/import-files.service.ts#L25)。
+- `ImportFilesService.chunk`；[apps/api/src/modules/processing/import-files.service.ts:46](../../../apps/api/src/modules/processing/import-files.service.ts#L46)。
+- `ImportFilesService.complete`；[apps/api/src/modules/processing/import-files.service.ts:60](../../../apps/api/src/modules/processing/import-files.service.ts#L60)。
+- `ImportFilesService.readyPath`；[apps/api/src/modules/processing/import-files.service.ts:84](../../../apps/api/src/modules/processing/import-files.service.ts#L84)。
+- `ImportFilesService.artifact`；[apps/api/src/modules/processing/import-files.service.ts:105](../../../apps/api/src/modules/processing/import-files.service.ts#L105)。
 
 ## OPS-05 PDF/OCR、手写与本地解释后台任务
 
@@ -141,9 +141,9 @@
 
 **服务方法**：
 
-- `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:24](../../../apps/api/src/modules/processing/import-files.service.ts#L24)。
+- `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:25](../../../apps/api/src/modules/processing/import-files.service.ts#L25)。
 - `ProcessingController.enqueue`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:230](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L230)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:232](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L232)。
 
 ## OPS-06 健康、运行指标与质量看板
 
@@ -167,7 +167,7 @@
 
 **服务方法**：
 
-- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:214](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L214)。
+- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:216](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L216)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
 - `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
 - `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。
@@ -225,3 +225,25 @@
 
 - [scripts/operations/package-source.py](../../../scripts/operations/package-source.py)
 - [scripts/qa/run-browser-acceptance.cjs](../../../scripts/qa/run-browser-acceptance.cjs)
+
+## OPS-10 资料引用审计与持久文件回收
+
+**输入**：来源SHA或上传ID、领域删除/取消/完成/过期和只读审计命令。
+
+**处理与实现**：审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入。
+
+**输出**：可审计引用/宽限/活跃/未知清单、自动续跑回收结果、共享资料保留与进程栅栏。
+
+**状态与持久化**：`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`、`studioLearningPacks`、`studioWhiteboards`
+
+**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；旧页图回填及恢复删除账本后的源文件物理处理仍待；生产尚未切换此分支。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [scripts/operations/material-audit.cjs](../../../scripts/operations/material-audit.cjs)
+- [apps/api/src/infrastructure/studio-file-coordination.ts](../../../apps/api/src/infrastructure/studio-file-coordination.ts)
+- [apps/api/src/infrastructure/studio-file-inventory.ts](../../../apps/api/src/infrastructure/studio-file-inventory.ts)
+- [apps/api/src/modules/learning/studio-material-maintenance.service.ts](../../../apps/api/src/modules/learning/studio-material-maintenance.service.ts)
+- [apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts](../../../apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts)

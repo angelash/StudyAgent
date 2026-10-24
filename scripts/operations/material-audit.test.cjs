@@ -24,7 +24,7 @@ test('shared materials, frozen courses, active tasks and live uploads protect th
   const f = fixture(t), shared = f.original('shared', 'first'), frozen = f.original('frozen', 'removed-material'), active = f.original('active', 'worker-only');
   f.add('studioSourceMaterials', shared); f.add('studioSourceMaterials', { ...shared, id: 'second-family' });
   f.add('sourceCourses', { id: 'frozen-course', sources: [{ sha256: frozen.sha256, materialId: frozen.id, kind: 'pdf' }] });
-  f.tasks.push({ id: 'worker', kind: 'studio.material.process', state: 'cancel_requested', payload: { sha256: active.sha256 } });
+  f.tasks.push({ id: 'task_' + randomUUID(), kind: 'studio.material.process', state: 'cancel_requested', payload: { sha256: active.sha256 } });
   const uploadId = 'studio_upload_' + randomUUID(), chunk = Buffer.from('pending chunk'), chunkHash = digest(chunk), chunkPath = `studio-uploads/${uploadId}/0-${chunkHash}`;
   f.add('studioMaterialUploads', { id: uploadId, status: 'uploading', sha256: 'e'.repeat(64), chunks: [{ index: 0, sha256: chunkHash, size: chunk.length }], expiresAt: '2026-10-25T00:00:00Z' });
   f.write(chunkPath, chunk); f.write(`studio-materials/processed/${shared.sha256}/study-pdf-structure-v3/page-1.png`, 'registered group, unregistered page');
@@ -118,4 +118,26 @@ test('live file-process leases protect otherwise unreferenced bytes, while malfo
   assert.equal(report.entries.find(e => e.part === 'lease').reason, 'live_file_process');
   f.write(marker, '{incomplete'); report = await f.audit(); assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0);
   assert.equal(report.entries.find(e => e.part === 'lease').reason, 'unverifiable_coordination_marker');
+});
+
+test('audits only source-bound processor working files and preserves unrelated processing task directories', async t => {
+  const f = fixture(t), taskId = 'task_' + randomUUID(), lease = randomUUID(), sha = 'd'.repeat(64), working = `processing/runs/${taskId}/${lease}`;
+  f.tasks.push({ id: taskId, kind: 'studio.material.process', state: 'succeeded', payload: { sha256: sha } });
+  f.write(working + '/studio-pdf-structure.json', '{"anonymous":"private original text"}');
+  const unrelated = `processing/runs/task_${randomUUID()}/${randomUUID()}/admin-original.txt`; f.write(unrelated, 'administrator sentinel');
+  let report = await f.audit(); assert.equal(report.complete, true); assert.equal(report.entries.find(e => e.part === 'working').state, 'eligible');
+  assert.equal(report.entries.some(e => e.path === unrelated), false); assert.equal(JSON.stringify(report).includes('private original text'), false);
+  f.write(working + '/operator-note.txt', 'unknown'); report = await f.audit(); assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0);
+  assert.equal(fs.readFileSync(path.join(f.data, unrelated), 'utf8'), 'administrator sentinel');
+});
+
+test('preserves legacy whiteboard and learning-pack dependencies and reports unresolved original identities', async t => {
+  const f = fixture(t), material = f.original('legacy dependent source', 'source-material'); f.add('studioSourceMaterials', material);
+  f.add('studioWhiteboards', { id: 'board', sourceMaterialId: material.id, scenes: [] });
+  f.add('studioLearningPacks', { id: 'pack', sections: [{ citations: [{ materialId: material.id }] }], flashcards: [] });
+  let report = await f.audit(); assert.equal(report.complete, true); assert.equal(report.entries.find(e => e.part === 'original').references, 3);
+  f.rows.splice(f.rows.findIndex(row => row.collection === 'studioSourceMaterials'), 1); report = await f.audit();
+  assert.equal(report.complete, false); assert.equal(report.totals.eligible.files, 0); assert.equal(report.issues.includes('unresolved_studio_material_dependency'), true);
+  f.rows.find(row => row.collection === 'studioLearningPacks').body.sections = 'invalid legacy structure';
+  assert.equal((await f.audit()).issues.includes('invalid_studio_dependency_schema'), true);
 });

@@ -18,7 +18,7 @@ export async function writeImmutableBytes(path:string,bytes:Buffer){
 /** Callers supply only paths they derive inside their managed roots. Memory is bounded by one chunk. */
 export async function assembleImmutableFile(input:{size:number;sha256:string;chunks:Array<{path:string;sha256:string;size:number}>;target:string;validHeader:(header:Buffer)=>boolean}){
   await fs.mkdir(dirname(input.target),{recursive:true});
-  const temporary=resolve(dirname(input.target),'assembling-'+randomUUID()),handle=await fs.open(temporary,'wx',0o600),digest=createHash('sha256');let size=0,header:Buffer|undefined;
+  const temporary=resolve(dirname(input.target),'assembling-'+input.sha256+'-'+randomUUID()),handle=await fs.open(temporary,'wx',0o600),digest=createHash('sha256');let size=0,header:Buffer|undefined;
   try{
     for(const chunk of input.chunks){await verifyImmutableFile(chunk.path,chunk.sha256,chunk.size);const bytes=await fs.readFile(chunk.path);if(bytes.length!==chunk.size||bytesDigest(bytes)!==chunk.sha256)throw new BadRequestException('上传分块校验失败');header??=bytes.subarray(0,16);size+=bytes.length;digest.update(bytes);await handle.writeFile(bytes);}
     if(size!==input.size||digest.digest('hex')!==input.sha256||!header||!input.validHeader(header))throw new BadRequestException('完整文件校验失败，请重新选择相同的原文件');

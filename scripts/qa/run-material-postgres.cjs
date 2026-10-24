@@ -10,8 +10,8 @@ const url = new URL(`postgresql://127.0.0.1:${config.port}/${config.database}`);
 const admin = new URL(`postgresql://127.0.0.1:${config.port}/postgres`); admin.username = config.adminUser; admin.password = config.adminPassword;
 const pgBin = process.env.STUDY_TEST_PG_BIN ?? path.resolve(path.dirname(configuration), '../../tools/postgresql-17.11-5/pgsql/bin');
 const report = path.resolve(root, process.env.STUDY_MATERIAL_PG_REPORT ?? 'doc/evidence/2026-10-24/long-pdf-upload-postgres.json');
-const child = spawn(process.execPath, ['--env-file=../../.env', '../../node_modules/vitest/vitest.mjs', 'run', 'src/modules/learning/studio-material-upload.integration.test.ts', 'src/infrastructure/studio-file-coordination.test.ts', '--reporter=default', '--reporter=json', '--outputFile=' + report], {
-  cwd: path.join(root, 'apps/api'), windowsHide: true, stdio: 'inherit', env: { ...process.env, STUDY_TEST_MATERIAL_UPLOAD_POSTGRES_URL: url.toString(), STUDY_TEST_FILE_COORDINATION_POSTGRES_URL: url.toString(), STUDY_TEST_POSTGRES_ADMIN_URL: admin.toString(), STUDY_TEST_PG_BIN: pgBin },
+const child = spawn(process.execPath, ['--env-file=../../.env', '../../node_modules/vitest/vitest.mjs', 'run', 'src/modules/learning/studio-material-upload.integration.test.ts', 'src/infrastructure/studio-file-coordination.test.ts', 'src/modules/learning/studio-material-maintenance.integration.test.ts', '--reporter=default', '--reporter=json', '--outputFile=' + report], {
+  cwd: path.join(root, 'apps/api'), windowsHide: true, stdio: 'inherit', env: { ...process.env, STUDY_TEST_MATERIAL_UPLOAD_POSTGRES_URL: url.toString(), STUDY_TEST_FILE_COORDINATION_POSTGRES_URL: url.toString(), STUDY_TEST_MATERIAL_MAINTENANCE_POSTGRES_URL: url.toString(), STUDY_TEST_POSTGRES_ADMIN_URL: admin.toString(), STUDY_TEST_PG_BIN: pgBin },
 });
 child.on('error', () => { console.error('Unable to start material PostgreSQL tests'); process.exitCode = 1; });
 child.on('exit', code => { process.exitCode = code ?? 1; });

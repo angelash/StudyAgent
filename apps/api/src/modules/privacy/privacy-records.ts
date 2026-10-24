@@ -27,7 +27,8 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','sourceCourses','sourceCourseStages']) {
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','sourceCourses','sourceCourseStages',
+    'studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -124,8 +125,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .map(({prompt:_prompt,requestKey:_key,inputHash:_hash,requests:_requests,selectionKey,files,...row})=>({...row,selected:selectionKey!==null,files:files?{image:files.image,original:files.original}:null}));
     else if (name === 'courseProjects') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, ...row }) => row);
-    else if(name==='studioMaterialUploads')result[name]=records.filter(row=>row.ownerUserId===actorId||row.status==='completed').map(({requestKey:_key,requestHash:_hash,aliases:_aliases,guardianId:_guardian,accessVersion:_version,...row})=>row);
+    else if(name==='studioMaterialUploads')result[name]=records.filter(row=>row.ownerUserId===actorId||row.status==='completed').map(({requestKey:_key,requestHash:_hash,aliases:_aliases,guardianId:_guardian,accessVersion:_version,filesCollectedAt:_collected,...row})=>row);
     else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
+    else if(name==='studioConnectors')result[name]=records.map(({encryptedFeedUrl:_feed,requestKey:_key,requestHash:_hash,...row})=>row);
     else if(name==='sourceCourses')result[name]=records.filter(row=>row.ownerUserId===actorId||
       (selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status))
       .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
@@ -154,6 +156,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       // Different closed upload owners can have used the same request key.
       // A per-file anonymous owner preserves uniqueness without retaining identity.
       if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
+      if(name==='studioConnectors'&&row.createdBy===actorId){anonymous.status='revoked';anonymous.encryptedFeedUrl='';anonymous.version=(Number(row.version)||0)+1;anonymous.lastError=null;}
       return anonymous;
     });
   }

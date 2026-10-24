@@ -13,6 +13,7 @@ import { studioMaterialFile } from '../learning/studio-material-storage';
 import { verifyImmutableFile } from '../../infrastructure/immutable-files';
 import { visualFile,visualDigest } from '../learning/classroom-visual-storage';
 import type { ClassroomVisualRecord } from '@study-agent/contracts';
+import { StudioMaterialMaintenanceService } from '../learning/studio-material-maintenance.service';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -22,7 +23,7 @@ const deletion = credentials.extend({ confirmation: z.string().min(1).max(254), 
 @Injectable()
 export class PrivacyService {
   private readonly preparedArchives = new Map<string, { actorId: string; sessionId: string; expiresAt: number; snapshot: PrivacyExport }>();
-  constructor(private readonly store: InMemoryStoreService, private readonly auth: AuthService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly auth: AuthService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService,private readonly materialMaintenance:StudioMaterialMaintenanceService) {}
   private parent(actor: InMemoryUserAccount) {
     if (actor.role !== 'parent' || actor.status !== 'active') throw new ForbiddenException('家庭资料管理需要家长本人登录');
   }
@@ -163,6 +164,14 @@ export class PrivacyService {
     const receipt = this.receipt(actor, kind, subjectId, command.requestKey, inputHash, preview.counts);
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
+    const sourceHashes=new Set<string>();
+    for(const material of selection.studioSourceMaterials??[]){
+      if(typeof material.sha256==='string'&&/^[a-f0-9]{64}$/.test(material.sha256))sourceHashes.add(material.sha256);
+      if(typeof material.processingTaskId==='string'){const task=await this.store.tasks.get(material.processingTaskId);if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});}
+    }
+    for(const course of selection.sourceCourses??[])for(const source of Array.isArray(course.sources)?course.sources:[])if(typeof source.sha256==='string'&&/^[a-f0-9]{64}$/.test(source.sha256))sourceHashes.add(source.sha256);
+    for(const upload of selection.studioMaterialUploads??[])await this.materialMaintenance.scheduleUpload(String(upload.id),String(upload.sha256),actor.id,'privacy:'+receipt.id);
+    for(const sha256 of sourceHashes)await this.materialMaintenance.schedule('source',sha256,actor.id,'privacy:'+receipt.id);
     await this.media.schedulePurge((selection.studentMedia ?? []).map(row => String(row.id)), actor.id, receipt.id);
     const visualIds=(selection.classroomVisuals??[]).map(row=>String(row.id));
     if(visualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:'classroom.visual.purge',ownerUserId:actor.id,requestKey:'visual-purge:'+receipt.id,payloadHash:visualDigest(visualIds),payload:{ids:visualIds},createdAt:new Date().toISOString(),maxAttempts:5});

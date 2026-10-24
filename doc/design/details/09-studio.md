@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`730abf88ce874337bcc372d4a13cfa631d36d9e8`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`6e5dc75c5630bd43c91ca06d7ab4e19743e4f834`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -57,7 +57,7 @@
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:62](../../../apps/api/src/modules/learning/learning.service.ts#L62)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:63](../../../apps/api/src/modules/learning/learning.service.ts#L63)。
 
 **补充实现文件**：
 
@@ -84,9 +84,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:489](../../../apps/api/src/modules/learning/learning.service.ts#L489)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:505](../../../apps/api/src/modules/learning/learning.service.ts#L505)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:534](../../../apps/api/src/modules/learning/learning.service.ts#L534)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:496](../../../apps/api/src/modules/learning/learning.service.ts#L496)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:512](../../../apps/api/src/modules/learning/learning.service.ts#L512)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:541](../../../apps/api/src/modules/learning/learning.service.ts#L541)。
 
 **补充实现文件**：
 
@@ -286,7 +286,7 @@
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:478](../../../apps/api/src/modules/learning/learning.service.ts#L478)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:485](../../../apps/api/src/modules/learning/learning.service.ts#L485)。
 
 **补充实现文件**：
 
@@ -313,8 +313,8 @@
 **服务方法**：
 
 - `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:247](../../../apps/api/src/modules/learning/learning.service.ts#L247)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:307](../../../apps/api/src/modules/learning/learning.service.ts#L307)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:321](../../../apps/api/src/modules/learning/learning.service.ts#L321)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:308](../../../apps/api/src/modules/learning/learning.service.ts#L308)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:325](../../../apps/api/src/modules/learning/learning.service.ts#L325)。
 
 **补充实现文件**：
 
@@ -358,8 +358,8 @@
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:336](../../../apps/api/src/modules/learning/learning.service.ts#L336)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:364](../../../apps/api/src/modules/learning/learning.service.ts#L364)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:340](../../../apps/api/src/modules/learning/learning.service.ts#L340)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:368](../../../apps/api/src/modules/learning/learning.service.ts#L368)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -380,8 +380,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:394](../../../apps/api/src/modules/learning/learning.service.ts#L394)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:409](../../../apps/api/src/modules/learning/learning.service.ts#L409)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:401](../../../apps/api/src/modules/learning/learning.service.ts#L401)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:416](../../../apps/api/src/modules/learning/learning.service.ts#L416)。
 
 **补充实现文件**：
 
@@ -406,8 +406,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:430](../../../apps/api/src/modules/learning/learning.service.ts#L430)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:451](../../../apps/api/src/modules/learning/learning.service.ts#L451)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:437](../../../apps/api/src/modules/learning/learning.service.ts#L437)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:458](../../../apps/api/src/modules/learning/learning.service.ts#L458)。
 
 **补充实现文件**：
 
@@ -570,35 +570,35 @@
 
 **状态与持久化**：`sourceCourses`、`studioSourceMaterials`、`classroomSessions`、`learningScopes`、`knowledgeAtoms`
 
-**权限、失败与边界**：生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；未引用PDF物理擦除与大文件分块尚未完成。
+**权限、失败与边界**：生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；长PDF分块与引用回收见STUDIO-24/OPS-10，旧页图及恢复物理清理仍待。
 
 **关联接口**：
 
-- `GET /api/learning/source-courses/materials` → `SourceCourseController.materials`；[apps/api/src/modules/learning/source-course.controller.ts:10](../../../apps/api/src/modules/learning/source-course.controller.ts#L10)。
-- `POST /api/learning/source-courses/materials/text` → `SourceCourseController.text`；[apps/api/src/modules/learning/source-course.controller.ts:11](../../../apps/api/src/modules/learning/source-course.controller.ts#L11)。
-- `GET /api/learning/source-courses` → `SourceCourseController.list`；[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)。
-- `POST /api/learning/source-courses` → `SourceCourseController.create`；[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)。
-- `GET /api/learning/source-courses/:id` → `SourceCourseController.get`；[apps/api/src/modules/learning/source-course.controller.ts:19](../../../apps/api/src/modules/learning/source-course.controller.ts#L19)。
-- `PATCH /api/learning/source-courses/:id` → `SourceCourseController.edit`；[apps/api/src/modules/learning/source-course.controller.ts:24](../../../apps/api/src/modules/learning/source-course.controller.ts#L24)。
-- `POST /api/learning/source-courses/:id/authoring` → `SourceCourseController.authoring`；[apps/api/src/modules/learning/source-course.controller.ts:20](../../../apps/api/src/modules/learning/source-course.controller.ts#L20)。
-- `PATCH /api/learning/source-courses/:id/content` → `SourceCourseController.content`；[apps/api/src/modules/learning/source-course.controller.ts:23](../../../apps/api/src/modules/learning/source-course.controller.ts#L23)。
-- `POST /api/learning/source-courses/:id/confirm` → `SourceCourseController.confirm`；[apps/api/src/modules/learning/source-course.controller.ts:25](../../../apps/api/src/modules/learning/source-course.controller.ts#L25)。
-- `POST /api/learning/source-courses/:id/cancel` → `SourceCourseController.cancel`；[apps/api/src/modules/learning/source-course.controller.ts:26](../../../apps/api/src/modules/learning/source-course.controller.ts#L26)。
-- `POST /api/learning/source-courses/:id/retry` → `SourceCourseController.retry`；[apps/api/src/modules/learning/source-course.controller.ts:27](../../../apps/api/src/modules/learning/source-course.controller.ts#L27)。
-- `POST /api/learning/source-courses/:id/archive` → `SourceCourseController.archive`；[apps/api/src/modules/learning/source-course.controller.ts:28](../../../apps/api/src/modules/learning/source-course.controller.ts#L28)。
+- `GET /api/learning/source-courses/materials` → `SourceCourseController.materials`；[apps/api/src/modules/learning/source-course.controller.ts:11](../../../apps/api/src/modules/learning/source-course.controller.ts#L11)。
+- `POST /api/learning/source-courses/materials/text` → `SourceCourseController.text`；[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)。
+- `GET /api/learning/source-courses` → `SourceCourseController.list`；[apps/api/src/modules/learning/source-course.controller.ts:19](../../../apps/api/src/modules/learning/source-course.controller.ts#L19)。
+- `POST /api/learning/source-courses` → `SourceCourseController.create`；[apps/api/src/modules/learning/source-course.controller.ts:20](../../../apps/api/src/modules/learning/source-course.controller.ts#L20)。
+- `GET /api/learning/source-courses/:id` → `SourceCourseController.get`；[apps/api/src/modules/learning/source-course.controller.ts:24](../../../apps/api/src/modules/learning/source-course.controller.ts#L24)。
+- `PATCH /api/learning/source-courses/:id` → `SourceCourseController.edit`；[apps/api/src/modules/learning/source-course.controller.ts:29](../../../apps/api/src/modules/learning/source-course.controller.ts#L29)。
+- `POST /api/learning/source-courses/:id/authoring` → `SourceCourseController.authoring`；[apps/api/src/modules/learning/source-course.controller.ts:25](../../../apps/api/src/modules/learning/source-course.controller.ts#L25)。
+- `PATCH /api/learning/source-courses/:id/content` → `SourceCourseController.content`；[apps/api/src/modules/learning/source-course.controller.ts:28](../../../apps/api/src/modules/learning/source-course.controller.ts#L28)。
+- `POST /api/learning/source-courses/:id/confirm` → `SourceCourseController.confirm`；[apps/api/src/modules/learning/source-course.controller.ts:30](../../../apps/api/src/modules/learning/source-course.controller.ts#L30)。
+- `POST /api/learning/source-courses/:id/cancel` → `SourceCourseController.cancel`；[apps/api/src/modules/learning/source-course.controller.ts:31](../../../apps/api/src/modules/learning/source-course.controller.ts#L31)。
+- `POST /api/learning/source-courses/:id/retry` → `SourceCourseController.retry`；[apps/api/src/modules/learning/source-course.controller.ts:32](../../../apps/api/src/modules/learning/source-course.controller.ts#L32)。
+- `POST /api/learning/source-courses/:id/archive` → `SourceCourseController.archive`；[apps/api/src/modules/learning/source-course.controller.ts:33](../../../apps/api/src/modules/learning/source-course.controller.ts#L33)。
 
 **服务方法**：
 
 - `SourceCourseService.materials`；[apps/api/src/modules/learning/source-course.service.ts:28](../../../apps/api/src/modules/learning/source-course.service.ts#L28)。
-- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:37](../../../apps/api/src/modules/learning/source-course.service.ts#L37)。
-- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:87](../../../apps/api/src/modules/learning/source-course.service.ts#L87)。
-- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:97](../../../apps/api/src/modules/learning/source-course.service.ts#L97)。
-- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:84](../../../apps/api/src/modules/learning/source-course.service.ts#L84)。
-- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:124](../../../apps/api/src/modules/learning/source-course.service.ts#L124)。
-- `SourceCourseService.authoring`；[apps/api/src/modules/learning/source-course.service.ts:134](../../../apps/api/src/modules/learning/source-course.service.ts#L134)。
-- `SourceCourseService.editContent`；[apps/api/src/modules/learning/source-course.service.ts:172](../../../apps/api/src/modules/learning/source-course.service.ts#L172)。
-- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:186](../../../apps/api/src/modules/learning/source-course.service.ts#L186)。
-- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:193](../../../apps/api/src/modules/learning/source-course.service.ts#L193)。
+- `SourceCourseService.addText`；[apps/api/src/modules/learning/source-course.service.ts:36](../../../apps/api/src/modules/learning/source-course.service.ts#L36)。
+- `SourceCourseService.list`；[apps/api/src/modules/learning/source-course.service.ts:86](../../../apps/api/src/modules/learning/source-course.service.ts#L86)。
+- `SourceCourseService.create`；[apps/api/src/modules/learning/source-course.service.ts:96](../../../apps/api/src/modules/learning/source-course.service.ts#L96)。
+- `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:83](../../../apps/api/src/modules/learning/source-course.service.ts#L83)。
+- `SourceCourseService.edit`；[apps/api/src/modules/learning/source-course.service.ts:123](../../../apps/api/src/modules/learning/source-course.service.ts#L123)。
+- `SourceCourseService.authoring`；[apps/api/src/modules/learning/source-course.service.ts:133](../../../apps/api/src/modules/learning/source-course.service.ts#L133)。
+- `SourceCourseService.editContent`；[apps/api/src/modules/learning/source-course.service.ts:171](../../../apps/api/src/modules/learning/source-course.service.ts#L171)。
+- `SourceCourseService.confirm`；[apps/api/src/modules/learning/source-course.service.ts:185](../../../apps/api/src/modules/learning/source-course.service.ts#L185)。
+- `SourceCourseService.control`；[apps/api/src/modules/learning/source-course.service.ts:192](../../../apps/api/src/modules/learning/source-course.service.ts#L192)。
 
 **补充实现文件**：
 
@@ -629,25 +629,25 @@
 
 **状态与持久化**：`sourceCourses`、`sourceCourseStages`、`studioSourceMaterials`
 
-**权限、失败与边界**：单次模型上下文18000字符；小课程保留旧v2语义；工作台单份PDF仍最多30页/10MB，长PDF队列尚待；新处理页图有备份摘要，旧页图尚需回填；原件无引用回收和全教材语义覆盖未完成。
+**权限、失败与边界**：单次模型上下文18000字符；小课程保留旧v2语义；长PDF上传与续跑见STUDIO-24；新页图有摘要，旧页图回填、恢复删除账本后的物理清理和全教材语义覆盖仍待。
 
 **关联接口**：
 
-- `POST /api/learning/source-courses/preflight` → `SourceCourseController.preflight`；[apps/api/src/modules/learning/source-course.controller.ts:16](../../../apps/api/src/modules/learning/source-course.controller.ts#L16)。
-- `POST /api/learning/source-courses/materials/text-file` → `SourceCourseController.textFile`；[apps/api/src/modules/learning/source-course.controller.ts:12](../../../apps/api/src/modules/learning/source-course.controller.ts#L12)。
-- `GET /api/learning/source-courses/:id/progress` → `SourceCourseController.progress`；[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)。
-- `GET /api/learning/source-courses/:id/sources/:key` → `SourceCourseController.source`；[apps/api/src/modules/learning/source-course.controller.ts:18](../../../apps/api/src/modules/learning/source-course.controller.ts#L18)。
-- `POST /api/learning/source-courses/:id/lessons/:lessonId/authoring` → `SourceCourseController.lessonAuthoring`；[apps/api/src/modules/learning/source-course.controller.ts:21](../../../apps/api/src/modules/learning/source-course.controller.ts#L21)。
-- `PATCH /api/learning/source-courses/:id/lessons/:lessonId/content` → `SourceCourseController.lessonContent`；[apps/api/src/modules/learning/source-course.controller.ts:22](../../../apps/api/src/modules/learning/source-course.controller.ts#L22)。
+- `POST /api/learning/source-courses/preflight` → `SourceCourseController.preflight`；[apps/api/src/modules/learning/source-course.controller.ts:21](../../../apps/api/src/modules/learning/source-course.controller.ts#L21)。
+- `POST /api/learning/source-courses/materials/text-file` → `SourceCourseController.textFile`；[apps/api/src/modules/learning/source-course.controller.ts:17](../../../apps/api/src/modules/learning/source-course.controller.ts#L17)。
+- `GET /api/learning/source-courses/:id/progress` → `SourceCourseController.progress`；[apps/api/src/modules/learning/source-course.controller.ts:22](../../../apps/api/src/modules/learning/source-course.controller.ts#L22)。
+- `GET /api/learning/source-courses/:id/sources/:key` → `SourceCourseController.source`；[apps/api/src/modules/learning/source-course.controller.ts:23](../../../apps/api/src/modules/learning/source-course.controller.ts#L23)。
+- `POST /api/learning/source-courses/:id/lessons/:lessonId/authoring` → `SourceCourseController.lessonAuthoring`；[apps/api/src/modules/learning/source-course.controller.ts:26](../../../apps/api/src/modules/learning/source-course.controller.ts#L26)。
+- `PATCH /api/learning/source-courses/:id/lessons/:lessonId/content` → `SourceCourseController.lessonContent`；[apps/api/src/modules/learning/source-course.controller.ts:27](../../../apps/api/src/modules/learning/source-course.controller.ts#L27)。
 
 **服务方法**：
 
-- `SourceCourseService.preflight`；[apps/api/src/modules/learning/source-course.service.ts:96](../../../apps/api/src/modules/learning/source-course.service.ts#L96)。
-- `SourceCourseService.addTextFile`；[apps/api/src/modules/learning/source-course.service.ts:50](../../../apps/api/src/modules/learning/source-course.service.ts#L50)。
-- `SourceCourseService.progress`；[apps/api/src/modules/learning/source-course.service.ts:85](../../../apps/api/src/modules/learning/source-course.service.ts#L85)。
-- `SourceCourseService.source`；[apps/api/src/modules/learning/source-course.service.ts:86](../../../apps/api/src/modules/learning/source-course.service.ts#L86)。
-- `SourceCourseService.lessonAuthoring`；[apps/api/src/modules/learning/source-course.service.ts:142](../../../apps/api/src/modules/learning/source-course.service.ts#L142)。
-- `SourceCourseService.editLesson`；[apps/api/src/modules/learning/source-course.service.ts:161](../../../apps/api/src/modules/learning/source-course.service.ts#L161)。
+- `SourceCourseService.preflight`；[apps/api/src/modules/learning/source-course.service.ts:95](../../../apps/api/src/modules/learning/source-course.service.ts#L95)。
+- `SourceCourseService.addTextFile`；[apps/api/src/modules/learning/source-course.service.ts:49](../../../apps/api/src/modules/learning/source-course.service.ts#L49)。
+- `SourceCourseService.progress`；[apps/api/src/modules/learning/source-course.service.ts:84](../../../apps/api/src/modules/learning/source-course.service.ts#L84)。
+- `SourceCourseService.source`；[apps/api/src/modules/learning/source-course.service.ts:85](../../../apps/api/src/modules/learning/source-course.service.ts#L85)。
+- `SourceCourseService.lessonAuthoring`；[apps/api/src/modules/learning/source-course.service.ts:141](../../../apps/api/src/modules/learning/source-course.service.ts#L141)。
+- `SourceCourseService.editLesson`；[apps/api/src/modules/learning/source-course.service.ts:160](../../../apps/api/src/modules/learning/source-course.service.ts#L160)。
 
 **补充实现文件**：
 
@@ -701,3 +701,51 @@
 - [apps/web/app/studio/classroom/visuals.tsx](../../../apps/web/app/studio/classroom/visuals.tsx)
 - [apps/web/app/studio/classroom/visuals.css](../../../apps/web/app/studio/classroom/visuals.css)
 - [tests/e2e/classroom-visual.spec.ts](../../../tests/e2e/classroom-visual.spec.ts)
+
+## STUDIO-24 长PDF分块上传、页级续跑与按需原文
+
+**输入**：学习范围、文件SHA、4MiB分块、请求键、页码、资料版本和任务版本。
+
+**处理与实现**：原件流式组装并核对完整字节；上传完成只排后台任务；最多120页按原件/算法身份保存完整JSON检查点与页图摘要，恢复时核验并只补缺失/损坏页；目录只发概要，按页且绑定版本取正文；两处入口支持中断重选、丢失回执恢复、范围批选和取消续跑；注册原件持文件租约并核对最新generation；学生入口沿学习授权验证。
+
+**输出**：50MiB受控上传、120页真实进度、原件/正文/结构对照与可恢复选课。
+
+**状态与持久化**：`studioMaterialUploads`、`studioSourceMaterials`、`studioMaterialAssets`
+
+**权限、失败与边界**：运行预算不是静默裁切；旧30页/10MB同步接口兼容；OCR/模型结构仍为候选，旧页图摘要回填与删除账本恢复后的物理清理仍待。
+
+**关联接口**：
+
+- `GET /api/learning/material-uploads` → `StudioMaterialUploadController.list`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:8](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L8)。
+- `POST /api/learning/material-uploads` → `StudioMaterialUploadController.start`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:9](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L9)。
+- `GET /api/learning/material-uploads/:id` → `StudioMaterialUploadController.get`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:10](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L10)。
+- `PUT /api/learning/material-uploads/:id/chunks/:index` → `StudioMaterialUploadController.chunk`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:11](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L11)。
+- `POST /api/learning/material-uploads/:id/complete` → `StudioMaterialUploadController.complete`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:12](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L12)。
+- `POST /api/learning/material-uploads/:id/cancel` → `StudioMaterialUploadController.cancel`；[apps/api/src/modules/learning/studio-material-upload.controller.ts:13](../../../apps/api/src/modules/learning/studio-material-upload.controller.ts#L13)。
+- `GET /api/learning/source-courses/materials/:id` → `SourceCourseController.material`；[apps/api/src/modules/learning/source-course.controller.ts:13](../../../apps/api/src/modules/learning/source-course.controller.ts#L13)。
+- `GET /api/learning/source-courses/materials/:id/progress` → `SourceCourseController.materialProgress`；[apps/api/src/modules/learning/source-course.controller.ts:12](../../../apps/api/src/modules/learning/source-course.controller.ts#L12)。
+- `GET /api/learning/source-courses/materials/:id/pages/:page` → `SourceCourseController.materialPage`；[apps/api/src/modules/learning/source-course.controller.ts:14](../../../apps/api/src/modules/learning/source-course.controller.ts#L14)。
+- `POST /api/learning/source-courses/materials/:id/process/cancel` → `SourceCourseController.cancelMaterialProcessing`；[apps/api/src/modules/learning/source-course.controller.ts:15](../../../apps/api/src/modules/learning/source-course.controller.ts#L15)。
+
+**服务方法**：
+
+- `StudioMaterialUploadService.list`；[apps/api/src/modules/learning/studio-material-upload.service.ts:37](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L37)。
+- `StudioMaterialUploadService.start`；[apps/api/src/modules/learning/studio-material-upload.service.ts:38](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L38)。
+- `StudioMaterialUploadService.get`；[apps/api/src/modules/learning/studio-material-upload.service.ts:48](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L48)。
+- `StudioMaterialUploadService.chunk`；[apps/api/src/modules/learning/studio-material-upload.service.ts:57](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L57)。
+- `StudioMaterialUploadService.complete`；[apps/api/src/modules/learning/studio-material-upload.service.ts:64](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L64)。
+- `StudioMaterialUploadService.cancel`；[apps/api/src/modules/learning/studio-material-upload.service.ts:63](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L63)。
+- `StudioMaterialUploadService.material`；[apps/api/src/modules/learning/studio-material-upload.service.ts:49](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L49)。
+- `StudioMaterialUploadService.progress`；[apps/api/src/modules/learning/studio-material-upload.service.ts:74](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L74)。
+- `StudioMaterialUploadService.page`；[apps/api/src/modules/learning/studio-material-upload.service.ts:50](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L50)。
+- `StudioMaterialUploadService.cancelProcessing`；[apps/api/src/modules/learning/studio-material-upload.service.ts:75](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L75)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/studio-material-upload.ts](../../../packages/contracts/src/studio-material-upload.ts)
+- [apps/api/src/modules/learning/studio-material-storage.ts](../../../apps/api/src/modules/learning/studio-material-storage.ts)
+- [apps/api/src/modules/learning/studio-material-upload.integration.test.ts](../../../apps/api/src/modules/learning/studio-material-upload.integration.test.ts)
+- [scripts/processing/process_document.py](../../../scripts/processing/process_document.py)
+- [scripts/processing/file_leases.py](../../../scripts/processing/file_leases.py)
+- [apps/web/app/studio/source-courses/pdf-material.tsx](../../../apps/web/app/studio/source-courses/pdf-material.tsx)
+- [tests/e2e/pdf-material.spec.ts](../../../tests/e2e/pdf-material.spec.ts)

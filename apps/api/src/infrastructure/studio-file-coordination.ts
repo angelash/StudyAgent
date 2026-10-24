@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { promises as fs } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
-type FileKind = 'source' | 'upload';
+export type FileKind = 'source' | 'upload';
 const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 export async function assertNoFileLinks(input:string) {
   let cursor=resolve(input);
@@ -54,4 +54,37 @@ export async function inspectStudioFileLeases(root:string,kind:FileKind,key:stri
     }catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')leases.push({name,status:'unknown'});}
   }
   return leases;
+}
+
+export class StudioFileCollectionPending extends Error {constructor(readonly code:string){super(code);}}
+export async function acquireStudioPurgeFence(root:string,kind:FileKind,key:string,identity:{generation:number;taskId:string;token:string}){
+  const control=studioCoordinationRoot(root,kind,key),file=resolve(control,'purge.json'),nonce=randomUUID();
+  if(!Number.isSafeInteger(identity.generation)||identity.generation<0||!uuid.test(identity.token))throw new Error('invalid_material_collection_identity');
+  await assertNoFileLinks(file);await fs.mkdir(control,{recursive:true,mode:0o700});await assertNoFileLinks(file);
+  const value={format:'study-file-purge-v1',kind,key,...identity,nonce,pid:process.pid,createdAt:new Date().toISOString()};
+  for(let attempt=0;attempt<2;attempt++){
+    try{const handle=await fs.open(file,'wx',0o600);try{await handle.writeFile(JSON.stringify(value));await handle.sync();}finally{await handle.close();}
+      return async()=>{const current=await marker(file);if(current.nonce!==nonce||current.pid!==process.pid||current.key!==key)throw new StudioFileCollectionPending('material_collection_fence_changed');await fs.unlink(file);};
+    }catch(error){
+      if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;
+      try{
+        const current=await marker(file);
+        if(current.format!=='study-file-purge-v1'||current.key!==key||current.kind!==kind||!uuid.test(String(current.nonce))||!uuid.test(String(current.token))||!Number.isSafeInteger(current.pid)||(current.pid as number)<1||!Number.isSafeInteger(current.generation))throw new StudioFileCollectionPending('material_collection_fence_unknown');
+        try{process.kill(current.pid as number,0);throw new StudioFileCollectionPending('material_collection_owner_active');}catch(error){if((error as NodeJS.ErrnoException).code!=='ESRCH')throw error;}
+        const again=await marker(file);if(JSON.stringify(again)!==JSON.stringify(current))throw new StudioFileCollectionPending('material_collection_fence_changed');await fs.unlink(file);
+      }catch(error){if(error instanceof StudioFileCollectionPending)throw error;throw new StudioFileCollectionPending('material_collection_fence_unknown');}
+    }
+  }
+  throw new StudioFileCollectionPending('material_collection_fence_busy');
+}
+/** Requires the caller's purge fence to remain held. Unknown/live markers are never removed. */
+export async function pruneDeadStudioFileLeases(root:string,kind:FileKind,key:string){
+  const leases=await inspectStudioFileLeases(root,kind,key);if(leases.some(item=>item.status!=='dead'))throw new StudioFileCollectionPending('material_file_process_active_or_unknown');
+  const directory=resolve(studioCoordinationRoot(root,kind,key),'leases');
+  for(const lease of leases){
+    const file=resolve(directory,lease.name);let current:Record<string,unknown>;try{current=await marker(file);}catch(error){if((error as NodeJS.ErrnoException).code==='ENOENT')continue;throw error;}
+    if(current.pid!==lease.pid||current.nonce!==lease.name.slice(0,-5))throw new StudioFileCollectionPending('material_file_lease_changed');
+    try{process.kill(lease.pid!,0);throw new StudioFileCollectionPending('material_file_process_active_or_unknown');}catch(error){if((error as NodeJS.ErrnoException).code!=='ESRCH')throw error;}
+    await fs.unlink(file);
+  }
 }

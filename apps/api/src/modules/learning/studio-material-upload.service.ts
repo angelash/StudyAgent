@@ -12,18 +12,19 @@ import { assertStudioAssetAvailable,withStudioSourceFileWrite,studioMaterialFile
 import { withStudioFileLease } from '../../infrastructure/studio-file-coordination';
 import { materialVersion } from './source-course-selection';
 import { sourceDigest } from './source-course-content';
+import { StudioMaterialMaintenanceService } from './studio-material-maintenance.service';
 
 const id=z.string().min(1).max(180),key=z.string().min(8).max(180),scope={studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional()};
-export type StudioMaterialUploadRecord=StudioMaterialUpload&{requestKey:string;requestHash:string;aliases?:Array<{key:string;hash:string}>;guardianId?:string;accessVersion?:number};
+export type StudioMaterialUploadRecord=StudioMaterialUpload&{requestKey:string;requestHash:string;aliases?:Array<{key:string;hash:string}>;guardianId?:string;accessVersion?:number;filesCollectedAt?:string};
 @Injectable()
 export class StudioMaterialUploadService {
-  constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService){}
+  constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService,private readonly maintenance:StudioMaterialMaintenanceService){}
   private scope(user:InMemoryUserAccount,studentId?:string|null,subject?:string|null){
     if(Boolean(studentId)!==Boolean(subject))throw new BadRequestException('档案和学科需要同时选择');
     if(studentId){this.students.assertCanAccessStudent(user,studentId);if(!this.store.find('students',{id:studentId}))throw new NotFoundException('学习档案不存在');}
     else if(user.role==='student')throw new ForbiddenException('请从自己的学习档案上传资料');
   }
-  private view(row:StudioMaterialUploadRecord):StudioMaterialUpload {const{requestKey:_key,requestHash:_hash,aliases:_aliases,guardianId:_guardian,accessVersion:_version,...view}=row;return structuredClone(view);}
+  private view(row:StudioMaterialUploadRecord):StudioMaterialUpload {const{requestKey:_key,requestHash:_hash,aliases:_aliases,guardianId:_guardian,accessVersion:_version,filesCollectedAt:_collected,...view}=row;return structuredClone(view);}
   private record(user:InMemoryUserAccount,id:string,write=false){
     const row=this.store.find('studioMaterialUploads',{id});if(!row)throw new NotFoundException('上传记录不存在');
     if(row.ownerUserId!==user.id)throw new ForbiddenException('不能操作其他账号的上传');this.scope(user,row.studentId,row.subject);
@@ -59,7 +60,7 @@ export class StudioMaterialUploadService {
     const sha256=bytesDigest(body),prior=row.chunks.find(chunk=>chunk.index===index);if(prior){if(prior.sha256!==sha256)throw new ConflictException('这个分块已写入不同内容');return this.view(row);}
     await withStudioFileLease(studioMaterialRoot(),'upload',row.id,()=>writeImmutableBytes(this.chunkPath(id,index,sha256),body));row.chunks.push({index,sha256,size:body.length});row.chunks.sort((a,b)=>a.index-b.index);row.revision++;return this.view(row);
   }
-  cancel(user:InMemoryUserAccount,id:string,input:unknown){const row=this.record(user,id),command=validate(z.object({expectedRevision:z.number().int().min(0)}).strict(),input);if(row.status==='cancelled')return this.view(row);if(row.status!=='uploading'||row.revision!==command.expectedRevision)throw new ConflictException('上传状态已变化，请读取保存状态');row.status='cancelled';row.revision++;return this.view(row);}
+  async cancel(user:InMemoryUserAccount,id:string,input:unknown){const row=this.record(user,id),command=validate(z.object({expectedRevision:z.number().int().min(0)}).strict(),input);if(row.status==='cancelled')return this.view(row);if(row.status!=='uploading'||row.revision!==command.expectedRevision)throw new ConflictException('上传状态已变化，请读取保存状态');row.status='cancelled';row.revision++;await this.maintenance.scheduleUpload(row.id,row.sha256,user.id,'cancel-upload:'+row.id);return this.view(row);}
   async complete(user:InMemoryUserAccount,id:string){
     const row=this.record(user,id,true);if(row.status==='cancelled')throw new ConflictException('上传已取消，请重新开始');
     if(row.status==='completed'){const material=this.store.find('studioSourceMaterials',{id:row.materialId});if(!material)throw new NotFoundException('对应资料已不可用');assertMaterialAccess(user,material,this.students);return{upload:this.view(row),material:studioMaterialView(material),version:materialVersion(material)};}
@@ -68,7 +69,7 @@ export class StudioMaterialUploadService {
     await withStudioFileLease(studioMaterialRoot(),'upload',row.id,()=>withStudioSourceFileWrite(this.store,row.sha256,()=>assembleImmutableFile({size:row.size,sha256:row.sha256,target:studioMaterialFile(row.sha256),chunks:row.chunks.map(chunk=>({...chunk,path:this.chunkPath(row.id,chunk.index,chunk.sha256)})),validHeader:header=>header.subarray(0,5).toString()==='%PDF-'})));
     const now=new Date().toISOString(),materialId=this.store.nextId('studio_material'),taskId=this.store.nextId('task'),payload={materialId,sha256:row.sha256};
     const material:StudioMaterialRecord={id:materialId,ownerUserId:user.id,studentId:row.studentId,subject:row.subject,kind:'pdf',filename:row.name,title:row.name.replace(/\.pdf$/iu,'').slice(0,180),sha256:row.sha256,byteSize:row.size,pageCount:0,pages:[],hasPageImages:false,status:'queued',processingTaskId:taskId,error:null,createdAt:now,updatedAt:now,processingAccess:row.guardianId?{guardianId:row.guardianId,accessVersion:row.accessVersion!}:undefined,processingPages:[]};
-    this.store.append('studioSourceMaterials',material);await this.store.enqueueTask({id:taskId,kind:'studio.material.process',ownerUserId:user.id,requestKey:'material-upload:'+row.id,payloadHash:sourceDigest(payload),payload,createdAt:now,maxAttempts:2});row.materialId=materialId;row.status='completed';row.completedAt=now;row.revision++;return{upload:this.view(row),material:studioMaterialView(material),version:materialVersion(material)};
+    this.store.append('studioSourceMaterials',material);await this.store.enqueueTask({id:taskId,kind:'studio.material.process',ownerUserId:user.id,requestKey:'material-upload:'+row.id,payloadHash:sourceDigest(payload),payload,createdAt:now,maxAttempts:2});row.materialId=materialId;row.status='completed';row.completedAt=now;row.revision++;await this.maintenance.scheduleUpload(row.id,row.sha256,user.id,'complete-upload:'+row.id);return{upload:this.view(row),material:studioMaterialView(material),version:materialVersion(material)};
   }
   async progress(user:InMemoryUserAccount,id:string):Promise<StudioMaterialProgress>{const row=this.store.find('studioSourceMaterials',{id}) as StudioMaterialRecord|undefined;if(!row)throw new NotFoundException('来源资料不存在');assertMaterialAccess(user,row,this.students);const task=row.processingTaskId?await this.store.tasks.get(row.processingTaskId):null,pages=row.processingPages??(['ready','needs_review'].includes(row.status??'ready')?row.pages.map(page=>({page:page.page,method:page.method??'pdf_text' as const,warnings:page.warnings??[],completedAt:row.updatedAt??row.createdAt,resumed:false})):[]);return{materialId:id,status:materialTaskStatus(row,task?.state),pageCount:row.pageCount||null,processedPages:pages.length,ocrPages:pages.filter(page=>['ocr','hybrid'].includes(page.method)).length,unreadablePages:pages.filter(page=>page.method==='unreadable').length,pages:structuredClone(pages),task:task?{id:task.id,state:task.state,version:task.version,errorCode:task.errorCode}:null};}
   async cancelProcessing(user:InMemoryUserAccount,id:string,input:unknown){

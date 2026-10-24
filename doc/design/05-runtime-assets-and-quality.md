@@ -167,4 +167,6 @@ CI三组：
 
 审计与物理回收是两个交付阶段。只读报告不含删除动作；资产状态及租约进展见下段，持久回收和恢复删除账本的文件处理仍待。新上传/检查点链路已有独立PG6项实际运行，包含原生备份到空库与空目录继续处理；它与旧基础CI分开归档。详见[规格104](../product/104-long-pdf-processing-and-source-lifecycle.md)和[专项收据](../evidence/2026-10-24/long-pdf-audit-acceptance.json)。
 
-后续独立分支已补`studioMaterialAssets`技术集合、取得文件租约后的最新generation检查、Node与Python分别持有的文件租约，以及永久上传撤销工具。它们是物理回收的前置基础；审计保护活进程，未知/死进程标记仍保留，尚无执行物理删除的worker。具体边界与双库并发、真实Python进程验证见[文件租约收据](../evidence/2026-10-24/long-pdf-write-fences-acceptance.json)。
+后续基础提交已补`studioMaterialAssets`、取得文件租约后的最新generation检查、Node与Python分别持有的文件租约，以及永久上传撤销工具。基础验证见[文件租约收据](../evidence/2026-10-24/long-pdf-write-fences-acceptance.json)。
+
+最新独立分支已接入OPS-10持久回收worker，开启worker后3秒轮询、60秒扫描，等待活进程/未知对象不耗尽失败次数。受控原件、缓存、组装暂存和明确studio.material.process任务的配置/原文JSON逐项处理，其他题卷处理产物保留；共享学习依赖不删除。实际自动启动约7秒执行指定任务；不是生产长时负载结论。控制标记原子发布、旧页图摘要回填、恢复账本后的来源字节处理及规格104最终交付仍待，见[最新验收](../evidence/2026-10-24/material-collection-acceptance.json)。

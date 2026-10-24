@@ -1,6 +1,6 @@
 # 13 家庭资料下载、删除与恢复约束 — 详细设计
 
-源码基线：`730abf88ce874337bcc372d4a13cfa631d36d9e8`。角色：监护家长。
+源码基线：`6e5dc75c5630bd43c91ca06d7ab4e19743e4f834`。角色：监护家长。
 
 产品入口：`/parent/data`。
 
@@ -44,9 +44,9 @@
 
 **服务方法**：
 
-- `PrivacyService.overview`；[apps/api/src/modules/privacy/privacy.service.ts:42](../../../apps/api/src/modules/privacy/privacy.service.ts#L42)。
-- `PrivacyService.preview`；[apps/api/src/modules/privacy/privacy.service.ts:63](../../../apps/api/src/modules/privacy/privacy.service.ts#L63)。
-- `PrivacyService.export`；[apps/api/src/modules/privacy/privacy.service.ts:70](../../../apps/api/src/modules/privacy/privacy.service.ts#L70)。
+- `PrivacyService.overview`；[apps/api/src/modules/privacy/privacy.service.ts:43](../../../apps/api/src/modules/privacy/privacy.service.ts#L43)。
+- `PrivacyService.preview`；[apps/api/src/modules/privacy/privacy.service.ts:64](../../../apps/api/src/modules/privacy/privacy.service.ts#L64)。
+- `PrivacyService.export`；[apps/api/src/modules/privacy/privacy.service.ts:71](../../../apps/api/src/modules/privacy/privacy.service.ts#L71)。
 
 ## PRIVACY-02 带媒体归档与一次性下载
 
@@ -71,21 +71,21 @@
 **服务方法**：
 
 - `PrivacyController.archive`；[apps/api/src/modules/privacy/privacy.controller.ts:24](../../../apps/api/src/modules/privacy/privacy.controller.ts#L24)。
-- `PrivacyService.prepareArchive`；[apps/api/src/modules/privacy/privacy.service.ts:102](../../../apps/api/src/modules/privacy/privacy.service.ts#L102)。
+- `PrivacyService.prepareArchive`；[apps/api/src/modules/privacy/privacy.service.ts:103](../../../apps/api/src/modules/privacy/privacy.service.ts#L103)。
 - `PrivacyController.archiveResponse`；[apps/api/src/modules/privacy/privacy.controller.ts:28](../../../apps/api/src/modules/privacy/privacy.controller.ts#L28)。
-- `PrivacyService.downloadArchive`；[apps/api/src/modules/privacy/privacy.service.ts:111](../../../apps/api/src/modules/privacy/privacy.service.ts#L111)。
+- `PrivacyService.downloadArchive`；[apps/api/src/modules/privacy/privacy.service.ts:112](../../../apps/api/src/modules/privacy/privacy.service.ts#L112)。
 
 ## PRIVACY-03 受控删除、共同监护与删除账本
 
 **输入**：影响预览指纹、明确确认文本、凭据、请求键。
 
-**处理与实现**：再次验证影响范围；删除所选个人资料和学习身份；共同监护学习事实按规则保留并匿名署名；媒体排清理；独立删除账本用于旧备份恢复后重应用。
+**处理与实现**：再次验证影响范围；删除所选资料及旧工作台课程/学案/白板/计划/日历；共同监护事实保留并匿名署名，关闭账号所建订阅取消连接并清除凭据，其他监护人的来源保留；来源处理任务取消，媒体/原件/分块仅排持久清理；同一事务重复来源任务用稳定身份合并；导出剔除订阅密文；独立账本在旧备份恢复时重应用这些关系。
 
-**输出**：删除回执、撤销身份与恢复防护。
+**输出**：删除回执、撤销身份、共享学习历史及后台文件清理。
 
-**状态与持久化**：`privacyRequests`、`sessions`、`bindings`、`studentMedia`
+**状态与持久化**：`privacyRequests`、`sessions`、`bindings`、`studentMedia`、`studioCourses`、`studioActivities`、`studioStudyPlans`、`studioLearningPacks`、`studioWhiteboards`、`studioConnectors`、`studioScheduleEvents`
 
-**权限、失败与边界**：旧备份不会凭空知道新删除，恢复时必须提供最新账本。
+**权限、失败与边界**：旧备份必须提供最新账本；来源原件及分块在恢复阶段的即时物理清理仍待，不把数据库行删除称为全盘擦除。
 
 **关联接口**：
 
@@ -94,4 +94,9 @@
 
 **服务方法**：
 
-- `PrivacyService.delete`；[apps/api/src/modules/privacy/privacy.service.ts:151](../../../apps/api/src/modules/privacy/privacy.service.ts#L151)。
+- `PrivacyService.delete`；[apps/api/src/modules/privacy/privacy.service.ts:152](../../../apps/api/src/modules/privacy/privacy.service.ts#L152)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/privacy/privacy-records.ts](../../../apps/api/src/modules/privacy/privacy-records.ts)
+- [apps/api/src/modules/learning/studio-material-maintenance.service.ts](../../../apps/api/src/modules/learning/studio-material-maintenance.service.ts)

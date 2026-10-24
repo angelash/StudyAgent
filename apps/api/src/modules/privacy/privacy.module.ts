@@ -3,5 +3,6 @@ import { AuthModule } from '../auth/auth.module';
 import { PrivacyController } from './privacy.controller';
 import { PrivacyService } from './privacy.service';
 import { StudentMediaModule } from '../student-media/student-media.module';
-@Module({ imports: [AuthModule, StudentMediaModule], controllers: [PrivacyController], providers: [PrivacyService] })
+import { StudioMaterialMaintenanceModule } from '../learning/studio-material-maintenance.module';
+@Module({ imports: [AuthModule, StudentMediaModule,StudioMaterialMaintenanceModule], controllers: [PrivacyController], providers: [PrivacyService] })
 export class PrivacyModule {}

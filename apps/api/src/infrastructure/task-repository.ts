@@ -121,6 +121,35 @@ export class TaskRepository {
     return result.length === 1;
   }
 
+  async activeStudioSourceTasks(sha256:string){
+    if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
+    const selector=this.sqlite?"json_extract(payload,'$.sha256')":"payload::jsonb->>'sha256'";
+    const rows=await this.query(`SELECT * FROM durable_tasks WHERE kind='studio.material.process' AND state IN ('queued','running','retry_wait','cancel_requested') AND ${selector}=? LIMIT 1001`,[sha256]);
+    if(rows.length>1000)throw new Error('material_processing_task_limit');return rows.map(item=>row(item));
+  }
+  async recoverableMaterialCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='studio.material.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
+  async studioSourceTaskIds(sha256:string){
+    if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
+    const selector=this.sqlite?"json_extract(payload,'$.sha256')":"payload::jsonb->>'sha256'",rows=await this.query(`SELECT id FROM durable_tasks WHERE kind='studio.material.process' AND ${selector}=? LIMIT 10001`,[sha256]);
+    if(rows.length>10000)throw new Error('material_processing_task_limit');return rows.map(item=>String(item.id));
+  }
+  async studioSourceOrigins(){
+    const selector=this.sqlite?"json_extract(payload,'$.sha256')":"payload::jsonb->>'sha256'",rows=await this.query(`SELECT DISTINCT ${selector} AS sha256 FROM durable_tasks WHERE kind='studio.material.process' LIMIT 100001`);
+    if(rows.length>100000||rows.some(item=>typeof item.sha256!=='string'||!/^[a-f0-9]{64}$/.test(item.sha256)))throw new Error('material_processing_origins_unknown');return rows.map(item=>String(item.sha256));
+  }
+
+  /** Maintenance waits are recoverable conditions, not failed attempts. Only this internal task kind may use them. */
+  async deferMaterialCollection(id:string,token:string,code:string,delayMs=30000){
+    if(!/^[a-z0-9_]{1,100}$/.test(code)||!Number.isSafeInteger(delayMs)||delayMs<1||delayMs>3600000)throw new Error('invalid_material_collection_wait');
+    return this.locked(async query=>{
+      const now=this.now(),rows=await query(`UPDATE durable_tasks SET state='retry_wait',available_at=?,attempts=CASE WHEN attempts>0 THEN attempts-1 ELSE 0 END,
+        lease_token=NULL,lease_until=NULL,error_code=?,progress=?,version=version+1,updated_at=?
+        WHERE id=? AND kind='studio.material.collect' AND lease_token=? AND state='running' AND lease_until>? RETURNING id`,
+        [now+delayMs,code,JSON.stringify({stage:'waiting',reason:code}),new Date(now).toISOString(),id,token,now]);
+      if(rows.length)await this.auditWith(query,id,'maintenance_deferred','worker',{code,delayMs});return rows.length===1;
+    });
+  }
+
   async cancel(id: string, expectedVersion: number, actorId = 'system') {
     return this.locked(query => this.cancelUsing(query, id, expectedVersion, actorId));
   }

@@ -187,7 +187,15 @@ stateDiagram-v2
 
 `studioSourceMaterials`增加明确所有者及pdf/text类型；私人资料studentId/subject为null。`sourceCourses`保留输入、目标、冻结来源、候选/原始结果、模型、修订、请求回执与任务ID。状态为queued → generating → ready → active → archived；任务失败/取消由实际任务状态推导，授权重试回到queued。生成内容不因确认而成为教师批准内容。
 
-`classroomSessions.sourceCourseId`连接来源课，但课文、答案与两级帮助仍冻结在会话内。portable导出剔除生成私有结果、课堂answerKeys/hintKeys及内部请求表；TAR另加入按SHA-256验证的原始PDF。账号关闭保留共同监护孩子的已确认来源课并匿名署名。无引用PDF物理字节清理尚未接入，不能将元数据删除称为完整物理擦除。
+`classroomSessions.sourceCourseId`连接来源课，但课文、答案与两级帮助仍冻结在会话内。portable导出剔除生成私有结果、课堂answerKeys/hintKeys及内部请求表；TAR另加入按SHA-256验证的原始PDF。账号关闭保留共同监护孩子的已确认来源课并匿名署名。引用审计与持久文件回收已在独立分支接入，见OPS-10；恢复删除账本后的来源字节即时处理仍待，不能把数据库行删除称为全部物理擦除。
+
+### 长PDF上传与文件维护状态
+
+`studioMaterialUploads`冻结文件SHA/字节、分块、作用域、学习授权、命令身份和修订；filesCollectedAt是后台分块清理的私有标记，不进入上传视图或家庭导出。完成上传排资料处理和维护任务，原件/检查点是可续跑依据，不再依赖已完成上传的分块。
+
+`studioMaterialAssets`按SHA保存available/deleting、递增generation、当前cleanupTaskId/cleanupToken。首次1，开始回收2，完成再变3；保留记录以拒绝旧请求在整轮回收结束后写回文件。业务注册先读版本，取得文件租约后另读最新版本；处理最终发布还受原任务租约、权限与材料身份保护。
+
+维护任务仍用durable_tasks，kind为studio.material.collect；等待使用retry_wait并不消耗普通失败次数，保存原因与下次运行时间。SQL事务只登记任务/状态，实际字节在提交后由worker逐项处理。控制标记、缓存、工作文件和不完整状态的边界详见[规格104](../product/104-long-pdf-processing-and-source-lifecycle.md)。
 
 ## 5. 版本和并发语义
 

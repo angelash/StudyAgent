@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T05:21:23.181541+00:00",
+  "sourceRevision": "6e5dc75c5630bd43c91ca06d7ab4e19743e4f834",
+  "implementationBaseRevision": "f6bcdaca14dd002b1fd07cf78746598bb13586ff",
+  "sourceRevisionNote": "Working-tree implementation snapshot bound by normalized sourceDigests; final code commit is recorded in implementation history and subsequent CI.",
+  "passed": true,
+  "status": "verified-durable-collection-increment-not-specification-104-complete",
+  "reports": {
+    "material-collection-sqlite.json": {
+      "sha256": "dc17d9e1d6f374cb07447768b0c53f70f74966adff59cb92655028e2ac55e1b9",
+      "passed": 10,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 7321.875732421875
+    },
+    "material-collection-sqlite-working-files.json": {
+      "sha256": "8d42c99bb8086e38ed7ac9090a38c667cfbf6bad477edacd7782a7cb067f30e8",
+      "passed": 10,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 7605.281982421875
+    },
+    "material-collection-regression.json": {
+      "sha256": "ad9a1f8ef53c5d0017532232d2b9282fb9c160462c03b3c6afa89c866565cc0b",
+      "passed": 78,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 73531.98583984375
+    },
+    "material-collection-postgres.json": {
+      "sha256": "04b746d126347ffd858e1446feea852edc58b83e15152fcbe5f0ecc4d84e3a07",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 75693.73803710938
+    },
+    "material-collection-studio-privacy.json": {
+      "sha256": "9d9ab8c29e9881069f534ed1de9c03ccfbd0094bf312f39db7b55701820a41be",
+      "passed": 18,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 18188.07421875
+    },
+    "material-collection-final-regression.json": {
+      "sha256": "f51c1a8da03aed134e3d798a6fda32591b9a39303389850d0be0f5eea8b520db",
+      "passed": 79,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 74482.68481445312
+    },
+    "material-collection-final-postgres.json": {
+      "sha256": "f5366614565b7bd19bd9efd889fa95f87f4c5d9580d6b0398f861f6267b38e7a",
+      "passed": 23,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 75676.12670898438
+    },
+    "material-collection-autonomous-worker.json": {
+      "sha256": "8599f810fc15997ccd2a100937cf0e4df1cefb3c3bd7aaba6b309515af150895",
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 17874.0703125
+    },
+    "material-collection-autonomous-postgres.json": {
+      "sha256": "9e43ea560c36ba736daa89156515782c777feb5d7b16b292402017db57a47f61",
+      "passed": 24,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 59088.5380859375
+    },
+    "material-collection-audit-tests.json": {
+      "sha256": "879b32a41a1797d31fa696be93ad32c8c4001ba3bf192ab77ee816ca843e9a7c",
+      "passed": 10,
+      "failed": 0
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/api/src/infrastructure/immutable-files.ts": "4dad3fee775786d10098113dcf763df39725c2ef734a6f2bc768838eadf7cfad",
+    "apps/api/src/infrastructure/studio-file-coordination.ts": "6d3467ac7be2784e70d585c2a303eb2f99e72a696af0fe592cdc187c46fd8c4e",
+    "apps/api/src/infrastructure/studio-file-inventory.ts": "71b54de34bab806e71541a78bc4bb8acd4d29354583aa405b3c247b8805a18d8",
+    "apps/api/src/infrastructure/task-repository.ts": "f8f5ae9a7c39ff0f0aba35b0008402dfeafc632df32734ac44557219f3dc6297",
+    "apps/api/src/modules/learning/studio-material-maintenance.service.ts": "e47b42600526f5de9ba5e57ed7692331f05b3a44b79ce67c5fc22dab20a57952",
+    "apps/api/src/modules/learning/studio-material-maintenance.module.ts": "7441505a0f7813ba2a2d98a40c05b63bb9bf8a787cb7a0fd9d483cae850df6c6",
+    "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts": "7d17ba26c9792091fc58d638bf25d6aaa4ea5afc2ac50fa2b4215c22bdae3d25",
+    "apps/api/src/modules/learning/studio-material-upload.service.ts": "64a3648793aee00d3030296319154d0e1d6c6249cfcdc2518829389dce44f238",
+    "apps/api/src/modules/privacy/privacy-records.ts": "51fb616a8510999b4d8cc5cac666d0451242a4b865f39f75e01d2299eb42593b",
+    "apps/api/src/modules/privacy/privacy.service.ts": "be5523d95ddc6119a82e05114ef2b3eb66332443dfbe5a4a07cd0dc5e2adf6c0",
+    "apps/api/src/modules/privacy/privacy.durability.integration.test.ts": "dcfb9714a149863ed9495dabbaabcdff305499d69abd90f3d1d050714e6473de",
+    "scripts/operations/material-audit.cjs": "1473c3ac9967045a16de41a2ef09abb56eb3db27245d479506e47f061dcb1236",
+    "scripts/operations/material-audit.test.cjs": "1cd65216500a83fdc3cc1e7091721690a177543946853a66acbfa72894ff0b02"
+  },
+  "initialFailure": {
+    "report": "material-collection-sqlite-initial.json",
+    "sha256": "e31b00466c73c846b346aaf2f8694cf06c407850172af245079b0e95e5e4366f",
+    "failedTests": 1,
+    "reason": "Account deletion enqueued the same SHA through upload and material paths with different random task IDs. Stable task identity derived from command scope now preserves outbox replay validation; explicit duplicate-in-one-transaction and actual account deletion cases pass."
+  },
+  "coverage": [
+    "Domain rollback leaves upload bytes and write permission intact; cancellation only enqueues maintenance until commit.",
+    "Chunk collection after completed upload retains verified originals. Material, frozen-course and legacy pack/whiteboard dependencies protect shared SHA files.",
+    "Source generation and task fences, unique purge PID/nonce ownership, actual live Python child, real exited process and unknown/Windows junction preservation.",
+    "Seven recoverable waits exceed maxAttempts without exhausting the task; database reopen and release of the exact write lease resume safely.",
+    "An old collector cancelled after one unlink cannot delete the next file; periodic sweep resumes remaining work.",
+    "Only exact studio.material.process task/SHA working JSON/config files are collected; an unrelated administrator sentinel remains.",
+    "Expired uploads, general grace period and SHA-addressed assembly leftovers.",
+    "Actual child export/deletion for seven legacy studio collections; shared account closure anonymizes history, clears own subscription credentials and preserves the other guardian source.",
+    "Old SQLite backup recovery reapplies those legacy relations and credential revocation. This does not yet prove source/upload physical cleanup during restore.",
+    "Real worker-enabled application bootstrap automatically consumes a committed collection without a manual runNext call, in about seven seconds in the fixture.",
+    "Existing actual over-10MiB/120-page PDF, original downloads, native PostgreSQL empty-database backup/restore, checkpoints, permissions and original workbench regressions remain passing."
+  ],
+  "previousIncrementCI": {
+    "headSha": "f6bcdaca14dd002b1fd07cf78746598bb13586ff",
+    "runId": 40061433384,
+    "conclusion": "success",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40061433384"
+  },
+  "validationNotes": [
+    "Regression 79, extra auto-worker/old-backup 14, PostgreSQL auto/upload/fence/maintenance 24 and audit 10 are overlapping runs, not additive unique coverage.",
+    "API build and TypeScript checks passed. Current increment full remote CI and handbook validation are recorded separately.",
+    "Synthetic isolated families and filesystem roots only; no production family data was used."
+  ],
+  "pending": [
+    "Publish control markers atomically and verify termination at every marker-writing stage; malformed existing markers currently remain conservative pending.",
+    "Backfill legacy page checksums and report missing/corrupt originals honestly.",
+    "Apply the latest deletion ledger to restored source originals, upload bytes and revocation markers while preserving shared frozen sources.",
+    "Final specification 104 full regression, merge and guarded daemon release.",
+    "Full master-plan reference pixel/state coverage, content depth, teacher/device and real learning evidence."
+  ],
+  "productionChanged": false,
+  "qaClusterRestoredToInitialStoppedState": true,
+  "goalStatus": "active"
+}

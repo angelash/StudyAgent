@@ -9,7 +9,7 @@ const { DatabaseSync } = require('node:sqlite');
 const HASH = /^[a-f0-9]{64}$/;
 const UPLOAD = /^studio_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 const ACTIVE = new Set(['queued', 'running', 'retry_wait', 'cancel_requested']);
-const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'studioMaterialAssets'];
+const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'studioMaterialAssets', 'studioWhiteboards', 'studioLearningPacks'];
 const MAX_ENTRIES = 100000;
 const fail = code => { throw new Error(code); };
 const body = row => typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
@@ -32,7 +32,7 @@ function target(root, relative) {
 async function readMaterialSnapshot({ dataDir, connectionString }) {
   const placeholders = COLLECTIONS.map(() => '?').join(',');
   const recordsSql = `SELECT collection,body FROM domain_records WHERE collection IN (${placeholders}) LIMIT ${MAX_ENTRIES + 1}`;
-  const tasksSql = `SELECT id,kind,state,payload FROM durable_tasks WHERE kind='studio.material.process' AND state IN ('queued','running','retry_wait','cancel_requested') LIMIT ${MAX_ENTRIES + 1}`;
+  const tasksSql = `SELECT id,kind,state,payload FROM durable_tasks WHERE kind='studio.material.process' LIMIT ${MAX_ENTRIES + 1}`;
   const validate = snapshot => {
     if (snapshot.rows.length > MAX_ENTRIES || snapshot.tasks.length > MAX_ENTRIES) fail('material_audit_record_limit');
     snapshot.rows = snapshot.rows.map(row => ({ collection: row.collection, body: body(row) }));
@@ -115,6 +115,15 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
     const sha = task.payload?.sha256 ?? materialById.get(task.payload?.materialId), ref = asset(sha);
     if (ref) { ref.references.add('task:' + task.id); ref.active = true; }
   }
+  for (const entry of rows) if (['studioWhiteboards', 'studioLearningPacks'].includes(entry.collection)) {
+    const row = body(entry); if (!row || typeof row !== 'object') { issues.push('invalid_studio_dependency_schema'); continue; }
+    const array = value => { if (value === undefined) return []; if (Array.isArray(value)) return value; issues.push('invalid_studio_dependency_schema'); return []; };
+    const materialIds = new Set([row.sourceMaterialId, ...array(row.scenes).map(scene => scene?.source?.materialId), ...[...array(row.sections), ...array(row.flashcards)].flatMap(part => array(part?.citations).map(citation => citation?.materialId))].filter(Boolean));
+    for (const id of materialIds) {
+      const sha = materialById.get(id); if (!sha) issues.push('unresolved_studio_material_dependency');
+      else asset(sha)?.references.add(entry.collection + ':' + row.id);
+    }
+  }
   // A frozen PDF source still requires its original when the mutable material row is gone.
   for (const sha of frozenPdfs) if (!expected.has(`studio-materials/${sha}.pdf`)) expected.set(`studio-materials/${sha}.pdf`, { sha256: sha, size: null });
   return { assets, uploads, expected, issues: [...new Set(issues)] };
@@ -135,6 +144,8 @@ function managedEntry(relative, directory) {
   if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) && control[3] !== 'revoked.json' : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', part: control[3] === 'purge.json' ? 'purge' : control[3] === 'revoked.json' ? 'revocation' : 'lease' };
   let match = relative.match(/^studio-materials\/([a-f0-9]{64})\.(pdf|txt)$/);
   if (match) return { key: match[1], kind: 'source', part: 'original' };
+  match = relative.match(/^studio-materials\/assembling-([a-f0-9]{64})-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/);
+  if (match) return { key: match[1], kind: 'source', part: 'staging' };
   match = relative.match(/^studio-materials\/processed\/([a-f0-9]{64})\/(?:study-pdf-structure-v[1-9]\d*\/)?page-([1-9]\d*)\.(png|json)$/);
   if (match && Number(match[2]) <= 500) return { key: match[1], kind: 'source', part: match[3] === 'png' ? 'page' : 'checkpoint' };
   match = relative.match(/^studio-uploads\/(studio_upload_[a-f0-9-]+)\/(0|[1-9]\d*)-([a-f0-9]{64})$/);
@@ -147,14 +158,23 @@ async function fileDigest(file) {
 }
 async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.now(), verify = true }) {
   if (!Number.isFinite(now) || !Number.isFinite(graceHours) || graceHours < 0 || graceHours > 8760) fail('invalid_material_audit_budget');
-  const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set(), coordination = new Map();
+  const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set(), coordination = new Map(), workingSources = new Map();
+  for (const task of snapshot.tasks) if (task.kind === 'studio.material.process') {
+    if (!/^task_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(task.id) || !HASH.test(task.payload?.sha256 ?? '')) references.issues.push('invalid_studio_processing_identity');
+    else workingSources.set(task.id, task.payload.sha256);
+  }
   let count = 0, complete = references.issues.length === 0;
   async function visit(relative) {
     if (++count > MAX_ENTRIES) fail('material_audit_file_limit');
     const location = target(root, relative); let stat;
     try { stat = await fsp.lstat(location); } catch (error) { if (error.code === 'ENOENT') return; throw error; }
     if (stat.isSymbolicLink()) { entries.push({ path: relative, state: 'unknown', reason: 'link_not_followed', bytes: 0 }); complete = false; return; }
-    const managed = managedEntry(relative, stat.isDirectory());
+    let managed = managedEntry(relative, stat.isDirectory());
+    const working = relative.match(/^processing\/runs\/(task_[a-f0-9-]+)(?:\/([a-f0-9-]+))?(?:\/(.+))?$/);
+    if (working && workingSources.has(working[1])) {
+      const validLease = !working[2] || /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(working[2]);
+      if (validLease && (stat.isDirectory() && !working[3] || !stat.isDirectory() && working[3] && /^studio-pdf-(?:config\.json|structure\.json(?:\.\d+\.tmp)?)$/.test(working[3]))) managed = { key: workingSources.get(working[1]), kind: 'source', part: 'working' };
+    }
     if (!managed || !stat.isFile() && !stat.isDirectory()) { entries.push({ path: relative, state: 'unknown', reason: 'unmanaged_entry', bytes: stat.isFile() ? stat.size : 0 }); complete = false; return; }
     if (stat.isDirectory()) {
       // Recheck ancestors before every read; unknown directories are never traversed.
@@ -198,6 +218,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
     entries.push(entry);
   }
   await visit('studio-materials'); await visit('studio-uploads');
+  for (const taskId of workingSources.keys()) await visit('processing/runs/' + taskId);
   for (const entry of entries) if (entry.key && !['lease', 'purge', 'revocation'].includes(entry.part) && coordination.has(entry.key)) { entry.state = coordination.get(entry.key); entry.reason = 'file_coordination_pending'; }
   for (const [relative, expected] of references.expected) if (!seen.has(relative)) {
     entries.push({ path: relative, state: 'unknown', reason: 'registered_file_missing_or_unreachable', bytes: 0, expectedBytes: expected.size }); complete = false;
