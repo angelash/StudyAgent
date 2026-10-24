@@ -160,3 +160,9 @@ CI三组：
 `9c31c74`新增服务端冻结字幕、显式旧断点映射与取消传递。特征基线完整API880通过/6环境跳过、浏览器52通过；最终设置标题/手机页码样式及英文静音流程的10项字幕/配图复验通过。六段实际课堂MiniMax中英文音轨均解码，正文、单元ID、时长、哈希与WAV保留于[语音收据](../evidence/2026-10-24/classroom-caption-real-audio.json)，未声称真人听感通过。
 
 提交前发现Multer新公告，override固定2.5.0，应用显式声明直接依赖；最终锁文件在独立目录`npm ci --ignore-scripts`成功，生产依赖审计零已知漏洞。修复后HTTP/上传中断/进程存活、PDF与来源课程专项41项通过，完整远端结果独立记录。窗口关闭与服务端已提交的升级分别恢复，不承诺网络中止即事务回滚。完整证据及原失败见[字幕收据](../evidence/2026-10-24/classroom-caption-acceptance.json)；全语言、教师、实机、声学强制对齐与长期学习效果继续待验收。
+
+### 长PDF原件只读运维审计补充（2026-10-24）
+
+独立开发分支增加`npm run materials:audit -- --data-dir <目录>`；实际实现为`scripts/operations/material-audit.cjs`。SQLite与PG都读取一致的只读快照，按材料、冻结课程、未完成上传和活跃处理任务保护原件SHA。只扫描受控资料目录，验证已登记原件、页图、JSON检查点、分块的完整性；未知文件和链接保守保留，候选默认24小时宽限。不完整清单没有可直接删除的对象。
+
+审计与物理回收是两个交付阶段。当前只读报告不含删除动作，仍待资产generation、子进程/写入租约及恢复删除账本的文件处理。新上传/检查点链路已有独立PG6项实际运行，包含原生备份到空库与空目录继续处理；它与旧基础CI分开归档。详见[规格104](../product/104-long-pdf-processing-and-source-lifecycle.md)和[专项收据](../evidence/2026-10-24/long-pdf-audit-acceptance.json)。

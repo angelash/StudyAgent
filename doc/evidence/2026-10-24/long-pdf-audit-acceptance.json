@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T03:54:11.703500+00:00",
+  "implementationBaseRevision": "3207221cab45e511aa4c1cfb47728d7161bd17a6",
+  "status": "verified-read-only-audit-and-real-postgres-increment",
+  "passed": true,
+  "reports": {
+    "long-pdf-lifecycle-sqlite.json": {
+      "sha256": "33f8187cf1933875648d2be9db1f211bbe388a377f3b94a6a2cbe2dce9d145d2",
+      "success": true,
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 61954.510009765625
+    },
+    "long-pdf-upload-postgres.json": {
+      "sha256": "70f5e1d1476ac3fea25a505bb02fb7af9b680f6cfb1169224f0fd5d407eeff04",
+      "success": true,
+      "passed": 6,
+      "failed": 0,
+      "pending": 0,
+      "durationMs": 59808.3466796875
+    },
+    "material-audit-tests.json": {
+      "sha256": "fb0c7acc55e4b514886a097e5bbc98e7a7abd503ad4948cd7888c29edd322b18",
+      "exitCode": 0,
+      "passed": 7
+    }
+  },
+  "sourceDigests": {
+    "scripts/operations/material-audit.cjs": "4debc5ee7f26f3c4f2f5efc424519ad3557095f4820a65ad6d65e146d12a9795",
+    "scripts/operations/material-audit.test.cjs": "fc77e405f7b4856ef5072e4a14a135f1c07674c13f0c0aa2f1b201cee90b54a2",
+    "scripts/qa/run-material-postgres.cjs": "63683c5b53bf5a027aca46ae6f4210232fbeab3da1fc7c0814e4b22189707bb6",
+    "apps/api/src/modules/privacy/privacy.service.ts": "7ee97843c333da7c82faa6f43a4eafb134f69aa96adb49992b2eddf05539ed65",
+    "apps/api/src/modules/learning/studio-material-upload.integration.test.ts": "264d616e5c6b85607057ba6c36d9946027eac3c3579004b8133331fe73ffd0c4"
+  },
+  "foundationCI": {
+    "runId": 40058804597,
+    "headSha": "3207221cab45e511aa4c1cfb47728d7161bd17a6",
+    "conclusion": "success",
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40058804597"
+  },
+  "validation": [
+    "Read-only material/frozen-course/upload/task reference snapshot on SQLite and actual PostgreSQL.",
+    "Shared SHA retention, expired upload chunks, grace periods, missing/corrupt/checkpoint files, Windows junction and unknown-path preservation.",
+    "Actual over-10MiB 120-page PDF with original bytes, real reopen, page cancellation, pg_dump/pg_restore into empty isolated database and directory, checkpoint resume and access revocation.",
+    "Streaming checksum verification for original files in family tar exports.",
+    "API build and type check passed."
+  ],
+  "pending": [
+    "Transactional source-asset generations and physical collection.",
+    "Python/process/write leases and permanent upload revocation markers.",
+    "Legacy page-file digest backfill.",
+    "Latest deletion-ledger source/upload physical cleanup on restore.",
+    "Final complete regression, merge and daemon delivery for specification 104.",
+    "Broader master-plan content, reference visual states, teacher/device/real learning evidence."
+  ],
+  "productionRevision": "648a96d",
+  "productionChanged": false,
+  "goalStatus": "active"
+}

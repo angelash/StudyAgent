@@ -42,6 +42,8 @@ jobs:
       - run: npm run lint
       - name: Local documentation links
         run: npm run qa:docs
+      - name: Read-only private material inventory and reference integrity
+        run: node --test scripts/operations/material-audit.test.cjs
       - name: Authored teaching coverage and measurement material audit
         run: node scripts/qa/audit-authored-curriculum.cjs data/qa/authored-curriculum-audit.json
       - name: Current eligible material coverage, formal teacher roles and read-only history across restarts
@@ -183,6 +185,13 @@ jobs:
         env:
           STUDY_TEST_SOURCE_COMPILATION_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course-compilation.integration.test.ts
+      - name: Resumable large PDF uploads, page checkpoints, native backup recovery and read-only audit on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_MATERIAL_UPLOAD_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
+          STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/studio-material-upload.integration.test.ts
       - name: Frozen classroom captions, historical upgrade and narration guards on PostgreSQL
         working-directory: apps/api
         env:
