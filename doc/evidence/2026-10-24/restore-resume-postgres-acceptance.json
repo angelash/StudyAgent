@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-24T08:18:21.591461+00:00",
+  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
+  "implementationCommit": "b85a268720c75047b0099b05b37615b655d01b50",
+  "specificationCommit": "7c3b81c",
+  "passed": true,
+  "status": "verified-postgresql-full-resume-increment-not-specification-104-complete",
+  "reports": {
+    "restore-resume-pg-initial-runtime.json": {
+      "sha256": "542e02c2aee851f57be6200918ac1b150556620a57b725070d4f28fe247710d4",
+      "scope": "runtime record; not an additional test count"
+    },
+    "restore-resume-pg-initial.json": {
+      "sha256": "8a1979beb409d252a491255fd95a4ee78c9343ef5e57604b790fff9a47fed056",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0
+    },
+    "restore-resume-pg-process-initial.json": {
+      "sha256": "f75d0fe4d0f2266768c8f56d169818d30aa26b954f4d3e7a0759954a77cc7c50",
+      "passed": 19,
+      "failed": 0,
+      "pending": 0
+    }
+  },
+  "sourceDigestNormalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "6a7a5d262e12ac84c4142972568649c05b4388e37af0eacde9e9a1d67ef31aa0",
+    "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts": "c11c73e18d2f9e6c773ca888319a147698ef1607b8f80305e2ecd92d899a46fa",
+    "apps/api/src/infrastructure/restored-materials.integration.test.ts": "8ea5e68754c0a7aee0bae531dd07376161f82129830c9082482599473433afd9",
+    "scripts/architecture/project-feature-definitions.cjs": "0cc52d447aba06a5b02f25766be2823e3bdff0dabe61b22b71cc959f9abdadf3",
+    "scripts/operations/postgres-backup.cjs": "80b7de725254e62e3c504456bbb925c4ef75ae274ed3548bbea8d5b3fe8412f7",
+    "scripts/operations/postgres-restore-import.cjs": "7caf21c9dc951a39df729a64e97fc9c78203af714ea078c63a3fcf54eb1e6b23",
+    "scripts/operations/postgres-restore.cjs": "ff7ccd973fb77e5af59201a45591e8f16a402766f379b7c02f0b4c7bc577a7af",
+    "scripts/qa/fixtures/postgres-restore-child.cjs": "1dbc6e314e6615c5862451be1a152378baa97aa32d0393d50467cf22c702174e",
+    "scripts/qa/run-material-postgres.cjs": "3769b98758cd9d13eb3acae71b2e994c7b8f53cd9412286cd7e4f99a61ebbe58"
+  },
+  "reusedSqliteAcceptance": {
+    "receipt": "restore-resume-sqlite-acceptance.json",
+    "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+    "report": "restore-resume-sqlite-final.json",
+    "passed": 38,
+    "newlyRerun": false,
+    "sharedImplementationDigestsRechecked": {
+      "scripts/operations/restore-files.cjs": "ab3929e08cc161f2fe6bb76a184634702b50c7c99d81d6920f8f4d8c8f346784",
+      "scripts/operations/sqlite-restore.cjs": "7b4deb74f94667946b7c24d1060087cb28a261c3815a392a35469ad3b8cda00b",
+      "scripts/operations/backup.cjs": "3bd31d701ac7fa30a970eb6b14ca307b743139126de2f680dc78ddf588a44c97",
+      "scripts/operations/privacy-ledger.cjs": "9ceff5cc53281a363082bfc80e80b65c31274b6b2bc07151d1f0e968de259ffd",
+      "scripts/operations/restored-materials.cjs": "64d5b793981cb1313e9cffccf43eeb13a516e93a075a157bdec0376d808c5917"
+    }
+  },
+  "auxiliaryChecks": [
+    {
+      "command": "npm run build --workspace @study-agent/api",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint --workspace @study-agent/api",
+      "result": "passed"
+    }
+  ],
+  "coverage": [
+    "PostgreSQL restore CLI supports explicit --resume using the same backup/manifest/ledger/target binding and shared atomic file-copy protocol as SQLite.",
+    "Database guard and import runtime initialize in one transaction; an interrupted pre-initialization resumes only into a genuinely empty target database.",
+    "Independent operation transaction, controller session lock, native import transaction lock and reserved epoch protect distinct phases. Prepared/imported/completed states decide whether to import, reapply rolled-back cleanup or finish the receipt only.",
+    "Pre-cleanup core-table fingerprint, schema summary and referenced files are checked against the verified backup before applying a deletion ledger. Physical source/media cleanup can replenish missing bytes and revalidate ownership after a rolled-back interruption.",
+    "Final receipt and actual retained/deleted file states commit with ready in the runtime schema excluded from future backups. The returned/printed JSONB representation is the same canonical result used by later receipt publication.",
+    "Nineteen new real PostgreSQL cases cover fourteen actual parent SIGKILL phases, a competing live controller, legal new learning followed by idempotent receipt retrieval, changed backup/ledger/database/imported data, media cleanup failure and actual native CLI resume.",
+    "Existing twenty-case PostgreSQL native import/cold restore run remains passing after integration, including independent live native locking, delayed epoch rejection, tool errors, backup exclusion and copy-time junction refusal."
+  ],
+  "environment": {
+    "nativeDatabase": "isolated local Windows PostgreSQL 17.11",
+    "data": "synthetic QA files, records and deletion receipts",
+    "qaInitially": "stopped",
+    "qaFinally": "stopped; pg_ctl status confirmed no server running",
+    "productionSwitch": false
+  },
+  "limits": [
+    "Counts from separate scopes and prior reports must not be used as a product completeness percentage.",
+    "Linux/PostgreSQL16 CI for this increment is tracked separately.",
+    "Process termination is exercised; hardware power loss and hostile concurrent same-user filesystem mutation are outside this evidence.",
+    "Unknown old protocol targets, changed existing bytes and unverifiable bindings remain refused without automatic overwrite.",
+    "Damaged-original replacement, final specification104 regression/daemon delivery and the complete master-plan experience/content/teacher/device/real-student gates remain open."
+  ]
+}

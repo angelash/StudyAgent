@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T08:07:27.317Z",
-  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+  "at": "2026-10-24T08:19:45.472Z",
+  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -17,7 +17,7 @@
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 114,
+    "apiTestFiles": 115,
     "browserTestFiles": 15
   },
   "features": {
@@ -27,10 +27,10 @@
     "coveredApiRoutes": 278
   },
   "sourceReferences": {
-    "uniqueFiles": 289,
+    "uniqueFiles": 291,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "bc3eb38dc400d263294dd637347a1e9412e76baaf5f8e9791d579d9bd651bf9f",
+      ".github/workflows/verify.yml": "d15e2347b571c254549bff4e036e0610b55dd4821363b6eee6ee66cfd0771a1b",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "06675df0a975f92d8ccf37503d2f7d8a15954f72203dd287cdb300b5d49a1df9",
       "apps/api/src/common/http-body.integration.test.ts": "fadb0feeb91bc254ff217976405009573f94a0a146160ca0ea3a4a205fa940dc",
@@ -44,9 +44,10 @@
       "apps/api/src/infrastructure/operations.controller.ts": "f550291169d71ddd7f4e03f0d992cbbe8a032c57f46877850932c26000c6f938",
       "apps/api/src/infrastructure/operations.integration.test.ts": "3cdfbc3f1571c04bb6aa36ac993811b9d05400385b51401915a6d6e88fb6afc5",
       "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts": "45a95e423216db087a2c05350a194fca3934a947c04e9b28db05af9273bc0835",
+      "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts": "c11c73e18d2f9e6c773ca888319a147698ef1607b8f80305e2ecd92d899a46fa",
       "apps/api/src/infrastructure/request-rate.middleware.ts": "a920966d54c356434a2a9cbecb8e2a57c676fc259b6350140b9245411b7c8ac3",
       "apps/api/src/infrastructure/restore-context.test.ts": "d8dec6c1ab1941d6678b7b4520f12d93678a81edf9c55daa08c05aa40709e2e6",
-      "apps/api/src/infrastructure/restored-materials.integration.test.ts": "a5ca8763affb67ae1b01c0ac23662af2e31ecaa45984ff0c2c714d49eb2aba42",
+      "apps/api/src/infrastructure/restored-materials.integration.test.ts": "b7591e13953d53c11cfead97e432c30fb5e1c51c01a5a5cf04ac4021f0d9117e",
       "apps/api/src/infrastructure/runtime-metrics.service.ts": "7f237345ed1890c0234f148fc05f13d436b90da004aa41b21ae7e8f9893675df",
       "apps/api/src/infrastructure/scoped-transactions.test.ts": "32168d384b03ce88e08bc44b7196c86d1c52bce447ec8bb2e5b64a9605550848",
       "apps/api/src/infrastructure/source-material-backup.integration.test.ts": "e4cc58c4107df7d9d667eb6e9734a8744a6df09839feca83bfc34809fcb78175",
@@ -285,8 +286,9 @@
       "scripts/operations/backup.cjs": "2b2b9ec49367ba0fce908f43172629dc97686ad59f34593eb75c814c99d18319",
       "scripts/operations/material-audit.cjs": "fc49b45cb09c543d021393f5299dba89e1b07fefae44ac815b80aa6f34a7f724",
       "scripts/operations/package-source.py": "bc635a1b53f4e51661010cf147018beb8cff943d7cac8f852feb6c0587530928",
-      "scripts/operations/postgres-backup.cjs": "32c4d6db827e4131ee2f06718efd0f2b188a1f03a21a9362273d0343c09147af",
-      "scripts/operations/postgres-restore-import.cjs": "63b6872151ad3ee2e9cd2c3da8e27d5941d671125fc081b85be34bb4cfe7a335",
+      "scripts/operations/postgres-backup.cjs": "32e692cbe95d528ac43a28b23c3ae493c5cbcc53d348e078b62a4331059bc378",
+      "scripts/operations/postgres-restore-import.cjs": "7caf21c9dc951a39df729a64e97fc9c78203af714ea078c63a3fcf54eb1e6b23",
+      "scripts/operations/postgres-restore.cjs": "ff7ccd973fb77e5af59201a45591e8f16a402766f379b7c02f0b4c7bc577a7af",
       "scripts/operations/privacy-ledger.cjs": "23c591437435612cd9498f06197e1362ce7a9c874f9df82b3953ac80083478ae",
       "scripts/operations/restore-context.cjs": "50e80693bf8328d7e6d83273214c3ad84667d4cb7eee8fc386a7166b5fc63558",
       "scripts/operations/restore-files.cjs": "ab3929e08cc161f2fe6bb76a184634702b50c7c99d81d6920f8f4d8c8f346784",
@@ -327,12 +329,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2086,
+    "checked": 2093,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-24T08:07:23.553Z",
+    "authoredAuditAt": "2026-10-24T08:19:41.805Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -398,8 +400,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-24/restore-resume-sqlite-acceptance.json",
-    "revision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+    "receipt": "../evidence/2026-10-24/restore-resume-postgres-acceptance.json",
+    "revision": "b85a268720c75047b0099b05b37615b655d01b50",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

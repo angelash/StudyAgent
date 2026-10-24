@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`6c3c5f51ed7eeb17519005bb0e1deb6216b205bb`。角色：运维、管理员、教研。
+源码基线：`b85a268720c75047b0099b05b37615b655d01b50`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -176,13 +176,13 @@
 
 **输入**：独立目标、业务库/媒体/资产清单、删除账本。
 
-**处理与实现**：SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；复制前独占原子发布备份/清单/账本/目标绑定身份；SQLite显式resume持独立控制库事务锁，按意图与原子文件发布继续复制，完整导入指纹阻止重复导库，清理中断补足文件后重做，完成收据/文件终态与ready共同提交，已完成再次执行只读原结果；PG控制端持会话锁、原生导入持事务锁和代次；pg_restore输出经psql单事务导入，延迟约束与核心表指纹保证完整SQL和imported共同提交，备份排除旧技术schema；应用删除账本并拒绝不完整恢复启动；冻结PDF即使原资料记录已删除也纳入备份；冷恢复核对当前引用，终止失去归属的处理任务、推进资产版本，逐项清理已撤回原件/分块/缓存，重建上传撤销并保留共享/冻结来源和有效续跑。
+**处理与实现**：SQLite使用一致性备份，PG走原生工具；逐文件校验大小和SHA-256；复制前独占原子发布备份/清单/账本/目标绑定身份；双库显式resume持独立控制库事务锁，按意图与原子文件发布继续复制，完整导入指纹阻止重复导库，清理中断补足文件后重做，完成收据/文件终态与ready共同提交，已完成再次执行只读原结果；PG的guard/runtime同事务初始化并在每次续导入前预留独立代次；PG控制端持会话锁、原生导入持事务锁和代次；pg_restore输出经psql单事务导入，延迟约束与核心表指纹保证完整SQL和imported共同提交，备份排除旧技术schema；应用删除账本并拒绝不完整恢复启动；冻结PDF即使原资料记录已删除也纳入备份；冷恢复核对当前引用，终止失去归属的处理任务、推进资产版本，逐项清理已撤回原件/分块/缓存，重建上传撤销并保留共享/冻结来源和有效续跑。
 
 **输出**：可审计备份、恢复收据和资产清单。
 
 **状态与持久化**：`privacyRequests`、`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`
 
-**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；SQLite原地resume仅限有绑定身份的新协议目录，未知/链接/不同字节不覆盖；PG完整resume及损坏原件替换仍待。
+**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；双库原地resume仅限有绑定身份的新协议目录，未知/链接/不同字节不覆盖；进程中断验证不等于硬件断电验证；损坏原件替换仍待。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 
@@ -195,6 +195,8 @@
 - [scripts/operations/sqlite-restore.cjs](../../../scripts/operations/sqlite-restore.cjs)
 - [apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts](../../../apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts)
 - [scripts/operations/postgres-restore-import.cjs](../../../scripts/operations/postgres-restore-import.cjs)
+- [scripts/operations/postgres-restore.cjs](../../../scripts/operations/postgres-restore.cjs)
+- [apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts](../../../apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts)
 - [apps/api/src/infrastructure/atomic-marker-publication.ts](../../../apps/api/src/infrastructure/atomic-marker-publication.ts)
 - [apps/api/src/infrastructure/restore-context.test.ts](../../../apps/api/src/infrastructure/restore-context.test.ts)
 - [apps/api/src/infrastructure/postgres-restore-import.integration.test.ts](../../../apps/api/src/infrastructure/postgres-restore-import.integration.test.ts)
@@ -247,7 +249,7 @@
 
 **状态与持久化**：`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`、`studioLearningPacks`、`studioWhiteboards`
 
-**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；冷恢复账本按当前引用逐项清理源字节见OPS-07；损坏原件替换及原地续恢复仍待；生产尚未切换此分支。
+**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；冷恢复账本按当前引用逐项清理源字节见OPS-07；损坏原件替换仍待，双库原地续恢复见OPS-07；生产尚未切换此分支。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 

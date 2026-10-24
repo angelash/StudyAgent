@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "6c3c5f51ed7eeb17519005bb0e1deb6216b205bb",
+  "sourceRevision": "b85a268720c75047b0099b05b37615b655d01b50",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 299,
@@ -15,7 +15,7 @@
     "contractTypes": 253,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 114,
+    "apiTestFiles": 115,
     "browserTestFiles": 15
   },
   "modules": [
@@ -38704,6 +38704,7 @@
     "apps/api/src/infrastructure/domain-database.test.ts",
     "apps/api/src/infrastructure/operations.integration.test.ts",
     "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+    "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
     "apps/api/src/infrastructure/postgres.integration.test.ts",
     "apps/api/src/infrastructure/rate-limit.test.ts",
     "apps/api/src/infrastructure/restore-context.test.ts",

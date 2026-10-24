@@ -61,10 +61,14 @@ API 默认绑定 `127.0.0.1`，可通过 `API_HOST` 显式调整；`API_PORT` / 
 
 `STUDY_RATE_LIMIT_IP_PER_MINUTE` controls the aggregate request-IP quota; the production default is 3000, and synthetic CI may set a larger validated value while per-user quotas remain active.
 
-资料来源的最新冷恢复见[规格104第20/21节](104-long-pdf-processing-and-source-lifecycle.md)。恢复命令仍接收新目标与最新删除账本；在发布ready前核对并清理已撤回的源原件、页图/检查点、可定位工作文件和上传块，保留共享/冻结PDF与有效上传。冻结PDF原件即使原资料行已移除也进入双库备份。未知/链接/变化或中断保留文件与数据库门禁，不能删marker强行启动；SQLite新协议目录可用下述显式resume继续，PG仍不覆盖已有不完整目录，可用同一原备份/账本另选空目录重做。PG原地resume及损坏原件替换仍待后续实现，原备份和其他离线副本由持有者保留。
+资料来源的冷恢复与续恢复见[规格104第20至28节](104-long-pdf-processing-and-source-lifecycle.md)。恢复命令仍接收新目标与最新删除账本；在发布ready前核对并清理已撤回的源原件、页图/检查点、可定位工作文件和上传块，保留共享/冻结PDF与有效上传。冻结PDF原件即使原资料行已移除也进入双库备份。未知/链接/变化或中断保留文件与数据库门禁，不能删marker强行启动；双库新协议目录可用下述显式resume继续；无法确认旧协议身份的目录仍不覆盖，可用同一原备份/账本另选空目录重做。损坏原件替换仍待后续实现，原备份和其他离线副本由持有者保留。
 
-PG原生恢复现在需要同版本的`pg_dump`、`pg_restore`和`psql`（由`--pg-bin`指定同一目录）。导入经psql单事务执行，恢复专用技术schema与原有guard不进入新备份；失败只报告工具/SQLSTATE。复制前会写入绑定备份、清单、账本及目标的恢复身份，但PG当前不提供CLI `--resume`；不要把上下文创建者PID当作操作锁或手动删除恢复门禁。详见[规格104第23/24节](104-long-pdf-processing-and-source-lifecycle.md)。
+PG原生恢复现在需要同版本的`pg_dump`、`pg_restore`和`psql`（由`--pg-bin`指定同一目录）。导入经psql单事务执行，恢复专用技术schema与原有guard不进入新备份；失败只报告工具/SQLSTATE。复制前会写入绑定备份、清单、账本及目标的恢复身份，PG也已接通显式`--resume`；不要把上下文创建者PID当作操作锁或手动删除恢复门禁。原生导入基础见[规格104第23/24节](104-long-pdf-processing-and-source-lifecycle.md)。
 
 SQLite新建恢复仍使用`node scripts/operations/backup.cjs restore --bundle <备份目录> --destination <新目标> --deletion-ledger <最新账本>`；同一新协议目标中断后，在相同参数加`--resume`继续。原先没有账本则继续省略账本参数，不能中途换账本。恢复身份、独立控制SQLite库、复制意图和业务库导入指纹都必须能核对；未知旧目录继续拒绝。运行前按本节要求构建API，文件发布复用已构建的原子标记助手。
 
 SQL已提交的收据会从数据库原样恢复，文件收据与门禁完成后才允许应用启动。完成后再次resume只返回原收据，应用已有的合法后续学习不会重新撤销或删除。不要手工修改控制库、收据、暂存或marker来跳过失败；看到已有不同字节、链接或未知文件时保留现场。具体验证范围和统计口径见[规格104第25/26节](104-long-pdf-processing-and-source-lifecycle.md)及[本批收据](../evidence/2026-10-24/restore-resume-sqlite-acceptance.json)。
+
+PG新目标恢复使用`node scripts/operations/postgres-backup.cjs restore --bundle <备份目录> --destination <目标数据目录> --connection-env <目标连接环境变量名> --pg-bin <客户端bin目录> --deletion-ledger <最新账本>`。中断后使用相同参数加`--resume`；无账本时始终省略账本参数。目标连接放在环境变量，避免在命令参数或收据写密码。prepared会预留新导入代次；活原生导入仍会拒绝竞争，不能只因上个Node进程退出就另起导入。
+
+PG完整导入后使用内容指纹、summary及引用再核对，完成收据/终态清单与ready共同提交。完成态只补文件收据/marker，合法后续学习后再次resume返回原结果。不能在续恢复时换库、换目录、换备份或换账本；旧协议缺少必要runtime字段时继续拒绝。见[规格104第27/28节](104-long-pdf-processing-and-source-lifecycle.md)和[PG本批收据](../evidence/2026-10-24/restore-resume-postgres-acceptance.json)。
