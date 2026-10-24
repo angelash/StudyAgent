@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "at": "2026-10-24",
-  "sourceRevision": "pending-feature-commit",
+  "sourceRevision": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
   "specificationCommit": "eec36f6",
   "passed": true,
   "status": "scoped-local-validation-remote-and-live-pending",
@@ -104,7 +104,8 @@
   "diagnostics": [
     "Invalid concurrent-build API run retained but excluded from acceptance.",
     "Upload test helper and missing export request key were corrected before valid reruns.",
-    "First real DS run indexed all pages but failed route planning; original failure is retained."
+    "First real DS run indexed all pages but failed route planning; original failure is retained.",
+    "Documentation validation rejected a stale source-revision snapshot; regenerating the matching content snapshot restored validation."
   ],
   "requirements": {
     "XP-B02": "in_progress",
@@ -126,5 +127,46 @@
     "scripts/operations/start-daemon.ps1"
   ],
   "ci": "pending",
-  "runtime": "unchanged pending final validation"
+  "runtime": "unchanged pending final validation",
+  "live": {
+    "passed": true,
+    "receipt": "source-compilation-live-resumed-success/receipt.json",
+    "initialFailure": "source-compilation-live-initial-failure/receipt.json",
+    "pages": 11,
+    "characters": 13422,
+    "chunks": 11,
+    "lessons": 2,
+    "citedChunks": 6,
+    "omittedChunks": 0,
+    "durationMs": 544717,
+    "stageCallsOnResume": 7,
+    "fixedModel": "DeepSeek V4.1 Flash",
+    "sourceScope": "Eleven intentionally repetitive anonymous fraction pages, not a diverse chapter or a textbook.",
+    "findings": [
+      "Initial plan failed on scope-note length and unassigned chunks; short planning aliases fixed the observed failures.",
+      "Actual database reopen skipped all eleven saved indices.",
+      "First generated lesson overstated a sufficient condition as an exclusive condition; independent review corrected it.",
+      "Second review timed out twice internally; retry preserved the written lesson and only repeated its missing review.",
+      "All eleven blocks were planned; only six have current lesson citations. Neither quantity proves semantic completeness.",
+      "Some generated teaching still includes process / review wording, which needs further copy refinement."
+    ],
+    "contentReview": "pending-human-review",
+    "latency": "The resumed run took about nine minutes including review timeouts. This is a bounded successful sample, not acceptable latency or broad reliability proof."
+  },
+  "finalStageReporting": {
+    "testsPassed": 34,
+    "testsFailed": 0,
+    "report": "source-compilation-stage-api.json",
+    "scope": "Actual persisted long-compiler stage determines failure code; old v2 stages remain covered. Feature commit / final fix commit are distinct."
+  },
+  "boundaryProbe": {
+    "passedTechnicalProbe": true,
+    "durationMs": 29377,
+    "receipt": "source-compilation-boundary-probe/receipt.json",
+    "decision": "revised",
+    "issueCount": 2,
+    "questionsPreserved": true,
+    "limits": "The model corrected the injected 1/2=3/4 error and incorporated following-block conditions. Its wording still overstates the positive-integer construction as exclusive; this probe is not semantic approval. Human review remains pending.",
+    "fixtureFailure": "First probe adapter supplied sourceKey where the validator requires key; retained as a fixture failure, not a model-quality failure."
+  }
 }

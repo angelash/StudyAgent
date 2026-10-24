@@ -1,0 +1,734 @@
+{
+  "content": {
+    "title": "Fractions, Units and Necessary Conditions",
+    "overview": "A fraction names selected equal parts of one whole. This short lesson keeps two conditions in view: compare or add fractions only when they share the same whole, and repartition a fraction only by multiplying the numerator and denominator by the same positive integer.",
+    "lessons": [
+      {
+        "title": "Same Whole, Same Unit",
+        "objective": "Explain why fractions must share one whole before their quantities are compared, how the denominator names the unit and the numerator counts units, how one positive integer preserves quantity, and how a common unit makes addition valid.",
+        "introduction": "When a fraction question feels mechanical, return to three questions: What is the whole? What unit does the denominator name? How many units does the numerator count? The rules for comparing fractions, forming equivalent fractions, and adding fractions follow from those answers.",
+        "concept": "A fraction describes selected equal parts of one whole. Begin by naming that whole. The denominator names the unit, and the numerator counts how many such units are selected. Fractions must refer to the same whole before their quantities can be compared; if the wholes differ, describe their sizes instead of treating the fractions alone as a sufficient comparison. Equivalent fractions represent the same quantity when both numerator and denominator are multiplied by the same positive integer; this changes the partition without changing the quantity, as in 1/2 = 2/4 = 3/6. To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should be greater than either addend; here it is also less than one whole. A correct numerical answer with an unexplained unit still needs a reasoning check.",
+        "notes": [
+          "Identify the whole before comparing fractions.",
+          "Denominator: the unit; numerator: how many units.",
+          "Same whole is required for comparison.",
+          "Equivalent fractions: same positive integer on top and bottom.",
+          "Add only after choosing a common unit."
+        ],
+        "example": {
+          "scenario": "Two fractions describe parts of one identical whole: 1/2 and 1/3. The units are halves and thirds, so add after converting to a common unit.",
+          "steps": [
+            "Name the whole: both fractions refer to the same whole.",
+            "Name the units: halves and thirds are different units.",
+            "Choose sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+            "Add counts of sixths: 3/6 + 2/6 = 5/6.",
+            "Check that 5/6 is greater than either addend and less than one whole."
+          ],
+          "board": [
+            "Whole: same for both fractions",
+            "1/2 = 3/6; 1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Adding denominators gives the wrong unit"
+          ],
+          "conclusion": "The sum is 5/6 of the same whole. The common unit makes the counts addable; the numerical result still needs a reasoning check about the unit and whole."
+        },
+        "misconception": {
+          "claim": "Because 1/2 = 2/4, multiplying only the denominator by 2 must also preserve the quantity.",
+          "correction": "Multiplying both numerator and denominator by the same positive integer preserves quantity; changing only one part does not. The condition applies to both parts of the fraction, and the integer must be positive.",
+          "board": [
+            "Same positive integer: both parts",
+            "1/2 = (1×2)/(2×2) = 2/4",
+            "Changing only one part changes the fraction"
+          ]
+        },
+        "transfer": "When two fractions refer to different wholes, such as half of a small cake and half of a large cake, do not treat the fractions alone as a sufficient comparison. First describe the sizes of the wholes, then compare the original quantities or model each whole separately. Convert a proposed answer back into the original quantities and explain what the numerator counts and what unit the denominator names.",
+        "summary": "Name the whole, then the unit, then the count. Compare only under the same whole; multiply both numerator and denominator by the same positive integer to change the partition without changing the quantity; add through a common unit. AI review is not teacher approval or a formal ability measurement.",
+        "takeaways": [
+          "Same whole before comparison",
+          "Denominator names unit; numerator counts units",
+          "Equivalent fractions need the same positive integer",
+          "Add through a common unit"
+        ],
+        "citations": [
+          {
+            "sourceKey": "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+            "quote": "A fraction describes selected equal parts of the same whole. The denominator names the unit and the numerator counts how many such units are selected."
+          },
+          {
+            "sourceKey": "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+            "quote": "Fractions must refer to the same whole before their quantities can be compared."
+          },
+          {
+            "sourceKey": "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+            "quote": "Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity."
+          },
+          {
+            "sourceKey": "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+            "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit."
+          },
+          {
+            "sourceKey": "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+            "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Which statement keeps the same-whole condition when comparing 1/2 and 1/3?",
+            "options": [
+              "The fractions can be compared directly because both are less than one.",
+              "The fractions must refer to the same whole before their quantities can be compared.",
+              "The fractions are equal because both use one as numerator.",
+              "The fractions can be compared after adding the denominators."
+            ],
+            "answer": 1,
+            "explanation": "The source states that fractions must refer to the same whole before their quantities can be compared. Comparing 1/2 and 1/3 directly would skip that condition.",
+            "hints": [
+              "Ask what each fraction is a part of.",
+              "A shared whole is required before the quantities are compared."
+            ]
+          },
+          {
+            "prompt": "What does the denominator name in a fraction?",
+            "options": [
+              "How many units are selected",
+              "The size of the whole only",
+              "The unit being counted",
+              "The positive integer used for equivalence"
+            ],
+            "answer": 2,
+            "explanation": "The denominator names the unit, while the numerator counts how many such units are selected.",
+            "hints": [
+              "Separate the unit from the count.",
+              "The numerator answers how many."
+            ]
+          },
+          {
+            "prompt": "Which operation preserves the quantity of a fraction?",
+            "options": [
+              "Multiply both numerator and denominator by the same positive integer.",
+              "Multiply only the numerator by a positive integer.",
+              "Add the same positive integer to both numerator and denominator.",
+              "Multiply only the denominator by a positive integer."
+            ],
+            "answer": 0,
+            "explanation": "Multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity. Changing only one part does not preserve the fraction.",
+            "hints": [
+              "Check whether both parts change.",
+              "Check whether the integer is positive."
+            ]
+          },
+          {
+            "prompt": "For 1/2 and 1/3 of the same whole, which calculation uses a common unit correctly?",
+            "options": [
+              "1/2 + 1/3 = 2/5 because add numerators and denominators.",
+              "1/2 + 1/3 = 2/5 because denominators name the unit.",
+              "1/2 + 1/3 = 3/6 because only the first fraction changes.",
+              "1/2 + 1/3 = 5/6 because 3/6 + 2/6 = 5/6."
+            ],
+            "answer": 3,
+            "explanation": "Using sixths gives 1/2 = 3/6 and 1/3 = 2/6, so 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit.",
+            "hints": [
+              "Choose a unit both fractions can use.",
+              "Convert both fractions before adding their counts."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Counting Equal Parts and Building Sixths",
+        "objective": "State that fractions describe selected equal parts of the same whole, name the denominator as the unit and the numerator as the count, apply the positive-integer equivalence rule, and add 1/2 and 1/3 of the same whole as 3/6 + 2/6 = 5/6.",
+        "introduction": "Fractions describe parts of one whole. To compare or add them, first make sure they refer to the same whole. Then name the unit and the count before applying a rule.",
+        "concept": "A fraction describes selected equal parts of the same whole. The denominator names the unit, and the numerator counts how many such units are selected. Before comparing fraction quantities, make sure they refer to the same whole. Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition but not the quantity, for example 1/2 = 2/4 = 3/6. For 1/2 + 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should exceed either addend; this sum is also less than one whole. If the original wholes differ, describe their sizes first. A drawn model should label the whole and show equal-sized parts, and a proposed answer should be checked by converting it back into the original quantities.",
+        "notes": [
+          "Same whole first: compare quantities only then.",
+          "Denominator = unit; numerator = count.",
+          "Positive integer multiplier preserves quantity.",
+          "Sixths make 1/2 and 1/3 comparable: 3/6 + 2/6."
+        ],
+        "example": {
+          "scenario": "Use one whole. Add 1/2 and 1/3 of that same whole, then check the unit.",
+          "steps": [
+            "Confirm both fractions refer to the same whole.",
+            "Name the units: halves and thirds are different units.",
+            "Rewrite with sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+            "Add selected sixths: 3/6 + 2/6 = 5/6.",
+            "Check that 5/6 exceeds either addend and is less than one whole.",
+            "If the wholes differ, describe their sizes first."
+          ],
+          "board": [
+            "Same whole: required before comparison",
+            "Denominator: names the unit",
+            "Numerator: counts selected units",
+            "1/2 = 3/6; 1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Check: sum exceeds either addend"
+          ],
+          "conclusion": "With the same whole, 1/2 + 1/3 becomes 3/6 + 2/6 = 5/6. The denominator names sixths; the numerator counts selected sixths."
+        },
+        "misconception": {
+          "claim": "A correct numerical answer is enough even if the unit is unexplained.",
+          "correction": "A correct numerical answer with an unexplained unit still needs a reasoning check. Explain what the numerator counts and what unit the denominator names before applying a rule.",
+          "board": [
+            "Check the unit, not just the number",
+            "Unexplained unit: reasoning check needed",
+            "Numerator = count; denominator = unit"
+          ]
+        },
+        "transfer": "When a new task gives two wholes, do not compare or add the fractions until you confirm the wholes are the same. Name each unit, choose a common partition when needed, and check the result against the positive-addend expectation. If the wholes differ, describe their sizes instead of treating the fractions alone as sufficient.",
+        "summary": "Fractions are selected equal parts of the same whole. The denominator names the unit; the numerator counts selected units. Multiplying numerator and denominator by the same positive integer preserves quantity. With the same whole, 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+        "takeaways": [
+          "Fractions need the same whole before comparison.",
+          "Denominator names the unit; numerator counts units.",
+          "Use the same positive multiplier for equivalence.",
+          "Use sixths: 3/6 + 2/6 = 5/6."
+        ],
+        "citations": [
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "A fraction describes selected equal parts of the same whole."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "The denominator names the unit and the numerator counts how many such units are selected."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity"
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Before comparing two fraction quantities, what condition does the source require?",
+            "options": [
+              "They must refer to the same whole.",
+              "They must have the same numerator.",
+              "They must have different denominators.",
+              "They must each be less than one."
+            ],
+            "answer": 0,
+            "explanation": "The source states that fractions must refer to the same whole before their quantities can be compared.",
+            "hints": [
+              "Look for the condition tied to comparing quantities.",
+              "The condition concerns the whole, not the numerator."
+            ]
+          },
+          {
+            "prompt": "In the fraction 3/6, what does the denominator 6 name?",
+            "options": [
+              "The number of selected parts",
+              "The size of the original whole",
+              "The unit being counted",
+              "The number of wholes"
+            ],
+            "answer": 2,
+            "explanation": "The denominator names the unit, while the numerator counts how many selected units there are.",
+            "hints": [
+              "Separate the naming role from the counting role.",
+              "The numerator counts selected parts."
+            ]
+          },
+          {
+            "prompt": "Which expression correctly adds 1/2 and 1/3 of the same whole by using sixths?",
+            "options": [
+              "1/6 + 1/6 = 2/6",
+              "3/6 + 2/6 = 5/6",
+              "1/2 + 1/3 = 2/5",
+              "3/6 + 2/6 = 5/12"
+            ],
+            "answer": 1,
+            "explanation": "Using sixths gives 1/2 = 3/6 and 1/3 = 2/6, so the sum is 3/6 + 2/6 = 5/6.",
+            "hints": [
+              "Rewrite each fraction with the same unit first.",
+              "Do not add the denominators."
+            ]
+          },
+          {
+            "prompt": "Which operation uses the positive-integer equivalence rule described in the source?",
+            "options": [
+              "Add the same number to numerator and denominator.",
+              "Multiply numerator and denominator by different positive integers.",
+              "Multiply only the denominator by a positive integer.",
+              "Multiply both numerator and denominator by the same positive integer."
+            ],
+            "answer": 3,
+            "explanation": "Multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity.",
+            "hints": [
+              "Look for the operation applied to both parts.",
+              "The multiplier must be positive and the same."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "originalContent": {
+    "title": "Fractions, Units and Necessary Conditions",
+    "overview": "A fraction names selected equal parts of one whole. This short lesson keeps two conditions in view: compare or add fractions only when they share the same whole, and repartition a fraction only by multiplying the numerator and denominator by the same positive integer.",
+    "lessons": [
+      {
+        "title": "Same Whole, Same Unit",
+        "objective": "Explain why fractions must share one whole before their quantities are compared, how the denominator names the unit and the numerator counts units, how one positive integer preserves quantity, and how a common unit makes addition valid.",
+        "introduction": "When a fraction question feels mechanical, return to three questions: What is the whole? What unit does the denominator name? How many units does the numerator count? The rules for comparing fractions, forming equivalent fractions, and adding fractions follow from those answers.",
+        "concept": "A fraction describes selected equal parts of one whole. Begin by naming that whole. The denominator names the unit, and the numerator counts how many such units are selected. Fractions must refer to the same whole before their quantities can be compared; if the wholes differ, describe their sizes instead of treating the fractions alone as a sufficient comparison. Equivalent fractions represent the same quantity only when both numerator and denominator are multiplied by the same positive integer; this changes the partition without changing the quantity, as in 1/2 = 2/4 = 3/6. To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should be greater than either addend; here it is also less than one whole. A correct numerical answer with an unexplained unit still needs a reasoning check.",
+        "notes": [
+          "Identify the whole before comparing fractions.",
+          "Denominator: the unit; numerator: how many units.",
+          "Same whole is required for comparison.",
+          "Equivalent fractions: same positive integer on top and bottom.",
+          "Add only after choosing a common unit."
+        ],
+        "example": {
+          "scenario": "Two fractions describe parts of one identical whole: 1/2 and 1/3. The units are halves and thirds, so add after converting to a common unit.",
+          "steps": [
+            "Name the whole: both fractions refer to the same whole.",
+            "Name the units: halves and thirds are different units.",
+            "Choose sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+            "Add counts of sixths: 3/6 + 2/6 = 5/6.",
+            "Check that 5/6 is greater than either addend and less than one whole."
+          ],
+          "board": [
+            "Whole: same for both fractions",
+            "1/2 = 3/6; 1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Adding denominators gives the wrong unit"
+          ],
+          "conclusion": "The sum is 5/6 of the same whole. The common unit makes the counts addable; the numerical result still needs a reasoning check about the unit and whole."
+        },
+        "misconception": {
+          "claim": "Because 1/2 = 2/4, multiplying only the denominator by 2 must also preserve the quantity.",
+          "correction": "Only multiplying both numerator and denominator by the same positive integer preserves quantity; changing only one part does not. The condition applies to both parts of the fraction, and the integer must be positive.",
+          "board": [
+            "Same positive integer: both parts",
+            "1/2 = (1×2)/(2×2) = 2/4",
+            "Changing only one part changes the fraction"
+          ]
+        },
+        "transfer": "When two fractions refer to different wholes, such as half of a small cake and half of a large cake, do not treat the fractions alone as a sufficient comparison. First describe the sizes of the wholes, then compare the original quantities or model each whole separately. Convert a proposed answer back into the original quantities and explain what the numerator counts and what unit the denominator names.",
+        "summary": "Name the whole, then the unit, then the count. Compare only under the same whole; multiply both numerator and denominator by the same positive integer to change the partition without changing the quantity; add through a common unit. AI review is not teacher approval or a formal ability measurement.",
+        "takeaways": [
+          "Same whole before comparison",
+          "Denominator names unit; numerator counts units",
+          "Equivalent fractions need the same positive integer",
+          "Add through a common unit"
+        ],
+        "citations": [
+          {
+            "sourceKey": "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+            "quote": "A fraction describes selected equal parts of the same whole. The denominator names the unit and the numerator counts how many such units are selected."
+          },
+          {
+            "sourceKey": "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+            "quote": "Fractions must refer to the same whole before their quantities can be compared."
+          },
+          {
+            "sourceKey": "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+            "quote": "Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity."
+          },
+          {
+            "sourceKey": "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+            "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit."
+          },
+          {
+            "sourceKey": "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+            "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Which statement keeps the same-whole condition when comparing 1/2 and 1/3?",
+            "options": [
+              "The fractions can be compared directly because both are less than one.",
+              "The fractions must refer to the same whole before their quantities can be compared.",
+              "The fractions are equal because both use one as numerator.",
+              "The fractions can be compared after adding the denominators."
+            ],
+            "answer": 1,
+            "explanation": "The source states that fractions must refer to the same whole before their quantities can be compared. Comparing 1/2 and 1/3 directly would skip that condition.",
+            "hints": [
+              "Ask what each fraction is a part of.",
+              "A shared whole is required before the quantities are compared."
+            ]
+          },
+          {
+            "prompt": "What does the denominator name in a fraction?",
+            "options": [
+              "How many units are selected",
+              "The size of the whole only",
+              "The unit being counted",
+              "The positive integer used for equivalence"
+            ],
+            "answer": 2,
+            "explanation": "The denominator names the unit, while the numerator counts how many such units are selected.",
+            "hints": [
+              "Separate the unit from the count.",
+              "The numerator answers how many."
+            ]
+          },
+          {
+            "prompt": "Which operation preserves the quantity of a fraction?",
+            "options": [
+              "Multiply both numerator and denominator by the same positive integer.",
+              "Multiply only the numerator by a positive integer.",
+              "Add the same positive integer to both numerator and denominator.",
+              "Multiply only the denominator by a positive integer."
+            ],
+            "answer": 0,
+            "explanation": "Multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity. Changing only one part does not preserve the fraction.",
+            "hints": [
+              "Check whether both parts change.",
+              "Check whether the integer is positive."
+            ]
+          },
+          {
+            "prompt": "For 1/2 and 1/3 of the same whole, which calculation uses a common unit correctly?",
+            "options": [
+              "1/2 + 1/3 = 2/5 because add numerators and denominators.",
+              "1/2 + 1/3 = 2/5 because denominators name the unit.",
+              "1/2 + 1/3 = 3/6 because only the first fraction changes.",
+              "1/2 + 1/3 = 5/6 because 3/6 + 2/6 = 5/6."
+            ],
+            "answer": 3,
+            "explanation": "Using sixths gives 1/2 = 3/6 and 1/3 = 2/6, so 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit.",
+            "hints": [
+              "Choose a unit both fractions can use.",
+              "Convert both fractions before adding their counts."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Counting Equal Parts and Building Sixths",
+        "objective": "State that fractions describe selected equal parts of the same whole, name the denominator as the unit and the numerator as the count, apply the positive-integer equivalence rule, and add 1/2 and 1/3 of the same whole as 3/6 + 2/6 = 5/6.",
+        "introduction": "Fractions describe parts of one whole. To compare or add them, first make sure they refer to the same whole. Then name the unit and the count before applying a rule.",
+        "concept": "A fraction describes selected equal parts of one whole. The denominator names the unit, and the numerator counts how many such units are selected. Before comparing fraction quantities, make sure they refer to the same whole. Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition but not the quantity, for example 1/2 = 2/4 = 3/6. For 1/2 + 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should exceed either addend; this sum is also less than one whole. If the original wholes differ, describe their sizes first. The given chunk does not restrict denominators, and its page attribution is unchecked.",
+        "notes": [
+          "Same whole first: compare quantities only then.",
+          "Denominator = unit; numerator = count.",
+          "Positive integer multiplier preserves quantity.",
+          "Sixths make 1/2 and 1/3 comparable: 3/6 + 2/6."
+        ],
+        "example": {
+          "scenario": "Use one whole. Add 1/2 and 1/3 of that same whole, then check the unit.",
+          "steps": [
+            "Confirm both fractions refer to the same whole.",
+            "Name the units: halves and thirds are different units.",
+            "Rewrite with sixths: 1/2 = 3/6 and 1/3 = 2/6.",
+            "Add selected sixths: 3/6 + 2/6 = 5/6.",
+            "Check that 5/6 exceeds either addend and is less than one whole.",
+            "If the wholes differ, describe their sizes first."
+          ],
+          "board": [
+            "Same whole: required before comparison",
+            "Denominator: names the unit",
+            "Numerator: counts selected units",
+            "1/2 = 3/6; 1/3 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "Check: sum exceeds either addend"
+          ],
+          "conclusion": "With the same whole, 1/2 + 1/3 becomes 3/6 + 2/6 = 5/6. The denominator names sixths; the numerator counts selected sixths."
+        },
+        "misconception": {
+          "claim": "A correct numerical answer is enough even if the unit is unexplained.",
+          "correction": "A correct numerical answer with an unexplained unit still needs a reasoning check. Explain what the numerator counts and what unit the denominator names before applying a rule.",
+          "board": [
+            "Check the unit, not just the number",
+            "Unexplained unit: reasoning check needed",
+            "Numerator = count; denominator = unit"
+          ]
+        },
+        "transfer": "When a new task gives two wholes, do not compare or add the fractions until you confirm the wholes are the same. Name each unit, choose a common partition when needed, and check the result against the positive-addend expectation. If the wholes differ, describe their sizes instead of treating the fractions alone as sufficient.",
+        "summary": "Fractions are selected equal parts of the same whole. The denominator names the unit; the numerator counts selected units. Multiplying numerator and denominator by the same positive integer preserves quantity. With the same whole, 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+        "takeaways": [
+          "Fractions need the same whole before comparison.",
+          "Denominator names the unit; numerator counts units.",
+          "Use the same positive multiplier for equivalence.",
+          "Use sixths: 3/6 + 2/6 = 5/6."
+        ],
+        "citations": [
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "A fraction describes selected equal parts of the same whole."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "The denominator names the unit and the numerator counts how many such units are selected."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity"
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6."
+          },
+          {
+            "sourceKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+            "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake."
+          }
+        ],
+        "questions": [
+          {
+            "prompt": "Before comparing two fraction quantities, what condition does the source require?",
+            "options": [
+              "They must refer to the same whole.",
+              "They must have the same numerator.",
+              "They must have different denominators.",
+              "They must each be less than one."
+            ],
+            "answer": 0,
+            "explanation": "The source states that fractions must refer to the same whole before their quantities can be compared.",
+            "hints": [
+              "Look for the condition tied to comparing quantities.",
+              "The condition concerns the whole, not the numerator."
+            ]
+          },
+          {
+            "prompt": "In the fraction 3/6, what does the denominator 6 name?",
+            "options": [
+              "The number of selected parts",
+              "The size of the original whole",
+              "The unit being counted",
+              "The number of wholes"
+            ],
+            "answer": 2,
+            "explanation": "The denominator names the unit, while the numerator counts how many selected units there are.",
+            "hints": [
+              "Separate the naming role from the counting role.",
+              "The numerator counts selected parts."
+            ]
+          },
+          {
+            "prompt": "Which expression correctly adds 1/2 and 1/3 of the same whole by using sixths?",
+            "options": [
+              "1/6 + 1/6 = 2/6",
+              "3/6 + 2/6 = 5/6",
+              "1/2 + 1/3 = 2/5",
+              "3/6 + 2/6 = 5/12"
+            ],
+            "answer": 1,
+            "explanation": "Using sixths gives 1/2 = 3/6 and 1/3 = 2/6, so the sum is 3/6 + 2/6 = 5/6.",
+            "hints": [
+              "Rewrite each fraction with the same unit first.",
+              "Do not add the denominators."
+            ]
+          },
+          {
+            "prompt": "Which operation uses the positive-integer equivalence rule described in the source?",
+            "options": [
+              "Add the same number to numerator and denominator.",
+              "Multiply numerator and denominator by different positive integers.",
+              "Multiply only the denominator by a positive integer.",
+              "Multiply both numerator and denominator by the same positive integer."
+            ],
+            "answer": 3,
+            "explanation": "Multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity.",
+            "hints": [
+              "Look for the operation applied to both parts.",
+              "The multiplier must be positive and the same."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "compilation": {
+    "version": "source-course-v3",
+    "input": {
+      "title": "Fractions, units and necessary conditions",
+      "goal": "Write concise English lessons preserving the same-whole condition and the positive-integer condition. The pages intentionally revisit the same concepts. Plan exactly ONE lesson per planning group, covering its source chunks or giving explicit omission reasons. Do not repeat full passages. Keep each board item under 80 characters. Use only the original evidence.",
+      "language": "en",
+      "minutesPerSession": 10,
+      "modelId": "auto",
+      "targetAtomIds": []
+    },
+    "inputFingerprint": "7d03ecf81f17e666e2b49a21ca6fd8bb110914ff827ce25b8c390ada0017f75c",
+    "manifestFingerprint": "7ad937e5d43d63ef807e5f47647845c0440113c432bd43ba6b5620b8a599f0dd",
+    "manifest": [
+      {
+        "key": "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+        "sourceKey": "src-1-1",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "41a0bdb5522fb633234e347b7f8ee375ff99df15fc276292d11e13fc9d522429",
+        "warnings": []
+      },
+      {
+        "key": "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+        "sourceKey": "src-1-2",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "941b27293b1cb9e5ffdab828a3dc1303702a442b7001656a7a1897377757d65e",
+        "warnings": []
+      },
+      {
+        "key": "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+        "sourceKey": "src-1-3",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "00df1c2dc4af5c2af2198a9b27330c62cd833d66a5daa82c5daf9b2d240b6380",
+        "warnings": []
+      },
+      {
+        "key": "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+        "sourceKey": "src-1-4",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "20183349ebeca61cada924a6e22ac528d854f2f826b546c6387ab84d1f938fdd",
+        "warnings": []
+      },
+      {
+        "key": "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+        "sourceKey": "src-1-5",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "4857ac3c5b8fb507b6e308b4e2a29b2051abef81fdfc8b6e3ec093b919e3d303",
+        "warnings": []
+      },
+      {
+        "key": "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+        "sourceKey": "src-1-6",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "5823deb57000e1e68fe60a1982b0d33fde65a0a54ec4b99ff35cf009af6504bb",
+        "warnings": []
+      },
+      {
+        "key": "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+        "sourceKey": "src-2-1",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "b44f659982d245dc438b1945acd8745d86a77641e7df518f8f8c726027718808",
+        "warnings": []
+      },
+      {
+        "key": "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+        "sourceKey": "src-2-2",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "01372e80af8e4c14b9c8ca9e6dfc23955ec784242f53b7aa280f036ea3e8403b",
+        "warnings": []
+      },
+      {
+        "key": "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+        "sourceKey": "src-2-3",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "1475bdc23825cb59eb5f507947d1ea7f54344bbc524253093f2a51b08aebb859",
+        "warnings": []
+      },
+      {
+        "key": "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9",
+        "sourceKey": "src-2-4",
+        "start": 0,
+        "end": 1221,
+        "characters": 1221,
+        "sha256": "630f59261072e13f79ee89fdc49a2d34abc9a04c11e80d37320441a3511248e6",
+        "warnings": []
+      },
+      {
+        "key": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+        "sourceKey": "src-2-5",
+        "start": 0,
+        "end": 1221,
+        "characters": 1221,
+        "sha256": "d338d8dffe89ac057c3dfa17b54b19156b938660865078c9a3a980bda5dd3394",
+        "warnings": []
+      }
+    ],
+    "stage": "completed",
+    "indexedChunks": 11,
+    "plannedGroups": 2,
+    "planGroups": 2,
+    "draftedLessons": 2,
+    "reviewedLessons": 2,
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "uncertainChunks": [
+      "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+      "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+      "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+      "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+      "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+      "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+      "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+      "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+      "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+      "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9",
+      "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+    ],
+    "reviews": [
+      {
+        "lessonId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841",
+        "decision": "revised",
+        "issueCount": 2
+      },
+      {
+        "lessonId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626",
+        "decision": "revised",
+        "issueCount": 2
+      }
+    ],
+    "outline": {
+      "title": "Fractions, Units and Necessary Conditions",
+      "overview": "A fraction names selected equal parts of one whole. This short lesson keeps two conditions in view: compare or add fractions only when they share the same whole, and repartition a fraction only by multiplying the numerator and denominator by the same positive integer.",
+      "scopeNotes": [
+        "Covers fraction meaning, unit and count, same-whole checks, equivalent fractions, and same-whole addition; differing wholes are described, not treated as comparable.",
+        "Covers same-whole fractions, denominator as unit, equivalence by the same positive integer, and adding 1/2 and 1/3 as sixths."
+      ],
+      "omitted": [],
+      "lessons": [
+        {
+          "title": "Same Whole, Same Unit",
+          "objective": "Explain why fractions must share one whole before their quantities are compared, how the denominator names the unit and the numerator counts units, how one positive integer preserves quantity, and how a common unit makes addition valid.",
+          "focus": "Whole, unit, count. Compare only under the same whole. Equivalent fractions need the same positive integer on both numerator and denominator. Add through a common unit; adding denominators gives the wrong unit.",
+          "sourceKeys": [
+            "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+            "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+            "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+            "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+            "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+            "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+            "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+            "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+            "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+            "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9"
+          ],
+          "after": [],
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841",
+          "prerequisiteIds": []
+        },
+        {
+          "title": "Counting Equal Parts and Building Sixths",
+          "objective": "State that fractions describe selected equal parts of the same whole, name the denominator as the unit and the numerator as the count, apply the positive-integer equivalence rule, and add 1/2 and 1/3 of the same whole as 3/6 + 2/6 = 5/6.",
+          "focus": "Compare quantities only when the fractions refer to the same whole. Name the denominator as the unit and the numerator as the count. Use the rule that multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity, then add 1/2 and 1/3 with sixths: 3/6 + 2/6 = 5/6. Open points: the chunk does not restrict denominators, and the page attribution is unchecked.",
+          "sourceKeys": [
+            "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+          ],
+          "after": [],
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626",
+          "prerequisiteIds": []
+        }
+      ]
+    },
+    "createdAt": "2026-10-24T02:03:12.072Z",
+    "updatedAt": "2026-10-24T02:20:29.572Z",
+    "candidateFingerprint": "431e50330013041335929d1e9e26b5ecb4b7475e5b43ad6d24f8b340dfeff105"
+  }
+}

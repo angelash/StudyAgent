@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-24T02:13:45.655Z",
-  "sourceRevision": "eec36f63b2c960cceec9a936f6576b9cf0efb9e7",
+  "at": "2026-10-24T02:24:21.390Z",
+  "sourceRevision": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -142,13 +142,13 @@
       "apps/api/src/modules/learning/notebook.service.ts": "f2ad37d25adba2f0bd3bd35952f7afe44022fdb51a7f8682fc5176aecc5952ce",
       "apps/api/src/modules/learning/source-course-chunks.test.ts": "313447921b4d40348cc21842352487ca5821ed711def1aa65aa65015336cba27",
       "apps/api/src/modules/learning/source-course-chunks.ts": "af9e83fc039edcde2606b7451f57bac4b6e25b2b259a2612eb065a9c398c9b92",
-      "apps/api/src/modules/learning/source-course-compilation.integration.test.ts": "73753231dce052b57cb6115d05c6ad3fea9183a91d199f1860eceedf2d79f74e",
+      "apps/api/src/modules/learning/source-course-compilation.integration.test.ts": "db878570131b14381330700bff1a79db62f119971862cd51bc2484faa4361bba",
       "apps/api/src/modules/learning/source-course-compilation.ts": "6d560dbd7ca97794c9be81486458ddb59dbfa71d314c542406b865b3932c8dc2",
       "apps/api/src/modules/learning/source-course-compiler.service.ts": "314726fdd057af3b7e87482f076f003b26d371982c9570d05c0159d83c28f51d",
       "apps/api/src/modules/learning/source-course-content.ts": "a46408ff63253d57696eed4a06b5f929e6372c6411d554b09297e9353d1412ed",
       "apps/api/src/modules/learning/source-course-pipeline.ts": "8b1881a2c8d746151188c47fada2102e1a09c7f26bdfa2b08b944bd057182480",
       "apps/api/src/modules/learning/source-course-selection.ts": "1bd2cdbf02e41ddfc6924ba7406739361506baf75a2b1e9cb1278bba5c386627",
-      "apps/api/src/modules/learning/source-course-worker.service.ts": "c2f2e7c983c114063ab541c5fc599281438d8fa38ca1efb7b02b3c4b222dfc74",
+      "apps/api/src/modules/learning/source-course-worker.service.ts": "00dd52594956de68531430a9c33601b0b0523bf35aa0d8e8b5c28f601bfe7ad0",
       "apps/api/src/modules/learning/source-course.controller.ts": "00262319318b9cb1e1db2499ce5225872c1d63c0578504866913ae8b34232ed7",
       "apps/api/src/modules/learning/source-course.integration.test.ts": "9bd2e251e3f3bab7afc20eabd73e1709fff163457b75f214d86e791eef62281e",
       "apps/api/src/modules/learning/source-course.service.ts": "3feb0390b29f6c12f99c797c016fc7866d85be0670868985752f34e6a7d9217d",
@@ -298,7 +298,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 1954,
+    "checked": 1961,
     "missing": []
   },
   "staticContent": {
@@ -370,7 +370,7 @@
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
     "receipt": "../evidence/2026-10-24/source-compilation-acceptance.json",
-    "revision": "pending-feature-commit",
+    "revision": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

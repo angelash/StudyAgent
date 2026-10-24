@@ -1,0 +1,24 @@
+{
+  "title": "Fractions, units and necessary conditions",
+  "topics": [
+    "Same-whole condition for comparing fractions",
+    "Denominator as unit and numerator as count of selected units",
+    "Equivalent fractions from multiplying numerator and denominator by the same positive integer",
+    "Adding unlike fractions by converting to a common unit"
+  ],
+  "conditions": [
+    "Fractions can be compared only when they refer to the same whole.",
+    "Multiplying numerator and denominator by the same positive integer preserves the quantity.",
+    "To add 1/2 and 1/3 of the same whole, convert both to sixths; adding denominators gives the wrong unit."
+  ],
+  "quotes": [
+    "A fraction describes selected equal parts of the same whole.",
+    "Fractions must refer to the same whole before their quantities can be compared."
+  ],
+  "uncertainties": [
+    "The source states the positive-integer condition for equivalent fractions but does not discuss other multipliers or define whether the multiplier may be 1.",
+    "The source gives one same-whole counterexample and one addition example, without stating further boundary cases."
+  ],
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash"
+}

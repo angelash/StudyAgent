@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-24T02:23:09.501Z",
+  "passed": true,
+  "scope": "One intentionally false rule with conditions on an adjacent original block. Not teacher approval or a measured false-negative rate.",
+  "contentReview": "pending-human-review",
+  "durationMs": 29377,
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "decision": "revised",
+  "issueCount": 2,
+  "changedConcept": "Equivalent fractions represent the same quantity after a repartition only when numerator and denominator are both multiplied by the same positive integer, and all fractions refer to the same whole. For example, 1/2 = (1x2)/(2x2) = 2/4 because both parts are multiplied by 2 and the whole stays the same. Adding the same number to numerator and denominator does not generally preserve a fraction: 1/2 is not equal to 3/4.",
+  "questionsPreserved": true,
+  "baseline": "data/qa/source-compilation-live-1792807882996-42856"
+}

@@ -98,7 +98,11 @@ export class SourceCourseWorkerService implements OnApplicationBootstrap,OnModul
         row.fingerprint=sourceDigest({input:row.input,sources:row.sources,result});state.candidateFingerprint=row.fingerprint;state.stage='completed';
         row.modelName=state.modelName;row.status='ready';row.revision++;
       },true);return true;
-    }catch(error){await this.store.tasks.fail(task.id,task.leaseToken!,this.stopping?'worker_stopped':abort.signal.aborted?'cancelled':error instanceof Error&&(['course_checkpoint_incompatible','course_model_changed','course_stage_input_too_large','course_source_context_too_large','course_checkpoint_incomplete'].includes(error.message)||error.message.startsWith('course_compilation_'))?error.message:'course_'+stage+'_failed',this.stopping).catch(()=>{});this.logger.warn('Source course task did not publish at '+stage+': '+task.id);return true;}
+    }catch(error){
+      // The delegated compiler persists its own stage; the legacy local variable starts at planning.
+      const compiledStage=await this.store.requestContext(()=>this.store.find('sourceCourses',{id:String(task.payload.courseId)})?.compilation?.stage).catch(()=>undefined);
+      if(compiledStage)stage=compiledStage;
+      await this.store.tasks.fail(task.id,task.leaseToken!,this.stopping?'worker_stopped':abort.signal.aborted?'cancelled':error instanceof Error&&(['course_checkpoint_incompatible','course_model_changed','course_stage_input_too_large','course_source_context_too_large','course_checkpoint_incomplete'].includes(error.message)||error.message.startsWith('course_compilation_'))?error.message:'course_'+stage+'_failed',this.stopping).catch(()=>{});this.logger.warn('Source course task did not publish at '+stage+': '+task.id);return true;}
     finally{clearInterval(heartbeat);this.abort=undefined;}
   }
 }

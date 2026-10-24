@@ -1,0 +1,149 @@
+{
+  "at": "2026-10-24T02:11:22.996Z",
+  "passed": true,
+  "dataDirectory": "data/qa/source-compilation-live-1792807882996-42856",
+  "scope": "One anonymous original exceeding 10 pages and 12000 characters. Not whole-book semantic coverage, teacher approval or reliability validation.",
+  "contentReview": "pending-human-review",
+  "calls": [
+    {
+      "number": 1,
+      "stage": "chunk-plan",
+      "lessonIndex": null,
+      "sourceKeys": [],
+      "contextCharacters": 515,
+      "messageCharacters": 11547,
+      "success": true,
+      "durationMs": 12127,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    },
+    {
+      "number": 2,
+      "stage": "chunk-plan",
+      "lessonIndex": null,
+      "sourceKeys": [],
+      "contextCharacters": 515,
+      "messageCharacters": 1351,
+      "success": true,
+      "durationMs": 26666,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    },
+    {
+      "number": 3,
+      "stage": "lesson",
+      "lessonIndex": 0,
+      "sourceKeys": [
+        "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+        "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+        "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+        "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+        "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+        "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+        "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+        "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+        "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+        "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9"
+      ],
+      "contextCharacters": 14165,
+      "messageCharacters": 1438,
+      "success": true,
+      "durationMs": 47742,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    },
+    {
+      "number": 4,
+      "stage": "review",
+      "lessonIndex": 0,
+      "sourceKeys": [
+        "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+        "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+        "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+        "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+        "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+        "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+        "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+        "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+        "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+        "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9"
+      ],
+      "contextCharacters": 14165,
+      "messageCharacters": 8681,
+      "success": true,
+      "durationMs": 160159,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    },
+    {
+      "number": 5,
+      "stage": "lesson",
+      "lessonIndex": 1,
+      "sourceKeys": [
+        "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+      ],
+      "contextCharacters": 1880,
+      "messageCharacters": 1034,
+      "success": true,
+      "durationMs": 41444,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    },
+    {
+      "number": 6,
+      "stage": "review",
+      "lessonIndex": 1,
+      "sourceKeys": [
+        "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+      ],
+      "contextCharacters": 1880,
+      "messageCharacters": 7324,
+      "success": false,
+      "durationMs": 180468,
+      "error": "DeepSeek V4.1 Flash 连续两次未返回有效的学习建议：小九AI模型对话超时"
+    },
+    {
+      "number": 7,
+      "stage": "review",
+      "lessonIndex": 1,
+      "sourceKeys": [
+        "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+      ],
+      "contextCharacters": 1880,
+      "messageCharacters": 7324,
+      "success": true,
+      "durationMs": 75930,
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    }
+  ],
+  "failures": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "failed",
+      "errorCode": "course_planning_failed",
+      "durationMs": 468711
+    },
+    {
+      "attempt": 2,
+      "status": "ready",
+      "errorCode": null,
+      "durationMs": 76006
+    }
+  ],
+  "resumedFrom": "data/qa/source-compilation-live-1792807390158-63344",
+  "pages": 11,
+  "characters": 13422,
+  "chunks": 11,
+  "lessons": 2,
+  "reviewedLessons": 2,
+  "citedChunks": 6,
+  "omittedChunks": 0,
+  "sourceSha256": "e545d960ac8f1ad9a718c4ee0272c3cce79349a6659fc8d779c861a0ab256e00",
+  "modelIds": [
+    "deepseek-v4-flash",
+    null
+  ],
+  "formalMeasurementEligible": false
+}

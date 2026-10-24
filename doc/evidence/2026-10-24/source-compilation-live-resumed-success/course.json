@@ -1,0 +1,987 @@
+{
+  "id": "source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d",
+  "studentId": null,
+  "subject": null,
+  "title": "Fractions, Units and Necessary Conditions",
+  "goal": "Write concise English lessons preserving the same-whole condition and the positive-integer condition. The pages intentionally revisit the same concepts. Plan exactly ONE lesson per planning group, covering its source chunks or giving explicit omission reasons. Do not repeat full passages. Keep each board item under 80 characters. Use only the original evidence.",
+  "status": "ready",
+  "lessonCount": 2,
+  "viewed": 0,
+  "lastLessonId": null,
+  "nextLessonId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841",
+  "nextLessonTitle": "Same Whole, Same Unit",
+  "lastStudied": null,
+  "revision": 8,
+  "compilation": {
+    "version": "source-course-v3",
+    "stage": "completed",
+    "chunks": 11,
+    "indexedChunks": 11,
+    "planGroups": 2,
+    "plannedGroups": 2,
+    "draftedLessons": 2,
+    "reviewedLessons": 2,
+    "plannedLessons": 2,
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "input": {
+      "title": "Fractions, units and necessary conditions",
+      "goal": "Write concise English lessons preserving the same-whole condition and the positive-integer condition. The pages intentionally revisit the same concepts. Plan exactly ONE lesson per planning group, covering its source chunks or giving explicit omission reasons. Do not repeat full passages. Keep each board item under 80 characters. Use only the original evidence.",
+      "language": "en",
+      "minutesPerSession": 10,
+      "modelId": "auto",
+      "targetAtomIds": []
+    },
+    "reviewCurrent": true,
+    "scopeNote": "Covers fraction meaning, unit and count, same-whole checks, equivalent fractions, and same-whole addition; differing wholes are described, not treated as comparable.\nCovers same-whole fractions, denominator as unit, equivalence by the same positive integer, and adding 1/2 and 1/3 as sixths.",
+    "reviews": [
+      {
+        "lessonIndex": 0,
+        "lessonTitle": "Same Whole, Same Unit",
+        "decision": "revised",
+        "issueCount": 2
+      },
+      {
+        "lessonIndex": 1,
+        "lessonTitle": "Counting Equal Parts and Building Sixths",
+        "decision": "revised",
+        "issueCount": 2
+      }
+    ],
+    "coverage": [
+      {
+        "key": "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+        "sourceKey": "src-1-1",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "41a0bdb5522fb633234e347b7f8ee375ff99df15fc276292d11e13fc9d522429",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 1,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+        "sourceKey": "src-1-2",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "941b27293b1cb9e5ffdab828a3dc1303702a442b7001656a7a1897377757d65e",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 2,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+        "sourceKey": "src-1-3",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "00df1c2dc4af5c2af2198a9b27330c62cd833d66a5daa82c5daf9b2d240b6380",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 3,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+        "sourceKey": "src-1-4",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "20183349ebeca61cada924a6e22ac528d854f2f826b546c6387ab84d1f938fdd",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 4,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+        "sourceKey": "src-1-5",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "4857ac3c5b8fb507b6e308b4e2a29b2051abef81fdfc8b6e3ec093b919e3d303",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 5,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_58fb622f6e1044aca21b7cf5ab1e9164cd44fea17442cae045f1cbb5836d47da",
+        "sourceKey": "src-1-6",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "5823deb57000e1e68fe60a1982b0d33fde65a0a54ec4b99ff35cf009af6504bb",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 1",
+        "page": 6,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_585c702235765177763bf0cb550293cb3628bac70ba957682c7cfa9a557eb1ff",
+        "sourceKey": "src-2-1",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "b44f659982d245dc438b1945acd8745d86a77641e7df518f8f8c726027718808",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 2",
+        "page": 1,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_8a5b23109cc121a965c2de64361d234d8078c0ba4684696fe5a370de5aefb6e1",
+        "sourceKey": "src-2-2",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "01372e80af8e4c14b9c8ca9e6dfc23955ec784242f53b7aa280f036ea3e8403b",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 2",
+        "page": 2,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_b0c3fcfb8f4fde7284524f95fdf697d16f126cd973ce4f96bd06afcc5de7bd13",
+        "sourceKey": "src-2-3",
+        "start": 0,
+        "end": 1220,
+        "characters": 1220,
+        "sha256": "1475bdc23825cb59eb5f507947d1ea7f54344bbc524253093f2a51b08aebb859",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 2",
+        "page": 3,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_10850e8b52471c5eb112c01e27f2a3445e4f7c1f9118621083e9b173245d0cf9",
+        "sourceKey": "src-2-4",
+        "start": 0,
+        "end": 1221,
+        "characters": 1221,
+        "sha256": "630f59261072e13f79ee89fdc49a2d34abc9a04c11e80d37320441a3511248e6",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 2",
+        "page": 4,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841"
+        ],
+        "citedLessonIds": [],
+        "omittedReason": null,
+        "reviewRequired": true
+      },
+      {
+        "key": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+        "sourceKey": "src-2-5",
+        "start": 0,
+        "end": 1221,
+        "characters": 1221,
+        "sha256": "d338d8dffe89ac057c3dfa17b54b19156b938660865078c9a3a980bda5dd3394",
+        "warnings": [
+          "模型索引保留了待核对内容，请结合原文与课时检查。"
+        ],
+        "title": "Anonymous fractions source 2",
+        "page": 5,
+        "plannedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626"
+        ],
+        "citedLessonIds": [
+          "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626"
+        ],
+        "omittedReason": null,
+        "reviewRequired": true
+      }
+    ]
+  },
+  "generation": null,
+  "generationInput": {
+    "title": "Fractions, units and necessary conditions",
+    "goal": "Write concise English lessons preserving the same-whole condition and the positive-integer condition. The pages intentionally revisit the same concepts. Plan exactly ONE lesson per planning group, covering its source chunks or giving explicit omission reasons. Do not repeat full passages. Keep each board item under 80 characters. Use only the original evidence.",
+    "language": "en",
+    "minutesPerSession": 10,
+    "modelId": "auto",
+    "targetAtomIds": []
+  },
+  "overview": "A fraction names selected equal parts of one whole. This short lesson keeps two conditions in view: compare or add fractions only when they share the same whole, and repartition a fraction only by multiplying the numerator and denominator by the same positive integer.",
+  "input": {
+    "title": "Fractions, units and necessary conditions",
+    "goal": "Write concise English lessons preserving the same-whole condition and the positive-integer condition. The pages intentionally revisit the same concepts. Plan exactly ONE lesson per planning group, covering its source chunks or giving explicit omission reasons. Do not repeat full passages. Keep each board item under 80 characters. Use only the original evidence.",
+    "language": "en",
+    "minutesPerSession": 10,
+    "modelId": "auto",
+    "targetAtomIds": []
+  },
+  "sources": [
+    {
+      "key": "src-1-1",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 1,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "9c90b50eb9e4364d711666cf38e637582fb72ce1721078bc3326d8ef4390165f",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-1-2",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 2,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "0f8dc689bc064658e7aa553862985b673241b05c9aefa5d677a31838b82e4121",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-1-3",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 3,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "3e737226c2cc0a77c49d70bf0f3faaa88ec3cf697f619311b472fb35fc5144df",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-1-4",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 4,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "d980ae2f98cd4f8e172b9f27ade3d1a5f4eec2894f7440fc0f0e0f87cbb3b420",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-1-5",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 5,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "e9f20a95cb283d43f63c437047d0f9d862a99901f42d04eca8f0e231e9c15e3d",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-1-6",
+      "materialId": "source_text_95771e78-05d9-4126-b00a-3d712450c14d",
+      "page": 6,
+      "title": "Anonymous fractions source 1",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "c087e97cc11468e0bc28976d4c18a6f7b908ded924d50730fcb98513c2b6dd04",
+      "version": "9dadc5cc6f1875dab0675d718539d684e998cca107a0ccf39183e41bfac8439e",
+      "fingerprint": "2048548ddcc8139398e572ceba629a52e7266aae959463831d19711035c5dbc0",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-2-1",
+      "materialId": "source_text_7dc8ab1c-d22d-4080-8104-e32c97fe1cf9",
+      "page": 1,
+      "title": "Anonymous fractions source 2",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "eafbab7caf01ff3d7e20cc36ff099dbacd42f087d0eb43392af7aa31f770e8cc",
+      "version": "8a27438300593536400faffb564c275ef967104b61a84985d03f041215a1251e",
+      "fingerprint": "23b621bd3bec427e7dc4ae5285f32be276629ca46f651c44d9d621e32a73461c",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-2-2",
+      "materialId": "source_text_7dc8ab1c-d22d-4080-8104-e32c97fe1cf9",
+      "page": 2,
+      "title": "Anonymous fractions source 2",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "eafbab7caf01ff3d7e20cc36ff099dbacd42f087d0eb43392af7aa31f770e8cc",
+      "version": "8a27438300593536400faffb564c275ef967104b61a84985d03f041215a1251e",
+      "fingerprint": "d8d101c87880460775cec238e4561ba93cf390167e71ea18832c6ee65adb1f44",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-2-3",
+      "materialId": "source_text_7dc8ab1c-d22d-4080-8104-e32c97fe1cf9",
+      "page": 3,
+      "title": "Anonymous fractions source 2",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "eafbab7caf01ff3d7e20cc36ff099dbacd42f087d0eb43392af7aa31f770e8cc",
+      "version": "8a27438300593536400faffb564c275ef967104b61a84985d03f041215a1251e",
+      "fingerprint": "cdd3acf55b8b06cec195c8ef78f888f5dcd0b8ba765f779372f150cb3c4c75fb",
+      "structureReviewRequired": false,
+      "textCharacters": 1220
+    },
+    {
+      "key": "src-2-4",
+      "materialId": "source_text_7dc8ab1c-d22d-4080-8104-e32c97fe1cf9",
+      "page": 4,
+      "title": "Anonymous fractions source 2",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "eafbab7caf01ff3d7e20cc36ff099dbacd42f087d0eb43392af7aa31f770e8cc",
+      "version": "8a27438300593536400faffb564c275ef967104b61a84985d03f041215a1251e",
+      "fingerprint": "ad9d9b06da3580b60b09e1a479cadf90f620fb803841afd5baf243ac9dbbfbcb",
+      "structureReviewRequired": false,
+      "textCharacters": 1221
+    },
+    {
+      "key": "src-2-5",
+      "materialId": "source_text_7dc8ab1c-d22d-4080-8104-e32c97fe1cf9",
+      "page": 5,
+      "title": "Anonymous fractions source 2",
+      "kind": "text",
+      "text": "",
+      "blocks": [],
+      "sha256": "eafbab7caf01ff3d7e20cc36ff099dbacd42f087d0eb43392af7aa31f770e8cc",
+      "version": "8a27438300593536400faffb564c275ef967104b61a84985d03f041215a1251e",
+      "fingerprint": "8e36aff37a62d94e9e6581d6175f4b0db41790da5e31871881c0869a36182698",
+      "structureReviewRequired": false,
+      "textCharacters": 1221
+    }
+  ],
+  "permissions": {
+    "manage": true
+  },
+  "contentReview": "pending",
+  "formalMeasurementEligible": false,
+  "sourceStatus": "current",
+  "fingerprint": "431e50330013041335929d1e9e26b5ecb4b7475e5b43ad6d24f8b340dfeff105",
+  "modelName": "DeepSeek V4.1 Flash",
+  "lessons": [
+    {
+      "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841",
+      "title": "Same Whole, Same Unit",
+      "objective": "Explain why fractions must share one whole before their quantities are compared, how the denominator names the unit and the numerator counts units, how one positive integer preserves quantity, and how a common unit makes addition valid.",
+      "lectureId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d",
+      "steps": [
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:orient",
+          "phase": "orient",
+          "title": "Your learning route",
+          "narration": "When a fraction question feels mechanical, return to three questions: What is the whole? What unit does the denominator name? How many units does the numerator count? The rules for comparing fractions, forming equivalent fractions, and adding fractions follow from those answers.",
+          "durationMs": 46035,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:orient:heading",
+              "kind": "heading",
+              "text": "Your learning route"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:orient:notes",
+              "kind": "points",
+              "text": "Your learning route",
+              "items": [
+                "Learn from the source",
+                "Same Whole, Same Unit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:concept",
+          "phase": "concept",
+          "title": "Same Whole, Same Unit",
+          "narration": "A fraction describes selected equal parts of one whole. Begin by naming that whole. The denominator names the unit, and the numerator counts how many such units are selected. Fractions must refer to the same whole before their quantities can be compared; if the wholes differ, describe their sizes instead of treating the fractions alone as a sufficient comparison. Equivalent fractions represent the same quantity when both numerator and denominator are multiplied by the same positive integer; this changes the partition without changing the quantity, as in 1/2 = 2/4 = 3/6. To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should be greater than either addend; here it is also less than one whole. A correct numerical answer with an unexplained unit still needs a reasoning check.",
+          "durationMs": 144705,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:concept:heading",
+              "kind": "heading",
+              "text": "Same Whole, Same Unit"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:concept:notes",
+              "kind": "points",
+              "text": "Same Whole, Same Unit",
+              "items": [
+                "Identify the whole before comparing fractions.",
+                "Denominator: the unit; numerator: how many units.",
+                "Same whole is required for comparison.",
+                "Equivalent fractions: same positive integer on top and bottom.",
+                "Add only after choosing a common unit."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:example",
+          "phase": "example",
+          "title": "Work through an example",
+          "narration": "Two fractions describe parts of one identical whole: 1/2 and 1/3. The units are halves and thirds, so add after converting to a common unit.\nName the whole: both fractions refer to the same whole.\nName the units: halves and thirds are different units.\nChoose sixths: 1/2 = 3/6 and 1/3 = 2/6.\nAdd counts of sixths: 3/6 + 2/6 = 5/6.\nCheck that 5/6 is greater than either addend and less than one whole.\nThe sum is 5/6 of the same whole. The common unit makes the counts addable; the numerical result still needs a reasoning check about the unit and whole.",
+          "durationMs": 91245,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:example:heading",
+              "kind": "heading",
+              "text": "Work through an example"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:example:notes",
+              "kind": "points",
+              "text": "Work through an example",
+              "items": [
+                "Whole: same for both fractions",
+                "1/2 = 3/6; 1/3 = 2/6",
+                "3/6 + 2/6 = 5/6",
+                "Adding denominators gives the wrong unit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:contrast",
+          "phase": "contrast",
+          "title": "Check a common misconception",
+          "narration": "Because 1/2 = 2/4, multiplying only the denominator by 2 must also preserve the quantity.\nMultiplying both numerator and denominator by the same positive integer preserves quantity; changing only one part does not. The condition applies to both parts of the fraction, and the integer must be positive.",
+          "durationMs": 49665,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:contrast:heading",
+              "kind": "heading",
+              "text": "Check a common misconception"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:contrast:notes",
+              "kind": "points",
+              "text": "Check a common misconception",
+              "items": [
+                "Same positive integer: both parts",
+                "1/2 = (1×2)/(2×2) = 2/4",
+                "Changing only one part changes the fraction"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:check",
+          "phase": "check",
+          "title": "Pause and check your understanding",
+          "narration": "Explain the idea in your own words, then open the practice. Generated questions provide learning feedback; they are not a formal ability assessment.",
+          "durationMs": 24420,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:check:heading",
+              "kind": "heading",
+              "text": "Pause and check your understanding"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:check:notes",
+              "kind": "points",
+              "text": "Pause and check your understanding",
+              "items": [
+                "Keep your first judgment",
+                "Hints and first answers are recorded separately"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:transfer",
+          "phase": "transfer",
+          "title": "Transfer and recap",
+          "narration": "When two fractions refer to different wholes, such as half of a small cake and half of a large cake, do not treat the fractions alone as a sufficient comparison. First describe the sizes of the wholes, then compare the original quantities or model each whole separately. Convert a proposed answer back into the original quantities and explain what the numerator counts and what unit the denominator names.\nName the whole, then the unit, then the count. Compare only under the same whole; multiply both numerator and denominator by the same positive integer to change the partition without changing the quantity; add through a common unit. AI review is not teacher approval or a formal ability measurement.",
+          "durationMs": 116325,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:transfer:heading",
+              "kind": "heading",
+              "text": "Transfer and recap"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:transfer:notes",
+              "kind": "points",
+              "text": "Transfer and recap",
+              "items": [
+                "Same whole before comparison",
+                "Denominator names unit; numerator counts units",
+                "Equivalent fractions need the same positive integer",
+                "Add through a common unit"
+              ]
+            }
+          ]
+        }
+      ],
+      "generatedNotice": "这份资料课程由 AI 生成，经你的确认用于学习，内容仍待教师核查；练习表现不进入正式能力测量。",
+      "nextLessonId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626",
+      "sourceReferences": [
+        {
+          "sourceKey": "src-1-1",
+          "title": "Anonymous fractions source 1",
+          "page": 1,
+          "quote": "A fraction describes selected equal parts of the same whole. The denominator names the unit and the numerator counts how many such units are selected.",
+          "chunkKey": "chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d",
+          "start": 0,
+          "end": 1220,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-1-1&chunk=chunk_0701f60f6e92f36510247501c2b9f1d88d54ae04d424aa602954838869286d4d"
+        },
+        {
+          "sourceKey": "src-1-2",
+          "title": "Anonymous fractions source 1",
+          "page": 2,
+          "quote": "Fractions must refer to the same whole before their quantities can be compared.",
+          "chunkKey": "chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654",
+          "start": 0,
+          "end": 1220,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-1-2&chunk=chunk_a4109f97773a2c8661ac6795285570cef25af1bee373a3a4c6e9275ddcc3a654"
+        },
+        {
+          "sourceKey": "src-1-3",
+          "title": "Anonymous fractions source 1",
+          "page": 3,
+          "quote": "Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity.",
+          "chunkKey": "chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d",
+          "start": 0,
+          "end": 1220,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-1-3&chunk=chunk_f7c4e7a044685545108b8eda11a13541dc078bb753ae709e600e151a39917e1d"
+        },
+        {
+          "sourceKey": "src-1-4",
+          "title": "Anonymous fractions source 1",
+          "page": 4,
+          "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit.",
+          "chunkKey": "chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34",
+          "start": 0,
+          "end": 1220,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-1-4&chunk=chunk_d6133073db2293d858676f460762409eadd99aae9c17349c73fe2de7b11efb34"
+        },
+        {
+          "sourceKey": "src-1-5",
+          "title": "Anonymous fractions source 1",
+          "page": 5,
+          "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake.",
+          "chunkKey": "chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d",
+          "start": 0,
+          "end": 1220,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-1-5&chunk=chunk_bc56ff4fa6a47e9478b5948a9b38ef39772316ec7d8478a25e0465df5b93b08d"
+        }
+      ],
+      "questions": [
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:q1",
+          "prompt": "Which statement keeps the same-whole condition when comparing 1/2 and 1/3?",
+          "options": [
+            "The fractions can be compared directly because both are less than one.",
+            "The fractions must refer to the same whole before their quantities can be compared.",
+            "The fractions are equal because both use one as numerator.",
+            "The fractions can be compared after adding the denominators."
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:q2",
+          "prompt": "What does the denominator name in a fraction?",
+          "options": [
+            "How many units are selected",
+            "The size of the whole only",
+            "The unit being counted",
+            "The positive integer used for equivalence"
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:q3",
+          "prompt": "Which operation preserves the quantity of a fraction?",
+          "options": [
+            "Multiply both numerator and denominator by the same positive integer.",
+            "Multiply only the numerator by a positive integer.",
+            "Add the same positive integer to both numerator and denominator.",
+            "Multiply only the denominator by a positive integer."
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-e120514eac7a4841:q4",
+          "prompt": "For 1/2 and 1/3 of the same whole, which calculation uses a common unit correctly?",
+          "options": [
+            "1/2 + 1/3 = 2/5 because add numerators and denominators.",
+            "1/2 + 1/3 = 2/5 because denominators name the unit.",
+            "1/2 + 1/3 = 3/6 because only the first fraction changes.",
+            "1/2 + 1/3 = 5/6 because 3/6 + 2/6 = 5/6."
+          ],
+          "hint": "",
+          "hintCount": 2
+        }
+      ],
+      "practiceVersion": "431e50330013041335929d1e9e26b5ecb4b7475e5b43ad6d24f8b340dfeff105"
+    },
+    {
+      "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626",
+      "title": "Counting Equal Parts and Building Sixths",
+      "objective": "State that fractions describe selected equal parts of the same whole, name the denominator as the unit and the numerator as the count, apply the positive-integer equivalence rule, and add 1/2 and 1/3 of the same whole as 3/6 + 2/6 = 5/6.",
+      "lectureId": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d",
+      "steps": [
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:orient",
+          "phase": "orient",
+          "title": "Your learning route",
+          "narration": "Fractions describe parts of one whole. To compare or add them, first make sure they refer to the same whole. Then name the unit and the count before applying a rule.",
+          "durationMs": 27225,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:orient:heading",
+              "kind": "heading",
+              "text": "Your learning route"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:orient:notes",
+              "kind": "points",
+              "text": "Your learning route",
+              "items": [
+                "Learn from the source",
+                "Counting Equal Parts and Building Sixths"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:concept",
+          "phase": "concept",
+          "title": "Counting Equal Parts and Building Sixths",
+          "narration": "A fraction describes selected equal parts of the same whole. The denominator names the unit, and the numerator counts how many such units are selected. Before comparing fraction quantities, make sure they refer to the same whole. Equivalent fractions represent the same quantity: multiplying both numerator and denominator by the same positive integer changes the partition but not the quantity, for example 1/2 = 2/4 = 3/6. For 1/2 + 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6. Adding the denominators gives the wrong unit. For positive addends, the sum should exceed either addend; this sum is also less than one whole. If the original wholes differ, describe their sizes first. A drawn model should label the whole and show equal-sized parts, and a proposed answer should be checked by converting it back into the original quantities.",
+          "durationMs": 139425,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:concept:heading",
+              "kind": "heading",
+              "text": "Counting Equal Parts and Building Sixths"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:concept:notes",
+              "kind": "points",
+              "text": "Counting Equal Parts and Building Sixths",
+              "items": [
+                "Same whole first: compare quantities only then.",
+                "Denominator = unit; numerator = count.",
+                "Positive integer multiplier preserves quantity.",
+                "Sixths make 1/2 and 1/3 comparable: 3/6 + 2/6."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:example",
+          "phase": "example",
+          "title": "Work through an example",
+          "narration": "Use one whole. Add 1/2 and 1/3 of that same whole, then check the unit.\nConfirm both fractions refer to the same whole.\nName the units: halves and thirds are different units.\nRewrite with sixths: 1/2 = 3/6 and 1/3 = 2/6.\nAdd selected sixths: 3/6 + 2/6 = 5/6.\nCheck that 5/6 exceeds either addend and is less than one whole.\nIf the wholes differ, describe their sizes first.\nWith the same whole, 1/2 + 1/3 becomes 3/6 + 2/6 = 5/6. The denominator names sixths; the numerator counts selected sixths.",
+          "durationMs": 82005,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:example:heading",
+              "kind": "heading",
+              "text": "Work through an example"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:example:notes",
+              "kind": "points",
+              "text": "Work through an example",
+              "items": [
+                "Same whole: required before comparison",
+                "Denominator: names the unit",
+                "Numerator: counts selected units",
+                "1/2 = 3/6; 1/3 = 2/6",
+                "3/6 + 2/6 = 5/6",
+                "Check: sum exceeds either addend"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:contrast",
+          "phase": "contrast",
+          "title": "Check a common misconception",
+          "narration": "A correct numerical answer is enough even if the unit is unexplained.\nA correct numerical answer with an unexplained unit still needs a reasoning check. Explain what the numerator counts and what unit the denominator names before applying a rule.",
+          "durationMs": 40590,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:contrast:heading",
+              "kind": "heading",
+              "text": "Check a common misconception"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:contrast:notes",
+              "kind": "points",
+              "text": "Check a common misconception",
+              "items": [
+                "Check the unit, not just the number",
+                "Unexplained unit: reasoning check needed",
+                "Numerator = count; denominator = unit"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:check",
+          "phase": "check",
+          "title": "Pause and check your understanding",
+          "narration": "Explain the idea in your own words, then open the practice. Generated questions provide learning feedback; they are not a formal ability assessment.",
+          "durationMs": 24420,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:check:heading",
+              "kind": "heading",
+              "text": "Pause and check your understanding"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:check:notes",
+              "kind": "points",
+              "text": "Pause and check your understanding",
+              "items": [
+                "Keep your first judgment",
+                "Hints and first answers are recorded separately"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:transfer",
+          "phase": "transfer",
+          "title": "Transfer and recap",
+          "narration": "When a new task gives two wholes, do not compare or add the fractions until you confirm the wholes are the same. Name each unit, choose a common partition when needed, and check the result against the positive-addend expectation. If the wholes differ, describe their sizes instead of treating the fractions alone as sufficient.\nFractions are selected equal parts of the same whole. The denominator names the unit; the numerator counts selected units. Multiplying numerator and denominator by the same positive integer preserves quantity. With the same whole, 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+          "durationMs": 96855,
+          "blocks": [
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:transfer:heading",
+              "kind": "heading",
+              "text": "Transfer and recap"
+            },
+            {
+              "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:transfer:notes",
+              "kind": "points",
+              "text": "Transfer and recap",
+              "items": [
+                "Fractions need the same whole before comparison.",
+                "Denominator names the unit; numerator counts units.",
+                "Use the same positive multiplier for equivalence.",
+                "Use sixths: 3/6 + 2/6 = 5/6."
+              ]
+            }
+          ]
+        }
+      ],
+      "generatedNotice": "这份资料课程由 AI 生成，经你的确认用于学习，内容仍待教师核查；练习表现不进入正式能力测量。",
+      "sourceReferences": [
+        {
+          "sourceKey": "src-2-5",
+          "title": "Anonymous fractions source 2",
+          "page": 5,
+          "quote": "A fraction describes selected equal parts of the same whole.",
+          "chunkKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+          "start": 0,
+          "end": 1221,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-2-5&chunk=chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+        },
+        {
+          "sourceKey": "src-2-5",
+          "title": "Anonymous fractions source 2",
+          "page": 5,
+          "quote": "The denominator names the unit and the numerator counts how many such units are selected.",
+          "chunkKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+          "start": 0,
+          "end": 1221,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-2-5&chunk=chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+        },
+        {
+          "sourceKey": "src-2-5",
+          "title": "Anonymous fractions source 2",
+          "page": 5,
+          "quote": "multiplying both numerator and denominator by the same positive integer changes the partition without changing the quantity",
+          "chunkKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+          "start": 0,
+          "end": 1221,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-2-5&chunk=chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+        },
+        {
+          "sourceKey": "src-2-5",
+          "title": "Anonymous fractions source 2",
+          "page": 5,
+          "quote": "To add 1/2 and 1/3 of the same whole, use sixths: 3/6 + 2/6 = 5/6.",
+          "chunkKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+          "start": 0,
+          "end": 1221,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-2-5&chunk=chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+        },
+        {
+          "sourceKey": "src-2-5",
+          "title": "Anonymous fractions source 2",
+          "page": 5,
+          "quote": "A counterexample guards the same-whole condition: half of a small cake need not equal half of a large cake.",
+          "chunkKey": "chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b",
+          "start": 0,
+          "end": 1221,
+          "href": "/studio/source-courses?course=source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d&source=src-2-5&chunk=chunk_4a81ee54645a4184c2609300c40e496c5a894d289d79200dce952a2e5c9e347b"
+        }
+      ],
+      "questions": [
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:q1",
+          "prompt": "Before comparing two fraction quantities, what condition does the source require?",
+          "options": [
+            "They must refer to the same whole.",
+            "They must have the same numerator.",
+            "They must have different denominators.",
+            "They must each be less than one."
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:q2",
+          "prompt": "In the fraction 3/6, what does the denominator 6 name?",
+          "options": [
+            "The number of selected parts",
+            "The size of the original whole",
+            "The unit being counted",
+            "The number of wholes"
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:q3",
+          "prompt": "Which expression correctly adds 1/2 and 1/3 of the same whole by using sixths?",
+          "options": [
+            "1/6 + 1/6 = 2/6",
+            "3/6 + 2/6 = 5/6",
+            "1/2 + 1/3 = 2/5",
+            "3/6 + 2/6 = 5/12"
+          ],
+          "hint": "",
+          "hintCount": 2
+        },
+        {
+          "id": "source:source_course_f71b0b15-8a73-45ac-9732-618671ed6e4d:lesson-6873ece784718626:q4",
+          "prompt": "Which operation uses the positive-integer equivalence rule described in the source?",
+          "options": [
+            "Add the same number to numerator and denominator.",
+            "Multiply numerator and denominator by different positive integers.",
+            "Multiply only the denominator by a positive integer.",
+            "Multiply both numerator and denominator by the same positive integer."
+          ],
+          "hint": "",
+          "hintCount": 2
+        }
+      ],
+      "practiceVersion": "431e50330013041335929d1e9e26b5ecb4b7475e5b43ad6d24f8b340dfeff105"
+    }
+  ],
+  "task": {
+    "id": "task_d9f2fe05-40c6-4155-9673-6ab82a814fe9",
+    "state": "succeeded",
+    "version": 12,
+    "generation": 4,
+    "errorCode": null
+  },
+  "confirmedAt": null,
+  "createdAt": "2026-10-24T02:03:12.070Z",
+  "updatedAt": "2026-10-24T02:20:29.572Z"
+}
