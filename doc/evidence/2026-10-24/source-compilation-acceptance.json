@@ -4,7 +4,7 @@
   "sourceRevision": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
   "specificationCommit": "eec36f6",
   "passed": true,
-  "status": "scoped-local-validation-remote-and-live-pending",
+  "status": "scoped-feature-ci-passed-final-fix-deployed",
   "scope": "First long-source increment: lossless text/chunks, independent stages, 120-page boundary, stable lesson authoring and private originals recovery. Not complete specification 103 or complete product parity.",
   "reports": {
     "source-compilation-api-boundaries.json": {
@@ -126,8 +126,30 @@
     "ecosystem.config.cjs",
     "scripts/operations/start-daemon.ps1"
   ],
-  "ci": "pending",
-  "runtime": "unchanged pending final validation",
+  "ci": {
+    "passedFeatureCommit": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
+    "receipt": "source-compilation-ci.json",
+    "applicationPassed": 891,
+    "applicationSkipped": 14,
+    "browserPassed": 55,
+    "postgresPassed": {
+      "base": 6,
+      "sourceCourses": 23,
+      "classroomVisuals": 11,
+      "longCompilation": 11,
+      "captions": 11
+    },
+    "finalFix": "Local 34-case regression passed; pushed follow-up will have a separate run."
+  },
+  "runtime": {
+    "commit": "648a96d",
+    "passed": true,
+    "receipt": "source-compilation-runtime.json",
+    "processSnapshot": "source-compilation-processes.json",
+    "web": "http://localhost:3217",
+    "api": "http://127.0.0.1:4217",
+    "scope": "Anonymous smoke; no production-family reads or writes. Prior Web build retained."
+  },
   "live": {
     "passed": true,
     "receipt": "source-compilation-live-resumed-success/receipt.json",
@@ -168,5 +190,6 @@
     "questionsPreserved": true,
     "limits": "The model corrected the injected 1/2=3/4 error and incorporated following-block conditions. Its wording still overstates the positive-integer construction as exclusive; this probe is not semantic approval. Human review remains pending.",
     "fixtureFailure": "First probe adapter supplied sourceKey where the validator requires key; retained as a fixture failure, not a model-quality failure."
-  }
+  },
+  "finalFixCommit": "648a96d"
 }

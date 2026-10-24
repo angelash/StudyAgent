@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "runId": "40053470885",
+  "sourceRevision": "730abf88ce874337bcc372d4a13cfa631d36d9e8",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40053470885",
+  "passed": true,
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40053470885/job/120751085630",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install document test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Dense PDF originals retain complete text and lines",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install media tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm audit --audit-level=low",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local documentation links",
+          "conclusion": "success"
+        },
+        {
+          "name": "Authored teaching coverage and measurement material audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Current eligible material coverage, formal teacher roles and read-only history across restarts",
+          "conclusion": "success"
+        },
+        {
+          "name": "GESP authored content and assisted guidance retention journey",
+          "conclusion": "success"
+        },
+        {
+          "name": "All authored math and English contrasts, persisted case grading and historical content upgrade",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical original spatial assets and independent image decoding",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical minute-hand and oriented-map assets and independent image decoding",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical boundary, coverage and area-unit assets and independent image decoding",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical fourth-grade angles, triangles and bar charts and independent image decoding",
+          "conclusion": "success"
+        },
+        {
+          "name": "Curriculum package persistence and safe seed enrichment",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed textbook TOCs and frozen progress recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Frozen measurement definitions and comparable evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed authored prerequisite upgrade, interrupted startup and historical evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed atomic child relationship and component bindings across upgrades",
+          "conclusion": "success"
+        },
+        {
+          "name": "Atomic component observation, independent measurement and delayed review recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed average denominator relationship and historical mapping protection",
+          "conclusion": "success"
+        },
+        {
+          "name": "Average denominator independent measurement and delayed review recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Assessment preview, partial evidence and state recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Original paper measurement review and publication recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Mistake organization, frozen redo and independent verification recovery",
+          "conclusion": "success"
+        },
+        {
+          "name": "Asset audit tool regression",
+          "conclusion": "success"
+        },
+        {
+          "name": "Public textbook capture and source-bound chapter review",
+          "conclusion": "success"
+        },
+        {
+          "name": "Independent recovery verifier regression",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source release privacy and tamper boundary regression",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40053470885/job/120751085767",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare isolated PostgreSQL roles and client tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/contracts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/config",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build --workspace @study-agent/api",
+          "conclusion": "success"
+        },
+        {
+          "name": "PostgreSQL migration, recovery and fencing",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install source-course PDF test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source-course staged generation and checkpoint recovery on PostgreSQL",
+          "conclusion": "success"
+        },
+        {
+          "name": "Classroom image task lifecycle and private references on PostgreSQL",
+          "conclusion": "success"
+        },
+        {
+          "name": "Long-source chunks, independent checkpoints and original files on PostgreSQL",
+          "conclusion": "success"
+        },
+        {
+          "name": "Frozen classroom captions, historical upgrade and narration guards on PostgreSQL",
+          "conclusion": "success"
+        },
+        {
+          "name": "GESP assisted guidance and retention PostgreSQL journey",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40053470885/job/120751085786",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install PDF dependencies for browser worker",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare configuration",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install browser runtime",
+          "conclusion": "success"
+        },
+        {
+          "name": "Browser product journey at phone, tablet and desktop widths",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "testSummary": [
+    "application\tRun npm test\t2026-10-24T02:22:45.8526311Z  Test Files  102 passed | 3 skipped (105)",
+    "application\tRun npm test\t2026-10-24T02:22:45.8531948Z       Tests  891 passed | 14 skipped (905)",
+    "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-24T02:17:31.5783779Z  Test Files  1 passed (1)",
+    "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-24T02:17:31.5784365Z       Tests  6 passed (6)",
+    "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-24T02:17:42.3563340Z  Test Files  1 passed (1)",
+    "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-24T02:17:42.3563863Z       Tests  23 passed (23)",
+    "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-24T02:17:44.8727530Z  Test Files  1 passed (1)",
+    "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-24T02:17:44.8728130Z       Tests  11 passed (11)",
+    "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-24T02:17:55.6696711Z  Test Files  1 passed (1)",
+    "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-24T02:17:55.6697519Z       Tests  11 passed (11)",
+    "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-24T02:17:57.7439837Z  Test Files  1 passed (1)",
+    "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-24T02:17:57.7440494Z       Tests  11 passed (11)",
+    "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-24T02:22:06.7193671Z   55 passed (4.5m)"
+  ],
+  "completeLogSha256": "ca909f66781e419afc59e947626c80811b02efa50aa42a894503a8748b34bc21",
+  "scope": "Exact 730abf8 feature commit. The later 648a96d failure-stage wording fix has a separate local 34-test receipt and will trigger its own CI."
+}

@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-24T02:30:20.559Z",
+  "sourceRevision": "648a96d",
+  "passed": true,
+  "scope": "Anonymous public pages, ready and private route guards only. No production family data read or mutation.",
+  "checks": [
+    {
+      "base": "http://127.0.0.1:3217",
+      "path": "/learn",
+      "method": "GET",
+      "expected": 200,
+      "status": 200,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:3217",
+      "path": "/studio/source-courses",
+      "method": "GET",
+      "expected": 200,
+      "status": 200,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:4217",
+      "path": "/api/ready",
+      "method": "GET",
+      "expected": 200,
+      "status": 200,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:4217",
+      "path": "/api/learning/source-courses/preflight",
+      "method": "POST",
+      "expected": 401,
+      "status": 401,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:4217",
+      "path": "/api/learning/source-courses/anonymous/progress",
+      "method": "GET",
+      "expected": 401,
+      "status": 401,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:4217",
+      "path": "/api/learning/source-courses/anonymous/sources/anonymous",
+      "method": "GET",
+      "expected": 401,
+      "status": 401,
+      "passed": true
+    },
+    {
+      "base": "http://127.0.0.1:4217",
+      "path": "/api/qa/classroom-captions",
+      "method": "POST",
+      "expected": 404,
+      "status": 404,
+      "passed": true
+    }
+  ],
+  "priorWebBuild": "output/daemon/releases/648a96d-previous-next"
+}
