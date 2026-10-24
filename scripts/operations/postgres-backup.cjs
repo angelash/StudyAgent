@@ -8,15 +8,10 @@ const { captureMaterialKeys, omitRestoredMaterialControl, cleanupRestoredMateria
 const { files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } } = require('./backup.cjs');
 const { fenceRestoredState } = require('./restore-state.cjs');
 const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
+const { createRestoreContext } = require('./restore-context.cjs');
+const { connectionEnvironment:config,lockRestoreController,initializeImport,reserveImportEpoch,runFencedImport } = require('./postgres-restore-import.cjs');
 const FORMAT = 'study-agent-postgres-backup-v1';
 const fail = message => { throw new Error(message); };
-function config(connectionString) {
-  const url = new URL(connectionString);
-  if (!['postgres:', 'postgresql:'].includes(url.protocol)) fail('postgres_connection_required');
-  return { PGHOST: url.hostname, PGPORT: url.port || '5432', PGUSER: decodeURIComponent(url.username), PGPASSWORD: decodeURIComponent(url.password),
-    PGDATABASE: decodeURIComponent(url.pathname.slice(1)), ...(url.searchParams.get('sslmode') ? { PGSSLMODE: url.searchParams.get('sslmode') } : {}),
-    ...(url.searchParams.get('options') ? { PGOPTIONS: url.searchParams.get('options') } : {}) };
-}
 function native(name, args, pgBin, connectionString) {
   return new Promise((resolve, reject) => {
     const executable = pgBin ? path.join(pgBin, name + (process.platform === 'win32' ? '.exe' : '')) : name;
@@ -33,6 +28,7 @@ async function summary(client) {
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
 }
 async function createPostgresBundle({ connectionString, pgBin, dataDir, destination, assets }) {
+  if(dataDir && fs.existsSync(within(dataDir,'.study-restore-incomplete'))) fail('source_database_restore_incomplete');
   config(connectionString); const pool = new Pool({ connectionString, max: 1 }), client = await pool.connect();
   let root, database, refs;
   try {
@@ -46,7 +42,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
     fs.mkdirSync(within(root, 'database'), { mode: 0o700 });
     const snapshot = (await client.query('SELECT pg_export_snapshot() AS id')).rows[0].id;
-    await native('pg_dump', ['--format=custom', '--no-owner', '--no-acl', '--exclude-table=*.study_restore_guard', '--snapshot=' + snapshot, '--file=' + within(root, 'database/postgres.dump')], pgBin, connectionString);
+    await native('pg_dump', ['--format=custom', '--no-owner', '--no-acl', '--exclude-table=*.study_restore_guard', '--exclude-schema=study_restore_runtime', '--snapshot=' + snapshot, '--file=' + within(root, 'database/postgres.dump')], pgBin, connectionString);
     await client.query('COMMIT');
   } catch (error) { await client.query('ROLLBACK').catch(() => {}); throw error; } finally { client.release(); await pool.end(); }
   const dump = within(root, 'database/postgres.dump'); fs.chmodSync(dump, 0o600);
@@ -84,14 +80,18 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
 }
 async function restorePostgresBundle({ bundle, destination, connectionString, pgBin, deletionLedger }) {
   config(connectionString); const ledger = readLedger(deletionLedger), verified = await verifyPostgresBundle({ bundle, pgBin }), pool = new Pool({ connectionString, max: 1 });
-  const client = await pool.connect(); let root, counts, copiedFiles=0, omittedControlFiles=0;
+  const client = await pool.connect(); let root, counts, copiedFiles=0, omittedControlFiles=0, releaseController;
   try {
+    releaseController=await lockRestoreController(client);
     const existing = (await client.query("SELECT COUNT(*) AS count FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname NOT LIKE 'pg_%' AND n.nspname<>'information_schema' AND c.relkind IN ('r','p','v','m','S','f')")).rows[0];
     if (Number(existing.count)) fail('restore_requires_empty_database');
     root = freshDestination(destination, [bundle]);
     fs.writeFileSync(within(root, '.study-restore-incomplete'), 'PostgreSQL restore has not completed. Do not start the application.\n', { flag: 'wx', mode: 0o600 });
+    const context=await createRestoreContext({root,driver:'postgres',manifest:verified.manifest,ledger,connectionString});
     await client.query("CREATE TABLE study_restore_guard(id INTEGER PRIMARY KEY CHECK(id=1),state TEXT NOT NULL,backup_id TEXT,updated_at TEXT NOT NULL)");
     await client.query("INSERT INTO study_restore_guard VALUES(1,'restoring',$1,$2)", [verified.manifest.id, new Date().toISOString()]);
+    await initializeImport(client,context);
+    const epoch=await reserveImportEpoch(client,context);
     for (const file of verified.manifest.files) {
       if (file.path.startsWith('database/')) continue;
       const relative = file.path.startsWith('data/') ? file.path.slice(5) : file.path;
@@ -99,7 +99,7 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
       copyVerified(within(bundle, file.path), within(root, relative), file);
       copiedFiles++;
     }
-    await native('pg_restore', ['--no-owner', '--no-acl', '--no-tablespaces', '--exit-on-error', '--single-transaction', '--dbname=' + config(connectionString).PGDATABASE, within(bundle, 'database/postgres.dump')], pgBin, connectionString);
+    await runFencedImport({client,context,epoch,archive:within(bundle,'database/postgres.dump'),pgBin,connectionString});
     await client.query('BEGIN ISOLATION LEVEL SERIALIZABLE');
     if (JSON.stringify(await summary(client)) !== JSON.stringify(verified.manifest.database)) fail('restored_database_summary_mismatch');
     const refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses')")).rows);
@@ -117,7 +117,7 @@ async function restorePostgresBundle({ bundle, destination, connectionString, pg
     counts = { ...access, ...privacy, ...materials, copiedFiles, databaseImported:true, omittedControlFiles };
     if ((await client.query("UPDATE study_restore_guard SET state='ready',updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'", [counts.restoredAt, verified.manifest.id])).rowCount !== 1) fail('restore_guard_changed');
     await client.query('COMMIT');
-  } catch (error) { await client.query('ROLLBACK').catch(() => {}); throw error; } finally { client.release(); await pool.end(); }
+  } catch (error) { await client.query('ROLLBACK').catch(() => {}); throw error; } finally { try { await releaseController?.(); } finally { client.release(); await pool.end(); } }
   const receipt = { format: FORMAT, backupId: verified.manifest.id, sourceRevision: verified.manifest.database.revision,
     assetsIncluded: verified.manifest.assetsIncluded, verifiedFiles: verified.verifiedFiles, ...counts };
   fs.writeFileSync(within(root, 'restore-receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); fs.unlinkSync(within(root, '.study-restore-incomplete'));

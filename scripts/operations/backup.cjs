@@ -7,6 +7,7 @@ const { DatabaseSync, backup } = require('node:sqlite');
 const { fenceRestoredState } = require('./restore-state.cjs');
 const { readLedger, applyDeletionLedger, purgeRestoredMedia } = require('./privacy-ledger.cjs');
 const { captureMaterialKeys, omitRestoredMaterialControl, cleanupRestoredMaterials } = require('./restored-materials.cjs');
+const { createRestoreContext } = require('./restore-context.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
@@ -187,6 +188,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
 async function restoreBundle({ bundle, destination, deletionLedger }) {
   const ledger = readLedger(deletionLedger), verified = await verifyBundle({ bundle }), root = freshDestination(destination, [bundle]);
   const marker = within(root, '.study-restore-incomplete'); fs.writeFileSync(marker, 'Restore has not completed. Do not start the application.\n', { flag: 'wx' });
+  await createRestoreContext({root,driver:'sqlite',manifest:verified.manifest,ledger});
   let restoredCount = 0, omittedControlFiles = 0;
   for (const file of verified.manifest.files) {
     const relative = file.path.startsWith('database/') ? 'study-agent.sqlite3' : file.path.startsWith('data/') ? file.path.slice(5) : file.path;
