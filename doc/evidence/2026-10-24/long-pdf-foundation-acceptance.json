@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "at": "2026-10-24T03:32:22.536855+00:00",
-  "sourceRevision": "pending-foundation-commit",
+  "sourceRevision": "79199ff",
   "baseRevision": "7ca4b71114a1fa2b80a224b916980d16e7934a9c",
   "specificationCommit": "648a96d",
   "passed": true,
@@ -85,8 +85,10 @@
         "flaky": 0
       }
     },
-    "long-pdf-python-checkpoints.log": {
-      "sha256": "95c4f7eb592d02893db64dc1e428301e7b4063b4291f03b8420be8b825273912"
+    "long-pdf-python-checkpoints.json": {
+      "sha256": "4a0ccd6edf42a1f5952960c89a0fa13fe48dd6f5b6b2a38c7c286c8027805a42",
+      "tests": 2,
+      "passed": true
     }
   },
   "coverage": [
