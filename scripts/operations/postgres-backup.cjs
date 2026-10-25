@@ -18,7 +18,7 @@ function native(name, args, pgBin, connectionString) {
 }
 async function summary(client) {
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
-  if (!versions.length || versions.at(-1) > 14) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 15) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
     collections: (await client.query('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection')).rows.map(r => ({ collection: r.collection, count: Number(r.count) })),
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
@@ -32,7 +32,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
     if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
       (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
     database = await summary(client);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','studioMaterialAssets')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','studioMaterialAssets')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });

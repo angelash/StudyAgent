@@ -27,11 +27,14 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages',
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
+  const sourceCourseIds=ids(result,'sourceCourses');
+  add(result,store,'sourceCourseChecks',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId));
+  add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId));
   const learnerIds = new Set(rows(store, 'users').filter(row => candidateIds.has(row.id) && row.role === 'student').map(recordId));
   add(result, store, 'users', row => learnerIds.has(row.id) && row.role === 'student');
   add(result, store, 'sessions', row => row.studentId === studentId || learnerIds.has(row.userId));
@@ -76,6 +79,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result,store,'projectAssetUploads',row=>projectIds.has(row.projectId));add(result,store,'projectAssets',row=>projectIds.has(row.projectId));
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
+  add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
+  add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId));
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
@@ -128,7 +133,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
   const practiceCounts = new Map<string, number>();
   for (const row of selected.practiceAttempts ?? []) { const key = JSON.stringify([row.sessionId, row.questionId]); practiceCounts.set(key, (practiceCounts.get(key) ?? 0) + 1); }
   for (const [name, records] of Object.entries(selected)) {
-    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events'].includes(name)) continue;
+    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events','sourceCourseCheckPublications'].includes(name)) continue;
     if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
@@ -160,6 +165,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='sourceCourses')result[name]=records.filter(row=>allowedCourses.has(row.id))
       .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,...(row.versioning?{versioning:sourceCourseVersioningView(row as any,actorId,publishedCourses)}:{}),generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
     else if(name==='sourceCourseStages')result[name]=records.filter(row=>allowedCourses.has(row.courseId)).map(({id,courseId,kind,key,createdAt,modelId,modelName,copiedFrom})=>({id,courseId,kind,key,createdAt,modelId,modelName,...(copiedFrom?{copiedFrom}:{})}));
+    else if(name==='sourceCourseChecks')result[name]=records.filter(row=>allowedCourses.has(row.courseId)&&['published','superseded','withdrawn'].includes(row.status)).map(row=>({id:row.id,courseId:row.courseId,courseFingerprint:row.courseFingerprint,revision:row.revision,status:row.status,publishedAt:row.publishedAt,withdrawnAt:row.withdrawnAt,title:row.content?.title??null,targets:(row.prepared?.targets??[]).map(({lessonId,title,objective}:Row)=>({lessonId,title,objective}))}));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }
@@ -184,6 +190,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       // Different closed upload owners can have used the same request key.
       // A per-file anonymous owner preserves uniqueness without retaining identity.
       if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
+      if (name === 'sourceCourseChecks' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if(['projectAssets','projectAssetUploads'].includes(name)&&row.authorization?.guardianId===actorId)anonymous.authorization.guardianId='deleted-account';
       if(name==='studioConnectors'&&row.createdBy===actorId){anonymous.status='revoked';anonymous.encryptedFeedUrl='';anonymous.version=(Number(row.version)||0)+1;anonymous.lastError=null;}
       return anonymous;

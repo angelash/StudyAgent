@@ -49,13 +49,13 @@ function summary(db) {
     db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 14) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 15) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','studioMaterialAssets')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','studioMaterialAssets')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -70,9 +70,10 @@ function referencesFromRecords(rows) {
     if(row.collection==='studioMaterialAssets'){
       if(value.state==='repairing')fail('material_original_repair_active');
       if(!['available','deleting'].includes(value.state))fail('invalid_material_asset_state');
-    }else if (row.collection === 'sourceCourses') {
-      if (!Array.isArray(value.sources)) fail('invalid_frozen_course_sources');
-      for (const source of value.sources) if (source.kind === 'pdf') {
+    }else if (row.collection === 'sourceCourses'||row.collection==='sourceCourseChecks') {
+      const sources=row.collection==='sourceCourseChecks'?value.prepared?.sources:value.sources;
+      if (!Array.isArray(sources)) fail('invalid_frozen_course_sources');
+      for (const source of sources) if (source.kind === 'pdf') {
         if (!/^[a-f0-9]{64}$/.test(source.sha256)) fail('invalid_file_reference');
         add(`studio-materials/${source.sha256}.pdf`,source.sha256,null,true);
       }

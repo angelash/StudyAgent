@@ -109,6 +109,11 @@ test('missing originals remain visible when only a frozen PDF course references 
   const report = await f.audit(); assert.equal(report.complete, false);
   assert.equal(report.entries[0].reason, 'registered_file_missing_or_unreachable');
 });
+test('a frozen check retains its original without a current material or course row',async t=>{
+  const f=fixture(t),material=f.original('frozen check original','removed');
+  f.add('sourceCourseChecks',{id:'retained-check',prepared:{sources:[{sha256:material.sha256,kind:'pdf'}]}});
+  const report=await f.audit();assert.equal(report.complete,true);assert.equal(report.entries[0].integrity,'verified');assert.notEqual(report.entries[0].state,'orphan');
+});
 
 test('live file-process leases protect otherwise unreferenced bytes, while malformed markers keep the inventory incomplete', async t => {
   const f = fixture(t), material = f.original('leased orphan', 'gone'), nonce = randomUUID();

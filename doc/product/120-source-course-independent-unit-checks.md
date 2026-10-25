@@ -67,3 +67,6 @@ sourceCourseChecks记录冻结courseId/courseFingerprint、原ownerUserId及stud
 隔离SQLite测试已证实：如果候选A先保存、B后保存并先发布，再将A发布/B superseded，domain_records按原行序upsert会在最终状态合法时仍触发published部分唯一索引。不能改变通用数据库的提交顺序来迁就此功能。改新增sourceCourseCheckPublications集合，一课程一个稳定ID（直接使用courseId），记录courseId/checkId/definitionFingerprint/revision/updatedAt；schema15唯一约束其courseId。确认在同一事务中核对原指针修订、候选内容指纹/课程版本和相关记录依赖，更新同一指针行，并将旧定义标为superseded。保留sourceCourseChecks的owner/request唯一索引及活跃生成部分索引，撤销计划中的published状态唯一索引。两集合的相关读取参加现有乐观事务依赖校验；两实例同时发布只有一个原修订可生效。
 
 指针不含题目正文、答案或模型输入。隐私删除随被移除课程级联清理指针；共享已发布课程保留指针至其原历史授权边界，不能根据指针绕过原来源权限。家庭可移植导出不包含内部指针，公开历史元数据及本人反馈沿用上节。初始失败测试与修正后同一用例分别归档。
+
+
+2026-10-26存储基础增量：独立120工作区接入schema15、sourceCourseChecks及sourceCourseCheckPublications，使用稳定当前指针避免行序索引误拒绝。账户/孩子删除与公开导出过滤、共享注销归属、冻结来源备份/恢复/回收引用已补；SQLite组合29通过（含16项纯校验），材料审计12通过，API类型检查通过。初轮发布索引失败、恢复缺编译依赖五失败，以及冻结题组原件恢复引用遗漏一失败均保留；修正后同一恢复组合通过。仅为SQLite存储基础，不含PG、新集合的最新删除账本、生成/发布路由、学生入口或完整产品验收，不进入119和当前运行版。见[存储基础收据](../evidence/2026-10-26/source-check-storage/acceptance.json)。

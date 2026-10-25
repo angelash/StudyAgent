@@ -1,4 +1,5 @@
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
+import type { SourceCourseCheckRecord,SourceCourseCheckPublication } from '../modules/learning/source-course-check-record';
 import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
@@ -434,6 +435,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   projectAssetUploads: ProjectUploadRecord[] = [];
   projectAssets: ProjectAssetRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
+  sourceCourseChecks: SourceCourseCheckRecord[] = [];
+  sourceCourseCheckPublications: SourceCourseCheckPublication[] = [];
   sourceCourseStages: SourceCourseStageRecord[] = [];
   studioActivities: StudioActivity[] = [];
   studioStudyPlans: StudioStudyPlan[] = [];
@@ -532,6 +535,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.projectAssetUploads = [];
     this.projectAssets = [];
     this.sourceCourses = [];
+    this.sourceCourseChecks = [];
+    this.sourceCourseCheckPublications = [];
     this.sourceCourseStages = [];
     this.studioActivities = [];
     this.studioStudyPlans = [];

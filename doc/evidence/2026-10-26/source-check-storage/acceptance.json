@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-25T17:51:22.752180+00:00",
+  "status": "sqlite-storage-foundation-only-not-released",
+  "passed": true,
+  "scope": "schema15, frozen check records/publication pointer, privacy selectors/export, SQLite cold file recovery and material audit; not complete 120",
+  "specificationCommits": [
+    "ce09605",
+    "7bc6b9b"
+  ],
+  "api": {
+    "passed": 29,
+    "failed": 0,
+    "includesPureContentTests": 16,
+    "report": "source-check-storage-final-confirmed.json"
+  },
+  "materialAudit": {
+    "passed": 12,
+    "failed": 0,
+    "report": "source-check-material-audit.log.gz"
+  },
+  "typecheck": {
+    "passed": true,
+    "report": "source-check-storage-lint-final.log.gz"
+  },
+  "initialFailures": [
+    "Order-sensitive published partial index rejected a legal switch from a later published definition to an earlier candidate; replaced with an independent stable publication pointer",
+    "Five restore tests initially lacked the required compiled API restore helper; built the worktree API and retried",
+    "One frozen-check-only file was omitted by the restore material reference registry; added check sources to live collection, audit and restore references, then all 29 passed"
+  ],
+  "limitations": [
+    "No PostgreSQL constraint, native restore or newer deletion-ledger test for these new collections yet",
+    "No generation worker, authoring/publication route, student check entry or full application regression yet",
+    "Backup fixture tests byte preservation with synthetic PDF-shaped bytes; it is not PDF parsing acceptance",
+    "New schema15 is isolated to this unshipped branch; production remains schema14",
+    "Complete 120, original 72 requirements and whole product remain open"
+  ]
+}
