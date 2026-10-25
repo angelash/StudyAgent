@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T13:43:55.578Z",
+  "at": "2026-10-25T14:15:52.323Z",
   "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
@@ -30,7 +30,7 @@
     "uniqueFiles": 391,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "5dbf34e91f1e9c2efea6b9e2acbb3bfd1eb9aee065d93dcc7671c2c5bc13c185",
+      ".github/workflows/verify.yml": "5e67b39d2056918872981fc6dbc95ec55a2b8ee42c466c707b50aaf8c9e8537c",
       "apps/api/src/common/answer-draft.ts": "fedc45ca485633148b0a69e43fdfc6355815d0843980acdf947d4a63be67e5b2",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "27a385bfb2a51e58a76f5d9e7f62d883fdcefc2868078fd633f5df10495bf90e",
@@ -411,7 +411,7 @@
       "tests/e2e/course-builder.spec.ts": "87d477b9cf4f8c1393bf6676f727c8b9f593ff70c2e51d30253d055054533f7b",
       "tests/e2e/course-library.spec.ts": "488da0ba742cc606a8f28b2e467ec133533d7b6c0773a6f1f343785598c0b87a",
       "tests/e2e/course-project.spec.ts": "27da2a1ba6d270e0d7a6a9f5906192778d811d24dfac10655ed9accb4afe5c8c",
-      "tests/e2e/guidance-model.spec.ts": "ac93cfa854b80a89ac573bd71afe7c0e12b88b5e8f1a0131da32d392e5842060",
+      "tests/e2e/guidance-model.spec.ts": "8b27d96720781fec95636e2b0fe74996164f2e34ae117aa11a36108a7392a572",
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
       "tests/e2e/pdf-material.spec.ts": "f89b22e7f9ecc349dc4423af3be45872bc4bffad36089add275470d769ea42bf",
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
@@ -429,7 +429,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2613,
+    "checked": 2616,
     "missing": []
   },
   "staticContent": {
@@ -500,8 +500,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-25/guidance-model-acceptance.json",
-    "revision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+    "receipt": "../evidence/2026-10-23/learning-home-acceptance.json",
+    "revision": "3b67695853276ab06f33923dce75ad72bb72db87",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

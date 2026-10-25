@@ -1,0 +1,111 @@
+{
+  "at": "2026-10-25T14:15:48.595Z",
+  "sourceRevision": "855234ff2dc36280273b38fb74394f59fbb430e1",
+  "passed": true,
+  "remoteFirstFailure": {
+    "run": 40199137881,
+    "head": "11631586d179f2bd5b87b41ecef9546fa4598f20",
+    "application": "failure",
+    "browser": "failure",
+    "postgres": "success",
+    "artifactsReturned": 0,
+    "originalRemoteTraceAvailable": false
+  },
+  "localReproduction": {
+    "passed": 12,
+    "failed": 2,
+    "widths": [
+      390,
+      768
+    ],
+    "cause": "The built-in long model description widened the model picker auto grid track. Local catalog descriptions were shorter."
+  },
+  "finalBrowser": {
+    "passed": 14,
+    "failed": 0,
+    "retries": 0,
+    "widths": [
+      390,
+      768,
+      1440
+    ]
+  },
+  "atomicJourneys": {
+    "division": true,
+    "average": true,
+    "scope": "Separate synthetic SQLite HTTP/restart journeys, with live Xiaojiu explicitly disabled"
+  },
+  "lint": true,
+  "isolatedWebBuild": true,
+  "fullRestoreRunner": {
+    "change": "Explicitly disable Xiaojiu for the existing no-model rule-plan assertion",
+    "executed": false,
+    "reason": "This legacy full-asset runner still asserts schema 8. It is not a current schema-14 acceptance; current native recovery is covered by the existing guidance recovery tests."
+  },
+  "originalLocalAcceptance": {
+    "file": "guidance-model-local-before-ci-fix.json",
+    "sha256": "7e9bb412455d7d88adc57b1b71cd43a8ca0604501c466cdebde1a82413a897bf"
+  },
+  "artifacts": {
+    "guidance-model-ci-fix-artifacts/remote-first-failure.log.gz": {
+      "bytes": 12608,
+      "sha256": "02247a09de51650a1aa9bbf9a0e689421d35de7beab555287a73b4729f1f6183",
+      "originalBytes": 83888,
+      "originalSha256": "55100b1d1767a7d4987de759e6448f395f71e0f5da39ee94e061e723900b345c"
+    },
+    "guidance-model-ci-fix-artifacts/390/error-context.md.gz": {
+      "bytes": 6676,
+      "sha256": "7cf56ea35c2e4d709cf7fa24cb8d97c799367cbdea0ee2d2e03b8836a27c19a4",
+      "originalBytes": 24646,
+      "originalSha256": "e99ac6dc3c5a7e4f280b0e2ab7b7e219a901c1f3fb774c0816f218fb22ec7807"
+    },
+    "guidance-model-ci-fix-artifacts/390/test-failed-1.png": {
+      "bytes": 58811,
+      "sha256": "f10c59e292fadfd6103186efd85e225d3680963da0758d3f4175c6cdff1ecadc",
+      "originalBytes": 58811,
+      "originalSha256": "f10c59e292fadfd6103186efd85e225d3680963da0758d3f4175c6cdff1ecadc"
+    },
+    "guidance-model-ci-fix-artifacts/390/trace.zip": {
+      "bytes": 467038,
+      "sha256": "b6f88c5061a903e4ed394cb14181d3b253fd449405bcf72554c5df76c3213e85",
+      "originalBytes": 467038,
+      "originalSha256": "b6f88c5061a903e4ed394cb14181d3b253fd449405bcf72554c5df76c3213e85"
+    },
+    "guidance-model-ci-fix-artifacts/768/error-context.md.gz": {
+      "bytes": 6869,
+      "sha256": "b0c44daa7bf2baf8b58a0a3017538dba235b0773fdf09701d5bc65578afbdc48",
+      "originalBytes": 25142,
+      "originalSha256": "6f63a6ba736af491cb1949f95a0980421e1e3ed23d8af330ce1fdef52b31723a"
+    },
+    "guidance-model-ci-fix-artifacts/768/test-failed-1.png": {
+      "bytes": 98204,
+      "sha256": "90b66adb5409254b448f99a877d41ea26f23c1b1eb64fe81c971dcb21381f3d9",
+      "originalBytes": 98204,
+      "originalSha256": "90b66adb5409254b448f99a877d41ea26f23c1b1eb64fe81c971dcb21381f3d9"
+    },
+    "guidance-model-ci-fix-artifacts/768/trace.zip": {
+      "bytes": 714409,
+      "sha256": "382abd7a9c195b38dce59ebf9229b532679c760f6acc959059c7f2ff8fb4472b",
+      "originalBytes": 714409,
+      "originalSha256": "382abd7a9c195b38dce59ebf9229b532679c760f6acc959059c7f2ff8fb4472b"
+    },
+    "guidance-model-ci-fix-artifacts/browser-final.log.gz": {
+      "bytes": 880,
+      "sha256": "9ee4a35217bd18926a7cc6f797d38e50993a2e61ea2c37cd9840d6030cb8cd3d",
+      "originalBytes": 2547,
+      "originalSha256": "81c1e1c10ab62a3619a137e0c679179a505243a8e8f58f27484e7e83cca07eca"
+    },
+    "guidance-model-ci-fix-artifacts/lint.log.gz": {
+      "bytes": 130,
+      "sha256": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e",
+      "originalBytes": 256,
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee"
+    },
+    "guidance-model-ci-fix-artifacts/web-build.log.gz": {
+      "bytes": 542,
+      "sha256": "0f9bbc0bbc17e773d6b3d8bbd6c01054f3ade6ab83ab49f218c2441319e8728c",
+      "originalBytes": 1381,
+      "originalSha256": "c4a5f769aaffb15be122e9376f4fcb975ef13c99c58c0f671a87c52852e1abff"
+    }
+  }
+}

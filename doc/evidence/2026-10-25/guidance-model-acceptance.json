@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T13:43:50.260Z",
-  "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
-  "applicationSourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+  "at": "2026-10-25T14:15:48.595Z",
+  "sourceRevision": "855234ff2dc36280273b38fb74394f59fbb430e1",
+  "applicationSourceRevision": "855234ff2dc36280273b38fb74394f59fbb430e1",
   "apiSourceRevision": "e590c669a40942ea96df8418e5f938bcc73a1b51",
-  "postApiStartChange": "Only Web status-read pause and its browser assertion changed after final API regression started; API and contracts remain the same.",
+  "postApiStartChange": "After the full API/171-browser baseline, only shared model-picker CSS, browser regression and isolated QA/workflow settings changed; API and contracts remain unchanged.",
   "specificationCommits": [
     "c237260",
     "520edcc"
   ],
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
   "sourceDigests": {
-    ".github/workflows/verify.yml": "17d4d1b4ebfd7750c7293d013ed3d7f35b4eaffecb04999b04f41da12e5529fb",
+    ".github/workflows/verify.yml": "2e6db2bcf1ac9901d1492e0d6e0862bd9efd027b16e0f9a70ab7a69f235117db",
     "apps/api/src/infrastructure/backup.integration.test.ts": "eab653ef67a5fd1865fc7754b0b73150a56c404cc2bf36eacce74bfcb44f5fa1",
     "apps/api/src/infrastructure/domain-database.ts": "4a09073560ff328e00a56e0d9aa7b90e851536e14df48c98680a912821597aca",
     "apps/api/src/infrastructure/in-memory-store.service.ts": "ca8b008bbb8cface57f367f1ff0ee544520b4c34eee431f973e0ec93b1587d9f",
@@ -46,11 +46,14 @@
     "scripts/qa/run-source-course-browser.cjs": "b9aafb8ebb0aa2c019429704f1c44f52aedb83b63dcbc8e7cdfefff36121421a",
     "scripts/qa/source-course-test-api.cjs": "29aabeea75c80e4e14f2992e925f6fda0171ef11c6031326bb9b85b860d6fda8",
     "scripts/qa/verify-guidance-model-runtime.cjs": "c26a7e02e6d765d90f1e5cede1867598f9a925eda483b2baa3aad4966f400606",
-    "tests/e2e/guidance-model.spec.ts": "ac93cfa854b80a89ac573bd71afe7c0e12b88b5e8f1a0131da32d392e5842060"
+    "tests/e2e/guidance-model.spec.ts": "8b27d96720781fec95636e2b0fe74996164f2e34ae117aa11a36108a7392a572",
+    "apps/web/components/xiaojiu-model-picker.css": "a5f922504ce55c0f999ea3a59d1e1477b24916adc3a4d88f84cdb25042910d8e",
+    "scripts/qa/verify-atomic-components.cjs": "da94f6d057d2e60138938881207978ff26f08968d8deae851bc6a4923f181599",
+    "scripts/qa/verify-full-restore-runtime.cjs": "a3b8605c57e78ac6976053de9187acfe3a36d8c69a7c9b7288d0ba082394bf0e"
   },
   "localPassed": true,
   "passed": false,
-  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "status": "ci-corrected-awaiting-new-exact-ci-and-runtime",
   "reports": {
     "guidance-model-boundaries-final.json": {
       "sha256": "37a792863ba2a9e414d44b75d84b6986c095716bc15fcfe200b91ff48e798c05",
@@ -213,12 +216,39 @@
       "failed": 0,
       "skipped": 0,
       "total": 4
+    },
+    "guidance-model-first-ci-failure.json": {
+      "sha256": "b6fb01cfd98c6b95cbc28dfe4568f2c83bd8351aff0ce783b954b0c356e25e33",
+      "scope": "116 CI correction evidence; original local acceptance retained separately"
+    },
+    "guidance-model-ci-layout-initial.json": {
+      "sha256": "586c72237d2199a72e491d1908c81910e5c36e442677b4256a001334a722c460",
+      "scope": "116 CI correction evidence; original local acceptance retained separately"
+    },
+    "guidance-model-ci-layout-final.json": {
+      "sha256": "d8b76d90addf12fb299809f56b93d2d0b49e1e6f8a525536ba9e204437367915",
+      "scope": "116 CI correction evidence; original local acceptance retained separately"
+    },
+    "guidance-model-ci-atomic-division.json": {
+      "sha256": "b4fe3afc74ee296c0a41a2d106eadc442f4cc690b27f0370c5e65267a2b4ef67",
+      "scope": "116 CI correction evidence; original local acceptance retained separately"
+    },
+    "guidance-model-ci-atomic-average.json": {
+      "sha256": "4cf452528febc730ea7afb7dac4c5b8d9af348044e75e8951f0ff3708ebb07ea",
+      "scope": "116 CI correction evidence; original local acceptance retained separately"
+    },
+    "guidance-model-ci-fix.json": {
+      "sha256": "e132c275d64db0a8019a9aca2547bf88e8847fcdf4a9a60b5bd1b5a0fd4b30a6",
+      "scope": "Remote first failure, local reproduction and final correction boundaries"
     }
   },
   "screens": {
     "guidance-model/comparison-390.png": "3a2a07a05e1fa7f1a6d10549d0036612ed240541140f05595454957dab86140a",
     "guidance-model/comparison-768.png": "c56cdd00cfb7e4345ffcadee70bdb3bf24060742e2d03f1a34483b4b55c48e43",
-    "guidance-model/comparison-1440.png": "eccbbd7fa01d65ca0f1a075a7b5b1c394b42ad871cfc166181da7ef165342ea0"
+    "guidance-model/comparison-1440.png": "eccbbd7fa01d65ca0f1a075a7b5b1c394b42ad871cfc166181da7ef165342ea0",
+    "guidance-model-ci-comparison-390.png": "70240ec392ca7ff4da5bb2ae6e8e14e395f302646d2363a39b7796158dbde5c0",
+    "guidance-model-ci-comparison-768.png": "63fa7cfb7546187ac4d1a3ba725fc5bc7e7a13354842e5ddaf5001160916efcc",
+    "guidance-model-ci-comparison-1440.png": "c977f571b3fd120bff2fc030f8067b267725ad10e6342be54812202e6e6e8553"
   },
   "initialArtifacts": {
     "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/error-context.md.gz": "10b1c890a6809d4c2e3a94ce8a2c5855574cf760ca8aa6ed120b4b4446e14ee1",
@@ -232,7 +262,17 @@
     "guidance-model/initial-failures/adjacent-close-text/trace.zip": "2c46b7b60c554881e7851b9ad1080352d8aebfde083a61af06806869f5edaa31",
     "guidance-model/initial-failures/duplicate-alert/error-context.md.gz": "947487aae33c35831aa2ae4a180b5f62fbddef02942257404de693416272080f",
     "guidance-model/initial-failures/duplicate-alert/test-failed-1.png": "33006ac7dd4a4a7537f620faba4f621d165de1571fa41cceab9660334b8c2fe5",
-    "guidance-model/initial-failures/duplicate-alert/trace.zip": "95856c77022f554892974bfdba9e851ac5ec24451aa09ef58c2f784a2629181d"
+    "guidance-model/initial-failures/duplicate-alert/trace.zip": "95856c77022f554892974bfdba9e851ac5ec24451aa09ef58c2f784a2629181d",
+    "guidance-model-ci-fix-artifacts/remote-first-failure.log.gz": "02247a09de51650a1aa9bbf9a0e689421d35de7beab555287a73b4729f1f6183",
+    "guidance-model-ci-fix-artifacts/390/error-context.md.gz": "7cf56ea35c2e4d709cf7fa24cb8d97c799367cbdea0ee2d2e03b8836a27c19a4",
+    "guidance-model-ci-fix-artifacts/390/test-failed-1.png": "f10c59e292fadfd6103186efd85e225d3680963da0758d3f4175c6cdff1ecadc",
+    "guidance-model-ci-fix-artifacts/390/trace.zip": "b6f88c5061a903e4ed394cb14181d3b253fd449405bcf72554c5df76c3213e85",
+    "guidance-model-ci-fix-artifacts/768/error-context.md.gz": "b0c44daa7bf2baf8b58a0a3017538dba235b0773fdf09701d5bc65578afbdc48",
+    "guidance-model-ci-fix-artifacts/768/test-failed-1.png": "90b66adb5409254b448f99a877d41ea26f23c1b1eb64fe81c971dcb21381f3d9",
+    "guidance-model-ci-fix-artifacts/768/trace.zip": "382abd7a9c195b38dce59ebf9229b532679c760f6acc959059c7f2ff8fb4472b",
+    "guidance-model-ci-fix-artifacts/browser-final.log.gz": "9ee4a35217bd18926a7cc6f797d38e50993a2e61ea2c37cd9840d6030cb8cd3d",
+    "guidance-model-ci-fix-artifacts/lint.log.gz": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e",
+    "guidance-model-ci-fix-artifacts/web-build.log.gz": "0f9bbc0bbc17e773d6b3d8bbd6c01054f3ade6ab83ab49f218c2441319e8728c"
   },
   "originalCompressed": {
     "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/error-context.md.gz": {
@@ -293,5 +333,6 @@
     "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
     "sourceFiles": 391,
     "viewerChecks": 10
-  }
+  },
+  "ciCorrection": "guidance-model-ci-fix.json"
 }
