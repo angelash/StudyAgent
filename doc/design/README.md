@@ -1,15 +1,15 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-25。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
+整理日期：2026-10-25。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)、[111真实项目文件](../product/111-project-attachments-and-frozen-file-evidence.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、113项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、114项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、89个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、91个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
