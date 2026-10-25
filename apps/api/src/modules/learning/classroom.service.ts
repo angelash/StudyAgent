@@ -15,7 +15,7 @@ import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, ve
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number; explanation: string }>;
   hintKeys?: Record<string, string[]>;
-  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'hint' | 'presentation'; messageId?: string; questionId?: string }>;
+  requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'turn' | 'hint' | 'presentation'; messageId?: string; questionId?: string }>;
 };
 
 @Injectable()
@@ -231,11 +231,15 @@ export class ClassroomService {
       questionId: z.string().max(200).optional(), requestKey: z.string().min(8).max(180) }).strict(), input);
     const question = command.questionId ? row.lesson.questions.find(item => item.id === command.questionId) : undefined;
     if (command.questionId && !question) throw new BadRequestException('练习题目不存在');
-    if (row.messages.length >= 100) throw new BadRequestException('本节对话已达到上限，请开始新的微课');
     const hash = createHash('sha256').update(JSON.stringify([command.message, command.modelId, command.questionId ?? null])).digest('hex'), previous = row.requests.find(request => request.key === command.requestKey);
     if (previous) {
       if (previous.kind !== 'chat' || previous.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
       return this.view(row);
+    }
+    if (row.messages.length >= 100) throw new BadRequestException('本节对话已达到上限，请开始新的微课');
+    for (const turn of this.store.select('classroomTurns', { sessionId: id })) {
+      const task = await this.store.tasks.get(turn.taskId);
+      if (task && ['queued', 'running', 'retry_wait', 'cancel_requested'].includes(task.state)) throw new ConflictException('请先完成或取消当前插问');
     }
     const boardPage = Math.floor(row.cursor / 3);
     const response = await this.chat.reply({ modelId: command.modelId, signal, classroomBoard: true,

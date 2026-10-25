@@ -1,3 +1,4 @@
+import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import type { CourseProjectRecord } from '../modules/learning/course-project.service';
@@ -419,6 +420,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   gespTaskReviewRevisions: GespTaskReviewRevision[] = [];
   studioCourses: StudioCourse[] = [];
   classroomSessions: ClassroomSessionRecord[] = [];
+  classroomTurns: ClassroomTurnRecord[] = [];
   classroomVisuals: ClassroomVisualRecord[] = [];
   courseProjects: CourseProjectRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
@@ -511,6 +513,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.gespTaskReviewRevisions = [];
     this.studioCourses = [];
     this.classroomSessions = [];
+    this.classroomTurns = [];
     this.classroomVisuals = [];
     this.courseProjects = [];
     this.sourceCourses = [];

@@ -116,13 +116,14 @@ test('question replies add safe board notes with page links, export and restored
   };
   await page.route('**/api/learning/classroom/sessions', withBoardNotes);
   await page.route('**/api/learning/classroom/sessions/*', withBoardNotes);
-  await page.route('**/api/learning/classroom/sessions/*/messages', async route => {
-    const response = await route.fetch({ method: 'GET', url: route.request().url().replace(/\/messages$/, '') });
+  await page.route('**/api/learning/classroom/sessions/*/turns', async route => {
+    if(route.request().method()!=='POST'){await route.fallback();return;}
+    const response = await route.fetch({ method: 'GET', url: route.request().url().replace(/\/turns$/, '') });
     const body = await response.json(), at = new Date().toISOString();
     messages = [{ id: 'question-fixture', role: 'user', content: route.request().postDataJSON().message, at },
       { id: 'answer-fixture', role: 'assistant', content: '先比较情境中的条件，再寻找能否排除其他解释的证据。', at, modelName: '课堂测试模型', board }];
-    body.data.messages = messages;
-    await route.fulfill({ status: 201, json: body });
+    const input=route.request().postDataJSON(),session=body.data,step=session.lesson.steps[session.cursor];
+    await route.fulfill({ status: 201, json: {data:{id:'turn-fixture',sessionId:session.id,requestKey:input.requestKey,message:input.message,intent:input.intent,modelId:input.modelId,modelName:'课堂测试模型',status:'completed',revision:1,createdAt:at,updatedAt:at,assistantMessageId:'answer-fixture',position:{...input,cursor:session.cursor,stepTitle:step.title,sentenceText:session.presentation.tracks[step.id].units[session.sentenceCursor??0].text},task:{state:'succeeded',version:2,generation:1,errorCode:null}}} });
   });
   await page.goto('/studio/classroom?lesson=soc-1-1-1');
   await page.getByLabel('向课堂老师提问').fill('如何把解释变成可验证的问题？');

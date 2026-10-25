@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
+import type { ClassroomTurnIntent, ClassroomTurnView, ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
 import { classroomStepUnits,classroomReplyUnits,classroomReadingMs, classroomPracticeSummary } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest,getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
@@ -16,6 +16,7 @@ import { StudioNavigation } from '../studio-navigation';
 import '../workspace.css';
 import { WorkspaceDialog } from '../workspace-dialog';
 import { useCaptionUpgrade,CaptionUpgradeControl } from './captions';
+import { useClassroomTurns, ClassroomIntentPicker, ClassroomTurnStatus } from './turns';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
 
 const tour = [
@@ -190,7 +191,9 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const captions=useCaptionUpgrade({session,visible:settings,getSession:()=>row.current,
     beforeChange:async()=>{pause();await revisionQueue.current.catch(()=>undefined);},
     onSession:value=>{cache.current.clear();return receive(value);},onNotice:setNotice,onClose:()=>setSettings(false)});
-  const busy=operationBusy||captions.busy;
+  const [intent,setIntent]=React.useState<ClassroomTurnIntent>('question');
+  const turns=useClassroomTurns({session,onSession:receive,onNotice:setNotice});
+  const busy=operationBusy||captions.busy||turns.working||turns.active;
   React.useEffect(()=>{if(!settings)printOperation.current?.abort();},[settings]);
   React.useEffect(()=>()=>printOperation.current?.abort(),[]);
   async function printNotes(){const operation=new AbortController();printOperation.current?.abort();printOperation.current=operation;setPrintBusy(true);try{
@@ -227,9 +230,13 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     if (cloudAudio.current) cloudAudio.current.playbackRate = speed;
     if (replyAudio.current?.audio) replyAudio.current.audio.playbackRate = speed;
   }, [speed, voice, dots, handwriting]);
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (following.current && historyElement.current) historyElement.current.scrollTop = historyElement.current.scrollHeight;
-  }, [session.revealed, session.messages.length, session.cursor, session.sentenceCursor, playing]);
+  }, [session.revealed, session.messages.length, session.cursor, session.sentenceCursor, playing, turns.turn?.status, notice, mobile, chatWidth]);
+  React.useEffect(() => {
+    const resized = () => { if (following.current && historyElement.current) historyElement.current.scrollTop = historyElement.current.scrollHeight; };
+    window.addEventListener('resize', resized); return () => window.removeEventListener('resize', resized);
+  }, []);
   React.useEffect(() => {
     if (page !== Math.floor(session.cursor / 3) || session.revealed <= session.cursor || standalonePractice) return;
     const frame = requestAnimationFrame(() => {
@@ -348,16 +355,32 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
   async function ask(event: React.FormEvent) {
-    event.preventDefault(); if (!question.trim() || busy) return;
-    pause(); setBusy(true); setNotice(''); const message = question; const controller = new AbortController(); chatAbort.current = controller;
+    event.preventDefault(); if (!question.trim() || busy || !turns.loaded) return;
+    pause(); following.current = true; setBusy(true); setNotice('');
     try {
-      await revisionQueue.current.catch(() => undefined);
-      const value = await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + row.current.id + '/messages', {
-        method: 'POST', signal: controller.signal, body: JSON.stringify({ message, modelId, ...(standalonePractice && questionItem ? { questionId: questionItem.id } : {}), requestKey: crypto.randomUUID() }) });
-      if (!controller.signal.aborted) { receive(value); setQuestion(''); setTab('history'); setMobile('chat'); setPage(Math.floor(value.cursor / 3)); setNotice('老师已补写这页白板。点击继续，回到原来的讲解。');
-        requestAnimationFrame(() => document.getElementById('board-' + value.messages.at(-1)?.id)?.scrollIntoView({ block: 'nearest' })); }
-    } catch (error) { if (!controller.signal.aborted) setNotice((error as Error).message); }
-    finally { if (chatAbort.current === controller) { chatAbort.current = null; setBusy(false); } }
+      await revisionQueue.current;
+      if (row.current.revealed <= row.current.cursor) await save({ revealed: row.current.cursor + 1 });
+      const latest = row.current, step = latest.lesson.steps[latest.cursor], unit = classroomStepUnits(latest, step)[latest.sentenceCursor ?? 0];
+      const previous = turns.uncertain;
+      const command = { message: question.trim(), modelId, intent, ...(standalonePractice && questionItem ? { questionId: questionItem.id } : {}),
+        contentFingerprint: latest.contentFingerprint, stepId: step.id, sentenceCursor: latest.sentenceCursor ?? 0,
+        presentationVersion: latest.presentation!.version, unitId: unit.id };
+      const same = previous && Object.entries(command).every(([key,value]) => previous[key as keyof typeof previous] === value) && previous.questionId === command.questionId;
+      const value = await turns.send({ ...command, requestKey: same ? previous.requestKey : crypto.randomUUID() });
+      if (value) { setQuestion(''); setTab('history'); setMobile('chat'); setNotice('插问已保存，回答会出现在这里。'); }
+    } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
+  }
+  async function returnToTurn(turn: ClassroomTurnView) {
+    pause(); setBusy(true);
+    try {
+      await revisionQueue.current;
+      const latest = row.current;
+      if (latest.contentFingerprint !== turn.position.contentFingerprint || latest.presentation?.version !== turn.position.presentationVersion ||
+        classroomStepUnits(latest, latest.lesson.steps[turn.position.cursor])[turn.position.sentenceCursor]?.id !== turn.position.unitId)
+        throw new Error('原字幕版本已变化，请在当前课堂选择继续位置。');
+      await save({ cursor: turn.position.cursor, sentenceCursor: turn.position.sentenceCursor });
+      setPage(Math.floor(turn.position.cursor / 3)); setTab('history'); setStandalonePractice(false); setPlaying(true);
+    } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
   async function answer(selectedIndex: number | null, disposition?: 'skip' | 'dont_know') {
     const item = lesson.questions[questionIndex]; if (!item || busy) return;
@@ -417,7 +440,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       <div className="cl-board-tools"><button aria-label="缩小白板" onClick={() => setZoom(Math.max(50, zoom - 10))}>−</button><button aria-label="重置缩放" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="放大白板" onClick={() => setZoom(Math.min(180, zoom + 10))}>＋</button><i/>
         <button aria-label="上一页白板" onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => setPage(Math.min(pageCount - 1, page + 1))} disabled={page + 1 >= pageCount}>›</button><i/>
         <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button aria-label="导出课堂笔记" onClick={exportNotes}><ClassroomIcon name="share"/></button><button aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
-      <div className="cl-mobile-tabs"><button onClick={() => setMobile('board')} data-active={mobile === 'board'}>白板</button><button onClick={() => setMobile('chat')} data-active={mobile === 'chat'}>对话与练习</button></div>
+      <div className="cl-mobile-tabs"><button onClick={() => setMobile('board')} data-active={mobile === 'board'}>白板</button><button onClick={() => { following.current = true; setMobile('chat'); }} data-active={mobile === 'chat'}>对话与练习</button></div>
       <div className="cl-board-scroll"><div className="cl-board-paper" data-handwriting={handwriting} style={{ zoom: zoom / 100 }}>
         {session.revealed === 0 && <div className="cl-board-welcome"><span>WELCOME TO YOUR WHITEBOARD</span><h1>{lesson.title}</h1><p>{lesson.objective}</p><button onClick={() => { pause(); setPlaying(true); }}>▶ 开始学习</button><small>概念 · 生活案例 · 误区辨析 · 新情境检查</small></div>}
         {lesson.steps.slice(page * 3, Math.min(session.revealed, (page + 1) * 3)).map((step, index) => <section className="cl-board-step" id={'board-' + step.id} key={step.id} data-current={step.id === current.id}>
@@ -464,10 +487,11 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         <div className="cl-room-notice" role="status">{session.contentStatus && session.contentStatus !== 'current' && !standalonePractice && <span>正在查看保留的旧版课堂，内容与作答按当时版本保存。{session.contentStatus === 'archived' && <button onClick={() => onNext(lesson.id, 'history', true)}>打开新版讲解</button>}</span>}{notice}{notice && <button onClick={() => setNotice('')} aria-label="关闭提示">×</button>}{notice.includes('语音') && <button onClick={() => { setMuted(true); setPlaying(true); setNotice('已切到文字讲解。'); }}>文字继续</button>}</div>
         <div className="cl-session-navigation"><button onClick={() => { pause(); setTab('history'); void save({ cursor: Math.max(0, session.cursor - 1) }).then(value => setPage(Math.floor(value.cursor / 3))).catch(error => setNotice(error.message)); }} disabled={session.cursor === 0 || busy}>‹ 上一步</button>
           <span>{session.cursor + 1} / {lesson.steps.length}</span><button onClick={() => void advance()} disabled={busy}>下一步 ›</button>{session.status === 'completed' && nextLesson && <button onClick={() => onNext(nextLesson.id)}>下一课 →</button>}</div>
-        <form className="cl-input" onSubmit={event => void ask(event)}><div><textarea aria-label="向课堂老师提问" value={question} placeholder="Ask a question…" maxLength={2000} onChange={event => { if (playing) setPlaying(false); setQuestion(event.target.value); }}/>
+        <ClassroomTurnStatus state={turns} onReturn={turn=>void returnToTurn(turn)} onEdit={command=>{setQuestion(command.message);setIntent(command.intent);setModelId(command.modelId);}}/>
+        <form className="cl-input" onSubmit={event => void ask(event)}><ClassroomIntentPicker value={intent} disabled={busy} onChange={(value,prompt)=>{pause();setIntent(value);if(prompt)setQuestion(prompt);}}/><div className="cl-compose-row"><textarea aria-label="向课堂老师提问" value={question} placeholder="Ask a question…" maxLength={2000} onChange={event => { if (playing) setPlaying(false); setQuestion(event.target.value); }}/>
           <button type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={microphone} data-listening={listening}>♩</button>
           <button type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
-          {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
+          {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy||!turns.loaded||Boolean(turns.uncertain)}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
           <XiaojiuModelPicker catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>
       </aside></>}
     {!showChat && !standalonePractice && <button className="cl-show-chat" onClick={() => setShowChat(true)}>打开对话与控制 ▤</button>}

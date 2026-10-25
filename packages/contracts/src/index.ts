@@ -736,3 +736,5 @@ export * from './source-course';
 export * from './source-course-compilation';
 export * from './studio-material-upload';
 export * from './classroom-visual';
+
+export * from './classroom-turn';

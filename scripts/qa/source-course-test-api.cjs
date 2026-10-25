@@ -13,6 +13,16 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const repairWorker=app.get(require('../../apps/api/dist/apps/api/src/modules/learning/studio-original-repair-worker.service.js').StudioOriginalRepairWorkerService),pausedRepairs=new Set();
   repairWorker.afterPhase=async phase=>{if(phase!=='candidate_published')return;const pending=await pdfStore.requestContext(()=>pdfStore.inspect('studioOriginalRepairs').find(row=>row.status==='restoring'&&!pausedRepairs.has(row.materialId)&&pdfStore.find('studioSourceMaterials',{id:row.materialId})?.filename.includes('[pause-repair-once]')));if(pending){pausedRepairs.add(pending.materialId);await new Promise(resolve=>setTimeout(resolve,8000));}};
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
+  const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
+  provider.reply=async input=>{
+    if(!input.classroomBoard)return originalReply(input);
+    const count=(turnAttempts.get(input.message)??0)+1;turnAttempts.set(input.message,count);
+    if(count===1&&input.message.includes('[fail-turn-once]'))throw new Error('Synthetic turn failure');
+    if(count===1&&input.message.includes('[pause-turn-once]'))await new Promise((resolve,reject)=>{
+      const timer=setTimeout(resolve,8000);input.signal?.addEventListener('abort',()=>{clearTimeout(timer);reject(new Error('Synthetic turn cancellation'));},{once:true});
+    });
+    return{reply:'先明确条件。再比较一个新例子。最后用自己的话解释结论。',evidenceIds:[],modelId:input.modelId,modelName:'Synthetic classroom fixture',board:{title:'对照条件与结论',points:['固定条件后比较例子','用自己的话检查理解'],diagram:null}};
+  };
   provider.structured=async(input,schema,check,custom=true)=>{
     if(!custom)return original(input,schema,check,custom);
     const context=JSON.parse(input.context),stage=JSON.parse(input.message),count=(attempts.get(context.goal)??0)+1;attempts.set(context.goal,count);

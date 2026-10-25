@@ -27,7 +27,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages',
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages',
     'studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
   }
@@ -67,6 +67,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
+  add(result, store, 'classroomTurns', row => row.ownerUserId === actorId);
   add(result, store, 'classroomVisuals', row => row.ownerUserId === actorId);
   add(result, store, 'courseProjects', row => row.ownerUserId === actorId);
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status)));
@@ -121,6 +122,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...row }) => row);
+    else if (name === 'classroomTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||
+      (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
+      .map(({ authorization: _auth, context: _context, history: _history, inputHash: _hash, lessonHash: _lesson, taskId: _task, ...row }) => row);
     else if (name === 'classroomVisuals') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({prompt:_prompt,requestKey:_key,inputHash:_hash,requests:_requests,selectionKey,files,...row})=>({...row,selected:selectionKey!==null,files:files?{image:files.image,original:files.original}:null}));

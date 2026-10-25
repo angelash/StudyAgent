@@ -210,3 +210,9 @@ jobs:
           STUDY_STORAGE: postgres
           STUDY_TEST_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node scripts/qa/verify-gesp-learning-loop.cjs data/qa/gesp-learning-loop-postgres.json postgres
+
+      - name: Durable classroom turns, original position and permission fencing on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_CLASSROOM_TURN_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-turn.integration.test.ts

@@ -1,3 +1,6 @@
+import { ClassroomTurnService } from './classroom-turn.service';
+import { ClassroomTurnWorkerService } from './classroom-turn-worker.service';
+import { ClassroomTurnController } from './classroom-turn.controller';
 import { Module } from '@nestjs/common';
 import { StudentsModule } from '../students/students.module';
 import { DiagnosticsModule } from '../diagnostics/diagnostics.module';
@@ -31,5 +34,5 @@ import { StudioMaterialMaintenanceModule } from './studio-material-maintenance.m
 import { StudioOriginalRepairService } from './studio-original-repair.service';
 import { StudioOriginalRepairWorkerService } from './studio-original-repair-worker.service';
 import { StudioOriginalRepairController } from './studio-original-repair.controller';
-@Module({ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] })
+@Module({ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] })
 export class LearningModule {}

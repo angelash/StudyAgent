@@ -23,6 +23,7 @@ const learningRoutes: Record<string, RegExp[]> = {
   GET: [/^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
+    /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
     /^learning\/projects\/(catalog|[^/]+)$/,
     /^learning\/source-courses(\/(materials|[^/]+))?$/,
@@ -42,6 +43,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
   POST: [/^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files\/check|repairs(\/[^/]+\/(cancel|retry))?)$/,
+    /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+\/(cancel|retry))?$/,
     /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|narration\/[^/]+))?$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice))?$/,
@@ -92,7 +94,7 @@ export class AuthGuard implements CanActivate {
 
     const writing = !['GET', 'HEAD', 'OPTIONS'].includes(request.method);
     await this.limits.assert(`request-user:${writing ? 'write' : 'read'}:${user.id}`, writing ? 180 : 600, 60000);
-    if (writing && (request.path.startsWith('/api/ai/') || /^\/api\/learning\/classroom\/sessions\/[^/]+\/messages$/.test(request.path) || /^\/api\/learning\/projects\/[^/]+\/advice$/.test(request.path)))
+    if (writing && (request.path.startsWith('/api/ai/') || /^\/api\/learning\/classroom\/sessions\/[^/]+\/(messages|turns)$/.test(request.path) || /^\/api\/learning\/projects\/[^/]+\/advice$/.test(request.path)))
       await this.limits.assert(`request-ai:${user.id}`, 60, 600000);
     request.user = user;
     request.authSession = session;
