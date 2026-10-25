@@ -1,0 +1,582 @@
+{
+  "at": "2026-10-25T18:58:22.427Z",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "c1c6608bbc3d5931c11bcad7f0f45e70a17b5f8e",
+  "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
+  "ciHead": "9053f0353b8ad085d6885911837b089651674fdc",
+  "ciRun": 40221345190,
+  "webBuildId": "hi7VwKIGYaHmzQtuQqKdz",
+  "storage": "sqlite",
+  "protectedFiles": {
+    ".env.example": true,
+    "apps/web/next.config.ts": true,
+    "doc/product/87-local-windows-daemon.md": true,
+    "ecosystem.config.cjs": true,
+    "scripts/operations/start-daemon.ps1": true
+  },
+  "localEnvironmentPreserved": true,
+  "httpChecks": [
+    {
+      "url": "/learn",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/parent/login",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/classroom",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/source-courses",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/student/assessment",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/ready",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/learning/projects/catalog",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/projects/nonexistent/teaching",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/projects/nonexistent/requests/smoke-command",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/projects/nonexistent/narration",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/studio/projects",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/projects/page-3e2d82ca64ac9df0.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/classroom",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/db261188-d4cdd47e5f251944.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1833-138805b877dcc1b4.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/classroom/page-f69be79dd7016164.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/source-courses",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1833-138805b877dcc1b4.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/2620-3974bf969200bc0d.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/source-courses/page-03cf364cb8a0afbb.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/learning/source-courses/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/classroom-voice-samples/manifest.json",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/warm-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/calm-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/bright-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/gentle-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/professional-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/lively-v1.mp3",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "scriptDigests": [
+    {
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "sha256": "28f17af7718cd844f1bd08b11f1f9da022564b92a8e1a5146df5c5eb7da73b52",
+      "bytes": 203721
+    },
+    {
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "sha256": "5a101e3d47b001a099eb19b376ad25b62f612ccee8ba4b964a7a7551f3a579ce",
+      "bytes": 242580
+    },
+    {
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "sha256": "52a1951d68af7a4e9650960b3de0784b1ab6afc383c8654df7fed3bb5fa0d93a",
+      "bytes": 511
+    },
+    {
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "sha256": "915d69c88ccb19fa3f15269bfb63712f9a20adbfbce7f3fe7d4b82c6b263c1cf",
+      "bytes": 104795
+    },
+    {
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "sha256": "d3ded1dab495aa980a93f286f974ea7ca4f7c25dd0d1fa3884665d572e25e94b",
+      "bytes": 34562
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/projects/page-3e2d82ca64ac9df0.js",
+      "sha256": "d20cb9e9178ff44aacb48963772b3f0b4c6ceb3020c683a702b38df6c8c0a38f",
+      "bytes": 78679
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "sha256": "6a76bec50f56c6b56af2306b20309184b9e2f5d954755893a3bdeac5604a16d5",
+      "bytes": 3945
+    }
+  ],
+  "servesGuidedProjectCode": true,
+  "servesCourseJourneys": true,
+  "courseJourneyScripts": [
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "sha256": "28f17af7718cd844f1bd08b11f1f9da022564b92a8e1a5146df5c5eb7da73b52",
+      "bytes": 203721
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "sha256": "5a101e3d47b001a099eb19b376ad25b62f612ccee8ba4b964a7a7551f3a579ce",
+      "bytes": 242580
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "sha256": "52a1951d68af7a4e9650960b3de0784b1ab6afc383c8654df7fed3bb5fa0d93a",
+      "bytes": 511
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/db261188-d4cdd47e5f251944.js",
+      "sha256": "0567f0d9639f45d3d8c08c664e7dc9f6d059e349b841345c239932a3b5ed86a5",
+      "bytes": 264235
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "sha256": "915d69c88ccb19fa3f15269bfb63712f9a20adbfbce7f3fe7d4b82c6b263c1cf",
+      "bytes": 104795
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "sha256": "d3ded1dab495aa980a93f286f974ea7ca4f7c25dd0d1fa3884665d572e25e94b",
+      "bytes": 34562
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/1833-138805b877dcc1b4.js",
+      "sha256": "02095c4cbae0048a969fcd4e3c219023d493a6aecd79ad6ad81abd18262eb88c",
+      "bytes": 10520
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/app/studio/classroom/page-f69be79dd7016164.js",
+      "sha256": "247099e6900d20f10ebb2ca9e9823976624a0db28bdf62531d6da0bc6abbf935",
+      "bytes": 113156
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "sha256": "6a76bec50f56c6b56af2306b20309184b9e2f5d954755893a3bdeac5604a16d5",
+      "bytes": 3945
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/87c73c54-94dfd33dd614faf8.js",
+      "sha256": "28f17af7718cd844f1bd08b11f1f9da022564b92a8e1a5146df5c5eb7da73b52",
+      "bytes": 203721
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/1968-4a16059728a75dfb.js",
+      "sha256": "5a101e3d47b001a099eb19b376ad25b62f612ccee8ba4b964a7a7551f3a579ce",
+      "bytes": 242580
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/main-app-1b49898c362f0e69.js",
+      "sha256": "52a1951d68af7a4e9650960b3de0784b1ab6afc383c8654df7fed3bb5fa0d93a",
+      "bytes": 511
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/1049-2252de65f0542004.js",
+      "sha256": "915d69c88ccb19fa3f15269bfb63712f9a20adbfbce7f3fe7d4b82c6b263c1cf",
+      "bytes": 104795
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/7383-ad994eabf207bd91.js",
+      "sha256": "d3ded1dab495aa980a93f286f974ea7ca4f7c25dd0d1fa3884665d572e25e94b",
+      "bytes": 34562
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/1833-138805b877dcc1b4.js",
+      "sha256": "02095c4cbae0048a969fcd4e3c219023d493a6aecd79ad6ad81abd18262eb88c",
+      "bytes": 10520
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/2620-3974bf969200bc0d.js",
+      "sha256": "048382ff47222c649dac6d2ea1a2c0acf3a17886ebebd66675fccf3820e0afa5",
+      "bytes": 24071
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/app/studio/source-courses/page-03cf364cb8a0afbb.js",
+      "sha256": "19272cfa8b59d94975a5bd45c30a87b4b31e21dbedb98291d6106124ba485678",
+      "bytes": 71670
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/webpack-175dfc0aa630d98a.js",
+      "sha256": "6a76bec50f56c6b56af2306b20309184b9e2f5d954755893a3bdeac5604a16d5",
+      "bytes": 3945
+    }
+  ],
+  "voiceSamples": [
+    {
+      "file": "warm-v1.mp3",
+      "bytes": 72564,
+      "sha256": "a6a2dccb363caf307c62829cd2f9482acd4beaaa1bce140de5b40b2f1ac8f023",
+      "passed": true
+    },
+    {
+      "file": "calm-v1.mp3",
+      "bytes": 75444,
+      "sha256": "ab283698ffd0c7c541d07e56323f97dcfbf8be977f17f9550b546684ca8b64a7",
+      "passed": true
+    },
+    {
+      "file": "bright-v1.mp3",
+      "bytes": 90420,
+      "sha256": "7fbda45ec0383a98b9d32d7268b8cdf49006281a0a8353cf959ff2cb294b71ed",
+      "passed": true
+    },
+    {
+      "file": "gentle-v1.mp3",
+      "bytes": 81204,
+      "sha256": "920d425e5dae02a301b078a0a747d91a674ad78f936e535552bf3a665e6f9cf9",
+      "passed": true
+    },
+    {
+      "file": "professional-v1.mp3",
+      "bytes": 82356,
+      "sha256": "5d01b439d86621d11b294bdef737ffe1d1d9234071395ee6b921f25bf0a5faaa",
+      "passed": true
+    },
+    {
+      "file": "lively-v1.mp3",
+      "bytes": 74292,
+      "sha256": "bec74e344c8634d12b5dc7adcc23e84a4dc9b0df90d1ca6dbbec7d0f9e517f1e",
+      "passed": true
+    }
+  ],
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-26-course-journey",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-25T17:56:11.404521+00:00",
+      "passed": true,
+      "files": 826,
+      "bytes": 13029111,
+      "protectedFiles": 5,
+      "scope": "Old compiled builds excluding cache; copied files byte-verified, not an independent research asset archive or full restore rehearsal"
+    },
+    "scope": "Stopped-service consistent database and referenced runtime files, plus verified old compiled builds excluding cache. Not an independent research-asset archive or full restore rehearsal."
+  },
+  "limitations": [
+    "Anonymous production checks only; owned synthetic flows and real TTS were verified separately in isolated storage.",
+    "No teacher, original HyperKnow audio/CSS/DPR or real-device acceptance is implied."
+  ],
+  "observations": [
+    {
+      "services": [
+        {
+          "name": "study-agent-api",
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 76536,
+          "restarts": 1164
+        },
+        {
+          "name": "study-agent-web",
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 82536,
+          "restarts": 3
+        },
+        {
+          "name": "study-agent-health",
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 75052,
+          "restarts": 1
+        }
+      ],
+      "at": "2026-10-25T18:55:21.0775104+00:00"
+    },
+    {
+      "at": "2026-10-25T18:57:24.7961245+00:00",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 76536,
+          "status": "online",
+          "restarts": 1164
+        },
+        {
+          "name": "study-agent-web",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 82536,
+          "status": "online",
+          "restarts": 3
+        },
+        {
+          "name": "study-agent-health",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "pid": 75052,
+          "status": "online",
+          "restarts": 1
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T18:58:22.1193751+00:00",
+      "services": [
+        {
+          "pid": 76536,
+          "restarts": 1164,
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "name": "study-agent-api"
+        },
+        {
+          "pid": 82536,
+          "restarts": 3,
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "name": "study-agent-web"
+        },
+        {
+          "pid": 75052,
+          "restarts": 1,
+          "status": "online",
+          "cwd": "F:\\workspace\\github\\StudyAgent",
+          "name": "study-agent-health"
+        }
+      ]
+    }
+  ],
+  "observedIntervalMs": 181042,
+  "webSourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
+  "servesCourseProjectLocation": true
+}
