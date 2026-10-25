@@ -42,7 +42,7 @@
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "local-complete-exact-ci-and-runtime-pending",
+  "status": "local-and-exact-ci-complete-production-pending",
   "localPassed": true,
   "passed": false,
   "api": {
@@ -78,7 +78,11 @@
     "report": "course-journey-browser-focused.json"
   },
   "remoteCi": {
-    "status": "not-started"
+    "status": "completed",
+    "conclusion": "success",
+    "runId": 40218645644,
+    "head": "5b09cc81c908f80bec31730a107858c00891cbe5",
+    "report": "course-journey-exact-ci.json"
   },
   "production": {
     "status": "not-released",
@@ -120,7 +124,8 @@
     "course-journey-browser-focused.json": "60834ffdd6abb62993357d09d791b47187350dd6227a6fec06d7bd72b6ee4845",
     "course-journey-complete-browser.json": "73a047af7a8b83b914e76a872cdc67379c323c6a35602402ab13f5e830a21182",
     "course-journey-full-browser.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
-    "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c"
+    "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c",
+    "course-journey-exact-ci.json": "ec3dd0ba6c65be8cdbefc4b15025408484dee71955bd0434026dbe36dd7871dc"
   },
   "completeJourneys": {
     "passed": 9,
