@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`b71d611237e4ba8dff892fa603b21a28b50022c4`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -562,6 +562,61 @@
 
 - `StudioIntegrationService.exportCalendar`；[apps/api/src/modules/learning/studio-integration.service.ts:185](../../../apps/api/src/modules/learning/studio-integration.service.ts#L185)。
 
+## STUDIO-27 真实项目附件、冻结文件证据与双库恢复
+
+**输入**：原项目/阶段与冻结定义、原件SHA/大小/媒体类型、分块、独立文件修订、当前及原授权、稳定命令键。
+
+**处理与实现**：每文件20MiB/分块1MiB/阶段20引用；原件与规范化图片、PDF静态页、UTF-8文字/代码、录音、Office容器独立保留；处理/清理持久任务与真实租约，取消/撤权/隐私后旧worker不能发布；字节检查只读；提交冻结原件/显示摘要和说明，量规只能引用该提交文件，旧提交不被替换；图片放大/PDF分页/音频释放/原件下载；刷新续传和掉回执找回；家庭TAR/SQLite和PG原生冷恢复/最新删除账本覆盖实际字节。AI只用明确选择的已保存文字和说明，完整超预算作品保留，不截断
+
+**输出**：真实原件、可复核历史提交、可恢复处理、独立文件完整性检查与真实备份。
+
+**状态与持久化**：`projectAssetUploads`、`projectAssets`、`courseProjects`
+
+**权限、失败与边界**：Office只承诺容器核对和原件下载，不提供内容预览；本批AI未读取附件字节；完整多模态研读、真实手机/录音/读屏、教师与连续效果仍待验收。
+
+**关联接口**：
+
+- `GET /api/learning/project-files` → `ProjectFileController.list`；[apps/api/src/modules/learning/project-file.controller.ts:11](../../../apps/api/src/modules/learning/project-file.controller.ts#L11)。
+- `POST /api/learning/project-files/uploads` → `ProjectFileController.start`；[apps/api/src/modules/learning/project-file.controller.ts:12](../../../apps/api/src/modules/learning/project-file.controller.ts#L12)。
+- `GET /api/learning/project-files/uploads/:id` → `ProjectFileController.upload`；[apps/api/src/modules/learning/project-file.controller.ts:13](../../../apps/api/src/modules/learning/project-file.controller.ts#L13)。
+- `PUT /api/learning/project-files/uploads/:id/chunks/:index` → `ProjectFileController.chunk`；[apps/api/src/modules/learning/project-file.controller.ts:14](../../../apps/api/src/modules/learning/project-file.controller.ts#L14)。
+- `POST /api/learning/project-files/uploads/:id/complete` → `ProjectFileController.complete`；[apps/api/src/modules/learning/project-file.controller.ts:15](../../../apps/api/src/modules/learning/project-file.controller.ts#L15)。
+- `POST /api/learning/project-files/uploads/:id/cancel` → `ProjectFileController.cancelUpload`；[apps/api/src/modules/learning/project-file.controller.ts:16](../../../apps/api/src/modules/learning/project-file.controller.ts#L16)。
+- `GET /api/learning/project-files/assets/:id` → `ProjectFileController.asset`；[apps/api/src/modules/learning/project-file.controller.ts:17](../../../apps/api/src/modules/learning/project-file.controller.ts#L17)。
+- `GET /api/learning/project-files/assets/:id/integrity` → `ProjectFileController.integrity`；[apps/api/src/modules/learning/project-file.controller.ts:18](../../../apps/api/src/modules/learning/project-file.controller.ts#L18)。
+- `POST /api/learning/project-files/assets/:id/cancel` → `ProjectFileController.cancel`；[apps/api/src/modules/learning/project-file.controller.ts:19](../../../apps/api/src/modules/learning/project-file.controller.ts#L19)。
+- `POST /api/learning/project-files/assets/:id/retry` → `ProjectFileController.retry`；[apps/api/src/modules/learning/project-file.controller.ts:20](../../../apps/api/src/modules/learning/project-file.controller.ts#L20)。
+- `POST /api/learning/project-files/assets/:id/delete` → `ProjectFileController.delete`；[apps/api/src/modules/learning/project-file.controller.ts:21](../../../apps/api/src/modules/learning/project-file.controller.ts#L21)。
+- `GET /api/learning/project-files/assets/:id/files/:variant` → `ProjectFileController.file`；[apps/api/src/modules/learning/project-file.controller.ts:22](../../../apps/api/src/modules/learning/project-file.controller.ts#L22)。
+
+**服务方法**：
+
+- `ProjectFileService.list`；[apps/api/src/modules/learning/project-file.service.ts:64](../../../apps/api/src/modules/learning/project-file.service.ts#L64)。
+- `ProjectFileService.start`；[apps/api/src/modules/learning/project-file.service.ts:53](../../../apps/api/src/modules/learning/project-file.service.ts#L53)。
+- `ProjectFileService.getUpload`；[apps/api/src/modules/learning/project-file.service.ts:70](../../../apps/api/src/modules/learning/project-file.service.ts#L70)。
+- `ProjectFileService.chunk`；[apps/api/src/modules/learning/project-file.service.ts:79](../../../apps/api/src/modules/learning/project-file.service.ts#L79)。
+- `ProjectFileService.complete`；[apps/api/src/modules/learning/project-file.service.ts:85](../../../apps/api/src/modules/learning/project-file.service.ts#L85)。
+- `ProjectFileService.cancelUpload`；[apps/api/src/modules/learning/project-file.service.ts:98](../../../apps/api/src/modules/learning/project-file.service.ts#L98)。
+- `ProjectFileService.getAsset`；[apps/api/src/modules/learning/project-file.service.ts:71](../../../apps/api/src/modules/learning/project-file.service.ts#L71)。
+- `ProjectFileService.integrity`；[apps/api/src/modules/learning/project-file.service.ts:72](../../../apps/api/src/modules/learning/project-file.service.ts#L72)。
+- `ProjectFileService.command`；[apps/api/src/modules/learning/project-file.service.ts:102](../../../apps/api/src/modules/learning/project-file.service.ts#L102)。
+- `ProjectFileService.file`；[apps/api/src/modules/learning/project-file.service.ts:119](../../../apps/api/src/modules/learning/project-file.service.ts#L119)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/project-assets.ts](../../../packages/contracts/src/project-assets.ts)
+- [apps/api/src/modules/learning/project-file-worker.service.ts](../../../apps/api/src/modules/learning/project-file-worker.service.ts)
+- [apps/api/src/modules/learning/project-file-storage.ts](../../../apps/api/src/modules/learning/project-file-storage.ts)
+- [apps/api/src/modules/learning/project-file-processing.ts](../../../apps/api/src/modules/learning/project-file-processing.ts)
+- [apps/api/src/modules/learning/course-project-access.ts](../../../apps/api/src/modules/learning/course-project-access.ts)
+- [apps/api/src/modules/learning/project-file.integration.test.ts](../../../apps/api/src/modules/learning/project-file.integration.test.ts)
+- [apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts](../../../apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts)
+- [apps/web/app/studio/projects/project-files.tsx](../../../apps/web/app/studio/projects/project-files.tsx)
+- [apps/web/app/studio/projects/advice-scope.tsx](../../../apps/web/app/studio/projects/advice-scope.tsx)
+- [scripts/processing/project_file_preview.py](../../../scripts/processing/project_file_preview.py)
+- [scripts/qa/run-project-files-postgres.cjs](../../../scripts/qa/run-project-files-postgres.cjs)
+- [tests/e2e/project-files.spec.ts](../../../tests/e2e/project-files.spec.ts)
+
 ## STUDIO-20 阶段项目、产物版本与量规复核
 
 **输入**：课程/单元、阶段产物、文字/链接证据、自评、修订号、请求键和模型。
@@ -572,7 +627,7 @@
 
 **状态与持久化**：`courseProjects`、`classroomSessions`、`studioCourses`、`teacherAssignments`
 
-**权限、失败与边界**：内容和量规待教师审核，文字/链接证据已接入，二进制附件仍待统一媒体接入；AI真实供应商调用和真人效果另验；项目不写正式掌握度。
+**权限、失败与边界**：内容和量规待教师审核，真实附件见STUDIO-27；AI只对已保存文字和附件说明给建议，可明确选择范围；AI真实供应商调用和真人效果另验；项目不写正式掌握度。
 
 **关联接口**：
 
@@ -587,14 +642,14 @@
 
 **服务方法**：
 
-- `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:69](../../../apps/api/src/modules/learning/course-project.service.ts#L69)。
-- `CourseProjectService.get`；[apps/api/src/modules/learning/course-project.service.ts:67](../../../apps/api/src/modules/learning/course-project.service.ts#L67)。
-- `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:79](../../../apps/api/src/modules/learning/course-project.service.ts#L79)。
-- `CourseProjectService.save`；[apps/api/src/modules/learning/course-project.service.ts:125](../../../apps/api/src/modules/learning/course-project.service.ts#L125)。
-- `CourseProjectService.submit`；[apps/api/src/modules/learning/course-project.service.ts:139](../../../apps/api/src/modules/learning/course-project.service.ts#L139)。
-- `CourseProjectService.review`；[apps/api/src/modules/learning/course-project.service.ts:157](../../../apps/api/src/modules/learning/course-project.service.ts#L157)。
-- `CourseProjectService.importLegacy`；[apps/api/src/modules/learning/course-project.service.ts:174](../../../apps/api/src/modules/learning/course-project.service.ts#L174)。
-- `CourseProjectService.advise`；[apps/api/src/modules/learning/course-project.service.ts:188](../../../apps/api/src/modules/learning/course-project.service.ts#L188)。
+- `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:61](../../../apps/api/src/modules/learning/course-project.service.ts#L61)。
+- `CourseProjectService.get`；[apps/api/src/modules/learning/course-project.service.ts:59](../../../apps/api/src/modules/learning/course-project.service.ts#L59)。
+- `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:71](../../../apps/api/src/modules/learning/course-project.service.ts#L71)。
+- `CourseProjectService.save`；[apps/api/src/modules/learning/course-project.service.ts:128](../../../apps/api/src/modules/learning/course-project.service.ts#L128)。
+- `CourseProjectService.submit`；[apps/api/src/modules/learning/course-project.service.ts:142](../../../apps/api/src/modules/learning/course-project.service.ts#L142)。
+- `CourseProjectService.review`；[apps/api/src/modules/learning/course-project.service.ts:160](../../../apps/api/src/modules/learning/course-project.service.ts#L160)。
+- `CourseProjectService.importLegacy`；[apps/api/src/modules/learning/course-project.service.ts:177](../../../apps/api/src/modules/learning/course-project.service.ts#L177)。
+- `CourseProjectService.advise`；[apps/api/src/modules/learning/course-project.service.ts:191](../../../apps/api/src/modules/learning/course-project.service.ts#L191)。
 
 **补充实现文件**：
 

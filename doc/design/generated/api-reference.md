@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。共 315 个 HTTP 路由声明，当前 AppModule 可达 294 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`b71d611237e4ba8dff892fa603b21a28b50022c4`。共 327 个 HTTP 路由声明，当前 AppModule 可达 306 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1603,6 +1603,116 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.notebook.verification`
+
+## ProjectFileController — 当前接入
+
+### GET /api/learning/project-files
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:11](../../../apps/api/src/modules/learning/project-file.controller.ts#L11)，方法 `list`。
+
+- 签名：`list(@Req() req:AuthenticatedRequest, @Query('projectId') projectId:string, @Query('stageId') stageId:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.list`
+
+### POST /api/learning/project-files/uploads
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:12](../../../apps/api/src/modules/learning/project-file.controller.ts#L12)，方法 `start`。
+
+- 签名：`start(@Req() req:AuthenticatedRequest, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.start`
+
+### GET /api/learning/project-files/uploads/:id
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:13](../../../apps/api/src/modules/learning/project-file.controller.ts#L13)，方法 `upload`。
+
+- 签名：`upload(@Req() req:AuthenticatedRequest, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.getUpload`
+
+### PUT /api/learning/project-files/uploads/:id/chunks/:index
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:14](../../../apps/api/src/modules/learning/project-file.controller.ts#L14)，方法 `chunk`。
+
+- 签名：`chunk(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Param('index') index:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.chunk`
+
+### POST /api/learning/project-files/uploads/:id/complete
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:15](../../../apps/api/src/modules/learning/project-file.controller.ts#L15)，方法 `complete`。
+
+- 签名：`complete(@Req() req:AuthenticatedRequest, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.complete`
+
+### POST /api/learning/project-files/uploads/:id/cancel
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:16](../../../apps/api/src/modules/learning/project-file.controller.ts#L16)，方法 `cancelUpload`。
+
+- 签名：`cancelUpload(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.cancelUpload`
+
+### GET /api/learning/project-files/assets/:id
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:17](../../../apps/api/src/modules/learning/project-file.controller.ts#L17)，方法 `asset`。
+
+- 签名：`asset(@Req() req:AuthenticatedRequest, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.getAsset`
+
+### GET /api/learning/project-files/assets/:id/integrity
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:18](../../../apps/api/src/modules/learning/project-file.controller.ts#L18)，方法 `integrity`。
+
+- 签名：`integrity(@Req() req:AuthenticatedRequest, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.integrity`
+
+### POST /api/learning/project-files/assets/:id/cancel
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:19](../../../apps/api/src/modules/learning/project-file.controller.ts#L19)，方法 `cancel`。
+
+- 签名：`cancel(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.command`
+
+### POST /api/learning/project-files/assets/:id/retry
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:20](../../../apps/api/src/modules/learning/project-file.controller.ts#L20)，方法 `retry`。
+
+- 签名：`retry(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.command`
+
+### POST /api/learning/project-files/assets/:id/delete
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:21](../../../apps/api/src/modules/learning/project-file.controller.ts#L21)，方法 `delete`。
+
+- 签名：`delete(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.command`
+
+### GET /api/learning/project-files/assets/:id/files/:variant
+
+实现：[apps/api/src/modules/learning/project-file.controller.ts:22](../../../apps/api/src/modules/learning/project-file.controller.ts#L22)，方法 `file`。
+
+- 签名：`file(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Param('variant') variant:string, @Headers('range') range:string|undefined, @Res({passthrough:true}) response:Response)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.files.file`
 
 ## RetiredLearningController — 已接入，旧协议返回410
 

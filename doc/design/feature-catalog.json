@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561",
+  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 113,
-    "activeNormalApiRoutes": 294,
-    "coveredApiRoutes": 294
+    "features": 114,
+    "activeNormalApiRoutes": 306,
+    "coveredApiRoutes": 306
   },
   "areas": [
     {
@@ -5614,6 +5614,209 @@
           ]
         },
         {
+          "id": "STUDIO-27",
+          "title": "真实项目附件、冻结文件证据与双库恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "原项目/阶段与冻结定义、原件SHA/大小/媒体类型、分块、独立文件修订、当前及原授权、稳定命令键",
+          "implementation": "每文件20MiB/分块1MiB/阶段20引用；原件与规范化图片、PDF静态页、UTF-8文字/代码、录音、Office容器独立保留；处理/清理持久任务与真实租约，取消/撤权/隐私后旧worker不能发布；字节检查只读；提交冻结原件/显示摘要和说明，量规只能引用该提交文件，旧提交不被替换；图片放大/PDF分页/音频释放/原件下载；刷新续传和掉回执找回；家庭TAR/SQLite和PG原生冷恢复/最新删除账本覆盖实际字节。AI只用明确选择的已保存文字和说明，完整超预算作品保留，不截断",
+          "outputs": "真实原件、可复核历史提交、可恢复处理、独立文件完整性检查与真实备份",
+          "collections": [
+            "projectAssetUploads",
+            "projectAssets",
+            "courseProjects"
+          ],
+          "limits": "Office只承诺容器核对和原件下载，不提供内容预览；本批AI未读取附件字节；完整多模态研读、真实手机/录音/读屏、教师与连续效果仍待验收。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/project-files",
+              "controller": "ProjectFileController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/uploads",
+              "controller": "ProjectFileController",
+              "method": "start",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/project-files/uploads/:id",
+              "controller": "ProjectFileController",
+              "method": "upload",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "PUT",
+              "path": "/api/learning/project-files/uploads/:id/chunks/:index",
+              "controller": "ProjectFileController",
+              "method": "chunk",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/uploads/:id/complete",
+              "controller": "ProjectFileController",
+              "method": "complete",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/uploads/:id/cancel",
+              "controller": "ProjectFileController",
+              "method": "cancelUpload",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/project-files/assets/:id",
+              "controller": "ProjectFileController",
+              "method": "asset",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 17
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/project-files/assets/:id/integrity",
+              "controller": "ProjectFileController",
+              "method": "integrity",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/assets/:id/cancel",
+              "controller": "ProjectFileController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/assets/:id/retry",
+              "controller": "ProjectFileController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/project-files/assets/:id/delete",
+              "controller": "ProjectFileController",
+              "method": "delete",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 21
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/project-files/assets/:id/files/:variant",
+              "controller": "ProjectFileController",
+              "method": "file",
+              "file": "apps/api/src/modules/learning/project-file.controller.ts",
+              "line": 22
+            }
+          ],
+          "implementations": [
+            {
+              "name": "ProjectFileService.list",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 64
+            },
+            {
+              "name": "ProjectFileService.start",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 53
+            },
+            {
+              "name": "ProjectFileService.getUpload",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 70
+            },
+            {
+              "name": "ProjectFileService.chunk",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 79
+            },
+            {
+              "name": "ProjectFileService.complete",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 85
+            },
+            {
+              "name": "ProjectFileService.cancelUpload",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 98
+            },
+            {
+              "name": "ProjectFileService.getAsset",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 71
+            },
+            {
+              "name": "ProjectFileService.integrity",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 72
+            },
+            {
+              "name": "ProjectFileService.command",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 102
+            },
+            {
+              "name": "ProjectFileService.file",
+              "file": "apps/api/src/modules/learning/project-file.service.ts",
+              "line": 119
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/project-assets.ts",
+            "apps/api/src/modules/learning/project-file.service.ts",
+            "apps/api/src/modules/learning/project-file-worker.service.ts",
+            "apps/api/src/modules/learning/project-file-storage.ts",
+            "apps/api/src/modules/learning/project-file-processing.ts",
+            "apps/api/src/modules/learning/course-project-access.ts",
+            "apps/api/src/modules/learning/project-file.integration.test.ts",
+            "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts",
+            "apps/web/app/studio/projects/project-files.tsx",
+            "apps/web/app/studio/projects/advice-scope.tsx",
+            "scripts/processing/project_file_preview.py",
+            "scripts/qa/run-project-files-postgres.cjs",
+            "tests/e2e/project-files.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-20",
           "title": "阶段项目、产物版本与量规复核",
           "area": "studio",
@@ -5634,7 +5837,7 @@
             "studioCourses",
             "teacherAssignments"
           ],
-          "limits": "内容和量规待教师审核，文字/链接证据已接入，二进制附件仍待统一媒体接入；AI真实供应商调用和真人效果另验；项目不写正式掌握度。",
+          "limits": "内容和量规待教师审核，真实附件见STUDIO-27；AI只对已保存文字和附件说明给建议，可明确选择范围；AI真实供应商调用和真人效果另验；项目不写正式掌握度。",
           "endpoints": [
             {
               "verb": "GET",
@@ -5705,42 +5908,42 @@
             {
               "name": "CourseProjectService.catalog",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 69
+              "line": 61
             },
             {
               "name": "CourseProjectService.get",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 67
+              "line": 59
             },
             {
               "name": "CourseProjectService.open",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 79
+              "line": 71
             },
             {
               "name": "CourseProjectService.save",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 125
+              "line": 128
             },
             {
               "name": "CourseProjectService.submit",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 139
+              "line": 142
             },
             {
               "name": "CourseProjectService.review",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 157
+              "line": 160
             },
             {
               "name": "CourseProjectService.importLegacy",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 174
+              "line": 177
             },
             {
               "name": "CourseProjectService.advise",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 188
+              "line": 191
             }
           ],
           "sourceFiles": [
@@ -7559,17 +7762,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 43
+              "line": 47
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 64
+              "line": 68
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 71
+              "line": 75
             }
           ],
           "sourceFiles": [
@@ -7649,7 +7852,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 103
+              "line": 107
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -7659,7 +7862,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 112
+              "line": 116
             }
           ],
           "sourceFiles": [
@@ -7719,7 +7922,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 153
+              "line": 170
             }
           ],
           "sourceFiles": [
@@ -7889,7 +8092,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 337
+              "line": 338
             },
             {
               "name": "DomainEventBusService.publish",
@@ -7899,7 +8102,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 235
+              "line": 236
             }
           ],
           "sourceFiles": [
@@ -8092,7 +8295,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 235
+              "line": 236
             }
           ],
           "sourceFiles": [
@@ -8169,7 +8372,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 219
+              "line": 220
             },
             {
               "name": "RuntimeMetricsService.snapshot",

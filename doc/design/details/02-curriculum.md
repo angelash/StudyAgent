@@ -1,6 +1,6 @@
 # 02 知识、教材、范围与课程版本 — 详细设计
 
-源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。角色：家长、学生、教研、管理员。
+源码基线：`b71d611237e4ba8dff892fa603b21a28b50022c4`。角色：家长、学生、教研、管理员。
 
 产品入口：`/admin/curriculum`、`/parent/dashboard`、`/student/assessment`。
 

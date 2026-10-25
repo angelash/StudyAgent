@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T06:06:40.860Z",
+  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "specificationCommit": "f3e6d43",
+  "passed": false,
+  "localPassed": true,
+  "status": "local-validated-awaiting-ci-and-daemon",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".gitattributes": "fb0a5afc60b69d8a9270d93661526c0f70cd335318af4340dde9d6e7ec4fc46e",
+    ".github/workflows/verify.yml": "91e6c52cadc5a43f591fa41cfd016b4edebdcc7dfaa69134ad9df00b9ab92273",
+    "apps/api/src/common/auth.guard.ts": "f5077aa24908e2e657c3fae754648272aaa928bbf4fbe9c4b1f40433b4b71a57",
+    "apps/api/src/common/stream-file.ts": "4d3cd98a62c039cbc09022e1b98ab5aec2ec165f01a03a18b365ea6eb845ff31",
+    "apps/api/src/infrastructure/immutable-files.ts": "a7a2f6290159dae19828dd8fd29ff371fb8916d54e4c67633c1b75b6192c502a",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "dca5eb83799a341c2367d5a591f6161f1b86c321e5f284b9b64b6fbbe0764e29",
+    "apps/api/src/infrastructure/studio-file-coordination.ts": "1c614c3985f3f25b39ae84fc48be23691873762161b6cf362eb016006897c905",
+    "apps/api/src/infrastructure/studio-file-inventory.ts": "23987650faaeb0f05debc28822f0024c2388e72e31bb9f26f339ea73c6846053",
+    "apps/api/src/infrastructure/studio-file-paths.ts": "ad532ed770c44c4a3d4dffa1b9068ebf5c441c51604ce3a51b2ab331e15eefa4",
+    "apps/api/src/infrastructure/task-repository.ts": "25f27a5b3b55d1084eadb4bb0229849157527779bd3c829ad87dde96d41b0bb6",
+    "apps/api/src/modules/learning/course-project-access.ts": "78c87712d7fc88704a3a4090a52b0ca737874f87a0dd1db6495dcfb850600506",
+    "apps/api/src/modules/learning/course-project.service.ts": "4c3df309f98535fea0ed685ba14ddf5fe371358635d08bba2f43936a1c276178",
+    "apps/api/src/modules/learning/learning.module.ts": "3dfb41026cec33a5970b118f17d07be77ca828a15b423d46ebfac72d47580ea2",
+    "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts": "54a4a4babdc917c8217d0bd7a69412b1abb8e45f759b833b1f8a8fa8f0be75b0",
+    "apps/api/src/modules/learning/project-file-processing.ts": "e80eaf5a9bc2aef60dad9f148552bd77624179e7ea83ae0965020b874573752b",
+    "apps/api/src/modules/learning/project-file-record.ts": "cbd404c242bdcd682dc0c70285ed818640603787e568453c25f40a752327d175",
+    "apps/api/src/modules/learning/project-file-storage.ts": "8881c569bc98c4d12f0f6c690f7b7748843a93ce9f8df13ec3af780c93d6999b",
+    "apps/api/src/modules/learning/project-file-worker.service.ts": "2514af3aa0276c9d54bedbd5777004ae5680d2153c51a179bb0e2a96949eaff5",
+    "apps/api/src/modules/learning/project-file.controller.ts": "7270f7a411c76600a55f88bc994554ad247a3e6302bc62396467d93cb9a1403c",
+    "apps/api/src/modules/learning/project-file.integration.test.ts": "0a82b3f9910008132726085dd6e4e89f24615f07c3af925a68ddd42a440fcafc",
+    "apps/api/src/modules/learning/project-file.module.ts": "201e50afec31b72bebc8a847291c7599cfd41c8c66a6d7c4bedcb8c52962d1a3",
+    "apps/api/src/modules/learning/project-file.service.ts": "86a573c698c0098088007ed5f48b08d7984731fb1b49f3b9c5a2ddbe4809b3a8",
+    "apps/api/src/modules/privacy/privacy-records.ts": "552932a29917990ff8fe7bdd71ebe29eac24cf88c5090e8e06c103fed5a8ae84",
+    "apps/api/src/modules/privacy/privacy.controller.ts": "759cc031a31931adc19cb973a0c9732f5d35ede787074738b23d6f4f86bef35c",
+    "apps/api/src/modules/privacy/privacy.service.ts": "bf796549aebac15a59d2c874a148955a310b3cc421e2864604dbece1b4023765",
+    "apps/web/app/studio/projects/advice-scope.tsx": "e23490b458f1437b38d9dfc4e5bbb7e4284c8114d2f156841477300f078e14da",
+    "apps/web/app/studio/projects/project-files.tsx": "e3a4220987fb62dbb3ec757f3d1b22d2bd27eb63bd44ede788550f58452fd791",
+    "apps/web/app/studio/projects/projects.css": "0b559d6619c8dd8506b8a6e88e7690ba18a28ea9f1a9b94af52d786bce3e69b1",
+    "apps/web/app/studio/projects/workbench.tsx": "c7f10f99883e5067fa97ad51af330c7cce419fa0510c009bd18d75c1cd33dd02",
+    "packages/contracts/src/course-project.ts": "8c4f8695cf6db03874b5e37293c2ea5e75ba764d895b9c2d717e5748f4678473",
+    "packages/contracts/src/index.ts": "4d313e0a1347048525968ab1e57fa67244f0659c1a9b4eb2407c9b9614441df3",
+    "packages/contracts/src/project-assets.ts": "2de0efe5c6c6dd0a8ff81acdc391631585cc6dbafab0d17d36dea60be705e8d5",
+    "scripts/architecture/project-feature-definitions.cjs": "86df979991506847beb7965c377c3cba7b4453dcac62e10c2a3f88771b36ca49",
+    "scripts/operations/backup.cjs": "3577ad1c466c3a3504f18b6ff5442bf15c656e76acd84f6775e5c84ed07012ed",
+    "scripts/operations/postgres-backup.cjs": "ad9335164842a090f324cdc6aad886f9fcc225da6eb67d2875d71cbe6e3c8c16",
+    "scripts/operations/postgres-restore.cjs": "ce63bab038e68c1023558557893fd7b790928564511f1a7e40d212404663dfa2",
+    "scripts/operations/privacy-ledger.cjs": "ee4f1c06f1ad0c8cced54552ea3d6364e890f42ae3c91e2f3f699a79b7fef9fe",
+    "scripts/processing/project_file_preview.py": "88dc136c838bb0d3344a9a6aefec33b992b7da04b5aed3fd862faa51c621c3f9",
+    "scripts/qa/run-project-files-postgres.cjs": "15fe53e1969ebbe1b339b9e670c9d6e6bed0143dbe52f4095692f3252c949339",
+    "scripts/qa/run-source-course-browser.cjs": "b4501886e340ff862cd8103bbefadbd4f55638588e8ff59185a67464c8f3a598",
+    "tests/e2e/project-files.spec.ts": "3cbca3fb5ccb8e1616a48668fdf98b6eefc18bfed67b8137c1e58c28bd1a7f28"
+  },
+  "reports": {
+    "project-assets-foundation-initial.json": {
+      "sha256": "145243f75a60f9c0a83437ad8646a986866a9f8f659beee02a15c27494730487",
+      "result": {
+        "numTotalTests": 21,
+        "numPassedTests": 21,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 0
+      }
+    },
+    "project-files-api-initial.json": {
+      "sha256": "974a39e11da0534b7fd878e836fe525db509dd4d6ab6498890277bff95bb7b40",
+      "result": {
+        "numTotalTests": 9,
+        "numPassedTests": 9,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 1
+      }
+    },
+    "project-files-backup-initial.json": {
+      "sha256": "6b593ea6a8a55fdf1bf898a021f4d581721ce1ce29a24be835899b35f19ec039",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 10,
+        "numFailedTests": 1,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 2
+      }
+    },
+    "project-files-browser-before-mobile-polish.json": {
+      "sha256": "3d5c2864a6e0e922db73fed6427c1249cde2fcc77c17b4de9270de0752a10544",
+      "result": {
+        "startTime": "2026-10-25T05:54:56.694Z",
+        "duration": 65864.612,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-browser-final.json": {
+      "sha256": "67a5358d62613f2eda2428e0afde33cb385d4cfb1340b70e9e41537e219de3da",
+      "result": {
+        "startTime": "2026-10-25T06:02:31.516Z",
+        "duration": 58754.479,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-browser-initial.json": {
+      "sha256": "da9e00d24ee6497991416c1c309134d450cc5e3eeaf90c6a0f993e67ae24e4f8",
+      "result": {
+        "startTime": "2026-10-25T05:36:49.500Z",
+        "duration": 45442.515,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-browser-media.json": {
+      "sha256": "b585a3e52b01c29f650d590e74b1f1c71b9197488479167e0ff97535e0c07df6",
+      "result": {
+        "startTime": "2026-10-25T05:50:20.398Z",
+        "duration": 64705.244,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-browser-scope-initial.json": {
+      "sha256": "be00cd23c10f23828bdbf4e9f4cd742f3dc7390126113da5e8b8bdd92ef4261c",
+      "result": {
+        "startTime": "2026-10-25T05:52:41.639Z",
+        "duration": 79741.807,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "project-files-cleanup-initial.json": {
+      "sha256": "fe06efd336fd6bc05e000ed8ddb737256109240c203b8fde6a202a638a3e9c46",
+      "result": {
+        "numTotalTests": 6,
+        "numPassedTests": 5,
+        "numFailedTests": 1,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 2
+      }
+    },
+    "project-files-full-api-before-stream-cleanup.json": {
+      "sha256": "5e20c4f59f3fa1c179b6dbad4302cc8e543c254c33e489bffe0e82e2986cd861",
+      "result": {
+        "numTotalTests": 1143,
+        "numPassedTests": 1108,
+        "numFailedTests": 0,
+        "numPendingTests": 35,
+        "numFailedTestSuites": 0
+      }
+    },
+    "project-files-postgres-before-stream-cleanup.json": {
+      "sha256": "944957ec10ad4267983c6faa4512274a62411b368612d2288dfedfb994c17e1e",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 10,
+        "numFailedTests": 0,
+        "numPendingTests": 1,
+        "numFailedTestSuites": 0
+      }
+    },
+    "project-files-postgres-final.json": {
+      "sha256": "1ccae045b8169fa51ef80c83a7a87c922d78e3d19eebdf65f17abe127e89b341",
+      "result": {
+        "numTotalTests": 12,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 1,
+        "numFailedTestSuites": 0
+      }
+    },
+    "project-files-sqlite-final.json": {
+      "sha256": "b445e7d43031d861dc564c717920c09a3a7fe2af033d300a7941a690b1fe0988",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 0
+      }
+    },
+    "project-files-stream-final.json": {
+      "sha256": "10c7547fc8ba3ffdef08393f91fc212da713fc19b92c22c436523ce579117071",
+      "result": {
+        "numTotalTests": 30,
+        "numPassedTests": 30,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "numFailedTestSuites": 0
+      }
+    }
+  },
+  "checks": {
+    "contractsBuild": "passed",
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "fullLocalApiBeforeFinalStreamCleanup": {
+      "passed": 1108,
+      "environmentSkipped": 35,
+      "failed": 0
+    },
+    "finalProjectSqlite": {
+      "passed": 11
+    },
+    "finalProjectPostgres": {
+      "passed": 11,
+      "sqliteSpecificSkipped": 1
+    },
+    "projectMediaPrivacyCombinationAfterStreamCleanup": {
+      "passed": 30
+    },
+    "browserFinal": {
+      "passed": 9,
+      "failed": 0,
+      "flaky": 0
+    },
+    "isolatedPostgres": "stopped",
+    "design": {
+      "passed": true,
+      "areas": 14,
+      "features": 114,
+      "normalApiRoutes": 306,
+      "collections": 91,
+      "sharedTypes": 280,
+      "apiTestFiles": 123,
+      "browserTestFiles": 20,
+      "offlineViewerChecks": 10
+    },
+    "documentation": {
+      "checked": 2412,
+      "missing": 0
+    }
+  },
+  "featureCoverage": [
+    "Hashed resumable chunks and independently versioned uploads, deterministic original-file targets, idempotent completion and current/original authorization fences",
+    "Real JPEG/PNG sanitization, static PDF pages, complete UTF8 text/code, bounded audio decoding and Office container identities; original and derived hashes remain distinct",
+    "Frozen submission files and rubric file references; changing drafts preserves old bytes and old optional-field identity",
+    "Lease-backed range downloads, read-only integrity checks, exact cleanup and persistent deferral for active/unknown files; abort before response and late cancelled workers are covered",
+    "Per-account/project/stage upload recovery and pending command cache; dropped second chunk and complete acknowledgment, nested focus, PDF paging and actual audio element cleanup",
+    "Full artifact preserved above the model context budget; explicit saved text/evidence/file-description scopes, never claiming unseen file-byte reading",
+    "Actual family TAR bytes, SQLite cold restore, native PostgreSQL restore/reopen, newer deletion ledger and shared learner original retention",
+    "390/768/1440 captures inspected; phone file buttons corrected into two columns and historical references clearly retained"
+  ],
+  "diagnostics": [
+    "Initial new test suite failed before collecting tests because its processing helper shadowed global process; renamed it. The original nine project regressions passed.",
+    "First cold backup rejected project file paths missing from the manifest allowlist. Subsequent actual account deletion exposed a reused cleanup request key with a new task identity; deterministic collection identities and existing-task lookup fixed it. Initial failures are retained.",
+    "Initial nine-case browser run: eight passes and one fixture failure because 12100 characters exceeded the input field 12000 limit. The trace confirmed the length; bounded fixtures and nine-case rerun pass.",
+    "Full local API baseline predates the final stream-resource and task-acknowledgment projection fixes; final focused SQLite/PostgreSQL tests cover those changes. Browser final covers final front-end, with the final task-state response projection separately tested in the API. Exact remote CI remains required."
+  ],
+  "limits": [
+    "One project-file increment, not complete product or full M1-M7 acceptance. The 72-item ledger remains 11 implemented/46 in_progress/15 planned/0 verified.",
+    "All feature inputs are synthetic in isolated QA stores; production family data was only backed up for the separate delivered course lifecycle release.",
+    "Office has bounded container validation and original-byte download, not content rendering or a claimed real Office application review.",
+    "AI uses selected saved text and file descriptions only. No new live model/TTS/image-generation calls are required or claimed; complete multimodal file study remains.",
+    "Real phone capture/recording, assistive technology, teacher review, calibrated measurement and actual interval learning remain separate gates.",
+    "Current daemon remains course lifecycle a659855; attachment delivery awaits exact CI and production build/daemon verification."
+  ],
+  "captures": [
+    {
+      "file": "project-files-screens/files-1440.png",
+      "size": 297404,
+      "sha256": "a52e9eebeeb3e46ce3a7cad9335bd0841601231ef599699574d17ef212b8ac03",
+      "inspected": true
+    },
+    {
+      "file": "project-files-screens/files-390.png",
+      "size": 251177,
+      "sha256": "0dce4f74561b2e95cb385971e6e207f7365c892ec6ed7cbac091b41b2d96b743",
+      "inspected": true
+    },
+    {
+      "file": "project-files-screens/files-768.png",
+      "size": 281741,
+      "sha256": "e7631921ff69a3fcc2a3554472c80bdcbd0fa5839be354c29a4219e480fa84f9",
+      "inspected": true
+    },
+    {
+      "file": "project-files-screens/files-section-1440.png",
+      "size": 45101,
+      "sha256": "32364bdf9f2f644ee2b96ffc994d7d124166fd397e088fd9dfc9fa9c37d214e1",
+      "inspected": true
+    },
+    {
+      "file": "project-files-screens/files-section-390.png",
+      "size": 43801,
+      "sha256": "22a574fd5307b114e177621e747f572e9ab877582d4371b813d6ff817ce0032c",
+      "inspected": true
+    },
+    {
+      "file": "project-files-screens/files-section-768.png",
+      "size": 44745,
+      "sha256": "364918f6793840c60471824f5535ebaa5d8d037c4b1f4a3a0c9d48690a4ba4ae",
+      "inspected": true
+    }
+  ]
+}
