@@ -1,0 +1,109 @@
+{
+  "at": "2026-10-25T11:37:06.774Z",
+  "head": "e1d396918124d41518dfe5ba5578fe4a0017d2fb",
+  "run": 40188445481,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40188445481",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "postgres",
+      "id": 121154112840,
+      "conclusion": "success",
+      "startedAt": "2026-10-25T11:20:27Z",
+      "completedAt": "2026-10-25T11:26:39Z",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40188445481/job/121154112840",
+      "logSha256": "55ae315bf0463c951ef8268fa22a457b989c14631ce50cfd060c8f043a3e0f44",
+      "logBytes": 270600,
+      "resultLines": [
+        "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-25T11:22:03.0156901Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-25T11:22:03.0158163Z ^[[2m      Tests ^[[22m ^[[1m^[[32m6 passed^[[39m^[[22m^[[90m (6)^[[39m",
+        "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-25T11:22:03.0160541Z ^[[2m   Duration ^[[22m 39.83s^[[2m (transform 128ms, setup 0ms, import 408ms, tests 39.29s, environment 0ms)^[[22m",
+        "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-25T11:22:15.8083438Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-25T11:22:15.8084964Z ^[[2m      Tests ^[[22m ^[[1m^[[32m23 passed^[[39m^[[22m^[[90m (23)^[[39m",
+        "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-25T11:22:15.8087704Z ^[[2m   Duration ^[[22m 7.37s^[[2m (transform 86ms, setup 0ms, import 326ms, tests 6.92s, environment 0ms)^[[22m",
+        "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-25T11:22:19.9058719Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-25T11:22:19.9059734Z ^[[2m      Tests ^[[22m ^[[1m^[[32m11 passed^[[39m^[[22m^[[90m (11)^[[39m",
+        "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-25T11:22:19.9063654Z ^[[2m   Duration ^[[22m 3.71s^[[2m (transform 58ms, setup 0ms, import 333ms, tests 3.25s, environment 0ms)^[[22m",
+        "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-25T11:22:37.1416433Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-25T11:22:37.1417814Z ^[[2m      Tests ^[[22m ^[[1m^[[32m11 passed^[[39m^[[22m^[[90m (11)^[[39m",
+        "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-25T11:22:37.1419707Z ^[[2m   Duration ^[[22m 16.86s^[[2m (transform 62ms, setup 0ms, import 302ms, tests 16.43s, environment 0ms)^[[22m",
+        "postgres\tResumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL\t2026-10-25T11:25:01.1164885Z ^[[2m Test Files ^[[22m ^[[1m^[[32m8 passed^[[39m^[[22m^[[90m (8)^[[39m",
+        "postgres\tResumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL\t2026-10-25T11:25:01.1165848Z ^[[2m      Tests ^[[22m ^[[1m^[[32m81 passed^[[39m^[[22m^[[90m (81)^[[39m",
+        "postgres\tResumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL\t2026-10-25T11:25:01.1167288Z ^[[2m   Duration ^[[22m 143.53s^[[2m (transform 398ms, setup 0ms, import 2.34s, tests 212.87s, environment 1ms)^[[22m",
+        "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-25T11:25:04.5270692Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-25T11:25:04.5271740Z ^[[2m      Tests ^[[22m ^[[1m^[[32m11 passed^[[39m^[[22m^[[90m (11)^[[39m",
+        "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-25T11:25:04.5274930Z ^[[2m   Duration ^[[22m 2.87s^[[2m (transform 91ms, setup 0ms, import 423ms, tests 2.32s, environment 0ms)^[[22m",
+        "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-25T11:25:49.0332018Z  ^[[32m✓^[[39m src/modules/learning/classroom-turn.integration.test.ts ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 3517^[[2mms^[[22m^[[39m",
+        "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-25T11:25:49.0358104Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-25T11:25:49.0359693Z ^[[2m      Tests ^[[22m ^[[1m^[[32m16 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[90m (17)^[[39m",
+        "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-25T11:25:49.0362000Z ^[[2m   Duration ^[[22m 3.97s^[[2m (transform 59ms, setup 0ms, import 320ms, tests 3.52s, environment 0ms)^[[22m",
+        "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-25T11:25:52.1094688Z  ^[[32m✓^[[39m src/modules/learning/classroom-code.integration.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 2308^[[2mms^[[22m^[[39m",
+        "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-25T11:25:52.1120564Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-25T11:25:52.1122576Z ^[[2m      Tests ^[[22m ^[[1m^[[32m7 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[90m (8)^[[39m",
+        "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-25T11:25:52.1125553Z ^[[2m   Duration ^[[22m 2.70s^[[2m (transform 42ms, setup 0ms, import 270ms, tests 2.31s, environment 0ms)^[[22m",
+        "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-25T11:25:57.3078566Z  ^[[32m✓^[[39m src/modules/learning/source-course-lifecycle.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 4423^[[2mms^[[22m^[[39m",
+        "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-25T11:25:57.3104095Z ^[[2m Test Files ^[[22m ^[[1m^[[32m1 passed^[[39m^[[22m^[[90m (1)^[[39m",
+        "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-25T11:25:57.3105210Z ^[[2m      Tests ^[[22m ^[[1m^[[32m10 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[90m (11)^[[39m",
+        "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-25T11:25:57.3107602Z ^[[2m   Duration ^[[22m 4.84s^[[2m (transform 53ms, setup 0ms, import 290ms, tests 4.42s, environment 0ms)^[[22m",
+        "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-25T11:26:23.1130104Z  ^[[32m✓^[[39m src/modules/learning/project-file.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 6906^[[2mms^[[22m^[[39m",
+        "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-25T11:26:23.1158657Z ^[[2m Test Files ^[[22m ^[[1m^[[32m2 passed^[[39m^[[22m^[[90m (2)^[[39m",
+        "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-25T11:26:23.1160146Z ^[[2m      Tests ^[[22m ^[[1m^[[32m11 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[90m (12)^[[39m",
+        "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-25T11:26:23.1163358Z ^[[2m   Duration ^[[22m 7.43s^[[2m (transform 146ms, setup 0ms, import 728ms, tests 10.44s, environment 0ms)^[[22m",
+        "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-25T11:26:27.9628814Z  ^[[32m✓^[[39m src/modules/diagnostics/answer-draft.integration.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 4021^[[2mms^[[22m^[[39m",
+        "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-25T11:26:27.9656381Z ^[[2m Test Files ^[[22m ^[[1m^[[32m2 passed^[[39m^[[22m^[[90m (2)^[[39m",
+        "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-25T11:26:27.9657928Z ^[[2m      Tests ^[[22m ^[[1m^[[32m10 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[90m (11)^[[39m",
+        "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-25T11:26:27.9660403Z ^[[2m   Duration ^[[22m 4.48s^[[2m (transform 63ms, setup 0ms, import 627ms, tests 7.11s, environment 0ms)^[[22m",
+        "postgres\tOrdinary assistant turns, native recovery and latest deletion ledger on PostgreSQL\t2026-10-25T11:26:35.2377000Z ^[[2m Test Files ^[[22m ^[[1m^[[32m2 passed^[[39m^[[22m^[[90m (2)^[[39m",
+        "postgres\tOrdinary assistant turns, native recovery and latest deletion ledger on PostgreSQL\t2026-10-25T11:26:35.2378114Z ^[[2m      Tests ^[[22m ^[[1m^[[32m21 passed^[[39m^[[22m^[[90m (21)^[[39m",
+        "postgres\tOrdinary assistant turns, native recovery and latest deletion ledger on PostgreSQL\t2026-10-25T11:26:35.2380211Z ^[[2m   Duration ^[[22m 6.90s^[[2m (transform 127ms, setup 0ms, import 658ms, tests 12.59s, environment 0ms)^[[22m"
+      ]
+    },
+    {
+      "name": "browser",
+      "id": 121154112941,
+      "conclusion": "success",
+      "startedAt": "2026-10-25T11:20:27Z",
+      "completedAt": "2026-10-25T11:36:32Z",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40188445481/job/121154112941",
+      "logSha256": "723b8aad83cfa37b2c2f52ae5bd0160c171f1eb545376e7a17852a0e1061490f",
+      "logBytes": 185166,
+      "resultLines": [
+        "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-25T11:36:29.3876710Z   143 passed (14.2m)"
+      ]
+    },
+    {
+      "name": "application",
+      "id": 121154113103,
+      "conclusion": "success",
+      "startedAt": "2026-10-25T11:20:27Z",
+      "completedAt": "2026-10-25T11:32:23Z",
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40188445481/job/121154113103",
+      "logSha256": "0810fd1bedf64155bf1ee168d34d018925e9ee74f95115b3cdd349075a310453",
+      "logBytes": 274168,
+      "resultLines": [
+        "application\tRun npm test\t2026-10-25T11:22:44.4235997Z  ^[[2m^[[90m↓^[[39m^[[22m src/infrastructure/postgres.integration.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m | ^[[22m^[[33m6 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:25:19.4473636Z  ^[[2m^[[90m↓^[[39m^[[22m src/infrastructure/postgres-restore-import.integration.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m | ^[[22m^[[33m9 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:25:44.5142310Z  ^[[2m^[[90m↓^[[39m^[[22m src/infrastructure/postgres-restore-resume.integration.test.ts ^[[2m(^[[22m^[[2m19 tests^[[22m^[[2m | ^[[22m^[[33m19 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:26:16.2476704Z  ^[[32m✓^[[39m src/modules/ai/assistant-turn-recovery.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m^[[33m 2044^[[2mms^[[22m^[[39m",
+        "application\tRun npm test\t2026-10-25T11:26:17.6924407Z  ^[[2m^[[90m↓^[[39m^[[22m src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:26:22.2964117Z  ^[[2m^[[90m↓^[[39m^[[22m src/modules/gesp/gesp-student.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m | ^[[22m^[[33m4 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:26:23.7554817Z  ^[[2m^[[90m↓^[[39m^[[22m src/modules/learning/project-file-postgres-recovery.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m | ^[[22m^[[33m1 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:26:32.3194292Z  ^[[2m^[[90m↓^[[39m^[[22m src/modules/gesp/isolated-runner.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m | ^[[22m^[[33m4 skipped^[[39m^[[2m)^[[22m",
+        "application\tRun npm test\t2026-10-25T11:26:33.2688217Z ^[[2m Test Files ^[[22m ^[[1m^[[32m121 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m7 skipped^[[39m^[[90m (128)^[[39m",
+        "application\tRun npm test\t2026-10-25T11:26:33.2693730Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1132 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m45 skipped^[[39m^[[90m (1177)^[[39m",
+        "application\tRun npm test\t2026-10-25T11:26:33.2696014Z ^[[2m   Duration ^[[22m 248.73s^[[2m (transform 2.69s, setup 0ms, import 22.07s, tests 463.36s, environment 8ms)^[[22m"
+      ]
+    }
+  ],
+  "applicationTests": {
+    "passed": 1132,
+    "skipped": 45,
+    "scope": "Linux application full suite"
+  },
+  "browserTests": {
+    "passed": 143,
+    "failed": 0,
+    "retries": 0
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T11:19:21.856Z",
+  "at": "2026-10-25T11:40:45.573Z",
   "sourceRevision": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
   "specificationCommits": [
     "115c119",
@@ -47,9 +47,9 @@
   "localApiBaseline": "f2491508bcae824ba485d72d7b8fbf48a73a661f",
   "localBrowserBaseline": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
   "postApiChange": "Browser test fixtures/assertions and active-run preflight only; application API/frontend sources unchanged. Final remote CI must cover the exact candidate.",
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "status": "delivered-exact-ci-and-production-daemon",
   "reports": {
     "assistant-legacy-initial.json": {
       "sha256": "c301bd87952cd92e00d21498d40239fb6ef31a633ab87212e2dbd182ab32420e",
@@ -258,5 +258,21 @@
     "Polling conveys actual task states, not a token stream. Other legacy model paths are not all migrated.",
     "Real DS default-model completion and actual cancellation use synthetic records; this is not all-model connectivity, human teaching efficacy or voice acceptance.",
     "Original fonts/CSS/DPR, full whiteboard, course states, teacher review, devices, all content and real delayed retests remain separate gates."
-  ]
+  ],
+  "ci": {
+    "head": "e1d396918124d41518dfe5ba5578fe4a0017d2fb",
+    "run": 40188445481,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40188445481",
+    "conclusion": "success",
+    "receipt": "assistant-turn-exact-ci.json"
+  },
+  "runtime": {
+    "revision": "e1d396918124d41518dfe5ba5578fe4a0017d2fb",
+    "buildId": "Lzf6Jz1fzfLUz6YWwmGFd",
+    "receipt": "assistant-turn-runtime.json",
+    "checks": 23,
+    "observations": 4,
+    "observationSpanMs": 80171,
+    "protectedFilesUnchanged": 5
+  }
 }
