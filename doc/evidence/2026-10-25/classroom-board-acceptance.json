@@ -8,9 +8,9 @@
     "89e7530"
   ],
   "specificationCommit": "999436d",
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "local-validated-awaiting-ci-and-daemon",
+  "status": "structured-reply-board-increment-delivered",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     "apps/api/src/modules/ai/classroom-reply-board.test.ts": "95fd237344ef67b48c5416eff0854b8e47e6044513987153f89ff9150d51048a",
@@ -119,13 +119,25 @@
       }
     },
     "classroom-board-live-initial.json": {
-      "sha256": "bb69effc400d2081dc86fe1461cbea57b103bbefb8f494bbed79b53936344642",
+      "sha256": "f25c0783d7fcd0cd78b9f6e2aff622e9a27d20f8794cd71186bc727c25eb2c99",
       "result": {
         "passed": false
       }
     },
     "classroom-board-live-default.json": {
       "sha256": "f46003a0030dc710926bc791a1ca6dee7bd7bdce2ad5a2469a47f1d97bcef796",
+      "result": {
+        "passed": true
+      }
+    },
+    "classroom-board-ci.json": {
+      "sha256": "3c3a3b9943ae23883607fd43499b0b37563197b3473a3deda01e58b3c1537a81",
+      "result": {
+        "passed": true
+      }
+    },
+    "classroom-board-runtime.json": {
+      "sha256": "1501d467cdc945378bacb532a1cfc56e7602eb1d1aca4578c288bba1a1acb752",
       "result": {
         "passed": true
       }
@@ -158,7 +170,38 @@
       "failed": 0
     },
     "isolatedPostgres": "stopped",
-    "realDefaultModel": "one synthetic comparison, arithmetic and anchors verified"
+    "realDefaultModel": "one synthetic comparison, arithmetic and anchors verified",
+    "finalSourceCi": {
+      "runId": "40161620393",
+      "headSha": "838071330e61ad374be0eb5997a553e11d7dfc49",
+      "status": "completed",
+      "conclusion": "success",
+      "application": {
+        "passed": 1079,
+        "environmentSkipped": 42
+      },
+      "browser": {
+        "passed": 73
+      },
+      "postgresTurn": {
+        "passed": 16,
+        "sqliteOnlySkipped": 1
+      },
+      "postgresCaption": {
+        "passed": 11
+      },
+      "postgresCode": {
+        "passed": 7,
+        "sqliteOnlySkipped": 1
+      }
+    },
+    "daemonDeployment": {
+      "passed": true,
+      "revision": "838071330e61ad374be0eb5997a553e11d7dfc49",
+      "sourceCodeRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
+      "webBuildId": "fc1KaS1IWPpx9E4ivmg0P",
+      "runtimeReport": "classroom-board-runtime.json"
+    }
   },
   "featureCoverage": [
     "Strict structured reply schema with short notes, consistent comparison columns, bounded LaTeX, unique in-speech quotes and service-created frozen unit identities",
@@ -182,6 +225,6 @@
     "Text-reading cadence is estimated, not forced acoustic alignment. No new live TTS or image generation call.",
     "One default-model synthetic case does not verify all providers or general mathematics; teacher review, human learning effects, real devices and screen readers remain separate gates.",
     "Merged/cross-page tables, advanced formulas, full curriculum content, reference-image editing, long-term learning and remaining M2-M7 work are retained.",
-    "Production family records were not used for feature tests. Runtime delivery is pending."
+    "Production family records were not used for feature tests. Exact archived structured-board code is deployed; later course-lifecycle code remains outside this runtime."
   ]
 }
