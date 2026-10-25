@@ -1,0 +1,58 @@
+{
+  "passed": false,
+  "status": "focused-and-live-passed-full-browser-ci-daemon-pending",
+  "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+  "applicationRevision": "6bf3700",
+  "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
+  "deployed": false,
+  "sqliteFocused": {
+    "passed": 50,
+    "failed": 0,
+    "pure": 18,
+    "http": 23,
+    "storage": 9
+  },
+  "postgres": {
+    "passed": 26,
+    "failed": 0,
+    "http": 23,
+    "nativeStorage": 3,
+    "scopeOverlapsSqlite": true
+  },
+  "focusedBrowser": {
+    "passed": 10,
+    "failed": 0,
+    "retry": 0,
+    "report": "source-check-single-browser/browser.json"
+  },
+  "fullApiBeforeInheritedCancellationRepair": {
+    "passed": 1243,
+    "failed": 0,
+    "skipped": 43,
+    "sourceRevision": "550cf23d9ff412509b53fc9ff17182c3d12d8bd0",
+    "report": "source-check-single-backend/full-api-before-cancel-repair.json"
+  },
+  "inheritedFullApi": {
+    "passed": 1241,
+    "failed": 0,
+    "skipped": 43,
+    "scope": "Upstream 120 includes cancellation repair but still has two-target selection. Not a full API run of 121.",
+    "report": "source-check-cancellation/full-api.json"
+  },
+  "live": {
+    "passed": true,
+    "modelId": "deepseek-v4-flash",
+    "questions": 5,
+    "targets": 1,
+    "providerCalls": 2,
+    "validationFailures": 0,
+    "report": "source-check-single-live/receipt.json"
+  },
+  "limits": [
+    "Current full browser, exact CI and daemon delivery are pending.",
+    "No teacher review, real-device or long-term validation.",
+    "Exact duplicate detection and different situations do not prove independent item families.",
+    "Content stays pending and formalMeasurementEligible=false.",
+    "Counts overlap and are not additive."
+  ]
+}
