@@ -41,7 +41,7 @@ describe('source-course projects, frozen objectives and original permissions',()
     expect((await call('get','/learning/projects/'+old.id)).definition).toEqual(snapshot);expect((await open(id)).id).toBe(old.id);const next=await call('post','/learning/projects',{sourceCourseId:id,unitId:old.definition.unitId,useCurrentVersion:true});expect(next.id).not.toBe(old.id);expect(next.definition.fingerprint).not.toBe(old.definition.fingerprint);
   });
   it('blocks creation for an unconfirmed or archived source while retaining readable frozen project history',async()=>{
-    const id=await source(),row=await open(id);await store.transaction(()=>{store.find('sourceCourses',{id}).status='archived';});expect((await call('get','/learning/projects/'+row.id)).contentStatus).toBe('archived');await call('post','/learning/projects',{sourceCourseId:id,unitId:row.definition.unitId},owner,409);
+    const id=await source(),row=await open(id);await store.transaction(()=>{store.find('sourceCourses',{id}).status='archived';});const old=await call('get','/learning/projects/'+row.id);expect(old.contentStatus).toBe('archived');expect(old.permissions.startCurrentVersion).toBe(false);expect((await catalog(id)).permissions.start).toBe(false);await call('post','/learning/projects',{sourceCourseId:id,unitId:row.definition.unitId},owner,409);
     const ready=await source();await store.transaction(()=>{store.find('sourceCourses',{id:ready}).status='ready';});expect((await catalog(ready)).definitions).toEqual([]);await call('post','/learning/projects',{sourceCourseId:ready,unitId:'source-project:'+ready},owner,409);
   });
   it('lets a real learning-code owner submit and an assigned teacher review only that frozen submission',async()=>{

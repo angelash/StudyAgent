@@ -70,7 +70,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   const baseline = row && stageId ? savedEditor(row, stageId) : blank();
   const dirty = Boolean(row?.permissions.edit && !sameProjectValue(editor,baseline));
   const dirtyRef = React.useRef(dirty); dirtyRef.current = dirty;
-  const params = new URLSearchParams(query), studioCourseId = params.get('studioCourseId') ?? undefined, legacySession = params.get('legacy');
+  const params = new URLSearchParams(query), studioCourseId = params.get('studioCourseId') ?? undefined,sourceCourseId=params.get('sourceCourseId')??undefined, legacySession = params.get('legacy');
   const definition = row?.definition ?? catalog?.definitions.find(item => item.unitId === params.get('unitId')) ?? (!params.get('unitId') ? catalog?.definitions[0] : undefined);
   const stage = definition?.stages.find(item => item.id === stageId) ?? definition?.stages[0];
   const guided=Boolean(row)&&params.get('view')!=='complete',teachingSteps=stage?projectTeachingSteps(stage):[],teachingStep=teachingSteps.find(step=>step.id===params.get('step'))??teachingSteps[0];
@@ -78,7 +78,8 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   const backParams = copyCourseFilters(query, new URLSearchParams(studioCourseId ? { view: 'courses', course: studioCourseId } : {}));
   const backUnit = params.get('returnUnit') ?? (studioCourseId ? definition?.unitId : String(Math.max(0, catalog?.definitions.findIndex(item => item.unitId === definition?.unitId) ?? 0)));
   if (backUnit) backParams.set('unit', backUnit); if (params.get('returnPanel')) backParams.set('panel', params.get('returnPanel')!);
-  const backHref = studioCourseId ? '/studio?' + backParams : '/studio/classroom?' + backParams;
+  const sourceBack=copyCourseFilters(query,new URLSearchParams(sourceCourseId?{course:sourceCourseId}:{}));
+  const backHref = sourceCourseId?'/studio/source-courses?'+sourceBack:studioCourseId ? '/studio?' + backParams : '/studio/classroom?' + backParams;
 
   function receive(value: CourseProjectView, target?: string) {
     const selected = target ?? (stageId || value.currentStageId);
@@ -99,14 +100,14 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
       recovery.remember();loadGeneration.current++;abort.current?.abort();abort.current=null;controller.abort(); controller = new AbortController(); const active = controller;
       setLoading(true); setError('');setRow(null);setCatalog(null);
       try {
-        const next = new URLSearchParams(window.location.search), course = next.get('studioCourseId'); setQuery(next.toString());
-        const filters = new URLSearchParams(); if (course) filters.set('studioCourseId', course); if(next.get('studentId')) filters.set('studentId',next.get('studentId')!);
+        const next = new URLSearchParams(window.location.search), course = next.get('studioCourseId'),source=next.get('sourceCourseId'); setQuery(next.toString());
+        const filters = new URLSearchParams(); if (course) filters.set('studioCourseId', course);if(source)filters.set('sourceCourseId',source); if(next.get('studentId')) filters.set('studentId',next.get('studentId')!);
         const list = await apiRequest<CourseProjectCatalog>('/learning/projects/catalog?' + filters, { signal: active.signal });
         const projectId = next.get('project'); const target = projectId ? await apiRequest<CourseProjectView>('/learning/projects/' + encodeURIComponent(projectId), { signal: active.signal }) :
           list.projects.find(item => item.definition.unitId === (next.get('unitId') ?? list.definitions[0]?.unitId));
         if (active.signal.aborted) return;
         if (next.get('unitId') && !list.definitions.some(item => item.unitId === next.get('unitId')) && !target) throw new Error('这个单元没有可用项目，请返回课程目录重新进入。');
-        if (target && (target.studioCourseId !== (course ?? undefined) || next.get('unitId') && target.definition.unitId !== next.get('unitId'))) throw new Error('项目与当前课程入口不一致，请返回课程重新进入。');
+        if (target && (target.studioCourseId !== (course ?? undefined) || target.sourceCourseId!==(source??undefined) || next.get('unitId') && target.definition.unitId !== next.get('unitId'))) throw new Error('项目与当前课程入口不一致，请返回课程重新进入。');
         setCatalog(list); setRow(target ?? null);
         const selected = target?.definition.stages.find(stage => stage.id === next.get('stage'))?.id ?? target?.currentStageId ?? list.definitions.find(item => item.unitId === next.get('unitId'))?.stages[0].id ?? list.definitions[0]?.stages[0].id ?? '';
         setStageId(selected); setEditor(target ? recovery.load(target,selected) : blank()); if (target) address(target, selected); else displayedQuery.current=next.toString();
@@ -168,7 +169,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   async function start(useCurrentVersion = false) {
     if (!definition || busy) return; setBusy('start'); setError('');
     try {
-      const value = await apiRequest<CourseProjectView>('/learning/projects', { method: 'POST', body: JSON.stringify({ unitId: definition.unitId, ...(studioCourseId ? { studioCourseId } : {}), useCurrentVersion }) });
+      const value = await apiRequest<CourseProjectView>('/learning/projects', { method: 'POST', body: JSON.stringify({ unitId: definition.unitId, ...(studioCourseId ? { studioCourseId } : {}),...(sourceCourseId?{sourceCourseId}:{}), useCurrentVersion }) });
       receive(value, value.currentStageId);setEditor(recovery.load(value,value.currentStageId));address(value, value.currentStageId);
     } catch (caught) { setError((caught as Error).message); } finally { setBusy(''); }
   }
@@ -218,8 +219,8 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
       {row&&recovery.conflict&&<section className="pj-recovery-notice" aria-label="项目草稿版本对照"><h3>服务器已有其他修改</h3><p>两个版本都保留在这里。选择前先核对作品、证据和自评；选择会发起完整副本下载。</p><div className="pj-draft-comparison"><section aria-label="本机项目稿"><h4>本机稿</h4><ProjectEditorPreview value={editor} row={row} stageId={stageId}/></section><section aria-label="服务器项目稿"><h4>服务器稿 · 第 {row.revision} 版</h4><ProjectEditorPreview value={savedEditor(row,stageId)} row={row} stageId={stageId}/></section></div>
         <button disabled={Boolean(busy)||recovery.command?.status==='pending'} onClick={()=>chooseDraft('local')}>下载副本并继续本机稿</button><button disabled={Boolean(busy)||recovery.command?.status==='pending'} onClick={()=>chooseDraft('server')}>下载副本并使用服务器稿</button>
       </section>}
-      {row?.contentStatus === 'archived' && <div className="pj-version"><p>正在使用保留的项目定义和量规。新版本会建立独立项目，旧提交继续保留。</p><button disabled={Boolean(busy) || dirty} onClick={() => void start(true)}>开始新版项目</button></div>}
-      {!row ? <article className="pj-start"><small>FROM IDEAS TO EVIDENCE</small><h2>用一份作品，检验你的理解。</h2><p>每个阶段都可以保存、比较证据、逐项自评。提交保留当时版本，之后仍能修订。</p><ol>{definition?.stages.map(item => <li key={item.id}><b>{item.title}</b><p>{item.objective}</p></li>)}</ol><button className="pj-primary" disabled={Boolean(busy) || !definition} onClick={() => void start()}>{busy ? '正在准备…' : '开始这个项目 →'}</button></article> : stage && <>
+      {row?.contentStatus === 'archived' && <div className="pj-version"><p>正在使用保留的项目定义和量规。新版本会建立独立项目，旧提交继续保留。</p>{row.permissions.startCurrentVersion!==false&&<button disabled={Boolean(busy) || dirty} onClick={() => void start(true)}>开始新版项目</button>}</div>}
+      {!row ? <article className="pj-start"><small>FROM IDEAS TO EVIDENCE</small><h2>用一份作品，检验你的理解。</h2><p>每个阶段都可以保存、比较证据、逐项自评。提交保留当时版本，之后仍能修订。</p><ol>{definition?.stages.map(item => <li key={item.id}><b>{item.title}</b><p>{item.objective}</p></li>)}</ol>{catalog?.permissions?.start===false&&<p>这份资料课程已保留或撤回，可以查看原项目记录；请从当前发布版本开始新项目。</p>}<button className="pj-primary" disabled={Boolean(busy) || !definition||catalog?.permissions?.start===false} onClick={() => void start()}>{busy ? '正在准备…' : '开始这个项目 →'}</button></article> : stage && <>
         <header className="pj-stage-heading"><div><small>STAGE {definition!.stages.indexOf(stage)+1} / {definition!.stages.length}</small><h2>{stage.title}</h2><p>{stage.objective}</p></div><span className="pj-save-state" role="status">{busy ? '正在处理…' : dirty ? '有未保存修改' : '已保存至服务器'}</span></header>
         {!row.permissions.edit && <p className="pj-notice">正在查看学习者项目。产物由学习者修订；请在提交历史中选择版本进行复核。</p>}
         <fieldset className="pj-artifact" hidden={guided&&teachingStep.kind!=='field'} disabled={!editable}><legend className="sr-only">阶段产物</legend>{stage.fields.map(field => <label className="pj-label" hidden={guided&&teachingStep.fieldId!==field.id} key={field.id}><b>{field.label}</b><span>{field.prompt}</span><textarea aria-label={field.label} maxLength={12000} value={editor.artifact.values[field.id] ?? ''} onChange={event => setEditor(current => ({ ...current, artifact: { ...current.artifact, values: { ...current.artifact.values, [field.id]: event.target.value } } }))}/></label>)}</fieldset>
@@ -247,8 +248,9 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
       </>}
     </section>
     <aside className="pj-reference"><small>PROJECT NOTEBOOK</small><h2>把学习连起来</h2><p>参考此前提交的产物，说明它与当前问题的联系。</p>
+      {definition?.sourceCourse&&<details open><summary>冻结课程目标与原文位置</summary>{definition.sourceCourse.objectives.map(item=><section key={item.lessonId}><b>{item.title}</b><p>{item.objective}</p></section>)}{definition.sourceCourse.references.map(reference=><p key={reference.key}><a href={'/studio/source-courses?'+new URLSearchParams({course:definition.sourceCourse!.id,source:reference.key})}>{reference.title} · 第{reference.page}页或段 ↗</a></p>)}</details>}
       {catalog?.definitions.map((item,index) => { const projects = catalog.projects.filter(project => project.definition.id === item.id && project.id !== row?.id);
-        return <details key={item.id}><summary><b>{String(index+1).padStart(2,'0')}</b>{item.title}</summary>{projects.flatMap(project => project.submissions.map(submission => <div className="pj-reference-version" key={submission.id}><p>{project.definition.stages.find(stage => stage.id === submission.stageId)?.title} · v{submission.number}</p><small>{when(submission.at)}</small><p>{Object.values(submission.artifact.values).join('\n').slice(0,240)}</p><button disabled={!editable || editor.artifact.evidence.length >= 20} onClick={() => evidence([...editor.artifact.evidence,{id:crypto.randomUUID(), label:item.title+' v'+submission.number+' 摘录', content:('提交标识：'+submission.id+'\n'+Object.entries(submission.artifact.values).map(([key,value])=>key+'：'+value).join('\n')).slice(0,5500), source:window.location.origin+'/studio/projects?'+new URLSearchParams({project:project.id,unitId:item.unitId,...(studioCourseId?{studioCourseId}:{})})}])}>引用此版本摘录</button></div>))}{!projects.some(project => project.submissions.length) && <p>还没有可参考的提交。</p>}</details>; })}
+        return <details key={item.id}><summary><b>{String(index+1).padStart(2,'0')}</b>{item.title}</summary>{projects.flatMap(project => project.submissions.map(submission => <div className="pj-reference-version" key={submission.id}><p>{project.definition.stages.find(stage => stage.id === submission.stageId)?.title} · v{submission.number}</p><small>{when(submission.at)}</small><p>{Object.values(submission.artifact.values).join('\n').slice(0,240)}</p><button disabled={!editable || editor.artifact.evidence.length >= 20} onClick={() => evidence([...editor.artifact.evidence,{id:crypto.randomUUID(), label:item.title+' v'+submission.number+' 摘录', content:('提交标识：'+submission.id+'\n'+Object.entries(submission.artifact.values).map(([key,value])=>key+'：'+value).join('\n')).slice(0,5500), source:window.location.origin+'/studio/projects?'+new URLSearchParams({project:project.id,unitId:item.unitId,...(studioCourseId?{studioCourseId}:{}),...(sourceCourseId?{sourceCourseId}:{})})}])}>引用此版本摘录</button></div>))}{!projects.some(project => project.submissions.length) && <p>还没有可参考的提交。</p>}</details>; })}
       {row && legacySession && <button className="pj-import" disabled={!editable || dirty} onClick={() => void write('legacy',{sessionId:legacySession})}>带入这个课堂的旧草稿</button>}
       {row?.legacyImports.map((item,index) => <details key={index}><summary>旧课堂草稿 {index+1}</summary><small>{when(item.at)}</small><p className="pj-pre">{item.text}</p></details>)}
       <p className="pj-boundary">只记录匿名情境；不上传真实姓名、联系方式或未经同意的个人资料。</p>

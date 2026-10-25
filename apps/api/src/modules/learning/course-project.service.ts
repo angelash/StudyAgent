@@ -52,7 +52,7 @@ export class CourseProjectService {
     const { requests: _requests, ...safe } = structuredClone(row);
     let current: CourseProjectDefinition | undefined;
     if(row.sourceCourseId){const course=sourceProjectCourse(this.store,this.students,user,row.sourceCourseId);current=sourceCourseProjectDefinition(course);
-      if(course.status==='archived'&&current?.fingerprint===row.definition.fingerprint)return{...safe,contentStatus:'archived',permissions:{edit:row.ownerUserId===user.id,review:Boolean(row.studentId&&row.ownerUserId!==user.id&&user.role!=='student')}};
+      if(course.status==='archived'&&current?.fingerprint===row.definition.fingerprint)return{...safe,contentStatus:'archived',permissions:{edit:row.ownerUserId===user.id,review:Boolean(row.studentId&&row.ownerUserId!==user.id&&user.role!=='student'),startCurrentVersion:false}};
     }else if (row.studioCourseId) {
       const course = this.store.find('studioCourses', { id: row.studioCourseId });
       const unit = course?.units.find(unit => unit.id === row.definition.unitId);
@@ -70,7 +70,8 @@ export class CourseProjectService {
     const courseId = query.sourceCourseId??query.studioCourseId ?? 'sociology-foundations';
     const rows = this.store.select('courseProjects', { ...(query.studentId ? { studentId: query.studentId } : { ownerUserId: user.id }), 'definition.courseId': courseId });
     const visible = rows.filter(row => row.ownerUserId === user.id || row.studentId && user.role !== 'student' && this.store.find('users', { id: row.ownerUserId, role: 'student' }));
-    return { definitions, projects: visible.sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.view(user, this.record(user, row.id))) };
+    return { definitions, projects: visible.sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.view(user, this.record(user, row.id))),
+      ...(query.sourceCourseId?{permissions:{start:sourceProjectCourse(this.store,this.students,user,query.sourceCourseId).status==='active'}}:{}) };
   }
 
   open(user: InMemoryUserAccount, input: unknown) {

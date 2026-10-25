@@ -13,3 +13,5 @@
 @media(max-width:700px){.sc-lifecycle{padding:20px 18px}.sc-lifecycle>header{display:block}.sc-lifecycle-actions{margin-top:16px;justify-content:flex-start}.sc-lifecycle button{min-height:44px}.sc-lifecycle li{flex-wrap:wrap}.sc-lifecycle-pending button{display:block;margin:10px 0 0}.sc-lifecycle h2{font-size:18px}}
 
 .sc-lifecycle .sc-dialog p,.sc-lifecycle .sc-dialog li{font-size:14px;line-height:1.8}
+
+.sc-course-project{margin:20px 0;padding:24px;border:1px solid #deded8;border-radius:12px;background:#fff;overflow-wrap:anywhere}.sc-course-project>small{color:#7c8178;font-size:11px;line-height:1.7}.sc-course-project h3{margin:10px 0;font-size:19px;font-weight:500}.sc-course-project p{font-size:14px;line-height:1.8}.sc-course-project footer{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}.sc-course-project a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid #d9ded2;border-radius:8px;color:#42643e;text-decoration:none}@media(max-width:600px){.sc-course-project{padding:18px}.sc-course-project footer{flex-direction:column}}

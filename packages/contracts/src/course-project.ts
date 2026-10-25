@@ -25,8 +25,8 @@ export type CourseProject = { id: string; ownerUserId: string; studentId: string
   advice: ProjectAdvice[]; legacyImports: Array<{ sessionId: string; text: string; at: string }>;
   createdAt: string; updatedAt: string };
 export type CourseProjectView = CourseProject & { contentStatus: 'current' | 'archived' | 'unavailable';
-  permissions: { edit: boolean; review: boolean } };
-export type CourseProjectCatalog = { definitions: CourseProjectDefinition[]; projects: CourseProjectView[] };
+  permissions: { edit: boolean; review: boolean;startCurrentVersion?:boolean } };
+export type CourseProjectCatalog = { definitions: CourseProjectDefinition[]; projects: CourseProjectView[];permissions?:{start:boolean} };
 export type ProjectCommandReceipt = { requestKey:string;kind:'save'|'submit'|'review'|'advice'|'import';appliedRevision:number;at:string;
   submissionId?:string;reviewId?:string;project:CourseProjectView };
 
