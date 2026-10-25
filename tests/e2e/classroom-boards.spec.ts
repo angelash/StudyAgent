@@ -69,7 +69,7 @@ test('audio ended advances frozen units, abort settles a pending reader and a ne
   await page.getByRole('button',{name:'■ 停止阅读',exact:true}).click();await page.waitForTimeout(1500);await expect(page.locator('.cl-subtitle')).toHaveText(original);
 });
 
-test('complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable',async({page})=>{
+test('recovery: complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable',async({page})=>{
   await enter(page);await ask(page);
   for(let index=0;index<2;index++)await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
   await expect(page.locator('.cl-session-navigation')).toContainText('4 / 8');
@@ -83,6 +83,10 @@ test('complete notes, cross-page reply navigation, keyboard activation and narro
   await expect(board(page)).toBeInViewport({ratio:0.2});await expect(board(page).locator('tbody tr')).toHaveCount(0);
   await board(page).getByRole('button',{name:'展开完整笔记'}).focus();await page.keyboard.press('Enter');await expect(board(page).locator('tbody tr')).toHaveCount(2);await expect(board(page).locator('math')).toHaveCount(1);
   await page.getByRole('button',{name:'■ 停止阅读',exact:true}).click();
+  await page.getByRole('button',{name:'下一页白板',exact:true}).click();await expect(board(page)).toHaveCount(0);
+  await page.getByRole('button',{name:'♧ 平均分的两种分法',exact:true}).click();await expect(board(page)).toBeInViewport({ratio:0.2});
+  await page.locator('.cl-board-scroll').evaluate(element=>element.scrollTo({top:0,behavior:'instant'}));await expect(board(page)).not.toBeInViewport();
+  await page.getByRole('button',{name:'♧ 平均分的两种分法',exact:true}).click();await expect(board(page)).toBeInViewport({ratio:0.2});
   for(const width of [1440,768,390]){await page.setViewportSize({width,height:width===390?844:1000});if(width===390)await page.getByRole('button',{name:'白板',exact:true}).click();
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await expect(board(page).locator('tbody tr')).toHaveCount(2);await board(page).evaluate(element=>element.scrollIntoView({block:'start',behavior:'instant'}));await screen(page,'comparison-'+width);}
 });
