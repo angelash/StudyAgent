@@ -26,6 +26,8 @@ export class PrivacyController {
     return this.archiveResponse(data, response);
   }
   private archiveResponse(data: Awaited<ReturnType<PrivacyService['exportArchive']>>, response: Response) {
+    const disconnect=()=>data.stream.destroy();response.once('close',disconnect);data.stream.once('close',()=>response.off('close',disconnect));
+    if(response.destroyed||response.writableEnded)data.stream.destroy();
     response.setHeader('Cache-Control', 'private, no-store'); response.setHeader('X-Content-Type-Options', 'nosniff');
     return new StreamableFile(data.stream, { type: 'application/x-tar', disposition: `attachment; filename="${data.receiptId}.tar"` });
   }

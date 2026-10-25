@@ -5,6 +5,7 @@ import { assertNoFileLinks,studioCoordinationRoot,StudioFileCollectionPending,ty
 export type StudioCollectionInventory={files:Array<{path:string;stat:Stats}>;directories:string[]};
 /** Only known files belonging to this exact SHA/upload ID enter the deletion set. No recursive deletion. */
 export async function inventoryStudioCollection(root:string,kind:FileKind,key:string,processingTaskIds:string[]=[]):Promise<StudioCollectionInventory>{
+  if(kind!=='source'&&kind!=='upload')throw new Error('unsupported_material_collection_scope');
   studioCoordinationRoot(root,kind,key);const result:StudioCollectionInventory={files:[],directories:[]};
   const uuid='[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}';
   async function inspect(file:string){await assertNoFileLinks(file);try{return await fs.lstat(file);}catch(error){if((error as NodeJS.ErrnoException).code==='ENOENT')return;throw error;}}

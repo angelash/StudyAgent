@@ -8,6 +8,8 @@ import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
 import { WorkspaceDialog } from '../workspace-dialog';
 import { copyCourseFilters } from '../course-library-state';
+import { ProjectFiles, FrozenProjectFiles } from './project-files';
+import { ProjectAdviceScopePicker } from './advice-scope';
 import '../workspace.css';
 import './projects.css';
 
@@ -20,16 +22,17 @@ function download(value: unknown, name: string) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json;charset=utf-8' }));
   const link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-function Ratings({ rubric, ratings, onChange, disabled, prefix }: { rubric: ProjectCriterion[]; ratings: ProjectRating[];
-  onChange: (value: ProjectRating[]) => void; disabled?: boolean; prefix: string }) {
+function Ratings({ rubric, ratings, onChange, disabled, prefix, attachments=[] }: { rubric: ProjectCriterion[]; ratings: ProjectRating[];
+  onChange: (value: ProjectRating[]) => void; disabled?: boolean; prefix: string;attachments?:Array<{assetId:string;label:string}> }) {
   return <div className="pj-ratings">{rubric.map(criterion => {
     const value = ratings.find(rating => rating.criterionId === criterion.id);
-    function update(level: number, evidence: string) { onChange([...ratings.filter(rating => rating.criterionId !== criterion.id), { criterionId: criterion.id, level, evidence }]); }
+    function update(level: number, evidence: string,attachmentIds=value?.attachmentIds) { onChange([...ratings.filter(rating => rating.criterionId !== criterion.id), { criterionId: criterion.id, level, evidence,...(attachmentIds===undefined?{}:{attachmentIds}) }]); }
     return <fieldset key={criterion.id} disabled={disabled}><legend>{criterion.title}</legend>
       <div className="pj-levels">{criterion.levels.map((text, level) => <label key={level} data-selected={value?.level === level}>
         <input type="radio" name={prefix + criterion.id} checked={value?.level === level} onChange={() => update(level, value?.evidence ?? '')}/><b>{level}</b><span>{text}</span></label>)}</div>
       <label className="pj-label">{criterion.title}的具体依据<textarea aria-label={prefix + criterion.title + '的具体依据'} maxLength={2000} value={value?.evidence ?? ''}
         placeholder="指出作品中的哪一处支持这个选择，也可以如实写还缺什么。" onChange={event => update(value?.level ?? 0, event.target.value)}/></label>
+      {attachments.length>0&&<div className="pj-rating-files"><span>关联本次作品中的文件（可选）</span>{attachments.map(file=><label key={file.assetId}><input type="checkbox" checked={value?.attachmentIds?.includes(file.assetId)??false} onChange={event=>update(value?.level??0,value?.evidence??'',event.target.checked?[...(value?.attachmentIds??[]),file.assetId]:(value?.attachmentIds??[]).filter(id=>id!==file.assetId))}/>{file.label}</label>)}</div>}
     </fieldset>;
   })}</div>;
 }
@@ -49,6 +52,7 @@ export function ProjectWorkbench() {
   const params = new URLSearchParams(query), studioCourseId = params.get('studioCourseId') ?? undefined, legacySession = params.get('legacy');
   const definition = row?.definition ?? catalog?.definitions.find(item => item.unitId === params.get('unitId')) ?? (!params.get('unitId') ? catalog?.definitions[0] : undefined);
   const stage = definition?.stages.find(item => item.id === stageId) ?? definition?.stages[0];
+  const savedArtifact=row?.drafts[stageId]??blank().artifact;
   const backParams = copyCourseFilters(query, new URLSearchParams(studioCourseId ? { view: 'courses', course: studioCourseId } : {}));
   const backUnit = params.get('returnUnit') ?? (studioCourseId ? definition?.unitId : String(Math.max(0, catalog?.definitions.findIndex(item => item.unitId === definition?.unitId) ?? 0)));
   if (backUnit) backParams.set('unit', backUnit); if (params.get('returnPanel')) backParams.set('panel', params.get('returnPanel')!);
@@ -152,6 +156,7 @@ export function ProjectWorkbench() {
         <header className="pj-stage-heading"><div><small>STAGE {definition!.stages.indexOf(stage)+1} / {definition!.stages.length}</small><h2>{stage.title}</h2><p>{stage.objective}</p></div><span className="pj-save-state" role="status">{busy ? '正在处理…' : dirty ? '有未保存修改' : '已保存至服务器'}</span></header>
         {!row.permissions.edit && <p className="pj-notice">正在查看学习者项目。产物由学习者修订；请在提交历史中选择版本进行复核。</p>}
         <fieldset className="pj-artifact" disabled={!editable}><legend className="sr-only">阶段产物</legend>{stage.fields.map(field => <label className="pj-label" key={field.id}><b>{field.label}</b><span>{field.prompt}</span><textarea maxLength={12000} value={editor.artifact.values[field.id] ?? ''} onChange={event => setEditor(current => ({ ...current, artifact: { ...current.artifact, values: { ...current.artifact.values, [field.id]: event.target.value } } }))}/></label>)}</fieldset>
+        <ProjectFiles key={String(identity.id)+":"+row.id+":"+stageId} identity={identity.id} project={row} stageId={stageId} artifact={editor.artifact} disabled={Boolean(busy)} onChange={artifact=>setEditor(current=>({...current,artifact,selfRatings:current.selfRatings.map(rating=>rating.attachmentIds===undefined?rating:{...rating,attachmentIds:rating.attachmentIds.filter(id=>artifact.attachments?.some(file=>file.assetId===id))})}))}/>
         <section className="pj-section" aria-label="项目证据"><header><div><small>EVIDENCE</small><h3>保留可以核查的依据</h3></div><button disabled={!editable || editor.artifact.evidence.length >= 20} onClick={() => evidence([...editor.artifact.evidence, { id: crypto.randomUUID(), label: '', content: '', source: '' }])}>＋ 添加证据</button></header><p>记录匿名观察、资料摘录或来源链接。链接用于引用，平台不会自动读取。</p>
           {!editor.artifact.evidence.length && <div className="pj-empty">还没有证据记录。可以先写草稿，再补充依据。</div>}
           {editor.artifact.evidence.map((item,index) => <fieldset className="pj-evidence" disabled={!editable} key={item.id}><legend>证据 {index+1}</legend>
@@ -161,12 +166,12 @@ export function ProjectWorkbench() {
             <button onClick={() => evidence(editor.artifact.evidence.filter(value => value.id !== item.id))}>移除这条证据</button></fieldset>)}
         </section>
         <details className="pj-section pj-reflection" open={editor.selfRatings.length > 0}><summary><span>RUBRIC</span> 按量规检查自己的作品</summary><p>逐项选择符合当前产物的描述，并给出依据。保存草稿会同时保存这些准备；阶段提交时冻结自评。</p>
-          <Ratings rubric={row.definition.rubric} ratings={editor.selfRatings} prefix="自评" disabled={!editable} onChange={selfRatings => setEditor(current => ({ ...current, selfRatings }))}/>
+          <Ratings rubric={row.definition.rubric} attachments={editor.artifact.attachments} ratings={editor.selfRatings} prefix="自评" disabled={!editable} onChange={selfRatings => setEditor(current => ({ ...current, selfRatings }))}/>
           <label className="pj-label">这次修订改变了什么{latest && <span>再次提交时必填；说明如何回应之前的问题或反馈。</span>}<textarea disabled={!editable} maxLength={3000} value={editor.revisionNote} onChange={event => setEditor(current => ({ ...current, revisionNote:event.target.value }))}/></label></details>
         <section className="pj-section pj-ai" aria-label="项目 AI 建议"><header><div><small>AI FEEDBACK</small><h3>让助教帮你寻找证据缺口</h3></div></header><p>建议针对已保存的阶段草稿，不替代你的判断和人工复核。</p><XiaojiuModelPicker catalog={models.catalog} value={models.modelId} onChange={models.setModelId} disabled={Boolean(busy)}/>
-          {models.error && <p>{models.error}</p>}<button disabled={!editable || dirty || !Object.values(editor.artifact.values).some(value => value.trim())} onClick={() => void write('advice',{stageId,modelId:models.modelId})}>分析已保存草稿</button>{dirty && <small>先保存当前修改，再分析。</small>}
+          {models.error && <p>{models.error}</p>}<ProjectAdviceScopePicker key={row.id+stageId+projectArtifactIdentity(savedArtifact)} artifact={savedArtifact} stage={stage} disabled={!editable||dirty||!Object.values(editor.artifact.values).some(value=>value.trim())} onAsk={scope=>void write('advice',{stageId,modelId:models.modelId,...(scope?{scope}:{})})}/>{dirty && <small>先保存当前修改，再分析。</small>}
           {busy === 'advice' && <button onClick={() => abort.current?.abort()}>停止生成建议</button>}
-          {row.advice.filter(item => item.stageId === stageId).slice().reverse().map(item => <article className="pj-advice" key={item.id}><small>{item.modelName} · {when(item.at)} · {item.artifactFingerprint === projectArtifactIdentity(editor.artifact) ? '针对当前草稿' : '针对之前的草稿'}</small><p>{item.reply}</p></article>)}</section>
+          {row.advice.filter(item => item.stageId === stageId).slice().reverse().map(item => <article className="pj-advice" key={item.id}><small>{item.modelName} · {when(item.at)} · {item.artifactFingerprint === projectArtifactIdentity(editor.artifact) ? '针对当前草稿' : '针对之前的草稿'}{item.scope?' · 仅分析所选文字和说明':''}</small><p>{item.reply}</p></article>)}</section>
         <section className="pj-section" aria-label="阶段提交历史"><header><div><small>VERSIONS</small><h3>每次提交都有迹可循</h3></div></header>{!submissions.length ? <p>尚未提交这一阶段。可以先保存未完成草稿。</p> : submissions.slice().reverse().map(item => <button className="pj-history-row" key={item.id} onClick={() => openHistory(item)}><b>提交 v{item.number}</b><span>{item.revisionNote || '首次提交'}<small>{when(item.at)} · {row.reviews.filter(review => review.submissionId === item.id).length} 条人工复核</small></span><i>查看 →</i></button>)}</section>
         <footer className="pj-actions"><button disabled={!editable} onClick={() => void write('save',{stageId,...editor},'PATCH')}>保存阶段草稿</button><button className="pj-primary" disabled={!editable} onClick={() => void write('submit',{stageId,...editor})}>{latest ? '提交修订版本 →' : '提交这个阶段 →'}</button>{latest && definition!.stages.indexOf(stage) < definition!.stages.length-1 && <button disabled={Boolean(busy)} onClick={() => selectStage(definition!.stages[definition!.stages.indexOf(stage)+1].id)}>下一阶段 ›</button>}</footer>
       </>}
@@ -183,9 +188,10 @@ export function ProjectWorkbench() {
       {error&&<div className="pj-error" role="alert">{error}</div>}
       {Object.entries(history.artifact.values).map(([key,value])=><section key={key}><h3>{row.definition.stages.find(stage=>stage.id===history.stageId)?.fields.find(field=>field.id===key)?.label??key}</h3><p className="pj-pre">{value}</p></section>)}
       {history.artifact.evidence.map(item=><section key={item.id}><h3>{item.label}</h3><p className="pj-pre">{item.content}</p>{item.source&&<a href={item.source} target="_blank" rel="noreferrer">查看记录的来源 ↗</a>}</section>)}
+      <FrozenProjectFiles key={history.id} manifest={history.attachmentManifest}/>
       <h3>提交时自评</h3>{history.selfRatings.map(rating=><p key={rating.criterionId}>{row.definition.rubric.find(item=>item.id===rating.criterionId)?.title}：{rating.level} · {rating.evidence}</p>)}
       <h3>人工复核记录</h3>{!row.reviews.some(review=>review.submissionId===history.id)&&<p>还没有人工复核。自评和 AI 建议不会登记为人工结论。</p>}{row.reviews.filter(review=>review.submissionId===history.id).map(review=><article className="pj-advice" key={review.id}><small>{{parent:'家长',teacher:'教师',admin:'管理员'}[review.reviewerRole]} · {when(review.at)}{review.supersedesReviewId?' · 修订复核':''}</small><b>{review.decision==='ready'?'本次产物可继续':'建议修订后再核查'}</b><p>{review.comment}</p>{review.ratings.map(rating=><p key={rating.criterionId}>{row.definition.rubric.find(item=>item.id===rating.criterionId)?.title} · {rating.level}：{rating.evidence}</p>)}</article>)}
-      {row.permissions.review&&<section><h3>复核这个提交版本</h3><Ratings rubric={row.definition.rubric} ratings={reviewRatings} onChange={setReviewRatings} prefix="人工复核" disabled={Boolean(busy)}/><label className="pj-label">具体反馈与下一步<textarea maxLength={4000} value={reviewComment} onChange={event=>setReviewComment(event.target.value)}/></label><label className="pj-label">本次产物建议<select value={reviewDecision} onChange={event=>setReviewDecision(event.target.value)}><option value="needs_revision">修订后再核查</option><option value="ready">可以继续下一步</option></select></label><button disabled={Boolean(busy)} onClick={()=>void write('review',{submissionId:history.id,ratings:reviewRatings,comment:reviewComment,decision:reviewDecision})}>保存人工复核</button></section>}
+      {row.permissions.review&&<section><h3>复核这个提交版本</h3><Ratings rubric={row.definition.rubric} attachments={history.attachmentManifest} ratings={reviewRatings} onChange={setReviewRatings} prefix="人工复核" disabled={Boolean(busy)}/><label className="pj-label">具体反馈与下一步<textarea maxLength={4000} value={reviewComment} onChange={event=>setReviewComment(event.target.value)}/></label><label className="pj-label">本次产物建议<select value={reviewDecision} onChange={event=>setReviewDecision(event.target.value)}><option value="needs_revision">修订后再核查</option><option value="ready">可以继续下一步</option></select></label><button disabled={Boolean(busy)} onClick={()=>void write('review',{submissionId:history.id,ratings:reviewRatings,comment:reviewComment,decision:reviewDecision})}>保存人工复核</button></section>}
       <p className="pj-boundary">量规绑定 {history.rubricVersion.slice(0,12)}。本次作品评价不直接改变知识掌握度。</p></section></WorkspaceDialog>}
   </main>;
 }

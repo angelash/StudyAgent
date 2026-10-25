@@ -127,6 +127,7 @@ export class TaskRepository {
     const rows=await this.query(`SELECT * FROM durable_tasks WHERE kind='studio.material.process' AND state IN ('queued','running','retry_wait','cancel_requested') AND ${selector}=? LIMIT 1001`,[sha256]);
     if(rows.length>1000)throw new Error('material_processing_task_limit');return rows.map(item=>row(item));
   }
+  async recoverableProjectFileCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='project.file.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async recoverableMaterialCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='studio.material.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async studioSourceTaskIds(sha256:string){
     if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
@@ -142,6 +143,8 @@ export class TaskRepository {
   async deferMaterialCollection(id:string,token:string,code:string,delayMs=30000){
     return this.deferMaterialTask(id,token,code,delayMs,'studio.material.collect');
   }
+  async deferProjectFileCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.file.collect');}
+  async deferProjectAssetProcessing(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.asset.process');}
   async deferOriginalRepair(id:string,token:string,code:string,delayMs=30000){
     return this.deferMaterialTask(id,token,code,delayMs,'studio.material.repair');
   }

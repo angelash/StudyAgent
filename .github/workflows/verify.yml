@@ -117,6 +117,8 @@ jobs:
       - name: Prepare configuration
         run: cp .env.example .env
       - run: npm ci
+      - name: Install attachment audio decoder
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
       - name: Install browser runtime
         run: npx playwright install --with-deps chromium
       - name: Browser product journey at phone, tablet and desktop widths
@@ -228,3 +230,13 @@ jobs:
         env:
           STUDY_TEST_SOURCE_LIFECYCLE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course-lifecycle.integration.test.ts
+
+      - name: Install project attachment audio decoder
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
+      - name: Project actual attachments, native file recovery and latest privacy ledger on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_PROJECT_FILES_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
+          STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/project-file.integration.test.ts src/modules/learning/project-file-postgres-recovery.integration.test.ts

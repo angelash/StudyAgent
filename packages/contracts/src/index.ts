@@ -744,3 +744,5 @@ export * from './classroom-code';
 export * from './classroom-board';
 
 export * from './source-course-lifecycle';
+
+export * from './project-assets';

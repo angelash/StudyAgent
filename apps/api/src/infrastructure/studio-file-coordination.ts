@@ -18,15 +18,15 @@ export async function acquireStudioFileLease(root:string,kind:FileKind,key:strin
   const release=()=>releaseOwnStudioMarker(file,value);
   try{
     if(await exists(resolve(control,'purge.json')))throw new ConflictException('资料正在回收，请稍后重试');
-    if(kind==='upload'&&await exists(resolve(control,'revoked.json')))throw new ConflictException('这次上传已撤销，请重新开始');
+    if((kind==='upload'||kind==='project-upload')&&await exists(resolve(control,'revoked.json')))throw new ConflictException('这次上传已撤销，请重新开始');
   }catch(error){await release();throw error;}
   return release;
 }
 export async function withStudioFileLease<T>(root:string,kind:FileKind,key:string,action:()=>Promise<T>){const release=await acquireStudioFileLease(root,kind,key);try{return await action();}finally{await release();}}
 
 /** Permanent, outside the chunk directory. Upload IDs are never reused. Called only after domain cancellation commits. */
-export async function revokeStudioUploadFiles(root:string,id:string){
-  const control=studioCoordinationRoot(root,'upload',id),file=resolve(control,'revoked.json');
+export async function revokeStudioUploadFiles(root:string,id:string,kind:'upload'|'project-upload'='upload'){
+  const control=studioCoordinationRoot(root,kind,id),file=resolve(control,'revoked.json');
   const value={format:'study-upload-revocation-v1',id,nonce:randomUUID(),pid:process.pid,createdAt:new Date().toISOString()};
   try{await publishStudioMarker(control,file,'revoked',value);}
   catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;const current=await marker(file);if(current.format!==value.format||current.id!==id)throw new Error('invalid_studio_upload_revocation');}

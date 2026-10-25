@@ -15,6 +15,14 @@ export async function writeImmutableBytes(path:string,bytes:Buffer){
   try{const handle=await fs.open(path,'wx',0o600);try{await handle.writeFile(bytes);await handle.sync();}finally{await handle.close();}}
   catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;try{await verifyImmutableFile(path,bytesDigest(bytes),bytes.length);}catch{throw new ConflictException('文件分块已有不同数据');}}
 }
+/** Publish only a complete synced inode. A killed upload can retry without a partial final chunk. */
+export async function writeAtomicImmutableBytes(path:string,bytes:Buffer){
+  await fs.mkdir(dirname(path),{recursive:true});
+  const temporary=resolve(dirname(path),'writing-'+process.pid+'-'+randomUUID()),handle=await fs.open(temporary,'wx',0o600);
+  try{await handle.writeFile(bytes);await handle.sync();await handle.close();
+    try{await fs.link(temporary,path);}catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;await verifyImmutableFile(path,bytesDigest(bytes),bytes.length);}
+  }finally{await handle.close().catch(()=>{});await fs.unlink(temporary).catch(()=>{});}
+}
 /** Callers supply only paths they derive inside their managed roots. Memory is bounded by one chunk. */
 export async function assembleImmutableFile(input:{size:number;sha256:string;chunks:Array<{path:string;sha256:string;size:number}>;target:string;validHeader:(header:Buffer)=>boolean}){
   await fs.mkdir(dirname(input.target),{recursive:true});

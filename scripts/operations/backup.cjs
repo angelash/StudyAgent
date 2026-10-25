@@ -55,7 +55,7 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses','studioMaterialAssets')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','studioMaterialAssets')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -76,6 +76,15 @@ function referencesFromRecords(rows) {
         if (!/^[a-f0-9]{64}$/.test(source.sha256)) fail('invalid_file_reference');
         add(`studio-materials/${source.sha256}.pdf`,source.sha256,null,true);
       }
+    } else if(row.collection==='projectAssetUploads'){
+      if(!/^project_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_project_upload_reference');
+      if(value.status==='uploading')for(const chunk of value.chunks??[]){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>=20)fail('invalid_project_chunk_reference');add('project-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.size);}
+    } else if(row.collection==='projectAssets'){
+      if(!/^project_asset_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_project_asset_reference');
+      if(!value.filesCollectedAt){for(const file of [value.original,...(value.display?[value.display]:[]),...(value.previews??[]).map(preview=>preview.file)]){
+        if(!file||!/^(original\.(png|jpg|pdf|txt|webm|ogg|wav|mp3|m4a|docx|xlsx|pptx)|display\.(png|wav)|page-[1-9]\d*\.png)$/.test(file.name))fail('invalid_project_file_reference');
+        add('project-assets/'+value.id+'/'+file.name,file.sha256,file.size);
+      }}
     } else if (row.collection === 'studioMaterialUploads') {
       if (!/^studio_upload_[a-f0-9-]+$/.test(value.id)) fail('invalid_material_upload_reference');
       if (value.status === 'uploading') for (const chunk of value.chunks ?? []) {
@@ -165,7 +174,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|studio-materials|studio-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);

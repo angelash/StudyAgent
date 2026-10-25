@@ -1,3 +1,4 @@
+import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
@@ -425,6 +426,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   classroomCodeDrafts: ClassroomCodeDraftRecord[] = [];
   classroomVisuals: ClassroomVisualRecord[] = [];
   courseProjects: CourseProjectRecord[] = [];
+  projectAssetUploads: ProjectUploadRecord[] = [];
+  projectAssets: ProjectAssetRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
   sourceCourseStages: SourceCourseStageRecord[] = [];
   studioActivities: StudioActivity[] = [];
@@ -519,6 +522,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.classroomCodeDrafts = [];
     this.classroomVisuals = [];
     this.courseProjects = [];
+    this.projectAssetUploads = [];
+    this.projectAssets = [];
     this.sourceCourses = [];
     this.sourceCourseStages = [];
     this.studioActivities = [];

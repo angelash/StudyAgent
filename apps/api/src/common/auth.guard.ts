@@ -20,7 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   // Explicitly allowed learning operations; object authorization remains in the service.
-  GET: [/^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+  GET: [/^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
@@ -42,7 +42,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
     /^ai\/models$/, /^ai\/assistant\/sessions\/[^/]+\/messages$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/],
-  POST: [/^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+  POST: [/^learning\/project-files\/uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/project-files\/assets\/[^/]+\/(cancel|retry|delete)$/, /^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files\/check|repairs(\/[^/]+\/(cancel|retry))?)$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+\/(cancel|retry))?$/,
     /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|narration\/[^/]+))?$/,
@@ -63,7 +63,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
-  PUT: [/^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
+  PUT: [/^learning\/project-files\/uploads\/[^/]+\/chunks\/\d+$/, /^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
   PATCH: [/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 

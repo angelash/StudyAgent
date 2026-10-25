@@ -14,6 +14,10 @@ import { verifyImmutableFile } from '../../infrastructure/immutable-files';
 import { visualFile,visualDigest } from '../learning/classroom-visual-storage';
 import type { ClassroomVisualRecord } from '@study-agent/contracts';
 import { StudioMaterialMaintenanceService } from '../learning/studio-material-maintenance.service';
+import { acquireStudioFileLease } from '../../infrastructure/studio-file-coordination';
+import { projectFileRoot, verifyProjectFile } from '../learning/project-file-storage';
+import { scheduleProjectFileCollection } from '../learning/project-file.service';
+import type { ProjectAssetRecord } from '../learning/project-file-record';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -146,9 +150,22 @@ export class PrivacyService {
       if(!current?.files||current.files.image.sha256!==record.files!.image.sha256)throw new ConflictException('课堂图片已变化，请重新准备副本');
       for(const part of ['original','image'] as const){const file=visualFile(record,part),name=`visuals/${record.id}-${part}.png`;entries.push({name,path:file.path,size:file.size});visualManifests.push({visualId:record.id,part,name,size:file.size,sha256:file.sha256});}
     }
-    const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests }, null, 2) + '\n');
-    entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
-    return { stream: tarArchive(entries, snapshot.exportedAt), receiptId: snapshot.receipt.id };
+    const projectAssets=[...(snapshot.accountRecords.projectAssets??[]),...snapshot.students.flatMap(child=>child.records.projectAssets??[])] as ProjectAssetRecord[];
+    const releases:Array<()=>Promise<void>>=[],projectFiles:unknown[]=[];
+    const release=()=>Promise.allSettled(releases.splice(0).map(fn=>fn()));
+    try{
+      for(const asset of new Map(projectAssets.filter(row=>row.status==='ready').map(row=>[row.id,row])).values()){
+        releases.push(await acquireStudioFileLease(projectFileRoot(),'project-asset',asset.id));
+        const current=this.store.find('projectAssets',{id:asset.id,status:'ready',projectId:asset.projectId});
+        if(!current||current.original.sha256!==asset.original.sha256||privacyHash([current.display,current.previews])!==privacyHash([asset.display,asset.previews]))throw new ConflictException('项目文件已变化，请重新准备副本');
+        for(const file of [asset.original,...(asset.display?[asset.display]:[]),...asset.previews.map(preview=>preview.file)]){
+          const path=await verifyProjectFile(asset.id,file),name='projects/'+asset.id+'/'+file.name;entries.push({name,path,size:file.size});projectFiles.push({assetId:asset.id,projectId:asset.projectId,name,size:file.size,sha256:file.sha256,mediaType:file.mediaType});
+        }
+      }
+      const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests,projects:projectFiles }, null, 2) + '\n');
+      entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
+      const stream=tarArchive(entries,snapshot.exportedAt);stream.once('close',()=>void release());return {stream,receiptId:snapshot.receipt.id};
+    }catch(error){await release();throw error;}
   }
   async delete(actor: InMemoryUserAccount, input: unknown, studentId?: string) {
     this.parent(actor); const command = validate(deletion, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
@@ -166,6 +183,11 @@ export class PrivacyService {
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
     const sourceHashes=new Set<string>();
+    for(const upload of selection.projectAssetUploads??[])await scheduleProjectFileCollection(this.store,'project-upload',String(upload.id),actor.id);
+    for(const asset of selection.projectAssets??[]){
+      const task=await this.store.tasks.get(String(asset.taskId));if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+      await scheduleProjectFileCollection(this.store,'project-asset',String(asset.id),actor.id);
+    }
     for(const material of selection.studioSourceMaterials??[]){
       if(typeof material.sha256==='string'&&/^[a-f0-9]{64}$/.test(material.sha256))sourceHashes.add(material.sha256);
       if(typeof material.processingTaskId==='string'){const task=await this.store.tasks.get(material.processingTaskId);if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});}

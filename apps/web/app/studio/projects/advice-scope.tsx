@@ -1,0 +1,8 @@
+'use client';
+import * as React from 'react';
+import type {ProjectAdviceScope,ProjectArtifact,ProjectStage} from '@study-agent/contracts';
+export function ProjectAdviceScopePicker({artifact,stage,disabled,onAsk}:{artifact:ProjectArtifact;stage:ProjectStage;disabled:boolean;onAsk:(scope:ProjectAdviceScope|undefined)=>void}){
+  const [scoped,setScoped]=React.useState(false),[scope,setScope]=React.useState<ProjectAdviceScope>({fieldIds:stage.fields.map(field=>field.id),evidenceIds:artifact.evidence.map(item=>item.id),attachmentIds:artifact.attachments?.map(item=>item.assetId)??[]});
+  function choices(key:keyof ProjectAdviceScope,items:Array<{id:string;label:string}>){return items.map(item=><label key={key+item.id}><input type="checkbox" checked={scope[key].includes(item.id)} onChange={event=>setScope(current=>({...current,[key]:event.target.checked?[...current[key],item.id]:current[key].filter(id=>id!==item.id)}))}/>{item.label}</label>);}
+  return <div className="pj-advice-scope"><p>本次只分析已保存文字、证据和文件说明，尚未读取附件内容。</p><details><summary>选择建议范围</summary><fieldset disabled={disabled}><label><input type="checkbox" checked={scoped} onChange={event=>setScoped(event.target.checked)}/>只分析我勾选的内容</label>{scoped&&<div>{choices('fieldIds',stage.fields.map(field=>({id:field.id,label:field.label})))}{choices('evidenceIds',artifact.evidence.map(item=>({id:item.id,label:'证据：'+(item.label||'未命名')})))}{choices('attachmentIds',artifact.attachments?.map(item=>({id:item.assetId,label:'文件说明：'+item.label}))??[])}</div>}</fieldset></details><button disabled={disabled} onClick={()=>onAsk(scoped?scope:undefined)}>分析已保存草稿</button></div>;
+}
