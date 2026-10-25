@@ -199,10 +199,10 @@ test('independent practice matches four-option illustrated question flow on desk
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/studio/classroom?lesson=soc-1-1-1&tab=practice');
   await expect(page.getByRole('region', { name: '课堂练习题目' })).toBeVisible();
-  await expect(page.locator('.cl-practice-progress button')).toHaveCount(5);
+  await expect(page.locator('.cl-practice-progress button')).toHaveCount(6);
   await expect(page.locator('.cl-practice-options label')).toHaveCount(4);
-  await expect(page.locator('.cl-practice-image img')).toHaveJSProperty('complete', true);
-  await expect(page.locator('.cl-practice-image img')).toHaveJSProperty('naturalWidth', 1024);
+  await expect(page.locator('.cl-practice-prompt .cl-lesson-image img')).toHaveJSProperty('complete', true);
+  await expect(page.locator('.cl-practice-prompt .cl-lesson-image img')).toHaveJSProperty('naturalWidth', 1024);
   await expect(page.getByRole('button', { name: 'Check →' })).toBeDisabled();
   if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-practice-v2.png', fullPage: true });
   await page.locator('.cl-practice-prompt h2').click(); await page.keyboard.press('1');
