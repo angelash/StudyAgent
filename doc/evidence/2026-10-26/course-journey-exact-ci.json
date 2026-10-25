@@ -784,5 +784,22 @@
       ],
       "url": "https://github.com/angelash/StudyAgent/actions/runs/40218645644/job/121245178472"
     }
-  ]
+  ],
+  "browser": {
+    "total": 203,
+    "passed": 202,
+    "flaky": 1,
+    "retries": 1,
+    "finalFailed": 0
+  },
+  "api": {
+    "passed": 1186,
+    "skipped": 48
+  },
+  "sourceProjectPostgres": {
+    "passed": 15,
+    "skipped": 1,
+    "scope": "Dedicated source projects/journeys step; native project file recovery is a separate step"
+  },
+  "runtimeGate": "held-for-relative-navigation-fix"
 }
