@@ -28,7 +28,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
-    'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioConnectors','studioScheduleEvents']) {
+    'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -80,6 +80,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
+  add(result,store,'studioTopicWhiteboardDrafts',row=>row.ownerUserId===actorId);
+  add(result,store,'studioTopicWhiteboards',row=>row.ownerUserId===actorId&&!row.studentId);
   const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId)||row.ownerUserId===actorId&&!row.studentId);
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
@@ -166,6 +168,10 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,...(row.versioning?{versioning:sourceCourseVersioningView(row as any,actorId,publishedCourses)}:{}),generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
     else if(name==='sourceCourseStages')result[name]=records.filter(row=>allowedCourses.has(row.courseId)).map(({id,courseId,kind,key,createdAt,modelId,modelName,copiedFrom})=>({id,courseId,kind,key,createdAt,modelId,modelName,...(copiedFrom?{copiedFrom}:{})}));
     else if(name==='sourceCourseChecks')result[name]=records.filter(row=>allowedCourses.has(row.courseId)&&['published','superseded','withdrawn'].includes(row.status)).map(row=>({id:row.id,courseId:row.courseId,courseFingerprint:row.courseFingerprint,revision:row.revision,status:row.status,publishedAt:row.publishedAt,withdrawnAt:row.withdrawnAt,title:row.content?.title??null,targets:(row.prepared?.targets??[]).map(({lessonId,title,objective}:Row)=>({lessonId,title,objective}))}));
+    else if(name==='studioTopicWhiteboardDrafts')result[name]=records.filter(row=>row.ownerUserId===actorId)
+      .map(({prepared,authorization:_auth,commands:_commands,taskId:_task,requestHash:_hash,...row})=>({...row,prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId}));
+    else if(name==='studioTopicWhiteboards')result[name]=records.map(({ownerUserId,sourceDraftId:_source,...row})=>
+      ({...row,...(row.origin?{origin:{...row.origin,draftId:ownerUserId===actorId?row.origin.draftId:null}}:{})}));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }
@@ -192,6 +198,8 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if (name === 'sourceCourseChecks' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if (name === 'sourceCourseChecks' && row.authorization?.guardianId === actorId) anonymous.authorization.guardianId='deleted-account';
+      if (name === 'studioTopicWhiteboards' && row.ownerUserId === actorId) anonymous.ownerUserId=`deleted-account:${row.id}`;
+      if (name === 'studioTopicWhiteboardDrafts' && row.authorization?.guardianId === actorId) anonymous.authorization.guardianId='deleted-account';
       if(['projectAssets','projectAssetUploads'].includes(name)&&row.authorization?.guardianId===actorId)anonymous.authorization.guardianId='deleted-account';
       if(name==='studioConnectors'&&row.createdBy===actorId){anonymous.status='revoked';anonymous.encryptedFeedUrl='';anonymous.version=(Number(row.version)||0)+1;anonymous.lastError=null;}
       return anonymous;

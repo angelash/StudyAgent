@@ -182,6 +182,10 @@ export class DomainDatabase {
       {name:'source_check_publication_course',collection:'sourceCourseCheckPublications',fields:['courseId']}],`
       CREATE UNIQUE INDEX IF NOT EXISTS source_check_active_generation ON domain_records(${guidanceField('ownerUserId')},${guidanceField('courseId')})
         WHERE collection='sourceCourseChecks' AND ${guidanceField('status')} IN ('queued','generating','cancel_requested');`);
+    await this.migrateConstraints(16, [
+      { name: 'topic_whiteboard_prepare_request', collection: 'studioTopicWhiteboardDrafts', fields: ['ownerUserId', 'requestKey'] },
+      { name: 'topic_whiteboard_publication_draft', collection: 'studioTopicWhiteboards', fields: ['sourceDraftId'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
