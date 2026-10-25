@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T14:57:04.292Z",
+  "at": "2026-10-25T15:24:32.203Z",
   "sourceRevision": "8a73c86bad7141deafd03f2608e5ddc7c86ae8e5",
   "apiImplementation": "68b67cc",
   "voiceAssetsCommit": "a35f4ec",
@@ -9,8 +9,8 @@
   "specificationCommit": "520edcc",
   "nextSpecificationOnly": "453c032",
   "localPassed": true,
-  "passed": false,
-  "status": "local-validated-awaiting-exact-ci-and-production-runtime",
+  "passed": true,
+  "status": "delivered-exact-ci-and-production-daemon",
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF; MP3 assets use raw bytes",
   "sourceDigests": {
     ".github/workflows/verify.yml": "7e359dd2b0b9b023463f5a9d2299514542888548f02f088af2ce5961b8064a7c",
@@ -251,9 +251,8 @@
     },
     "design": "The first documentation validation used stale source/content baselines; regenerated inventory, current authored audit and content snapshot before final validation."
   },
-  "productionRuntime": "117 has not been deployed. The separately verified 116 delivery is recorded in its own acceptance receipt.",
+  "productionRuntime": "Delivered with exact original audio asset hashes, protected configurations, production build and stable daemon observations.",
   "remaining": [
-    "117 exact CI and stable production build",
     "Full M1 reference states and complete course journeys",
     "Original CSS/font/DPR assets and actual audio equivalence",
     "Real mobile/assistive technology and human teacher review",
@@ -265,5 +264,35 @@
     "normalization": "UTF-8 with CRLF normalized to LF",
     "sourceFiles": 395,
     "offlineChecks": 10
+  },
+  "localValidationAt": "2026-10-25T14:57:04.292Z",
+  "ci": {
+    "head": "77981f7d65e8886414da8db4dda7b8634bc0212d",
+    "run": 40204859654,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40204859654",
+    "receipt": "neutral-voice-exact-ci.json",
+    "sha256": "16a0f9d25bcec4436d09c28a973956bb1b37248c26522aa8cc3c3769ef44f475",
+    "conclusion": "success",
+    "linuxApplication": {
+      "passed": 1165,
+      "skipped": 47
+    },
+    "browser": {
+      "passed": 178
+    },
+    "neutralVoicePostgres": {
+      "passed": 4
+    }
+  },
+  "runtime": {
+    "revision": "77981f7d65e8886414da8db4dda7b8634bc0212d",
+    "buildId": "cqenrsn-GZ5N4b8mfdQLx",
+    "receipt": "neutral-voice-runtime.json",
+    "sha256": "9eb6413ad3309a3c94ee08ee4972d88c53e796a22cad9192e2909d5593161ed1",
+    "checks": 43,
+    "observations": 3,
+    "observationSpanMs": 83374,
+    "originalConfigurationsUnchanged": 5,
+    "originalVoiceAssets": 6
   }
 }
