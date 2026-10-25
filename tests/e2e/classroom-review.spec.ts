@@ -26,7 +26,8 @@ test('unit check resumes holes, persists help and provides a faithful review wit
   const select = async (questionIndex: number, correct: boolean) => {
     await page.getByRole('button', { name: `第${questionIndex + 1}题`, exact: true }).click();
     const key = classroomAnswerKey(session.lesson.questions[questionIndex].id).answer;
-    await page.locator('.cl-practice-options label').nth(correct ? key : (key + 1) % 4).click();
+    const indices = Array.isArray(key) ? correct ? key : [session.lesson.questions[questionIndex].options.findIndex((_:unknown,index:number) => !key.includes(index))] : [correct ? key : (key + 1) % 4];
+    for (const index of indices) await page.locator('.cl-practice-options label').nth(index).click();
     await page.getByRole('button', { name: 'Check →', exact: true }).click();
   };
   await select(0, true);

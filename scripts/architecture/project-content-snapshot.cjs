@@ -21,15 +21,17 @@ for (const [file, expected] of Object.entries(audit.sourceSha256)) assert.equal(
 const classroomFile = 'apps/api/src/modules/learning/classroom-curriculum.ts';
 const boardFile = 'apps/api/src/modules/learning/classroom-board-notes.ts';
 const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
+const choiceFile = 'apps/api/src/modules/learning/classroom-choice-content.ts', choiceHelper = 'packages/contracts/src/classroom-choice.ts';
 const projectsFile = 'apps/api/src/modules/learning/course-project-content.ts';
 const practiceFiles = ['content', 'model', 'u1', 'u2', 'u3', 'u4', 'u5'].map(name => 'apps/api/src/modules/learning/classroom-practice-' + name + '.ts');
-const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, ...practiceFiles]), cache = new Map();
+const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, choiceFile, choiceHelper, ...practiceFiles]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
   const module = { exports: {} }; cache.set(file, module);
   const localRequire = name => {
     if (name === 'node:crypto') return require('node:crypto');
+    if (name === '@study-agent/contracts') { assert.equal(file, choiceFile, 'Only pure choice content can load its allowlisted normalization helper'); return loadContent(choiceHelper); }
     assert(name.startsWith('./'), 'Unexpected classroom dependency: ' + name);
     return loadContent(path.posix.normalize(path.posix.join(path.posix.dirname(file), name + '.ts')));
   };
@@ -79,8 +81,10 @@ const snapshot = {
     microLessonsWithAtLeastThreeQuestions: lessons.filter(lesson => classroom.classroomLesson(lesson.id).questions.length >= 3).length,
     tableQuestions: practiceQuestions.filter(question => question.table).length,
     diagramQuestions: practiceQuestions.filter(question => question.diagram).length,
+    multipleChoiceQuestions: practiceQuestions.filter(question => question.selectionMode === 'multiple').length,
+    multipleChoiceUnitChecks: course.units.flatMap(unit => classroom.classroomLesson('unit-exam:' + unit.id).questions).filter(question => question.selectionMode === 'multiple').length,
     hintLevels: questionIds.concat(unitQuestionIds).reduce((sum, id) => sum + classroom.classroomHintKeys(id).length, 0),
-    sourceSha256: Object.fromEntries([classroomFile, boardFile, checksFile, ...practiceFiles].map(file => [file, hash(file)])),
+    sourceSha256: Object.fromEntries([classroomFile, boardFile, checksFile, choiceFile, choiceHelper, ...practiceFiles].map(file => [file, hash(file)])),
     interpretation: 'Classroom practice and newly authored unit scenarios are separate counts. They are not standardized student ability measurement or proof of unseen exposure outside this course.'
   }
 };

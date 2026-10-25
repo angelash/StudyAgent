@@ -3,6 +3,7 @@ import type { ClassroomCourse, ClassroomDiagram, ClassroomLesson, ClassroomStep,
 import { conceptNotes } from './classroom-board-notes';
 import { UNIT_CHECK_VERSION, unitChecks } from './classroom-unit-checks';
 import { CLASSROOM_PRACTICE_VERSION, practiceVariations } from './classroom-practice-content';
+import { freezeMultipleChoice, microChoices, unitChoice } from './classroom-choice-content';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -127,7 +128,7 @@ function step(id: string, phase: ClassroomStep['phase'], title: string, narratio
 }
 
 const lessonMap = new Map<string, ClassroomLesson>();
-const keys = new Map<string, { answer: number; explanation: string }>();
+const keys = new Map<string, { answer: number | number[]; explanation: string; optionExplanations?: string[] }>();
 const hints = new Map<string, string[]>();
 const course: ClassroomCourse = {
   id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: CLASSROOM_PRACTICE_VERSION,
@@ -212,6 +213,10 @@ const course: ClassroomCourse = {
             purpose: variation.purpose, topic: { lessonId: id, title: name },
             ...(variation.table ? { table: structuredClone(variation.table) } : {}), ...(variation.diagram ? { diagram: structuredClone(variation.diagram) } : {}) });
         }
+        for (const choice of microChoices.filter(choice => choice.lessonId === id)) {
+          const frozen = freezeMultipleChoice(id + ':practice:v2:multiple:' + choice.purpose, choice, name);
+          lesson.questions.push(frozen.question); keys.set(frozen.question.id, frozen.key); hints.set(frozen.question.id, frozen.hints);
+        }
         lesson.practiceVersion = CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(lesson.questions.map(question =>
           [question, keys.get(question.id), hints.get(question.id)]))).digest('hex').slice(0, 16);
         lessonMap.set(id, lesson);
@@ -233,6 +238,10 @@ for (const unit of course.units) {
     if (!topic || item.options.length !== 4 || new Set(item.options).size !== 4 || !Number.isInteger(item.answer) || item.answer < 0 || item.answer > 3)
       throw new Error('单元核查内容无效：' + item.lessonId);
     const questionId = id + ':v1:' + (index + 1);
+    if (unit.id === 'soc-u1' && item.lessonId === unitChoice.lessonId) {
+      const frozen = freezeMultipleChoice(questionId, unitChoice, topic.title);
+      keys.set(questionId, frozen.key); hints.set(questionId, frozen.hints); return frozen.question;
+    }
     const rotation = createHash('sha256').update(questionId).digest()[0] % 4;
     const options = [...item.options.slice(rotation), ...item.options.slice(0, rotation)];
     keys.set(questionId, { answer: (item.answer - rotation + 4) % 4, explanation: item.explanation });
@@ -243,7 +252,7 @@ for (const unit of course.units) {
   unitLessons.set(id, { id, title: unit.title + ' · 单元核查', lectureId: unit.id, objective: unit.objective,
     assessment: { kind: 'unit-check', version: UNIT_CHECK_VERSION + ':' + createHash('sha256').update(JSON.stringify(definitions)).digest('hex').slice(0, 16),
       notice: '这组题采用不同于课堂练习的新情境。提示、跳过和首次作答分别保留；结果只说明本组表现，不是标准化能力等级。' },
-    practiceVersion: CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(questions.map(question => [question, hints.get(question.id)]))).digest('hex').slice(0, 16),
+    practiceVersion: CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(questions.map(question => [question, keys.get(question.id), hints.get(question.id)]))).digest('hex').slice(0, 16),
     steps: [step(id + ':orient', 'orient', '单元核查', '用十二个新情境核查本单元各个主题。可以先独立判断，需要帮助时再使用提示。结果保留首次答案和辅助情况，不将这次正确率直接称为掌握。'),
       step(id + ':transfer', 'transfer', unit.project.title, unit.project.brief)], questions });
 }

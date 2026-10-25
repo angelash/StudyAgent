@@ -8,7 +8,10 @@ export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' |
   diagram?: ClassroomDiagram; code?: string; table?: { headers: string[]; rows: string[][] } };
 export type ClassroomStep = { id: string; title: string; narration: string; blocks: ClassroomBlock[];
   phase: 'orient' | 'concept' | 'example' | 'contrast' | 'check' | 'transfer'; durationMs: number };
+export type ClassroomSelectionMode = 'single' | 'multiple';
+export type ClassroomAnswerDisposition = 'answered' | 'skip' | 'dont_know';
 export type ClassroomQuestion = { id: string; prompt: string; options: string[]; hint: string;
+  selectionMode?: ClassroomSelectionMode;
   hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
 export type ClassroomLesson = { id: string; title: string; objective: string; lectureId: string; steps: ClassroomStep[];
@@ -22,6 +25,7 @@ export type ClassroomUnit = { id: string; title: string; objective: string; lect
 export type ClassroomCourse = { id: string; title: string; description: string; level: string; version: string;
   provenance: string; units: ClassroomUnit[]; references: Array<{ title: string; url: string }> };
 export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number | null; correct: boolean; skipped: boolean;
+  selectedIndices?: number[]; correctIndices?: number[]; optionExplanations?: string[];
   explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number; answerExposure?: 'authorship' };
 export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
 export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;

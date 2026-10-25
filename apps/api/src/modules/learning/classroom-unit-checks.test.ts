@@ -12,9 +12,10 @@ describe('unit checks cover all topics with new scenarios', () => {
     expect(new Set(exams.map(question => question.prompt)).size).toBe(60);
     for (const exam of exams) {
       expect(practice.some(question => question.id === exam.id || question.prompt === exam.prompt)).toBe(false);
-      expect(exam.options).toHaveLength(4); expect(new Set(exam.options).size).toBe(4);
-      expect(classroomAnswerKey(exam.id)?.answer).toBeGreaterThanOrEqual(0);
-      expect(classroomAnswerKey(exam.id)?.answer).toBeLessThan(4);
+      expect(exam.options).toHaveLength(exam.selectionMode === 'multiple' ? 5 : 4); expect(new Set(exam.options).size).toBe(exam.options.length);
+      const answer = classroomAnswerKey(exam.id)!.answer, indices = Array.isArray(answer) ? answer : [answer];
+      expect(indices.every(index => Number.isInteger(index) && index >= 0 && index < exam.options.length)).toBe(true);
+      if (exam.selectionMode === 'multiple') { expect(indices.length).toBeGreaterThanOrEqual(2); expect(indices.length).toBeLessThan(exam.options.length); }
       expect(classroomAnswerKey(exam.id)?.explanation.length).toBeGreaterThan(20);
       expect(exam).not.toHaveProperty('answer'); expect(exam).not.toHaveProperty('explanation');
     }
@@ -34,7 +35,8 @@ describe('unit checks cover all topics with new scenarios', () => {
     ['soc-u5', 'soc-5-2-1', '人数之外，还需合适分母和年龄结构口径'],
   ])('retains the intended distinction after option ordering: %s / %s', (unitId, topicId, correct) => {
     const question = classroomLesson('unit-exam:' + unitId)!.questions.find(question => question.topic?.lessonId === topicId)!;
-    expect(question.options[classroomAnswerKey(question.id)!.answer]).toBe(correct);
+    const answer = classroomAnswerKey(question.id)!.answer; expect(Array.isArray(answer)).toBe(false);
+    expect(question.options[answer as number]).toBe(correct);
   });
 });
 

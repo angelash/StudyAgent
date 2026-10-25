@@ -2,6 +2,7 @@ import { BadRequestException, ConflictException, ForbiddenException, Injectable,
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView } from '@study-agent/contracts';
+import { normalizeClassroomSelection } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
@@ -13,7 +14,7 @@ import { assertSourceCourseAccess } from './source-course.service';
 import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, verifySpeechTrack } from './classroom-presentation';
 
 export type ClassroomSessionRecord = ClassroomSession & {
-  answerKeys: Record<string, { answer: number; explanation: string }>;
+  answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[] }>;
   hintKeys?: Record<string, string[]>;
   requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'turn' | 'hint' | 'presentation'; messageId?: string; questionId?: string }>;
 };
@@ -174,12 +175,20 @@ export class ClassroomService {
 
   answer(user: InMemoryUserAccount, id: string, input: unknown) {
     const row = this.record(user, id);
-    const command = validate(z.object({ questionId: z.string().min(1).max(200), selectedIndex: z.number().int().min(0).max(20).nullable(),
-      hintUsed: z.boolean().default(false), disposition: z.enum(['answered', 'skip', 'dont_know']).optional(), requestKey: z.string().min(8).max(180) }).strict(), input);
-    const disposition = command.disposition ?? (command.selectedIndex === null ? 'skip' : 'answered');
-    if ((disposition === 'answered') !== (command.selectedIndex !== null)) throw new BadRequestException('作答状态与选项不一致');
-    const hash = createHash('sha256').update(JSON.stringify([command.questionId, command.selectedIndex, command.hintUsed,
-      ...(command.disposition === undefined ? [] : [command.disposition])])).digest('hex');
+    const common = { questionId: z.string().min(1).max(200), hintUsed: z.boolean().default(false), requestKey: z.string().min(8).max(180) };
+    const command = validate(z.union([
+      z.object({ ...common, selectedIndex: z.number().int().min(0).max(20).nullable(), disposition: z.enum(['answered', 'skip', 'dont_know']).optional() }).strict(),
+      z.object({ ...common, protocol: z.literal('classroom-choice-v2'), selectedIndices: z.array(z.number().int().min(0).max(20)).max(21),
+        selectedIndex: z.number().int().min(0).max(20).nullable().optional(), disposition: z.enum(['answered', 'skip', 'dont_know']) }).strict(),
+    ]), input);
+    const modern = 'protocol' in command;
+    const disposition = command.disposition ?? (!modern && command.selectedIndex === null ? 'skip' : 'answered');
+    if ((disposition === 'answered') !== (modern ? command.selectedIndices.length > 0 : command.selectedIndex !== null)) throw new BadRequestException('作答状态与选项不一致');
+    if (modern && new Set(command.selectedIndices).size !== command.selectedIndices.length) throw new BadRequestException('同一个选项不能重复提交');
+    // Replay identity is computed before consulting mutable or unavailable historical keys.
+    const hash = createHash('sha256').update(JSON.stringify(modern ? ['classroom-choice-v2', command.questionId, [...command.selectedIndices].sort((a,b)=>a-b),
+      command.hintUsed, disposition, command.selectedIndex === undefined ? 'not-provided' : command.selectedIndex] :
+      [command.questionId, command.selectedIndex, command.hintUsed, ...(command.disposition === undefined ? [] : [command.disposition])])).digest('hex');
     const replay = row.requests.find(request => request.key === command.requestKey);
     if (replay) {
       if (replay.kind !== 'answer' || replay.hash !== hash) throw new ConflictException('请求标识已被其他操作使用');
@@ -187,11 +196,23 @@ export class ClassroomService {
     }
     const question = row.lesson.questions.find(item => item.id === command.questionId), key = row.answerKeys[command.questionId];
     if (!question || !key) throw new NotFoundException('课堂题目不存在');
-    if (command.selectedIndex !== null && command.selectedIndex >= question.options.length) throw new BadRequestException('选项无效');
+    const mode = question.selectionMode ?? 'single';
+    if (!modern && mode !== 'single') throw new BadRequestException('本题为多选，请使用本题完整选择集合');
+    const rawSelection = modern ? command.selectedIndices : command.selectedIndex === null ? [] : [command.selectedIndex];
+    let selectedIndices: number[], correctIndices: number[];
+    try {
+      selectedIndices = normalizeClassroomSelection(mode, question.options.length, rawSelection, disposition);
+      correctIndices = normalizeClassroomSelection(mode, question.options.length, Array.isArray(key.answer) ? key.answer : [key.answer], 'answered');
+    } catch (error) { throw new BadRequestException(error instanceof Error ? error.message : '本题选择结构暂不可用'); }
+    if (mode === 'multiple' && (correctIndices.length < 2 || correctIndices.length >= question.options.length)) throw new BadRequestException('本题评分结构暂不可用，请反馈后再试');
+    const selectedIndex = mode === 'single' && selectedIndices.length ? selectedIndices[0] : null;
+    if (modern && command.selectedIndex !== undefined && command.selectedIndex !== selectedIndex) throw new BadRequestException('单选索引与完整选择集合不一致');
     // The first submitted answer is immutable. Reopening a lesson cannot erase an error or hint.
     if (!row.answers.some(answer => answer.questionId === command.questionId)) {
-      row.answers.push({ questionId: question.id, selectedIndex: command.selectedIndex, correct: command.selectedIndex === key.answer,
-        skipped: command.selectedIndex === null, explanation: key.explanation,...(row.authoringAnswerExposure?{answerExposure:'authorship' as const}:{}),
+      row.answers.push({ questionId: question.id, selectedIndex, selectedIndices, correctIndices,
+        ...(key.optionExplanations ? { optionExplanations: structuredClone(key.optionExplanations) } : {}),
+        correct: disposition === 'answered' && selectedIndices.length === correctIndices.length && selectedIndices.every((value, index) => value === correctIndices[index]),
+        skipped: disposition !== 'answered', explanation: key.explanation,...(row.authoringAnswerExposure?{answerExposure:'authorship' as const}:{}),
         hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)) || Boolean(row.hintReceipts?.some(hint => hint.questionId === question.id)), disposition,
         hintLevel: Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === question.id).map(hint => hint.level)), at: new Date().toISOString() });
       row.revision++; row.updatedAt = new Date().toISOString();

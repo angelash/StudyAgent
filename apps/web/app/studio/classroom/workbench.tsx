@@ -23,6 +23,7 @@ import { replyBoardMarkdown } from './reply-board-notes';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
 import { ClassroomToolTour } from './tool-tour';
 import { useVoicePreview } from './voice-preview';
+import { usePracticeDraft } from './practice-draft';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
   return <span className="cl-ring" data-state={state} aria-label={{ new: '未开始', started: '已接触', viewed: '讲解已读', correct: '本题答对' }[state]} />;
@@ -98,7 +99,8 @@ export function ClassroomWorkbench() {
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
   if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><Link href="/parent/login">登录学习工作台 →</Link></div>;
-  if (session) return <ClassroomSession key={session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
+  if (session && session.ownerUserId !== identity.id) return <div className="cl-loading" role="status">正在切换当前账号的课堂…</div>;
+  if (session) return <ClassroomSession key={identity.id + ':' + session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
     unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session.lessonId)) || session.lessonId === 'unit-exam:' + unit.id)}
     onClose={close} onNext={(id, tab = 'history', useCurrentVersion = false) => void open(id, tab, studio.current, 'push', false, undefined, useCurrentVersion,sourceCourse.current)} />;
   const course = catalog?.course, unit = course?.units[unitIndex];
@@ -167,7 +169,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
   const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [operationBusy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
-  const [selected, setSelected] = React.useState<Record<string, number>>({}), [hinted, setHinted] = React.useState<string[]>(initial.hintedQuestionIds ?? []), [questionIndex, setQuestionIndex] = React.useState(() => classroomPracticeSummary(initial.lesson.questions, initial.answers).nextQuestionIndex);
+  const [hinted, setHinted] = React.useState<string[]>(initial.hintedQuestionIds ?? []), [questionIndex, setQuestionIndex] = React.useState(() => classroomPracticeSummary(initial.lesson.questions, initial.answers).nextQuestionIndex);
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);
   const [readingReply, setReadingReply] = React.useState(''), [award, setAward] = React.useState(false);
   const [replySubtitle, setReplySubtitle] = React.useState('');
@@ -191,7 +193,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     onSession:value=>{cache.current.clear();return receive(value);},onNotice:setNotice,onClose:()=>setSettings(false)});
   const [intent,setIntent]=React.useState<ClassroomTurnIntent>('question');
   const turns=useClassroomTurns({session,onSession:receive,onNotice:setNotice});
-  const busy=operationBusy||captions.busy||turns.working||turns.active;
+  const practiceDraft = usePracticeDraft(session, receive);
+  const busy=operationBusy||captions.busy||turns.working||turns.active||practiceDraft.working;
   const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed });
   React.useEffect(()=>{if(!settings)printOperation.current?.abort();},[settings]);
   React.useEffect(()=>()=>printOperation.current?.abort(),[]);
@@ -394,14 +397,13 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       setPage(Math.floor(turn.position.cursor / 3)); setTab('history'); setStandalonePractice(false); setPlaying(true);
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
-  async function answer(selectedIndex: number | null, disposition?: 'skip' | 'dont_know') {
+  async function answer(disposition?: 'skip' | 'dont_know', recover = false) {
     const item = lesson.questions[questionIndex]; if (!item || busy) return;
     pause(); setBusy(true); setNotice('');
     try {
       await revisionQueue.current.catch(() => undefined);
-      receive(await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + row.current.id + '/answers', { method: 'POST',
-        body: JSON.stringify({ questionId: item.id, selectedIndex, hintUsed: hinted.includes(item.id), ...(disposition ? { disposition } : {}), requestKey: crypto.randomUUID() }) }));
-    } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
+      if (mounted.current) await practiceDraft.submit(recover ? undefined : item.id, disposition);
+    } catch (error) { if (mounted.current) setNotice((error as Error).message); } finally { if (mounted.current) setBusy(false); }
   }
   async function hint(questionId: string, level: number) {
     if (busy) return;
@@ -454,11 +456,16 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   }
   const questionItem = lesson.questions[questionIndex], receipt = session.answers.find(answer => answer.questionId === questionItem?.id);
   const nextLesson = lesson.nextLessonId?{id:lesson.nextLessonId}:unit?.lectures.flatMap(lecture => lecture.lessons).find((_, index, list) => list[index - 1]?.id === lesson.id);
-  function practice(standalone: boolean) { return <PracticePanel questions={lesson.questions} answers={session.answers} questionIndex={questionIndex}
-    selected={selected} hinted={hinted} hintReceipts={session.hintReceipts} busy={busy} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
-    onSelect={(id, index) => setSelected(value => ({ ...value, [id]: index }))}
+  function practice(standalone: boolean) { return <PracticePanel recovery={<div className="cl-choice-recovery" aria-label="作答恢复">
+    {(practiceDraft.notice || practiceDraft.storageNotice) && <p role="status">{[practiceDraft.notice, practiceDraft.storageNotice].filter(Boolean).join(' ')}</p>}
+    {practiceDraft.pending && <p>第{lesson.questions.findIndex(q => q.id === practiceDraft.pending!.questionId) + 1}题原提交尚待确认。<button disabled={busy} onClick={() => void answer(undefined, true)}>读取并恢复原提交</button></p>}
+    {(practiceDraft.pending || practiceDraft.rejected || practiceDraft.storageNotice) && <button onClick={practiceDraft.download}>下载选择与原提交副本</button>}
+    {!practiceDraft.pending && !receipt && !!practiceDraft.choices[questionItem?.id]?.length && <button disabled={busy} onClick={() => practiceDraft.clear(questionItem.id)}>清空本题未提交选择</button>}
+    </div>} questions={lesson.questions} answers={session.answers} questionIndex={questionIndex}
+    selected={practiceDraft.choices} hinted={hinted} hintReceipts={session.hintReceipts} busy={busy || !practiceDraft.ready || !!practiceDraft.pending} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
+    onSelect={practiceDraft.select}
     assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
-    onHint={(id,level) => void hint(id,level)} onAnswer={(index,disposition) => void answer(index,disposition)}
+    onHint={(id,level) => void hint(id,level)} onAnswer={disposition => void answer(disposition)}
     onClose={() => setExit(true)} onAssistant={() => { setShowChat(!showChat); setTab('history'); }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomStepUnits(session,current)[session.sentenceCursor ?? 0]?.text : '准备好后，点击 ▶ 开始。');
   return <main className="cl-room" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>

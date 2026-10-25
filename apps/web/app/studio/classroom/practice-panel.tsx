@@ -1,20 +1,22 @@
 'use client';
 import * as React from 'react';
 import type { ClassroomQuestion, ClassroomAnswerReceipt, ClassroomHintReceipt, ClassroomLesson, ClassroomSessionView } from '@study-agent/contracts';
-import { classroomPracticeSummary } from '@study-agent/contracts';
+import { classroomPracticeSummary, classroomReceiptSelection } from '@study-agent/contracts';
 import { ClassroomFigure } from './diagram';
+import { ClassroomImage } from './board-step';
 import './practice-review.css';
 
 export function PracticePanel({ questions, answers, questionIndex, selected, hinted, hintReceipts = [], busy, standalone, lessonId, assessment,
-  contentStatus, notice, onDismiss, onCurrent, onLearn, onIndex, onSelect, onHint, onAnswer, onClose, onAssistant }: {
+  contentStatus, notice, recovery, onDismiss, onCurrent, onLearn, onIndex, onSelect, onHint, onAnswer, onClose, onAssistant }: {
   questions: ClassroomQuestion[]; answers: ClassroomAnswerReceipt[]; questionIndex: number;
-  selected: Record<string, number>; hinted: string[]; busy: boolean; standalone: boolean; lessonId: string;
+  selected: Record<string, number[]>; hinted: string[]; busy: boolean; standalone: boolean; lessonId: string;
   hintReceipts?: ClassroomHintReceipt[];
   notice?: string; onDismiss?: () => void;
+  recovery?: React.ReactNode;
   assessment?: ClassroomLesson['assessment']; contentStatus?: ClassroomSessionView['contentStatus'];
   onCurrent?: () => void; onLearn?: (lessonId: string) => void;
   onIndex: (index: number) => void; onSelect: (id: string, index: number) => void; onHint: (id: string, level: number) => void;
-  onAnswer: (index: number | null, disposition?: 'skip' | 'dont_know') => void; onClose: () => void; onAssistant: () => void;
+  onAnswer: (disposition?: 'skip' | 'dont_know') => void; onClose: () => void; onAssistant: () => void;
 }) {
   const summary = classroomPracticeSummary(questions, answers);
   const panelRef = React.useRef<HTMLElement | null>(null);
@@ -25,16 +27,12 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
   React.useEffect(() => { if (summary.complete) setShowSummary(true); }, [summary.complete]);
   React.useEffect(() => { if (showSummary) panelRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' }); }, [showSummary]);
   function selectQuestion(index: number) { setShowSummary(false); onIndex(index); panelRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' }); }
-  React.useEffect(() => {
-    if (!standalone || !item || showSummary) return;
-    function keyboard(event: KeyboardEvent) {
-      if ((event.target as HTMLElement)?.closest('input,textarea,select,button,[contenteditable]')) return;
-      const digit = Number(event.key) - 1;
-      if (!receipt && !busy && digit >= 0 && digit < item.options.length) { event.preventDefault(); onSelect(item.id, digit); }
-      if (event.key === 'Enter' && !receipt && !busy && selected[item.id] !== undefined) { event.preventDefault(); onAnswer(selected[item.id]); }
-    }
-    window.addEventListener('keydown', keyboard); return () => window.removeEventListener('keydown', keyboard);
-  }, [standalone, item, receipt, busy, selected, onSelect, onAnswer, showSummary]);
+  function keyboard(event: React.KeyboardEvent<HTMLElement>) {
+    if (!item || showSummary || receipt || busy || event.altKey || event.ctrlKey || event.metaKey || event.repeat ||
+      (event.target as HTMLElement)?.closest('input,textarea,select,button,[contenteditable],[role=dialog]')) return;
+    if (/^[1-8]$/.test(event.key) && Number(event.key) <= item.options.length) { event.preventDefault(); onSelect(item.id, Number(event.key) - 1); }
+    if (event.key === 'Enter' && selected[item.id]?.length) { event.preventDefault(); onAnswer(); }
+  }
   if (!item) return <div className="cl-empty">本节请使用独立测量入口核查理解。</div>;
   const heading = standalone ? <header className="cl-practice-top"><button aria-label="关闭独立练习" onClick={onClose}>×</button>
     <nav className="cl-practice-progress" aria-label="题目进度">{questions.map((question, index) => <button key={question.id}
@@ -49,7 +47,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
     <span>题目、首次作答和评分仍按当时的内容保存。</span>{contentStatus === 'archived' && onCurrent && <button onClick={onCurrent}>打开新版内容</button>}</aside>;
   const message = notice && <aside className="cl-practice-notice" role="alert"><span>{notice}</span>{onDismiss && <button aria-label="关闭练习提示" onClick={onDismiss}>×</button>}</aside>;
   if (showSummary && summary.complete) return <section ref={panelRef} className={'cl-practice-layout' + (standalone ? ' cl-practice-full' : '')} aria-label="课堂练习复盘" data-many={questions.length > 8}>
-    {heading}{message}{version}<div className="cl-practice-card cl-review-card"><span className="cl-review-eyebrow">{assessment ? 'UNIT CHECK' : 'PRACTICE'} / 本次记录</span>
+    {heading}{message}{recovery}{version}<div className="cl-practice-card cl-review-card"><span className="cl-review-eyebrow">{assessment ? 'UNIT CHECK' : 'PRACTICE'} / 本次记录</span>
       <h2>先看清这次，再决定下一步。</h2><p>{assessment?.notice ?? '以下只汇总本组首次作答。提示、跳过和答错分别保留，不由正确率直接判断稳定掌握。'}</p>
       <dl className="cl-review-counts"><div><dt>已记录</dt><dd>{summary.answered}/{summary.total}</dd></div><div><dt>独立答对</dt><dd>{summary.independentCorrect}</dd></div><div><dt>答错</dt><dd>{summary.incorrect}</dd></div><div><dt>跳过</dt><dd>{summary.skipped}</dd></div><div><dt>不会</dt><dd>{summary.dontKnow}</dd></div><div><dt>使用帮助</dt><dd>{summary.assisted}</dd></div></dl>
       <p className="cl-review-note">“使用帮助”可能与答对、答错、跳过或不会重合。回看和重新选择不会覆盖首次提交。</p>
@@ -64,26 +62,32 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
       <footer className="cl-review-actions"><button className="cl-review-primary" onClick={onClose}>返回课程，安排下一步</button><button onClick={() => selectQuestion(0)}>回看全部题目</button></footer>
     </div>
   </section>;
+  const chosen = receipt ? classroomReceiptSelection(receipt) : selected[item.id] ?? [], multiple = item.selectionMode === 'multiple';
   return <section ref={panelRef} className={'cl-practice-layout' + (standalone ? ' cl-practice-full' : '')} aria-label="课堂练习题目" data-many={questions.length > 8}>
-    {heading}{message}{version}<div className="cl-practice-card">
+    {heading}{message}{recovery}{version}<div className="cl-practice-card">
       {assessment && <p className="cl-unit-check-note">12个新情境 · 覆盖本单元各个主题 · 首次作答、提示与跳过分别记录</p>}
-      <div className="cl-practice-body"><div className="cl-practice-prompt"><small>SINGLE CHOICE · {questionIndex + 1} / {questions.length}{item.topic ? ' · ' + item.topic.title : ''}</small><h2>{item.prompt}</h2>
-      {lessonId === 'soc-1-1-1' && questionIndex < 5 && <figure className="cl-practice-image"><img src={questionIndex === 2 ? '/classroom/agency-river-c7a9e2.webp' : '/classroom/venn-d8b3f1.webp'}
-        alt={questionIndex === 2 ? '划船、河流与共同改善航道的概念插图' : '个人传记与历史结构相交的韦恩图'}/></figure>}
+      <div className="cl-practice-body" data-multiple={multiple} tabIndex={0} aria-label="题目作答区域，数字键选择，回车提交" onKeyDown={keyboard}><div className="cl-practice-prompt"><small>{multiple ? 'MULTIPLE CHOICE' : 'SINGLE CHOICE'} · {questionIndex + 1} / {questions.length}{item.topic ? ' · ' + item.topic.title : ''}</small><h2>{item.prompt}</h2>
+      <p className="cl-choice-instruction">{multiple ? '选择所有符合项。本题须选全且不多选。' : '选择一个最合适的选项。'}</p>
+      <p className="cl-choice-selection" role="status">{receipt ? '首次提交已锁定' : '当前选择'}：{chosen.length ? chosen.map(index => index + 1).join('、') : '未选'}{multiple && !receipt ? ' · 再次选择可取消' : ''}</p>
+      {lessonId === 'soc-1-1-1' && questionIndex < 5 && <ClassroomImage image={{src:questionIndex === 2 ? '/classroom/agency-river-c7a9e2.webp' : '/classroom/venn-d8b3f1.webp',
+        alt:questionIndex === 2 ? '划船、河流与共同改善航道的概念插图' : '个人传记与历史结构相交的韦恩图', caption:questionIndex === 2 ? '结构与能动性' : '传记与历史'}}/>}
       {item.table && <figure className="cl-practice-data"><figcaption>{item.table.caption}</figcaption><div role="region" aria-label={'题目数据：' + item.table.caption} tabIndex={0}><table><thead><tr>{item.table.headers.map((header,index) => <th key={index} scope="col">{header}</th>)}</tr></thead><tbody>{item.table.rows.map((cells,index) => <tr key={index}>{cells.map((cell,index) => <td key={index}>{cell}</td>)}</tr>)}</tbody></table></div></figure>}
       {item.diagram && <ClassroomFigure diagram={item.diagram}/>}</div>
-      <fieldset className="cl-practice-options" disabled={busy || Boolean(receipt)}><legend className="sr-only">答案选项</legend>{item.options.map((option, index) => <label key={index}
-        data-selected={receipt ? receipt.selectedIndex === index : selected[item.id] === index}>
-        <input type="radio" name={item.id} checked={receipt ? receipt.selectedIndex === index : selected[item.id] === index} onChange={() => onSelect(item.id, index)}/>
-        <span className="cl-option-shape" data-shape={index % 4} aria-hidden="true">{['▲', '◆', '●', '■'][index % 4]}</span><span>{option}</span><b>{index + 1}</b>
-      </label>)}</fieldset></div>
+      <fieldset className="cl-practice-options" data-multiple={multiple} disabled={busy || Boolean(receipt)}><legend className="sr-only">{multiple ? '选择所有符合项' : '选择一个选项'}{receipt ? '，首次作答已锁定' : ''}</legend>{item.options.map((option, index) => {
+        const selected = chosen.includes(index), correct = receipt?.correctIndices?.includes(index), attempted = receipt && !receipt.skipped;
+        const feedback = receipt?.correctIndices ? correct ? selected ? '✓ 选对' : attempted ? '○ 漏选' : '✓ 正确项' : selected ? '× 误选' : '不符合' : '';
+        return <label key={index} data-selected={selected} data-feedback={receipt?.correctIndices ? correct ? 'correct' : selected ? 'incorrect' : 'neutral' : undefined}>
+        <input type={multiple ? 'checkbox' : 'radio'} name={item.id} checked={selected} aria-describedby={feedback ? item.id + '-feedback-' + index : undefined} onChange={() => onSelect(item.id, index)}/>
+        <span className="cl-option-shape" data-shape={index % 4} aria-hidden="true">{['▲', '◆', '●', '■'][index % 4]}</span><span className="cl-option-content">{option}
+          {feedback && <small id={item.id + '-feedback-' + index} className="cl-option-feedback">{feedback}{receipt?.optionExplanations?.[index] ? ' · ' + receipt.optionExplanations[index] : ''}</small>}</span><b aria-hidden="true">{index + 1}{selected ? ' ✓' : ''}</b>
+      </label>; })}</fieldset></div>
       <div className="cl-practice-support">{receipt ? <div className="cl-answer-feedback" data-correct={receipt.correct} role="status">
         <b>{receipt.disposition === 'dont_know' ? '已记录不会，回到概念再核查' : receipt.skipped ? '已跳过，保留待复习' : receipt.correct ? '这次区分正确' : '对照概念，再看一次'}</b><p>{receipt.explanation}</p><small>{receipt.answerExposure==='authorship'?'你曾打开这份教学稿的答案，作答保留为已接触答案的学习记录，不计独立成功。':receipt.hintUsed ? receipt.hintLevel ? `本题使用过提示，已读${receipt.hintLevel}级提示，记为辅助作答。` : '本题使用过帮助，记为辅助作答。' : '已保留首次作答。'}</small>
       </div> : <><button className="cl-hint-button" disabled={busy || helpLevel >= helpCount} onClick={() => onHint(item.id, helpLevel + 1)}>{helpLevel >= helpCount ? '提示已读完' : helpLevel ? '再给我一个提示' : '先给我一个提示'}</button>
         {help.map(hint => <div className="cl-hint" key={hint.level}><small>第{hint.level}级 · {hint.level === 1 ? '判断方向' : '关键线索'}</small><p>{hint.text}</p></div>)}
         {hinted.includes(item.id) && !help.length && <p className="cl-legacy-help">此前使用过帮助，仍可逐级查看本题提示。</p>}</>}</div>
-      <footer className="cl-practice-actions">{!receipt ? <><button className="cl-check" disabled={busy || selected[item.id] === undefined} onClick={() => onAnswer(selected[item.id])}>Check →</button>
-        <button className="cl-skip" disabled={busy} onClick={() => onAnswer(null, 'skip')}>Skip</button><button className="cl-dont-know" disabled={busy} onClick={() => onAnswer(null, 'dont_know')}>这题我不会</button></> : summary.complete ? <button className="cl-check" onClick={() => setShowSummary(true)}>查看本次复盘 →</button>
+      <footer className="cl-practice-actions">{!receipt ? <><button className="cl-check" disabled={busy || !chosen.length} onClick={() => onAnswer()}>Check →</button>
+        <button className="cl-skip" disabled={busy} onClick={() => onAnswer('skip')}>Skip</button><button className="cl-dont-know" disabled={busy} onClick={() => onAnswer('dont_know')}>这题我不会</button></> : summary.complete ? <button className="cl-check" onClick={() => setShowSummary(true)}>查看本次复盘 →</button>
         : questionIndex + 1 < questions.length ? <button className="cl-check" disabled={busy} onClick={() => selectQuestion(questionIndex + 1)}>下一题 →</button>
           : <button className="cl-check" disabled={busy} onClick={() => selectQuestion(summary.nextQuestionIndex)}>继续未答的第{summary.nextQuestionIndex + 1}题 →</button>}</footer>
     </div>

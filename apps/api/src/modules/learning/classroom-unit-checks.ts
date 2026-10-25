@@ -5,7 +5,7 @@ export type UnitCheckSeed = {
   lessonId: string; purpose: 'application' | 'evidence' | 'boundary'; prompt: string;
   options: [string, string, string, string]; answer: number; hint: string; explanation: string;
 };
-export const UNIT_CHECK_VERSION = 'sociology-unit-checks-v1';
+export const UNIT_CHECK_VERSION = 'sociology-unit-checks-v2';
 export const unitChecks: Record<string, UnitCheckSeed[]> = {
   'soc-u1': [
     { lessonId: 'soc-1-1-1', purpose: 'application', prompt: '一座城市的年轻租户普遍推迟独立居住。用社会学想象力研究时，哪项比较最有帮助？',

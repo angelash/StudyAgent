@@ -62,7 +62,7 @@ describe('classroom teaching sessions and persistent isolation', () => {
       }
     }
     for (const unit of classroomCourse().units) expect(classroomLesson('unit-exam:' + unit.id)?.questions).toHaveLength(12);
-    expect(classroomLesson('soc-1-1-1')?.questions).toHaveLength(5);
+    expect(classroomLesson('soc-1-1-1')?.questions).toHaveLength(6);
     const session = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
     const replay = await call('post', base + '/sessions', { lessonId: 'soc-1-1-1' });
     expect(replay.id).toBe(session.id);
