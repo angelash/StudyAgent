@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`dc93206bec22ff08d6f8da61467094b543575c96`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`dc4460e3e5cd4d6c72330e78578302a8a8369314`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -17,6 +17,7 @@
 ## 共享契约
 
 - [packages/contracts/src/studio.ts](../../../packages/contracts/src/studio.ts)
+- [packages/contracts/src/whiteboard-speech.ts](../../../packages/contracts/src/whiteboard-speech.ts)
 - [packages/contracts/src/classroom.ts](../../../packages/contracts/src/classroom.ts)
 - [packages/contracts/src/classroom-choice.ts](../../../packages/contracts/src/classroom-choice.ts)
 - [packages/contracts/src/course-project.ts](../../../packages/contracts/src/course-project.ts)
@@ -25,6 +26,10 @@
 
 以下是对应功能领域的测试入口；测试文件存在不等于每个子场景已由真人或所有设备验证。
 
+- [apps/api/src/modules/learning/whiteboard-speech.test.ts](../../../apps/api/src/modules/learning/whiteboard-speech.test.ts)
+- [apps/api/src/modules/learning/whiteboard-webm.test.ts](../../../apps/api/src/modules/learning/whiteboard-webm.test.ts)
+- [apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts](../../../apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts)
+- [tests/e2e/whiteboard-media.spec.ts](../../../tests/e2e/whiteboard-media.spec.ts)
 - [apps/api/src/modules/learning/studio-course.test.ts](../../../apps/api/src/modules/learning/studio-course.test.ts)
 - [apps/api/src/modules/learning/studio.integration.test.ts](../../../apps/api/src/modules/learning/studio.integration.test.ts)
 - [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
@@ -57,7 +62,7 @@
 
 **关联接口**：
 
-- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:18](../../../apps/api/src/modules/learning/learning.controller.ts#L18)。
+- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)。
 
 **服务方法**：
 
@@ -82,15 +87,15 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/courses/preview` → `LearningController.studioCoursePreview`；[apps/api/src/modules/learning/learning.controller.ts:22](../../../apps/api/src/modules/learning/learning.controller.ts#L22)。
-- `POST /api/learning/studio/courses` → `LearningController.studioCourseCreate`；[apps/api/src/modules/learning/learning.controller.ts:25](../../../apps/api/src/modules/learning/learning.controller.ts#L25)。
-- `POST /api/learning/studio/courses/:courseId/lessons/:lessonId/start` → `LearningController.studioLessonStart`；[apps/api/src/modules/learning/learning.controller.ts:28](../../../apps/api/src/modules/learning/learning.controller.ts#L28)。
+- `POST /api/learning/studio/courses/preview` → `LearningController.studioCoursePreview`；[apps/api/src/modules/learning/learning.controller.ts:23](../../../apps/api/src/modules/learning/learning.controller.ts#L23)。
+- `POST /api/learning/studio/courses` → `LearningController.studioCourseCreate`；[apps/api/src/modules/learning/learning.controller.ts:26](../../../apps/api/src/modules/learning/learning.controller.ts#L26)。
+- `POST /api/learning/studio/courses/:courseId/lessons/:lessonId/start` → `LearningController.studioLessonStart`；[apps/api/src/modules/learning/learning.controller.ts:29](../../../apps/api/src/modules/learning/learning.controller.ts#L29)。
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:495](../../../apps/api/src/modules/learning/learning.service.ts#L495)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:511](../../../apps/api/src/modules/learning/learning.service.ts#L511)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:540](../../../apps/api/src/modules/learning/learning.service.ts#L540)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:519](../../../apps/api/src/modules/learning/learning.service.ts#L519)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:535](../../../apps/api/src/modules/learning/learning.service.ts#L535)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:564](../../../apps/api/src/modules/learning/learning.service.ts#L564)。
 
 **补充实现文件**：
 
@@ -304,20 +309,20 @@
 
 ## STUDIO-09 自由主题白板预览与持久保存
 
-**输入**：学生、学科、主题、可选已审核知识点。
+**输入**：学生、学科、主题、可选已审核知识点、原预览指纹和请求键。
 
-**处理与实现**：规则生成分幕标题、概念、步骤、图形和检查点；保存前在所有旧请求/内容去重返回之前校验当前学生访问权，撤销绑定后旧命令也不能取得正文；预览和保存使用内容指纹、请求键；保存后可继续播放。
+**处理与实现**：规则生成分幕标题、概念、步骤、图形和检查点，示范旁白覆盖完整步骤；所有重放前先核对当前学生权限；原请求回执绑定本人、动作摘要、范围与原白板，同文新键记录自己的回执，旧无法证明关联的键明确冲突且保留原稿。
 
-**输出**：StudioWhiteboard与幕序。
+**输出**：冻结StudioWhiteboard、幕序与原操作回执。
 
 **状态与持久化**：`studioWhiteboards`、`studioActivities`
 
-**权限、失败与边界**：自由主题不等同于模型已核验知识正确性；有批准教学时优先使用。
+**权限、失败与边界**：自由主题仍是教学卡或通用模板，任意主题AI尚未接入；旧稿与指纹不被逐句投影回写。
 
 **关联接口**：
 
-- `POST /api/learning/studio/whiteboards/preview` → `LearningController.studioWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:32](../../../apps/api/src/modules/learning/learning.controller.ts#L32)。
-- `POST /api/learning/studio/whiteboards` → `LearningController.studioWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:35](../../../apps/api/src/modules/learning/learning.controller.ts#L35)。
+- `POST /api/learning/studio/whiteboards/preview` → `LearningController.studioWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:33](../../../apps/api/src/modules/learning/learning.controller.ts#L33)。
+- `POST /api/learning/studio/whiteboards` → `LearningController.studioWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:36](../../../apps/api/src/modules/learning/learning.controller.ts#L36)。
 
 **服务方法**：
 
@@ -328,29 +333,35 @@
 
 - [apps/api/src/modules/learning/studio-whiteboard.ts](../../../apps/api/src/modules/learning/studio-whiteboard.ts)
 
-## STUDIO-10 白板视频、SRT与AI旁白
+## STUDIO-10 逐句白板、真实音轨与一致视频字幕时间表
 
-**输入**：白板ID、幕ID、可用语音与浏览器录制能力。
+**输入**：原白板/幕、whiteboard-speech-v1、指纹/原文单位、音色、速度、当前账号与浏览器能力。
 
-**处理与实现**：Canvas按时间绘制；可请求每幕旁白并与画面合成MediaStream；MediaRecorder输出WebM；始终可导出SRT；finally释放音频上下文与轨道。
+**处理与实现**：只读派生稳定原文跨度和整项板书；新请求只合成冻结单位并在合成后再授权，旧voice-only请求保留整幕；Audio ended推进云朗读、文字显式估计，暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据，取消/录制异常不下载半成品。
 
-**输出**：字幕视频、旁白视频、SRT。
+**输出**：当前句、完整笔记、可恢复位置、WebM和逐句SRT。
 
 **状态与持久化**：`studioWhiteboards`
 
-**权限、失败与边界**：没有AI语音时生成字幕视频并明确提示；需要支持录制的浏览器。
+**权限、失败与边界**：云失败明确重试或手动选文字；浏览器不支持录制时保留字幕。当前实际小视频和合成WAV不能替代真人听感/设备/完整原CSS字体DPR；真实AIGW小样与端点替身分别留证，任意主题AI和复杂图形仍待。
 
 **关联接口**：
 
-- `POST /api/learning/studio/whiteboards/:id/narration/:sceneId` → `LearningController.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.controller.ts:66](../../../apps/api/src/modules/learning/learning.controller.ts#L66)。
+- `POST /api/learning/studio/whiteboards/:id/narration/:sceneId` → `LearningController.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.controller.ts:67](../../../apps/api/src/modules/learning/learning.controller.ts#L67)。
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:484](../../../apps/api/src/modules/learning/learning.service.ts#L484)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:500](../../../apps/api/src/modules/learning/learning.service.ts#L500)。
 
 **补充实现文件**：
 
+- [packages/contracts/src/whiteboard-speech.ts](../../../packages/contracts/src/whiteboard-speech.ts)
 - [apps/web/app/studio/whiteboard-player.tsx](../../../apps/web/app/studio/whiteboard-player.tsx)
+- [apps/web/app/studio/whiteboard-session.tsx](../../../apps/web/app/studio/whiteboard-session.tsx)
+- [apps/web/app/studio/whiteboard-canvas.tsx](../../../apps/web/app/studio/whiteboard-canvas.tsx)
+- [apps/web/app/studio/whiteboard-media.ts](../../../apps/web/app/studio/whiteboard-media.ts)
+- [apps/web/app/studio/whiteboard-webm.ts](../../../apps/web/app/studio/whiteboard-webm.ts)
+- [tests/e2e/whiteboard-media.spec.ts](../../../tests/e2e/whiteboard-media.spec.ts)
 
 ## STUDIO-11 PDF上传、原文与逐页阅读
 
@@ -366,15 +377,15 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/pdf` → `LearningController.studioPdfUpload`；[apps/api/src/modules/learning/learning.controller.ts:38](../../../apps/api/src/modules/learning/learning.controller.ts#L38)。
-- `GET /api/learning/studio/materials/:id/pages/:page` → `LearningController.studioPdfPage`；[apps/api/src/modules/learning/learning.controller.ts:41](../../../apps/api/src/modules/learning/learning.controller.ts#L41)。
-- `GET /api/learning/studio/materials/:id/original` → `LearningController.studioPdfOriginal`；[apps/api/src/modules/learning/learning.controller.ts:43](../../../apps/api/src/modules/learning/learning.controller.ts#L43)。
+- `POST /api/learning/studio/materials/pdf` → `LearningController.studioPdfUpload`；[apps/api/src/modules/learning/learning.controller.ts:39](../../../apps/api/src/modules/learning/learning.controller.ts#L39)。
+- `GET /api/learning/studio/materials/:id/pages/:page` → `LearningController.studioPdfPage`；[apps/api/src/modules/learning/learning.controller.ts:42](../../../apps/api/src/modules/learning/learning.controller.ts#L42)。
+- `GET /api/learning/studio/materials/:id/original` → `LearningController.studioPdfOriginal`；[apps/api/src/modules/learning/learning.controller.ts:44](../../../apps/api/src/modules/learning/learning.controller.ts#L44)。
 
 **服务方法**：
 
-- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:251](../../../apps/api/src/modules/learning/learning.service.ts#L251)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:312](../../../apps/api/src/modules/learning/learning.service.ts#L312)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:322](../../../apps/api/src/modules/learning/learning.service.ts#L322)。
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:258](../../../apps/api/src/modules/learning/learning.service.ts#L258)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:319](../../../apps/api/src/modules/learning/learning.service.ts#L319)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:329](../../../apps/api/src/modules/learning/learning.service.ts#L329)。
 
 **补充实现文件**：
 
@@ -413,13 +424,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/:id/structure/review` → `LearningController.studioPdfStructureReview`；[apps/api/src/modules/learning/learning.controller.ts:46](../../../apps/api/src/modules/learning/learning.controller.ts#L46)。
-- `POST /api/learning/studio/materials/:id/process/retry` → `LearningController.studioPdfProcessRetry`；[apps/api/src/modules/learning/learning.controller.ts:50](../../../apps/api/src/modules/learning/learning.controller.ts#L50)。
+- `POST /api/learning/studio/materials/:id/structure/review` → `LearningController.studioPdfStructureReview`；[apps/api/src/modules/learning/learning.controller.ts:47](../../../apps/api/src/modules/learning/learning.controller.ts#L47)。
+- `POST /api/learning/studio/materials/:id/process/retry` → `LearningController.studioPdfProcessRetry`；[apps/api/src/modules/learning/learning.controller.ts:51](../../../apps/api/src/modules/learning/learning.controller.ts#L51)。
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:337](../../../apps/api/src/modules/learning/learning.service.ts#L337)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:365](../../../apps/api/src/modules/learning/learning.service.ts#L365)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:344](../../../apps/api/src/modules/learning/learning.service.ts#L344)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:372](../../../apps/api/src/modules/learning/learning.service.ts#L372)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -435,13 +446,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/:id/whiteboard/preview` → `LearningController.studioPdfWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:54](../../../apps/api/src/modules/learning/learning.controller.ts#L54)。
-- `POST /api/learning/studio/materials/:id/whiteboard` → `LearningController.studioPdfWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:56](../../../apps/api/src/modules/learning/learning.controller.ts#L56)。
+- `POST /api/learning/studio/materials/:id/whiteboard/preview` → `LearningController.studioPdfWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:55](../../../apps/api/src/modules/learning/learning.controller.ts#L55)。
+- `POST /api/learning/studio/materials/:id/whiteboard` → `LearningController.studioPdfWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:57](../../../apps/api/src/modules/learning/learning.controller.ts#L57)。
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:400](../../../apps/api/src/modules/learning/learning.service.ts#L400)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:415](../../../apps/api/src/modules/learning/learning.service.ts#L415)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:407](../../../apps/api/src/modules/learning/learning.service.ts#L407)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:422](../../../apps/api/src/modules/learning/learning.service.ts#L422)。
 
 **补充实现文件**：
 
@@ -461,13 +472,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/study-packs/preview` → `LearningController.studioLearningPackPreview`；[apps/api/src/modules/learning/learning.controller.ts:60](../../../apps/api/src/modules/learning/learning.controller.ts#L60)。
-- `POST /api/learning/studio/study-packs` → `LearningController.studioLearningPackCreate`；[apps/api/src/modules/learning/learning.controller.ts:63](../../../apps/api/src/modules/learning/learning.controller.ts#L63)。
+- `POST /api/learning/studio/study-packs/preview` → `LearningController.studioLearningPackPreview`；[apps/api/src/modules/learning/learning.controller.ts:61](../../../apps/api/src/modules/learning/learning.controller.ts#L61)。
+- `POST /api/learning/studio/study-packs` → `LearningController.studioLearningPackCreate`；[apps/api/src/modules/learning/learning.controller.ts:64](../../../apps/api/src/modules/learning/learning.controller.ts#L64)。
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:436](../../../apps/api/src/modules/learning/learning.service.ts#L436)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:457](../../../apps/api/src/modules/learning/learning.service.ts#L457)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:452](../../../apps/api/src/modules/learning/learning.service.ts#L452)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:473](../../../apps/api/src/modules/learning/learning.service.ts#L473)。
 
 **补充实现文件**：
 
@@ -487,9 +498,9 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/study-plans/preview` → `LearningController.studioStudyPlanPreview`；[apps/api/src/modules/learning/learning.controller.ts:91](../../../apps/api/src/modules/learning/learning.controller.ts#L91)。
-- `POST /api/learning/studio/study-plans` → `LearningController.studioStudyPlanCreate`；[apps/api/src/modules/learning/learning.controller.ts:94](../../../apps/api/src/modules/learning/learning.controller.ts#L94)。
-- `POST /api/learning/studio/study-plans/:planId/sessions/:sessionId` → `LearningController.studioStudyPlanSession`；[apps/api/src/modules/learning/learning.controller.ts:97](../../../apps/api/src/modules/learning/learning.controller.ts#L97)。
+- `POST /api/learning/studio/study-plans/preview` → `LearningController.studioStudyPlanPreview`；[apps/api/src/modules/learning/learning.controller.ts:100](../../../apps/api/src/modules/learning/learning.controller.ts#L100)。
+- `POST /api/learning/studio/study-plans` → `LearningController.studioStudyPlanCreate`；[apps/api/src/modules/learning/learning.controller.ts:103](../../../apps/api/src/modules/learning/learning.controller.ts#L103)。
+- `POST /api/learning/studio/study-plans/:planId/sessions/:sessionId` → `LearningController.studioStudyPlanSession`；[apps/api/src/modules/learning/learning.controller.ts:106](../../../apps/api/src/modules/learning/learning.controller.ts#L106)。
 
 **服务方法**：
 
@@ -515,9 +526,9 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/integrations` → `LearningController.studioIntegrationConnect`；[apps/api/src/modules/learning/learning.controller.ts:70](../../../apps/api/src/modules/learning/learning.controller.ts#L70)。
-- `POST /api/learning/studio/integrations/:id/sync` → `LearningController.studioIntegrationSync`；[apps/api/src/modules/learning/learning.controller.ts:73](../../../apps/api/src/modules/learning/learning.controller.ts#L73)。
-- `POST /api/learning/studio/integrations/:id/disconnect` → `LearningController.studioIntegrationDisconnect`；[apps/api/src/modules/learning/learning.controller.ts:76](../../../apps/api/src/modules/learning/learning.controller.ts#L76)。
+- `POST /api/learning/studio/integrations` → `LearningController.studioIntegrationConnect`；[apps/api/src/modules/learning/learning.controller.ts:79](../../../apps/api/src/modules/learning/learning.controller.ts#L79)。
+- `POST /api/learning/studio/integrations/:id/sync` → `LearningController.studioIntegrationSync`；[apps/api/src/modules/learning/learning.controller.ts:82](../../../apps/api/src/modules/learning/learning.controller.ts#L82)。
+- `POST /api/learning/studio/integrations/:id/disconnect` → `LearningController.studioIntegrationDisconnect`；[apps/api/src/modules/learning/learning.controller.ts:85](../../../apps/api/src/modules/learning/learning.controller.ts#L85)。
 
 **服务方法**：
 
@@ -543,10 +554,10 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/calendar/events` → `LearningController.studioCalendarEventCreate`；[apps/api/src/modules/learning/learning.controller.ts:79](../../../apps/api/src/modules/learning/learning.controller.ts#L79)。
-- `POST /api/learning/studio/calendar/events/:id/update` → `LearningController.studioCalendarEventUpdate`；[apps/api/src/modules/learning/learning.controller.ts:85](../../../apps/api/src/modules/learning/learning.controller.ts#L85)。
-- `POST /api/learning/studio/calendar/events/:id/remove` → `LearningController.studioCalendarEventRemove`；[apps/api/src/modules/learning/learning.controller.ts:82](../../../apps/api/src/modules/learning/learning.controller.ts#L82)。
-- `POST /api/learning/studio/calendar/batch-remove` → `LearningController.studioCalendarBatchRemove`；[apps/api/src/modules/learning/learning.controller.ts:88](../../../apps/api/src/modules/learning/learning.controller.ts#L88)。
+- `POST /api/learning/studio/calendar/events` → `LearningController.studioCalendarEventCreate`；[apps/api/src/modules/learning/learning.controller.ts:88](../../../apps/api/src/modules/learning/learning.controller.ts#L88)。
+- `POST /api/learning/studio/calendar/events/:id/update` → `LearningController.studioCalendarEventUpdate`；[apps/api/src/modules/learning/learning.controller.ts:94](../../../apps/api/src/modules/learning/learning.controller.ts#L94)。
+- `POST /api/learning/studio/calendar/events/:id/remove` → `LearningController.studioCalendarEventRemove`；[apps/api/src/modules/learning/learning.controller.ts:91](../../../apps/api/src/modules/learning/learning.controller.ts#L91)。
+- `POST /api/learning/studio/calendar/batch-remove` → `LearningController.studioCalendarBatchRemove`；[apps/api/src/modules/learning/learning.controller.ts:97](../../../apps/api/src/modules/learning/learning.controller.ts#L97)。
 
 **服务方法**：
 
@@ -574,7 +585,7 @@
 
 **关联接口**：
 
-- `GET /api/learning/studio/calendar/export` → `LearningController.studioCalendarExport`；[apps/api/src/modules/learning/learning.controller.ts:101](../../../apps/api/src/modules/learning/learning.controller.ts#L101)。
+- `GET /api/learning/studio/calendar/export` → `LearningController.studioCalendarExport`；[apps/api/src/modules/learning/learning.controller.ts:110](../../../apps/api/src/modules/learning/learning.controller.ts#L110)。
 
 **服务方法**：
 

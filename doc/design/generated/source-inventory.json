@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
+  "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 358,
@@ -12,11 +12,11 @@
     "apiClasses": 141,
     "apiFunctions": 399,
     "domainCollections": 95,
-    "contractTypes": 316,
+    "contractTypes": 320,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 142,
-    "browserTestFiles": 29
+    "apiTestFiles": 145,
+    "browserTestFiles": 30
   },
   "modules": [
     {
@@ -5434,7 +5434,7 @@
       "controller": "LearningController",
       "method": "students",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 13,
+      "line": 14,
       "signature": "students(@Req() req: AuthenticatedRequest)",
       "classDecorators": [
         {
@@ -5467,7 +5467,7 @@
       "controller": "LearningController",
       "method": "memory",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 14,
+      "line": 15,
       "signature": "memory(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
       "classDecorators": [
         {
@@ -5500,7 +5500,7 @@
       "controller": "LearningController",
       "method": "overview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 17,
+      "line": 18,
       "signature": "overview(@Req() req: AuthenticatedRequest)",
       "classDecorators": [
         {
@@ -5533,7 +5533,7 @@
       "controller": "LearningController",
       "method": "studioOverview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 18,
+      "line": 19,
       "signature": "studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string, @Query('subject') subject?: string, @Query('materialView') materialView?:string)",
       "classDecorators": [
         {
@@ -5566,7 +5566,7 @@
       "controller": "LearningController",
       "method": "studioCoursePreview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 22,
+      "line": 23,
       "signature": "studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5599,7 +5599,7 @@
       "controller": "LearningController",
       "method": "studioCourseCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 25,
+      "line": 26,
       "signature": "studioCourseCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5632,7 +5632,7 @@
       "controller": "LearningController",
       "method": "studioLessonStart",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 28,
+      "line": 29,
       "signature": "studioLessonStart(@Req() req: AuthenticatedRequest, @Param('courseId') courseId: string, @Param('lessonId') lessonId: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5665,7 +5665,7 @@
       "controller": "LearningController",
       "method": "studioWhiteboardPreview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 32,
+      "line": 33,
       "signature": "studioWhiteboardPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5698,7 +5698,7 @@
       "controller": "LearningController",
       "method": "studioWhiteboardCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 35,
+      "line": 36,
       "signature": "studioWhiteboardCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5731,7 +5731,7 @@
       "controller": "LearningController",
       "method": "studioPdfUpload",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 38,
+      "line": 39,
       "signature": "studioPdfUpload(@Req() req: AuthenticatedRequest, @UploadedFile() file: Express.Multer.File | undefined, @Body() input: { studentId?: string; subject?: string; requestKey?: string })",
       "classDecorators": [
         {
@@ -5771,7 +5771,7 @@
       "controller": "LearningController",
       "method": "studioPdfPage",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 41,
+      "line": 42,
       "signature": "studioPdfPage(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('page') page: string)",
       "classDecorators": [
         {
@@ -5804,7 +5804,7 @@
       "controller": "LearningController",
       "method": "studioPdfOriginal",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 43,
+      "line": 44,
       "signature": "studioPdfOriginal(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -5837,7 +5837,7 @@
       "controller": "LearningController",
       "method": "studioPdfStructureReview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 46,
+      "line": 47,
       "signature": "studioPdfStructureReview(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5870,7 +5870,7 @@
       "controller": "LearningController",
       "method": "studioPdfProcessRetry",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 50,
+      "line": 51,
       "signature": "studioPdfProcessRetry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5903,7 +5903,7 @@
       "controller": "LearningController",
       "method": "studioPdfWhiteboardPreview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 54,
+      "line": 55,
       "signature": "studioPdfWhiteboardPreview(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: { atomId?: string })",
       "classDecorators": [
         {
@@ -5936,7 +5936,7 @@
       "controller": "LearningController",
       "method": "studioPdfWhiteboardCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 56,
+      "line": 57,
       "signature": "studioPdfWhiteboardCreate(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: { atomId?: string; fingerprint: string; requestKey: string })",
       "classDecorators": [
         {
@@ -5969,7 +5969,7 @@
       "controller": "LearningController",
       "method": "studioLearningPackPreview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 60,
+      "line": 61,
       "signature": "studioLearningPackPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6002,7 +6002,7 @@
       "controller": "LearningController",
       "method": "studioLearningPackCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 63,
+      "line": 64,
       "signature": "studioLearningPackCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6035,8 +6035,8 @@
       "controller": "LearningController",
       "method": "studioWhiteboardNarration",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 66,
-      "signature": "studioWhiteboardNarration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown)",
+      "line": 67,
+      "signature": "studioWhiteboardNarration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
       "classDecorators": [
         {
           "name": "UseGuards",
@@ -6068,7 +6068,7 @@
       "controller": "LearningController",
       "method": "studioIntegrationConnect",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 70,
+      "line": 79,
       "signature": "studioIntegrationConnect(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6101,7 +6101,7 @@
       "controller": "LearningController",
       "method": "studioIntegrationSync",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 73,
+      "line": 82,
       "signature": "studioIntegrationSync(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -6134,7 +6134,7 @@
       "controller": "LearningController",
       "method": "studioIntegrationDisconnect",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 76,
+      "line": 85,
       "signature": "studioIntegrationDisconnect(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -6167,7 +6167,7 @@
       "controller": "LearningController",
       "method": "studioCalendarEventCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 79,
+      "line": 88,
       "signature": "studioCalendarEventCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6200,7 +6200,7 @@
       "controller": "LearningController",
       "method": "studioCalendarEventRemove",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 82,
+      "line": 91,
       "signature": "studioCalendarEventRemove(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -6233,7 +6233,7 @@
       "controller": "LearningController",
       "method": "studioCalendarEventUpdate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 85,
+      "line": 94,
       "signature": "studioCalendarEventUpdate(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6266,7 +6266,7 @@
       "controller": "LearningController",
       "method": "studioCalendarBatchRemove",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 88,
+      "line": 97,
       "signature": "studioCalendarBatchRemove(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6299,7 +6299,7 @@
       "controller": "LearningController",
       "method": "studioStudyPlanPreview",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 91,
+      "line": 100,
       "signature": "studioStudyPlanPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6332,7 +6332,7 @@
       "controller": "LearningController",
       "method": "studioStudyPlanCreate",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 94,
+      "line": 103,
       "signature": "studioStudyPlanCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6365,7 +6365,7 @@
       "controller": "LearningController",
       "method": "studioStudyPlanSession",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 97,
+      "line": 106,
       "signature": "studioStudyPlanSession(@Req() req: AuthenticatedRequest, @Param('planId') planId: string, @Param('sessionId') sessionId: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6398,7 +6398,7 @@
       "controller": "LearningController",
       "method": "studioCalendarExport",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 101,
+      "line": 110,
       "signature": "studioCalendarExport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: string)",
       "classDecorators": [
         {
@@ -6431,7 +6431,7 @@
       "controller": "LearningController",
       "method": "today",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 105,
+      "line": 114,
       "signature": "today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
       "classDecorators": [
         {
@@ -6464,7 +6464,7 @@
       "controller": "LearningController",
       "method": "mistakes",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 108,
+      "line": 117,
       "signature": "mistakes(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
       "classDecorators": [
         {
@@ -6497,7 +6497,7 @@
       "controller": "LearningController",
       "method": "start",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 111,
+      "line": 120,
       "signature": "start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('action') action: string)",
       "classDecorators": [
         {
@@ -6530,7 +6530,7 @@
       "controller": "LearningController",
       "method": "view",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 112,
+      "line": 121,
       "signature": "view(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -6563,7 +6563,7 @@
       "controller": "LearningController",
       "method": "render",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 113,
+      "line": 122,
       "signature": "render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
       "classDecorators": [
         {
@@ -6596,7 +6596,7 @@
       "controller": "LearningController",
       "method": "submit",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 114,
+      "line": 123,
       "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6629,7 +6629,7 @@
       "controller": "LearningController",
       "method": "draft",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 115,
+      "line": 124,
       "signature": "draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -6662,7 +6662,7 @@
       "controller": "LearningController",
       "method": "hint",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 116,
+      "line": 125,
       "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
       "classDecorators": [
         {
@@ -6695,7 +6695,7 @@
       "controller": "LearningController",
       "method": "complete",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 117,
+      "line": 126,
       "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -21468,7 +21468,7 @@
     {
       "name": "LearningController",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
-      "line": 9,
+      "line": 10,
       "decorators": [
         {
           "name": "UseGuards",
@@ -21496,7 +21496,7 @@
       "methods": [
         {
           "name": "students",
-          "line": 13,
+          "line": 14,
           "signature": "students(@Req() req: AuthenticatedRequest)",
           "access": "public",
           "decorators": [
@@ -21513,7 +21513,7 @@
         },
         {
           "name": "memory",
-          "line": 14,
+          "line": 15,
           "signature": "memory(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
           "access": "public",
           "decorators": [
@@ -21530,7 +21530,7 @@
         },
         {
           "name": "overview",
-          "line": 17,
+          "line": 18,
           "signature": "overview(@Req() req: AuthenticatedRequest)",
           "access": "public",
           "decorators": [
@@ -21547,7 +21547,7 @@
         },
         {
           "name": "studioOverview",
-          "line": 18,
+          "line": 19,
           "signature": "studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string, @Query('subject') subject?: string, @Query('materialView') materialView?:string)",
           "access": "public",
           "decorators": [
@@ -21564,7 +21564,7 @@
         },
         {
           "name": "studioCoursePreview",
-          "line": 22,
+          "line": 23,
           "signature": "studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21581,7 +21581,7 @@
         },
         {
           "name": "studioCourseCreate",
-          "line": 25,
+          "line": 26,
           "signature": "studioCourseCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21598,7 +21598,7 @@
         },
         {
           "name": "studioLessonStart",
-          "line": 28,
+          "line": 29,
           "signature": "studioLessonStart(@Req() req: AuthenticatedRequest, @Param('courseId') courseId: string, @Param('lessonId') lessonId: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21615,7 +21615,7 @@
         },
         {
           "name": "studioWhiteboardPreview",
-          "line": 32,
+          "line": 33,
           "signature": "studioWhiteboardPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21632,7 +21632,7 @@
         },
         {
           "name": "studioWhiteboardCreate",
-          "line": 35,
+          "line": 36,
           "signature": "studioWhiteboardCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21649,7 +21649,7 @@
         },
         {
           "name": "studioPdfUpload",
-          "line": 38,
+          "line": 39,
           "signature": "studioPdfUpload(@Req() req: AuthenticatedRequest, @UploadedFile() file: Express.Multer.File | undefined, @Body() input: { studentId?: string; subject?: string; requestKey?: string })",
           "access": "public",
           "decorators": [
@@ -21672,7 +21672,7 @@
         },
         {
           "name": "studioPdfPage",
-          "line": 41,
+          "line": 42,
           "signature": "studioPdfPage(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('page') page: string)",
           "access": "public",
           "decorators": [
@@ -21689,7 +21689,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 43,
+          "line": 44,
           "signature": "studioPdfOriginal(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -21706,7 +21706,7 @@
         },
         {
           "name": "studioPdfStructureReview",
-          "line": 46,
+          "line": 47,
           "signature": "studioPdfStructureReview(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21723,7 +21723,7 @@
         },
         {
           "name": "studioPdfProcessRetry",
-          "line": 50,
+          "line": 51,
           "signature": "studioPdfProcessRetry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21740,7 +21740,7 @@
         },
         {
           "name": "studioPdfWhiteboardPreview",
-          "line": 54,
+          "line": 55,
           "signature": "studioPdfWhiteboardPreview(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: { atomId?: string })",
           "access": "public",
           "decorators": [
@@ -21757,7 +21757,7 @@
         },
         {
           "name": "studioPdfWhiteboardCreate",
-          "line": 56,
+          "line": 57,
           "signature": "studioPdfWhiteboardCreate(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: { atomId?: string; fingerprint: string; requestKey: string })",
           "access": "public",
           "decorators": [
@@ -21774,7 +21774,7 @@
         },
         {
           "name": "studioLearningPackPreview",
-          "line": 60,
+          "line": 61,
           "signature": "studioLearningPackPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21791,7 +21791,7 @@
         },
         {
           "name": "studioLearningPackCreate",
-          "line": 63,
+          "line": 64,
           "signature": "studioLearningPackCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21808,8 +21808,8 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 66,
-          "signature": "studioWhiteboardNarration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown)",
+          "line": 67,
+          "signature": "studioWhiteboardNarration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
           "access": "public",
           "decorators": [
             {
@@ -21825,7 +21825,7 @@
         },
         {
           "name": "studioIntegrationConnect",
-          "line": 70,
+          "line": 79,
           "signature": "studioIntegrationConnect(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21842,7 +21842,7 @@
         },
         {
           "name": "studioIntegrationSync",
-          "line": 73,
+          "line": 82,
           "signature": "studioIntegrationSync(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -21859,7 +21859,7 @@
         },
         {
           "name": "studioIntegrationDisconnect",
-          "line": 76,
+          "line": 85,
           "signature": "studioIntegrationDisconnect(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -21876,7 +21876,7 @@
         },
         {
           "name": "studioCalendarEventCreate",
-          "line": 79,
+          "line": 88,
           "signature": "studioCalendarEventCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21893,7 +21893,7 @@
         },
         {
           "name": "studioCalendarEventRemove",
-          "line": 82,
+          "line": 91,
           "signature": "studioCalendarEventRemove(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -21910,7 +21910,7 @@
         },
         {
           "name": "studioCalendarEventUpdate",
-          "line": 85,
+          "line": 94,
           "signature": "studioCalendarEventUpdate(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21927,7 +21927,7 @@
         },
         {
           "name": "studioCalendarBatchRemove",
-          "line": 88,
+          "line": 97,
           "signature": "studioCalendarBatchRemove(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21944,7 +21944,7 @@
         },
         {
           "name": "studioStudyPlanPreview",
-          "line": 91,
+          "line": 100,
           "signature": "studioStudyPlanPreview(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21961,7 +21961,7 @@
         },
         {
           "name": "studioStudyPlanCreate",
-          "line": 94,
+          "line": 103,
           "signature": "studioStudyPlanCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21978,7 +21978,7 @@
         },
         {
           "name": "studioStudyPlanSession",
-          "line": 97,
+          "line": 106,
           "signature": "studioStudyPlanSession(@Req() req: AuthenticatedRequest, @Param('planId') planId: string, @Param('sessionId') sessionId: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -21995,7 +21995,7 @@
         },
         {
           "name": "studioCalendarExport",
-          "line": 101,
+          "line": 110,
           "signature": "studioCalendarExport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: string)",
           "access": "public",
           "decorators": [
@@ -22012,7 +22012,7 @@
         },
         {
           "name": "today",
-          "line": 105,
+          "line": 114,
           "signature": "today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
           "access": "public",
           "decorators": [
@@ -22029,7 +22029,7 @@
         },
         {
           "name": "mistakes",
-          "line": 108,
+          "line": 117,
           "signature": "mistakes(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string)",
           "access": "public",
           "decorators": [
@@ -22046,7 +22046,7 @@
         },
         {
           "name": "start",
-          "line": 111,
+          "line": 120,
           "signature": "start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('action') action: string)",
           "access": "public",
           "decorators": [
@@ -22063,7 +22063,7 @@
         },
         {
           "name": "view",
-          "line": 112,
+          "line": 121,
           "signature": "view(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -22080,7 +22080,7 @@
         },
         {
           "name": "render",
-          "line": 113,
+          "line": 122,
           "signature": "render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
           "access": "public",
           "decorators": [
@@ -22097,7 +22097,7 @@
         },
         {
           "name": "submit",
-          "line": 114,
+          "line": 123,
           "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -22114,7 +22114,7 @@
         },
         {
           "name": "draft",
-          "line": 115,
+          "line": 124,
           "signature": "draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -22131,7 +22131,7 @@
         },
         {
           "name": "hint",
-          "line": 116,
+          "line": 125,
           "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
           "access": "public",
           "decorators": [
@@ -22148,7 +22148,7 @@
         },
         {
           "name": "complete",
-          "line": 117,
+          "line": 126,
           "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -22315,8 +22315,8 @@
           "calls": [
             "this.students.assertCanAccessStudent",
             "this.store.find",
-            "this.store.select",
             "this.previewStudioWhiteboard",
+            "this.store.select",
             "this.store.nextId",
             "this.store.append",
             "this.events.publish"
@@ -22324,7 +22324,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 251,
+          "line": 258,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string }, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -22339,7 +22339,7 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 312,
+          "line": 319,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
@@ -22349,7 +22349,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 322,
+          "line": 329,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
@@ -22359,7 +22359,7 @@
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 337,
+          "line": 344,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22371,7 +22371,7 @@
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 365,
+          "line": 372,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -22385,7 +22385,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 400,
+          "line": 407,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22397,7 +22397,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 415,
+          "line": 422,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22411,7 +22411,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 436,
+          "line": 452,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -22423,7 +22423,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 457,
+          "line": 473,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22438,7 +22438,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 484,
+          "line": 500,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22450,7 +22450,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 495,
+          "line": 519,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22460,7 +22460,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 511,
+          "line": 535,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22476,7 +22476,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 540,
+          "line": 564,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22489,7 +22489,7 @@
         },
         {
           "name": "studioScope",
-          "line": 557,
+          "line": 581,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -22501,7 +22501,7 @@
         },
         {
           "name": "memory",
-          "line": 566,
+          "line": 590,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -22515,7 +22515,7 @@
         },
         {
           "name": "today",
-          "line": 626,
+          "line": 650,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -22530,7 +22530,7 @@
         },
         {
           "name": "start",
-          "line": 640,
+          "line": 664,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -22549,7 +22549,7 @@
         },
         {
           "name": "requireSession",
-          "line": 677,
+          "line": 701,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -22560,7 +22560,7 @@
         },
         {
           "name": "view",
-          "line": 682,
+          "line": 706,
           "signature": "view(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -22574,7 +22574,7 @@
         },
         {
           "name": "render",
-          "line": 700,
+          "line": 724,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -22587,7 +22587,7 @@
         },
         {
           "name": "practiceDraftState",
-          "line": 711,
+          "line": 735,
           "signature": "practiceDraftState(session: PracticeSession, questionId: string, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -22598,7 +22598,7 @@
         },
         {
           "name": "draft",
-          "line": 718,
+          "line": 742,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22612,7 +22612,7 @@
         },
         {
           "name": "assertActive",
-          "line": 734,
+          "line": 758,
           "signature": "assertActive(session: PracticeSession)",
           "access": "private",
           "decorators": [],
@@ -22622,7 +22622,7 @@
         },
         {
           "name": "submit",
-          "line": 738,
+          "line": 762,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22642,7 +22642,7 @@
         },
         {
           "name": "feedback",
-          "line": 768,
+          "line": 792,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -22654,7 +22654,7 @@
         },
         {
           "name": "publicAttempt",
-          "line": 777,
+          "line": 801,
           "signature": "publicAttempt(attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -22662,7 +22662,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 779,
+          "line": 803,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -22672,7 +22672,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 784,
+          "line": 808,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22687,7 +22687,7 @@
         },
         {
           "name": "hint",
-          "line": 799,
+          "line": 823,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -22702,7 +22702,7 @@
         },
         {
           "name": "complete",
-          "line": 810,
+          "line": 834,
           "signature": "complete(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -22715,7 +22715,7 @@
         },
         {
           "name": "mistakes",
-          "line": 820,
+          "line": 844,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -22729,7 +22729,7 @@
         },
         {
           "name": "overview",
-          "line": 850,
+          "line": 874,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -33482,7 +33482,7 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 880,
+      "line": 904,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
@@ -34143,7 +34143,7 @@
       "file": "apps/api/src/modules/learning/studio-whiteboard.ts",
       "name": "sceneSuffix",
       "line": 17,
-      "signature": "sceneSuffix(index: number, narration: string)"
+      "signature": "sceneSuffix(_index: number, narration: string)"
     },
     {
       "file": "apps/api/src/modules/learning/studio-whiteboard.ts",
@@ -46306,6 +46306,107 @@
           "type": "StudioIntegrationOverview"
         }
       ]
+    },
+    {
+      "name": "WhiteboardSpeechUnit",
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sceneId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "text",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "estimatedMs",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "visibleBulletIndices",
+          "optional": false,
+          "type": "number[]"
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardPresentation",
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "line": 9,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "version",
+          "optional": false,
+          "type": "typeof WHITEBOARD_SPEECH_VERSION"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "units",
+          "optional": false,
+          "type": "WhiteboardSpeechUnit[]"
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardTimelineEntry",
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "line": 12,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "WhiteboardTimeline",
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "line": 13,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'estimated-reading' | 'decoded-audio'"
+        },
+        {
+          "name": "speed",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "durationMs",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "entries",
+          "optional": false,
+          "type": "WhiteboardTimelineEntry[]"
+        }
+      ]
     }
   ],
   "webRoutes": [
@@ -46756,6 +46857,9 @@
     "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
     "apps/api/src/modules/learning/studio-whiteboard.test.ts",
     "apps/api/src/modules/learning/studio.integration.test.ts",
+    "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+    "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+    "apps/api/src/modules/learning/whiteboard-webm.test.ts",
     "apps/api/src/modules/library/library.integration.test.ts",
     "apps/api/src/modules/library/measurement-content.integration.test.ts",
     "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
@@ -46798,6 +46902,7 @@
     "tests/e2e/source-course-project.spec.ts",
     "tests/e2e/source-course.spec.ts",
     "tests/e2e/studio.spec.ts",
+    "tests/e2e/whiteboard-media.spec.ts",
     "tests/e2e/workspace.spec.ts"
   ]
 }

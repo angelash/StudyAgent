@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
+  "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -321,7 +321,7 @@
               "controller": "LearningController",
               "method": "students",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 13
+              "line": 14
             }
           ],
           "implementations": [
@@ -2575,7 +2575,7 @@
               "controller": "LearningController",
               "method": "overview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 17
+              "line": 18
             },
             {
               "verb": "GET",
@@ -2583,19 +2583,19 @@
               "controller": "LearningController",
               "method": "memory",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 14
+              "line": 15
             }
           ],
           "implementations": [
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 850
+              "line": 874
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 566
+              "line": 590
             }
           ],
           "sourceFiles": [
@@ -2638,7 +2638,7 @@
               "controller": "LearningController",
               "method": "today",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 105
+              "line": 114
             },
             {
               "verb": "POST",
@@ -2646,19 +2646,19 @@
               "controller": "LearningController",
               "method": "start",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 111
+              "line": 120
             }
           ],
           "implementations": [
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 626
+              "line": 650
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 640
+              "line": 664
             }
           ],
           "sourceFiles": [
@@ -2702,7 +2702,7 @@
               "controller": "LearningController",
               "method": "view",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 112
+              "line": 121
             },
             {
               "verb": "GET",
@@ -2710,7 +2710,7 @@
               "controller": "LearningController",
               "method": "render",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 113
+              "line": 122
             },
             {
               "verb": "PATCH",
@@ -2718,7 +2718,7 @@
               "controller": "LearningController",
               "method": "draft",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 115
+              "line": 124
             },
             {
               "verb": "POST",
@@ -2726,7 +2726,7 @@
               "controller": "LearningController",
               "method": "submit",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 114
+              "line": 123
             },
             {
               "verb": "POST",
@@ -2734,7 +2734,7 @@
               "controller": "LearningController",
               "method": "hint",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 116
+              "line": 125
             },
             {
               "verb": "POST",
@@ -2742,39 +2742,39 @@
               "controller": "LearningController",
               "method": "complete",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 117
+              "line": 126
             }
           ],
           "implementations": [
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 682
+              "line": 706
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 700
+              "line": 724
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 718
+              "line": 742
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 738
+              "line": 762
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 799
+              "line": 823
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 810
+              "line": 834
             }
           ],
           "sourceFiles": [
@@ -2817,14 +2817,14 @@
               "controller": "LearningController",
               "method": "mistakes",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 108
+              "line": 117
             }
           ],
           "implementations": [
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 820
+              "line": 844
             }
           ],
           "sourceFiles": [
@@ -4583,11 +4583,16 @@
       ],
       "contracts": [
         "packages/contracts/src/studio.ts",
+        "packages/contracts/src/whiteboard-speech.ts",
         "packages/contracts/src/classroom.ts",
         "packages/contracts/src/classroom-choice.ts",
         "packages/contracts/src/course-project.ts"
       ],
       "tests": [
+        "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+        "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+        "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+        "tests/e2e/whiteboard-media.spec.ts",
         "apps/api/src/modules/learning/studio-course.test.ts",
         "apps/api/src/modules/learning/studio.integration.test.ts",
         "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -4635,7 +4640,7 @@
               "controller": "LearningController",
               "method": "studioOverview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 18
+              "line": 19
             }
           ],
           "implementations": [
@@ -4651,6 +4656,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -4697,7 +4706,7 @@
               "controller": "LearningController",
               "method": "studioCoursePreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 22
+              "line": 23
             },
             {
               "verb": "POST",
@@ -4705,7 +4714,7 @@
               "controller": "LearningController",
               "method": "studioCourseCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 25
+              "line": 26
             },
             {
               "verb": "POST",
@@ -4713,24 +4722,24 @@
               "controller": "LearningController",
               "method": "studioLessonStart",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 28
+              "line": 29
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 495
+              "line": 519
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 511
+              "line": 535
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 540
+              "line": 564
             }
           ],
           "sourceFiles": [
@@ -4740,6 +4749,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -4799,6 +4812,10 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -4918,6 +4935,10 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5056,6 +5077,10 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5141,6 +5166,10 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5222,6 +5251,10 @@
             "tests/e2e/classroom-code.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5273,6 +5306,10 @@
             "tests/e2e/classroom-tools.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5304,14 +5341,14 @@
             "/studio/projects",
             "/studio/source-courses"
           ],
-          "inputs": "学生、学科、主题、可选已审核知识点",
-          "implementation": "规则生成分幕标题、概念、步骤、图形和检查点；保存前在所有旧请求/内容去重返回之前校验当前学生访问权，撤销绑定后旧命令也不能取得正文；预览和保存使用内容指纹、请求键；保存后可继续播放。",
-          "outputs": "StudioWhiteboard与幕序",
+          "inputs": "学生、学科、主题、可选已审核知识点、原预览指纹和请求键",
+          "implementation": "规则生成分幕标题、概念、步骤、图形和检查点，示范旁白覆盖完整步骤；所有重放前先核对当前学生权限；原请求回执绑定本人、动作摘要、范围与原白板，同文新键记录自己的回执，旧无法证明关联的键明确冲突且保留原稿。",
+          "outputs": "冻结StudioWhiteboard、幕序与原操作回执",
           "collections": [
             "studioWhiteboards",
             "studioActivities"
           ],
-          "limits": "自由主题不等同于模型已核验知识正确性；有批准教学时优先使用。",
+          "limits": "自由主题仍是教学卡或通用模板，任意主题AI尚未接入；旧稿与指纹不被逐句投影回写。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5319,7 +5356,7 @@
               "controller": "LearningController",
               "method": "studioWhiteboardPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 32
+              "line": 33
             },
             {
               "verb": "POST",
@@ -5327,7 +5364,7 @@
               "controller": "LearningController",
               "method": "studioWhiteboardCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 35
+              "line": 36
             }
           ],
           "implementations": [
@@ -5347,6 +5384,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5368,7 +5409,7 @@
         },
         {
           "id": "STUDIO-10",
-          "title": "白板视频、SRT与AI旁白",
+          "title": "逐句白板、真实音轨与一致视频字幕时间表",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生与授权教师；成人课程需成人身份",
@@ -5378,13 +5419,13 @@
             "/studio/projects",
             "/studio/source-courses"
           ],
-          "inputs": "白板ID、幕ID、可用语音与浏览器录制能力",
-          "implementation": "Canvas按时间绘制；可请求每幕旁白并与画面合成MediaStream；MediaRecorder输出WebM；始终可导出SRT；finally释放音频上下文与轨道。",
-          "outputs": "字幕视频、旁白视频、SRT",
+          "inputs": "原白板/幕、whiteboard-speech-v1、指纹/原文单位、音色、速度、当前账号与浏览器能力",
+          "implementation": "只读派生稳定原文跨度和整项板书；新请求只合成冻结单位并在合成后再授权，旧voice-only请求保留整幕；Audio ended推进云朗读、文字显式估计，暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据，取消/录制异常不下载半成品。",
+          "outputs": "当前句、完整笔记、可恢复位置、WebM和逐句SRT",
           "collections": [
             "studioWhiteboards"
           ],
-          "limits": "没有AI语音时生成字幕视频并明确提示；需要支持录制的浏览器。",
+          "limits": "云失败明确重试或手动选文字；浏览器不支持录制时保留字幕。当前实际小视频和合成WAV不能替代真人听感/设备/完整原CSS字体DPR；真实AIGW小样与端点替身分别留证，任意主题AI和复杂图形仍待。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5392,21 +5433,31 @@
               "controller": "LearningController",
               "method": "studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 66
+              "line": 67
             }
           ],
           "implementations": [
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 484
+              "line": 500
             }
           ],
           "sourceFiles": [
+            "packages/contracts/src/whiteboard-speech.ts",
             "apps/web/app/studio/whiteboard-player.tsx",
+            "apps/web/app/studio/whiteboard-session.tsx",
+            "apps/web/app/studio/whiteboard-canvas.tsx",
+            "apps/web/app/studio/whiteboard-media.ts",
+            "apps/web/app/studio/whiteboard-webm.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5454,7 +5505,7 @@
               "controller": "LearningController",
               "method": "studioPdfUpload",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 38
+              "line": 39
             },
             {
               "verb": "GET",
@@ -5462,7 +5513,7 @@
               "controller": "LearningController",
               "method": "studioPdfPage",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 41
+              "line": 42
             },
             {
               "verb": "GET",
@@ -5470,24 +5521,24 @@
               "controller": "LearningController",
               "method": "studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 43
+              "line": 44
             }
           ],
           "implementations": [
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 251
+              "line": 258
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 312
+              "line": 319
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 322
+              "line": 329
             }
           ],
           "sourceFiles": [
@@ -5495,6 +5546,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5541,6 +5596,10 @@
             "scripts/processing/process_document.py"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5586,7 +5645,7 @@
               "controller": "LearningController",
               "method": "studioPdfStructureReview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 46
+              "line": 47
             },
             {
               "verb": "POST",
@@ -5594,25 +5653,29 @@
               "controller": "LearningController",
               "method": "studioPdfProcessRetry",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 50
+              "line": 51
             }
           ],
           "implementations": [
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 337
+              "line": 344
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 365
+              "line": 372
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5659,7 +5722,7 @@
               "controller": "LearningController",
               "method": "studioPdfWhiteboardPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 54
+              "line": 55
             },
             {
               "verb": "POST",
@@ -5667,19 +5730,19 @@
               "controller": "LearningController",
               "method": "studioPdfWhiteboardCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 56
+              "line": 57
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 400
+              "line": 407
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 415
+              "line": 422
             }
           ],
           "sourceFiles": [
@@ -5687,6 +5750,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5733,7 +5800,7 @@
               "controller": "LearningController",
               "method": "studioLearningPackPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 60
+              "line": 61
             },
             {
               "verb": "POST",
@@ -5741,19 +5808,19 @@
               "controller": "LearningController",
               "method": "studioLearningPackCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 63
+              "line": 64
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 436
+              "line": 452
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 457
+              "line": 473
             }
           ],
           "sourceFiles": [
@@ -5761,6 +5828,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5808,7 +5879,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 91
+              "line": 100
             },
             {
               "verb": "POST",
@@ -5816,7 +5887,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 94
+              "line": 103
             },
             {
               "verb": "POST",
@@ -5824,7 +5895,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanSession",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 97
+              "line": 106
             }
           ],
           "implementations": [
@@ -5849,6 +5920,10 @@
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5895,7 +5970,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationConnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 70
+              "line": 79
             },
             {
               "verb": "POST",
@@ -5903,7 +5978,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationSync",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 73
+              "line": 82
             },
             {
               "verb": "POST",
@@ -5911,7 +5986,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationDisconnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 76
+              "line": 85
             }
           ],
           "implementations": [
@@ -5936,6 +6011,10 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -5982,7 +6061,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 79
+              "line": 88
             },
             {
               "verb": "POST",
@@ -5990,7 +6069,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventUpdate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 85
+              "line": 94
             },
             {
               "verb": "POST",
@@ -5998,7 +6077,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 82
+              "line": 91
             },
             {
               "verb": "POST",
@@ -6006,7 +6085,7 @@
               "controller": "LearningController",
               "method": "studioCalendarBatchRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 88
+              "line": 97
             }
           ],
           "implementations": [
@@ -6037,6 +6116,10 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6082,7 +6165,7 @@
               "controller": "LearningController",
               "method": "studioCalendarExport",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 101
+              "line": 110
             }
           ],
           "implementations": [
@@ -6096,6 +6179,10 @@
             "apps/api/src/modules/learning/studio-integration.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6303,6 +6390,10 @@
             "tests/e2e/project-files.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6472,6 +6563,10 @@
             "apps/web/app/studio/projects/projects.css"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6555,6 +6650,10 @@
             "scripts/qa/run-project-teaching-postgres.cjs"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6671,6 +6770,10 @@
             "apps/api/src/modules/learning/source-course.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -6889,6 +6992,10 @@
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7101,6 +7208,10 @@
             "tests/e2e/source-course.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7238,6 +7349,10 @@
             "apps/api/src/modules/learning/source-course.service.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7347,6 +7462,10 @@
             "tests/e2e/classroom-visual.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7463,6 +7582,10 @@
             "tests/e2e/pdf-material.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7573,6 +7696,10 @@
             "scripts/qa/run-source-lifecycle-postgres.cjs"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",
@@ -7787,6 +7914,10 @@
             "tests/e2e/pdf-material.spec.ts"
           ],
           "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
             "apps/api/src/modules/learning/studio-course.test.ts",
             "apps/api/src/modules/learning/studio.integration.test.ts",
             "apps/api/src/modules/learning/classroom.integration.test.ts",

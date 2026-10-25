@@ -4,7 +4,7 @@
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
-普通助教已支持持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。源码、精确CI与实际守护运行版本分别记录，当前119状态见本页末尾，不以设计生成代替发布。
+普通助教已支持持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。源码、精确CI与实际守护运行版本分别记录，当前运行及候选状态见本页末尾，不以设计生成代替发布。
 
 ## 阅读入口
 
@@ -106,3 +106,5 @@ npm run qa:docs
 2026-10-26当前运行已交付120资料课程独立核查：源码核心da574a4、恢复00902a1与取消b3fb6fa，精确CI7d606a4/40234093187及生产构建01a07da/ j9rxRUAmWJpdihvwXHLj8已完成；69项运行检查、六音频SHA和90185毫秒守护稳定观察通过。两端217浏览器均零重试，本地API1241/43与PG25，原始失败保留。详见[最终验收](../evidence/2026-10-26/source-check-acceptance.json)和[运行收据](../evidence/2026-10-26/source-check-runtime.json)。设计数量保持14领域/120功能/337正常接口/95集合/316共享类型；完整产品、教师与实机门禁尚未满足，单课时121仍独立验收。
 
 单课时独立候选121的设计源码另已支持显式1～6课时，输入配方与旧双目标黄金摘要保持；当前候选50项SQLite、26项PG、10项前端专项及真实DS5题/1目标两调用通过，218项整站、独立精确CI与运行发布仍待。实际守护保持上段120版本，详见[121规格](../product/121-single-lesson-source-course-checks.md)和[候选收据](../evidence/2026-10-26/source-check-single-acceptance.json)。
+
+2026-10-26：当前运行是121（f747bb3、实际构建dd9194e/0Zhr-Oq70fmQyS671XuvN），完整收据见[121](../evidence/2026-10-26/source-check-single-acceptance.json)。122代码e0d61c8/dc4460e已接逐句自由白板、真实音轨推进、已知秒数续播、原请求关联与统一WebM/SRT时间表；24专项/PG2/11浏览器零重试，当前整批门禁待完成，未把开发候选当成上线。STUDIO-09/10按实现重写，原字体/CSS/DPR、任意主题AI、教师/设备/长期门禁保持，见[122](../evidence/2026-10-26/whiteboard-speech-acceptance.json)。

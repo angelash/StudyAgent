@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`dc93206bec22ff08d6f8da61467094b543575c96`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`dc4460e3e5cd4d6c72330e78578302a8a8369314`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -519,3 +519,10 @@
 - `StudioSpeechVoice`：[packages/contracts/src/studio.ts:292](../../../packages/contracts/src/studio.ts#L292)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
 - `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:294](../../../packages/contracts/src/studio.ts#L294)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
 - `StudioOverview`：[packages/contracts/src/studio.ts:302](../../../packages/contracts/src/studio.ts#L302)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+
+### packages/contracts/src/whiteboard-speech.ts
+
+- `WhiteboardSpeechUnit`：[packages/contracts/src/whiteboard-speech.ts:5](../../../packages/contracts/src/whiteboard-speech.ts#L5)；字段：`id`、`sceneId`、`start`、`end`、`text`、`estimatedMs`、`visibleBulletIndices`。
+- `WhiteboardPresentation`：[packages/contracts/src/whiteboard-speech.ts:9](../../../packages/contracts/src/whiteboard-speech.ts#L9)；字段：`version`、`fingerprint`、`units`。
+- `WhiteboardTimelineEntry`：[packages/contracts/src/whiteboard-speech.ts:12](../../../packages/contracts/src/whiteboard-speech.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `WhiteboardTimeline`：[packages/contracts/src/whiteboard-speech.ts:13](../../../packages/contracts/src/whiteboard-speech.ts#L13)；字段：`kind`、`speed`、`durationMs`、`entries`。

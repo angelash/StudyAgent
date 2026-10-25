@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`dc93206bec22ff08d6f8da61467094b543575c96`。角色：家长、学生、管理员、授权教师。
+源码基线：`dc4460e3e5cd4d6c72330e78578302a8a8369314`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -122,7 +122,7 @@
 - `POST /api/students` → `StudentsController.createStudent`；[apps/api/src/modules/students/students.controller.ts:20](../../../apps/api/src/modules/students/students.controller.ts#L20)。
 - `GET /api/students/:studentId/profile` → `StudentsController.getProfile`；[apps/api/src/modules/students/students.controller.ts:38](../../../apps/api/src/modules/students/students.controller.ts#L38)。
 - `GET /api/parents/:parentId/students` → `StudentsController.listChildren`；[apps/api/src/modules/students/students.controller.ts:62](../../../apps/api/src/modules/students/students.controller.ts#L62)。
-- `GET /api/learning/students` → `LearningController.students`；[apps/api/src/modules/learning/learning.controller.ts:13](../../../apps/api/src/modules/learning/learning.controller.ts#L13)。
+- `GET /api/learning/students` → `LearningController.students`；[apps/api/src/modules/learning/learning.controller.ts:14](../../../apps/api/src/modules/learning/learning.controller.ts#L14)。
 
 **服务方法**：
 
