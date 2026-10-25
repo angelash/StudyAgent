@@ -95,6 +95,7 @@ export function FormulaInput({
     <div style={{ display: 'grid', gap: 8 }}>
       <math-field
         aria-label="算式或公式答案"
+        onClick={() => mathfieldRef.current?.focus()}
         ref={(node) => {
           mathfieldRef.current = node;
         }}

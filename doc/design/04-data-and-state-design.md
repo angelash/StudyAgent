@@ -236,3 +236,4 @@ checkpoint与completion两种TaskFence都在领域数据库的同一事务检查
 完整备份保存原图、展示图、私有提示词；家庭导出仅包含有权取得的原图和展示字节及公开生成记录。删除先提交事实，再排持久回收任务；孤儿与过期暂存采用一小时宽限，保留当前租约目录，避免并发快照误删刚生成的目录。恢复旧备份先应用删除账本。
 
 项目附件新增projectAssetUploads/projectAssets，分别绑定项目、冻结定义、阶段、原授权、原件与派生摘要和任务；传块不改项目文字修订。附件原件/预览在project-assets，未完成块在project-uploads；控制标记与实际字节分开，冷恢复不复用旧进程租约。提交另存attachmentManifest并冻结量规文件引用；详见[项目文件详细设计](03-core-detailed-design.md#项目原件附件快照与恢复)。
+作答草稿v2沿用diagnosticDrafts与practiceSessions.drafts，不新增领域集合。可选revision/protocol/draftAttempt/draftCommands允许旧记录按修订0读取；回执只保存账号、请求键、命令摘要、确认修订与时间，不重复存整份答案。进入v2后保留提交后的修订日志，训练下一次表达由attempt和公开题面摘要区分，修订不归零。diagnosticResponses与practiceAttempts可保存首次命令requestHash；该摘要及draftCommands不进入公开题面/反馈或家庭可移植记录。备份仍保存完整业务日志以便恢复原命令，最新删除账本按原儿童/会话关系清除，不能复活已删除草稿。实现与验证见[112](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)。

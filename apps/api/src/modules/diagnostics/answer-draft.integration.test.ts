@@ -80,7 +80,7 @@ describe('recoverable diagnostic and practice drafts through real authorized rou
       expect(result.map(r => r.status).sort()).toEqual([200,409]);
       await call('post', f.root + '/responses', submit(f, state), 409);
       await call('patch', f.draft, { ...save((await call('get', f.item)).draftState, f.answer), baseHash: 'b'.repeat(64) }, 409);
-      const noFence = submit(f, state); delete noFence.draftFence; await call('post', f.root + '/responses', noFence, 409);
+      const noFence: Record<string, unknown> = submit(f, state); delete noFence.draftFence; await call('post', f.root + '/responses', noFence, 409);
     });
     it(kind + ': an account switch cannot submit another accounts cached command even when the active user can read the child', async () => {
       const f = await fixture(kind), state = (await call('get', f.item)).draftState;
@@ -97,10 +97,20 @@ describe('recoverable diagnostic and practice drafts through real authorized rou
       expect(kind === 'diagnostic' ? replay.responseId : replay.attempt.id).toBe(kind === 'diagnostic' ? response.responseId : response.attempt.id);
       await call('post', f.root + '/responses', { ...command, elapsedMs: 2345 }, 409);
       await call('post', f.root + '/responses', { ...command, requestKey: randomUUID() }, 409);
+      await store.requestContext(() => {
+        const ai = app.get(require('../../../dist/apps/api/src/modules/ai/ai.service.js').AiService);
+        const context = ai.resolveQuestionContext({ studentId: f.studentId, subject: 'math', contextRefType: kind, contextRefId: f.sessionId, contextItemId: f.itemId });
+        expect(context.draft).toBeNull(); expect(context.response.answer).toEqual(f.answer);
+      });
+      const portable = await call('post', '/privacy/students/' + f.studentId + '/export', { credential: 'Draft-QA-only-20261025', requestKey: randomUUID() });
+      const records = portable.students[0].records;
+      if (kind === 'diagnostic') { expect(records.diagnosticDrafts.some((row: any) => row.sessionId === f.sessionId)).toBe(false); expect(records.diagnosticResponses.find((row: any) => row.sessionId === f.sessionId).answer).toEqual(f.answer); }
+      else { expect(records.practiceSessions.find((row: any) => row.id === f.sessionId).drafts?.[f.questionId]).toBeUndefined(); expect(records.practiceAttempts.find((row: any) => row.sessionId === f.sessionId).answer).toEqual(f.answer); }
       if (kind === 'diagnostic') await call('patch', f.draft, save(saved.draftState, f.answer), 400);
       else {
         expect(response.attempt).not.toHaveProperty('requestHash'); const read = await call('get', f.item); expect(read.draft).toBeNull(); expect(read.draftState.attempt).toBe(1);
         const revised = await call('patch', f.draft, save(read.draftState, f.answer));
+        await store.requestContext(() => { const ai = app.get(require('../../../dist/apps/api/src/modules/ai/ai.service.js').AiService); expect(ai.resolveQuestionContext({ studentId: f.studentId, subject: 'math', contextRefType: kind, contextRefId: f.sessionId, contextItemId: f.itemId }).draft).toEqual(f.answer); });
         const corrected = await call('post', f.root + '/responses', submit(f, revised.draftState));
         expect(corrected.attempt).toMatchObject({ attempt: 2, solutionExposedBefore: true, elapsedMs: 1234 });
         expect((await call('get', f.root)).questions[0].latest).not.toHaveProperty('requestHash');

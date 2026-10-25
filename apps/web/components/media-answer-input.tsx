@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import type { StudentMediaTarget, StudentMediaView } from '@study-agent/contracts';
-import { apiRequest } from '../lib/api';
+import { apiRequest, ApiRequestError } from '../lib/api';
 import { questionMediaUrl } from '../lib/media';
 import './media-answer-input.css';
 
@@ -40,7 +40,15 @@ export function MediaAnswerInput({ target, mode, response, onChange, onPendingCh
       let requestKey: string | null = null;
       try { requestKey = sessionStorage.getItem(cacheKey); } catch { /* Storage can be disabled; uploads still work. */ }
       requestKey ??= crypto.randomUUID(); try { sessionStorage.setItem(cacheKey, requestKey); } catch { /* Optional resume hint. */ }
-      const send = <T,>(path: string, body: unknown) => apiRequest<T>(path, { method: 'POST', body: JSON.stringify(body), signal: abort.signal });
+      // Each operation already has an immutable upload id/request key. Revalidate
+      // through a fresh request when an overlapping draft save invalidates its read.
+      const uploadRequest = async <T,>(path: string, options: RequestInit): Promise<T> => {
+        for (let attempt = 0;; attempt++) {
+          try { return await apiRequest<T>(path, { ...options, signal: abort.signal }); }
+          catch (error) { if (!(error instanceof ApiRequestError) || error.status !== 409 || attempt >= 2 || abort.signal.aborted || !mounted.current) throw error; }
+        }
+      };
+      const send = <T,>(path: string, body: unknown) => uploadRequest<T>(path, { method: 'POST', body: JSON.stringify(body) });
       let media = await send<StudentMediaView>('/learning/media', { ...target, requestKey, name: file.name, size: file.size, mediaType: type });
       if (media.status === 'cancelled' || media.status === 'expired') {
         requestKey = crypto.randomUUID(); try { sessionStorage.setItem(cacheKey, requestKey); } catch { /* Optional resume hint. */ }
@@ -49,7 +57,7 @@ export function MediaAnswerInput({ target, mode, response, onChange, onPendingCh
       if (mounted.current && media.status === 'uploading') setResumable({ id: media.id, cacheKey });
       if (media.status !== 'ready') {
         for (let index = 0; index < Math.ceil(file.size / media.chunkSize); index++) {
-          if (!media.chunks.some(chunk => chunk.index === index)) media = await apiRequest<StudentMediaView>(`/learning/media/${media.id}/chunks/${index}`, {
+          if (!media.chunks.some(chunk => chunk.index === index)) media = await uploadRequest<StudentMediaView>(`/learning/media/${media.id}/chunks/${index}`, {
             method: 'PUT', body: file.slice(index * media.chunkSize, Math.min(file.size, (index + 1) * media.chunkSize)), headers: { 'Content-Type': 'application/octet-stream' }, signal: abort.signal });
           if (mounted.current) setProgress(Math.round(Math.min(file.size, (index + 1) * media.chunkSize) / file.size * 90));
         }

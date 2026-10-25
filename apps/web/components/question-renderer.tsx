@@ -23,6 +23,7 @@ type QuestionRendererProps = {
   mediaTarget?: StudentMediaTarget;
   onPendingChange?: (pending: boolean) => void;
   onDisplayIssueChange?: (blocked: boolean) => void;
+  disabled?: boolean;
 };
 
 export function createEmptyAnswerPayload(renderPayload: QuestionRenderPayload): StudentAnswerPayload {
@@ -33,7 +34,7 @@ export function createEmptyAnswerPayload(renderPayload: QuestionRenderPayload): 
   };
 }
 
-export function QuestionRenderer({ renderPayload, answer, onChange, mediaTarget, onPendingChange, onDisplayIssueChange }: QuestionRendererProps) {
+export function QuestionRenderer({ renderPayload, answer, onChange, mediaTarget, onPendingChange, onDisplayIssueChange, disabled = false }: QuestionRendererProps) {
   const [failedResources, setFailedResources] = React.useState<Record<string, string[]>>({});
   const questionId = renderPayload?.question.id ?? '', blocked = !!failedResources[questionId]?.length;
   React.useEffect(() => { onDisplayIssueChange?.(blocked); return () => onDisplayIssueChange?.(false); }, [blocked, onDisplayIssueChange]);
@@ -52,7 +53,7 @@ export function QuestionRenderer({ renderPayload, answer, onChange, mediaTarget,
   const response = answer.response ?? {};
 
   return (
-    <div style={{ display: 'grid', gap: 18 }} onErrorCapture={event => resourceStatus(event, true)} onLoadCapture={event => resourceStatus(event, false)} onLoadedMetadataCapture={event => resourceStatus(event, false)}>
+    <div style={{ display: 'grid', gap: 18 }} aria-disabled={disabled || undefined} onPointerDownCapture={event => { if (disabled) { event.preventDefault(); event.stopPropagation(); } }} onErrorCapture={event => resourceStatus(event, true)} onLoadCapture={event => resourceStatus(event, false)} onLoadedMetadataCapture={event => resourceStatus(event, false)}>
       {blocked && <p role="alert">题目中的图片、音视频未能完整打开，暂不能提交或记为“不会”。可以刷新后重试，或先跳过并反馈给老师。</p>}
       <div style={{ display: 'grid', gap: 12 }}>
         {renderPayload.document.blocks.map((block) => (
@@ -89,8 +90,9 @@ export function QuestionRenderer({ renderPayload, answer, onChange, mediaTarget,
           placeholder={renderPayload.answerSchema.placeholder ?? undefined}
           mediaTarget={mediaTarget}
           onPendingChange={onPendingChange}
+          disabled={disabled}
           onChange={(nextResponse) =>
-            onChange({
+            !disabled && onChange({
               questionId: renderPayload.question.id,
               mode,
               response: nextResponse,
@@ -223,6 +225,7 @@ function AnswerInput({
   placeholder,
   mediaTarget,
   onPendingChange,
+  disabled,
   onChange,
 }: {
   mode: QuestionAnswerMode;
@@ -233,6 +236,7 @@ function AnswerInput({
   placeholder?: string;
   mediaTarget?: StudentMediaTarget;
   onPendingChange?: (pending: boolean) => void;
+  disabled?: boolean;
   onChange: (next: Record<string, unknown>) => void;
 }) {
   const radioName = React.useId();
@@ -310,6 +314,8 @@ function AnswerInput({
         </div>
       );
     }
+    case 'text_blank':
+      return <input type="text" aria-label="文字填空答案" value={response.value?.toString() ?? ''} maxLength={3000} readOnly={disabled} onChange={event => onChange({ value: event.target.value })} placeholder={placeholder ?? '填入你的答案'} style={inputStyle} />;
     case 'numeric_blank':
       return (
         <input
@@ -325,6 +331,7 @@ function AnswerInput({
     case 'formula_blank':
       return (
         <FormulaInput
+          readOnly={disabled}
           value={response.value?.toString() ?? ''}
           onChange={(nextValue) => onChange({ value: nextValue })}
           placeholder={placeholder ?? '请输入 LaTeX 公式，例如 \\frac{1}{2}'}
@@ -365,6 +372,7 @@ function AnswerInput({
     case 'short_answer':
       return (
         <textarea
+          aria-label="文字作答"
           value={response.value?.toString() ?? ''}
           onChange={(event) => onChange({ value: event.target.value })}
           placeholder={placeholder ?? '请输入答案'}

@@ -1,0 +1,162 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 10,
+  "numPassedTests": 9,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792912624761,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "status": "passed",
+          "title": "diagnostic: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "duration": 130.43550000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "status": "passed",
+          "title": "diagnostic: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "duration": 83.13880000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: an account switch cannot submit another accounts cached command even when the active user can read the child",
+          "status": "passed",
+          "title": "diagnostic: an account switch cannot submit another accounts cached command even when the active user can read the child",
+          "duration": 61.390499999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "status": "passed",
+          "title": "diagnostic: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "duration": 95.49310000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "status": "passed",
+          "title": "practice: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "duration": 123.5302999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "status": "passed",
+          "title": "practice: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "duration": 92.63159999999971,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: an account switch cannot submit another accounts cached command even when the active user can read the child",
+          "status": "passed",
+          "title": "practice: an account switch cannot submit another accounts cached command even when the active user can read the child",
+          "duration": 66.45330000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "status": "passed",
+          "title": "practice: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "duration": 122.51819999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes keeps an unconfirmed save after restart and excludes internal command journals from real family exports",
+          "status": "passed",
+          "title": "keeps an unconfirmed save after restart and excludes internal command journals from real family exports",
+          "duration": 827.1349999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes restores actual SQLite draft journals into an empty root and applies the latest child deletion before reopening old backups",
+          "status": "failed",
+          "title": "restores actual SQLite draft journals into an empty root and applies the latest child deletion before reopening old backups",
+          "duration": 837.3252999999995,
+          "failureMessages": [
+            "Error: expected 200 \"OK\", got 401 \"Unauthorized\"\n    at call (F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts:23:85)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts:128:77\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20\n----\n    at Test._assertStatus (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:309:14)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:365:13\n    at Test._assertFunction (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:342:13)\n    at Test.assert (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:195:23)\n    at localAssert (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:138:14)\n    at Server.<anonymous> (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:152:11)\n    at Object.onceWrapper (node:events:630:28)\n    at Server.emit (node:events:509:28)\n    at emitCloseNT (node:net:2661:8)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"
+          ],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792912627565,
+      "endTime": 1792912630005.3252,
+      "status": "failed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts"
+    }
+  ]
+}

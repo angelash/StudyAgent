@@ -1,0 +1,229 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "formula_blank",
+      "--max-failures=1",
+      "tests/e2e/answer-journeys.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/answer-draft-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "answer-journeys.spec.ts",
+      "file": "answer-journeys.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:23:11.259Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-cadc1143dfee524aa6e6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2969,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m{\"mode\": \"formula_blank\", \"questionId\": \"answer-atom-qa_3a861e3e-0e29-45dc-ab90-c98354f97d47-q0\", \"response\": {\"value\": \"1+\"}}\u001b[39m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m{\"mode\": \"formula_blank\", \"questionId\": \"answer-atom-qa_3a861e3e-0e29-45dc-ab90-c98354f97d47-q0\", \"response\": {\"value\": \"1+\"}}\u001b[39m\n\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:69:142",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                      "column": 142,
+                      "line": 69
+                    },
+                    "snippet": "  67 |     await fill(page, mode, true); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  68 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n> 69 |     const final = await call(f.actor, f.itemPath), expected = kind === 'diagnostic' ? final.draft : final.draft.answer; expect(expected).not.toEqual(draft);\n     |                                                                                                                                              ^\n  70 |     if (['image_upload','audio_record'].includes(mode)) { const media = await call(f.actor, '/learning/media/' + expected.response.mediaIds[0]); const response = await fetch(api.replace(/\\/api$/, '') + media.url, { headers: { Authorization: 'Bearer ' + f.actor.token } }); expect(response.ok).toBe(true); const bytes = Buffer.from(await response.arrayBuffer()); expect(bytes.length).toBeGreaterThan(100); expect(createHash('sha256').update(bytes).digest('hex')).toBe(media.sha256); }\n  71 |     const sent = page.waitForResponse(response => response.url().endsWith(f.responsesPath) && response.request().method() === 'POST');\n  72 |     await page.getByRole('button', { name: kind === 'diagnostic' ? '提交，下一步 →' : '完成这一题 →', exact: true }).click(); const response = await sent; expect(response.status(), await response.text()).toBe(201); const receipt = (await response.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                        "column": 142,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m{\"mode\": \"formula_blank\", \"questionId\": \"answer-atom-qa_3a861e3e-0e29-45dc-ab90-c98354f97d47-q0\", \"response\": {\"value\": \"1+\"}}\u001b[39m\n\n\n  67 |     await fill(page, mode, true); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  68 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n> 69 |     const final = await call(f.actor, f.itemPath), expected = kind === 'diagnostic' ? final.draft : final.draft.answer; expect(expected).not.toEqual(draft);\n     |                                                                                                                                              ^\n  70 |     if (['image_upload','audio_record'].includes(mode)) { const media = await call(f.actor, '/learning/media/' + expected.response.mediaIds[0]); const response = await fetch(api.replace(/\\/api$/, '') + media.url, { headers: { Authorization: 'Bearer ' + f.actor.token } }); expect(response.ok).toBe(true); const bytes = Buffer.from(await response.arrayBuffer()); expect(bytes.length).toBeGreaterThan(100); expect(createHash('sha256').update(bytes).digest('hex')).toBe(media.sha256); }\n  71 |     const sent = page.waitForResponse(response => response.url().endsWith(f.responsesPath) && response.request().method() === 'POST');\n  72 |     await page.getByRole('button', { name: kind === 'diagnostic' ? '提交，下一步 →' : '完成这一题 →', exact: true }).click(); const response = await sent; expect(response.status(), await response.text()).toBe(201); const receipt = (await response.json()).data;\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:69:142"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:23:15.983Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-f-41a45--submit-and-historical-read\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-f-41a45--submit-and-historical-read\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-f-41a45--submit-and-historical-read\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                    "column": 142,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6ee911e1b3fedcaf031d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T07:23:05.646Z",
+    "duration": 14751.956,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

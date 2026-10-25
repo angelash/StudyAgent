@@ -2,10 +2,12 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import type { GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
+import type { AnswerDraftState, GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
   AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, MasteryEstimate, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
+import { useAnswerDraft, recoverPendingAnswerSubmission } from '../../../lib/answer-draft';
+import { AnswerDraftStatus } from '../../../components/answer-draft-status';
 import './studio.css';
 import '../today/today.css';
 import { StudyNav } from '../../../components/study-nav';
@@ -52,10 +54,10 @@ export function AssessmentStudio() {
   const [intent, setIntent] = React.useState<DiagnosticStart['intent']>('baseline'), [assessmentTargets, setAssessmentTargets] = React.useState<string[]>([]);
   const [blueprint, setBlueprint] = React.useState<DiagnosticBlueprintView | null>(null);
   const [sessions, setSessions] = React.useState<Session[]>([]), [session, setSession] = React.useState<Session | null>(null);
-  const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), [answer, setAnswer] = React.useState<StudentAnswerPayload | null>(null);
+  const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), draft = useAnswerDraft(), answer = draft.answer;
+  const [answerReadRevision, setAnswerReadRevision] = React.useState(0);
   const [mediaPending, setMediaPending] = React.useState(false);
   const [resourceBlocked, setResourceBlocked] = React.useState(false);
-  const canAnswer = payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked : false;
   const [report, setReport] = React.useState<DiagnosticReport | null>(null), [plan, setPlan] = React.useState<GuidancePlanView | null>(null);
   const [analysisNeedsUpdate, setAnalysisNeedsUpdate] = React.useState(true);
   const [reviews, setReviews] = React.useState<Review[]>([]), [retrospective, setRetrospective] = React.useState<Retrospective | null>(null);
@@ -66,9 +68,12 @@ export function AssessmentStudio() {
   const [retrospectiveNote, setRetrospectiveNote] = React.useState('');
   const [endOpen, setEndOpen] = React.useState(false), [endReason, setEndReason] = React.useState('');
   const previewRequest = React.useRef({ signature: '', key: '' }), stateRequest = React.useRef({ signature: '', key: '' });
+  const sessionReadGeneration = React.useRef(0);
+  React.useEffect(() => () => { sessionReadGeneration.current++; }, []);
   const atomDeepLinkDone = React.useRef(false);
-  const openedAt = React.useRef(Date.now()), draftTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
+  const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
+  const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
   const currentGroup = session?.routing ? `第 ${Math.floor(session.answeredCount / (session.blueprint?.groupSize ?? 3)) + 1} 小组` :
     session?.blueprint?.groups.find(group => group.itemIds.includes(current?.id ?? ''))?.title ?? `第 ${Math.floor((session?.answeredCount ?? 0) / 4) + 1} 小组`;
   const child = children.find((item) => item.id === studentId);
@@ -80,10 +85,15 @@ export function AssessmentStudio() {
     try { await fn(); } catch (caught) { setError(caught instanceof Error ? caught.message : '操作暂未完成，请重试'); }
     finally { setBusy(false); }
   }
-  async function openSession(next: Session) {
+  async function openSession(next: Session, recover = true) {
+    const generation = ++sessionReadGeneration.current;
+    if (recover) await recoverPendingAnswerSubmission('diagnostic', next.id);
+    if (generation !== sessionReadGeneration.current) return;
     next = await request<Session>(`/diagnostics/sessions/${next.id}`);
+    if (generation !== sessionReadGeneration.current) return;
+    if (!recover) draft.confirmed();
     setStudentId(next.scopeSnapshot.studentId); setSubject(next.subject); setGrade(next.scopeSnapshot.grade); setTerm(next.scopeSnapshot.term);
-    setSession(next); setReport(null); setPayload(null); setAnswer(null); setHint(''); setBlueprint(null); setEndOpen(false);
+    draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false);
     setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
     try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
     window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}`);
@@ -124,7 +134,7 @@ export function AssessmentStudio() {
       } catch (caught) { if (alive) setError(caught instanceof Error ? caught.message : '请先登录'); }
       finally { if (alive) setLoading(false); }
     })();
-    return () => { alive = false; if (draftTimer.current) clearTimeout(draftTimer.current); };
+    return () => { alive = false; };
   }, []);
 
   React.useEffect(() => {
@@ -176,23 +186,19 @@ export function AssessmentStudio() {
   React.useEffect(() => {
     if (!session || session.status !== 'in_progress' || !current) return;
     let alive = true;
-    setPayload(null); setAnswer(null); setHint(''); setSaved('');
-    request<{ payload: QuestionRenderPayload; draft: StudentAnswerPayload | null }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}`)
+    draft.reset(); setPayload(null); setHint(''); setSaved('');
+    const path = `/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}`;
+    request<{ payload: QuestionRenderPayload; draft: StudentAnswerPayload | null; draftState: AnswerDraftState }>(path)
       .then((result) => {
         if (!alive) return;
-        setPayload(result.payload); setAnswer(result.draft ?? createEmptyAnswerPayload(result.payload));
-        setSaved(result.draft ? '已恢复上次草稿' : ''); openedAt.current = Date.now();
+        setPayload(result.payload); draft.open({ kind: 'diagnostic', sessionId: session.id, itemId: current.id, path,
+          responsesPath: `/diagnostics/sessions/${session.id}/responses`, state: result.draftState }, result.draft ?? createEmptyAnswerPayload(result.payload));
       }).catch((caught) => { if (alive) setError(caught.message); });
-    return () => { alive = false; if (draftTimer.current) clearTimeout(draftTimer.current); };
-  }, [session?.id, session?.status, current?.id]);
+    return () => { alive = false; };
+  }, [session?.id, session?.status, current?.id, answerReadRevision]);
 
   function changeAnswer(next: StudentAnswerPayload) {
-    setAnswer(next); setSaved('正在保存…');
-    if (draftTimer.current) clearTimeout(draftTimer.current);
-    if (!session || !current) return;
-    const sessionId = session.id, itemId = current.id;
-    draftTimer.current = setTimeout(() => request(`/diagnostics/sessions/${sessionId}/items/${encodeURIComponent(itemId)}/draft`, { answer: next }, 'PATCH')
-      .then(() => setSaved('草稿已保存')).catch(() => setSaved('保存未成功，请保持页面并重试')), 800);
+    draft.change(next);
   }
 
   async function createChild() {
@@ -236,7 +242,10 @@ export function AssessmentStudio() {
     setBlueprint(next); setScreen('preview');
     window.history.replaceState({}, '', `?studentId=${encodeURIComponent(command.studentId)}&subject=${command.subject}&blueprint=${encodeURIComponent(next.id)}`);
   }
-  function leaveBlueprint() {
+  async function leaveBlueprint() {
+    if (screen === 'assessment' && answerReady && !await draft.prepareToLeave()) return;
+    sessionReadGeneration.current++;
+    draft.reset();
     previewRequest.current = { signature: '', key: '' }; setBlueprint(null); setScreen('setup');
     if (intent === 'verification' || intent === 'retest') { setIntent('baseline'); setMaxItems(12); }
     try { sessionStorage.removeItem(previewStorageKey(studentId, subject)); } catch { /* No local state is required. */ }
@@ -245,11 +254,10 @@ export function AssessmentStudio() {
   async function changeSessionState(action: 'pause' | 'resume' | 'abort') {
     if (!session) return;
     await execute(async () => {
-      if (draftTimer.current) clearTimeout(draftTimer.current);
       const reason = action === 'abort' ? endReason : action === 'pause' ? '暂时休息，保留原题组和已经写出的思路。' : '休息结束，按原范围与原题组继续独立作答。';
       const signature = JSON.stringify([session.id, session.revision, action, reason]);
       if (stateRequest.current.signature !== signature) {
-        if (session.status === 'in_progress' && current && answer) await request(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/draft`, { answer }, 'PATCH');
+        if (session.status === 'in_progress' && current && answer) await draft.flush();
         stateRequest.current = { signature, key: crypto.randomUUID() };
       }
       const next = await request<Session>(`/diagnostics/sessions/${session.id}/state`, { action, expectedRevision: session.revision,
@@ -259,12 +267,13 @@ export function AssessmentStudio() {
     });
   }
   async function respond(disposition: 'answered' | 'dont_know' | 'skip') {
-    if (!session || !current) return;
-    if (draftTimer.current) clearTimeout(draftTimer.current);
+    if (!session || !current || !answerReady) return;
+    const epoch = draft.epoch;
     await execute(async () => {
-      await request(`/diagnostics/sessions/${session.id}/responses`, { itemId: current.id, ...(disposition === 'answered' ? { answer } : {}),
-        disposition, elapsedMs: Math.min(3_600_000, Date.now() - openedAt.current), requestKey: `${session.id}:${current.id}` });
+      await draft.submit(disposition);
       const next = await request<Session>(`/diagnostics/sessions/${session.id}`);
+      if (!draft.isCurrent(epoch)) return;
+      draft.confirmed();
       setSession(next);
       if (next.answeredCount === next.totalCount) await completeSession(next.id);
     });
@@ -345,16 +354,17 @@ export function AssessmentStudio() {
           {screen === 'assessment' && session && <>
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
-            {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{saved}</small></div>
-              {payload && answer ? <QuestionRenderer renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /> : <p>正在打开题目…</p>}
+            {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{draft.label}</small></div>
+              {answerReady && payload && answer ? <fieldset className="daily-answer-field" disabled={busy || draft.pendingSubmission}><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission} key={`${session.id}:${current.id}:${draft.state?.baseHash}`} renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p>正在打开题目…</p>}
+              <AnswerDraftStatus draft={draft} schema={payload?.answerSchema} onRecover={() => respond('answered')} onReadActivity={async () => { await openSession(session, false); }} />
               {hint && <div className="studio-hint" role="status">{hint}</div>}
-              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => {
-                const result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); setHint(result.hint);
+              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || draft.pendingSubmission} onClick={() => execute(async () => {
+                const epoch = draft.epoch, result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); if (draft.isCurrent(epoch)) setHint(result.hint);
               })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !canAnswer} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer || !canAnswer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
-              <button className="studio-text-button studio-skip" disabled={busy} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
+              <button className="studio-text-button studio-skip" disabled={busy || !answerReady || draft.pendingSubmission} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
             </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
             {session.status === 'paused' && <div className="assessment-paused"><span className="studio-eyebrow">先休息一下</span><h3>思路和进度都已保存。</h3><p>回来后继续同一组题目。暂停期间保留草稿、首次作答与提示记录。</p><button className="studio-primary" disabled={busy} onClick={() => changeSessionState('resume')}>准备好了，继续这一组 →</button></div>}
-            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => setSession(await request<Session>(`/diagnostics/sessions/${session.id}`)))}>刷新当前状态</button></div>
+            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => { if (answerReady && !draft.pendingSubmission) await draft.flush(); await openSession(session); })}>刷新当前状态</button></div>
             {endOpen && <form className="assessment-stop" onSubmit={event => { event.preventDefault(); void changeSessionState('abort'); }}><h3>保留这次已经完成的部分。</h3><p>已提交的表现和草稿继续保存，未答题保持未知。本组结束后不能再续答，可从当前范围另开一组新题。</p><label>这次提前结束的原因<textarea required minLength={5} maxLength={1000} rows={3} value={endReason} onChange={event => setEndReason(event.target.value)} placeholder="例如：今天已经疲劳，休息后再用新题继续观察。" /></label><div><button className="studio-primary" disabled={busy || mediaPending || endReason.trim().length < 5}>保留已答记录，结束本组</button><button type="button" className="studio-text-button" disabled={busy} onClick={() => setEndOpen(false)}>继续这一组</button></div></form>}
             <p className="studio-footnote">首次提交会保留为测量证据；提示记录会单独计入。随时可以离开，回来继续。</p>
           </>}

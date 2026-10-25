@@ -40,6 +40,10 @@ export function getCurrentUser<T>() {
   try { return raw ? (JSON.parse(raw) as T) : null; } catch { return null; }
 }
 
+export class ApiRequestError extends Error {
+  constructor(message: string, readonly status: number) { super(message); this.name = 'ApiRequestError'; }
+}
+
 export async function apiRequest<T>(path: string, options: RequestInit = {}, token?: string | null): Promise<T> {
   // Callers may inject a token for tests or alternate clients. Otherwise use
   // the token received at login so cross-origin API deployments do not depend
@@ -75,7 +79,7 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
   }
 
   if (!response.ok || payload?.error) {
-    throw new Error(payload?.error?.message ?? `Request failed: ${response.status}`);
+    throw new ApiRequestError(payload?.error?.message ?? `Request failed: ${response.status}`, response.status);
   }
 
   if (!payload) {

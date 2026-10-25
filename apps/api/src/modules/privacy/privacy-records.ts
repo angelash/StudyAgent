@@ -121,9 +121,15 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
   const publishedCourses = new Set((selected.sourceCourses??[]).filter(row=>row.confirmedAt&&['active','archived'].includes(row.status)).map(recordId));
   const allowedProjects=new Set((selected.courseProjects??[]).filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(recordId));
   const result: Selection = {};
+  const answeredDrafts = new Set((selected.diagnosticResponses ?? []).map(row => JSON.stringify([row.sessionId, row.itemId])));
+  const practiceCounts = new Map<string, number>();
+  for (const row of selected.practiceAttempts ?? []) { const key = JSON.stringify([row.sessionId, row.questionId]); practiceCounts.set(key, (practiceCounts.get(key) ?? 0) + 1); }
   for (const [name, records] of Object.entries(selected)) {
     if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events'].includes(name)) continue;
-    if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
+    if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
+    else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
+      .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
+    else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))

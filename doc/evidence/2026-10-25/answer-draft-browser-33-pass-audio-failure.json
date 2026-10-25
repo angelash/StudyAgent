@@ -1,0 +1,1315 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/answer-journeys.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/answer-draft-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "answer-journeys.spec.ts",
+      "file": "answer-journeys.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "diagnostic single_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4226,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:24:43.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-ba6a1396604802c6877b",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:24:48.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-4b58608e082b7eb3b8fa",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic boolean: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4082,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:24:52.104Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f256ae3f7d803a45265a",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4164,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:24:56.195Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-1c9a348c1825b8c1d983",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic text_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4163,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:00.370Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-82a2d483e84c3f77348b",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:04.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-cadc1143dfee524aa6e6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:09.831Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-87862f647b58ea49eb88",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic table_fill: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4891,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:14.786Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3a0bec3581d040d3e84f",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic matching: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4208,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:19.686Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-ada18b180dc71f7a571c",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic sorting: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4707,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:23.904Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6621b1a16c06c2b28e54",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4549,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:28.621Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-06783c99ad729d28c39a",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic hotspot: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:33.178Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-539bd4f3ffc55bd35e17",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:37.823Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-8b6dfaa480778aa76817",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic stepwise: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:42.570Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-7ef3466fbe629bbea0b0",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic image_upload: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4923,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:47.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3f4d1f386247ccb47148",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic short_answer: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:52.377Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-dfa8b3c137622af2cdc4",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic audio_record: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4832,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:25:56.583Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-99fe2aad293f55d7758f",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice single_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:01.426Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-32b839d62807a5d972bf",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3955,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:05.483Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-d94bf3e9e523f402c144",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice boolean: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4476,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:09.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-868db070c757d9c6b4f2",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4405,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:13.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-832311d95301fdd72ca6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice text_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:18.346Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-0fa460ca50a1aa2ecf68",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:22.295Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6ee911e1b3fedcaf031d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3955,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:27.120Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-7e28bbd64f3e694ba86d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice table_fill: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4414,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:31.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-12494dc9157335dd15e7",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice matching: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:35.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-9f34d11766a54818eb95",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice sorting: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:39.492Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-24dd4da646c5cb55e0d8",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4580,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:44.118Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-bbc7d3d9d82b74d16be4",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice hotspot: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4442,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:48.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-287959fab07e8792ee9e",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4536,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:53.158Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3f215c0ac4e54b7924c0",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice stepwise: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:26:57.704Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-afeff79ab800f83d48f2",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice image_upload: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4714,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:27:02.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-d8f6636e7a08e5195132",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice short_answer: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:27:06.984Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f37ecea5126c676f917d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice audio_record: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 33696,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\u001b[22m\n\u001b[2m    62 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\u001b[22m\n\u001b[2m    62 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at fill (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:47:92)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:67:5",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                      "column": 92,
+                      "line": 47
+                    },
+                    "snippet": "  45 |   await page.getByLabel('数字或分数答案').fill('6'); await page.getByRole('button', { name: '提交，下一步 →', exact: true }).click(); await expect(page.getByRole('button', { name: '核对原提交', exact: true })).toBeVisible(); await expect.poll(() => !!receipt).toBe(true);\n  46 |   await page.reload(); await expect(page.getByLabel('数字或分数答案')).toHaveValue(''); const actual = await call(f.actor, '/diagnostics/sessions/' + f.sessionId); expect(actual.answeredCount).toBe(1); expect(actual.items[0].answered).toBe(true); expect(commands).toHaveLength(2); expect(commands[1]).toEqual(commands[0]);\n> 47 |   const replay = await call(f.actor, f.responsesPath, commands[0]); expect(replay).toMatchObject({ responseId: receipt.responseId, idempotent: true });\n     |                                                                                            ^\n  48 | });\n  49 |\n  50 | test('recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question', async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                        "column": 92,
+                        "line": 47
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('.studio-question fieldset').first().locator('.saved-media-evidence[data-student-media-state=ready]')\u001b[22m\n\u001b[2m    62 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  45 |   await page.getByLabel('数字或分数答案').fill('6'); await page.getByRole('button', { name: '提交，下一步 →', exact: true }).click(); await expect(page.getByRole('button', { name: '核对原提交', exact: true })).toBeVisible(); await expect.poll(() => !!receipt).toBe(true);\n  46 |   await page.reload(); await expect(page.getByLabel('数字或分数答案')).toHaveValue(''); const actual = await call(f.actor, '/diagnostics/sessions/' + f.sessionId); expect(actual.answeredCount).toBe(1); expect(actual.items[0].answered).toBe(true); expect(commands).toHaveLength(2); expect(commands[1]).toEqual(commands[0]);\n> 47 |   const replay = await call(f.actor, f.responsesPath, commands[0]); expect(replay).toMatchObject({ responseId: receipt.responseId, idempotent: true });\n     |                                                                                            ^\n  48 | });\n  49 |\n  50 | test('recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question', async ({ page }) => {\n    at fill (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:47:92)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:67:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:27:11.482Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-a-1db1d--submit-and-historical-read\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-a-1db1d--submit-and-historical-read\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-practice-a-1db1d--submit-and-historical-read\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                    "column": 92,
+                    "line": 47
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f8406aa0b6f916fcf4b5",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T07:24:38.044Z",
+    "duration": 189146.286,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

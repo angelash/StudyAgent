@@ -45,6 +45,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     if(count===1&&prompt.includes('[image-pause-once]'))await new Promise((resolve,reject)=>{const timer=setTimeout(resolve,12000);signal.addEventListener('abort',()=>{clearTimeout(timer);reject(new Error('fixture image cancelled'));},{once:true});});
     const output=path.join(directory,'browser-fixture.png');await sharp({create:{width:1024,height:1024,channels:3,background:{r:223,g:234,b:248}}}).png().toFile(output);const promptPath=path.join(directory,'browser-prompt.txt');fs.writeFileSync(promptPath,prompt);return{output,promptPath};};
   require('./classroom-caption-fixture.cjs').installCaptionFixture(app);
+  require('./answer-journey-fixture.cjs').installAnswerJourneyFixture(app);
   app.enableCors({origin:(process.env.CORS_ORIGINS??'').split(',').filter(Boolean),credentials:true});await app.init();await app.listen(Number(process.env.API_PORT??4107),'127.0.0.1');
   for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>void app.close().then(()=>process.exit(0)));
 })().catch(error=>{console.error(error.message);process.exitCode=1;});

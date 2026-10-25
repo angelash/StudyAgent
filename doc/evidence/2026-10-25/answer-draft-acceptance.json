@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T07:25:27.036Z",
+  "at": "2026-10-25T08:01:07.427Z",
   "specificationCommit": "0c7091c",
   "passed": false,
   "backendPassed": true,
-  "status": "backend-tested-frontend-journeys-in-progress",
+  "status": "local-journeys-tested-full-browser-ci-daemon-pending",
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
   "sourceDigests": {
     "packages/contracts/src/answer-draft.ts": "febcf71775a034189582a2ca3de55ebc0417ddabe1ab3f8953355d8c28f1b898",
@@ -14,12 +14,29 @@
     "apps/api/src/common/answer-draft.ts": "17533fe2c0d6b18580567652d030dc36bf2862037bea0e1d28c9bce36df953a0",
     "apps/api/src/infrastructure/in-memory-store.service.ts": "ebf4fce2b113a17303f1f6731c909825ef55640dc52255d9bafa1b4e4cdb2a81",
     "apps/api/src/modules/diagnostics/diagnostics.service.ts": "824192cdc3d045fecd6a7464449502e2a275e733a7afd5f122da9854f7c28e01",
-    "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts": "51c5b0f8436257c8ef1a5c4f814ed510846270d1a99dab11002b11e40c14f142",
+    "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts": "aa5f7298dac0edba8471dd21ac4661e84f83077a987d3353988563194772e418",
     "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts": "00af3e3d2f9e8af801e4ef9e236f5975d18b2549222b6a4706fb9a9236703048",
     "apps/api/src/modules/learning/learning.service.ts": "0b703e548aa1aaa03298f94a3ef848dba7d31d2cd3eeaf6760383c571265e54d",
-    "apps/api/src/modules/privacy/privacy-records.ts": "f5dec45592af7de9bdf160fc960777fed323dbd88f2f69d588b29c924583fdd5",
+    "apps/api/src/modules/privacy/privacy-records.ts": "d9027262f8a52c9646a686d11ecbcbea1729e8e064a8d74425c95042bb1bf777",
     "scripts/qa/run-answer-drafts-postgres.cjs": "249bf939b94632c378a08d1d1501c5684661770083eea4111052f2e22dd0e1e0",
-    ".github/workflows/verify.yml": "5d03d7ef350be64247231b9ef14514e8edec76ccbd2c6377bb00d7bbe75115b7"
+    ".github/workflows/verify.yml": "5d03d7ef350be64247231b9ef14514e8edec76ccbd2c6377bb00d7bbe75115b7",
+    "apps/api/src/modules/ai/ai.service.ts": "2704a7af24e441bd582057bf1eaafd770720521fdba3aab4cbd98b59bf1c7e2f",
+    "apps/web/app/student/assessment/studio.css": "330f5a89ac5aeb7da03cc3e28557bee67d0c8e2e3d29520610f9303be83077ac",
+    "apps/web/app/student/assessment/studio.tsx": "2cf7855a522c7e9677bba83b1fa10b2e1721065fe2ae4e21bef806bd2359386f",
+    "apps/web/app/student/today/studio.tsx": "4de31840c67b1e92d227a065bdc6ef5963d6b68326b8afa84c59b2a6c9bf2d36",
+    "apps/web/components/assistant-widget.tsx": "b52f6debf42e3fed3b51f23fae21d0f3b4dfddb755f8275e8742ab90385cf856",
+    "apps/web/components/formula-input.tsx": "b1bf82bc38d8db15f00b449ac0f37acbcdaf7de10143becd792ad18e639501e7",
+    "apps/web/components/media-answer-input.tsx": "89e21e100d1600b0fd019eaa4b677ff6bafaccdf074785370f099cb4c59ca0d5",
+    "apps/web/components/question-renderer.tsx": "9240ef4a4a7c4849b580daad371b04cd24a6a7216763869a89f80978d45d7649",
+    "apps/web/lib/api.ts": "d35f6e1609e1436f97b6fa516e558d6950c439365ff96fba898f3382f6d768bf",
+    "packages/ui/src/assistant-dock.tsx": "72d4afb2b6de58c5428bb7451f49c35a8311fefcc0afadc1707d525affba6690",
+    "scripts/architecture/project-feature-definitions.cjs": "9ef3295b37531035ceb87b658bde61ad667aeb6cc5c39db2c924a2eb02d0e3ac",
+    "scripts/qa/run-source-course-browser.cjs": "9766c1c5aaa4455dcdd12c3757ff07eb63d6dd4a3dd8f5c12c55e74315fc0100",
+    "scripts/qa/source-course-test-api.cjs": "58bfe625aad2742799f325e89cbf8ccd740662e28215bf112ac1503c0901d203",
+    "apps/web/lib/answer-draft.ts": "214da2bfecda2b407cdea913cba55d24b828521a065b754f0401e5bf3ff38896",
+    "apps/web/components/answer-draft-status.tsx": "9eead1d090b218f81a58634791fdc6c5096718bf056e39add0ff16050dee8e40",
+    "scripts/qa/answer-journey-fixture.cjs": "173e71d33d35e4fa2713f6159396d8a701885d6507978532387b501592866bd0",
+    "tests/e2e/answer-journeys.spec.ts": "77adc1c2dc674a9bce9f64994c28971f91da94f49fcf7117b9feb9cd326ad164"
   },
   "reports": {
     "answer-draft-sqlite-initial.json": {
@@ -84,6 +101,137 @@
       "passed": 10,
       "failed": 0,
       "skipped": 1
+    },
+    "answer-draft-full-api.json": {
+      "sha256": "7f4b4a26badc5f446ed563230eb613f96818043accf20af03ee2aefcd1031e33",
+      "total": 1155,
+      "passed": 1119,
+      "failed": 0,
+      "skipped": 36
+    },
+    "answer-draft-browser-33-pass-audio-failure.json": {
+      "sha256": "442537b67baaf709c65bc17bf94b15013a894e4d9966f2362a2cdd78773fd8aa",
+      "total": 34,
+      "passed": 33,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-after-scope-fix.json": {
+      "sha256": "bf44c48fe3d7dec9e8ed0cca398af8abf7a08a2a05356b8916da94bfbf189eb6",
+      "total": 34,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 28,
+      "flaky": 0
+    },
+    "answer-draft-browser-before-compact.json": {
+      "sha256": "33b8a089d56a943f0ce27a387d86f703daeb6fb7edde06eecf06b4b967f40ba2",
+      "total": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-compact-final.json": {
+      "sha256": "d3088790d288509f8d6180524e2b7361f764cade629fd39d20cad645c1d936f0",
+      "total": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-formula-click-only.json": {
+      "sha256": "19ee8dd0587777a6d55f86c23fbcb808ce4b2d59e456cd043f59e926129a06ee",
+      "total": 34,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 28,
+      "flaky": 0
+    },
+    "answer-draft-browser-formula-debug.json": {
+      "sha256": "0d88bc6e9620db825a04b873ca5ce3c4e21a06f9dd9ccd759119bd706109f594",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-formula-receipt-timing.json": {
+      "sha256": "101c01fdd4f2872f258dc1634f757387c309c8d23117e8b49a77253ded6d38eb",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-initial.json": {
+      "sha256": "5080497b89326ec981018e290f83f7a6d701608cfbab7939f5467dad47bcf4ac",
+      "total": 34,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 33,
+      "flaky": 0
+    },
+    "answer-draft-browser-recovery-final.json": {
+      "sha256": "8cf4516d8fc67d001c922fd69f06034c96f54d207e00287c4b2f25018bb83ff4",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser-recovery-initial.json": {
+      "sha256": "5a30bda42f551ae4ef03c165c468fb19d50989eddd4cebfb3e5b8c4726393979",
+      "total": 7,
+      "passed": 4,
+      "failed": 1,
+      "skipped": 2,
+      "flaky": 0
+    },
+    "answer-draft-browser-recovery-projection-final.json": {
+      "sha256": "01ef82a7acd851e6e1e305d18c64a5fb078464b3d416dfa70e26754c90ad02f1",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-browser.json": {
+      "sha256": "e2a9d2a97239d34f840cfbad7736c9e73b7cd30a35f4c3a7d4dc86db94654516",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "answer-draft-final-projections-postgres.json": {
+      "sha256": "d6d069992d852904f24b2fbedba72a79f20a53d238852dc0327271456355863e",
+      "total": 11,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    },
+    "answer-draft-final-projections-sqlite.json": {
+      "sha256": "eb75e7733f9fe17dab6100dfb0c9f409c918fa974aaace0694796dc4db53f90c",
+      "total": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-native-postgres.json": {
+      "sha256": "0bfa41b04dc9c4f6e424e0909c8f710423bc8976ee119425beee2c01609709aa",
+      "total": 11,
+      "passed": 9,
+      "failed": 1,
+      "skipped": 1
+    },
+    "answer-draft-recovery-sqlite.json": {
+      "sha256": "fcd4b125612cb7157b83bbc39ed5a5bedd57ba4a0d237be07be27fe0ec7776b6",
+      "total": 10,
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0
     }
   },
   "checks": {
@@ -103,18 +251,91 @@
       "passed": 27,
       "scope": "The initial 35-test combination; not added to the overlapping focused counts"
     },
-    "fullApi": "running separately",
-    "browser": "17 types on both real pages in progress; initial scope/focus/timing results retained"
+    "fullApi": {
+      "total": 1155,
+      "passed": 1119,
+      "environmentSkipped": 36,
+      "failed": 0,
+      "backendRevision": "3a9d8d6",
+      "scope": "Before final submitted-draft AI/export projection correction; final SQLite22 and PostgreSQL10 cover the correction. Counts overlap."
+    },
+    "browser": {
+      "twoPageInputJourneys": 34,
+      "priorCombined": {
+        "passed": 43,
+        "retries": 0,
+        "scope": "before final stale-tab attempt binding correction"
+      },
+      "finalRecovery": {
+        "passed": 10,
+        "retries": 0,
+        "scope": "covers last local attempt binding correction"
+      },
+      "fullRegression": "running 127 cases; pending"
+    },
+    "isolatedPostgres": "stopped",
+    "finalProjections": {
+      "sqlitePassed": 22,
+      "postgresPassed": 10,
+      "postgresSqliteOnlySkipped": 1,
+      "scope": "Actual child export, submitted logs excluded from assistant and portable drafts, editable correction retained; native cold restore retained"
+    }
   },
   "diagnostics": [
     "The initial combination had34 passes and one export fixture failure because it selected only account records instead of the child; corrected to use the actual child export API.",
     "The first SQLite cold restore expected an old authentication token to survive. Restore intentionally revokes sessions; the test now logs in again and confirms original command receipts.",
-    "The first native PostgreSQL test called a nonexistent fixture workspace.render method; corrected to the real authorized payload builder, with native recovery now passing."
+    "The first native PostgreSQL test called a nonexistent fixture workspace.render method; corrected to the real authorized payload builder, with native recovery now passing.",
+    "The first browser run found a scope handover that could submit the previous question. Opening the exact frozen input scope now gates the input and submission buttons.",
+    "Formula retries exposed missing focus and receipt waits in the fixture; tests now await real MathLive focus and server revision.",
+    "The first media journey found an actual MVCC upload acknowledgment conflict. It reuses the original upload identity with at most two reauthenticated retries for409 only.",
+    "The first practice correction refresh selected the first question. The current question now persists in the URL.",
+    "Compact collapsed assistant and submission-center hit checks keep primary actions reachable at390/768/1440.",
+    "A new cross-attempt stale-tab case showed why local baseHash and revision must be independent of a fresh server read. Original input cannot silently become a new correction.",
+    "Type checking found a negative-test payload with a required deleted field; only its test type was corrected to an open command record."
   ],
   "limits": [
-    "This is backend progress within specification112, not its final delivery or complete product.",
-    "Synthetic isolated stores only; no production family records used as test data.",
-    "Frontend17-type and recovery journeys, complete API regression, exact CI and daemon delivery remain gates.",
-    "Teacher validity, real devices, accessibility and real interval teaching remain separate requirements."
-  ]
+    "Specification112 is locally implemented; full latest browser, exact remote CI and daemon delivery remain pending. It is not complete-product acceptance.",
+    "All learning fixtures and files are synthetic and use isolated QA stores; no production family records used as tests.",
+    "The43-case and10-case browser receipts and backend focused combinations overlap; they must not be summed.",
+    "Teacher validity, real devices, assistive technologies and real interval teaching remain separate requirements."
+  ],
+  "backendRevision": "3a9d8d6",
+  "screenshots": {
+    "conflict-1440.png": {
+      "sha256": "5b74c0228a0c267eb0b1f3ec6757a170c70eddb95945537b442d7a8e5c7ae424",
+      "visuallyReviewed": true
+    },
+    "conflict-390.png": {
+      "sha256": "5acb38d9e3dec75590966070468703b3d96341653251d70c254859d017644dc2",
+      "visuallyReviewed": true
+    },
+    "conflict-768.png": {
+      "sha256": "94ec0975adafc43ef3764605d7aa5471dbead32f8acfa9056636742eb140575a",
+      "visuallyReviewed": true
+    },
+    "diagnostic-geometry_draw-390.png": {
+      "sha256": "26a55876e3369aa77a6e04b6d75fb2713cbb28288f8caf8e8df8cb7c7afab04a",
+      "visuallyReviewed": true
+    },
+    "diagnostic-image_upload-1440.png": {
+      "sha256": "d4e445b8d1a636a7daf181837245bc00455d92cbe8273a38c9bfcec11fa2d3f8",
+      "visuallyReviewed": true
+    },
+    "diagnostic-table_fill-768.png": {
+      "sha256": "642f32a42cdf8f5312b68c6835364f28b8e4f4b239643c8fdee9b8cbe8c3d475",
+      "visuallyReviewed": true
+    },
+    "practice-geometry_draw-390.png": {
+      "sha256": "6578436c95735f7b5a2bef254e06467023fb566c593670b8e6b9d2432d2965f2",
+      "visuallyReviewed": true
+    },
+    "practice-image_upload-1440.png": {
+      "sha256": "df6ceadedf2bab23913fc9bcff44f112fe9c467c7aebfca683b33f1442f12f2e",
+      "visuallyReviewed": true
+    },
+    "practice-table_fill-768.png": {
+      "sha256": "a793d9583e986f77515ad0e59cf019e225b915de34f0f1ab873d51b55f7e85ab",
+      "visuallyReviewed": true
+    }
+  }
 }

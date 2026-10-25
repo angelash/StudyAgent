@@ -246,8 +246,9 @@ export class AiService {
       if (!question) throw new BadRequestException('请指定这次练习中正在查看的题目');
       const attempts = this.store.select('practiceAttempts', { sessionId: practice.id, questionId: question.id });
       const latest = attempts.at(-1);
+      const savedDraft = practice.drafts?.[question.id];
       return { kind: 'practice' as const, sessionId: practice.id, itemId: question.id, question, atomId: practice.atomId,
-        draft: practice.drafts?.[question.id]?.answer ?? null, response: latest ?? null, assistanceNeeded: practice.status === 'in_progress' && !attempts.length,
+        draft: savedDraft && (savedDraft.protocol !== 'answer-draft-v2' || savedDraft.draftAttempt === attempts.length) ? savedDraft.answer : null, response: latest ?? null, assistanceNeeded: practice.status === 'in_progress' && !attempts.length,
         action: practice.actionSnapshot ?? null, planId: practice.planId, atomSnapshot: practice.atomSnapshot,
         sourceAssessmentId: practice.sourceAssessmentId };
     }
@@ -263,7 +264,7 @@ export class AiService {
       const response = this.store.find('diagnosticResponses', { sessionId: assessment.id, itemId: item.id }) ?? null;
       return { kind: 'diagnostic' as const, sessionId: assessment.id, itemId: item.id, question, atomId: item.atomId,
         assessmentStatus: assessment.status,
-        draft: this.store.find('diagnosticDrafts', { sessionId: assessment.id, itemId: item.id })?.answer ?? null,
+        draft: response ? null : this.store.find('diagnosticDrafts', { sessionId: assessment.id, itemId: item.id })?.answer ?? null,
         response, assistanceNeeded: assessment.status === 'in_progress' && !response, action: null, planId: assessment.planId,
         atomSnapshot: assessment.atomSnapshots?.find(atom => atom.id === item.atomId) };
     }

@@ -1,11 +1,13 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { DiagnosticStart, QuestionRenderPayload, StudentAnswerPayload, Subject } from '@study-agent/contracts';
+import type { AnswerDraftState, DiagnosticStart, QuestionRenderPayload, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
 import { Child, DailyLearning, Practice, PracticeFeedback, readableAnswer, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
+import { useAnswerDraft, recoverPendingAnswerSubmission } from '../../../lib/answer-draft';
+import { AnswerDraftStatus } from '../../../components/answer-draft-status';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { MistakeNotebook } from '../../../components/mistake-notebook';
 import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
@@ -20,21 +22,24 @@ export function DailyStudio() {
   const studentMode = useSessionUser()?.role === 'student';
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState(''), [subject, setSubject] = React.useState<Subject>('math');
   const [today, setToday] = React.useState<DailyLearning | null>(null), [practice, setPractice] = React.useState<Practice | null>(null);
-  const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), [answer, setAnswer] = React.useState<StudentAnswerPayload | null>(null);
+  const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), draft = useAnswerDraft(), answer = draft.answer;
+  const [answerReadRevision, setAnswerReadRevision] = React.useState(0);
   const [mediaPending, setMediaPending] = React.useState(false);
   const [resourceBlocked, setResourceBlocked] = React.useState(false);
-  const canAnswer = payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked : false;
   const [feedback, setFeedback] = React.useState<PracticeFeedback | null>(null), [index, setIndex] = React.useState(0), [retry, setRetry] = React.useState(false);
   const [hint, setHint] = React.useState(''), [saved, setSaved] = React.useState(''), [tab, setTab] = React.useState<'today' | 'mistakes'>('today');
   const [busy, setBusy] = React.useState(false), [loading, setLoading] = React.useState(true), [error, setError] = React.useState(''), [loggedIn, setLoggedIn] = React.useState(false);
-  const timer = React.useRef<ReturnType<typeof setTimeout> | null>(null), openedAt = React.useRef(Date.now()), requestKey = React.useRef('');
   const blueprintRequest = React.useRef({ signature: '', key: '' });
   const question = practice?.questions[index], child = children.find((item) => item.id === studentId);
+  const answerReady = !!payload && !!answer && draft.matches('practice', practice?.id ?? '', question?.id ?? '');
+  const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
   async function run(fn: () => Promise<void>) { setBusy(true); setError(''); try { await fn(); } catch (caught) { setError(caught instanceof Error ? caught.message : '操作未完成，请重试'); } finally { setBusy(false); } }
   function selectPractice(next: Practice) {
-    setPractice(next); setIndex(Math.max(0, next.questions.findIndex((item) => !item.attempted))); setRetry(false);
-    window.history.replaceState({}, '', `?studentId=${next.studentId}&subject=${next.subject}&practice=${next.id}`);
+    const params = new URLSearchParams(window.location.search), selected = params.get('practice') === next.id ? next.questions.findIndex(item => item.id === params.get('question')) : -1;
+    const cursor = selected >= 0 ? selected : Math.max(0, next.questions.findIndex(item => !item.attempted));
+    setPractice(next); setIndex(cursor); setRetry(false); practiceLocation(next, cursor);
   }
+  function practiceLocation(activity: Practice, cursor: number) { const params = new URLSearchParams({ studentId: activity.studentId, subject: activity.subject, practice: activity.id }); if (activity.questions[cursor]) params.set('question', activity.questions[cursor].id); window.history.replaceState({}, '', '?' + params); }
   React.useEffect(() => {
     let alive = true;
     (async () => {
@@ -45,10 +50,10 @@ export function DailyStudio() {
         const selectedSubject = params.get('subject'); if (selectedSubject && selectedSubject in subjectNames) setSubject(selectedSubject as Subject);
         if (selected) setStudentId(selected.id);
         const id = params.get('practice');
-        if (id) { const restored = await send<Practice>(`/learning/practice/${encodeURIComponent(id)}`); if (alive) { setStudentId(restored.studentId); setSubject(restored.subject); selectPractice(restored); } }
+        if (id) { await recoverPendingAnswerSubmission('practice', id); const restored = await send<Practice>(`/learning/practice/${encodeURIComponent(id)}`); if (alive) { setStudentId(restored.studentId); setSubject(restored.subject); selectPractice(restored); } }
       } catch (caught) { if (alive) setError(caught instanceof Error ? caught.message : '请先登录'); }
       finally { if (alive) setLoading(false); }
-    })(); return () => { alive = false; if (timer.current) clearTimeout(timer.current); };
+    })(); return () => { alive = false; };
   }, []);
   React.useEffect(() => {
     if (!studentId) return; let alive = true; setToday(null);
@@ -57,35 +62,38 @@ export function DailyStudio() {
     return () => { alive = false; };
   }, [studentId, subject, practice?.status]);
   React.useEffect(() => {
-    if (!practice || !question) return; let alive = true; setPayload(null); setFeedback(null); setAnswer(null); setHint(''); setSaved(''); setRetry(false);
-    send<{ payload: QuestionRenderPayload; feedback: PracticeFeedback | null; draft: { answer: StudentAnswerPayload } | null }>(`/learning/practice/${practice.id}/questions/${encodeURIComponent(question.id)}`)
+    if (!practice || !question) return; let alive = true; draft.reset(); setPayload(null); setFeedback(null); setHint(''); setSaved(''); setRetry(false);
+    const path = `/learning/practice/${practice.id}/questions/${encodeURIComponent(question.id)}`;
+    send<{ payload: QuestionRenderPayload; feedback: PracticeFeedback | null; draft: { answer: StudentAnswerPayload } | null; draftState: AnswerDraftState }>(path)
       .then((value) => { if (alive) { const prior = value.feedback?.attempt.answer as StudentAnswerPayload | null;
-        setPayload(value.payload); setAnswer(value.draft?.answer ?? (prior?.mode === value.payload.answerSchema.mode ? prior : createEmptyAnswerPayload(value.payload)));
-        setFeedback(value.feedback); setSaved(value.draft ? '已恢复上次草稿' : ''); openedAt.current = Date.now(); requestKey.current = crypto.randomUUID(); } })
+        setPayload(value.payload);
+        const restored = draft.open({ kind: 'practice', sessionId: practice.id, itemId: question.id, path, responsesPath: `/learning/practice/${practice.id}/responses`, state: value.draftState, retrying: !!value.feedback && !!value.draft },
+          value.draft?.answer ?? (prior?.mode === value.payload.answerSchema.mode ? prior : createEmptyAnswerPayload(value.payload)));
+        setFeedback(value.feedback); setRetry(restored.retrying); } })
       .catch((caught) => { if (alive) setError(caught.message); });
     window.scrollTo({ top: 0, behavior: 'instant' });
-    return () => { alive = false; if (timer.current) clearTimeout(timer.current); };
-  }, [practice?.id, question?.id]);
+    return () => { alive = false; };
+  }, [practice?.id, question?.id, answerReadRevision]);
   function change(next: StudentAnswerPayload) {
-    setAnswer(next); setSaved('正在保存…'); if (timer.current) clearTimeout(timer.current);
-    if (!practice || !question) return;
-    const path = `/learning/practice/${practice.id}/questions/${encodeURIComponent(question.id)}/draft`;
-    timer.current = setTimeout(() => send(path, { answer: next }, 'PATCH').then(() => setSaved('草稿已保存')).catch(() => setSaved('保存未成功，请保持页面并重试')), 700);
+    draft.change(next);
   }
   async function submit(disposition: 'answered' | 'skip') {
-    if (!practice || !question) return; if (timer.current) clearTimeout(timer.current);
+    if (!practice || !question || !answerReady) return; const epoch = draft.epoch;
     await run(async () => {
-      const result = await send<PracticeFeedback>(`/learning/practice/${practice.id}/responses`, { questionId: question.id, requestKey: requestKey.current,
-        ...(disposition === 'answered' ? { answer } : {}), disposition, elapsedMs: Math.min(3_600_000, Date.now() - openedAt.current) });
-      setFeedback(result); setRetry(false); setSaved(''); setPractice(await send<Practice>(`/learning/practice/${practice.id}`));
+      await draft.submit<PracticeFeedback>(disposition);
+      const next = await send<Practice>(`/learning/practice/${practice.id}`); if (!draft.isCurrent(epoch)) return;
+      draft.confirmed(); setRetry(false); setSaved(''); setPractice(next); setAnswerReadRevision(value => value + 1);
     });
   }
-  async function leave() { if (timer.current) clearTimeout(timer.current);
+  async function leave() {
     if (practice?.status === 'in_progress' && question && answer && (!feedback || retry)) {
-      try { await send(`/learning/practice/${practice.id}/questions/${encodeURIComponent(question.id)}/draft`, { answer }, 'PATCH'); }
-      catch (caught) { setError(caught instanceof Error ? caught.message : '草稿保存未完成，请重试'); return; }
+      if (!await draft.prepareToLeave()) return;
     }
-    setPractice(null); setPayload(null); window.history.replaceState({}, '', `?studentId=${studentId}&subject=${subject}`);
+    draft.reset(); setPractice(null); setPayload(null); window.history.replaceState({}, '', `?studentId=${studentId}&subject=${subject}`);
+  }
+  async function chooseQuestion(next: number) {
+    if (busy || !practice || !answerReady || next === index) return; const epoch = draft.epoch;
+    await run(async () => { if (!feedback || retry) await draft.flush(); if (draft.isCurrent(epoch)) { setIndex(next); practiceLocation(practice, next); } });
   }
   async function previewAssessment(command: DiagnosticStart) {
     const signature = JSON.stringify(command);
@@ -111,14 +119,15 @@ export function DailyStudio() {
         <div className="studio-section-head"><span className="studio-eyebrow">{practice.status === 'completed' ? '今日活动已完成' : '可以提示，也可以订正'}</span><h2>{practice.action.title}</h2><p>{practice.action.activity}</p></div>{practice.planRevision !== practice.currentPlanRevision && <p className="studio-notice" role="status">{practice.snapshotOrigin === 'started' ? '指导计划已调整。这次练习继续使用开始时保存的活动，完成后按最新计划安排下一步。' : '这是早期练习记录，活动内容在首次版本归档时保存，无法追溯更早的活动变化。'}</p>}
         {practice.status === 'completed' && <div className="daily-complete"><span aria-hidden="true">✓</span><h2>这一步，已经认真走过。</h2><p>已作答 {practice.summary.answered} 道，跳过 {practice.summary.skipped} 道；其中 {practice.summary.independentFirstPass} 道首次独立做对。{practice.summary.pendingReview > 0 && `${practice.summary.pendingReview} 道表达题等待复核。`}</p><p>{practice.origin === 'notebook' ? '原题订正已记录。回到错题本，另用未见新题核查，再等待间隔复测。' : '接下来按计划复测，用新题检查理解和保持。'}</p><button className="studio-primary" onClick={leave}>查看下一步 ↗</button></div>}<>
           <TeachingGuide snapshot={practice.action.teachingSnapshot} showObservation={!studentMode} />
-          <div className="daily-question-index" aria-label="练习进度">{practice.questions.map((item, i) => <button key={item.id} disabled={busy} aria-current={index === i ? 'step' : undefined} onClick={() => setIndex(i)}>{i + 1}{item.attempted ? ' ✓' : ''}</button>)}</div>
+          <div className="daily-question-index" aria-label="练习进度">{practice.questions.map((item, i) => <button key={item.id} disabled={busy || !answerReady} aria-current={index === i ? 'step' : undefined} onClick={() => void chooseQuestion(i)}>{i + 1}{item.attempted ? ' ✓' : ''}</button>)}</div>
           <div className="studio-progress"><span style={{ width: `${100 * practice.summary.attempted / practice.summary.total}%` }} /></div>
-          <div className="studio-question"><div className="studio-question-top"><span>第 {index + 1} / {practice.summary.total} 题</span><span role="status">{saved}</span></div>
-            {payload && answer ? <fieldset disabled={busy || practice.status === 'completed' || Boolean(feedback && !retry)} className="daily-answer-field"><legend className="visually-hidden">本题作答</legend><QuestionRenderer renderPayload={payload} answer={answer} onChange={change} mediaTarget={{ kind: 'practice', sessionId: practice.id, itemId: question!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p role="status">正在打开题目…</p>}
+          <div className="studio-question"><div className="studio-question-top"><span>第 {index + 1} / {practice.summary.total} 题</span><span role="status">{draft.label}</span></div>
+            {answerReady && payload && answer ? <fieldset disabled={busy || draft.pendingSubmission || practice.status === 'completed' || Boolean(feedback && !retry)} className="daily-answer-field"><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission || practice.status === "completed" || Boolean(feedback && !retry)} key={practice.id + ":" + question!.id + ":" + draft.state?.baseHash} renderPayload={payload} answer={answer} onChange={change} mediaTarget={{ kind: 'practice', sessionId: practice.id, itemId: question!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p role="status">正在打开题目…</p>}
+            <AnswerDraftStatus draft={draft} schema={payload?.answerSchema} onRecover={() => submit('answered')} onReadActivity={async () => { const next = await send<Practice>(`/learning/practice/${practice.id}`); draft.confirmed(); setPractice(next); setAnswerReadRevision(value => value + 1); }} />
             {hint && <div className="studio-hint" role="status">{hint}</div>}
-            {feedback && !retry ? <div className="daily-feedback" data-correct={feedback.attempt.correct}><strong>{feedback.attempt.status === 'skipped' ? '这道题先放一放' : feedback.attempt.status === 'pending_review' ? '你的表达已保存' : feedback.attempt.correct ? '这一步做到了' : '我们一起看看卡在哪里'}</strong><p>{feedback.notice}</p><details><summary>查看参考思路</summary><p>参考答案：{readableAnswer(feedback.referenceAnswer)}</p><p>{feedback.analysis}</p></details><p className="studio-muted">第 {feedback.attempt.attempt} 次作答 · {feedback.attempt.hintLevel ? `使用了 ${feedback.attempt.hintLevel} 级提示` : '未使用提示'}{feedback.attempt.solutionExposedBefore && ' · 参考思路已提供'}</p><EvidenceFeedbackForm kind="practice" responseId={feedback.attempt.id} /><div className="daily-buttons"><button className="studio-secondary" disabled={busy || practice.status === 'completed' || feedback.attempt.attempt >= 5} onClick={() => { setRetry(true); requestKey.current = crypto.randomUUID(); openedAt.current = Date.now(); }}>再想一次</button>{index < practice.questions.length - 1 && <button className="studio-primary" onClick={() => setIndex(index + 1)}>下一题 →</button>}</div></div> : <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || !payload} onClick={() => run(async () => { const result = await send<{ hint: string }>(`/learning/practice/${practice.id}/questions/${encodeURIComponent(question!.id)}/hint`, {}); setHint(result.hint); })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !payload} onClick={() => submit('skip')}>先跳过</button><button className="studio-primary" disabled={busy || !canAnswer} onClick={() => submit('answered')}>{busy ? '正在保存…' : retry ? '提交这次订正 →' : '完成这一题 →'}</button></div></div>}
+            {feedback && !retry ? <div className="daily-feedback" data-correct={feedback.attempt.correct}><strong>{feedback.attempt.status === 'skipped' ? '这道题先放一放' : feedback.attempt.status === 'pending_review' ? '你的表达已保存' : feedback.attempt.correct ? '这一步做到了' : '我们一起看看卡在哪里'}</strong><p>{feedback.notice}</p><details><summary>查看参考思路</summary><p>参考答案：{readableAnswer(feedback.referenceAnswer)}</p><p>{feedback.analysis}</p></details><p className="studio-muted">第 {feedback.attempt.attempt} 次作答 · {feedback.attempt.hintLevel ? `使用了 ${feedback.attempt.hintLevel} 级提示` : '未使用提示'}{feedback.attempt.solutionExposedBefore && ' · 参考思路已提供'}</p><EvidenceFeedbackForm kind="practice" responseId={feedback.attempt.id} /><div className="daily-buttons"><button className="studio-secondary" disabled={busy || draft.pendingSubmission || draft.phase === 'conflict' || practice.status === 'completed' || feedback.attempt.attempt >= 5} onClick={() => { draft.beginRetry(); setRetry(true); }}>再想一次</button>{index < practice.questions.length - 1 && <button className="studio-primary" onClick={() => void chooseQuestion(index + 1)}>下一题 →</button>}</div></div> : <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || !answerReady || draft.pendingSubmission || draft.phase === 'conflict'} onClick={() => run(async () => { const epoch = draft.epoch, result = await send<{ hint: string }>(`/learning/practice/${practice.id}/questions/${encodeURIComponent(question!.id)}/hint`, {}); if (draft.isCurrent(epoch)) setHint(result.hint); })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !answerReady || draft.pendingSubmission || draft.phase === 'conflict'} onClick={() => submit('skip')}>先跳过</button><button className="studio-primary" disabled={busy || !canAnswer} onClick={() => submit('answered')}>{busy ? '正在保存…' : retry ? '提交这次订正 →' : '完成这一题 →'}</button></div></div>}
           </div>
-          {practice.status === 'in_progress' && practice.summary.attempted === practice.summary.total && <button className="studio-primary daily-finish" disabled={busy} onClick={() => run(async () => setPractice(await send<Practice>(`/learning/practice/${practice.id}/complete`, {})))}>结束这次活动 ✓</button>}
+          {practice.status === 'in_progress' && practice.summary.attempted === practice.summary.total && <button className="studio-primary daily-finish" disabled={busy || retry || draft.pendingSubmission} onClick={() => run(async () => setPractice(await send<Practice>(`/learning/practice/${practice.id}/complete`, {})))}>结束这次活动 ✓</button>}
         </>
       </> : <>
         <div className="studio-section-head"><span className="studio-eyebrow">{today?.day ?? 'TODAY'} / {subjectNames[subject]}</span><h2>今天，往前走一小步。</h2><p>{today?.notice ?? '正在加载当前安排…'}</p></div>

@@ -1,0 +1,923 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/answer-journeys.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/answer-draft-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "answer-journeys.spec.ts",
+      "file": "answer-journeys.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "diagnostic single_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3995,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:26.436Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-ba6a1396604802c6877b",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3672,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:30.763Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-4b58608e082b7eb3b8fa",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic boolean: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:34.445Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f256ae3f7d803a45265a",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3603,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:38.175Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-1c9a348c1825b8c1d983",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic text_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:41.786Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-82a2d483e84c3f77348b",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1711,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:66:38",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                      "column": 38,
+                      "line": 66
+                    },
+                    "snippet": "  64 |     await fill(page, mode, false); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  65 |     const before = await values(page), read = await call(f.actor, f.itemPath), draft = kind === 'diagnostic' ? read.draft : read.draft.answer;\n> 66 |     expect(read.draftState.revision).toBeGreaterThan(0); await page.reload(); await expect(page.locator('.studio-question fieldset').first()).toBeVisible(); await expect.poll(() => values(page)).toEqual(before);\n     |                                      ^\n  67 |     await fill(page, mode, true); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  68 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n  69 |     const final = await call(f.actor, f.itemPath), expected = kind === 'diagnostic' ? final.draft : final.draft.answer; expect(expected).not.toEqual(draft);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                        "column": 38,
+                        "line": 66
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  64 |     await fill(page, mode, false); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  65 |     const before = await values(page), read = await call(f.actor, f.itemPath), draft = kind === 'diagnostic' ? read.draft : read.draft.answer;\n> 66 |     expect(read.draftState.revision).toBeGreaterThan(0); await page.reload(); await expect(page.locator('.studio-question fieldset').first()).toBeVisible(); await expect.poll(() => values(page)).toEqual(before);\n     |                                      ^\n  67 |     await fill(page, mode, true); await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');\n  68 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n  69 |     const final = await call(f.actor, f.itemPath), expected = kind === 'diagnostic' ? final.draft : final.draft.answer; expect(expected).not.toEqual(draft);\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts:66:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:16:45.463Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-diagnostic-14bc6--submit-and-historical-read\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-diagnostic-14bc6--submit-and-historical-read\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\answer-journeys-diagnostic-14bc6--submit-and-historical-read\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\answer-journeys.spec.ts",
+                    "column": 38,
+                    "line": 66
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-cadc1143dfee524aa6e6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-87862f647b58ea49eb88",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic table_fill: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3a0bec3581d040d3e84f",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic matching: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-ada18b180dc71f7a571c",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic sorting: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6621b1a16c06c2b28e54",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-06783c99ad729d28c39a",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic hotspot: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-539bd4f3ffc55bd35e17",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-8b6dfaa480778aa76817",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic stepwise: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-7ef3466fbe629bbea0b0",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic image_upload: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3f4d1f386247ccb47148",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic short_answer: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-dfa8b3c137622af2cdc4",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "diagnostic audio_record: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-99fe2aad293f55d7758f",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice single_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-32b839d62807a5d972bf",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-d94bf3e9e523f402c144",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice boolean: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-868db070c757d9c6b4f2",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-832311d95301fdd72ca6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice text_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-0fa460ca50a1aa2ecf68",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6ee911e1b3fedcaf031d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-7e28bbd64f3e694ba86d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice table_fill: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-12494dc9157335dd15e7",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice matching: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-9f34d11766a54818eb95",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice sorting: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-24dd4da646c5cb55e0d8",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-bbc7d3d9d82b74d16be4",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice hotspot: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-287959fab07e8792ee9e",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-3f215c0ac4e54b7924c0",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice stepwise: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-afeff79ab800f83d48f2",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice image_upload: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-d8f6636e7a08e5195132",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice short_answer: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f37ecea5126c676f917d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice audio_record: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-f8406aa0b6f916fcf4b5",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T07:16:20.977Z",
+    "duration": 27641.802,
+    "expected": 5,
+    "skipped": 28,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -60,7 +60,7 @@ export function AssistantWidget(props: AssistantWidgetProps) {
     finally { if (generation.current === revision) { pending.current = null; setSending(false); } }
   }
 
-  return <AssistantDock title={props.title} subtitle={props.subtitle} open={open} onToggle={() => setOpen(v => !v)}>
+  return <AssistantDock title={props.title} subtitle={props.subtitle} open={open} compact onToggle={() => setOpen(v => !v)}>
     <div className="learning-assistant"><XiaojiuModelPicker catalog={modelCatalog} value={modelId}
       onChange={setModelId} compact />{modelError && <p className="assistant-error" role="status">
         模型目录加载失败：{modelError}</p>}<p className="assistant-intro">{props.contextItemId ? '围绕当前这道题，一起看清下一步。获得提示后的表现会单独记录。' : props.userRole === 'student' ? '告诉我卡住的一步，我们一起理清思路。' : '根据已有学习证据，一起商量怎样陪伴。'}</p>

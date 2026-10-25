@@ -1,0 +1,211 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "formula_blank",
+      "--max-failures=1",
+      "tests/e2e/answer-journeys.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/answer-draft-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "answer-journeys.spec.ts",
+      "file": "answer-journeys.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4317,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "FORMULA_FOCUS { active: \u001b[32m'BODY'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, readOnly: \u001b[33mfalse\u001b[39m, value: \u001b[32m''\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_VALUE { active: \u001b[32m'MATH-FIELD'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, value: \u001b[32m'1+'\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_FOCUS { active: \u001b[32m'BODY'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, readOnly: \u001b[33mfalse\u001b[39m, value: \u001b[32m'1+'\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_VALUE { active: \u001b[32m'MATH-FIELD'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, value: \u001b[32m'1+2'\u001b[39m }\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:21:56.303Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-cadc1143dfee524aa6e6",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3788,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "FORMULA_FOCUS { active: \u001b[32m'BODY'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, readOnly: \u001b[33mfalse\u001b[39m, value: \u001b[32m''\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_VALUE { active: \u001b[32m'MATH-FIELD'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, value: \u001b[32m'1+'\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_FOCUS { active: \u001b[32m'BODY'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, readOnly: \u001b[33mfalse\u001b[39m, value: \u001b[32m'1+'\u001b[39m }\n"
+                    },
+                    {
+                      "text": "FORMULA_VALUE { active: \u001b[32m'MATH-FIELD'\u001b[39m, hasFocus: \u001b[33mtrue\u001b[39m, value: \u001b[32m'1+2'\u001b[39m }\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T07:22:00.957Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36ea6c80ae3cdcbe4c16-6ee911e1b3fedcaf031d",
+          "file": "answer-journeys.spec.ts",
+          "line": 62,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T07:21:50.752Z",
+    "duration": 15534.966999999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
