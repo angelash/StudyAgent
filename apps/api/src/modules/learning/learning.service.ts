@@ -227,6 +227,7 @@ export class LearningService {
     const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
       prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional(),
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
+    this.students.assertCanAccessStudent(user, command.studentId);
     const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
     if (existing) {
       const whiteboard = this.store.select('studioWhiteboards', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === command.fingerprint);

@@ -130,6 +130,17 @@ describe('whiteboard video and LMS calendar integrations', () => {
     throw new Error('PDF processing did not finish');
   }
 
+  it('keeps saved whiteboard creation replays behind current student access without duplicating activity',async()=>{
+    const preview=await call('post','/learning/studio/whiteboards/preview',{studentId:'child',subject:'math',prompt:'解释异分母加法',atomId:'fraction-add'});
+    const command={studentId:'child',subject:'math',prompt:'解释异分母加法',atomId:'fraction-add',fingerprint:preview.fingerprint,requestKey:randomUUID()};
+    const saved=await call('post','/learning/studio/whiteboards',command),activities=store.studioActivities.length;
+    await call('post','/learning/studio/whiteboards',command,other,403);
+    expect((await call('post','/learning/studio/whiteboards',command)).id).toBe(saved.id);
+    await store.transaction(()=>{store.bindings.find((binding:any)=>binding.studentId==='child'&&binding.parentUserId===parent.user.id).status='revoked';});
+    await call('post','/learning/studio/whiteboards',command,parent,403);
+    expect(store.studioWhiteboards).toHaveLength(1);expect(store.studioActivities).toHaveLength(activities);
+  });
+
   it('previews, saves and reads a uniquely grounded whiteboard with student access', async () => {
     const preview = await call('post', '/learning/studio/whiteboards/preview',
       { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
