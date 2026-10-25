@@ -6,6 +6,8 @@ import { pathToFileURL } from 'node:url';
 
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`, evidence = browserEvidence('classroom-boards');
 let address = 0;
+// Drain session decorators before Playwright disposes their response/request context.
+test.afterEach(async ({page}) => { await page.unrouteAll({behavior:'wait'}); });
 const board = (page: Page) => page.locator('.cl-ai-board').last();
 async function enter(page: Page) {
   const id = Date.now() + '-' + Math.floor(Math.random()*100000), principal = 'boards-' + id + '@local.test', credential = 'Boards-only-' + id;
