@@ -1,6 +1,6 @@
 {
   "passed": false,
-  "status": "focused-and-live-passed-full-browser-ci-daemon-pending",
+  "status": "full-browser-passed-before-maintenance-fix-current-regression-pending",
   "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
   "applicationRevision": "6bf3700",
   "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
@@ -54,5 +54,15 @@
     "Exact duplicate detection and different situations do not prove independent item families.",
     "Content stays pending and formalMeasurementEligible=false.",
     "Counts overlap and are not additive."
-  ]
+  ],
+  "fullBrowserBeforeAccessFix": {
+    "passed": 218,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "applicationSnapshot": "7fd1d1921b1e15522901ea17009ed39d7012fab1",
+    "durationMs": 1020292.5369999999,
+    "report": "source-check-single-browser/full-before-access-fix.json",
+    "scope": "Single-target plus inherited cancellation; predates the independent whiteboard current-access fix."
+  }
 }
