@@ -108,3 +108,6 @@ npm run qa:docs
 单课时独立候选121的设计源码另已支持显式1～6课时，输入配方与旧双目标黄金摘要保持；当前候选50项SQLite、26项PG、10项前端专项及真实DS5题/1目标两调用通过，218项整站、独立精确CI与运行发布仍待。实际守护保持上段120版本，详见[121规格](../product/121-single-lesson-source-course-checks.md)和[候选收据](../evidence/2026-10-26/source-check-single-acceptance.json)。
 
 2026-10-26：当前运行是121（f747bb3、实际构建dd9194e/0Zhr-Oq70fmQyS671XuvN），完整收据见[121](../evidence/2026-10-26/source-check-single-acceptance.json)。122代码e0d61c8/dc4460e已接逐句自由白板、真实音轨推进、已知秒数续播、原请求关联与统一WebM/SRT时间表；24专项/PG2/11浏览器零重试，当前整批门禁待完成，未把开发候选当成上线。STUDIO-09/10按实现重写，原字体/CSS/DPR、任意主题AI、教师/设备/长期门禁保持，见[122](../evidence/2026-10-26/whiteboard-speech-acceptance.json)。
+
+
+122收尾修复68202df已接120ms录制静音尾段/末尾音频保留、原登录与学生授权代次在合成前后新事务核对；28专项、PG4及11浏览器零重试通过。设计索引更新为68202df，449源码引用/2853链接/10离线检查通过，当前完整API和229整站尚在运行；生产仍121。

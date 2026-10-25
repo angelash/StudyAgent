@@ -1,6 +1,6 @@
 # 06 家庭首页、今日训练、学习记忆与错题 — 详细设计
 
-源码基线：`dc4460e3e5cd4d6c72330e78578302a8a8369314`。角色：学生、家长、授权教师。
+源码基线：`68202df98b40ec4f31cb12e63fca96019e94f6ff`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -70,8 +70,8 @@
 
 **服务方法**：
 
-- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:874](../../../apps/api/src/modules/learning/learning.service.ts#L874)。
-- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:590](../../../apps/api/src/modules/learning/learning.service.ts#L590)。
+- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:880](../../../apps/api/src/modules/learning/learning.service.ts#L880)。
+- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:596](../../../apps/api/src/modules/learning/learning.service.ts#L596)。
 
 ## LEARN-02 今日任务与练习入口
 
@@ -87,13 +87,13 @@
 
 **关联接口**：
 
-- `GET /api/learning/students/:id/today` → `LearningController.today`；[apps/api/src/modules/learning/learning.controller.ts:114](../../../apps/api/src/modules/learning/learning.controller.ts#L114)。
-- `POST /api/learning/plans/:id/actions/:action/start` → `LearningController.start`；[apps/api/src/modules/learning/learning.controller.ts:120](../../../apps/api/src/modules/learning/learning.controller.ts#L120)。
+- `GET /api/learning/students/:id/today` → `LearningController.today`；[apps/api/src/modules/learning/learning.controller.ts:118](../../../apps/api/src/modules/learning/learning.controller.ts#L118)。
+- `POST /api/learning/plans/:id/actions/:action/start` → `LearningController.start`；[apps/api/src/modules/learning/learning.controller.ts:124](../../../apps/api/src/modules/learning/learning.controller.ts#L124)。
 
 **服务方法**：
 
-- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:650](../../../apps/api/src/modules/learning/learning.service.ts#L650)。
-- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:664](../../../apps/api/src/modules/learning/learning.service.ts#L664)。
+- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:656](../../../apps/api/src/modules/learning/learning.service.ts#L656)。
+- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:670](../../../apps/api/src/modules/learning/learning.service.ts#L670)。
 
 ## LEARN-03 训练作答、草稿、提示与完成
 
@@ -109,21 +109,21 @@
 
 **关联接口**：
 
-- `GET /api/learning/practice/:id` → `LearningController.view`；[apps/api/src/modules/learning/learning.controller.ts:121](../../../apps/api/src/modules/learning/learning.controller.ts#L121)。
-- `GET /api/learning/practice/:id/questions/:question` → `LearningController.render`；[apps/api/src/modules/learning/learning.controller.ts:122](../../../apps/api/src/modules/learning/learning.controller.ts#L122)。
-- `PATCH /api/learning/practice/:id/questions/:question/draft` → `LearningController.draft`；[apps/api/src/modules/learning/learning.controller.ts:124](../../../apps/api/src/modules/learning/learning.controller.ts#L124)。
-- `POST /api/learning/practice/:id/responses` → `LearningController.submit`；[apps/api/src/modules/learning/learning.controller.ts:123](../../../apps/api/src/modules/learning/learning.controller.ts#L123)。
-- `POST /api/learning/practice/:id/questions/:question/hint` → `LearningController.hint`；[apps/api/src/modules/learning/learning.controller.ts:125](../../../apps/api/src/modules/learning/learning.controller.ts#L125)。
-- `POST /api/learning/practice/:id/complete` → `LearningController.complete`；[apps/api/src/modules/learning/learning.controller.ts:126](../../../apps/api/src/modules/learning/learning.controller.ts#L126)。
+- `GET /api/learning/practice/:id` → `LearningController.view`；[apps/api/src/modules/learning/learning.controller.ts:125](../../../apps/api/src/modules/learning/learning.controller.ts#L125)。
+- `GET /api/learning/practice/:id/questions/:question` → `LearningController.render`；[apps/api/src/modules/learning/learning.controller.ts:126](../../../apps/api/src/modules/learning/learning.controller.ts#L126)。
+- `PATCH /api/learning/practice/:id/questions/:question/draft` → `LearningController.draft`；[apps/api/src/modules/learning/learning.controller.ts:128](../../../apps/api/src/modules/learning/learning.controller.ts#L128)。
+- `POST /api/learning/practice/:id/responses` → `LearningController.submit`；[apps/api/src/modules/learning/learning.controller.ts:127](../../../apps/api/src/modules/learning/learning.controller.ts#L127)。
+- `POST /api/learning/practice/:id/questions/:question/hint` → `LearningController.hint`；[apps/api/src/modules/learning/learning.controller.ts:129](../../../apps/api/src/modules/learning/learning.controller.ts#L129)。
+- `POST /api/learning/practice/:id/complete` → `LearningController.complete`；[apps/api/src/modules/learning/learning.controller.ts:130](../../../apps/api/src/modules/learning/learning.controller.ts#L130)。
 
 **服务方法**：
 
-- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:706](../../../apps/api/src/modules/learning/learning.service.ts#L706)。
-- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:724](../../../apps/api/src/modules/learning/learning.service.ts#L724)。
-- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:742](../../../apps/api/src/modules/learning/learning.service.ts#L742)。
-- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:762](../../../apps/api/src/modules/learning/learning.service.ts#L762)。
-- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:823](../../../apps/api/src/modules/learning/learning.service.ts#L823)。
-- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:834](../../../apps/api/src/modules/learning/learning.service.ts#L834)。
+- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:712](../../../apps/api/src/modules/learning/learning.service.ts#L712)。
+- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:730](../../../apps/api/src/modules/learning/learning.service.ts#L730)。
+- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:748](../../../apps/api/src/modules/learning/learning.service.ts#L748)。
+- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:768](../../../apps/api/src/modules/learning/learning.service.ts#L768)。
+- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:829](../../../apps/api/src/modules/learning/learning.service.ts#L829)。
+- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:840](../../../apps/api/src/modules/learning/learning.service.ts#L840)。
 
 ## LEARN-04 错题与待复核入口
 
@@ -139,11 +139,11 @@
 
 **关联接口**：
 
-- `GET /api/learning/students/:id/mistakes` → `LearningController.mistakes`；[apps/api/src/modules/learning/learning.controller.ts:117](../../../apps/api/src/modules/learning/learning.controller.ts#L117)。
+- `GET /api/learning/students/:id/mistakes` → `LearningController.mistakes`；[apps/api/src/modules/learning/learning.controller.ts:121](../../../apps/api/src/modules/learning/learning.controller.ts#L121)。
 
 **服务方法**：
 
-- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:844](../../../apps/api/src/modules/learning/learning.service.ts#L844)。
+- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:850](../../../apps/api/src/modules/learning/learning.service.ts#L850)。
 
 ## LEARN-05 错题组织、复做与新题验证
 
