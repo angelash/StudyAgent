@@ -21,7 +21,9 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     if(count===1&&input.message.includes('[pause-turn-once]'))await new Promise((resolve,reject)=>{
       const timer=setTimeout(resolve,8000);input.signal?.addEventListener('abort',()=>{clearTimeout(timer);reject(new Error('Synthetic turn cancellation'));},{once:true});
     });
-    return{reply:'先明确条件。再比较一个新例子。最后用自己的话解释结论。',evidenceIds:[],modelId:input.modelId,modelName:'Synthetic classroom fixture',board:{title:'对照条件与结论',points:['固定条件后比较例子','用自己的话检查理解'],diagram:null}};
+    const fixture=require('./classroom-board-fixture.cjs').classroomBoardFixture(input.message);
+    const payload=input.classroomPresentation?require('../../apps/api/dist/apps/api/src/modules/ai/classroom-reply-board.js').parseClassroomReplyBoard(fixture):{...fixture,board:{title:fixture.board.title,points:fixture.board.points,diagram:fixture.board.diagram}};
+    return{...payload,modelId:input.modelId,modelName:'Synthetic classroom fixture'};
   };
   provider.structured=async(input,schema,check,custom=true)=>{
     if(!custom)return original(input,schema,check,custom);

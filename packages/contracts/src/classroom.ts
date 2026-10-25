@@ -1,3 +1,4 @@
+import type { ClassroomReplyBoard } from './classroom-board';
 import type { StudioSpeechCapabilities } from './studio';
 import type { ClassroomPresentation, ClassroomPresentationRevision, ClassroomSpeechTrack } from './classroom-speech';
 
@@ -25,7 +26,7 @@ export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number
 export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
 export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; content: string; at: string; modelName?: string;
   speech?: ClassroomSpeechTrack;
-  board?: { title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null } };
+  board?: ClassroomReplyBoard & { page: number } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
   sourceCourseId?: string; authoringAnswerExposure?: boolean;

@@ -6,7 +6,7 @@ import { classroomStepUnits,classroomReplyUnits,classroomReadingMs, classroomPra
 import { apiBaseUrl, apiRequest,getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
-import { ClassroomFigure, CourseCover } from './diagram';
+import { CourseCover } from './diagram';
 import { BoardStep } from './board-step';
 import { useClassroomVisuals,VisualPanel,VisualImage,downloadVisualNotes,waitForVisualPrint } from './visuals';
 import { PracticePanel } from './practice-panel';
@@ -17,6 +17,9 @@ import '../workspace.css';
 import { WorkspaceDialog } from '../workspace-dialog';
 import { useCaptionUpgrade,CaptionUpgradeControl } from './captions';
 import { useClassroomTurns, ClassroomIntentPicker, ClassroomTurnStatus } from './turns';
+import { ReplyBoard } from './reply-board';
+import { waitForReplyReading, playReplyAudio } from './reply-reading';
+import { replyBoardMarkdown } from './reply-board-notes';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
 
 const tour = [
@@ -176,10 +179,12 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);
   const [readingReply, setReadingReply] = React.useState(''), [award, setAward] = React.useState(false);
   const [replySubtitle, setReplySubtitle] = React.useState('');
+  const [replyReadingMode,setReplyReadingMode]=React.useState<'audio'|'text'>('audio');
+  const [replyUnit,setReplyUnit]=React.useState<{messageId:string;unitId:string|null}|null>(null),[expandedReply,setExpandedReply]=React.useState('');
   const replyAudio = React.useRef<{ abort: AbortController; audio: HTMLAudioElement | null; url: string } | null>(null);
   const recognition = React.useRef<SpeechRecognitionSession | null>(null), [showChat, setShowChat] = React.useState(initialTab !== 'practice');
   const { catalog, modelId, setModelId } = useXiaojiuModels();
-  const revisionQueue = React.useRef<Promise<unknown>>(Promise.resolve()), chatAbort = React.useRef<AbortController | null>(null);
+  const revisionQueue = React.useRef<Promise<unknown>>(Promise.resolve());
   const cloudAudio = React.useRef<HTMLAudioElement | null>(null), cache = React.useRef(new Map<string, Blob>());
   const playEpoch=React.useRef(0),narrationAbort=React.useRef<AbortController|null>(null);
   const historyElement = React.useRef<HTMLDivElement | null>(null), following = React.useRef(true);
@@ -223,7 +228,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       if (!localStorage.getItem('studyagent.classroom.tour')) setTourIndex(0);
     } catch { /* Optional UI preferences never prevent a lesson. */ }
     setPage(Math.max(0, Math.floor(initial.cursor / 3)));
-    return () => { mounted.current = false; chatAbort.current?.abort(); recognition.current?.abort(); replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); };
+    return () => { mounted.current = false; recognition.current?.abort(); replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); };
   }, [initial]);
   React.useEffect(() => {
     try { localStorage.setItem('studyagent.classroom.preferences', JSON.stringify({ speed, voice, dots, handwriting })); } catch { /* Optional. */ }
@@ -319,28 +324,41 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     // at the next sentence; pause cancels the current sentence and any pending fetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, session.cursor]);
-  function pause() { playEpoch.current++;narrationAbort.current?.abort();cloudAudio.current?.pause();setPlaying(false); chatAbort.current?.abort(); setBusy(false); recognition.current?.abort(); setListening(false);
-    replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); }
-  async function readReply(messageId: string) {
+  function pause() { playEpoch.current++;narrationAbort.current?.abort();cloudAudio.current?.pause();setPlaying(false); recognition.current?.abort(); setListening(false);
+    replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
+  async function readReply(messageId: string, mode: 'audio'|'text' = 'audio') {
     pause(); const operation = { abort: new AbortController(), audio: null as HTMLAudioElement | null, url: '' }; replyAudio.current = operation;
-    setReadingReply(messageId);
+    setReadingReply(messageId); setExpandedReply(''); setReplyReadingMode(mode);
     try {
       const message = row.current.messages.find(item => item.id === messageId);
-      if(!message)throw new Error('回答记录不存在，请重新读取课堂');
-      const units=classroomReplyUnits(message),sentences=units.map(unit=>unit.text);
-      for (let sentenceIndex = 0; sentenceIndex < sentences.length; sentenceIndex++) {
-      const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + row.current.id + '/narration/' + encodeURIComponent(messageId), {
-        method: 'POST', credentials: 'include', signal: operation.abort.signal, headers: { 'Content-Type': 'application/json',...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) }, body: JSON.stringify({ voice: voice || undefined, sentenceIndex,...(message.speech?{presentationVersion:message.speech.version,unitId:units[sentenceIndex].id}:{}) }) });
-      if (!response.ok) throw new Error('回答语音暂时不可用，可以继续阅读文字。');
-      const blob = await response.blob(); if (operation.abort.signal.aborted) return;
-      operation.url = URL.createObjectURL(blob); operation.audio = new Audio(operation.url); operation.audio.playbackRate = speed;
-      setReplySubtitle(sentences[sentenceIndex]);
-      await new Promise<void>((resolve, reject) => { operation.audio!.onended = () => resolve(); operation.audio!.onerror = () => reject(new Error('回答播放失败')); void operation.audio!.play().catch(reject); });
-      URL.revokeObjectURL(operation.url); operation.url = '';
-      if (operation.abort.signal.aborted) return;
+      if (!message) throw new Error('回答记录不存在，请重新读取课堂');
+      const units = classroomReplyUnits(message);
+      setReplyUnit({messageId,unitId:null});
+      if (message.board) { setPage(message.board.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + messageId)?.scrollIntoView({block:'start'})); }
+      for (let sentenceIndex = 0; sentenceIndex < units.length; sentenceIndex++) {
+        if (operation.abort.signal.aborted) return;
+        const unit = units[sentenceIndex];
+        if (mode === 'text') {
+          setReplySubtitle(unit.text); setReplyUnit({messageId,unitId:unit.id});
+          await waitForReplyReading(classroomReadingMs(unit.text, message.speech?.version ?? 'legacy-v1') / speedRef.current, operation.abort.signal);
+        } else {
+          const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + row.current.id + '/narration/' + encodeURIComponent(messageId), {
+            method: 'POST', credentials: 'include', signal: operation.abort.signal,
+            headers: { 'Content-Type': 'application/json', ...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) },
+            body: JSON.stringify({ voice: voiceRef.current || undefined, sentenceIndex, ...(message.speech?{presentationVersion:message.speech.version,unitId:unit.id}:{}) }) });
+          if (!response.ok) throw new Error('回答语音暂时不可用，可以按句阅读文字。');
+          const blob = await response.blob(); if (operation.abort.signal.aborted) return;
+          operation.url = URL.createObjectURL(blob); operation.audio = new Audio(operation.url); operation.audio.playbackRate = speedRef.current;
+          setReplySubtitle(unit.text); setReplyUnit({messageId,unitId:unit.id});
+          await playReplyAudio(operation.audio, operation.abort.signal);
+          URL.revokeObjectURL(operation.url); operation.url = ''; operation.audio = null;
+        }
       }
-      if (replyAudio.current === operation) { replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); }
-    } catch (error) { if (!operation.abort.signal.aborted) { setReadingReply(''); setNotice((error as Error).message); } }
+    } catch (error) { if (!operation.abort.signal.aborted) setNotice((error as Error).message); }
+    finally {
+      operation.audio?.pause(); if (operation.url) URL.revokeObjectURL(operation.url);
+      if (replyAudio.current === operation) { replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
+    }
   }
   async function advance() {
     if (busy) return;
@@ -411,14 +429,14 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     listener.onerror = event => { setListening(false); setNotice('语音输入未完成：' + event.error + '。可继续使用文字输入。'); };
     listener.onend = () => setListening(false); listener.start(); setListening(true);
   }
-  async function exportNotes() {
+  async function exportNotes(format: 'auto'|'markdown' = 'auto') {
     const source = ['# ' + lesson.title, '\n' + lesson.objective, ...lesson.steps.slice(0, session.revealed).map(step => '\n## ' + step.title + '\n\n' + step.blocks.filter(block => block.kind !== 'heading').map(block => block.items?.map(point => '- ' + point).join('\n') ?? (block.table ? [block.table.headers.join(' | '), ...block.table.rows.map(cells => cells.join(' | '))].join('\n') : block.image ? '![' + block.image.alt + '](' + block.image.src + ')' : block.text)).join('\n\n')),
       '\n## 课堂插问', ...session.messages.map(message => '\n**' + (message.role === 'user' ? '我' : '老师') + '** ' + message.content +
-        (message.board ? '\n\n### ' + message.board.title + '\n' + message.board.points.map(point => '- ' + point).join('\n') +
-          (message.board.diagram ? '\n\n' + message.board.diagram.title + '：' + message.board.diagram.labels.join(' / ') : '') : '')),
+        (message.board ? '\n\n' + replyBoardMarkdown(message.board) : '')),
       '\n## 项目草稿\n' + projectDraft, '\n学习记录仅表示接触和本次课堂题目表现，不代表经过校准的能力掌握。'].join('\n');
     const selectedVisuals=visuals.rows.filter(row=>row.selected&&lesson.steps.slice(0,session.revealed).some(step=>step.id===row.stepId));
-    if(selectedVisuals.length){try{await downloadVisualNotes(source,lesson.title,selectedVisuals);}catch(error){setNotice((error as Error).message);}return;}
+    const richBoards=session.messages.filter(message=>message.board?.table||message.board?.formulas?.length);
+    if(format!=='markdown'&&(selectedVisuals.length||richBoards.length)){try{await downloadVisualNotes(source,lesson.title,selectedVisuals,richBoards);}catch(error){setNotice((error as Error).message);}return;}
     const url = URL.createObjectURL(new Blob([source], { type: 'text/markdown;charset=utf-8' })), anchor = document.createElement('a');
     anchor.href = url; anchor.download = lesson.title + '.md'; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
@@ -439,7 +457,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       <button className="cl-title" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
       <div className="cl-board-tools"><button aria-label="缩小白板" onClick={() => setZoom(Math.max(50, zoom - 10))}>−</button><button aria-label="重置缩放" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="放大白板" onClick={() => setZoom(Math.min(180, zoom + 10))}>＋</button><i/>
         <button aria-label="上一页白板" onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => setPage(Math.min(pageCount - 1, page + 1))} disabled={page + 1 >= pageCount}>›</button><i/>
-        <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button aria-label="导出课堂笔记" onClick={exportNotes}><ClassroomIcon name="share"/></button><button aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
+        <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button aria-label="导出课堂笔记" onClick={()=>void exportNotes()}><ClassroomIcon name="share"/></button><button aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
       <div className="cl-mobile-tabs"><button onClick={() => setMobile('board')} data-active={mobile === 'board'}>白板</button><button onClick={() => { following.current = true; setMobile('chat'); }} data-active={mobile === 'chat'}>对话与练习</button></div>
       <div className="cl-board-scroll"><div className="cl-board-paper" data-handwriting={handwriting} style={{ zoom: zoom / 100 }}>
         {session.revealed === 0 && <div className="cl-board-welcome"><span>WELCOME TO YOUR WHITEBOARD</span><h1>{lesson.title}</h1><p>{lesson.objective}</p><button onClick={() => { pause(); setPlaying(true); }}>▶ 开始学习</button><small>概念 · 生活案例 · 误区辨析 · 新情境检查</small></div>}
@@ -449,9 +467,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           {visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}
         </section>)}
         {session.messages.filter(message => message.board?.page === page).map(message => <section className="cl-board-step cl-ai-board" key={message.id} id={'board-' + message.id}>
-          <span className="cl-step-phase">AI 补充 · 回到问题本身</span><h2><span>{message.board!.title}</span></h2>
-          {message.board!.points.map((point, index) => <p className="cl-board-item" style={{ animationDelay: (index * 0.22) + "s" }} key={index}>{point}</p>)}
-          {message.board!.diagram && <ClassroomFigure diagram={message.board!.diagram}/>}</section>)}
+          <span className="cl-step-phase">AI 补充 · 回到问题本身</span><ReplyBoard message={message}
+            throughUnitId={replyUnit?.messageId===message.id&&expandedReply!==message.id?replyUnit.unitId:undefined} onExpand={()=>setExpandedReply(message.id)}/></section>)}
       </div></div>
       <footer className="cl-board-footer"><button aria-label={muted ? '开启讲解声音' : '静音讲解'} onClick={() => { pause(); setMuted(!muted); }} disabled={!session.speech.available}><ClassroomIcon name={muted ? "muted" : "volume"}/></button>
         <p className="cl-subtitle" aria-live="off" data-sentence={session.sentenceCursor ?? 0}>{subtitle}</p></footer>
@@ -472,9 +489,9 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
             {!standalonePractice && lesson.steps.slice(0, session.revealed).map((step, index) => <article className="cl-teacher-turn" key={step.id} data-current={step.id === current.id}><small>{index === 0 ? time(session.createdAt) : 'TEACHER'}</small>{classroomStepUnits(session,step).slice(0, step.id === current.id ? (session.sentenceCursor ?? 0) + 1 : undefined).map((unit, line) => <p key={unit.id} className="cl-transcript-line">{unit.text}</p>)}
               <button className="cl-board-link" onClick={() => { setPage(Math.floor(index / 3)); setMobile('board'); }}>♧ {step.title}</button></article>)}
             {session.messages.map(message => <article className="cl-chat-turn" key={message.id} data-role={message.role}><small>{message.role === 'user' ? '我' : '老师'} · {time(message.at)}</small><p>{message.content}</p>{message.modelName && <small>{message.modelName}</small>}
-              {message.board && <button className="cl-board-link" onClick={() => { setPage(message.board!.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + message.id)?.scrollIntoView({ block: 'nearest' })); }}>♧ {message.board.title}</button>}
-              {message.role === 'assistant' && session.speech.available && <button className="cl-read-reply" onClick={() => readingReply === message.id ? pause() : void readReply(message.id)}>{readingReply === message.id ? '■ 停止朗读' : '♪ 朗读这段回答'}</button>}</article>)}
-            <div className="cl-speaking" role="status">{busy ? '● 正在思考你的问题…' : readingReply ? '● 正在朗读回答…' : playing ? '● ' + audioState : '••• Paused'}{session.status === 'completed' ? ' · 讲解已读' : ''}</div>
+              {message.board && <button className="cl-board-link" onClick={() => { setPage(message.board!.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + message.id)?.scrollIntoView({ block: 'start' })); }}>♧ {message.board.title}</button>}
+              {message.role === 'assistant' && <div className="cl-reply-reading-controls">{readingReply===message.id?<button className="cl-read-reply" onClick={pause}>{replyReadingMode==='audio'?'■ 停止朗读':'■ 停止阅读'}</button>:<><button className="cl-read-reply" onClick={()=>void readReply(message.id,'text')}>按句阅读这段回答</button>{session.speech.available&&<button className="cl-read-reply" onClick={()=>void readReply(message.id,'audio')}>♪ 朗读这段回答</button>}</>}</div>}</article>)}
+            <div className="cl-speaking" role="status">{busy ? '● 正在思考你的问题…' : readingReply ? replyReadingMode==='audio'?'● 正在朗读回答…':'● 正在按句阅读…' : playing ? '● ' + audioState : '••• Paused'}{session.status === 'completed' ? ' · 讲解已读' : ''}</div>
           </>}
           {tab === 'practice' && <><button className="cl-expand-practice" onClick={() => { pause(); setStandalonePractice(true); setShowChat(false); setTab('history'); }}>展开独立练习 ↗</button>{practice(false)}</>}
           {tab === 'project' && <div className="cl-project-editor"><small>COMMUNITY PROJECT</small><h2>{unit?.project.title ?? '把知识带到新情境'}</h2><p>{unit?.project.brief ?? '写一个新的例子，说明你使用了什么概念，以及还需要哪些证据。'}</p><ul>{unit?.project.rubric.map(item => <li key={item}>{item}</li>)}</ul>
@@ -503,12 +520,13 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       <h3>DISPLAY</h3><button className="cl-toggle" role="switch" aria-checked={dots} onClick={() => setDots(!dots)}><div><b>Background dots</b><small>白板背后的点阵背景</small></div><span data-checked={dots}/></button>
       <h3>HELP</h3><button className="cl-toggle" onClick={() => { setSettings(false); setTourIndex(0); }}><div><b>Replay the tour</b><small>重新了解课堂里的七个常用控件</small></div>↗</button>
       <CaptionUpgradeControl state={captions}/>
+      <button className="cl-print" onClick={()=>void exportNotes('markdown')}>导出 Markdown 文字笔记</button>
       <button className="cl-print" disabled={printBusy||captions.busy} onClick={()=>void printNotes()}>{printBusy?'正在准备参考图…':'打印 / 保存 PDF 笔记'}</button>{printBusy&&<p role="status">参考图完整读取后会打开打印。关闭设置可取消等待。</p>}<p className="cl-settings-note">音色在下一句生效，倍速同步当前音频。暂停后会从当前句开头继续。</p>
     </section></div></WorkspaceDialog>}
     {tourIndex !== null && <div className="cl-modal-backdrop cl-tour-backdrop"><section className="cl-tour" role="dialog" aria-modal="true" aria-label="课堂新手引导"><header><small>WHITEBOARD TOUR · {tourIndex + 1} / 7</small><button autoFocus onClick={finishTour}>跳过</button></header><span className="cl-tour-glyph">{['▥', '♧', '⚙', '♪', '☏', '■', '▤'][tourIndex]}</span><h2>{tour[tourIndex][0]}</h2><p>{tour[tourIndex][1]}</p><div className="cl-tour-dots">{tour.map((_, index) => <i key={index} data-active={index === tourIndex}/>)}</div><footer><button disabled={tourIndex === 0} onClick={() => setTourIndex(Math.max(0, tourIndex - 1))}>上一步</button><button onClick={() => tourIndex === 6 ? finishTour() : setTourIndex(tourIndex + 1)}>{tourIndex === 6 ? '开始学习' : '下一步'}</button></footer></section></div>}
     {exit && <div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存。</p><footer><button autoFocus onClick={() => setExit(false)}>继续学习</button><button disabled={busy} onClick={() => { setBusy(true); void save({ projectDraft }).then(onClose).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div>}
     {award && <div className="cl-modal-backdrop"><section className="cl-award" role="dialog" aria-modal="true" aria-label="课堂学习里程碑"><span>✧</span><small>YOU FINISHED A LESSON</small><h2>{lesson.title}</h2><p>已走完这段概念路线。接下来用新的情境检查理解，看看哪些地方还需要回顾。</p><button autoFocus onClick={() => { setAward(false); setTab('practice'); }}>去检查理解 →</button><button onClick={() => setAward(false)}>稍后再做</button></section></div>}
     <article className="cl-print-notes"><h1>{lesson.title}</h1><p>{lesson.objective}</p>{lesson.steps.slice(0, session.revealed).map(step => <section key={step.id}><BoardStep step={step} sentence={0} full print/>{visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}</section>)}
-      <h2>课堂插问</h2>{session.messages.map(message => <section key={message.id}><p><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>{message.board && <><h3>{message.board.title}</h3>{message.board.points.map((point, index) => <p key={index}>{point}</p>)}{message.board.diagram && <ClassroomFigure diagram={message.board.diagram}/>}</>}</section>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>
+      <h2>课堂插问</h2>{session.messages.map(message => <section key={message.id}><p><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>{message.board && <ReplyBoard message={message} print/>}</section>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>
   </main>;
 }

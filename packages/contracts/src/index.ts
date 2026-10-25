@@ -740,3 +740,5 @@ export * from './classroom-visual';
 export * from './classroom-turn';
 
 export * from './classroom-code';
+
+export * from './classroom-board';

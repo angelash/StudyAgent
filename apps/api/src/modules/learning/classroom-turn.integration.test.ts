@@ -55,7 +55,8 @@ describe('durable classroom turns, original position and explicit teaching modes
   const command = (row: any, extra: object = {}) => ({ requestKey: randomUUID(), message: '请用新例子解释这个条件。', modelId: 'deepseek-v4-flash', intent: 'example',
     contentFingerprint: row.contentFingerprint, stepId: row.lesson.steps[row.cursor].id, sentenceCursor: row.sentenceCursor ?? 0,
     presentationVersion: row.presentation.version, unitId: row.presentation.tracks[row.lesson.steps[row.cursor].id].units[row.sentenceCursor ?? 0].id, ...extra });
-  const reply = () => vi.spyOn(chat, 'reply').mockResolvedValue({ reply: '先比较相同条件。再换一个观察。', evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'Synthetic classroom model', board: { title: '比较条件', points: ['固定相同条件', '比较新的观察'], diagram: null } });
+  const structuredReply = () => ({ ...require('../../../dist/apps/api/src/modules/ai/classroom-reply-board.js').parseClassroomReplyBoard(require('../../../../../scripts/qa/classroom-board-fixture.cjs').classroomBoardFixture('[board-table]')), modelId: 'deepseek-v4-flash', modelName: 'Synthetic classroom model' });
+  const reply = () => vi.spyOn(chat, 'reply').mockResolvedValue(structuredReply());
   const create = (row: any, input = command(row), actor = parent) => call('post', base(row.id) + '/turns', input, actor);
   const read = (row: any, turn: any, actor = parent) => call('get', base(row.id) + '/turns/' + turn.id, undefined, actor);
   const control = (row: any, turn: any, action: string) => call('post', base(row.id) + '/turns/' + turn.id + '/' + action, { generation: turn.task.generation, version: turn.task.version });
@@ -70,6 +71,22 @@ describe('durable classroom turns, original position and explicit teaching modes
     expect((await create(row, input)).assistantMessageId).toBe(done.assistantMessageId); expect(await worker.runNext()).toBe(false); expect(mock).toHaveBeenCalledTimes(1);
     await call('post', base(row.id) + '/turns', { ...input, message: 'changed' }, parent, 409);
     await call('get', base(row.id) + '/turns', undefined, other, 403);
+  });
+  it('persists structured boards with frozen speech, keeps legacy notes and exports complete graphs after reopening', async () => {
+    const row = await fixture(), turn = await create(row), mock = reply(); await worker.runNext();
+    expect((mock.mock.calls[0][0] as any).classroomPresentation).toBe(true);
+    const first = await call('get', base(row.id)), board = first.messages[1].board;
+    expect(board.table.rows).toEqual([['12','3','4'],['12','4','3']]); expect(board.formulas[0].latex).toContain('frac');
+    expect(board.reveal.sourceSha256).toBe(first.messages[1].speech.sourceSha256);
+    expect(board.reveal.tableRowUnitIds).toEqual(first.messages[1].speech.units.slice(1,3).map((unit: any) => unit.id));
+    await store.transaction(() => store.find('classroomSessions', {id:row.id}).messages.push({id:'legacy-note',role:'assistant',content:'旧说明',at:row.createdAt,board:{page:0,title:'旧笔记',points:['原要点']}}));
+    await app.close(); await boot();
+    const reopened = await call('get', base(row.id)); expect(reopened.messages[1].board).toEqual(board); expect(reopened.messages[2].board).toEqual({page:0,title:'旧笔记',points:['原要点']});
+    expect((await read(row, turn)).assistantMessageId).toBe(first.messages[1].id); expect(await worker.runNext()).toBe(false);
+    await store.requestContext(() => { const {portableRecords,accountRecords}=require('../../../dist/apps/api/src/modules/privacy/privacy-records.js');
+      const exported=portableRecords(accountRecords(store,parent.user.id,parent.user.principal),parent.user.id).classroomSessions.find((value:any)=>value.id===row.id);
+      expect(exported.messages[1].board).toEqual(board); expect(exported.messages[2].board.title).toBe('旧笔记');
+    });
   });
   it('keeps the last successful receipt readable at the message limit and fixes legacy replay order', async () => {
     const row = await fixture(), input = command(row), mock = reply();
@@ -189,6 +206,8 @@ describe('durable classroom turns, original position and explicit teaching modes
     expect((await call('get', base(row.id))).projectDraft).not.toBe('STALE_WORKER_OUTPUT');
   });
   it.skipIf(Boolean(process.env.STUDY_TEST_CLASSROOM_TURN_POSTGRES_URL))('retains turn context through a real SQLite backup and cold restore with invalid old leases', async () => {
+    const completed = await fixture(); reply(); await create(completed); await worker.runNext(); vi.restoreAllMocks();
+    const savedBoard = (await call('get', base(completed.id))).messages[1].board;
     const row = await fixture(), turn = await create(row), old = await store.tasks.claim(['classroom.turn.reply'], 1);
     const recovery = mkdtempSync(join(tmpdir(), 'study-turn-backup-'));
     try {
@@ -200,6 +219,7 @@ describe('durable classroom turns, original position and explicit teaching modes
       const logged = await call('post', '/auth/login', { principal: parent.user.principal, credential: 'Turns-QA-only-20261025' }, null);
       const previousParent = parent; parent = logged; const mock = reply();
       try {
+        expect((await call('get', base(completed.id))).messages[1].board).toEqual(savedBoard);
         const restored = await read(row, turn); expect(restored.task.generation).toBeGreaterThan(1);
         await worker.runNext(); expect((await read(row, turn)).status).toBe('completed'); expect(mock).toHaveBeenCalledTimes(1);
         await expect(store.transaction(() => {}, { id: old.id, token: old.leaseToken })).rejects.toThrow();

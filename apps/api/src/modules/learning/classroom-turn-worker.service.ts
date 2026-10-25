@@ -54,7 +54,7 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
         turn.status = 'running'; turn.revision++; turn.updatedAt = new Date().toISOString();
         return structuredClone(turn);
       }, { ...fence, mode: 'checkpoint', progress: { stage: 'replying' } });
-      const response = await this.chat.reply({ modelId: snapshot.modelId, signal: abort.signal, classroomBoard: true,
+      const response = await this.chat.reply({ modelId: snapshot.modelId, signal: abort.signal, classroomBoard: true, classroomPresentation: true,
         system: '你是课堂陪伴老师。仅根据提供的已展示讲解解释概念。' + teachingModes[snapshot.intent] +
           '不替学生选择选项，不泄露或推断标准答案。题目只用于引导思路。不声称已掌握、已发现深层问题或已完成测量。板书提炼要点。不要HTML、脚本或工具调用。',
         context: snapshot.context, history: snapshot.history, message: snapshot.message });

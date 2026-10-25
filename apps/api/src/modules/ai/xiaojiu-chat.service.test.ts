@@ -87,6 +87,16 @@ describe('XiaojiuChatService', () => {
     expect(schema?.required).toContain('board');
     expect(spawnMock).toHaveBeenCalledTimes(1);
   });
+  it('uses the richer board protocol only for the explicit presentation path', async () => {
+    respondWith({ reply: '先固定总量。再比较份数。', evidenceIds: [], board: { title: '平均分', points: ['固定总量','比较份数'], diagram: null,
+      table: null, formulas: [], anchors: { points: ['固定总量','比较份数'], tableRows: [], formulas: [] } } });
+    const prompts: string[] = []; const implementation = spawnMock.getMockImplementation()!;
+    spawnMock.mockImplementation((...args: unknown[]) => { const child = implementation(...args); child.stdin.on('data', (chunk: Buffer) => prompts.push(String(chunk))); return child; });
+    const result = await new XiaojiuChatService(new XiaojiuModelsService()).reply({ modelId: 'deepseek-v4-flash', classroomBoard: true, classroomPresentation: true,
+      system: '解释概念', context: '', history: [], message: '请比较。' });
+    expect(prompts.join('')).toContain('<输出schema>'); expect(prompts.join('')).toContain('"headers"');
+    expect(result.board?.reveal?.pointUnitIds).toHaveLength(2); expect(result.board).not.toHaveProperty('anchors'); expect(spawnMock).toHaveBeenCalledTimes(1);
+  });
 
   it.each([
     { ...board, html: '<script>alert(1)</script>' },

@@ -1,4 +1,6 @@
 'use client';
+import type { ClassroomChatMessage } from '@study-agent/contracts';
+import { replyBoardHtml } from './reply-board-notes';
 import * as React from 'react';
 import type { ClassroomSessionView, ClassroomVisualView, ClassroomVisualCapabilities, ClassroomVisualPurpose } from '@study-agent/contracts';
 import { apiRequest, apiBaseUrl, getAuthToken } from '../../../lib/api';
@@ -109,15 +111,15 @@ export function waitForVisualPrint(root:HTMLElement,ids:string[],signal:AbortSig
         signal.addEventListener('abort',abort,{once:true});root.addEventListener('load',check,true);observer=new MutationObserver(check);observer.observe(root,{subtree:true,childList:true,attributes:true});timer=setTimeout(()=>finish(new Error('参考图尚未完整读取，请稍后重试打印。')),20000);check();
     });
 }
-export async function downloadVisualNotes(source: string, title: string, rows: ClassroomVisualView[]) {
+export async function downloadVisualNotes(source: string, title: string, rows: ClassroomVisualView[], boards: ClassroomChatMessage[] = []) {
     const images: string[] = [];
     for (const row of rows) {
         const blob = await visualBlob(row), data = await new Promise<string>((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result)); reader.onerror = () => reject(new Error('参考图读取失败')); reader.readAsDataURL(blob); });
         images.push('<figure><h2>' + html(row.stepTitle) + '</h2><img src="' + data + '" alt="' + html(row.stepTitle) + '"><figcaption>AI生成 · ' + html(row.modelId) + ' · 标注仍需核对</figcaption></figure>');
     }
-    const content = '<!doctype html><html lang="zh"><meta charset="utf-8"><title>' + html(title) + '</title><style>body{max-width:900px;margin:40px auto;padding:0 24px;color:#24344d;font:16px/1.8 sans-serif}pre{white-space:pre-wrap;overflow-wrap:anywhere}figure{margin:40px 0;break-inside:avoid}img{max-width:100%;height:auto}figcaption{font-size:12px;color:#60718a}</style><h1>' + html(title) + '</h1><pre>' + html(source) + '</pre>' + images.join('') + '</html>', url = URL.createObjectURL(new Blob([content], { type: 'text/html;charset=utf-8' })), anchor = document.createElement('a');
+    const content = '<!doctype html><html lang="zh"><meta charset="utf-8"><title>' + html(title) + '</title><style>body{max-width:900px;margin:40px auto;padding:0 24px;color:#24344d;font:16px/1.8 sans-serif}pre{white-space:pre-wrap;overflow-wrap:anywhere}figure{margin:40px 0;break-inside:avoid}img{max-width:100%;height:auto}figcaption{font-size:12px;color:#60718a}table{border-collapse:collapse;max-width:100%;margin:24px 0}td,th{border:1px solid #ccd5e3;padding:8px 12px;text-align:left}caption{text-align:left;font-weight:600}math{font-size:1.2em;overflow:auto}</style><h1>' + html(title) + '</h1><h2>讲解与文字笔记</h2><pre>' + html(source) + '</pre>' + (boards.length?'<h2>图表与公式笔记</h2>'+boards.map(message=>message.board?replyBoardHtml(message.board):'').join(''):'') + images.join('') + '</html>', url = URL.createObjectURL(new Blob([content], { type: 'text/html;charset=utf-8' })), anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = title + '-含参考图.html';
+    anchor.download = title + (rows.length?'-含参考图.html':'-含图表.html');
     anchor.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
