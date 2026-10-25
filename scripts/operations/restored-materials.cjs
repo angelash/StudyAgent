@@ -92,6 +92,7 @@ async function cleanupRestoredMaterials({ root, query, manifest, before, now = D
   let position=Number((await query("SELECT COALESCE(MAX(position),-1)+1 AS position FROM domain_records WHERE collection='studioMaterialAssets'"))[0].position);
   for (const key of sources) {
     const entry=assets.get(key), old=entry?.body;
+    if(old?.state==='repairing')fail('restore_material_repair_requires_cleanup');
     if (old && (!['available','deleting'].includes(old.state) || !Number.isSafeInteger(old.generation) || old.generation < 1 || old.generation >= Number.MAX_SAFE_INTEGER)) fail('restore_material_asset_unknown');
     const row={id:key,state:'available',generation:old ? old.generation+1 : 2,updatedAt:at};
     if (entry) await query('UPDATE domain_records SET body=? WHERE collection=? AND record_id=?',[JSON.stringify(row),'studioMaterialAssets',key]);

@@ -133,6 +133,7 @@ export class PrivacyService {
     const sources=[...(snapshot.accountRecords.studioSourceMaterials??[]),...snapshot.students.flatMap(child=>child.records.studioSourceMaterials??[])] as StudioSourceMaterial[];
     const sourceManifests:Array<{materialId:string;name:string;sha256:string;size:number}>=[],included=new Set<string>();
     for(const source of sources.filter(source=>source.kind!=='text'||source.originalFormat==='txt')){
+      if(this.store.find('studioMaterialAssets',{id:source.sha256})?.state==='repairing')throw new ConflictException('原件正在恢复，请等待完成或取消收尾后再导出归档');
       if(!/^[a-f0-9]{64}$/.test(source.sha256)||!this.store.find('studioSourceMaterials',{id:source.id,sha256:source.sha256}))throw new ConflictException('来源资料已变化，请重新准备最新副本');
       const format=source.originalFormat??'pdf',path=studioMaterialFile(source.sha256,format);
       try{await verifyImmutableFile(path,source.sha256,source.byteSize);}catch{throw new ConflictException('原始资料不完整，不能生成缺少原件的资料归档');}

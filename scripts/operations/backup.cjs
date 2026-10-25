@@ -55,7 +55,7 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','sourceCourses','studioMaterialAssets')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -67,7 +67,10 @@ function referencesFromRecords(rows) {
   };
   for (const row of rows) {
     const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
-    if (row.collection === 'sourceCourses') {
+    if(row.collection==='studioMaterialAssets'){
+      if(value.state==='repairing')fail('material_original_repair_active');
+      if(!['available','deleting'].includes(value.state))fail('invalid_material_asset_state');
+    }else if (row.collection === 'sourceCourses') {
       if (!Array.isArray(value.sources)) fail('invalid_frozen_course_sources');
       for (const source of value.sources) if (source.kind === 'pdf') {
         if (!/^[a-f0-9]{64}$/.test(source.sha256)) fail('invalid_file_reference');

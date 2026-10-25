@@ -140,12 +140,21 @@ export class TaskRepository {
 
   /** Maintenance waits are recoverable conditions, not failed attempts. Only this internal task kind may use them. */
   async deferMaterialCollection(id:string,token:string,code:string,delayMs=30000){
+    return this.deferMaterialTask(id,token,code,delayMs,'studio.material.collect');
+  }
+  async deferOriginalRepair(id:string,token:string,code:string,delayMs=30000){
+    return this.deferMaterialTask(id,token,code,delayMs,'studio.material.repair');
+  }
+  async deferOriginalRepairCleanup(id:string,token:string,code:string,delayMs=30000){
+    return this.deferMaterialTask(id,token,code,delayMs,'studio.material.repair.cleanup');
+  }
+  private async deferMaterialTask(id:string,token:string,code:string,delayMs:number,kind:string){
     if(!/^[a-z0-9_]{1,100}$/.test(code)||!Number.isSafeInteger(delayMs)||delayMs<1||delayMs>3600000)throw new Error('invalid_material_collection_wait');
     return this.locked(async query=>{
       const now=this.now(),rows=await query(`UPDATE durable_tasks SET state='retry_wait',available_at=?,attempts=CASE WHEN attempts>0 THEN attempts-1 ELSE 0 END,
         lease_token=NULL,lease_until=NULL,error_code=?,progress=?,version=version+1,updated_at=?
-        WHERE id=? AND kind='studio.material.collect' AND lease_token=? AND state='running' AND lease_until>? RETURNING id`,
-        [now+delayMs,code,JSON.stringify({stage:'waiting',reason:code}),new Date(now).toISOString(),id,token,now]);
+        WHERE id=? AND kind=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id`,
+        [now+delayMs,code,JSON.stringify({stage:'waiting',reason:code}),new Date(now).toISOString(),id,kind,token,now]);
       if(rows.length)await this.auditWith(query,id,'maintenance_deferred','worker',{code,delayMs});return rows.length===1;
     });
   }

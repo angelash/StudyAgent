@@ -34,6 +34,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
     const rows=['studioSourceMaterials','sourceCourses','studioMaterialUploads','studioMaterialAssets','studioWhiteboards','studioLearningPacks'].flatMap(collection=>this.store.inspect(collection as 'studioSourceMaterials').map(body=>({collection,body})));
     const references=materialReferences(rows,[],Date.now());if(references.issues.length)throw new StudioFileCollectionPending('material_collection_reference_unknown');return Boolean(references.assets.get(sha256)?.references.size);
   }
+  private uploadReserved(id:string){return this.store.select('studioMaterialAssets',{state:'repairing'}).some(asset=>asset.repair?.uploadId===id);}
   private async candidates(){
     const root=studioMaterialRoot(),result:Array<{targetKind:FileKind;key:string}>=[],seen=new Set<string>();
     const scan=async(relative:string,parse:(name:string)=>{targetKind:FileKind;key:string}|null)=>{
@@ -53,12 +54,13 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
       let scheduled=0;
       for(const upload of this.store.inspect('studioMaterialUploads')){
         if(scheduled>=100)break;if(upload.filesCollectedAt)continue;
+        if(this.uploadReserved(upload.id))continue;
         if(upload.status==='uploading'&&Date.parse(upload.expiresAt)<=Date.now()){const row=this.store.find('studioMaterialUploads',{id:upload.id})!;row.status='cancelled';row.revision++;}
         const row=this.store.find('studioMaterialUploads',{id:upload.id})!;
         if(row.status!=='uploading')scheduled+=await this.scheduleUpload(row.id,row.sha256,row.ownerUserId,'closed-upload:'+row.id);
       }
       for(const asset of this.store.inspect('studioMaterialAssets')){
-        if(scheduled>=100)break;if(this.sourceReferenced(asset.id))continue;
+        if(scheduled>=100)break;if(asset.state==='repairing'||this.sourceReferenced(asset.id))continue;
         if(asset.state==='deleting'){
           const pending=asset.cleanupTaskId&&await this.store.tasks.get(asset.cleanupTaskId);
           if(!pending){if(await this.schedule('source',asset.id,'system-material-cleanup','recover-source:'+asset.id+':'+asset.generation))scheduled++;}
@@ -87,6 +89,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
       const current=this.store.find('studioMaterialAssets',{id:payload.key});
       if(!current||current.state!=='deleting'||current.cleanupTaskId!==task.id||current.cleanupToken!==asset?.cleanupToken||current.generation!==asset?.generation)throw new StudioFileCollectionPending('material_collection_owner_changed');
     }else{
+      if(this.uploadReserved(payload.key))throw new StudioFileCollectionPending('material_upload_reserved_for_repair');
       const upload=this.store.find('studioMaterialUploads',{id:payload.key});if(upload?.status==='uploading'){if(!Number.isFinite(Date.parse(upload.expiresAt)))throw new StudioFileCollectionPending('material_upload_state_unknown');if(Date.parse(upload.expiresAt)>Date.now())throw new StudioFileCollectionPending('material_upload_active');}
     }
   }
@@ -96,6 +99,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
     const fence={id:task.id,token:task.leaseToken!,mode:'checkpoint' as const,progress:{stage:'collecting'}};let retained=false;
     const asset=await this.store.transaction(async()=>{
       if(payload.targetKind==='upload'){
+        if(this.uploadReserved(payload.key)){retained=true;return;}
         const upload=this.store.find('studioMaterialUploads',{id:payload.key});if(upload?.status==='uploading'){
           if(!Number.isFinite(Date.parse(upload.expiresAt)))throw new StudioFileCollectionPending('material_upload_state_unknown');
           if(Date.parse(upload.expiresAt)>Date.now()){retained=true;return;}
@@ -103,6 +107,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
         }return;
       }
       let row=this.store.find('studioMaterialAssets',{id:payload.key});
+      if(row?.state==='repairing'){retained=true;return;}
       if(this.sourceReferenced(payload.key)){if(row?.state==='deleting')throw new StudioFileCollectionPending('material_source_reference_changed');retained=true;return;}
       if(!row){row={id:payload.key,state:'available',generation:1,updatedAt:new Date().toISOString()};this.store.append('studioMaterialAssets',row);}
       if(row.state==='deleting'){

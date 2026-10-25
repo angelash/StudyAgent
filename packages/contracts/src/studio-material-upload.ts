@@ -5,6 +5,7 @@ export type StudioMaterialUpload={
   id:string;ownerUserId:string;studentId:string|null;subject:StudioSubject|null;name:string;size:number;sha256:string;
   chunkSize:number;chunks:Array<{index:number;sha256:string;size:number}>;
   status:'uploading'|'completed'|'cancelled';revision:number;createdAt:string;expiresAt:string;completedAt:string|null;materialId:string|null;
+  repairId?:string;
 };
 export type StudioMaterialProgress={
   materialId:string;status:StudioSourceMaterial['status'];pageCount:number|null;processedPages:number;ocrPages:number;unreadablePages:number;
@@ -18,4 +19,12 @@ export type StudioMaterialFileReport = {
   original: StudioMaterialFileState;
   pages: Array<{ page: number; state: StudioMaterialFileState; storage: 'file' | 'embedded' }>;
   canRegenerate: boolean;
+};
+
+export type StudioOriginalRepair = {
+  id:string;materialId:string;uploadId:string;status:'queued'|'restoring'|'completed'|'cleaning'|'cancelled';
+  canManage:boolean;
+  revision:number;createdAt:string;updatedAt:string;completedAt:string|null;
+  task:{id:string;state:string;version:number;errorCode:string|null}|null;
+  receipt:{sha256:string;size:number;completedAt:string}|null;
 };

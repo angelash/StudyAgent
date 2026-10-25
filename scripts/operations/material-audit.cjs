@@ -65,6 +65,7 @@ async function readMaterialSnapshot({ dataDir, connectionString }) {
 /** Shared by the audit and future collector. Invalid references conservatively disable eligibility. */
 function materialReferences(rows, tasks = [], now = Date.now()) {
   const assets = new Map(), uploads = new Map(), expected = new Map(), issues = [], materialById = new Map(), frozenPdfs = new Set();
+  const reservedUploads=new Set(rows.filter(entry=>entry.collection==='studioMaterialAssets').map(body).filter(row=>row?.state==='repairing').map(row=>row.repair?.uploadId));
   const asset = sha => { if (!HASH.test(sha ?? '')) { issues.push('invalid_source_hash'); return; } if (!assets.has(sha)) assets.set(sha, { references: new Set(), active: false }); return assets.get(sha); };
   const expect = (relative, hash, size) => {
     if (!HASH.test(hash ?? '') || !Number.isSafeInteger(size) || size < 0) { issues.push('invalid_file_integrity_reference'); return; }
@@ -96,7 +97,7 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
       for (const source of row.sources) { const ref = asset(source.sha256); ref?.references.add('course:' + row.id); if (ref && source.kind === 'pdf') frozenPdfs.add(source.sha256); }
     } else if (entry.collection === 'studioMaterialUploads') {
       if (!UPLOAD.test(row.id ?? '') || !['uploading', 'completed', 'cancelled'].includes(row.status) || !Number.isFinite(Date.parse(row.expiresAt))) { issues.push('invalid_upload_record'); continue; }
-      const active = row.status === 'uploading' && Date.parse(row.expiresAt) > now;
+      const active = row.status === 'uploading' && (reservedUploads.has(row.id)||Date.parse(row.expiresAt) > now);
       uploads.set(row.id, { active, expiresAt: row.expiresAt });
       if (active) { const ref = asset(row.sha256); if (ref) { ref.references.add('upload:' + row.id); ref.active = true; } }
       if (!Array.isArray(row.chunks)) { issues.push('invalid_upload_chunk_list'); continue; }
@@ -106,7 +107,12 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
         expect(`studio-uploads/${row.id}/${chunk.index}-${chunk.sha256}`, chunk.sha256, chunk.size);
       }
     } else if (entry.collection === 'studioMaterialAssets') {
-      if (!HASH.test(row.id ?? '') || !['available', 'deleting'].includes(row.state) || !Number.isSafeInteger(row.generation) || row.generation < 1) issues.push('invalid_material_asset_state');
+      if (!HASH.test(row.id ?? '') || !['available', 'deleting','repairing'].includes(row.state) || !Number.isSafeInteger(row.generation) || row.generation < 1) issues.push('invalid_material_asset_state');
+      else if(row.state==='repairing'){
+        const repair=row.repair;
+        if(!repair||repair.identity?.sha256!==row.id||repair.identity?.generation!==row.generation||!UPLOAD.test(repair.uploadId??''))issues.push('invalid_material_repair_state');
+        const ref=asset(row.id);if(ref){ref.active=true;ref.references.add('repair:'+repair?.identity?.id);}
+      }
       else if (row.state === 'deleting') { const ref = asset(row.id); if (ref) ref.active = true; }
     }
   }
@@ -132,6 +138,7 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
 function managedEntry(relative, directory) {
   if (directory) {
     if (['studio-materials', 'studio-materials/processed', 'studio-uploads', 'studio-materials/control', 'studio-uploads/control'].includes(relative)) return { container: true };
+    if(/^studio-materials\/control\/[a-f0-9]{64}\/repairs$/.test(relative))return{container:true};
     const control = relative.match(/^(studio-materials|studio-uploads)\/control\/([^/]+)(?:\/(?:leases|staging))?$/);
     if (control && (control[1] === 'studio-materials' ? HASH.test(control[2]) : UPLOAD.test(control[2]))) return { key: control[2], kind: control[1] === 'studio-materials' ? 'source' : 'upload', container: true };
     let match = relative.match(/^studio-materials\/processed\/([a-f0-9]{64})(?:\/study-pdf-structure-v[1-9]\d*)?$/);
@@ -169,6 +176,17 @@ async function fileDigest(file) {
 async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.now(), verify = true }) {
   if (!Number.isFinite(now) || !Number.isFinite(graceHours) || graceHours < 0 || graceHours > 8760) fail('invalid_material_audit_budget');
   const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set(), coordination = new Map(), workingSources = new Map();
+  const repairEntries=new Map();
+  for(const entry of snapshot.rows.filter(row=>row.collection==='studioMaterialAssets')){
+    const asset=body(entry);if(asset?.state!=='repairing')continue;
+    try{
+      if(asset.repair?.identity?.sha256!==asset.id||asset.repair?.identity?.generation!==asset.generation)throw new Error('invalid_repair_binding');
+      const {inspectStudioOriginalRepair}=require('../../apps/api/dist/apps/api/src/infrastructure/studio-original-repair.js');
+      const inventory=await inspectStudioOriginalRepair(root,asset.repair.identity,asset.repair.baseline);
+      for(const file of inventory.files)repairEntries.set(path.relative(root,file).replaceAll('\\','/'),{key:asset.id,kind:'source',part:'repair_private'});
+      for(const directory of inventory.directories)repairEntries.set(path.relative(root,directory).replaceAll('\\','/'),{key:asset.id,kind:'source',part:'repair_private',container:true});
+    }catch{references.issues.push('material_repair_inventory_unknown');}
+  }
   for (const task of snapshot.tasks) if (task.kind === 'studio.material.process') {
     if (!/^task_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(task.id) || !HASH.test(task.payload?.sha256 ?? '')) references.issues.push('invalid_studio_processing_identity');
     else workingSources.set(task.id, task.payload.sha256);
@@ -180,6 +198,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
     try { stat = await fsp.lstat(location); } catch (error) { if (error.code === 'ENOENT') return; throw error; }
     if (stat.isSymbolicLink()) { entries.push({ path: relative, state: 'unknown', reason: 'link_not_followed', bytes: 0 }); complete = false; return; }
     let managed = managedEntry(relative, stat.isDirectory());
+    if(!managed&&repairEntries.has(relative))managed=repairEntries.get(relative);
     const working = relative.match(/^processing\/runs\/(task_[a-f0-9-]+)(?:\/([a-f0-9-]+))?(?:\/(.+))?$/);
     if (working && workingSources.has(working[1])) {
       const validLease = !working[2] || /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(working[2]);
@@ -193,6 +212,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
       return;
     }
     seen.add(relative);
+    if(managed.part==='repair_private'){entries.push({path:relative,state:'active',reason:'bound_original_repair_private',bytes:stat.size});return;}
     if (['lease', 'purge', 'revocation', 'marker_staging'].includes(managed.part)) {
       let state = 'active', reason = 'collection_fence';
       try {

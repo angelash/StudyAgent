@@ -24,7 +24,7 @@ export function PdfMaterialUploader({scope,disabled,onSaved}:{scope:Record<strin
   try{
    const sha256=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await file.arrayBuffer())),value=>value.toString(16).padStart(2,'0')).join('');if(!valid())return;
    const rows=await apiRequest<StudioMaterialUpload[]>(endpoint+'?'+query,{signal:controller.signal});if(!valid())return;
-   let row=rows.find(row=>row.name===file.name&&row.sha256===sha256&&row.size===file.size&&Date.parse(row.expiresAt)>Date.now());
+   let row=rows.find(row=>!row.repairId&&row.name===file.name&&row.sha256===sha256&&row.size===file.size&&Date.parse(row.expiresAt)>Date.now());
    if(!row)row=await apiRequest<StudioMaterialUpload>(endpoint,{method:'POST',signal:controller.signal,body:JSON.stringify({...scope,name:file.name,size:file.size,sha256,requestKey:crypto.randomUUID()})});if(!valid())return;retain(row);setBusy('sending');
    row=await apiRequest<StudioMaterialUpload>(endpoint+'/'+row.id,{signal:controller.signal});
    for(let index=0;index<Math.ceil(file.size/row.chunkSize);index++){
@@ -40,7 +40,7 @@ export function PdfMaterialUploader({scope,disabled,onSaved}:{scope:Record<strin
  return <section className="sc-pdf-uploader" id="studio-pdf-upload" tabIndex={-1} aria-label="PDF原件上传"><header><div><b>让整章资料可靠地保存下来。</b><p>最多50MB、120页。上传与正文识别分别保存进度，离开后可以回来继续。</p></div><button type="button" disabled={disabled||Boolean(busy)} onClick={()=>input.current?.click()}>上传 PDF</button><input type="file" hidden ref={input} accept="application/pdf" aria-label="上传资料 PDF" onChange={event=>{const file=event.target.files?.[0];if(file)void selectFile(file);}}/></header>
   {error&&<div role="alert" className="sc-pdf-error"><p>{error}</p><button type="button" disabled={Boolean(busy)} onClick={()=>{setError('');setAttempt(value=>value+1);}}>读取已保存的上传</button></div>}{notice&&<p className="sc-pdf-notice" role="status">{notice}</p>}
   {busy&&busy!=='cancel'&&<p role="status">{busy==='checking'?'正在核对原文件…':busy==='completing'?'正在核对完整原件并保存…':'正在上传原件…'}<button type="button" onClick={pause}>{busy==='completing'?'停止等待':'暂停上传'}</button></p>}
-  {uploads.map(row=>{const received=row.chunks.reduce((sum,chunk)=>sum+chunk.size,0),expired=Date.parse(row.expiresAt)<=Date.now();return<article key={row.id}><div><b>{row.name}</b><span>{size(received)} / {size(row.size)} 已收到</span></div><progress value={received} max={row.size} aria-label={row.name+'上传进度'}/><p>{expired?'上传已过期，请取消后重新选择原文件。':'已收到的分块已保存。重选同一原件会核对后续传。'}</p><footer><button type="button" disabled={disabled||Boolean(busy)||expired} onClick={()=>input.current?.click()}>选择同一文件继续</button><button type="button" disabled={Boolean(busy)} onClick={()=>void cancel(row)}>取消上传</button></footer></article>;})}
+  {uploads.map(row=>{const received=row.chunks.reduce((sum,chunk)=>sum+chunk.size,0),expired=Date.parse(row.expiresAt)<=Date.now();return<article key={row.id}><div><b>{row.name}</b><span>{size(received)} / {size(row.size)} 已收到</span></div><progress value={received} max={row.size} aria-label={row.name+'上传进度'}/><p>{row.repairId?'这份上传用于恢复原件，请从对应资料的恢复进度继续。':expired?'上传已过期，请取消后重新选择原文件。':'已收到的分块已保存。重选同一原件会核对后续传。'}</p><footer><button type="button" disabled={disabled||Boolean(busy)||expired||Boolean(row.repairId)} onClick={()=>input.current?.click()}>选择同一文件继续</button><button type="button" disabled={Boolean(busy)||Boolean(row.repairId)} onClick={()=>void cancel(row)}>取消上传</button></footer></article>;})}
  </section>;
 }
 

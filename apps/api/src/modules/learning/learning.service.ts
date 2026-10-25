@@ -30,7 +30,7 @@ import { SpeechService } from '../ai/speech.service';
 import { PDFParse } from 'pdf-parse';
 import { buildPdfWhiteboard } from './studio-pdf-whiteboard';
 import { buildStudioLearningPack } from './studio-learning-pack';
-import { persistStudioMaterial, studioMaterialFile } from './studio-material-storage';
+import { assertStudioAssetAvailable,persistStudioMaterial, studioMaterialFile } from './studio-material-storage';
 import { assertMaterialAccess, studioMaterialView, StudioMaterialRecord } from './studio-material-access';
 
 export function studyDay(at = new Date()) {
@@ -369,6 +369,7 @@ export class LearningService {
     if (previous?.referenceId === material.id) return studioMaterialView(material,true);
     const hash = createHash('sha256').update(command.expectedUpdatedAt).digest('hex'), replay = material.commands?.find(item => item.key === command.requestKey);
     if (replay) { if (replay.kind !== 'retry' || replay.hash !== hash) throw new ConflictException('请求标识已使用'); return studioMaterialView(material,true); }
+    assertStudioAssetAvailable(this.store,material.sha256);
     const modelRetry = material.status === 'needs_review' && material.structure?.modelSource === 'local_fallback' &&
       !material.structure.modelAssisted;
     const previousTask=material.processingTaskId?await this.store.tasks.get(material.processingTaskId):null;

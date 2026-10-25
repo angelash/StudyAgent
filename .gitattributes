@@ -1,3 +1,7 @@
 # Generated teaching assets have byte-level checksums on both Windows and Linux.
 apps/web/public/question-assets/spatial-probes-v1/*.svg text eol=lf
 apps/web/public/question-assets/data-probes-v1/*.svg text eol=lf
+# Released curriculum bytes are checksummed; Windows checkout must preserve LF.
+resources/curriculum/authored-relations-2026-10-20-v1.json text eol=lf
+resources/curriculum/authored-atomic-relations-2026-10-20-v1.json text eol=lf
+resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json text eol=lf

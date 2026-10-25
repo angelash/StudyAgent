@@ -10,7 +10,7 @@ import { assertNoFileLinks, withStudioFileLease } from '../../infrastructure/stu
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { assertMaterialAccess, type StudioMaterialRecord } from './studio-material-access';
-import { studioMaterialCache, studioMaterialFile, studioMaterialRoot } from './studio-material-storage';
+import { assertStudioAssetAvailable,studioMaterialCache, studioMaterialFile, studioMaterialRoot } from './studio-material-storage';
 import { materialVersion } from './source-course-selection';
 
 type Digest = { sha256: string; size: number; origin?: 'legacy_observed' };
@@ -110,6 +110,7 @@ export class StudioMaterialIntegrityService {
       return this.view(row.fileCheck)!;
     }
     if (materialVersion(row) !== command.version) throw new ConflictException('资料版本已变化，请刷新后重新核对文件');
+    assertStudioAssetAvailable(this.store,row.sha256);
     const task = row.processingTaskId ? await this.store.tasks.get(row.processingTaskId) : null;
     if (['queued', 'processing'].includes(row.status ?? '') || task && ['queued', 'running', 'retry_wait', 'cancel_requested'].includes(task.state)) throw new ConflictException('请等待资料处理真正停止后再检查文件');
     if (!Number.isSafeInteger(row.pageCount) || row.pageCount < 0 || row.pageCount > 120) throw new BadRequestException('本轮核对最多120页，请先整理资料范围');

@@ -5,6 +5,7 @@ import type { SourceCourseRecord } from '../modules/learning/source-course-conte
 import type { SourceCourseStageRecord } from '../modules/learning/source-course-compilation';
 import type { StudioMaterialUploadRecord } from '../modules/learning/studio-material-upload.service';
 import type { StudioMaterialAssetRecord } from '../modules/learning/studio-material-storage';
+import type { StudioOriginalRepairRecord } from '../modules/learning/studio-original-repair-record';
 import { randomUUID } from 'crypto';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { resolve } from 'node:path';
@@ -427,6 +428,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   studioSourceMaterials: StudioSourceMaterial[] = [];
   studioMaterialUploads: StudioMaterialUploadRecord[] = [];
   studioMaterialAssets: StudioMaterialAssetRecord[] = [];
+  studioOriginalRepairs: StudioOriginalRepairRecord[] = [];
   studioLearningPacks: StudioLearningPack[] = [];
   studioWhiteboards: StudioWhiteboard[] = [];
   studioConnectors: Array<StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }> = [];
@@ -518,6 +520,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.studioSourceMaterials = [];
     this.studioMaterialUploads = [];
     this.studioMaterialAssets = [];
+    this.studioOriginalRepairs = [];
     this.studioLearningPacks = [];
     this.studioWhiteboards = [];
     this.studioConnectors = [];

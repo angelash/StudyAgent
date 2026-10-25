@@ -8,10 +8,12 @@ import { studioFileUuid } from './studio-file-paths';
 const hashPattern=/^[a-f0-9]{64}$/, sourceLimit=50*1024*1024;
 export type OriginalRepairIdentity={id:string;sha256:string;size:number;generation:number;taskId:string;token:string;bindingHash:string};
 type RegularObservation={kind:'regular';sha256:string;size:number;dev:number;ino:number;mtimeMs:number;pdf:boolean};
-type Observation={kind:'missing'}|RegularObservation;
+export type OriginalRepairObservation={kind:'missing'}|RegularObservation;
+type Observation=OriginalRepairObservation;
 type Intent={format:'study-original-repair-v1';nonce:string;pid:number;binding:OriginalRepairIdentity;original:Observation};
 export type OriginalRepairPhase='intent_created'|'intent_written'|'intent_synced'|'intent_published'|'intent_cleaned'|'candidate_created'|'candidate_chunk'|'candidate_synced'|'candidate_published'|'previous_linked'|'original_removed'|'original_published'|'original_verified'|'previous_removed'|'candidate_removed'|'files_finished';
-type Input={root:string;identity:OriginalRepairIdentity;chunks:Array<{path:string;size:number;sha256:string}>;guard:()=>Promise<void>;afterPhase?:(phase:OriginalRepairPhase)=>Promise<void>};
+type GuardedInput={root:string;identity:OriginalRepairIdentity;baseline:Observation;guard:()=>Promise<void>;afterPhase?:(phase:OriginalRepairPhase|'cleanup_finished')=>Promise<void>};
+type Input=GuardedInput&{chunks:Array<{path:string;size:number;sha256:string}>};
 const pending=(code:string):never=>{throw new StudioFileCollectionPending(code);};
 function validateIdentity(value:OriginalRepairIdentity){
  if(!value.id.startsWith('studio_repair_')||!studioFileUuid.test(value.id.slice(14))||!hashPattern.test(value.sha256)||!hashPattern.test(value.bindingHash)||!studioFileUuid.test(value.token)||!value.taskId.startsWith('task_')||!studioFileUuid.test(value.taskId.slice(5))||!Number.isSafeInteger(value.generation)||value.generation<1||!Number.isSafeInteger(value.size)||value.size<5||value.size>sourceLimit)pending('original_repair_identity_unknown');
@@ -37,6 +39,38 @@ async function observe(file:string):Promise<Observation>{
   return{kind:'regular',sha256:hash.digest('hex'),size,dev:before.dev,ino:before.ino,mtimeMs:before.mtimeMs,pdf};
  }finally{await handle.close();}
 }
+/** Capture under a source lease in the requesting authorization transaction,
+ * before queueing. A worker must never choose a new damaged-file baseline. */
+export async function observeStudioOriginal(root:string,sha256:string){
+ if(!hashPattern.test(sha256))pending('original_repair_identity_unknown');
+ return observe(resolve(root,'studio-materials',sha256+'.pdf'));
+}
+/** Read-only ownership inventory for the operations audit. Unknown entries throw;
+ * a controlled name alone never makes private bytes eligible for deletion. */
+export async function inspectStudioOriginalRepair(root:string,identity:OriginalRepairIdentity,baseline:Observation){
+ const target=paths(root,identity);assertBaseline(baseline);
+ await assertNoFileLinks(target.directory);if(!await exists(target.directory))return{files:[] as string[],directories:[] as string[]};
+ const intent=await exists(target.intent)?await readIntent(target.intent,identity):undefined;
+ if(intent)assertIntentBaseline(intent,baseline);
+ const files:string[]=[],directories=[target.directory];
+ for(const name of await fs.readdir(target.directory)){
+  const file=resolve(target.directory,name);await assertNoFileLinks(file);const stat=await fs.lstat(file);
+  if(name==='intent.json'&&intent){files.push(file);continue;}
+  if(name==='candidate.pdf'&&intent&&correct(await observe(file),identity)){files.push(file);continue;}
+  if(name==='previous.bin'&&intent&&sameOriginal(await observe(file),intent.original)){files.push(file);continue;}
+  if((name==='staging'||name==='candidates')&&stat.isDirectory()){
+   directories.push(file);const names=await fs.readdir(file);if(names.length>100)pending('original_repair_inventory_limit');
+   for(const pendingName of names){
+    const match=(name==='staging'?/^repair-([1-9]\d*)-([a-f0-9-]+)\.pending$/:/^candidate-([1-9]\d*)-([a-f0-9-]+)\.pending$/).exec(pendingName);
+    const pendingFile=resolve(file,pendingName);await assertNoFileLinks(pendingFile);const info=await fs.lstat(pendingFile);
+    if(!match||!studioFileUuid.test(match[2])||!Number.isSafeInteger(Number(match[1]))||!info.isFile()||info.size>(name==='staging'?4096:sourceLimit)||name==='candidates'&&!intent)pending('original_repair_staging_unknown');
+    files.push(pendingFile);
+   }continue;
+  }
+  pending('original_repair_inventory_unknown');
+ }
+ return{files,directories};
+}
 function sameOriginal(left:Observation,right:Observation){
  if(left.kind==='missing'||right.kind==='missing')return left.kind===right.kind;
  // Creating/removing our own hard links changes ctime, while the inode and bytes stay the same.
@@ -52,7 +86,7 @@ async function readIntent(file:string,identity:OriginalRepairIdentity):Promise<I
 }
 function dead(pid:number){try{process.kill(pid,0);return false;}catch(error){return(error as NodeJS.ErrnoException).code==='ESRCH';}}
 /** Producer names remain meaningful even if a process died before it wrote any JSON or file bytes. */
-async function prunePending(directory:string,pattern:RegExp,limit:number){
+async function prunePending(directory:string,pattern:RegExp,limit:number,guard:()=>Promise<void>){
  await assertNoFileLinks(directory);if(!await exists(directory))return;
  const names=await fs.readdir(directory);if(names.length>100)pending('original_repair_inventory_limit');
  for(const name of names){
@@ -61,10 +95,10 @@ async function prunePending(directory:string,pattern:RegExp,limit:number){
   if(!before.isFile()||before.size>limit||!studioFileUuid.test(match[2])||!Number.isSafeInteger(Number(match[1])))pending('original_repair_staging_unknown');
   if(!dead(Number(match[1])))pending('original_repair_producer_active');
   const after=await fs.lstat(file);if(before.dev!==after.dev||before.ino!==after.ino||before.size!==after.size||before.mtimeMs!==after.mtimeMs||!dead(Number(match[1])))pending('original_repair_staging_changed');
-  await fs.unlink(file);
+  await guard();await assertNoFileLinks(file);await fs.unlink(file);
  }
 }
-async function inventory(directory:string,boundIntent:boolean){
+async function inventory(directory:string,boundIntent:boolean,guard:()=>Promise<void>){
  await assertNoFileLinks(directory);if(!await exists(directory))return;
  for(const name of await fs.readdir(directory))if(!['intent.json','candidate.pdf','previous.bin','staging','candidates'].includes(name))pending('original_repair_inventory_unknown');
  if(!boundIntent){
@@ -72,8 +106,22 @@ async function inventory(directory:string,boundIntent:boolean){
   const candidates=resolve(directory,'candidates');await assertNoFileLinks(candidates);
   if(await exists(candidates)&&(await fs.readdir(candidates)).length)pending('original_repair_unbound_candidate');
  }
- await prunePending(resolve(directory,'staging'),/^repair-([1-9]\d*)-([a-f0-9-]+)\.pending$/,4096);
- if(boundIntent)await prunePending(resolve(directory,'candidates'),/^candidate-([1-9]\d*)-([a-f0-9-]+)\.pending$/,sourceLimit);
+ await prunePending(resolve(directory,'staging'),/^repair-([1-9]\d*)-([a-f0-9-]+)\.pending$/,4096,guard);
+ if(boundIntent)await prunePending(resolve(directory,'candidates'),/^candidate-([1-9]\d*)-([a-f0-9-]+)\.pending$/,sourceLimit,guard);
+}
+function assertBaseline(baseline:Observation){if(!validObservation(baseline))pending('original_repair_baseline_unknown');}
+function assertIntentBaseline(intent:Intent,baseline:Observation){if(!sameOriginal(intent.original,baseline))pending('original_repair_baseline_changed');}
+async function retireIntent(input:GuardedInput,target:ReturnType<typeof paths>){
+ await input.guard();
+ if(await exists(target.candidate)||await exists(target.previous))pending('original_repair_private_files_remain');
+ if(await exists(target.intent)){
+  assertIntentBaseline(await readIntent(target.intent,input.identity),input.baseline);
+  await input.guard();await assertNoFileLinks(target.intent);await fs.unlink(target.intent);
+ }
+ for(const directory of [resolve(target.directory,'staging'),resolve(target.directory,'candidates'),target.directory]){
+  await input.guard();await assertNoFileLinks(directory);
+  try{await fs.rmdir(directory);}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')pending('original_repair_directory_not_empty');}
+ }
 }
 async function candidate(input:Input,target:ReturnType<typeof paths>){
  if(input.chunks.length<1||input.chunks.length>13)pending('original_repair_chunk_unknown');
@@ -100,15 +148,17 @@ async function candidate(input:Input,target:ReturnType<typeof paths>){
  * Completion in the domain database is deliberately separate; retry never restores corrupted bytes.
  */
 export async function recoverStudioOriginal(input:Input){
- const target=paths(input.root,input.identity);await input.guard();
+ const target=paths(input.root,input.identity);assertBaseline(input.baseline);await input.guard();
  const release=await acquireStudioPurgeFence(input.root,'source',input.identity.sha256,{generation:input.identity.generation,taskId:input.identity.taskId,token:input.identity.token});
  try{
   await input.guard();await pruneDeadStudioFileLeases(input.root,'source',input.identity.sha256);
   let intent=await exists(target.intent)?await readIntent(target.intent,input.identity):undefined;
-  await inventory(target.directory,Boolean(intent));
+  if(intent)assertIntentBaseline(intent,input.baseline);
+  await inventory(target.directory,Boolean(intent),input.guard);
   if(!intent){
    const original=await observe(target.original);
-   if(correct(original,input.identity))return{sha256:input.identity.sha256,size:input.identity.size,reusedOriginal:true};
+   if(correct(original,input.identity)){await retireIntent(input,target);return{sha256:input.identity.sha256,size:input.identity.size,reusedOriginal:true};}
+   if(!sameOriginal(original,input.baseline))pending('original_repair_baseline_changed');
    intent={format:'study-original-repair-v1',nonce:randomUUID(),pid:process.pid,binding:input.identity,original};await input.guard();
    await publishAtomicMarker({directory:target.directory,file:target.intent,purpose:'repair',persistent:true,value:intent,afterPhase:async phase=>input.afterPhase?.(('intent_'+phase) as OriginalRepairPhase)});
   }
@@ -138,6 +188,33 @@ export async function recoverStudioOriginal(input:Input){
   if(await exists(target.candidate)){
    await input.guard();if(!correct(await observe(target.candidate),input.identity))pending('original_repair_candidate_changed');await fs.unlink(target.candidate);await input.afterPhase?.('candidate_removed');
   }
-  await input.guard();await input.afterPhase?.('files_finished');return{sha256:input.identity.sha256,size:input.identity.size,reusedOriginal};
+  await input.guard();await input.afterPhase?.('files_finished');await retireIntent(input,target);return{sha256:input.identity.sha256,size:input.identity.size,reusedOriginal};
+ }finally{await release();}
+}
+
+/** Internal cancellation/revocation cleanup. Remove only verified, intent-bound
+ * private artifacts. Never publish, roll back or unlink the shared original. */
+export async function cleanupStudioOriginalRepair(input:GuardedInput){
+ const target=paths(input.root,input.identity);assertBaseline(input.baseline);await input.guard();
+ const release=await acquireStudioPurgeFence(input.root,'source',input.identity.sha256,{generation:input.identity.generation,taskId:input.identity.taskId,token:input.identity.token});
+ try{
+  await input.guard();await pruneDeadStudioFileLeases(input.root,'source',input.identity.sha256);
+  const intent=await exists(target.intent)?await readIntent(target.intent,input.identity):undefined;
+  if(intent)assertIntentBaseline(intent,input.baseline);
+  await inventory(target.directory,Boolean(intent),input.guard);
+  if(intent){
+   if(await exists(target.previous)){
+    if(intent.original.kind!=='regular'||correct(intent.original,input.identity)||!sameOriginal(await observe(target.previous),intent.original))pending('original_repair_previous_changed');
+    await input.guard();await assertNoFileLinks(target.previous);await fs.unlink(target.previous);await input.afterPhase?.('previous_removed');
+   }
+   if(await exists(target.candidate)){
+    if(!correct(await observe(target.candidate),input.identity))pending('original_repair_candidate_changed');
+    await input.guard();await assertNoFileLinks(target.candidate);await fs.unlink(target.candidate);await input.afterPhase?.('candidate_removed');
+   }
+  }
+  await input.guard();await input.afterPhase?.('cleanup_finished');
+  const current=await observe(target.original);
+  await retireIntent(input,target);
+  return{sha256:input.identity.sha256,size:input.identity.size,original:correct(current,input.identity)?'verified' as const:current.kind==='missing'?'missing' as const:'mismatch' as const};
  }finally{await release();}
 }

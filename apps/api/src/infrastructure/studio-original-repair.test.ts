@@ -4,7 +4,7 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import * as fs from 'node:fs';
 import { join, resolve, dirname, sep } from 'node:path';
 import { tmpdir } from 'node:os';
-import { recoverStudioOriginal, type OriginalRepairIdentity, type OriginalRepairPhase } from './studio-original-repair';
+import { cleanupStudioOriginalRepair, inspectStudioOriginalRepair, observeStudioOriginal, recoverStudioOriginal, type OriginalRepairIdentity, type OriginalRepairObservation, type OriginalRepairPhase } from './studio-original-repair';
 import { acquireStudioFileLease } from './studio-file-coordination';
 const repo=resolve(__dirname,'../../../..'),hash=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
 describe('recoverable byte protocol for an explicitly authorized original repair',()=>{
@@ -18,10 +18,12 @@ describe('recoverable byte protocol for an explicitly authorized original repair
   fs.mkdirSync(dirname(original),{recursive:true});if(!options.missing)fs.writeFileSync(original,old);
   const chunks:Array<{path:string;size:number;sha256:string}>=[];fs.mkdirSync(join(root,'uploads'));
   for(let offset=0,index=0;offset<bytes.length;offset+=4*1024*1024,index++){const part=bytes.subarray(offset,offset+4*1024*1024),path=join(root,'uploads',index+'.bin');fs.writeFileSync(path,part);chunks.push({path,size:part.length,sha256:hash(part)});}
-  fs.writeFileSync(join(root,'fixture.json'),JSON.stringify({identity,chunks:chunks.map(({size,sha256})=>({size,sha256}))}));
-  return{root,bytes,old,original,identity,chunks,directory:join(root,'studio-materials/control',sha256,'repairs',identity.id)};
+  const stat=options.missing?undefined:fs.statSync(original),baseline:OriginalRepairObservation=stat?{kind:'regular',sha256:hash(old),size:old.length,dev:stat.dev,ino:stat.ino,mtimeMs:stat.mtimeMs,pdf:false}:{kind:'missing'};
+  fs.writeFileSync(join(root,'fixture.json'),JSON.stringify({identity,baseline,chunks:chunks.map(({size,sha256})=>({size,sha256}))}));
+  return{root,bytes,old,original,identity,baseline,chunks,directory:join(root,'studio-materials/control',sha256,'repairs',identity.id)};
  }
- const run=(f:ReturnType<typeof fixture>,options:Partial<Parameters<typeof recoverStudioOriginal>[0]>={})=>recoverStudioOriginal({root:f.root,identity:f.identity,chunks:f.chunks,guard:async()=>{},...options});
+ const run=(f:ReturnType<typeof fixture>,options:Partial<Parameters<typeof recoverStudioOriginal>[0]>={})=>recoverStudioOriginal({root:f.root,identity:f.identity,baseline:f.baseline,chunks:f.chunks,guard:async()=>{},...options});
+ const cleanup=(f:ReturnType<typeof fixture>,options:Partial<Parameters<typeof cleanupStudioOriginalRepair>[0]>={})=>cleanupStudioOriginalRepair({root:f.root,identity:f.identity,baseline:f.baseline,guard:async()=>{},...options});
  async function childAt(f:ReturnType<typeof fixture>,phase:string){
   const child=spawn(process.execPath,[join(repo,'scripts/qa/fixtures/original-repair-child.cjs'),f.root,phase],{windowsHide:true,stdio:['ignore','pipe','pipe']});children.push(child);
   await new Promise<void>((resolve,reject)=>{let output='';const timeout=setTimeout(()=>reject(new Error('Original repair phase timeout')),20000);child.stdout!.on('data',bytes=>{output+=bytes;if(output.includes('\n')){clearTimeout(timeout);expect(JSON.parse(output.trim()).phase).toBe(phase);resolve();}});child.once('error',error=>{clearTimeout(timeout);reject(error);});child.once('exit',()=>{clearTimeout(timeout);reject(new Error('Original repair child exited early'));});});return child;
@@ -67,5 +69,51 @@ describe('recoverable byte protocol for an explicitly authorized original repair
  it('keeps private staged bytes when their immutable intent is missing or belongs to another binding',async()=>{
   const f=fixture(),directory=join(f.directory,'candidates');fs.mkdirSync(directory,{recursive:true});const file=join(directory,'candidate-99999999-'+randomUUID()+'.pending');fs.writeFileSync(file,'unbound private bytes');await expect(run(f)).rejects.toThrow('unbound_candidate');expect(fs.readFileSync(file,'utf8')).toBe('unbound private bytes');expect(fs.readFileSync(f.original)).toEqual(f.old);
   const other=fixture(),child=await childAt(other,'candidate_chunk');await kill(child);const staged=fs.readdirSync(join(other.directory,'candidates'));expect(staged).toHaveLength(1);const pending=join(other.directory,'candidates',staged[0]),before=hash(fs.readFileSync(pending));await expect(run(other,{identity:{...other.identity,bindingHash:'b'.repeat(64)}})).rejects.toThrow('intent_unknown');expect(hash(fs.readFileSync(pending))).toBe(before);
+ });
+ it('binds the request baseline and preserves any third file seen by the first worker',async()=>{
+  for(const missing of [false,true]){
+   const f=fixture({missing});expect(await observeStudioOriginal(f.root,f.identity.sha256)).toEqual(f.baseline);
+   if(!missing)fs.renameSync(f.original,join(f.root,'held'));
+   fs.writeFileSync(f.original,'a file installed after the request');
+   await expect(run(f)).rejects.toThrow('baseline_changed');
+   expect(fs.readFileSync(f.original,'utf8')).toBe('a file installed after the request');expect(fs.existsSync(join(f.directory,'intent.json'))).toBe(false);
+  }
+ });
+ it('accepts correct originals but rejects changing an existing intent baseline',async()=>{
+  const correct=fixture();fs.writeFileSync(correct.original,correct.bytes);expect(await run(correct)).toMatchObject({reusedOriginal:true});
+  const f=fixture(),child=await childAt(f,'candidate_published');await kill(child);
+  await expect(run(f,{baseline:{kind:'missing'}})).rejects.toThrow('baseline_changed');expect(fs.readFileSync(f.original)).toEqual(f.old);
+  await expect(cleanup(f,{baseline:{kind:'missing'}})).rejects.toThrow('baseline_changed');expect(fs.existsSync(join(f.directory,'candidate.pdf'))).toBe(true);
+ });
+ for(const phase of ['intent_created','intent_published','candidate_created','candidate_chunk','candidate_published','previous_linked','original_removed','original_published','previous_removed','candidate_removed']){
+  it('cleans cancellation after real SIGKILL without publishing or rollback at '+phase,async()=>{
+   const f=fixture(),child=await childAt(f,phase);await kill(child);
+   const before=fs.existsSync(f.original)?fs.readFileSync(f.original):null,result=await cleanup(f);
+   expect(result.original).toBe(phase==='original_removed'?'missing':['original_published','previous_removed','candidate_removed'].includes(phase)?'verified':'mismatch');
+   if(before)expect(fs.readFileSync(f.original).equals(before)).toBe(true);else expect(fs.existsSync(f.original)).toBe(false);
+   expect(fs.existsSync(join(f.directory,'candidate.pdf'))).toBe(false);expect(fs.existsSync(join(f.directory,'previous.bin'))).toBe(false);
+   expect(await cleanup(f)).toEqual(result);
+  },60000);
+ }
+ it('preserves unbound, changed, live and unknown cleanup artifacts',async()=>{
+  const f=fixture(),child=await childAt(f,'candidate_published');await kill(child);
+  fs.writeFileSync(join(f.directory,'candidate.pdf'),'unknown bytes');await expect(cleanup(f)).rejects.toThrow('candidate_changed');expect(fs.readFileSync(join(f.directory,'candidate.pdf'),'utf8')).toBe('unknown bytes');expect(fs.readFileSync(f.original)).toEqual(f.old);
+  const unknown=fixture();fs.mkdirSync(unknown.directory,{recursive:true});fs.writeFileSync(join(unknown.directory,'candidate.pdf'),unknown.bytes);await expect(cleanup(unknown)).rejects.toThrow('unbound_candidate');expect(fs.readFileSync(join(unknown.directory,'candidate.pdf')).equals(unknown.bytes)).toBe(true);
+  const live=fixture(),producer=await childAt(live,'candidate_chunk');await expect(cleanup(live)).rejects.toThrow('owner_active');await kill(producer);await cleanup(live);
+ });
+ it('continues cancellation cleanup interrupted at each removal boundary',async()=>{
+  for(const phase of ['previous_removed','candidate_removed','cleanup_finished']){
+   const f=fixture(),child=await childAt(f,'original_published');await kill(child);
+   await expect(cleanup(f,{afterPhase:async current=>{if(current===phase)throw new Error('cleanup interruption');}})).rejects.toThrow('cleanup interruption');
+   expect((await cleanup(f)).original).toBe('verified');expect(fs.readFileSync(f.original).equals(f.bytes)).toBe(true);
+  }
+ });
+ it('audits private files read-only against both the durable identity and request baseline',async()=>{
+  const f=fixture(),child=await childAt(f,'previous_linked');await kill(child);
+  const files=['intent.json','candidate.pdf','previous.bin'],before=files.map(name=>hash(fs.readFileSync(join(f.directory,name))));
+  const result=await inspectStudioOriginalRepair(f.root,f.identity,f.baseline);expect(result.files).toHaveLength(3);expect(files.map(name=>hash(fs.readFileSync(join(f.directory,name))))).toEqual(before);
+  await expect(inspectStudioOriginalRepair(f.root,{...f.identity,bindingHash:'a'.repeat(64)},f.baseline)).rejects.toThrow('intent_unknown');
+  await expect(inspectStudioOriginalRepair(f.root,f.identity,{kind:'missing'})).rejects.toThrow('baseline_changed');
+  fs.writeFileSync(join(f.directory,'candidate.pdf'),'unknown replacement');await expect(inspectStudioOriginalRepair(f.root,f.identity,f.baseline)).rejects.toThrow('inventory_unknown');expect(fs.readFileSync(join(f.directory,'candidate.pdf'),'utf8')).toBe('unknown replacement');
  });
 });
