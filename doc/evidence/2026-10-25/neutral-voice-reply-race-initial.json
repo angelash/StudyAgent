@@ -1,0 +1,290 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-classroom-voices\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-boards.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-classroom-voices\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-classroom-voices/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-classroom-voices/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-classroom-voices/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-classroom-voices\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-boards.spec.ts",
+      "file": "classroom-boards.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15996,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T14:35:58.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-b6bdb1bea6a7d9fb8a7a",
+          "file": "classroom-boards.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T14:36:15.130Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-1468b198db4bd543493d",
+          "file": "classroom-boards.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22685,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-ai-board').last()\nExpected: in viewport\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('.cl-ai-board').last() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-ai-board').last()\u001b[22m\n\u001b[2m    - locator resolved to <section class=\"cl-board-step cl-ai-board\" id=\"board-classroom_message_5bcb63e4-afd9-424f-ad67-4cf83509276f\">…</section>\u001b[22m\n\u001b[2m    - unexpected value \"viewport ratio 0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-ai-board').last()\nExpected: in viewport\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('.cl-ai-board').last() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-ai-board').last()\u001b[22m\n\u001b[2m    - locator resolved to <section class=\"cl-board-step cl-ai-board\" id=\"board-classroom_message_5bcb63e4-afd9-424f-ad67-4cf83509276f\">…</section>\u001b[22m\n\u001b[2m    - unexpected value \"viewport ratio 0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e\\classroom-boards.spec.ts:83:29",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e\\classroom-boards.spec.ts",
+                      "column": 29,
+                      "line": 83
+                    },
+                    "snippet": "  81 |     const read=page.getByRole('button',{name:'按句阅读这段回答',exact:true});await read.focus();await page.keyboard.press('Enter');\n  82 |   }finally{release();}\n> 83 |   await expect(board(page)).toBeInViewport({ratio:0.2});await expect(board(page).locator('tbody tr')).toHaveCount(0);\n     |                             ^\n  84 |   await board(page).getByRole('button',{name:'展开完整笔记'}).focus();await page.keyboard.press('Enter');await expect(board(page).locator('tbody tr')).toHaveCount(2);await expect(board(page).locator('math')).toHaveCount(1);\n  85 |   await page.getByRole('button',{name:'■ 停止阅读',exact:true}).click();\n  86 |   for(const width of [1440,768,390]){await page.setViewportSize({width,height:width===390?844:1000});if(width===390)await page.getByRole('button',{name:'白板',exact:true}).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e\\classroom-boards.spec.ts",
+                        "column": 29,
+                        "line": 83
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-ai-board').last()\nExpected: in viewport\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('.cl-ai-board').last() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-ai-board').last()\u001b[22m\n\u001b[2m    - locator resolved to <section class=\"cl-board-step cl-ai-board\" id=\"board-classroom_message_5bcb63e4-afd9-424f-ad67-4cf83509276f\">…</section>\u001b[22m\n\u001b[2m    - unexpected value \"viewport ratio 0\"\u001b[22m\n\n\n  81 |     const read=page.getByRole('button',{name:'按句阅读这段回答',exact:true});await read.focus();await page.keyboard.press('Enter');\n  82 |   }finally{release();}\n> 83 |   await expect(board(page)).toBeInViewport({ratio:0.2});await expect(board(page).locator('tbody tr')).toHaveCount(0);\n     |                             ^\n  84 |   await board(page).getByRole('button',{name:'展开完整笔记'}).focus();await page.keyboard.press('Enter');await expect(board(page).locator('tbody tr')).toHaveCount(2);await expect(board(page).locator('math')).toHaveCount(1);\n  85 |   await page.getByRole('button',{name:'■ 停止阅读',exact:true}).click();\n  86 |   for(const width of [1440,768,390]){await page.setViewportSize({width,height:width===390?844:1000});if(width===390)await page.getByRole('button',{name:'白板',exact:true}).click();\n    at F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e\\classroom-boards.spec.ts:83:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T14:36:28.958Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-classroom-voices\\test-results\\browser-product-acceptance\\classroom-boards-complete--ddf7f-arrow-layouts-remain-usable\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-classroom-voices\\test-results\\browser-product-acceptance\\classroom-boards-complete--ddf7f-arrow-layouts-remain-usable\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-classroom-voices\\test-results\\browser-product-acceptance\\classroom-boards-complete--ddf7f-arrow-layouts-remain-usable\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-classroom-voices\\tests\\e2e\\classroom-boards.spec.ts",
+                    "column": 29,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-6a47dadb4786adbff4b8",
+          "file": "classroom-boards.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T14:36:53.283Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-292d56aa30ddc2fc4b2c",
+          "file": "classroom-boards.spec.ts",
+          "line": 90,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T14:35:46.558Z",
+    "duration": 77038.00099999999,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

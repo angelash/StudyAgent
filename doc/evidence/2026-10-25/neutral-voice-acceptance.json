@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T14:57:04.292Z",
+  "sourceRevision": "8a73c86bad7141deafd03f2608e5ddc7c86ae8e5",
+  "apiImplementation": "68b67cc",
+  "voiceAssetsCommit": "a35f4ec",
+  "lastVisualFix": "7d8ad85",
+  "replyNavigationFix": "815bef2",
+  "specificationCommit": "520edcc",
+  "nextSpecificationOnly": "453c032",
+  "localPassed": true,
+  "passed": false,
+  "status": "local-validated-awaiting-exact-ci-and-production-runtime",
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF; MP3 assets use raw bytes",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "7e359dd2b0b9b023463f5a9d2299514542888548f02f088af2ce5961b8064a7c",
+    "apps/api/src/common/auth.guard.ts": "4e63f63b3346c62237824e20b5c17a78831462b8268fabb31734f9d12852264a",
+    "apps/api/src/modules/ai/neutral-voice-samples.ts": "c500b3485225559c6ee51de14f86d3b8690fe72320e417a32f190f591eb10061",
+    "apps/api/src/modules/ai/speech.service.test.ts": "6a827d6f764119fcdd937e139b44080c46c6d86853e5df3a482a41dab6df0cc1",
+    "apps/api/src/modules/ai/speech.service.ts": "eb7f4d5a66dfc8eb906ff6cdf0600d7d757b148f6b3407add0c593e8c682f94c",
+    "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts": "7262fe3eb04b684fbec13ee40c48a30951b6009b6dec8a72b0a9df5b67cf7285",
+    "apps/api/src/modules/learning/classroom.controller.ts": "2a8495c18a037dbae67b24a068446723bca3a1acbb0ae4c299f0d09b13ef3c71",
+    "apps/api/src/modules/learning/classroom.service.ts": "28d2ac3e019f8e407a9659c194cffc84caf850695d8958b5817df4edc33ad960",
+    "apps/web/app/studio/classroom/tool-tour.css": "89c33c239c07f8f21be73217f9a5c685a746b98e84c87ed9d6baf6aa4dbd43f3",
+    "apps/web/app/studio/classroom/voice-preview.tsx": "a844994af64ca0aabfc205f0a85abe9537388590733d7e52c4df4ee43dd65f67",
+    "apps/web/app/studio/classroom/workbench.tsx": "f3c108abab735ad4ea089a413d3f44081fc3861044cf602475fa4c8bb21f70f9",
+    "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
+    "packages/contracts/src/studio.ts": "c1b85c5381d6bdfc12318c7e7dbd73589532bc1c3cbb388963f8d48d1a4342ce",
+    "scripts/architecture/project-feature-definitions.cjs": "9406a532780dd4ba115567aeb52ddd3922a967d88872a7eb897c1eabb64bfbe3",
+    "scripts/qa/run-neutral-voices-postgres.cjs": "146d0f07633bbcc26e5b66fc7de1655c9bc06fcce39d67729df6e784ead6e66b",
+    "scripts/qa/run-source-course-browser.cjs": "f81ed7776c8bb9646d37c9cbf14412ba02272083fc42e7835403dd1954501cd7",
+    "tests/e2e/classroom-boards.spec.ts": "25ac0d4fc74602633aa30fe4023b833889c73c42463a1b34d57f80a990b199aa",
+    "tests/e2e/classroom-neutral-voices.spec.ts": "591e58e2ccad2d3a2567f5449f37220887ebdbc0a3df9e649332b1f4ed7da2d6",
+    ".gitattributes": "53d3ede6429fb490666ba70e9dddf19a7817efdad2f3047ad20b71fc32a7c6f7"
+  },
+  "assetDigests": {
+    "apps/web/public/classroom-voice-samples/bright-v1.mp3": "7fbda45ec0383a98b9d32d7268b8cdf49006281a0a8353cf959ff2cb294b71ed",
+    "apps/web/public/classroom-voice-samples/calm-v1.mp3": "ab283698ffd0c7c541d07e56323f97dcfbf8be977f17f9550b546684ca8b64a7",
+    "apps/web/public/classroom-voice-samples/gentle-v1.mp3": "920d425e5dae02a301b078a0a747d91a674ad78f936e535552bf3a665e6f9cf9",
+    "apps/web/public/classroom-voice-samples/lively-v1.mp3": "bec74e344c8634d12b5dc7adcc23e84a4dc9b0df90d1ca6dbbec7d0f9e517f1e",
+    "apps/web/public/classroom-voice-samples/professional-v1.mp3": "5d01b439d86621d11b294bdef737ffe1d1d9234071395ee6b921f25bf0a5faaa",
+    "apps/web/public/classroom-voice-samples/warm-v1.mp3": "a6a2dccb363caf307c62829cd2f9482acd4beaaa1bce140de5b40b2f1ac8f023"
+  },
+  "reports": {
+    "neutral-voice-full-api.json": {
+      "sha256": "7f15ec1aaee6f031bcf2bf7bef2372410b20208f0f3d960a0031ac65fd63391e",
+      "bytes": 552631
+    },
+    "neutral-voice-full-browser.json": {
+      "sha256": "4c0681418545babaa434aa4ddb33a83ce971d18428e2b6ae9f459f1dbefe3179",
+      "bytes": 200554
+    },
+    "neutral-voice-service-initial.json": {
+      "sha256": "c4733caf95b568a45c91200c82ed1edf0b24b7e3d74e36d5b177cb3b97152d7d",
+      "bytes": 4959
+    },
+    "neutral-voice-service-final.json": {
+      "sha256": "9c27f69017e866964e45458bc518a0cb38b59d4071c2032733343b5f87bba647",
+      "bytes": 5376
+    },
+    "neutral-voice-postgres.json": {
+      "sha256": "8a42501a54c3b4d8d7272720621e7a1a944934f9cd2da9403f14e18c3695363f",
+      "bytes": 2471
+    },
+    "neutral-voice-browser-eleven-pass.json": {
+      "sha256": "db8ad73769012426a115b352fe05136dbce059ed3f8b63e04e27a86b11d54c03",
+      "bytes": 15112
+    },
+    "neutral-voice-browser-expanded-initial.json": {
+      "sha256": "50619cc4698ced737cd3fb4f2198885731c50c8da443c89a498fee7543aabebe",
+      "bytes": 21893
+    },
+    "neutral-voice-browser-final.json": {
+      "sha256": "2f640eedc86337a9ee481b09e1ce503d456d4d6177f3b405f86977babe897a6d",
+      "bytes": 16190
+    },
+    "neutral-voice-full-browser-initial.json": {
+      "sha256": "0de7d5d91a00e3ec19053d5a1e6c4451b56d8273bf1730da977c7dfd20f238a6",
+      "bytes": 205925
+    },
+    "neutral-voice-reply-race-initial.json": {
+      "sha256": "488a9064bb93066c4941a60764f9f8f9ebfd2cb0ed75181dd1c4c4e59c0d3035",
+      "bytes": 13360
+    },
+    "neutral-voice-reply-race-final.json": {
+      "sha256": "ba9a5a1ad5805391c3dba08008db8f11a4ca0739fa0ba098cd58ecf8a7b24f5b",
+      "bytes": 7344
+    }
+  },
+  "screens": {
+    "neutral-voice-settings-390.png": "8bb9fd169b009e083daa27fa7e90661c6fd8572dd0c4d31d93bdfb293c492e9f",
+    "neutral-voice-settings-768.png": "84ea70bf4e93a2811439425942dd0c6e03f5c02ba8762e746da6a9c45edf0fea",
+    "neutral-voice-settings-1440.png": "5f212d6f0135be59c8d016ab9b29b76bb87043eb9cdc90760ec673db0dfa4251"
+  },
+  "initialArtifacts": {
+    "neutral-voice-initial-artifacts/error-context.md.gz": {
+      "sha256": "5a28ee2440d400632b67e84cedf5fff827acbcf5c43e6ccbac93a3f5dab06e99",
+      "originalSha256": "caa209257b542fd9fd22a55b6fb1acf34219314bb6d55dff9c46cb9d03de8aaa",
+      "bytes": 6217,
+      "originalBytes": 20287
+    },
+    "neutral-voice-initial-artifacts/test-failed-1.png": {
+      "sha256": "2f18c28f3cd4a8924d71fc8634f6e45382cf1b5c56448aa73044bf344a71dd65",
+      "originalSha256": "2f18c28f3cd4a8924d71fc8634f6e45382cf1b5c56448aa73044bf344a71dd65",
+      "bytes": 142325,
+      "originalBytes": 142325
+    },
+    "neutral-voice-initial-artifacts/trace.zip": {
+      "sha256": "347e63efade6d9bc4c9254170846bec65a80dab7366e2ad71986d881fdcc70ca",
+      "originalSha256": "347e63efade6d9bc4c9254170846bec65a80dab7366e2ad71986d881fdcc70ca",
+      "bytes": 1257910,
+      "originalBytes": 1257910
+    },
+    "neutral-voice-initial-artifacts/full-api.log.gz": {
+      "sha256": "afe5ddd842f6ea030324c3ca63758c9fd67d10a9bbd9f2702dca7d8b609378cf",
+      "originalSha256": "4269ec7845f499872e48dbb46026ee08156cb09982a7183cd0f394c981f96409",
+      "bytes": 14052,
+      "originalBytes": 48555
+    },
+    "neutral-voice-initial-artifacts/full-browser-initial.log.gz": {
+      "sha256": "88723e2f91cf7a6d2d15e6a3482eddbec970d573010164ee29e202c420305e8a",
+      "originalSha256": "e8927e97d8c1ed887d6806bfd90853b75f69f8c1f36fccdd4b33b7bfc7261235",
+      "bytes": 8705,
+      "originalBytes": 34057
+    },
+    "neutral-voice-initial-artifacts/full-browser-final.log.gz": {
+      "sha256": "3893178e712a90b964a8a04cc4392161c7e4f3e48e73b2392d2f99406e99ae44",
+      "originalSha256": "4db1cae85c703ebe9319ce8a6a6b60d916a2d9662dd5e0e3db730bf9e0a7aa14",
+      "bytes": 7138,
+      "originalBytes": 28233
+    },
+    "neutral-voice-initial-artifacts/mask-final-browser.log.gz": {
+      "sha256": "76a5fce23e7080bac1ba56942bcd137685d29c6da81d4b1195206ad52d8833f2",
+      "originalSha256": "820d99a0ffb862d2891062d6b401413d1d5729764bbe53baba5dd21185167bd0",
+      "bytes": 883,
+      "originalBytes": 2469
+    },
+    "neutral-voice-initial-artifacts/lint.log.gz": {
+      "sha256": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e",
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "bytes": 130,
+      "originalBytes": 256
+    },
+    "neutral-voice-initial-artifacts/design-initial-stale-baseline.log.gz": {
+      "sha256": "867361a6538c979942b571be1ba5c6bf91da4087eacbecfd0ec255e5db9df4f6",
+      "originalSha256": "f4c462464b34e9ba524a0f23874442e959957969b42acbaefe39861090d44bb2",
+      "bytes": 539,
+      "originalBytes": 1054
+    },
+    "neutral-voice-initial-artifacts/design-stale-audit.log.gz": {
+      "sha256": "63c9c82f4ea2959bb107ba34e7adf584e188be7f5b09293d25ac5d96c756f70d",
+      "originalSha256": "e2fb738a59ba2fed31c8d113c7c54fb0a59e8f2b75e53910092ce33859ece2b2",
+      "bytes": 538,
+      "originalBytes": 1054
+    },
+    "neutral-voice-initial-artifacts/design-final.log.gz": {
+      "sha256": "fdafb93f074cdb2489bff7f461db8f6bbdf0d496af645a7ca8d70410d049671e",
+      "originalSha256": "a995cc8d323cf231f8bdf5d5be0af952aa7e8f38b011a0ce6b628af7a26e0b87",
+      "bytes": 194,
+      "originalBytes": 281
+    },
+    "neutral-voice-initial-artifacts/full-browser/error-context.md.gz": {
+      "sha256": "49d2c62678eb6fd965a928698b615f97cf0e6dd0ed1b00b89fdac0c2eb1b43d1",
+      "originalSha256": "7853250caf08d38e12038d37e5c74dfcf75420346b1ff3eef15ffc05c2ee0c3b",
+      "bytes": 6275,
+      "originalBytes": 17975
+    },
+    "neutral-voice-initial-artifacts/full-browser/test-failed-1.png": {
+      "sha256": "033c2fbba8db38ccededf6a1b4815b39618becd38799a7d46aa9254137397158",
+      "originalSha256": "033c2fbba8db38ccededf6a1b4815b39618becd38799a7d46aa9254137397158",
+      "bytes": 285784,
+      "originalBytes": 285784
+    },
+    "neutral-voice-initial-artifacts/full-browser/trace.zip": {
+      "sha256": "2f1ba9640993519ffe405d59f78e9c8d584df68c6667a77e74c06b8e5cc136fe",
+      "originalSha256": "2f1ba9640993519ffe405d59f78e9c8d584df68c6667a77e74c06b8e5cc136fe",
+      "bytes": 5341041,
+      "originalBytes": 5341041
+    },
+    "neutral-voice-initial-artifacts/reply-race/error-context.md.gz": {
+      "sha256": "c7b466d07048b97730de058f02aef3a7fa20a5d2427d92326b79cc745e678fcb",
+      "originalSha256": "fb44561bcd3f8497afd3a70187760c8fc9b03a066fea0f7932445f259a36235d",
+      "bytes": 6544,
+      "originalBytes": 18920
+    },
+    "neutral-voice-initial-artifacts/reply-race/test-failed-1.png": {
+      "sha256": "9aece50c0f1ce722548a5928942f63b1af2d99373b209440cff85e7365c42b79",
+      "originalSha256": "9aece50c0f1ce722548a5928942f63b1af2d99373b209440cff85e7365c42b79",
+      "bytes": 164536,
+      "originalBytes": 164536
+    },
+    "neutral-voice-initial-artifacts/reply-race/trace.zip": {
+      "sha256": "4c578b1b73ec388acff9cff7ef87e971ccbab95ceb2814df41d1d84fdada93c7",
+      "originalSha256": "4c578b1b73ec388acff9cff7ef87e971ccbab95ceb2814df41d1d84fdada93c7",
+      "bytes": 5368257,
+      "originalBytes": 5368257
+    }
+  },
+  "local": {
+    "api": {
+      "passed": 1173,
+      "skipped": 39
+    },
+    "browser": {
+      "passed": 178,
+      "failed": 0,
+      "retries": 0
+    },
+    "voiceAndToolBrowser": {
+      "passed": 12
+    },
+    "service": {
+      "passed": 12,
+      "scope": "Four SQLite classroom endpoint checks and eight speech regressions"
+    },
+    "postgres": {
+      "passed": 4
+    },
+    "lint": true,
+    "design": {
+      "areas": 14,
+      "features": 117,
+      "normalRoutes": 322,
+      "collections": 93,
+      "contractTypes": 304,
+      "apiTestFiles": 134,
+      "browserTestFiles": 26,
+      "offlineChecks": 10
+    }
+  },
+  "assets": {
+    "receipt": "neutral-voice-assets.json",
+    "sha256": "664d2d275c2ec3141272ac6d49c8d5ac9281411b5854dd22c47fa294a6032ee2",
+    "voices": 6,
+    "totalBytes": 476280,
+    "model": "speech-2.8-turbo",
+    "usageCharacters": 282,
+    "scope": "Six actual original neutral samples, independently decoded; not HyperKnow audio or a human listening/device equivalence result",
+    "rawResult": "data/qa/neutral-voice-delivery.json"
+  },
+  "initialFailure": {
+    "browser": {
+      "passed": 11,
+      "failed": 1,
+      "reason": "The test assumed sentenceIndex 0 instead of reading the current saved frozen unit. Corrected test reads the actual unit and index."
+    },
+    "fullBrowser": {
+      "passed": 177,
+      "failed": 1,
+      "reason": "A pending navigation save could overwrite the page selected by keyboard reading a prior reply. Deterministic delayed-save reproduction: 3 passed/1 failed; reading now waits for the original navigation queue and honors cancellation. Final focused four checks pass."
+    },
+    "design": "The first documentation validation used stale source/content baselines; regenerated inventory, current authored audit and content snapshot before final validation."
+  },
+  "productionRuntime": "117 has not been deployed. The separately verified 116 delivery is recorded in its own acceptance receipt.",
+  "remaining": [
+    "117 exact CI and stable production build",
+    "Full M1 reference states and complete course journeys",
+    "Original CSS/font/DPR assets and actual audio equivalence",
+    "Real mobile/assistive technology and human teacher review",
+    "Complete curriculum and M2-M7 including longitudinal teaching results"
+  ],
+  "designReceipt": {
+    "file": "doc/design/generated/design-validation.json",
+    "sha256": "df4d218ff7a1b883ad80816a509bc17f891feab33d9ebed01c9460f0213f257a",
+    "normalization": "UTF-8 with CRLF normalized to LF",
+    "sourceFiles": 395,
+    "offlineChecks": 10
+  }
+}
