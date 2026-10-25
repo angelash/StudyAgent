@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T09:17:46.751Z",
+  "specificationCommit": "6bb6372",
+  "sourceRevision": "0dd1d04dfb4f435484fa0d4dae12593332fa262f",
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/web/app/studio/classroom/board-step.tsx": "10b63c1f2d6814eb62c80b88dd47c23dfb8a21d29da41c3fa95c49384ffe4103",
+    "apps/web/app/studio/classroom/diagram.tsx": "c125661143b5378f6834abfc3b1c43eb819c8c8d8880667d52af5dc6566e0291",
+    "apps/web/app/studio/classroom/figure-reader.css": "7dbbbb6385bab2fa7c220e69258fb84902fe52ca429d0d7cd31121848e40bd1c",
+    "apps/web/app/studio/classroom/figure-reader.tsx": "efb55a5b352c6c61f9c85b23f283f02df95895a10d775c9194475836a5f675d0",
+    "apps/web/app/studio/classroom/reply-board.tsx": "d72fc647e42fa8b911060babc346737bb2ba03d233610705acb27131f0ed8d1a",
+    "apps/web/app/studio/classroom/tool-tour.css": "f0a64f226fc555908cba5f326314990c914cf0ebf68971ee5d8f5ee112966e6a",
+    "apps/web/app/studio/classroom/tool-tour.tsx": "cc41ee946e6bc4757093030372b71bd1f1c61a863396bdedf62c7636c7ffbbe1",
+    "apps/web/app/studio/classroom/voice-preview.tsx": "db2fe9efb4df6759c901eda7bb3b32687543ff96c2611f2077b245e61e58f03b",
+    "apps/web/app/studio/classroom/workbench.tsx": "7b7eaf38a97b839afdf49094f0f8b28e67a0ae1ee194aeb6db713a349c309dae",
+    "scripts/architecture/project-feature-definitions.cjs": "dae197a2b339878aa96e62bf4ad7bf467e236aff2261feb98ec91305a3cc2058",
+    "scripts/qa/run-source-course-browser.cjs": "7c3991d5f2049b7c38d4d579dab2399175fb7cf751d9f0286d5d89eff2cb5224",
+    "tests/e2e/classroom-tools.spec.ts": "e2d473658e790e0b232de92a2aa26ce3990b6feb7d18718f48a413f2f5209bed"
+  },
+  "passed": false,
+  "localPassed": true,
+  "status": "local-passed-awaiting-exact-ci-and-runtime",
+  "reports": {
+    "classroom-tools-browser-before-visual-fix.json": {
+      "sha256": "d88f253228a9ab8b80370dc701a73ad0a5dd3f476d8720d9d7e3fe3ffcbaa375",
+      "stats": {
+        "startTime": "2026-10-25T09:09:23.046Z",
+        "duration": 19372.469,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-tools-browser-final.json": {
+      "sha256": "3d27b35285c27b351c1c006df0af1cc5c0a4f43e981a78cda170ef9e742a57f0",
+      "stats": {
+        "startTime": "2026-10-25T09:16:30.130Z",
+        "duration": 24592.968,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-tools-browser-initial.json": {
+      "sha256": "c64050485df6ae198642b3deac7e8c4b981411e7547f5bea87b297dafa276a41",
+      "stats": {
+        "startTime": "2026-10-25T09:06:05.484Z",
+        "duration": 34283.597,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-tools-regression-before-anchor-refinement.json": {
+      "sha256": "cfb36b70ba2caa0b9b58bd8da8629243ae58fdc01afe59b0a4259736ec78bd17",
+      "stats": {
+        "startTime": "2026-10-25T09:11:07.587Z",
+        "duration": 262177.885,
+        "expected": 34,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "screenshots": {
+    "controlled-figure-1440.png": {
+      "sha256": "aef88cdd331a556c169af88bbf50f4a2013e1bc458a1f5165dce271bb3e4fc4b",
+      "width": 1440,
+      "height": 1000,
+      "visuallyReviewed": true
+    },
+    "curriculum-image-390.png": {
+      "sha256": "ec47ca9732dfa002ad764b299fd81ca94a5d32da713f40261c477464d8640c05",
+      "width": 390,
+      "height": 844,
+      "visuallyReviewed": true
+    },
+    "tour-history-1440.png": {
+      "sha256": "41e3a4defd8509cea451f7aa67ca467bad6e5c95c6bf3202657934906fce820c",
+      "width": 1440,
+      "height": 1000,
+      "visuallyReviewed": true
+    },
+    "tour-microphone-390.png": {
+      "sha256": "7708faf50932d567561c64c54cf42feb3e554fc457eb2aa6d94d1d6ae682e29f",
+      "width": 390,
+      "height": 844,
+      "visuallyReviewed": true
+    },
+    "tour-settings-880.png": {
+      "sha256": "091beb49036fee64769c1e48c9577e4d97770175452cae4d5b4748f731813464",
+      "width": 880,
+      "height": 887,
+      "visuallyReviewed": true
+    },
+    "tour-sound-768.png": {
+      "sha256": "92aeda4b0446e6ac5211e63eb0561d3ef422197954e79923561325d7561db965",
+      "width": 768,
+      "height": 1000,
+      "visuallyReviewed": true
+    },
+    "voice-settings-390.png": {
+      "sha256": "bd7c779da08da06198e3ef29fad847f1e038f80404ad79b789c7d5e75b7ee64e",
+      "width": 390,
+      "height": 844,
+      "visuallyReviewed": true
+    },
+    "voice-settings-768.png": {
+      "sha256": "c1ff5ca499a0aeb817f58a60316e9f079bccef2c42bedfe0c091648986fb17d1",
+      "width": 768,
+      "height": 1000,
+      "visuallyReviewed": true
+    },
+    "voice-settings-880.png": {
+      "sha256": "e8546076b2fb6d39aa69e2e3ec890ac845a69b37eca8d4f29177ebbeb38289c6",
+      "width": 880,
+      "height": 887,
+      "visuallyReviewed": true
+    }
+  },
+  "checks": {
+    "webTypes": true,
+    "isolatedProductionBuild": true,
+    "representativeClassroomBrowser": {
+      "passed": 34,
+      "failed": 0,
+      "retries": 0,
+      "note": "Before final skip-pill placement and SVG font refinement; overlap with final focused five must not be summed"
+    },
+    "finalFocusedBrowser": {
+      "passed": 5,
+      "failed": 0,
+      "retries": 0
+    },
+    "imageViewerCoversViewport": true,
+    "focusAndPrint": true,
+    "latePreviewAudioRejected": true,
+    "realVoiceListening": false,
+    "fullProductComplete": false
+  },
+  "initialFailures": [
+    "Initial focused run: 4 passed, 1 failed; fixture mistook the first lesson bitmap for an SVG. Corrected test to use the actual next-step bars.",
+    "All-five first pass did not detect a clipped viewport: visual review found board transform containing the reader. Added top-level portal and exact fullscreen bounds assertions; preserved clipped screenshot.",
+    "Visual review found centered skip pill covering the settings target at 880px. Moved skip to bottom only for an overlapping top target and tested non-overlap."
+  ],
+  "limits": [
+    "Observed original screenshots are bounded live references; no DPR, original font binary, full CSS/source or 100 percent parity proof.",
+    "Preview reads an already shown current frozen sentence; no pre-course generic voice sample. Synthetic WAV proves browser decode/play/stop, not real provider quality or original-platform audio.",
+    "Ordinary assistant durable tasks in113 and classroom multi-select in115 are specification only.",
+    "Complete whiteboard spatial layout, remaining reference states, full content/teacher/device/long-term gates and M1-M7 remain unfinished."
+  ],
+  "designValidation": {
+    "passed": true,
+    "sourceFiles": 361,
+    "markdownLinks": 2477,
+    "viewerChecks": 10
+  }
+}

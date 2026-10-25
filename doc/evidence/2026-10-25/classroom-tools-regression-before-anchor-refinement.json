@@ -1,0 +1,1334 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-tools.spec.ts",
+      "tests/e2e/classroom-boards.spec.ts",
+      "tests/e2e/classroom.spec.ts",
+      "tests/e2e/classroom-code.spec.ts",
+      "tests/e2e/classroom-turns.spec.ts",
+      "tests/e2e/classroom-captions.spec.ts",
+      "tests/e2e/classroom-visual.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/classroom-tools-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-boards.spec.ts",
+      "file": "classroom-boards.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16275,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:13.254Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-b6bdb1bea6a7d9fb8a7a",
+          "file": "classroom-boards.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:29.947Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-1468b198db4bd543493d",
+          "file": "classroom-boards.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:38.187Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-6a47dadb4786adbff4b8",
+          "file": "classroom-boards.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7152,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:45.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-292d56aa30ddc2fc4b2c",
+          "file": "classroom-boards.spec.ts",
+          "line": 84,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-captions.spec.ts",
+      "file": "classroom-captions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6271,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:52.979Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-90d0a2d5c6565a5056a5",
+          "file": "classroom-captions.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "muted English reading follows the same frozen units without requesting audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:11:59.256Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-f433034ae6fce815bbd9",
+          "file": "classroom-captions.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2537,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:04.905Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-82c41aa5cde583a1daef",
+          "file": "classroom-captions.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2566,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:07.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-b0d5ad3e9b20a13279fb",
+          "file": "classroom-captions.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "closing confirmation sends nothing; cancelling an in-flight acknowledgement can read its committed state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2267,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:10.022Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-85fe0d699e34939dea06",
+          "file": "classroom-captions.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1450,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:12.299Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-521043bca69aa8891512",
+          "file": "classroom-captions.spec.ts",
+          "line": 57,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-code.spec.ts",
+      "file": "classroom-code.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "code and input save, execute, survive whiteboard navigation and reload at three widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:13.761Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-1026581312eef8452afc",
+          "file": "classroom-code.spec.ts",
+          "line": 19,
+          "column": 5
+        },
+        {
+          "title": "a lost save acknowledgment and offline refresh retain exact local edits until the same command can recover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:18.660Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-fccf3fc1def24148dee7",
+          "file": "classroom-code.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "concurrent pages preserve a conflicting buffer and require an explicit choice before replacement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:23.061Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-f133148b4cb5da56469d",
+          "file": "classroom-code.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "errors, timeouts, stop and oversize programs have explicit states without truncation or unwanted reset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5259,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:28.273Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-8b5592b65f5eb084a7ed",
+          "file": "classroom-code.spec.ts",
+          "line": 55,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-tools.spec.ts",
+      "file": "classroom-tools.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "anchored tour visits actual controls, resizes and returns without issuing learning or voice requests",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:33.547Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88bef0337b6cd7029a2-262b49a2c9bdb7ba243a",
+          "file": "classroom-tools.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "phone tour exposes the real chat controls then restores the original board and survives unavailable storage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1471,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:35.609Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88bef0337b6cd7029a2-d83feaee145b83681281",
+          "file": "classroom-tools.spec.ts",
+          "line": 62,
+          "column": 5
+        },
+        {
+          "title": "controlled figures and curriculum images retain their content, contain focus and support reading and printing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3718,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:37.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88bef0337b6cd7029a2-ee1f27604c1b86780901",
+          "file": "classroom-tools.spec.ts",
+          "line": 75,
+          "column": 5
+        },
+        {
+          "title": "a failed curriculum image still has a readable alternative and a keyboard exit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2194,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:40.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88bef0337b6cd7029a2-437eeab22b3f5d16d348",
+          "file": "classroom-tools.spec.ts",
+          "line": 104,
+          "column": 5
+        },
+        {
+          "title": "voice samples decode actual audio, keep the selected voice and original progress, and cannot play after settings closes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2169,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:43.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88bef0337b6cd7029a2-aa8a2e3dbe10aa18e4ec",
+          "file": "classroom-tools.spec.ts",
+          "line": 113,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-turns.spec.ts",
+      "file": "classroom-turns.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:45.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-df2951c2eb1f03dff0ce",
+          "file": "classroom-turns.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14783,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:12:56.039Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-0da8bfc1cfae94017d96",
+          "file": "classroom-turns.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "all teaching modes show an editable request and keep the conventional model picker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26428,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:13:10.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-03a506c28b9587a75899",
+          "file": "classroom-turns.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "provider errors remain visible and retry preserves the chosen question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:13:37.265Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-2ae250932f26cf11ccbd",
+          "file": "classroom-turns.spec.ts",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "title": "a real learning-code user asks in their own approved course and resumes the same answer after refresh",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:13:49.006Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-b00dc9fa5da6ce34f7e3",
+          "file": "classroom-turns.spec.ts",
+          "line": 83,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-visual.spec.ts",
+      "file": "classroom-visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16100,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:13:56.240Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ad185b43f986768acd5-f154db3f67bed14c6e3a",
+          "file": "classroom-visual.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "failed and cancelled classroom image tasks retry their saved version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22329,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:14:12.347Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ad185b43f986768acd5-5f1c877622ceafa58509",
+          "file": "classroom-visual.spec.ts",
+          "line": 98,
+          "column": 5
+        },
+        {
+          "title": "lost image creation acknowledgement recovers the single saved task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16461,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:14:34.683Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ad185b43f986768acd5-8476db87b02cd02732a6",
+          "file": "classroom-visual.spec.ts",
+          "line": 118,
+          "column": 5
+        },
+        {
+          "title": "PDF preparation waits for selected image bytes and closing settings cancels a pending print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:14:51.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ad185b43f986768acd5-94742f996dc270e59e1b",
+          "file": "classroom-visual.spec.ts",
+          "line": 137,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom.spec.ts",
+      "file": "classroom.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:14:55.874Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-cc7311318ba17478d17e",
+          "file": "classroom.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7422,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:15:02.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1d2b231c99f680f32288",
+          "file": "classroom.spec.ts",
+          "line": 71,
+          "column": 5
+        },
+        {
+          "title": "question replies add safe board notes with page links, export and restored session rendering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3014,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:15:09.932Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1eac336599fede3fa4e2",
+          "file": "classroom.spec.ts",
+          "line": 106,
+          "column": 5
+        },
+        {
+          "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8718,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:15:12.952Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-2ca949facc19bdd43dd0",
+          "file": "classroom.spec.ts",
+          "line": 159,
+          "column": 5
+        },
+        {
+          "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1772,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T09:15:21.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-8c5bcbbda27cafe1f899",
+          "file": "classroom.spec.ts",
+          "line": 197,
+          "column": 5
+        }
+      ],
+      "suites": [
+        {
+          "title": "reference viewport and display scaling",
+          "file": "classroom.spec.ts",
+          "line": 224,
+          "column": 6,
+          "specs": [
+            {
+              "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3826,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-25T09:15:23.459Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ee123a1e90c2c71e0969-3621181cebe072becbfc",
+              "file": "classroom.spec.ts",
+              "line": 226,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T09:11:07.587Z",
+    "duration": 262177.885,
+    "expected": 34,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

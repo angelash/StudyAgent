@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`0683a85a9ed8b8af7685e16172241f9aa15d8f5d`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`0dd1d04dfb4f435484fa0d4dae12593332fa262f`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -272,17 +272,28 @@
 
 ## STUDIO-08 课堂控制、导出与移动交互
 
-**输入**：音色、倍速、字体、背景、显示面板和导出命令。
+**输入**：音色、倍速、字体、背景、显示面板、七步控件导览和导出命令。
 
-**处理与实现**：支持播放/暂停/停止、静音阅读、音色和倍速；持久化显示偏好；导出已读板书及插问Markdown、打印PDF；退出确认保存项目。
+**处理与实现**：支持播放/暂停/停止、静音阅读、音色选择和六档键盘语速滑杆。460px设置内音色选择与试听独立；试听复用已授权音轨接口，只读已展示冻结当前句，停止/关闭/卸载会中断请求和音频，不推进进度或改选音色。欢迎、七个真实控件高亮和结束页共用焦点围栏；滚动/窗口变化重算矩形，手机切到实际控件区域，关闭恢复原布局并保持暂停，背景不能触发录音或发送。受控SVG/课件图片共用完整标题、焦点恢复、遮罩/Esc退出与失败说明，内层点击不关闭；放大先暂停讲解，打印不含弹层或放大按钮。持久化偏好、已读板书及插问Markdown/PDF导出和退出项目保存继续保留。
 
-**输出**：可下载笔记与跨设备尺寸适配。
+**输出**：锚点导览、独立当前句试听、图形阅读、可下载笔记与跨设备尺寸适配。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：显示偏好存在浏览器本地；学习事实保存在服务端，导出只包含已揭示内容。
+**权限、失败与边界**：显示偏好在浏览器本地；导出只含已揭示内容。试听需先展示当前句，尚非课前通用样本；替身音轨只证播放交互。原字体/CSS、完整自由白板和真人声音对照仍待；不等于100%像素或整套教学验收。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/app/studio/classroom/tool-tour.tsx](../../../apps/web/app/studio/classroom/tool-tour.tsx)
+- [apps/web/app/studio/classroom/tool-tour.css](../../../apps/web/app/studio/classroom/tool-tour.css)
+- [apps/web/app/studio/classroom/figure-reader.tsx](../../../apps/web/app/studio/classroom/figure-reader.tsx)
+- [apps/web/app/studio/classroom/figure-reader.css](../../../apps/web/app/studio/classroom/figure-reader.css)
+- [apps/web/app/studio/classroom/voice-preview.tsx](../../../apps/web/app/studio/classroom/voice-preview.tsx)
+- [apps/web/app/studio/classroom/diagram.tsx](../../../apps/web/app/studio/classroom/diagram.tsx)
+- [apps/web/app/studio/classroom/board-step.tsx](../../../apps/web/app/studio/classroom/board-step.tsx)
+- [tests/e2e/classroom-tools.spec.ts](../../../tests/e2e/classroom-tools.spec.ts)
 
 ## STUDIO-09 自由主题白板预览与持久保存
 

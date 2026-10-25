@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
+  "sourceRevision": "0dd1d04dfb4f435484fa0d4dae12593332fa262f",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 327,
@@ -16,7 +16,7 @@
     "webPages": 26,
     "webRouteHandlers": 1,
     "apiTestFiles": 125,
-    "browserTestFiles": 21
+    "browserTestFiles": 22
   },
   "modules": [
     {
@@ -42793,6 +42793,7 @@
     "tests/e2e/classroom-code.spec.ts",
     "tests/e2e/classroom-practice.spec.ts",
     "tests/e2e/classroom-review.spec.ts",
+    "tests/e2e/classroom-tools.spec.ts",
     "tests/e2e/classroom-turns.spec.ts",
     "tests/e2e/classroom-visual.spec.ts",
     "tests/e2e/classroom.spec.ts",
