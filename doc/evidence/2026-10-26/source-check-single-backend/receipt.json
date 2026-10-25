@@ -39,5 +39,24 @@
     "failed": 0,
     "skipped": 43,
     "report": "full-api-before-cancel-repair.json"
+  },
+  "inheritedCancellationRepair": {
+    "revision": "21b6bd1",
+    "repair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
+    "sqlite": {
+      "passed": 50,
+      "failed": 0,
+      "http": 23,
+      "pure": 18,
+      "storage": 9
+    },
+    "postgres": {
+      "passed": 26,
+      "failed": 0,
+      "http": 23,
+      "nativeStorage": 3
+    },
+    "overlap": true,
+    "scope": "Current one-target API with the inherited generation cancellation repair; browser and exact CI remain pending."
   }
 }
