@@ -65,7 +65,7 @@ flowchart TB
 
 ## 4. 后端模块边界
 
-AppModule当前可达17个模块，包含AppModule与CoreModule；23个控制器接入运行。模块文件间存在复用依赖，不以目录数量计算独立服务。
+AppModule当前可达19个模块，包含AppModule与CoreModule；33个控制器接入运行。模块文件间存在复用依赖，不以目录数量计算独立服务。
 
 - `auth`、`students`：账号、会话、家庭授权与学习身份。
 - `content`、`question-workspace`：基础目录、题目三件套、导入与呈现。

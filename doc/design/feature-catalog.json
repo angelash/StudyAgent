@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
+  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -4375,6 +4375,7 @@
       "contracts": [
         "packages/contracts/src/studio.ts",
         "packages/contracts/src/classroom.ts",
+        "packages/contracts/src/classroom-choice.ts",
         "packages/contracts/src/course-project.ts"
       ],
       "tests": [
@@ -4383,6 +4384,9 @@
         "apps/api/src/modules/learning/classroom.integration.test.ts",
         "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
         "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+        "tests/e2e/classroom-choice.spec.ts",
         "apps/api/src/modules/learning/course-project.integration.test.ts",
         "tests/e2e/course-project.spec.ts",
         "tests/e2e/studio.spec.ts",
@@ -4443,6 +4447,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4529,6 +4536,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4573,7 +4583,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 26
+              "line": 27
             }
           ],
           "sourceFiles": [
@@ -4585,6 +4595,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4661,27 +4674,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 91
+              "line": 92
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 82
+              "line": 83
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 132
+              "line": 133
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 264
+              "line": 285
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 157
+              "line": 158
             }
           ],
           "sourceFiles": [
@@ -4701,6 +4714,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4786,7 +4802,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 228
+              "line": 249
             },
             {
               "name": "ClassroomTurnService.list",
@@ -4836,6 +4852,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4859,13 +4878,13 @@
             "/studio/projects",
             "/studio/source-courses"
           ],
-          "inputs": "questionId、selectedIndex/null、answered/skip/dont_know、提示level、requestKey、projectDraft",
-          "implementation": "微课182题与独立编写单元60题分开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见且成功重试清除旧错误。",
-          "outputs": "242个不同题目ID、逐级提示回执、具体复盘、旧版记录和项目草稿",
+          "inputs": "questionId、旧selectedIndex/null或classroom-choice-v2完整集合、answered/skip/dont_know、提示level、requestKey、projectDraft",
+          "implementation": "微课185题与独立编写单元60题分开；三个微课和一个单元核查含五项多选，精确集合评分与逐选项解释只在首答后公开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见；账号/冻结会话缓存原选择与完整提交，掉回执先读首答再重放同命令，明确拒绝保留副本，键盘限题目区域，图片全屏恢复原焦点。",
+          "outputs": "245个不同题目ID、单选/多选首答与逐项反馈、逐级提示回执、具体复盘、旧版记录和项目草稿",
           "collections": [
             "classroomSessions"
           ],
-          "limits": "题目待逐题教师审核与真人验证；3题和不同情境不代表心理测量齐备；仍为单选，不能替代主观理由、项目量规或直接推断稳定掌握。",
+          "limits": "题目待逐题教师审核与真人验证；3题和不同情境不代表心理测量齐备；四个代表性多选不能代表全课程已审核，不能替代主观理由、项目量规或直接推断稳定掌握。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4888,12 +4907,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 175
+              "line": 176
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 203
+              "line": 224
             }
           ],
           "sourceFiles": [
@@ -4905,6 +4924,9 @@
             "apps/api/src/modules/learning/classroom-practice-u3.ts",
             "apps/api/src/modules/learning/classroom-practice-u4.ts",
             "apps/api/src/modules/learning/classroom-practice-u5.ts",
+            "apps/api/src/modules/learning/classroom-choice-content.ts",
+            "packages/contracts/src/classroom-choice.ts",
+            "apps/web/app/studio/classroom/practice-draft.ts",
             "apps/web/app/studio/classroom/practice-panel.tsx",
             "apps/web/app/studio/classroom/practice-review.css",
             "apps/api/src/modules/learning/classroom.service.ts"
@@ -4915,6 +4937,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -4993,6 +5018,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5041,6 +5069,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5112,6 +5143,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5169,6 +5203,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5254,6 +5291,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5297,6 +5337,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5366,6 +5409,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5437,6 +5483,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5508,6 +5557,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5593,6 +5645,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5677,6 +5732,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5775,6 +5833,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -5831,6 +5892,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6035,6 +6099,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6188,6 +6255,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6397,6 +6467,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6531,6 +6604,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6637,6 +6713,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6750,6 +6829,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -6857,6 +6939,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",
@@ -7068,6 +7153,9 @@
             "apps/api/src/modules/learning/classroom.integration.test.ts",
             "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
             "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
             "apps/api/src/modules/learning/course-project.integration.test.ts",
             "tests/e2e/course-project.spec.ts",
             "tests/e2e/studio.spec.ts",

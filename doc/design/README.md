@@ -4,7 +4,7 @@
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
-113已在开发候选接入普通助教持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。本册源码基线为c6e12e9；CI和实际守护运行状态以收据为准，不以设计生成通过替代发布。
+113已在开发候选接入普通助教持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。本册应用源码为b595514，校验基线为3c938a4（115业务与最终QA候选）；CI和实际守护运行状态以收据为准，不以设计生成通过替代发布。
 
 ## 阅读入口
 
@@ -39,7 +39,7 @@
 
 - [全部接口](generated/api-reference.md)：335个源码路由声明中，当前正常接入314个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
 - [页面职责](generated/page-reference.md)：26个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与295个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [领域集合与297个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构
@@ -86,3 +86,5 @@ npm run qa:docs
 第一步从TypeScript AST提取实际模块依赖、路由、服务签名、集合与契约；第二步生成详细设计与离线浏览器，将人工维护的功能解释与源码交叉核对，发现缺失文件、未接入接口或未覆盖的当前API时失败。内容审计需要当前API编译产物；仅重新生成结构和功能说明时，不必重建服务。验证脚本使用已安装的Playwright Chromium，不启动API或读取家庭数据库。
 
 功能叙述维护于 [project-feature-definitions.cjs](../../scripts/architecture/project-feature-definitions.cjs)，查阅页模板维护于 [project-design-viewer.html](../../scripts/architecture/project-design-viewer.html)。概要与核心算法文档需随业务变化人工核对，自动提取不能代替设计审查。
+
+115候选新增课堂单选/多选、提交后逐项反馈和按账号/冻结会话保存的原选择/提交恢复。当前245题含三个微课多选和一个单元多选，自动化与教师审核分开；详见[115规格](../product/115-classroom-multiple-choice-and-submitted-feedback.md)。113已完成精确CI与守护交付，115当前运行状态以其最终收据为准。

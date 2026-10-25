@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T12:24:16.811Z",
+  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
+  "applicationSourceRevision": "b5955149ec30014d9e24a3c97c48b048d8a013a9",
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "f344775d59f598dfffd5a65abfa3a9750d94567dfe8d945d6d99d3b2ab331ac3",
+    "apps/api/src/modules/learning/classroom-choice-content.ts": "fa29eab559c422fa68864ef9243daa7f9363eaa7ce9718fd89c2a9d86fddceea",
+    "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts": "1b7238e6b4487e981b57244fd1cb69831f17578a8e47b4ec928aad62740a84cf",
+    "apps/api/src/modules/learning/classroom-choice.integration.test.ts": "2cebb4b4b697953d9f8d49ae566e33a00ea0e3d32c9ec67b3f344968baeb7555",
+    "apps/api/src/modules/learning/classroom-curriculum.ts": "4e26d2fcfd7bfd11678ca1bad6d7e61363df8059196ea11db859d53812a827c1",
+    "apps/api/src/modules/learning/classroom-practice-content.test.ts": "1f082b9086d2aa1fa92df9775c6896adc451049d98294ffb97306bac6850f480",
+    "apps/api/src/modules/learning/classroom-practice-content.ts": "9790afda5847ba9602b570cb2d941e5013d3e185bd02f4e65e22b980de75379c",
+    "apps/api/src/modules/learning/classroom-turn.service.ts": "74f79942a31cea6e2d011fe0724526dee49319516a7b18d7354596d405297ce0",
+    "apps/api/src/modules/learning/classroom-unit-checks.test.ts": "7befa9f7f96655fe88957bbd58a5efab40ba076d60c959250ab8f9f4fba4bf0c",
+    "apps/api/src/modules/learning/classroom-unit-checks.ts": "20d506272025b5ccb29db1512f1fc024f7e7cbca07effa8ec6d31a0907855588",
+    "apps/api/src/modules/learning/classroom.integration.test.ts": "5f991535bad0135b96f9174ef66fcea1344091ff3567b29210a91e32624f7601",
+    "apps/api/src/modules/learning/classroom.service.ts": "49fc589eb383e89fe6ee2110747cfab037fbb0226f9e5b6ed0525fbddd7515ed",
+    "apps/web/app/studio/classroom/practice-draft.ts": "0ecf7be4ef644700d7128a492fbe1b275f12194ac7cde2a99b11a8a9ecdf22c6",
+    "apps/web/app/studio/classroom/practice-panel.tsx": "f43fcf70648577a3a53a4c721c2df462e9dd25f8bdc5198a2fc541b863268b4c",
+    "apps/web/app/studio/classroom/practice-review.css": "c39d7acf5b32823e47ea016d615cbf747241dab7ea25e0050386ec0ea527b37c",
+    "apps/web/app/studio/classroom/workbench.tsx": "ac9ae90ea202a4b635a6b28785217fdbc626ef7ab76a821699f65bb7ec2d298e",
+    "doc/product/116-durable-guidance-model-enrichment-and-original-plan.md": "b7cf77e2b28050b392adfecebad2f7cbe66db533d722e7e9a35c9aef7feba27a",
+    "packages/contracts/src/classroom-choice.ts": "33341503e2f1b480c6fed8f869c08cfd968814e8885eb45d736f13004c5e2ad9",
+    "packages/contracts/src/classroom.ts": "cf2c4e7102282caea65a91ebfb2ca9b02598ec19cfe446f6b9a80b7f2c3ea918",
+    "packages/contracts/src/index.ts": "49766aa1d2c357d1fc9a925126e80749fdfc78a017a61836f8ace7dd929b57e2",
+    "scripts/architecture/project-content-snapshot.cjs": "a11fefc936dc36c6ac228dfa3fb5dd2f9bc87b5de3e11d4d8803fa978fe7bd68",
+    "scripts/architecture/project-feature-definitions.cjs": "b4394706a60bde75d71213ab4b541cc7b4c0dffe30b9b9c3a159e94c6318883e",
+    "scripts/qa/run-classroom-choice-postgres.cjs": "ee2ea3e46ae4d0a085759a71d182bc848576f3640449ca5493c53f537affe0bc",
+    "scripts/qa/run-source-course-browser.cjs": "ede6a730a6b89d38a6b396c7c9f58963de3c6d956f043abb59dd5f7d919ab19b",
+    "tests/e2e/classroom-choice.spec.ts": "7b0db9012329945697d4e2e137452374f6951505feb131963e9b85117cbd4f90",
+    "tests/e2e/classroom-practice.spec.ts": "d18d3f4e2ae84128cf0d7adae976c6f77c8d7db4c7df0c6040bcd51b91e6e3a4",
+    "tests/e2e/classroom-review.spec.ts": "06b1b6be0af467c137b3761d7368b4043cbf15f505789d65e36d9fa2c77e1638",
+    "tests/e2e/classroom.spec.ts": "7f5bd340d73305690c5e0acf79a4d878a30087e37a4b7aef9447dba87bf29237"
+  },
+  "specificationCommits": [
+    "e1d3969"
+  ],
+  "localPassed": true,
+  "passed": false,
+  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "reports": {
+    "classroom-choice-sqlite-initial.json": {
+      "sha256": "f65992e8021d6f1f5e827005079392a650fcc417d767dedb47247c9d8e972dc5",
+      "passed": 15,
+      "failed": 2,
+      "skipped": 0,
+      "total": 17
+    },
+    "classroom-choice-content-initial.json": {
+      "sha256": "5f96840f147690abeb6d6526c18d387e8c306e7766ff0a0e0c8b270744ebb8b1",
+      "passed": 39,
+      "failed": 1,
+      "skipped": 0,
+      "total": 40
+    },
+    "classroom-choice-content-final.json": {
+      "sha256": "acf4155a460ca04cf413899b146b00d4e6061ed2189ac03fc075b6425af8ade6",
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "total": 40
+    },
+    "classroom-choice-sqlite-expanded.json": {
+      "sha256": "1bcd5ad46c93931932739ac290c9d2b933fed5339a40e3fb47e0d4a24c8d3c53",
+      "passed": 10,
+      "failed": 1,
+      "skipped": 1,
+      "total": 12
+    },
+    "classroom-choice-sqlite-final.json": {
+      "sha256": "605d1c75a2bd80445f48a2590737628258cf5374b6701ca8bd14b192506ccfea",
+      "passed": 45,
+      "failed": 0,
+      "skipped": 1,
+      "total": 46
+    },
+    "classroom-choice-postgres-initial.json": {
+      "sha256": "3b93f6a7d70333d8cde268217dec1806d00d419c6da957fa58227206135ff845",
+      "passed": 9,
+      "failed": 3,
+      "skipped": 0,
+      "total": 12
+    },
+    "classroom-choice-postgres-before-final.json": {
+      "sha256": "4b8e81945941f55882e582f60627c4fa99b4a06ab99a5eaeb5c9609aad0b135a",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "total": 12
+    },
+    "classroom-choice-postgres.json": {
+      "sha256": "272fb6dabb4851713a80ff293c6fffb0d286e1a29fa27026edca2adb9e970138",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "total": 12
+    },
+    "classroom-choice-browser-initial.json": {
+      "sha256": "57087c54ab8f36406095740412334054efdf567bd0318d88de4e59cf123b6b37",
+      "stats": {
+        "startTime": "2026-10-25T11:43:53.362Z",
+        "duration": 26412.074999999997,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-choice-browser-before-layout.json": {
+      "sha256": "149951524f438c0439b9b08c003d54e5f71bd2ce778dc30cbaba40cb5f0431ec",
+      "stats": {
+        "startTime": "2026-10-25T11:44:59.825Z",
+        "duration": 24231.583000000002,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-choice-browser-account-initial.json": {
+      "sha256": "f7c8163568f1c10c222614678919684ba877b5a07a57e60b67b2d983c6570342",
+      "stats": {
+        "startTime": "2026-10-25T11:49:36.309Z",
+        "duration": 47484.583999999995,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-choice-browser.json": {
+      "sha256": "58f5c2afbbfd6384cbfe48c70ede1d64975810707f74b9da8bd397c33871f657",
+      "stats": {
+        "startTime": "2026-10-25T11:51:18.745Z",
+        "duration": 33521.878,
+        "expected": 14,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-choice-full-api.json": {
+      "sha256": "f0497f4bcd9e717d247241c947547723c422f6891c685cd8c6cb1542034275ab",
+      "passed": 1152,
+      "failed": 0,
+      "skipped": 38,
+      "total": 1190
+    },
+    "classroom-choice-full-browser-initial.json": {
+      "sha256": "31d353ac6478f863991c6821949bf8f4579e08a9648188fb98aee48eee2fef4e",
+      "stats": {
+        "startTime": "2026-10-25T11:52:50.665Z",
+        "duration": 897565.369,
+        "expected": 154,
+        "skipped": 0,
+        "unexpected": 3,
+        "flaky": 0
+      }
+    },
+    "classroom-choice-full-browser.json": {
+      "sha256": "ed5361183ee3c1ae61670bf1b72b983e93e9bbae9c04bfe3e77b15a9c95b7882",
+      "stats": {
+        "startTime": "2026-10-25T12:08:37.223Z",
+        "duration": 800310.319,
+        "expected": 157,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "screens": {
+    "classroom-choice/assistant-1440.png": "bed1059280ffb2a4bd4b94d5692a2263aaf67d612c460a0f9cc2cda9876dd688",
+    "classroom-choice/assistant-390.png": "378b5008f8b81a66d658e1be088515c0d2c69d5a6c95ec58c33dc52c4898c67a",
+    "classroom-choice/assistant-768.png": "3483f0d88ee4c182439f144ae9479f81797ec544e7a107662f45016487181970",
+    "classroom-choice/multiple-1440.png": "334fc59bd7ee4d6d0fb1549db62535d4551c243dc164afbe632f13fc9227254e",
+    "classroom-choice/multiple-390.png": "d98d3b380231b75f10fb4f60324e0e07ad855b4d339b2710b1e5ee471dc0356f",
+    "classroom-choice/multiple-768.png": "36ff762d35df58b22dde5549a50b2489222c8b0c9f632f968c468436789f5bd0"
+  },
+  "initialArtifacts": {
+    "classroom-choice/initial-failures/acknowledgement-initial/classroom-choice-lost-ackn-3235c-ut-creating-another-request/error-context.md.gz": "f73ba9cc5b3228cc7bf13f07ab2a4a6c22803367cebf56603c957c13d8684c76",
+    "classroom-choice/initial-failures/acknowledgement-initial/classroom-choice-lost-ackn-3235c-ut-creating-another-request/test-failed-1.png": "113db17b3c04cdb0c081e4f446f56cc9311363f1fa455232456e478d45afe074",
+    "classroom-choice/initial-failures/acknowledgement-initial/classroom-choice-lost-ackn-3235c-ut-creating-another-request/trace.zip": "03fbec599d083f14ea3ec0cc8fa20122d542eac45b6f71c2879ef1934a1fd66f",
+    "classroom-choice/initial-failures/account-assertion-initial/classroom-choice-another-a-5345c-r-open-its-frozen-classroom/error-context.md.gz": "eb8276b4ba84a2c12a0c76f24992665989e28aad9495a099dc0205c57cad8107",
+    "classroom-choice/initial-failures/account-assertion-initial/classroom-choice-another-a-5345c-r-open-its-frozen-classroom/test-failed-1.png": "546c3ade05a1445d5cbd6f4ef208f8098d45f1d1dc39d03dead6ed9c623bc357",
+    "classroom-choice/initial-failures/account-assertion-initial/classroom-choice-another-a-5345c-r-open-its-frozen-classroom/trace.zip": "a25fddde10d140195dcc65377dd9904eda0bfabfc6a377f05d418f7c5de372a6",
+    "classroom-choice/initial-failures/full-initial/answer-journeys-practice-s-97303--submit-and-historical-read/error-context.md.gz": "be5af9949b02d1f99a646cd8d51e0ff4438ddba277e3a070d69dddab6e5929a6",
+    "classroom-choice/initial-failures/full-initial/answer-journeys-practice-s-97303--submit-and-historical-read/test-failed-1.png": "93d3812bcde85eab017a09975162db6a56a543d86b4faa955fe4e338ed42d768",
+    "classroom-choice/initial-failures/full-initial/answer-journeys-practice-s-97303--submit-and-historical-read/trace.zip": "adadc90c9bbdc60d4810e82a2906dba31b79052fe7c8a3f2e17e1d8d26dd76ef",
+    "classroom-choice/initial-failures/full-initial/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/error-context.md.gz": "6f04cf8c968d7dac9933395595a2323346df46d5332cd717dbba9b7be827ac50",
+    "classroom-choice/initial-failures/full-initial/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/test-failed-1.png": "b16ba732786115a2a2ba1bc768dc3843ea6e46dd8a27227e334a37d0175ded79",
+    "classroom-choice/initial-failures/full-initial/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/trace.zip": "c2833ac89bf3cf38688b4fe8af084a8fb905a3b27b1e020ceb120f409e51a419",
+    "classroom-choice/initial-failures/full-initial/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/error-context.md.gz": "761025f912879ecda2041841ff74aee144b1a14f6d78f4a59803b4d22ce0c07e",
+    "classroom-choice/initial-failures/full-initial/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/test-failed-1.png": "8a53ea30da93d8ae3effb5782181ce306a2e8f3dd30165dd4314565545e6cca2",
+    "classroom-choice/initial-failures/full-initial/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/trace.zip": "405f494a000264618e64ce801c347fe8d4a90af7d70958f400ad209e5bd68685"
+  },
+  "knownInitialFailures": [
+    "Initial scalar and invalid-disposition assertions exposed compatibility expectations; original initial report retained.",
+    "Adding three authored micro-lesson questions required updating old fixed-count assertions; new total is 185 micro-lesson plus 60 unit-check questions.",
+    "Two actual PostgreSQL writers may receive a serialization conflict. Tests now verify the explicit same-command retry and one immutable first answer instead of requiring every competing first HTTP request to return 201.",
+    "An unavailable historical key modified by a previous synthetic test was reused by another test; isolated its lesson setup and retained the original failure.",
+    "An acknowledgement-drop route was removed before its pending callback had aborted. The test waits for the enabled recovery action before removing the route; original trace is retained.",
+    "An exact text locator included the adjacent retry button. The account test now asserts the actual error region; original screenshot and trace retained.",
+    "A subsequent isolated rebuild was refused while the preceding Web process was still exiting. No live build was replaced; rerun occurred after checking listener and process ownership.",
+    "Two older classroom browser tests expected exactly three/five questions and the former image wrapper; they now check the expanded authored sets and shared image reader.",
+    "First full browser run includes a practice-stepwise chunk fetch failing with Chromium net::ERR_NO_BUFFER_SPACE while full API tests were also running. Trace and rerun outcome must remain explicit."
+  ],
+  "boundaries": [
+    "This batch covers classroom selection, submitted feedback, original-command recovery and four independently authored multiple-choice examples. It does not complete all M1-M7 or all 72 requirements.",
+    "All 245 authored classroom items still require teacher review; four representative multiple-choice items do not prove calibrated assessment validity or all-course parity.",
+    "Exact original CSS, fonts, DPR, all reference states, real voices, devices, human accessibility and longitudinal teaching efficacy remain separate gates.",
+    "Observed reference images and behavior are archived separately; local screenshots do not establish a pixel completion percentage.",
+    "Guidance model enrichment is only the next committed specification 116; no 116 business is included in this release."
+  ]
+}

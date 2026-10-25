@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
+  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 335,
@@ -10,13 +10,13 @@
     "activeModules": 19,
     "activeControllers": 33,
     "apiClasses": 133,
-    "apiFunctions": 376,
+    "apiFunctions": 377,
     "domainCollections": 92,
-    "contractTypes": 295,
+    "contractTypes": 297,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 128,
-    "browserTestFiles": 23
+    "apiTestFiles": 130,
+    "browserTestFiles": 24
   },
   "modules": [
     {
@@ -13004,7 +13004,7 @@
         {
           "name": "enrichDiagnosticPlan",
           "line": 503,
-          "signature": "enrichDiagnosticPlan(plan: DiagnosticGuidancePlan, context: unknown): Promise<{\n    status: 'available' | 'unavailable' | 'rejected';\n    value?: { summary: string; activities: Array<{ actionId: string; activity: string; evidenceIds: string[] }> };\n  }>",
+          "signature": "enrichDiagnosticPlan(plan: DiagnosticGuidancePlan, context: unknown): Promise<{\r\n    status: 'available' | 'unavailable' | 'rejected';\r\n    value?: { summary: string; activities: Array<{ actionId: string; activity: string; evidenceIds: string[] }> };\r\n  }>",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -19564,7 +19564,7 @@
     {
       "name": "ClassroomService",
       "file": "apps/api/src/modules/learning/classroom.service.ts",
-      "line": 21,
+      "line": 22,
       "decorators": [
         {
           "name": "Injectable",
@@ -19592,7 +19592,7 @@
       "methods": [
         {
           "name": "catalog",
-          "line": 26,
+          "line": 27,
           "signature": "catalog(user: InMemoryUserAccount): ClassroomCatalog",
           "access": "public",
           "decorators": [],
@@ -19602,7 +19602,7 @@
         },
         {
           "name": "record",
-          "line": 50,
+          "line": 51,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -19613,7 +19613,7 @@
         },
         {
           "name": "view",
-          "line": 58,
+          "line": 59,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
@@ -19625,7 +19625,7 @@
         },
         {
           "name": "get",
-          "line": 82,
+          "line": 83,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -19636,7 +19636,7 @@
         },
         {
           "name": "hintLevels",
-          "line": 84,
+          "line": 85,
           "signature": "hintLevels(row: ClassroomSessionRecord, questionId: string)",
           "access": "private",
           "decorators": [],
@@ -19644,7 +19644,7 @@
         },
         {
           "name": "open",
-          "line": 91,
+          "line": 92,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19659,7 +19659,7 @@
         },
         {
           "name": "progress",
-          "line": 132,
+          "line": 133,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19670,7 +19670,7 @@
         },
         {
           "name": "upgradePresentation",
-          "line": 157,
+          "line": 158,
           "signature": "upgradePresentation(user:InMemoryUserAccount, id:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -19682,7 +19682,7 @@
         },
         {
           "name": "answer",
-          "line": 175,
+          "line": 176,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19693,7 +19693,7 @@
         },
         {
           "name": "hint",
-          "line": 203,
+          "line": 224,
           "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -19705,7 +19705,7 @@
         },
         {
           "name": "ask",
-          "line": 228,
+          "line": 249,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -19720,7 +19720,7 @@
         },
         {
           "name": "narration",
-          "line": 264,
+          "line": 285,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -31209,51 +31209,57 @@
       "signature": "knowledgeMaterialCoverage(atom: KnowledgeAtom, candidates: MeasurementItem[]): KnowledgeMaterialCoverage"
     },
     {
+      "file": "apps/api/src/modules/learning/classroom-choice-content.ts",
+      "name": "freezeMultipleChoice",
+      "line": 33,
+      "signature": "freezeMultipleChoice(id: string, choice: Choice, title: string)"
+    },
+    {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "step",
-      "line": 114,
+      "line": 115,
       "signature": "step(id: string, phase: ClassroomStep['phase'], title: string, narration: string, diagram?: ClassroomDiagram, notes?: string[]): ClassroomStep"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomCourse",
-      "line": 251,
+      "line": 260,
       "signature": "classroomCourse(): ClassroomCourse"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomLesson",
-      "line": 252,
+      "line": 261,
       "signature": "classroomLesson(id: string): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomAnswerKey",
-      "line": 258,
+      "line": 267,
       "signature": "classroomAnswerKey(id: string)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomHintKeys",
-      "line": 259,
+      "line": 268,
       "signature": "classroomHintKeys(id: string)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomFingerprint",
-      "line": 260,
+      "line": 269,
       "signature": "classroomFingerprint(lesson: ClassroomLesson)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "classroomTeachingFingerprint",
-      "line": 261,
+      "line": 270,
       "signature": "classroomTeachingFingerprint(lesson: ClassroomLesson)"
     },
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "curriculumClassroomLesson",
-      "line": 266,
+      "line": 275,
       "signature": "curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined"
     },
     {
@@ -34316,9 +34322,23 @@
       ]
     },
     {
-      "name": "ClassroomQuestion",
+      "name": "ClassroomSelectionMode",
       "file": "packages/contracts/src/classroom.ts",
       "line": 11,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "ClassroomAnswerDisposition",
+      "file": "packages/contracts/src/classroom.ts",
+      "line": 12,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "ClassroomQuestion",
+      "file": "packages/contracts/src/classroom.ts",
+      "line": 13,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34340,6 +34360,11 @@
           "name": "hint",
           "optional": false,
           "type": "string"
+        },
+        {
+          "name": "selectionMode",
+          "optional": true,
+          "type": "ClassroomSelectionMode"
         },
         {
           "name": "hintCount",
@@ -34371,7 +34396,7 @@
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 14,
+      "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34439,7 +34464,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 19,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34467,7 +34492,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 20,
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34500,7 +34525,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 22,
+      "line": 25,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34548,7 +34573,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 24,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34570,6 +34595,21 @@
           "name": "skipped",
           "optional": false,
           "type": "boolean"
+        },
+        {
+          "name": "selectedIndices",
+          "optional": true,
+          "type": "number[]"
+        },
+        {
+          "name": "correctIndices",
+          "optional": true,
+          "type": "number[]"
+        },
+        {
+          "name": "optionExplanations",
+          "optional": true,
+          "type": "string[]"
         },
         {
           "name": "explanation",
@@ -34606,7 +34646,7 @@
     {
       "name": "ClassroomHintReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 26,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34634,7 +34674,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 27,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34677,7 +34717,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 30,
+      "line": 34,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34805,14 +34845,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 39,
+      "line": 43,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 42,
+      "line": 46,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -34840,7 +34880,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 47,
+      "line": 51,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -43877,6 +43917,8 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+    "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
     "apps/api/src/modules/learning/classroom-code.integration.test.ts",
     "apps/api/src/modules/learning/classroom-practice-content.test.ts",
     "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
@@ -43924,6 +43966,7 @@
     "tests/e2e/assistant-conversations.spec.ts",
     "tests/e2e/classroom-boards.spec.ts",
     "tests/e2e/classroom-captions.spec.ts",
+    "tests/e2e/classroom-choice.spec.ts",
     "tests/e2e/classroom-code.spec.ts",
     "tests/e2e/classroom-practice.spec.ts",
     "tests/e2e/classroom-review.spec.ts",

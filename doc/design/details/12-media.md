@@ -1,6 +1,6 @@
 # 12 作答图片、录音与受控媒体 — 详细设计
 
-源码基线：`c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0`。角色：学生、监护人、授权复核教师。
+源码基线：`3c938a4f1b3e85970cb78f8543d381afe2c2f1d8`。角色：学生、监护人、授权复核教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/admin/reviews`。
 

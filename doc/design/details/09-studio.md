@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`3c938a4f1b3e85970cb78f8543d381afe2c2f1d8`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -18,6 +18,7 @@
 
 - [packages/contracts/src/studio.ts](../../../packages/contracts/src/studio.ts)
 - [packages/contracts/src/classroom.ts](../../../packages/contracts/src/classroom.ts)
+- [packages/contracts/src/classroom-choice.ts](../../../packages/contracts/src/classroom-choice.ts)
 - [packages/contracts/src/course-project.ts](../../../packages/contracts/src/course-project.ts)
 
 ## 关联验证
@@ -29,6 +30,9 @@
 - [apps/api/src/modules/learning/classroom.integration.test.ts](../../../apps/api/src/modules/learning/classroom.integration.test.ts)
 - [apps/api/src/modules/learning/classroom-unit-checks.test.ts](../../../apps/api/src/modules/learning/classroom-unit-checks.test.ts)
 - [apps/api/src/modules/learning/classroom-practice-content.test.ts](../../../apps/api/src/modules/learning/classroom-practice-content.test.ts)
+- [apps/api/src/modules/learning/classroom-choice.integration.test.ts](../../../apps/api/src/modules/learning/classroom-choice.integration.test.ts)
+- [apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts](../../../apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts)
+- [tests/e2e/classroom-choice.spec.ts](../../../tests/e2e/classroom-choice.spec.ts)
 - [apps/api/src/modules/learning/course-project.integration.test.ts](../../../apps/api/src/modules/learning/course-project.integration.test.ts)
 - [tests/e2e/course-project.spec.ts](../../../tests/e2e/course-project.spec.ts)
 - [tests/e2e/studio.spec.ts](../../../tests/e2e/studio.spec.ts)
@@ -112,7 +116,7 @@
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:26](../../../apps/api/src/modules/learning/classroom.service.ts#L26)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:27](../../../apps/api/src/modules/learning/classroom.service.ts#L27)。
 
 ## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
@@ -136,11 +140,11 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:82](../../../apps/api/src/modules/learning/classroom.service.ts#L82)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:132](../../../apps/api/src/modules/learning/classroom.service.ts#L132)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:264](../../../apps/api/src/modules/learning/classroom.service.ts#L264)。
-- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:157](../../../apps/api/src/modules/learning/classroom.service.ts#L157)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:92](../../../apps/api/src/modules/learning/classroom.service.ts#L92)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:83](../../../apps/api/src/modules/learning/classroom.service.ts#L83)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:133](../../../apps/api/src/modules/learning/classroom.service.ts#L133)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:285](../../../apps/api/src/modules/learning/classroom.service.ts#L285)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:158](../../../apps/api/src/modules/learning/classroom.service.ts#L158)。
 
 **补充实现文件**：
 
@@ -176,7 +180,7 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:228](../../../apps/api/src/modules/learning/classroom.service.ts#L228)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:249](../../../apps/api/src/modules/learning/classroom.service.ts#L249)。
 - `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:64](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L64)。
 - `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:68](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L68)。
 - `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:70](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L70)。
@@ -204,15 +208,15 @@
 
 ## STUDIO-06 全微课练习、逐级帮助与复盘
 
-**输入**：questionId、selectedIndex/null、answered/skip/dont_know、提示level、requestKey、projectDraft。
+**输入**：questionId、旧selectedIndex/null或classroom-choice-v2完整集合、answered/skip/dont_know、提示level、requestKey、projectDraft。
 
-**处理与实现**：微课182题与独立编写单元60题分开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见且成功重试清除旧错误。
+**处理与实现**：微课185题与独立编写单元60题分开；三个微课和一个单元核查含五项多选，精确集合评分与逐选项解释只在首答后公开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见；账号/冻结会话缓存原选择与完整提交，掉回执先读首答再重放同命令，明确拒绝保留副本，键盘限题目区域，图片全屏恢复原焦点。
 
-**输出**：242个不同题目ID、逐级提示回执、具体复盘、旧版记录和项目草稿。
+**输出**：245个不同题目ID、单选/多选首答与逐项反馈、逐级提示回执、具体复盘、旧版记录和项目草稿。
 
 **状态与持久化**：`classroomSessions`
 
-**权限、失败与边界**：题目待逐题教师审核与真人验证；3题和不同情境不代表心理测量齐备；仍为单选，不能替代主观理由、项目量规或直接推断稳定掌握。
+**权限、失败与边界**：题目待逐题教师审核与真人验证；3题和不同情境不代表心理测量齐备；四个代表性多选不能代表全课程已审核，不能替代主观理由、项目量规或直接推断稳定掌握。
 
 **关联接口**：
 
@@ -221,8 +225,8 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:175](../../../apps/api/src/modules/learning/classroom.service.ts#L175)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:203](../../../apps/api/src/modules/learning/classroom.service.ts#L203)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:176](../../../apps/api/src/modules/learning/classroom.service.ts#L176)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:224](../../../apps/api/src/modules/learning/classroom.service.ts#L224)。
 
 **补充实现文件**：
 
@@ -234,6 +238,9 @@
 - [apps/api/src/modules/learning/classroom-practice-u3.ts](../../../apps/api/src/modules/learning/classroom-practice-u3.ts)
 - [apps/api/src/modules/learning/classroom-practice-u4.ts](../../../apps/api/src/modules/learning/classroom-practice-u4.ts)
 - [apps/api/src/modules/learning/classroom-practice-u5.ts](../../../apps/api/src/modules/learning/classroom-practice-u5.ts)
+- [apps/api/src/modules/learning/classroom-choice-content.ts](../../../apps/api/src/modules/learning/classroom-choice-content.ts)
+- [packages/contracts/src/classroom-choice.ts](../../../packages/contracts/src/classroom-choice.ts)
+- [apps/web/app/studio/classroom/practice-draft.ts](../../../apps/web/app/studio/classroom/practice-draft.ts)
 - [apps/web/app/studio/classroom/practice-panel.tsx](../../../apps/web/app/studio/classroom/practice-panel.tsx)
 - [apps/web/app/studio/classroom/practice-review.css](../../../apps/web/app/studio/classroom/practice-review.css)
 
