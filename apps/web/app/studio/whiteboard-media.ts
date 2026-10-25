@@ -42,7 +42,7 @@ export async function prepareWhiteboardExport(board: StudioWhiteboard, presentat
       const buffer = await context.decodeAudioData(await audio.arrayBuffer());
       assertWhiteboardActive(signal); buffers.push(buffer);
     }
-    const timeline = whiteboardTimeline(presentation, context ? buffers.map(buffer => buffer.duration * 1000) : undefined, speed);
+    const timeline = whiteboardTimeline(presentation, context ? buffers.map(buffer => buffer.duration * 1000) : undefined, speed, context ? 120 : 0);
     return { timeline, context, buffers, close: async () => { signal.removeEventListener('abort', abort); await close(); } };
   } catch (error) { signal.removeEventListener('abort', abort); await close(); throw error; }
 }
@@ -55,6 +55,8 @@ export async function recordWhiteboardVideo(canvas: HTMLCanvasElement, prepared:
   if (!mimeType) throw new Error('当前浏览器没有可用的 WebM 编码器。');
   const { context, buffers, timeline } = prepared;
   const destination = context?.createMediaStreamDestination();
+  const keepAlive = context && destination ? context.createConstantSource() : null;
+  if (keepAlive && destination) { keepAlive.offset.value = 0; keepAlive.connect(destination); keepAlive.start(); }
   const capture = canvas.captureStream(24);
   const stream = new MediaStream([...capture.getVideoTracks(), ...(destination?.stream.getAudioTracks() ?? [])]);
   const sources: AudioBufferSourceNode[] = [], chunks: Blob[] = [];
@@ -83,7 +85,8 @@ export async function recordWhiteboardVideo(canvas: HTMLCanvasElement, prepared:
         if (recordingFailure) { signal.removeEventListener('abort', abort); reject(recordingFailure); return; }
         const elapsed = context ? (context.currentTime - audioOrigin) * 1000 : performance.now() - clockOrigin;
         const entry = timeline.entries.find(unit => unit.toMs > elapsed) ?? timeline.entries[timeline.entries.length - 1];
-        draw(entry, Math.min(1, Math.max(0, (elapsed - entry.fromMs) / (entry.toMs - entry.fromMs))));
+        draw(elapsed >= entry.toMs ? { ...entry, text: '' } : entry,
+          Math.min(1, Math.max(0, (elapsed - entry.fromMs) / (entry.toMs - entry.fromMs))));
         if (elapsed >= timeline.durationMs) { observedDurationMs = elapsed; signal.removeEventListener('abort', abort); resolve(); }
         else frame = requestAnimationFrame(tick);
       };
@@ -99,6 +102,7 @@ export async function recordWhiteboardVideo(canvas: HTMLCanvasElement, prepared:
     if (frame !== null) cancelAnimationFrame(frame);
     if (recorder?.state !== 'inactive') { try { recorder?.stop(); } catch { /* Already stopped. */ } }
     for (const source of sources) { try { source.stop(); } catch { /* Source already ended. */ } source.disconnect(); }
+    if (keepAlive) { try { keepAlive.stop(); } catch { /* Context already closed on cancellation. */ } keepAlive.disconnect(); }
     stream.getTracks().forEach(track => track.stop()); capture.getTracks().forEach(track => track.stop());
     destination?.disconnect(); destination?.stream.getTracks().forEach(track => track.stop());
   }

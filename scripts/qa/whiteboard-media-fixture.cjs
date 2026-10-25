@@ -11,7 +11,7 @@ exports.installWhiteboardMediaFixture=app=>{
     if(voice==='fixture-delay')await new Promise(resolve=>setTimeout(resolve,1800));
     if(voice==='fixture-fail')throw new (require('@nestjs/common').ServiceUnavailableException)('Synthetic whiteboard audio failure');
     const rate=8000,count=16000,bytes=Buffer.alloc(44+count*2);bytes.write('RIFF',0);bytes.writeUInt32LE(bytes.length-8,4);bytes.write('WAVEfmt ',8);bytes.writeUInt32LE(16,16);bytes.writeUInt16LE(1,20);bytes.writeUInt16LE(1,22);bytes.writeUInt32LE(rate,24);bytes.writeUInt32LE(rate*2,28);bytes.writeUInt16LE(2,32);bytes.writeUInt16LE(16,34);bytes.write('data',36);bytes.writeUInt32LE(count*2,40);
-    for(let i=0;i<count;i++)bytes.writeInt16LE(Math.round(800*Math.sin(i*2*Math.PI*220/rate)),44+i*2);
+    for(let i=0;i<count;i++){const hz=i<160?1100:i>=count-160?1900:220;bytes.writeInt16LE(Math.round(800*Math.sin(i*2*Math.PI*hz/rate)),44+i*2);}
     return{content:bytes,contentType:'audio/wav'};
   };
   app.getHttpAdapter().getInstance().post('/api/qa/whiteboard-media',async(req,res)=>{
