@@ -32,6 +32,17 @@ describe('source-course independent check frozen inputs and provider output',()=
     const row=course(),reverse=(value:any):any=>Array.isArray(value)?value.map(reverse):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).reverse().map(([key,child])=>[key,reverse(child)])):value;
     const before=prepareSourceCourseCheck(row,selection);expect(prepareSourceCourseCheck(reverse(row),selection).inputFingerprint).toBe(before.inputFingerprint);expect(prepareSourceCourseCheck(row,{...selection,modelId:'different-model'}).inputFingerprint).not.toBe(before.inputFingerprint);row.sources[0].sha256='different-original';expect(prepareSourceCourseCheck(row,selection).inputFingerprint).not.toBe(before.inputFingerprint);expect(sourceCheckDigest([1,2])).not.toBe(sourceCheckDigest([2,1]));
   });
+  it('retains the exact pre-existing two-target fingerprints frozen by the compiled 120 candidate',()=>{
+    const prepared=prepareSourceCourseCheck(course(),selection);
+    expect(prepared.inputFingerprint).toBe('1ef53e69a7415904b7dad3a965b7205ecae01c5b4233dc8eb56039b0d6b56098');
+    expect(sourceCheckDigest(prepared)).toBe('2e624bc8ad866c9bf824deb42da2a4fe720c5e9cea1c38f91a67a0f1174db487');
+  });
+  it('checks one complete selected goal through four different scenarios and still rejects zero, repeated and seven goals',()=>{
+    const prepared=prepareSourceCourseCheck(course(),{...selection,lessonIds:['observe']}),output=content();output.questions.forEach(question=>question.targetLessonIds=['observe']);
+    expect(prepared.targets.map(target=>target.lessonId)).toEqual(['observe']);expect(JSON.parse(prepared.context).targets).toHaveLength(1);expect(validateSourceCourseCheck(prepared,output).questions).toHaveLength(4);
+    for(const lessonIds of [[],['observe','observe'],Array.from({length:7},(_,index)=>'lesson-'+index)])expect(()=>prepareSourceCourseCheck(course(),{...selection,lessonIds})).toThrow();
+    output.questions[0].targetLessonIds=['compare'];expect(()=>validateSourceCourseCheck(prepared,output)).toThrow('target_outside_selection');
+  });
   it('accepts complete single and multiple answer definitions without changing the provider output object',()=>{
     const prepared=prepareSourceCourseCheck(course(),selection),output=content();output.questions[0].selectionMode='multiple';output.questions[0].correctIndices=[2,0];const before=structuredClone(output),checked=validateSourceCourseCheck(prepared,output);expect(checked.questions[0].correctIndices).toEqual([0,2]);expect(output).toEqual(before);
   });

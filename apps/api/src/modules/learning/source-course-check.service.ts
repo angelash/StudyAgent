@@ -13,7 +13,7 @@ import type { SourceCourseCheckRecord } from './source-course-check-record';
 
 export const sourceCheckTaskKind='learning.source-check.generate';
 const key=z.string().min(8).max(180),revision=z.number().int().min(0);
-const selection={modelId:z.string().trim().min(1).max(120).default('auto'),lessonIds:z.array(z.string().min(1).max(400)).min(2).max(6)};
+const selection={modelId:z.string().trim().min(1).max(120).default('auto'),lessonIds:z.array(z.string().min(1).max(400)).min(1).max(6)};
 const prepareSchema=z.object({...selection,expectedRevision:revision,courseFingerprint:z.string().min(1).max(200),requestKey:key}).strict();
 const active=new Set(['queued','running','retry_wait','cancel_requested']);
 /** Only explicit mutation paths reconcile terminal labels; GET never changes records. */
