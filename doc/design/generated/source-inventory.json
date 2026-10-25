@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 358,
@@ -22313,6 +22313,7 @@
           "access": "public",
           "decorators": [],
           "calls": [
+            "this.students.assertCanAccessStudent",
             "this.store.find",
             "this.store.select",
             "this.previewStudioWhiteboard",
@@ -22323,7 +22324,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 250,
+          "line": 251,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string }, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -22338,7 +22339,7 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 311,
+          "line": 312,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
@@ -22348,7 +22349,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 321,
+          "line": 322,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
@@ -22358,7 +22359,7 @@
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 336,
+          "line": 337,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22370,7 +22371,7 @@
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 364,
+          "line": 365,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -22384,7 +22385,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 399,
+          "line": 400,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22396,7 +22397,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 414,
+          "line": 415,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22410,7 +22411,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 435,
+          "line": 436,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -22422,7 +22423,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 456,
+          "line": 457,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22437,7 +22438,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 483,
+          "line": 484,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22449,7 +22450,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 494,
+          "line": 495,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22459,7 +22460,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 510,
+          "line": 511,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22475,7 +22476,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 539,
+          "line": 540,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22488,7 +22489,7 @@
         },
         {
           "name": "studioScope",
-          "line": 556,
+          "line": 557,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -22500,7 +22501,7 @@
         },
         {
           "name": "memory",
-          "line": 565,
+          "line": 566,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -22514,7 +22515,7 @@
         },
         {
           "name": "today",
-          "line": 625,
+          "line": 626,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -22529,7 +22530,7 @@
         },
         {
           "name": "start",
-          "line": 639,
+          "line": 640,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -22548,7 +22549,7 @@
         },
         {
           "name": "requireSession",
-          "line": 676,
+          "line": 677,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -22559,7 +22560,7 @@
         },
         {
           "name": "view",
-          "line": 681,
+          "line": 682,
           "signature": "view(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -22573,7 +22574,7 @@
         },
         {
           "name": "render",
-          "line": 699,
+          "line": 700,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -22586,7 +22587,7 @@
         },
         {
           "name": "practiceDraftState",
-          "line": 710,
+          "line": 711,
           "signature": "practiceDraftState(session: PracticeSession, questionId: string, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -22597,7 +22598,7 @@
         },
         {
           "name": "draft",
-          "line": 717,
+          "line": 718,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22611,7 +22612,7 @@
         },
         {
           "name": "assertActive",
-          "line": 733,
+          "line": 734,
           "signature": "assertActive(session: PracticeSession)",
           "access": "private",
           "decorators": [],
@@ -22621,7 +22622,7 @@
         },
         {
           "name": "submit",
-          "line": 737,
+          "line": 738,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22641,7 +22642,7 @@
         },
         {
           "name": "feedback",
-          "line": 767,
+          "line": 768,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -22653,7 +22654,7 @@
         },
         {
           "name": "publicAttempt",
-          "line": 776,
+          "line": 777,
           "signature": "publicAttempt(attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -22661,7 +22662,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 778,
+          "line": 779,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -22671,7 +22672,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 783,
+          "line": 784,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22686,7 +22687,7 @@
         },
         {
           "name": "hint",
-          "line": 798,
+          "line": 799,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
           "access": "public",
           "decorators": [],
@@ -22701,7 +22702,7 @@
         },
         {
           "name": "complete",
-          "line": 809,
+          "line": 810,
           "signature": "complete(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -22714,7 +22715,7 @@
         },
         {
           "name": "mistakes",
-          "line": 819,
+          "line": 820,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -22728,7 +22729,7 @@
         },
         {
           "name": "overview",
-          "line": 849,
+          "line": 850,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -33481,7 +33482,7 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 879,
+      "line": 880,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {

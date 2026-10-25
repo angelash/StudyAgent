@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -2590,12 +2590,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 849
+              "line": 850
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 565
+              "line": 566
             }
           ],
           "sourceFiles": [
@@ -2653,12 +2653,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 625
+              "line": 626
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 639
+              "line": 640
             }
           ],
           "sourceFiles": [
@@ -2749,32 +2749,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 681
+              "line": 682
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 699
+              "line": 700
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 717
+              "line": 718
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 737
+              "line": 738
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 798
+              "line": 799
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 809
+              "line": 810
             }
           ],
           "sourceFiles": [
@@ -2824,7 +2824,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 819
+              "line": 820
             }
           ],
           "sourceFiles": [
@@ -4720,17 +4720,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 494
+              "line": 495
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 510
+              "line": 511
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 539
+              "line": 540
             }
           ],
           "sourceFiles": [
@@ -5305,7 +5305,7 @@
             "/studio/source-courses"
           ],
           "inputs": "学生、学科、主题、可选已审核知识点",
-          "implementation": "规则生成分幕标题、概念、步骤、图形和检查点；预览和保存使用内容指纹、请求键；保存后可继续播放。",
+          "implementation": "规则生成分幕标题、概念、步骤、图形和检查点；保存前在所有旧请求/内容去重返回之前校验当前学生访问权，撤销绑定后旧命令也不能取得正文；预览和保存使用内容指纹、请求键；保存后可继续播放。",
           "outputs": "StudioWhiteboard与幕序",
           "collections": [
             "studioWhiteboards",
@@ -5399,7 +5399,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 483
+              "line": 484
             }
           ],
           "sourceFiles": [
@@ -5477,17 +5477,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 250
+              "line": 251
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 311
+              "line": 312
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 321
+              "line": 322
             }
           ],
           "sourceFiles": [
@@ -5601,12 +5601,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 336
+              "line": 337
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 364
+              "line": 365
             }
           ],
           "sourceFiles": [
@@ -5674,12 +5674,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 399
+              "line": 400
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 414
+              "line": 415
             }
           ],
           "sourceFiles": [
@@ -5748,12 +5748,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 435
+              "line": 436
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 456
+              "line": 457
             }
           ],
           "sourceFiles": [

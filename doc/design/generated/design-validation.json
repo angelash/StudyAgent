@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T21:45:00.251Z",
-  "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+  "at": "2026-10-25T22:05:53.236Z",
+  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -186,7 +186,7 @@
       "apps/api/src/modules/learning/learning-home.service.ts": "19a872b0bcae191aa91fd3fb3c60d664a0e56c740f2390719a2e9eff2be7a687",
       "apps/api/src/modules/learning/learning-home.test.ts": "db8263d60c805787e1edfce67b20b60f7ac565be5aecd13fb3cd82c1135450c6",
       "apps/api/src/modules/learning/learning.controller.ts": "f905f5af40bc88b62ef394a24b2a56cecc9a33351237c905c7b21e1e0468cc57",
-      "apps/api/src/modules/learning/learning.service.ts": "c2a02644e8e83443dfaeb7a6b124118caba33210e934b93ddb377a6b6b5d2d67",
+      "apps/api/src/modules/learning/learning.service.ts": "6361ed130d282237c36a0233585b287ef59d0dfd13e0f5f30b3ba37ef6e1a994",
       "apps/api/src/modules/learning/notebook.controller.ts": "cf8588838792ff3da8c62566be17ac1b8f9c24b5a1150df030f7cb64d7367908",
       "apps/api/src/modules/learning/notebook.integration.test.ts": "75668369d098c2965b96dfcf89c736416a5833e6495d891124ef4108f2a432c1",
       "apps/api/src/modules/learning/notebook.service.ts": "53c3603c187a1d9ad9422eba753adb2c31fad2f9826c3124d7c3b24b6e7d0369",
@@ -247,7 +247,7 @@
       "apps/api/src/modules/learning/studio-pdf-whiteboard.ts": "70ee09eb62cee1ebe130467776a87d6e5a0602a29b19342ce4da81a81c01d587",
       "apps/api/src/modules/learning/studio-study-plan.ts": "eac3421e6bb62a424a7afdffde02986e28695a01617e37dfbc11a9b7a71c03e1",
       "apps/api/src/modules/learning/studio-whiteboard.ts": "1a129cabd787487e3b577e0b86bcd16d883e6d5b548f66c62cd7fd322ff09018",
-      "apps/api/src/modules/learning/studio.integration.test.ts": "1e5695dd755c1359b82fc276fe59fb0ba207c90e32d1968d290f000ce8239791",
+      "apps/api/src/modules/learning/studio.integration.test.ts": "40a0d43cd9bfcf9661695b70e2bbfd4d363d3e85c9aacfcd600d94a6eb694b19",
       "apps/api/src/modules/library/library.controller.ts": "6d86ae5710c42d3aaa374008496889af5311ca19ea427f92c0d0d823d4448b72",
       "apps/api/src/modules/library/library.integration.test.ts": "6239b3896fe85c2bce65ff0080437485fea73629878d4bed1e39005208632372",
       "apps/api/src/modules/library/library.repository.ts": "7c6d95869409a95258cc0217b53fe8c712be261138c05d624b8465cce2bb6bcd",
@@ -367,7 +367,7 @@
       "apps/web/lib/session-user.ts": "f62f9542eaa07b4198286cdbcd9ecbb415f31a2481d4f811e2e41d67b0b1c6ce",
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
       "doc/product/120-source-course-independent-unit-checks.md": "cf5663bc83f27f7b5d8dc6110075d9dc2e1bb9fd06fa75364b556540108ffd79",
-      "doc/product/121-single-lesson-source-course-checks.md": "980d9f8e738aefffc75713b64790f59a9fb491c61eb7a77e1a68c71e2118c0d0",
+      "doc/product/121-single-lesson-source-course-checks.md": "207a7d81db603e68f5626645f1cbdb2279997f1651a4a48c84339e99a0d856a4",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -477,7 +477,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2820,
+    "checked": 2826,
     "missing": []
   },
   "staticContent": {
@@ -549,7 +549,7 @@
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
     "receipt": "../evidence/2026-10-26/source-check-single-acceptance.json",
-    "revision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+    "revision": "dc93206bec22ff08d6f8da61467094b543575c96",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

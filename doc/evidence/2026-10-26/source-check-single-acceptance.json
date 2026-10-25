@@ -1,7 +1,7 @@
 {
   "passed": false,
-  "status": "full-browser-passed-before-maintenance-fix-current-regression-pending",
-  "sourceRevision": "ae5ef962e625175d43378a0e4d305cfbb911ff26",
+  "status": "current-focused-api-passed-full-api-and-exact-ci-pending",
+  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
   "applicationRevision": "6bf3700",
   "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
   "deployed": false,
@@ -49,7 +49,7 @@
     "report": "source-check-single-live/receipt.json"
   },
   "limits": [
-    "Current full browser, exact CI and daemon delivery are pending.",
+    "The 218-case local browser baseline predates the isolated access maintenance; current complete API is running and current exact CI/full browser and daemon delivery are pending.",
     "No teacher review, real-device or long-term validation.",
     "Exact duplicate detection and different situations do not prove independent item families.",
     "Content stays pending and formalMeasurementEligible=false.",
@@ -64,5 +64,17 @@
     "durationMs": 1020292.5369999999,
     "report": "source-check-single-browser/full-before-access-fix.json",
     "scope": "Single-target plus inherited cancellation; predates the independent whiteboard current-access fix."
+  },
+  "accessMaintenance": {
+    "revision": "dc93206",
+    "originalCommit": "9009790",
+    "report": "whiteboard-replay-access/receipt.json",
+    "currentCombinedApi": {
+      "passed": 65,
+      "failed": 0,
+      "sourceCheckCases": 50,
+      "studioCases": 15,
+      "report": "source-check-single-current/focused-api.json"
+    }
   }
 }
