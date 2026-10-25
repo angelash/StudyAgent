@@ -11,6 +11,7 @@ async function enter(page:Page){
   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);const row=await course(actor);await page.goto('/studio/source-courses?course='+row.id);return{actor,row};
 }
 async function finishReading(page:Page,actor:any){
+  await expect(page.locator('.cl-session-navigation')).toBeVisible();
   const sessionId=new URL(page.url()).searchParams.get('session')!,session=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);
   for(let step=0;step<session.lesson.steps.length;step++){
     await expect(page.locator('.cl-session-navigation')).toContainText((step+1)+' / '+session.lesson.steps.length);
