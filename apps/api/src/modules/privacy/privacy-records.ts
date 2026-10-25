@@ -108,7 +108,7 @@ export function removeSelected(store: InMemoryStoreService, selection: Selection
   }
 }
 // Tokens, passwords, internal idempotency digests and other guardians' private chats are never exported.
-const secretFields = new Set(['passwordHash', 'credential', 'token', 'tokenHash', 'requestHash', 'inputHash', 'scopeKey', 'requestKey', 'decisionHash']);
+const secretFields = new Set(['passwordHash', 'credential', 'token', 'tokenHash', 'requestHash', 'inputHash', 'scopeKey', 'requestKey', 'decisionHash', 'draftCommands']);
 function scrub(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(scrub);
   if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).filter(([key]) => !secretFields.has(key)).map(([key, child]) => [key, scrub(child)]));

@@ -1,0 +1,471 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 35,
+  "numPassedTests": 34,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792911504024,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "status": "passed",
+          "title": "diagnostic: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "duration": 149.40059999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "status": "passed",
+          "title": "diagnostic: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "duration": 95.69900000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes diagnostic: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "status": "passed",
+          "title": "diagnostic: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "duration": 100.34870000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "status": "passed",
+          "title": "practice: old drafts advance revisions; v2 blocks legacy writes and retains exact earlier acknowledgments",
+          "duration": 132.76449999999977,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "status": "passed",
+          "title": "practice: simultaneous pages cannot replace a newer answer or bypass a stale submission fence",
+          "duration": 107.30559999999969,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes practice: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "status": "passed",
+          "title": "practice: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence",
+          "duration": 139.7792999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "recoverable diagnostic and practice drafts through real authorized routes"
+          ],
+          "fullName": "recoverable diagnostic and practice drafts through real authorized routes keeps an unconfirmed save after restart and excludes internal command journals from real family exports",
+          "status": "failed",
+          "title": "keeps an unconfirmed save after restart and excludes internal command journals from real family exports",
+          "duration": 596.0607,
+          "failureMessages": [
+            "TypeError: Cannot read properties of undefined (reading 'find')\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts:106:269\n    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)\n    at InMemoryStoreService.requestContext (F:\\workspace\\github\\StudyAgent-long-pdf\\apps\\api\\dist\\apps\\api\\src\\infrastructure\\in-memory-store.service.js:183:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts:106:5\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792911507203,
+      "endTime": 1792911508525.0608,
+      "status": "failed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/answer-draft.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification builds a provenance-backed learning memory and next-action feed without treating unknown as weakness",
+          "status": "passed",
+          "title": "builds a provenance-backed learning memory and next-action feed without treating unknown as weakness",
+          "duration": 770.6363000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps",
+          "status": "passed",
+          "title": "isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps",
+          "duration": 571.3532999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "status": "passed",
+          "title": "serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "duration": 632.1030999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification maps complete local math and English source books without inventing lesson page offsets",
+          "status": "passed",
+          "title": "maps complete local math and English source books without inventing lesson page offsets",
+          "duration": 540.6469999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "status": "passed",
+          "title": "requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "duration": 513.8141999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term",
+          "status": "passed",
+          "title": "rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term",
+          "duration": 504.27840000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies",
+          "status": "passed",
+          "title": "keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies",
+          "duration": 491.5587000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions",
+          "status": "passed",
+          "title": "enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions",
+          "duration": 542.549,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews",
+          "status": "passed",
+          "title": "verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews",
+          "duration": 537.8679000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification keeps subjective scoring pending and preserves review versions rather than overwriting evidence",
+          "status": "passed",
+          "title": "keeps subjective scoring pending and preserves review versions rather than overwriting evidence",
+          "duration": 503.28380000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification previews six bounded purposes without exposing answers, creating observations or consuming fresh questions",
+          "status": "passed",
+          "title": "previews six bounded purposes without exposing answers, creating observations or consuming fresh questions",
+          "duration": 522.7523999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries",
+          "status": "passed",
+          "title": "starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries",
+          "duration": 525.6642000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage",
+          "status": "passed",
+          "title": "invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage",
+          "duration": 509.7430999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification expires unused blueprints without expiring a started assessment or losing its idempotent receipt",
+          "status": "passed",
+          "title": "expires unused blueprints without expiring a started assessment or losing its idempotent receipt",
+          "duration": 456.1970000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure",
+          "status": "passed",
+          "title": "pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure",
+          "duration": 494.52319999999963,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification releases an aborted delayed task for a new probe without reusing exposed questions",
+          "status": "passed",
+          "title": "releases an aborted delayed task for a new probe without reusing exposed questions",
+          "duration": 694.8005000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes",
+          "status": "passed",
+          "title": "freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes",
+          "duration": 998.7101000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification keeps labels and teaching revisions comparable while preserving historical names",
+          "status": "passed",
+          "title": "keeps labels and teaching revisions comparable while preserving historical names",
+          "duration": 459.59799999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification blocks new guidance and verification after changed definitions while retaining started practice",
+          "status": "passed",
+          "title": "blocks new guidance and verification after changed definitions while retaining started practice",
+          "duration": 476.8588,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence",
+          "status": "passed",
+          "title": "preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence",
+          "duration": 471.7460999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint",
+          "status": "passed",
+          "title": "excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint",
+          "duration": 511.7329000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification versions parent adjustments, enforces budgets and idempotency, and freezes started activities",
+          "status": "passed",
+          "title": "versions parent adjustments, enforces budgets and idempotency, and freezes started activities",
+          "duration": 701.9994999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure",
+          "status": "passed",
+          "title": "excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure",
+          "duration": 460.3806000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume",
+          "status": "passed",
+          "title": "retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume",
+          "duration": 732.9156000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification requires linked independent followups and current evidence acknowledgement before closing a real review cycle",
+          "status": "passed",
+          "title": "requires linked independent followups and current evidence acknowledgement before closing a real review cycle",
+          "duration": 1521.6906,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence",
+          "status": "passed",
+          "title": "persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence",
+          "duration": 563.8705000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification enforces practice ownership and pause, and leaves subjective practice pending for review",
+          "status": "passed",
+          "title": "enforces practice ownership and pause, and leaves subjective practice pending for review",
+          "duration": 722.4758000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "scope → atomic assessment → diagnosis → guidance → verification"
+          ],
+          "fullName": "scope → atomic assessment → diagnosis → guidance → verification retires the prototype mutation and correctness-report APIs with an explicit upgrade response",
+          "status": "passed",
+          "title": "retires the prototype mutation and correctness-report APIs with an explicit upgrade response",
+          "duration": 462.0671000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792911506609,
+      "endTime": 1792911523506.0671,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/diagnostics/diagnostics.integration.test.ts"
+    }
+  ]
+}

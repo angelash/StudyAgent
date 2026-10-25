@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T07:25:27.036Z",
+  "specificationCommit": "0c7091c",
+  "passed": false,
+  "backendPassed": true,
+  "status": "backend-tested-frontend-journeys-in-progress",
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
+  "sourceDigests": {
+    "packages/contracts/src/answer-draft.ts": "febcf71775a034189582a2ca3de55ebc0417ddabe1ab3f8953355d8c28f1b898",
+    "packages/contracts/src/diagnostics.ts": "e4e6a126252cdea527e51885d09c10b0988892157e747fe45b185729a7c528dc",
+    "packages/contracts/src/learning.ts": "fdaebe9c72ea240cb17eb3e80615b5f072159da00ea0ee5e64e44bcdec99dd55",
+    "packages/contracts/src/index.ts": "eddea2843422dfb82c0891f9889794f62b828b77cd5f29110eeef34f0639f037",
+    "apps/api/src/common/answer-draft.ts": "17533fe2c0d6b18580567652d030dc36bf2862037bea0e1d28c9bce36df953a0",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "ebf4fce2b113a17303f1f6731c909825ef55640dc52255d9bafa1b4e4cdb2a81",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "824192cdc3d045fecd6a7464449502e2a275e733a7afd5f122da9854f7c28e01",
+    "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts": "51c5b0f8436257c8ef1a5c4f814ed510846270d1a99dab11002b11e40c14f142",
+    "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts": "00af3e3d2f9e8af801e4ef9e236f5975d18b2549222b6a4706fb9a9236703048",
+    "apps/api/src/modules/learning/learning.service.ts": "0b703e548aa1aaa03298f94a3ef848dba7d31d2cd3eeaf6760383c571265e54d",
+    "apps/api/src/modules/privacy/privacy-records.ts": "f5dec45592af7de9bdf160fc960777fed323dbd88f2f69d588b29c924583fdd5",
+    "scripts/qa/run-answer-drafts-postgres.cjs": "249bf939b94632c378a08d1d1501c5684661770083eea4111052f2e22dd0e1e0",
+    ".github/workflows/verify.yml": "5d03d7ef350be64247231b9ef14514e8edec76ccbd2c6377bb00d7bbe75115b7"
+  },
+  "reports": {
+    "answer-draft-sqlite-initial.json": {
+      "sha256": "85c47c8257abd63f5046b9da3f9d5d1cfd06c399fa33e44ee502475257ce6093",
+      "total": 35,
+      "passed": 34,
+      "failed": 1,
+      "skipped": 0
+    },
+    "answer-draft-sqlite-final.json": {
+      "sha256": "f3751da0ac993b834b75129d192fb2dc969b32117035f9366723da29cc4b6dc3",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-postgres.json": {
+      "sha256": "ce19a2d59abbae7b33e843bb351efd9b94581bf078e6f29bcc3460acc1b5e8f6",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-actor-sqlite.json": {
+      "sha256": "b8d025944cc7f885b2ea5ad15ec94f3324a8d985aabd9a02fff12b60f64383fe",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-actor-postgres.json": {
+      "sha256": "effa4fbf35d895a4e95a240d8c3dc138c6dc92432aeec32815d312bcf467fe29",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-recovery-sqlite-initial.json": {
+      "sha256": "fcd4b125612cb7157b83bbc39ed5a5bedd57ba4a0d237be07be27fe0ec7776b6",
+      "total": 10,
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0
+    },
+    "answer-draft-recovery-sqlite-final.json": {
+      "sha256": "7c248ed156d6c6a1e9dffe1ef3354aeb3865e9c7be15a45d913a4963475a59bc",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    "answer-draft-native-postgres-initial.json": {
+      "sha256": "0bfa41b04dc9c4f6e424e0909c8f710423bc8976ee119425beee2c01609709aa",
+      "total": 11,
+      "passed": 9,
+      "failed": 1,
+      "skipped": 1
+    },
+    "answer-draft-native-postgres-final.json": {
+      "sha256": "d865d05b22a2dd50277b352b2e9c95eaeb61057ff314a8e23dc034e57ced6abe",
+      "total": 11,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "checks": {
+    "sqlite": {
+      "passed": 10,
+      "failed": 0,
+      "actualColdRestore": true,
+      "latestDeletionLedger": true
+    },
+    "postgres": {
+      "passed": 10,
+      "sqliteOnlySkipped": 1,
+      "actualNativeColdRestore": true,
+      "latestDeletionLedger": true
+    },
+    "legacyDiagnosticRegression": {
+      "passed": 27,
+      "scope": "The initial 35-test combination; not added to the overlapping focused counts"
+    },
+    "fullApi": "running separately",
+    "browser": "17 types on both real pages in progress; initial scope/focus/timing results retained"
+  },
+  "diagnostics": [
+    "The initial combination had34 passes and one export fixture failure because it selected only account records instead of the child; corrected to use the actual child export API.",
+    "The first SQLite cold restore expected an old authentication token to survive. Restore intentionally revokes sessions; the test now logs in again and confirms original command receipts.",
+    "The first native PostgreSQL test called a nonexistent fixture workspace.render method; corrected to the real authorized payload builder, with native recovery now passing."
+  ],
+  "limits": [
+    "This is backend progress within specification112, not its final delivery or complete product.",
+    "Synthetic isolated stores only; no production family records used as test data.",
+    "Frontend17-type and recovery journeys, complete API regression, exact CI and daemon delivery remain gates.",
+    "Teacher validity, real devices, accessibility and real interval teaching remain separate requirements."
+  ]
+}

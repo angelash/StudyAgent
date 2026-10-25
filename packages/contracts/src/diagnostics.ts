@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { answerDraftFenceSchema } from './answer-draft';
 
 const subject = z.enum(['chinese', 'math', 'english']);
 const id = z.string().min(1).max(180);
@@ -179,6 +180,7 @@ export const diagnosticResponseInputSchema = z.object({
   itemId: id, answer: z.unknown().optional(), elapsedMs: z.number().int().min(0).max(3_600_000),
   disposition: z.enum(['answered', 'skip', 'dont_know']).default('answered'),
   requestKey: z.string().min(1).max(180).optional(),
+  draftFence: answerDraftFenceSchema.optional(),
 }).strict();
 export type DiagnosticResponseInput = z.infer<typeof diagnosticResponseInputSchema>;
 export type DiagnosticResponse = {
@@ -189,6 +191,7 @@ export type DiagnosticResponse = {
   elapsedMs: number; hintLevel: number; observationCode: string | null; gradingReason: string;
   retentionDelayDays: number | null;
   submittedAt: string; gradingVersion: string; requestKey: string;
+  requestHash?: string;
   priorExposure?: boolean;
   atomVersion?: number; atomDefinitionFingerprint?: string;
   scoreDetails?: ResponseScoreDetail[];

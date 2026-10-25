@@ -7,7 +7,8 @@ import { z } from 'zod';
 import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
   StudioCourse, StudioLearningPack, StudioLearningPackPreview, StudioOverview, StudioSourceMaterial, StudioStudyPlan,
   StudioStudyPlanPreview, StudioWhiteboard, Subject } from '@study-agent/contracts';
-import { answerProtocolIssue } from '@study-agent/contracts';
+import { answerProtocolIssue, answerDraftFenceSchema, answerDraftSaveSchema } from '@study-agent/contracts';
+import { answerIdentity, answerDraftState, prepareAnswerDraft, assertAnswerDraftFence, sameAnswer } from '../../common/answer-draft';
 import { InMemoryStoreService, InMemoryUserAccount,type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -44,7 +45,8 @@ function uploadFilename(value: string) {
   return value;
 }
 const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
-  answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000) }).strict();
+  answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000),
+  draftFence: answerDraftFenceSchema.optional() }).strict();
 const studioCourseDraftSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
   focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
   objective: z.string().trim().min(5).max(1000).optional(), minutesPerSession: z.number().int().min(5).max(60).optional() }).strict();
@@ -686,7 +688,7 @@ export class LearningService {
       snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
       origin: session.origin ?? 'guidance', notebookEntryId: session.notebookEntryId ?? null,
       questions: session.questionIds.map((questionId, index) => ({ id: questionId, attempted: Boolean(latest[index]),
-        latest: latest[index] ?? null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
+        latest: latest[index] ? this.publicAttempt(latest[index]!) : null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
       summary: { attempted: latest.filter(Boolean).length, total: session.questionIds.length,
         answered: latest.filter((item) => item?.disposition === 'answered').length,
         skipped: latest.filter((item) => item?.disposition === 'skip').length,
@@ -701,19 +703,32 @@ export class LearningService {
     payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
     payload.inputAvailability = { supported: mediaModeAvailable(payload.answerSchema.mode), reason: mediaModeAvailable(payload.answerSchema.mode) ? '' : '本次音频作答暂时不可用，请先跳过并反馈给老师。' };
     const attempt = this.store.select('practiceAttempts', { sessionId: id, questionId }).reverse()[0];
-    return { payload, feedback: attempt ? this.feedback(session, attempt) : null, draft: session.drafts?.[questionId] ?? null };
+    const row = session.drafts?.[questionId], draftState = this.practiceDraftState(session, questionId, user.id);
+    return { payload, feedback: attempt ? this.feedback(session, attempt) : null,
+      draft: row && (row.protocol !== 'answer-draft-v2' || row.draftAttempt === draftState.attempt) ? { answer: row.answer, savedAt: row.savedAt } : null, draftState };
+  }
+  private practiceDraftState(session: PracticeSession, questionId: string, actorId: string) {
+    const snapshot = session.snapshots.find(item => item.id === questionId)!, schema = snapshot.answerSchema as QuestionAnswerSchema;
+    const count = this.store.select('practiceAttempts', { sessionId: session.id, questionId }).length;
+    const baseHash = answerIdentity(['practice', session.id, questionId, snapshot.document, schema.mode, schema.responseShape, schema.options, count]);
+    const active = session.status === 'in_progress' && (session.origin === 'notebook' || !!this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }));
+    return answerDraftState(session.drafts?.[questionId], baseHash, count, active && count < 5, count > 0, actorId);
   }
   draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown) {
     const session = this.requireSession(user, id);
     this.assertActive(session);
     if (!session.questionIds.includes(questionId)) throw new NotFoundException('题目不属于当前训练');
-    const { answer } = validate(z.object({ answer: z.unknown() }).strict(), input);
+    const command = validate(answerDraftSaveSchema, input), { answer } = command;
     const snapshot = session.snapshots.find(item => item.id === questionId)!;
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, answer, true); if (issue) throw new BadRequestException(issue);
     this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: questionId }, answer, true);
-    session.drafts ??= {};
-    session.drafts[questionId] = { answer, savedAt: new Date().toISOString() };
-    return { savedAt: session.drafts[questionId].savedAt };
+    const state = this.practiceDraftState(session, questionId, user.id);
+    if (!state.editable) throw new BadRequestException('本题不能继续保存，请保留作答并用新题验证');
+    const upgraded = session.drafts?.[questionId]?.protocol === 'answer-draft-v2' || this.store.select('practiceAttempts', { sessionId: id, questionId }).some(row => !!row.requestHash);
+    if (upgraded && !('protocol' in command)) throw new ConflictException('这份作答已升级，请刷新后再继续订正');
+    const prepared = prepareAnswerDraft(session.drafts?.[questionId], state, command, user.id);
+    if (prepared.metadata) { session.drafts ??= {}; session.drafts[questionId] = { answer, savedAt: prepared.receipt.savedAt, ...prepared.metadata }; }
+    return prepared.receipt;
   }
   private assertActive(session: PracticeSession) {
     if (session.status !== 'in_progress') throw new BadRequestException('训练已结束；请使用新题验证');
@@ -721,37 +736,44 @@ export class LearningService {
   }
   submit(user: InMemoryUserAccount, id: string, input: unknown) {
     const session = this.requireSession(user, id), command = validate(answerSchema, input);
+    if (command.draftFence && command.draftFence.actorId !== user.id) throw new ConflictException('提交所属的登录身份已变化，请读取当前账号的活动');
+    const commandHash = command.draftFence ? answerIdentity(command) : undefined;
     const priorKey = this.store.find('practiceAttempts', { sessionId: id, requestKey: command.requestKey });
     if (priorKey) {
-      if (priorKey.questionId !== command.questionId || priorKey.disposition !== command.disposition || JSON.stringify(priorKey.answer) !== JSON.stringify(command.answer ?? null)) throw new ConflictException('请求标识已用于不同的作答');
+      if (priorKey.questionId !== command.questionId || priorKey.disposition !== command.disposition || !sameAnswer(priorKey.answer, command.answer ?? null) || priorKey.requestHash && priorKey.requestHash !== commandHash) throw new ConflictException('请求标识已用于不同的作答');
       return this.feedback(session, priorKey);
     }
     this.assertActive(session);
     const snapshot = session.snapshots.find((item) => item.id === command.questionId);
     if (!snapshot) throw new BadRequestException('题目不属于当前训练');
     const previous = this.store.select('practiceAttempts', { sessionId: id, questionId: command.questionId });
+    const draft = session.drafts?.[command.questionId];
+    assertAnswerDraftFence(this.practiceDraftState(session, command.questionId, user.id), command.draftFence,
+      draft?.protocol === 'answer-draft-v2' || previous.some(row => !!row.requestHash));
     if (previous.length >= 5) throw new BadRequestException('本题已练习五次，先查看指导后换一题');
     const mediaIds = command.disposition === 'answered' ? this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: command.questionId }, command.answer) : [];
     const grade = command.disposition === 'skip' ? { score: null, correct: null, status: 'skipped' as const, reason: '本题跳过，不计为错误。' } :
       gradeResponse(snapshot.answerSchema as QuestionAnswerSchema, snapshot.answer, command.answer);
     const attempt: PracticeAttempt = { id: this.store.nextId('practice-attempt'), sessionId: id, questionId: command.questionId,
-      requestKey: command.requestKey, answer: command.answer ?? null, disposition: command.disposition, ...grade,
+      requestKey: command.requestKey, ...(commandHash ? { requestHash: commandHash } : {}), answer: command.answer ?? null, disposition: command.disposition, ...grade,
       hintLevel: Math.max(0, ...this.store.select('practiceHints', { sessionId: id, questionId: command.questionId }).map((item) => item.level)),
       attempt: previous.length + 1, solutionExposedBefore: session.origin === 'notebook' || previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
     this.store.append('practiceAttempts', attempt);
     this.media.bind(mediaIds, attempt.id);
-    if (session.drafts) delete session.drafts[command.questionId];
+    if (session.drafts && draft?.protocol !== 'answer-draft-v2') delete session.drafts[command.questionId];
     this.events.publish('learning.practice_response', { studentId: session.studentId, sessionId: id, attemptId: attempt.id, questionId: command.questionId });
     return this.feedback(session, attempt);
   }
   private feedback(session: PracticeSession, attempt: PracticeAttempt) {
     attempt = this.effectiveAttempt(attempt);
     const snapshot = session.snapshots.find((item) => item.id === attempt.questionId)!;
-    return { attempt, analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
+    return { attempt: this.publicAttempt(attempt), analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
       reviewHistory: this.store.select('practiceScoringRevisions', { responseId: attempt.id }).map(({ requestHash: _hash, ...item }) => item),
       notice: attempt.status === 'pending_review' ? '已保存表达，等待按量规复核。' : attempt.correct ?
         attempt.attempt === 1 && !attempt.hintLevel && !attempt.solutionExposedBefore ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
   }
+
+  private publicAttempt(attempt: PracticeAttempt) { const { requestHash: _hash, ...view } = attempt; return view; }
 
   effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt {
     const revision = this.store.select('practiceScoringRevisions', { responseId: attempt.id }).sort((a, b) => b.version - a.version)[0];

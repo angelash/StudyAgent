@@ -1,0 +1,10 @@
+// Only the dedicated QA database is eligible; passwords are never command arguments.
+const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process'),root=path.resolve(__dirname,'../..');
+const config=JSON.parse(fs.readFileSync(path.resolve(process.argv[2]??path.join(root,'data/qa/postgres/credentials.json')),'utf8'));
+if(config.purpose!=='StudyAgent isolated QA cluster'||config.port!==15439||config.database!=='study_agent_qa'||config.appUser!=='study_agent_app')throw Error('Expected isolated answer-draft QA cluster');
+const url=new URL('postgresql://127.0.0.1:'+config.port+'/'+config.database);url.username=config.appUser;url.password=config.appPassword;
+if(config.adminUser!=='study_qa_admin')throw Error('Expected isolated QA administration');
+const admin=new URL(url);admin.pathname='/postgres';admin.username=config.adminUser;admin.password=config.adminPassword;
+const child=spawn(process.execPath,['--env-file=../../.env','../../node_modules/vitest/vitest.mjs','run','src/modules/diagnostics/answer-draft.integration.test.ts','src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts','--reporter=default','--reporter=json','--outputFile='+path.resolve(root,process.env.STUDY_ANSWER_DRAFT_REPORT??'data/qa/answer-draft-postgres.json')],
+ {cwd:path.join(root,'apps/api'),windowsHide:true,stdio:'inherit',env:{...process.env,STUDY_TEST_ANSWER_DRAFT_POSTGRES_URL:url.toString(),STUDY_TEST_POSTGRES_ADMIN_URL:admin.toString(),STUDY_TEST_PG_BIN:path.resolve(path.dirname(process.argv[2]??path.join(root,'data/qa/postgres/credentials.json')),'../../tools/postgresql-17.11-5/pgsql/bin')}});
+child.on('error',()=>{console.error('Answer-draft PostgreSQL tests could not start');process.exitCode=1;});child.on('exit',code=>{process.exitCode=code??1;});

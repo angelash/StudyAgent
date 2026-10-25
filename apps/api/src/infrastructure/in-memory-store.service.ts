@@ -1,4 +1,5 @@
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
+import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
@@ -409,7 +410,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   diagnosticHints: Array<{ id: string; sessionId: string; itemId: string; level: number; at: string }> = [];
   diagnosticReports: Array<{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport;
     reanalysis?: { actorId: string; requestKey: string; inputHash: string } }> = [];
-  diagnosticDrafts: Array<{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string }> = [];
+  diagnosticDrafts: Array<{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata> = [];
   gespLearningScopes: GespLearningScope[] = [];
   gespLearningScopeRevisions: GespLearningScopeRevision[] = [];
   gespCodeSubmissions: GespCodeSubmissionReceipt[] = [];

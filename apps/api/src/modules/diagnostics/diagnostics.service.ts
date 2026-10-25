@@ -3,7 +3,8 @@ import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
   DiagnosticBlueprintReservation, DiagnosticBlueprintView, DiagnosticVerificationBlueprint, KnowledgeAtom, LearningScope, QuestionAnswerSchema, QuestionRenderPayload, Subject,
-  answerInputConfiguration, answerProtocolIssue, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
+  answerInputConfiguration, answerProtocolIssue, answerDraftSaveSchema, diagnosticResponseInputSchema, diagnosticStartSchema } from '@study-agent/contracts';
+import { answerIdentity, answerDraftState, prepareAnswerDraft, assertAnswerDraftFence, sameAnswer } from '../../common/answer-draft';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -299,12 +300,23 @@ export class DiagnosticsService {
     payload.inputAvailability = { supported: mediaModeAvailable(payload.answerSchema.mode), reason: mediaModeAvailable(payload.answerSchema.mode) ? '' : '本次音频作答暂时不可用，请先跳过并反馈给老师。' };
     payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
     const draft = this.store.find('diagnosticDrafts', { sessionId: sessionId, itemId: itemId });
-    return { itemId, atomId: mapping.atomId, reason: session.selectionReasons[itemId], payload, draft: draft?.answer ?? null };
+    const draftState = this.draftState(session, itemId, user.id);
+    return { itemId, atomId: mapping.atomId, reason: session.selectionReasons[itemId], payload,
+      draft: draftState.hasSubmission ? null : draft?.answer ?? null, draftState };
+  }
+
+  private draftState(session: DiagnosticSession, itemId: string, actorId: string) {
+    const mapping = session.itemSnapshots.find(item => item.id === itemId)!, snapshot = session.questionSnapshots.find(item => item.id === mapping.questionId)!;
+    const schema = snapshot.answerSchema as QuestionAnswerSchema;
+    const baseHash = answerIdentity(['diagnostic', session.id, itemId, mapping.questionVersion, snapshot.document, schema.mode, schema.responseShape, schema.options]);
+    const saved = this.store.find('diagnosticDrafts', { sessionId: session.id, itemId });
+    const answered = !!this.store.find('diagnosticResponses', { sessionId: session.id, itemId });
+    return answerDraftState(saved, baseHash, 0, session.status === 'in_progress' && !answered && (!session.routing || session.routing.currentItemId === itemId), answered, actorId);
   }
 
   saveDraft(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown) {
     const session = this.requireSession(user, sessionId);
-    const command = validate(z.object({ answer: z.unknown() }).strict(), input);
+    const command = validate(answerDraftSaveSchema, input);
     if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) {
       throw new BadRequestException('只能保存尚未提交的当前评测题目');
     }
@@ -313,9 +325,11 @@ export class DiagnosticsService {
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, command.answer, true); if (issue) throw new BadRequestException(issue);
     this.media.assertAnswer(user, { kind: 'diagnostic', sessionId, itemId }, command.answer, true);
     const existing = this.store.find('diagnosticDrafts', { sessionId: sessionId, itemId: itemId });
-    const draft = { id: `draft:${sessionId}:${itemId}`, sessionId, itemId, answer: command.answer, updatedAt: new Date().toISOString() };
+    const prepared = prepareAnswerDraft(existing, this.draftState(session, itemId, user.id), command, user.id);
+    if (!prepared.metadata) return prepared.receipt;
+    const draft = { id: `draft:${sessionId}:${itemId}`, sessionId, itemId, answer: command.answer, updatedAt: prepared.receipt.updatedAt, ...prepared.metadata };
     if (existing) Object.assign(existing, draft); else this.store.append('diagnosticDrafts', draft);
-    return { saved: true, updatedAt: draft.updatedAt };
+    return prepared.receipt;
   }
 
   submit(user: InMemoryUserAccount, sessionId: string, input: unknown) {
@@ -323,9 +337,15 @@ export class DiagnosticsService {
     const session = this.requireSession(user, sessionId);
     const mapping = session.itemSnapshots.find((item) => item.id === command.itemId);
     if (!mapping) throw new BadRequestException('题目不属于当前评测');
+    if (command.draftFence && !command.requestKey) throw new BadRequestException('恢复作答需要完整的提交标识');
+    if (command.draftFence && command.draftFence.actorId !== user.id) throw new ConflictException('提交所属的登录身份已变化，请读取当前账号的活动');
+    const commandHash = command.draftFence ? answerIdentity(command) : undefined;
+    const priorKey = command.requestKey ? this.store.find('diagnosticResponses', { sessionId, requestKey: command.requestKey }) : undefined;
+    if (priorKey && priorKey.itemId !== command.itemId) throw new ConflictException('提交标识已用于另一道题');
     const previous = this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: command.itemId });
     if (previous) {
-      if (previous.disposition === command.disposition && JSON.stringify(previous.answer) === JSON.stringify(command.answer ?? null)) {
+      if (previous.requestHash && (previous.requestKey !== command.requestKey || previous.requestHash !== commandHash)) throw new ConflictException('首次提交已经保存，请核对原提交，不能用新命令覆盖');
+      if (previous.disposition === command.disposition && sameAnswer(previous.answer, command.answer ?? null)) {
         return { saved: true, responseId: previous.id, idempotent: true, status: previous.status };
       }
       throw new ConflictException('首次作答已保存；如需重新验证，请开始新评测');
@@ -333,6 +353,8 @@ export class DiagnosticsService {
     if (session.status !== 'in_progress') throw new BadRequestException('评测已结束');
     if (session.routing && session.routing.currentItemId !== command.itemId) throw new ConflictException('核查顺序已经变化，请刷新并完成当前题目');
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
+    const draft = this.store.find('diagnosticDrafts', { sessionId, itemId: command.itemId });
+    assertAnswerDraftFence(this.draftState(session, command.itemId, user.id), command.draftFence, draft?.protocol === 'answer-draft-v2');
     const configuration = answerInputConfiguration(question.answerSchema as QuestionAnswerSchema);
     if (command.disposition !== 'skip' && !configuration.supported) throw new BadRequestException(configuration.reason);
     if (command.disposition !== 'skip' && !mediaModeAvailable((question.answerSchema as QuestionAnswerSchema).mode)) throw new BadRequestException('本次音频作答暂时不可用，请先跳过');
@@ -356,12 +378,14 @@ export class DiagnosticsService {
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
       priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
+      ...(commandHash ? { requestHash: commandHash } : {}),
       ...('scoreDetails' in grade && grade.scoreDetails ? { scoreDetails: grade.scoreDetails } : {}),
       ...(atom && session.atomSnapshots ? { atomVersion: atom.version, atomDefinitionFingerprint: atomDefinitionFingerprint(atom) } : {}),
     };
     this.store.append('diagnosticResponses', response);
     this.media.bind(mediaIds, response.id);
-    this.store.remove('diagnosticDrafts', { sessionId, itemId: mapping.id });
+    // Keep the v2 revision journal as a tombstone. A stale client cannot reopen or bypass it.
+    if (draft?.protocol !== 'answer-draft-v2') this.store.remove('diagnosticDrafts', { sessionId, itemId: mapping.id });
     const next = advanceRouting(session, this.store.select('diagnosticResponses', { sessionId }), response.submittedAt);
     if (session.routing) this.events.publish('diagnostic.routing_advanced', { sessionId, studentId: session.studentId, responseId: response.id,
       nextItemId: next?.itemId ?? null, rule: next?.rule ?? 'finished', routingVersion: session.routing.version });
@@ -516,7 +540,8 @@ export class DiagnosticsService {
     const mapping = session.itemSnapshots.find(item => item.id === original.itemId)!;
     const payload = question.renderPayload ? structuredClone(question.renderPayload) as QuestionRenderPayload : null;
     if (payload) { payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null; }
-    return { response, originalResponse: original, observation: observedPerformance(response), componentObservations: componentObservations(session, [response]), payload, stem: question.stem,
+    const { requestHash: _hash, ...publicResponse } = response, { requestHash: _originalHash, ...publicOriginal } = original;
+    return { response: publicResponse, originalResponse: publicOriginal, observation: observedPerformance(response), componentObservations: componentObservations(session, [response]), payload, stem: question.stem,
       referenceAnswer: question.answer, analysis: question.analysis, mapping, scopeSnapshot: session.scopeSnapshot,
       atomSnapshot: session.atomSnapshots?.find(atom => atom.id === original.atomId) ?? null,
       revisions: this.store.select('scoringRevisions', { responseId }).sort((a, b) => a.version - b.version)

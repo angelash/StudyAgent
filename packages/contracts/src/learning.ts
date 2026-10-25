@@ -1,16 +1,18 @@
 import type { DiagnosticSession, GuidanceAction } from './diagnostics';
 import type { KnowledgeAtom } from './diagnostics';
+import type { AnswerDraftMetadata } from './answer-draft';
 export type PracticeAttempt = {
   id: string; sessionId: string; questionId: string; requestKey: string; answer: unknown;
   disposition: 'answered' | 'skip'; score: number | null; correct: boolean | null;
   status: 'scored' | 'pending_review' | 'skipped'; hintLevel: number; attempt: number;
   solutionExposedBefore: boolean; elapsedMs: number; reason: string; submittedAt: string;
+  requestHash?: string;
 };
 export type PracticeSession = {
   id: string; studentId: string; subject: 'math' | 'chinese' | 'english'; planId: string | null; actionId: string;
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];
   snapshots: DiagnosticSession['questionSnapshots']; createdAt: string; completedAt: string | null;
-  drafts?: Record<string, { answer: unknown; savedAt: string }>;
+  drafts?: Record<string, { answer: unknown; savedAt: string } & AnswerDraftMetadata>;
   actionSnapshot?: GuidanceAction; planRevision?: number;
   snapshotOrigin?: 'started' | 'legacy_capture';
   origin?: 'guidance' | 'notebook'; notebookEntryId?: string; atomSnapshot?: KnowledgeAtom;
