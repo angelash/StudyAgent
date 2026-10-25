@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T09:39:32.583Z",
+  "at": "2026-10-25T14:25:16.127Z",
   "specification": "doc/product/107-classroom-turns-and-reference-state-parity.md",
   "scope": "Reference inventory for future M1 verification, not a parity result or pixel completion rate.",
   "completionPercentage": null,
@@ -307,14 +307,35 @@
       "evidence": "not_fully_observed",
       "comparisonStatus": "pending_reference_observation",
       "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-PROJECT-01",
+      "title": "项目导向、字段作答与未完成导航提醒",
+      "reference": "doc/evidence/2026-10-25/hyperknow-project/answer.png",
+      "referenceSha256": "cde846da8595f22fd62b829c2d6de5fcdca487d53ea26833f4b8021835bdea51",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "referenceDate": "2026-10-25",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "evidence": "live-observed-bounded-state",
+      "comparisonStatus": "local-comparison-pending",
+      "observationReceipt": "doc/evidence/2026-10-25/hyperknow-project/observation.json",
+      "specification": "doc/product/118-guided-project-teaching-and-step-navigation.md",
+      "behaviorCoverage": "Intro, second step, narration control and incomplete-next dialog observed. No answer, review, assistant message or skip confirmation submitted. Steps 3-5, review outcomes and original audio/CSS are unknown.",
+      "localGuidedImplementation": false,
+      "completePixelParity": false
     }
   ],
   "lastLiveObservationAttempt": {
-    "at": "2026-10-25T08:53:45.996Z",
-    "requestedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
-    "observedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
-    "outcome": "authenticated; existing classroom, tools tour, settings, controlled figure viewer, practice correct feedback and next multi-choice observed",
-    "receipt": "doc/evidence/2026-10-25/hyperknow-live-tools-observation.json"
+    "at": "2026-10-25T14:25:16.127Z",
+    "requestedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/project/dee055da-d859-4eee-a9e8-a942f07519f3",
+    "observedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/project/dee055da-d859-4eee-a9e8-a942f07519f3",
+    "outcome": "Authenticated project intro, second step and incomplete-navigation dialog observed; returned to course without submitting.",
+    "receipt": "doc/evidence/2026-10-25/hyperknow-project/observation.json"
   },
   "previousLiveObservationAttempts": [
     {
@@ -322,6 +343,13 @@
       "requestedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
       "observedUrl": "https://agent.hyperknow.io/signin",
       "outcome": "login-required; no existing user tab was available; no credentials entered and no new course-state parity claimed"
+    },
+    {
+      "at": "2026-10-25T08:53:45.996Z",
+      "requestedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+      "observedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+      "outcome": "authenticated; existing classroom, tools tour, settings, controlled figure viewer, practice correct feedback and next multi-choice observed",
+      "receipt": "doc/evidence/2026-10-25/hyperknow-live-tools-observation.json"
     }
   ]
 }
