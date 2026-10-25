@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T16:30:02.322392+00:00",
+  "at": "2026-10-25T16:49:18.849528+00:00",
   "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
   "applicationSourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
   "specificationCommits": [
@@ -38,7 +38,7 @@
     "tests/e2e/project-teaching.spec.ts": "2607b567b4bfe9539c103fba06159bb12ff0253b40e15ec53aea1467fc6b785c",
     "scripts/qa/verify-project-teaching-runtime.cjs": "89cf5f5756bddfd472dc90b5405cb04bfb5ff0a8e2c4547478dd5a8055416e35"
   },
-  "status": "local-complete-exact-ci-running",
+  "status": "local-complete-next-ci-pending-after-workflow-timeout",
   "localPassed": true,
   "passed": false,
   "api": {
@@ -69,7 +69,8 @@
   "initialFailures": [
     "7/7 first browser tests failed due ambiguous button/textarea test locators; retained unchanged",
     "12 passed/2 failed: afterEach unroute on deliberately closed page, and an external identity rewrite overwritten during beforeunload; cleanup guarded and cache overwrite binding checked",
-    "22 passed/1 failed: old AI-scope test attempted a new command before explicitly retaining a rejected original; revised to download and clear the rejected command"
+    "22 passed/1 failed: old AI-scope test attempted a new command before explicitly retaining a rejected original; revised to download and clear the rejected command",
+    "GitHub enforced application job timeout of 30 minutes; media installation consumed 15m30s. API 1170 passed/47 skipped, browser and PostgreSQL succeeded; later content verification was interrupted."
   ],
   "initialArtifacts": [
     "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/project-teaching-browser.json",
@@ -106,10 +107,14 @@
     "doc/evidence/2026-10-26/project-teaching-initial-artifacts/focused-initial/browser-product-acceptance/project-files-an-oversized-1779e-narrows-the-AI-advice-scope/trace.zip"
   ],
   "remoteCi": {
-    "status": "in_progress",
-    "runId": 40210930158,
-    "head": "8f70c835aadb0c5bd4e9089dc49cf12871b434c0",
-    "scope": "Application bytes equal 944d93a; extra committed QA file verifies real isolated project narration"
+    "status": "next-candidate-pending",
+    "previousRunId": 40210930158,
+    "previousHead": "8f70c835aadb0c5bd4e9089dc49cf12871b434c0",
+    "previousConclusion": "cancelled",
+    "reason": "GitHub enforced application job timeout of 30 minutes; media installation consumed 15m30s. API 1170 passed/47 skipped, browser and PostgreSQL succeeded; later content verification was interrupted.",
+    "workflowChange": "Application timeout 30 -> 60 minutes; all checks retained",
+    "workflowRevision": "d4c93e7",
+    "workflowSha256": "ab188a7002f7a65799a81e58d325922912923e16516fc811a5c635b04a2f55ec"
   },
   "production": {
     "status": "not-released",
@@ -120,7 +125,8 @@
     "Teacher review, real devices, all voices listening and long-term learning are outstanding",
     "Full M1-M7 and 72 requirements remain open; this batch does not assert product completion",
     "Project advice still uses its original synchronous model operation; no provider exactly-once claim",
-    "Local copies are browser storage, not independent backups"
+    "Local copies are browser storage, not independent backups",
+    "119 isolated PostgreSQL cold-read tests identified a legacy teaching comparison sensitive to JSONB property order; fixed and 29-test validated only in the separate 119 candidate. Current production uses SQLite."
   ],
   "design": {
     "passed": true,
@@ -129,7 +135,7 @@
     "routes": 325,
     "collections": 93,
     "contractTypes": 307,
-    "markdownLinks": 2675,
+    "markdownLinks": 2680,
     "viewerChecks": 10
   },
   "postApiStartChanges": "No API or contracts changed after the full API run started; later changes affect only project CSS/badge, browser tests, documentation and one isolated real-TTS QA script.",
@@ -155,6 +161,7 @@
     "project-teaching-postgres.json": "a5be0479a3dc06584db4dad2fd672ca2321977a7f431f07df6950082091b0690",
     "project-teaching-service-final.json": "49a370aa941f02dcbb70cbec33b807f492068582265137e7311092ba70991f34",
     "project-teaching-service-http-fence.json": "c347a7b49d5c6b920b4fbf87c0053a24dbeeb88c30f33965f29fce381c43a43b",
-    "project-teaching-service-initial.json": "455a5f575c87e811b03fff871e7dbe698143cac19538e721f2bd63e428bac0f2"
+    "project-teaching-service-initial.json": "455a5f575c87e811b03fff871e7dbe698143cac19538e721f2bd63e428bac0f2",
+    "project-teaching-exact-ci-initial.json": "842853bc88f4920f213a776266e5ef7f1c72c2d7166c0b7b3c16841d2d737460"
   }
 }
