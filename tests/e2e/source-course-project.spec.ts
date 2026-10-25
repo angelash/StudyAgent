@@ -10,8 +10,44 @@ async function enter(page:Page){
   page.on('dialog',dialog=>void dialog.accept());const suffix=crypto.randomUUID(),principal='source-project-'+suffix+'@local.test',credential='Source-project-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'Content-Type':'application/json','X-Forwarded-For':'198.18.22.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
   await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);const row=await course(actor);await page.goto('/studio/source-courses?course='+row.id);return{actor,row};
 }
+async function finishReading(page:Page,actor:any){
+  const sessionId=new URL(page.url()).searchParams.get('session')!,session=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);
+  for(let step=0;step<session.lesson.steps.length;step++){
+    await expect(page.locator('.cl-session-navigation')).toContainText((step+1)+' / '+session.lesson.steps.length);
+    await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
+  }
+  await expect(page.getByRole('dialog',{name:'课堂学习里程碑',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'去检查理解 →',exact:true}).click();
+  return session;
+}
+async function finishQuestions(page:Page,session:any){
+  for(let index=0;index<session.lesson.questions.length;index++){
+    await page.getByRole('button',{name:'第'+(index+1)+'题',exact:true}).click();
+    if(index%3===2)await page.getByRole('button',{name:'Skip',exact:true}).click();
+    else{
+      if(index===0){await page.getByRole('button',{name:'先给我一个提示',exact:true}).click();await expect(page.locator('.cl-hint')).toHaveCount(1);}
+      await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();
+    }
+    await expect(page.locator('.cl-answer-feedback')).toBeVisible();
+  }
+}
+async function leaveClassroom(page:Page,standalone=false){
+  await page.getByRole('button',{name:standalone?'关闭独立练习':'离开课堂',exact:true}).click();
+  await page.getByRole('button',{name:'保存并离开',exact:true}).click();
+}
+
 test('a published source course opens one real project, completes all frozen stages and returns to its original course',async({page})=>{
-  test.setTimeout(90000);const{actor,row}=await enter(page);await expect(page.getByLabel('资料课程项目',{exact:true})).toContainText('尚未设置独立单元核查');expect((await call(actor,'GET','/learning/projects/catalog?sourceCourseId='+row.id)).projects).toHaveLength(0);
+  test.setTimeout(180000);const{actor,row}=await enter(page);await expect(page.getByLabel('资料课程项目',{exact:true})).toContainText('尚未设置独立单元核查');expect((await call(actor,'GET','/learning/projects/catalog?sourceCourseId='+row.id)).projects).toHaveLength(0);
+  expect(row.lessons).toHaveLength(2);
+  for(let index=0;index<row.lessons.length;index++){
+    const card=page.locator('.sc-lesson').nth(index);await card.getByRole('link',{name:'开始讲解 →',exact:true}).click();
+    const session=await finishReading(page,actor);await finishQuestions(page,session);await leaveClassroom(page);
+    await expect(card.getByLabel('讲解与练习记录',{exact:true})).toContainText('讲解已读');
+    await expect(card.getByLabel('讲解与练习记录',{exact:true})).toContainText('已作答 2/2');
+  }
+  const completed=await call(actor,'GET','/learning/source-courses/'+row.id);
+  expect(completed.journey.lessons.every((item:any)=>item.reading.state==='read'&&item.practice.summary.complete)).toBe(true);
+  expect(completed.journey.unitCheck).toBe('not_configured');
   await page.getByRole('link',{name:'打开资料应用项目 →',exact:true}).click();await expect(page.getByRole('button',{name:'开始这个项目 →',exact:true})).toBeEnabled();expect((await call(actor,'GET','/learning/projects/catalog?sourceCourseId='+row.id)).projects).toHaveLength(0);await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('STEP 1 OF 5');const projectId=new URL(page.url()).searchParams.get('project')!;
   let project=await call(actor,'GET','/learning/projects/'+projectId);expect(project.sourceCourseId).toBe(row.id);expect(project.definition.sourceCourse.objectives).toHaveLength(2);
   for(let index=0;index<project.definition.stages.length;index++){
@@ -47,4 +83,35 @@ test('returning from a course restores the personal project step and mode while 
 
 test('adult course journey keeps reading, unit check and project separate and resumes the same saved classroom',async({page})=>{
   await enter(page);await page.goto('/studio/classroom?unit=0&panel=units');const journey=page.getByLabel('本单元学习进程',{exact:true});await journey.locator('summary').click();await expect(journey).toContainText('社会学视角综合核查');const first=journey.locator('ol>li').first();await first.getByRole('button',{name:'开始讲解',exact:true}).click();await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');const sessionId=new URL(page.url()).searchParams.get('session')!;await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await journey.locator('summary').click();await expect(first).toContainText('讲解进行中');await first.getByRole('button',{name:'继续讲解',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);
+});
+
+test('an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts',async({page})=>{
+  test.setTimeout(300000);const{actor}=await enter(page),catalog=await call(actor,'GET','/learning/classroom/catalog'),unit=catalog.course.units[0],lessons=unit.lectures.flatMap((lecture:any)=>lecture.lessons);
+  const journey=page.getByLabel('本单元学习进程',{exact:true});
+  for(let index=0;index<lessons.length;index++){
+    await page.goto('/studio/classroom?unit=0&panel=units');await journey.locator('summary').click();
+    await journey.locator('ol>li').nth(index).getByRole('button',{name:'开始讲解',exact:true}).click();
+    const session=await finishReading(page,actor);await finishQuestions(page,session);await leaveClassroom(page);
+  }
+  await journey.locator('summary').click();await journey.locator('ol>li').last().getByRole('button',{name:'开始练习',exact:true}).click();
+  await expect(page.locator('.cl-practice-options label').first()).toBeVisible();
+  const checkId=new URL(page.url()).searchParams.get('session')!,check=await call(actor,'GET','/learning/classroom/sessions/'+checkId);
+  await finishQuestions(page,check);await leaveClassroom(page,true);await journey.locator('summary').click();
+  await journey.getByRole('link',{name:'开始项目 →',exact:true}).click();await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();
+  await expect(page.getByRole('region',{name:'当前项目步骤'})).toBeVisible();const projectId=new URL(page.url()).searchParams.get('project')!,project=await call(actor,'GET','/learning/projects/'+projectId);
+  for(let index=0;index<project.definition.stages.length;index++){
+    const stage=project.definition.stages[index];await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText(stage.title);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
+    for(const field of stage.fields){await page.getByRole('textbox',{name:field.label,exact:true}).fill('合成整单元旅程作品，保留比较条件与未核查解释：'+field.id);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();}
+    await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
+    for(const criterion of await page.locator('.pj-reflection .pj-ratings fieldset').all()){await criterion.getByRole('radio').nth(1).check();await criterion.locator('textarea').fill('这是合成操作测试中的自评，仍需要真实教师核查。');}
+    await page.getByRole('button',{name:'提交这个阶段 →',exact:true}).click();await expect(page.getByRole('button',{name:new RegExp('已提交 '+(index+1)+'/3')})).toBeVisible();
+    if(index<project.definition.stages.length-1)await page.getByRole('button',{name:'下一阶段 ›',exact:true}).click();
+  }
+  await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();await expect(page).toHaveURL(/unit=0/);await journey.locator('summary').click();
+  const final=await call(actor,'GET','/learning/classroom/catalog'),ids=lessons.map((lesson:any)=>lesson.id),activities=final.lessonActivities.filter((item:any)=>ids.includes(item.lessonId));
+  expect(activities).toHaveLength(lessons.length);expect(activities.every((item:any)=>item.reading.state==='read'&&item.practice.summary.complete)).toBe(true);
+  expect(final.lessonActivities.find((item:any)=>item.lessonId==='unit-exam:'+unit.id).practice.summary.complete).toBe(true);
+  expect(final.projectActivities.find((item:any)=>item.projectId===projectId)).toMatchObject({submittedStages:3,reviewedStages:0,readyStages:0});
+  await expect(journey).toContainText('已提交 3/3');await expect(journey).toContainText('最新提交已有人工复核 0/3');
+  await page.reload();await journey.locator('summary').click();await expect(journey).toContainText('已提交 3/3');
 });
