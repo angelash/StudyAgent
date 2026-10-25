@@ -51,3 +51,12 @@ ClassroomService增加来源核查定义的显式上下文，不借用微课less
 
 
 2026-10-26第一基础增量：纯冻结输入/内容验证器及共享schema已接入独立120分支。冻结所选公开目标、完整来源与整门微课题干的规范化摘要（不向模型发送原题/答案）；精确去重绑定原发布版本，每个声明目标均须有对应来源。16项纯验证测试与API类型检查通过；首次类型检查的空值收窄/字面量类型问题已修正，原日志保留。没有新增数据库集合、迁移、任务、业务路由或学生入口；不属于119，也未发布。生成、人工审阅发布、持久恢复、schema15、课堂与旅程整批继续实施。验证见[基础收据](../evidence/2026-10-26/source-check-foundation/acceptance.json)。
+
+
+## 8. schema15与私有记录接入细化（实施前）
+
+sourceCourseChecks记录冻结courseId/courseFingerprint、原ownerUserId及studentId、原请求键/摘要、PreparedSourceCheck、原模型、任务ID、revision、私有原稿/当前稿、AI审稿、时间及命令回执。状态为queued/generating/ready/failed/cancel_requested/cancelled/published/superseded/withdrawn。首个唯一索引约束ownerUserId/requestKey；第二个部分唯一索引约束同courseId最多一条published；第三个部分唯一索引约束同ownerUserId/courseId最多一个queued/generating/cancel_requested。确认新定义时先在同事务中将原published标为superseded，再发布当前项；旧学习保留原快照，ready候选不会撤换现有定义。索引和迁移15在同事务应用，旧库重复数据必须明确失败而不删记录或提前写迁移号。
+
+数据库沿用domain_records，不新建第二套题库或独立SQL存储。SQLite及PG备份白名单允许schema15并继续接受14；物理文件引用扫描补prepared.sources里的冻结PDF，避免来源课程后续换版后漏备旧原件。新集合加入studentRecords；注销成人账号移除其无儿童题组及未发布候选，随被移除来源课级联；已共享儿童课程的published/superseded/withdrawn定义按原课程历史保留。家庭可移植导出仅含已发布过定义的公开标识/目标/版本/状态元数据，不带prepared、上下文、题面答案、私有草稿或审稿；本人已提交首答反馈仍由原课堂导出规则提供。最新删除账本复用同一选择器，在SQLite/PG恢复开放前清除新版记录。
+
+此阶段先验证唯一索引、旧14库升级、新集合的账户/儿童删除与公开导出，以及仅被prepared.sources引用的真实PDF备份恢复。尚无生成/发布入口时不对外显示可用题组；不得把schema升级与记录可保存当作120整批交付。
