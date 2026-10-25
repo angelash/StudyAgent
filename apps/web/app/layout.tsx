@@ -2,6 +2,7 @@ import './globals.css';
 import 'katex/dist/katex.min.css';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { SessionConnection } from '../components/session-connection';
 
 export const metadata: Metadata = {
   title: '学习观察室 · 看见孩子怎样学会',
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="zh-CN">
-      <body>{children}</body>
+      <body><SessionConnection />{children}</body>
     </html>
   );
 }

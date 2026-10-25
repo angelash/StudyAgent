@@ -175,6 +175,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [previewMode,setPreviewMode]=React.useState<'neutral'|'current'>('neutral');
   const [dots, setDots] = React.useState(true), [handwriting, setHandwriting] = React.useState(true), [zoom, setZoom] = React.useState(100);
   const [page, setPage] = React.useState(0), [chatWidth, setChatWidth] = React.useState(360), [mobile, setMobile] = React.useState<'board' | 'chat'>('board');
+  const [boardLocation, setBoardLocation] = React.useState<{id:string;page:number}|null>(null);
+  const explicitBoard = React.useRef(false);
   const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourOpen, setTourOpen] = React.useState(false);
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
   const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [operationBusy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
@@ -255,9 +257,17 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     const resized = () => { if (following.current && historyElement.current) historyElement.current.scrollTop = historyElement.current.scrollHeight; };
     window.addEventListener('resize', resized); return () => window.removeEventListener('resize', resized);
   }, []);
+  React.useLayoutEffect(() => {
+    if (!boardLocation || boardLocation.page !== page) return;
+    const target = document.getElementById('board-' + boardLocation.id);
+    if (!target) return;
+    target.scrollIntoView({block:'start',behavior:'instant'});
+    setBoardLocation(null);
+  }, [boardLocation, page, mobile, session.messages]);
   React.useEffect(() => {
-    if (page !== Math.floor(session.cursor / 3) || session.revealed <= session.cursor || standalonePractice) return;
+    if (explicitBoard.current || page !== Math.floor(session.cursor / 3) || session.revealed <= session.cursor || standalonePractice) return;
     const frame = requestAnimationFrame(() => {
+      if (explicitBoard.current) return;
       const section = document.getElementById('board-' + session.lesson.steps[session.cursor].id);
       const target = playing ? section?.lastElementChild : section;
       target?.scrollIntoView({ block: playing ? 'nearest' : 'start' });
@@ -337,8 +347,15 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     // at the next sentence; pause cancels the current sentence and any pending fetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, session.cursor]);
-  function pause() { playEpoch.current++;narrationAbort.current?.abort();cloudAudio.current?.pause();setPlaying(false); recognition.current?.abort(); setListening(false);
+  function pause() { explicitBoard.current=false;setBoardLocation(null);playEpoch.current++;narrationAbort.current?.abort();cloudAudio.current?.pause();setPlaying(false); recognition.current?.abort(); setListening(false);
     replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
+  function locateBoard(id:string, targetPage:number) { explicitBoard.current=true;setPage(targetPage);setMobile('board');setBoardLocation({id,page:targetPage}); }
+  async function selectBoard(id:string,targetPage:number) {
+    pause();const epoch=playEpoch.current;
+    await revisionQueue.current.catch(()=>undefined);
+    if (!mounted.current || epoch!==playEpoch.current) return;
+    locateBoard(id,targetPage);
+  }
   async function readReply(messageId: string, mode: 'audio'|'text' = 'audio') {
     pause(); const operation = { abort: new AbortController(), audio: null as HTMLAudioElement | null, url: '' }; replyAudio.current = operation;
     setReadingReply(messageId); setExpandedReply(''); setReplyReadingMode(mode);
@@ -351,7 +368,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       if (!message) throw new Error('回答记录不存在，请重新读取课堂');
       const units = classroomReplyUnits(message);
       setReplyUnit({messageId,unitId:null});
-      if (message.board) { setPage(message.board.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + messageId)?.scrollIntoView({block:'start'})); }
+      if (message.board) locateBoard(messageId,message.board.page);
       for (let sentenceIndex = 0; sentenceIndex < units.length; sentenceIndex++) {
         if (operation.abort.signal.aborted) return;
         const unit = units[sentenceIndex];
@@ -496,7 +513,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     <section className="cl-board-area" aria-label="教学白板"><div className="cl-titlebar"><button aria-label="离开课堂" onClick={() => { pause(); setExit(true); }}><ClassroomIcon name="close"/></button>
       <button className="cl-title" data-classroom-tour="connection" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
       <div className="cl-board-tools"><button aria-label="缩小白板" onClick={() => setZoom(Math.max(50, zoom - 10))}>−</button><button aria-label="重置缩放" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="放大白板" onClick={() => setZoom(Math.min(180, zoom + 10))}>＋</button><i/>
-        <button aria-label="上一页白板" onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => setPage(Math.min(pageCount - 1, page + 1))} disabled={page + 1 >= pageCount}>›</button><i/>
+        <button aria-label="上一页白板" onClick={() => {pause();setPage(Math.max(0, page - 1));}} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => {pause();setPage(Math.min(pageCount - 1, page + 1));}} disabled={page + 1 >= pageCount}>›</button><i/>
         <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button data-classroom-tour="notes" aria-label="导出课堂笔记" onClick={()=>void exportNotes()}><ClassroomIcon name="share"/></button><button data-classroom-tour="settings" aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
       <div className="cl-mobile-tabs"><button onClick={() => setMobile('board')} data-active={mobile === 'board'}>白板</button><button onClick={() => { following.current = true; setMobile('chat'); }} data-active={mobile === 'chat'}>对话与练习</button></div>
       <div className="cl-board-scroll"><div className="cl-board-paper" data-handwriting={handwriting} style={{ zoom: zoom / 100 }}>
@@ -527,9 +544,9 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
             {standalonePractice && <p className="cl-practice-assistant-note">需要提示或解释时可以问我。我会帮你分析概念和条件，请先保留自己的判断。</p>}
             {!standalonePractice && !session.revealed && <div className="cl-history-empty"><small>SESSION OUTLINE</small><h2>{lesson.title}</h2><p>{lesson.objective}</p><ol>{lesson.steps.map(step => <li key={step.id}>{step.title}</li>)}</ol></div>}
             {!standalonePractice && lesson.steps.slice(0, session.revealed).map((step, index) => <article className="cl-teacher-turn" key={step.id} data-current={step.id === current.id}><small>{index === 0 ? time(session.createdAt) : 'TEACHER'}</small>{classroomStepUnits(session,step).slice(0, step.id === current.id ? (session.sentenceCursor ?? 0) + 1 : undefined).map((unit, line) => <p key={unit.id} className="cl-transcript-line">{unit.text}</p>)}
-              <button className="cl-board-link" onClick={() => { setPage(Math.floor(index / 3)); setMobile('board'); }}>♧ {step.title}</button></article>)}
+              <button className="cl-board-link" onClick={() => void selectBoard(step.id,Math.floor(index / 3))}>♧ {step.title}</button></article>)}
             {session.messages.map(message => <article className="cl-chat-turn" key={message.id} data-role={message.role}><small>{message.role === 'user' ? '我' : '老师'} · {time(message.at)}</small><p>{message.content}</p>{message.modelName && <small>{message.modelName}</small>}
-              {message.board && <button className="cl-board-link" onClick={() => { setPage(message.board!.page); setMobile('board'); requestAnimationFrame(() => document.getElementById('board-' + message.id)?.scrollIntoView({ block: 'start' })); }}>♧ {message.board.title}</button>}
+              {message.board && <button className="cl-board-link" onClick={() => void selectBoard(message.id,message.board!.page)}>♧ {message.board.title}</button>}
               {message.role === 'assistant' && <div className="cl-reply-reading-controls">{readingReply===message.id?<button className="cl-read-reply" onClick={pause}>{replyReadingMode==='audio'?'■ 停止朗读':'■ 停止阅读'}</button>:<><button className="cl-read-reply" onClick={()=>void readReply(message.id,'text')}>按句阅读这段回答</button>{session.speech.available&&<button className="cl-read-reply" onClick={()=>void readReply(message.id,'audio')}>♪ 朗读这段回答</button>}</>}</div>}</article>)}
             <div className="cl-speaking" role="status">{busy ? '● 正在思考你的问题…' : readingReply ? replyReadingMode==='audio'?'● 正在朗读回答…':'● 正在按句阅读…' : playing ? '● ' + audioState : '••• Paused'}{session.status === 'completed' ? ' · 讲解已读' : ''}</div>
           </>}

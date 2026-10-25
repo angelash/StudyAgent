@@ -1,0 +1,5 @@
+{
+  "passed": 35,
+  "failed": 3,
+  "reason": "The three recovery tests navigated to /learn, which has no assistant. Moved to /student/today without a practice query to isolate the shared identity request. Application snapshot preceded final board-link queue and manual-page cancellation refinements."
+}

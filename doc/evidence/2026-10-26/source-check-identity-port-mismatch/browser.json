@@ -1,0 +1,338 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "recovery:",
+      "tests/e2e/assistant-conversations.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/assistant-conversations-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "assistant-conversations.spec.ts",
+      "file": "assistant-conversations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16231,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:96:3",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 206,
+                      "line": 11
+                    },
+                    "snippet": "   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 206,
+                        "line": 11
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n\n   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:96:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:22:33.155Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 206,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-35d85b62c8a3b0efafb4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16179,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:101:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 206,
+                      "line": 11
+                    },
+                    "snippet": "   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 206,
+                        "line": 11
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n\n   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:101:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:22:50.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 206,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-065b920675e7cca71491",
+          "file": "assistant-conversations.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16195,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:3",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 206,
+                      "line": 11
+                    },
+                    "snippet": "   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 206,
+                        "line": 11
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/learn(?:\\?|$)/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3117/parent/login\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    33 × locator resolved to <html lang=\"zh-CN\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:3117/parent/login\"\u001b[22m\n\n\n   9 |   const child=(await call(actor,'/students',{nickname:'匿名助教验收',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile;\n  10 |   const fixture=await call(actor,'/qa/answer-journeys',{studentId:child.id,mode:'numeric_blank',kind});\n> 11 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |                                                                                                                                                                                                              ^\n  12 |   await page.goto(fixture.href);await expect(page.getByLabel('数字或分数答案')).toBeVisible();await open(page);\n  13 |   const assistantId=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('studyagent.assistant.v1.')).map(k=>JSON.parse(localStorage.getItem(k)!)).find(v=>v.sessionId)?.sessionId);\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n    at setup (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:11:206)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:23:08.396Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 206,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-eb6ddd0be84d65b6fa46",
+          "file": "assistant-conversations.spec.ts",
+          "line": 106,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T20:22:27.764Z",
+    "duration": 58854.337,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

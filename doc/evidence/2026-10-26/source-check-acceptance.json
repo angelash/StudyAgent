@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "passed": false,
-  "status": "local-increment-validated-full-browser-and-ci-pending",
+  "status": "repaired-awaiting-full-browser-and-fresh-ci",
   "deployed": false,
   "api": {
     "passed": 1240,
@@ -49,5 +49,30 @@
     "Real model smoke used synthetic source teaching; the two source-check stages used the live model. Its first writing output failed the hint length schema and was repaired; the successful receipt is not a reliability estimate.",
     "Synthetic PDF-shaped bytes in retention fixtures test original byte integrity, not parsing.",
     "Counts for API, PostgreSQL and focused browser overlap and must not be added."
-  ]
+  ],
+  "fullBrowserInitial": {
+    "passed": 208,
+    "failed": 6,
+    "retry": 0,
+    "head": "15e1b33a4e57cd40265a5721eefbfc3503786202",
+    "report": "source-check-full-browser-initial/browser.json",
+    "allNineSourceCheckCasesPassed": true
+  },
+  "applicationSourceRevision": "da574a46e2cfb840de33e68f52d8a79b2fc49b4b",
+  "webRepairRevision": "00902a1",
+  "repairReceipt": "source-check-recovery-final/receipt.json",
+  "initialCi": {
+    "run": 40227485300,
+    "head": "15e1b33a4e57cd40265a5721eefbfc3503786202",
+    "conclusion": "failure",
+    "application": "success",
+    "postgres": "success",
+    "browser": {
+      "expected": 209,
+      "unexpected": 4,
+      "flaky": 1
+    },
+    "archive": "source-check-ci-initial/"
+  },
+  "sourceRevision": "00902a194277472b33817757745f082e4d747fe8"
 }

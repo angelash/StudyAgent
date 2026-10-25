@@ -1,0 +1,1562 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/source-course-check.spec.ts",
+      "tests/e2e/assistant-conversations.spec.ts",
+      "tests/e2e/source-course-lifecycle.spec.ts",
+      "tests/e2e/classroom-boards.spec.ts",
+      "tests/e2e/pdf-material.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-check-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "assistant-conversations.spec.ts",
+      "file": "assistant-conversations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12136,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:26:58.908Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-b7663954ced72587e7f0",
+          "file": "assistant-conversations.spec.ts",
+          "line": 22,
+          "column": 5
+        },
+        {
+          "title": "a lost creation receipt restores the same original command from server state without sending it again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:11.404Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-0502c53b6b5e65ca1b33",
+          "file": "assistant-conversations.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "running cancellation settles after refresh and retry retains the original model despite a new composer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5950,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:21.871Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-56a582779042a9c5d099",
+          "file": "assistant-conversations.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "invalid model evidence remains a visible failure and an explicit retry publishes one validated answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4776,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:27.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-4a4aeb2bae7822076e08",
+          "file": "assistant-conversations.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "history reads beyond fifty messages, locates an old search match and returns to its actual practice question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:32.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-71087abf12d08578086c",
+          "file": "assistant-conversations.spec.ts",
+          "line": 54,
+          "column": 5
+        },
+        {
+          "title": "unavailable local storage keeps the full question editable, exportable and recoverable once the server accepts it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:34.752Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-7bd672c038974e3556d4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "a forged cache owned by another account is ignored without exposing or sending its text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1659,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:46.413Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-40cf3dd2743e8977ac9e",
+          "file": "assistant-conversations.spec.ts",
+          "line": 73,
+          "column": 5
+        },
+        {
+          "title": "stopping local waiting leaves the real server task running until explicit cancellation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4803,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:48.080Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-a1977e0d661fd0ab66be",
+          "file": "assistant-conversations.spec.ts",
+          "line": 79,
+          "column": 5
+        },
+        {
+          "title": "conversation search pages beyond the first results and recovers from an empty result",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:52.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-3657bfcd8d34007c9f35",
+          "file": "assistant-conversations.spec.ts",
+          "line": 87,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16785,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n    at open (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:16:91)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:29",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 91,
+                      "line": 16
+                    },
+                    "snippet": "  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n  15 | }\n> 16 | async function open(page:Page){await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();}\n     |                                                                                           ^\n  17 | const panel=(page:Page)=>page.locator('.learning-assistant'),task=(page:Page)=>page.getByRole('region',{name:'提问任务'});\n  18 | async function send(page:Page,message:string){await page.getByLabel('想一起看看什么').fill(message);await panel(page).getByRole('button',{name:'一起想一想 →',exact:true}).click();}\n  19 | async function shot(page:Page,name:string){if(!process.env.CI){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png'});}}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 91,
+                        "line": 16
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n  15 | }\n> 16 | async function open(page:Page){await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();}\n     |                                                                                           ^\n  17 | const panel=(page:Page)=>page.locator('.learning-assistant'),task=(page:Page)=>page.getByRole('region',{name:'提问任务'});\n  18 | async function send(page:Page,message:string){await page.getByLabel('想一起看看什么').fill(message);await panel(page).getByRole('button',{name:'一起想一想 →',exact:true}).click();}\n  19 | async function shot(page:Page,name:string){if(!process.env.CI){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png'});}}\n    at open (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:16:91)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:27:54.914Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 91,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-35d85b62c8a3b0efafb4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17816,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:102:206",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 206,
+                      "line": 102
+                    },
+                    "snippet": "  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{\n  101 |   const f=await setup(page);await page.goto('/learn');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});\n> 102 |   await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'正在确认学习身份…'})).toBeVisible();await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await expect(warning).toHaveCount(0);expect(reads).toBe(3);expect(signIns).toBe(0);\n      |                                                                                                                                                                                                              ^\n  103 |   await page.unroute('**/api/auth/me');await page.goto(f.href);await open(page);const cached=await page.evaluate((id)=>Object.keys(localStorage).filter(key=>key.startsWith('studyagent.assistant.v1.')).map(key=>JSON.parse(localStorage.getItem(key)!)).find(value=>value.sessionId===id)?.sessionId,f.assistantId);expect(cached).toBe(f.assistantId);\n  104 | });\n  105 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 206,
+                        "line": 102
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n\n  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{\n  101 |   const f=await setup(page);await page.goto('/learn');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});\n> 102 |   await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'正在确认学习身份…'})).toBeVisible();await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await expect(warning).toHaveCount(0);expect(reads).toBe(3);expect(signIns).toBe(0);\n      |                                                                                                                                                                                                              ^\n  103 |   await page.unroute('**/api/auth/me');await page.goto(f.href);await open(page);const cached=await page.evaluate((id)=>Object.keys(localStorage).filter(key=>key.startsWith('studyagent.assistant.v1.')).map(key=>JSON.parse(localStorage.getItem(key)!)).find(value=>value.sessionId===id)?.sessionId,f.assistantId);expect(cached).toBe(f.assistantId);\n  104 | });\n  105 |\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:102:206"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:28:12.913Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 206,
+                    "line": 102
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-065b920675e7cca71491",
+          "file": "assistant-conversations.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17042,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:438",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 438,
+                      "line": 107
+                    },
+                    "snippet": "  105 |\n  106 | test('identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure',async({page})=>{\n> 107 |   await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'请先进入学习或登录家长账号'})).toBeVisible();await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^\n  108 | });\n  109 |\n  110 | test('reviewing an earlier task preserves selection while the new task finishes in the background',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 438,
+                        "line": 107
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^打开学习(?:小助教|观察助教)$/ })\u001b[22m\n\n\n  105 |\n  106 | test('identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure',async({page})=>{\n> 107 |   await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'请先进入学习或登录家长账号'})).toBeVisible();await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^\n  108 | });\n  109 |\n  110 | test('reviewing an earlier task preserves selection while the new task finishes in the background',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:438"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:28:32.165Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 438,
+                    "line": 107
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-eb6ddd0be84d65b6fa46",
+          "file": "assistant-conversations.spec.ts",
+          "line": 106,
+          "column": 5
+        },
+        {
+          "title": "reviewing an earlier task preserves selection while the new task finishes in the background",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12650,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:28:50.634Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-548095506046a846a7b3",
+          "file": "assistant-conversations.spec.ts",
+          "line": 110,
+          "column": 5
+        },
+        {
+          "title": "diagnostic rules stay deterministic and history locates an answered frozen question without opening a future one",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:03.650Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-33107f83a3565c1a0a16",
+          "file": "assistant-conversations.spec.ts",
+          "line": 117,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-boards.spec.ts",
+      "file": "classroom-boards.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15986,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:07.006Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-b6bdb1bea6a7d9fb8a7a",
+          "file": "classroom-boards.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:23.001Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-1468b198db4bd543493d",
+          "file": "classroom-boards.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:36.082Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-6a47dadb4786adbff4b8",
+          "file": "classroom-boards.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7167,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:43.633Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-292d56aa30ddc2fc4b2c",
+          "file": "classroom-boards.spec.ts",
+          "line": 94,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "pdf-material.spec.ts",
+      "file": "pdf-material.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:50.819Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-6de9e5f12cfd5c892a52",
+          "file": "pdf-material.spec.ts",
+          "line": 11,
+          "column": 5
+        },
+        {
+          "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10153,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:29:57.315Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-c568544b83fdb848af1a",
+          "file": "pdf-material.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:07.474Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-adce21d2d7e68868ca90",
+          "file": "pdf-material.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:12.590Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-17a56f46e7b93184a89a",
+          "file": "pdf-material.spec.ts",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19446,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:24.411Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-9983f30504c5f48108ce",
+          "file": "pdf-material.spec.ts",
+          "line": 57,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "source-course-check.spec.ts",
+      "file": "source-course-check.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5229,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:43.876Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6849,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:49.111Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5705,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:30:55.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5250,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:01.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+          "file": "source-course-check.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5468,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:06.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+          "file": "source-course-check.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:12.411Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+          "file": "source-course-check.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:30.400Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-7d0fc63e124122b3642b",
+          "file": "source-course-check.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:36.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+          "file": "source-course-check.spec.ts",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5838,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:40.217Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+          "file": "source-course-check.spec.ts",
+          "line": 50,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "source-course-lifecycle.spec.ts",
+      "file": "source-course-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2341,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:46.070Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-f2175de9d306382cf3f9",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:48.419Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-ff6aa44fc944e312c0fc",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4308,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:50.977Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-48fcfc8299f84f4e1b24",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 32,
+          "column": 5
+        },
+        {
+          "title": "a lost publication reply recovers after refresh without another publication or another lesson version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:55.291Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-88cc9d94feed552fe799",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "a stale publication preview reads the actual saved version before a new explicit confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2749,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:31:59.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-909ff358c5c88c1d7949",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "stopping a lost publication wait preserves the committed command and ignores its late reply",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:32:01.901Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-e7638106fe30d28dedf0",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 57,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T20:26:53.293Z",
+    "duration": 313597.605,
+    "expected": 35,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

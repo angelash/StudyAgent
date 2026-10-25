@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`da574a46e2cfb840de33e68f52d8a79b2fc49b4b`。角色：家长、学生、管理员、授权教师。
+源码基线：`00902a194277472b33817757745f082e4d747fe8`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -49,13 +49,13 @@
 
 **输入**：账号、密码或现有Cookie。
 
-**处理与实现**：校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；退出撤销会话并清Cookie。
+**处理与实现**：校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie。
 
-**输出**：当前用户或统一认证错误。
+**输出**：当前用户、明确认证错误或可恢复的连接提示。
 
 **状态与持久化**：`users`、`sessions`
 
-**权限、失败与边界**：浏览器不把长期令牌保存在localStorage；跨站部署必须正确配置Cookie、HTTPS和CORS。
+**权限、失败与边界**：仅401/403判定未登录；未知身份不恢复缓存或自动循环；浏览器不把长期令牌保存在localStorage；跨站部署须配置Cookie、HTTPS和CORS。
 
 **关联接口**：
 
@@ -68,6 +68,13 @@
 - `AuthService.login`；[apps/api/src/modules/auth/auth.service.ts:38](../../../apps/api/src/modules/auth/auth.service.ts#L38)。
 - `AuthController.setCookie`；[apps/api/src/modules/auth/auth.controller.ts:10](../../../apps/api/src/modules/auth/auth.controller.ts#L10)。
 - `AuthService.logout`；[apps/api/src/modules/auth/auth.service.ts:50](../../../apps/api/src/modules/auth/auth.service.ts#L50)。
+
+**补充实现文件**：
+
+- [apps/web/lib/session-user.ts](../../../apps/web/lib/session-user.ts)
+- [apps/web/components/session-connection.tsx](../../../apps/web/components/session-connection.tsx)
+- [apps/web/components/session-control.tsx](../../../apps/web/components/session-control.tsx)
+- [tests/e2e/assistant-conversations.spec.ts](../../../tests/e2e/assistant-conversations.spec.ts)
 
 ## AUTH-03 学习码登录与设备撤销
 
