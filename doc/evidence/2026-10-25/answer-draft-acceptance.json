@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T08:01:07.427Z",
+  "at": "2026-10-25T08:02:21.616Z",
   "specificationCommit": "0c7091c",
   "passed": false,
   "backendPassed": true,
@@ -279,6 +279,11 @@
       "postgresPassed": 10,
       "postgresSqliteOnlySkipped": 1,
       "scope": "Actual child export, submitted logs excluded from assistant and portable drafts, editable correction retained; native cold restore retained"
+    },
+    "types": {
+      "api": true,
+      "web": true,
+      "initialNegativeTestTypeFailureRetained": true
     }
   },
   "diagnostics": [
@@ -337,5 +342,7 @@
       "sha256": "a793d9583e986f77515ad0e59cf019e225b915de34f0f1ab873d51b55f7e85ab",
       "visuallyReviewed": true
     }
-  }
+  },
+  "sourceRevision": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
+  "sourceDigestVerifiedAgainstGit": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d"
 }

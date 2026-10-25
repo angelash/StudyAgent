@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`a03aa560bfca9bea8f0a03429936b5d9bc28f08d`。角色：学生、监护家长、授权教师。
+源码基线：`0683a85a9ed8b8af7685e16172241f9aa15d8f5d`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 
@@ -9,12 +9,17 @@
 - [apps/api/src/modules/diagnostics/diagnostics.service.ts](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts)
 - [apps/api/src/modules/diagnostics/assessment-blueprint.ts](../../../apps/api/src/modules/diagnostics/assessment-blueprint.ts)
 - [apps/api/src/modules/diagnostics/scoring.ts](../../../apps/api/src/modules/diagnostics/scoring.ts)
+- [apps/api/src/common/answer-draft.ts](../../../apps/api/src/common/answer-draft.ts)
+- [apps/web/lib/answer-draft.ts](../../../apps/web/lib/answer-draft.ts)
+- [apps/web/components/answer-draft-status.tsx](../../../apps/web/components/answer-draft-status.tsx)
+- [apps/web/components/question-renderer.tsx](../../../apps/web/components/question-renderer.tsx)
 - [apps/web/components/structured-answer-input.tsx](../../../apps/web/components/structured-answer-input.tsx)
 
 ## 共享契约
 
 - [packages/contracts/src/diagnostics.ts](../../../packages/contracts/src/diagnostics.ts)
 - [packages/contracts/src/answer-protocol.ts](../../../packages/contracts/src/answer-protocol.ts)
+- [packages/contracts/src/answer-draft.ts](../../../packages/contracts/src/answer-draft.ts)
 - [packages/contracts/src/index.ts](../../../packages/contracts/src/index.ts)
 
 ## 关联验证
@@ -24,7 +29,10 @@
 - [apps/api/src/modules/diagnostics/diagnostics.integration.test.ts](../../../apps/api/src/modules/diagnostics/diagnostics.integration.test.ts)
 - [apps/api/src/modules/diagnostics/answer-protocol.test.ts](../../../apps/api/src/modules/diagnostics/answer-protocol.test.ts)
 - [apps/api/src/modules/diagnostics/scoring.test.ts](../../../apps/api/src/modules/diagnostics/scoring.test.ts)
+- [apps/api/src/modules/diagnostics/answer-draft.integration.test.ts](../../../apps/api/src/modules/diagnostics/answer-draft.integration.test.ts)
+- [apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts](../../../apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts)
 - [tests/e2e/product-smoke.spec.ts](../../../tests/e2e/product-smoke.spec.ts)
+- [tests/e2e/answer-journeys.spec.ts](../../../tests/e2e/answer-journeys.spec.ts)
 
 ## ASM-01 六类评测蓝图预览
 
@@ -45,8 +53,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:155](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L155)。
-- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:187](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L187)。
+- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:156](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L156)。
+- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:188](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L188)。
 
 ## ASM-02 确认蓝图与冻结评测
 
@@ -67,8 +75,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:188](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L188)。
-- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:33](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L33)。
+- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:189](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L189)。
+- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:34](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L34)。
 
 ## ASM-03 冻结题组内的逐题自适应
 
@@ -108,21 +116,21 @@
 
 **服务方法**：
 
-- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:227](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L227)。
-- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:233](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L233)。
-- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:291](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L291)。
+- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:228](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L228)。
+- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:234](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L234)。
+- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:292](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L292)。
 
 ## ASM-05 草稿、暂停、继续与提前结束
 
-**输入**：部分作答、action、expectedRevision、requestKey。
+**输入**：部分作答、actorId、冻结题面摘要、expectedRevision、requestKey、action。
 
-**处理与实现**：草稿按专用协议校验并持久化；暂停/恢复/终止受状态和版本约束；完成汇总已答证据，未答题保留未测。
+**处理与实现**：两路径共用草稿v2，区分原保存回执和当前修订；串行保存、标签页缓存、离线恢复、冲突对照/下载和退出前结清；旧写推进修订，升级后拒绝绕过；暂停/终止保留未知边界。
 
-**输出**：保存回执、状态、部分或完整报告。
+**输出**：草稿状态、确认修订、当前修订、部分或完整报告。
 
 **状态与持久化**：`diagnosticDrafts`、`diagnosticSessions`、`diagnosticReports`
 
-**权限、失败与边界**：提前结束不把未答题计错；并发页面更新返回409。
+**权限、失败与边界**：每题最多1024条v2回执，满额明确拒写并保留作品；旧范围返回不能改当前输入。
 
 **关联接口**：
 
@@ -132,21 +140,21 @@
 
 **服务方法**：
 
-- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:305](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L305)。
-- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:251](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L251)。
-- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:385](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L385)。
+- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:317](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L317)。
+- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:252](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L252)。
+- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:409](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L409)。
 
 ## ASM-06 首次响应、跳过、不会与提示
 
-**输入**：answer、disposition、elapsedMs、请求键。
+**输入**：answer、disposition、elapsedMs、请求键、draftFence。
 
-**处理与实现**：保存首次有效作答与时间、提示、曝光标志；同请求重放返回同回执；skip与dont_know单独记录；提示以服务端事件固定。
+**处理与实现**：首次提交冻结完整命令和耗时，校验账号/题面/草稿修订；丢回执先核对原提交，JSON对象键序不制造异参；保留提示/曝光与不会/跳过的原事实。
 
 **输出**：不可重复增加的首次表现。
 
 **状态与持久化**：`diagnosticResponses`、`diagnosticHints`
 
-**权限、失败与边界**：耗时是观测值，不直接推断注意力；重复请求不能增加样本。
+**权限、失败与边界**：耗时不直接推断注意力；升级草稿不能用旧请求绕过，重放不制造第二次首答。
 
 **关联接口**：
 
@@ -155,8 +163,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:321](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L321)。
-- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:372](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L372)。
+- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:335](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L335)。
+- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:396](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L396)。
 
 ## ASM-07 17类作答控件与协议
 
@@ -208,7 +216,7 @@
 
 **服务方法**：
 
-- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:508](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L508)。
+- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:532](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L532)。
 
 ## ASM-10 评分复核与报告历史
 
@@ -229,8 +237,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:571](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L571)。
-- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:466](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L466)。
+- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:596](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L596)。
+- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:490](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L490)。
 
 ## ASM-11 报告生成、画像与重新分析
 
@@ -253,7 +261,7 @@
 
 **服务方法**：
 
-- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:459](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L459)。
-- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:439](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L439)。
-- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:473](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L473)。
-- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:482](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L482)。
+- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:483](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L483)。
+- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:463](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L463)。
+- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:497](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L497)。
+- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:506](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L506)。

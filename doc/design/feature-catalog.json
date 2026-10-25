@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
+  "sourceRevision": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -339,7 +339,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 59
+              "line": 61
             }
           ],
           "sourceFiles": [
@@ -1167,18 +1167,26 @@
         "apps/api/src/modules/diagnostics/diagnostics.service.ts",
         "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
         "apps/api/src/modules/diagnostics/scoring.ts",
+        "apps/api/src/common/answer-draft.ts",
+        "apps/web/lib/answer-draft.ts",
+        "apps/web/components/answer-draft-status.tsx",
+        "apps/web/components/question-renderer.tsx",
         "apps/web/components/structured-answer-input.tsx"
       ],
       "contracts": [
         "packages/contracts/src/diagnostics.ts",
         "packages/contracts/src/answer-protocol.ts",
+        "packages/contracts/src/answer-draft.ts",
         "packages/contracts/src/index.ts"
       ],
       "tests": [
         "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
         "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
         "apps/api/src/modules/diagnostics/scoring.test.ts",
-        "tests/e2e/product-smoke.spec.ts"
+        "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+        "tests/e2e/product-smoke.spec.ts",
+        "tests/e2e/answer-journeys.spec.ts"
       ],
       "features": [
         {
@@ -1222,12 +1230,12 @@
             {
               "name": "DiagnosticsService.previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 155
+              "line": 156
             },
             {
               "name": "DiagnosticsService.getBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 187
+              "line": 188
             }
           ],
           "sourceFiles": [
@@ -1237,7 +1245,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1280,12 +1291,12 @@
             {
               "name": "DiagnosticsService.startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 188
+              "line": 189
             },
             {
               "name": "DiagnosticsService.start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 33
+              "line": 34
             }
           ],
           "sourceFiles": [
@@ -1295,7 +1306,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1325,7 +1339,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1377,17 +1394,17 @@
             {
               "name": "DiagnosticsService.listSessions",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 227
+              "line": 228
             },
             {
               "name": "DiagnosticsService.sessionView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 233
+              "line": 234
             },
             {
               "name": "DiagnosticsService.renderItem",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 291
+              "line": 292
             }
           ],
           "sourceFiles": [
@@ -1397,7 +1414,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1410,15 +1430,15 @@
             "/student/assessment",
             "/parent/dashboard"
           ],
-          "inputs": "部分作答、action、expectedRevision、requestKey",
-          "implementation": "草稿按专用协议校验并持久化；暂停/恢复/终止受状态和版本约束；完成汇总已答证据，未答题保留未测。",
-          "outputs": "保存回执、状态、部分或完整报告",
+          "inputs": "部分作答、actorId、冻结题面摘要、expectedRevision、requestKey、action",
+          "implementation": "两路径共用草稿v2，区分原保存回执和当前修订；串行保存、标签页缓存、离线恢复、冲突对照/下载和退出前结清；旧写推进修订，升级后拒绝绕过；暂停/终止保留未知边界。",
+          "outputs": "草稿状态、确认修订、当前修订、部分或完整报告",
           "collections": [
             "diagnosticDrafts",
             "diagnosticSessions",
             "diagnosticReports"
           ],
-          "limits": "提前结束不把未答题计错；并发页面更新返回409。",
+          "limits": "每题最多1024条v2回执，满额明确拒写并保留作品；旧范围返回不能改当前输入。",
           "endpoints": [
             {
               "verb": "PATCH",
@@ -1449,17 +1469,17 @@
             {
               "name": "DiagnosticsService.saveDraft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 305
+              "line": 317
             },
             {
               "name": "DiagnosticsService.changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 251
+              "line": 252
             },
             {
               "name": "DiagnosticsService.complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 385
+              "line": 409
             }
           ],
           "sourceFiles": [
@@ -1469,7 +1489,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1482,14 +1505,14 @@
             "/student/assessment",
             "/parent/dashboard"
           ],
-          "inputs": "answer、disposition、elapsedMs、请求键",
-          "implementation": "保存首次有效作答与时间、提示、曝光标志；同请求重放返回同回执；skip与dont_know单独记录；提示以服务端事件固定。",
+          "inputs": "answer、disposition、elapsedMs、请求键、draftFence",
+          "implementation": "首次提交冻结完整命令和耗时，校验账号/题面/草稿修订；丢回执先核对原提交，JSON对象键序不制造异参；保留提示/曝光与不会/跳过的原事实。",
           "outputs": "不可重复增加的首次表现",
           "collections": [
             "diagnosticResponses",
             "diagnosticHints"
           ],
-          "limits": "耗时是观测值，不直接推断注意力；重复请求不能增加样本。",
+          "limits": "耗时不直接推断注意力；升级草稿不能用旧请求绕过，重放不制造第二次首答。",
           "endpoints": [
             {
               "verb": "POST",
@@ -1512,12 +1535,12 @@
             {
               "name": "DiagnosticsService.submit",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 321
+              "line": 335
             },
             {
               "name": "DiagnosticsService.hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 372
+              "line": 396
             }
           ],
           "sourceFiles": [
@@ -1527,7 +1550,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1558,7 +1584,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1586,7 +1615,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1622,7 +1654,7 @@
             {
               "name": "DiagnosticsService.evidenceView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 508
+              "line": 532
             }
           ],
           "sourceFiles": [
@@ -1632,7 +1664,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1676,12 +1711,12 @@
             {
               "name": "DiagnosticsService.reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 571
+              "line": 596
             },
             {
               "name": "DiagnosticsService.reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 466
+              "line": 490
             }
           ],
           "sourceFiles": [
@@ -1691,7 +1726,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         },
         {
@@ -1751,22 +1789,22 @@
             {
               "name": "DiagnosticsService.report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 459
+              "line": 483
             },
             {
               "name": "DiagnosticsService.profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 439
+              "line": 463
             },
             {
               "name": "DiagnosticsService.analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 473
+              "line": 497
             },
             {
               "name": "DiagnosticsService.reanalyzeReport",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 482
+              "line": 506
             }
           ],
           "sourceFiles": [
@@ -1776,7 +1814,10 @@
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
             "apps/api/src/modules/diagnostics/scoring.test.ts",
-            "tests/e2e/product-smoke.spec.ts"
+            "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+            "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+            "tests/e2e/product-smoke.spec.ts",
+            "tests/e2e/answer-journeys.spec.ts"
           ]
         }
       ]
@@ -2396,12 +2437,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 827
+              "line": 849
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 563
+              "line": 565
             }
           ],
           "sourceFiles": [
@@ -2459,12 +2500,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 623
+              "line": 625
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 637
+              "line": 639
             }
           ],
           "sourceFiles": [
@@ -2491,16 +2532,16 @@
             "/parent/dashboard",
             "/student/today"
           ],
-          "inputs": "练习ID、题目ID、结构化回答、耗时与请求键",
-          "implementation": "复用共享协议及确定性评分；每题保留首次记录和辅助标记；草稿可恢复；完成统计唯一题目及待复核数量。",
-          "outputs": "训练回执与完成摘要",
+          "inputs": "练习ID、题目ID、结构化回答、耗时、请求键与草稿/订正栅栏",
+          "implementation": "共享草稿v2和确定性评分；修订日志跨首次与订正保留，题面摘要绑定当前作答次数；URL恢复正在编辑的题，网络失败保留原命令；再想一次明确新次数，原首答和参考曝光保留。",
+          "outputs": "训练回执、可恢复订正稿与完成摘要",
           "collections": [
             "practiceSessions",
             "practiceAttempts",
             "practiceHints",
             "practiceScoringRevisions"
           ],
-          "limits": "训练和复做不会按重复提交次数增加独立掌握证据。",
+          "limits": "训练复做不增加独立掌握样本；读回旧首答与新增订正分别核对，文件/绘图仍待量规复核。",
           "endpoints": [
             {
               "verb": "GET",
@@ -2555,32 +2596,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 679
+              "line": 681
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 697
+              "line": 699
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 706
+              "line": 717
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 722
+              "line": 737
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 776
+              "line": 798
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 787
+              "line": 809
             }
           ],
           "sourceFiles": [
@@ -2630,7 +2671,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 797
+              "line": 819
             }
           ],
           "sourceFiles": [
@@ -3931,12 +3972,12 @@
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 341
+              "line": 342
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 437
+              "line": 438
             }
           ],
           "sourceFiles": [
@@ -4209,7 +4250,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 64
+              "line": 66
             }
           ],
           "sourceFiles": [
@@ -4284,17 +4325,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 492
+              "line": 494
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 508
+              "line": 510
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 537
+              "line": 539
             }
           ],
           "sourceFiles": [
@@ -4865,12 +4906,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 212
+              "line": 214
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 224
+              "line": 226
             }
           ],
           "sourceFiles": [
@@ -4927,7 +4968,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 481
+              "line": 483
             }
           ],
           "sourceFiles": [
@@ -5002,17 +5043,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 248
+              "line": 250
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 309
+              "line": 311
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 319
+              "line": 321
             }
           ],
           "sourceFiles": [
@@ -5120,12 +5161,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 334
+              "line": 336
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 362
+              "line": 364
             }
           ],
           "sourceFiles": [
@@ -5190,12 +5231,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 397
+              "line": 399
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 412
+              "line": 414
             }
           ],
           "sourceFiles": [
@@ -5261,12 +5302,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 433
+              "line": 435
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 454
+              "line": 456
             }
           ],
           "sourceFiles": [
@@ -5341,17 +5382,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 115
+              "line": 117
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 131
+              "line": 133
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 169
+              "line": 171
             }
           ],
           "sourceFiles": [
@@ -8093,7 +8134,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 338
+              "line": 339
             },
             {
               "name": "DomainEventBusService.publish",
@@ -8103,7 +8144,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 236
+              "line": 237
             }
           ],
           "sourceFiles": [
@@ -8296,7 +8337,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 236
+              "line": 237
             }
           ],
           "sourceFiles": [
@@ -8373,7 +8414,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 220
+              "line": 221
             },
             {
               "name": "RuntimeMetricsService.snapshot",
