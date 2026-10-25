@@ -14,6 +14,8 @@ import { newCompilation,compilationView,verifyCompilation,stageId,checkLongLesso
 import { courseSelectionShape,courseSelectionSchema,readCourseSelection,coursePreflight,materialVersion } from './source-course-selection';
 import { compileSourceChunks } from './source-course-chunks';
 import { persistStudioMaterial } from './studio-material-storage';
+import { lessonActivity,projectActivities } from './course-journey';
+import { sourceCourseProjectDefinition } from './source-course-project';
 export { materialVersion } from './source-course-selection';
 
 const id=z.string().min(1).max(180),key=z.string().min(8).max(180),revision=z.number().int().min(0);
@@ -77,6 +79,7 @@ export class SourceCourseService {
       lessonCount:lessonList.length,viewed:lessonList.filter(lesson=>viewed.has(lesson.id)).length,lastLessonId:recent?.lessonId??null,lastSessionId:recent?.id??null,nextLessonId:next?.id??null,nextLessonTitle:next?.title??null,lastStudied:recent?.updatedAt??null,
       revision:row.revision,...(row.compilation?{compilation:compact?{...compilationView(row,viewerId)!,coverage:[]}:compilationView(row,viewerId)}:{}),generation:generationView(row),generationInput:viewerId===row.ownerUserId?structuredClone(row.compilation?.input??row.generation?.input??null):null,overview:row.result?.overview??null,input:structuredClone(row.input),sources:compact?[]:structuredClone(row.compilation?row.sources.map(source=>({...source,text:'',blocks:[],textCharacters:source.text.length})):row.sources),permissions:{manage:viewerId===row.ownerUserId},contentReview:'pending',formalMeasurementEligible:false,
       sourceStatus:this.sourceStatus(row),fingerprint:row.fingerprint,modelName:row.modelName,lessons,
+      ...(!compact?{journey:{lessons:lessons.map(lesson=>lessonActivity(lesson,sessions)),projects:projectActivities(this.store.select('courseProjects',{ownerUserId:viewerId,sourceCourseId:row.id}),[sourceCourseProjectDefinition(row)].filter((value):value is NonNullable<typeof value>=>Boolean(value))),unitCheck:'not_configured' as const}}:{}),
       task:task?{id:row.taskId!,state:task.state,version:task.version,generation:task.generation,errorCode:task.errorCode}:null,
       confirmedAt:row.confirmedAt,createdAt:row.createdAt,updatedAt:row.updatedAt};
   }

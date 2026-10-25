@@ -12,6 +12,8 @@ import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomHin
 import { sourceCourseLesson, sourceCourseAnswerKeys } from './source-course-content';
 import { assertSourceCourseAccess } from './source-course.service';
 import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, verifySpeechTrack } from './classroom-presentation';
+import { lessonActivity,projectActivities } from './course-journey';
+import { adultProjectDefinitions } from './course-project-content';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[] }>;
@@ -38,7 +40,8 @@ export class ClassroomService {
       const previous = reading.get(row.lessonId);
       if (!previous || row.status === 'completed' && previous.status !== 'completed') reading.set(row.lessonId, row);
     }
-    return { course: classroomCourse(), progress: sessions.map(row => ({ lessonId: row.lessonId, sessionId: row.id,
+    const course=classroomCourse(),lessonActivities=course.units.flatMap(unit=>[...unit.lectures.flatMap(lecture=>lecture.lessons.map(lesson=>lessonActivity(classroomLesson(lesson.id)!,allSessions))),lessonActivity(classroomLesson('unit-exam:'+unit.id)!,allSessions,'unit_check')]);
+    return { course,lessonActivities,projectActivities:projectActivities(this.store.select('courseProjects',{ownerUserId:user.id,'definition.courseId':course.id}),adultProjectDefinitions()), progress: sessions.map(row => ({ lessonId: row.lessonId, sessionId: row.id,
       cursor: row.cursor, completed: row.status === 'completed', correct: row.answers.filter(answer => answer.correct).length,
       answered: row.answers.length, updatedAt: row.updatedAt, createdAt: row.createdAt })),
       readingProgress: [...reading.values()].map(row => ({ lessonId: row.lessonId, sessionId: row.id, cursor: row.cursor,

@@ -268,8 +268,11 @@ export function classroomAnswerKey(id: string) { return keys.get(id); }
 export function classroomHintKeys(id: string) { return hints.get(id); }
 export function classroomFingerprint(lesson: ClassroomLesson) { return createHash('sha256').update(JSON.stringify(lesson)).digest('hex'); }
 export function classroomTeachingFingerprint(lesson: ClassroomLesson) {
-  return createHash('sha256').update(JSON.stringify({ id: lesson.id, lectureId: lesson.lectureId, title: lesson.title,
-    objective: lesson.objective, steps: lesson.steps, verificationHref: lesson.verificationHref })).digest('hex');
+  // This comparison is not persisted as the content/version identity. JSONB may
+  // reorder nested object properties; preserve values and array order only.
+  const canonical=(value:unknown):unknown=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([key,child])=>[key,canonical(child)])):value;
+  return createHash('sha256').update(JSON.stringify(canonical({ id: lesson.id, lectureId: lesson.lectureId, title: lesson.title,
+    objective: lesson.objective, steps: lesson.steps, verificationHref: lesson.verificationHref }))).digest('hex');
 }
 
 export function curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined {

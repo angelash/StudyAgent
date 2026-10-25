@@ -64,7 +64,7 @@ test('a guardian reviews a learner submission in the curriculum project workspac
   await dialog.getByLabel('具体反馈与下一步').fill('保留当前过程，下次补充独立检查结果。');await dialog.getByRole('button',{name:'保存人工复核'}).click();await expect(dialog).toContainText('保留当前过程，下次补充独立检查结果。');await capture(page,'guardian-review');
   const response=await fetch(api+'/learning/projects/'+project.id,{headers:{authorization:'Bearer '+learner.token}});const restored=(await response.json()).data;expect(restored.reviews).toHaveLength(1);expect(restored.reviews[0].reviewerRole).toBe('parent');expect(restored.submissions).toEqual(submitted.submissions);
   await dialog.getByRole('button',{name:'关闭提交版本'}).click();await page.goto('/studio?'+new URLSearchParams({view:'courses',course:course.id,student:studentId,subject:'math'}));
-  await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.locator('.pj-history-row')).toHaveCount(1);
+  await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();const fullView=page.getByRole('button',{name:'完整作品',exact:true});if(await fullView.isVisible())await fullView.click();await expect(page.locator('.pj-history-row')).toHaveCount(1);
 });
 test('all five adult projects complete their three stages and can cite earlier immutable artifacts',async({page})=>{
   test.setTimeout(180000);await login(page);

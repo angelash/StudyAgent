@@ -24,6 +24,7 @@ import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
 import { ClassroomToolTour } from './tool-tour';
 import { useVoicePreview } from './voice-preview';
 import { usePracticeDraft } from './practice-draft';
+import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
   return <span className="cl-ring" data-state={state} aria-label={{ new: '未开始', started: '已接触', viewed: '讲解已读', correct: '本题答对' }[state]} />;
@@ -36,6 +37,9 @@ export { lessonUrl };
 
 export function ClassroomWorkbench() {
   const identity = useSessionUser();
+  return <ClassroomWorkspace key={identity?identity.id+':'+identity.role:identity===undefined?'pending':'signed-out'} identity={identity}/>;
+}
+function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUser>}){
   const [catalog, setCatalog] = React.useState<ClassroomCatalog | null>(null), [unitIndex, setUnitIndex] = React.useState(0);
   const [session, setSession] = React.useState<ClassroomSessionView | null>(null), [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false), [panel, setPanel] = React.useState<'units' | 'materials' | 'practices'>('units');
@@ -44,11 +48,13 @@ export function ClassroomWorkbench() {
   const [libraryHref, setLibraryHref] = React.useState('/studio?view=courses');
   const [lessonInfo, setLessonInfo] = React.useState<Pick<ClassroomLesson, 'id' | 'title' | 'objective'> | null>(null), [help, setHelp] = React.useState(false);
   const studio = React.useRef<string | undefined>(undefined), loadController = React.useRef<AbortController | null>(null);
+  const catalogController=React.useRef<AbortController|null>(null);
   const sourceCourse = React.useRef<string | undefined>(undefined);
   const refresh = React.useCallback(async () => {
     if (!identity || identity.role === 'student') return;
-    try { setCatalog(await apiRequest<ClassroomCatalog>('/learning/classroom/catalog')); }
-    catch (caught) { setError((caught as Error).message); }
+    catalogController.current?.abort();const controller=new AbortController();catalogController.current=controller;
+    try {const value=await apiRequest<ClassroomCatalog>('/learning/classroom/catalog',{signal:controller.signal});if(!controller.signal.aborted)setCatalog(value);}
+    catch (caught) {if(!controller.signal.aborted)setError((caught as Error).message);}
   }, [identity]);
   const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string, history: 'push' | 'none' = 'push', assistance = false, savedSessionId?: string, useCurrentVersion = false, sourceCourseId?:string) => {
     loadController.current?.abort(); const controller = new AbortController(); loadController.current = controller;
@@ -79,7 +85,7 @@ export function ClassroomWorkbench() {
       else { loadController.current?.abort(); setLoading(false); setSession(null); void refresh(); }
     };
     restore(); window.addEventListener('popstate', restore);
-    return () => { loadController.current?.abort(); window.removeEventListener('popstate', restore); };
+    return () => { loadController.current?.abort();catalogController.current?.abort(); window.removeEventListener('popstate', restore); };
   }, [identity, refresh, open]);
   const firstLecture = catalog?.course.units[unitIndex]?.lectures[0]?.id;
   React.useEffect(() => { if (firstLecture) setExpanded([firstLecture]); }, [firstLecture]);
@@ -131,6 +137,7 @@ export function ClassroomWorkbench() {
           <Link title="单元项目" href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>▣</Link><button title="单元核查" onClick={() => void open('unit-exam:' + unit.id, 'practice')}>♙</button></div>
         {next && <button className="cl-next" onClick={() => void open(next.id)}>▶ <span>下一步：{next.title}</span> ›</button>}</div>
 
+        <details className="ca-journey" aria-label="本单元学习进程"><summary>学习进程 · 本单元</summary><p>讲解、练习和项目分别记录。已读、自评和AI建议不等于知识已掌握。</p><ol>{[...unit.lectures.flatMap(lecture=>lecture.lessons),{id:'unit-exam:'+unit.id,title:unit.title+'综合核查',objective:unit.objective}].map(lesson=>{const activity=catalog?.lessonActivities?.find(item=>item.lessonId===lesson.id);return <li key={lesson.id}><h3>{lesson.title}</h3><CourseLessonStatus value={activity}/><div className="ca-links">{activity?.kind!=='unit_check'&&<button onClick={()=>void open(lesson.id,'history',undefined,'push',false,activity?.reading.sessionId??undefined)}>{activity?.reading.sessionId?'继续讲解':'开始讲解'}</button>}<button onClick={()=>void open(lesson.id,'practice',undefined,'push',false,activity?.practice.sessionId??undefined)}>{activity?.practice.summary.answered?'继续本次练习':'开始练习'}</button></div></li>;})}</ol><h3>本单元项目</h3>{catalog?.projectActivities?.filter(project=>project.unitId===unit.id).length?<ul>{catalog.projectActivities.filter(project=>project.unitId===unit.id).map(project=><li key={project.projectId}><CourseProjectStatus value={project}/><div className="ca-links"><Link href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,project:project.projectId,stage:project.stageId,returnUnit:String(unitIndex),returnPanel:panel}))}>继续项目 →</Link></div></li>)}</ul>:<div className="ca-links"><Link href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>开始项目 →</Link></div>}</details>
         {Boolean(catalog?.archivedSessions?.length) && <details className="cl-archived-sessions"><summary>查看保留的旧版学习记录（{catalog!.archivedSessions!.length}）</summary><p>旧题和首次作答按当时版本保存。打开旧记录不会换成新题。</p><ul>{catalog!.archivedSessions!.map(saved => <li key={saved.sessionId}>
           <Link href={'/studio/classroom?' + new URLSearchParams({ lesson: saved.lessonId, session: saved.sessionId, tab: 'practice' })}>{saved.title} · 已记录 {saved.answered}/{saved.total} 题</Link><small>{new Date(saved.updatedAt).toLocaleString('zh-CN')}</small></li>)}</ul></details>}
         {panel === 'materials' ? <div className="cl-card"><h2>参考资料</h2><p>自编讲解以通用概念和匿名情境教学。以下为开放的进一步阅读入口，未逐节宣称页码引用。</p>

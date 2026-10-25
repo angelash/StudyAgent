@@ -3,6 +3,7 @@ import type { ClassroomLesson } from './classroom';
 import type { StudioPdfStructureBlock, StudioSubject } from './studio';
 import type { SourceCourseVersioning } from './source-course-lifecycle';
 import type { SourceCompilationView } from './source-course-compilation';
+import type { SourceCourseJourney } from './course-journey';
 const text = (max: number) => z.string().trim().min(1).max(max);
 export const sourceCourseLessonContentSchema = z.object({ title: text(100), objective: text(350), introduction: text(400), concept: text(900),
   notes: z.array(text(80)).min(2).max(5), example: z.object({ scenario: text(500), steps: z.array(text(200)).min(2).max(6), board: z.array(text(80)).min(2).max(6), conclusion: text(350) }).strict(),
@@ -32,6 +33,7 @@ export type SourceCourseSummary = { id: string; studentId: string | null; subjec
   goal: string; versioning?: SourceCourseVersioning; status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived';
   lessonCount: number; viewed: number; lastLessonId: string | null; lastSessionId?: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
 export type SourceCourseView = SourceCourseSummary & { revision: number; input: SourceCourseInput; sources: CourseSourceSnapshot[];
+  journey?:SourceCourseJourney;
   compilation?: SourceCompilationView;
   permissions: { manage: boolean }; overview: string | null;
   generation: SourceCourseGenerationView | null;

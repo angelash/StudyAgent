@@ -1,6 +1,7 @@
 import type { ClassroomReplyBoard } from './classroom-board';
 import type { StudioSpeechCapabilities } from './studio';
 import type { ClassroomPresentation, ClassroomPresentationRevision, ClassroomSpeechTrack } from './classroom-speech';
+import type { CourseLessonActivity,CourseProjectActivity } from './course-journey';
 
 export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[]; captions?: string[] };
 export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' | 'image' | 'diagram' | 'code' | 'table'; text: string;
@@ -45,6 +46,7 @@ export type ClassroomSessionView = ClassroomSession & { speech: StudioSpeechCapa
   contentStatus?: 'current' | 'archived' | 'unavailable' };
 export type ClassroomCatalog = { course: ClassroomCourse; progress: Array<{ lessonId: string; sessionId: string;
   cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>;
+  lessonActivities?:CourseLessonActivity[];projectActivities?:CourseProjectActivity[];
   readingProgress?: Array<{ lessonId: string; sessionId: string; cursor: number; completed: boolean; updatedAt: string }>;
   archivedSessions?: Array<{ sessionId: string; lessonId: string; title: string; total: number; answered: number; updatedAt: string }> };
 

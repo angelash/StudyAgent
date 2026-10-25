@@ -13,6 +13,7 @@ import { ProjectAdviceScopePicker } from './advice-scope';
 import { ProjectTeachingNavigator } from './project-teaching';
 import { useProjectRecovery,type ProjectLocalCopy } from './use-project-recovery';
 import { sameProjectValue,editorInProjectCommand,type ProjectOriginalCommand,type ProjectOperationKind } from './project-recovery';
+import { readProjectLocation,writeProjectLocation } from './project-location';
 import '../workspace.css';
 import './projects.css';
 
@@ -109,7 +110,9 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
         if (next.get('unitId') && !list.definitions.some(item => item.unitId === next.get('unitId')) && !target) throw new Error('这个单元没有可用项目，请返回课程目录重新进入。');
         if (target && (target.studioCourseId !== (course ?? undefined) || target.sourceCourseId!==(source??undefined) || next.get('unitId') && target.definition.unitId !== next.get('unitId'))) throw new Error('项目与当前课程入口不一致，请返回课程重新进入。');
         setCatalog(list); setRow(target ?? null);
-        const selected = target?.definition.stages.find(stage => stage.id === next.get('stage'))?.id ?? target?.currentStageId ?? list.definitions.find(item => item.unitId === next.get('unitId'))?.stages[0].id ?? list.definitions[0]?.stages[0].id ?? '';
+        const location=target?readProjectLocation(identity.id,target):null,explicitStep=next.has('step');
+        const selected = target?.definition.stages.find(stage => stage.id === next.get('stage'))?.id ?? (!next.has('stage')?location?.stageId:undefined) ?? target?.currentStageId ?? list.definitions.find(item => item.unitId === next.get('unitId'))?.stages[0].id ?? list.definitions[0]?.stages[0].id ?? '';
+        if(target){if(!explicitStep)next.set('step',location?.stageId===selected?location.stepId:'intro');if(!next.has('view'))next.set('view',explicitStep?'guided':location?.view??'guided');next.set('stage',selected);window.history.replaceState(null,'','/studio/projects?'+next);}
         setStageId(selected); setEditor(target ? recovery.load(target,selected) : blank()); if (target) address(target, selected); else displayedQuery.current=next.toString();
       } catch (caught) { if (!active.signal.aborted) setError((caught as Error).message); }
       finally { if (!active.signal.aborted) setLoading(false); }
@@ -123,6 +126,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
     return () => { mounted.current = false;loadGeneration.current++;controller.abort(); abort.current?.abort(); window.removeEventListener('popstate', pop); };
   }, [identity]);
   React.useEffect(() => { const warn = (event: BeforeUnloadEvent) => { if (dirty||recovery.command&&recovery.storageNotice) { event.preventDefault(); event.returnValue = ''; } }; window.addEventListener('beforeunload', warn); return () => window.removeEventListener('beforeunload', warn); }, [dirty,recovery.command,recovery.storageNotice]);
+  React.useEffect(()=>{if(row&&stageId&&teachingStep&&!writeProjectLocation(identity.id,row,stageId,teachingStep.id,guided?'guided':'complete'))setNotice('本机阅读位置无法暂存，地址栏仍保留当前步骤。');},[identity.id,row?.id,row?.definition.fingerprint,stageId,query]);
   React.useEffect(()=>{if(error){const regions=document.querySelectorAll('.pj-error');regions.item(regions.length-1)?.scrollIntoView({block:'center'});}},[error]);
 
   function accessLost(){recovery.remember();loadGeneration.current++;abort.current?.abort();setRow(null);setCatalog(null);setEditor(blank());setLocalCopy(null);setHistory(null);setAssistantOpen(false);setBusy('');setError('项目访问权限已变化，请返回课程或重新登录。');}

@@ -752,3 +752,4 @@ export * from './answer-draft';
 
 export * from './assistant-turn';
 export * from './project-teaching';
+export * from './course-journey';
