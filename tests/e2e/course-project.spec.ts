@@ -17,7 +17,7 @@ test('project stages save artifacts, evidence and self-assessment; immutable sub
   test.setTimeout(90000);const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));await login(page);
   await page.goto('/studio/classroom?unit=0&panel=units&q=社会');await page.getByRole('link',{name:'开始项目 →',exact:true}).click();
   await expect(page.getByRole('button',{name:'开始这个项目 →'})).toBeVisible();
-  await page.getByRole('button',{name:'开始这个项目 →'}).click();await expect(page.locator('.pj-stage-heading')).toContainText('界定研究问题');
+  await page.getByRole('button',{name:'开始这个项目 →'}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await expect(page.locator('.pj-stage-heading')).toContainText('界定研究问题');
   await page.getByLabel('匿名情境与已知观察').fill('匿名社区观察：周末阅览室有排队，工作日有空位。');await page.getByLabel('可以研究的问题').fill('比较开放时间与使用条件，解释两个时段的差别。');
   await page.getByRole('button',{name:'＋ 添加证据'}).click();await page.getByLabel('证据名称').fill('分时段观察记录');await page.getByLabel('观察或摘录').fill('两个周末和两个工作日各观察一次，仍缺少晚间记录。');await page.getByLabel('来源链接（可选）').fill('https://example.org/research');
   await selfAssess(page);await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.locator('.pj-notice')).toContainText('已保存');
@@ -32,11 +32,10 @@ test('project stages save artifacts, evidence and self-assessment; immutable sub
   await page.getByRole('link',{name:'‹ 返回课程'}).click();await expect(page).toHaveURL(/\/studio\/classroom/);expect(new URL(page.url()).searchParams.get('panel')).toBe('units');expect(errors).toEqual([]);
 });
 test('a lost save response replays the same request; a stale page preserves local input and can recover',async({page})=>{
-  test.setTimeout(90000);const actor=await login(page);await page.goto('/studio/projects?unitId=soc-u2');await page.getByRole('button',{name:'开始这个项目 →'}).click();
+  test.setTimeout(90000);const actor=await login(page);await page.goto('/studio/projects?unitId=soc-u2');await page.getByRole('button',{name:'开始这个项目 →'}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();
   await page.getByLabel('与前一单元问题的联系').fill('本地输入：保留研究问题');const keys:string[]=[];let lost=false;
   await page.route('**/api/learning/projects/*',async route=>{if(route.request().method()!=='PATCH'){await route.continue();return;}keys.push(route.request().postDataJSON().requestKey);if(!lost){lost=true;const response=await route.fetch();expect(response.status()).toBe(200);await route.abort('failed');}else await route.continue();});
-  await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.locator('.pj-error')).toContainText('暂时无法连接');await expect(page.getByLabel('与前一单元问题的联系')).toHaveValue('本地输入：保留研究问题');
-  await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.locator('.pj-notice')).toContainText('已保存');expect(keys).toHaveLength(2);expect(keys[0]).toBe(keys[1]);
+  await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.locator('.pj-notice')).toContainText('已保存');await expect(page.getByLabel('与前一单元问题的联系')).toHaveValue('本地输入：保留研究问题');expect(keys).toHaveLength(1); // The actor receipt confirms success without a second write.
   const projectId=new URL(page.url()).searchParams.get('project')!,headers={authorization:'Bearer '+actor.token,'content-type':'application/json'};
   const read=await fetch(api+'/learning/projects/'+projectId,{headers});const row=(await read.json()).data;
   const external=await fetch(api+'/learning/projects/'+projectId,{method:'PATCH',headers,body:JSON.stringify({expectedRevision:row.revision,requestKey:crypto.randomUUID(),stageId:row.currentStageId,artifact:{values:{link:'另一个页面保存的版本'},evidence:[]}})});expect(external.status).toBe(200);
@@ -44,7 +43,7 @@ test('a lost save response replays the same request; a stale page preserves loca
   const download=page.waitForEvent('download');await page.getByRole('button',{name:'保留本地副本并读取已保存版本'}).click();expect((await download).suggestedFilename()).toContain('草稿');await expect(page.getByLabel('与前一单元问题的联系')).toHaveValue('另一个页面保存的版本');await expect(page.locator('.pj-save-state')).toContainText('已保存');
 });
 test('unsaved-stage navigation asks to preserve work and unavailable AI leaves the saved artifact usable',async({page})=>{
-  await login(page);await page.goto('/studio/projects?unitId=soc-u3');await page.getByRole('button',{name:'开始这个项目 →'}).click();await page.getByLabel('文字地图或资源表').fill('待保存的资源与进入条件');
+  await login(page);await page.goto('/studio/projects?unitId=soc-u3');await page.getByRole('button',{name:'开始这个项目 →'}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await page.getByLabel('文字地图或资源表').fill('待保存的资源与进入条件');
   await page.getByRole('button',{name:/比较分层机制/}).click();const confirm=page.getByRole('dialog',{name:'保留项目修改'});await expect(confirm).toBeVisible();await confirm.getByRole('button',{name:'继续编辑'}).click();await expect(page.getByLabel('文字地图或资源表')).toHaveValue('待保存的资源与进入条件');
   await page.getByRole('button',{name:/比较分层机制/}).click();await confirm.getByRole('button',{name:'保存并继续'}).click();await expect(page.locator('.pj-stage-heading')).toContainText('比较分层机制');
   await page.getByRole('button',{name:/绘制资源与障碍地图/}).click();await expect(page.getByLabel('文字地图或资源表')).toHaveValue('待保存的资源与进入条件');
@@ -60,17 +59,17 @@ test('a guardian reviews a learner submission in the curriculum project workspac
   const learner=await call('/auth/learning-code',{code:code.code}),project=await call('/learning/projects',{studioCourseId:course.id,unitId:course.units[0].id},learner.token);
   const stage=project.definition.stages[0],ratings=project.definition.rubric.map((criterion:{id:string})=>({criterionId:criterion.id,level:1,evidence:'有过程记录，核查方式待补充。'}));
   const submitted=await call('/learning/projects/'+project.id+'/submissions',{expectedRevision:0,requestKey:crypto.randomUUID(),stageId:stage.id,artifact:{values:Object.fromEntries(stage.fields.map((field:{id:string})=>[field.id,'匿名新情境：保留步骤并说明共同单位。'])),evidence:[]},selfRatings:ratings,revisionNote:''},learner.token);
-  await page.goto('/studio/projects?'+new URLSearchParams({studioCourseId:course.id,project:project.id,unitId:course.units[0].id}));await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.getByRole('button',{name:'保存阶段草稿',exact:true})).toBeDisabled();await page.locator('.pj-history-row').click();
+  await page.goto('/studio/projects?'+new URLSearchParams({studioCourseId:course.id,project:project.id,unitId:course.units[0].id,view:'complete'}));await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.getByRole('button',{name:'保存阶段草稿',exact:true})).toBeDisabled();await page.locator('.pj-history-row').click();
   const dialog=page.getByRole('dialog',{name:'项目提交版本'});for(const field of await dialog.locator('.pj-ratings fieldset').all()){await field.getByRole('radio').nth(2).check();await field.getByRole('textbox').fill('作品保留了步骤；建议再比较另一种核查方法。');}
   await dialog.getByLabel('具体反馈与下一步').fill('保留当前过程，下次补充独立检查结果。');await dialog.getByRole('button',{name:'保存人工复核'}).click();await expect(dialog).toContainText('保留当前过程，下次补充独立检查结果。');await capture(page,'guardian-review');
   const response=await fetch(api+'/learning/projects/'+project.id,{headers:{authorization:'Bearer '+learner.token}});const restored=(await response.json()).data;expect(restored.reviews).toHaveLength(1);expect(restored.reviews[0].reviewerRole).toBe('parent');expect(restored.submissions).toEqual(submitted.submissions);
   await dialog.getByRole('button',{name:'关闭提交版本'}).click();await page.goto('/studio?'+new URLSearchParams({view:'courses',course:course.id,student:studentId,subject:'math'}));
-  await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.locator('.pj-history-row')).toHaveCount(1);
+  await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.locator('.pj-history-row')).toHaveCount(1);
 });
 test('all five adult projects complete their three stages and can cite earlier immutable artifacts',async({page})=>{
   test.setTimeout(180000);await login(page);
   for(let unit=1;unit<=5;unit++){
-    await page.goto('/studio/projects?unitId=soc-u'+unit);await page.getByRole('button',{name:'开始这个项目 →'}).click();
+    await page.goto('/studio/projects?unitId=soc-u'+unit);await page.getByRole('button',{name:'开始这个项目 →'}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();
     for(let phase=0;phase<3;phase++){
       await expect(page.locator('.pj-stage-heading')).toContainText(`STAGE ${phase+1} / 3`);await expect(page.locator('.pj-artifact textarea')).toHaveCount(2);
       for(const field of await page.locator('.pj-artifact textarea').all())await field.fill(`匿名研究产物，单元${unit}阶段${phase+1}：记录观察条件、概念联系、替代解释和需要核查的限制。`);

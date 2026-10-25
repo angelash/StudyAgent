@@ -25,6 +25,8 @@ export type CourseProject = { id: string; ownerUserId: string; studentId: string
 export type CourseProjectView = CourseProject & { contentStatus: 'current' | 'archived' | 'unavailable';
   permissions: { edit: boolean; review: boolean } };
 export type CourseProjectCatalog = { definitions: CourseProjectDefinition[]; projects: CourseProjectView[] };
+export type ProjectCommandReceipt = { requestKey:string;kind:'save'|'submit'|'review'|'advice'|'import';appliedRevision:number;at:string;
+  submissionId?:string;reviewId?:string;project:CourseProjectView };
 
 /** Stable serialization also labels AI advice about an earlier draft. */
 export function projectArtifactIdentity(artifact: ProjectArtifact): string {

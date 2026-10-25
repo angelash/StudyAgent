@@ -6,12 +6,14 @@ import { randomUUID } from 'node:crypto';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { Pool } from 'pg';
 
 describe('versioned course projects, artifacts, review and persistence', () => {
   const directory = mkdtempSync(join(tmpdir(), 'study-projects-'));
-  const names = ['NODE_ENV','STUDY_STORAGE','STUDY_DATA_DIR','STUDY_WORKER_ENABLED','STUDY_SEED_FOUNDATION','XIAOJIU_CHAT_ENABLED'] as const;
+  const names = ['NODE_ENV','DATABASE_URL','STUDY_STORAGE','STUDY_DATA_DIR','STUDY_WORKER_ENABLED','STUDY_SEED_FOUNDATION','XIAOJIU_CHAT_ENABLED'] as const;
   const prior = Object.fromEntries(names.map(name => [name,process.env[name]]));
   let app:any,store:any,parent:any,other:any,learner:any,teacher:any,studentId:string,courseId:string;
+  let pg:Pool|undefined,schema:string|undefined;
   const base = '/learning/projects';
   async function boot() {
     const { AppModule } = require('../../../dist/apps/api/src/app.module.js');
@@ -23,7 +25,9 @@ describe('versioned course projects, artifacts, review and persistence', () => {
     if(body!==undefined)query=query.send(body as object);return (await query.expect(status)).body.data;
   }
   beforeAll(async()=>{
-    Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:directory,STUDY_WORKER_ENABLED:'false',STUDY_SEED_FOUNDATION:'false',XIAOJIU_CHAT_ENABLED:'false'});
+    const location=process.env.STUDY_TEST_PROJECT_COMMAND_POSTGRES_URL;
+    if(location){pg=new Pool({connectionString:location});expect((await pg.query('SELECT current_database() name')).rows[0].name).toBe('study_agent_qa');schema='study_qa_project_commands_'+randomUUID().replace(/-/g,'');await pg.query('CREATE SCHEMA "'+schema+'"');const url=new URL(location);url.searchParams.set('options','-c search_path='+schema);process.env.DATABASE_URL=url.toString();}
+    Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:location?'postgres':'sqlite',STUDY_DATA_DIR:directory,STUDY_WORKER_ENABLED:'false',STUDY_SEED_FOUNDATION:'false',XIAOJIU_CHAT_ENABLED:'false'});
     await boot();
     const register=(principal:string)=>call('post','/auth/register',{principal,credential:'Project-test-only-20261024'},null);
     parent=await register('project-parent@test');other=await register('project-other@test');teacher=await register('project-teacher@test');
@@ -38,7 +42,7 @@ describe('versioned course projects, artifacts, review and persistence', () => {
       store.append('studioCourses',{id:courseId,studentId,subject:'math',grade:5,term:'upper',title:'迁移项目测试',description:'',objective:'解释新情境',status:'active',source:'studyagent_curriculum',scopeVersion:1,textbookVersion:'测试范围',focusAtomIds:[],materials:[],fingerprint:'project-fixture-v1',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),units:[{id:'transfer-unit',title:'迁移',objective:'解释每一步的条件',lessons:[{id:'transfer-project',atomId:null,title:'在新情境中解释',objective:'用新情境检查自己的方法',kind:'project',state:'not_started',href:'/learn'}]}]});
     });
   });
-  afterAll(async()=>{await app?.close();for(const [name,value]of Object.entries(prior)){if(value===undefined)delete process.env[name];else process.env[name]=value;}rmSync(directory,{recursive:true,force:true});});
+  afterAll(async()=>{await app?.close();if(pg){try{if(!/^study_qa_project_commands_[a-f0-9]{32}$/.test(schema??''))throw Error('Unsafe project command QA schema');await pg.query('DROP SCHEMA "'+schema+'" CASCADE');}finally{await pg.end();}}for(const [name,value]of Object.entries(prior)){if(value===undefined)delete process.env[name];else process.env[name]=value;}rmSync(directory,{recursive:true,force:true});});
   const artifact=(row:any,stageId=row.currentStageId,text='匿名记录：观察与解释分别保留。')=>({values:Object.fromEntries(row.definition.stages.find((s:any)=>s.id===stageId).fields.map((f:any)=>[f.id,text])),evidence:[{id:'source-1',label:'匿名观察',content:'在图书馆记录了两次提醒；不能推出所有时间都相同。',source:'https://example.org/notes'}]});
   const ratings=(row:any)=>row.definition.rubric.map((criterion:any)=>({criterionId:criterion.id,level:1,evidence:'作品列出当前观察，仍需要比较条件。'}));
   const open=(unitId='soc-u1',actor=parent)=>call('post',base,{unitId},actor);
@@ -75,7 +79,7 @@ describe('versioned course projects, artifacts, review and persistence', () => {
     await call('post',base+'/'+row.id+'/submissions',{...command,artifact:{...command.artifact,evidence:[command.artifact.evidence[0],command.artifact.evidence[0]]}},parent,400);
     expect((await call('get',base+'/'+row.id)).submissions).toEqual([]);
   });
-  it('freezes each submission, requires revision notes and survives a SQLite restart',async()=>{
+  it('freezes each submission, requires revision notes and survives a storage restart',async()=>{
     let row=await open('soc-u4'),command=submit(row);row=await call('post',base+'/'+row.id+'/submissions',command);
     const first=structuredClone(row.submissions[0]);expect((await call('post',base+'/'+row.id+'/submissions',command)).submissions).toEqual([first]);
     await call('post',base+'/'+row.id+'/submissions',submit(row),parent,400);
@@ -110,6 +114,10 @@ describe('versioned course projects, artifacts, review and persistence', () => {
     await call('post',base+'/'+row.id+'/reviews',command,learner,403);await call('post',base+'/'+row.id+'/reviews',command,other,403);
     await call('patch',base+'/'+row.id,{expectedRevision:row.revision,requestKey:randomUUID(),stageId:row.currentStageId,artifact:artifact(row)},parent,403);
     row=await call('post',base+'/'+row.id+'/reviews',command,parent);expect(row.reviews[0].reviewerRole).toBe('parent');expect(row.reviews[0].submissionId).toBe(row.submissions[0].id);
+    const reviewReceipt=await call('get',base+'/'+row.id+'/requests/'+command.requestKey,undefined,parent);
+    expect(reviewReceipt.reviewId).toBe(row.reviews[0].id);expect(reviewReceipt.appliedRevision).toBe(row.revision);
+    await call('get',base+'/'+row.id+'/requests/'+command.requestKey,undefined,teacher,404);
+    await call('post',base+'/'+row.id+'/reviews',command,teacher,409);
     expect((await call('post',base+'/'+row.id+'/reviews',command,parent)).reviews).toHaveLength(1);
     row=await call('post',base+'/'+row.id+'/reviews',{...command,expectedRevision:row.revision,requestKey:randomUUID(),decision:'ready'},teacher);expect(row.reviews[1].reviewerRole).toBe('teacher');
     expect((await call('get',base+'/catalog?studioCourseId='+courseId+'&studentId='+studentId,undefined,teacher)).projects.some((project:any)=>project.id===row.id)).toBe(true);
@@ -131,6 +139,17 @@ describe('versioned course projects, artifacts, review and persistence', () => {
     const stopped=new AbortController();stopped.abort();
     await expect(store.requestContext(()=>app.get(CourseProjectService).advise(parent.user,row.id,{...command,expectedRevision:row.revision,requestKey:randomUUID()},stopped.signal))).rejects.toThrow('已停止');
     expect((await call('get',base+'/'+row.id)).advice).toHaveLength(1);mock.mockRestore();
+  });
+  it('reads only the original actor receipt, distinguishes later revisions and never invents metadata for legacy commands',async()=>{
+    let row=await open('soc-u5',other);const command={expectedRevision:row.revision,requestKey:randomUUID(),stageId:row.currentStageId,artifact:artifact(row)};
+    row=await call('patch',base+'/'+row.id,command,other);const applied=row.revision;
+    row=await call('patch',base+'/'+row.id,{...command,expectedRevision:row.revision,requestKey:randomUUID(),artifact:artifact(row,row.currentStageId,'另一标签页明确保存的后来版本')},other);
+    const receipt=await call('get',base+'/'+row.id+'/requests/'+command.requestKey,undefined,other);
+    expect(receipt.kind).toBe('save');expect(receipt.appliedRevision).toBe(applied);expect(receipt.project.revision).toBe(row.revision);expect(receipt.project.revision).toBeGreaterThan(applied);
+    expect(receipt).not.toHaveProperty('hash');expect(receipt).not.toHaveProperty('body');expect(receipt.project).not.toHaveProperty('requests');
+    await call('get',base+'/'+row.id+'/requests/'+command.requestKey,undefined,parent,403);await call('get',base+'/'+row.id+'/requests/missing-request',undefined,other,404);await call('get',base+'/'+row.id+'/requests/short',undefined,other,400);
+    await store.transaction(()=>{const original=store.find('courseProjects',{id:row.id}).requests.find((item:any)=>item.key===command.requestKey);delete original.actorId;delete original.appliedRevision;delete original.at;});
+    await call('get',base+'/'+row.id+'/requests/'+command.requestKey,undefined,other,404);expect((await call('patch',base+'/'+row.id,command,other)).revision).toBe(row.revision);
   });
   it('includes project artifacts in portable privacy records and removes only the selected owner',async()=>{
     const {accountRecords,portableRecords,removeSelected}=require('../../../dist/apps/api/src/modules/privacy/privacy-records.js');

@@ -8,6 +8,7 @@ export class CourseProjectController {
   constructor(private readonly projects: CourseProjectService) {}
   @Get('catalog') catalog(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.projects.catalog(req.user, query); }
   @Get(':id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.projects.get(req.user, id); }
+  @Get(':id/requests/:requestKey') request(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Param('requestKey') key:string){return this.projects.request(req.user,id,key);}
   @Post() open(@Req() req: AuthenticatedRequest, @Body() input: unknown) { return this.projects.open(req.user, input); }
   @Patch(':id') save(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.projects.save(req.user, id, input); }
   @Post(':id/submissions') submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.projects.submit(req.user, id, input); }

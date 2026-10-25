@@ -291,3 +291,10 @@ jobs:
         env:
           STUDY_TEST_NEUTRAL_VOICE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-voice-preview.integration.test.ts
+
+      - name: Guided project narration, original actor receipts and storage restart on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_PROJECT_TEACHING_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_PROJECT_COMMAND_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/project-teaching.integration.test.ts src/modules/learning/course-project.integration.test.ts

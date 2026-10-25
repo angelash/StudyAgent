@@ -41,7 +41,7 @@ export function getCurrentUser<T>() {
 }
 
 export class ApiRequestError extends Error {
-  constructor(message: string, readonly status: number) { super(message); this.name = 'ApiRequestError'; }
+  constructor(message: string, readonly status: number,readonly code?:string) { super(message); this.name = 'ApiRequestError'; }
 }
 
 export async function apiRequest<T>(path: string, options: RequestInit = {}, token?: string | null): Promise<T> {
@@ -79,7 +79,7 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
   }
 
   if (!response.ok || payload?.error) {
-    throw new ApiRequestError(payload?.error?.message ?? `Request failed: ${response.status}`, response.status);
+    throw new ApiRequestError(payload?.error?.message ?? `Request failed: ${response.status}`, response.status,payload?.error?.code);
   }
 
   if (!payload) {
