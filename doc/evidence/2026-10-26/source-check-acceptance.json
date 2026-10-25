@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "passed": false,
-  "status": "cancel-progress-repaired-awaiting-new-full-regression-and-ci",
+  "status": "all-regression-and-exact-ci-passed-awaiting-daemon",
   "deployed": false,
   "focusedBrowser": {
     "passed": 9,
@@ -29,7 +29,7 @@
   ],
   "limits": [
     "The whole product and 72 requirements remain incomplete.",
-    "Complete local browser passed; fresh exact CI and daemon delivery for 120 are pending.",
+    "Complete local browser and fresh exact CI passed; daemon delivery for 120 is pending.",
     "No teacher content approval, real device, or long-term learning validation.",
     "Exact normalized repetition and identical-definition exposure do not establish semantic item independence.",
     "Current selection supports 2 to 6 lesson targets and single/multiple choice only.",
@@ -124,5 +124,53 @@
     },
     "case": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
     "deployed": false
+  },
+  "api": {
+    "passed": 1241,
+    "failed": 0,
+    "skipped": 43,
+    "files": 142
+  },
+  "postgres": {
+    "passed": 25,
+    "failed": 0,
+    "httpCases": 22,
+    "nativeStorageCases": 3,
+    "overlapWithFullApi": true
+  },
+  "exactCi": {
+    "passed": true,
+    "head": "7d606a456300129ee73c8117205368607aa58ca2",
+    "run": 40234093187,
+    "jobs": {
+      "application": "success",
+      "postgres": "success",
+      "browser": "success"
+    },
+    "browser": {
+      "passed": 217,
+      "failed": 0,
+      "skipped": 0,
+      "retry": 0
+    },
+    "application": {
+      "passed": 1233,
+      "skipped": 51,
+      "platform": "Linux",
+      "log": "application.log.gz"
+    },
+    "deployed": false,
+    "limits": [
+      "CI success is not a daemon delivery or teacher acceptance."
+    ]
+  },
+  "fullBrowserFinal": {
+    "passed": 217,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "durationMs": 1018374.6799999999,
+    "head": "7d606a456300129ee73c8117205368607aa58ca2",
+    "report": "source-check-cancellation/full-browser.json"
   }
 }
