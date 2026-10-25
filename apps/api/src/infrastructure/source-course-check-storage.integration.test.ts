@@ -63,4 +63,8 @@ describe('source check transactional publication',()=>{
     expect(accountRecords(store,'manager','manager@local.test').sourceCourseCheckPublications).toHaveLength(0);
     store.sourceCourseChecks[0].studentId=null;expect(accountRecords(store,'manager','manager@local.test').sourceCourseCheckPublications.map(row=>row.id)).toEqual(['absent-course']);
   });
+  it('cleans empty publication pointers by their own child/adult ownership and anonymizes nested original command actors',()=>{
+    const store:any={students:[{id:'child'}],sourceCourseCheckPublications:[{id:'child-course',courseId:'child-course',checkId:null,studentId:'child',ownerUserId:'manager'},{id:'adult-course',courseId:'adult-course',checkId:null,studentId:null,ownerUserId:'manager'}],sourceCourseChecks:[{id:'shared',ownerUserId:'manager',studentId:'child',courseId:'child-course',requestKey:'key',status:'published',commands:[{actorUserId:'manager'}]}]};
+    store.sourceCourseChecks[0].authorization={guardianId:'manager'};expect(studentRecords(store,'child').sourceCourseCheckPublications.map(row=>row.id)).toEqual(['child-course']);expect(accountRecords(store,'manager','manager@local.test').sourceCourseCheckPublications.map(row=>row.id)).toEqual(['adult-course']);anonymizeSharedAttribution(store,['child'],'manager');expect(store.sourceCourseChecks[0].commands[0].actorUserId).toBe('deleted-account');expect(store.sourceCourseChecks[0].authorization.guardianId).toBe('deleted-account');
+  });
 });

@@ -1,4 +1,4 @@
-import { Body,Controller,Get,Param,Post,Req,UseGuards } from '@nestjs/common';
+import { Body,Controller,Get,Param,Post,Patch,Req,UseGuards } from '@nestjs/common';
 import { AuthGuard,type AuthenticatedRequest } from '../../common/auth.guard';
 import { SourceCourseCheckService } from './source-course-check.service';
 @UseGuards(AuthGuard)
@@ -12,4 +12,8 @@ export class SourceCourseCheckController{
   @Post('prepare') prepare(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Body()body:unknown){return this.checks.prepare(req.user,courseId,body,req.authSession);}
   @Post(':id/cancel') cancel(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.control(req.user,courseId,id,'cancel',body,req.authSession);}
   @Post(':id/retry') retry(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.control(req.user,courseId,id,'retry',body,req.authSession);}
+  @Post(':id/authoring') authoring(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.authoring(req.user,courseId,id,body,req.authSession);}
+  @Patch(':id/content') content(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.edit(req.user,courseId,id,body,req.authSession);}
+  @Post(':id/confirm') confirm(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.publish(req.user,courseId,id,body,req.authSession);}
+  @Post(':id/withdraw') withdraw(@Req()req:AuthenticatedRequest,@Param('courseId')courseId:string,@Param('id')id:string,@Body()body:unknown){return this.checks.withdraw(req.user,courseId,id,body,req.authSession);}
 }

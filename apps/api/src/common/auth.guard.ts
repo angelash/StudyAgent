@@ -50,7 +50,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice|narration))?$/,
     /^learning\/source-courses(\/preflight|\/materials\/(text|text-file)|\/[^/]+\/(confirm|cancel|retry|archive))?$/,
-    /^learning\/source-courses\/[^/]+\/checks\/(preflight|prepare|[^/]+\/(cancel|retry))$/,
+    /^learning\/source-courses\/[^/]+\/checks\/(preflight|prepare|[^/]+\/(cancel|retry|authoring|confirm|withdraw))$/,
     /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,
     /^learning\/studio\/materials\/pdf$/, /^learning\/studio\/materials\/[^/]+\/whiteboard(\/preview)?$/,
@@ -66,7 +66,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/(messages|turns(\/[^/]+\/(cancel|retry))?))?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
   PUT: [/^learning\/project-files\/uploads\/[^/]+\/chunks\/\d+$/, /^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
-  PATCH: [/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
+  PATCH: [/^learning\/source-courses\/[^/]+\/checks\/[^/]+\/content$/,/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 
 @Injectable()

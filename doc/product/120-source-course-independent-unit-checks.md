@@ -107,3 +107,6 @@ POST :checkId/withdraw仅撤回当前发布项，带相同版本与原请求保�
 确认用于练习不应强迫本人先看答案，否则内部个人学习只能被标记为作者曝光。取代上节attestReviewed与“必须已有答案曝光”的确认前置：confirm改要求acknowledgeGeneratedContent=true，含义仅为同意将这份AI生成、仍待审核的候选用于练习。未显式POST authoring或PATCH题目的用户可以保留未见答案的首次作答路径；准备题组、读元数据、确认和GET原回执不记答案曝光。管理者可另选“审阅并编辑”，该路径继续记录实际答案曝光。两种路径的contentReview均pending/formalMeasurementEligible=false，不将确认称为人工审核通过。
 
 AI复核uncertain或编辑后审稿过期时，仍须明确acknowledgeReviewWarnings=true；界面直接说明待核查问题并提供继续练习动作，不要求为了确认而展开正确答案。实际已读答案/编辑者与后续作答账号、内容指纹匹配时才记录authorship，不能凭“是创建者”猜测已经看过答案。验证补“未读答案确认后原曝光表仍空”及“真正审阅/编辑后曝光存在”的对照，避免破坏内部自测体验。
+
+
+2026-10-26管理增量：显式答案审阅/曝光、逐版本旧稿与原回执、只编辑ready候选、旧AI审稿过期、未先看答案的确认路径、替换发布和保留单调空指针的撤回已实现。SQLite21项（13真实HTTP+8存储）与PG16项（13 HTTP+3原生恢复）通过，额外同八项存储/匿名化核对原actorUserId和guardianId清理；范围重叠不相加。两个候选同时发布只生效一个原修订，旧确认重放不重新发布。固定contentReview=pending/formalMeasurementEligible=false。学生课堂上下文、前端编辑/旅程入口、全量回归和真实模型仍待接入，不代表120整批或运行交付。见[管理增量收据](../evidence/2026-10-26/source-check-publication/acceptance.json)。

@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-25T18:57:23.228554+00:00",
+  "status": "management-increment-only-not-released",
+  "passed": true,
+  "sqlite": {
+    "passed": 21,
+    "failed": 0,
+    "includesManagerHttpTests": 13,
+    "includesStorageTests": 8,
+    "report": "source-check-publication-sqlite.json"
+  },
+  "postgres": {
+    "passed": 16,
+    "failed": 0,
+    "includesManagerHttpTests": 13,
+    "includesNativeRecoveryTests": 3,
+    "report": "source-check-publication-postgres.json"
+  },
+  "laterPrivacy": {
+    "passed": 8,
+    "failed": 0,
+    "report": "source-check-publication-privacy-final.json",
+    "scope": "Pure shared ownership/guardian attribution and storage cases; overlaps the SQLite storage scope"
+  },
+  "typecheck": {
+    "passed": true,
+    "report": "source-check-publication-lint-final.log.gz"
+  },
+  "scope": "Synthetic authenticated HTTP and two databases. Explicit private authoring access, original content/command replay, current-model-review status, generated-content confirmation without forced answer access, replacement, monotone withdrawal pointer and concurrent publication.",
+  "limitations": [
+    "Student practice context, course-journey entry and frontend authoring controls not yet integrated",
+    "No source-check live provider acceptance or full application/browser regression yet",
+    "Content remains pending teacher review and ineligible for formal ability measurement",
+    "Full HTTP shared-account deletion/recovery for published checks is still a follow-up",
+    "Current runtime remains the separately verified 119/schema14; this branch schema15 is not deployed"
+  ]
+}

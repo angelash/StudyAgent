@@ -34,7 +34,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
   const sourceCourseIds=ids(result,'sourceCourses');
   add(result,store,'sourceCourseChecks',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId));
-  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
+  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
   const learnerIds = new Set(rows(store, 'users').filter(row => candidateIds.has(row.id) && row.role === 'student').map(recordId));
   add(result, store, 'users', row => learnerIds.has(row.id) && row.role === 'student');
   add(result, store, 'sessions', row => row.studentId === studentId || learnerIds.has(row.userId));
@@ -80,7 +80,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
-  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
+  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId)||row.ownerUserId===actorId&&!row.studentId);
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
@@ -174,7 +174,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
 
 /** Retain shared children's learning history while removing a closed account's attribution. */
 export function anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string) {
-  const actorFields = new Set(['actorId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy', 'ownerUserId', 'confirmedByUserId', 'createdByUserId', 'decidedByUserId']);
+  const actorFields = new Set(['actorId','actorUserId', 'createdBy', 'decidedBy', 'reviewerId', 'grantedBy', 'revokedBy', 'proposedBy', 'ownerUserId', 'confirmedByUserId', 'createdByUserId', 'decidedByUserId']);
   const replace = (value: unknown): unknown => {
     if (Array.isArray(value)) return value.map(replace);
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, child]) =>
@@ -191,6 +191,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       // A per-file anonymous owner preserves uniqueness without retaining identity.
       if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if (name === 'sourceCourseChecks' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
+      if (name === 'sourceCourseChecks' && row.authorization?.guardianId === actorId) anonymous.authorization.guardianId='deleted-account';
       if(['projectAssets','projectAssetUploads'].includes(name)&&row.authorization?.guardianId===actorId)anonymous.authorization.guardianId='deleted-account';
       if(name==='studioConnectors'&&row.createdBy===actorId){anonymous.status='revoked';anonymous.encryptedFeedUrl='';anonymous.version=(Number(row.version)||0)+1;anonymous.lastError=null;}
       return anonymous;

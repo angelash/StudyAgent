@@ -26,13 +26,15 @@ export function captureSourceCheckAuthorization(store:InMemoryStoreService,stude
   }
   return authorization;
 }
+export function assertSourceCheckInputCurrent(course:SourceCourseRecord,row:SourceCourseCheckRecord){
+  const prepared=prepareSourceCourseCheck(course,{modelId:row.prepared.modelId,lessonIds:row.prepared.targets.map(target=>target.lessonId)}),{context,contextCharacters,inputFingerprint,...identity}=row.prepared;
+  if(course.fingerprint!==row.courseFingerprint||prepared.inputFingerprint!==inputFingerprint||sourceCheckDigest(identity)!==inputFingerprint||context.length!==contextCharacters||context.length>18000||sourceCheckDigest(JSON.parse(context))!==sourceCheckDigest(JSON.parse(prepared.context)))throw new ConflictException('来源课程或核查目标已变化');
+}
 /** Fresh transaction required. A different current login cannot validate the old attempt. */
 export function sourceCheckAuthority(store:InMemoryStoreService,students:StudentsService,row:SourceCourseCheckRecord){
   const auth=row.authorization;if(!auth)throw new ForbiddenException('缺少原题组生成授权');
   const user=store.find('users',{id:row.ownerUserId,status:'active',role:auth.role}),session=store.find('sessions',{tokenHash:auth.sessionTokenHash,userId:row.ownerUserId});
   if(!user||!session)throw new ForbiddenException('原资料授权已变化');const course=sourceCheckCourse(store,students,user,row.courseId),current=captureSourceCheckAuthorization(store,students,user,course,session);
-  if(sourceCheckDigest(current)!==sourceCheckDigest(auth))throw new ForbiddenException('原资料授权已撤回');
-  const prepared=prepareSourceCourseCheck(course,{modelId:row.prepared.modelId,lessonIds:row.prepared.targets.map(target=>target.lessonId)}),{context,contextCharacters,inputFingerprint,...identity}=row.prepared;
-  if(course.fingerprint!==row.courseFingerprint||prepared.inputFingerprint!==inputFingerprint||sourceCheckDigest(identity)!==inputFingerprint||context.length!==contextCharacters||context.length>18000||sourceCheckDigest(JSON.parse(context))!==sourceCheckDigest(JSON.parse(prepared.context)))throw new ConflictException('来源课程或核查目标已变化');
+  if(sourceCheckDigest(current)!==sourceCheckDigest(auth))throw new ForbiddenException('原资料授权已撤回');assertSourceCheckInputCurrent(course,row);
   return{user,course};
 }
