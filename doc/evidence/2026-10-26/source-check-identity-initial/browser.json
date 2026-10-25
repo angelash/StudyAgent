@@ -1,0 +1,235 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "recovery:",
+      "--max-failures=1",
+      "tests/e2e/assistant-conversations.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/assistant-conversations-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "assistant-conversations.spec.ts",
+      "file": "assistant-conversations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17135,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('想一起看看什么')\nExpected: enabled\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByLabel('想一起看看什么') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('想一起看看什么')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('想一起看看什么')\nExpected: enabled\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByLabel('想一起看看什么') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('想一起看看什么')\u001b[22m\n\n    at open (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:16:140)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:23",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 140,
+                      "line": 16
+                    },
+                    "snippet": "  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n  15 | }\n> 16 | async function open(page:Page){await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();}\n     |                                                                                                                                            ^\n  17 | const panel=(page:Page)=>page.locator('.learning-assistant'),task=(page:Page)=>page.getByRole('region',{name:'提问任务'});\n  18 | async function send(page:Page,message:string){await page.getByLabel('想一起看看什么').fill(message);await panel(page).getByRole('button',{name:'一起想一想 →',exact:true}).click();}\n  19 | async function shot(page:Page,name:string){if(!process.env.CI){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png'});}}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 140,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('想一起看看什么')\nExpected: enabled\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByLabel('想一起看看什么') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('想一起看看什么')\u001b[22m\n\n\n  14 |   expect(assistantId).toBeTruthy();return {actor,child,...fixture,assistantId};\n  15 | }\n> 16 | async function open(page:Page){await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();}\n     |                                                                                                                                            ^\n  17 | const panel=(page:Page)=>page.locator('.learning-assistant'),task=(page:Page)=>page.getByRole('region',{name:'提问任务'});\n  18 | async function send(page:Page,message:string){await page.getByLabel('想一起看看什么').fill(message);await panel(page).getByRole('button',{name:'一起想一想 →',exact:true}).click();}\n  19 | async function shot(page:Page,name:string){if(!process.env.CI){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png'});}}\n    at open (F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:16:140)\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:18:01.771Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 140,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-35d85b62c8a3b0efafb4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-065b920675e7cca71491",
+          "file": "assistant-conversations.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-eb6ddd0be84d65b6fa46",
+          "file": "assistant-conversations.spec.ts",
+          "line": 106,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T20:17:56.343Z",
+    "duration": 24427.257,
+    "expected": 0,
+    "skipped": 2,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

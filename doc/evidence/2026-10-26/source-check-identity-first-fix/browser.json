@@ -1,0 +1,338 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "recovery:",
+      "tests/e2e/assistant-conversations.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/assistant-conversations-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "assistant-conversations.spec.ts",
+      "file": "assistant-conversations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2859,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m3\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m3\u001b[39m\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:54",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 54,
+                      "line": 97
+                    },
+                    "snippet": "   95 | test('identity recovery: one failed identity request retries without asking the signed-in learner to log in again',async({page})=>{\n   96 |   await setup(page);let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads===1)await route.abort('failed');else await route.continue();});\n>  97 |   await page.reload();await open(page);expect(reads).toBe(2);await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);\n      |                                                      ^\n   98 | });\n   99 |\n  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 54,
+                        "line": 97
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m3\u001b[39m\n\n   95 | test('identity recovery: one failed identity request retries without asking the signed-in learner to log in again',async({page})=>{\n   96 |   await setup(page);let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads===1)await route.abort('failed');else await route.continue();});\n>  97 |   await page.reload();await open(page);expect(reads).toBe(2);await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);\n      |                                                      ^\n   98 | });\n   99 |\n  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:97:54"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:24:25.783Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-4e114--in-learner-to-log-in-again\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 54,
+                    "line": 97
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-35d85b62c8a3b0efafb4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17011,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert', { name: '身份确认未完成', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert', { name: '身份确认未完成', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert', { name: '身份确认未完成', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert', { name: '身份确认未完成', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert', { name: '身份确认未完成', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert', { name: '身份确认未完成', exact: true })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:102:111",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 111,
+                      "line": 102
+                    },
+                    "snippet": "  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{\n  101 |   const f=await setup(page);let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});\n> 102 |   await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await expect(warning).toHaveCount(0);expect(reads).toBe(3);expect(signIns).toBe(0);\n      |                                                                                                               ^\n  103 |   const cached=await page.evaluate(()=>Object.keys(localStorage).filter(key=>key.startsWith('studyagent.assistant.v1.')).map(key=>JSON.parse(localStorage.getItem(key)!)).find(value=>value.sessionId)?.sessionId);expect(cached).toBe(f.assistantId);\n  104 | });\n  105 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 111,
+                        "line": 102
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert', { name: '身份确认未完成', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert', { name: '身份确认未完成', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert', { name: '身份确认未完成', exact: true })\u001b[22m\n\n\n  100 | test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{\n  101 |   const f=await setup(page);let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});\n> 102 |   await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await expect(warning).toHaveCount(0);expect(reads).toBe(3);expect(signIns).toBe(0);\n      |                                                                                                               ^\n  103 |   const cached=await page.evaluate(()=>Object.keys(localStorage).filter(key=>key.startsWith('studyagent.assistant.v1.')).map(key=>JSON.parse(localStorage.getItem(key)!)).find(value=>value.sessionId)?.sessionId);expect(cached).toBe(f.assistantId);\n  104 | });\n  105 |\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:102:111"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:24:30.099Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-34956-existing-saved-conversation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 111,
+                    "line": 102
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-065b920675e7cca71491",
+          "file": "assistant-conversations.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17088,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.learning-assistant')\nExpected substring: \u001b[32m\"请先进入学习或登录家长账号\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.learning-assistant') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.learning-assistant')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.learning-assistant')\nExpected substring: \u001b[32m\"请先进入学习或登录家长账号\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.learning-assistant') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.learning-assistant')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:370",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 370,
+                      "line": 107
+                    },
+                    "snippet": "  105 |\n  106 | test('identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure',async({page})=>{\n> 107 |   await setup(page);let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(panel(page)).toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);\n      |                                                                                                                                                                                                                                                                                                                                                                                  ^\n  108 | });\n  109 |\n  110 | test('reviewing an earlier task preserves selection while the new task finishes in the background',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 370,
+                        "line": 107
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.learning-assistant')\nExpected substring: \u001b[32m\"请先进入学习或登录家长账号\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.learning-assistant') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.learning-assistant')\u001b[22m\n\n\n  105 |\n  106 | test('identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure',async({page})=>{\n> 107 |   await setup(page);let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(panel(page)).toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);\n      |                                                                                                                                                                                                                                                                                                                                                                                  ^\n  108 | });\n  109 |\n  110 | test('reviewing an earlier task preserves selection while the new task finishes in the background',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts:107:370"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T20:24:48.508Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\assistant-conversations-id-08866-ing-it-a-connection-failure\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 370,
+                    "line": 107
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-eb6ddd0be84d65b6fa46",
+          "file": "assistant-conversations.spec.ts",
+          "line": 106,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T20:24:19.412Z",
+    "duration": 48242.968,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

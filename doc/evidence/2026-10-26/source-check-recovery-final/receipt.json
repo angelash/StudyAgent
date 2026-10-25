@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "applicationRevision": "00902a194277472b33817757745f082e4d747fe8",
+  "browser": {
+    "passed": 4,
+    "failed": 0,
+    "retry": 0
+  },
+  "scope": [
+    "one transport failure retries once",
+    "persistent transport failure stays unknown and manual retry restores access without login",
+    "explicit 401 clears private identity without connection retry",
+    "held navigation save then keyboard reading and cross-page/same-page board links"
+  ],
+  "otherFocused": {
+    "passed": 35,
+    "failedTestAssumptions": 3,
+    "report": "../source-check-recovery-first-focused/browser.json",
+    "overlap": true
+  },
+  "limits": [
+    "Full browser and fresh exact CI are still required.",
+    "Final board-link queue and manual-page cancellation refinements are in the four-case final run.",
+    "No teacher or device validation."
+  ]
+}

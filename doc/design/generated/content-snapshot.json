@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "da574a46e2cfb840de33e68f52d8a79b2fc49b4b",
+  "sourceRevision": "00902a194277472b33817757745f082e4d747fe8",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-25T19:42:52.945Z",
+    "auditAt": "2026-10-25T20:34:26.990Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "ae765e0f889eab14264db67f0123ca2ce5db883f52af934cdba5474c9f27148f",
+    "localAuditSha256": "ed2c87b65c0c410d10f47656ac1796eab8729ee35eef438a650edf06d93da98d",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",

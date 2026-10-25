@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "da574a46e2cfb840de33e68f52d8a79b2fc49b4b",
+  "sourceRevision": "00902a194277472b33817757745f082e4d747fe8",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -99,13 +99,13 @@
             "/admin/accounts"
           ],
           "inputs": "账号、密码或现有Cookie",
-          "implementation": "校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；退出撤销会话并清Cookie。",
-          "outputs": "当前用户或统一认证错误",
+          "implementation": "校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie。",
+          "outputs": "当前用户、明确认证错误或可恢复的连接提示",
           "collections": [
             "users",
             "sessions"
           ],
-          "limits": "浏览器不把长期令牌保存在localStorage；跨站部署必须正确配置Cookie、HTTPS和CORS。",
+          "limits": "仅401/403判定未登录；未知身份不恢复缓存或自动循环；浏览器不把长期令牌保存在localStorage；跨站部署须配置Cookie、HTTPS和CORS。",
           "endpoints": [
             {
               "verb": "POST",
@@ -150,6 +150,10 @@
             }
           ],
           "sourceFiles": [
+            "apps/web/lib/session-user.ts",
+            "apps/web/components/session-connection.tsx",
+            "apps/web/components/session-control.tsx",
+            "tests/e2e/assistant-conversations.spec.ts",
             "apps/api/src/modules/auth/auth.service.ts",
             "apps/api/src/modules/auth/auth.controller.ts"
           ],
