@@ -28,7 +28,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
     /^learning\/projects\/(catalog|[^/]+)$/,
     /^learning\/source-courses(\/(materials|[^/]+))?$/,
-    /^learning\/source-courses\/[^/]+\/(progress|sources\/[^/]+)$/,
+    /^learning\/source-courses\/[^/]+\/(progress|versions|sources\/[^/]+)$/,
     /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
     /^learning\/studio\/calendar\/export$/,
     /^gesp\/students\/[^/]+\/workspace$/,

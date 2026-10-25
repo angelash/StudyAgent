@@ -742,3 +742,5 @@ export * from './classroom-turn';
 export * from './classroom-code';
 
 export * from './classroom-board';
+
+export * from './source-course-lifecycle';

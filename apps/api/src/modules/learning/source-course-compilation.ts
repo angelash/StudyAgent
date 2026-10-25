@@ -24,7 +24,7 @@ export type CompilationState={version:typeof sourceCompilationVersion;input:Sour
   outline:{title:string;overview:string;scopeNotes:string[];omitted:ChunkPlan['omitted'];lessons:LongTarget[]}|null;
   createdAt:string;updatedAt:string;candidateFingerprint:string|null};
 export type SourceCourseStageRecord={id:string;courseId:string;studentId:string|null;ownerUserId:string;kind:'index'|'plan'|'draft'|'review';key:string;
-  inputFingerprint:string;outputFingerprint:string;payload:unknown;createdAt:string;modelId:string;modelName:string};
+  inputFingerprint:string;outputFingerprint:string;payload:unknown;createdAt:string;modelId:string;modelName:string;copiedFrom?:{courseId:string;stageId:string;at:string}};
 export const stageId=(courseId:string,kind:SourceCourseStageRecord['kind'],key:string)=>'source_stage_'+generationDigest([courseId,kind,key]);
 export function verifySavedStage<T>(stage:SourceCourseStageRecord,row:SourceCourseRecord,kind:SourceCourseStageRecord['kind'],key:string,input:unknown,parse:(payload:unknown)=>T):T {
   if(stage.id!==stageId(row.id,kind,key)||stage.courseId!==row.id||stage.kind!==kind||stage.key!==key||stage.ownerUserId!==row.ownerUserId||stage.inputFingerprint!==generationDigest(input)||stage.outputFingerprint!==generationDigest(stage.payload)||stage.modelId!==row.compilation?.modelId)throw new Error('course_checkpoint_incompatible');

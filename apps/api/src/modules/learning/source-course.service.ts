@@ -8,7 +8,7 @@ import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
 import { assertMaterialAccess, studioMaterialView,materialTaskStatus } from './studio-material-access';
 import { SOURCE_COURSE_PIPELINE, generationDigest,generationFingerprint, generationView, newCourseGeneration } from './source-course-pipeline';
-import { sourceCourseLesson, courseCitationSources, checkGeneratedCourse, sourceDigest, sourceCourseModelContext, SourceCourseRecord } from './source-course-content';
+import { sourceCourseLesson, sourceCourseVersioningView, courseCitationSources, checkGeneratedCourse, sourceDigest, sourceCourseModelContext, SourceCourseRecord } from './source-course-content';
 
 import { newCompilation,compilationView,verifyCompilation,stageId,checkLongLesson,verifySavedStage,verifySavedReview,type SavedLongReview } from './source-course-compilation';
 import { courseSelectionShape,courseSelectionSchema,readCourseSelection,coursePreflight,materialVersion } from './source-course-selection';
@@ -18,7 +18,7 @@ export { materialVersion } from './source-course-selection';
 
 const id=z.string().min(1).max(180),key=z.string().min(8).max(180),revision=z.number().int().min(0);
 export function assertSourceCourseAccess(user:InMemoryUserAccount,row:SourceCourseRecord,students:StudentsService,editing=false){
-  if(row.ownerUserId!==user.id&&(editing||!row.studentId||!['active','archived'].includes(row.status)))throw new ForbiddenException('无法访问其他账号的资料课程');
+  if(row.ownerUserId!==user.id&&(['draft','discarded'].includes(row.versioning?.state??'')||editing||!row.studentId||!['active','archived'].includes(row.status)))throw new ForbiddenException('无法访问其他账号的资料课程');
   if(row.studentId)students.assertCanAccessStudent(user,row.studentId);else if(user.role==='student')throw new ForbiddenException('请从自己的学习课程进入');
 }
 @Injectable()
@@ -66,18 +66,18 @@ export class SourceCourseService {
     let changed=false;const versions=new Map<string,string>();for(const source of row.sources){if(!versions.has(source.materialId)){const current=this.store.find('studioSourceMaterials',{id:source.materialId});if(!current)return'unavailable';versions.set(source.materialId,materialVersion(current));}if(versions.get(source.materialId)!==source.version)changed=true;}return changed?'changed':'current';
   }
   private async view(row:SourceCourseRecord,provisional?:{state:string;version:number;generation:number;errorCode:string|null},viewerId=row.ownerUserId,compact=false):Promise<SourceCourseView>{
-    const task=provisional??await this.store.tasks.get(row.taskId),status=['active','archived','ready','cancelled'].includes(row.status)?row.status:
+    const task=provisional??(row.taskId?await this.store.tasks.get(row.taskId):null),status=['active','archived','ready','cancelled'].includes(row.status)?row.status:
       !task?'failed':task.state==='failed'?'failed':task.state==='cancelled'||task.state==='cancel_requested'?'cancelled':task.state==='running'?'generating':row.status;
     const sessions=this.store.select('classroomSessions',{ownerUserId:viewerId,courseId:row.id}),citationSources=row.result&&!compact?courseCitationSources(row):[],lessons=compact?[]:row.result?.lessons.map((_,index)=>sourceCourseLesson(row,index,citationSources)!)??[];
     const lessonList=row.result?.lessons.map((lesson,index)=>({id:row.lessonIds?.[index]??`source:${row.id}:${index+1}`,title:lesson.title}))??[];
     const viewed=new Set(sessions.filter(session=>session.status==='completed').map(session=>session.lessonId));
     const recent=sessions.sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
     const next=lessonList.find(lesson=>lesson.id===recent?.lessonId&&!viewed.has(lesson.id))??lessonList.find(lesson=>!viewed.has(lesson.id))??lessonList[0];
-    return{id:row.id,studentId:row.studentId,subject:row.subject,title:row.result?.title??row.input.title,goal:row.input.goal,status:status as SourceCourseView['status'],
-      lessonCount:lessonList.length,viewed:lessonList.filter(lesson=>viewed.has(lesson.id)).length,lastLessonId:recent?.lessonId??null,nextLessonId:next?.id??null,nextLessonTitle:next?.title??null,lastStudied:recent?.updatedAt??null,
+    return{id:row.id,studentId:row.studentId,subject:row.subject,title:row.result?.title??row.input.title,goal:row.input.goal,...(row.versioning?{versioning:sourceCourseVersioningView(row,viewerId,new Set(this.store.inspect('sourceCourses').filter(candidate=>candidate.confirmedAt&&['active','archived'].includes(candidate.status)).map(candidate=>candidate.id)))}:{}),status:status as SourceCourseView['status'],
+      lessonCount:lessonList.length,viewed:lessonList.filter(lesson=>viewed.has(lesson.id)).length,lastLessonId:recent?.lessonId??null,lastSessionId:recent?.id??null,nextLessonId:next?.id??null,nextLessonTitle:next?.title??null,lastStudied:recent?.updatedAt??null,
       revision:row.revision,...(row.compilation?{compilation:compact?{...compilationView(row,viewerId)!,coverage:[]}:compilationView(row,viewerId)}:{}),generation:generationView(row),generationInput:viewerId===row.ownerUserId?structuredClone(row.compilation?.input??row.generation?.input??null):null,overview:row.result?.overview??null,input:structuredClone(row.input),sources:compact?[]:structuredClone(row.compilation?row.sources.map(source=>({...source,text:'',blocks:[],textCharacters:source.text.length})):row.sources),permissions:{manage:viewerId===row.ownerUserId},contentReview:'pending',formalMeasurementEligible:false,
       sourceStatus:this.sourceStatus(row),fingerprint:row.fingerprint,modelName:row.modelName,lessons,
-      task:task?{id:row.taskId,state:task.state,version:task.version,generation:task.generation,errorCode:task.errorCode}:null,
+      task:task?{id:row.taskId!,state:task.state,version:task.version,generation:task.generation,errorCode:task.errorCode}:null,
       confirmedAt:row.confirmedAt,createdAt:row.createdAt,updatedAt:row.updatedAt};
   }
   async get(user:InMemoryUserAccount,courseId:string){return this.view(this.record(user,courseId),undefined,user.id);}
@@ -88,7 +88,7 @@ export class SourceCourseService {
     if(query.studentId)this.students.assertCanAccessStudent(user,query.studentId);
     const candidates=[...(query.studentId?this.store.select('sourceCourses',{studentId:query.studentId}):[]),...(user.role!=='student'?this.store.select('sourceCourses',{ownerUserId:user.id,studentId:null}):[])];
     const rows=[...new Map(candidates.map(row=>[row.id,row])).values()].filter(row=>query.studentId?row.studentId===query.studentId&&(!query.subject||row.subject===query.subject)||user.role!=='student'&&!row.studentId:!row.studentId&&user.role!=='student')
-      .filter(row=>row.ownerUserId===user.id||['active','archived'].includes(row.status))
+      .filter(row=>row.ownerUserId===user.id||['active','archived'].includes(row.status)&&!['draft','discarded'].includes(row.versioning?.state??''))
       .sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt));
     const output:SourceCourseSummary[]=[];for(const row of rows){assertSourceCourseAccess(user,row,this.students);const {compilation:_compilation,revision:_r,generation:_generation,generationInput:_generationInput,overview:_overview,input:_i,sources:_s,lessons:_l,permissions:_p,contentReview:_c,formalMeasurementEligible:_f,sourceStatus:_ss,fingerprint:_fp,modelName:_m,task:_t,confirmedAt:_ct,...summary}=await this.view(row,undefined,user.id,true);output.push(summary);}return output;
   }
@@ -111,7 +111,7 @@ export class SourceCourseService {
       revision:0,status:'queued',taskId:this.store.nextId('task'),result:null,originalResult:null,edits:[],fingerprint:null,modelName:null,confirmedAt:null,createdAt:now,updatedAt:now,requests:[{key:requestKey,hash,kind:'generate'}]};
     if(command.mode!=='long'&&sourceCourseModelContext(row).length>18000)throw new BadRequestException('所选内容含较多格式字符，超出一次可完整读取的范围，请进一步缩小选择；系统不会截断来源。');
     if(command.mode==='long')row.compilation=newCompilation(row);else row.generation=newCourseGeneration(row,'creation');
-    this.store.append('sourceCourses',row);await this.store.enqueueTask({id:row.taskId,kind:'learning.source-course.generate',ownerUserId:user.id,requestKey,payloadHash:sourceDigest({courseId:row.id}),payload:{courseId:row.id},createdAt:now,maxAttempts:2});
+    this.store.append('sourceCourses',row);await this.store.enqueueTask({id:row.taskId!,kind:'learning.source-course.generate',ownerUserId:user.id,requestKey,payloadHash:sourceDigest({courseId:row.id}),payload:{courseId:row.id},createdAt:now,maxAttempts:2});
     return this.view(row,{state:'queued',version:1,generation:1,errorCode:null});
   }
   private replay(row:SourceCourseRecord,command:{expectedRevision:number;requestKey:string},kind:string){
@@ -184,7 +184,7 @@ export class SourceCourseService {
   }
   async confirm(user:InMemoryUserAccount,courseId:string,input:unknown){
     const row=this.record(user,courseId,true),command=validate(z.object({expectedRevision:revision,requestKey:key,fingerprint:z.string().regex(/^[a-f0-9]{64}$/)}).strict(),input);
-    if(!this.replay(row,command,'confirm')){if(row.status!=='ready'||row.fingerprint!==command.fingerprint||!row.result)throw new ConflictException('请重新审阅当前课程候选');
+    if(!this.replay(row,command,'confirm')){if(row.versioning?.parentCourseId)throw new ConflictException('请先预览修订发布对旧版本的影响');if(row.status!=='ready'||row.fingerprint!==command.fingerprint||!row.result)throw new ConflictException('请重新审阅当前课程候选');
       if(this.sourceStatus(row)!=='current')throw new ConflictException('来源资料已经更新或不可用，请重新选择原页生成，旧预览不能直接确认');
       row.status='active';row.confirmedAt=new Date().toISOString();this.finish(row,command,'confirm');}
     return this.view(row);
@@ -192,7 +192,8 @@ export class SourceCourseService {
   async control(user:InMemoryUserAccount,courseId:string,action:'cancel'|'retry'|'archive',input:unknown){
     const row=this.record(user,courseId,true),command=validate(z.object({expectedRevision:revision,requestKey:key,expectedTaskVersion:z.number().int().min(1).optional()}).strict(),input);
     if(this.replay(row,command,action))return this.view(row);
-    if(action==='archive'){if(row.status!=='active')throw new ConflictException('只有已确认课程可以归档');row.status='archived';this.finish(row,command,action);return this.view(row);}
+    if(action==='archive'){if(row.versioning)throw new ConflictException('请先预览课程版本归档影响');if(row.status!=='active')throw new ConflictException('只有已确认课程可以归档');row.status='archived';this.finish(row,command,action);return this.view(row);}
+    if(!row.taskId)throw new ConflictException('这是人工修订候选，没有可取消或重试的生成任务');
     const task=await this.store.tasks.get(row.taskId);if(!task||task.version!==command.expectedTaskVersion)throw new ConflictException('生成任务已变化，请刷新状态');
     if(action==='cancel'){if(!['queued','running','retry_wait','cancel_requested'].includes(task.state)||['active','archived'].includes(row.status))throw new ConflictException('当前任务不能取消');row.status='cancelled';}
     else{if(!['failed','cancelled'].includes(task.state)||this.sourceStatus(row)!=='current')throw new ConflictException('请先核对失败/取消状态及当前来源，再重试');if(row.generation&&(row.generation.version!==SOURCE_COURSE_PIPELINE||row.generation.inputFingerprint!==generationFingerprint(row,row.generation.input)))throw new ConflictException('生成进度与当前流水线不兼容，请按原始目标重新创建课程。来源快照仍保留。');if(row.compilation){if(task.errorCode==='course_checkpoint_incompatible')throw new ConflictException('已保存阶段未通过完整性核对，请保留原稿并重新创建课程。');try{verifyCompilation(row);}catch{throw new ConflictException('长资料进度与原始来源不兼容，请保留原稿并重新创建。');}}row.status='queued';}

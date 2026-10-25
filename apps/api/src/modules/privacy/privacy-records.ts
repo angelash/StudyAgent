@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import type { PrivacyCounts } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { generationView } from '../learning/source-course-pipeline';
-import { sourceCourseLesson } from '../learning/source-course-content';
+import { sourceCourseVersioningView, sourceCourseLesson } from '../learning/source-course-content';
 import { compilationView } from '../learning/source-course-compilation';
 import { studioMaterialView } from '../learning/studio-material-access';
 
@@ -71,7 +71,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'classroomCodeDrafts', row => row.ownerUserId === actorId);
   add(result, store, 'classroomVisuals', row => row.ownerUserId === actorId);
   add(result, store, 'courseProjects', row => row.ownerUserId === actorId);
-  add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status)));
+  add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
@@ -115,6 +115,8 @@ function scrub(value: unknown): unknown {
 export function portableRecords(selected: Selection, actorId: string): Record<string, unknown[]> {
   const allowedAssistants = new Set((selected.assistantSessions ?? []).filter(row => row.ownerUserId === actorId ||
     (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(recordId));
+  const allowedCourses = new Set((selected.sourceCourses??[]).filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status)&&!['draft','discarded'].includes(row.versioning?.state)).map(recordId));
+  const publishedCourses = new Set((selected.sourceCourses??[]).filter(row=>row.confirmedAt&&['active','archived'].includes(row.status)).map(recordId));
   const result: Selection = {};
   for (const [name, records] of Object.entries(selected)) {
     if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events'].includes(name)) continue;
@@ -137,10 +139,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
     else if(name==='studioOriginalRepairs')result[name]=records.map(({id,materialId,uploadId,status,revision,createdAt,updatedAt,completedAt,receipt})=>({id,materialId,uploadId,status,revision,createdAt,updatedAt,completedAt,receipt}));
     else if(name==='studioConnectors')result[name]=records.map(({encryptedFeedUrl:_feed,requestKey:_key,requestHash:_hash,...row})=>row);
-    else if(name==='sourceCourses')result[name]=records.filter(row=>row.ownerUserId===actorId||
-      (selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status))
-      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
-    else if(name==='sourceCourseStages')result[name]=records.map(({id,courseId,kind,key,createdAt,modelId,modelName})=>({id,courseId,kind,key,createdAt,modelId,modelName}));
+    else if(name==='sourceCourses')result[name]=records.filter(row=>allowedCourses.has(row.id))
+      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,...(row.versioning?{versioning:sourceCourseVersioningView(row as any,actorId,publishedCourses)}:{}),generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
+    else if(name==='sourceCourseStages')result[name]=records.filter(row=>allowedCourses.has(row.courseId)).map(({id,courseId,kind,key,createdAt,modelId,modelName,copiedFrom})=>({id,courseId,kind,key,createdAt,modelId,modelName,...(copiedFrom?{copiedFrom}:{})}));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }

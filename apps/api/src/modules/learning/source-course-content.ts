@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { sourceCourseContentSchema as generatedCourseSchema, compiledSourceCourseContentSchema, type SourceCourseContent } from '@study-agent/contracts';
+import { sourceCourseContentSchema as generatedCourseSchema, compiledSourceCourseContentSchema, type SourceCourseContent, type SourceCourseVersioning } from '@study-agent/contracts';
 import type { ClassroomLesson, ClassroomStep, CourseSourceSnapshot, SourceCourseInput, StudioSubject } from '@study-agent/contracts';
 import type { SourceCourseGenerationState } from './source-course-pipeline';
 import type { CompilationState } from './source-course-compilation';
@@ -18,12 +18,19 @@ export type SourceCourseRecord = { id: string; ownerUserId: string; studentId: s
   generation?: SourceCourseGenerationState;
   compilation?: CompilationState;
   lessonIds?: string[];
-  status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string;
+  versioning?: SourceCourseVersioning;
+  status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string | null;
   result: GeneratedSourceCourse | null; originalResult: GeneratedSourceCourse | null;
   edits: Array<{at:string;changes:unknown}>; fingerprint: string | null; modelName: string | null;
   authoringExposedAt?: string; confirmedAt: string | null; createdAt: string; updatedAt: string;
-  requests: Array<{key:string;hash:string;kind:string}>;
+  requests: Array<{key:string;hash:string;kind:string;courseId?:string}>;
 };
+/** Published readers see published history; private revision identities stay with their creator. */
+export function sourceCourseVersioningView(row:Pick<SourceCourseRecord,'ownerUserId'|'versioning'>,viewerId:string,publishedIds:Set<string>){
+  if(!row.versioning)return undefined;const value=structuredClone(row.versioning);
+  if(row.ownerUserId!==viewerId)value.events=value.events.filter(event=>event.action!=='revise').map(event=>({...event,relatedCourseIds:event.relatedCourseIds.filter(id=>publishedIds.has(id))}));
+  return value;
+}
 export const sourceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function sourceCourseModelContext(row:SourceCourseRecord){return JSON.stringify({goal:row.input.goal,title:row.input.title,language:row.input.language,minutesPerSession:row.input.minutesPerSession,
   audience:row.audience,targetGoals:row.targetGoals,sources:row.sources.map(source=>({sourceKey:source.key,title:source.title,page:source.page,text:source.text}))});}

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import type { ClassroomLesson } from './classroom';
 import type { StudioPdfStructureBlock, StudioSubject } from './studio';
+import type { SourceCourseVersioning } from './source-course-lifecycle';
 import type { SourceCompilationView } from './source-course-compilation';
 const text = (max: number) => z.string().trim().min(1).max(max);
 export const sourceCourseLessonContentSchema = z.object({ title: text(100), objective: text(350), introduction: text(400), concept: text(900),
@@ -28,8 +29,8 @@ export type CourseSourceSnapshot = { key: string; materialId: string; page: numb
 export type SourceCourseInput = { title: string; goal: string; language: 'source' | 'zh-CN' | 'en'; minutesPerSession: number;
   modelId: string; targetAtomIds: string[] };
 export type SourceCourseSummary = { id: string; studentId: string | null; subject: StudioSubject | null; title: string;
-  goal: string; status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived';
-  lessonCount: number; viewed: number; lastLessonId: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
+  goal: string; versioning?: SourceCourseVersioning; status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived';
+  lessonCount: number; viewed: number; lastLessonId: string | null; lastSessionId?: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
 export type SourceCourseView = SourceCourseSummary & { revision: number; input: SourceCourseInput; sources: CourseSourceSnapshot[];
   compilation?: SourceCompilationView;
   permissions: { manage: boolean }; overview: string | null;
