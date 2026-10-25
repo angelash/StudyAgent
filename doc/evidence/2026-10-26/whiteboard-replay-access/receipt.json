@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "scope": "Current student authorization before any saved whiteboard creation replay. Synthetic HTTP reproduces other-parent 201 before the fix; after fix other-parent and revoked-parent replay return 403, authorized replay retains one board/activity. All 15 studio integration cases pass.",
+  "initial": {
+    "failed": 1,
+    "expectedHttp": 403,
+    "actualHttp": 201
+  },
+  "focused": {
+    "passed": 2,
+    "skipped": 13
+  },
+  "studio": {
+    "passed": 15,
+    "failed": 0
+  },
+  "formalMeasurementWritten": false,
+  "deployed": false,
+  "limits": [
+    "Playback and subtitle work in 122 remains unimplemented.",
+    "Cross-action request-key binding and full 122 validation remain pending.",
+    "The fifteen cases use isolated synthetic storage; no family records were read."
+  ]
+}
