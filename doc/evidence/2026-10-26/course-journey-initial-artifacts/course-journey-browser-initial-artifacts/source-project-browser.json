@@ -1,0 +1,1841 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-course-journeys\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/source-course-project.spec.ts",
+      "tests/e2e/project-teaching.spec.ts",
+      "tests/e2e/project-files.spec.ts",
+      "tests/e2e/course-project.spec.ts",
+      "tests/e2e/source-course.spec.ts",
+      "tests/e2e/source-course-lifecycle.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-course-journeys\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-course-journeys/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-project-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "course-project.spec.ts",
+      "file": "course-project.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "project stages save artifacts, evidence and self-assessment; immutable submissions remain available after revisions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3241,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:53:45.075Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d7b1fb70b0897e20a4a5-ee0cb2e1ef59057936b0",
+          "file": "course-project.spec.ts",
+          "line": 16,
+          "column": 5
+        },
+        {
+          "title": "a lost save response replays the same request; a stale page preserves local input and can recover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1582,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:53:48.724Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d7b1fb70b0897e20a4a5-27e354f7780a912aad8e",
+          "file": "course-project.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "unsaved-stage navigation asks to preserve work and unavailable AI leaves the saved artifact usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1753,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:53:50.314Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d7b1fb70b0897e20a4a5-991e7226399f8994b0d9",
+          "file": "course-project.spec.ts",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "title": "a guardian reviews a learner submission in the curriculum project workspace and the learner keeps its version",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17183,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '完整作品', exact: true })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '完整作品', exact: true })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\course-project.spec.ts:67:123",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\course-project.spec.ts",
+                      "column": 123,
+                      "line": 67
+                    },
+                    "snippet": "  65 |   const response=await fetch(api+'/learning/projects/'+project.id,{headers:{authorization:'Bearer '+learner.token}});const restored=(await response.json()).data;expect(restored.reviews).toHaveLength(1);expect(restored.reviews[0].reviewerRole).toBe('parent');expect(restored.submissions).toEqual(submitted.submissions);\n  66 |   await dialog.getByRole('button',{name:'关闭提交版本'}).click();await page.goto('/studio?'+new URLSearchParams({view:'courses',course:course.id,student:studentId,subject:'math'}));\n> 67 |   await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.locator('.pj-history-row')).toHaveCount(1);\n     |                                                                                                                           ^\n  68 | });\n  69 | test('all five adult projects complete their three stages and can cite earlier immutable artifacts',async({page})=>{\n  70 |   test.setTimeout(180000);await login(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\course-project.spec.ts",
+                        "column": 123,
+                        "line": 67
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '完整作品', exact: true })\u001b[22m\n\n\n  65 |   const response=await fetch(api+'/learning/projects/'+project.id,{headers:{authorization:'Bearer '+learner.token}});const restored=(await response.json()).data;expect(restored.reviews).toHaveLength(1);expect(restored.reviews[0].reviewerRole).toBe('parent');expect(restored.submissions).toEqual(submitted.submissions);\n  66 |   await dialog.getByRole('button',{name:'关闭提交版本'}).click();await page.goto('/studio?'+new URLSearchParams({view:'courses',course:course.id,student:studentId,subject:'math'}));\n> 67 |   await page.getByRole('link',{name:'打开项目 →',exact:true}).click();await page.getByRole('button',{name:'完整作品',exact:true}).click();await expect(page.getByText('正在查看学习者项目。',{exact:false})).toBeVisible();await expect(page.locator('.pj-history-row')).toHaveCount(1);\n     |                                                                                                                           ^\n  68 | });\n  69 | test('all five adult projects complete their three stages and can cite earlier immutable artifacts',async({page})=>{\n  70 |   test.setTimeout(180000);await login(page);\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\course-project.spec.ts:67:123"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:53:52.074Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\course-project-a-guardian--6972e-e-learner-keeps-its-version\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\course-project-a-guardian--6972e-e-learner-keeps-its-version\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\course-project-a-guardian--6972e-e-learner-keeps-its-version\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\course-project.spec.ts",
+                    "column": 123,
+                    "line": 67
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d7b1fb70b0897e20a4a5-855dee9416bbbbe03569",
+          "file": "course-project.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "all five adult projects complete their three stages and can cite earlier immutable artifacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:10.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d7b1fb70b0897e20a4a5-2d9a844a8beec047d452",
+          "file": "course-project.spec.ts",
+          "line": 69,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "project-files.spec.ts",
+      "file": "project-files.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual file versions remain frozen through submission, download, nested preview, editing and responsive layouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:22.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c867b9a9c00d0fa73cdd-eb03604899bc5312807c",
+          "file": "project-files.spec.ts",
+          "line": 13,
+          "column": 5
+        },
+        {
+          "title": "a dropped second chunk resumes the exact selected image after refresh and lost complete acknowledgments do not duplicate it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6118,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:31.132Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c867b9a9c00d0fa73cdd-cc37afc5c07ff088c87d",
+          "file": "project-files.spec.ts",
+          "line": 27,
+          "column": 5
+        },
+        {
+          "title": "real PDF previews turn individual pages and closing a playing recording releases its actual audio element",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8008,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "buffer": ""
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:37.258Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c867b9a9c00d0fa73cdd-7884f473fc904e1444a4",
+          "file": "project-files.spec.ts",
+          "line": 37,
+          "column": 5
+        },
+        {
+          "title": "an oversized saved project keeps its full text while the learner explicitly narrows the AI advice scope",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:45.273Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c867b9a9c00d0fa73cdd-ea271979b824d84f7c85",
+          "file": "project-files.spec.ts",
+          "line": 44,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "project-teaching.spec.ts",
+      "file": "project-teaching.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2119,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:47.063Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e7485a181ff5672fe9e2",
+          "file": "project-teaching.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2158,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:49.189Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-cffae01eb681c8045d4c",
+          "file": "project-teaching.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1810,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:51.354Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-b9c3c5bf3908bff995b3",
+          "file": "project-teaching.spec.ts",
+          "line": 37,
+          "column": 5
+        },
+        {
+          "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1774,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:53.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-d729d33dd77546ac9098",
+          "file": "project-teaching.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "two pending original commands use separate slots and confirming one preserves the other",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2036,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:54.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e39101d58468f7d5c1b0",
+          "file": "project-teaching.spec.ts",
+          "line": 51,
+          "column": 5
+        },
+        {
+          "title": "unavailable project storage keeps the live input and offers a full download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:57.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-cc7cc26cc8c0d3aed76f",
+          "file": "project-teaching.spec.ts",
+          "line": 60,
+          "column": 5
+        },
+        {
+          "title": "a mismatched owner draft is preserved but never restored or offered as another copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1439,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:58.321Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-b640b460f43f5f723a3a",
+          "file": "project-teaching.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "observed denied teaching clears old project content and narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:54:59.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-852f01ffec8fc961c376",
+          "file": "project-teaching.spec.ts",
+          "line": 70,
+          "column": 52
+        },
+        {
+          "title": "observed denied narration clears old project content and narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:00.952Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-459196cf079d3becf9ad",
+          "file": "project-teaching.spec.ts",
+          "line": 70,
+          "column": 52
+        },
+        {
+          "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:02.270Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-45801a4d62561871a376",
+          "file": "project-teaching.spec.ts",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "title": "a lost submission reply reloads its original receipt without creating a second frozen submission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:03.840Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-6195cd7a27d58c17415e",
+          "file": "project-teaching.spec.ts",
+          "line": 85,
+          "column": 5
+        },
+        {
+          "title": "an unavailable step link returns to the frozen stage introduction without writing progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:05.716Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-c73e18b60048f06437ea",
+          "file": "project-teaching.spec.ts",
+          "line": 91,
+          "column": 5
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:07.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-10f4978ee912be5b238a",
+          "file": "project-teaching.spec.ts",
+          "line": 95,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:08.383Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-c8256ef4b75579c7a4fa",
+          "file": "project-teaching.spec.ts",
+          "line": 95,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:09.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e6d718da7cace552ca55",
+          "file": "project-teaching.spec.ts",
+          "line": 95,
+          "column": 39
+        },
+        {
+          "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1461,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:11.036Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-8d681d1af0b9df7a25cc",
+          "file": "project-teaching.spec.ts",
+          "line": 99,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "source-course-lifecycle.spec.ts",
+      "file": "source-course-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:12.511Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-f2175de9d306382cf3f9",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:15.587Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-ff6aa44fc944e312c0fc",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:17.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-48fcfc8299f84f4e1b24",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 32,
+          "column": 5
+        },
+        {
+          "title": "a lost publication reply recovers after refresh without another publication or another lesson version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:21.778Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-88cc9d94feed552fe799",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "a stale publication preview reads the actual saved version before a new explicit confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:24.039Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-909ff358c5c88c1d7949",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "stopping a lost publication wait preserves the committed command and ignores its late reply",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:27.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-e7638106fe30d28dedf0",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 57,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "source-course-project.spec.ts",
+      "file": "source-course-project.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:29.995Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-309acd5dc044d4e1c6ef",
+          "file": "source-course-project.spec.ts",
+          "line": 13,
+          "column": 5
+        },
+        {
+          "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3964,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:35.328Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-f40a602dd154b4fc040d",
+          "file": "source-course-project.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3506,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:39.300Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-2b645b83846c9a0ef623",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2532,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:42.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-562107329a246dca6ce3",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2612,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:45.353Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-4b89730c824b7ba2785e",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        },
+        {
+          "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3969,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"classroom_ec52eba5-ff72-488a-857f-bcae40186ec0\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"classroom_ec52eba5-ff72-488a-857f-bcae40186ec0\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:37:124",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                      "column": 124,
+                      "line": 37
+                    },
+                    "snippet": "  35 |   test.setTimeout(90000);const{actor,row}=await enter(page),first=page.locator('.sc-lesson').first();await first.getByRole('link',{name:'开始讲解 →',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('1 / 6');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 6');const sessionId=new URL(page.url()).searchParams.get('session')!;\n  36 |   await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('讲解进行中');\n> 37 |   await first.getByRole('link',{name:'进入课堂练习',exact:true}).click();await expect(page.locator('.cl-practice-options label')).toHaveCount(4);expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);await page.getByRole('button',{name:'先给我一个提示',exact:true}).click();await expect(page.locator('.cl-hint')).toHaveCount(1);await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('使用过提示');await page.getByRole('button',{name:'关闭独立练习',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('已作答 1/2');await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('独立首答正确 0 · 使用帮助 1');\n     |                                                                                                                            ^\n  38 |   await page.getByRole('link',{name:'打开资料应用项目 →',exact:true}).click();await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByRole('textbox',{name:'我准备核查的主张',exact:true}).fill('来源课程项目的保存稿');await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.getByText('草稿和自评准备已保存。',{exact:true})).toBeVisible();const projectId=new URL(page.url()).searchParams.get('project')!;await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n  39 |   const records=page.getByLabel('我的资料项目记录',{exact:true});await records.locator('summary').click();await expect(records).toContainText('服务器草稿 1/3');await records.getByRole('link',{name:'继续这份项目 →',exact:true}).click();await expect(page.getByRole('textbox',{name:'我准备核查的主张',exact:true})).toHaveValue('来源课程项目的保存稿');expect(new URL(page.url()).searchParams.get('project')).toBe(projectId);await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n  40 |   await first.getByRole('link',{name:'继续讲解 →',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 6');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await first.getByRole('link',{name:'进入课堂练习',exact:true}).click();await expect(page.locator('.cl-practice-prompt>small')).toContainText('2 / 2');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);const current=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(current.answers).toHaveLength(1);expect((await call(actor,'GET','/learning/source-courses/'+row.id)).formalMeasurementEligible).toBe(false);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                        "column": 124,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"classroom_ec52eba5-ff72-488a-857f-bcae40186ec0\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\n  35 |   test.setTimeout(90000);const{actor,row}=await enter(page),first=page.locator('.sc-lesson').first();await first.getByRole('link',{name:'开始讲解 →',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('1 / 6');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 6');const sessionId=new URL(page.url()).searchParams.get('session')!;\n  36 |   await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('讲解进行中');\n> 37 |   await first.getByRole('link',{name:'进入课堂练习',exact:true}).click();await expect(page.locator('.cl-practice-options label')).toHaveCount(4);expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);await page.getByRole('button',{name:'先给我一个提示',exact:true}).click();await expect(page.locator('.cl-hint')).toHaveCount(1);await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('使用过提示');await page.getByRole('button',{name:'关闭独立练习',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('已作答 1/2');await expect(first.getByLabel('讲解与练习记录',{exact:true})).toContainText('独立首答正确 0 · 使用帮助 1');\n     |                                                                                                                            ^\n  38 |   await page.getByRole('link',{name:'打开资料应用项目 →',exact:true}).click();await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByRole('textbox',{name:'我准备核查的主张',exact:true}).fill('来源课程项目的保存稿');await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.getByText('草稿和自评准备已保存。',{exact:true})).toBeVisible();const projectId=new URL(page.url()).searchParams.get('project')!;await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n  39 |   const records=page.getByLabel('我的资料项目记录',{exact:true});await records.locator('summary').click();await expect(records).toContainText('服务器草稿 1/3');await records.getByRole('link',{name:'继续这份项目 →',exact:true}).click();await expect(page.getByRole('textbox',{name:'我准备核查的主张',exact:true})).toHaveValue('来源课程项目的保存稿');expect(new URL(page.url()).searchParams.get('project')).toBe(projectId);await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n  40 |   await first.getByRole('link',{name:'继续讲解 →',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 6');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await first.getByRole('link',{name:'进入课堂练习',exact:true}).click();await expect(page.locator('.cl-practice-prompt>small')).toContainText('2 / 2');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);const current=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(current.answers).toHaveLength(1);expect((await call(actor,'GET','/learning/source-courses/'+row.id)).formalMeasurementEligible).toBe(false);\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:37:124"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:47.971Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-sour-c66dd-s-in-one-continuous-journey\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-sour-c66dd-s-in-one-continuous-journey\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-sour-c66dd-s-in-one-continuous-journey\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                    "column": 124,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-125e270c91c4f4ffbfc3",
+          "file": "source-course-project.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4488,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:53.718Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-bb85ba6e737669f9f560",
+          "file": "source-course-project.spec.ts",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:55:58.566Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-5cddbb821b35b4b9a520",
+          "file": "source-course-project.spec.ts",
+          "line": 48,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "source-course.spec.ts",
+      "file": "source-course.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5991,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:02.264Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-1139edb033e9fb5ec95e",
+          "file": "source-course.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "in-flight cancellation and retry survive reload and never publish the cancelled attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7250,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:08.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-fe6a79da87e0b808372f",
+          "file": "source-course.spec.ts",
+          "line": 32,
+          "column": 5
+        },
+        {
+          "title": "lost generation acknowledgment is replayed and stale blueprint edits preserve local input without overwriting another page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:15.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-d0ae88e36b1ba237be32",
+          "file": "source-course.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "an adult can upload a PDF, inspect its real page and preserve selected page and language through generation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:19.205Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-311ae6ac8705201bcb26",
+          "file": "source-course.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4880,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:24.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-90560b77e8ec8c0f262b",
+          "file": "source-course.spec.ts",
+          "line": 51,
+          "column": 5
+        },
+        {
+          "title": "staged generation retains reviewed work through failure, retry and manuscript correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16929,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:29.558Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-99fd7e9903893babf84e",
+          "file": "source-course.spec.ts",
+          "line": 63,
+          "column": 5
+        },
+        {
+          "title": "uncertain model checks remain visible through confirmation and retain private review details",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3572,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:46.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-5f16e640f898d12ee67e",
+          "file": "source-course.spec.ts",
+          "line": 75,
+          "column": 5
+        },
+        {
+          "title": "stale full manuscripts stay local through a public reload and offer an export before browser back",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4040,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:56:50.074Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73d7dca569d7b10f6464-e1b93c0241af7789bd20",
+          "file": "source-course.spec.ts",
+          "line": 79,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T16:53:39.363Z",
+    "duration": 196543.778,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

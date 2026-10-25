@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-25T17:26:39.857Z",
+  "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "scope": "Existing lecture image enlargement only; no message, answer, download or new generation submitted",
+  "observed": {
+    "dialog": {
+      "height": 887,
+      "width": 880,
+      "x": 0,
+      "y": 0
+    },
+    "close": {
+      "height": 36,
+      "width": 36,
+      "x": 828,
+      "y": 16
+    },
+    "inlineImage": {
+      "x": 50.796875,
+      "y": 514.1875,
+      "width": 552,
+      "height": 333.5
+    },
+    "enlargedImage": {
+      "x": 48.203125,
+      "y": 213,
+      "width": 769,
+      "height": 464.59375
+    }
+  },
+  "limits": [
+    "Screenshot pixels 880x887 and DOM geometry do not establish CSS viewport or DPR",
+    "Original CSS, font files and image bytes were not retrieved",
+    "No audio captured and no learning outcome inferred"
+  ],
+  "restoredToLecture": true,
+  "screenshots": {
+    "hyperknow-lecture-figure-revisit.png": {
+      "sha256": "26bb79fac3f75f38c0c488a71280d86d45ffff3cde6f89995699b3165c154fc1",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      }
+    },
+    "hyperknow-lecture-image-modal-revisit.png": {
+      "sha256": "e467c25ffca67e7dd2dfaefc4a9c86e74d888708391609a4256906cf5f2594a7",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      }
+    }
+  }
+}

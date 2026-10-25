@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T17:52:27.490486+00:00",
+  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
+  "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
+  "specificationCommits": [
+    "ab8d556",
+    "856d2f0",
+    "cdd8107",
+    "1effb8e"
+  ],
+  "sourceDigestNormalization": "UTF-8 CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "fb65477ed8250836df4706a7be7658dae4644b1471ed96ee904d1103f1103ea0",
+    "apps/api/src/modules/learning/classroom-curriculum.ts": "e375bbffd5cb3fb227a81c9df333e6e60688a81cf60e21ca912570801fb0c575",
+    "apps/api/src/modules/learning/classroom.service.ts": "01d8012bdb97c10830bc52c65ce1fa4d7c07ddc26378506a361f7c67ba09d5ab",
+    "apps/api/src/modules/learning/course-journey.test.ts": "0b1ee26d3daa2b4b2962fab59f0651d22aa2819a06a89e71dfc5c5e5ce0e66c1",
+    "apps/api/src/modules/learning/course-journey.ts": "e8da41dac44b680cea98fe6834210885627378b0c4d1d0b1fed9dca9cf54f629",
+    "apps/api/src/modules/learning/course-project-access.ts": "73394cf76005c1cf52d7b0557a90e95714152b7e5bc8f008ce88b547a485fda1",
+    "apps/api/src/modules/learning/course-project.service.ts": "55e402e7e523e4fbecd68e181abfc32a019d0b6a33a8288a272e357f514493c5",
+    "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts": "6b6c1816fe77cac1cc1562bcb27dfb20cbedb2b33e1f6965006d50d0cc2c94f2",
+    "apps/api/src/modules/learning/source-course-project.integration.test.ts": "47ca54eaa166cf8ad6a6657bb4b084392ffd0dcbc0f7205e5d6ef8661fd351a3",
+    "apps/api/src/modules/learning/source-course-project.test.ts": "b2bb8cb68cd69f74c56d40b0c1e36fb9c29fefb2a689689e7bffc5937e20935c",
+    "apps/api/src/modules/learning/source-course-project.ts": "e45557dd8e69e6d15165c88087eef3b2a959f90b27eaabd804f93c85f471ceb9",
+    "apps/api/src/modules/learning/source-course.service.ts": "9b9c760063edf2000fee84f6dfd913e4c95f4dab77dd458696ec220e6506c1c3",
+    "apps/api/src/modules/learning/source-project-access.ts": "6b87872e27086a29c50166f3d5d7faab3f8e3ee68bb65f99c36ff4a6d2bbaa10",
+    "apps/web/app/studio/classroom/workbench.tsx": "1cff07be696ce07f917f260001c22127c4fcb11b5702b30d4c561f8ae8643a5a",
+    "apps/web/app/studio/course-activity.css": "da300d92534c4aede4b5c406e19494d1d58fd843e225a877530a63439e2a8f14",
+    "apps/web/app/studio/course-activity.tsx": "e26141991b9c588549a5fd009f2daa776fda8799dfcb26b36aaabdf541fbb749",
+    "apps/web/app/studio/projects/project-location.ts": "007fa66875be90bcccc9d848d7811e007c94393c73ce31b171e6dbf334e34ce6",
+    "apps/web/app/studio/projects/workbench.tsx": "01a930394974872d12de5872e3bd605e8739a43bd2ee2292bb6e8eef146e3119",
+    "apps/web/app/studio/source-courses/source-courses.css": "bb3e32200efc4f0afdf05994d7396068be1ac1d4f147710c220c508fc765fc73",
+    "apps/web/app/studio/source-courses/workbench.tsx": "278f0111f09090c2b7497d39f5f1abb932fd9f571aad3bcd07c9777085f77457",
+    "packages/contracts/src/classroom.ts": "a6cb955d1db0fde0ad7156315af0cbd673eca201123415836278da7a2e171df3",
+    "packages/contracts/src/course-journey.ts": "8f95768213755f3c8454d70fc514e2438f5ff27dc20d98567359d963e9c06f1c",
+    "packages/contracts/src/course-project.ts": "6c3cf92c25b3494f6a96f18942c3f51b5b256107e2084f4544be1f20dc10ec5b",
+    "packages/contracts/src/index.ts": "f516d9a80ea84c9cd5a5b49b83810b989b86a1681e05d2cf536b3859df040b8a",
+    "packages/contracts/src/source-course.ts": "9711f2a6ff68c3299d42e1c8c7ed339a05daa1d4369f2d45a52fb05e9197e991",
+    "scripts/architecture/project-feature-definitions.cjs": "9a8f1746402fb1bebd51b630871621d1b0f40d7481934cc05594ab212d4fbfc2",
+    "scripts/qa/run-source-course-browser.cjs": "189cccb886c7c73c9501ad6df4742df2ed68190c22c740555bc6109b73fff163",
+    "scripts/qa/run-source-projects-postgres.cjs": "ed8a59204fedbd1d3409ace71b6ff695dd7ec0e1bb0788f76f4cb777702950f6",
+    "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
+    "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
+  },
+  "status": "local-complete-exact-ci-and-runtime-pending",
+  "localPassed": true,
+  "passed": false,
+  "api": {
+    "passed": 1194,
+    "skipped": 40,
+    "failed": 0,
+    "files": 138,
+    "report": "course-journey-full-api.json"
+  },
+  "postgres": {
+    "passed": 31,
+    "skipped": 1,
+    "failed": 0,
+    "report": "course-journey-postgres.json",
+    "scope": "Source projects, teaching, commands, actual pg_dump/restore of adult and source projects including real attachment bytes and newer deletion ledger"
+  },
+  "sqliteCold": {
+    "passed": 16,
+    "failed": 0,
+    "report": "course-journey-sqlite-cold-confirmed.json"
+  },
+  "browser": {
+    "passed": 203,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "durationMs": 955038.063,
+    "report": "course-journey-full-browser.json"
+  },
+  "priorFocusedBrowser": {
+    "passed": 17,
+    "failed": 0,
+    "report": "course-journey-browser-focused.json"
+  },
+  "remoteCi": {
+    "status": "not-started"
+  },
+  "production": {
+    "status": "not-released",
+    "currentRevision": "e558ea4"
+  },
+  "design": {
+    "passed": true,
+    "areas": 14,
+    "features": 119,
+    "routes": 325,
+    "collections": 93,
+    "contractTypes": 310,
+    "apiTestFiles": 138,
+    "browserTestFiles": 28,
+    "viewerChecks": 10,
+    "markdownLinks": 2720
+  },
+  "initialFailures": [
+    "PG JSONB object property reordering invalidated the legacy reading-only comparison hash; normalized only that comparison without changing persisted content identity",
+    "Browser first entry test queried URL before project creation completed; waits for the real teaching step",
+    "Browser journey round: 45 passed / 2 failed because older test expected complete-view button despite restored mode, and practice URL was read before its UI was ready",
+    "Design snapshot initially lacked its required local authored audit; generated a fresh audit before retrying",
+    "Expanded complete-journey browser round 7 passed/2 failed because the test read session URL before actual classroom navigation was ready",
+    "Next expanded round 7 passed/2 failed because the last answer enters recap automatically; test now opens the final first-answer receipt from that recap. Same nine tests and final full 203 passed."
+  ],
+  "evidenceLimits": [
+    "The earliest SQLite cold-run report was overwritten during an uncorrected rerun; the prefixed rerun failure and final confirmed report are preserved, not a claim of retaining the earliest artifact",
+    "First native PG report JSON was overwritten by the extended run; original stdout plus later before-fix JSON and final confirmed report are preserved",
+    "Raw reference CSS/font/DPR/original audio remain unavailable; image enlargement revisit only observed DOM geometry",
+    "No new live-model or live-TTS call in 119; 118 real TTS evidence and existing source generation channels are reused",
+    "Teacher review, real devices, all materials and long-term learning outcomes remain outstanding",
+    "Independent source unit checks remain not_configured; 120 is specification only",
+    "Original 72 requirements and all M1-M7 remain open; no overall product completion claim"
+  ],
+  "archivedReports": {
+    "course-journey-full-api.json": "26a078ef1599fd7bd946cdeb2b93b21baab96be2643399c9dbd6ac4e51e492d5",
+    "course-journey-postgres.json": "d839b5e8cf15648487338056024c423d687c11209819f870df4336b06f0d46e3",
+    "course-journey-sqlite-cold-confirmed.json": "f956eab9f4399cae3aa8daff54a610a293e72eec2624c3b31bbeda979a9c0ae5",
+    "course-journey-browser-focused.json": "60834ffdd6abb62993357d09d791b47187350dd6227a6fec06d7bd72b6ee4845",
+    "course-journey-complete-browser.json": "73a047af7a8b83b914e76a872cdc67379c323c6a35602402ab13f5e830a21182",
+    "course-journey-full-browser.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
+    "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c"
+  },
+  "completeJourneys": {
+    "passed": 9,
+    "failed": 0,
+    "report": "course-journey-complete-browser.json",
+    "scope": "Full two-lesson source reading/practice and all three project submissions; full first adult unit reading/practice/unit check/all project stages; roundtrip and three widths. Synthetic records, not student or teacher outcomes."
+  },
+  "screenshotReview": {
+    "widths": [
+      390,
+      768,
+      1440
+    ],
+    "mode": "Retained complete-work view of source project, inspected alongside earlier guided-project screenshots",
+    "sourceReference": "hyperknow-lecture-image-enlargement-revisit.json",
+    "cssViewportDprAndFontsUnknown": true,
+    "pixelParity": false
+  }
+}

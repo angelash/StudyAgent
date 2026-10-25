@@ -360,3 +360,12 @@ v2保存绑定actorId、baseHash、attempt、expectedRevision和稳定requestKey
 [前端草稿](../../apps/web/app/studio/classroom/practice-draft.ts)按owner/session/contentFingerprint保存本人选择与完整原命令，先写缓存再发送。掉回执先读首答，未记录则重发同命令；明确400/409拒绝且复查无首答后保留原命令副本，允许重新选择。授权错误或读取失败仍保留待确认命令。换号重挂载并按epoch隔离迟到结果；存储失败保留内存选择并可下载。题目区域使用原生radio/checkbox，数字与Enter不影响助教和读图弹层；全屏读图返回原焦点。
 
 三个微课和一个单元核查采用独立编写的五项多选，两级提示与逐项解析分别冻结，更新practiceVersion而不原地改写旧课堂。新集合/评分模式不直接产生小学掌握或原因结论；全部245题仍待教师逐题审核与真实效果验证。
+
+
+## 资料项目与课程学习旅程
+
+[119规格](../product/119-source-course-projects-and-continuous-course-journeys.md)复用现有项目的编辑、各标签独立草稿、冻结提交、自评、真实附件和人工复核。CourseProject的sourceCourseId与studioCourseId互斥；来源定义绑定已确认课程版本，使用source-course-project-v1三阶段配方，仅采用公开目标及来源身份，不复制私人生成稿或未提交题目答案。来源权限仍由原课程和项目授权规则核对；旧作品不随来源换版改写。
+
+CourseLessonActivity是纯读取投影。讲解按同义教学内容匹配，显示曾已读与最新原句断点；练习仅匹配当前持久内容指纹，使用冻结首答及其提示、作者曝光、跳过和不会事实。CourseProjectActivity仅返回本人项目摘要，每阶段只计算最新提交的最近人工复核，不含产物正文。目录GET不创建课堂、项目或评分。资料课程的独立单元核查仍显示未设置，不能用微课重复题填充。
+
+classroomTeachingFingerprint仅用于阅读对比，递归排序对象键以抵抗PostgreSQL JSONB重排，保留数组顺序和所有值；原持久contentFingerprint、题组、提交和历史不改写。项目最近stage/step/view在授权读取后从owner/project/definition绑定的本机偏好恢复，合法显式URL优先；它不改变服务器学习事实，也不合并不同标签的完整稿。课堂/资料工作台按账号及角色重新挂载，旧目录请求取消，避免迟到结果进入新身份。

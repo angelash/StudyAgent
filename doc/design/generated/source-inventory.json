@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 346,
@@ -10,13 +10,13 @@
     "activeModules": 19,
     "activeControllers": 35,
     "apiClasses": 138,
-    "apiFunctions": 381,
+    "apiFunctions": 385,
     "domainCollections": 93,
-    "contractTypes": 307,
+    "contractTypes": 310,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 135,
-    "browserTestFiles": 27
+    "apiTestFiles": 138,
+    "browserTestFiles": 28
   },
   "modules": [
     {
@@ -20385,7 +20385,7 @@
     {
       "name": "ClassroomService",
       "file": "apps/api/src/modules/learning/classroom.service.ts",
-      "line": 22,
+      "line": 24,
       "decorators": [
         {
           "name": "Injectable",
@@ -20413,7 +20413,7 @@
       "methods": [
         {
           "name": "catalog",
-          "line": 27,
+          "line": 29,
           "signature": "catalog(user: InMemoryUserAccount): ClassroomCatalog",
           "access": "public",
           "decorators": [],
@@ -20423,7 +20423,7 @@
         },
         {
           "name": "record",
-          "line": 51,
+          "line": 54,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -20434,7 +20434,7 @@
         },
         {
           "name": "view",
-          "line": 59,
+          "line": 62,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
@@ -20446,7 +20446,7 @@
         },
         {
           "name": "get",
-          "line": 83,
+          "line": 86,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -20457,7 +20457,7 @@
         },
         {
           "name": "hintLevels",
-          "line": 85,
+          "line": 88,
           "signature": "hintLevels(row: ClassroomSessionRecord, questionId: string)",
           "access": "private",
           "decorators": [],
@@ -20465,7 +20465,7 @@
         },
         {
           "name": "open",
-          "line": 92,
+          "line": 95,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20480,7 +20480,7 @@
         },
         {
           "name": "progress",
-          "line": 133,
+          "line": 136,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20491,7 +20491,7 @@
         },
         {
           "name": "upgradePresentation",
-          "line": 158,
+          "line": 161,
           "signature": "upgradePresentation(user:InMemoryUserAccount, id:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -20503,7 +20503,7 @@
         },
         {
           "name": "answer",
-          "line": 176,
+          "line": 179,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20514,7 +20514,7 @@
         },
         {
           "name": "hint",
-          "line": 224,
+          "line": 227,
           "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20526,7 +20526,7 @@
         },
         {
           "name": "ask",
-          "line": 249,
+          "line": 252,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -20541,7 +20541,7 @@
         },
         {
           "name": "voicePreview",
-          "line": 285,
+          "line": 288,
           "signature": "voicePreview(user:InMemoryUserAccount, id:string, input:unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -20552,7 +20552,7 @@
         },
         {
           "name": "narration",
-          "line": 293,
+          "line": 296,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -20744,7 +20744,7 @@
     {
       "name": "CourseProjectService",
       "file": "apps/api/src/modules/learning/course-project.service.ts",
-      "line": 31,
+      "line": 33,
       "decorators": [
         {
           "name": "Injectable",
@@ -20768,7 +20768,7 @@
       "methods": [
         {
           "name": "access",
-          "line": 35,
+          "line": 37,
           "signature": "access(user: InMemoryUserAccount, studentId: string)",
           "access": "private",
           "decorators": [],
@@ -20776,8 +20776,8 @@
         },
         {
           "name": "definitions",
-          "line": 37,
-          "signature": "definitions(user: InMemoryUserAccount, studioCourseId?: string): CourseProjectDefinition[]",
+          "line": 39,
+          "signature": "definitions(user: InMemoryUserAccount, studioCourseId?: string, sourceCourseId?:string): CourseProjectDefinition[]",
           "access": "private",
           "decorators": [],
           "calls": [
@@ -20787,7 +20787,7 @@
         },
         {
           "name": "record",
-          "line": 47,
+          "line": 50,
           "signature": "record(user: InMemoryUserAccount, projectId: string, editing = false): CourseProjectRecord",
           "access": "private",
           "decorators": [],
@@ -20795,7 +20795,7 @@
         },
         {
           "name": "view",
-          "line": 48,
+          "line": 51,
           "signature": "view(user: InMemoryUserAccount, row: CourseProjectRecord): CourseProjectView",
           "access": "private",
           "decorators": [],
@@ -20805,7 +20805,7 @@
         },
         {
           "name": "get",
-          "line": 59,
+          "line": 64,
           "signature": "get(user: InMemoryUserAccount, projectId: string)",
           "access": "public",
           "decorators": [],
@@ -20816,7 +20816,7 @@
         },
         {
           "name": "catalog",
-          "line": 61,
+          "line": 66,
           "signature": "catalog(user: InMemoryUserAccount, input: unknown): CourseProjectCatalog",
           "access": "public",
           "decorators": [],
@@ -20831,7 +20831,7 @@
         },
         {
           "name": "open",
-          "line": 71,
+          "line": 77,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20846,7 +20846,7 @@
         },
         {
           "name": "request",
-          "line": 87,
+          "line": 96,
           "signature": "request(user:InMemoryUserAccount, projectId:string, key:string): ProjectCommandReceipt",
           "access": "public",
           "decorators": [],
@@ -20857,7 +20857,7 @@
         },
         {
           "name": "replay",
-          "line": 93,
+          "line": 102,
           "signature": "replay(row: CourseProjectRecord, command: { requestKey: string; expectedRevision: number }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -20865,7 +20865,7 @@
         },
         {
           "name": "finish",
-          "line": 104,
+          "line": 113,
           "signature": "finish(row: CourseProjectRecord, command: { requestKey: string }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -20873,7 +20873,7 @@
         },
         {
           "name": "stage",
-          "line": 110,
+          "line": 119,
           "signature": "stage(row: CourseProjectRecord, stageId: string)",
           "access": "private",
           "decorators": [],
@@ -20881,7 +20881,7 @@
         },
         {
           "name": "checkArtifact",
-          "line": 114,
+          "line": 123,
           "signature": "checkArtifact(row: CourseProjectRecord, stageId: string, artifact: ProjectArtifact, complete = false)",
           "access": "private",
           "decorators": [],
@@ -20892,7 +20892,7 @@
         },
         {
           "name": "checkRatings",
-          "line": 130,
+          "line": 139,
           "signature": "checkRatings(row: CourseProjectRecord, ratings: ProjectRating[])",
           "access": "private",
           "decorators": [],
@@ -20900,7 +20900,7 @@
         },
         {
           "name": "checkRatingFiles",
-          "line": 135,
+          "line": 144,
           "signature": "checkRatingFiles(ratings:ProjectRating[], allowed:string[])",
           "access": "private",
           "decorators": [],
@@ -20908,7 +20908,7 @@
         },
         {
           "name": "save",
-          "line": 136,
+          "line": 145,
           "signature": "save(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20923,7 +20923,7 @@
         },
         {
           "name": "submit",
-          "line": 150,
+          "line": 159,
           "signature": "submit(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20940,7 +20940,7 @@
         },
         {
           "name": "review",
-          "line": 168,
+          "line": 177,
           "signature": "review(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20956,7 +20956,7 @@
         },
         {
           "name": "importLegacy",
-          "line": 185,
+          "line": 194,
           "signature": "importLegacy(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20970,7 +20970,7 @@
         },
         {
           "name": "advise",
-          "line": 199,
+          "line": 208,
           "signature": "advise(user: InMemoryUserAccount, projectId: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -24276,7 +24276,7 @@
     {
       "name": "SourceCourseService",
       "file": "apps/api/src/modules/learning/source-course.service.ts",
-      "line": 24,
+      "line": 26,
       "decorators": [
         {
           "name": "Injectable",
@@ -24296,7 +24296,7 @@
       "methods": [
         {
           "name": "record",
-          "line": 27,
+          "line": 29,
           "signature": "record(user:InMemoryUserAccount, courseId:string, editing=false)",
           "access": "private",
           "decorators": [],
@@ -24306,7 +24306,7 @@
         },
         {
           "name": "materials",
-          "line": 28,
+          "line": 30,
           "signature": "materials(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24318,7 +24318,7 @@
         },
         {
           "name": "addText",
-          "line": 36,
+          "line": 38,
           "signature": "addText(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24331,7 +24331,7 @@
         },
         {
           "name": "addTextFile",
-          "line": 49,
+          "line": 51,
           "signature": "addTextFile(user:InMemoryUserAccount, file:Express.Multer.File|undefined, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24344,7 +24344,7 @@
         },
         {
           "name": "sourceStatus",
-          "line": 65,
+          "line": 67,
           "signature": "sourceStatus(row:SourceCourseRecord): SourceCourseView['sourceStatus']",
           "access": "private",
           "decorators": [],
@@ -24354,7 +24354,7 @@
         },
         {
           "name": "view",
-          "line": 68,
+          "line": 70,
           "signature": "view(row:SourceCourseRecord, provisional?:{state:string;version:number;generation:number;errorCode:string|null}, viewerId=row.ownerUserId, compact=false): Promise<SourceCourseView>",
           "access": "private",
           "decorators": [],
@@ -24367,7 +24367,7 @@
         },
         {
           "name": "get",
-          "line": 83,
+          "line": 86,
           "signature": "get(user:InMemoryUserAccount, courseId:string)",
           "access": "public",
           "decorators": [],
@@ -24378,7 +24378,7 @@
         },
         {
           "name": "progress",
-          "line": 84,
+          "line": 87,
           "signature": "progress(user:InMemoryUserAccount, courseId:string)",
           "access": "public",
           "decorators": [],
@@ -24389,7 +24389,7 @@
         },
         {
           "name": "source",
-          "line": 85,
+          "line": 88,
           "signature": "source(user:InMemoryUserAccount, courseId:string, sourceKey:string)",
           "access": "public",
           "decorators": [],
@@ -24399,7 +24399,7 @@
         },
         {
           "name": "list",
-          "line": 86,
+          "line": 89,
           "signature": "list(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseSummary[]>",
           "access": "public",
           "decorators": [],
@@ -24411,7 +24411,7 @@
         },
         {
           "name": "preflight",
-          "line": 95,
+          "line": 98,
           "signature": "preflight(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24419,7 +24419,7 @@
         },
         {
           "name": "create",
-          "line": 96,
+          "line": 99,
           "signature": "create(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24433,7 +24433,7 @@
         },
         {
           "name": "replay",
-          "line": 117,
+          "line": 120,
           "signature": "replay(row:SourceCourseRecord, command:{expectedRevision:number;requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -24441,7 +24441,7 @@
         },
         {
           "name": "finish",
-          "line": 122,
+          "line": 125,
           "signature": "finish(row:SourceCourseRecord, command:{requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -24449,7 +24449,7 @@
         },
         {
           "name": "edit",
-          "line": 123,
+          "line": 126,
           "signature": "edit(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24462,7 +24462,7 @@
         },
         {
           "name": "authoring",
-          "line": 133,
+          "line": 136,
           "signature": "authoring(user:InMemoryUserAccount, courseId:string): SourceCourseAuthoring",
           "access": "public",
           "decorators": [],
@@ -24473,7 +24473,7 @@
         },
         {
           "name": "lessonAuthoring",
-          "line": 141,
+          "line": 144,
           "signature": "lessonAuthoring(user:InMemoryUserAccount, courseId:string, lessonId:string): SourceCourseAuthoring",
           "access": "public",
           "decorators": [],
@@ -24484,7 +24484,7 @@
         },
         {
           "name": "editLesson",
-          "line": 160,
+          "line": 163,
           "signature": "editLesson(user:InMemoryUserAccount, courseId:string, lessonId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24498,7 +24498,7 @@
         },
         {
           "name": "editContent",
-          "line": 171,
+          "line": 174,
           "signature": "editContent(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24512,7 +24512,7 @@
         },
         {
           "name": "confirm",
-          "line": 185,
+          "line": 188,
           "signature": "confirm(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -24526,7 +24526,7 @@
         },
         {
           "name": "control",
-          "line": 192,
+          "line": 195,
           "signature": "control(user:InMemoryUserAccount, courseId:string, action:'cancel'|'retry'|'archive', input:unknown)",
           "access": "public",
           "decorators": [],
@@ -32265,7 +32265,7 @@
     {
       "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
       "name": "curriculumClassroomLesson",
-      "line": 275,
+      "line": 278,
       "signature": "curriculumClassroomLesson(studioCourse: StudioCourse, source: StudioLesson): ClassroomLesson | undefined"
     },
     {
@@ -32413,27 +32413,39 @@
       "signature": "visualSession(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, id: string)"
     },
     {
+      "file": "apps/api/src/modules/learning/course-journey.ts",
+      "name": "lessonActivity",
+      "line": 5,
+      "signature": "lessonActivity(lesson:ClassroomLesson, sessions:ClassroomSession[], kind:CourseLessonActivity['kind']='lecture'): CourseLessonActivity"
+    },
+    {
+      "file": "apps/api/src/modules/learning/course-journey.ts",
+      "name": "projectActivities",
+      "line": 11,
+      "signature": "projectActivities(projects:CourseProject[], definitions:CourseProjectDefinition[]): CourseProjectActivity[]"
+    },
+    {
       "file": "apps/api/src/modules/learning/course-project-access.ts",
       "name": "projectStudentAccess",
-      "line": 8,
+      "line": 9,
       "signature": "projectStudentAccess(students:StudentsService, user:InMemoryUserAccount, studentId:string)"
     },
     {
       "file": "apps/api/src/modules/learning/course-project-access.ts",
       "name": "courseProjectRecord",
-      "line": 11,
+      "line": 12,
       "signature": "courseProjectRecord(store:InMemoryStoreService, students:StudentsService, user:InMemoryUserAccount, id:string, editing=false): CourseProjectRecord"
     },
     {
       "file": "apps/api/src/modules/learning/course-project-access.ts",
       "name": "captureProjectFileAuthorization",
-      "line": 16,
+      "line": 18,
       "signature": "captureProjectFileAuthorization(store:InMemoryStoreService, row:CourseProjectRecord, user:InMemoryUserAccount, session:InMemoryAuthSession): ProjectFileAuthorization"
     },
     {
       "file": "apps/api/src/modules/learning/course-project-access.ts",
       "name": "projectFileAuthority",
-      "line": 27,
+      "line": 29,
       "signature": "projectFileAuthority(store:InMemoryStoreService, students:StudentsService, file:ProjectUploadRecord|ProjectAssetRecord)"
     },
     {
@@ -32809,6 +32821,12 @@
       "signature": "generationView(row:SourceCourseRecord): SourceCourseGenerationView|null"
     },
     {
+      "file": "apps/api/src/modules/learning/source-course-project.ts",
+      "name": "sourceCourseProjectDefinition",
+      "line": 9,
+      "signature": "sourceCourseProjectDefinition(course:SourceCourseRecord): CourseProjectDefinition|undefined"
+    },
+    {
       "file": "apps/api/src/modules/learning/source-course-selection.ts",
       "name": "materialVersion",
       "line": 18,
@@ -32829,8 +32847,14 @@
     {
       "file": "apps/api/src/modules/learning/source-course.service.ts",
       "name": "assertSourceCourseAccess",
-      "line": 20,
+      "line": 22,
       "signature": "assertSourceCourseAccess(user:InMemoryUserAccount, row:SourceCourseRecord, students:StudentsService, editing=false)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-project-access.ts",
+      "name": "sourceProjectCourse",
+      "line": 9,
+      "signature": "sourceProjectCourse(store:InMemoryStoreService, students:StudentsService, user:InMemoryUserAccount, id:string): SourceCourseRecord"
     },
     {
       "file": "apps/api/src/modules/learning/studio-course.ts",
@@ -35212,7 +35236,7 @@
     {
       "name": "ClassroomDiagram",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 5,
+      "line": 6,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35245,7 +35269,7 @@
     {
       "name": "ClassroomBlock",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 6,
+      "line": 7,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35298,7 +35322,7 @@
     {
       "name": "ClassroomStep",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 9,
+      "line": 10,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35336,21 +35360,21 @@
     {
       "name": "ClassroomSelectionMode",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 11,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomAnswerDisposition",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 12,
+      "line": 13,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomQuestion",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 13,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35408,7 +35432,7 @@
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 17,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35476,7 +35500,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 22,
+      "line": 23,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35504,7 +35528,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 23,
+      "line": 24,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35537,7 +35561,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 25,
+      "line": 26,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35585,7 +35609,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 27,
+      "line": 28,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35658,7 +35682,7 @@
     {
       "name": "ClassroomHintReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 30,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35686,7 +35710,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 31,
+      "line": 32,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35729,7 +35753,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 34,
+      "line": 35,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35857,14 +35881,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 43,
+      "line": 44,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 46,
+      "line": 47,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35876,6 +35900,16 @@
           "name": "progress",
           "optional": false,
           "type": "Array<{ lessonId: string; sessionId: string;\r\n  cursor: number; completed: boolean; correct: number; answered: number; updatedAt: string; createdAt: string }>"
+        },
+        {
+          "name": "lessonActivities",
+          "optional": true,
+          "type": "CourseLessonActivity[]"
+        },
+        {
+          "name": "projectActivities",
+          "optional": true,
+          "type": "CourseProjectActivity[]"
         },
         {
           "name": "readingProgress",
@@ -35892,7 +35926,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 51,
+      "line": 53,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -35954,6 +35988,125 @@
           "name": "reviewQuestionIds",
           "optional": false,
           "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "CourseLessonActivity",
+      "file": "packages/contracts/src/course-journey.ts",
+      "line": 2,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "lessonId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'lecture'|'unit_check'"
+        },
+        {
+          "name": "reading",
+          "optional": false,
+          "type": "{state:'not_started'|'reading'|'read';sessionId:string|null;cursor:number;sentenceCursor:number;resuming:boolean;contentCurrent:boolean}"
+        },
+        {
+          "name": "practice",
+          "optional": false,
+          "type": "{state:'not_started'|'in_progress'|'answered';sessionId:string|null;summary:ClassroomPracticeSummary}"
+        }
+      ]
+    },
+    {
+      "name": "CourseProjectActivity",
+      "file": "packages/contracts/src/course-journey.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "projectId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "definitionFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "definitionCurrent",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "stageId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "totalStages",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "draftStages",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "submittedStages",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "reviewedStages",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "readyStages",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseJourney",
+      "file": "packages/contracts/src/course-journey.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "lessons",
+          "optional": false,
+          "type": "CourseLessonActivity[]"
+        },
+        {
+          "name": "projects",
+          "optional": false,
+          "type": "CourseProjectActivity[]"
+        },
+        {
+          "name": "unitCheck",
+          "optional": false,
+          "type": "'not_configured'"
         }
       ]
     },
@@ -36060,6 +36213,11 @@
           "type": "string"
         },
         {
+          "name": "sourceCourse",
+          "optional": true,
+          "type": "{ id:string;fingerprint:string;objectives:Array<{lessonId:string;title:string;objective:string}>;\r\n    references:Array<{key:string;title:string;page:number;sha256:string}> }"
+        },
+        {
           "name": "stages",
           "optional": false,
           "type": "ProjectStage[]"
@@ -36074,7 +36232,7 @@
     {
       "name": "ProjectEvidence",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 8,
+      "line": 10,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36102,7 +36260,7 @@
     {
       "name": "ProjectArtifact",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 9,
+      "line": 11,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36125,7 +36283,7 @@
     {
       "name": "ProjectRating",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 10,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36153,7 +36311,7 @@
     {
       "name": "ProjectSubmission",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 11,
+      "line": 13,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36211,7 +36369,7 @@
     {
       "name": "ProjectHumanReview",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 13,
+      "line": 15,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36264,7 +36422,7 @@
     {
       "name": "ProjectAdviceScope",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 16,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36287,7 +36445,7 @@
     {
       "name": "ProjectAdvice",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 17,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36330,7 +36488,7 @@
     {
       "name": "CourseProject",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 19,
+      "line": 21,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36350,6 +36508,11 @@
         },
         {
           "name": "studioCourseId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "sourceCourseId",
           "optional": true,
           "type": "string"
         },
@@ -36413,14 +36576,14 @@
     {
       "name": "CourseProjectView",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 25,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "CourseProjectCatalog",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 27,
+      "line": 29,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -36432,13 +36595,18 @@
           "name": "projects",
           "optional": false,
           "type": "CourseProjectView[]"
+        },
+        {
+          "name": "permissions",
+          "optional": true,
+          "type": "{start:boolean}"
         }
       ]
     },
     {
       "name": "ProjectCommandReceipt",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 28,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42525,28 +42693,28 @@
     {
       "name": "SourceCourseContent",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 16,
+      "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseLessonContent",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 17,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseReviewField",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 18,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseReviewIssue",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 19,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42574,7 +42742,7 @@
     {
       "name": "SourceCourseLessonReview",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 20,
+      "line": 21,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42617,7 +42785,7 @@
     {
       "name": "SourceCourseGenerationView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 21,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42685,7 +42853,7 @@
     {
       "name": "CourseSourceSnapshot",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 26,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42758,7 +42926,7 @@
     {
       "name": "SourceCourseInput",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 29,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42796,7 +42964,7 @@
     {
       "name": "SourceCourseSummary",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 31,
+      "line": 32,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42884,14 +43052,14 @@
     {
       "name": "SourceCourseView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 34,
+      "line": 35,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseAuthoring",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 44,
+      "line": 46,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -45299,6 +45467,7 @@
     "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
     "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
+    "apps/api/src/modules/learning/course-journey.test.ts",
     "apps/api/src/modules/learning/course-project.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
     "apps/api/src/modules/learning/learning-home.integration.test.ts",
@@ -45310,6 +45479,8 @@
     "apps/api/src/modules/learning/source-course-chunks.test.ts",
     "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
     "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
+    "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+    "apps/api/src/modules/learning/source-course-project.test.ts",
     "apps/api/src/modules/learning/source-course.integration.test.ts",
     "apps/api/src/modules/learning/studio-course.test.ts",
     "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
@@ -45357,6 +45528,7 @@
     "tests/e2e/project-teaching.spec.ts",
     "tests/e2e/source-course-lifecycle.spec.ts",
     "tests/e2e/source-course-long.spec.ts",
+    "tests/e2e/source-course-project.spec.ts",
     "tests/e2e/source-course.spec.ts",
     "tests/e2e/studio.spec.ts",
     "tests/e2e/workspace.spec.ts"

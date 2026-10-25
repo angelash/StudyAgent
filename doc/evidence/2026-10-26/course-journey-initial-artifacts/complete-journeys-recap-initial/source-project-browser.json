@@ -1,0 +1,500 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-course-journeys\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/source-course-project.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-course-journeys\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-course-journeys/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-project-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-project.spec.ts",
+      "file": "source-course-project.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19985,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n\n    at finishQuestions (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:32:55)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:45:51",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                      "column": 55,
+                      "line": 32
+                    },
+                    "snippet": "  30 |       await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();\n  31 |     }\n> 32 |     await expect(page.locator('.cl-answer-feedback')).toBeVisible();\n     |                                                       ^\n  33 |   }\n  34 | }\n  35 | async function leaveClassroom(page:Page,standalone=false){"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                        "column": 55,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n\n\n  30 |       await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();\n  31 |     }\n> 32 |     await expect(page.locator('.cl-answer-feedback')).toBeVisible();\n     |                                                       ^\n  33 |   }\n  34 | }\n  35 | async function leaveClassroom(page:Page,standalone=false){\n    at finishQuestions (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:32:55)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:45:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:32:56.144Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                    "column": 55,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-309acd5dc044d4e1c6ef",
+          "file": "source-course-project.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3796,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:17.658Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-f40a602dd154b4fc040d",
+          "file": "source-course-project.spec.ts",
+          "line": 63,
+          "column": 5
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:21.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-2b645b83846c9a0ef623",
+          "file": "source-course-project.spec.ts",
+          "line": 67,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3576,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:23.525Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-562107329a246dca6ce3",
+          "file": "source-course-project.spec.ts",
+          "line": 67,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2540,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:27.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-4b89730c824b7ba2785e",
+          "file": "source-course-project.spec.ts",
+          "line": 67,
+          "column": 39
+        },
+        {
+          "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:29.655Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-125e270c91c4f4ffbfc3",
+          "file": "source-course-project.spec.ts",
+          "line": 71,
+          "column": 5
+        },
+        {
+          "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:35.260Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-bb85ba6e737669f9f560",
+          "file": "source-course-project.spec.ts",
+          "line": 80,
+          "column": 5
+        },
+        {
+          "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:38.094Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-5cddbb821b35b4b9a520",
+          "file": "source-course-project.spec.ts",
+          "line": 85,
+          "column": 5
+        },
+        {
+          "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19495,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n\n    at finishQuestions (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:32:55)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:95:51",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                      "column": 55,
+                      "line": 32
+                    },
+                    "snippet": "  30 |       await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();\n  31 |     }\n> 32 |     await expect(page.locator('.cl-answer-feedback')).toBeVisible();\n     |                                                       ^\n  33 |   }\n  34 | }\n  35 | async function leaveClassroom(page:Page,standalone=false){"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                        "column": 55,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-answer-feedback')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.cl-answer-feedback') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-answer-feedback')\u001b[22m\n\n\n  30 |       await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();\n  31 |     }\n> 32 |     await expect(page.locator('.cl-answer-feedback')).toBeVisible();\n     |                                                       ^\n  33 |   }\n  34 | }\n  35 | async function leaveClassroom(page:Page,standalone=false){\n    at finishQuestions (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:32:55)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:95:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T17:33:40.786Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-an-e-7d533-bmissions-as-separate-facts\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-an-e-7d533-bmissions-as-separate-facts\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-an-e-7d533-bmissions-as-separate-facts\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                    "column": 55,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-b003db869f0cd28d1322",
+          "file": "source-course-project.spec.ts",
+          "line": 89,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T17:32:50.674Z",
+    "duration": 71575.425,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

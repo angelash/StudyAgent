@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 118,
+    "features": 119,
     "activeNormalApiRoutes": 325,
     "coveredApiRoutes": 325
   },
@@ -4459,7 +4459,7 @@
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 285
+              "line": 288
             }
           ],
           "sourceFiles": [
@@ -4788,7 +4788,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 27
+              "line": 29
             }
           ],
           "sourceFiles": [
@@ -4879,27 +4879,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 92
+              "line": 95
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 83
+              "line": 86
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 133
+              "line": 136
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 293
+              "line": 296
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 158
+              "line": 161
             }
           ],
           "sourceFiles": [
@@ -5007,7 +5007,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 249
+              "line": 252
             },
             {
               "name": "ClassroomTurnService.list",
@@ -5112,12 +5112,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 176
+              "line": 179
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 224
+              "line": 227
             }
           ],
           "sourceFiles": [
@@ -6418,47 +6418,47 @@
             {
               "name": "CourseProjectService.catalog",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 61
+              "line": 66
             },
             {
               "name": "CourseProjectService.get",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 59
+              "line": 64
             },
             {
               "name": "CourseProjectService.request",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 87
+              "line": 96
             },
             {
               "name": "CourseProjectService.open",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 71
+              "line": 77
             },
             {
               "name": "CourseProjectService.save",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 136
+              "line": 145
             },
             {
               "name": "CourseProjectService.submit",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 150
+              "line": 159
             },
             {
               "name": "CourseProjectService.review",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 168
+              "line": 177
             },
             {
               "name": "CourseProjectService.importLegacy",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 185
+              "line": 194
             },
             {
               "name": "CourseProjectService.advise",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 199
+              "line": 208
             }
           ],
           "sourceFiles": [
@@ -6549,6 +6549,122 @@
             "apps/web/app/studio/projects/use-project-recovery.ts",
             "tests/e2e/project-teaching.spec.ts",
             "scripts/qa/run-project-teaching-postgres.cjs"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-29",
+          "title": "资料课程项目与只读活动旅程",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "已确认资料课程、冻结公开目标/来源、已有会话首答/帮助记录、本人项目和本机步骤偏好",
+          "implementation": "资料课程按来源版本冻结三阶段项目，支持原附件、自评、提交、复核、受控朗读和历史；同一账号/项目/定义恢复合法stage/step/view，显式URL优先，各标签完整稿仍独立；阅读对比递归规范化对象属性抵抗JSONB重排，持久内容指纹不改；纯投影汇总原句/题目断点、独立/辅助/跳过/作者曝光首答，以及每阶段最新提交的人工复核，读取不创建活动；资料逐课状态和成人单元可展开旅程，源项目返回原课并保留筛选；按账号/角色卸载旧工作台和取消旧目录请求",
+          "outputs": "来源项目、准确活动入口和断点、各类学习事实分开呈现",
+          "collections": [
+            "sourceCourses",
+            "courseProjects",
+            "classroomSessions",
+            "studioSourceMaterials"
+          ],
+          "limits": "资料题和通用量规待教师审核；资料课程独立单元核查明确未设置，不把微课重用为正式测量；当前界面位置为本机偏好，不是服务器学习证据；原声/CSS/字体/DPR、完整课程包生命周期、全教材和真人效果仍待验",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/projects/catalog",
+              "controller": "CourseProjectController",
+              "method": "catalog",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects",
+              "controller": "CourseProjectController",
+              "method": "open",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/classroom/catalog",
+              "controller": "ClassroomController",
+              "method": "catalog",
+              "file": "apps/api/src/modules/learning/classroom.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/:id",
+              "controller": "SourceCourseController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 27
+            }
+          ],
+          "implementations": [
+            {
+              "name": "CourseProjectService.catalog",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 66
+            },
+            {
+              "name": "CourseProjectService.open",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 77
+            },
+            {
+              "name": "ClassroomService.catalog",
+              "file": "apps/api/src/modules/learning/classroom.service.ts",
+              "line": 29
+            },
+            {
+              "name": "SourceCourseService.get",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 86
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/course-journey.ts",
+            "apps/api/src/modules/learning/source-course-project.ts",
+            "apps/api/src/modules/learning/source-project-access.ts",
+            "apps/api/src/modules/learning/course-journey.ts",
+            "apps/api/src/modules/learning/course-journey.test.ts",
+            "apps/api/src/modules/learning/source-course-project.test.ts",
+            "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+            "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts",
+            "apps/web/app/studio/course-activity.tsx",
+            "apps/web/app/studio/course-activity.css",
+            "apps/web/app/studio/projects/project-location.ts",
+            "tests/e2e/source-course-project.spec.ts",
+            "scripts/qa/run-source-projects-postgres.cjs",
+            "apps/api/src/modules/learning/course-project.service.ts",
+            "apps/api/src/modules/learning/classroom.service.ts",
+            "apps/api/src/modules/learning/source-course.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio-course.test.ts",
@@ -6695,52 +6811,52 @@
             {
               "name": "SourceCourseService.materials",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 28
+              "line": 30
             },
             {
               "name": "SourceCourseService.addText",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 36
+              "line": 38
             },
             {
               "name": "SourceCourseService.list",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 86
+              "line": 89
             },
             {
               "name": "SourceCourseService.create",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 96
+              "line": 99
             },
             {
               "name": "SourceCourseService.get",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 83
+              "line": 86
             },
             {
               "name": "SourceCourseService.edit",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 123
+              "line": 126
             },
             {
               "name": "SourceCourseService.authoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 133
+              "line": 136
             },
             {
               "name": "SourceCourseService.editContent",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 171
+              "line": 174
             },
             {
               "name": "SourceCourseService.confirm",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 185
+              "line": 188
             },
             {
               "name": "SourceCourseService.control",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 192
+              "line": 195
             }
           ],
           "sourceFiles": [
@@ -6857,32 +6973,32 @@
             {
               "name": "SourceCourseService.preflight",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 95
+              "line": 98
             },
             {
               "name": "SourceCourseService.addTextFile",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 49
+              "line": 51
             },
             {
               "name": "SourceCourseService.progress",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 84
+              "line": 87
             },
             {
               "name": "SourceCourseService.source",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 85
+              "line": 88
             },
             {
               "name": "SourceCourseService.lessonAuthoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 141
+              "line": 144
             },
             {
               "name": "SourceCourseService.editLesson",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 160
+              "line": 163
             }
           ],
           "sourceFiles": [
