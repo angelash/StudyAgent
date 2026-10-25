@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { GuidancePlanRevision, GuidancePlanView, ReviewTask } from '@study-agent/contracts';
 import { apiRequest } from '../lib/api';
 import './guidance-manager.css';
+import { GuidanceModelPanel } from './guidance-model-panel';
 
 const send = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) });
 const kindNames = { created: '建立计划', legacy: '开始保留历史', adjusted: '调整活动', status: '执行状态', retrospective: '确认复盘' };
@@ -44,7 +45,7 @@ export function GuidanceManager({ plan, onChange }: { plan: GuidancePlanView; on
     });
   }
   return <section className="guidance-manager" aria-label="指导计划调整与历史">
-    <div className="guidance-version"><span>第 {plan.revision ?? 1} 版</span><small>{plan.source === 'human' ? '家长调整' : plan.source === 'ai' ? 'AI 辅助安排' : '依据评测安排'} · {new Date(plan.createdAt).toLocaleDateString('zh-CN')}</small></div>
+    <div className="guidance-version"><span>第 {plan.revision ?? 1} 版</span><small>{plan.source === 'human' ? '家长调整' : plan.source === 'ai' ? 'AI 辅助说明' : '依据评测安排'} · {new Date(plan.createdAt).toLocaleDateString('zh-CN')}</small></div>
     {plan.impact && <div className={plan.impact.needsReview ? 'guidance-impact' : 'guidance-evidence'} role={plan.impact.needsReview ? 'status' : undefined}>
       <strong>{requiresNewAssessment ? '知识目标需要重新核对与评测。' : plan.impact.needsReview ? '评测有了修订，指导也要重新核对。' : '每次调整，都保留当时的依据。'}</strong>
       <p>{plan.impact.message}</p>{plan.impact.needsReview && <a href={requiresNewAssessment
@@ -52,6 +53,7 @@ export function GuidanceManager({ plan, onChange }: { plan: GuidancePlanView; on
         : `/student/assessment?studentId=${plan.studentId}&subject=${plan.subject}&session=${plan.baselineSessionId}`}>{requiresNewAssessment ? '重新确认范围与评测 ↗' : '查看修订后的报告 ↗'}</a>}
     </div>}
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status" className="studio-notice">{notice}</p>}
+    <GuidanceModelPanel key={plan.id} plan={plan} onChange={value=>{onChange(value);setHistory(null);}}/>
     <div className="guidance-controls">{plan.status !== 'completed' && <button className="studio-secondary" disabled={busy || requiresNewAssessment || plan.impact.measurementRulesChanged} onClick={begin}>{plan.impact?.needsReview ? '核对依据并调整计划' : '调整时间与指导活动'}</button>}
       <button className="studio-text-button" disabled={busy} onClick={() => run(async () => setHistory(history ? null : await send<GuidancePlanRevision[]>(`/diagnostics/plans/${plan.id}/history`)))}>{history ? '收起历史' : '查看每次调整 ↗'}</button></div>
     {editing && <form className="guidance-edit" onSubmit={save}>

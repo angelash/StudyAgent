@@ -1,23 +1,26 @@
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
+import { ModuleRef } from '@nestjs/core';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticGuidancePlan, GuidanceAction, GuidancePlanRevision, GuidancePlanView, LearningScope,
-  LearningSourceCitation, Subject } from '@study-agent/contracts';
+  LearningSourceCitation, Subject, GuidanceModelText } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
-import { AiService } from '../ai/ai.service';
 import { DiagnosticsService } from './diagnostics.service';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { eligibleMeasurements } from './curriculum.service';
 import { FAMILY_IDENTITY_VERSION, familyAnalysisOutdated } from './family-identity';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { textbookSourceCitations } from './learning-source-citation';
+import { guidanceModelPort, type GuidanceModelPort } from './guidance-model-record';
 
 const createPlanSchema = z.object({
   baselineSessionId: z.string().min(1).max(180), minutesPerDay: z.number().int().min(5).max(60),
   useAi: z.boolean().default(true),
+  requestKey: z.string().min(8).max(180).optional(), modelId:z.string().trim().min(1).max(180).optional(),
+  expectedReportVersion:z.number().int().positive().optional(),
 }).strict();
 const versionedCommand = { expectedRevision: z.number().int().positive().optional(), requestKey: z.string().min(8).max(180).optional() };
 const reasonSchema = z.string().trim().min(5).max(1500);
@@ -26,8 +29,8 @@ const inputHash = (kind: string, input: unknown) => createHash('sha256').update(
 @Injectable()
 export class GuidanceService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService, private readonly ai: AiService,
-    private readonly textbooks: TextbookRegistryService) {}
+    private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService,
+    private readonly textbooks: TextbookRegistryService, private readonly moduleRef: ModuleRef) {}
 
   private sourceCitations(scope: LearningScope, atomId: string): LearningSourceCitation[] {
     if (!scope.textbookVolumeId) return [];
@@ -38,11 +41,26 @@ export class GuidanceService {
   }
 
   async create(user: InMemoryUserAccount, studentId: string, input: unknown) {
-    this.students.assertGuardian(user, studentId);
     const command = validate(createPlanSchema, input);
+    if (!command.useAi && command.modelId) throw new BadRequestException('未请求AI建议时请勿指定模型');
+    for (let attempt=0;attempt<2;attempt++) try { return await this.store.transaction(()=>this.createRulePlan(user,studentId,command)); }
+    catch(error) { if (!(error instanceof ConflictException) || attempt===1) throw error; }
+    throw new ConflictException('请读取原计划创建结果后重试');
+  }
+  private async createRulePlan(user: InMemoryUserAccount, studentId: string, command: z.infer<typeof createPlanSchema>) {
+    this.students.assertGuardian(user, studentId);
+    const creationHash=inputHash('create',{studentId,...command});
+    if(command.requestKey) {
+      const previous=this.store.find('guidancePlanRevisions',{actorId:user.id,requestKey:command.requestKey});
+      if(previous) {
+        if(previous.kind!=='created'||previous.inputHash!==creationHash)throw new ConflictException('请求键已用于不同的计划创建或其他操作');
+        return this.get(user,previous.planId);
+      }
+    }
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
+    if(command.expectedReportVersion!==undefined&&command.expectedReportVersion!==(report.version??1))throw new ConflictException('原评测报告已修订，请核对当前版本后重新制定计划');
     if (familyAnalysisOutdated(report)) throw new ConflictException('题族计量方法已更新，请先重新分析原报告，再制定指导计划');
     if (!session.atomSnapshots) throw new BadRequestException('历史评测未保存知识定义，请完成一轮新评测后建立指导计划');
     if (this.diagnostics.changedPlanDefinitions(session, report.estimates.map(estimate => estimate.atomId)).length) {
@@ -91,18 +109,34 @@ export class GuidanceService {
       actions, evidenceIds: [...new Set(actions.flatMap((item) => item.evidenceIds))], createdAt: now.toISOString(), aiStatus: 'not_requested',
       revision: 1, baselineReportVersion: report.version ?? 1,
     };
-    if (command.useAi) {
-      const enrichment = await this.ai.enrichDiagnosticPlan(plan, { scope: session.scopeSnapshot, report });
-      plan.aiStatus = enrichment.status;
-      if (enrichment.status === 'available' && enrichment.value) {
-        plan.source = 'ai'; plan.summary = enrichment.value.summary;
-        for (const action of plan.actions) action.activity = enrichment.value.activities.find((item) => item.actionId === action.id)?.activity ?? action.activity;
-      }
-    }
     this.store.append('diagnosticPlans', plan);
-    this.saveRevision(plan, user.id, 'created', '依据当前评测建立指导计划');
+    const savedPlan=this.store.find('diagnosticPlans',{id:plan.id})!;
+    let modelRequest:NonNullable<GuidancePlanView['modelRequest']>={status:'not_requested',reason:'原规则计划已保存，可按需要请求说明建议'};
+    if(command.useAi)try {
+      const suggestion=await this.moduleRef.get<GuidanceModelPort>(guidanceModelPort,{strict:false}).createInCurrentTransaction(user,plan.id,{expectedRevision:1,
+        requestKey:'initial-'+inputHash('initial-suggestion',{owner:user.id,planId:plan.id,requestKey:command.requestKey}),modelId:command.modelId??'auto'});
+      modelRequest={status:'queued',suggestionId:suggestion.id,reason:'原规则计划已保存，说明建议在独立任务中生成，完成后仍需明确采用'};
+    }catch(error) {
+      if(!(error instanceof BadRequestException)&&!(error instanceof ServiceUnavailableException))throw error;
+      savedPlan.aiStatus='unavailable';modelRequest={status:'unavailable',reason:error.message};
+    }
+    this.saveRevision(savedPlan, user.id, 'created', '依据当前评测建立指导计划', command.requestKey?{requestKey:command.requestKey,inputHash:creationHash}:undefined);
     this.events.publish('guidance.proposed', { planId: plan.id, studentId, source: plan.source, baselineSessionId: session.id });
-    return this.view(user, plan);
+    return {...this.view(user, savedPlan),modelRequest};
+  }
+
+  adoptModelText(user:InMemoryUserAccount,planId:string,expectedRevision:number,result:GuidanceModelText,
+    metadata:NonNullable<DiagnosticGuidancePlan['aiAdoption']>,requestKey:string) {
+    const plan=this.requirePlan(user,planId);this.students.assertGuardian(user,plan.studentId);
+    if(plan.status!=='proposed'||(plan.revision??1)!==expectedRevision||this.view(user,plan).impact.needsReview)throw new ConflictException('计划或原依据已变化，请重新核对建议');
+    if(result.activities.length!==plan.actions.length||new Set(result.activities.map(a=>a.actionId)).size!==plan.actions.length||result.activities.some(a=>!plan.actions.some(p=>p.id===a.actionId)))throw new BadRequestException('建议与当前行动不一致');
+    this.preserveLegacy(plan,user.id);plan.summary=result.summary;
+    for(const action of plan.actions)action.activity=result.activities.find(a=>a.actionId===action.id)!.activity;
+    plan.source='ai';plan.aiStatus='available';plan.aiAdoption=metadata;
+    this.bump(plan,user.id,'adjusted','明确采用 '+metadata.modelName+' 的说明建议；原行动定义与规则版本保留',
+      {requestKey,inputHash:inputHash('model-adopt',{planId,expectedRevision,result,metadata:{...metadata,adoptedAt:undefined}})});
+    this.events.publish('guidance.model_adopted',{planId,suggestionId:metadata.suggestionId,revision:plan.revision,actorId:user.id});
+    return this.view(user,plan);
   }
 
   list(user: InMemoryUserAccount, studentId: string, subject: Subject) {
@@ -112,9 +146,15 @@ export class GuidanceService {
   }
 
   get(user: InMemoryUserAccount, planId: string) { return this.view(user, this.requirePlan(user, planId)); }
+  creationResult(user:InMemoryUserAccount,studentId:string,requestKey:string) {
+    this.students.assertGuardian(user,studentId);validate(z.string().min(8).max(180),requestKey);
+    const receipt=this.store.find('guidancePlanRevisions',{actorId:user.id,kind:'created',requestKey});
+    if(!receipt||receipt.snapshot.studentId!==studentId)return null;
+    return this.get(user,receipt.planId);
+  }
   history(user: InMemoryUserAccount, planId: string) {
     this.requirePlan(user, planId);
-    return this.store.select('guidancePlanRevisions', { planId: planId }).sort((a, b) => b.revision - a.revision);
+    return this.store.select('guidancePlanRevisions', { planId: planId }).sort((a, b) => b.revision - a.revision).map(({requestKey:_key,inputHash:_hash,...row})=>row);
   }
   private requirePlan(user: InMemoryUserAccount, id: string) {
     const plan = this.store.find('diagnosticPlans', { id: id });

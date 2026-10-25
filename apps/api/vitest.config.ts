@@ -3,6 +3,8 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'node',
+    // Ordinary regression must not call a live text provider. Provider suites explicitly enable their isolated fixtures.
+    env: { XIAOJIU_CHAT_ENABLED: 'false' },
     include: ['src/**/*.test.ts'],
     // Each integration suite boots Nest and native SQLite. Bound startup pressure on desktop/CI hosts.
     maxWorkers: 2,

@@ -123,6 +123,8 @@ export class DiagnosticsController {
   plan(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) { return this.guidance.create(req.user, id, body); }
   @Get('diagnostics/students/:studentId/plans')
   plans(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.guidance.list(req.user, id, parseSubject(subject)); }
+  @Get('diagnostics/students/:studentId/plan-requests/:requestKey')
+  planCreationResult(@Req() req: AuthenticatedRequest, @Param('studentId') id:string, @Param('requestKey') requestKey:string) { return this.guidance.creationResult(req.user,id,requestKey); }
   @Patch('diagnostics/plans/:planId')
   updatePlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown) { return this.guidance.update(req.user, id, body); }
   @Get('diagnostics/plans/:planId')

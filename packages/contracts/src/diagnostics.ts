@@ -273,9 +273,11 @@ export type DiagnosticGuidancePlan = {
   minutesPerDay: number; summary: string; actions: GuidanceAction[]; evidenceIds: string[];
   createdAt: string; aiStatus: 'not_requested' | 'available' | 'unavailable' | 'rejected';
   revision?: number; baselineReportVersion?: number; activatedAt?: string;
+  aiAdoption?: { suggestionId: string; modelId: string; modelName: string; basedOnRevision: number; adoptedAt: string };
   retrospectiveReview?: { fingerprint: string; reviewedAt: string; actorId: string; note: string };
 };
 export type GuidancePlanView = DiagnosticGuidancePlan & {
+  modelRequest?: { status: 'not_requested' | 'queued' | 'unavailable'; suggestionId?: string; reason: string };
   impact: { needsReview: boolean; baselineReportVersion: number; currentReportVersion: number;
     measurementRulesChanged?: boolean;
     pendingReviewCount: number; affectedActionIds: string[]; message: string; definitionChangedActionIds?: string[];

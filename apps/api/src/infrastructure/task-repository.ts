@@ -35,11 +35,13 @@ export class TaskRepository {
   constructor(private readonly sqlite?: DatabaseSync, private readonly postgres?: Pool, private readonly now = () => Date.now(), private readonly sqliteQueueKey?: string) {}
 
   async open() {
+    const guidancePlan=this.sqlite?`json_extract(payload,'$.planId')`:`((payload::jsonb)->>'planId')`;
     const sql = `CREATE TABLE IF NOT EXISTS durable_tasks(${taskColumns});
       CREATE INDEX IF NOT EXISTS durable_task_dispatch ON durable_tasks(state,available_at,lease_until);
       CREATE INDEX IF NOT EXISTS durable_task_owner ON durable_tasks(owner_id,created_at);
       CREATE TABLE IF NOT EXISTS durable_task_history(id TEXT PRIMARY KEY,task_id TEXT NOT NULL,action TEXT NOT NULL,actor_id TEXT NOT NULL,at TEXT NOT NULL,detail TEXT NOT NULL);
-      CREATE INDEX IF NOT EXISTS durable_task_history_task ON durable_task_history(task_id,at);`;
+      CREATE INDEX IF NOT EXISTS durable_task_history_task ON durable_task_history(task_id,at);
+      CREATE UNIQUE INDEX IF NOT EXISTS durable_guidance_plan_active ON durable_tasks(${guidancePlan}) WHERE kind='guidance.model.suggest' AND state IN ('queued','running','retry_wait','cancel_requested');`;
     if (this.sqlite) this.sqlite.exec(sql);
     else {
       const client = await this.postgres!.connect();

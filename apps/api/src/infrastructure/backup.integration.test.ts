@@ -91,7 +91,7 @@ describe('verified backup and isolated recovery', () => {
       await database.close();
       const guard = new DatabaseSync(location);
       try {
-        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(13);
+        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(14);
         expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
         guard.exec("UPDATE study_restore_guard SET state='restoring'");
       } finally { guard.close(); }

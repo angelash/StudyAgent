@@ -3,6 +3,7 @@ import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
 import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
+import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import type { CourseProjectRecord } from '../modules/learning/course-project.service';
@@ -393,6 +394,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string }> = [];
   assistantMessages: AssistantMessage[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
+  guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];
   knowledgeAtoms: KnowledgeAtom[] = [];
@@ -491,6 +493,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantSessions = [];
     this.assistantMessages = [];
     this.assistantTurns = [];
+    this.guidanceModelSuggestions = [];
     this.aiInsights = [];
     this.events = [];
     this.knowledgeAtoms = [];

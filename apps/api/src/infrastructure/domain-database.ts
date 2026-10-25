@@ -175,6 +175,9 @@ export class DomainDatabase {
     await this.migrateConstraints(13, [
       { name: 'classroom_visual_request', collection: 'classroomVisuals', fields: ['ownerUserId','requestKey'] },
     ]);
+    const guidanceField=(field:string)=>this.sqlite?`json_extract(body,'$.${field}')`:`(body->>'${field}')`;
+    await this.migrateConstraints(14, [], `CREATE UNIQUE INDEX IF NOT EXISTS guidance_plan_creation_request ON domain_records(${guidanceField('actorId')},${guidanceField('requestKey')})
+      WHERE collection='guidancePlanRevisions' AND ${guidanceField('kind')}='created' AND ${guidanceField('requestKey')} IS NOT NULL;`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

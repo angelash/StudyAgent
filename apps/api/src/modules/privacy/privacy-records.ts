@@ -26,7 +26,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
+    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
@@ -81,6 +81,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
+  add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
   add(result, store, 'events', row => hasReference(row.payload, references));
@@ -97,7 +98,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   const count = (...names: string[]) => names.reduce((sum, name) => sum + (selected[name]?.length ?? 0), 0);
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
-    activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
+    activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
     conversations: count('assistantMessages', 'assistantTurns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
@@ -135,6 +136,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
+    else if (name === 'guidanceModelSuggestions') result[name] = records.filter(row => row.ownerUserId === actorId)
+      .map(({context:_context,taskId:_task,inputHash:_input,commandHash:_command,definitionHash:_definition,planHash:_plan,bindingId:_binding,authorizationRole:_role,requests:_requests,requestKey:_key,status:_state,...row})=>
+        ({...row,publication:row.result?'published':'not_published'}));
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...row }) => row);

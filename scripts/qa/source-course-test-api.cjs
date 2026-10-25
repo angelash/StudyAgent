@@ -15,6 +15,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
+  const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
   provider.reply=async input=>{
     if(!input.classroomBoard){
       let context;try{context=JSON.parse(input.context);}catch{return originalReply(input);}
@@ -31,6 +32,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     return{...payload,modelId:input.modelId,modelName:'Synthetic classroom fixture'};
   };
   provider.structured=async(input,schema,check,custom=true)=>{
+    const guidance=await guidanceReply(input,check);if(guidance)return guidance;
     if(!custom)return original(input,schema,check,custom);
     const context=JSON.parse(input.context),stage=JSON.parse(input.message),count=(attempts.get(context.goal)??0)+1;attempts.set(context.goal,count);
     const key=context.goal+'|'+stage.stage+'|'+stage.lessonIndex,stageCount=(attempts.get(key)??0)+1;attempts.set(key,stageCount);

@@ -730,6 +730,7 @@ export * from './gesp';
 export const measurementDraftSchema = createMeasurementDraftSchema(subjectSchema, questionBlockSchema, questionAnswerSchemaSchema);
 export * from './classroom';
 export * from './classroom-choice';
+export * from './guidance-model';
 export * from './classroom-speech';
 export * from './learning-home';
 export * from './course-project';

@@ -22,6 +22,7 @@ import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { QuestionFaceView } from '../../../components/question-face-view';
 import { answerInputConfiguration } from '@study-agent/contracts';
+import { useGuidanceCreation } from '../../../lib/guidance-creation';
 import { AssessmentBlueprintCard } from '../../../components/assessment-blueprint';
 import { ComponentObservations, DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
 import { VerificationObservationReport } from '../../../components/verification-observations';
@@ -73,6 +74,7 @@ export function AssessmentStudio() {
   React.useEffect(() => () => { sessionReadGeneration.current++; }, []);
   const atomDeepLinkDone = React.useRef(false);
   const [locatedItem, setLocatedItem] = React.useState<{ id: string; payload: QuestionRenderPayload } | null>(null);
+  const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>{setPlan(value);setRetrospective(null);setScreen('plan');});
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
   const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
@@ -126,6 +128,14 @@ export function AssessmentStudio() {
         const requestedSubject = params.get('subject');
         if (subjects.some(([key]) => key === requestedSubject)) setSubject(requestedSubject as Subject);
         const selected = list.find((item) => item.id === requested) ?? list[0];
+        if (requested && !list.some(item => item.id === requested)) {
+          // Never interpret an old family's deep link as a request to open this family's latest plan.
+          const safe = new URLSearchParams(); if (selected) safe.set('studentId', selected.id);
+          if (subjects.some(([key]) => key === requestedSubject)) safe.set('subject', requestedSubject!);
+          window.history.replaceState({}, '', '?' + safe.toString());
+          setError('无法访问链接中的孩子，已返回当前账号的学习进度。'); setScreen('setup');
+          if (selected) { setStudentId(selected.id); setGrade(selected.grade); } return;
+        }
         if (selected) { setStudentId(selected.id); setGrade(selected.grade); }
         const sessionId = params.get('session');
         if (sessionId && selected) {
@@ -164,6 +174,10 @@ export function AssessmentStudio() {
           setProgress({ bookId: scope.textbookVolumeId ?? '', mode: scope.progressMode ?? 'knowledge', lessonIds: scope.selectedLessonIds ?? [] }); }
         else { setLearned([]); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setGrade(children.find((item) => item.id === studentId)?.grade ?? 3); }
         const requestedPlan = new URLSearchParams(window.location.search).get('planId');
+        if (requestedPlan && !plans.some(p => p.id === requestedPlan)) {
+          const safe = new URLSearchParams({ studentId, subject }); window.history.replaceState({}, '', '?' + safe.toString());
+          setSessions(history); setPlan(null); setRetrospective(null); setScreen('setup'); setError('链接中的指导计划不属于当前孩子，已返回学习进度。'); return;
+        }
         setSessions(history); setPlan(plans.find(p => p.id === requestedPlan) ?? plans[0] ?? null); setRetrospective(null);
         if (new URLSearchParams(window.location.search).get('view') === 'plan' && plans[0]) setScreen('plan');
       }).catch((caught) => { if (alive) setError(caught.message); });
@@ -423,9 +437,10 @@ export function AssessmentStudio() {
                 <DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.supportingEvidenceIds} title="支持方向的依据" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.counterEvidenceIds} title="需要同时核对的反证" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.reportedEvidenceIds ?? []} title="孩子报告暂时不会" /></details>
               {hypothesis.cause === 'retention_gap' && <p>保持情况需要通过指导计划中的间隔复测验证，当天换题不能替代真实间隔。</p>}
               {hypothesis.cause !== 'retention_gap' && report.status !== 'aborted' && report.definitionContext?.origin !== 'unavailable' && !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status) && <button className="studio-secondary" disabled={busy || analysisNeedsUpdate} onClick={() => verify(hypothesis)}>做一组题验证原因 ↗</button>}</article>)}</div></>}
-            {report.status === 'aborted' || report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>{report.status === 'aborted' ? '这份记录保留了提前结束前的表现。完成一轮新评测后，再制定当前的指导计划。' : '这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。'}</p></div><button className="studio-primary" disabled={busy} onClick={() => setScreen('setup')}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy || analysisNeedsUpdate} onClick={() => execute(async () => {
-              setPlan(await request<GuidancePlanView>(`/diagnostics/students/${studentId}/plans`, { baselineSessionId: report.sessionId, minutesPerDay: minutes, useAi: true })); setRetrospective(null); setScreen('plan');
-            })}>{busy ? '正在制定…' : '制定指导计划'} ↗</button></div> : <div className="studio-hint"><strong>这次的观察已经保存。</strong><p>请家长查看报告，一起确认下一步指导；也可以继续完成新的验证任务。</p><Link className="studio-secondary" href="/student/today">回到今日学习 ↗</Link></div>}<p className="studio-footnote">{report.modelNotice}</p>
+            {report.status === 'aborted' || report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>{report.status === 'aborted' ? '这份记录保留了提前结束前的表现。完成一轮新评测后，再制定当前的指导计划。' : '这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。'}</p></div><button className="studio-primary" disabled={busy} onClick={() => setScreen('setup')}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy || analysisNeedsUpdate || planCreation.busy || !!planCreation.pending || !planCreation.ready} onClick={() => void planCreation.create(minutes)}>{planCreation.busy ? '正在保存规则计划…' : '制定指导计划'} ↗</button>
+              <div className="guidance-create-recovery">{planCreation.error && <p className="studio-error" role="alert">{planCreation.error}</p>}{planCreation.storageNotice && <p role="status">{planCreation.storageNotice}</p>}
+                {planCreation.pending && <p>原请求预算{planCreation.pending.minutesPerDay}分钟，创建结果尚待确认。<button className="studio-secondary" disabled={planCreation.busy} onClick={() => void planCreation.create(minutes,true)}>读取原计划创建结果</button></p>}
+                {(planCreation.pending || planCreation.rejected || planCreation.storageNotice) && <button className="studio-text-button" onClick={planCreation.download}>下载原创建命令</button>}</div></div> : <div className="studio-hint"><strong>这次的观察已经保存。</strong><p>请家长查看报告，一起确认下一步指导；也可以继续完成新的验证任务。</p><Link className="studio-secondary" href="/student/today">回到今日学习 ↗</Link></div>}<p className="studio-footnote">{report.modelNotice}</p>
           </>}
           {screen === 'plan' && plan && <>
             <div className="studio-section-head"><span className="studio-eyebrow">04 / 指导 · 验证 · 复盘</span><h2>每天 {plan.minutesPerDay} 分钟，<br />把一步走稳。</h2><p>{plan.summary}</p></div>
@@ -434,7 +449,7 @@ export function AssessmentStudio() {
             {plan.actions.map((action, index) => <article className="studio-action" key={action.id}><span className="studio-action-number">0{index + 1}</span><div><span className="studio-eyebrow">约 {action.minutes} 分钟 / {action.evidenceIds.length} 条依据</span><h3>{action.title}</h3><p>{action.activity}</p><TeachingGuide snapshot={action.teachingSnapshot} showObservation={!studentMode} /><div className="studio-criterion"><strong>怎样算走稳了</strong><p>{action.successCriterion}</p></div><button className="studio-secondary" disabled={busy || plan.status !== 'active' || plan.impact?.needsReview} onClick={() => verify(undefined, action.atomId)}>做新题验证 ↗</button></div></article>)}
             <h3 className="studio-line-title">留出间隔，再看是否保持</h3><div className="studio-reviews">{reviews.some(r => r.planId === plan.id) ? reviews.filter(r => r.planId === plan.id).map((review) => <div key={review.id}><span className="studio-review-day">D+{review.intervalDays}</span><div><strong>{review.atomName}</strong><small>{new Date(review.dueAt).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</small></div><button className="studio-text-button" disabled={busy || (review.status === 'pending' && (!review.due || plan.status !== 'active' || plan.impact?.needsReview))} onClick={() => reviewTask(review)}>{review.status === 'completed' ? '查看' : review.due ? '开始复测 ↗' : '等待到期'}</button>{!studentMode && <ReviewScheduleEditor review={review} plan={plan} onChange={async () => setReviews(await request<Review[]>(`/diagnostics/plans/${plan.id}/reviews`))} />}</div>) : <p className="studio-muted">确认计划后，会安排次日、3日、7日和14日复测。</p>}</div>
             <div className="studio-retrospective"><h3>复盘：哪些变化已经得到验证？</h3><button className="studio-secondary" disabled={busy} onClick={() => execute(async () => setRetrospective(await request<Retrospective>(`/diagnostics/plans/${plan.id}/retrospective`)))}>查看前后证据</button>{retrospective?.measurementContext && <p className="studio-muted">{retrospective.measurementContext.notice}</p>}{retrospective?.comparisons.map((item) => <div key={item.atomId}><strong>{item.atomName} · {outcomeNames[item.outcome]}</strong><p>{item.note}</p><small>延迟新题证据 {item.retentionSamples} 条</small></div>)}{!studentMode && retrospective && plan.status !== 'completed' && <form onSubmit={e => { e.preventDefault(); execute(async () => { setPlan(await request<GuidancePlanView>(`/diagnostics/plans/${plan.id}/retrospective/acknowledge`, { expectedRevision: plan.revision ?? 1, requestKey: crypto.randomUUID(), fingerprint: retrospective.fingerprint, reason: retrospectiveNote })); setRetrospective(await request<Retrospective>(`/diagnostics/plans/${plan.id}/retrospective`)); }); }}><label className="guidance-retrospective-note">这次复盘看到了什么<textarea required minLength={5} maxLength={1500} rows={3} value={retrospectiveNote} onChange={e => setRetrospectiveNote(e.target.value)} placeholder="记录已验证的变化、仍不确定的解释，以及下一步准备观察什么。" /></label><button className="studio-secondary" disabled={busy || retrospectiveNote.trim().length < 5 || !retrospective.followupSessionIds.length || plan.impact?.needsReview}>{retrospective.reviewed ? '补充复盘记录' : '确认已核对前后证据'}</button><p className="studio-muted">计划结束后保留全部证据。证据不足的知识点继续显示待验证。</p>{retrospective.reviewed && reviews.some(r => r.planId === plan.id) && reviews.filter(r => r.planId === plan.id).every(r => r.status === 'completed') && <button type="button" className="studio-primary" disabled={busy} onClick={() => updatePlan('completed')}>结束本轮指导计划</button>}</form>}</div>
-            {plan.aiStatus === 'unavailable' && <p className="studio-footnote">AI 个性化说明暂不可用，当前活动已按评测证据与指导规则安排，可以照常执行。</p>}
+            {plan.aiStatus === 'unavailable' && <p className="studio-footnote">建立计划时未取得AI说明；原活动和复测安排已保存，可以继续使用。</p>}
           </>}
         </>}
       </section>
