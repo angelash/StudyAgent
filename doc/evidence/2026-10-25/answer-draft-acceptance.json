@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T08:02:21.616Z",
+  "at": "2026-10-25T08:26:15.371Z",
   "specificationCommit": "0c7091c",
-  "passed": false,
+  "passed": true,
   "backendPassed": true,
-  "status": "local-journeys-tested-full-browser-ci-daemon-pending",
+  "status": "delivered-with-explicit-human-and-complete-product-limits",
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
   "sourceDigests": {
     "packages/contracts/src/answer-draft.ts": "febcf71775a034189582a2ca3de55ebc0417ddabe1ab3f8953355d8c28f1b898",
@@ -232,6 +232,14 @@
       "passed": 9,
       "failed": 1,
       "skipped": 0
+    },
+    "answer-draft-full-browser-final.json": {
+      "sha256": "c1e1b9b6b6920d0be787c250a6e7fd9284d32e96f3d78b07bb576537bc0553e3",
+      "total": 127,
+      "passed": 127,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
     }
   },
   "checks": {
@@ -271,7 +279,13 @@
         "retries": 0,
         "scope": "covers last local attempt binding correction"
       },
-      "fullRegression": "running 127 cases; pending"
+      "fullRegression": {
+        "passed": 127,
+        "failed": 0,
+        "retries": 0,
+        "sourceRevision": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
+        "durationMs": 691729.858
+      }
     },
     "isolatedPostgres": "stopped",
     "finalProjections": {
@@ -284,6 +298,48 @@
       "api": true,
       "web": true,
       "initialNegativeTestTypeFailureRetained": true
+    },
+    "exactCi": {
+      "head": "b30f857c8b66bd2bae16dc38af09f656ca16dd30",
+      "run": 40175127418,
+      "status": "completed",
+      "conclusion": "success",
+      "application": {
+        "passed": 1111,
+        "environmentSkipped": 44,
+        "total": 1155
+      },
+      "browser": {
+        "passed": 127,
+        "retries": 0
+      },
+      "answerDraftPostgres": {
+        "passed": 10,
+        "sqliteOnlySkipped": 1,
+        "actualNativeColdRestore": true
+      }
+    },
+    "daemon": {
+      "revision": "b30f857c8b66bd2bae16dc38af09f656ca16dd30",
+      "buildId": "Q7VTRVb_DBPNDIRjrk9ow",
+      "passed": true,
+      "smokeChecks": 13,
+      "observations": 3,
+      "observationSpanMs": 77928,
+      "stablePidsAndRestartCounts": true,
+      "protectedFiles": {
+        ".env.example": true,
+        "apps/web/next.config.ts": true,
+        "doc/product/87-local-windows-daemon.md": true,
+        "ecosystem.config.cjs": true,
+        "scripts/operations/start-daemon.ps1": true
+      },
+      "rollback": {
+        "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-25-answer-drafts",
+        "verifiedFiles": 1,
+        "assetsIncluded": false,
+        "scope": "consistent SQLite database and all referenced runtime files; old builds retained; not a research-archive backup"
+      }
     }
   },
   "diagnostics": [
@@ -299,10 +355,11 @@
     "Type checking found a negative-test payload with a required deleted field; only its test type was corrected to an open command record."
   ],
   "limits": [
-    "Specification112 is locally implemented; full latest browser, exact remote CI and daemon delivery remain pending. It is not complete-product acceptance.",
+    "Specification112 automatic and runtime delivery gates passed. Whole72-requirement product, teacher scoring/validity, actual devices/accessibility and real1/3/7/14day learning remain incomplete and are not marked verified.",
     "All learning fixtures and files are synthetic and use isolated QA stores; no production family records used as tests.",
     "The43-case and10-case browser receipts and backend focused combinations overlap; they must not be summed.",
-    "Teacher validity, real devices, assistive technologies and real interval teaching remain separate requirements."
+    "Teacher validity, real devices, assistive technologies and real interval teaching remain separate requirements.",
+    "Ordinary assistant durable turns/cancellation/history specification113 was archived before implementation; it is not implemented by this release."
   ],
   "backendRevision": "3a9d8d6",
   "screenshots": {
@@ -344,5 +401,13 @@
     }
   },
   "sourceRevision": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
-  "sourceDigestVerifiedAgainstGit": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d"
+  "sourceDigestVerifiedAgainstGit": "0683a85a9ed8b8af7685e16172241f9aa15d8f5d",
+  "frontendPassed": true,
+  "ciPassed": true,
+  "ciReceiptSha256": "fd5dd68086bb42f4d89fd7c0d4065122d200032dbe88d9227a308391d88fcc64",
+  "runtimePassed": true,
+  "ciHead": "b30f857c8b66bd2bae16dc38af09f656ca16dd30",
+  "ciRun": 40175127418,
+  "runtimeReceiptSha256": "95020d71ef244ce067c84666aab26378334d934c878aa43b52896620d63c5648",
+  "sourceDigestVerifiedAgainstCi": "b30f857c8b66bd2bae16dc38af09f656ca16dd30"
 }

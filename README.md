@@ -4,7 +4,7 @@
 
 当前整体设计见 [功能与设计总册](doc/design/README.md)：概要、核心详细设计、数据状态、部署依赖，以及14个领域114项功能的逐项实现与源码索引。可直接打开 [离线功能浏览器](doc/design/index.html) 检索接口、处理逻辑和能力边界。
 
-当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。本轮完整目标见[体验与内容总计划](doc/product/92-experience-and-content-master-plan.md)，当前72项状态见[逐项需求账本](doc/product/experience/requirements.md)；原验收基线保留在[先前审计](doc/product/68-final-product-acceptance-audit.md)。最近已交付的项目附件版为6b27001，三组CI与本机守护运行见[交付收据](doc/evidence/2026-10-25/project-files-acceptance.json)。当前[112可恢复作答](doc/product/112-recoverable-answer-drafts-and-complete-input-journeys.md)业务0683a85已接入17题型旅程，完整浏览器、远端CI和守护交付按该批收据继续核对。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
+当前实现及证据见 [产品建设档案](doc/product/README.md) 和 [实施记录](doc/product/04-delivery-log.md)。本轮完整目标见[体验与内容总计划](doc/product/92-experience-and-content-master-plan.md)，当前72项状态见[逐项需求账本](doc/product/experience/requirements.md)；原验收基线保留在[先前审计](doc/product/68-final-product-acceptance-audit.md)。最近已交付的[112可恢复作答](doc/product/112-recoverable-answer-drafts-and-complete-input-journeys.md)业务为0683a85，精确CI b30f857三组通过，本地与远端均127项浏览器通过且零重试；本机以同一CI版本实际生产构建。运行与完整边界见[交付收据](doc/evidence/2026-10-25/answer-draft-acceptance.json)。[113助教持久对话](doc/product/113-durable-assistant-conversations-and-history.md)规格已归档，业务待实施。完整目标仍在开发验收中，完成条件以 [开发计划](doc/product/03-development-plan.md) 为准。
 
 ## 已实现的主要路径
 

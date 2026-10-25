@@ -6,6 +6,8 @@
 
 当前持续建设目标见 [体验与内容完整建设总计划](92-experience-and-content-master-plan.md)：完整吸收参考产品的课程、课堂、资料、题卷、诊断与连续学习体验，方案先提交，再按需求账本实施和验收。
 
+2026-10-25：可恢复作答/17题型旅程已接入并通过精确三组CI，当前运行与限制见[112交付](112-recoverable-answer-drafts-and-complete-input-journeys.md)。完整里程碑见[计划105](105-development-plan-status-and-next-milestones.md)；下一批[113助教持久提问、取消与历史](113-durable-assistant-conversations-and-history.md)为已提交规格，尚未实现。
+
 2026-10-24增量：[单元新情境核查、练习复盘与旧版恢复](93-classroom-unit-checks-and-review.md)，64道课堂题之外另编60道单元题，提示先持久化、完成后可复盘，保留旧版本答案与会话。
 
 同日[课程库筛选与连续导航](94-course-library-continuity.md)：真实未开始/进行中/已读状态，类型/来源/最近学习/排序组合筛选，刷新/历史及课堂返回保留条件。
@@ -45,7 +47,7 @@
 29. [资料到课程、来源快照与真实模型](./98-source-backed-course-generation.md)：成人私人文本/PDF、精确选页、生成任务、审阅确认、引用与旧课堂恢复；保留真实样本中的质量问题与后续修正边界。
 30. [资料课程完整教学稿编辑与复核](./99-source-course-content-editor.md)：原始稿、逐课/环节修订、答案与提示私有性、作者曝光标记、冲突/导出/后退及完整回归。
 31. [资料课程逐课生成、AI复核与恢复](./100-source-course-generation-pipeline.md)：原子检查点、冻结输入与实际模型、首次稿对照、按字段修订、进度/失败恢复、双库与真实模型验证。
-32. [课堂按需图片实施前规格](./101-runtime-classroom-visuals.md)：小九生图接入、节点绑定、候选选用、权限、受控文件、持久任务、删除/导出与恢复验收；尚未实施。
+32. [课堂按需图片规格与交付](./101-runtime-classroom-visuals.md)：小九生图接入、节点绑定、候选选用、权限、受控文件、持久任务、删除/导出与恢复验收；当前已接入，真实配图质量与参考图迭代仍按总计划继续。
 33. [工程与资产现状评审](../reviews/2026-10-19-studyagent-productization.md) 及其离线 HTML 是本基线的调查依据。
 
 最近交付：[五、六年级数学完整对照评测](./63-math-grade5-grade6-delivery.md) 和 [英语一至六年级完整对照评测](./62-english-grade1-grade6-delivery.md)。当前原创课程258点、15758题，258点达到当前素材结构与组题预算门槛。此前为 [五、六年级语文](./60-chinese-grade5-grade6-delivery.md)、三、四年级语文、二年级语文、一年级语文和英语评测、[GESP C++独立教研轨道](./55-gesp-research-delivery.md) 及数学各阶段交付。分项协议见 [独立诊断交付](./44-atomic-components-delivery.md)。
