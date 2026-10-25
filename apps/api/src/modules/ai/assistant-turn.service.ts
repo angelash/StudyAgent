@@ -167,6 +167,9 @@ export class AssistantTurnService {
   }
   async legacy(command:AssistantChatCommand):Promise<AssistantLegacyResult>{
     if(command.signal?.aborted)throw new BadRequestException('本次对话已取消');
+    command={...command,message:validate(commandSchema.shape.message,command.message),
+      modelId:command.modelId===undefined?undefined:validate(commandSchema.shape.modelId,command.modelId),
+      requestKey:command.requestKey===undefined?undefined:validate(commandSchema.shape.requestKey,command.requestKey)};
     // Flush an enclosing HTTP or server-side workspace before starting independently fenced work.
     await this.store.commitRequest();
     const initial=await this.store.requestContext(()=>{const s=this.store.find('assistantSessions',{id:command.sessionId,status:'active'});if(!s)throw new NotFoundException('助教会话不存在');

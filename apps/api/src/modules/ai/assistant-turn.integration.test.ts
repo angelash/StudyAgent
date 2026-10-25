@@ -136,6 +136,16 @@ describe('ordinary assistant durable turns and immutable publication context',()
     const earlier=await call('get',base(s.id)+'/messages/page?pageSize=1&cursor='+encodeURIComponent(latest.nextCursor));expect(earlier.messages[0].id).toBe('z-causal-question');
     expect(earlier.messages[0].sequence).toBeLessThan(latest.messages[0].sequence);
   });
+  it('validates malformed legacy commands before replaying an old saved message pair',async()=>{
+    const s=await open(),requestKey=randomUUID();await store.transaction(()=>store.append('assistantMessages',
+      {id:'legacy-saved-question',sessionId:s.id,sender:'user',content:'历史原问题',requestKey,createdAt:'2026-10-25T00:00:00.000Z'},
+      {id:'legacy-saved-answer',sessionId:s.id,sender:'assistant',content:'历史已保存回答',inReplyTo:'legacy-saved-question',source:'rules',createdAt:'2026-10-25T00:00:00.000Z'}));
+    await call('post',base(s.id)+'/messages',{requestKey},parent,400);
+    await call('post',base(s.id)+'/messages',{message:'历史原问题',requestKey,modelId:{invalid:true}},parent,400);
+    await call('post',base(s.id)+'/messages',{message:'历史原问题',requestKey:'short'},parent,400);
+    expect((await call('post',base(s.id)+'/messages',{message:'历史原问题',requestKey})).reply).toBe('历史已保存回答');
+    expect((await call('get',base(s.id)+'/turns')).turns).toHaveLength(0);
+  });
   it('rejects invalid citations and answer leaks without falling back or recording a hint',async()=>{
     const f=await practice(),t=await call('post',base(f.session.id)+'/turns',await input(f.session));
     const mock=vi.spyOn(chat,'reply').mockResolvedValue({reply:'这份回答包含731。',evidenceIds:['invented-evidence'],modelId:'deepseek-v4-flash',modelName:'Synthetic'});
