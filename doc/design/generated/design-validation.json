@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T06:07:45.078Z",
-  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "at": "2026-10-25T06:33:36.751Z",
+  "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -12,7 +12,7 @@
     "activeModules": 19,
     "activeControllers": 32,
     "apiClasses": 130,
-    "apiFunctions": 367,
+    "apiFunctions": 368,
     "domainCollections": 91,
     "contractTypes": 280,
     "webPages": 26,
@@ -27,10 +27,10 @@
     "coveredApiRoutes": 306
   },
   "sourceReferences": {
-    "uniqueFiles": 345,
+    "uniqueFiles": 346,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "616c464c6e5008928d71b54b04b8f52c9caced5bb6caf33f16a6608f352bb8f5",
+      ".github/workflows/verify.yml": "79ad86b599cc9747e2a5f31b63d354ea8b83832664f0e98aace551350239d38a",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "dad3bbd0b8ba8f0d0b5c7e9c387a5e34bbe9e34160fa0d3f0d1a0acc61d5ae2e",
       "apps/api/src/common/http-body.integration.test.ts": "fadb0feeb91bc254ff217976405009573f94a0a146160ca0ea3a4a205fa940dc",
@@ -165,11 +165,11 @@
       "apps/api/src/modules/learning/notebook.integration.test.ts": "75668369d098c2965b96dfcf89c736416a5833e6495d891124ef4108f2a432c1",
       "apps/api/src/modules/learning/notebook.service.ts": "53c3603c187a1d9ad9422eba753adb2c31fad2f9826c3124d7c3b24b6e7d0369",
       "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts": "54a4a4babdc917c8217d0bd7a69412b1abb8e45f759b833b1f8a8fa8f0be75b0",
-      "apps/api/src/modules/learning/project-file-processing.ts": "e80eaf5a9bc2aef60dad9f148552bd77624179e7ea83ae0965020b874573752b",
+      "apps/api/src/modules/learning/project-file-processing.ts": "4ad5480670013800e15ad7feeb6aff0a61580154d3bcc41c9d9ecdf736af26db",
       "apps/api/src/modules/learning/project-file-storage.ts": "e99aebf7932b1c3dabcf64459c797b0d27221b3cf514ed97e07b81b7dbb40182",
-      "apps/api/src/modules/learning/project-file-worker.service.ts": "2514af3aa0276c9d54bedbd5777004ae5680d2153c51a179bb0e2a96949eaff5",
+      "apps/api/src/modules/learning/project-file-worker.service.ts": "c85f8995841b0034090a0bef51c0353163ea6d83fb9458fe2bf54f648c976b8b",
       "apps/api/src/modules/learning/project-file.controller.ts": "7270f7a411c76600a55f88bc994554ad247a3e6302bc62396467d93cb9a1403c",
-      "apps/api/src/modules/learning/project-file.integration.test.ts": "0a82b3f9910008132726085dd6e4e89f24615f07c3af925a68ddd42a440fcafc",
+      "apps/api/src/modules/learning/project-file.integration.test.ts": "fb9f8b1dcc48ee59dd2bce327160f43fbb1f9b34351b595b3317cfdab0a8b15c",
       "apps/api/src/modules/learning/project-file.service.ts": "86a573c698c0098088007ed5f48b08d7984731fb1b49f3b9c5a2ddbe4809b3a8",
       "apps/api/src/modules/learning/source-course-chunks.test.ts": "bb9e01f27ea1f4edcd4b64230ade7e31d0ca2f2b2385ccd24f56fe1ceb584fa9",
       "apps/api/src/modules/learning/source-course-chunks.ts": "833db48ef550d25407f520c8a4c77b23ce78d69c95710f70267018a0010a2b52",
@@ -342,7 +342,7 @@
       "scripts/operations/start-daemon.ps1": "929b62cd8b6ecc7e6778b196e44d852992a8a2197c651b04ba3f686c567ce2c5",
       "scripts/processing/file_leases.py": "4ee24ba318df2c053ff04bfd98ecf7f1bbd1ee24a54008f73a1e9a732a932e26",
       "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
-      "scripts/processing/project_file_preview.py": "88dc136c838bb0d3344a9a6aefec33b992b7da04b5aed3fd862faa51c621c3f9",
+      "scripts/processing/project_file_preview.py": "260525d5d322c17d8e9a27036718587b71ee27840281dfd9ece833df12dd90d9",
       "scripts/processing/requirements-imagegen.txt": "e58941612ba4560fd888182684d3404684ed6643b86e3c4ad61d7233840ff2bf",
       "scripts/qa/classroom-caption-live.cjs": "2f17e3cfea19ff626ffdadc2f8f8c6edf8c82ec12e0087a5fc04964d5b3175f2",
       "scripts/qa/classroom-image-live.cjs": "af1bbf8d168ed9f26ad959e2bd81e9c07c05489f4e97ffdb1ee0e791320846b1",
@@ -355,6 +355,7 @@
       "scripts/qa/source-course-test-api.cjs": "1bf481e429d7c99d331fb44e71e54e22d07aaf1fe1aa723665fa848a5b3d33e6",
       "scripts/qa/verify-classroom-board-live.cjs": "ef5ed4103c366bf24598d9a1fc06b89da322bc280d844a9f2dd6423e5a3a995e",
       "scripts/qa/verify-classroom-turn-live.cjs": "5772feecbcb306f1eb2d0f939dcfdc4565ae0b77d7426a707c202b975ea979b1",
+      "scripts/qa/verify-project-file-preview.py": "fb749116b5451632ae686f31d5def31f4f9afc86f25317b053b361c117992e59",
       "tests/e2e/classroom-boards.spec.ts": "198d6cb6d01d8950e90f104446caa65b5841da5d1890b2ebc5f59b63ba194bb8",
       "tests/e2e/classroom-captions.spec.ts": "da619b49a86313408ca58baa7352e6af764cdd2b48e76414e79218dbbe3a4691",
       "tests/e2e/classroom-code.spec.ts": "e6c5a33d10a475b1c6c85368f34ccd15c929b05ad8cc16e0eb674ba7777a414f",
@@ -369,7 +370,7 @@
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
       "tests/e2e/pdf-material.spec.ts": "f89b22e7f9ecc349dc4423af3be45872bc4bffad36089add275470d769ea42bf",
       "tests/e2e/product-smoke.spec.ts": "114fe26dbdc617485e1d4c34ddfee6933478e8073c4196e1d1dbfd44a0c39509",
-      "tests/e2e/project-files.spec.ts": "3cbca3fb5ccb8e1616a48668fdf98b6eefc18bfed67b8137c1e58c28bd1a7f28",
+      "tests/e2e/project-files.spec.ts": "342cb1c20ab1211727dd29bc575fc51bbe0f185fdf2b49ca67bdf7b3a30cd734",
       "tests/e2e/source-course-lifecycle.spec.ts": "ec30ebeb46c412e4ece6297216bd0db24d7a109d7bacfc591b40e91f8832aabc",
       "tests/e2e/source-course-long.spec.ts": "3152b4fbe1067d7253e39803ae1f44456882408a9a20b479f8a2cf308ca92f5d",
       "tests/e2e/source-course.spec.ts": "1072e718f1433736a658b3f07776e0f82055aece2af82bed9dc94d15d0679fba",
@@ -383,12 +384,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2412,
+    "checked": 2420,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-25T06:06:42.564Z",
+    "authoredAuditAt": "2026-10-25T06:33:32.829Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -455,7 +456,7 @@
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
     "receipt": "../evidence/2026-10-25/project-files-acceptance.json",
-    "revision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+    "revision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

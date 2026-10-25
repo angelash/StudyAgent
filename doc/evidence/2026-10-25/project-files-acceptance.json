@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "at": "2026-10-25T06:06:40.860Z",
-  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
   "specificationCommit": "f3e6d43",
   "passed": false,
   "localPassed": true,
-  "status": "local-validated-awaiting-ci-and-daemon",
+  "status": "native-protocol-fixed-awaiting-exact-ci-and-daemon",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     ".gitattributes": "fb0a5afc60b69d8a9270d93661526c0f70cd335318af4340dde9d6e7ec4fc46e",
-    ".github/workflows/verify.yml": "91e6c52cadc5a43f591fa41cfd016b4edebdcc7dfaa69134ad9df00b9ab92273",
+    ".github/workflows/verify.yml": "24bab1ae0b0ee7fb2d37ed65fdd353590eb4cf76534ce51a32348c086ee971a5",
     "apps/api/src/common/auth.guard.ts": "f5077aa24908e2e657c3fae754648272aaa928bbf4fbe9c4b1f40433b4b71a57",
     "apps/api/src/common/stream-file.ts": "4d3cd98a62c039cbc09022e1b98ab5aec2ec165f01a03a18b365ea6eb845ff31",
     "apps/api/src/infrastructure/immutable-files.ts": "a7a2f6290159dae19828dd8fd29ff371fb8916d54e4c67633c1b75b6192c502a",
@@ -22,12 +22,12 @@
     "apps/api/src/modules/learning/course-project.service.ts": "4c3df309f98535fea0ed685ba14ddf5fe371358635d08bba2f43936a1c276178",
     "apps/api/src/modules/learning/learning.module.ts": "3dfb41026cec33a5970b118f17d07be77ca828a15b423d46ebfac72d47580ea2",
     "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts": "54a4a4babdc917c8217d0bd7a69412b1abb8e45f759b833b1f8a8fa8f0be75b0",
-    "apps/api/src/modules/learning/project-file-processing.ts": "e80eaf5a9bc2aef60dad9f148552bd77624179e7ea83ae0965020b874573752b",
+    "apps/api/src/modules/learning/project-file-processing.ts": "4ad5480670013800e15ad7feeb6aff0a61580154d3bcc41c9d9ecdf736af26db",
     "apps/api/src/modules/learning/project-file-record.ts": "cbd404c242bdcd682dc0c70285ed818640603787e568453c25f40a752327d175",
     "apps/api/src/modules/learning/project-file-storage.ts": "8881c569bc98c4d12f0f6c690f7b7748843a93ce9f8df13ec3af780c93d6999b",
-    "apps/api/src/modules/learning/project-file-worker.service.ts": "2514af3aa0276c9d54bedbd5777004ae5680d2153c51a179bb0e2a96949eaff5",
+    "apps/api/src/modules/learning/project-file-worker.service.ts": "c85f8995841b0034090a0bef51c0353163ea6d83fb9458fe2bf54f648c976b8b",
     "apps/api/src/modules/learning/project-file.controller.ts": "7270f7a411c76600a55f88bc994554ad247a3e6302bc62396467d93cb9a1403c",
-    "apps/api/src/modules/learning/project-file.integration.test.ts": "0a82b3f9910008132726085dd6e4e89f24615f07c3af925a68ddd42a440fcafc",
+    "apps/api/src/modules/learning/project-file.integration.test.ts": "fb9f8b1dcc48ee59dd2bce327160f43fbb1f9b34351b595b3317cfdab0a8b15c",
     "apps/api/src/modules/learning/project-file.module.ts": "201e50afec31b72bebc8a847291c7599cfd41c8c66a6d7c4bedcb8c52962d1a3",
     "apps/api/src/modules/learning/project-file.service.ts": "86a573c698c0098088007ed5f48b08d7984731fb1b49f3b9c5a2ddbe4809b3a8",
     "apps/api/src/modules/privacy/privacy-records.ts": "552932a29917990ff8fe7bdd71ebe29eac24cf88c5090e8e06c103fed5a8ae84",
@@ -40,15 +40,16 @@
     "packages/contracts/src/course-project.ts": "8c4f8695cf6db03874b5e37293c2ea5e75ba764d895b9c2d717e5748f4678473",
     "packages/contracts/src/index.ts": "4d313e0a1347048525968ab1e57fa67244f0659c1a9b4eb2407c9b9614441df3",
     "packages/contracts/src/project-assets.ts": "2de0efe5c6c6dd0a8ff81acdc391631585cc6dbafab0d17d36dea60be705e8d5",
-    "scripts/architecture/project-feature-definitions.cjs": "86df979991506847beb7965c377c3cba7b4453dcac62e10c2a3f88771b36ca49",
+    "scripts/architecture/project-feature-definitions.cjs": "27bbbc46f0d5eb15ee44dcc7469e4a502267786a5001bc19ed892c959c8befd4",
     "scripts/operations/backup.cjs": "3577ad1c466c3a3504f18b6ff5442bf15c656e76acd84f6775e5c84ed07012ed",
     "scripts/operations/postgres-backup.cjs": "ad9335164842a090f324cdc6aad886f9fcc225da6eb67d2875d71cbe6e3c8c16",
     "scripts/operations/postgres-restore.cjs": "ce63bab038e68c1023558557893fd7b790928564511f1a7e40d212404663dfa2",
     "scripts/operations/privacy-ledger.cjs": "ee4f1c06f1ad0c8cced54552ea3d6364e890f42ae3c91e2f3f699a79b7fef9fe",
-    "scripts/processing/project_file_preview.py": "88dc136c838bb0d3344a9a6aefec33b992b7da04b5aed3fd862faa51c621c3f9",
+    "scripts/processing/project_file_preview.py": "260525d5d322c17d8e9a27036718587b71ee27840281dfd9ece833df12dd90d9",
     "scripts/qa/run-project-files-postgres.cjs": "15fe53e1969ebbe1b339b9e670c9d6e6bed0143dbe52f4095692f3252c949339",
     "scripts/qa/run-source-course-browser.cjs": "b4501886e340ff862cd8103bbefadbd4f55638588e8ff59185a67464c8f3a598",
-    "tests/e2e/project-files.spec.ts": "3cbca3fb5ccb8e1616a48668fdf98b6eefc18bfed67b8137c1e58c28bd1a7f28"
+    "tests/e2e/project-files.spec.ts": "342cb1c20ab1211727dd29bc575fc51bbe0f185fdf2b49ca67bdf7b3a30cd734",
+    "scripts/qa/verify-project-file-preview.py": "fb749116b5451632ae686f31d5def31f4f9afc86f25317b053b361c117992e59"
   },
   "reports": {
     "project-assets-foundation-initial.json": {
@@ -195,6 +196,57 @@
         "numPendingTests": 0,
         "numFailedTestSuites": 0
       }
+    },
+    "project-files-ci-initial.json": {
+      "sha256": "6a31a10ea63efb72a885c66605103ac7793f3834b60f1e8c99096e631b8c5c3e",
+      "result": "failure"
+    },
+    "project-files-native-framing-browser.json": {
+      "sha256": "c20f007b2d0e813a8da781abf20be8a935072d35065779be3e93db5bf1333293",
+      "result": {
+        "startTime": "2026-10-25T06:26:16.193Z",
+        "duration": 55569.107,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-native-framing-sqlite.json": {
+      "sha256": "8d73ec9d2974ee077d697c24acc32465fb5c6f60cc1f7564f1f5c3b12881e12e",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "project-files-native-framing-postgres.json": {
+      "sha256": "186d9b0ff1e03bf30a43151c2905392730bbeef24f783796d765b2f6c14e4fdc",
+      "result": {
+        "numTotalTests": 12,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 1
+      }
+    },
+    "project-files-linux-native-preview.json": {
+      "sha256": "dbdd0366dffde3b1156b2d9a3252e6ade67de420a2c0267738ba0fd79c98d2b1",
+      "result": {
+        "passed": true,
+        "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "pymupdf": "1.28.2",
+        "files": 2
+      }
+    },
+    "project-files-windows-native-preview.json": {
+      "sha256": "8fa591affdb095de132befe5185ebc8150e5e3c347e4e085177800fa4ceed419",
+      "result": {
+        "passed": true,
+        "python": "3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)]",
+        "pymupdf": "1.26.6",
+        "files": 2
+      }
     }
   },
   "checks": {
@@ -237,7 +289,36 @@
     "documentation": {
       "checked": 2412,
       "missing": 0
-    }
+    },
+    "initialRemoteCi": {
+      "run": 40168042106,
+      "head": "f8d678f96add49aca13c16736a24510fdb480786",
+      "conclusion": "failure",
+      "application": {
+        "passed": 1100,
+        "skipped": 43,
+        "failed": 1
+      },
+      "postgresProjectFiles": {
+        "passed": 10,
+        "skipped": 1,
+        "failed": 1
+      },
+      "browser": {
+        "passed": 80,
+        "failed": 3
+      }
+    },
+    "nativeProtocolCorrection": {
+      "sqlitePassed": 11,
+      "postgresPassed": 11,
+      "sqliteSpecificSkipped": 1,
+      "focusedBrowserPassed": 9,
+      "linuxPyMuPDF": "1.28.2",
+      "windowsPyMuPDF": "1.26.6",
+      "realNativeStartupNoiseObserved": true
+    },
+    "fullLocalBrowserCombination": "running separately after the registration fixture correction"
   },
   "featureCoverage": [
     "Hashed resumable chunks and independently versioned uploads, deterministic original-file targets, idempotent completion and current/original authorization fences",
@@ -253,7 +334,9 @@
     "Initial new test suite failed before collecting tests because its processing helper shadowed global process; renamed it. The original nine project regressions passed.",
     "First cold backup rejected project file paths missing from the manifest allowlist. Subsequent actual account deletion exposed a reused cleanup request key with a new task identity; deterministic collection identities and existing-task lookup fixed it. Initial failures are retained.",
     "Initial nine-case browser run: eight passes and one fixture failure because 12100 characters exceeded the input field 12000 limit. The trace confirmed the length; bounded fixtures and nine-case rerun pass.",
-    "Full local API baseline predates the final stream-resource and task-acknowledgment projection fixes; final focused SQLite/PostgreSQL tests cover those changes. Browser final covers final front-end, with the final task-state response projection separately tested in the API. Exact remote CI remains required."
+    "Full local API baseline predates the final stream-resource and task-acknowledgment projection fixes; final focused SQLite/PostgreSQL tests cover those changes. Browser final covers final front-end, with the final task-state response projection separately tested in the API. Exact remote CI remains required.",
+    "Initial remote CI40168042106: Linux PyMuPDF1.28.2 emits a fitz deprecation warning on stdout, which broke the old whole-stdout JSON parser; application/PostgreSQL each failed the real PDF case. Browser separately had three registration429 failures after the expanded suite exhausted one shared fixture IP budget.",
+    "Correction a03aa56 uses the canonical PyMuPDF import and one explicit typed result frame, rejects ambiguous frames and preserves originals. Actual Windows1.26.6/Linux1.28.2 processors and the server integration pass with confirmed injected native startup noise. Browser registrations now use isolated loopback-fixture address buckets; production rate limits are unchanged."
   ],
   "limits": [
     "One project-file increment, not complete product or full M1-M7 acceptance. The 72-item ledger remains 11 implemented/46 in_progress/15 planned/0 verified.",
@@ -300,5 +383,7 @@
       "sha256": "364918f6793840c60471824f5535ebaa5d8d037c4b1f4a3a0c9d48690a4ba4ae",
       "inspected": true
     }
-  ]
+  ],
+  "initialImplementationRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "nativeProtocolFixRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d"
 }

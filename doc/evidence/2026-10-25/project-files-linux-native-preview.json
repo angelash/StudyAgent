@@ -1,0 +1,36 @@
+{
+  "format": "study-project-preview-native-check-v1",
+  "at": "2026-10-25T06:32:16.185829+00:00",
+  "processorSha256": "260525d5d322c17d8e9a27036718587b71ee27840281dfd9ece833df12dd90d9",
+  "processorDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "pymupdf": "1.28.2",
+  "passed": true,
+  "nativeStartupNoiseObserved": true,
+  "frames": [
+    {
+      "format": "study-project-preview-v1",
+      "result": {
+        "pageCount": 2
+      }
+    }
+  ],
+  "files": [
+    {
+      "name": "page-1.png",
+      "size": 9529,
+      "sha256": "85b1bd883f4a8d5cbccac9d8e2e0bb05114439b33187ea6e3845d2bdffa1f5b7",
+      "width": 893,
+      "height": 1263
+    },
+    {
+      "name": "page-2.png",
+      "size": 9796,
+      "sha256": "75ee607a717ba8aa83b2adff648bf4e55b5338217a42639dcd68949f7d3cd761",
+      "width": 893,
+      "height": 1263
+    }
+  ],
+  "originalSha256": "659bfce5b265994cf761cbc6576697324fad38c186820db06642587eb24a0a22",
+  "stdout": "Synthetic native startup banner\nPROJECT_FILE_RESULT {\"format\": \"study-project-preview-v1\", \"result\": {\"pageCount\": 2}}\n"
+}

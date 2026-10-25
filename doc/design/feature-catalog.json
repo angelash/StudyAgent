@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -5796,6 +5796,7 @@
             "apps/web/app/studio/projects/project-files.tsx",
             "apps/web/app/studio/projects/advice-scope.tsx",
             "scripts/processing/project_file_preview.py",
+            "scripts/qa/verify-project-file-preview.py",
             "scripts/qa/run-project-files-postgres.cjs",
             "tests/e2e/project-files.spec.ts"
           ],

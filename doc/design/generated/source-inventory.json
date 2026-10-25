@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b71d611237e4ba8dff892fa603b21a28b50022c4",
+  "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 327,
@@ -10,7 +10,7 @@
     "activeModules": 19,
     "activeControllers": 32,
     "apiClasses": 130,
-    "apiFunctions": 367,
+    "apiFunctions": 368,
     "domainCollections": 91,
     "contractTypes": 280,
     "webPages": 26,
@@ -30704,14 +30704,20 @@
     },
     {
       "file": "apps/api/src/modules/learning/project-file-processing.ts",
+      "name": "previewResult",
+      "line": 12,
+      "signature": "previewResult(output:string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/project-file-processing.ts",
       "name": "projectAssetKind",
-      "line": 13,
+      "line": 19,
       "signature": "projectAssetKind(type:ProjectAssetType): ProjectAssetKind"
     },
     {
       "file": "apps/api/src/modules/learning/project-file-processing.ts",
       "name": "processProjectFile",
-      "line": 18,
+      "line": 24,
       "signature": "processProjectFile(input:{assetId:string;path:string;directory:string;mediaType:ProjectAssetType;signal:AbortSignal}): Promise<ProjectProcessed>"
     },
     {

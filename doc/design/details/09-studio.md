@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`b71d611237e4ba8dff892fa603b21a28b50022c4`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`a03aa560bfca9bea8f0a03429936b5d9bc28f08d`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -614,6 +614,7 @@
 - [apps/web/app/studio/projects/project-files.tsx](../../../apps/web/app/studio/projects/project-files.tsx)
 - [apps/web/app/studio/projects/advice-scope.tsx](../../../apps/web/app/studio/projects/advice-scope.tsx)
 - [scripts/processing/project_file_preview.py](../../../scripts/processing/project_file_preview.py)
+- [scripts/qa/verify-project-file-preview.py](../../../scripts/qa/verify-project-file-preview.py)
 - [scripts/qa/run-project-files-postgres.cjs](../../../scripts/qa/run-project-files-postgres.cjs)
 - [tests/e2e/project-files.spec.ts](../../../tests/e2e/project-files.spec.ts)
 

@@ -1,6 +1,6 @@
 # 11 主观复核、异常反馈与质量闭环 — 详细设计
 
-源码基线：`b71d611237e4ba8dff892fa603b21a28b50022c4`。角色：授权教师、管理员、学生与家长。
+源码基线：`a03aa560bfca9bea8f0a03429936b5d9bc28f08d`。角色：授权教师、管理员、学生与家长。
 
 产品入口：`/admin/reviews`、`/student/assessment`、`/student/today`。
 
