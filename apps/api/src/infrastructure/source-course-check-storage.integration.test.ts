@@ -57,4 +57,10 @@ describe('source check transactional publication',()=>{
     try{const state:any={students:[{id:'child'}],sourceCourses:[{id:'course',studentId:'child'}],sourceCourseChecks:['a','b'].map((owner,index)=>({id:'check-'+index,ownerUserId:owner,studentId:'child',courseId:'course',requestKey:'same-key',status:'superseded'}))};anonymizeSharedAttribution(state,['child'],'a');anonymizeSharedAttribution(state,['child'],'b');await db.commit(await db.read(),state);expect(new Set((await db.read()).state.sourceCourseChecks.map((row:any)=>row.ownerUserId)).size).toBe(2);expect(JSON.stringify(state)).not.toContain('"ownerUserId":"a"');}
     finally{await db.close();}
   });
+  it('removes an orphan publication by its deleted child check even when the original course row is absent',()=>{
+    const store:any={students:[{id:'child'}],sourceCourseChecks:[{id:'erased-check',studentId:'child',ownerUserId:'manager',courseId:'absent-course',status:'published'}],sourceCourseCheckPublications:[{id:'absent-course',courseId:'absent-course',checkId:'erased-check'},{id:'kept-course',courseId:'kept-course',checkId:'kept-check'}]};
+    expect(studentRecords(store,'child').sourceCourseCheckPublications.map(row=>row.id)).toEqual(['absent-course']);
+    expect(accountRecords(store,'manager','manager@local.test').sourceCourseCheckPublications).toHaveLength(0);
+    store.sourceCourseChecks[0].studentId=null;expect(accountRecords(store,'manager','manager@local.test').sourceCourseCheckPublications.map(row=>row.id)).toEqual(['absent-course']);
+  });
 });

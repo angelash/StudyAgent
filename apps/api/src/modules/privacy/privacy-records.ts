@@ -34,7 +34,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
   const sourceCourseIds=ids(result,'sourceCourses');
   add(result,store,'sourceCourseChecks',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId));
-  add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId));
+  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
   const learnerIds = new Set(rows(store, 'users').filter(row => candidateIds.has(row.id) && row.role === 'student').map(recordId));
   add(result, store, 'users', row => learnerIds.has(row.id) && row.role === 'student');
   add(result, store, 'sessions', row => row.studentId === studentId || learnerIds.has(row.userId));
@@ -80,7 +80,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
-  add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId));
+  const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);

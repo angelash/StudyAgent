@@ -70,3 +70,6 @@ sourceCourseChecks记录冻结courseId/courseFingerprint、原ownerUserId及stud
 
 
 2026-10-26存储基础增量：独立120工作区接入schema15、sourceCourseChecks及sourceCourseCheckPublications，使用稳定当前指针避免行序索引误拒绝。账户/孩子删除与公开导出过滤、共享注销归属、冻结来源备份/恢复/回收引用已补；SQLite组合29通过（含16项纯校验），材料审计12通过，API类型检查通过。初轮发布索引失败、恢复缺编译依赖五失败，以及冻结题组原件恢复引用遗漏一失败均保留；修正后同一恢复组合通过。仅为SQLite存储基础，不含PG、新集合的最新删除账本、生成/发布路由、学生入口或完整产品验收，不进入119和当前运行版。见[存储基础收据](../evidence/2026-10-26/source-check-storage/acceptance.json)。
+
+
+2026-10-26双库存储增量：真实PG三项通过，含实际pg_dump/restore、仅由冻结题组引用的合成原件字节、旧登录撤销和较新合成儿童删除账本；SQLite/纯校验组合30通过、API类型检查通过。首轮PG1通过/2失败分别是测试把无变化提交当成冲突，以及原课程行缺失时删除漏清发布指针；前者改为真实竞争指针修订，后者按已删除checkId补级联，原报告保留。生成、人工审阅/发布、完整HTTP删除及学习者课堂入口仍未实施，本增量未发布。见[双库存储收据](../evidence/2026-10-26/source-check-postgres/acceptance.json)。

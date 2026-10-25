@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-25T18:01:50.399118+00:00",
+  "passed": true,
+  "status": "storage-increment-only-not-released",
+  "postgres": {
+    "passed": 3,
+    "failed": 0,
+    "report": "source-check-postgres.json",
+    "nativeDumpRestore": true,
+    "newerChildDeletionLedger": true
+  },
+  "sqliteAndPure": {
+    "passed": 30,
+    "failed": 0,
+    "report": "source-check-storage-with-ledger-final.json"
+  },
+  "typecheck": {
+    "passed": true,
+    "report": "source-check-native-lint-final.log.gz"
+  },
+  "initialFailures": [
+    "A stale no-op commit is intentionally allowed; the concurrency test now attempts a real competing pointer revision",
+    "Native deletion removed an orphaned check but not its pointer when the course row was absent; privacy selection now cascades by both courseId and selected checkId"
+  ],
+  "scope": "Isolated SQLite/real PostgreSQL constraints and native restore with check-only synthetic original bytes, session revocation and a newer synthetic valid child-deletion ledger. Not real student data or live model output.",
+  "limitations": [
+    "No generation/authoring/publication/student entry yet",
+    "Latest deletion receipt is a valid isolated synthetic ledger contract fixture; full HTTP child/account deletion still requires later end-to-end coverage",
+    "Full 120 and whole product incomplete; current production still schema14"
+  ]
+}
