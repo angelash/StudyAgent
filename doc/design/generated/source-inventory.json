@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2c3922cb00f54fa42c9676c5df39448cc013c6b3",
+  "sourceRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 311,
@@ -10,13 +10,13 @@
     "activeModules": 18,
     "activeControllers": 30,
     "apiClasses": 124,
-    "apiFunctions": 347,
+    "apiFunctions": 348,
     "domainCollections": 89,
-    "contractTypes": 260,
+    "contractTypes": 265,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 119,
-    "browserTestFiles": 17
+    "apiTestFiles": 120,
+    "browserTestFiles": 18
   },
   "modules": [
     {
@@ -12524,7 +12524,7 @@
     {
       "name": "XiaojiuChatService",
       "file": "apps/api/src/modules/ai/xiaojiu-chat.service.ts",
-      "line": 56,
+      "line": 59,
       "decorators": [
         {
           "name": "Injectable",
@@ -12540,7 +12540,7 @@
       "methods": [
         {
           "name": "reply",
-          "line": 66,
+          "line": 69,
           "signature": "reply(input: XiaojiuChatRequest): Promise<XiaojiuChatReply>",
           "access": "public",
           "decorators": [],
@@ -12550,7 +12550,7 @@
         },
         {
           "name": "structured",
-          "line": 72,
+          "line": 76,
           "signature": "structured(input: XiaojiuChatRequest, schema: object, check: (value: unknown) => T, custom = true): Promise<T & {modelId:string;modelName:string}>",
           "access": "public",
           "decorators": [],
@@ -12564,7 +12564,7 @@
         },
         {
           "name": "prompt",
-          "line": 113,
+          "line": 117,
           "signature": "prompt(input: XiaojiuChatRequest, custom = false, schema?: object)",
           "access": "private",
           "decorators": [],
@@ -12572,7 +12572,7 @@
         },
         {
           "name": "run",
-          "line": 127,
+          "line": 133,
           "signature": "run(args: string[], prompt: string, signal?: AbortSignal)",
           "access": "private",
           "decorators": [],
@@ -12580,7 +12580,7 @@
         },
         {
           "name": "parse",
-          "line": 189,
+          "line": 195,
           "signature": "parse(value: string)",
           "access": "private",
           "decorators": [],
@@ -28321,6 +28321,12 @@
       "signature": "bootstrap()"
     },
     {
+      "file": "apps/api/src/modules/ai/classroom-reply-board.ts",
+      "name": "parseClassroomReplyBoard",
+      "line": 32,
+      "signature": "parseClassroomReplyBoard(value: unknown): { reply: string; evidenceIds: string[]; board: ClassroomReplyBoard }"
+    },
+    {
       "file": "apps/api/src/modules/ai/codex-command.ts",
       "name": "windowsCandidates",
       "line": 6,
@@ -30758,6 +30764,151 @@
       ]
     },
     {
+      "name": "ClassroomBoardTable",
+      "file": "packages/contracts/src/classroom-board.ts",
+      "line": 4,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "headers",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "rows",
+          "optional": false,
+          "type": "string[][]"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomBoardFormula",
+      "file": "packages/contracts/src/classroom-board.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "label",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "latex",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "meaning",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomBoardReveal",
+      "file": "packages/contracts/src/classroom-board.ts",
+      "line": 6,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "version",
+          "optional": false,
+          "type": "'speech-v2'"
+        },
+        {
+          "name": "sourceSha256",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "pointUnitIds",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "tableRowUnitIds",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "formulaUnitIds",
+          "optional": false,
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomReplyBoard",
+      "file": "packages/contracts/src/classroom-board.ts",
+      "line": 8,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "points",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "diagram",
+          "optional": true,
+          "type": "ClassroomDiagram | null"
+        },
+        {
+          "name": "table",
+          "optional": true,
+          "type": "ClassroomBoardTable"
+        },
+        {
+          "name": "formulas",
+          "optional": true,
+          "type": "ClassroomBoardFormula[]"
+        },
+        {
+          "name": "reveal",
+          "optional": true,
+          "type": "ClassroomBoardReveal"
+        }
+      ]
+    },
+    {
+      "name": "ClassroomBoardProgress",
+      "file": "packages/contracts/src/classroom-board.ts",
+      "line": 10,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "mode",
+          "optional": false,
+          "type": "'legacy'|'verified'|'invalid'"
+        },
+        {
+          "name": "points",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "tableRows",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "formulas",
+          "optional": false,
+          "type": "number"
+        }
+      ]
+    },
+    {
       "name": "ClassroomCodeDraftView",
       "file": "packages/contracts/src/classroom-code.ts",
       "line": 1,
@@ -31318,7 +31469,7 @@
     {
       "name": "ClassroomDiagram",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 4,
+      "line": 5,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31351,7 +31502,7 @@
     {
       "name": "ClassroomBlock",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 5,
+      "line": 6,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31404,7 +31555,7 @@
     {
       "name": "ClassroomStep",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 8,
+      "line": 9,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31442,7 +31593,7 @@
     {
       "name": "ClassroomQuestion",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 10,
+      "line": 11,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31495,7 +31646,7 @@
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 13,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31563,7 +31714,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 18,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31591,7 +31742,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 19,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31624,7 +31775,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 21,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31672,7 +31823,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 23,
+      "line": 24,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31730,7 +31881,7 @@
     {
       "name": "ClassroomHintReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 25,
+      "line": 26,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31758,7 +31909,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 26,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31794,14 +31945,14 @@
         {
           "name": "board",
           "optional": true,
-          "type": "{ title: string; points: string[]; page: number; diagram?: ClassroomDiagram | null }"
+          "type": "ClassroomReplyBoard & { page: number }"
         }
       ]
     },
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 29,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31929,14 +32080,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 38,
+      "line": 39,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 41,
+      "line": 42,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -31964,7 +32115,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 46,
+      "line": 47,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -40366,6 +40517,7 @@
     "apps/api/src/infrastructure/studio-original-repair.test.ts",
     "apps/api/src/infrastructure/task-repository.test.ts",
     "apps/api/src/modules/ai/classroom-image.service.test.ts",
+    "apps/api/src/modules/ai/classroom-reply-board.test.ts",
     "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",
     "apps/api/src/modules/ai/codex-search.service.test.ts",
     "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
@@ -40465,6 +40617,7 @@
     "apps/api/src/product-safety.integration.test.ts"
   ],
   "e2eTests": [
+    "tests/e2e/classroom-boards.spec.ts",
     "tests/e2e/classroom-captions.spec.ts",
     "tests/e2e/classroom-code.spec.ts",
     "tests/e2e/classroom-practice.spec.ts",

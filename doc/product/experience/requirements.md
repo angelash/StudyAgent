@@ -249,3 +249,6 @@ GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真�
 2026-10-25补记：M0原件恢复已实际交付，见[106](../106-original-repair-product-delivery.md)。XP-C03继续in_progress，按[107](../107-classroom-turns-and-reference-state-parity.md)新增可恢复插问、五种讲法和原句恢复；完整策略、参考状态、声音、教师及真人验收继续保留，代码实验[108](../108-classroom-code-experiments-and-draft-recovery.md)尚待实施。
 
 2026-10-25代码增量：XP-D05/D06、C01、K02/K05按[108](../108-classroom-code-experiments-and-draft-recovery.md)新增代码/输入草稿、离线与冲突恢复、实验暂停、Worker输入/状态和单独导出。JavaScript与GESP C++完整教学、原站未观察状态、实机及教师门禁继续保留，不提升整条verified。
+
+
+2026-10-25课堂续进：108代码实验已完成远端三组CI及守护交付；109继续接入插问结构化对照表/公式与冻结单元节奏，见[规格109](../109-classroom-comparison-formulas-and-reply-pacing.md)。XP-C01/C03/C06、D01/D02、K01/K02仍in_progress，不以本批替代完整图表、内容、声音、设备和真人验收。

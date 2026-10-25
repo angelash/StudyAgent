@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T04:21:39.436Z",
+  "sourceRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
+  "sourceCodeRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
+  "implementationCommits": [
+    "9e87b72",
+    "89e7530"
+  ],
+  "specificationCommit": "999436d",
+  "passed": false,
+  "localPassed": true,
+  "status": "local-validated-awaiting-ci-and-daemon",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    "apps/api/src/modules/ai/classroom-reply-board.test.ts": "95fd237344ef67b48c5416eff0854b8e47e6044513987153f89ff9150d51048a",
+    "apps/api/src/modules/ai/classroom-reply-board.ts": "1fc7a3cb70a20c8e2b5dfe163f642303695863396cd88f06dcf1a73a4cf183bc",
+    "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts": "577bb1ef6cf5f3324480d34b84cea4b7ace37b0413fda3ee4e3f3002c139c6bc",
+    "apps/api/src/modules/ai/xiaojiu-chat.service.ts": "32d8b8acff8410ff4cffef5ba2ac11773f5f542485e50a520fe90cce306e2d59",
+    "apps/api/src/modules/learning/classroom-turn-worker.service.ts": "14437cfa09de53d8baca64b5c7e6e9033c117a14c9611104ce7d090951342229",
+    "apps/api/src/modules/learning/classroom-turn.integration.test.ts": "334101f2bbd39cdf03f6cd44d32f5e1997f1b8dbabf38e0ab89811b8685ebddc",
+    "apps/web/app/studio/classroom/board-formula.ts": "b50017d00c6bff099df4c931216114ebf928d7e5b90b88f96e88657b646e8fbc",
+    "apps/web/app/studio/classroom/classroom.css": "d1dbe13d5e15c7ecd8756b65c1079bb944bcd9df03dc0b8ad0d9f7d13e688ba2",
+    "apps/web/app/studio/classroom/reply-board-notes.ts": "1ca188a8eb3381f7f703a5a0e8a9e1bbb3869f65ed4473bcd88e1d6466c68a0d",
+    "apps/web/app/studio/classroom/reply-board.tsx": "96b7f9a3f46eace09413d5b799fbf8132f92568954f827eb9a7e1781d5833b1a",
+    "apps/web/app/studio/classroom/reply-reading.ts": "735e928edf62becbfc654df876b27310edf4de3dddefa3f10f4f6aa52117b6fd",
+    "apps/web/app/studio/classroom/visuals.tsx": "094429313f1766869853a22ed9e5deed297d53f04a7f90a8667bbe503d9d7993",
+    "apps/web/app/studio/classroom/workbench.tsx": "89451ed41b066a54bcb7aa854ba38a7ee28337ed26323b3078f7dad8a02a38f5",
+    "packages/contracts/src/classroom-board.ts": "c5c5686caf181a991a599b50432d93e87461e5a387f3cbe89456de0e8583cf72",
+    "packages/contracts/src/classroom.ts": "456d03e16bf2d8c01cd8384eae7a290e31daf4bb418e4acf6eec7f94b10bef4a",
+    "packages/contracts/src/index.ts": "2a214063809dcf26dfdf166791aec317d68b3807fd8dc0fe2d79e93bcef5b638",
+    "scripts/architecture/project-feature-definitions.cjs": "292235f6a45c3d5bc4f2fc15bdc23d440f35765be019929857a74daf979f6dc2",
+    "scripts/qa/classroom-board-fixture.cjs": "e200ce5b0bf57b3ce2bf566f536fe8f358f1d9536570b2935a13fff31a336de6",
+    "scripts/qa/run-source-course-browser.cjs": "8e2de0098a95150372716e2ea76434c65f09571b1482229360b5d1ff0deb058d",
+    "scripts/qa/source-course-test-api.cjs": "145e20df01daf2996484bb5e6cf1ae054a491a5e9e047c3d312cd717b13470c0",
+    "scripts/qa/verify-classroom-board-live.cjs": "b67721f26322ec1dcaf7e1080037cd0e04aaf01929fa5f55c7e3d6313c50ba53",
+    "tests/e2e/classroom-boards.spec.ts": "31bfffe76c8c3d9886544a76aabda025f3feedce092c18e37edc1d2551d978ba",
+    "tests/e2e/classroom-code.spec.ts": "9c1417428ae12160466241feea37789637ba939c745e3a8d7e14134571119bdb"
+  },
+  "reports": {
+    "classroom-board-schema-initial.json": {
+      "sha256": "e7d9d0d25f1fd2e5d9218078e0c6fd13b47274941c680435e3905c1922c3ae00",
+      "result": {
+        "numTotalTests": 23,
+        "numPassedTests": 23,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-board-sqlite.json": {
+      "sha256": "e3173aa297b2141825a2024798aa56a62b9bef11ee40733c3976d6db8617cc79",
+      "result": {
+        "numTotalTests": 40,
+        "numPassedTests": 40,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-board-postgres.json": {
+      "sha256": "b16c1a4456e8be059f77c64ceafbee8f0dc8b9cf48e628b3cc39957f2156f74a",
+      "result": {
+        "numTotalTests": 36,
+        "numPassedTests": 34,
+        "numFailedTests": 0,
+        "numPendingTests": 2
+      }
+    },
+    "classroom-board-full-api.json": {
+      "sha256": "7c6279637f3c11c851b4adf8a7140095e1903728967687afc817b1471ec30ab6",
+      "result": {
+        "numTotalTests": 1121,
+        "numPassedTests": 1087,
+        "numFailedTests": 0,
+        "numPendingTests": 34
+      }
+    },
+    "classroom-board-browser-initial.json": {
+      "sha256": "692392dc68b25d5c9276549980507d8f3b507051b43c175966dfb268e6f30123",
+      "result": {
+        "startTime": "2026-10-25T04:09:05.915Z",
+        "duration": 220687.908,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-board-browser-combination.json": {
+      "sha256": "db76d99b24241ac71c8c9a845d21fcb169ec96d77085bceb94765a7964ae185a",
+      "result": {
+        "startTime": "2026-10-25T04:14:23.409Z",
+        "duration": 217556.677,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-board-browser-final.json": {
+      "sha256": "dff4ff4a78237f1e8ff590032d52f99a55c6ce52933242e653bf8b89a67b23ab",
+      "result": {
+        "startTime": "2026-10-25T04:18:11.932Z",
+        "duration": 71403.079,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-board-print-final.json": {
+      "sha256": "9035b7c7bff529b2fec015d1e8dd8a430540d46c6297882eaa67a325fe8269df",
+      "result": {
+        "startTime": "2026-10-25T04:20:30.999Z",
+        "duration": 51702.442,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-board-live-initial.json": {
+      "sha256": "bb69effc400d2081dc86fe1461cbea57b103bbefb8f494bbed79b53936344642",
+      "result": {
+        "passed": false
+      }
+    },
+    "classroom-board-live-default.json": {
+      "sha256": "f46003a0030dc710926bc791a1ca6dee7bd7bdce2ad5a2469a47f1d97bcef796",
+      "result": {
+        "passed": true
+      }
+    }
+  },
+  "checks": {
+    "contractsBuild": "passed",
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "sqliteProtocolAndTurn": {
+      "passed": 40
+    },
+    "postgresClassroomCombination": {
+      "passed": 34,
+      "sqliteOnlySkipped": 2
+    },
+    "fullLocalApi": {
+      "passed": 1087,
+      "environmentSkipped": 34,
+      "failed": 0
+    },
+    "finalFocusedBrowser": {
+      "passed": 8,
+      "failed": 0
+    },
+    "printAfterAnimationFix": {
+      "passed": 4,
+      "failed": 0
+    },
+    "isolatedPostgres": "stopped",
+    "realDefaultModel": "one synthetic comparison, arithmetic and anchors verified"
+  },
+  "featureCoverage": [
+    "Strict structured reply schema with short notes, consistent comparison columns, bounded LaTeX, unique in-speech quotes and service-created frozen unit identities",
+    "Only the durable classroom presentation path changes; old chat/messages and old complete notes remain readable",
+    "Whole points, table rows and formulas advance at the same frozen units as the subtitle; no word-by-word board text",
+    "Audio ended and estimated text reading, explicit complete notes, cross-page positioning, stop and superseded operation cleanup",
+    "Real SQLite/PostgreSQL saves, database reopen, legacy notes, export, real SQLite cold backup, cancellation, guardian/access revocation and stale-worker fencing",
+    "KaTeX MathML with trust disabled and expansion/size limits; React/HTML escaping keeps hostile table/formula text inert",
+    "Actual downloaded HTML opened as a local file without HTTP requests, separate Markdown download, complete print media content",
+    "390/768/1440 viewport captures and keyboard interaction, frozen original line restored after stopping"
+  ],
+  "diagnostics": [
+    "Initial model candidates lacked table.headers and were rejected; complete schema added to prompt, subsequent one-case default-model check passed. Original candidate content was not captured in the initial failed receipt.",
+    "First browser combination:24 passed/1 failed; test captured the ready-to-start subtitle before saved progress returned. Added explicit saved-position wait.",
+    "Second browser combination:24 passed/1 failed; an existing code test clicked save after automatic saving already entered conflict and disabled the control. It now waits for the actual automatic conflict.",
+    "The print screenshot exposed reveal animations beginning when hidden notes enter print media; print now disables all note animations and a final four-case board run verifies the computed style.",
+    "Final eight focused board/code tests validate both corrections. Combination and focused counts overlap and are not added."
+  ],
+  "limits": [
+    "One M1/M2 increment, not full-product or 100 percent HyperKnow parity. No new source CSS/assets/reference state was obtained while login is unavailable.",
+    "Text-reading cadence is estimated, not forced acoustic alignment. No new live TTS or image generation call.",
+    "One default-model synthetic case does not verify all providers or general mathematics; teacher review, human learning effects, real devices and screen readers remain separate gates.",
+    "Merged/cross-page tables, advanced formulas, full curriculum content, reference-image editing, long-term learning and remaining M2-M7 work are retained.",
+    "Production family records were not used for feature tests. Runtime delivery is pending."
+  ]
+}

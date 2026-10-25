@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-25T03:59:27.772159+00:00",
+  "passed": false,
+  "kind": "live-default-model-synthetic-board-initial",
+  "modelId": "deepseek-v4-flash",
+  "attempts": 2,
+  "error": "Structured reply rejected: board.table.headers expected an array after both provider attempts.",
+  "rawReplyRetained": false,
+  "diagnostic": "Initial runner printed only the bounded final validation message. No complete model candidate was archived; this record preserves that evidence limit."
+}

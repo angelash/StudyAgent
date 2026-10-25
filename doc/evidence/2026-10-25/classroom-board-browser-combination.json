@@ -1,0 +1,1055 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-boards.spec.ts",
+      "tests/e2e/classroom.spec.ts",
+      "tests/e2e/classroom-code.spec.ts",
+      "tests/e2e/classroom-turns.spec.ts",
+      "tests/e2e/classroom-captions.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-boards.spec.ts",
+      "file": "classroom-boards.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16421,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:14:30.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-b6bdb1bea6a7d9fb8a7a",
+          "file": "classroom-boards.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8845,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:14:46.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-1468b198db4bd543493d",
+          "file": "classroom-boards.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:14:55.789Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-6a47dadb4786adbff4b8",
+          "file": "classroom-boards.spec.ts",
+          "line": 70,
+          "column": 5
+        },
+        {
+          "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:04.354Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "858825c76415aeeb87cd-292d56aa30ddc2fc4b2c",
+          "file": "classroom-boards.spec.ts",
+          "line": 82,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-captions.spec.ts",
+      "file": "classroom-captions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:12.575Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-90d0a2d5c6565a5056a5",
+          "file": "classroom-captions.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "muted English reading follows the same frozen units without requesting audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5904,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:20.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-f433034ae6fce815bbd9",
+          "file": "classroom-captions.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:26.130Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-82c41aa5cde583a1daef",
+          "file": "classroom-captions.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3429,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:28.782Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-b0d5ad3e9b20a13279fb",
+          "file": "classroom-captions.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "closing confirmation sends nothing; cancelling an in-flight acknowledgement can read its committed state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3188,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:32.221Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-85fe0d699e34939dea06",
+          "file": "classroom-captions.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2133,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:35.419Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e93f975ff670161dd8c0-521043bca69aa8891512",
+          "file": "classroom-captions.spec.ts",
+          "line": 57,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-code.spec.ts",
+      "file": "classroom-code.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "code and input save, execute, survive whiteboard navigation and reload at three widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5325,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:37.572Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-1026581312eef8452afc",
+          "file": "classroom-code.spec.ts",
+          "line": 19,
+          "column": 5
+        },
+        {
+          "title": "a lost save acknowledgment and offline refresh retain exact local edits until the same command can recover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:42.908Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-fccf3fc1def24148dee7",
+          "file": "classroom-code.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "concurrent pages preserve a conflicting buffer and require an explicit choice before replacement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17895,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '保存代码草稿' })\u001b[22m\n\u001b[2m    - locator resolved to <button>保存代码草稿</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  28 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '保存代码草稿' })\u001b[22m\n\u001b[2m    - locator resolved to <button>保存代码草稿</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  28 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-code.spec.ts:47:107",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-code.spec.ts",
+                      "column": 107,
+                      "line": 47
+                    },
+                    "snippet": "  45 |   await open(page); const second = await context.newPage(); await second.goto(page.url()); await expect(second.locator('.cl-code-save')).toContainText('草稿已保存');\n  46 |   await code(page).fill('console.log(\"page A\");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);\n> 47 |   await code(second).fill('console.log(\"page B\");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突'); await expect(code(second)).toHaveValue('console.log(\"page B\");');\n     |                                                                                                           ^\n  48 |   await second.getByRole('button', { name: '读取已保存版本' }).click(); await expect(code(second)).toHaveValue('console.log(\"page A\");');\n  49 |   await code(page).fill('console.log(\"new A\");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);\n  50 |   await code(second).fill('console.log(\"chosen B\");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-code.spec.ts",
+                        "column": 107,
+                        "line": 47
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '保存代码草稿' })\u001b[22m\n\u001b[2m    - locator resolved to <button>保存代码草稿</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  28 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n\n  45 |   await open(page); const second = await context.newPage(); await second.goto(page.url()); await expect(second.locator('.cl-code-save')).toContainText('草稿已保存');\n  46 |   await code(page).fill('console.log(\"page A\");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);\n> 47 |   await code(second).fill('console.log(\"page B\");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突'); await expect(code(second)).toHaveValue('console.log(\"page B\");');\n     |                                                                                                           ^\n  48 |   await second.getByRole('button', { name: '读取已保存版本' }).click(); await expect(code(second)).toHaveValue('console.log(\"page A\");');\n  49 |   await code(page).fill('console.log(\"new A\");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);\n  50 |   await code(second).fill('console.log(\"chosen B\");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突');\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-code.spec.ts:47:107"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:15:48.082Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-code-concurrent--6132a-t-choice-before-replacement\\test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-code-concurrent--6132a-t-choice-before-replacement\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-code-concurrent--6132a-t-choice-before-replacement\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-code-concurrent--6132a-t-choice-before-replacement\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-code.spec.ts",
+                    "column": 107,
+                    "line": 47
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-f133148b4cb5da56469d",
+          "file": "classroom-code.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "errors, timeouts, stop and oversize programs have explicit states without truncation or unwanted reset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:16:08.156Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2651ae6d89c33d57e247-8b5592b65f5eb084a7ed",
+          "file": "classroom-code.spec.ts",
+          "line": 54,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom-turns.spec.ts",
+      "file": "classroom-turns.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:16:15.082Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-df2951c2eb1f03dff0ce",
+          "file": "classroom-turns.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13988,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:16:26.882Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-0da8bfc1cfae94017d96",
+          "file": "classroom-turns.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "all teaching modes show an editable request and keep the conventional model picker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26607,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:16:40.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-03a506c28b9587a75899",
+          "file": "classroom-turns.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "provider errors remain visible and retry preserves the chosen question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:07.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-2ae250932f26cf11ccbd",
+          "file": "classroom-turns.spec.ts",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "title": "a real learning-code user asks in their own approved course and resumes the same answer after refresh",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:19.250Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-b00dc9fa5da6ce34f7e3",
+          "file": "classroom-turns.spec.ts",
+          "line": 83,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "classroom.spec.ts",
+      "file": "classroom.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6835,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:26.548Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-cc7311318ba17478d17e",
+          "file": "classroom.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7982,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:33.391Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1d2b231c99f680f32288",
+          "file": "classroom.spec.ts",
+          "line": 71,
+          "column": 5
+        },
+        {
+          "title": "question replies add safe board notes with page links, export and restored session rendering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:41.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1eac336599fede3fa4e2",
+          "file": "classroom.spec.ts",
+          "line": 106,
+          "column": 5
+        },
+        {
+          "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:44.565Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-2ca949facc19bdd43dd0",
+          "file": "classroom.spec.ts",
+          "line": 159,
+          "column": 5
+        },
+        {
+          "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1774,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:17:53.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-8c5bcbbda27cafe1f899",
+          "file": "classroom.spec.ts",
+          "line": 197,
+          "column": 5
+        }
+      ],
+      "suites": [
+        {
+          "title": "reference viewport and display scaling",
+          "file": "classroom.spec.ts",
+          "line": 224,
+          "column": 6,
+          "specs": [
+            {
+              "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3958,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-25T04:17:55.033Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ee123a1e90c2c71e0969-3621181cebe072becbfc",
+              "file": "classroom.spec.ts",
+              "line": 226,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T04:14:23.409Z",
+    "duration": 217556.677,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,6 +1,6 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-25。实现基线：原件恢复产品接入`6f5e56f`及发布资产换行固定`18450a8`；行为、验证与实际运行状态见[交付106](../product/106-original-repair-product-delivery.md)和[本批收据](../evidence/2026-10-25/original-repair-product-acceptance.json)。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
+整理日期：2026-10-25。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 

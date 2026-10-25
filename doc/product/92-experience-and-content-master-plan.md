@@ -101,3 +101,6 @@ flowchart TD
 2026-10-25进展：M0原件恢复已完成三组CI、主线推送和本机守护交付，证据见[交付106](106-original-repair-product-delivery.md)。M1已按先归档的[规格107](107-classroom-turns-and-reference-state-parity.md)接入持久插问、五种讲法和原句恢复；当前完整API回归1061通过/34环境跳过，PG课堂组合26通过/1SQLite专属跳过，真实默认模型合成案例一次通过，最终浏览器与远端/运行门禁另记。下一增量[代码实验108](108-classroom-code-experiments-and-draft-recovery.md)已在编码前提交。72项状态保持原范围，未宣称全产品完成。
 
 2026-10-25课堂后续：持久插问`1dec77f`已完成远端应用/浏览器/PG三组CI和本机守护交付；代码实验`2c3922c`已实现按块代码/输入草稿、离线/冲突恢复、受控输入执行和个人导出，本地完整API1069/34环境跳过、PG33/2SQLite专属跳过、浏览器组合21及最终定向4通过（不相加）。见[108与本地收据](108-classroom-code-experiments-and-draft-recovery.md)，远端及运行交付另记。完整M1/M2和72项仍按各自全部验收推进。
+
+
+2026-10-25后续：108代码实验已完成CI/守护交付；109对照表、公式和插问按句呈现已进入最终回归，见[规格109](109-classroom-comparison-formulas-and-reply-pacing.md)。设计共享类型增至265，业务路由/集合未新增。真实默认模型只完成合成平均分一例校验；完整M1～M7及72项要求保持原范围。

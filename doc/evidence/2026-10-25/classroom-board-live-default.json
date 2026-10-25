@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-25T04:00:31.324Z",
+  "kind": "live-default-model-synthetic-board",
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "durationMs": 17581,
+  "passed": true,
+  "candidates": [
+    {
+      "reply": "先看“总量相同”：两种分法都把12颗珠子全部平均分完，先保持总量不变。第一种分法这一行写总量12颗、份数3组和平均每份4颗。第二种分法这一行写总量12颗、份数4组和平均每份3颗。第一种分法的平均每份，可以写成12除以3，得4颗。第二种分法的平均每份，可以写成12除以4，得3颗。平均每份等于总量除以份数，意思是把总量平均分成若干份后，求出每一份有多少。",
+      "evidenceIds": [],
+      "board": {
+        "title": "同总量不同份数",
+        "points": [
+          "总量都是12颗珠子，先保持总量不变。",
+          "第一种分法把总量平均分成3组，平均每份是4颗。",
+          "第二种分法把总量平均分成4组，平均每份是3颗。",
+          "平均每份等于总量除以份数，表示每一份有多少。"
+        ],
+        "diagram": null,
+        "table": {
+          "title": "两种分法对照",
+          "headers": [
+            "分法",
+            "总量",
+            "份数",
+            "平均每份"
+          ],
+          "rows": [
+            [
+              "第一种分法",
+              "12颗",
+              "3组",
+              "4颗"
+            ],
+            [
+              "第二种分法",
+              "12颗",
+              "4组",
+              "3颗"
+            ]
+          ]
+        },
+        "formulas": [
+          {
+            "label": "平均每份的计算",
+            "latex": "\\text{平均每份}=\\frac{\\text{总量}}{\\text{份数}}",
+            "meaning": "把总量平均分成若干份后，每一份的数量。"
+          }
+        ],
+        "anchors": {
+          "points": [
+            "先保持总量不变",
+            "第一种分法的平均每份",
+            "第二种分法的平均每份",
+            "平均每份等于总量除以份数"
+          ],
+          "tableRows": [
+            "第一种分法这一行写总量12颗、份数3组和平均每份4颗",
+            "第二种分法这一行写总量12颗、份数4组和平均每份3颗"
+          ],
+          "formulas": [
+            "平均每份等于总量除以份数"
+          ]
+        }
+      }
+    }
+  ],
+  "reply": "先看“总量相同”：两种分法都把12颗珠子全部平均分完，先保持总量不变。第一种分法这一行写总量12颗、份数3组和平均每份4颗。第二种分法这一行写总量12颗、份数4组和平均每份3颗。第一种分法的平均每份，可以写成12除以3，得4颗。第二种分法的平均每份，可以写成12除以4，得3颗。平均每份等于总量除以份数，意思是把总量平均分成若干份后，求出每一份有多少。",
+  "board": {
+    "title": "同总量不同份数",
+    "points": [
+      "总量都是12颗珠子，先保持总量不变。",
+      "第一种分法把总量平均分成3组，平均每份是4颗。",
+      "第二种分法把总量平均分成4组，平均每份是3颗。",
+      "平均每份等于总量除以份数，表示每一份有多少。"
+    ],
+    "diagram": null,
+    "table": {
+      "title": "两种分法对照",
+      "headers": [
+        "分法",
+        "总量",
+        "份数",
+        "平均每份"
+      ],
+      "rows": [
+        [
+          "第一种分法",
+          "12颗",
+          "3组",
+          "4颗"
+        ],
+        [
+          "第二种分法",
+          "12颗",
+          "4组",
+          "3颗"
+        ]
+      ]
+    },
+    "formulas": [
+      {
+        "label": "平均每份的计算",
+        "latex": "\\text{平均每份}=\\frac{\\text{总量}}{\\text{份数}}",
+        "meaning": "把总量平均分成若干份后，每一份的数量。"
+      }
+    ],
+    "reveal": {
+      "version": "speech-v2",
+      "sourceSha256": "6ae1615f039acbd6298ec09314e276fc570b0170b453625e913a1c4443fa9280",
+      "pointUnitIds": [
+        "speech_3ec29ff9b8b12a8bbbae2448bd8dbb18e6ac567a69bcf026834c0e801f3c3922",
+        "speech_b2336400a1b552dca1c44c5912c6e4813ad9622a9974b9d921396eac6bffef8e",
+        "speech_aabfb5ae877c6334795f6098e94cd4b46674ec26874f83b3e5d5b92ed95e9fb2",
+        "speech_d81d17201ea316633a2becb58356f73f18f015739310c834d2f129a2a049e48a"
+      ],
+      "tableRowUnitIds": [
+        "speech_4d808390545d806dc6a01c46fbf9b0e00de774d8e083aa9b7093ed8a2733b7a9",
+        "speech_d966d7052f3cc9378e6c0d42c8d623d5705aac65f13c7f06603cf0f709ca8a1c"
+      ],
+      "formulaUnitIds": [
+        "speech_d81d17201ea316633a2becb58356f73f18f015739310c834d2f129a2a049e48a"
+      ]
+    }
+  },
+  "speech": {
+    "version": "speech-v2",
+    "sourceSha256": "6ae1615f039acbd6298ec09314e276fc570b0170b453625e913a1c4443fa9280",
+    "units": [
+      {
+        "start": 0,
+        "end": 35,
+        "text": "先看“总量相同”：两种分法都把12颗珠子全部平均分完，先保持总量不变。",
+        "id": "speech_3ec29ff9b8b12a8bbbae2448bd8dbb18e6ac567a69bcf026834c0e801f3c3922"
+      },
+      {
+        "start": 35,
+        "end": 62,
+        "text": "第一种分法这一行写总量12颗、份数3组和平均每份4颗。",
+        "id": "speech_4d808390545d806dc6a01c46fbf9b0e00de774d8e083aa9b7093ed8a2733b7a9"
+      },
+      {
+        "start": 62,
+        "end": 89,
+        "text": "第二种分法这一行写总量12颗、份数4组和平均每份3颗。",
+        "id": "speech_d966d7052f3cc9378e6c0d42c8d623d5705aac65f13c7f06603cf0f709ca8a1c"
+      },
+      {
+        "start": 89,
+        "end": 114,
+        "text": "第一种分法的平均每份，可以写成12除以3，得4颗。",
+        "id": "speech_b2336400a1b552dca1c44c5912c6e4813ad9622a9974b9d921396eac6bffef8e"
+      },
+      {
+        "start": 114,
+        "end": 139,
+        "text": "第二种分法的平均每份，可以写成12除以4，得3颗。",
+        "id": "speech_aabfb5ae877c6334795f6098e94cd4b46674ec26874f83b3e5d5b92ed95e9fb2"
+      },
+      {
+        "start": 139,
+        "end": 176,
+        "text": "平均每份等于总量除以份数，意思是把总量平均分成若干份后，求出每一份有多少。",
+        "id": "speech_d81d17201ea316633a2becb58356f73f18f015739310c834d2f129a2a049e48a"
+      }
+    ]
+  },
+  "checks": {
+    "frozenAnchors": true,
+    "syntheticComparisonArithmetic": true
+  },
+  "limits": [
+    "One synthetic default-model call, not all model/provider combinations.",
+    "The two rows are checked mechanically; general formula correctness, teacher approval and real learning effectiveness remain separate.",
+    "No live TTS or image generation in this receipt."
+  ]
+}

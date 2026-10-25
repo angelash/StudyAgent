@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2c3922cb00f54fa42c9676c5df39448cc013c6b3",
+  "sourceRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -4505,7 +4505,7 @@
             "/studio/source-courses"
           ],
           "inputs": "当前课/步骤/字幕单元/问题、五种意图、固定modelId、稳定请求键",
-          "implementation": "发送前暂停并等待进度保存；冻结已展示字幕、原句位置与受限上下文；业务记录和任务同事务；重放先于上限和新模型解析，同键异参拒绝；任务在当前授权和租约栅栏下保存唯一消息与补充板书；帮助事实在生成前保存，取消不抹去。浏览器可找回丢失回执、刷新读取、取消/显式重试，主动回到原句。",
+          "implementation": "发送前暂停并等待进度保存；冻结已展示字幕、原句位置与受限上下文；业务记录和任务同事务；重放先于上限和新模型解析，同键异参拒绝；任务在当前授权和租约栅栏下保存唯一消息与补充板书；新插问协议校验短要点、同维度对照表、受限LaTeX和原词句锚点，绑定服务端冻结字幕单元；朗读与按句阅读整体揭示要点/表格行/公式，停止结清音频/计时等待，旧回调隔离；旧笔记完整可读，Markdown/自包含MathML离线HTML/打印保留完整图表；帮助事实在生成前保存，取消不抹去。浏览器可找回丢失回执、刷新读取、取消/显式重试，主动回到原句。",
           "outputs": "可查询轮次、五讲法入口、单轮消息/板书、原句恢复点与实际模型身份",
           "collections": [
             "classroomSessions",
@@ -4599,6 +4599,15 @@
             "apps/web/app/studio/classroom/turns.tsx",
             "tests/e2e/classroom-turns.spec.ts",
             "scripts/qa/verify-classroom-turn-live.cjs",
+            "packages/contracts/src/classroom-board.ts",
+            "apps/api/src/modules/ai/classroom-reply-board.ts",
+            "apps/api/src/modules/ai/classroom-reply-board.test.ts",
+            "apps/web/app/studio/classroom/reply-board.tsx",
+            "apps/web/app/studio/classroom/board-formula.ts",
+            "apps/web/app/studio/classroom/reply-board-notes.ts",
+            "apps/web/app/studio/classroom/reply-reading.ts",
+            "tests/e2e/classroom-boards.spec.ts",
+            "scripts/qa/verify-classroom-board-live.cjs",
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
