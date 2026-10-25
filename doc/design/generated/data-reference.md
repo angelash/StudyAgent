@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`f5b65acf00d084fe25f80d0e00ababc892a29036`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`8a73c86bad7141deafd03f2608e5ddc7c86ae8e5`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -493,6 +493,6 @@
 - `StudioConnector`：[packages/contracts/src/studio.ts:251](../../../packages/contracts/src/studio.ts#L251)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
 - `StudioScheduleEvent`：[packages/contracts/src/studio.ts:266](../../../packages/contracts/src/studio.ts#L266)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`。
 - `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:287](../../../packages/contracts/src/studio.ts#L287)；字段：`connectors`、`events`。
-- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:292](../../../packages/contracts/src/studio.ts#L292)；字段：`id`、`label`。
-- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:293](../../../packages/contracts/src/studio.ts#L293)；字段：`available`、`provider`、`voices`、`defaultVoice`。
-- `StudioOverview`：[packages/contracts/src/studio.ts:300](../../../packages/contracts/src/studio.ts#L300)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:292](../../../packages/contracts/src/studio.ts#L292)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
+- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:294](../../../packages/contracts/src/studio.ts#L294)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
+- `StudioOverview`：[packages/contracts/src/studio.ts:302](../../../packages/contracts/src/studio.ts#L302)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。

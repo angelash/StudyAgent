@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+  "sourceRevision": "8a73c86bad7141deafd03f2608e5ddc7c86ae8e5",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 342,
-    "activeHttpRoutes": 329,
-    "activeBusinessHttpRoutes": 321,
+    "declaredHttpRoutes": 343,
+    "activeHttpRoutes": 330,
+    "activeBusinessHttpRoutes": 322,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
     "activeControllers": 34,
     "apiClasses": 136,
-    "apiFunctions": 380,
+    "apiFunctions": 381,
     "domainCollections": 93,
     "contractTypes": 304,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 133,
-    "browserTestFiles": 25
+    "apiTestFiles": 134,
+    "browserTestFiles": 26
   },
   "modules": [
     {
@@ -5071,6 +5071,35 @@
       ],
       "calls": [
         "this.classroom.narration"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/classroom/sessions/:id/voice-preview",
+      "controller": "ClassroomController",
+      "method": "voicePreview",
+      "file": "apps/api/src/modules/learning/classroom.controller.ts",
+      "line": 36,
+      "signature": "voicePreview(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "classroom",
+          "type": "ClassroomService"
+        }
+      ],
+      "calls": [
+        "this.classroom.voicePreview"
       ],
       "active": true,
       "retired": false
@@ -13948,7 +13977,7 @@
     {
       "name": "SpeechService",
       "file": "apps/api/src/modules/ai/speech.service.ts",
-      "line": 73,
+      "line": 74,
       "decorators": [
         {
           "name": "Injectable",
@@ -13959,15 +13988,26 @@
       "methods": [
         {
           "name": "capabilities",
-          "line": 86,
+          "line": 87,
           "signature": "capabilities(): StudioSpeechCapabilities",
           "access": "public",
           "decorators": [],
           "calls": []
         },
         {
+          "name": "preview",
+          "line": 95,
+          "signature": "preview(voice:string, version:string, signal?:AbortSignal): Promise<SpeechResult>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.capabilities",
+            "this.synthesize"
+          ]
+        },
+        {
           "name": "synthesize",
-          "line": 93,
+          "line": 105,
           "signature": "synthesize(text: string, requestedVoice?: string, signal?:AbortSignal): Promise<SpeechResult>",
           "access": "public",
           "decorators": [],
@@ -13979,7 +14019,7 @@
         },
         {
           "name": "minimax",
-          "line": 113,
+          "line": 125,
           "signature": "minimax(text: string, requestedVoice?: string, signal?:AbortSignal)",
           "access": "private",
           "decorators": [],
@@ -20233,6 +20273,23 @@
           "calls": [
             "this.classroom.narration"
           ]
+        },
+        {
+          "name": "voicePreview",
+          "line": 36,
+          "signature": "voicePreview(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'sessions/:id/voice-preview'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.classroom.voicePreview"
+          ]
         }
       ]
     },
@@ -20394,8 +20451,19 @@
           ]
         },
         {
-          "name": "narration",
+          "name": "voicePreview",
           "line": 285,
+          "signature": "voicePreview(user:InMemoryUserAccount, id:string, input:unknown, signal?:AbortSignal)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.speech.preview"
+          ]
+        },
+        {
+          "name": "narration",
+          "line": 293,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -31146,21 +31214,27 @@
       "signature": "resolveCodexInvocation(command: string): Invocation"
     },
     {
+      "file": "apps/api/src/modules/ai/neutral-voice-samples.ts",
+      "name": "readNeutralVoiceSample",
+      "line": 21,
+      "signature": "readNeutralVoiceSample(voiceId:string): Buffer|null"
+    },
+    {
       "file": "apps/api/src/modules/ai/speech.service.ts",
       "name": "pcm16ToWav",
-      "line": 21,
+      "line": 22,
       "signature": "pcm16ToWav(pcm: Buffer, rate = sampleRate, channels = 1)"
     },
     {
       "file": "apps/api/src/modules/ai/speech.service.ts",
       "name": "buildMiniMaxRequest",
-      "line": 32,
+      "line": 33,
       "signature": "buildMiniMaxRequest(env: ApiEnv, text: string, voice?: string)"
     },
     {
       "file": "apps/api/src/modules/ai/speech.service.ts",
       "name": "decodeMiniMaxSse",
-      "line": 48,
+      "line": 49,
       "signature": "decodeMiniMaxSse(input: string)"
     },
     {
@@ -39333,7 +39407,7 @@
         {
           "name": "actions",
           "optional": false,
-          "type": "Array<Pick<GuidanceAction,\n  'id' | 'atomId' | 'hypothesisId' | 'title' | 'activity' | 'minutes' | 'successCriterion' | 'retestAt' | 'evidenceIds'>>"
+          "type": "Array<Pick<GuidanceAction,\r\n  'id' | 'atomId' | 'hypothesisId' | 'title' | 'activity' | 'minutes' | 'successCriterion' | 'retestAt' | 'evidenceIds'>>"
         }
       ]
     },
@@ -44326,13 +44400,28 @@
           "name": "label",
           "optional": false,
           "type": "string"
+        },
+        {
+          "name": "description",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "language",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "classroomPreset",
+          "optional": true,
+          "type": "'warm' | 'calm' | 'bright' | 'gentle' | 'professional' | 'lively'"
         }
       ]
     },
     {
       "name": "StudioSpeechCapabilities",
       "file": "packages/contracts/src/studio.ts",
-      "line": 293,
+      "line": 294,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -44351,6 +44440,11 @@
           "type": "StudioSpeechVoice[]"
         },
         {
+          "name": "preview",
+          "optional": true,
+          "type": "{ version: string; text: string; model: string | null }"
+        },
+        {
           "name": "defaultVoice",
           "optional": false,
           "type": "string | null"
@@ -44360,7 +44454,7 @@
     {
       "name": "StudioOverview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 300,
+      "line": 302,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -44855,6 +44949,7 @@
     "apps/api/src/modules/learning/classroom-visual-context.test.ts",
     "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
     "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+    "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts",
     "apps/api/src/modules/learning/classroom.integration.test.ts",
     "apps/api/src/modules/learning/course-project.integration.test.ts",
     "apps/api/src/modules/learning/ics-calendar.test.ts",
@@ -44895,6 +44990,7 @@
     "tests/e2e/classroom-captions.spec.ts",
     "tests/e2e/classroom-choice.spec.ts",
     "tests/e2e/classroom-code.spec.ts",
+    "tests/e2e/classroom-neutral-voices.spec.ts",
     "tests/e2e/classroom-practice.spec.ts",
     "tests/e2e/classroom-review.spec.ts",
     "tests/e2e/classroom-tools.spec.ts",
