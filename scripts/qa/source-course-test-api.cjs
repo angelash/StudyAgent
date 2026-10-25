@@ -13,10 +13,14 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const repairWorker=app.get(require('../../apps/api/dist/apps/api/src/modules/learning/studio-original-repair-worker.service.js').StudioOriginalRepairWorkerService),pausedRepairs=new Set();
   repairWorker.afterPhase=async phase=>{if(phase!=='candidate_published')return;const pending=await pdfStore.requestContext(()=>pdfStore.inspect('studioOriginalRepairs').find(row=>row.status==='restoring'&&!pausedRepairs.has(row.materialId)&&pdfStore.find('studioSourceMaterials',{id:row.materialId})?.filename.includes('[pause-repair-once]')));if(pending){pausedRepairs.add(pending.materialId);await new Promise(resolve=>setTimeout(resolve,8000));}};
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
-  const turnAttempts=new Map();
+  const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
   provider.reply=async input=>{
-    if(!input.classroomBoard)return ordinaryReply(input);
+    if(!input.classroomBoard){
+      let context;try{context=JSON.parse(input.context);}catch{return originalReply(input);}
+      const ordinary=context&&Object.hasOwn(context,'currentQuestion')&&Object.hasOwn(context,'evidenceIds')&&Object.hasOwn(context,'scope');
+      return ordinary?ordinaryReply(input):originalReply(input);
+    }
     const count=(turnAttempts.get(input.message)??0)+1;turnAttempts.set(input.message,count);
     if(count===1&&input.message.includes('[fail-turn-once]'))throw new Error('Synthetic turn failure');
     if(count===1&&input.message.includes('[pause-turn-once]'))await new Promise((resolve,reject)=>{

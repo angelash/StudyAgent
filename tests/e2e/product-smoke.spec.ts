@@ -84,7 +84,10 @@ test('a parent can create a learning profile and complete an evidence-limited as
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-model-selector.png', fullPage: true });
   await page.getByLabel('想一起看看什么').fill('请根据当前学习记录告诉我下一步。');
   await page.getByRole('button', { name: '一起想一想 →' }).click();
-  await expect(page.getByText('先确认孩子的年级、教材和已学范围', { exact: false })).toBeVisible();
+  const assistantTask = page.getByRole('region', { name: '提问任务' });
+  await expect(assistantTask).toHaveAttribute('data-status', 'completed');
+  await expect(assistantTask).toContainText('Claude Opus 5.5');
+  await expect(page.locator('.assistant-message.from-assistant')).toContainText('独立新例子');
   await page.getByRole('button', { name: '收起家长陪伴助教' }).click();
 
   await page.getByRole('link', { name: '调整学习范围 ↗' }).click();

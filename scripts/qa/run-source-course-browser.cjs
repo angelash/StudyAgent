@@ -1,5 +1,13 @@
-const path=require('node:path'),{spawnSync}=require('node:child_process');
+const path=require('node:path'),fs=require('node:fs'),{spawnSync}=require('node:child_process');
 const root=path.resolve(__dirname,'../..'),directory=path.join(root,'data','qa','source-course-browser-'+Date.now()+'-'+process.pid);
+// Refuse before Playwright cleans its output directory, preserving an active run's evidence.
+const runtimeLock=path.join(root,'data/qa/experience-web/.runtime-lock.json');
+if(fs.existsSync(runtimeLock)){
+ if(fs.lstatSync(runtimeLock).isSymbolicLink())throw Error('Linked QA runtime lock refused');
+ const lock=JSON.parse(fs.readFileSync(runtimeLock,'utf8'));if(!Number.isSafeInteger(lock.pid)||lock.pid<1)throw Error('Invalid QA runtime lock');
+ let alive=false;try{process.kill(lock.pid,0);alive=true;}catch(error){if(error.code!=='ESRCH')throw error;}
+ if(alive)throw Error('A browser acceptance runtime is active; its results have been preserved. Finish it before starting another run.');
+}
 const full=process.argv.includes('--full'),skipBuild=process.argv.includes('--skip-build');
 const apiPort=process.env.E2E_API_PORT||'4107',webPort=process.env.E2E_WEB_PORT||'3107';
 const env={...process.env,NODE_ENV:'development',NEXT_TELEMETRY_DISABLED:'1',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:directory,E2E_DATA_DIR:directory,
