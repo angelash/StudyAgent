@@ -3,9 +3,9 @@
   "at": "2026-10-25T04:56:21.388Z",
   "sourceRevision": "aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561",
   "specificationCommit": "dd2ff52",
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "local-validated-awaiting-ci-and-daemon",
+  "status": "delivered-ci-and-local-daemon",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     ".gitattributes": "86efdc8899ce071cab668932e89f453f7d54da88ef63cd3004affdfbe9662e13",
@@ -157,6 +157,22 @@
         "unexpected": 0,
         "flaky": 0
       }
+    },
+    "course-lifecycle-ci-initial.json": {
+      "sha256": "440cf706eea2e1cea54f29c700fbaeff817136e43c843189c47c9d4cd1418557",
+      "result": "success"
+    },
+    "course-lifecycle-ci.json": {
+      "sha256": "c67fc0242d264457217cc661ce86d00f41a2834878d7e8b9f61b9046f2e01679",
+      "result": "success"
+    },
+    "course-lifecycle-runtime.json": {
+      "sha256": "188080fa43c3eba0a9a098914c9723b64a462323211b17d242fa537a22cfe8a2",
+      "result": {
+        "passed": true,
+        "smokeChecks": 9,
+        "observations": 3
+      }
     }
   },
   "checks": {
@@ -194,6 +210,22 @@
     "boardFixtureDrain": {
       "passed": 4,
       "flaky": 0
+    },
+    "finalRemoteCi": {
+      "run": 40165315508,
+      "head": "a659855110a039ce5a9739af51992744901dac40",
+      "applicationPassed": 1090,
+      "environmentSkipped": 42,
+      "browserPassed": 79,
+      "browserFlaky": 0,
+      "postgresLifecyclePassed": 10,
+      "sqliteOnlySkipped": 1
+    },
+    "daemon": {
+      "revision": "a659855110a039ce5a9739af51992744901dac40",
+      "buildId": "C47xCMuC6aYypzyuZ0qDJ",
+      "smokeChecks": 9,
+      "stableAcrossObservations": true
     }
   },
   "featureCoverage": [
@@ -211,14 +243,15 @@
     "First API combination:29 passed/2 failed. The new progress fixture omitted frozen speech identity and the learner versions route was not yet in the explicit read allowlist; fixed without adding management permissions.",
     "First browser run:2 passed/1 failed. Disabling the async preview trigger lost origin focus before the dialog mounted; the trigger is now saved and restored explicitly.",
     "The latest full API run and final focused browser cover final source. Earlier combinations and focused counts overlap and are not summed.",
-    "Initial remote CI40163741615 succeeded with 78 browser passes and one retry. Board fixture now drains route handlers before browser-context disposal; four focused tests pass. Exact final remote CI remains pending."
+    "Initial remote CI40163741615 succeeded with 78 browser passes and one retry. Board fixture now drains route handlers before browser-context disposal; four focused tests pass. Exact final remote CI remains pending.",
+    "Final exact-head CI40165315508: all three jobs succeed, 79 browser tests pass without a retry. Main checkout production build, protected configuration, rollback bundle and daemon smoke/stability checks pass."
   ],
   "limits": [
     "One source-course lifecycle increment, not complete product or full curriculum-package lifecycle. Fixed adult courses and textbook packages keep separate publication rules.",
     "All feature data is synthetic in isolated QA stores. No production family data was used for feature tests.",
     "Copying and adult confirmation are not teacher review, calibrated measurement or learning-effect validation.",
-    "No new live model, TTS or image-generation call is needed for copying a verified course. Real devices, human review, full content and remaining M2-M7 requirements remain.",
-    "The current daemon is the delivered structured-board version; this increment awaits exact CI and daemon delivery."
+    "No new live model, TTS or image-generation call is needed for copying a verified course. Real devices, human review, full content and remaining M2-M7 requirements remain."
   ],
-  "finalValidationSourceRevision": "fb7c5c1"
+  "finalValidationSourceRevision": "a659855110a039ce5a9739af51992744901dac40",
+  "deliveredAt": "2026-10-25T05:41:20.407Z"
 }
