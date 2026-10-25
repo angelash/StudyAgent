@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
+  "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 335,
-    "activeHttpRoutes": 322,
-    "activeBusinessHttpRoutes": 314,
+    "declaredHttpRoutes": 342,
+    "activeHttpRoutes": 329,
+    "activeBusinessHttpRoutes": 321,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 33,
-    "apiClasses": 133,
-    "apiFunctions": 377,
-    "domainCollections": 92,
-    "contractTypes": 297,
+    "activeControllers": 34,
+    "apiClasses": 136,
+    "apiFunctions": 380,
+    "domainCollections": 93,
+    "contractTypes": 304,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 130,
-    "browserTestFiles": 24
+    "apiTestFiles": 133,
+    "browserTestFiles": 25
   },
   "modules": [
     {
@@ -166,7 +166,8 @@
         "ProcessingFilesModule"
       ],
       "controllers": [
-        "DiagnosticsController"
+        "DiagnosticsController",
+        "GuidanceModelController"
       ],
       "providers": [
         "CurriculumService",
@@ -174,7 +175,10 @@
         "DiagnosticsService",
         "GuidanceService",
         "FoundationSeedService",
-        "TextbookRegistryService"
+        "TextbookRegistryService",
+        "GuidanceModelService",
+        "GuidanceModelWorkerService",
+        "{provide:guidanceModelPort,useExisting:GuidanceModelService}"
       ],
       "exports": [
         "CurriculumService",
@@ -3350,12 +3354,53 @@
       "retired": false
     },
     {
+      "verb": "GET",
+      "path": "/api/diagnostics/students/:studentId/plan-requests/:requestKey",
+      "controller": "DiagnosticsController",
+      "method": "planCreationResult",
+      "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+      "line": 126,
+      "signature": "planCreationResult(@Req() req: AuthenticatedRequest, @Param('studentId') id:string, @Param('requestKey') requestKey:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "curriculum",
+          "type": "CurriculumService"
+        },
+        {
+          "name": "diagnostics",
+          "type": "DiagnosticsService"
+        },
+        {
+          "name": "guidance",
+          "type": "GuidanceService"
+        },
+        {
+          "name": "packages",
+          "type": "CurriculumPackageService"
+        }
+      ],
+      "calls": [
+        "this.guidance.creationResult"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
       "verb": "PATCH",
       "path": "/api/diagnostics/plans/:planId",
       "controller": "DiagnosticsController",
       "method": "updatePlan",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 126,
+      "line": 128,
       "signature": "updatePlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
       "classDecorators": [
         {
@@ -3396,7 +3441,7 @@
       "controller": "DiagnosticsController",
       "method": "getPlan",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 128,
+      "line": 130,
       "signature": "getPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
       "classDecorators": [
         {
@@ -3437,7 +3482,7 @@
       "controller": "DiagnosticsController",
       "method": "planHistory",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 130,
+      "line": 132,
       "signature": "planHistory(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
       "classDecorators": [
         {
@@ -3478,7 +3523,7 @@
       "controller": "DiagnosticsController",
       "method": "planReviews",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 132,
+      "line": 134,
       "signature": "planReviews(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
       "classDecorators": [
         {
@@ -3519,7 +3564,7 @@
       "controller": "DiagnosticsController",
       "method": "adjustPlan",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 134,
+      "line": 136,
       "signature": "adjustPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
       "classDecorators": [
         {
@@ -3560,7 +3605,7 @@
       "controller": "DiagnosticsController",
       "method": "reviews",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 136,
+      "line": 138,
       "signature": "reviews(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string)",
       "classDecorators": [
         {
@@ -3601,7 +3646,7 @@
       "controller": "DiagnosticsController",
       "method": "review",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 138,
+      "line": 140,
       "signature": "review(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string)",
       "classDecorators": [
         {
@@ -3642,7 +3687,7 @@
       "controller": "DiagnosticsController",
       "method": "reschedule",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 140,
+      "line": 142,
       "signature": "reschedule(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string, @Body() body: unknown)",
       "classDecorators": [
         {
@@ -3683,7 +3728,7 @@
       "controller": "DiagnosticsController",
       "method": "retrospective",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 142,
+      "line": 144,
       "signature": "retrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
       "classDecorators": [
         {
@@ -3724,7 +3769,7 @@
       "controller": "DiagnosticsController",
       "method": "acknowledgeRetrospective",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 144,
+      "line": 146,
       "signature": "acknowledgeRetrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
       "classDecorators": [
         {
@@ -3765,7 +3810,7 @@
       "controller": "DiagnosticsController",
       "method": "reviewScore",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 146,
+      "line": 148,
       "signature": "reviewScore(@Req() req: AuthenticatedRequest, @Param('responseId') id: string, @Body() body: unknown)",
       "classDecorators": [
         {
@@ -3806,7 +3851,7 @@
       "controller": "DiagnosticsController",
       "method": "reportHistory",
       "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-      "line": 148,
+      "line": 150,
       "signature": "reportHistory(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string)",
       "classDecorators": [
         {
@@ -3837,6 +3882,180 @@
       ],
       "calls": [
         "this.diagnostics.reportHistory"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions",
+      "controller": "GuidanceModelController",
+      "method": "create",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 9,
+      "signature": "create(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Body() body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.create"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions",
+      "controller": "GuidanceModelController",
+      "method": "list",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 10,
+      "signature": "list(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Query() query:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.list"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions/:id",
+      "controller": "GuidanceModelController",
+      "method": "get",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 11,
+      "signature": "get(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/cancel",
+      "controller": "GuidanceModelController",
+      "method": "cancel",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 12,
+      "signature": "cancel(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/retry",
+      "controller": "GuidanceModelController",
+      "method": "retry",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 13,
+      "signature": "retry(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/adopt",
+      "controller": "GuidanceModelController",
+      "method": "adopt",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 14,
+      "signature": "adopt(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "calls": [
+        "this.suggestions.adopt"
       ],
       "active": true,
       "retired": false
@@ -11536,7 +11755,7 @@
         },
         {
           "name": "assertRestoreReady",
-          "line": 183,
+          "line": 186,
           "signature": "assertRestoreReady()",
           "access": "private",
           "decorators": [],
@@ -11546,7 +11765,7 @@
         },
         {
           "name": "migrateConstraints",
-          "line": 193,
+          "line": 196,
           "signature": "migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '')",
           "access": "private",
           "decorators": [],
@@ -11557,7 +11776,7 @@
         },
         {
           "name": "read",
-          "line": 222,
+          "line": 225,
           "signature": "read(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -11567,7 +11786,7 @@
         },
         {
           "name": "readImmutable",
-          "line": 227,
+          "line": 230,
           "signature": "readImmutable(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -11578,7 +11797,7 @@
         },
         {
           "name": "snapshotAt",
-          "line": 231,
+          "line": 234,
           "signature": "snapshotAt(revision: number): StateSnapshot | undefined",
           "access": "public",
           "decorators": [],
@@ -11586,7 +11805,7 @@
         },
         {
           "name": "remember",
-          "line": 237,
+          "line": 240,
           "signature": "remember(snapshot: StateSnapshot, loadedRows: number, partial = false): StateSnapshot",
           "access": "private",
           "decorators": [],
@@ -11594,7 +11813,7 @@
         },
         {
           "name": "rememberCommit",
-          "line": 244,
+          "line": 247,
           "signature": "rememberCommit(beforeRevision: number, revision: number, changes: Change[])",
           "access": "private",
           "decorators": [],
@@ -11602,7 +11821,7 @@
         },
         {
           "name": "readSnapshot",
-          "line": 265,
+          "line": 268,
           "signature": "readSnapshot(): Promise<StateSnapshot>",
           "access": "private",
           "decorators": [],
@@ -11614,7 +11833,7 @@
         },
         {
           "name": "commit",
-          "line": 303,
+          "line": 306,
           "signature": "commit(before: StateSnapshot, after: DomainState, options: CommitOptions = {}): Promise<number>",
           "access": "public",
           "decorators": [],
@@ -11625,7 +11844,7 @@
         },
         {
           "name": "commitSnapshot",
-          "line": 307,
+          "line": 310,
           "signature": "commitSnapshot(before: StateSnapshot, after: DomainState, options: CommitOptions): Promise<number>",
           "access": "private",
           "decorators": [],
@@ -11642,7 +11861,7 @@
         },
         {
           "name": "assertDependencies",
-          "line": 368,
+          "line": 371,
           "signature": "assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[], query: (collection: string, where?: DomainSelector) => Promise<unknown[]>, conflict: () => Error, version: (collection: string) => Promise<number>)",
           "access": "private",
           "decorators": [],
@@ -11650,7 +11869,7 @@
         },
         {
           "name": "rebaseAppends",
-          "line": 398,
+          "line": 401,
           "signature": "rebaseAppends(before: StateSnapshot, changes: Change[], options: CommitOptions, maximum: (collection: string) => number)",
           "access": "private",
           "decorators": [],
@@ -11658,7 +11877,7 @@
         },
         {
           "name": "close",
-          "line": 410,
+          "line": 413,
           "signature": "close()",
           "access": "public",
           "decorators": [],
@@ -11757,7 +11976,7 @@
     {
       "name": "InMemoryStoreService",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 169,
+      "line": 170,
       "decorators": [
         {
           "name": "Injectable",
@@ -11768,7 +11987,7 @@
       "methods": [
         {
           "name": "recordRead",
-          "line": 197,
+          "line": 198,
           "signature": "recordRead(collection: string, where?: DomainSelector)",
           "access": "private",
           "decorators": [],
@@ -11778,7 +11997,7 @@
         },
         {
           "name": "mutableCollection",
-          "line": 207,
+          "line": 208,
           "signature": "mutableCollection(collection: string, allRecords: boolean): unknown[]",
           "access": "private",
           "decorators": [],
@@ -11788,7 +12007,7 @@
         },
         {
           "name": "select",
-          "line": 222,
+          "line": 223,
           "signature": "select(collection: K, where: DomainSelector): Array<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -11800,7 +12019,7 @@
         },
         {
           "name": "find",
-          "line": 238,
+          "line": 239,
           "signature": "find(collection: K, where: DomainSelector): StoreRecord<K> | undefined",
           "access": "public",
           "decorators": [],
@@ -11810,7 +12029,7 @@
         },
         {
           "name": "inspect",
-          "line": 241,
+          "line": 242,
           "signature": "inspect(collection: K): ReadonlyArray<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -11821,7 +12040,7 @@
         },
         {
           "name": "append",
-          "line": 254,
+          "line": 255,
           "signature": "append(collection: K, ...records: Array<StoreRecord<K>>)",
           "access": "public",
           "decorators": [],
@@ -11832,7 +12051,7 @@
         },
         {
           "name": "remove",
-          "line": 260,
+          "line": 261,
           "signature": "remove(collection: K, where: DomainSelector)",
           "access": "public",
           "decorators": [],
@@ -11844,7 +12063,7 @@
         },
         {
           "name": "onModuleInit",
-          "line": 268,
+          "line": 269,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -11856,7 +12075,7 @@
         },
         {
           "name": "onApplicationBootstrap",
-          "line": 286,
+          "line": 287,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -11866,7 +12085,7 @@
         },
         {
           "name": "requestContext",
-          "line": 293,
+          "line": 294,
           "signature": "requestContext(fn: () => T): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -11877,7 +12096,7 @@
         },
         {
           "name": "commitRequest",
-          "line": 302,
+          "line": 303,
           "signature": "commitRequest(fence?: TaskFence)",
           "access": "public",
           "decorators": [],
@@ -11890,7 +12109,7 @@
         },
         {
           "name": "transaction",
-          "line": 322,
+          "line": 323,
           "signature": "transaction(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -11902,7 +12121,7 @@
         },
         {
           "name": "enqueueTask",
-          "line": 334,
+          "line": 335,
           "signature": "enqueueTask(intent: TaskIntent)",
           "access": "public",
           "decorators": [],
@@ -11914,7 +12133,7 @@
         },
         {
           "name": "controlTask",
-          "line": 340,
+          "line": 341,
           "signature": "controlTask(operation: TaskOperation)",
           "access": "public",
           "decorators": [],
@@ -11926,7 +12145,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 352,
+          "line": 353,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -11934,7 +12153,7 @@
         },
         {
           "name": "nextId",
-          "line": 447,
+          "line": 449,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -11942,7 +12161,7 @@
         },
         {
           "name": "reset",
-          "line": 451,
+          "line": 453,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -12257,7 +12476,7 @@
         },
         {
           "name": "insert",
-          "line": 54,
+          "line": 56,
           "signature": "insert(intents: TaskIntent[], client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -12270,7 +12489,7 @@
         },
         {
           "name": "get",
-          "line": 70,
+          "line": 72,
           "signature": "get(id: string)",
           "access": "public",
           "decorators": [],
@@ -12280,7 +12499,7 @@
         },
         {
           "name": "summary",
-          "line": 71,
+          "line": 73,
           "signature": "summary()",
           "access": "public",
           "decorators": [],
@@ -12291,7 +12510,7 @@
         },
         {
           "name": "history",
-          "line": 81,
+          "line": 83,
           "signature": "history(id: string)",
           "access": "public",
           "decorators": [],
@@ -12301,7 +12520,7 @@
         },
         {
           "name": "find",
-          "line": 85,
+          "line": 87,
           "signature": "find(ownerId: string, kind: string, requestKey: string)",
           "access": "public",
           "decorators": [],
@@ -12311,7 +12530,7 @@
         },
         {
           "name": "list",
-          "line": 88,
+          "line": 90,
           "signature": "list(page = 1, state?: string)",
           "access": "public",
           "decorators": [],
@@ -12321,7 +12540,7 @@
         },
         {
           "name": "claim",
-          "line": 95,
+          "line": 97,
           "signature": "claim(kinds: string[], leaseMs = 30_000): Promise<TaskRow | null>",
           "access": "public",
           "decorators": [],
@@ -12333,7 +12552,7 @@
         },
         {
           "name": "heartbeat",
-          "line": 118,
+          "line": 120,
           "signature": "heartbeat(id: string, token: string, progress?: Record<string, unknown>, leaseMs = 30_000)",
           "access": "public",
           "decorators": [],
@@ -12344,7 +12563,7 @@
         },
         {
           "name": "activeStudioSourceTasks",
-          "line": 124,
+          "line": 126,
           "signature": "activeStudioSourceTasks(sha256:string)",
           "access": "public",
           "decorators": [],
@@ -12354,7 +12573,7 @@
         },
         {
           "name": "recoverableProjectFileCollections",
-          "line": 130,
+          "line": 132,
           "signature": "recoverableProjectFileCollections()",
           "access": "public",
           "decorators": [],
@@ -12364,7 +12583,7 @@
         },
         {
           "name": "recoverableMaterialCollections",
-          "line": 131,
+          "line": 133,
           "signature": "recoverableMaterialCollections()",
           "access": "public",
           "decorators": [],
@@ -12374,7 +12593,7 @@
         },
         {
           "name": "studioSourceTaskIds",
-          "line": 132,
+          "line": 134,
           "signature": "studioSourceTaskIds(sha256:string)",
           "access": "public",
           "decorators": [],
@@ -12384,7 +12603,7 @@
         },
         {
           "name": "studioSourceOrigins",
-          "line": 137,
+          "line": 139,
           "signature": "studioSourceOrigins()",
           "access": "public",
           "decorators": [],
@@ -12394,7 +12613,7 @@
         },
         {
           "name": "deferMaterialCollection",
-          "line": 143,
+          "line": 145,
           "signature": "deferMaterialCollection(id:string, token:string, code:string, delayMs=30000)",
           "access": "public",
           "decorators": [],
@@ -12404,7 +12623,7 @@
         },
         {
           "name": "deferProjectFileCollection",
-          "line": 146,
+          "line": 148,
           "signature": "deferProjectFileCollection(id:string, token:string, code:string, delayMs=30000)",
           "access": "public",
           "decorators": [],
@@ -12414,7 +12633,7 @@
         },
         {
           "name": "deferProjectAssetProcessing",
-          "line": 147,
+          "line": 149,
           "signature": "deferProjectAssetProcessing(id:string, token:string, code:string, delayMs=30000)",
           "access": "public",
           "decorators": [],
@@ -12424,7 +12643,7 @@
         },
         {
           "name": "deferOriginalRepair",
-          "line": 148,
+          "line": 150,
           "signature": "deferOriginalRepair(id:string, token:string, code:string, delayMs=30000)",
           "access": "public",
           "decorators": [],
@@ -12434,7 +12653,7 @@
         },
         {
           "name": "deferOriginalRepairCleanup",
-          "line": 151,
+          "line": 153,
           "signature": "deferOriginalRepairCleanup(id:string, token:string, code:string, delayMs=30000)",
           "access": "public",
           "decorators": [],
@@ -12444,7 +12663,7 @@
         },
         {
           "name": "deferMaterialTask",
-          "line": 154,
+          "line": 156,
           "signature": "deferMaterialTask(id:string, token:string, code:string, delayMs:number, kind:string)",
           "access": "private",
           "decorators": [],
@@ -12456,7 +12675,7 @@
         },
         {
           "name": "cancel",
-          "line": 165,
+          "line": 167,
           "signature": "cancel(id: string, expectedVersion: number, actorId = 'system')",
           "access": "public",
           "decorators": [],
@@ -12467,7 +12686,7 @@
         },
         {
           "name": "cancelUsing",
-          "line": 168,
+          "line": 170,
           "signature": "cancelUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -12478,7 +12697,7 @@
         },
         {
           "name": "retry",
-          "line": 179,
+          "line": 181,
           "signature": "retry(id: string, expectedVersion: number, actorId = 'system')",
           "access": "public",
           "decorators": [],
@@ -12489,7 +12708,7 @@
         },
         {
           "name": "retryUsing",
-          "line": 182,
+          "line": 184,
           "signature": "retryUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -12500,7 +12719,7 @@
         },
         {
           "name": "applyOperations",
-          "line": 192,
+          "line": 194,
           "signature": "applyOperations(operations: TaskOperation[], client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -12513,7 +12732,7 @@
         },
         {
           "name": "fail",
-          "line": 200,
+          "line": 202,
           "signature": "fail(id: string, token: string, code: string, retryable: boolean)",
           "access": "public",
           "decorators": [],
@@ -12525,7 +12744,7 @@
         },
         {
           "name": "applyFence",
-          "line": 217,
+          "line": 219,
           "signature": "applyFence(fence: TaskFence, client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -12539,7 +12758,7 @@
         },
         {
           "name": "finish",
-          "line": 228,
+          "line": 230,
           "signature": "finish(fence: TaskCompletionFence, client?: PoolClient)",
           "access": "public",
           "decorators": [],
@@ -12552,7 +12771,7 @@
         },
         {
           "name": "audit",
-          "line": 237,
+          "line": 239,
           "signature": "audit(taskId: string, action: string, actorId: string, detail: Record<string, unknown>, client?: PoolClient, id: string = randomUUID())",
           "access": "private",
           "decorators": [],
@@ -12564,7 +12783,7 @@
         },
         {
           "name": "auditWith",
-          "line": 242,
+          "line": 244,
           "signature": "auditWith(query: (sql: string, args?: any[]) => Promise<any[]>, taskId: string, action: string, actorId: string, detail: Record<string, unknown>)",
           "access": "private",
           "decorators": [],
@@ -12574,7 +12793,7 @@
         },
         {
           "name": "pg",
-          "line": 246,
+          "line": 248,
           "signature": "pg(sql: string)",
           "access": "private",
           "decorators": [],
@@ -12582,7 +12801,7 @@
         },
         {
           "name": "query",
-          "line": 247,
+          "line": 249,
           "signature": "query(sql: string, args: any[] = []): Promise<any[]>",
           "access": "private",
           "decorators": [],
@@ -12593,7 +12812,7 @@
         },
         {
           "name": "one",
-          "line": 250,
+          "line": 252,
           "signature": "one(sql: string, args: any[])",
           "access": "private",
           "decorators": [],
@@ -12603,7 +12822,7 @@
         },
         {
           "name": "locked",
-          "line": 251,
+          "line": 253,
           "signature": "locked(fn: (query: (sql: string, args?: any[]) => Promise<any[]>) => Promise<T>): Promise<T>",
           "access": "private",
           "decorators": [],
@@ -12614,7 +12833,7 @@
         },
         {
           "name": "serial",
-          "line": 266,
+          "line": 268,
           "signature": "serial(fn: () => Promise<T>)",
           "access": "public",
           "decorators": [],
@@ -16640,8 +16859,25 @@
           ]
         },
         {
-          "name": "updatePlan",
+          "name": "planCreationResult",
           "line": 126,
+          "signature": "planCreationResult(@Req() req: AuthenticatedRequest, @Param('studentId') id:string, @Param('requestKey') requestKey:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'diagnostics/students/:studentId/plan-requests/:requestKey'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.guidance.creationResult"
+          ]
+        },
+        {
+          "name": "updatePlan",
+          "line": 128,
           "signature": "updatePlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
           "access": "public",
           "decorators": [
@@ -16658,7 +16894,7 @@
         },
         {
           "name": "getPlan",
-          "line": 128,
+          "line": 130,
           "signature": "getPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
           "access": "public",
           "decorators": [
@@ -16675,7 +16911,7 @@
         },
         {
           "name": "planHistory",
-          "line": 130,
+          "line": 132,
           "signature": "planHistory(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
           "access": "public",
           "decorators": [
@@ -16692,7 +16928,7 @@
         },
         {
           "name": "planReviews",
-          "line": 132,
+          "line": 134,
           "signature": "planReviews(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
           "access": "public",
           "decorators": [
@@ -16709,7 +16945,7 @@
         },
         {
           "name": "adjustPlan",
-          "line": 134,
+          "line": 136,
           "signature": "adjustPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
           "access": "public",
           "decorators": [
@@ -16726,7 +16962,7 @@
         },
         {
           "name": "reviews",
-          "line": 136,
+          "line": 138,
           "signature": "reviews(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string)",
           "access": "public",
           "decorators": [
@@ -16743,7 +16979,7 @@
         },
         {
           "name": "review",
-          "line": 138,
+          "line": 140,
           "signature": "review(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string)",
           "access": "public",
           "decorators": [
@@ -16760,7 +16996,7 @@
         },
         {
           "name": "reschedule",
-          "line": 140,
+          "line": 142,
           "signature": "reschedule(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string, @Body() body: unknown)",
           "access": "public",
           "decorators": [
@@ -16777,7 +17013,7 @@
         },
         {
           "name": "retrospective",
-          "line": 142,
+          "line": 144,
           "signature": "retrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string)",
           "access": "public",
           "decorators": [
@@ -16794,7 +17030,7 @@
         },
         {
           "name": "acknowledgeRetrospective",
-          "line": 144,
+          "line": 146,
           "signature": "acknowledgeRetrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)",
           "access": "public",
           "decorators": [
@@ -16811,7 +17047,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 146,
+          "line": 148,
           "signature": "reviewScore(@Req() req: AuthenticatedRequest, @Param('responseId') id: string, @Body() body: unknown)",
           "access": "public",
           "decorators": [
@@ -16828,7 +17064,7 @@
         },
         {
           "name": "reportHistory",
-          "line": 148,
+          "line": 150,
           "signature": "reportHistory(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string)",
           "access": "public",
           "decorators": [
@@ -16848,12 +17084,12 @@
     {
       "name": "DiagnosticsModule",
       "file": "apps/api/src/modules/diagnostics/diagnostics.module.ts",
-      "line": 15,
+      "line": 19,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController],\r\n  providers: [CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService], exports: [CurriculumService, DiagnosticsService, GuidanceService] }"
+            "{ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController],\r\n  providers: [CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,\r\n    GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [CurriculumService, DiagnosticsService, GuidanceService] }"
           ]
         }
       ],
@@ -17402,9 +17638,409 @@
       ]
     },
     {
+      "name": "GuidanceModelWorkerService",
+      "file": "apps/api/src/modules/diagnostics/guidance-model-worker.service.ts",
+      "line": 7,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        },
+        {
+          "name": "provider",
+          "type": "XiaojiuChatService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "onApplicationBootstrap",
+          "line": 12,
+          "signature": "onApplicationBootstrap()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.runNext",
+            "this.logger.warn",
+            "this.timer.unref"
+          ]
+        },
+        {
+          "name": "onModuleDestroy",
+          "line": 16,
+          "signature": "onModuleDestroy()",
+          "access": "public",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "runNext",
+          "line": 17,
+          "signature": "runNext()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.execute"
+          ]
+        },
+        {
+          "name": "execute",
+          "line": 18,
+          "signature": "execute()",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.claim",
+            "this.store.tasks.heartbeat",
+            "this.store.requestContext",
+            "this.store.find",
+            "this.suggestions.authority",
+            "this.store.transaction",
+            "this.provider.structured",
+            "this.store.tasks.fail"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelController",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+      "line": 5,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'diagnostics/plans/:planId/model-suggestions'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "suggestions",
+          "type": "GuidanceModelService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "create",
+          "line": 9,
+          "signature": "create(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Body() body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.suggestions.create"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 10,
+          "signature": "list(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Query() query:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.suggestions.list"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 11,
+          "signature": "get(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.suggestions.get"
+          ]
+        },
+        {
+          "name": "cancel",
+          "line": 12,
+          "signature": "cancel(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/cancel'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.suggestions.control"
+          ]
+        },
+        {
+          "name": "retry",
+          "line": 13,
+          "signature": "retry(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/retry'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.suggestions.control"
+          ]
+        },
+        {
+          "name": "adopt",
+          "line": 14,
+          "signature": "adopt(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/adopt'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.suggestions.adopt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelService",
+      "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+      "line": 22,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "guidance",
+          "type": "GuidanceService"
+        },
+        {
+          "name": "diagnostics",
+          "type": "DiagnosticsService"
+        },
+        {
+          "name": "models",
+          "type": "XiaojiuModelsService"
+        },
+        {
+          "name": "provider",
+          "type": "XiaojiuChatService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "modelAvailable",
+          "line": 26,
+          "signature": "modelAvailable()",
+          "access": "public",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "plan",
+          "line": 27,
+          "signature": "plan(user:InMemoryUserAccount, planId:string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.guidance.get",
+            "this.students.assertGuardian"
+          ]
+        },
+        {
+          "name": "definitionHash",
+          "line": 33,
+          "signature": "definitionHash(user:InMemoryUserAccount, plan:DiagnosticGuidancePlan)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.diagnostics.requireSession"
+          ]
+        },
+        {
+          "name": "authority",
+          "line": 38,
+          "signature": "authority(row:GuidanceModelSuggestionRecord)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.plan",
+            "this.definitionHash"
+          ]
+        },
+        {
+          "name": "record",
+          "line": 48,
+          "signature": "record(user:InMemoryUserAccount, planId:string, id:string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.students.assertGuardian"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 53,
+          "signature": "view(row:GuidanceModelSuggestionRecord, provisional?:GuidanceModelSuggestionView['task']): Promise<GuidanceModelSuggestionView>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.get",
+            "this.authority"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 63,
+          "signature": "get(user:InMemoryUserAccount, planId:string, id:string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.view",
+            "this.record"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 64,
+          "signature": "list(user:InMemoryUserAccount, planId:string, input:unknown={})",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.guidance.get",
+            "this.students.assertGuardian",
+            "this.store.select",
+            "this.view"
+          ]
+        },
+        {
+          "name": "idle",
+          "line": 71,
+          "signature": "idle(planId:string, except?:string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.select",
+            "this.store.tasks.get"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 76,
+          "signature": "create(user:InMemoryUserAccount, planId:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.createInCurrentTransaction"
+          ]
+        },
+        {
+          "name": "createInCurrentTransaction",
+          "line": 83,
+          "signature": "createInCurrentTransaction(user:InMemoryUserAccount, planId:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.guidance.get",
+            "this.students.assertGuardian",
+            "this.store.find",
+            "this.view",
+            "this.plan",
+            "this.modelAvailable",
+            "this.models.resolve",
+            "this.idle",
+            "this.store.select",
+            "this.diagnostics.report",
+            "this.store.nextId",
+            "this.definitionHash",
+            "this.store.append",
+            "this.store.enqueueTask"
+          ]
+        },
+        {
+          "name": "control",
+          "line": 106,
+          "signature": "control(user:InMemoryUserAccount, planId:string, id:string, action:'cancel'|'retry', input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.record",
+            "this.store.tasks.get",
+            "this.view",
+            "this.authority",
+            "this.idle",
+            "this.store.controlTask"
+          ]
+        },
+        {
+          "name": "adopt",
+          "line": 121,
+          "signature": "adopt(user:InMemoryUserAccount, planId:string, id:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.record",
+            "this.guidance.get",
+            "this.authority",
+            "this.guidance.adoptModelText"
+          ]
+        }
+      ]
+    },
+    {
       "name": "GuidanceService",
       "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-      "line": 26,
+      "line": 29,
       "decorators": [
         {
           "name": "Injectable",
@@ -17429,18 +18065,18 @@
           "type": "DomainEventBusService"
         },
         {
-          "name": "ai",
-          "type": "AiService"
-        },
-        {
           "name": "textbooks",
           "type": "TextbookRegistryService"
+        },
+        {
+          "name": "moduleRef",
+          "type": "ModuleRef"
         }
       ],
       "methods": [
         {
           "name": "sourceCitations",
-          "line": 32,
+          "line": 35,
           "signature": "sourceCitations(scope: LearningScope, atomId: string): LearningSourceCitation[]",
           "access": "private",
           "decorators": [],
@@ -17451,31 +18087,58 @@
         },
         {
           "name": "create",
-          "line": 40,
+          "line": 43,
           "signature": "create(user: InMemoryUserAccount, studentId: string, input: unknown)",
           "access": "public",
           "decorators": [],
           "calls": [
+            "this.store.transaction",
+            "this.createRulePlan"
+          ]
+        },
+        {
+          "name": "createRulePlan",
+          "line": 50,
+          "signature": "createRulePlan(user: InMemoryUserAccount, studentId: string, command: z.infer<typeof createPlanSchema>)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
             "this.students.assertGuardian",
+            "this.store.find",
+            "this.get",
             "this.diagnostics.requireSession",
             "this.diagnostics.report",
             "this.diagnostics.changedPlanDefinitions",
             "this.store.inspect",
             "this.diagnostics.effectiveResponses",
             "this.sourceCitations",
-            "this.store.find",
             "this.store.select",
             "this.store.nextId",
-            "this.ai.enrichDiagnosticPlan",
             "this.store.append",
+            "this.moduleRef.get",
             "this.saveRevision",
             "this.events.publish",
             "this.view"
           ]
         },
         {
+          "name": "adoptModelText",
+          "line": 128,
+          "signature": "adoptModelText(user:InMemoryUserAccount, planId:string, expectedRevision:number, result:GuidanceModelText, metadata:NonNullable<DiagnosticGuidancePlan['aiAdoption']>, requestKey:string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.requirePlan",
+            "this.students.assertGuardian",
+            "this.view",
+            "this.preserveLegacy",
+            "this.bump",
+            "this.events.publish"
+          ]
+        },
+        {
           "name": "list",
-          "line": 108,
+          "line": 142,
           "signature": "list(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -17487,7 +18150,7 @@
         },
         {
           "name": "get",
-          "line": 114,
+          "line": 148,
           "signature": "get(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -17497,8 +18160,20 @@
           ]
         },
         {
+          "name": "creationResult",
+          "line": 149,
+          "signature": "creationResult(user:InMemoryUserAccount, studentId:string, requestKey:string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.students.assertGuardian",
+            "this.store.find",
+            "this.get"
+          ]
+        },
+        {
           "name": "history",
-          "line": 115,
+          "line": 155,
           "signature": "history(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -17509,7 +18184,7 @@
         },
         {
           "name": "requirePlan",
-          "line": 119,
+          "line": 159,
           "signature": "requirePlan(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -17520,7 +18195,7 @@
         },
         {
           "name": "baseVersion",
-          "line": 124,
+          "line": 164,
           "signature": "baseVersion(plan: DiagnosticGuidancePlan)",
           "access": "private",
           "decorators": [],
@@ -17530,7 +18205,7 @@
         },
         {
           "name": "view",
-          "line": 128,
+          "line": 168,
           "signature": "view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView",
           "access": "private",
           "decorators": [],
@@ -17543,7 +18218,7 @@
         },
         {
           "name": "saveRevision",
-          "line": 148,
+          "line": 188,
           "signature": "saveRevision(plan: DiagnosticGuidancePlan, actorId: string, kind: GuidancePlanRevision['kind'], reason: string, receipt?: { requestKey?: string; inputHash: string })",
           "access": "private",
           "decorators": [],
@@ -17553,7 +18228,7 @@
         },
         {
           "name": "command",
-          "line": 153,
+          "line": 193,
           "signature": "command(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan, kind: string, input: { expectedRevision?: number; requestKey?: string })",
           "access": "private",
           "decorators": [],
@@ -17563,7 +18238,7 @@
         },
         {
           "name": "bump",
-          "line": 167,
+          "line": 207,
           "signature": "bump(plan: DiagnosticGuidancePlan, actorId: string, kind: GuidancePlanRevision['kind'], reason: string, receipt?: { requestKey?: string; inputHash: string })",
           "access": "private",
           "decorators": [],
@@ -17573,7 +18248,7 @@
         },
         {
           "name": "preserveLegacy",
-          "line": 172,
+          "line": 212,
           "signature": "preserveLegacy(plan: DiagnosticGuidancePlan, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -17586,7 +18261,7 @@
         },
         {
           "name": "adjust",
-          "line": 182,
+          "line": 222,
           "signature": "adjust(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17604,7 +18279,7 @@
         },
         {
           "name": "update",
-          "line": 216,
+          "line": 256,
           "signature": "update(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17625,7 +18300,7 @@
         },
         {
           "name": "reviews",
-          "line": 250,
+          "line": 290,
           "signature": "reviews(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -17637,7 +18312,7 @@
         },
         {
           "name": "planReviews",
-          "line": 256,
+          "line": 296,
           "signature": "planReviews(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -17649,7 +18324,7 @@
         },
         {
           "name": "reviewViews",
-          "line": 261,
+          "line": 301,
           "signature": "reviewViews(tasks: typeof this.store.reviewTasks)",
           "access": "private",
           "decorators": [],
@@ -17659,7 +18334,7 @@
         },
         {
           "name": "reschedule",
-          "line": 267,
+          "line": 307,
           "signature": "reschedule(user: InMemoryUserAccount, reviewId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -17672,7 +18347,7 @@
         },
         {
           "name": "startReview",
-          "line": 290,
+          "line": 330,
           "signature": "startReview(user: InMemoryUserAccount, reviewId: string)",
           "access": "public",
           "decorators": [],
@@ -17687,7 +18362,7 @@
         },
         {
           "name": "retrospective",
-          "line": 304,
+          "line": 344,
           "signature": "retrospective(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -17705,7 +18380,7 @@
         },
         {
           "name": "acknowledgeRetrospective",
-          "line": 364,
+          "line": 404,
           "signature": "acknowledgeRetrospective(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -30999,6 +31674,24 @@
       "signature": "authoredTeachingUpdates(atoms: readonly KnowledgeAtom[], definitions: readonly FoundationDefinition[])"
     },
     {
+      "file": "apps/api/src/modules/diagnostics/guidance-model-record.ts",
+      "name": "canonical",
+      "line": 13,
+      "signature": "canonical(value: unknown): unknown"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/guidance-model-record.ts",
+      "name": "validateGuidanceText",
+      "line": 24,
+      "signature": "validateGuidanceText(value: unknown, original: GuidanceModelOriginal): GuidanceModelText"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+      "name": "originalPlan",
+      "line": 15,
+      "signature": "originalPlan(plan: DiagnosticGuidancePlan): GuidanceModelOriginal"
+    },
+    {
       "file": "apps/api/src/modules/diagnostics/learning-source-citation.ts",
       "name": "textbookSourceCitations",
       "line": 8,
@@ -32129,43 +32822,43 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 89,
+      "line": 90,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 96,
+      "line": 97,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 103,
+      "line": 104,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 106,
+      "line": 107,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 114,
+      "line": 115,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 119,
+      "line": 120,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 166,
+      "line": 170,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -32288,553 +32981,559 @@
       "name": "users",
       "type": "InMemoryUserAccount",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 353
+      "line": 354
     },
     {
       "name": "paperPublications",
       "type": "PaperPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 354
+      "line": 355
     },
     {
       "name": "libraryBookmarks",
       "type": "LibraryBookmark",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 355
+      "line": 356
     },
     {
       "name": "practiceSessions",
       "type": "PracticeSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 356
+      "line": 357
     },
     {
       "name": "practiceAttempts",
       "type": "PracticeAttempt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 357
+      "line": 358
     },
     {
       "name": "practiceHints",
       "type": "PracticeHint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 358
+      "line": 359
     },
     {
       "name": "practiceScoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 359
+      "line": 360
     },
     {
       "name": "teacherAssignments",
       "type": "TeacherStudentAssignment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 360
+      "line": 361
     },
     {
       "name": "evidenceFeedback",
       "type": "EvidenceFeedback",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 361
+      "line": 362
     },
     {
       "name": "importFiles",
       "type": "ImportFile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 362
+      "line": 363
     },
     {
       "name": "processingArtifacts",
       "type": "ProcessingArtifact",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 363
+      "line": 364
     },
     {
       "name": "importPages",
       "type": "ImportPageEvidenceRef",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 364
+      "line": 365
     },
     {
       "name": "guidancePlanRevisions",
       "type": "GuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 365
+      "line": 366
     },
     {
       "name": "studentLearningAccess",
       "type": "StudentLearningAccess",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 366
+      "line": 367
     },
     {
       "name": "studentLearningCodes",
       "type": "StudentLearningCode",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 367
+      "line": 368
     },
     {
       "name": "studentAccessRevisions",
       "type": "StudentAccessRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 368
+      "line": 369
     },
     {
       "name": "studentProgressProposals",
       "type": "StudentProgressProposal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 369
+      "line": 370
     },
     {
       "name": "privacyRequests",
       "type": "PrivacyReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 370
+      "line": 371
     },
     {
       "name": "studentMedia",
       "type": "StudentMedia",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 371
+      "line": 372
     },
     {
       "name": "sessions",
       "type": "InMemoryAuthSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 372
+      "line": 373
     },
     {
       "name": "students",
       "type": "StudentProfile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 373
+      "line": 374
     },
     {
       "name": "bindings",
       "type": "ParentStudentBinding",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 374
+      "line": 375
     },
     {
       "name": "studentInvitations",
       "type": "StudentInvitation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 375
+      "line": 376
     },
     {
       "name": "subjectEnrollments",
       "type": "SubjectEnrollment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 376
+      "line": 377
     },
     {
       "name": "textbookVolumes",
       "type": "TextbookVolume",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 377
+      "line": 378
     },
     {
       "name": "textbookUnits",
       "type": "TextbookUnit",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 378
+      "line": 379
     },
     {
       "name": "textbookLessons",
       "type": "TextbookLesson",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 379
+      "line": 380
     },
     {
       "name": "knowledgePoints",
       "type": "KnowledgePoint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 380
+      "line": 381
     },
     {
       "name": "questions",
       "type": "Question",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 381
+      "line": 382
     },
     {
       "name": "questionDocuments",
       "type": "QuestionDocument",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 382
+      "line": 383
     },
     {
       "name": "questionAnswerSchemas",
       "type": "QuestionAnswerSchema",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 383
+      "line": 384
     },
     {
       "name": "questionSources",
       "type": "QuestionSourceRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 384
+      "line": 385
     },
     {
       "name": "questionImportJobs",
       "type": "QuestionImportJob",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 385
+      "line": 386
     },
     {
       "name": "questionImportRecords",
       "type": "QuestionImportRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 386
+      "line": 387
     },
     {
       "name": "assessments",
       "type": "AssessmentSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 387
+      "line": 388
     },
     {
       "name": "assessmentAnswers",
       "type": "AssessmentAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 388
+      "line": 389
     },
     {
       "name": "assessmentResults",
       "type": "AssessmentResult",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 389
+      "line": 390
     },
     {
       "name": "studyPlans",
       "type": "StudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 390
+      "line": 391
     },
     {
       "name": "missions",
       "type": "DailyMissionInternal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 391
+      "line": 392
     },
     {
       "name": "missionAnswers",
       "type": "MissionAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 392
+      "line": 393
     },
     {
       "name": "assistantSessions",
       "type": "AssistantSession & { ownerUserId: string; scopeKey?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 393
+      "line": 394
     },
     {
       "name": "assistantMessages",
       "type": "AssistantMessage",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 394
+      "line": 395
     },
     {
       "name": "assistantTurns",
       "type": "AssistantTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 395
+      "line": 396
+    },
+    {
+      "name": "guidanceModelSuggestions",
+      "type": "GuidanceModelSuggestionRecord",
+      "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "line": 397
     },
     {
       "name": "aiInsights",
       "type": "AIInsightRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 396
+      "line": 398
     },
     {
       "name": "events",
       "type": "Record<string, unknown>",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 397
+      "line": 399
     },
     {
       "name": "knowledgeAtoms",
       "type": "KnowledgeAtom",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 398
+      "line": 400
     },
     {
       "name": "learningScopes",
       "type": "LearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 399
+      "line": 401
     },
     {
       "name": "measurementItems",
       "type": "MeasurementItem",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 400
+      "line": 402
     },
     {
       "name": "measurementCandidates",
       "type": "MeasurementContentCandidate",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 401
+      "line": 403
     },
     {
       "name": "mistakeNotebookEntries",
       "type": "MistakeNotebookEntry",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 402
+      "line": 404
     },
     {
       "name": "textbookAtomMappings",
       "type": "TextbookAtomMapping",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 403
+      "line": 405
     },
     {
       "name": "curriculumRevisions",
       "type": "CurriculumRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 404
+      "line": 406
     },
     {
       "name": "diagnosticSessions",
       "type": "DiagnosticSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 405
+      "line": 407
     },
     {
       "name": "diagnosticBlueprints",
       "type": "DiagnosticBlueprintReservation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 406
+      "line": 408
     },
     {
       "name": "diagnosticResponses",
       "type": "DiagnosticResponse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 407
+      "line": 409
     },
     {
       "name": "diagnosticHypotheses",
       "type": "DiagnosticHypothesis",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 408
+      "line": 410
     },
     {
       "name": "diagnosticPlans",
       "type": "DiagnosticGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 409
+      "line": 411
     },
     {
       "name": "reviewTasks",
       "type": "ReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 410
+      "line": 412
     },
     {
       "name": "scoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 411
+      "line": 413
     },
     {
       "name": "diagnosticHints",
       "type": "{ id: string; sessionId: string; itemId: string; level: number; at: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 412
+      "line": 414
     },
     {
       "name": "diagnosticReports",
       "type": "{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 413
+      "line": 415
     },
     {
       "name": "diagnosticDrafts",
       "type": "{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 415
+      "line": 417
     },
     {
       "name": "gespLearningScopes",
       "type": "GespLearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 416
+      "line": 418
     },
     {
       "name": "gespLearningScopeRevisions",
       "type": "GespLearningScopeRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 417
+      "line": 419
     },
     {
       "name": "gespCodeSubmissions",
       "type": "GespCodeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 420
     },
     {
       "name": "gespProbeSubmissions",
       "type": "GespProbeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 421
     },
     {
       "name": "gespHintEvents",
       "type": "GespHintEvent",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 422
     },
     {
       "name": "gespGuidancePlans",
       "type": "GespGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 423
     },
     {
       "name": "gespGuidancePlanRevisions",
       "type": "GespGuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 422
+      "line": 424
     },
     {
       "name": "gespReviewTasks",
       "type": "GespReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 425
     },
     {
       "name": "gespTaskReviews",
       "type": "GespTaskReview",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 426
     },
     {
       "name": "gespTaskReviewRevisions",
       "type": "GespTaskReviewRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 425
+      "line": 427
     },
     {
       "name": "studioCourses",
       "type": "StudioCourse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 426
+      "line": 428
     },
     {
       "name": "classroomSessions",
       "type": "ClassroomSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 427
+      "line": 429
     },
     {
       "name": "classroomTurns",
       "type": "ClassroomTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 428
+      "line": 430
     },
     {
       "name": "classroomCodeDrafts",
       "type": "ClassroomCodeDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 429
+      "line": 431
     },
     {
       "name": "classroomVisuals",
       "type": "ClassroomVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 430
+      "line": 432
     },
     {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 431
+      "line": 433
     },
     {
       "name": "projectAssetUploads",
       "type": "ProjectUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 432
+      "line": 434
     },
     {
       "name": "projectAssets",
       "type": "ProjectAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 433
+      "line": 435
     },
     {
       "name": "sourceCourses",
       "type": "SourceCourseRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 434
+      "line": 436
     },
     {
       "name": "sourceCourseStages",
       "type": "SourceCourseStageRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 435
+      "line": 437
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 436
+      "line": 438
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 437
+      "line": 439
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 438
+      "line": 440
     },
     {
       "name": "studioMaterialUploads",
       "type": "StudioMaterialUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 439
+      "line": 441
     },
     {
       "name": "studioMaterialAssets",
       "type": "StudioMaterialAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 440
+      "line": 442
     },
     {
       "name": "studioOriginalRepairs",
       "type": "StudioOriginalRepairRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 441
+      "line": 443
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 442
+      "line": 444
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 443
+      "line": 445
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 444
+      "line": 446
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 445
+      "line": 447
     }
   ],
   "contractTypes": [
@@ -37223,6 +37922,11 @@
           "type": "string"
         },
         {
+          "name": "aiAdoption",
+          "optional": true,
+          "type": "{ suggestionId: string; modelId: string; modelName: string; basedOnRevision: number; adoptedAt: string }"
+        },
+        {
           "name": "retrospectiveReview",
           "optional": true,
           "type": "{ fingerprint: string; reviewedAt: string; actorId: string; note: string }"
@@ -37232,14 +37936,14 @@
     {
       "name": "GuidancePlanView",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 278,
+      "line": 279,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GuidancePlanRevision",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 284,
+      "line": 286,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -37297,7 +38001,7 @@
     {
       "name": "ReviewTask",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 289,
+      "line": 291,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -37375,7 +38079,7 @@
     {
       "name": "DiagnosticReport",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 297,
+      "line": 299,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -38582,6 +39286,226 @@
           "name": "completedAt",
           "optional": false,
           "type": "string | null"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelSuggestionStatus",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 3,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "GuidanceModelText",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 4,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "summary",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "activities",
+          "optional": false,
+          "type": "Array<{ actionId: string; activity: string; evidenceIds: string[] }>"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelOriginal",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "summary",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "minutesPerDay",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "actions",
+          "optional": false,
+          "type": "Array<Pick<GuidanceAction,\n  'id' | 'atomId' | 'hypothesisId' | 'title' | 'activity' | 'minutes' | 'successCriterion' | 'retestAt' | 'evidenceIds'>>"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelSuggestionView",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "planId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "studentId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "requestedModelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelName",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "planRevision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "baselineReportVersion",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "type": "GuidanceModelSuggestionStatus"
+        },
+        {
+          "name": "revision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "original",
+          "optional": false,
+          "type": "GuidanceModelOriginal"
+        },
+        {
+          "name": "result",
+          "optional": false,
+          "type": "GuidanceModelText | null"
+        },
+        {
+          "name": "createdAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "updatedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "eligibility",
+          "optional": false,
+          "type": "{ canAdopt: boolean; reason: string }"
+        },
+        {
+          "name": "adoptedRevision",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "task",
+          "optional": false,
+          "type": "{ state: string; generation: number; version: number; errorCode: string | null } | null"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelSuggestionList",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 14,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "suggestions",
+          "optional": false,
+          "type": "GuidanceModelSuggestionView[]"
+        },
+        {
+          "name": "hasMore",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "page",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "pageSize",
+          "optional": false,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelSuggestionCommand",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 15,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "expectedRevision",
+          "optional": false,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "GuidanceModelAdoptionCommand",
+      "file": "packages/contracts/src/guidance-model.ts",
+      "line": 16,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "expectedRevision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "suggestionRevision",
+          "optional": false,
+          "type": "number"
         }
       ]
     },
@@ -43903,6 +44827,9 @@
     "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
     "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
     "apps/api/src/modules/diagnostics/family-identity.test.ts",
+    "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+    "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+    "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
     "apps/api/src/modules/diagnostics/learning-source-citation.test.ts",
     "apps/api/src/modules/diagnostics/measurement.test.ts",
     "apps/api/src/modules/diagnostics/scoring.test.ts",
@@ -43977,6 +44904,7 @@
     "tests/e2e/course-builder.spec.ts",
     "tests/e2e/course-library.spec.ts",
     "tests/e2e/course-project.spec.ts",
+    "tests/e2e/guidance-model.spec.ts",
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/pdf-material.spec.ts",
     "tests/e2e/product-smoke.spec.ts",

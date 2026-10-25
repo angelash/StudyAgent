@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-25T13:00:28.622Z",
+  "passed": false,
+  "error": "An owned guidance CLI process remained",
+  "candidates": [
+    {
+      "summary": "当前学习证据把“明确平均对象并把零数据计入份数”标为未知，且没有证据ID。家长可先安排独立小测观察，不预先认定学生掌握了这一知识点，也不推断答错的原因；根据小测表现再决定是否讲解。保持每天10分钟和原复测日期，本建议不替家长采用或确认计划。",
+      "activities": [
+        {
+          "actionId": "action_2a207dc9-bd4e-4b54-9bbe-ba830ef233e4",
+          "activity": "在10分钟内，先让家长从两个不同题族各选一道题，请学生独立完成，不提示答案。作答时只记录四项观察：学生是否按题目指定的人、天或其他平均对象确定份数；参与且数值为0的记录是否计入；未参加者是否未被混入；记录缺失是否没有被当成0。两个题族做完后，再安排一道平均对象发生变化的新题，观察学生能否独立迁移。先依据这些结果判断是否需要讲解；如需要，再围绕记录对应的平均对象、参与范围及0、未参加、未记录三种情况的区别进行说明。之后按原复测日期安排真实间隔复核；目前因为尚无证据ID，先以小测和观察积累独立证据。",
+          "evidenceIds": []
+        }
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "pid": 30904,
+      "shell": false,
+      "startedAt": "2026-10-25T13:00:17.422Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "turn.completed"
+      ],
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "closedAt": "2026-10-25T13:00:25.982Z"
+    },
+    {
+      "pid": 54436,
+      "shell": false,
+      "startedAt": "2026-10-25T13:00:26.444Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started"
+      ],
+      "closed": false
+    }
+  ]
+}

@@ -87,7 +87,12 @@ test('a manually changed plan refuses an older completed suggestion and preserve
 
 test('a cancelled local wait resumes the server record after navigating away and back',async({page})=>{
   const f=await setup(page);await f.call('/qa/guidance-models/'+f.plan.id+'/behavior',{mode:'hold'});await panel(page).getByRole('button',{name:'生成说明建议',exact:true}).click();
-  await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();await page.goto('/learn');await page.goto(f.href);await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();
+  await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();let cancellations=0;
+  page.on('request',request=>{if(request.method()==='POST'&&request.url().includes('/model-suggestions/')&&request.url().endsWith('/cancel'))cancellations++;});
+  await panel(page).getByRole('button',{name:'暂停读取状态',exact:true}).click();await expect(panel(page).getByText('已暂停自动读取，可以继续使用原计划，稍后查看建议。',{exact:true})).toBeVisible();
+  expect((await f.call('/diagnostics/plans/'+f.plan.id+'/model-suggestions')).suggestions[0].status).toBe('running');expect(cancellations).toBe(0);
+  await panel(page).getByRole('button',{name:'继续读取状态',exact:true}).click();await expect(panel(page).getByRole('button',{name:'暂停读取状态',exact:true})).toBeVisible();
+  await page.goto('/learn');await page.goto(f.href);await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();
   await panel(page).getByRole('button',{name:'取消生成',exact:true}).click();await expect(panel(page).getByText('已取消',{exact:true})).toBeVisible();
   expect((await f.call('/diagnostics/plans/'+f.plan.id+'/model-suggestions')).suggestions).toHaveLength(1);
 });

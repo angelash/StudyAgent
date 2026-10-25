@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T13:43:50.260Z",
+  "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+  "applicationSourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+  "apiSourceRevision": "e590c669a40942ea96df8418e5f938bcc73a1b51",
+  "postApiStartChange": "Only Web status-read pause and its browser assertion changed after final API regression started; API and contracts remain the same.",
+  "specificationCommits": [
+    "c237260",
+    "520edcc"
+  ],
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "17d4d1b4ebfd7750c7293d013ed3d7f35b4eaffecb04999b04f41da12e5529fb",
+    "apps/api/src/infrastructure/backup.integration.test.ts": "eab653ef67a5fd1865fc7754b0b73150a56c404cc2bf36eacce74bfcb44f5fa1",
+    "apps/api/src/infrastructure/domain-database.ts": "4a09073560ff328e00a56e0d9aa7b90e851536e14df48c98680a912821597aca",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "ca8b008bbb8cface57f367f1ff0ee544520b4c34eee431f973e0ec93b1587d9f",
+    "apps/api/src/infrastructure/task-repository.ts": "1a7ab6bdede217e31a8c690b8bfd14875ca22ae43006ca075a3c833ef70faf55",
+    "apps/api/src/modules/ai/evidence-coach.integration.test.ts": "2df9a532bfd43de3c2a9e29f4e6f2e0cd67375356e8263b736f2d6d02db9167c",
+    "apps/api/src/modules/diagnostics/diagnostics.controller.ts": "c5c3912b78964e3bc1eb3d503ca3fae0d7dc240f5c916c2ae4dff330117b7a2d",
+    "apps/api/src/modules/diagnostics/diagnostics.module.ts": "6c2b98dc9dbbb39d0501c3b861bcf4ced8eb2aa2f2288a7fb86a3b7db421a24d",
+    "apps/api/src/modules/diagnostics/guidance-model-record.test.ts": "260da285a43958d4ebbf4b21cb18b9e36996a737f6252b20bbc0437bd65060ad",
+    "apps/api/src/modules/diagnostics/guidance-model-record.ts": "27fe737a5595f3544c33ff7719ac5288f4d27491fd2f32da86eb039325634bc9",
+    "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts": "697c2d09ad81f60c74b791d4f90d84473cdbb238dfa53d3ada3fe4c085089d8c",
+    "apps/api/src/modules/diagnostics/guidance-model-worker.service.ts": "a03d1ca398cacc1e6abbe774c86433dbe355174595ce6f02082b15bbc033f5bf",
+    "apps/api/src/modules/diagnostics/guidance-model.controller.ts": "28aa13f3a395a811d4a4008351a43baca99418445c8d6d70ddb6715606e85bc8",
+    "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts": "701878f479e6d2cfbeef757cfd3f391e7e6a30f96f43dc343734941fb46746cb",
+    "apps/api/src/modules/diagnostics/guidance-model.service.ts": "07248a9b8d3a3dc40ab7a1bff45551ed5d0b1e90e8d505e4098f0ddfad19592b",
+    "apps/api/src/modules/diagnostics/guidance.service.ts": "ed40d9618c000ec816bf1053cc39249b5100f067c7343fff700e4800eba90a64",
+    "apps/api/src/modules/privacy/privacy-records.ts": "a9ed9fedb808097a612adf4c6d7930c43e1eedb7b2175605363dfc7f0b889fcc",
+    "apps/api/src/modules/privacy/privacy.service.ts": "a8635fa5227a7eca097163ff062d18f12c82bcde01d94e0cd7c00d851e283265",
+    "apps/api/vitest.config.ts": "d032987dedcb5e5571a33f1bdcbf9bd1562e91ad17c394bee419e21616ac101f",
+    "apps/web/app/student/assessment/studio.tsx": "4df55b4cb9dfb02711ab726661c37b361087bd163b88cba267e6fc293c1d86e2",
+    "apps/web/components/guidance-manager.tsx": "5c9812d037524c8b2229f61000887832c9f23538f10f516f2bd38bc315773f41",
+    "apps/web/components/guidance-model-panel.css": "33eb80ec182b605cc56379ced4c5eb161d5d6dce53758e35be83167dd85e3035",
+    "apps/web/components/guidance-model-panel.tsx": "011035a8f767a8b164a349d8bd87e5e7c963c665d8897ecdfd481374e99f0368",
+    "apps/web/lib/guidance-creation.ts": "6701f0ce503573c17f677992119794afeb3b6305d0c54c8f2847392e693ad59e",
+    "packages/contracts/src/diagnostics.ts": "78655e10a9b0afe2c2df3b41feef03f21ee4f550febf155cece721fb56e9d893",
+    "packages/contracts/src/guidance-model.ts": "415b145b79a342309986c64b73aa03d4e2cd172b426cf949bc37e9ba2b9cbbd9",
+    "packages/contracts/src/index.ts": "359a28c83d03fb556f4e93f6b53602e5572f5f41047de76d0e7d1221ad0e2f64",
+    "scripts/architecture/project-feature-definitions.cjs": "b71d4b82c24c8c0f9500cefe045be7a7e396dee8cecb93a4a243c1c052a88df8",
+    "scripts/operations/backup.cjs": "37befdd5b79c360ad9b07f5574ffc1ed76c7cea158283b8fc2d540e82a4e3274",
+    "scripts/operations/postgres-backup.cjs": "26cef8386d06e8344f34d3fc7c52ddfe01e2b7727861ed1de59f659117e8a56f",
+    "scripts/qa/guidance-model-fixture.cjs": "084d2ef5cb5a202119a8171548ecb256858de5b79d1542cd5ede1e6b97efbadd",
+    "scripts/qa/run-guidance-models-postgres.cjs": "8dc5a56938627dfa45088a846790d79226e6489f9ab9f8ca72b69d7803a606f2",
+    "scripts/qa/run-source-course-browser.cjs": "b9aafb8ebb0aa2c019429704f1c44f52aedb83b63dcbc8e7cdfefff36121421a",
+    "scripts/qa/source-course-test-api.cjs": "29aabeea75c80e4e14f2992e925f6fda0171ef11c6031326bb9b85b860d6fda8",
+    "scripts/qa/verify-guidance-model-runtime.cjs": "c26a7e02e6d765d90f1e5cede1867598f9a925eda483b2baa3aad4966f400606",
+    "tests/e2e/guidance-model.spec.ts": "ac93cfa854b80a89ac573bd71afe7c0e12b88b5e8f1a0131da32d392e5842060"
+  },
+  "localPassed": true,
+  "passed": false,
+  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "reports": {
+    "guidance-model-boundaries-final.json": {
+      "sha256": "37a792863ba2a9e414d44b75d84b6986c095716bc15fcfe200b91ff48e798c05",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "total": 11
+    },
+    "guidance-model-boundaries-initial.json": {
+      "sha256": "55e609562af902d884ad86020cc453dc4f09d7c1130b888dbdea9bfdbf9c207a",
+      "passed": 16,
+      "failed": 2,
+      "skipped": 0,
+      "total": 18
+    },
+    "guidance-model-browser-account-announcer-initial.json": {
+      "sha256": "af581a6a6ec1fcf5826a2c39b7c80ff29771756cf04d58b3dda1fc72492a25a8",
+      "stats": {
+        "startTime": "2026-10-25T13:07:33.020Z",
+        "duration": 65530.247,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "guidance-model-browser-account-before-locator.json": {
+      "sha256": "eb0aa5b686589725173380393326055e0ca414e034fdd0f15bb1e4ebfc22917a",
+      "stats": {
+        "startTime": "2026-10-25T13:05:40.841Z",
+        "duration": 73762.16900000001,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "guidance-model-browser-expanded-initial.json": {
+      "sha256": "c213dc076c2e5137956c3601b5a1c4e2c47958abc3219955ef6d63c0bb2d50f8",
+      "stats": {
+        "startTime": "2026-10-25T13:01:12.134Z",
+        "duration": 75509.895,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "guidance-model-browser-initial.json": {
+      "sha256": "1dc156ffe149ed277e12fedfc1fc62f235d6a89cea45f61bd533646134b27056",
+      "stats": {
+        "startTime": "2026-10-25T12:49:17.315Z",
+        "duration": 54881.147000000004,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "guidance-model-browser-ten-pass.json": {
+      "sha256": "39dc8d8570b801b98d93d7f1be082b166d6debf912436a427a857c9ee0999695",
+      "stats": {
+        "startTime": "2026-10-25T12:54:14.958Z",
+        "duration": 40475.247,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "guidance-model-browser.json": {
+      "sha256": "86a623e325bb0431740131b095ace21f4f5deb2f2a8e0642ea6cb661832c505e",
+      "stats": {
+        "startTime": "2026-10-25T13:09:02.381Z",
+        "duration": 58836.325999999994,
+        "expected": 14,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "guidance-model-full-api-final.json": {
+      "sha256": "ab67898564e7c35b7932ea662c2b0334d685c4d8e0a8da7e1b94f81c36fe59df",
+      "passed": 1168,
+      "failed": 0,
+      "skipped": 39,
+      "total": 1207
+    },
+    "guidance-model-full-api-initial.json": {
+      "sha256": "11748a2a513fc71e5d96badd60908f9db7afe1399b6fc6e2a24db5ac1deb5605",
+      "passed": 1167,
+      "failed": 1,
+      "skipped": 39,
+      "total": 1207
+    },
+    "guidance-model-full-browser.json": {
+      "sha256": "d8fbc5be5b00077d1146d555f2f9b3c943c8383909c4f99c5ed21ca8c25f6a8e",
+      "stats": {
+        "startTime": "2026-10-25T13:28:22.041Z",
+        "duration": 862525.5650000001,
+        "expected": 171,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "guidance-model-initial.json": {
+      "sha256": "0f5aef6383260b82a34ab7fcd486b7d12a8d46764a7d5271598a3a0f7835aa9a",
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "total": 8
+    },
+    "guidance-model-legacy-provider-final.json": {
+      "sha256": "1b0e9841a66aa783628cdbd3fa16fe7928374e1f3519bce860c257e39d8aa73b",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "total": 7
+    },
+    "guidance-model-live-default-initial.json": {
+      "sha256": "f45e5dc6485ff8ff7f3d973d95747f7a6d50f412cc23f9f47ed9f0a0ba080331",
+      "passed": false
+    },
+    "guidance-model-live-default.json": {
+      "sha256": "428f0740abc66dbdccf1f9b148f148e76586c9643da78d83afae275b662dd5c9",
+      "passed": true
+    },
+    "guidance-model-postgres.json": {
+      "sha256": "524016fdc0132d2427d983fcc6d0b36edd97eeb6e93a2e287639b123d1fb1df0",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "total": 13
+    },
+    "guidance-model-recovery-initial.json": {
+      "sha256": "3d9696188f04ab27d01b8ff9395f5ef39e72a5fd760ba06b07d9ae87d9121bff",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 1,
+      "total": 2
+    },
+    "guidance-model-rule-regression.json": {
+      "sha256": "930672e0e8b9c071ab7ab796183ad110bfe8c6f6e5bfed48c13b2870b8be5cc2",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "total": 8
+    },
+    "guidance-model-service-final-initial.json": {
+      "sha256": "04e71490e3db3beca80e960871e96d5c25e08a13f0b967d8e570827641df1e68",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "total": 12
+    },
+    "guidance-model-service-initial.json": {
+      "sha256": "12642a0a5beba2d24c39bff2efd8f841af79f400bbd54246d904e768648fd73c",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "total": 4
+    }
+  },
+  "screens": {
+    "guidance-model/comparison-390.png": "3a2a07a05e1fa7f1a6d10549d0036612ed240541140f05595454957dab86140a",
+    "guidance-model/comparison-768.png": "c56cdd00cfb7e4345ffcadee70bdb3bf24060742e2d03f1a34483b4b55c48e43",
+    "guidance-model/comparison-1440.png": "eccbbd7fa01d65ca0f1a075a7b5b1c394b42ad871cfc166181da7ef165342ea0"
+  },
+  "initialArtifacts": {
+    "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/error-context.md.gz": "10b1c890a6809d4c2e3a94ce8a2c5855574cf760ca8aa6ed120b4b4446e14ee1",
+    "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/test-failed-1.png": "16a13f5f964966a2c7af8b89e1826929d8f846f3ef51ae319897be4328ca1546",
+    "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/trace.zip": "3d08083efad1fad29b558bc4eadb43ca406828d603a055f9147c2c56aeaf2ecc",
+    "guidance-model/initial-failures/old-family-link/error-context.md.gz": "874dc2dc9f047927722b3fec72994823c223c4cc0fbd4b3ef7dfee8684172ad5",
+    "guidance-model/initial-failures/old-family-link/test-failed-1.png": "25b314e42f4df733695e70b5dd58bdeb5232c7c0669b284c6819d3370ca548fa",
+    "guidance-model/initial-failures/old-family-link/trace.zip": "53c8a170e16a894a66851b83fd0249fc99263c12ab1ba904bf5862c4b1165116",
+    "guidance-model/initial-failures/adjacent-close-text/error-context.md.gz": "251db4869919d709214cfeede6736adad381e06e99eaaa0ffcad7b24c84fa859",
+    "guidance-model/initial-failures/adjacent-close-text/test-failed-1.png": "f5a7ef36eb2328b15997a8dd7f8c894fb3b9ada21e4ef7baf11ba8aa8d48f9e3",
+    "guidance-model/initial-failures/adjacent-close-text/trace.zip": "2c46b7b60c554881e7851b9ad1080352d8aebfde083a61af06806869f5edaa31",
+    "guidance-model/initial-failures/duplicate-alert/error-context.md.gz": "947487aae33c35831aa2ae4a180b5f62fbddef02942257404de693416272080f",
+    "guidance-model/initial-failures/duplicate-alert/test-failed-1.png": "33006ac7dd4a4a7537f620faba4f621d165de1571fa41cceab9660334b8c2fe5",
+    "guidance-model/initial-failures/duplicate-alert/trace.zip": "95856c77022f554892974bfdba9e851ac5ec24451aa09ef58c2f784a2629181d"
+  },
+  "originalCompressed": {
+    "guidance-model/initial-failures/model-id/guidance-model-cancel-and--6c288-nal-selected-model-and-plan/error-context.md.gz": {
+      "originalSha256": "152244b7acdbe1b3a6e94c3ed2a4c12770016675ac9b539cdb5e4e9d29fe9b7b",
+      "originalBytes": 20934
+    },
+    "guidance-model/initial-failures/old-family-link/error-context.md.gz": {
+      "originalSha256": "4faf0ff5106e7109d75954f611d00a5a8bf5bf8bd6cc79b1be759edcbae4043c",
+      "originalBytes": 20112
+    },
+    "guidance-model/initial-failures/adjacent-close-text/error-context.md.gz": {
+      "originalSha256": "aebd1338376cef27c6e70feacf517f28dcdd738785c847878292185191e85fae",
+      "originalBytes": 33563
+    },
+    "guidance-model/initial-failures/duplicate-alert/error-context.md.gz": {
+      "originalSha256": "f8964e6659ce2d4bcb7633917f59e5186dc50e9ff72008821ea73ea2a144e96c",
+      "originalBytes": 48660
+    }
+  },
+  "checks": {
+    "api": {
+      "passed": 1168,
+      "skipped": 39
+    },
+    "browser": {
+      "startTime": "2026-10-25T13:28:22.041Z",
+      "duration": 862525.5650000001,
+      "expected": 171,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "pgCommand": {
+      "passed": 13,
+      "scope": "11 PostgreSQL service tests plus one SQLite native recovery and one PostgreSQL native recovery"
+    },
+    "liveDefaultModel": "deepseek-v4-flash"
+  },
+  "knownInitialFailures": [
+    "Nested store transactions lost the not-yet-committed rule plan; same-transaction enqueue now uses an explicit internal entry.",
+    "Two new boundary assertions expected 404 where the existing student authorization boundary returns 403; initial report retained.",
+    "An old model id in the browser test was updated to the actual configured catalog.",
+    "Old foreign-family links silently selected the current family plan; they now return to learning progress with an explicit message.",
+    "Two later locator failures included the adjacent close button and the Next route announcer; original reports, screenshots and traces retained.",
+    "The first real CLI check did not yet observe process close; the later check separately bounded and verified close plus PID exit.",
+    "The first full API regression used a disabled provider with an old test stub that did not explicitly enable its own synthetic provider; original full report retained."
+  ],
+  "boundaries": [
+    "This batch covers diagnostic rule-plan creation and independently adopted model descriptions; it does not complete M1-M7 or all 72 requirements.",
+    "Only summary and activity change on adoption; mastery, cause hypotheses and rule action identity remain measured and versioned separately.",
+    "Strict schema and selected lexical guards do not replace teacher semantic review of every generated explanation.",
+    "One real default-model workflow is not all-model connectivity, real device audio, or long-term learning evidence.",
+    "117 is the next committed specification; its neutral voice previews and verified voice metadata are not included in this application release."
+  ],
+  "design": {
+    "receipt": "doc/design/generated/design-validation.json",
+    "sha256": "d04325b0009d7f561a2a3242832aee8ed350b67302989da9c88f7434a559fd1b",
+    "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
+    "sourceFiles": 391,
+    "viewerChecks": 10
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-25T13:02:36.300Z",
+  "passed": true,
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "completionLatencyMs": 11571,
+  "actions": 1,
+  "candidates": [
+    {
+      "summary": "以下仅为原计划的执行说明，计划状态保持原样，本回复不代替家长采用或确认。每天 10 分钟，先做独立小测以补足证据；确认前继续按未知处理，不把一次答错当作确定原因。2026-10-26T13:02:21.892Z 复测日期和原成功标准均保持不变。",
+      "activities": [
+        {
+          "actionId": "action_eed99524-37c4-40d3-94a5-f6df7fd7f29f",
+          "activity": "在今天安排的 10 分钟内，先准备两个不同题族的独立小测，并明确告知孩子需独立作答，家长不提示。每题依次做到：一是指出题目要平均的人、天等对象；二是说明如何依据完整记录和参与范围确定份数；三是逐条区分 0、未参加和未记录，说明哪些应计入份数、哪些不应混入。完成两个题族后，如仍在 10 分钟内，再用一道平均对象发生变化的新题观察迁移；时间到即停止，不延长。家长只记录各步能否独立完成及出现混淆的位置，不展示隐去或未知的标准答案。根据本次表现再决定是否需要讲解；未完成迁移与真实间隔复核前，保留“证据未知、原因待核查”的原状态。成功标准仍是能从完整记录和参与范围独立选择分母，区分 0、未参加与未记录，在对象改变的新题中验证，并经过真实间隔复核；同时至少独立完成两个新题族，再安排迁移与延迟验证。",
+          "evidenceIds": []
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "rulesUnchangedBeforeAdoption": true,
+    "identityPreservedAfterAdoption": true,
+    "explicitRevision": 2,
+    "actualCliCancellation": true
+  },
+  "cancellation": {
+    "status": "cancelled",
+    "result": null,
+    "processObservationMs": 1
+  },
+  "processes": [
+    {
+      "pid": 63188,
+      "shell": false,
+      "startedAt": "2026-10-25T13:02:22.298Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "turn.completed"
+      ],
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "closedAt": "2026-10-25T13:02:33.554Z",
+      "stillAlive": false
+    },
+    {
+      "pid": 65592,
+      "shell": false,
+      "startedAt": "2026-10-25T13:02:33.957Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started"
+      ],
+      "closed": true,
+      "code": 1,
+      "signal": null,
+      "closedAt": "2026-10-25T13:02:36.287Z",
+      "stillAlive": false
+    }
+  ],
+  "limitations": [
+    "One synthetic default-model workflow only; not all-model connectivity or teacher validation.",
+    "No real learner records, actual teaching outcome, TTS or image generation were tested."
+  ]
+}

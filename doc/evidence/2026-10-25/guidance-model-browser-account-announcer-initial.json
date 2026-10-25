@@ -1,0 +1,630 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-guidance-models\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/guidance-model.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-guidance-models\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-guidance-models/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-guidance-models/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-guidance-models/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/guidance-model-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "guidance-model.spec.ts",
+      "file": "guidance-model.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the original rule plan stays usable and an explicitly reviewed model description changes only its text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:38.490Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-f47ffb03499c291ff045",
+          "file": "guidance-model.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "a dropped plan creation acknowledgement recovers the original request without making another plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:43.042Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-0a434b1cf80ab5d60eeb",
+          "file": "guidance-model.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "a dropped suggestion creation acknowledgement survives reload and restores the same saved task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:45.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-40a86449e63160c394f4",
+          "file": "guidance-model.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "a dropped adoption acknowledgement replays its original command and leaves exactly one adopted revision",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3949,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:48.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-fe3db73b17e47b12bc64",
+          "file": "guidance-model.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "cancel and retry preserve the original selected model and plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5298,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:52.931Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-663544b4a5a271b2804d",
+          "file": "guidance-model.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "invalid output cannot be adopted and a later explicit retry keeps the original evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:07:58.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-8edd0a367aa1303601ba",
+          "file": "guidance-model.spec.ts",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "title": "unavailable browser storage keeps the full original command downloadable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4239,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:03.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-5f6184790794e86de170",
+          "file": "guidance-model.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "a manually changed plan refuses an older completed suggestion and preserves its original command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:08.026Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-f5bf0ce8d0a8eaecb732",
+          "file": "guidance-model.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "a cancelled local wait resumes the server record after navigating away and back",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:12.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-50abc5c900c140bc6f17",
+          "file": "guidance-model.spec.ts",
+          "line": 88,
+          "column": 5
+        },
+        {
+          "title": "forged cross-account cached commands are ignored and never replayed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:17.491Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-f511bd31b83ad1f01da3",
+          "file": "guidance-model.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "another account cannot open or adopt the prior family guidance",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5629,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"链接中的指导计划不属于当前孩子，已返回学习进度。\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"studio-error\">…</div> aka getByText('链接中的指导计划不属于当前孩子，已返回学习进度。×')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    2 × locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"链接中的指导计划不属于当前孩子，已返回学习进度。\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"studio-error\">…</div> aka getByText('链接中的指导计划不属于当前孩子，已返回学习进度。×')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    2 × locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts:108:41",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                      "column": 41,
+                      "line": 108
+                    },
+                    "snippet": "  106 |   const second=await setup(page);expect(second.actor.user.id).not.toBe(first.actor.user.id);await expect(panel(page).getByText('建议已生成',{exact:true})).toHaveCount(0);\n  107 |   await page.goto('/student/assessment?'+new URLSearchParams({studentId:second.studentId,subject:'math',view:'plan',planId:first.plan.id}));\n> 108 |   await expect(page.getByRole('alert')).toContainText('链接中的指导计划不属于当前孩子，已返回学习进度。');await expect(panel(page)).toHaveCount(0);\n      |                                         ^\n  109 |   await page.goto(first.href);await expect(page.getByRole('alert')).toContainText('无法访问链接中的孩子，已返回当前账号的学习进度。');await expect(panel(page)).toHaveCount(0);\n  110 |   expect(new URL(page.url()).searchParams.get('studentId')).toBe(second.studentId);expect(new URL(page.url()).searchParams.has('planId')).toBe(false);\n  111 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                        "column": 41,
+                        "line": 108
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"链接中的指导计划不属于当前孩子，已返回学习进度。\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"studio-error\">…</div> aka getByText('链接中的指导计划不属于当前孩子，已返回学习进度。×')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    2 × locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div>\u001b[22m\n\u001b[2m      - unexpected value \"\"\u001b[22m\n\n\n  106 |   const second=await setup(page);expect(second.actor.user.id).not.toBe(first.actor.user.id);await expect(panel(page).getByText('建议已生成',{exact:true})).toHaveCount(0);\n  107 |   await page.goto('/student/assessment?'+new URLSearchParams({studentId:second.studentId,subject:'math',view:'plan',planId:first.plan.id}));\n> 108 |   await expect(page.getByRole('alert')).toContainText('链接中的指导计划不属于当前孩子，已返回学习进度。');await expect(panel(page)).toHaveCount(0);\n      |                                         ^\n  109 |   await page.goto(first.href);await expect(page.getByRole('alert')).toContainText('无法访问链接中的孩子，已返回当前账号的学习进度。');await expect(panel(page)).toHaveCount(0);\n  110 |   expect(new URL(page.url()).searchParams.get('studentId')).toBe(second.studentId);expect(new URL(page.url()).searchParams.has('planId')).toBe(false);\n  111 | });\n    at F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts:108:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:19.275Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-another-acc-9f5d0-t-the-prior-family-guidance\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-another-acc-9f5d0-t-the-prior-family-guidance\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-another-acc-9f5d0-t-the-prior-family-guidance\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                    "column": 41,
+                    "line": 108
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-cb3635a878e6888b4b27",
+          "file": "guidance-model.spec.ts",
+          "line": 104,
+          "column": 5
+        },
+        {
+          "title": "guidance comparisons and actions fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:26.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-ff497381d780845d494a",
+          "file": "guidance-model.spec.ts",
+          "line": 113,
+          "column": 39
+        },
+        {
+          "title": "guidance comparisons and actions fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:30.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-73cc69e6a2c030393526",
+          "file": "guidance-model.spec.ts",
+          "line": 113,
+          "column": 39
+        },
+        {
+          "title": "guidance comparisons and actions fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T13:08:33.283Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-aa51ae008984808d5406",
+          "file": "guidance-model.spec.ts",
+          "line": 113,
+          "column": 39
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T13:07:33.020Z",
+    "duration": 65530.247,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

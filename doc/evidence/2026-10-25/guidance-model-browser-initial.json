@@ -1,0 +1,494 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-guidance-models\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/guidance-model.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-guidance-models\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-guidance-models/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-guidance-models/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-guidance-models/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/guidance-model-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "guidance-model.spec.ts",
+      "file": "guidance-model.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the original rule plan stays usable and an explicitly reviewed model description changes only its text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:22.674Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-f47ffb03499c291ff045",
+          "file": "guidance-model.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "a dropped plan creation acknowledgement recovers the original request without making another plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1905,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:27.210Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-0a434b1cf80ab5d60eeb",
+          "file": "guidance-model.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "a dropped suggestion creation acknowledgement survives reload and restores the same saved task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1999,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:29.127Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-40a86449e63160c394f4",
+          "file": "guidance-model.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "a dropped adoption acknowledgement replays its original command and leaves exactly one adopted revision",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:31.134Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-fe3db73b17e47b12bc64",
+          "file": "guidance-model.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "cancel and retry preserve the original selected model and plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19495,
+                  "error": {
+                    "message": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: 'AI指导说明建议' }).getByLabel('选择大模型')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"选择大模型\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - did not find some options\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: 'AI指导说明建议' }).getByLabel('选择大模型')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"选择大模型\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - did not find some options\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts:62:115",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                      "column": 115,
+                      "line": 62
+                    },
+                    "snippet": "  60 |   await panel(page).getByRole('button',{name:'生成说明建议',exact:true}).click();await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();\n  61 |   await panel(page).getByRole('button',{name:'取消生成',exact:true}).click();await expect(panel(page).getByText('已取消',{exact:true})).toBeVisible();\n> 62 |   await f.call('/qa/guidance-models/'+f.plan.id+'/behavior',{mode:'valid'});await panel(page).getByLabel('选择大模型').selectOption('claude-sonnet-4-6');await panel(page).getByRole('button',{name:'重试原模型'}).click();\n     |                                                                                                                   ^\n  63 |   await expect(panel(page).getByText('建议已生成',{exact:true})).toBeVisible();const list=await f.call('/diagnostics/plans/'+f.plan.id+'/model-suggestions');expect(list.suggestions).toHaveLength(1);expect(list.suggestions[0].modelId).toBe('deepseek-v4-flash');expect((await f.call('/diagnostics/plans/'+f.plan.id)).source).toBe('rules');\n  64 | });\n  65 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                        "column": 115,
+                        "line": 62
+                      },
+                      "message": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: 'AI指导说明建议' }).getByLabel('选择大模型')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"选择大模型\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - did not find some options\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - did not find some options\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  60 |   await panel(page).getByRole('button',{name:'生成说明建议',exact:true}).click();await expect(panel(page).getByText('正在生成说明',{exact:true})).toBeVisible();\n  61 |   await panel(page).getByRole('button',{name:'取消生成',exact:true}).click();await expect(panel(page).getByText('已取消',{exact:true})).toBeVisible();\n> 62 |   await f.call('/qa/guidance-models/'+f.plan.id+'/behavior',{mode:'valid'});await panel(page).getByLabel('选择大模型').selectOption('claude-sonnet-4-6');await panel(page).getByRole('button',{name:'重试原模型'}).click();\n     |                                                                                                                   ^\n  63 |   await expect(panel(page).getByText('建议已生成',{exact:true})).toBeVisible();const list=await f.call('/diagnostics/plans/'+f.plan.id+'/model-suggestions');expect(list.suggestions).toHaveLength(1);expect(list.suggestions[0].modelId).toBe('deepseek-v4-flash');expect((await f.call('/diagnostics/plans/'+f.plan.id)).source).toBe('rules');\n  64 | });\n  65 |\n    at F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts:62:115"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:33.917Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-cancel-and--6c288-nal-selected-model-and-plan\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-cancel-and--6c288-nal-selected-model-and-plan\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guidance-models\\test-results\\browser-product-acceptance\\guidance-model-cancel-and--6c288-nal-selected-model-and-plan\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guidance-models\\tests\\e2e\\guidance-model.spec.ts",
+                    "column": 115,
+                    "line": 62
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-663544b4a5a271b2804d",
+          "file": "guidance-model.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "invalid output cannot be adopted and a later explicit retry keeps the original evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3585,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:54.496Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-8edd0a367aa1303601ba",
+          "file": "guidance-model.spec.ts",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "title": "unavailable browser storage keeps the full original command downloadable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2463,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:49:58.425Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-5f6184790794e86de170",
+          "file": "guidance-model.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "guidance comparisons and actions fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3583,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:50:00.895Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-ff497381d780845d494a",
+          "file": "guidance-model.spec.ts",
+          "line": 78,
+          "column": 39
+        },
+        {
+          "title": "guidance comparisons and actions fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:50:04.485Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-73cc69e6a2c030393526",
+          "file": "guidance-model.spec.ts",
+          "line": 78,
+          "column": 39
+        },
+        {
+          "title": "guidance comparisons and actions fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3590,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:50:07.126Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0d3d14321d95f6e6bc-aa51ae008984808d5406",
+          "file": "guidance-model.spec.ts",
+          "line": 78,
+          "column": 39
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T12:49:17.315Z",
+    "duration": 54881.147000000004,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
