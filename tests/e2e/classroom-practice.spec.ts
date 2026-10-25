@@ -63,7 +63,7 @@ test('every unit has a readable data or diagram practice example at desktop, tab
     ['soc-4-2-4',3,'.cl-practice-data'], ['soc-5-2-1',3,'.cl-practice-data'],
   ] as const) {
     await page.goto('/studio/classroom?'+new URLSearchParams({lesson,tab:'practice'}));
-    await expect(page.locator('.cl-practice-progress button')).toHaveCount(3); await page.getByRole('button',{name:'第'+question+'题',exact:true}).click();
+    await expect(page.locator('.cl-practice-progress button')).toHaveCount(lesson === 'soc-1-3-1' ? 4 : 3); await page.getByRole('button',{name:'第'+question+'题',exact:true}).click();
     for(const width of [1440,768,390]) {
       await page.setViewportSize({width,height:960}); await expect(page.locator(selector)).toBeVisible();
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1), lesson+' at '+width).toBe(true);
