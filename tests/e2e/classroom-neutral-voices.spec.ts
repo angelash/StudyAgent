@@ -62,6 +62,7 @@ test('a legacy voice can preview only the selected already-revealed frozen sente
 
 for(const width of [390,768,1440])test('six real voice cards and preview controls fit at '+width,async({page})=>{
   await page.setViewportSize({width,height:1000});const {settings}=await enter(page);await expect(settings.getByRole('radio')).toHaveCount(6);await expect(settings.getByRole('button',{name:'试听音色：播报男声',exact:true})).toBeEnabled();
+  const outer=page.locator('.ws-dialog-layer:has(.cl-settings)');await expect(outer).toHaveCSS('background-color','rgba(0, 0, 0, 0)');await expect(outer).toHaveCSS('backdrop-filter','none');
   await settings.getByRole('radio',{name:/Warm/}).focus();await page.keyboard.press('ArrowRight');await expect(settings.getByRole('radio',{name:/Calm/})).toBeFocused();expect(await page.evaluate(()=>(window as any).__neutralAudio.length)).toBe(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(!process.env.CI)await page.screenshot({path:evidence+'/settings-'+width+'.png'});
 });

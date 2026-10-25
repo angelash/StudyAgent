@@ -1,4 +1,5 @@
 .cl-room .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
+.cl-room .ws-dialog-layer:has(.cl-settings){background:transparent;backdrop-filter:none;padding:0}
 .cl-guided-tour{position:fixed;inset:0;z-index:90;background:#0006;font-family:Arial,"Microsoft YaHei",sans-serif;isolation:isolate}
 .cl-guided-tour[data-anchored=true]{background:transparent}
 .cl-tour-target{position:fixed;border:2px solid #df683d;outline:2px solid #f7c1a8;border-radius:8px;box-shadow:0 0 0 9999px #0006;pointer-events:none;box-sizing:border-box}
