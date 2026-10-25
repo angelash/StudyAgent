@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T14:25:16.127Z",
+  "source": "User-authorized authenticated IAB observation",
+  "scope": "Project navigation and playback control only. No answer, review, assistant message or attachment submitted. The introductory page was opened and then closed; source activity could record viewing.",
+  "states": {
+    "intro": {
+      "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/project/dee055da-d859-4eee-a9e8-a942f07519f3",
+      "text": "Signed off\nHave an issue?\nAssistant\nStuck on this step? Ask me anything — I know your project goal and exactly where you are. You can attach a screenshot too.\n0\n/\n4\n项目启动与导向\nNext step\n研究问题与方法论设计 ·\nSTEP 1 OF 5\n项目启动与导向\nPause\n欢迎来到你第一个主要项目环节！在本学期的课程中，你将构建“社会学视角：本地社区案例研究”。你将不再仅仅是阅读有关社会的知识，而是要成为一名社会学研究者。你最终将提交一份完整的案例研究报告，其中包括实地日志、不平等图谱以及一份针对现实社会变革的提案。在我们深入探讨一个群体的“公共议题” (Public Issues) 或“社会事实” (Social Facts) 之前，我们必须先规划路线图。本阶段的重点是将你的兴趣转化为正式的研究设计文档。我们将首先确定一个你可以接触到的社区，并拟定一个超越“常识”并进入科学探究领域的问题。",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Close project",
+          "rect": {
+            "height": 16,
+            "width": 16,
+            "x": 24,
+            "y": 18
+          }
+        },
+        {
+          "role": "status",
+          "name": "Signed off\n0/4",
+          "rect": {
+            "height": 24.5,
+            "width": 109.703125,
+            "x": 453.78125,
+            "y": 13.75
+          }
+        },
+        {
+          "role": "button",
+          "name": "Have an issue?",
+          "rect": {
+            "height": 27,
+            "width": 131.828125,
+            "x": 573.484375,
+            "y": 12.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Voice settings",
+          "rect": {
+            "height": 32,
+            "width": 32,
+            "x": 715.3125,
+            "y": 10
+          }
+        },
+        {
+          "role": "button",
+          "name": "Open assistant",
+          "rect": {
+            "height": 29,
+            "width": 98.6875,
+            "x": 757.3125,
+            "y": 11.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Pause narration",
+          "rect": {
+            "height": 24,
+            "width": 66.84375,
+            "x": 304.203125,
+            "y": 137.640625
+          }
+        },
+        {
+          "role": "button",
+          "name": "Next step",
+          "rect": {
+            "height": 34,
+            "width": 103.296875,
+            "x": 382.3515625,
+            "y": 804
+          }
+        },
+        {
+          "role": "textbox",
+          "name": "Ask about this step…",
+          "rect": {
+            "height": 36,
+            "width": 163,
+            "x": 904,
+            "y": 817
+          }
+        },
+        {
+          "role": "button",
+          "name": "Send",
+          "rect": {
+            "height": 33,
+            "width": 33,
+            "x": 1075,
+            "y": 818.5
+          }
+        }
+      ]
+    },
+    "answer": {
+      "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/project/dee055da-d859-4eee-a9e8-a942f07519f3",
+      "text": "Signed off\nHave an issue?\nAssistant\nStuck on this step? Ask me anything — I know your project goal and exactly where you are. You can attach a screenshot too.\n0\n/\n4\n确定你的研究社区\nPrevious step\nNext step\n研究问题与方法论设计 ·\nSTEP 2 OF 5\nYOUR ANSWER\n确定你的研究社区\nPause\n首先，你需要选择一个特定的社会群体或社区进行研究。这可以是一个街区、一个工作场所、一个学生组织，甚至是本地的一个爱好者团体。请记住“社会学想象力”——你要找的是这样一个群体：在这里你可以观察到“个人困扰” (Personal Troubles)（如学生的压力）实际上是如何成为“公共议题”（如教育系统的结构）的。考虑一个你能够方便进入并进行观察或访谈的群体。简要描述你选择的社区，并解释为什么它是一个可行的社会学研究课题。\n提交 1-2 段关于你所选社区的描述。优秀的回答应能清晰地识别出一个特定的群体（而不仅仅是“我所在城市的人”），并根据你接触和观察他们的能力来证明选择的合理性。",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Close project",
+          "rect": {
+            "height": 16,
+            "width": 16,
+            "x": 24,
+            "y": 18
+          }
+        },
+        {
+          "role": "status",
+          "name": "Signed off\n0/4",
+          "rect": {
+            "height": 24.5,
+            "width": 109.703125,
+            "x": 453.78125,
+            "y": 13.75
+          }
+        },
+        {
+          "role": "button",
+          "name": "Have an issue?",
+          "rect": {
+            "height": 27,
+            "width": 131.828125,
+            "x": 573.484375,
+            "y": 12.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Voice settings",
+          "rect": {
+            "height": 32,
+            "width": 32,
+            "x": 715.3125,
+            "y": 10
+          }
+        },
+        {
+          "role": "button",
+          "name": "Open assistant",
+          "rect": {
+            "height": 29,
+            "width": 98.6875,
+            "x": 757.3125,
+            "y": 11.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Pause narration",
+          "rect": {
+            "height": 24,
+            "width": 66.84375,
+            "x": 323.203125,
+            "y": 177.03125
+          }
+        },
+        {
+          "role": "textarea",
+          "name": "Type your answer here…",
+          "rect": {
+            "height": 206,
+            "width": 545.59375,
+            "x": 161.203125,
+            "y": 495.28125
+          }
+        },
+        {
+          "role": "button",
+          "name": "Submit for review",
+          "rect": {
+            "height": 33,
+            "width": 33,
+            "x": 663.796875,
+            "y": 658.28125
+          }
+        },
+        {
+          "role": "button",
+          "name": "Previous step",
+          "rect": {
+            "height": 34,
+            "width": 125.5,
+            "x": 312.6015625,
+            "y": 804
+          }
+        },
+        {
+          "role": "button",
+          "name": "Next step",
+          "rect": {
+            "height": 34,
+            "width": 103.296875,
+            "x": 452.1015625,
+            "y": 804
+          }
+        },
+        {
+          "role": "textbox",
+          "name": "Ask about this step…",
+          "rect": {
+            "height": 36,
+            "width": 163,
+            "x": 904,
+            "y": 817
+          }
+        },
+        {
+          "role": "button",
+          "name": "Send",
+          "rect": {
+            "height": 33,
+            "width": 33,
+            "x": 1075,
+            "y": 818.5
+          }
+        }
+      ]
+    },
+    "incompleteNavigation": {
+      "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/project/dee055da-d859-4eee-a9e8-a942f07519f3",
+      "text": "Signed off\nHave an issue?\nAssistant\nStuck on this step? Ask me anything — I know your project goal and exactly where you are. You can attach a screenshot too.\nYou didn't complete this step.\n0\n/\n4\n确定你的研究社区\nPrevious step\nNext step\nYou didn't complete this step.\nAre you sure you want to continue to next step?\nTips\nIf you feel stuck, you can ask the Assistant in the top-right corner before moving on.\nStay here\nContinue\n研究问题与方法论设计 ·\nSTEP 2 OF 5\nYOUR ANSWER\n确定你的研究社区\nPause\n首先，你需要选择一个特定的社会群体或社区进行研究。这可以是一个街区、一个工作场所、一个学生组织，甚至是本地的一个爱好者团体。请记住“社会学想象力”——你要找的是这样一个群体：在这里你可以观察到“个人困扰” (Personal Troubles)（如学生的压力）实际上是如何成为“公共议题”（如教育系统的结构）的。考虑一个你能够方便进入并进行观察或访谈的群体。简要描述你选择的社区，并解释为什么它是一个可行的社会学研究课题。\n提交 1-2 段关于你所选社区的描述。优秀的回答应能清晰地识别出一个特定的群体（而不仅仅是“我所在城市的人”），并根据你接触和观察他们的能力来证明选择的合理性。",
+      "controls": [
+        {
+          "role": "button",
+          "name": "Close project",
+          "rect": {
+            "height": 16,
+            "width": 16,
+            "x": 24,
+            "y": 18
+          }
+        },
+        {
+          "role": "status",
+          "name": "Signed off\n0/4",
+          "rect": {
+            "height": 24.5,
+            "width": 109.703125,
+            "x": 453.78125,
+            "y": 13.75
+          }
+        },
+        {
+          "role": "button",
+          "name": "Have an issue?",
+          "rect": {
+            "height": 27,
+            "width": 131.828125,
+            "x": 573.484375,
+            "y": 12.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Voice settings",
+          "rect": {
+            "height": 32,
+            "width": 32,
+            "x": 715.3125,
+            "y": 10
+          }
+        },
+        {
+          "role": "button",
+          "name": "Open assistant",
+          "rect": {
+            "height": 29,
+            "width": 98.6875,
+            "x": 757.3125,
+            "y": 11.5
+          }
+        },
+        {
+          "role": "button",
+          "name": "Pause narration",
+          "rect": {
+            "height": 24,
+            "width": 66.84375,
+            "x": 323.203125,
+            "y": 177.03125
+          }
+        },
+        {
+          "role": "textarea",
+          "name": "Type your answer here…",
+          "rect": {
+            "height": 206,
+            "width": 545.59375,
+            "x": 161.203125,
+            "y": 495.28125
+          }
+        },
+        {
+          "role": "button",
+          "name": "Submit for review",
+          "rect": {
+            "height": 33,
+            "width": 33,
+            "x": 663.796875,
+            "y": 658.28125
+          }
+        },
+        {
+          "role": "button",
+          "name": "Previous step",
+          "rect": {
+            "height": 34,
+            "width": 125.5,
+            "x": 312.6015625,
+            "y": 804
+          }
+        },
+        {
+          "role": "button",
+          "name": "Next step",
+          "rect": {
+            "height": 34,
+            "width": 103.296875,
+            "x": 452.1015625,
+            "y": 804
+          }
+        },
+        {
+          "role": "textbox",
+          "name": "Ask about this step…",
+          "rect": {
+            "height": 36,
+            "width": 163,
+            "x": 904,
+            "y": 817
+          }
+        },
+        {
+          "role": "button",
+          "name": "Send",
+          "rect": {
+            "height": 33,
+            "width": 33,
+            "x": 1075,
+            "y": 818.5
+          }
+        },
+        {
+          "role": "dialog",
+          "name": "You didn't complete this step.\n\nAre you sure you want to continue to next step?\n\nTips\n\nIf you feel stuck, you can ask the Assistant in the top-right corner before moving on.\n\nStay here\nContinue",
+          "rect": {
+            "height": 249.375,
+            "width": 380,
+            "x": 250,
+            "y": 318.8125
+          }
+        },
+        {
+          "role": "button",
+          "name": "Stay here",
+          "rect": {
+            "height": 34,
+            "width": 82.390625,
+            "x": 437.09375,
+            "y": 513.1875
+          }
+        },
+        {
+          "role": "button",
+          "name": "Continue",
+          "rect": {
+            "height": 34,
+            "width": 81.515625,
+            "x": 527.484375,
+            "y": 513.1875
+          }
+        }
+      ]
+    }
+  },
+  "notObserved": [
+    "Steps 3-5",
+    "Submitted answer or review results",
+    "Sign-off algorithm",
+    "Actual audio content or timing",
+    "Exact CSS assets, fonts and DPR"
+  ],
+  "screenshots": {
+    "intro.png": {
+      "bytes": 91177,
+      "sha256": "2e2ced042926ac9d6c9abcd8f97143d4b9a70932b2719df4f030d1702e41b4ac",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "cssViewport": null,
+      "devicePixelRatio": null
+    },
+    "answer.png": {
+      "bytes": 105529,
+      "sha256": "cde846da8595f22fd62b829c2d6de5fcdca487d53ea26833f4b8021835bdea51",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "cssViewport": null,
+      "devicePixelRatio": null
+    },
+    "incomplete-navigation.png": {
+      "bytes": 104646,
+      "sha256": "5caeb38c065a5d317271d003f413a7eb4d81dbff99abfb0699931fa95207acb6",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "cssViewport": null,
+      "devicePixelRatio": null
+    }
+  }
+}
