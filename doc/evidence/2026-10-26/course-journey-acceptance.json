@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T17:52:27.490486+00:00",
+  "at": "2026-10-25T18:46:26.640830+00:00",
   "sourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
   "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
   "specificationCommits": [
@@ -43,8 +43,8 @@
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "relative-navigation-fixed-full-browser-and-new-exact-ci-pending",
-  "localPassed": false,
+  "status": "local-205-complete-exact-ci-pending",
+  "localPassed": true,
   "passed": false,
   "api": {
     "passed": 1194,
@@ -66,8 +66,12 @@
     "report": "course-journey-sqlite-cold-confirmed.json"
   },
   "browser": {
-    "status": "running-after-relative-navigation-fix",
-    "expected": 205
+    "passed": 205,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "durationMs": 958834.1579999999,
+    "report": "course-journey-full-browser.json"
   },
   "priorFocusedBrowser": {
     "passed": 17,
@@ -75,7 +79,7 @@
     "report": "course-journey-browser-focused.json"
   },
   "remoteCi": {
-    "status": "not-started-for-fixed-candidate",
+    "status": "in_progress",
     "prior": {
       "status": "completed",
       "conclusion": "success",
@@ -90,7 +94,9 @@
         "finalFailed": 0
       },
       "runtimeGate": "held-for-relative-back-navigation-fix"
-    }
+    },
+    "head": "9053f0353b8ad085d6885911837b089651674fdc",
+    "runId": 40221345190
   },
   "production": {
     "status": "not-released",
@@ -133,11 +139,12 @@
     "course-journey-sqlite-cold-confirmed.json": "f956eab9f4399cae3aa8daff54a610a293e72eec2624c3b31bbeda979a9c0ae5",
     "course-journey-browser-focused.json": "60834ffdd6abb62993357d09d791b47187350dd6227a6fec06d7bd72b6ee4845",
     "course-journey-complete-browser.json": "73a047af7a8b83b914e76a872cdc67379c323c6a35602402ab13f5e830a21182",
-    "course-journey-full-browser.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
+    "course-journey-full-browser.json": "72f801d055ea9ab1a529e5c1736a1f8b3a4147deb990845524f65dfdf4ff58f9",
     "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c",
     "course-journey-exact-ci.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
     "course-journey-exact-ci-initial.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
-    "course-journey-relative-navigation-browser.json": "cc15bde967ea0841273e0390538a49e7418c4af46b38da8a6b8019f332be61e1"
+    "course-journey-relative-navigation-browser.json": "cc15bde967ea0841273e0390538a49e7418c4af46b38da8a6b8019f332be61e1",
+    "course-journey-full-browser-before-relative-fix.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed"
   },
   "completeJourneys": {
     "passed": 9,
@@ -163,7 +170,7 @@
     "skipped": 0,
     "retries": 0,
     "durationMs": 955038.063,
-    "report": "course-journey-full-browser.json"
+    "report": "course-journey-full-browser-before-relative-fix.json"
   },
   "relativeNavigation": {
     "passed": 6,
