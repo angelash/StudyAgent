@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T18:46:26.640830+00:00",
+  "at": "2026-10-25T19:00:24.514008+00:00",
   "sourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
   "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
   "specificationCommits": [
@@ -43,9 +43,9 @@
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "local-205-and-clean-exact-ci-complete-production-pending",
+  "status": "runtime-delivered",
   "localPassed": true,
-  "passed": false,
+  "passed": true,
   "api": {
     "passed": 1194,
     "skipped": 40,
@@ -110,8 +110,18 @@
     }
   },
   "production": {
-    "status": "not-released",
-    "currentRevision": "e558ea4"
+    "status": "runtime-delivered",
+    "revision": "c1c6608bbc3d5931c11bcad7f0f45e70a17b5f8e",
+    "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
+    "webSourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
+    "webBuildId": "hi7VwKIGYaHmzQtuQqKdz",
+    "report": "course-journey-runtime.json",
+    "httpChecks": 51,
+    "voiceHttpDigests": 6,
+    "observations": 3,
+    "observedIntervalMs": 181042,
+    "storage": "sqlite",
+    "schema": 14
   },
   "design": {
     "passed": true,
@@ -156,7 +166,8 @@
     "course-journey-exact-ci-initial.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
     "course-journey-relative-navigation-browser.json": "cc15bde967ea0841273e0390538a49e7418c4af46b38da8a6b8019f332be61e1",
     "course-journey-full-browser-before-relative-fix.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
-    "course-journey-ci-browser.json": "80166204f70b830dde900a9c89e189300119aa6c515c083330a943c8558da52c"
+    "course-journey-ci-browser.json": "80166204f70b830dde900a9c89e189300119aa6c515c083330a943c8558da52c",
+    "course-journey-runtime.json": "85c51a21003847e9ca94def16df3e15ed17710abdfa2b3023c2b4fc035688192"
   },
   "completeJourneys": {
     "passed": 9,

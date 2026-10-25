@@ -1,10 +1,10 @@
 # StudyAgent 当前功能与设计总册
 
-整理日期：2026-10-25。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)、[111真实项目文件](../product/111-project-attachments-and-frozen-file-evidence.md)、[112可恢复作答](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
+整理日期：2026-10-26。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)、[111真实项目文件](../product/111-project-attachments-and-frozen-file-evidence.md)、[112可恢复作答](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
-113已在开发候选接入普通助教持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。本册应用源码为b595514，校验基线为3c938a4（115业务与最终QA候选）；CI和实际守护运行状态以收据为准，不以设计生成通过替代发布。
+普通助教已支持持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。源码、精确CI与实际守护运行版本分别记录，当前119状态见本页末尾，不以设计生成代替发布。
 
 ## 阅读入口
 
@@ -96,3 +96,6 @@ npm run qa:docs
 
 
 119当前门禁：首个远端CI虽成功，但浏览器202常规通过/1重试通过；连续返回的真实竞态已修正3537dfa，受控六项全通过。固定Web的205本地全量与新精确CI并行核验中，尚未替换118守护运行版；详细证据以119本批收据为准。
+
+
+119当前运行：资料课程三阶段项目、成人/资料课程学习旅程、准确原句/题目断点、个人项目步骤/模式和连续返回修正已交付。源码索引3537dfa，API/契约主增量466220d；本地与精确CI 9053f03/40221345190的205项浏览器均零失败/零重试。实际构建c1c6608、buildId hi7VwKIGYaHmzQtuQqKdz，51项运行检查/六音频SHA及跨181042毫秒守护观察通过。当前14领域/119功能/325正常接口/93集合/310共享类型，完整范围仍以[119最终收据](../evidence/2026-10-26/course-journey-acceptance.json)及[计划105](../product/105-development-plan-status-and-next-milestones.md)为准；独立资料核查和所有真人/全内容门禁未因此完成。
