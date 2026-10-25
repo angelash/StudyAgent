@@ -44,10 +44,11 @@ test('a lost save acknowledgment and offline refresh retain exact local edits un
 test('concurrent pages preserve a conflicting buffer and require an explicit choice before replacement', async ({ page, context }) => {
   await open(page); const second = await context.newPage(); await second.goto(page.url()); await expect(second.locator('.cl-code-save')).toContainText('草稿已保存');
   await code(page).fill('console.log("page A");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);
-  await code(second).fill('console.log("page B");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突'); await expect(code(second)).toHaveValue('console.log("page B");');
+  // Wait for the real background save; a manual click can race its conflict state and become disabled.
+  await code(second).fill('console.log("page B");'); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突'); await expect(code(second)).toHaveValue('console.log("page B");');
   await second.getByRole('button', { name: '读取已保存版本' }).click(); await expect(code(second)).toHaveValue('console.log("page A");');
   await code(page).fill('console.log("new A");'); await page.getByRole('button', { name: '保存代码草稿' }).click(); await saved(page);
-  await code(second).fill('console.log("chosen B");'); await second.getByRole('button', { name: '保存代码草稿' }).click(); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突');
+  await code(second).fill('console.log("chosen B");'); await expect(second.locator('.cl-code-save')).toContainText('代码草稿有冲突');
   await second.getByRole('button', { name: '用我的草稿保存为新版本' }).click(); await saved(second); await page.reload(); await expect(code(page)).toHaveValue('console.log("chosen B");'); await second.close();
 });
 
