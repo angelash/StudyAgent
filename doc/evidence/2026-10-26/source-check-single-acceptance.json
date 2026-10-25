@@ -1,7 +1,7 @@
 {
-  "passed": false,
-  "status": "current-focused-api-passed-full-api-and-exact-ci-pending",
-  "sourceRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
+  "passed": true,
+  "status": "candidate-ready-runtime-pending",
+  "sourceRevision": "8071e7ecbdea16135ee18371424e3dd99931dc63",
   "applicationRevision": "6bf3700",
   "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
   "deployed": false,
@@ -49,7 +49,7 @@
     "report": "source-check-single-live/receipt.json"
   },
   "limits": [
-    "The 218-case local browser baseline predates the isolated access maintenance; current complete API is running and current exact CI/full browser and daemon delivery are pending.",
+    "Current complete local API and exact CI/browser passed. Actual production build, consistent rollback and daemon observations remain pending.",
     "No teacher review, real-device or long-term validation.",
     "Exact duplicate detection and different situations do not prove independent item families.",
     "Content stays pending and formalMeasurementEligible=false.",
@@ -75,6 +75,38 @@
       "sourceCheckCases": 50,
       "studioCases": 15,
       "report": "source-check-single-current/focused-api.json"
+    }
+  },
+  "fullApi": {
+    "passed": 1245,
+    "failed": 0,
+    "skipped": 43,
+    "sourceRevision": "8071e7ecbdea16135ee18371424e3dd99931dc63",
+    "applicationRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
+    "report": "source-check-single-current/full-api.json"
+  },
+  "fullBrowser": {
+    "passed": 218,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "report": "source-check-single-exact-ci/browser.json",
+    "sha256": "721996b4d684e5cc9ce24af343723c8d0a9ae354fe1f117cf7ace5ae10feaff4",
+    "scope": "Complete current CI browser run includes dc93206 access maintenance.",
+    "rawReport": "source-check-single-exact-ci/browser-original.json.gz"
+  },
+  "ci": {
+    "run": 40238652989,
+    "head": "8071e7ecbdea16135ee18371424e3dd99931dc63",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 3,
+    "report": "source-check-single-exact-ci/run.json",
+    "api": {
+      "passed": 1237,
+      "skipped": 51,
+      "failed": 0,
+      "scope": "Linux environment, overlaps local complete suite."
     }
   }
 }
