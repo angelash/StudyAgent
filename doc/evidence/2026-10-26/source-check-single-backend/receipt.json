@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "applicationRevision": "6bf3700",
+  "inheritedRepairCandidate": "4b118df9fd4d469d1de3f276d51fe4854b2e9ca8",
+  "sqlite": {
+    "passed": 49,
+    "failed": 0,
+    "pure": 18,
+    "http": 22,
+    "storage": 9
+  },
+  "postgres": {
+    "passed": 25,
+    "failed": 0,
+    "http": 22,
+    "nativeStorage": 3,
+    "scopeOverlapsSqlite": true
+  },
+  "live": {
+    "passed": true,
+    "modelId": "deepseek-v4-flash",
+    "questions": 5,
+    "targets": 1,
+    "providerCalls": 2,
+    "validationFailures": 0,
+    "contentReview": "pending",
+    "formalMeasurementEligible": false
+  },
+  "status": "backend-and-live-passed-browser-and-complete-release-pending",
+  "deployed": false,
+  "limits": [
+    "No content approval or learning-effect validation.",
+    "Existing PostgreSQL report predates the local application commit; its API changes were unchanged at commit and after inheriting the Web repair. No PostgreSQL rerun is claimed.",
+    "Full API, browser, exact CI and daemon delivery are pending."
+  ],
+  "fullApiBeforeInheritedCancellationRepair": {
+    "sourceRevision": "550cf23d9ff412509b53fc9ff17182c3d12d8bd0",
+    "passed": 1243,
+    "failed": 0,
+    "skipped": 43,
+    "report": "full-api-before-cancel-repair.json"
+  }
+}
