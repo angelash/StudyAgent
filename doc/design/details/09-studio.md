@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`89e7530a32e5003adfad5c532274b741fdf687e4`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -780,6 +780,45 @@
 - [apps/api/src/infrastructure/studio-original-repair.test.ts](../../../apps/api/src/infrastructure/studio-original-repair.test.ts)
 - [apps/web/app/studio/source-courses/original-repair.tsx](../../../apps/web/app/studio/source-courses/original-repair.tsx)
 - [tests/e2e/pdf-material.spec.ts](../../../tests/e2e/pdf-material.spec.ts)
+
+## STUDIO-26 资料课程修订家族、影响预览与历史恢复
+
+**输入**：当前发布课程、修订号、内容与影响指纹、请求键、动作和原因。
+
+**处理与实现**：短课/长课以独立候选复制原稿、来源和可核对的阶段来历，无新模型调用或共享任务；家族版本单调分配。只读预览列真实课堂/作答与新开影响；发布、归档、撤回、恢复、放弃以同一事务更新相关版本，重放先于新状态检查，并发预览失效则重新核对。旧课件、原句、题目和代码不迁移；历史详情明确恢复个人原会话。前端保留掉回执命令、刷新找回、状态冲突读取与键盘焦点；私有修订身份不透过学生投影/家庭导出泄漏，关闭账号擦除未发布稿与阶段。
+
+**输出**：版本关系/原因与影响预览、可编辑修订、唯一当前版、准确旧课堂入口及保留生成来历。
+
+**状态与持久化**：`sourceCourses`、`sourceCourseStages`、`classroomSessions`
+
+**权限、失败与边界**：复制和人工确认不等于教师批准、完整内容质量或正式测量；学校、付费与Marketplace不在范围；固定成人课程/教材包的发布规则仍各自独立。
+
+**关联接口**：
+
+- `GET /api/learning/source-courses/:id/versions` → `SourceCourseLifecycleController.versions`；[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:9](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L9)。
+- `POST /api/learning/source-courses/:id/revisions` → `SourceCourseLifecycleController.revise`；[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:10](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L10)。
+- `POST /api/learning/source-courses/:id/lifecycle/preview` → `SourceCourseLifecycleController.preview`；[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:11](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L11)。
+- `POST /api/learning/source-courses/:id/lifecycle` → `SourceCourseLifecycleController.apply`；[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:12](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L12)。
+
+**服务方法**：
+
+- `SourceCourseLifecycleService.versions`；[apps/api/src/modules/learning/source-course-lifecycle.service.ts:28](../../../apps/api/src/modules/learning/source-course-lifecycle.service.ts#L28)。
+- `SourceCourseLifecycleService.revise`；[apps/api/src/modules/learning/source-course-lifecycle.service.ts:54](../../../apps/api/src/modules/learning/source-course-lifecycle.service.ts#L54)。
+- `SourceCourseLifecycleService.preview`；[apps/api/src/modules/learning/source-course-lifecycle.service.ts:75](../../../apps/api/src/modules/learning/source-course-lifecycle.service.ts#L75)。
+- `SourceCourseLifecycleService.apply`；[apps/api/src/modules/learning/source-course-lifecycle.service.ts:89](../../../apps/api/src/modules/learning/source-course-lifecycle.service.ts#L89)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/source-course-lifecycle.ts](../../../packages/contracts/src/source-course-lifecycle.ts)
+- [apps/api/src/modules/learning/source-course-lifecycle.controller.ts](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts)
+- [apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts](../../../apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts)
+- [apps/api/src/modules/learning/source-course-content.ts](../../../apps/api/src/modules/learning/source-course-content.ts)
+- [apps/api/src/modules/learning/source-course.service.ts](../../../apps/api/src/modules/learning/source-course.service.ts)
+- [apps/api/src/modules/privacy/privacy-records.ts](../../../apps/api/src/modules/privacy/privacy-records.ts)
+- [apps/web/app/studio/source-courses/lifecycle-panel.tsx](../../../apps/web/app/studio/source-courses/lifecycle-panel.tsx)
+- [apps/web/app/studio/source-courses/workbench.tsx](../../../apps/web/app/studio/source-courses/workbench.tsx)
+- [tests/e2e/source-course-lifecycle.spec.ts](../../../tests/e2e/source-course-lifecycle.spec.ts)
+- [scripts/qa/run-source-lifecycle-postgres.cjs](../../../scripts/qa/run-source-lifecycle-postgres.cjs)
 
 ## STUDIO-24 长PDF分块上传、页级续跑与按需原文
 

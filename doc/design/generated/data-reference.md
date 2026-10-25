@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`89e7530a32e5003adfad5c532274b741fdf687e4`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -368,19 +368,28 @@
 - `SourceCompilationView`：[packages/contracts/src/source-course-compilation.ts:19](../../../packages/contracts/src/source-course-compilation.ts#L19)；字段：`version`、`stage`、`chunks`、`indexedChunks`、`planGroups`、`plannedGroups`、`draftedLessons`、`reviewedLessons`、`plannedLessons`、`modelId`、`modelName`、`input`、`reviewCurrent`、`reviews`、`coverage`、`scopeNote`。
 - `SourceLessonAuthoring`：[packages/contracts/src/source-course-compilation.ts:27](../../../packages/contracts/src/source-course-compilation.ts#L27)；字段：`courseId`、`lessonId`、`revision`、`title`、`overview`、`content`、`originalContent`、`sources`、`reviewCurrent`。
 
+### packages/contracts/src/source-course-lifecycle.ts
+
+- `SourceCourseLifecycleAction`：[packages/contracts/src/source-course-lifecycle.ts:3](../../../packages/contracts/src/source-course-lifecycle.ts#L3)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseLifecycleState`：[packages/contracts/src/source-course-lifecycle.ts:4](../../../packages/contracts/src/source-course-lifecycle.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseLifecycleEvent`：[packages/contracts/src/source-course-lifecycle.ts:5](../../../packages/contracts/src/source-course-lifecycle.ts#L5)；字段：`id`、`action`、`at`、`actorId`、`reason`、`fromStatus`、`toStatus`、`relatedCourseIds`。
+- `SourceCourseVersioning`：[packages/contracts/src/source-course-lifecycle.ts:7](../../../packages/contracts/src/source-course-lifecycle.ts#L7)；字段：`familyId`、`parentCourseId`、`number`、`state`、`copiedAt?`、`events`。
+- `SourceCourseVersionSummary`：[packages/contracts/src/source-course-lifecycle.ts:9](../../../packages/contracts/src/source-course-lifecycle.ts#L9)；字段：`id`、`title`、`number`、`parentCourseId`、`status`、`state`、`revision`、`confirmedAt`。
+- `SourceCourseLifecyclePreview`：[packages/contracts/src/source-course-lifecycle.ts:11](../../../packages/contracts/src/source-course-lifecycle.ts#L11)；字段：`courseId`、`action`、`expectedRevision`、`fingerprint`、`impactFingerprint`、`requiresReason`、`sourceStatus`、`versions`、`changes`、`existing`、`effects`。
+
 ### packages/contracts/src/source-course.ts
 
-- `SourceCourseContent`：[packages/contracts/src/source-course.ts:15](../../../packages/contracts/src/source-course.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseLessonContent`：[packages/contracts/src/source-course.ts:16](../../../packages/contracts/src/source-course.ts#L16)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseReviewField`：[packages/contracts/src/source-course.ts:17](../../../packages/contracts/src/source-course.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseReviewIssue`：[packages/contracts/src/source-course.ts:18](../../../packages/contracts/src/source-course.ts#L18)；字段：`field`、`questionIndex`、`quote`、`detail`。
-- `SourceCourseLessonReview`：[packages/contracts/src/source-course.ts:19](../../../packages/contracts/src/source-course.ts#L19)；字段：`decision`、`issues`、`at`、`modelId`、`modelName`、`inputFingerprint`、`outputFingerprint`。
-- `SourceCourseGenerationView`：[packages/contracts/src/source-course.ts:20](../../../packages/contracts/src/source-course.ts#L20)；字段：`version`、`inputCapture`、`stage`、`plannedLessons`、`draftedLessons`、`reviewedLessons`、`scopeNote`、`uncoveredSourceKeys`、`modelId`、`modelName`、`reviewCurrent`、`reviews`。
-- `CourseSourceSnapshot`：[packages/contracts/src/source-course.ts:25](../../../packages/contracts/src/source-course.ts#L25)；字段：`key`、`materialId`、`page`、`title`、`kind`、`text`、`blocks`、`sha256`、`version`、`fingerprint`、`structureReviewRequired`、`textCharacters?`、`range?`。
-- `SourceCourseInput`：[packages/contracts/src/source-course.ts:28](../../../packages/contracts/src/source-course.ts#L28)；字段：`title`、`goal`、`language`、`minutesPerSession`、`modelId`、`targetAtomIds`。
-- `SourceCourseSummary`：[packages/contracts/src/source-course.ts:30](../../../packages/contracts/src/source-course.ts#L30)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`status`、`lessonCount`、`viewed`、`lastLessonId`、`nextLessonId?`、`nextLessonTitle?`、`lastStudied`、`createdAt`、`updatedAt`。
-- `SourceCourseView`：[packages/contracts/src/source-course.ts:33](../../../packages/contracts/src/source-course.ts#L33)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:43](../../../packages/contracts/src/source-course.ts#L43)；字段：`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
+- `SourceCourseContent`：[packages/contracts/src/source-course.ts:16](../../../packages/contracts/src/source-course.ts#L16)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseLessonContent`：[packages/contracts/src/source-course.ts:17](../../../packages/contracts/src/source-course.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseReviewField`：[packages/contracts/src/source-course.ts:18](../../../packages/contracts/src/source-course.ts#L18)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseReviewIssue`：[packages/contracts/src/source-course.ts:19](../../../packages/contracts/src/source-course.ts#L19)；字段：`field`、`questionIndex`、`quote`、`detail`。
+- `SourceCourseLessonReview`：[packages/contracts/src/source-course.ts:20](../../../packages/contracts/src/source-course.ts#L20)；字段：`decision`、`issues`、`at`、`modelId`、`modelName`、`inputFingerprint`、`outputFingerprint`。
+- `SourceCourseGenerationView`：[packages/contracts/src/source-course.ts:21](../../../packages/contracts/src/source-course.ts#L21)；字段：`version`、`inputCapture`、`stage`、`plannedLessons`、`draftedLessons`、`reviewedLessons`、`scopeNote`、`uncoveredSourceKeys`、`modelId`、`modelName`、`reviewCurrent`、`reviews`。
+- `CourseSourceSnapshot`：[packages/contracts/src/source-course.ts:26](../../../packages/contracts/src/source-course.ts#L26)；字段：`key`、`materialId`、`page`、`title`、`kind`、`text`、`blocks`、`sha256`、`version`、`fingerprint`、`structureReviewRequired`、`textCharacters?`、`range?`。
+- `SourceCourseInput`：[packages/contracts/src/source-course.ts:29](../../../packages/contracts/src/source-course.ts#L29)；字段：`title`、`goal`、`language`、`minutesPerSession`、`modelId`、`targetAtomIds`。
+- `SourceCourseSummary`：[packages/contracts/src/source-course.ts:31](../../../packages/contracts/src/source-course.ts#L31)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`versioning?`、`status`、`lessonCount`、`viewed`、`lastLessonId`、`lastSessionId?`、`nextLessonId?`、`nextLessonTitle?`、`lastStudied`、`createdAt`、`updatedAt`。
+- `SourceCourseView`：[packages/contracts/src/source-course.ts:34](../../../packages/contracts/src/source-course.ts#L34)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:44](../../../packages/contracts/src/source-course.ts#L44)；字段：`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
 
 ### packages/contracts/src/student-access.ts
 

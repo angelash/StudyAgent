@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T04:56:21.388Z",
+  "sourceRevision": "aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561",
+  "specificationCommit": "dd2ff52",
+  "passed": false,
+  "localPassed": true,
+  "status": "local-validated-awaiting-ci-and-daemon",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".gitattributes": "86efdc8899ce071cab668932e89f453f7d54da88ef63cd3004affdfbe9662e13",
+    ".github/workflows/verify.yml": "869948e6015fa18e1b375983d2ec7ae11aeb0d2ff27369b2fb6a9eb87b2fa65b",
+    "apps/api/src/common/auth.guard.ts": "d714b106048203df757038023fd82bd65194a368e73e284d77bd92829d56c489",
+    "apps/api/src/modules/learning/learning.module.ts": "1dd5bbdb820aeeee28cf6a625fb245567af047235e07762abf24f1c5f56cfd7a",
+    "apps/api/src/modules/learning/source-course-compilation.ts": "193dc7bf9e277e377a6a4a00136f770a9e6668d7ca95ae9193471e19745a4aa0",
+    "apps/api/src/modules/learning/source-course-content.ts": "bc917267d2574003d2ec9f0eeb262e01d35682ff56042410d0afedee46091484",
+    "apps/api/src/modules/learning/source-course-lifecycle.controller.ts": "3b2ea4e8bfa7e5566743a1f8e5e7caea2f13cd3d1cead60ab6c6131082ba4942",
+    "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts": "5768497df44f65889fcd6d530bdbc313083c0090b08dab3b33cc9c21370afb6a",
+    "apps/api/src/modules/learning/source-course-lifecycle.service.ts": "6c48eb307e1f4402ad2221e90d3b9ddae697805ff65ee94bccd06211ac8f5e7a",
+    "apps/api/src/modules/learning/source-course.service.ts": "e996e37b4940f18ad0ec90fd8598ce3d8d749e4994340148af82293e6e112744",
+    "apps/api/src/modules/privacy/privacy-records.ts": "2cdb69b889d80c3e6ac9702fc3dff3357f89f4ce2d8ec39e2fcaaa8f39d05696",
+    "apps/web/app/studio/source-courses/lifecycle-panel.tsx": "9655e820f7d397612c11ec22e71b1a8fe25dbd40463fbebea479ca7a0d78fd45",
+    "apps/web/app/studio/source-courses/source-courses.css": "49de97c79b96257755715617710567a513f9437eb93a68c16cac2a68f02e99fb",
+    "apps/web/app/studio/source-courses/workbench.tsx": "883c1b6de4994b8d836e72c1b3aa9ae435cbfabf1eb8345fb8ca4365c5892be5",
+    "packages/contracts/src/index.ts": "5e44c44b925553e51778e6b4da4a3d97be7dd312a443895bd06acf6a7d8b17b5",
+    "packages/contracts/src/source-course-lifecycle.ts": "ccaa74029773334fe347becc7fc872bfd360d6b0cfd3e19adb99749ca4c58b34",
+    "packages/contracts/src/source-course.ts": "fcbc0619eb0b770489a8990e7b243ca589186aef449917c4a22b519ee56cec58",
+    "scripts/architecture/project-feature-definitions.cjs": "d8da252a20cb018cd1a484b9644e55e1427ad8afb4dc33304c896e0083fbbc36",
+    "scripts/qa/run-source-course-browser.cjs": "26e4d04fd54bebe06171ec46fbfb2cae13b4f97afc99c14a2cbfb65e44628251",
+    "scripts/qa/run-source-lifecycle-postgres.cjs": "4fae9928ed7fe7e9408d3ef403fa89e5c5b39697fc2458d5f2cfa3d19b97c77f",
+    "tests/e2e/source-course-lifecycle.spec.ts": "192c71d5798a5fd762996d3e90ffca09f6065bd98a5afd9fc04d8bb8bbfe3e90"
+  },
+  "reports": {
+    "course-lifecycle-browser-combination.json": {
+      "sha256": "1b6250dd855984568b74717399fa35892748e9f9cbaa9cb8af9fc9cb18f56e48",
+      "result": {
+        "startTime": "2026-10-25T04:49:29.543Z",
+        "duration": 114068.49799999999,
+        "expected": 15,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "course-lifecycle-browser-final.json": {
+      "sha256": "66fb01ae751de1302520c86a6e03e102ae5517000b158fe06ebe1c86d40d67c8",
+      "result": {
+        "startTime": "2026-10-25T04:54:04.134Z",
+        "duration": 33246.045999999995,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "course-lifecycle-browser-initial.json": {
+      "sha256": "bc5a4b199582189b89bc16d7b3533d68aa0493cd4c35c6ac45c7e73e9e20c641",
+      "result": {
+        "startTime": "2026-10-25T04:38:16.980Z",
+        "duration": 31461.642,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "course-lifecycle-browser.json": {
+      "sha256": "617231adb3cf59af00e4e40309f5f41c9a5ddf49b95e45cdf8fa7db5cd2d6cbc",
+      "result": {
+        "startTime": "2026-10-25T04:40:38.201Z",
+        "duration": 21765.224000000002,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "course-lifecycle-deletion-restore.json": {
+      "sha256": "d94be7ed7b93f856b0942905c5b4c6ef59fc4ea32800841d4ae0045c341ec5d8",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 1,
+        "numFailedTests": 0,
+        "numPendingTests": 10
+      }
+    },
+    "course-lifecycle-full-api.json": {
+      "sha256": "f8576babf72420e86ddf2d28e208cef1b86fc886affcea4de451b5f78f753bab",
+      "result": {
+        "numTotalTests": 1132,
+        "numPassedTests": 1098,
+        "numFailedTests": 0,
+        "numPendingTests": 34
+      }
+    },
+    "course-lifecycle-postgres-final.json": {
+      "sha256": "88ca610852f253abc3aba079539d44bfa3cb131341f8feeeb1746bca8046cd81",
+      "result": {
+        "numTotalTests": 45,
+        "numPassedTests": 44,
+        "numFailedTests": 0,
+        "numPendingTests": 1
+      }
+    },
+    "course-lifecycle-postgres.json": {
+      "sha256": "c9aef68d9a5387b79958cc034bd1816fe39a4c465343a73330f3069367bc34a1",
+      "result": {
+        "numTotalTests": 42,
+        "numPassedTests": 42,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "course-lifecycle-privacy-sqlite.json": {
+      "sha256": "4b7c547cba69c8e9ee0ff25012ee52f91e08f29c6d26b6545a1d0d323bbff89d",
+      "result": {
+        "numTotalTests": 40,
+        "numPassedTests": 40,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "course-lifecycle-sqlite-expanded.json": {
+      "sha256": "00c0fa72699fb6326752bdb6fcb8bad886c36ca00ca663ac1d392f8ef66872a8",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "course-lifecycle-sqlite-initial.json": {
+      "sha256": "2499e1ba7c52231bcc346d78aa47495267faa7c106f335f7841cec03f5de7801",
+      "result": {
+        "numTotalTests": 31,
+        "numPassedTests": 29,
+        "numFailedTests": 2,
+        "numPendingTests": 0
+      }
+    },
+    "course-lifecycle-sqlite.json": {
+      "sha256": "d61d4e84ca8562de15a789870fb45eb2196e3cbdc88df6f4c9ab074e8a16a5d2",
+      "result": {
+        "numTotalTests": 8,
+        "numPassedTests": 8,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    }
+  },
+  "checks": {
+    "contractsBuild": "passed",
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "sqliteLifecycle": {
+      "passed": 11
+    },
+    "sqlitePrivacyAndOldCourseCombination": {
+      "passed": 40
+    },
+    "deletionLedgerColdRestore": {
+      "passed": 1,
+      "otherTestsFiltered": 10
+    },
+    "postgresCourseCombination": {
+      "passed": 44,
+      "sqliteOnlySkipped": 1
+    },
+    "fullLocalApi": {
+      "passed": 1098,
+      "environmentSkipped": 34,
+      "failed": 0
+    },
+    "browserCombinationBeforeFinalStopAndReceiptValidation": {
+      "passed": 15
+    },
+    "finalFocusedBrowser": {
+      "passed": 6
+    },
+    "isolatedPostgres": "stopped"
+  },
+  "featureCoverage": [
+    "Independent revision families and monotonic versions, stable creation receipts and no new model calls or shared generation task",
+    "Original short-course input and real long-course stage identity, checksums, model/time and copied provenance retained; null tasks are explicit",
+    "Read-only impact previews bind actual content and family states, publish/restore and replacement archive commit atomically, concurrent publications leave one active version",
+    "History, withdrawal reasons, restore and private discarded candidates, legacy confirmation/archive cannot bypass version impact checks",
+    "Exact old lesson, first answers, hints, sentence tracks, code and project records remain separate from new learning; personal lastSessionId resumes the original line",
+    "Per-account/course tab command cache, dropped acknowledgments, explicit stop of waiting, same-command recovery, conflict reload and late-reply fencing",
+    "Published readers and family portable exports exclude another creator unpublished/discarded identities and stage metadata; actual account/child deletion erases their drafts while retaining shared published learning",
+    "Actual SQLite backup, empty-root cold recovery and latest privacy-ledger restore do not resurrect discarded drafts; PostgreSQL saves, reopen, concurrency and learner authorization separately checked",
+    "Keyboard containment and origin focus after asynchronous preview cancellation; 390/768/1440 captures inspected"
+  ],
+  "diagnostics": [
+    "First API combination:29 passed/2 failed. The new progress fixture omitted frozen speech identity and the learner versions route was not yet in the explicit read allowlist; fixed without adding management permissions.",
+    "First browser run:2 passed/1 failed. Disabling the async preview trigger lost origin focus before the dialog mounted; the trigger is now saved and restored explicitly.",
+    "The latest full API run and final focused browser cover final source. Earlier combinations and focused counts overlap and are not summed."
+  ],
+  "limits": [
+    "One source-course lifecycle increment, not complete product or full curriculum-package lifecycle. Fixed adult courses and textbook packages keep separate publication rules.",
+    "All feature data is synthetic in isolated QA stores. No production family data was used for feature tests.",
+    "Copying and adult confirmation are not teacher review, calibrated measurement or learning-effect validation.",
+    "No new live model, TTS or image-generation call is needed for copying a verified course. Real devices, human review, full content and remaining M2-M7 requirements remain.",
+    "The current daemon is the delivered structured-board version; this increment awaits exact CI and daemon delivery."
+  ]
+}

@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
+  "sourceRevision": "aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 311,
-    "activeHttpRoutes": 298,
-    "activeBusinessHttpRoutes": 290,
+    "declaredHttpRoutes": 315,
+    "activeHttpRoutes": 302,
+    "activeBusinessHttpRoutes": 294,
     "retiredHttpRoutes": 8,
     "activeModules": 18,
-    "activeControllers": 30,
-    "apiClasses": 124,
-    "apiFunctions": 348,
+    "activeControllers": 31,
+    "apiClasses": 126,
+    "apiFunctions": 350,
     "domainCollections": 89,
-    "contractTypes": 265,
+    "contractTypes": 271,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 120,
-    "browserTestFiles": 18
+    "apiTestFiles": 121,
+    "browserTestFiles": 19
   },
   "modules": [
     {
@@ -205,6 +205,7 @@
         "AiModule"
       ],
       "controllers": [
+        "SourceCourseLifecycleController",
         "ClassroomCodeController",
         "ClassroomTurnController",
         "StudioOriginalRepairController",
@@ -219,6 +220,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "SourceCourseLifecycleService",
         "ClassroomCodeService",
         "ClassroomTurnService",
         "ClassroomTurnWorkerService",
@@ -6473,6 +6475,122 @@
       "calls": [],
       "active": true,
       "retired": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/source-courses/:id/versions",
+      "controller": "SourceCourseLifecycleController",
+      "method": "versions",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+      "line": 9,
+      "signature": "versions(@Req()request:AuthenticatedRequest, @Param('id')id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "lifecycle",
+          "type": "SourceCourseLifecycleService"
+        }
+      ],
+      "calls": [
+        "this.lifecycle.versions"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/revisions",
+      "controller": "SourceCourseLifecycleController",
+      "method": "revise",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+      "line": 10,
+      "signature": "revise(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "lifecycle",
+          "type": "SourceCourseLifecycleService"
+        }
+      ],
+      "calls": [
+        "this.lifecycle.revise"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/lifecycle/preview",
+      "controller": "SourceCourseLifecycleController",
+      "method": "preview",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+      "line": 11,
+      "signature": "preview(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "lifecycle",
+          "type": "SourceCourseLifecycleService"
+        }
+      ],
+      "calls": [
+        "this.lifecycle.preview"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/source-courses/:id/lifecycle",
+      "controller": "SourceCourseLifecycleController",
+      "method": "apply",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+      "line": 12,
+      "signature": "apply(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "lifecycle",
+          "type": "SourceCourseLifecycleService"
+        }
+      ],
+      "calls": [
+        "this.lifecycle.apply"
+      ],
+      "active": true,
+      "retired": false
     },
     {
       "verb": "GET",
@@ -19664,12 +19782,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 39,
+      "line": 41,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -20647,6 +20765,233 @@
       ]
     },
     {
+      "name": "SourceCourseLifecycleController",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+      "line": 5,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/source-courses'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "lifecycle",
+          "type": "SourceCourseLifecycleService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "versions",
+          "line": 9,
+          "signature": "versions(@Req()request:AuthenticatedRequest, @Param('id')id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/versions'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.lifecycle.versions"
+          ]
+        },
+        {
+          "name": "revise",
+          "line": 10,
+          "signature": "revise(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/revisions'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.lifecycle.revise"
+          ]
+        },
+        {
+          "name": "preview",
+          "line": 11,
+          "signature": "preview(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/lifecycle/preview'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.lifecycle.preview"
+          ]
+        },
+        {
+          "name": "apply",
+          "line": 12,
+          "signature": "apply(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/lifecycle'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.lifecycle.apply"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseLifecycleService",
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+      "line": 19,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "record",
+          "line": 22,
+          "signature": "record(user:InMemoryUserAccount, id:string, manage=false)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "family",
+          "line": 27,
+          "signature": "family(row:SourceCourseRecord)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.inspect"
+          ]
+        },
+        {
+          "name": "versions",
+          "line": 28,
+          "signature": "versions(user:InMemoryUserAccount, id:string): SourceCourseVersionSummary[]",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.family"
+          ]
+        },
+        {
+          "name": "event",
+          "line": 33,
+          "signature": "event(row:SourceCourseRecord, user:InMemoryUserAccount, kind:SourceCourseLifecycleAction|'revise', reason:string, next:SourceCourseRecord['status'], related:string[]=[])",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.nextId"
+          ]
+        },
+        {
+          "name": "verifyOriginal",
+          "line": 39,
+          "signature": "verifyOriginal(row:SourceCourseRecord)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "revise",
+          "line": 54,
+          "signature": "revise(user:InMemoryUserAccount, id:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.courses.get",
+            "this.verifyOriginal",
+            "this.family",
+            "this.store.select",
+            "this.store.nextId",
+            "this.event",
+            "this.store.append"
+          ]
+        },
+        {
+          "name": "assertAction",
+          "line": 71,
+          "signature": "assertAction(row:SourceCourseRecord, kind:SourceCourseLifecycleAction)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "preview",
+          "line": 75,
+          "signature": "preview(user:InMemoryUserAccount, id:string, input:unknown): Promise<SourceCourseLifecyclePreview>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.assertAction",
+            "this.courses.get",
+            "this.family",
+            "this.store.inspect",
+            "this.versions"
+          ]
+        },
+        {
+          "name": "apply",
+          "line": 89,
+          "signature": "apply(user:InMemoryUserAccount, id:string, input:unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.courses.get",
+            "this.preview",
+            "this.verifyOriginal",
+            "this.event"
+          ]
+        }
+      ]
+    },
+    {
       "name": "SourceCourseWorkerService",
       "file": "apps/api/src/modules/learning/source-course-worker.service.ts",
       "line": 14,
@@ -21302,6 +21647,7 @@
           "calls": [
             "this.store.tasks.get",
             "this.store.select",
+            "this.store.inspect",
             "this.sourceStatus"
           ]
         },
@@ -29462,33 +29808,45 @@
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
+      "name": "sourceCourseVersioningView",
+      "line": 29,
+      "signature": "sourceCourseVersioningView(row:Pick<SourceCourseRecord,'ownerUserId'|'versioning'>, viewerId:string, publishedIds:Set<string>)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseModelContext",
-      "line": 28,
+      "line": 35,
       "signature": "sourceCourseModelContext(row:SourceCourseRecord)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "checkGeneratedCourse",
-      "line": 31,
+      "line": 38,
       "signature": "checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[], maximum:6|24=6): GeneratedSourceCourse"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "courseCitationSources",
-      "line": 43,
+      "line": 50,
       "signature": "courseCitationSources(row:SourceCourseRecord)"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseLesson",
-      "line": 44,
+      "line": 51,
       "signature": "sourceCourseLesson(row: SourceCourseRecord, index: number, citationSources?:CourseSourceSnapshot[]): ClassroomLesson | undefined"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-content.ts",
       "name": "sourceCourseAnswerKeys",
-      "line": 69,
+      "line": 76,
       "signature": "sourceCourseAnswerKeys(row: SourceCourseRecord, index:number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+      "name": "version",
+      "line": 16,
+      "signature": "version(row:SourceCourseRecord): SourceCourseVersioning"
     },
     {
       "file": "apps/api/src/modules/learning/source-course-pipeline.ts",
@@ -29913,7 +30271,7 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 151,
+      "line": 152,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -37852,30 +38210,241 @@
       ]
     },
     {
-      "name": "SourceCourseContent",
-      "file": "packages/contracts/src/source-course.ts",
-      "line": 15,
+      "name": "SourceCourseLifecycleAction",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 3,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
-      "name": "SourceCourseLessonContent",
+      "name": "SourceCourseLifecycleState",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 4,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "SourceCourseLifecycleEvent",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 5,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "optional": false,
+          "type": "SourceCourseLifecycleAction|'revise'"
+        },
+        {
+          "name": "at",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "actorId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "reason",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "fromStatus",
+          "optional": false,
+          "type": "SourceCourseSummary['status']"
+        },
+        {
+          "name": "toStatus",
+          "optional": false,
+          "type": "SourceCourseSummary['status']"
+        },
+        {
+          "name": "relatedCourseIds",
+          "optional": false,
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseVersioning",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "familyId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "parentCourseId",
+          "optional": false,
+          "type": "string|null"
+        },
+        {
+          "name": "number",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "state",
+          "optional": false,
+          "type": "SourceCourseLifecycleState"
+        },
+        {
+          "name": "copiedAt",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "optional": false,
+          "type": "SourceCourseLifecycleEvent[]"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseVersionSummary",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 9,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "parentCourseId",
+          "optional": false,
+          "type": "string|null"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "type": "SourceCourseSummary['status']"
+        },
+        {
+          "name": "state",
+          "optional": false,
+          "type": "SourceCourseLifecycleState"
+        },
+        {
+          "name": "revision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "confirmedAt",
+          "optional": false,
+          "type": "string|null"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseLifecyclePreview",
+      "file": "packages/contracts/src/source-course-lifecycle.ts",
+      "line": 11,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "courseId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "optional": false,
+          "type": "SourceCourseLifecycleAction"
+        },
+        {
+          "name": "expectedRevision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "impactFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "requiresReason",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "sourceStatus",
+          "optional": false,
+          "type": "'current'|'changed'|'unavailable'"
+        },
+        {
+          "name": "versions",
+          "optional": false,
+          "type": "SourceCourseVersionSummary[]"
+        },
+        {
+          "name": "changes",
+          "optional": false,
+          "type": "Array<{courseId:string; title:string; fromStatus:SourceCourseSummary['status']; toStatus:SourceCourseSummary['status']}>"
+        },
+        {
+          "name": "existing",
+          "optional": false,
+          "type": "{sessions:number; completedLectures:number; answeredQuestions:number}"
+        },
+        {
+          "name": "effects",
+          "optional": false,
+          "type": "{newClassrooms:'allowed'|'blocked'; existingClassrooms:'frozen-and-retained'; priorLearning:'not-transferred'}"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseContent",
       "file": "packages/contracts/src/source-course.ts",
       "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
-      "name": "SourceCourseReviewField",
+      "name": "SourceCourseLessonContent",
       "file": "packages/contracts/src/source-course.ts",
       "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
-      "name": "SourceCourseReviewIssue",
+      "name": "SourceCourseReviewField",
       "file": "packages/contracts/src/source-course.ts",
       "line": 18,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "SourceCourseReviewIssue",
+      "file": "packages/contracts/src/source-course.ts",
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -37903,7 +38472,7 @@
     {
       "name": "SourceCourseLessonReview",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 19,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -37946,7 +38515,7 @@
     {
       "name": "SourceCourseGenerationView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 20,
+      "line": 21,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -38014,7 +38583,7 @@
     {
       "name": "CourseSourceSnapshot",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 25,
+      "line": 26,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -38087,7 +38656,7 @@
     {
       "name": "SourceCourseInput",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 28,
+      "line": 29,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -38125,7 +38694,7 @@
     {
       "name": "SourceCourseSummary",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 30,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -38154,6 +38723,11 @@
           "type": "string"
         },
         {
+          "name": "versioning",
+          "optional": true,
+          "type": "SourceCourseVersioning"
+        },
+        {
           "name": "status",
           "optional": false,
           "type": "'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'"
@@ -38171,6 +38745,11 @@
         {
           "name": "lastLessonId",
           "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "lastSessionId",
+          "optional": true,
           "type": "string | null"
         },
         {
@@ -38203,14 +38782,14 @@
     {
       "name": "SourceCourseView",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 33,
+      "line": 34,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "SourceCourseAuthoring",
       "file": "packages/contracts/src/source-course.ts",
-      "line": 43,
+      "line": 44,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -40594,6 +41173,7 @@
     "apps/api/src/modules/learning/notebook.integration.test.ts",
     "apps/api/src/modules/learning/source-course-chunks.test.ts",
     "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+    "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
     "apps/api/src/modules/learning/source-course.integration.test.ts",
     "apps/api/src/modules/learning/studio-course.test.ts",
     "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
@@ -40631,6 +41211,7 @@
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/pdf-material.spec.ts",
     "tests/e2e/product-smoke.spec.ts",
+    "tests/e2e/source-course-lifecycle.spec.ts",
     "tests/e2e/source-course-long.spec.ts",
     "tests/e2e/source-course.spec.ts",
     "tests/e2e/studio.spec.ts",

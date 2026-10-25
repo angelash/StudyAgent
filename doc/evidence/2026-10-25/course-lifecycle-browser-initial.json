@@ -1,0 +1,256 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/source-course-lifecycle.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-lifecycle.spec.ts",
+      "file": "source-course-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:38:22.426Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-f2175de9d306382cf3f9",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:38:26.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-ff6aa44fc944e312c0fc",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17867,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '归档课程', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '归档课程', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '归档课程', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>归档课程</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '归档课程', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '归档课程', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '归档课程', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>归档课程</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\source-course-lifecycle.spec.ts:37:102",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\source-course-lifecycle.spec.ts",
+                      "column": 102,
+                      "line": 37
+                    },
+                    "snippet": "  35 |   for(let index=0;index<10;index++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>Boolean(document.activeElement?.closest('[role=\"dialog\"][aria-label=\"课程变更影响预览\"]')))).toBe(true);}\n  36 |   for(const width of [1440,768,390]){await page.setViewportSize({width,height:960});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(!process.env.CI)await page.screenshot({path:evidence+'/impact-'+width+'.png',fullPage:true});}\n> 37 |   await page.keyboard.press('Escape');await expect(modal(page)).toHaveCount(0);await expect(archive).toBeFocused();expect((await call(actor,'GET','/learning/source-courses/'+row.id)).status).toBe('active');\n     |                                                                                                      ^\n  38 |   await page.getByRole('button',{name:'撤回此版本',exact:true}).click();await expect(modal(page).getByRole('button',{name:'确认撤回此版本',exact:true})).toBeDisabled();await modal(page).getByLabel('课程版本变更原因').fill('需要核查例子条件');await modal(page).getByRole('button',{name:'确认撤回此版本',exact:true}).click();await expect(modal(page)).toHaveCount(0);await expect(page.locator('.sc-version-reason')).toContainText('需要核查例子条件');await page.reload();await expect(page.locator('.sc-lifecycle h2')).toContainText('已撤回');\n  39 |   await page.getByRole('button',{name:'恢复使用此版本',exact:true}).click();await modal(page).getByRole('button',{name:'确认恢复使用此版本',exact:true}).click();await expect(modal(page)).toHaveCount(0);await expect(page.locator('.sc-course-meta')).toContainText('可以开始学习');expect(errors).toEqual([]);\n  40 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\source-course-lifecycle.spec.ts",
+                        "column": 102,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '归档课程', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: '归档课程', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '归档课程', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>归档课程</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  35 |   for(let index=0;index<10;index++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>Boolean(document.activeElement?.closest('[role=\"dialog\"][aria-label=\"课程变更影响预览\"]')))).toBe(true);}\n  36 |   for(const width of [1440,768,390]){await page.setViewportSize({width,height:960});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(!process.env.CI)await page.screenshot({path:evidence+'/impact-'+width+'.png',fullPage:true});}\n> 37 |   await page.keyboard.press('Escape');await expect(modal(page)).toHaveCount(0);await expect(archive).toBeFocused();expect((await call(actor,'GET','/learning/source-courses/'+row.id)).status).toBe('active');\n     |                                                                                                      ^\n  38 |   await page.getByRole('button',{name:'撤回此版本',exact:true}).click();await expect(modal(page).getByRole('button',{name:'确认撤回此版本',exact:true})).toBeDisabled();await modal(page).getByLabel('课程版本变更原因').fill('需要核查例子条件');await modal(page).getByRole('button',{name:'确认撤回此版本',exact:true}).click();await expect(modal(page)).toHaveCount(0);await expect(page.locator('.sc-version-reason')).toContainText('需要核查例子条件');await page.reload();await expect(page.locator('.sc-lifecycle h2')).toContainText('已撤回');\n  39 |   await page.getByRole('button',{name:'恢复使用此版本',exact:true}).click();await modal(page).getByRole('button',{name:'确认恢复使用此版本',exact:true}).click();await expect(modal(page)).toHaveCount(0);await expect(page.locator('.sc-course-meta')).toContainText('可以开始学习');expect(errors).toEqual([]);\n  40 | });\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\source-course-lifecycle.spec.ts:37:102"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:38:29.031Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\source-course-lifecycle-ar-9abf1-views-use-real-saved-states\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\source-course-lifecycle-ar-9abf1-views-use-real-saved-states\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\source-course-lifecycle-ar-9abf1-views-use-real-saved-states\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\source-course-lifecycle.spec.ts",
+                    "column": 102,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a4cae738131d1ae89e2b-48fcfc8299f84f4e1b24",
+          "file": "source-course-lifecycle.spec.ts",
+          "line": 32,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T04:38:16.980Z",
+    "duration": 31461.642,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

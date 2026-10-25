@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "89e7530a32e5003adfad5c532274b741fdf687e4",
+  "sourceRevision": "aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 112,
-    "activeNormalApiRoutes": 290,
-    "coveredApiRoutes": 290
+    "features": 113,
+    "activeNormalApiRoutes": 294,
+    "coveredApiRoutes": 294
   },
   "areas": [
     {
@@ -6310,6 +6310,113 @@
             "apps/api/src/infrastructure/studio-original-repair.test.ts",
             "apps/web/app/studio/source-courses/original-repair.tsx",
             "tests/e2e/pdf-material.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-26",
+          "title": "资料课程修订家族、影响预览与历史恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "当前发布课程、修订号、内容与影响指纹、请求键、动作和原因",
+          "implementation": "短课/长课以独立候选复制原稿、来源和可核对的阶段来历，无新模型调用或共享任务；家族版本单调分配。只读预览列真实课堂/作答与新开影响；发布、归档、撤回、恢复、放弃以同一事务更新相关版本，重放先于新状态检查，并发预览失效则重新核对。旧课件、原句、题目和代码不迁移；历史详情明确恢复个人原会话。前端保留掉回执命令、刷新找回、状态冲突读取与键盘焦点；私有修订身份不透过学生投影/家庭导出泄漏，关闭账号擦除未发布稿与阶段。",
+          "outputs": "版本关系/原因与影响预览、可编辑修订、唯一当前版、准确旧课堂入口及保留生成来历",
+          "collections": [
+            "sourceCourses",
+            "sourceCourseStages",
+            "classroomSessions"
+          ],
+          "limits": "复制和人工确认不等于教师批准、完整内容质量或正式测量；学校、付费与Marketplace不在范围；固定成人课程/教材包的发布规则仍各自独立。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/:id/versions",
+              "controller": "SourceCourseLifecycleController",
+              "method": "versions",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/revisions",
+              "controller": "SourceCourseLifecycleController",
+              "method": "revise",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/lifecycle/preview",
+              "controller": "SourceCourseLifecycleController",
+              "method": "preview",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/source-courses/:id/lifecycle",
+              "controller": "SourceCourseLifecycleController",
+              "method": "apply",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+              "line": 12
+            }
+          ],
+          "implementations": [
+            {
+              "name": "SourceCourseLifecycleService.versions",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+              "line": 28
+            },
+            {
+              "name": "SourceCourseLifecycleService.revise",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+              "line": 54
+            },
+            {
+              "name": "SourceCourseLifecycleService.preview",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+              "line": 75
+            },
+            {
+              "name": "SourceCourseLifecycleService.apply",
+              "file": "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+              "line": 89
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/source-course-lifecycle.ts",
+            "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+            "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+            "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
+            "apps/api/src/modules/learning/source-course-content.ts",
+            "apps/api/src/modules/learning/source-course.service.ts",
+            "apps/api/src/modules/privacy/privacy-records.ts",
+            "apps/web/app/studio/source-courses/lifecycle-panel.tsx",
+            "apps/web/app/studio/source-courses/workbench.tsx",
+            "tests/e2e/source-course-lifecycle.spec.ts",
+            "scripts/qa/run-source-lifecycle-postgres.cjs"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio-course.test.ts",

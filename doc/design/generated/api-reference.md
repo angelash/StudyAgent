@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`89e7530a32e5003adfad5c532274b741fdf687e4`。共 311 个 HTTP 路由声明，当前 AppModule 可达 290 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`aef3bc8f0ca0afabbc3ff6cd29f45f42b741b561`。共 315 个 HTTP 路由声明，当前 AppModule 可达 294 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1677,6 +1677,44 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：无 this 服务调用；直接处理或静态函数。
+
+## SourceCourseLifecycleController — 当前接入
+
+### GET /api/learning/source-courses/:id/versions
+
+实现：[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:9](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L9)，方法 `versions`。
+
+- 签名：`versions(@Req()request:AuthenticatedRequest, @Param('id')id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.lifecycle.versions`
+
+### POST /api/learning/source-courses/:id/revisions
+
+实现：[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:10](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L10)，方法 `revise`。
+
+- 签名：`revise(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.lifecycle.revise`
+
+### POST /api/learning/source-courses/:id/lifecycle/preview
+
+实现：[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:11](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L11)，方法 `preview`。
+
+- 签名：`preview(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.lifecycle.preview`
+
+### POST /api/learning/source-courses/:id/lifecycle
+
+实现：[apps/api/src/modules/learning/source-course-lifecycle.controller.ts:12](../../../apps/api/src/modules/learning/source-course-lifecycle.controller.ts#L12)，方法 `apply`。
+
+- 签名：`apply(@Req()request:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.lifecycle.apply`
 
 ## SourceCourseController — 当前接入
 
