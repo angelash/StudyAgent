@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T14:15:48.595Z",
+  "at": "2026-10-25T14:40:35.160Z",
   "sourceRevision": "855234ff2dc36280273b38fb74394f59fbb430e1",
   "applicationSourceRevision": "855234ff2dc36280273b38fb74394f59fbb430e1",
   "apiSourceRevision": "e590c669a40942ea96df8418e5f938bcc73a1b51",
@@ -52,8 +52,8 @@
     "scripts/qa/verify-full-restore-runtime.cjs": "a3b8605c57e78ac6976053de9187acfe3a36d8c69a7c9b7288d0ba082394bf0e"
   },
   "localPassed": true,
-  "passed": false,
-  "status": "ci-corrected-awaiting-new-exact-ci-and-runtime",
+  "passed": true,
+  "status": "delivered-exact-ci-and-production-daemon",
   "reports": {
     "guidance-model-boundaries-final.json": {
       "sha256": "37a792863ba2a9e414d44b75d84b6986c095716bc15fcfe200b91ff48e798c05",
@@ -329,10 +329,46 @@
   ],
   "design": {
     "receipt": "doc/design/generated/design-validation.json",
-    "sha256": "d04325b0009d7f561a2a3242832aee8ed350b67302989da9c88f7434a559fd1b",
+    "sha256": "b247c7be53da775774198fe6769ea26845799a8ba88e4a70e871b054850777df",
     "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
     "sourceFiles": 391,
-    "viewerChecks": 10
+    "viewerChecks": 10,
+    "sha256Normalization": "UTF-8 CRLF normalized to LF"
   },
-  "ciCorrection": "guidance-model-ci-fix.json"
+  "ciCorrection": "guidance-model-ci-fix.json",
+  "localValidationAt": "2026-10-25T14:15:48.595Z",
+  "ci": {
+    "head": "6858c439f4d1213dc9449b5888510b450124088b",
+    "run": 40201460232,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40201460232",
+    "conclusion": "success",
+    "receipt": "guidance-model-exact-ci.json",
+    "sha256": "e1d226bdbacc0fb87396007d7111330e36e54026f7e9f9ad4625ff7ead2fe98f",
+    "linuxApplication": {
+      "passed": 1160,
+      "skipped": 47
+    },
+    "browser": {
+      "passed": 171
+    },
+    "guidancePostgresCommand": {
+      "passed": 13,
+      "scope": "11 PostgreSQL service tests plus one SQLite native recovery and one PostgreSQL native recovery"
+    }
+  },
+  "runtime": {
+    "revision": "6858c439f4d1213dc9449b5888510b450124088b",
+    "buildId": "8aOqcHU6YyLpFb-JNCnHY",
+    "receipt": "guidance-model-runtime.json",
+    "sha256": "18d7834d2928c26bf535155ebfffaf2847d8c07308bf45e96d014cf94acfa31a",
+    "checks": 36,
+    "observations": 3,
+    "observationSpanMs": 70179,
+    "protectedFilesUnchanged": 5
+  },
+  "checkoutCorrection": {
+    "receipt": "guidance-runtime-report-checkout-fix.json",
+    "sha256": "8913b32a20bfc49f5e293e95c9522a15cf399ae0e9c5ec3c6177d7577b158686",
+    "scope": "Initial production smoke refused altered JSON report hashes. Fifteen Windows CRLF checkouts were restored to exact canonical Git bytes; .gitattributes now preserves LF. No application or business-data change."
+  }
 }
