@@ -205,7 +205,7 @@ test('independent practice matches four-option illustrated question flow on desk
   await expect(page.locator('.cl-practice-prompt .cl-lesson-image img')).toHaveJSProperty('naturalWidth', 1024);
   await expect(page.getByRole('button', { name: 'Check →' })).toBeDisabled();
   if (!process.env.CI) await page.screenshot({ path: evidenceDirectory + '/classroom-practice-v2.png', fullPage: true });
-  await page.locator('.cl-practice-prompt h2').click(); await page.keyboard.press('1');
+  await page.getByLabel('题目作答区域，数字键选择，回车提交').focus(); await page.keyboard.press('1');
   await page.getByRole('button', { name: 'Check →' }).click();
   await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');
   await page.getByRole('button', { name: '下一题 →' }).click();
