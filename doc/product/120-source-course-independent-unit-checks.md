@@ -100,3 +100,10 @@ POST :checkId/confirm要求当前记录revision/contentFingerprint、当前publi
 POST :checkId/withdraw仅撤回当前发布项，带相同版本与原请求保障。指针保留单调递增revision并将checkId/definitionFingerprint设为null，避免删除指针后旧revision=0命令再次生效的ABA问题。指针补studentId及ownerUserId，用于原课程/定义已缺失时的隐私级联；共享儿童发布历史按既有规则保留，成人/儿童删除连空指针也清理。原发布/撤回回执分别保留真实actor、生效内容与指针revision；重放不创造第二次发布。原actorUserId纳入共享归属匿名化，家庭导出仍不含这些私有命令、历史稿或内部指针。
 
 本阶段先以两库真实HTTP核对审阅曝光、旧审阅回放、编辑冲突/旧模型审稿过期、确认前置、相同命令重放、两候选发布切换、撤回空指针及旧revision拒绝、隐私导出/空指针删除。前端与学习者题面尚未接入时，不把管理API视为完整教学交付。
+
+
+### 10.1 保留个人自测的未曝光路径（实施前，更正确认前置）
+
+确认用于练习不应强迫本人先看答案，否则内部个人学习只能被标记为作者曝光。取代上节attestReviewed与“必须已有答案曝光”的确认前置：confirm改要求acknowledgeGeneratedContent=true，含义仅为同意将这份AI生成、仍待审核的候选用于练习。未显式POST authoring或PATCH题目的用户可以保留未见答案的首次作答路径；准备题组、读元数据、确认和GET原回执不记答案曝光。管理者可另选“审阅并编辑”，该路径继续记录实际答案曝光。两种路径的contentReview均pending/formalMeasurementEligible=false，不将确认称为人工审核通过。
+
+AI复核uncertain或编辑后审稿过期时，仍须明确acknowledgeReviewWarnings=true；界面直接说明待核查问题并提供继续练习动作，不要求为了确认而展开正确答案。实际已读答案/编辑者与后续作答账号、内容指纹匹配时才记录authorship，不能凭“是创建者”猜测已经看过答案。验证补“未读答案确认后原曝光表仍空”及“真正审阅/编辑后曝光存在”的对照，避免破坏内部自测体验。
