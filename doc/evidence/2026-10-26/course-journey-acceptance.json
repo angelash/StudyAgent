@@ -42,7 +42,7 @@
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "local-and-exact-ci-complete-production-pending",
+  "status": "ci-passed-with-flaky-relative-navigation-runtime-held",
   "localPassed": true,
   "passed": false,
   "api": {
@@ -82,7 +82,15 @@
     "conclusion": "success",
     "runId": 40218645644,
     "head": "5b09cc81c908f80bec31730a107858c00891cbe5",
-    "report": "course-journey-exact-ci.json"
+    "report": "course-journey-exact-ci.json",
+    "browser": {
+      "total": 203,
+      "passed": 202,
+      "flaky": 1,
+      "retries": 1,
+      "finalFailed": 0
+    },
+    "runtimeGate": "held-for-relative-back-navigation-fix"
   },
   "production": {
     "status": "not-released",
@@ -106,7 +114,8 @@
     "Browser journey round: 45 passed / 2 failed because older test expected complete-view button despite restored mode, and practice URL was read before its UI was ready",
     "Design snapshot initially lacked its required local authored audit; generated a fresh audit before retrying",
     "Expanded complete-journey browser round 7 passed/2 failed because the test read session URL before actual classroom navigation was ready",
-    "Next expanded round 7 passed/2 failed because the last answer enters recap automatically; test now opens the final first-answer receipt from that recap. Same nine tests and final full 203 passed."
+    "Next expanded round 7 passed/2 failed because the last answer enters recap automatically; test now opens the final first-answer receipt from that recap. Same nine tests and final full 203 passed.",
+    "First exact CI succeeded with one retried classroom-image test: two accepted previous-step clicks before the first PATCH completed reused the rendered cursor, ending at 3/8 rather than 2/8. Runtime delivery held pending a controlled reproduction and fix."
   ],
   "evidenceLimits": [
     "The earliest SQLite cold-run report was overwritten during an uncorrected rerun; the prefixed rerun failure and final confirmed report are preserved, not a claim of retaining the earliest artifact",
@@ -115,7 +124,8 @@
     "No new live-model or live-TTS call in 119; 118 real TTS evidence and existing source generation channels are reused",
     "Teacher review, real devices, all materials and long-term learning outcomes remain outstanding",
     "Independent source unit checks remain not_configured; 120 is specification only",
-    "Original 72 requirements and all M1-M7 remain open; no overall product completion claim"
+    "Original 72 requirements and all M1-M7 remain open; no overall product completion claim",
+    "First successful CI did not upload retried screenshot/trace because its artifact step was failure-only; complete stdout is retained, remote screenshot/trace unavailable."
   ],
   "archivedReports": {
     "course-journey-full-api.json": "26a078ef1599fd7bd946cdeb2b93b21baab96be2643399c9dbd6ac4e51e492d5",
