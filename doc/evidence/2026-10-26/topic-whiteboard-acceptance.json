@@ -1,0 +1,20 @@
+{
+  "status": "foundation-only",
+  "deployed": false,
+  "sourceRevision": "b63f690a71114b2fafe70d38785207a757502173",
+  "sqliteAndContent": {
+    "passed": 9,
+    "report": "topic-whiteboard-foundation/api.json"
+  },
+  "nativePostgres": {
+    "passed": 2,
+    "report": "topic-whiteboard-foundation/postgres.json"
+  },
+  "schemaVersionInIsolatedTests": 16,
+  "productionSchemaVersion": 15,
+  "limits": [
+    "No working generation service, worker, HTTP entry or user page yet.",
+    "Backup/cold restore foundation does not prove deletion-ledger cold recovery.",
+    "Must merge final122 and pass full gates before release."
+  ]
+}
