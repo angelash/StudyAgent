@@ -1,0 +1,127 @@
+{
+  "at": "2026-10-25T13:21:45.936Z",
+  "passed": true,
+  "voices": [
+    {
+      "preset": "warm",
+      "voiceId": "Chinese (Mandarin)_Warm_Girl",
+      "providerName": "温暖少女",
+      "language": "中文(普通话)",
+      "file": "warm-v1.mp3",
+      "sha256": "a6a2dccb363caf307c62829cd2f9482acd4beaaa1bce140de5b40b2f1ac8f023",
+      "bytes": 72564,
+      "durationSeconds": 4.388594,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-warm-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 4428,
+        "audio_size": 72564
+      }
+    },
+    {
+      "preset": "calm",
+      "voiceId": "Chinese (Mandarin)_Gentleman",
+      "providerName": "温润男声",
+      "language": "中文(普通话)",
+      "file": "calm-v1.mp3",
+      "sha256": "ab283698ffd0c7c541d07e56323f97dcfbf8be977f17f9550b546684ca8b64a7",
+      "bytes": 75444,
+      "durationSeconds": 4.56275,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-calm-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 4608,
+        "audio_size": 75444
+      }
+    },
+    {
+      "preset": "bright",
+      "voiceId": "Chinese (Mandarin)_Crisp_Girl",
+      "providerName": "清脆少女",
+      "language": "中文(普通话)",
+      "file": "bright-v1.mp3",
+      "sha256": "7fbda45ec0383a98b9d32d7268b8cdf49006281a0a8353cf959ff2cb294b71ed",
+      "bytes": 90420,
+      "durationSeconds": 5.503156,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-bright-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 5544,
+        "audio_size": 90420
+      }
+    },
+    {
+      "preset": "gentle",
+      "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+      "providerName": "温柔学姐",
+      "language": "中文(普通话)",
+      "file": "gentle-v1.mp3",
+      "sha256": "920d425e5dae02a301b078a0a747d91a674ad78f936e535552bf3a665e6f9cf9",
+      "bytes": 81204,
+      "durationSeconds": 4.899438,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-gentle-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 4968,
+        "audio_size": 81204
+      }
+    },
+    {
+      "preset": "professional",
+      "voiceId": "Chinese (Mandarin)_Male_Announcer",
+      "providerName": "播报男声",
+      "language": "中文(普通话)",
+      "file": "professional-v1.mp3",
+      "sha256": "5d01b439d86621d11b294bdef737ffe1d1d9234071395ee6b921f25bf0a5faaa",
+      "bytes": 82356,
+      "durationSeconds": 4.980688,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-professional-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 5040,
+        "audio_size": 82356
+      }
+    },
+    {
+      "preset": "lively",
+      "voiceId": "qiaopi_mengmei",
+      "providerName": "俏皮萌妹",
+      "language": "中文(普通话)",
+      "file": "lively-v1.mp3",
+      "sha256": "bec74e344c8634d12b5dc7adcc23e84a4dc9b0df90d1ca6dbbec7d0f9e517f1e",
+      "bytes": 74292,
+      "durationSeconds": 4.469844,
+      "sampleRate": 32000,
+      "channels": 1,
+      "sourceRequestId": "classroom-neutral-lively-20261025",
+      "usage": {
+        "usage_characters": 47,
+        "audio_length": 4536,
+        "audio_size": 74292
+      }
+    }
+  ],
+  "bytes": 476280,
+  "usageCharacters": 282,
+  "checks": {
+    "supplierIdsInBuiltinTable": true,
+    "distinctSupplierIds": true,
+    "distinctAudioHashes": true,
+    "mp3Container": true,
+    "independentFfmpegDecode": true
+  },
+  "limits": [
+    "Built-in list-voices is a local supplier table, not a live account inventory. Real syntheses separately proved these six IDs for this invocation.",
+    "117 UI and preview endpoint are not yet implemented or deployed."
+  ]
+}
