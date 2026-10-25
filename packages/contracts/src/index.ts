@@ -751,3 +751,4 @@ export * from './project-assets';
 export * from './answer-draft';
 
 export * from './assistant-turn';
+export * from './project-teaching';
