@@ -116,7 +116,14 @@ test('another account cannot open or adopt the prior family guidance',async({pag
 });
 
 for(const width of [390,768,1440])test('guidance comparisons and actions fit at '+width,async({page})=>{
+  // CI uses the built-in catalog; a local Xiaojiu catalog may shorten this description.
+  await page.route('**/api/ai/models',async route=>{const response=await route.fetch(),body=await response.json();
+    for(const model of body.data.models)if(model.id==='deepseek-v4-flash')model.description='当前渠道：DeepSeek V4 Flash · 快速推理与文档复核';
+    await route.fulfill({response,json:body});});
   await page.setViewportSize({width,height:1000});await setup(page);await panel(page).getByRole('button',{name:'生成说明建议',exact:true}).click();await expect(panel(page).getByText('建议已生成',{exact:true})).toBeVisible();
   await panel(page).getByText('对照原说明与建议，再决定是否采用',{exact:true}).click();await panel(page).getByRole('button',{name:'采用这份说明'}).scrollIntoViewIfNeeded();await expect(panel(page).getByRole('button',{name:'采用这份说明'})).toBeVisible();
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(!process.env.CI)await page.screenshot({path:evidence+'/comparison-'+width+'.png',fullPage:true});
+  const layout=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+    overflow:[...document.querySelectorAll<HTMLElement>('body *')].filter(element=>element.getBoundingClientRect().right>innerWidth+1)
+      .slice(0,12).map(element=>({tag:element.tagName,className:element.className,width:element.getBoundingClientRect().width,scrollWidth:element.scrollWidth}))}));
+  expect(layout.scrollWidth,JSON.stringify(layout)).toBeLessThanOrEqual(layout.width+1);if(!process.env.CI)await page.screenshot({path:evidence+'/comparison-'+width+'.png',fullPage:true});
 });
