@@ -43,7 +43,7 @@
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "local-205-complete-exact-ci-pending",
+  "status": "local-205-and-clean-exact-ci-complete-production-pending",
   "localPassed": true,
   "passed": false,
   "api": {
@@ -79,7 +79,20 @@
     "report": "course-journey-browser-focused.json"
   },
   "remoteCi": {
-    "status": "in_progress",
+    "status": "completed",
+    "conclusion": "success",
+    "runId": 40221345190,
+    "head": "9053f0353b8ad085d6885911837b089651674fdc",
+    "browser": {
+      "passed": 205,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "retries": 0,
+      "report": "course-journey-ci-browser.json",
+      "durationMs": 1046472.8169999999
+    },
+    "report": "course-journey-exact-ci.json",
     "prior": {
       "status": "completed",
       "conclusion": "success",
@@ -94,9 +107,7 @@
         "finalFailed": 0
       },
       "runtimeGate": "held-for-relative-back-navigation-fix"
-    },
-    "head": "9053f0353b8ad085d6885911837b089651674fdc",
-    "runId": 40221345190
+    }
   },
   "production": {
     "status": "not-released",
@@ -141,10 +152,11 @@
     "course-journey-complete-browser.json": "73a047af7a8b83b914e76a872cdc67379c323c6a35602402ab13f5e830a21182",
     "course-journey-full-browser.json": "72f801d055ea9ab1a529e5c1736a1f8b3a4147deb990845524f65dfdf4ff58f9",
     "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c",
-    "course-journey-exact-ci.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
+    "course-journey-exact-ci.json": "0f8c43f67f2d972249327e3a8179c208886af84659eb199947652f2e662b8d47",
     "course-journey-exact-ci-initial.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
     "course-journey-relative-navigation-browser.json": "cc15bde967ea0841273e0390538a49e7418c4af46b38da8a6b8019f332be61e1",
-    "course-journey-full-browser-before-relative-fix.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed"
+    "course-journey-full-browser-before-relative-fix.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
+    "course-journey-ci-browser.json": "80166204f70b830dde900a9c89e189300119aa6c515c083330a943c8558da52c"
   },
   "completeJourneys": {
     "passed": 9,
