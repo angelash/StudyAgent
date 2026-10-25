@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, ServiceUnavailableException } from '@n
 import { loadApiEnv, type ApiEnv } from '@study-agent/config';
 import type { StudioSpeechCapabilities, StudioSpeechVoice } from '@study-agent/contracts';
 import OpenAI from 'openai';
+import { classroomVoicePresets,neutralVoiceModel,neutralVoiceText,neutralVoiceVersion,readNeutralVoiceSample } from './neutral-voice-samples';
 
 const sampleRate = 16_000;
 const maxSseBytes = 8_000_000;
@@ -10,7 +11,7 @@ const miniMaxVoices: StudioSpeechVoice[] = [
   { id: 'Chinese (Mandarin)_Warm_Girl', label: '温暖少女' },
   { id: 'Chinese (Mandarin)_Soft_Girl', label: '柔和少女' },
   { id: 'qiaopi_mengmei', label: '俏皮萌妹' },
-  { id: 'wumei_yujie', label: '知性御姐' },
+  { id: 'wumei_yujie', label: '妩媚御姐' },
 ];
 const openAiVoices: StudioSpeechVoice[] = ['alloy', 'coral', 'nova', 'sage', 'shimmer']
   .map(id => ({ id, label: id }));
@@ -85,9 +86,20 @@ export class SpeechService {
 
   capabilities(): StudioSpeechCapabilities {
     const provider = this.provider;
-    const voices = provider === 'minimax' ? miniMaxVoices : provider === 'openai' ? openAiVoices : [];
+    const voices = provider === 'minimax' ? [...classroomVoicePresets,...miniMaxVoices.filter(row=>!classroomVoicePresets.some(preset=>preset.id===row.id))] : provider === 'openai' ? openAiVoices : [];
     return { available: Boolean(provider), provider, voices,
+      ...(provider?{preview:{version:neutralVoiceVersion,text:neutralVoiceText,model:provider==='minimax'?neutralVoiceModel:null}}:{}),
       defaultVoice: provider === 'minimax' ? this.env.MINIMAX_TTS_VOICE : provider === 'openai' ? this.env.OPENAI_TTS_VOICE : null };
+  }
+
+  async preview(voice:string,version:string,signal?:AbortSignal):Promise<SpeechResult>{
+    if(signal?.aborted)throw new BadRequestException('试听已停止');
+    const capabilities=this.capabilities();
+    if(!capabilities.available)throw new ServiceUnavailableException('当前尚未启用语音，文字课堂仍可使用');
+    if(version!==neutralVoiceVersion||!capabilities.voices.some(row=>row.id===voice))throw new BadRequestException('音色或试听版本已变化，请重新读取课堂设置');
+    const content=capabilities.provider==='minimax'?readNeutralVoiceSample(voice):null;
+    if(content){if(signal?.aborted)throw new BadRequestException('试听已停止');return{content,contentType:'audio/mpeg',provider:'minimax'};}
+    return this.synthesize(neutralVoiceText,voice,signal);
   }
 
   async synthesize(text: string, requestedVoice?: string, signal?:AbortSignal): Promise<SpeechResult> {

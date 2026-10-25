@@ -289,11 +289,13 @@ export type StudioIntegrationOverview = {
   events: StudioScheduleEvent[];
 };
 
-export type StudioSpeechVoice = { id: string; label: string };
+export type StudioSpeechVoice = { id: string; label: string; description?: string;
+  classroomPreset?: 'warm' | 'calm' | 'bright' | 'gentle' | 'professional' | 'lively' };
 export type StudioSpeechCapabilities = {
   available: boolean;
   provider: 'minimax' | 'openai' | null;
   voices: StudioSpeechVoice[];
+  preview?: { version: string; text: string; model: string | null };
   defaultVoice: string | null;
 };
 

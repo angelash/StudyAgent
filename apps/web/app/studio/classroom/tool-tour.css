@@ -48,6 +48,11 @@
 .cl-voice-choice .cl-voice-preview:disabled{opacity:.4;cursor:default}
 .cl-voice-choice>i{position:absolute;right:-6px;top:-7px;background:#526f9f;color:white;border:2px solid white;border-radius:50%;font:10px/17px Arial;width:21px;height:21px;text-align:center}
 .cl-preview-notice{font-size:11px;line-height:1.6;color:#7f8b9c;margin:10px 0}
+.cl-extra-voices{display:flex;align-items:flex-end;gap:8px;margin-top:10px;flex-wrap:wrap;font-size:11px;color:#7f8b9c}
+.cl-extra-voices label{display:grid;gap:4px;flex:1;min-width:0}.cl-extra-voices select{max-width:100%;min-height:30px;border:1px solid #e5e8ef;border-radius:8px;background:white;color:#4e6090;padding:4px 8px}
+.cl-extra-voices>button,.cl-preview-modes button{border:1px solid #e5e8ef;border-radius:8px;background:#fff;color:#63718a;padding:6px 9px;font-size:11px;cursor:pointer}
+.cl-preview-modes{display:flex;gap:6px;margin-top:10px}.cl-preview-modes button[aria-pressed=true]{border-color:#4b6498;background:#edf2fa;color:#4b6498}
+.cl-preview-modes button:disabled,.cl-extra-voices>button:disabled{opacity:.45;cursor:default}
 .cl-voice-choice button:focus-visible{outline:2px solid #6c8bb8;outline-offset:2px}
 .cl-room .cl-font-grid{gap:8px}
 .cl-room .cl-font-grid button{min-height:76px;border-radius:12px}

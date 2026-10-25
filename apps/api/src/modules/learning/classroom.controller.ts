@@ -33,4 +33,8 @@ export class ClassroomController {
     const controller=new AbortController(),disconnect=()=>{if(!req.res?.writableEnded)controller.abort();};req.res?.once('close',disconnect);
     try{return await this.classroom.narration(req.user,id,stepId,input,controller.signal);}finally{req.res?.off('close',disconnect);}
   }
+  @Post('sessions/:id/voice-preview') async voicePreview(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Body() input:unknown){
+    const controller=new AbortController(),disconnect=()=>{if(!req.res?.writableEnded)controller.abort();};req.res?.once('close',disconnect);
+    try{return await this.classroom.voicePreview(req.user,id,input,controller.signal);}finally{req.res?.off('close',disconnect);}
+  }
 }

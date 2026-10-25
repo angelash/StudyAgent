@@ -282,6 +282,14 @@ export class ClassroomService {
     return this.view(row);
   }
 
+  async voicePreview(user:InMemoryUserAccount,id:string,input:unknown,signal?:AbortSignal){
+    this.record(user,id);
+    const command=validate(z.object({voice:z.string().min(1).max(120),sampleVersion:z.string().min(1).max(100)}).strict(),input);
+    const audio=await this.speech.preview(command.voice,command.sampleVersion,signal);
+    if(signal?.aborted)throw new BadRequestException('试听已停止');
+    return new StreamableFile(audio.content,{type:audio.contentType,disposition:'inline',length:audio.content.length});
+  }
+
   async narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal) {
     const row = this.record(user, id), step = row.lesson.steps.find(item => item.id === stepId);
     const message = row.messages.find(item => item.id === stepId && item.role === 'assistant');

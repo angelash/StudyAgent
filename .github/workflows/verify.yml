@@ -276,3 +276,9 @@ jobs:
           STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
           STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/diagnostics/guidance-model.integration.test.ts src/modules/diagnostics/guidance-model-recovery.integration.test.ts
+
+      - name: Neutral classroom voice samples, fixed bytes and real learner permissions on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_NEUTRAL_VOICE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-voice-preview.integration.test.ts

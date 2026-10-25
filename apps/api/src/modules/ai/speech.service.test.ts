@@ -56,6 +56,15 @@ describe('whiteboard speech providers', () => {
     expect(service.capabilities()).toMatchObject({ available: true, provider: 'openai', defaultVoice: 'alloy' });
     expect(service.capabilities().voices.map(voice => voice.id)).toContain('coral');
   });
+  it('uses the same fixed neutral text for an OpenAI voice, validates its version and never substitutes a MiniMax asset',async()=>{
+    vi.stubEnv('MINIMAX_API_KEY','');vi.stubEnv('OPENAI_API_KEY','fixture-openai-key');const service=new SpeechService(),preview=service.capabilities().preview!;
+    const synthesis=vi.spyOn(service,'synthesize').mockResolvedValue({content:Buffer.from('synthetic OpenAI audio'),contentType:'audio/mpeg',provider:'openai'}),controller=new AbortController();
+    try{
+      expect(preview.model).toBeNull();await service.preview('coral',preview.version,controller.signal);expect(synthesis).toHaveBeenCalledWith(preview.text,'coral',controller.signal);
+      await expect(service.preview('coral','old-sample',controller.signal)).rejects.toThrow('音色或试听版本已变化');
+      await expect(service.preview('Chinese (Mandarin)_Warm_Girl',preview.version,controller.signal)).rejects.toThrow('音色或试听版本已变化');expect(synthesis).toHaveBeenCalledOnce();
+    }finally{synthesis.mockRestore();}
+  });
   it('forwards cancellation to MiniMax and stops retries instead of continuing a cancelled sentence',async()=>{
     vi.stubEnv('MINIMAX_API_KEY','fixture-key');vi.stubEnv('MINIMAX_TTS_BASE_URL','https://api.minimaxi.com/v1/t2a_v2');vi.stubEnv('MINIMAX_TTS_MAX_RETRIES','2');
     let entered!:()=>void;const arrival=new Promise<void>(resolve=>{entered=resolve;}),fetcher=vi.fn((_url:unknown,options:any)=>new Promise<Response>((_resolve,reject)=>{options.signal.addEventListener('abort',()=>reject(new DOMException('Cancelled','AbortError')),{once:true});entered();}));vi.stubGlobal('fetch',fetcher);const service=new SpeechService(),controller=new AbortController(),pending=service.synthesize('Keep this exact sentence.',undefined,controller.signal);const rejected=expect(pending).rejects.toThrow('朗读已停止');await arrival;controller.abort();await rejected;expect(fetcher).toHaveBeenCalledOnce();

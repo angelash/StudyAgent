@@ -163,6 +163,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [session, setSession] = React.useState(initial), row = React.useRef(initial);
   const [playing, setPlaying] = React.useState(false), [muted, setMuted] = React.useState(!initial.speech.available);
   const [speed, setSpeed] = React.useState(1), [voice, setVoice] = React.useState(initial.speech.defaultVoice ?? '');
+  const [previewMode,setPreviewMode]=React.useState<'neutral'|'current'>('neutral');
   const [dots, setDots] = React.useState(true), [handwriting, setHandwriting] = React.useState(true), [zoom, setZoom] = React.useState(100);
   const [page, setPage] = React.useState(0), [chatWidth, setChatWidth] = React.useState(360), [mobile, setMobile] = React.useState<'board' | 'chat'>('board');
   const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourOpen, setTourOpen] = React.useState(false);
@@ -196,6 +197,10 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const practiceDraft = usePracticeDraft(session, receive);
   const busy=operationBusy||captions.busy||turns.working||turns.active||practiceDraft.working;
   const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed });
+  const primaryVoices=session.speech.voices.filter(item=>item.classroomPreset),visibleVoices=primaryVoices.length?primaryVoices:session.speech.voices;
+  const extraVoices=primaryVoices.length?session.speech.voices.filter(item=>!item.classroomPreset):[];
+  const presetNames={warm:'Warm',calm:'Calm',bright:'Bright',gentle:'Gentle',professional:'Professional',lively:'Lively'};
+  const canPreview=session.speech.available&&(previewMode==='neutral'&&!!session.speech.preview||session.revealed>session.cursor);
   React.useEffect(()=>{if(!settings)printOperation.current?.abort();},[settings]);
   React.useEffect(()=>()=>printOperation.current?.abort(),[]);
   async function printNotes(){const operation=new AbortController();printOperation.current?.abort();printOperation.current=operation;setPrintBusy(true);try{
@@ -531,15 +536,17 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       </aside></>}
     {!showChat && !standalonePractice && <button className="cl-show-chat" onClick={() => setShowChat(true)}>打开对话与控制 ▤</button>}
     {settings && <WorkspaceDialog onClose={()=>{pause();setSettings(false);}}><div className="cl-modal-backdrop"><section className="cl-settings" role="dialog" aria-modal="true" aria-label="课堂设置"><header><h2>Session settings</h2><button aria-label="关闭课堂设置" onClick={() => setSettings(false)}>×</button></header>
-      <h3>VOICE OPTIONS <span>{session.speech.available ? session.speech.voices.find(item => item.id === voice)?.label ?? 'AI 语音' : '文字讲解'}</span></h3><div className="cl-voice-grid" role="radiogroup" aria-label="课堂音色">{session.speech.voices.map((item, index) => <div className="cl-voice-choice" key={item.id} data-active={voice === item.id}>
+      <h3>VOICE OPTIONS <span>{session.speech.available ? session.speech.voices.find(item => item.id === voice)?.label ?? 'AI 语音' : '文字讲解'}</span></h3><div className="cl-voice-grid" role="radiogroup" aria-label="课堂音色">{visibleVoices.map((item, index) => <div className="cl-voice-choice" key={item.id} data-active={voice === item.id}>
         <button className="cl-voice-select" role="radio" aria-checked={voice === item.id} onClick={() => setVoice(item.id)} onKeyDown={event => {
           if (!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(event.key)) return; event.preventDefault();
-          const next = (index + (['ArrowRight','ArrowDown'].includes(event.key) ? 1 : -1) + session.speech.voices.length) % session.speech.voices.length;
-          setVoice(session.speech.voices[next].id); event.currentTarget.closest('.cl-voice-grid')?.querySelectorAll<HTMLElement>('[role="radio"]')[next]?.focus();
-        }}><span className="cl-voice-wave" aria-hidden="true">{[5,10,14,8,12].map((height,index) => <i key={index} style={{height}}/>)}</span><span><b>{item.label}</b><small>{['耐心清晰，适合概念讲解', '平静自然，适合持续聆听', '轻快明亮，重点更鲜明', '柔和舒缓，适合从容阅读', '平稳知性，适合系统回顾', '活泼有力，适合互动学习'][index % 6]}</small></span></button>
-        <button className="cl-voice-preview" aria-label={(voicePreview.active === item.id ? '停止试听：' : '试听音色：') + item.label} disabled={!session.speech.available || session.revealed <= session.cursor} onClick={() => void voicePreview.toggle(item.id)}><ClassroomIcon name={voicePreview.active === item.id ? 'stop' : 'play'} size={12}/></button>
+          const next = (index + (['ArrowRight','ArrowDown'].includes(event.key) ? 1 : -1) + visibleVoices.length) % visibleVoices.length;
+          setVoice(visibleVoices[next].id); event.currentTarget.closest('.cl-voice-grid')?.querySelectorAll<HTMLElement>('[role="radio"]')[next]?.focus();
+        }}><span className="cl-voice-wave" aria-hidden="true">{[5,10,14,8,12].map((height,index) => <i key={index} style={{height}}/>)}</span><span><b>{item.classroomPreset?presetNames[item.classroomPreset]:item.label}</b><small>{item.description??((session.speech.provider==='openai'?'OpenAI':'MiniMax')+' · '+item.label)}</small></span></button>
+        <button className="cl-voice-preview" aria-label={(voicePreview.active === item.id ? '停止试听：' : '试听音色：') + item.label} disabled={!canPreview} onClick={() => void voicePreview.toggle(item.id,previewMode)}><ClassroomIcon name={voicePreview.active === item.id ? 'stop' : 'play'} size={12}/></button>
         {voice === item.id && <i aria-hidden="true">✓</i>}</div>)}</div>
-      {session.speech.available && <p className="cl-preview-notice" role="status">{voicePreview.notice || (session.revealed > session.cursor ? '试听已出现的当前句，所选音色与学习进度保持原样。' : '开始讲解后，可以试听已出现的当前句。')}</p>}
+      {!!extraVoices.length&&<div className="cl-extra-voices"><label>其他可用音色<select aria-label="其他可用音色" value={extraVoices.some(item=>item.id===voice)?voice:''} onChange={event=>{if(event.target.value)setVoice(event.target.value);}}><option value="" disabled>选择其他音色</option>{extraVoices.map(item=><option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!canPreview||!extraVoices.some(item=>item.id===voice)} onClick={()=>void voicePreview.toggle(voice,previewMode)}>试听所选音色</button></div>}
+      {session.speech.preview&&<div className="cl-preview-modes" role="group" aria-label="试听内容"><button aria-pressed={previewMode==='neutral'} onClick={()=>{voicePreview.stop();setPreviewMode('neutral');}}>音色样本</button><button aria-pressed={previewMode==='current'} disabled={session.revealed<=session.cursor} onClick={()=>{voicePreview.stop();setPreviewMode('current');}}>当前句</button></div>}
+      {session.speech.available && <p className="cl-preview-notice" role="status">{voicePreview.notice || (previewMode==='neutral'&&session.speech.preview?'试听固定中性句，比较声音后再选择；所选音色和学习进度保持原样。':session.revealed > session.cursor ? '试听已出现的当前句，所选音色与学习进度保持原样。' : '开始讲解后，可以试听已出现的当前句。')}</p>}
       {!session.speech.available && <p>当前未配置云端语音，课程仍可逐步阅读。</p>}
       <h3>VOICE SPEED <span>{speed}×</span></h3><input className="cl-speed-slider" type="range" min="0" max="5" step="1" aria-label="课堂语速" aria-valuetext={speed + '倍速'} value={[0.5,0.75,1,1.25,1.5,2].indexOf(speed)}
         style={{'--cl-rate-percent': ([0.5,0.75,1,1.25,1.5,2].indexOf(speed) * 20) + '%'} as React.CSSProperties} onChange={event => setSpeed([0.5,0.75,1,1.25,1.5,2][Number(event.target.value)])}/>
