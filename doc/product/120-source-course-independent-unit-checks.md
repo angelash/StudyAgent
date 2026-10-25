@@ -73,3 +73,14 @@ sourceCourseChecks记录冻结courseId/courseFingerprint、原ownerUserId及stud
 
 
 2026-10-26双库存储增量：真实PG三项通过，含实际pg_dump/restore、仅由冻结题组引用的合成原件字节、旧登录撤销和较新合成儿童删除账本；SQLite/纯校验组合30通过、API类型检查通过。首轮PG1通过/2失败分别是测试把无变化提交当成冲突，以及原课程行缺失时删除漏清发布指针；前者改为真实竞争指针修订，后者按已删除checkId补级联，原报告保留。生成、人工审阅/发布、完整HTTP删除及学习者课堂入口仍未实施，本增量未发布。见[双库存储收据](../evidence/2026-10-26/source-check-postgres/acceptance.json)。
+
+
+## 9. 持久准备与生成任务接入细化（实施前）
+
+管理接口按learning/source-courses/:courseId/checks提供只读list/get、POST preflight/prepare、原任务cancel/retry。preflight返回可用模型/选择目标/完整输入预算及可执行错误，不产生领域记录；prepare要求原课程revision/fingerprint、完整lessonIds/modelId和requestKey，先按原键与原参数回放已有记录，再解析当前模型。新任务冻结实际模型、完整PreparedSourceCheck及原登录tokenHash/角色、原监护binding摘要或学生原学习授权版本/guardian。公开GET仅返回状态、目标、题数和审稿统计，不返回题目私钥、模型上下文或私人审稿；GET不写曝光。授权错误不泄漏其他候选存在与否。
+
+SourceCourseCheckWorkerService认领learning.source-check.generate，每步在租约栅栏的原子事务中检查原任务/代次、账号角色、原登录未撤销/未过期、原监护/学生授权以及原课程仍可管理且发布指纹与完整冻结输入一致。分writing、reviewing、completed三阶段保存检查点；原始出题稿与最终稿分开，重启/显式原模型重试只补未完成阶段。写题与复核均使用冻结模型，返回模型ID不符拒绝发布。复核结果pass/revised/uncertain与具体问题及输入/输出指纹单独保存；revised稿仍通过同一来源/目标/题干去重/评分结构验证，uncertain不得冒充教师通过。阶段message上限60000字符，整个source context上限18000；超限保留失败，不截断。
+
+取消/重试必须提交原任务generation/version、原记录revision和请求键，控制与授权快照在同一领域/任务事务生效。重试明确重新取得当前原登录授权，但保留原来源、选择与实际模型；来源已变或撤权时拒绝重试。worker停止保留已完成检查点并释放/重试原租约，晚到与取消后的模型结果不能写入ready。任务终态与领域标签可能有短暂收尾间隔；worker轮询及显式prepare/control在新事务核对同一taskId/generation后将旧queued/generating/cancel_requested标签收敛为failed/cancelled，避免活跃生成索引永久占用。GET只展示真实任务状态，不靠读取修复记录。
+
+本阶段仅将候选生成到ready，不自动确认、不改当前发布指针、不开放学习者题面。人工审阅/编辑/确认与作者曝光协议及课堂接入在下一增量完成后共同验收。生成阶段专项用合成原文、模型替身及两库核对掉回执、阶段失败/重启、原模型重试、取消和原登录/监护授权撤回；真实默认模型小调用在后续整批另验，不把替身通过当作渠道验收。
