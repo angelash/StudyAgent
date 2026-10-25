@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T06:06:40.860Z",
+  "at": "2026-10-25T06:54:17.096Z",
   "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
   "specificationCommit": "f3e6d43",
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "native-protocol-fixed-awaiting-exact-ci-and-daemon",
+  "status": "delivered-exact-ci-and-production-daemon",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     ".gitattributes": "fb0a5afc60b69d8a9270d93661526c0f70cd335318af4340dde9d6e7ec4fc46e",
@@ -247,6 +247,33 @@
         "pymupdf": "1.26.6",
         "files": 2
       }
+    },
+    "project-files-full-browser-final.json": {
+      "sha256": "4dbf1333def95d5ac65ac096f54c3b3154f7ee820f04869e72bb2b828088d531",
+      "result": {
+        "startTime": "2026-10-25T06:31:03.105Z",
+        "duration": 539387.84,
+        "expected": 83,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "project-files-ci.json": {
+      "sha256": "f8e414fdb9698870715db0a3ae4d783a61048d0904298be0bc964602abfac2c9",
+      "result": {
+        "run": 40169523078,
+        "conclusion": "success",
+        "head": "6b27001113d4ce2b5e7fc9620f61899ea2039397"
+      }
+    },
+    "project-files-runtime.json": {
+      "sha256": "855732e47465b05a01434aa75a3e8888f9364d0377fee05c96621c24b906e3e4",
+      "result": {
+        "passed": true,
+        "checks": 11,
+        "observations": 3
+      }
     }
   },
   "checks": {
@@ -318,7 +345,30 @@
       "windowsPyMuPDF": "1.26.6",
       "realNativeStartupNoiseObserved": true
     },
-    "fullLocalBrowserCombination": "running separately after the registration fixture correction"
+    "fullLocalBrowserCombination": {
+      "passed": 83,
+      "failed": 0,
+      "flaky": 0,
+      "sourceRevision": "a03aa560bfca9bea8f0a03429936b5d9bc28f08d",
+      "scope": "All 83 real browser product journeys in the isolated synthetic SQLite fixture server"
+    },
+    "finalRemoteCi": {
+      "run": 40169523078,
+      "head": "6b27001113d4ce2b5e7fc9620f61899ea2039397",
+      "applicationPassed": 1101,
+      "environmentSkipped": 43,
+      "browserPassed": 83,
+      "browserFlaky": 0,
+      "postgresProjectFilesPassed": 11,
+      "sqliteOnlySkipped": 1
+    },
+    "daemon": {
+      "revision": "6b27001113d4ce2b5e7fc9620f61899ea2039397",
+      "buildId": "WnCSuTtj68_Fe2ctMhNHx",
+      "smokeChecks": 11,
+      "stableAcrossObservations": true,
+      "observationMs": 87219
+    }
   },
   "featureCoverage": [
     "Hashed resumable chunks and independently versioned uploads, deterministic original-file targets, idempotent completion and current/original authorization fences",
@@ -340,11 +390,11 @@
   ],
   "limits": [
     "One project-file increment, not complete product or full M1-M7 acceptance. The 72-item ledger remains 11 implemented/46 in_progress/15 planned/0 verified.",
-    "All feature inputs are synthetic in isolated QA stores; production family data was only backed up for the separate delivered course lifecycle release.",
+    "All feature inputs are synthetic in isolated QA stores; production family data was backed up consistently for this attachment deployment and was not used as feature test data.",
     "Office has bounded container validation and original-byte download, not content rendering or a claimed real Office application review.",
     "AI uses selected saved text and file descriptions only. No new live model/TTS/image-generation calls are required or claimed; complete multimodal file study remains.",
     "Real phone capture/recording, assistive technology, teacher review, calibrated measurement and actual interval learning remain separate gates.",
-    "Current daemon remains course lifecycle a659855; attachment delivery awaits exact CI and production build/daemon verification."
+    "Delivered daemon is exact successful CI head6b27001, business sourcea03aa56; 11 anonymous smoke checks and three stable observations over at least60 seconds pass."
   ],
   "captures": [
     {
