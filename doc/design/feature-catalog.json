@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
+  "sourceRevision": "f5b65acf00d084fe25f80d0e00ababc892a29036",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 115,
-    "activeNormalApiRoutes": 314,
-    "coveredApiRoutes": 314
+    "features": 116,
+    "activeNormalApiRoutes": 321,
+    "coveredApiRoutes": 321
   },
   "areas": [
     {
@@ -1696,7 +1696,7 @@
               "controller": "DiagnosticsController",
               "method": "reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 146
+              "line": 148
             },
             {
               "verb": "GET",
@@ -1704,7 +1704,7 @@
               "controller": "DiagnosticsController",
               "method": "reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 148
+              "line": 150
             }
           ],
           "implementations": [
@@ -2008,16 +2008,26 @@
       "files": [
         "apps/api/src/modules/diagnostics/guidance.service.ts",
         "apps/api/src/modules/learning/learning.service.ts",
-        "apps/api/src/modules/diagnostics/learning-source-citation.ts"
+        "apps/api/src/modules/diagnostics/learning-source-citation.ts",
+        "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-worker.service.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-record.ts",
+        "apps/web/components/guidance-model-panel.tsx",
+        "apps/web/lib/guidance-creation.ts"
       ],
       "contracts": [
         "packages/contracts/src/diagnostics.ts",
-        "packages/contracts/src/learning.ts"
+        "packages/contracts/src/learning.ts",
+        "packages/contracts/src/guidance-model.ts"
       ],
       "tests": [
         "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
         "apps/api/src/modules/learning/notebook.integration.test.ts",
-        "apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+        "tests/e2e/guidance-model.spec.ts"
       ],
       "features": [
         {
@@ -2031,14 +2041,14 @@
             "/student/today",
             "/parent/dashboard"
           ],
-          "inputs": "完成的baselineSessionId、每天5–60分钟、useAi",
-          "implementation": "拒绝过期定义或旧题族分析；优先支持的先修阻断与低证据知识点；最多选3个行动并分配时长；冻结证据、成功标准、教学卡与教材引用。",
-          "outputs": "proposed计划及可选AI活动说明",
+          "inputs": "完成的baselineSessionId、报告版本、每天5–60分钟、useAi与requestKey",
+          "implementation": "拒绝过期定义或旧题族分析；优先支持的先修阻断与低证据知识点；最多选3个行动并分配时长；冻结证据、成功标准、教学卡与教材引用。规则计划与可选说明任务同事务保存；完整原创建命令先暂存，丢回执先读取再重放。",
+          "outputs": "立即可用的proposed规则计划与精确创建回执",
           "collections": [
             "diagnosticPlans",
             "guidancePlanRevisions"
           ],
-          "limits": "AI只能润色受约束行动，不能改写分数、知识点或证据ID。",
+          "limits": "AI说明独立生成并等待明确采用，不在创建事务等待模型；不可用模型仍保留规则计划和明确原因。",
           "endpoints": [
             {
               "verb": "POST",
@@ -2047,13 +2057,26 @@
               "method": "plan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
               "line": 122
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/plan-requests/:requestKey",
+              "controller": "DiagnosticsController",
+              "method": "planCreationResult",
+              "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+              "line": 126
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.create",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 40
+              "line": 43
+            },
+            {
+              "name": "GuidanceService.creationResult",
+              "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
+              "line": 149
             }
           ],
           "sourceFiles": [
@@ -2062,7 +2085,11 @@
           "tests": [
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/learning/notebook.integration.test.ts",
-            "apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+            "tests/e2e/guidance-model.spec.ts"
           ]
         },
         {
@@ -2099,7 +2126,7 @@
               "controller": "DiagnosticsController",
               "method": "getPlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 128
+              "line": 130
             },
             {
               "verb": "PATCH",
@@ -2107,7 +2134,7 @@
               "controller": "DiagnosticsController",
               "method": "updatePlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 126
+              "line": 128
             },
             {
               "verb": "POST",
@@ -2115,7 +2142,7 @@
               "controller": "DiagnosticsController",
               "method": "adjustPlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 134
+              "line": 136
             },
             {
               "verb": "GET",
@@ -2123,34 +2150,34 @@
               "controller": "DiagnosticsController",
               "method": "planHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 130
+              "line": 132
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.list",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 108
+              "line": 142
             },
             {
               "name": "GuidanceService.get",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 114
+              "line": 148
             },
             {
               "name": "GuidanceService.update",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 216
+              "line": 256
             },
             {
               "name": "GuidanceService.adjust",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 182
+              "line": 222
             },
             {
               "name": "GuidanceService.history",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 115
+              "line": 155
             }
           ],
           "sourceFiles": [
@@ -2159,7 +2186,11 @@
           "tests": [
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/learning/notebook.integration.test.ts",
-            "apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+            "tests/e2e/guidance-model.spec.ts"
           ]
         },
         {
@@ -2188,7 +2219,7 @@
               "controller": "DiagnosticsController",
               "method": "reviews",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 136
+              "line": 138
             },
             {
               "verb": "GET",
@@ -2196,7 +2227,7 @@
               "controller": "DiagnosticsController",
               "method": "planReviews",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 132
+              "line": 134
             },
             {
               "verb": "POST",
@@ -2204,7 +2235,7 @@
               "controller": "DiagnosticsController",
               "method": "reschedule",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 140
+              "line": 142
             },
             {
               "verb": "POST",
@@ -2212,29 +2243,29 @@
               "controller": "DiagnosticsController",
               "method": "review",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 138
+              "line": 140
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.reviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 250
+              "line": 290
             },
             {
               "name": "GuidanceService.planReviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 256
+              "line": 296
             },
             {
               "name": "GuidanceService.reschedule",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 267
+              "line": 307
             },
             {
               "name": "GuidanceService.startReview",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 290
+              "line": 330
             }
           ],
           "sourceFiles": [
@@ -2243,7 +2274,11 @@
           "tests": [
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/learning/notebook.integration.test.ts",
-            "apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+            "tests/e2e/guidance-model.spec.ts"
           ]
         },
         {
@@ -2274,7 +2309,7 @@
               "controller": "DiagnosticsController",
               "method": "retrospective",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 142
+              "line": 144
             },
             {
               "verb": "POST",
@@ -2282,19 +2317,19 @@
               "controller": "DiagnosticsController",
               "method": "acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 144
+              "line": 146
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.retrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 304
+              "line": 344
             },
             {
               "name": "GuidanceService.acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 364
+              "line": 404
             }
           ],
           "sourceFiles": [
@@ -2303,7 +2338,121 @@
           "tests": [
             "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
             "apps/api/src/modules/learning/notebook.integration.test.ts",
-            "apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+            "tests/e2e/guidance-model.spec.ts"
+          ]
+        },
+        {
+          "id": "PLAN-05",
+          "title": "持久模型说明建议与明确采用",
+          "area": "guidance",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "监护家长、学生、授权教师",
+          "pages": [
+            "/student/assessment",
+            "/student/today",
+            "/parent/dashboard"
+          ],
+          "inputs": "原计划revision、原请求键、小九modelId与采用命令",
+          "implementation": "Auto冻结实际模型；独立SQL任务生成/校验/发布，租约、授权、计划/报告/知识定义变化拒绝迟到写入。完整原建议/采用命令可恢复，历史分页，取消与原模型重试分开；对照原说明与建议，明确采用才追加计划修订。",
+          "outputs": "真实任务状态、冻结说明对照、采用版本与可导出历史",
+          "collections": [
+            "guidanceModelSuggestions",
+            "diagnosticPlans",
+            "guidancePlanRevisions"
+          ],
+          "limits": "只改summary和activity；知识点、时长、资源、成功标准、复测日期、证据和原因状态不由模型改写。不同家庭缓存及旧链接隔离；生成成功不表示教学有效。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions",
+              "controller": "GuidanceModelController",
+              "method": "create",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions",
+              "controller": "GuidanceModelController",
+              "method": "list",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions/:id",
+              "controller": "GuidanceModelController",
+              "method": "get",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/cancel",
+              "controller": "GuidanceModelController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/retry",
+              "controller": "GuidanceModelController",
+              "method": "retry",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/plans/:planId/model-suggestions/:id/adopt",
+              "controller": "GuidanceModelController",
+              "method": "adopt",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.controller.ts",
+              "line": 14
+            }
+          ],
+          "implementations": [
+            {
+              "name": "GuidanceModelService.create",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+              "line": 76
+            },
+            {
+              "name": "GuidanceModelService.list",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+              "line": 64
+            },
+            {
+              "name": "GuidanceModelService.get",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+              "line": 63
+            },
+            {
+              "name": "GuidanceModelService.control",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+              "line": 106
+            },
+            {
+              "name": "GuidanceModelService.adopt",
+              "file": "apps/api/src/modules/diagnostics/guidance-model.service.ts",
+              "line": 121
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/diagnostics/guidance-model.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+            "apps/api/src/modules/learning/notebook.integration.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+            "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+            "tests/e2e/guidance-model.spec.ts"
           ]
         }
       ]
@@ -8410,7 +8559,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 340
+              "line": 341
             },
             {
               "name": "DomainEventBusService.publish",
@@ -8420,7 +8569,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 238
+              "line": 239
             }
           ],
           "sourceFiles": [
@@ -8613,7 +8762,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 238
+              "line": 239
             }
           ],
           "sourceFiles": [
@@ -8690,7 +8839,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 222
+              "line": 223
             },
             {
               "name": "RuntimeMetricsService.snapshot",

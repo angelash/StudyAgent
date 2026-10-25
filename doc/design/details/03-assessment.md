@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`3c938a4f1b3e85970cb78f8543d381afe2c2f1d8`。角色：学生、监护家长、授权教师。
+源码基线：`f5b65acf00d084fe25f80d0e00ababc892a29036`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 
@@ -232,8 +232,8 @@
 
 **关联接口**：
 
-- `POST /api/admin/diagnostic-responses/:responseId/review` → `DiagnosticsController.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:146](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L146)。
-- `GET /api/diagnostics/sessions/:sessionId/report-history` → `DiagnosticsController.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)。
+- `POST /api/admin/diagnostic-responses/:responseId/review` → `DiagnosticsController.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)。
+- `GET /api/diagnostics/sessions/:sessionId/report-history` → `DiagnosticsController.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:150](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L150)。
 
 **服务方法**：
 

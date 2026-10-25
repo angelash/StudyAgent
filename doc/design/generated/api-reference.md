@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`3c938a4f1b3e85970cb78f8543d381afe2c2f1d8`。共 335 个 HTTP 路由声明，当前 AppModule 可达 314 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`f5b65acf00d084fe25f80d0e00ababc892a29036`。共 342 个 HTTP 路由声明，当前 AppModule 可达 321 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -760,9 +760,18 @@
 - 方法装饰器：`[]`
 - 调用：`this.guidance.list`
 
+### GET /api/diagnostics/students/:studentId/plan-requests/:requestKey
+
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:126](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L126)，方法 `planCreationResult`。
+
+- 签名：`planCreationResult(@Req() req: AuthenticatedRequest, @Param('studentId') id:string, @Param('requestKey') requestKey:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.guidance.creationResult`
+
 ### PATCH /api/diagnostics/plans/:planId
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:126](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L126)，方法 `updatePlan`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:128](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L128)，方法 `updatePlan`。
 
 - 签名：`updatePlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -771,7 +780,7 @@
 
 ### GET /api/diagnostics/plans/:planId
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:128](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L128)，方法 `getPlan`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:130](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L130)，方法 `getPlan`。
 
 - 签名：`getPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -780,7 +789,7 @@
 
 ### GET /api/diagnostics/plans/:planId/history
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:130](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L130)，方法 `planHistory`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:132](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L132)，方法 `planHistory`。
 
 - 签名：`planHistory(@Req() req: AuthenticatedRequest, @Param('planId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -789,7 +798,7 @@
 
 ### GET /api/diagnostics/plans/:planId/reviews
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:132](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L132)，方法 `planReviews`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:134](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L134)，方法 `planReviews`。
 
 - 签名：`planReviews(@Req() req: AuthenticatedRequest, @Param('planId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -798,7 +807,7 @@
 
 ### POST /api/diagnostics/plans/:planId/adjust
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:134](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L134)，方法 `adjustPlan`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:136](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L136)，方法 `adjustPlan`。
 
 - 签名：`adjustPlan(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -807,7 +816,7 @@
 
 ### GET /api/diagnostics/students/:studentId/reviews
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:136](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L136)，方法 `reviews`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:138](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L138)，方法 `reviews`。
 
 - 签名：`reviews(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -816,7 +825,7 @@
 
 ### POST /api/diagnostics/reviews/:reviewId/start
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:138](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L138)，方法 `review`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:140](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L140)，方法 `review`。
 
 - 签名：`review(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -825,7 +834,7 @@
 
 ### POST /api/diagnostics/reviews/:reviewId/reschedule
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:140](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L140)，方法 `reschedule`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:142](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L142)，方法 `reschedule`。
 
 - 签名：`reschedule(@Req() req: AuthenticatedRequest, @Param('reviewId') id: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -834,7 +843,7 @@
 
 ### GET /api/diagnostics/plans/:planId/retrospective
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:142](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L142)，方法 `retrospective`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:144](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L144)，方法 `retrospective`。
 
 - 签名：`retrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -843,7 +852,7 @@
 
 ### POST /api/diagnostics/plans/:planId/retrospective/acknowledge
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:144](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L144)，方法 `acknowledgeRetrospective`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:146](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L146)，方法 `acknowledgeRetrospective`。
 
 - 签名：`acknowledgeRetrospective(@Req() req: AuthenticatedRequest, @Param('planId') id: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -852,7 +861,7 @@
 
 ### POST /api/admin/diagnostic-responses/:responseId/review
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:146](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L146)，方法 `reviewScore`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)，方法 `reviewScore`。
 
 - 签名：`reviewScore(@Req() req: AuthenticatedRequest, @Param('responseId') id: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -861,12 +870,68 @@
 
 ### GET /api/diagnostics/sessions/:sessionId/report-history
 
-实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)，方法 `reportHistory`。
+实现：[apps/api/src/modules/diagnostics/diagnostics.controller.ts:150](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L150)，方法 `reportHistory`。
 
 - 签名：`reportHistory(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.diagnostics.reportHistory`
+
+## GuidanceModelController — 当前接入
+
+### POST /api/diagnostics/plans/:planId/model-suggestions
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:9](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L9)，方法 `create`。
+
+- 签名：`create(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.create`
+
+### GET /api/diagnostics/plans/:planId/model-suggestions
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:10](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L10)，方法 `list`。
+
+- 签名：`list(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Query() query:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.list`
+
+### GET /api/diagnostics/plans/:planId/model-suggestions/:id
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:11](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L11)，方法 `get`。
+
+- 签名：`get(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.get`
+
+### POST /api/diagnostics/plans/:planId/model-suggestions/:id/cancel
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:12](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L12)，方法 `cancel`。
+
+- 签名：`cancel(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.control`
+
+### POST /api/diagnostics/plans/:planId/model-suggestions/:id/retry
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:13](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L13)，方法 `retry`。
+
+- 签名：`retry(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.control`
+
+### POST /api/diagnostics/plans/:planId/model-suggestions/:id/adopt
+
+实现：[apps/api/src/modules/diagnostics/guidance-model.controller.ts:14](../../../apps/api/src/modules/diagnostics/guidance-model.controller.ts#L14)，方法 `adopt`。
+
+- 签名：`adopt(@Req() req:AuthenticatedRequest, @Param('planId') planId:string, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.suggestions.adopt`
 
 ## GespController — 当前接入
 
