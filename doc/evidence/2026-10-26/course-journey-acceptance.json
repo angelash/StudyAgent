@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "at": "2026-10-25T17:52:27.490486+00:00",
-  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
+  "sourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
   "applicationSourceRevision": "466220d93474d6f10c742885105a4e5130248137",
   "specificationCommits": [
     "ab8d556",
@@ -11,7 +11,7 @@
   ],
   "sourceDigestNormalization": "UTF-8 CRLF normalized to LF",
   "sourceDigests": {
-    ".github/workflows/verify.yml": "fb65477ed8250836df4706a7be7658dae4644b1471ed96ee904d1103f1103ea0",
+    ".github/workflows/verify.yml": "0a297511330fa9285d378de8eb25b541edf8eefe3ce43c4d965aadd6df86847a",
     "apps/api/src/modules/learning/classroom-curriculum.ts": "e375bbffd5cb3fb227a81c9df333e6e60688a81cf60e21ca912570801fb0c575",
     "apps/api/src/modules/learning/classroom.service.ts": "01d8012bdb97c10830bc52c65ce1fa4d7c07ddc26378506a361f7c67ba09d5ab",
     "apps/api/src/modules/learning/course-journey.test.ts": "0b1ee26d3daa2b4b2962fab59f0651d22aa2819a06a89e71dfc5c5e5ce0e66c1",
@@ -24,7 +24,7 @@
     "apps/api/src/modules/learning/source-course-project.ts": "e45557dd8e69e6d15165c88087eef3b2a959f90b27eaabd804f93c85f471ceb9",
     "apps/api/src/modules/learning/source-course.service.ts": "9b9c760063edf2000fee84f6dfd913e4c95f4dab77dd458696ec220e6506c1c3",
     "apps/api/src/modules/learning/source-project-access.ts": "6b87872e27086a29c50166f3d5d7faab3f8e3ee68bb65f99c36ff4a6d2bbaa10",
-    "apps/web/app/studio/classroom/workbench.tsx": "1cff07be696ce07f917f260001c22127c4fcb11b5702b30d4c561f8ae8643a5a",
+    "apps/web/app/studio/classroom/workbench.tsx": "fc470c54508bf743c85650f44c1d58e4acc010f728f8897b20249cba555472c8",
     "apps/web/app/studio/course-activity.css": "da300d92534c4aede4b5c406e19494d1d58fd843e225a877530a63439e2a8f14",
     "apps/web/app/studio/course-activity.tsx": "e26141991b9c588549a5fd009f2daa776fda8799dfcb26b36aaabdf541fbb749",
     "apps/web/app/studio/projects/project-location.ts": "007fa66875be90bcccc9d848d7811e007c94393c73ce31b171e6dbf334e34ce6",
@@ -39,11 +39,12 @@
     "scripts/architecture/project-feature-definitions.cjs": "9a8f1746402fb1bebd51b630871621d1b0f40d7481934cc05594ab212d4fbfc2",
     "scripts/qa/run-source-course-browser.cjs": "189cccb886c7c73c9501ad6df4742df2ed68190c22c740555bc6109b73fff163",
     "scripts/qa/run-source-projects-postgres.cjs": "ed8a59204fedbd1d3409ace71b6ff695dd7ec0e1bb0788f76f4cb777702950f6",
+    "tests/e2e/classroom-visual.spec.ts": "90783827ed9bf8211504a3361ede090c6e44d65295de03cbe8ff94463c1f6007",
     "tests/e2e/course-project.spec.ts": "3c6e08fa75eaccf8c8be27592fa735946d7d7ceed4f8bfa05ad500f15a19bd3c",
     "tests/e2e/source-course-project.spec.ts": "68eb5c02c6d28bb8571bfc76ce2a1c57a6d5215caba1f2a0a8c5c6031748a084"
   },
-  "status": "local-complete-exact-ci-and-runtime-pending",
-  "localPassed": true,
+  "status": "relative-navigation-fixed-full-browser-and-new-exact-ci-pending",
+  "localPassed": false,
   "passed": false,
   "api": {
     "passed": 1194,
@@ -65,12 +66,8 @@
     "report": "course-journey-sqlite-cold-confirmed.json"
   },
   "browser": {
-    "passed": 203,
-    "failed": 0,
-    "skipped": 0,
-    "retries": 0,
-    "durationMs": 955038.063,
-    "report": "course-journey-full-browser.json"
+    "status": "running-after-relative-navigation-fix",
+    "expected": 205
   },
   "priorFocusedBrowser": {
     "passed": 17,
@@ -78,7 +75,22 @@
     "report": "course-journey-browser-focused.json"
   },
   "remoteCi": {
-    "status": "not-started"
+    "status": "not-started-for-fixed-candidate",
+    "prior": {
+      "status": "completed",
+      "conclusion": "success",
+      "runId": 40218645644,
+      "head": "5b09cc81c908f80bec31730a107858c00891cbe5",
+      "report": "course-journey-exact-ci.json",
+      "browser": {
+        "total": 203,
+        "passed": 202,
+        "flaky": 1,
+        "retries": 1,
+        "finalFailed": 0
+      },
+      "runtimeGate": "held-for-relative-back-navigation-fix"
+    }
   },
   "production": {
     "status": "not-released",
@@ -102,7 +114,8 @@
     "Browser journey round: 45 passed / 2 failed because older test expected complete-view button despite restored mode, and practice URL was read before its UI was ready",
     "Design snapshot initially lacked its required local authored audit; generated a fresh audit before retrying",
     "Expanded complete-journey browser round 7 passed/2 failed because the test read session URL before actual classroom navigation was ready",
-    "Next expanded round 7 passed/2 failed because the last answer enters recap automatically; test now opens the final first-answer receipt from that recap. Same nine tests and final full 203 passed."
+    "Next expanded round 7 passed/2 failed because the last answer enters recap automatically; test now opens the final first-answer receipt from that recap. Same nine tests and final full 203 passed.",
+    "First exact CI succeeded with one retried classroom-image test: two accepted previous-step clicks before the first PATCH completed reused the rendered cursor, ending at 3/8 rather than 2/8. Runtime delivery held pending a controlled reproduction and fix."
   ],
   "evidenceLimits": [
     "The earliest SQLite cold-run report was overwritten during an uncorrected rerun; the prefixed rerun failure and final confirmed report are preserved, not a claim of retaining the earliest artifact",
@@ -111,7 +124,8 @@
     "No new live-model or live-TTS call in 119; 118 real TTS evidence and existing source generation channels are reused",
     "Teacher review, real devices, all materials and long-term learning outcomes remain outstanding",
     "Independent source unit checks remain not_configured; 120 is specification only",
-    "Original 72 requirements and all M1-M7 remain open; no overall product completion claim"
+    "Original 72 requirements and all M1-M7 remain open; no overall product completion claim",
+    "First successful CI did not upload retried screenshot/trace because its artifact step was failure-only; complete stdout is retained, remote screenshot/trace unavailable."
   ],
   "archivedReports": {
     "course-journey-full-api.json": "26a078ef1599fd7bd946cdeb2b93b21baab96be2643399c9dbd6ac4e51e492d5",
@@ -120,7 +134,10 @@
     "course-journey-browser-focused.json": "60834ffdd6abb62993357d09d791b47187350dd6227a6fec06d7bd72b6ee4845",
     "course-journey-complete-browser.json": "73a047af7a8b83b914e76a872cdc67379c323c6a35602402ab13f5e830a21182",
     "course-journey-full-browser.json": "849d6ebce0d5ced0c4793d4b8b4f0648a6449d0913e615c9f0c53c29bec1deed",
-    "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c"
+    "hyperknow-lecture-image-enlargement-revisit.json": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c",
+    "course-journey-exact-ci.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
+    "course-journey-exact-ci-initial.json": "1fb32ff8d48f5cc6bcebdd7ea0a04340c4227f1f900997b66d94910378dd1056",
+    "course-journey-relative-navigation-browser.json": "cc15bde967ea0841273e0390538a49e7418c4af46b38da8a6b8019f332be61e1"
   },
   "completeJourneys": {
     "passed": 9,
@@ -138,5 +155,24 @@
     "sourceReference": "hyperknow-lecture-image-enlargement-revisit.json",
     "cssViewportDprAndFontsUnknown": true,
     "pixelParity": false
-  }
+  },
+  "webSourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
+  "priorFullBrowser": {
+    "passed": 203,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "durationMs": 955038.063,
+    "report": "course-journey-full-browser.json"
+  },
+  "relativeNavigation": {
+    "passed": 6,
+    "failed": 0,
+    "controlledInitial": {
+      "passed": 5,
+      "failed": 1
+    },
+    "report": "course-journey-relative-navigation-browser.json"
+  },
+  "postApiStartChanges": "API and contracts unchanged since full API 1194/40. Later changes are Web queued relative navigation, browser regression tests, CI artifact retention and documentation; the same fixed Web is checked by full 205 local browser and exact CI before runtime."
 }

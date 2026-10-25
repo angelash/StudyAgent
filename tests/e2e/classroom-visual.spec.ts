@@ -5,7 +5,8 @@ let fixtureAddress = 0;
 async function enter(page: Page) {
     const suffix = Date.now() + '-' + Math.floor(Math.random() * 100000), principal = 'visual-' + suffix + '@local.test', credential = 'Visual-only-' + suffix;
     // Only the isolated loopback fixture trusts this header. Each new QA learner gets its own registration bucket.
-    expect((await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '127.22.0.' + (++fixtureAddress) }, body: JSON.stringify({ principal, credential }) })).status).toBe(201);
+    const registered=await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '127.22.0.' + (++fixtureAddress) }, body: JSON.stringify({ principal, credential }) });
+    expect(registered.status).toBe(201);const actor=(await registered.json()).data;
     await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
     await page.goto('/parent/login');
     await page.getByLabel('登录账号').fill(principal);
@@ -15,12 +16,32 @@ async function enter(page: Page) {
     await page.goto('/studio/classroom?lesson=soc-1-1-1');
     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
     await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');
+    return actor;
 }
 const panel = (page: Page) => page.getByRole('dialog', { name: '当前讲解参考图', exact: true });
 async function open(page: Page) { await page.getByRole('button', { name: '补一张讲解图', exact: true }).click(); await expect(panel(page)).toBeVisible(); }
 async function generate(page: Page, requirements: string) { await panel(page).getByLabel('参考图补充要求').fill(requirements); await panel(page).getByRole('button', { name: /^(生成讲解参考图|再生成一版)$/ }).click(); }
 async function ready(page: Page) { await expect(panel(page).getByRole('button', { name: '选作当前环节参考', exact: true }).last()).toBeVisible({ timeout: 45000 }); }
 async function close(page: Page) { await panel(page).getByRole('button', { name: '关闭讲解参考图', exact: true }).click(); await expect(panel(page)).toHaveCount(0); }
+
+for(const failFirst of [false,true])test('queued previous clicks use each confirmed position, first save '+(failFirst?'fails':'succeeds'),async({page})=>{
+    const actor=await enter(page);for(const step of [3,4]){await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText(step+' / 8');}
+    const sessionId=new URL(page.url()).searchParams.get('session')!,patches:any[]=[];let entered!:()=>void,release!:()=>void;
+    const arrived=new Promise<void>(resolve=>entered=resolve),gate=new Promise<void>(resolve=>release=resolve);
+    await page.route('**/api/learning/classroom/sessions/*',async route=>{
+        if(route.request().method()!=='PATCH'){await route.continue();return;}
+        const body=route.request().postDataJSON();patches.push(body);
+        if(patches.length===1){entered();await gate;if(failFirst){await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:{message:'合成首个保存失败'}})});return;}}
+        await route.continue();
+    });
+    try{
+        await page.getByRole('button',{name:'‹ 上一步',exact:true}).click();await arrived;
+        await page.getByRole('button',{name:'‹ 上一步',exact:true}).click();release();await expect.poll(()=>patches.length).toBe(2);
+        expect(patches.map(body=>body.cursor)).toEqual(failFirst?[2,2]:[2,1]);
+        await expect(page.locator('.cl-session-navigation')).toContainText((failFirst?3:2)+' / 8');
+        const response=await fetch(api+'/api/learning/classroom/sessions/'+sessionId,{headers:{Authorization:'Bearer '+actor.token}});expect(response.status).toBe(200);expect((await response.json()).data.cursor).toBe(failFirst?2:1);
+    }finally{release();await page.unroute('**/api/learning/classroom/sessions/*');}
+});
 test('classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths', async ({ page }) => {
     test.setTimeout(120000);
     const errors: string[] = [];

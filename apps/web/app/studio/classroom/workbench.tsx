@@ -216,12 +216,13 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     await waitForVisualPrint(root,ids,operation.signal);if(operation.signal.aborted)return;printOperation.current=null;setSettings(false);window.print();
   }catch(error){if((error as Error).name!=='AbortError')setNotice((error as Error).message);}finally{if(printOperation.current===operation)printOperation.current=null;if(mounted.current)setPrintBusy(false);}}
   function receive(value: ClassroomSessionView) { row.current = value; if (mounted.current) { setSession(value); if (value.hintedQuestionIds?.length) setHinted(items => [...new Set([...items, ...value.hintedQuestionIds!])]); } return value; }
-  function save(update: Partial<Pick<ClassroomSessionView, 'cursor' | 'revealed' | 'projectDraft' | 'sentenceCursor'>> & { completed?: boolean }) {
+  type ProgressUpdate=Partial<Pick<ClassroomSessionView,'cursor'|'revealed'|'projectDraft'|'sentenceCursor'>>&{completed?:boolean};
+  function save(update:ProgressUpdate|((latest:ClassroomSessionView)=>ProgressUpdate)) {
     const task = revisionQueue.current.catch(() => undefined).then(async () => {
-      const latest = row.current;
-      const target=latest.lesson.steps[update.cursor??latest.cursor],unit=classroomStepUnits(latest,target)[update.sentenceCursor??((update.cursor??latest.cursor)===latest.cursor?(latest.sentenceCursor??0):0)];
+      const latest = row.current,patch=typeof update==='function'?update(latest):update;
+      const target=latest.lesson.steps[patch.cursor??latest.cursor],unit=classroomStepUnits(latest,target)[patch.sentenceCursor??((patch.cursor??latest.cursor)===latest.cursor?(latest.sentenceCursor??0):0)];
       return receive(await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + latest.id, { method: 'PATCH',
-        body: JSON.stringify({ expectedRevision: latest.revision, cursor: latest.cursor, revealed: latest.revealed, ...update,
+        body: JSON.stringify({ expectedRevision: latest.revision, cursor: latest.cursor, revealed: latest.revealed, ...patch,
           ...(latest.presentation?{presentationVersion:latest.presentation.version,unitId:unit?.id}:{}) }) }));
     });
     revisionQueue.current = task; return task;
@@ -536,7 +537,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           </div>}
         </div>
         <div className="cl-room-notice" role="status">{session.contentStatus && session.contentStatus !== 'current' && !standalonePractice && <span>正在查看保留的旧版课堂，内容与作答按当时版本保存。{session.contentStatus === 'archived' && <button onClick={() => onNext(lesson.id, 'history', true)}>打开新版讲解</button>}</span>}{notice}{notice && <button onClick={() => setNotice('')} aria-label="关闭提示">×</button>}{notice.includes('语音') && <button onClick={() => { setMuted(true); setPlaying(true); setNotice('已切到文字讲解。'); }}>文字继续</button>}</div>
-        <div className="cl-session-navigation"><button onClick={() => { pause(); setTab('history'); void save({ cursor: Math.max(0, session.cursor - 1) }).then(value => setPage(Math.floor(value.cursor / 3))).catch(error => setNotice(error.message)); }} disabled={session.cursor === 0 || busy}>‹ 上一步</button>
+        <div className="cl-session-navigation"><button onClick={() => { pause(); setTab('history'); void save(latest=>({cursor:Math.max(0,latest.cursor-1)})).then(value => setPage(Math.floor(value.cursor / 3))).catch(error => setNotice(error.message)); }} disabled={session.cursor === 0 || busy}>‹ 上一步</button>
           <span>{session.cursor + 1} / {lesson.steps.length}</span><button onClick={() => void advance()} disabled={busy}>下一步 ›</button>{session.status === 'completed' && nextLesson && <button onClick={() => onNext(nextLesson.id)}>下一课 →</button>}</div>
         <ClassroomTurnStatus state={turns} onReturn={turn=>void returnToTurn(turn)} onEdit={command=>{setQuestion(command.message);setIntent(command.intent);setModelId(command.modelId);}}/>
         <form className="cl-input" onSubmit={event => void ask(event)}><ClassroomIntentPicker value={intent} disabled={busy} onChange={(value,prompt)=>{pause();setIntent(value);if(prompt)setQuestion(prompt);}}/><div className="cl-compose-row"><textarea aria-label="向课堂老师提问" value={question} placeholder="Ask a question…" maxLength={2000} onChange={event => { if (playing) setPlaying(false); setQuestion(event.target.value); }}/>

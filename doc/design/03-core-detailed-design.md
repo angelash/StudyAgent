@@ -369,3 +369,6 @@ v2保存绑定actorId、baseHash、attempt、expectedRevision和稳定requestKey
 CourseLessonActivity是纯读取投影。讲解按同义教学内容匹配，显示曾已读与最新原句断点；练习仅匹配当前持久内容指纹，使用冻结首答及其提示、作者曝光、跳过和不会事实。CourseProjectActivity仅返回本人项目摘要，每阶段只计算最新提交的最近人工复核，不含产物正文。目录GET不创建课堂、项目或评分。资料课程的独立单元核查仍显示未设置，不能用微课重复题填充。
 
 classroomTeachingFingerprint仅用于阅读对比，递归排序对象键以抵抗PostgreSQL JSONB重排，保留数组顺序和所有值；原持久contentFingerprint、题组、提交和历史不改写。项目最近stage/step/view在授权读取后从owner/project/definition绑定的本机偏好恢复，合法显式URL优先；它不改变服务器学习事实，也不合并不同标签的完整稿。课堂/资料工作台按账号及角色重新挂载，旧目录请求取消，避免迟到结果进入新身份。
+
+
+课堂连续返回使用同一revisionQueue，并在队列执行时读取row.current计算相对cursor。两次已接受点击不能在点击时各自从旧渲染状态计算成同一个绝对位置；每次保存仍使用最新expectedRevision及冻结句unitId。首笔请求失败时不推进本地确认位置，队列继续处理后续相对点击；错误提示与实际已确认位置分别保留。对应[119修正规格](../product/119-source-course-projects-and-continuous-course-journeys.md#10-连续返回的原位置竞态修正实施前)与受控首笔延迟/503用例。

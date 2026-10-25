@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T17:52:56.798Z",
-  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
+  "at": "2026-10-25T18:26:43.422Z",
+  "sourceRevision": "3537dfaef8644b8c3473085b219ff9e99e801df8",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -30,7 +30,7 @@
     "uniqueFiles": 418,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "e4dc8f00658914e42cc1ee4038e2437cb3c7ad0995ac02d992815d58a977cdc2",
+      ".github/workflows/verify.yml": "61b72e1422bd13bc789d3b6240d2d428e1bed1ba1f8748ed95c497b16215aff4",
       "apps/api/src/common/answer-draft.ts": "fedc45ca485633148b0a69e43fdfc6355815d0843980acdf947d4a63be67e5b2",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "81622fee756f2a0ea4b6dbe49f168c82b84a41e833f3617427ab07986f115736",
@@ -304,7 +304,7 @@
       "apps/web/app/studio/classroom/visuals.css": "d8f9aa3a5744743f9b08ae7e5c7ca33065a9e3d19930571a5e73929bc970250a",
       "apps/web/app/studio/classroom/visuals.tsx": "96a4161f7dfb1f77ec5edb6aa94c622587e4556d49881436a7ffac0ba18d8898",
       "apps/web/app/studio/classroom/voice-preview.tsx": "bdefc66b4166a8a33e0868d15c577f0190fd88768a502cfb47af9625adabf490",
-      "apps/web/app/studio/classroom/workbench.tsx": "07dbeafd3de4504fc0fa2e00f5792d4c095ebeb956ac24b5b04ed32cce1aa2fd",
+      "apps/web/app/studio/classroom/workbench.tsx": "458de1904e39feda84a29b372672bde6ddc133be66307a466a3386efd04bf397",
       "apps/web/app/studio/course-activity.css": "da300d92534c4aede4b5c406e19494d1d58fd843e225a877530a63439e2a8f14",
       "apps/web/app/studio/course-activity.tsx": "e26141991b9c588549a5fd009f2daa776fda8799dfcb26b36aaabdf541fbb749",
       "apps/web/app/studio/course-builder.css": "a37cec2a11c5f8bb70f2270f3c1f56ee767cb2c3b89d3277cd13c22438ca5c24",
@@ -431,7 +431,7 @@
       "tests/e2e/classroom-review.spec.ts": "960a56bb447f6f2b613962ecf4dad83af9395c3f64e15e72ed51d6ca94defd86",
       "tests/e2e/classroom-tools.spec.ts": "ab9287a89504c968bc3bbe7a27fb9afe1add4d0ba02584a3c24bb2404a6f245b",
       "tests/e2e/classroom-turns.spec.ts": "35991c09015bfd9842719eda729f207abe1de71cc8d415cb8f0196f67f42c2f2",
-      "tests/e2e/classroom-visual.spec.ts": "3b2a9a3703c105415e5b1203db693d797c05121dd1c3063ad1364eb0e0a710b6",
+      "tests/e2e/classroom-visual.spec.ts": "c6a98ce80bc1417bf836d4a1ae8837a3b6fcb438e8a7a8aaad02d058b5601df8",
       "tests/e2e/classroom.spec.ts": "85598bc40e333020d0b21634941c5d3ffc7290c39454a2d55d3bee5a6933a7ec",
       "tests/e2e/course-builder.spec.ts": "87d477b9cf4f8c1393bf6676f727c8b9f593ff70c2e51d30253d055054533f7b",
       "tests/e2e/course-library.spec.ts": "488da0ba742cc606a8f28b2e467ec133533d7b6c0773a6f1f343785598c0b87a",
@@ -456,7 +456,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2720,
+    "checked": 2721,
     "missing": []
   },
   "staticContent": {
