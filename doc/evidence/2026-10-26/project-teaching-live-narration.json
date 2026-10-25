@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-25T16:13:50.870Z",
+  "passed": true,
+  "scope": "Synthetic independent project and one real configured TTS response; not HyperKnow audio, all voices or human listening acceptance",
+  "version": "project-teaching-v1",
+  "provider": "minimax",
+  "voice": "Chinese (Mandarin)_Warm_Girl",
+  "latencyMs": 2258,
+  "bytes": 63396,
+  "sha256": "bc47b60ef74935556dc9959499efadcbd152e17742311d43addca54274eff0dd",
+  "contentType": "audio/wav",
+  "decoded": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "pcm_s16le",
+        "sample_rate": "16000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "1.979750"
+    }
+  },
+  "audio": "project-teaching-live-narration.wav",
+  "checks": {
+    "noArbitraryTextInCommand": true,
+    "frozenUnit": "speech_c23588fcba0be96eb47e598c6edf3c72551a1683a64714c59e85c1c46c500152",
+    "projectUnchanged": true,
+    "syntheticTemporaryStorage": true
+  }
+}

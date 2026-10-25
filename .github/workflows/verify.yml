@@ -15,7 +15,9 @@ concurrency:
 jobs:
   application:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    # Covers fresh media installation, the full API suite and every persisted
+    # content-upgrade journey. Dependency mirror delays consume this budget too.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

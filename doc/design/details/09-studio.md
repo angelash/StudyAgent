@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`8a73c86bad7141deafd03f2608e5ddc7c86ae8e5`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`944d93a46960bba598e991712f05b76d6c6be2cf`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -652,29 +652,67 @@
 
 - `GET /api/learning/projects/catalog` → `CourseProjectController.catalog`；[apps/api/src/modules/learning/course-project.controller.ts:9](../../../apps/api/src/modules/learning/course-project.controller.ts#L9)。
 - `GET /api/learning/projects/:id` → `CourseProjectController.get`；[apps/api/src/modules/learning/course-project.controller.ts:10](../../../apps/api/src/modules/learning/course-project.controller.ts#L10)。
-- `POST /api/learning/projects` → `CourseProjectController.open`；[apps/api/src/modules/learning/course-project.controller.ts:11](../../../apps/api/src/modules/learning/course-project.controller.ts#L11)。
-- `PATCH /api/learning/projects/:id` → `CourseProjectController.save`；[apps/api/src/modules/learning/course-project.controller.ts:12](../../../apps/api/src/modules/learning/course-project.controller.ts#L12)。
-- `POST /api/learning/projects/:id/submissions` → `CourseProjectController.submit`；[apps/api/src/modules/learning/course-project.controller.ts:13](../../../apps/api/src/modules/learning/course-project.controller.ts#L13)。
-- `POST /api/learning/projects/:id/reviews` → `CourseProjectController.review`；[apps/api/src/modules/learning/course-project.controller.ts:14](../../../apps/api/src/modules/learning/course-project.controller.ts#L14)。
-- `POST /api/learning/projects/:id/legacy` → `CourseProjectController.legacy`；[apps/api/src/modules/learning/course-project.controller.ts:15](../../../apps/api/src/modules/learning/course-project.controller.ts#L15)。
-- `POST /api/learning/projects/:id/advice` → `CourseProjectController.advice`；[apps/api/src/modules/learning/course-project.controller.ts:16](../../../apps/api/src/modules/learning/course-project.controller.ts#L16)。
+- `GET /api/learning/projects/:id/requests/:requestKey` → `CourseProjectController.request`；[apps/api/src/modules/learning/course-project.controller.ts:11](../../../apps/api/src/modules/learning/course-project.controller.ts#L11)。
+- `POST /api/learning/projects` → `CourseProjectController.open`；[apps/api/src/modules/learning/course-project.controller.ts:12](../../../apps/api/src/modules/learning/course-project.controller.ts#L12)。
+- `PATCH /api/learning/projects/:id` → `CourseProjectController.save`；[apps/api/src/modules/learning/course-project.controller.ts:13](../../../apps/api/src/modules/learning/course-project.controller.ts#L13)。
+- `POST /api/learning/projects/:id/submissions` → `CourseProjectController.submit`；[apps/api/src/modules/learning/course-project.controller.ts:14](../../../apps/api/src/modules/learning/course-project.controller.ts#L14)。
+- `POST /api/learning/projects/:id/reviews` → `CourseProjectController.review`；[apps/api/src/modules/learning/course-project.controller.ts:15](../../../apps/api/src/modules/learning/course-project.controller.ts#L15)。
+- `POST /api/learning/projects/:id/legacy` → `CourseProjectController.legacy`；[apps/api/src/modules/learning/course-project.controller.ts:16](../../../apps/api/src/modules/learning/course-project.controller.ts#L16)。
+- `POST /api/learning/projects/:id/advice` → `CourseProjectController.advice`；[apps/api/src/modules/learning/course-project.controller.ts:17](../../../apps/api/src/modules/learning/course-project.controller.ts#L17)。
 
 **服务方法**：
 
 - `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:61](../../../apps/api/src/modules/learning/course-project.service.ts#L61)。
 - `CourseProjectService.get`；[apps/api/src/modules/learning/course-project.service.ts:59](../../../apps/api/src/modules/learning/course-project.service.ts#L59)。
+- `CourseProjectService.request`；[apps/api/src/modules/learning/course-project.service.ts:87](../../../apps/api/src/modules/learning/course-project.service.ts#L87)。
 - `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:71](../../../apps/api/src/modules/learning/course-project.service.ts#L71)。
-- `CourseProjectService.save`；[apps/api/src/modules/learning/course-project.service.ts:128](../../../apps/api/src/modules/learning/course-project.service.ts#L128)。
-- `CourseProjectService.submit`；[apps/api/src/modules/learning/course-project.service.ts:142](../../../apps/api/src/modules/learning/course-project.service.ts#L142)。
-- `CourseProjectService.review`；[apps/api/src/modules/learning/course-project.service.ts:160](../../../apps/api/src/modules/learning/course-project.service.ts#L160)。
-- `CourseProjectService.importLegacy`；[apps/api/src/modules/learning/course-project.service.ts:177](../../../apps/api/src/modules/learning/course-project.service.ts#L177)。
-- `CourseProjectService.advise`；[apps/api/src/modules/learning/course-project.service.ts:191](../../../apps/api/src/modules/learning/course-project.service.ts#L191)。
+- `CourseProjectService.save`；[apps/api/src/modules/learning/course-project.service.ts:136](../../../apps/api/src/modules/learning/course-project.service.ts#L136)。
+- `CourseProjectService.submit`；[apps/api/src/modules/learning/course-project.service.ts:150](../../../apps/api/src/modules/learning/course-project.service.ts#L150)。
+- `CourseProjectService.review`；[apps/api/src/modules/learning/course-project.service.ts:168](../../../apps/api/src/modules/learning/course-project.service.ts#L168)。
+- `CourseProjectService.importLegacy`；[apps/api/src/modules/learning/course-project.service.ts:185](../../../apps/api/src/modules/learning/course-project.service.ts#L185)。
+- `CourseProjectService.advise`；[apps/api/src/modules/learning/course-project.service.ts:199](../../../apps/api/src/modules/learning/course-project.service.ts#L199)。
 
 **补充实现文件**：
 
 - [apps/api/src/modules/learning/course-project-content.ts](../../../apps/api/src/modules/learning/course-project-content.ts)
 - [apps/web/app/studio/projects/workbench.tsx](../../../apps/web/app/studio/projects/workbench.tsx)
 - [apps/web/app/studio/projects/projects.css](../../../apps/web/app/studio/projects/projects.css)
+
+## STUDIO-28 项目逐步教学、独立本机稿与原操作恢复
+
+**输入**：原冻结项目/阶段/字段、逐句讲解单元、音色、本人原命令回执与完整编辑稿。
+
+**处理与实现**：按原字段生成导向/产出/证据/自评步骤；完整作品使用同一个Editor；URL步骤与前后退、未完成确认和字段焦点、保存后导航；每文档独立缓存槽，复制标签也不共写，刷新自动恢复本槽前稿、硬关闭后预览选择其他绑定副本；完整原body/key先读本人回执再重放，后续版本比较，不改键覆盖；保留确认后的新本机编辑；讲解不读取私人答案，仅合成冻结句单元，事务前后核对原登录/授权/定义，取消与换步骤释放音频；观察到权限失效清空旧内容
+
+**输出**：连续项目教学、可核对草稿/命令副本、逐句朗读与原提交历史。
+
+**状态与持久化**：`courseProjects`
+
+**权限、失败与边界**：声音使用当前服务目录和原创样本；不是原站音轨或完整CSS/DPR还原，后续步骤/审核参考仍未知；本地缓存不是独立备份，AI建议仍沿用原同步调用，不宣称供应商恰好调用一次；教师/实机与完整M1～M7继续待验
+
+**关联接口**：
+
+- `GET /api/learning/projects/:id/teaching` → `ProjectTeachingController.get`；[apps/api/src/modules/learning/project-teaching.controller.ts:9](../../../apps/api/src/modules/learning/project-teaching.controller.ts#L9)。
+- `POST /api/learning/projects/:id/narration` → `ProjectTeachingController.narrate`；[apps/api/src/modules/learning/project-teaching.controller.ts:10](../../../apps/api/src/modules/learning/project-teaching.controller.ts#L10)。
+
+**服务方法**：
+
+- `ProjectTeachingService.get`；[apps/api/src/modules/learning/project-teaching.service.ts:22](../../../apps/api/src/modules/learning/project-teaching.service.ts#L22)。
+- `ProjectTeachingService.narrate`；[apps/api/src/modules/learning/project-teaching.service.ts:27](../../../apps/api/src/modules/learning/project-teaching.service.ts#L27)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/project-teaching.ts](../../../packages/contracts/src/project-teaching.ts)
+- [apps/api/src/modules/learning/project-teaching.controller.ts](../../../apps/api/src/modules/learning/project-teaching.controller.ts)
+- [apps/api/src/modules/learning/project-teaching.integration.test.ts](../../../apps/api/src/modules/learning/project-teaching.integration.test.ts)
+- [apps/api/src/modules/learning/course-project.integration.test.ts](../../../apps/api/src/modules/learning/course-project.integration.test.ts)
+- [apps/web/app/studio/projects/project-teaching.tsx](../../../apps/web/app/studio/projects/project-teaching.tsx)
+- [apps/web/app/studio/projects/project-teaching.css](../../../apps/web/app/studio/projects/project-teaching.css)
+- [apps/web/app/studio/projects/project-narration.ts](../../../apps/web/app/studio/projects/project-narration.ts)
+- [apps/web/app/studio/projects/project-recovery.ts](../../../apps/web/app/studio/projects/project-recovery.ts)
+- [apps/web/app/studio/projects/use-project-recovery.ts](../../../apps/web/app/studio/projects/use-project-recovery.ts)
+- [tests/e2e/project-teaching.spec.ts](../../../tests/e2e/project-teaching.spec.ts)
+- [scripts/qa/run-project-teaching-postgres.cjs](../../../scripts/qa/run-project-teaching-postgres.cjs)
 
 ## STUDIO-21 原文到资料课程与生成任务
 

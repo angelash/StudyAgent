@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T14:25:16.127Z",
+  "at": "2026-10-25T16:16:06.629104+00:00",
   "specification": "doc/product/107-classroom-turns-and-reference-state-parity.md",
   "scope": "Reference inventory for future M1 verification, not a parity result or pixel completion rate.",
   "completionPercentage": null,
@@ -322,12 +322,14 @@
       "devicePixelRatio": null,
       "fontAssets": "not_acquired_or_verified",
       "evidence": "live-observed-bounded-state",
-      "comparisonStatus": "local-comparison-pending",
+      "comparisonStatus": "bounded-functional-and-manual-layout-comparison-in-progress",
       "observationReceipt": "doc/evidence/2026-10-25/hyperknow-project/observation.json",
       "specification": "doc/product/118-guided-project-teaching-and-step-navigation.md",
       "behaviorCoverage": "Intro, second step, narration control and incomplete-next dialog observed. No answer, review, assistant message or skip confirmation submitted. Steps 3-5, review outcomes and original audio/CSS are unknown.",
-      "localGuidedImplementation": false,
-      "completePixelParity": false
+      "localGuidedImplementation": true,
+      "completePixelParity": false,
+      "localImplementationRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+      "localVerification": "Project teaching and original workbench browser cases passed in focused runs; complete regression and exact remote CI pending. Fonts/DPR/CSS and original audio are unknown."
     }
   ],
   "lastLiveObservationAttempt": {
@@ -351,5 +353,9 @@
       "outcome": "authenticated; existing classroom, tools tour, settings, controlled figure viewer, practice correct feedback and next multi-choice observed",
       "receipt": "doc/evidence/2026-10-25/hyperknow-live-tools-observation.json"
     }
-  ]
+  ],
+  "practiceRevisit": {
+    "receipt": "doc/evidence/2026-10-26/hyperknow-practice-revisit.json",
+    "scope": "Existing correct single-choice feedback and next multiple-choice view, no answers or assistant messages submitted; CSS/font/DPR unknown"
+  }
 }

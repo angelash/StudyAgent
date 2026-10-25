@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-25T16:11:19.320125+00:00",
+  "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/practice/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "actions": [
+    "Open course from existing logged-in whiteboard",
+    "Open existing lesson practice",
+    "Open assistant panel without sending",
+    "Navigate to next question without selecting, checking or skipping"
+  ],
+  "observed": [
+    "Existing single-choice feedback was already Correct with Score 600; not an answer submitted during this observation",
+    "Original generated image to the left of feedback",
+    "Assistant is a collapsible side panel with question-context placeholder and an attachment affordance",
+    "Next question is multiple choice with numbered choices, Check and Skip; previously skipped state appears in accessibility snapshot",
+    "The 880x887 image shows clipped assistant text; do not reproduce this as a usability requirement"
+  ],
+  "submittedAnswers": 0,
+  "submittedAssistantMessages": 0,
+  "scoreBefore": 600,
+  "scoreAfter": 600,
+  "screenshotPixels": {
+    "width": 880,
+    "height": 887
+  },
+  "cssViewport": null,
+  "devicePixelRatio": null,
+  "originalCssOrFontsAcquired": false,
+  "screenshots": {
+    "hyperknow-practice-feedback-revisit.png": "0b745f2586d436a858ce0a8d11ed2eab0b77780a852cf79fd5f0b892c18aa45c",
+    "hyperknow-practice-multiple-revisit.png": "19efd1f2a9b68014d82a4000bc24cbbb5820bb97490125471ec0d11c8452624b"
+  },
+  "limits": [
+    "Only these existing session states; not a complete course or newly measured result",
+    "No original CSS, font, image source files or audio bytes exported",
+    "Screenshot dimensions do not establish CSS viewport or DPR"
+  ]
+}

@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "8a73c86bad7141deafd03f2608e5ddc7c86ae8e5",
+  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 343,
-    "activeHttpRoutes": 330,
-    "activeBusinessHttpRoutes": 322,
+    "declaredHttpRoutes": 346,
+    "activeHttpRoutes": 333,
+    "activeBusinessHttpRoutes": 325,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 34,
-    "apiClasses": 136,
+    "activeControllers": 35,
+    "apiClasses": 138,
     "apiFunctions": 381,
     "domainCollections": 93,
-    "contractTypes": 304,
+    "contractTypes": 307,
     "webPages": 26,
     "webRouteHandlers": 1,
-    "apiTestFiles": 134,
-    "browserTestFiles": 26
+    "apiTestFiles": 135,
+    "browserTestFiles": 27
   },
   "modules": [
     {
@@ -215,6 +215,7 @@
         "AiModule"
       ],
       "controllers": [
+        "ProjectTeachingController",
         "SourceCourseLifecycleController",
         "ClassroomCodeController",
         "ClassroomTurnController",
@@ -230,6 +231,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "ProjectTeachingService",
         "SourceCourseLifecycleService",
         "ClassroomCodeService",
         "ClassroomTurnService",
@@ -5163,12 +5165,41 @@
       "retired": false
     },
     {
+      "verb": "GET",
+      "path": "/api/learning/projects/:id/requests/:requestKey",
+      "controller": "CourseProjectController",
+      "method": "request",
+      "file": "apps/api/src/modules/learning/course-project.controller.ts",
+      "line": 11,
+      "signature": "request(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Param('requestKey') key:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "projects",
+          "type": "CourseProjectService"
+        }
+      ],
+      "calls": [
+        "this.projects.request"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
       "verb": "POST",
       "path": "/api/learning/projects",
       "controller": "CourseProjectController",
       "method": "open",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 11,
+      "line": 12,
       "signature": "open(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5197,7 +5228,7 @@
       "controller": "CourseProjectController",
       "method": "save",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 12,
+      "line": 13,
       "signature": "save(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5226,7 +5257,7 @@
       "controller": "CourseProjectController",
       "method": "submit",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 13,
+      "line": 14,
       "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5255,7 +5286,7 @@
       "controller": "CourseProjectController",
       "method": "review",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 14,
+      "line": 15,
       "signature": "review(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5284,7 +5315,7 @@
       "controller": "CourseProjectController",
       "method": "legacy",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 15,
+      "line": 16,
       "signature": "legacy(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -5313,7 +5344,7 @@
       "controller": "CourseProjectController",
       "method": "advice",
       "file": "apps/api/src/modules/learning/course-project.controller.ts",
-      "line": 16,
+      "line": 17,
       "signature": "advice(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -7148,6 +7179,64 @@
       ],
       "calls": [
         "this.files.file"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/projects/:id/teaching",
+      "controller": "ProjectTeachingController",
+      "method": "get",
+      "file": "apps/api/src/modules/learning/project-teaching.controller.ts",
+      "line": 9,
+      "signature": "get(@Req() req:AuthenticatedRequest, @Param('id')id:string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "teaching",
+          "type": "ProjectTeachingService"
+        }
+      ],
+      "calls": [
+        "this.teaching.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/projects/:id/narration",
+      "controller": "ProjectTeachingController",
+      "method": "narrate",
+      "file": "apps/api/src/modules/learning/project-teaching.controller.ts",
+      "line": 10,
+      "signature": "narrate(@Req() req:AuthenticatedRequest, @Param('id')id:string, @Body()input:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "teaching",
+          "type": "ProjectTeachingService"
+        }
+      ],
+      "calls": [
+        "this.teaching.narrate"
       ],
       "active": true,
       "retired": false
@@ -20534,8 +20623,25 @@
           ]
         },
         {
-          "name": "open",
+          "name": "request",
           "line": 11,
+          "signature": "request(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Param('requestKey') key:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/requests/:requestKey'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.projects.request"
+          ]
+        },
+        {
+          "name": "open",
+          "line": 12,
           "signature": "open(@Req() req: AuthenticatedRequest, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20550,7 +20656,7 @@
         },
         {
           "name": "save",
-          "line": 12,
+          "line": 13,
           "signature": "save(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20567,7 +20673,7 @@
         },
         {
           "name": "submit",
-          "line": 13,
+          "line": 14,
           "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20584,7 +20690,7 @@
         },
         {
           "name": "review",
-          "line": 14,
+          "line": 15,
           "signature": "review(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20601,7 +20707,7 @@
         },
         {
           "name": "legacy",
-          "line": 15,
+          "line": 16,
           "signature": "legacy(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20618,7 +20724,7 @@
         },
         {
           "name": "advice",
-          "line": 16,
+          "line": 17,
           "signature": "advice(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -20739,24 +20845,35 @@
           ]
         },
         {
-          "name": "replay",
+          "name": "request",
           "line": 87,
-          "signature": "replay(row: CourseProjectRecord, command: { requestKey: string; expectedRevision: number }, kind: string)",
+          "signature": "request(user:InMemoryUserAccount, projectId:string, key:string): ProjectCommandReceipt",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.view"
+          ]
+        },
+        {
+          "name": "replay",
+          "line": 93,
+          "signature": "replay(row: CourseProjectRecord, command: { requestKey: string; expectedRevision: number }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
           "calls": []
         },
         {
           "name": "finish",
-          "line": 98,
-          "signature": "finish(row: CourseProjectRecord, command: { requestKey: string }, kind: string)",
+          "line": 104,
+          "signature": "finish(row: CourseProjectRecord, command: { requestKey: string }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
           "calls": []
         },
         {
           "name": "stage",
-          "line": 102,
+          "line": 110,
           "signature": "stage(row: CourseProjectRecord, stageId: string)",
           "access": "private",
           "decorators": [],
@@ -20764,7 +20881,7 @@
         },
         {
           "name": "checkArtifact",
-          "line": 106,
+          "line": 114,
           "signature": "checkArtifact(row: CourseProjectRecord, stageId: string, artifact: ProjectArtifact, complete = false)",
           "access": "private",
           "decorators": [],
@@ -20775,7 +20892,7 @@
         },
         {
           "name": "checkRatings",
-          "line": 122,
+          "line": 130,
           "signature": "checkRatings(row: CourseProjectRecord, ratings: ProjectRating[])",
           "access": "private",
           "decorators": [],
@@ -20783,7 +20900,7 @@
         },
         {
           "name": "checkRatingFiles",
-          "line": 127,
+          "line": 135,
           "signature": "checkRatingFiles(ratings:ProjectRating[], allowed:string[])",
           "access": "private",
           "decorators": [],
@@ -20791,7 +20908,7 @@
         },
         {
           "name": "save",
-          "line": 128,
+          "line": 136,
           "signature": "save(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20806,7 +20923,7 @@
         },
         {
           "name": "submit",
-          "line": 142,
+          "line": 150,
           "signature": "submit(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20823,7 +20940,7 @@
         },
         {
           "name": "review",
-          "line": 160,
+          "line": 168,
           "signature": "review(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20839,7 +20956,7 @@
         },
         {
           "name": "importLegacy",
-          "line": 177,
+          "line": 185,
           "signature": "importLegacy(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -20853,7 +20970,7 @@
         },
         {
           "name": "advise",
-          "line": 191,
+          "line": 199,
           "signature": "advise(user: InMemoryUserAccount, projectId: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -21673,12 +21790,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 42,
+      "line": 44,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -23104,6 +23221,128 @@
           "calls": [
             "this.asset",
             "this.store.tasks.get"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ProjectTeachingController",
+      "file": "apps/api/src/modules/learning/project-teaching.controller.ts",
+      "line": 5,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/projects'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "teaching",
+          "type": "ProjectTeachingService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "get",
+          "line": 9,
+          "signature": "get(@Req() req:AuthenticatedRequest, @Param('id')id:string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/teaching'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.teaching.get"
+          ]
+        },
+        {
+          "name": "narrate",
+          "line": 10,
+          "signature": "narrate(@Req() req:AuthenticatedRequest, @Param('id')id:string, @Body()input:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/narration'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.teaching.narrate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ProjectTeachingService",
+      "file": "apps/api/src/modules/learning/project-teaching.service.ts",
+      "line": 12,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "speech",
+          "type": "SpeechService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "context",
+          "line": 15,
+          "signature": "context(user:InMemoryUserAccount, id:string, session:InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 22,
+          "signature": "get(user:InMemoryUserAccount, id:string, session:InMemoryAuthSession): ProjectTeachingView",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.context",
+            "this.speech.capabilities"
+          ]
+        },
+        {
+          "name": "narrate",
+          "line": 27,
+          "signature": "narrate(user:InMemoryUserAccount, id:string, session:InMemoryAuthSession, input:unknown, signal:AbortSignal)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.context",
+            "this.speech.capabilities",
+            "this.speech.synthesize"
           ]
         }
       ]
@@ -36197,6 +36436,49 @@
       ]
     },
     {
+      "name": "ProjectCommandReceipt",
+      "file": "packages/contracts/src/course-project.ts",
+      "line": 28,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'save'|'submit'|'review'|'advice'|'import'"
+        },
+        {
+          "name": "appliedRevision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "at",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "submissionId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "reviewId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "project",
+          "optional": false,
+          "type": "CourseProjectView"
+        }
+      ]
+    },
+    {
       "name": "CurriculumTocPart",
       "file": "packages/contracts/src/curriculum.ts",
       "line": 5,
@@ -41558,6 +41840,72 @@
       ]
     },
     {
+      "name": "ProjectTeachingStep",
+      "file": "packages/contracts/src/project-teaching.ts",
+      "line": 6,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'intro'|'field'|'evidence'|'reflection'"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "instruction",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "fieldId",
+          "optional": true,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ProjectTeachingView",
+      "file": "packages/contracts/src/project-teaching.ts",
+      "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "version",
+          "optional": false,
+          "type": "typeof projectTeachingVersion"
+        },
+        {
+          "name": "projectId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "definitionFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "stages",
+          "optional": false,
+          "type": "Array<{stageId:string;steps:Array<ProjectTeachingStep & {speech:ClassroomSpeechTrack}>}>"
+        },
+        {
+          "name": "speech",
+          "optional": false,
+          "type": "StudioSpeechCapabilities"
+        }
+      ]
+    },
+    {
       "name": "EvidenceKind",
       "file": "packages/contracts/src/reviews.ts",
       "line": 4,
@@ -44958,6 +45306,7 @@
     "apps/api/src/modules/learning/notebook.integration.test.ts",
     "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts",
     "apps/api/src/modules/learning/project-file.integration.test.ts",
+    "apps/api/src/modules/learning/project-teaching.integration.test.ts",
     "apps/api/src/modules/learning/source-course-chunks.test.ts",
     "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
     "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
@@ -45005,6 +45354,7 @@
     "tests/e2e/pdf-material.spec.ts",
     "tests/e2e/product-smoke.spec.ts",
     "tests/e2e/project-files.spec.ts",
+    "tests/e2e/project-teaching.spec.ts",
     "tests/e2e/source-course-lifecycle.spec.ts",
     "tests/e2e/source-course-long.spec.ts",
     "tests/e2e/source-course.spec.ts",

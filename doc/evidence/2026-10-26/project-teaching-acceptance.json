@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T16:49:18.849528+00:00",
+  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+  "applicationSourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+  "specificationCommits": [
+    "453c032",
+    "80bc836",
+    "2e90b96"
+  ],
+  "sourceDigestNormalization": "UTF-8 CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "76942dcfdec87ed5ffab1a49920a9b94ea7e085ff3362d66f60a74b5de6000dc",
+    "apps/api/src/common/auth.guard.ts": "499196f9f0f0359f8cfe9009552d341221f66e4a5aa66096c7d0d30e2d551451",
+    "apps/api/src/modules/learning/course-project.controller.ts": "2ce6b3a00de852f5bc696ebbc84a19f3e81c494ca52cd1a5e8554ad9313ccb8c",
+    "apps/api/src/modules/learning/course-project.integration.test.ts": "93e745b55bd5cf9ae0dbe4ffe87c699494ca25d58a59febc9a04095d73d29a94",
+    "apps/api/src/modules/learning/course-project.service.ts": "fc8d290f8e6580b0c7196768ae1ff0f086a6b3eb57d4827e79f4ee39d6b56cc9",
+    "apps/api/src/modules/learning/learning.module.ts": "4cb58e1faeeab8754748fa6f8b8317d47077cb81143628808f67802fd5141874",
+    "apps/api/src/modules/learning/project-teaching.controller.ts": "94bf0a497709aee1b439f9d96d76329b525f64974f0197b2a8164e46b56de394",
+    "apps/api/src/modules/learning/project-teaching.integration.test.ts": "5a1442c84219a490544dc515ffca4b3226bbd21c514f3c3e77d80f99921e18c8",
+    "apps/api/src/modules/learning/project-teaching.service.ts": "0b3918fb1d44fbfd2696f879df4d36628f09691599643ed36a23246621e017fd",
+    "apps/web/app/studio/projects/project-narration.ts": "5449fc76c2d98a2d2c80321997380d25af49465fe42d93bd2e082de28722b1fc",
+    "apps/web/app/studio/projects/project-recovery.ts": "324efc530512c5def929677e01184902b6b4952c4c99b982b9f38b3fa3303867",
+    "apps/web/app/studio/projects/project-teaching.css": "87edea0c24fe95c43baa4bff9e9711456fc1e2889459e32c8d95b4ad467bb69e",
+    "apps/web/app/studio/projects/project-teaching.tsx": "bbae01e87761377d8e38c4fdb6990813f9edd0221e9031447cbf1e8b4dfffcfd",
+    "apps/web/app/studio/projects/projects.css": "5bb950d6fda573fa789b4f6e2670f5bb41420f638470ed2e16c63759843e818f",
+    "apps/web/app/studio/projects/use-project-recovery.ts": "01a6b3ee14e869bf28415ad12ed9f7739640bc1e2aad024ff6e7030e0ecb7ab0",
+    "apps/web/app/studio/projects/workbench.tsx": "4d92472fd5505b1b003416d2bca1d8bfd353eaaed514dd3f21f0a711b8e591c6",
+    "apps/web/lib/api.ts": "7dae66204eca0c8c8a60ef074580b4d76804245317490e9759fcafae42a2e2b0",
+    "packages/contracts/src/course-project.ts": "2b0a23ef6da985bc179bfd772c3848b891e8e480d11b393d24094961ed340072",
+    "packages/contracts/src/index.ts": "c27220db0ce09f44bd2dc4c7ff2cb876f728c78b8a32e7aeb31b9d7660585443",
+    "packages/contracts/src/project-teaching.ts": "ea0fc587b7ef17eb28e29dd30327b922d4067871a6f7d3b86a0de9ed4816fcf6",
+    "scripts/architecture/project-feature-definitions.cjs": "af6ebd8f351b0662138cfee276e7da3fd35718c13042f1ee721c35af49cccf7e",
+    "scripts/qa/run-project-teaching-postgres.cjs": "661d6101fe94c20f333b89bde381702dc8db3b3cfcf9ff720e611c0a5937e9cc",
+    "scripts/qa/run-source-course-browser.cjs": "9023a2ae8cb8b4a07adea2d718eeec0b9ddeed65966daa54eb29173969dd50b9",
+    "tests/e2e/course-project.spec.ts": "161598d6ba2864f91033faa8e3a5b9f7899fe0aa93d256b29a72ee1b08ffedb5",
+    "tests/e2e/project-files.spec.ts": "4d465076041ab7997da9646f8041114f9b846b5382e35317933a0501fa08b7a6",
+    "tests/e2e/project-teaching.spec.ts": "2607b567b4bfe9539c103fba06159bb12ff0253b40e15ec53aea1467fc6b785c",
+    "scripts/qa/verify-project-teaching-runtime.cjs": "89cf5f5756bddfd472dc90b5405cb04bfb5ff0a8e2c4547478dd5a8055416e35"
+  },
+  "status": "local-complete-next-ci-pending-after-workflow-timeout",
+  "localPassed": true,
+  "passed": false,
+  "api": {
+    "passed": 1178,
+    "skipped": 39,
+    "failed": 0,
+    "files": 135,
+    "report": "project-teaching-full-api.json"
+  },
+  "postgres": {
+    "passed": 14,
+    "failed": 0,
+    "report": "project-teaching-postgres.json"
+  },
+  "browser": {
+    "passed": 194,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "durationMs": 900641.467,
+    "report": "project-teaching-full-browser.json"
+  },
+  "realTts": {
+    "passed": true,
+    "report": "project-teaching-live-narration.json",
+    "scope": "One frozen instruction sentence, synthetic account and temporary SQLite, configured MiniMax endpoint; no production learning records"
+  },
+  "initialFailures": [
+    "7/7 first browser tests failed due ambiguous button/textarea test locators; retained unchanged",
+    "12 passed/2 failed: afterEach unroute on deliberately closed page, and an external identity rewrite overwritten during beforeunload; cleanup guarded and cache overwrite binding checked",
+    "22 passed/1 failed: old AI-scope test attempted a new command before explicitly retaining a rejected original; revised to download and clear the rejected command",
+    "GitHub enforced application job timeout of 30 minutes; media installation consumed 15m30s. API 1170 passed/47 skipped, browser and PostgreSQL succeeded; later content verification was interrupted."
+  ],
+  "initialArtifacts": [
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/project-teaching-browser.json",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-a-lost-sa-efe36-preserves-later-local-edits/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-a-lost-sa-efe36-preserves-later-local-edits/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-a-lost-sa-efe36-preserves-later-local-edits/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-an-unsave-12fe3-it-comparison-before-saving/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-an-unsave-12fe3-it-comparison-before-saving/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-an-unsave-12fe3-it-comparison-before-saving/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-guided-or-fab3e-and-submit-one-frozen-stage/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-guided-or-fab3e-and-submit-one-frozen-stage/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-guided-or-fab3e-and-submit-one-frozen-stage/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-a-79316-n-the-selected-step-changes/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-a-79316-n-the-selected-step-changes/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-a-79316-n-the-selected-step-changes/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-1e1db-lds-and-controls-fit-at-768/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-1e1db-lds-and-controls-fit-at-768/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-1e1db-lds-and-controls-fit-at-768/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-83a35-lds-and-controls-fit-at-390/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-83a35-lds-and-controls-fit-at-390/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-83a35-lds-and-controls-fit-at-390/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-aca15-ds-and-controls-fit-at-1440/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-aca15-ds-and-controls-fit-at-1440/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/browser-initial/browser-product-acceptance/project-teaching-project-t-aca15-ds-and-controls-fit-at-1440/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/project-teaching-browser.json",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/browser-product-acceptance/project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/browser-product-acceptance/project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/browser-product-acceptance/project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/browser-product-acceptance/project-teaching-hard-clos-043f3-rs-an-explicit-copy-preview/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/tab-isolation-initial/browser-product-acceptance/project-teaching-hard-clos-043f3-rs-an-explicit-copy-preview/trace.zip",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/focused-initial/project-teaching-browser.json",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/focused-initial/browser-product-acceptance/project-files-an-oversized-1779e-narrows-the-AI-advice-scope/error-context.md.gz",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/focused-initial/browser-product-acceptance/project-files-an-oversized-1779e-narrows-the-AI-advice-scope/test-failed-1.png",
+    "doc/evidence/2026-10-26/project-teaching-initial-artifacts/focused-initial/browser-product-acceptance/project-files-an-oversized-1779e-narrows-the-AI-advice-scope/trace.zip"
+  ],
+  "remoteCi": {
+    "status": "next-candidate-pending",
+    "previousRunId": 40210930158,
+    "previousHead": "8f70c835aadb0c5bd4e9089dc49cf12871b434c0",
+    "previousConclusion": "cancelled",
+    "reason": "GitHub enforced application job timeout of 30 minutes; media installation consumed 15m30s. API 1170 passed/47 skipped, browser and PostgreSQL succeeded; later content verification was interrupted.",
+    "workflowChange": "Application timeout 30 -> 60 minutes; all checks retained",
+    "workflowRevision": "d4c93e7",
+    "workflowSha256": "ab188a7002f7a65799a81e58d325922912923e16516fc811a5c635b04a2f55ec"
+  },
+  "production": {
+    "status": "not-released",
+    "currentBuild": "77981f7d65e8886414da8db4dda7b8634bc0212d"
+  },
+  "limitations": [
+    "HyperKnow CSS/font/DPR/original audio and complete project/review states remain unverified",
+    "Teacher review, real devices, all voices listening and long-term learning are outstanding",
+    "Full M1-M7 and 72 requirements remain open; this batch does not assert product completion",
+    "Project advice still uses its original synchronous model operation; no provider exactly-once claim",
+    "Local copies are browser storage, not independent backups",
+    "119 isolated PostgreSQL cold-read tests identified a legacy teaching comparison sensitive to JSONB property order; fixed and 29-test validated only in the separate 119 candidate. Current production uses SQLite."
+  ],
+  "design": {
+    "passed": true,
+    "features": 118,
+    "areas": 14,
+    "routes": 325,
+    "collections": 93,
+    "contractTypes": 307,
+    "markdownLinks": 2680,
+    "viewerChecks": 10
+  },
+  "postApiStartChanges": "No API or contracts changed after the full API run started; later changes affect only project CSS/badge, browser tests, documentation and one isolated real-TTS QA script.",
+  "screenshotReview": {
+    "viewports": [
+      390,
+      768,
+      1440
+    ],
+    "localDpr": 1,
+    "sourceViewportDprFontsUnknown": true,
+    "pixelParity": false,
+    "notes": [
+      "Fixed shared project CSS overriding toolbar/title/navigation dimensions",
+      "The local frozen field prompt is shorter than the reference project instruction; content differs",
+      "Original font/CSS/audio and later review steps remain unavailable"
+    ]
+  },
+  "archivedReports": {
+    "project-teaching-full-api.json": "d00c4ddeb56c3b774d688a7fe603b793b8f936209f0fc300b964c170b3a750c1",
+    "project-teaching-full-browser.json": "8ada2f9c6c72a097931cd3ce5657ca0b9a033220bc97e6a96279bb7459d16a43",
+    "project-teaching-live-narration.json": "8d176b676075c2a22fa03a2f7d7ed741378362ac125cdf0b1629572d59059f14",
+    "project-teaching-postgres.json": "a5be0479a3dc06584db4dad2fd672ca2321977a7f431f07df6950082091b0690",
+    "project-teaching-service-final.json": "49a370aa941f02dcbb70cbec33b807f492068582265137e7311092ba70991f34",
+    "project-teaching-service-http-fence.json": "c347a7b49d5c6b920b4fbf87c0053a24dbeeb88c30f33965f29fce381c43a43b",
+    "project-teaching-service-initial.json": "455a5f575c87e811b03fff871e7dbe698143cac19538e721f2bd63e428bac0f2",
+    "project-teaching-exact-ci-initial.json": "842853bc88f4920f213a776266e5ef7f1c72c2d7166c0b7b3c16841d2d737460"
+  }
+}

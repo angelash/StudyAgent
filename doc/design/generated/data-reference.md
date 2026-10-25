@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`8a73c86bad7141deafd03f2608e5ddc7c86ae8e5`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`944d93a46960bba598e991712f05b76d6c6be2cf`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -207,6 +207,7 @@
 - `CourseProject`：[packages/contracts/src/course-project.ts:19](../../../packages/contracts/src/course-project.ts#L19)；字段：`id`、`ownerUserId`、`studentId`、`studioCourseId?`、`definition`、`revision`、`currentStageId`、`drafts`、`submissions`、`reviews`、`draftReflections`、`advice`、`legacyImports`、`createdAt`、`updatedAt`。
 - `CourseProjectView`：[packages/contracts/src/course-project.ts:25](../../../packages/contracts/src/course-project.ts#L25)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `CourseProjectCatalog`：[packages/contracts/src/course-project.ts:27](../../../packages/contracts/src/course-project.ts#L27)；字段：`definitions`、`projects`。
+- `ProjectCommandReceipt`：[packages/contracts/src/course-project.ts:28](../../../packages/contracts/src/course-project.ts#L28)；字段：`requestKey`、`kind`、`appliedRevision`、`at`、`submissionId?`、`reviewId?`、`project`。
 
 ### packages/contracts/src/curriculum.ts
 
@@ -400,6 +401,11 @@
 - `ProjectAssetUpload`：[packages/contracts/src/project-assets.ts:14](../../../packages/contracts/src/project-assets.ts#L14)；字段：`id`、`projectId`、`stageId`、`definitionFingerprint`、`name`、`size`、`mediaType`、`sha256`、`chunkSize`、`chunks`、`status`、`revision`、`assetId`、`createdAt`、`expiresAt`、`completedAt`。
 - `ProjectAssetView`：[packages/contracts/src/project-assets.ts:16](../../../packages/contracts/src/project-assets.ts#L16)；字段：`id`、`projectId`、`stageId`、`name`、`kind`、`mediaType`、`revision`、`status`、`original`、`display?`、`previews`、`pageCount`、`durationMs`、`width`、`height`、`normalizationVersion`、`createdAt`、`updatedAt`、`task`。
 - `ProjectFileIntegrity`：[packages/contracts/src/project-assets.ts:20](../../../packages/contracts/src/project-assets.ts#L20)；字段：`assetId`、`checkedAt`、`complete`、`files`。
+
+### packages/contracts/src/project-teaching.ts
+
+- `ProjectTeachingStep`：[packages/contracts/src/project-teaching.ts:6](../../../packages/contracts/src/project-teaching.ts#L6)；字段：`id`、`kind`、`title`、`instruction`、`fieldId?`。
+- `ProjectTeachingView`：[packages/contracts/src/project-teaching.ts:7](../../../packages/contracts/src/project-teaching.ts#L7)；字段：`version`、`projectId`、`definitionFingerprint`、`stages`、`speech`。
 
 ### packages/contracts/src/reviews.ts
 

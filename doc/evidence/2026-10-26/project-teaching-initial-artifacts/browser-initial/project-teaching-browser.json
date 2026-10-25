@@ -1,0 +1,632 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-guided-project\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/project-teaching.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-guided-project\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-guided-project/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-guided-project/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-guided-project/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/project-teaching-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "project-teaching.spec.ts",
+      "file": "project-teaching.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1844,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:18:137",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 137,
+                      "line": 18
+                    },
+                    "snippet": "  16 |\n  17 | test('guided original fields save before moving, keep the full work and submit one frozen stage',async({page})=>{\n> 18 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();\n     |                                                                                                                                         ^\n  19 |   await page.getByRole('button',{name:'下一步 ›',exact:true}).click();const confirm=page.getByRole('dialog',{name:'当前步骤尚未完成'});await expect(confirm).toBeVisible();await confirm.getByRole('button',{name:'留在这一步'}).click();\n  20 |   await page.getByLabel('匿名情境与已知观察').fill('匿名图书馆观察：两次排队的规则不同，事实和解释分开。');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();\n  21 |   await page.getByLabel('可以研究的问题').fill('比较两个时间段的排队规则，核查资源与进入条件。');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('整理证据与附件');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 137,
+                        "line": 18
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  16 |\n  17 | test('guided original fields save before moving, keep the full work and submit one frozen stage',async({page})=>{\n> 18 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();\n     |                                                                                                                                         ^\n  19 |   await page.getByRole('button',{name:'下一步 ›',exact:true}).click();const confirm=page.getByRole('dialog',{name:'当前步骤尚未完成'});await expect(confirm).toBeVisible();await confirm.getByRole('button',{name:'留在这一步'}).click();\n  20 |   await page.getByLabel('匿名情境与已知观察').fill('匿名图书馆观察：两次排队的规则不同，事实和解释分开。');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();\n  21 |   await page.getByLabel('可以研究的问题').fill('比较两个时间段的排队规则，核查资源与进入条件。');await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('整理证据与附件');\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:18:137"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:35.073Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-guided-or-fab3e-and-submit-one-frozen-stage\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-guided-or-fab3e-and-submit-one-frozen-stage\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-guided-or-fab3e-and-submit-one-frozen-stage\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 137,
+                    "line": 18
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e7485a181ff5672fe9e2",
+          "file": "project-teaching.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1702,
+                  "error": {
+                    "message": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:30:129",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 129,
+                      "line": 30
+                    },
+                    "snippet": "  28 |\n  29 | test('an unsaved local field survives reload and a different tab requires an explicit comparison before saving',async({page,context})=>{\n> 30 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByLabel('匿名情境与已知观察').fill('本机尚未保存的完整观察');await page.reload();await expect(page.getByLabel('匿名情境与已知观察')).toHaveValue('本机尚未保存的完整观察');\n     |                                                                                                                                 ^\n  31 |   const other=await context.newPage();other.on('dialog',dialog=>void dialog.accept());await other.goto(page.url());await other.getByLabel('匿名情境与已知观察').fill('另一个页面明确保存的新观察');await other.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(other.getByText('草稿和自评准备已保存。',{exact:true})).toBeVisible();\n  32 |   // Restore the first tab's own buffer after the other tab's shared local-storage write.\n  33 |   await page.getByLabel('匿名情境与已知观察').fill('本机保留的完整观察与新补充');await page.reload();const comparison=page.getByRole('region',{name:'项目草稿版本对照'});await expect(comparison).toBeVisible();await expect(comparison.getByRole('region',{name:'本机项目稿'})).toContainText('本机保留的完整观察与新补充');await expect(comparison.getByRole('region',{name:'服务器项目稿'})).toContainText('另一个页面明确保存的新观察');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 129,
+                        "line": 30
+                      },
+                      "message": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  28 |\n  29 | test('an unsaved local field survives reload and a different tab requires an explicit comparison before saving',async({page,context})=>{\n> 30 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByLabel('匿名情境与已知观察').fill('本机尚未保存的完整观察');await page.reload();await expect(page.getByLabel('匿名情境与已知观察')).toHaveValue('本机尚未保存的完整观察');\n     |                                                                                                                                 ^\n  31 |   const other=await context.newPage();other.on('dialog',dialog=>void dialog.accept());await other.goto(page.url());await other.getByLabel('匿名情境与已知观察').fill('另一个页面明确保存的新观察');await other.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(other.getByText('草稿和自评准备已保存。',{exact:true})).toBeVisible();\n  32 |   // Restore the first tab's own buffer after the other tab's shared local-storage write.\n  33 |   await page.getByLabel('匿名情境与已知观察').fill('本机保留的完整观察与新补充');await page.reload();const comparison=page.getByRole('region',{name:'项目草稿版本对照'});await expect(comparison).toBeVisible();await expect(comparison.getByRole('region',{name:'本机项目稿'})).toContainText('本机保留的完整观察与新补充');await expect(comparison.getByRole('region',{name:'服务器项目稿'})).toContainText('另一个页面明确保存的新观察');\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:30:129"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:38.392Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-an-unsave-12fe3-it-comparison-before-saving\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-an-unsave-12fe3-it-comparison-before-saving\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-an-unsave-12fe3-it-comparison-before-saving\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 129,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-cffae01eb681c8045d4c",
+          "file": "project-teaching.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1715,
+                  "error": {
+                    "message": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:38:129",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 129,
+                      "line": 38
+                    },
+                    "snippet": "  36 |\n  37 | test('a lost save reply survives reload, reads the same actor receipt and preserves later local edits',async({page})=>{\n> 38 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByLabel('匿名情境与已知观察').fill('第一次保存的原观察');\n     |                                                                                                                                 ^\n  39 |   await page.route('**/api/learning/projects/'+f.id,async route=>{if(route.request().method()!=='PATCH')return route.continue();await route.fetch();await route.abort('failed');});await page.route('**/api/learning/projects/'+f.id+'/requests/*',route=>route.abort('failed'));\n  40 |   await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.getByRole('region',{name:'项目原操作恢复'})).toContainText('原操作仍待核对');await page.getByLabel('匿名情境与已知观察').fill('保存之后仍在本机继续编辑的内容');await page.reload();await expect(page.getByRole('region',{name:'项目原操作恢复'})).toBeVisible();\n  41 |   await page.unroute('**/api/learning/projects/'+f.id);await page.unroute('**/api/learning/projects/'+f.id+'/requests/*');let writes=0;page.on('request',request=>{if(request.method()==='PATCH'&&request.url()===api+'/learning/projects/'+f.id)writes++;});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 129,
+                        "line": 38
+                      },
+                      "message": "Error: locator.fill: Error: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  36 |\n  37 | test('a lost save reply survives reload, reads the same actor receipt and preserves later local edits',async({page})=>{\n> 38 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByLabel('匿名情境与已知观察').fill('第一次保存的原观察');\n     |                                                                                                                                 ^\n  39 |   await page.route('**/api/learning/projects/'+f.id,async route=>{if(route.request().method()!=='PATCH')return route.continue();await route.fetch();await route.abort('failed');});await page.route('**/api/learning/projects/'+f.id+'/requests/*',route=>route.abort('failed'));\n  40 |   await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.getByRole('region',{name:'项目原操作恢复'})).toContainText('原操作仍待核对');await page.getByLabel('匿名情境与已知观察').fill('保存之后仍在本机继续编辑的内容');await page.reload();await expect(page.getByRole('region',{name:'项目原操作恢复'})).toBeVisible();\n  41 |   await page.unroute('**/api/learning/projects/'+f.id);await page.unroute('**/api/learning/projects/'+f.id+'/requests/*');let writes=0;page.on('request',request=>{if(request.method()==='PATCH'&&request.url()===api+'/learning/projects/'+f.id)writes++;});\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:38:129"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:41.517Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-lost-sa-efe36-preserves-later-local-edits\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-lost-sa-efe36-preserves-later-local-edits\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-lost-sa-efe36-preserves-later-local-edits\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 129,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-45801a4d62561871a376",
+          "file": "project-teaching.spec.ts",
+          "line": 37,
+          "column": 5
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1663,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:177",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 177,
+                      "line": 46
+                    },
+                    "snippet": "  44 |\n  45 | for(const width of [390,768,1440])test('project teaching, original fields and controls fit at '+width,async({page})=>{\n> 46 |   await page.setViewportSize({width,height:1000});await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await expect(page.getByRole('button',{name:'下一步 ›',exact:true})).toBeInViewport();if(!process.env.CI)await page.screenshot({path:evidence+'/field-'+width+'.png',fullPage:true});\n     |                                                                                                                                                                                 ^\n  47 | });\n  48 |\n  49 | test('project audio decodes original samples, does not save progress and stops when the selected step changes',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 177,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  44 |\n  45 | for(const width of [390,768,1440])test('project teaching, original fields and controls fit at '+width,async({page})=>{\n> 46 |   await page.setViewportSize({width,height:1000});await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await expect(page.getByRole('button',{name:'下一步 ›',exact:true})).toBeInViewport();if(!process.env.CI)await page.screenshot({path:evidence+'/field-'+width+'.png',fullPage:true});\n     |                                                                                                                                                                                 ^\n  47 | });\n  48 |\n  49 | test('project audio decodes original samples, does not save progress and stops when the selected step changes',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:177"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:44.603Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-83a35-lds-and-controls-fit-at-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-83a35-lds-and-controls-fit-at-390\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-83a35-lds-and-controls-fit-at-390\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 177,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-10f4978ee912be5b238a",
+          "file": "project-teaching.spec.ts",
+          "line": 45,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 768",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 951,
+                  "error": {
+                    "message": "Error: page.goto: net::ERR_NO_BUFFER_SPACE at http://localhost:3107/parent/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3107/parent/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: net::ERR_NO_BUFFER_SPACE at http://localhost:3107/parent/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3107/parent/login\", waiting until \"load\"\u001b[22m\n\n    at enter (F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:9:14)\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:51",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 14,
+                      "line": 9
+                    },
+                    "snippet": "   7 |   page.on('dialog',dialog=>void dialog.accept());const suffix=crypto.randomUUID(),principal='guided-project-'+suffix+'@local.test',credential='Guided-QA-'+suffix;\n   8 |   const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.15.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n>  9 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |              ^\n  10 |   await page.goto('/studio/projects?unitId=soc-u1');await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('STEP 1 OF 5');\n  11 |   const id=new URL(page.url()).searchParams.get('project')!;\n  12 |   async function current(){const r=await fetch(api+'/learning/projects/'+id,{headers:{authorization:'Bearer '+actor.token}});expect(r.status).toBe(200);return(await r.json()).data;}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 14,
+                        "line": 9
+                      },
+                      "message": "Error: page.goto: net::ERR_NO_BUFFER_SPACE at http://localhost:3107/parent/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3107/parent/login\", waiting until \"load\"\u001b[22m\n\n\n   7 |   page.on('dialog',dialog=>void dialog.accept());const suffix=crypto.randomUUID(),principal='guided-project-'+suffix+'@local.test',credential='Guided-QA-'+suffix;\n   8 |   const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.15.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;\n>  9 |   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n     |              ^\n  10 |   await page.goto('/studio/projects?unitId=soc-u1');await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('STEP 1 OF 5');\n  11 |   const id=new URL(page.url()).searchParams.get('project')!;\n  12 |   async function current(){const r=await fetch(api+'/learning/projects/'+id,{headers:{authorization:'Bearer '+actor.token}});expect(r.status).toBe(200);return(await r.json()).data;}\n    at enter (F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:9:14)\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:47.659Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-1e1db-lds-and-controls-fit-at-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-1e1db-lds-and-controls-fit-at-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-1e1db-lds-and-controls-fit-at-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 14,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-c8256ef4b75579c7a4fa",
+          "file": "project-teaching.spec.ts",
+          "line": 45,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 1440",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1720,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:177",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 177,
+                      "line": 46
+                    },
+                    "snippet": "  44 |\n  45 | for(const width of [390,768,1440])test('project teaching, original fields and controls fit at '+width,async({page})=>{\n> 46 |   await page.setViewportSize({width,height:1000});await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await expect(page.getByRole('button',{name:'下一步 ›',exact:true})).toBeInViewport();if(!process.env.CI)await page.screenshot({path:evidence+'/field-'+width+'.png',fullPage:true});\n     |                                                                                                                                                                                 ^\n  47 | });\n  48 |\n  49 | test('project audio decodes original samples, does not save progress and stops when the selected step changes',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 177,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  44 |\n  45 | for(const width of [390,768,1440])test('project teaching, original fields and controls fit at '+width,async({page})=>{\n> 46 |   await page.setViewportSize({width,height:1000});await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await expect(page.getByRole('button',{name:'下一步 ›',exact:true})).toBeInViewport();if(!process.env.CI)await page.screenshot({path:evidence+'/field-'+width+'.png',fullPage:true});\n     |                                                                                                                                                                                 ^\n  47 | });\n  48 |\n  49 | test('project audio decodes original samples, does not save progress and stops when the selected step changes',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:46:177"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:49.947Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-aca15-ds-and-controls-fit-at-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-aca15-ds-and-controls-fit-at-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-t-aca15-ds-and-controls-fit-at-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 177,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e6d718da7cace552ca55",
+          "file": "project-teaching.spec.ts",
+          "line": 45,
+          "column": 39
+        },
+        {
+          "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1903,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:54:111",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 111,
+                      "line": 54
+                    },
+                    "snippet": "  52 |   let command:any;await page.route('**/api/learning/projects/*/narration',async route=>{command=route.request().postDataJSON();await route.fulfill({contentType:'audio/mpeg',path:resolve('apps/web/public/classroom-voice-samples',manifest.voices[0].file)});});\n  53 |   const f=await enter(page),before=await f.current();await page.getByRole('button',{name:'▷ 朗读本步骤',exact:true}).click();await expect.poll(()=>page.evaluate(()=>(window as any).__projectAudio.some((audio:HTMLAudioElement)=>!audio.paused))).toBe(true);expect(command).not.toHaveProperty('text');expect(command).toMatchObject({stageId:'question',stepId:'intro',sentenceIndex:0,version:'project-teaching-v1'});\n> 54 |   await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();await expect.poll(()=>page.evaluate(()=>(window as any).__projectAudio.every((audio:HTMLAudioElement)=>audio.paused))).toBe(true);expect(await f.current()).toEqual(before);\n     |                                                                                                               ^\n  55 | });\n  56 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 111,
+                        "line": 54
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('匿名情境与已知观察')\nExpected: visible\nError: strict mode violation: getByLabel('匿名情境与已知观察') resolved to 2 elements:\n    1) <button aria-current=\"step\" aria-label=\"第2步：匿名情境与已知观察\"></button> aka getByRole('button', { name: '第2步：匿名情境与已知观察' })\n    2) <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\"></textarea> aka getByRole('textbox', { name: '匿名情境与已知观察' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('匿名情境与已知观察') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('匿名情境与已知观察')\u001b[22m\n\n\n  52 |   let command:any;await page.route('**/api/learning/projects/*/narration',async route=>{command=route.request().postDataJSON();await route.fulfill({contentType:'audio/mpeg',path:resolve('apps/web/public/classroom-voice-samples',manifest.voices[0].file)});});\n  53 |   const f=await enter(page),before=await f.current();await page.getByRole('button',{name:'▷ 朗读本步骤',exact:true}).click();await expect.poll(()=>page.evaluate(()=>(window as any).__projectAudio.some((audio:HTMLAudioElement)=>!audio.paused))).toBe(true);expect(command).not.toHaveProperty('text');expect(command).toMatchObject({stageId:'question',stepId:'intro',sentenceIndex:0,version:'project-teaching-v1'});\n> 54 |   await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByLabel('匿名情境与已知观察')).toBeVisible();await expect.poll(()=>page.evaluate(()=>(window as any).__projectAudio.every((audio:HTMLAudioElement)=>audio.paused))).toBe(true);expect(await f.current()).toEqual(before);\n     |                                                                                                               ^\n  55 | });\n  56 |\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:54:111"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T15:52:53.045Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-a-79316-n-the-selected-step-changes\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-a-79316-n-the-selected-step-changes\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-project-a-79316-n-the-selected-step-changes\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 111,
+                    "line": 54
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-8d681d1af0b9df7a25cc",
+          "file": "project-teaching.spec.ts",
+          "line": 49,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T15:52:29.578Z",
+    "duration": 27397.106,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}
