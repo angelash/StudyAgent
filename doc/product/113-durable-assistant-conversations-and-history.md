@@ -59,3 +59,17 @@ worker在领取、心跳和最终发布时重新检查账号有效性、原监�
 浏览器使用合成独立QA库：诊断规则提示与训练/家长模型替身路径、发送→收起→刷新→同任务完成、离线/断流、取消竞争、换题/换号、不支持存储、分页检索与原活动定位；390/768/1440和键盘，保留初次失败与实际截图。模型真实合成小调用及CLI取消证据另存，测试替身不能当成所有模型当前连通。
 
 发布必须包含准确业务提交、完整应用/浏览器/PG远端CI、实际主目录构建、原配置保留、发布前一致数据及旧构建回退、匿名权限烟测和跨至少60秒的守护稳定观察。只在这些均完成后标本批交付；原72项完整要求、模型遗留调用全面迁移、教材/教师/真人与长期教学门禁继续保留。
+
+
+## 8. 114交付期间的接入复核（实施前）
+
+以8b033ed源码复核：AiService.chat仍含进程内chatting集合，最后同时写assistantMessages、aiInsights和题目帮助；AssistantWidget在context/open/identity变化时清空输入和requestKey，现有取消只abort当前HTTP。以上仅是接入定位，113业务仍未实施。
+
+- AiService的resolveQuestionContext/assistantContext/recordAssistance需要拆出受控快照与最终发布两段；私有withheldAnswer/bound不得进入公开任务、SSE、历史搜索或家庭导出。首答或订正代次已改变时，必须用最终事务核对，不能沿用创建时的assistanceNeeded补造提交前帮助。
+- AiModule接入独立AssistantTurnService/Worker/Controller，并复用现有store任务租约；不能为兼容同步messages而让数据库事务占住整段CLI等待。旧入口适配同一命令后，以独立状态读取等待终态，仍须验证当前请求/授权。
+- AuthGuard的学生路由白名单目前只开放原messages接口，新增turns、取消/重试、分页和状态流必须逐路径加入，并在服务层继续核对原学习授权来源；不能为了新接口放宽整个ai路径。
+- ClassroomTurnWorkerService的领取、心跳和最终栅栏可参考，普通助教仍保留独立集合、问题上下文和额度，不直接复用课堂记录。
+- 当前XiaojiuChatService以exec --json启动CLI，适配器只从item.completed/agent_message取最终正文，同时读取error/turn.failed；这证明当前适配器没有向前端转发token，不证明CLI本身绝无增量事件能力。实施时检查实际事件后再确定正文通道；先保证排队、生成、检查和取消等真实状态可恢复，不假装逐字输出。
+- AssistantWidget和AssistantDock接入按账号/活动/题目缓存、原命令恢复、真实取消及分页定位；保留常规模型选择和已经提交的112草稿/首答边界。
+
+本次仅静态复核现有代码，没有新增真实供应商调用，也不将规则回复或代理进程kill当作持久取消已经完成的证据。

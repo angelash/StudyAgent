@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T09:17:46.751Z",
+  "at": "2026-10-25T09:40:37.948Z",
   "specificationCommit": "6bb6372",
   "sourceRevision": "0dd1d04dfb4f435484fa0d4dae12593332fa262f",
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
@@ -18,10 +18,14 @@
     "scripts/qa/run-source-course-browser.cjs": "7c3991d5f2049b7c38d4d579dab2399175fb7cf751d9f0286d5d89eff2cb5224",
     "tests/e2e/classroom-tools.spec.ts": "e2d473658e790e0b232de92a2aa26ce3990b6feb7d18718f48a413f2f5209bed"
   },
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "local-passed-awaiting-exact-ci-and-runtime",
+  "status": "delivered-bounded-tool-interactions-with-explicit-voice-and-full-product-parity-gaps",
   "reports": {
+    "classroom-tools-application-ci.json": {
+      "sha256": "b55890f884feea4ee82a4e05448c84da49e71d7bd36260b626b36a7fa82907ed",
+      "conclusion": "success"
+    },
     "classroom-tools-browser-before-visual-fix.json": {
       "sha256": "d88f253228a9ab8b80370dc701a73ad0a5dd3f476d8720d9d7e3fe3ffcbaa375",
       "stats": {
@@ -32,6 +36,10 @@
         "unexpected": 0,
         "flaky": 0
       }
+    },
+    "classroom-tools-browser-ci.json": {
+      "sha256": "a437fd086bbd1a88cdbe5115f7648517a8d32e2cfe15e7536b5f3fb0cd3173f0",
+      "conclusion": "success"
     },
     "classroom-tools-browser-final.json": {
       "sha256": "3d27b35285c27b351c1c006df0af1cc5c0a4f43e981a78cda170ef9e742a57f0",
@@ -55,6 +63,29 @@
         "flaky": 0
       }
     },
+    "classroom-tools-ci.json": {
+      "sha256": "e79afcf1cc2c74677706921098d8cd4b8a757b60ebe6612a0b97d0a785c0997e",
+      "conclusion": "success"
+    },
+    "classroom-tools-design.json": {
+      "sha256": "a9d1af08d5c425a6775435e97abc2007f71216bda02eb2146b2a04004626bbe9",
+      "passed": true
+    },
+    "classroom-tools-full-browser.json": {
+      "sha256": "e58f0b9c95fb943f540c00c20caf68ed3ad368e89cf4b118acb0c319c5d13510",
+      "stats": {
+        "startTime": "2026-10-25T09:19:35.064Z",
+        "duration": 710464.8330000001,
+        "expected": 132,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-tools-postgres-ci.json": {
+      "sha256": "a4cb4034a46a1f613ec9ebc56ca1f97e72d3bb493a4a02865410376ed7d18a10",
+      "conclusion": "success"
+    },
     "classroom-tools-regression-before-anchor-refinement.json": {
       "sha256": "cfb36b70ba2caa0b9b58bd8da8629243ae58fdc01afe59b0a4259736ec78bd17",
       "stats": {
@@ -65,6 +96,10 @@
         "unexpected": 0,
         "flaky": 0
       }
+    },
+    "classroom-tools-runtime.json": {
+      "sha256": "983cd446496065d4fa8cfda0dbafa4d2a45305570b4f8d606cf74f4106ef0fd4",
+      "passed": true
     }
   },
   "screenshots": {
@@ -141,7 +176,14 @@
     "focusAndPrint": true,
     "latePreviewAudioRejected": true,
     "realVoiceListening": false,
-    "fullProductComplete": false
+    "fullProductComplete": false,
+    "fullLocalBrowser": {
+      "passed": 132,
+      "failed": 0,
+      "retries": 0,
+      "skipped": 0,
+      "durationMs": 710464.8330000001
+    }
   },
   "initialFailures": [
     "Initial focused run: 4 passed, 1 failed; fixture mistook the first lesson bitmap for an SVG. Corrected test to use the actual next-step bars.",
@@ -152,12 +194,72 @@
     "Observed original screenshots are bounded live references; no DPR, original font binary, full CSS/source or 100 percent parity proof.",
     "Preview reads an already shown current frozen sentence; no pre-course generic voice sample. Synthetic WAV proves browser decode/play/stop, not real provider quality or original-platform audio.",
     "Ordinary assistant durable tasks in113 and classroom multi-select in115 are specification only.",
-    "Complete whiteboard spatial layout, remaining reference states, full content/teacher/device/long-term gates and M1-M7 remain unfinished."
+    "Complete whiteboard spatial layout, remaining reference states, full content/teacher/device/long-term gates and M1-M7 remain unfinished.",
+    "Reference has six voice categories; actual local provider catalogs currently each expose five IDs. The six-card fixture is not six real voices or complete voice parity."
   ],
   "designValidation": {
     "passed": true,
     "sourceFiles": 361,
-    "markdownLinks": 2477,
+    "markdownLinks": 2489,
     "viewerChecks": 10
-  }
+  },
+  "voiceCatalog": {
+    "referenceCategories": 6,
+    "currentConfiguredProviderCatalog": {
+      "minimax": 5,
+      "openai": 5
+    },
+    "evidence": "Static SpeechService catalog inspection, not a real provider voice verification",
+    "syntheticBrowserVoiceCount": 6,
+    "completeReferenceParity": false
+  },
+  "ci": {
+    "head": "8b033ed5d99e7f82cf7d1fc3f4e81dd313d46b59",
+    "runId": 40180127851,
+    "conclusion": "success",
+    "jobs": {
+      "application": {
+        "passed": 1111,
+        "skipped": 44,
+        "total": 1155
+      },
+      "browser": {
+        "passed": 132,
+        "retries": 0
+      },
+      "postgres": {
+        "conclusion": "success",
+        "finalAnswerDraftGroup": {
+          "passed": 10,
+          "skipped": 1
+        }
+      }
+    }
+  },
+  "scope": "114 tool interactions and release only; original six real voices, full CSS/font parity and M1-M7 are not completed by this receipt",
+  "runtime": {
+    "revision": "8b033ed5d99e7f82cf7d1fc3f4e81dd313d46b59",
+    "sourceCodeRevision": "0dd1d04dfb4f435484fa0d4dae12593332fa262f",
+    "buildId": "3dd7PUBtRFNYTVkGO9yZZ",
+    "smokeChecks": 15,
+    "observations": 3,
+    "spanMs": 68029,
+    "stableAcrossObservations": true,
+    "protectedFiles": {
+      ".env.example": true,
+      "apps/web/next.config.ts": true,
+      "doc/product/87-local-windows-daemon.md": true,
+      "ecosystem.config.cjs": true,
+      "scripts/operations/start-daemon.ps1": true
+    },
+    "backup": {
+      "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-25-classroom-tools",
+      "at": "2026-10-25T09:37:14.476Z",
+      "bundle": "data-bundle-final",
+      "verifiedFiles": 1,
+      "assetsIncluded": false,
+      "scope": "consistent SQLite and all referenced runtime files; early copies retain prior compiled builds; not an independent research-asset backup"
+    }
+  },
+  "sourceVerifiedAgainstCiHead": "8b033ed5d99e7f82cf7d1fc3f4e81dd313d46b59"
 }
