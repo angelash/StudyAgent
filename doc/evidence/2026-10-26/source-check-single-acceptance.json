@@ -1,10 +1,10 @@
 {
   "passed": true,
-  "status": "candidate-ready-runtime-pending",
+  "status": "runtime-delivered",
   "sourceRevision": "8071e7ecbdea16135ee18371424e3dd99931dc63",
   "applicationRevision": "6bf3700",
   "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
-  "deployed": false,
+  "deployed": true,
   "sqliteFocused": {
     "passed": 50,
     "failed": 0,
@@ -49,7 +49,7 @@
     "report": "source-check-single-live/receipt.json"
   },
   "limits": [
-    "Current complete local API and exact CI/browser passed. Actual production build, consistent rollback and daemon observations remain pending.",
+    "Production anonymous entry/authorization/compiled-code checks passed. Synthetic owned flows and provider calls were run separately in isolated storage; this does not certify real families or devices.",
     "No teacher review, real-device or long-term validation.",
     "Exact duplicate detection and different situations do not prove independent item families.",
     "Content stays pending and formalMeasurementEligible=false.",
@@ -108,5 +108,14 @@
       "failed": 0,
       "scope": "Linux environment, overlaps local complete suite."
     }
+  },
+  "runtime": {
+    "report": "source-check-single-runtime.json",
+    "revision": "dd9194e",
+    "webBuildId": "0Zhr-Oq70fmQyS671XuvN",
+    "httpChecks": 69,
+    "voiceSamples": 6,
+    "stableMs": 75948,
+    "schemaVersion": 15
   }
 }
