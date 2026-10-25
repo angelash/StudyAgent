@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc",
+  "sourceRevision": "be375c6d6434a3876549422ae56327084f4f1350",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 112,
-    "activeNormalApiRoutes": 283,
-    "coveredApiRoutes": 283
+    "activeNormalApiRoutes": 288,
+    "coveredApiRoutes": 288
   },
   "areas": [
     {
@@ -4456,7 +4456,7 @@
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 260
+              "line": 264
             },
             {
               "name": "ClassroomService.upgradePresentation",
@@ -4494,7 +4494,7 @@
         },
         {
           "id": "STUDIO-05",
-          "title": "课堂插问与补充板书",
+          "title": "持久课堂插问、五种讲法与原句恢复",
           "area": "studio",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生与授权教师；成人课程需成人身份",
@@ -4504,13 +4504,14 @@
             "/studio/projects",
             "/studio/source-courses"
           ],
-          "inputs": "当前课/步骤/问题、modelId、请求键",
-          "implementation": "插问暂停自动讲解；发送当前课件和允许证据；模型返回reply与最多5条要点、可选三标签关系图；服务器保存消息与补充板书。",
-          "outputs": "对话历史、可定位笔记、补充关系图",
+          "inputs": "当前课/步骤/字幕单元/问题、五种意图、固定modelId、稳定请求键",
+          "implementation": "发送前暂停并等待进度保存；冻结已展示字幕、原句位置与受限上下文；业务记录和任务同事务；重放先于上限和新模型解析，同键异参拒绝；任务在当前授权和租约栅栏下保存唯一消息与补充板书；帮助事实在生成前保存，取消不抹去。浏览器可找回丢失回执、刷新读取、取消/显式重试，主动回到原句。",
+          "outputs": "可查询轮次、五讲法入口、单轮消息/板书、原句恢复点与实际模型身份",
           "collections": [
-            "classroomSessions"
+            "classroomSessions",
+            "classroomTurns"
           ],
-          "limits": "板书不是逐字转写；模型输出不执行HTML；私有答案键不送给练习助教。",
+          "limits": "板书不逐字转写，私有答案/提示和未来字幕不送入模型；模型文本只作教学建议。崩溃发生在外部模型已答但领域尚未提交时可能重新调用，保证唯一发布而非供应商恰好调用一次；完整自适应策略、像素/声音及真人效果仍待。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4519,6 +4520,46 @@
               "method": "ask",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
               "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/classroom/sessions/:sessionId/turns",
+              "controller": "ClassroomTurnController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/classroom/sessions/:sessionId/turns/:id",
+              "controller": "ClassroomTurnController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:sessionId/turns",
+              "controller": "ClassroomTurnController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:sessionId/turns/:id/cancel",
+              "controller": "ClassroomTurnController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:sessionId/turns/:id/retry",
+              "controller": "ClassroomTurnController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
+              "line": 13
             }
           ],
           "implementations": [
@@ -4526,9 +4567,38 @@
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
               "line": 228
+            },
+            {
+              "name": "ClassroomTurnService.list",
+              "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
+              "line": 64
+            },
+            {
+              "name": "ClassroomTurnService.get",
+              "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
+              "line": 68
+            },
+            {
+              "name": "ClassroomTurnService.create",
+              "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
+              "line": 70
+            },
+            {
+              "name": "ClassroomTurnService.control",
+              "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
+              "line": 126
             }
           ],
           "sourceFiles": [
+            "packages/contracts/src/classroom-turn.ts",
+            "apps/api/src/modules/learning/classroom-turn-record.ts",
+            "apps/api/src/modules/learning/classroom-turn.service.ts",
+            "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+            "apps/api/src/modules/learning/classroom-turn.controller.ts",
+            "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+            "apps/web/app/studio/classroom/turns.tsx",
+            "tests/e2e/classroom-turns.spec.ts",
+            "scripts/qa/verify-classroom-turn-live.cjs",
             "apps/api/src/modules/learning/classroom.service.ts"
           ],
           "tests": [
@@ -7668,7 +7738,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 335
+              "line": 336
             },
             {
               "name": "DomainEventBusService.publish",
@@ -7678,7 +7748,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 233
+              "line": 234
             }
           ],
           "sourceFiles": [
@@ -7871,7 +7941,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 233
+              "line": 234
             }
           ],
           "sourceFiles": [
@@ -7948,7 +8018,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 217
+              "line": 218
             },
             {
               "name": "RuntimeMetricsService.snapshot",

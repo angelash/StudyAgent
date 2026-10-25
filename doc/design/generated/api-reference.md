@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。共 304 个 HTTP 路由声明，当前 AppModule 可达 283 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`be375c6d6434a3876549422ae56327084f4f1350`。共 309 个 HTTP 路由声明，当前 AppModule 可达 288 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -930,6 +930,53 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
+
+## ClassroomTurnController — 当前接入
+
+### GET /api/learning/classroom/sessions/:sessionId/turns
+
+实现：[apps/api/src/modules/learning/classroom-turn.controller.ts:9](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L9)，方法 `list`。
+
+- 签名：`list(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.list`
+
+### GET /api/learning/classroom/sessions/:sessionId/turns/:id
+
+实现：[apps/api/src/modules/learning/classroom-turn.controller.ts:10](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L10)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.get`
+
+### POST /api/learning/classroom/sessions/:sessionId/turns
+
+实现：[apps/api/src/modules/learning/classroom-turn.controller.ts:11](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L11)，方法 `create`。
+
+- 签名：`create(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.create`
+
+### POST /api/learning/classroom/sessions/:sessionId/turns/:id/cancel
+
+实现：[apps/api/src/modules/learning/classroom-turn.controller.ts:12](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L12)，方法 `cancel`。
+
+- 签名：`cancel(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.control`
+
+### POST /api/learning/classroom/sessions/:sessionId/turns/:id/retry
+
+实现：[apps/api/src/modules/learning/classroom-turn.controller.ts:13](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L13)，方法 `retry`。
+
+- 签名：`retry(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.control`
 
 ## ClassroomVisualController — 当前接入
 

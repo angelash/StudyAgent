@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-25T02:55:33.255Z",
+  "kind": "live-default-model-synthetic-classroom-call",
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "durationMs": 9080,
+  "reply": "以下是讲解建议，目前没有已审核的先修资料，不能据此判断你的实际掌握情况或学习困难原因。理解平均数前，建议先熟悉三件事：怎样确定被分配的总量、怎样确定分成几份、怎样用总量除以份数求每份。还要能区分“总共有多少”和“平均每份有多少”。检查小问题：把18个梨平均放进3个篮子，你会怎样算出平均每篮有多少个？只写出你使用的数量关系即可。",
+  "board": {
+    "title": "理解平均数的讲解先修建议",
+    "points": [
+      "先认清总量：一共有多少。",
+      "再确定份数：平均分成几份。",
+      "用总量除以份数，求平均每份。",
+      "平均数描述分得同样多时的每份数量。"
+    ],
+    "diagram": null
+  },
+  "speechUnits": [
+    {
+      "start": 0,
+      "end": 43,
+      "text": "以下是讲解建议，目前没有已审核的先修资料，不能据此判断你的实际掌握情况或学习困难原因。",
+      "id": "speech_c94d6ee37e88a26f7948a67037174354f51de7c28c51c3b25575bda1b432bbf9"
+    },
+    {
+      "start": 43,
+      "end": 59,
+      "text": "理解平均数前，建议先熟悉三件事：",
+      "id": "speech_ad2a3234ba4c7325df67a67dd416039070296043f5c3e8040bb45d97ae104af1"
+    },
+    {
+      "start": 59,
+      "end": 92,
+      "text": "怎样确定被分配的总量、怎样确定分成几份、怎样用总量除以份数求每份。",
+      "id": "speech_0f74af569a29b61ea994056fc892d4ae54c25ee6bacd4142c0927aac9454aae6"
+    },
+    {
+      "start": 92,
+      "end": 115,
+      "text": "还要能区分“总共有多少”和“平均每份有多少”。",
+      "id": "speech_c1feb4a6498f95639c58319d490dec3b01845d86d0b3edbe70b971f6d757fed6"
+    },
+    {
+      "start": 115,
+      "end": 150,
+      "text": "检查小问题：把18个梨平均放进3个篮子，你会怎样算出平均每篮有多少个？",
+      "id": "speech_22ee7ceec2e2df436ce3f0e8ca1c1e8340fb0173df95d048c0b80eb8250b57d1"
+    },
+    {
+      "start": 150,
+      "end": 164,
+      "text": "只写出你使用的数量关系即可。",
+      "id": "speech_69c9ecf063c3f2422174326a96f6446ff3788fb14196316cf5b56146b017c276"
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "One live synthetic default-model call; other models are outside this receipt.",
+    "No live TTS or image generation in this check.",
+    "Pedagogical effectiveness and teacher approval remain pending."
+  ]
+}

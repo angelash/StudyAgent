@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T03:11:03.542369+00:00",
+  "sourceRevision": "be375c6d6434a3876549422ae56327084f4f1350",
+  "specificationCommit": "37de7ee",
+  "passed": false,
+  "localPassed": true,
+  "status": "local-validation-complete-awaiting-final-ci-and-daemon-delivery",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".gitattributes": "8816584d0ea07044002435280f2cc4168aefeb0041ec92ca883b03ccc801b77f",
+    ".github/workflows/verify.yml": "18d1f1c2e6b16e94be9b4e2c7e08660e5b5c4587e3fa4bf80b6f5e44e653ab43",
+    "apps/api/src/common/auth.guard.ts": "a39c125855a7bfcef758d7d06620262c4e4b947b89630568a9a9cd04b7ffe692",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "a79097cdd187104b9637edd374d3ca72c058af316c0654b2065a02ffe1ff52e1",
+    "apps/api/src/modules/learning/classroom-turn-record.ts": "db0b760147ffdf3f88e0b82b8b397704ab9a10f1844a4b6c7030927a528b3b7b",
+    "apps/api/src/modules/learning/classroom-turn-worker.service.ts": "ba061768c393f867615b309a1b88ac2b64aeec8a862c60fcc1fff937ce9e1737",
+    "apps/api/src/modules/learning/classroom-turn.controller.ts": "a2b97970bd3c5bda6ade58c1171f6125f39665860cc01770268093c89e9bab25",
+    "apps/api/src/modules/learning/classroom-turn.integration.test.ts": "03295f04b1397762f72502df831a950d95a40a801c70367542e5c30ae4597a6d",
+    "apps/api/src/modules/learning/classroom-turn.service.ts": "691ed8ccb4118466ce320074f7a774602cbef7ed7a644eb9def2dd78b6b3ad17",
+    "apps/api/src/modules/learning/classroom.service.ts": "e590f8e1cbbe5f75d616f529e0d6513a16ba2e45be959d5327b83d57a8119c98",
+    "apps/api/src/modules/learning/learning.module.ts": "6c3940dddbf1f762aafb7d8c98ec3e07f4aa9433f8f6de17d734bd2586766cac",
+    "apps/api/src/modules/privacy/privacy-records.ts": "391d7ff2ebde8d1ed6f171d77653dc4ea6b7908d4888befe6d4917d52d86dde4",
+    "apps/web/app/studio/classroom/classroom.css": "1511e4013611d52f53ba05b184e8bf59ebc946d020b41f8ebc0ee47760bba550",
+    "apps/web/app/studio/classroom/turns.tsx": "7f9d9f2595cd8ba8b5584d4e9fdb962546970073a2f1fb8483f09e6eef692fe0",
+    "apps/web/app/studio/classroom/workbench.tsx": "81f912a6f87048e95e7341cbddab6e76b000c019735798902777c9b8202d9471",
+    "packages/contracts/src/classroom-turn.ts": "bcf942ad311e5f3f066677a9430b476c10b1ab4d27a6e0c206361467e3f4de23",
+    "packages/contracts/src/index.ts": "24383be1a3c3b769dfd61997b0ce0083042cc7ed5f4add63b892df5d4cb16bad",
+    "scripts/architecture/project-feature-definitions.cjs": "ffafc0e8910d8750b5ca8455dfdbc6acf3bc0a59c36fff7a70409e62a835976e",
+    "scripts/qa/run-classroom-turn-postgres.cjs": "6a20e07f953a5fa455f3fa9a0c729ee7f63118c13c3ca877967c5adeb09ce72b",
+    "scripts/qa/run-source-course-browser.cjs": "3fbdb28557e647c58f7f93953a5c6cd7daed1994ddafa14dda4023e54ba1addc",
+    "scripts/qa/source-course-test-api.cjs": "c2097955e68f26d41b5c870698438c18910cd830a7a409cd9cd6aedb91888441",
+    "scripts/qa/verify-classroom-turn-live.cjs": "5772feecbcb306f1eb2d0f939dcfdc4565ae0b77d7426a707c202b975ea979b1",
+    "tests/e2e/classroom-turns.spec.ts": "4b9ddf298a1b8e720434aa71901c8f21037248d8bc3b5ea3e851bcd97d749c6c",
+    "tests/e2e/classroom.spec.ts": "3501f32cee59322a2479443d1595ea75edcdc7ed6908fbaec2b9484d2884c500"
+  },
+  "reports": {
+    "classroom-turn-browser-focused-before-layout-fix.json": {
+      "sha256": "a1abede9eaeabd718effc417f8bc69525cbc998a71407ece9a2f32f8c7d48e05",
+      "result": {
+        "startTime": "2026-10-25T02:57:17.569Z",
+        "duration": 72414.061,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-turn-browser-focused-final.json": {
+      "sha256": "c3fa8913695b98975f7b9cb95a5e2798df47864c55ba489de283f71fb1faef59",
+      "result": {
+        "startTime": "2026-10-25T03:08:48.485Z",
+        "duration": 79238.706,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-turn-browser-full-initial.json": {
+      "sha256": "e711841974d3735119a392db6b92e21fa81f1bc6b52bb01f667383d843101f32",
+      "result": {
+        "startTime": "2026-10-25T03:00:41.254Z",
+        "duration": 406679.845,
+        "expected": 61,
+        "skipped": 0,
+        "unexpected": 3,
+        "flaky": 0
+      }
+    },
+    "classroom-turn-browser-initial.json": {
+      "sha256": "120be23ef1804904767ddd1760c842f870d9ab7ae41e0279a7d1a6b0defeeca4",
+      "result": {
+        "startTime": "2026-10-25T02:54:55.527Z",
+        "duration": 88205.43,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "classroom-turn-full-api.json": {
+      "sha256": "42b1921c93c03c1ad4eb2d08cc26f09b5658a0f7044eea2961f10f696b1c14c8",
+      "result": {
+        "numTotalTests": 1095,
+        "numPassedTests": 1061,
+        "numFailedTests": 0,
+        "numPendingTests": 34
+      }
+    },
+    "classroom-turn-live-default.json": {
+      "sha256": "0d9e8a9159077ad5f5aad970a168fb48e976441f900620c7409e267823f8cf9e",
+      "result": {
+        "passed": true
+      }
+    },
+    "classroom-turn-postgres-initial.json": {
+      "sha256": "9cbce0e0602aecd51714e57f9974eba69c151d1a433684e464a9fcf9b6c638cd",
+      "result": {
+        "numTotalTests": 26,
+        "numPassedTests": 24,
+        "numFailedTests": 2,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-turn-postgres.json": {
+      "sha256": "8b2d67e3de618970cd7eb00f36959ce84cd18e078e9564f5cc4e32521e2dabdc",
+      "result": {
+        "numTotalTests": 27,
+        "numPassedTests": 26,
+        "numFailedTests": 0,
+        "numPendingTests": 1
+      }
+    },
+    "classroom-turn-sqlite-final.json": {
+      "sha256": "8cfa67fa1d69af66d1e3cb91e2c721dfa0b967c7fa5ad4a0a7750ee38a1b57b9",
+      "result": {
+        "numTotalTests": 27,
+        "numPassedTests": 27,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-turn-sqlite-initial.json": {
+      "sha256": "4929bc0f8685fd2a64c55540e732e145fca8329c339e750ff838156a8ffe09fe",
+      "result": {
+        "numTotalTests": 10,
+        "numPassedTests": 8,
+        "numFailedTests": 2,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-turn-sqlite-second-initial.json": {
+      "sha256": "7248af46bbb30dea08c12a5f04bed681b8b392e71164448f8a6db341d9bde3b8",
+      "result": {
+        "numTotalTests": 21,
+        "numPassedTests": 19,
+        "numFailedTests": 2,
+        "numPendingTests": 0
+      }
+    }
+  },
+  "checks": {
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "sqliteClassroomCombination": {
+      "passed": 27
+    },
+    "postgresClassroomCombination": {
+      "passed": 26,
+      "sqliteOnlySkipped": 1
+    },
+    "fullLocalApi": {
+      "passed": 1061,
+      "environmentSkipped": 34,
+      "failed": 0
+    },
+    "finalFocusedBrowser": {
+      "passed": 5,
+      "failed": 0
+    },
+    "liveDefaultModel": {
+      "passed": true,
+      "modelId": "deepseek-v4-flash",
+      "calls": 1
+    },
+    "finalSourceCi": {
+      "status": "pending"
+    },
+    "daemonDeployment": "pending",
+    "isolatedPostgres": "stopped"
+  },
+  "featureCoverage": [
+    "Independent turn records and transactional outbox; fixed resolved model and frozen current sentence/visible context",
+    "Replay before new-call validation, limits and model resolution; changed command conflicts; legacy receipt compatibility",
+    "Five explicit editable teaching intents and confirmed send; no private hint/answer keys or future subtitles in context",
+    "Help recorded at request acceptance; cancellation, reload and retries do not remove assistance",
+    "Real guardian/access-version/content/task-fence rechecks before message and board publication",
+    "Cancellation, explicit retry generations, queued/running restart recovery and previous worker output fencing",
+    "Real SQLite backup/cold restore; account export and actual child privacy deletion",
+    "Lost acknowledgments, refresh, cancel/retry, visible latest answers, original-sentence return, adult and real learning-code browser users",
+    "Keyboard and simulated 390/768/1440 widths; screenshots actually inspected"
+  ],
+  "diagnostics": [
+    "Initial SQLite fixtures used an undefined rather than null envelope expectation and a nonexistent removeWhere helper; corrected test assertions/helper without changing authorization behavior. One correction command ran from the API directory and did not edit the root-relative path; its repeated failure report is retained.",
+    "Initial PostgreSQL reopening exposed JSONB object-key reordering in the lesson digest. Canonical key ordering fixes the actual recovery issue; both databases pass the final suites.",
+    "Initial browser captured the preparation caption before the next-step save finished. Waiting for actual persisted position fixes the test.",
+    "Screenshot inspection exposed old 32px input-button/first-child CSS applying to the new teaching intent row; fixed explicit row selectors and content-sized buttons.",
+    "Initial full browser: 61 passed, 3 failed with registration HTTP 429 after the four new synthetic accounts shared the old IP quota. New test accounts use a reserved benchmark IP through the already isolated QA proxy; production limits unchanged. Final remote full-browser result remains pending.",
+    "Final screenshot inspection found latest answers could fall below the transcript viewport when controls changed height. Layout-time following and mobile-chat return now preserve visibility; final focused browser explicitly checks it."
+  ],
+  "limits": [
+    "No full-product, pixel-perfect or pedagogical-effectiveness completion claim. XP-C03 and the full M1 scope remain in progress.",
+    "Exactly-once domain publication is fenced; a crash after external generation but before database commit can require another provider call.",
+    "One real synthetic default-model call only. Browser model and audio/image fixtures are explicit; no new live TTS or image call.",
+    "Hardware power loss, real touch devices, screen readers, human listening, teacher review and longitudinal learning outcomes remain separate gates.",
+    "HyperKnow live course access redirected to signin; no new course-state, original CSS, font or asset acquisition is claimed.",
+    "Production family records were not used for feature tests. New classroom code is not yet deployed."
+  ]
+}

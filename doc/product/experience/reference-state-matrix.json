@@ -221,5 +221,11 @@
       "comparisonStatus": "pending_reference_observation",
       "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
     }
-  ]
+  ],
+  "lastLiveObservationAttempt": {
+    "at": "2026-10-25T03:01:40.926655+00:00",
+    "requestedUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+    "observedUrl": "https://agent.hyperknow.io/signin",
+    "outcome": "login-required; no existing user tab was available; no credentials entered and no new course-state parity claimed"
+  }
 }

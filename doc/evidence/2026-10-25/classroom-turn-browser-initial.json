@@ -1,0 +1,290 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/classroom-turns.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-course-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "classroom-turns.spec.ts",
+      "file": "classroom-turns.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26124,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-subtitle')\nExpected: \u001b[32m\"\u001b[7m准备好后，点击 ▶ 开始\u001b[27m。\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m分析时同时追问个人处境和处境形成的社会条件\u001b[27m。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cl-subtitle') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-subtitle')\u001b[22m\n\u001b[2m    33 × locator resolved to <p aria-live=\"off\" data-sentence=\"1\" class=\"cl-subtitle\">分析时同时追问个人处境和处境形成的社会条件。</p>\u001b[22m\n\u001b[2m       - unexpected value \"分析时同时追问个人处境和处境形成的社会条件。\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-subtitle')\nExpected: \u001b[32m\"\u001b[7m准备好后，点击 ▶ 开始\u001b[27m。\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m分析时同时追问个人处境和处境形成的社会条件\u001b[27m。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cl-subtitle') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-subtitle')\u001b[22m\n\u001b[2m    33 × locator resolved to <p aria-live=\"off\" data-sentence=\"1\" class=\"cl-subtitle\">分析时同时追问个人处境和处境形成的社会条件。</p>\u001b[22m\n\u001b[2m       - unexpected value \"分析时同时追问个人处境和处境形成的社会条件。\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-turns.spec.ts:34:105",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-turns.spec.ts",
+                      "column": 105,
+                      "line": 34
+                    },
+                    "snippet": "  32 |   blockRead = false; await page.reload(); await done(page);\n  33 |   await expect(page.locator('.cl-chat-turn[data-role=user]')).toHaveCount(1); await expect(page.locator('.cl-chat-turn[data-role=assistant]')).toHaveCount(1);\n> 34 |   await expect(page.locator('.cl-ai-board')).toHaveCount(1); await expect(page.locator('.cl-subtitle')).toHaveText(subtitle);\n     |                                                                                                         ^\n  35 |   await expect(page.locator('.cl-session-navigation')).toHaveText(position, { useInnerText: true });\n  36 |   for (const width of [1440, 768, 390]) {\n  37 |     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 }); if (width === 390) await page.getByRole('button', { name: '对话与练习', exact: true }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-turns.spec.ts",
+                        "column": 105,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-subtitle')\nExpected: \u001b[32m\"\u001b[7m准备好后，点击 ▶ 开始\u001b[27m。\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m分析时同时追问个人处境和处境形成的社会条件\u001b[27m。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cl-subtitle') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-subtitle')\u001b[22m\n\u001b[2m    33 × locator resolved to <p aria-live=\"off\" data-sentence=\"1\" class=\"cl-subtitle\">分析时同时追问个人处境和处境形成的社会条件。</p>\u001b[22m\n\u001b[2m       - unexpected value \"分析时同时追问个人处境和处境形成的社会条件。\"\u001b[22m\n\n\n  32 |   blockRead = false; await page.reload(); await done(page);\n  33 |   await expect(page.locator('.cl-chat-turn[data-role=user]')).toHaveCount(1); await expect(page.locator('.cl-chat-turn[data-role=assistant]')).toHaveCount(1);\n> 34 |   await expect(page.locator('.cl-ai-board')).toHaveCount(1); await expect(page.locator('.cl-subtitle')).toHaveText(subtitle);\n     |                                                                                                         ^\n  35 |   await expect(page.locator('.cl-session-navigation')).toHaveText(position, { useInnerText: true });\n  36 |   for (const width of [1440, 768, 390]) {\n  37 |     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 }); if (width === 390) await page.getByRole('button', { name: '对话与练习', exact: true }).click();\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-turns.spec.ts:34:105"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:55:00.958Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-turns-lost-submi-3686c-nd-the-original-spoken-line\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-turns-lost-submi-3686c-nd-the-original-spoken-line\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\classroom-turns-lost-submi-3686c-nd-the-original-spoken-line\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\classroom-turns.spec.ts",
+                    "column": 105,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-df2951c2eb1f03dff0ce",
+          "file": "classroom-turns.spec.ts",
+          "line": 19,
+          "column": 5
+        },
+        {
+          "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14521,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:55:28.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-0da8bfc1cfae94017d96",
+          "file": "classroom-turns.spec.ts",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "title": "all teaching modes show an editable request and keep the conventional model picker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26797,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:55:43.477Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-03a506c28b9587a75899",
+          "file": "classroom-turns.spec.ts",
+          "line": 54,
+          "column": 5
+        },
+        {
+          "title": "provider errors remain visible and retry preserves the chosen question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11702,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:56:10.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e6132ffd4cf4c64e726-2ae250932f26cf11ccbd",
+          "file": "classroom-turns.spec.ts",
+          "line": 66,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T02:54:55.527Z",
+    "duration": 88205.43,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`be375c6d6434a3876549422ae56327084f4f1350`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -139,7 +139,7 @@
 - `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
 - `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:82](../../../apps/api/src/modules/learning/classroom.service.ts#L82)。
 - `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:132](../../../apps/api/src/modules/learning/classroom.service.ts#L132)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:260](../../../apps/api/src/modules/learning/classroom.service.ts#L260)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:264](../../../apps/api/src/modules/learning/classroom.service.ts#L264)。
 - `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:157](../../../apps/api/src/modules/learning/classroom.service.ts#L157)。
 
 **补充实现文件**：
@@ -153,25 +153,45 @@
 - [tests/e2e/classroom-captions.spec.ts](../../../tests/e2e/classroom-captions.spec.ts)
 - [scripts/qa/classroom-caption-live.cjs](../../../scripts/qa/classroom-caption-live.cjs)
 
-## STUDIO-05 课堂插问与补充板书
+## STUDIO-05 持久课堂插问、五种讲法与原句恢复
 
-**输入**：当前课/步骤/问题、modelId、请求键。
+**输入**：当前课/步骤/字幕单元/问题、五种意图、固定modelId、稳定请求键。
 
-**处理与实现**：插问暂停自动讲解；发送当前课件和允许证据；模型返回reply与最多5条要点、可选三标签关系图；服务器保存消息与补充板书。
+**处理与实现**：发送前暂停并等待进度保存；冻结已展示字幕、原句位置与受限上下文；业务记录和任务同事务；重放先于上限和新模型解析，同键异参拒绝；任务在当前授权和租约栅栏下保存唯一消息与补充板书；帮助事实在生成前保存，取消不抹去。浏览器可找回丢失回执、刷新读取、取消/显式重试，主动回到原句。
 
-**输出**：对话历史、可定位笔记、补充关系图。
+**输出**：可查询轮次、五讲法入口、单轮消息/板书、原句恢复点与实际模型身份。
 
-**状态与持久化**：`classroomSessions`
+**状态与持久化**：`classroomSessions`、`classroomTurns`
 
-**权限、失败与边界**：板书不是逐字转写；模型输出不执行HTML；私有答案键不送给练习助教。
+**权限、失败与边界**：板书不逐字转写，私有答案/提示和未来字幕不送入模型；模型文本只作教学建议。崩溃发生在外部模型已答但领域尚未提交时可能重新调用，保证唯一发布而非供应商恰好调用一次；完整自适应策略、像素/声音及真人效果仍待。
 
 **关联接口**：
 
 - `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:24](../../../apps/api/src/modules/learning/classroom.controller.ts#L24)。
+- `GET /api/learning/classroom/sessions/:sessionId/turns` → `ClassroomTurnController.list`；[apps/api/src/modules/learning/classroom-turn.controller.ts:9](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L9)。
+- `GET /api/learning/classroom/sessions/:sessionId/turns/:id` → `ClassroomTurnController.get`；[apps/api/src/modules/learning/classroom-turn.controller.ts:10](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L10)。
+- `POST /api/learning/classroom/sessions/:sessionId/turns` → `ClassroomTurnController.create`；[apps/api/src/modules/learning/classroom-turn.controller.ts:11](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L11)。
+- `POST /api/learning/classroom/sessions/:sessionId/turns/:id/cancel` → `ClassroomTurnController.cancel`；[apps/api/src/modules/learning/classroom-turn.controller.ts:12](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L12)。
+- `POST /api/learning/classroom/sessions/:sessionId/turns/:id/retry` → `ClassroomTurnController.retry`；[apps/api/src/modules/learning/classroom-turn.controller.ts:13](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L13)。
 
 **服务方法**：
 
 - `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:228](../../../apps/api/src/modules/learning/classroom.service.ts#L228)。
+- `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:64](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L64)。
+- `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:68](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L68)。
+- `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:70](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L70)。
+- `ClassroomTurnService.control`；[apps/api/src/modules/learning/classroom-turn.service.ts:126](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L126)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/classroom-turn.ts](../../../packages/contracts/src/classroom-turn.ts)
+- [apps/api/src/modules/learning/classroom-turn-record.ts](../../../apps/api/src/modules/learning/classroom-turn-record.ts)
+- [apps/api/src/modules/learning/classroom-turn-worker.service.ts](../../../apps/api/src/modules/learning/classroom-turn-worker.service.ts)
+- [apps/api/src/modules/learning/classroom-turn.controller.ts](../../../apps/api/src/modules/learning/classroom-turn.controller.ts)
+- [apps/api/src/modules/learning/classroom-turn.integration.test.ts](../../../apps/api/src/modules/learning/classroom-turn.integration.test.ts)
+- [apps/web/app/studio/classroom/turns.tsx](../../../apps/web/app/studio/classroom/turns.tsx)
+- [tests/e2e/classroom-turns.spec.ts](../../../tests/e2e/classroom-turns.spec.ts)
+- [scripts/qa/verify-classroom-turn-live.cjs](../../../scripts/qa/verify-classroom-turn-live.cjs)
 
 ## STUDIO-06 全微课练习、逐级帮助与复盘
 
