@@ -15,7 +15,8 @@ async function enter(page:Page){
   });
   await page.route(/\/api\/learning\/classroom\/sessions(?:\/[^/?]+)?$/,async route=>{
     const response=await route.fetch(),body=await response.json();if(body.data?.lesson)body.data.speech={available:true,provider:'minimax',defaultVoice:manifest.voices[3].voiceId,
-      preview:{version:manifest.version,text:manifest.text,model:manifest.model},voices:manifest.voices.map((voice:any)=>({id:voice.voiceId,label:voice.providerName,classroomPreset:voice.preset,description:voice.providerName+' · 普通话'}))};
+      preview:{version:manifest.version,text:manifest.text,model:manifest.model},voices:[...manifest.voices.map((voice:any)=>({id:voice.voiceId,label:voice.providerName,classroomPreset:voice.preset,description:voice.providerName,language:'普通话'})),
+        {id:'Chinese (Mandarin)_Soft_Girl',label:'柔和少女'},{id:'wumei_yujie',label:'妩媚御姐'}]};
     await route.fulfill({response,json:body});
   });
   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
@@ -45,6 +46,18 @@ test('failed neutral playback keeps an explicit retry and cannot advance or reve
   let fail=true;await page.route('**/api/learning/classroom/sessions/*/voice-preview',route=>fail?route.fulfill({status:503,json:{data:null,error:{code:'unavailable',message:'Synthetic sample unavailable'}}}):route.fulfill({contentType:'audio/mpeg',path:resolve('apps/web/public/classroom-voice-samples',manifest.voices[0].file)}));
   const {settings}=await enter(page);await settings.getByRole('button',{name:'试听音色：温暖少女',exact:true}).click();await expect(settings.getByRole('status')).toContainText('试听暂不可用');fail=false;
   await settings.getByRole('button',{name:'试听音色：温暖少女',exact:true}).click();await expect.poll(()=>audio(page)).toBe(true);await expect(settings.getByRole('button',{name:'当前句',exact:true})).toBeDisabled();
+});
+
+test('a legacy voice can preview only the selected already-revealed frozen sentence',async({page})=>{
+  let command:any;await page.route('**/api/learning/classroom/sessions/*/narration/*',async route=>{command=route.request().postDataJSON();await route.fulfill({contentType:'audio/mpeg',path:resolve('apps/web/public/classroom-voice-samples',manifest.voices[0].file)});});
+  const {settings,actor}=await enter(page);await settings.getByRole('button',{name:'关闭课堂设置',exact:true}).click();await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');
+  await page.getByRole('button',{name:'课堂设置',exact:true}).click();await settings.getByLabel('其他可用音色').selectOption('Chinese (Mandarin)_Soft_Girl');await expect(settings.getByRole('radio',{checked:true})).toHaveCount(0);
+  await settings.getByRole('button',{name:'当前句',exact:true}).click();
+  const currentResponse=await fetch(api+'/learning/classroom/sessions/'+new URL(page.url()).searchParams.get('session'),{headers:{authorization:'Bearer '+actor.token}});expect(currentResponse.status).toBe(200);
+  const current=(await currentResponse.json()).data,unit=current.presentation.tracks[current.lesson.steps[current.cursor].id].units[current.sentenceCursor];
+  await settings.getByRole('button',{name:'试听所选音色',exact:true}).click();await expect.poll(()=>audio(page)).toBe(true);
+  expect(command).toMatchObject({voice:'Chinese (Mandarin)_Soft_Girl',sentenceIndex:current.sentenceCursor,presentationVersion:current.presentation.version,unitId:unit.id});expect(command).not.toHaveProperty('sampleVersion');
+  await expect(settings.getByLabel('其他可用音色')).toHaveValue('Chinese (Mandarin)_Soft_Girl');await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');
 });
 
 for(const width of [390,768,1440])test('six real voice cards and preview controls fit at '+width,async({page})=>{

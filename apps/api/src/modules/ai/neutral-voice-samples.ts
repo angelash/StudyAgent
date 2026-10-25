@@ -9,12 +9,12 @@ export const neutralVoiceVersion='neutral-voice-2026-10-25.1';
 export const neutralVoiceText='我们先把问题看清楚，一步一步来，再用新的例子验证。';
 export const neutralVoiceModel='speech-2.8-turbo';
 export const classroomVoicePresets:StudioSpeechVoice[]=[
-  {id:'Chinese (Mandarin)_Warm_Girl',label:'温暖少女',classroomPreset:'warm',description:'温暖少女 · 普通话'},
-  {id:'Chinese (Mandarin)_Gentleman',label:'温润男声',classroomPreset:'calm',description:'温润男声 · 普通话'},
-  {id:'Chinese (Mandarin)_Crisp_Girl',label:'清脆少女',classroomPreset:'bright',description:'清脆少女 · 普通话'},
-  {id:'Chinese (Mandarin)_Gentle_Senior',label:'温柔学姐',classroomPreset:'gentle',description:'温柔学姐 · 普通话'},
-  {id:'Chinese (Mandarin)_Male_Announcer',label:'播报男声',classroomPreset:'professional',description:'播报男声 · 普通话'},
-  {id:'qiaopi_mengmei',label:'俏皮萌妹',classroomPreset:'lively',description:'俏皮萌妹 · 普通话'},
+  {id:'Chinese (Mandarin)_Warm_Girl',label:'温暖少女',classroomPreset:'warm',description:'温暖少女',language:'普通话'},
+  {id:'Chinese (Mandarin)_Gentleman',label:'温润男声',classroomPreset:'calm',description:'温润男声',language:'普通话'},
+  {id:'Chinese (Mandarin)_Crisp_Girl',label:'清脆少女',classroomPreset:'bright',description:'清脆少女',language:'普通话'},
+  {id:'Chinese (Mandarin)_Gentle_Senior',label:'温柔学姐',classroomPreset:'gentle',description:'温柔学姐',language:'普通话'},
+  {id:'Chinese (Mandarin)_Male_Announcer',label:'播报男声',classroomPreset:'professional',description:'播报男声',language:'普通话'},
+  {id:'qiaopi_mengmei',label:'俏皮萌妹',classroomPreset:'lively',description:'俏皮萌妹',language:'普通话'},
 ];
 
 /** Only fixed original neutral assets are eligible; never accepts a client path or text. */

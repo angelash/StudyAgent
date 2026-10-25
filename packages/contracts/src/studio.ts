@@ -289,7 +289,7 @@ export type StudioIntegrationOverview = {
   events: StudioScheduleEvent[];
 };
 
-export type StudioSpeechVoice = { id: string; label: string; description?: string;
+export type StudioSpeechVoice = { id: string; label: string; description?: string; language?: string;
   classroomPreset?: 'warm' | 'calm' | 'bright' | 'gentle' | 'professional' | 'lively' };
 export type StudioSpeechCapabilities = {
   available: boolean;

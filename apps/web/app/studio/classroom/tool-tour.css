@@ -53,6 +53,7 @@
 .cl-extra-voices>button,.cl-preview-modes button{border:1px solid #e5e8ef;border-radius:8px;background:#fff;color:#63718a;padding:6px 9px;font-size:11px;cursor:pointer}
 .cl-preview-modes{display:flex;gap:6px;margin-top:10px}.cl-preview-modes button[aria-pressed=true]{border-color:#4b6498;background:#edf2fa;color:#4b6498}
 .cl-preview-modes button:disabled,.cl-extra-voices>button:disabled{opacity:.45;cursor:default}
+.cl-voice-choice small>span{display:block}
 .cl-voice-choice button:focus-visible{outline:2px solid #6c8bb8;outline-offset:2px}
 .cl-room .cl-font-grid{gap:8px}
 .cl-room .cl-font-grid button{min-height:76px;border-radius:12px}
