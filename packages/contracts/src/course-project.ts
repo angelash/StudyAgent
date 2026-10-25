@@ -4,6 +4,8 @@ export type ProjectStage = { id: string; title: string; objective: string;
 export type ProjectCriterion = { id: string; title: string; levels: [string, string, string, string] };
 export type CourseProjectDefinition = { id: string; courseId: string; unitId: string; title: string; brief: string;
   version: string; fingerprint: string; contentReview: 'pending'; provenance: string;
+  sourceCourse?: { id:string;fingerprint:string;objectives:Array<{lessonId:string;title:string;objective:string}>;
+    references:Array<{key:string;title:string;page:number;sha256:string}> };
   stages: ProjectStage[]; rubric: ProjectCriterion[] };
 export type ProjectEvidence = { id: string; label: string; content: string; source: string };
 export type ProjectArtifact = { values: Record<string, string>; evidence: ProjectEvidence[]; attachments?: ProjectAttachmentRef[] };
@@ -16,7 +18,7 @@ export type ProjectHumanReview = { id: string; submissionId: string; reviewerId:
 export type ProjectAdviceScope={fieldIds:string[];evidenceIds:string[];attachmentIds:string[]};
 export type ProjectAdvice = { id: string; stageId: string; artifactFingerprint: string; scope?:ProjectAdviceScope; reply: string;
   modelName: string; at: string };
-export type CourseProject = { id: string; ownerUserId: string; studentId: string | null; studioCourseId?: string;
+export type CourseProject = { id: string; ownerUserId: string; studentId: string | null; studioCourseId?: string;sourceCourseId?:string;
   definition: CourseProjectDefinition; revision: number; currentStageId: string;
   drafts: Record<string, ProjectArtifact>; submissions: ProjectSubmission[]; reviews: ProjectHumanReview[];
   draftReflections: Record<string, { ratings: ProjectRating[]; revisionNote: string }>;

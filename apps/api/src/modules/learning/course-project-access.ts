@@ -4,6 +4,7 @@ import type { StudentsService } from '../students/students.service';
 import type { CourseProjectRecord } from './course-project.service';
 import type { ProjectFileAuthorization,ProjectUploadRecord,ProjectAssetRecord } from './project-file-record';
 import { generationDigest } from './source-course-pipeline';
+import { sourceProjectCourse } from './source-project-access';
 
 export function projectStudentAccess(students:StudentsService,user:InMemoryUserAccount,studentId:string){
   if(user.role==='teacher')students.assertCanReviewStudent(user,studentId);else students.assertCanAccessStudent(user,studentId);
@@ -11,7 +12,8 @@ export function projectStudentAccess(students:StudentsService,user:InMemoryUserA
 export function courseProjectRecord(store:InMemoryStoreService,students:StudentsService,user:InMemoryUserAccount,id:string,editing=false):CourseProjectRecord{
   const row=store.find('courseProjects',{id});if(!row)throw new NotFoundException('项目不存在');
   if(row.studentId)projectStudentAccess(students,user,row.studentId);
-  if(row.ownerUserId!==user.id&&(editing||!row.studentId||!store.find('users',{id:row.ownerUserId,role:'student'})||user.role==='student'))throw new ForbiddenException('无法访问或修改其他账号的项目草稿');return row;
+  if(row.ownerUserId!==user.id&&(editing||!row.studentId||!store.find('users',{id:row.ownerUserId,role:'student'})||user.role==='student'))throw new ForbiddenException('无法访问或修改其他账号的项目草稿');
+  if(row.sourceCourseId){const course=sourceProjectCourse(store,students,user,row.sourceCourseId);if(row.studentId!==course.studentId||row.definition.courseId!==course.id)throw new ForbiddenException('原资料课程与项目身份不一致');}return row;
 }
 export function captureProjectFileAuthorization(store:InMemoryStoreService,row:CourseProjectRecord,user:InMemoryUserAccount,session:InMemoryAuthSession):ProjectFileAuthorization{
   const auth:ProjectFileAuthorization={role:user.role};if(!row.studentId)return auth;

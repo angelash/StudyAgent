@@ -11,6 +11,8 @@ import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
 import { adultProjectDefinitions, curriculumProjectDefinition } from './course-project-content';
 import { withStudioFileLease } from '../../infrastructure/studio-file-coordination';
 import { projectFileRoot, verifyProjectFile } from './project-file-storage';
+import { sourceProjectCourse } from './source-project-access';
+import { sourceCourseProjectDefinition } from './source-course-project';
 
 export type CourseProjectRecord = CourseProject & { requests: Array<{ key: string; hash: string; kind: string;actorId?:string;appliedRevision?:number;at?:string;submissionId?:string;reviewId?:string }> };
 const id = z.string().min(1).max(200), requestKey = z.string().min(8).max(180);
@@ -34,7 +36,8 @@ export class CourseProjectService {
     private readonly chat: XiaojiuChatService) {}
   private access(user: InMemoryUserAccount, studentId: string) {projectStudentAccess(this.students,user,studentId);}
 
-  private definitions(user: InMemoryUserAccount, studioCourseId?: string): CourseProjectDefinition[] {
+  private definitions(user: InMemoryUserAccount, studioCourseId?: string,sourceCourseId?:string): CourseProjectDefinition[] {
+    if(sourceCourseId){const course=sourceProjectCourse(this.store,this.students,user,sourceCourseId),definition=sourceCourseProjectDefinition(course);return definition?[definition]:[];}
     if (!studioCourseId) {
       if (user.role === 'student') throw new ForbiddenException('请从自己的课程进入项目');
       return adultProjectDefinitions();
@@ -48,7 +51,9 @@ export class CourseProjectService {
   private view(user: InMemoryUserAccount, row: CourseProjectRecord): CourseProjectView {
     const { requests: _requests, ...safe } = structuredClone(row);
     let current: CourseProjectDefinition | undefined;
-    if (row.studioCourseId) {
+    if(row.sourceCourseId){const course=sourceProjectCourse(this.store,this.students,user,row.sourceCourseId);current=sourceCourseProjectDefinition(course);
+      if(course.status==='archived'&&current?.fingerprint===row.definition.fingerprint)return{...safe,contentStatus:'archived',permissions:{edit:row.ownerUserId===user.id,review:Boolean(row.studentId&&row.ownerUserId!==user.id&&user.role!=='student')}};
+    }else if (row.studioCourseId) {
       const course = this.store.find('studioCourses', { id: row.studioCourseId });
       const unit = course?.units.find(unit => unit.id === row.definition.unitId);
       current = course && unit ? curriculumProjectDefinition(course, unit) : undefined;
@@ -59,27 +64,30 @@ export class CourseProjectService {
   get(user: InMemoryUserAccount, projectId: string) { return this.view(user, this.record(user, projectId)); }
 
   catalog(user: InMemoryUserAccount, input: unknown): CourseProjectCatalog {
-    const query = validate(z.object({ studioCourseId: id.optional(), studentId: id.optional() }).strict(), input);
-    const definitions = this.definitions(user, query.studioCourseId);
+    const query = validate(z.object({ studioCourseId: id.optional(),sourceCourseId:id.optional(), studentId: id.optional() }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一种课程上下文'), input);
+    const definitions = this.definitions(user, query.studioCourseId,query.sourceCourseId);
     if (query.studentId) this.access(user, query.studentId);
-    const courseId = query.studioCourseId ?? 'sociology-foundations';
+    const courseId = query.sourceCourseId??query.studioCourseId ?? 'sociology-foundations';
     const rows = this.store.select('courseProjects', { ...(query.studentId ? { studentId: query.studentId } : { ownerUserId: user.id }), 'definition.courseId': courseId });
     const visible = rows.filter(row => row.ownerUserId === user.id || row.studentId && user.role !== 'student' && this.store.find('users', { id: row.ownerUserId, role: 'student' }));
     return { definitions, projects: visible.sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.view(user, this.record(user, row.id))) };
   }
 
   open(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ unitId: id, studioCourseId: id.optional(), useCurrentVersion: z.boolean().default(false) }).strict(), input);
-    const definition = this.definitions(user, command.studioCourseId).find(item => item.unitId === command.unitId);
+    const command = validate(z.object({ unitId: id, studioCourseId: id.optional(),sourceCourseId:id.optional(), useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一种课程上下文'), input);
+    const sourceCourse=command.sourceCourseId?sourceProjectCourse(this.store,this.students,user,command.sourceCourseId):undefined;
+    if(sourceCourse&&sourceCourse.status!=='active')throw new ConflictException('请先确认当前资料课程；保留项目请从原记录进入');
+    const definition = this.definitions(user, command.studioCourseId,command.sourceCourseId).find(item => item.unitId === command.unitId);
     if (!definition) throw new NotFoundException('该单元没有项目活动');
     const rows = this.store.select('courseProjects', { ownerUserId: user.id, 'definition.courseId': definition.courseId, 'definition.id': definition.id })
       .sort((a,b) => b.updatedAt.localeCompare(a.updatedAt));
     const prior = rows.find(row => row.definition.fingerprint === definition.fingerprint) ?? (!command.useCurrentVersion ? rows[0] : undefined);
     if (prior) return this.view(user, prior);
-    const studentId = command.studioCourseId ? this.store.find('studioCourses', { id: command.studioCourseId })!.studentId : null;
+    const studentId = sourceCourse?.studentId??(command.studioCourseId ? this.store.find('studioCourses', { id: command.studioCourseId })!.studentId : null);
     const now = new Date().toISOString();
     const row: CourseProjectRecord = { id: this.store.nextId('project'), ownerUserId: user.id, studentId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), definition: structuredClone(definition), revision: 0,
+      ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId}:{}),
       currentStageId: definition.stages[0].id, drafts: Object.fromEntries(definition.stages.map(stage => [stage.id, { values: {}, evidence: [] }])),
       draftReflections: {}, submissions: [], reviews: [], advice: [], legacyImports: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('courseProjects', row); return this.view(user, row);
