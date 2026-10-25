@@ -1,0 +1,371 @@
+{
+  "at": "2026-10-25T13:06:14.577Z",
+  "revision": "e885abc3b71c4f7516b2b535505bc6130c81d540",
+  "sourceCodeRevision": "b5955149ec30014d9e24a3c97c48b048d8a013a9",
+  "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
+  "ciHead": "e885abc3b71c4f7516b2b535505bc6130c81d540",
+  "ciRun": 40194467397,
+  "webBuildId": "jQQxwbxPRBhSacTHQEARk",
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-25-classroom-choice",
+    "at": "2026-10-25T13:03:19.074Z",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "stoppedServices": [
+      "study-agent-api",
+      "study-agent-web",
+      "study-agent-health"
+    ],
+    "scope": "Final stopped-service consistent SQLite and referenced runtime files. Previous builds and five original configuration files retained separately. Not an independent research-asset backup.",
+    "buildCopy": {
+      "at": "2026-10-25T11:57:09.555Z",
+      "passed": true,
+      "files": 828,
+      "bytes": 260706662,
+      "protectedFiles": 5,
+      "scope": "Exact old compiled-build and configuration copy verification; no backup restore rehearsal or independent research-asset inventory."
+    }
+  },
+  "protectedFiles": {
+    ".env.example": true,
+    "apps/web/next.config.ts": true,
+    "doc/product/87-local-windows-daemon.md": true,
+    "ecosystem.config.cjs": true,
+    "scripts/operations/start-daemon.ps1": true
+  },
+  "archivedReportsVerified": 15,
+  "archivedImagesVerified": 6,
+  "initialArtifactsVerified": 15,
+  "normalizedSourceFilesVerified": 28,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4217/api/learning/classroom/catalog",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/learning/classroom/sessions/anonymous",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/learning/classroom/sessions/anonymous/answers",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/learning/classroom/sessions/anonymous/hints",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/diagnostics/plans/anonymous/model-suggestions",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/learn",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/_next/static/chunks/webpack-f1774b4b87373136.js",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio/classroom",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/student/assessment",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio/projects",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ai/assistant/history",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ai/assistant/sessions/anonymous/context",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ai/assistant/sessions/anonymous/messages/page",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ai/assistant/sessions/anonymous/turns",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ai/assistant/sessions/anonymous/turns/anonymous",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ai/assistant/sessions/anonymous/turns",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ai/assistant/sessions/anonymous/turns/anonymous/cancel",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ai/assistant/sessions/anonymous/turns/anonymous/retry",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ai/assistant/sessions/anonymous/messages",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/qa/assistant/seed-history",
+      "method": "POST",
+      "status": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/qa/answer-journeys",
+      "method": "POST",
+      "status": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/qa/classroom-captions",
+      "method": "POST",
+      "status": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/qa/health",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/learning/project-files/assets/anonymous/integrity",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/diagnostics/sessions/anonymous/items/anonymous/draft",
+      "method": "PATCH",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/learning/practice/anonymous/questions/anonymous/draft",
+      "method": "PATCH",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "services": [
+    {
+      "name": "study-agent-api",
+      "pid": 73940,
+      "status": "online",
+      "restarts": 1164,
+      "uptime": 1792933470368
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 2004,
+      "status": "online",
+      "restarts": 3,
+      "uptime": 1792933470369
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 74740,
+      "status": "online",
+      "restarts": 1,
+      "uptime": 1792933470518
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-10-25T13:04:51.295Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 73940,
+          "status": "online",
+          "restarts": 1164,
+          "uptime": 1792933470368
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 2004,
+          "status": "online",
+          "restarts": 3,
+          "uptime": 1792933470369
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 74740,
+          "status": "online",
+          "restarts": 1,
+          "uptime": 1792933470518
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T13:05:20.650Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 73940,
+          "status": "online",
+          "restarts": 1164,
+          "uptime": 1792933470368
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 2004,
+          "status": "online",
+          "restarts": 3,
+          "uptime": 1792933470369
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 74740,
+          "status": "online",
+          "restarts": 1,
+          "uptime": 1792933470518
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T13:05:43.191Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 73940,
+          "status": "online",
+          "restarts": 1164,
+          "uptime": 1792933470368
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 2004,
+          "status": "online",
+          "restarts": 3,
+          "uptime": 1792933470369
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 74740,
+          "status": "online",
+          "restarts": 1,
+          "uptime": 1792933470518
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T13:06:14.577Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 73940,
+          "status": "online",
+          "restarts": 1164,
+          "uptime": 1792933470368
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 2004,
+          "status": "online",
+          "restarts": 3,
+          "uptime": 1792933470369
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 74740,
+          "status": "online",
+          "restarts": 1,
+          "uptime": 1792933470518
+        }
+      ]
+    }
+  ],
+  "smokePassed": true,
+  "stableAcrossObservations": true,
+  "passed": true
+}

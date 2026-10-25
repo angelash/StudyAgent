@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T12:24:16.811Z",
+  "at": "2026-10-25T13:06:54.361Z",
   "sourceRevision": "3c938a4f1b3e85970cb78f8543d381afe2c2f1d8",
   "applicationSourceRevision": "b5955149ec30014d9e24a3c97c48b048d8a013a9",
   "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
@@ -38,8 +38,8 @@
     "e1d3969"
   ],
   "localPassed": true,
-  "passed": false,
-  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "passed": true,
+  "status": "delivered-exact-ci-and-production-daemon",
   "reports": {
     "classroom-choice-sqlite-initial.json": {
       "sha256": "f65992e8021d6f1f5e827005079392a650fcc417d767dedb47247c9d8e972dc5",
@@ -213,5 +213,37 @@
     "Exact original CSS, fonts, DPR, all reference states, real voices, devices, human accessibility and longitudinal teaching efficacy remain separate gates.",
     "Observed reference images and behavior are archived separately; local screenshots do not establish a pixel completion percentage.",
     "Guidance model enrichment is only the next committed specification 116; no 116 business is included in this release."
-  ]
+  ],
+  "localValidationAt": "2026-10-25T12:24:16.811Z",
+  "ci": {
+    "head": "e885abc3b71c4f7516b2b535505bc6130c81d540",
+    "run": 40194467397,
+    "url": "https://github.com/angelash/StudyAgent/actions/runs/40194467397",
+    "conclusion": "success",
+    "receipt": "classroom-choice-exact-ci.json",
+    "sha256": "78efe963bee8c8689c8cd4ca0adc8b3a6d2d4395a5d2e41bb71a9aa823a53cc4",
+    "linuxApplication": {
+      "passed": 1144,
+      "skipped": 46
+    },
+    "browser": {
+      "passed": 157,
+      "failed": 0,
+      "retries": 0
+    },
+    "classroomChoicePostgresCommand": {
+      "passed": 12,
+      "scope": "10 PostgreSQL service tests plus one SQLite native recovery and one PostgreSQL native recovery"
+    }
+  },
+  "runtime": {
+    "revision": "e885abc3b71c4f7516b2b535505bc6130c81d540",
+    "buildId": "jQQxwbxPRBhSacTHQEARk",
+    "receipt": "classroom-choice-runtime.json",
+    "sha256": "e214c36dbe3b51aefb0a3523d71bb4c5a0ff6e22a6b0171dabceb0f4ab882bcb",
+    "checks": 28,
+    "observations": 4,
+    "observationSpanMs": 83282,
+    "protectedFilesUnchanged": 5
+  }
 }
