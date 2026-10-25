@@ -1,0 +1,324 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-course-journeys\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/source-course-project.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-course-journeys\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-course-journeys/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-course-journeys/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-project-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-project.spec.ts",
+      "file": "source-course-project.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4035,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:4:271)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:16:15",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                      "column": 271,
+                      "line": 4
+                    },
+                    "snippet": "  2 | import {browserEvidence} from './evidence';\n  3 | const api='http://localhost:'+(process.env.E2E_API_PORT??4107)+'/api',evidence=browserEvidence('source-project');let address=0;\n> 4 | async function call(actor:any,method:string,path:string,body?:unknown){const response=await fetch(api+path,{method,headers:{'Content-Type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});expect(response.ok).toBe(true);return(await response.json()).data;}\n    |                                                                                                                                                                                                                                                                               ^\n  5 | async function course(actor:any){\n  6 |   const source=await call(actor,'POST','/learning/source-courses/materials/text',{title:'匿名观察原文',sections:['匿名阅览室在两个周末有排队，工作日有空位；没有记录晚间，也不知道当天是否有活动。比较时应保持其他条件相同，不把一次观察当作唯一原因。'],requestKey:crypto.randomUUID()}),draft=await call(actor,'POST','/learning/source-courses',{title:'从来源到自己的作品',goal:'以来源和条件比较替代解释，并设计自己的新情境。',language:'zh-CN',minutesPerSession:15,modelId:'deepseek-v4-flash',selections:[{materialId:source.material.id,version:source.version,pages:[1]}],requestKey:crypto.randomUUID()});\n  7 |   let row:any;await expect.poll(async()=>{row=await call(actor,'GET','/learning/source-courses/'+draft.id);return row.status;},{timeout:30000}).toBe('ready');return call(actor,'POST','/learning/source-courses/'+row.id+'/confirm',{expectedRevision:row.revision,fingerprint:row.fingerprint,requestKey:crypto.randomUUID()});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                        "column": 271,
+                        "line": 4
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  2 | import {browserEvidence} from './evidence';\n  3 | const api='http://localhost:'+(process.env.E2E_API_PORT??4107)+'/api',evidence=browserEvidence('source-project');let address=0;\n> 4 | async function call(actor:any,method:string,path:string,body?:unknown){const response=await fetch(api+path,{method,headers:{'Content-Type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});expect(response.ok).toBe(true);return(await response.json()).data;}\n    |                                                                                                                                                                                                                                                                               ^\n  5 | async function course(actor:any){\n  6 |   const source=await call(actor,'POST','/learning/source-courses/materials/text',{title:'匿名观察原文',sections:['匿名阅览室在两个周末有排队，工作日有空位；没有记录晚间，也不知道当天是否有活动。比较时应保持其他条件相同，不把一次观察当作唯一原因。'],requestKey:crypto.randomUUID()}),draft=await call(actor,'POST','/learning/source-courses',{title:'从来源到自己的作品',goal:'以来源和条件比较替代解释，并设计自己的新情境。',language:'zh-CN',minutesPerSession:15,modelId:'deepseek-v4-flash',selections:[{materialId:source.material.id,version:source.version,pages:[1]}],requestKey:crypto.randomUUID()});\n  7 |   let row:any;await expect.poll(async()=>{row=await call(actor,'GET','/learning/source-courses/'+draft.id);return row.status;},{timeout:30000}).toBe('ready');return call(actor,'POST','/learning/source-courses/'+row.id+'/confirm',{expectedRevision:row.revision,fingerprint:row.fingerprint,requestKey:crypto.randomUUID()});\n    at call (F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:4:271)\n    at F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts:16:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:32:08.634Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-course-journeys\\test-results\\browser-product-acceptance\\source-course-project-a-pu-3ed0b-urns-to-its-original-course\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-course-journeys\\tests\\e2e\\source-course-project.spec.ts",
+                    "column": 271,
+                    "line": 4
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-309acd5dc044d4e1c6ef",
+          "file": "source-course-project.spec.ts",
+          "line": 13,
+          "column": 5
+        },
+        {
+          "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4117,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:32:14.139Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-f40a602dd154b4fc040d",
+          "file": "source-course-project.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2589,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:32:18.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-2b645b83846c9a0ef623",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:32:21.255Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-562107329a246dca6ce3",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        },
+        {
+          "title": "source-course project entry and frozen objectives fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:32:24.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca3f281aa3d97832c646-4b89730c824b7ba2785e",
+          "file": "source-course-project.spec.ts",
+          "line": 30,
+          "column": 39
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T16:32:03.240Z",
+    "duration": 25836.392,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

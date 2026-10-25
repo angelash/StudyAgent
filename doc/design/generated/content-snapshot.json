@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
+  "sourceRevision": "061de6cdc43e6e711e668e6f3d7dd6a57e637c9e",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-25T16:15:12.405Z",
+    "auditAt": "2026-10-25T17:23:58.160Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "dc187a056896dc1f3819098ad8cc7264d6fdfda58b92e8dca60300d8e3c61739",
+    "localAuditSha256": "9d53583f8147bec781930a6eb6a489d9d2fb6b3aa1a6fd596ef70749bb39cb50",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -420,7 +420,7 @@
     "multipleChoiceUnitChecks": 1,
     "hintLevels": 490,
     "sourceSha256": {
-      "apps/api/src/modules/learning/classroom-curriculum.ts": "5032c260bd9b584d949421840cf4f8a880fc953fc6fed83d30582d8c21d1f46b",
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "d7feecb5f119bbd5c8bcc3c743d0bfe074350ea5fa8a787b1fc4a7087d61949d",
       "apps/api/src/modules/learning/classroom-board-notes.ts": "516a04a5ed971e481c6d8b0c44373c522d512394bf1b3d2dec1c04a2a103c24b",
       "apps/api/src/modules/learning/classroom-unit-checks.ts": "d7d0a955650dc6a0c49debda3568f08be789ed10e624252858af6f343cbde0e6",
       "apps/api/src/modules/learning/classroom-choice-content.ts": "71343c977df47a9f5526eaedd9ae553da8a42c36df1821e85dcc2488f5b39168",

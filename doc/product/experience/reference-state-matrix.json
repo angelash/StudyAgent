@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T16:16:06.629104+00:00",
+  "at": "2026-10-25T17:27:02.813661+00:00",
   "specification": "doc/product/107-classroom-turns-and-reference-state-parity.md",
   "scope": "Reference inventory for future M1 verification, not a parity result or pixel completion rate.",
   "completionPercentage": null,
@@ -330,6 +330,23 @@
       "completePixelParity": false,
       "localImplementationRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
       "localVerification": "Project teaching and original workbench browser cases passed in focused runs; complete regression and exact remote CI pending. Fonts/DPR/CSS and original audio are unknown."
+    },
+    {
+      "id": "HK-LECTURE-IMAGE-MODAL-REVISIT",
+      "title": "既有白板图片放大与关闭复看",
+      "reference": "doc/evidence/2026-10-26/hyperknow-lecture-image-enlargement-revisit.json",
+      "referenceSha256": "0d5f4e0854a5fddf7f4d3ce81a7be33e27c0ee690149b07c5872d8ab4860bf7c",
+      "imagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "evidence": "live-dom-controls-and-screenshots",
+      "referenceDate": "2026-10-26",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Existing image View larger opens a full-page dialog with Close and a larger embedded image; Close returns to the original lecture. No image bytes, CSS or audio were retrieved."
     }
   ],
   "lastLiveObservationAttempt": {

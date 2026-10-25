@@ -237,3 +237,8 @@ checkpoint与completion两种TaskFence都在领域数据库的同一事务检查
 
 项目附件新增projectAssetUploads/projectAssets，分别绑定项目、冻结定义、阶段、原授权、原件与派生摘要和任务；传块不改项目文字修订。附件原件/预览在project-assets，未完成块在project-uploads；控制标记与实际字节分开，冷恢复不复用旧进程租约。提交另存attachmentManifest并冻结量规文件引用；详见[项目文件详细设计](03-core-detailed-design.md#项目原件附件快照与恢复)。
 作答草稿v2沿用diagnosticDrafts与practiceSessions.drafts，不新增领域集合。可选revision/protocol/draftAttempt/draftCommands允许旧记录按修订0读取；回执只保存账号、请求键、命令摘要、确认修订与时间，不重复存整份答案。进入v2后保留提交后的修订日志，训练下一次表达由attempt和公开题面摘要区分，修订不归零。diagnosticResponses与practiceAttempts可保存首次命令requestHash；该摘要及draftCommands不进入公开题面/反馈或家庭可移植记录。备份仍保存完整业务日志以便恢复原命令，最新删除账本按原儿童/会话关系清除，不能复活已删除草稿。实现与验证见[112](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)。
+
+
+119资料课程项目沿用schema14及原courseProjects，可选sourceCourseId将本人作品绑定冻结来源课程，且与studioCourseId互斥。CourseLessonActivity、CourseProjectActivity和SourceCourseJourney是读取契约，不新增集合。完整备份保留来源绑定、冻结作品/提交/附件；恢复后旧登录失效，重新认证核对原作品。SQLite与PostgreSQL原生恢复均应用最新删除账本，已注销账号的来源、项目及真实附件不能复活。
+
+project.location.v1按owner/project/definition隔离保存合法stage/step/view，不保存答案、授权或完成事实；有权限取得项目后才读取。偏好可跨标签记录最近位置，但已经打开的标签不跟随跳转，各标签完整编辑稿仍使用118的独立槽。
