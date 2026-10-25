@@ -146,6 +146,17 @@
         "numFailedTests": 0,
         "numPendingTests": 0
       }
+    },
+    "course-lifecycle-board-fixture-drain.json": {
+      "sha256": "e05eb3315f9e6cab6dd061dd8dc4733f463e4b96e1a782da786af2f65bdf1d88",
+      "result": {
+        "startTime": "2026-10-25T05:19:28.936Z",
+        "duration": 46725.193999999996,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
     }
   },
   "checks": {
@@ -179,7 +190,11 @@
     "finalFocusedBrowser": {
       "passed": 6
     },
-    "isolatedPostgres": "stopped"
+    "isolatedPostgres": "stopped",
+    "boardFixtureDrain": {
+      "passed": 4,
+      "flaky": 0
+    }
   },
   "featureCoverage": [
     "Independent revision families and monotonic versions, stable creation receipts and no new model calls or shared generation task",
@@ -195,7 +210,8 @@
   "diagnostics": [
     "First API combination:29 passed/2 failed. The new progress fixture omitted frozen speech identity and the learner versions route was not yet in the explicit read allowlist; fixed without adding management permissions.",
     "First browser run:2 passed/1 failed. Disabling the async preview trigger lost origin focus before the dialog mounted; the trigger is now saved and restored explicitly.",
-    "The latest full API run and final focused browser cover final source. Earlier combinations and focused counts overlap and are not summed."
+    "The latest full API run and final focused browser cover final source. Earlier combinations and focused counts overlap and are not summed.",
+    "Initial remote CI40163741615 succeeded with 78 browser passes and one retry. Board fixture now drains route handlers before browser-context disposal; four focused tests pass. Exact final remote CI remains pending."
   ],
   "limits": [
     "One source-course lifecycle increment, not complete product or full curriculum-package lifecycle. Fixed adult courses and textbook packages keep separate publication rules.",
@@ -203,5 +219,6 @@
     "Copying and adult confirmation are not teacher review, calibrated measurement or learning-effect validation.",
     "No new live model, TTS or image-generation call is needed for copying a verified course. Real devices, human review, full content and remaining M2-M7 requirements remain.",
     "The current daemon is the delivered structured-board version; this increment awaits exact CI and daemon delivery."
-  ]
+  ],
+  "finalValidationSourceRevision": "fb7c5c1"
 }
