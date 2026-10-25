@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`be375c6d6434a3876549422ae56327084f4f1350`。共 309 个 HTTP 路由声明，当前 AppModule 可达 288 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`2c3922cb00f54fa42c9676c5df39448cc013c6b3`。共 311 个 HTTP 路由声明，当前 AppModule 可达 290 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -930,6 +930,26 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
+
+## ClassroomCodeController — 当前接入
+
+### GET /api/learning/classroom/sessions/:sessionId/code-drafts/:stepId/:blockId
+
+实现：[apps/api/src/modules/learning/classroom-code.controller.ts:9](../../../apps/api/src/modules/learning/classroom-code.controller.ts#L9)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('stepId') stepId: string, @Param('blockId') blockId: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.code.get`
+
+### PATCH /api/learning/classroom/sessions/:sessionId/code-drafts/:stepId/:blockId
+
+实现：[apps/api/src/modules/learning/classroom-code.controller.ts:12](../../../apps/api/src/modules/learning/classroom-code.controller.ts#L12)，方法 `save`。
+
+- 签名：`save(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('stepId') stepId: string, @Param('blockId') blockId: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.code.save`
 
 ## ClassroomTurnController — 当前接入
 

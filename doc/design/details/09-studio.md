@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`be375c6d6434a3876549422ae56327084f4f1350`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`2c3922cb00f54fa42c9676c5df39448cc013c6b3`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -228,25 +228,38 @@
 - [apps/web/app/studio/classroom/practice-panel.tsx](../../../apps/web/app/studio/classroom/practice-panel.tsx)
 - [apps/web/app/studio/classroom/practice-review.css](../../../apps/web/app/studio/classroom/practice-review.css)
 
-## STUDIO-07 课堂图片、表格与代码实验
+## STUDIO-07 课堂图表与可恢复代码实验
 
-**输入**：受控image/table/code blocks。
+**输入**：受控image/table/code blocks；冻结会话/步骤/块、原代码摘要、代码、输入、版本和稳定请求键。
 
-**处理与实现**：使用已生成本地WebP与受控SVG；图片可放大；表格逐行展示；JS示例放入独立runner页面和Worker，限制网络与DOM并设置超时。
+**处理与实现**：图片可放大、表格逐行呈现；个人代码/输入按冻结会话和已曝光块隔离保存，不覆盖课件。稳定命令先重放、版本冲突保留本地文本并显式选择；标签页缓存支持离线刷新与丢回执，后台保存序列化。进入实验暂停讲解；Worker支持readLine/只读输入数组、异步计算、正常/错误/超时/停止反馈，限制网络/DOM/子Worker及运行时间；超长程序拒绝而不截断。支持重置确认和单独导出个人代码/输入。
 
-**输出**：图表表达、浏览器代码日志。
+**输出**：图表、可恢复个人代码草稿、输入/输出、明确运行状态和可下载JSON草稿。
 
-**状态与持久化**：`classroomSessions`
+**状态与持久化**：`classroomSessions`、`classroomCodeDrafts`
 
-**权限、失败与边界**：代码实验是JavaScript，不是GESP C++；当前不按每次问题在线生图。
+**权限、失败与边界**：个人实验不作为独立测量或掌握证据；输出是浏览器计算结果，没有服务器执行路径。JavaScript与GESP C++仍是不同轨道；实机编辑/键盘、完整C++课堂与原站未观察细节仍待。
 
-**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+**关联接口**：
+
+- `GET /api/learning/classroom/sessions/:sessionId/code-drafts/:stepId/:blockId` → `ClassroomCodeController.get`；[apps/api/src/modules/learning/classroom-code.controller.ts:9](../../../apps/api/src/modules/learning/classroom-code.controller.ts#L9)。
+- `PATCH /api/learning/classroom/sessions/:sessionId/code-drafts/:stepId/:blockId` → `ClassroomCodeController.save`；[apps/api/src/modules/learning/classroom-code.controller.ts:12](../../../apps/api/src/modules/learning/classroom-code.controller.ts#L12)。
+
+**服务方法**：
+
+- `ClassroomCodeService.get`；[apps/api/src/modules/learning/classroom-code.service.ts:33](../../../apps/api/src/modules/learning/classroom-code.service.ts#L33)。
+- `ClassroomCodeService.save`；[apps/api/src/modules/learning/classroom-code.service.ts:37](../../../apps/api/src/modules/learning/classroom-code.service.ts#L37)。
 
 **补充实现文件**：
 
+- [packages/contracts/src/classroom-code.ts](../../../packages/contracts/src/classroom-code.ts)
+- [apps/api/src/modules/learning/classroom-code.controller.ts](../../../apps/api/src/modules/learning/classroom-code.controller.ts)
+- [apps/api/src/modules/learning/classroom-code.integration.test.ts](../../../apps/api/src/modules/learning/classroom-code.integration.test.ts)
+- [apps/web/app/studio/classroom/code-draft.tsx](../../../apps/web/app/studio/classroom/code-draft.tsx)
 - [apps/web/app/studio/classroom/runner/route.ts](../../../apps/web/app/studio/classroom/runner/route.ts)
 - [apps/web/app/studio/classroom/code-workbench.tsx](../../../apps/web/app/studio/classroom/code-workbench.tsx)
 - [apps/web/app/studio/classroom/board-step.tsx](../../../apps/web/app/studio/classroom/board-step.tsx)
+- [tests/e2e/classroom-code.spec.ts](../../../tests/e2e/classroom-code.spec.ts)
 
 ## STUDIO-08 课堂控制、导出与移动交互
 

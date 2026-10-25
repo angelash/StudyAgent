@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T03:37:15.294951+00:00",
+  "sourceRevision": "2c3922cb00f54fa42c9676c5df39448cc013c6b3",
+  "specificationCommit": "98f6894",
+  "passed": false,
+  "localPassed": true,
+  "status": "code-experiment-local-validation-complete-awaiting-final-ci-and-daemon-delivery",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "c43e0d08db4e2f2bbaffca6b3efa6674cc6cd2d35e5b8db847485b7f65e1b514",
+    "apps/api/src/common/auth.guard.ts": "7f494cab9993c28fbe11b5329ad44e4c32a49dfa373630e1316dfda86e68dc11",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "839dd569135f2f30aa1626579d60a01092df3a84f7a7042bd76f619feb0f8f8e",
+    "apps/api/src/modules/learning/classroom-code.controller.ts": "9ae96d94b6c0b90af3f301349b9b2f9cd953434e60a065a31299d18a753fef1f",
+    "apps/api/src/modules/learning/classroom-code.integration.test.ts": "3bd828f50a8dcae83cd00035d3fbf1a59803d2b2982eddcda74367d217d140f4",
+    "apps/api/src/modules/learning/classroom-code.service.ts": "8ff4e9c0b0aa9e3cd5bee1d0d85eb93b7c29e1c7f0052f1b13add2fe640e7791",
+    "apps/api/src/modules/learning/learning.module.ts": "0e5af347ff596be87cf607b5038760a1050c38ce07726af93d54ebacd2df6db6",
+    "apps/api/src/modules/privacy/privacy-records.ts": "571736f0c1b871bdf8c0ee606bb5ab370cecce3ec118739bc2fde8e9ccc6a600",
+    "apps/web/app/studio/classroom/board-step.tsx": "e1cf0d243dbcf5312c9f8e6d4f8eb634cdd3c29bca1db48ceab81e35cf8c725b",
+    "apps/web/app/studio/classroom/classroom.css": "0bcbfc652383309abe8b94b13e822f4b4a911eeb40e91756e5014fbc46cb632a",
+    "apps/web/app/studio/classroom/code-draft.tsx": "29bf86f5ec6d3a7800edc3508db3aa1a5ff3784d6dc941cfaf851108d4381ab4",
+    "apps/web/app/studio/classroom/code-workbench.tsx": "a8f078facec3d528fdcbb413710ee45912588185b50d678bb306e88fd7bb8624",
+    "apps/web/app/studio/classroom/runner/route.ts": "f6344189814010ebec75c1680c0800d124f9b320def579e9cbc06e4bf3ebb2ad",
+    "apps/web/app/studio/classroom/workbench.tsx": "5d48f452db4a8febf9c0826a2495b90efe590fe8993f79e7341ef117211deca5",
+    "packages/contracts/src/classroom-code.ts": "ac835dc84eb73baa9d80930f46a342f2f30b4484fb0c196e056bb398ca8a8722",
+    "packages/contracts/src/index.ts": "6ab0dd7e39280c4c752667a11c67b2f1d696671faf854e156050086cbb586ebf",
+    "scripts/architecture/project-feature-definitions.cjs": "b61eada508470e7a9c3a672a80de177f17623065b42f7dc9319d719a96889500",
+    "scripts/qa/run-classroom-turn-postgres.cjs": "314e580bc9eace0d615e4e03c78ae8c5e9627b8e1badfb5f0a236ffc2c578408",
+    "scripts/qa/run-source-course-browser.cjs": "fb47e2561ceff9f2cf4addae655f83a016d610909b9a7afc3ba642eb59453f63",
+    "tests/e2e/classroom-code.spec.ts": "71ce46e290407d37fc1b203a9ff5329e90a44b697d58aa369ac6a16deeb3e591"
+  },
+  "reports": {
+    "classroom-code-browser-combination.json": {
+      "sha256": "418f8c28bae50aa27a7d6e8419d112009ad14015da310272c87205e7e2b2fc5f",
+      "result": {
+        "startTime": "2026-10-25T03:22:36.834Z",
+        "duration": 148512.643,
+        "expected": 21,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-code-browser-final.json": {
+      "sha256": "dc7097845a285b6d5168f75e8d6f06eaf475f52b3d3e404d3abd30a499b013ed",
+      "result": {
+        "startTime": "2026-10-25T03:30:02.359Z",
+        "duration": 31153.043,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-code-browser-initial.json": {
+      "sha256": "b9b146b83a8868c68bcfb431c320dd35d6d04b8b5217285d63c8a9c851ade770",
+      "result": {
+        "startTime": "2026-10-25T03:20:44.511Z",
+        "duration": 23351.18,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "classroom-code-full-api.json": {
+      "sha256": "1673a14807613e74af7a8b0f071c96c1d775029a507dd5dd644da350d96c106d",
+      "result": {
+        "numTotalTests": 1103,
+        "numPassedTests": 1069,
+        "numFailedTests": 0,
+        "numPendingTests": 34
+      }
+    },
+    "classroom-code-postgres.json": {
+      "sha256": "1bde09290a47b63e4f06f848bf31600ed40bcc5446b62e5315394822fb7e19af",
+      "result": {
+        "numTotalTests": 35,
+        "numPassedTests": 33,
+        "numFailedTests": 0,
+        "numPendingTests": 2
+      }
+    },
+    "classroom-code-sqlite-initial.json": {
+      "sha256": "5fd5b5b4c1d99c146ab3e02eba06c9a3f6853063497f2ed76d83e7b50f2a8679",
+      "result": {
+        "numTotalTests": 7,
+        "numPassedTests": 7,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "classroom-code-sqlite.json": {
+      "sha256": "acf58073cb971546ce9e893ce84bebca93d372c91b00ebd17c21398c07d5bfe4",
+      "result": {
+        "numTotalTests": 35,
+        "numPassedTests": 35,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    }
+  },
+  "checks": {
+    "contractsBuild": "passed",
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "sqliteClassroomCombination": {
+      "passed": 35
+    },
+    "postgresClassroomCombination": {
+      "passed": 33,
+      "sqliteOnlySkipped": 2
+    },
+    "fullLocalApi": {
+      "passed": 1069,
+      "environmentSkipped": 34,
+      "failed": 0
+    },
+    "browserCombinationBeforeFinalExportAndPause": {
+      "passed": 21,
+      "failed": 0
+    },
+    "finalFocusedBrowser": {
+      "passed": 4,
+      "failed": 0
+    },
+    "finalSourceCi": {
+      "status": "pending"
+    },
+    "daemonDeployment": "pending",
+    "isolatedPostgres": "stopped"
+  },
+  "featureCoverage": [
+    "Frozen session/step/code-block identity and original code digest, read and patch routes with current child/owner authorization",
+    "Independent draft records, exact code/input persistence, stable save replay before revision checks, changed commands and stale/concurrent writes rejected",
+    "Unexposed code blocks, changed source code and oversized/null-character programs rejected without truncating saved text",
+    "Tab-scoped account/session/block cache, serialized background saving, recovery of lost acknowledgments, real offline refresh and explicit conflict choices",
+    "Fresh remote read before discarding the local conflicting buffer, explicit save of chosen local content as a new version",
+    "Active code editing or running pauses the lesson without resetting progress; original example reset asks first",
+    "CSP-restricted actual Worker, readLine and frozen input arrays, async calculation, runtime errors, 2-second timeout, stop and old-worker guards",
+    "No execution on load; no server execution endpoint, no scoring/mastery writes; static teaching notes retain the original example",
+    "Personal code/input JSON download was actually opened and checked, without account identifiers",
+    "Database reopen, real SQLite bundle verify/cold restore, actual learning-code permissions, portable export and actual child privacy deletion",
+    "390/768/1440 simulated viewport screenshots inspected; real inputs, draft return from another board page and refresh"
+  ],
+  "diagnostics": [
+    "The first screenshot sequence returned to an earlier board page but did not scroll to the code editor; the program/input restoration passed, while those images did not demonstrate editor layout. The later run explicitly scrolls the editor into view and disables finite screenshot animations. Only the later editor images are archived as final visual evidence.",
+    "Offline initialization and replay behavior were inspected before acceptance: the local cache is restored before waiting for a network read; pending commands remain stable, and a local draft based on an older remote revision requires an explicit choice.",
+    "A 21-case classroom/caption/turn/code combination passed before the final client-only export and interaction-pause additions. The final four code cases also pass with those additions. Counts overlap and are not summed."
+  ],
+  "limits": [
+    "This is one M1/M2 code-experiment increment, not full-product or HyperKnow pixel/interaction parity completion.",
+    "JavaScript browser experiments remain distinct from the GESP C++ runner and its teaching/content requirements.",
+    "The two portable cold-backup cases are SQLite-only; the PG combination explicitly skips them and verifies actual PG saves/reopens/permissions separately.",
+    "Real touch keyboards, screen readers, teacher review, human learning effectiveness and long-running real-device behavior remain later gates.",
+    "No new live model, TTS or image generation call was made for this increment.",
+    "Production family records were not used for feature tests. The code-experiment increment is not yet deployed."
+  ]
+}
