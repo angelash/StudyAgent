@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T02:35:09.222464+00:00",
+  "at": "2026-10-25T02:50:15.251310+00:00",
   "sourceRevision": "6f5e56f379e37e1014aab624a567f4bdecd4be83",
   "specificationCommits": [
     "2fd932f",
     "2960d16"
   ],
-  "passed": false,
-  "status": "product-repair-local-validation-complete-awaiting-final-ci-and-daemon-delivery",
+  "passed": true,
+  "status": "original-repair-product-delivered",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     ".gitattributes": "df53e26dd99a774d3918feed7633c6ea9901ccb2eb2f62a80e67c8c6bf52e228",
@@ -148,6 +148,18 @@
         "unexpected": 0,
         "flaky": 0
       }
+    },
+    "original-repair-product-ci.json": {
+      "sha256": "494c223ecf266b121fef6c790b91c59d3a383ed43f25787b88a4b222b35f4947",
+      "result": {
+        "passed": true
+      }
+    },
+    "original-repair-product-runtime.json": {
+      "sha256": "96ceddfd3a79a9dbb3fa82cb6407b83851cf062bcacc0ad372b828fa1c85a657",
+      "result": {
+        "passed": true
+      }
     }
   },
   "featureCoverage": [
@@ -184,10 +196,26 @@
     "fullLocalApiUnconditionallyGreen": false,
     "finalSourceCi": {
       "runId": "40154792751",
-      "status": "in_progress",
-      "conclusion": null
+      "headSha": "6f5e56f379e37e1014aab624a567f4bdecd4be83",
+      "status": "completed",
+      "conclusion": "success",
+      "application": {
+        "passed": 1037,
+        "environmentSkipped": 42
+      },
+      "browser": {
+        "passed": 60
+      },
+      "postgresMaterialCombination": {
+        "passed": 81
+      }
     },
-    "daemonDeployment": "pending",
+    "daemonDeployment": {
+      "passed": true,
+      "revision": "37de7eefcd4758387560a959eee8618d0e7138ca",
+      "webBuildId": "2z8PLUBSFP0jGttOBXqeW",
+      "runtimeReport": "original-repair-product-runtime.json"
+    },
     "isolatedPostgres": "stopped"
   },
   "limits": [
@@ -196,7 +224,7 @@
     "Unknown files and markers remain retained; an unprovable cleanup stays pending for inspection instead of releasing the source unsafely.",
     "Active repairing snapshots are rejected by backup creation. Manually constructed/unsupported active-repair backups fail closed during cold restore.",
     "Existing e2e model calls use explicit deterministic fixtures; no new live model or TTS/image provider calls are claimed.",
-    "Production family data has not been used for feature tests. The development branch is not yet deployed."
+    "Production family data was not used for feature tests. Guarded daemon deployment includes anonymous endpoint checks and two process observations."
   ],
   "windowsAssetAttributesRevision": "18450a8"
 }
