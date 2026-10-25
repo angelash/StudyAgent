@@ -29,6 +29,7 @@ async function finishQuestions(page:Page,session:any){
       if(index===0){await page.getByRole('button',{name:'先给我一个提示',exact:true}).click();await expect(page.locator('.cl-hint')).toHaveCount(1);}
       await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();
     }
+    if(index===session.lesson.questions.length-1){await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'第'+(index+1)+'题',exact:true}).click();}
     await expect(page.locator('.cl-answer-feedback')).toBeVisible();
   }
 }
