@@ -1,0 +1,10 @@
+{
+  "status": "corrected",
+  "errors": [
+    "The first content snapshot command lacked the required data/qa/project-design-authored-audit.json.",
+    "Validation then found the old content snapshot revision while source inventory had already advanced."
+  ],
+  "initialOutput": "Initial stdout is retained in the tool transcript only; no initial local log was captured.",
+  "correction": "Run the explicit authored-content audit, then content snapshot, then design validation in dependency order.",
+  "scope": "Documentation generation prerequisite; no product runtime or database mutation."
+}

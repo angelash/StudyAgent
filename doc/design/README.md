@@ -8,10 +8,10 @@
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、119项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、120项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、93个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、95个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
@@ -37,9 +37,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：335个源码路由声明中，当前正常接入314个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [全部接口](generated/api-reference.md)：358个源码路由声明中，当前正常接入337个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
 - [页面职责](generated/page-reference.md)：26个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与297个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [领域集合与316个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构
@@ -99,3 +99,6 @@ npm run qa:docs
 
 
 119当前运行：资料课程三阶段项目、成人/资料课程学习旅程、准确原句/题目断点、个人项目步骤/模式和连续返回修正已交付。源码索引3537dfa，API/契约主增量466220d；本地与精确CI 9053f03/40221345190的205项浏览器均零失败/零重试。实际构建c1c6608、buildId hi7VwKIGYaHmzQtuQqKdz，51项运行检查/六音频SHA及跨181042毫秒守护观察通过。当前14领域/119功能/325正常接口/93集合/310共享类型，完整范围仍以[119最终收据](../evidence/2026-10-26/course-journey-acceptance.json)及[计划105](../product/105-development-plan-status-and-next-milestones.md)为准；独立资料核查和所有真人/全内容门禁未因此完成。
+
+
+2026-10-26：120开发分支已接资料独立核查、完整编审、未曝光确认、冻结学生课堂与原文、原命令/本机稿恢复及版本旅程。源码设计更新为14领域/120功能/337正常接口/95集合/316共享类型，142 API测试文件和29浏览器测试文件。完整API1240通过/43环境跳过、PG24通过、九浏览器专项零重试通过，真实默认DS生成6题（首次提示条数校验失败后修正，实际3次模型调用、AI复核修订2处）。其后可读原稿和归档候选只读优化已通过Web类型检查，整站浏览器正在核对；精确CI和守护发布尚未完成，实际运行仍为119。设计验证包含435源码引用、2800 Markdown链接及10离线界面检查，不能替代业务验收。见[规格120](../product/120-source-course-independent-unit-checks.md)与[整合收据](../evidence/2026-10-26/source-check-acceptance.json)。
