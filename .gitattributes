@@ -22,3 +22,9 @@ doc/evidence/2026-10-25/guidance-*.json text eol=lf
 doc/evidence/2026-10-25/neutral-*.json text eol=lf
 apps/web/public/classroom-voice-samples/manifest.json text eol=lf
 apps/web/public/classroom-voice-samples/*.mp3 binary
+
+# Project teaching evidence is hashed before and after checkout.
+doc/evidence/2026-10-26/project-teaching*.json text eol=lf
+doc/evidence/2026-10-26/project-teaching-initial-artifacts/**/*.json text eol=lf
+doc/evidence/2026-10-26/hyperknow-*.json text eol=lf
+doc/evidence/2026-10-26/project-command*.json text eol=lf

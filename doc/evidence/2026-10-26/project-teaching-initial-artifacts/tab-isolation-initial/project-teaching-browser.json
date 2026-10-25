@@ -1,0 +1,665 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-guided-project\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/project-teaching.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-guided-project\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-guided-project/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-guided-project/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-guided-project/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/project-teaching-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "project-teaching.spec.ts",
+      "file": "project-teaching.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:34.785Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e7485a181ff5672fe9e2",
+          "file": "project-teaching.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2060,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:37.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-cffae01eb681c8045d4c",
+          "file": "project-teaching.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2088,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:39.770Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-b9c3c5bf3908bff995b3",
+          "file": "project-teaching.spec.ts",
+          "line": 37,
+          "column": 5
+        },
+        {
+          "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2117,
+                  "error": {
+                    "message": "Error: page.unrouteAll: Target page, context or browser has been closed",
+                    "stack": "Error: page.unrouteAll: Target page, context or browser has been closed\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:15:32",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 32,
+                      "line": 15
+                    },
+                    "snippet": "  13 |   return{actor,id,current};\n  14 | }\n> 15 | test.afterEach(async({page})=>{await page.unrouteAll({behavior:'wait'});});\n     |                                ^\n  16 |\n  17 | test('guided original fields save before moving, keep the full work and submit one frozen stage',async({page})=>{\n  18 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true})).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 32,
+                        "line": 15
+                      },
+                      "message": "Error: page.unrouteAll: Target page, context or browser has been closed\n\n  13 |   return{actor,id,current};\n  14 | }\n> 15 | test.afterEach(async({page})=>{await page.unrouteAll({behavior:'wait'});});\n     |                                ^\n  16 |\n  17 | test('guided original fields save before moving, keep the full work and submit one frozen stage',async({page})=>{\n  18 |   const f=await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await expect(page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true})).toBeVisible();\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:15:32"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:41.865Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-hard-clos-043f3-rs-an-explicit-copy-preview\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-hard-clos-043f3-rs-an-explicit-copy-preview\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 32,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-d729d33dd77546ac9098",
+          "file": "project-teaching.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "two pending original commands use separate slots and confirming one preserves the other",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2410,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:45.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e39101d58468f7d5c1b0",
+          "file": "project-teaching.spec.ts",
+          "line": 51,
+          "column": 5
+        },
+        {
+          "title": "unavailable project storage keeps the live input and offers a full download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1519,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:48.125Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-cc7cc26cc8c0d3aed76f",
+          "file": "project-teaching.spec.ts",
+          "line": 60,
+          "column": 5
+        },
+        {
+          "title": "a mismatched owner draft is preserved but never restored or offered as another copy",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16455,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"原本机稿\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('textbox', { name: '匿名情境与已知观察', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\u001b[22m\n\u001b[2m    31 × locator resolved to <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\">原本机稿</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"原本机稿\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"原本机稿\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('textbox', { name: '匿名情境与已知观察', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\u001b[22m\n\u001b[2m    31 × locator resolved to <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\">原本机稿</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"原本机稿\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:67:436",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                      "column": 436,
+                      "line": 67
+                    },
+                    "snippet": "  65 | test('a mismatched owner draft is preserved but never restored or offered as another copy',async({page})=>{\n  66 |   await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true}).fill('原本机稿');\n> 67 |   const poisoned=await page.evaluate(()=>{const key=Object.keys(localStorage).find(key=>key.startsWith('studyagent.project.draft.v1.'))!,record=JSON.parse(localStorage.getItem(key)!);record.ownerId='another-actor';record.editor.artifact.values.scene='禁止展示的异账号正文';const raw=JSON.stringify(record);localStorage.setItem(key,raw);return{key,raw};});await page.reload();await expect(page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true})).toHaveValue('');await expect(page.getByText(/本机草稿与当前账号、项目或版本不匹配/)).toBeVisible();await expect(page.getByText('禁止展示的异账号正文',{exact:true})).toHaveCount(0);await expect(page.getByLabel('其他本机项目副本',{exact:true})).toHaveCount(0);expect(await page.evaluate(key=>localStorage.getItem(key),poisoned.key)).toBe(poisoned.raw);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  68 | });\n  69 |\n  70 | for(const endpoint of ['teaching','narration'])test('observed denied '+endpoint+' clears old project content and narration',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                        "column": 436,
+                        "line": 67
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"原本机稿\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('textbox', { name: '匿名情境与已知观察', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: '匿名情境与已知观察', exact: true })\u001b[22m\n\u001b[2m    31 × locator resolved to <textarea maxlength=\"12000\" aria-label=\"匿名情境与已知观察\">原本机稿</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"原本机稿\"\u001b[22m\n\n\n  65 | test('a mismatched owner draft is preserved but never restored or offered as another copy',async({page})=>{\n  66 |   await enter(page);await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true}).fill('原本机稿');\n> 67 |   const poisoned=await page.evaluate(()=>{const key=Object.keys(localStorage).find(key=>key.startsWith('studyagent.project.draft.v1.'))!,record=JSON.parse(localStorage.getItem(key)!);record.ownerId='another-actor';record.editor.artifact.values.scene='禁止展示的异账号正文';const raw=JSON.stringify(record);localStorage.setItem(key,raw);return{key,raw};});await page.reload();await expect(page.getByRole('textbox',{name:'匿名情境与已知观察',exact:true})).toHaveValue('');await expect(page.getByText(/本机草稿与当前账号、项目或版本不匹配/)).toBeVisible();await expect(page.getByText('禁止展示的异账号正文',{exact:true})).toHaveCount(0);await expect(page.getByLabel('其他本机项目副本',{exact:true})).toHaveCount(0);expect(await page.evaluate(key=>localStorage.getItem(key),poisoned.key)).toBe(poisoned.raw);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  68 | });\n  69 |\n  70 | for(const endpoint of ['teaching','narration'])test('observed denied '+endpoint+' clears old project content and narration',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts:67:436"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:01:49.652Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-guided-project\\test-results\\browser-product-acceptance\\project-teaching-a-mismatc-b5ba6--or-offered-as-another-copy\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-guided-project\\tests\\e2e\\project-teaching.spec.ts",
+                    "column": 436,
+                    "line": 67
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-b640b460f43f5f723a3a",
+          "file": "project-teaching.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "observed denied teaching clears old project content and narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1788,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:07.205Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-852f01ffec8fc961c376",
+          "file": "project-teaching.spec.ts",
+          "line": 70,
+          "column": 52
+        },
+        {
+          "title": "observed denied narration clears old project content and narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:09.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-459196cf079d3becf9ad",
+          "file": "project-teaching.spec.ts",
+          "line": 70,
+          "column": 52
+        },
+        {
+          "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:10.673Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-45801a4d62561871a376",
+          "file": "project-teaching.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:12.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-10f4978ee912be5b238a",
+          "file": "project-teaching.spec.ts",
+          "line": 89,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:13.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-c8256ef4b75579c7a4fa",
+          "file": "project-teaching.spec.ts",
+          "line": 89,
+          "column": 39
+        },
+        {
+          "title": "project teaching, original fields and controls fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1336,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:14.909Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-e6d718da7cace552ca55",
+          "file": "project-teaching.spec.ts",
+          "line": 89,
+          "column": 39
+        },
+        {
+          "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1436,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T16:02:16.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cf5271b1f84c170c4fa-8d681d1af0b9df7a25cc",
+          "file": "project-teaching.spec.ts",
+          "line": 93,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T16:01:29.304Z",
+    "duration": 49960.513999999996,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

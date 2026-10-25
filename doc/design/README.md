@@ -8,10 +8,10 @@
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、115项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、118项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、92个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、93个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
@@ -88,3 +88,5 @@ npm run qa:docs
 功能叙述维护于 [project-feature-definitions.cjs](../../scripts/architecture/project-feature-definitions.cjs)，查阅页模板维护于 [project-design-viewer.html](../../scripts/architecture/project-design-viewer.html)。概要与核心算法文档需随业务变化人工核对，自动提取不能代替设计审查。
 
 115候选新增课堂单选/多选、提交后逐项反馈和按账号/冻结会话保存的原选择/提交恢复。当前245题含三个微课多选和一个单元多选，自动化与教师审核分开；详见[115规格](../product/115-classroom-multiple-choice-and-submitted-feedback.md)。113已完成精确CI与守护交付，115当前运行状态以其最终收据为准。
+
+2026-10-26开发候选：118项目逐步教学、标签页独立完整草稿与本人原操作恢复已接入，应用代码944d93a；1178项API通过/39环境跳过、PG14项通过、真实配置MiniMax单句HTTP及解码通过。完整194项浏览器与精确CI/守护交付待终态。静态设计当前14领域/118功能/325正常路由/93集合/307共享类型。完整范围及限制见[118规格](../product/118-guided-project-teaching-and-step-navigation.md)和[本批收据](../evidence/2026-10-26/project-teaching-acceptance.json)。

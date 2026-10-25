@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "8a73c86bad7141deafd03f2608e5ddc7c86ae8e5",
+  "sourceRevision": "944d93a46960bba598e991712f05b76d6c6be2cf",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 117,
-    "activeNormalApiRoutes": 322,
-    "coveredApiRoutes": 322
+    "features": 118,
+    "activeNormalApiRoutes": 325,
+    "coveredApiRoutes": 325
   },
   "areas": [
     {
@@ -6358,12 +6358,20 @@
               "line": 10
             },
             {
+              "verb": "GET",
+              "path": "/api/learning/projects/:id/requests/:requestKey",
+              "controller": "CourseProjectController",
+              "method": "request",
+              "file": "apps/api/src/modules/learning/course-project.controller.ts",
+              "line": 11
+            },
+            {
               "verb": "POST",
               "path": "/api/learning/projects",
               "controller": "CourseProjectController",
               "method": "open",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 11
+              "line": 12
             },
             {
               "verb": "PATCH",
@@ -6371,7 +6379,7 @@
               "controller": "CourseProjectController",
               "method": "save",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 12
+              "line": 13
             },
             {
               "verb": "POST",
@@ -6379,7 +6387,7 @@
               "controller": "CourseProjectController",
               "method": "submit",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 13
+              "line": 14
             },
             {
               "verb": "POST",
@@ -6387,7 +6395,7 @@
               "controller": "CourseProjectController",
               "method": "review",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 14
+              "line": 15
             },
             {
               "verb": "POST",
@@ -6395,7 +6403,7 @@
               "controller": "CourseProjectController",
               "method": "legacy",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 15
+              "line": 16
             },
             {
               "verb": "POST",
@@ -6403,7 +6411,7 @@
               "controller": "CourseProjectController",
               "method": "advice",
               "file": "apps/api/src/modules/learning/course-project.controller.ts",
-              "line": 16
+              "line": 17
             }
           ],
           "implementations": [
@@ -6418,6 +6426,11 @@
               "line": 59
             },
             {
+              "name": "CourseProjectService.request",
+              "file": "apps/api/src/modules/learning/course-project.service.ts",
+              "line": 87
+            },
+            {
               "name": "CourseProjectService.open",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
               "line": 71
@@ -6425,27 +6438,27 @@
             {
               "name": "CourseProjectService.save",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 128
+              "line": 136
             },
             {
               "name": "CourseProjectService.submit",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 142
+              "line": 150
             },
             {
               "name": "CourseProjectService.review",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 160
+              "line": 168
             },
             {
               "name": "CourseProjectService.importLegacy",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 177
+              "line": 185
             },
             {
               "name": "CourseProjectService.advise",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 191
+              "line": 199
             }
           ],
           "sourceFiles": [
@@ -6453,6 +6466,89 @@
             "apps/api/src/modules/learning/course-project-content.ts",
             "apps/web/app/studio/projects/workbench.tsx",
             "apps/web/app/studio/projects/projects.css"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-28",
+          "title": "项目逐步教学、独立本机稿与原操作恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses"
+          ],
+          "inputs": "原冻结项目/阶段/字段、逐句讲解单元、音色、本人原命令回执与完整编辑稿",
+          "implementation": "按原字段生成导向/产出/证据/自评步骤；完整作品使用同一个Editor；URL步骤与前后退、未完成确认和字段焦点、保存后导航；每文档独立缓存槽，复制标签也不共写，刷新自动恢复本槽前稿、硬关闭后预览选择其他绑定副本；完整原body/key先读本人回执再重放，后续版本比较，不改键覆盖；保留确认后的新本机编辑；讲解不读取私人答案，仅合成冻结句单元，事务前后核对原登录/授权/定义，取消与换步骤释放音频；观察到权限失效清空旧内容",
+          "outputs": "连续项目教学、可核对草稿/命令副本、逐句朗读与原提交历史",
+          "collections": [
+            "courseProjects"
+          ],
+          "limits": "声音使用当前服务目录和原创样本；不是原站音轨或完整CSS/DPR还原，后续步骤/审核参考仍未知；本地缓存不是独立备份，AI建议仍沿用原同步调用，不宣称供应商恰好调用一次；教师/实机与完整M1～M7继续待验",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/projects/:id/teaching",
+              "controller": "ProjectTeachingController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/project-teaching.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/projects/:id/narration",
+              "controller": "ProjectTeachingController",
+              "method": "narrate",
+              "file": "apps/api/src/modules/learning/project-teaching.controller.ts",
+              "line": 10
+            }
+          ],
+          "implementations": [
+            {
+              "name": "ProjectTeachingService.get",
+              "file": "apps/api/src/modules/learning/project-teaching.service.ts",
+              "line": 22
+            },
+            {
+              "name": "ProjectTeachingService.narrate",
+              "file": "apps/api/src/modules/learning/project-teaching.service.ts",
+              "line": 27
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/project-teaching.ts",
+            "apps/api/src/modules/learning/project-teaching.controller.ts",
+            "apps/api/src/modules/learning/project-teaching.service.ts",
+            "apps/api/src/modules/learning/project-teaching.integration.test.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "apps/web/app/studio/projects/project-teaching.tsx",
+            "apps/web/app/studio/projects/project-teaching.css",
+            "apps/web/app/studio/projects/project-narration.ts",
+            "apps/web/app/studio/projects/project-recovery.ts",
+            "apps/web/app/studio/projects/use-project-recovery.ts",
+            "tests/e2e/project-teaching.spec.ts",
+            "scripts/qa/run-project-teaching-postgres.cjs"
           ],
           "tests": [
             "apps/api/src/modules/learning/studio-course.test.ts",
