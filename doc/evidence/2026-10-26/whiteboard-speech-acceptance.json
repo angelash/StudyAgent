@@ -1,7 +1,7 @@
 {
   "passed": false,
-  "status": "final-focused-passed-full-regression-pending",
-  "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
+  "status": "current-full-api-passed-full-browser-pending",
+  "sourceRevision": "68202df",
   "deployed": false,
   "schemaVersion": 15,
   "sqliteFocused": {
@@ -40,7 +40,7 @@
     "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
   },
   "limits": [
-    "Final focused API/PostgreSQL/browser passed. Complete API/browser, exact candidate CI and actual production release must be repeated for the measured audio tail and original-login fencing fixes.",
+    "Current final complete API passed1258 with47 environment skips. Complete229 browser, exact candidate CI and actual production delivery remain pending.",
     "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
     "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
     "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
@@ -63,5 +63,15 @@
     "report": "whiteboard-speech-current/full-api-before-audio-tail.json",
     "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
     "includesInherited121": true
+  },
+  "audioAndSessionRepairRevision": "68202df",
+  "fullApi": {
+    "passed": 1258,
+    "failed": 0,
+    "skipped": 47,
+    "report": "whiteboard-speech-current/full-api.json",
+    "originalSha256": "01c12c64e24e8fe16c05abf6a5615855e5d6f836de55385a5fc286dc0d30eca4",
+    "sourceRevision": "68202df",
+    "durationSeconds": 491.65
   }
 }
