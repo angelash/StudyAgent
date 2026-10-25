@@ -7,4 +7,7 @@ resources/curriculum/authored-relations-2026-10-20-v1.json text eol=lf
 resources/curriculum/authored-atomic-relations-2026-10-20-v1.json text eol=lf
 resources/curriculum/authored-average-atomic-relations-2026-10-20-v1.json text eol=lf
 # Acceptance receipts include file digests; preserve their archived bytes on Windows.
-doc/evidence/2026-10-25/*.json text eol=lf
+doc/evidence/2026-10-25/classroom-*.json text eol=lf
+
+# Previously archived repair reports retain their exact original LF/CRLF bytes.
+doc/evidence/2026-10-25/original-*.json -text
