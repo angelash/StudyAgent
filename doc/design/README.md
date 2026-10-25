@@ -89,4 +89,4 @@ npm run qa:docs
 
 115候选新增课堂单选/多选、提交后逐项反馈和按账号/冻结会话保存的原选择/提交恢复。当前245题含三个微课多选和一个单元多选，自动化与教师审核分开；详见[115规格](../product/115-classroom-multiple-choice-and-submitted-feedback.md)。113已完成精确CI与守护交付，115当前运行状态以其最终收据为准。
 
-2026-10-26开发候选：118项目逐步教学、标签页独立完整草稿与本人原操作恢复已接入，应用代码944d93a；1178项API通过/39环境跳过、PG14项通过、真实配置MiniMax单句HTTP及解码通过。完整194项浏览器与精确CI/守护交付待终态。静态设计当前14领域/118功能/325正常路由/93集合/307共享类型。完整范围及限制见[118规格](../product/118-guided-project-teaching-and-step-navigation.md)和[本批收据](../evidence/2026-10-26/project-teaching-acceptance.json)。
+2026-10-26运行交付：118项目逐步教学、标签页独立完整草稿与本人原操作恢复已上线，应用代码944d93a；1178项API通过/39环境跳过、PG14项通过、真实配置MiniMax单句HTTP及解码通过。完整194项浏览器通过，精确CI 8b547d2/40213523846成功；实际构建e558ea4、28项HTTP检查与六音频SHA通过，三次守护观察跨201764毫秒稳定。静态设计当前14领域/118功能/325正常路由/93集合/307共享类型。完整范围及限制见[118规格](../product/118-guided-project-teaching-and-step-navigation.md)和[本批收据](../evidence/2026-10-26/project-teaching-acceptance.json)。
