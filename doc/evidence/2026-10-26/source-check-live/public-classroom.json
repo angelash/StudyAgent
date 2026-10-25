@@ -1,0 +1,295 @@
+{
+  "id": "classroom_b2b55c31-54bb-4b4b-ac9f-8059e29eac02",
+  "ownerUserId": "user_087065f3-14fa-4a2f-8e5e-9733507caa9e",
+  "studentId": null,
+  "courseId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea",
+  "lessonId": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892",
+  "sourceCourseId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea",
+  "sourceCheckId": "source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892",
+  "sourceCheckFingerprint": "9b042c8f8938b5b75aa12993609737f26c604ef89d37c4901b5cee93614baa58",
+  "sourceCheckTargets": [
+    {
+      "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+      "title": "区分事实与解释",
+      "objective": "把观察、推断与待验证条件分开。"
+    },
+    {
+      "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two",
+      "title": "比较替代解释",
+      "objective": "把观察、推断与待验证条件分开。"
+    }
+  ],
+  "contentFingerprint": "c42fb0b5738c2fd8461607e3e44adbfe973cb0dba0e0ade201ca04171a00a82e",
+  "lesson": {
+    "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892",
+    "title": "匿名图书室：区分观察、比较解释与保留未知",
+    "objective": "把观察、推断与待验证条件分开。；把观察、推断与待验证条件分开。",
+    "lectureId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea",
+    "generatedNotice": "AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+    "assessment": {
+      "kind": "unit-check",
+      "version": "9b042c8f8938b5b75aa12993609737f26c604ef89d37c4901b5cee93614baa58",
+      "notice": "AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。"
+    },
+    "practiceVersion": "9b042c8f8938b5b75aa12993609737f26c604ef89d37c4901b5cee93614baa58",
+    "steps": [
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:orient",
+        "phase": "orient",
+        "title": "独立核查",
+        "narration": "请根据题干和所引原文作答。单选题选出最恰当的一项；多选题选出所有有依据的判断。区分看见的记录、提出的原因和仍需补查的条件，并留意结论能否超出已有记录。。AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+        "durationMs": 12000,
+        "blocks": [
+          {
+            "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:title",
+            "kind": "heading",
+            "text": "匿名图书室：区分观察、比较解释与保留未知"
+          },
+          {
+            "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:targets",
+            "kind": "points",
+            "text": "本次核查目标",
+            "items": [
+              "区分事实与解释",
+              "比较替代解释"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:review",
+        "phase": "transfer",
+        "title": "作答与复盘",
+        "narration": "先独立判断，需要帮助时再逐级查看提示。提交后核对本题理由和来源；遇到不会可以如实记录，再返回对应课时。",
+        "durationMs": 12000,
+        "blocks": [
+          {
+            "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:review:points",
+            "kind": "points",
+            "text": "保留自己的判断",
+            "items": [
+              "独立首答",
+              "需要时使用提示",
+              "核对理由与原文",
+              "回看对应课时"
+            ]
+          }
+        ]
+      }
+    ],
+    "sourceReferences": [
+      {
+        "sourceKey": "preview",
+        "title": "匿名图书室：观察、解释与边界",
+        "page": 1,
+        "quote": "",
+        "href": "/studio/source-courses?course=check-live-course-d681e062-e374-4f92-b297-042774ffccea&source=preview"
+      }
+    ],
+    "questions": [
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:1",
+        "prompt": "某公共阅览区连续两个周五晚间满座，周四上午却有许多空位。管理员说：“周五晚间满座证明近期削减座位导致了拥挤。”若要把观察和解释分开，哪项判断最恰当？",
+        "options": [
+          "“周五晚间满座”是记录到的现象；“座位被削减导致拥挤”则是需要核对的原因解释。",
+          "因为满座连续出现两次，“满座”和“座位被削减”都已变成直接事实。",
+          "管理员有日常经验，所以其因果解释可以直接替代现场观察记录。",
+          "周四上午有空位说明周五拥挤与时间条件无关。"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:2",
+        "prompt": "某校阅览空间连续两个周六下午排队，工作日上午却常有空座。甲说座位数减少，乙说考试临近，丙说周末临时活动带来人流。为了比较这些解释，下一步最合理的是哪项？",
+        "options": [
+          "把两个周六的记录直接相加，排队时段就是造成排队的原因。",
+          "只询问等待最久的人，并把其说法作为共同原因。",
+          "核对那两个周六的开放座位数、考试安排、临时活动和开放时长，再与需求相近的其他日期比较。",
+          "预先宣布以后每个周六都会排队，并用这个结论解释当前记录。"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two",
+          "title": "比较替代解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:3",
+        "prompt": "某科普活动连续两场满员，另一场却较冷清。主办方目前只有报名人数，没有保存场地限额、宣传活动、预约时段和天气记录。下列哪些判断有依据？",
+        "options": [
+          "“连续两场满员”是观察；仅凭它就断定活动内容质量高，证据不足。",
+          "既然另一场冷清，天气必然比其他条件更常见。",
+          "“场地容量不足”是候选解释，需要核对限额以及相近需求下的容量。",
+          "两场满员足以代表全年活动需求不变。",
+          "比较天气相近但宣传不同的活动，可帮助区分某些替代解释，但不能一次排除全部原因。"
+        ],
+        "selectionMode": "multiple",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:4",
+        "prompt": "某社区课程延长到晚间后，报名人数上升，负责人认为是“晚间时段”带来了更多学习者。近期课程还更换了主题并加强了宣传。哪项复核判断最合适？",
+        "options": [
+          "延长到晚间后人数上升，已经足以排除主题和宣传变化的影响。",
+          "人数上升说明晚间时段是唯一原因。",
+          "只要部分学习者说喜欢晚上，就不必核对课程和宣传变化。",
+          "晚间时段可能是原因之一，但应比较课程内容、宣传力度和其他时段安排相近时的报名变化。",
+          "课程已经延长到晚间，所以其他解释都应被视为错误。"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two",
+          "title": "比较替代解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:5",
+        "prompt": "某图书室只在两天的巡查表里写了“可用座位很少”，没有记录巡查时刻、活动、开放区域或总座位数。下列哪项最适合作为报告结论？",
+        "options": [
+          "两次巡查都确认了全馆所有区域长期座位不足。",
+          "可报告这轮巡查看到可用座位少，但不能给出全馆长期容量判断或唯一原因。",
+          "没有记录总座位数，所以连“当时看到可用座位少”也不能写。",
+          "既然没写活动，就可以把原因确定为读者人数增加。"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:q:6",
+        "prompt": "一份简报从两个周末下午的排队记录得出“本校全年周末都拥挤，因此座位供给一定不足”。复核时，下列哪些判断合理？",
+        "options": [
+          "它把特定时段的两次记录扩大成了全年规律，结论范围超出资料。",
+          "排队无法被直接观察，所以“出现排队”也不能作为观察记录。",
+          "只有两次记录就已经足以证明座位供给是唯一原因。",
+          "若要用排队支持扩容，仍应比较座位供给、需求变化、活动与开放时间等替代解释。",
+          "在完成这些条件比较前，至多把座位不足作为候选原因，不能称为唯一原因。"
+        ],
+        "selectionMode": "multiple",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "check-live-course-d681e062-e374-4f92-b297-042774ffccea:two"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-d681e062-e374-4f92-b297-042774ffccea:one",
+          "title": "区分事实与解释"
+        }
+      }
+    ]
+  },
+  "presentation": {
+    "version": "speech-v2",
+    "createdAt": "2026-10-25T19:23:14.244Z",
+    "tracks": {
+      "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:orient": {
+        "version": "speech-v2",
+        "sourceSha256": "6c495ebb8a6e5f423027e89f6db62324304b3cc9f24083106ddaed7bac9fabe3",
+        "units": [
+          {
+            "start": 0,
+            "end": 13,
+            "text": "请根据题干和所引原文作答。",
+            "id": "speech_8e2c776ac3f6af87a85e573cf7d66e3c54238eee11f80e842e4881cdbfa5e0b2"
+          },
+          {
+            "start": 13,
+            "end": 39,
+            "text": "单选题选出最恰当的一项；多选题选出所有有依据的判断。",
+            "id": "speech_e5a2476699d5695545346e016f54e03bf3a795e6f0a86468f89ef55476eda338"
+          },
+          {
+            "start": 39,
+            "end": 76,
+            "text": "区分看见的记录、提出的原因和仍需补查的条件，并留意结论能否超出已有记录。。",
+            "id": "speech_4fbc65ad0ad4ce531d65a18f02346b1c3a7a109d9d3ec9bccac59954f1421fde"
+          },
+          {
+            "start": 76,
+            "end": 89,
+            "text": "AI生成题组仍待内容审核。",
+            "id": "speech_8fc6e8c3bc354b47e6fa424e8019b99d50b447eddc47ede395797b48a27df99f"
+          },
+          {
+            "start": 89,
+            "end": 124,
+            "text": "首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+            "id": "speech_026c721368a255ebbf8a1dd5199bc36463904bb97005a9089af42bc1abebe951"
+          }
+        ]
+      },
+      "source-check:source_check_4746ffd3-09d2-4e88-af96-ebdd8ef17892:review": {
+        "version": "speech-v2",
+        "sourceSha256": "645d81dca75ff4eaa9f03bf9adf8e1ccec68aac98bbbcceb4456ad1ddd62602e",
+        "units": [
+          {
+            "start": 0,
+            "end": 19,
+            "text": "先独立判断，需要帮助时再逐级查看提示。",
+            "id": "speech_504f0bfd65271b49ee28eb5dc3ca4e9fa35887e3fddabf22420a36b2610101a9"
+          },
+          {
+            "start": 19,
+            "end": 51,
+            "text": "提交后核对本题理由和来源；遇到不会可以如实记录，再返回对应课时。",
+            "id": "speech_7e682469244175a2ef730685104e944d2b9741f3acbbda66a07e02420d8fa556"
+          }
+        ]
+      }
+    }
+  },
+  "cursor": 0,
+  "revealed": 0,
+  "sentenceCursor": 0,
+  "status": "paused",
+  "revision": 0,
+  "messages": [],
+  "answers": [],
+  "projectDraft": "",
+  "hintReceipts": [],
+  "createdAt": "2026-10-25T19:23:14.244Z",
+  "updatedAt": "2026-10-25T19:23:14.244Z",
+  "speech": {
+    "available": false,
+    "provider": null,
+    "voices": [],
+    "defaultVoice": null
+  },
+  "contentStatus": "current"
+}

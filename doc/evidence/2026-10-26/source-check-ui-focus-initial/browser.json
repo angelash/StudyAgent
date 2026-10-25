@@ -1,0 +1,442 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/source-course-check.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-check-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-check.spec.ts",
+      "file": "source-course-check.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:02.458Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:11.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6611,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:18.127Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:24.752Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+          "file": "source-course-check.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:30.988Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+          "file": "source-course-check.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:37.272Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+          "file": "source-course-check.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21511,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>审阅答案并编辑</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>审阅答案并编辑</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:43:1263",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                      "column": 1263,
+                      "line": 43
+                    },
+                    "snippet": "  41 |   test.setTimeout(150000);const{actor,row,principal,credential}=await enter(page),view=await readyByApi(actor,row);await page.reload();await candidate(page);let dropped=false;const keys:string[]=[];await page.route('**/checks/*/authoring',async route=>{keys.push(route.request().postDataJSON().requestKey);if(!dropped){dropped=true;await route.fetch();await route.abort('failed');}else await route.continue();});await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(panel(page).getByRole('alert')).toBeVisible();\n  42 |   const shared=await context.newPage();await shared.goto('/studio/source-courses?course='+row.id);await candidate(shared);await expect(panel(shared).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeDisabled();await shared.close();const device=await browser.newContext({baseURL:'http://localhost:'+(process.env.E2E_WEB_PORT??3107)}),other=await device.newPage();await other.goto('/parent/login');await other.getByLabel('登录账号').fill(principal);await other.getByLabel('密码').fill(credential);await other.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(other).toHaveURL(/\\/learn(?:\\?|$)/);await other.goto('/studio/source-courses?course='+row.id);await candidate(other);await panel(other).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();const second=other.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await second.getByLabel('题组名称',{exact:true}).fill('另一个标签保存的当前稿');await second.getByRole('button',{name:'保存题组修改',exact:true}).click();await expect(second).toContainText('已读取服务端稿件');await second.getByRole('button',{name:'关闭题组编辑',exact:true}).click();\n> 43 |   await page.reload();await panel(page).getByRole('button',{name:'按原参数核对操作',exact:true}).click();const editor=page.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await expect(editor).toContainText('这是原操作保存的旧版本');await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue(view.title);await expect(editor.getByRole('button',{name:'保存题组修改',exact:true})).toHaveCount(0);expect(keys[0]).toBe(keys[1]);await editor.getByRole('button',{name:'关闭题组编辑',exact:true}).click();await candidate(page);await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue('另一个标签保存的当前稿');await expect(editor.getByLabel('引用1来源',{exact:true})).toContainText('核查合成原文');await editor.locator('summary').filter({hasText:'对照引用1冻结原文'}).click();await expect(editor).toContainText('没有记录晚间');const close=editor.getByRole('button',{name:'关闭题组编辑',exact:true});await close.focus();await page.keyboard.press('Shift+Tab');await expect(editor.getByRole('button',{name:'导出本机题组稿',exact:true})).toBeFocused();await page.keyboard.press('Tab');await expect(close).toBeFocused();await page.keyboard.press('Escape');await expect(editor).toHaveCount(0);await expect(panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeFocused();await device.close();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  44 | });\n  45 |\n  46 | test('an unavailable local draft store keeps the editor open and never promises a saved recoverable copy',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                        "column": 1263,
+                        "line": 43
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button>审阅答案并编辑</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  41 |   test.setTimeout(150000);const{actor,row,principal,credential}=await enter(page),view=await readyByApi(actor,row);await page.reload();await candidate(page);let dropped=false;const keys:string[]=[];await page.route('**/checks/*/authoring',async route=>{keys.push(route.request().postDataJSON().requestKey);if(!dropped){dropped=true;await route.fetch();await route.abort('failed');}else await route.continue();});await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(panel(page).getByRole('alert')).toBeVisible();\n  42 |   const shared=await context.newPage();await shared.goto('/studio/source-courses?course='+row.id);await candidate(shared);await expect(panel(shared).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeDisabled();await shared.close();const device=await browser.newContext({baseURL:'http://localhost:'+(process.env.E2E_WEB_PORT??3107)}),other=await device.newPage();await other.goto('/parent/login');await other.getByLabel('登录账号').fill(principal);await other.getByLabel('密码').fill(credential);await other.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(other).toHaveURL(/\\/learn(?:\\?|$)/);await other.goto('/studio/source-courses?course='+row.id);await candidate(other);await panel(other).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();const second=other.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await second.getByLabel('题组名称',{exact:true}).fill('另一个标签保存的当前稿');await second.getByRole('button',{name:'保存题组修改',exact:true}).click();await expect(second).toContainText('已读取服务端稿件');await second.getByRole('button',{name:'关闭题组编辑',exact:true}).click();\n> 43 |   await page.reload();await panel(page).getByRole('button',{name:'按原参数核对操作',exact:true}).click();const editor=page.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await expect(editor).toContainText('这是原操作保存的旧版本');await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue(view.title);await expect(editor.getByRole('button',{name:'保存题组修改',exact:true})).toHaveCount(0);expect(keys[0]).toBe(keys[1]);await editor.getByRole('button',{name:'关闭题组编辑',exact:true}).click();await candidate(page);await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue('另一个标签保存的当前稿');await expect(editor.getByLabel('引用1来源',{exact:true})).toContainText('核查合成原文');await editor.locator('summary').filter({hasText:'对照引用1冻结原文'}).click();await expect(editor).toContainText('没有记录晚间');const close=editor.getByRole('button',{name:'关闭题组编辑',exact:true});await close.focus();await page.keyboard.press('Shift+Tab');await expect(editor.getByRole('button',{name:'导出本机题组稿',exact:true})).toBeFocused();await page.keyboard.press('Tab');await expect(close).toBeFocused();await page.keyboard.press('Escape');await expect(editor).toHaveCount(0);await expect(panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeFocused();await device.close();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  44 | });\n  45 |\n  46 | test('an unavailable local draft store keeps the editor open and never promises a saved recoverable copy',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:43:1263"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:34:55.995Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-fdb43-it-before-historical-replay\\test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-fdb43-it-before-historical-replay\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-fdb43-it-before-historical-replay\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-fdb43-it-before-historical-replay\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                    "column": 1263,
+                    "line": 43
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-7d0fc63e124122b3642b",
+          "file": "source-course-check.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+          "file": "source-course-check.spec.ts",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+          "file": "source-course-check.spec.ts",
+          "line": 50,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T19:33:55.627Z",
+    "duration": 84169.035,
+    "expected": 6,
+    "skipped": 2,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

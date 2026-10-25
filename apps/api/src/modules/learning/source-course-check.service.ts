@@ -26,6 +26,7 @@ export function reconcileSourceCheck(row:SourceCourseCheckRecord,task:TaskRow|nu
 @Injectable()
 export class SourceCourseCheckService{
   constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService,private readonly models:XiaojiuModelsService,private readonly chat:XiaojiuChatService){}
+  modelAvailable(){return this.chat.enabled;}
   private record(user:InMemoryUserAccount,courseId:string,id:string){
     const course=sourceCheckCourse(this.store,this.students,user,courseId),row=this.store.find('sourceCourseChecks',{id,courseId,ownerUserId:user.id});
     if(!row)throw new NotFoundException('核查题组候选不存在');return{course,row};
@@ -46,8 +47,8 @@ export class SourceCourseCheckService{
   async receipt(user:InMemoryUserAccount,courseId:string,id:string,requestKey:string){const {row}=this.record(user,courseId,id),receipt=row.commands.find(command=>command.key===requestKey);if(!receipt)throw new NotFoundException('原操作回执不存在');return this.view(row,undefined,receipt);}
   preflight(user:InMemoryUserAccount,courseId:string,input:unknown){
     const course=sourceCheckCourse(this.store,this.students,user,courseId),command=validate(z.object(selection).strict(),input),model=this.models.resolve(command.modelId);
-    try{const prepared=prepareSourceCourseCheck(course,{...command,modelId:model.id});return{valid:true,available:this.chat.enabled,courseRevision:course.revision,courseFingerprint:course.fingerprint,modelId:model.id,modelName:model.label,contextCharacters:prepared.contextCharacters,maxContextCharacters:SOURCE_CHECK_CONTEXT_LIMIT,targets:prepared.targets.map(({lessonId,title,objective})=>({lessonId,title,objective})),errorCode:null};}
-    catch(error){return{valid:false,available:this.chat.enabled,courseRevision:course.revision,courseFingerprint:course.fingerprint,modelId:model.id,modelName:model.label,contextCharacters:null,maxContextCharacters:SOURCE_CHECK_CONTEXT_LIMIT,targets:[],errorCode:error instanceof Error&&error.message.startsWith('source_check_')?error.message:'source_check_selection_invalid'};}
+    try{const prepared=prepareSourceCourseCheck(course,{...command,modelId:model.id});return{valid:true,available:this.modelAvailable(),courseRevision:course.revision,courseFingerprint:course.fingerprint,modelId:model.id,modelName:model.label,contextCharacters:prepared.contextCharacters,maxContextCharacters:SOURCE_CHECK_CONTEXT_LIMIT,targets:prepared.targets.map(({lessonId,title,objective})=>({lessonId,title,objective})),errorCode:null};}
+    catch(error){return{valid:false,available:this.modelAvailable(),courseRevision:course.revision,courseFingerprint:course.fingerprint,modelId:model.id,modelName:model.label,contextCharacters:null,maxContextCharacters:SOURCE_CHECK_CONTEXT_LIMIT,targets:[],errorCode:error instanceof Error&&error.message.startsWith('source_check_')?error.message:'source_check_selection_invalid'};}
   }
   async prepare(user:InMemoryUserAccount,courseId:string,input:unknown,session:InMemoryAuthSession){
     const command=validate(prepareSchema,input),hash=sourceCheckDigest({courseId,...command,requestKey:undefined});
@@ -55,7 +56,7 @@ export class SourceCourseCheckService{
       const course=sourceCheckCourse(this.store,this.students,user,courseId),previous=this.store.find('sourceCourseChecks',{ownerUserId:user.id,requestKey:command.requestKey});
       if(previous){if(previous.courseId!==courseId||previous.requestHash!==hash)throw new ConflictException('原请求已用于其他核查题组');return this.view(previous,undefined,previous.commands.find(item=>item.key===command.requestKey&&item.kind==='prepare'));}
       if(course.revision!==command.expectedRevision||course.fingerprint!==command.courseFingerprint)throw new ConflictException('课程内容已更新，请重新读取目标');
-      const model=this.models.resolve(command.modelId);if(!this.chat.enabled)throw new ServiceUnavailableException('小九AI当前未启用，请先连接模型再准备核查');
+      const model=this.models.resolve(command.modelId);if(!this.modelAvailable())throw new ServiceUnavailableException('小九AI当前未启用，请先连接模型再准备核查');
       let prepared;try{prepared=prepareSourceCourseCheck(course,{modelId:model.id,lessonIds:command.lessonIds});}catch{throw new BadRequestException('所选目标或来源不满足独立核查条件，请先查看准备预览');}
       const authorization=captureSourceCheckAuthorization(this.store,this.students,user,course,session);
       for(const row of this.store.select('sourceCourseChecks',{ownerUserId:user.id,courseId})){const task=await this.store.tasks.get(row.taskId);reconcileSourceCheck(row,task);if(['queued','generating','cancel_requested'].includes(row.status)||task&&active.has(task.state))throw new ConflictException('这门课程已有出题任务，请先查看或结束原任务');}
@@ -93,7 +94,7 @@ export class SourceCourseCheckService{
     const fingerprint=receipt.contentFingerprint,version=receipt.contentVersion;if(!fingerprint||version===undefined)throw new ConflictException('旧审阅回执缺少内容版本，请重新发起审阅');
     const content=row.contentFingerprint===fingerprint&&(row.contentVersion??1)===version?row.content:row.contentHistory?.find(item=>item.contentFingerprint===fingerprint&&item.contentVersion===version)?.content;
     if(!content||sourceCheckDigest(content)!==fingerprint)throw new ConflictException('原审阅版本不可用，请保留本机副本后重新读取');
-    return{view:await this.view(row,undefined,receipt),content:structuredClone(content),contentFingerprint:fingerprint,contentVersion:version,historical:fingerprint!==row.contentFingerprint||version!==(row.contentVersion??1),originalContent:row.originalContent?structuredClone(row.originalContent):null,
+    return{view:await this.view(row,undefined,receipt),content:structuredClone(content),sources:structuredClone(row.prepared.sources),contentFingerprint:fingerprint,contentVersion:version,historical:fingerprint!==row.contentFingerprint||version!==(row.contentVersion??1),originalContent:row.originalContent?structuredClone(row.originalContent):null,
       review:row.modelReview?{decision:row.modelReview.decision,issues:structuredClone(row.modelReview.issues),modelId:row.modelReview.modelId,at:row.modelReview.at,current:row.modelReview.outputFingerprint===fingerprint}:null};
   }
   async authoring(user:InMemoryUserAccount,courseId:string,id:string,input:unknown,session:InMemoryAuthSession){

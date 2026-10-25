@@ -35,8 +35,8 @@ export function sourceCheckKeys(row:SourceCourseCheckRecord,lesson:ClassroomLess
   return{answers:Object.fromEntries(lesson.questions.map((question,index)=>[question.id,{answer:[...row.content!.questions[index].correctIndices],explanation:row.content!.questions[index].explanation,optionExplanations:[...row.content!.questions[index].optionExplanations],sourceReferences:structuredClone(row.content!.questions[index].citations)}])),
     hints:Object.fromEntries(lesson.questions.map((question,index)=>[question.id,[...row.content!.questions[index].hints]]))};
 }
-export function sourceCheckExposed(store:InMemoryStoreService,session:ClassroomSession){
-  return Boolean(session.authoringAnswerExposure||session.sourceCheckId&&store.find('sourceCourseChecks',{id:session.sourceCheckId,courseId:session.courseId})?.authoringExposures?.some(exposure=>exposure.actorId===session.ownerUserId&&exposure.contentFingerprint===session.sourceCheckFingerprint));
+export function sourceCheckExposed(store:InMemoryStoreService,session:Pick<ClassroomSession,'authoringAnswerExposure'|'sourceCheckId'|'courseId'|'ownerUserId'|'sourceCheckFingerprint'>){
+  return Boolean(session.authoringAnswerExposure||session.sourceCheckId&&store.select('sourceCourseChecks',{courseId:session.courseId}).some(row=>row.authoringExposures?.some(exposure=>exposure.actorId===session.ownerUserId&&exposure.contentFingerprint===session.sourceCheckFingerprint)));
 }
 export function sourceCheckJourney(store:InMemoryStoreService,course:SourceCourseRecord,sessions:ClassroomSession[]):SourceCourseUnitCheckActivity|'not_configured'{
   const row=publishedSourceCheck(store,course),current=row?sourceCheckLesson(row):undefined;

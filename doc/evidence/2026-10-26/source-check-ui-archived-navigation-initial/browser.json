@@ -1,0 +1,381 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/source-course-check.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-check-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-check.spec.ts",
+      "file": "source-course-check.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8158,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:37:20.800Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5328,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:37:29.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7131,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"已归档课程只能查看已有课堂记录\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <aside role=\"alert\" class=\"cl-session-open-notice\">…</aside> aka getByText('请先确认课程，已归档课程只能查看已有课堂记录关闭课堂切换提示')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div> aka getByText('教学课堂 · StudyAgent')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    - locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div>\u001b[22m\n\u001b[2m    - unexpected value \"教学课堂 · StudyAgent\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"已归档课程只能查看已有课堂记录\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <aside role=\"alert\" class=\"cl-session-open-notice\">…</aside> aka getByText('请先确认课程，已归档课程只能查看已有课堂记录关闭课堂切换提示')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div> aka getByText('教学课堂 · StudyAgent')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    - locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div>\u001b[22m\n\u001b[2m    - unexpected value \"教学课堂 · StudyAgent\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:22:1271",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                      "column": 1271,
+                      "line": 22
+                    },
+                    "snippet": "  20 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();const source=page.getByRole('dialog',{name:'核查合成原文',exact:true});await expect(source).toContainText('没有记录晚间');await page.screenshot({path:evidence+'/frozen-source-'+width+'.png'});await page.keyboard.press('Escape');await expect(source).toHaveCount(0);await expect(page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true})).toBeFocused();\n  21 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'这题我不会',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'Skip',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.screenshot({path:evidence+'/review-'+width+'.png'});\n> 22 |   const final=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(final.answers[0]).toEqual(original.answers[0]);expect(final.answers).toHaveLength(4);await page.getByRole('button',{name:'返回课程，安排下一步',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/source-courses\\\\?.*course='+row.id));await expect(panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true})).toBeVisible();const course=await call(actor,'GET','/learning/source-courses/'+row.id);expect(course.journey.unitCheck.current.activity.practice.summary).toMatchObject({answered:4,independentCorrect:2,dontKnow:1,skipped:1});expect(course.lastSessionId).toBeNull();expect(errors).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(width===1440){await call(actor,'POST','/learning/source-courses/'+row.id+'/archive',{expectedRevision:course.revision,requestKey:crypto.randomUUID()});await panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'回到相关微课',exact:true}).first().click();await expect(page.getByRole('alert')).toContainText('已归档课程只能查看已有课堂记录');await page.getByRole('button',{name:'关闭课堂切换提示',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  23 | });\n  24 |\n  25 | test('recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                        "column": 1271,
+                        "line": 22
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected substring: \u001b[32m\"已归档课程只能查看已有课堂记录\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <aside role=\"alert\" class=\"cl-session-open-notice\">…</aside> aka getByText('请先确认课程，已归档课程只能查看已有课堂记录关闭课堂切换提示')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div> aka getByText('教学课堂 · StudyAgent')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('alert') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    - locator resolved to <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\">教学课堂 · StudyAgent</div>\u001b[22m\n\u001b[2m    - unexpected value \"教学课堂 · StudyAgent\"\u001b[22m\n\n\n  20 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();const source=page.getByRole('dialog',{name:'核查合成原文',exact:true});await expect(source).toContainText('没有记录晚间');await page.screenshot({path:evidence+'/frozen-source-'+width+'.png'});await page.keyboard.press('Escape');await expect(source).toHaveCount(0);await expect(page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true})).toBeFocused();\n  21 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'这题我不会',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'Skip',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.screenshot({path:evidence+'/review-'+width+'.png'});\n> 22 |   const final=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(final.answers[0]).toEqual(original.answers[0]);expect(final.answers).toHaveLength(4);await page.getByRole('button',{name:'返回课程，安排下一步',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/source-courses\\\\?.*course='+row.id));await expect(panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true})).toBeVisible();const course=await call(actor,'GET','/learning/source-courses/'+row.id);expect(course.journey.unitCheck.current.activity.practice.summary).toMatchObject({answered:4,independentCorrect:2,dontKnow:1,skipped:1});expect(course.lastSessionId).toBeNull();expect(errors).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(width===1440){await call(actor,'POST','/learning/source-courses/'+row.id+'/archive',{expectedRevision:course.revision,requestKey:crypto.randomUUID()});await panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'回到相关微课',exact:true}).first().click();await expect(page.getByRole('alert')).toContainText('已归档课程只能查看已有课堂记录');await page.getByRole('button',{name:'关闭课堂切换提示',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  23 | });\n  24 |\n  25 | test('recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:22:1271"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:37:34.732Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-source-78344-exact-course-return-at-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-source-78344-exact-course-return-at-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-source-78344-exact-course-return-at-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                    "column": 1271,
+                    "line": 22
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+          "file": "source-course-check.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+          "file": "source-course-check.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+          "file": "source-course-check.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-7d0fc63e124122b3642b",
+          "file": "source-course-check.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+          "file": "source-course-check.spec.ts",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+          "file": "source-course-check.spec.ts",
+          "line": 50,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T19:37:14.065Z",
+    "duration": 29998.629,
+    "expected": 2,
+    "skipped": 6,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

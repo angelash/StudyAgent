@@ -150,4 +150,24 @@ describe('source check original commands and checkpointed private generation',()
     const base='/learning/classroom/sessions/'+session.id;await call('post',base+'/messages',{message:'帮我核查条件',questionId:session.lesson.questions[0].id,modelId:'deepseek-v4-flash',requestKey:randomUUID()});let input:any=reply.mock.calls[0][0];expect(JSON.parse(input.context).feedback).toBeUndefined();expect(input.context).not.toContain('correctIndices');expect(input.context).not.toContain('先找已有观察');
     await submit(session);await call('post',base+'/messages',{message:'解释我已提交这一题的反馈',questionId:session.lesson.questions[0].id,modelId:'deepseek-v4-flash',requestKey:randomUUID()});input=reply.mock.calls[1][0];expect(JSON.parse(input.context).feedback).toMatchObject({questionId:session.lesson.questions[0].id,correctIndices:[0]});expect(input.context).not.toContain(session.lesson.questions[1].id);expect(input.context).not.toContain('再找还缺的比较条件');
   });
+  it('keeps exact duplicate regenerated content exposed when its answers were author-reviewed under an older definition',async()=>{
+    const row=await course(),first=await published(row),author=await call('post',endpoint(row)+'/'+first.id+'/authoring',{expectedRevision:first.revision,contentFingerprint:first.contentFingerprint,requestKey:randomUUID()});expect(author.sources[0].text).toBe(quote);
+    const second=await published(row);expect(second.id).not.toBe(first.id);expect(second.contentFingerprint).toBe(first.contentFingerprint);expect(await store.requestContext(()=>store.find('sourceCourseChecks',{id:second.id}).authoringExposures)).toHaveLength(0);
+    const session=await openCheck(row,second);expect(session.authoringAnswerExposure).toBe(true);const answer=await submit(session);expect(answer.answers[0].answerExposure).toBe('authorship');expect(classroomPracticeSummary(answer.lesson.questions,answer.answers).independentCorrect).toBe(0);
+  });
+  it('uses real privacy export and account/child deletion while retaining shared first answers and fencing a late private draft',async()=>{
+    const originalOwner=owner;let release:(()=>void)|undefined,pending:Promise<unknown>|undefined;
+    try{
+      owner=await register();const closing=owner,child=await call('post','/students',{nickname:'共享核查隐私合成学生',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}}),studentId=child.profile.id;
+      await store.transaction(()=>store.append('bindings',{id:randomUUID(),parentUserId:other.user.id,studentId,relation:'guardian',status:'active'}));
+      const row=await course(studentId),check=await published(row),session=await openCheck(row,check,other),answered=await submit(session,0,other),exported=await call('post','/privacy/students/'+studentId+'/export',{credential:closing.credential,requestKey:randomUUID()});
+      expect(JSON.stringify(exported)).not.toContain('correctIndices');expect(JSON.stringify(exported)).not.toContain('sourceCheckSources');expect(JSON.stringify(exported)).not.toContain('PRIVATE CONTEXT');
+      const draft=await prepare(row);let entered!:()=>void;const arrival=new Promise<void>(resolve=>entered=resolve),gate=new Promise<void>(resolve=>release=resolve);vi.mocked(chat.structured).mockImplementation(async(input:any,_schema:any,check:any)=>{entered();await gate;return fake(input,check);});pending=worker.runNext();await arrival;
+      const preview=await call('get','/privacy/account/deletion-preview');expect(preview.retainedChildren.map((child:any)=>child.id)).toContain(studentId);await call('post','/privacy/account/delete',{credential:closing.credential,requestKey:randomUUID(),confirmation:preview.confirmation,fingerprint:preview.fingerprint});release?.();await pending;pending=undefined;
+      await store.requestContext(()=>{expect(store.find('sourceCourseChecks',{id:draft.id})).toBeUndefined();expect(store.find('sourceCourseChecks',{id:check.id}).ownerUserId).not.toBe(closing.user.id);});
+      const kept=await call('get','/learning/source-courses/'+row.id,undefined,other);expect(kept.permissions.manage).toBe(false);expect(kept.journey.unitCheck.current.checkId).toBe(check.id);expect((await call('get','/learning/classroom/sessions/'+session.id,undefined,other)).answers).toEqual(answered.answers);await call('get',endpoint(row),undefined,closing,401);
+      const childPreview=await call('get','/privacy/students/'+studentId+'/deletion-preview',undefined,other);await call('post','/privacy/students/'+studentId+'/delete',{credential:other.credential,requestKey:randomUUID(),confirmation:childPreview.confirmation,fingerprint:childPreview.fingerprint},other);
+      await store.requestContext(()=>{expect(store.find('sourceCourseChecks',{id:check.id})).toBeUndefined();expect(store.find('sourceCourseCheckPublications',{id:row.id})).toBeUndefined();expect(store.find('classroomSessions',{id:session.id})).toBeUndefined();});
+    }finally{release?.();await pending;owner=originalOwner;}
+  });
 });

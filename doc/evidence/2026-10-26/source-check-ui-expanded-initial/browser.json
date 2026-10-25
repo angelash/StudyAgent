@@ -1,0 +1,442 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-source-checks\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/source-course-check.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-source-checks\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-source-checks/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-source-checks/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/source-check-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "source-course-check.spec.ts",
+      "file": "source-course-check.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:02.201Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:11.058Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5999,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:18.400Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+          "file": "source-course-check.spec.ts",
+          "line": 16,
+          "column": 39
+        },
+        {
+          "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:24.408Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+          "file": "source-course-check.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:29.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+          "file": "source-course-check.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:35.114Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+          "file": "source-course-check.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "recovery: two tabs retain a historical authoring command and compare the current source before editing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19321,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled>审阅答案并编辑</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled>审阅答案并编辑</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:42:187",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                      "column": 187,
+                      "line": 42
+                    },
+                    "snippet": "  40 | test('recovery: two tabs retain a historical authoring command and compare the current source before editing',async({page,context})=>{\n  41 |   test.setTimeout(150000);const{actor,row}=await enter(page),view=await readyByApi(actor,row);await page.reload();await candidate(page);let dropped=false;const keys:string[]=[];await page.route('**/checks/*/authoring',async route=>{keys.push(route.request().postDataJSON().requestKey);if(!dropped){dropped=true;await route.fetch();await route.abort('failed');}else await route.continue();});await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(panel(page).getByRole('alert')).toBeVisible();\n> 42 |   const other=await context.newPage();await other.goto('/studio/source-courses?course='+row.id);await candidate(other);await panel(other).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();const second=other.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await second.getByLabel('题组名称',{exact:true}).fill('另一个标签保存的当前稿');await second.getByRole('button',{name:'保存题组修改',exact:true}).click();await expect(second).toContainText('已读取服务端稿件');await second.getByRole('button',{name:'关闭题组编辑',exact:true}).click();\n     |                                                                                                                                                                                           ^\n  43 |   await page.reload();await panel(page).getByRole('button',{name:'按原参数核对操作',exact:true}).click();const editor=page.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await expect(editor).toContainText('这是原操作保存的旧版本');await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue(view.title);await expect(editor.getByRole('button',{name:'保存题组修改',exact:true})).toHaveCount(0);expect(keys[0]).toBe(keys[1]);await editor.getByRole('button',{name:'关闭题组编辑',exact:true}).click();await candidate(page);await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue('另一个标签保存的当前稿');await expect(editor.getByLabel('引用1来源',{exact:true})).toContainText('核查合成原文');await editor.locator('summary').filter({hasText:'对照引用1冻结原文'}).click();await expect(editor).toContainText('没有记录晚间');const close=editor.getByRole('button',{name:'关闭题组编辑',exact:true});await close.focus();await page.keyboard.press('Shift+Tab');await expect(editor.getByRole('button',{name:'导出本机题组稿',exact:true})).toBeFocused();await page.keyboard.press('Tab');await expect(close).toBeFocused();await page.keyboard.press('Escape');await expect(editor).toHaveCount(0);await expect(panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeFocused();await other.close();\n  44 | });\n  45 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                        "column": 187,
+                        "line": 42
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '资料课程独立核查', exact: true }).getByRole('button', { name: '审阅答案并编辑', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled>审阅答案并编辑</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  40 | test('recovery: two tabs retain a historical authoring command and compare the current source before editing',async({page,context})=>{\n  41 |   test.setTimeout(150000);const{actor,row}=await enter(page),view=await readyByApi(actor,row);await page.reload();await candidate(page);let dropped=false;const keys:string[]=[];await page.route('**/checks/*/authoring',async route=>{keys.push(route.request().postDataJSON().requestKey);if(!dropped){dropped=true;await route.fetch();await route.abort('failed');}else await route.continue();});await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(panel(page).getByRole('alert')).toBeVisible();\n> 42 |   const other=await context.newPage();await other.goto('/studio/source-courses?course='+row.id);await candidate(other);await panel(other).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();const second=other.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await second.getByLabel('题组名称',{exact:true}).fill('另一个标签保存的当前稿');await second.getByRole('button',{name:'保存题组修改',exact:true}).click();await expect(second).toContainText('已读取服务端稿件');await second.getByRole('button',{name:'关闭题组编辑',exact:true}).click();\n     |                                                                                                                                                                                           ^\n  43 |   await page.reload();await panel(page).getByRole('button',{name:'按原参数核对操作',exact:true}).click();const editor=page.getByRole('dialog',{name:'核查题组完整审阅',exact:true});await expect(editor).toContainText('这是原操作保存的旧版本');await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue(view.title);await expect(editor.getByRole('button',{name:'保存题组修改',exact:true})).toHaveCount(0);expect(keys[0]).toBe(keys[1]);await editor.getByRole('button',{name:'关闭题组编辑',exact:true}).click();await candidate(page);await panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true}).click();await expect(editor.getByLabel('题组名称',{exact:true})).toHaveValue('另一个标签保存的当前稿');await expect(editor.getByLabel('引用1来源',{exact:true})).toContainText('核查合成原文');await editor.locator('summary').filter({hasText:'对照引用1冻结原文'}).click();await expect(editor).toContainText('没有记录晚间');const close=editor.getByRole('button',{name:'关闭题组编辑',exact:true});await close.focus();await page.keyboard.press('Shift+Tab');await expect(editor.getByRole('button',{name:'导出本机题组稿',exact:true})).toBeFocused();await page.keyboard.press('Tab');await expect(close).toBeFocused();await page.keyboard.press('Escape');await expect(editor).toHaveCount(0);await expect(panel(page).getByRole('button',{name:'审阅答案并编辑',exact:true})).toBeFocused();await other.close();\n  44 | });\n  45 |\n    at F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts:42:187"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:31:54.632Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-06991-rrent-source-before-editing\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-06991-rrent-source-before-editing\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-06991-rrent-source-before-editing\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-source-checks\\test-results\\browser-product-acceptance\\source-course-check-recove-06991-rrent-source-before-editing\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-source-checks\\tests\\e2e\\source-course-check.spec.ts",
+                    "column": 187,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-4aa40831f02147edfd81",
+          "file": "source-course-check.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+          "file": "source-course-check.spec.ts",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+          "file": "source-course-check.spec.ts",
+          "line": 50,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T19:30:55.338Z",
+    "duration": 80638.209,
+    "expected": 6,
+    "skipped": 2,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

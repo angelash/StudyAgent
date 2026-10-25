@@ -7,12 +7,13 @@ import { ClassroomImage } from './board-step';
 import './practice-review.css';
 
 export function PracticePanel({ questions, answers, questionIndex, selected, hinted, hintReceipts = [], busy, standalone, lessonId, assessment,
-  contentStatus, notice, recovery, onDismiss, onCurrent, onLearn, onIndex, onSelect, onHint, onAnswer, onClose, onAssistant }: {
+  contentStatus, notice, recovery, onDismiss, onCurrent, onLearn, onIndex, onSelect, onHint, onAnswer, onClose, onAssistant,onSource }: {
   questions: ClassroomQuestion[]; answers: ClassroomAnswerReceipt[]; questionIndex: number;
   selected: Record<string, number[]>; hinted: string[]; busy: boolean; standalone: boolean; lessonId: string;
   hintReceipts?: ClassroomHintReceipt[];
   notice?: string; onDismiss?: () => void;
   recovery?: React.ReactNode;
+  onSource?: (key:string)=>void;
   assessment?: ClassroomLesson['assessment']; contentStatus?: ClassroomSessionView['contentStatus'];
   onCurrent?: () => void; onLearn?: (lessonId: string) => void;
   onIndex: (index: number) => void; onSelect: (id: string, index: number) => void; onHint: (id: string, level: number) => void;
@@ -65,7 +66,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
   const chosen = receipt ? classroomReceiptSelection(receipt) : selected[item.id] ?? [], multiple = item.selectionMode === 'multiple';
   return <section ref={panelRef} className={'cl-practice-layout' + (standalone ? ' cl-practice-full' : '')} aria-label="课堂练习题目" data-many={questions.length > 8}>
     {heading}{message}{recovery}{version}<div className="cl-practice-card">
-      {assessment && <p className="cl-unit-check-note">12个新情境 · 覆盖本单元各个主题 · 首次作答、提示与跳过分别记录</p>}
+      {assessment && <p className="cl-unit-check-note">{questions.length}个新情境 · 核查所选目标 · 首次作答、提示与跳过分别记录</p>}
       <div className="cl-practice-body" data-multiple={multiple} tabIndex={0} aria-label="题目作答区域，数字键选择，回车提交" onKeyDown={keyboard}><div className="cl-practice-prompt"><small>{multiple ? 'MULTIPLE CHOICE' : 'SINGLE CHOICE'} · {questionIndex + 1} / {questions.length}{item.topic ? ' · ' + item.topic.title : ''}</small><h2>{item.prompt}</h2>
       <p className="cl-choice-instruction">{multiple ? '选择所有符合项。本题须选全且不多选。' : '选择一个最合适的选项。'}</p>
       <p className="cl-choice-selection" role="status">{receipt ? '首次提交已锁定' : '当前选择'}：{chosen.length ? chosen.map(index => index + 1).join('、') : '未选'}{multiple && !receipt ? ' · 再次选择可取消' : ''}</p>
@@ -83,6 +84,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
       </label>; })}</fieldset></div>
       <div className="cl-practice-support">{receipt ? <div className="cl-answer-feedback" data-correct={receipt.correct} role="status">
         <b>{receipt.disposition === 'dont_know' ? '已记录不会，回到概念再核查' : receipt.skipped ? '已跳过，保留待复习' : receipt.correct ? '这次区分正确' : '对照概念，再看一次'}</b><p>{receipt.explanation}</p><small>{receipt.answerExposure==='authorship'?'你曾打开这份教学稿的答案，作答保留为已接触答案的学习记录，不计独立成功。':receipt.hintUsed ? receipt.hintLevel ? `本题使用过提示，已读${receipt.hintLevel}级提示，记为辅助作答。` : '本题使用过帮助，记为辅助作答。' : '已保留首次作答。'}</small>
+        {receipt.sourceReferences?.map((source,index)=><article className="cl-check-citation" key={index}><p>{source.quote}</p>{onSource&&<button onClick={()=>onSource(source.sourceKey)}>核对本题原文 {index+1} ↗</button>}</article>)}
       </div> : <><button className="cl-hint-button" disabled={busy || helpLevel >= helpCount} onClick={() => onHint(item.id, helpLevel + 1)}>{helpLevel >= helpCount ? '提示已读完' : helpLevel ? '再给我一个提示' : '先给我一个提示'}</button>
         {help.map(hint => <div className="cl-hint" key={hint.level}><small>第{hint.level}级 · {hint.level === 1 ? '判断方向' : '关键线索'}</small><p>{hint.text}</p></div>)}
         {hinted.includes(item.id) && !help.length && <p className="cl-legacy-help">此前使用过帮助，仍可逐级查看本题提示。</p>}</>}</div>

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "status": "local-increment-validated-full-browser-and-ci-pending",
+  "deployed": false,
+  "api": {
+    "passed": 1240,
+    "failed": 0,
+    "skipped": 43,
+    "files": 142
+  },
+  "postgres": {
+    "passed": 24,
+    "failed": 0,
+    "httpCases": 21,
+    "nativeStorageCases": 3,
+    "overlapWithFullApi": true
+  },
+  "focusedBrowser": {
+    "passed": 9,
+    "failed": 0,
+    "retry": 0,
+    "scope": "Before the final readable original-manuscript display and archived candidate readonly refinement; both are included in the pending full browser run."
+  },
+  "liveDefaultModel": {
+    "passed": true,
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "questions": 6,
+    "targets": 2,
+    "providerCalls": 3,
+    "initialWritingValidationFailures": 1,
+    "reviewDecision": "revised",
+    "reviewIssues": 2,
+    "receipt": "source-check-live/receipt.json"
+  },
+  "initialEvidence": [
+    "source-check-ui-initial/browser.json",
+    "source-check-ui-expanded-initial/browser.json",
+    "source-check-ui-focus-initial/browser.json",
+    "source-check-ui-archived-navigation-initial/browser.json"
+  ],
+  "limits": [
+    "The whole product and 72 requirements remain incomplete.",
+    "No complete browser or exact CI or daemon delivery for 120 yet.",
+    "No teacher content approval, real device, or long-term learning validation.",
+    "Exact normalized repetition and identical-definition exposure do not establish semantic item independence.",
+    "Current selection supports 2 to 6 lesson targets and single/multiple choice only.",
+    "Real model smoke used synthetic source teaching; the two source-check stages used the live model. Its first writing output failed the hint length schema and was repaired; the successful receipt is not a reliability estimate.",
+    "Synthetic PDF-shaped bytes in retention fixtures test original byte integrity, not parsing.",
+    "Counts for API, PostgreSQL and focused browser overlap and must not be added."
+  ]
+}

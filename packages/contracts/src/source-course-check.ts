@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { CourseSourceSnapshot } from './source-course';
 
 const text=(max:number)=>z.string().trim().min(1).max(max);
 export const sourceCourseCheckSelectionSchema=z.object({modelId:text(120),lessonIds:z.array(text(400)).min(2).max(6)}).strict().superRefine((value,context)=>{
@@ -22,4 +23,5 @@ export type SourceCourseCheckView={id:string;courseId:string;revision:number;cou
   task:{id:string;state:string;generation:number;version:number;errorCode:string|null}|null;
   createdAt:string;updatedAt:string;receipt?:{key:string;kind:string;actorUserId:string;effectiveRevision:number;at:string;contentFingerprint?:string;contentVersion?:number;publicationRevision?:number}};
 export type SourceCourseCheckAuthoring={view:SourceCourseCheckView;content:SourceCourseCheckContent;contentFingerprint:string;contentVersion:number;
+  sources?:CourseSourceSnapshot[];
   historical:boolean;originalContent:SourceCourseCheckContent|null;review:{decision:'pass'|'revised'|'uncertain';issues:string[];modelId:string;at:string;current:boolean}|null};

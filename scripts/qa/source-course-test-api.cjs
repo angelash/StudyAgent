@@ -16,6 +16,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
   const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
+  const sourceCheckReply=require('./source-check-fixture.cjs').installSourceCheckFixture(app);
   provider.reply=async input=>{
     if(!input.classroomBoard){
       let context;try{context=JSON.parse(input.context);}catch{return originalReply(input);}
@@ -32,6 +33,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     return{...payload,modelId:input.modelId,modelName:'Synthetic classroom fixture'};
   };
   provider.structured=async(input,schema,check,custom=true)=>{
+    const sourceCheck=await sourceCheckReply(input,check);if(sourceCheck)return sourceCheck;
     const guidance=await guidanceReply(input,check);if(guidance)return guidance;
     if(!custom)return original(input,schema,check,custom);
     const context=JSON.parse(input.context),stage=JSON.parse(input.message),count=(attempts.get(context.goal)??0)+1;attempts.set(context.goal,count);

@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-25T19:21:16.638Z",
+  "passed": true,
+  "scope": "One synthetic two-target source check; live writing and independent review, confirmation without authoring, frozen private classroom. Not a teacher review or reliability estimate.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "durationMs": 115224,
+      "errorCode": null
+    }
+  ],
+  "calls": [
+    {
+      "stage": "writing",
+      "durationMs": 30625,
+      "success": true,
+      "outputCharacters": 4813
+    },
+    {
+      "stage": "writing",
+      "durationMs": 46621,
+      "success": true,
+      "outputCharacters": 4777
+    },
+    {
+      "stage": "reviewing",
+      "durationMs": 37875,
+      "success": true,
+      "outputCharacters": 5018
+    }
+  ],
+  "validationFailures": [
+    {
+      "stage": "writing",
+      "code": "schema_validation_failed",
+      "issues": [
+        {
+          "path": [
+            "questions",
+            1,
+            "hints"
+          ],
+          "code": "too_big"
+        },
+        {
+          "path": [
+            "questions",
+            5,
+            "hints"
+          ],
+          "code": "too_big"
+        }
+      ]
+    }
+  ],
+  "contentReview": "pending",
+  "formalMeasurementEligible": false,
+  "modelId": "deepseek-v4-flash",
+  "questionCount": 6,
+  "targetCount": 2,
+  "modelName": "DeepSeek V4.1 Flash",
+  "review": {
+    "decision": "revised",
+    "issueCount": 2,
+    "current": true
+  },
+  "privateAnswersStripped": true,
+  "unexposedConfirmation": true
+}

@@ -118,7 +118,7 @@ export class ClassroomService {
         if(previous)return this.view(previous);
         check=publishedSourceCheck(this.store,course,command.sourceCheckId);if(!check)throw new ConflictException('这份核查已撤回、换版或暂不可用，请返回课程查看当前题组');
         lesson=sourceCheckLesson(check);generatedKeys=sourceCheckKeys(check,lesson);courseId=course.id;studentId=course.studentId;
-        authoringAnswerExposure=Boolean(check.authoringExposures?.some(exposure=>exposure.actorId===user.id&&exposure.contentFingerprint===check!.contentFingerprint));
+        authoringAnswerExposure=sourceCheckExposed(this.store,{ownerUserId:user.id,courseId:course.id,sourceCheckId:check.id,sourceCheckFingerprint:check.contentFingerprint!});
       }else{
       if(course.status!=='active')throw new ConflictException('请先确认课程，已归档课程只能查看已有课堂记录');
       const index=course.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===command.lessonId)??-1;

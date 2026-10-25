@@ -25,6 +25,7 @@ import { ClassroomToolTour } from './tool-tour';
 import { useVoicePreview } from './voice-preview';
 import { usePracticeDraft } from './practice-draft';
 import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
+import { FrozenCheckSource } from './check-source';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
   return <span className="cl-ring" data-state={state} aria-label={{ new: '未开始', started: '已接触', viewed: '讲解已读', correct: '本题答对' }[state]} />;
@@ -56,18 +57,19 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     try {const value=await apiRequest<ClassroomCatalog>('/learning/classroom/catalog',{signal:controller.signal});if(!controller.signal.aborted)setCatalog(value);}
     catch (caught) {if(!controller.signal.aborted)setError((caught as Error).message);}
   }, [identity]);
-  const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string, history: 'push' | 'none' = 'push', assistance = false, savedSessionId?: string, useCurrentVersion = false, sourceCourseId?:string) => {
+  const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string, history: 'push' | 'none' = 'push', assistance = false, savedSessionId?: string, useCurrentVersion = false, sourceCourseId?:string,sourceCheckId?:string) => {
     loadController.current?.abort(); const controller = new AbortController(); loadController.current = controller;
     setLoading(true); setError('');
     try {
       const row = savedSessionId ? await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + encodeURIComponent(savedSessionId), { signal: controller.signal }) :
         await apiRequest<ClassroomSessionView>('/learning/classroom/sessions', { method: 'POST',
-          signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId } : {}), ...(sourceCourseId?{sourceCourseId}:{}), ...(useCurrentVersion ? { useCurrentVersion: true } : {}) }) });
+          signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId } : {}), ...(sourceCourseId?{sourceCourseId}:{}),...(sourceCheckId?{sourceCheckId}:{}), ...(useCurrentVersion ? { useCurrentVersion: true } : {}) }) });
       if (controller.signal.aborted) return;
-      if (lessonId && row.lessonId !== lessonId || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
+      if (lessonId && row.lessonId !== lessonId || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId||sourceCheckId&&row.sourceCheckId!==sourceCheckId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
       setInitialTab(tab); setHelp(assistance); setSession(row); studio.current = row.studioCourseId;sourceCourse.current=row.sourceCourseId;
       const query = new URLSearchParams(window.location.search); query.set('lesson', row.lessonId); query.set('session', row.id); query.set('tab', tab); if (row.studioCourseId) query.set('studioCourseId', row.studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
       if(row.sourceCourseId)query.set('sourceCourseId',row.sourceCourseId);else query.delete('sourceCourseId');
+      if(row.sourceCheckId)query.set('sourceCheckId',row.sourceCheckId);else query.delete('sourceCheckId');
       if(history==='push') window.history.pushState(null, '', '/studio/classroom?' + query);
       else window.history.replaceState(null, '', '/studio/classroom?' + query);
     } catch (caught) { if (!controller.signal.aborted) setError((caught as Error).message); }
@@ -81,7 +83,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
       const params = new URLSearchParams(window.location.search), id = params.get('lesson');
       const requestedUnit = Number(params.get('unit') ?? 0); if (requestedUnit >= 0 && requestedUnit < 5) setUnitIndex(requestedUnit);
       setPanel(params.get('panel') === 'materials' || params.get('panel') === 'practices' ? params.get('panel') as 'materials' | 'practices' : 'units');
-      if (id || params.get('session')) void open(id ?? '', params.get('tab') === 'practice' ? 'practice' : params.get('tab') === 'project' ? 'project' : 'history', params.get('studioCourseId') ?? undefined, 'none', params.get('help') === '1', params.get('session') ?? undefined, false,params.get('sourceCourseId')??undefined);
+      if (id || params.get('session')) void open(id ?? '', params.get('tab') === 'practice' ? 'practice' : params.get('tab') === 'project' ? 'project' : 'history', params.get('studioCourseId') ?? undefined, 'none', params.get('help') === '1', params.get('session') ?? undefined, false,params.get('sourceCourseId')??undefined,params.get('sourceCheckId')??undefined);
       else { loadController.current?.abort(); setLoading(false); setSession(null); void refresh(); }
     };
     restore(); window.addEventListener('popstate', restore);
@@ -106,9 +108,9 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
   if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><Link href="/parent/login">登录学习工作台 →</Link></div>;
   if (session && session.ownerUserId !== identity.id) return <div className="cl-loading" role="status">正在切换当前账号的课堂…</div>;
-  if (session) return <ClassroomSession key={identity.id + ':' + session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
+  if (session) return <>{error&&<aside className="cl-session-open-notice" role="alert" aria-label="课堂切换未完成"><span>{error}</span><button onClick={()=>setError('')}>关闭课堂切换提示</button></aside>}{loading&&<aside className="cl-session-open-notice" role="status">正在读取目标课时，当前记录继续保留…</aside>}<ClassroomSession key={identity.id + ':' + session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
     unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session.lessonId)) || session.lessonId === 'unit-exam:' + unit.id)}
-    onClose={close} onNext={(id, tab = 'history', useCurrentVersion = false) => void open(id, tab, studio.current, 'push', false, undefined, useCurrentVersion,sourceCourse.current)} />;
+    onClose={close} onNext={(id, tab = 'history', useCurrentVersion = false) => void open(id, tab, studio.current, 'push', false, undefined, useCurrentVersion,sourceCourse.current)} /></>;
   const course = catalog?.course, unit = course?.units[unitIndex];
   const progress = new Map(catalog?.progress.map(row => [row.lessonId, row]) ?? []);
   const readingProgress = catalog?.readingProgress ?? catalog?.progress ?? [];
@@ -181,6 +183,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);
   const [readingReply, setReadingReply] = React.useState(''), [award, setAward] = React.useState(false);
   const [replySubtitle, setReplySubtitle] = React.useState('');
+  const [checkSource,setCheckSource]=React.useState('');
   const [replyReadingMode,setReplyReadingMode]=React.useState<'audio'|'text'>('audio');
   const [replyUnit,setReplyUnit]=React.useState<{messageId:string;unitId:string|null}|null>(null),[expandedReply,setExpandedReply]=React.useState('');
   const replyAudio = React.useRef<{ abort: AbortController; audio: HTMLAudioElement | null; url: string } | null>(null);
@@ -481,12 +484,14 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     </div>} questions={lesson.questions} answers={session.answers} questionIndex={questionIndex}
     selected={practiceDraft.choices} hinted={hinted} hintReceipts={session.hintReceipts} busy={busy || !practiceDraft.ready || !!practiceDraft.pending} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
     onSelect={practiceDraft.select}
+    onSource={session.sourceCheckId?key=>{pause();setCheckSource(key);}:undefined}
     assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
     onHint={(id,level) => void hint(id,level)} onAnswer={disposition => void answer(disposition)}
     onClose={() => setExit(true)} onAssistant={() => { setShowChat(!showChat); setTab('history'); }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomStepUnits(session,current)[session.sentenceCursor ?? 0]?.text : '准备好后，点击 ▶ 开始。');
   return <main className="cl-room" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>
     {standalonePractice && practice(true)}
+    {checkSource&&<FrozenCheckSource sessionId={session.id} sourceKey={checkSource} onClose={()=>setCheckSource('')}/>}
     {visualOpen&&<VisualPanel session={session} visuals={visuals} onClose={()=>setVisualOpen(false)}/>}
     <section className="cl-board-area" aria-label="教学白板"><div className="cl-titlebar"><button aria-label="离开课堂" onClick={() => { pause(); setExit(true); }}><ClassroomIcon name="close"/></button>
       <button className="cl-title" data-classroom-tour="connection" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
@@ -518,7 +523,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         }}>
           {tab === 'history' && <>
             {lesson.generatedNotice&&<p className="cl-source-notice">{lesson.generatedNotice}</p>}
-            {lesson.sourceReferences?.length&&<details className="cl-source-references"><summary>核对本课来源（{lesson.sourceReferences.length}）</summary>{lesson.sourceReferences.map((reference,index)=><article key={index}><Link href={reference.href}>{reference.title} · 来源 {reference.page} ↗</Link><p>{reference.quote}</p></article>)}</details>}
+            {lesson.sourceReferences?.length&&<details className="cl-source-references"><summary>核对本课来源（{lesson.sourceReferences.length}）</summary>{lesson.sourceReferences.map((reference,index)=><article key={index}>{session.sourceCheckId?<button onClick={()=>{pause();setCheckSource(reference.sourceKey);}}>{reference.title} · 来源 {reference.page} ↗</button>:<Link href={reference.href}>{reference.title} · 来源 {reference.page} ↗</Link>}<p>{reference.quote}</p></article>)}</details>}
             {standalonePractice && <p className="cl-practice-assistant-note">需要提示或解释时可以问我。我会帮你分析概念和条件，请先保留自己的判断。</p>}
             {!standalonePractice && !session.revealed && <div className="cl-history-empty"><small>SESSION OUTLINE</small><h2>{lesson.title}</h2><p>{lesson.objective}</p><ol>{lesson.steps.map(step => <li key={step.id}>{step.title}</li>)}</ol></div>}
             {!standalonePractice && lesson.steps.slice(0, session.revealed).map((step, index) => <article className="cl-teacher-turn" key={step.id} data-current={step.id === current.id}><small>{index === 0 ? time(session.createdAt) : 'TEACHER'}</small>{classroomStepUnits(session,step).slice(0, step.id === current.id ? (session.sentenceCursor ?? 0) + 1 : undefined).map((unit, line) => <p key={unit.id} className="cl-transcript-line">{unit.text}</p>)}

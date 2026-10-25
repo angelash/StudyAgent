@@ -2,12 +2,12 @@
 import * as React from 'react';
 
 /** A modal boundary with keyboard containment and focus restoration, including nested confirmations. */
-export function WorkspaceDialog({ children, onClose, busy = false }: { children: React.ReactNode; onClose: () => void; busy?: boolean }) {
+export function WorkspaceDialog({ children, onClose, busy = false,returnFocus }: { children: React.ReactNode; onClose: () => void; busy?: boolean;returnFocus?:HTMLElement|null }) {
   const ref = React.useRef<HTMLDivElement>(null), close = React.useRef(onClose), locked = React.useRef(busy), pendingClose = React.useRef(false);
   close.current = onClose; locked.current = busy;
   React.useEffect(() => { if (!busy && pendingClose.current) { pendingClose.current = false; close.current(); } }, [busy]);
   React.useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null, overflow = document.body.style.overflow;
+    const previous = returnFocus??document.activeElement as HTMLElement | null, overflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const focusable = () => [...(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href],[tabindex="0"]') ?? [])].filter(element => element.getClientRects().length > 0);
     (focusable()[0] ?? ref.current)?.focus();

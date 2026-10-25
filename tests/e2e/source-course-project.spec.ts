@@ -39,7 +39,7 @@ async function leaveClassroom(page:Page,standalone=false){
 }
 
 test('a published source course opens one real project, completes all frozen stages and returns to its original course',async({page})=>{
-  test.setTimeout(180000);const{actor,row}=await enter(page);await expect(page.getByLabel('资料课程项目',{exact:true})).toContainText('尚未设置独立单元核查');expect((await call(actor,'GET','/learning/projects/catalog?sourceCourseId='+row.id)).projects).toHaveLength(0);
+  test.setTimeout(180000);const{actor,row}=await enter(page);await expect(page.getByRole('region',{name:'资料课程独立核查',exact:true})).toContainText('尚未设置独立核查');expect((await call(actor,'GET','/learning/projects/catalog?sourceCourseId='+row.id)).projects).toHaveLength(0);
   expect(row.lessons).toHaveLength(2);
   for(let index=0;index<row.lessons.length;index++){
     const card=page.locator('.sc-lesson').nth(index);await card.getByRole('link',{name:'开始讲解 →',exact:true}).click();
