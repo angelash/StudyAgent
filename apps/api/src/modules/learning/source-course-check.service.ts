@@ -69,15 +69,24 @@ export class SourceCourseCheckService{
     const command=validate(z.object({expectedRevision:revision,generation:z.number().int().min(1),taskVersion:z.number().int().min(1),requestKey:key}).strict(),input),hash=sourceCheckDigest({action,...command,requestKey:undefined});
     return this.store.transaction(async()=>{
       const {course,row}=this.record(user,courseId,id),prior=row.commands.find(item=>item.key===command.requestKey);if(prior){if(prior.hash!==hash||prior.kind!==action)throw new ConflictException('请求标识已用于不同操作');return this.view(row,undefined,prior);}
-      const task=await this.store.tasks.get(row.taskId);if(!task||task.generation!==command.generation||task.version!==command.taskVersion||row.revision!==command.expectedRevision)throw new ConflictException('题组或任务已更新，请读取原操作状态后继续');
+      const task=await this.store.tasks.get(row.taskId);
+      if(!task||task.generation!==command.generation)throw new ConflictException('题组或任务已更新，请读取原操作状态后继续');
+      const exact=task.version===command.taskVersion&&row.revision===command.expectedRevision;
+      // Starting/checkpointing this generation must not invalidate its original
+      // cancellation intent. A later control or a newer generation still fences it.
+      const progressOnly=action==='cancel'&&command.taskVersion<=task.version&&command.expectedRevision<=row.revision&&
+        ['queued','generating'].includes(row.status)&&['queued','running','retry_wait'].includes(task.state)&&
+        !row.commands.some(item=>item.effectiveRevision>command.expectedRevision&&['cancel','retry'].includes(item.kind));
+      if(!exact&&!progressOnly)throw new ConflictException('题组或任务已更新，请读取原操作状态后继续');
       if(['ready','published','superseded','withdrawn'].includes(row.status))throw new ConflictException('候选已完成生成，请在审阅流程中处理');
+      if(action==='cancel'&&(row.status==='cancel_requested'||task.state==='cancel_requested'))throw new ConflictException('原任务正在取消，请查看原操作状态');
       reconcileSourceCheck(row,task);
       if(action==='retry'){
         if(!['failed','cancelled'].includes(task.state))throw new ConflictException('原任务还未结束');
         const prepared=prepareSourceCourseCheck(course,{modelId:row.prepared.modelId,lessonIds:row.prepared.targets.map(target=>target.lessonId)});if(prepared.inputFingerprint!==row.prepared.inputFingerprint)throw new ConflictException('原课程已变化，请准备新的核查定义');
         row.authorization=captureSourceCheckAuthorization(this.store,this.students,user,course,session);row.status='queued';
       }else{if(!active.has(task.state))throw new ConflictException('原任务已经结束');row.status=task.state==='running'||task.state==='cancel_requested'?'cancel_requested':'cancelled';}
-      await this.store.controlTask({id:task.id,action,expectedVersion:command.taskVersion,actorId:user.id});row.revision++;row.updatedAt=new Date().toISOString();const receipt={key:command.requestKey,kind:action,hash,effectiveRevision:row.revision,at:row.updatedAt,actorUserId:user.id};row.commands.push(receipt);
+      await this.store.controlTask({id:task.id,action,expectedVersion:task.version,actorId:user.id});row.revision++;row.updatedAt=new Date().toISOString();const receipt={key:command.requestKey,kind:action,hash,effectiveRevision:row.revision,at:row.updatedAt,actorUserId:user.id};row.commands.push(receipt);
       const provisional={...task,state:action==='retry'?'queued':row.status==='cancelled'?'cancelled':'cancel_requested',generation:task.generation+(action==='retry'?1:0),version:task.version+1,errorCode:null} as TaskRow;
       return this.view(row,provisional,receipt);
     });
