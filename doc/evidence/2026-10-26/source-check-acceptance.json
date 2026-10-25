@@ -1,13 +1,14 @@
 {
   "schemaVersion": 1,
-  "passed": false,
-  "status": "all-regression-and-exact-ci-passed-awaiting-daemon",
-  "deployed": false,
+  "passed": true,
+  "status": "runtime-delivered",
+  "deployed": true,
   "focusedBrowser": {
     "passed": 9,
     "failed": 0,
     "retry": 0,
-    "scope": "Before the final readable original-manuscript display and archived candidate readonly refinement; both are included in the pending full browser run."
+    "scope": "Final controlled generation cancellation and all source check UI cases; part of the 217 final browser tests.",
+    "report": "source-check-cancellation/browser.json"
   },
   "liveDefaultModel": {
     "passed": true,
@@ -29,7 +30,6 @@
   ],
   "limits": [
     "The whole product and 72 requirements remain incomplete.",
-    "Complete local browser and fresh exact CI passed; daemon delivery for 120 is pending.",
     "No teacher content approval, real device, or long-term learning validation.",
     "Exact normalized repetition and identical-definition exposure do not establish semantic item independence.",
     "Current selection supports 2 to 6 lesson targets and single/multiple choice only.",
@@ -159,10 +159,7 @@
       "platform": "Linux",
       "log": "application.log.gz"
     },
-    "deployed": false,
-    "limits": [
-      "CI success is not a daemon delivery or teacher acceptance."
-    ]
+    "receipt": "source-check-ci-cancellation/receipt.json"
   },
   "fullBrowserFinal": {
     "passed": 217,
@@ -172,5 +169,15 @@
     "durationMs": 1018374.6799999999,
     "head": "7d606a456300129ee73c8117205368607aa58ca2",
     "report": "source-check-cancellation/full-browser.json"
+  },
+  "runtime": {
+    "receipt": "source-check-runtime.json",
+    "webBuildId": "j9rxRUAmWJpdihvwXHLj8",
+    "httpChecks": 69,
+    "voiceSamples": 6,
+    "observedIntervalMs": 90185,
+    "schemaVersion": 15,
+    "configurationPreserved": true,
+    "assetsIncluded": false
   }
 }
