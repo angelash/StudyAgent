@@ -21,16 +21,8 @@ import { ReplyBoard } from './reply-board';
 import { waitForReplyReading, playReplyAudio } from './reply-reading';
 import { replyBoardMarkdown } from './reply-board-notes';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
-
-const tour = [
-  ['连接与断点', '左上角显示课堂状态。离开后再回来，会恢复已经保存的讲解位置。'],
-  ['笔记与回顾', '导出已讲内容与插问笔记；选用参考图后会生成可离线打开的 HTML，也可以打印保存 PDF。'],
-  ['音色与倍速', '设置中切换音色、语速、白板字体与点阵。声音按句播放，句子结束后继续下一步。'],
-  ['静音阅读', '静音后老师仍会按阅读节奏展示板书；也可以用下一步按自己的节奏学习。'],
-  ['随时插问', '输入问题会暂停讲解。麦克风只在你主动开启时工作，转写后仍由你确认发送。'],
-  ['立即停止', '停止会中断声音、待返回请求和自动步进。点击继续即可回到原来的讲解步骤。'],
-  ['对话历史', '老师讲过的内容和你的插问都在右侧。点击板书标题可定位对应内容。'],
-];
+import { ClassroomToolTour } from './tool-tour';
+import { useVoicePreview } from './voice-preview';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
   return <span className="cl-ring" data-state={state} aria-label={{ new: '未开始', started: '已接触', viewed: '讲解已读', correct: '本题答对' }[state]} />;
@@ -171,7 +163,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [speed, setSpeed] = React.useState(1), [voice, setVoice] = React.useState(initial.speech.defaultVoice ?? '');
   const [dots, setDots] = React.useState(true), [handwriting, setHandwriting] = React.useState(true), [zoom, setZoom] = React.useState(100);
   const [page, setPage] = React.useState(0), [chatWidth, setChatWidth] = React.useState(360), [mobile, setMobile] = React.useState<'board' | 'chat'>('board');
-  const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourIndex, setTourIndex] = React.useState<number | null>(null);
+  const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourOpen, setTourOpen] = React.useState(false);
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
   const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [operationBusy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
@@ -188,6 +180,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const cloudAudio = React.useRef<HTMLAudioElement | null>(null), cache = React.useRef(new Map<string, Blob>());
   const playEpoch=React.useRef(0),narrationAbort=React.useRef<AbortController|null>(null);
   const historyElement = React.useRef<HTMLDivElement | null>(null), following = React.useRef(true);
+  const tourLayout = React.useRef<{ mobile: 'board'|'chat'; showChat: boolean; trigger: HTMLElement | null } | null>(null);
   const speedRef = React.useRef(speed), voiceRef = React.useRef(voice), mutedRef = React.useRef(muted), mounted = React.useRef(true);
   speedRef.current = speed; voiceRef.current = voice; mutedRef.current = muted;
   const lesson = session.lesson, current = lesson.steps[session.cursor], pageCount = Math.max(1, Math.ceil(session.revealed / 3));
@@ -199,6 +192,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [intent,setIntent]=React.useState<ClassroomTurnIntent>('question');
   const turns=useClassroomTurns({session,onSession:receive,onNotice:setNotice});
   const busy=operationBusy||captions.busy||turns.working||turns.active;
+  const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed });
   React.useEffect(()=>{if(!settings)printOperation.current?.abort();},[settings]);
   React.useEffect(()=>()=>printOperation.current?.abort(),[]);
   async function printNotes(){const operation=new AbortController();printOperation.current?.abort();printOperation.current=operation;setPrintBusy(true);try{
@@ -225,7 +219,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       if (typeof preferences.dots === 'boolean') setDots(preferences.dots);
       if (typeof preferences.handwriting === 'boolean') setHandwriting(preferences.handwriting);
       if (initial.speech.voices.some(voice => voice.id === preferences.voice)) setVoice(preferences.voice);
-      if (!localStorage.getItem('studyagent.classroom.tour')) setTourIndex(0);
+      if (!standalonePractice && !localStorage.getItem('studyagent.classroom.tour')) openTour();
     } catch { /* Optional UI preferences never prevent a lesson. */ }
     setPage(Math.max(0, Math.floor(initial.cursor / 3)));
     return () => { mounted.current = false; recognition.current?.abort(); replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); };
@@ -440,7 +434,24 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     const url = URL.createObjectURL(new Blob([source], { type: 'text/markdown;charset=utf-8' })), anchor = document.createElement('a');
     anchor.href = url; anchor.download = lesson.title + '.md'; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  function finishTour() { setTourIndex(null); try { localStorage.setItem('studyagent.classroom.tour', 'done'); } catch { /* Optional. */ } }
+  function openTour() {
+    pause(); voicePreview.stop();
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    tourLayout.current = { mobile, showChat, trigger: trigger?.closest('.cl-settings') ? document.querySelector<HTMLElement>('[data-classroom-tour="settings"]') : trigger };
+    setSettings(false); setTourOpen(true);
+  }
+  function tourStep(index: number | null) {
+    if (index === null) return;
+    if (index >= 4) setShowChat(true);
+    if (innerWidth <= 700) setMobile(index >= 4 ? 'chat' : 'board');
+  }
+  function finishTour() {
+    pause(); setTourOpen(false);
+    const layout = tourLayout.current;
+    if (layout) { setMobile(layout.mobile); setShowChat(layout.showChat); requestAnimationFrame(() => { if (layout.trigger?.isConnected) layout.trigger.focus(); }); }
+    tourLayout.current = null;
+    try { localStorage.setItem('studyagent.classroom.tour', 'done'); } catch { /* Optional. */ }
+  }
   const questionItem = lesson.questions[questionIndex], receipt = session.answers.find(answer => answer.questionId === questionItem?.id);
   const nextLesson = lesson.nextLessonId?{id:lesson.nextLessonId}:unit?.lectures.flatMap(lecture => lecture.lessons).find((_, index, list) => list[index - 1]?.id === lesson.id);
   function practice(standalone: boolean) { return <PracticePanel questions={lesson.questions} answers={session.answers} questionIndex={questionIndex}
@@ -454,10 +465,10 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     {standalonePractice && practice(true)}
     {visualOpen&&<VisualPanel session={session} visuals={visuals} onClose={()=>setVisualOpen(false)}/>}
     <section className="cl-board-area" aria-label="教学白板"><div className="cl-titlebar"><button aria-label="离开课堂" onClick={() => { pause(); setExit(true); }}><ClassroomIcon name="close"/></button>
-      <button className="cl-title" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
+      <button className="cl-title" data-classroom-tour="connection" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
       <div className="cl-board-tools"><button aria-label="缩小白板" onClick={() => setZoom(Math.max(50, zoom - 10))}>−</button><button aria-label="重置缩放" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="放大白板" onClick={() => setZoom(Math.min(180, zoom + 10))}>＋</button><i/>
         <button aria-label="上一页白板" onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => setPage(Math.min(pageCount - 1, page + 1))} disabled={page + 1 >= pageCount}>›</button><i/>
-        <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button aria-label="导出课堂笔记" onClick={()=>void exportNotes()}><ClassroomIcon name="share"/></button><button aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
+        <button className="cl-visual-tool" aria-label="补一张讲解图" title="为当前讲解补一张参考图" disabled={!session.revealed||standalonePractice} onClick={()=>{pause();setVisualOpen(true);}}><span aria-hidden="true">▧</span>配图</button><button data-classroom-tour="notes" aria-label="导出课堂笔记" onClick={()=>void exportNotes()}><ClassroomIcon name="share"/></button><button data-classroom-tour="settings" aria-label="课堂设置" onClick={() => setSettings(true)}><ClassroomIcon name="settings"/></button><button aria-label="切换对话面板" onClick={() => setShowChat(!showChat)}><ClassroomIcon name="panel"/></button></div>
       <div className="cl-mobile-tabs"><button onClick={() => setMobile('board')} data-active={mobile === 'board'}>白板</button><button onClick={() => { following.current = true; setMobile('chat'); }} data-active={mobile === 'chat'}>对话与练习</button></div>
       <div className="cl-board-scroll"><div className="cl-board-paper" data-handwriting={handwriting} style={{ zoom: zoom / 100 }}>
         {session.revealed === 0 && <div className="cl-board-welcome"><span>WELCOME TO YOUR WHITEBOARD</span><h1>{lesson.title}</h1><p>{lesson.objective}</p><button onClick={() => { pause(); setPlaying(true); }}>▶ 开始学习</button><small>概念 · 生活案例 · 误区辨析 · 新情境检查</small></div>}
@@ -467,16 +478,16 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           {visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}
         </section>)}
         {session.messages.filter(message => message.board?.page === page).map(message => <section className="cl-board-step cl-ai-board" key={message.id} id={'board-' + message.id}>
-          <span className="cl-step-phase">AI 补充 · 回到问题本身</span><ReplyBoard message={message}
+          <span className="cl-step-phase">AI 补充 · 回到问题本身</span><ReplyBoard message={message} onInteract={pause}
             throughUnitId={replyUnit?.messageId===message.id&&expandedReply!==message.id?replyUnit.unitId:undefined} onExpand={()=>setExpandedReply(message.id)}/></section>)}
       </div></div>
-      <footer className="cl-board-footer"><button aria-label={muted ? '开启讲解声音' : '静音讲解'} onClick={() => { pause(); setMuted(!muted); }} disabled={!session.speech.available}><ClassroomIcon name={muted ? "muted" : "volume"}/></button>
+      <footer className="cl-board-footer"><button data-classroom-tour="sound" aria-label={muted ? '开启讲解声音' : '静音讲解'} onClick={() => { pause(); setMuted(!muted); }} disabled={!session.speech.available}><ClassroomIcon name={muted ? "muted" : "volume"}/></button>
         <p className="cl-subtitle" aria-live="off" data-sentence={session.sentenceCursor ?? 0}>{subtitle}</p></footer>
     </section>
     {showChat && <><div className="cl-divider" role="separator" aria-label="调整对话面板宽度" aria-orientation="vertical" aria-valuenow={chatWidth} aria-valuemin={320} aria-valuemax={650} tabIndex={0}
       onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); }} onPointerMove={event => { if (event.buttons === 1) setChatWidth(Math.max(320, Math.min(650, window.innerWidth - event.clientX - 20))); }}
       onKeyDown={event => { if (event.key === 'ArrowLeft') setChatWidth(Math.min(650, chatWidth + 20)); if (event.key === 'ArrowRight') setChatWidth(Math.max(320, chatWidth - 20)); }}/>
-      <aside className="cl-chat-panel"><header><b><ClassroomIcon name="chat"/> Chat history</b><button aria-label="隐藏对话面板" onClick={() => setShowChat(false)}><ClassroomIcon name="close" size={18}/></button></header>
+      <aside className="cl-chat-panel"><header data-classroom-tour="history"><b><ClassroomIcon name="chat"/> Chat history</b><button aria-label="隐藏对话面板" onClick={() => setShowChat(false)}><ClassroomIcon name="close" size={18}/></button></header>
         <div className="cl-chat-tabs" role="tablist" aria-label="课堂内容">{(['history', 'practice', 'project'] as const).map((value, index) => <button key={value} role="tab" aria-selected={tab === value} onClick={() => { setTab(value); if (value !== 'history') setPlaying(false); }}>{['讲解与插问', '课堂练习', '单元项目'][index]}</button>)}</div>
         <div className="cl-history" aria-label="课堂对话历史" ref={historyElement} onScroll={event => {
           const target = event.currentTarget; following.current = target.scrollHeight - target.scrollTop - target.clientHeight < 100;
@@ -506,24 +517,34 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           <span>{session.cursor + 1} / {lesson.steps.length}</span><button onClick={() => void advance()} disabled={busy}>下一步 ›</button>{session.status === 'completed' && nextLesson && <button onClick={() => onNext(nextLesson.id)}>下一课 →</button>}</div>
         <ClassroomTurnStatus state={turns} onReturn={turn=>void returnToTurn(turn)} onEdit={command=>{setQuestion(command.message);setIntent(command.intent);setModelId(command.modelId);}}/>
         <form className="cl-input" onSubmit={event => void ask(event)}><ClassroomIntentPicker value={intent} disabled={busy} onChange={(value,prompt)=>{pause();setIntent(value);if(prompt)setQuestion(prompt);}}/><div className="cl-compose-row"><textarea aria-label="向课堂老师提问" value={question} placeholder="Ask a question…" maxLength={2000} onChange={event => { if (playing) setPlaying(false); setQuestion(event.target.value); }}/>
-          <button type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={microphone} data-listening={listening}>♩</button>
-          <button type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
+          <button data-classroom-tour="microphone" type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={microphone} data-listening={listening}>♩</button>
+          <button data-classroom-tour="playback" type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
           {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy||!turns.loaded||Boolean(turns.uncertain)}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
           <XiaojiuModelPicker catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>
       </aside></>}
     {!showChat && !standalonePractice && <button className="cl-show-chat" onClick={() => setShowChat(true)}>打开对话与控制 ▤</button>}
     {settings && <WorkspaceDialog onClose={()=>{pause();setSettings(false);}}><div className="cl-modal-backdrop"><section className="cl-settings" role="dialog" aria-modal="true" aria-label="课堂设置"><header><h2>Session settings</h2><button aria-label="关闭课堂设置" onClick={() => setSettings(false)}>×</button></header>
-      <h3>VOICE OPTIONS <span>{session.speech.available ? 'AI 语音' : '文字讲解'}</span></h3><div className="cl-voice-grid">{session.speech.voices.map((item, index) => <button key={item.id} data-active={voice === item.id} onClick={() => setVoice(item.id)}><span className="cl-voice-bars">▥</span><div><b>{item.label}</b><small>{['耐心清晰，适合概念讲解', '自然温暖，适合日常学习', '柔和舒缓，适合长时间聆听', '轻快明亮，重点更鲜明', '平稳知性，适合系统回顾'][index % 5]}</small></div>{voice === item.id && <i>✓</i>}</button>)}</div>
+      <h3>VOICE OPTIONS <span>{session.speech.available ? session.speech.voices.find(item => item.id === voice)?.label ?? 'AI 语音' : '文字讲解'}</span></h3><div className="cl-voice-grid" role="radiogroup" aria-label="课堂音色">{session.speech.voices.map((item, index) => <div className="cl-voice-choice" key={item.id} data-active={voice === item.id}>
+        <button className="cl-voice-select" role="radio" aria-checked={voice === item.id} onClick={() => setVoice(item.id)} onKeyDown={event => {
+          if (!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(event.key)) return; event.preventDefault();
+          const next = (index + (['ArrowRight','ArrowDown'].includes(event.key) ? 1 : -1) + session.speech.voices.length) % session.speech.voices.length;
+          setVoice(session.speech.voices[next].id); event.currentTarget.closest('.cl-voice-grid')?.querySelectorAll<HTMLElement>('[role="radio"]')[next]?.focus();
+        }}><span className="cl-voice-wave" aria-hidden="true">{[5,10,14,8,12].map((height,index) => <i key={index} style={{height}}/>)}</span><span><b>{item.label}</b><small>{['耐心清晰，适合概念讲解', '平静自然，适合持续聆听', '轻快明亮，重点更鲜明', '柔和舒缓，适合从容阅读', '平稳知性，适合系统回顾', '活泼有力，适合互动学习'][index % 6]}</small></span></button>
+        <button className="cl-voice-preview" aria-label={(voicePreview.active === item.id ? '停止试听：' : '试听音色：') + item.label} disabled={!session.speech.available || session.revealed <= session.cursor} onClick={() => void voicePreview.toggle(item.id)}><ClassroomIcon name={voicePreview.active === item.id ? 'stop' : 'play'} size={12}/></button>
+        {voice === item.id && <i aria-hidden="true">✓</i>}</div>)}</div>
+      {session.speech.available && <p className="cl-preview-notice" role="status">{voicePreview.notice || (session.revealed > session.cursor ? '试听已出现的当前句，所选音色与学习进度保持原样。' : '开始讲解后，可以试听已出现的当前句。')}</p>}
       {!session.speech.available && <p>当前未配置云端语音，课程仍可逐步阅读。</p>}
-      <h3>VOICE SPEED <span>{speed}×</span></h3><div className="cl-speed-grid">{[0.5, 0.75, 1, 1.25, 1.5, 2].map(value => <button key={value} data-active={speed === value} onClick={() => setSpeed(value)}>{value}×</button>)}</div>
+      <h3>VOICE SPEED <span>{speed}×</span></h3><input className="cl-speed-slider" type="range" min="0" max="5" step="1" aria-label="课堂语速" aria-valuetext={speed + '倍速'} value={[0.5,0.75,1,1.25,1.5,2].indexOf(speed)}
+        style={{'--cl-rate-percent': ([0.5,0.75,1,1.25,1.5,2].indexOf(speed) * 20) + '%'} as React.CSSProperties} onChange={event => setSpeed([0.5,0.75,1,1.25,1.5,2][Number(event.target.value)])}/>
+      <div className="cl-speed-grid">{[0.5, 0.75, 1, 1.25, 1.5, 2].map(value => <button key={value} data-active={speed === value} onClick={() => setSpeed(value)}>{value}×</button>)}</div>
       <h3>BOARD FONT</h3><div className="cl-font-grid"><button data-active={handwriting} onClick={() => setHandwriting(true)}><b className="cl-handwriting">Aa Bb</b><span>Handwriting</span></button><button data-active={!handwriting} onClick={() => setHandwriting(false)}><b>Aa Bb</b><span>Standard</span></button></div>
       <h3>DISPLAY</h3><button className="cl-toggle" role="switch" aria-checked={dots} onClick={() => setDots(!dots)}><div><b>Background dots</b><small>白板背后的点阵背景</small></div><span data-checked={dots}/></button>
-      <h3>HELP</h3><button className="cl-toggle" onClick={() => { setSettings(false); setTourIndex(0); }}><div><b>Replay the tour</b><small>重新了解课堂里的七个常用控件</small></div>↗</button>
+      <h3>HELP</h3><button className="cl-toggle" onClick={openTour}><div><b>Replay the tour</b><small>重新了解课堂里的七个常用控件</small></div>↗</button>
       <CaptionUpgradeControl state={captions}/>
       <button className="cl-print" onClick={()=>void exportNotes('markdown')}>导出 Markdown 文字笔记</button>
       <button className="cl-print" disabled={printBusy||captions.busy} onClick={()=>void printNotes()}>{printBusy?'正在准备参考图…':'打印 / 保存 PDF 笔记'}</button>{printBusy&&<p role="status">参考图完整读取后会打开打印。关闭设置可取消等待。</p>}<p className="cl-settings-note">音色在下一句生效，倍速同步当前音频。暂停后会从当前句开头继续。</p>
     </section></div></WorkspaceDialog>}
-    {tourIndex !== null && <div className="cl-modal-backdrop cl-tour-backdrop"><section className="cl-tour" role="dialog" aria-modal="true" aria-label="课堂新手引导"><header><small>WHITEBOARD TOUR · {tourIndex + 1} / 7</small><button autoFocus onClick={finishTour}>跳过</button></header><span className="cl-tour-glyph">{['▥', '♧', '⚙', '♪', '☏', '■', '▤'][tourIndex]}</span><h2>{tour[tourIndex][0]}</h2><p>{tour[tourIndex][1]}</p><div className="cl-tour-dots">{tour.map((_, index) => <i key={index} data-active={index === tourIndex}/>)}</div><footer><button disabled={tourIndex === 0} onClick={() => setTourIndex(Math.max(0, tourIndex - 1))}>上一步</button><button onClick={() => tourIndex === 6 ? finishTour() : setTourIndex(tourIndex + 1)}>{tourIndex === 6 ? '开始学习' : '下一步'}</button></footer></section></div>}
+    {tourOpen && <ClassroomToolTour onClose={finishTour} onStep={tourStep}/>}
     {exit && <div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存。</p><footer><button autoFocus onClick={() => setExit(false)}>继续学习</button><button disabled={busy} onClick={() => { setBusy(true); void save({ projectDraft }).then(onClose).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div>}
     {award && <div className="cl-modal-backdrop"><section className="cl-award" role="dialog" aria-modal="true" aria-label="课堂学习里程碑"><span>✧</span><small>YOU FINISHED A LESSON</small><h2>{lesson.title}</h2><p>已走完这段概念路线。接下来用新的情境检查理解，看看哪些地方还需要回顾。</p><button autoFocus onClick={() => { setAward(false); setTab('practice'); }}>去检查理解 →</button><button onClick={() => setAward(false)}>稍后再做</button></section></div>}
     <article className="cl-print-notes"><h1>{lesson.title}</h1><p>{lesson.objective}</p>{lesson.steps.slice(0, session.revealed).map(step => <section key={step.id}><BoardStep step={step} sentence={0} full print/>{visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}</section>)}

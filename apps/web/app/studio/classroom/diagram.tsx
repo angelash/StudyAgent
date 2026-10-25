@@ -1,8 +1,11 @@
+'use client';
+import * as React from 'react';
 import type { ClassroomDiagram } from '@study-agent/contracts';
+import { FigureReader } from './figure-reader';
 
-export function ClassroomFigure({ diagram }: { diagram: ClassroomDiagram }) {
+function DiagramDrawing({ diagram }: { diagram: ClassroomDiagram }) {
   const { labels, title, kind } = diagram;
-  return <figure className="cl-figure"><svg viewBox="0 0 640 350" role="img" aria-label={title}>
+  return <svg viewBox="0 0 640 350" role="img" aria-label={title}>
     {kind === 'venn' ? <>
       <circle cx="245" cy="170" r="128" fill="#e5f0fc" stroke="#4a82b7" strokeWidth="2" />
       <circle cx="395" cy="170" r="128" fill="#f7e9d4" fillOpacity=".68" stroke="#b68443" strokeWidth="2" />
@@ -24,7 +27,16 @@ export function ClassroomFigure({ diagram }: { diagram: ClassroomDiagram }) {
         {index < labels.length - 1 && <path d={'M ' + (214 + index * 195) + ' 168 h 18 m -6 -6 l 6 6 l -6 6'} fill="none" stroke="#8b99ae" strokeWidth="2" />}
       </g>)}
     </>}
-  </svg><figcaption>{title}</figcaption></figure>;
+  </svg>;
+}
+
+export function ClassroomFigure({ diagram, interactive = true, onOpen }: { diagram: ClassroomDiagram; interactive?: boolean; onOpen?: () => void }) {
+  const [expanded, setExpanded] = React.useState(false);
+  return <><figure className="cl-figure"><DiagramDrawing diagram={diagram}/><figcaption>{diagram.title}</figcaption>
+    {interactive && <button className="cl-figure-open" aria-label={'放大图形：' + diagram.title} onClick={() => { onOpen?.(); setExpanded(true); }}>↗</button>}
+  </figure>{expanded && <FigureReader title={diagram.title} onClose={() => setExpanded(false)}><DiagramDrawing diagram={diagram}/>
+    {diagram.labels.some(label => label.length > 16) && <ul aria-label="图中完整标注">{diagram.labels.map((label,index) => <li key={index}>{label}{diagram.captions?.[index] && ' · ' + diagram.captions[index]}</li>)}</ul>}
+  </FigureReader>}</>;
 }
 
 export function CourseCover() {

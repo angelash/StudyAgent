@@ -1,0 +1,55 @@
+.cl-room .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
+.cl-guided-tour{position:fixed;inset:0;z-index:90;background:#0006;font-family:Arial,"Microsoft YaHei",sans-serif;isolation:isolate}
+.cl-guided-tour[data-anchored=true]{background:transparent}
+.cl-tour-target{position:fixed;border:2px solid #df683d;outline:2px solid #f7c1a8;border-radius:8px;box-shadow:0 0 0 9999px #0006;pointer-events:none;box-sizing:border-box}
+.cl-guided-tour .cl-tour-skip{position:fixed;top:18px;left:50%;transform:translateX(-50%);border:1px solid #ffffff26;border-radius:24px;background:#242424;color:white;padding:9px 13px;font:12px/1.5 Arial,sans-serif;z-index:2;cursor:pointer}
+.cl-guided-tour[data-skip-low=true] .cl-tour-skip{top:auto;bottom:18px}
+.cl-tour-card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 96px);overflow:auto;box-sizing:border-box;background:#fff;border:1px solid #e5e5e5;border-radius:22px;padding:32px 36px;box-shadow:0 10px 30px #0002;text-align:center;color:#222;z-index:1}
+.cl-tour-card-step{width:min(320px,calc(100vw - 32px));padding:18px;text-align:left;transform:none;left:16px;top:80px}
+.cl-tour-card h2{font-size:21px;font-weight:600;line-height:1.45;letter-spacing:-.04em;margin:0 0 10px}
+.cl-tour-card-step h2{font-size:16px;margin:2px 0 5px;letter-spacing:-.03em}
+.cl-tour-card p{font-size:13px;line-height:1.7;color:#777;overflow-wrap:anywhere;margin:0 0 22px}
+.cl-tour-card-step p{margin-bottom:14px}
+.cl-tour-card .cl-tour-primary{border:0;border-radius:22px;background:#292929;color:#fff;padding:10px 23px;min-height:38px;font:600 12px/1.5 Arial,"Microsoft YaHei",sans-serif;cursor:pointer;box-shadow:0 2px 5px #0001}
+.cl-tour-card>.cl-tour-primary{min-width:180px}
+.cl-tour-card .cl-tour-later{display:block;margin:7px auto -9px;border:0;background:none;color:#777;padding:9px;font:12px Arial,"Microsoft YaHei",sans-serif;cursor:pointer}
+.cl-tour-location{font-size:11px;color:#d5653c;line-height:1.6}
+.cl-tour-card footer{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.cl-tour-card footer>button:not(.cl-tour-primary){border:1px solid #e1e1dd;border-radius:50%;width:32px;height:32px;color:#666;background:#fff;cursor:pointer}
+.cl-tour-card footer>.cl-tour-primary{min-height:32px;padding:6px 16px}
+.cl-tour-progress{display:flex;gap:5px;margin-right:auto}
+.cl-tour-progress i{height:6px;width:6px;border-radius:8px;background:#d9d6cc}
+.cl-tour-progress i[data-active=true]{width:18px;background:#dd663b}
+.cl-tour-card .cl-tour-unavailable{font-size:11px;padding:8px;background:#f7f4ef;border-radius:6px;color:#796c59}
+.cl-guided-tour button:focus-visible{outline:3px solid #da8153;outline-offset:3px}
+.cl-room .cl-settings{width:min(460px,100%);padding:24px;border-radius:20px;font-family:Arial,"Microsoft YaHei",sans-serif}
+.cl-room .cl-settings>header{top:-24px;margin:-24px -24px 24px;padding:20px 24px 12px;border-bottom:0}
+.cl-room .cl-settings h2{font-size:18px}
+.cl-room .cl-settings>header button{width:28px;height:28px;font-size:20px;border-radius:9px}
+.cl-room .cl-settings h3{margin:24px 0 14px;font-size:12px}
+.cl-room .cl-voice-grid{gap:8px}
+.cl-room .cl-voice-grid>button{min-height:73px;padding:12px;gap:9px;border-radius:12px}
+.cl-room .cl-voice-grid>button[data-active=true]{padding:11px}
+.cl-room .cl-voice-grid b{font-size:12px}
+.cl-room .cl-voice-grid small{font-size:11px}
+.cl-room .cl-voice-choice{position:relative;display:flex;gap:6px;align-items:center;min-height:73px;border:1px solid #e5e8ef;border-radius:12px;padding:10px;box-sizing:border-box}
+.cl-room .cl-voice-choice[data-active=true]{border:2px solid #526f9f;padding:9px}
+.cl-voice-choice .cl-voice-select{display:flex;gap:8px;align-items:center;min-width:0;flex:1;border:0;background:none;text-align:left;padding:0;cursor:pointer;color:#526f9f}
+.cl-room .cl-voice-wave{display:flex;gap:2px;align-items:center;justify-content:center;width:23px;flex:none;color:#f28d92}
+.cl-voice-wave i{width:3px;border-radius:2px;background:currentColor}
+.cl-voice-choice:nth-child(2) .cl-voice-wave{color:#88a9d3}.cl-voice-choice:nth-child(3) .cl-voice-wave{color:#f69c4c}.cl-voice-choice:nth-child(4) .cl-voice-wave{color:#c394dc}.cl-voice-choice:nth-child(5) .cl-voice-wave{color:#60c7c0}.cl-voice-choice:nth-child(6) .cl-voice-wave{color:#75ca7a}
+.cl-room .cl-speed-slider{appearance:none;display:block;width:100%;height:4px;border:0;padding:0;margin:24px 0 18px;border-radius:4px;background:linear-gradient(to right,#526f9f var(--cl-rate-percent),#e1e3e9 var(--cl-rate-percent));cursor:pointer}
+.cl-speed-slider::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border:2px solid #526f9f;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0002}
+.cl-speed-slider::-moz-range-thumb{width:12px;height:12px;border:2px solid #526f9f;border-radius:50%;background:#fff}
+.cl-speed-slider:focus-visible{outline:2px solid #a6bade;outline-offset:7px}
+.cl-room .cl-speed-grid button,.cl-room .cl-speed-grid button[data-active=true]{background:none;padding:4px 0;min-width:30px;font-size:11px;color:#96a1b4}
+.cl-voice-choice .cl-voice-select>span:last-child{min-width:0}
+.cl-voice-choice .cl-voice-preview{display:grid;place-items:center;flex:none;width:26px;height:26px;border:1px solid #e1e5eb;border-radius:50%;background:#fff;color:#65758f;padding:0;cursor:pointer}
+.cl-voice-choice .cl-voice-preview:disabled{opacity:.4;cursor:default}
+.cl-voice-choice>i{position:absolute;right:-6px;top:-7px;background:#526f9f;color:white;border:2px solid white;border-radius:50%;font:10px/17px Arial;width:21px;height:21px;text-align:center}
+.cl-preview-notice{font-size:11px;line-height:1.6;color:#7f8b9c;margin:10px 0}
+.cl-voice-choice button:focus-visible{outline:2px solid #6c8bb8;outline-offset:2px}
+.cl-room .cl-font-grid{gap:8px}
+.cl-room .cl-font-grid button{min-height:76px;border-radius:12px}
+@media(max-width:700px){.cl-room .cl-settings{padding:20px}.cl-room .cl-settings>header{top:-20px;margin:-20px -20px 20px;padding:18px 20px 12px}.cl-tour-card{padding:25px}.cl-tour-card-step{padding:18px}.cl-tour-card h2{font-size:19px}.cl-tour-card-step h2{font-size:16px}}
+@media print{.cl-guided-tour{display:none!important}}

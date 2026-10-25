@@ -1,0 +1,15 @@
+.cl-room .ws-dialog-layer:has(.cl-figure-reader),.cl-room .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
+.cl-figure-reader{position:fixed;inset:0;z-index:90;background:#000c;backdrop-filter:blur(4px);display:grid;place-items:center;padding:64px 35px 35px;box-sizing:border-box;font-family:Arial,"Microsoft YaHei",sans-serif}
+.cl-figure-reader-sheet{width:min(1000px,100%);max-height:calc(100dvh - 100px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:#fcfcfc;border:1px solid #ddd;border-radius:11px;padding:20px;box-sizing:border-box;color:#35445a}
+.cl-figure-reader-sheet h2{font-size:15px;font-weight:500;line-height:1.6;margin:0 0 12px;text-align:center;overflow-wrap:anywhere}
+.cl-figure-reader .cl-figure-reader-close{position:fixed;right:16px;top:16px;border:0;border-radius:50%;background:#242424cc;color:#fff;width:36px;height:36px;font:26px/1 Arial;cursor:pointer}
+.cl-figure-reader-content>img,.cl-figure-reader-content>svg{display:block;width:100%;height:auto;max-width:100%;margin:0 auto}
+.cl-figure-reader-content>svg{fill:#34455c;font-size:22px}
+.cl-figure-reader-content p,.cl-figure-reader-content li{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.cl-figure-reader-content ul{padding-left:20px}
+.cl-figure-reader .cl-reader-error{background:#fff5e8;padding:15px;border-radius:8px;color:#795b30}
+.cl-figure-reader-close:focus-visible,.cl-figure-open:focus-visible{outline:3px solid #9bbae3;outline-offset:3px}
+.cl-figure{position:relative}
+.cl-figure .cl-figure-open{position:absolute;right:8px;bottom:8px;border:1px solid #e8e8e8;border-radius:7px;background:#fffffff0;color:#888;width:27px;height:27px;font:19px Arial;cursor:zoom-in;line-height:1}
+@media(max-width:700px){.cl-figure-reader{padding:64px 12px 16px}.cl-figure-reader-sheet{padding:16px;max-height:calc(100dvh - 80px)}}
+@media print{.cl-room .ws-dialog-layer:has(.cl-figure-reader),.cl-room .ws-dialog-layer:has(.cl-guided-tour),.cl-figure .cl-figure-open{display:none!important}}

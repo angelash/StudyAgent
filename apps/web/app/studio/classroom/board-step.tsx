@@ -4,6 +4,7 @@ import { classroomSentences, type ClassroomBlock, type ClassroomStep } from '@st
 import { ClassroomFigure } from './diagram';
 import { CodeWorkbench } from './code-workbench';
 import type { CodeDraftContext } from './code-draft';
+import { FigureReader } from './figure-reader';
 
 export function BoardStep({ step, sentence, full = false, print = false,unitCount,codeContext,onExperiment }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean;unitCount?:number;
   codeContext?: Pick<CodeDraftContext, 'ownerUserId'|'sessionId'>; onExperiment?: () => void }) {
@@ -17,25 +18,23 @@ export function BoardStep({ step, sentence, full = false, print = false,unitCoun
     if (block.kind === 'table' && block.table) return <div className="cl-table-wrap" key={block.id}><table><caption>{block.text}</caption>
       <thead><tr>{block.table.headers.map(header => <th key={header}>{header}</th>)}</tr></thead><tbody>{block.table.rows.map((cells, index) =>
         visible((block.atSentence ?? 0) + index) && <tr className="cl-board-item" key={index}>{cells.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>;
-    if (block.kind === 'image' && block.image) return <ClassroomImage key={block.id} image={block.image}/>;
-    if (block.kind === 'diagram' && block.diagram) return <ClassroomFigure key={block.id} diagram={block.diagram}/>;
+    if (block.kind === 'image' && block.image) return <ClassroomImage key={block.id} image={block.image} interactive={!print} onOpen={onExperiment}/>;
+    if (block.kind === 'diagram' && block.diagram) return <ClassroomFigure key={block.id} diagram={block.diagram} interactive={!print} onOpen={onExperiment}/>;
     if (block.kind === 'code' && block.code) return print ? <pre className="cl-code-print" key={block.id}>{block.code}</pre> : <CodeWorkbench key={[codeContext?.sessionId,step.id,block.id].join(':')} initialCode={block.code}
       context={codeContext?{...codeContext,stepId:step.id,blockId:block.id}:undefined} onInteract={onExperiment}/>;
     return <p className="cl-board-item" key={block.id}>{block.text}</p>;
   })}</>;
 }
 
-export function ClassroomImage({ image }: { image: NonNullable<ClassroomBlock['image']> }) {
+export function ClassroomImage({ image, onOpen, interactive = true }: { image: NonNullable<ClassroomBlock['image']>; onOpen?: () => void; interactive?: boolean }) {
   const [expanded, setExpanded] = React.useState(false);
-  React.useEffect(() => {
-    if (!expanded) return;
-    function close(event: KeyboardEvent) { if (event.key === 'Escape') setExpanded(false); }
-    window.addEventListener('keydown', close); return () => window.removeEventListener('keydown', close);
-  }, [expanded]);
+  const [failed, setFailed] = React.useState(false);
   // Classroom curriculum only references bundled assets, never arbitrary model URLs.
   if (!image.src.startsWith('/classroom/')) return null;
-  return <><figure className="cl-lesson-image"><button aria-label={'放大图片：' + image.caption} onClick={() => setExpanded(true)}>
-    <img src={image.src} alt={image.alt}/><span aria-hidden="true">↗</span></button><figcaption>{image.caption}</figcaption></figure>
-    {expanded && <div className="cl-modal-backdrop" onClick={() => setExpanded(false)}><section className="cl-image-dialog" role="dialog" aria-modal="true" aria-label={image.caption}>
-      <button autoFocus aria-label="关闭图片" onClick={() => setExpanded(false)}>×</button><img src={image.src} alt={image.alt}/><p>{image.caption}</p></section></div>}</>;
+  if (!interactive) return <figure className="cl-lesson-image"><img src={image.src} alt={image.alt}/><figcaption>{image.caption}</figcaption></figure>;
+  return <><figure className="cl-lesson-image"><button aria-label={'放大图片：' + image.caption} onClick={() => { onOpen?.(); setExpanded(true); }}>
+    <img src={image.src} alt={image.alt} onError={() => setFailed(true)}/><span aria-hidden="true">↗</span></button><figcaption>{image.caption}</figcaption></figure>
+    {expanded && <FigureReader title={image.caption} onClose={() => setExpanded(false)}>
+      {failed ? <p className="cl-reader-error" role="alert">图片暂未能打开。{image.alt}。可以关闭后刷新重试。</p> : <img src={image.src} alt={image.alt} onError={() => setFailed(true)}/>}
+    </FigureReader>}</>;
 }
