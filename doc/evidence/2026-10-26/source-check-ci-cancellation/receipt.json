@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "head": "7d606a456300129ee73c8117205368607aa58ca2",
+  "run": 40234093187,
+  "jobs": {
+    "application": "success",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "passed": 217,
+    "failed": 0,
+    "skipped": 0,
+    "retry": 0
+  },
+  "application": {
+    "passed": 1233,
+    "skipped": 51,
+    "platform": "Linux",
+    "log": "application.log.gz"
+  },
+  "deployed": false,
+  "limits": [
+    "CI success is not a daemon delivery or teacher acceptance."
+  ]
+}
