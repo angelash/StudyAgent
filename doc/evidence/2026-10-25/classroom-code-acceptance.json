@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T03:37:15.294951+00:00",
+  "at": "2026-10-25T04:02:25.303372+00:00",
   "sourceRevision": "2c3922cb00f54fa42c9676c5df39448cc013c6b3",
   "specificationCommit": "98f6894",
-  "passed": false,
+  "passed": true,
   "localPassed": true,
-  "status": "code-experiment-local-validation-complete-awaiting-final-ci-and-daemon-delivery",
+  "status": "code-experiment-increment-delivered",
   "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
   "sourceDigests": {
     ".github/workflows/verify.yml": "c43e0d08db4e2f2bbaffca6b3efa6674cc6cd2d35e5b8db847485b7f65e1b514",
@@ -98,6 +98,18 @@
         "numFailedTests": 0,
         "numPendingTests": 0
       }
+    },
+    "classroom-code-ci.json": {
+      "sha256": "5f67dddfb0ce94a05f5300a086822d2eaa84f408c03bb8d74be35235983a2621",
+      "result": {
+        "passed": true
+      }
+    },
+    "classroom-code-runtime.json": {
+      "sha256": "a9e19d234b272ed6257708a84d9c70b59571ea1457a067566f5b1ea44b8f9bf0",
+      "result": {
+        "passed": true
+      }
     }
   },
   "checks": {
@@ -127,9 +139,33 @@
       "failed": 0
     },
     "finalSourceCi": {
-      "status": "pending"
+      "runId": "40158945738",
+      "headSha": "1806c615c22c0383d5326303f5612f774ce9c82a",
+      "status": "completed",
+      "conclusion": "success",
+      "application": {
+        "passed": 1061,
+        "environmentSkipped": 42
+      },
+      "browser": {
+        "passed": 69
+      },
+      "postgresCodeDrafts": {
+        "passed": 7,
+        "sqliteOnlySkipped": 1
+      },
+      "postgresClassroomTurn": {
+        "passed": 15,
+        "sqliteOnlySkipped": 1
+      }
     },
-    "daemonDeployment": "pending",
+    "daemonDeployment": {
+      "passed": true,
+      "revision": "999436d14b68e362cb4bee4ffc320d525cbccec1",
+      "sourceCodeRevision": "2c3922cb00f54fa42c9676c5df39448cc013c6b3",
+      "webBuildId": "8NpPmlQi4xVofNzegYxon",
+      "runtimeReport": "classroom-code-runtime.json"
+    },
     "isolatedPostgres": "stopped"
   },
   "featureCoverage": [
@@ -156,6 +192,7 @@
     "The two portable cold-backup cases are SQLite-only; the PG combination explicitly skips them and verifies actual PG saves/reopens/permissions separately.",
     "Real touch keyboards, screen readers, teacher review, human learning effectiveness and long-running real-device behavior remain later gates.",
     "No new live model, TTS or image generation call was made for this increment.",
-    "Production family records were not used for feature tests. The code-experiment increment is not yet deployed."
-  ]
+    "Production family records were not used for feature tests. The code-experiment increment is deployed with anonymous endpoint checks and stable repeated daemon observations; structured reply boards are a later increment."
+  ],
+  "archiveAttributesRevision": "33e5dc2"
 }

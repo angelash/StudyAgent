@@ -1,0 +1,691 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-10-25T03:38:17Z",
+  "headSha": "1806c615c22c0383d5326303f5612f774ce9c82a",
+  "jobs": [
+    {
+      "completedAt": "2026-10-25T03:55:38Z",
+      "conclusion": "success",
+      "databaseId": 121066213275,
+      "name": "application",
+      "startedAt": "2026-10-25T03:38:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-25T03:38:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-25T03:38:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:23Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-25T03:38:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:25Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-25T03:38:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:25Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 4,
+          "startedAt": "2026-10-25T03:38:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:44Z",
+          "conclusion": "success",
+          "name": "Install document test dependencies",
+          "number": 5,
+          "startedAt": "2026-10-25T03:38:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:23Z",
+          "conclusion": "success",
+          "name": "Dense PDF originals retain complete text and lines",
+          "number": 6,
+          "startedAt": "2026-10-25T03:38:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:03Z",
+          "conclusion": "success",
+          "name": "Install media tools",
+          "number": 7,
+          "startedAt": "2026-10-25T03:39:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:03Z",
+          "conclusion": "success",
+          "name": "Prepare configuration",
+          "number": 8,
+          "startedAt": "2026-10-25T03:40:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:12Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 9,
+          "startedAt": "2026-10-25T03:40:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:13Z",
+          "conclusion": "success",
+          "name": "Run npm audit --audit-level=low",
+          "number": 10,
+          "startedAt": "2026-10-25T03:40:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:49Z",
+          "conclusion": "success",
+          "name": "Run npm run build",
+          "number": 11,
+          "startedAt": "2026-10-25T03:40:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:46:22Z",
+          "conclusion": "success",
+          "name": "Run npm test",
+          "number": 12,
+          "startedAt": "2026-10-25T03:40:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:46:37Z",
+          "conclusion": "success",
+          "name": "Run npm run lint",
+          "number": 13,
+          "startedAt": "2026-10-25T03:46:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:46:37Z",
+          "conclusion": "success",
+          "name": "Local documentation links",
+          "number": 14,
+          "startedAt": "2026-10-25T03:46:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:46:37Z",
+          "conclusion": "success",
+          "name": "Read-only private material inventory and reference integrity",
+          "number": 15,
+          "startedAt": "2026-10-25T03:46:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:46:38Z",
+          "conclusion": "success",
+          "name": "Authored teaching coverage and measurement material audit",
+          "number": 16,
+          "startedAt": "2026-10-25T03:46:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:03Z",
+          "conclusion": "success",
+          "name": "Current eligible material coverage, formal teacher roles and read-only history across restarts",
+          "number": 17,
+          "startedAt": "2026-10-25T03:46:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:15Z",
+          "conclusion": "success",
+          "name": "GESP authored content and assisted guidance retention journey",
+          "number": 18,
+          "startedAt": "2026-10-25T03:47:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:24Z",
+          "conclusion": "success",
+          "name": "All authored math and English contrasts, persisted case grading and historical content upgrade",
+          "number": 19,
+          "startedAt": "2026-10-25T03:47:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:25Z",
+          "conclusion": "success",
+          "name": "Canonical original spatial assets and independent image decoding",
+          "number": 20,
+          "startedAt": "2026-10-25T03:52:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:25Z",
+          "conclusion": "success",
+          "name": "Canonical minute-hand and oriented-map assets and independent image decoding",
+          "number": 21,
+          "startedAt": "2026-10-25T03:52:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:27Z",
+          "conclusion": "success",
+          "name": "Canonical boundary, coverage and area-unit assets and independent image decoding",
+          "number": 22,
+          "startedAt": "2026-10-25T03:52:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:28Z",
+          "conclusion": "success",
+          "name": "Canonical fourth-grade angles, triangles and bar charts and independent image decoding",
+          "number": 23,
+          "startedAt": "2026-10-25T03:52:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:45Z",
+          "conclusion": "success",
+          "name": "Curriculum package persistence and safe seed enrichment",
+          "number": 24,
+          "startedAt": "2026-10-25T03:52:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:52:59Z",
+          "conclusion": "success",
+          "name": "Reviewed textbook TOCs and frozen progress recovery",
+          "number": 25,
+          "startedAt": "2026-10-25T03:52:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:53:16Z",
+          "conclusion": "success",
+          "name": "Frozen measurement definitions and comparable evidence",
+          "number": 26,
+          "startedAt": "2026-10-25T03:52:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:53:42Z",
+          "conclusion": "success",
+          "name": "Reviewed authored prerequisite upgrade, interrupted startup and historical evidence",
+          "number": 27,
+          "startedAt": "2026-10-25T03:53:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:54:08Z",
+          "conclusion": "success",
+          "name": "Reviewed atomic child relationship and component bindings across upgrades",
+          "number": 28,
+          "startedAt": "2026-10-25T03:53:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:54:27Z",
+          "conclusion": "success",
+          "name": "Atomic component observation, independent measurement and delayed review recovery",
+          "number": 29,
+          "startedAt": "2026-10-25T03:54:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:54:54Z",
+          "conclusion": "success",
+          "name": "Reviewed average denominator relationship and historical mapping protection",
+          "number": 30,
+          "startedAt": "2026-10-25T03:54:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:12Z",
+          "conclusion": "success",
+          "name": "Average denominator independent measurement and delayed review recovery",
+          "number": 31,
+          "startedAt": "2026-10-25T03:54:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:28Z",
+          "conclusion": "success",
+          "name": "Assessment preview, partial evidence and state recovery",
+          "number": 32,
+          "startedAt": "2026-10-25T03:55:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:31Z",
+          "conclusion": "success",
+          "name": "Original paper measurement review and publication recovery",
+          "number": 33,
+          "startedAt": "2026-10-25T03:55:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:35Z",
+          "conclusion": "success",
+          "name": "Mistake organization, frozen redo and independent verification recovery",
+          "number": 34,
+          "startedAt": "2026-10-25T03:55:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:35Z",
+          "conclusion": "success",
+          "name": "Asset audit tool regression",
+          "number": 35,
+          "startedAt": "2026-10-25T03:55:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Public textbook capture and source-bound chapter review",
+          "number": 36,
+          "startedAt": "2026-10-25T03:55:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Independent recovery verifier regression",
+          "number": 37,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Source release privacy and tamper boundary regression",
+          "number": 38,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 74,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 75,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 76,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:55:36Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 77,
+          "startedAt": "2026-10-25T03:55:36Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40158945738/job/121066213275"
+    },
+    {
+      "completedAt": "2026-10-25T03:47:54Z",
+      "conclusion": "success",
+      "databaseId": 121066213456,
+      "name": "browser",
+      "startedAt": "2026-10-25T03:38:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-25T03:38:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-25T03:38:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:23Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-25T03:38:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:26Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-25T03:38:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:26Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 4,
+          "startedAt": "2026-10-25T03:38:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:29Z",
+          "conclusion": "success",
+          "name": "Install PDF dependencies for browser worker",
+          "number": 5,
+          "startedAt": "2026-10-25T03:38:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:29Z",
+          "conclusion": "success",
+          "name": "Prepare configuration",
+          "number": 6,
+          "startedAt": "2026-10-25T03:38:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:41Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 7,
+          "startedAt": "2026-10-25T03:38:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:02Z",
+          "conclusion": "success",
+          "name": "Install browser runtime",
+          "number": 8,
+          "startedAt": "2026-10-25T03:38:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:53Z",
+          "conclusion": "success",
+          "name": "Browser product journey at phone, tablet and desktop widths",
+          "number": 9,
+          "startedAt": "2026-10-25T03:39:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:53Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 16,
+          "startedAt": "2026-10-25T03:47:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:53Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 17,
+          "startedAt": "2026-10-25T03:47:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:53Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-10-25T03:47:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:47:53Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-10-25T03:47:53Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40158945738/job/121066213456"
+    },
+    {
+      "completedAt": "2026-10-25T03:42:58Z",
+      "conclusion": "success",
+      "databaseId": 121066213558,
+      "name": "postgres",
+      "startedAt": "2026-10-25T03:38:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-25T03:38:22Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-25T03:38:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:36Z",
+          "conclusion": "success",
+          "name": "Initialize containers",
+          "number": 2,
+          "startedAt": "2026-10-25T03:38:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:39Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 3,
+          "startedAt": "2026-10-25T03:38:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:45Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 4,
+          "startedAt": "2026-10-25T03:38:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:45Z",
+          "conclusion": "success",
+          "name": "Prepare configuration",
+          "number": 5,
+          "startedAt": "2026-10-25T03:38:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:38:54Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 6,
+          "startedAt": "2026-10-25T03:38:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:03Z",
+          "conclusion": "success",
+          "name": "Prepare isolated PostgreSQL roles and client tools",
+          "number": 7,
+          "startedAt": "2026-10-25T03:38:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:06Z",
+          "conclusion": "success",
+          "name": "Run npm run build --workspace @study-agent/contracts",
+          "number": 8,
+          "startedAt": "2026-10-25T03:39:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:08Z",
+          "conclusion": "success",
+          "name": "Run npm run build --workspace @study-agent/config",
+          "number": 9,
+          "startedAt": "2026-10-25T03:39:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:14Z",
+          "conclusion": "success",
+          "name": "Run npm run build --workspace @study-agent/api",
+          "number": 10,
+          "startedAt": "2026-10-25T03:39:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:44Z",
+          "conclusion": "success",
+          "name": "PostgreSQL migration, recovery and fencing",
+          "number": 11,
+          "startedAt": "2026-10-25T03:39:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:44Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 12,
+          "startedAt": "2026-10-25T03:39:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:47Z",
+          "conclusion": "success",
+          "name": "Install source-course PDF test dependencies",
+          "number": 13,
+          "startedAt": "2026-10-25T03:39:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:53Z",
+          "conclusion": "success",
+          "name": "Source-course staged generation and checkpoint recovery on PostgreSQL",
+          "number": 14,
+          "startedAt": "2026-10-25T03:39:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:39:57Z",
+          "conclusion": "success",
+          "name": "Classroom image task lifecycle and private references on PostgreSQL",
+          "number": 15,
+          "startedAt": "2026-10-25T03:39:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:40:13Z",
+          "conclusion": "success",
+          "name": "Long-source chunks, independent checkpoints and original files on PostgreSQL",
+          "number": 16,
+          "startedAt": "2026-10-25T03:39:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:16Z",
+          "conclusion": "success",
+          "name": "Resumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL",
+          "number": 17,
+          "startedAt": "2026-10-25T03:40:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:19Z",
+          "conclusion": "success",
+          "name": "Frozen classroom captions, historical upgrade and narration guards on PostgreSQL",
+          "number": 18,
+          "startedAt": "2026-10-25T03:42:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:48Z",
+          "conclusion": "success",
+          "name": "GESP assisted guidance and retention PostgreSQL journey",
+          "number": 19,
+          "startedAt": "2026-10-25T03:42:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:52Z",
+          "conclusion": "success",
+          "name": "Durable classroom turns, original position and permission fencing on PostgreSQL",
+          "number": 20,
+          "startedAt": "2026-10-25T03:42:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:54Z",
+          "conclusion": "success",
+          "name": "Frozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL",
+          "number": 21,
+          "startedAt": "2026-10-25T03:42:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 39,
+          "startedAt": "2026-10-25T03:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 40,
+          "startedAt": "2026-10-25T03:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:55Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 41,
+          "startedAt": "2026-10-25T03:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:55Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 42,
+          "startedAt": "2026-10-25T03:42:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-25T03:42:55Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 43,
+          "startedAt": "2026-10-25T03:42:55Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/angelash/StudyAgent/actions/runs/40158945738/job/121066213558"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-10-25T03:55:38Z",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40158945738"
+}
