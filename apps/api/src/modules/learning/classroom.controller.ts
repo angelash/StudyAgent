@@ -9,6 +9,7 @@ export class ClassroomController {
   @Get('catalog') catalog(@Req() req: AuthenticatedRequest) { return this.classroom.catalog(req.user); }
   @Post('sessions') open(@Req() req: AuthenticatedRequest, @Body() input: unknown) { return this.classroom.open(req.user, input); }
   @Get('sessions/:id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.classroom.get(req.user, id); }
+  @Get('sessions/:id/sources/:key') source(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Param('key') key:string){return this.classroom.source(req.user,id,key);}
   @Patch('sessions/:id') progress(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     return this.classroom.progress(req.user, id, input);
   }

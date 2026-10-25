@@ -7,7 +7,7 @@ import { mkdtempSync,rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Pool } from 'pg';
-import { sourceCourseContentSchema } from '@study-agent/contracts';
+import { sourceCourseContentSchema,classroomPracticeSummary } from '@study-agent/contracts';
 
 describe('source check original commands and checkpointed private generation',()=>{
   const directory=mkdtempSync(join(tmpdir(),'study-check-api-')),names=['NODE_ENV','DATABASE_URL','STUDY_STORAGE','STUDY_DATA_DIR','STUDY_WORKER_ENABLED','STUDY_SEED_FOUNDATION','XIAOJIU_CHAT_ENABLED','OPENAI_API_KEY','MINIMAX_API_KEY'] as const,previous=Object.fromEntries(names.map(name=>[name,process.env[name]]));
@@ -97,5 +97,57 @@ describe('source check original commands and checkpointed private generation',()
   it('serializes competing publications from two ready candidates without overwriting the winning original receipt',async()=>{
     const row=await course(),first=await ready(row),second=await ready(row),commands=[publishBody(first),publishBody(second)],views=[first,second];const responses=await Promise.all(views.map((view,index)=>request(app.getHttpServer()).post('/api'+endpoint(row)+'/'+view.id+'/confirm').set('Authorization','Bearer '+owner.token).send(commands[index])));
     expect(responses.map(reply=>reply.status).sort()).toEqual([201,409]);const index=responses.findIndex(reply=>reply.status===201),winner=responses[index].body.data;expect(winner.publication).toMatchObject({checkId:views[index].id,revision:1});expect((await call('post',endpoint(row)+'/'+views[index].id+'/confirm',commands[index])).receipt).toEqual(winner.receipt);expect(await store.requestContext(()=>store.select('sourceCourseChecks',{courseId:row.id,status:'published'}).length)).toBe(1);
+  });
+  const openCheck=(row:any,check:any,actor=owner,status=201)=>call('post','/learning/classroom/sessions',{sourceCourseId:row.id,sourceCheckId:check.id,lessonId:'source-check:'+check.id},actor,status);
+  const submit=(session:any,index=0,actor=owner,selectedIndices=[0],disposition='answered',requestKey=randomUUID())=>call('post','/learning/classroom/sessions/'+session.id+'/answers',{protocol:'classroom-choice-v2',questionId:session.lesson.questions[index].id,selectedIndices,disposition,requestKey},actor);
+  async function published(row:any){const candidate=await ready(row);return call('post',endpoint(row)+'/'+candidate.id+'/confirm',publishBody(candidate));}
+  it('opens only a published definition, hides all future answers and keeps GET projections free of learning writes',async()=>{
+    const row=await course(),candidate=await ready(row);await openCheck(row,candidate,owner,409);const check=await call('post',endpoint(row)+'/'+candidate.id+'/confirm',publishBody(candidate)),session=await openCheck(row,check);
+    expect(session).toMatchObject({sourceCheckId:check.id,sourceCheckFingerprint:check.contentFingerprint,answers:[],lesson:{assessment:{kind:'unit-check'}}});expect(session.authoringAnswerExposure).toBeUndefined();
+    const wire=JSON.stringify(session);for(const secret of ['correctIndices','optionExplanations','sourceCheckSources','answerKeys','先找已有观察','比较条件，并保留尚未核查的解释。'])expect(wire).not.toContain(secret);
+    await openCheck(row,check,other,403);await call('get','/learning/classroom/sessions/'+session.id,undefined,other,403);
+    await call('post','/learning/classroom/sessions',{sourceCheckId:check.id,lessonId:'source-check:'+check.id},owner,400);
+    await call('post','/learning/classroom/sessions',{sourceCourseId:row.id,sourceCheckId:check.id,lessonId:row.lessonIds[0]},owner,400);
+    const before=await store.requestContext(()=>JSON.stringify(store.inspect('classroomSessions')));
+    const view=await call('get','/learning/source-courses/'+row.id),again=await call('get','/learning/source-courses/'+row.id);
+    expect(view.journey.unitCheck.current).toMatchObject({checkId:check.id,questionCount:4,activity:{practice:{state:'not_started'}}});expect(again.journey).toEqual(view.journey);expect(view.lastSessionId).toBeNull();
+    expect(await store.requestContext(()=>JSON.stringify(store.inspect('classroomSessions')))).toBe(before);expect((await openCheck(row,check)).id).toBe(session.id);
+    const answered=await submit(session);expect(answered.answers[0]).toMatchObject({correct:true,correctIndices:[0],sourceReferences:[{sourceKey:'page-one',quote}]});expect(answered.answers[0].answerExposure).toBeUndefined();expect(classroomPracticeSummary(answered.lesson.questions,answered.answers).independentCorrect).toBe(1);
+    const summary=await call('get','/learning/source-courses/'+row.id);expect(summary.journey.unitCheck.current.activity.practice.summary.answered).toBe(1);expect(summary.viewed).toBe(0);expect(summary.lastSessionId).toBeNull();
+  });
+  it('tracks actual author exposure at first submission even when authoring happens after opening the classroom',async()=>{
+    const row=await course(),check=await published(row),session=await openCheck(row,check),first=await submit(session);
+    await call('post',endpoint(row)+'/'+check.id+'/authoring',{expectedRevision:check.revision,contentFingerprint:check.contentFingerprint,requestKey:randomUUID()});
+    const second=await submit(session,1);expect(second.answers[0]).toEqual(first.answers[0]);expect(second.answers[0].answerExposure).toBeUndefined();expect(second.answers[1].answerExposure).toBe('authorship');expect(second.authoringAnswerExposure).toBe(true);expect(classroomPracticeSummary(second.lesson.questions,second.answers).independentCorrect).toBe(1);
+    const future=await ready(row),authoring=await call('post',endpoint(row)+'/'+future.id+'/authoring',{expectedRevision:future.revision,contentFingerprint:future.contentFingerprint,requestKey:randomUUID()});const next=await call('post',endpoint(row)+'/'+future.id+'/confirm',publishBody(authoring.view)),opened=await openCheck(row,next);expect(opened.authoringAnswerExposure).toBe(true);expect((await submit(opened)).answers[0].answerExposure).toBe('authorship');
+  });
+  it('preserves multiple choice, sequential hints, dont-know and immutable original receipts on a frozen source check',async()=>{
+    const row=await course(),candidate=await ready(row),author=await call('post',endpoint(row)+'/'+candidate.id+'/authoring',{expectedRevision:candidate.revision,contentFingerprint:candidate.contentFingerprint,requestKey:randomUUID()});const content=structuredClone(author.content);content.questions[0].selectionMode='multiple';content.questions[0].correctIndices=[0,2];
+    const edited=await call('patch',endpoint(row)+'/'+candidate.id+'/content',{expectedRevision:author.view.revision,contentFingerprint:author.contentFingerprint,content,requestKey:randomUUID()}),check=await call('post',endpoint(row)+'/'+candidate.id+'/confirm',{...publishBody(edited),acknowledgeReviewWarnings:true}),session=await openCheck(row,check),base='/learning/classroom/sessions/'+session.id,q=session.lesson.questions[1].id;
+    await call('post',base+'/hints',{questionId:q,level:2,requestKey:randomUUID()},owner,409);await call('post',base+'/hints',{questionId:q,level:1,requestKey:randomUUID()});await call('post',base+'/hints',{questionId:q,level:2,requestKey:randomUUID()});
+    const key=randomUUID(),first=await submit(session,0,owner,[2,0],'answered',key);expect(first.answers[0]).toMatchObject({correct:true,selectedIndices:[0,2],correctIndices:[0,2]});expect((await submit(session,0,owner,[0,2],'answered',key)).answers).toEqual(first.answers);
+    const changed=await submit(session,0,owner,[1]);expect(changed.answers).toEqual(first.answers);const hinted=await submit(session,1);expect(hinted.answers[1]).toMatchObject({hintUsed:true,hintLevel:2});const unknown=await submit(session,2,owner,[],'dont_know');expect(unknown.answers[2]).toMatchObject({disposition:'dont_know',correct:false});const done=await submit(session,3,owner,[],'skip');expect(classroomPracticeSummary(done.lesson.questions,done.answers)).toMatchObject({complete:true,dontKnow:1,skipped:1,independentCorrect:0});
+  });
+  it('serves exact frozen sources and old answers after replacement, withdrawal and application reopen without mixing journey versions',async()=>{
+    const row=await course(),first=await published(row),session=await openCheck(row,first),answered=await submit(session),sourcePath='/learning/classroom/sessions/'+session.id+'/sources/page-one';const source=await call('get',sourcePath);expect(source.text).toBe(quote);await call('get',sourcePath,undefined,other,403);
+    const second=await published(row),next=await openCheck(row,second);expect(next.id).not.toBe(session.id);let view=await call('get','/learning/source-courses/'+row.id);expect(view.journey.unitCheck.current.checkId).toBe(second.id);expect(view.journey.unitCheck.current.activity.practice.summary.answered).toBe(0);expect(view.journey.unitCheck.archived).toMatchObject([{sessionId:session.id,summary:{answered:1}}]);
+    await call('post',endpoint(row)+'/'+second.id+'/withdraw',{expectedRevision:second.revision,contentFingerprint:second.contentFingerprint,publicationRevision:second.publication.revision,requestKey:randomUUID()});
+    await store.transaction(()=>{const saved=store.find('sourceCourses',{id:row.id});saved.sources[0].text='课程后来已更新的合成原文。';saved.fingerprint='different-later-version';});
+    vi.restoreAllMocks();await app.close();await boot();expect((await call('get',sourcePath)).text).toBe(quote);expect((await call('get','/learning/classroom/sessions/'+session.id)).answers).toEqual(answered.answers);expect((await openCheck(row,first)).id).toBe(session.id);
+    view=await call('get','/learning/source-courses/'+row.id);expect(view.journey.unitCheck.current).toBeNull();expect(view.journey.unitCheck.archived).toHaveLength(2);expect(view.lastSessionId).toBeNull();
+  });
+  it('lets the real shared learner answer independently while keeping manager drafts private and rejecting a new withdrawn classroom',async()=>{
+    const created=await call('post','/students',{nickname:'独立核查合成学生',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}}),studentId=created.profile.id;
+    await call('post','/students/'+studentId+'/learning-access',{enabled:true,expectedVersion:0,requestKey:randomUUID(),reason:'隔离资料课程学习验收。'});const code=await call('post','/students/'+studentId+'/learning-access/codes',{expectedVersion:1,requestKey:randomUUID()}),learner=await call('post','/auth/learning-code',{code:code.code},null);
+    const row=await course(studentId),candidate=await ready(row),author=await call('post',endpoint(row)+'/'+candidate.id+'/authoring',{expectedRevision:candidate.revision,contentFingerprint:candidate.contentFingerprint,requestKey:randomUUID()}),check=await call('post',endpoint(row)+'/'+candidate.id+'/confirm',publishBody(author.view));
+    await call('get',endpoint(row),undefined,learner,403);const journey=await call('get','/learning/source-courses/'+row.id,undefined,learner);expect(journey.journey.unitCheck.current.checkId).toBe(check.id);expect(JSON.stringify(journey)).not.toContain('correctIndices');
+    const session=await openCheck(row,check,learner);expect(session.authoringAnswerExposure).toBeUndefined();const answer=await submit(session,0,learner);expect(answer.answers[0].answerExposure).toBeUndefined();expect(classroomPracticeSummary(answer.lesson.questions,answer.answers).independentCorrect).toBe(1);
+    const next=await published(row);await call('post',endpoint(row)+'/'+next.id+'/withdraw',{expectedRevision:next.revision,contentFingerprint:next.contentFingerprint,publicationRevision:next.publication.revision,requestKey:randomUUID()});await openCheck(row,next,learner,409);expect((await call('get','/learning/classroom/sessions/'+session.id,undefined,learner)).answers).toEqual(answer.answers);
+    await store.transaction(()=>{store.find('bindings',{id:created.binding.id}).status='revoked';});await call('get','/learning/classroom/sessions/'+session.id+'/sources/page-one',undefined,learner,401);
+  });
+  it('includes only the selected submitted feedback in tutor context and never sends future answer or private hint keys',async()=>{
+    const row=await course(),check=await published(row),session=await openCheck(row,check),reply=vi.spyOn(chat,'reply').mockResolvedValue({reply:'先比较条件。',modelId:'deepseek-v4-flash',modelName:'隔离替身'});
+    const base='/learning/classroom/sessions/'+session.id;await call('post',base+'/messages',{message:'帮我核查条件',questionId:session.lesson.questions[0].id,modelId:'deepseek-v4-flash',requestKey:randomUUID()});let input:any=reply.mock.calls[0][0];expect(JSON.parse(input.context).feedback).toBeUndefined();expect(input.context).not.toContain('correctIndices');expect(input.context).not.toContain('先找已有观察');
+    await submit(session);await call('post',base+'/messages',{message:'解释我已提交这一题的反馈',questionId:session.lesson.questions[0].id,modelId:'deepseek-v4-flash',requestKey:randomUUID()});input=reply.mock.calls[1][0];expect(JSON.parse(input.context).feedback).toMatchObject({questionId:session.lesson.questions[0].id,correctIndices:[0]});expect(input.context).not.toContain(session.lesson.questions[1].id);expect(input.context).not.toContain('再找还缺的比较条件');
   });
 });

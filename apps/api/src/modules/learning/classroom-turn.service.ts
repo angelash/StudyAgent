@@ -115,7 +115,7 @@ export class ClassroomTurnService {
       position: { contentFingerprint: command.contentFingerprint, stepId: step.id, stepTitle: step.title, cursor: session.cursor,
         sentenceCursor: command.sentenceCursor, presentationVersion: command.presentationVersion, unitId: unit.id, sentenceText: unit.text },
       context: JSON.stringify({ title: session.lesson.title, objective: session.lesson.objective, teaching, intent: command.intent,
-        ...(question ? { practiceQuestion: { id: question.id, prompt: question.prompt, options: question.options, selectionMode: question.selectionMode ?? 'single', table: question.table, diagram: question.diagram }, submitted: session.answers.some(answer => answer.questionId === question.id) } : {}) }),
+        ...(question ? { practiceQuestion: { id: question.id, prompt: question.prompt, options: question.options, selectionMode: question.selectionMode ?? 'single', table: question.table, diagram: question.diagram }, submitted: session.answers.some(answer => answer.questionId === question.id),feedback:session.answers.find(answer=>answer.questionId===question.id) } : {}) }),
       history: session.messages.slice(-10).map(({ role, content }) => ({ role, content })), status: 'queued', revision: 0, createdAt: now, updatedAt: now };
     if (question) { session.hintedQuestionIds = [...new Set([...(session.hintedQuestionIds ?? []), question.id])]; session.revision++; session.updatedAt = now; }
     this.store.append('classroomTurns', turn);

@@ -12,6 +12,7 @@ export type ClassroomStep = { id: string; title: string; narration: string; bloc
 export type ClassroomSelectionMode = 'single' | 'multiple';
 export type ClassroomAnswerDisposition = 'answered' | 'skip' | 'dont_know';
 export type ClassroomQuestion = { id: string; prompt: string; options: string[]; hint: string;
+  targetLessonIds?: string[];
   selectionMode?: ClassroomSelectionMode;
   hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
@@ -26,6 +27,7 @@ export type ClassroomUnit = { id: string; title: string; objective: string; lect
 export type ClassroomCourse = { id: string; title: string; description: string; level: string; version: string;
   provenance: string; units: ClassroomUnit[]; references: Array<{ title: string; url: string }> };
 export type ClassroomAnswerReceipt = { questionId: string; selectedIndex: number | null; correct: boolean; skipped: boolean;
+  sourceReferences?: Array<{sourceKey:string;quote:string}>;
   selectedIndices?: number[]; correctIndices?: number[]; optionExplanations?: string[];
   explanation: string; hintUsed: boolean; at: string; disposition?: 'answered' | 'skip' | 'dont_know'; hintLevel?: number; answerExposure?: 'authorship' };
 export type ClassroomHintReceipt = { questionId: string; level: number; text: string; at: string };
@@ -35,6 +37,8 @@ export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; con
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
   sourceCourseId?: string; authoringAnswerExposure?: boolean;
+  sourceCheckId?: string; sourceCheckFingerprint?: string;
+  sourceCheckTargets?: Array<{lessonId:string;title:string;objective:string}>;
   presentation?: ClassroomPresentation; presentationRevisions?: ClassroomPresentationRevision[];
   cursor: number; revealed: number; sentenceCursor?: number; status: 'paused' | 'completed'; revision: number;
   messages: ClassroomChatMessage[]; answers: ClassroomAnswerReceipt[]; projectDraft: string;

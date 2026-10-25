@@ -9,7 +9,7 @@ const { DatabaseSync } = require('node:sqlite');
 const HASH = /^[a-f0-9]{64}$/;
 const UPLOAD = /^studio_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 const ACTIVE = new Set(['queued', 'running', 'retry_wait', 'cancel_requested']);
-const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'sourceCourseChecks','studioMaterialAssets', 'studioWhiteboards', 'studioLearningPacks'];
+const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'sourceCourseChecks','classroomSessions','studioMaterialAssets', 'studioWhiteboards', 'studioLearningPacks'];
 const MAX_ENTRIES = 100000;
 const fail = code => { throw new Error(code); };
 const body = row => typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
@@ -92,10 +92,11 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
           expect(`studio-materials/processed/${row.sha256}/${name}`, file.sha256, file.size);
         }
       }
-    } else if (entry.collection === 'sourceCourses'||entry.collection==='sourceCourseChecks') {
-      const sources=entry.collection==='sourceCourseChecks'?row.prepared?.sources:row.sources;
+    } else if (entry.collection === 'sourceCourses'||entry.collection==='sourceCourseChecks'||entry.collection==='classroomSessions') {
+      if(entry.collection==='classroomSessions'&&!row.sourceCheckId&&row.sourceCheckSources===undefined)continue;
+      const sources=entry.collection==='classroomSessions'?row.sourceCheckSources:entry.collection==='sourceCourseChecks'?row.prepared?.sources:row.sources;
       if (!Array.isArray(sources)) { issues.push('invalid_frozen_course_sources'); continue; }
-      for (const source of sources) { const ref = asset(source.sha256); ref?.references.add((entry.collection==='sourceCourseChecks'?'check:':'course:') + row.id); if (ref && source.kind === 'pdf') frozenPdfs.add(source.sha256); }
+      for (const source of sources) { const ref = asset(source.sha256); ref?.references.add((entry.collection==='classroomSessions'?'classroom:':entry.collection==='sourceCourseChecks'?'check:':'course:') + row.id); if (ref && source.kind === 'pdf') frozenPdfs.add(source.sha256); }
     } else if (entry.collection === 'studioMaterialUploads') {
       if (!UPLOAD.test(row.id ?? '') || !['uploading', 'completed', 'cancelled'].includes(row.status) || !Number.isFinite(Date.parse(row.expiresAt))) { issues.push('invalid_upload_record'); continue; }
       const active = row.status === 'uploading' && (reservedUploads.has(row.id)||Date.parse(row.expiresAt) > now);

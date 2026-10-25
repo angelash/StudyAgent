@@ -31,7 +31,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
   async scheduleUpload(id:string,sha256:string,ownerUserId:string,salt:string){const upload=await this.schedule('upload',id,ownerUserId,salt),source=await this.schedule('source',sha256,ownerUserId,salt);return Number(Boolean(upload))+Number(Boolean(source));}
   private sourceReferenced(sha256:string){
     const {materialReferences}=require(resolve(workspaceRoot(),'scripts/operations/material-audit.cjs'));
-    const rows=['studioSourceMaterials','sourceCourses','sourceCourseChecks','studioMaterialUploads','studioMaterialAssets','studioWhiteboards','studioLearningPacks'].flatMap(collection=>this.store.inspect(collection as 'studioSourceMaterials').map(body=>({collection,body})));
+    const rows=['studioSourceMaterials','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialUploads','studioMaterialAssets','studioWhiteboards','studioLearningPacks'].flatMap(collection=>this.store.inspect(collection as 'studioSourceMaterials').map(body=>({collection,body})));
     const references=materialReferences(rows,[],Date.now());if(references.issues.length)throw new StudioFileCollectionPending('material_collection_reference_unknown');return Boolean(references.assets.get(sha256)?.references.size);
   }
   private uploadReserved(id:string){return this.store.select('studioMaterialAssets',{state:'repairing'}).some(asset=>asset.repair?.uploadId===id);}

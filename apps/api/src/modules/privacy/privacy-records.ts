@@ -146,7 +146,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
         ({...row,publication:row.result?'published':'not_published'}));
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
-      .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...row }) => row);
+      .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests,sourceCheckSources:_sourceCheckSources, ...row }) => row);
     else if (name === 'classroomCodeDrafts') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, baseHash: _base, ...row }) => row);
     else if (name === 'classroomTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||

@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
-import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView } from '@study-agent/contracts';
+import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView,CourseSourceSnapshot } from '@study-agent/contracts';
 import { normalizeClassroomSelection } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
@@ -14,10 +14,12 @@ import { assertSourceCourseAccess } from './source-course.service';
 import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, verifySpeechTrack } from './classroom-presentation';
 import { lessonActivity,projectActivities } from './course-journey';
 import { adultProjectDefinitions } from './course-project-content';
+import { publishedSourceCheck,sourceCheckLesson,sourceCheckKeys,sourceCheckExposed } from './source-course-check-classroom';
 
 export type ClassroomSessionRecord = ClassroomSession & {
-  answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[] }>;
+  answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[];sourceReferences?:Array<{sourceKey:string;quote:string}> }>;
   hintKeys?: Record<string, string[]>;
+  sourceCheckSources?: CourseSourceSnapshot[];
   requests: Array<{ key: string; hash: string; kind: 'answer' | 'chat' | 'turn' | 'hint' | 'presentation'; messageId?: string; questionId?: string }>;
 };
 
@@ -60,7 +62,8 @@ export class ClassroomService {
   }
 
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
-    const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...safe } = structuredClone(row);
+    const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, sourceCheckSources:_sourceCheckSources,...safe } = structuredClone(row);
+    if(row.sourceCheckId&&sourceCheckExposed(this.store,row))safe.authoringAnswerExposure=true;
     safe.presentation = structuredClone(sessionPresentation(row));
     safe.messages = safe.messages.map(message => message.role === 'assistant' ? {
       ...message, speech: message.speech ? verifySpeechTrack(message.content,message.speech) : freezeSpeechTrack(message.content,'legacy-v1'),
@@ -72,7 +75,8 @@ export class ClassroomService {
       const source = course?.units.flatMap(unit => unit.lessons).find(lesson => lesson.id === row.lessonId);
       current = course && source ? curriculumClassroomLesson(course, source) : undefined;
     }
-    if(row.sourceCourseId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId});
+    if(row.sourceCheckId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId}),check=course&&publishedSourceCheck(this.store,course,row.sourceCheckId);current=check?sourceCheckLesson(check):undefined;}
+    else if(row.sourceCourseId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId});
       const index=course?.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===row.lessonId)??-1;
       current=course&&index>=0&&course.status==='active'?sourceCourseLesson(course,index):undefined;}
     const projectUnit = row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId })?.units
@@ -84,6 +88,7 @@ export class ClassroomService {
   }
 
   get(user: InMemoryUserAccount, id: string) { return this.view(this.record(user, id)); }
+  source(user:InMemoryUserAccount,id:string,key:string){const row=this.record(user,id),source=row.sourceCheckSources?.find(source=>source.key===key);if(!source)throw new NotFoundException('课堂冻结原文不存在');return structuredClone(source);}
 
   private hintLevels(row: ClassroomSessionRecord, questionId: string) {
     const saved = row.hintKeys?.[questionId];
@@ -94,9 +99,11 @@ export class ClassroomService {
 
   open(user: InMemoryUserAccount, input: unknown) {
     const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),sourceCourseId:z.string().min(1).max(180).optional(),
-      useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源'), input);
+      sourceCheckId:z.string().min(1).max(180).optional(),useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源')
+      .refine(value=>!value.sourceCheckId||Boolean(value.sourceCourseId)&&!value.studioCourseId&&value.lessonId==='source-check:'+value.sourceCheckId,'核查题组与来源课程不一致'), input);
     let lesson = classroomLesson(command.lessonId), courseId = 'sociology-foundations', studentId: string | null = null;
-    let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|undefined;let authoringAnswerExposure=false;
+    let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|ReturnType<typeof sourceCheckKeys>|undefined;let authoringAnswerExposure=false;
+    let check:ReturnType<typeof publishedSourceCheck>;
     if (command.studioCourseId) {
       const course = this.store.find('studioCourses', { id: command.studioCourseId });
       if (!course) throw new NotFoundException('课程不存在');
@@ -106,9 +113,17 @@ export class ClassroomService {
       courseId = course.id; studentId = course.studentId;
       if (!lesson) throw new BadRequestException('该活动没有已审核的教学讲解，请使用独立练习入口');
     } else if(command.sourceCourseId){const course=this.store.find('sourceCourses',{id:command.sourceCourseId});if(!course)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,course,this.students);
+      if(command.sourceCheckId){
+        const previous=this.store.find('classroomSessions',{ownerUserId:user.id,sourceCourseId:course.id,sourceCheckId:command.sourceCheckId,lessonId:command.lessonId});
+        if(previous)return this.view(previous);
+        check=publishedSourceCheck(this.store,course,command.sourceCheckId);if(!check)throw new ConflictException('这份核查已撤回、换版或暂不可用，请返回课程查看当前题组');
+        lesson=sourceCheckLesson(check);generatedKeys=sourceCheckKeys(check,lesson);courseId=course.id;studentId=course.studentId;
+        authoringAnswerExposure=Boolean(check.authoringExposures?.some(exposure=>exposure.actorId===user.id&&exposure.contentFingerprint===check!.contentFingerprint));
+      }else{
       if(course.status!=='active')throw new ConflictException('请先确认课程，已归档课程只能查看已有课堂记录');
       const index=course.result?.lessons.findIndex((_,index)=>sourceCourseLesson(course,index)?.id===command.lessonId)??-1;
       if(index<0)throw new NotFoundException('资料课时不存在');lesson=sourceCourseLesson(course,index);generatedKeys=sourceCourseAnswerKeys(course,index);authoringAnswerExposure=course.ownerUserId===user.id&&Boolean(course.authoringExposedAt);courseId=course.id;studentId=course.studentId;
+      }
     } else if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
     if (!lesson) throw new NotFoundException('微课不存在');
     const fingerprint = classroomFingerprint(lesson);
@@ -127,6 +142,7 @@ export class ClassroomService {
     const session: ClassroomSessionRecord = { id: this.store.nextId('classroom'), ownerUserId: user.id, studentId, courseId,
       ...(command.studioCourseId ? { studioCourseId: command.studioCourseId } : {}), lessonId: lesson.id,
       ...(command.sourceCourseId?{sourceCourseId:command.sourceCourseId,...(authoringAnswerExposure?{authoringAnswerExposure:true}:{})}:{}),
+      ...(check?{sourceCheckId:check.id,sourceCheckFingerprint:check.contentFingerprint!,sourceCheckTargets:check.prepared.targets.map(({lessonId,title,objective})=>({lessonId,title,objective})),sourceCheckSources:structuredClone(check.prepared.sources)}:{}),
       contentFingerprint: fingerprint, lesson, presentation: freezeClassroomPresentation(lesson,now), cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
     this.store.append('classroomSessions', session);
@@ -215,7 +231,8 @@ export class ClassroomService {
       row.answers.push({ questionId: question.id, selectedIndex, selectedIndices, correctIndices,
         ...(key.optionExplanations ? { optionExplanations: structuredClone(key.optionExplanations) } : {}),
         correct: disposition === 'answered' && selectedIndices.length === correctIndices.length && selectedIndices.every((value, index) => value === correctIndices[index]),
-        skipped: disposition !== 'answered', explanation: key.explanation,...(row.authoringAnswerExposure?{answerExposure:'authorship' as const}:{}),
+        skipped: disposition !== 'answered', explanation: key.explanation,...(sourceCheckExposed(this.store,row)?{answerExposure:'authorship' as const}:{}),
+        ...(key.sourceReferences?{sourceReferences:structuredClone(key.sourceReferences)}:{}),
         hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)) || Boolean(row.hintReceipts?.some(hint => hint.questionId === question.id)), disposition,
         hintLevel: Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === question.id).map(hint => hint.level)), at: new Date().toISOString() });
       row.revision++; row.updatedAt = new Date().toISOString();
@@ -269,7 +286,7 @@ export class ClassroomService {
     const response = await this.chat.reply({ modelId: command.modelId, signal, classroomBoard: true,
       system: '你是课堂陪伴老师。仅根据本节讲解解释概念与例子，先诊断学生困惑，再给一个可验证的小步骤。不要替学生选择未作答题目的选项，不声称其已经掌握，不输出可执行HTML或工具调用。',
       context: JSON.stringify({ title: row.lesson.title, objective: row.lesson.objective,
-        ...(question ? { practiceQuestion: question, submitted: row.answers.some(answer => answer.questionId === question.id) } : {}),
+        ...(question ? { practiceQuestion: question, submitted: row.answers.some(answer => answer.questionId === question.id),feedback:row.answers.find(answer=>answer.questionId===question.id) } : {}),
         teaching: row.lesson.steps.slice(0, Math.max(1, row.revealed)).map(item => ({ title: item.title, narration: item.narration })),
         projectDraft: row.projectDraft.slice(0, 10000) }),
       history: row.messages.map(message => ({ role: message.role, content: message.content })), message: command.message });

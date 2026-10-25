@@ -1,0 +1,33 @@
+{
+  "status": "api-increment-only",
+  "deployed": false,
+  "scope": "Frozen source-check classrooms, real shared learner authorization, immutable first answers, exact frozen source read, versioned journey and material retention",
+  "sqlite": {
+    "passed": 28,
+    "failed": 0,
+    "http": 19,
+    "storage": 9
+  },
+  "postgres": {
+    "passed": 22,
+    "failed": 0,
+    "http": 19,
+    "nativeStorage": 3
+  },
+  "materialAudit": {
+    "passed": 12,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "initialFailures": [
+    "HTTP fixture expected 403 after guardian revocation; authentication correctly rejected the revoked learner with 401. Original 18 pass / 1 fail report retained.",
+    "Typecheck required narrowing unknown test fixture values; original and intermediate logs retained."
+  ],
+  "limits": [
+    "Explicit synthetic model substitutes only; no real model generation for 120 yet.",
+    "No frontend, full regression, exact CI or daemon delivery for 120 yet.",
+    "Synthetic PDF-shaped bytes establish retention and byte integrity, not PDF parser acceptance.",
+    "SQLite and PostgreSQL counts overlap in the same 19 HTTP cases and must not be added.",
+    "No formal mastery or root cause conclusions produced."
+  ]
+}
