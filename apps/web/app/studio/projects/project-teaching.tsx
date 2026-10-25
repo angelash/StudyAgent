@@ -26,6 +26,7 @@ export function ProjectTeachingNavigator({project,stage,stepId,busy,onStep,onSta
       <button aria-label="项目朗读设置" onClick={()=>setSettings(true)}>♫</button><button onClick={()=>{if(active)narration.pause();onAssistant();}}>○ 助教</button><button onClick={complete}>完整作品</button>
     </header>
     <section className="pj-teaching-intro" aria-label="当前项目步骤"><div><select aria-label="项目阶段" disabled={busy} value={stage.id} onChange={event=>{narration.stop();onStage(event.target.value);}}>{project.definition.stages.map(item=><option key={item.id} value={item.id}>{item.title}</option>)}</select><span> · STEP {index+1} OF {steps.length}</span></div>
+      {step.kind==='field'&&<span className="pj-teaching-badge">YOUR ANSWER · 你的作品</span>}
       <div className="pj-teaching-title"><h2 ref={heading} tabIndex={-1}>{step.title}</h2><button disabled={narration.loading||!narration.view?.speech.available} onClick={()=>active?narration.pause():void narration.play()}>{active?'Ⅱ 暂停':narration.state==='paused'?'▷ 继续朗读':'▷ 朗读本步骤'}</button>{narration.state!=='idle'&&<button onClick={narration.stop}>■ 停止</button>}</div>
       <p aria-live="off">{unit?<>{step.instruction.slice(0,unit.start)}<mark>{step.instruction.slice(unit.start,unit.end)}</mark>{step.instruction.slice(unit.end)}</>:step.instruction}</p>
       {narration.notice&&<p className="pj-teaching-audio-notice" role="status">{narration.notice}<button onClick={narration.reload}>重新读取朗读设置</button></p>}
