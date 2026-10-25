@@ -10,6 +10,7 @@ import readline from 'node:readline';
 import { z } from 'zod';
 import { resolveCodexInvocation } from './codex-command';
 import { XiaojiuModelsService } from './xiaojiu-models.service';
+import { terminateChildProcess } from '../../common/terminate-child-process';
 
 const chatSchema = {
   type: 'object',
@@ -137,8 +138,9 @@ export class XiaojiuChatService {
         return;
       }
       const invocation = resolveCodexInvocation(this.env.CODEX_COMMAND);
+      const grouped = process.platform !== 'win32';
       const child = spawn(invocation.command, args, { cwd: process.cwd(), env: process.env,
-        windowsHide: true, shell: invocation.shell });
+        windowsHide: true, shell: invocation.shell, detached: grouped });
       let finalMessage = '', structuredError = '', finished = false;
       const errors: string[] = [];
       const abort = () => stop(new ServiceUnavailableException('本次对话已取消'));
@@ -149,8 +151,9 @@ export class XiaojiuChatService {
         finished = true;
         clearTimeout(timeout);
         signal?.removeEventListener('abort', abort);
-        try { child.kill(); } catch { /* Process may already be closed. */ }
-        reject(error);
+        void terminateChildProcess(child, grouped).then(() => reject(error), failure => reject(
+          new ServiceUnavailableException(error.message + '；' + (failure instanceof Error ? failure.message : '进程结束未确认'))
+        )).finally(() => { stdout.close(); stderr.close(); });
       }
       signal?.addEventListener('abort', abort, { once: true });
       child.once('error', error => stop(new ServiceUnavailableException('无法启动小九AI CLI：' + error.message)));

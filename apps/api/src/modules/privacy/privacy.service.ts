@@ -183,6 +183,10 @@ export class PrivacyService {
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
     const sourceHashes=new Set<string>();
+    for(const turn of selection.assistantTurns??[]){
+      const task=await this.store.tasks.get(String(turn.taskId));
+      if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const upload of selection.projectAssetUploads??[])await scheduleProjectFileCollection(this.store,'project-upload',String(upload.id),actor.id);
     for(const asset of selection.projectAssets??[]){
       const task=await this.store.tasks.get(String(asset.taskId));if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});

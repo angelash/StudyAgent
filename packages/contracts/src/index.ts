@@ -747,3 +747,5 @@ export * from './source-course-lifecycle';
 
 export * from './project-assets';
 export * from './answer-draft';
+
+export * from './assistant-turn';

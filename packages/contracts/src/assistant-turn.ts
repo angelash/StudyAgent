@@ -1,0 +1,17 @@
+export type AssistantReplySource = 'rules' | 'openai' | 'xiaojiu';
+export type AssistantReply = { reply: string; source: AssistantReplySource; evidenceIds: string[]; modelId: string | null; modelName: string | null };
+export type AssistantHistoryMessage = { id: string; sessionId: string; sender: 'user' | 'assistant'; content: string; createdAt: string;
+  sequence?: number; source?: AssistantReplySource; modelId?: string | null; modelName?: string | null; evidenceIds?: string[]; assistanceRecorded?: boolean; inReplyTo?: string };
+export type AssistantLocation = { sessionId: string; pageContext: string; studentId: string | null; subject: string | null;
+  contextRefType: string | null; contextRefId: string | null; contextItemId: string | null; href: string | null };
+export type AssistantContextView = { contextVersion: string; location: AssistantLocation };
+export type AssistantTurnCommand = { requestKey: string; message: string; modelId: string; contextVersion: string };
+export type AssistantTurnView = { id: string; sessionId: string; requestKey: string; message: string; requestedModelId: string | null;
+  modelId: string | null; modelName: string; source: AssistantReplySource; contextVersion: string; location: AssistantLocation;
+  status: 'queued' | 'running' | 'validating' | 'completed' | 'failed' | 'cancelled' | 'cancelling'; revision: number;
+  createdAt: string; updatedAt: string; userMessageId?: string; assistantMessageId?: string;
+  task: { state: string; generation: number; version: number; errorCode: string | null } | null };
+export type AssistantHistoryPage = { messages: AssistantHistoryMessage[]; nextCursor: string | null; location: AssistantLocation };
+export type AssistantTurnList = { turns: AssistantTurnView[]; hasMore: boolean; page: number; pageSize: number };
+export type AssistantHistorySearch = { sessions: Array<{sessionId:string;location:AssistantLocation;lastAt:string;messageCount:number;matchId:string|null;lastTurnId:string|null;preview:string;lastTurn:AssistantTurnView|null}>;
+  total:number;page:number;pageSize:number };

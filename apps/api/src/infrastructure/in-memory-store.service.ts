@@ -2,6 +2,7 @@ import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning
 import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
+import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import type { CourseProjectRecord } from '../modules/learning/course-project.service';
@@ -391,6 +392,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   missionAnswers: MissionAnswerRecord[] = [];
   assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string }> = [];
   assistantMessages: AssistantMessage[] = [];
+  assistantTurns: AssistantTurnRecord[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];
   knowledgeAtoms: KnowledgeAtom[] = [];
@@ -488,6 +490,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.missionAnswers = [];
     this.assistantSessions = [];
     this.assistantMessages = [];
+    this.assistantTurns = [];
     this.aiInsights = [];
     this.events = [];
     this.knowledgeAtoms = [];

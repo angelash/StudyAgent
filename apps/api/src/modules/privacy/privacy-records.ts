@@ -49,6 +49,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'missionAnswers', row => missions.has(row.missionId));
   add(result, store, 'assistantSessions', row => row.studentId === studentId || learnerIds.has(row.ownerUserId));
   const assistants = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => assistants.has(row.sessionId));
+  add(result, store, 'assistantTurns', row => assistants.has(row.sessionId));
   add(result, store, 'aiInsights', row => row.studentId === studentId || assistants.has(row.sourceId) || assessments.has(row.sourceId) || missions.has(row.sourceId));
   const allIds = new Set(Object.values(result).flat().map(recordId).filter(Boolean));
   add(result, store, 'events', row => hasReference(row.payload, allIds));
@@ -79,6 +80,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
+  add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
   add(result, store, 'events', row => hasReference(row.payload, references));
@@ -96,7 +98,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
     activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
-    conversations: count('assistantMessages'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
+    conversations: count('assistantMessages', 'assistantTurns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
   return digest({ context, collections: Object.keys(selection).sort().map(name => [name, [...selection[name]].sort((a, b) => recordId(a).localeCompare(recordId(b)))]) });
@@ -131,6 +133,8 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
+    else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
+      .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
     else if (name === 'classroomSessions') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, ...row }) => row);

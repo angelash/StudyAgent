@@ -72,8 +72,9 @@ describe('evidence coach without search subprocess or a required AI key', () => 
   it('rejects fabricated model evidence and cancels without saving a partial conversation', async () => {
     const session = ai.openAssistantSession({ userRole: 'parent', studentId: 'child', subject: 'math', pageContext: 'review' }, store.users[0]);
     ai.client = { chat: { completions: { create: async () => ({ choices: [{ message: { content: JSON.stringify({ reply: '这个结论没有合法依据，应该被系统拒绝。', evidenceIds: ['invented-evidence'] }) } }] }) } } };
-    const response = await ai.chat({ sessionId: session.id, message: '请分析原因' });
-    expect(response.source).toBe('rules'); expect(response.evidenceIds).toEqual([]);
+    const originalCount = store.assistantMessages.length;
+    await expect(ai.chat({ sessionId: session.id, message: '请分析原因' })).rejects.toThrow('未完成');
+    expect(store.assistantMessages).toHaveLength(originalCount);
     const before = store.assistantMessages.length, controller = new AbortController(); controller.abort();
     await expect(ai.chat({ sessionId: session.id, message: '取消本次请求', signal: controller.signal })).rejects.toThrow('取消');
     expect(store.assistantMessages).toHaveLength(before);
@@ -94,12 +95,16 @@ describe('evidence coach without search subprocess or a required AI key', () => 
       prompt = JSON.stringify(command.messages);
       return { choices: [{ message: { content: JSON.stringify({ reply: '最终答案是731，这条泄露答案的回复应当被拒绝。', evidenceIds: [] }) } }] };
     } } } };
-    const message = { message: '我已经写了想法，怎样检查条件？', requestKey: 'practice-help-1' };
-    const response = (await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data;
+    const rejected = { message: '我已经写了想法，怎样检查条件？', requestKey: 'practice-help-rejected' };
+    await post(`/assistant/sessions/${id}/messages`, rejected).expect(503);
     expect(prompt).toContain('两堆积木'); expect(prompt).toContain('我先把数量');
     expect(prompt).not.toContain('PRIVATE_REFERENCE_ANALYSIS'); expect(prompt).not.toContain('731'); expect(prompt).not.toContain('gradingConfig');
     expect(prompt).toContain('\\"memory\\"'); expect(prompt).toContain('当前指导计划');
     expect(prompt).not.toContain('undefined分钟');
+    expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(0);
+    ai.client = null;
+    const message = { ...rejected, requestKey: 'practice-help-1' };
+    const response = (await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data;
     expect(response.source).toBe('rules'); expect(response.assistanceRecorded).toBe(true); expect(response.reply).toContain('草稿');
     expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(1);
     expect((await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data.messages).toHaveLength(2);

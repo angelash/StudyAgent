@@ -46,18 +46,18 @@ export class AiController {
     @Param('sessionId') sessionId: string,
     @Body() body: { message: string; requestKey?: string; modelId?: string },
   ) {
-    this.aiService.assertSessionOwner(sessionId, req.user);
+    this.aiService.assertSessionOwner(sessionId, req.user, false);
     const controller = new AbortController();
     const abort = () => { if (!response.writableEnded) controller.abort(); };
     response.on('close', abort);
     try { return await this.aiService.chat({ sessionId, message: body.message, modelId: body.modelId,
-      requestKey: body.requestKey, signal: controller.signal }); }
+      requestKey: body.requestKey, signal: controller.signal, authSession:req.authSession }); }
     finally { response.off('close', abort); }
   }
 
   @Get('assistant/sessions/:sessionId/messages')
   listMessages(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string) {
-    this.aiService.assertSessionOwner(sessionId, req.user);
+    this.aiService.assertSessionOwner(sessionId, req.user, false);
     return this.aiService.listMessages(sessionId);
   }
 }

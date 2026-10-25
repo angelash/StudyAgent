@@ -20,6 +20,7 @@ import { GuidanceManager, ReviewScheduleEditor } from '../../../components/guida
 import { TeachingGuide } from '../../../components/teaching-guide';
 import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
+import { QuestionFaceView } from '../../../components/question-face-view';
 import { answerInputConfiguration } from '@study-agent/contracts';
 import { AssessmentBlueprintCard } from '../../../components/assessment-blueprint';
 import { ComponentObservations, DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
@@ -71,6 +72,7 @@ export function AssessmentStudio() {
   const sessionReadGeneration = React.useRef(0);
   React.useEffect(() => () => { sessionReadGeneration.current++; }, []);
   const atomDeepLinkDone = React.useRef(false);
+  const [locatedItem, setLocatedItem] = React.useState<{ id: string; payload: QuestionRenderPayload } | null>(null);
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
   const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
@@ -85,7 +87,7 @@ export function AssessmentStudio() {
     try { await fn(); } catch (caught) { setError(caught instanceof Error ? caught.message : '操作暂未完成，请重试'); }
     finally { setBusy(false); }
   }
-  async function openSession(next: Session, recover = true) {
+  async function openSession(next: Session, recover = true, requestedItemId: string | null = null) {
     const generation = ++sessionReadGeneration.current;
     if (recover) await recoverPendingAnswerSubmission('diagnostic', next.id);
     if (generation !== sessionReadGeneration.current) return;
@@ -93,12 +95,24 @@ export function AssessmentStudio() {
     if (generation !== sessionReadGeneration.current) return;
     if (!recover) draft.confirmed();
     setStudentId(next.scopeSnapshot.studentId); setSubject(next.subject); setGrade(next.scopeSnapshot.grade); setTerm(next.scopeSnapshot.term);
-    draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false);
+    draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false); setLocatedItem(null);
     setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
     try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
     window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}`);
-    if (['completed', 'aborted'].includes(next.status)) { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${next.id}/report`)); setScreen('report'); }
+    if (['completed', 'aborted'].includes(next.status)) { const savedReport = await request<DiagnosticReport>(`/diagnostics/sessions/${next.id}/report`); if (generation !== sessionReadGeneration.current) return; setReport(savedReport); setScreen('report'); }
     else setScreen('assessment');
+    if (generation !== sessionReadGeneration.current || !requestedItemId) return;
+    const target = next.items.find(item => item.id === requestedItemId);
+    const activeItem = next.routing ? next.routing.currentItemId : next.items.find(item => !item.answered)?.id;
+    if (!target || !target.answered && target.id !== activeItem) {
+      setError('这道题尚未开放或不属于原评测，请按当前核查顺序继续。'); return;
+    }
+    if (target.answered) {
+      const original = await request<{ payload: QuestionRenderPayload }>(`/diagnostics/sessions/${next.id}/items/${encodeURIComponent(target.id)}`);
+      if (generation !== sessionReadGeneration.current) return;
+      setLocatedItem({ id: target.id, payload: original.payload });
+    }
+    window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}&item=${encodeURIComponent(target.id)}`);
   }
 
   React.useEffect(() => {
@@ -117,7 +131,7 @@ export function AssessmentStudio() {
         if (sessionId && selected) {
           const restored = await request<Session>(`/diagnostics/sessions/${encodeURIComponent(sessionId)}`);
           if (!alive) return;
-          setSubject(restored.subject); await openSession(restored);
+          setSubject(restored.subject); await openSession(restored, true, params.get('item'));
         } else if (selected) {
           const selectedSubject = subjects.some(([key]) => key === requestedSubject) ? requestedSubject! : 'math';
           const previewId = params.get('blueprint');
@@ -246,7 +260,7 @@ export function AssessmentStudio() {
     if (screen === 'assessment' && answerReady && !await draft.prepareToLeave()) return;
     sessionReadGeneration.current++;
     draft.reset();
-    previewRequest.current = { signature: '', key: '' }; setBlueprint(null); setScreen('setup');
+    previewRequest.current = { signature: '', key: '' }; setBlueprint(null); setLocatedItem(null); setScreen('setup');
     if (intent === 'verification' || intent === 'retest') { setIntent('baseline'); setMaxItems(12); }
     try { sessionStorage.removeItem(previewStorageKey(studentId, subject)); } catch { /* No local state is required. */ }
     window.history.replaceState({}, '', `?studentId=${encodeURIComponent(studentId)}&subject=${subject}`);
@@ -351,7 +365,13 @@ export function AssessmentStudio() {
             {plan && <button className="studio-plan-shortcut" onClick={() => setScreen('plan')}>已有指导计划 · {plan.status === 'active' ? '正在执行' : '查看与确认'} <span>↗</span></button>}
           </>}
           {screen === 'preview' && blueprint && <AssessmentBlueprintCard preview={blueprint} busy={busy} onBack={leaveBlueprint} onStart={() => execute(async () => openSession(await request<Session>(`/diagnostics/blueprints/${encodeURIComponent(blueprint.id)}/start`, {})))} />}
-          {screen === 'assessment' && session && <>
+          {locatedItem && session && <section className="studio-question" aria-label="从历史对话定位的题目">
+            <span className="studio-eyebrow">原题回看</span><h2>已定位到当时讨论的题目。</h2>
+            <p>这里显示原评测冻结的题面。首次作答保持原记录，回看不会重新提交或改变当前核查顺序。</p>
+            <QuestionFaceView payload={locatedItem.payload} stem="原评测题目" />
+            <button className="studio-secondary" onClick={() => { setLocatedItem(null); window.history.replaceState({}, '', `?studentId=${encodeURIComponent(studentId)}&session=${encodeURIComponent(session.id)}`); }}>{['completed', 'aborted'].includes(session.status) ? '回到本组报告与原作答' : '回到当前核查进度'}</button>
+          </section>}
+          {!locatedItem && screen === 'assessment' && session && <>
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
             {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{draft.label}</small></div>
@@ -368,7 +388,7 @@ export function AssessmentStudio() {
             {endOpen && <form className="assessment-stop" onSubmit={event => { event.preventDefault(); void changeSessionState('abort'); }}><h3>保留这次已经完成的部分。</h3><p>已提交的表现和草稿继续保存，未答题保持未知。本组结束后不能再续答，可从当前范围另开一组新题。</p><label>这次提前结束的原因<textarea required minLength={5} maxLength={1000} rows={3} value={endReason} onChange={event => setEndReason(event.target.value)} placeholder="例如：今天已经疲劳，休息后再用新题继续观察。" /></label><div><button className="studio-primary" disabled={busy || mediaPending || endReason.trim().length < 5}>保留已答记录，结束本组</button><button type="button" className="studio-text-button" disabled={busy} onClick={() => setEndOpen(false)}>继续这一组</button></div></form>}
             <p className="studio-footnote">首次提交会保留为测量证据；提示记录会单独计入。随时可以离开，回来继续。</p>
           </>}
-          {screen === 'report' && report && <>
+          {!locatedItem && screen === 'report' && report && <>
             <div className="studio-section-head"><span className="studio-eyebrow">03 / 知道表现，也知道依据</span><h2>从知识点看清下一步。</h2><p>{report.summary}</p></div>
             {report.scopeSnapshot && <details className="studio-report-scope"><summary>本次范围：{report.scopeSnapshot.grade}年级 · {report.scopeSnapshot.term === 'upper' ? '上学期' : '下学期'} · {report.scopeSnapshot.textbookVersion}</summary><p>按评测开始时确认的范围测量：{report.scopeSnapshot.learnedAtomIds.length} 个知识点，{report.scopeSnapshot.selectedLessonIds?.length ?? 0} 个已学课时。</p>{(report.scopeSnapshot.uncoveredLessonIds?.length ?? 0) > 0 && <p>其中 {report.scopeSnapshot.uncoveredLessonIds!.length} 个课时尚缺已审核的知识映射，报告不评价这些课时。</p>}{report.scopeSnapshot.selectedLessonSnapshots?.map((lesson) => <p key={lesson.id}>{lesson.chapterName} / {lesson.name}{report.scopeSnapshot!.uncoveredLessonIds?.includes(lesson.id) && ' · 尚未覆盖'}</p>)}</details>}
             {report.status === 'aborted' && <div className="assessment-partial" role="status"><strong>本组提前结束，仅记录已答部分。</strong><p>未作答的内容保持未知。可查看当时的具体表现，重新评测后再建立指导计划。</p></div>}
@@ -419,11 +439,11 @@ export function AssessmentStudio() {
         </>}
       </section>
     </div>
-    {loggedIn && studentId && !(screen === 'assessment' && session?.status === 'paused') && <AssistantWidget userRole={screen === 'assessment' || studentMode ? 'student' : 'parent'} studentId={studentId} subject={subject}
-      pageContext={screen === 'assessment' ? 'assessment' : 'review'}
-      contextRefType={screen === 'assessment' && current || screen === 'report' ? 'diagnostic' : screen === 'plan' && plan ? 'plan' : null}
-      contextRefId={screen === 'assessment' && current || screen === 'report' ? session?.id : screen === 'plan' ? plan?.id : null}
-      contextItemId={screen === 'assessment' ? current?.id : null}
+    {loggedIn && studentId && !(screen === 'assessment' && session?.status === 'paused') && <AssistantWidget userRole={locatedItem || screen === 'assessment' || studentMode ? 'student' : 'parent'} studentId={studentId} subject={subject}
+      pageContext={locatedItem || screen === 'assessment' ? 'assessment' : 'review'}
+      contextRefType={locatedItem || screen === 'assessment' && current || screen === 'report' ? 'diagnostic' : screen === 'plan' && plan ? 'plan' : null}
+      contextRefId={locatedItem || screen === 'assessment' && current || screen === 'report' ? session?.id : screen === 'plan' ? plan?.id : null}
+      contextItemId={locatedItem?.id ?? (screen === 'assessment' ? current?.id : null)}
       title="学习观察助教" subtitle={screen === 'assessment' ? '提示会与独立作答分开记录' : '从具体证据，看清下一步'} />}
   </main>;
 }
