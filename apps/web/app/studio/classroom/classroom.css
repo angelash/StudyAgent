@@ -48,3 +48,5 @@
 
 .cl-ai-board{scroll-margin-top:100px}.cl-board-expand:focus-visible,.cl-read-reply:focus-visible{outline:2px solid #8c7447;outline-offset:2px}
 @media(max-width:700px){.cl-ai-board{scroll-margin-top:130px}}
+
+@media print{.cl-print-notes *{animation:none!important;transition:none!important}.cl-print-notes .cl-lesson-image button>span{display:none}}
