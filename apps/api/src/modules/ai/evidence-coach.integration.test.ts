@@ -41,6 +41,8 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     const runner = app.get(XiaojiuChatService);
     const reply = vi.spyOn(runner, 'reply').mockResolvedValue({ reply: '先核对已有证据，再用新题验证。',
       evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'DeepSeek V4.1 Flash' });
+    const enabled = vi.spyOn(runner, 'enabled', 'get').mockReturnValue(true);
+    try {
     const opened = await post('/assistant/sessions', { userRole: 'parent', studentId: 'child',
       subject: 'math', pageContext: 'review' }).expect(201);
     await post('/assistant/sessions/' + opened.body.data.id + '/messages',
@@ -52,9 +54,11 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     expect(response.body.data.messages[1]).toMatchObject({ source: 'xiaojiu',
       modelId: 'deepseek-v4-flash', modelName: 'DeepSeek V4.1 Flash' });
     expect(reply).toHaveBeenCalledWith(expect.objectContaining({ modelId: 'deepseek-v4-flash' }));
-    reply.mockRestore();
-    store.assistantSessions = [];
-    store.assistantMessages = [];
+    } finally {
+      reply.mockRestore(); enabled.mockRestore();
+      store.assistantSessions = [];
+      store.assistantMessages = [];
+    }
   });
 
   it('validates session scope and gives evidence-based local coaching in all three subjects', async () => {
