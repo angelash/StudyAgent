@@ -332,6 +332,10 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     pause(); const operation = { abort: new AbortController(), audio: null as HTMLAudioElement | null, url: '' }; replyAudio.current = operation;
     setReadingReply(messageId); setExpandedReply(''); setReplyReadingMode(mode);
     try {
+      // A pending navigation save also selects its destination page. Let that finish
+      // before locating the reply, so its late page change cannot hide the reader.
+      await revisionQueue.current.catch(() => undefined);
+      if (operation.abort.signal.aborted) return;
       const message = row.current.messages.find(item => item.id === messageId);
       if (!message) throw new Error('回答记录不存在，请重新读取课堂');
       const units = classroomReplyUnits(message);

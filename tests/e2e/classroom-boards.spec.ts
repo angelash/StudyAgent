@@ -71,9 +71,15 @@ test('audio ended advances frozen units, abort settles a pending reader and a ne
 
 test('complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable',async({page})=>{
   await enter(page);await ask(page);
-  for(let index=0;index<3;index++)await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
+  for(let index=0;index<2;index++)await page.getByRole('button',{name:'下一步 ›',exact:true}).click();
+  await expect(page.locator('.cl-session-navigation')).toContainText('4 / 8');
   await expect(page.locator('.cl-ai-board')).toHaveCount(0);
-  const read=page.getByRole('button',{name:'按句阅读这段回答',exact:true});await read.focus();await page.keyboard.press('Enter');
+  // Hold a real navigation save so keyboard reading must wait for its final page change.
+  let release!:()=>void,arrive!:()=>void;const hold=new Promise<void>(resolve=>release=resolve),arrival=new Promise<void>(resolve=>arrive=resolve);
+  await page.route(/\/api\/learning\/classroom\/sessions\/[^/?]+$/,async route=>{if(route.request().method()==='PATCH'){arrive();await hold;}await route.fallback();});
+  try{await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await arrival;
+    const read=page.getByRole('button',{name:'按句阅读这段回答',exact:true});await read.focus();await page.keyboard.press('Enter');
+  }finally{release();}
   await expect(board(page)).toBeInViewport({ratio:0.2});await expect(board(page).locator('tbody tr')).toHaveCount(0);
   await board(page).getByRole('button',{name:'展开完整笔记'}).focus();await page.keyboard.press('Enter');await expect(board(page).locator('tbody tr')).toHaveCount(2);await expect(board(page).locator('math')).toHaveCount(1);
   await page.getByRole('button',{name:'■ 停止阅读',exact:true}).click();
