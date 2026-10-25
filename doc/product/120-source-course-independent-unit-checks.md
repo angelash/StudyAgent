@@ -174,3 +174,5 @@ SourceCourseJourney.unitCheck 保持旧 not_configured 兼容，扩展为公开�
 cancel保留原body/hash/requestKey/generation、原回执优先重放及完整当前管理授权。允许同一generation内旧的非未来taskVersion/expectedRevision取消仍为queued/generating且任务仍为queued/running/retry_wait的准备；仅当原修订以后没有cancel/retry控制回执时允许进度漂移，并在事务内以实际读取的task.version执行任务CAS。取消同一代次的原意不因后台领取、心跳或写题检查点失效；不自动改写浏览器原命令、不更换请求键。明确已完成/失败/已取消/正在取消、未来修订、不同代次及控制命令之后的旧意图继续拒绝。retry仍要求全部版本严格相等，不能用宽松取消规则重启新任务。成功原回执重放不再执行取消，即使后续已进入新代次，也只返回原控制回执与当前状态。
 
 先以双库真实HTTP受控复现：保存prepare返回的queued旧快照，启动真实worker并在模型处等待，确认后台版本已推进，再按原queued快照取消；保留修复前409失败、修复后取消、原命令重放、迟到模型稿被挡，以及旧代次/未来版本/第二份旧控制请求拒绝。浏览器用真实路由hold保留旧列表响应，待后端已进入generating后再呈现旧按钮并取消，验证原参数一次成功；继续复核原模型重试及uncertain显式确认。实现后重新执行适当完整API、PG、零重试整站与新精确CI，保持119守护运行到全部发布门禁完成。主目录源码已前移4b118df，编译产物和运行进程仍是119，尚无停服数据备份或新版运行交付。
+
+2026-10-26取消修复b3fb6fa：修复前按queued原快照的真实HTTP受控用例稳定409失败，修复后22项HTTP、PG25项（同22 HTTP/3原生恢复）与九项浏览器零重试通过。浏览器确实保留queued旧快照至后台generating且两个版本均推进后才显示旧按钮，并核对唯一一次POST仍携带原参数；没有通过增加替身时间放宽。旧代次/未来版本、旧控制之后的新请求和旧retry拒绝，原回执重放不影响新代次；迟到原稿仍被屏障拒绝。完整API、217整站和新精确CI重新验收中，线上仍为119。见[取消竞态收据](../evidence/2026-10-26/source-check-cancellation/receipt.json)及[第二轮CI原始失败](../evidence/2026-10-26/source-check-ci-final/receipt.json)。
