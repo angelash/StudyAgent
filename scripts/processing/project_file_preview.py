@@ -10,7 +10,12 @@ from file_leases import file_lease, no_links
 
 def preview(source, output, kind):
     if kind == 'pdf':
-        import fitz
+        try:
+            import pymupdf as fitz
+        except ModuleNotFoundError as error:
+            if error.name != 'pymupdf':
+                raise
+            import fitz
         with fitz.open(source) as document:
             if not document.is_pdf or document.needs_pass:
                 raise ValueError('project_pdf_encrypted_or_invalid')
@@ -79,8 +84,8 @@ if __name__ == '__main__':
         no_links(output)
         with file_lease(control):
             result = preview(Path(source), Path(output), kind)
-        print(json.dumps(result))
+        print('PROJECT_FILE_RESULT ' + json.dumps({'format': 'study-project-preview-v1', 'result': result}))
     except Exception as error:
         code = str(error) if isinstance(error, ValueError) else ('project_processor_unavailable' if isinstance(error, ImportError) else 'project_document_invalid')
-        print(json.dumps({'error': code}))
+        print('PROJECT_FILE_RESULT ' + json.dumps({'format': 'study-project-preview-v1', 'error': code}))
         sys.exit(1)

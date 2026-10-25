@@ -32,6 +32,7 @@ jobs:
           python scripts/processing/test_complete_pdf_text.py
           python scripts/processing/test_studio_checkpoints.py
           python scripts/processing/test_file_leases.py
+          python scripts/qa/verify-project-file-preview.py data/qa/project-files-native-preview.json
       - name: Install media tools
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
       - name: Prepare configuration

@@ -4,9 +4,9 @@ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import { createHash, randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { delimiter, join } from 'node:path';
 import sharp from 'sharp';
 import {Pool} from 'pg';
 
@@ -54,7 +54,8 @@ describe('project files retain actual bytes, immutable submissions and original 
     const image=await settleAsset((await upload(project,png,'image/jpeg')).id);expect(image).toMatchObject({status:'ready',width:12,height:9});expect(image.original.sha256).toBe(digest(png));expect(image.display.sha256).not.toBe(image.original.sha256);
     const clean=readFileSync(join(directory,'project-assets',image.id,image.display.name));expect((await sharp(clean).metadata()).exif).toBeUndefined();
     execFileSync(process.env.STUDY_PYTHON??(process.platform==='win32'?'python':'python3'),['-X','utf8','-c','import fitz,sys,zipfile,wave\nd=fitz.open()\nfor i in range(2):\n p=d.new_page();p.insert_text((40,70),"Synthetic project evidence "+str(i+1))\nd.save(sys.argv[1]);d.close()\nwith zipfile.ZipFile(sys.argv[2],"w") as z:\n z.writestr("[Content_Types].xml",\'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>\');z.writestr("word/document.xml",\'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body/></w:document>\')\nwith wave.open(sys.argv[3],"w") as w:\n w.setnchannels(1);w.setsampwidth(2);w.setframerate(16000);w.writeframes(bytes(16000))',join(directory,'fixture.pdf'),join(directory,'fixture.docx'),join(directory,'fixture.wav')],{windowsHide:true,timeout:30000});
-    const pdf=await settleAsset((await upload(project,readFileSync(join(directory,'fixture.pdf')),'application/pdf')).id);expect(pdf).toMatchObject({status:'ready',pageCount:2});expect(pdf.previews).toHaveLength(2);for(const preview of pdf.previews)expect((await sharp(readFileSync(join(directory,'project-assets',pdf.id,preview.file.name))).metadata()).format).toBe('png');
+    const noise=join(directory,'python-startup-noise');mkdirSync(noise);writeFileSync(join(noise,'sitecustomize.py'),'from pathlib import Path\nPath(__file__).with_name("startup-observed").write_text("seen")\nprint("Synthetic native dependency startup banner before the framed result")\n');const previousPythonPath=process.env.PYTHONPATH;process.env.PYTHONPATH=noise+(previousPythonPath?delimiter+previousPythonPath:'');
+    try{const pdf=await settleAsset((await upload(project,readFileSync(join(directory,'fixture.pdf')),'application/pdf')).id);expect(pdf.status,pdf.task?.errorCode).toBe('ready');expect(pdf.pageCount).toBe(2);expect(existsSync(join(noise,'startup-observed'))).toBe(true);expect(pdf.previews).toHaveLength(2);for(const preview of pdf.previews)expect((await sharp(readFileSync(join(directory,'project-assets',pdf.id,preview.file.name))).metadata()).format).toBe('png');}finally{if(previousPythonPath===undefined)delete process.env.PYTHONPATH;else process.env.PYTHONPATH=previousPythonPath;}
     const audio=await settleAsset((await upload(project,readFileSync(join(directory,'fixture.wav')),'audio/wav')).id);expect(audio.status).toBe('ready');expect(audio.durationMs).toBe(500);expect(audio.display.mediaType).toBe('audio/wav');
     const office=await settleAsset((await upload(project,readFileSync(join(directory,'fixture.docx')),'application/vnd.openxmlformats-officedocument.wordprocessingml.document')).id);expect(office.status).toBe('ready');expect(office.display).toBeUndefined();expect(office.previews).toEqual([]);
   });

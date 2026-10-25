@@ -61,7 +61,7 @@ export class ProjectFileWorkerService implements OnApplicationBootstrap, OnModul
     }catch(error){
       if(task.kind==='project.file.collect')await this.store.tasks.deferProjectFileCollection(task.id,task.leaseToken!,error instanceof StudioFileCollectionPending?error.code:'project_collection_pending',this.collectionDelayMs).catch(()=>{});
       else{const message=error instanceof Error?error.message:'';
-        const allowed=['project_text_limit','project_text_encoding_invalid','project_pdf_encrypted_or_invalid','project_pdf_page_limit','project_pdf_geometry_invalid','project_preview_byte_limit','project_office_container_limit','project_office_container_invalid','project_office_type_mismatch','project_office_macros_unsupported','project_processor_unavailable','project_document_invalid','audio_unavailable','invalid_audio','invalid_audio_duration','invalid_image'];
+        const allowed=['project_text_limit','project_text_encoding_invalid','project_pdf_encrypted_or_invalid','project_pdf_page_limit','project_pdf_geometry_invalid','project_preview_byte_limit','project_office_container_limit','project_office_container_invalid','project_office_type_mismatch','project_office_macros_unsupported','project_processor_unavailable','project_processor_protocol_invalid','project_document_invalid','audio_unavailable','invalid_audio','invalid_audio_duration','invalid_image'];
         await this.store.tasks.fail(task.id,task.leaseToken!,controller.signal.aborted?'project_processing_cancelled':allowed.includes(message)?message:'project_processing_failed',this.stopping).catch(()=>{});
       }
     }finally{clearInterval(beat);this.abort=undefined;}return true;
