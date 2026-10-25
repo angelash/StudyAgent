@@ -87,3 +87,16 @@ SourceCourseCheckWorkerService认领learning.source-check.generate，每步在�
 
 
 2026-10-26私有生成增量：接入preflight/prepare、本人元数据/原控制回执、持久写题→独立复核检查点、原模型重试和取消收尾；原登录、角色、监护/学生授权、课程及完整冻结输入在阶段发布时重新核对。SQLite八项与PG十一项（含三项原生存储）通过，真实HTTP登出和实际创建孩子绑定后的撤回均阻止晚到稿件；复核失败后真正关闭/重开应用只重做复核。候选metadata不含私有题目、上下文或答案，uncertain复核明确保留，不自动创建发布/课堂或能力事实。新增绑定测试首轮误读建档响应字段并遗留模拟等待，修正profile.id及finally释放后通过，原报告/日志保留。仅用模型替身，尚无人工审阅、发布、作者曝光或学生入口，整批120与CI/守护交付未完成。见[私有生成收据](../evidence/2026-10-26/source-check-generation/acceptance.json)。
+
+
+## 10. 人工审阅、内容历史与发布接入（实施前）
+
+新增POST :checkId/authoring，要求expectedRevision/contentFingerprint/requestKey，显式读取完整私有题组、原始AI稿和对应审稿，同时记录当前actor/内容指纹的答案曝光。GET元数据与GET原命令回执继续无写入。作者自己PATCH完整题组也记录新指纹的作者曝光；不能用GET或“开始学习”隐式改历史。原命令带kind/hash/原actor/生效revision/内容指纹；相同键同参数回放原回执，不把新版本内容冒充旧审阅。旧审阅回放按冻结内容历史取原文本，当前新版本只返回元数据。已缺失的旧身份/指纹不从当前状态伪造。
+
+PATCH :checkId/content仅编辑ready且原课程/来源仍为当前的候选。完整内容经过同一独立题/来源/目标/答案结构校验；旧稿、原内容指纹与内容版本号保留在contentHistory，新稿提升contentVersion并记录真实actor/时间。AI原稿与AI审稿不覆写；人工编辑使原审稿按实际指纹显示过期，不能把旧pass沿用成新稿通过。没有改动的保存也只确认实际原命令，不制造新的内容版本。候选发布后不可原地编辑；需要新题组版本时另准备候选。
+
+POST :checkId/confirm要求当前记录revision/contentFingerprint、当前publicationRevision、attestReviewed=true和原请求键。必须已有当前actor对当前内容的显式审阅或编辑曝光；AI复核uncertain或已过期时另要求acknowledgeReviewWarnings=true。确认只表示管理者已核对且用于学习，contentReview仍pending/formalMeasurementEligible=false，不产生教师正式审核、学生掌握或知识原因结论。事务再次检查当前登录/角色/监护授权、课程发布状态与完整冻结输入，核对原指针修订；旧published定义标为superseded，当前指针及新定义状态同事务切换，保留所有旧课堂/首答。
+
+POST :checkId/withdraw仅撤回当前发布项，带相同版本与原请求保障。指针保留单调递增revision并将checkId/definitionFingerprint设为null，避免删除指针后旧revision=0命令再次生效的ABA问题。指针补studentId及ownerUserId，用于原课程/定义已缺失时的隐私级联；共享儿童发布历史按既有规则保留，成人/儿童删除连空指针也清理。原发布/撤回回执分别保留真实actor、生效内容与指针revision；重放不创造第二次发布。原actorUserId纳入共享归属匿名化，家庭导出仍不含这些私有命令、历史稿或内部指针。
+
+本阶段先以两库真实HTTP核对审阅曝光、旧审阅回放、编辑冲突/旧模型审稿过期、确认前置、相同命令重放、两候选发布切换、撤回空指针及旧revision拒绝、隐私导出/空指针删除。前端与学习者题面尚未接入时，不把管理API视为完整教学交付。
