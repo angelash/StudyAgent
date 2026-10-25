@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T08:53:20.226564+00:00",
+  "source": "User-authorized authenticated IAB observation",
+  "courseUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "screenshots": {
+    "resumed-board-chat.png": {
+      "sha256": "0f6a02cea6dfe2f4788acbbf699ffb7ca260ff42b10084fbb6f6f1fc1d6cee31",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "settings.png": {
+      "sha256": "96812e3dd137e11133a68ee759fc49e54eab2c74131174c081096078b62e8d41",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "controlled-figure-expanded.png": {
+      "sha256": "73b84e8f03ad4b6be85375c7e229e2909c857f60a7756022b0e10ad46a457618",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "tour-connection.png": {
+      "sha256": "0cf76ea007de823ab3475e4dc308c68fd52261512c1f60f9de9f53ff169cbfd9",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "tour-ending.png": {
+      "sha256": "d446490e0779e3b189bfc4ee438b59f216539098c220f0c9196ee68bec841850",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "board-comparison-table.png": {
+      "sha256": "c243a2da718bc540b8cd0471d5d260ad0fe29cf9c4af944f348d6215c715aeec",
+      "pixels": {
+        "width": 880,
+        "height": 887
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": null,
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "single-choice-question-crop.png": {
+      "sha256": "d1395deaabd053a77b06f5fa7fa166935f683b69d2525f41818ec2a594481c4a",
+      "pixels": {
+        "width": 680,
+        "height": 500
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": [
+        100,
+        90,
+        780,
+        590
+      ],
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "correct-feedback-crop.png": {
+      "sha256": "75e4bf5e0ad3a4158586255d3b5cd723aa73455bafc12fca8b7c67ff4da6ce30",
+      "pixels": {
+        "width": 880,
+        "height": 607
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": [
+        0,
+        53,
+        880,
+        660
+      ],
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    },
+    "multiple-choice-question-crop.png": {
+      "sha256": "5d05c1a600c4b46db6791766c6981b806483e9e5407d874b172b808acc318e55",
+      "pixels": {
+        "width": 640,
+        "height": 405
+      },
+      "sourceImagePixels": {
+        "width": 880,
+        "height": 887
+      },
+      "crop": [
+        120,
+        160,
+        760,
+        565
+      ],
+      "visuallyReviewedSource": true,
+      "scope": "UI reference only; practice crops exclude account score/progress header"
+    }
+  },
+  "observedOverlayCssRect": {
+    "x": 0,
+    "y": 0,
+    "width": 880,
+    "height": 887
+  },
+  "devicePixelRatio": null,
+  "fontAssets": "not_acquired_or_verified",
+  "cssSource": "not_acquired",
+  "audio": "sample button invoked; no direct hearing, captured waveform or decoded network track evidence",
+  "tour": {
+    "welcome": true,
+    "controls": [
+      "connection",
+      "share/export",
+      "voice/speed/font/dots",
+      "sound",
+      "speak to interrupt",
+      "stop",
+      "history"
+    ],
+    "ending": true,
+    "anchorHighlight": "orange target frame plus dim background; actual target bounds; card shifts around screen",
+    "completionDoesNotProveLearning": true
+  },
+  "practice": {
+    "initial": "existing single-choice with four geometric markers",
+    "authorizedOperatorSubmission": true,
+    "correctFeedback": "selected option becomes green, alternatives locked, explanation appears in a separate right section, Check becomes Next",
+    "nextObservedType": "multiple choice; five options; two-column grid and full-width final odd option; checkbox input",
+    "scoreFormula": "one operator action observed; no general formula or ability interpretation inferred",
+    "otherSubmissions": "none in this observation"
+  },
+  "limits": [
+    "No private greeting, account identifier, authentication secret or full conversation log archived.",
+    "Actual learner validity, mic permission/use, live teaching/reply timing, code execution, wrong-answer flow and skip/help submissions remain unverified.",
+    "These are reference observations, not a local pixel parity pass or100percent restoration claim."
+  ]
+}
