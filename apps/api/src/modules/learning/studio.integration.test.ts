@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { whiteboardPresentation } from '@study-agent/contracts';
 import request from 'supertest';
 import { randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -167,6 +168,57 @@ describe('whiteboard video and LMS calendar integrations', () => {
       { studentId: 'child', subject: 'math', prompt: '越权白板', atomId: 'fraction-add' }, other, 403);
   });
 
+  it('binds whiteboard replay receipts to the original action, actor, command and saved board', async () => {
+    const preview = await call('post', '/learning/studio/whiteboards/preview', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
+    const command = { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() };
+    const saved = await call('post', '/learning/studio/whiteboards', command);
+    await call('post', '/learning/studio/whiteboards', { ...command, prompt: '借用旧标识的新操作' }, parent, 409);
+    await call('post', '/learning/studio/whiteboards', command, learner, 409);
+    const anotherKey = randomUUID();
+    expect((await call('post', '/learning/studio/whiteboards', { ...command, requestKey: anotherKey })).id).toBe(saved.id);
+    expect((await call('post', '/learning/studio/whiteboards', { ...command, requestKey: anotherKey })).id).toBe(saved.id);
+    expect(store.studioWhiteboards).toHaveLength(1);
+    expect(store.studioActivities.filter((row: any) => row.referenceId === saved.id)).toHaveLength(2);
+    await store.transaction(() => { const activity = store.studioActivities.find((row: any) => row.requestKey === command.requestKey); activity.requestHash = undefined; });
+    await call('post', '/learning/studio/whiteboards', command, parent, 409);
+    const courseKey = randomUUID();
+    store.append('studioActivities', { id: randomUUID(), studentId: 'child', subject: 'math', kind: 'course_created', title: 'Synthetic other action', detail: '', href: '/studio', at: new Date().toISOString(), status: 'opened', requestKey: courseKey });
+    await call('post', '/learning/studio/whiteboards', { ...command, requestKey: courseKey }, parent, 409);
+    expect(store.studioWhiteboards).toHaveLength(1);
+  });
+
+  it('synthesizes only an authorized frozen sentence, keeps legacy narration, and rejects identity tampering', async () => {
+    const preview = await call('post', '/learning/studio/whiteboards/preview', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
+    const saved = await call('post', '/learning/studio/whiteboards', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() });
+    const { SpeechService } = require('../../../dist/apps/api/src/modules/ai/speech.service.js');
+    const synthesize = vi.spyOn(app.get(SpeechService), 'synthesize').mockResolvedValue({ content: Buffer.from('synthetic-audio'), contentType: 'audio/wav' });
+    const presentation = whiteboardPresentation(saved), unit = presentation.units.find(row => row.sceneId === saved.scenes[2].id)!;
+    const path = '/api/learning/studio/whiteboards/' + saved.id + '/narration/' + encodeURIComponent(unit.sceneId);
+    const body = { presentationVersion: presentation.version, fingerprint: saved.fingerprint, unitId: unit.id };
+    try {
+      const audio = await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + learner.token).send(body).expect(201);
+      expect(audio.headers['x-whiteboard-unit']).toBe(unit.id);
+      expect(audio.headers['cache-control']).toBe('private, no-store');
+      expect(synthesize).toHaveBeenLastCalledWith(unit.text, undefined);
+      await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send({}).expect(201);
+      expect(synthesize).toHaveBeenLastCalledWith(saved.scenes[2].narration, undefined);
+      for (const altered of [{ ...body, fingerprint: 'b'.repeat(64) }, { ...body, unitId: presentation.units[0].id }])
+        await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send(altered).expect(409);
+      for (const altered of [{ unitId: unit.id }, { ...body, narration: 'untrusted replacement' }])
+        await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send(altered).expect(400);
+      await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + other.token).send(body).expect(403);
+      expect(synthesize).toHaveBeenCalledTimes(2);
+      const counts = { attempts: store.practiceAttempts.length, activities: store.studioActivities.length };
+      synthesize.mockImplementationOnce(async () => {
+        await store.transaction(() => { store.bindings.find((row: any) => row.parentUserId === parent.user.id).status = 'revoked'; });
+        return { content: Buffer.from('synthetic-audio'), contentType: 'audio/wav' };
+      });
+      await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send(body).expect(403);
+      expect(store.practiceAttempts.length).toBe(counts.attempts);
+      expect(store.studioActivities.length).toBe(counts.activities);
+    } finally { synthesize.mockRestore(); }
+  });
+
   it('does not substitute another child for an explicit inaccessible studio selection', async () => {
     const own = await call('get', '/learning/studio/overview?subject=math');
     expect(own.selected.id).toBe('child');
@@ -309,9 +361,15 @@ describe('whiteboard video and LMS calendar integrations', () => {
     expect(preview.scenes.filter((scene: any) => scene.kind === 'pdf_page')).toEqual([
       expect.objectContaining({ title: '第 1 页', source: expect.objectContaining({ page: 1, materialId: material.id }) }),
     ]);
-    const board = await call('post', '/learning/studio/materials/' + material.id + '/whiteboard',
-      { atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() }, learner);
+    const boardCommand = { atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() };
+    const boardPath = '/learning/studio/materials/' + material.id + '/whiteboard';
+    const board = await call('post', boardPath, boardCommand, learner);
     expect(board.sourceMaterialId).toBe(material.id);
+    expect((await call('post', boardPath, boardCommand, learner)).id).toBe(board.id);
+    await call('post', boardPath, boardCommand, parent, 409);
+    await call('post', boardPath, boardCommand, other, 403);
+    const ordinary = await call('post', '/learning/studio/whiteboards/preview', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
+    await call('post', '/learning/studio/whiteboards', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add', fingerprint: ordinary.fingerprint, requestKey: boardCommand.requestKey }, learner, 409);
     const overview = await call('get', '/learning/studio/overview?studentId=child&subject=math', undefined, learner);
     expect(overview.materials[0]).toMatchObject({ id: material.id, hasPageImages: true });
     expect(overview.materials[0]).not.toHaveProperty('pageImages');

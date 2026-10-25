@@ -754,3 +754,4 @@ export * from './assistant-turn';
 export * from './project-teaching';
 export * from './course-journey';
 export * from './source-course-check';
+export * from './whiteboard-speech';

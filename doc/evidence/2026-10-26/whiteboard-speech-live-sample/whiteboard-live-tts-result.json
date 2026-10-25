@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "request_id": "whiteboard-unit-smoke-20261026",
+  "task_id": "whiteboard-unit-smoke-20261026",
+  "model": "speech-2.8-turbo",
+  "voice_id": "male-qn-qingse",
+  "language_boost": "auto",
+  "format": "wav",
+  "local_path": "F:\\workspace\\github\\StudyAgent-whiteboard-pacing\\data\\qa\\whiteboard-live-tts.wav",
+  "filename": "whiteboard-live-tts.wav",
+  "size_bytes": 293180,
+  "usage": {
+    "usage_characters": 37,
+    "audio_length": 4562,
+    "audio_size": 293180
+  },
+  "raw_response": {
+    "base_resp": {
+      "status_code": 0,
+      "status_msg": "success"
+    },
+    "trace_id": "072db5c3e70e3f283ae303bb9e3f46e9",
+    "data": {
+      "status": 2
+    },
+    "extra_info": {
+      "audio_length": 4562,
+      "audio_sample_rate": 32000,
+      "audio_size": 293180,
+      "bitrate": 128000,
+      "word_count": 20,
+      "invisible_character_ratio": 0,
+      "usage_characters": 37,
+      "audio_format": "wav",
+      "audio_channel": 1
+    }
+  },
+  "audio_url": "https://service-aigw-2026082500.gz4399.com/api/aigw/v1/skill/media_proxy/audio/aBK47kRG9vi8ZEuGXyYEpgxUiJV1fcIKU3QzelGQlqxwaRyV8FHoDweZUYqJ883BcvnY_wK3PFKsw_DN17OkZfQpGarvkssNyy5PEjT-UtfFZHYA9J6tdYTLBzRPl-e8LqPe6qAxul40dtq9wwh-mhYUgAc07ewDxd2UJ3CUNMjHtwP5rg4bKC0m7kh-IHePfS9A5YpBcmTtiyT1pMLUf7Y",
+  "upload_result": {
+    "status": "success",
+    "file_path": "F:\\workspace\\github\\StudyAgent-whiteboard-pacing\\data\\qa\\whiteboard-live-tts.wav",
+    "media_type": "audio",
+    "url": "https://service-aigw-2026082500.gz4399.com/api/aigw/v1/skill/media_proxy/audio/aBK47kRG9vi8ZEuGXyYEpgxUiJV1fcIKU3QzelGQlqxwaRyV8FHoDweZUYqJ883BcvnY_wK3PFKsw_DN17OkZfQpGarvkssNyy5PEjT-UtfFZHYA9J6tdYTLBzRPl-e8LqPe6qAxul40dtq9wwh-mhYUgAc07ewDxd2UJ3CUNMjHtwP5rg4bKC0m7kh-IHePfS9A5YpBcmTtiyT1pMLUf7Y",
+    "size": 293180
+  }
+}

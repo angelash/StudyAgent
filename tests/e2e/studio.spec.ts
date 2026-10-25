@@ -28,7 +28,7 @@ function writeTextPdf() {
 }
 
 test('a parent can build and reopen an evidence-backed learning studio course', async ({ page }) => {
-  test.setTimeout(120_000);
+  test.setTimeout(240_000);
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
   const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
@@ -89,7 +89,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('button', { name: '保存到学习工作台' }).click();
   await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-player.png', fullPage: true });
-  const videoDownload = page.waitForEvent('download', { timeout: 45_000 });
+  const videoDownload = page.waitForEvent('download', { timeout: 120_000 });
   await page.getByRole('button', { name: '导出视频' }).click();
   const video = await videoDownload;
   expect(video.suggestedFilename()).toMatch(/\.webm$/);

@@ -14,8 +14,8 @@ function clean(value: string, max: number) {
   return value.replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
-function sceneSuffix(index: number, narration: string) {
-  return `${String(index + 1).padStart(2, '0')} · ${narration}`;
+function sceneSuffix(_index: number, narration: string) {
+  return narration;
 }
 
 export function buildStudioWhiteboard(input: WhiteboardInput): StudioWhiteboard {
@@ -35,7 +35,7 @@ export function buildStudioWhiteboard(input: WhiteboardInput): StudioWhiteboard 
   ];
   if (teaching?.example) {
     scenes.push({
-      kind: 'steps', title: '跟着步骤走', narration: sceneSuffix(scenes.length, `现在用“${teaching.example.prompt}”做一次示范，请留意每一步改变了什么。`),
+      kind: 'steps', title: '跟着步骤走', narration: sceneSuffix(scenes.length, `现在用“${teaching.example.prompt}”做一次示范。${teaching.example.steps.map(step => /[。！？!?]$/u.test(step.trim()) ? step : step + '。').join('')}${teaching.example.conclusion}`),
       body: teaching.example.prompt, bullets: teaching.example.steps, durationMs: 6200,
     });
   }

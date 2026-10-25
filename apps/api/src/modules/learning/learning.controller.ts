@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Patch, Post, Query, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import type { Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
 import { subjectSchema } from '@study-agent/contracts';
@@ -63,9 +64,17 @@ export class LearningController {
   @Post('studio/study-packs') studioLearningPackCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.learning.createStudioLearningPack(req.user, input);
   }
-  @Post('studio/whiteboards/:id/narration/:sceneId') studioWhiteboardNarration(@Req() req: AuthenticatedRequest,
-    @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown) {
-    return this.learning.studioWhiteboardNarration(req.user, id, sceneId, input);
+  @Post('studio/whiteboards/:id/narration/:sceneId') async studioWhiteboardNarration(@Req() req: AuthenticatedRequest,
+    @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response) {
+    const result = await this.learning.studioWhiteboardNarration(req.user, id, sceneId, input);
+    response.setHeader('Cache-Control', 'private, no-store');
+    if (result.identity) {
+      response.setHeader('Access-Control-Expose-Headers', 'X-Whiteboard-Presentation, X-Whiteboard-Fingerprint, X-Whiteboard-Unit');
+      response.setHeader('X-Whiteboard-Presentation', result.identity.version);
+      response.setHeader('X-Whiteboard-Fingerprint', result.identity.fingerprint);
+      response.setHeader('X-Whiteboard-Unit', result.identity.unitId);
+    }
+    return result.file;
   }
   @Post('studio/integrations') studioIntegrationConnect(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.integrations.connect(req.user, input);

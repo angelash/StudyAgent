@@ -7,7 +7,7 @@ import { z } from 'zod';
 import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
   StudioCourse, StudioLearningPack, StudioLearningPackPreview, StudioOverview, StudioSourceMaterial, StudioStudyPlan,
   StudioStudyPlanPreview, StudioWhiteboard, Subject } from '@study-agent/contracts';
-import { answerProtocolIssue, answerDraftFenceSchema, answerDraftSaveSchema } from '@study-agent/contracts';
+import { answerProtocolIssue, answerDraftFenceSchema, answerDraftSaveSchema, whiteboardPresentation, WHITEBOARD_SPEECH_VERSION } from '@study-agent/contracts';
 import { answerIdentity, answerDraftState, prepareAnswerDraft, assertAnswerDraftFence, sameAnswer } from '../../common/answer-draft';
 import { InMemoryStoreService, InMemoryUserAccount,type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -228,23 +228,30 @@ export class LearningService {
       prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional(),
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
     this.students.assertCanAccessStudent(user, command.studentId);
+    const requestHash = createHash('sha256').update(JSON.stringify({ action: 'studio.whiteboard.create.v1',
+      studentId: command.studentId, subject: command.subject, prompt: command.prompt, atomId: command.atomId ?? null,
+      fingerprint: command.fingerprint })).digest('hex');
     const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
     if (existing) {
-      const whiteboard = this.store.select('studioWhiteboards', { studentId: command.studentId, subject: command.subject }).find(item => item.fingerprint === command.fingerprint);
-      if (whiteboard) return whiteboard;
+      if (existing.kind !== 'lesson_started' || existing.actorId !== user.id || existing.studentId !== command.studentId || existing.subject !== command.subject ||
+        existing.requestHash !== requestHash) throw new ConflictException('确认标识已用于其他操作或旧记录，请重新预览');
+      const whiteboard = this.store.find('studioWhiteboards', { id: existing.referenceId, studentId: command.studentId, subject: command.subject });
+      if (!whiteboard || whiteboard.fingerprint !== command.fingerprint) throw new ConflictException('原白板已不可用，请重新载入');
+      return whiteboard;
     }
     const preview = this.previewStudioWhiteboard(user, { studentId: command.studentId, subject: command.subject,
       prompt: command.prompt, atomId: command.atomId });
     if (preview.fingerprint !== command.fingerprint) throw new ConflictException('白板内容已变化，请重新预览');
     const existingWhiteboard = this.store.select('studioWhiteboards', { studentId: command.studentId, subject: command.subject })
       .find(item => item.fingerprint === command.fingerprint);
-    if (existingWhiteboard) return existingWhiteboard;
-    const whiteboard: StudioWhiteboard = { ...preview, id: this.store.nextId('studio_whiteboard'), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    const whiteboard: StudioWhiteboard = existingWhiteboard ?? { ...preview, id: this.store.nextId('studio_whiteboard'), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
     const activity: StudioActivity = { id: this.store.nextId('studio_activity'), studentId: command.studentId, subject: command.subject,
       kind: 'lesson_started', title: `白板视频「${whiteboard.title}」`, detail: `${whiteboard.scenes.length} 幕 · ${Math.ceil(whiteboard.durationMs / 1000)} 秒`,
-      href: `/studio?whiteboard=${whiteboard.id}`, at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey };
-    this.store.append('studioWhiteboards', whiteboard); this.store.append('studioActivities', activity);
-    this.events.publish('studio.whiteboard_created', { whiteboardId: whiteboard.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
+      href: `/studio?whiteboard=${whiteboard.id}`, at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey,
+      requestHash, actorId: user.id, referenceId: whiteboard.id };
+    if (!existingWhiteboard) this.store.append('studioWhiteboards', whiteboard);
+    this.store.append('studioActivities', activity);
+    if (!existingWhiteboard) this.events.publish('studio.whiteboard_created', { whiteboardId: whiteboard.id, studentId: command.studentId, subject: command.subject, actorId: user.id });
     return whiteboard;
   }
 
@@ -419,17 +426,26 @@ export class LearningService {
     if (!material) throw new NotFoundException('PDF 材料不存在');
     if (!material.studentId || !material.subject) throw new BadRequestException('私人资料请从资料课程入口生成课堂');
     this.students.assertCanAccessStudent(user, material.studentId);
+    const requestHash = createHash('sha256').update(JSON.stringify({ action: 'studio.pdf-whiteboard.create.v1',
+      materialId: command.materialId, atomId: command.atomId ?? null, fingerprint: command.fingerprint })).digest('hex');
+    const replay = this.store.find('studioActivities', { requestKey: command.requestKey });
+    if (replay) {
+      if (replay.kind !== 'lesson_started' || replay.actorId !== user.id || replay.studentId !== material.studentId ||
+        replay.subject !== material.subject || replay.requestHash !== requestHash) throw new ConflictException('确认标识已用于其他操作或旧记录，请重新预览');
+      const board = this.store.find('studioWhiteboards', { id: replay.referenceId, studentId: material.studentId, sourceMaterialId: material.id });
+      if (!board || board.fingerprint !== command.fingerprint) throw new ConflictException('原白板已不可用，请重新载入');
+      return board;
+    }
     const existing = this.store.find('studioWhiteboards', { studentId: material.studentId, sourceMaterialId: material.id });
-    if (existing?.fingerprint === command.fingerprint) return existing;
     const preview = this.previewStudioPdfWhiteboard(user, { materialId: command.materialId, atomId: command.atomId });
     if (preview.fingerprint !== command.fingerprint) throw new ConflictException('页级白板已变化，请重新预览');
-    const board: StudioWhiteboard = { ...preview, id: this.store.nextId('studio_whiteboard'),
+    const board: StudioWhiteboard = existing?.fingerprint === command.fingerprint ? existing : { ...preview, id: this.store.nextId('studio_whiteboard'),
       createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
-    this.store.append('studioWhiteboards', board);
+    if (board !== existing) this.store.append('studioWhiteboards', board);
     this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,
       subject: material.subject, kind: 'lesson_started', title: `页级白板「${board.title}」`,
       detail: `${material.pageCount} 页材料 · ${board.scenes.length} 幕`, href: `/studio?whiteboard=${board.id}`,
-      at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey });
+      at: new Date().toISOString(), status: 'opened', requestKey: command.requestKey, requestHash, actorId: user.id, referenceId: board.id });
     return board;
   }
 
@@ -487,9 +503,17 @@ export class LearningService {
     this.students.assertCanAccessStudent(user, whiteboard.studentId);
     const scene = whiteboard.scenes.find(item => item.id === sceneId);
     if (!scene) throw new NotFoundException('白板场景不存在');
-    const command = validate(z.object({ voice: z.string().min(1).max(120).optional() }).strict(), input ?? {});
-    const audio = await this.speech.synthesize(scene.narration, command.voice);
-    return new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length });
+    const command = validate(z.object({ voice: z.string().min(1).max(120).optional(),
+      presentationVersion: z.literal(WHITEBOARD_SPEECH_VERSION).optional(), fingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+      unitId: z.string().min(1).max(900).optional() }).strict().refine(value =>
+      [value.presentationVersion, value.fingerprint, value.unitId].every(value => value === undefined) ||
+      [value.presentationVersion, value.fingerprint, value.unitId].every(value => value !== undefined), '逐句旁白需要完整的呈现身份'), input ?? {});
+    const unit = command.unitId ? whiteboardPresentation(whiteboard).units.find(item => item.sceneId === sceneId && item.id === command.unitId) : undefined;
+    if (command.unitId && (command.fingerprint !== whiteboard.fingerprint || !unit)) throw new ConflictException('旁白与当前冻结白板不一致，请重新载入');
+    const audio = await this.speech.synthesize(unit?.text ?? scene.narration, command.voice);
+    this.students.assertCanAccessStudent(user, whiteboard.studentId);
+    return { file: new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length }),
+      identity: unit ? { version: WHITEBOARD_SPEECH_VERSION, fingerprint: whiteboard.fingerprint, unitId: unit.id } : null };
   }
 
   previewStudioCourse(user: InMemoryUserAccount, input: unknown) {

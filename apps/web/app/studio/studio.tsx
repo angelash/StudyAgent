@@ -41,6 +41,7 @@ export function LearningStudio() {
   const [visual,setVisual] = React.useState<StudioOverview['selected'] extends infer T ? T extends {atoms:Array<infer A>} ? A|null : never : never>(null);
   const [whiteboardPreview,setWhiteboardPreview] = React.useState<StudioWhiteboard|null>(null);
   const [activeWhiteboard,setActiveWhiteboard] = React.useState<StudioWhiteboard|null>(null);
+  React.useEffect(() => { setActiveWhiteboard(null); setWhiteboardPreview(null); }, [identity?.id, studentId, subject]);
   const whiteboardRequestKey = React.useRef('');
   const [plannerRequest,setPlannerRequest] = React.useState(0);
   const [materialsTab,setMaterialsTab] = React.useState<'files'|'packs'>('files');
@@ -130,7 +131,7 @@ export function LearningStudio() {
     </section>
     {showBuilder&&<CourseBuilder key={studentId+subject} studentId={studentId} subject={subject} selected={overview?.selected??null} initialTitle={prompt} onClose={()=>setShowBuilder(false)} onRefresh={load} onCreated={course=>{setShowBuilder(false);navigate('courses',course);void load();}}/>}
     {activeWhiteboard&&<WhiteboardPlayer whiteboard={activeWhiteboard} narrationAvailable={overview?.narrationAvailable} speech={overview?.speech} onClose={()=>setActiveWhiteboard(null)}/>}
-    {whiteboardPreview&&<div className="sa-whiteboard-preview-modal"><button className="sa-scrim" onClick={()=>setWhiteboardPreview(null)}/><section><header><div><span className="studio-kicker">WHITEBOARD SESSION</span><h2>{whiteboardPreview.title}</h2></div><button aria-label="关闭预览" onClick={()=>setWhiteboardPreview(null)}>×</button></header><WhiteboardScenePreview scene={whiteboardPreview.scenes[0]} /><div className="sa-whiteboard-preview-copy"><strong>{whiteboardPreview.scenes.length} 幕 · {Math.ceil(whiteboardPreview.durationMs/1000)} 秒</strong><p>即时播放使用设备中文语音；配置 TTS 时导出带 AI 音轨的 1280×720 WebM，并始终烧入旁白字幕。SRT 可单独保存。</p></div><footer><button onClick={()=>setActiveWhiteboard(whiteboardPreview)}>播放预览</button><button disabled={busy} onClick={()=>void saveWhiteboard()}>{busy?'正在保存…':'保存到学习工作台'}</button></footer></section></div>}
+    {whiteboardPreview&&<div className="sa-whiteboard-preview-modal"><button className="sa-scrim" onClick={()=>setWhiteboardPreview(null)}/><section><header><div><span className="studio-kicker">WHITEBOARD SESSION</span><h2>{whiteboardPreview.title}</h2></div><button aria-label="关闭预览" onClick={()=>setWhiteboardPreview(null)}>×</button></header><WhiteboardScenePreview scene={whiteboardPreview.scenes[0]} /><div className="sa-whiteboard-preview-copy"><strong>{whiteboardPreview.scenes.length} 幕 · {Math.ceil(whiteboardPreview.durationMs/1000)} 秒</strong><p>预览采用逐句文字阅读。保存后可选择云语音，按实际音轨结束继续；WebM 与 SRT 共用完整逐句时间表。</p></div><footer><button onClick={()=>setActiveWhiteboard(whiteboardPreview)}>播放预览</button><button disabled={busy} onClick={()=>void saveWhiteboard()}>{busy?'正在保存…':'保存到学习工作台'}</button></footer></section></div>}
   </main>;
 }
 

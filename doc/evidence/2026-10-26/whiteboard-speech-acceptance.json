@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "status": "focused-passed-full-regression-and-exact-ci-pending",
+  "sourceRevision": null,
+  "deployed": false,
+  "schemaVersion": 15,
+  "sqliteFocused": {
+    "passed": 24,
+    "failed": 0,
+    "studioHttp": 17,
+    "presentationPure": 4,
+    "webmPure": 3,
+    "report": "whiteboard-speech-current/api.json"
+  },
+  "postgres": {
+    "passed": 2,
+    "failed": 0,
+    "nativeRestart": true,
+    "report": "whiteboard-speech-foundation/whiteboard-postgres.json",
+    "scope": "Whiteboard HTTP and a native storage close/reopen; not a full restore rehearsal."
+  },
+  "focusedBrowser": {
+    "passed": 11,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "report": "whiteboard-speech-current/browser.json"
+  },
+  "realMediaRecorder": {
+    "actualVideo": "whiteboard-speech-current/decoded-fixture.webm",
+    "srt": "whiteboard-speech-current/decoded-fixture.srt",
+    "strictDecoder": "ffmpeg -v error -xerror, complete actual output",
+    "timeline": "Four real decoded synthetic WAV tracks, 1.25x, 6.4 seconds subtitle timeline."
+  },
+  "realProviderSample": {
+    "report": "whiteboard-speech-live-sample/receipt.json",
+    "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
+  },
+  "limits": [
+    "Full API, complete current browser, exact CI and daemon release pending.",
+    "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
+    "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
+    "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
+    "Counts overlap and are not product coverage or a percentage."
+  ]
+}
