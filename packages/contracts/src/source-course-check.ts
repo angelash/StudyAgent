@@ -13,3 +13,10 @@ export const sourceCourseCheckQuestionSchema=z.object({prompt:text(700),targetLe
 export const sourceCourseCheckContentSchema=z.object({title:text(180),instructions:text(700),questions:z.array(sourceCourseCheckQuestionSchema).min(4).max(8)}).strict();
 export type SourceCourseCheckContent=z.infer<typeof sourceCourseCheckContentSchema>;
 export type SourceCourseCheckQuestion=z.infer<typeof sourceCourseCheckQuestionSchema>;
+export type SourceCourseCheckView={id:string;courseId:string;revision:number;courseCurrent:boolean;
+  status:'queued'|'generating'|'ready'|'failed'|'cancelling'|'cancelled'|'published'|'superseded'|'withdrawn';
+  title:string|null;modelId:string;modelName:string;questionCount:number;contentFingerprint:string|null;
+  targets:Array<{lessonId:string;title:string;objective:string}>;stage:'writing'|'reviewing'|'completed';
+  review:{decision:'pass'|'revised'|'uncertain';issueCount:number;current:boolean}|null;
+  task:{id:string;state:string;generation:number;version:number;errorCode:string|null}|null;
+  createdAt:string;updatedAt:string;receipt?:{key:string;kind:string;actorUserId:string;effectiveRevision:number;at:string}};

@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-25T18:24:12.993111+00:00",
+  "status": "private-generation-increment-only-not-released",
+  "passed": true,
+  "specificationCommit": "3a21a70",
+  "sqlite": {
+    "passed": 8,
+    "failed": 0,
+    "report": "source-check-generation-sqlite-confirmed.json"
+  },
+  "postgres": {
+    "passed": 11,
+    "failed": 0,
+    "includesNativeStorageTests": 3,
+    "report": "source-check-postgres.json"
+  },
+  "typecheck": {
+    "passed": true,
+    "report": "source-check-generation-lint-final.log.gz"
+  },
+  "scope": "Synthetic source courses and explicit provider substitutes through real authenticated HTTP, durable queue and actual application reopen. Real HTTP logout and a real created child binding are checked; model text is synthetic.",
+  "initialFailure": "Added child-binding test used child.id instead of create response profile.id and left a held fake provider unresolved; corrected the fixture field and guaranteed gate cleanup. Initial 7/1 SQLite and 10/1 PG plus hook timeout logs are retained.",
+  "limitations": [
+    "No live provider call for source checks in this increment",
+    "Manual authoring, editing/publication, authorship exposure and student check entry not implemented yet",
+    "No full 120 application/browser CI or runtime delivery; production remains schema14",
+    "Final AI review can be uncertain; no teacher approval or formal ability evidence is created"
+  ]
+}
