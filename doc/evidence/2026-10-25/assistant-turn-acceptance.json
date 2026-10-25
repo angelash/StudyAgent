@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T11:19:21.856Z",
+  "sourceRevision": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
+  "specificationCommits": [
+    "115c119",
+    "3539acb",
+    "60891b1"
+  ],
+  "sourceDigestNormalization": "UTF-8 with CRLF normalized to LF",
+  "sourceDigests": {
+    ".github/workflows/verify.yml": "608a6adb4aceb1b6b20c16d7d39bc86966c889316f885f56740c7c65da97cce3",
+    "apps/api/src/common/auth.guard.ts": "d48d3198803026c4fb71918f5474013948948229feca7c35131181904214699a",
+    "apps/api/src/common/terminate-child-process.integration.test.ts": "8440aaa63906f8ef758cfcaff3aa0a77fbd61978e67f346105fd0ad9bc7a01f3",
+    "apps/api/src/common/terminate-child-process.ts": "29a20cb172357699f50222d716c933a6b83cb6a5ad1dd81b47a9be3498b67a33",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "d89c865b8a52767695ee38f678f11cdef0b5e61677853fef7472890fe4afe424",
+    "apps/api/src/modules/ai/ai.controller.ts": "f99cc838d9656cac3a076fa22ce53d8c10ce6342e19e3689bb00f05be32c7b7f",
+    "apps/api/src/modules/ai/ai.module.ts": "fc427dcf9567b2cf54ee622ef5a0633a995418db96945db79c65999ea3432607",
+    "apps/api/src/modules/ai/ai.service.ts": "ae6290dfe6dfe1d3074e36acd3a01d61f8fd79d5fe431c4c723da989154de63f",
+    "apps/api/src/modules/ai/assistant-turn-record.ts": "691a4dc6017e4e245ba533c6f3f490e747f6b613cce8cfedabe69a6c79b117ad",
+    "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts": "d4b18d3a3b99b264a0afe7639c74ed07ff0440c43d7f64ccb8101a0319f4d2b2",
+    "apps/api/src/modules/ai/assistant-turn-worker.service.ts": "f899a3b60470aba19823b3c31597419d7e4b8a72996bfee236b02dc4629ec9cc",
+    "apps/api/src/modules/ai/assistant-turn.controller.ts": "c98a1faafbcb1a4f5cbc33dcf06a9d0cdba726eadf442ed6a9748d9b6109c94a",
+    "apps/api/src/modules/ai/assistant-turn.integration.test.ts": "abf17af82dace06df48b5a12f9edd5a8e6669921fcea823c5ed617a6cf377983",
+    "apps/api/src/modules/ai/assistant-turn.service.ts": "a22679fc66ed22babb845d46ed018296e3a060989a828a182de3bc029acfcf9d",
+    "apps/api/src/modules/ai/evidence-coach.integration.test.ts": "cf3e8782c4039a862b2b7b88b1342c2a1f882c6661d43856431ddd800f00fa2c",
+    "apps/api/src/modules/ai/openai-compatibility.test.ts": "43c7d0ca246811305d8e54170a2aca6ea15acf8d69b149f9225704e11dad3e03",
+    "apps/api/src/modules/ai/xiaojiu-chat.service.ts": "761e523ec13f59bf87ff90e21baf707b7bff0373fc82fa1c55b2a19f36faaf8d",
+    "apps/api/src/modules/privacy/privacy-records.ts": "79e7c7f6c71dcbf4336e5b9add0392c63b303abce5f0f925e02a0d6aaca30c6d",
+    "apps/api/src/modules/privacy/privacy.service.ts": "2fc056889da7f955864c6b0dffd170e1a4b84315c27d417b9c264e9476490f52",
+    "apps/web/app/student/assessment/studio.tsx": "df2beccdc1cba88607865e30d0faf6193c839b32ea928f7ff34446187dfc5778",
+    "apps/web/components/assistant-widget.css": "b133120360f61e9bb3a652091b88de34487a7472cb906123b85946db14c21526",
+    "apps/web/components/assistant-widget.tsx": "b90b9dc2554c9685c2a7439331b16f4d5a5a4b367b810d82aced664d181c8c07",
+    "apps/web/lib/assistant-conversation.tsx": "48a921f59af59a199d1e5d409a0bfe65dc8584d1d026bcd3fd0d0be19f7172c2",
+    "packages/contracts/src/assistant-turn.ts": "cd296769ef3ebe3513f6d062e1049cd646ab8dd4c9b75bc071d2696f8c4780e2",
+    "packages/contracts/src/index.ts": "6f3cee1badf789d45ff63e3f959091617f1b67fd76027e9191bd9b640964ff66",
+    "scripts/architecture/project-feature-definitions.cjs": "016a34fa247bb82b7f51079c6afa95c4d4713d98da280bd90245a38e8e0a9cd5",
+    "scripts/qa/assistant-turn-fixture.cjs": "91d08fa0db21e6b35e7e060eb6bedfe534c65f93ec4b5b8558484277d48fe11d",
+    "scripts/qa/run-assistant-turns-postgres.cjs": "8e9eeffe80a56e4970ea51eaa40e706958871765c1016c54ee42dbbfc422d044",
+    "scripts/qa/run-source-course-browser.cjs": "efebaf302e6ff7b0b9a640e4d96f41fb3fa1ce5c472f3317e561e62ea7dbf4ec",
+    "scripts/qa/source-course-test-api.cjs": "4b2d895acd4085b29b1379df04d77a9bb13107c656e5d0b03d9f114d83e148b1",
+    "scripts/qa/verify-assistant-turn-runtime.cjs": "2753985a3df153fdf402f5d126b2dcd5cefc10a425072029fe008a1805e1622a",
+    "tests/e2e/assistant-conversations.spec.ts": "8b0bc8be49e0aedad9c7325351648ed7c0dec42826bbb0e24dd4afab6b6b3f46",
+    "tests/e2e/product-smoke.spec.ts": "7f5561dd23fe72f55ce91b37a382a59c7f71ee81293fd8fba0a93f88a98a878d"
+  },
+  "applicationSourceRevision": "f2491508bcae824ba485d72d7b8fbf48a73a661f",
+  "localApiBaseline": "f2491508bcae824ba485d72d7b8fbf48a73a661f",
+  "localBrowserBaseline": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
+  "postApiChange": "Browser test fixtures/assertions and active-run preflight only; application API/frontend sources unchanged. Final remote CI must cover the exact candidate.",
+  "passed": false,
+  "localPassed": true,
+  "status": "local-validated-awaiting-exact-ci-and-runtime",
+  "reports": {
+    "assistant-legacy-initial.json": {
+      "sha256": "c301bd87952cd92e00d21498d40239fb6ef31a633ab87212e2dbd182ab32420e",
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "total": 7
+    },
+    "assistant-legacy-final.json": {
+      "sha256": "e930c067d840fc3fc3349953fe1121aaa2895222ddf4ac1338eaff69ebf4c2f4",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "total": 7
+    },
+    "assistant-turn-sqlite-initial.json": {
+      "sha256": "68d50bd9753a63a5500d58a33512a872f0c9f89340bb1a012f47f6e8d13bb8e0",
+      "passed": 12,
+      "failed": 4,
+      "skipped": 0,
+      "total": 16
+    },
+    "assistant-turn-sqlite-earlier-final.json": {
+      "sha256": "4104e6f756edbebb186ea1a87afb354ed394f4e74887377020e78038cb9b33fa",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "total": 16
+    },
+    "assistant-turn-sqlite-earlier-expanded.json": {
+      "sha256": "79ec1bd923fd6c6d051005cd3a2d9b14af189111363baba9418a1187f2bce425",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "total": 21
+    },
+    "assistant-turn-sqlite-expanded-before-legacy-check.json": {
+      "sha256": "37303d080407beddd9e6e2bbd2ef6d96fbf1052a3e89f6734378c2f7de4f97d2",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 1,
+      "total": 31
+    },
+    "assistant-turn-sqlite-final.json": {
+      "sha256": "8aa5049ad3a908d8f2019d0a4355b142ff7f57eafc105f6be059296c740d8b49",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 1,
+      "total": 32
+    },
+    "assistant-turn-recovery-sqlite.json": {
+      "sha256": "eb3a7f0657bb45e0f7045748d4d381f9c9693d4da0ff9643d21a82cb73dc20fc",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 1,
+      "total": 17
+    },
+    "assistant-turn-postgres-earlier.json": {
+      "sha256": "e9ab378cc515f554d7ffac5783333f8e61266a6f17932ec1007bf7f260af64af",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "total": 14
+    },
+    "assistant-turn-postgres-recovery-earlier.json": {
+      "sha256": "c227f4707c8dcfb8652935ebaebfaa2e2983a183b559fcf3681de690a6d736e8",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "total": 17
+    },
+    "assistant-turn-postgres-before-legacy-check.json": {
+      "sha256": "321306c2934d4a834dd54740449636a6a8d315c4a9e7fc10d820cc731f777029",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "total": 20
+    },
+    "assistant-turn-postgres-final.json": {
+      "sha256": "1199273a15cd2ddac0de1d67475782d8a5705b713dceaeecd5d00c5bc2a987a4",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "total": 21
+    },
+    "assistant-turn-full-api-initial.json": {
+      "sha256": "a9015008e5ba21fe36c495dda1b319500f297cc3448ba75a50cee240c79f5573",
+      "passed": 1136,
+      "failed": 3,
+      "skipped": 37,
+      "total": 1176
+    },
+    "assistant-turn-full-api-baseline.json": {
+      "sha256": "58ea91d60b2022e7a8e494c6e1a9c0695840c64fdac8460dbaa3dfcad33e4339",
+      "passed": 1139,
+      "failed": 0,
+      "skipped": 37,
+      "total": 1176
+    },
+    "assistant-turn-full-api-final.json": {
+      "sha256": "a9001e2f58e89e657d06e526e3b0df0792bfa6397b6a2089ab30343bd7fdf36f",
+      "passed": 1140,
+      "failed": 0,
+      "skipped": 37,
+      "total": 1177
+    },
+    "assistant-process-cancellation.json": {
+      "sha256": "3b0b07cfd3f1f9cc7595c37c2d3e91919edd9ec8f1d0d8e2ab0690e8071d2665",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "total": 8
+    },
+    "assistant-turn-runtime-initial.json": {
+      "sha256": "0be007e2e23886a42b896bea231d966dd88e45c65043b7cb55ce3e7c6febbd2d",
+      "passed": true
+    },
+    "assistant-turn-model-runtime.json": {
+      "sha256": "d9588470392a89c021e0014d62dd716f46d4381bd7f6dec6741a3b98943bd179",
+      "passed": true
+    },
+    "assistant-turn-browser-initial.json": {
+      "sha256": "3b2f35b3ae0465e359363f08bc17012c124ca1da4a4af4132a15341f26717b7b",
+      "stats": {
+        "startTime": "2026-10-25T10:25:31.387Z",
+        "duration": 20954.006,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 7,
+        "flaky": 0
+      }
+    },
+    "assistant-turn-browser-expanded-initial.json": {
+      "sha256": "afc282dff2edcbbaad185a92968519d36ba24d64c2f0244bcac3f3c9455d6cd1",
+      "stats": {
+        "startTime": "2026-10-25T10:35:27.556Z",
+        "duration": 81593.2,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "assistant-turn-browser-final.json": {
+      "sha256": "b96170b80ebcaf7cf53b65c675abf5a7cd588cadaea99c7dc3a79c2b5a408c9d",
+      "stats": {
+        "startTime": "2026-10-25T10:47:58.879Z",
+        "duration": 85449.966,
+        "expected": 11,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "assistant-turn-full-browser-initial.json": {
+      "sha256": "61362838a09c6ed41f84291d6524eab73fd84867707a3c5c9be39a932134f3cf",
+      "stats": {
+        "startTime": "2026-10-25T10:49:51.155Z",
+        "duration": 893890.8150000001,
+        "expected": 140,
+        "skipped": 0,
+        "unexpected": 3,
+        "flaky": 0
+      }
+    },
+    "assistant-turn-full-browser.json": {
+      "sha256": "ddd098d5498e91fd427098d81a8a781d122bdceace7f74f88ff1f66f726de415",
+      "stats": {
+        "startTime": "2026-10-25T11:05:31.896Z",
+        "duration": 781117.418,
+        "expected": 143,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "assistant-browser-overlap-check.json": {
+      "sha256": "5b58a3c39ab6ac6a7d4f05457ed2e601ddab11b6f4e8454eb17345d2f602a6a5",
+      "passed": true
+    }
+  },
+  "screens": {
+    "assistant-turns/diagnostic-history-readonly.png": "bfca8c8bb82bb1a6ce921853d3f2025dc6420336f86ccf30d9313fbaef0ad935",
+    "assistant-turns/history-old-message-768.png": "e4739326e6586e2854976f0e4275de7d90a089e3f7d2003460d4427a66ac7fcf",
+    "assistant-turns/retry-original-model.png": "f0a0f37123ca98fd24fed022e40f3ede8e209827b402c6bfebf0c7d1a47a9e9a",
+    "assistant-turns/saved-conversation-1440.png": "2d76c4908e52549f8ed4038e5da5c243f80d0d58b45dcec57f327b54aa49f5b6",
+    "assistant-turns/saved-conversation-390.png": "2f9e68907cc380a0e333c5847960c67f6ccef7cd4f0840069273bac45c8c020a",
+    "assistant-turns/saved-conversation-768.png": "a28ddcc0a7914e5df4f3cddb44539d5c65502d2845f5effc57f167bea1da3b1b",
+    "assistant-turns/initial-failures/diagnostic-title.png": "93adc45e0a875dc56892976c535703cc0ff2f00bf9e7abb46b2688808cc92156",
+    "assistant-turns/initial-failures/fixture-authorization.png": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+    "assistant-turns/initial-failures/runner-output-cleanup.png": "b125268568e9536088791bac126e055533736654d118d5a40eafd49d3ac9cf7c"
+  },
+  "referenceImages": {
+    "hyperknow/resumed-board/resumed-conversation-880.png": "0f6a02cea6dfe2f4788acbbf699ffb7ca260ff42b10084fbb6f6f1fc1d6cee31"
+  },
+  "knownInitialFailures": [
+    "Legacy tests expected invalid model outputs to become silent rule success; assertions corrected to require failure and zero evidence.",
+    "Fixture setup used an unauthorized principal prefix; preserved ownership rules and corrected the test identity.",
+    "Diagnostic assistant uses a different accessible title; corrected its selector.",
+    "Same-millisecond message order used random IDs; changed to immutable saved sequence and added a page-boundary assertion.",
+    "An early full API run loaded new assertions against older compiled runtime; its 3-failure report is retained.",
+    "First full browser run: an ordinary provider fixture also intercepted project advice, a smoke assertion still expected silent rules, and an overlapping rejected QA start removed trace artifacts. The full JSON is retained; the two overwritten trace directories are unavailable. Routing/assertions were corrected, and active-run refusal now happens before Playwright output cleanup."
+  ],
+  "boundaries": [
+    "This receipt covers ordinary assistant reliability and history only; M1-M7 and all 72 original requirements remain in scope.",
+    "Polling conveys actual task states, not a token stream. Other legacy model paths are not all migrated.",
+    "Real DS default-model completion and actual cancellation use synthetic records; this is not all-model connectivity, human teaching efficacy or voice acceptance.",
+    "Original fonts/CSS/DPR, full whiteboard, course states, teacher review, devices, all content and real delayed retests remain separate gates."
+  ]
+}

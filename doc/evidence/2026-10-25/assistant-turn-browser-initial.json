@@ -1,0 +1,632 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/assistant-conversations.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/assistant-conversations-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "assistant-conversations.spec.ts",
+      "file": "assistant-conversations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 820,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:23:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:23:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:36.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--be796-ctive-first-answer-evidence\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--be796-ctive-first-answer-evidence\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--be796-ctive-first-answer-evidence\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-b7663954ced72587e7f0",
+          "file": "assistant-conversations.spec.ts",
+          "line": 22,
+          "column": 5
+        },
+        {
+          "title": "a lost creation receipt restores the same original command from server state without sending it again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 824,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:31:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:31:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:39.037Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--d110c-te-without-sending-it-again\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--d110c-te-without-sending-it-again\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--d110c-te-without-sending-it-again\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-0502c53b6b5e65ca1b33",
+          "file": "assistant-conversations.spec.ts",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "title": "running cancellation settles after refresh and retry retains the original model despite a new composer selection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 852,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:41:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:41:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:41.190Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-ru-b57f2-te-a-new-composer-selection\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-ru-b57f2-te-a-new-composer-selection\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-ru-b57f2-te-a-new-composer-selection\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-56a582779042a9c5d099",
+          "file": "assistant-conversations.spec.ts",
+          "line": 40,
+          "column": 5
+        },
+        {
+          "title": "invalid model evidence remains a visible failure and an explicit retry publishes one validated answer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 795,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:49:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:49:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:43.412Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-in-67bea-lishes-one-validated-answer\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-in-67bea-lishes-one-validated-answer\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-in-67bea-lishes-one-validated-answer\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-4a4aeb2bae7822076e08",
+          "file": "assistant-conversations.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "history reads beyond fifty messages, locates an old search match and returns to its actual practice question",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 783,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:54:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:54:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:45.503Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-hi-8c732-ts-actual-practice-question\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-hi-8c732-ts-actual-practice-question\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-hi-8c732-ts-actual-practice-question\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-71087abf12d08578086c",
+          "file": "assistant-conversations.spec.ts",
+          "line": 53,
+          "column": 5
+        },
+        {
+          "title": "unavailable local storage keeps the full question editable, exportable and recoverable once the server accepts it",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 818,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:65:11",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:65:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:47.565Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-un-53650--once-the-server-accepts-it\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-un-53650--once-the-server-accepts-it\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-un-53650--once-the-server-accepts-it\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-7bd672c038974e3556d4",
+          "file": "assistant-conversations.spec.ts",
+          "line": 64,
+          "column": 5
+        },
+        {
+          "title": "a forged cache owned by another account is ignored without exposing or sending its text",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 794,
+                  "error": {
+                    "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:73:3",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                      "column": 341,
+                      "line": 5
+                    },
+                    "snippet": "  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                        "column": 341,
+                        "line": 5
+                      },
+                      "message": "Error: {\"message\":\"Answer QA fixture could not be prepared: Fixture authorization required\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3 | import { browserEvidence } from './evidence';\n  4 | const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence=browserEvidence('assistant-conversations');let address=0;\n> 5 | async function call(actor:any,path:string,body?:unknown){const response=await fetch(api+path,{method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+actor.token},...(body===undefined?{}:{body:JSON.stringify(body)})});const x=await response.json();expect(response.ok,JSON.stringify(x.error)).toBe(true);return x.data;}\n    |                                                                                                                                                                                                                                                                                                                                                     ^\n  6 | async function setup(page:Page){\n  7 |   const id=crypto.randomUUID(),principal='assistant-browser-'+id+'@local.test',credential='Assistant-only-'+id;\n  8 |   const registered=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.9.'+(++address)},body:JSON.stringify({principal,credential})});expect(registered.status).toBe(201);const actor=(await registered.json()).data;\n    at call (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:5:341)\n    at setup (F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:10:17)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts:73:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T10:25:49.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--17713-xposing-or-sending-its-text\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--17713-xposing-or-sending-its-text\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\assistant-conversations-a--17713-xposing-or-sending-its-text\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\assistant-conversations.spec.ts",
+                    "column": 341,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0367f1bc5d7d59466eb7-40cf3dd2743e8977ac9e",
+          "file": "assistant-conversations.spec.ts",
+          "line": 72,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T10:25:31.387Z",
+    "duration": 20954.006,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}

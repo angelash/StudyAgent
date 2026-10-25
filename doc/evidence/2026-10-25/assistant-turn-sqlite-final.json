@@ -1,0 +1,459 @@
+{
+  "numTotalTestSuites": 11,
+  "numPassedTestSuites": 11,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 32,
+  "numPassedTests": 31,
+  "numFailedTests": 0,
+  "numPendingTests": 1,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792925833267,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "owned model process cancellation"
+          ],
+          "fullName": "owned model process cancellation waits for the real parent and its spawned worker to exit",
+          "status": "passed",
+          "title": "waits for the real parent and its spawned worker to exit",
+          "duration": 790.0394,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925841873,
+      "endTime": 1792925842663.0393,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/common/terminate-child-process.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "sqlite ordinary assistant native backup and deletion recovery"
+          ],
+          "fullName": "sqlite ordinary assistant native backup and deletion recovery restores original commands, models and terminal messages then applies newer child and account deletions",
+          "status": "passed",
+          "title": "restores original commands, models and terminal messages then applies newer child and account deletions",
+          "duration": 5348.9917000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "postgres ordinary assistant native backup and deletion recovery"
+          ],
+          "fullName": "postgres ordinary assistant native backup and deletion recovery restores original commands, models and terminal messages then applies newer child and account deletions",
+          "status": "skipped",
+          "title": "restores original commands, models and terminal messages then applies newer child and account deletions",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925834233,
+      "endTime": 1792925839581.9917,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "status": "passed",
+          "title": "queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "duration": 135.61220000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context serializes concurrent creation from two application instances and isolates other owners",
+          "status": "passed",
+          "title": "serializes concurrent creation from two application instances and isolates other owners",
+          "duration": 694.8140999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context cancels queued work without a message and retries the original command with a new generation",
+          "status": "passed",
+          "title": "cancels queued work without a message and retries the original command with a new generation",
+          "duration": 115.6257999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context acknowledges running cancellation and fences the late provider result",
+          "status": "passed",
+          "title": "acknowledges running cancellation and fences the late provider result",
+          "duration": 105.04159999999956,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects a changed first answer rather than retroactively recording assistance",
+          "status": "passed",
+          "title": "rejects a changed first answer rather than retroactively recording assistance",
+          "duration": 101.14549999999963,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context does not revive work after the original binding is revoked and a different binding is granted",
+          "status": "passed",
+          "title": "does not revive work after the original binding is revoked and a different binding is granted",
+          "duration": 96.91179999999986,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "status": "passed",
+          "title": "reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "duration": 146.53279999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains one queued command over a cold restart and rejects the expired worker lease",
+          "status": "passed",
+          "title": "retains one queued command over a cold restart and rejects the expired worker lease",
+          "duration": 776.3126999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "status": "passed",
+          "title": "exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "duration": 91.79409999999916,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "status": "passed",
+          "title": "keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "duration": 80.9973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains readable history but does not navigate to a deleted original activity",
+          "status": "passed",
+          "title": "retains readable history but does not navigate to a deleted original activity",
+          "duration": 102.71019999999953,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context preserves user-before-reply causality at the same timestamp across a page boundary",
+          "status": "passed",
+          "title": "preserves user-before-reply causality at the same timestamp across a page boundary",
+          "duration": 40.28430000000026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context validates malformed legacy commands before replaying an old saved message pair",
+          "status": "passed",
+          "title": "validates malformed legacy commands before replaying an old saved message pair",
+          "duration": 84.61779999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects invalid citations and answer leaks without falling back or recording a hint",
+          "status": "passed",
+          "title": "rejects invalid citations and answer leaks without falling back or recording a hint",
+          "duration": 149.8698000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "status": "passed",
+          "title": "counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "duration": 351.7463000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "status": "passed",
+          "title": "the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "duration": 157.63400000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "status": "passed",
+          "title": "uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "duration": 221.7402000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context fences an in-flight answer after actual student deletion",
+          "status": "passed",
+          "title": "fences an in-flight answer after actual student deletion",
+          "duration": 632.2673999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context fences an in-flight answer after actual account deletion",
+          "status": "passed",
+          "title": "fences an in-flight answer after actual account deletion",
+          "duration": 588.0271000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925836873,
+      "endTime": 1792925841547.027,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "status": "passed",
+          "title": "lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "duration": 167.04909999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates session scope and gives evidence-based local coaching in all three subjects",
+          "status": "passed",
+          "title": "validates session scope and gives evidence-based local coaching in all three subjects",
+          "duration": 306.8130000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key rejects fabricated model evidence and cancels without saving a partial conversation",
+          "status": "passed",
+          "title": "rejects fabricated model evidence and cancels without saving a partial conversation",
+          "duration": 97.10599999999977,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "status": "passed",
+          "title": "binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "duration": 225.9961000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "status": "passed",
+          "title": "validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "duration": 35.53279999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "status": "passed",
+          "title": "keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "duration": 200.19039999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "status": "passed",
+          "title": "uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "duration": 559.5710000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925842444,
+      "endTime": 1792925844036.571,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "compatible SDK transport after validation dependency migration"
+          ],
+          "fullName": "compatible SDK transport after validation dependency migration preserves configured chat JSON requests and returns analysis without changing scoring",
+          "status": "passed",
+          "title": "preserves configured chat JSON requests and returns analysis without changing scoring",
+          "duration": 14.156099999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "compatible SDK transport after validation dependency migration"
+          ],
+          "fullName": "compatible SDK transport after validation dependency migration preserves binary speech responses through the installed SDK",
+          "status": "passed",
+          "title": "preserves binary speech responses through the installed SDK",
+          "duration": 2.385099999999966,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "compatible SDK transport after validation dependency migration"
+          ],
+          "fullName": "compatible SDK transport after validation dependency migration keeps SDK provider failures sanitized and avoids automatic application retries",
+          "status": "passed",
+          "title": "keeps SDK provider failures sanitized and avoids automatic application retries",
+          "duration": 3.067199999999957,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925844418,
+      "endTime": 1792925844438.0671,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/openai-compatibility.test.ts"
+    }
+  ]
+}

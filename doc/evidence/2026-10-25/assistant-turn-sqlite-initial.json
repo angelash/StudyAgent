@@ -1,0 +1,249 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 16,
+  "numPassedTests": 12,
+  "numFailedTests": 4,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792922253335,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "status": "passed",
+          "title": "queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "duration": 107.10010000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context serializes concurrent creation from two application instances and isolates other owners",
+          "status": "passed",
+          "title": "serializes concurrent creation from two application instances and isolates other owners",
+          "duration": 555.3091,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context cancels queued work without a message and retries the original command with a new generation",
+          "status": "failed",
+          "title": "cancels queued work without a message and retries the original command with a new generation",
+          "duration": 91.92939999999999,
+          "failureMessages": [
+            "AssertionError: expected [ { …(6) }, { …(11) }, { …(6) }, …(1) ] to have a length of 2 but got 4\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts:65:128\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context acknowledges running cancellation and fences the late provider result",
+          "status": "failed",
+          "title": "acknowledges running cancellation and fences the late provider result",
+          "duration": 76.66690000000017,
+          "failureMessages": [
+            "AssertionError: expected [ { …(6) }, { …(11) }, { …(6) }, …(1) ] to have a length of +0 but got 4\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts:71:107\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects a changed first answer rather than retroactively recording assistance",
+          "status": "passed",
+          "title": "rejects a changed first answer rather than retroactively recording assistance",
+          "duration": 79.22380000000021,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context does not revive work after the original binding is revoked and a different binding is granted",
+          "status": "passed",
+          "title": "does not revive work after the original binding is revoked and a different binding is granted",
+          "duration": 80.1207000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "status": "failed",
+          "title": "reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "duration": 71.47379999999976,
+          "failureMessages": [
+            "AssertionError: expected [ …(79) ] to have a length of 75 but got 79\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts:96:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains one queued command over a cold restart and rejects the expired worker lease",
+          "status": "failed",
+          "title": "retains one queued command over a cold restart and rejects the expired worker lease",
+          "duration": 688.3738999999996,
+          "failureMessages": [
+            "AssertionError: expected [ { id: 'history-027', …(4) }, …(49) ] to have a length of 2 but got 50\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts:107:104\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "status": "passed",
+          "title": "exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "duration": 68.6232,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792922256611,
+      "endTime": 1792922258429.6233,
+      "status": "failed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "status": "passed",
+          "title": "lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "duration": 162.8696,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates session scope and gives evidence-based local coaching in all three subjects",
+          "status": "passed",
+          "title": "validates session scope and gives evidence-based local coaching in all three subjects",
+          "duration": 293.48770000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key rejects fabricated model evidence and cancels without saving a partial conversation",
+          "status": "passed",
+          "title": "rejects fabricated model evidence and cancels without saving a partial conversation",
+          "duration": 95.3773000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "status": "passed",
+          "title": "binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "duration": 218.8065999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "status": "passed",
+          "title": "validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "duration": 22.976400000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "status": "passed",
+          "title": "keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "duration": 191.9749999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "status": "passed",
+          "title": "uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "duration": 556.9051000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792922256161,
+      "endTime": 1792922257703.905,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+    }
+  ]
+}

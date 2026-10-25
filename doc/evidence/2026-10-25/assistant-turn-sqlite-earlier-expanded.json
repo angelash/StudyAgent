@@ -1,0 +1,301 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 4,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 21,
+  "numPassedTests": 21,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792922521710,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "status": "passed",
+          "title": "queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "duration": 119.86409999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context serializes concurrent creation from two application instances and isolates other owners",
+          "status": "passed",
+          "title": "serializes concurrent creation from two application instances and isolates other owners",
+          "duration": 569.9673000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context cancels queued work without a message and retries the original command with a new generation",
+          "status": "passed",
+          "title": "cancels queued work without a message and retries the original command with a new generation",
+          "duration": 103.9396999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context acknowledges running cancellation and fences the late provider result",
+          "status": "passed",
+          "title": "acknowledges running cancellation and fences the late provider result",
+          "duration": 96.6279999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects a changed first answer rather than retroactively recording assistance",
+          "status": "passed",
+          "title": "rejects a changed first answer rather than retroactively recording assistance",
+          "duration": 89.66600000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context does not revive work after the original binding is revoked and a different binding is granted",
+          "status": "passed",
+          "title": "does not revive work after the original binding is revoked and a different binding is granted",
+          "duration": 94.78169999999955,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "status": "passed",
+          "title": "reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "duration": 130.67739999999958,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains one queued command over a cold restart and rejects the expired worker lease",
+          "status": "passed",
+          "title": "retains one queued command over a cold restart and rejects the expired worker lease",
+          "duration": 713.2703000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "status": "passed",
+          "title": "exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "duration": 82.48930000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "status": "passed",
+          "title": "keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "duration": 80.76460000000043,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects invalid citations and answer leaks without falling back or recording a hint",
+          "status": "passed",
+          "title": "rejects invalid citations and answer leaks without falling back or recording a hint",
+          "duration": 124.1208000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "status": "passed",
+          "title": "counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "duration": 328.7995000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "status": "passed",
+          "title": "the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "duration": 152.89829999999984,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "status": "passed",
+          "title": "uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "duration": 194.21969999999965,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792922524979,
+      "endTime": 1792922527862.2197,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "status": "passed",
+          "title": "lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "duration": 169.59479999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates session scope and gives evidence-based local coaching in all three subjects",
+          "status": "passed",
+          "title": "validates session scope and gives evidence-based local coaching in all three subjects",
+          "duration": 309.3955000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key rejects fabricated model evidence and cancels without saving a partial conversation",
+          "status": "passed",
+          "title": "rejects fabricated model evidence and cancels without saving a partial conversation",
+          "duration": 96.07669999999962,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "status": "passed",
+          "title": "binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "duration": 222.36680000000024,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "status": "passed",
+          "title": "validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "duration": 21.838799999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "status": "passed",
+          "title": "keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "duration": 188.4985999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "status": "passed",
+          "title": "uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "duration": 557.6984000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792922524659,
+      "endTime": 1792922526224.6985,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+    }
+  ]
+}

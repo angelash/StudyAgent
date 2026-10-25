@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "0dd1d04dfb4f435484fa0d4dae12593332fa262f",
+  "sourceRevision": "c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 114,
-    "activeNormalApiRoutes": 306,
-    "coveredApiRoutes": 306
+    "features": 115,
+    "activeNormalApiRoutes": 314,
+    "coveredApiRoutes": 314
   },
   "areas": [
     {
@@ -3856,13 +3856,18 @@
       ],
       "contracts": [
         "packages/contracts/src/ai-models.ts",
+        "packages/contracts/src/assistant-turn.ts",
         "packages/contracts/src/index.ts"
       ],
       "tests": [
         "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
         "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
         "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-        "apps/api/src/modules/ai/speech.service.test.ts"
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+        "apps/api/src/common/terminate-child-process.integration.test.ts",
+        "tests/e2e/assistant-conversations.spec.ts"
       ],
       "features": [
         {
@@ -3898,7 +3903,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 73
+              "line": 69
             }
           ],
           "sourceFiles": [
@@ -3908,7 +3913,11 @@
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -3923,15 +3932,16 @@
             "/student/assessment",
             "/student/today"
           ],
-          "inputs": "角色、学生、学科、页面上下文、当前对象、message、requestKey",
-          "implementation": "会话绑定主体与作用域；按当前报告/题目/计划/学习记忆组装上下文；保存用户和助教消息；校验返回引用只来自真实证据。",
-          "outputs": "可追溯消息与模型信息",
+          "inputs": "角色、学生、学科、页面上下文、完整原问题、原modelId、requestKey与contextVersion",
+          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。",
+          "outputs": "可恢复原提问、真实任务状态、已校验消息和辅助事实",
           "collections": [
             "assistantSessions",
             "assistantMessages",
+            "assistantTurns",
             "aiInsights"
           ],
-          "limits": "学生题目上下文不提前暴露答案键；跨家庭会话不可读写。",
+          "limits": "进行中诊断使用规则；非法引用和泄题必须失败；本机草稿只按账号/位置读取，缓存不可用保留文字并可下载；状态轮询不等于token流。",
           "endpoints": [
             {
               "verb": "POST",
@@ -3956,38 +3966,185 @@
               "method": "listMessages",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
               "line": 58
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/context",
+              "controller": "AssistantTurnController",
+              "method": "context",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/turns",
+              "controller": "AssistantTurnController",
+              "method": "list",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/turns/:id",
+              "controller": "AssistantTurnController",
+              "method": "get",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/turns",
+              "controller": "AssistantTurnController",
+              "method": "create",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/turns/:id/cancel",
+              "controller": "AssistantTurnController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/turns/:id/retry",
+              "controller": "AssistantTurnController",
+              "method": "retry",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 16
             }
           ],
           "implementations": [
             {
               "name": "AiService.openAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 180
+              "line": 177
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 227
+              "line": 224
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 342
+              "line": 337
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 438
+              "line": 450
+            },
+            {
+              "name": "AssistantTurnService.context",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 49
+            },
+            {
+              "name": "AssistantTurnService.list",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 63
+            },
+            {
+              "name": "AssistantTurnService.get",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 62
+            },
+            {
+              "name": "AssistantTurnService.create",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 89
+            },
+            {
+              "name": "AssistantTurnService.control",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 113
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/ai/assistant-turn.service.ts",
+            "apps/api/src/modules/ai/assistant-turn-worker.service.ts",
+            "apps/web/lib/assistant-conversation.tsx",
+            "apps/web/components/assistant-widget.tsx",
             "apps/api/src/modules/ai/ai.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
+          ]
+        },
+        {
+          "id": "AI-08",
+          "title": "助教分页检索与原题定位",
+          "area": "ai",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/student/assessment",
+            "/student/today"
+          ],
+          "inputs": "本人会话、query、pageSize、绑定会话/检索词的cursor或消息anchor",
+          "implementation": "有界分页覆盖旧50条以外消息，按保存顺序处理同毫秒消息；搜索同时包含失败/取消原问题；定位原消息窗口，重新鉴权返回实际训练题或评测原题只读回看；原活动删除时返回不可导航状态。",
+          "outputs": "真实历史、原消息锚点、当前学习返回与有效位置链接",
+          "collections": [
+            "assistantSessions",
+            "assistantMessages",
+            "assistantTurns"
+          ],
+          "limits": "每会话/总扫描有明确预算，超限报错；不静默截断结果；回看不改变首答/核查顺序，尚未开放题目不能通过定位提前查看。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/history",
+              "controller": "AssistantTurnController",
+              "method": "history",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/messages/page",
+              "controller": "AssistantTurnController",
+              "method": "page",
+              "file": "apps/api/src/modules/ai/assistant-turn.controller.ts",
+              "line": 11
+            }
+          ],
+          "implementations": [
+            {
+              "name": "AssistantTurnService.history",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 144
+            },
+            {
+              "name": "AssistantTurnService.page",
+              "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
+              "line": 128
+            }
+          ],
+          "sourceFiles": [
+            "apps/web/app/student/assessment/studio.tsx",
+            "apps/api/src/modules/ai/assistant-turn.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+            "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -4003,22 +4160,28 @@
             "/student/today"
           ],
           "inputs": "受约束system/context/history/message及modelId",
-          "implementation": "使用ephemeral、read-only、JSON schema启动CLI；最多读取最近10轮、约18000字符上下文；解析终态JSON并验证；失败最多两次；取消终止本次调用。",
+          "implementation": "使用ephemeral、read-only、JSON schema启动CLI；最多读取最近10轮、约18000字符上下文；解析终态JSON并验证；失败最多两次。Windows取消精确子进程树，其他系统终止本次独立进程组，并等待进程关闭；真实CLI小调用与进程测试分别留证。",
           "outputs": "reply、evidenceIds和可选板书结构",
           "collections": [
             "assistantMessages"
           ],
-          "limits": "网页接口返回完整消息，不是逐token流式聊天；提示限制工具不是操作系统级绝对隔离保证。",
+          "limits": "网页接口返回完整消息，不是逐token流式聊天；提示限制工具不是操作系统级绝对隔离保证；遗留路径仍可能截取上下文，新持久提问则先检查预算。",
           "endpoints": [],
           "implementations": [],
           "sourceFiles": [
-            "apps/api/src/modules/ai/codex-command.ts"
+            "apps/api/src/modules/ai/codex-command.ts",
+            "apps/api/src/common/terminate-child-process.ts",
+            "scripts/qa/verify-assistant-turn-runtime.cjs"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -4063,12 +4226,12 @@
             {
               "name": "AiService.analyzeAssessment",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 75
+              "line": 72
             },
             {
               "name": "AiService.generateHint",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 126
+              "line": 123
             }
           ],
           "sourceFiles": [
@@ -4078,7 +4241,11 @@
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -4105,7 +4272,11 @@
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -4134,7 +4305,11 @@
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         },
         {
@@ -4169,7 +4344,11 @@
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
             "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
             "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
-            "apps/api/src/modules/ai/speech.service.test.ts"
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts"
           ]
         }
       ]
@@ -8143,7 +8322,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 339
+              "line": 340
             },
             {
               "name": "DomainEventBusService.publish",
@@ -8153,7 +8332,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 237
+              "line": 238
             }
           ],
           "sourceFiles": [
@@ -8346,7 +8525,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 237
+              "line": 238
             }
           ],
           "sourceFiles": [
@@ -8423,7 +8602,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 221
+              "line": 222
             },
             {
               "name": "RuntimeMetricsService.snapshot",

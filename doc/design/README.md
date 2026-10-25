@@ -4,12 +4,14 @@
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
+113已在开发候选接入普通助教持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。本册源码基线为c6e12e9；CI和实际守护运行状态以收据为准，不以设计生成通过替代发布。
+
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、114项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、115项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、91个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、92个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
@@ -35,9 +37,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：327个源码路由声明中，当前正常接入306个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [全部接口](generated/api-reference.md)：335个源码路由声明中，当前正常接入314个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
 - [页面职责](generated/page-reference.md)：26个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与260个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [领域集合与295个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构

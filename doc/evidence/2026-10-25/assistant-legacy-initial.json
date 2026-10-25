@@ -1,0 +1,128 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 7,
+  "numPassedTests": 5,
+  "numFailedTests": 2,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792921959917,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "status": "passed",
+          "title": "lists all Xiaojiu models and keeps the selected model on the saved assistant reply",
+          "duration": 150.56529999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates session scope and gives evidence-based local coaching in all three subjects",
+          "status": "passed",
+          "title": "validates session scope and gives evidence-based local coaching in all three subjects",
+          "duration": 292.97569999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key rejects fabricated model evidence and cancels without saving a partial conversation",
+          "status": "failed",
+          "title": "rejects fabricated model evidence and cancels without saving a partial conversation",
+          "duration": 94.08179999999993,
+          "failureMessages": [
+            "ServiceUnavailableException: 提问未完成，可从已保存任务重试或在当前上下文重新提问\n    at AssistantTurnService.legacy (F:\\workspace\\github\\StudyAgent-long-pdf\\apps\\api\\dist\\apps\\api\\src\\modules\\ai\\assistant-turn.service.js:289:23)\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts:75:22\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "status": "failed",
+          "title": "binds the visible practice question, restores one scoped conversation, redacts scoring data and records assistance once",
+          "duration": 96.0023000000001,
+          "failureMessages": [
+            "Error: expected 201 \"Created\", got 503 \"Service Unavailable\"\n    at F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts:98:81\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent-long-pdf/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20\n----\n    at Test._assertStatus (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:309:14)\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:365:13\n    at Test._assertFunction (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:342:13)\n    at Test.assert (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:195:23)\n    at localAssert (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:138:14)\n    at Server.<anonymous> (F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\supertest\\lib\\test.js:152:11)\n    at Object.onceWrapper (node:events:630:28)\n    at Server.emit (node:events:509:28)\n    at emitCloseNT (node:net:2661:8)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "status": "passed",
+          "title": "validates reference ownership, subject and item, and preserves revoked access and pause boundaries",
+          "duration": 20.91309999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "status": "passed",
+          "title": "keeps assisted diagnostic responses separate from independent evidence and cancellation leaves no assistance",
+          "duration": 197.12800000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "evidence coach without search subprocess or a required AI key"
+          ],
+          "fullName": "evidence coach without search subprocess or a required AI key uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "status": "passed",
+          "title": "uses the selected frozen definition and baseline report across report, plan and practice coaching",
+          "duration": 558.3422,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792921962639,
+      "endTime": 1792921964049.3423,
+      "status": "failed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/evidence-coach.integration.test.ts"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`0dd1d04dfb4f435484fa0d4dae12593332fa262f`。共 327 个 HTTP 路由声明，当前 AppModule 可达 306 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`c6e12e9f77c5f42ca94a3ddc93073ad62c0b46a0`。共 335 个 HTTP 路由声明，当前 AppModule 可达 314 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -90,6 +90,80 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.aiService.assertSessionOwner`、`this.aiService.listMessages`
+
+## AssistantTurnController — 当前接入
+
+### GET /api/ai/assistant/history
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:9](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L9)，方法 `history`。
+
+- 签名：`history(@Req() r:AuthenticatedRequest, @Query() q:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.history`
+
+### GET /api/ai/assistant/sessions/:sessionId/context
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:10](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L10)，方法 `context`。
+
+- 签名：`context(@Req() r:AuthenticatedRequest, @Param('sessionId') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.context`
+
+### GET /api/ai/assistant/sessions/:sessionId/messages/page
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:11](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L11)，方法 `page`。
+
+- 签名：`page(@Req() r:AuthenticatedRequest, @Param('sessionId') id:string, @Query() q:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.page`
+
+### GET /api/ai/assistant/sessions/:sessionId/turns
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:12](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L12)，方法 `list`。
+
+- 签名：`list(@Req() r:AuthenticatedRequest, @Param('sessionId') id:string, @Query() q:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.list`
+
+### GET /api/ai/assistant/sessions/:sessionId/turns/:id
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:13](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L13)，方法 `get`。
+
+- 签名：`get(@Req() r:AuthenticatedRequest, @Param('sessionId') sessionId:string, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.get`
+
+### POST /api/ai/assistant/sessions/:sessionId/turns
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:14](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L14)，方法 `create`。
+
+- 签名：`create(@Req() r:AuthenticatedRequest, @Param('sessionId') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.create`
+
+### POST /api/ai/assistant/sessions/:sessionId/turns/:id/cancel
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:15](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L15)，方法 `cancel`。
+
+- 签名：`cancel(@Req() r:AuthenticatedRequest, @Param('sessionId') s:string, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.control`
+
+### POST /api/ai/assistant/sessions/:sessionId/turns/:id/retry
+
+实现：[apps/api/src/modules/ai/assistant-turn.controller.ts:16](../../../apps/api/src/modules/ai/assistant-turn.controller.ts#L16)，方法 `retry`。
+
+- 签名：`retry(@Req() r:AuthenticatedRequest, @Param('sessionId') s:string, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.turns.control`
 
 ## AssessmentsController — 历史代码，未被AppModule接入
 

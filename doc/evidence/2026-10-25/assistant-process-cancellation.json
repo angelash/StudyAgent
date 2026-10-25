@@ -1,0 +1,145 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 4,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 8,
+  "numPassedTests": 8,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792924663653,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "owned model process cancellation"
+          ],
+          "fullName": "owned model process cancellation waits for the real parent and its spawned worker to exit",
+          "status": "passed",
+          "title": "waits for the real parent and its spawned worker to exit",
+          "duration": 713.6665,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792924663988,
+      "endTime": 1792924664701.6665,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/common/terminate-child-process.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService includes custom schema in the model prompt and retries with the missing field path",
+          "status": "passed",
+          "title": "includes custom schema in the model prompt and retries with the missing field path",
+          "duration": 36.44209999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService retains validated classroom board and requests its structured output schema",
+          "status": "passed",
+          "title": "retains validated classroom board and requests its structured output schema",
+          "duration": 33.93029999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService uses the richer board protocol only for the explicit presentation path",
+          "status": "passed",
+          "title": "uses the richer board protocol only for the explicit presentation path",
+          "duration": 28.822599999999966,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService rejects unsupported board fields or diagrams after a bounded retry",
+          "status": "passed",
+          "title": "rejects unsupported board fields or diagrams after a bounded retry",
+          "duration": 30.59629999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService rejects unsupported board fields or diagrams after a bounded retry",
+          "status": "passed",
+          "title": "rejects unsupported board fields or diagrams after a bounded retry",
+          "duration": 27.58050000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService rejects unsupported board fields or diagrams after a bounded retry",
+          "status": "passed",
+          "title": "rejects unsupported board fields or diagrams after a bounded retry",
+          "duration": 26.502700000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "XiaojiuChatService"
+          ],
+          "fullName": "XiaojiuChatService runs the selected model through the current Xiaojiu CLI and validates evidence JSON",
+          "status": "passed",
+          "title": "runs the selected model through the current Xiaojiu CLI and validates evidence JSON",
+          "duration": 28.232500000000073,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792924664485,
+      "endTime": 1792924664697.2324,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/xiaojiu-chat.service.test.ts"
+    }
+  ]
+}

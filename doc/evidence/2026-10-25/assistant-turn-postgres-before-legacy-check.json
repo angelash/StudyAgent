@@ -1,0 +1,289 @@
+{
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 20,
+  "numPassedTests": 20,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792925293372,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "sqlite ordinary assistant native backup and deletion recovery"
+          ],
+          "fullName": "sqlite ordinary assistant native backup and deletion recovery restores original commands, models and terminal messages then applies newer child and account deletions",
+          "status": "passed",
+          "title": "restores original commands, models and terminal messages then applies newer child and account deletions",
+          "duration": 6318.562,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "postgres ordinary assistant native backup and deletion recovery"
+          ],
+          "fullName": "postgres ordinary assistant native backup and deletion recovery restores original commands, models and terminal messages then applies newer child and account deletions",
+          "status": "passed",
+          "title": "restores original commands, models and terminal messages then applies newer child and account deletions",
+          "duration": 11843.3973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925294665,
+      "endTime": 1792925312827.3972,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "status": "passed",
+          "title": "queues once, returns a public view, freezes model resolution and saves one validated pair",
+          "duration": 177.36070000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context serializes concurrent creation from two application instances and isolates other owners",
+          "status": "passed",
+          "title": "serializes concurrent creation from two application instances and isolates other owners",
+          "duration": 984.0061000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context cancels queued work without a message and retries the original command with a new generation",
+          "status": "passed",
+          "title": "cancels queued work without a message and retries the original command with a new generation",
+          "duration": 186.26710000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context acknowledges running cancellation and fences the late provider result",
+          "status": "passed",
+          "title": "acknowledges running cancellation and fences the late provider result",
+          "duration": 128.1297999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects a changed first answer rather than retroactively recording assistance",
+          "status": "passed",
+          "title": "rejects a changed first answer rather than retroactively recording assistance",
+          "duration": 145.72520000000077,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context does not revive work after the original binding is revoked and a different binding is granted",
+          "status": "passed",
+          "title": "does not revive work after the original binding is revoked and a different binding is granted",
+          "duration": 136.1902,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "status": "passed",
+          "title": "reads all historical messages through bounded pages and binds a search cursor to its session and query",
+          "duration": 165.0645999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains one queued command over a cold restart and rejects the expired worker lease",
+          "status": "passed",
+          "title": "retains one queued command over a cold restart and rejects the expired worker lease",
+          "duration": 1143.6791000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "status": "passed",
+          "title": "exports public turns but removes frozen scoring, authorization and worker commands from portable records",
+          "duration": 127.68950000000041,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "status": "passed",
+          "title": "keeps cancelled and failed questions searchable without inventing a saved assistant reply",
+          "duration": 88.3774000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context retains readable history but does not navigate to a deleted original activity",
+          "status": "passed",
+          "title": "retains readable history but does not navigate to a deleted original activity",
+          "duration": 143.8787000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context preserves user-before-reply causality at the same timestamp across a page boundary",
+          "status": "passed",
+          "title": "preserves user-before-reply causality at the same timestamp across a page boundary",
+          "duration": 50.008099999999104,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context rejects invalid citations and answer leaks without falling back or recording a hint",
+          "status": "passed",
+          "title": "rejects invalid citations and answer leaks without falling back or recording a hint",
+          "duration": 198.1935999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "status": "passed",
+          "title": "counts pending and cancelled commands once in the daily quota and permits exact replay",
+          "duration": 437.39310000000114,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "status": "passed",
+          "title": "the compatibility call cancels its actual latest task version when a running wait is aborted",
+          "duration": 270.5724999999984,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "status": "passed",
+          "title": "uses actual learner routes and rejects an original learning grant after disable and re-enable",
+          "duration": 361.08240000000114,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context fences an in-flight answer after actual student deletion",
+          "status": "passed",
+          "title": "fences an in-flight answer after actual student deletion",
+          "duration": 803.449700000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ordinary assistant durable turns and immutable publication context"
+          ],
+          "fullName": "ordinary assistant durable turns and immutable publication context fences an in-flight answer after actual account deletion",
+          "status": "passed",
+          "title": "fences an in-flight answer after actual account deletion",
+          "duration": 729.6834999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792925298043,
+      "endTime": 1792925304320.6836,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent-long-pdf/apps/api/src/modules/ai/assistant-turn.integration.test.ts"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-25T10:38:54.835Z",
+  "passed": true,
+  "scope": "Synthetic ordinary assistant: default-model completion and actual CLI cancellation only",
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "completionLatencyMs": 5724,
+  "replyCharacters": 37,
+  "replySha256": "9ecf93201c0479a71bb3fed883bb1d21eaa3bf7585448c819705b366ddc17abd",
+  "cancellation": {
+    "status": "cancelled",
+    "generation": 1,
+    "savedMessages": 2
+  },
+  "processes": [
+    {
+      "pid": 11956,
+      "shell": false,
+      "startedAt": "2026-10-25T10:38:46.748Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "turn.completed"
+      ],
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "closedAt": "2026-10-25T10:38:52.160Z",
+      "stillAlive": false
+    },
+    {
+      "pid": 60628,
+      "shell": false,
+      "startedAt": "2026-10-25T10:38:52.459Z",
+      "eventTypes": [
+        "thread.started",
+        "turn.started"
+      ],
+      "closed": true,
+      "code": 1,
+      "signal": null,
+      "closedAt": "2026-10-25T10:38:54.815Z",
+      "stillAlive": false
+    }
+  ],
+  "limitations": [
+    "One default-model call; not all-model connectivity proof.",
+    "CLI event types observed for this invocation only; no claim that the CLI lacks other event types.",
+    "No real learner data or long-term teaching outcome was tested."
+  ]
+}
