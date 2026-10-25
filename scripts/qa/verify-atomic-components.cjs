@@ -11,7 +11,7 @@ const configuration = releaseKey === 'average' ? { parentId: 'core:math:average'
   field: 'count', eligible: 72, childPrerequisite: 'core:math:count', directPrerequisites: ['foundation:math:divisiondigits'], teachingMarker: '未记录当0' } : {
   parentId: 'foundation:math:divisiondigits', childId: 'atomic:math:divisionregroup', grade: 3,
   field: 'combinedOnes', eligible: 48, childPrerequisite: 'foundation:math:placevalue', directPrerequisites: ['foundation:math:divisiontable', 'foundation:math:placevalue'], teachingMarker: '本点给定余十' };
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false', XIAOJIU_CHAT_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const fromApi = file => require(path.join(root, 'apps/api/dist/apps/api/src', file + '.js'));
 const { AppModule } = fromApi('app.module'), { InMemoryStoreService } = fromApi('infrastructure/in-memory-store.service');

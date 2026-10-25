@@ -124,6 +124,15 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Browser product journey at phone, tablet and desktop widths
         run: npm run test:e2e
+      - name: Preserve browser failures and original traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failure-evidence
+          retention-days: 14
+          path: |
+            test-results/browser-product-acceptance/
+            data/qa/source-course-full-browser.json
 
   postgres:
     runs-on: ubuntu-24.04

@@ -55,7 +55,7 @@ function compareLegacy() {
   }));
 }
 Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_ASSET_ROOT: assets,
-  STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'true' });
+  STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'true', XIAOJIU_CHAT_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');
