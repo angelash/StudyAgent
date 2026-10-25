@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "status": "runtime-delivered",
+  "sourceRevision": "8071e7ecbdea16135ee18371424e3dd99931dc63",
+  "applicationRevision": "6bf3700",
+  "inheritedCancellationRepair": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
+  "deployed": true,
+  "sqliteFocused": {
+    "passed": 50,
+    "failed": 0,
+    "pure": 18,
+    "http": 23,
+    "storage": 9
+  },
+  "postgres": {
+    "passed": 26,
+    "failed": 0,
+    "http": 23,
+    "nativeStorage": 3,
+    "scopeOverlapsSqlite": true
+  },
+  "focusedBrowser": {
+    "passed": 10,
+    "failed": 0,
+    "retry": 0,
+    "report": "source-check-single-browser/browser.json"
+  },
+  "fullApiBeforeInheritedCancellationRepair": {
+    "passed": 1243,
+    "failed": 0,
+    "skipped": 43,
+    "sourceRevision": "550cf23d9ff412509b53fc9ff17182c3d12d8bd0",
+    "report": "source-check-single-backend/full-api-before-cancel-repair.json"
+  },
+  "inheritedFullApi": {
+    "passed": 1241,
+    "failed": 0,
+    "skipped": 43,
+    "scope": "Upstream 120 includes cancellation repair but still has two-target selection. Not a full API run of 121.",
+    "report": "source-check-cancellation/full-api.json"
+  },
+  "live": {
+    "passed": true,
+    "modelId": "deepseek-v4-flash",
+    "questions": 5,
+    "targets": 1,
+    "providerCalls": 2,
+    "validationFailures": 0,
+    "report": "source-check-single-live/receipt.json"
+  },
+  "limits": [
+    "Production anonymous entry/authorization/compiled-code checks passed. Synthetic owned flows and provider calls were run separately in isolated storage; this does not certify real families or devices.",
+    "No teacher review, real-device or long-term validation.",
+    "Exact duplicate detection and different situations do not prove independent item families.",
+    "Content stays pending and formalMeasurementEligible=false.",
+    "Counts overlap and are not additive."
+  ],
+  "fullBrowserBeforeAccessFix": {
+    "passed": 218,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "applicationSnapshot": "7fd1d1921b1e15522901ea17009ed39d7012fab1",
+    "durationMs": 1020292.5369999999,
+    "report": "source-check-single-browser/full-before-access-fix.json",
+    "scope": "Single-target plus inherited cancellation; predates the independent whiteboard current-access fix."
+  },
+  "accessMaintenance": {
+    "revision": "dc93206",
+    "originalCommit": "9009790",
+    "report": "whiteboard-replay-access/receipt.json",
+    "currentCombinedApi": {
+      "passed": 65,
+      "failed": 0,
+      "sourceCheckCases": 50,
+      "studioCases": 15,
+      "report": "source-check-single-current/focused-api.json"
+    }
+  },
+  "fullApi": {
+    "passed": 1245,
+    "failed": 0,
+    "skipped": 43,
+    "sourceRevision": "8071e7ecbdea16135ee18371424e3dd99931dc63",
+    "applicationRevision": "dc93206bec22ff08d6f8da61467094b543575c96",
+    "report": "source-check-single-current/full-api.json"
+  },
+  "fullBrowser": {
+    "passed": 218,
+    "failed": 0,
+    "retry": 0,
+    "skipped": 0,
+    "report": "source-check-single-exact-ci/browser.json",
+    "sha256": "721996b4d684e5cc9ce24af343723c8d0a9ae354fe1f117cf7ace5ae10feaff4",
+    "scope": "Complete current CI browser run includes dc93206 access maintenance.",
+    "rawReport": "source-check-single-exact-ci/browser-original.json.gz"
+  },
+  "ci": {
+    "run": 40238652989,
+    "head": "8071e7ecbdea16135ee18371424e3dd99931dc63",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 3,
+    "report": "source-check-single-exact-ci/run.json",
+    "api": {
+      "passed": 1237,
+      "skipped": 51,
+      "failed": 0,
+      "scope": "Linux environment, overlaps local complete suite."
+    }
+  },
+  "runtime": {
+    "report": "source-check-single-runtime.json",
+    "revision": "dd9194e",
+    "webBuildId": "0Zhr-Oq70fmQyS671XuvN",
+    "httpChecks": 69,
+    "voiceSamples": 6,
+    "stableMs": 75948,
+    "schemaVersion": 15
+  }
+}

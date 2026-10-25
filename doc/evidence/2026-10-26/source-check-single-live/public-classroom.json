@@ -1,0 +1,278 @@
+{
+  "id": "classroom_91dd8f2b-1b5e-44ac-b759-14de3a461a39",
+  "ownerUserId": "user_92e8e5ce-122e-4d64-a9aa-97b7a47eb681",
+  "studentId": null,
+  "courseId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530",
+  "lessonId": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238",
+  "sourceCourseId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530",
+  "sourceCheckId": "source_check_747e08cc-f328-4e30-9e06-a477c9174238",
+  "sourceCheckFingerprint": "0331a10eb160891903095c23b3a28efb15560179df895dbc50ba11fc0a74980a",
+  "sourceCheckTargets": [
+    {
+      "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+      "title": "区分事实与解释",
+      "objective": "把观察、推断与待验证条件分开。"
+    }
+  ],
+  "contentFingerprint": "eea697c4fa619ef5c9f26c40b67c5737fca8c3b344d4bd9bd941193cf79d38e1",
+  "lesson": {
+    "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238",
+    "title": "看懂资源与条件：观察、解释与边界核查",
+    "objective": "把观察、推断与待验证条件分开。",
+    "lectureId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530",
+    "generatedNotice": "AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+    "assessment": {
+      "kind": "unit-check",
+      "version": "0331a10eb160891903095c23b3a28efb15560179df895dbc50ba11fc0a74980a",
+      "notice": "AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。"
+    },
+    "practiceVersion": "0331a10eb160891903095c23b3a28efb15560179df895dbc50ba11fc0a74980a",
+    "steps": [
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:orient",
+        "phase": "orient",
+        "title": "独立核查",
+        "narration": "依据匿名情境作答。先区分直接记录到的现象与提出的原因，再判断比较条件是否充分，并保留证据尚未覆盖的时间、地点和人群。单选题选一项，多选题选全部适用项。本套题用于形成性核查；AI核验不等于人工批准或正式能力测量。。AI生成题组仍待内容审核。首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+        "durationMs": 12000,
+        "blocks": [
+          {
+            "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:title",
+            "kind": "heading",
+            "text": "看懂资源与条件：观察、解释与边界核查"
+          },
+          {
+            "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:targets",
+            "kind": "points",
+            "text": "本次核查目标",
+            "items": [
+              "区分事实与解释"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:review",
+        "phase": "transfer",
+        "title": "作答与复盘",
+        "narration": "先独立判断，需要帮助时再逐级查看提示。提交后核对本题理由和来源；遇到不会可以如实记录，再返回对应课时。",
+        "durationMs": 12000,
+        "blocks": [
+          {
+            "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:review:points",
+            "kind": "points",
+            "text": "保留自己的判断",
+            "items": [
+              "独立首答",
+              "需要时使用提示",
+              "核对理由与原文",
+              "回看对应课时"
+            ]
+          }
+        ]
+      }
+    ],
+    "sourceReferences": [
+      {
+        "sourceKey": "preview",
+        "title": "匿名图书室：观察、解释与边界",
+        "page": 1,
+        "quote": "",
+        "href": "/studio/source-courses?course=check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530&source=preview"
+      }
+    ],
+    "questions": [
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:q:1",
+        "prompt": "某校图书室只在两个周二14:00—15:00记录到：三层座位接近满员，还有4人站着；同一时段门口有社团摆摊。工作人员说：“人满一定是因为期末考试临近。”哪项是对现有记录最稳妥的判断？",
+        "options": [
+          "站着4人已经足以证明整个考试周都缺少座位",
+          "门口有社团摆摊，所以座位不足这一解释可以排除",
+          "记录支持两个指定时段接近满员且有人站立；考试临近是否是原因仍待比较验证",
+          "工作人员给出的原因属于观察，不需要再核查"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:q:2",
+        "prompt": "社区自习室在周末上午常有人排队，工作日下午则常有空位。管理方怀疑周末排队是因为“开放座位数量减少”。若要安排一次短时核查来直接检验这个怀疑，哪种安排最合适？",
+        "options": [
+          "选取同类日期和相近需求的时段，比较开放座位数，并同步核对开放时间与临时活动",
+          "只统计周末上午排队人数，人数多就认定座位减少",
+          "只询问一次排队者对“座位够不够”的感受，多数人同意便确认原因",
+          "把周末与工作日直接合在一起计算总排队人数"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:q:3",
+        "prompt": "某公共阅览区关闭二层后，第一个周一晚间出现排队；当晚恰好还有讲座。有人据此断定“二层关闭是排队的唯一原因”。为检验这一解释，应优先补充哪些证据？",
+        "options": [
+          "记录阅览区五年的总入馆人数，但不再区分日期、时段和活动",
+          "比较相同星期、相近需求水平下的开放座位供给，并查看关闭前后的相应记录",
+          "只要讲座当晚确实排队，就可以确认关闭二层是唯一原因",
+          "核对讲座是否增加了当期需求，以及开放时间是否同时发生变化",
+          "寻找其他可竞争的解释，并说明现有记录能否把它们排除"
+        ],
+        "selectionMode": "multiple",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:q:4",
+        "prompt": "某体育馆仅在三个周六14:00—16:00记录到泳池满员，工作日下午则未见排队。据悉这三周曾举办游泳活动，但记录中没有晚间、学校假期或当日开放泳道的数量。以下哪项结论最符合现有证据？",
+        "options": [
+          "三个周六满员证明体育馆全年都缺泳道",
+          "工作日下午有空位，证明活动举办与排队无关",
+          "可以确认三个指定周六下午出现过满员；其原因和更广时段规律仍未知",
+          "缺少晚间记录，因此三个周六是否满员也无法判断"
+        ],
+        "selectionMode": "single",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+          "title": "区分事实与解释"
+        }
+      },
+      {
+        "id": "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:q:5",
+        "prompt": "一名学生发文说：“最近七天每晚22点自习区都排队，所以全校学生都缺少自习空间。”要评估这个强结论，哪两项指出的证据局限最恰当？",
+        "options": [
+          "只要出现排队，就可以直接认定缺少空间",
+          "记录只覆盖一个地点和一个固定时段，不能直接推及全校",
+          "连续七天已经消除了开放安排和临时活动等替代解释",
+          "未比较开放座位、需求变化和临时活动，不能据此锁定唯一原因",
+          "“大多数参与者这样感受”能够替代对比较条件的记录"
+        ],
+        "selectionMode": "multiple",
+        "hint": "",
+        "hintCount": 2,
+        "targetLessonIds": [
+          "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one"
+        ],
+        "topic": {
+          "lessonId": "check-live-course-9c0c0227-35c1-4eb2-81a1-2e9c1805d530:one",
+          "title": "区分事实与解释"
+        }
+      }
+    ]
+  },
+  "presentation": {
+    "version": "speech-v2",
+    "createdAt": "2026-10-25T20:38:22.580Z",
+    "tracks": {
+      "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:orient": {
+        "version": "speech-v2",
+        "sourceSha256": "95058287c81d502df9207ca0d49c6df9b01d5daa40b831c49d1eca7292757c8f",
+        "units": [
+          {
+            "start": 0,
+            "end": 9,
+            "text": "依据匿名情境作答。",
+            "id": "speech_7df464c4f3c30a2c03e302c676c9e4cba179a8af7f41bafafea5ccdfee7f78c2"
+          },
+          {
+            "start": 9,
+            "end": 39,
+            "text": "先区分直接记录到的现象与提出的原因，再判断比较条件是否充分，",
+            "id": "speech_bd91a77d45f3d4262603c0d0a719f312ec6e4aa5a0101e49b4c2ed07dd969af3"
+          },
+          {
+            "start": 39,
+            "end": 58,
+            "text": "并保留证据尚未覆盖的时间、地点和人群。",
+            "id": "speech_27d1f2e17104b2dbd67989e202a0b55bc203043bb2452b99d59abd375ef91940"
+          },
+          {
+            "start": 58,
+            "end": 75,
+            "text": "单选题选一项，多选题选全部适用项。",
+            "id": "speech_09fb345a4717239c7157a07c40ee9fbe82960c26c91dac8c0f252dc4d975179d"
+          },
+          {
+            "start": 75,
+            "end": 106,
+            "text": "本套题用于形成性核查；AI核验不等于人工批准或正式能力测量。。",
+            "id": "speech_a380a6a2ccaf2083d2ee2f36f9ba59ea3e7813f591200b49bf8e5791735da5db"
+          },
+          {
+            "start": 106,
+            "end": 119,
+            "text": "AI生成题组仍待内容审核。",
+            "id": "speech_152e3d30a9363c7780f8eefcfbf6ba47b6dad7f9be0216c51f2d322b3c500918"
+          },
+          {
+            "start": 119,
+            "end": 154,
+            "text": "首答、帮助和答案曝光分别记录；结果只说明本组表现，不作为正式能力测量。",
+            "id": "speech_bade18740037941846acb54ab55a160125a184f4191b65e877b08397e601dea0"
+          }
+        ]
+      },
+      "source-check:source_check_747e08cc-f328-4e30-9e06-a477c9174238:review": {
+        "version": "speech-v2",
+        "sourceSha256": "645d81dca75ff4eaa9f03bf9adf8e1ccec68aac98bbbcceb4456ad1ddd62602e",
+        "units": [
+          {
+            "start": 0,
+            "end": 19,
+            "text": "先独立判断，需要帮助时再逐级查看提示。",
+            "id": "speech_504f0bfd65271b49ee28eb5dc3ca4e9fa35887e3fddabf22420a36b2610101a9"
+          },
+          {
+            "start": 19,
+            "end": 51,
+            "text": "提交后核对本题理由和来源；遇到不会可以如实记录，再返回对应课时。",
+            "id": "speech_7e682469244175a2ef730685104e944d2b9741f3acbbda66a07e02420d8fa556"
+          }
+        ]
+      }
+    }
+  },
+  "cursor": 0,
+  "revealed": 0,
+  "sentenceCursor": 0,
+  "status": "paused",
+  "revision": 0,
+  "messages": [],
+  "answers": [],
+  "projectDraft": "",
+  "hintReceipts": [],
+  "createdAt": "2026-10-25T20:38:22.580Z",
+  "updatedAt": "2026-10-25T20:38:22.580Z",
+  "speech": {
+    "available": false,
+    "provider": null,
+    "voices": [],
+    "defaultVoice": null
+  },
+  "contentStatus": "current"
+}

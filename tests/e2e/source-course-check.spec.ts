@@ -8,6 +8,26 @@ async function enter(page:Page,extra=''){
   const source=await call(actor,'POST','/learning/source-courses/materials/text',{title:'核查合成原文',sections:['匿名阅览室在两个周末有排队，工作日有空位；没有记录晚间，也不知道当天是否有活动。比较时应保持其他条件相同，不把一次观察当作唯一原因。'],requestKey:crypto.randomUUID()}),draft=await call(actor,'POST','/learning/source-courses',{title:'合成资料独立核查 '+suffix,goal:'保留来源和适用条件，比较替代解释。'+extra,language:'zh-CN',minutesPerSession:15,modelId:'deepseek-v4-flash',selections:[{materialId:source.material.id,version:source.version,pages:[1]}],requestKey:crypto.randomUUID()});let row:any;await expect.poll(async()=>{row=await call(actor,'GET','/learning/source-courses/'+draft.id);return row.status;},{timeout:30000}).toBe('ready');row=await call(actor,'POST','/learning/source-courses/'+row.id+'/confirm',{expectedRevision:row.revision,fingerprint:row.fingerprint,requestKey:crypto.randomUUID()});await page.goto('/studio/source-courses?course='+row.id);await expect(page.getByRole('region',{name:'资料课程独立核查',exact:true})).toBeVisible();return{actor,row,principal,credential};
 }
 const panel=(page:Page)=>page.getByRole('region',{name:'资料课程独立核查',exact:true});
+test('one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source',async({page})=>{
+  test.setTimeout(90000);await page.setViewportSize({width:390,height:960});
+  const {actor,row}=await enter(page,'[one-lesson]');expect(row.lessons).toHaveLength(1);
+  await panel(page).getByRole('button',{name:'＋ 准备独立核查',exact:true}).click();
+  const dialog=page.getByRole('dialog',{name:'选择这次要核查的目标',exact:true});
+  await expect(dialog.locator('input[type=checkbox]')).toHaveCount(1);
+  await expect(dialog.getByRole('button',{name:'预览核查范围',exact:true})).toBeDisabled();
+  await dialog.locator('input[type=checkbox]').check();await expect(dialog.getByLabel('选择大模型')).toHaveValue('deepseek-v4-flash');
+  await dialog.getByRole('button',{name:'预览核查范围',exact:true}).click();await expect(dialog).toContainText('完整输入已核对');await expect(dialog).toContainText('1个目标');
+  await dialog.getByRole('button',{name:'准备这份题组',exact:true}).click();await confirmUI(page);
+  await panel(page).getByRole('link',{name:'开始独立核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习题目',exact:true})).toBeVisible();
+  const sessionId=new URL(page.url()).searchParams.get('session')!,initial=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);
+  expect(initial.sourceCheckTargets.map((target:any)=>target.lessonId)).toEqual([row.lessons[0].id]);expect(initial.authoringAnswerExposure).toBeUndefined();expect(JSON.stringify(initial)).not.toContain('correctIndices');
+  await page.locator('.cl-practice-options label').nth(0).click();await page.locator('.cl-practice-options label').nth(2).click();await page.getByRole('button',{name:'Check →',exact:true}).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');const answered=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(answered.answers).toHaveLength(1);expect(answered.answers[0].answerExposure).toBeUndefined();
+  await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();await expect(page.getByRole('dialog',{name:'核查合成原文',exact:true})).toContainText('没有记录晚间');await page.keyboard.press('Escape');
+  await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');
+  expect((await call(actor,'GET','/learning/classroom/sessions/'+sessionId)).answers[0]).toEqual(answered.answers[0]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
 async function prepareUI(page:Page){await panel(page).getByRole('button',{name:'＋ 准备独立核查',exact:true}).click();const dialog=page.getByRole('dialog',{name:'选择这次要核查的目标',exact:true});await dialog.locator('input[type=checkbox]').nth(0).check();await dialog.locator('input[type=checkbox]').nth(1).check();await expect(dialog.getByLabel('选择大模型')).toHaveValue('deepseek-v4-flash');await dialog.getByRole('button',{name:'预览核查范围',exact:true}).click();await expect(dialog).toContainText('完整输入已核对');await dialog.getByRole('button',{name:'准备这份题组',exact:true}).click();}
 async function candidate(page:Page){const button=panel(page).getByRole('button',{name:'确认用于练习',exact:true});await expect.poll(async()=>panel(page).textContent(),{timeout:30000}).toContain('待确认用于练习');if(!await button.isVisible())await panel(page).locator('summary').filter({hasText:'管理题组候选与版本'}).click();await expect(button).toBeVisible();return button;}
 async function confirmUI(page:Page){await(await candidate(page)).click();const dialog=page.getByRole('dialog',{name:'将题组用于练习',exact:true});await dialog.getByLabel('同意将这份待审核题组用于练习').check();await dialog.getByRole('button',{name:'确认用于练习',exact:true}).click();}

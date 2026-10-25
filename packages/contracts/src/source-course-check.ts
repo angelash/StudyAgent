@@ -2,7 +2,7 @@ import { z } from 'zod';
 import type { CourseSourceSnapshot } from './source-course';
 
 const text=(max:number)=>z.string().trim().min(1).max(max);
-export const sourceCourseCheckSelectionSchema=z.object({modelId:text(120),lessonIds:z.array(text(400)).min(2).max(6)}).strict().superRefine((value,context)=>{
+export const sourceCourseCheckSelectionSchema=z.object({modelId:text(120),lessonIds:z.array(text(400)).min(1).max(6)}).strict().superRefine((value,context)=>{
   if(new Set(value.lessonIds).size!==value.lessonIds.length)context.addIssue({code:'custom',message:'核查目标不能重复',path:['lessonIds']});
 });
 export type SourceCourseCheckSelection=z.infer<typeof sourceCourseCheckSelectionSchema>;
