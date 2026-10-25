@@ -738,3 +738,5 @@ export * from './studio-material-upload';
 export * from './classroom-visual';
 
 export * from './classroom-turn';
+
+export * from './classroom-code';

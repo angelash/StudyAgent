@@ -216,3 +216,9 @@ jobs:
         env:
           STUDY_TEST_CLASSROOM_TURN_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-turn.integration.test.ts
+
+      - name: Frozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_CLASSROOM_CODE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/classroom-code.integration.test.ts

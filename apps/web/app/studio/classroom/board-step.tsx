@@ -3,8 +3,10 @@ import * as React from 'react';
 import { classroomSentences, type ClassroomBlock, type ClassroomStep } from '@study-agent/contracts';
 import { ClassroomFigure } from './diagram';
 import { CodeWorkbench } from './code-workbench';
+import type { CodeDraftContext } from './code-draft';
 
-export function BoardStep({ step, sentence, full = false, print = false,unitCount }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean;unitCount?:number }) {
+export function BoardStep({ step, sentence, full = false, print = false,unitCount,codeContext,onExperiment }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean;unitCount?:number;
+  codeContext?: Pick<CodeDraftContext, 'ownerUserId'|'sessionId'>; onExperiment?: () => void }) {
   const last = Math.max(0, (unitCount??classroomSentences(step.narration).length) - 1);
   const visible = (index: number) => full || sentence >= Math.min(index, last);
   return <>{step.blocks.map(block => {
@@ -17,7 +19,8 @@ export function BoardStep({ step, sentence, full = false, print = false,unitCoun
         visible((block.atSentence ?? 0) + index) && <tr className="cl-board-item" key={index}>{cells.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>;
     if (block.kind === 'image' && block.image) return <ClassroomImage key={block.id} image={block.image}/>;
     if (block.kind === 'diagram' && block.diagram) return <ClassroomFigure key={block.id} diagram={block.diagram}/>;
-    if (block.kind === 'code' && block.code) return print ? <pre className="cl-code-print" key={block.id}>{block.code}</pre> : <CodeWorkbench key={block.id} initialCode={block.code}/>;
+    if (block.kind === 'code' && block.code) return print ? <pre className="cl-code-print" key={block.id}>{block.code}</pre> : <CodeWorkbench key={[codeContext?.sessionId,step.id,block.id].join(':')} initialCode={block.code}
+      context={codeContext?{...codeContext,stepId:step.id,blockId:block.id}:undefined} onInteract={onExperiment}/>;
     return <p className="cl-board-item" key={block.id}>{block.text}</p>;
   })}</>;
 }

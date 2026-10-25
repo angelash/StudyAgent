@@ -24,6 +24,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
+    /^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
     /^learning\/projects\/(catalog|[^/]+)$/,
     /^learning\/source-courses(\/(materials|[^/]+))?$/,
@@ -63,7 +64,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/messages)?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/],
   PUT: [/^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
-  PATCH: [/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
+  PATCH: [/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 
 @Injectable()

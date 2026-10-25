@@ -445,7 +445,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         {session.revealed === 0 && <div className="cl-board-welcome"><span>WELCOME TO YOUR WHITEBOARD</span><h1>{lesson.title}</h1><p>{lesson.objective}</p><button onClick={() => { pause(); setPlaying(true); }}>▶ 开始学习</button><small>概念 · 生活案例 · 误区辨析 · 新情境检查</small></div>}
         {lesson.steps.slice(page * 3, Math.min(session.revealed, (page + 1) * 3)).map((step, index) => <section className="cl-board-step" id={'board-' + step.id} key={step.id} data-current={step.id === current.id}>
           <span className="cl-step-phase">{String(page * 3 + index + 1).padStart(2, '0')} / {step.phase}</span>
-          <BoardStep step={step} sentence={session.sentenceCursor ?? 0} full={step.id !== current.id} unitCount={classroomStepUnits(session,step).length}/>
+          <BoardStep step={step} sentence={session.sentenceCursor ?? 0} full={step.id !== current.id} unitCount={classroomStepUnits(session,step).length} codeContext={{ownerUserId:session.ownerUserId,sessionId:session.id}} onExperiment={pause}/>
           {visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}
         </section>)}
         {session.messages.filter(message => message.board?.page === page).map(message => <section className="cl-board-step cl-ai-board" key={message.id} id={'board-' + message.id}>
