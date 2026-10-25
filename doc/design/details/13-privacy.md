@@ -1,6 +1,6 @@
 # 13 家庭资料下载、删除与恢复约束 — 详细设计
 
-源码基线：`a3ba56cc7e7ec02905036f5b573602b15506a661`。角色：监护家长。
+源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。角色：监护家长。
 
 产品入口：`/parent/data`。
 
@@ -94,7 +94,7 @@
 
 **服务方法**：
 
-- `PrivacyService.delete`；[apps/api/src/modules/privacy/privacy.service.ts:152](../../../apps/api/src/modules/privacy/privacy.service.ts#L152)。
+- `PrivacyService.delete`；[apps/api/src/modules/privacy/privacy.service.ts:153](../../../apps/api/src/modules/privacy/privacy.service.ts#L153)。
 
 **补充实现文件**：
 

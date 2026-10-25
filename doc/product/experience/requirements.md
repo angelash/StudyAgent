@@ -4,6 +4,8 @@
 
 2026-10-24核对：11项implemented、46项in_progress、15项planned，尚无整条verified。26项planned→in_progress是纠正已有部分实现，不是本轮新增交付。各领域的当前基础、具体缺口、版本/运行边界和M0～M7顺序见[整体进度与里程碑105](../105-development-plan-status-and-next-milestones.md)；72项前后状态及源码/测试/历史证据映射见[核对数据](../../evidence/2026-10-24/development-plan-audit.json)。implemented和in_progress均须继续完成原条目的全部验收，不能换算为完成率。
 
+2026-10-25原件恢复已接入真实持久任务与两工作台，见[交付106](../106-original-repair-product-delivery.md)。XP-B02/B06、F03、G06、K05/K06继续in_progress，完整课程、复杂内容、设备与最终验收门槛不因本增量通过而清除。
+
 ## A. 统一入口与连续学习 / E01
 
 ### XP-A01 统一学习首页 [implemented]

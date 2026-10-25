@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`a3ba56cc7e7ec02905036f5b573602b15506a661`。角色：运维、管理员、教研。
+源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -86,9 +86,9 @@
 **服务方法**：
 
 - `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:82](../../../apps/api/src/modules/processing/processing.controller.ts#L82)。
-- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:334](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L334)。
+- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:335](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L335)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:232](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L232)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:233](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L233)。
 
 ## OPS-04 导入文件分块与处理产物
 
@@ -143,7 +143,7 @@
 
 - `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:25](../../../apps/api/src/modules/processing/import-files.service.ts#L25)。
 - `ProcessingController.enqueue`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:232](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L232)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:233](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L233)。
 
 ## OPS-06 健康、运行指标与质量看板
 
@@ -167,7 +167,7 @@
 
 **服务方法**：
 
-- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:216](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L216)。
+- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:217](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L217)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
 - `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
 - `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。
@@ -182,7 +182,7 @@
 
 **状态与持久化**：`privacyRequests`、`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`
 
-**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；双库原地resume仅限有绑定身份的新协议目录，未知/链接/不同字节不覆盖；进程中断验证不等于硬件断电验证；损坏原件替换仍待。
+**权限、失败与边界**：目录联接不是独立备份；只校验清单覆盖的字节，不把存在目录当完整恢复；未知/链接/变化保持不完整，不覆盖已有目标；双库原地resume仅限有绑定身份的新协议目录，未知/链接/不同字节不覆盖；进程中断验证不等于硬件断电验证；原件恢复见STUDIO-25，活动repairing明确拒绝备份。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 
@@ -243,13 +243,13 @@
 
 **输入**：来源SHA或上传ID、领域删除/取消/完成/过期和只读审计命令。
 
-**处理与实现**：审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入；Node/Python先独占写staging、同步关闭，再以同卷独占hard link发布完整控制标记；所有用途的活PID暂存都保护对象，确切死亡的受控暂存才可清理，旧损坏正式标记继续保留；原件修复的独立文件辅助函数已验证绑定意图、旧文件身份、完整候选独占发布及强退续跑，尚未接入持久修复任务和产品入口。
+**处理与实现**：审计取双库只读一致快照；领域事务仅排维护任务；后台核对材料、冻结课程、旧学案/白板与活跃上传，保留未知依赖；按SHA递增generation并持purge互斥，Node/Python各自PID租约保护原件和缓存；等待不消耗失败次数，定期恢复中断/取消任务；完整清单后逐文件unlink及空目录rmdir，另清确切source任务的处理JSON和配置；原件发布可写前释放自己的互斥并再次递增版本；upload永久撤销挡住迟到写入；Node/Python先独占写staging、同步关闭，再以同卷独占hard link发布完整控制标记；所有用途的活PID暂存都保护对象，确切死亡的受控暂存才可清理，旧损坏正式标记继续保留；原件修复见STUDIO-25；回收保护repairing及其保留上传，审计先核对绑定意图和字节再识别私有文件。
 
 **输出**：可审计引用/宽限/活跃/未知清单、自动续跑回收结果、共享资料保留与进程栅栏。
 
 **状态与持久化**：`studioMaterialAssets`、`studioMaterialUploads`、`studioSourceMaterials`、`sourceCourses`、`studioLearningPacks`、`studioWhiteboards`
 
-**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；冷恢复账本按当前引用逐项清理源字节见OPS-07；损坏原件替换仍待，双库原地续恢复见OPS-07；生产尚未切换此分支。
+**权限、失败与边界**：只操作受控目录及可证明归属的工作文件，未知/链接不删除；统计为成功尝试的操作量；冷恢复账本按当前引用逐项清理源字节见OPS-07；原件恢复见STUDIO-25，双库原地续恢复见OPS-07；实际部署以当批运行收据为准。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
 

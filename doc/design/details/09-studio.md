@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`a3ba56cc7e7ec02905036f5b573602b15506a661`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -84,9 +84,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:491](../../../apps/api/src/modules/learning/learning.service.ts#L491)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:507](../../../apps/api/src/modules/learning/learning.service.ts#L507)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:536](../../../apps/api/src/modules/learning/learning.service.ts#L536)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:492](../../../apps/api/src/modules/learning/learning.service.ts#L492)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:508](../../../apps/api/src/modules/learning/learning.service.ts#L508)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:537](../../../apps/api/src/modules/learning/learning.service.ts#L537)。
 
 **补充实现文件**：
 
@@ -286,7 +286,7 @@
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:480](../../../apps/api/src/modules/learning/learning.service.ts#L480)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:481](../../../apps/api/src/modules/learning/learning.service.ts#L481)。
 
 **补充实现文件**：
 
@@ -302,7 +302,7 @@
 
 **状态与持久化**：`studioSourceMaterials`、`importFiles`、`processingArtifacts`
 
-**权限、失败与边界**：不能按任意本机路径读取；大文件分块、更多页数和未引用PDF物理擦除仍待后续。
+**权限、失败与边界**：不能按任意本机路径读取；新分块/120页与回收见STUDIO-24/OPS-10；原件恢复见STUDIO-25。
 
 **关联接口**：
 
@@ -380,8 +380,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:396](../../../apps/api/src/modules/learning/learning.service.ts#L396)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:411](../../../apps/api/src/modules/learning/learning.service.ts#L411)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:397](../../../apps/api/src/modules/learning/learning.service.ts#L397)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:412](../../../apps/api/src/modules/learning/learning.service.ts#L412)。
 
 **补充实现文件**：
 
@@ -406,8 +406,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:432](../../../apps/api/src/modules/learning/learning.service.ts#L432)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:453](../../../apps/api/src/modules/learning/learning.service.ts#L453)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:433](../../../apps/api/src/modules/learning/learning.service.ts#L433)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:454](../../../apps/api/src/modules/learning/learning.service.ts#L454)。
 
 **补充实现文件**：
 
@@ -570,7 +570,7 @@
 
 **状态与持久化**：`sourceCourses`、`studioSourceMaterials`、`classroomSessions`、`learningScopes`、`knowledgeAtoms`
 
-**权限、失败与边界**：生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；长PDF分块与引用回收见STUDIO-24/OPS-10，旧页图核对见STUDIO-24；损坏原件替换及原地续恢复仍待，冷恢复清理见OPS-07。
+**权限、失败与边界**：生成内容待教师审核，不自动取得教材映射或正式测量资格；当前提供中文/英文/沿用来源的请求选项，其他语言和全教材课程仍待；长PDF分块与引用回收见STUDIO-24/OPS-10，旧页图核对见STUDIO-24；原件恢复见STUDIO-25，双库续恢复及冷恢复清理见OPS-07。
 
 **关联接口**：
 
@@ -629,7 +629,7 @@
 
 **状态与持久化**：`sourceCourses`、`sourceCourseStages`、`studioSourceMaterials`
 
-**权限、失败与边界**：单次模型上下文18000字符；小课程保留旧v2语义；长PDF上传与续跑见STUDIO-24；新页图有摘要，旧页图核对见STUDIO-24，损坏原件替换、原地续恢复和全教材语义覆盖仍待；冷恢复清理见OPS-07。
+**权限、失败与边界**：单次模型上下文18000字符；小课程保留旧v2语义；长PDF上传与续跑见STUDIO-24；新页图有摘要，旧页图核对见STUDIO-24，全教材语义覆盖仍待；原件恢复见STUDIO-25，双库续恢复/冷恢复清理见OPS-07。
 
 **关联接口**：
 
@@ -702,6 +702,43 @@
 - [apps/web/app/studio/classroom/visuals.css](../../../apps/web/app/studio/classroom/visuals.css)
 - [tests/e2e/classroom-visual.spec.ts](../../../tests/e2e/classroom-visual.spec.ts)
 
+## STUDIO-25 PDF原件恢复、持久进度与撤回收尾
+
+**输入**：当前资料/内容版本、同SHA和大小的完整PDF上传、原件基准、请求键及修订号。
+
+**处理与实现**：在来源租约下观测发起时的旧文件基准；修复记录、独占保留上传、repairing代次和outbox同事务提交；每次发布重新核对任务fence、原监护/学习授权、资料范围/版本、上传及资产；完整候选和旧文件按绑定意图独占交换，可中断续跑且不覆盖第三份文件。等待活进程不消耗失败次数；取消、撤权和隐私删除后内部持久任务只清理已知私有残留，保留已发布正确共享原件；完成收据、上传终结及资产释放同事务；两工作台共用上传校验、进度、取消、重试、刷新恢复和后续页图核对。
+
+**输出**：可恢复的正确PDF原件、同一完成收据、任务历史及保留原正文/课程版本。
+
+**状态与持久化**：`studioOriginalRepairs`、`studioSourceMaterials`、`studioMaterialUploads`、`studioMaterialAssets`
+
+**权限、失败与边界**：仅同一PDF且大小/完整SHA匹配；未知文件/链接和未知残留保留；修复不校正OCR或课程内容；活动repairing拒绝双库和家庭原件归档，伪造或不受支持的活动修复备份拒绝冷恢复；真实设备与最终交付范围见当批收据。
+
+**关联接口**：
+
+- `GET /api/learning/source-courses/materials/:materialId/repairs` → `StudioOriginalRepairController.list`；[apps/api/src/modules/learning/studio-original-repair.controller.ts:8](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L8)。
+- `GET /api/learning/source-courses/materials/:materialId/repairs/:id` → `StudioOriginalRepairController.get`；[apps/api/src/modules/learning/studio-original-repair.controller.ts:9](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L9)。
+- `POST /api/learning/source-courses/materials/:materialId/repairs` → `StudioOriginalRepairController.start`；[apps/api/src/modules/learning/studio-original-repair.controller.ts:10](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L10)。
+- `POST /api/learning/source-courses/materials/:materialId/repairs/:id/cancel` → `StudioOriginalRepairController.cancel`；[apps/api/src/modules/learning/studio-original-repair.controller.ts:11](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L11)。
+- `POST /api/learning/source-courses/materials/:materialId/repairs/:id/retry` → `StudioOriginalRepairController.retry`；[apps/api/src/modules/learning/studio-original-repair.controller.ts:12](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L12)。
+
+**服务方法**：
+
+- `StudioOriginalRepairService.list`；[apps/api/src/modules/learning/studio-original-repair.service.ts:50](../../../apps/api/src/modules/learning/studio-original-repair.service.ts#L50)。
+- `StudioOriginalRepairService.get`；[apps/api/src/modules/learning/studio-original-repair.service.ts:51](../../../apps/api/src/modules/learning/studio-original-repair.service.ts#L51)。
+- `StudioOriginalRepairService.start`；[apps/api/src/modules/learning/studio-original-repair.service.ts:52](../../../apps/api/src/modules/learning/studio-original-repair.service.ts#L52)。
+- `StudioOriginalRepairService.control`；[apps/api/src/modules/learning/studio-original-repair.service.ts:88](../../../apps/api/src/modules/learning/studio-original-repair.service.ts#L88)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/studio-original-repair-worker.service.ts](../../../apps/api/src/modules/learning/studio-original-repair-worker.service.ts)
+- [apps/api/src/modules/learning/studio-original-repair-record.ts](../../../apps/api/src/modules/learning/studio-original-repair-record.ts)
+- [apps/api/src/modules/learning/studio-original-repair.integration.test.ts](../../../apps/api/src/modules/learning/studio-original-repair.integration.test.ts)
+- [apps/api/src/infrastructure/studio-original-repair.ts](../../../apps/api/src/infrastructure/studio-original-repair.ts)
+- [apps/api/src/infrastructure/studio-original-repair.test.ts](../../../apps/api/src/infrastructure/studio-original-repair.test.ts)
+- [apps/web/app/studio/source-courses/original-repair.tsx](../../../apps/web/app/studio/source-courses/original-repair.tsx)
+- [tests/e2e/pdf-material.spec.ts](../../../tests/e2e/pdf-material.spec.ts)
+
 ## STUDIO-24 长PDF分块上传、页级续跑与按需原文
 
 **输入**：学习范围、文件SHA、4MiB分块、请求键、页码、资料版本和任务版本。
@@ -712,7 +749,7 @@
 
 **状态与持久化**：`studioMaterialUploads`、`studioSourceMaterials`、`studioMaterialAssets`
 
-**权限、失败与边界**：运行预算不是静默裁切；旧30页/10MB同步接口兼容；OCR/模型结构仍为候选，旧页图回填只建立本次可读文件基线，不证明历史未变或与原件语义一致；损坏原件的显式替换及原地续恢复仍待；冷恢复清理见OPS-07。
+**权限、失败与边界**：运行预算不是静默裁切；旧30页/10MB同步接口兼容；OCR/模型结构仍为候选，旧页图回填只建立本次可读文件基线，不证明历史未变或与原件语义一致；原件恢复见STUDIO-25，双库续恢复/冷恢复清理见OPS-07。
 
 **关联接口**：
 
@@ -731,16 +768,16 @@
 
 **服务方法**：
 
-- `StudioMaterialUploadService.list`；[apps/api/src/modules/learning/studio-material-upload.service.ts:37](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L37)。
-- `StudioMaterialUploadService.start`；[apps/api/src/modules/learning/studio-material-upload.service.ts:38](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L38)。
-- `StudioMaterialUploadService.get`；[apps/api/src/modules/learning/studio-material-upload.service.ts:48](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L48)。
-- `StudioMaterialUploadService.chunk`；[apps/api/src/modules/learning/studio-material-upload.service.ts:57](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L57)。
-- `StudioMaterialUploadService.complete`；[apps/api/src/modules/learning/studio-material-upload.service.ts:64](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L64)。
-- `StudioMaterialUploadService.cancel`；[apps/api/src/modules/learning/studio-material-upload.service.ts:63](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L63)。
-- `StudioMaterialUploadService.material`；[apps/api/src/modules/learning/studio-material-upload.service.ts:49](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L49)。
-- `StudioMaterialUploadService.progress`；[apps/api/src/modules/learning/studio-material-upload.service.ts:74](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L74)。
-- `StudioMaterialUploadService.page`；[apps/api/src/modules/learning/studio-material-upload.service.ts:50](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L50)。
-- `StudioMaterialUploadService.cancelProcessing`；[apps/api/src/modules/learning/studio-material-upload.service.ts:75](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L75)。
+- `StudioMaterialUploadService.list`；[apps/api/src/modules/learning/studio-material-upload.service.ts:39](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L39)。
+- `StudioMaterialUploadService.start`；[apps/api/src/modules/learning/studio-material-upload.service.ts:40](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L40)。
+- `StudioMaterialUploadService.get`；[apps/api/src/modules/learning/studio-material-upload.service.ts:50](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L50)。
+- `StudioMaterialUploadService.chunk`；[apps/api/src/modules/learning/studio-material-upload.service.ts:59](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L59)。
+- `StudioMaterialUploadService.complete`；[apps/api/src/modules/learning/studio-material-upload.service.ts:66](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L66)。
+- `StudioMaterialUploadService.cancel`；[apps/api/src/modules/learning/studio-material-upload.service.ts:65](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L65)。
+- `StudioMaterialUploadService.material`；[apps/api/src/modules/learning/studio-material-upload.service.ts:51](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L51)。
+- `StudioMaterialUploadService.progress`；[apps/api/src/modules/learning/studio-material-upload.service.ts:76](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L76)。
+- `StudioMaterialUploadService.page`；[apps/api/src/modules/learning/studio-material-upload.service.ts:52](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L52)。
+- `StudioMaterialUploadService.cancelProcessing`；[apps/api/src/modules/learning/studio-material-upload.service.ts:77](../../../apps/api/src/modules/learning/studio-material-upload.service.ts#L77)。
 - `StudioMaterialIntegrityService.get`；[apps/api/src/modules/learning/studio-material-integrity.service.ts:103](../../../apps/api/src/modules/learning/studio-material-integrity.service.ts#L103)。
 - `StudioMaterialIntegrityService.check`；[apps/api/src/modules/learning/studio-material-integrity.service.ts:104](../../../apps/api/src/modules/learning/studio-material-integrity.service.ts#L104)。
 

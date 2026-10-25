@@ -1,0 +1,324 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-long-pdf\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/pdf-material.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-long-pdf\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-long-pdf/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-long-pdf/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/long-pdf-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "pdf-material.spec.ts",
+      "file": "pdf-material.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:19:49.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-6de9e5f12cfd5c892a52",
+          "file": "pdf-material.spec.ts",
+          "line": 11,
+          "column": 5
+        },
+        {
+          "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11380,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:20:00.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-c568544b83fdb848af1a",
+          "file": "pdf-material.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:20:11.902Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-adce21d2d7e68868ca90",
+          "file": "pdf-material.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 42271,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\pdf-material.spec.ts:51:221",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\pdf-material.spec.ts",
+                      "column": 221,
+                      "line": 51
+                    },
+                    "snippet": "  49 |  await repair.getByRole('button',{name:'重新检查文件',exact:true}).click();await expect(check).toContainText('原件 · 校验通过');\n  50 |  writeFileSync(original,'intentionally corrupt isolated original');await check.getByRole('button',{name:'检查原件与原页',exact:true}).click();await expect(check).toContainText('原始文件校验不符');await expect(check.getByRole('button',{name:'重新生成原页',exact:true})).toHaveCount(0);\n> 51 |  await repair.getByLabel('选择用于恢复的原始PDF',{exact:true}).setInputFiles({name:'repairable-original.pdf',mimeType:'application/pdf',buffer:pdf(3)});await expect.poll(()=>readFileSync(original).equals(pdf(3)),{timeout:30000}).toBe(true);await expect(repair).toContainText('原件已恢复');\n     |                                                                                                                                                                                                                             ^\n  52 |  for(const width of [1440,768,390]){await page.setViewportSize({width,height:960});await repair.scrollIntoViewIfNeeded();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await capture(page,'original-repair-'+width);}expect(errors).toEqual([]);\n  53 | });\n  54 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\pdf-material.spec.ts",
+                        "column": 221,
+                        "line": 51
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate\n\n  49 |  await repair.getByRole('button',{name:'重新检查文件',exact:true}).click();await expect(check).toContainText('原件 · 校验通过');\n  50 |  writeFileSync(original,'intentionally corrupt isolated original');await check.getByRole('button',{name:'检查原件与原页',exact:true}).click();await expect(check).toContainText('原始文件校验不符');await expect(check.getByRole('button',{name:'重新生成原页',exact:true})).toHaveCount(0);\n> 51 |  await repair.getByLabel('选择用于恢复的原始PDF',{exact:true}).setInputFiles({name:'repairable-original.pdf',mimeType:'application/pdf',buffer:pdf(3)});await expect.poll(()=>readFileSync(original).equals(pdf(3)),{timeout:30000}).toBe(true);await expect(repair).toContainText('原件已恢复');\n     |                                                                                                                                                                                                                             ^\n  52 |  for(const width of [1440,768,390]){await page.setViewportSize({width,height:960});await repair.scrollIntoViewIfNeeded();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await capture(page,'original-repair-'+width);}expect(errors).toEqual([]);\n  53 | });\n  54 |\n    at F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\pdf-material.spec.ts:51:221"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:20:19.834Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\pdf-material-file-checks-r-09b73--unavailable-original-bytes\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\pdf-material-file-checks-r-09b73--unavailable-original-bytes\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-long-pdf\\test-results\\browser-product-acceptance\\pdf-material-file-checks-r-09b73--unavailable-original-bytes\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-long-pdf\\tests\\e2e\\pdf-material.spec.ts",
+                    "column": 221,
+                    "line": 51
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-17a56f46e7b93184a89a",
+          "file": "pdf-material.spec.ts",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:21:04.035Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "78dcf7253e3d2dad0433-9983f30504c5f48108ce",
+          "file": "pdf-material.spec.ts",
+          "line": 55,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T02:19:40.462Z",
+    "duration": 106699.184,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

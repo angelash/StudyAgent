@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T02:40:37.374316+00:00",
+  "specification": "doc/product/107-classroom-turns-and-reference-state-parity.md",
+  "scope": "Reference inventory for future M1 verification, not a parity result or pixel completion rate.",
+  "completionPercentage": null,
+  "states": [
+    {
+      "id": "HK-COURSES-01",
+      "title": "课程列表",
+      "reference": "doc/evidence/2026-10-23/hyperknow-courses-user-reference.png",
+      "referenceSha256": "3abe582b88a108491ea0e748da160f409d3bb29797356ea5dd2baac3a511b2ae",
+      "imagePixels": {
+        "width": 1647,
+        "height": 956
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-OUTLINE-01",
+      "title": "课程目录",
+      "reference": "doc/evidence/2026-10-23/hyperknow-outline-user-reference.png",
+      "referenceSha256": "0cfb362b8c89bd3f1e238d9c493b0a5860b3fb4ba5e88e02033d4417019e42f7",
+      "imagePixels": {
+        "width": 1645,
+        "height": 953
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-COURSE-01",
+      "title": "课程详情",
+      "reference": "doc/evidence/2026-10-23/hyperknow-course-reference.png",
+      "referenceSha256": "41fdb10d90ea2dbcf2f5964d589f9db4363caac66f3c07623e4bbf31d3e87715",
+      "imagePixels": {
+        "width": 1044,
+        "height": 1199
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-BOARD-01",
+      "title": "课堂板书",
+      "reference": "doc/evidence/2026-10-23/hyperknow-board-reference.png",
+      "referenceSha256": "48784628dd2c76eea2d3296340b52de8072127257e1500d839a385288e60d43b",
+      "imagePixels": {
+        "width": 1552,
+        "height": 1199
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-SETTINGS-01",
+      "title": "课堂设置",
+      "reference": "doc/evidence/2026-10-23/hyperknow-settings-reference.png",
+      "referenceSha256": "f4d7ccf9aedf5d25a79cb6bfe1361e539082301f3b41cc06053fd33fa110d1b6",
+      "imagePixels": {
+        "width": 1552,
+        "height": 1199
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-PRACTICE-01",
+      "title": "练习作答前",
+      "reference": "doc/evidence/2026-10-23/hyperknow-practice-v2-reference.png",
+      "referenceSha256": "44dc2d2917d5be798b7f8f5136c1d16c4908faa507509f098382c252280f97be",
+      "imagePixels": {
+        "width": 1260,
+        "height": 1199
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-CHECKPOINT-01",
+      "title": "课堂检查点",
+      "reference": "doc/evidence/2026-10-23/hyperknow-teaching-checkpoint-reference.png",
+      "referenceSha256": "cd4081b4af0b878635daf1922139a1e49a87b8088a99bf02dc6cbaac59f3fa14",
+      "imagePixels": {
+        "width": 1600,
+        "height": 1000
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-CALENDAR-01",
+      "title": "日历",
+      "reference": "doc/evidence/2026-10-23/hyperknow-calendar-user-reference.png",
+      "referenceSha256": "a66c5193069ff10e370bff0a6c24a3006338a23a1b9cd305459013e424ecc3c8",
+      "imagePixels": {
+        "width": 1647,
+        "height": 956
+      },
+      "evidence": "archived-screenshot-only",
+      "referenceDate": "2026-10-23",
+      "cssViewport": null,
+      "devicePixelRatio": null,
+      "fontAssets": "not_acquired_or_verified",
+      "comparisonStatus": "not_audited",
+      "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+    },
+    {
+      "id": "HK-TURN-01",
+      "title": "播放中插问与原句暂停",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-TURN-02",
+      "title": "回答播放和返回原课",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-PRACTICE-02",
+      "title": "提交后解释与下一题",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-PRACTICE-03",
+      "title": "跳过/不会/逐级帮助",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-FAILURE-01",
+      "title": "超时/取消/重启/丢回执",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-TOOLS-01",
+      "title": "缩放/背景/字体/对话宽度",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-SOURCE-01",
+      "title": "原页引用与图像放大",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-CODE-01",
+      "title": "代码输入/运行/停止/错误",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    },
+    {
+      "id": "HK-MOBILE-01",
+      "title": "真实触屏和辅助技术",
+      "reference": null,
+      "evidence": "not_fully_observed",
+      "comparisonStatus": "pending_reference_observation",
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+    }
+  ]
+}

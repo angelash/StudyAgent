@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-25T02:35:09.222464+00:00",
+  "sourceRevision": "6f5e56f379e37e1014aab624a567f4bdecd4be83",
+  "specificationCommits": [
+    "2fd932f",
+    "2960d16"
+  ],
+  "passed": false,
+  "status": "product-repair-local-validation-complete-awaiting-final-ci-and-daemon-delivery",
+  "sourceDigestNormalization": "UTF-8 bytes with CRLF normalized to LF",
+  "sourceDigests": {
+    ".gitattributes": "df53e26dd99a774d3918feed7633c6ea9901ccb2eb2f62a80e67c8c6bf52e228",
+    ".github/workflows/verify.yml": "65f3d00bebf069c04e913a6aa01b879e409d735a3aeb45009323eb4b8d900011",
+    "apps/api/src/common/auth.guard.ts": "0565d676db65e9f72bfad4cda11f018309865c39b5dbcd1c63cab1d6e973feba",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "e4b6c1869b2da9f935301ade737168a61afa1eb08a88378b47f1723926c6c06f",
+    "apps/api/src/infrastructure/studio-original-repair.test.ts": "1b3dbaedce9ce509e23c3acdfd251e5794dd3609011f09d407d74f6ef2f11628",
+    "apps/api/src/infrastructure/studio-original-repair.ts": "be94b40b4409e793a2f37e9771e03609fb369cfe36334535fabc6889cd3dd654",
+    "apps/api/src/infrastructure/task-repository.ts": "17160f38cff3ce7581cfe41629c602d62b117c821dff579f904b0a854703aa93",
+    "apps/api/src/modules/learning/learning.module.ts": "0ab5d113df10a33926a693e34bcd222832ff0c2f103e0da13d7740d988bd9f92",
+    "apps/api/src/modules/learning/learning.service.ts": "62a6f1f1e1e41d7df8acb83c62e63dfefc77d8ac06c49a375b6d0a9b11cf5578",
+    "apps/api/src/modules/learning/studio-material-integrity.service.ts": "cab508033e7595194ff1f691f4934b81eae353def95702cf7e11daa8015841d9",
+    "apps/api/src/modules/learning/studio-material-maintenance.service.ts": "598b9cd51f90f6c3129602a7b5e523f88bd8b14a32f4c557b55deb3798d04c51",
+    "apps/api/src/modules/learning/studio-material-storage.ts": "6d8b579e1f3c351d27c17965d6770ad39d75f1e9616709b1e8d3de917fdf4cd4",
+    "apps/api/src/modules/learning/studio-material-upload.service.ts": "94dc600d61accf6c52495b3276591ae73797e21a808767bc16dc92fc417f6805",
+    "apps/api/src/modules/learning/studio-original-repair-record.ts": "a86818bbd4f8d2246a7062276dcd2c93cd0bcec21bcdfb2dc6470d371f8d554e",
+    "apps/api/src/modules/learning/studio-original-repair-worker.service.ts": "dac66b8b510ca3f105aa09242cd5e9c2cc60f46f6c2ca56027a3bbfe14d4b621",
+    "apps/api/src/modules/learning/studio-original-repair.controller.ts": "3d2508056b6cad037251fdca13aac0f5746f41eb97b6cf937ac0179543e3cc33",
+    "apps/api/src/modules/learning/studio-original-repair.integration.test.ts": "ff018cd72dfcc49edb970412e3c6dcce3454bac2a2e6b7a7740fa40234d54264",
+    "apps/api/src/modules/learning/studio-original-repair.service.ts": "6122058b788de516704b100004c11233b7c13417a2d9c26faaad0b6bda32a092",
+    "apps/api/src/modules/privacy/privacy-records.ts": "e75ed3db825929c43b0652fe8b1eb89c2f1ba491fc7ef37140482f8a69506e33",
+    "apps/api/src/modules/privacy/privacy.service.ts": "958608dfcac33ac8608ebd4c847050b580d0dedf65dd345e194318b198daf201",
+    "apps/web/app/studio/source-courses/original-repair.tsx": "3e39923c5094634c1790f3a4eb487132342323c8735b804a27d52c26bbc5b0d4",
+    "apps/web/app/studio/source-courses/pdf-material-files.tsx": "6ea84f1ca3b6178dffdab390c497fc16b418ca5f0e25abbfe58add592c71ce93",
+    "apps/web/app/studio/source-courses/pdf-material.css": "34fb26f78dbc1dd698632060594cae63340dbb011ca90c3c07452461cb91a475",
+    "apps/web/app/studio/source-courses/pdf-material.tsx": "fa502ab9de8c675a349090bea3f51b2f19187908ca66188fd25874ae368ae1c0",
+    "packages/contracts/src/studio-material-upload.ts": "7508f23997dccec2d56d8a3c04254a814979363a1297584b7c3582fec5c0c9c0",
+    "scripts/architecture/project-feature-definitions.cjs": "6dad3f3188f5751ee80e092e1fb06378748ca6f74d7940996e20013c9979ba43",
+    "scripts/operations/backup.cjs": "7ddf983684db4b53d0d8aeb8c460fc949f3eebd9b6c9b1bcbc96a890639db059",
+    "scripts/operations/material-audit.cjs": "a1d79debebc0429888c6194c762ef5ef6592bf87262474c0717cf54359689a6f",
+    "scripts/operations/postgres-backup.cjs": "1f5d6bc21a2aa875610d96065898bf4f4ce5ea12d42e98da553d63d885ed154e",
+    "scripts/operations/restored-materials.cjs": "e0c970d3d55be7938b10bd9004e29bd1181273238e1afba09bd994d0c02210ee",
+    "scripts/qa/fixtures/original-repair-child.cjs": "4f79f9af86d6f8c8e987423545897f5520d966ea58b7c5f18fddd8f11aa3584f",
+    "scripts/qa/run-material-postgres.cjs": "6b94fa7f57de09289972c38313a760a41d6c2939878698d1377c3ae32a837301",
+    "scripts/qa/source-course-test-api.cjs": "c59fffc6d34a735a55e69e2ce65a9616f372815e88b320995691e44838893742",
+    "tests/e2e/pdf-material.spec.ts": "3c7a5766ba3c87a16cf6abc40bb0417bc90d2c61d55d25e49f6ebe872c706006"
+  },
+  "reports": {
+    "original-repair-baseline-cleanup.json": {
+      "sha256": "7f60089939b15b0572ce012a152f0b34e8adeee53e044a30a3946e088310a578",
+      "result": {
+        "numTotalTests": 45,
+        "numPassedTests": 45,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-product-initial.json": {
+      "sha256": "90395f2424a84c16f4b80d244e54fedc646f2daf53c0e5b465af1dabe794e50b",
+      "result": {
+        "numTotalTests": 11,
+        "numPassedTests": 11,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-product-sqlite.json": {
+      "sha256": "1b3c80375740ed6299a24e40bf2715029746c93af185cabe5e0b372e124c07f1",
+      "result": {
+        "numTotalTests": 76,
+        "numPassedTests": 76,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-product-postgres.json": {
+      "sha256": "ce92678ee94f8f2342e49461e736d09e4af0b7731ee58a6a7cfbc512a545551f",
+      "result": {
+        "numTotalTests": 14,
+        "numPassedTests": 14,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-product-postgres-final.json": {
+      "sha256": "924fe55684709c8599a974c70d4b6bd9553f38aaea02e207a96fe2cf688f185d",
+      "result": {
+        "numTotalTests": 15,
+        "numPassedTests": 15,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-postgres-combination-initial.json": {
+      "sha256": "cf4dfe7a8e379ee9e0ef2a3fbb07e950f5c9b9a735b132a120eddf4e948dc8d9",
+      "result": {
+        "numTotalTests": 81,
+        "numPassedTests": 80,
+        "numFailedTests": 1,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-recovery-regression.json": {
+      "sha256": "2f4dc7710f5ddb4a19c3bc878f767818c543da9041c6033ce87f4a3b5691aa3d",
+      "result": {
+        "numTotalTests": 37,
+        "numPassedTests": 37,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-full-api-initial.json": {
+      "sha256": "f3b0d8da0f3f90c6c3a32f1eaef23be9c3721c95db5dd41824407cb0c25c2a28",
+      "result": {
+        "numTotalTests": 1079,
+        "numPassedTests": 1042,
+        "numFailedTests": 3,
+        "numPendingTests": 34
+      }
+    },
+    "released-assets-lf-final.json": {
+      "sha256": "a8a65dbd9c06300c83a8f7d2cdf2d1899191c23036fd26ef0a80e900742de0a9",
+      "result": {
+        "numTotalTests": 75,
+        "numPassedTests": 75,
+        "numFailedTests": 0,
+        "numPendingTests": 0
+      }
+    },
+    "original-repair-browser-initial.json": {
+      "sha256": "9942e3cb29d4bed52d8b1d99f73362bd964aa64602e857fe776a95da284e0336",
+      "result": {
+        "startTime": "2026-10-25T02:19:40.462Z",
+        "duration": 106699.184,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "original-repair-browser-full.json": {
+      "sha256": "178f65fad81fb7a2874a7520359876c47d17903a2cb4fac1eb03ff248205b1af",
+      "result": {
+        "startTime": "2026-10-25T02:26:58.260Z",
+        "duration": 394162.158,
+        "expected": 60,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "featureCoverage": [
+    "Durable identity/baseline and repairing generation/outbox/retained upload in one transaction",
+    "Current task lease, original authorization, material owner/scope/content version, upload and asset binding checked before publication",
+    "Shared original repair, original text/structure/course version preservation, readable completion receipts and replay",
+    "Internal cancellation/revocation/privacy cleanup continues after business records are removed, never publishes or rolls back correct originals",
+    "Expired reserved uploads and active source processes remain protected from maintenance",
+    "SQLite and native PostgreSQL runs, actual backup refusal while repairing, real learning-code and privacy deletion",
+    "Actual >10MiB 120-page PDF repaired and all 120 pages regenerated with the real processor",
+    "Read-only intent-bound repair inventory, process SIGKILL file recovery and cancellation cleanup",
+    "Both material workbenches: wrong file, lost request acknowledgment, refresh, cancel, new repair, keyboard and three simulated viewport sizes"
+  ],
+  "diagnostics": [
+    "Initial browser hidden-input injection bypassed the disabled trigger while a file check was completing. Waiting for the actual button to be enabled fixed the test; full 60-case final browser run passes.",
+    "A PostgreSQL combination picked up a newly edited test later in a running suite while its API dist was built before the added scope guard. Its other 80 cases passed; final rebuilt original-repair PostgreSQL suite passes all 15. No failed report is relabeled as passed.",
+    "Initial full local API: 1042 passed, 3 failed, 34 environment-dependent skipped. All failures checked exact frozen release/geometry bytes affected by Windows CRLF checkout. Working bytes were verified against Git, restored exactly, and eol=lf fixed without changing content or expected checksums. Final affected three suites: 75 passed.",
+    "First LF normalization command used the API subdirectory and did not modify files; its failed check is retained. The corrected command ran from the repository root."
+  ],
+  "checks": {
+    "contractsBuild": "passed",
+    "apiBuild": "passed",
+    "apiTypecheck": "passed",
+    "webTypecheck": "passed",
+    "isolatedProductionWebBuild": "passed",
+    "readOnlyMaterialAuditRegression": {
+      "passed": 11
+    },
+    "authoredContentAudit": {
+      "passed": true,
+      "points": 258,
+      "tasks": 15758
+    },
+    "fullLocalApiUnconditionallyGreen": false,
+    "finalSourceCi": {
+      "runId": "40154792751",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "daemonDeployment": "pending",
+    "isolatedPostgres": "stopped"
+  },
+  "limits": [
+    "No complete-product, textbook-completeness, pixel-perfect, human-learning-validity or real-device completion claim.",
+    "Processes are force-killed in isolated QA; hardware power loss and an adversarial same-user filesystem writer are outside this acceptance.",
+    "Unknown files and markers remain retained; an unprovable cleanup stays pending for inspection instead of releasing the source unsafely.",
+    "Active repairing snapshots are rejected by backup creation. Manually constructed/unsupported active-repair backups fail closed during cold restore.",
+    "Existing e2e model calls use explicit deterministic fixtures; no new live model or TTS/image provider calls are claimed.",
+    "Production family data has not been used for feature tests. The development branch is not yet deployed."
+  ],
+  "windowsAssetAttributesRevision": "18450a8"
+}

@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`a3ba56cc7e7ec02905036f5b573602b15506a661`。共 299 个 HTTP 路由声明，当前 AppModule 可达 278 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`18450a86f36aa5ca37fa1c1ee08ae0b36d080fbc`。共 304 个 HTTP 路由声明，当前 AppModule 可达 283 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1884,6 +1884,53 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.uploads.cancel`
+
+## StudioOriginalRepairController — 当前接入
+
+### GET /api/learning/source-courses/materials/:materialId/repairs
+
+实现：[apps/api/src/modules/learning/studio-original-repair.controller.ts:8](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L8)，方法 `list`。
+
+- 签名：`list(@Req()req:AuthenticatedRequest, @Param('materialId')materialId:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.repairs.list`
+
+### GET /api/learning/source-courses/materials/:materialId/repairs/:id
+
+实现：[apps/api/src/modules/learning/studio-original-repair.controller.ts:9](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L9)，方法 `get`。
+
+- 签名：`get(@Req()req:AuthenticatedRequest, @Param('materialId')materialId:string, @Param('id')id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.repairs.get`
+
+### POST /api/learning/source-courses/materials/:materialId/repairs
+
+实现：[apps/api/src/modules/learning/studio-original-repair.controller.ts:10](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L10)，方法 `start`。
+
+- 签名：`start(@Req()req:AuthenticatedRequest, @Param('materialId')materialId:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.repairs.start`
+
+### POST /api/learning/source-courses/materials/:materialId/repairs/:id/cancel
+
+实现：[apps/api/src/modules/learning/studio-original-repair.controller.ts:11](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L11)，方法 `cancel`。
+
+- 签名：`cancel(@Req()req:AuthenticatedRequest, @Param('materialId')materialId:string, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.repairs.control`
+
+### POST /api/learning/source-courses/materials/:materialId/repairs/:id/retry
+
+实现：[apps/api/src/modules/learning/studio-original-repair.controller.ts:12](../../../apps/api/src/modules/learning/studio-original-repair.controller.ts#L12)，方法 `retry`。
+
+- 签名：`retry(@Req()req:AuthenticatedRequest, @Param('materialId')materialId:string, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.repairs.control`
 
 ## LibraryController — 当前接入
 
