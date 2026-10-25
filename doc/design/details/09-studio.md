@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`00902a194277472b33817757745f082e4d747fe8`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`b3fb6fa715e8d6952e34c743647dc145059bfa03`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`。
 
@@ -760,7 +760,7 @@
 
 **输入**：已确认资料课程中明确选择的2～6课时目标、完整来源、常规模型选择、原请求键/版本、显式答案审阅或未曝光确认。
 
-**处理与实现**：冻结完整来源和公开目标并严格限制18000字符，拒绝截断；4～8新题的单选/多选集合、逐项说明、两级提示、目标与精确引用完整校验；不发送微课答案或原题，规范化精确排重；持久写题/复核检查点固定原模型与原登录/监护授权，失败只补未完成阶段；原稿/当前稿/AI审稿及历史分开保留；显式authoring才记录同actor/内容指纹曝光，同文重新生成不能清除旧曝光；确认练习可保留未读答案路径，过期/uncertain另确认；schema15稳定当前指针与单调撤回修订，同事务发布切换；学生按非管理来源授权创建私有冻结课堂，仅提交当前题后取得本题评分；首答/提示/不会/跳过及只读旅程沿用原协议，不同定义独立；原文按本人课堂冻结读取；前端按独立文档slot保留原命令和本机稿，掉回执重放原参数、旧稿显式比较，换号卸载；两库备份恢复与隐私回收识别check-only和classroom-only引用
+**处理与实现**：冻结完整来源和公开目标并严格限制18000字符，拒绝截断；4～8新题的单选/多选集合、逐项说明、两级提示、目标与精确引用完整校验；不发送微课答案或原题，规范化精确排重；持久写题/复核检查点固定原模型与原登录/监护授权，失败只补未完成阶段；取消固定原generation，允许后台领取/检查点推进后的旧快照在同代次内取消，旧控制/新代次/未来版本及已完成状态仍拒绝，原命令与原回执不变；原稿/当前稿/AI审稿及历史分开保留；显式authoring才记录同actor/内容指纹曝光，同文重新生成不能清除旧曝光；确认练习可保留未读答案路径，过期/uncertain另确认；schema15稳定当前指针与单调撤回修订，同事务发布切换；学生按非管理来源授权创建私有冻结课堂，仅提交当前题后取得本题评分；首答/提示/不会/跳过及只读旅程沿用原协议，不同定义独立；原文按本人课堂冻结读取；前端按独立文档slot保留原命令和本机稿，掉回执重放原参数、旧稿显式比较，换号卸载；两库备份恢复与隐私回收识别check-only和classroom-only引用
 
 **输出**：准备、编审/未曝光确认、准确续答、逐题反馈与冻结原文、旧版复盘和原命令恢复。
 
@@ -791,10 +791,10 @@
 - `SourceCourseCheckService.preflight`；[apps/api/src/modules/learning/source-course-check.service.ts:48](../../../apps/api/src/modules/learning/source-course-check.service.ts#L48)。
 - `SourceCourseCheckService.prepare`；[apps/api/src/modules/learning/source-course-check.service.ts:53](../../../apps/api/src/modules/learning/source-course-check.service.ts#L53)。
 - `SourceCourseCheckService.control`；[apps/api/src/modules/learning/source-course-check.service.ts:68](../../../apps/api/src/modules/learning/source-course-check.service.ts#L68)。
-- `SourceCourseCheckService.authoring`；[apps/api/src/modules/learning/source-course-check.service.ts:100](../../../apps/api/src/modules/learning/source-course-check.service.ts#L100)。
-- `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:107](../../../apps/api/src/modules/learning/source-course-check.service.ts#L107)。
-- `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
-- `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:128](../../../apps/api/src/modules/learning/source-course-check.service.ts#L128)。
+- `SourceCourseCheckService.authoring`；[apps/api/src/modules/learning/source-course-check.service.ts:109](../../../apps/api/src/modules/learning/source-course-check.service.ts#L109)。
+- `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
+- `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:125](../../../apps/api/src/modules/learning/source-course-check.service.ts#L125)。
+- `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:137](../../../apps/api/src/modules/learning/source-course-check.service.ts#L137)。
 - `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
 
 **补充实现文件**：

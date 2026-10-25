@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-25T20:35:08.746Z",
-  "sourceRevision": "00902a194277472b33817757745f082e4d747fe8",
+  "at": "2026-10-25T21:08:19.336Z",
+  "sourceRevision": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -204,8 +204,8 @@
       "apps/api/src/modules/learning/source-course-check-content.ts": "1d0a733730d859f3c071225fef31b4fe8ffe217096bf9aca2606fb65c9b8a752",
       "apps/api/src/modules/learning/source-course-check-worker.service.ts": "db89b3ab393e7340164432dea1f99e1727be0eb40c4689dfadd71701fe96ca52",
       "apps/api/src/modules/learning/source-course-check.controller.ts": "ab04f46498d45106ff09689113e54f7bcac568c81301fedd4e66615dcdc04752",
-      "apps/api/src/modules/learning/source-course-check.integration.test.ts": "8042451457c4010ab9afcad68ed347ec243ae8d567c8d5716e4ef3a2c88e772f",
-      "apps/api/src/modules/learning/source-course-check.service.ts": "f88d059951924f5eb43a518bc025b6f8108610ece303972e9620aba3a43fa7b9",
+      "apps/api/src/modules/learning/source-course-check.integration.test.ts": "ad631c356f45d435ea4bb81726cfb12f9175b6a1d68b37090bc14917487e1fd1",
+      "apps/api/src/modules/learning/source-course-check.service.ts": "e9b530c4b69bdb05a69c21d7da3942a7e766229805f3a109c7b08e2b9e7b8423",
       "apps/api/src/modules/learning/source-course-chunks.test.ts": "bb9e01f27ea1f4edcd4b64230ade7e31d0ca2f2b2385ccd24f56fe1ceb584fa9",
       "apps/api/src/modules/learning/source-course-chunks.ts": "833db48ef550d25407f520c8a4c77b23ce78d69c95710f70267018a0010a2b52",
       "apps/api/src/modules/learning/source-course-compilation.integration.test.ts": "db878570131b14381330700bff1a79db62f119971862cd51bc2484faa4361bba",
@@ -366,7 +366,7 @@
       "apps/web/lib/learning-context.ts": "532cea5d8a74192b5cde06af5b7f16820530c8348707c529dcbebb466c190269",
       "apps/web/lib/session-user.ts": "f62f9542eaa07b4198286cdbcd9ecbb415f31a2481d4f811e2e41d67b0b1c6ce",
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
-      "doc/product/120-source-course-independent-unit-checks.md": "692602eb756b81e4a78ac0dccafabc0291a132147a10c38b3bec8e3e2237ff3f",
+      "doc/product/120-source-course-independent-unit-checks.md": "d157384bcd6253fc1eecd855796f20a20d70847ab4744d334246a3ec24e5adef",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -461,7 +461,7 @@
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
       "tests/e2e/project-files.spec.ts": "e8bebc4b426b610af075c26f3e4ed0d3e34424f5cec16ce45108a0bf4e0b8005",
       "tests/e2e/project-teaching.spec.ts": "8e562c378c6806d62507f1ffcac618302670767b648f5d0d369c42afd87f252e",
-      "tests/e2e/source-course-check.spec.ts": "e450e9833c68ce562342da786f02a4665b152ea1c461592cb34739757f0a153c",
+      "tests/e2e/source-course-check.spec.ts": "7f810827aad846ecefb002e5a5dc9a8024f0d4664bf677fcfa70d3b6cde47e2a",
       "tests/e2e/source-course-lifecycle.spec.ts": "9018b948d7d17d94bde517e7b49049df29211aa8bf5091ec4e56f51613ee7c91",
       "tests/e2e/source-course-long.spec.ts": "3152b4fbe1067d7253e39803ae1f44456882408a9a20b479f8a2cf308ca92f5d",
       "tests/e2e/source-course-project.spec.ts": "d672c04033344ec4863d80b58c7b973ce6d6768ee4929235dc0e03a02664bf15",
@@ -476,7 +476,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2805,
+    "checked": 2807,
     "missing": []
   },
   "staticContent": {
@@ -548,7 +548,7 @@
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
     "receipt": "../evidence/2026-10-26/source-check-acceptance.json",
-    "revision": "00902a194277472b33817757745f082e4d747fe8",
+    "revision": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

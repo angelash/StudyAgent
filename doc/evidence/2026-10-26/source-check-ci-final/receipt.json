@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "status": "ci-success-with-flaky-case-release-held",
+  "head": "4b118df9fd4d469d1de3f276d51fe4854b2e9ca8",
+  "run": 40231488528,
+  "jobs": {
+    "application": "success",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "expected": 216,
+    "unexpected": 0,
+    "flaky": 1,
+    "skipped": 0
+  },
+  "case": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+  "deployed": false,
+  "application": {
+    "passed": 1232,
+    "skipped": 51,
+    "platform": "Linux",
+    "source": "application.log.gz"
+  }
+}

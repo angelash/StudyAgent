@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "00902a194277472b33817757745f082e4d747fe8",
+  "sourceRevision": "b3fb6fa715e8d6952e34c743647dc145059bfa03",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 358,
@@ -24216,7 +24216,7 @@
         },
         {
           "name": "prior",
-          "line": 85,
+          "line": 94,
           "signature": "prior(row:SourceCourseCheckRecord, key:string, kind:string, hash:string)",
           "access": "private",
           "decorators": [],
@@ -24224,7 +24224,7 @@
         },
         {
           "name": "confirmCurrent",
-          "line": 86,
+          "line": 95,
           "signature": "confirmCurrent(course:ReturnType<typeof sourceCheckCourse>, row:SourceCourseCheckRecord, user:InMemoryUserAccount, session:InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -24232,7 +24232,7 @@
         },
         {
           "name": "command",
-          "line": 89,
+          "line": 98,
           "signature": "command(row:SourceCourseCheckRecord, user:InMemoryUserAccount, key:string, kind:string, hash:string, detail:Partial<SourceCourseCheckRecord['commands'][number]>={})",
           "access": "private",
           "decorators": [],
@@ -24240,7 +24240,7 @@
         },
         {
           "name": "expose",
-          "line": 92,
+          "line": 101,
           "signature": "expose(row:SourceCourseCheckRecord, user:InMemoryUserAccount, fingerprint:string)",
           "access": "private",
           "decorators": [],
@@ -24248,7 +24248,7 @@
         },
         {
           "name": "authoringView",
-          "line": 93,
+          "line": 102,
           "signature": "authoringView(row:SourceCourseCheckRecord, receipt:SourceCourseCheckRecord['commands'][number]): Promise<SourceCourseCheckAuthoring>",
           "access": "private",
           "decorators": [],
@@ -24258,7 +24258,7 @@
         },
         {
           "name": "authoring",
-          "line": 100,
+          "line": 109,
           "signature": "authoring(user:InMemoryUserAccount, courseId:string, id:string, input:unknown, session:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -24273,7 +24273,7 @@
         },
         {
           "name": "edit",
-          "line": 107,
+          "line": 116,
           "signature": "edit(user:InMemoryUserAccount, courseId:string, id:string, input:unknown, session:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -24289,7 +24289,7 @@
         },
         {
           "name": "publish",
-          "line": 116,
+          "line": 125,
           "signature": "publish(user:InMemoryUserAccount, courseId:string, id:string, input:unknown, session:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -24307,7 +24307,7 @@
         },
         {
           "name": "withdraw",
-          "line": 128,
+          "line": 137,
           "signature": "withdraw(user:InMemoryUserAccount, courseId:string, id:string, input:unknown, session:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
