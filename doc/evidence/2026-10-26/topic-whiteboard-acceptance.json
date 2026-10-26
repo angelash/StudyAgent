@@ -1,6 +1,6 @@
 {
-  "status": "exact-ci-passed-runtime-pending",
-  "deployed": false,
+  "status": "runtime-delivered",
+  "deployed": true,
   "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
     "passed": 9,
@@ -11,14 +11,13 @@
     "report": "topic-whiteboard-foundation/postgres.json"
   },
   "schemaVersionInIsolatedTests": 16,
-  "productionSchemaVersion": 15,
+  "productionSchemaVersion": 16,
   "limits": [
-    "Independent page/editor and explicit topic player are connected but not deployed.",
-    "Actual production delivery remains pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
     "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
-    "SQLite and native PG recovery cases passed; a fresh schema15 production rollback and actual schema16 runtime release are still required."
+    "Fresh schema15 rollback includes current122845 compiled files, private configurations and stopped-service database/referenced files. assetsIncluded:false; no full research-asset backup or complete production restore rehearsal.",
+    "New topic figure generation/edit, selection and complex formula video are independent124 work, not included in this release."
   ],
   "service": {
     "passed": 27,
@@ -160,10 +159,11 @@
     "domainCollections": 97,
     "contractTypes": 328,
     "sourceReferences": 466,
-    "markdownLinks": 2941,
+    "markdownLinks": 2947,
     "offlineViewerChecks": 10,
     "passed": true,
-    "currentApplicationBaseline": "topic-whiteboard-acceptance.json"
+    "currentApplicationBaseline": "topic-whiteboard-acceptance.json",
+    "runtimeValidationPassed": true
   },
   "initialCi": {
     "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
@@ -233,5 +233,18 @@
       "sqliteOnlySkipped": 2
     },
     "report": "topic-whiteboard-exact-ci/receipt.json"
+  },
+  "runtime": {
+    "report": "topic-whiteboard-runtime.json",
+    "buildRevision": "453866d4cf9b357baaf184c799d41dcce89b63d6",
+    "webBuildId": "7DPYUYWiUo1CUbaCcrd0R",
+    "schemaVersion": 16,
+    "httpChecks": 100,
+    "compiledFiles": 11,
+    "voiceSamples": 6,
+    "observedIntervalMs": 119361,
+    "stableServices": 3,
+    "protectedConfigurations": 5,
+    "localEnvironmentPreserved": true
   }
 }

@@ -126,3 +126,5 @@ npm run qa:docs
 123完整本地门禁随后已通过：API1287/0失败/51环境跳过、242浏览器零失败/跳过/重试，原始媒体和报告见[当前验收](../evidence/2026-10-26/topic-whiteboard-acceptance.json)。精确远端CI及schema16实际交付继续单列；这些本地证据没有把真实教师、设备、原声与像素完整门槛标成完成。
 
 123精确e1bd27c/40258543480随后三组success；原始远端浏览器实际242零重试，Linux API1279/59环境跳过，新白板PG14/2 SQLite专属跳过，各日志和原件见[精确CI](../evidence/2026-10-26/topic-whiteboard-exact-ci/receipt.json)。主目录真实schema16生产构建、停服一致备份及守护稳定观察继续独立记录，尚不据CI结果自动声明部署。
+
+123运行也已交付：主目录453866d真实构建，buildId 7DPYUYWiUo1CUbaCcrd0R、schema16，100实际HTTP/权限/已提供JS检查、11编译逐SHA、6MP3逐SHA及跨119361毫秒三次守护稳定观察通过。五处本地配置与真实环境、新鲜122编译/停服一致数据库回退保持；assetsIncluded:false，不等于全资产独立备份或生产恢复演练。当前可访问`/studio/whiteboards`，见[运行原件](../evidence/2026-10-26/topic-whiteboard-runtime.json)。124图片/复杂公式与72项完整教学/像素/实机/教师门槛仍独立继续。

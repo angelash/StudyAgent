@@ -180,3 +180,5 @@ CI三组：
 `a12d6df`完成OPS-07冷恢复源清理：应用最新删除账本并推进身份后逐文件处理源原件/缓存/明确工作JSON/上传块，共享和冻结来源保留；冻结PDF失去可变资料行后仍按SHA纳入备份。双库真实删除/恢复、继续处理/上传、旧访问拒绝、未知/联接及首次unlink后失败门禁均通过；核心最新SQLite9/PG11及冻结引用4、审计11有重叠。原地续恢复与损坏原件替换仍待，见[冷恢复验收](../evidence/2026-10-24/restored-materials-acceptance.json)。
 
 123应用ed0ad2d的完整本地回归：API1287通过/0失败/51环境跳过，完整浏览器242项及242次原始尝试全部通过、零重试；1154.52秒原始JSON与SHA、实际解码WebM/SRT及独立Opus对照见[本轮收据](../evidence/2026-10-26/topic-whiteboard-final-regression/receipt.json)。定向29 API、14 PG/2 SQLite专属跳过、24浏览器和两个真实DS样本分别保留范围，不相加。此处记录本地回归，精确CI和主目录schema16升级另据验收更新；没有教师/实机/全内容/长期或原CSS/字体/DPR/音色结论。
+
+123主目录构建453866d已真实运行schema16，buildId 7DPYUYWiUo1CUbaCcrd0R；100HTTP/权限/已提供脚本、11实际编译文件SHA、6语音文件SHA及跨119361毫秒三次PID/重启不变观察通过。新鲜122旧构建845文件、五配置/真实环境与停服一致schema15数据库/引用文件均私有保留，assetsIncluded:false；没有全研究资产独立备份或完整生产恢复演练结论。初次执行命令和私有检查器的错误原日志也保留，见[运行收据](../evidence/2026-10-26/topic-whiteboard-runtime.json)。后续124图片和复杂公式不会因本批通过自动变成已交付能力。
