@@ -89,3 +89,16 @@ SQLite/PG完整备份认识新记录及真实图片原件/展示图/私有提示
 3. 实现完整稿中的候选/核对/选用与图卡放大，保留表格和公式，接入冻结播放器。
 4. 完成复杂公式视频排版与实际图像导出、完整笔记、取消/失败/撤权矩阵。
 5. 匿名实际Skill生成/edit、专项、完整回归、精确CI、123最终合并和可回退守护交付；更新总册及72项证据，再继续逐状态视觉和课程内容缺口。
+## 11. 编码前的接口、内容和存储定稿
+
+独立控制器前缀`learning/studio/topic-whiteboard-visuals`：GET `capabilities`返回真实generate/edit可用性；POST `preflight`读取当前本人ready候选/幕及需求、预算和实际图片能力，不创建任务；POST根路径明确生成；GET根路径按本人draftId/sceneIndex有界分页，GET `requests/:key`定位本人原准备命令，GET `:id`读取候选；POST `:id/cancel`、`:id/retry`明确控制；POST `:id/edits`用该真实原图创建新的edit候选；GET `:id/image`和`:id/original`分别读取授权、逐SHA验证的展示/原图。路由声明先放静态capabilities/requests，不能被动态id截获。所有读取私有no-store，拒绝访问不泄露他人候选存在与否。
+
+新生成输入为draftId、sceneIndex（0～7）、expectedRevision、contentFingerprint、purpose、requirements（3～1200字）、preflightFingerprint、requestKey；图片模型固定gpt-image-2，不接受URL/路径/任意模型。预检返回原教学指纹和完整受控生成上下文说明，不返回内部授权。edit沿用此输入并增加原图父候选身份和明确changes（3～1200字）；父候选须本人、真实ready和字节完整，输入文件由服务端解析。父图来源与新幕教学上下文均冻结，不能用另一个读者的共享图片越过私图编辑权限。
+
+控制输入比较原visualRevision、taskGeneration/taskVersion和原请求键；重放先核对原规范化命令再检查当前状态，旧代回执只说明原操作，不作为当前代成功。列表每页默认12、最多24，检索长度最多120，保留实际总数；旧图不因分页被删除。生成/取消/重试/edit回执绑定本人、动作、规范化摘要和原候选，恢复按123模式先读取，确实缺失时才原键重发。
+
+图片选用/取消选用沿用123完整内容PATCH，不另做隐式选用写接口。每幕可选`figure:{visualId,alt,caption}`，alt为3～600字、caption为0～600字；缺字段保持原旧稿含义，不给旧稿默认补null而改变指纹。AI写稿/复核输出禁止带非空figure，只有本人编辑可以加入经服务端验证的引用。编辑器本机选择保留当前全文；明确“保存完整改稿”时，以原revision/contentFingerprint一次保存，服务端逐幕检查图片的本人/draftId/sceneIndex/教学指纹/真实状态及字节。生成前若当前幕有未保存修改，先保存再预检，不将另一份本机稿偷偷发送给模型。
+
+`studioTopicWhiteboardVisuals`字段包括id、ownerUserId、studentId/subject、draftId、sceneIndex、sceneTeachingFingerprint、frozenContext、purpose/requirements、operation(generate/edit)、parentVisualId、modelId、requestKey/inputHash、preflightFingerprint、authorization、taskId/generation、revision/status、files及width/height、commands/createdAt/updatedAt。schema17只新增该集合及本人准备键唯一索引；任务仍存既有ProcessingTask表，不能把它误写成新的领域集合。files包含SHA命名的原图、展示图和私有完整提示词。冻结白板的figure投影含visualId及明确的图片SHA/尺寸/alt/caption，URL由当前授权路由生成，不含私有生成输入。
+
+新存储参数化复用旧防护，但独立根`topic-whiteboard-visuals`及独立ID前缀，旧`classroom-visuals`路径与索引不移动。provider默认旧1024×1024行为不变；新图可明确使用1536×1024、PNG、medium及受控输出选项，发布按冻结实际尺寸解码验证，不裁切成方图。图内修订仍走Skill edit；调节网页图卡尺寸只影响布局，不改原图字节或伪造新的图片版本。
