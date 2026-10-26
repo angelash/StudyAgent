@@ -1,0 +1,161 @@
+{
+  "at": "2026-10-26T14:46:00.881Z",
+  "status": "expanded-original-browser-failures-retained",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T14:40:33.625Z",
+    "duration": 92099.48700000001,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "attempts": 12,
+  "retries": 0,
+  "findings": [
+    "The original full journey could type during the brief old-item/new-session-version transition, leaving the correction action disabled; bind input availability to the exact fetched item scope.",
+    "Offline failure assertion matched both the app alert and the framework route announcer; scope the selector without weakening the expectation.",
+    "The manual recovery checkbox unmounted immediately when checked; retain a controlled checkbox and its focus."
+  ],
+  "executionLimit": "The root npm test command also builds the API, and was inadvertently started while the browser server was preparing. No source API changes were made during these runs, but exact runtime build sequencing is not claimed for this original batch. API build completion was then verified. Future API/browser work uses completed builds and direct Vitest commands; the browser cases must be rerun against a fixed build.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "browser-original.json.gz",
+      "originalSha256": "24e21f3c2fab64e2472d7d9ad9dbad74677f9821b3d57cc7f60d26eaf0e060ee",
+      "storedSha256": "1f503bcb7c0f7e67a1252c0d332b4db2fb013fede950fff19921133c9fbbca36"
+    },
+    {
+      "source": "data/qa/paper-practice-expanded-browser.log",
+      "file": "browser-original.log.gz",
+      "originalSha256": "8c5fcc281a0a13fa6ab563c5ec34f1955f4499cc7860dd9437ff5233f315e8db",
+      "storedSha256": "fe693fcfd99756a61dd4305edd35ae98b9a4827fa28293d2cbd293806e021162"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "test-source-original.ts.gz",
+      "originalSha256": "8a1c04cdccfc46677f435b188a54afd2ebb5ab74b95a570630017ad16a917aaa",
+      "storedSha256": "f13be7172b179b445b48b9c5abf9d3eae42d8d27f52d1170b7ba5411bb9a2aeb"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "inputs/session.tsx.gz",
+      "originalSha256": "7631187ef2c6e0998b7920539a0dbad0d632811c040a032ddb1e3445dba6100b",
+      "storedSha256": "05e20227d5befc9df2e70a8d930d2e8dac95866f4d18362ba364d85b720ed0f6"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "inputs/studio.tsx.gz",
+      "originalSha256": "7cb4f6ac737ba752c6560f8db48b702ade7cf8284c4fce29028865a87d5775c4",
+      "storedSha256": "2f0674dd782cc24f3f3e7074410c2259327d4333481bf54cd3ebba4ab1ec65b7"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-api.ts",
+      "file": "inputs/paper-practice-api.ts.gz",
+      "originalSha256": "7e24aadfd8333a99cc05152a9963edbf72e955af48029c0a5cb1ff5fddbee499",
+      "storedSha256": "e30a887408a775e5b48528571a4caab591bdf2f52483e69a0d71e2e04e563d97"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "inputs/paper-practice-local.ts.gz",
+      "originalSha256": "0a958b35dc261aff018d558c72c25001c1e9c3af36077c628fd23479a119766f",
+      "storedSha256": "e04d226f948580b02ed53819475d950e101f4baca1f6cd83f0e86f5eb6a34b21"
+    },
+    {
+      "source": "scripts/qa/paper-practice-fixture.cjs",
+      "file": "inputs/paper-practice-fixture.cjs.gz",
+      "originalSha256": "0a337b2b21245812f6d26648509b6163f70c5e1cd0c46acc37e7046f82005ec7",
+      "storedSha256": "3ed4be258b75036ab872acb2d6868bb2521113becc7fe3c836f3d52f94dddd16"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "failures/.last-run.json",
+      "originalSha256": "32913dcc43c381438ab1dc2aca1700c8c65e0d2e48aabada96806957c621d7fa",
+      "storedSha256": "32913dcc43c381438ab1dc2aca1700c8c65e0d2e48aabada96806957c621d7fa"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-11d7b-ection-and-completed-review\\error-context.md",
+      "file": "failures/paper-practice-paper-pract-11d7b-ection-and-completed-review/error-context.md",
+      "originalSha256": "2f520147e03c0fe91f40aee2f1a5f7c5d9d2d6078fdab342724b69b12cc5e3e0",
+      "storedSha256": "2f520147e03c0fe91f40aee2f1a5f7c5d9d2d6078fdab342724b69b12cc5e3e0"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-11d7b-ection-and-completed-review\\test-failed-1.png",
+      "file": "failures/paper-practice-paper-pract-11d7b-ection-and-completed-review/test-failed-1.png",
+      "originalSha256": "1d55b8f03a650b9a39d3234418c75dbe2ce17d09b9d48a5a754df3e5bba4d70d",
+      "storedSha256": "1d55b8f03a650b9a39d3234418c75dbe2ce17d09b9d48a5a754df3e5bba4d70d"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-11d7b-ection-and-completed-review\\trace.zip",
+      "file": "failures/paper-practice-paper-pract-11d7b-ection-and-completed-review/trace.zip",
+      "originalSha256": "7ab0ae50c42c2bd0cdbbb901321f708fa41d29897a66d3d60a2e5ac686162b18",
+      "storedSha256": "7ab0ae50c42c2bd0cdbbb901321f708fa41d29897a66d3d60a2e5ac686162b18"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-4847f-ommand-until-explicit-retry\\error-context.md",
+      "file": "failures/paper-practice-paper-pract-4847f-ommand-until-explicit-retry/error-context.md",
+      "originalSha256": "d1867b6293de608b5da2973e317a7e917273e76bf47c3d61608e671aefebb1ce",
+      "storedSha256": "d1867b6293de608b5da2973e317a7e917273e76bf47c3d61608e671aefebb1ce"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-4847f-ommand-until-explicit-retry\\test-failed-1.png",
+      "file": "failures/paper-practice-paper-pract-4847f-ommand-until-explicit-retry/test-failed-1.png",
+      "originalSha256": "f51158ecb0f871f23d126e122f34637397e82da5e867357f58fb80ba51b88761",
+      "storedSha256": "f51158ecb0f871f23d126e122f34637397e82da5e867357f58fb80ba51b88761"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-4847f-ommand-until-explicit-retry\\trace.zip",
+      "file": "failures/paper-practice-paper-pract-4847f-ommand-until-explicit-retry/trace.zip",
+      "originalSha256": "87bb4f54bcfcb587a2ef74bb5c8a7815082fb0e6216ccd1059dec31cd0e11b97",
+      "storedSha256": "87bb4f54bcfcb587a2ef74bb5c8a7815082fb0e6216ccd1059dec31cd0e11b97"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-74284-t-protection-acknowledgment\\error-context.md",
+      "file": "failures/paper-practice-paper-pract-74284-t-protection-acknowledgment/error-context.md",
+      "originalSha256": "8e1486fdfad41c7b3b7ecf044d81f919e87e716c93332ce83785dc0173b19ec6",
+      "storedSha256": "8e1486fdfad41c7b3b7ecf044d81f919e87e716c93332ce83785dc0173b19ec6"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-74284-t-protection-acknowledgment\\test-failed-1.png",
+      "file": "failures/paper-practice-paper-pract-74284-t-protection-acknowledgment/test-failed-1.png",
+      "originalSha256": "62ed45d864019903b5816d7298c323790c425b1e5d54e3015220697a06cb89c0",
+      "storedSha256": "62ed45d864019903b5816d7298c323790c425b1e5d54e3015220697a06cb89c0"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-74284-t-protection-acknowledgment\\trace.zip",
+      "file": "failures/paper-practice-paper-pract-74284-t-protection-acknowledgment/trace.zip",
+      "originalSha256": "fcd59264bfa62a0d9c8ecf19a90210cefd6c01b40bb464c1284312cf74baa12c",
+      "storedSha256": "fcd59264bfa62a0d9c8ecf19a90210cefd6c01b40bb464c1284312cf74baa12c"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\actual-completed-review.png",
+      "file": "ui/actual-completed-review.png",
+      "originalSha256": "34aa62c1a97ff726b1c256f5b2c69da32c25a3f7c87d3be42f00221e9fb86073",
+      "storedSha256": "34aa62c1a97ff726b1c256f5b2c69da32c25a3f7c87d3be42f00221e9fb86073"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\actual-first-answer-and-correction.json",
+      "file": "ui/actual-first-answer-and-correction.json",
+      "originalSha256": "a10ab0ef4c7aa06d15cbc8610fd08045bd5b0399101ac5ed72a1331f542e76dc",
+      "storedSha256": "a10ab0ef4c7aa06d15cbc8610fd08045bd5b0399101ac5ed72a1331f542e76dc"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\question-image-1440.png",
+      "file": "ui/question-image-1440.png",
+      "originalSha256": "5e97239fd08f5dbb3f7168a4cf4c39674d445cc84d57c67fe37ae87bad664920",
+      "storedSha256": "5e97239fd08f5dbb3f7168a4cf4c39674d445cc84d57c67fe37ae87bad664920"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\question-image-390.png",
+      "file": "ui/question-image-390.png",
+      "originalSha256": "5dd6ffe4746a40b7d79bc8981c7facf52e1ba4d38e7b670e79560ac24760f74d",
+      "storedSha256": "5dd6ffe4746a40b7d79bc8981c7facf52e1ba4d38e7b670e79560ac24760f74d"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\question-image-768.png",
+      "file": "ui/question-image-768.png",
+      "originalSha256": "9bd178b8bd06d01182dc7c1e38809669171eb9f9c7691766a15af4af9238c086",
+      "storedSha256": "9bd178b8bd06d01182dc7c1e38809669171eb9f9c7691766a15af4af9238c086"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-26T15:26:11.082Z",
+  "status": "original-native-cases-pass",
+  "deployed": false,
+  "counts": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scope": "Fourteen PostgreSQL original-paper service cases and independent SQLite/PostgreSQL native cold recovery. Separate nineteen-case backup/migration command overlaps and is not added to this total.",
+  "verified": [
+    "Original creation, immutable first-answer and correction receipts replay after native restart and restore without growing the version.",
+    "Actual catalog, archive, figure PNG and parseable PDF bytes restore under their original SHA256.",
+    "Old sessions are revoked; fresh authentication sees original frozen records.",
+    "Portable export preserves public command facts and excludes internal request keys/hashes.",
+    "Newer child/account deletion receipts applied to an old bundle remove paper sessions and commands without deleting shared original publications.",
+    "Both adapters reject future schema19 without publishing a success manifest."
+  ],
+  "limits": [
+    "Synthetic local QA cluster and owned source/target databases; no production family data.",
+    "Not a full research archive backup, production restoration rehearsal, pixel parity or teacher acceptance."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-postgres.json",
+      "file": "paper-practice-postgres.json.gz",
+      "originalSha256": "b5031aeef4dec1d8ee8c5653b8a4078a058e678da8c38b9b3be93e05876d977a",
+      "sha256": "a6b323b588ab92bd9e3d26fe57e58024f932409f0fdc47ee3ebbda75b18848e0"
+    },
+    {
+      "source": "data/qa/paper-practice-native-postgres-fixed.log",
+      "file": "paper-practice-native-postgres-fixed.log.gz",
+      "originalSha256": "9647a0aca1aa5b3ee6922df0926ff7ab7588edaf409267f7fc083e2319d3829d",
+      "sha256": "5c7c207636ec9ce34c75cedbbdd7dd4b3144cca3c93ed2adb3b0032bf883c232"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "ff6e01d8041ba4c2b54fa045dc72295647f22a96109e1d3ea775c20130f2dda1",
+      "sha256": "88bdee969ea46eb2fcc8210ad2bae8102ed45f394913467bec11b255c03f9efd"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "02acb5665a426587e161da319a3a05c32f6969c4e33773be5d2ce38ffd0a4590",
+      "sha256": "b2a32ab08d1e4134bc2c5358767389303d1bd00c6c0e8e0fe20a1d8c2dca5a54"
+    },
+    {
+      "source": "scripts/operations/backup.cjs",
+      "file": "backup.cjs.gz",
+      "originalSha256": "c2b7fbb3e2c14c38242308b32984f7d808e01bb6119aedb31d09e14eee2e457d",
+      "sha256": "c6df637198cc49a46d4f0d17f9a401f9a71c307eceb3f7d84afb9d29213c78d0"
+    },
+    {
+      "source": "scripts/operations/postgres-backup.cjs",
+      "file": "postgres-backup.cjs.gz",
+      "originalSha256": "4f0fdcddbaf49a1b6fd0bd39ef4f481de974d67f0a85bfe012e4e15882a751e1",
+      "sha256": "ce95c1dbea393488ff7523f53c5ebaec3d8a4ec7e621eec43a0094421fc73b7c"
+    },
+    {
+      "source": "scripts/qa/run-paper-practice-postgres.cjs",
+      "file": "run-paper-practice-postgres.cjs.gz",
+      "originalSha256": "84c0de70c19a3105c7dd573045cd62e324ba50985f852b1750ac5ea25a80340e",
+      "sha256": "369994192b5076a1e96709286b445e8fa0b2af3dadc20ddbb069e02589360141"
+    },
+    {
+      "source": "data/qa/paper-practice-backup-regression-fixed.log",
+      "file": "paper-practice-backup-regression-fixed.log.gz",
+      "originalSha256": "62cf0a821b23399fba211f801ca76c4cb4158b0e4895df46d4696e3ff99badeb",
+      "sha256": "81f71ed7db0895874d640043dacf6b56b29b7d217f93cef6408d147bddfe6293"
+    }
+  ]
+}

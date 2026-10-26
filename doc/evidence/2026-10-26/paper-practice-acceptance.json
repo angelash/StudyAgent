@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-26T16:13:56.126Z",
+  "status": "paper-practice-local-complete-remote-and-runtime-pending",
+  "passed": true,
+  "overallProductComplete": false,
+  "deployed": false,
+  "applicationRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "apiRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "schemaVersion": 18,
+  "scope": "Local candidate validation only. Current production is126/schema17.",
+  "entrypoints": [
+    "/library",
+    "/library/practice"
+  ],
+  "validation": {
+    "localApi": {
+      "passed": 1339,
+      "failed": 0,
+      "environmentSkipped": 54,
+      "total": 1393
+    },
+    "localFullBrowser": {
+      "passed": 298,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "originalAttempts": 298
+    },
+    "nativePostgresCommand": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "Fifteen PostgreSQL service cases and SQLite/PostgreSQL native cold recovery."
+    },
+    "backupMigrationCommand": {
+      "passed": 19
+    },
+    "libraryAndPrivacyCommand": {
+      "passed": 20
+    },
+    "latestRepeatedRefreshBrowser": {
+      "passed": 3,
+      "originalAttempts": 3,
+      "retries": 0
+    },
+    "sourceDesign": {
+      "areas": 14,
+      "features": 123,
+      "routes": 372,
+      "collections": 100,
+      "contractTypes": 344
+    }
+  },
+  "evidence": {
+    "spec": "doc/product/127-paper-practice-and-original-answer-review.md",
+    "frozenInputs": "doc/evidence/2026-10-26/paper-practice-release-final-inputs/receipt.json",
+    "localApi": "doc/evidence/2026-10-26/paper-practice-api-green/receipt.json",
+    "localBrowser": "doc/evidence/2026-10-26/paper-practice-full-browser/receipt.json",
+    "privateExport": "doc/evidence/2026-10-26/paper-practice-private-export-fixed/receipt.json",
+    "refresh": "doc/evidence/2026-10-26/paper-practice-refresh-final/receipt.json"
+  },
+  "remaining": [
+    "Exact remote three-job CI.",
+    "Fresh stopped-service126/schema17 database and referenced-file rollback, actual schema18 production build and stable guardian delivery.",
+    "128 review/redo/new-question linkage; camera/OCR splitting, folders/export center, all assets and full M1-M7 gates.",
+    "Source CSS/fonts/DPR/audio fidelity, teacher/physical-device/full-content/long-term verification remain independent."
+  ],
+  "interpretation": "Scopes overlap and are not added as a product coverage percentage. Raw paper self-review never creates an ability score."
+}

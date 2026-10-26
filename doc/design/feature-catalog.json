@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
+  "sourceRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 122,
-    "activeNormalApiRoutes": 364,
-    "coveredApiRoutes": 364
+    "features": 123,
+    "activeNormalApiRoutes": 372,
+    "coveredApiRoutes": 372
   },
   "areas": [
     {
@@ -3066,9 +3066,10 @@
     {
       "id": "content",
       "title": "题卷资产、内容编辑、导入与发布",
-      "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+      "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
       "pages": [
         "/library",
+        "/library/practice",
         "/admin/content",
         "/admin/imports",
         "/admin/measurement"
@@ -3083,11 +3084,15 @@
       ],
       "contracts": [
         "packages/contracts/src/index.ts",
-        "packages/contracts/src/index.ts",
+        "packages/contracts/src/paper-practice.ts",
         "packages/contracts/src/measurement-content.ts"
       ],
       "tests": [
         "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+        "tests/e2e/paper-practice.spec.ts",
         "apps/api/src/modules/library/measurement-content.integration.test.ts",
         "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
       ],
@@ -3097,9 +3102,10 @@
           "title": "基础教材、知识条目与题目维护",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3254,6 +3260,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3263,9 +3273,10 @@
           "title": "题面文档、作答Schema与来源三件套",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3327,6 +3338,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3336,9 +3351,10 @@
           "title": "授权题目呈现与答案结构校验",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3388,6 +3404,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3397,9 +3417,10 @@
           "title": "文件驱动的批量导入任务",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3501,6 +3522,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3510,9 +3535,10 @@
           "title": "候选人工审核与AI结构化辅助",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3562,6 +3588,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3571,9 +3601,10 @@
           "title": "原始题卷目录与多维检索",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3616,17 +3647,17 @@
             {
               "name": "LibraryService.overview",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 43
+              "line": 45
             },
             {
               "name": "LibraryService.facets",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 51
+              "line": 53
             },
             {
               "name": "LibraryService.search",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 52
+              "line": 54
             }
           ],
           "sourceFiles": [
@@ -3634,6 +3665,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3643,9 +3678,10 @@
           "title": "原卷、缺题位置、媒体与打印",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3679,12 +3715,12 @@
             {
               "name": "LibraryService.preview",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 77
+              "line": 79
             },
             {
               "name": "LibraryService.media",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 97
+              "line": 99
             }
           ],
           "sourceFiles": [
@@ -3692,6 +3728,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3701,9 +3741,10 @@
           "title": "整卷发布、撤回与收藏",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3738,12 +3779,12 @@
             {
               "name": "LibraryService.publish",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 104
+              "line": 106
             },
             {
               "name": "LibraryService.bookmark",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 123
+              "line": 125
             }
           ],
           "sourceFiles": [
@@ -3751,6 +3792,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3760,9 +3805,10 @@
           "title": "原卷题转量化素材候选",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3835,6 +3881,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3844,9 +3894,10 @@
           "title": "五门禁测量发布及撤回",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -3924,6 +3975,10 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -3933,9 +3988,10 @@
           "title": "基础题库覆盖检查与补架",
           "area": "content",
           "status": "current-implementation-with-stated-limits",
-          "actors": "教研、教师、运营、管理员；家长查看已发布内容",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
           "pages": [
             "/library",
+            "/library/practice",
             "/admin/content",
             "/admin/imports",
             "/admin/measurement"
@@ -4011,6 +4067,164 @@
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
+            "apps/api/src/modules/library/measurement-content.integration.test.ts",
+            "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+          ]
+        },
+        {
+          "id": "CONTENT-12",
+          "title": "原卷整卷/跨卷练习与原答订正复盘",
+          "area": "content",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
+          "pages": [
+            "/library",
+            "/library/practice",
+            "/admin/content",
+            "/admin/imports",
+            "/admin/measurement"
+          ],
+          "inputs": "原卷/题位/跨卷选择、studentId、预览来源指纹、expectedVersion/requestKey、首答/自评/订正命令",
+          "implementation": "冻结原卷题序、题干/参考与发布版本；首次回答不可覆盖，提交后显式核对当前题的原参考，自评与追加订正分别保留；按版本和完整输入指纹原子保存命令/回执，完成后只读复盘但可明确读已提交题参考。每次重新检查学生授权、来源版本和原媒体；撤回隐藏题面而保留个人文字。独立文档副本、完整原命令恢复、冲突比较及下载保留；预览失效且原回执不存在时先保护原命令再重新预览。",
+          "outputs": "真实原卷练习、历史位置、首次回答、核对与订正记录，暂停/完成统计和原卷锚点",
+          "collections": [
+            "paperPracticeSessions",
+            "paperPracticeCommands",
+            "paperPublications"
+          ],
+          "limits": "PDF仍为未切分整卷笔记；原始HTML、自评和订正不自动变成能力分数。最多16卷/500题位/8MiB冻结请求；相机切题、独立新题复习、全部资产/导出/教师与设备验收继续。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/library/practice/preview",
+              "controller": "PaperPracticeController",
+              "method": "preview",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/practice/sessions",
+              "controller": "PaperPracticeController",
+              "method": "create",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/requests/:requestKey",
+              "controller": "PaperPracticeController",
+              "method": "creationResult",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions",
+              "controller": "PaperPracticeController",
+              "method": "list",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions/:sessionId",
+              "controller": "PaperPracticeController",
+              "method": "get",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions/:sessionId/items/:itemId",
+              "controller": "PaperPracticeController",
+              "method": "item",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions/:sessionId/commands/:requestKey",
+              "controller": "PaperPracticeController",
+              "method": "commandResult",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/practice/sessions/:sessionId/commands",
+              "controller": "PaperPracticeController",
+              "method": "command",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 16
+            }
+          ],
+          "implementations": [
+            {
+              "name": "PaperPracticeService.preview",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 116
+            },
+            {
+              "name": "PaperPracticeService.create",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 124
+            },
+            {
+              "name": "PaperPracticeService.creationResult",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 138
+            },
+            {
+              "name": "PaperPracticeService.list",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 142
+            },
+            {
+              "name": "PaperPracticeService.get",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 152
+            },
+            {
+              "name": "PaperPracticeService.item",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 153
+            },
+            {
+              "name": "PaperPracticeService.commandResult",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 161
+            },
+            {
+              "name": "PaperPracticeService.command",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 166
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/paper-practice.ts",
+            "apps/api/src/modules/library/paper-practice-record.ts",
+            "apps/api/src/modules/library/paper-practice.service.ts",
+            "apps/web/app/library/practice/studio.tsx",
+            "apps/web/app/library/practice/session.tsx",
+            "apps/web/components/paper-practice-launcher.tsx",
+            "apps/web/lib/paper-practice-local.ts",
+            "apps/web/lib/paper-practice-api.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
           ]
@@ -9707,7 +9921,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 344
+              "line": 345
             },
             {
               "name": "DomainEventBusService.publish",
@@ -9717,7 +9931,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 242
+              "line": 243
             }
           ],
           "sourceFiles": [
@@ -9910,7 +10124,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 242
+              "line": 243
             }
           ],
           "sourceFiles": [
@@ -9987,7 +10201,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 226
+              "line": 227
             },
             {
               "name": "RuntimeMetricsService.snapshot",

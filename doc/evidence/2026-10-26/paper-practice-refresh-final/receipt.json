@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-26T15:49:40.989Z",
+  "status": "three-refresh-original-pending-and-newer-drafts-pass",
+  "applicationRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "deployed": false,
+  "cases": 3,
+  "originalAttempts": 3,
+  "retries": 0,
+  "verified": [
+    "Original uncommitted creation, offline draft command and first/correction drafts retain complete content across three actual refreshes.",
+    "An unvisited other item correction remains attached to that item.",
+    "After original operations are confirmed, newer local writing survives three more refreshes without the old ancestor command reappearing or clearing it.",
+    "Page-scoped clear markers are local selection state, not proof of server success; actual receipts and body hashes still decide confirmation."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "paper-practice-browser.json.gz",
+      "originalSha256": "b58d02370173fd147e6d56bb9d5bcbd828873045d32b5ee878e7fcef91466181",
+      "sha256": "884d0aa21285f622158f2e73e2adc009e94c8e9b8b0d4963c5dd95aed0cd3261"
+    },
+    {
+      "source": "data/qa/paper-practice-three-refresh-final.log",
+      "file": "paper-practice-three-refresh-final.log.gz",
+      "originalSha256": "bcfe58f18c2fe8611d832d6a432623869784f716950b37a9eca56fe50493adde",
+      "sha256": "e18e13652c2aeda70adfa4347ba432b74cf000cd1905b92acd6930de62c2ffcf"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "session.tsx.gz",
+      "originalSha256": "8f233bca2447585e6efd151616c8a0a54e0d327c61edd8d469d3847b3246ef4f",
+      "sha256": "b93150177f684638824f917d64cf99a297a911dea54447e61e37bbc8192a0b6a"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "studio.tsx.gz",
+      "originalSha256": "2aecaacdadb0d4aaa4e3dbb1dc2ab84ad31e3f15bdedfba08f9987017a829b24",
+      "sha256": "5c2296f8d534cac0157c0ea2472ee5165d00801becffa099a40ef5fb32907b22"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "paper-practice-local.ts.gz",
+      "originalSha256": "d29c6a1db530bd64ede22c2c2cb68688c74718b4330d828ae9e13373b5c4dd1b",
+      "sha256": "7d0c6f8b0568a6d0d3ba69380a4d0587ef2f3e58b3c6dbdc9b0b1f30dda0a18f"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "9df5a9073fbad27f49d8e3adebeb9eb798d36858b8a14a5eadbcb57bb7741d27",
+      "sha256": "fa9b7b154d32824a622974fcdadb990e9c285aea36d305e2d0066229ac58e9c3"
+    }
+  ]
+}

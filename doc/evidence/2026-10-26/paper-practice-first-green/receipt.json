@@ -1,0 +1,159 @@
+{
+  "at": "2026-10-26T14:32:20.484Z",
+  "status": "first-two-actual-browser-journeys-passed",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T14:27:56.893Z",
+    "duration": 15851.217999999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "attempts": 2,
+  "retries": 0,
+  "bindings": [
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "sha256": "7cb4f6ac737ba752c6560f8db48b702ade7cf8284c4fce29028865a87d5775c4"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "sha256": "7631187ef2c6e0998b7920539a0dbad0d632811c040a032ddb1e3445dba6100b"
+    },
+    {
+      "source": "apps/web/app/library/practice/practice.css",
+      "sha256": "db7425cfed3b2478468e67c95418cdb389001d98a023181284744e76231810fc"
+    },
+    {
+      "source": "apps/web/app/library/studio.tsx",
+      "sha256": "1b1e946948d17cabd2b34eb337cb52ec25f345a8ca218dde016ef03f436974e5"
+    },
+    {
+      "source": "apps/web/components/paper-practice-launcher.tsx",
+      "sha256": "d264101ed3efa1a7d1a0e4d63761f3c1de4b4d1bb165a0f4e1ad62ae398a6073"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-api.ts",
+      "sha256": "7e24aadfd8333a99cc05152a9963edbf72e955af48029c0a5cb1ff5fddbee499"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "sha256": "0a958b35dc261aff018d558c72c25001c1e9c3af36077c628fd23479a119766f"
+    }
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "browser-original.json.gz",
+      "originalSha256": "cfe03ac068a54d29f466f2f4192fdd185e08739253f0bd78dc318d1013e662cf",
+      "storedSha256": "336f4879d7ef394a85e311f912fc8e0f9bfadf363f552a3b4a0341fa8cf1c5f5"
+    },
+    {
+      "source": "data/qa/paper-practice-second-browser.log",
+      "file": "browser-original.log.gz",
+      "originalSha256": "96e0fd596f1d1479d653d5f665bdbc6a55471899fa6b7cd3a15a907ecf9faa1f",
+      "storedSha256": "7281969338bc9f2e29b22e62e115de97a49ce29d745ddd834b7ae21e65737d9c"
+    },
+    {
+      "source": "data/qa/paper-practice-first-web-build.log",
+      "file": "web-build-original.log.gz",
+      "originalSha256": "b62131ab9f2b88c988d77959a2ef6d51e460bdc3a358a3431c0b6810f7e26648",
+      "storedSha256": "8ccabadd0f4e57537f85df9afa517c876f91e0366f4edfd7cd72770279fe661d"
+    },
+    {
+      "source": "data/qa/paper-practice-shared-api.log",
+      "file": "api-16-original.log.gz",
+      "originalSha256": "17de4ad8d1b4dab8d276aa1f1dba47e4564f46d142dc67fc742110dccc47e38d",
+      "storedSha256": "30e493b006a7e2dff384c9e472ca03ccc2e64055e939667053e57415f3b45247"
+    },
+    {
+      "source": "data/qa/paper-practice-expanded-api.log",
+      "file": "api-26-earlier-original.log.gz",
+      "originalSha256": "10599a45b283e1ed674e7c19e1013493e7fbf8548f79df610729ae6793890d61",
+      "storedSha256": "c53d1ca619d37d703203d66cf21c24c265acf10ad1c284fe9d47156b0b2a1d49"
+    },
+    {
+      "source": "data/qa/paper-practice-api-build-browser.log",
+      "file": "api-build-original.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "storedSha256": "3b25b5cf20accf7a8249f9ac5a5670d254995d61a23a5adeec41a781b29babdb"
+    },
+    {
+      "source": "data/qa/paper-practice-web-types-expanded.log",
+      "file": "web-types-original.log.gz",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "storedSha256": "d4246619e9b8b4b09138abbb0ce2bfceac93cd7569f485b9095890e33b50fdb3"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "test-source-original.ts.gz",
+      "originalSha256": "992adcbf06f3341134eeedd79e7d9fc8f97bf28ca7db21fdb915f3782f3fe179",
+      "storedSha256": "2182f5af6c8bb09bd419c62b2a9aec04c5e4a6e9248b03594cbdf8210ac45124"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "inputs/app/library/practice/studio.tsx.gz",
+      "originalSha256": "7cb4f6ac737ba752c6560f8db48b702ade7cf8284c4fce29028865a87d5775c4",
+      "storedSha256": "2f0674dd782cc24f3f3e7074410c2259327d4333481bf54cd3ebba4ab1ec65b7"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "inputs/app/library/practice/session.tsx.gz",
+      "originalSha256": "7631187ef2c6e0998b7920539a0dbad0d632811c040a032ddb1e3445dba6100b",
+      "storedSha256": "05e20227d5befc9df2e70a8d930d2e8dac95866f4d18362ba364d85b720ed0f6"
+    },
+    {
+      "source": "apps/web/app/library/practice/practice.css",
+      "file": "inputs/app/library/practice/practice.css.gz",
+      "originalSha256": "db7425cfed3b2478468e67c95418cdb389001d98a023181284744e76231810fc",
+      "storedSha256": "dbc988a20516bd9ce269895dbf1fa85f891236b1cde3b9fb74d6005f4206997c"
+    },
+    {
+      "source": "apps/web/app/library/studio.tsx",
+      "file": "inputs/app/library/studio.tsx.gz",
+      "originalSha256": "1b1e946948d17cabd2b34eb337cb52ec25f345a8ca218dde016ef03f436974e5",
+      "storedSha256": "093b2d5b8ca04f7c2664a3fe94ac9eabbb35c1d2b829504a9d6bbb0b21f30299"
+    },
+    {
+      "source": "apps/web/components/paper-practice-launcher.tsx",
+      "file": "inputs/components/paper-practice-launcher.tsx.gz",
+      "originalSha256": "d264101ed3efa1a7d1a0e4d63761f3c1de4b4d1bb165a0f4e1ad62ae398a6073",
+      "storedSha256": "191b85947d59f6e2da363bfd1f1b3b29f6194db73baf56aa1b7663072a094259"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-api.ts",
+      "file": "inputs/lib/paper-practice-api.ts.gz",
+      "originalSha256": "7e24aadfd8333a99cc05152a9963edbf72e955af48029c0a5cb1ff5fddbee499",
+      "storedSha256": "e30a887408a775e5b48528571a4caab591bdf2f52483e69a0d71e2e04e563d97"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "inputs/lib/paper-practice-local.ts.gz",
+      "originalSha256": "0a958b35dc261aff018d558c72c25001c1e9c3af36077c628fd23479a119766f",
+      "storedSha256": "e04d226f948580b02ed53819475d950e101f4baca1f6cd83f0e86f5eb6a34b21"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-completed-review.png",
+      "file": "ui/actual-completed-review.png",
+      "originalSha256": "34aa62c1a97ff726b1c256f5b2c69da32c25a3f7c87d3be42f00221e9fb86073",
+      "storedSha256": "34aa62c1a97ff726b1c256f5b2c69da32c25a3f7c87d3be42f00221e9fb86073"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-first-answer-and-correction.json",
+      "file": "ui/actual-first-answer-and-correction.json",
+      "originalSha256": "a10ab0ef4c7aa06d15cbc8610fd08045bd5b0399101ac5ed72a1331f542e76dc",
+      "storedSha256": "a10ab0ef4c7aa06d15cbc8610fd08045bd5b0399101ac5ed72a1331f542e76dc"
+    }
+  ],
+  "scope": [
+    "Actual indexed original paper -> preflight -> first answer -> explicit reference -> self-review -> appended correction -> completion.",
+    "Actual committed submit with its HTTP acknowledgment lost -> exact original receipt read after refresh, with unchanged server version2.",
+    "Current SQLite paper-practice13 and schema18 migration3 tests passed in one16-case run. An earlier26-case run also included existing library/domain/privacy regressions; counts overlap."
+  ],
+  "limits": [
+    "Expanded browser permission/concurrency/storage/PDF and three-width cases remain.",
+    "Native PostgreSQL, full API/whole-site, exact remote CI, design inventory and guarded production delivery remain.",
+    "Production stays126/schema17; original paper practice does not create independent mastery scores."
+  ]
+}

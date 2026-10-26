@@ -1,0 +1,109 @@
+{
+  "at": "2026-10-26T15:39:25.224Z",
+  "status": "partial-local-browser-run-stopped-before-ui-recovery-fix",
+  "deployed": false,
+  "reason": "The document slot reads its predecessor, but the recovered value was not copied into the new independent slot. A second refresh could therefore require explicit recovery from older copies. Add a failing three-refresh journey, then retain each recovered original in the current document slot.",
+  "limits": [
+    "No complete browser count is claimed for this partial log.",
+    "Only the exact local browser runner tree was stopped, after checking the isolated Next path/port and runtime lock.",
+    "API source/build and its ongoing full suite remain unchanged; no remote CI was cancelled."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-release-browser.log",
+      "file": "paper-practice-release-browser.log.gz",
+      "originalSha256": "0c96b06b2e0b713bdd901f80b2e036ab81b3c0ee21095c7724d4c70b248d73bd",
+      "sha256": "587fac7e6c54359d83d246ff6a15ba2d2de7f1fc6930878f3b27fae14ef7b876"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "session.tsx.gz",
+      "originalSha256": "569452f7c48e18494a853985500d4d5b97e33ecc494dd7b64c7955793a40df3e",
+      "sha256": "d7d7c9122248fb9b5e334ad00652b1049c482afa8fdf5306a84d7001898c1d3c"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "studio.tsx.gz",
+      "originalSha256": "f8cec21f648a0a2f7398c7175cfb641f0be2b530a239b26804305a3eb10b1778",
+      "sha256": "2ddbe4fb027347e304a6e94b1cbe4946da16c0344d3a2031e6f63690a17f6487"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "paper-practice-local.ts.gz",
+      "originalSha256": "0a958b35dc261aff018d558c72c25001c1e9c3af36077c628fd23479a119766f",
+      "sha256": "e04d226f948580b02ed53819475d950e101f4baca1f6cd83f0e86f5eb6a34b21"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "fd62ee78f92a6c0e4d842005f10a412886a69d1319ded1dfe9fffc38a0b1aae5",
+      "sha256": "814bade32e02892bb048a573e3b2a9a15502df6206ea80b2fac8b0d451f99a8b"
+    },
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "three-refresh-original.json.gz",
+      "originalSha256": "c9715421a295c11cd25ddc48f1c31c51108f6e9706eb47c65d79898cf3077900",
+      "sha256": "05b622656a458e62442209a51658f39a07ce8cf19e26fc94f1aa99810c5a9340"
+    },
+    {
+      "source": "data/qa/paper-practice-three-refresh-before.log",
+      "file": "three-refresh-original.log.gz",
+      "originalSha256": "8cd6e747ef35192efc0b4b14fb019265ece9a3c73e0157018b11d955924d6015",
+      "sha256": "d36494ba3ca00d235088c31479f1ac60a807cc9a72047b446d3ffadbe801abcf"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "three-refresh-test-source.ts.gz",
+      "originalSha256": "7c1fc163f2fac0b8a1d1a73fc4055c85039dc97e592554800afad0f157eb114d",
+      "sha256": "93ab3e172238a271b26143aacda091f644d4fa079387f3a7d829460d0321e4b9"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "three-refresh-failures/.last-run.json",
+      "originalSha256": "77e98182a44d780713d3c1430c7fe91a125f880ad6b74342bd9da0d6783e4d48",
+      "sha256": "77e98182a44d780713d3c1430c7fe91a125f880ad6b74342bd9da0d6783e4d48"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-5490a-ommand-until-explicit-retry\\error-context.md",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-5490a-ommand-until-explicit-retry/error-context.md",
+      "originalSha256": "9e119df8ee8e5c098a90b9f5a13cbc9fc234a90f7b10f36d679c2ce01e3a583b",
+      "sha256": "9e119df8ee8e5c098a90b9f5a13cbc9fc234a90f7b10f36d679c2ce01e3a583b"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-5490a-ommand-until-explicit-retry\\test-failed-1.png",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-5490a-ommand-until-explicit-retry/test-failed-1.png",
+      "originalSha256": "552c1ef7b5c80051c761dea09037c957962366347bf6573d959e9fb2982692d0",
+      "sha256": "552c1ef7b5c80051c761dea09037c957962366347bf6573d959e9fb2982692d0"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-5490a-ommand-until-explicit-retry\\trace.zip",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-5490a-ommand-until-explicit-retry/trace.zip",
+      "originalSha256": "ace28bae3ca9b2693707b9eeded06fbfd3d92af9fd00871f49aac0be423420b8",
+      "sha256": "ace28bae3ca9b2693707b9eeded06fbfd3d92af9fd00871f49aac0be423420b8"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload\\error-context.md",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload/error-context.md",
+      "originalSha256": "ff948fadd1ba32a15ae935461c31ecdaaaf8b074b1299f39e74f44b29a55c778",
+      "sha256": "ff948fadd1ba32a15ae935461c31ecdaaaf8b074b1299f39e74f44b29a55c778"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload\\test-failed-1.png",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload/test-failed-1.png",
+      "originalSha256": "1bc6a81762465842a080057733a60e5ff4b36816c7a5157a775274ef99eb8189",
+      "sha256": "1bc6a81762465842a080057733a60e5ff4b36816c7a5157a775274ef99eb8189"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload\\trace.zip",
+      "file": "three-refresh-failures/paper-practice-recovery-pa-b2d1c-avigation-and-a-real-reload/trace.zip",
+      "originalSha256": "60e8136e1ee6a80b81f83aa07a8fc69f02748de15e5d3347e8226a2d67a22a73",
+      "sha256": "60e8136e1ee6a80b81f83aa07a8fc69f02748de15e5d3347e8226a2d67a22a73"
+    }
+  ],
+  "originalFailure": {
+    "cases": 2,
+    "failed": 2,
+    "retries": 0,
+    "verified": "Both actual journeys show the original response/correction missing from automatic restoration after the second page refresh. Original older copies are still inspectable."
+  }
+}

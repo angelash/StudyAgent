@@ -1,107 +1,109 @@
 # 领域集合与契约索引
 
-源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
-- `users` → `InMemoryUserAccount`；[apps/api/src/infrastructure/in-memory-store.service.ts:357](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L357)。
-- `paperPublications` → `PaperPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:358](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L358)。
-- `libraryBookmarks` → `LibraryBookmark`；[apps/api/src/infrastructure/in-memory-store.service.ts:359](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L359)。
-- `practiceSessions` → `PracticeSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:360](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L360)。
-- `practiceAttempts` → `PracticeAttempt`；[apps/api/src/infrastructure/in-memory-store.service.ts:361](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L361)。
-- `practiceHints` → `PracticeHint`；[apps/api/src/infrastructure/in-memory-store.service.ts:362](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L362)。
-- `practiceScoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:363](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L363)。
-- `teacherAssignments` → `TeacherStudentAssignment`；[apps/api/src/infrastructure/in-memory-store.service.ts:364](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L364)。
-- `evidenceFeedback` → `EvidenceFeedback`；[apps/api/src/infrastructure/in-memory-store.service.ts:365](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L365)。
-- `importFiles` → `ImportFile`；[apps/api/src/infrastructure/in-memory-store.service.ts:366](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L366)。
-- `processingArtifacts` → `ProcessingArtifact`；[apps/api/src/infrastructure/in-memory-store.service.ts:367](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L367)。
-- `importPages` → `ImportPageEvidenceRef`；[apps/api/src/infrastructure/in-memory-store.service.ts:368](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L368)。
-- `guidancePlanRevisions` → `GuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:369](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L369)。
-- `studentLearningAccess` → `StudentLearningAccess`；[apps/api/src/infrastructure/in-memory-store.service.ts:370](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L370)。
-- `studentLearningCodes` → `StudentLearningCode`；[apps/api/src/infrastructure/in-memory-store.service.ts:371](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L371)。
-- `studentAccessRevisions` → `StudentAccessRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:372](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L372)。
-- `studentProgressProposals` → `StudentProgressProposal`；[apps/api/src/infrastructure/in-memory-store.service.ts:373](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L373)。
-- `privacyRequests` → `PrivacyReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:374](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L374)。
-- `studentMedia` → `StudentMedia`；[apps/api/src/infrastructure/in-memory-store.service.ts:375](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L375)。
-- `sessions` → `InMemoryAuthSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:376](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L376)。
-- `students` → `StudentProfile`；[apps/api/src/infrastructure/in-memory-store.service.ts:377](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L377)。
-- `bindings` → `ParentStudentBinding`；[apps/api/src/infrastructure/in-memory-store.service.ts:378](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L378)。
-- `studentInvitations` → `StudentInvitation`；[apps/api/src/infrastructure/in-memory-store.service.ts:379](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L379)。
-- `subjectEnrollments` → `SubjectEnrollment`；[apps/api/src/infrastructure/in-memory-store.service.ts:380](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L380)。
-- `textbookVolumes` → `TextbookVolume`；[apps/api/src/infrastructure/in-memory-store.service.ts:381](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L381)。
-- `textbookUnits` → `TextbookUnit`；[apps/api/src/infrastructure/in-memory-store.service.ts:382](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L382)。
-- `textbookLessons` → `TextbookLesson`；[apps/api/src/infrastructure/in-memory-store.service.ts:383](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L383)。
-- `knowledgePoints` → `KnowledgePoint`；[apps/api/src/infrastructure/in-memory-store.service.ts:384](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L384)。
-- `questions` → `Question`；[apps/api/src/infrastructure/in-memory-store.service.ts:385](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L385)。
-- `questionDocuments` → `QuestionDocument`；[apps/api/src/infrastructure/in-memory-store.service.ts:386](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L386)。
-- `questionAnswerSchemas` → `QuestionAnswerSchema`；[apps/api/src/infrastructure/in-memory-store.service.ts:387](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L387)。
-- `questionSources` → `QuestionSourceRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:388](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L388)。
-- `questionImportJobs` → `QuestionImportJob`；[apps/api/src/infrastructure/in-memory-store.service.ts:389](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L389)。
-- `questionImportRecords` → `QuestionImportRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:390](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L390)。
-- `assessments` → `AssessmentSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:391](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L391)。
-- `assessmentAnswers` → `AssessmentAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:392](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L392)。
-- `assessmentResults` → `AssessmentResult`；[apps/api/src/infrastructure/in-memory-store.service.ts:393](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L393)。
-- `studyPlans` → `StudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:394](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L394)。
-- `missions` → `DailyMissionInternal`；[apps/api/src/infrastructure/in-memory-store.service.ts:395](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L395)。
-- `missionAnswers` → `MissionAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:396](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L396)。
-- `assistantSessions` → `AssistantSession & { ownerUserId: string; scopeKey?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:397](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L397)。
-- `assistantMessages` → `AssistantMessage`；[apps/api/src/infrastructure/in-memory-store.service.ts:398](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L398)。
-- `assistantTurns` → `AssistantTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:399](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L399)。
-- `guidanceModelSuggestions` → `GuidanceModelSuggestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:400](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L400)。
-- `aiInsights` → `AIInsightRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:401](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L401)。
-- `events` → `Record<string, unknown>`；[apps/api/src/infrastructure/in-memory-store.service.ts:402](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L402)。
-- `knowledgeAtoms` → `KnowledgeAtom`；[apps/api/src/infrastructure/in-memory-store.service.ts:403](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L403)。
-- `learningScopes` → `LearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:404](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L404)。
-- `measurementItems` → `MeasurementItem`；[apps/api/src/infrastructure/in-memory-store.service.ts:405](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L405)。
-- `measurementCandidates` → `MeasurementContentCandidate`；[apps/api/src/infrastructure/in-memory-store.service.ts:406](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L406)。
-- `mistakeNotebookEntries` → `MistakeNotebookEntry`；[apps/api/src/infrastructure/in-memory-store.service.ts:407](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L407)。
-- `textbookAtomMappings` → `TextbookAtomMapping`；[apps/api/src/infrastructure/in-memory-store.service.ts:408](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L408)。
-- `curriculumRevisions` → `CurriculumRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:409](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L409)。
-- `diagnosticSessions` → `DiagnosticSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:410](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L410)。
-- `diagnosticBlueprints` → `DiagnosticBlueprintReservation`；[apps/api/src/infrastructure/in-memory-store.service.ts:411](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L411)。
-- `diagnosticResponses` → `DiagnosticResponse`；[apps/api/src/infrastructure/in-memory-store.service.ts:412](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L412)。
-- `diagnosticHypotheses` → `DiagnosticHypothesis`；[apps/api/src/infrastructure/in-memory-store.service.ts:413](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L413)。
-- `diagnosticPlans` → `DiagnosticGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:414](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L414)。
-- `reviewTasks` → `ReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:415](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L415)。
-- `scoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:416](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L416)。
-- `diagnosticHints` → `{ id: string; sessionId: string; itemId: string; level: number; at: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:417](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L417)。
-- `diagnosticReports` → `{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }`；[apps/api/src/infrastructure/in-memory-store.service.ts:418](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L418)。
-- `diagnosticDrafts` → `{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata`；[apps/api/src/infrastructure/in-memory-store.service.ts:420](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L420)。
-- `gespLearningScopes` → `GespLearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:421](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L421)。
-- `gespLearningScopeRevisions` → `GespLearningScopeRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:422](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L422)。
-- `gespCodeSubmissions` → `GespCodeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:423](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L423)。
-- `gespProbeSubmissions` → `GespProbeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:424](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L424)。
-- `gespHintEvents` → `GespHintEvent`；[apps/api/src/infrastructure/in-memory-store.service.ts:425](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L425)。
-- `gespGuidancePlans` → `GespGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:426](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L426)。
-- `gespGuidancePlanRevisions` → `GespGuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:427](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L427)。
-- `gespReviewTasks` → `GespReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:428](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L428)。
-- `gespTaskReviews` → `GespTaskReview`；[apps/api/src/infrastructure/in-memory-store.service.ts:429](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L429)。
-- `gespTaskReviewRevisions` → `GespTaskReviewRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:430](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L430)。
-- `studioCourses` → `StudioCourse`；[apps/api/src/infrastructure/in-memory-store.service.ts:431](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L431)。
-- `classroomSessions` → `ClassroomSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:432](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L432)。
-- `classroomTurns` → `ClassroomTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:433](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L433)。
-- `classroomCodeDrafts` → `ClassroomCodeDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:434](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L434)。
-- `classroomVisuals` → `ClassroomVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:435](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L435)。
-- `courseProjects` → `CourseProjectRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:436](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L436)。
-- `projectAssetUploads` → `ProjectUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:437](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L437)。
-- `projectAssets` → `ProjectAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:438](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L438)。
-- `sourceCourses` → `SourceCourseRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:439](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L439)。
-- `sourceCourseChecks` → `SourceCourseCheckRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:440](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L440)。
-- `sourceCourseCheckPublications` → `SourceCourseCheckPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:441](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L441)。
-- `studioTopicWhiteboardDrafts` → `TopicWhiteboardDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:442](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L442)。
-- `studioTopicWhiteboards` → `TopicWhiteboardRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:443](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L443)。
-- `studioTopicWhiteboardVisuals` → `TopicVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:444](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L444)。
-- `sourceCourseStages` → `SourceCourseStageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:445](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L445)。
-- `studioActivities` → `StudioActivity`；[apps/api/src/infrastructure/in-memory-store.service.ts:446](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L446)。
-- `studioStudyPlans` → `StudioStudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:447](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L447)。
-- `studioSourceMaterials` → `StudioSourceMaterial`；[apps/api/src/infrastructure/in-memory-store.service.ts:448](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L448)。
-- `studioMaterialUploads` → `StudioMaterialUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:449](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L449)。
-- `studioMaterialAssets` → `StudioMaterialAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:450](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L450)。
-- `studioOriginalRepairs` → `StudioOriginalRepairRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:451](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L451)。
-- `studioLearningPacks` → `StudioLearningPack`；[apps/api/src/infrastructure/in-memory-store.service.ts:452](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L452)。
-- `studioWhiteboards` → `StudioWhiteboard`；[apps/api/src/infrastructure/in-memory-store.service.ts:453](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L453)。
-- `studioConnectors` → `StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:454](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L454)。
-- `studioScheduleEvents` → `StudioScheduleEvent & { createdBy?: string; requestHash?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:455](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L455)。
+- `users` → `InMemoryUserAccount`；[apps/api/src/infrastructure/in-memory-store.service.ts:358](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L358)。
+- `paperPublications` → `PaperPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:359](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L359)。
+- `libraryBookmarks` → `LibraryBookmark`；[apps/api/src/infrastructure/in-memory-store.service.ts:360](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L360)。
+- `paperPracticeSessions` → `PaperPracticeSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:361](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L361)。
+- `paperPracticeCommands` → `PaperPracticeCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:362](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L362)。
+- `practiceSessions` → `PracticeSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:363](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L363)。
+- `practiceAttempts` → `PracticeAttempt`；[apps/api/src/infrastructure/in-memory-store.service.ts:364](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L364)。
+- `practiceHints` → `PracticeHint`；[apps/api/src/infrastructure/in-memory-store.service.ts:365](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L365)。
+- `practiceScoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:366](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L366)。
+- `teacherAssignments` → `TeacherStudentAssignment`；[apps/api/src/infrastructure/in-memory-store.service.ts:367](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L367)。
+- `evidenceFeedback` → `EvidenceFeedback`；[apps/api/src/infrastructure/in-memory-store.service.ts:368](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L368)。
+- `importFiles` → `ImportFile`；[apps/api/src/infrastructure/in-memory-store.service.ts:369](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L369)。
+- `processingArtifacts` → `ProcessingArtifact`；[apps/api/src/infrastructure/in-memory-store.service.ts:370](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L370)。
+- `importPages` → `ImportPageEvidenceRef`；[apps/api/src/infrastructure/in-memory-store.service.ts:371](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L371)。
+- `guidancePlanRevisions` → `GuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:372](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L372)。
+- `studentLearningAccess` → `StudentLearningAccess`；[apps/api/src/infrastructure/in-memory-store.service.ts:373](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L373)。
+- `studentLearningCodes` → `StudentLearningCode`；[apps/api/src/infrastructure/in-memory-store.service.ts:374](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L374)。
+- `studentAccessRevisions` → `StudentAccessRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:375](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L375)。
+- `studentProgressProposals` → `StudentProgressProposal`；[apps/api/src/infrastructure/in-memory-store.service.ts:376](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L376)。
+- `privacyRequests` → `PrivacyReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:377](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L377)。
+- `studentMedia` → `StudentMedia`；[apps/api/src/infrastructure/in-memory-store.service.ts:378](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L378)。
+- `sessions` → `InMemoryAuthSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:379](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L379)。
+- `students` → `StudentProfile`；[apps/api/src/infrastructure/in-memory-store.service.ts:380](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L380)。
+- `bindings` → `ParentStudentBinding`；[apps/api/src/infrastructure/in-memory-store.service.ts:381](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L381)。
+- `studentInvitations` → `StudentInvitation`；[apps/api/src/infrastructure/in-memory-store.service.ts:382](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L382)。
+- `subjectEnrollments` → `SubjectEnrollment`；[apps/api/src/infrastructure/in-memory-store.service.ts:383](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L383)。
+- `textbookVolumes` → `TextbookVolume`；[apps/api/src/infrastructure/in-memory-store.service.ts:384](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L384)。
+- `textbookUnits` → `TextbookUnit`；[apps/api/src/infrastructure/in-memory-store.service.ts:385](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L385)。
+- `textbookLessons` → `TextbookLesson`；[apps/api/src/infrastructure/in-memory-store.service.ts:386](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L386)。
+- `knowledgePoints` → `KnowledgePoint`；[apps/api/src/infrastructure/in-memory-store.service.ts:387](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L387)。
+- `questions` → `Question`；[apps/api/src/infrastructure/in-memory-store.service.ts:388](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L388)。
+- `questionDocuments` → `QuestionDocument`；[apps/api/src/infrastructure/in-memory-store.service.ts:389](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L389)。
+- `questionAnswerSchemas` → `QuestionAnswerSchema`；[apps/api/src/infrastructure/in-memory-store.service.ts:390](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L390)。
+- `questionSources` → `QuestionSourceRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:391](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L391)。
+- `questionImportJobs` → `QuestionImportJob`；[apps/api/src/infrastructure/in-memory-store.service.ts:392](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L392)。
+- `questionImportRecords` → `QuestionImportRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:393](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L393)。
+- `assessments` → `AssessmentSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:394](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L394)。
+- `assessmentAnswers` → `AssessmentAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:395](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L395)。
+- `assessmentResults` → `AssessmentResult`；[apps/api/src/infrastructure/in-memory-store.service.ts:396](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L396)。
+- `studyPlans` → `StudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:397](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L397)。
+- `missions` → `DailyMissionInternal`；[apps/api/src/infrastructure/in-memory-store.service.ts:398](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L398)。
+- `missionAnswers` → `MissionAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:399](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L399)。
+- `assistantSessions` → `AssistantSession & { ownerUserId: string; scopeKey?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:400](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L400)。
+- `assistantMessages` → `AssistantMessage`；[apps/api/src/infrastructure/in-memory-store.service.ts:401](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L401)。
+- `assistantTurns` → `AssistantTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:402](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L402)。
+- `guidanceModelSuggestions` → `GuidanceModelSuggestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:403](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L403)。
+- `aiInsights` → `AIInsightRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:404](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L404)。
+- `events` → `Record<string, unknown>`；[apps/api/src/infrastructure/in-memory-store.service.ts:405](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L405)。
+- `knowledgeAtoms` → `KnowledgeAtom`；[apps/api/src/infrastructure/in-memory-store.service.ts:406](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L406)。
+- `learningScopes` → `LearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:407](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L407)。
+- `measurementItems` → `MeasurementItem`；[apps/api/src/infrastructure/in-memory-store.service.ts:408](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L408)。
+- `measurementCandidates` → `MeasurementContentCandidate`；[apps/api/src/infrastructure/in-memory-store.service.ts:409](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L409)。
+- `mistakeNotebookEntries` → `MistakeNotebookEntry`；[apps/api/src/infrastructure/in-memory-store.service.ts:410](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L410)。
+- `textbookAtomMappings` → `TextbookAtomMapping`；[apps/api/src/infrastructure/in-memory-store.service.ts:411](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L411)。
+- `curriculumRevisions` → `CurriculumRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:412](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L412)。
+- `diagnosticSessions` → `DiagnosticSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:413](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L413)。
+- `diagnosticBlueprints` → `DiagnosticBlueprintReservation`；[apps/api/src/infrastructure/in-memory-store.service.ts:414](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L414)。
+- `diagnosticResponses` → `DiagnosticResponse`；[apps/api/src/infrastructure/in-memory-store.service.ts:415](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L415)。
+- `diagnosticHypotheses` → `DiagnosticHypothesis`；[apps/api/src/infrastructure/in-memory-store.service.ts:416](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L416)。
+- `diagnosticPlans` → `DiagnosticGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:417](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L417)。
+- `reviewTasks` → `ReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:418](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L418)。
+- `scoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:419](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L419)。
+- `diagnosticHints` → `{ id: string; sessionId: string; itemId: string; level: number; at: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:420](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L420)。
+- `diagnosticReports` → `{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }`；[apps/api/src/infrastructure/in-memory-store.service.ts:421](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L421)。
+- `diagnosticDrafts` → `{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata`；[apps/api/src/infrastructure/in-memory-store.service.ts:423](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L423)。
+- `gespLearningScopes` → `GespLearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:424](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L424)。
+- `gespLearningScopeRevisions` → `GespLearningScopeRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:425](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L425)。
+- `gespCodeSubmissions` → `GespCodeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:426](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L426)。
+- `gespProbeSubmissions` → `GespProbeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:427](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L427)。
+- `gespHintEvents` → `GespHintEvent`；[apps/api/src/infrastructure/in-memory-store.service.ts:428](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L428)。
+- `gespGuidancePlans` → `GespGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:429](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L429)。
+- `gespGuidancePlanRevisions` → `GespGuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:430](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L430)。
+- `gespReviewTasks` → `GespReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:431](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L431)。
+- `gespTaskReviews` → `GespTaskReview`；[apps/api/src/infrastructure/in-memory-store.service.ts:432](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L432)。
+- `gespTaskReviewRevisions` → `GespTaskReviewRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:433](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L433)。
+- `studioCourses` → `StudioCourse`；[apps/api/src/infrastructure/in-memory-store.service.ts:434](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L434)。
+- `classroomSessions` → `ClassroomSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:435](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L435)。
+- `classroomTurns` → `ClassroomTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:436](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L436)。
+- `classroomCodeDrafts` → `ClassroomCodeDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:437](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L437)。
+- `classroomVisuals` → `ClassroomVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:438](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L438)。
+- `courseProjects` → `CourseProjectRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:439](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L439)。
+- `projectAssetUploads` → `ProjectUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:440](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L440)。
+- `projectAssets` → `ProjectAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:441](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L441)。
+- `sourceCourses` → `SourceCourseRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:442](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L442)。
+- `sourceCourseChecks` → `SourceCourseCheckRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:443](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L443)。
+- `sourceCourseCheckPublications` → `SourceCourseCheckPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:444](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L444)。
+- `studioTopicWhiteboardDrafts` → `TopicWhiteboardDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:445](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L445)。
+- `studioTopicWhiteboards` → `TopicWhiteboardRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:446](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L446)。
+- `studioTopicWhiteboardVisuals` → `TopicVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:447](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L447)。
+- `sourceCourseStages` → `SourceCourseStageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:448](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L448)。
+- `studioActivities` → `StudioActivity`；[apps/api/src/infrastructure/in-memory-store.service.ts:449](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L449)。
+- `studioStudyPlans` → `StudioStudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:450](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L450)。
+- `studioSourceMaterials` → `StudioSourceMaterial`；[apps/api/src/infrastructure/in-memory-store.service.ts:451](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L451)。
+- `studioMaterialUploads` → `StudioMaterialUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:452](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L452)。
+- `studioMaterialAssets` → `StudioMaterialAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:453](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L453)。
+- `studioOriginalRepairs` → `StudioOriginalRepairRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:454](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L454)。
+- `studioLearningPacks` → `StudioLearningPack`；[apps/api/src/infrastructure/in-memory-store.service.ts:455](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L455)。
+- `studioWhiteboards` → `StudioWhiteboard`；[apps/api/src/infrastructure/in-memory-store.service.ts:456](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L456)。
+- `studioConnectors` → `StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:457](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L457)。
+- `studioScheduleEvents` → `StudioScheduleEvent & { createdBy?: string; requestHash?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:458](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L458)。
 
 ## 共享数据契约
 
@@ -386,6 +388,19 @@
 ### packages/contracts/src/operations.ts
 
 - `OperationsOverview`：[packages/contracts/src/operations.ts:1](../../../packages/contracts/src/operations.ts#L1)；字段：`at`、`runtime`、`requests`、`storage`、`rateLimits`、`tasks`、`learning`。
+
+### packages/contracts/src/paper-practice.ts
+
+- `PaperPracticeDisposition`：[packages/contracts/src/paper-practice.ts:1](../../../packages/contracts/src/paper-practice.ts#L1)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSelfReview`：[packages/contracts/src/paper-practice.ts:2](../../../packages/contracts/src/paper-practice.ts#L2)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSelection`：[packages/contracts/src/paper-practice.ts:3](../../../packages/contracts/src/paper-practice.ts#L3)；字段：`paperId`、`positions?`。
+- `PaperPracticeAvailability`：[packages/contracts/src/paper-practice.ts:4](../../../packages/contracts/src/paper-practice.ts#L4)；字段：`available`、`reason`。
+- `PaperPracticeItemSummary`：[packages/contracts/src/paper-practice.ts:5](../../../packages/contracts/src/paper-practice.ts#L5)；字段：`id`、`paperId`、`paperTitle`、`position`、`kind`、`availability`、`disposition`、`revealed`、`selfReview`、`correctionCount`。
+- `PaperPracticeItemView`：[packages/contracts/src/paper-practice.ts:10](../../../packages/contracts/src/paper-practice.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSessionView`：[packages/contracts/src/paper-practice.ts:16](../../../packages/contracts/src/paper-practice.ts#L16)；字段：`id`、`ownerUserId`、`studentId`、`status`、`version`、`currentItemId`、`createdAt`、`updatedAt`、`completedAt`、`permissions`、`independentMeasurement`、`items`、`counts`。
+- `PaperPracticePreview`：[packages/contracts/src/paper-practice.ts:23](../../../packages/contracts/src/paper-practice.ts#L23)；字段：`sourceHash`、`studentId`、`paperCount`、`total`、`answerable`、`missing`、`documents`、`unavailable`、`withoutReference`、`papers`。
+- `PaperPracticeCommandResult`：[packages/contracts/src/paper-practice.ts:28](../../../packages/contracts/src/paper-practice.ts#L28)；字段：`requestKey`、`inputHash`、`appliedVersion`、`session`。
+- `PaperPracticeCreationResult`：[packages/contracts/src/paper-practice.ts:29](../../../packages/contracts/src/paper-practice.ts#L29)；字段：`requestKey`、`inputHash`、`session`。
 
 ### packages/contracts/src/privacy.ts
 

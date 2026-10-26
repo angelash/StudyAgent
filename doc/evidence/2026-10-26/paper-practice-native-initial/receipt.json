@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-26T15:21:56.151Z",
+  "counts": {
+    "passed": 13,
+    "failed": 3,
+    "total": 16
+  },
+  "deployed": false,
+  "findings": [
+    "PostgreSQL optimistic concurrency correctly returns409 for one simultaneous original request; the test incorrectly required both requests to return201. Match the established contract: preserve the exact key, require at least one201, then read/replay both exact original commands and verify one durable result.",
+    "Both cold-recovery cases reached actual backup/restore, original replay and portable export. The export intentionally strips internal requestKey; assert retained public command facts and absence of internal keys, rather than requiring private recovery metadata in a family archive."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-postgres.json",
+      "file": "paper-practice-postgres.json.gz",
+      "originalSha256": "8c56fef3ce5b7ea9c7c62aa6fbd752b6632d5d9af5b82c4bd065c6b24aa4817d",
+      "sha256": "2d066a1298cdab5138e3d9be655d87289881dd9f405b98feba9e0438e1737b54"
+    },
+    {
+      "source": "data/qa/paper-practice-native-postgres-initial.log",
+      "file": "paper-practice-native-postgres-initial.log.gz",
+      "originalSha256": "4f0d69914e3fd38660b568cffc48a7b2761a3ce7340516cdcc225225db8f1606",
+      "sha256": "aa58a808bb371ac5288101ede2a347d1d6810a284877da2d04e2f9618de92b3e"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "61b25bdd024de822ac1b18b3756e34d279e627df13e78a26c71e269f2360f422",
+      "sha256": "ebdba591ef68abc60027d87613c556e46409aff7daecb10773528802f6968ab4"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "ee403c1d9bfe5dcf02f657c04b05a48ce0c73297e6493b2bc77565ce54c4362c",
+      "sha256": "9a0cb778a03e0529e22d1f3264a364bafa903c277ac64e755e36ea5a231fdc35"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。角色：运维、管理员、教研。
+源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -86,9 +86,9 @@
 **服务方法**：
 
 - `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:82](../../../apps/api/src/modules/processing/processing.controller.ts#L82)。
-- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:344](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L344)。
+- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:345](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L345)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:242](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L242)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:243](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L243)。
 
 ## OPS-04 导入文件分块与处理产物
 
@@ -143,7 +143,7 @@
 
 - `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:25](../../../apps/api/src/modules/processing/import-files.service.ts#L25)。
 - `ProcessingController.enqueue`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:242](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L242)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:243](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L243)。
 
 ## OPS-06 健康、运行指标与质量看板
 
@@ -167,7 +167,7 @@
 
 **服务方法**：
 
-- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:226](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L226)。
+- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:227](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L227)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
 - `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
 - `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。

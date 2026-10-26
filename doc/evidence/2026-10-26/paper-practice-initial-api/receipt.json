@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-26T13:37:07.275Z",
+  "status": "initial-api-integration-failure-preserved",
+  "passed": 11,
+  "failed": 1,
+  "scope": "Three existing library tests and nine new paper-practice tests; original logs retained.",
+  "finding": "New learning-account practice routes were missing from the explicit student AuthGuard allow-list. Actual student creation was correctly rejected by the guard before reaching the new service.",
+  "deployed": false,
+  "files": [
+    {
+      "source": "data/qa/paper-practice-initial-api.log",
+      "file": "paper-practice-initial-api.log.gz",
+      "originalSha256": "7d83a2b20700f71b088e3866bf6dec7f5cf763bb37c5fe3b1ccb470e375cce55",
+      "storedSha256": "f8cdb2633dff9dd5b0ab245fe55f8d4d1aa3920cb6ac2126eb7a4438537183a8"
+    },
+    {
+      "source": "data/qa/paper-practice-api-build-initial.log",
+      "file": "paper-practice-api-build-initial.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "storedSha256": "3b25b5cf20accf7a8249f9ac5a5670d254995d61a23a5adeec41a781b29babdb"
+    },
+    {
+      "source": "apps/api/src/common/auth.guard.ts",
+      "file": "auth.guard.ts.gz",
+      "originalSha256": "c0c21949c6647e96aedf219bee24edca31d844c53897bfc42f3cf71c196ba4c9",
+      "storedSha256": "5ac95cfd77afb2a2c3cabad74dafbfce6d44234e756a3663088dbbbb1462e86e"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "paper-practice.service.ts.gz",
+      "originalSha256": "22c2d3ea6bcc2dcba1fd1e925dcf3669c69807b1f6768705c751829713e105a0",
+      "storedSha256": "3367ba3b82b5176406190529de55db5d314dcd00909726d871c0daa2a657228c"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "dc580b09bede61647603fa8ec8799f92315c45ce9a82f14afaa161456a9a3492",
+      "storedSha256": "a503d6447bb3ec04409d430f97736d46226d71e317545a11e08e137467e746fe"
+    }
+  ]
+}

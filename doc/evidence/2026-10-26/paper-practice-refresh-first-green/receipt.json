@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-26T15:46:53.079Z",
+  "status": "three-refresh-cases-pass-before-cleared-pending-followup",
+  "deployed": false,
+  "cases": 3,
+  "originalAttempts": 3,
+  "retries": 0,
+  "scope": "Three actual reloads preserve an uncommitted original start, an offline first-answer draft/pending command and both correction drafts including the item not revisited during refresh. Complete browser regression still required.",
+  "followup": "Retain a page-scoped clear marker for resolved/dismissed pending commands so a deeper ancestor copy does not reappear after a later refresh; extend the actual journeys to newer post-confirmation drafts.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-three-refresh-fixed.log",
+      "file": "paper-practice-three-refresh-fixed.log.gz",
+      "originalSha256": "89158b4a8515377320b2fbc95b1a8fb552b81743bdaf22bbbe69f8e55cf71b70",
+      "sha256": "6e9735d6a3f7caa73ccb7390be85a923f7196ec6cc8036237a01640051465426"
+    },
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "paper-practice-browser.json.gz",
+      "originalSha256": "37b89a9de8c4c71d860fdac31c162e457534c5e907671d3a0d8a4043be4c227f",
+      "sha256": "9fa22ab007c97ece038f7a0575aa706ebf6b27caf3bf614aee68900b60130f3b"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "paper-practice-local.ts.gz",
+      "originalSha256": "e89d7b7de2bd09d621600f6ac7b358b96456a664cf43d56d853c5c80b60729b6",
+      "sha256": "732320dd9b52261045cd4c10b7b44895731d47bb0d761b7c60e47916458cd2ab"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "session.tsx.gz",
+      "originalSha256": "8ef1a891f9c9861105108055a75631ab64794864838685cff6b8a46796c86694",
+      "sha256": "177c17fbc62925f7959f8215ed3ebd632fbc5a16eb0d359517f40dd19c3da312"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "studio.tsx.gz",
+      "originalSha256": "2de6ae6e897c27d2e85c765416c172fc0b839d9cd8750c7d2b0c4830d26c5c9e",
+      "sha256": "97ab07f493087ed0d3c5160f7aa76971b8dc3e7d33fc6ef5d74d72587d5aaa8d"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "c1ff464f4dff21e34f7fd422c736c11f9b20788e7fb6a6212930f8cb45c36a2c",
+      "sha256": "3fc47d8b63d34cebc5c7463103c8dbb75859207f76f3796c579afe8c193e2150"
+    }
+  ]
+}

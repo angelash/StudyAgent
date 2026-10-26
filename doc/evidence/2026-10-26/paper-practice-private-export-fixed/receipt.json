@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-26T15:36:55.380Z",
+  "applicationRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "status": "private-export-scope-fixed-and-verified",
+  "deployed": false,
+  "before": {
+    "failed": 1,
+    "notSelected": 14,
+    "reason": "The actual child export included the other guardians private paper practice session."
+  },
+  "after": {
+    "sqliteLibraryAndExistingPrivacy": {
+      "passed": 20,
+      "failed": 0
+    },
+    "nativePostgresCommand": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "includes": "Fifteen PostgreSQL service cases plus SQLite and PostgreSQL native cold recovery."
+    }
+  },
+  "behavior": "Both guardians export their own practice and the child learner record, excluding the other guardian private answer/draft and matching command rows. Read/delete selection still includes all child records for legitimate child deletion; portable export applies the narrower owner/student filter.",
+  "limits": [
+    "Overlapping command scopes are not added as independent coverage.",
+    "The full fixed API and297-browser suites are still running.",
+    "No production family data or remote CI mutation."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-export-before.log",
+      "file": "paper-practice-export-before.log.gz",
+      "originalSha256": "54fbad96939f2605096eac63cb9d754ceb8eb4f0c4341598dd86906fc455d041",
+      "sha256": "e10541ef4cf5ff36418ab560d8da81f37369781ded70356b07a5c7ebc37825c3"
+    },
+    {
+      "source": "data/qa/paper-practice-export-fixed.log",
+      "file": "paper-practice-export-fixed.log.gz",
+      "originalSha256": "8c11a2b1b7c2dc2fdda7e2cfa9436993eb893f755979e5083cf7d5a814d60bfa",
+      "sha256": "2429a0d226dd399fba88071c2defacae160919c694343efa8f19cb64ee4053a9"
+    },
+    {
+      "source": "data/qa/paper-practice-native-postgres-privacy-fixed.log",
+      "file": "paper-practice-native-postgres-privacy-fixed.log.gz",
+      "originalSha256": "e3df13fdeab4bc721ad00c03723ece63711b7ccccfb5a4ae9b566140ad18ee9d",
+      "sha256": "188546c106e5518b98de39359b520a1e7580e6f3a0e12c726598ff36fad56604"
+    },
+    {
+      "source": "data/qa/paper-practice-postgres.json",
+      "file": "paper-practice-postgres.json.gz",
+      "originalSha256": "ddfc65569a930ec79c55d14067804a3b3ad540d9befec078a8753faa099cc385",
+      "sha256": "d59c89f7d5946092364128691f36f333445bd216bb785a392831a8f5aabda4c6"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "privacy-records.ts.gz",
+      "originalSha256": "7b0f6634308d6ceec6793366bb74d3d0e9cf7092437e3420b8a79fc1c7420478",
+      "sha256": "06639131be57ac0743377805017d6a7e4e95034126f6c6226b25b5eb94063665"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "425a8d50f562f7cafa949e079f0b751a079f46748bd4adb574b56f337ded9341",
+      "sha256": "79c9455816557db6cd4c21be683f4ee312419f87f09a3afec58bbb25baea9b1c"
+    }
+  ]
+}

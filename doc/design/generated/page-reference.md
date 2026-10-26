@@ -62,6 +62,12 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 - 直接引用：`./studio`
 
+## /library/practice
+
+类型：页面。实现：[apps/web/app/library/practice/page.tsx](../../../apps/web/app/library/practice/page.tsx)。
+
+- 直接引用：`./studio`
+
 ## /
 
 类型：页面。实现：[apps/web/app/page.tsx](../../../apps/web/app/page.tsx)。

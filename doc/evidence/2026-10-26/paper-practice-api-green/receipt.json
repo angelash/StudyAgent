@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-26T15:48:06.043Z",
+  "applicationRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "status": "complete-local-api-suite-passed",
+  "deployed": false,
+  "counts": {
+    "passed": 1339,
+    "failed": 0,
+    "environmentSkipped": 54,
+    "total": 1393
+  },
+  "testFiles": {
+    "passed": 152,
+    "environmentSkipped": 10,
+    "total": 162
+  },
+  "compiledInputFiles": 11,
+  "apiSourceAndCompiledHashesUnchanged": true,
+  "scope": "Full fixed API suite using the already-completed isolated build. No runtime/API rebuild during active browser runs. Later changes only touch frontend recovery and its browser journeys; they do not change this API input.",
+  "limits": [
+    "The dedicated PostgreSQL/native command is separate and overlaps this suite.",
+    "Environment-specific skips remain explicit.",
+    "Complete browser regression, exact remote CI and production delivery still required."
+  ],
+  "files": [
+    {
+      "source": "data/qa/paper-practice-release-api.json",
+      "file": "api-original.json.gz",
+      "originalSha256": "181200373402a59d3eae743149439b571b98817ca3d8312c1933ee323329b538",
+      "sha256": "edfda0d14fc53246f4bd7474cdf7689a80530574644a1f3b2c46acca99383e7e"
+    },
+    {
+      "source": "data/qa/paper-practice-release-api.log",
+      "file": "api-original.log.gz",
+      "originalSha256": "fb8be8ec9dc1cd17bcb64dfd3360ae4a28d29ccbe794eacb9e2126ab4cdf5b18",
+      "sha256": "0700f3a462756abdff8852e0ac5a2ec4fc584e5e37692dd75004d7316f915a4e"
+    }
+  ]
+}

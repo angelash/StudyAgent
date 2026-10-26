@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-26T14:28:17.049Z",
+  "status": "actual-delivered126-practice-entry-absent",
+  "revision": "51b6a1359ca93f178c0ffe8a8a35edfc19c63d89",
+  "build": "nbaNDj3RMWog21P4jGlUR",
+  "checks": [
+    {
+      "url": "/library/practice",
+      "status": 404
+    },
+    {
+      "url": "/library",
+      "status": 200
+    },
+    {
+      "marker": "把这份原卷，真正做一遍。",
+      "exists": false
+    }
+  ],
+  "scripts": [
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "bytes": 203725,
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f"
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "bytes": 243141,
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c"
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "bytes": 525,
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf"
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "bytes": 99904,
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431"
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "bytes": 4868,
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a"
+    },
+    {
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "bytes": 264236,
+      "sha256": "34588dc6cfb65bc1b40c275d1a7d287985bbaea73fb5287b113a5e0680272e24"
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "bytes": 7670,
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04"
+    },
+    {
+      "url": "/_next/static/chunks/app/library/page-3cf5c74a5759bb0c.js",
+      "bytes": 22011,
+      "sha256": "ff66ca9fa0cc369744b56c013cfb55fa78a95a760757e6e332056bce64a3a615"
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "bytes": 112594,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+    },
+    {
+      "url": "/_next/static/chunks/webpack-6580048c702d73f4.js",
+      "bytes": 3974,
+      "sha256": "4ae2f87f83f026698f3071f04af225d412ba4ac85a31265d0533892c911b0c66"
+    }
+  ],
+  "files": [
+    {
+      "file": "original-404-page.html.gz",
+      "originalSha256": "86a209497c54b0d52f80e0e764789c512794744c11bfdaa3c51c22c61ec77d3e",
+      "storedSha256": "af225be6bf78eda8b27e98b82d9145e1cafa4c15a6eae081cef7a45519ed705d"
+    }
+  ],
+  "scope": "Anonymous existing production GETs only; no family data, mutations, restart or supplier call. Confirms old route/compiled entry absence, not every old library interaction."
+}

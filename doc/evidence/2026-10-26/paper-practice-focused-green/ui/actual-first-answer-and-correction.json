@@ -1,0 +1,40 @@
+{
+  "id": "paper_item_1b77df37ff73ad9488a7de854bdeb96157d59214",
+  "paperId": "qa:paper:0:partial",
+  "paperTitle": "匿名原卷 0 · 部分",
+  "position": 1,
+  "kind": "question",
+  "availability": {
+    "available": true,
+    "reason": ""
+  },
+  "disposition": "answered",
+  "revealed": true,
+  "selfReview": "needs_correction",
+  "correctionCount": 1,
+  "html": "<p>合成原题：\\(3+2=?\\)</p><table><tbody><tr><th>第一组</th><th>第二组</th></tr><tr><td>3</td><td>2</td></tr></tbody></table>",
+  "options": [
+    "<p>4</p>",
+    "<p>5</p>"
+  ],
+  "pdfUrl": null,
+  "draft": "第一次我认为是4。",
+  "firstAnswer": {
+    "disposition": "answered",
+    "text": "第一次我认为是4。",
+    "submittedAt": "2026-10-26T15:16:43.003Z"
+  },
+  "corrections": [
+    {
+      "id": "correction_a428cf64848752d92d33661fa7b86dfa67419029",
+      "text": "订正：将3和2合起来是5。",
+      "at": "2026-10-26T15:16:43.336Z"
+    }
+  ],
+  "reference": {
+    "answerHtml": "<p>合成原参考：5</p>",
+    "analysisHtml": "<p>把第一组的3个和第二组的2个合起来，共5个。首次思考应保留。</p>",
+    "hasAnswer": true,
+    "missingMedia": 0
+  }
+}

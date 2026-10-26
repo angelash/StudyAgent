@@ -1,0 +1,137 @@
+{
+  "at": "2026-10-26T16:13:56.124Z",
+  "status": "complete-original-local-browser-suite-passed",
+  "applicationRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "apiRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T15:49:15.706Z",
+    "duration": 1446632.871,
+    "expected": 298,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": 298,
+  "originalAttempts": 298,
+  "retries": 0,
+  "paperPracticeCases": 21,
+  "sourceInputsUnchanged": true,
+  "compiledInputsUnchanged": true,
+  "qaWebBuildId": "PXb0IFiLg7vd5KBd9eCh4",
+  "scope": "Full existing product regression plus21 original-paper cases using isolated synthetic originals/accounts and completed fixed builds. Includes an actual full adult unit; some existing cause/legacy-reference boundaries use controlled projections as recorded in their original specs.",
+  "limits": [
+    "Full local automated journeys do not prove original CSS/fonts/DPR/voice fidelity, complete teacher-reviewed content or real1/3/7/14-day learning effects.",
+    "Exact three-job remote CI and production guardian/schema18 delivery remain pending."
+  ],
+  "files": [
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "source-course-full-browser.json.gz",
+      "originalSha256": "c16fdbd34b59427ba285906f95494b582d18aa4a77ac3ea860726cc71f6a505e",
+      "sha256": "145dd0e27b75fb368312fddff940087552cb6eaaf6ef7242d13371e9570d1e4d"
+    },
+    {
+      "source": "data/qa/paper-practice-release-final-browser.log",
+      "file": "paper-practice-release-final-browser.log.gz",
+      "originalSha256": "607ef31a744e4ab4b5ba5d2c903c38709bbe18dc5f330608fa6b2b3a4978432f",
+      "sha256": "e0f9f2795210e2cc63dd9eb42a09c435336a05d4dd632613eb16c9089e32e8d1"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "9df5a9073fbad27f49d8e3adebeb9eb798d36858b8a14a5eadbcb57bb7741d27",
+      "sha256": "fa9b7b154d32824a622974fcdadb990e9c285aea36d305e2d0066229ac58e9c3"
+    },
+    {
+      "source": "data/qa/paper-practice-web-cleared-pending.log",
+      "file": "paper-practice-web-cleared-pending.log.gz",
+      "originalSha256": "97e73c30362fe9c319141f650042d17a82c1d8ccb84743e26dcf5de1436438a8",
+      "sha256": "f1bcca195e43ee824b61ded47a9000b759ca4d31257f8088762ebfcec6e92735"
+    },
+    {
+      "source": "apps/web/app/library/practice/page.tsx",
+      "file": "inputs/app/library/practice/page.tsx.gz",
+      "originalSha256": "8d9008ad898385813d0b3eb3551475fdca6e165b51482a2f56c3fe46fdc925ee",
+      "sha256": "1ed6a8b6c89602f465d5737a4ea7637394220caaf43565b68fc35b2c65feefac"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "inputs/app/library/practice/studio.tsx.gz",
+      "originalSha256": "2aecaacdadb0d4aaa4e3dbb1dc2ab84ad31e3f15bdedfba08f9987017a829b24",
+      "sha256": "5c2296f8d534cac0157c0ea2472ee5165d00801becffa099a40ef5fb32907b22"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "inputs/app/library/practice/session.tsx.gz",
+      "originalSha256": "8f233bca2447585e6efd151616c8a0a54e0d327c61edd8d469d3847b3246ef4f",
+      "sha256": "b93150177f684638824f917d64cf99a297a911dea54447e61e37bbc8192a0b6a"
+    },
+    {
+      "source": "apps/web/app/library/practice/practice.css",
+      "file": "inputs/app/library/practice/practice.css.gz",
+      "originalSha256": "1f9b93c8113fb186ad38476675061508f4cf6e65d9c52599e119a7b7b86352c6",
+      "sha256": "c31e2c221aa08406389516dedad5e63b74668ad217c07b9bec74b42539050779"
+    },
+    {
+      "source": "apps/web/app/library/studio.tsx",
+      "file": "inputs/app/library/studio.tsx.gz",
+      "originalSha256": "1b1e946948d17cabd2b34eb337cb52ec25f345a8ca218dde016ef03f436974e5",
+      "sha256": "093b2d5b8ca04f7c2664a3fe94ac9eabbb35c1d2b829504a9d6bbb0b21f30299"
+    },
+    {
+      "source": "apps/web/app/library/library.css",
+      "file": "inputs/app/library/library.css.gz",
+      "originalSha256": "4e53d3adcbc1003508eec976e2b31cc874b2d145ebc47302087621997972e34f",
+      "sha256": "2b35eeaad3d16539940c717715122c40e4ab8b3b2b495ef163e64dc40380151a"
+    },
+    {
+      "source": "apps/web/components/paper-practice-launcher.tsx",
+      "file": "inputs/components/paper-practice-launcher.tsx.gz",
+      "originalSha256": "d264101ed3efa1a7d1a0e4d63761f3c1de4b4d1bb165a0f4e1ad62ae398a6073",
+      "sha256": "191b85947d59f6e2da363bfd1f1b3b29f6194db73baf56aa1b7663072a094259"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-api.ts",
+      "file": "inputs/lib/paper-practice-api.ts.gz",
+      "originalSha256": "7e24aadfd8333a99cc05152a9963edbf72e955af48029c0a5cb1ff5fddbee499",
+      "sha256": "e30a887408a775e5b48528571a4caab591bdf2f52483e69a0d71e2e04e563d97"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "inputs/lib/paper-practice-local.ts.gz",
+      "originalSha256": "d29c6a1db530bd64ede22c2c2cb68688c74718b4330d828ae9e13373b5c4dd1b",
+      "sha256": "7d0c6f8b0568a6d0d3ba69380a4d0587ef2f3e58b3c6dbdc9b0b1f30dda0a18f"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-completed-review.png",
+      "file": "ui/actual-completed-review.png",
+      "originalSha256": "4343f509952a17a4cf07961b409304736c247a7f9d49079e39b7a76e2b78c04e",
+      "sha256": "4343f509952a17a4cf07961b409304736c247a7f9d49079e39b7a76e2b78c04e"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-first-answer-and-correction.json",
+      "file": "ui/actual-first-answer-and-correction.json",
+      "originalSha256": "859f81b98592703b8686f8812de47c2e867b8285d774ef9cc3efd4db6b28f301",
+      "sha256": "859f81b98592703b8686f8812de47c2e867b8285d774ef9cc3efd4db6b28f301"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-1440.png",
+      "file": "ui/question-image-1440.png",
+      "originalSha256": "d14071624974355362722daca70ff70ea11931507937b08e8918367891cb8621",
+      "sha256": "d14071624974355362722daca70ff70ea11931507937b08e8918367891cb8621"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-390.png",
+      "file": "ui/question-image-390.png",
+      "originalSha256": "4ce316e845f3194371a4325e848d8a84a82caff4b7f3df23b89586dad5e119f6",
+      "sha256": "4ce316e845f3194371a4325e848d8a84a82caff4b7f3df23b89586dad5e119f6"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-768.png",
+      "file": "ui/question-image-768.png",
+      "originalSha256": "0b6c73412896c05f65c98472b8a8ad1078afd6314a34d36ede126c9fdc4801e8",
+      "sha256": "0b6c73412896c05f65c98472b8a8ad1078afd6314a34d36ede126c9fdc4801e8"
+    }
+  ]
+}

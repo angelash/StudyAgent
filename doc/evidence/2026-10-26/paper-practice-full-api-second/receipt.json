@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-26T15:23:08.502Z",
+  "passed": 1336,
+  "failed": 2,
+  "environmentSkipped": 54,
+  "total": 1392,
+  "deployed": false,
+  "findings": [
+    "The backup ceiling fix removes the original unsupported_database_schema cascades. The remaining actual failures are an unupdated image backup current-version assertion and the new cold-recovery test requiring a private requestKey in portable export.",
+    "Native PostgreSQL original-key replay and both cold recoveries have since passed their focused sixteen-case command. A complete fixed API rerun is still required."
+  ],
+  "executionLimit": "API runtime was already built and was not rebuilt or changed while this suite or browser acceptance ran. Test-only assertion fixes were made after their original failing cases had executed. The affected original inputs are retained separately; this intermediate run is not claimed as an exact final source-tree acceptance.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-full-api-fixed.json",
+      "file": "paper-practice-full-api-fixed.json.gz",
+      "originalSha256": "ebb9678fcf0d54e7ed492b109314e3aa996b10d80bd24768284ee6a4e42e4e9b",
+      "sha256": "18f9f66d9ea7e1df190776810fccaa04c242f2839bcc55c629cf20bc66afae21"
+    },
+    {
+      "source": "data/qa/paper-practice-full-api-fixed.log",
+      "file": "paper-practice-full-api-fixed.log.gz",
+      "originalSha256": "d1be213074eb2a7aad1026e0684fe4a7f1e7403efb81d57604da1cb36a9ea4dd",
+      "sha256": "e4ad6fb6987f8be6ba33a8ee21acaaa00a4420e66b2c96e9548b1282bf2394c4"
+    },
+    {
+      "file": "paper-practice-recovery.integration.test.ts.gz",
+      "sha256": "8f23d71197f8501f7e3ee45aa2acd210bccaf5f15e59ac33d7575301398e6d9e"
+    },
+    {
+      "file": "topic-whiteboard-postgres.integration.test.ts.gz",
+      "sha256": "976b8c2118f67e77d04dfbd32003b9050e2d1f718d46127e30b06c54b7ac06ae"
+    },
+    {
+      "file": "topic-whiteboard-visual-files.test.ts.gz",
+      "sha256": "e31563d4a2cb32be7c650b051e54f68c5ed5f24b7a454b034b22ea2dace23ff4"
+    },
+    {
+      "file": "topic-whiteboard-visual-postgres.integration.test.ts.gz",
+      "sha256": "7d4d2525038e8c2515153d14dd599724276d86c081fd3c1cc1465bc8a59d6f7a"
+    }
+  ]
+}

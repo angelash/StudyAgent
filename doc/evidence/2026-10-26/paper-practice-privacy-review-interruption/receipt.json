@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-26T15:28:06.466Z",
+  "status": "local-runs-intentionally-stopped-for-a-real-private-export-fix",
+  "deployed": false,
+  "reason": "Manual review found that the new studentRecords relation includes other guardians private child-scoped paper practice. portableRecords needs the same owner/student-learning-account filter as classroom/project records. Current production126 does not contain new paper practice.",
+  "verificationLimit": "The logs were captured before stopping and are partial, not complete pass/fail counts. The first stop was refused because the system listener query reported owning PID0. The exact local runner commands, process ancestry, isolated Web full path/port3157 and runtime lock were then checked; both local runner roots and their children were stopped. A follow-up process query found none of the recorded runner/server/child PIDs. No remote CI was cancelled. Rebuild only after the QA runtime is stopped, then rerun the final full suites.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-full-browser.log",
+      "file": "paper-practice-full-browser.log.gz",
+      "originalSha256": "260fd343b917075c498c46a511f2d7bc301af487814482ad3df54495533312a1",
+      "sha256": "2ce683cdeb34af766720e33889c76333d460d218079942f1e2b9e78edf2cb406"
+    },
+    {
+      "source": "data/qa/paper-practice-full-api-final.log",
+      "file": "paper-practice-full-api-final.log.gz",
+      "originalSha256": "e4568d5c375a1b7416606274630bac4a8127d5905f39d910529695a2008763e8",
+      "sha256": "737d6331df2fb82cba40142c35c6d9552a9f33acfe9ec114101ced4ba1b767be"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "privacy-records.ts.gz",
+      "originalSha256": "ed4f24d15744b2a4f563a783f18323b83e4471be52d126f0104e9ea9e527c220",
+      "sha256": "8907fe6fcc4757ee1adfb4aa9aa1e37de66f61f5d8300b5d30a6bd9245e6a893"
+    }
+  ],
+  "stopReview": {
+    "initialGuardRefused": true,
+    "listenerPidReported": 0,
+    "browserRoot": 69996,
+    "apiRoot": 18544,
+    "isolatedWebRoot": 74556,
+    "isolatedNext": 7408,
+    "followupRecordedProcessesRemaining": 0
+  }
+}

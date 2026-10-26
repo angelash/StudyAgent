@@ -1,0 +1,90 @@
+{
+  "at": "2026-10-26T15:19:38.745Z",
+  "status": "twenty-original-browser-cases-pass",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T15:16:28.104Z",
+    "duration": 71006.137,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "retries": 0,
+  "scope": "Synthetic isolated library and accounts. Not full-site regression, native PostgreSQL recovery or pixel parity.",
+  "visualFollowup": "Phone screenshot shows a tall four-card overview and the directory before the question. Compact the phone overview and place the current question before the directory, then verify the final stylesheet in full regression.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "paper-practice-browser.json.gz",
+      "originalSha256": "8128177929b4ef24f46fce5b94f03e148f71ac443708cf61a548a83e032a4e71",
+      "sha256": "f462df853cf5e6be74a3e00b7ae6c53674bf33f1abddeea8e05b4be03c0c257d"
+    },
+    {
+      "source": "data/qa/paper-practice-final-browser.log",
+      "file": "paper-practice-final-browser.log.gz",
+      "originalSha256": "faf293d8ab4e4877d8b18d0ae3f0c8068beaa2a264cdad4c38f9e02433ca29a3",
+      "sha256": "2419a158296bd20bda3436ac5c862115023880717bce49956a2e4b616cd22fd5"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "fd62ee78f92a6c0e4d842005f10a412886a69d1319ded1dfe9fffc38a0b1aae5",
+      "sha256": "814bade32e02892bb048a573e3b2a9a15502df6206ea80b2fac8b0d451f99a8b"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "session.tsx.gz",
+      "originalSha256": "569452f7c48e18494a853985500d4d5b97e33ecc494dd7b64c7955793a40df3e",
+      "sha256": "d7d7c9122248fb9b5e334ad00652b1049c482afa8fdf5306a84d7001898c1d3c"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "studio.tsx.gz",
+      "originalSha256": "f8cec21f648a0a2f7398c7175cfb641f0be2b530a239b26804305a3eb10b1778",
+      "sha256": "2ddbe4fb027347e304a6e94b1cbe4946da16c0344d3a2031e6f63690a17f6487"
+    },
+    {
+      "source": "apps/web/app/library/practice/practice.css",
+      "file": "practice.css.gz",
+      "originalSha256": "db7425cfed3b2478468e67c95418cdb389001d98a023181284744e76231810fc",
+      "sha256": "dbc988a20516bd9ce269895dbf1fa85f891236b1cde3b9fb74d6005f4206997c"
+    },
+    {
+      "source": "data/qa/experience-web/.next/BUILD_ID",
+      "file": "BUILD_ID.gz",
+      "originalSha256": "6cbbaccfed8f1ef2c6aa1bccd2cff1059fed5f453213fd0e851dfb44acac01b0",
+      "sha256": "5a7f8ecfdf01d800d5205bfc7ec8fa85827bd733568d8bf460e00b7ec7b026ee"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-completed-review.png",
+      "file": "ui/actual-completed-review.png",
+      "originalSha256": "f95ca11452d28452ad98410fcf5a04a4fda42e4743143349860de138ca214c7d",
+      "sha256": "f95ca11452d28452ad98410fcf5a04a4fda42e4743143349860de138ca214c7d"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/actual-first-answer-and-correction.json",
+      "file": "ui/actual-first-answer-and-correction.json",
+      "originalSha256": "d1f464dbe23e7d584104eb7f461237a090ef66aaff5ce103f47729cbe74a0e9b",
+      "sha256": "d1f464dbe23e7d584104eb7f461237a090ef66aaff5ce103f47729cbe74a0e9b"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-1440.png",
+      "file": "ui/question-image-1440.png",
+      "originalSha256": "8096f3199846c458843f185698ccf257202278b80501979517aa9e79bc7c31ca",
+      "sha256": "8096f3199846c458843f185698ccf257202278b80501979517aa9e79bc7c31ca"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-390.png",
+      "file": "ui/question-image-390.png",
+      "originalSha256": "e2ddea20a9244fc6545b0d1bd628fbb1ee05048efa39a160d98079e9058ec031",
+      "sha256": "e2ddea20a9244fc6545b0d1bd628fbb1ee05048efa39a160d98079e9058ec031"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/question-image-768.png",
+      "file": "ui/question-image-768.png",
+      "originalSha256": "8ca822e72e1faa889fe7fdc526658e79f619ea26ee0fc085cb1714bea9cb2857",
+      "sha256": "8ca822e72e1faa889fe7fdc526658e79f619ea26ee0fc085cb1714bea9cb2857"
+    }
+  ]
+}

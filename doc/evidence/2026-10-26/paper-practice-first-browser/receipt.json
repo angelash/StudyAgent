@@ -1,0 +1,108 @@
+{
+  "at": "2026-10-26T14:27:48.983Z",
+  "status": "first-browser-original-failure-retained",
+  "passed": 1,
+  "failed": 1,
+  "attempts": 2,
+  "retries": 0,
+  "deployed": false,
+  "finding": "Original full first-answer/reference/correction/completed journey passed. The lost-receipt test asserted version2 as soon as the pending-recovery region appeared, before waiting for submission. Trace includes the route.fetch POST201 after the too-early version1 read; the failed assertion does not establish a product submission failure.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "browser-original.json.gz",
+      "originalSha256": "289bc082b8835707d95695d9048f2dabd2da80c5ca41522ac622c115d6fe2974",
+      "storedSha256": "6494d37c865940ee0c943b124622563e785c826898b0aeec0c57a97238dffbb5"
+    },
+    {
+      "source": "data/qa/paper-practice-first-browser.log",
+      "file": "browser-original.log.gz",
+      "originalSha256": "c571f758086c4a09ca98509d9825a1f3d87fe8628041d5c44df3bcc7420fe66b",
+      "storedSha256": "9f42e3cb25bd31b93f8301c87164e969b11d1af88b724171dfaa8b5216e7055d"
+    },
+    {
+      "source": "data/qa/paper-practice-first-web-build.log",
+      "file": "build-original.log.gz",
+      "originalSha256": "b62131ab9f2b88c988d77959a2ef6d51e460bdc3a358a3431c0b6810f7e26648",
+      "storedSha256": "8ccabadd0f4e57537f85df9afa517c876f91e0366f4edfd7cd72770279fe661d"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "test-source-original.ts.gz",
+      "originalSha256": "95d32a9afd2bbdc1451159f8133c8a3f1306a225df4dfb0ac9e6577d8ed501a3",
+      "storedSha256": "445b04a5faa7c0814612bcc84349d3aa056fa57eb63dad082360ee6b987be996"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "inputs/studio.tsx.gz",
+      "originalSha256": "7cb4f6ac737ba752c6560f8db48b702ade7cf8284c4fce29028865a87d5775c4",
+      "storedSha256": "2f0674dd782cc24f3f3e7074410c2259327d4333481bf54cd3ebba4ab1ec65b7"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "inputs/session.tsx.gz",
+      "originalSha256": "7631187ef2c6e0998b7920539a0dbad0d632811c040a032ddb1e3445dba6100b",
+      "storedSha256": "05e20227d5befc9df2e70a8d930d2e8dac95866f4d18362ba364d85b720ed0f6"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-local.ts",
+      "file": "inputs/paper-practice-local.ts.gz",
+      "originalSha256": "0a958b35dc261aff018d558c72c25001c1e9c3af36077c628fd23479a119766f",
+      "storedSha256": "e04d226f948580b02ed53819475d950e101f4baca1f6cd83f0e86f5eb6a34b21"
+    },
+    {
+      "source": "apps/web/lib/paper-practice-api.ts",
+      "file": "inputs/paper-practice-api.ts.gz",
+      "originalSha256": "7e24aadfd8333a99cc05152a9963edbf72e955af48029c0a5cb1ff5fddbee499",
+      "storedSha256": "e30a887408a775e5b48528571a4caab591bdf2f52483e69a0d71e2e04e563d97"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "inputs/paper-practice.service.ts.gz",
+      "originalSha256": "c845374d7265323b87d1f20335aca7a674c06f935299cbdd582e8b8449715bb3",
+      "storedSha256": "96dddd883419a3e0bb28092826a6f83c50c2f203941899552986ae0c2cf84f57"
+    },
+    {
+      "source": "packages/contracts/src/paper-practice.ts",
+      "file": "inputs/paper-practice.ts.gz",
+      "originalSha256": "65edc376e3ee5a0c231bf6608f9919d240ee91cd168af6f5a83cc8120ac2df0d",
+      "storedSha256": "f058f4c936d332ca7a6f5da2e73db6f5f9b435af1f819c9738f379ca3956d1fc"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "failures/.last-run.json",
+      "originalSha256": "e7a6d760a64bcadb8daf7802ce28092861cdcfb4e277c5e3f690c1a112dbc4d5",
+      "storedSha256": "e7a6d760a64bcadb8daf7802ce28092861cdcfb4e277c5e3f690c1a112dbc4d5"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-58d68-sh-without-submitting-twice\\error-context.md",
+      "file": "failures/paper-practice-paper-pract-58d68-sh-without-submitting-twice/error-context.md",
+      "originalSha256": "670a47e72d2ae16718eb9ecac0b356363b15643de4d51c9212dc872e671d9b77",
+      "storedSha256": "670a47e72d2ae16718eb9ecac0b356363b15643de4d51c9212dc872e671d9b77"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-58d68-sh-without-submitting-twice\\test-failed-1.png",
+      "file": "failures/paper-practice-paper-pract-58d68-sh-without-submitting-twice/test-failed-1.png",
+      "originalSha256": "0ff9d55c165e70da34cfd0968a39e8a5e8a7e6de9edd421d1818c960261e4c52",
+      "storedSha256": "0ff9d55c165e70da34cfd0968a39e8a5e8a7e6de9edd421d1818c960261e4c52"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-58d68-sh-without-submitting-twice\\trace.zip",
+      "file": "failures/paper-practice-paper-pract-58d68-sh-without-submitting-twice/trace.zip",
+      "originalSha256": "e4955b659d59189fe4632d13a3c90f3ffa9e36a48ca2320c67df0d4ff4391036",
+      "storedSha256": "e4955b659d59189fe4632d13a3c90f3ffa9e36a48ca2320c67df0d4ff4391036"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\actual-completed-review.png",
+      "file": "ui/actual-completed-review.png",
+      "originalSha256": "aef1fb7a887f8aa35b31c4e54d0457289a920d38a608709affb9e88a5a95a0f6",
+      "storedSha256": "aef1fb7a887f8aa35b31c4e54d0457289a920d38a608709affb9e88a5a95a0f6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\paper-practice\\actual-first-answer-and-correction.json",
+      "file": "ui/actual-first-answer-and-correction.json",
+      "originalSha256": "6e30179279c226ff765afda496e936678c7a24e4fba1a29d72a57e5b3836221a",
+      "storedSha256": "6e30179279c226ff765afda496e936678c7a24e4fba1a29d72a57e5b3836221a"
+    }
+  ]
+}

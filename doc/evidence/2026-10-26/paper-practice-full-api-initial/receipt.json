@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-26T14:54:26.125Z",
+  "status": "original-full-api-failures-retained",
+  "counts": {
+    "passed": 1275,
+    "failed": 61,
+    "environmentSkipped": 53,
+    "total": 1389
+  },
+  "testFiles": {
+    "passed": 125,
+    "failed": 26,
+    "skipped": 10,
+    "total": 161
+  },
+  "deployed": false,
+  "findings": [
+    "Both native backup adapters still reject schemas above17 while this implementation adds schema18. Most backup/restore failures explicitly report unsupported_database_schema.",
+    "Three older migration fixtures assert current17 and must be updated to current18 while still constructing actual legacy schemas without future indexes.",
+    "Remaining EPERM teardown, audit-false and downstream task-identity failures are preserved as unresolved until the backup ceiling is corrected and the actual affected journeys rerun."
+  ],
+  "executionLimit": "npm test performs its own API build. It was started concurrently with browser preparation; this scheduling mistake is preserved in the browser archive. New tests use completed builds and direct Vitest invocation. Full API inputs remained unchanged during its test phase; frontend changes were independent.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-full-api.log",
+      "file": "paper-practice-full-api.log.gz",
+      "originalSha256": "b54975f451bd57da9aa084786a5cfb57c6eb891a4d739d7788ebfd590122173c",
+      "storedSha256": "6ca3ac53a80cc0fb98938a6bfd67f3fb5f8cefd8309dbdca97a622c9a95ba763"
+    },
+    {
+      "source": "data/qa/paper-practice-api-build-media.log",
+      "file": "paper-practice-api-build-media.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "storedSha256": "3b25b5cf20accf7a8249f9ac5a5670d254995d61a23a5adeec41a781b29babdb"
+    },
+    {
+      "source": "scripts/operations/backup.cjs",
+      "file": "backup.cjs.gz",
+      "originalSha256": "0b836bd672fe6f2e7fa1ed13bf56d269d2244e58399d49650a91953541efed6f",
+      "storedSha256": "e58a9687f314b962ababe1adc56eb74f249b3aaf9ce3532c3cf438d475144679"
+    },
+    {
+      "source": "scripts/operations/postgres-backup.cjs",
+      "file": "postgres-backup.cjs.gz",
+      "originalSha256": "d17862e2d9e5e3e2c2ccd7a77f1aa0786d8e27df00360a554053846e74f21bc5",
+      "storedSha256": "5d3e9be62fc68e5a71f85221fd66b552336c43bec16c2709bb348161be7f41ae"
+    },
+    {
+      "source": "apps/api/src/infrastructure/domain-database.ts",
+      "file": "domain-database.ts.gz",
+      "originalSha256": "864ca129e1c4132e8695931ebc55fe2230927d2bdf5d2406d886e9baef36137b",
+      "storedSha256": "75708ca811fd406f971825d873cbd0124bd6082b0b0d22e2d2c279812bd469c7"
+    },
+    {
+      "source": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "file": "backup.integration.test.ts.gz",
+      "originalSha256": "ed95defd444d8181e62fc383cf8a464adb7773c528202a4d220f0c3a5e1b148e",
+      "storedSha256": "4aa8c92251cdfcec90d887b385ba06c0c1fc06cd91c01efc1632f90f91e9b4e9"
+    },
+    {
+      "source": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "file": "topic-whiteboard-storage.integration.test.ts.gz",
+      "originalSha256": "e1679fa730acba7fc0aef2920c842ff005aa4f195088cb769b681b396b97ac86",
+      "storedSha256": "626475b5f7b283fa3a88886702fc1356f4210a76204a8b841916a7d36d0565e6"
+    },
+    {
+      "source": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "file": "topic-whiteboard-visual-storage.integration.test.ts.gz",
+      "originalSha256": "376928c8b93c7d62ad37206f3df022dfe01158ec9c6b653888ebae9b0a800abe",
+      "storedSha256": "3aabb560fd85eccf8ec308612a351e0dfbabd6c90159fb36faa6643581a9a46d"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "ee403c1d9bfe5dcf02f657c04b05a48ce0c73297e6493b2bc77565ce54c4362c",
+      "storedSha256": "9a0cb778a03e0529e22d1f3264a364bafa903c277ac64e755e36ea5a231fdc35"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "paper-practice.service.ts.gz",
+      "originalSha256": "c845374d7265323b87d1f20335aca7a674c06f935299cbdd582e8b8449715bb3",
+      "storedSha256": "96dddd883419a3e0bb28092826a6f83c50c2f203941899552986ae0c2cf84f57"
+    }
+  ]
+}

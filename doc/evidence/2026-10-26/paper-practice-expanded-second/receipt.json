@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-26T15:14:26.076Z",
+  "stats": {
+    "startTime": "2026-10-26T15:11:56.109Z",
+    "duration": 89103.796,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "retries": 0,
+  "deployed": false,
+  "finding": "Correction content and the displayed item were correct in the original failure snapshot. The exact label selector could not resolve after a textarea mounted with an initial restored value inside its wrapping label. Give editable textareas stable explicit labels and IDs, then rerun. The earlier remaining schema17 assertion was corrected; nineteen backup/migration cases pass.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "paper-practice-browser.json.gz",
+      "originalSha256": "d9eabb8f3b9db221b59bcb92648b967a50a24d0c8b9ced4e3f2aaa4148cb1494",
+      "sha256": "5bf359aa618a2d216517163add6b05c41000ff30f1baeadb8611cd7ba885dad4"
+    },
+    {
+      "source": "data/qa/paper-practice-expanded-fixed-browser.log",
+      "file": "paper-practice-expanded-fixed-browser.log.gz",
+      "originalSha256": "774bc553a493d7f7c37ea6a7b1f96dd1f22ca73bdac4468ef74e935ebe31c26f",
+      "sha256": "9f9c3168fec528ce0814ddb35eacdaf43ab90da05cbca9d328cc63d068ae4198"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "ff76c15a21c80598682e2578f3d28602e33e19939a1725dd5c517a82aebb3636",
+      "sha256": "bcdf6fef24c54253805af3013a3c504659c3659a8c7d90152c5b987f9c433cb5"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "session.tsx.gz",
+      "originalSha256": "7e69e55048a114a4fd9778914c9268a72c38b4ac2ca765923635b040d6f2090b",
+      "sha256": "150379c30c247d85b5f14bbdcb957a6abb22dbe9d56ed2bf897ffecc9f77e1b9"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "studio.tsx.gz",
+      "originalSha256": "a2afa2051bc84356bff9e0d213fe2b5ed5241f83550e4a17d7126ba94d2030f3",
+      "sha256": "186b9a906a71ca3e2ec372fb84055718d8278b953f695e64a7d151ca3f3be170"
+    },
+    {
+      "source": "data/qa/paper-practice-backup-regression-initial.log",
+      "file": "paper-practice-backup-regression-initial.log.gz",
+      "originalSha256": "60a24342a89ada5fe63d1d340969f356f27ea03b4730ffa2598821a81e742eae",
+      "sha256": "afb379d4163f19e3d9fa5d80e0c54119a5a4822c1a2b4b0d979cbc21f3b82e86"
+    },
+    {
+      "source": "data/qa/paper-practice-backup-regression-fixed.log",
+      "file": "paper-practice-backup-regression-fixed.log.gz",
+      "originalSha256": "62cf0a821b23399fba211f801ca76c4cb4158b0e4895df46d4696e3ff99badeb",
+      "sha256": "81f71ed7db0895874d640043dacf6b56b29b7d217f93cef6408d147bddfe6293"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-b40af-avigation-and-a-real-reload\\error-context.md",
+      "file": "failure/error-context.md",
+      "originalSha256": "98e681bde8d62d2352b60525d7268812e7d0950686584d2167795d409c867ce2",
+      "sha256": "98e681bde8d62d2352b60525d7268812e7d0950686584d2167795d409c867ce2"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-b40af-avigation-and-a-real-reload\\test-failed-1.png",
+      "file": "failure/test-failed-1.png",
+      "originalSha256": "d2b58617f021448331f442a9210d6fedc5f8288dc8637b205ecfec2afe235378",
+      "sha256": "d2b58617f021448331f442a9210d6fedc5f8288dc8637b205ecfec2afe235378"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\paper-practice-paper-pract-b40af-avigation-and-a-real-reload\\trace.zip",
+      "file": "failure/trace.zip",
+      "originalSha256": "bad4fe3460e63232cb8923c199089e50bf798f2b05e08ee25550a419974cf0d6",
+      "sha256": "bad4fe3460e63232cb8923c199089e50bf798f2b05e08ee25550a419974cf0d6"
+    }
+  ]
+}

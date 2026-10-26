@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。共 385 个 HTTP 路由声明，当前 AppModule 可达 364 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。共 393 个 HTTP 路由声明，当前 AppModule 可达 372 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -2819,6 +2819,80 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.content.media`
+
+## PaperPracticeController — 当前接入
+
+### POST /api/library/practice/preview
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:9](../../../apps/api/src/modules/library/paper-practice.controller.ts#L9)，方法 `preview`。
+
+- 签名：`preview(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.preview`
+
+### POST /api/library/practice/sessions
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:10](../../../apps/api/src/modules/library/paper-practice.controller.ts#L10)，方法 `create`。
+
+- 签名：`create(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.create`
+
+### GET /api/library/practice/requests/:requestKey
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:11](../../../apps/api/src/modules/library/paper-practice.controller.ts#L11)，方法 `creationResult`。
+
+- 签名：`creationResult(@Req() req: AuthenticatedRequest, @Param('requestKey') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.creationResult`
+
+### GET /api/library/practice/sessions
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:12](../../../apps/api/src/modules/library/paper-practice.controller.ts#L12)，方法 `list`。
+
+- 签名：`list(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.list`
+
+### GET /api/library/practice/sessions/:sessionId
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:13](../../../apps/api/src/modules/library/paper-practice.controller.ts#L13)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.get`
+
+### GET /api/library/practice/sessions/:sessionId/items/:itemId
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:14](../../../apps/api/src/modules/library/paper-practice.controller.ts#L14)，方法 `item`。
+
+- 签名：`item(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.item`
+
+### GET /api/library/practice/sessions/:sessionId/commands/:requestKey
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:15](../../../apps/api/src/modules/library/paper-practice.controller.ts#L15)，方法 `commandResult`。
+
+- 签名：`commandResult(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('requestKey') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.commandResult`
+
+### POST /api/library/practice/sessions/:sessionId/commands
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:16](../../../apps/api/src/modules/library/paper-practice.controller.ts#L16)，方法 `command`。
+
+- 签名：`command(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.command`
 
 ## MissionsController — 历史代码，未被AppModule接入
 
