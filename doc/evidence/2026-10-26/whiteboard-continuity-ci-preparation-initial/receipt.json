@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-26T09:32:18.215Z",
+  "run": 40298092966,
+  "head": "4a777d67f180238bc8b95f6d89375d365468a4e9",
+  "status": "in_progress",
+  "conclusion": "",
+  "browser": "dependency-preparation-failed-before-tests",
+  "cancellationByAgent": false,
+  "cause": "APT followed mirror+file:/etc/apt/apt-mirrors.txt, so replacing a direct Azure URL in ubuntu.sources had no effect. Raw log still shows Azure package transfers and the 8-minute step timeout.",
+  "localFixChecks": {
+    "passed": 3,
+    "skipped": 1,
+    "skippedReason": "Windows cannot create synthetic symlink; Linux CI must execute the fourth assertion."
+  },
+  "files": [
+    {
+      "source": "data/qa/continuity-ci-40298092966-browser-original.log",
+      "file": "github-browser-job-original.log.gz",
+      "originalBytes": 32317,
+      "originalSha256": "0089e92d01eed146ab32c11a80f7c8bddd368d99d6c4954228f69679ba49b5a5",
+      "storedSha256": "b2c68184fa43db24f65656e9bdd814f57369bec0168f132374ab2c8c7674c06e"
+    },
+    {
+      "source": "data/qa/continuity-apt-tests.log",
+      "file": "local-apt-regression-original.log.gz",
+      "originalBytes": 629,
+      "originalSha256": "a711b6b4fe162be26562af67f8f13e62da41509113e6b013677bdbb0f57ae5ea",
+      "storedSha256": "90f0d5e13ec05ae2b3d08c28317d59d61fd361a19fcc1c1b8af54406b90dbd19"
+    }
+  ],
+  "limits": [
+    "Do not count this as a successful browser regression or an application assertion failure.",
+    "Application may still be running in this original snapshot; no new push until every preceding job is terminal."
+  ]
+}

@@ -35,7 +35,12 @@ jobs:
           python scripts/processing/test_studio_checkpoints.py
           python scripts/processing/test_file_leases.py
           python scripts/qa/verify-project-file-preview.py data/qa/project-files-native-preview.json
+      - name: Verify official Ubuntu mirror configuration
+        run: node --test scripts/ci/configure-ubuntu-packages.test.cjs
+      - name: Configure official Ubuntu package sources
+        run: sudo node scripts/ci/configure-ubuntu-packages.cjs
       - name: Install media tools
+        timeout-minutes: 8
         run: |
           if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
             sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
@@ -129,9 +134,7 @@ jobs:
         run: cp .env.example .env
       - run: npm ci
       - name: Configure official Ubuntu package mirror for browser verification
-        run: |
-          sudo install -m 0644 .github/apt-ci.conf /etc/apt/apt.conf.d/99study-agent-ci
-          sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+        run: sudo node scripts/ci/configure-ubuntu-packages.cjs
       - name: Install attachment audio decoder
         timeout-minutes: 8
         run: |
@@ -185,6 +188,8 @@ jobs:
       - name: Prepare configuration
         run: cp .env.example .env
       - run: npm ci
+      - name: Configure official Ubuntu package sources
+        run: sudo node scripts/ci/configure-ubuntu-packages.cjs
       - name: Prepare isolated PostgreSQL roles and client tools
         env:
           PGPASSWORD: local_ci_only

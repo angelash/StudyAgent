@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-26T09:36:29.875Z",
+  "status": "complete-local-browser-regression-passed",
+  "applicationRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T09:12:05.468Z",
+    "duration": 1372166.451,
+    "expected": 263,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalCases": 263,
+  "attempts": 263,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "retriedAttempts": 0,
+  "files": [
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "browser-original.json.gz",
+      "bytes": 294091,
+      "originalSha256": "acf6b914b71f28bd6e56b9e550333db11d98cf89dcc2a74ec17fa7c3170606b0",
+      "storedSha256": "b13ca89c4a6d5eecd50016c7fd55ca8776f11d35a95b2e33a0895de1bfc06c3a"
+    },
+    {
+      "source": "data/qa/continuity-full-browser.log",
+      "file": "browser-original.log.gz",
+      "bytes": 41685,
+      "originalSha256": "e331334e07e549d3307b1375231cb812a7c54b383d328941461e72e91b33226a",
+      "storedSha256": "4cc9b74ad350994c904d062d520f921efee244f02b580d190a529b6bcdc7826a"
+    }
+  ],
+  "bindings": [
+    {
+      "file": "apps/web/app/studio/whiteboard-narration.ts",
+      "sha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462"
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6"
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-media.ts",
+      "sha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0"
+    }
+  ],
+  "limits": [
+    "Isolated synthetic accounts/data and controlled media; no original HyperKnow pixel parity, new supplier latency or human-learning validity claim.",
+    "Initial remote browser dependency installation failed before tests; exact new remote CI and production delivery remain required."
+  ]
+}

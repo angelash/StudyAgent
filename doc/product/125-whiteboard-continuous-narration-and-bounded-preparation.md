@@ -73,3 +73,11 @@ WhiteboardSession目前在当前WAV ended后更新unitIndex，新effect才调用
 新增只用于临时Linux CI的配置脚本：识别Ubuntu默认ubuntu.sources及可选sources.list中的直接Azure地址，以及确切的`mirror+file:/etc/apt/apt-mirrors.txt`和`mirror+file:/etc/apt/apt-mirrors-security.txt`；分别改为Ubuntu官方archive/security HTTPS源，保持原suite、component、签名和密钥、非Ubuntu源及注释。先完整验证所有拟写文件，未知活动文件镜像/剩余Azure引用或符号链接明确失败，不静默继续用旧源；成功重复执行保持同样字节。配置有界APT重试/连接时限，公开输出实际源及数量，便于从下一份原日志确认真实生效。
 
 用临时合成APT目录跑原生回归：真实GitHub形式的文件镜像、直接Azure、重复配置、签名/suite/第三方源保留，及未知镜像在写入前拒绝。浏览器、应用及PG三个临时runner均在APT安装前使用同一脚本；应用媒体安装同样增加8分钟预算。完整媒体/浏览器依赖、所有业务检查与45/60分钟总任务预算保持。Windows机器、用户包管理配置与应用业务代码不变。先提交本节再实现，新完整CI结果与原失败日志继续分别归档。
+
+## 10. 完整本地回归与当前交付状态
+
+业务实现8284cd6、详细设计/原日志4a777d6已推送。完整整站263浏览器/263次原始尝试全部通过，无失败、跳过、flaky或重试，耗时约22.9分钟；实际独立构建的三份白板源码逐SHA相符，覆盖原课堂、课程、练习、助教、资料、项目、诊断、指导和日历旅程，见[完整本地原件](../evidence/2026-10-26/whiteboard-continuity-full-browser/receipt.json)。API/契约未改，不把263与45专项相加为独立产品覆盖率。
+
+第9节配置脚本已实现，工作流YAML解析通过，Windows原生合成配置3通过/1符号链接权限跳过；Linux CI必须执行第四条，不以本机跳过代替。首个精确CI的browser因真实文件镜像未覆盖而在安装阶段失败、PG成功，application仍在运行；[原失败日志及当时状态](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/receipt.json)已归档，终态记录后补。后续推送须等这次全部任务终态，不取消它们。
+
+主目录仍124/schema17，五配置和真实环境保持；新的124回退预备已逐SHA复制890份原编译文件及私有配置，尚未停服备份当前数据库，因此不称完整回退已完成。接续为修正配置的精确新CI、停服一致数据/引用文件回退、主目录生产构建和实际守护验收。完整M1～M7及原72项状态保持，未完成原CSS/字体/DPR/原声、全部教学内容、教师/设备/长期验证。
