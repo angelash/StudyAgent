@@ -1,0 +1,20 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v4.1.12 F:/workspace/github/StudyAgent-whiteboard-visuals/apps/api
+
+ ✓ src/infrastructure/source-course-check-postgres.integration.test.ts (3 tests) 7572ms
+     ✓ natively restores check-only original bytes and applies a newer child deletion ledger to both definition and publication pointer  6833ms
+ ✓ src/modules/learning/source-course-check.integration.test.ts (23 tests) 8071ms
+     ✓ retains the written checkpoint through review failure and real application reopen, then retries only review with the original model  680ms
+     ✓ serves exact frozen sources and old answers after replacement, withdrawal and application reopen without mixing journey versions  771ms
+     ✓ keeps exact duplicate regenerated content exposed when its answers were author-reviewed under an older definition  317ms
+     ✓ uses real privacy export and account/child deletion while retaining shared first answers and fencing a late private draft  1254ms
+
+ Test Files  2 passed (2)
+      Tests  26 passed (26)
+   Start at  13:22:56
+   Duration  9.05s (transform 139ms, setup 0ms, import 1.11s, tests 15.64s, environment 0ms)
+
+JSON report written to F:/workspace/github/StudyAgent-whiteboard-visuals/data/qa/source-check-postgres.json
