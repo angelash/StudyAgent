@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-26T19:29:59.252Z",
+  "ciHead": "fd519aa9faa79d6d5caafca29f6f57509903d1db",
+  "ciRun": 40382195553,
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121781076059
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121781076525
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121781077043
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T18:59:02.812Z",
+      "duration": 1490375.986,
+      "expected": 315,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 315,
+    "originalAttempts": 315,
+    "retries": 0
+  },
+  "linuxApi": {
+    "passed": 1346,
+    "environmentSkipped": 62,
+    "failed": 0
+  },
+  "files": [
+    {
+      "source": "data\\qa\\paper-review-ci-40382195553-originals\\application.log",
+      "file": "application.log.gz",
+      "originalSha256": "9e185e82b05553142a853768ee7b5729e91f43fa22affc8a6eb3a58575c49794",
+      "sha256": "a5b17d7e7c271b2683ddfbee6876225418c3d8bc4d3d5cd9c3caf2f63f1dbf2d"
+    },
+    {
+      "source": "data\\qa\\paper-review-ci-40382195553-originals\\browser.log",
+      "file": "browser.log.gz",
+      "originalSha256": "8d596cdea129e20c23ef17be53102d609a66376f55480f9eeb505b6a1b9e3a8e",
+      "sha256": "ae529ab5673671319317ed13c698a499694036b90e840a976c650b750a901a1b"
+    },
+    {
+      "source": "data\\qa\\paper-review-ci-40382195553-originals\\postgres.log",
+      "file": "postgres.log.gz",
+      "originalSha256": "3a6a9542aa99eb9a18bca0cce7a2272a7a55f3fb77ecf286c53d2297fdd52c07",
+      "sha256": "21eec81d0d3da3d84d2d70f1616502bf623b3caeec8292e3db7a354cbfb6f7a9"
+    },
+    {
+      "source": "data\\qa\\paper-review-ci-40382195553-originals\\run.json",
+      "file": "run.json.gz",
+      "originalSha256": "15e305e3803e406ef12ebb2247b9b6bf4bad3dec9e237cde52da888a95c6ce85",
+      "sha256": "5c38679fc4a5eca87a06586fffc04ae7d07ace2938408742c5ed90df4a1c7b91"
+    },
+    {
+      "source": "data/qa/paper-review-ci-40382195553-browser-original.json.gz",
+      "file": "browser-original.json.gz",
+      "originalSha256": "93c36f920b3dbd4d6e671dc5906d50e36a886e98c580d01f50d614e877b78c0f",
+      "sha256": "15ca9d9d69f3f0f8c62a36e379952a7f21ee521fb6c2ecc7a90463e94a6dd0cf"
+    }
+  ]
+}

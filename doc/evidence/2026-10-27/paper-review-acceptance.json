@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-26T19:29:59.255Z",
+  "status": "paper-review-workspace-delivered",
+  "passed": true,
+  "overallProductComplete": false,
+  "applicationRevision": "60263b35909eef59befca3a8cf331cdf9815a667",
+  "apiRevision": "098820883a2dc5c02296efe5190d816949565013",
+  "ciHead": "fd519aa9faa79d6d5caafca29f6f57509903d1db",
+  "ciRun": 40382195553,
+  "webBuildId": "h8w5_Im73EsyxJOu3c20J",
+  "schemaVersion": 18,
+  "entrypoints": [
+    "http://127.0.0.1:3217/library/practice/review",
+    "http://127.0.0.1:3217/studio"
+  ],
+  "behavior": [
+    "Private original-answer review with tags, reflections, complete version history and scheduled/actual review.",
+    "Source-bound redo and independently reviewed new-question verification; prior paper exposure cannot become independent evidence.",
+    "Personal/learner calendar scope, local dates, monthly/weekly views and scoped ICS.",
+    "Original request and file-read recovery, delayed-response fencing, original first-answer and privacy preservation."
+  ],
+  "validation": {
+    "localApi": {
+      "passed": 1354,
+      "failed": 0,
+      "environmentSkipped": 54
+    },
+    "localBrowser": {
+      "passed": 315,
+      "originalAttempts": 315,
+      "retries": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "postgresAndNativeRecovery": {
+      "passed": 23,
+      "failed": 0
+    },
+    "linuxApi": {
+      "passed": 1346,
+      "failed": 0,
+      "environmentSkipped": 62
+    },
+    "remoteBrowser": {
+      "stats": {
+        "startTime": "2026-10-26T18:59:02.812Z",
+        "duration": 1490375.986,
+        "expected": 315,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "originalAttempts": 315,
+      "retries": 0
+    },
+    "httpChecks": 200,
+    "compiledShaFiles": 32,
+    "voiceShaFiles": 6,
+    "observedIntervalMs": 99203
+  },
+  "protectedLocalConfigurationsPreserved": 5,
+  "privateEnvironmentPreserved": true,
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-27-paper-review-1793038546393",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-26T18:16:04.317Z",
+      "passed": true,
+      "files": 917,
+      "bytes": 17425604,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified127 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "evidence": [
+    "doc/evidence/2026-10-27/paper-review-full-local/receipt.json",
+    "doc/evidence/2026-10-27/paper-review-api-green/receipt.json",
+    "doc/evidence/2026-10-27/paper-review-exact-ci/receipt.json",
+    "doc/evidence/2026-10-27/paper-review-runtime.json"
+  ],
+  "remaining": [
+    "Complete M1-M7 and every original72 requirement.",
+    "Async export centre, PDF/DOCX/physical print, full content and camera/OCR review.",
+    "Original CSS/fonts/DPR/voice and all reference states;129 assets and fonts are separate and not deployed here.",
+    "Teacher, real devices, voice listening and longitudinal learning evidence."
+  ]
+}
