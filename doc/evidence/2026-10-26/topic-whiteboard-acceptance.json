@@ -15,11 +15,11 @@
   "limits": [
     "Independent page/editor and explicit topic player are connected but not deployed.",
     "Full API, full236-browser site, exact CI and actual production delivery pending.",
-    "SQLite deletion-ledger and interrupted-task cold recovery passed; equivalent PostgreSQL native cold recovery remains pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
     "Must merge final122 runtime archive before publication. Production still schema15.",
-    "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text."
+    "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
+    "SQLite and native PG recovery cases passed; a fresh schema15 production rollback and actual schema16 runtime release are still required."
   ],
   "service": {
     "passed": 27,
@@ -95,5 +95,13 @@
     "apps/web/app/studio/whiteboard-table.ts": "3173a64184bcab822dd67f2e21bd18581a501a25e965d5612f4a16cbb001586e",
     "apps/web/app/studio/whiteboard-original.ts": "74e40f013e361e2fab119d39b1567b5e700ccb40a904ab1269440d7cb3a2826c",
     "apps/web/app/studio/whiteboard-exhibit.tsx": "40bed9d6baf75f324c4bdc599a0e69193896cc3e4af453e0e40b89c9906f8429"
-  }
+  },
+  "postgresNativeAndHttp": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 2,
+    "report": "topic-whiteboard-native-recovery/postgres.json",
+    "scope": "10 actual HTTP,2 PG constraints/reopen and2 actual pg_dump/restore cold recovery cases.2 SQLite-only cases skipped."
+  },
+  "inheritedRelease": "1614ff1027f2b8e0d750797efe728017225d353f"
 }
