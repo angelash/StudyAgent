@@ -49,10 +49,12 @@ export type TopicWhiteboardDraftView = {
   id: string; audience: TopicWhiteboardAudience; studentId: string | null; subject: StudioSubject | null;
   prompt: string; objective: string; modelId: string; modelName: string | null;
   status: TopicWhiteboardDraftStatus; stage: 'writing' | 'reviewing' | 'completed'; revision: number; generation: number;
-  task: { id: string; version: number; state: string } | null;
+  task: { id: string; version: number; state: string; errorCode: string | null } | null;
   originalContent: TopicWhiteboardContent | null; content: TopicWhiteboardContent | null;
   contentFingerprint: string | null; review: TopicWhiteboardReview | null; whiteboardId: string | null;
   teacherReviewStatus: 'pending'; formalMeasurementEligible: false; createdAt: string; updatedAt: string;
+  receipt?: { key: string; kind: 'prepare' | 'cancel' | 'retry' | 'edit' | 'confirm'; effectiveRevision: number;
+    generation: number; at: string; contentFingerprint?: string; whiteboardId?: string };
 };
 export type StudioTopicWhiteboard = {
   id: string; kind: 'ai-topic-whiteboard'; studentId: string | null; subject: StudioSubject | null;

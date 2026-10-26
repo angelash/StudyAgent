@@ -1,5 +1,5 @@
 {
-  "status": "foundation-only",
+  "status": "backend-scope-passed-ui-pending",
   "deployed": false,
   "sourceRevision": "b63f690a71114b2fafe70d38785207a757502173",
   "sqliteAndContent": {
@@ -13,8 +13,35 @@
   "schemaVersionInIsolatedTests": 16,
   "productionSchemaVersion": 15,
   "limits": [
-    "No working generation service, worker, HTTP entry or user page yet.",
-    "Backup/cold restore foundation does not prove deletion-ledger cold recovery.",
-    "Must merge final122 and pass full gates before release."
-  ]
+    "No independent user page/editor or player adaptation yet.",
+    "No new live default model call or full product regression, exact CI or runtime release.",
+    "SQLite deletion-ledger and interrupted-task cold recovery are proven here; equivalent PostgreSQL native cold recovery remains pending.",
+    "Must merge final122 before publication. Production remains schema15."
+  ],
+  "service": {
+    "passed": 27,
+    "failed": 0,
+    "report": "topic-whiteboard-service/api.json",
+    "scope": "12 real HTTP/task/cold recovery cases,6 input/authority,5 content and4 SQLite foundation. Controlled model/speech substitutes."
+  },
+  "postgresHttp": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 2,
+    "report": "topic-whiteboard-service/postgres.json",
+    "scope": "10 actual HTTP/task cases and2 native PG foundation;2 SQLite-specific cold backup cases skipped."
+  },
+  "sourceSha256": {
+    "apps/api/src/modules/learning/topic-whiteboard-access.test.ts": "e0e9ed69692ae835d0a4bc9dabf40d5e06a33cf31cd1d4bb5efe2849ee4fb4ee",
+    "apps/api/src/modules/learning/topic-whiteboard-access.ts": "a4575a317ef78ef096856ee79f8dd050cf22e831b4c0ade461aa350e5f5c0c89",
+    "apps/api/src/modules/learning/topic-whiteboard-content.test.ts": "c0f89cfd1b77bafe695256acc421c6f9ae4312ca1bf7b82eb37f4feca016f16e",
+    "apps/api/src/modules/learning/topic-whiteboard-content.ts": "9c97bf1a30a18e179444cbb1b06dc2f2abb895c983600e27fd9dd2bb8b1a02e3",
+    "apps/api/src/modules/learning/topic-whiteboard-narration.service.ts": "8ecc782e3ec33d48bbcc1f9087164a16c1b7bf9cc7ce1066567bebf9a9fcdad8",
+    "apps/api/src/modules/learning/topic-whiteboard-projection.ts": "fd53d9dea41029d0553ba241e8fa32ba6dbf4ee123caff163d61e56165d5a19e",
+    "apps/api/src/modules/learning/topic-whiteboard-record.ts": "f501ce716781c8a1cc2a30d39b4be34240ee1ed0db2f7912c50288a0b8eb081e",
+    "apps/api/src/modules/learning/topic-whiteboard-worker.service.ts": "06c357783dd6e7619076df52f5af06ff8b3b72a17caeee4281e059697cda81e8",
+    "apps/api/src/modules/learning/topic-whiteboard.controller.ts": "1875b46963c2e5e004cf29c63134c4bcf16ece32c553822b05e1b4a06a75792e",
+    "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts": "6a1937b6e5bae6738d66a58daf69747b4b12b06ff728ef6c7c19a852f78cce63",
+    "apps/api/src/modules/learning/topic-whiteboard.service.ts": "8a1ad8fe35fdee6fb4e27ddb5f4442c7066e08b86c5dd8cc4f956b8eac505bea"
+  }
 }

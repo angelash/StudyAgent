@@ -39,10 +39,10 @@ describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identitie
     const { url } = await scoped(), first = new DomainDatabase(url), second = new DomainDatabase(url); await first.open(); await second.open();
     try {
       await first.commit(await first.read(), { studioTopicWhiteboardDrafts: [{ id: 'draft', ownerUserId: 'owner', requestKey: 'key', status: 'ready', revision: 2 }], studioTopicWhiteboards: [] });
-      const before = await first.read(), stale = await second.read(); const next = structuredClone(before.state);
+      const before = await first.read(), stale = await second.read(); const next: Record<string, any[]> = structuredClone(before.state) as Record<string, any[]>;
       next.studioTopicWhiteboardDrafts[0].status = 'confirmed'; next.studioTopicWhiteboardDrafts[0].revision = 3;
       next.studioTopicWhiteboards = [{ id: 'original-board', ownerUserId: 'owner', sourceDraftId: 'draft' }]; await first.commit(before, next);
-      const competing = structuredClone(stale.state); competing.studioTopicWhiteboardDrafts[0].status = 'confirmed';
+      const competing: Record<string, any[]> = structuredClone(stale.state) as Record<string, any[]>; competing.studioTopicWhiteboardDrafts[0].status = 'confirmed';
       competing.studioTopicWhiteboards = [{ id: 'competing-board', ownerUserId: 'owner', sourceDraftId: 'draft' }];
       await expect(second.commit(stale, competing)).rejects.toThrow(); expect((await second.read()).state).toEqual(next);
     } finally { await second.close(); await first.close(); }

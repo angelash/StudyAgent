@@ -218,6 +218,8 @@ export type StudioFeedItem = {
   href: string;
 };
 
+export type StudioWhiteboardExhibit = { kind: 'table'; headers: string[]; rows: string[][] } |
+  { kind: 'formula'; latex: string; explanation: string };
 export type StudioWhiteboardScene = {
   id: string;
   kind: 'title' | 'concept' | 'steps' | 'fraction_bars' | 'pdf_page' | 'check';
@@ -226,6 +228,8 @@ export type StudioWhiteboardScene = {
   body?: string;
   bullets?: string[];
   visual?: TeachingVisual;
+  exhibit?: StudioWhiteboardExhibit | null;
+  targetAtomIds?: string[];
   source?: { materialId: string; page: number; label: string };
   durationMs: number;
 };

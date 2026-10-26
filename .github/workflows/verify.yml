@@ -324,8 +324,9 @@ jobs:
           STUDY_TEST_WHITEBOARD_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/whiteboard-postgres.integration.test.ts
 
-      - name: AI topic whiteboard original prepare and confirmation constraints on PostgreSQL
+      - name: AI topic whiteboard original commands, checkpoints and permissions on PostgreSQL
         working-directory: apps/api
         env:
           STUDY_TEST_TOPIC_WHITEBOARD_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
-        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/topic-whiteboard-postgres.integration.test.ts
+          STUDY_TEST_TOPIC_WHITEBOARD_API_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/topic-whiteboard-postgres.integration.test.ts src/modules/learning/topic-whiteboard.integration.test.ts
