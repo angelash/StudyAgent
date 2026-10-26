@@ -148,7 +148,7 @@ describe('original paper practice, immutable first answers and explicit referenc
     const document = await item(row); expect(document.pdfUrl).toContain('/api/library/media?');
     const response = await request(app.getHttpServer()).get(document.pdfUrl).set('Authorization', 'Bearer ' + owner.token).expect(200);
     expect(response.headers['content-type']).toContain('application/pdf'); expect(Buffer.from(response.body).equals(actualPdf())).toBe(true);
-    const parsed = spawnSync('python', ['-X', 'utf8', '-c', 'import fitz,sys; d=fitz.open(sys.argv[1]); print(d.page_count, d[0].get_text().strip())', join(root, 'assets/shijuanbao/media/paper.pdf')], { encoding: 'utf8', windowsHide: true });
+    const parsed = spawnSync('python', ['-X', 'utf8', '-c', 'import pymupdf,sys; d=pymupdf.open(sys.argv[1]); print(d.page_count, d[0].get_text().strip())', join(root, 'assets/shijuanbao/media/paper.pdf')], { encoding: 'utf8', windowsHide: true });
     expect(parsed.status, parsed.stderr).toBe(0); expect(parsed.stdout.trim()).toBe('1 Original synthetic paper');
     row = (await command(row, { kind: 'submit', itemId: row.items[0].id, disposition: 'answered', text: '原卷整体作答笔记，尚未逐题结构化。' })).session;
     expect(row.counts.submitted).toBe(1); expect(row.independentMeasurement).toBe(false);
