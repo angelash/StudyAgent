@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`0d4e73880472f454c709590d542aad548658d76f`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`6ab9211635a1e903a7c5d59ad92968f2f8b03a5a`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -1056,7 +1056,7 @@
 
 **状态与持久化**：`studioTopicWhiteboardDrafts`、`studioTopicWhiteboards`
 
-**权限、失败与边界**：内容始终AI生成且待核对，不产生掌握/测量事实；真实DS样本有校验失败及显式恢复，不构成稳定性或教师质量证明；配图与复杂公式另见STUDIO-32；原字体CSS及声音/实机/长期门禁仍待，正式部署状态以123收据为准。
+**权限、失败与边界**：内容始终AI生成且待核对，不产生掌握/测量事实；真实DS样本有校验失败及显式恢复，不构成稳定性或教师质量证明；配图与复杂公式另见STUDIO-32；原字体CSS及声音/实机/长期门禁仍待，正式部署状态见124最终运行收据。
 
 **关联接口**：
 
@@ -1109,13 +1109,13 @@
 
 **输入**：本人ready完整稿/幕/修订/教学指纹、目的/需求、真实原图及原命令键。
 
-**处理与实现**：冻结必要教学上下文和原PNG，经安装Skill持久生成/edit；原键重放先于可用性探测。lease、原登录、监护/范围/目标/教学指纹和原图字节阻止迟到发布。明确完整稿PATCH逐幕验证选图，确认时另冻原件/展示图及SHA/尺寸，公开引用不含私有候选。两文档槽保留完整配图请求与图注，显式下载保护；SHA/解码后显示真实缩略图、双图对照和原比例键盘阅读。播放器放大先暂停，实际视频预取图片并保留SRT。共享孩子快照独立保留PNG，作者私稿/提示词擦除；SQLite/PG最新删除账本及中断续跑阻止复活。 MathJax4本地受限TeX生成经过白名单复验的统一SVG，阅读区保留KaTeX MathML与完整可复制原式；录制前有界解码，与图片同幕分区。长/高公式以至少0.8比例重叠分页，沿原逐句时间表保留首末符号；未知语法显式分页原文，不静默截断。2次真实HTTP生图/edit与34项专项、完整API分别留证，不相加为产品覆盖率。
+**处理与实现**：冻结必要教学上下文和原PNG，经安装Skill持久生成/edit；原键重放先于可用性探测。lease、原登录、监护/范围/目标/教学指纹和原图字节阻止迟到发布。明确完整稿PATCH逐幕验证选图，确认时另冻原件/展示图及SHA/尺寸，公开引用不含私有候选。两文档槽保留完整配图请求与图注，显式下载保护；SHA/解码后显示真实缩略图、双图对照和原比例键盘阅读。播放器放大先暂停，实际视频预取图片并保留SRT。共享孩子快照独立保留PNG，作者私稿/提示词擦除；SQLite/PG最新删除账本及中断续跑阻止复活。 MathJax4本地受限TeX生成经过白名单复验的统一SVG，阅读区保留KaTeX MathML与完整可复制原式；录制前有界解码，与图片同幕分区。长/高公式以至少0.8比例重叠分页，沿原逐句时间表保留首末符号；未知语法显式分页原文，不静默截断。2次真实HTTP生图/edit与35项专项、两端253完整浏览器及完整API分别留证，不相加为产品覆盖率。
 
 **输出**：独立候选和原件、明确选图、授权冻结图片、可复制公式与完整向量/原文分页视频和家庭归档。
 
 **状态与持久化**：`studioTopicWhiteboardVisuals`、`studioTopicWhiteboardDrafts`、`studioTopicWhiteboards`
 
-**权限、失败与边界**：独立124检查点，尚未在主目录交付；图片与公式仍待教学核对，不构成掌握/测量/教师批准；34专项及完整API以本轮收据为准，最终整站与精确CI/守护交付待。原CSS/字体/DPR/原声及真人/设备/长期条件未完成。
+**权限、失败与边界**：124已在main实际交付：构建6ab9211/核心0d4e738、schema17，精确09bdeee CI三组success，两端253浏览器零重试、120运行检查及217787毫秒守护观察。图片与公式仍待教学核对，不构成掌握/测量/教师批准；原CSS/字体/DPR/原声及真人/设备/全内容/长期条件未完成。
 
 **关联接口**：
 
@@ -1167,6 +1167,8 @@
 - [apps/web/app/studio/whiteboard-exhibit.css](../../../apps/web/app/studio/whiteboard-exhibit.css)
 - [apps/api/src/modules/learning/whiteboard-formula.test.ts](../../../apps/api/src/modules/learning/whiteboard-formula.test.ts)
 - [scripts/qa/topic-figure-live.cjs](../../../scripts/qa/topic-figure-live.cjs)
+- [doc/evidence/2026-10-26/topic-figure-runtime.json](../../../doc/evidence/2026-10-26/topic-figure-runtime.json)
+- [doc/evidence/2026-10-26/topic-figure-acceptance.json](../../../doc/evidence/2026-10-26/topic-figure-acceptance.json)
 
 ## STUDIO-24 长PDF分块上传、页级续跑与按需原文
 

@@ -211,3 +211,11 @@ SQLite/PG完整备份认识新记录及真实图片原件/展示图/私有提示
 前一精确CI ca46963/40275791053虽三组success、远端252浏览器252次原始尝试零失败/跳过/重试、Linux API1311/61环境跳过、PG原主题14/2与配图17通过，但已被本地失败要求的修复替代，不用它批准升级。完整三组原日志及原始浏览器报告压缩字节/SHA见[被替代CI](../evidence/2026-10-26/topic-figure-formula-prior-ci/receipt.json)。当前重新执行253整站及新精确CI，运行仍123/schema16。
 
 修复0d4e738后，完整本地253条/253次原始尝试均通过，零失败/跳过/重试，耗时20.7分钟；[原始整站收据](../evidence/2026-10-26/topic-figure-final-full-browser/receipt.json)保留压缩前后字节和SHA。新精确CI 09bdeee/40279485485三组全部completed/success，下载的253条浏览器同样零重试；Linux完整API1311/61环境跳过、原生资料核查26、主题14/2 SQLite专属跳过、配图17分别通过。完整原日志及浏览器JSON逐SHA保留于[新精确CI](../evidence/2026-10-26/topic-figure-exact-ci/receipt.json)，不将不同范围相加。开始主目录停服一致备份和schema17实际守护升级；运行收据仍待，不能把精确CI成功直接当作已升级。
+
+## 22. 主目录实际运行交付
+
+本次生产构建6ab9211、核心0d4e738，buildId为YJmjG_Z1T6Zu2FJLZkicg，schema17。主目录安装固定MathJax依赖（17新增包，0已知漏洞）并实际完成全量生产构建，随后由三项原守护启动；旧schema16的一致数据库/引用文件及874个旧编译文件、五处本地配置与真实环境均已逐SHA保留。配置原字节核对通过，没有将其放入提交。数据备份assetsIncluded:false，不作为完整研究资产备份或完整恢复演练。
+
+实际120项HTTP/权限/浏览器脚本检查、16个编译文件SHA和6份实际HTTP音频SHA通过；三次服务观察跨217787毫秒，API/Web/健康守护PID与重启计数保持不变，学习入口及ready均200。[运行原件](../evidence/2026-10-26/topic-figure-runtime.json)与[最终验收](../evidence/2026-10-26/topic-figure-acceptance.json)区分实际构建、核心源码、精确CI及各验证范围。
+
+`/studio/whiteboards`现已提供完整稿配图预检、真实生成/原PNG修图、原命令恢复、比较/核对/明确选用、冻结图片阅读及带图视频；复杂公式使用同一份本地向量排版，保留语义和完整原式，长式完整分页；逐句推进已同步隔离上一句结束后的旧进度帧。真实新图片HTTP两次、受控媒体导出与完整253回归各自留证，不以数量相加。原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师、设备、全内容、原站CSS/字体/DPR/声音、长期学习验证继续，不宣称整体产品完成或100%像素复刻。

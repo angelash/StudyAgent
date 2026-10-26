@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-26T07:21:22.084Z",
+  "status": "runtime-delivered",
+  "applicationRevision": "0d4e73880472f454c709590d542aad548658d76f",
+  "formulaRevision": "33af51c289f947b84be001ff90e39deefc47726d",
+  "productionBuildRevision": "6ab9211635a1e903a7c5d59ad92968f2f8b03a5a",
+  "webBuildId": "YJmjG_Z1T6Zu2FJLZkicg",
+  "schemaVersion": 17,
+  "exactCi": {
+    "head": "09bdeee81fc3f4c06c6784d1386cf902b9d009f1",
+    "run": 40279485485,
+    "allThreeJobs": "success",
+    "receipt": "topic-figure-exact-ci/receipt.json"
+  },
+  "localBrowser": {
+    "passed": 253,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retriedAttempts": 0,
+    "receipt": "topic-figure-final-full-browser/receipt.json"
+  },
+  "remoteBrowser": {
+    "passed": 253,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retriedAttempts": 0
+  },
+  "api": {
+    "localPassed": 1319,
+    "localEnvironmentSkipped": 53,
+    "linuxPassed": 1311,
+    "linuxEnvironmentSkipped": 61,
+    "scope": "Local complete1319 baseline before frontend-only ended-boundary fix; API source unchanged. Exact final CI reruns complete Linux API."
+  },
+  "realImages": {
+    "actualCalls": 2,
+    "modelId": "gpt-image-2",
+    "operations": [
+      "generate",
+      "edit"
+    ],
+    "receipt": "topic-figure-live-http/receipt.json",
+    "scope": "Actual original PNG edit, HTTP durable task, byte identity, replay and publication. Controlled text provider."
+  },
+  "runtime": {
+    "receipt": "topic-figure-runtime.json",
+    "httpChecks": 120,
+    "compiledFiles": 16,
+    "voiceFiles": 6,
+    "stableObservedMs": 217787,
+    "protectedConfigFiles": 5,
+    "localEnvironmentPreserved": true
+  },
+  "rollback": {
+    "schema": 16,
+    "verifiedRuntimeFiles": 1,
+    "compiledFiles": 874,
+    "assetsIncluded": false,
+    "scope": "Stopped-service consistent current123 database/referenced files and874 original build files with private config, not all research assets or a complete recovery rehearsal."
+  },
+  "preservedFailures": [
+    "source-check-postgres-shutdown/receipt.json",
+    "topic-formula-browser-initial/receipt.json",
+    "topic-formula-browser-second/receipt.json",
+    "topic-formula-full-browser-initial/receipt.json",
+    "whiteboard-ended-boundary-before/receipt.json"
+  ],
+  "requirements": {
+    "implemented": 11,
+    "inProgress": 48,
+    "planned": 13,
+    "verified": 0,
+    "total": 72
+  },
+  "limitations": [
+    "Internal product M1-M7 still incomplete; exclude billing, Marketplace and school OAuth/institution integration.",
+    "Full original HyperKnow CSS/fonts/DPR/audio, all teaching content and states, teacher/real-device/long-term learning acceptance remain open.",
+    "Real image calls and controlled browser WAV/image fixtures are distinct evidence; counts overlap."
+  ]
+}
