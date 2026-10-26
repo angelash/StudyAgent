@@ -42,3 +42,6 @@ doc/evidence/2026-10-26/paper-practice-expanded-second/failure/error-context.md 
 doc/evidence/2026-10-26/paper-practice-repeated-refresh-before/three-refresh-failures/**/error-context.md -diff
 doc/evidence/2026-10-27/paper-practice*/** -text
 doc/evidence/2026-10-27/paper-review*/** -text
+apps/web/public/reference/hyperknow/** -text
+# Preserve the captured upstream font notice whitespace; keep its diff visible.
+apps/web/public/reference/hyperknow/font/Satoshi_Complete/Fonts/WEB/css/satoshi.css -whitespace

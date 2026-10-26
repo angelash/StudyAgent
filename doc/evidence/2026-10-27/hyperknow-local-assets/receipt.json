@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-26T18:49:02.926Z",
+  "status": "verified-local-static-assets",
+  "deployed": false,
+  "teachingUiIntegrated": false,
+  "overallProductComplete": false,
+  "designRevision": "820771c",
+  "sourceCaptureFiles": 950,
+  "sourceCaptureFingerprint": "255993a0448ef364439580f6c500c334d726c8941e35fe48f72d94c0739bbbf3",
+  "productFiles": 937,
+  "fonts": 878,
+  "stylesheets": 55,
+  "svg": 4,
+  "productBytes": 37754047,
+  "rewrittenResourceUrls": 1094,
+  "manifestSha256": "b11fef38af555e3e5014119942f1c5bd29451fa48c6944b80ada3dbad935a25e",
+  "importScript": "scripts/reference/import-hyperknow-assets.cjs",
+  "verification": {
+    "originalReadBack": true,
+    "productReadBack": true,
+    "repeatImportSameBytes": true,
+    "cssResourceReferences": "All non-data/non-fragment url/import references resolve to captured same-site product assets.",
+    "executedThirdPartyJavaScript": false,
+    "stagedFilesExactBytes": 938,
+    "upstreamNoticeWhitespace": "Captured Satoshi notice retains its trailing spaces and final blank line. Only this exact upstream stylesheet disables whitespace checks; its diff stays visible."
+  },
+  "limits": [
+    "CSS rules are mirrored and resource URLs are local; scoped teaching integration has not yet been implemented.",
+    "Actual font loading and full reference-state geometry are still required.",
+    "Byte integrity does not establish original audio, content/teacher/device/long-term parity or source licensing review."
+  ]
+}
