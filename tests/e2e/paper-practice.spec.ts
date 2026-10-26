@@ -39,7 +39,21 @@ test('paper practice: actual original-paper entry keeps the first answer, explic
   await expect(current.getByRole('region', { name: '不可覆盖的首次回答' })).toContainText('第一次我认为是4。');
   await page.getByRole('button', { name: '核对本题参考答案', exact: true }).click(); await expect(current.getByRole('region', { name: '本题原参考与自评' })).toContainText('合成原参考：5');
   await page.getByRole('button', { name: '还需订正', exact: true }).click(); await page.getByLabel('追加订正', { exact: true }).fill('订正：将3和2合起来是5。');
-  await page.getByRole('button', { name: '保存这次订正', exact: true }).click(); await expect(page.getByRole('region', { name: '追加订正记录' })).toContainText('订正：将3和2合起来是5。');
+  let releaseCorrection!: () => void, observeCorrection!: () => void;
+  const correctionGate = new Promise<void>(resolve => { releaseCorrection = resolve; }), correctionRequest = new Promise<void>(resolve => { observeCorrection = resolve; });
+  await page.route('**/api/library/practice/sessions/*/commands', async route => {
+    if (route.request().method() === 'POST' && route.request().postDataJSON()?.kind === 'correct') { observeCorrection(); await correctionGate; }
+    await route.continue();
+  });
+  const corrections = page.getByRole('region', { name: '追加订正记录' });
+  try {
+    await page.getByRole('button', { name: '保存这次订正', exact: true }).click(); await correctionRequest;
+    await expect(corrections.locator('article')).toHaveCount(0);
+    await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('订正：将3和2合起来是5。');
+    await expect(page.getByRole('button', { name: '保存这次订正', exact: true })).toBeDisabled();
+  } finally { releaseCorrection(); }
+  // The draft textarea is inside this region. Only a saved history article proves acknowledgement.
+  await expect(corrections.locator('article')).toHaveCount(1); await expect(corrections.locator('article')).toContainText('订正：将3和2合起来是5。');
   const id = new URL(page.url()).searchParams.get('session')!, saved = await f.call('/library/practice/sessions/' + id);
   const original = await f.call('/library/practice/sessions/' + id + '/items/' + saved.items[0].id); expect(original.firstAnswer.text).toBe('第一次我认为是4。'); expect(original.corrections).toHaveLength(1);
   await page.getByRole('button', { name: '下一题位 ↗', exact: true }).click(); await expect(current.getByRole('heading', { name: '第 2 题', exact: true })).toBeVisible();
