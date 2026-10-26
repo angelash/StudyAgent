@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-26T10:04:06.668Z",
+  "run": 40298092966,
+  "head": "4a777d67f180238bc8b95f6d89375d365468a4e9",
+  "status": "completed",
+  "conclusion": "failure",
+  "cancellationByAgent": false,
+  "jobs": [
+    {
+      "name": "browser",
+      "conclusion": "failure"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "conclusion": "success"
+    }
+  ],
+  "apiTotalsFromOriginalLog": [
+    {
+      "passed": 1311,
+      "skipped": 61
+    }
+  ],
+  "applicationLog": {
+    "file": "github-application-job-original.log.gz",
+    "originalBytes": 216549,
+    "originalSha256": "882158293c03c9936c49ed70344d504e198d535ee0e7429e34d1278415479df9",
+    "storedSha256": "bb1f5ea4209479664b06b4473a5ef83e2a6068eac830da1415dbf3f183c106ba"
+  },
+  "interpretation": "Terminal failed CI; browser dependency step timed out before any browser assertion. Application and PostgreSQL conclusions are independent. Do not turn the whole run into success.",
+  "next": "Push the committed shared file-mirror resolution only after checking all preceding CI runs are terminal; require a new complete exact CI before runtime delivery."
+}

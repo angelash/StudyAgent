@@ -81,3 +81,5 @@ WhiteboardSession目前在当前WAV ended后更新unitIndex，新effect才调用
 第9节配置脚本已实现，工作流YAML解析通过，Windows原生合成配置3通过/1符号链接权限跳过；Linux CI必须执行第四条，不以本机跳过代替。首个精确CI的browser因真实文件镜像未覆盖而在安装阶段失败、PG成功，application仍在运行；[原失败日志及当时状态](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/receipt.json)已归档，终态记录后补。后续推送须等这次全部任务终态，不取消它们。
 
 主目录仍124/schema17，五配置和真实环境保持；新的124回退预备已逐SHA复制890份原编译文件及私有配置，尚未停服备份当前数据库，因此不称完整回退已完成。接续为修正配置的精确新CI、停服一致数据/引用文件回退、主目录生产构建和实际守护验收。完整M1～M7及原72项状态保持，未完成原CSS/字体/DPR/原声、全部教学内容、教师/设备/长期验证。
+
+首个CI终态补记：40298092966已全部结束，application和PostgreSQL均success，完整Linux API原日志1311通过/61环境跳过；browser为依赖安装阶段failure，因此整个run仍为failure，没有执行浏览器断言，未人为取消。首次配置失效、原始中间状态及最终状态分别保留，见[终态与应用原日志](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/terminal-receipt.json)。文件镜像修正9b05691及其详细设计5578005已本地提交，接续新完整精确CI后才能交付生产。

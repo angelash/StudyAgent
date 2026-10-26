@@ -8,6 +8,8 @@
 
 2026-10-26更新：125实现8284cd6、设计4a777d6已推送；本地完整263浏览器263次原始尝试全部通过、零失败/跳过/重试（22.9分钟），与45专项重叠不相加。精确CI 40298092966中PG成功，browser在8分钟依赖预算失败，原日志证实托管runner实际用mirror+file列表，原直接URL替换未生效；application仍在运行，不取消、不抢推。补充规格已先提交a582b76，共用官方源解析脚本/全三组准备接入/原生3通过及1 Windows链接权限跳过已完成，等旧CI全部终态后推送复验；生产仍124/schema17。890旧编译文件及配置回退已预备，停服数据备份/125主目录交付仍待。见[完整本地验证](../evidence/2026-10-26/whiteboard-continuity-full-browser/receipt.json)及[125第9～10节](125-whiteboard-continuous-narration-and-bounded-preparation.md#9-托管runner文件镜像列表修正再次实施前)。全部72项及M1～M7退出条件保持。
 
+2026-10-26 CI终态：40298092966的application与PostgreSQL均success，完整Linux API1311通过/61环境跳过；browser在依赖准备阶段failure，整个run保持failure，未执行浏览器断言、未人为取消。原阶段快照和[完整终态/日志](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/terminal-receipt.json)分别保留。9b05691已修正实际mirror+file引用并接入全部临时runner，5578005完成491源码引用/3056链接/10离线阅读器检查；旧CI全部结束后接续推送修正复验，生产继续124/schema17，整体目标及真人/全内容/原样式门禁不变。
+
 ## 1. 整体判断与本轮核对结果
 
 当前已有覆盖主要业务的可运行实现：按年级和进度确认范围、独立题组、原子知识估计、原因核查、指导、训练、复测复盘，以及课程、持续课堂、资料和日历。接下来的重心是把这些能力组成稳定、连贯、内容完整的教学产品。工程可靠性进展较多，课堂全状态、内容深度和真人验证仍是主要缺口。
