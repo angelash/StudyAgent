@@ -93,3 +93,38 @@ for (const width of [390, 768, 1280]) test('teaching shell: actual original chro
   await dialog.getByRole('button', { name: '关闭白板', exact: true }).click(); await expect(dialog).toHaveCount(0);
   await page.goto('/learn'); expect(await styles()).toEqual(before);
 });
+
+test('original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes', async ({ page }) => {
+  const oldFile='apps/web/public/reference/hyperknow/font-faces-873aea85d4e2b6ae.css',legacySha=createHash('sha256').update(readFileSync(join(process.cwd(),oldFile))).digest('hex');
+  await page.addInitScript(({legacySha})=>document.addEventListener('DOMContentLoaded',()=>{if(!new URL(location.href).searchParams.has('whiteboard'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='/reference/hyperknow/font-faces-873aea85d4e2b6ae.css';link.dataset.originalTeachingFonts=legacySha;document.head.append(link);}),{legacySha});
+  await page.goto(await board(page)); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
+  const captured = await page.evaluate(() => {
+    const link = document.querySelector<HTMLLinkElement>('link[data-original-teaching-fonts]');
+    return Array.from(link!.sheet!.cssRules).filter(rule => rule instanceof CSSFontFaceRule).map(rule => (rule as CSSFontFaceRule).style.getPropertyValue('font-family').replace(/^['"]|['"]$/g,''));
+  });
+  expect(captured.filter(family => family.startsWith('HKOriginal-KaTeX_')).length).toBeGreaterThan(0);
+  expect(captured.filter(family => family.startsWith('KaTeX_'))).toEqual([]);
+  await expect(page.locator('link[data-original-teaching-fonts="'+legacySha+'"]')).toHaveCount(0);
+  await dialog.getByRole('button', { name: '关闭白板', exact: true }).click();
+  const principal='answer-font-'+randomUUID()+'@local.test',credential='Synthetic-math-font-only-20261027',address='198.19.223.131';
+  async function call(path:string,body:object,token?:string) { const response=await fetch(api+path,{method:'POST',headers:{'Content-Type':'application/json','X-Forwarded-For':address,...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify(body)});expect(response.ok,path+' '+response.status).toBe(true);return(await response.json()).data; }
+  const actor=await call('/auth/register',{principal,credential}),student=(await call('/students',{nickname:'匿名字体输入',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}},actor.token)).profile;
+  const fixture=await call('/qa/answer-journeys',{studentId:student.id,mode:'formula_blank',kind:'diagnostic'},actor.token);
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  const requests:Array<{url:string;status:number}>=[];
+  page.on('response',response=>{const path=new URL(response.url()).pathname;if(path.startsWith('/vendor/mathlive/fonts/')||/\/_next\/static\/media\/KaTeX_.*\.woff2$/.test(path))requests.push({url:response.url(),status:response.status()});});
+  await page.goto(fixture.href);const field=page.locator('math-field').first();await expect(field).toBeVisible();await field.click();
+  await field.evaluate(element=>(element as any).setValue('\\left(\\frac{1+\\sqrt{x^2+1}}{y^3}\\right)'));
+  await expect.poll(()=>requests.length).toBeGreaterThan(0);await page.evaluate(()=>document.fonts.ready);
+  expect(requests.every(request=>request.status===200)).toBe(true);
+  await expect.poll(()=>page.evaluate(()=>Array.from(document.fonts).filter(face=>face.status==='loaded'&&/KaTeX_/.test(face.family)&&!face.family.includes('HKOriginal-')).length)).toBeGreaterThan(0);
+  const loaded=await page.evaluate(()=>Array.from(document.fonts).filter(face=>face.status==='loaded'&&/KaTeX_/.test(face.family)&&!face.family.includes('HKOriginal-')).map(face=>face.family));
+  expect(loaded.length).toBeGreaterThan(0);
+  const actualFontDigests=[];
+  for(const request of requests){const match=new URL(request.url).pathname.match(/\/(KaTeX_[A-Za-z0-9_-]+)\.[a-f0-9]+\.woff2$/i);if(!match)continue;const response=await page.request.get(request.url),bytes=await response.body(),file=match[1]+'.woff2',expected=readFileSync(join(process.cwd(),'node_modules/katex/dist/fonts',file));expect(createHash('sha256').update(bytes).digest('hex')).toBe(createHash('sha256').update(expected).digest('hex'));actualFontDigests.push({file,sha256:createHash('sha256').update(bytes).digest('hex')});}
+  expect(actualFontDigests.length).toBeGreaterThan(0);
+  const response=await page.request.get('/vendor/mathlive/manifest.json');expect(response.status()).toBe(200);const manifest=await response.json();expect(manifest.files).toHaveLength(20);
+  for(const file of manifest.files){const font=await page.request.get('/vendor/mathlive/'+file.path),bytes=await font.body();expect(font.status()).toBe(200);expect(bytes.length).toBe(file.size);expect(createHash('sha256').update(bytes).digest('hex')).toBe(file.sha256);}
+  const directory=browserEvidence('original-math-font-isolation');writeFileSync(join(directory,'actual-math-editor-fonts.json'),JSON.stringify({capturedMathAliases:captured.filter(family=>family.startsWith('HKOriginal-KaTeX_')),requests,loaded,actualFontDigests,manifest},null,2)+'\n');await field.screenshot({path:join(directory,'actual-tall-formula.png')});
+});

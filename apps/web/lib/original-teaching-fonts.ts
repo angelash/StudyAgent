@@ -8,6 +8,13 @@ export const originalUiFontFamily = '"Satoshi-Regular", MiSans, sans-serif';
 let stylesheet: Promise<void> | null = null;
 let retrySequence = 0;
 
+function removeObsoleteCapturedFonts() {
+  for (const link of document.querySelectorAll<HTMLLinkElement>('link[data-original-teaching-fonts]')) {
+    const fingerprint = link.dataset.originalTeachingFonts ?? '', url = new URL(link.href, location.href);
+    if (fingerprint !== registry.sha256 && /^[a-f0-9]{64}$/.test(fingerprint) && url.origin === location.origin && url.pathname.startsWith('/reference/hyperknow/font-faces-')) link.remove();
+  }
+}
+
 function retryFailedGlyphs() {
   const failed = new Set(Array.from(document.fonts).filter(face => face.status === 'error').map(face => face.family.replace(/^['"]|['"]$/g, '')));
   if (!failed.size) return;
@@ -57,6 +64,7 @@ function waitFor<T>(work: Promise<T>, signal: AbortSignal): Promise<T> {
 
 export async function prepareOriginalTeachingFonts(text: string, mode: OriginalBoardFont, signal: AbortSignal) {
   await waitFor(registerStylesheet(), signal);
+  removeObsoleteCapturedFonts();
   const declared = new Set(Array.from(document.fonts).map(face => face.family.replace(/^['"]|['"]$/g, '')));
   const families = ['Satoshi-Regular', 'Satoshi-Medium', 'Satoshi-Bold', 'MiSans', ...(mode === 'handwriting' ? ['Virgil', 'Xiaolai'] : [])];
   for (const family of families) if (!declared.has(family)) throw new Error('板书字体尚未完整登记，请重试。');

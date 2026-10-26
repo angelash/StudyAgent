@@ -21,6 +21,9 @@ if (fs.existsSync(runtimeLock)) {
   fs.unlinkSync(runtimeLock);
 }
 if (command === 'build') {
+  const prepared = spawnSync(process.execPath, [path.join(root, 'scripts/build-web-assets.cjs')], { cwd: root, stdio: 'inherit', windowsHide: true });
+  if (prepared.error) throw prepared.error;
+  if (prepared.status !== 0) throw new Error('Required local math editor fonts could not be prepared');
   const source = path.join(root, 'apps/web');
   fs.mkdirSync(target, { recursive: true });
   fs.cpSync(source, target, { recursive: true, filter: file => !path.relative(source, file).split(path.sep).some(part => ['.next', 'node_modules'].includes(part)) && !file.endsWith('.tsbuildinfo') });
