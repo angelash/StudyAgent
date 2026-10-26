@@ -4,7 +4,7 @@
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
-127原卷练习已以精确CI头5468948/40368316059完成三组验证和主目录schema18守护交付，298浏览器原始单次零重试通过，见[127验收](../evidence/2026-10-27/paper-practice-acceptance.json)。128在隔离开发中补充CONTENT-13/14：本人反思/完整整理历史、来源绑定再练、当前审核知识点下的独立新题与原预览恢复、原卷复习和课程日历同屏；已获得专项和双库阶段证据，完整回归、精确CI与实际交付仍待。当前设计14领域/125功能/378正常接口/100集合/355共享类型、29个Web页，详见[128具体设计](../product/128-paper-review-workspace-and-next-practice.md)及[总计划](../product/105-development-plan-status-and-next-milestones.md)。
+127原卷练习已以精确CI头5468948/40368316059完成三组验证和主目录schema18守护交付，298浏览器原始单次零重试通过，见[127验收](../evidence/2026-10-27/paper-practice-acceptance.json)。128在隔离开发中补充CONTENT-13/14：本人反思/完整整理历史、来源绑定再练、当前审核知识点下的独立新题与原预览恢复、原卷复习和课程日历同屏；固定业务60263b3的完整本地API1354通过/54环境跳过、整站浏览器315原始单次零重试通过，PG23及两种真实原生恢复通过；最终输入已冻结，精确CI与实际交付仍待。当前设计14领域/125功能/378正常接口/100集合/355共享类型、29个Web页，详见[128具体设计](../product/128-paper-review-workspace-and-next-practice.md)及[总计划](../product/105-development-plan-status-and-next-milestones.md)。
 
 普通助教已支持持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。源码、精确CI与实际守护运行版本分别记录，当前运行及候选状态见本页末尾，不以设计生成代替发布。
 

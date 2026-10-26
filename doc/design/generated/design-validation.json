@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T18:10:32.042Z",
-  "sourceRevision": "d1dd3bd39b42342e89a5d228499a1b9e1a8be081",
+  "at": "2026-10-26T18:28:14.901Z",
+  "sourceRevision": "60263b35909eef59befca3a8cf331cdf9815a667",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -324,7 +324,7 @@
       "apps/web/app/parent/login/page.tsx": "09ec6498b5dbc654ec87d40c9a9486e300d10970a6840e70b20ec5f8f6eaecec",
       "apps/web/app/student/assessment/studio.tsx": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
       "apps/web/app/student/login/page.tsx": "cf3fa0f8bcb9f20e8a77a2fb907d4a9a8c2effd66a4d64829f3ff12c8922c7de",
-      "apps/web/app/studio/calendar-board.tsx": "e9ba40238c7970690e06b08cd7069995ec7359bfbdcfcd2d2ee1b55b050046f4",
+      "apps/web/app/studio/calendar-board.tsx": "429d4c03e7ead3d61eabf104505092b34209ee6f5ddca59fe152eef8e39aedac",
       "apps/web/app/studio/classroom/board-formula.ts": "b86176ef09181c041064d40435e2bcc14b4ef31cfae10cd3db8006b0833be501",
       "apps/web/app/studio/classroom/board-step.tsx": "268461f7ac12827e4af4de4a43f6e14eda7be4016b5c92ad6023f4349162d369",
       "apps/web/app/studio/classroom/captions.css": "abde7562ab4c2a477fe7a42dac010e84dccbfdea68fd4c57b8b12a3e008c6a9b",
@@ -410,7 +410,7 @@
       "apps/web/components/knowledge-report-workspace.tsx": "d616a79211f39ca3bf65e8b8bd8f165a74817536b720e3406838a24900a524c5",
       "apps/web/components/paper-practice-launcher.tsx": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d",
       "apps/web/components/paper-review-editor.tsx": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
-      "apps/web/components/paper-review-next-steps.tsx": "5565c5aa3b2d6d78ad642bb929eacc7fc8da37bd629a73b9e3d1af88f187aea3",
+      "apps/web/components/paper-review-next-steps.tsx": "8b3a54a1e400825ba64ead7532e9fd451f42ad649b0fd74702f843f9c465ae10",
       "apps/web/components/question-renderer.tsx": "2b9e1baba77e3be8d7ea9786cd9a448a55bfae4111f4bb12065e66125927b1e7",
       "apps/web/components/report-plan-path.tsx": "b463f8beec1c1b847d617ae87376526849b1bb013c3d22226fd8897e6ff02e92",
       "apps/web/components/session-connection.tsx": "6da804b851b072d20de1faba7c2ed745065759dc2b14296a3628cbad2c8c4f99",
@@ -537,7 +537,7 @@
       "tests/e2e/guidance-model.spec.ts": "5b9c25414004dc5a4627d19583930741bd69f3c118b2ea1e1030ea55c076c990",
       "tests/e2e/knowledge-report.spec.ts": "861b4af8d06786d3ef6629b8030d5db3e362bf307f00871c8d1bf80f91f30d1b",
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
-      "tests/e2e/paper-practice.spec.ts": "0bc2f70c3e025f8c623e779ce6ab8113fd265ea47ed5c566ae35074788f9ecec",
+      "tests/e2e/paper-practice.spec.ts": "c39f380e9eba367889825215a6347f4cfeb364a7cd6c6da03886fd9bd40884b9",
       "tests/e2e/pdf-material.spec.ts": "cf3e8c04730ae12bf97c866a4a1562d2101ead5ea26cacd8bb7b117d12ceb406",
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
       "tests/e2e/project-files.spec.ts": "e8bebc4b426b610af075c26f3e4ed0d3e34424f5cec16ce45108a0bf4e0b8005",
@@ -560,7 +560,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3270,
+    "checked": 3275,
     "missing": []
   },
   "staticContent": {
