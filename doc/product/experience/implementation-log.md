@@ -465,3 +465,6 @@ SQLite课堂组合35、PG33/2个SQLite专属跳过、完整API1069/34环境跳�
 
 
 2026-10-26：124主目录实际守护交付。构建6ab9211/核心0d4e738，schema17，buildId YJmjG_Z1T6Zu2FJLZkicg；精确09bdeee/40279485485三组success，两端253浏览器零失败/跳过/重试。完整API本地1319/53环境跳过与Linux1311/61、原生PG配图17/主题14及2项SQLite专属跳过分别留证，不相加。2次真实gpt-image-2 HTTP生成/edit、原PNG、重放及冻结字节已验证；受控WAV/图片导出与真实供应商范围分开。120运行HTTP/权限/JS检查、16编译SHA及六音频SHA、217787毫秒三次守护稳定观察通过；五配置/真实环境原字节和新鲜123/schema16停服一致数据库/引用文件与874旧编译文件回退保留，assetsIncluded:false非全资产备份或完整恢复演练。完整稿选图、对比和原比例阅读、统一复杂公式/原文分页视频已可使用，旧进度帧跳句由稳定红色WAV回归确认并修复；失败及被替代全绿CI原件保留。原72项/M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁不变，整体目标继续。见[最终运行](../../evidence/2026-10-26/topic-figure-runtime.json)及[最终验收](../../evidence/2026-10-26/topic-figure-acceptance.json)。
+
+
+2026-10-26：126知识点报告工作区正式交付。先提交cf45555/6bf5b85/53d3c62具体规格；实现560a89b，精确CI9e75de1/40323444646三组success。本地/远端277浏览器各277次原始通过，专项14通过；API/评分/数据库无变化，Linux完整API1311/61环境跳过。主目录实际buildId nbaNDj3RMWog21P4jGlUR/schema17，139HTTP/权限/资源检查、16编译SHA、六MP3 SHA、跨232633ms三次守护观察通过；新鲜125一致数据与890编译文件回退、本地五配置/真实环境保持。冻结目标、估计/未知、原题证据、完整原因历史、原计划/复测匹配、蓝图预览及reportAtom导航可用。现行自我报告评分保持；受控原因投影与真实领域流程分开。用户已登录的HyperKnow当前练习/课程/白板/日历/设置补查归档，未取得完整原CSS字体DPR音频。72项状态和M1～M7完整目标保持；见[126](../126-knowledge-report-workspace-and-evidence-paths.md#8-精确ci与正式运行)与[验收](../../evidence/2026-10-26/knowledge-report-acceptance.json)。

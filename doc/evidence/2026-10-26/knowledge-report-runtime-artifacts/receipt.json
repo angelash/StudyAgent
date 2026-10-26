@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-26T13:05:17.546Z",
+  "status": "original-runtime-and-release-receipts-archived",
+  "files": [
+    {
+      "file": "runtime.json",
+      "originalBytes": 43152,
+      "originalSha256": "6d5594c7d0186a52875ff5eb05429c2bcccd2c2086ba5e56a575d25295ab00ba",
+      "storedSha256": "6d5594c7d0186a52875ff5eb05429c2bcccd2c2086ba5e56a575d25295ab00ba"
+    },
+    {
+      "file": "backup-verified.json",
+      "originalBytes": 452,
+      "originalSha256": "05703c50e85cd619a654b5f59b678e1d7b4eb3ba4ca411ad94ef4af4f67d31d2",
+      "storedSha256": "05703c50e85cd619a654b5f59b678e1d7b4eb3ba4ca411ad94ef4af4f67d31d2"
+    },
+    {
+      "file": "build-backup-verification.json",
+      "originalBytes": 248,
+      "originalSha256": "9ad70ec4c95945631b21fdaf0c6ce058584a09fe70e5478c23678e86325689b2",
+      "storedSha256": "9ad70ec4c95945631b21fdaf0c6ce058584a09fe70e5478c23678e86325689b2"
+    },
+    {
+      "file": "build-files.json",
+      "originalBytes": 169111,
+      "originalSha256": "17e53117366ac9387ad701142cf66e17b8e84940a62c1460692d9352fcbe7138",
+      "storedSha256": "17e53117366ac9387ad701142cf66e17b8e84940a62c1460692d9352fcbe7138"
+    },
+    {
+      "file": "deployment-before.json",
+      "originalBytes": 1335,
+      "originalSha256": "54d65dffeca10fd35ce1d1a51ea29f56f1e419ced2ecbd7cf37c1bee143b5ba3",
+      "storedSha256": "54d65dffeca10fd35ce1d1a51ea29f56f1e419ced2ecbd7cf37c1bee143b5ba3"
+    },
+    {
+      "file": "deployment-target.json",
+      "originalBytes": 152,
+      "originalSha256": "5143c41a10f4b6805268a6921049ea170cf7738ecb99c9f0c3e57bdcb8752d3b",
+      "storedSha256": "5143c41a10f4b6805268a6921049ea170cf7738ecb99c9f0c3e57bdcb8752d3b"
+    },
+    {
+      "file": "candidate.json",
+      "originalBytes": 3109,
+      "originalSha256": "333883f23a4ac8733a33c2d36d667c30f022beeebd9fd08abe88b534f36a80e5",
+      "storedSha256": "333883f23a4ac8733a33c2d36d667c30f022beeebd9fd08abe88b534f36a80e5"
+    },
+    {
+      "file": "main-build-original.log.gz",
+      "originalBytes": 2874,
+      "originalSha256": "7cace59ebc2da326955c943e5921bfb36bb2a9c0be30d98adaa33419a549cb93",
+      "storedSha256": "a15352b5bd373b8ee9df694e3f7b8985535097154b9a6ab6cd8b227b549bcce8"
+    },
+    {
+      "file": "observation-1.json",
+      "originalBytes": 603,
+      "originalSha256": "2f8f82b7b1eaf57463f0e7bae35818f00adc2ef98738b6a3fe46f8ec761b922c",
+      "storedSha256": "2f8f82b7b1eaf57463f0e7bae35818f00adc2ef98738b6a3fe46f8ec761b922c"
+    },
+    {
+      "file": "observation-2.json",
+      "originalBytes": 603,
+      "originalSha256": "62d86e41510c6ed5bd5a8feda6a7eb0520f2a51dd60c454b3042f03f76393088",
+      "storedSha256": "62d86e41510c6ed5bd5a8feda6a7eb0520f2a51dd60c454b3042f03f76393088"
+    },
+    {
+      "file": "observation-3.json",
+      "originalBytes": 603,
+      "originalSha256": "d3ce3bd856f798130f41118974e9c7e67498ed12c23f9facb751f342fa0f7670",
+      "storedSha256": "d3ce3bd856f798130f41118974e9c7e67498ed12c23f9facb751f342fa0f7670"
+    },
+    {
+      "file": "prepare-knowledge-report-release.cjs.gz",
+      "originalBytes": 4392,
+      "originalSha256": "8cb4d1ba51a1ccfafdc1d785b4617e35dc21f6e7fdef2d5f1e067a1dfe76b4ff",
+      "storedSha256": "3df43eea72afe1f23aa164cb6b892b0997fb0dcf1beb5c25cb706127958327e7"
+    },
+    {
+      "file": "prepare-knowledge-report-candidate.cjs.gz",
+      "originalBytes": 4102,
+      "originalSha256": "1c2235f3c50f3195c377b9e3340092b2ac5de3c293d65322831ab2402b25b4f1",
+      "storedSha256": "57fbf33de70056a598f2b9fa0554f8b9885f5096f68e4308851997d47c61720b"
+    },
+    {
+      "file": "deploy-knowledge-report-prepare.cjs.gz",
+      "originalBytes": 4494,
+      "originalSha256": "e5eec96e9e302d2910c781a17017fe61e9a8665fa69dd05d67f60804072abd89",
+      "storedSha256": "9dea22716604f7499c097bcf32dee7cbc022d8fdad878a0249542a77ec091cc8"
+    },
+    {
+      "file": "check-knowledge-report-release.cjs.gz",
+      "originalBytes": 10756,
+      "originalSha256": "0a1927cedaf596ffa24e6072bcb206934bbecfd5b5255933aa2e80637b24e739",
+      "storedSha256": "b04363e3dd834ab243da7f38f343a09a55cea7799c12efc6f9d766819da74ab6"
+    },
+    {
+      "file": "observe-knowledge-report.cjs.gz",
+      "originalBytes": 1362,
+      "originalSha256": "2de81414e62788f0655e55e6d56b389545ab100b9c6faa5dadb45941bd1649f7",
+      "storedSha256": "29ef4e4234e98f18da19b240f26c197d911e1f8c95ba716eb72f6a9643ad0a19"
+    }
+  ],
+  "scope": "Only runtime receipts, code guards, public build log and hashed old build manifest; private database/configuration bytes remain in local rollback."
+}

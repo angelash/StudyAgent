@@ -7,7 +7,8 @@
     "read existing correct practice state",
     "close practice to course",
     "open calendar duration dialog and close without proceeding",
-    "resume existing whiteboard and read its restored history"
+    "resume existing whiteboard and read its restored history",
+    "open existing session settings and close without changing preferences or playing audio"
   ],
   "files": [
     {
@@ -45,18 +46,33 @@
       "bytes": 212884,
       "sha256": "26bb79fac3f75f38c0c488a71280d86d45ffff3cde6f89995699b3165c154fc1",
       "description": "Existing resumed whiteboard/history state.880x887 screenshot; no new teaching query or audio request."
+    },
+    {
+      "file": "settings-snapshot.json",
+      "bytes": 22833,
+      "sha256": "b92f7728134de321c73aa59296d307bd5877e9bcc0e24472cccd40593268ed56",
+      "description": "Accessible settings projection; learner greeting removed; Runtime partial coverage retained."
+    },
+    {
+      "file": "settings-dialog.png",
+      "bytes": 63719,
+      "sha256": "25bf4d61be56bee29701c3d9d223ec793f9c0a36db0eb2af4f9567b1ae24fb52",
+      "description": "Cropped session-settings dialog; no preference or audio-play change."
     }
   ],
   "observed": [
     "Practice combines stem, illustration, options, correctness explanation, score and next control; current880px layout partly occludes options.",
     "Calendar offers1week/2weeks/1month/2months and custom days; current default2weeks. Later steps unobserved.",
     "Restored board contains concise learning-navigation items, biography/history diagram, comparison table and anonymous practice prompt. Chat history has sentence blocks and board-location chips.",
-    "Resumed-conversation notice waits for a query; no new query was sent."
+    "Resumed-conversation notice waits for a query; no new query was sent.",
+    "Settings offers six voice cards with independent preview buttons,0.5/0.75/1/1.25/1.5/2 speed ticks,Handwriting/Standard,background dots,and replay tour. Current selected Calm,1x,Handwriting,dots enabled."
   ],
   "limits": [
     "No source CSS, original fonts, current DPR, audio bytes, new model call or causal teaching result acquired.",
     "Board snapshot coverage is partial/truncated as reported by Runtime; course and calendar coverage are complete.",
     "Prior optional assistant click result was unknown at interruption; this archive does not retroactively claim its outcome.",
-    "A fresh current-turn screenshot succeeded through supported Browser Runtime; no authenticated HTTP, downloads or alternative browser tool used."
-  ]
+    "A fresh current-turn screenshot succeeded through supported Browser Runtime; no authenticated HTTP, downloads or alternative browser tool used.",
+    "Settings snapshot is also partial/truncated; screenshot confirms dialog geometry only, not original CSS or fonts."
+  ],
+  "settingsRecheckedAt": "2026-10-26T12:52:27.149Z"
 }

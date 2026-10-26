@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-26T13:05:17.548Z",
+  "status": "knowledge-report-workspace-delivered",
+  "passed": true,
+  "overallProductComplete": false,
+  "applicationRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
+  "ciHead": "9e75de1dba37b0af0e74a4380697cbe84c89450f",
+  "ciRun": 40323444646,
+  "webBuildId": "nbaNDj3RMWog21P4jGlUR",
+  "schemaVersion": 17,
+  "entrypoints": [
+    "http://127.0.0.1:3217/learn",
+    "http://127.0.0.1:3217/student/assessment"
+  ],
+  "behavior": [
+    "Frozen per-point goals, original estimate/interval/four dimensions and explicit unknown distinctions.",
+    "Protected original answers, surface observations, component clues, alternatives, counterevidence and complete cause history.",
+    "Original blueprint preview before verification; terminal causes and real spaced-retention gates preserved.",
+    "Complete authorized plan list matches the report baseline; owner/student/subject/report-version/plan-revision isolate late review responses.",
+    "Search,reportAtom,reload/back/forward,original-question return and durable full-plan route; student management restrictions retained."
+  ],
+  "validation": {
+    "focused": {
+      "passed": 14,
+      "originalAttempts": 14,
+      "retries": 0
+    },
+    "localFull": {
+      "passed": 277,
+      "originalAttempts": 277,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0
+    },
+    "remoteFull": {
+      "passed": 277,
+      "originalAttempts": 277,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0
+    },
+    "linuxApi": {
+      "passed": 1311,
+      "environmentSkipped": 61
+    },
+    "ciJobs": [
+      {
+        "name": "application",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121573958460
+      },
+      {
+        "name": "postgres",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121573958822
+      },
+      {
+        "name": "browser",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121573958847
+      }
+    ],
+    "httpChecks": 139,
+    "compiledShaFiles": 16,
+    "originalVoiceShaFiles": 6,
+    "observedIntervalMs": 232633,
+    "services": [
+      {
+        "name": "study-agent-api",
+        "pid": 54860,
+        "status": "online",
+        "restarts": 1164,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-web",
+        "pid": 76144,
+        "status": "online",
+        "restarts": 3,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-health",
+        "pid": 34656,
+        "status": "online",
+        "restarts": 1,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      }
+    ],
+    "sourceDesign": {
+      "areas": 14,
+      "features": 122,
+      "businessRoutes": 364,
+      "collections": 98,
+      "contracts": 334
+    }
+  },
+  "rollback": {
+    "path": "output/daemon/release-backups/2026-10-26-knowledge-report-1793018134996",
+    "previousRelease": "125-whiteboard-continuity",
+    "verifiedFiles": 1,
+    "compiledFiles": 890,
+    "assetsIncluded": false,
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified125 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "preservation": {
+    "protectedLocalConfigs": 5,
+    "realEnvironment": true,
+    "apiScoringDatabaseUnchanged": true,
+    "noNewSupplierCall": true
+  },
+  "evidence": {
+    "spec": "doc/product/126-knowledge-report-workspace-and-evidence-paths.md",
+    "focused": "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json",
+    "localFull": "doc/evidence/2026-10-26/knowledge-report-full-browser/receipt.json",
+    "exactCi": "doc/evidence/2026-10-26/knowledge-report-exact-ci/receipt.json",
+    "runtime": "doc/evidence/2026-10-26/knowledge-report-runtime.json",
+    "reference": "doc/evidence/2026-10-26/hyperknow-login-recheck/receipt.json"
+  },
+  "limits": [
+    "Current rule-estimate-v2 treatment of self-report is preserved, described and not silently changed by UI.",
+    "Some history/legacy-definition action boundaries use explicitly controlled projections; they are not teacher causal validation.",
+    "Reference screenshots are selected states; original CSS/fonts/DPR/audio not acquired or fully reproduced.",
+    "Synthetic isolated browser/API flows and anonymous production checks do not replace real devices, teachers, full content coverage or1/3/7/14day learning evidence.",
+    "Rollback is not an independent archive of all research assets or a full new-machine recovery rehearsal.",
+    "Original72 requirements remain11 implemented/48 in_progress/13 planned/0 verified; M1-M7 remain active."
+  ]
+}

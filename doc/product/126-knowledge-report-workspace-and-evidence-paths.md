@@ -67,3 +67,18 @@ AssessmentStudio已有完整范围/蓝图、量化报告、原子步骤、原因
 用户确认登录后，通过支持的Browser Runtime重新读取HyperKnow既有Correct/Score600练习、课程目录、日历期限弹窗与恢复白板。当前截图成功，课程/日历可访问快照完整；白板快照仍按Runtime标记partial/truncated。账号称呼已从归档投影移除，日历只截取弹窗以去除背景头像。未提交新消息、答案或日程，未取得原CSS/字体/DPR/音频；见[参考补查](../evidence/2026-10-26/hyperknow-login-recheck/receipt.json)。新观察用于继续M1逐状态对照，不能声称100%还原。
 
 以上为本地通过状态；远端精确三组CI、主目录构建/新鲜回退和实际守护交付继续进行。当前正式运行仍为125，不把开发工作区的功能当作已交付网页。
+
+
+## 8. 精确CI与正式运行
+
+2026-10-26当前交付：126知识点能力报告已在主目录实际构建并由守护服务运行，构建9e75de1、业务560a89b、buildId nbaNDj3RMWog21P4jGlUR、schema17。14专项及本地/精确远端277浏览器均原始单次通过，零失败/跳过/flaky/重试；远端40323444646三组success，Linux完整API1311通过/61环境跳过。139项实际HTTP/权限/资源检查、16编译文件及6原音频逐SHA通过，三次守护观察跨232633毫秒PID/重启计数稳定；五处配置和真实环境保持原字节。
+
+报告现在以知识点组织冻结目标、四维估计/未知、表面证据、完整原因与反证/历史、匹配指导及原复测；原蓝图确认、原题复核和真实保持边界保留。现行自我报告估计忠实展示，不在UI悄悄更改评分。新鲜125/schema17停服一致数据库及引用文件、890旧编译文件和私有配置已备份校验，assetsIncluded:false，不是全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声与教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
+
+远端原始三组日志、277浏览器JSON、逐项SHA及应用/PG独立组合范围见[精确CI收据](../evidence/2026-10-26/knowledge-report-exact-ci/receipt.json)。完整回归与14专项不相加为覆盖率。没有新增供应商调用，真实默认模型/音频/生图历史证据仍按原批次单列。
+
+用户登录后的课程、既有练习反馈、白板恢复、日历期限和六音色/倍速/字体/背景/导览设置均已重新观察；只读取现有状态并关闭弹窗，未提交新消息、答案、日程或改变偏好。参考截图与移除称呼后的快照见[参考补查](../evidence/2026-10-26/hyperknow-login-recheck/receipt.json)。白板/设置快照保留partial/truncated，当前图片成功不反推此前未知点击结果。
+
+实际入口为[学习首页](http://127.0.0.1:3217/learn)及[能力评测](http://127.0.0.1:3217/student/assessment)：完成一组评测或打开已完成报告后，在“知识掌握与证据范围”选择知识点。隔离合成浏览器验证完整授权业务；正式运行仅做匿名页面、资源和权限负例，未向真实家庭库写测试记录。
+
+见[最终验收](../evidence/2026-10-26/knowledge-report-acceptance.json)、[实际运行](../evidence/2026-10-26/knowledge-report-runtime.json)及[原运行文件与回退校验](../evidence/2026-10-26/knowledge-report-runtime-artifacts/receipt.json)。完整目标保持active，不因本报告工作区交付宣布全部完成。

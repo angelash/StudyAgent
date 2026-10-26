@@ -30,6 +30,7 @@ doc/evidence/2026-10-26/hyperknow-*.json text eol=lf
 doc/evidence/2026-10-26/project-command*.json text eol=lf
 
 # Preserve original report inputs and artifact digests across checkout platforms.
+doc/evidence/2026-10-26/knowledge-report*.json text eol=lf
 doc/evidence/2026-10-26/knowledge-report-*/** -text
 doc/evidence/2026-10-26/knowledge-report-*/inputs/** -diff
 doc/evidence/2026-10-26/knowledge-report-*/test-source-original.ts -diff

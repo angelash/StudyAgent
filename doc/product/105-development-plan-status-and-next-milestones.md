@@ -1,14 +1,12 @@
 # 开发计划核对、整体进度与后续里程碑
 
-2026-10-26当前交付：125连续逐句白板已在主目录实际构建并由守护服务运行，构建6851175、业务8284cd6、buildId NhoNotmav8Cvzr9bnQqEW、schema17。本地与精确远端6851175/40304753383均263浏览器/263次原始尝试零失败、跳过与重试；Linux完整API1311通过/61环境跳过，原生Ubuntu配置4通过/0跳过。120项实际HTTP/权限/脚本检查、16编译文件及6原音频逐SHA通过，三次守护观察跨163300毫秒PID/重启计数稳定；五配置和真实环境保持原字节。
+2026-10-26当前交付：126知识点能力报告已在主目录实际构建并由守护服务运行，构建9e75de1、业务560a89b、buildId nbaNDj3RMWog21P4jGlUR、schema17。14专项及本地/精确远端277浏览器均原始单次通过，零失败/跳过/flaky/重试；远端40323444646三组success，Linux完整API1311通过/61环境跳过。139项实际HTTP/权限/资源检查、16编译文件及6原音频逐SHA通过，三次守护观察跨232633毫秒PID/重启计数稳定；五处配置和真实环境保持原字节。
 
-普通/PDF/主题白板已接入仅一条相邻准备及每次实际播放前的原稿授权核对，暂停/音色/手动跳句/失败明确重试保持；700ms受控等待下普通换句由743.8ms降至35.6ms、主题12.3ms，没有125新增供应商调用或真人听感结论。新鲜124/schema17停服一致数据/引用文件、890旧编译文件及私有配置回退均已验证；assetsIncluded:false，未冒称全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声、教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
+报告现在以知识点组织冻结目标、四维估计/未知、表面证据、完整原因与反证/历史、匹配指导及原复测；原蓝图确认、原题复核和真实保持边界保留。现行自我报告估计忠实展示，不在UI悄悄更改评分。新鲜125/schema17停服一致数据库及引用文件、890旧编译文件和私有配置已备份校验，assetsIncluded:false，不是全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声与教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
 
-见[125完整规格与交付](125-whiteboard-continuous-narration-and-bounded-preparation.md#11-最终精确ci与实际守护交付)、[最终验收](../evidence/2026-10-26/whiteboard-continuity-acceptance.json)、[精确CI原件](../evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json)与[实际运行](../evidence/2026-10-26/whiteboard-continuity-runtime.json)。
+见[126规格与最终交付](126-knowledge-report-workspace-and-evidence-paths.md#8-精确ci与正式运行)、[完整验收](../evidence/2026-10-26/knowledge-report-acceptance.json)、[精确CI原件](../evidence/2026-10-26/knowledge-report-exact-ci/receipt.json)和[实际运行](../evidence/2026-10-26/knowledge-report-runtime.json)。
 
 第1～4节保留2026-10-24原始核对基线，第5节继续约束M0～M7完整目标；各次交付前的中间状态移至第7节按原文留存。当前运行与需求状态以以上收据及72项账本为准。
-
-126开发更新：按知识点组织冻结目标、四维估计/未知、表面证据、原因与反证/完整历史、匹配指导与原复测；保留蓝图确认、原题复核和真实保持边界。14专项及完整277浏览器均原始单次通过，lint/隔离生产Web构建通过，远端CI与主目录交付继续，正式运行仍为125。见[126规格与本地结果](126-knowledge-report-workspace-and-evidence-paths.md#7-本地实现与原始验证)。用户登录后的HyperKnow参考补查已留证，原CSS/字体/DPR/原声和M1～M7未完成门禁保持，72项状态不变。
 
 ## 1. 整体判断与本轮核对结果
 
@@ -311,3 +309,12 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 2026-10-26更新：125实现8284cd6、设计4a777d6已推送；本地完整263浏览器263次原始尝试全部通过、零失败/跳过/重试（22.9分钟），与45专项重叠不相加。精确CI 40298092966中PG成功，browser在8分钟依赖预算失败，原日志证实托管runner实际用mirror+file列表，原直接URL替换未生效；application仍在运行，不取消、不抢推。补充规格已先提交a582b76，共用官方源解析脚本/全三组准备接入/原生3通过及1 Windows链接权限跳过已完成，等旧CI全部终态后推送复验；生产仍124/schema17。890旧编译文件及配置回退已预备，停服数据备份/125主目录交付仍待。见[完整本地验证](../evidence/2026-10-26/whiteboard-continuity-full-browser/receipt.json)及[125第9～10节](125-whiteboard-continuous-narration-and-bounded-preparation.md#9-托管runner文件镜像列表修正再次实施前)。全部72项及M1～M7退出条件保持。
 
 2026-10-26 CI终态：40298092966的application与PostgreSQL均success，完整Linux API1311通过/61环境跳过；browser在依赖准备阶段failure，整个run保持failure，未执行浏览器断言、未人为取消。原阶段快照和[完整终态/日志](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/terminal-receipt.json)分别保留。9b05691已修正实际mirror+file引用并接入全部临时runner，5578005完成491源码引用/3056链接/10离线阅读器检查；旧CI全部结束后接续推送修正复验，生产继续124/schema17，整体目标及真人/全内容/原样式门禁不变。
+
+
+### 2026-10-26 125运行记录原文
+
+2026-10-26当前交付：125连续逐句白板已在主目录实际构建并由守护服务运行，构建6851175、业务8284cd6、buildId NhoNotmav8Cvzr9bnQqEW、schema17。本地与精确远端6851175/40304753383均263浏览器/263次原始尝试零失败、跳过与重试；Linux完整API1311通过/61环境跳过，原生Ubuntu配置4通过/0跳过。120项实际HTTP/权限/脚本检查、16编译文件及6原音频逐SHA通过，三次守护观察跨163300毫秒PID/重启计数稳定；五配置和真实环境保持原字节。
+
+普通/PDF/主题白板已接入仅一条相邻准备及每次实际播放前的原稿授权核对，暂停/音色/手动跳句/失败明确重试保持；700ms受控等待下普通换句由743.8ms降至35.6ms、主题12.3ms，没有125新增供应商调用或真人听感结论。新鲜124/schema17停服一致数据/引用文件、890旧编译文件及私有配置回退均已验证；assetsIncluded:false，未冒称全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声、教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
+
+见[125完整规格与交付](125-whiteboard-continuous-narration-and-bounded-preparation.md#11-最终精确ci与实际守护交付)、[最终验收](../evidence/2026-10-26/whiteboard-continuity-acceptance.json)、[精确CI原件](../evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json)与[实际运行](../evidence/2026-10-26/whiteboard-continuity-runtime.json)。

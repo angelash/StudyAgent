@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T12:31:35.349Z",
+  "at": "2026-10-26T13:07:28.309Z",
   "sourceRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
@@ -417,7 +417,7 @@
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "955b54815bc9c307eaa57ded9688375a1fe3f34699b74cf57a4c595cb6b3dcec",
-      "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "d95bf15ebd19b9c20961044a84cdff5854cdf4c1e2049b2ff8faf41d21e87a58",
+      "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "9e59cf5d6123354680a327b17edf39734b7fd53c82a8c4ae96f20fd54f5863f4",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -537,7 +537,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3102,
+    "checked": 3112,
     "missing": []
   },
   "staticContent": {
@@ -608,7 +608,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/knowledge-report-full-browser/receipt.json",
+    "receipt": "../evidence/2026-10-26/knowledge-report-acceptance.json",
+    "revision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

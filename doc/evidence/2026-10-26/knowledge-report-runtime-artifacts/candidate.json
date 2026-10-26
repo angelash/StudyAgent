@@ -1,0 +1,32 @@
+{
+  "status": "ready-for-release",
+  "at": "2026-10-26T12:56:28.501Z",
+  "head": "9e75de1dba37b0af0e74a4380697cbe84c89450f",
+  "applicationRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
+  "ciRun": 40323444646,
+  "verifiedZeroRetries": true,
+  "browserArtifact": "data/qa/knowledge-report-ci-40323444646-browser-original.json.gz",
+  "browserArtifactSha256": "f2c537f4b91e797b459f421a76a3991dc1bc22603c7def0c98a85a0445bdef02",
+  "originalBrowserSha256": "d97d91518e174dda056c6f8873b2a63613b2abf9360b2b6dab2abaf1fa8c270f",
+  "localBrowserSha256": "055cf8e9a42da29b4912a978c91f1e6fabf4bb2fba5dbeb015b555056359634e",
+  "localBrowserCases": 277,
+  "remoteBrowserCases": 277,
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/infrastructure/domain-database.js": "4717ce82edc3f02c55f13bed69d26e2b835f010bcd7dd19c42954a105104aee1",
+    "apps/api/dist/apps/api/src/modules/ai/classroom-image.service.js": "8d8ed77257e45b03614fa05e838956da0a9a42b33ee78f6e6af7a15b2f1f3df0",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard.service.js": "6805dfaf16e33703811c8e10ee5dc5615068a5ed2813e3d6ee1cc292c074944b",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-worker.service.js": "8dbdfda2604d4e60694b78c974c0ef5a2fe9124a782e8bf6ac1193ab1d129c7b",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-content.js": "7d791605aaf35ce371caace12ad7534e9952746dbedb9b7003ca53228973f7c6",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-access.js": "eb5b73dba6cc7e3641a7386e17640b8092c34c3c3b9b8f96288a873a4c8342b4",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-projection.js": "4ec2a17c0b72ceb9ed88cab1b8593b2a6ad27cdb19d57a42f0bd2bcde3070672",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-narration.service.js": "d9a263e897fa7a834330a9b5f95a148474d41c60194b8d0b78a5f059f2091a25",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual.controller.js": "74d62c2231318520f23fa135f8b935457ebd4b140cb7a0b0d997237f9c444fc3",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual.service.js": "a95ba27ca12168cfa5237d12c98ec2a9c423331ee41ef4c350a58f93cf1e930f",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.js": "9bf351a5013af67d0e71f7f9d5922cb0d359200ce231a48894b8baafd85c0d95",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-access.js": "3715effdf48bba3b67ce8f1be659bddd005963f6bcb8d0eff59fd4cdd5c99a4c",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-storage.js": "fa40470113a753b49ec4465a011ec4410d3556149e1f60e1b8ba933d5b93a9f6",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-retention.js": "203bdea58f646f3349289459d743a8d68c78b869f8471ea11673592c096cac0f",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-figures.js": "12972bec1bdfd972cd04af62445dbf9bab027f255602d326a085fa9a357aa074",
+    "apps/api/dist/apps/api/src/modules/learning/teaching-visual-storage.js": "91126b968c0ece62502c3a07b1e184cb8213a476b4bff39a0cfbc9a81780900a"
+  }
+}
