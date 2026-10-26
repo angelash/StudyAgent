@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T09:14:07.996Z",
-  "sourceRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "at": "2026-10-26T09:38:29.777Z",
+  "sourceRevision": "9b056916f0f93e24d62bb1c60b7f55b604ed5982",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -27,10 +27,11 @@
     "coveredApiRoutes": 364
   },
   "sourceReferences": {
-    "uniqueFiles": 488,
+    "uniqueFiles": 491,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "78d0677c46dc62231431c96fb9f77e204ad4aa9e761c72e7c1aa7cfdd7c63c07",
+      ".github/apt-ci.conf": "61be3bee1af091f0b3b8fa1ffed9b4da4392a4f8c0f302d5074e2b7b445f0444",
+      ".github/workflows/verify.yml": "268c37baeba277978546af481afe82bcf94a173f2577526a5814f030d6638092",
       "apps/api/src/common/answer-draft.ts": "fedc45ca485633148b0a69e43fdfc6355815d0843980acdf947d4a63be67e5b2",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "c0c21949c6647e96aedf219bee24edca31d844c53897bfc42f3cf71c196ba4c9",
@@ -409,7 +410,7 @@
       "doc/product/120-source-course-independent-unit-checks.md": "cf5663bc83f27f7b5d8dc6110075d9dc2e1bb9fd06fa75364b556540108ffd79",
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
-      "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "0cfcb0b0a617c785068a639c44144c2588a24b412831d0c5baba7dfe2d7741b0",
+      "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "5e9bf86232be5d5653ce4b5cbcaeaf31a2db4c30e99b12feb2297114a49bd309",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -449,6 +450,8 @@
       "packages/contracts/src/whiteboard-speech.ts": "10a8043e55849018ae1e88e44a8f523b00e7d782ada4a3aef09f6b224e815807",
       "resources/gesp/knowledge-map.json": "0131e9f7ef27755f1edacb6da6b40f1b6e6dc9bacb61760b27c0ba09f7345fb4",
       "resources/gesp/student-curriculum-v2.json": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a",
+      "scripts/ci/configure-ubuntu-packages.cjs": "bff5dcebcdc889b04b07a787f8e75f745687818558ba33da1d674fa2b1a55394",
+      "scripts/ci/configure-ubuntu-packages.test.cjs": "3eb6d7936447bdcd23cf39c0e3aaaf8e5ed65704c229a170f4a5eabb3579ed09",
       "scripts/gesp/backup_archive.py": "60fa56fb900da4d6df134489065a55b038d5e3e59c4d72c29660a3d40956ce6f",
       "scripts/gesp/run_submission.cjs": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571",
       "scripts/operations/backup.cjs": "0b836bd672fe6f2e7fa1ed13bf56d269d2244e58399d49650a91953541efed6f",
@@ -526,7 +529,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3048,
+    "checked": 3056,
     "missing": []
   },
   "staticContent": {

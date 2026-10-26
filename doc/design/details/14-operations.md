@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`8284cd6247c9d925e12b65a8321e1280d713e096`。角色：运维、管理员、教研。
+源码基线：`9b056916f0f93e24d62bb1c60b7f55b604ed5982`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -224,7 +224,7 @@
 
 **输入**：代码、隔离SQLite/PG、资源清单和浏览器。
 
-**处理与实现**：Vitest验证评分/权限/事务；Playwright跑真实页面与手机；脚本检查题族、教材、媒体、迁移、恢复与发布；CI分application/browser/postgres；源码打包排除秘密。
+**处理与实现**：Vitest验证评分/权限/事务；Playwright跑真实页面与手机；脚本检查题族、教材、媒体、迁移、恢复与发布；CI分application/browser/postgres；临时Ubuntu任务在安装APT依赖前解析确切文件镜像及直接Azure源，改用Ubuntu官方HTTPS并保留签名与发行版；未知镜像和链接在写入前拒绝，原生合成配置回归后再跑完整业务检查；源码打包排除秘密。
 
 **输出**：版本绑定的检查收据和可交付源码。
 
@@ -238,6 +238,10 @@
 
 - [scripts/operations/package-source.py](../../../scripts/operations/package-source.py)
 - [scripts/qa/run-browser-acceptance.cjs](../../../scripts/qa/run-browser-acceptance.cjs)
+- [scripts/ci/configure-ubuntu-packages.cjs](../../../scripts/ci/configure-ubuntu-packages.cjs)
+- [scripts/ci/configure-ubuntu-packages.test.cjs](../../../scripts/ci/configure-ubuntu-packages.test.cjs)
+- [.github/workflows/verify.yml](../../../.github/workflows/verify.yml)
+- [.github/apt-ci.conf](../../../.github/apt-ci.conf)
 
 ## OPS-10 资料引用审计与持久文件回收
 

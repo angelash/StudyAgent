@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "sourceRevision": "9b056916f0f93e24d62bb1c60b7f55b604ed5982",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -10078,7 +10078,7 @@
             "/admin/analytics"
           ],
           "inputs": "代码、隔离SQLite/PG、资源清单和浏览器",
-          "implementation": "Vitest验证评分/权限/事务；Playwright跑真实页面与手机；脚本检查题族、教材、媒体、迁移、恢复与发布；CI分application/browser/postgres；源码打包排除秘密。",
+          "implementation": "Vitest验证评分/权限/事务；Playwright跑真实页面与手机；脚本检查题族、教材、媒体、迁移、恢复与发布；CI分application/browser/postgres；临时Ubuntu任务在安装APT依赖前解析确切文件镜像及直接Azure源，改用Ubuntu官方HTTPS并保留签名与发行版；未知镜像和链接在写入前拒绝，原生合成配置回归后再跑完整业务检查；源码打包排除秘密。",
           "outputs": "版本绑定的检查收据和可交付源码",
           "collections": [],
           "limits": "测试通过不替代真人教学、触控/辅助技术验证、题目标定与全教材人工审核。",
@@ -10086,7 +10086,11 @@
           "implementations": [],
           "sourceFiles": [
             "scripts/operations/package-source.py",
-            "scripts/qa/run-browser-acceptance.cjs"
+            "scripts/qa/run-browser-acceptance.cjs",
+            "scripts/ci/configure-ubuntu-packages.cjs",
+            "scripts/ci/configure-ubuntu-packages.test.cjs",
+            ".github/workflows/verify.yml",
+            ".github/apt-ci.conf"
           ],
           "tests": [
             "apps/api/src/infrastructure/domain-database.test.ts",
