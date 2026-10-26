@@ -32,7 +32,7 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       app = await NestFactory.create(load('app.module').AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init();
       store = app.get(load('infrastructure/in-memory-store.service').InMemoryStoreService);
     }
-    async function call(method: 'get' | 'post', path: string, body?: unknown, status = method === 'post' ? 201 : 200, token = actor?.token) {
+    async function call(method: 'get' | 'post' | 'put', path: string, body?: unknown, status = method === 'post' ? 201 : 200, token = actor?.token) {
       let query = request(app.getHttpServer())[method]('/api' + path); if (token) query = query.set('Authorization', 'Bearer ' + token); if (body !== undefined) query = query.send(body as object);
       const response = await query; expect(response.status, JSON.stringify(response.body.error)).toBe(status); return response.body.data;
     }
@@ -69,8 +69,31 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       row = (await change(row, { kind: 'complete', acknowledgeUnanswered: true })).result.session;
       const organized = await change(row, { kind: 'organize', itemId: row.items[0].id, values: { tags: ['原生恢复'], favorite: true, archived: false, errorSteps: '遗漏了条件的单位', reflection: 'PRIVATE_NATIVE_REVIEW_原反思完整保留', plannedDate: '2026-11-09' } }); row = organized.result.session;
       const reviewed = await change(row, { kind: 'review_complete', itemId: row.items[0].id }); row = reviewed.result.session;
+      const redoInput = { studentId: child, selection: [{ paperId: row.items[0].paperId, positions: [row.items[0].position] }], origin: { sessionId: row.id, itemId: row.items[0].id } };
+      const redoPreview = await call('post', '/library/practice/preview', redoInput), redoCommand = { ...redoInput, sourceHash: redoPreview.sourceHash, requestKey: randomUUID() };
+      const redo = await call('post', '/library/practice/sessions', redoCommand);
+      await store.transaction(() => {
+        store.find('users', { id: actor.user.id }).role = 'admin';
+        store.append('knowledgeAtoms', { id: 'native:paper:combine', subject: 'math', name: '合成原生恢复合并量', strand: 'QA', grade: 3, term: 'both', objective: '独立合并两组数量', successCriterion: '在新题中合并两组数量', prerequisiteIds: [], curriculumVersion: 'QA-native', status: 'published', version: 1 });
+      });
+      const staged = await call('post', '/measurement-content/candidates', { paperId: row.items[0].paperId, positions: [1] });
+      let candidate = await call('get', '/measurement-content/candidates/' + encodeURIComponent(staged.items[0].id));
+      const draft = { subject: 'math', grade: 3, stem: '合成原生核对：把3个和2个小球放在一起，一共有几个？', answer: 5, analysis: '将3和2合并得到5个小球。', blocks: [],
+        answerSchema: { mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} },
+        mapping: { primaryAtomId: 'native:paper:combine', prerequisiteAtomIds: [], secondaryAtomIds: [], dimension: 'procedure', family: 'qa:native-paper:combine-groups', probeRole: 'anchor', expectedSeconds: 40, difficulty: 1, observationCode: 'part_whole_mismatch', observedSteps: ['识别两组数量再相加得到总量'], rationale: '此合成任务直接观察合并两组数量的行为，核对原生持久协议', familyRationale: '单一合成数量合并任务族，不用它声称具备全部独立覆盖' },
+        license: { licenseClass: 'A_INTERNAL', evidence: '原卷、图像与规范题均为独立合成测试资料，仅核对原生恢复' },
+        scoringCases: [{ response: 5, expectedScore: 1, rationale: '两个部分合并得到5个小球' }, { response: 1, expectedScore: 0, rationale: '错误地求差而不是合并数量' }] };
+      const candidateCommand = () => ({ expectedVersion: candidate.version, requestKey: randomUUID(), reason: '原生备份恢复的合成审核逐项核对' });
+      candidate = await call('post', '/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/draft', { ...candidateCommand(), draft });
+      for (const gate of ['source', 'content', 'media', 'scoring', 'mapping']) candidate = await call('post', '/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/reviews', { ...candidateCommand(), gate, decision: 'approved' });
+      await call('post', '/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/publish', candidateCommand());
+      await store.transaction(() => { store.find('users', { id: actor.user.id }).role = 'parent'; });
+      await call('put', '/students/' + child + '/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '合成已学范围', learnedAtomIds: ['native:paper:combine'], currentAtomId: 'native:paper:combine', minutesPerSession: 10 });
+      const verificationInput = { studentId: child, atomId: 'native:paper:combine', requestKey: randomUUID() }, verificationPath = '/library/practice/sessions/' + row.id + '/items/' + row.items[0].id;
+      const verification = await call('post', verificationPath + '/verification-preview', verificationInput), active = await call('post', '/diagnostics/blueprints/' + encodeURIComponent(verification.id) + '/start', {});
       const adultStart = await create(null), paused = (await change(adultStart.row, { kind: 'pause' })).result.session;
-      const frozen = await store.requestContext(() => structuredClone({ session: store.find('paperPracticeSessions', { id: row.id }), commands: store.select('paperPracticeCommands', { sessionId: row.id }) }));
+      const snapshot = () => structuredClone({ session: store.find('paperPracticeSessions', { id: row.id }), commands: store.select('paperPracticeCommands', { sessionId: row.id }), redo: store.find('paperPracticeSessions', { id: redo.id }), verification: store.find('diagnosticBlueprints', { id: verification.id }), assessment: store.find('diagnosticSessions', { id: active.id }) });
+      const frozen = await store.requestContext(snapshot);
       const options = { dataDir: source, destination: bundle, assets, connectionString: sourceLocation, pgBin: process.env.STUDY_TEST_PG_BIN };
       if (driver === 'sqlite') await backup.createBundle(options); else await native.createPostgresBundle(options);
       const verified = driver === 'sqlite' ? await backup.verifyBundle({ bundle }) : await native.verifyPostgresBundle({ bundle, pgBin: process.env.STUDY_TEST_PG_BIN });
@@ -79,7 +102,11 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       const hash = (file: string) => createHash('sha256').update(readFileSync(file)).digest('hex');
       for (const name of ['catalog.sqlite3', 'shijuanbao/archive.sqlite3', 'shijuanbao/media/figure.png', 'shijuanbao/media/paper.pdf']) expect(hash(join(target, 'assets', name))).toBe(hash(join(assets, name)));
       await boot(targetLocation, target, join(target, 'assets')); await call('get', '/auth/me', undefined, 401, actor.token); actor = await call('post', '/auth/login', { principal, credential }, 201, '');
-      expect(await store.requestContext(() => structuredClone({ session: store.find('paperPracticeSessions', { id: row.id }), commands: store.select('paperPracticeCommands', { sessionId: row.id }) }))).toEqual(frozen);
+      expect(await store.requestContext(snapshot)).toEqual(frozen);
+      expect((await call('post', '/library/practice/sessions', redoCommand)).id).toBe(redo.id);
+      expect((await call('get', verificationPath + '/verification-requests/' + verificationInput.requestKey)).id).toBe(verification.id);
+      expect((await call('post', verificationPath + '/verification-preview', verificationInput)).id).toBe(verification.id);
+      expect((await call('get', '/diagnostics/sessions/' + active.id)).paperReviewOrigin).toMatchObject({ sessionId: row.id, itemId: row.items[0].id });
       expect((await call('get', '/library/practice/requests/' + childStart.command.requestKey)).session.id).toBe(row.id);
       expect((await call('post', '/library/practice/sessions', childStart.command)).id).toBe(row.id);
       for (const original of [submitted, corrected, organized, reviewed]) {
@@ -97,6 +124,7 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       expect(portableCommand).not.toHaveProperty('requestKey'); expect(portableCommand).not.toHaveProperty('inputHash');
       const preview = await call('get', '/privacy/students/' + child + '/deletion-preview'); await call('post', '/privacy/students/' + child + '/delete', { credential, confirmation: preview.confirmation, fingerprint: preview.fingerprint, requestKey: randomUUID() });
       await call('get', '/library/practice/sessions/' + row.id, undefined, 404); expect((await call('get', '/library/practice/sessions/' + paused.id)).status).toBe('paused');
+      await call('get', '/library/practice/sessions/' + redo.id, undefined, 404); await call('get', '/diagnostics/blueprints/' + encodeURIComponent(verification.id), undefined, 404); await call('get', '/diagnostics/sessions/' + active.id, undefined, 404);
       const account = await call('get', '/privacy/account/deletion-preview'); await call('post', '/privacy/account/delete', { credential, confirmation: account.confirmation, fingerprint: account.fingerprint, requestKey: randomUUID() });
       const deletionLedger = join(directory, 'latest-deletions.json'); expect((await ledger.exportLedger({ ...driver === 'sqlite' ? { dataDir: target } : { connectionString: targetLocation }, destination: deletionLedger })).deletions).toBe(2);
       await app.close(); app = null; const deleted = join(directory, 'deleted'), deletedLocation = await database(); expect((await restore(deletedLocation, deleted, deletionLedger)).appliedDeletionReceipts).toBe(2);

@@ -1,0 +1,222 @@
+{
+  "at": "2026-10-26T18:02:26.821Z",
+  "status": "original-redo-and-formal-verification-focused-pass",
+  "deployed": false,
+  "overallProductComplete": false,
+  "designRevision": "f32e226",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T17:59:26.481Z",
+      "duration": 80976.897,
+      "expected": 29,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 29,
+    "retries": 0
+  },
+  "sqliteService": {
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "21 original-paper service and 10 measurement-source, review verification and privacy cases."
+  },
+  "nativeRecovery": {
+    "passed": 2,
+    "failed": 0,
+    "scope": "Actual SQLite/PostgreSQL cold backup/restore, frozen original-redo and activated verification origins, original receipts, revoked logins and latest child/account deletion ledger."
+  },
+  "qaWebBuildId": "Qq1g4AgeeDB8cE26ZjoKH",
+  "qaWebSourceSha256": {
+    "app/library/practice/review.css": "87176bd432b2a26665d718d280f3fa40bb93d5a165affa4360ae59a16ec81ee5",
+    "app/library/practice/review/studio.tsx": "658bc2856d5ec172bf367aa5a99ccd6e00e4f7531ba568f4f637ce8bec6dd795",
+    "app/library/practice/session.tsx": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+    "app/library/practice/studio.tsx": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+    "app/student/assessment/studio.tsx": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+    "components/paper-review-next-steps.tsx": "5565c5aa3b2d6d78ad642bb929eacc7fc8da37bd629a73b9e3d1af88f187aea3"
+  },
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/common/auth.guard.js": "1d9d8a829a049b1c5016749e83789df559db7b88ffea5a787b92d0491d8f0ec4",
+    "apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js": "f8609bec2ec6bc21954f4be8a68e7c57073f08980b0acdad182b0573ac0ede98",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.service.js": "541886fa298a0a1af416168cd15d3b801d32ea8fe0ee765412fb963147ad090f",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice-record.js": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.controller.js": "bd8495caf3a3114215af519780eaea1dbdf5eae38b5f0a3fe18eec2676b0ef29",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-eligibility.js": "c54abeed0d6857a0ccd5668f5fbd0af84df80bc44387c89ac40e52b947ed9998",
+    "apps/api/dist/apps/api/src/modules/privacy/privacy-records.js": "f863c8525895aa32b739ef30d6b96c46d2cac2b14d487f1d9de2045fc05904ce"
+  },
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "data__qa__paper-practice-browser.json.gz",
+      "originalSha256": "bc07cd649ef9f3d97908d57b02593eb6630bc9294daff7027eecae62ea9a9773",
+      "sha256": "615bcf20ce9d289961f2af2450ce62cc0666b34f34580b1bd369350347084928"
+    },
+    {
+      "source": "data/qa/paper-review-next-fixed-browser.log",
+      "file": "data__qa__paper-review-next-fixed-browser.log.gz",
+      "originalSha256": "c9f3c4e8b5be65dedef7afeed36c67d4ca0582d8dcfa0c7a9c529321f83b7e30",
+      "sha256": "953753a7cddeafb89f5cfd37f997c97250d1c2cdadef196d4c615c559e3a45bf"
+    },
+    {
+      "source": "data/qa/paper-review-next-service-green.json",
+      "file": "data__qa__paper-review-next-service-green.json.gz",
+      "originalSha256": "f46c15fb4371d805566e07b3796412d683c694cd828524180cb536d4e25af4de",
+      "sha256": "fa943ca69060c6fa7eab5ffc78acfddac559f7e4e1921f90470a2aa25c5f6d26"
+    },
+    {
+      "source": "data/qa/paper-review-next-native.json",
+      "file": "data__qa__paper-review-next-native.json.gz",
+      "originalSha256": "4bec69c3356beee35cb09391b6bb3fce503f5ad5f30a35844cb664d76798f9a8",
+      "sha256": "036b0c8f7432c0268e1908c454c038a328d63fa4324eb84e2e03ad84d78ec571"
+    },
+    {
+      "source": "data/qa/paper-review-next-web-build-fixed.log",
+      "file": "data__qa__paper-review-next-web-build-fixed.log.gz",
+      "originalSha256": "8f9f523a57fcac7683c16e0d4f48354cc647c1277cc6cba9a4d7468088050ce5",
+      "sha256": "3e8140c05c923305d3d8cdd79c2ff7ae80c4c1818c7cbcaee5699318c6cbde34"
+    },
+    {
+      "source": "apps/api/src/common/auth.guard.ts",
+      "file": "apps__api__src__common__auth.guard.ts.gz",
+      "originalSha256": "de4c76f97ec4e6bfdf451d7b44f19b3156f49c3a517d3614355ddb0329c9bc7e",
+      "sha256": "1c86ee10f98f25d4338188dc030878b30de3c1b8e102a7bfe8056139a6a412e7"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "file": "apps__api__src__modules__diagnostics__diagnostics.service.ts.gz",
+      "originalSha256": "bb79fef030070457b65c39a10bdffc9a2de991c51301140256b39bb78b87e8e8",
+      "sha256": "91e7a73a100af70ac86534b0e0517ef18c67aed6a49e0473e9e8803da819fd04"
+    },
+    {
+      "source": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "file": "apps__api__src__modules__library__measurement-content.integration.test.ts.gz",
+      "originalSha256": "b00c09737ed641a3f2f3b496c93ee86d51063165c0667d8158c82e61e2b90612",
+      "sha256": "1e086fce90bca74174e5c94a3757bd291233d73cb2f6a6aaba77d222c63bacbe"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-record.ts",
+      "file": "apps__api__src__modules__library__paper-practice-record.ts.gz",
+      "originalSha256": "e8455b97a53b69519fe073167174a204f24d14ff4dfa32dc6096ad789d5c5fc1",
+      "sha256": "93146c849be45e0eef70e3b4eb8f1a08ef5a5f6da7df7047d52cbea5815f001f"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "c3bc0bb3386cfd585b4f3d4aad8b633879c24b4d2c133bb2ae39f0394c0c11cf",
+      "sha256": "f949af1aaa15940a150abf686ce09122cc1b60b63e47965ef803fae8a1e6a45c"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.controller.ts",
+      "file": "apps__api__src__modules__library__paper-practice.controller.ts.gz",
+      "originalSha256": "c3a41123a9a22ada7dc5b1f088aff8dca79b342ded0f4784ba01aa8f4cf893ff",
+      "sha256": "59047ad34bde7f449d9c501c9bba126e96bb80184a754e1a52f871db3cc38ad4"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice.integration.test.ts.gz",
+      "originalSha256": "1562ff803b5abf9a26874d150043c5cdacaeff580aeebaae54e93218f601a5c5",
+      "sha256": "ec42cda0b7a2b790b4aea248e004c9d42aa333cf2db88eb4b8a8553161de6d31"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "apps__api__src__modules__library__paper-practice.service.ts.gz",
+      "originalSha256": "f98447911ddcb950fce4a30f5cd0bf0fba563d06c7721587a81526338680f851",
+      "sha256": "bed014f8d7c7a10d0216817763b540caaf9f9f2fd57c7f49e6be288296d52119"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "apps__api__src__modules__privacy__privacy-records.ts.gz",
+      "originalSha256": "aa8d3f0da13fb0385b6345f5fe7a2776cd6ae6eb17ec8ddf42e427d19277799b",
+      "sha256": "5281a6994260e7170c5dd0d4c119e22f84b5990f03dd488066e62274adc695c6"
+    },
+    {
+      "source": "apps/web/app/library/practice/review.css",
+      "file": "apps__web__app__library__practice__review.css.gz",
+      "originalSha256": "87176bd432b2a26665d718d280f3fa40bb93d5a165affa4360ae59a16ec81ee5",
+      "sha256": "b288584370c037226de71194d521fbca092d0d2d4a72a219db234b639429d3f4"
+    },
+    {
+      "source": "apps/web/app/library/practice/review/studio.tsx",
+      "file": "apps__web__app__library__practice__review__studio.tsx.gz",
+      "originalSha256": "658bc2856d5ec172bf367aa5a99ccd6e00e4f7531ba568f4f637ce8bec6dd795",
+      "sha256": "6e3d306226c40e7b3a1300fdeb52d73f280b73c8c29f032ae7087021c9cc05e0"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "apps__web__app__library__practice__session.tsx.gz",
+      "originalSha256": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+      "sha256": "83c486c778525926b898f78eebbdc8b55c359365f8787b00324dfa22ad9002c7"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "apps__web__app__library__practice__studio.tsx.gz",
+      "originalSha256": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+      "sha256": "8331062664387e1e78bdd9484b44ac3288df1fc6c0416b6ead1beb582690416e"
+    },
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "file": "apps__web__app__student__assessment__studio.tsx.gz",
+      "originalSha256": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+      "sha256": "5359ed521f97c8aef895d4881f0f9e172ecc51aa5ca049742b3fd277f7fbfc24"
+    },
+    {
+      "source": "packages/contracts/src/diagnostics.ts",
+      "file": "packages__contracts__src__diagnostics.ts.gz",
+      "originalSha256": "aae59dc8df7a3927ca3eeb1172c44ee133daad16ac328475fd3455efdfb03e75",
+      "sha256": "142022a2711303c374477f55e96d511103213338cb88fcefc67e12cd692c5949"
+    },
+    {
+      "source": "packages/contracts/src/paper-practice.ts",
+      "file": "packages__contracts__src__paper-practice.ts.gz",
+      "originalSha256": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792",
+      "sha256": "b876b6e06397b7adcd743b82b945668103fd23dc981f98fde3a89529c7ef20a8"
+    },
+    {
+      "source": "packages/contracts/src/paper-review.ts",
+      "file": "packages__contracts__src__paper-review.ts.gz",
+      "originalSha256": "4c47fd5747211fb03bc44ba922a739cec3d0ab7dc4c3020dc5a8fa95a3d35a73",
+      "sha256": "62cc1651c0190b9d61a910a1971f28bf353f6b3d57383f18671fa26e82a82124"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "tests__e2e__paper-practice.spec.ts.gz",
+      "originalSha256": "33c11c76d7475649d762e51373516d806adb154ad9bc848b2beae589fa3bf650",
+      "sha256": "f8b3bffd391aff17d4637e30f30d60a924926c64dc156534b014ea81e4203d25"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-review-eligibility.ts",
+      "file": "apps__api__src__modules__library__paper-review-eligibility.ts.gz",
+      "originalSha256": "6af7e9c3375ae298a4eb7ec0748847bcdb7d536abbe3b186e2fdd9ed055d5f09",
+      "sha256": "5cf2c306116af894da2c0817176d8494797d27b0dad38fabc338606851820e5a"
+    },
+    {
+      "source": "apps/web/components/paper-review-next-steps.tsx",
+      "file": "apps__web__components__paper-review-next-steps.tsx.gz",
+      "originalSha256": "5565c5aa3b2d6d78ad642bb929eacc7fc8da37bd629a73b9e3d1af88f187aea3",
+      "sha256": "60c6a95d2a533529fbac94463001c6a4b95a19f99afbf93a3c893b69c1e25c1d"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-1440.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-1440.png",
+      "originalSha256": "b313b996c2974c1157808a7a4ad81029756632a47a8ca03d593662be99d4604d",
+      "sha256": "b313b996c2974c1157808a7a4ad81029756632a47a8ca03d593662be99d4604d"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-390.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-390.png",
+      "originalSha256": "a90dc9b0ea158812906edc211c84764f4a55c408b4c0c55ee753b124e795427d",
+      "sha256": "a90dc9b0ea158812906edc211c84764f4a55c408b4c0c55ee753b124e795427d"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-768.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-768.png",
+      "originalSha256": "681223027d0f3e3698f293fdc35a19fa596b92aa1d7bd1a53a856696e48249b7",
+      "sha256": "681223027d0f3e3698f293fdc35a19fa596b92aa1d7bd1a53a856696e48249b7"
+    }
+  ],
+  "limitations": [
+    "Focused local phase only; unified course calendar and remaining resilience/privacy matrix, full regression, exact CI and production delivery still required.",
+    "The server-derived saved blueprint restores the primary next step after the pending command is cleared; original failure preserved separately."
+  ]
+}

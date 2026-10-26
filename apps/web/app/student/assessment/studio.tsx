@@ -29,6 +29,7 @@ import type { ReportPlanRead } from '../../../components/report-plan-path';
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
   revision: number; blueprint?: AssessmentBlueprint;
+  paperReviewOrigin?: DiagnosticBlueprintView['paperReviewOrigin'];
   routing: { mode: 'adaptive'; currentItemId: string | null; notice: string; decisions?: DiagnosticRoutingDecision[] } | null;
   answeredCount: number; totalCount: number; startedAt: string;
   items: Array<{ id: string; atomId: string; questionId: string; dimension: string; atomName: string; answered: boolean; reason: string }> };
@@ -339,6 +340,7 @@ export function AssessmentStudio() {
     });
   }
 
+  const paperReviewOrigin = blueprint?.paperReviewOrigin ?? session?.paperReviewOrigin;
   return <main className="learning-studio">
     <StudyNav current="assessment" context={{ studentId: studentId || undefined, subject }} />
     <div className="studio-layout">
@@ -351,6 +353,7 @@ export function AssessmentStudio() {
       </aside>
       <section className="studio-main" aria-busy={busy || loading}>
         {error && <div role="alert" className="studio-error">{error}<button aria-label="收起提示" onClick={() => setError('')}>×</button></div>}
+        {paperReviewOrigin && <section className="studio-card" aria-label="独立新题的原卷来源"><p>这组新题用于独立核对已学知识。原题再练、自我反思与本组证据分别保留。</p><a className="studio-secondary" href={'/library/practice/review?' + new URLSearchParams({ session: paperReviewOrigin.sessionId, item: paperReviewOrigin.itemId })}>返回原首答与反思 ↗</a></section>}
         {loading ? <div className="studio-empty">正在取回你的学习记录…</div> : !loggedIn ? <div className="studio-empty"><h2>从孩子的学习档案开始</h2><p>登录后即可保存进度、评测与指导计划。</p><Link className="studio-primary" href="/parent/login">登录或创建家长账号</Link></div> : <>
           {screen === 'setup' && <>
             <div className="studio-section-head"><span className="studio-eyebrow">01 / 学习起点</span><h2>先告诉我们，学到哪里了。</h2><p>只测已学内容。还没有测到的知识点，会保留为未知。</p></div>

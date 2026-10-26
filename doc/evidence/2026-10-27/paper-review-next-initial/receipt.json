@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-26T17:35:36.508Z",
+  "status": "initial-next-path-run-preserved",
+  "passed": 21,
+  "failed": 10,
+  "deployed": false,
+  "reason": "The isolated QA .env set NODE_ENV=development, so the pre-existing memory-only measurement-authoring fixture refused reset before every test body. All21 original-paper SQLite service cases passed. Re-run the memory fixture under its required test environment; do not change runtime guards or assertions.",
+  "files": [
+    {
+      "file": "result-original.json.gz",
+      "originalSha256": "a4a955198e8e293dff44e27f3a426a96bd40fdb0b7cb91c2ec3c0c55ba16ae69",
+      "sha256": "6413167324cfee45311559e402cbcf136071af8ac39acc76af1cc50ae7605328"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { PaperPracticeDisposition, PaperPracticeSelfReview, PaperReviewOrganization } from '@study-agent/contracts';
+import type { PaperPracticeDisposition, PaperPracticeSelfReview, PaperReviewOrganization, PaperPracticeOrigin } from '@study-agent/contracts';
 
 export type PaperPracticeSource = {
   paperId: string; title: string; state: string; detailSha256: string; publicationVersion: number | null;
@@ -17,6 +17,7 @@ export type PaperPracticeSessionRecord = {
   status: 'in_progress' | 'paused' | 'completed'; version: number; currentItemId: string;
   createdAt: string; updatedAt: string; completedAt: string | null;
   sources: PaperPracticeSource[]; items: PaperPracticeItemRecord[];
+  origin?: PaperPracticeOrigin;
 };
 export type PaperPracticeCommandRecord = {
   id: string; ownerUserId: string; studentId: string | null; sessionId: string; requestKey: string; inputHash: string;

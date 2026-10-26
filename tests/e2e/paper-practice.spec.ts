@@ -11,8 +11,8 @@ async function fixture(page: Page, slot: number) {
   const digest = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + digest[0] + '.' + digest[1];
   const principal = 'paper-browser-' + randomUUID(), credential = 'Synthetic-Paper-Browser-20261026'; let token = '';
   await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
-  async function call(path: string, body?: unknown, actor = token, status = body === undefined ? 200 : 201) {
-    const response = await fetch(api + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': address,
+  async function call(path: string, body?: unknown, actor = token, status = body === undefined ? 200 : 201, method = body === undefined ? 'GET' : 'POST') {
+    const response = await fetch(api + path, { method, headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': address,
       ...(actor ? { Authorization: 'Bearer ' + actor } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
     const result = await response.json(); expect(response.status, path + ': ' + JSON.stringify(result.error)).toBe(status); return result.data;
   }
@@ -350,4 +350,58 @@ for (const width of [390, 768, 1440]) test('paper review: current item, full ref
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true); await page.screenshot({ path: join(browserEvidence('paper-practice'), 'review-workspace-' + width + '.png'), fullPage: true });
   await page.getByRole('link', { name: /匿名原卷.*第 1 题/ }).click(); const editor = page.getByRole('region', { name: '原卷复习与反思' }); await expect(editor.getByLabel('我的反思')).toHaveValue('一份完整、可继续修改的合成反思。');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+});
+
+test('paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt', async ({ page }) => {
+  const f = await fixture(page, 28); let original = await f.begin(); const itemId = original.items[0].id;
+  original = (await f.call('/library/practice/sessions/' + original.id + '/commands', { expectedVersion: original.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'answered', text: '再练前必须保留的第一次回答。' })).session;
+  await page.goto('/library/practice/review?session=' + original.id + '&item=' + itemId); const next = page.getByRole('region', { name: '原题再练与独立新题' });
+  await expect(next.getByRole('link', { name: '查看学习范围，手动选择知识点 ↗' })).toBeVisible();
+  await next.getByRole('link', { name: '核对来源，再练原题 ↗' }).click(); await expect(page.getByRole('region', { name: '确认原卷练习' })).toContainText('本次只再练同一道原题');
+  await page.getByRole('button', { name: '预览这次练习', exact: true }).click(); let captured: any;
+  await page.route('**/api/library/practice/sessions', async route => { if (route.request().method() === 'POST' && !captured) { captured = route.request().postDataJSON(); await route.fetch(); return route.abort('failed'); } await route.continue(); });
+  await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click(); await expect.poll(() => Boolean(captured)).toBe(true);
+  const receipt = await f.call('/library/practice/requests/' + captured.requestKey); expect(receipt.session.origin).toMatchObject({ sessionId: original.id, itemId });
+  await page.reload(); await page.getByRole('link', { name: '继续上次已保存的练习 ↗', exact: true }).click();
+  await expect(page.getByRole('region', { name: '原题再练来源' })).toContainText('重复正确仍需独立新题验证');
+  expect(new URL(page.url()).searchParams.get('session')).toBe(receipt.session.id); expect((await f.call('/library/practice/sessions')).total).toBe(2);
+  await page.getByRole('region', { name: '原题再练来源' }).getByRole('link', { name: '查看原来的首答与反思 ↗' }).click();
+  await expect(page.getByRole('region', { name: '不可覆盖的首次回答' })).toContainText('再练前必须保留的第一次回答。');
+});
+
+test('paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group', async ({ page, context }) => {
+  const f = await fixture(page, 29), atoms = await f.call('/diagnostics/curriculum?subject=math&grade=3&term=upper');
+  const atom = atoms.find((atom: any) => /加法|加减|合并/.test(atom.name) && atom.status === 'published'); expect(atom, 'Existing authored addition target required').toBeTruthy();
+  const staged = await f.call('/measurement-content/candidates', { paperId: f.papers.complete, positions: [1] }, administrator);
+  let candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(staged.items[0].id), undefined, administrator);
+  const draft = { subject: 'math', grade: 3, stem: '合成独立核对：3个球和2个球合起来一共多少个？', answer: 5, analysis: '把两部分3和2合并得到5。', blocks: [],
+    answerSchema: { mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} },
+    mapping: { primaryAtomId: atom.id, prerequisiteAtomIds: [], secondaryAtomIds: [], dimension: 'procedure', family: 'qa:browser-review:combine-parts', probeRole: 'anchor', expectedSeconds: 40, difficulty: 1, observationCode: 'part_whole_mismatch', observedSteps: ['确认两组数量并合并得到总量'], rationale: '从这道合成原题明确观察合并数量的过程，不依据反思猜测映射', familyRationale: '受控数量合并任务，与其他组织结构分开，仅用于浏览器流程验证' },
+    license: { licenseClass: 'A_INTERNAL', evidence: '题干和原卷由浏览器测试独立构造，仅核对流程与权限' },
+    scoringCases: [{ response: 5, expectedScore: 1, rationale: '独立合并3和2得到总量5' }, { response: 1, expectedScore: 0, rationale: '误用减法求差而非合并数量' }] };
+  const command = () => ({ expectedVersion: candidate.version, requestKey: randomUUID(), reason: '合成原卷到独立新题的五门审核核对' });
+  candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/draft', { ...command(), draft }, administrator);
+  for (const gate of ['source', 'content', 'media', 'scoring', 'mapping']) candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/reviews', { ...command(), gate, decision: 'approved' }, administrator);
+  const published = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/publish', command(), administrator);
+  const child = (await f.call('/students', { nickname: '合成原卷新题孩子', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile.id;
+  await f.call('/students/' + child + '/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '原创已学范围', learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 }, f.actor.token, 200, 'PUT');
+  await f.call('/students/' + child + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '独立原卷浏览器学生入口核对' });
+  const issued = await f.call('/students/' + child + '/learning-access/codes', { expectedVersion: 1, requestKey: randomUUID() });
+  await context.clearCookies(); await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(issued.code); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/library/practice?paper=' + encodeURIComponent(f.papers.complete) + '&positions=1'); await page.getByRole('button', { name: '预览这次练习', exact: true }).click(); await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click();
+  await page.getByRole('button', { name: '暂时不会', exact: true }).click(); await expect(page.getByRole('region', { name: '不可覆盖的首次回答' })).toContainText('暂时不会');
+  const sourceSession = new URL(page.url()).searchParams.get('session')!, source = await f.call('/library/practice/sessions/' + sourceSession), sourceItem = source.items[0].id;
+  const next = page.getByRole('region', { name: '原题再练与独立新题' }); await expect(next.getByLabel('验证的孩子')).toHaveValue(child); await expect(next).toContainText('此知识点在已确认的已学范围内。');
+  await next.getByLabel('我已核对这位孩子的当前年级、教材和已学范围').check(); let captured: any;
+  await page.route('**/api/library/practice/sessions/*/items/*/verification-preview', async route => { if (!captured) { captured = route.request().postDataJSON(); await route.fetch(); return route.abort('failed'); } await route.continue(); });
+  await next.getByRole('button', { name: '预览独立新题蓝图', exact: true }).click(); await expect(page.getByRole('region', { name: '独立新题原预览恢复' }).getByRole('button', { name: '核对或重试原新题预览' })).toBeEnabled();
+  for (let index = 0; index < 3; index++) { await page.reload(); await expect(next.getByRole('link', { name: '打开原蓝图，确认后开始 ↗' })).toBeVisible(); }
+  expect((await f.call('/diagnostics/sessions?studentId=' + child + '&subject=math')).length).toBe(0);
+  await next.getByRole('link', { name: '打开原蓝图，确认后开始 ↗' }).click(); await expect(page.getByRole('region', { name: '独立新题的原卷来源' })).toBeVisible();
+  await page.getByRole('button', { name: '准备好了，开始这一组 →', exact: true }).click(); await expect(page).toHaveURL(/session=/);
+  const activeId = new URL(page.url()).searchParams.get('session')!, active = await f.call('/diagnostics/sessions/' + activeId); expect(active.items.map((item: any) => item.questionId)).not.toContain(published.questionId);
+  expect(active.paperReviewOrigin).toMatchObject({ sessionId: sourceSession, itemId: sourceItem });
+  await page.getByRole('region', { name: '独立新题的原卷来源' }).getByRole('link', { name: '返回原首答与反思 ↗' }).click();
+  const options = await f.call('/library/practice/sessions/' + sourceSession + '/items/' + sourceItem + '/next-options'); expect(options.activities.filter((activity: any) => activity.kind === 'verification')).toHaveLength(1);
+  await expect(page.getByRole('region', { name: '原题再练与独立新题' }).getByText('这次原题之后的实际活动 · 1 条', { exact: true })).toBeVisible();
 });

@@ -15,6 +15,9 @@ export class PaperPracticeController {
   @Get('sessions') list(@Req() req: AuthenticatedRequest, @Query() input: unknown) { return this.practice.list(req.user, input); }
   @Get('sessions/:sessionId') get(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string) { return this.practice.get(req.user, id); }
   @Get('sessions/:sessionId/items/:itemId') item(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string) { return this.practice.item(req.user, id, item); }
+  @Get('sessions/:sessionId/items/:itemId/next-options') nextOptions(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string) { return this.practice.nextOptions(req.user, id, item); }
+  @Post('sessions/:sessionId/items/:itemId/verification-preview') verificationPreview(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string, @Body() input: unknown) { return this.practice.verificationPreview(req.user, id, item, input); }
+  @Get('sessions/:sessionId/items/:itemId/verification-requests/:requestKey') verificationRequest(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string, @Param('requestKey') key: string) { return this.practice.verificationRequest(req.user, id, item, key); }
   @Get('sessions/:sessionId/commands/:requestKey') commandResult(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('requestKey') key: string) { return this.practice.commandResult(req.user, id, key); }
   @Post('sessions/:sessionId/commands') command(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() input: unknown) { return this.practice.command(req.user, id, input); }
 }

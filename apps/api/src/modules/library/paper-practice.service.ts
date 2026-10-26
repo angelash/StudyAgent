@@ -1,8 +1,8 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { PaperPracticePreview, PaperPracticeSessionView, PaperPracticeItemSummary, PaperPracticeItemView, PaperPracticeAvailability, PaperPracticeCommandResult, PaperReviewList, PaperReviewScope, PaperReviewCalendarEvent } from '@study-agent/contracts';
-import { paperPracticeSelectionSchema as selectionSchema, paperPracticeCreationSchema as creationSchema, paperPracticeCommandSchema as commandSchema } from '@study-agent/contracts';
+import type { PaperPracticePreview, PaperPracticeSessionView, PaperPracticeItemSummary, PaperPracticeItemView, PaperPracticeAvailability, PaperPracticeCommandResult, PaperReviewList, PaperReviewScope, PaperReviewCalendarEvent, PaperReviewNextOptions } from '@study-agent/contracts';
+import { paperPracticeSelectionSchema as selectionSchema, paperPracticeCreationSchema as creationSchema, paperPracticeCommandSchema as commandSchema, paperReviewVerificationSchema } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -14,6 +14,9 @@ import type { PaperPracticeSessionRecord, PaperPracticeItemRecord, PaperPractice
 import { organizePaperItem, paperReviewOrganization } from './paper-review-organization';
 import { matchesPaperReview, paperReviewCalendarQuerySchema, paperReviewQuerySchema, paperReviewSummary } from './paper-review-query';
 import { renderIcs } from '../learning/ics-calendar';
+import { paperReviewKnowledge } from './paper-review-eligibility';
+import { CurriculumService } from '../diagnostics/curriculum.service';
+import { DiagnosticsService } from '../diagnostics/diagnostics.service';
 
 const id = z.string().trim().min(1).max(180), key = z.string().trim().min(8).max(180);
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -23,7 +26,8 @@ const hasAnswer = (html: string) => Boolean(html.replace(/<[^>]*>/g, '').trim() 
 @Injectable()
 export class PaperPracticeService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly repo: LibraryRepository, private readonly library: LibraryService, private readonly events: DomainEventBusService) {}
+    private readonly repo: LibraryRepository, private readonly library: LibraryService, private readonly events: DomainEventBusService,
+    private readonly curriculum: CurriculumService, private readonly diagnostics: DiagnosticsService) {}
 
   private student(user: InMemoryUserAccount, studentId: string | null) {
     if (user.role === 'student' && !studentId) throw new ForbiddenException('请选择当前学习账号的孩子档案');
@@ -69,9 +73,12 @@ export class PaperPracticeService {
   }
   private view(user: InMemoryUserAccount, row: PaperPracticeSessionRecord): PaperPracticeSessionView {
     const states = this.sourceStates(user, row), items = row.items.map(item => this.summary(item, row, states.get(item.paperId)!));
+    let originAvailable = false;
+    if (row.origin) try { const original = this.require(user, row.origin.sessionId); originAvailable = original.items.some(item => item.id === row.origin!.itemId); } catch (error) { if (!(error instanceof ForbiddenException || error instanceof NotFoundException)) throw error; }
     return { id: row.id, ownerUserId: row.ownerUserId, studentId: row.studentId, status: row.status, version: row.version,
       currentItemId: row.currentItemId, createdAt: row.createdAt, updatedAt: row.updatedAt, completedAt: row.completedAt,
       permissions: { edit: row.ownerUserId === user.id && row.status !== 'completed', organize: row.ownerUserId === user.id }, independentMeasurement: false, items,
+      ...(row.origin ? { origin: { ...row.origin, available: originAvailable } } : {}),
       counts: { total: items.length, submitted: items.filter(item => item.disposition !== null).length,
         unanswered: items.filter(item => item.kind !== 'missing' && !item.disposition).length, missing: items.filter(item => item.kind === 'missing').length,
         unavailable: items.filter(item => item.kind !== 'missing' && !item.availability.available).length,
@@ -113,8 +120,17 @@ export class PaperPracticeService {
     }
     if (!items.length || items.length > 500) throw new BadRequestException('请选1～500个原题位；不会自动截断原卷。');
     if (Buffer.byteLength(JSON.stringify({ sources, items })) > 8 * 1024 * 1024) throw new BadRequestException('所选题目超过本次8MiB作答预算，请减少选择；原资料完整保留。');
-    const sourceHash = hash({ studentId: command.studentId, sources, items });
-    return { sources, items, sourceHash };
+    if (command.origin) {
+      const original = this.require(user, command.origin.sessionId), item = original.items.find(item => item.id === command.origin!.itemId);
+      if (!item || item.kind === 'missing') throw new BadRequestException('原题位不存在或只有缺题占位，不能替换为另一道题。');
+      if (original.studentId !== command.studentId) throw new BadRequestException('原题再练必须保留原来的孩子或本人学习范围。');
+      const source = original.sources.find(source => source.paperId === item.paperId)!, availability = this.availability(item, this.sourceAvailability(user, source));
+      if (!availability.available) throw new ConflictException(availability.reason);
+      if (items.length !== 1 || items[0].paperId !== item.paperId || items[0].position !== item.position || items[0].sourceQuestionId !== item.sourceQuestionId || items[0].kind !== item.kind)
+        throw new BadRequestException('原题再练只允许这一个原题位；PDF仍须保留整卷文档身份。');
+    }
+    const sourceHash = hash({ studentId: command.studentId, sources, items, ...(command.origin ? { origin: command.origin } : {}) });
+    return { sources, items, sourceHash, ...(command.origin ? { origin: structuredClone(command.origin) } : {}) };
   }
   preview(user: InMemoryUserAccount, input: unknown): PaperPracticePreview {
     const command = validate(selectionSchema, input), built = this.build(user, command);
@@ -122,7 +138,7 @@ export class PaperPracticeService {
     return { sourceHash: built.sourceHash, studentId: command.studentId, paperCount: built.sources.length, total: built.items.length,
       answerable: available.length, missing: built.items.filter(item => item.kind === 'missing').length, documents: built.items.filter(item => item.kind === 'document').length,
       unavailable: built.items.filter(item => item.kind !== 'missing').length - available.length, withoutReference: built.items.filter(item => item.kind !== 'missing' && !item.hasAnswer).length,
-      papers: built.sources.map(source => ({ id: source.paperId, title: source.title, state: source.state, publicationStatus: source.publicationStatus, selected: built.items.filter(item => item.paperId === source.paperId).length })) };
+      papers: built.sources.map(source => ({ id: source.paperId, title: source.title, state: source.state, publicationStatus: source.publicationStatus, selected: built.items.filter(item => item.paperId === source.paperId).length })), ...(built.origin ? { origin: built.origin } : {}) };
   }
   create(user: InMemoryUserAccount, input: unknown): PaperPracticeSessionView {
     const command = validate(creationSchema, input); this.student(user, command.studentId);
@@ -153,6 +169,52 @@ export class PaperPracticeService {
       papers: row.sources.map(source => ({ id: source.paperId, title: source.title })), total: row.items.length, submitted: row.items.filter(item => item.firstAnswer).length, updatedAt: row.updatedAt })) };
   }
   get(user: InMemoryUserAccount, sessionId: string) { return this.view(user, this.require(user, sessionId)); }
+  nextOptions(user: InMemoryUserAccount, sessionId: string, itemId: string): PaperReviewNextOptions {
+    const row = this.require(user, sessionId), item = row.items.find(item => item.id === itemId);
+    if (!item) throw new NotFoundException('原题位不属于这次练习。');
+    const availability = this.availability(item, this.sourceAvailability(user, row.sources.find(source => source.paperId === item.paperId)!));
+    const params = new URLSearchParams({ paper: item.paperId, originSession: row.id, originItem: item.id, ...(row.studentId ? { studentId: row.studentId } : {}), ...(item.kind === 'question' ? { positions: String(item.position) } : {}) });
+    const activities: PaperReviewNextOptions['activities'] = [];
+    for (const next of this.store.inspect('paperPracticeSessions')) {
+      if (next.origin?.sessionId !== row.id || next.origin.itemId !== item.id) continue;
+      try { this.require(user, next.id); } catch (error) { if (error instanceof ForbiddenException || error instanceof NotFoundException) continue; throw error; }
+      activities.push({ id: next.id, kind: 'original_redo', at: next.createdAt, href: '/library/practice?session=' + encodeURIComponent(next.id), label: '原题再练 · ' + (next.ownerUserId === user.id ? '本人作答' : '孩子学习账号作答') });
+    }
+    for (const blueprint of this.store.inspect('diagnosticBlueprints')) {
+      if (blueprint.paperReviewOrigin?.sessionId !== row.id || blueprint.paperReviewOrigin.itemId !== item.id) continue;
+      if (blueprint.sessionId) {
+        try { const session = this.diagnostics.requireSession(user, blueprint.sessionId); activities.push({ id: session.id, kind: 'verification', at: session.startedAt, href: '/student/assessment?' + new URLSearchParams({ studentId: session.studentId, subject: session.subject, session: session.id }), label: session.status === 'completed' ? '正式新题报告' : '正式新题作答' }); } catch (error) { if (!(error instanceof ForbiddenException || error instanceof NotFoundException)) throw error; }
+      } else if (blueprint.actorId === user.id) activities.push({ id: blueprint.id, kind: 'verification_preview', at: blueprint.createdAt, href: '/student/assessment?' + new URLSearchParams({ studentId: blueprint.studentId, subject: blueprint.scopeSnapshot.subject, blueprint: blueprint.id }), label: '独立新题蓝图 · 尚未开始作答' });
+    }
+    return { redo: { available: availability.available, reason: availability.reason || '确认同一原题与作答身份后创建新练习，旧首答保持。', href: availability.available ? '/library/practice?' + params.toString() : null },
+      knowledge: availability.available ? paperReviewKnowledge(this.store, this.repo, item) : { available: false, reason: '当前来源不可用，不能据此指定新的测量目标；本人反思仍保留。', atoms: [] },
+      activities: activities.sort((a, b) => b.at.localeCompare(a.at) || a.id.localeCompare(b.id)) };
+  }
+  verificationPreview(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown) {
+    const body = validate(paperReviewVerificationSchema, input), row = this.require(user, sessionId);
+    if (!row.items.some(item => item.id === itemId)) throw new NotFoundException('原题位不属于这次练习。');
+    this.student(user, body.studentId); if (row.studentId && row.studentId !== body.studentId) throw new BadRequestException('请在原来的孩子范围内确认新题验证。');
+    const inputHash = hash({ sessionId, itemId, studentId: body.studentId, atomId: body.atomId });
+    const blueprintId = 'blueprint:' + createHash('sha256').update(JSON.stringify([user.id, body.requestKey])).digest('hex');
+    const existing = this.store.find('diagnosticBlueprints', { id: blueprintId });
+    if (existing) { if (existing.paperReviewOrigin?.inputHash !== inputHash) throw new ConflictException('原预览请求已用于其他学习范围或来源，请保留原结果核对。'); return this.diagnostics.getBlueprint(user, existing.id); }
+    const options = this.nextOptions(user, sessionId, itemId), atom = options.knowledge.atoms.find(atom => atom.id === body.atomId);
+    if (!atom) throw new BadRequestException(options.knowledge.reason);
+    const scope = this.curriculum.getScope(user, body.studentId, atom.subject);
+    if (!scope || !scope.learnedAtomIds.includes(atom.id) || scope.grade < atom.grade) throw new BadRequestException('请先确认这位孩子的当前年级、教材与已学范围，再预览这个知识点。');
+    const preview = this.diagnostics.previewBlueprint(user, { studentId: body.studentId, subject: atom.subject, intent: 'verification', maxItems: 6, includePrerequisites: false, adaptive: false, targetAtomIds: [atom.id], requestKey: body.requestKey });
+    const reservation = this.store.find('diagnosticBlueprints', { id: preview.id })!;
+    reservation.paperReviewOrigin = { sessionId, itemId, atomId: atom.id, createdAt: new Date().toISOString(), inputHash };
+    return this.diagnostics.getBlueprint(user, reservation.id);
+  }
+  verificationRequest(user: InMemoryUserAccount, sessionId: string, itemId: string, requestKey: string) {
+    validate(key, requestKey); const row = this.require(user, sessionId);
+    if (!row.items.some(item => item.id === itemId)) throw new NotFoundException('原题位不属于这次练习。');
+    const id = 'blueprint:' + createHash('sha256').update(JSON.stringify([user.id, requestKey])).digest('hex'), existing = this.store.find('diagnosticBlueprints', { id });
+    if (!existing) return null;
+    if (existing.paperReviewOrigin?.sessionId !== sessionId || existing.paperReviewOrigin.itemId !== itemId) throw new ConflictException('原请求属于另一份来源或蓝图，请保留保护文件核对。');
+    return this.diagnostics.getBlueprint(user, id);
+  }
   private reviewRows(user: InMemoryUserAccount, scope: PaperReviewScope, studentId?: string) {
     this.student(user, studentId ?? null);
     if (scope === 'learner' && !studentId) throw new BadRequestException('请选择需要查看的孩子学习账号记录。');

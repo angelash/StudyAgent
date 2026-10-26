@@ -116,9 +116,15 @@ export function selectionFingerprint(selection: Selection, context: unknown) {
   return digest({ context, collections: Object.keys(selection).sort().map(name => [name, [...selection[name]].sort((a, b) => recordId(a).localeCompare(recordId(b)))]) });
 }
 export function removeSelected(store: InMemoryStoreService, selection: Selection) {
+  const removedPaperPractice = ids(selection, 'paperPracticeSessions');
   for (const [name, selected] of Object.entries(selection)) {
     const remove = new Set(selected.map(recordId));
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).filter(row => !remove.has(recordId(row)));
+  }
+  if (removedPaperPractice.size) {
+    for (const row of rows(store, 'paperPracticeSessions')) if (row.origin && removedPaperPractice.has(row.origin.sessionId)) delete row.origin;
+    for (const row of rows(store, 'diagnosticBlueprints')) if (row.paperReviewOrigin && removedPaperPractice.has(row.paperReviewOrigin.sessionId)) delete row.paperReviewOrigin;
+    for (const row of rows(store, 'diagnosticSessions')) if (row.paperReviewOrigin && removedPaperPractice.has(row.paperReviewOrigin.sessionId)) delete row.paperReviewOrigin;
   }
 }
 // Tokens, passwords, internal idempotency digests and other guardians' private chats are never exported.
@@ -145,7 +151,8 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
-    else if (name === 'paperPracticeSessions') result[name] = records.filter(row => allowedPaperPractice.has(row.id));
+    else if (name === 'paperPracticeSessions') result[name] = records.filter(row => allowedPaperPractice.has(row.id)).map(row => { const { origin, ...rest } = row; return !origin || allowedPaperPractice.has(origin.sessionId) ? row : rest; });
+    else if (name === 'diagnosticBlueprints' || name === 'diagnosticSessions') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));

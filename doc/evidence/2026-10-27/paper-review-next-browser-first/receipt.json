@@ -1,0 +1,160 @@
+{
+  "at": "2026-10-26T17:56:21.725Z",
+  "status": "preserved-original-browser-failure",
+  "head": "f32e226da56789672fc32841d38d48adeb091a1b",
+  "stats": {
+    "startTime": "2026-10-26T17:51:05.921Z",
+    "duration": 96747.414,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "cause": "The confirmed preview was kept only in component state after its pending request was cleared; a second real reload lost the primary preview card even though the server retained the reservation.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "data__qa__paper-practice-browser.json.gz",
+      "originalSha256": "78673807ef89324434b94c77c78db89cbf7425de5ae30269deadd20020781fe8",
+      "sha256": "8cd522df3611f0971b3ed40fc21688917edba7391a18799f354a1dac34e2d237"
+    },
+    {
+      "source": "data/qa/paper-review-next-first-browser.log",
+      "file": "data__qa__paper-review-next-first-browser.log.gz",
+      "originalSha256": "2caea398b9a7378df94fb3e174b50433adb6dff7e2d194aed7dd3a1d02061ae5",
+      "sha256": "6576c789d2c318014fbafa78f423bbeb2c6e8082d7eccef6fd6567ea8c724edb"
+    },
+    {
+      "source": "apps/api/src/common/auth.guard.ts",
+      "file": "apps__api__src__common__auth.guard.ts.gz",
+      "originalSha256": "de4c76f97ec4e6bfdf451d7b44f19b3156f49c3a517d3614355ddb0329c9bc7e",
+      "sha256": "1c86ee10f98f25d4338188dc030878b30de3c1b8e102a7bfe8056139a6a412e7"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "file": "apps__api__src__modules__diagnostics__diagnostics.service.ts.gz",
+      "originalSha256": "bb79fef030070457b65c39a10bdffc9a2de991c51301140256b39bb78b87e8e8",
+      "sha256": "91e7a73a100af70ac86534b0e0517ef18c67aed6a49e0473e9e8803da819fd04"
+    },
+    {
+      "source": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "file": "apps__api__src__modules__library__measurement-content.integration.test.ts.gz",
+      "originalSha256": "b00c09737ed641a3f2f3b496c93ee86d51063165c0667d8158c82e61e2b90612",
+      "sha256": "1e086fce90bca74174e5c94a3757bd291233d73cb2f6a6aaba77d222c63bacbe"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-record.ts",
+      "file": "apps__api__src__modules__library__paper-practice-record.ts.gz",
+      "originalSha256": "e8455b97a53b69519fe073167174a204f24d14ff4dfa32dc6096ad789d5c5fc1",
+      "sha256": "93146c849be45e0eef70e3b4eb8f1a08ef5a5f6da7df7047d52cbea5815f001f"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "c3bc0bb3386cfd585b4f3d4aad8b633879c24b4d2c133bb2ae39f0394c0c11cf",
+      "sha256": "f949af1aaa15940a150abf686ce09122cc1b60b63e47965ef803fae8a1e6a45c"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.controller.ts",
+      "file": "apps__api__src__modules__library__paper-practice.controller.ts.gz",
+      "originalSha256": "c3a41123a9a22ada7dc5b1f088aff8dca79b342ded0f4784ba01aa8f4cf893ff",
+      "sha256": "59047ad34bde7f449d9c501c9bba126e96bb80184a754e1a52f871db3cc38ad4"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice.integration.test.ts.gz",
+      "originalSha256": "1562ff803b5abf9a26874d150043c5cdacaeff580aeebaae54e93218f601a5c5",
+      "sha256": "ec42cda0b7a2b790b4aea248e004c9d42aa333cf2db88eb4b8a8553161de6d31"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "apps__api__src__modules__library__paper-practice.service.ts.gz",
+      "originalSha256": "f98447911ddcb950fce4a30f5cd0bf0fba563d06c7721587a81526338680f851",
+      "sha256": "bed014f8d7c7a10d0216817763b540caaf9f9f2fd57c7f49e6be288296d52119"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "apps__api__src__modules__privacy__privacy-records.ts.gz",
+      "originalSha256": "aa8d3f0da13fb0385b6345f5fe7a2776cd6ae6eb17ec8ddf42e427d19277799b",
+      "sha256": "5281a6994260e7170c5dd0d4c119e22f84b5990f03dd488066e62274adc695c6"
+    },
+    {
+      "source": "apps/web/app/library/practice/review.css",
+      "file": "apps__web__app__library__practice__review.css.gz",
+      "originalSha256": "2f01109ca457fb0ca16c8a3fc3d2554f614f226319a56e25987b230beeb01a9c",
+      "sha256": "de1f55355f02c28d774a2b34f4bc24af0e34ecdc0e1291341e04cac05e81187d"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "apps__web__app__library__practice__session.tsx.gz",
+      "originalSha256": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+      "sha256": "83c486c778525926b898f78eebbdc8b55c359365f8787b00324dfa22ad9002c7"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "apps__web__app__library__practice__studio.tsx.gz",
+      "originalSha256": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+      "sha256": "8331062664387e1e78bdd9484b44ac3288df1fc6c0416b6ead1beb582690416e"
+    },
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "file": "apps__web__app__student__assessment__studio.tsx.gz",
+      "originalSha256": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+      "sha256": "5359ed521f97c8aef895d4881f0f9e172ecc51aa5ca049742b3fd277f7fbfc24"
+    },
+    {
+      "source": "packages/contracts/src/diagnostics.ts",
+      "file": "packages__contracts__src__diagnostics.ts.gz",
+      "originalSha256": "aae59dc8df7a3927ca3eeb1172c44ee133daad16ac328475fd3455efdfb03e75",
+      "sha256": "142022a2711303c374477f55e96d511103213338cb88fcefc67e12cd692c5949"
+    },
+    {
+      "source": "packages/contracts/src/paper-practice.ts",
+      "file": "packages__contracts__src__paper-practice.ts.gz",
+      "originalSha256": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792",
+      "sha256": "b876b6e06397b7adcd743b82b945668103fd23dc981f98fde3a89529c7ef20a8"
+    },
+    {
+      "source": "packages/contracts/src/paper-review.ts",
+      "file": "packages__contracts__src__paper-review.ts.gz",
+      "originalSha256": "4c47fd5747211fb03bc44ba922a739cec3d0ab7dc4c3020dc5a8fa95a3d35a73",
+      "sha256": "62cc1651c0190b9d61a910a1971f28bf353f6b3d57383f18671fa26e82a82124"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "tests__e2e__paper-practice.spec.ts.gz",
+      "originalSha256": "33c11c76d7475649d762e51373516d806adb154ad9bc848b2beae589fa3bf650",
+      "sha256": "f8b3bffd391aff17d4637e30f30d60a924926c64dc156534b014ea81e4203d25"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-review-eligibility.ts",
+      "file": "apps__api__src__modules__library__paper-review-eligibility.ts.gz",
+      "originalSha256": "6af7e9c3375ae298a4eb7ec0748847bcdb7d536abbe3b186e2fdd9ed055d5f09",
+      "sha256": "5cf2c306116af894da2c0817176d8494797d27b0dad38fabc338606851820e5a"
+    },
+    {
+      "source": "apps/web/components/paper-review-next-steps.tsx",
+      "file": "apps__web__components__paper-review-next-steps.tsx.gz",
+      "originalSha256": "670c7e687c0022844888c83ae3981d100943df5d959a2ebec0bf050bc60e3117",
+      "sha256": "2c3f316ddab8fd0511a5f50ab8b18e2e01d1f0b63e97321c4ab9d76ff51b2079"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group/error-context.md",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group__error-context.md.gz",
+      "originalSha256": "badced39e2162570f8b6c780d464b4695ca01b60bb9c1441798b3da22197b0df",
+      "sha256": "5758771212700dd2bcdae0b6e9e58da3e17a5b3eda177f10a4fa2cee666112a4"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group/test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group__test-failed-1.png",
+      "originalSha256": "d97a139de81ec922aaa6fcddf67ed399532af1c9658dc70b2fff131cddfeb851",
+      "sha256": "d97a139de81ec922aaa6fcddf67ed399532af1c9658dc70b2fff131cddfeb851"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group/trace.zip",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d82dd-s-only-the-frozen-new-group__trace.zip",
+      "originalSha256": "06e087e6f2551b53c495ea657c454b3ac7dfcfae5315860cbc783b29692e1d41",
+      "sha256": "06e087e6f2551b53c495ea657c454b3ac7dfcfae5315860cbc783b29692e1d41"
+    }
+  ]
+}

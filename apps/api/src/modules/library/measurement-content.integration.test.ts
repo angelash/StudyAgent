@@ -82,6 +82,59 @@ describe('original paper → independent measurement reviews → primary evidenc
     for (const gate of ['source', 'content', 'media', 'scoring', 'mapping']) row = await call('post', path(row, 'reviews'), command(row, { gate, decision: 'approved' }));
     return row;
   }
+  async function reviewPractice(position = 1, actor = parent) {
+    await call('post', '/library/papers/qa:paper/publication', { status: 'published', reason: '核对合成原题到独立验证的连续路径', licenseEvidence: '原题与资料为本集成测试独立构造', contentReviewed: true, mediaReviewed: true });
+    const selection = [{ paperId: 'qa:paper', positions: [position] }], body = { studentId: 'qa-child', selection };
+    const preview = await call('post', '/library/practice/preview', body, 201, actor);
+    return call('post', '/library/practice/sessions', { ...body, sourceHash: preview.sourceHash, requestKey: crypto.randomUUID() }, 201, actor);
+  }
+  it('suggests only a currently source-bound five-gate mapping and never creates assessment activity from a read', async () => {
+    const approved = await ready(); await call('post', path(approved, 'publish'), command(approved));
+    const practice = await reviewPractice(), suffix = '/library/practice/sessions/' + practice.id + '/items/' + practice.items[0].id + '/next-options';
+    const before = [store.diagnosticBlueprints.length, store.diagnosticSessions.length, store.paperPracticeSessions.length];
+    const options = await call('get', suffix, undefined, 200, parent); expect(options.knowledge).toMatchObject({ available: true, atoms: [{ id: 'target', subject: 'math', grade: 3 }] });
+    expect(JSON.stringify(options)).not.toContain('answerSchema'); expect([store.diagnosticBlueprints.length, store.diagnosticSessions.length, store.paperPracticeSessions.length]).toEqual(before);
+    const candidate = store.measurementCandidates.find((row: any) => row.id === approved.id), review = structuredClone(candidate.reviews.mapping);
+    candidate.reviews.mapping.decision = 'rejected'; expect((await call('get', suffix, undefined, 200, parent)).knowledge.available).toBe(false); candidate.reviews.mapping = review;
+    const originalHash = candidate.sourceHash; candidate.sourceHash = '0'.repeat(64); expect((await call('get', suffix, undefined, 200, parent)).knowledge.available).toBe(false); candidate.sourceHash = originalHash;
+    store.knowledgeAtoms.find((atom: any) => atom.id === 'target').objective = '已改变的知识行为定义'; expect((await call('get', suffix, undefined, 200, parent)).knowledge.available).toBe(false);
+  });
+  it('confirms scope before a source-bound idempotent independent preview and excludes the learner original from the activated group', async () => {
+    const first = await ready(), published = await call('post', path(first, 'publish'), command(first));
+    const second = await ready(2, draft => { draft.mapping.family = 'qa:independent-new-word-model'; draft.mapping.familyRationale = '独立合成的另一种任务组织结构，用来核对正式题族分配'; });
+    const otherPublished = await call('post', path(second, 'publish'), command(second));
+    const access = await call('post', '/students/qa-child/learning-access', { enabled: true, expectedVersion: 0, requestKey: crypto.randomUUID(), reason: '合成学习账号的原卷来源曝光验证' }, 201, parent);
+    const code = await call('post', '/students/qa-child/learning-access/codes', { expectedVersion: access.version, requestKey: crypto.randomUUID() }, 201, parent);
+    const response = await request(app.getHttpServer()).post('/api/auth/learning-code').send({ code: code.code }).expect(201), learner = response.body.data;
+    const practice = await reviewPractice(1, learner), suffix = '/library/practice/sessions/' + practice.id + '/items/' + practice.items[0].id + '/verification-preview';
+    const body = { studentId: 'qa-child', atomId: 'target', requestKey: crypto.randomUUID() };
+    await call('post', suffix, body, 400, learner); expect(store.diagnosticBlueprints).toHaveLength(0);
+    await call('put', '/students/qa-child/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '合成已学范围', learnedAtomIds: ['target'], currentAtomId: 'target', minutesPerSession: 15 }, 200, parent);
+    const preview = await call('post', suffix, body, 201, learner); expect(preview.blueprint.intent).toBe('verification'); expect(preview.paperReviewOrigin).toMatchObject({ sessionId: practice.id, itemId: practice.items[0].id }); expect(preview.paperReviewOrigin).not.toHaveProperty('inputHash');
+    expect((await call('get', suffix.replace('/verification-preview', '/verification-requests/' + body.requestKey), undefined, 200, learner)).id).toBe(preview.id);
+    expect(store.diagnosticSessions).toHaveLength(0); expect((await call('post', suffix, body, 201, learner)).id).toBe(preview.id); expect(store.diagnosticBlueprints).toHaveLength(1);
+    await call('post', suffix, { ...body, atomId: 'base' }, 409, learner);
+    const active = await call('post', '/diagnostics/blueprints/' + encodeURIComponent(preview.id) + '/start', {}, 201, learner);
+    const raw = store.diagnosticSessions.find((row: any) => row.id === active.id);
+    expect(active.paperReviewOrigin).toMatchObject({ sessionId: practice.id, itemId: practice.items[0].id }); expect(active.paperReviewOrigin).not.toHaveProperty('inputHash');
+    expect(raw.questionSnapshots.map((row: any) => row.id)).not.toContain(published.questionId); expect(raw.questionSnapshots.map((row: any) => row.id)).toContain(otherPublished.questionId);
+    const options = await call('get', suffix.replace('/verification-preview', '/next-options'), undefined, 200, learner); expect(options.activities).toEqual(expect.arrayContaining([expect.objectContaining({ kind: 'verification', id: active.id })]));
+  });
+  it('omits another guardian private source from shared child exports and keeps preview access bound to its creator', async () => {
+    const candidate = await ready(); await call('post', path(candidate, 'publish'), command(candidate));
+    const practice = await reviewPractice(); await call('put', '/students/qa-child/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '合成已学范围', learnedAtomIds: ['target'], currentAtomId: 'target', minutesPerSession: 15 }, 200, parent);
+    const preview = await call('post', '/library/practice/sessions/' + practice.id + '/items/' + practice.items[0].id + '/verification-preview', { studentId: 'qa-child', atomId: 'target', requestKey: crypto.randomUUID() }, 201, parent);
+    const other = await auth.register({ principal: 'another-measurement-guardian', credential: 'fixture-measurement-secret' }); store.bindings.push({ id: 'qa-second-guardian', studentId: 'qa-child', parentUserId: other.user.id, relation: 'guardian', status: 'active' });
+    await call('get', '/diagnostics/blueprints/' + encodeURIComponent(preview.id), undefined, 404, other);
+    const active = await call('post', '/diagnostics/blueprints/' + encodeURIComponent(preview.id) + '/start', {}, 201, parent);
+    expect(active.paperReviewOrigin).toMatchObject({ sessionId: practice.id });
+    expect(await call('get', '/diagnostics/sessions/' + active.id, undefined, 200, other)).not.toHaveProperty('paperReviewOrigin');
+    const mine = await call('post', '/privacy/students/qa-child/export', { credential: 'fixture-measurement-secret', requestKey: crypto.randomUUID() }, 201, parent);
+    const theirs = await call('post', '/privacy/students/qa-child/export', { credential: 'fixture-measurement-secret', requestKey: crypto.randomUUID() }, 201, other);
+    expect(JSON.stringify(mine)).toContain(practice.id); expect(JSON.stringify(theirs)).not.toContain(practice.id);
+    expect(theirs.students[0].records.diagnosticBlueprints.find((row: any) => row.id === preview.id)).not.toHaveProperty('paperReviewOrigin');
+    expect(theirs.students[0].records.diagnosticSessions.find((row: any) => row.id === active.id)).not.toHaveProperty('paperReviewOrigin');
+  });
   it('keeps originals immutable, preserves missing positions, separates permissions and deduplicates staging', async () => {
     await call('get', '/measurement-content/candidates', undefined, 403, parent);
     await call('post', '/measurement-content/candidates', { paperId: 'qa:paper', positions: [1] }, 403, parent);

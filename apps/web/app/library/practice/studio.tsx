@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { paperPracticeCreationSchema, type PaperPracticeCreationResult, type PaperPracticePreview, type PaperPracticeSelection, type PaperPracticeSessionView } from '@study-agent/contracts';
+import { paperPracticeCreationSchema, type PaperPracticeCreationResult, type PaperPracticePreview, type PaperPracticeSelection, type PaperPracticeSessionView, type PaperPracticeOrigin } from '@study-agent/contracts';
 import { useSessionStatus, refreshSessionUser, type SessionUser } from '../../../lib/session-user';
 import { ApiRequestError } from '../../../lib/api';
 import { StudyNav } from '../../../components/study-nav';
@@ -10,7 +10,7 @@ import { PaperPracticeSession } from './session';
 import '../../student/assessment/studio.css';
 import './practice.css';
 
-type StartBody = { studentId: string | null; selection: PaperPracticeSelection[]; sourceHash: string; requestKey: string };
+type StartBody = { studentId: string | null; selection: PaperPracticeSelection[]; sourceHash: string; requestKey: string; origin?: PaperPracticeOrigin };
 type PendingStart = { format: 'paper-practice-start-v1'; ownerId: string; body: StartBody };
 type History = { id: string; status: string; total: number; submitted: number; updatedAt: string; papers: Array<{ id: string; title: string }> };
 const statusNames: Record<string, string> = { in_progress: '进行中', paused: '已暂停', completed: '已完成' };
@@ -34,6 +34,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
   const { call, alive } = usePaperPracticeApi();
   const [children, setChildren] = React.useState<Array<{ id: string; nickname: string }>>([]), [studentId, setStudentId] = React.useState(''), [ready, setReady] = React.useState(false);
   const [selection, setSelection] = React.useState<PaperPracticeSelection[]>([]), [preview, setPreview] = React.useState<PaperPracticePreview | null>(null), [history, setHistory] = React.useState<History[]>([]);
+  const [origin, setOrigin] = React.useState<PaperPracticeOrigin | null>(null);
   const [pending, setPending] = React.useState<PendingStart | null>(null), [protectedLocally, setProtectedLocally] = React.useState(false);
   const [manualProtection, setManualProtection] = React.useState(false);
   const [expiredStart, setExpiredStart] = React.useState(false);
@@ -50,6 +51,9 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
     void call<Array<{ id: string; nickname: string }>>('/learning/students', undefined, controller.signal).then(rows => {
       if (!current) return; setChildren(rows);
       const params = new URLSearchParams(window.location.search), requested = params.get('studentId');
+      const originSession = params.get('originSession'), originItem = params.get('originItem');
+      if (Boolean(originSession) !== Boolean(originItem)) throw new Error('原题再练的来源关联不完整，请返回原练习重新进入。');
+      setOrigin(originSession && originItem ? { sessionId: originSession, itemId: originItem } : null);
       if (requested && !rows.some(row => row.id === requested)) throw new Error('链接中的孩子当前不可用，请重新选择。');
       setStudentId(user.role === 'student' ? rows[0]?.id ?? '' : requested ?? '');
       if (user.role === 'student' && !rows.length) throw new Error('当前学习档案不可用，请由家长重新开启。');
@@ -80,7 +84,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
   }, [ready, studentId, call, reload]);
   async function inspect() {
     setBusy(true); setError(''); setPreview(null);
-    try { const value = await call<PaperPracticePreview>('/library/practice/preview', { studentId: studentId || null, selection }); if (alive.current) setPreview(value); }
+    try { const value = await call<PaperPracticePreview>('/library/practice/preview', { studentId: studentId || null, selection, ...(origin ? { origin } : {}) }); if (alive.current) setPreview(value); }
     catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); } finally { if (alive.current) setBusy(false); }
   }
   async function recover(value: PendingStart) {
@@ -103,14 +107,14 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       if (receipt) { if (receipt.inputHash !== await paperPracticeInputHash(pending.body, true)) throw new Error('原请求已存在不同结果，请保留原文件核对。'); setConfirmedStart(receipt.session.id); setNotice('原练习已经存在，请继续原记录。'); setExpiredStart(false); return; }
       try { storePaperRecovery(storage.base + '.' + crypto.randomUUID(), pending); }
       catch { if (!manualProtection) { setProtectedLocally(false); setManualProtection(true); setNotice('本机未能另存原开始记录。请先下载完整保护文件，并确认已经另外保留。'); return; } }
-      setSelection(pending.body.selection); setStudentId(pending.body.studentId ?? ''); setPreview(null); setPending(null); setExpiredStart(false); setProtectedLocally(false); setManualProtection(false);
+      setSelection(pending.body.selection); setStudentId(pending.body.studentId ?? ''); setOrigin(pending.body.origin ?? null); setPreview(null); setPending(null); setExpiredStart(false); setProtectedLocally(false); setManualProtection(false);
       try { clearPaperRecovery(storage); } catch { /* The original external file or independent copy remains available. */ }
       setNotice('原开始记录已保留。请重新预览原选择，确认当前原卷版本后再开始。');
     } catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); } finally { if (alive.current) setBusy(false); }
   }
   async function start() {
     if (!preview || pending) return;
-    const value: PendingStart = { format: 'paper-practice-start-v1', ownerId: user.id, body: { studentId: studentId || null, selection, sourceHash: preview.sourceHash, requestKey: crypto.randomUUID() } };
+    const value: PendingStart = { format: 'paper-practice-start-v1', ownerId: user.id, body: { studentId: studentId || null, selection, sourceHash: preview.sourceHash, requestKey: crypto.randomUUID(), ...(origin ? { origin } : {}) } };
     setPending(value);
     try { storePaperRecovery(storage.key, value); setProtectedLocally(true); await recover(value); }
     catch { setProtectedLocally(false); setManualProtection(true); setNotice('本机暂不能保存恢复信息。先下载保护文件，再继续开始，原选择会保留。'); }
@@ -120,7 +124,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
     try {
       if (file.size > 256 * 1024) throw new Error('恢复文件过大，请使用原选题或开始记录文件。'); const value = JSON.parse(await file.text());
       if (!alive.current) return; if (value.ownerId !== user.id) throw new Error('恢复文件属于其他账号，请切换到原账号。');
-      if (value.format === 'paper-practice-selection-v1') { if (pending) throw new Error('先核对原开始记录，再换一份选题。'); setSelection(parsePaperSelection(value.selection)); setPreview(null); setNotice('已恢复选题，请预览当前原卷。'); }
+      if (value.format === 'paper-practice-selection-v1') { if (pending) throw new Error('先核对原开始记录，再换一份选题。'); setSelection(parsePaperSelection(value.selection)); setOrigin(null); setPreview(null); setNotice('已恢复新的选题，请预览当前原卷。原再练关联不会套用到另一份选题。'); }
       else if (value.format === 'paper-practice-start-v1') { const saved = decodeStart(value); setPending(saved); setProtectedLocally(true); setManualProtection(false); setNotice('已读取原开始记录，可用原选择继续核对。'); }
       else throw new Error('这不是原卷练习的恢复文件。');
     } catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); }
@@ -130,7 +134,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
     {pending ? <section className="pp-card" aria-label="原开始记录恢复"><h2>先核对上一次开始。</h2><p>原请求仍保留，读取或重试会沿用同一份选择。</p>{!protectedLocally && <p>本机尚未确认恢复信息已保存，请先保存恢复文件。</p>}
       <button className="studio-secondary" onClick={() => { downloadPaperRecovery(pending, '原卷练习开始记录.json'); setNotice('请确认浏览器已保存完整恢复文件，再继续开始。'); }}>下载开始记录保护文件</button>{manualProtection && <label><input type="checkbox" checked={protectedLocally} onChange={event => setProtectedLocally(event.target.checked)} />我已另外保留完整恢复文件</label>}
       <button className="studio-primary" disabled={busy || !protectedLocally} onClick={() => void recover(pending)}>{busy ? '正在核对原结果…' : '继续核对原开始记录 ↗'}</button>{expiredStart && <button className="studio-secondary" disabled={busy || !protectedLocally} onClick={() => void repreview()}>保留原开始记录，重新预览</button>}</section>
-      : <section className="pp-card" aria-label="确认原卷练习"><h2>01 / 选好范围，再开始。</h2>{ready && <label>这次练习记录给谁<select value={studentId} disabled={busy} onChange={event => { setStudentId(event.target.value); setPreview(null); }}>{user.role !== 'student' && <option value="">我自己</option>}{children.map(child => <option value={child.id} key={child.id}>{child.nickname}{user.role !== 'student' ? ' · 陪练记录' : ''}</option>)}</select></label>}
+      : <section className="pp-card" aria-label="确认原卷练习"><h2>01 / 选好范围，再开始。</h2>{origin && <p className="pp-measurement-note">本次只再练同一道原题，原练习记录保持。当前账号将留下{user.role === 'student' ? '本人作答' : studentId ? '本人陪练' : '本人练习'}；来源变化时会停止，请明确重新选择。</p>}{ready && <label>这次练习记录给谁<select value={studentId} disabled={busy || !!origin} onChange={event => { setStudentId(event.target.value); setPreview(null); }}>{user.role !== 'student' && <option value="">我自己</option>}{children.map(child => <option value={child.id} key={child.id}>{child.nickname}{user.role !== 'student' ? ' · 陪练记录' : ''}</option>)}</select></label>}
         {!selection.length ? <p>还没有选题。到题卷库打开一份卷，选择整卷或题目后回来。</p> : <p>已选择 {selection.length} 份卷，请先核对题位、原卷状态与参考答案缺口。</p>}
         <button className="studio-secondary" disabled={!ready || !selection.length || busy} onClick={() => void inspect()}>{busy ? '正在核对原卷…' : '预览这次练习'}</button>
         {preview && <div className="pp-preview"><ul>{preview.papers.map(paper => <li key={paper.id}><strong>{paper.title}</strong><span>{paper.selected} 个原题位 · {paper.publicationStatus === 'published' ? '已发布' : '教研原件'}</span><button className="studio-text-button" onClick={() => { const next = selection.filter(row => row.paperId !== paper.id); setSelection(next); setPreview(null); try { if (new URLSearchParams(window.location.search).get('basket') === '1') storePaperRecovery(paperBasketKey(user.id), next); } catch { setNotice('本次选择已调整，本机清单暂未保存。'); } }}>移除这份卷</button></li>)}</ul><p>{preview.answerable} 个可作答记录 · {preview.missing} 个缺题位 · {preview.unavailable} 个当前不可用 · {preview.withoutReference} 个缺少可核对答案</p>{preview.documents > 0 && <p>包含 {preview.documents} 份未逐题切分的 PDF，将保留整卷作答笔记，不虚构题号或分数。</p>}<button className="studio-primary" disabled={busy || !preview.answerable} onClick={() => void start()}>确认范围，开始练习 ↗</button><button className="studio-text-button" disabled={busy} onClick={() => setPreview(null)}>返回修改范围</button></div>}

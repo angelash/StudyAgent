@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-26T17:36:59.083Z",
+  "status": "student-next-step-default-deny-reproduced",
+  "passed": 9,
+  "failed": 1,
+  "deployed": false,
+  "finding": "The new source-bound verification route was missing from the explicit student learning-route allowlist, so the learner received403 before scope validation. Add only bounded read-review/next-options and verification-preview routes; retain all resource/current-grant checks and deny management by default.",
+  "files": [
+    {
+      "source": "data/qa/paper-review-next-measurement-second.json",
+      "file": "paper-review-next-measurement-second.json.gz",
+      "originalSha256": "75cc3ace9f454039d50fe9314b5161d27e2ac1a2da2b47e1f81632b2cfb3ec5a",
+      "sha256": "2e303c95fa0e49019a58f5f270de171227c33fd42ffa20e0281a22c79c6be8bf"
+    },
+    {
+      "source": "apps/api/src/common/auth.guard.ts",
+      "file": "auth.guard.ts.gz",
+      "originalSha256": "a08121a4516e746c4c1f8d961fbd994b176c9816d0d9ecb01abd97157e202ffa",
+      "sha256": "9cff6145dacc9b2f6a0a857dd249ffa61907978fde70ae1aa7a62811cdfb8f04"
+    }
+  ]
+}

@@ -136,14 +136,17 @@ export type AssessmentBlueprint = {
   verification?: DiagnosticVerificationBlueprint;
   routing?: { mode: 'adaptive'; version: string; description: string };
 };
+export type PaperReviewAssessmentOrigin = { sessionId: string; itemId: string; atomId: string; createdAt: string };
 export type DiagnosticBlueprintReservation = {
   id: string; studentId: string; actorId: string; command: DiagnosticStart; seed: string; fingerprint: string;
   createdAt: string; expiresAt: string; sessionId: string | null; requestHash: string;
   blueprint: AssessmentBlueprint; scopeSnapshot: LearningScope; coverage: DiagnosticSession['coverage'];
   atomNames: Array<{ id: string; name: string }>; itemCount: number;
+  paperReviewOrigin?: PaperReviewAssessmentOrigin & { inputHash: string };
 };
-export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'actorId' | 'command' | 'seed' | 'fingerprint' | 'requestHash'> & {
+export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'actorId' | 'command' | 'seed' | 'fingerprint' | 'requestHash' | 'paperReviewOrigin'> & {
   canStart: boolean; expired: boolean;
+  paperReviewOrigin?: PaperReviewAssessmentOrigin;
 };
 
 export type DiagnosticSession = {
@@ -162,6 +165,7 @@ export type DiagnosticSession = {
   selectionReasons: Record<string, string>; seed: string; algorithmVersion: string;
   startedAt: string; completedAt: string | null; hypothesisId: string | null; reviewTaskId: string | null;
   exposedQuestionIds?: string[];
+  paperReviewOrigin?: PaperReviewAssessmentOrigin;
   planId?: string; planRevision?: number;
   routing?: DiagnosticRouting;
 };

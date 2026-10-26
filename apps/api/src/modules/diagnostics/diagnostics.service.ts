@@ -183,9 +183,10 @@ export class DiagnosticsService {
   }
   private blueprintView(user: InMemoryUserAccount, reservation: DiagnosticBlueprintReservation): DiagnosticBlueprintView {
     this.students.assertCanAccessStudent(user, reservation.studentId);
-    const { actorId: _actor, command: _command, seed: _seed, fingerprint: _fingerprint, requestHash: _requestHash, ...view } = reservation;
+    const { actorId: _actor, command: _command, seed: _seed, fingerprint: _fingerprint, requestHash: _requestHash, paperReviewOrigin, ...view } = reservation;
+    const origin = paperReviewOrigin ? { sessionId: paperReviewOrigin.sessionId, itemId: paperReviewOrigin.itemId, atomId: paperReviewOrigin.atomId, createdAt: paperReviewOrigin.createdAt } : undefined;
     const expired = Date.parse(reservation.expiresAt) <= Date.now();
-    return { ...view, expired, canStart: !!reservation.sessionId || reservation.itemCount > 0 && !expired };
+    return { ...view, ...(origin ? { paperReviewOrigin: origin } : {}), expired, canStart: !!reservation.sessionId || reservation.itemCount > 0 && !expired };
   }
   getBlueprint(user: InMemoryUserAccount, id: string) { return this.blueprintView(user, this.requireBlueprint(user, id)); }
   startBlueprint(user: InMemoryUserAccount, id: string) {
@@ -197,6 +198,7 @@ export class DiagnosticsService {
     if (this.store.find('diagnosticSessions', { id: draft.id }) || this.blueprintFingerprint(draft) !== reservation.fingerprint) {
       throw new ConflictException('学习范围、题目、定义或已有学习证据发生变化，请重新预览本次题组');
     }
+    if (reservation.paperReviewOrigin) { const { inputHash: _hash, ...origin } = reservation.paperReviewOrigin; draft.paperReviewOrigin = structuredClone(origin); }
     const result = this.activateSession(user, draft); reservation.sessionId = result.id;
     return result;
   }
@@ -236,7 +238,10 @@ export class DiagnosticsService {
   sessionView(user: InMemoryUserAccount, id: string) {
     const session = this.requireSession(user, id);
     const responses = this.store.select('diagnosticResponses', { sessionId: id });
+    const original = session.paperReviewOrigin ? this.store.find('paperPracticeSessions', { id: session.paperReviewOrigin.sessionId }) : null;
+    const originVisible = original && (original.ownerUserId === user.id || original.studentId === session.studentId && this.store.find('users', { id: original.ownerUserId, role: 'student' }));
     return { id: session.id, studentId: session.studentId, subject: session.subject, intent: session.intent,
+      ...(originVisible ? { paperReviewOrigin: session.paperReviewOrigin } : {}),
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
       startedAt: session.startedAt, completedAt: session.completedAt, endedAt: session.endedAt ?? null,
       revision: session.revision ?? 1, blueprint: session.blueprint,
