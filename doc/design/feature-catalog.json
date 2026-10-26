@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
+  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 121,
-    "activeNormalApiRoutes": 350,
-    "coveredApiRoutes": 350
+    "features": 122,
+    "activeNormalApiRoutes": 364,
+    "coveredApiRoutes": 364
   },
   "areas": [
     {
@@ -7781,7 +7781,7 @@
               "controller": "TopicWhiteboardController",
               "method": "preflight",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 11
+              "line": 12
             },
             {
               "verb": "POST",
@@ -7789,7 +7789,7 @@
               "controller": "TopicWhiteboardController",
               "method": "prepare",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 12
+              "line": 13
             },
             {
               "verb": "GET",
@@ -7797,7 +7797,7 @@
               "controller": "TopicWhiteboardController",
               "method": "drafts",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 13
+              "line": 14
             },
             {
               "verb": "GET",
@@ -7805,7 +7805,7 @@
               "controller": "TopicWhiteboardController",
               "method": "draft",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 14
+              "line": 15
             },
             {
               "verb": "GET",
@@ -7813,7 +7813,7 @@
               "controller": "TopicWhiteboardController",
               "method": "receipt",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 15
+              "line": 16
             },
             {
               "verb": "GET",
@@ -7821,7 +7821,7 @@
               "controller": "TopicWhiteboardController",
               "method": "history",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 16
+              "line": 17
             },
             {
               "verb": "POST",
@@ -7829,7 +7829,7 @@
               "controller": "TopicWhiteboardController",
               "method": "cancel",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 17
+              "line": 18
             },
             {
               "verb": "POST",
@@ -7837,7 +7837,7 @@
               "controller": "TopicWhiteboardController",
               "method": "retry",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 18
+              "line": 19
             },
             {
               "verb": "PATCH",
@@ -7845,7 +7845,7 @@
               "controller": "TopicWhiteboardController",
               "method": "edit",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 19
+              "line": 20
             },
             {
               "verb": "POST",
@@ -7853,7 +7853,7 @@
               "controller": "TopicWhiteboardController",
               "method": "confirm",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 20
+              "line": 21
             },
             {
               "verb": "GET",
@@ -7861,7 +7861,7 @@
               "controller": "TopicWhiteboardController",
               "method": "list",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 21
+              "line": 22
             },
             {
               "verb": "GET",
@@ -7869,7 +7869,7 @@
               "controller": "TopicWhiteboardController",
               "method": "get",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 22
+              "line": 23
             },
             {
               "verb": "POST",
@@ -7877,64 +7877,64 @@
               "controller": "TopicWhiteboardController",
               "method": "speak",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 23
+              "line": 32
             }
           ],
           "implementations": [
             {
               "name": "TopicWhiteboardService.preflight",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 54
+              "line": 56
             },
             {
               "name": "TopicWhiteboardService.prepare",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 62
+              "line": 64
             },
             {
               "name": "TopicWhiteboardService.list",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 96
+              "line": 98
             },
             {
               "name": "TopicWhiteboardService.get",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 91
+              "line": 93
             },
             {
               "name": "TopicWhiteboardService.receipt",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 92
+              "line": 94
             },
             {
               "name": "TopicWhiteboardService.history",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 167
+              "line": 170
             },
             {
               "name": "TopicWhiteboardService.control",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 115
+              "line": 117
             },
             {
               "name": "TopicWhiteboardService.edit",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 148
+              "line": 150
             },
             {
               "name": "TopicWhiteboardService.confirm",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 173
+              "line": 176
             },
             {
               "name": "TopicWhiteboardService.listPublished",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 198
+              "line": 210
             },
             {
               "name": "TopicWhiteboardService.getPublished",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 197
+              "line": 201
             },
             {
               "name": "TopicWhiteboardNarrationService.synthesize",
@@ -7958,6 +7958,230 @@
             "apps/web/app/studio/whiteboards/manuscript.tsx",
             "apps/web/app/studio/whiteboard-table.ts",
             "tests/e2e/topic-whiteboard.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-32",
+          "title": "主题白板配图、完整稿选图与冻结图片阅读",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "本人ready完整稿/幕/修订/教学指纹、目的/需求、真实原图及原命令键",
+          "implementation": "冻结必要教学上下文和原PNG，经安装Skill持久生成/edit；原键重放先于可用性探测。lease、原登录、监护/范围/目标/教学指纹和原图字节阻止迟到发布。明确完整稿PATCH逐幕验证选图，确认时另冻原件/展示图及SHA/尺寸，公开引用不含私有候选。两文档槽保留完整配图请求与图注，显式下载保护；SHA/解码后显示真实缩略图、双图对照和原比例键盘阅读。播放器放大先暂停，实际视频预取图片并保留SRT。共享孩子快照独立保留PNG，作者私稿/提示词擦除；SQLite/PG最新删除账本及中断续跑阻止复活。",
+          "outputs": "独立候选、原件和修改来源、明确选图/取消、冻结公开图片与带图视频/家庭归档",
+          "collections": [
+            "studioTopicWhiteboardVisuals",
+            "studioTopicWhiteboardDrafts",
+            "studioTopicWhiteboards"
+          ],
+          "limits": "独立124检查点，尚未在主目录交付；AI图标签仍待核对，不构成掌握/测量/教师批准；复杂公式视频、原CSS/字体/DPR/原声及真人/设备/长期条件未完成。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/capabilities",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "capabilities",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/preflight",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboard-visuals",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "prepare",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/requests/:key",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "original",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/requests/:key",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 17
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/cancel",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/retry",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/edits",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "edit",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/image",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "image",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 21
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboard-visuals/:id/original",
+              "controller": "TopicWhiteboardVisualController",
+              "method": "originalImage",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+              "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:id/figures/:sceneId/image",
+              "controller": "TopicWhiteboardController",
+              "method": "figure",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:id/figures/:sceneId/original",
+              "controller": "TopicWhiteboardController",
+              "method": "originalFigure",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 28
+            }
+          ],
+          "implementations": [
+            {
+              "name": "TopicWhiteboardVisualService.capabilities",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 25
+            },
+            {
+              "name": "TopicWhiteboardVisualService.preflight",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 45
+            },
+            {
+              "name": "TopicWhiteboardVisualService.prepare",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 69
+            },
+            {
+              "name": "TopicWhiteboardVisualService.list",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 109
+            },
+            {
+              "name": "TopicWhiteboardVisualService.receipt",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 103
+            },
+            {
+              "name": "TopicWhiteboardVisualService.get",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 102
+            },
+            {
+              "name": "TopicWhiteboardVisualService.control",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 121
+            },
+            {
+              "name": "TopicWhiteboardVisualService.file",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+              "line": 116
+            },
+            {
+              "name": "TopicWhiteboardService.publishedFigure",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 202
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/topic-whiteboard-visual.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-figures.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-visual-retention.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+            "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+            "apps/web/app/studio/whiteboards/figure-workbench.tsx",
+            "apps/web/app/studio/topic-figure-image.tsx",
+            "apps/web/app/studio/whiteboard-session.tsx",
+            "apps/web/app/studio/whiteboard-canvas.tsx",
+            "tests/e2e/topic-whiteboard.spec.ts",
+            "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md",
+            "apps/api/src/modules/learning/topic-whiteboard.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/whiteboard-speech.test.ts",
@@ -9115,17 +9339,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 47
+              "line": 50
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 68
+              "line": 71
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 75
+              "line": 78
             }
           ],
           "sourceFiles": [
@@ -9205,7 +9429,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 107
+              "line": 110
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -9215,7 +9439,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 116
+              "line": 119
             }
           ],
           "sourceFiles": [
@@ -9275,7 +9499,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 170
+              "line": 193
             }
           ],
           "sourceFiles": [
@@ -9445,7 +9669,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 343
+              "line": 344
             },
             {
               "name": "DomainEventBusService.publish",
@@ -9455,7 +9679,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 241
+              "line": 242
             }
           ],
           "sourceFiles": [
@@ -9648,7 +9872,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 241
+              "line": 242
             }
           ],
           "sourceFiles": [
@@ -9725,7 +9949,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 225
+              "line": 226
             },
             {
               "name": "RuntimeMetricsService.snapshot",

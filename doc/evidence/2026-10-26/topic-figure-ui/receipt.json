@@ -1,7 +1,7 @@
 {
   "status": "isolated-ui-checkpoint",
   "deployed": false,
-  "sourceRevision": "3e8a86087ffcedcc2a593e9288610a3838ee5104",
+  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
   "at": "2026-10-26T04:52:23.882Z",
   "browser": {
     "passed": 32,
@@ -201,5 +201,7 @@
     "Browser images and WAVs use controlled fixtures; this phase adds zero live provider invocations. Prior two actual CLI samples are separate evidence.",
     "Complex formula video still uses the preserved raw LaTeX and remains unfinished. Original HyperKnow CSS/fonts/DPR/audio, teacher/device/long-term gates remain.",
     "Full250-page-journey regression, exact124 CI, fresh current123/schema16 rollback and schema17 daemon delivery remain. Main stays on123."
-  ]
+  ],
+  "baseRevision": "3e8a86087ffcedcc2a593e9288610a3838ee5104",
+  "sourceRevisionVerifiedByRecordedWorkingTreeHashes": 18
 }
