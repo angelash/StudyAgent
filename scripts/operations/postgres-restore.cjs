@@ -58,7 +58,7 @@ async function restorePostgres({bundle,destination,connectionString,pgBin,deleti
     try{
       if((await client.query('SELECT '+contentDigestSql()+' AS digest')).rows[0].digest!==imported.data_digest)fail('restore_imported_database_changed');
       if(JSON.stringify(await backup.summary(client))!==JSON.stringify(verified.manifest.database))fail('restored_database_summary_mismatch');
-      const refs=referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions')")).rows);
+      const refs=referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions')")).rows);
       for(const[relative,expected]of refs){const item=verified.manifest.references.find(row=>row.path==='data/'+relative);if(!item||expected.sha256!==item.sha256||expected.size!==null&&expected.size!==item.size)fail('restored_file_reference_mismatch');}
       if(refs.size!==verified.manifest.referencedFileCount)fail('restored_file_reference_mismatch');
       const query=async(sql,params=[])=>{let index=0;return(await client.query(sql.replace(/\?/g,()=>'$'+(++index)),params)).rows;};

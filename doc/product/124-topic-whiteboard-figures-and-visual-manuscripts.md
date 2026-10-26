@@ -107,3 +107,10 @@ SQLite/PG完整备份认识新记录及真实图片原件/展示图/私有提示
 新契约、私有候选记录、只取本幕和批准目标的冻结上下文及schema17本人准备键约束已经接入独立开发分支。7项SQLite/上下文/输入门禁与2项原生PG迁移、重开及实际双连接竞争通过，root类型检查通过；原始报告和源码SHA见[基础收据](../evidence/2026-10-26/topic-figure-foundation/receipt.json)。它尚无图像HTTP、worker、选择界面、白板图片引用、视频、隐私及文件恢复接入，不能作为可用功能或schema17交付。
 
 另外通过已安装Skill脚本实际完成匿名概念图generate（35.1秒）及保留原图的edit（39.4秒），两张均已view_image显示，原提示词和图像按原字节保存在resources/teaching-visuals/topic-whiteboard；图内文字修订没有使用本地覆盖。两次是准确CLI调用数，未独立记录SDK内部HTTP尝试次数。简短标签和去标题结果可读，仍待教师核对；它是独立供应商样张，不冒称新的白板API/候选或发布已调通。见[实际样张收据](../evidence/2026-10-26/topic-figure-provider/receipt.json)。123当前精确CI仍另行处理，主目录没有升级到本批。
+## 13. 供应商适配与私图原件基础
+
+已扩展现有安装Skill适配器的受控横图参数、真实edit文件输入和edit能力诊断，旧1024方图默认不变；取消改用既有进程树终止器并等待实际停止，不能只拒绝Promise。共享图像存储保持旧classroom-visuals路径与原ID，新topic-whiteboard-visuals独立保存1536×1024图；校验解码/规范化后实际尺寸，保留原件、去元数据展示图与提示词，并保留原租约/链接/哈希防护。
+
+初轮旧课堂组合为15通过/1失败：schema17已被正确创建，但备份工具仍只接受16，实际报unsupported_database_schema，原报告保留。SQLite/PG备份版本和新私图引用、清单路径及恢复删除账本已补齐，portable投影暂不输出私有图片候选；共享孩子冻结图尚无接口或快照，不冒称共享保持已完成。
+
+当前25项组合通过，含原课堂11项HTTP/SQLite生命周期、5项旧存储保护、4项Skill协议/进程层、通用进程树终止，以及4项新图原件/方向/实际SQLite备份恢复与受控最新账户删除账本。计数以[原始报告](../evidence/2026-10-26/topic-figure-files/receipt.json)为准，root类型及四份操作脚本语法检查通过；先前7+2基础仍是重叠的独立证据。没有新图片HTTP、worker、选用/确认快照、共享孩子留图、原生PG图片冷恢复、复杂公式/视频或完整回归/CI/schema17发布；当前主目录仅在交付123。

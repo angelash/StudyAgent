@@ -89,13 +89,13 @@ async function applyDeletionLedger(query, ledger) {
   await query('INSERT INTO domain_records VALUES(?,?,?,?)', ['events', event.eventId, JSON.stringify(event), position]);
   const retainedMedia = new Set((store.studentMedia ?? []).map(row => row.id));
   const removedMediaIds = records.filter(row => row.collection === 'studentMedia' && !retainedMedia.has(row.record_id)).map(row => row.record_id);
-  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds: [...removedMediaIds,...records.filter(row=>['classroomVisuals','projectAssets','projectAssetUploads'].includes(row.collection)&&!(store[row.collection]??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
+  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds: [...removedMediaIds,...records.filter(row=>['classroomVisuals','studioTopicWhiteboardVisuals','projectAssets','projectAssetUploads'].includes(row.collection)&&!(store[row.collection]??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
 }
 function purgeRestoredMedia(root, ids = [], manifest, onDelete) {
   const { within } = require('./backup.cjs').files;
   for (const id of ids) {
-    if (!/^(?:student_media|classroom_visual|project_asset|project_upload)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
-    const directory = within(root, `${id.startsWith('classroom_visual_')?'classroom-visuals':id.startsWith('project_asset_')?'project-assets':id.startsWith('project_upload_')?'project-uploads':'student-media'}/${id}`);
+    if (!/^(?:student_media|classroom_visual|topic_whiteboard_visual|project_asset|project_upload)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
+    const directory = within(root, `${id.startsWith('topic_whiteboard_visual_')?'topic-whiteboard-visuals':id.startsWith('classroom_visual_')?'classroom-visuals':id.startsWith('project_asset_')?'project-assets':id.startsWith('project_upload_')?'project-uploads':'student-media'}/${id}`);
     if (fs.existsSync(directory)) {
       if(!manifest)fs.rmSync(directory,{recursive:true,force:true});
       else {
