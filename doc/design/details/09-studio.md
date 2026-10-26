@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`60263b35909eef59befca3a8cf331cdf9815a667`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`ce2af72bafa59db7ff0287c2ad051a6546b0f76e`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -337,7 +337,7 @@
 
 **输入**：原白板/幕、whiteboard-speech-v1、指纹/原文单位、音色、速度、当前账号与浏览器能力。
 
-**处理与实现**：只读派生稳定原文跨度和整项板书；新请求只合成冻结单位，controller传原登录及断开信号，合成前后各在新事务核对登录、角色、监护绑定、学生授权代次和原白板摘要；退出/授权升代或撤权拒绝迟到音轨，旧voice-only请求同样保护；换句在React清理前同步升代、撤销请求及旧帧并重置进度，防止下一真实音轨从末尾开始；Audio ended推进云朗读、文字显式估计；当前实际playing后仅准备一条相邻音轨，独立60秒请求/10秒元数据时限，交接复用准确单位且重新读取原白板授权；暂停取消未完成准备，准确手动下一句仍暂停并保留已准备音轨，音色/模式/导出/关闭释放准备槽，失败停在原句等待显式重试；暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据；零值活动源及120ms静音尾段保留末尾音频，不延长旁白字幕；取消/录制异常不下载半成品，后续取消录制保留原成功导出的SRT表。
+**处理与实现**：只读派生稳定原文跨度和整项板书；本机原字体真实登记及字形准备后才测量、播放和录制，失败字族可明确重建并重试；原白板/设置CSS按选择器、动画和注册属性作用域接入，已有课堂之外的页面不受影响；按真实字形冻结单列/双列知识块，标题/要点/整表行累积，换幕不清除已讲内容；缩放、指针/方向键平移、字体及点阵不改讲解句和学习记录；字幕仅当前完整句；长公式保留不低于0.8的原字形比例并分完整页面逐项进入，自动相机跟随原句位置；实时画布按可见尺寸绘制，独立1280×720录制画布共用相同内容布局与真实音轨表；新请求只合成冻结单位，controller传原登录及断开信号，合成前后各在新事务核对登录、角色、监护绑定、学生授权代次和原白板摘要；退出/授权升代或撤权拒绝迟到音轨，旧voice-only请求同样保护；换句在React清理前同步升代、撤销请求及旧帧并重置进度，防止下一真实音轨从末尾开始；Audio ended推进云朗读、文字显式估计；当前实际playing后仅准备一条相邻音轨，独立60秒请求/10秒元数据时限，交接复用准确单位且重新读取原白板授权；暂停取消未完成准备，准确手动下一句仍暂停并保留已准备音轨，音色/模式/导出/关闭释放准备槽，失败停在原句等待显式重试；暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据；零值活动源及120ms静音尾段保留末尾音频，不延长旁白字幕；取消/录制异常不下载半成品，后续取消录制保留原成功导出的SRT表。
 
 **输出**：当前句、完整笔记、可恢复位置、WebM和逐句SRT。
 
@@ -363,6 +363,17 @@
 - [apps/web/app/studio/whiteboard-media.ts](../../../apps/web/app/studio/whiteboard-media.ts)
 - [apps/web/app/studio/whiteboard-webm.ts](../../../apps/web/app/studio/whiteboard-webm.ts)
 - [apps/web/app/studio/whiteboard-narration.ts](../../../apps/web/app/studio/whiteboard-narration.ts)
+- [apps/web/app/studio/whiteboard-frame.ts](../../../apps/web/app/studio/whiteboard-frame.ts)
+- [apps/web/lib/original-teaching-fonts.ts](../../../apps/web/lib/original-teaching-fonts.ts)
+- [apps/web/lib/original-teaching-fonts.json](../../../apps/web/lib/original-teaching-fonts.json)
+- [apps/web/app/studio/original-teaching-shell.generated.css](../../../apps/web/app/studio/original-teaching-shell.generated.css)
+- [apps/web/app/studio/original-teaching-shell.css](../../../apps/web/app/studio/original-teaching-shell.css)
+- [apps/web/lib/original-teaching-styles.json](../../../apps/web/lib/original-teaching-styles.json)
+- [scripts/reference/import-hyperknow-assets.cjs](../../../scripts/reference/import-hyperknow-assets.cjs)
+- [scripts/reference/build-hyperknow-fonts.cjs](../../../scripts/reference/build-hyperknow-fonts.cjs)
+- [scripts/reference/build-hyperknow-teaching-styles.cjs](../../../scripts/reference/build-hyperknow-teaching-styles.cjs)
+- [tests/e2e/original-teaching-fonts.spec.ts](../../../tests/e2e/original-teaching-fonts.spec.ts)
+- [doc/product/129-hyperknow-original-assets-and-teaching-shell.md](../../../doc/product/129-hyperknow-original-assets-and-teaching-shell.md)
 - [tests/e2e/whiteboard-timing.ts](../../../tests/e2e/whiteboard-timing.ts)
 - [tests/e2e/whiteboard-media.spec.ts](../../../tests/e2e/whiteboard-media.spec.ts)
 - [doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md](../../../doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md)

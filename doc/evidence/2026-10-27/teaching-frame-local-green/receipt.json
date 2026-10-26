@@ -1,0 +1,290 @@
+{
+  "at": "2026-10-26T20:04:10.641Z",
+  "status": "cumulative-original-teaching-frame-local-validated",
+  "deployed": false,
+  "overallProductComplete": false,
+  "applicationRevision": "ce2af72bafa59db7ff0287c2ad051a6546b0f76e",
+  "apiRevision": "098820883a2dc5c02296efe5190d816949565013",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T19:57:23.792Z",
+      "duration": 292990.679,
+      "expected": 51,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 51,
+    "originalAttempts": 51,
+    "retries": 0
+  },
+  "sourceSha256": {
+    "apps/web/app/studio/whiteboard-frame.ts": "08b356ce0953ec2599178d3eaba5cff69fcf9009077d98cbbde0d894ef4a88c9",
+    "apps/web/app/studio/whiteboard-session.tsx": "d794253666a91c0a1da79b896e6e3f3e255fef58464c74ca8f02d72d2f88325e",
+    "apps/web/app/studio/original-teaching-shell.css": "84b36dd86fb4d9403de4390937c70defe7ac9bafd4dca70e3ed888fdb99cc4ff",
+    "apps/web/app/studio/original-teaching-shell.generated.css": "1529cee10138def494c12606ac4a02295644b79aafcf3f8eabcdc1c8eb5f399d",
+    "apps/web/lib/original-teaching-styles.json": "ea3cf2da3fb1052b44069a8fc4998729241df024935b0ff01a24e70e7e718691",
+    "tests/e2e/original-teaching-fonts.spec.ts": "680028052fc7f774b72998fb090be8e088fa72ced4f416c19dec9051529cafef",
+    "tests/e2e/topic-whiteboard.spec.ts": "fe4e61271bd1ea0c46f1ee31a88b6e82a77668f538175bb17015a301e61d8a0d",
+    "scripts/reference/build-hyperknow-teaching-styles.cjs": "21b51081d94f24120d091e1e6819e693702662f5040999c56533b772c27d18d4"
+  },
+  "qaSourceSha256": {
+    "apps/web/app/studio/whiteboard-frame.ts": "08b356ce0953ec2599178d3eaba5cff69fcf9009077d98cbbde0d894ef4a88c9",
+    "apps/web/app/studio/whiteboard-session.tsx": "d794253666a91c0a1da79b896e6e3f3e255fef58464c74ca8f02d72d2f88325e",
+    "apps/web/app/studio/original-teaching-shell.css": "84b36dd86fb4d9403de4390937c70defe7ac9bafd4dca70e3ed888fdb99cc4ff",
+    "apps/web/app/studio/original-teaching-shell.generated.css": "ed51751db782228fe2369e461fda27d8a9214ea575c3b598c1bbc08447b823f4",
+    "apps/web/lib/original-teaching-styles.json": "42bf93b47fa9966d3b8b9cf099494f1ae1543e1df98444b63f38dbe6afc8108b"
+  },
+  "sourceNote": "The final scoped CSS only removes three redundant trailing newline bytes after51. Original/normalized CSS ASTs compare equal; both exact byte versions and their metadata are retained. Full321 runs on the final rebuilt source.",
+  "capturedAssets": {
+    "files": 937,
+    "bytes": 37754047,
+    "independentVerify": "passed",
+    "thirdPartyResourceReferences": 0
+  },
+  "fontBundle": {
+    "faces": 815,
+    "families": 32,
+    "independentVerify": "passed"
+  },
+  "originalStyles": {
+    "sources": 3,
+    "rules": 525,
+    "selectors": 578,
+    "animations": 30,
+    "registeredProperties": 1,
+    "bytes": 78843,
+    "independentVerify": "passed"
+  },
+  "formulaVideo": {
+    "minimumOriginalGlyphScale": 0.8,
+    "decodedFrames": [
+      {
+        "name": "first",
+        "time": 0.2,
+        "ink": 760
+      },
+      {
+        "name": "aligned",
+        "time": 4.2,
+        "ink": 621
+      },
+      {
+        "name": "last",
+        "time": 11.9,
+        "ink": 621
+      }
+    ]
+  },
+  "remaining": [
+    "Complete321 exact-source local browser and exact remote CI.",
+    "Actual main build, rollback and daemon delivery.",
+    "Original manual geometry, complete tools/settings/voices/speeds/chat and other course/practice/project shells.",
+    "Original DPR/voice, all reference states, teacher/real devices/full content/long-term learning and M1-M7."
+  ],
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "bytes": 59119,
+      "originalSha256": "2545b0994b5b4777834407360a449d4969e24447c3db4aead3f750b0cb77c454",
+      "sha256": "2ad2e79f54638a6bba87600b2c573a163c1c2741e7b5fbc52afdd12512ddabc7"
+    },
+    {
+      "source": "data/qa-teaching-frame-vector-bounds.log",
+      "file": "data__qa-teaching-frame-vector-bounds.log.gz",
+      "bytes": 8732,
+      "originalSha256": "1d09d6fdf85b1f7fab56c6f7afac63fd46548c4cf04fed4d10f4a003d5524aed",
+      "sha256": "2b674db77cd2cbe365b2c399cdbbaf1ecbffa2b9eb8739c3ba1df23b10b08025"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "apps__web__app__studio__whiteboard-frame.ts.gz",
+      "bytes": 12670,
+      "originalSha256": "08b356ce0953ec2599178d3eaba5cff69fcf9009077d98cbbde0d894ef4a88c9",
+      "sha256": "e13aea10e5d25cfa3f72326a8097ae6370519a11f94a301aab6a6531eaa06b42"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "apps__web__app__studio__whiteboard-session.tsx.gz",
+      "bytes": 31804,
+      "originalSha256": "d794253666a91c0a1da79b896e6e3f3e255fef58464c74ca8f02d72d2f88325e",
+      "sha256": "811b7a8a16a20e70149a09839b18858f9761c1e601714297bf67aaf25db8fa17"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.css",
+      "file": "apps__web__app__studio__original-teaching-shell.css.gz",
+      "bytes": 8056,
+      "originalSha256": "84b36dd86fb4d9403de4390937c70defe7ac9bafd4dca70e3ed888fdb99cc4ff",
+      "sha256": "52e6b711898a22a8cd32fca2bbe012ed9e747870c1d598bdc3dbf7368410e124"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.generated.css",
+      "file": "apps__web__app__studio__original-teaching-shell.generated.css.gz",
+      "bytes": 78843,
+      "originalSha256": "1529cee10138def494c12606ac4a02295644b79aafcf3f8eabcdc1c8eb5f399d",
+      "sha256": "8dc1967d9d6f2a097476b9798de98d722574d9ce70db8979fd9710984902552d"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-styles.json",
+      "file": "apps__web__lib__original-teaching-styles.json.gz",
+      "bytes": 3101,
+      "originalSha256": "ea3cf2da3fb1052b44069a8fc4998729241df024935b0ff01a24e70e7e718691",
+      "sha256": "7559480336cd6dd6b9b6d7f5c0fcc64a66ee95058ed7dfdbb6b3715ee73083c9"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "bytes": 10242,
+      "originalSha256": "680028052fc7f774b72998fb090be8e088fa72ced4f416c19dec9051529cafef",
+      "sha256": "6c21effec3306077a29129fca691236d531220bd44015077dc69a2b387103d4c"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "file": "tests__e2e__topic-whiteboard.spec.ts.gz",
+      "bytes": 49309,
+      "originalSha256": "fe4e61271bd1ea0c46f1ee31a88b6e82a77668f538175bb17015a301e61d8a0d",
+      "sha256": "e4dfbb09766b19a2b5046583c189f4b466df97655d58c2fcab6739e1080ec597"
+    },
+    {
+      "source": "scripts/reference/build-hyperknow-teaching-styles.cjs",
+      "file": "scripts__reference__build-hyperknow-teaching-styles.cjs.gz",
+      "bytes": 4293,
+      "originalSha256": "21b51081d94f24120d091e1e6819e693702662f5040999c56533b772c27d18d4",
+      "sha256": "824e702cb89ea22a29c41a7e722f9ee2d6d414d60f7236f45eef412b9b7eac03"
+    },
+    {
+      "source": "data/qa/experience-web/app/studio/original-teaching-shell.generated.css",
+      "file": "data__qa__experience-web__app__studio__original-teaching-shell.generated.css.gz",
+      "bytes": 78846,
+      "originalSha256": "ed51751db782228fe2369e461fda27d8a9214ea575c3b598c1bbc08447b823f4",
+      "sha256": "1255c2bc755cb91b056b35f6e65bf124a74388b6a9d3a99e3d032a221bf2d092"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\cumulative-second-scene.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__cumulative-second-scene.png.gz",
+      "bytes": 125487,
+      "originalSha256": "0418d4dfa4827ce8f6bedcee11e15b587a65c2c4e606a34175b1802dd9edff8d",
+      "sha256": "f539c239e76f6ac7d3300e11b65a89b421e3fdd4ed56e3c9e95aeb254abc4d37"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-1280.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-1280.png.gz",
+      "bytes": 116533,
+      "originalSha256": "472723a614675a7f4527c034e4e196cf3a4d2418d9ef988142fb410b3bfaed71",
+      "sha256": "1a13c9420ed7a10f7d46efafa961c5dce247a83720767bc9b10cbff74b5750e0"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-390.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-390.png.gz",
+      "bytes": 44448,
+      "originalSha256": "597ed5dfc156e0d7be1b9e33ae56e0298086843d7535da13cd71f8fc2143cc7e",
+      "sha256": "03c432a94eb8052d49297b9766cbfb02862012e1579f74790da2f2c0dd95ad00"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-768.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-768.png.gz",
+      "bytes": 101443,
+      "originalSha256": "4adcaa48f08737891a5e99c3a1a7194598640866aa42fe5b3e46e04e6833df21",
+      "sha256": "56ed9004a0ec3c44153b7c8360c78c289f0bdf3c522b339390d07294e743adcf"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-board-fonts.png",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-board-fonts.png.gz",
+      "bytes": 118964,
+      "originalSha256": "fe231fccd2d27a4a0991bbcaab42246ad235e1c39e9714dc3eadf13e64e37f3f",
+      "sha256": "9498ea6cbc2c4efa611f19ee723d247712f771df3721b3be466a362ea08aab17"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-loaded-fonts.json",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-loaded-fonts.json.gz",
+      "bytes": 3996,
+      "originalSha256": "a4e86b9b19c5858f947f0745b828a2f4b57b2b4fd89f8dc42910720007a082c8",
+      "sha256": "4a90c07ee10c3cc14dc90ed6b3a915507cc4784ce2abcf972375213e36cba85b"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video.webm",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.webm.gz",
+      "bytes": 2123514,
+      "originalSha256": "708da46f6433551a921ed2e9ca7ca56b7afd2b5635d7826c79d7651964493039",
+      "sha256": "f78193ad2484940edd62f7715da343973a9f26146b5912a2b8e920f702fe7f38"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-first.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-first.png.gz",
+      "bytes": 183994,
+      "originalSha256": "2cd2b39a2f9f5365136e25739710e3c49d9a1008d3ca29f72483dbea22b60821",
+      "sha256": "9baac63a14f64426bf1d02bd2d10776bb873017396d2a4f786ade83134c10b61"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-aligned.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-aligned.png.gz",
+      "bytes": 177152,
+      "originalSha256": "a5568c4508df42485d98e375973f88cf657861902c9df37333831d80ca3f7335",
+      "sha256": "a85b7e15eb3baad0d4880e5b667162397fd62e67b625f03522f72e9e06649fd0"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-last.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-last.png.gz",
+      "bytes": 240389,
+      "originalSha256": "d2c376ae23c13aeea4c2ccd06ce566cadb77fd4e16432309112847fa1a82114a",
+      "sha256": "4bf6548ce264baf01c9e50e3c852cea70ad32dcde9af60e05e18f1038a49f67b"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-probe.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-probe.json.gz",
+      "bytes": 3482,
+      "originalSha256": "666074892ea69052c6f23284843eb3ec6bc0c3a8c7435a90035c4f6a63adb812",
+      "sha256": "279d92bccd6a6c0d7537d869a85c5da99de4a69837651245c20015aa221f6713"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-readable-video-crops.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-readable-video-crops.json.gz",
+      "bytes": 1001016,
+      "originalSha256": "4b75533ec3f0c934978344def58690f2172e5d1300a6c901f39e1922014788f3",
+      "sha256": "2cb53d1620b8fbbb13fd0834ade7789940bb1bd89bcf85b4241f5fee1974279a"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video.srt",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.srt.gz",
+      "bytes": 455,
+      "originalSha256": "76b3f2986c382d9428dcd72b3b905890d0c0982504ecaf839041730adbdd3cf9",
+      "sha256": "9f208771de81c761cc07c7938094e5224d890d8cb9111c12882b51db26016036"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video-first-frame.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video-first-frame.png.gz",
+      "bytes": 181170,
+      "originalSha256": "e79e89470efca19d42905e229ef16dc774162cc3aab990b1d58d7678e144cbe8",
+      "sha256": "c053aa22e1559524b66ac9f5c4ada93c4af3828feac03e1379344e18afb9f3d4"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video-probe.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video-probe.json.gz",
+      "bytes": 3314,
+      "originalSha256": "6e568865e204136acf510d7595929cd1f0c137f35f8f9286e617e74e9c103145",
+      "sha256": "18565f63281d7f6236854abdea76f93b6c773d32fb8af62eda4befe0c79ac8ac"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video.srt",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video.srt.gz",
+      "bytes": 521,
+      "originalSha256": "2d2f189311f99d1b69c730f70c7e38c4ee5a73f3b38cde8096b44a1ad7e721da",
+      "sha256": "b15a547340fb8ecdf98f360abadad52739d0d368e30faa41663aa4b4172c253e"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\decoded-fixture.webm",
+      "file": "data__qa__browser-evidence__whiteboard-media__decoded-fixture.webm.gz",
+      "bytes": 322687,
+      "originalSha256": "1375eda4b0c4c1b4def37143c9d7f5cdb852d32f894f39bdae93f6dfce27910c",
+      "sha256": "b4f4f6984bb8369227cee605f0a27b5565eb4c8d4759f597faab8ce534f379b4"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\decoded-fixture.srt",
+      "file": "data__qa__browser-evidence__whiteboard-media__decoded-fixture.srt.gz",
+      "bytes": 297,
+      "originalSha256": "8f939f00bc90c727e212e01e8d2d4def8014e71a9c8e5499712ba740f452719d",
+      "sha256": "e2ac8c114bba82f9d67a99c39064363880639358580b3d9db90ad5da16128693"
+    }
+  ]
+}
