@@ -186,6 +186,9 @@ export class DomainDatabase {
       { name: 'topic_whiteboard_prepare_request', collection: 'studioTopicWhiteboardDrafts', fields: ['ownerUserId', 'requestKey'] },
       { name: 'topic_whiteboard_publication_draft', collection: 'studioTopicWhiteboards', fields: ['sourceDraftId'] },
     ]);
+    await this.migrateConstraints(17, [
+      { name: 'topic_visual_prepare_request', collection: 'studioTopicWhiteboardVisuals', fields: ['ownerUserId', 'requestKey'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

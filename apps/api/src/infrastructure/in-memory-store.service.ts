@@ -1,6 +1,7 @@
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
 import type { SourceCourseCheckRecord,SourceCourseCheckPublication } from '../modules/learning/source-course-check-record';
 import type { TopicWhiteboardDraftRecord, TopicWhiteboardRecord } from '../modules/learning/topic-whiteboard-record';
+import type { TopicVisualRecord } from '../modules/learning/topic-whiteboard-visual-record';
 import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
@@ -440,6 +441,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   sourceCourseCheckPublications: SourceCourseCheckPublication[] = [];
   studioTopicWhiteboardDrafts: TopicWhiteboardDraftRecord[] = [];
   studioTopicWhiteboards: TopicWhiteboardRecord[] = [];
+  studioTopicWhiteboardVisuals: TopicVisualRecord[] = [];
   sourceCourseStages: SourceCourseStageRecord[] = [];
   studioActivities: StudioActivity[] = [];
   studioStudyPlans: StudioStudyPlan[] = [];
@@ -541,6 +543,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.sourceCourseChecks = [];
     this.studioTopicWhiteboardDrafts = [];
     this.studioTopicWhiteboards = [];
+    this.studioTopicWhiteboardVisuals = [];
     this.sourceCourseCheckPublications = [];
     this.sourceCourseStages = [];
     this.studioActivities = [];

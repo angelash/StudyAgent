@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-26T02:14:57.179Z",
+  "status": "foundation-only-unpublished",
+  "schemaVersionInIsolatedTests": 17,
+  "api": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "nativePostgres": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "rootTypes": "passed",
+  "sourceSha256": {
+    "packages/contracts/src/topic-whiteboard-visual.ts": "f9f573fdf0dc59bee13ae0000e8ca7ad9f6952af6c0cafc3494963d416dbb371",
+    "apps/api/src/modules/learning/topic-whiteboard-visual-record.ts": "6825c4af06edb4f46cea29041cccaeccf1ebafa4a029deb208a5a0a591550517",
+    "apps/api/src/modules/learning/topic-whiteboard-visual-context.ts": "b15055e51be3d148f642def516d60433c37984422a47f2195b8db587a149ec4b",
+    "apps/api/src/infrastructure/domain-database.ts": "3638b1714a30dca56525d17a17c341d20e185e6324e0fbb1020131758f6dccf7",
+    "apps/api/src/infrastructure/in-memory-store.service.ts": "4eeb3e291f5d601bf276a93e54c1f05ddae698b4f1f05dfa9f81a8b59abaf9c7"
+  },
+  "limits": [
+    "No visual HTTP service, worker or UI selection exists yet.",
+    "Figure references not yet added to the123 manuscript schema or media export.",
+    "Privacy, actual image bytes, backups and native deletion recovery must be integrated before publication.",
+    "No full API/site/CI or production schema17 delivery has occurred.",
+    "Standalone provider generation/edit samples are separate."
+  ]
+}

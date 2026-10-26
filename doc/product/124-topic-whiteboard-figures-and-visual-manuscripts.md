@@ -102,3 +102,8 @@ SQLite/PG完整备份认识新记录及真实图片原件/展示图/私有提示
 `studioTopicWhiteboardVisuals`字段包括id、ownerUserId、studentId/subject、draftId、sceneIndex、sceneTeachingFingerprint、frozenContext、purpose/requirements、operation(generate/edit)、parentVisualId、modelId、requestKey/inputHash、preflightFingerprint、authorization、taskId/generation、revision/status、files及width/height、commands/createdAt/updatedAt。schema17只新增该集合及本人准备键唯一索引；任务仍存既有ProcessingTask表，不能把它误写成新的领域集合。files包含SHA命名的原图、展示图和私有完整提示词。冻结白板的figure投影含visualId及明确的图片SHA/尺寸/alt/caption，URL由当前授权路由生成，不含私有生成输入。
 
 新存储参数化复用旧防护，但独立根`topic-whiteboard-visuals`及独立ID前缀，旧`classroom-visuals`路径与索引不移动。provider默认旧1024×1024行为不变；新图可明确使用1536×1024、PNG、medium及受控输出选项，发布按冻结实际尺寸解码验证，不裁切成方图。图内修订仍走Skill edit；调节网页图卡尺寸只影响布局，不改原图字节或伪造新的图片版本。
+## 12. 基础的实际进度
+
+新契约、私有候选记录、只取本幕和批准目标的冻结上下文及schema17本人准备键约束已经接入独立开发分支。7项SQLite/上下文/输入门禁与2项原生PG迁移、重开及实际双连接竞争通过，root类型检查通过；原始报告和源码SHA见[基础收据](../evidence/2026-10-26/topic-figure-foundation/receipt.json)。它尚无图像HTTP、worker、选择界面、白板图片引用、视频、隐私及文件恢复接入，不能作为可用功能或schema17交付。
+
+另外通过已安装Skill脚本实际完成匿名概念图generate（35.1秒）及保留原图的edit（39.4秒），两张均已view_image显示，原提示词和图像按原字节保存在resources/teaching-visuals/topic-whiteboard；图内文字修订没有使用本地覆盖。两次是准确CLI调用数，未独立记录SDK内部HTTP尝试次数。简短标签和去标题结果可读，仍待教师核对；它是独立供应商样张，不冒称新的白板API/候选或发布已调通。见[实际样张收据](../evidence/2026-10-26/topic-figure-provider/receipt.json)。123当前精确CI仍另行处理，主目录没有升级到本批。

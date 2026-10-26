@@ -1,0 +1,7 @@
+const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process');
+const root=path.resolve(__dirname,'../..'),file=path.resolve(process.argv[2]??path.join(root,'data/qa/postgres/credentials.json'));
+const config=JSON.parse(fs.readFileSync(file,'utf8'));
+if(config.purpose!=='StudyAgent isolated QA cluster'||config.port!==15439||config.database!=='study_agent_qa'||config.appUser!=='study_agent_app')throw Error('Expected dedicated figure QA cluster');
+const url=new URL('postgresql://127.0.0.1:'+config.port+'/'+config.database);url.username=config.appUser;url.password=config.appPassword;
+const child=spawn(process.execPath,['--env-file=../../.env','../../node_modules/vitest/vitest.mjs','run','src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts','--reporter=default','--reporter=json','--outputFile='+path.join(root,'data/qa/topic-figure-postgres.json')],{cwd:path.join(root,'apps/api'),windowsHide:true,stdio:'inherit',env:{...process.env,STUDY_TEST_TOPIC_VISUAL_POSTGRES_URL:url.toString()}});
+child.on('error',()=>{console.error('Topic figure native QA could not start');process.exitCode=1;});child.on('exit',code=>{process.exitCode=code??1;});
