@@ -1,0 +1,36 @@
+{
+  "outcome": "publication-gate-rejected-before-archive",
+  "reason": "At least sixty seconds required",
+  "intervalMs": 58521,
+  "observation": {
+    "at": "2026-10-26T22:33:27.057Z",
+    "services": [
+      {
+        "name": "study-agent-api",
+        "pid": 82416,
+        "status": "online",
+        "restarts": 1164,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-web",
+        "pid": 69912,
+        "status": "online",
+        "restarts": 3,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-health",
+        "pid": 66972,
+        "status": "online",
+        "restarts": 1,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      }
+    ],
+    "http": {
+      "learn": 200,
+      "ready": 200
+    }
+  },
+  "resolution": "A fourth independent observation was taken; final samples 1, 2 and 4 span 70289ms. Original third sample preserved."
+}

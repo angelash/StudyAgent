@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-26T22:33:41.089Z",
+  "status": "teaching-controls-scope-delivered",
+  "passed": true,
+  "overallProductComplete": false,
+  "applicationRevision": "eeab006f2d9f623df3f3a634900de8f609877bf7",
+  "apiRevision": "eeab006f2d9f623df3f3a634900de8f609877bf7",
+  "ciHead": "46f844b2a077e9466036fe98f6dcd0b1f6bb9780",
+  "ciRun": 40409549951,
+  "webBuildId": "HzR4EwWBJcn7nJkoQa_Jw",
+  "schemaVersion": 18,
+  "entrypoints": [
+    "http://127.0.0.1:3217/studio",
+    "http://127.0.0.1:3217/studio/whiteboards"
+  ],
+  "behavior": [
+    "Six real playback/export speeds, original460px settings, neutral MiniMax sample selection/preview and late-result cleanup.",
+    "Seven real tour anchors at390/1280, original sentence/layout/focus restored.",
+    "Original380px panel, pointer/keyboard300-560 resizing with42% viewport cap, saved preferences and explicit390/768 reading entry.",
+    "Original toolbar/page1-of-1/share menu; private original link, frozen actual decoded PNG pixel SHA, existing complete WebM and SRT.",
+    "Original chat SVG locally reused; reference voice samples archived separately from production MiniMax samples."
+  ],
+  "validation": {
+    "localBrowser": {
+      "passed": 336,
+      "originalAttempts": 336,
+      "retries": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "localApi": {
+      "rerun": true,
+      "passed": 1355,
+      "failed": 0,
+      "environmentSkipped": 54
+    },
+    "localPostgres": {
+      "rerun": false,
+      "scope": "No130 schema/query change; prior delivered baseline only. New exact remote PostgreSQL job succeeded."
+    },
+    "linuxApi": {
+      "rerun": true,
+      "passed": 1347,
+      "failed": 0,
+      "environmentSkipped": 62
+    },
+    "remoteBrowser": {
+      "stats": {
+        "startTime": "2026-10-26T22:06:33.750Z",
+        "duration": 1382686.545,
+        "expected": 336,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "originalAttempts": 336,
+      "retries": 0
+    },
+    "httpChecks": 1162,
+    "compiledShaFiles": 335,
+    "formatOnlyCompiledDifferences": [
+      {
+        "file": "apps/api/dist/apps/api/src/infrastructure/rate-limit-repository.js",
+        "sha256": "b3db1193083c0bf2514e629820c964baefe1ef3dd7c7e91965dd62438a83a7f2",
+        "expectedSha256": "934428b676b84a89387868c0c099d3334ccddd1bab128949b2c21b3d46f223ca",
+        "formatOnly": true
+      }
+    ],
+    "originalStaticShaFiles": 959,
+    "voiceShaFiles": 6,
+    "observedIntervalMs": 70289
+  },
+  "protectedLocalConfigurationsPreserved": 5,
+  "privateEnvironmentPreserved": true,
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-27-teaching-controls-1793052003535",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-26T22:00:16.162Z",
+      "passed": true,
+      "files": 943,
+      "bytes": 17778665,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified129 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "evidence": [
+    "doc/evidence/2026-10-27/teaching-controls-final-full-local/receipt.json",
+    "doc/evidence/2026-10-27/teaching-controls-full-api-green/receipt.json",
+    "doc/evidence/2026-10-27/teaching-controls-share-focus-before/receipt.json",
+    "doc/evidence/2026-10-27/teaching-controls-share-focus-green/receipt.json",
+    "doc/evidence/2026-10-27/teaching-controls-exact-ci/receipt.json",
+    "doc/evidence/2026-10-27/teaching-controls-runtime.json"
+  ],
+  "remaining": [
+    "131 frozen whiteboard questions, supplementary board, explicit answer audio and note exports remain in isolated development.",
+    "Original manual geometry and complete course/practice/project shells.",
+    "All reference states/DPR/original voice, full materials/camera/OCR/exports, measurement validity, teacher/real-device/long-term learning and complete M1-M7."
+  ]
+}

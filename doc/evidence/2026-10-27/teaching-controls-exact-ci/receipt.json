@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-26T22:33:41.085Z",
+  "ciHead": "46f844b2a077e9466036fe98f6dcd0b1f6bb9780",
+  "ciRun": 40409549951,
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121876261334
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121876261654
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121876261724
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T22:06:33.750Z",
+      "duration": 1382686.545,
+      "expected": 336,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 336,
+    "originalAttempts": 336,
+    "retries": 0
+  },
+  "linuxApi": {
+    "newlyRun": true,
+    "passed": 1347,
+    "environmentSkipped": 62,
+    "failed": 0
+  },
+  "files": [
+    {
+      "source": "data\\qa\\teaching-controls-ci-40409549951-originals\\application.log",
+      "file": "application.log.gz",
+      "originalSha256": "8768490099a559d929588e512f8b2b595fd667951c574ba0143d85a5411a9323",
+      "sha256": "1af38fe0ce56c93a6e9b095c7689fd51a2b2681ef42f8f403e31cfe6718372cc"
+    },
+    {
+      "source": "data\\qa\\teaching-controls-ci-40409549951-originals\\browser.log",
+      "file": "browser.log.gz",
+      "originalSha256": "140a9f0f7efa202784fff5a0bb697b9db004dd845b501db22dc38a32b2a18951",
+      "sha256": "dd97fc4d81bb33cc2260d761b6d7d4e1eb49e35e33acb6a67aabdc346d885b9e"
+    },
+    {
+      "source": "data\\qa\\teaching-controls-ci-40409549951-originals\\postgres.log",
+      "file": "postgres.log.gz",
+      "originalSha256": "635f28dee9794cbfb9c0ff27bc70a167116924b3bbbce63522e5e83d4fa7f38f",
+      "sha256": "16fc6e79241817785f4d2452f66ddc667b2865661e550908008193172ee1f98d"
+    },
+    {
+      "source": "data\\qa\\teaching-controls-ci-40409549951-originals\\run.json",
+      "file": "run.json.gz",
+      "originalSha256": "8ef00389a5ac8e2af330d40f05e828756901da171ca7ffa0be8a6fb91fed7d7f",
+      "sha256": "e3cb2c0392ec32ec329f3d35463e949b4260a85026538a690d993295c13fc63f"
+    },
+    {
+      "source": "data/qa/teaching-controls-ci-40409549951-browser-original.json.gz",
+      "file": "browser-original.json.gz",
+      "originalSha256": "ec11660ea81d9dd7fdc6da9c4c0173d3e29327edc600440203bc023d259eed66",
+      "sha256": "bd1b70d9765f1676daead7f09a5b6a7afb7760e76cb418a66cf6201df0be925c"
+    }
+  ]
+}
