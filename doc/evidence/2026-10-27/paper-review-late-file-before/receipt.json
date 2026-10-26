@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-26T18:18:18.935Z",
+  "status": "late-file-replaces-confirmed-preview-reproduced",
+  "deployed": false,
+  "browserStats": {
+    "startTime": "2026-10-26T18:15:06.805Z",
+    "duration": 151002.147,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "cause": "A delayed File.text completion installed an older recovery request after a newer preview had already been confirmed. The late file restored pending state and hid the confirmed preview.",
+  "qaWebBuildId": "XylE9UiF8r08M_OdY28E5",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "data__qa__paper-practice-browser.json.gz",
+      "originalSha256": "bfdd61ab26c4d0558f3f7b1a2135340a770c0274eee28c1fc485eeba19184dae",
+      "sha256": "b29a8fd3206a490091de74766ae971a94654e020e52b5ec2c9024bd3627dfc0d"
+    },
+    {
+      "source": "data/qa/paper-review-recovery-matrix-first-browser.log",
+      "file": "data__qa__paper-review-recovery-matrix-first-browser.log.gz",
+      "originalSha256": "6690f32db7625abe9fd899968422b0634f01f84d54fc44f1f57e5a4eef023cfb",
+      "sha256": "328ad9747ed245475c3c18deb48c815ac3df927b1656ac1d8586bcf64869b166"
+    },
+    {
+      "source": "apps/web/components/paper-review-next-steps.tsx",
+      "file": "apps__web__components__paper-review-next-steps.tsx.gz",
+      "originalSha256": "5565c5aa3b2d6d78ad642bb929eacc7fc8da37bd629a73b9e3d1af88f187aea3",
+      "sha256": "60c6a95d2a533529fbac94463001c6a4b95a19f99afbf93a3c893b69c1e25c1d"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "tests__e2e__paper-practice.spec.ts.gz",
+      "originalSha256": "0ee1551d13090383549f2a44e7fbb3d4f2b38bbae80056930b4d37a9370a0d3d",
+      "sha256": "b9e3247720ef5697e149797cb7c3162d8203bedf84385c166b7eda601945ad09"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d90d2--confirmed-original-preview/error-context.md",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d90d2--confirmed-original-preview__error-context.md.gz",
+      "originalSha256": "99ae27986dd50a93ed22ee3d26e598c9bfb7e851d1a3f535c7e83955cf5f132f",
+      "sha256": "7f928a42f88f2b124a7a95693536aba65b6d8eb2b360293e9ab742ff9696a176"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d90d2--confirmed-original-preview/test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d90d2--confirmed-original-preview__test-failed-1.png",
+      "originalSha256": "20a592bb22d57e20818d2cd47f8ab08dbdf0bba1dcd2a2c12faa0e3abcf3de58",
+      "sha256": "20a592bb22d57e20818d2cd47f8ab08dbdf0bba1dcd2a2c12faa0e3abcf3de58"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-d90d2--confirmed-original-preview/trace.zip",
+      "file": "test-results__browser-product-acceptance__paper-practice-paper-revie-d90d2--confirmed-original-preview__trace.zip",
+      "originalSha256": "7801343284ada72eab3c10d0f8bb2c59ce350bdfbc0bdb4503946cc6189e42dd",
+      "sha256": "7801343284ada72eab3c10d0f8bb2c59ce350bdfbc0bdb4503946cc6189e42dd"
+    }
+  ]
+}

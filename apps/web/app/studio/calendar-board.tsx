@@ -3,6 +3,10 @@ import * as React from 'react';
 import type { StudioScheduleEvent, StudioStudyPlan } from '@study-agent/contracts';
 import { apiRequest } from '../../lib/api';
 import { WorkspaceDialog } from './workspace-dialog';
+import type { PaperReviewCalendarEvent } from '@study-agent/contracts';
+import type { SessionUser } from '../../lib/session-user';
+import { paperCalendarItemHref } from '../../lib/paper-review-navigation';
+import { PaperReviewCalendarControls, usePaperReviewCalendar } from './paper-review-calendar';
 
 export function calendarDate(value: Date) { return `${value.getFullYear()}-${String(value.getMonth() + 1).padStart(2, '0')}-${String(value.getDate()).padStart(2, '0')}`; }
 function dayDate(value: string) { return new Date(value + 'T12:00:00'); }
@@ -15,7 +19,8 @@ function includesDay(event: StudioScheduleEvent, day: string) {
 function inputTime(value: string) { const date = new Date(value); return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16); }
 function queryDay() { const day = new URLSearchParams(window.location.search).get('date'); return day && /^\d{4}-\d{2}-\d{2}$/.test(day) && Number.isFinite(dayDate(day).getTime()) && calendarDate(dayDate(day)) === day ? day : calendarDate(new Date()); }
 
-export function CalendarBoard({ events, plans, canManage, onNew, onSources, onPlanner, onExport, onChanged, onError }: {
+export function CalendarBoard({ user, studentId, events, plans, canManage, onNew, onSources, onPlanner, onExport, onChanged, onError }: {
+  user: SessionUser; studentId: string;
   events: StudioScheduleEvent[]; plans: StudioStudyPlan[]; canManage: boolean; onNew: (day: string) => void;
   onSources: () => void; onPlanner: () => void; onExport: () => void; onChanged: () => Promise<void>; onError: (error: string) => void;
 }) {
@@ -34,6 +39,15 @@ export function CalendarBoard({ events, plans, canManage, onNew, onSources, onPl
   const gridStart = mode === 'month' ? new Date(first) : new Date(date); gridStart.setDate(gridStart.getDate() - gridStart.getDay());
   const count = mode === 'week' ? 7 : Math.ceil((first.getDay() + new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()) / 7) * 7;
   const days = Array.from({ length: count }, (_, index) => { const value = new Date(gridStart); value.setDate(value.getDate() + index); return value; });
+  const reviews = usePaperReviewCalendar(user, studentId, calendarDate(days[0]), calendarDate(days[days.length - 1]));
+  const reviewEvents = filter === 'confirmed' ? reviews.events : [];
+  const selectedReviews = reviewEvents.filter(event => event.date === day);
+  const reviewPending = selectedReviews.filter(event => event.status === 'pending'), reviewDone = selectedReviews.filter(event => event.status === 'reviewed');
+  function reviewHref(event: PaperReviewCalendarEvent) {
+    const location = new URL(typeof window === 'undefined' ? 'https://study.invalid/studio?view=calendar' : window.location.href);
+    location.searchParams.set('date', event.date); location.searchParams.set('reviewScope', reviews.scope);
+    return paperCalendarItemHref(event.href, location.pathname + location.search);
+  }
   const filtered = events.filter(event => filter === 'pending' ? event.confirmed === false : event.confirmed !== false);
   const selectedDay = filtered.filter(event => includesDay(event, day)).sort((a, b) => a.startsAt.localeCompare(b.startsAt));
   const selected = events.find(event => event.id === selectedId), completed = selectedDay.filter(event => event.status === 'completed'), pending = selectedDay.filter(event => event.status !== 'completed' && event.status !== 'skipped');
@@ -48,23 +62,25 @@ export function CalendarBoard({ events, plans, canManage, onNew, onSources, onPl
     } else await update(event, { status: value });
   }
   function shift(direction: number) { const value = new Date(date); if (mode === 'month') { value.setDate(1); value.setMonth(value.getMonth() + direction); } else value.setDate(value.getDate() + 7 * direction); selectDate(calendarDate(value)); }
-  return <div className="ws-calendar"><aside className="ws-day-sidebar"><section className="ws-date-card"><h1>▦ 日历</h1><button onClick={() => selectDate(calendarDate(new Date()))}>今天</button><strong>{date.getDate()}</strong><p>{date.toLocaleDateString('zh-CN', { weekday: 'long', month: 'long', day: 'numeric' })}</p><div><span>{selectedDay.length} 项安排</span><span>{pending.length} 个待办</span></div></section>
+  return <div className="ws-calendar"><aside className="ws-day-sidebar"><section className="ws-date-card"><h1>▦ 日历</h1><button onClick={() => selectDate(calendarDate(new Date()))}>今天</button><strong>{date.getDate()}</strong><p>{date.toLocaleDateString('zh-CN', { weekday: 'long', month: 'long', day: 'numeric' })}</p><div><span>{selectedDay.length + selectedReviews.length} 项安排</span><span>{pending.length + reviewPending.length} 个待办</span></div></section>
     <section className="ws-day-todo"><header><h2>{day === calendarDate(new Date()) ? '今日待办' : '当日待办'}</h2>{canManage && <button aria-label="添加当日任务" onClick={() => onNew(day)}>＋</button>}</header>
-      {pending.length ? pending.map(event => <button className="ws-day-event" key={event.id} onClick={() => openEvent(event)}><time>{event.allDay ? '全天' : new Date(event.startsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</time><b>{event.title}</b><small>{event.source === 'studyagent' ? '学习安排' : '订阅日程'}</small></button>) : <p className="ws-day-empty">{filter === 'pending' ? '当天没有待确认任务' : '今天没有任务'}</p>}</section>
-    <section className="ws-day-done"><h2>已完成</h2>{completed.length ? completed.map(event => <button className="ws-day-event" key={event.id} onClick={() => openEvent(event)}>✓ {event.title}</button>) : <p className="ws-day-empty">完成的任务会显示在这里</p>}</section>
+      {!pending.length && !reviewPending.length && <p className="ws-day-empty">{reviews.busy || reviews.error ? '原卷安排尚未读取，课程安排如上。' : filter === 'pending' ? '当天没有待确认任务' : '今天没有任务'}</p>}
+      {pending.map(event => <button className="ws-day-event" key={event.id} onClick={() => openEvent(event)}><time>{event.allDay ? '全天' : new Date(event.startsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</time><b>{event.title}</b><small>{event.source === 'studyagent' ? '学习安排' : '订阅日程'}</small></button>)}
+      {reviewPending.map(event => <a className="ws-day-event ws-paper-review-event" key={event.id} href={reviewHref(event)}><time>全天</time><b>{event.title}</b><small>原卷 · 进入原题实际回看</small></a>)}</section>
+    <section className="ws-day-done"><h2>已完成</h2>{completed.map(event => <button className="ws-day-event" key={event.id} onClick={() => openEvent(event)}>✓ {event.title}</button>)}{reviewDone.map(event => <a className="ws-day-event ws-paper-review-event" key={event.id} href={reviewHref(event)}>✓ {event.title}<small>原卷 · 已实际回看</small></a>)}{!completed.length && !reviewDone.length && <p className="ws-day-empty">完成的任务会显示在这里</p>}</section>
   </aside><section className="ws-calendar-paper"><header className="ws-calendar-toolbar"><div role="tablist" aria-label="任务确认状态"><button role="tab" aria-selected={filter === 'confirmed'} onClick={() => changeFilter('confirmed')}>已确认任务</button><button role="tab" aria-selected={filter === 'pending'} onClick={() => changeFilter('pending')}>待处理任务</button></div>
     {canManage && <button className="ws-batch-delete" onClick={() => { setBatch(!batch); setChecked([]); }}>{batch ? '退出选择' : '批量删除日程'}</button>}
     <div className="ws-calendar-month"><button aria-label="上一个日期范围" onClick={() => shift(-1)}>‹</button><h2>{date.getFullYear()}年{date.getMonth() + 1}月</h2><button aria-label="下一个日期范围" onClick={() => shift(1)}>›</button></div>
     <div className="ws-calendar-modes"><button aria-pressed={mode === 'week'} onClick={() => changeMode('week')}>周视图</button><button aria-pressed={mode === 'month'} onClick={() => changeMode('month')}>月视图</button></div>
-  </header>{batch && <div className="ws-batch-actions"><label><input type="checkbox" checked={Boolean(removable.length) && removable.every(event => checked.includes(event.id))} onChange={event => setChecked(event.target.checked ? removable.map(row => row.id) : [])}/>选择当前范围的手动安排</label><span>{checked.length} 项</span><button disabled={busy || !checked.length} onClick={() => setDeleting(true)}>删除所选</button><small>计划任务与订阅日程保留</small></div>}
+  </header><PaperReviewCalendarControls user={user} studentId={studentId} calendar={reviews}/>{batch && <div className="ws-batch-actions"><label><input type="checkbox" checked={Boolean(removable.length) && removable.every(event => checked.includes(event.id))} onChange={event => setChecked(event.target.checked ? removable.map(row => row.id) : [])}/>选择当前范围的手动安排</label><span>{checked.length} 项</span><button disabled={busy || !checked.length} onClick={() => setDeleting(true)}>删除所选</button><small>计划任务、订阅日程与原卷复习保留</small></div>}
     <div className="ws-weekdays">{'日一二三四五六'.split('').map(label => <span key={label}>{label}</span>)}</div>
     <div className="ws-month-grid" data-mode={mode} style={{ '--calendar-rows': count / 7 } as React.CSSProperties}>{days.map(value => { const key = calendarDate(value), items = filtered.filter(event => includesDay(event, key));
       return <section key={key} className="ws-calendar-day" data-outside={value.getMonth() !== date.getMonth()} data-selected={key === day} data-today={key === calendarDate(new Date())}>
         <button className="ws-calendar-date" aria-label={'选择日期 ' + key} aria-pressed={key === day} onClick={() => selectDate(key)}>{value.getDate()}</button>
         <div className="ws-calendar-day-events">{items.map(event => <div key={event.id} className="ws-grid-event" data-completed={event.status === 'completed'}>{batch && event.source === 'studyagent' && !event.planId && <input type="checkbox" aria-label={'选择日程 ' + event.title} checked={checked.includes(event.id)} onChange={change => setChecked(ids => change.target.checked ? [...new Set([...ids, event.id])] : ids.filter(id => id !== event.id))}/>}
-          <button title={event.title} onClick={() => { selectDate(key); openEvent(event); }}>{event.status === 'completed' ? '✓ ' : ''}{!event.allDay && <time>{new Date(event.startsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })} </time>}{event.title}</button></div>)}</div>
+          <button title={event.title} onClick={() => { selectDate(key); openEvent(event); }}>{event.status === 'completed' ? '✓ ' : ''}{!event.allDay && <time>{new Date(event.startsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })} </time>}{event.title}</button></div>)}{reviewEvents.filter(event => event.date === key).map(event => <a className="ws-grid-paper-review" aria-label={(event.status === 'reviewed' ? '已回看 · ' : '原卷 · ') + event.title} title={'原卷复习 · ' + event.title} data-reviewed={event.status === 'reviewed'} key={event.id} href={reviewHref(event)}><span className="ws-paper-review-full">{event.status === 'reviewed' ? '✓ ' : ''}原卷 · {event.title}</span><span className="ws-paper-review-short" aria-hidden="true">{event.status === 'reviewed' ? '✓ 原卷' : '原卷 ↗'}</span></a>)}</div>
       </section>; })}</div>
-    <footer className="ws-calendar-tools">{canManage && <button onClick={() => onNew(day)}>＋ 新建学习安排</button>}<button onClick={onSources}>连接 LMS / 日历</button><button onClick={onPlanner}>学习计划与同步管理</button><button onClick={onExport}>导出 ICS</button></footer>
+    <footer className="ws-calendar-tools">{canManage && <button onClick={() => onNew(day)}>＋ 新建学习安排</button>}{studentId && <><button onClick={onSources}>连接 LMS / 日历</button><button onClick={onPlanner}>学习计划与同步管理</button><button onClick={onExport}>导出 ICS</button></>}</footer>
   </section>
   {selected && <WorkspaceDialog onClose={() => setSelectedId('')} busy={busy}><section className="ws-event-dialog" role="dialog" aria-modal="true" aria-label="学习安排详情"><header><h2>{editing ? '编辑学习安排' : selected.title}</h2><button aria-label="关闭日程详情" onClick={() => setSelectedId('')}>×</button></header>
     {dialogError && !deleting && <p className="ws-dialog-error" role="alert">{dialogError}</p>}{editing ? <form onSubmit={event => { event.preventDefault(); void run(async () => { await update(selected, { title, description, startsAt: new Date(start).toISOString(), endsAt: new Date(end).toISOString() }); setEditing(false); }); }}><label>任务名称<input required minLength={2} maxLength={160} value={title} onChange={event => setTitle(event.target.value)}/></label><label>完成标准<input maxLength={1500} value={description} onChange={event => setDescription(event.target.value)}/></label><label>开始时间<input type="datetime-local" required value={start} onChange={event => setStart(event.target.value)}/></label><label>结束时间<input type="datetime-local" required value={end} onChange={event => setEnd(event.target.value)}/></label><button disabled={busy}>保存修改</button></form>

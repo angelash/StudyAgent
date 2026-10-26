@@ -1,6 +1,6 @@
 # 07 题卷资产、内容编辑、导入与发布 — 详细设计
 
-源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
+源码基线：`d1dd3bd39b42342e89a5d228499a1b9e1a8be081`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
 
 产品入口：`/library`、`/library/practice`、`/admin/content`、`/admin/imports`、`/admin/measurement`。
 
@@ -323,29 +323,29 @@
 
 **状态与持久化**：`paperPracticeSessions`、`paperPracticeCommands`、`paperPublications`
 
-**权限、失败与边界**：PDF仍为未切分整卷笔记；原始HTML、自评和订正不自动变成能力分数。最多16卷/500题位/8MiB冻结请求；相机切题、独立新题复习、全部资产/导出/教师与设备验收继续。
+**权限、失败与边界**：PDF仍为未切分整卷笔记；原始HTML、自评和订正不自动变成能力分数。最多16卷/500题位/8MiB冻结请求；相机切题、全部资产/导出/教师与设备验收继续；复习和新题见CONTENT-13/14。
 
 **关联接口**：
 
-- `POST /api/library/practice/preview` → `PaperPracticeController.preview`；[apps/api/src/modules/library/paper-practice.controller.ts:9](../../../apps/api/src/modules/library/paper-practice.controller.ts#L9)。
-- `POST /api/library/practice/sessions` → `PaperPracticeController.create`；[apps/api/src/modules/library/paper-practice.controller.ts:10](../../../apps/api/src/modules/library/paper-practice.controller.ts#L10)。
-- `GET /api/library/practice/requests/:requestKey` → `PaperPracticeController.creationResult`；[apps/api/src/modules/library/paper-practice.controller.ts:11](../../../apps/api/src/modules/library/paper-practice.controller.ts#L11)。
-- `GET /api/library/practice/sessions` → `PaperPracticeController.list`；[apps/api/src/modules/library/paper-practice.controller.ts:12](../../../apps/api/src/modules/library/paper-practice.controller.ts#L12)。
-- `GET /api/library/practice/sessions/:sessionId` → `PaperPracticeController.get`；[apps/api/src/modules/library/paper-practice.controller.ts:13](../../../apps/api/src/modules/library/paper-practice.controller.ts#L13)。
-- `GET /api/library/practice/sessions/:sessionId/items/:itemId` → `PaperPracticeController.item`；[apps/api/src/modules/library/paper-practice.controller.ts:14](../../../apps/api/src/modules/library/paper-practice.controller.ts#L14)。
-- `GET /api/library/practice/sessions/:sessionId/commands/:requestKey` → `PaperPracticeController.commandResult`；[apps/api/src/modules/library/paper-practice.controller.ts:15](../../../apps/api/src/modules/library/paper-practice.controller.ts#L15)。
-- `POST /api/library/practice/sessions/:sessionId/commands` → `PaperPracticeController.command`；[apps/api/src/modules/library/paper-practice.controller.ts:16](../../../apps/api/src/modules/library/paper-practice.controller.ts#L16)。
+- `POST /api/library/practice/preview` → `PaperPracticeController.preview`；[apps/api/src/modules/library/paper-practice.controller.ts:12](../../../apps/api/src/modules/library/paper-practice.controller.ts#L12)。
+- `POST /api/library/practice/sessions` → `PaperPracticeController.create`；[apps/api/src/modules/library/paper-practice.controller.ts:13](../../../apps/api/src/modules/library/paper-practice.controller.ts#L13)。
+- `GET /api/library/practice/requests/:requestKey` → `PaperPracticeController.creationResult`；[apps/api/src/modules/library/paper-practice.controller.ts:14](../../../apps/api/src/modules/library/paper-practice.controller.ts#L14)。
+- `GET /api/library/practice/sessions` → `PaperPracticeController.list`；[apps/api/src/modules/library/paper-practice.controller.ts:15](../../../apps/api/src/modules/library/paper-practice.controller.ts#L15)。
+- `GET /api/library/practice/sessions/:sessionId` → `PaperPracticeController.get`；[apps/api/src/modules/library/paper-practice.controller.ts:16](../../../apps/api/src/modules/library/paper-practice.controller.ts#L16)。
+- `GET /api/library/practice/sessions/:sessionId/items/:itemId` → `PaperPracticeController.item`；[apps/api/src/modules/library/paper-practice.controller.ts:17](../../../apps/api/src/modules/library/paper-practice.controller.ts#L17)。
+- `GET /api/library/practice/sessions/:sessionId/commands/:requestKey` → `PaperPracticeController.commandResult`；[apps/api/src/modules/library/paper-practice.controller.ts:21](../../../apps/api/src/modules/library/paper-practice.controller.ts#L21)。
+- `POST /api/library/practice/sessions/:sessionId/commands` → `PaperPracticeController.command`；[apps/api/src/modules/library/paper-practice.controller.ts:22](../../../apps/api/src/modules/library/paper-practice.controller.ts#L22)。
 
 **服务方法**：
 
-- `PaperPracticeService.preview`；[apps/api/src/modules/library/paper-practice.service.ts:116](../../../apps/api/src/modules/library/paper-practice.service.ts#L116)。
-- `PaperPracticeService.create`；[apps/api/src/modules/library/paper-practice.service.ts:124](../../../apps/api/src/modules/library/paper-practice.service.ts#L124)。
-- `PaperPracticeService.creationResult`；[apps/api/src/modules/library/paper-practice.service.ts:138](../../../apps/api/src/modules/library/paper-practice.service.ts#L138)。
-- `PaperPracticeService.list`；[apps/api/src/modules/library/paper-practice.service.ts:142](../../../apps/api/src/modules/library/paper-practice.service.ts#L142)。
-- `PaperPracticeService.get`；[apps/api/src/modules/library/paper-practice.service.ts:152](../../../apps/api/src/modules/library/paper-practice.service.ts#L152)。
-- `PaperPracticeService.item`；[apps/api/src/modules/library/paper-practice.service.ts:153](../../../apps/api/src/modules/library/paper-practice.service.ts#L153)。
-- `PaperPracticeService.commandResult`；[apps/api/src/modules/library/paper-practice.service.ts:161](../../../apps/api/src/modules/library/paper-practice.service.ts#L161)。
-- `PaperPracticeService.command`；[apps/api/src/modules/library/paper-practice.service.ts:166](../../../apps/api/src/modules/library/paper-practice.service.ts#L166)。
+- `PaperPracticeService.preview`；[apps/api/src/modules/library/paper-practice.service.ts:135](../../../apps/api/src/modules/library/paper-practice.service.ts#L135)。
+- `PaperPracticeService.create`；[apps/api/src/modules/library/paper-practice.service.ts:143](../../../apps/api/src/modules/library/paper-practice.service.ts#L143)。
+- `PaperPracticeService.creationResult`；[apps/api/src/modules/library/paper-practice.service.ts:157](../../../apps/api/src/modules/library/paper-practice.service.ts#L157)。
+- `PaperPracticeService.list`；[apps/api/src/modules/library/paper-practice.service.ts:161](../../../apps/api/src/modules/library/paper-practice.service.ts#L161)。
+- `PaperPracticeService.get`；[apps/api/src/modules/library/paper-practice.service.ts:171](../../../apps/api/src/modules/library/paper-practice.service.ts#L171)。
+- `PaperPracticeService.item`；[apps/api/src/modules/library/paper-practice.service.ts:254](../../../apps/api/src/modules/library/paper-practice.service.ts#L254)。
+- `PaperPracticeService.commandResult`；[apps/api/src/modules/library/paper-practice.service.ts:262](../../../apps/api/src/modules/library/paper-practice.service.ts#L262)。
+- `PaperPracticeService.command`；[apps/api/src/modules/library/paper-practice.service.ts:267](../../../apps/api/src/modules/library/paper-practice.service.ts#L267)。
 
 **补充实现文件**：
 
@@ -360,3 +360,74 @@
 - [apps/api/src/modules/library/paper-practice-recovery.integration.test.ts](../../../apps/api/src/modules/library/paper-practice-recovery.integration.test.ts)
 - [apps/api/src/infrastructure/paper-practice-migration.test.ts](../../../apps/api/src/infrastructure/paper-practice-migration.test.ts)
 - [tests/e2e/paper-practice.spec.ts](../../../tests/e2e/paper-practice.spec.ts)
+
+## CONTENT-13 原卷复习、完整反思与本人日历
+
+**输入**：本人/学习账号范围、筛选、标签、错误步骤、反思、纯本地日期与原整理命令。
+
+**处理与实现**：在原题位追加可选版本化整理及完整历史；完成或来源撤回仍允许本人整理，不改首答。分页清单只投影有权记录；日历和ICS按原日期只读派生稳定事件，不复制私人反思。编辑器使用独立目的副本、原键恢复、三刷、双页冲突比较和下载保护；课程日历按当前范围/可见日期读取，切范围立即隐藏旧结果并拒绝迟到返回，回看事实仍在原题记录。
+
+**输出**：跨原练习复习清单、完整反思/历史、实际回看与受控日历。
+
+**状态与持久化**：`paperPracticeSessions`、`paperPracticeCommands`
+
+**权限、失败与边界**：监护人只读孩子学习账号记录，私人陪练互不可见；不以回看标记关闭能力原因；1000次/2MiB每题与16MiB会话预算明确拒绝不截断；全量CI/运行及真人边界另记。
+
+**关联接口**：
+
+- `GET /api/library/practice/reviews` → `PaperPracticeController.reviews`；[apps/api/src/modules/library/paper-practice.controller.ts:9](../../../apps/api/src/modules/library/paper-practice.controller.ts#L9)。
+- `GET /api/library/practice/reviews/calendar` → `PaperPracticeController.calendar`；[apps/api/src/modules/library/paper-practice.controller.ts:10](../../../apps/api/src/modules/library/paper-practice.controller.ts#L10)。
+- `GET /api/library/practice/reviews/calendar/export` → `PaperPracticeController.exportCalendar`；[apps/api/src/modules/library/paper-practice.controller.ts:11](../../../apps/api/src/modules/library/paper-practice.controller.ts#L11)。
+
+**服务方法**：
+
+- `PaperPracticeService.reviews`；[apps/api/src/modules/library/paper-practice.service.ts:224](../../../apps/api/src/modules/library/paper-practice.service.ts#L224)。
+- `PaperPracticeService.reviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:239](../../../apps/api/src/modules/library/paper-practice.service.ts#L239)。
+- `PaperPracticeService.exportReviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:248](../../../apps/api/src/modules/library/paper-practice.service.ts#L248)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/paper-review.ts](../../../packages/contracts/src/paper-review.ts)
+- [apps/api/src/modules/library/paper-review-organization.ts](../../../apps/api/src/modules/library/paper-review-organization.ts)
+- [apps/api/src/modules/library/paper-review-query.ts](../../../apps/api/src/modules/library/paper-review-query.ts)
+- [apps/web/components/paper-review-editor.tsx](../../../apps/web/components/paper-review-editor.tsx)
+- [apps/web/app/library/practice/review/studio.tsx](../../../apps/web/app/library/practice/review/studio.tsx)
+- [apps/web/app/studio/paper-review-calendar.tsx](../../../apps/web/app/studio/paper-review-calendar.tsx)
+- [apps/web/lib/paper-review-navigation.ts](../../../apps/web/lib/paper-review-navigation.ts)
+- [apps/web/app/studio/calendar-board.tsx](../../../apps/web/app/studio/calendar-board.tsx)
+- [tests/e2e/paper-practice.spec.ts](../../../tests/e2e/paper-practice.spec.ts)
+
+## CONTENT-14 来源绑定的再练与独立新题验证
+
+**输入**：原练习/题位、同源再练选择、当前孩子/已学范围/原子目标、原请求键。
+
+**处理与实现**：同一来源/版本/题位创建新的原题再练，不改旧首答；从有权新记录反向派生后续行为。五门审核/来源完整摘要/知识定义指纹与正式测量资格核对后才建议知识点，显式确认范围并预览独立新题；原请求全域唯一且绑定来源和目标，实际开始沿用原蓝图确认。孩子原卷接触保守关联正式题曝光，家长私人陪练不投射孩子。关联来源按原私人权限过滤共享评测/导出，最新删除账本清理失去来源的关系。
+
+**输出**：新的来源明确原题尝试、可恢复原蓝图和有权正式报告返回入口。
+
+**状态与持久化**：`paperPracticeSessions`、`diagnosticBlueprints`、`diagnosticSessions`、`measurementCandidates`
+
+**权限、失败与边界**：无审核映射提供手动选择入口，不用模型猜测；原题重复不增加独立证据。预览读取不开始作答；完整题族、教师和真实保持仍待验证。
+
+**关联接口**：
+
+- `GET /api/library/practice/sessions/:sessionId/items/:itemId/next-options` → `PaperPracticeController.nextOptions`；[apps/api/src/modules/library/paper-practice.controller.ts:18](../../../apps/api/src/modules/library/paper-practice.controller.ts#L18)。
+- `POST /api/library/practice/sessions/:sessionId/items/:itemId/verification-preview` → `PaperPracticeController.verificationPreview`；[apps/api/src/modules/library/paper-practice.controller.ts:19](../../../apps/api/src/modules/library/paper-practice.controller.ts#L19)。
+- `GET /api/library/practice/sessions/:sessionId/items/:itemId/verification-requests/:requestKey` → `PaperPracticeController.verificationRequest`；[apps/api/src/modules/library/paper-practice.controller.ts:20](../../../apps/api/src/modules/library/paper-practice.controller.ts#L20)。
+
+**服务方法**：
+
+- `PaperPracticeService.nextOptions`；[apps/api/src/modules/library/paper-practice.service.ts:172](../../../apps/api/src/modules/library/paper-practice.service.ts#L172)。
+- `PaperPracticeService.verificationPreview`；[apps/api/src/modules/library/paper-practice.service.ts:193](../../../apps/api/src/modules/library/paper-practice.service.ts#L193)。
+- `PaperPracticeService.verificationRequest`；[apps/api/src/modules/library/paper-practice.service.ts:210](../../../apps/api/src/modules/library/paper-practice.service.ts#L210)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/library/paper-review-eligibility.ts](../../../apps/api/src/modules/library/paper-review-eligibility.ts)
+- [apps/api/src/modules/diagnostics/paper-exposure.ts](../../../apps/api/src/modules/diagnostics/paper-exposure.ts)
+- [apps/api/src/modules/diagnostics/diagnostics.service.ts](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts)
+- [apps/api/src/modules/privacy/privacy-records.ts](../../../apps/api/src/modules/privacy/privacy-records.ts)
+- [apps/web/components/paper-review-next-steps.tsx](../../../apps/web/components/paper-review-next-steps.tsx)
+- [packages/contracts/src/diagnostics.ts](../../../packages/contracts/src/diagnostics.ts)
+- [apps/api/src/modules/library/measurement-content.integration.test.ts](../../../apps/api/src/modules/library/measurement-content.integration.test.ts)
+- [apps/api/src/modules/library/paper-practice-recovery.integration.test.ts](../../../apps/api/src/modules/library/paper-practice-recovery.integration.test.ts)

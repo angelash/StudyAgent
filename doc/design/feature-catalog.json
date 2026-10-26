@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "sourceRevision": "d1dd3bd39b42342e89a5d228499a1b9e1a8be081",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 123,
-    "activeNormalApiRoutes": 372,
-    "coveredApiRoutes": 372
+    "features": 125,
+    "activeNormalApiRoutes": 378,
+    "coveredApiRoutes": 378
   },
   "areas": [
     {
@@ -1237,12 +1237,12 @@
             {
               "name": "DiagnosticsService.previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 156
+              "line": 158
             },
             {
               "name": "DiagnosticsService.getBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 188
+              "line": 191
             }
           ],
           "sourceFiles": [
@@ -1298,12 +1298,12 @@
             {
               "name": "DiagnosticsService.startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 189
+              "line": 192
             },
             {
               "name": "DiagnosticsService.start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 34
+              "line": 35
             }
           ],
           "sourceFiles": [
@@ -1401,17 +1401,17 @@
             {
               "name": "DiagnosticsService.listSessions",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 228
+              "line": 232
             },
             {
               "name": "DiagnosticsService.sessionView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 234
+              "line": 238
             },
             {
               "name": "DiagnosticsService.renderItem",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 292
+              "line": 299
             }
           ],
           "sourceFiles": [
@@ -1476,17 +1476,17 @@
             {
               "name": "DiagnosticsService.saveDraft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 317
+              "line": 324
             },
             {
               "name": "DiagnosticsService.changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 252
+              "line": 259
             },
             {
               "name": "DiagnosticsService.complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 409
+              "line": 416
             }
           ],
           "sourceFiles": [
@@ -1542,12 +1542,12 @@
             {
               "name": "DiagnosticsService.submit",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 335
+              "line": 342
             },
             {
               "name": "DiagnosticsService.hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 396
+              "line": 403
             }
           ],
           "sourceFiles": [
@@ -1661,7 +1661,7 @@
             {
               "name": "DiagnosticsService.evidenceView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 532
+              "line": 539
             }
           ],
           "sourceFiles": [
@@ -1718,12 +1718,12 @@
             {
               "name": "DiagnosticsService.reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 596
+              "line": 603
             },
             {
               "name": "DiagnosticsService.reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 490
+              "line": 497
             }
           ],
           "sourceFiles": [
@@ -1800,22 +1800,22 @@
             {
               "name": "DiagnosticsService.report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 483
+              "line": 490
             },
             {
               "name": "DiagnosticsService.profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 463
+              "line": 470
             },
             {
               "name": "DiagnosticsService.analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 497
+              "line": 504
             },
             {
               "name": "DiagnosticsService.reanalyzeReport",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 506
+              "line": 513
             }
           ],
           "sourceFiles": [
@@ -4096,7 +4096,7 @@
             "paperPracticeCommands",
             "paperPublications"
           ],
-          "limits": "PDF仍为未切分整卷笔记；原始HTML、自评和订正不自动变成能力分数。最多16卷/500题位/8MiB冻结请求；相机切题、独立新题复习、全部资产/导出/教师与设备验收继续。",
+          "limits": "PDF仍为未切分整卷笔记；原始HTML、自评和订正不自动变成能力分数。最多16卷/500题位/8MiB冻结请求；相机切题、全部资产/导出/教师与设备验收继续；复习和新题见CONTENT-13/14。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4104,7 +4104,7 @@
               "controller": "PaperPracticeController",
               "method": "preview",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 9
+              "line": 12
             },
             {
               "verb": "POST",
@@ -4112,7 +4112,7 @@
               "controller": "PaperPracticeController",
               "method": "create",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 10
+              "line": 13
             },
             {
               "verb": "GET",
@@ -4120,7 +4120,7 @@
               "controller": "PaperPracticeController",
               "method": "creationResult",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 11
+              "line": 14
             },
             {
               "verb": "GET",
@@ -4128,7 +4128,7 @@
               "controller": "PaperPracticeController",
               "method": "list",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 12
+              "line": 15
             },
             {
               "verb": "GET",
@@ -4136,7 +4136,7 @@
               "controller": "PaperPracticeController",
               "method": "get",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 13
+              "line": 16
             },
             {
               "verb": "GET",
@@ -4144,7 +4144,7 @@
               "controller": "PaperPracticeController",
               "method": "item",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 14
+              "line": 17
             },
             {
               "verb": "GET",
@@ -4152,7 +4152,7 @@
               "controller": "PaperPracticeController",
               "method": "commandResult",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 15
+              "line": 21
             },
             {
               "verb": "POST",
@@ -4160,49 +4160,49 @@
               "controller": "PaperPracticeController",
               "method": "command",
               "file": "apps/api/src/modules/library/paper-practice.controller.ts",
-              "line": 16
+              "line": 22
             }
           ],
           "implementations": [
             {
               "name": "PaperPracticeService.preview",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 116
+              "line": 135
             },
             {
               "name": "PaperPracticeService.create",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 124
+              "line": 143
             },
             {
               "name": "PaperPracticeService.creationResult",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 138
+              "line": 157
             },
             {
               "name": "PaperPracticeService.list",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 142
+              "line": 161
             },
             {
               "name": "PaperPracticeService.get",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 152
+              "line": 171
             },
             {
               "name": "PaperPracticeService.item",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 153
+              "line": 254
             },
             {
               "name": "PaperPracticeService.commandResult",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 161
+              "line": 262
             },
             {
               "name": "PaperPracticeService.command",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 166
+              "line": 267
             }
           ],
           "sourceFiles": [
@@ -4218,6 +4218,179 @@
             "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
             "apps/api/src/infrastructure/paper-practice-migration.test.ts",
             "tests/e2e/paper-practice.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
+            "apps/api/src/modules/library/measurement-content.integration.test.ts",
+            "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+          ]
+        },
+        {
+          "id": "CONTENT-13",
+          "title": "原卷复习、完整反思与本人日历",
+          "area": "content",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
+          "pages": [
+            "/library",
+            "/library/practice",
+            "/admin/content",
+            "/admin/imports",
+            "/admin/measurement"
+          ],
+          "inputs": "本人/学习账号范围、筛选、标签、错误步骤、反思、纯本地日期与原整理命令",
+          "implementation": "在原题位追加可选版本化整理及完整历史；完成或来源撤回仍允许本人整理，不改首答。分页清单只投影有权记录；日历和ICS按原日期只读派生稳定事件，不复制私人反思。编辑器使用独立目的副本、原键恢复、三刷、双页冲突比较和下载保护；课程日历按当前范围/可见日期读取，切范围立即隐藏旧结果并拒绝迟到返回，回看事实仍在原题记录。",
+          "outputs": "跨原练习复习清单、完整反思/历史、实际回看与受控日历",
+          "collections": [
+            "paperPracticeSessions",
+            "paperPracticeCommands"
+          ],
+          "limits": "监护人只读孩子学习账号记录，私人陪练互不可见；不以回看标记关闭能力原因；1000次/2MiB每题与16MiB会话预算明确拒绝不截断；全量CI/运行及真人边界另记。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/reviews",
+              "controller": "PaperPracticeController",
+              "method": "reviews",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/reviews/calendar",
+              "controller": "PaperPracticeController",
+              "method": "calendar",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/reviews/calendar/export",
+              "controller": "PaperPracticeController",
+              "method": "exportCalendar",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 11
+            }
+          ],
+          "implementations": [
+            {
+              "name": "PaperPracticeService.reviews",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 224
+            },
+            {
+              "name": "PaperPracticeService.reviewCalendar",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 239
+            },
+            {
+              "name": "PaperPracticeService.exportReviewCalendar",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 248
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/paper-review.ts",
+            "apps/api/src/modules/library/paper-review-organization.ts",
+            "apps/api/src/modules/library/paper-review-query.ts",
+            "apps/web/components/paper-review-editor.tsx",
+            "apps/web/app/library/practice/review/studio.tsx",
+            "apps/web/app/studio/paper-review-calendar.tsx",
+            "apps/web/lib/paper-review-navigation.ts",
+            "apps/web/app/studio/calendar-board.tsx",
+            "tests/e2e/paper-practice.spec.ts",
+            "apps/api/src/modules/library/paper-practice.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
+            "apps/api/src/modules/library/measurement-content.integration.test.ts",
+            "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+          ]
+        },
+        {
+          "id": "CONTENT-14",
+          "title": "来源绑定的再练与独立新题验证",
+          "area": "content",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
+          "pages": [
+            "/library",
+            "/library/practice",
+            "/admin/content",
+            "/admin/imports",
+            "/admin/measurement"
+          ],
+          "inputs": "原练习/题位、同源再练选择、当前孩子/已学范围/原子目标、原请求键",
+          "implementation": "同一来源/版本/题位创建新的原题再练，不改旧首答；从有权新记录反向派生后续行为。五门审核/来源完整摘要/知识定义指纹与正式测量资格核对后才建议知识点，显式确认范围并预览独立新题；原请求全域唯一且绑定来源和目标，实际开始沿用原蓝图确认。孩子原卷接触保守关联正式题曝光，家长私人陪练不投射孩子。关联来源按原私人权限过滤共享评测/导出，最新删除账本清理失去来源的关系。",
+          "outputs": "新的来源明确原题尝试、可恢复原蓝图和有权正式报告返回入口",
+          "collections": [
+            "paperPracticeSessions",
+            "diagnosticBlueprints",
+            "diagnosticSessions",
+            "measurementCandidates"
+          ],
+          "limits": "无审核映射提供手动选择入口，不用模型猜测；原题重复不增加独立证据。预览读取不开始作答；完整题族、教师和真实保持仍待验证。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions/:sessionId/items/:itemId/next-options",
+              "controller": "PaperPracticeController",
+              "method": "nextOptions",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/practice/sessions/:sessionId/items/:itemId/verification-preview",
+              "controller": "PaperPracticeController",
+              "method": "verificationPreview",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/practice/sessions/:sessionId/items/:itemId/verification-requests/:requestKey",
+              "controller": "PaperPracticeController",
+              "method": "verificationRequest",
+              "file": "apps/api/src/modules/library/paper-practice.controller.ts",
+              "line": 20
+            }
+          ],
+          "implementations": [
+            {
+              "name": "PaperPracticeService.nextOptions",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 172
+            },
+            {
+              "name": "PaperPracticeService.verificationPreview",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 193
+            },
+            {
+              "name": "PaperPracticeService.verificationRequest",
+              "file": "apps/api/src/modules/library/paper-practice.service.ts",
+              "line": 210
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/library/paper-review-eligibility.ts",
+            "apps/api/src/modules/diagnostics/paper-exposure.ts",
+            "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+            "apps/api/src/modules/privacy/privacy-records.ts",
+            "apps/web/components/paper-review-next-steps.tsx",
+            "packages/contracts/src/diagnostics.ts",
+            "apps/api/src/modules/library/measurement-content.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",

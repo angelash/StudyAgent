@@ -404,4 +404,157 @@ test('paper review next: a learner confirms scope, restores a lost independent p
   await page.getByRole('region', { name: '独立新题的原卷来源' }).getByRole('link', { name: '返回原首答与反思 ↗' }).click();
   const options = await f.call('/library/practice/sessions/' + sourceSession + '/items/' + sourceItem + '/next-options'); expect(options.activities.filter((activity: any) => activity.kind === 'verification')).toHaveLength(1);
   await expect(page.getByRole('region', { name: '原题再练与独立新题' }).getByText('这次原题之后的实际活动 · 1 条', { exact: true })).toBeVisible();
+  const editor = page.getByRole('region', { name: '原卷复习与反思' }); await editor.getByLabel('计划回看日期').fill('2026-11-09');
+  await editor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(editor.getByText('完整整理历史 · 1 次', { exact: true })).toBeVisible();
+  await page.goto('/studio?view=calendar&student=' + child + '&date=2026-11-09'); const controls = page.getByRole('region', { name: '日历中的原卷复习' });
+  await expect(controls.getByLabel('原卷作答范围')).toHaveValue('learner'); await expect(controls.getByLabel('原卷作答范围')).toBeDisabled();
+  await expect(page.locator('.ws-month-grid').getByRole('link', { name: /匿名原卷 29/ })).toBeVisible();
+  await f.call('/students/' + child + '/learning-access', { enabled: false, expectedVersion: 1, requestKey: randomUUID(), reason: '合成日历实时撤权验证' });
+  await controls.getByRole('button', { name: '刷新原卷安排' }).click(); await expect(page.locator('.ws-month-grid').getByRole('link', { name: /匿名原卷 29/ })).toHaveCount(0);
+  await expect(page.getByRole('region', { name: '日历中的原卷复习' })).toHaveCount(0);
+});
+
+
+async function plannedPaperReview(f: Awaited<ReturnType<typeof fixture>>, paper: string, date: string, studentId?: string, actor = f.actor.token) {
+  const selection = [{ paperId: paper, positions: [1] }], scope = { selection, ...(studentId ? { studentId } : {}) };
+  const preview = await f.call('/library/practice/preview', scope, actor);
+  let row = await f.call('/library/practice/sessions', { ...scope, sourceHash: preview.sourceHash, requestKey: randomUUID() }, actor);
+  const itemId = row.items[0].id;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'dont_know', text: '' }, actor)).session;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'organize', itemId, values: { tags: [], favorite: false, archived: false, errorSteps: '', reflection: 'PRIVATE_CALENDAR_REFLECTION', plannedDate: date } }, actor)).session;
+  return { row, itemId };
+}
+
+for (const timezoneId of ['America/Los_Angeles', 'Pacific/Kiritimati']) test.describe('paper calendar timezone ' + timezoneId, () => {
+  test.use({ timezoneId });
+  test('paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads', async ({ page }) => {
+    const f = await fixture(page, 30), { row, itemId } = await plannedPaperReview(f, f.papers.complete, '2026-03-08');
+    await page.goto('/studio?view=calendar&date=2026-03-08&mode=week');
+    const grid = page.locator('.ws-month-grid'), card = page.getByRole('region', { name: '日历中的原卷复习' });
+    await expect(grid.getByRole('link', { name: /原卷.*匿名原卷 30/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: '选择日期 2026-03-08', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await expect(card).not.toContainText('PRIVATE_CALENDAR_REFLECTION');
+    for (let index = 0; index < 3; index++) { await page.reload(); await expect(grid.getByRole('link', { name: /原卷.*匿名原卷 30/ })).toBeVisible(); }
+    expect((await f.call('/library/practice/sessions/' + row.id)).version).toBe(row.version);
+    const waiting = page.waitForEvent('download'); await card.getByRole('button', { name: '导出当前范围原卷 ICS' }).click(); const download = await waiting;
+    const contents = readFileSync((await download.path())!, 'utf8'); expect(contents).toContain('DTSTART;VALUE=DATE:20260308'); expect(contents).not.toContain('PRIVATE_CALENDAR_REFLECTION');
+    await grid.getByRole('link', { name: /原卷.*匿名原卷 30/ }).click(); await expect(page.getByRole('link', { name: '← 返回原日期与课程日历' })).toBeVisible();
+    const editor = page.getByRole('region', { name: '原卷复习与反思' }); await expect(editor.getByLabel('我的反思')).toHaveValue('PRIVATE_CALENDAR_REFLECTION');
+    await editor.getByRole('button', { name: '我已实际回看', exact: true }).click(); await expect(editor.getByRole('button', { name: '重新放回待复习', exact: true })).toBeVisible();
+    await page.getByRole('link', { name: '← 返回原日期与课程日历' }).click(); expect(new URL(page.url()).searchParams.get('date')).toBe('2026-03-08'); expect(new URL(page.url()).searchParams.get('mode')).toBe('week');
+    await expect(page.locator('.ws-day-done').getByRole('link', { name: /匿名原卷 30.*已实际回看/ })).toBeVisible();
+    const item = await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId); expect(item.firstAnswer.disposition).toBe('dont_know'); expect(item.organization.status).toBe('reviewed');
+    await page.goto('/library/practice/review?session=' + row.id + '&item=' + itemId + '&calendarReturn=' + encodeURIComponent('https://untrusted.invalid/studio?view=calendar'));
+    await expect(page.getByRole('region', { name: '原卷复习与反思' })).toBeVisible(); await expect(page.getByRole('link', { name: '← 返回原日期与课程日历' })).toHaveCount(0);
+  });
+});
+
+for (const width of [390, 768, 1440]) test('paper calendar: the original review shares the real course grid without becoming a removable course event at ' + width, async ({ page }) => {
+  const f = await fixture(page, width === 390 ? 32 : width === 768 ? 33 : 34), child = (await f.call('/students', { nickname: '合成原卷日历孩子', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile.id;
+  await plannedPaperReview(f, f.papers.complete, '2026-11-09', child);
+  await f.call('/learning/studio/calendar/events', { studentId: child, subject: 'math', title: '合成课程学习安排', description: '只有手动课程事件可以批量删除', startsAt: '2026-11-09T02:00:00Z', endsAt: '2026-11-09T02:25:00Z', requestKey: randomUUID() });
+  await page.setViewportSize({ width, height: 1000 }); await page.goto('/studio?view=calendar&student=' + child + '&date=2026-11-09');
+  const grid = page.locator('.ws-month-grid'); await expect(grid.getByRole('link', { name: /原卷.*匿名原卷/ })).toBeVisible(); await expect(grid.getByRole('button', { name: /合成课程学习安排/ })).toBeVisible();
+  await expect(page.getByRole('region', { name: '日历中的原卷复习' }).getByLabel('原卷作答范围')).toHaveValue('mine');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  await page.screenshot({ path: join(browserEvidence('paper-practice'), 'unified-calendar-' + width + '.png'), fullPage: true });
+  await page.getByRole('button', { name: '批量删除日程', exact: true }).click(); await expect(grid.getByRole('checkbox')).toHaveCount(1); await expect(grid.getByRole('link', { name: /原卷.*匿名原卷/ })).toBeVisible();
+});
+
+test('paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure', async ({ page }) => {
+  const f = await fixture(page, 35), child = (await f.call('/students', { nickname: '合成范围隔离孩子', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile.id;
+  await plannedPaperReview(f, f.papers.complete, '2026-11-09', child);
+  await f.call('/students/' + child + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '合成日历本人和学习账号隔离' });
+  const issued = await f.call('/students/' + child + '/learning-access/codes', { expectedVersion: 1, requestKey: randomUUID() });
+  const learner = await f.call('/auth/learning-code', { code: issued.code }, ''); await plannedPaperReview(f, f.papers.partial, '2026-11-09', child, learner.token);
+  await page.goto('/studio?view=calendar&student=' + child + '&date=2026-11-09'); const grid = page.locator('.ws-month-grid'), controls = page.getByRole('region', { name: '日历中的原卷复习' });
+  await expect(grid.getByRole('link', { name: /匿名原卷 35.*完整/ })).toBeVisible(); await expect(grid.getByRole('link', { name: /匿名原卷 35.*部分/ })).toHaveCount(0);
+  let release!: () => void, reached!: () => void, finished!: () => void, held = false;
+  const gate = new Promise<void>(resolve => { release = resolve; }), seen = new Promise<void>(resolve => { reached = resolve; }), done = new Promise<void>(resolve => { finished = resolve; });
+  await page.route('**/api/library/practice/reviews/calendar?**', async route => {
+    if (new URL(route.request().url()).searchParams.get('scope') === 'mine' && !held) { held = true; const response = await route.fetch(); reached(); await gate; await route.fulfill({ response }); finished(); }
+    else await route.continue();
+  });
+  try {
+    await controls.getByRole('button', { name: '刷新原卷安排' }).click(); await seen;
+    await controls.getByLabel('原卷作答范围').selectOption('learner'); await expect(grid.getByRole('link', { name: /匿名原卷 35.*部分/ })).toBeVisible(); await expect(grid.getByRole('link', { name: /匿名原卷 35.*完整/ })).toHaveCount(0);
+  } finally { release(); }
+  await done; await expect(grid.getByRole('link', { name: /匿名原卷 35.*完整/ })).toHaveCount(0);
+  await page.unrouteAll({ behavior: 'wait' }); let failOnce = true;
+  await page.route('**/api/library/practice/reviews/calendar?**', async route => { if (failOnce) { failOnce = false; await route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ data: null, error: { message: '合成原卷日历暂不可读', code: 'fixture_calendar_unavailable' } }) }); } else await route.continue(); });
+  await controls.getByRole('button', { name: '刷新原卷安排' }).click(); await expect(controls.getByRole('alert')).toContainText('合成原卷日历暂不可读'); await expect(grid.getByRole('link')).toHaveCount(0);
+  await controls.getByRole('button', { name: '刷新原卷安排' }).click(); await expect(grid.getByRole('link', { name: /匿名原卷 35.*部分/ })).toBeVisible(); await expect(controls.getByRole('alert')).toHaveCount(0);
+});
+
+
+async function reviewVerificationFixture(f: Awaited<ReturnType<typeof fixture>>) {
+  const atoms = await f.call('/diagnostics/curriculum?subject=math&grade=3&term=upper'), atom = atoms.find((value: any) => /加法|加减|合并/.test(value.name) && value.status === 'published'); expect(atom).toBeTruthy();
+  const staged = await f.call('/measurement-content/candidates', { paperId: f.papers.complete, positions: [1] }, administrator);
+  let candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(staged.items[0].id), undefined, administrator);
+  const command = () => ({ expectedVersion: candidate.version, requestKey: randomUUID(), reason: '合成恢复文件和原请求核对' });
+  const draft = { subject: 'math', grade: 3, stem: '合成独立核对：3个球和2个球合起来一共多少个？', answer: 5, analysis: '把两部分3和2合并得到5。', blocks: [],
+    answerSchema: { mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} },
+    mapping: { primaryAtomId: atom.id, prerequisiteAtomIds: [], secondaryAtomIds: [], dimension: 'procedure', family: 'qa:browser-review:' + f.papers.complete, probeRole: 'anchor', expectedSeconds: 40, difficulty: 1, observationCode: 'part_whole_mismatch', observedSteps: ['确认两组数量并合并得到总量'], rationale: '只依据合成原题的合并数量过程，不猜测反思', familyRationale: '受控数量合并任务，仅用于恢复流程核对' },
+    license: { licenseClass: 'A_INTERNAL', evidence: '独立构造的合成原卷与题干' }, scoringCases: [{ response: 5, expectedScore: 1, rationale: '将两组数量合并' }, { response: 1, expectedScore: 0, rationale: '误把合并当成求差' }] };
+  candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/draft', { ...command(), draft }, administrator);
+  for (const gate of ['source', 'content', 'media', 'scoring', 'mapping']) candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/reviews', { ...command(), gate, decision: 'approved' }, administrator);
+  await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/publish', command(), administrator);
+  const child = (await f.call('/students', { nickname: '合成原预览恢复孩子', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile.id;
+  await f.call('/students/' + child + '/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '合成已确认范围', learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 }, f.actor.token, 200, 'PUT');
+  const { row, itemId } = await plannedPaperReview(f, f.papers.complete, '2026-11-09', child);
+  return { atom, child, row, itemId, saved: { format: 'paper-review-verification-v1', ownerId: f.actor.user.id, sessionId: row.id, itemId, body: { studentId: child, atomId: atom.id, requestKey: randomUUID() } } };
+}
+
+test('paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview', async ({ page }) => {
+  const f = await fixture(page, 37), data = await reviewVerificationFixture(f);
+  await page.goto('/library/practice/review?session=' + data.row.id + '&item=' + data.itemId); const next = page.getByRole('region', { name: '原题再练与独立新题' });
+  await expect(next).toContainText('此知识点在已确认的已学范围内。');
+  await page.evaluate(() => { const original = File.prototype.text; File.prototype.text = async function () { const result = await original.call(this); if (this.name === 'delayed-preview.json') await new Promise<void>(resolve => { (window as unknown as { releasePaperFile: () => void }).releasePaperFile = resolve; }); return result; }; });
+  await next.getByText('从原新题预览保护文件恢复', { exact: true }).click(); await next.getByLabel('选择新题预览保护文件').setInputFiles({ name: 'delayed-preview.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data.saved)) });
+  await expect.poll(() => page.evaluate(() => typeof (window as unknown as { releasePaperFile?: unknown }).releasePaperFile)).toBe('function');
+  await next.getByLabel('我已核对这位孩子的当前年级、教材和已学范围').check(); await next.getByRole('button', { name: '预览独立新题蓝图', exact: true }).click();
+  await expect(next.getByRole('link', { name: '打开原蓝图，确认后开始 ↗' })).toBeVisible();
+  await page.evaluate(() => (window as unknown as { releasePaperFile: () => void }).releasePaperFile());
+  await expect(next.getByRole('status')).toContainText('文件读取期间当前操作已变化');
+  await expect(next.getByRole('region', { name: '独立新题原预览恢复' })).toHaveCount(0);
+  expect(await f.call('/library/practice/sessions/' + data.row.id + '/items/' + data.itemId + '/verification-requests/' + data.saved.body.requestKey)).toBeNull();
+  const options = await f.call('/library/practice/sessions/' + data.row.id + '/items/' + data.itemId + '/next-options'); expect(options.activities.filter((activity: any) => activity.kind === 'verification_preview')).toHaveLength(1);
+});
+
+test('paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery', async ({ page }) => {
+  const f = await fixture(page, 38), data = await reviewVerificationFixture(f); let posts = 0;
+  await page.addInitScript(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) { if (key.startsWith('study.paper-review.verification:')) throw new DOMException('Synthetic denied preview storage', 'QuotaExceededError'); return original.call(this, key, value); }; });
+  await page.goto('/library/practice/review?session=' + data.row.id + '&item=' + data.itemId); const next = page.getByRole('region', { name: '原题再练与独立新题' });
+  page.on('request', request => { if (request.method() === 'POST' && request.url().endsWith('/verification-preview')) posts++; });
+  await expect(next).toContainText('此知识点在已确认的已学范围内。'); await next.getByLabel('我已核对这位孩子的当前年级、教材和已学范围').check(); await next.getByRole('button', { name: '预览独立新题蓝图', exact: true }).click();
+  const recovery = next.getByRole('region', { name: '独立新题原预览恢复' }); await expect(recovery.getByRole('button', { name: '核对或重试原新题预览' })).toBeDisabled(); expect(posts).toBe(0);
+  const waiting = page.waitForEvent('download'); await recovery.getByRole('button', { name: '下载原预览保护文件' }).click(); const download = await waiting, saved = JSON.parse(readFileSync((await download.path())!, 'utf8'));
+  expect(saved).toMatchObject({ format: data.saved.format, ownerId: f.actor.user.id, sessionId: data.row.id, itemId: data.itemId });
+  page.once('dialog', dialog => dialog.accept()); await page.reload(); await next.getByText('从原新题预览保护文件恢复', { exact: true }).click();
+  await next.getByLabel('选择新题预览保护文件').setInputFiles({ name: 'other-owner.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ ...saved, ownerId: 'another-owner' })) });
+  await expect(next.getByRole('alert')).toContainText('不属于当前账号'); expect(posts).toBe(0);
+  await next.getByLabel('选择新题预览保护文件').setInputFiles({ name: 'original-preview.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(saved)) });
+  await expect(recovery).toBeVisible(); await recovery.getByLabel('我已另外保留完整预览文件').check(); await recovery.getByRole('button', { name: '核对或重试原新题预览' }).click();
+  await expect(next.getByRole('link', { name: '打开原蓝图，确认后开始 ↗' })).toBeVisible(); expect(posts).toBe(1);
+  const original = await f.call('/library/practice/sessions/' + data.row.id + '/items/' + data.itemId + '/verification-requests/' + saved.body.requestKey); expect(original.paperReviewOrigin).toMatchObject({ sessionId: data.row.id, itemId: data.itemId });
+});
+
+
+test('paper review: actual large history is refused before truncation and the complete earlier history remains downloadable', async ({ page }) => {
+  test.setTimeout(90000); const f = await fixture(page, 39); let row = await f.begin(); const itemId = row.items[0].id;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'answered', text: '容量拒绝也必须保留的原始回答。' })).session;
+  let rejected: { status: number; error: { message: string } } | null = null, previous: any;
+  for (let index = 0; index < 80; index++) {
+    const values = { tags: ['完整历史'], favorite: false, archived: false, errorSteps: '', reflection: String(index) + '独立反思记录'.repeat(1999), plannedDate: '2026-11-09' };
+    previous = await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId);
+    const response = await fetch(api + '/library/practice/sessions/' + row.id + '/commands', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + f.actor.token }, body: JSON.stringify({ expectedVersion: row.version, requestKey: randomUUID(), kind: 'organize', itemId, values }) }), body = await response.json();
+    if (response.status !== 201) { rejected = { status: response.status, error: body.error }; break; } row = body.data.session;
+  }
+  expect(rejected).toMatchObject({ status: 400, error: { message: expect.stringContaining('2MiB') } }); expect(previous.organization.history.length).toBeGreaterThan(20);
+  expect(await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId)).toEqual(previous); expect((await f.call('/library/practice/sessions/' + row.id)).version).toBe(row.version);
+  await page.goto('/library/practice/review?session=' + row.id + '&item=' + itemId); const editor = page.getByRole('region', { name: '原卷复习与反思' });
+  await expect(editor.getByLabel('我的反思')).toHaveValue(previous.organization.reflection); await editor.getByText('完整整理历史 · ' + previous.organization.history.length + ' 次', { exact: true }).click();
+  const waiting = page.waitForEvent('download'); await editor.getByRole('button', { name: '下载完整整理历史', exact: true }).click(); const download = await waiting;
+  const saved = JSON.parse(readFileSync((await download.path())!, 'utf8')); expect(saved.organization).toEqual(previous.organization); expect(saved.itemId).toBe(itemId);
+  expect((await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId)).firstAnswer.text).toBe('容量拒绝也必须保留的原始回答。');
 });

@@ -5,13 +5,14 @@ import { apiRequest } from '../../lib/api';
 import { StudyPlanner } from './study-planner';
 import { CalendarBoard } from './calendar-board';
 import { WorkspaceDialog } from './workspace-dialog';
+import type { SessionUser } from '../../lib/session-user';
 
-type Props = { studentId: string; subject: StudioSubject; value: StudioIntegrationOverview;
+type Props = { user: SessionUser; studentId: string; subject: StudioSubject; value: StudioIntegrationOverview;
   plans: StudioStudyPlan[]; atoms: Array<Pick<KnowledgeAtom, 'id' | 'name' | 'objective'>>;
   canManage: boolean; openPlanner?: number; onChanged: () => Promise<void>; onError: (message: string) => void;
   onOpenWhiteboard: (whiteboard: StudioWhiteboard) => void };
 
-export function IntegrationCalendar({ studentId, subject, value, plans, atoms, canManage, openPlanner = 0, onChanged, onError, onOpenWhiteboard }: Props) {
+export function IntegrationCalendar({ user, studentId, subject, value, plans, atoms, canManage, openPlanner = 0, onChanged, onError, onOpenWhiteboard }: Props) {
   const [management, setManagement] = React.useState(false);
   const [adding, setAdding] = React.useState(false);
   const [planning, setPlanning] = React.useState(false);
@@ -66,9 +67,9 @@ export function IntegrationCalendar({ studentId, subject, value, plans, atoms, c
     setTimeout(() => URL.revokeObjectURL(url), 5000);
   }); }
   return <section className="sa-calendar-view ws-calendar-view">
-    {!studentId ? <div className="ws-empty"><h2>先选择学习档案</h2><p>创建或选择档案后，就可以安排任务、完成任务和保存日历。</p><a href="/parent/dashboard">打开学习档案 →</a></div> : <CalendarBoard events={value.events} plans={plans} canManage={canManage}
+    {!studentId && <div className="ws-calendar-adult"><p>这里显示本人的原卷复习；课程计划需要先选择学习档案。</p><a href="/parent/dashboard">打开学习档案 →</a></div>}<CalendarBoard user={user} studentId={studentId} events={value.events} plans={plans} canManage={canManage && Boolean(studentId)}
       onNew={day=>openForm('plan',day)} onSources={()=>openForm('sync')} onPlanner={()=>setManagement(!management)} onExport={()=>void exportCalendar()}
-      onChanged={onChanged} onError={onError}/>}
+      onChanged={onChanged} onError={onError}/>
     <details className="ws-calendar-management" open={management} onToggle={event=>setManagement(event.currentTarget.open)}><summary>学习计划与同步来源</summary>
     <StudyPlanner studentId={studentId} subject={subject} plans={plans} atoms={atoms} canCreate={canManage&&Boolean(studentId)}
       openRequest={openPlanner} onChanged={onChanged} onError={onError} onOpenWhiteboard={onOpenWhiteboard}/>

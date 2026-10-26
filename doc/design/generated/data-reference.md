@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`d1dd3bd39b42342e89a5d228499a1b9e1a8be081`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -250,26 +250,27 @@
 - `DiagnosticVerificationBlueprint`：[packages/contracts/src/diagnostics.ts:112](../../../packages/contracts/src/diagnostics.ts#L112)；字段：`familyIdentityVersion?`、`hypothesisId`、`title`、`cause`、`ruleVersion`、`sourceRuleVersion`、`basisFingerprint`、`supportCondition`、`counterCondition`、`undecidedCondition`、`fullyCovered`、`groups`。
 - `DiagnosticVerificationResult`：[packages/contracts/src/diagnostics.ts:119](../../../packages/contracts/src/diagnostics.ts#L119)；字段：`familyIdentityVersion?`、`distinctFamilyRequirementsMet?`、`blueprint`、`independentObservationsComplete`、`groups`、`notice`。
 - `AssessmentBlueprint`：[packages/contracts/src/diagnostics.ts:127](../../../packages/contracts/src/diagnostics.ts#L127)；字段：`familyIdentityVersion?`、`version`、`title`、`intent`、`focus`、`itemLimit`、`minutesLimit`、`expectedSeconds`、`groupSize`、`stopReason`、`stopRule`、`targetAtomIds`、`prerequisiteAtomIds`、`groups`、`dimensions`、`warnings`、`verification?`、`routing?`。
-- `DiagnosticBlueprintReservation`：[packages/contracts/src/diagnostics.ts:139](../../../packages/contracts/src/diagnostics.ts#L139)；字段：`id`、`studentId`、`actorId`、`command`、`seed`、`fingerprint`、`createdAt`、`expiresAt`、`sessionId`、`requestHash`、`blueprint`、`scopeSnapshot`、`coverage`、`atomNames`、`itemCount`。
-- `DiagnosticBlueprintView`：[packages/contracts/src/diagnostics.ts:145](../../../packages/contracts/src/diagnostics.ts#L145)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticSession`：[packages/contracts/src/diagnostics.ts:149](../../../packages/contracts/src/diagnostics.ts#L149)；字段：`id`、`studentId`、`subject`、`intent`、`status`、`scopeSnapshot`、`blueprint?`、`revision?`、`endedAt?`、`stateHistory?`、`atomSnapshots?`、`componentAtomSnapshots?`、`itemIds`、`itemSnapshots`、`questionSnapshots`、`coverage`、`selectionReasons`、`seed`、`algorithmVersion`、`startedAt`、`completedAt`、`hypothesisId`、`reviewTaskId`、`exposedQuestionIds?`、`planId?`、`planRevision?`、`routing?`。
-- `DiagnosticRoutingDecision`：[packages/contracts/src/diagnostics.ts:169](../../../packages/contracts/src/diagnostics.ts#L169)；字段：`sequence`、`itemId`、`focusAtomId`、`rule`、`reason`、`at`、`basis`。
-- `DiagnosticRouting`：[packages/contracts/src/diagnostics.ts:175](../../../packages/contracts/src/diagnostics.ts#L175)；字段：`version`、`initialItemIds`、`currentItemId`、`decisions`。
-- `DiagnosticResponseInput`：[packages/contracts/src/diagnostics.ts:185](../../../packages/contracts/src/diagnostics.ts#L185)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticResponse`：[packages/contracts/src/diagnostics.ts:186](../../../packages/contracts/src/diagnostics.ts#L186)；字段：`id`、`sessionId`、`studentId`、`itemId`、`questionId`、`atomId`、`family`、`dimension`、`questionVersion`、`mappingVersion`、`answer`、`score`、`correct`、`status`、`disposition`、`elapsedMs`、`hintLevel`、`observationCode`、`gradingReason`、`retentionDelayDays`、`submittedAt`、`gradingVersion`、`requestKey`、`requestHash?`、`priorExposure?`、`atomVersion?`、`atomDefinitionFingerprint?`、`scoreDetails?`。
-- `ResponseScoreDetail`：[packages/contracts/src/diagnostics.ts:200](../../../packages/contracts/src/diagnostics.ts#L200)；字段：`key`、`label`、`score`、`origin`、`observation?`。
-- `DiagnosticObservation`：[packages/contracts/src/diagnostics.ts:201](../../../packages/contracts/src/diagnostics.ts#L201)；字段：`responseId`、`atomId`、`kind`、`description`、`details`。
-- `ComponentObservation`：[packages/contracts/src/diagnostics.ts:204](../../../packages/contracts/src/diagnostics.ts#L204)；字段：`responseId`、`bindingId`、`sourceAtomId`、`atomId`、`atomName`、`state`、`description`、`nextAction`、`scoreDetails`、`upstreamDetails`、`independentEstimateContribution`、`ruleVersion`、`targetDefinitionFingerprint`。
-- `ScoringRevision`：[packages/contracts/src/diagnostics.ts:211](../../../packages/contracts/src/diagnostics.ts#L211)；字段：`id`、`responseId`、`score`、`reason`、`reviewerId`、`createdAt`、`version`、`requestKey?`、`requestHash?`、`ratings?`、`rubricSnapshot?`。
-- `MasteryEstimate`：[packages/contracts/src/diagnostics.ts:219](../../../packages/contracts/src/diagnostics.ts#L219)；字段：`familyIdentityVersion?`、`atomId`、`atomName`、`grade`、`mastery`、`lower`、`upper`、`status`、`rawCorrect`、`scoredCount`、`effectiveSamples`、`independentFamilies`、`dimensions`、`independentRate`、`transferVerified`、`retentionVerified`、`evidenceIds`、`lastMeasuredAt`、`algorithmVersion`。
-- `DiagnosticHypothesis`：[packages/contracts/src/diagnostics.ts:229](../../../packages/contracts/src/diagnostics.ts#L229)；字段：`familyIdentityVersion?`、`id`、`studentId`、`subject`、`atomId`、`cause`、`status`、`title`、`observation`、`explanation`、`alternatives`、`supportingEvidenceIds`、`counterEvidenceIds`、`probeAtomIds`、`reportedEvidenceIds?`、`verification?`、`nextAction`、`confidence`、`ruleVersion`、`updatedAt`、`history`、`atomDefinitionFingerprint?`。
-- `LearningSourceCitation`：[packages/contracts/src/diagnostics.ts:244](../../../packages/contracts/src/diagnostics.ts#L244)；字段：`id`、`kind`、`bookId`、`bookVersion`、`title`、`edition`、`chapterName`、`lessonId`、`lessonName`、`mappingId`、`mappingVersion`、`pageStart`、`pageEnd`、`locatorStatus`、`sourceAvailability`、`note`。
-- `GuidanceAction`：[packages/contracts/src/diagnostics.ts:263](../../../packages/contracts/src/diagnostics.ts#L263)；字段：`id`、`atomId`、`hypothesisId`、`evidenceIds`、`title`、`activity`、`minutes`、`successCriterion`、`resourceQuestionIds`、`retestAt`、`teachingSnapshot?`、`sourceCitations?`。
-- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:270](../../../packages/contracts/src/diagnostics.ts#L270)；字段：`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`aiAdoption?`、`retrospectiveReview?`。
-- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:279](../../../packages/contracts/src/diagnostics.ts#L279)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:286](../../../packages/contracts/src/diagnostics.ts#L286)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
-- `ReviewTask`：[packages/contracts/src/diagnostics.ts:291](../../../packages/contracts/src/diagnostics.ts#L291)；字段：`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
-- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:299](../../../packages/contracts/src/diagnostics.ts#L299)；字段：`familyIdentityVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
+- `PaperReviewAssessmentOrigin`：[packages/contracts/src/diagnostics.ts:139](../../../packages/contracts/src/diagnostics.ts#L139)；字段：`sessionId`、`itemId`、`atomId`、`createdAt`。
+- `DiagnosticBlueprintReservation`：[packages/contracts/src/diagnostics.ts:140](../../../packages/contracts/src/diagnostics.ts#L140)；字段：`id`、`studentId`、`actorId`、`command`、`seed`、`fingerprint`、`createdAt`、`expiresAt`、`sessionId`、`requestHash`、`blueprint`、`scopeSnapshot`、`coverage`、`atomNames`、`itemCount`、`paperReviewOrigin?`。
+- `DiagnosticBlueprintView`：[packages/contracts/src/diagnostics.ts:147](../../../packages/contracts/src/diagnostics.ts#L147)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticSession`：[packages/contracts/src/diagnostics.ts:152](../../../packages/contracts/src/diagnostics.ts#L152)；字段：`id`、`studentId`、`subject`、`intent`、`status`、`scopeSnapshot`、`blueprint?`、`revision?`、`endedAt?`、`stateHistory?`、`atomSnapshots?`、`componentAtomSnapshots?`、`itemIds`、`itemSnapshots`、`questionSnapshots`、`coverage`、`selectionReasons`、`seed`、`algorithmVersion`、`startedAt`、`completedAt`、`hypothesisId`、`reviewTaskId`、`exposedQuestionIds?`、`paperReviewOrigin?`、`planId?`、`planRevision?`、`routing?`。
+- `DiagnosticRoutingDecision`：[packages/contracts/src/diagnostics.ts:173](../../../packages/contracts/src/diagnostics.ts#L173)；字段：`sequence`、`itemId`、`focusAtomId`、`rule`、`reason`、`at`、`basis`。
+- `DiagnosticRouting`：[packages/contracts/src/diagnostics.ts:179](../../../packages/contracts/src/diagnostics.ts#L179)；字段：`version`、`initialItemIds`、`currentItemId`、`decisions`。
+- `DiagnosticResponseInput`：[packages/contracts/src/diagnostics.ts:189](../../../packages/contracts/src/diagnostics.ts#L189)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticResponse`：[packages/contracts/src/diagnostics.ts:190](../../../packages/contracts/src/diagnostics.ts#L190)；字段：`id`、`sessionId`、`studentId`、`itemId`、`questionId`、`atomId`、`family`、`dimension`、`questionVersion`、`mappingVersion`、`answer`、`score`、`correct`、`status`、`disposition`、`elapsedMs`、`hintLevel`、`observationCode`、`gradingReason`、`retentionDelayDays`、`submittedAt`、`gradingVersion`、`requestKey`、`requestHash?`、`priorExposure?`、`atomVersion?`、`atomDefinitionFingerprint?`、`scoreDetails?`。
+- `ResponseScoreDetail`：[packages/contracts/src/diagnostics.ts:204](../../../packages/contracts/src/diagnostics.ts#L204)；字段：`key`、`label`、`score`、`origin`、`observation?`。
+- `DiagnosticObservation`：[packages/contracts/src/diagnostics.ts:205](../../../packages/contracts/src/diagnostics.ts#L205)；字段：`responseId`、`atomId`、`kind`、`description`、`details`。
+- `ComponentObservation`：[packages/contracts/src/diagnostics.ts:208](../../../packages/contracts/src/diagnostics.ts#L208)；字段：`responseId`、`bindingId`、`sourceAtomId`、`atomId`、`atomName`、`state`、`description`、`nextAction`、`scoreDetails`、`upstreamDetails`、`independentEstimateContribution`、`ruleVersion`、`targetDefinitionFingerprint`。
+- `ScoringRevision`：[packages/contracts/src/diagnostics.ts:215](../../../packages/contracts/src/diagnostics.ts#L215)；字段：`id`、`responseId`、`score`、`reason`、`reviewerId`、`createdAt`、`version`、`requestKey?`、`requestHash?`、`ratings?`、`rubricSnapshot?`。
+- `MasteryEstimate`：[packages/contracts/src/diagnostics.ts:223](../../../packages/contracts/src/diagnostics.ts#L223)；字段：`familyIdentityVersion?`、`atomId`、`atomName`、`grade`、`mastery`、`lower`、`upper`、`status`、`rawCorrect`、`scoredCount`、`effectiveSamples`、`independentFamilies`、`dimensions`、`independentRate`、`transferVerified`、`retentionVerified`、`evidenceIds`、`lastMeasuredAt`、`algorithmVersion`。
+- `DiagnosticHypothesis`：[packages/contracts/src/diagnostics.ts:233](../../../packages/contracts/src/diagnostics.ts#L233)；字段：`familyIdentityVersion?`、`id`、`studentId`、`subject`、`atomId`、`cause`、`status`、`title`、`observation`、`explanation`、`alternatives`、`supportingEvidenceIds`、`counterEvidenceIds`、`probeAtomIds`、`reportedEvidenceIds?`、`verification?`、`nextAction`、`confidence`、`ruleVersion`、`updatedAt`、`history`、`atomDefinitionFingerprint?`。
+- `LearningSourceCitation`：[packages/contracts/src/diagnostics.ts:248](../../../packages/contracts/src/diagnostics.ts#L248)；字段：`id`、`kind`、`bookId`、`bookVersion`、`title`、`edition`、`chapterName`、`lessonId`、`lessonName`、`mappingId`、`mappingVersion`、`pageStart`、`pageEnd`、`locatorStatus`、`sourceAvailability`、`note`。
+- `GuidanceAction`：[packages/contracts/src/diagnostics.ts:267](../../../packages/contracts/src/diagnostics.ts#L267)；字段：`id`、`atomId`、`hypothesisId`、`evidenceIds`、`title`、`activity`、`minutes`、`successCriterion`、`resourceQuestionIds`、`retestAt`、`teachingSnapshot?`、`sourceCitations?`。
+- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:274](../../../packages/contracts/src/diagnostics.ts#L274)；字段：`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`aiAdoption?`、`retrospectiveReview?`。
+- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:283](../../../packages/contracts/src/diagnostics.ts#L283)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:290](../../../packages/contracts/src/diagnostics.ts#L290)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
+- `ReviewTask`：[packages/contracts/src/diagnostics.ts:295](../../../packages/contracts/src/diagnostics.ts#L295)；字段：`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
+- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:303](../../../packages/contracts/src/diagnostics.ts#L303)；字段：`familyIdentityVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
 
 ### packages/contracts/src/gesp.ts
 
@@ -391,16 +392,29 @@
 
 ### packages/contracts/src/paper-practice.ts
 
-- `PaperPracticeDisposition`：[packages/contracts/src/paper-practice.ts:1](../../../packages/contracts/src/paper-practice.ts#L1)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `PaperPracticeSelfReview`：[packages/contracts/src/paper-practice.ts:2](../../../packages/contracts/src/paper-practice.ts#L2)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `PaperPracticeSelection`：[packages/contracts/src/paper-practice.ts:3](../../../packages/contracts/src/paper-practice.ts#L3)；字段：`paperId`、`positions?`。
-- `PaperPracticeAvailability`：[packages/contracts/src/paper-practice.ts:4](../../../packages/contracts/src/paper-practice.ts#L4)；字段：`available`、`reason`。
-- `PaperPracticeItemSummary`：[packages/contracts/src/paper-practice.ts:5](../../../packages/contracts/src/paper-practice.ts#L5)；字段：`id`、`paperId`、`paperTitle`、`position`、`kind`、`availability`、`disposition`、`revealed`、`selfReview`、`correctionCount`。
-- `PaperPracticeItemView`：[packages/contracts/src/paper-practice.ts:10](../../../packages/contracts/src/paper-practice.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `PaperPracticeSessionView`：[packages/contracts/src/paper-practice.ts:16](../../../packages/contracts/src/paper-practice.ts#L16)；字段：`id`、`ownerUserId`、`studentId`、`status`、`version`、`currentItemId`、`createdAt`、`updatedAt`、`completedAt`、`permissions`、`independentMeasurement`、`items`、`counts`。
-- `PaperPracticePreview`：[packages/contracts/src/paper-practice.ts:23](../../../packages/contracts/src/paper-practice.ts#L23)；字段：`sourceHash`、`studentId`、`paperCount`、`total`、`answerable`、`missing`、`documents`、`unavailable`、`withoutReference`、`papers`。
-- `PaperPracticeCommandResult`：[packages/contracts/src/paper-practice.ts:28](../../../packages/contracts/src/paper-practice.ts#L28)；字段：`requestKey`、`inputHash`、`appliedVersion`、`session`。
-- `PaperPracticeCreationResult`：[packages/contracts/src/paper-practice.ts:29](../../../packages/contracts/src/paper-practice.ts#L29)；字段：`requestKey`、`inputHash`、`session`。
+- `PaperPracticeDisposition`：[packages/contracts/src/paper-practice.ts:2](../../../packages/contracts/src/paper-practice.ts#L2)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSelfReview`：[packages/contracts/src/paper-practice.ts:3](../../../packages/contracts/src/paper-practice.ts#L3)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSelection`：[packages/contracts/src/paper-practice.ts:4](../../../packages/contracts/src/paper-practice.ts#L4)；字段：`paperId`、`positions?`。
+- `PaperPracticeOrigin`：[packages/contracts/src/paper-practice.ts:5](../../../packages/contracts/src/paper-practice.ts#L5)；字段：`sessionId`、`itemId`。
+- `PaperPracticeAvailability`：[packages/contracts/src/paper-practice.ts:6](../../../packages/contracts/src/paper-practice.ts#L6)；字段：`available`、`reason`。
+- `PaperPracticeItemSummary`：[packages/contracts/src/paper-practice.ts:7](../../../packages/contracts/src/paper-practice.ts#L7)；字段：`id`、`paperId`、`paperTitle`、`position`、`kind`、`availability`、`disposition`、`revealed`、`selfReview`、`correctionCount`。
+- `PaperPracticeItemView`：[packages/contracts/src/paper-practice.ts:12](../../../packages/contracts/src/paper-practice.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperPracticeSessionView`：[packages/contracts/src/paper-practice.ts:19](../../../packages/contracts/src/paper-practice.ts#L19)；字段：`id`、`ownerUserId`、`studentId`、`status`、`version`、`currentItemId`、`createdAt`、`updatedAt`、`completedAt`、`permissions`、`independentMeasurement`、`origin?`、`items`、`counts`。
+- `PaperPracticePreview`：[packages/contracts/src/paper-practice.ts:27](../../../packages/contracts/src/paper-practice.ts#L27)；字段：`sourceHash`、`studentId`、`paperCount`、`total`、`answerable`、`missing`、`documents`、`unavailable`、`withoutReference`、`papers`、`origin?`。
+- `PaperPracticeCommandResult`：[packages/contracts/src/paper-practice.ts:33](../../../packages/contracts/src/paper-practice.ts#L33)；字段：`requestKey`、`inputHash`、`appliedVersion`、`session`。
+- `PaperPracticeCreationResult`：[packages/contracts/src/paper-practice.ts:34](../../../packages/contracts/src/paper-practice.ts#L34)；字段：`requestKey`、`inputHash`、`session`。
+
+### packages/contracts/src/paper-review.ts
+
+- `PaperReviewOrganizationInput`：[packages/contracts/src/paper-review.ts:17](../../../packages/contracts/src/paper-review.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewOrganizationValues`：[packages/contracts/src/paper-review.ts:18](../../../packages/contracts/src/paper-review.ts#L18)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewOrganization`：[packages/contracts/src/paper-review.ts:19](../../../packages/contracts/src/paper-review.ts#L19)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewFilter`：[packages/contracts/src/paper-review.ts:23](../../../packages/contracts/src/paper-review.ts#L23)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewScope`：[packages/contracts/src/paper-review.ts:24](../../../packages/contracts/src/paper-review.ts#L24)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewEntry`：[packages/contracts/src/paper-review.ts:25](../../../packages/contracts/src/paper-review.ts#L25)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperReviewList`：[packages/contracts/src/paper-review.ts:29](../../../packages/contracts/src/paper-review.ts#L29)；字段：`total`、`page`、`pageSize`、`items`。
+- `PaperReviewCalendarEvent`：[packages/contracts/src/paper-review.ts:30](../../../packages/contracts/src/paper-review.ts#L30)；字段：`id`、`sessionId`、`itemId`、`title`、`date`、`href`、`status`、`ownerUserId`、`studentId`、`editable`。
+- `PaperReviewNextOptions`：[packages/contracts/src/paper-review.ts:34](../../../packages/contracts/src/paper-review.ts#L34)；字段：`redo`、`knowledge`、`activities`。
 
 ### packages/contracts/src/privacy.ts
 

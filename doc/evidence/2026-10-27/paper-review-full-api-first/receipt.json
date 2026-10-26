@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-26T18:19:59.898Z",
+  "status": "full-suite-first-run-preserved",
+  "counts": {
+    "passed": 1352,
+    "failed": 2,
+    "environmentSkipped": 54
+  },
+  "environment": {
+    "NODE_ENV": "test",
+    "STUDY_WORKER_ENABLED": false,
+    "STUDY_SEED_FOUNDATION": false
+  },
+  "cause": "The private original-paper QA configuration disabled foundation seeding. Two existing native durability journeys require authored foundation content and do not override that flag; one found no measurement item and one could not select the authored media target. Re-run with explicit foundation seeding, preserving tests and application code.",
+  "files": [
+    {
+      "source": "data/qa/paper-review-full-api.json",
+      "file": "data__qa__paper-review-full-api.json.gz",
+      "originalSha256": "5ad30e078c7c6210955ed80b7eeace87bfcd87467224e88cb604b13b99fae1c7",
+      "sha256": "96a9a020b8876667a106b5dc7589d0b7652e12e2fe6532cb6a72be3409131d2e"
+    },
+    {
+      "source": "data/qa/paper-review-full-api.log",
+      "file": "data__qa__paper-review-full-api.log.gz",
+      "originalSha256": "bcdddfae75398fea110166f3824d4c6e6015655fb9a716b12c0dcdbbee3f5254",
+      "sha256": "a9445f15cf40cb624cc6d0c5a9942ef9b23b165386063d8bdfa089e7d6842067"
+    },
+    {
+      "source": "apps/api/src/durability.integration.test.ts",
+      "file": "apps__api__src__durability.integration.test.ts.gz",
+      "originalSha256": "d778ad524292ed2c998f2b1da5b7668c0bd32cad4385e7385476b052b62bd020",
+      "sha256": "53c587d7b49fcb4c5534a040dd79ee541ba106ba03ea667d00f9abdb42e24e54"
+    },
+    {
+      "source": "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+      "file": "apps__api__src__modules__student-media__student-media.durability.integration.test.ts.gz",
+      "originalSha256": "9ffbff8e034fa33542f7c6ed719aa6966723d39992b57fd9286adde286c4bc73",
+      "sha256": "ead55ee8b872a0b6db2f6fb691c6afc536e9a310e98469009c6441d0400eb977"
+    }
+  ]
+}

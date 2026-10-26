@@ -1,0 +1,281 @@
+{
+  "at": "2026-10-26T18:11:46.429Z",
+  "status": "unified-calendar-first-browser-pass",
+  "deployed": false,
+  "overallProductComplete": false,
+  "designRevision": "d1dd3bd",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T18:08:41.407Z",
+      "duration": 120203.99799999999,
+      "expected": 35,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 35,
+    "retries": 0
+  },
+  "qaWebBuildId": "-qcnP6nDTaSxFiz1XFHvi",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "data__qa__paper-practice-browser.json.gz",
+      "originalSha256": "4fb0b7803613ab431ca77e8cb2a8de2999a1b305eb84aebd7a6281789eb0e430",
+      "sha256": "c6749fd928567d4f0cb64f9b5f22f19f7b65d51ba7460f63267ccaae447819d4"
+    },
+    {
+      "source": "data/qa/paper-review-calendar-first-browser.log",
+      "file": "data__qa__paper-review-calendar-first-browser.log.gz",
+      "originalSha256": "650559d4758711cd753005de43fa41c666af89b411fbc28c30831a4363ee284f",
+      "sha256": "c7a8e58e2edbc2ad0457ee034444c986c6deae577ebcd691a1f7919063cb6413"
+    },
+    {
+      "source": "data/qa/paper-review-calendar-web-build.log",
+      "file": "data__qa__paper-review-calendar-web-build.log.gz",
+      "originalSha256": "a2d5c9519008f4b5446f265556b3d6fc36a4953bf9130a20a36e5f2445b7c76a",
+      "sha256": "80197a22ba4e0eb5ec02af63fb4ec06529fde553b5200eedd2bf603d6de237ff"
+    },
+    {
+      "source": "data/qa/paper-review-calendar-web-types.log",
+      "file": "data__qa__paper-review-calendar-web-types.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "file": "doc__design__generated__design-validation.json.gz",
+      "originalSha256": "6ca01a678058ada9c4f9e9b97654c6db6117a8ec6001a9ea92a3edd94eac0eaa",
+      "sha256": "7461c319c99372b1dcd8aa184d73aab26ab445c193a56089f9c147612cd8f423"
+    },
+    {
+      "source": "apps/api/src/common/auth.guard.ts",
+      "file": "apps__api__src__common__auth.guard.ts.gz",
+      "originalSha256": "de4c76f97ec4e6bfdf451d7b44f19b3156f49c3a517d3614355ddb0329c9bc7e",
+      "sha256": "1c86ee10f98f25d4338188dc030878b30de3c1b8e102a7bfe8056139a6a412e7"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
+      "file": "apps__api__src__modules__diagnostics__assessment-blueprint.ts.gz",
+      "originalSha256": "d72cd8485c9696e617fcf680ef7972a3c3a05f4eacbc6301d9edfd2bba5a46b1",
+      "sha256": "9e83285b9db89e654ecb68410b43e2958d9c7c08af7861355e5da43e2d50ebe0"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "file": "apps__api__src__modules__diagnostics__diagnostics.service.ts.gz",
+      "originalSha256": "bb79fef030070457b65c39a10bdffc9a2de991c51301140256b39bb78b87e8e8",
+      "sha256": "91e7a73a100af70ac86534b0e0517ef18c67aed6a49e0473e9e8803da819fd04"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
+      "file": "apps__api__src__modules__diagnostics__paper-exposure.integration.test.ts.gz",
+      "originalSha256": "f42fafcc006b50b47d6fae9713985d78da9607fa01a1ac448553412611d7c6a6",
+      "sha256": "67ad30cc4afbfc3c19d1dea92ca22db0c554b5103b8f74f07da980f94633ac8b"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/paper-exposure.ts",
+      "file": "apps__api__src__modules__diagnostics__paper-exposure.ts.gz",
+      "originalSha256": "d47fc1389a1834274ddc6080d5e99724cbc000c2dd3dd365c53e8a43a855ced2",
+      "sha256": "f0ec1138c8872288c34c72f6302a751cc6c0a3f53dbb00b158369e43c85a6e2a"
+    },
+    {
+      "source": "apps/api/src/modules/library/measurement-content.integration.test.ts",
+      "file": "apps__api__src__modules__library__measurement-content.integration.test.ts.gz",
+      "originalSha256": "b00c09737ed641a3f2f3b496c93ee86d51063165c0667d8158c82e61e2b90612",
+      "sha256": "1e086fce90bca74174e5c94a3757bd291233d73cb2f6a6aaba77d222c63bacbe"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-record.ts",
+      "file": "apps__api__src__modules__library__paper-practice-record.ts.gz",
+      "originalSha256": "e8455b97a53b69519fe073167174a204f24d14ff4dfa32dc6096ad789d5c5fc1",
+      "sha256": "93146c849be45e0eef70e3b4eb8f1a08ef5a5f6da7df7047d52cbea5815f001f"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "c3bc0bb3386cfd585b4f3d4aad8b633879c24b4d2c133bb2ae39f0394c0c11cf",
+      "sha256": "f949af1aaa15940a150abf686ce09122cc1b60b63e47965ef803fae8a1e6a45c"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.controller.ts",
+      "file": "apps__api__src__modules__library__paper-practice.controller.ts.gz",
+      "originalSha256": "c3a41123a9a22ada7dc5b1f088aff8dca79b342ded0f4784ba01aa8f4cf893ff",
+      "sha256": "59047ad34bde7f449d9c501c9bba126e96bb80184a754e1a52f871db3cc38ad4"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice.integration.test.ts.gz",
+      "originalSha256": "1562ff803b5abf9a26874d150043c5cdacaeff580aeebaae54e93218f601a5c5",
+      "sha256": "ec42cda0b7a2b790b4aea248e004c9d42aa333cf2db88eb4b8a8553161de6d31"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.service.ts",
+      "file": "apps__api__src__modules__library__paper-practice.service.ts.gz",
+      "originalSha256": "f98447911ddcb950fce4a30f5cd0bf0fba563d06c7721587a81526338680f851",
+      "sha256": "bed014f8d7c7a10d0216817763b540caaf9f9f2fd57c7f49e6be288296d52119"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-review-eligibility.ts",
+      "file": "apps__api__src__modules__library__paper-review-eligibility.ts.gz",
+      "originalSha256": "6af7e9c3375ae298a4eb7ec0748847bcdb7d536abbe3b186e2fdd9ed055d5f09",
+      "sha256": "5cf2c306116af894da2c0817176d8494797d27b0dad38fabc338606851820e5a"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-review-organization.ts",
+      "file": "apps__api__src__modules__library__paper-review-organization.ts.gz",
+      "originalSha256": "f62411d091cde2787d4015d5134729221ef3103e7888b25e09e18d087215b12d",
+      "sha256": "c5e0763b45cf8d773910c6e3a35b540ee02ac94a8d00784881b07efb2e01d50f"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-review-query.ts",
+      "file": "apps__api__src__modules__library__paper-review-query.ts.gz",
+      "originalSha256": "29918933fb66b1a8eee2cf85122d7233d85714b46083f1bea75b5deab63259a1",
+      "sha256": "12be1713264a3d073c5aedab1acd61fc8745852dbc66cc8de70664a036fbfd47"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "apps__api__src__modules__privacy__privacy-records.ts.gz",
+      "originalSha256": "aa8d3f0da13fb0385b6345f5fe7a2776cd6ae6eb17ec8ddf42e427d19277799b",
+      "sha256": "5281a6994260e7170c5dd0d4c119e22f84b5990f03dd488066e62274adc695c6"
+    },
+    {
+      "source": "apps/web/app/library/practice/review.css",
+      "file": "apps__web__app__library__practice__review.css.gz",
+      "originalSha256": "87176bd432b2a26665d718d280f3fa40bb93d5a165affa4360ae59a16ec81ee5",
+      "sha256": "b288584370c037226de71194d521fbca092d0d2d4a72a219db234b639429d3f4"
+    },
+    {
+      "source": "apps/web/app/library/practice/review/page.tsx",
+      "file": "apps__web__app__library__practice__review__page.tsx.gz",
+      "originalSha256": "10709c6711eed66fd36e2dab95291a1911ce62be552e0f59d0ee4bd9321b6883",
+      "sha256": "29ddb5adea0072fdc4287c739fcb037b719369705aec0079015d26ec4ec05236"
+    },
+    {
+      "source": "apps/web/app/library/practice/review/studio.tsx",
+      "file": "apps__web__app__library__practice__review__studio.tsx.gz",
+      "originalSha256": "c7d15f8a331012da41498204e97c91318d2a7570584c42b3a9591db76cb83e46",
+      "sha256": "d160ee5cb95290ee4464a9a520751e79c93c7257906862f685d482ccfc2872cf"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "apps__web__app__library__practice__session.tsx.gz",
+      "originalSha256": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+      "sha256": "83c486c778525926b898f78eebbdc8b55c359365f8787b00324dfa22ad9002c7"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "apps__web__app__library__practice__studio.tsx.gz",
+      "originalSha256": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+      "sha256": "8331062664387e1e78bdd9484b44ac3288df1fc6c0416b6ead1beb582690416e"
+    },
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "file": "apps__web__app__student__assessment__studio.tsx.gz",
+      "originalSha256": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+      "sha256": "5359ed521f97c8aef895d4881f0f9e172ecc51aa5ca049742b3fd277f7fbfc24"
+    },
+    {
+      "source": "apps/web/app/studio/calendar-board.tsx",
+      "file": "apps__web__app__studio__calendar-board.tsx.gz",
+      "originalSha256": "e9ba40238c7970690e06b08cd7069995ec7359bfbdcfcd2d2ee1b55b050046f4",
+      "sha256": "4bf4e2660c078696df1a56bace1c215629eed80d211622f4bebdabf0f657edd1"
+    },
+    {
+      "source": "apps/web/app/studio/integration-calendar.tsx",
+      "file": "apps__web__app__studio__integration-calendar.tsx.gz",
+      "originalSha256": "49a1e6126166abe22e7bfa071c3d3d17f6c706a6d7705976704a0808c2a79e3e",
+      "sha256": "a93af863ef7b9df9b14740ec37fdea6d4760e824b194eb7bd42b18beccbe0795"
+    },
+    {
+      "source": "apps/web/app/studio/studio.tsx",
+      "file": "apps__web__app__studio__studio.tsx.gz",
+      "originalSha256": "2402453fa1449d3bd733c0069fc13382a6bf714ce214f3eb8f7f92963d6aa225",
+      "sha256": "88a2097c7bf94a33f332115d0bbfbe5fe92e62d609e3b660802041d5850856a4"
+    },
+    {
+      "source": "apps/web/app/studio/workspace.css",
+      "file": "apps__web__app__studio__workspace.css.gz",
+      "originalSha256": "6ba2f44096e225a3fe071cf29d05a9f4a78a60ce1c3ba167f2a93d69051dec3a",
+      "sha256": "e0490869b75be60806039477ff6f658fed9de28635e76846f2e105a9397899de"
+    },
+    {
+      "source": "apps/web/components/paper-practice-launcher.tsx",
+      "file": "apps__web__components__paper-practice-launcher.tsx.gz",
+      "originalSha256": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d",
+      "sha256": "6e024d65bacac1de5f6dd434e494c7ebc5d0d000fdfa5209c3692d377a3192f6"
+    },
+    {
+      "source": "apps/web/components/paper-review-editor.tsx",
+      "file": "apps__web__components__paper-review-editor.tsx.gz",
+      "originalSha256": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
+      "sha256": "3e0891bbe69f21cab2826fa77c9a2287d72cc11908f523eee557005f803f934c"
+    },
+    {
+      "source": "apps/web/components/paper-review-next-steps.tsx",
+      "file": "apps__web__components__paper-review-next-steps.tsx.gz",
+      "originalSha256": "5565c5aa3b2d6d78ad642bb929eacc7fc8da37bd629a73b9e3d1af88f187aea3",
+      "sha256": "60c6a95d2a533529fbac94463001c6a4b95a19f99afbf93a3c893b69c1e25c1d"
+    },
+    {
+      "source": "packages/contracts/src/diagnostics.ts",
+      "file": "packages__contracts__src__diagnostics.ts.gz",
+      "originalSha256": "aae59dc8df7a3927ca3eeb1172c44ee133daad16ac328475fd3455efdfb03e75",
+      "sha256": "142022a2711303c374477f55e96d511103213338cb88fcefc67e12cd692c5949"
+    },
+    {
+      "source": "packages/contracts/src/index.ts",
+      "file": "packages__contracts__src__index.ts.gz",
+      "originalSha256": "99bf020698e781cbe8b31f97eb6f25534bf3798031edc0adfd98dd83428a6ff6",
+      "sha256": "27ef119a25f4de05e455ee72a3dc3552b4124cd1bc7bb807459558c2172c7f6a"
+    },
+    {
+      "source": "packages/contracts/src/paper-practice.ts",
+      "file": "packages__contracts__src__paper-practice.ts.gz",
+      "originalSha256": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792",
+      "sha256": "b876b6e06397b7adcd743b82b945668103fd23dc981f98fde3a89529c7ef20a8"
+    },
+    {
+      "source": "packages/contracts/src/paper-review.ts",
+      "file": "packages__contracts__src__paper-review.ts.gz",
+      "originalSha256": "4c47fd5747211fb03bc44ba922a739cec3d0ab7dc4c3020dc5a8fa95a3d35a73",
+      "sha256": "62cc1651c0190b9d61a910a1971f28bf353f6b3d57383f18671fa26e82a82124"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "tests__e2e__paper-practice.spec.ts.gz",
+      "originalSha256": "0bc2f70c3e025f8c623e779ce6ab8113fd265ea47ed5c566ae35074788f9ecec",
+      "sha256": "1a323c490b4a75230146b39d0dcd77bda7c9ad3ae87744e428deddbf519ab734"
+    },
+    {
+      "source": "apps/web/app/studio/paper-review-calendar.tsx",
+      "file": "apps__web__app__studio__paper-review-calendar.tsx.gz",
+      "originalSha256": "3a8a4b2f5c1a62993eaef56269ac2153d6cd24779f796fb38b22964771763ca3",
+      "sha256": "85e7325854cad229a304639c47fe06a3cceb9b3a0a951c6dc76858081c1762ce"
+    },
+    {
+      "source": "apps/web/lib/paper-review-navigation.ts",
+      "file": "apps__web__lib__paper-review-navigation.ts.gz",
+      "originalSha256": "f0d4ad82930a81a9e32285cf23da1d6e6ee578ddf9b920b7b50b356461beab28",
+      "sha256": "610a9592a85f1d997f9125afcd78a901ee4aa6b6c98a1be6e4dbd0a0005ea04f"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/unified-calendar-1440.png",
+      "file": "data__qa__browser-evidence__paper-practice__unified-calendar-1440.png",
+      "originalSha256": "076ceea1e7e229c295a57cdbf5bd26eff5dd70c896175e7d38b304437ee8b6ca",
+      "sha256": "076ceea1e7e229c295a57cdbf5bd26eff5dd70c896175e7d38b304437ee8b6ca"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/unified-calendar-390.png",
+      "file": "data__qa__browser-evidence__paper-practice__unified-calendar-390.png",
+      "originalSha256": "02841e71ccd587f7d57520f93c13bc91886bf1db6895222ff9d238ecbdacea81",
+      "sha256": "02841e71ccd587f7d57520f93c13bc91886bf1db6895222ff9d238ecbdacea81"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/unified-calendar-768.png",
+      "file": "data__qa__browser-evidence__paper-practice__unified-calendar-768.png",
+      "originalSha256": "bee8ddf856b5c3db311650edb7bbf88bdc5ea23c5c2a6bb1f491f6502c04a527",
+      "sha256": "bee8ddf856b5c3db311650edb7bbf88bdc5ea23c5c2a6bb1f491f6502c04a527"
+    }
+  ],
+  "visualFinding": "At390 the full original-paper name wraps too far inside narrow monthly cells. This first screenshot is preserved before a compact cell summary refinement. Full titles remain available in the actual-day list and original item."
+}

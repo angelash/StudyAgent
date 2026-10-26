@@ -12,7 +12,8 @@ export function PaperReviewNextSteps({ user, row, item, ready }: { user: Session
   const [atomId, setAtomId] = React.useState(''), [scope, setScope] = React.useState<LearningScope | null>(null), [scopeReady, setScopeReady] = React.useState(false), [confirmed, setConfirmed] = React.useState(false);
   const [pending, setPending] = React.useState<Pending | null>(null), [preview, setPreview] = React.useState<DiagnosticBlueprintView | null>(null);
   const [protectedLocally, setProtectedLocally] = React.useState(false), [manual, setManual] = React.useState(false), [busy, setBusy] = React.useState(false), [reload, setReload] = React.useState(0);
-  const generation = React.useRef(0), busyRef = React.useRef(false);
+  const generation = React.useRef(0), busyRef = React.useRef(false), pendingRef = React.useRef(pending);
+  pendingRef.current = pending;
   const storage = paperStorage('study.paper-review.verification:' + user.id + ':' + row.id + ':' + item.id);
   const base = '/library/practice/sessions/' + encodeURIComponent(row.id) + '/items/' + encodeURIComponent(item.id);
   const atom = options?.knowledge.atoms.find(atom => atom.id === atomId);
@@ -71,18 +72,23 @@ export function PaperReviewNextSteps({ user, row, item, ready }: { user: Session
   }
   function create() {
     if (!ready || !confirmed || !scope || !atom || !scope.learnedAtomIds.includes(atom.id) || scope.grade < atom.grade || pending || busyRef.current) return;
+    generation.current++;
     const saved: Pending = { format: 'paper-review-verification-v1', ownerId: user.id, sessionId: row.id, itemId: item.id, body: paperReviewVerificationSchema.parse({ studentId, atomId: atom.id, requestKey: crypto.randomUUID() }) };
     setPending(saved); setPreview(null);
     try { storePaperRecovery(storage.key, saved); setProtectedLocally(true); void send(saved); }
     catch { setManual(true); setProtectedLocally(false); setNotice('本机未能保存原预览请求，请先下载保护文件，再用原范围继续。'); }
   }
   async function restore(file: File) {
+    if (busyRef.current || pendingRef.current) return;
+    const observed = ++generation.current;
     try {
       if (file.size > 256 * 1024) throw new Error('文件超过256KiB，请选择原新题预览保护文件。'); const saved = decode(JSON.parse(await file.text()));
-      if (!alive.current) return; generation.current++; setPending(saved); setStudentId(saved.body.studentId); setPreview(null);
+      if (!alive.current) return;
+      if (observed !== generation.current || busyRef.current || pendingRef.current) { setNotice('文件读取期间当前操作已变化，原结果保持；请核对后重新选择保护文件。'); return; }
+      generation.current++; setPending(saved); setStudentId(saved.body.studentId); setPreview(null); setError('');
       try { storePaperRecovery(storage.key, saved); setProtectedLocally(true); setManual(false); } catch { setProtectedLocally(false); setManual(true); }
       setNotice('原预览已读回，请明确核对原结果；不会自动开始评测。');
-    } catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); }
+    } catch (caught) { if (alive.current && observed === generation.current) setError(paperPracticeFailure(caught)); }
   }
   const blueprintHref = preview ? '/student/assessment?' + new URLSearchParams({ studentId: preview.studentId, subject: preview.scopeSnapshot.subject, blueprint: preview.id }) : '';
   // Confirmed reservations remain server-owned after the pending command is cleared.

@@ -4,13 +4,13 @@
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
 
-127原卷练习候选已纳入CONTENT-12：整卷/选题/跨卷、不可覆盖首答、显式参考、自评/订正及复盘，来源与个人记录分别受当前权限保护。API核心66bc548完整1339通过/54环境跳过，前端eb15902补连续刷新/已确认旧命令的本机恢复；完整298浏览器已原次零重试通过，精确CI与schema18实际交付待终态。设计为14领域/123功能/372正常接口/100集合/344共享类型，实际生产仍126，详见[127](../product/127-paper-practice-and-original-answer-review.md)及[总计划](../product/105-development-plan-status-and-next-milestones.md)。
+127原卷练习已以精确CI头5468948/40368316059完成三组验证和主目录schema18守护交付，298浏览器原始单次零重试通过，见[127验收](../evidence/2026-10-27/paper-practice-acceptance.json)。128在隔离开发中补充CONTENT-13/14：本人反思/完整整理历史、来源绑定再练、当前审核知识点下的独立新题与原预览恢复、原卷复习和课程日历同屏；已获得专项和双库阶段证据，完整回归、精确CI与实际交付仍待。当前设计14领域/125功能/378正常接口/100集合/355共享类型、29个Web页，详见[128具体设计](../product/128-paper-review-workspace-and-next-practice.md)及[总计划](../product/105-development-plan-status-and-next-milestones.md)。
 
 普通助教已支持持久任务、明确取消、完整原问题恢复、分页检索和原题定位，详见[具体规格](../product/113-durable-assistant-conversations-and-history.md)及[验收收据](../evidence/2026-10-25/assistant-turn-acceptance.json)。源码、精确CI与实际守护运行版本分别记录，当前运行及候选状态见本页末尾，不以设计生成代替发布。
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、123项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、125项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
 - [数据与状态设计](04-data-and-state-design.md)：实体关系、100个领域集合、SQL结构、版本与状态机。
@@ -39,9 +39,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：393个源码路由声明中，当前正常接入372个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
-- [页面职责](generated/page-reference.md)：28个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与344个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [全部接口](generated/api-reference.md)：399个源码路由声明中，当前正常接入378个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [页面职责](generated/page-reference.md)：29个页面和1个课堂runner处理器；部分页面是兼容重定向。
+- [领域集合与355个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构

@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`eb15902c48ed5ff415f38e1ad274dbe60e344157`。共 393 个 HTTP 路由声明，当前 AppModule 可达 372 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`d1dd3bd39b42342e89a5d228499a1b9e1a8be081`。共 399 个 HTTP 路由声明，当前 AppModule 可达 378 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -2822,9 +2822,36 @@
 
 ## PaperPracticeController — 当前接入
 
+### GET /api/library/practice/reviews
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:9](../../../apps/api/src/modules/library/paper-practice.controller.ts#L9)，方法 `reviews`。
+
+- 签名：`reviews(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.reviews`
+
+### GET /api/library/practice/reviews/calendar
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:10](../../../apps/api/src/modules/library/paper-practice.controller.ts#L10)，方法 `calendar`。
+
+- 签名：`calendar(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.reviewCalendar`
+
+### GET /api/library/practice/reviews/calendar/export
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:11](../../../apps/api/src/modules/library/paper-practice.controller.ts#L11)，方法 `exportCalendar`。
+
+- 签名：`exportCalendar(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.exportReviewCalendar`
+
 ### POST /api/library/practice/preview
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:9](../../../apps/api/src/modules/library/paper-practice.controller.ts#L9)，方法 `preview`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:12](../../../apps/api/src/modules/library/paper-practice.controller.ts#L12)，方法 `preview`。
 
 - 签名：`preview(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2833,7 +2860,7 @@
 
 ### POST /api/library/practice/sessions
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:10](../../../apps/api/src/modules/library/paper-practice.controller.ts#L10)，方法 `create`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:13](../../../apps/api/src/modules/library/paper-practice.controller.ts#L13)，方法 `create`。
 
 - 签名：`create(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2842,7 +2869,7 @@
 
 ### GET /api/library/practice/requests/:requestKey
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:11](../../../apps/api/src/modules/library/paper-practice.controller.ts#L11)，方法 `creationResult`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:14](../../../apps/api/src/modules/library/paper-practice.controller.ts#L14)，方法 `creationResult`。
 
 - 签名：`creationResult(@Req() req: AuthenticatedRequest, @Param('requestKey') key: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2851,7 +2878,7 @@
 
 ### GET /api/library/practice/sessions
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:12](../../../apps/api/src/modules/library/paper-practice.controller.ts#L12)，方法 `list`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:15](../../../apps/api/src/modules/library/paper-practice.controller.ts#L15)，方法 `list`。
 
 - 签名：`list(@Req() req: AuthenticatedRequest, @Query() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2860,7 +2887,7 @@
 
 ### GET /api/library/practice/sessions/:sessionId
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:13](../../../apps/api/src/modules/library/paper-practice.controller.ts#L13)，方法 `get`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:16](../../../apps/api/src/modules/library/paper-practice.controller.ts#L16)，方法 `get`。
 
 - 签名：`get(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2869,16 +2896,43 @@
 
 ### GET /api/library/practice/sessions/:sessionId/items/:itemId
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:14](../../../apps/api/src/modules/library/paper-practice.controller.ts#L14)，方法 `item`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:17](../../../apps/api/src/modules/library/paper-practice.controller.ts#L17)，方法 `item`。
 
 - 签名：`item(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.practice.item`
 
+### GET /api/library/practice/sessions/:sessionId/items/:itemId/next-options
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:18](../../../apps/api/src/modules/library/paper-practice.controller.ts#L18)，方法 `nextOptions`。
+
+- 签名：`nextOptions(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.nextOptions`
+
+### POST /api/library/practice/sessions/:sessionId/items/:itemId/verification-preview
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:19](../../../apps/api/src/modules/library/paper-practice.controller.ts#L19)，方法 `verificationPreview`。
+
+- 签名：`verificationPreview(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.verificationPreview`
+
+### GET /api/library/practice/sessions/:sessionId/items/:itemId/verification-requests/:requestKey
+
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:20](../../../apps/api/src/modules/library/paper-practice.controller.ts#L20)，方法 `verificationRequest`。
+
+- 签名：`verificationRequest(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('itemId') item: string, @Param('requestKey') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.verificationRequest`
+
 ### GET /api/library/practice/sessions/:sessionId/commands/:requestKey
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:15](../../../apps/api/src/modules/library/paper-practice.controller.ts#L15)，方法 `commandResult`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:21](../../../apps/api/src/modules/library/paper-practice.controller.ts#L21)，方法 `commandResult`。
 
 - 签名：`commandResult(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('requestKey') key: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2887,7 +2941,7 @@
 
 ### POST /api/library/practice/sessions/:sessionId/commands
 
-实现：[apps/api/src/modules/library/paper-practice.controller.ts:16](../../../apps/api/src/modules/library/paper-practice.controller.ts#L16)，方法 `command`。
+实现：[apps/api/src/modules/library/paper-practice.controller.ts:22](../../../apps/api/src/modules/library/paper-practice.controller.ts#L22)，方法 `command`。
 
 - 签名：`command(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
