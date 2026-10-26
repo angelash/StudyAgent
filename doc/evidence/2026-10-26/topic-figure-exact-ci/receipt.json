@@ -1,0 +1,67 @@
+{
+  "status": "exact-candidate-ci-success",
+  "deployed": false,
+  "run": 40279485485,
+  "head": "09bdeee81fc3f4c06c6784d1386cf902b9d009f1",
+  "applicationRevision": "0d4e73880472f454c709590d542aad548658d76f",
+  "conclusion": "success",
+  "jobs": {
+    "application": "success",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "passed": 253,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "originalAttempts": 253,
+    "retriedAttempts": 0
+  },
+  "linuxApi": {
+    "passed": 1311,
+    "failed": 0,
+    "environmentSkipped": 61
+  },
+  "nativeChecks": {
+    "sourceCheck": 26,
+    "topicWhiteboardPassed": 14,
+    "topicWhiteboardSqliteSkipped": 2,
+    "topicFigure": 17
+  },
+  "files": [
+    {
+      "name": "browser-original.json.gz",
+      "bytes": 21801,
+      "sha256": "c79b7b89c3369b2e5d46d0bdfeb7b29a3969bad36f8b9bf865876912c41238e0",
+      "originalBytes": 286056,
+      "originalSha256": "e0e8671b40d9ce5090b2ae0479dc667e08a3568df671edcca7b24810433d8832"
+    },
+    {
+      "name": "application-original.log.gz",
+      "bytes": 46832,
+      "sha256": "f66cc43e3bd285b3d1dbfa449a9a3e003c8b429d8b05a970ec9f1b7a6e0279ad",
+      "originalBytes": 219691,
+      "originalSha256": "329a96283fff66b6c2f0dc35c5e159d1abf7f8d16c60136a6164689944063ca7"
+    },
+    {
+      "name": "postgres-original.log.gz",
+      "bytes": 42502,
+      "sha256": "4ec7b6028c63495b84119f939d1ece8f506b5d7df09b221bbc0e7a8160ed5c07",
+      "originalBytes": 237571,
+      "originalSha256": "94fd78c61fa61d64356c06baa461506a4796554e55e69ed14de541e99e84cec8"
+    },
+    {
+      "name": "browser-original.log.gz",
+      "bytes": 34651,
+      "sha256": "08076bdde0671f6a3a73f9acd5c723dcfefc6c833224aaa0c401488ef7ce3bd2",
+      "originalBytes": 158333,
+      "originalSha256": "8086c9153312632291f5e9a5d14ef872887695f87df8df3043d1b8380d9730d8"
+    }
+  ],
+  "limits": [
+    "Production schema17 build and stable guardians still required",
+    "Counts overlap and are not product-completion percentages",
+    "No teacher, real-device, complete curriculum, original CSS/fonts/DPR/audio or long-term learning acceptance"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "status": "local-full-browser-success-after-ended-fix",
+  "deployed": false,
+  "applicationRevision": "0d4e73880472f454c709590d542aad548658d76f",
+  "at": "2026-10-26T06:47:10.876Z",
+  "passed": 253,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "originalAttempts": 253,
+  "retriedAttempts": 0,
+  "durationMs": 1242616.978,
+  "files": [
+    {
+      "name": "browser-original.json.gz",
+      "bytes": 21520,
+      "sha256": "f82080d8539aea33148bf1f2a5f933ea2afe38cea575ff74364e2f6f71c2e4f0",
+      "originalBytes": 283152,
+      "originalSha256": "a8ece525d1576625a2a859653db00f15b884f119dac6d01743fb1ef4ec890c13"
+    },
+    {
+      "name": "browser-original.log.gz",
+      "bytes": 9862,
+      "sha256": "2fa1ffc1482f040294cf77143d8d513009874893f7122827bc33f2658cff9702",
+      "originalBytes": 40077,
+      "originalSha256": "9c9b6db300209c750d08ace5e69d9cdb76057e17b0bceee14354b47c8fc2db82"
+    }
+  ],
+  "limits": [
+    "Exact remote09bdeee CI and real production upgrade remain separate gates",
+    "Synthetic accounts and controlled browser media",
+    "No teacher, real device, full curriculum, original fonts/CSS/DPR/audio or long-term learning proof"
+  ]
+}

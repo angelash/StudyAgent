@@ -209,3 +209,5 @@ SQLite/PG完整备份认识新记录及真实图片原件/展示图/私有提示
 已通过受控真实WAV边界稳定复现：下一音轨playing时currentTime实际为2秒，总时长也是2秒；修复前11通过/1失败，原报告/日志/测试源/截图/trace见[红色回归](../evidence/2026-10-26/whiteboard-ended-boundary-before/receipt.json)。应用0d4e738同步撤销旧回调后，35项组合/35次原始尝试全部通过，无失败/跳过/重试，下一实际WAV起点小于0.15秒、第二句保留且旧ended无效，见[修复后收据](../evidence/2026-10-26/whiteboard-ended-boundary-after/receipt.json)。类型和独立生产构建通过；原1319/53完整API对应服务器和公式源码未改，本修复只改播放器及真实浏览器回归，后续新CI仍会跑完整门禁。
 
 前一精确CI ca46963/40275791053虽三组success、远端252浏览器252次原始尝试零失败/跳过/重试、Linux API1311/61环境跳过、PG原主题14/2与配图17通过，但已被本地失败要求的修复替代，不用它批准升级。完整三组原日志及原始浏览器报告压缩字节/SHA见[被替代CI](../evidence/2026-10-26/topic-figure-formula-prior-ci/receipt.json)。当前重新执行253整站及新精确CI，运行仍123/schema16。
+
+修复0d4e738后，完整本地253条/253次原始尝试均通过，零失败/跳过/重试，耗时20.7分钟；[原始整站收据](../evidence/2026-10-26/topic-figure-final-full-browser/receipt.json)保留压缩前后字节和SHA。新精确CI 09bdeee/40279485485三组全部completed/success，下载的253条浏览器同样零重试；Linux完整API1311/61环境跳过、原生资料核查26、主题14/2 SQLite专属跳过、配图17分别通过。完整原日志及浏览器JSON逐SHA保留于[新精确CI](../evidence/2026-10-26/topic-figure-exact-ci/receipt.json)，不将不同范围相加。开始主目录停服一致备份和schema17实际守护升级；运行收据仍待，不能把精确CI成功直接当作已升级。
