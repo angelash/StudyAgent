@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-26T19:34:41.136Z",
+  "status": "original-fonts-local-validated",
+  "deployed": false,
+  "overallProductComplete": false,
+  "originalFontFaces": 815,
+  "families": 32,
+  "capturedSourceStyles": 8,
+  "fontOnlyBytes": 617064,
+  "browser": [
+    {
+      "startTime": "2026-10-26T19:28:30.828Z",
+      "duration": 15969.587,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "startTime": "2026-10-26T19:29:18.732Z",
+      "duration": 280393.605,
+      "expected": 45,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  ],
+  "typescript": "passed",
+  "fontBundleIndependentVerify": "passed",
+  "failedBefore": "doc/evidence/2026-10-27/original-fonts-retry-before/receipt.json",
+  "limitations": [
+    "Original CSS shell and cumulative frame not yet connected in this validation.",
+    "No original DPR, voice, full reference-state or human acceptance."
+  ],
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "48ab3eda0d729b221aad6a6d060ceb4c06bbef4974848a8e38d5619b39672973",
+      "sha256": "17b512b2ce1fc21bde402864282d4f8438f3bafeeaa97870c2fa78ec0ba6a139"
+    },
+    {
+      "source": "data/qa/topic-whiteboard-browser.json",
+      "file": "data__qa__topic-whiteboard-browser.json.gz",
+      "originalSha256": "16979c0f27cd671ef58d77b4a0351ae2f35f27479956e8ae6d3f3ca1c454822b",
+      "sha256": "1c7048df77ef4e916d6dcbe4952d2ff6edaf47e16b25738490431fe082ecb6fa"
+    },
+    {
+      "source": "data/qa-original-fonts-browser-recovery.log",
+      "file": "data__qa-original-fonts-browser-recovery.log.gz",
+      "originalSha256": "9c0852b645d7e91cad52b6386daca970b04cbecf3c764082481c4fb99e636e8d",
+      "sha256": "c547acaf78361954b2be136aa22e63d9648e3b45584124ff9809ab92d4dba4be"
+    },
+    {
+      "source": "data/qa-original-fonts-whiteboard-regression.log",
+      "file": "data__qa-original-fonts-whiteboard-regression.log.gz",
+      "originalSha256": "56492a19b060bf0ebbef2e1e80c2220448a6dea19c6e9d29e6725b621f165aed",
+      "sha256": "b1dab78eb068ee3d436dcf278d94c9259afa069719c44665df64ba7554833fdf"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-fonts.ts",
+      "file": "apps__web__lib__original-teaching-fonts.ts.gz",
+      "originalSha256": "964b4737887fa055e9b55125d9d8c0a1ead6cf9ea817d85ea3322459b8d1d10f",
+      "sha256": "cd96c51b8d76ad0974de12a64df581c6d6cefcea297f61b22a4266de78f0be4b"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-fonts.json",
+      "file": "apps__web__lib__original-teaching-fonts.json.gz",
+      "originalSha256": "cda550d10afdec46bdfe4bedec528a4b1cbfef1c59d05649b7521a575077078d",
+      "sha256": "035dd468f4914db6e61d87c1a9a9347735c04842ed89a7a11e01281cc021f1df"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-canvas.tsx",
+      "file": "apps__web__app__studio__whiteboard-canvas.tsx.gz",
+      "originalSha256": "7d93a4925b900e7071c533872f4a7a6d0b6e44e0f41dc56a406507a25d2d84be",
+      "sha256": "ca41f2b48f98f917ad26fbffa97d046b3c74a14ff7195a99ed596a42af8a624e"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "apps__web__app__studio__whiteboard-session.tsx.gz",
+      "originalSha256": "95f6786ef99547331f8c116b2b164282706cd10b11fee395e3d2021428729c96",
+      "sha256": "6b273b0234f67497b920d90c723064fa01e1fc039c5b7f8ef80d65d73a18b545"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-table.ts",
+      "file": "apps__web__app__studio__whiteboard-table.ts.gz",
+      "originalSha256": "5edec2372f871c82eaa7c5e60e505b8cfe17281f0765e9987d567f4c7fc5121a",
+      "sha256": "556f837c43be0b5a621bf3f26feb03a3ac2ab44f182e70cc39765954bc616ded"
+    },
+    {
+      "source": "scripts/reference/build-hyperknow-fonts.cjs",
+      "file": "scripts__reference__build-hyperknow-fonts.cjs.gz",
+      "originalSha256": "bf1328cbc687d34002d3669ddc6e2a8eae6d3cd0042aa0cdf4d16e9fb8980883",
+      "sha256": "1f274b257f15993ca8280205aba1a8f92a5729a8c8b95667f81ff4cb117836c2"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "originalSha256": "0611ed5b5a830ca84a02b7f5558855855dee735eaad0e154a862f6ca171a45a8",
+      "sha256": "81fd2334b2ad84e8cc51c76a9226a3fa2b86ae9d7d0178dd388950cca101dc82"
+    },
+    {
+      "source": "data/qa/browser-evidence/original-teaching-fonts/actual-loaded-fonts.json",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-loaded-fonts.json.gz",
+      "originalSha256": "ed050516f0b43647ed1e1b6450a31e48670354da1a622c259a3545e5d41a9018",
+      "sha256": "0ea1bcbf5747c14a1c4372a154669981049d3f00228dc5a9e35d598adf6345ae"
+    },
+    {
+      "source": "data/qa/browser-evidence/original-teaching-fonts/actual-board-fonts.png",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-board-fonts.png.gz",
+      "originalSha256": "c8b654efd1345a2b3163ca29349e3a0f8989a88893776d0ad00b51e57d18a0f4",
+      "sha256": "6340e12c549a570bde77bd1fa42f98216ee7d76b099b0ab23abb213f390ccaef"
+    }
+  ]
+}

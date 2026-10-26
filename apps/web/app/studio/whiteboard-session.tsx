@@ -11,6 +11,7 @@ import { decodeTopicFigure, TopicFigureImage } from './topic-figure-image';
 import { decodeWhiteboardFormula } from './whiteboard-formula-image';
 import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError } from './whiteboard-media';
 import { WhiteboardNarration, whiteboardAudioKey, type WhiteboardAudioResource } from './whiteboard-narration';
+import { originalUiFontFamily, useOriginalTeachingFonts } from '../../lib/original-teaching-fonts';
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
@@ -18,6 +19,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   WhiteboardPlayerProps & { ownerId: string; preview: boolean }) {
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
   const units = presentation.units;
+  const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes));
   const [unitIndex, setUnitIndex] = React.useState(0), [progress, setProgress] = React.useState(0), [playing, setPlaying] = React.useState(false);
   const [mode, setMode] = React.useState<'text' | 'cloud'>(!preview && narrationAvailable ? 'cloud' : 'text');
   const [voice, setVoice] = React.useState(speech?.defaultVoice ?? ''), [speed, setSpeed] = React.useState(1);
@@ -56,8 +58,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }, [board, releaseAudio]);
   const render = React.useCallback(() => {
     const context = canvas.current?.getContext('2d');
-    if (context && scene) drawWhiteboardScene(context, scene, progress, images, unit);
-  }, [scene, progress, images, unit]);
+    if (context && scene && fonts.ready) drawWhiteboardScene(context, scene, progress, images, unit);
+  }, [scene, progress, images, unit, fonts.ready]);
   React.useEffect(() => { if (exporting === null) render(); }, [render, exporting]);
   React.useEffect(() => { setPreparedTimeline(null); }, [mode, voice, speed]);
   React.useEffect(() => {
@@ -158,7 +160,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }, [releaseAudio]);
 
   React.useEffect(() => {
-    if (!unit || !restored || exporting !== null) return;
+    if (!unit || !restored || !fonts.ready || exporting !== null) return;
     const revision = ++generation.current, request = new AbortController(); let frame: number | null = null;
     const current = () => generation.current === revision && !request.signal.aborted;
     const advance = () => {
@@ -207,7 +209,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     });
     return () => { request.abort(); generation.current++; if (frame !== null) cancelAnimationFrame(frame);
       const audio = resource.current?.audio; if (audio) { audio.onended = null; audio.onerror = null; audio.pause(); if (audio.readyState < 1) releaseAudio(); } };
-  }, [playing, unit?.id, mode, voice, speed, restored, exporting, releaseAudio, speechQueue]);
+  }, [playing, unit?.id, mode, voice, speed, restored, exporting, releaseAudio, speechQueue, fonts.ready]);
 
   function go(index: number, fraction = 0) {
     generation.current++; setPlaying(false); releaseAudio(); resumeAudioTime.current = null;
@@ -232,6 +234,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }
   async function exportFile(video: boolean) {
     if (exportRequest.current || !unit) return;
+    if (video && !fonts.ready) { setNotice('板书字体尚未就绪，请重试后再导出视频。'); return; }
     if (video && !imagesReady) { setNotice('白板图片或公式尚未完整读取，请重新打开后再导出视频。'); return; }
     if (video && (typeof MediaRecorder === 'undefined' || !canvas.current?.captureStream)) { setNotice('当前浏览器不支持 WebM 录制，可导出 SRT 字幕。'); return; }
     pausePlayback(); narration.current?.clear();
@@ -271,12 +274,13 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }
   function cancelExport() { exportRequest.current?.abort(); exportRequest.current = null; setExporting(null); setNotice('已取消导出，没有下载半成品。'); render(); }
 
-  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player" role="dialog" aria-modal="true" aria-label="白板视频">
+  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily }} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
     <header><div><span>WHITEBOARD SESSION / {preview ? '预览' : '原白板'}</span><h2>{board.title}</h2>
       <p>{mode === 'cloud' ? '逐句云语音 · 实际音轨结束后继续' : '逐句文字阅读 · 使用估计阅读时长'} · 板书按完整要点呈现</p>
       {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}</div>
       <button aria-label="关闭白板" onClick={onClose}>×</button></header>
-    <div className="wb-reading-layout"><div><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={720} aria-label={scene?.title ?? '白板'} />
+    {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
+    <div className="wb-reading-layout"><div><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={720} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden' }} />
       {scene?.figure && <TopicFigureImage compact source={scene.figure} title={scene.title} onOpen={pauseForFigure}/>}</div>
       <p className="wb-current-sentence" aria-live="polite" aria-atomic="true" data-unit-id={unit?.id}>{unit?.text ?? '这份白板没有可用旁白，请阅读完整笔记。'}</p>
       <label className="sa-whiteboard-scrubber"><span className="sr-only">播放进度（{activeTimeline.kind === 'decoded-audio' ? '实际音轨' : '估计阅读'}）</span>
@@ -288,7 +292,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         }} /></label>
       <div className="sa-whiteboard-controls">
         <button disabled={exporting !== null || unitIndex <= 0} aria-label="上一句" onClick={() => go(unitIndex - 1)}>←</button>
-        <button className="sa-whiteboard-play" disabled={exporting !== null || !unit || !restored} aria-label={playing ? '暂停' : '播放'} onClick={() => {
+        <button className="sa-whiteboard-play" disabled={exporting !== null || !unit || !restored || !fonts.ready} aria-label={playing ? '暂停' : '播放'} onClick={() => {
           if (playing) { pausePlayback(); return; }
           if (!playing && progress >= 1) { if (unitIndex === units.length - 1) setUnitIndex(0); setProgress(0); releaseAudio(); resumeAudioTime.current = null; }
           setPlaying(true);
@@ -302,7 +306,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         }}>{speech?.voices.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select>}
         <select aria-label="播放速度" value={speed} disabled={exporting !== null} onChange={event => setSpeed(Number(event.target.value))}>
           <option value={.75}>0.75×</option><option value={1}>1×</option><option value={1.25}>1.25×</option></select>
-        <button disabled={exporting !== null || !unit || !imagesReady} onClick={() => void exportFile(true)}>导出视频</button>
+        <button disabled={exporting !== null || !unit || !imagesReady || !fonts.ready} onClick={() => void exportFile(true)}>导出视频</button>
         <button disabled={exporting !== null || !unit} onClick={() => {
           if (preparedTimeline) saveBlob(new Blob([whiteboardSrt(preparedTimeline)], { type: 'application/x-subrip;charset=utf-8' }), '.srt');
           else void exportFile(false);
