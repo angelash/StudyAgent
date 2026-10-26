@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "case": "GET /api/learning/studio/whiteboards/nonexistent",
+  "expected": 401,
+  "actual": 404,
+  "reason": "Checker assumed a legacy GET-by-id route. The existing player reads the authorized overview; that direct GET route does not exist. Corrected only the smoke expectation."
+}
