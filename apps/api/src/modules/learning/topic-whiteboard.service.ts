@@ -48,7 +48,7 @@ export class TopicWhiteboardService {
       review: row.modelReview ? { ...structuredClone(row.modelReview), current: row.modelReview.outputFingerprint === row.contentFingerprint } : null,
       whiteboardId: row.whiteboardId, teacherReviewStatus: 'pending', formalMeasurementEligible: false, createdAt: row.createdAt, updatedAt: row.updatedAt,
       ...(receipt ? { receipt: { key: receipt.key, kind: receipt.kind, effectiveRevision: receipt.effectiveRevision, generation: receipt.generation,
-        at: receipt.at, ...(receipt.contentFingerprint ? { contentFingerprint: receipt.contentFingerprint } : {}),
+        at: receipt.at, commandFingerprint: receipt.hash, ...(receipt.contentFingerprint ? { contentFingerprint: receipt.contentFingerprint } : {}),
         ...(receipt.whiteboardId ? { whiteboardId: receipt.whiteboardId } : {}) } } : {}) };
   }
   preflight(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession) {

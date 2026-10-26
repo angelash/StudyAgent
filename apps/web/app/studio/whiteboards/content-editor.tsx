@@ -5,6 +5,8 @@ import { ApiRequestError, apiRequest } from '../../../lib/api';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
 import { editableTopicContentSchema } from './content-draft';
 import { TopicManuscript } from './manuscript';
+import { topicCopies, topicStorage } from './local-copies';
+import { topicCommandMatches } from './command-digest';
 
 export function downloadTopicJson(value: unknown, filename: string) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' }));
@@ -12,6 +14,7 @@ export function downloadTopicJson(value: unknown, filename: string) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 type EditCommand = ReturnType<typeof topicWhiteboardEditSchema.parse>;
+type LocalEditCopy = { content: TopicWhiteboardContent; baseline: { fingerprint: string; revision: number; content: TopicWhiteboardContent }; pending: EditCommand | null };
 export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, onDirtyChange }: {
   row: TopicWhiteboardDraftView; ownerId: string; onSaved: (row: TopicWhiteboardDraftView) => void; onCanLeaveChange: (value: boolean) => void;
   onDirtyChange: (value: boolean) => void;
@@ -20,20 +23,29 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
   const [baseline, setBaseline] = React.useState({ fingerprint: row.contentFingerprint!, revision: row.revision, content: structuredClone(row.content!) });
   const [pending, setPending] = React.useState<EditCommand | null>(null), [ready, setReady] = React.useState(false), [busy, setBusy] = React.useState(false);
   const [notice, setNotice] = React.useState(''), [storageError, setStorageError] = React.useState(false);
+  const [downloadedRevision, setDownloadedRevision] = React.useState(-1);
   const latest = React.useRef(content), request = React.useRef<AbortController | null>(null), sequence = React.useRef(0);
   latest.current = content;
-  const key = 'studyagent.topic-whiteboard.editor.v1.' + ownerId + '.' + row.id;
-  const dirty = JSON.stringify(content) !== JSON.stringify(baseline.content), changedOnServer = row.contentFingerprint !== baseline.fingerprint;
+  const storage = React.useMemo(() => topicStorage('studyagent.topic-whiteboard.editor.v1.' + ownerId + '.' + row.id), [ownerId, row.id]), key = storage.key;
+  const [copies, setCopies] = React.useState<Array<{ key: string; at: number; value: LocalEditCopy }>>([]);
+  const dirty = JSON.stringify(content) !== JSON.stringify(baseline.content), changedOnServer = row.contentFingerprint !== baseline.fingerprint || row.status === 'ready' && row.revision !== baseline.revision;
+  function decode(raw: string): LocalEditCopy | null {
+    const saved = JSON.parse(raw), parsed = editableTopicContentSchema.safeParse(saved.content), base = topicWhiteboardContentSchema.safeParse(saved.baseline?.content);
+    if (saved.ownerId !== ownerId || saved.id !== row.id || !parsed.success || !base.success || !/^[a-f0-9]{64}$/.test(saved.baseline.fingerprint) || !Number.isSafeInteger(saved.baseline.revision) || saved.baseline.revision < 0) return null;
+    const original = saved.pending ? topicWhiteboardEditSchema.safeParse(saved.pending) : null;
+    return { content: parsed.data, baseline: { ...saved.baseline, content: base.data }, pending: original?.success ? original.data : null };
+  }
+  function restoreCopy(saved: LocalEditCopy) { sequence.current++; setContent(saved.content); latest.current = saved.content; setBaseline(saved.baseline); setPending(saved.pending); }
   React.useEffect(() => { onDirtyChange(!ready || dirty || changedOnServer || Boolean(pending)); }, [ready, dirty, changedOnServer, pending, onDirtyChange]);
   React.useEffect(() => {
     try {
-      const raw = localStorage.getItem(key);
-      if (raw && raw.length <= 256000) {
-        const saved = JSON.parse(raw), parsed = editableTopicContentSchema.safeParse(saved.content), base = topicWhiteboardContentSchema.safeParse(saved.baseline?.content);
-        if (saved.ownerId === ownerId && saved.id === row.id && parsed.success && base.success && /^[a-f0-9]{64}$/.test(saved.baseline.fingerprint) && Number.isSafeInteger(saved.baseline.revision)) {
-          setContent(parsed.data); latest.current = parsed.data; setBaseline({ ...saved.baseline, content: base.data });
-          if (saved.pending) { const original = topicWhiteboardEditSchema.safeParse(saved.pending); if (original.success) setPending(original.data); }
+      for (const candidate of storage.restoreKeys) {
+        const raw = localStorage.getItem(candidate); if (!raw || raw.length > 256000) continue;
+        const saved = decode(raw);
+        if (saved) {
+          restoreCopy(saved);
           setNotice('已恢复这份候选的完整本机改稿；请核对服务器版本后继续。');
+          break;
         }
       }
     } catch { setStorageError(true); setNotice('本机存储暂不可用，请下载完整改稿后再离开。'); }
@@ -41,8 +53,8 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
   }, [key]);
   React.useEffect(() => {
     if (!ready) return;
-    try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, content, baseline, pending })); setStorageError(false); onCanLeaveChange(true); }
-    catch { setStorageError(true); onCanLeaveChange(!dirty); }
+    try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, content, baseline, pending, at: Date.now() })); setStorageError(false); onCanLeaveChange(true); }
+    catch { setStorageError(true); onCanLeaveChange(!dirty && !pending); }
   }, [content, baseline, pending, ready, key, dirty, onCanLeaveChange]);
   React.useEffect(() => {
     const warn = (event: BeforeUnloadEvent) => { if (dirty || pending) { event.preventDefault(); event.returnValue = ''; } };
@@ -59,12 +71,17 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
     const validation = topicWhiteboardEditSchema.safeParse(command);
     if (!validation.success) { setNotice(validation.error.issues.map(issue => issue.message).join('；')); return; }
     setPending(command); setBusy(true); setNotice('');
-    try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, content, baseline, pending: command })); }
+    try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, content, baseline, pending: command, at: Date.now() })); }
     catch { setStorageError(true); }
     request.current?.abort(); const operation = new AbortController(); request.current = operation; const start = sequence.current;
     try {
-      const result = await apiRequest<TopicWhiteboardDraftView>('/learning/studio/topic-whiteboards/drafts/' + row.id + '/content',
-        { method: 'PATCH', body: JSON.stringify(command), signal: operation.signal });
+      const path = '/learning/studio/topic-whiteboards/drafts/' + row.id;
+      let result: TopicWhiteboardDraftView | null = null;
+      if (pending) try {
+        const original = await apiRequest<TopicWhiteboardDraftView>(path + '/requests/' + encodeURIComponent(command.requestKey), { signal: operation.signal });
+        if (await topicCommandMatches('edit', command, original.receipt?.commandFingerprint)) result = original;
+      } catch (error) { if (!(error instanceof ApiRequestError) || error.status !== 404) throw error; }
+      result ??= await apiRequest<TopicWhiteboardDraftView>(path + '/content', { method: 'PATCH', body: JSON.stringify(command), signal: operation.signal });
       if (operation.signal.aborted) return;
       if (result.receipt?.key !== command.requestKey || result.receipt.kind !== 'edit') throw Error('原修改回执尚未确认，请保留原命令后继续定位。');
       setPending(null); onSaved(result);
@@ -80,6 +97,10 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
       if (operation.signal.aborted) return;
       if (error instanceof ApiRequestError && [400, 409].includes(error.status)) setPending(null);
       setNotice((error as Error).message + ' 本机全文仍保留。');
+      if (error instanceof ApiRequestError && error.status === 409) try {
+        const current = await apiRequest<TopicWhiteboardDraftView>('/learning/studio/topic-whiteboards/drafts/' + row.id, { signal: operation.signal });
+        if (!operation.signal.aborted) onSaved(current);
+      } catch { if (!operation.signal.aborted) setNotice('本机全文仍保留。最新服务器稿暂未读到，请稍后重新读取当前候选再比较。'); }
     } finally { if (!operation.signal.aborted) setBusy(false); }
   }
   function adopt(keepLocal: boolean) {
@@ -90,8 +111,12 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
   }
   return <section className="tw-editor" aria-label="完整白板改稿">
     <header><div><h2>完整教学稿</h2><p>{dirty ? '有本机修改' : '与所用基线一致'} · {storageError ? '本机存储不可用' : '本机草稿已保留'}</p></div>
-      <button type="button" onClick={() => { downloadTopicJson({ content, baseline, pending }, 'whiteboard-edit.json'); onCanLeaveChange(true); }}>下载完整改稿</button></header>
+      <button type="button" onClick={() => { downloadTopicJson({ content, baseline, pending }, 'whiteboard-edit.json'); setDownloadedRevision(sequence.current); onCanLeaveChange(true); }}>下载完整改稿</button></header>
     {notice && <p className="tw-notice" role="status">{notice}</p>}
+    <details className="tw-local-copies"><summary onClick={() => { try { setCopies(topicCopies(storage, decode, 256000)); } catch { setNotice('暂时无法读取其他本机副本，当前全文仍保留。'); } }}>查看其他本机改稿</summary>
+      {copies.length ? copies.map(copy => <article key={copy.key}><b>{copy.value.content.title || '未填写标题的改稿'}</b><p>{copy.value.content.description}</p>
+        <button disabled={busy || Boolean(pending) || row.status !== 'ready' || storageError && dirty && downloadedRevision !== sequence.current} onClick={() => { restoreCopy(copy.value); setNotice('已明确恢复所选本机稿，请与服务器版本比较后保存。'); }}>恢复这份本机改稿</button>
+        <button onClick={() => downloadTopicJson(copy.value, 'whiteboard-local-copy.json')}>下载这份本机稿</button></article>) : <p>尚未读取到其他已绑定的本机稿。</p>}</details>
     {changedOnServer && <aside className="tw-conflict" role="alert"><p>服务器稿已变化。本机全文保留，请先比较原稿。</p>
       <details><summary>阅读当前服务器完整稿</summary><TopicManuscript content={row.content}/></details>
       <button disabled={Boolean(pending)} onClick={() => adopt(false)}>采用服务器稿</button>

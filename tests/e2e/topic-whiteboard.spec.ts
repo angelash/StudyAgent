@@ -5,6 +5,8 @@ import { browserEvidence } from './evidence';
 import { join } from 'node:path';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107'), base = '/learning/studio/topic-whiteboards';
+// Complete in-flight overview/media routes before Playwright disposes their API responses.
+test.afterEach(async ({ page }) => { await page.unrouteAll({ behavior: 'wait' }); });
 async function fixture(page: Page, child = false) {
   const hash = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + hash[0] + '.' + hash[1];
   await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
@@ -40,6 +42,17 @@ async function generate(page: Page, topic = '用匿名观察解释条件与推�
 }
 async function ready(page: Page) { await expect(page.locator('.tw-generation-state')).toHaveText('待你核对', { timeout: 25000 }); await expect(page.getByLabel('白板标题')).toBeVisible(); }
 
+test('login forms cannot submit before their client handlers are ready', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, baseURL: test.info().project.use.baseURL });
+  try {
+    const page = await context.newPage();
+    for (const path of ['/parent/login', '/student/login']) {
+      await page.goto(path);
+      for (const input of await page.locator('form input, form button').all()) await expect(input).toBeDisabled();
+    }
+  } finally { await context.close(); }
+});
+
 test('adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player', async ({ page }) => {
   const f = await fixture(page); let dropped = true;
   await page.route('**/api/learning/studio/topic-whiteboards/drafts', async route => {
@@ -49,8 +62,9 @@ test('adult original generation, lost edit and confirmation replies recover with
   await page.getByRole('button', { name: '恢复原生成请求', exact: true }).click(); await ready(page);
   const id = new URL(page.url()).searchParams.get('draft')!;
   expect((await f.call(base + '/drafts', undefined, 'GET')).total).toBe(1);
-  let editDropped = true;
+  let editDropped = true, editWrites = 0;
   await page.route('**/api/learning/studio/topic-whiteboards/drafts/*/content', async route => {
+    editWrites++;
     if (editDropped) { editDropped = false; expect((await route.fetch()).status()).toBe(200); await route.abort('failed'); } else await route.continue();
   });
   await page.getByLabel('讲解概要').fill('保留这段完整的本机修订说明。');
@@ -58,15 +72,18 @@ test('adult original generation, lost edit and confirmation replies recover with
   await page.getByRole('button', { name: '保存完整改稿', exact: true }).click(); await expect(page.getByRole('button', { name: '恢复原修改请求', exact: true })).toBeEnabled();
   await page.reload(); await ready(page); await expect(page.getByLabel('讲解概要')).toHaveValue('保留这段完整的本机修订说明。');
   await page.getByRole('button', { name: '恢复原修改请求', exact: true }).click(); await expect(page.locator('.tw-review')).toContainText('针对旧稿');
+  expect(editWrites).toBe(1);
   await expect(page.getByRole('button', { name: '确认并保存这份白板', exact: true })).toBeDisabled();
   await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check();
-  let confirmationDropped = true;
+  let confirmationDropped = true, confirmationWrites = 0;
   await page.route('**/api/learning/studio/topic-whiteboards/drafts/*/confirm', async route => {
+    confirmationWrites++;
     if (confirmationDropped) { confirmationDropped = false; expect((await route.fetch()).status()).toBe(201); await route.abort('failed'); } else await route.continue();
   });
   await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await expect(page.getByRole('button', { name: '恢复原确认请求', exact: true })).toBeEnabled();
   await page.reload(); await page.getByRole('button', { name: '恢复原确认请求', exact: true }).click();
   await page.getByRole('button', { name: '打开已保存白板', exact: true }).click(); await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
+  expect(confirmationWrites).toBe(1);
   await expect(page.locator('.wb-ai-origin')).toContainText('AI生成');
   await page.getByLabel('完整讲稿与要点').locator('details').nth(1).locator('summary').click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');
   await page.getByLabel('完整讲稿与要点').locator('details').nth(2).locator(':scope > summary').click(); await expect(page.locator('math')).toBeVisible(); await expect(page.locator('.wb-complete-formula')).toContainText('计数单位相同');
@@ -104,6 +121,88 @@ test('unavailable local storage keeps the full editable draft and requires a rea
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: '下载完整改稿', exact: true }).click();
   const copy = JSON.parse(readFileSync((await (await download).path())!, 'utf8')); expect(copy.content.description).toBe('存储不可用时仍保留的完整改稿。');
   await page.getByRole('button', { name: '＋ 新白板', exact: true }).click(); await expect(page.getByLabel('完整白板改稿')).toHaveCount(0);
+});
+
+test('stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save', async ({ page }) => {
+  await fixture(page); await generate(page); await ready(page); const href = page.url(), second = await page.context().newPage();
+  try {
+    await second.goto(href); await ready(second);
+    await page.getByLabel('讲解概要').fill('本机持有的冲突原稿。');
+    await second.getByLabel('讲解概要').fill('其他页已经保存的完整稿。'); await second.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+    await expect(second.locator('.tw-editor')).toContainText('完整改稿已保存');
+    await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+    await expect(page.locator('.tw-conflict')).toContainText('服务器稿已变化');
+    await expect(page.getByLabel('讲解概要')).toHaveValue('本机持有的冲突原稿。');
+    await page.getByText('阅读当前服务器完整稿', { exact: true }).click(); await expect(page.locator('.tw-conflict')).toContainText('其他页已经保存的完整稿。');
+    await page.getByRole('button', { name: '以服务器为基线继续我的改稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+    await expect(page.locator('.tw-editor')).toContainText('完整改稿已保存');
+  } finally { await second.close(); }
+});
+
+test('uncached original topic cannot disappear on a scope change until its complete input is downloaded', async ({ page }) => {
+  const f = await fixture(page, true);
+  await page.evaluate(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) {
+    if (key.startsWith('studyagent.topic-whiteboard')) throw new DOMException('Synthetic unavailable storage', 'QuotaExceededError'); return original.call(this, key, value);
+  }; });
+  await page.getByLabel('讲解主题').fill('尚未生成也不能丢失的匿名主题');
+  await page.getByLabel('希望弄懂什么').fill('保留我的完整教学目标。');
+  await page.getByLabel('白板学习对象').selectOption(f.studentId!);
+  await expect(page.getByLabel('白板学习对象')).toHaveValue('');
+  await expect(page.getByLabel('讲解主题')).toHaveValue('尚未生成也不能丢失的匿名主题');
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '下载原主题与请求', exact: true }).click();
+  const copy = JSON.parse(readFileSync((await (await download).path())!, 'utf8'));
+  expect(copy.form).toMatchObject({ prompt: '尚未生成也不能丢失的匿名主题', objective: '保留我的完整教学目标。' });
+  await page.getByLabel('白板学习对象').selectOption(f.studentId!);
+  await expect(page.getByLabel('白板学习对象')).toHaveValue(f.studentId!);
+});
+
+test('another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded', async ({ page }) => {
+  await fixture(page); await generate(page); await ready(page);
+  await page.getByLabel('讲解概要').fill('第一份可恢复的完整本机改稿。');
+  await expect.poll(() => page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('studyagent.topic-whiteboard.editor.v1.')).map(key => JSON.parse(localStorage.getItem(key)!).content.description))).toContain('第一份可恢复的完整本机改稿。');
+  await page.reload(); await ready(page);
+  await page.evaluate(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) {
+    if (key.startsWith('studyagent.topic-whiteboard')) throw new DOMException('Synthetic unavailable storage', 'QuotaExceededError'); return original.call(this, key, value);
+  }; });
+  await page.getByLabel('讲解概要').fill('尚无本机缓存的第二份完整改稿。');
+  await page.getByText('查看其他本机改稿', { exact: true }).click();
+  const restore = page.getByRole('button', { name: '恢复这份本机改稿', exact: true }).first(); await expect(restore).toBeDisabled();
+  await expect(page.getByLabel('讲解概要')).toHaveValue('尚无本机缓存的第二份完整改稿。');
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '下载完整改稿', exact: true }).click();
+  const copy = JSON.parse(readFileSync((await (await download).path())!, 'utf8')); expect(copy.content.description).toBe('尚无本机缓存的第二份完整改稿。');
+  await expect(restore).toBeEnabled(); await restore.click();
+  await expect(page.getByLabel('讲解概要')).toHaveValue('第一份可恢复的完整本机改稿。');
+});
+
+test('recovery: an uncached original cancellation survives object changes until its exact command is downloaded', async ({ page }) => {
+  await fixture(page); await generate(page, '匿名观察 [topic-pause-once]');
+  await page.evaluate(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) {
+    if (key.startsWith('studyagent.topic-whiteboard.command.')) throw new DOMException('Synthetic unavailable command storage', 'QuotaExceededError'); return original.call(this, key, value);
+  }; });
+  let writes = 0;
+  await page.route('**/api/learning/studio/topic-whiteboards/drafts/*/cancel', async route => {
+    writes++; expect((await route.fetch()).status()).toBe(201); await route.abort('failed');
+  });
+  await page.getByRole('button', { name: '取消生成', exact: true }).click();
+  await expect(page.getByRole('button', { name: '恢复原取消请求', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: '＋ 新白板', exact: true }).click(); await expect(page.locator('.tw-candidate')).toBeVisible();
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '下载原稿与请求', exact: true }).click();
+  const copy = JSON.parse(readFileSync((await (await download).path())!, 'utf8'));
+  expect(copy.pending.action).toBe('cancel'); expect(copy.pending.body.requestKey).toBeTruthy(); expect(writes).toBe(1);
+  await page.getByRole('button', { name: '＋ 新白板', exact: true }).click(); await expect(page.locator('.tw-candidate')).toHaveCount(0);
+});
+
+test('topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads', async ({ page }) => {
+  await fixture(page); await generate(page); await ready(page); const second = await page.context().newPage();
+  try {
+    await second.goto(page.url()); await ready(second);
+    await page.getByLabel('讲解概要').fill('第一标签页尚未保存的完整稿。');
+    const copies = () => page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('studyagent.topic-whiteboard.editor.v1.')).map(key => JSON.parse(localStorage.getItem(key)!).content.description));
+    await expect.poll(copies).toContain('第一标签页尚未保存的完整稿。');
+    await second.getByLabel('讲解概要').fill('第二标签页的另一份完整稿。'); await expect.poll(copies).toContain('第二标签页的另一份完整稿。');
+    await page.reload(); await ready(page); await expect(page.getByLabel('讲解概要')).toHaveValue('第一标签页尚未保存的完整稿。');
+    await second.reload(); await ready(second); await expect(second.getByLabel('讲解概要')).toHaveValue('第二标签页的另一份完整稿。');
+  } finally { await second.close(); }
 });
 
 for (const width of [390, 768, 1440]) test('explicit child goals, adult separation and complete edit controls fit at ' + width, async ({ page }) => {

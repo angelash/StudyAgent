@@ -54,7 +54,7 @@ export type TopicWhiteboardDraftView = {
   contentFingerprint: string | null; review: TopicWhiteboardReview | null; whiteboardId: string | null;
   teacherReviewStatus: 'pending'; formalMeasurementEligible: false; createdAt: string; updatedAt: string;
   receipt?: { key: string; kind: 'prepare' | 'cancel' | 'retry' | 'edit' | 'confirm'; effectiveRevision: number;
-    generation: number; at: string; contentFingerprint?: string; whiteboardId?: string };
+    generation: number; at: string; commandFingerprint?: string; contentFingerprint?: string; whiteboardId?: string };
 };
 export type StudioTopicWhiteboard = {
   id: string; kind: 'ai-topic-whiteboard'; studentId: string | null; subject: StudioSubject | null;

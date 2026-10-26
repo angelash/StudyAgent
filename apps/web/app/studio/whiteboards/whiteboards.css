@@ -7,3 +7,5 @@
 .tw-candidate>header h2{scroll-margin-top:28px}@media(max-width:760px){.tw-candidate>header h2{scroll-margin-top:126px}}
 
 .tw-manuscript{font-size:12px;line-height:1.9;overflow-wrap:anywhere}.tw-manuscript h3,.tw-manuscript h4{font-weight:500;color:#3e5a7e}.tw-manuscript section{border-top:1px solid var(--tw-line);padding:12px 0}.tw-spoken-copy{white-space:pre-wrap}.tw-manuscript li{margin:8px 0}
+
+.tw-local-copies{margin:16px 0;font-size:11px;line-height:1.8;color:#74839a}.tw-local-copies article{padding:12px;border:1px solid var(--tw-line);border-radius:7px;margin:10px 0;overflow-wrap:anywhere}.tw-local-copies article>button{font-size:10px;margin:4px 6px 0 0}.tw-local-copies article>p{white-space:pre-wrap}
