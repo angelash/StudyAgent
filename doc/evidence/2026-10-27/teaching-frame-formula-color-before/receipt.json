@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-26T19:55:50.851Z",
+  "status": "incorrect-green-vector-pixel-assumption",
+  "browser": {
+    "passed": 8,
+    "failed": 1,
+    "didNotRun": 42
+  },
+  "reason": "The actual decoded formula is dark neutral; an assumed green-specific classifier did not identify its real glyphs. Preserve the report and verify decoded ink inside measured real formula crop bounds instead.",
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "743890391b1dfef92b57543c7ba8fdfa95e04f9fc1d4a976aa8ef88a6999ee3e",
+      "sha256": "6692d4d7a34b54fb2bfa130eb50a7ea6cb8df14e407c82ae21d0b6dac3e29729"
+    },
+    {
+      "source": "data/qa-teaching-frame-readable-formula.log",
+      "file": "data__qa-teaching-frame-readable-formula.log.gz",
+      "originalSha256": "d9a10275e3ffeef9bc8a8e9b6c430533dc6a59d25f24be2f1152b9d0f21fb0c8",
+      "sha256": "feaf4873f83b36193fcaf3188907fdf2bec2ed82d65178026faf1f28823089cd"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "apps__web__app__studio__whiteboard-frame.ts.gz",
+      "originalSha256": "0de83396a578ac0a1601156f404cf2beecb8d2f446e9cb5a7f518c10e479b3d5",
+      "sha256": "cce79e48b24da5101d2fb8c280c701f3b1c585079303bdc7d12bc487b8627f99"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "file": "tests__e2e__topic-whiteboard.spec.ts.gz",
+      "originalSha256": "f3cdbb338b017cc5e2e0e304b7806d81f764ff320c60faf75cf931e8397fbda5",
+      "sha256": "e03856cbb62603239bdca717c6b3d0cedacfa74c9c409eae8a3fa14054034b4c"
+    },
+    {
+      "source": "data/qa/browser-evidence/topic-whiteboard/topic-formula-video.webm",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.webm.gz",
+      "originalSha256": "502bd421c4bd808ad8554362ebf602675c52bb9a463a1cd140150584a5f06d54",
+      "sha256": "ada763af54ed5c9496388be70985f918d6536aee638351601534f3d3da1d61c7"
+    },
+    {
+      "source": "data/qa/topic-formula-readable-first-debug.png",
+      "file": "data__qa__topic-formula-readable-first-debug.png.gz",
+      "originalSha256": "3e5581c018d7c7d1b85c0640f152dfab461240ee302bea8987e04d4a0ced5777",
+      "sha256": "0f8d07a8178751094f5a8623485f73e89210f9cf1178a447817006e8d8369168"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "f547271e9429debb1f102c74c009570780d07e5c2591ac9bf168272fbeb3510e",
+      "sha256": "a6dcdd293eee8fb56ae50725f14c541b4f3486369c576370ca59584922183850"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\error-context.md",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__error-context.md.gz",
+      "originalSha256": "0994384f3e4502e7b29cfb2c33fbf93624e4cfd5f084464963e92bd18ec7a40a",
+      "sha256": "600ac65ad987288b68ab23d0cc056d30258a1f195fdb880f3e77401e18387058"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__test-failed-1.png.gz",
+      "originalSha256": "40ffb8e22eb7f2609094e79c200c5e50b90bcc5dd631a9f6a34ccff219e53637",
+      "sha256": "81d7ae30e05cbd81019fa0877c638eabb87297f0d7a5b1365d12334079acb9da"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\trace.zip",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__trace.zip.gz",
+      "originalSha256": "53d5bd5254ee4effbd31e4a8ac202e1ed796f8f058c6fc510d2778ed61847a1b",
+      "sha256": "a513bdb2b62a6cc1298b190a4011c8e15ddef0828d1b4b11ca307acd6f9455be"
+    }
+  ]
+}

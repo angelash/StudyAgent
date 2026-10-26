@@ -117,6 +117,22 @@ test('topic-formula: complete vector fractions, aligned roots and Unicode fit na
 });
 
 test('topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = CanvasRenderingContext2D.prototype.drawImage;
+    const start = MediaRecorder.prototype.start;
+    MediaRecorder.prototype.start = function (...args) { (window as any).formulaVideoStart = performance.now(); return start.apply(this, args); };
+    (window as any).formulaVideoCrops = [];
+    CanvasRenderingContext2D.prototype.drawImage = function (...args: any[]) {
+      const image = args[0];
+      if (!this.canvas.isConnected && args.length === 9 && image instanceof HTMLImageElement) {
+        const transform = this.getTransform();
+        (window as any).formulaVideoCrops.push({ time: (performance.now() - ((window as any).formulaVideoStart ?? performance.now())) / 1000, naturalWidth: image.naturalWidth, sourceRight: args[1] + args[3],
+          scale: args[7] / args[3], left: transform.a * args[5] + transform.e, top: transform.d * args[6] + transform.f,
+          right: transform.a * (args[5] + args[7]) + transform.e, bottom: transform.d * (args[6] + args[8]) + transform.f });
+      }
+      return original.apply(this, args as any);
+    };
+  });
   const { player } = await formulaBoard(page, ['\\frac{1}{2}+\\sqrt{x^2+1}', '\\begin{aligned}a&=b+c\\\\d&=\\frac{e}{f}\\end{aligned}', 'a+'.repeat(280) + 'z'], true);
   await expect(player.locator('.sa-whiteboard-notice')).not.toContainText('无法解码');
   await expect(player.locator('.wb-formula-vector svg').first()).toBeVisible();
@@ -124,15 +140,26 @@ test('topic-formula: actual shared image and fraction/root/alignment vector vide
   const video = (await (await download).path())!, directory = browserEvidence('topic-whiteboard'); copyFileSync(video, join(directory, 'topic-formula-video.webm'));
   const probe = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v', 'error', '-show_format', '-show_streams', '-of', 'json', video], { windowsHide: true, encoding: 'utf8' }));
   expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true); expect(probe.streams.some((stream: any) => stream.codec_type === 'video')).toBe(true);
+  const crops = await page.evaluate(() => (window as any).formulaVideoCrops as Array<{ time: number; naturalWidth: number; sourceRight: number; scale: number; left: number; top: number; right: number; bottom: number }>);
+  writeFileSync(join(directory, 'topic-formula-readable-video-crops.json'), JSON.stringify({ crops }, null, 2) + '\n');
+  const widths = [...new Set(crops.map(crop => crop.naturalWidth))]; expect(widths).toHaveLength(3);
   const receipts: unknown[] = [];
-  for (const [name, time, left] of [['first', .2, 740], ['aligned', 4.2, 88], ['last', 11.9, 88]] as const) {
+  for (const [name, time, source] of [['first', .2, 0], ['aligned', 4.2, 1], ['last', 11.9, 2]] as const) {
     const frame = spawnSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-ss', String(time), '-i', video, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], { windowsHide: true, maxBuffer: 8 * 1024 * 1024 });
     expect(frame.status).toBe(0); const decoded = await sharp(frame.stdout).removeAlpha().raw().toBuffer({ resolveWithObject: true }); let ink = 0;
-    for (let y = 220; y < 500; y++) for (let x = left; x < 1190; x++) { const offset = (y * 1280 + x) * 3;
+    // Measure actual vector source crops, then independently decode glyph ink
+    // inside that image's complete visible bounds; notes cannot satisfy this.
+    const region = crops.filter(crop => crop.naturalWidth === widths[source] && Math.abs(crop.time - time) < .2 && crop.left >= 0 && crop.right <= 1280 && crop.top >= 0 && crop.bottom <= 610 && (name !== 'last' || crop.sourceRight >= crop.naturalWidth - 1)).sort((a,b) => Math.abs(a.time-time)-Math.abs(b.time-time))[0];
+    expect(region, name + ' complete vector bounds').toBeTruthy();
+    for (let y = Math.ceil(region.top); y < Math.floor(region.bottom); y++) for (let x = Math.ceil(region.left); x < Math.floor(region.right); x++) { const offset = (y * 1280 + x) * 3;
       if (decoded.data[offset] < 120 && decoded.data[offset + 1] < 130 && decoded.data[offset + 2] < 120) ink++; }
     expect(ink).toBeGreaterThan(100); receipts.push({ name, time, ink }); writeFileSync(join(directory, 'topic-formula-video-' + name + '.png'), frame.stdout);
   }
   writeFileSync(join(directory, 'topic-formula-video-probe.json'), JSON.stringify({ probe, frames: receipts }, null, 2) + '\n');
+  const long = crops.filter(crop => crop.naturalWidth > 1500); expect(long.length).toBeGreaterThan(0);
+  expect(Math.min(...long.map(crop => crop.scale))).toBeGreaterThanOrEqual(.79);
+  expect(long.some(crop => crop.sourceRight >= crop.naturalWidth - 1 && crop.left >= 0 && crop.right <= 1280 && crop.top >= 0 && crop.bottom <= 610)).toBe(true);
+  writeFileSync(join(directory, 'topic-formula-readable-video-crops.json'), JSON.stringify({ minimumScale: Math.min(...long.map(crop => crop.scale)), crops }, null, 2) + '\n');
   const captions = page.waitForEvent('download'); await player.getByRole('button', { name: '导出字幕', exact: true }).click(); const srt = readFileSync((await (await captions).path())!, 'utf8');
   expect(srt).toContain('00:00:00,000 --> 00:00:02,000'); expect(srt).toContain('00:00:10,000 --> 00:00:12,000'); expect(srt).toContain('保留最后一项');
   writeFileSync(join(directory, 'topic-formula-video.srt'), srt);

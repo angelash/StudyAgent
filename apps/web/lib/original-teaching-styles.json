@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "sourceFiles": [
+    {
+      "publicPath": "/reference/hyperknow/assets/css/VoiceSettingsModal-DENVhpWX.css",
+      "sha256": "fb681fc0e30ffd33b5084473b4b047fcefc8e1d72b1e8c4d6b874e6dac2f2501"
+    },
+    {
+      "publicPath": "/reference/hyperknow/assets/css/WhiteboardPage-94_LFro3.css",
+      "sha256": "b03d0280d046b9ca09615162432bbf5484c37dfd15b4668518d8a65913e4d3e9"
+    },
+    {
+      "publicPath": "/reference/hyperknow/assets/css/WhiteboardPage-fX1yz27W.css",
+      "sha256": "bf4dccf670dfe23220ec5831870fa43177307e2f75e9eb3bd6244d695aea27d5"
+    }
+  ],
+  "output": "apps/web/app/studio/original-teaching-shell.generated.css",
+  "sha256": "1529cee10138def494c12606ac4a02295644b79aafcf3f8eabcdc1c8eb5f399d",
+  "bytes": 78843,
+  "rules": 525,
+  "scopedSelectors": 578,
+  "keyframes": {
+    "voice-bar-pulse": "hk-original-voice-bar-pulse",
+    "voice-modal-fade-in": "hk-original-voice-modal-fade-in",
+    "voice-modal-scale-in": "hk-original-voice-modal-scale-in",
+    "whiteboard-session-intro-in": "hk-original-whiteboard-session-intro-in",
+    "whiteboard-page-turn-toast": "hk-original-whiteboard-page-turn-toast",
+    "whiteboard-caption-fade-in": "hk-original-whiteboard-caption-fade-in",
+    "whiteboard-caption-blink": "hk-original-whiteboard-caption-blink",
+    "whiteboard-interject-in": "hk-original-whiteboard-interject-in",
+    "whiteboard-interject-pulse": "hk-original-whiteboard-interject-pulse",
+    "whiteboard-voice-btn-preparing": "hk-original-whiteboard-voice-btn-preparing",
+    "whiteboard-voice-btn-pulse": "hk-original-whiteboard-voice-btn-pulse",
+    "whiteboard-ask-in": "hk-original-whiteboard-ask-in",
+    "whiteboard-ask-verdict": "hk-original-whiteboard-ask-verdict",
+    "whiteboard-input-flash": "hk-original-whiteboard-input-flash",
+    "wb-attach-spin": "hk-original-wb-attach-spin",
+    "wb-conv-outline-ripple": "hk-original-wb-conv-outline-ripple",
+    "whiteboard-outline-live-hop": "hk-original-whiteboard-outline-live-hop",
+    "whiteboard-outline-practice-spin": "hk-original-whiteboard-outline-practice-spin",
+    "whiteboard-skeleton-sweep": "hk-original-whiteboard-skeleton-sweep",
+    "whiteboard-chat-generating-bounce": "hk-original-whiteboard-chat-generating-bounce",
+    "whiteboard-chat-generating-pulse": "hk-original-whiteboard-chat-generating-pulse",
+    "whiteboard-session-prompt-toast": "hk-original-whiteboard-session-prompt-toast",
+    "whiteboard-session-prompt-toast-in": "hk-original-whiteboard-session-prompt-toast-in",
+    "whiteboard-learn-intro-card-in": "hk-original-whiteboard-learn-intro-card-in",
+    "whiteboard-replay-btn-in": "hk-original-whiteboard-replay-btn-in",
+    "whiteboard-reward-overlay-in": "hk-original-whiteboard-reward-overlay-in",
+    "whiteboard-modal-overlay-in": "hk-original-whiteboard-modal-overlay-in",
+    "whiteboard-modal-card-in": "hk-original-whiteboard-modal-card-in",
+    "wb-dot-scan": "hk-original-wb-dot-scan",
+    "whiteboard-sound-gate-in": "hk-original-whiteboard-sound-gate-in"
+  },
+  "registeredProperties": {
+    "--wb-beam-pos": "--hk-original-wb-beam-pos"
+  }
+}

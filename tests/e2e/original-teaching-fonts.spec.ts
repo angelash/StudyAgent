@@ -55,3 +55,41 @@ test('original fonts: a failed captured glyph never starts playback and an expli
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready'); await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeEnabled();
   expect(page.url()).toContain(new URL(url, 'http://fixture').searchParams.get('whiteboard')!);
 });
+
+test('teaching frame: moving to another scene retains already taught notes, excludes future scenes and keeps one full caption', async ({ page }) => {
+  const url = await board(page);
+  await page.addInitScript(() => {
+    const clear = CanvasRenderingContext2D.prototype.clearRect, fill = CanvasRenderingContext2D.prototype.fillText;
+    const state = window as unknown as { latestTeachingFrame: string[] }; state.latestTeachingFrame = [];
+    CanvasRenderingContext2D.prototype.clearRect = function (...args: Parameters<CanvasRenderingContext2D['clearRect']>) { state.latestTeachingFrame = []; return clear.apply(this, args); };
+    CanvasRenderingContext2D.prototype.fillText = function (...args: Parameters<CanvasRenderingContext2D['fillText']>) { state.latestTeachingFrame.push(args[0]); return fill.apply(this, args); };
+  });
+  await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
+  const scenes = dialog.locator('.sa-scene-strip button'), title = async (index: number) => (await scenes.nth(index).innerText()).replace(/^\d+\s*/u, '').trim();
+  const first = await title(0), second = await title(1), third = await title(2);
+  await scenes.nth(1).click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { latestTeachingFrame: string[] }).latestTeachingFrame)).toEqual(expect.arrayContaining([first, second]));
+  expect(await page.evaluate(() => (window as unknown as { latestTeachingFrame: string[] }).latestTeachingFrame)).not.toContain(third);
+  const sentence = dialog.locator('.wb-current-sentence'); await expect(sentence).toHaveCount(1);
+  const unit = await sentence.getAttribute('data-unit-id'); await dialog.getByRole('button', { name: '缩小白板', exact: true }).click();
+  await expect(sentence).toHaveAttribute('data-unit-id', unit!); await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeEnabled();
+  await page.screenshot({ path: join(browserEvidence('original-teaching-frames'), 'cumulative-second-scene.png') });
+});
+
+for (const width of [390, 768, 1280]) test('teaching shell: actual original chrome, font switch and return fit ' + width, async ({ page }) => {
+  await page.setViewportSize({ width, height: 800 }); const url = await board(page);
+  const styles = () => page.evaluate(() => { const style = getComputedStyle(document.body); return { font: style.fontFamily, color: style.color, background: style.backgroundColor }; });
+  const before = await styles(); await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
+  expect(await dialog.evaluate(element => { const bounds = element.getBoundingClientRect(); return { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height }; })).toEqual({ x: 0, y: 0, width, height: 800 });
+  const sentence = dialog.locator('.wb-current-sentence'), unit = await sentence.getAttribute('data-unit-id');
+  await dialog.getByRole('combobox', { name: '板书字体', exact: true }).selectOption('standard');
+  await expect(dialog).toHaveAttribute('data-original-font-status', 'ready'); await expect(sentence).toHaveAttribute('data-unit-id', unit!);
+  await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeEnabled();
+  const overflow = await dialog.evaluate(element => element.scrollWidth - element.clientWidth); expect(overflow).toBeLessThanOrEqual(1);
+  await dialog.getByRole('combobox', { name: '板书字体', exact: true }).selectOption('handwriting'); await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
+  await page.screenshot({ path: join(browserEvidence('original-teaching-frames'), 'original-shell-' + width + '.png') });
+  await dialog.getByRole('button', { name: '关闭白板', exact: true }).click(); await expect(dialog).toHaveCount(0);
+  await page.goto('/learn'); expect(await styles()).toEqual(before);
+});

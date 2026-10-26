@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-26T19:51:39.701Z",
+  "status": "cumulative-formula-camera-and-pagination-before",
+  "browser": {
+    "passed": 50,
+    "failed": 1
+  },
+  "findings": [
+    "Old pixel ROI expected the formula on the right; the new block puts it on the left.",
+    "Actual decoded first frame clips the top of the formula because the camera follows the last scene item immediately.",
+    "The full long formula is scaled into one block; readable complete pagination must be restored."
+  ],
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "7092c8e4afcd288e948576ece727167ec27094c7e3ab1f5ece9791110669443f",
+      "sha256": "8641532cb09275e8551fa99af31abc4454e14990e09e86c67dcca2821cb71b80"
+    },
+    {
+      "source": "data/qa-teaching-frame-combined.log",
+      "file": "data__qa-teaching-frame-combined.log.gz",
+      "originalSha256": "13eed60d01ec514d115254d8049af93db96f4420e43a8146559154d636dc3b60",
+      "sha256": "23447a8699a35c7d365dd170bb473dc17a7fcd5173fb2b0d73f838e7ec13590c"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "apps__web__app__studio__whiteboard-frame.ts.gz",
+      "originalSha256": "938980f905004837acef7b2a55f0d5df157890a26da8907ef65d30b8f03b12f8",
+      "sha256": "4e3c5818099e717bd725afb5a941fee1604ae61ca9a8e7caf9d532dc421ceef0"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "file": "tests__e2e__topic-whiteboard.spec.ts.gz",
+      "originalSha256": "76106394eae22dea8e0f76fabfad8af3303963fa0bf45cf775a2534c57b2b9f1",
+      "sha256": "980530a4de36d6d9c3e5d181da7124c532a2f79548f94f08ab65cf9aaa949e56"
+    },
+    {
+      "source": "data/qa/browser-evidence/topic-whiteboard/topic-formula-video.webm",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.webm.gz",
+      "originalSha256": "0cbe7132bd37aa97b1e1cd89bdcd4e5de1d49fe09799ef9a6fd1fae32e8c3f14",
+      "sha256": "fd17ad3b036e395f575c2e72460495cf985016c7bdb33f5f5e57d41e8177b664"
+    },
+    {
+      "source": "data/qa/topic-formula-cumulative-before.png",
+      "file": "data__qa__topic-formula-cumulative-before.png.gz",
+      "originalSha256": "71b5831bc6d1449c1f20c9fe5df3805bbcba7f2dcc21e02b3d421b8e9f8c6b75",
+      "sha256": "d2c434e79572cc9ee89131b389d0bcf6a1ac3be050b75c021225a3c511d6629a"
+    },
+    {
+      "source": "data/qa/topic-formula-cumulative-last-before.png",
+      "file": "data__qa__topic-formula-cumulative-last-before.png.gz",
+      "originalSha256": "0c4cd5ccadc8593d7820389f61217f23617836e34b3097fd150138b4abe77563",
+      "sha256": "873513babc509141eeb835f52d8bae9836e70536b0cdc0b8feffbfb637a5ec08"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "43d00e2ab64414731def1ec33cf3f31873867706e931af76799fb511e32be309",
+      "sha256": "f3c47001ab79bb65490113fcfe16549fbc115d74715066d1c0d497fd0b560f00"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\error-context.md",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__error-context.md.gz",
+      "originalSha256": "df1a7ed63aecc46c308664cf5b6a7a49530f519e80814bc54212d2027a3f76d9",
+      "sha256": "e806b3a36f7ffaa49311e6ee3b954e830b9e0cb5bf53be06ba388f796398d338"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__test-failed-1.png.gz",
+      "originalSha256": "3682ab381c7c9f7347083eca2d578aca21bb9fea6a433777b0a51948795ff0e5",
+      "sha256": "b227e9f15d3ed2becc0b256491bab31a9458f2c5abe37bd58f43e346ae913db7"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-topic-for-2d574--audio-and-caption-timeline\\trace.zip",
+      "file": "test-results__browser-product-acceptance__topic-whiteboard-topic-for-2d574--audio-and-caption-timeline__trace.zip.gz",
+      "originalSha256": "07cf7f38fcb35c29a5f0ad4520684a8ec59bf101a8f6b5cdc3c98d5247b41edc",
+      "sha256": "22f63295d8a6cb2786b6638ff73e5e77ba083ec07faa416506a6f30e3faa6ce1"
+    }
+  ]
+}

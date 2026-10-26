@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-26T19:36:15.473Z",
+  "status": "single-scene-replacement-reproduced",
+  "browser": {
+    "passed": 2,
+    "failed": 1
+  },
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "0e769683711241bbb257b3b54bd9e8a350f003dfe87d3618f0708f41b3b556ab"
+    },
+    {
+      "source": "data/qa-teaching-frame-before.log",
+      "file": "data__qa-teaching-frame-before.log.gz",
+      "originalSha256": "61409a94ef9f2fa2f8e503e1c8bc418b5f6b1ed7b8b7e41560c0f5f7043b054f"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "originalSha256": "8cff237b6b18e3d72a0c4ebfa1097cfb2fb218ad9b285b56e61f2a9ab3207090"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "969c7479545ed242ef0790c229942b6256578295dfa7d57866eacad162b97db4"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-6524f--and-keeps-one-full-caption\\error-context.md",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-6524f--and-keeps-one-full-caption__error-context.md.gz",
+      "originalSha256": "9141fdab89195d7b26c12620c9b666dd4be2007c72a57bd823164c90c6567150"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-6524f--and-keeps-one-full-caption\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-6524f--and-keeps-one-full-caption__test-failed-1.png.gz",
+      "originalSha256": "ca845e2de3bf6a6a058c8e80b2be428b85d306eead6c6e25d5bf050d52c01c4f"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-6524f--and-keeps-one-full-caption\\trace.zip",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-6524f--and-keeps-one-full-caption__trace.zip.gz",
+      "originalSha256": "5b2136effa8966b9776a6feb917e2c86761c2ff2d137ccb85fe7776e0d142a3e"
+    }
+  ]
+}

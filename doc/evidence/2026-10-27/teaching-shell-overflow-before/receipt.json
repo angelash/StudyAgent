@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-26T19:41:06.597Z",
+  "status": "actual-narrow-header-overflow",
+  "browser": {
+    "passed": 4,
+    "failed": 2
+  },
+  "widths": {
+    "phone": 390,
+    "tablet": 768
+  },
+  "overflowPx": [
+    16,
+    36
+  ],
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "f8c662afe51dfb902d967a5aafe2b3a48e4beb84c111370bfe65eb1697578e79"
+    },
+    {
+      "source": "data/qa-teaching-frame-first.log",
+      "file": "data__qa-teaching-frame-first.log.gz",
+      "originalSha256": "4504cbcd5dbaa1eda3fecf0bce55154a6dbae219075d31c462c63b241678031c"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.css",
+      "file": "apps__web__app__studio__original-teaching-shell.css.gz",
+      "originalSha256": "5fd6c61c1157a56610605e8f39f4e0c0a58fa6f021636e4478cd05a3b910eb3b"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "2809f1b3452eed5e3dbd370a773bddad4ba5ae606615f3af4729220c178852df"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-960d5-t-switch-and-return-fit-390\\error-context.md",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-960d5-t-switch-and-return-fit-390__error-context.md.gz",
+      "originalSha256": "2bff0b4f97a4d2b2022481770923ca31feaff3211ab3b74bf22cf6ef335ee8ef"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-960d5-t-switch-and-return-fit-390\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-960d5-t-switch-and-return-fit-390__test-failed-1.png.gz",
+      "originalSha256": "20fc532a3898f0026d52959c3e9496ece16b619a40fb56fcb8493970ff3a3122"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-960d5-t-switch-and-return-fit-390\\trace.zip",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-960d5-t-switch-and-return-fit-390__trace.zip.gz",
+      "originalSha256": "8a211a9ddedae4e9b6e3e12e03c620b19ad1094254c629d16a40c9b9ab4c7154"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768\\error-context.md",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768__error-context.md.gz",
+      "originalSha256": "d52a78b744b544e9669f30f1a71677020fb1c6faaaeb948ef41038f738d0f451"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768__test-failed-1.png.gz",
+      "originalSha256": "37c5f262ef631629827655bbbb20ccf429031ac53b9a6251dedcbc11bd69f501"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768\\trace.zip",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-te-fdf24-t-switch-and-return-fit-768__trace.zip.gz",
+      "originalSha256": "f0bd7304c35c41d8f5876005b6aa4788c3e1b9bc25360dceaa6272b421b8d131"
+    }
+  ]
+}
