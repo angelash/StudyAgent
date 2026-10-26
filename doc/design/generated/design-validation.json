@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T20:05:39.755Z",
-  "sourceRevision": "ce2af72bafa59db7ff0287c2ad051a6546b0f76e",
+  "at": "2026-10-26T21:11:48.838Z",
+  "sourceRevision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -426,8 +426,8 @@
       "apps/web/lib/assistant-conversation.tsx": "644858f1cbd64eaf2d304464371897fc6f225b5328bb50a341f33a022c57a177",
       "apps/web/lib/guidance-creation.ts": "b1936c0d8da52ffb93f2167a2bf6a2734d7b8f114957746cfa5142bebe535a62",
       "apps/web/lib/learning-context.ts": "532cea5d8a74192b5cde06af5b7f16820530c8348707c529dcbebb466c190269",
-      "apps/web/lib/original-teaching-fonts.json": "cda550d10afdec46bdfe4bedec528a4b1cbfef1c59d05649b7521a575077078d",
-      "apps/web/lib/original-teaching-fonts.ts": "964b4737887fa055e9b55125d9d8c0a1ead6cf9ea817d85ea3322459b8d1d10f",
+      "apps/web/lib/original-teaching-fonts.json": "e4319ea46a0b17947a6c0c606a87f86907c5e6d98271a76031770c9b373b2a02",
+      "apps/web/lib/original-teaching-fonts.ts": "5b06bcff9c0747a47bc3e69301039b0aaaa19cf6505f3c713d0d1eaec0e6b019",
       "apps/web/lib/original-teaching-styles.json": "ea3cf2da3fb1052b44069a8fc4998729241df024935b0ff01a24e70e7e718691",
       "apps/web/lib/paper-practice-api.ts": "3da3e92a451bc44fad76e7b27362c7703e004ee232645f377c65d2fbae698fe1",
       "apps/web/lib/paper-practice-local.ts": "134d5a7a6b8c0ed99b94444d1f08660409b638613df124518b8b6ea44e76af11",
@@ -444,7 +444,7 @@
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "18083c59ec9c5401e478c213bf5adf7611db1a0deef025d54cbdeb93bc377792",
       "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "9c49a70f91ce6c5e494cfc37ee6c82d70f56636e0a5a5c2e01aee9d562228cec",
-      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "7486f6ed87cdce3bf778041614d1a85fc645621ffd3d0a0f38d7470703f32a6c",
+      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "9aa9c768b7640e808b979bde0c50bbb9f67e78fa6bb129dda5ec2846bd0e4f98",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -525,8 +525,8 @@
       "scripts/qa/verify-classroom-board-live.cjs": "ef5ed4103c366bf24598d9a1fc06b89da322bc280d844a9f2dd6423e5a3a995e",
       "scripts/qa/verify-classroom-turn-live.cjs": "8d9b325451d73b21c357dea9ddab2ea7d308c7dbd155d05d2a439800c16f5795",
       "scripts/qa/verify-project-file-preview.py": "84e9ff979b3b1e97fae98917f0e5df385ff7733c659e85b25f0f267049339d68",
-      "scripts/reference/build-hyperknow-fonts.cjs": "bf1328cbc687d34002d3669ddc6e2a8eae6d3cd0042aa0cdf4d16e9fb8980883",
-      "scripts/reference/build-hyperknow-teaching-styles.cjs": "21b51081d94f24120d091e1e6819e693702662f5040999c56533b772c27d18d4",
+      "scripts/reference/build-hyperknow-fonts.cjs": "956892eac723ee3a25802f5e67a9518bd4588bd044dd51daf6bef55c20b3e643",
+      "scripts/reference/build-hyperknow-teaching-styles.cjs": "7430a7927cdc2660ed8d3e6e1fa94eb12a016fb786dffac802417cb56a105da1",
       "scripts/reference/import-hyperknow-assets.cjs": "17ee7b95294a6ec519851565327887f08bfe39f7d4e5f07168c30d0ae713b35f",
       "tests/e2e/answer-journeys.spec.ts": "9684f5230a2a4aaa55abe6a1c234711bf80be3133810f5e6c7371be20fbf26b2",
       "tests/e2e/assistant-conversations.spec.ts": "ce55959f459056e472888c6028905f4cb6f9bb8cf07b3f553d2eb939faefdc6a",
@@ -547,7 +547,7 @@
       "tests/e2e/guidance-model.spec.ts": "5b9c25414004dc5a4627d19583930741bd69f3c118b2ea1e1030ea55c076c990",
       "tests/e2e/knowledge-report.spec.ts": "861b4af8d06786d3ef6629b8030d5db3e362bf307f00871c8d1bf80f91f30d1b",
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
-      "tests/e2e/original-teaching-fonts.spec.ts": "680028052fc7f774b72998fb090be8e088fa72ced4f416c19dec9051529cafef",
+      "tests/e2e/original-teaching-fonts.spec.ts": "ac70719ce7b054debbbcce0226ee3844bdeecdc137cab97195a299a14e882251",
       "tests/e2e/paper-practice.spec.ts": "a0d8c7d8183fa47dcf9cd88aa7d0bcff55254e7a8b7a4f40c23dee4f7ffd4230",
       "tests/e2e/pdf-material.spec.ts": "cf3e8c04730ae12bf97c866a4a1562d2101ead5ea26cacd8bb7b117d12ceb406",
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
@@ -571,7 +571,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3306,
+    "checked": 3309,
     "missing": []
   },
   "staticContent": {
@@ -642,8 +642,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-27/teaching-frame-local-green/receipt.json",
-    "revision": "ce2af72bafa59db7ff0287c2ad051a6546b0f76e",
+    "receipt": "../evidence/2026-10-27/teaching-frame-final-full-local/receipt.json",
+    "revision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }
