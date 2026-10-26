@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
-import { copyFileSync, readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { copyFileSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { browserEvidence } from './evidence';
 import { join } from 'node:path';
 
@@ -8,8 +9,10 @@ const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107');
 const credential = 'Synthetic-whiteboard-only-20261026';
 async function fixture(page: Page) {
   const principal = 'whiteboard-' + crypto.randomUUID() + '@local.test';
+  const bucket = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + bucket[0] + '.' + bucket[1];
+  await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
   async function call(path: string, body?: unknown, actor?: string, method = 'POST') {
-    const response = await fetch(api + '/api' + path, { method, headers: { 'Content-Type': 'application/json', ...(actor ? { Authorization: 'Bearer ' + actor } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    const response = await fetch(api + '/api' + path, { method, headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': address, ...(actor ? { Authorization: 'Bearer ' + actor } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
     expect(response.ok, path + ': ' + response.status).toBe(true); return (await response.json()).data;
   }
   const actor = await call('/auth/register', { principal, credential });
@@ -113,13 +116,55 @@ test('actual WebM has a decoded audio track and the same complete SRT timeline a
   expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true);
   expect(probe.streams.some((stream: any) => stream.codec_type === 'video')).toBe(true);
   expect(Math.abs(Number(probe.format.duration) - 6.4)).toBeLessThan(.6);
-  const decoded = execFileSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-xerror', '-i', (await video.path())!, '-f', 'null', '-'], { windowsHide: true, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
-  expect(decoded).toBe('');
+  const ffmpeg = process.env.STUDY_FFMPEG ?? 'ffmpeg', path = (await video.path())!;
+  const decoded = spawnSync(ffmpeg, ['-v', 'error', '-xerror', '-i', path, '-f', 'null', '-'], { windowsHide: true, maxBuffer: 16 * 1024 * 1024 });
+  expect(decoded.status).toBe(0); expect(decoded.stdout.length).toBe(0);
+  const eofParserMessage = /^\[opus @ [^\]]+\] Error parsing Opus packet header\.\s*$/u;
+  let controlReceipt: { exit: number | null; stderr: string } | null = null;
+  if (decoded.stderr.length) {
+    // FFmpeg 8.0.1 also logs this parser EOF error for its own valid Opus file.
+    // A different message, a codec error, or an absent independent control fails.
+    expect(decoded.stderr.toString()).toMatch(eofParserMessage);
+    const controlPath = join(directory, 'independent-opus-control.webm');
+    execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:sample_rate=48000:duration=1', '-c:a', 'libopus', '-y', controlPath], { windowsHide: true });
+    const control = spawnSync(ffmpeg, ['-v', 'error', '-xerror', '-i', controlPath, '-f', 'null', '-'], { windowsHide: true });
+    expect(control.status).toBe(0); expect(control.stderr.toString()).toMatch(eofParserMessage);
+    controlReceipt = { exit: control.status, stderr: control.stderr.toString() };
+  }
+  const pcm = spawnSync(ffmpeg, ['-v', 'error', '-xerror', '-fflags', '+noparse+nofillin', '-i', path, '-map', '0:a:0', '-ac', '1', '-ar', '48000', '-f', 'f32le', '-'],
+    { windowsHide: true, maxBuffer: 16 * 1024 * 1024 });
+  expect(pcm.status).toBe(0); expect(pcm.stderr.toString()).toBe('');
+  const samples = pcm.stdout.length / 4; expect(samples / 48000).toBeGreaterThanOrEqual(6.4);
+  function marker(frequency: number, from: number, to: number) {
+    let peak = 0;
+    for (let offset = from; offset + 768 <= to; offset += 192) {
+      let real = 0, imaginary = 0;
+      for (let i = 0; i < 768; i++) { const value = pcm.stdout.readFloatLE((offset + i) * 4), angle = 2 * Math.PI * frequency * i / 48000; real += value * Math.cos(angle); imaginary += value * Math.sin(angle); }
+      peak = Math.max(peak, Math.hypot(real, imaginary) / 768);
+    }
+    return peak;
+  }
+  const firstMarker = marker(1100 * 1.25, 0, Math.min(samples, 14400)), lastMarker = marker(1900 * 1.25, Math.max(0, samples - 14400), samples);
+  expect(firstMarker).toBeGreaterThan(.003); expect(lastMarker).toBeGreaterThan(.003);
+  writeFileSync(join(directory, 'decoder.json'), JSON.stringify({ defaultExit: decoded.status, defaultStderr: decoded.stderr.toString(), control: controlReceipt,
+    pcmExit: pcm.status, pcmStderr: pcm.stderr.toString(), samples, durationSeconds: samples / 48000, firstMarker, lastMarker }, null, 2) + '\n');
   const subtitles = page.waitForEvent('download'); await page.getByRole('button', { name: '导出字幕' }).click(); const srt = readFileSync((await (await subtitles).path())!, 'utf8');
   copyFileSync((await (await subtitles).path())!, join(directory, 'decoded-fixture.srt'));
   expect(srt).toContain('00:00:00,000 --> 00:00:01,600'); expect(srt).toContain('00:00:04,800 --> 00:00:06,400');
   expect(srt).toContain('先统一单位'); expect(srt).toContain('保留新的独立观察');
   await expect(f.current).toContainText('先统一单位');
+  await page.getByRole('slider').fill('1000'); await expect(f.current).toContainText('保留新的独立观察');
+  // A later cancelled recording must not replace the saved video's caption table.
+  await page.route('**/api/learning/studio/whiteboards/**/narration/**', async route => {
+    const response = await route.fetch(); expect(response.status()).toBe(201);
+    const original = await response.body(), longer = Buffer.concat([original, original.subarray(44, 16044)]);
+    longer.writeUInt32LE(longer.length - 8, 4); longer.writeUInt32LE(longer.length - 44, 40);
+    await route.fulfill({ response, body: longer, headers: { ...response.headers(), 'content-length': String(longer.length) } });
+  });
+  await page.getByRole('button', { name: '导出视频' }).click(); await expect(page.locator('.sa-whiteboard-notice')).toContainText('实时录制');
+  await page.getByRole('button', { name: '取消导出' }).click();
+  const retained = page.waitForEvent('download'); await page.getByRole('button', { name: '导出字幕' }).click();
+  expect(readFileSync((await (await retained).path())!, 'utf8')).toContain('00:00:04,800 --> 00:00:06,400');
 });
 
 test('cancelling a recording releases it and never downloads a partial video', async ({ page }) => {

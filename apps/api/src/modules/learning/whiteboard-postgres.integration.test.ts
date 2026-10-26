@@ -66,14 +66,46 @@ describe.skipIf(!process.env.STUDY_TEST_WHITEBOARD_POSTGRES_URL)('whiteboard cur
     const spy = vi.spyOn(app.get(load('modules/ai/speech.service').SpeechService), 'synthesize').mockResolvedValue({ content: Buffer.from('synthetic-only'), contentType: 'audio/wav' });
     try {
       const response = await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + owner.token).send(body).expect(201);
-      expect(response.headers['x-whiteboard-unit']).toBe(unit.id); expect(spy).toHaveBeenLastCalledWith(unit.text, undefined);
+      expect(response.headers['x-whiteboard-unit']).toBe(unit.id); expect(spy).toHaveBeenLastCalledWith(unit.text, undefined, expect.any(AbortSignal));
       await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + owner.token).send({ ...body, fingerprint: 'b'.repeat(64) }).expect(409);
       await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + other.token).send(body).expect(403);
       expect(spy).toHaveBeenCalledTimes(1);
-      await store.transaction(() => { store.find('bindings', { id: 'whiteboard-binding' }).status = 'revoked'; });
+      let arrive!: () => void, release!: (value: any) => void;
+      const arrival = new Promise<void>(resolve => { arrive = resolve; });
+      spy.mockImplementationOnce(() => { arrive(); return new Promise(resolve => { release = resolve; }); });
+      const pending = request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + owner.token).send(body).then(result => result);
+      try {
+        await Promise.race([arrival, pending.then(() => { throw Error('PostgreSQL narration returned before controlled synthesis'); })]);
+        await store.transaction(() => { store.find('bindings', { id: 'whiteboard-binding' }).status = 'revoked'; });
+      } finally { release?.({ content: Buffer.from('late-private-audio'), contentType: 'audio/wav' }); }
+      expect((await pending).status).toBe(403);
       await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + owner.token).send(body).expect(403);
       await call('post', '/learning/studio/whiteboards', command, owner, 403);
-      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(2);
     } finally { spy.mockRestore(); }
+  });
+
+  async function held(actor: any, mutation: () => Promise<unknown>, legacy = false) {
+    const projection = whiteboardPresentation(saved), unit = projection.units[0];
+    let arrive!: () => void, release!: (value: any) => void; const arrival = new Promise<void>(resolve => { arrive = resolve; });
+    const spy = vi.spyOn(app.get(load('modules/ai/speech.service').SpeechService), 'synthesize').mockImplementationOnce(() => { arrive(); return new Promise(resolve => { release = resolve; }); });
+    const audio = { content: Buffer.from('late-private-audio'), contentType: 'audio/wav' };
+    const operation = request(app.getHttpServer()).post('/api/learning/studio/whiteboards/' + saved.id + '/narration/' + encodeURIComponent(unit.sceneId))
+      .set('Authorization', 'Bearer ' + actor.token).send(legacy ? {} : { presentationVersion: projection.version, fingerprint: saved.fingerprint, unitId: unit.id }).then(result => result);
+    try {
+      await Promise.race([arrival, operation.then(() => { throw Error('Native request completed before held synthesis'); })]);
+      await mutation(); release(audio); expect((await operation).status).toBe(401);
+    } finally { release?.(audio); await operation; spy.mockRestore(); }
+  }
+  it('refuses late legacy audio after a separately committed logout of the original native session', async () => {
+    await store.transaction(() => { store.find('bindings', { id: 'whiteboard-binding' }).status = 'active'; });
+    await held(owner, () => call('post', '/auth/logout', {}, owner), true);
+  });
+  it('requires the original learner access epoch even when a new epoch is currently enabled', async () => {
+    owner = await call('post', '/auth/login', { principal: owner.user.principal, credential: 'Synthetic-whiteboard-only-20261026' }, null);
+    const access = await call('post', '/students/whiteboard-child/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: 'Native synthetic narration epoch check.' });
+    const code = await call('post', '/students/whiteboard-child/learning-access/codes', { expectedVersion: access.version, requestKey: randomUUID() });
+    const learner = await call('post', '/auth/learning-code', { code: code.code }, null);
+    await held(learner, () => store.transaction(() => { store.find('studentLearningAccess', { studentId: 'whiteboard-child' }).version++; }));
   });
 });

@@ -11,7 +11,7 @@ export type WhiteboardPresentation = {
 };
 export type WhiteboardTimelineEntry = WhiteboardSpeechUnit & { fromMs: number; toMs: number };
 export type WhiteboardTimeline = {
-  kind: 'estimated-reading' | 'decoded-audio'; speed: number; durationMs: number; entries: WhiteboardTimelineEntry[];
+  kind: 'estimated-reading' | 'decoded-audio'; speed: number; durationMs: number; tailMs: number; entries: WhiteboardTimelineEntry[];
 };
 
 /** Offsets are UTF-16 offsets into the unchanged saved narration. No persisted content is rewritten. */
@@ -45,8 +45,9 @@ export function whiteboardPresentation(board: Pick<StudioWhiteboard, 'fingerprin
 }
 
 /** Video frames, audio scheduling and SRT consume this same completed table. */
-export function whiteboardTimeline(presentation: WhiteboardPresentation, decodedDurationsMs?: number[], speed = 1): WhiteboardTimeline {
+export function whiteboardTimeline(presentation: WhiteboardPresentation, decodedDurationsMs?: number[], speed = 1, tailMs = 0): WhiteboardTimeline {
   if (![.75, 1, 1.25].includes(speed)) throw new Error('Unsupported whiteboard speed');
+  if (!Number.isInteger(tailMs) || tailMs < 0 || tailMs > 1000) throw new Error('Invalid recording tail');
   if (decodedDurationsMs && (decodedDurationsMs.length !== presentation.units.length ||
     decodedDurationsMs.some(value => !Number.isFinite(value) || value <= 0))) throw new Error('Incomplete decoded audio timeline');
   let cursor = 0;
@@ -55,7 +56,7 @@ export function whiteboardTimeline(presentation: WhiteboardPresentation, decoded
     cursor += Math.max(1, Math.round((decodedDurationsMs?.[index] ?? unit.estimatedMs) / speed));
     return { ...unit, fromMs, toMs: cursor };
   });
-  return { kind: decodedDurationsMs ? 'decoded-audio' : 'estimated-reading', speed, durationMs: cursor, entries };
+  return { kind: decodedDurationsMs ? 'decoded-audio' : 'estimated-reading', speed, durationMs: cursor + tailMs, tailMs, entries };
 }
 
 export function whiteboardSrt(timeline: WhiteboardTimeline): string {

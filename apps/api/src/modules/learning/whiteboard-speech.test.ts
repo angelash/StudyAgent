@@ -38,4 +38,12 @@ describe('frozen whiteboard reading and a shared export timeline', () => {
     expect(whiteboardTimeline(projection).kind).toBe('estimated-reading');
     expect(whiteboardSrt(whiteboardTimeline(whiteboardPresentation(board('<script>正文</script>。'))))).toContain('&lt;script&gt;');
   });
+  it('retains exact caption intervals while a documented silent recording tail completes the codec frames', () => {
+    const presentation = whiteboardPresentation(board('开头。结尾。'));
+    const timeline = whiteboardTimeline(presentation, [2000, 2000], 1.25, 120);
+    expect(timeline.durationMs).toBe(3320); expect(timeline.tailMs).toBe(120);
+    expect(timeline.entries.at(-1)?.toMs).toBe(3200);
+    expect(whiteboardSrt(timeline)).toContain('00:00:01,600 --> 00:00:03,200');
+    expect(() => whiteboardTimeline(presentation, [2000, 2000], 1, -1)).toThrow();
+  });
 });

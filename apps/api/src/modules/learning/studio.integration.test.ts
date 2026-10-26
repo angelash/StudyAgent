@@ -199,9 +199,9 @@ describe('whiteboard video and LMS calendar integrations', () => {
       const audio = await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + learner.token).send(body).expect(201);
       expect(audio.headers['x-whiteboard-unit']).toBe(unit.id);
       expect(audio.headers['cache-control']).toBe('private, no-store');
-      expect(synthesize).toHaveBeenLastCalledWith(unit.text, undefined);
+      expect(synthesize).toHaveBeenLastCalledWith(unit.text, undefined, expect.any(AbortSignal));
       await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send({}).expect(201);
-      expect(synthesize).toHaveBeenLastCalledWith(saved.scenes[2].narration, undefined);
+      expect(synthesize).toHaveBeenLastCalledWith(saved.scenes[2].narration, undefined, expect.any(AbortSignal));
       for (const altered of [{ ...body, fingerprint: 'b'.repeat(64) }, { ...body, unitId: presentation.units[0].id }])
         await request(app.getHttpServer()).post(path).set('Authorization', 'Bearer ' + parent.token).send(altered).expect(409);
       for (const altered of [{ unitId: unit.id }, { ...body, narration: 'untrusted replacement' }])
@@ -217,6 +217,33 @@ describe('whiteboard video and LMS calendar integrations', () => {
       expect(store.practiceAttempts.length).toBe(counts.attempts);
       expect(store.studioActivities.length).toBe(counts.activities);
     } finally { synthesize.mockRestore(); }
+  });
+
+  async function heldNarration(actor: any, mutate: () => Promise<unknown>, expected: number, legacy = false) {
+    const preview = await call('post', '/learning/studio/whiteboards/preview', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add' });
+    const saved = await call('post', '/learning/studio/whiteboards', { studentId: 'child', subject: 'math', prompt: '解释异分母加法', atomId: 'fraction-add', fingerprint: preview.fingerprint, requestKey: randomUUID() });
+    const projection = whiteboardPresentation(saved), unit = projection.units[0];
+    const { SpeechService } = require('../../../dist/apps/api/src/modules/ai/speech.service.js');
+    let arrive!: () => void, release!: (audio: any) => void;
+    const arrival = new Promise<void>(resolve => { arrive = resolve; });
+    const spy = vi.spyOn(app.get(SpeechService), 'synthesize').mockImplementationOnce(() => { arrive(); return new Promise(resolve => { release = resolve; }); });
+    const audio = { content: Buffer.from('late-private-audio'), contentType: 'audio/wav', provider: 'minimax' };
+    const operation = request(app.getHttpServer()).post('/api/learning/studio/whiteboards/' + saved.id + '/narration/' + encodeURIComponent(unit.sceneId))
+      .set('Authorization', 'Bearer ' + actor.token).send(legacy ? {} : { presentationVersion: projection.version, fingerprint: saved.fingerprint, unitId: unit.id }).then(result => result);
+    try {
+      await Promise.race([arrival, operation.then(() => { throw Error('Narration returned before controlled synthesis'); })]);
+      await mutate(); release(audio); expect((await operation).status).toBe(expected);
+    } finally { release?.(audio); await operation; spy.mockRestore(); }
+  }
+
+  it('inflight: refuses late legacy narration after a separately committed logout of its original login', async () => {
+    await heldNarration(parent, () => call('post', '/auth/logout', {}, parent), 401, true);
+  });
+  it('inflight: rechecks a separately committed guardian revocation before returning a frozen sentence', async () => {
+    await heldNarration(parent, () => store.transaction(() => { store.bindings.find((row: any) => row.parentUserId === parent.user.id && row.studentId === 'child').status = 'inactive'; }), 403);
+  });
+  it('inflight: refuses an old learner session when a newer enabled learning-access epoch replaces it during synthesis', async () => {
+    await heldNarration(learner, () => store.transaction(() => { const access = store.studentLearningAccess.find((row: any) => row.studentId === 'child'); access.version++; }), 401);
   });
 
   it('does not substitute another child for an explicit inaccessible studio selection', async () => {

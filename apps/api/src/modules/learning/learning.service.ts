@@ -25,6 +25,7 @@ import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition
 import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { buildStudioCourse } from './studio-course';
 import { buildStudioWhiteboard } from './studio-whiteboard';
+import { studioWhiteboardNarrationContext } from './studio-whiteboard-access';
 import { StudioIntegrationService } from './studio-integration.service';
 import { buildStudioStudyPlan } from './studio-study-plan';
 import { SpeechService } from '../ai/speech.service';
@@ -497,10 +498,10 @@ export class LearningService {
     return pack;
   }
 
-  async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown) {
-    const whiteboard = this.store.find('studioWhiteboards', { id });
-    if (!whiteboard) throw new NotFoundException('白板不存在');
-    this.students.assertCanAccessStudent(user, whiteboard.studentId);
+  async studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown, session: InMemoryAuthSession, signal: AbortSignal) {
+    if (signal.aborted) throw new BadRequestException('白板朗读已停止');
+    const initial = await this.store.transaction(() => studioWhiteboardNarrationContext(this.store, this.students, user, id, session));
+    const whiteboard = initial.whiteboard;
     const scene = whiteboard.scenes.find(item => item.id === sceneId);
     if (!scene) throw new NotFoundException('白板场景不存在');
     const command = validate(z.object({ voice: z.string().min(1).max(120).optional(),
@@ -510,8 +511,13 @@ export class LearningService {
       [value.presentationVersion, value.fingerprint, value.unitId].every(value => value !== undefined), '逐句旁白需要完整的呈现身份'), input ?? {});
     const unit = command.unitId ? whiteboardPresentation(whiteboard).units.find(item => item.sceneId === sceneId && item.id === command.unitId) : undefined;
     if (command.unitId && (command.fingerprint !== whiteboard.fingerprint || !unit)) throw new ConflictException('旁白与当前冻结白板不一致，请重新载入');
-    const audio = await this.speech.synthesize(unit?.text ?? scene.narration, command.voice);
-    this.students.assertCanAccessStudent(user, whiteboard.studentId);
+    const audio = await this.speech.synthesize(unit?.text ?? scene.narration, command.voice, signal);
+    if (signal.aborted) throw new BadRequestException('白板朗读已停止');
+    await this.store.transaction(() => {
+      const current = studioWhiteboardNarrationContext(this.store, this.students, user, id, session);
+      if (current.definitionHash !== initial.definitionHash || current.authorityHash !== initial.authorityHash)
+        throw new ConflictException('原白板内容或授权已变化，请重新打开');
+    });
     return { file: new StreamableFile(audio.content, { type: audio.contentType, disposition: 'inline', length: audio.content.length }),
       identity: unit ? { version: WHITEBOARD_SPEECH_VERSION, fingerprint: whiteboard.fingerprint, unitId: unit.id } : null };
   }

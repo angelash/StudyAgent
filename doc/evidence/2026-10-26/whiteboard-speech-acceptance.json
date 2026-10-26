@@ -1,48 +1,77 @@
 {
   "passed": false,
-  "status": "inherited-release-merged-full-api-running",
-  "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
+  "status": "current-full-api-passed-full-browser-pending",
+  "sourceRevision": "68202df",
   "deployed": false,
   "schemaVersion": 15,
   "sqliteFocused": {
-    "passed": 24,
+    "passed": 28,
     "failed": 0,
-    "studioHttp": 17,
-    "presentationPure": 4,
+    "studioHttp": 20,
+    "presentationPure": 5,
     "webmPure": 3,
-    "report": "whiteboard-speech-current/api.json"
+    "report": "whiteboard-audio-final/api.json"
   },
   "postgres": {
-    "passed": 2,
+    "passed": 4,
     "failed": 0,
     "nativeRestart": true,
-    "report": "whiteboard-speech-foundation/whiteboard-postgres.json",
-    "scope": "Whiteboard HTTP and a native storage close/reopen; not a full restore rehearsal."
+    "report": "whiteboard-audio-final/postgres.json",
+    "scope": "Native SQL reopen, held HTTP logout, separately committed binding revocation and learner epoch replacement."
   },
   "focusedBrowser": {
     "passed": 11,
     "failed": 0,
-    "retry": 0,
     "skipped": 0,
-    "report": "whiteboard-speech-current/browser.json"
+    "retry": 0,
+    "report": "whiteboard-audio-final/browser.json"
   },
   "realMediaRecorder": {
-    "actualVideo": "whiteboard-speech-current/decoded-fixture.webm",
-    "srt": "whiteboard-speech-current/decoded-fixture.srt",
-    "strictDecoder": "ffmpeg -v error -xerror, complete actual output",
-    "timeline": "Four real decoded synthetic WAV tracks, 1.25x, 6.4 seconds subtitle timeline."
+    "actualVideo": "whiteboard-audio-final/decoded-fixture.webm",
+    "srt": "whiteboard-audio-final/decoded-fixture.srt",
+    "decoder": "whiteboard-audio-final/decoder.json",
+    "samples": 311040,
+    "decodedSeconds": 6.48,
+    "timeline": "Four real synthetic WAV tracks at 1.25x, unchanged 6.4s captions, explicit 120ms silent recording tail. Head/tail markers retained.",
+    "knownToolIssue": "FFmpeg8 EOF parser message independently reproduced with a vendor-generated valid control; actual codec PCM decoding has zero stderr and head/tail marker assertions."
   },
   "realProviderSample": {
     "report": "whiteboard-speech-live-sample/receipt.json",
     "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
   },
   "limits": [
-    "Full API, complete current browser, exact CI and daemon release pending.",
+    "Current final complete API passed1258 with47 environment skips. Complete229 browser, exact candidate CI and actual production delivery remain pending.",
     "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
     "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
     "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
     "Counts overlap and are not product coverage or a percentage."
   ],
   "applicationRevision": "e0d61c8",
-  "inheritedRelease": "f747bb3b534250c2ae1144a64ae41dddfb224742"
+  "inheritedRelease": "f747bb3b534250c2ae1144a64ae41dddfb224742",
+  "fullBrowserBeforeAudioTail": {
+    "passed": 219,
+    "failed": 10,
+    "skipped": 0,
+    "retry": 0,
+    "report": "whiteboard-full-browser-before-audio-tail/browser.json",
+    "scope": "Complete current baseline before audio tail repair. All ten failures are synthetic fixture registration 429 due a shared client bucket; product rate limiting remains enabled."
+  },
+  "fullApiBeforeAudioTailAndInFlightFence": {
+    "passed": 1254,
+    "failed": 0,
+    "skipped": 45,
+    "report": "whiteboard-speech-current/full-api-before-audio-tail.json",
+    "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
+    "includesInherited121": true
+  },
+  "audioAndSessionRepairRevision": "68202df",
+  "fullApi": {
+    "passed": 1258,
+    "failed": 0,
+    "skipped": 47,
+    "report": "whiteboard-speech-current/full-api.json",
+    "originalSha256": "01c12c64e24e8fe16c05abf6a5615855e5d6f836de55385a5fc286dc0d30eca4",
+    "sourceRevision": "68202df",
+    "durationSeconds": 491.65
+  }
 }

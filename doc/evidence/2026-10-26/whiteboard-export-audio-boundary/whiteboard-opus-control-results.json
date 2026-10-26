@@ -1,0 +1,54 @@
+{
+  "encoderExit": 0,
+  "encoderStderr": "",
+  "results": [
+    {
+      "file": "whiteboard-opus-control.webm",
+      "options": [],
+      "exit": 0,
+      "stderr": "[opus @ 000001746ce2a6c0] Error parsing Opus packet header.\n"
+    },
+    {
+      "file": "whiteboard-opus-control.webm",
+      "options": [
+        "-c:a",
+        "libopus"
+      ],
+      "exit": 0,
+      "stderr": "[libopus @ 000002deb73c25c0] Error parsing Opus packet header.\n"
+    },
+    {
+      "file": "whiteboard-opus-control.webm",
+      "options": [
+        "-fflags",
+        "+noparse+nofillin"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "file": "decoded-fixture.webm",
+      "options": [],
+      "exit": 0,
+      "stderr": "[opus @ 0000025599347b80] Error parsing Opus packet header.\n"
+    },
+    {
+      "file": "decoded-fixture.webm",
+      "options": [
+        "-c:a",
+        "libopus"
+      ],
+      "exit": 0,
+      "stderr": "[libopus @ 000001ab45007b00] Error parsing Opus packet header.\n"
+    },
+    {
+      "file": "decoded-fixture.webm",
+      "options": [
+        "-fflags",
+        "+noparse+nofillin"
+      ],
+      "exit": 0,
+      "stderr": ""
+    }
+  ]
+}

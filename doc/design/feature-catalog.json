@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "dc4460e3e5cd4d6c72330e78578302a8a8369314",
+  "sourceRevision": "68202df98b40ec4f31cb12e63fca96019e94f6ff",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -343,7 +343,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 61
+              "line": 62
             }
           ],
           "sourceFiles": [
@@ -2590,12 +2590,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 874
+              "line": 880
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 590
+              "line": 596
             }
           ],
           "sourceFiles": [
@@ -2638,7 +2638,7 @@
               "controller": "LearningController",
               "method": "today",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 114
+              "line": 118
             },
             {
               "verb": "POST",
@@ -2646,19 +2646,19 @@
               "controller": "LearningController",
               "method": "start",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 120
+              "line": 124
             }
           ],
           "implementations": [
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 650
+              "line": 656
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 664
+              "line": 670
             }
           ],
           "sourceFiles": [
@@ -2702,7 +2702,7 @@
               "controller": "LearningController",
               "method": "view",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 121
+              "line": 125
             },
             {
               "verb": "GET",
@@ -2710,7 +2710,7 @@
               "controller": "LearningController",
               "method": "render",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 122
+              "line": 126
             },
             {
               "verb": "PATCH",
@@ -2718,7 +2718,7 @@
               "controller": "LearningController",
               "method": "draft",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 124
+              "line": 128
             },
             {
               "verb": "POST",
@@ -2726,7 +2726,7 @@
               "controller": "LearningController",
               "method": "submit",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 123
+              "line": 127
             },
             {
               "verb": "POST",
@@ -2734,7 +2734,7 @@
               "controller": "LearningController",
               "method": "hint",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 125
+              "line": 129
             },
             {
               "verb": "POST",
@@ -2742,39 +2742,39 @@
               "controller": "LearningController",
               "method": "complete",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 126
+              "line": 130
             }
           ],
           "implementations": [
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 706
+              "line": 712
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 724
+              "line": 730
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 742
+              "line": 748
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 762
+              "line": 768
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 823
+              "line": 829
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 834
+              "line": 840
             }
           ],
           "sourceFiles": [
@@ -2817,14 +2817,14 @@
               "controller": "LearningController",
               "method": "mistakes",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 117
+              "line": 121
             }
           ],
           "implementations": [
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 844
+              "line": 850
             }
           ],
           "sourceFiles": [
@@ -4647,7 +4647,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 66
+              "line": 67
             }
           ],
           "sourceFiles": [
@@ -4729,17 +4729,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 519
+              "line": 525
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 535
+              "line": 541
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 564
+              "line": 570
             }
           ],
           "sourceFiles": [
@@ -5371,12 +5371,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 214
+              "line": 215
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 226
+              "line": 227
             }
           ],
           "sourceFiles": [
@@ -5420,7 +5420,7 @@
             "/studio/source-courses"
           ],
           "inputs": "原白板/幕、whiteboard-speech-v1、指纹/原文单位、音色、速度、当前账号与浏览器能力",
-          "implementation": "只读派生稳定原文跨度和整项板书；新请求只合成冻结单位并在合成后再授权，旧voice-only请求保留整幕；Audio ended推进云朗读、文字显式估计，暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据，取消/录制异常不下载半成品。",
+          "implementation": "只读派生稳定原文跨度和整项板书；新请求只合成冻结单位，controller传原登录及断开信号，合成前后各在新事务核对登录、角色、监护绑定、学生授权代次和原白板摘要；退出/授权升代或撤权拒绝迟到音轨，旧voice-only请求同样保护；Audio ended推进云朗读、文字显式估计，暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据；零值活动源及120ms静音尾段保留末尾音频，不延长旁白字幕；取消/录制异常不下载半成品，后续取消录制保留原成功导出的SRT表。",
           "outputs": "当前句、完整笔记、可恢复位置、WebM和逐句SRT",
           "collections": [
             "studioWhiteboards"
@@ -5440,10 +5440,11 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 500
+              "line": 501
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/learning/studio-whiteboard-access.ts",
             "packages/contracts/src/whiteboard-speech.ts",
             "apps/web/app/studio/whiteboard-player.tsx",
             "apps/web/app/studio/whiteboard-session.tsx",
@@ -5528,17 +5529,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 258
+              "line": 259
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 319
+              "line": 320
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 329
+              "line": 330
             }
           ],
           "sourceFiles": [
@@ -5660,12 +5661,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 344
+              "line": 345
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 372
+              "line": 373
             }
           ],
           "sourceFiles": [
@@ -5737,12 +5738,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 407
+              "line": 408
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 422
+              "line": 423
             }
           ],
           "sourceFiles": [
@@ -5815,12 +5816,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 452
+              "line": 453
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 473
+              "line": 474
             }
           ],
           "sourceFiles": [
@@ -5879,7 +5880,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 100
+              "line": 104
             },
             {
               "verb": "POST",
@@ -5887,7 +5888,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 103
+              "line": 107
             },
             {
               "verb": "POST",
@@ -5895,24 +5896,24 @@
               "controller": "LearningController",
               "method": "studioStudyPlanSession",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 106
+              "line": 110
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 117
+              "line": 118
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 133
+              "line": 134
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 171
+              "line": 172
             }
           ],
           "sourceFiles": [
@@ -5970,7 +5971,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationConnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 79
+              "line": 83
             },
             {
               "verb": "POST",
@@ -5978,7 +5979,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationSync",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 82
+              "line": 86
             },
             {
               "verb": "POST",
@@ -5986,7 +5987,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationDisconnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 85
+              "line": 89
             }
           ],
           "implementations": [
@@ -6061,7 +6062,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 88
+              "line": 92
             },
             {
               "verb": "POST",
@@ -6069,7 +6070,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventUpdate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 94
+              "line": 98
             },
             {
               "verb": "POST",
@@ -6077,7 +6078,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 91
+              "line": 95
             },
             {
               "verb": "POST",
@@ -6085,7 +6086,7 @@
               "controller": "LearningController",
               "method": "studioCalendarBatchRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 97
+              "line": 101
             }
           ],
           "implementations": [
@@ -6165,7 +6166,7 @@
               "controller": "LearningController",
               "method": "studioCalendarExport",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 110
+              "line": 114
             }
           ],
           "implementations": [

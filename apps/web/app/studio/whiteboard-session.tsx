@@ -216,17 +216,18 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     try {
       prepared = await prepareWhiteboardExport(board, presentation, mode, voice, speed, request.signal,
         index => setExporting('正在准备音轨 ' + index + ' / ' + units.length));
-      assertWhiteboardActive(request.signal); setPreparedTimeline(prepared.timeline);
+      assertWhiteboardActive(request.signal);
       if (video) {
         setExporting('正在实时录制 WebM，可随时取消…');
         const blob = await recordWhiteboardVideo(canvas.current!, prepared, request.signal, (item, fraction) => {
           const context = canvas.current?.getContext('2d'), currentScene = board.scenes.find(scene => scene.id === item.sceneId);
           if (context && currentScene) drawWhiteboardScene(context, currentScene, fraction, images, item);
         });
-        assertWhiteboardActive(request.signal); saveBlob(blob, '.webm');
+        assertWhiteboardActive(request.signal); saveBlob(blob, '.webm'); setPreparedTimeline(prepared.timeline);
         setNotice(mode === 'cloud' ? '带云语音的 WebM 已生成；导出字幕将使用相同音轨时间表。' : '无声 WebM 已生成，采用估计阅读时长；字幕使用相同时间表。');
       } else {
         saveBlob(new Blob([whiteboardSrt(prepared.timeline)], { type: 'application/x-subrip;charset=utf-8' }), '.srt');
+        setPreparedTimeline(prepared.timeline);
         setNotice(mode === 'cloud' ? '字幕使用实际解码音轨时长。' : '字幕使用估计阅读时长。');
       }
     } catch (error) {
@@ -248,7 +249,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <label className="sa-whiteboard-scrubber"><span className="sr-only">播放进度（{activeTimeline.kind === 'decoded-audio' ? '实际音轨' : '估计阅读'}）</span>
         <input type="range" min={0} max={1000} disabled={exporting !== null || !unit} value={Math.round(ratio * 1000)} onChange={event => {
           const at = Number(event.target.value) / 1000 * activeTimeline.durationMs;
-          const index = Math.max(0, activeTimeline.entries.findIndex(row => row.toMs >= at));
+          const found = activeTimeline.entries.findIndex(row => row.toMs >= at);
+          const index = found < 0 ? activeTimeline.entries.length - 1 : found;
           const current = activeTimeline.entries[index]; if (current) go(index, Math.min(1, Math.max(0, (at - current.fromMs) / (current.toMs - current.fromMs))));
         }} /></label>
       <div className="sa-whiteboard-controls">

@@ -66,7 +66,11 @@ export class LearningController {
   }
   @Post('studio/whiteboards/:id/narration/:sceneId') async studioWhiteboardNarration(@Req() req: AuthenticatedRequest,
     @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response) {
-    const result = await this.learning.studioWhiteboardNarration(req.user, id, sceneId, input);
+    const controller = new AbortController(), disconnect = () => { if (!req.res?.writableEnded) controller.abort(); };
+    req.res?.once('close', disconnect);
+    let result: Awaited<ReturnType<LearningService['studioWhiteboardNarration']>>;
+    try { result = await this.learning.studioWhiteboardNarration(req.user, id, sceneId, input, req.authSession, controller.signal); }
+    finally { req.res?.off('close', disconnect); }
     response.setHeader('Cache-Control', 'private, no-store');
     if (result.identity) {
       response.setHeader('Access-Control-Expose-Headers', 'X-Whiteboard-Presentation, X-Whiteboard-Fingerprint, X-Whiteboard-Unit');
