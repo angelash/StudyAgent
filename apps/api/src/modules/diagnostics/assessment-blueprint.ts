@@ -65,7 +65,7 @@ export function selectBlueprintItems(command: DiagnosticStart, candidates: Measu
   const stopReason = verification?.fullyCovered ? 'verification_groups' : selected.length >= policy.itemLimit ? 'item_budget' : unused ? 'time_budget' : 'available_families';
   const warnings: string[] = [];
   if (coverage.some(point => point.selected < point.required)) warnings.push(`${coverage.filter(point => point.selected < point.required).length} 个点本次证据覆盖不足，结果会保留未知或待补充。`);
-  if (selected.some(item => seen.has(item.questionId))) warnings.push('部分题目曾在学习活动中出现，将保留表现但不增加独立样本。');
+  if (selected.some(item => seen.has(item.questionId))) warnings.push('部分题目已有接触或选入练习，将保留表现但不增加独立样本。');
   if (command.maxItems && command.maxItems > policy.cap) warnings.push(`此类评测最多安排${policy.cap}题，以保持单次学习负担合适。`);
   if (verification && !verification.fullyCovered) warnings.push('当前题组尚未完整安排原因核查所需的对照观察；完成后仍须保留缺口，不能仅凭本组确认原因。');
   const groups: AssessmentBlueprint['groups'] = [];

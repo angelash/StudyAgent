@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-26T16:53:52.740Z",
+  "status": "original-paper-exposure-reproduced-through-formal-HTTP-assessment",
+  "baselineRevision": "c8fb91e8270a8c0e3b781c4182cb88780963af81",
+  "designRevision": "8593fa3",
+  "deployed": false,
+  "tests": {
+    "passed": 2,
+    "failed": 1
+  },
+  "finding": "A selected original question from the actual learner account was included in a formal verification session as an independent new probe. Guardian rehearsal and mismatched source identities were separate passing controls.",
+  "files": [
+    {
+      "source": "data/qa/paper-review-exposure-before.json",
+      "file": "paper-review-exposure-before.json.gz",
+      "originalSha256": "0c9cdf59f6db0eebc58b60bad072f8a039171d177dd1e32005d1cc9f455bd6b7",
+      "sha256": "5f1b33a146ca66ca65a7dc49ddd812243840977378914c24485ebe663848be14"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
+      "file": "paper-exposure.integration.test.ts.gz",
+      "originalSha256": "74e152134083e19709cce49414d7a2ccb3a7d0368e65f60f3926cfa3c994c19b",
+      "sha256": "7bbda477dd503fa52d929fca2893a5b86236b088611f1c29ab71bb661955d958"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "file": "diagnostics.service.ts.gz",
+      "originalSha256": "170d3929ee37f7288536cd5fa4ec19f1f1d7e7eb71f37bee974d440509ca1d70",
+      "sha256": "739f9c671987c4c2feadef5014432daa6866b7a284bda6bdcead0247254cad72"
+    }
+  ]
+}

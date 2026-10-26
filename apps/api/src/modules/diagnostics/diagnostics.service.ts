@@ -24,6 +24,7 @@ import { observedPerformance } from './observations';
 import { componentObservations } from './component-observations';
 import { verificationBlueprint, verificationResult } from './verification-blueprint';
 import { FAMILY_IDENTITY_VERSION, LEGACY_FAMILY_IDENTITY_VERSION, canonicalFamily, familyAnalysisOutdated, familyIdentityAffectsAtom } from './family-identity';
+import { originalPaperExposure } from './paper-exposure';
 
 @Injectable()
 export class DiagnosticsService {
@@ -97,6 +98,7 @@ export class DiagnosticsService {
     const seen = new Set([
       ...this.store.select('diagnosticSessions', { studentId: command.studentId }).flatMap((item) => item.questionSnapshots.map((entry) => entry.id)),
       ...this.store.select('practiceSessions', { studentId: command.studentId }).flatMap((item) => item.questionIds),
+      ...originalPaperExposure(this.store, command.studentId),
     ]);
     const atomMap = new Map(this.store.inspect('knowledgeAtoms').map((item) => [item.id, item]));
     const candidates = eligibleMeasurements(this.store, [...targetSet]).filter((item) => {
@@ -120,7 +122,7 @@ export class DiagnosticsService {
         return structuredClone({ id: question.id, stem: question.stem, answer: question.answer, analysis: question.analysis,
           document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
       }), coverage, selectionReasons: Object.fromEntries(selected.map((item) => [item.id,
-        `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${canonicalFamily(item)}${seen.has(item.questionId) ? ' · 曾作答，不增加独立样本' : ''}`])),
+        `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${canonicalFamily(item)}${seen.has(item.questionId) ? ' · 已接触或选入练习，不增加独立样本' : ''}`])),
       seed, algorithmVersion: blueprint.version, startedAt: new Date().toISOString(), completedAt: null,
       exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
@@ -376,7 +378,7 @@ export class DiagnosticsService {
       elapsedMs: command.elapsedMs, hintLevel: Math.max(0, ...this.store.select('diagnosticHints', { sessionId: sessionId, itemId: mapping.id }).map((item) => item.level)),
       observationCode: grade.correct === false ? command.disposition === 'dont_know' ? 'reported_dont_know' : mapping.observationCode : null,
       gradingReason: grade.reason, retentionDelayDays: session.intent === 'retest' ? delay : null,
-      priorExposure: session.exposedQuestionIds?.includes(mapping.questionId) ?? false,
+      priorExposure: Boolean(session.exposedQuestionIds?.includes(mapping.questionId) || originalPaperExposure(this.store, session.studentId).has(mapping.questionId)),
       submittedAt: new Date().toISOString(), gradingVersion: 'deterministic-rubric-v2', requestKey: command.requestKey ?? `${sessionId}:${mapping.id}`,
       ...(commandHash ? { requestHash: commandHash } : {}),
       ...('scoreDetails' in grade && grade.scoreDetails ? { scoreDetails: grade.scoreDetails } : {}),

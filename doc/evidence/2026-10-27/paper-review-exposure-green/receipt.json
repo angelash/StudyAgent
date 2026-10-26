@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-26T16:57:45.691Z",
+  "status": "source-exposure-and-existing-measurement-regression-pass",
+  "deployed": false,
+  "counts": {
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scope": "Six exposure cases,28 scope/measurement/guidance cases and six hypothesis contrast cases; overlaps broader suites and is not complete128 or product acceptance.",
+  "coverage": [
+    "Learner selected sources without answers exclude future fresh probes.",
+    "Guardian private rehearsal and mismatched source identities remain separate.",
+    "Exposed baseline responses preserve correctness with priorExposure=true.",
+    "Unsplit whole-paper reservation conservatively excludes derived probes and keeps missing coverage unknown.",
+    "A paper opened after assessment start is rechecked at submission without rewriting the frozen selection."
+  ],
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/modules/diagnostics/paper-exposure.js": "ec8b630550e7382c624487e811e5dee2882df1a81e8a1318a6166fe2d78d0d52",
+    "apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js": "8acde35dc9f86ecec09a85561644fdca3762d5165a937f388d17ed35967ff6ba",
+    "apps/api/dist/apps/api/src/modules/diagnostics/assessment-blueprint.js": "17564fd5f6a0c33fe4e0622ee01c30c335c4560d5f176800fe6d7051779a3faf"
+  },
+  "files": [
+    {
+      "source": "data/qa/paper-review-exposure-regression.json",
+      "file": "paper-review-exposure-regression.json.gz",
+      "originalSha256": "fb1297d3cfa3095f2365c4ca53b2a9a1b360001c33458b65dbe482e4a6024e31",
+      "sha256": "456f79a202c48fab22f7d5ab370aee60a7000decfcf37bf1d8870133499908b0"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
+      "file": "paper-exposure.integration.test.ts.gz",
+      "originalSha256": "f42fafcc006b50b47d6fae9713985d78da9607fa01a1ac448553412611d7c6a6",
+      "sha256": "67ad30cc4afbfc3c19d1dea92ca22db0c554b5103b8f74f07da980f94633ac8b"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/paper-exposure.ts",
+      "file": "paper-exposure.ts.gz",
+      "originalSha256": "d47fc1389a1834274ddc6080d5e99724cbc000c2dd3dd365c53e8a43a855ced2",
+      "sha256": "f0ec1138c8872288c34c72f6302a751cc6c0a3f53dbb00b158369e43c85a6e2a"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "file": "diagnostics.service.ts.gz",
+      "originalSha256": "faa49e787db104528f2512a3a7d2147a2e3c86043adbe8a4919bcc9903348e83",
+      "sha256": "54b9e1977b87cf79e578494a9a8d4660fd6daddeb6093319dab1d35e07e83b2b"
+    },
+    {
+      "source": "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
+      "file": "assessment-blueprint.ts.gz",
+      "originalSha256": "d72cd8485c9696e617fcf680ef7972a3c3a05f4eacbc6301d9edfd2bba5a46b1",
+      "sha256": "9e83285b9db89e654ecb68410b43e2958d9c7c08af7861355e5da43e2d50ebe0"
+    }
+  ]
+}
