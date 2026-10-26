@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-26T18:33:38.542Z",
+  "status": "complete-local-api-suite-passed",
+  "deployed": false,
+  "overallProductComplete": false,
+  "head": "60263b35909eef59befca3a8cf331cdf9815a667",
+  "counts": {
+    "passed": 1354,
+    "failed": 0,
+    "environmentSkipped": 54,
+    "total": 1408
+  },
+  "testFiles": {
+    "total": 163,
+    "withPassedTests": 153,
+    "onlyEnvironmentSkipped": 10,
+    "note": "Classified from assertion statuses; Vitest JSON labels skipped-only files as passed."
+  },
+  "environment": {
+    "NODE_ENV": "test",
+    "STUDY_SEED_FOUNDATION": true,
+    "STUDY_WORKER_ENABLED": false,
+    "XIAOJIU_CHAT_ENABLED": false
+  },
+  "scope": "Complete existing API suite using the frozen isolated compiled API; explicit authored foundation enabled for legacy native durability journeys. No API or QA Web rebuild during the browser acceptance.",
+  "sourceSha256": {
+    "apps/api/src/common/auth.guard.ts": "de4c76f97ec4e6bfdf451d7b44f19b3156f49c3a517d3614355ddb0329c9bc7e",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d72cd8485c9696e617fcf680ef7972a3c3a05f4eacbc6301d9edfd2bba5a46b1",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "bb79fef030070457b65c39a10bdffc9a2de991c51301140256b39bb78b87e8e8",
+    "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts": "f42fafcc006b50b47d6fae9713985d78da9607fa01a1ac448553412611d7c6a6",
+    "apps/api/src/modules/diagnostics/paper-exposure.ts": "d47fc1389a1834274ddc6080d5e99724cbc000c2dd3dd365c53e8a43a855ced2",
+    "apps/api/src/modules/library/measurement-content.integration.test.ts": "b00c09737ed641a3f2f3b496c93ee86d51063165c0667d8158c82e61e2b90612",
+    "apps/api/src/modules/library/paper-practice-record.ts": "e8455b97a53b69519fe073167174a204f24d14ff4dfa32dc6096ad789d5c5fc1",
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": "c3bc0bb3386cfd585b4f3d4aad8b633879c24b4d2c133bb2ae39f0394c0c11cf",
+    "apps/api/src/modules/library/paper-practice.controller.ts": "c3a41123a9a22ada7dc5b1f088aff8dca79b342ded0f4784ba01aa8f4cf893ff",
+    "apps/api/src/modules/library/paper-practice.integration.test.ts": "1562ff803b5abf9a26874d150043c5cdacaeff580aeebaae54e93218f601a5c5",
+    "apps/api/src/modules/library/paper-practice.service.ts": "f98447911ddcb950fce4a30f5cd0bf0fba563d06c7721587a81526338680f851",
+    "apps/api/src/modules/library/paper-review-eligibility.ts": "6af7e9c3375ae298a4eb7ec0748847bcdb7d536abbe3b186e2fdd9ed055d5f09",
+    "apps/api/src/modules/library/paper-review-organization.ts": "f62411d091cde2787d4015d5134729221ef3103e7888b25e09e18d087215b12d",
+    "apps/api/src/modules/library/paper-review-query.ts": "29918933fb66b1a8eee2cf85122d7233d85714b46083f1bea75b5deab63259a1",
+    "apps/api/src/modules/privacy/privacy-records.ts": "aa8d3f0da13fb0385b6345f5fe7a2776cd6ae6eb17ec8ddf42e427d19277799b",
+    "packages/contracts/src/diagnostics.ts": "aae59dc8df7a3927ca3eeb1172c44ee133daad16ac328475fd3455efdfb03e75",
+    "packages/contracts/src/index.ts": "99bf020698e781cbe8b31f97eb6f25534bf3798031edc0adfd98dd83428a6ff6",
+    "packages/contracts/src/paper-practice.ts": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792",
+    "packages/contracts/src/paper-review.ts": "4c47fd5747211fb03bc44ba922a739cec3d0ab7dc4c3020dc5a8fa95a3d35a73"
+  },
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/common/auth.guard.js": "1d9d8a829a049b1c5016749e83789df559db7b88ffea5a787b92d0491d8f0ec4",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.service.js": "541886fa298a0a1af416168cd15d3b801d32ea8fe0ee765412fb963147ad090f",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice-record.js": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.controller.js": "bd8495caf3a3114215af519780eaea1dbdf5eae38b5f0a3fe18eec2676b0ef29",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-query.js": "aa99f480839d18efe157703beddd84b83b7a0600bbea87e79df8a04dc0cced57",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-organization.js": "7554522717647f94291505be0d2eef79082357687a6f102ea117f2dc07a322f7",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-eligibility.js": "c54abeed0d6857a0ccd5668f5fbd0af84df80bc44387c89ac40e52b947ed9998",
+    "apps/api/dist/apps/api/src/modules/diagnostics/paper-exposure.js": "ec8b630550e7382c624487e811e5dee2882df1a81e8a1318a6166fe2d78d0d52",
+    "apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js": "f8609bec2ec6bc21954f4be8a68e7c57073f08980b0acdad182b0573ac0ede98",
+    "apps/api/dist/apps/api/src/modules/privacy/privacy-records.js": "f863c8525895aa32b739ef30d6b96c46d2cac2b14d487f1d9de2045fc05904ce",
+    "packages/contracts/dist/index.js": "f3659fe5de192e800f94faf489db6874e44c176502f7d0298c7d67d3d7b7792c",
+    "packages/config/dist/index.js": "e270598a6af676f2aa125d3f4ebc4a291d15917b46fc7e2b23f2d036f61c065d"
+  },
+  "files": [
+    {
+      "source": "data/qa/paper-review-full-api-seeded.json",
+      "file": "data__qa__paper-review-full-api-seeded.json.gz",
+      "originalSha256": "499689d59f8ea4610b548f390e3509cc2032038be0e3c396c5454d312a898497",
+      "sha256": "6d783d2ed9867650d620329baeea5bf62d223891fb7530c9be33cfb25d0b3f8d"
+    },
+    {
+      "source": "data/qa/paper-review-full-api-seeded.log",
+      "file": "data__qa__paper-review-full-api-seeded.log.gz",
+      "originalSha256": "bf4b5f7b00747df5a1ae1e58574e7985740c9a47f720361fd5df32ed8bfe705f",
+      "sha256": "568eb79c0d2dc148a1947525e92337caf03ef62e245e70461373942e2d25e92c"
+    },
+    {
+      "source": "data/qa/paper-review-final-lint-after-recovery.log",
+      "file": "data__qa__paper-review-final-lint-after-recovery.log.gz",
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "sha256": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e"
+    },
+    {
+      "source": "data/qa/paper-review-release-web-build.log",
+      "file": "data__qa__paper-review-release-web-build.log.gz",
+      "originalSha256": "e88a7f9f937ae9c6800b6c6a46f0edb3f63a2a79ee80cc0b827dfe5570999007",
+      "sha256": "5c1003e0ebc92aca7813e958959e9330d896010d73c9e9a9aae0596b1a6d879e"
+    }
+  ],
+  "reporterSuites": {
+    "total": 336,
+    "passed": 336,
+    "pending": 0
+  }
+}

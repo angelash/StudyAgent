@@ -2,7 +2,7 @@
 
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
 
-2026-10-27当前账本核对：72项实际为11 implemented、49 in_progress、12 planned、0 verified。127原卷练习已完成精确CI与主目录schema18守护交付，见[最终验收](../../evidence/2026-10-27/paper-practice-acceptance.json)；XP-H03由planned改为in_progress，原全部验收要求保留。126知识点报告继续作为I的既有实现；128复习整理、再练/新题尚在隔离开发。各条完整范围、全教材/题族与教师/设备/长期验证均未代替。当前版本和后续M1～M7以[总进度105](../105-development-plan-status-and-next-milestones.md)首段为准，下面带日期的旧核对保留为历史。
+2026-10-27当前账本核对：72项为11 implemented、50 in_progress、11 planned、0 verified。128原卷复习已正式交付，见[最终验收](../../evidence/2026-10-27/paper-review-acceptance.json)。XP-H06因真实复习回流接通改为in_progress，异步导出中心和原全部验收要求仍待。完整M1～M7保持，129原始教学字体和外壳独立推进。下面旧核对保留历史。
 
 2026-10-24核对：11项implemented、46项in_progress、15项planned，尚无整条verified。26项planned→in_progress是纠正已有部分实现，不是本轮新增交付。各领域的当前基础、具体缺口、版本/运行边界和M0～M7顺序见[整体进度与里程碑105](../105-development-plan-status-and-next-milestones.md)；72项前后状态及源码/测试/历史证据映射见[核对数据](../../evidence/2026-10-24/development-plan-audit.json)。implemented和in_progress均须继续完成原条目的全部验收，不能换算为完成率。
 
@@ -165,7 +165,7 @@ GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真�
 ### XP-H05 PDF/DOCX与打印 [in_progress]
 题序、留白、答案分离、公式表格、页码来源可预览，异步产物受控下载。验收：实际渲染/打开及实体打印，无截断/丢图/错分页。
 
-### XP-H06 异步中心与复习回流 [planned]
+### XP-H06 异步中心与复习回流 [in_progress]
 导出/处理记录可取消、恢复、重试，错题能进入新题复习。验收：完成文件真实存在且可读，任务成功不等于教学审核通过。
 
 ## I. 评测、原因、指导与复盘 / E06

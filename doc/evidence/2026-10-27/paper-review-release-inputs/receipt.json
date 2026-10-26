@@ -1,0 +1,112 @@
+{
+  "at": "2026-10-26T18:54:37.628Z",
+  "status": "fixed-input-local-validation-complete",
+  "deployed": false,
+  "overallProductComplete": false,
+  "applicationRevision": "60263b35909eef59befca3a8cf331cdf9815a667",
+  "apiRevision": "098820883a2dc5c02296efe5190d816949565013",
+  "schemaVersion": 18,
+  "sourceSha256": {
+    "apps/api/src/common/auth.guard.ts": "de4c76f97ec4e6bfdf451d7b44f19b3156f49c3a517d3614355ddb0329c9bc7e",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": "d72cd8485c9696e617fcf680ef7972a3c3a05f4eacbc6301d9edfd2bba5a46b1",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": "bb79fef030070457b65c39a10bdffc9a2de991c51301140256b39bb78b87e8e8",
+    "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts": "f42fafcc006b50b47d6fae9713985d78da9607fa01a1ac448553412611d7c6a6",
+    "apps/api/src/modules/diagnostics/paper-exposure.ts": "d47fc1389a1834274ddc6080d5e99724cbc000c2dd3dd365c53e8a43a855ced2",
+    "apps/api/src/modules/library/measurement-content.integration.test.ts": "b00c09737ed641a3f2f3b496c93ee86d51063165c0667d8158c82e61e2b90612",
+    "apps/api/src/modules/library/paper-practice-record.ts": "e8455b97a53b69519fe073167174a204f24d14ff4dfa32dc6096ad789d5c5fc1",
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": "c3bc0bb3386cfd585b4f3d4aad8b633879c24b4d2c133bb2ae39f0394c0c11cf",
+    "apps/api/src/modules/library/paper-practice.controller.ts": "c3a41123a9a22ada7dc5b1f088aff8dca79b342ded0f4784ba01aa8f4cf893ff",
+    "apps/api/src/modules/library/paper-practice.integration.test.ts": "1562ff803b5abf9a26874d150043c5cdacaeff580aeebaae54e93218f601a5c5",
+    "apps/api/src/modules/library/paper-practice.service.ts": "f98447911ddcb950fce4a30f5cd0bf0fba563d06c7721587a81526338680f851",
+    "apps/api/src/modules/library/paper-review-eligibility.ts": "6af7e9c3375ae298a4eb7ec0748847bcdb7d536abbe3b186e2fdd9ed055d5f09",
+    "apps/api/src/modules/library/paper-review-organization.ts": "f62411d091cde2787d4015d5134729221ef3103e7888b25e09e18d087215b12d",
+    "apps/api/src/modules/library/paper-review-query.ts": "29918933fb66b1a8eee2cf85122d7233d85714b46083f1bea75b5deab63259a1",
+    "apps/api/src/modules/privacy/privacy-records.ts": "aa8d3f0da13fb0385b6345f5fe7a2776cd6ae6eb17ec8ddf42e427d19277799b",
+    "apps/web/app/library/practice/review.css": "87176bd432b2a26665d718d280f3fa40bb93d5a165affa4360ae59a16ec81ee5",
+    "apps/web/app/library/practice/review/page.tsx": "10709c6711eed66fd36e2dab95291a1911ce62be552e0f59d0ee4bd9321b6883",
+    "apps/web/app/library/practice/review/studio.tsx": "c7d15f8a331012da41498204e97c91318d2a7570584c42b3a9591db76cb83e46",
+    "apps/web/app/library/practice/session.tsx": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+    "apps/web/app/library/practice/studio.tsx": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+    "apps/web/app/student/assessment/studio.tsx": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+    "apps/web/app/studio/calendar-board.tsx": "429d4c03e7ead3d61eabf104505092b34209ee6f5ddca59fe152eef8e39aedac",
+    "apps/web/app/studio/integration-calendar.tsx": "49a1e6126166abe22e7bfa071c3d3d17f6c706a6d7705976704a0808c2a79e3e",
+    "apps/web/app/studio/paper-review-calendar.tsx": "3a8a4b2f5c1a62993eaef56269ac2153d6cd24779f796fb38b22964771763ca3",
+    "apps/web/app/studio/studio.tsx": "2402453fa1449d3bd733c0069fc13382a6bf714ce214f3eb8f7f92963d6aa225",
+    "apps/web/app/studio/workspace.css": "bcc58c8c1f18c738a9ae35381d1f2feeb298c2f82dcd3263a15612aff44c42dc",
+    "apps/web/components/paper-practice-launcher.tsx": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d",
+    "apps/web/components/paper-review-editor.tsx": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
+    "apps/web/components/paper-review-next-steps.tsx": "8b3a54a1e400825ba64ead7532e9fd451f42ad649b0fd74702f843f9c465ae10",
+    "apps/web/lib/paper-review-navigation.ts": "f0d4ad82930a81a9e32285cf23da1d6e6ee578ddf9b920b7b50b356461beab28",
+    "packages/contracts/src/diagnostics.ts": "aae59dc8df7a3927ca3eeb1172c44ee133daad16ac328475fd3455efdfb03e75",
+    "packages/contracts/src/index.ts": "99bf020698e781cbe8b31f97eb6f25534bf3798031edc0adfd98dd83428a6ff6",
+    "packages/contracts/src/paper-practice.ts": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792",
+    "packages/contracts/src/paper-review.ts": "4c47fd5747211fb03bc44ba922a739cec3d0ab7dc4c3020dc5a8fa95a3d35a73",
+    "tests/e2e/paper-practice.spec.ts": "c39f380e9eba367889825215a6347f4cfeb364a7cd6c6da03886fd9bd40884b9"
+  },
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/common/auth.guard.js": "1d9d8a829a049b1c5016749e83789df559db7b88ffea5a787b92d0491d8f0ec4",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.service.js": "541886fa298a0a1af416168cd15d3b801d32ea8fe0ee765412fb963147ad090f",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice-record.js": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.controller.js": "bd8495caf3a3114215af519780eaea1dbdf5eae38b5f0a3fe18eec2676b0ef29",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-query.js": "aa99f480839d18efe157703beddd84b83b7a0600bbea87e79df8a04dc0cced57",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-organization.js": "7554522717647f94291505be0d2eef79082357687a6f102ea117f2dc07a322f7",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-eligibility.js": "c54abeed0d6857a0ccd5668f5fbd0af84df80bc44387c89ac40e52b947ed9998",
+    "apps/api/dist/apps/api/src/modules/diagnostics/paper-exposure.js": "ec8b630550e7382c624487e811e5dee2882df1a81e8a1318a6166fe2d78d0d52",
+    "apps/api/dist/apps/api/src/modules/diagnostics/diagnostics.service.js": "f8609bec2ec6bc21954f4be8a68e7c57073f08980b0acdad182b0573ac0ede98",
+    "apps/api/dist/apps/api/src/modules/privacy/privacy-records.js": "f863c8525895aa32b739ef30d6b96c46d2cac2b14d487f1d9de2045fc05904ce",
+    "packages/contracts/dist/index.js": "f3659fe5de192e800f94faf489db6874e44c176502f7d0298c7d67d3d7b7792c",
+    "packages/config/dist/index.js": "e270598a6af676f2aa125d3f4ebc4a291d15917b46fc7e2b23f2d036f61c065d"
+  },
+  "qaWeb": {
+    "buildId": "yVzOk7n8ZmHxIVKUP-QWI",
+    "sourceSha256": {
+      "app/library/practice/review.css": "87176bd432b2a26665d718d280f3fa40bb93d5a165affa4360ae59a16ec81ee5",
+      "app/library/practice/review/page.tsx": "10709c6711eed66fd36e2dab95291a1911ce62be552e0f59d0ee4bd9321b6883",
+      "app/library/practice/review/studio.tsx": "c7d15f8a331012da41498204e97c91318d2a7570584c42b3a9591db76cb83e46",
+      "app/library/practice/session.tsx": "ce98b4d65060e561a98489b10badf50043f898af02b8b3f5d7ea0594ae507d74",
+      "app/library/practice/studio.tsx": "27184a7815bc02da2a97d08472853636abfd357a0fa0b1dccfe76d451d91d3ea",
+      "app/student/assessment/studio.tsx": "cab7a0c2da80f1ae4167ef92d8574bc5f55a11f08b2679d8fc9eb4928b55d765",
+      "app/studio/calendar-board.tsx": "429d4c03e7ead3d61eabf104505092b34209ee6f5ddca59fe152eef8e39aedac",
+      "app/studio/integration-calendar.tsx": "49a1e6126166abe22e7bfa071c3d3d17f6c706a6d7705976704a0808c2a79e3e",
+      "app/studio/paper-review-calendar.tsx": "3a8a4b2f5c1a62993eaef56269ac2153d6cd24779f796fb38b22964771763ca3",
+      "app/studio/studio.tsx": "2402453fa1449d3bd733c0069fc13382a6bf714ce214f3eb8f7f92963d6aa225",
+      "app/studio/workspace.css": "bcc58c8c1f18c738a9ae35381d1f2feeb298c2f82dcd3263a15612aff44c42dc",
+      "components/paper-practice-launcher.tsx": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d",
+      "components/paper-review-editor.tsx": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
+      "components/paper-review-next-steps.tsx": "8b3a54a1e400825ba64ead7532e9fd451f42ad649b0fd74702f843f9c465ae10",
+      "lib/paper-review-navigation.ts": "f0d4ad82930a81a9e32285cf23da1d6e6ee578ddf9b920b7b50b356461beab28"
+    }
+  },
+  "api": {
+    "passed": 1354,
+    "failed": 0,
+    "environmentSkipped": 54,
+    "total": 1408,
+    "sha256": "499689d59f8ea4610b548f390e3509cc2032038be0e3c396c5454d312a898497",
+    "receipt": "../paper-review-api-green/receipt.json"
+  },
+  "browser": {
+    "passed": 315,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "originalAttempts": 315,
+    "sha256": "be44547ebaf4b8ccfd453adb56ffc9e2b369969b248b8691d8b82976b3eacd18",
+    "receipt": "../paper-review-full-local/receipt.json"
+  },
+  "postgres": {
+    "passed": 23,
+    "failed": 0,
+    "sha256": "aeee0f74bb0bc9290523a0026eca3d3a682120c7e9944d59be72000384a1607a"
+  },
+  "design": {
+    "receipt": "../../../design/generated/design-validation.json",
+    "sourceRevision": "60263b35909eef59befca3a8cf331cdf9815a667",
+    "viewerChecks": 10
+  },
+  "boundaries": [
+    "Exact three-job remote CI and original315 zero-retry browser report still required.",
+    "Production remains127 while128 is frozen; no teacher, original full HyperKnow visual/audio, real-device or long-term acceptance.",
+    "129 original assets are on a separate worktree and are not part of this candidate."
+  ]
+}
