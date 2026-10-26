@@ -28,7 +28,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
   }
@@ -75,6 +75,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomTurns', row => row.ownerUserId === actorId);
+  add(result, store, 'whiteboardQuestionTurns', row => row.ownerUserId === actorId);
   add(result, store, 'classroomCodeDrafts', row => row.ownerUserId === actorId);
   add(result, store, 'classroomVisuals', row => row.ownerUserId === actorId);
   add(result, store, 'studioTopicWhiteboardVisuals', row => row.ownerUserId === actorId);
@@ -110,7 +111,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
     activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
-    conversations: count('assistantMessages', 'assistantTurns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
+    conversations: count('assistantMessages', 'assistantTurns', 'whiteboardQuestionTurns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
   return digest({ context, collections: Object.keys(selection).sort().map(name => [name, [...selection[name]].sort((a, b) => recordId(a).localeCompare(recordId(b)))]) });
@@ -166,6 +167,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .map(({ answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests,sourceCheckSources:_sourceCheckSources, ...row }) => row);
     else if (name === 'classroomCodeDrafts') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, baseHash: _base, ...row }) => row);
+    else if (name === 'whiteboardQuestionTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||
+      (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
+      .map(({ authorization: _auth, prepared: _prepared, history: _history, inputHash: _hash, definitionHash: _definition, taskId: _task, commands: _commands, ...row }) => row);
     else if (name === 'classroomTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({ authorization: _auth, context: _context, history: _history, inputHash: _hash, lessonHash: _lesson, taskId: _task, ...row }) => row);

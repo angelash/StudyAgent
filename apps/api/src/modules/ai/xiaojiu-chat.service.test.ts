@@ -127,11 +127,11 @@ describe('XiaojiuChatService', () => {
       context: JSON.stringify({ report: { summary: '已有证据' }, evidenceIds: ['evidence-1'] }),
       history: [], message: '下一步做什么？',
     });
-    queueMicrotask(() => {
+    child.stdin.once('finish', () => queueMicrotask(() => {
       child.stdout.write(JSON.stringify({ type: 'item.completed', item: { type: 'agent_message',
         text: JSON.stringify({ reply: '先核对公开证据，再安排新题验证。', evidenceIds: ['evidence-1'] }) } }) + '\n');
       child.stdout.end(); child.stderr.end(); child.emit('close', 0);
-    });
+    }));
     try {
       const result = await promise;
       expect(result).toMatchObject({ modelId: 'claude-opus-5.5', modelName: 'Claude Opus 5.5',
@@ -143,6 +143,12 @@ describe('XiaojiuChatService', () => {
       expect(args.join(' ')).toContain('-m claude-opus-5.5');
       expect(args).not.toContain('--ignore-user-config');
       expect(args).toContain('--output-schema');
+      const options = spawnMock.mock.calls[0][2] as { cwd: string; env: NodeJS.ProcessEnv };
+      expect(options.cwd).not.toBe(process.cwd());
+      expect(options.cwd).toContain('empty-work');
+      expect(options.env.MINIMAX_API_KEY).toBeUndefined();
+      expect(args).toContain('features.shell_tool=false');
+      expect(args).toContain('developer_instructions=""');
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }

@@ -193,6 +193,9 @@ export class DomainDatabase {
       { name: 'paper_practice_creation_request', collection: 'paperPracticeSessions', fields: ['ownerUserId', 'requestKey'] },
       { name: 'paper_practice_command_request', collection: 'paperPracticeCommands', fields: ['sessionId', 'ownerUserId', 'requestKey'] },
     ]);
+    await this.migrateConstraints(19, [
+      { name: 'whiteboard_question_request', collection: 'whiteboardQuestionTurns', fields: ['ownerUserId', 'requestKey'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

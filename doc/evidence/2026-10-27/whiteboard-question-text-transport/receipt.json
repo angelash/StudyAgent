@@ -1,0 +1,141 @@
+{
+  "at": "2026-10-26T23:00:20.049Z",
+  "passed": true,
+  "deployed": false,
+  "toolFlagOnlyAttempts": {
+    "runs": 3,
+    "notSufficient": true
+  },
+  "unit": {
+    "passed": 19,
+    "failed": 0,
+    "first": {
+      "passed": 18,
+      "failed": 1,
+      "reason": "Existing mock emitted its close event before asynchronous local transport startup. Fixture now emits after stdin finish."
+    }
+  },
+  "futureSchemaScoped": {
+    "passed": 5,
+    "failed": 0,
+    "environmentSkipped": 1,
+    "scope": "Only the affected future-schema suites rerun. Full1404/2 original retained separately; no claim of a new complete green API run."
+  },
+  "installedCliSynthetic": {
+    "models": 21,
+    "requests": 22,
+    "allForwardedToolsEmpty": true,
+    "scope": "Installed CLI through production transport to local synthetic upstream; no real model or actual tool execution."
+  },
+  "realDefaultModel": {
+    "at": "2026-10-26T22:44:46.370Z",
+    "scope": "One real Xiaojiu default-model anonymous structured call through the new text transport. Not an all-provider live test or teaching-quality approval.",
+    "passed": true,
+    "elapsedMs": 5287,
+    "result": {
+      "reply": "长度数值只有配上相同单位才有可比性，单位不同时，数字大小不能直接说明长短。先统一单位，才能排除单位差异并准确比较实际长度。",
+      "evidenceIds": [],
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash"
+    }
+  },
+  "sourceOnlyProbeFailure": "Initial transport probe module path resolved relative to data/qa; original failure log retained, corrected private probe then passed.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-transport-first.json",
+      "file": "00-whiteboard-question-transport-first.json.gz",
+      "sha256": "bf7291746166a018ee85ebea7b4c1221847cae24d226f6c164a9485bc92d4929",
+      "originalSha256": "894f74e1cba8dc9c0dd585d5c849063c1c70b70b759a274db58fca881c278682"
+    },
+    {
+      "source": "data/qa/whiteboard-question-transport-first.log",
+      "file": "01-whiteboard-question-transport-first.log.gz",
+      "sha256": "b49d5232c2fa0d796c2f6a3cd224ff9ec818476bed41f147c5e0c43fb509c0f1",
+      "originalSha256": "b0453de839b15043a67022a189f9bd0cbb2c83af291b8f7b15ce9fdc8d7ae6f8"
+    },
+    {
+      "source": "data/qa/whiteboard-question-transport-green.json",
+      "file": "02-whiteboard-question-transport-green.json.gz",
+      "sha256": "4f6c547f19e482d528686f73824bbeb79da75f8bc367e404ccdd4cb3cb3282da",
+      "originalSha256": "2ab0d52c370eb2fcaf23e4003be7e421be51bbeb3fa763cfa874bfc5da6a4632"
+    },
+    {
+      "source": "data/qa/whiteboard-question-transport-green.log",
+      "file": "03-whiteboard-question-transport-green.log.gz",
+      "sha256": "ee773c03671dcb029f4da771db19ce528d22415b8a11da99b075aa6b2216f105",
+      "originalSha256": "a0095e725face6e4079b8320f559d469f508e4c6e98d806a272c5bb400a31f89"
+    },
+    {
+      "source": "data/qa/whiteboard-question-future-schema-green.json",
+      "file": "04-whiteboard-question-future-schema-green.json.gz",
+      "sha256": "f21c4dd964df1c72fba132f076cba09904e38db4d2baee709d32f738b1c073b0",
+      "originalSha256": "fba97108646bb700f755a487a5bbf40e8da44f539594d8b0f218991fb36c181d"
+    },
+    {
+      "source": "data/qa/whiteboard-question-future-schema-green.log",
+      "file": "05-whiteboard-question-future-schema-green.log.gz",
+      "sha256": "09165e3d8f4d7c54074a45fcc74e06b5ffe95d98eaea712618926cf4bd5e512d",
+      "originalSha256": "dbba9eeae2a9b98e0abbe0af485a666273d07cfbb2d178b8f350a2f356591427"
+    },
+    {
+      "source": "data/qa/whiteboard-question-text-live-ds.json",
+      "file": "06-whiteboard-question-text-live-ds.json.gz",
+      "sha256": "551be9427d3ae82db8e753b75cd0860b78d6fc1bdfae46f8ff9de895220f5a4d",
+      "originalSha256": "331e98f8bb3f4895a5f007215a0c52ddd4ee0c542e520d27eeacd040930a5d5e"
+    },
+    {
+      "source": "data/qa/cli-text-transport-probe.log",
+      "file": "07-cli-text-transport-probe.log.gz",
+      "sha256": "cae69dc035b31e2c1070d861b30564f74fbce31a045dcab50f665c397b3650af",
+      "originalSha256": "42b303d29554e3bb4a1d8e57182c6744bb97a1ee23b0c714ab73736e360c330c"
+    },
+    {
+      "source": "data/qa/probe-cli-text-tools.cjs",
+      "file": "08-probe-cli-text-tools.cjs.gz",
+      "sha256": "1ed2eaf0c604a9a713b1bf910ad9fb648a31af9cb445bd05b1bc3e341cefade3",
+      "originalSha256": "10cd3a1cbcee6d29bf1ed35dde49aad54011a10b421ca8969bb112165e3bf6d7"
+    },
+    {
+      "source": "data/qa/probe-cli-text-tools-v2.cjs",
+      "file": "09-probe-cli-text-tools-v2.cjs.gz",
+      "sha256": "7b5bac9e0388311078364f12acf5a6a6374e2aab959287b58ab5616919070e8a",
+      "originalSha256": "19a7343884cb0ec45454613a72e23ce7c354d7e8eb941a7f3fcd7251b9c3e4f4"
+    },
+    {
+      "source": "data/qa/probe-cli-text-tools-v3.cjs",
+      "file": "10-probe-cli-text-tools-v3.cjs.gz",
+      "sha256": "f7baab2ffbae2f5fd3f175f6aa7266c01f89978b121503980701a95ba9945c2c",
+      "originalSha256": "6b32c2078f34f1873c9c0054732a859235f721a53256ba7909aa8ec5d4f7a832"
+    },
+    {
+      "source": "data/qa/probe-cli-text-transport-v2.cjs",
+      "file": "11-probe-cli-text-transport-v2.cjs.gz",
+      "sha256": "0f73c041a73e0ff18acaabbec2be6862b9ce3f9fdeb651c5cb11c72a49761506",
+      "originalSha256": "a7fe9cfe4e3dbf79fbced820ae4dea22149762289522edb77e160f0442086f55"
+    },
+    {
+      "source": "data/qa/cli-text-tools-eAM9fw/observations.json",
+      "file": "12-observations.json.gz",
+      "sha256": "16834a1a34247fb7c0f2e3cef06456fabede9ab03038ab38c0df16fb2fee2d88",
+      "originalSha256": "656a1fa3d89a4f1a00d7d7d00b9afce9edf4d868707045013657ebf1395734ac"
+    },
+    {
+      "source": "data/qa/cli-text-tools-wuCn8L/observations.json",
+      "file": "13-observations.json.gz",
+      "sha256": "9e8991a185da1b2da4703104dab6efe18c6b2714b8392f600073011b4662e8e8",
+      "originalSha256": "ff0482872430712b98c19145d75dadc122e241c9a74280e7aea4ae2f0c469eb4"
+    },
+    {
+      "source": "data/qa/cli-text-tools-t9V6c5/observations.json",
+      "file": "14-observations.json.gz",
+      "sha256": "16834a1a34247fb7c0f2e3cef06456fabede9ab03038ab38c0df16fb2fee2d88",
+      "originalSha256": "656a1fa3d89a4f1a00d7d7d00b9afce9edf4d868707045013657ebf1395734ac"
+    },
+    {
+      "source": "data/qa/cli-text-tools-qxPySN/observations.json",
+      "file": "15-observations.json.gz",
+      "sha256": "7e08a7cdeee9d9683f1a045dea1470a4c046d283b4a7aeaf830f6b5a17cd09ee",
+      "originalSha256": "85e8b93ecde50d7bf31e12d8db87456422be9d82a0de240802c991c54d86ffc0"
+    }
+  ]
+}

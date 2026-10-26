@@ -1,0 +1,237 @@
+{
+  "at": "2026-10-26T22:57:05.952Z",
+  "passed": false,
+  "stats": {
+    "startTime": "2026-10-26T22:55:43.860Z",
+    "duration": 38939.573,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 10,
+    "flaky": 0
+  },
+  "scope": "All10 cases stopped before UI because synthetic account prefix was question- while the existing isolated whiteboard fixture requires whiteboard-. No product-interaction pass claim.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "000-whiteboard-question-browser.json.gz",
+      "sha256": "abe80d962dfb8876c2aaff45f6a1b8d0ce6ee2e72ddb65945c6b4738242be60f",
+      "originalSha256": "7fb2b0dca7288c41b4cc405881bcc660e09d74b22c65ac19d294d31c11453d4c"
+    },
+    {
+      "source": "data/qa/whiteboard-question-browser-first.log",
+      "file": "001-whiteboard-question-browser-first.log.gz",
+      "sha256": "3310c3ec6352ce729ca9466941da43ee80c4f93ffd4193aba115b10cf4d5d752",
+      "originalSha256": "0b64aee2463aa2efd22eeb9c86603bd2e5a6d26da0be5476c9a5496d37242a91"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "002-whiteboard-questions.spec.ts.gz",
+      "sha256": "e0c16555676573ebe657588faa06d88c888977d3263a76c2656ad612a2237ea0",
+      "originalSha256": "6196e7f6d5184fbbc5fe63f858fa27ab37d571f0582371c9ab3263c38782de19"
+    },
+    {
+      "source": "scripts/qa/whiteboard-media-fixture.cjs",
+      "file": "003-whiteboard-media-fixture.cjs.gz",
+      "sha256": "db6e2d4536bdc1e66c2411a4a7aa40beb411f4822e4fdb341faaaae45f9fc091",
+      "originalSha256": "ec353f841825420c9f84a74d49b1cbbcd391ba87cb8af2ac414b852b95b921e6"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "004-whiteboard-questions.tsx.gz",
+      "sha256": "a51258d3eb450a606feb3383ebf5916dab71613e98216e71b93f34fac7cfff57",
+      "originalSha256": "df4dd06c4f01d6cd54da201ff0ccd5cad6e2da81e667c2e74d58748a084e3fff"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "005-whiteboard-session.tsx.gz",
+      "sha256": "b31371b8df1f264d23cab2d55ca6822c139c2223fde0d9b27582ef860aeff1c4",
+      "originalSha256": "9f6222c8da4dedfb466eb3dcdba128b53178b886c482c1b67d40616546049dc0"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.last-run.json",
+      "file": "006-.last-run.json.gz",
+      "sha256": "dd31d27ca486f99be88c7861b12f1c6831a98874fbdc5142651ad9143f54e35a",
+      "originalSha256": "3dbbdf35d353ae8f31f62ec3d299469950681a59f80dc1db168d0150729ee726"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-168cb-ntrols-remain-usable-at-390/error-context.md",
+      "file": "007-error-context.md.gz",
+      "sha256": "2531b1ad5ffe6febf7cd90e424876f2477c0ff843df3ebf3804f2bc92f5343cf",
+      "originalSha256": "0c334fbfcf3aa8ae29e74cb77b86cf9d3fba87033ba03f3a3d08fe90e59e5748"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-168cb-ntrols-remain-usable-at-390/test-failed-1.png",
+      "file": "008-test-failed-1.png.gz",
+      "sha256": "f351597a62038b0b58e526ac5e2011752d624522bd7b32f0ec758cb09a91bc5c",
+      "originalSha256": "032021212737eb9fad23df2f95e631ffdf2a5f450859e53cac93d49ccdd98b2f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-168cb-ntrols-remain-usable-at-390/trace.zip",
+      "file": "009-trace.zip.gz",
+      "sha256": "c85f6d341c4e5735a4f0ac77a0c9f73fe114a443099bd5b3922d7569fed2a438",
+      "originalSha256": "ce9a185c76ea84533071cdd9383976df2f442b53ccd0850980dc472ca8eaa26a"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2b7b3-al-queued-answer-and-return/error-context.md",
+      "file": "010-error-context.md.gz",
+      "sha256": "b466ef3f56d7cfcad39de2954a8186e8d598f087a3e5d6c9ef7794c7108cc6e9",
+      "originalSha256": "51ecdde6893d5eada99f3b2cfb2490176644c55fcf847c494762de3e38230027"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2b7b3-al-queued-answer-and-return/test-failed-1.png",
+      "file": "011-test-failed-1.png.gz",
+      "sha256": "ddd290980f581c4ab6af5e690042d29380f52142e6532df02affd8fb4b59c8de",
+      "originalSha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2b7b3-al-queued-answer-and-return/trace.zip",
+      "file": "012-trace.zip.gz",
+      "sha256": "40280f99d87b58f09b043e78b28113497c6d7f70f0ce465a6745abb598bb430c",
+      "originalSha256": "a8d7face6e4a31504a63b98aa3f274c674581ef183976466a5f09769552f6ba9"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2e9f3-nd-retain-completed-history/error-context.md",
+      "file": "013-error-context.md.gz",
+      "sha256": "16bf3700fa43f726ae0bafbac132a651ccf9fa9d7793b6530447094181ab75a0",
+      "originalSha256": "398b88ec91d56984ec4aa3ad905ecde73c499e9ffb7e7bc18a7fc20c63750aed"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2e9f3-nd-retain-completed-history/test-failed-1.png",
+      "file": "014-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-2e9f3-nd-retain-completed-history/trace.zip",
+      "file": "015-trace.zip.gz",
+      "sha256": "b1aae89382f0eaf86ba48184fb9c80dbaa920d991309d6b46c60259df3c310ec",
+      "originalSha256": "66f3783eece004c9737275e19aac3dac49ba86dab61d17213e97853f651a0473"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-54920-ntrols-remain-usable-at-768/error-context.md",
+      "file": "016-error-context.md.gz",
+      "sha256": "9622be0e87f767a1617fb8a1eb4bc34530a72d8eed950ca574a5cf65d8127452",
+      "originalSha256": "461dde8cf9077a47fd7267ede690f9bc69acb932e64602a7f9e0ac04e5a73186"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-54920-ntrols-remain-usable-at-768/test-failed-1.png",
+      "file": "017-test-failed-1.png.gz",
+      "sha256": "cbac350742482d271db388daf424a33c6b3f649c0318d8344d564a39546060db",
+      "originalSha256": "6b39b3bc4d8713f42fd3b97d4ae670996b57c946a0f9c6809b8d923a08d5ff5b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-54920-ntrols-remain-usable-at-768/trace.zip",
+      "file": "018-trace.zip.gz",
+      "sha256": "9580f27731dbbbeaceb62970203ca2e3b12ed9c05fb93eff32792a3bd4fd244e",
+      "originalSha256": "6f40fedeb57ef107fb42b21a9f0571d97de4421715d2773fea0267c93ff5d79d"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-84f1d-load-without-a-second-write/error-context.md",
+      "file": "019-error-context.md.gz",
+      "sha256": "977d57907a058376be978fcc11bf62b7d9e85ee0128e87a54aa20d424bcb3970",
+      "originalSha256": "ff7d8f255c41459c29f109cb158d2dfe043fe76065ac16370f2aeccbb532c06e"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-84f1d-load-without-a-second-write/test-failed-1.png",
+      "file": "020-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-84f1d-load-without-a-second-write/trace.zip",
+      "file": "021-trace.zip.gz",
+      "sha256": "87ad24ad7349ad8b1f0fef7b9aa0e934e88774009d0879bd8aef6a645b96fc0a",
+      "originalSha256": "ed5d06d5c1da60832291c8667654e9c425d81397103f9705f24632b2876b60d7"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9a40e--across-independent-reloads/error-context.md",
+      "file": "022-error-context.md.gz",
+      "sha256": "fd475814e8fee74ebc07d94a47b9074a943b7cf11d319991c466c5bfc2ea1ede",
+      "originalSha256": "816c6edf453c838360d5b44c06c6208665ab48b0cb0aa28b02b24773914ff249"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9a40e--across-independent-reloads/test-failed-1.png",
+      "file": "023-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9a40e--across-independent-reloads/trace.zip",
+      "file": "024-trace.zip.gz",
+      "sha256": "a96ef907dab462013268915c320b05f779b9e53927bb6c0e678d67851b2d1b79",
+      "originalSha256": "2705714fa05d80c38f12e488fe4c95580367c0ec1954d0676360c7d098f98282"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9fe61-es-the-next-unsent-question/error-context.md",
+      "file": "025-error-context.md.gz",
+      "sha256": "aa9a45ad3e8f80bf278ba37561e6e6c8ee1a0956befe23a797c519d4bb844407",
+      "originalSha256": "a8bbc519b616e6ec6f6f24f9fdc68a5a1552773edce6b09680a6569298a4e5c6"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9fe61-es-the-next-unsent-question/test-failed-1.png",
+      "file": "026-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-9fe61-es-the-next-unsent-question/trace.zip",
+      "file": "027-trace.zip.gz",
+      "sha256": "6513e45732e58aacf9970a4498b2750af740dfbd7830a7c9ad5f9b09322676bc",
+      "originalSha256": "e7fe26608222524d2b4e5023374fd538c2c9df95ce4f2058bda3feb83ebd5080"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-c9ce7-trols-remain-usable-at-1280/error-context.md",
+      "file": "028-error-context.md.gz",
+      "sha256": "501900380e32c9b56f4654fc7492c841733cac3c24dce89d20d64ef2f4b92462",
+      "originalSha256": "e606722c9993d4fcd2e793ddb09df700b383de4c1bdb38124deea722a81adfee"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-c9ce7-trols-remain-usable-at-1280/test-failed-1.png",
+      "file": "029-test-failed-1.png.gz",
+      "sha256": "ddd290980f581c4ab6af5e690042d29380f52142e6532df02affd8fb4b59c8de",
+      "originalSha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-c9ce7-trols-remain-usable-at-1280/trace.zip",
+      "file": "030-trace.zip.gz",
+      "sha256": "9946d4b7006b9e4df9d52a11e84d6f88f93071888d1b31c6837de51125ca761f",
+      "originalSha256": "be54265abb90cd036b4414703cce49524ad0ee470215f14405a72d270bd1b1f4"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dbc75-ame-original-can-be-retried/error-context.md",
+      "file": "031-error-context.md.gz",
+      "sha256": "226a2db6910912ea4d2a6c4167eb204c50e4458cefa4d4ebdc15c0f19da02efe",
+      "originalSha256": "a0e1c63b642140cbaf7d776206474ba4a2bfcac6c77c3abbfd8603d3ea3ebc4e"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dbc75-ame-original-can-be-retried/test-failed-1.png",
+      "file": "032-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dbc75-ame-original-can-be-retried/trace.zip",
+      "file": "033-trace.zip.gz",
+      "sha256": "e241db99784d9df318a79c32b320cc2e13f20fb6f6f9f6805181b4381e2b5085",
+      "originalSha256": "9494ac621ed510da68594ef23cb533919d9c9b38ce5772f173eb784d5b158586"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dcfe3-d-trips-the-downloaded-JSON/error-context.md",
+      "file": "034-error-context.md.gz",
+      "sha256": "fc808da04a9180faa8fdd60d4fdc922eee6c596e5c59a486cd69f926726d8b4c",
+      "originalSha256": "c20a2cfda4f020adeb2315c27f220713ecb9c6c4d722a72958752712b1dbfe63"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dcfe3-d-trips-the-downloaded-JSON/test-failed-1.png",
+      "file": "035-test-failed-1.png.gz",
+      "sha256": "7a30491b0ef4c9c687735944404176ba0917944686e8cc58e886d967cf4b8dd8",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-white-dcfe3-d-trips-the-downloaded-JSON/trace.zip",
+      "file": "036-trace.zip.gz",
+      "sha256": "c53fb0622b2cf6a3e8dd585a82235ec3aa747fed8841adcd0f0d285edc88fdf5",
+      "originalSha256": "bc7c5312b8741cc1d317d1cfed6e3b7a9e1492138a4abf3871d28ffae12faf71"
+    }
+  ]
+}

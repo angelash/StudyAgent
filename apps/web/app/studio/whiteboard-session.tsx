@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { WHITEBOARD_SPEECH_VERSION, WHITEBOARD_SPEEDS, isWhiteboardSpeed, whiteboardPresentation, whiteboardSrt, whiteboardTimeline } from '@study-agent/contracts';
-import type { WhiteboardTimeline } from '@study-agent/contracts';
+import type { WhiteboardTimeline, WhiteboardQuestionPosition } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest, apiBaseUrl, getAuthToken } from '../../lib/api';
 import type { WhiteboardPlayerProps } from './whiteboard-player';
 import { drawTeachingFrame, type BoardCamera } from './whiteboard-frame';
@@ -19,6 +19,7 @@ import { ClassroomIcon } from './classroom/icons';
 import { ClassroomToolTour, type ToolTourStep } from './classroom/tool-tour';
 import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-reading-panel';
 import { WhiteboardShareMenu } from './whiteboard-share-menu';
+import { WhiteboardQuestions } from './whiteboard-questions';
 
 const whiteboardToolSteps: ToolTourStep[] = [
   { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
@@ -41,6 +42,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
   const panel = useWhiteboardReadingPanel(ownerId), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
   const [share, setShare] = React.useState(false);
+  const questionCanLeave = React.useRef(true), userCloseRef = React.useRef<() => void>(() => {});
+  const questionLeaveChange = React.useCallback((value: boolean) => { questionCanLeave.current = value; }, []);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -71,6 +74,14 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const progressRef = React.useRef(progress), indexRef = React.useRef(unitIndex), position = React.useRef<Position | null>(null);
   const downloadUrls = React.useRef(new Set<string>()), closeRef = React.useRef(onClose);
   closeRef.current = onClose; progressRef.current = progress; indexRef.current = unitIndex;
+  userCloseRef.current = () => {
+    if (!questionCanLeave.current) {
+      pausePlayback(); setNotice('提问尚未保存到本机。请先下载完整提问副本，再关闭白板。');
+      if (panel.compact) panel.setMobileOpen(true); else panel.setExpanded(true);
+      return;
+    }
+    closeRef.current?.();
+  };
   const unit = units[unitIndex], scene = board.scenes.find(item => item.id === unit?.sceneId) ?? board.scenes[0];
   const storagePrefix = 'studyagent.' + (isTopicWhiteboard(board) ? 'topic-whiteboard' : 'whiteboard') + '.location.v1.' + ownerId + '.';
   const storageKey = storagePrefix + board.studentId + '.' + board.id;
@@ -192,10 +203,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       if (event.key === 'Escape') {
         event.preventDefault();
         if (dialog.current?.querySelector('[data-whiteboard-share]')) { setShare(false); return; }
-        closeRef.current?.();
+        userCloseRef.current();
       }
       if (event.key !== 'Tab') return;
-      const nodes = [...(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),select:not(:disabled),input:not(:disabled),summary,[tabindex="0"]') ?? [])]
+      const nodes = [...(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),select:not(:disabled),input:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]') ?? [])]
         .filter(node => node.getClientRects().length > 0);
       if (!nodes.length) return;
       if (event.shiftKey && document.activeElement === nodes[0]) { event.preventDefault(); nodes[nodes.length - 1].focus(); }
@@ -352,7 +363,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }
 
   return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
-    <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={onClose}>×</button>
+    <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={() => userCloseRef.current()}>×</button>
       <div className="whiteboard-session-title-pill" data-classroom-tour="connection"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
     <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill" data-classroom-tour="zoom">
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
@@ -410,6 +421,26 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         data-active={item.id === scene?.id} onClick={() => { const next = units.findIndex(unit => unit.sceneId === item.id); if (next >= 0) go(next); }}>
         <span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}</div>
     </main><WhiteboardReadingPanel panel={panel} tour={tourPanel} id={panelId} onClose={closePanel}>
+      {!preview && <WhiteboardQuestions board={board} ownerId={ownerId} disabled={exporting !== null} onCanLeaveChange={questionLeaveChange}
+        onUnavailable={() => closeRef.current?.()} capture={() => {
+          const current = units[indexRef.current]; if (!current || !position.current || exporting !== null) return null;
+          pausePlayback();
+          const audioTime = mode === 'cloud' ? resource.current?.key === whiteboardAudioKey(current.id, voice) ? resource.current.audio.currentTime : resumeAudioTime.current : null;
+          return { presentationVersion: WHITEBOARD_SPEECH_VERSION, fingerprint: board.fingerprint, sceneId: current.sceneId, unitId: current.id, sentenceText: current.text,
+            bookmark: { progress: progressRef.current, audioTime: audioTime !== null && Number.isFinite(audioTime) ? audioTime : null, mode, voice, speed } };
+        }} onReturn={(saved: WhiteboardQuestionPosition) => {
+          const index = units.findIndex(item => item.id === saved.unitId && item.sceneId === saved.sceneId && item.text === saved.sentenceText);
+          if (saved.fingerprint !== board.fingerprint || saved.presentationVersion !== WHITEBOARD_SPEECH_VERSION || index < 0) { setNotice('这条提问属于另一份原稿，请保留完整提问后重新打开对应版本。'); return; }
+          const bookmark = saved.bookmark; go(index, bookmark?.progress ?? 0);
+          if (bookmark) {
+            if (isWhiteboardSpeed(bookmark.speed)) setSpeed(bookmark.speed);
+            if (bookmark.mode === 'text' || narrationAvailable) setMode(bookmark.mode);
+            if (speech?.voices.some(item => item.id === bookmark.voice)) setVoice(bookmark.voice);
+            if (bookmark.mode === 'cloud' && bookmark.audioTime !== null) resumeAudioTime.current = bookmark.audioTime;
+          }
+          setNotice('已回到提问时的原句与进度，点击播放继续。');
+          if (panel.compact) panel.setMobileOpen(false);
+        }}/>}
       <h3>逐句讲稿</h3><p>点击一句定位。观看与续播不计作掌握。</p>
       <ol>{units.map((item, index) => <li key={item.id}><button aria-current={index === unitIndex ? 'step' : undefined}
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>

@@ -15,7 +15,7 @@ describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identitie
     const schema = 'study_qa_topic_' + randomUUID().replace(/-/g, ''); await control.query(`CREATE SCHEMA "${schema}"`); schemas.push(schema);
     const url = new URL(connection!); url.searchParams.set('options', '-c search_path=' + schema); return { url: url.toString(), schema };
   }
-  it('opens current schema18, enforces prepare and publication identities, and retains original records after native reopen', async () => {
+  it('opens current schema19, enforces prepare and publication identities, and retains original records after native reopen', async () => {
     const { url, schema } = await scoped(); let db = new DomainDatabase(url); await db.open();
     try {
       const initial = { studioTopicWhiteboardDrafts: [{ id: 'original', ownerUserId: 'owner', requestKey: 'request', content: { title: '原稿' } }],
@@ -29,7 +29,7 @@ describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identitie
       ] })).rejects.toThrow();
       await db.close(); db = new DomainDatabase(url); await db.open(); expect((await db.read()).state).toEqual(initial);
       const probe = new Pool({ connectionString: url });
-      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(18);
+      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(19);
         expect((await probe.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname LIKE $2 ORDER BY indexname', [schema, 'topic_whiteboard_%'])).rows.map(row => row.indexname))
           .toEqual(['topic_whiteboard_prepare_request', 'topic_whiteboard_publication_draft']);
       } finally { await probe.end(); }

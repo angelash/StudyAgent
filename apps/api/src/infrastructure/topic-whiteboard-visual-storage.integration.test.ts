@@ -15,7 +15,7 @@ describe('topic figure durable original request identities', () => {
       db = new DomainDatabase(file); await db.open(); await db.commit(await db.read(), legacy); await db.close(); db = undefined;
       const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DELETE FROM schema_migrations WHERE version>=17;'); old.close();
       db = new DomainDatabase(file); await db.open(); expect((await db.read()).state).toEqual(legacy); await db.close(); db = undefined;
-      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(18); } finally { verified.close(); }
+      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(19); } finally { verified.close(); }
     } finally { await db?.close(); rmSync(directory, { recursive: true, force: true }); }
   });
   it('rejects reuse of one owner original key for a different draft and retains the original record atomically', async () => {

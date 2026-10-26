@@ -214,6 +214,12 @@ export class PrivacyService {
       const task=await this.store.tasks.get(String(turn.taskId));
       if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
     }
+    for(const turn of selection.whiteboardQuestionTurns??[]){
+      const task=await this.store.tasks.get(String(turn.taskId));
+      if(task?.kind==='studio.whiteboard.question'&&task.ownerUserId===turn.ownerUserId&&task.payload.turnId===turn.id&&
+        ['queued','running','retry_wait','cancel_requested'].includes(task.state))
+        await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const draft of selection.studioTopicWhiteboardDrafts??[]){
       const task=await this.store.tasks.get(String(draft.taskId));
       if(task?.kind==='studio.topic-whiteboard.generate'&&task.ownerUserId===draft.ownerUserId&&task.payload.draftId===draft.id&&

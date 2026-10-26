@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-26T22:59:33.565Z",
+  "passed": true,
+  "deployed": false,
+  "overallProductComplete": false,
+  "cases": 10,
+  "originalAttempts": 10,
+  "retries": 0,
+  "stats": {
+    "startTime": "2026-10-26T22:57:15.397Z",
+    "duration": 60875.95,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "Guidance-board original-sentence UI, five intents, selected model, original retry/cancel, lost receipt, full JSON round-trip, independent document drafts,390/768/1280 controls. Offline synthetic replies; not actual model quality, answer audio, supplementary board, full notes export or complete original-site fidelity.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "000-whiteboard-question-browser.json.gz",
+      "sha256": "66f0f4fbf87908a929b58aaa2a7e35a3fefc679e09a7d31dcce3b03299b82136",
+      "originalSha256": "9c59908322893945953c27441a02fddac2e5213e9efb1e278bdfab84d71b3279"
+    },
+    {
+      "source": "data/qa/whiteboard-question-browser-interactions.log",
+      "file": "001-whiteboard-question-browser-interactions.log.gz",
+      "sha256": "cd653d57816fe73b881116316a2eef984115c1d26caf5d57f270976833ee9983",
+      "originalSha256": "fb44ccaf87bccbc490931cb53c2530a013a6b8405205c034d4301bec381abeaa"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "002-whiteboard-questions.spec.ts.gz",
+      "sha256": "6357939253e1e2fcf6ab055f033780d2410bbbed9d9a9a388ea3b7a0d64d91c9",
+      "originalSha256": "2a3647ea40d1c955a5386c91c86432cea12b58159b6a4d824bbe56a1335a574a"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "003-whiteboard-questions.tsx.gz",
+      "sha256": "a51258d3eb450a606feb3383ebf5916dab71613e98216e71b93f34fac7cfff57",
+      "originalSha256": "df4dd06c4f01d6cd54da201ff0ccd5cad6e2da81e667c2e74d58748a084e3fff"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.css",
+      "file": "004-whiteboard-questions.css.gz",
+      "sha256": "ce8fe2b3d2cbd3f4d65bac36b4931e51f5fe67e48741b078745385b4972aa75d",
+      "originalSha256": "067afaaaf0fa1e6eb488b2d6c3fcf3fdd52b9be87ecd89885420736d8f0604b3"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "005-whiteboard-session.tsx.gz",
+      "sha256": "b31371b8df1f264d23cab2d55ca6822c139c2223fde0d9b27582ef860aeff1c4",
+      "originalSha256": "9f6222c8da4dedfb466eb3dcdba128b53178b886c482c1b67d40616546049dc0"
+    },
+    {
+      "source": "scripts/qa/whiteboard-question-fixture.cjs",
+      "file": "006-whiteboard-question-fixture.cjs.gz",
+      "sha256": "9b1449da775206d2a785171dd24b3a55411a8a58073ccf50bf031d1271c37fea",
+      "originalSha256": "545e7cd0dfa89f2371c19c445eedf0d320072f6a4af6a0b96fef8e3a955419a8"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.last-run.json",
+      "file": "007-.last-run.json.gz",
+      "sha256": "eeb2d2f2d42ce7a6a891fb0b1fa5ae847db0110fdf2d769e41c519444aadb45d",
+      "originalSha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/original-sentence-command.json",
+      "file": "008-original-sentence-command.json.gz",
+      "sha256": "4907ade0d9eba2782fd6fa761341f9963e39aeb97063454ce005bda51d86f41f",
+      "originalSha256": "d2a98c7d623a22c32f3cd3896de4a53e8442305e1d2e2bfbe6f09e25f06835e7"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-1280.png",
+      "file": "009-question-panel-1280.png.gz",
+      "sha256": "e2020e92ffcd0e35a38d82efb6878091c36fe4d19ec538694bbf452c5997fe93",
+      "originalSha256": "9ef1f303c662e714dfcc82b3c58f8179b2dc5eee7d613077d8c7958964cdfe65"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-390.png",
+      "file": "010-question-panel-390.png.gz",
+      "sha256": "4aad58cdeb7b9f57aad29e6cd30da8f862e1e6e23d6a4b4dfc074ee2f196b2c1",
+      "originalSha256": "1ae74aecc94ce46b3a568cead44852a3de274078dfba1cc3bfa1b7e2ad1a09c2"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-768.png",
+      "file": "011-question-panel-768.png.gz",
+      "sha256": "4db14c8507259c333cc5b5107b358a6e0355ee865c062073c359153b6e9d3792",
+      "originalSha256": "8074a669bbe38283f9c214bf36edfff6a7304b46a251407878bf730ad8bae19b"
+    }
+  ]
+}

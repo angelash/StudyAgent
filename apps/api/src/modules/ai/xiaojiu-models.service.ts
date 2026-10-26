@@ -111,10 +111,14 @@ export class XiaojiuModelsService {
     return model;
   }
 
-  writeCompatibleCatalog(targetPath: string) {
+  writeCompatibleCatalog(targetPath: string, options?: { textOnly: boolean }) {
     const catalogPath = this.catalogPath();
     if (!catalogPath) return null;
-    writeFileSync(targetPath, JSON.stringify(compatibleCodexCatalog(catalogPath)));
+    const catalog = compatibleCodexCatalog(catalogPath);
+    if (options?.textOnly && Array.isArray(catalog.models)) for (const value of catalog.models) {
+      if (value && typeof value === 'object') (value as Record<string, unknown>).apply_patch_tool_type = null;
+    }
+    writeFileSync(targetPath, JSON.stringify(catalog));
     return 'model_catalog_json="' + targetPath.replace(/\\/g, '/') + '"';
   }
 

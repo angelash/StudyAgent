@@ -3,13 +3,14 @@ import { classroomReplyPresentationSchema, parseClassroomReplyBoard } from './cl
 import { Injectable, ServiceUnavailableException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
 import { spawn } from 'node:child_process';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import readline from 'node:readline';
 import { z } from 'zod';
 import { resolveCodexInvocation } from './codex-command';
 import { XiaojiuModelsService } from './xiaojiu-models.service';
+import { startTextTransport, textProviderConfiguration } from './xiaojiu-text-transport';
 import { terminateChildProcess } from '../../common/terminate-child-process';
 
 const chatSchema = {
@@ -78,14 +79,29 @@ export class XiaojiuChatService {
     if (!this.enabled) throw new ServiceUnavailableException('小九AI模型对话当前未启用');
     const model = this.models.resolve(input.modelId);
     const directory = mkdtempSync(resolve(tmpdir(), 'study-agent-chat-'));
+    const workDirectory = resolve(directory, 'empty-work');
+    mkdirSync(workDirectory);
     const schemaPath = resolve(directory, 'output.schema.json');
     const catalogPath = resolve(directory, 'model-catalog.json');
     writeFileSync(schemaPath, JSON.stringify(schema, null, 2));
     const args = ['exec', '--ephemeral', '--json', '--sandbox', 'read-only',
-      '--skip-git-repo-check', '--color', 'never', '-C', process.cwd(), '-m', model.id];
+      '--skip-git-repo-check', '--color', 'never', '-C', workDirectory, '-m', model.id];
+    let transport: Awaited<ReturnType<typeof startTextTransport>> | undefined;
     try {
-      const catalogOverride = this.models.writeCompatibleCatalog(catalogPath);
+      if (input.signal?.aborted) throw new ServiceUnavailableException('本次对话已取消');
+      const connection = textProviderConfiguration();
+      transport = await startTextTransport({ upstream: connection.upstream, modelId: model.id,
+        timeoutMs: this.env.XIAOJIU_CHAT_TIMEOUT_MS, signal: input.signal });
+      const catalogOverride = this.models.writeCompatibleCatalog(catalogPath, { textOnly: true });
       if (catalogOverride) args.push('-c', catalogOverride);
+      args.push('-c', 'model_providers.' + connection.provider + '.base_url=' + JSON.stringify(transport.baseUrl),
+        '-c', 'developer_instructions=""', '-c', 'web_search="disabled"', '-c', 'tools.view_image=false',
+        '-c', 'shell_environment_policy.inherit="none"');
+      for (const feature of ['shell_tool', 'shell_snapshot', 'apps', 'plugins', 'remote_plugin', 'hooks', 'memories',
+        'browser_use', 'browser_use_external', 'browser_use_full_cdp_access', 'in_app_browser', 'computer_use',
+        'image_generation', 'multi_agent', 'goals', 'code_mode_host', 'skill_mcp_dependency_install', 'tool_suggest'])
+        args.push('-c', 'features.' + feature + '=false');
+      for (const setting of connection.disabledMcp) args.push('-c', setting);
       args.push('--output-schema', schemaPath, '-');
       const prompt = this.prompt(input, custom, schema);
       let lastError: unknown;
@@ -94,7 +110,8 @@ export class XiaojiuChatService {
         let checking = false;
         try {
           const finalMessage = await this.run(args,
-            attempt ? prompt + '\n上一次输出不符合结构。本次必须返回完整 JSON，修正这些问题：' + correction : prompt, input.signal);
+            attempt ? prompt + '\n上一次输出不符合结构。本次必须返回完整 JSON，修正这些问题：' + correction : prompt,
+            workDirectory, connection.environment, input.signal);
           checking = true;
           const checked = check(this.parse(finalMessage));
           return { ...checked, modelId: model.id, modelName: model.label };
@@ -111,7 +128,7 @@ export class XiaojiuChatService {
       throw new ServiceUnavailableException(model.label + ' 连续两次未返回有效的学习建议' +
         (lastError instanceof Error ? '：' + lastError.message.slice(0, 120) : ''));
     } finally {
-      rmSync(directory, { recursive: true, force: true });
+      try { await transport?.close(); } finally { rmSync(directory, { recursive: true, force: true }); }
     }
   }
 
@@ -131,7 +148,7 @@ export class XiaojiuChatService {
     ].join('\n\n');
   }
 
-  private run(args: string[], prompt: string, signal?: AbortSignal) {
+  private run(args: string[], prompt: string, workDirectory: string, environment: NodeJS.ProcessEnv, signal?: AbortSignal) {
     return new Promise<string>((resolvePromise, reject) => {
       if (signal?.aborted) {
         reject(new ServiceUnavailableException('本次对话已取消'));
@@ -139,7 +156,7 @@ export class XiaojiuChatService {
       }
       const invocation = resolveCodexInvocation(this.env.CODEX_COMMAND);
       const grouped = process.platform !== 'win32';
-      const child = spawn(invocation.command, args, { cwd: process.cwd(), env: process.env,
+      const child = spawn(invocation.command, args, { cwd: workDirectory, env: environment,
         windowsHide: true, shell: invocation.shell, detached: grouped });
       let finalMessage = '', structuredError = '', finished = false;
       const errors: string[] = [];

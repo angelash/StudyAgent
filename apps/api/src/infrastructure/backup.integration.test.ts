@@ -118,7 +118,7 @@ describe('verified backup and isolated recovery', () => {
       await database.close();
       const guard = new DatabaseSync(location);
       try {
-        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(18);
+        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(19);
         expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
         guard.exec("UPDATE study_restore_guard SET state='restoring'");
       } finally { guard.close(); }
@@ -131,12 +131,12 @@ describe('verified backup and isolated recovery', () => {
     } finally { await database.close(); rmSync(directory, { recursive: true, force: true }); rmSync(directory + '-backup', { recursive: true, force: true }); }
   });
 
-  it('rejects future schema nineteen without publishing a backup success manifest', async () => {
+  it('rejects future schema twenty without publishing a backup success manifest', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-backup-future-')), source = join(directory, 'source'), bundle = join(directory, 'bundle');
     mkdirSync(source); const db = new DomainDatabase(join(source, 'study-agent.sqlite3')); await db.open(); await db.close();
     try {
       const future = new DatabaseSync(join(source, 'study-agent.sqlite3'));
-      try { future.prepare('INSERT INTO schema_migrations VALUES(19,?)').run(new Date().toISOString()); } finally { future.close(); }
+      try { future.prepare('INSERT INTO schema_migrations VALUES(20,?)').run(new Date().toISOString()); } finally { future.close(); }
       await expect(createBundle({ dataDir: source, destination: bundle })).rejects.toThrow('unsupported_database_schema');
       expect(existsSync(join(bundle, 'manifest.json'))).toBe(false);
       expect(existsSync(join(bundle, '.study-backup-incomplete'))).toBe(true);
