@@ -36,7 +36,13 @@ jobs:
           python scripts/processing/test_file_leases.py
           python scripts/qa/verify-project-file-preview.py data/qa/project-files-native-preview.json
       - name: Install media tools
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+            sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --no-install-recommends -y ffmpeg
+          fi
+          ffmpeg -version
+          ffprobe -version
       - name: Prepare configuration
         run: cp .env.example .env
       - run: npm ci
@@ -107,7 +113,7 @@ jobs:
     runs-on: ubuntu-24.04
     # Includes complete source-course and adult-unit journeys in addition to
     # the existing full suite, fresh browser dependencies and production build.
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -123,7 +129,13 @@ jobs:
         run: cp .env.example .env
       - run: npm ci
       - name: Install attachment audio decoder
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+            sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --no-install-recommends -y ffmpeg
+          fi
+          ffmpeg -version
+          ffprobe -version
       - name: Install browser runtime
         run: npx playwright install --with-deps chromium
       - name: Browser product journey at phone, tablet and desktop widths
@@ -140,7 +152,8 @@ jobs:
 
   postgres:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    # Includes every native restore/teaching journey and fresh media dependencies.
+    timeout-minutes: 45
     services:
       postgres:
         image: postgres:16-bookworm
@@ -168,8 +181,12 @@ jobs:
         env:
           PGPASSWORD: local_ci_only
         run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y postgresql-client-16
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          packages=(postgresql-client-16)
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then packages+=(ffmpeg); fi
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --no-install-recommends -y "${packages[@]}"
+          ffmpeg -version
+          ffprobe -version
           psql -h 127.0.0.1 -U study_qa_admin -d postgres -v ON_ERROR_STOP=1 -c "CREATE ROLE study_agent_app LOGIN PASSWORD 'local_ci_app_only';"
           psql -h 127.0.0.1 -U study_qa_admin -d postgres -v ON_ERROR_STOP=1 -c "ALTER DATABASE study_agent_qa OWNER TO study_agent_app;"
       - run: npm run build --workspace @study-agent/contracts
@@ -245,8 +262,10 @@ jobs:
           STUDY_TEST_SOURCE_LIFECYCLE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/source-course-lifecycle.integration.test.ts
 
-      - name: Install project attachment audio decoder
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y ffmpeg
+      - name: Verify prepared project attachment audio decoder
+        run: |
+          ffmpeg -version
+          ffprobe -version
       - name: Project actual attachments, native file recovery and latest privacy ledger on PostgreSQL
         working-directory: apps/api
         env:

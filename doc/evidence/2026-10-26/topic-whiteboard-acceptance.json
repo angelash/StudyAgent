@@ -1,5 +1,5 @@
 {
-  "status": "complete-local-regression-passed-exact-ci-and-runtime-pending",
+  "status": "initial-exact-ci-postgres-installation-budget-failed-browser-running",
   "deployed": false,
   "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
@@ -163,5 +163,24 @@
     "markdownLinks": 2939,
     "offlineViewerChecks": 10,
     "passed": true
+  },
+  "initialCi": {
+    "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
+    "run": 40255784541,
+    "application": {
+      "status": "completed",
+      "conclusion": "success",
+      "fullApiPassed": 1279,
+      "environmentSkipped": 59
+    },
+    "postgres": {
+      "status": "completed",
+      "conclusion": "cancelled",
+      "reason": "GitHub15-minute budget during FFmpeg install; no manual cancellation; remaining PG tests not executed."
+    },
+    "browser": {
+      "status": "in_progress"
+    },
+    "report": "topic-whiteboard-ci-initial/partial-receipt.json"
   }
 }
