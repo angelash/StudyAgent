@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-26T21:44:10.954Z",
+  "ciHead": "a8d357866f82f720df3cae24c115be7b90333f20",
+  "ciRun": 40402400667,
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121851382154
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121851382422
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121851382521
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T21:14:51.646Z",
+      "duration": 1281442.325,
+      "expected": 322,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 322,
+    "originalAttempts": 322,
+    "retries": 0
+  },
+  "linuxApi": {
+    "newlyRun": true,
+    "passed": 1346,
+    "environmentSkipped": 62,
+    "failed": 0
+  },
+  "files": [
+    {
+      "source": "data\\qa\\teaching-frame-ci-40402400667-originals\\application.log",
+      "file": "application.log.gz",
+      "originalSha256": "b7ab0c6599f0ff29b563a49b693f5354cd282eac4fec4fec0da011618374c3fa",
+      "sha256": "781125cf311913ec55a26ab7fe61888b833d2eeb2716e9e6615f8daddda86a1f"
+    },
+    {
+      "source": "data\\qa\\teaching-frame-ci-40402400667-originals\\browser.log",
+      "file": "browser.log.gz",
+      "originalSha256": "32a3b131c677cd0fffac51c44619d773744206e981f5c20448e72c41a0c47018",
+      "sha256": "013aaf471a870e702b6b925299c6f58e27ccf0bb0827f7bb7eccf320c16580d4"
+    },
+    {
+      "source": "data\\qa\\teaching-frame-ci-40402400667-originals\\postgres.log",
+      "file": "postgres.log.gz",
+      "originalSha256": "ae93438c3571cb26eab3488b86dba34815789f16110229b7c6add57aaa643158",
+      "sha256": "d0401c6a397302d59865e58d03e1a2246a8afe74672eba9583b21131c2e44dfd"
+    },
+    {
+      "source": "data\\qa\\teaching-frame-ci-40402400667-originals\\run.json",
+      "file": "run.json.gz",
+      "originalSha256": "d683d3426104d9f30fb2f4e7a4f4173068e2d1b0a160721f358e89aced570eb5",
+      "sha256": "6a043dba2be906510ee37d14ea73637ba16044d882a4e1daa5c0c3553b1e563c"
+    },
+    {
+      "source": "data/qa/teaching-frame-ci-40402400667-browser-original.json.gz",
+      "file": "browser-original.json.gz",
+      "originalSha256": "78f5e7ed1883112a5de4167abf7c4959bc49c8d870a061796f51e68824850010",
+      "sha256": "4a48b01576c7518e78e0cf529dbd3d2b05417f71f2b646a888ea7ffb0aa414f7"
+    }
+  ]
+}
