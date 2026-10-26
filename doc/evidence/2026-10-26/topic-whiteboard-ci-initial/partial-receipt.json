@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-26T02:13:33.300Z",
+  "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
+  "run": 40255784541,
+  "application": "success",
+  "postgres": {
+    "conclusion": "cancelled",
+    "reason": "GitHub exceeded15-minute job budget during FFmpeg dependency installation. No manual cancellation.",
+    "remainingTestFamiliesExecuted": false
+  },
+  "browser": "still-running-at-this-observation",
+  "files": [
+    {
+      "name": "postgres.log.gz",
+      "sha256": "7e1f1677027e70cd090c8016eba6ae584bec9501af693064415ba07c44ad8d30"
+    },
+    {
+      "name": "application.log.gz",
+      "sha256": "5fcfaa96fddded29ad7dc2d2bb33fa8cab592003ef590c9e1a26304b9d66ff45"
+    }
+  ]
+}

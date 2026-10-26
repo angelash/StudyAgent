@@ -1,7 +1,7 @@
 {
-  "status": "current-focused-passed-complete-regression-running",
-  "deployed": false,
-  "sourceRevision": "ed0ad2d",
+  "status": "runtime-delivered",
+  "deployed": true,
+  "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
     "passed": 9,
     "report": "topic-whiteboard-foundation/api.json"
@@ -11,14 +11,13 @@
     "report": "topic-whiteboard-foundation/postgres.json"
   },
   "schemaVersionInIsolatedTests": 16,
-  "productionSchemaVersion": 15,
+  "productionSchemaVersion": 16,
   "limits": [
-    "Independent page/editor and explicit topic player are connected but not deployed.",
-    "Complete current API/site regression, exact candidate CI and actual production delivery remain pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
     "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
-    "SQLite and native PG recovery cases passed; a fresh schema15 production rollback and actual schema16 runtime release are still required."
+    "Fresh schema15 rollback includes current122845 compiled files, private configurations and stopped-service database/referenced files. assetsIncluded:false; no full research-asset backup or complete production restore rehearsal.",
+    "New topic figure generation/edit, selection and complex formula video are independent124 work, not included in this release."
   ],
   "service": {
     "passed": 27,
@@ -131,5 +130,121 @@
     "initialUncachedCommand": "topic-whiteboard-command-initial/browser.json.gz",
     "localInterruptedEnvironmentRun": "topic-whiteboard-wrong-qa-port/scope.json"
   },
-  "final122InheritedRevision": "1614ff1027f2b8e0d750797efe728017225d353f"
+  "final122InheritedRevision": "1614ff1027f2b8e0d750797efe728017225d353f",
+  "fullApi": {
+    "passed": 1287,
+    "failed": 0,
+    "environmentSkipped": 51,
+    "report": "topic-whiteboard-final-regression/api.json.gz",
+    "originalSha256": "c67ccad0c2daf6c0424ba31020a0995bd1327c9960572304fb626180ec6abdee",
+    "applicationRevision": "ed0ad2d"
+  },
+  "fullBrowser": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "attempts": 242,
+    "durationMs": 1154520.197,
+    "report": "topic-whiteboard-final-regression/browser.json.gz",
+    "originalSha256": "cf092b22f3f60a5419ae9dc7114ec1713d689d753625c0f8888d570ddacaf79e",
+    "applicationRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2"
+  },
+  "design": {
+    "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
+    "areas": 14,
+    "features": 121,
+    "activeNormalApiRoutes": 350,
+    "domainCollections": 97,
+    "contractTypes": 328,
+    "sourceReferences": 466,
+    "markdownLinks": 2947,
+    "offlineViewerChecks": 10,
+    "passed": true,
+    "currentApplicationBaseline": "topic-whiteboard-acceptance.json",
+    "runtimeValidationPassed": true
+  },
+  "initialCi": {
+    "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
+    "run": 40255784541,
+    "application": {
+      "status": "completed",
+      "conclusion": "success",
+      "fullApiPassed": 1279,
+      "environmentSkipped": 59
+    },
+    "postgres": {
+      "status": "completed",
+      "conclusion": "cancelled",
+      "reason": "GitHub15-minute budget during FFmpeg install; no manual cancellation; remaining PG tests not executed."
+    },
+    "browser": {
+      "status": "completed",
+      "conclusion": "cancelled",
+      "reason": "GitHub30m budget after log observed passed case234 of242; no complete JSON report or uploaded artifact."
+    },
+    "report": "topic-whiteboard-ci-initial/final-receipt.json",
+    "status": "completed",
+    "conclusion": "cancelled"
+  },
+  "passed": true,
+  "exactCi": {
+    "at": "2026-10-26T02:47:22.041Z",
+    "head": "e1bd27cd04b2401dad282f606f9d2cf9db71454a",
+    "run": 40258543480,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "application",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "postgres",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "browser": {
+      "startTime": "2026-10-26T02:21:44.151Z",
+      "duration": 1258609.571,
+      "expected": 242,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "attempts": 242,
+      "retries": 0,
+      "originalSha256": "a8079195e9ff2ff39e7056babe9a35d83916d26de8da6c18449fd5570411b9c7",
+      "compressedSha256": "a56029ca283633f7b5856057a6cd00027de0e77fa42ad009d42b5c11bb8b256f"
+    },
+    "linuxApi": {
+      "passed": 1279,
+      "environmentSkipped": 59
+    },
+    "topicPostgres": {
+      "passed": 14,
+      "sqliteOnlySkipped": 2
+    },
+    "report": "topic-whiteboard-exact-ci/receipt.json"
+  },
+  "runtime": {
+    "report": "topic-whiteboard-runtime.json",
+    "buildRevision": "453866d4cf9b357baaf184c799d41dcce89b63d6",
+    "webBuildId": "7DPYUYWiUo1CUbaCcrd0R",
+    "schemaVersion": 16,
+    "httpChecks": 100,
+    "compiledFiles": 11,
+    "voiceSamples": 6,
+    "observedIntervalMs": 119361,
+    "stableServices": 3,
+    "protectedConfigurations": 5,
+    "localEnvironmentPreserved": true
+  }
 }

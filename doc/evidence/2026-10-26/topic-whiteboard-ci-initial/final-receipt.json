@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-26T02:18:04.776Z",
+  "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
+  "run": 40255784541,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "jobs": [
+    {
+      "completedAt": "2026-10-26T02:04:34Z",
+      "conclusion": "success",
+      "databaseId": 121357202928,
+      "name": "application",
+      "startedAt": "2026-10-26T01:45:41Z",
+      "status": "completed"
+    },
+    {
+      "completedAt": "2026-10-26T02:01:00Z",
+      "conclusion": "cancelled",
+      "databaseId": 121357203147,
+      "name": "postgres",
+      "startedAt": "2026-10-26T01:45:41Z",
+      "status": "completed"
+    },
+    {
+      "completedAt": "2026-10-26T02:15:58Z",
+      "conclusion": "cancelled",
+      "databaseId": 121357203265,
+      "name": "browser",
+      "startedAt": "2026-10-26T01:45:41Z",
+      "status": "completed"
+    }
+  ],
+  "applicationFullApi": {
+    "passed": 1279,
+    "environmentSkipped": 59
+  },
+  "postgres": {
+    "reason": "GitHub15m budget during media installation; later PG families unexecuted."
+  },
+  "browser": {
+    "reason": "GitHub30m budget after log observed passed case234 of242; no complete JSON report or uploaded artifact.",
+    "observedLastPassedIndex": 234,
+    "completeOriginalReportAvailable": false
+  },
+  "manualCancellation": false
+}

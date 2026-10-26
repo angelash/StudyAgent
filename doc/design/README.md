@@ -122,3 +122,9 @@ npm run qa:docs
 2026-10-26：122逐句白板最终运行交付。核心68202df，精确CI a7c06df/40247643763三组success；本地API1258/47环境跳过、Linux1250/55，两端229浏览器零失败/零跳过/零重试。主目录203d8f0真实生产构建，buildId mSFyAwqNN3WmH4RE65D9V，schema15；73实际HTTP/权限/脚本检查、六MP3逐SHA、四个实际编译文件逐SHA通过，三次守护观察跨86599毫秒PID与重启计数不变。五处本地配置及真实环境原字节、一致数据库/引用文件、843份121旧编译文件回退均保留，assetsIncluded:false不是研究资产独立备份或完整恢复演练。最初运行检查把未声明的旧GET-by-id误期为401而得到404，已仅校正检查预期，原收据保留。逐句阅读/完整笔记、真实音频结束推进、暂停续播、原登录/授权代次及统一WebM/SRT时间表已可使用；任意主题AI仍在独立123工作区，未混入此运行版。72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/实机/全内容/原CSS字体DPR声音/长期门禁保持，整体目标继续。见[运行收据](../evidence/2026-10-26/whiteboard-speech-runtime.json)与[最终验收](../evidence/2026-10-26/whiteboard-speech-acceptance.json)。
 
 2026-10-26：独立AI主题白板按STUDIO-31归入总册，当前源码ed0ad2d：14领域/121功能/350正常接口/97集合/328共享类型。24浏览器专项原次通过，29项API和14项PG/2项SQLite专属跳过分开留证；完整API初轮的两项旧schema预期已修正并重跑，242项完整整站也在执行。466源码引用/2933链接/10查看器检查通过不等于业务门禁或当前生产交付；主目录仍122/schema15，123精确CI与真实守护升级待。AI写稿、复核、完整改稿历史、明确保存和逐句播放器已有接入；图片/复杂图形、完整像素/原声/实机/教师/全内容/长期效果及72项总门禁仍未完成。见[123](../product/123-ai-topic-whiteboards.md)及[当前收据](../evidence/2026-10-26/topic-whiteboard-acceptance.json)。
+
+123完整本地门禁随后已通过：API1287/0失败/51环境跳过、242浏览器零失败/跳过/重试，原始媒体和报告见[当前验收](../evidence/2026-10-26/topic-whiteboard-acceptance.json)。精确远端CI及schema16实际交付继续单列；这些本地证据没有把真实教师、设备、原声与像素完整门槛标成完成。
+
+123精确e1bd27c/40258543480随后三组success；原始远端浏览器实际242零重试，Linux API1279/59环境跳过，新白板PG14/2 SQLite专属跳过，各日志和原件见[精确CI](../evidence/2026-10-26/topic-whiteboard-exact-ci/receipt.json)。主目录真实schema16生产构建、停服一致备份及守护稳定观察继续独立记录，尚不据CI结果自动声明部署。
+
+123运行也已交付：主目录453866d真实构建，buildId 7DPYUYWiUo1CUbaCcrd0R、schema16，100实际HTTP/权限/已提供JS检查、11编译逐SHA、6MP3逐SHA及跨119361毫秒三次守护稳定观察通过。五处本地配置与真实环境、新鲜122编译/停服一致数据库回退保持；assetsIncluded:false，不等于全资产独立备份或生产恢复演练。当前可访问`/studio/whiteboards`，见[运行原件](../evidence/2026-10-26/topic-whiteboard-runtime.json)。124图片/复杂公式与72项完整教学/像素/实机/教师门槛仍独立继续。
