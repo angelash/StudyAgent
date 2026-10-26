@@ -1,5 +1,5 @@
 {
-  "status": "initial-ci-automatic-budgets-exhausted-current-ci-repair-ready",
+  "status": "exact-ci-passed-runtime-pending",
   "deployed": false,
   "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
@@ -14,7 +14,7 @@
   "productionSchemaVersion": 15,
   "limits": [
     "Independent page/editor and explicit topic player are connected but not deployed.",
-    "Exact candidate CI and actual production delivery remain pending.",
+    "Actual production delivery remains pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
     "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
@@ -160,9 +160,10 @@
     "domainCollections": 97,
     "contractTypes": 328,
     "sourceReferences": 466,
-    "markdownLinks": 2939,
+    "markdownLinks": 2941,
     "offlineViewerChecks": 10,
-    "passed": true
+    "passed": true,
+    "currentApplicationBaseline": "topic-whiteboard-acceptance.json"
   },
   "initialCi": {
     "head": "3b04e1f28fadcf5548152b66ae54a4a1166c4cc3",
@@ -186,5 +187,51 @@
     "report": "topic-whiteboard-ci-initial/final-receipt.json",
     "status": "completed",
     "conclusion": "cancelled"
+  },
+  "passed": true,
+  "exactCi": {
+    "at": "2026-10-26T02:47:22.041Z",
+    "head": "e1bd27cd04b2401dad282f606f9d2cf9db71454a",
+    "run": 40258543480,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "application",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "postgres",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "browser": {
+      "startTime": "2026-10-26T02:21:44.151Z",
+      "duration": 1258609.571,
+      "expected": 242,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "attempts": 242,
+      "retries": 0,
+      "originalSha256": "a8079195e9ff2ff39e7056babe9a35d83916d26de8da6c18449fd5570411b9c7",
+      "compressedSha256": "a56029ca283633f7b5856057a6cd00027de0e77fa42ad009d42b5c11bb8b256f"
+    },
+    "linuxApi": {
+      "passed": 1279,
+      "environmentSkipped": 59
+    },
+    "topicPostgres": {
+      "passed": 14,
+      "sqliteOnlySkipped": 2
+    },
+    "report": "topic-whiteboard-exact-ci/receipt.json"
   }
 }

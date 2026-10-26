@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T01:44:35.672Z",
+  "at": "2026-10-26T02:50:37.374Z",
   "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
@@ -30,7 +30,7 @@
     "uniqueFiles": 466,
     "problems": [],
     "sha256": {
-      ".github/workflows/verify.yml": "69196eb1d07305699db3778907f73c235e25345883ec2ecf2ab41f1cbda869f6",
+      ".github/workflows/verify.yml": "9faed4bee952d75169934df7326a5bddeb470e42e6e1bcca4b63c3816f699ca8",
       "apps/api/src/common/answer-draft.ts": "fedc45ca485633148b0a69e43fdfc6355815d0843980acdf947d4a63be67e5b2",
       "apps/api/src/common/api-response.interceptor.ts": "788509a5825ca4029691f7c537cc56cf7de995553f152914aa7b7467b773dae2",
       "apps/api/src/common/auth.guard.ts": "af3796cb87c164fab4fbda2564ef256f48a92495ef7723eb3430b577d0005dd3",
@@ -504,7 +504,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 2939,
+    "checked": 2941,
     "missing": []
   },
   "staticContent": {
@@ -575,8 +575,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/whiteboard-speech-acceptance.json",
-    "revision": "68202df",
+    "receipt": "../evidence/2026-10-26/topic-whiteboard-acceptance.json",
+    "revision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }
