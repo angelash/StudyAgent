@@ -5,6 +5,7 @@ import { generationView } from '../learning/source-course-pipeline';
 import { sourceCourseVersioningView, sourceCourseLesson } from '../learning/source-course-content';
 import { compilationView } from '../learning/source-course-compilation';
 import { studioMaterialView } from '../learning/studio-material-access';
+import { publicTopicWhiteboard } from '../learning/topic-whiteboard-projection';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -171,9 +172,12 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='sourceCourseChecks')result[name]=records.filter(row=>allowedCourses.has(row.courseId)&&['published','superseded','withdrawn'].includes(row.status)).map(row=>({id:row.id,courseId:row.courseId,courseFingerprint:row.courseFingerprint,revision:row.revision,status:row.status,publishedAt:row.publishedAt,withdrawnAt:row.withdrawnAt,title:row.content?.title??null,targets:(row.prepared?.targets??[]).map(({lessonId,title,objective}:Row)=>({lessonId,title,objective}))}));
     else if(name==='studioTopicWhiteboardVisuals')result[name]=[];
     else if(name==='studioTopicWhiteboardDrafts')result[name]=records.filter(row=>row.ownerUserId===actorId)
-      .map(({prepared,authorization:_auth,commands:_commands,taskId:_task,requestHash:_hash,...row})=>({...row,prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId}));
-    else if(name==='studioTopicWhiteboards')result[name]=records.map(({ownerUserId,sourceDraftId:_source,...row})=>
-      ({...row,...(row.origin?{origin:{...row.origin,draftId:ownerUserId===actorId?row.origin.draftId:null}}:{})}));
+      .map(({prepared,authorization:_auth,commands:_commands,taskId:_task,requestHash:_hash,...row})=>{
+        const withoutFigures=(content:Row|null)=>content?{...content,scenes:content.scenes.map(({figure:_figure,...scene}:Row)=>scene)}:content;
+        return {...row,content:withoutFigures(row.content),originalContent:withoutFigures(row.originalContent),
+          ...(row.history?{history:row.history.map((item:Row)=>({...item,content:withoutFigures(item.content)}))}:{}),prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId};
+      });
+    else if(name==='studioTopicWhiteboards')result[name]=records.map(row=>publicTopicWhiteboard(row as any,actorId));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }

@@ -55,7 +55,7 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -108,6 +108,16 @@ function referencesFromRecords(rows) {
       for (const file of value.checkpointFiles ?? []) {
         if (!Number.isSafeInteger(file.page)||file.page<1||file.page>500||!new RegExp('^study-pdf-structure-v\\d+/page-'+file.page+'\\.json$').test(file.name)||!/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_checkpoint_reference');
         add(`studio-materials/processed/${value.sha256}/${file.name}`,file.sha256,file.size);
+      }
+    } else if (row.collection === 'studioTopicWhiteboards') {
+      if(value.figureSnapshots!==undefined&&!Array.isArray(value.figureSnapshots))fail('invalid_topic_figure_snapshot');
+      for(const figure of value.figureSnapshots??[]){
+        if(!/^topic_whiteboard_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(figure.visualId)||figure.width!==1536||figure.height!==1024||
+          !value.scenes?.some(scene=>scene.id===figure.sceneId&&scene.figure?.sha256===figure.image?.sha256&&scene.figure?.originalSha256===figure.original?.sha256))fail('invalid_topic_figure_snapshot');
+        for(const file of [figure.original,figure.image]){
+          if(!file||!/^[a-f0-9]{64}\.png$/.test(file.name)||file.name!==file.sha256+'.png')fail('invalid_topic_figure_snapshot');
+          add('topic-whiteboard-visuals/'+figure.visualId+'/'+file.name,file.sha256,file.size);
+        }
       }
     } else if (row.collection === 'classroomVisuals' || row.collection === 'studioTopicWhiteboardVisuals') {
       const topic = row.collection === 'studioTopicWhiteboardVisuals', prefix = topic ? 'topic_whiteboard_visual' : 'classroom_visual';

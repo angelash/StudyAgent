@@ -18,6 +18,9 @@ import { acquireStudioFileLease } from '../../infrastructure/studio-file-coordin
 import { projectFileRoot, verifyProjectFile } from '../learning/project-file-storage';
 import { scheduleProjectFileCollection } from '../learning/project-file.service';
 import type { ProjectAssetRecord } from '../learning/project-file-record';
+import type { StudioTopicWhiteboard } from '@study-agent/contracts';
+import { topicVisualDescriptorFile } from '../learning/topic-whiteboard-visual-storage';
+import { topicVisualTaskKind, topicVisualPurgeKind } from '../learning/topic-whiteboard-visual-access';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -150,6 +153,25 @@ export class PrivacyService {
       if(!current?.files||current.files.image.sha256!==record.files!.image.sha256)throw new ConflictException('课堂图片已变化，请重新准备副本');
       for(const part of ['original','image'] as const){const file=visualFile(record,part),name=`visuals/${record.id}-${part}.png`;entries.push({name,path:file.path,size:file.size});visualManifests.push({visualId:record.id,part,name,size:file.size,sha256:file.sha256});}
     }
+    const topicBoards=[...(snapshot.accountRecords.studioTopicWhiteboards??[]),...snapshot.students.flatMap(child=>child.records.studioTopicWhiteboards??[])] as StudioTopicWhiteboard[];
+    const topicFigureManifests:unknown[]=[];
+    for(const frozen of new Map(topicBoards.map(board=>[board.id,board])).values()){
+      const current=this.store.find('studioTopicWhiteboards',{id:frozen.id,fingerprint:frozen.fingerprint});
+      if(!current||current.studentId!==null&&!snapshot.students.some(child=>child.id===current.studentId)||current.studentId===null&&current.ownerUserId!==snapshot.account.id)
+        throw new ConflictException('白板或当前权限已变化，请重新准备副本');
+      for(const scene of frozen.scenes){
+        if(!scene.figure)continue;
+        const selected=current.figureSnapshots?.find(item=>item.sceneId===scene.id);
+        if(!selected||selected.image.sha256!==scene.figure.sha256||selected.original.sha256!==scene.figure.originalSha256)
+          throw new ConflictException('冻结图片已变化，请重新准备副本');
+        for(const part of ['original','image'] as const){
+          let file;try{file=topicVisualDescriptorFile(selected.visualId,selected[part]);}catch{throw new ConflictException('冻结图片原件不完整，不能导出缺失的副本');}
+          const name='whiteboards/'+encodeURIComponent(frozen.id)+'/'+encodeURIComponent(scene.id)+'-'+part+'.png';
+          entries.push({name,path:file.path,size:file.size});topicFigureManifests.push({whiteboardId:frozen.id,sceneId:scene.id,snapshotId:scene.figure.snapshotId,
+            part,name,sha256:file.sha256,size:file.size,width:selected.width,height:selected.height,alt:selected.alt,caption:selected.caption});
+        }
+      }
+    }
     const projectAssets=[...(snapshot.accountRecords.projectAssets??[]),...snapshot.students.flatMap(child=>child.records.projectAssets??[])] as ProjectAssetRecord[];
     const releases:Array<()=>Promise<void>>=[],projectFiles:unknown[]=[];
     const release=()=>Promise.allSettled(releases.splice(0).map(fn=>fn()));
@@ -162,7 +184,8 @@ export class PrivacyService {
           const path=await verifyProjectFile(asset.id,file),name='projects/'+asset.id+'/'+file.name;entries.push({name,path,size:file.size});projectFiles.push({assetId:asset.id,projectId:asset.projectId,name,size:file.size,sha256:file.sha256,mediaType:file.mediaType});
         }
       }
-      const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests,projects:projectFiles }, null, 2) + '\n');
+      const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests,projects:projectFiles,
+        ...(topicFigureManifests.length?{whiteboardFigures:topicFigureManifests}:{}) }, null, 2) + '\n');
       entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
       const stream=tarArchive(entries,snapshot.exportedAt);stream.once('close',()=>void release());return {stream,receiptId:snapshot.receipt.id};
     }catch(error){await release();throw error;}
@@ -197,6 +220,12 @@ export class PrivacyService {
         ['queued','running','retry_wait','cancel_requested'].includes(task.state))
         await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
     }
+    for(const visual of selection.studioTopicWhiteboardVisuals??[]){
+      const task=await this.store.tasks.get(String(visual.taskId));
+      if(task?.kind===topicVisualTaskKind&&task.ownerUserId===visual.ownerUserId&&task.payload.visualId===visual.id&&
+        ['queued','running','retry_wait','cancel_requested'].includes(task.state))
+        await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const upload of selection.projectAssetUploads??[])await scheduleProjectFileCollection(this.store,'project-upload',String(upload.id),actor.id);
     for(const asset of selection.projectAssets??[]){
       const task=await this.store.tasks.get(String(asset.taskId));if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
@@ -212,6 +241,10 @@ export class PrivacyService {
     await this.media.schedulePurge((selection.studentMedia ?? []).map(row => String(row.id)), actor.id, receipt.id);
     const visualIds=(selection.classroomVisuals??[]).map(row=>String(row.id));
     if(visualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:'classroom.visual.purge',ownerUserId:actor.id,requestKey:'visual-purge:'+receipt.id,payloadHash:visualDigest(visualIds),payload:{ids:visualIds},createdAt:new Date().toISOString(),maxAttempts:5});
+    const topicVisualIds=[...new Set([...(selection.studioTopicWhiteboardVisuals??[]).map(row=>String(row.id)),
+      ...(selection.studioTopicWhiteboards??[]).flatMap(board=>(board.figureSnapshots??[]).map((figure:{visualId:string})=>figure.visualId))])];
+    if(topicVisualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:topicVisualPurgeKind,ownerUserId:actor.id,
+      requestKey:'topic-visual-purge:'+receipt.id,payloadHash:visualDigest(topicVisualIds),payload:{ids:topicVisualIds},createdAt:new Date().toISOString(),maxAttempts:5});
     this.events.publish('privacy.deletion_completed', { receiptId: receipt.id, kind, subjectHash: receipt.subjectHash, counts: receipt.counts, policyVersion });
     return receipt;
   }

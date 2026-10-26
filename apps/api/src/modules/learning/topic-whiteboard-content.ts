@@ -20,8 +20,10 @@ function canonical(value: unknown): unknown {
 export function topicWhiteboardDigest(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
 }
-export function validateTopicWhiteboardContent(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, value: unknown): TopicWhiteboardContent {
+export function validateTopicWhiteboardContent(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, value: unknown,
+  options: { allowFigures?: boolean } = {}): TopicWhiteboardContent {
   const content = topicWhiteboardContentSchema.parse(value), expected = new Set(prepared.targets.map(target => target.id));
+  if (!options.allowFigures && content.scenes.some(scene => scene.figure)) throw Error('topic_whiteboard_model_figure_forbidden');
   if (prepared.input.audience.kind === 'adult') {
     if (expected.size || content.scenes.some(scene => scene.targetAtomIds.length)) throw new Error('topic_whiteboard_adult_target_mismatch');
   } else {

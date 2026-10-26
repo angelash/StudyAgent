@@ -1,0 +1,134 @@
+{
+  "phase": "124 explicit manuscript figure selection and independently retained public PNG snapshots",
+  "at": "2026-10-26T03:51:29.955Z",
+  "baseRevision": "690d6f230a1b2068959296938ba30e727f1e0b60",
+  "reports": [
+    {
+      "name": "topic-figure-snapshot-initial.json",
+      "sha256": "14c8938e5a9d7198e3827fcfa5b2bd036384a6a2a40027d5deb034bbb75d77c4",
+      "bytes": 18663,
+      "passed": 35,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-snapshot-final.json",
+      "sha256": "44a91b6d8d1af77ae46deb7126ffa16212df5f92d06f108982d450a2b10ccf0a",
+      "bytes": 27607,
+      "passed": 53,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-cold-sqlite-initial.json",
+      "sha256": "67ea62fa24e9e77b2dab45a22acf431f2abb6bb33a10a81015551c38066116cf",
+      "bytes": 1268,
+      "passed": 1,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-postgres-http-recovery.json",
+      "sha256": "20738b319c75c7da20d1733dbcb1b3e49b9a4d9dc8442670c500e71832847e9d",
+      "bytes": 9624,
+      "passed": 17,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-snapshot-lint-final.log",
+      "sha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "bytes": 256
+    }
+  ],
+  "sources": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "sha256": "d31bb3da55488096d59e67f4a58458afd29c31021f43decd7f0e324e3dccf9cc"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+      "sha256": "acb4e8b7fb3a8ca3baacaac16861bb01fc72d0b445566eed19a02d58905496b9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
+      "sha256": "c82ee45812b4c0f55666a85148f5943591b10b2ee6eca17d40df8f576a1f9dba"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-figures.ts",
+      "sha256": "5bafa10cb0961d0d36527bf4e232c410bf43e513f26eebbb955af00223131f2e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-projection.ts",
+      "sha256": "8f79573b97487e1af9db8b5fb18951629d728d3cc912970220f9ac33f26318b4"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+      "sha256": "be53471816be6ae86b3f5ee54cc56ca9ca08e1a9e8f3ba062113fc0b1a241a20"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+      "sha256": "8d92333c7d9d8b44f6af24b45cf03965196409200a1fe10cc6a6968505c142a6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+      "sha256": "aab6e83822058565a1e065e35b854c8609e44789d1d1a62eaf4f9a538f04a317"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+      "sha256": "6050fac2332af256452345dfa9d16ca6ac85c3268554eef56443a72649cd1231"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "sha256": "6d5f0b85d5d3a66c4834288a058b303afe760f0c4e156f798d7aaf5fe50cafa6"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy.service.ts",
+      "sha256": "837a096a3dc95e677f627335fac6c9a3edd06825a503f39260abc178db50df57"
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "sha256": "f94b1999943706203cb7ab4b233179b54bc1ca8a190989958c721d0196334412"
+    },
+    {
+      "path": "packages/contracts/src/topic-whiteboard.ts",
+      "sha256": "d873a7b727d784cfd9cdb5469b7b35c2c0cb33e36443711637a047186c7d8a65"
+    },
+    {
+      "path": "scripts/operations/backup.cjs",
+      "sha256": "0b836bd672fe6f2e7fa1ed13bf56d269d2244e58399d49650a91953541efed6f"
+    },
+    {
+      "path": "scripts/operations/postgres-backup.cjs",
+      "sha256": "d17862e2d9e5e3e2c2ccd7a77f1aa0786d8e27df00360a554053846e74f21bc5"
+    },
+    {
+      "path": "scripts/operations/postgres-restore.cjs",
+      "sha256": "c5b554f50d174f23f9f47eac269d4f02d14d926a9cadd12654a82a51bf4b0133"
+    },
+    {
+      "path": "scripts/operations/privacy-ledger.cjs",
+      "sha256": "3c7b7d3305ef6f958bdaec15ca1f1ea03f9cf56cd3a5beb779d6ce6af13e0328"
+    },
+    {
+      "path": "scripts/operations/sqlite-restore.cjs",
+      "sha256": "c78a363f44224f700c4fcd33442fe67d7833f1f729ca95cf6a70844ad207b186"
+    },
+    {
+      "path": "scripts/qa/run-topic-figure-postgres.cjs",
+      "sha256": "b4832453c9d3302c22c68d5309d8babcf3022f871c9073a5d350e03eca04529f"
+    }
+  ],
+  "nativeRecovery": "Actual dedicated PostgreSQL databases, pg_dump/pg_restore and real HTTP author/guardian flows. The corresponding SQLite case uses actual bundles. Both interrupt physical deletion after one file and explicitly resume the quarantined restore.",
+  "privacy": "Private image candidate, edit parent, requirements, prompt and internal file paths are excluded from public scenes and family image exports. Account ledger retains only selected shared PNGs; a later child ledger removes them from pre-account and post-account bundles.",
+  "provider": "Controlled fixture, no additional live image calls.",
+  "boundaries": [
+    "53 SQLite and related checks, 17 native PG checks are overlapping scoped suites, not totals for all product requirements.",
+    "No front-end figure picker/zoom/video formula/export integration, full regression, remote124 CI or schema17 production delivery yet.",
+    "123 final archival CI40262946670 and40262946020 were separately refreshed as completed/success; no CI was cancelled."
+  ]
+}

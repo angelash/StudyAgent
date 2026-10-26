@@ -79,10 +79,31 @@ describe('topic whiteboard image candidates through actual HTTP and durable task
     const result = await prepare(draftValue, {}, actor); await worker.runNext(); return { ...result, view: await call('get', base + '/' + result.view.id, undefined, actor) };
   }
   const control = (view: any) => ({ expectedRevision: view.revision, taskVersion: view.task.version, generation: view.task.generation, requestKey: randomUUID() });
-  async function change(draftValue: any, mutate: (content: any) => void, actor = owner) {
+  async function change(draftValue: any, mutate: (content: any) => void, actor = owner, status = 200) {
     const content = structuredClone(draftValue.content); mutate(content);
     return call('patch', boards + '/drafts/' + draftValue.id + '/content', { content, expectedRevision: draftValue.revision,
-      contentFingerprint: draftValue.contentFingerprint, requestKey: randomUUID() }, actor);
+      contentFingerprint: draftValue.contentFingerprint, requestKey: randomUUID() }, actor, status);
+  }
+  const figureFor = (view: any) => ({ visualId: view.id, alt: '两个概念圆及其交集，说明观察和条件的关系。', caption: 'AI参考图，标签和关系待核对。' });
+  async function publish(draftValue: any, actor = owner) {
+    const saved = await call('post', boards + '/drafts/' + draftValue.id + '/confirm', { expectedRevision: draftValue.revision, contentFingerprint: draftValue.contentFingerprint,
+      acknowledgeAiGeneratedContent: true, acknowledgeUnreviewedChanges: true, requestKey: randomUUID() }, actor);
+    return call('get', boards + '/' + saved.whiteboardId, undefined, actor);
+  }
+  async function child(actor: any, guardian?: any) {
+    const created = await call('post', '/students', { nickname: '匿名配图学习者', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } }, actor);
+    const studentId = created.profile.id, atomId = 'topic-visual-atom-' + randomUUID();
+    if (guardian) {
+      const invitation = await call('post', '/students/' + studentId + '/invitations', { recipientPrincipal: guardian.user.principal }, actor);
+      await call('post', '/parents/' + guardian.user.id + '/bindings', { studentId, inviteToken: invitation.token }, guardian);
+    }
+    await store.transaction(() => {
+      store.append('knowledgeAtoms', { id: atomId, name: '比较条件', subject: 'math', grade: 3, term: 'both', objective: '比较之前先核对完整条件',
+        successCriterion: '在新情境中独立说明条件', prerequisiteIds: [], status: 'published', version: 1, curriculumVersion: 'topic-visual', strand: '合成范围' });
+      store.append('learningScopes', { id: 'topic-visual-scope-' + randomUUID(), studentId, subject: 'math', grade: 3, term: 'upper', version: 1,
+        confirmedAt: new Date().toISOString(), learnedAtomIds: [atomId], minutesPerSession: 15 });
+    });
+    return { studentId, audience: { kind: 'student', studentId, subject: 'math', atomIds: [atomId] } };
   }
   beforeAll(async () => {
     Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false',
@@ -195,6 +216,7 @@ describe('topic whiteboard image candidates through actual HTTP and durable task
     const row = await store.requestContext(() => structuredClone(store.find('studioTopicWhiteboardVisuals', { id: first.view.id })));
     const original = load('modules/learning/topic-whiteboard-visual-storage').topicVisualFile(row);
     writeFileSync(original.path, Buffer.alloc(original.size)); await call('get', base + '/' + first.view.id + '/image', undefined, owner, 409);
+    writeFileSync(original.path, original.bytes);
   });
   it('does not publish under a replacement login after the original author logs out during image generation', async () => {
     const actor = await register(); let entered!: () => void, release!: () => void;
@@ -244,5 +266,79 @@ describe('topic whiteboard image candidates through actual HTTP and durable task
     const original = load('modules/learning/topic-whiteboard-visual-storage').topicVisualFile(row, 'original'); writeFileSync(original.path, Buffer.alloc(original.size));
     release(); await pending; const failed = await call('get', base + '/' + edit.view.id);
     expect(failed.status).toBe('failed'); expect(failed.imageUrl).toBeNull(); expect(calls).toHaveLength(2);
+    writeFileSync(original.path, original.bytes);
+  });
+  it('explicitly saves only current authorized scene images and freezes a public image identity without private candidates', async () => {
+    const first = await ready(), replacement = await ready(first.draft);
+    await change(first.draft, content => { content.scenes[1].figure = figureFor(first.view); }, owner, 409);
+    const staleContent = structuredClone(first.draft.content); staleContent.scenes[0].figure = figureFor(first.view); staleContent.scenes[0].body += '同时偷偷改了教学内容。';
+    await call('patch', boards + '/drafts/' + first.draft.id + '/content', { content: staleContent, expectedRevision: first.draft.revision,
+      contentFingerprint: first.draft.contentFingerprint, requestKey: randomUUID() }, owner, 409);
+    const selected = await change(first.draft, content => { content.scenes[0].figure = figureFor(first.view); });
+    expect(selected.originalContent.scenes[0].figure).toBeUndefined(); expect(selected.review.current).toBe(false);
+    expect((await call('get', base + '/' + first.view.id)).selected).toBe(true);
+    const next = await change(selected, content => { content.scenes[0].figure = figureFor(replacement.view); });
+    expect((await call('get', base + '/' + first.view.id)).selected).toBe(false);
+    expect((await call('get', boards + '/drafts/' + selected.id + '/history')).items.some((item: any) => item.content.scenes[0].figure?.visualId === first.view.id)).toBe(true);
+    const board = await publish(next); expect(board.scenes[1].exhibit.kind).toBe('table');
+    expect(board.scenes[0].figure).toMatchObject({ width: 1536, height: 1024, sha256: replacement.view.sha256, alt: figureFor(first.view).alt });
+    expect(JSON.stringify(board)).not.toContain(replacement.view.id); expect(JSON.stringify(board)).not.toContain('figureSnapshots'); expect(JSON.stringify(board)).not.toContain('parentOriginal');
+    const response = await request(app.getHttpServer()).get('/api' + board.scenes[0].figure.originalUrl).set('Authorization', 'Bearer ' + owner.token).expect(200);
+    expect(response.body.equals(readFileSync(sample))).toBe(true);
+    await call('get', board.scenes[0].figure.imageUrl, undefined, other, 404);
+    const row = await store.requestContext(() => structuredClone(store.find('studioTopicWhiteboardDrafts', { id: next.id })));
+    const saved = await store.requestContext(() => structuredClone(store.find('studioTopicWhiteboards', { id: board.id })));
+    const alternate = structuredClone(row), snapshots = structuredClone(saved.figureSnapshots), anotherId = 'topic_whiteboard_visual_' + randomUUID();
+    alternate.content.scenes[0].figure.visualId = anotherId; snapshots[0].visualId = anotherId;
+    alternate.contentFingerprint = load('modules/learning/topic-whiteboard-content').topicWhiteboardDigest(alternate.content);
+    const projected = load('modules/learning/topic-whiteboard-projection').buildTopicWhiteboard(alternate, 'another-public-board', saved.createdAt, snapshots);
+    expect(projected.fingerprint).toBe(board.fingerprint);
+    expect(() => load('modules/learning/topic-whiteboard-content').validateTopicWhiteboardContent(row.prepared, row.content)).toThrow('model_figure_forbidden');
+  });
+  it('preserves the full manuscript when a selected image corrupts and permits an explicit removal before confirmation', async () => {
+    const first = await ready(), selected = await change(first.draft, content => { content.scenes[0].figure = figureFor(first.view); });
+    const row = await store.requestContext(() => structuredClone(store.find('studioTopicWhiteboardVisuals', { id: first.view.id })));
+    const image = load('modules/learning/topic-whiteboard-visual-storage').topicVisualFile(row); writeFileSync(image.path, Buffer.alloc(image.size));
+    try {
+      await call('post', boards + '/drafts/' + selected.id + '/confirm', { expectedRevision: selected.revision, contentFingerprint: selected.contentFingerprint,
+        acknowledgeAiGeneratedContent: true, acknowledgeUnreviewedChanges: true, requestKey: randomUUID() }, owner, 409);
+      const removed = await change(selected, content => { delete content.scenes[0].figure; }); expect(removed.content.scenes[0].body).toBe(first.draft.content.scenes[0].body);
+      const board = await publish(removed); expect(board.scenes[0].figure).toBeUndefined();
+    } finally { writeFileSync(image.path, image.bytes); }
+  });
+  it('shares only frozen PNGs, physically erases author prompts and private images, then collects the shared PNG after child deletion', async () => {
+    const actor = await register(), guardian = await register(), scope = await child(actor, guardian), value = await draft(actor, scope.audience);
+    const selected = await ready(value, actor), unselected = await ready(value, actor), adult = await ready(undefined, actor);
+    const manuscript = await change(value, content => { content.scenes[0].figure = figureFor(selected.view); }, actor), board = await publish(manuscript, actor);
+    const queued = await prepare(await draft(actor, scope.audience), {}, actor);
+    const imagePath = '/api' + board.scenes[0].figure.imageUrl;
+    const shared = await call('get', boards + '/' + board.id, undefined, guardian); expect(shared.origin.draftId).toBeNull();
+    await request(app.getHttpServer()).get(imagePath).set('Authorization', 'Bearer ' + guardian.token).expect(200);
+    await call('get', base + '/' + selected.view.id, undefined, guardian, 404);
+    await call('get', base + '/' + selected.view.id + '/original', undefined, guardian, 404);
+    const exported = await call('post', '/privacy/students/' + scope.studentId + '/export', { credential: guardian.credential, requestKey: randomUUID() }, guardian);
+    expect(JSON.stringify(exported)).not.toContain(selected.view.id); expect(JSON.stringify(exported)).not.toContain('frozenContext');
+    const archive = await request(app.getHttpServer()).post('/api/privacy/students/' + scope.studentId + '/export-archive').set('Authorization', 'Bearer ' + guardian.token)
+      .send({ credential: guardian.credential, requestKey: randomUUID() }).buffer(true).parse((response: any, done: any) => {
+        const chunks: Buffer[] = []; response.on('data', (chunk: Buffer) => chunks.push(chunk)); response.on('end', () => done(null, Buffer.concat(chunks)));
+      }).expect(201);
+    const archiveBytes: Buffer = archive.body; expect(archiveBytes.includes(Buffer.from('whiteboardFigures'))).toBe(true);
+    expect(archiveBytes.includes(Buffer.from(selected.view.id))).toBe(false); expect(archiveBytes.includes(Buffer.from(unselected.view.id))).toBe(false);
+    const selectedRow = await store.requestContext(() => structuredClone(store.find('studioTopicWhiteboardVisuals', { id: selected.view.id })));
+    const queuedTaskId = await store.requestContext(() => store.find('studioTopicWhiteboardVisuals', { id: queued.view.id }).taskId);
+    const preview = await call('get', '/privacy/account/deletion-preview', undefined, actor);
+    await call('post', '/privacy/account/delete', { credential: actor.credential, confirmation: preview.confirmation, fingerprint: preview.fingerprint, requestKey: randomUUID() }, actor);
+    expect((await store.tasks.get(queuedTaskId)).state).toBe('cancelled');
+    for (let index = 0; index < 10 && await worker.runNext(); index++) {}
+    const selectedRoot = join(directory, 'topic-whiteboard-visuals', selected.view.id);
+    expect(existsSync(join(selectedRoot, selectedRow.files.image.name))).toBe(true); expect(existsSync(join(selectedRoot, selectedRow.files.original.name))).toBe(true);
+    expect(existsSync(join(selectedRoot, selectedRow.files.prompt.name))).toBe(false);
+    expect(existsSync(join(directory, 'topic-whiteboard-visuals', unselected.view.id))).toBe(false); expect(existsSync(join(directory, 'topic-whiteboard-visuals', adult.view.id))).toBe(false);
+    const after = await call('get', boards + '/' + board.id, undefined, guardian); expect(after.fingerprint).toBe(board.fingerprint);
+    await request(app.getHttpServer()).get(imagePath).set('Authorization', 'Bearer ' + guardian.token).expect(200);
+    const childPreview = await call('get', '/privacy/students/' + scope.studentId + '/deletion-preview', undefined, guardian);
+    await call('post', '/privacy/students/' + scope.studentId + '/delete', { credential: guardian.credential, confirmation: childPreview.confirmation, fingerprint: childPreview.fingerprint, requestKey: randomUUID() }, guardian);
+    for (let index = 0; index < 10 && await worker.runNext(); index++) {}
+    expect(existsSync(selectedRoot)).toBe(false); await call('get', boards + '/' + board.id, undefined, guardian, 404);
   });
 });

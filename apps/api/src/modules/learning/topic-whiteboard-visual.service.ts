@@ -59,7 +59,7 @@ export class TopicWhiteboardVisualService {
       task?.state === 'cancel_requested' || row.status === 'cancel_requested' ? 'cancelling' : row.status;
     return { id: row.id, draftId: row.draftId, sceneIndex: row.sceneIndex, sceneTeachingFingerprint: row.sceneTeachingFingerprint,
       purpose: row.purpose, requirements: row.requirements, operation: row.operation, parentVisualId: row.parentVisualId, changes: row.changes,
-      modelId: row.modelId, revision: row.revision, status, selected: false, currentTeaching, contentReview: 'pending',
+      modelId: row.modelId, revision: row.revision, status, selected: draft?.content?.scenes[row.sceneIndex]?.figure?.visualId === row.id, currentTeaching, contentReview: 'pending',
       imageUrl: row.status === 'ready' ? '/learning/studio/topic-whiteboard-visuals/' + row.id + '/image' : null,
       sha256: row.files?.image.sha256 ?? null, width: row.width, height: row.height, createdAt: row.createdAt, updatedAt: row.updatedAt,
       task: task ? { state: task.state, version: task.version, generation: task.generation, errorCode: task.errorCode } : null,

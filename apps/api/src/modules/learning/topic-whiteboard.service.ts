@@ -12,6 +12,8 @@ import { assertTopicWhiteboardInputCurrent, captureTopicWhiteboardAuthorization,
 import { topicWhiteboardDigest, topicWhiteboardTaskKind, validateTopicWhiteboardContent } from './topic-whiteboard-content';
 import { buildTopicWhiteboard, publicTopicWhiteboard } from './topic-whiteboard-projection';
 import type { TopicWhiteboardCommand, TopicWhiteboardDraftRecord, TopicWhiteboardRecord } from './topic-whiteboard-record';
+import { freezeTopicWhiteboardFigures } from './topic-whiteboard-figures';
+import { topicVisualDescriptorFile } from './topic-whiteboard-visual-storage';
 
 const active = new Set(['queued', 'running', 'retry_wait', 'cancel_requested']);
 const pageSchema = z.object({ page: z.coerce.number().int().min(1).max(100000).default(1),
@@ -153,8 +155,9 @@ export class TopicWhiteboardService {
       assertTopicWhiteboardInputCurrent(this.store, this.students, user, row.prepared);
       if (row.status !== 'ready' || row.revision !== command.expectedRevision || row.contentFingerprint !== command.contentFingerprint || !row.content)
         throw new ConflictException('只能修改当前未确认候选，请先比较最新稿');
-      let content; try { content = validateTopicWhiteboardContent(row.prepared, command.content); }
+      let content; try { content = validateTopicWhiteboardContent(row.prepared, command.content, { allowFigures: true }); }
       catch { throw new BadRequestException('请核对完整要点、旁白、表格及所选目标'); }
+      freezeTopicWhiteboardFigures(this.store, row, content);
       const fingerprint = topicWhiteboardDigest(content);
       if (fingerprint !== row.contentFingerprint) {
         row.history.push({ version: row.contentVersion, content: structuredClone(row.content), fingerprint: row.contentFingerprint,
@@ -183,7 +186,8 @@ export class TopicWhiteboardService {
         throw new ConflictException('原生成任务尚未完成');
       if ((!row.modelReview || row.modelReview.decision === 'uncertain' || row.modelReview.outputFingerprint !== row.contentFingerprint) && !command.acknowledgeUnreviewedChanges)
         throw new BadRequestException('仍有未核对问题或手工修改，请明确确认候选性质');
-      const board = buildTopicWhiteboard(row, this.store.nextId('topic_board'), new Date().toISOString());
+      const figures = freezeTopicWhiteboardFigures(this.store, row, row.content!);
+      const board = buildTopicWhiteboard(row, this.store.nextId('topic_board'), new Date().toISOString(), figures);
       this.store.append('studioTopicWhiteboards', board); row.whiteboardId = board.id; row.status = 'confirmed';
       return this.view(row, task, this.command(row, user, command.requestKey, 'confirm', hash, { contentFingerprint: row.contentFingerprint!, whiteboardId: board.id }));
     });
@@ -195,6 +199,14 @@ export class TopicWhiteboardService {
     captureTopicWhiteboardAuthorization(this.store, this.students, user, audience, session); return row;
   }
   getPublished(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession) { return publicTopicWhiteboard(this.publishedRecord(user, id, session), user.id); }
+  publishedFigure(user: InMemoryUserAccount, id: string, sceneId: string, session: InMemoryAuthSession, part: 'image' | 'original') {
+    const board = this.publishedRecord(user, id, session), snapshot = board.figureSnapshots?.find(item => item.sceneId === sceneId);
+    const figure = board.scenes.find(scene => scene.id === sceneId)?.figure;
+    if (!snapshot || !figure) throw new NotFoundException('白板图片不存在');
+    if (snapshot[part].sha256 !== (part === 'image' ? figure.sha256 : figure.originalSha256)) throw new ConflictException('冻结图片身份不一致');
+    try { return topicVisualDescriptorFile(snapshot.visualId, snapshot[part]); }
+    catch { throw new ConflictException('冻结图片字节不可用，请保留完整文字稿'); }
+  }
   listPublished(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession) {
     const query = validate(pageSchema, input ?? {});
     const rows = this.store.inspect('studioTopicWhiteboards').filter(row => {

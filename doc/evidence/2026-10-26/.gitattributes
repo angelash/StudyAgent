@@ -1,0 +1,5 @@
+# Preserve original scoped JSON reports and PowerShell command output bytes.
+topic-figure-http/*.json -text
+topic-figure-http/*.log -text whitespace=cr-at-eol,-blank-at-eof
+topic-figure-snapshots/*.json -text
+topic-figure-snapshots/*.log -text whitespace=cr-at-eol,-blank-at-eof

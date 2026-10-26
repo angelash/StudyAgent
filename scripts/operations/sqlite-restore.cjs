@@ -84,12 +84,12 @@ async function restoreSqlite({bundle,destination,deletionLedger,resume=false,aft
       state(db,context);
       const query=(sql,params=[])=>db.prepare(sql).all(...params);
       const before=await captureMaterialKeys(query);
-      const{removedMediaIds,...privacy}=await applyDeletionLedger(query,ledger);
+      const{removedMediaIds,topicVisualRetentions,...privacy}=await applyDeletionLedger(query,ledger);
       await afterPhase?.('ledger_applied');
       const access=await fenceRestoredState(query,context.backupId,verified.database.revision);
       const deleted=new Set();
       const materials=await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before,restoreContext:context,afterPhase:async(phase,relative)=>{if(phase==='material_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
-      privacy.mediaDirectoriesPurged=purgeRestoredMedia(root,removedMediaIds,verified.manifest,relative=>deleted.add(relative));
+      privacy.mediaDirectoriesPurged=purgeRestoredMedia(root,removedMediaIds,verified.manifest,relative=>deleted.add(relative),topicVisualRetentions);
       receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
       const finalFiles=[];
       for(const file of verified.manifest.files){

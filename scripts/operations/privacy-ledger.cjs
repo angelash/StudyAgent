@@ -89,9 +89,22 @@ async function applyDeletionLedger(query, ledger) {
   await query('INSERT INTO domain_records VALUES(?,?,?,?)', ['events', event.eventId, JSON.stringify(event), position]);
   const retainedMedia = new Set((store.studentMedia ?? []).map(row => row.id));
   const removedMediaIds = records.filter(row => row.collection === 'studentMedia' && !retainedMedia.has(row.record_id)).map(row => row.record_id);
-  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, removedMediaIds: [...removedMediaIds,...records.filter(row=>['classroomVisuals','studioTopicWhiteboardVisuals','projectAssets','projectAssetUploads'].includes(row.collection)&&!(store[row.collection]??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
+  // Shared frozen PNGs outlive private image rows. Compute retention from the final ledger state,
+  // including backups taken after the author account was already erased.
+  const topicIds=new Set(),keep=new Map();
+  for(const record of records){
+    const body=typeof record.body==='string'?JSON.parse(record.body):record.body;
+    if(record.collection==='studioTopicWhiteboardVisuals')topicIds.add(body.id);
+    if(record.collection==='studioTopicWhiteboards')for(const figure of body.figureSnapshots??[])topicIds.add(figure.visualId);
+  }
+  const retain=(id,file)=>{if(!file||!/^[a-f0-9]{64}\.(?:png|txt)$/.test(file.name)||file.name!==file.sha256+(file.name.endsWith('.png')?'.png':'.txt'))fail('invalid_topic_figure_reference');topicIds.add(id);if(!keep.has(id))keep.set(id,new Set());keep.get(id).add(file.name);};
+  for(const visual of store.studioTopicWhiteboardVisuals??[])if(visual.status==='ready'&&visual.files)for(const file of Object.values(visual.files))retain(visual.id,file);
+  for(const board of store.studioTopicWhiteboards??[])for(const figure of board.figureSnapshots??[]){retain(figure.visualId,figure.original);retain(figure.visualId,figure.image);}
+  const topicVisualRetentions=[...topicIds].sort().map(id=>({id,names:[...(keep.get(id)??[])].sort()}));
+  return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, topicVisualRetentions,
+    removedMediaIds: [...removedMediaIds,...records.filter(row=>['classroomVisuals','projectAssets','projectAssetUploads'].includes(row.collection)&&!(store[row.collection]??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
 }
-function purgeRestoredMedia(root, ids = [], manifest, onDelete) {
+function purgeRestoredMedia(root, ids = [], manifest, onDelete, topicVisualRetentions = []) {
   const { within } = require('./backup.cjs').files;
   for (const id of ids) {
     if (!/^(?:student_media|classroom_visual|topic_whiteboard_visual|project_asset|project_upload)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)) fail('invalid_student_media_reference');
@@ -112,7 +125,27 @@ function purgeRestoredMedia(root, ids = [], manifest, onDelete) {
       }
     }
   }
-  return ids.length;
+  for(const {id,names} of topicVisualRetentions){
+    if(!/^topic_whiteboard_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)||!Array.isArray(names)||names.some(name=>!/^[a-f0-9]{64}\.(?:png|txt)$/.test(name)))fail('invalid_topic_figure_reference');
+    if(!manifest)fail('topic_figure_restore_manifest_required');
+    const directory=within(root,'topic-whiteboard-visuals/'+id),keep=new Set(names),{walk,digest}=require('./backup.cjs').files;
+    if(!fs.existsSync(directory)){if(keep.size)fail('restore_media_retained_file_missing');continue;}
+    const expected=new Map(manifest.files.map(file=>[file.path,file])),files=[...walk(directory)];
+    for(const item of files){
+      const relative=path.relative(root,item.path).replaceAll('\\','/'),name=path.relative(directory,item.path).replaceAll('\\','/'),entry=expected.get('data/'+relative),stat=fs.lstatSync(item.path);
+      if(!/^[a-f0-9]{64}\.(?:png|txt)$/.test(name)||!entry||stat.size!==entry.size||digest(item.path)!==entry.sha256)fail('restore_media_inventory_unknown');
+    }
+    for(const name of keep)if(!files.some(file=>path.basename(file.path)===name))fail('restore_media_retained_file_missing');
+    for(const item of files){
+      if(keep.has(path.basename(item.path)))continue;
+      const relative=path.relative(root,item.path).replaceAll('\\','/'),file=within(root,relative),entry=expected.get('data/'+relative),before=fs.lstatSync(file);
+      if(!before.isFile()||before.size!==entry.size||digest(file)!==entry.sha256)fail('restore_media_file_changed');
+      const after=fs.lstatSync(within(root,relative));if(before.ino!==after.ino||before.dev!==after.dev||before.size!==after.size||before.mtimeMs!==after.mtimeMs)fail('restore_media_file_changed');
+      fs.unlinkSync(file);onDelete?.(relative);
+    }
+    if(!fs.readdirSync(directory).length)fs.rmdirSync(directory);
+  }
+  return ids.length+topicVisualRetentions.filter(item=>item.names.length===0).length;
 }
 module.exports = { makeLedger, readLedger, exportLedger, applyDeletionLedger, purgeRestoredMedia };
 if (require.main === module) {

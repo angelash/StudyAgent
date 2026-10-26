@@ -3,6 +3,7 @@ import type { Response } from 'express';
 import { AuthGuard, type AuthenticatedRequest } from '../../common/auth.guard';
 import { TopicWhiteboardService } from './topic-whiteboard.service';
 import { TopicWhiteboardNarrationService } from './topic-whiteboard-narration.service';
+import { streamFile } from '../../common/stream-file';
 
 @UseGuards(AuthGuard)
 @Controller('learning/studio/topic-whiteboards')
@@ -20,6 +21,14 @@ export class TopicWhiteboardController {
   @Post('drafts/:id/confirm') confirm(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.boards.confirm(req.user, id, input, req.authSession); }
   @Get() list(@Req() req: AuthenticatedRequest, @Query() input: unknown) { return this.boards.listPublished(req.user, input, req.authSession); }
   @Get(':id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.boards.getPublished(req.user, id, req.authSession); }
+  @Get(':id/figures/:sceneId/image') figure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string,
+    @Res({ passthrough: true }) response: Response) {
+    return streamFile(this.boards.publishedFigure(req.user, id, sceneId, req.authSession, 'image'), req.headers.range, response);
+  }
+  @Get(':id/figures/:sceneId/original') originalFigure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string,
+    @Res({ passthrough: true }) response: Response) {
+    return streamFile(this.boards.publishedFigure(req.user, id, sceneId, req.authSession, 'original'), req.headers.range, response);
+  }
   @Post(':id/narration/:sceneId') async speak(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string,
     @Body() input: unknown, @Res({ passthrough: true }) response: Response) {
     const controller = new AbortController(), disconnect = () => { if (!req.res?.writableEnded) controller.abort(); };
