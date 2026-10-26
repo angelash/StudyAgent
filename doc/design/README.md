@@ -8,10 +8,10 @@
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、120项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、121项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、95个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、97个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
@@ -37,9 +37,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：358个源码路由声明中，当前正常接入337个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
-- [页面职责](generated/page-reference.md)：26个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与316个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [全部接口](generated/api-reference.md)：371个源码路由声明中，当前正常接入350个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [页面职责](generated/page-reference.md)：27个页面和1个课堂runner处理器；部分页面是兼容重定向。
+- [领域集合与328个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构
@@ -120,3 +120,5 @@ npm run qa:docs
 
 
 2026-10-26：122逐句白板最终运行交付。核心68202df，精确CI a7c06df/40247643763三组success；本地API1258/47环境跳过、Linux1250/55，两端229浏览器零失败/零跳过/零重试。主目录203d8f0真实生产构建，buildId mSFyAwqNN3WmH4RE65D9V，schema15；73实际HTTP/权限/脚本检查、六MP3逐SHA、四个实际编译文件逐SHA通过，三次守护观察跨86599毫秒PID与重启计数不变。五处本地配置及真实环境原字节、一致数据库/引用文件、843份121旧编译文件回退均保留，assetsIncluded:false不是研究资产独立备份或完整恢复演练。最初运行检查把未声明的旧GET-by-id误期为401而得到404，已仅校正检查预期，原收据保留。逐句阅读/完整笔记、真实音频结束推进、暂停续播、原登录/授权代次及统一WebM/SRT时间表已可使用；任意主题AI仍在独立123工作区，未混入此运行版。72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/实机/全内容/原CSS字体DPR声音/长期门禁保持，整体目标继续。见[运行收据](../evidence/2026-10-26/whiteboard-speech-runtime.json)与[最终验收](../evidence/2026-10-26/whiteboard-speech-acceptance.json)。
+
+2026-10-26：独立AI主题白板按STUDIO-31归入总册，当前源码ed0ad2d：14领域/121功能/350正常接口/97集合/328共享类型。24浏览器专项原次通过，29项API和14项PG/2项SQLite专属跳过分开留证；完整API初轮的两项旧schema预期已修正并重跑，242项完整整站也在执行。466源码引用/2933链接/10查看器检查通过不等于业务门禁或当前生产交付；主目录仍122/schema15，123精确CI与真实守护升级待。AI写稿、复核、完整改稿历史、明确保存和逐句播放器已有接入；图片/复杂图形、完整像素/原声/实机/教师/全内容/长期效果及72项总门禁仍未完成。见[123](../product/123-ai-topic-whiteboards.md)及[当前收据](../evidence/2026-10-26/topic-whiteboard-acceptance.json)。

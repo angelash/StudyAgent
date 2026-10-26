@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "68202df98b40ec4f31cb12e63fca96019e94f6ff",
+  "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 120,
-    "activeNormalApiRoutes": 337,
-    "coveredApiRoutes": 337
+    "features": 121,
+    "activeNormalApiRoutes": 350,
+    "coveredApiRoutes": 350
   },
   "areas": [
     {
@@ -99,7 +99,7 @@
             "/admin/accounts"
           ],
           "inputs": "账号、密码或现有Cookie",
-          "implementation": "校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie。",
+          "implementation": "校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie；家长注册/登录与学习码表单在React事件接管前禁用，避免SSR原生GET丢失输入。",
           "outputs": "当前用户、明确认证错误或可恢复的连接提示",
           "collections": [
             "users",
@@ -154,6 +154,9 @@
             "apps/web/components/session-connection.tsx",
             "apps/web/components/session-control.tsx",
             "tests/e2e/assistant-conversations.spec.ts",
+            "apps/web/app/parent/login/page.tsx",
+            "apps/web/app/student/login/page.tsx",
+            "tests/e2e/topic-whiteboard.spec.ts",
             "apps/api/src/modules/auth/auth.service.ts",
             "apps/api/src/modules/auth/auth.controller.ts"
           ],
@@ -4570,7 +4573,8 @@
         "/studio",
         "/studio/classroom",
         "/studio/projects",
-        "/studio/source-courses"
+        "/studio/source-courses",
+        "/studio/whiteboards"
       ],
       "files": [
         "apps/web/app/studio/studio.tsx",
@@ -4622,7 +4626,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "view、student、subject、course、关键词、状态、类型、来源、最近学习与排序",
           "implementation": "成人与当前档案小学课统一列表；真实记录区分未开始/进行中/讲解已读；关键词覆盖名称目标教材，组合筛选可清空；地址记条件，刷新/历史/进入目录及课堂返回保留；断点标题与目标一致；按身份连接GESP独立轨道；显式档案先校验授权，不回退另一孩子。",
@@ -4689,7 +4694,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "当前范围、所选1～30点、标题/目标、可选5～60分钟预算、预览指纹和请求键",
           "implementation": "先编辑再审阅来源与缺口，取消预览不建课；保留所有所选分组，按参考时长生成预算内学习时段；预览和创建共用范围与资格校验；确认绑定主体/命令摘要与课程ID，同键重试恢复原课，旧预览或变更命令冲突；学习时段链接真实课堂与测量活动。",
@@ -4782,7 +4788,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "unit、panel、lesson、tab与可选studioCourseId",
           "implementation": "展示封面、策划信息、单元、讲座、微课、项目与单元核查；可点开学习目标；帮助带入目标提问草稿；保留刷新、前进/后退与原课程返回路径。",
@@ -4845,7 +4852,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "lessonId、expectedRevision、cursor/revealed/sentenceCursor、presentationVersion/unitId及升级requestKey",
           "implementation": "冻结课件、私有答案与提示；新会话服务端保存中英文单元的原文UTF-16范围、源哈希与稳定ID，保护数字/缩写/URL/代码；字幕、音轨、进度、表格行和配图上下文共用单元，音轨结束推进，只预取下一句；暂停同步中止旧请求和晚到音轨。旧会话保留确切旧规则，设置中显式按原句起点映射升级，保留原表现快照、答案与提示；同键重放和冲突后读取保护恢复。",
@@ -4968,7 +4976,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "当前课/步骤/字幕单元/问题、五种意图、固定modelId、稳定请求键",
           "implementation": "发送前暂停并等待进度保存；冻结已展示字幕、原句位置与受限上下文；业务记录和任务同事务；重放先于上限和新模型解析，同键异参拒绝；任务在当前授权和租约栅栏下保存唯一消息与补充板书；新插问协议校验短要点、同维度对照表、受限LaTeX和原词句锚点，绑定服务端冻结字幕单元；朗读与按句阅读整体揭示要点/表格行/公式，停止结清音频/计时等待，旧回调隔离；旧笔记完整可读，Markdown/自包含MathML离线HTML/打印保留完整图表；帮助事实在生成前保存，取消不抹去。浏览器可找回丢失回执、刷新读取、取消/显式重试，主动回到原句。",
@@ -5110,7 +5119,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "questionId、旧selectedIndex/null或classroom-choice-v2完整集合、answered/skip/dont_know、提示level、requestKey、projectDraft",
           "implementation": "微课185题与独立编写单元60题分开；三个微课和一个单元核查含五项多选，精确集合评分与逐选项解释只在首答后公开；每课至少3题，含30表格题和2图示题；两级提示私有冻结，先记录再逐级返回，重复/丢失回执不升级；首次答案锁定，记录提示级别；复盘区分独立正确、答错、跳过、不会和辅助；新旧练习不混合，项目草稿可恢复；独立练习错误可见；账号/冻结会话缓存原选择与完整提交，掉回执先读首答再重放同命令，明确拒绝保留副本，键盘限题目区域，图片全屏恢复原焦点。",
@@ -5199,7 +5209,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "受控image/table/code blocks；冻结会话/步骤/块、原代码摘要、代码、输入、版本和稳定请求键",
           "implementation": "图片可放大、表格逐行呈现；个人代码/输入按冻结会话和已曝光块隔离保存，不覆盖课件。稳定命令先重放、版本冲突保留本地文本并显式选择；标签页缓存支持离线刷新与丢回执，后台保存序列化。进入实验暂停讲解；Worker支持readLine/只读输入数组、异步计算、正常/错误/超时/停止反馈，限制网络/DOM/子Worker及运行时间；超长程序拒绝而不截断。支持重置确认和单独导出个人代码/输入。",
@@ -5284,7 +5295,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "音色、倍速、字体、背景、显示面板、七步控件导览和导出命令",
           "implementation": "支持播放/暂停/停止、静音阅读、音色选择和六档键盘语速滑杆。460px设置内音色选择与试听独立；试听复用已授权音轨接口，只读已展示冻结当前句，停止/关闭/卸载会中断请求和音频，不推进进度或改选音色。欢迎、七个真实控件高亮和结束页共用焦点围栏；滚动/窗口变化重算矩形，手机切到实际控件区域，关闭恢复原布局并保持暂停，背景不能触发录音或发送。受控SVG/课件图片共用完整标题、焦点恢复、遮罩/Esc退出与失败说明，内层点击不关闭；放大先暂停讲解，打印不含弹层或放大按钮。持久化偏好、已读板书及插问Markdown/PDF导出和退出项目保存继续保留。",
@@ -5339,7 +5351,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "学生、学科、主题、可选已审核知识点、原预览指纹和请求键",
           "implementation": "规则生成分幕标题、概念、步骤、图形和检查点，示范旁白覆盖完整步骤；所有重放前先核对当前学生权限；原请求回执绑定本人、动作摘要、范围与原白板，同文新键记录自己的回执，旧无法证明关联的键明确冲突且保留原稿。",
@@ -5348,7 +5361,7 @@
             "studioWhiteboards",
             "studioActivities"
           ],
-          "limits": "自由主题仍是教学卡或通用模板，任意主题AI尚未接入；旧稿与指纹不被逐句投影回写。",
+          "limits": "本旧接口仍是教学卡或通用模板；独立任意主题AI见STUDIO-31，旧稿与指纹不被逐句投影回写。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5417,7 +5430,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "原白板/幕、whiteboard-speech-v1、指纹/原文单位、音色、速度、当前账号与浏览器能力",
           "implementation": "只读派生稳定原文跨度和整项板书；新请求只合成冻结单位，controller传原登录及断开信号，合成前后各在新事务核对登录、角色、监护绑定、学生授权代次和原白板摘要；退出/授权升代或撤权拒绝迟到音轨，旧voice-only请求同样保护；Audio ended推进云朗读、文字显式估计，暂停/已知秒数续播、拖动、换音色与关闭按代次清理；完整讲稿/笔记可访问，位置按账号/孩子/原稿绑定。实际解码或文字估计形成单一导出表，Canvas/WebM/SRT共用；只修WebM Info时长而保留原时间单位/未知大小与包数据；零值活动源及120ms静音尾段保留末尾音频，不延长旁白字幕；取消/录制异常不下载半成品，后续取消录制保留原成功导出的SRT表。",
@@ -5425,7 +5439,7 @@
           "collections": [
             "studioWhiteboards"
           ],
-          "limits": "云失败明确重试或手动选文字；浏览器不支持录制时保留字幕。当前实际小视频和合成WAV不能替代真人听感/设备/完整原CSS字体DPR；真实AIGW小样与端点替身分别留证，任意主题AI和复杂图形仍待。",
+          "limits": "云失败明确重试或手动选文字；浏览器不支持录制时保留字幕。当前实际小视频和合成WAV不能替代真人听感/设备/完整原CSS字体DPR；真实AIGW小样与端点替身分别留证；独立任意主题AI见STUDIO-31，复杂图形仍待。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5488,7 +5502,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "multipart PDF、可选studentId/subject、requestKey",
           "implementation": "10MiB以内单PDF受控上传，最多30页；保存原件并创建持久处理任务；孩子资料按当前档案权限读取，成人私人资料用真实空studentId及ownerUserId隔离；重复文件返回原材料并保存新的请求回执，改命令不能复用旧键。",
@@ -5580,7 +5595,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "PDF原页、文字层、扫描图像",
           "implementation": "Python优先文字层，扫描页OCR；保留bbox/置信度/页图；本地表格网格和公式候选与可选模型复核合并；前端用HTML表格和KaTeX呈现。",
@@ -5630,7 +5646,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "expectedUpdatedAt、requestKey、人工核对决定",
           "implementation": "用户对照原页确认恢复结果；失败或本地降级可重新排队；更新时比较资料版本并保留原件。",
@@ -5706,7 +5723,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "资料ID、知识点、页级依据与预览指纹",
           "implementation": "选定原页与批准知识；以原页图和文字核对为基础生成白板幕；保存页码、来源及主题。",
@@ -5784,7 +5802,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "当前范围、薄弱/未知点、可选资料来源",
           "implementation": "最多选4个批准教学点；组合解释、例题、易错、迁移章节和闪卡/微测；关联真实知识ID及候选页；指纹预览后保存。",
@@ -5862,7 +5881,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "目标、截止日期、首次时间、每天10–60分钟、版本和请求键",
           "implementation": "按薄弱与证据不足优先选点；编排learn/practice/transfer/review，跳过可识别冲突；完成后追加1/3/7/14日复盘；同步日历事件状态。",
@@ -5954,7 +5974,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "ICS文本或HTTPS订阅URL、来源名称、类型、请求键",
           "implementation": "校验地址、重定向、大小和内容；拒绝本机/私网地址；订阅URL加密保存；UID归并事件；手动同步后替换该来源事件，撤销清理来源事件。",
@@ -6045,7 +6066,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "所选日期、任务内容/时间、确认/完成状态、expectedRevision",
           "implementation": "本地日期生成月/周格和当日待办；手动事件支持编辑、待确认、完成、重开；批删先校验全部ID，切换范围清空选择；计划事件走计划服务，订阅只读。",
@@ -6150,7 +6172,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "学生与学科",
           "implementation": "授权后读取对应安排；转义文本和折行；以稳定UID、开始结束和全天属性生成ICS并由浏览器下载。",
@@ -6213,7 +6236,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "原项目/阶段与冻结定义、原件SHA/大小/媒体类型、分块、独立文件修订、当前及原授权、稳定命令键",
           "implementation": "每文件20MiB/分块1MiB/阶段20引用；原件与规范化图片、PDF静态页、UTF-8文字/代码、录音、Office容器独立保留；处理/清理持久任务与真实租约，取消/撤权/隐私后旧worker不能发布；字节检查只读；提交冻结原件/显示摘要和说明，量规只能引用该提交文件，旧提交不被替换；图片放大/PDF分页/音频释放/原件下载；刷新续传和掉回执找回；家庭TAR/SQLite和PG原生冷恢复/最新删除账本覆盖实际字节。AI只用明确选择的已保存文字和说明，完整超预算作品保留，不截断",
@@ -6424,7 +6448,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "课程/单元、阶段产物、文字/链接证据、自评、修订号、请求键和模型",
           "implementation": "成人五项目各三阶段；小学课程构造迁移解释核查模板；草稿与自评准备同步持久保存，提交冻结产物/量规/前版本；指定提交可由授权家长或教师逐维度复核；旧课堂草稿主动复制成参考；AI仅建议并标记所针对的稿本；重复写入可重放，冲突保留本地导出后恢复。",
@@ -6597,7 +6622,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "原冻结项目/阶段/字段、逐句讲解单元、音色、本人原命令回执与完整编辑稿",
           "implementation": "按原字段生成导向/产出/证据/自评步骤；完整作品使用同一个Editor；URL步骤与前后退、未完成确认和字段焦点、保存后导航；每文档独立缓存槽，复制标签也不共写，刷新自动恢复本槽前稿、硬关闭后预览选择其他绑定副本；完整原body/key先读本人回执再重放，后续版本比较，不改键覆盖；保留确认后的新本机编辑；讲解不读取私人答案，仅合成冻结句单元，事务前后核对原登录/授权/定义，取消与换步骤释放音频；观察到权限失效清空旧内容",
@@ -6684,7 +6710,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "已确认资料课程、冻结公开目标/来源、已有会话首答/帮助记录、本人项目和本机步骤偏好",
           "implementation": "资料课程按来源版本冻结三阶段项目，支持原附件、自评、提交、复核、受控朗读和历史；同一账号/项目/定义恢复合法stage/step/view，显式URL优先，各标签完整稿仍独立；阅读对比递归规范化对象属性抵抗JSONB重排，持久内容指纹不改；纯投影汇总原句/题目断点、独立/辅助/跳过/作者曝光首答，以及每阶段最新提交的人工复核，读取不创建活动；资料逐课状态和成人单元可展开旅程，源项目返回原课并保留筛选；按账号/角色卸载旧工作台和取消旧目录请求",
@@ -6804,7 +6831,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "已确认资料课程中明确选择的1～6课时目标、完整来源、常规模型选择、原请求键/版本、显式答案审阅或未曝光确认",
           "implementation": "冻结完整来源和公开目标并严格限制18000字符，拒绝截断；4～8新题的单选/多选集合、逐项说明、两级提示、目标与精确引用完整校验；不发送微课答案或原题，规范化精确排重；持久写题/复核检查点固定原模型与原登录/监护授权，失败只补未完成阶段；取消固定原generation，允许后台领取/检查点推进后的旧快照在同代次内取消，旧控制/新代次/未来版本及已完成状态仍拒绝，原命令与原回执不变；原稿/当前稿/AI审稿及历史分开保留；显式authoring才记录同actor/内容指纹曝光，同文重新生成不能清除旧曝光；确认练习可保留未读答案路径，过期/uncertain另确认；schema15稳定当前指针与单调撤回修订，同事务发布切换；学生按非管理来源授权创建私有冻结课堂，仅提交当前题后取得本题评分；首答/提示/不会/跳过及只读旅程沿用原协议，不同定义独立；原文按本人课堂冻结读取；前端按独立文档slot保留原命令和本机稿，掉回执重放原参数、旧稿显式比较，换号卸载；两库备份恢复与隐私回收识别check-only和classroom-only引用",
@@ -7026,7 +7054,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "授权来源页/段与版本、目标、source/zh-CN/en、时间预算、模型、可选已确认知识目标、修订号和请求键",
           "implementation": "成人无需儿童档案可存文字/PDF；小课程v2冻结所选原文，最多10页/段及12000原文字符；长资料v3见STUDIO-23；单次序列化模型上下文不超过18000字符，超预算拒绝而不截断；持久任务冻结初始输入并固定实际模型，先规划1至6课与明确来源缺口，再逐课编写、逐课独立AI复核；以不结束租约的原子检查点保存路线、初稿与复核，失败/重启只补未完成阶段；复核按字段或单题应用修订并重新验证，uncertain仍需人工核查；核对短引用确实出现在选中原文，拒绝内部来源键混入讲解；候选可改标题/目标/选课；成人创建者可逐段修订完整讲解、板书、练习/答案/帮助和引用，整份校验后按修订号与请求键保存，保留初始稿与生成输入、时间和摘要，人工改稿后旧复核标明针对旧版；显式打开教学稿记录答案接触事实，自己的后续练习不算独立成功，孩子的正常学习不继承作者曝光；再审阅确认；重复请求恢复原任务/确认，取消/撤权/删除/旧租约不能发布；已确认课堂冻结独立版本，页级引用回到快照；共享孩子发布课在创作者关闭账号后保留。",
@@ -7242,7 +7271,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "完整页段及版本、生成目标、预检指纹、长模式确认、稳定课时ID、修订号和请求键",
           "implementation": "无模型预检确定性分块，逐字符保留原文范围；长模式按块索引、分组路线、当前分配原文写稿及复核；独立阶段记录保存输入输出摘要、模型与实际计数，失败续跑跳过已完成部分并核验完整性；来源全文按页/块加载，进度不发送整本正文或答案；稳定课时身份支持删课重排与单课审稿，保留原始稿和人工修改，覆盖清单区分当前引用、原规划已移除、未采用及待核对；UTF-8文字原件走受控文件上传并按字节哈希保留，资料原件与新页图进入双库备份引用，家庭导出不含私有阶段答案。",
@@ -7383,7 +7413,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "已授权会话/当前已展示节点、用途与补充要求、冻结内容身份、请求键和修订号",
           "implementation": "仅用当前讲解及已出现要点构造少文字提示词；持久任务按租约隔离暂存并在最终事务重查权限和原节点，解码/哈希校验与去元数据后发布；失败/取消/重启恢复，取消请求与真正结束分开显示；版本只在原节点显式选用，并发选用保持唯一；下载鉴权与范围请求，损坏图可取消选用；放大支持键盘焦点，选图进入打印和嵌入PNG的离线HTML笔记；家庭导出/删除账本、双库备份和保守暂存回收贯通。",
@@ -7496,7 +7527,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "当前资料/内容版本、同SHA和大小的完整PDF上传、原件基准、请求键及修订号",
           "implementation": "在来源租约下观测发起时的旧文件基准；修复记录、独占保留上传、repairing代次和outbox同事务提交；每次发布重新核对任务fence、原监护/学习授权、资料范围/版本、上传及资产；完整候选和旧文件按绑定意图独占交换，可中断续跑且不覆盖第三份文件。等待活进程不消耗失败次数；取消、撤权和隐私删除后内部持久任务只清理已知私有残留，保留已发布正确共享原件；完成收据、上传终结及资产释放同事务；两工作台共用上传校验、进度、取消、重试、刷新恢复和后续页图核对。",
@@ -7616,7 +7648,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "当前发布课程、修订号、内容与影响指纹、请求键、动作和原因",
           "implementation": "短课/长课以独立候选复制原稿、来源和可核对的阶段来历，无新模型调用或共享任务；家族版本单调分配。只读预览列真实课堂/作答与新开影响；发布、归档、撤回、恢复、放弃以同一事务更新相关版本，重放先于新状态检查，并发预览失效则重新核对。旧课件、原句、题目和代码不迁移；历史详情明确恢复个人原会话。前端保留掉回执命令、刷新找回、状态冲突读取与键盘焦点；私有修订身份不透过学生投影/家庭导出泄漏，关闭账号擦除未发布稿与阶段。",
@@ -7721,6 +7754,236 @@
           ]
         },
         {
+          "id": "STUDIO-31",
+          "title": "AI主题白板、完整教学稿与原命令恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "明确成人主题或本人孩子已学的1至6目标、主题/教学目标、原模型、预检指纹、原命令与版本",
+          "implementation": "成人使用真实空孩子/学科；学生仅本人范围。冻结已批准教学与模型，持久写稿和独立复核只补缺失阶段；严格文字/整表/公式及旁白要点校验，保留完整初稿/复核/修改历史；本人私稿与孩子冻结发布稿分权。修改/确认/控制以规范化摘要和CAS绑定，丢回执先读取原命令；多文档槽保留各自完整输入，409读取最新稿后明确选基线，存储失败先下载再切换。确认后适配逐句播放器，整行分页、公式原式可读，旁白在合成前后重验权限。schema16双库约束及删除账本阻止旧冷备复活；中断复核经新登录明确重试只补复核。",
+          "outputs": "独立白板入口、常规模型选择、可恢复完整改稿/比较与版本、冻结白板及逐句播放",
+          "collections": [
+            "studioTopicWhiteboardDrafts",
+            "studioTopicWhiteboards"
+          ],
+          "limits": "内容始终AI生成且待核对，不产生掌握/测量事实；真实DS样本有校验失败及显式恢复，不构成稳定性或教师质量证明；图片/复杂图形、原字体CSS及声音/实机/长期门禁仍待，正式部署状态以123收据为准。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/preflight",
+              "controller": "TopicWhiteboardController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/drafts",
+              "controller": "TopicWhiteboardController",
+              "method": "prepare",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/drafts",
+              "controller": "TopicWhiteboardController",
+              "method": "drafts",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id",
+              "controller": "TopicWhiteboardController",
+              "method": "draft",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/requests/:key",
+              "controller": "TopicWhiteboardController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/history",
+              "controller": "TopicWhiteboardController",
+              "method": "history",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/cancel",
+              "controller": "TopicWhiteboardController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 17
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/retry",
+              "controller": "TopicWhiteboardController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/content",
+              "controller": "TopicWhiteboardController",
+              "method": "edit",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/confirm",
+              "controller": "TopicWhiteboardController",
+              "method": "confirm",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards",
+              "controller": "TopicWhiteboardController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 21
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:id",
+              "controller": "TopicWhiteboardController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 22
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/:id/narration/:sceneId",
+              "controller": "TopicWhiteboardController",
+              "method": "speak",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 23
+            }
+          ],
+          "implementations": [
+            {
+              "name": "TopicWhiteboardService.preflight",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 54
+            },
+            {
+              "name": "TopicWhiteboardService.prepare",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 62
+            },
+            {
+              "name": "TopicWhiteboardService.list",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 96
+            },
+            {
+              "name": "TopicWhiteboardService.get",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 91
+            },
+            {
+              "name": "TopicWhiteboardService.receipt",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 92
+            },
+            {
+              "name": "TopicWhiteboardService.history",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 167
+            },
+            {
+              "name": "TopicWhiteboardService.control",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 115
+            },
+            {
+              "name": "TopicWhiteboardService.edit",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 148
+            },
+            {
+              "name": "TopicWhiteboardService.confirm",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 173
+            },
+            {
+              "name": "TopicWhiteboardService.listPublished",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 198
+            },
+            {
+              "name": "TopicWhiteboardService.getPublished",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 197
+            },
+            {
+              "name": "TopicWhiteboardNarrationService.synthesize",
+              "file": "apps/api/src/modules/learning/topic-whiteboard-narration.service.ts",
+              "line": 23
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/topic-whiteboard.ts",
+            "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+            "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-worker.service.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-content.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-narration.service.ts",
+            "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts",
+            "apps/api/src/infrastructure/topic-whiteboard-recovery.integration.test.ts",
+            "apps/web/app/studio/whiteboards/workbench.tsx",
+            "apps/web/app/studio/whiteboards/content-editor.tsx",
+            "apps/web/app/studio/whiteboards/command-digest.ts",
+            "apps/web/app/studio/whiteboards/local-copies.ts",
+            "apps/web/app/studio/whiteboards/manuscript.tsx",
+            "apps/web/app/studio/whiteboard-table.ts",
+            "tests/e2e/topic-whiteboard.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-24",
           "title": "长PDF分块上传、页级续跑与按需原文",
           "area": "studio",
@@ -7730,7 +7993,8 @@
             "/studio",
             "/studio/classroom",
             "/studio/projects",
-            "/studio/source-courses"
+            "/studio/source-courses",
+            "/studio/whiteboards"
           ],
           "inputs": "学习范围、文件SHA、4MiB分块、请求键、页码、资料版本和任务版本",
           "implementation": "原件流式组装并核对完整字节；上传完成只排后台任务；最多120页按原件/算法身份保存完整JSON检查点与页图摘要，恢复时核验并只补缺失/损坏页；目录只发概要，按页且绑定版本取正文；两处入口支持中断重选、丢失回执恢复、范围批选和取消续跑；注册原件持文件租约并核对最新generation；学生入口沿学习授权验证；显式检查原件/逐页文件，旧可读图像回填带legacy_observed来源的摘要，嵌入页单独登记；校验不符不重设摘要，检查不改来源版本；两处入口提供缺失/损坏页图重生成，处理前再次核对原件。",
@@ -9181,7 +9445,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 342
+              "line": 343
             },
             {
               "name": "DomainEventBusService.publish",
@@ -9191,7 +9455,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 240
+              "line": 241
             }
           ],
           "sourceFiles": [
@@ -9384,7 +9648,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 240
+              "line": 241
             }
           ],
           "sourceFiles": [
@@ -9461,7 +9725,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 224
+              "line": 225
             },
             {
               "name": "RuntimeMetricsService.snapshot",

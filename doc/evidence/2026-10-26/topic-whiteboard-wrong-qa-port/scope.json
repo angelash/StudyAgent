@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-26T01:12:54.550Z",
+  "status": "interrupted-local-environment-mismatch",
+  "reason": "Direct experience-web build omitted E2E_API_PORT; it compiled localhost4107 while the isolated API served4147. NEXT_PUBLIC_API_BASE_URL is overridden by this helper. The first login correctly failed closed on unknown identity. Local run interrupted; no CI cancelled. Not application regression evidence.",
+  "expectedApiPort": 4147,
+  "compiledApiPort": 4107
+}

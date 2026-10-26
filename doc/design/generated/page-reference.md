@@ -163,3 +163,9 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 类型：页面。实现：[apps/web/app/studio/source-courses/page.tsx](../../../apps/web/app/studio/source-courses/page.tsx)。
 
 - 直接引用：`./workbench`
+
+## /studio/whiteboards
+
+类型：页面。实现：[apps/web/app/studio/whiteboards/page.tsx](../../../apps/web/app/studio/whiteboards/page.tsx)。
+
+- 直接引用：`./workbench`

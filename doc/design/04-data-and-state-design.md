@@ -242,3 +242,8 @@ checkpoint与completion两种TaskFence都在领域数据库的同一事务检查
 119资料课程项目沿用schema14及原courseProjects，可选sourceCourseId将本人作品绑定冻结来源课程，且与studioCourseId互斥。CourseLessonActivity、CourseProjectActivity和SourceCourseJourney是读取契约，不新增集合。完整备份保留来源绑定、冻结作品/提交/附件；恢复后旧登录失效，重新认证核对原作品。SQLite与PostgreSQL原生恢复均应用最新删除账本，已注销账号的来源、项目及真实附件不能复活。
 
 project.location.v1按owner/project/definition隔离保存合法stage/step/view，不保存答案、授权或完成事实；有权限取得项目后才读取。偏好可跨标签记录最近位置，但已经打开的标签不跟随跳转，各标签完整编辑稿仍使用118的独立槽。
+## AI主题白板数据与恢复增量（schema16）
+
+studioTopicWhiteboardDrafts保存本人冻结输入、写稿/复核检查点、原模型、版本、完整历史和原命令；studioTopicWhiteboards保存明确确认后的不可变内容及来源。双库分别约束本人准备键和同候选唯一确认。公开receipt的可选commandFingerprint只是已有规范化命令摘要，不包含会话、内部授权或模型上下文；私稿仍仅本人可访问。共享孩子白板的其他读者只能读取冻结稿，origin.draftId为真实null。
+
+删除孩子或关闭账号在事务中取消对应任务并清理私有稿；仍有其他监护人的孩子冻结稿按共享规则保留并去除不应保留的私有归属。原生SQLite/PG恢复应用最新删除账本并撤销旧登录，旧dump不能复活被删除的候选或白板。中断任务恢复代次与公开候选一致；新登录显式重试沿用原模型，已完成写稿只补复核。schema16上线前必须另取当前schema15程序/配置/数据库一致回退，不能使用旧程序打开新库。当前部署状态以[123收据](../evidence/2026-10-26/topic-whiteboard-acceptance.json)为准。

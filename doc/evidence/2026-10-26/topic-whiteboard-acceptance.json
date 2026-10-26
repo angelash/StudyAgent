@@ -1,7 +1,7 @@
 {
-  "status": "ui-and-scoped-regression-passed-full-gates-pending",
+  "status": "current-focused-passed-complete-regression-running",
   "deployed": false,
-  "sourceRevision": "b63f690a71114b2fafe70d38785207a757502173",
+  "sourceRevision": "ed0ad2d",
   "sqliteAndContent": {
     "passed": 9,
     "report": "topic-whiteboard-foundation/api.json"
@@ -14,10 +14,9 @@
   "productionSchemaVersion": 15,
   "limits": [
     "Independent page/editor and explicit topic player are connected but not deployed.",
-    "Full API, full236-browser site, exact CI and actual production delivery pending.",
+    "Complete current API/site regression, exact candidate CI and actual production delivery remain pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
-    "Must merge final122 runtime archive before publication. Production still schema15.",
     "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
     "SQLite and native PG recovery cases passed; a fresh schema15 production rollback and actual schema16 runtime release are still required."
   ],
@@ -47,19 +46,20 @@
     "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts": "6a1937b6e5bae6738d66a58daf69747b4b12b06ff728ef6c7c19a852f78cce63",
     "apps/api/src/modules/learning/topic-whiteboard.service.ts": "8a1ad8fe35fdee6fb4e27ddb5f4442c7066e08b86c5dd8cc4f956b8eac505bea"
   },
-  "applicationRevision": "609a350",
+  "applicationRevision": "ed0ad2d",
   "currentScopedApi": {
     "passed": 29,
     "failed": 0,
-    "report": "topic-whiteboard-ui/api.json"
+    "report": "topic-whiteboard-isolation/api.json.gz"
   },
   "focusedBrowser": {
-    "passed": 18,
+    "passed": 24,
     "failed": 0,
     "skipped": 0,
     "retry": 0,
-    "report": "topic-whiteboard-ui/browser.json",
-    "scope": "7 new topic flows plus11 existing whiteboard media cases; not the complete site."
+    "report": "topic-whiteboard-focused-final/browser.json.gz",
+    "receipt": "topic-whiteboard-focused-final/receipt.json",
+    "scope": "13 topic/login flows plus11 inherited media cases; complete site is separate."
   },
   "liveDefaultModel": {
     "report": "topic-whiteboard-live-counted/receipt.json",
@@ -86,15 +86,15 @@
     "initialCallCountBoundary": "topic-whiteboard-live-initial/call-count-boundary.json"
   },
   "currentSourceSha256": {
-    "apps/web/app/studio/whiteboards/content-draft.ts": "bee06ab834e3598f3b1d817d6820f01231614d5557b9f811563abe1a7084de37",
-    "apps/web/app/studio/whiteboards/content-editor.tsx": "8439f6b3f6d7dbbf66f17e1d1be94e80c37765548f723f7436f746e09eba081e",
-    "apps/web/app/studio/whiteboards/manuscript.tsx": "50e42e3656058b1fcced088f6c77efb75ebf3054e0a058246b542f8cb113d324",
-    "apps/web/app/studio/whiteboards/page.tsx": "459d5a622487860d3f18bc9ca5c0a278a54ed47dc498bece687a749b1b7919d7",
-    "apps/web/app/studio/whiteboards/whiteboards.css": "e85ce2178437139059bf3b016f76ff56c9eac7261b900170005ee42aee9f3cc6",
-    "apps/web/app/studio/whiteboards/workbench.tsx": "2ac1deaf6ee6137622ae25d8addb2e1210dd6d21e373142aea8446f143bfda1d",
-    "apps/web/app/studio/whiteboard-table.ts": "3173a64184bcab822dd67f2e21bd18581a501a25e965d5612f4a16cbb001586e",
-    "apps/web/app/studio/whiteboard-original.ts": "74e40f013e361e2fab119d39b1567b5e700ccb40a904ab1269440d7cb3a2826c",
-    "apps/web/app/studio/whiteboard-exhibit.tsx": "40bed9d6baf75f324c4bdc599a0e69193896cc3e4af453e0e40b89c9906f8429"
+    "apps/web/app/studio/whiteboards/workbench.tsx": "2e9da4af460f2c7c2689ecfd03b7cc1d945a9fbd79a4941760cfe4875584f58d",
+    "apps/web/app/studio/whiteboards/content-editor.tsx": "e284e5b62b86af5ed1a0fe0986bb5af9cbdfe0c246d2429514cc061fc2c467b1",
+    "apps/web/app/studio/whiteboards/command-digest.ts": "02141ba71722d9b7ed19fab7a67ac2b91821a059202533ddaab2c637c41bfe05",
+    "apps/web/app/studio/whiteboards/local-copies.ts": "ba60526086d8b2f17b56bdd4a276ff0507f75047a2b68997a5bb069230b0b10d",
+    "apps/web/app/parent/login/page.tsx": "09ec6498b5dbc654ec87d40c9a9486e300d10970a6840e70b20ec5f8f6eaecec",
+    "apps/web/app/student/login/page.tsx": "cf3fa0f8bcb9f20e8a77a2fb907d4a9a8c2effd66a4d64829f3ff12c8922c7de",
+    "apps/api/src/modules/learning/topic-whiteboard.service.ts": "5da9a79b06b801a29e7515bd9cf0b16660304ecf96e71dc3fccc57579531e20e",
+    "packages/contracts/src/topic-whiteboard.ts": "a65c0cdf495ee371fb80253c440cca5ae94b004e79733d71049e258424c99a16",
+    "tests/e2e/topic-whiteboard.spec.ts": "239ab3db967843501838163eed2d05069db85f6af06eb00f836545052ed373f4"
   },
   "postgresNativeAndHttp": {
     "passed": 14,
@@ -103,5 +103,33 @@
     "report": "topic-whiteboard-native-recovery/postgres.json",
     "scope": "10 actual HTTP,2 PG constraints/reopen and2 actual pg_dump/restore cold recovery cases.2 SQLite-only cases skipped."
   },
-  "inheritedRelease": "1614ff1027f2b8e0d750797efe728017225d353f"
+  "inheritedRelease": "1614ff1027f2b8e0d750797efe728017225d353f",
+  "foundationSourceRevision": "b63f690a71114b2fafe70d38785207a757502173",
+  "backendRevision": "609a350",
+  "initialFullApi": {
+    "passed": 1285,
+    "failed": 2,
+    "environmentSkipped": 51,
+    "report": "topic-whiteboard-full-api-initial/api.json.gz",
+    "cause": "Legacy schema expectations and a schema14 fixture retaining migration16. Fixed tests retain old evidence and actual migration constraints."
+  },
+  "initialRecoveryBrowser": {
+    "passed": 21,
+    "failed": 2,
+    "report": "topic-whiteboard-control-initial/browser.json.gz",
+    "cause": "Stale leave lock after restoring a known confirmation; separate native GET login before hydration. Original traces retained."
+  },
+  "currentRepairs": {
+    "revision": "ed0ad2d",
+    "cases": [
+      "Two real tabs retain separate full edits after reload.",
+      "409 preserves local text and loads latest full server manuscript for explicit comparison.",
+      "Matched original receipt avoids duplicate edit/confirm writes.",
+      "Uncached form, draft and original cancellation require a downloaded complete copy before leaving.",
+      "Server-rendered parent/student forms cannot submit before client handlers attach."
+    ],
+    "initialUncachedCommand": "topic-whiteboard-command-initial/browser.json.gz",
+    "localInterruptedEnvironmentRun": "topic-whiteboard-wrong-qa-port/scope.json"
+  },
+  "final122InheritedRevision": "1614ff1027f2b8e0d750797efe728017225d353f"
 }

@@ -1,0 +1,29 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T01:05:19.644Z",
+    "duration": 104208.575,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "errors": [
+    {
+      "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded",
+      "status": "failed",
+      "errors": [
+        {
+          "location": {
+            "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+            "column": 36,
+            "line": 27
+          },
+          "message": "Error: apiResponse.json: Response has been disposed\n\n  25 |   await page.route('**/api/learning/studio/overview?*', async route => {\n  26 |     const response = await route.fetch(); if (!response.ok()) { await route.fulfill({ response }); return; }\n> 27 |     const payload = await response.json(); payload.data.narrationAvailable = true; payload.data.speech = { available: true, provider: 'minimax', defaultVoice: 'fixture-a', voices: [{ id: 'fixture-a', label: '合成音轨 A' }] };\n     |                                    ^\n  28 |     await route.fulfill({ response, json: payload });\n  29 |   });\n  30 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:27:36"
+        },
+        {
+          "message": "Error: browserContext.close: Test ended.\nBrowser logs:\n\n<launching> C:\\Users\\Lenovo\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\Lenovo\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-rPW01U --remote-debugging-pipe --no-startup-window\n<launched> pid=78300\n[pid=78300] <gracefully close start>"
+        }
+      ]
+    }
+  ]
+}

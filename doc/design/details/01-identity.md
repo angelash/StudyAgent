@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`68202df98b40ec4f31cb12e63fca96019e94f6ff`。角色：家长、学生、管理员、授权教师。
+源码基线：`ed0ad2d1e6db8d67c468284158259fc2472b63f2`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -49,7 +49,7 @@
 
 **输入**：账号、密码或现有Cookie。
 
-**处理与实现**：校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie。
+**处理与实现**：校验凭据、账号状态和会话有效性；AuthGuard读取Cookie或Bearer令牌；共享身份区分检查中、已认证、明确未登录和暂不可确认；传输失败只重试一次，耗尽后提供根级手动重新确认；重新确认清空私有身份并用请求代次拒绝旧响应；退出撤销会话并清Cookie；家长注册/登录与学习码表单在React事件接管前禁用，避免SSR原生GET丢失输入。
 
 **输出**：当前用户、明确认证错误或可恢复的连接提示。
 
@@ -75,6 +75,9 @@
 - [apps/web/components/session-connection.tsx](../../../apps/web/components/session-connection.tsx)
 - [apps/web/components/session-control.tsx](../../../apps/web/components/session-control.tsx)
 - [tests/e2e/assistant-conversations.spec.ts](../../../tests/e2e/assistant-conversations.spec.ts)
+- [apps/web/app/parent/login/page.tsx](../../../apps/web/app/parent/login/page.tsx)
+- [apps/web/app/student/login/page.tsx](../../../apps/web/app/student/login/page.tsx)
+- [tests/e2e/topic-whiteboard.spec.ts](../../../tests/e2e/topic-whiteboard.spec.ts)
 
 ## AUTH-03 学习码登录与设备撤销
 

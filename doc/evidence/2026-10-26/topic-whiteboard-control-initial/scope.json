@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-26T01:17:03.424Z",
+  "stats": {
+    "startTime": "2026-10-26T01:13:50.596Z",
+    "duration": 140233.677,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "findings": [
+    "Known confirmation recovery left a stale navigation lock.",
+    "Native GET login before hydration; no auth POST in original network trace."
+  ],
+  "newUncachedCancellationProbe": "passed"
+}
