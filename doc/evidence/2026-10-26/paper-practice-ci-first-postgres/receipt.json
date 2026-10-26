@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-26T16:28:41.649Z",
+  "status": "exact-first-postgres-job-failure-preserved",
+  "run": 40357600754,
+  "head": "b28331890888b0e8b6a87d6ead84fdea426451b6",
+  "job": 121694130331,
+  "jobConclusion": "failure",
+  "deployed": false,
+  "counts": {
+    "passed": 15,
+    "failed": 2,
+    "total": 17
+  },
+  "findings": [
+    "The added paper-practice step used a different CI admin fixture password than the existing PostgreSQL service/setup and every other native recovery step.",
+    "The newer CI PyMuPDF emits a deprecation notice for import fitz before the otherwise correct one-page/original-text result. Use the canonical pymupdf import and retain exact page/text verification."
+  ],
+  "runState": "Other jobs remain active. No CI cancellation or subsequent push while the previous run is active. Preserve complete run metadata/logs/artifacts after all jobs reach terminal status.",
+  "fetch": "Completed job log downloaded through the official job-log REST endpoint and captured as raw bytes; ANSI was stripped only for console diagnosis. The gh run-view wrapper defers logs until the whole run completes.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-ci-first-postgres-original.log",
+      "file": "job-original.log.gz",
+      "originalSha256": "efd74c4f8aaeba5558b5b837c1bcb3e091405e37f07f81c220e1ea2e01496868",
+      "sha256": "a940322ebb243061bb1821c06df58ae4a70ffb418fc260c174944c7a1f6a028d"
+    },
+    {
+      "source": ".github/workflows/verify.yml",
+      "file": "workflow-original.yml.gz",
+      "originalSha256": "198b654eeb01427056fe0249799d1c9064c17fe30aef3804679f2c8ba17731e5",
+      "sha256": "ad15ed762a2528e04bccd482d702b3c6993fa2c777d38952c36afa258922b61e"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "test-source-original.ts.gz",
+      "originalSha256": "425a8d50f562f7cafa949e079f0b751a079f46748bd4adb574b56f337ded9341",
+      "sha256": "79c9455816557db6cd4c21be683f4ee312419f87f09a3afec58bbb25baea9b1c"
+    },
+    {
+      "file": "job-original.json",
+      "sha256": "83907f8320dc13ee52498f042cf0230e7c9c66be686f2d100cac0cc1e03c933f"
+    }
+  ]
+}

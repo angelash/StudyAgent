@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-26T16:31:13.781Z",
+  "status": "corrected-parser-and-ci-fixture-local-native-pass",
+  "deployed": false,
+  "failedRun": 40357600754,
+  "counts": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "behavior": "Use canonical pymupdf for actual page/text extraction, retaining exact one-page and original-text assertions; match the existing eleven native CI admin fixture URLs to the already provisioned temporary CI role.",
+  "runtimeApiCompiledInputsUnchanged": 11,
+  "webSourceInputsUnchanged": 9,
+  "scope": "Only one integration-test Python import and the added CI step admin fixture URL changed. Application/scoring/schema/backend/frontend behavior remains identical to66bc548/eb15902. Existing full1339 API and298 browser runs are prior unchanged-runtime baselines, not a newly rerun full suite after this test-only correction.",
+  "remaining": "Wait the prior run terminal without cancelling, then push an exact fixed head and require all three CI jobs to succeed.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-ci-fix-postgres.log",
+      "file": "paper-practice-ci-fix-postgres.log.gz",
+      "originalSha256": "3e50ced81035e0a4ed8ef52d78e68773a6431aa1260df6d1c787a2e72c83c74a",
+      "sha256": "d1f6b87c25d5f919cb11182000dcf3e1d7a643325f78e98895649a398f786ac0"
+    },
+    {
+      "source": "data/qa/paper-practice-postgres.json",
+      "file": "paper-practice-postgres.json.gz",
+      "originalSha256": "f684793f017f99d998dd792d1b93be4a6df2385c83b54973d496405ab9b322bb",
+      "sha256": "b8c498cb0d5458772cfc98917b2b0f9d2b82d72272d80fa81938263423f602be"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "17f97ec0b1613d30208e84fb88f91693fb4f9b0ece585dbb9d1018a07c2ac83a",
+      "sha256": "daedba65ef63de74ea1a81bd1d42e47dd3462de3d57172840fb49cfd87017bfe"
+    },
+    {
+      "source": ".github/workflows/verify.yml",
+      "file": "verify.yml.gz",
+      "originalSha256": "d7c0b01d6fe13909a8a99710622b02ba3044cc24129c9b732601f449c56927c5",
+      "sha256": "1393effc2e82b1e441439520a8e5b4b54d48a3b0b393b9526b3235f39f6cfd5c"
+    }
+  ]
+}
