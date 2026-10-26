@@ -1,0 +1,34 @@
+{
+  "status": "local-native-postgres-checkpoint",
+  "at": "2026-10-26T05:26:23.798Z",
+  "passed": 26,
+  "failed": 0,
+  "unhandledErrors": 0,
+  "remotePriorFailure": {
+    "run": 40271886719,
+    "source": "9a030ff87aba772bc3c0fb58783c06e58100fdb9",
+    "job": 121406278518,
+    "testsPassed": 26,
+    "error": "57P01 terminating connection due to administrator command during forced QA database cleanup",
+    "overallConclusion": "failure",
+    "browser": "success",
+    "application": "success"
+  },
+  "fix": "Close owned pools, observe zero real server sessions within 5s, then DROP DATABASE without FORCE; errors remain fatal.",
+  "files": [
+    {
+      "name": "postgres-original.json",
+      "bytes": 13827,
+      "sha256": "b816782fc4ccea14dff6ffd80b6d29699f7e3ff363d0b12cde5e643ad529c0bb"
+    },
+    {
+      "name": "postgres-original.log",
+      "bytes": 1631,
+      "sha256": "2d9746880e1a645e26ec0f2ab8d2d03c6c2a7fea26799f35988e6dcf65bd5061"
+    }
+  ],
+  "limits": [
+    "New fix has not yet passed exact remote CI",
+    "Temporary synthetic databases only; does not change production database shutdown behavior"
+  ]
+}

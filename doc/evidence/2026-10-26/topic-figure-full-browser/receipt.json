@@ -1,0 +1,33 @@
+{
+  "status": "isolated-complete-browser-baseline",
+  "deployed": false,
+  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
+  "at": "2026-10-26T05:23:26.853Z",
+  "stats": {
+    "startTime": "2026-10-26T04:58:11.496Z",
+    "duration": 1182647.722,
+    "expected": 250,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 250,
+  "retriedAttempts": 0,
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 279828,
+      "sha256": "3fd6f9d7116cfd7bbc76547683e9334b810c0e3d6d9067f04e084805657da753"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 39547,
+      "sha256": "6aba3cbfb1ba5820df2e7d3dd64269c1e34400d72f5f6661098e7b12f65f005a"
+    }
+  ],
+  "limits": [
+    "Baseline application before vector formula integration",
+    "Synthetic accounts, controlled image and audio fixtures",
+    "Does not establish real teacher, device, provider, pixel or learning-effectiveness parity"
+  ]
+}

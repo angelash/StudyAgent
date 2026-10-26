@@ -35,6 +35,15 @@ suite('native PostgreSQL source check publication and cold recovery',()=>{
       const subjectHash=hash({id:'erase-child'}),ledger=join(directory,'latest-deletions.json');writeFileSync(ledger,JSON.stringify(makeLedger([{id:'newer-delete',actorId:'owner',kind:'student_delete',subjectHash,requestKey:'delete-erased-child',inputHash:'a'.repeat(64),completedAt:new Date().toISOString(),counts:{records:3,observations:0,activities:0,plans:0,conversations:0,accessRecords:0},erasedStudentHashes:[subjectHash],retainedStudentHashes:[]}])));
       const target=join(directory,'deleted'),receipt=await restorePostgresBundle({connectionString:urls[2],pgBin:tools,bundle,destination:target,deletionLedger:ledger}),recovered=new DomainDatabase(urls[2]);opened.push(recovered);await recovered.open();const state=(await recovered.read()).state;
       expect(receipt.appliedDeletionReceipts).toBe(1);expect(state.sourceCourseChecks.map((row:any)=>row.id)).toEqual(['keep']);expect(state.sourceCourseCheckPublications.map((row:any)=>row.id)).toEqual(['keep-course']);expect((state.sessions[0] as any).revokedAt).toBeTruthy();expect(readFileSync(join(target,'studio-materials',files[0].sha+'.pdf'))).toEqual(files[0].bytes);expect(existsSync(join(target,'studio-materials',files[1].sha+'.pdf'))).toBe(false);expect(readFileSync(join(target,'studio-materials',files[2].sha+'.pdf'))).toEqual(files[2].bytes);expect((state.classroomSessions.find((row:any)=>row.id==='frozen') as any).sourceCheckId).toBe('removed-definition');
-    }finally{for(const db of opened)await db.close();for(const name of created){if(!/^study_qa_check_[a-f0-9]{32}$/.test(name))throw Error('Unknown owned native QA database');await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);}await admin.end();rmSync(directory,{recursive:true,force:true});}
+    }finally{
+      for(const db of opened)await db.close();
+      // pg-pool end() removes idle clients before their socket end callbacks finish.
+      // Observe real server disconnects before dropping only our random QA databases.
+      try { for(const name of created){
+        if(!/^study_qa_check_[a-f0-9]{32}$/.test(name))throw Error('Unknown owned native QA database');
+        await expect.poll(async()=>Number((await admin.query('SELECT count(*) AS count FROM pg_stat_activity WHERE datname=$1',[name])).rows[0].count),{timeout:5000,interval:20}).toBe(0);
+        await admin.query(`DROP DATABASE "${name}"`);
+      }}finally{await admin.end();rmSync(directory,{recursive:true,force:true});}
+    }
   });
 });
