@@ -53,6 +53,77 @@ async function figure(page: Page, requirements = '以两个有交集的圆说明
   await pane.getByRole('button', { name: '生成参考图', exact: true }).click(); return pane;
 }
 
+async function formulaBoard(page: Page, expressions: string[], withFigure = false) {
+  const f = await fixture(page); await generate(page); await ready(page);
+  const id = new URL(page.url()).searchParams.get('draft')!, view = await f.call(base + '/drafts/' + id, undefined, 'GET');
+  const content = { ...view.content, scenes: expressions.map((latex, index) => ({ ...view.content.scenes[index % 3], title: '公式示例 ' + (index + 1),
+    narration: '[whiteboard-fixture] 核对完整表达。 [whiteboard-fixture] 保留最后一项。',
+    bullets: ['核对完整表达', '保留最后一项'], figure: undefined, exhibit: { kind: 'formula', latex, explanation: '分式、根号与对齐关系需要完整保留，最后一项不能省略。' } })) };
+  const edited = await f.call(base + '/drafts/' + id + '/content', { expectedRevision: view.revision, contentFingerprint: view.contentFingerprint, content, requestKey: randomUUID() }, 'PATCH');
+  let current = edited;
+  if (withFigure) {
+    await page.reload(); await ready(page);
+    await page.getByRole('button', { name: '采用服务器稿', exact: true }).click();
+    await expect(page.getByRole('region', { name: '白板配图工作区' }).getByRole('button', { name: '预检配图范围', exact: true })).toBeEnabled();
+    const pane = await figure(page); await pane.getByRole('checkbox', { name: '我已阅读图片，并核对本次要使用的标签和关系。' }).check();
+    await pane.getByRole('button', { name: '选入当前完整稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+    await expect(page.locator('.tw-review')).toContainText('针对旧稿');
+    current = await f.call(base + '/drafts/' + id, undefined, 'GET');
+  }
+  await f.call(base + '/drafts/' + id + '/confirm', { expectedRevision: current.revision, contentFingerprint: current.contentFingerprint,
+    acknowledgeAiGeneratedContent: true, acknowledgeUnreviewedChanges: true, requestKey: randomUUID() });
+  await page.reload(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
+  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player).toBeVisible();
+  return { ...f, player };
+}
+
+test('topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback', async ({ page }) => {
+  const expressions = ['\\frac{1}{2}+\\sqrt{x^2+1}', '\\begin{aligned}a&=b+c\\\\d&=\\frac{e}{f}\\end{aligned}', '\\frac{1}{2}\\text{个整体}', '\\unknownprivate{最后一项}', 'a+'.repeat(280) + 'z'];
+  const { player } = await formulaBoard(page, expressions);
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    for (const [index, latex] of expressions.entries()) {
+      const detail = player.locator('.wb-reading-notes > details').nth(index);
+      if (!(await detail.getAttribute('open') !== null)) await detail.locator(':scope > summary').click();
+      const formula = detail.locator('.wb-complete-formula');
+      if (index !== 3) { await expect(formula.locator('.wb-formula-vector svg')).toHaveCount(1); await expect(formula.locator('math')).toHaveCount(1); }
+      else await expect(formula.getByRole('status')).toContainText('分页保留原式');
+      const raw = formula.locator('details'); if (await raw.getAttribute('open') === null) await raw.locator('summary').click();
+      expect(await raw.locator('pre').textContent()).toBe(latex);
+      expect(await formula.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'topic-formula-reader-' + width + '.png'), fullPage: false });
+  }
+  expect(await page.locator('[href^="javascript:"],script[src*="mathjax"],image[href^="http"]').count()).toBe(0);
+});
+
+test('topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline', async ({ page }) => {
+  const { player } = await formulaBoard(page, ['\\frac{1}{2}+\\sqrt{x^2+1}', '\\begin{aligned}a&=b+c\\\\d&=\\frac{e}{f}\\end{aligned}', 'a+'.repeat(280) + 'z'], true);
+  await expect(player.locator('.sa-whiteboard-notice')).not.toContainText('无法解码');
+  await expect(player.locator('.wb-formula-vector svg').first()).toBeVisible();
+  const download = page.waitForEvent('download', { timeout: 30000 }); await player.getByRole('button', { name: '导出视频', exact: true }).click();
+  const video = (await (await download).path())!, directory = browserEvidence('topic-whiteboard'); copyFileSync(video, join(directory, 'topic-formula-video.webm'));
+  const probe = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v', 'error', '-show_format', '-show_streams', '-of', 'json', video], { windowsHide: true, encoding: 'utf8' }));
+  expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true); expect(probe.streams.some((stream: any) => stream.codec_type === 'video')).toBe(true);
+  const receipts: unknown[] = [];
+  for (const [name, time, left] of [['first', .2, 740], ['aligned', 4.2, 88], ['last', 11.9, 88]] as const) {
+    const frame = spawnSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-ss', String(time), '-i', video, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], { windowsHide: true, maxBuffer: 8 * 1024 * 1024 });
+    expect(frame.status).toBe(0); const decoded = await sharp(frame.stdout).removeAlpha().raw().toBuffer({ resolveWithObject: true }); let ink = 0;
+    for (let y = 220; y < 500; y++) for (let x = left; x < 1190; x++) { const offset = (y * 1280 + x) * 3;
+      if (decoded.data[offset] < 120 && decoded.data[offset + 1] < 130 && decoded.data[offset + 2] < 120) ink++; }
+    expect(ink).toBeGreaterThan(100); receipts.push({ name, time, ink }); writeFileSync(join(directory, 'topic-formula-video-' + name + '.png'), frame.stdout);
+  }
+  writeFileSync(join(directory, 'topic-formula-video-probe.json'), JSON.stringify({ probe, frames: receipts }, null, 2) + '\n');
+  const captions = page.waitForEvent('download'); await player.getByRole('button', { name: '导出字幕', exact: true }).click(); const srt = readFileSync((await (await captions).path())!, 'utf8');
+  expect(srt).toContain('00:00:00,000 --> 00:00:02,000'); expect(srt).toContain('00:00:10,000 --> 00:00:12,000'); expect(srt).toContain('保留最后一项');
+  writeFileSync(join(directory, 'topic-formula-video.srt'), srt);
+  const later: string[] = []; page.on('download', item => later.push(item.suggestedFilename()));
+  await player.getByRole('button', { name: '导出视频', exact: true }).click(); await player.getByRole('button', { name: '取消导出', exact: true }).click();
+  await expect(player.locator('.sa-whiteboard-notice')).toContainText('没有下载半成品'); expect(later).toEqual([]);
+  const retained = page.waitForEvent('download'); await player.getByRole('button', { name: '导出字幕', exact: true }).click(); expect(readFileSync((await (await retained).path())!, 'utf8')).toBe(srt);
+});
+
 test('login forms cannot submit before their client handlers are ready', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, baseURL: test.info().project.use.baseURL });
   try {

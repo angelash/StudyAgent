@@ -8,6 +8,7 @@ import { drawWhiteboardScene } from './whiteboard-canvas';
 import { isTopicWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedError } from './whiteboard-original';
 import { WhiteboardExhibit } from './whiteboard-exhibit';
 import { decodeTopicFigure, TopicFigureImage } from './topic-figure-image';
+import { decodeWhiteboardFormula } from './whiteboard-formula-image';
 import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError, whiteboardAudio } from './whiteboard-media';
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
@@ -107,9 +108,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }, [storageKey, restored, preview, ownerId]);
 
   React.useEffect(() => {
-    const request = new AbortController(), urls = new Set<string>(); setImagesReady(false);
+    const request = new AbortController(), urls = new Set<string>(), formulaReleases: Array<() => void> = []; setImagesReady(false);
     const sources = [...new Map(board.scenes.flatMap(item => item.source ? [[item.source.materialId + ':' + item.source.page, item.source] as const] : [])).entries()];
     const figures = board.scenes.flatMap(scene => scene.figure ? [scene.figure] : []);
+    const formulas = [...new Set(board.scenes.flatMap(scene => scene.exhibit?.kind === 'formula' ? [scene.exhibit.latex] : []))];
     void Promise.all([...sources.map(async ([key, source]) => {
       const token = getAuthToken();
       const response = await fetch(apiBaseUrl + '/api/learning/studio/materials/' + encodeURIComponent(source.materialId) + '/pages/' + source.page,
@@ -122,11 +124,14 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       assertWhiteboardActive(request.signal); return [key, image] as const;
     }), ...figures.map(async figure => {
       const result = await decodeTopicFigure(figure, request.signal); urls.add(result.url); return [figure.snapshotId, result.image] as const;
-    })]).then(rows => { if (!request.signal.aborted) { setImages(new Map(rows)); setImagesReady(true); } }).catch(error => {
+    }), ...formulas.map(async latex => {
+      const result = await decodeWhiteboardFormula(latex, request.signal); if (!result) return null;
+      formulaReleases.push(result.close); if (request.signal.aborted) result.close(); return [result.key, result.image] as const;
+    })]).then(rows => { if (!request.signal.aborted) { setImages(new Map(rows.filter(row => row !== null))); setImagesReady(true); } }).catch(error => {
       if (request.signal.aborted) return;
       if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error.message);
     });
-    return () => { request.abort(); urls.forEach(url => URL.revokeObjectURL(url)); };
+    return () => { request.abort(); urls.forEach(url => URL.revokeObjectURL(url)); formulaReleases.forEach(release => release()); };
   }, [board]);
 
   React.useEffect(() => {
@@ -218,7 +223,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }
   async function exportFile(video: boolean) {
     if (exportRequest.current || !unit) return;
-    if (video && !imagesReady) { setNotice('来源页尚未完整读取，请重新打开后再导出视频。'); return; }
+    if (video && !imagesReady) { setNotice('白板图片或公式尚未完整读取，请重新打开后再导出视频。'); return; }
     if (video && (typeof MediaRecorder === 'undefined' || !canvas.current?.captureStream)) { setNotice('当前浏览器不支持 WebM 录制，可导出 SRT 字幕。'); return; }
     setPlaying(false); resource.current?.audio.pause();
     const request = new AbortController(); exportRequest.current = request; setExporting('正在准备时间表…');
@@ -287,7 +292,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         }}>{speech?.voices.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select>}
         <select aria-label="播放速度" value={speed} disabled={exporting !== null} onChange={event => setSpeed(Number(event.target.value))}>
           <option value={.75}>0.75×</option><option value={1}>1×</option><option value={1.25}>1.25×</option></select>
-        <button disabled={exporting !== null || !unit} onClick={() => void exportFile(true)}>导出视频</button>
+        <button disabled={exporting !== null || !unit || !imagesReady} onClick={() => void exportFile(true)}>导出视频</button>
         <button disabled={exporting !== null || !unit} onClick={() => {
           if (preparedTimeline) saveBlob(new Blob([whiteboardSrt(preparedTimeline)], { type: 'application/x-subrip;charset=utf-8' }), '.srt');
           else void exportFile(false);

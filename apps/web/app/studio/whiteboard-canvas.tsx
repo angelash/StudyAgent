@@ -5,6 +5,8 @@ import type { StudioWhiteboardScene } from '@study-agent/contracts';
 import { whiteboardTableLayout, whiteboardTextLines } from './whiteboard-table';
 import { splitClassroomSpeech } from '@study-agent/contracts';
 import type { WhiteboardSpeechUnit } from '@study-agent/contracts';
+import { renderWhiteboardFormula, whiteboardFormulaKey, whiteboardFormulaPages } from './whiteboard-formula';
+import { decodeWhiteboardFormula } from './whiteboard-formula-image';
 
 
 
@@ -100,11 +102,29 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
       }
     } else {
       const exhibit = scene.exhibit;
-      for (const font of [27, 23, 19, 15, 11, 9]) {
-        context.font = font + 'px "Microsoft YaHei UI", sans-serif';
-        const lines = whiteboardTextLines(exhibit.latex.replace(/\s+/gu, ' ').trim() + '\n\n' + exhibit.explanation.replace(/\s+/gu, ' ').trim(), exhibitWidth - 32, text => context.measureText(text).width);
-        if (lines.length * (font + 8) > available && font !== 9) continue;
-        context.fillStyle = '#26382b'; lines.forEach((line, index) => context.fillText(line, exhibitX + 10, top + font + index * (font + 8))); break;
+      const ratio = unit && scene.narration.length ? (unit.start + (unit.end - unit.start) * progress) / scene.narration.length : progress;
+      const image = pageImages?.get(whiteboardFormulaKey(exhibit.latex));
+      context.font = '18px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#26382b';
+      if (image?.complete && image.naturalWidth) {
+        const formula = renderWhiteboardFormula(exhibit.latex), formulaHeight = Math.max(64, available - 86);
+        const layout = whiteboardFormulaPages(formula.width, formula.height, exhibitWidth - 24, formulaHeight);
+        const explanation = whiteboardTextLines(exhibit.explanation, exhibitWidth - 24, text => context.measureText(text).width);
+        const count = Math.max(layout.pages.length, Math.ceil(explanation.length / 3)), at = Math.min(count - 1, Math.max(0, Math.floor(ratio * count)));
+        const page = layout.pages[Math.min(layout.pages.length - 1, at)], scale = layout.scale;
+        context.drawImage(image, page.x, page.y, page.width, page.height, exhibitX + (exhibitWidth - page.width * scale) / 2,
+          top + (formulaHeight - page.height * scale) / 2, page.width * scale, page.height * scale);
+        explanation.slice(Math.min(Math.max(0, Math.ceil(explanation.length / 3) - 1), at) * 3).slice(0, 3)
+          .forEach((line, index) => context.fillText(line, exhibitX + 12, top + formulaHeight + 24 + index * 22));
+        context.font = '12px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#657268';
+        context.fillText('公式 ' + (Math.min(at, layout.pages.length - 1) + 1) + ' / ' + layout.pages.length + ' · 完整原式见讲稿', exhibitX + 4, 612);
+      } else {
+        // Unknown syntax is explicit. Full raw source is paged at readable size instead of clipped.
+        const lines = whiteboardTextLines(exhibit.latex + '\n\n' + exhibit.explanation, exhibitWidth - 24, text => context.measureText(text).width);
+        const perPage = Math.max(1, Math.floor((available - 36) / 26)), count = Math.max(1, Math.ceil(lines.length / perPage));
+        const at = Math.min(count - 1, Math.max(0, Math.floor(ratio * count)));
+        lines.slice(at * perPage, (at + 1) * perPage).forEach((line, index) => context.fillText(line, exhibitX + 12, top + 48 + index * 26));
+        context.font = '12px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#657268';
+        context.fillText('原式阅读（暂未统一排版）' + (at + 1) + ' / ' + count + ' · 完整原式见讲稿', exhibitX + 4, top + 18);
       }
     }
   } else if (scene.kind === 'pdf_page' && sourceImage?.complete && sourceImage.naturalWidth) {
@@ -173,8 +193,15 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
 export function WhiteboardScenePreview({ scene }: { scene: StudioWhiteboardScene }) {
   const canvas = React.useRef<HTMLCanvasElement | null>(null);
   React.useEffect(() => {
-    const context = canvas.current?.getContext('2d');
-    if (context) drawWhiteboardScene(context, scene, .72);
+    const context = canvas.current?.getContext('2d'), request = new AbortController(); let close: (() => void) | undefined;
+    if (context) {
+      drawWhiteboardScene(context, scene, .72);
+      if (scene.exhibit?.kind === 'formula') void decodeWhiteboardFormula(scene.exhibit.latex, request.signal).then(result => {
+        if (!result) return; close = result.close;
+        if (request.signal.aborted) close(); else drawWhiteboardScene(context, scene, .72, new Map([[result.key, result.image]]));
+      }).catch(() => { /* Complete source fallback remains drawn. */ });
+    }
+    return () => { request.abort(); close?.(); };
   }, [scene]);
   return <canvas className="sa-whiteboard-preview-canvas" ref={canvas} width={1280} height={720}
     aria-label={scene.title} />;

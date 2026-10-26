@@ -11,6 +11,8 @@
     "lint": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@mathjax/mathjax-newcm-font": "4.1.3",
+    "@mathjax/src": "4.1.3",
     "@study-agent/config": "0.1.0",
     "@study-agent/contracts": "0.1.0",
     "@study-agent/ui": "0.1.0",
