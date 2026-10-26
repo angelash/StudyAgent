@@ -1,0 +1,58 @@
+{
+  "delayMs": 700,
+  "requests": [
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:0:27",
+      "voice": "fixture-a",
+      "startedAt": 415,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:28:55",
+      "voice": "fixture-a",
+      "startedAt": 1174.9000000357628,
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:0:27",
+      "voice": "fixture-delay",
+      "startedAt": 2358.400000035763,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:28:55",
+      "voice": "fixture-delay",
+      "startedAt": 4923.100000023842
+    }
+  ],
+  "audio": [
+    {
+      "index": 0,
+      "event": "loadedmetadata",
+      "at": 1138.9000000357628,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 1170.199999988079,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "loadedmetadata",
+      "at": 4889.300000011921,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "playing",
+      "at": 4919.199999988079,
+      "currentTime": 0,
+      "duration": 2
+    }
+  ]
+}

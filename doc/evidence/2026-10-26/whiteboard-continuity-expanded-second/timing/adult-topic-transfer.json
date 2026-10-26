@@ -1,0 +1,74 @@
+{
+  "delayMs": 700,
+  "requests": [
+    {
+      "unitId": "wb1:af5e74904493d3bb1c6f513d2de0437168113921d44dcfff59233f861beea3dc:topic-scene%3A1:0:27",
+      "voice": "fixture-a",
+      "startedAt": 2487.800000011921,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:af5e74904493d3bb1c6f513d2de0437168113921d44dcfff59233f861beea3dc:topic-scene%3A1:28:50",
+      "voice": "fixture-a",
+      "startedAt": 3585.099999964237,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:af5e74904493d3bb1c6f513d2de0437168113921d44dcfff59233f861beea3dc:topic-scene%3A2:0:27",
+      "voice": "fixture-a",
+      "startedAt": 5875.199999988079,
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "audio": [
+    {
+      "index": 0,
+      "event": "loadedmetadata",
+      "at": 3222,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 3578.699999988079,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "loadedmetadata",
+      "at": 4305,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "pause",
+      "at": 5853.899999976158,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "ended",
+      "at": 5853.899999976158,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "playing",
+      "at": 5867.899999976158,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "pause",
+      "at": 6465.899999976158,
+      "currentTime": 0.546406,
+      "duration": 2
+    }
+  ]
+}

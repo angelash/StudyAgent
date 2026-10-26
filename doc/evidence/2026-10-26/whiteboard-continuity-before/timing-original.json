@@ -1,0 +1,57 @@
+{
+  "delayMs": 700,
+  "requests": [
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:0:27",
+      "startedAt": 363.89999997615814
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:28:55",
+      "startedAt": 3182.2999999523163
+    }
+  ],
+  "audio": [
+    {
+      "index": 0,
+      "event": "loadedmetadata",
+      "at": 1087.2999999523163,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 1092.199999988079,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "pause",
+      "at": 3175,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "ended",
+      "at": 3175,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "loadedmetadata",
+      "at": 3912.5,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "playing",
+      "at": 3918.7999999523163,
+      "currentTime": 0,
+      "duration": 2
+    }
+  ]
+}

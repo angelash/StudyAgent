@@ -1,0 +1,47 @@
+{
+  "delayMs": 3300,
+  "requests": [
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:0:27",
+      "voice": "fixture-a",
+      "startedAt": 435.0999999642372,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:28:55",
+      "voice": "fixture-a",
+      "startedAt": 4105.399999976158,
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "audio": [
+    {
+      "index": 0,
+      "event": "loadedmetadata",
+      "at": 3752.300000011921,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 4100.399999976158,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "pause",
+      "at": 6361.300000011921,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "ended",
+      "at": 6361.300000011921,
+      "currentTime": 2,
+      "duration": 2
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "delayMs": 300,
+  "requests": [
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:0:27",
+      "voice": "fixture-a",
+      "startedAt": 405.69999998807907,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:28:55",
+      "voice": "fixture-a",
+      "startedAt": 773.5,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A1:56:82",
+      "voice": "fixture-a",
+      "startedAt": 2600,
+      "status": 201
+    },
+    {
+      "unitId": "wb1:9705e08232efded424605c7cb0e8fa2a30cb8ab1d9d4851a5e725dbd3db28124:scene%3A2:0:30",
+      "voice": "fixture-a",
+      "startedAt": 4305.600000023842,
+      "status": 201
+    }
+  ],
+  "audio": [
+    {
+      "index": 0,
+      "event": "loadedmetadata",
+      "at": 731.6999999880791,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 768.3000000119209,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "loadedmetadata",
+      "at": 1098.300000011921,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "pause",
+      "at": 1308.800000011921,
+      "currentTime": 0.486124,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "playing",
+      "at": 1356.199999988079,
+      "currentTime": 0.554787,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "pause",
+      "at": 2560.600000023842,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 0,
+      "event": "ended",
+      "at": 2560.600000023842,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "playing",
+      "at": 2595.5,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 2,
+      "event": "loadedmetadata",
+      "at": 2914.900000035763,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "pause",
+      "at": 4261.699999988079,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 1,
+      "event": "ended",
+      "at": 4261.800000011921,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 2,
+      "event": "playing",
+      "at": 4301.100000023842,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 3,
+      "event": "loadedmetadata",
+      "at": 4631.400000035763,
+      "currentTime": 0,
+      "duration": 2
+    },
+    {
+      "index": 2,
+      "event": "pause",
+      "at": 5980.5,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 2,
+      "event": "ended",
+      "at": 5980.5,
+      "currentTime": 2,
+      "duration": 2
+    },
+    {
+      "index": 3,
+      "event": "playing",
+      "at": 6030.600000023842,
+      "currentTime": 0,
+      "duration": 2
+    }
+  ]
+}

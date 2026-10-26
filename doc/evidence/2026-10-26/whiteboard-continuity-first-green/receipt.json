@@ -1,0 +1,59 @@
+{
+  "status": "first-local-continuity-checkpoint",
+  "deployed": false,
+  "passed": 13,
+  "failed": 0,
+  "retriedAttempts": 0,
+  "measurement": {
+    "controlledRequestDelayMs": 700,
+    "actualGapMs": 45.5,
+    "request2BeforeEndedMs": 2106.300000011921,
+    "nextAudioStartSeconds": 0
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 17223,
+      "sha256": "949ff3b3f1f251bcbfae36ceec15c2d2f39db63d8cd853c10d79c047332af5d2"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 2662,
+      "sha256": "7393c2430a56e94b4b7cf9c293b1a1d8966ba9f97aaed19c668c6ba9a7f5d699"
+    },
+    {
+      "name": "timing-original.json",
+      "bytes": 1449,
+      "sha256": "600dc6aa58d6268f70d0931eff9835291124f9fcb62ace0d78b9ac59724b0786"
+    },
+    {
+      "name": "types-original.log",
+      "bytes": 256,
+      "sha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee"
+    },
+    {
+      "name": "build-original.log",
+      "bytes": 1410,
+      "sha256": "5c344ce51fcbb53488c0b9cafd86a2f94d8ee6a3222486b696bf5a428a675aa8"
+    }
+  ],
+  "bindings": [
+    {
+      "file": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6"
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-media.ts",
+      "sha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0"
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-narration.ts",
+      "sha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462"
+    }
+  ],
+  "limits": [
+    "Further cancellation, failure/retry, role revocation, manual navigation, voice and topic cases still required",
+    "Controlled real browser WAV and network wait, not actual supplier speed or human listening",
+    "Current production remains124"
+  ]
+}

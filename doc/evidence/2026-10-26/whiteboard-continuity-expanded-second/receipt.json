@@ -1,0 +1,156 @@
+{
+  "at": "2026-10-26T09:05:55.094Z",
+  "status": "original-expanded-run-with-test-fixture-failure",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T08:59:38.809Z",
+    "duration": 294457.70999999996,
+    "expected": 44,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "diagnosis": "44 passed. The new session-revocation test logged out its registration session, not the distinct browser login session. Preserve this failure and revoke the actual browser session; do not change application authorization.",
+  "files": [
+    {
+      "source": "data/qa/topic-whiteboard-browser.json",
+      "target": "browser-original.json.gz",
+      "originalBytes": 58011,
+      "originalSha256": "39bbbc92eb7e0a6f1572de8c74d49f20b31e22b1eca916b581f35c5950be07ef",
+      "storedSha256": "87de3e77e42f1366ac069a1cb60398a7599afdacf2080cfac78f10f47f85c3f3"
+    },
+    {
+      "source": "data/qa/continuity-expanded-browser-second.log",
+      "target": "browser-original.log",
+      "originalBytes": 11095,
+      "originalSha256": "7f3115a33e88227fd9d6c45a415c91cdf3aba69393c92a17695d37795c2b8046",
+      "storedSha256": "7f3115a33e88227fd9d6c45a415c91cdf3aba69393c92a17695d37795c2b8046"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "target": "failures\\.last-run.json",
+      "originalBytes": 96,
+      "originalSha256": "3811fe0411ac67cd5b41be53a5470df7df55dc5805959da7638b936aa53913f0",
+      "storedSha256": "3811fe0411ac67cd5b41be53a5470df7df55dc5805959da7638b936aa53913f0"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-9824c-al-login-session-revocation\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-9824c-al-login-session-revocation\\error-context.md",
+      "originalBytes": 30791,
+      "originalSha256": "336efcf43b6891865b6f068417738d4eb3fb5edc9b2a1ba83fea564e40a482a8",
+      "storedSha256": "336efcf43b6891865b6f068417738d4eb3fb5edc9b2a1ba83fea564e40a482a8"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-9824c-al-login-session-revocation\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-9824c-al-login-session-revocation\\test-failed-1.png",
+      "originalBytes": 121987,
+      "originalSha256": "33f1f80ead026a9f2fe41c84eda1db67f4d9fbcacf4660ca3d4452a2d6e7dcd2",
+      "storedSha256": "33f1f80ead026a9f2fe41c84eda1db67f4d9fbcacf4660ca3d4452a2d6e7dcd2"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-9824c-al-login-session-revocation\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-9824c-al-login-session-revocation\\trace.zip",
+      "originalBytes": 6944270,
+      "originalSha256": "1497653a897c004d901fbae4031ea767fa6c31627b411418311d9afaacd61e98",
+      "storedSha256": "1497653a897c004d901fbae4031ea767fa6c31627b411418311d9afaacd61e98"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\adjacent-transfer.json",
+      "target": "timing\\adjacent-transfer.json",
+      "originalBytes": 1714,
+      "originalSha256": "878ad9bb4d3c472a12051afd78330eb3f8e109032b98139c3b3efc81247d98f6",
+      "storedSha256": "878ad9bb4d3c472a12051afd78330eb3f8e109032b98139c3b3efc81247d98f6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\adult-topic-transfer.json",
+      "target": "timing\\adult-topic-transfer.json",
+      "originalBytes": 1612,
+      "originalSha256": "2aca46222c333feb42014016bbec1174921f1e28a6e9fea1dfdd0e28abf79ab6",
+      "storedSha256": "2aca46222c333feb42014016bbec1174921f1e28a6e9fea1dfdd0e28abf79ab6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\close-pending.json",
+      "target": "timing\\close-pending.json",
+      "originalBytes": 737,
+      "originalSha256": "155fdc38b102d1cc57b613fcc29c89c53f592bb77a4a61cbd9dc2f718a316024",
+      "storedSha256": "155fdc38b102d1cc57b613fcc29c89c53f592bb77a4a61cbd9dc2f718a316024"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\manual-next.json",
+      "target": "timing\\manual-next.json",
+      "originalBytes": 1177,
+      "originalSha256": "d36e7e8c24a9ebb8498d1b575311346bea2ede08589af2aa9386b8a59c815cbb",
+      "storedSha256": "d36e7e8c24a9ebb8498d1b575311346bea2ede08589af2aa9386b8a59c815cbb"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\revoked-prepared.json",
+      "target": "timing\\revoked-prepared.json",
+      "originalBytes": 1134,
+      "originalSha256": "02833e873d01587f64349dd0af7eb9c360ab927a30e87ef325d6a0dc6a56b173",
+      "storedSha256": "02833e873d01587f64349dd0af7eb9c360ab927a30e87ef325d6a0dc6a56b173"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\slow-cancel.json",
+      "target": "timing\\slow-cancel.json",
+      "originalBytes": 1001,
+      "originalSha256": "6c6e335ad6b38b1b6f32e637d89b6cd9f80815787fbca5db329dc51fd1e86f04",
+      "storedSha256": "6c6e335ad6b38b1b6f32e637d89b6cd9f80815787fbca5db329dc51fd1e86f04"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\three-complete-with-speed.json",
+      "target": "timing\\three-complete-with-speed.json",
+      "originalBytes": 2951,
+      "originalSha256": "36186dedd5d7d238d386438c1cfb5a007de9a83f07ce1d964186e2723ad0fea1",
+      "storedSha256": "36186dedd5d7d238d386438c1cfb5a007de9a83f07ce1d964186e2723ad0fea1"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\voice-change.json",
+      "target": "timing\\voice-change.json",
+      "originalBytes": 1401,
+      "originalSha256": "886cd33151c04b26397a320cfac5db5554cfb41267e751a20f9050df695ac337",
+      "storedSha256": "886cd33151c04b26397a320cfac5db5554cfb41267e751a20f9050df695ac337"
+    },
+    {
+      "source": "tests/e2e/whiteboard-timing.ts",
+      "target": "inputs\\whiteboard-timing.ts",
+      "originalBytes": 2889,
+      "originalSha256": "93c82b363ff6d460f624238aaa7925b41f1f706574fe1e55eef6a3cd08bfa755",
+      "storedSha256": "93c82b363ff6d460f624238aaa7925b41f1f706574fe1e55eef6a3cd08bfa755"
+    },
+    {
+      "source": "tests/e2e/whiteboard-media.spec.ts",
+      "target": "inputs\\whiteboard-media.spec.ts",
+      "originalBytes": 34249,
+      "originalSha256": "f141f27e72dbe2e33c1ed6e0776341c90e6e9b6070005a7bba6cc6277a126a90",
+      "storedSha256": "f141f27e72dbe2e33c1ed6e0776341c90e6e9b6070005a7bba6cc6277a126a90"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "target": "inputs\\topic-whiteboard.spec.ts",
+      "originalBytes": 46578,
+      "originalSha256": "76106394eae22dea8e0f76fabfad8af3303963fa0bf45cf775a2534c57b2b9f1",
+      "storedSha256": "76106394eae22dea8e0f76fabfad8af3303963fa0bf45cf775a2534c57b2b9f1"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-narration.ts",
+      "target": "inputs\\whiteboard-narration.ts",
+      "originalBytes": 6196,
+      "originalSha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462",
+      "storedSha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "target": "inputs\\whiteboard-session.tsx",
+      "originalBytes": 26593,
+      "originalSha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6",
+      "storedSha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-media.ts",
+      "target": "inputs\\whiteboard-media.ts",
+      "originalBytes": 8000,
+      "originalSha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0",
+      "storedSha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0"
+    }
+  ]
+}

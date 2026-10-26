@@ -1,0 +1,254 @@
+{
+  "at": "2026-10-26T08:57:30.253Z",
+  "status": "original-expanded-run-with-unhandled-cancelled-test-route",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T08:46:36.561Z",
+    "duration": 585606.351,
+    "expected": 37,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  },
+  "diagnosis": "Timing route returned without abort/continue/fulfill after a client cancellation. Playwright waits for handledPromise in _handleInternal, so unrouteAll(wait) never settled. Actual ended/playing events in original traces are preserved; assertions and application behavior will not be relaxed.",
+  "files": [
+    {
+      "source": "data/qa/topic-whiteboard-browser.json",
+      "target": "browser-original.json.gz",
+      "originalBytes": 58852,
+      "originalSha256": "eb8ee2403f856a74354d99b275ee7fc92b8f49e51823fbd3a4762cdc623e5fe0",
+      "storedSha256": "7e77320684a7efcb653966320be9419266834d5fed9cc117b761ea01729cbacc"
+    },
+    {
+      "source": "data/qa/continuity-expanded-browser-initial.log",
+      "target": "browser-original.log",
+      "originalBytes": 19922,
+      "originalSha256": "81892aaee4d1a63ecacebff4b130978e15bb070d7adb9147c1da450fbed14725",
+      "storedSha256": "81892aaee4d1a63ecacebff4b130978e15bb070d7adb9147c1da450fbed14725"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "target": "failures\\.last-run.json",
+      "originalBytes": 341,
+      "originalSha256": "6c60d5ea7f1ee47aa370076564127b684603766ed568432976b0c5e220b1e3cc",
+      "storedSha256": "6c60d5ea7f1ee47aa370076564127b684603766ed568432976b0c5e220b1e3cc"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\error-context.md",
+      "target": "failures\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\error-context.md",
+      "originalBytes": 11194,
+      "originalSha256": "33ad71da5c40fc2b16d9804e5fd1f93c00563e3fbb5e5e03c06c61f125be7883",
+      "storedSha256": "33ad71da5c40fc2b16d9804e5fd1f93c00563e3fbb5e5e03c06c61f125be7883"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\test-failed-1.png",
+      "target": "failures\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\test-failed-1.png",
+      "originalBytes": 90594,
+      "originalSha256": "a384259c30f851e40692e8063e3588075e00027caaf9a9f348b28cc15606c55d",
+      "storedSha256": "a384259c30f851e40692e8063e3588075e00027caaf9a9f348b28cc15606c55d"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\trace.zip",
+      "target": "failures\\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\\trace.zip",
+      "originalBytes": 3739922,
+      "originalSha256": "6bcdade988227b0f8e6556669b699e591e2fe9d1f0ed5fbc0579553e496fec24",
+      "storedSha256": "6bcdade988227b0f8e6556669b699e591e2fe9d1f0ed5fbc0579553e496fec24"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\error-context.md",
+      "originalBytes": 11827,
+      "originalSha256": "456ed60b2ab9c787bb76c5c7d6c07676bb376889c787be17955ff2e83c079201",
+      "storedSha256": "456ed60b2ab9c787bb76c5c7d6c07676bb376889c787be17955ff2e83c079201"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\test-failed-1.png",
+      "originalBytes": 130264,
+      "originalSha256": "788a4b9b11bc0eb237109ada2cf225472bf6e464df2c376fd20ac6fd180fec64",
+      "storedSha256": "788a4b9b11bc0eb237109ada2cf225472bf6e464df2c376fd20ac6fd180fec64"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\\trace.zip",
+      "originalBytes": 3783717,
+      "originalSha256": "b448c27ff298970c881bcd94101d609f59435db023d12bf06946dfec52fc9dc4",
+      "storedSha256": "b448c27ff298970c881bcd94101d609f59435db023d12bf06946dfec52fc9dc4"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\error-context.md",
+      "originalBytes": 11776,
+      "originalSha256": "ba4e6d277dd66c79875a1fd5a87642fb631081171b63cfdd1ca454eac184c319",
+      "storedSha256": "ba4e6d277dd66c79875a1fd5a87642fb631081171b63cfdd1ca454eac184c319"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\test-failed-1.png",
+      "originalBytes": 130213,
+      "originalSha256": "7940d582668442bba4e9c0e40d8b604513e0bf90b5bf47b616ada83853cfe1b2",
+      "storedSha256": "7940d582668442bba4e9c0e40d8b604513e0bf90b5bf47b616ada83853cfe1b2"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-397de-can-be-paused-while-waiting\\trace.zip",
+      "originalBytes": 3051721,
+      "originalSha256": "ca3df4d4b5128a97214859a11a3990fa323618318be2097a883a0404c0d52f0e",
+      "storedSha256": "ca3df4d4b5128a97214859a11a3990fa323618318be2097a883a0404c0d52f0e"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-44bb6--it-without-another-request\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-44bb6--it-without-another-request\\error-context.md",
+      "originalBytes": 11826,
+      "originalSha256": "5d7c51d2807da7b35ad3736e414a3038d46237952d9ea1b4a37a10fac4560d83",
+      "storedSha256": "5d7c51d2807da7b35ad3736e414a3038d46237952d9ea1b4a37a10fac4560d83"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-44bb6--it-without-another-request\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-44bb6--it-without-another-request\\test-failed-1.png",
+      "originalBytes": 130434,
+      "originalSha256": "dbe429e34aaa36ba39f5d7fe6575dd557997416f42c00eec2b9deb21bcace091",
+      "storedSha256": "dbe429e34aaa36ba39f5d7fe6575dd557997416f42c00eec2b9deb21bcace091"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-44bb6--it-without-another-request\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-44bb6--it-without-another-request\\trace.zip",
+      "originalBytes": 1977800,
+      "originalSha256": "dc432b2344020655c2cc2952aef8cd0db1d9073fb26cd915600ddf4c175ac0db",
+      "storedSha256": "dc432b2344020655c2cc2952aef8cd0db1d9073fb26cd915600ddf4c175ac0db"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\error-context.md",
+      "originalBytes": 11609,
+      "originalSha256": "c3bc619470b82b63a9f4de81c6a910e0e96abe7be4fb0174f4b9b651ef88d7f8",
+      "storedSha256": "c3bc619470b82b63a9f4de81c6a910e0e96abe7be4fb0174f4b9b651ef88d7f8"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\test-failed-1.png",
+      "originalBytes": 122080,
+      "originalSha256": "accf27af9486bc4e6c4e485318f23f2ce42281728508c3ec658a42239d7acb44",
+      "storedSha256": "accf27af9486bc4e6c4e485318f23f2ce42281728508c3ec658a42239d7acb44"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\\trace.zip",
+      "originalBytes": 4177664,
+      "originalSha256": "5f9607fced02da6a8fc72ccb1c962b3b92eaaae5cfcf16129323135947822a76",
+      "storedSha256": "5f9607fced02da6a8fc72ccb1c962b3b92eaaae5cfcf16129323135947822a76"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\error-context.md",
+      "target": "failures\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\error-context.md",
+      "originalBytes": 8225,
+      "originalSha256": "b8c8000cc18fce945c5ffed65f2e53e8fe108b356a41d18762fb2774edbc33ac",
+      "storedSha256": "b8c8000cc18fce945c5ffed65f2e53e8fe108b356a41d18762fb2774edbc33ac"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\test-failed-1.png",
+      "target": "failures\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\test-failed-1.png",
+      "originalBytes": 118213,
+      "originalSha256": "9dcf12eccd010ec949d8b1abe0c7b449124230fe94bd2d7478f76240ef673714",
+      "storedSha256": "9dcf12eccd010ec949d8b1abe0c7b449124230fe94bd2d7478f76240ef673714"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\trace.zip",
+      "target": "failures\\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\\trace.zip",
+      "originalBytes": 1011964,
+      "originalSha256": "de42da9ef977338326a6b79ed11ed962981b6288361db736964245f15dfb3430",
+      "storedSha256": "de42da9ef977338326a6b79ed11ed962981b6288361db736964245f15dfb3430"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\adjacent-transfer.json",
+      "target": "timing\\adjacent-transfer.json",
+      "originalBytes": 1610,
+      "originalSha256": "11a95b97f2aebaca908d2398314dac2922e3fc51cdbed8ac0357c58988fb7ab6",
+      "storedSha256": "11a95b97f2aebaca908d2398314dac2922e3fc51cdbed8ac0357c58988fb7ab6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\adult-topic-transfer.json",
+      "target": "timing\\adult-topic-transfer.json",
+      "originalBytes": 1450,
+      "originalSha256": "71229190ebc390e7485ba5281511359de158bc863a0c3dc65a594328c6b3ce7c",
+      "storedSha256": "71229190ebc390e7485ba5281511359de158bc863a0c3dc65a594328c6b3ce7c"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\close-pending.json",
+      "target": "timing\\close-pending.json",
+      "originalBytes": 740,
+      "originalSha256": "304736ae2b454a540a8a945eb473ccb1e7cdba6479cc5a2ef1d930f2411d1f5d",
+      "storedSha256": "304736ae2b454a540a8a945eb473ccb1e7cdba6479cc5a2ef1d930f2411d1f5d"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\manual-next.json",
+      "target": "timing\\manual-next.json",
+      "originalBytes": 1154,
+      "originalSha256": "14fb8285485b6c603141a23eb4b03691544c0b3aab9d54a35f48ce9b8b48288d",
+      "storedSha256": "14fb8285485b6c603141a23eb4b03691544c0b3aab9d54a35f48ce9b8b48288d"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\revoked-prepared.json",
+      "target": "timing\\revoked-prepared.json",
+      "originalBytes": 1097,
+      "originalSha256": "f62f40b65f151143d3c557adc308686e6dca85d3e3c9eb6f89517fba06e39bf6",
+      "storedSha256": "f62f40b65f151143d3c557adc308686e6dca85d3e3c9eb6f89517fba06e39bf6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\slow-cancel.json",
+      "target": "timing\\slow-cancel.json",
+      "originalBytes": 1011,
+      "originalSha256": "02fe534adafc981da2e8e0182283a7fff341dbd56b362de7b73881483cfb6c7e",
+      "storedSha256": "02fe534adafc981da2e8e0182283a7fff341dbd56b362de7b73881483cfb6c7e"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-continuity\\voice-change.json",
+      "target": "timing\\voice-change.json",
+      "originalBytes": 1403,
+      "originalSha256": "bebf71bebbbec65db20a5707980af33a4f66f613295efec95a7ec00d430896a4",
+      "storedSha256": "bebf71bebbbec65db20a5707980af33a4f66f613295efec95a7ec00d430896a4"
+    },
+    {
+      "source": "tests/e2e/whiteboard-timing.ts",
+      "target": "inputs\\whiteboard-timing.ts",
+      "originalBytes": 2680,
+      "originalSha256": "f1861cbd4b6c44719439a05bb7c2ba4c0d034da61acdc597bd35332b04076b2c",
+      "storedSha256": "f1861cbd4b6c44719439a05bb7c2ba4c0d034da61acdc597bd35332b04076b2c"
+    },
+    {
+      "source": "tests/e2e/whiteboard-media.spec.ts",
+      "target": "inputs\\whiteboard-media.spec.ts",
+      "originalBytes": 31342,
+      "originalSha256": "00b5abdfb1e0711612bbee1d239c85426e9983e8050345336be475d13db90f93",
+      "storedSha256": "00b5abdfb1e0711612bbee1d239c85426e9983e8050345336be475d13db90f93"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "target": "inputs\\topic-whiteboard.spec.ts",
+      "originalBytes": 46578,
+      "originalSha256": "76106394eae22dea8e0f76fabfad8af3303963fa0bf45cf775a2534c57b2b9f1",
+      "storedSha256": "76106394eae22dea8e0f76fabfad8af3303963fa0bf45cf775a2534c57b2b9f1"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-narration.ts",
+      "target": "inputs\\whiteboard-narration.ts",
+      "originalBytes": 6196,
+      "originalSha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462",
+      "storedSha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "target": "inputs\\whiteboard-session.tsx",
+      "originalBytes": 26593,
+      "originalSha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6",
+      "storedSha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-media.ts",
+      "target": "inputs\\whiteboard-media.ts",
+      "originalBytes": 8000,
+      "originalSha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0",
+      "storedSha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0"
+    }
+  ]
+}

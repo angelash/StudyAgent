@@ -1,0 +1,213 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: topic-whiteboard.spec.ts >> continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity
+- Location: tests\e2e\topic-whiteboard.spec.ts:57:5
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=f1e1]:
+  - alert [ref=f1e2]
+  - main [ref=f1e3]:
+    - complementary "学习工作台导航" [ref=f1e4]:
+      - link "StudyAgent" [ref=f1e5] [cursor=pointer]:
+        - /url: /studio
+      - navigation [ref=f1e9]:
+        - link "Home" [ref=f1e10] [cursor=pointer]:
+          - /url: /studio?view=home
+          - generic [ref=f1e13]: 首页
+        - link "Courses" [ref=f1e14] [cursor=pointer]:
+          - /url: /studio?view=courses
+          - generic [ref=f1e17]: 课程
+        - link "Calendar" [ref=f1e18] [cursor=pointer]:
+          - /url: /studio?view=calendar
+          - generic [ref=f1e21]: 学习动态
+        - link "History" [ref=f1e22] [cursor=pointer]:
+          - /url: /studio?view=history
+          - generic [ref=f1e25]: 历史
+        - link "Materials" [ref=f1e26] [cursor=pointer]:
+          - /url: /studio?view=materials
+          - generic [ref=f1e29]: 资料
+        - link "AI Whiteboards" [ref=f1e30] [cursor=pointer]:
+          - /url: /studio/whiteboards
+          - generic [ref=f1e33]: AI白板
+      - generic [ref=f1e34]:
+        - heading "继续学习" [level=2] [ref=f1e35]
+        - link "讲座社会学想象力 社会学概论" [ref=f1e36] [cursor=pointer]:
+          - /url: /studio/classroom
+          - text: 讲座社会学想象力
+          - generic [ref=f1e37]: 社会学概论
+      - generic [ref=f1e38]:
+        - heading "近期活动" [level=2] [ref=f1e39]
+        - paragraph [ref=f1e40]: 开始学习后，活动会出现在这里。
+      - link "返回学习首页 →" [ref=f1e42] [cursor=pointer]:
+        - /url: /learn?subject=math
+    - generic [ref=f1e43]:
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - text: WHITEBOARD STUDIO
+          - heading "从一个问题开始，讲清每一步。" [level=1] [ref=f1e46]
+          - paragraph [ref=f1e47]: 先生成教学稿，完整核对后再保存。AI 讲解需要内容核对。
+        - link "返回学习工作台 →" [ref=f1e48] [cursor=pointer]:
+          - /url: /studio
+      - generic [ref=f1e49]:
+        - complementary [ref=f1e50]:
+          - generic [ref=f1e51]:
+            - text: NEW BOARD
+            - heading "这次想弄懂什么？" [level=2] [ref=f1e52]
+          - generic [ref=f1e53]:
+            - text: 学习对象
+            - combobox "白板学习对象" [ref=f1e54]:
+              - option "我自己 · 成人主题" [selected]
+          - region "新建AI白板" [ref=f1e55]:
+            - group [ref=f1e56]:
+              - generic [ref=f1e57]:
+                - text: 讲解主题
+                - textbox "讲解主题" [ref=f1e58]:
+                  - /placeholder: 例如：为什么先统一单位，才能比较和合并？
+                  - text: 用匿名观察解释条件与推断
+              - generic [ref=f1e59]:
+                - text: 希望弄懂什么
+                - textbox "希望弄懂什么" [ref=f1e60]:
+                  - /placeholder: 想理解的区别、步骤，或一个具体困惑
+                  - text: 保留完整条件，说明观察、推断和替代解释的区别。
+              - generic [ref=f1e62]:
+                - generic [ref=f1e63]: 模型
+                - combobox "选择大模型" [ref=f1e64] [cursor=pointer]:
+                  - option "Auto · 当前默认模型"
+                  - option "GPT-6.1 Sol"
+                  - option "GPT-6 Astra"
+                  - option "GPT-6 Luna"
+                  - option "Grok-4.7"
+                  - option "GLM-5.3 Flash"
+                  - option "DeepSeek V4.1 Flash · 默认" [selected]
+                  - option "Claude Opus 5.5"
+                  - option "Claude Sonnet 5"
+                  - option "GPT-6 Sol"
+                  - option "GPT-5.6 Sol"
+                  - option "GPT-5.6 Terra"
+                  - option "GPT-5.6 Luna"
+                  - option "GPT-5.5"
+                  - option "Grok-4.6"
+                  - option "GLM-5.2"
+                  - option "GLM-5.3"
+                  - option "Claude Opus 5"
+                  - option "Claude Fable 5.1"
+                  - option "MiMo V2.6 Pro"
+                  - option "MiMo V2.6 Flash"
+                  - option "MiMo V2.6 Pro Ultraspeed"
+                  - option "Qwen3.8 Max"
+            - generic [ref=f1e65]:
+              - button "预检主题与范围" [ref=f1e66] [cursor=pointer]
+              - button "生成教学稿" [disabled] [ref=f1e67]
+            - button "下载原主题与请求" [ref=f1e68] [cursor=pointer]
+            - group [ref=f1e69]:
+              - generic "查看其他本机主题" [ref=f1e70] [cursor=pointer]
+        - region "白板工作区" [ref=f1e71]:
+          - generic [ref=f1e72]:
+            - text: SAVED BOARD
+            - heading "把条件讲清楚" [level=2] [ref=f1e73]
+            - paragraph [ref=f1e74]: AI生成 · 待内容核对 · Browser fixture · not a real model
+            - button "继续阅读" [ref=f1e75] [cursor=pointer]
+            - button "查看自己的原稿" [ref=f1e76] [cursor=pointer]
+          - dialog "白板视频" [ref=f1e77]:
+            - generic [ref=f1e78]:
+              - generic [ref=f1e79]:
+                - generic [ref=f1e80]: WHITEBOARD SESSION / 原白板
+                - heading "把条件讲清楚" [level=2] [ref=f1e81]
+                - paragraph [ref=f1e82]: 逐句云语音 · 实际音轨结束后继续 · 板书按完整要点呈现
+                - paragraph [ref=f1e83]: AI生成 · 待内容核对 · Browser fixture · not a real model
+              - button "关闭白板" [ref=f1e84] [cursor=pointer]: ×
+            - generic [ref=f1e85]:
+              - generic [ref=f1e86]:
+                - generic "先核对观察" [ref=f1e88]
+                - paragraph [ref=f1e89]: 保留未知条件，不把一次观察当成完整能力证明。
+                - generic [ref=f1e90]:
+                  - generic [ref=f1e91]: 播放进度（估计阅读）
+                  - slider "播放进度（估计阅读）" [ref=f1e92] [cursor=pointer]: "166"
+                - generic [ref=f1e93]:
+                  - button "上一句" [ref=f1e94] [cursor=pointer]: ←
+                  - button "播放" [active] [ref=f1e95] [cursor=pointer]: ▶
+                  - button "下一句" [ref=f1e96] [cursor=pointer]: →
+                  - generic [ref=f1e97]: 2 / 6 句
+                  - combobox "阅读方式" [ref=f1e98] [cursor=pointer]:
+                    - option "文字阅读（估计时长）"
+                    - option "云语音逐句播放" [selected]
+                  - combobox "旁白音色" [ref=f1e99] [cursor=pointer]:
+                    - option "合成音轨 A" [selected]
+                  - combobox "播放速度" [ref=f1e100] [cursor=pointer]:
+                    - option "0.75×"
+                    - option "1×" [selected]
+                    - option "1.25×"
+                  - button "导出视频" [ref=f1e101] [cursor=pointer]
+                  - button "导出字幕" [ref=f1e102] [cursor=pointer]
+                - status [ref=f1e103]: 云语音播放中 · 由当前句实际音轨结束推进。
+                - generic [ref=f1e104]:
+                  - button "01 先核对观察" [ref=f1e105] [cursor=pointer]:
+                    - generic [ref=f1e106]: "01"
+                    - text: 先核对观察
+                  - button "02 再比较条件" [ref=f1e107] [cursor=pointer]:
+                    - generic [ref=f1e108]: "02"
+                    - text: 再比较条件
+                  - button "03 最后保留反例" [ref=f1e109] [cursor=pointer]:
+                    - generic [ref=f1e110]: "03"
+                    - text: 最后保留反例
+              - complementary "完整讲稿与要点" [ref=f1e111]:
+                - heading "逐句讲稿" [level=3] [ref=f1e112]
+                - paragraph [ref=f1e113]: 点击一句定位。观看与续播不计作掌握。
+                - list [ref=f1e114]:
+                  - listitem [ref=f1e115]:
+                    - button "[whiteboard-fixture] 先核对观察。" [ref=f1e116] [cursor=pointer]
+                  - listitem [ref=f1e117]:
+                    - button "保留未知条件，不把一次观察当成完整能力证明。" [ref=f1e118] [cursor=pointer]
+                  - listitem [ref=f1e119]:
+                    - button "[whiteboard-fixture] 再比较条件。" [ref=f1e120] [cursor=pointer]
+                  - listitem [ref=f1e121]:
+                    - button "保留未知条件，不把一次观察当成完整能力证明。" [ref=f1e122] [cursor=pointer]
+                  - listitem [ref=f1e123]:
+                    - button "[whiteboard-fixture] 最后保留反例。" [ref=f1e124] [cursor=pointer]
+                  - listitem [ref=f1e125]:
+                    - button "保留未知条件，不把一次观察当成完整能力证明。" [ref=f1e126] [cursor=pointer]
+                - heading "完整笔记与来源" [level=3] [ref=f1e127]
+                - group [ref=f1e128]:
+                  - generic "先核对观察" [ref=f1e129] [cursor=pointer]
+                  - paragraph [ref=f1e130]: 完整说明首行。完整说明尾行。
+                  - list [ref=f1e131]:
+                    - listitem [ref=f1e132]: 先核对观察
+                - group [ref=f1e133]:
+                  - generic "再比较条件" [ref=f1e134] [cursor=pointer]
+                - group [ref=f1e135]:
+                  - generic "最后保留反例" [ref=f1e136] [cursor=pointer]
+                - button "下载续播位置" [ref=f1e137] [cursor=pointer]
+        - complementary "白板与候选历史" [ref=f1e138]:
+          - generic [ref=f1e139]:
+            - heading "我的白板" [level=2] [ref=f1e140]
+            - button "＋ 新白板" [ref=f1e141] [cursor=pointer]
+          - generic [ref=f1e142]:
+            - button "教学草稿" [pressed] [ref=f1e143] [cursor=pointer]
+            - button "已保存" [ref=f1e144] [cursor=pointer]
+          - generic [ref=f1e145]:
+            - generic [ref=f1e146]: 搜索我的白板
+            - textbox "搜索我的白板" [ref=f1e147]:
+              - /placeholder: 搜索主题或标题
+          - button "已保存白板 · 本人主题 把条件讲清楚 Browser fixture · not a real model" [ref=f1e148] [cursor=pointer]:
+            - generic [ref=f1e149]: 已保存白板 · 本人主题
+            - generic [ref=f1e150]: 把条件讲清楚
+            - generic [ref=f1e151]: Browser fixture · not a real model
+          - generic [ref=f1e152]:
+            - button "上一页" [disabled] [ref=f1e153]
+            - generic [ref=f1e154]: 1 / 1
+            - button "下一页" [disabled] [ref=f1e155]
+```

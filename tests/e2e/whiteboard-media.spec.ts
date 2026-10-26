@@ -4,6 +4,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { browserEvidence } from './evidence';
 import { join } from 'node:path';
+import { installNarrationTiming } from './whiteboard-timing';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107');
 const credential = 'Synthetic-whiteboard-only-20261026';
@@ -100,6 +101,155 @@ test('ended boundary: a queued previous audio frame cannot seek the next actual 
   expect(await page.evaluate(() => (window as any).__whiteboardBoundaryTicks)).toBeGreaterThan(0);
   await page.getByRole('button', { name: '暂停', exact: true }).click(); await expect(f.current).toContainText('再合并份数');
   await page.evaluate(() => (window as any).__whiteboardAudio[0].dispatchEvent(new Event('ended'))); await expect(f.current).toContainText('再合并份数');
+});
+
+test('continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning', async ({ page }) => {
+  const timing = await installNarrationTiming(page), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing'), { timeout: 10000 }).toBe(true);
+    await page.getByRole('button', { name: '暂停', exact: true }).click();
+    const result = await timing.save('adjacent-transfer'), firstEnd = result.audio.find(row => row.index === 0 && row.event === 'ended')!;
+    const prepared = result.audio.find(row => row.index === 1 && row.event === 'loadedmetadata')!, next = result.audio.find(row => row.index === 1 && row.event === 'playing')!;
+    expect(result.requests[1].startedAt).toBeLessThan(firstEnd.at - 100);
+    expect(prepared.at).toBeLessThan(firstEnd.at);
+    expect(next.at - firstEnd.at).toBeLessThan(result.delayMs * .75);
+    expect(next.currentTime).toBeLessThan(.15);
+    expect(result.requests.filter(row => row.unitId === result.requests[1].unitId)).toHaveLength(1);
+    expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toHaveLength(1);
+    await expect(f.current).toContainText('再合并份数');
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation', async ({ page }) => {
+  const timing = await installNarrationTiming(page, 300), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
+    const at = await page.evaluate(() => (window as any).__whiteboardAudio[0].currentTime);
+    await page.getByLabel('播放速度').selectOption('1.25');
+    await expect.poll(() => page.evaluate(() => (window as any).__whiteboardAudio[0].playbackRate)).toBe(1.25);
+    expect(await page.evaluate(() => (window as any).__whiteboardAudio[0].currentTime)).toBeGreaterThanOrEqual(at);
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 2 && row.event === 'ended'), { timeout: 12000 }).toBe(true);
+    await page.getByRole('button', { name: '暂停', exact: true }).click();
+    const result = await timing.save('three-complete-with-speed');
+    const completed = result.audio.filter(row => row.event === 'ended');
+    expect(completed.map(row => row.index)).toEqual([0, 1, 2]);
+    for (const row of completed) expect(row.currentTime).toBe(row.duration);
+    for (const index of [1, 2]) {
+      const start = result.audio.find(row => row.index === index && row.event === 'playing')!;
+      expect(start.at).toBeGreaterThanOrEqual(completed[index - 1].at); expect(start.currentTime).toBeLessThan(.15);
+      expect(result.audio.filter(row => row.index === index && row.event === 'playing')).toHaveLength(1);
+    }
+    expect(new Set(result.requests.map(row => row.unitId)).size).toBe(result.requests.length);
+    await expect(f.current).toContainText('保留新的独立观察');
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: an already prepared WAV cannot survive actual login-session revocation', async ({ page }) => {
+  const timing = await installNarrationTiming(page, 150), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
+    // Registration and browser login deliberately create different sessions.
+    // Revoke the current browser Cookie session rather than the setup actor.
+    expect(await page.evaluate(async base => (await fetch(base + '/api/auth/logout', {
+      method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: '{}',
+    })).status, api)).toBe(201);
+    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+    const result = await timing.save('revoked-session');
+    expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
+    expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence', async ({ page }) => {
+  const f = await fixture(page); let first = '', second = '', secondCalls = 0;
+  await page.route('**/api/learning/studio/whiteboards/*/narration/*', async route => {
+    const unitId = route.request().postDataJSON().unitId;
+    if (!first) first = unitId;
+    if (unitId !== first && !second) second = unitId;
+    if (unitId === second && ++secondCalls === 1) return route.fulfill({ status: 503, contentType: 'application/json', body: '{"error":{"message":"Synthetic preparation failure"}}' });
+    return route.continue();
+  });
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(() => secondCalls).toBe(1);
+    await expect(f.current).toContainText('先统一单位'); await expect(page.getByRole('button', { name: '暂停', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: '暂停', exact: true }).click(); await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect(f.current).toContainText('再合并份数'); await expect(page.locator('.sa-whiteboard-notice')).toContainText('重试或选择文字');
+    expect(secondCalls).toBe(1); await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).__whiteboardAudio[1]?.currentTime ?? 0)).toBeGreaterThan(.1);
+    expect(secondCalls).toBe(2); await expect(f.current).toContainText('再合并份数');
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: closing during adjacent preparation aborts it and no late audio can play', async ({ page }) => {
+  const timing = await installNarrationTiming(page), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).requests.length).toBe(2);
+    await page.getByRole('button', { name: '关闭白板', exact: true }).click(); await page.waitForTimeout(1000);
+    const result = await timing.save('close-pending'); expect(result.requests[1].failure).toBeTruthy();
+    expect(result.audio.filter(row => row.index > 0 && row.event === 'playing')).toEqual([]);
+    expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
+    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request', async ({ page }) => {
+  const timing = await installNarrationTiming(page), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(async () => (await timing.read()).requests.length).toBe(2);
+    const target = (await timing.read()).requests[1].unitId;
+    await page.getByRole('button', { name: '下一句', exact: true }).click(); await expect(f.current).toContainText('再合并份数');
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
+    expect((await timing.read()).audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
+    await page.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing')).toBe(true);
+    await page.getByRole('button', { name: '暂停', exact: true }).click(); const result = await timing.save('manual-next');
+    expect(result.requests.filter(row => row.unitId === target)).toHaveLength(1);
+    expect(result.audio.find(row => row.index === 1 && row.event === 'playing')!.currentTime).toBeLessThan(.15);
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: a prepared WAV cannot play after actual guardian revocation before handover', async ({ page }) => {
+  const timing = await installNarrationTiming(page, 150), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
+    await f.call('/qa/whiteboard-media', { boardId: f.board.id, revoke: true }, f.actor.token);
+    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+    const result = await timing.save('revoked-prepared'); expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
+    expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: changing voice fences the old adjacent request and preserves an explicit fresh play', async ({ page }) => {
+  const timing = await installNarrationTiming(page), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(async () => (await timing.read()).requests.length).toBe(2);
+    const old = (await timing.read()).requests[1].unitId;
+    await page.getByLabel('旁白音色').selectOption('fixture-delay'); await page.waitForTimeout(1000);
+    let result = await timing.read(); expect(result.requests[1].failure).toBeTruthy();
+    expect(result.audio.filter(row => row.index > 0 && row.event === 'playing')).toEqual([]); await expect(f.current).toContainText('先统一单位');
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing'), { timeout: 10000 }).toBe(true);
+    result = await timing.save('voice-change'); expect(result.requests.filter(row => row.unitId === old && row.voice === 'fixture-a')).toHaveLength(1);
+    expect(result.requests.some(row => row.voice === 'fixture-delay')).toBe(true);
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
+
+test('continuity: slow adjacent audio cannot advance early and can be paused while waiting', async ({ page }) => {
+  const timing = await installNarrationTiming(page, 3300), f = await fixture(page);
+  try {
+    await page.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).__whiteboardAudio[0]?.currentTime ?? 0), { timeout: 10000 }).toBeGreaterThan(.8);
+    await expect(f.current).toContainText('先统一单位');
+    await expect(f.current).toContainText('再合并份数'); await expect(page.locator('.sa-whiteboard-notice')).toContainText('正在准备当前句');
+    await page.getByRole('button', { name: '暂停', exact: true }).click(); await page.waitForTimeout(1800);
+    const result = await timing.save('slow-cancel'); expect(result.requests[1].failure).toBeTruthy();
+    expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
+    await expect(f.current).toContainText('再合并份数'); await expect(page.getByRole('button', { name: '播放', exact: true })).toBeVisible();
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
 });
 
 test('voice switch fences delayed requests and an audio failure offers explicit retry or text reading', async ({ page }) => {

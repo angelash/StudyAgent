@@ -1,0 +1,153 @@
+{
+  "at": "2026-10-26T09:11:57.171Z",
+  "status": "focused-local-acceptance-passed",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T09:06:22.238Z",
+    "duration": 263435.929,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "timing": [
+    {
+      "source": "adjacent-transfer.json",
+      "controlledRequestDelayMs": 700,
+      "actualGapMs": 35.60000002384186,
+      "adjacentRequestBeforeEndMs": 2113.899999976158,
+      "startsAtSeconds": 0
+    },
+    {
+      "source": "adult-topic-transfer.json",
+      "controlledRequestDelayMs": 700,
+      "actualGapMs": 12.300000011920929,
+      "adjacentRequestBeforeEndMs": 2254.900000035763,
+      "startsAtSeconds": 0
+    }
+  ],
+  "originalBaselineGapMs": 743.8,
+  "files": [
+    {
+      "source": "data/qa/topic-whiteboard-browser.json",
+      "file": "browser-original.json.gz",
+      "originalSha256": "edad6beb45180896e871bd3e121ecec74a3326b0e19c4b201fc3fdac0b900ef5",
+      "storedSha256": "81c31a56e9d6bf99d636da7f40959c309b2e6004927d8af1d1bb8e2a7daa8e4e",
+      "bytes": 52364
+    },
+    {
+      "source": "data/qa/continuity-expanded-browser-final.log",
+      "file": "browser-original.log",
+      "originalSha256": "f7d42348f90f333070cb70efb888017178d260cb5c80caad6aab64724c2667d6",
+      "storedSha256": "f7d42348f90f333070cb70efb888017178d260cb5c80caad6aab64724c2667d6",
+      "bytes": 7778
+    },
+    {
+      "source": "data/qa/continuity-expanded-types.log",
+      "file": "types-original.log",
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "storedSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "bytes": 256
+    },
+    {
+      "source": "data/qa/continuity-design-validation-second.log",
+      "file": "design-original.log",
+      "originalSha256": "5e698e0f72791bbf3cbc0b3e96bacecbb86ef036755c1426fc1d26a331f4860b",
+      "storedSha256": "5e698e0f72791bbf3cbc0b3e96bacecbb86ef036755c1426fc1d26a331f4860b",
+      "bytes": 281
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/adjacent-transfer.json",
+      "file": "adjacent-transfer.json",
+      "originalSha256": "b211519a7418b30cad606c87fedbdb15bb276e8f50573b519b941e82cd6fc1c0",
+      "storedSha256": "b211519a7418b30cad606c87fedbdb15bb276e8f50573b519b941e82cd6fc1c0",
+      "bytes": 1414
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/adult-topic-transfer.json",
+      "file": "adult-topic-transfer.json",
+      "originalSha256": "99b09ac33ca1f0babeb505106e3323bb8488c8ea6b49676592c268280c02914f",
+      "storedSha256": "99b09ac33ca1f0babeb505106e3323bb8488c8ea6b49676592c268280c02914f",
+      "bytes": 1440
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/close-pending.json",
+      "file": "close-pending.json",
+      "originalSha256": "deb611a85059cb88fba0d6a009ba35b118342dc7ff82d4428736cc03d0b930c7",
+      "storedSha256": "deb611a85059cb88fba0d6a009ba35b118342dc7ff82d4428736cc03d0b930c7",
+      "bytes": 741
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/manual-next.json",
+      "file": "manual-next.json",
+      "originalSha256": "95268df316d6bcccd2eee907c9f2b208d36f230e98e7a926df6490e4274d3ddb",
+      "storedSha256": "95268df316d6bcccd2eee907c9f2b208d36f230e98e7a926df6490e4274d3ddb",
+      "bytes": 1176
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/revoked-prepared.json",
+      "file": "revoked-prepared.json",
+      "originalSha256": "33e54844e2439ab693f31cc852f71ab44aaf6ccc52d6ee1681613adb2d17b1f2",
+      "storedSha256": "33e54844e2439ab693f31cc852f71ab44aaf6ccc52d6ee1681613adb2d17b1f2",
+      "bytes": 1109
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/revoked-session.json",
+      "file": "revoked-session.json",
+      "originalSha256": "e2cd6c0d2f68c1b447f0e282ccbec0254c758ba81301138132ad826f4bc35c37",
+      "storedSha256": "e2cd6c0d2f68c1b447f0e282ccbec0254c758ba81301138132ad826f4bc35c37",
+      "bytes": 1119
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/slow-cancel.json",
+      "file": "slow-cancel.json",
+      "originalSha256": "ef2a9bda24c7029c93bceea2416990dcb56d2b25837d887444d3c024ed3de95c",
+      "storedSha256": "ef2a9bda24c7029c93bceea2416990dcb56d2b25837d887444d3c024ed3de95c",
+      "bytes": 1012
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/three-complete-with-speed.json",
+      "file": "three-complete-with-speed.json",
+      "originalSha256": "de50985026cb0761723cf53f4a84b9bd61fd45e15cba361f33102811fa877512",
+      "storedSha256": "de50985026cb0761723cf53f4a84b9bd61fd45e15cba361f33102811fa877512",
+      "bytes": 2926
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-continuity/voice-change.json",
+      "file": "voice-change.json",
+      "originalSha256": "a02b5c2286a748396cb66ea4794f152c69b55987f64100b7828b88f8f15629d3",
+      "storedSha256": "a02b5c2286a748396cb66ea4794f152c69b55987f64100b7828b88f8f15629d3",
+      "bytes": 1392
+    }
+  ],
+  "bindings": [
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "82db8c64b593ab5e3d7da963c7ba7d05c1d3ee545fffb8270c85097cbbb13ff6"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-media.ts",
+      "sha256": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-narration.ts",
+      "sha256": "ba09cc9c389d7405b75d7ad81a50a8d954c3494c3e657d2aa53f614774d6d462"
+    }
+  ],
+  "coverage": [
+    "adult topic and ordinary whiteboard real WAV handover",
+    "three complete WAVs and live speed change",
+    "failed adjacent request with explicit retry",
+    "pending cancellation on close/pause/voice change",
+    "exact manual next stays paused and reuses prepared audio",
+    "actual guardian revocation and actual browser login-session logout",
+    "slow preparation preserves sentence order",
+    "decoded image/formula videos and original complete SRT",
+    "original ended-frame boundary regression"
+  ],
+  "limits": [
+    "Controlled synthetic WAV and network delay. No new supplier request, live latency claim, human listening or real-device acceptance.",
+    "Full application and new exact remote CI still required. Production remains124.",
+    "72 requirements and M1-M7 remain incomplete."
+  ]
+}

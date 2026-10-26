@@ -9,11 +9,11 @@ import { isTopicWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedErr
 import { WhiteboardExhibit } from './whiteboard-exhibit';
 import { decodeTopicFigure, TopicFigureImage } from './topic-figure-image';
 import { decodeWhiteboardFormula } from './whiteboard-formula-image';
-import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError, whiteboardAudio } from './whiteboard-media';
+import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError } from './whiteboard-media';
+import { WhiteboardNarration, whiteboardAudioKey, type WhiteboardAudioResource } from './whiteboard-narration';
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
-type AudioResource = { key: string; audio: HTMLAudioElement; url: string };
 export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose }:
   WhiteboardPlayerProps & { ownerId: string; preview: boolean }) {
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
@@ -26,7 +26,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const [images, setImages] = React.useState<Map<string, HTMLImageElement>>(new Map()), [imagesReady, setImagesReady] = React.useState(false);
   const [restored, setRestored] = React.useState(false);
   const canvas = React.useRef<HTMLCanvasElement>(null), dialog = React.useRef<HTMLDivElement>(null);
-  const resource = React.useRef<AudioResource | null>(null), generation = React.useRef(0), exportRequest = React.useRef<AbortController | null>(null);
+  const resource = React.useRef<WhiteboardAudioResource | null>(null), narration = React.useRef<WhiteboardNarration | null>(null);
+  const generation = React.useRef(0), exportRequest = React.useRef<AbortController | null>(null);
   const resumeAudioTime = React.useRef<number | null>(null);
   const progressRef = React.useRef(progress), indexRef = React.useRef(unitIndex), position = React.useRef<Position | null>(null);
   const downloadUrls = React.useRef(new Set<string>()), closeRef = React.useRef(onClose);
@@ -40,13 +41,19 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const ratio = entry && activeTimeline.durationMs ? (entry.fromMs + (entry.toMs - entry.fromMs) * progress) / activeTimeline.durationMs : 0;
   position.current = unit ? { ownerId, studentId: board.studentId, boardId: board.id, fingerprint: board.fingerprint,
     version: WHITEBOARD_SPEECH_VERSION, unitId: unit.id, progress,
-    audioTime: mode === 'cloud' ? (resource.current?.key === unit.id + ':' + voice ? resource.current.audio.currentTime : resumeAudioTime.current) : null,
+    audioTime: mode === 'cloud' ? (resource.current?.key === whiteboardAudioKey(unit.id, voice) ? resource.current.audio.currentTime : resumeAudioTime.current) : null,
     mode, voice, speed, at: Date.now() } : null;
 
   const releaseAudio = React.useCallback(() => {
     const current = resource.current; resource.current = null;
-    if (current) { current.audio.onended = null; current.audio.onerror = null; current.audio.pause(); current.audio.removeAttribute('src'); current.audio.load(); URL.revokeObjectURL(current.url); }
+    current?.close();
   }, []);
+  const speechQueue = React.useCallback(() => {
+    if (!narration.current) narration.current = new WhiteboardNarration(board, () => {
+      generation.current++; setPlaying(false); releaseAudio(); exportRequest.current?.abort(); closeRef.current?.();
+    });
+    return narration.current;
+  }, [board, releaseAudio]);
   const render = React.useCallback(() => {
     const context = canvas.current?.getContext('2d');
     if (context && scene) drawWhiteboardScene(context, scene, progress, images, unit);
@@ -60,7 +67,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       request?.abort(); request = new AbortController(); const current = request;
       void readWhiteboardOriginal(board, current.signal).catch(error => {
         if (current.signal.aborted) return;
-        setPlaying(false); resource.current?.audio.pause(); exportRequest.current?.abort(); exportRequest.current = null; setExporting(null);
+        generation.current++; narration.current?.clear(); setPlaying(false); resource.current?.audio.pause(); exportRequest.current?.abort(); exportRequest.current = null; setExporting(null);
         if (error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.();
         else setNotice('暂时无法核对原白板访问权限，播放已暂停，请重新打开后继续。');
       });
@@ -147,7 +154,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       else if (!event.shiftKey && document.activeElement === nodes[nodes.length - 1]) { event.preventDefault(); nodes[0].focus(); }
     };
     document.addEventListener('keydown', key);
-    return () => { document.removeEventListener('keydown', key); generation.current++; releaseAudio(); exportRequest.current?.abort(); downloadUrls.current.forEach(url => URL.revokeObjectURL(url)); };
+    return () => { document.removeEventListener('keydown', key); generation.current++; releaseAudio(); narration.current?.dispose(); narration.current = null; exportRequest.current?.abort(); downloadUrls.current.forEach(url => URL.revokeObjectURL(url)); };
   }, [releaseAudio]);
 
   React.useEffect(() => {
@@ -162,7 +169,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       if (unitIndex + 1 < units.length) { progressRef.current = 0; setProgress(0); setUnitIndex(unitIndex + 1); }
       else { progressRef.current = 1; setProgress(1); setPlaying(false); }
     };
-    const key = unit.id + ':' + voice;
+    const key = whiteboardAudioKey(unit.id, voice);
     if (mode === 'text' || resource.current?.key !== key) releaseAudio();
     if (!playing) return () => { request.abort(); generation.current++; resource.current?.audio.pause(); };
     if (mode === 'text') {
@@ -177,46 +184,44 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       setNotice('正在准备当前句语音…');
       let audio = resource.current?.audio;
       if (!audio) {
-        const blob = await whiteboardAudio(board, unit, voice, request.signal); if (!current()) return;
-        const url = URL.createObjectURL(blob); audio = new Audio(url); resource.current = { key, audio, url };
-        const player = audio;
-        await new Promise<void>((resolve, reject) => {
-          const finish = () => { cleanup(); resolve(); }, failed = () => { cleanup(); reject(new Error('当前句音轨无法解码，请重试或选择文字阅读。')); };
-          const abort = () => { cleanup(); reject(new DOMException('Cancelled', 'AbortError')); };
-          const cleanup = () => { player.removeEventListener('loadedmetadata', finish); player.removeEventListener('error', failed); request.signal.removeEventListener('abort', abort); };
-          player.addEventListener('loadedmetadata', finish, { once: true }); player.addEventListener('error', failed, { once: true }); request.signal.addEventListener('abort', abort, { once: true });
-          player.load(); if (player.readyState >= 1) finish();
-        });
-        if (!current()) return;
-        if (!Number.isFinite(audio.duration) || audio.duration <= 0) throw new Error('当前句音轨时长不可用。');
+        const prepared = await speechQueue().acquire(unit, voice, request.signal);
+        if (!current()) { prepared.close(); return; }
+        audio = prepared.audio; resource.current = prepared;
         audio.currentTime = Math.min(audio.duration, resumeAudioTime.current ?? audio.duration * progressRef.current);
         resumeAudioTime.current = null;
-      }
+      } else resumeAudioTime.current = null;
+      await speechQueue().authorize(request.signal);
       if (!current()) return;
       audio.playbackRate = speed; audio.onended = advance;
-      audio.onerror = () => { if (current()) { setPlaying(false); setNotice('当前句语音中断，可重试或切换文字阅读。'); releaseAudio(); } };
+      audio.onerror = () => { if (current()) { narration.current?.cancelPending(); setPlaying(false); setNotice('当前句语音中断，可重试或切换文字阅读。'); releaseAudio(); } };
       await audio.play(); if (!current()) { audio.pause(); return; }
       setNotice('云语音播放中 · 由当前句实际音轨结束推进。');
+      speechQueue().prepareNext(units[unitIndex + 1], voice);
       const player = audio;
       const tick = () => { if (!current()) return; if (player.duration > 0) setProgress(Math.min(1, player.currentTime / player.duration)); frame = requestAnimationFrame(tick); };
       frame = requestAnimationFrame(tick);
     })().catch(error => {
       if (!current()) return;
-      setPlaying(false); releaseAudio();
-      if (error instanceof WhiteboardAccessError) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '当前句语音未能播放。');
+      narration.current?.cancelPending(); setPlaying(false); releaseAudio();
+      if (error instanceof WhiteboardAccessError || error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '当前句语音未能播放。');
     });
     return () => { request.abort(); generation.current++; if (frame !== null) cancelAnimationFrame(frame);
       const audio = resource.current?.audio; if (audio) { audio.onended = null; audio.onerror = null; audio.pause(); if (audio.readyState < 1) releaseAudio(); } };
-  }, [playing, unit?.id, mode, voice, speed, restored, exporting, releaseAudio]);
+  }, [playing, unit?.id, mode, voice, speed, restored, exporting, releaseAudio, speechQueue]);
 
   function go(index: number, fraction = 0) {
     generation.current++; setPlaying(false); releaseAudio(); resumeAudioTime.current = null;
+    narration.current?.retainOnly(units[Math.max(0, Math.min(units.length - 1, index))], voice);
     progressRef.current = fraction;
     setUnitIndex(Math.max(0, Math.min(units.length - 1, index))); setProgress(fraction);
   }
-  function pauseForFigure() {
+  function pausePlayback() {
     generation.current++; setPlaying(false); const audio = resource.current?.audio;
+    narration.current?.cancelPending();
     if (audio) { audio.pause(); if (Number.isFinite(audio.currentTime)) resumeAudioTime.current = audio.currentTime; }
+  }
+  function pauseForFigure() {
+    pausePlayback();
     setNotice('已暂停当前句，关闭图片后点击播放继续。');
   }
   function saveBlob(blob: Blob, suffix: string) {
@@ -229,7 +234,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     if (exportRequest.current || !unit) return;
     if (video && !imagesReady) { setNotice('白板图片或公式尚未完整读取，请重新打开后再导出视频。'); return; }
     if (video && (typeof MediaRecorder === 'undefined' || !canvas.current?.captureStream)) { setNotice('当前浏览器不支持 WebM 录制，可导出 SRT 字幕。'); return; }
-    setPlaying(false); resource.current?.audio.pause();
+    pausePlayback(); narration.current?.clear();
     const request = new AbortController(); exportRequest.current = request; setExporting('正在准备时间表…');
     let prepared: Awaited<ReturnType<typeof prepareWhiteboardExport>> | undefined;
     const figureReleases: Array<() => void> = [];
@@ -284,15 +289,16 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <div className="sa-whiteboard-controls">
         <button disabled={exporting !== null || unitIndex <= 0} aria-label="上一句" onClick={() => go(unitIndex - 1)}>←</button>
         <button className="sa-whiteboard-play" disabled={exporting !== null || !unit || !restored} aria-label={playing ? '暂停' : '播放'} onClick={() => {
+          if (playing) { pausePlayback(); return; }
           if (!playing && progress >= 1) { if (unitIndex === units.length - 1) setUnitIndex(0); setProgress(0); releaseAudio(); resumeAudioTime.current = null; }
-          setPlaying(value => !value);
+          setPlaying(true);
         }}>{playing ? 'Ⅱ' : '▶'}</button>
         <button disabled={exporting !== null || unitIndex >= units.length - 1} aria-label="下一句" onClick={() => go(unitIndex + 1)}>→</button>
         <span>{unit ? unitIndex + 1 : 0} / {units.length} 句</span>
-        <select aria-label="阅读方式" value={mode} disabled={exporting !== null} onChange={event => { setPlaying(false); releaseAudio(); resumeAudioTime.current = null; setMode(event.target.value as 'text' | 'cloud'); }}>
+        <select aria-label="阅读方式" value={mode} disabled={exporting !== null} onChange={event => { generation.current++; narration.current?.clear(); setPlaying(false); releaseAudio(); resumeAudioTime.current = null; setMode(event.target.value as 'text' | 'cloud'); }}>
           <option value="text">文字阅读（估计时长）</option>{!preview && narrationAvailable && <option value="cloud">云语音逐句播放</option>}</select>
         {mode === 'cloud' && <select aria-label="旁白音色" value={voice} disabled={exporting !== null} onChange={event => {
-          generation.current++; releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(event.target.value); setNotice('音色已切换，下次播放从当前句开头开始。');
+          generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(event.target.value); setNotice('音色已切换，下次播放从当前句开头开始。');
         }}>{speech?.voices.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select>}
         <select aria-label="播放速度" value={speed} disabled={exporting !== null} onChange={event => setSpeed(Number(event.target.value))}>
           <option value={.75}>0.75×</option><option value={1}>1×</option><option value={1.25}>1.25×</option></select>

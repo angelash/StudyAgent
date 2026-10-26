@@ -1,0 +1,59 @@
+{
+  "status": "red-continuity-baseline-before-implementation",
+  "applicationRevision": "40a1739a91f21db0b0bfc1fbcffb16b5d32485cb",
+  "at": "2026-10-26T08:20:37.929Z",
+  "passed": 12,
+  "failed": 1,
+  "retriedAttempts": 0,
+  "measurement": {
+    "controlledNetworkDelayMs": 700,
+    "secondRequestAfterEndedMs": 7.299999952316284,
+    "actualEndedToNextPlayingMs": 743.7999999523163
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 21613,
+      "sha256": "df32bcff65f4f1103d2cc3798df90549e0c0554ae637caf012986111a1e846b5"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 5640,
+      "sha256": "451144c065a8eec8cb7a9104916aa8fce7cbb3d9f66ad8285b783441a8d1ee16"
+    },
+    {
+      "name": "timing-original.json",
+      "bytes": 1134,
+      "sha256": "ce5068122018df61850f0b75ed123b4b93925731c89ce82b9f37231d1917f995"
+    },
+    {
+      "name": "test-source-original.ts",
+      "bytes": 23741,
+      "sha256": "02f128737c20af9e90572875af3578c1d77217a59308f617c7aefbb0e62d0837"
+    },
+    {
+      "name": "timing-helper-original.ts",
+      "bytes": 2159,
+      "sha256": "99f9315c45793b2dc6f2e574f19dd28cb72edc9fa67cd80977925ff902c2ca09"
+    },
+    {
+      "name": "error-context.md",
+      "bytes": 32116,
+      "sha256": "0ba14dd31728572d586a9c0815cd1348479adfeaf4ab8fba5b11814b9b3a91a3"
+    },
+    {
+      "name": "trace.zip",
+      "bytes": 3843388,
+      "sha256": "e3ee4f89897ab13d32e2d62477302149f51885842b239b82176d426e09839c52"
+    },
+    {
+      "name": "test-failed-1.png",
+      "bytes": 130361,
+      "sha256": "6ba354ea775037e08d26e30f1f776777524b5c8fc33a0c1ba59b24d7efb7619b"
+    }
+  ],
+  "limits": [
+    "Controlled700ms request wait and real two-second browser WAVs",
+    "Not actual supplier latency or real-device/human listening proof"
+  ]
+}

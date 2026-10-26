@@ -1,0 +1,53 @@
+{
+  "status": "preserved-automatic-job-budget-expiry",
+  "head": "40a1739a91f21db0b0bfc1fbcffb16b5d32485cb",
+  "at": "2026-10-26T08:47:54.934Z",
+  "runs": [
+    {
+      "id": 40286635657,
+      "status": "completed",
+      "conclusion": "cancelled",
+      "application": "success",
+      "postgres": "success",
+      "browser": "cancelled",
+      "jobStarted": "2026-10-26T07:34:46Z",
+      "testStepStarted": "2026-10-26T08:09:07Z",
+      "jobCompleted": "2026-10-26T08:20:07Z"
+    },
+    {
+      "id": 40286635434,
+      "status": "completed",
+      "conclusion": "cancelled",
+      "application": "success",
+      "postgres": "success",
+      "browser": "cancelled",
+      "jobStarted": "2026-10-26T07:34:46Z",
+      "testStepStarted": "2026-10-26T08:09:47Z",
+      "jobCompleted": "2026-10-26T08:20:08Z"
+    }
+  ],
+  "observation": "First original log explicitly reports62.8MB fetched in23min51s at43.9kB/s from azure.archive.ubuntu.com. Remaining system/browser setup delayed test start until34minutes of a45-minute job. Browser suite was interrupted before completion, not counted as passed.",
+  "agentCancellation": false,
+  "plannedFix": "Use official Ubuntu HTTPS mirror and bounded dependency preparation in next candidate, retaining all dependencies and business tests; real CI confirmation pending.",
+  "files": [
+    {
+      "name": "40286635657-browser-original.log.gz",
+      "bytes": 27355,
+      "sha256": "14c0753ef36f0e0b6264f9d6701a062e48e234c1cdded8de8e205101b3258bbc",
+      "originalBytes": 130851,
+      "originalSha256": "8297a1035c0bb35091dc174c392309f4f963d1871c768902fc492d4aa552b958"
+    },
+    {
+      "name": "40286635434-browser-original.log.gz",
+      "bytes": 27597,
+      "sha256": "a4c072b2897042c17f4889a80f2874db0c0e15e4597a1ad8060ff1e3da988d63",
+      "originalBytes": 131122,
+      "originalSha256": "1f2dcf8c82a99994862ef3338f9fb400bb5b9fb578f6176430a3fb7339c7899d"
+    }
+  ],
+  "limits": [
+    "Does not invalidate successful exact09bdeee candidate CI or production120 checks",
+    "Does not prove archive40a browser checks completed",
+    "No cancelled jobs were restarted or cancelled by this action"
+  ]
+}

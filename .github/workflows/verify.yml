@@ -128,7 +128,12 @@ jobs:
       - name: Prepare configuration
         run: cp .env.example .env
       - run: npm ci
+      - name: Configure official Ubuntu package mirror for browser verification
+        run: |
+          sudo install -m 0644 .github/apt-ci.conf /etc/apt/apt.conf.d/99study-agent-ci
+          sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
       - name: Install attachment audio decoder
+        timeout-minutes: 8
         run: |
           if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
             sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
@@ -137,6 +142,9 @@ jobs:
           ffmpeg -version
           ffprobe -version
       - name: Install browser runtime
+        timeout-minutes: 10
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: '60000'
         run: npx playwright install --with-deps chromium
       - name: Browser product journey at phone, tablet and desktop widths
         run: npm run test:e2e

@@ -5,6 +5,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { browserEvidence } from './evidence';
 import { join } from 'node:path';
+import { installNarrationTiming } from './whiteboard-timing';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107'), base = '/learning/studio/topic-whiteboards';
 const figureBase = '/learning/studio/topic-whiteboard-visuals';
@@ -52,6 +53,23 @@ async function figure(page: Page, requirements = '以两个有交集的圆说明
   await expect(pane.getByRole('button', { name: '生成参考图', exact: true })).toBeEnabled();
   await pane.getByRole('button', { name: '生成参考图', exact: true }).click(); return pane;
 }
+
+test('continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity', async ({ page }) => {
+  const timing = await installNarrationTiming(page); await fixture(page); await generate(page); await ready(page);
+  await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click();
+  await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
+  const player = page.getByRole('dialog', { name: '白板视频' });
+  try {
+    await player.getByRole('button', { name: '播放', exact: true }).click();
+    await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing'), { timeout: 10000 }).toBe(true);
+    await player.getByRole('button', { name: '暂停', exact: true }).click(); const result = await timing.save('adult-topic-transfer');
+    const ended = result.audio.find(row => row.index === 0 && row.event === 'ended')!, next = result.audio.find(row => row.index === 1 && row.event === 'playing')!;
+    expect(result.requests[1].startedAt).toBeLessThan(ended.at - 100);
+    expect(next.at - ended.at).toBeLessThan(result.delayMs * .75); expect(next.currentTime).toBeLessThan(.15);
+    expect(result.requests.filter(row => row.unitId === result.requests[1].unitId)).toHaveLength(1);
+    await expect(player.locator('.wb-current-sentence')).toContainText('保留未知条件');
+  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+});
 
 async function formulaBoard(page: Page, expressions: string[], withFigure = false) {
   const f = await fixture(page); await generate(page); await ready(page);

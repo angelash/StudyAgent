@@ -17,7 +17,7 @@ export async function whiteboardAudio(board: PlayableWhiteboard, unit: Whiteboar
     headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) },
     body: JSON.stringify({ ...(voice ? { voice } : {}), presentationVersion: WHITEBOARD_SPEECH_VERSION,
       fingerprint: board.fingerprint, unitId: unit.id }) });
-  if ([401, 403].includes(response.status)) throw new WhiteboardAccessError('当前访问权限已变化，请重新确认身份。');
+  if ([401, 403, 404].includes(response.status)) throw new WhiteboardAccessError('当前访问权限已变化，请重新确认身份。');
   if (!response.ok) throw new Error('当前句语音未能准备好，请重试或选择文字阅读。');
   if (response.headers.get('X-Whiteboard-Presentation') !== WHITEBOARD_SPEECH_VERSION ||
     response.headers.get('X-Whiteboard-Fingerprint') !== board.fingerprint || response.headers.get('X-Whiteboard-Unit') !== unit.id)
