@@ -156,8 +156,11 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     const current = () => generation.current === revision && !request.signal.aborted;
     const advance = () => {
       if (!current()) return;
-      if (unitIndex + 1 < units.length) { setProgress(0); setUnitIndex(unitIndex + 1); }
-      else { setProgress(1); setPlaying(false); }
+      // Retire old ticks now: effect cleanup may run after an already-queued frame.
+      generation.current++; request.abort(); if (frame !== null) cancelAnimationFrame(frame);
+      resumeAudioTime.current = null;
+      if (unitIndex + 1 < units.length) { progressRef.current = 0; setProgress(0); setUnitIndex(unitIndex + 1); }
+      else { progressRef.current = 1; setProgress(1); setPlaying(false); }
     };
     const key = unit.id + ':' + voice;
     if (mode === 'text' || resource.current?.key !== key) releaseAudio();
@@ -208,6 +211,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
 
   function go(index: number, fraction = 0) {
     generation.current++; setPlaying(false); releaseAudio(); resumeAudioTime.current = null;
+    progressRef.current = fraction;
     setUnitIndex(Math.max(0, Math.min(units.length - 1, index))); setProgress(fraction);
   }
   function pauseForFigure() {

@@ -7,7 +7,7 @@ import { join } from 'node:path';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107');
 const credential = 'Synthetic-whiteboard-only-20261026';
-async function fixture(page: Page) {
+async function fixture(page: Page, endedBoundary = false) {
   const principal = 'whiteboard-' + crypto.randomUUID() + '@local.test';
   const bucket = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + bucket[0] + '.' + bucket[1];
   await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
@@ -30,10 +30,30 @@ async function fixture(page: Page) {
       { id: 'fixture-a', label: '合成音轨 A' }, { id: 'fixture-delay', label: '受控延迟音轨' }, { id: 'fixture-fail', label: '受控失败音轨' },
     ] }; await route.fulfill({ response, json: payload });
   });
-  await page.addInitScript(() => {
+  await page.addInitScript(({ endedBoundary }) => {
     const NativeAudio = window.Audio; (window as any).__whiteboardAudio = [];
-    (window as any).Audio = function (src?: string) { const audio = new NativeAudio(src); (window as any).__whiteboardAudio.push(audio); return audio; };
-  });
+    const pending = new Map<number, FrameRequestCallback>();
+    (window as any).__whiteboardStarts = []; (window as any).__whiteboardBoundaryTicks = 0;
+    if (endedBoundary) {
+      const raf = requestAnimationFrame.bind(window), cancel = cancelAnimationFrame.bind(window);
+      window.requestAnimationFrame = callback => { const id = raf(time => { pending.delete(id); callback(time); }); pending.set(id, callback); return id; };
+      window.cancelAnimationFrame = id => { pending.delete(id); cancel(id); };
+    }
+    (window as any).Audio = function (src?: string) {
+      const audio = new NativeAudio(src), index = (window as any).__whiteboardAudio.length; (window as any).__whiteboardAudio.push(audio);
+      if (endedBoundary) {
+        let onEnded: ((this: HTMLAudioElement, event: Event) => unknown) | null = null;
+        Object.defineProperty(audio, 'onended', { configurable: true, get: () => onEnded, set: value => { onEnded = value; } });
+        audio.addEventListener('playing', () => (window as any).__whiteboardStarts.push({ index, currentTime: audio.currentTime, duration: audio.duration }));
+        audio.addEventListener('ended', event => {
+          const queued = [...pending.values()], handler = onEnded; handler?.call(audio, event);
+          // Force an already-queued old progress frame at the ended/React cleanup boundary.
+          if (index === 0 && handler) { (window as any).__whiteboardBoundaryTicks += queued.length; queued.forEach(callback => callback(performance.now())); }
+        });
+      }
+      return audio;
+    };
+  }, { endedBoundary });
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
   const href = '/studio?' + new URLSearchParams({ student: studentId, subject: 'math', whiteboard: board.id });
@@ -70,6 +90,16 @@ test('real WAV ended drives cloud playback, pause retains audio time and late en
   await expect(f.current).toContainText('再合并份数');
   await page.getByRole('button', { name: '关闭白板' }).click();
   expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
+});
+
+test('ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end', async ({ page }) => {
+  const f = await fixture(page, true); await page.getByRole('button', { name: '播放', exact: true }).click();
+  await expect.poll(() => page.evaluate(() => (window as any).__whiteboardStarts.some((row: any) => row.index === 1))).toBe(true);
+  const starts = await page.evaluate(() => (window as any).__whiteboardStarts as Array<{ index: number; currentTime: number; duration: number }>);
+  expect(starts.find(row => row.index === 1)!.currentTime).toBeLessThan(.15);
+  expect(await page.evaluate(() => (window as any).__whiteboardBoundaryTicks)).toBeGreaterThan(0);
+  await page.getByRole('button', { name: '暂停', exact: true }).click(); await expect(f.current).toContainText('再合并份数');
+  await page.evaluate(() => (window as any).__whiteboardAudio[0].dispatchEvent(new Event('ended'))); await expect(f.current).toContainText('再合并份数');
 });
 
 test('voice switch fences delayed requests and an audio failure offers explicit retry or text reading', async ({ page }) => {
