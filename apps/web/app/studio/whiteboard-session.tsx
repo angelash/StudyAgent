@@ -16,6 +16,17 @@ import './original-teaching-shell.generated.css';
 import './original-teaching-shell.css';
 import { WhiteboardSettings } from './whiteboard-settings';
 import { ClassroomIcon } from './classroom/icons';
+import { ClassroomToolTour, type ToolTourStep } from './classroom/tool-tour';
+
+const whiteboardToolSteps: ToolTourStep[] = [
+  { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
+  { anchor: 'zoom', location: '顶部工具栏', title: '缩放与移动', text: '用加减按钮缩放，也可以拖动白板或用方向键移动。点击百分比回到当前讲解位置。' },
+  { anchor: 'settings', location: '顶部工具栏', title: '音色与显示', text: '比较音色样本，选择语速、板书字体和点阵。关闭设置后由你继续讲解。' },
+  { anchor: 'sound', location: '左下角', title: '收听声音', text: '这里可以静音或恢复收听。导出的视频按所选阅读方式保留声轨，不随收听静音改变。' },
+  { anchor: 'playback', location: '播放控件', title: '暂停与继续', text: '播放跟随当前完整句，暂停保留原位置。也可以用前后句按钮按自己的节奏阅读。' },
+  { anchor: 'history', location: '讲稿与笔记', title: '定位与回看', text: '点击讲稿中的一句回到原位置。完整要点、图表和来源可以在这里核对，回看不表示已经掌握。' },
+  { anchor: 'notes', location: '导出控件', title: '带走原讲解', text: '可以导出整份白板视频与逐句字幕。声音和字幕使用相同时间表，取消时不会下载半成品。' },
+];
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
@@ -25,6 +36,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const units = presentation.units;
   const [boardFont, setBoardFont] = React.useState<OriginalBoardFont>('handwriting'), [dots, setDots] = React.useState(true);
   const [settings, setSettings] = React.useState(false), [muted, setMuted] = React.useState(false), mutedRef = React.useRef(muted); mutedRef.current = muted;
+  const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -300,16 +312,17 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     }
   }
   function cancelExport() { exportRequest.current?.abort(); exportRequest.current = null; setExporting(null); setNotice('已取消导出，没有下载半成品。'); render(); }
+  function finishTour() { setTour(false); dialog.current?.scrollTo({ top: tourOrigin.current }); requestAnimationFrame(() => dialog.current?.querySelector<HTMLButtonElement>('[aria-label="白板设置"]')?.focus()); }
 
   return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily }} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
     <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={onClose}>×</button>
-      <div className="whiteboard-session-title-pill"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
-    <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill">
+      <div className="whiteboard-session-title-pill" data-classroom-tour="connection"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
+    <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill" data-classroom-tour="zoom">
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
       <button className="whiteboard-zoom-readout" aria-label="重置白板视图" onClick={() => setCamera({ zoom: 1, x: 0, y: 0, follow: true })}>{Math.round(camera.zoom * 100)}%</button>
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom >= 2} aria-label="放大白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.min(2, value.zoom + .1) }))}>+</button></div>
-      <button className="whiteboard-icon-btn" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button></nav>
-    <button className="whiteboard-icon-btn hk-whiteboard-mute" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
+      <button type="button" className="whiteboard-icon-btn" data-classroom-tour="settings" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button></nav>
+    <button type="button" className="whiteboard-icon-btn hk-whiteboard-mute" data-classroom-tour="sound" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
     {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
     <div className="wb-reading-layout"><main className="whiteboard-main"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}
       onKeyDown={event => { if (exporting !== null || !['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const current = cameraRef.current; setCamera({ ...current, follow: false, x: current.x + (event.key === 'ArrowLeft' ? -100 : event.key === 'ArrowRight' ? 100 : 0), y: current.y + (event.key === 'ArrowUp' ? -100 : event.key === 'ArrowDown' ? 100 : 0) }); }}
@@ -327,7 +340,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         }} /></label>
       <div className="sa-whiteboard-controls">
         <button disabled={exporting !== null || unitIndex <= 0} aria-label="上一句" onClick={() => go(unitIndex - 1)}>←</button>
-        <button className="sa-whiteboard-play" disabled={exporting !== null || !unit || !restored || !fonts.ready} aria-label={playing ? '暂停' : '播放'} onClick={() => {
+        <button className="sa-whiteboard-play" data-classroom-tour="playback" disabled={exporting !== null || !unit || !restored || !fonts.ready} aria-label={playing ? '暂停' : '播放'} onClick={() => {
           if (playing) { pausePlayback(); return; }
           if (!playing && progress >= 1) { if (unitIndex === units.length - 1) setUnitIndex(0); setProgress(0); releaseAudio(); resumeAudioTime.current = null; }
           setPlaying(true);
@@ -343,7 +356,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
           {WHITEBOARD_SPEEDS.map(value => <option key={value} value={value}>{value}×</option>)}</select>
         <label className="hk-font-choice"><span className="sr-only">板书字体</span><select aria-label="板书字体" value={boardFont} disabled={exporting !== null} onChange={event => { pausePlayback(); setBoardFont(event.target.value as OriginalBoardFont); }}><option value="handwriting">手写板书</option><option value="standard">标准板书</option></select></label>
         <label className="hk-dot-choice"><input type="checkbox" checked={dots} disabled={exporting !== null} onChange={event => setDots(event.target.checked)}/>点阵</label>
-        <button disabled={exporting !== null || !unit || !imagesReady || !fonts.ready} title="按当前字体与点阵，自动跟随已讲板书导出" onClick={() => void exportFile(true)}>导出视频</button>
+        <button data-classroom-tour="notes" disabled={exporting !== null || !unit || !imagesReady || !fonts.ready} title="按当前字体与点阵，自动跟随已讲板书导出；云语音模式保留声音，不受收听静音影响" onClick={() => void exportFile(true)}>导出视频</button>
         <button disabled={exporting !== null || !unit} onClick={() => {
           if (preparedTimeline) saveBlob(new Blob([whiteboardSrt(preparedTimeline)], { type: 'application/x-subrip;charset=utf-8' }), '.srt');
           else void exportFile(false);
@@ -354,7 +367,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <div className="sa-scene-strip">{board.scenes.map((item, index) => <button key={item.id} disabled={exporting !== null}
         data-active={item.id === scene?.id} onClick={() => { const next = units.findIndex(unit => unit.sceneId === item.id); if (next >= 0) go(next); }}>
         <span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}</div>
-    </main><aside className="wb-reading-notes whiteboard-chat-inner" aria-label="完整讲稿与要点">
+    </main><aside className="wb-reading-notes whiteboard-chat-inner" data-classroom-tour="history" aria-label="完整讲稿与要点">
       <h3>逐句讲稿</h3><p>点击一句定位。观看与续播不计作掌握。</p>
       <ol>{units.map((item, index) => <li key={item.id}><button aria-current={index === unitIndex ? 'step' : undefined}
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
@@ -366,6 +379,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     </aside></div>
     {settings && <WhiteboardSettings context={ownerId + ':' + board.id + ':' + board.fingerprint} speech={speech} voice={voice} speed={speed} font={boardFont} dots={dots} muted={muted}
       onVoice={value => { generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(value); setNotice('音色已切换，下次播放从当前句开头开始。'); }}
-      onSpeed={setSpeed} onFont={value => { pausePlayback(); setBoardFont(value); }} onDots={setDots} beforePreview={pausePlayback} onClose={() => setSettings(false)}/>}
+      onSpeed={setSpeed} onFont={value => { pausePlayback(); setBoardFont(value); }} onDots={setDots} beforePreview={pausePlayback} onClose={() => setSettings(false)} onReplayTour={() => { tourOrigin.current = dialog.current?.scrollTop ?? 0; setTour(true); }}/>}
+    {tour && <ClassroomToolTour onClose={finishTour} steps={whiteboardToolSteps} scope={dialog.current} label="白板工具导览" returnLabel="返回白板" welcome="了解白板工具" introduction="用七个实际控件，按自己的节奏阅读、听讲与回顾。" completion="导览结束。原讲解位置和笔记保持，准备好后再继续。" onStep={index => { if (index === null) dialog.current?.scrollTo({ top: tourOrigin.current }); else dialog.current?.querySelector<HTMLElement>('[data-classroom-tour="' + whiteboardToolSteps[index].anchor + '"]')?.scrollIntoView({ block: 'center', inline: 'nearest' }); }}/>}
   </div>;
 }

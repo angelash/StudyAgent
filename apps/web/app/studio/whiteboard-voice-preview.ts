@@ -16,7 +16,7 @@ export function useWhiteboardVoicePreview({ context, visible, speed, muted, befo
     if (sample.url) URL.revokeObjectURL(sample.url);
     if (current.current === sample) { current.current = null; if (mounted.current) setActive(''); }
   }
-  function stop() { if (current.current) release(current.current); }
+  function stop() { if (current.current) release(current.current); if (mounted.current) setNotice(''); }
   async function toggle(voiceId: string) {
     if (current.current?.voiceId === voiceId) { stop(); return; }
     stop(); setNotice('');

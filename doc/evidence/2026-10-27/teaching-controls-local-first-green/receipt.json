@@ -1,0 +1,130 @@
+{
+  "at": "2026-10-26T20:54:12.913Z",
+  "status": "six-rate-and-original-settings-local-first-green",
+  "deployed": false,
+  "overallProductComplete": false,
+  "applicationRevision": "aef1553",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T20:47:25.364Z",
+      "duration": 50485.769,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 10,
+    "originalAttempts": 10,
+    "retries": 0
+  },
+  "timelineUnitChecks": {
+    "passed": 6,
+    "failed": 0
+  },
+  "actualNeutralClips": 6,
+  "actualRateRecovery": 0.5,
+  "actualVideoRate": 2,
+  "remaining": [
+    "Single original backdrop, real replay tour and all remaining controls/layout.",
+    "Final complete application/browser/CI and main delivery.",
+    "Full129/130 and M1-M7 goal remain incomplete."
+  ],
+  "files": [
+    {
+      "source": "data/qa/whiteboard-settings-browser.json",
+      "file": "data__qa__whiteboard-settings-browser.json.gz",
+      "originalSha256": "7e547dbc9a3678999eae4d8d1e7ae0e8a8c817eed4647dccddfb9d6be21c44ca",
+      "sha256": "7a188ca4e92a14de8480ea7bc7e554929b665d173c2b7e3e119e9e5751b0269b"
+    },
+    {
+      "source": "data/qa/teaching-controls-settings-fonts-green.log",
+      "file": "data__qa__teaching-controls-settings-fonts-green.log.gz",
+      "originalSha256": "92f2a4c4bc47b190ed90ce2b74158baa43e36b43e6a2b6a83129d1d9b0ba1de8",
+      "sha256": "5c8358eadf11fcbe854ecae800d8529a38e4635c846b1857abcd8fffc0d7931d"
+    },
+    {
+      "source": "data/qa/teaching-controls-rates-green.json",
+      "file": "data__qa__teaching-controls-rates-green.json.gz",
+      "originalSha256": "4e616020b9a8c15164a7f0bcb7071b41f34fb6e446354ca69092dc0d3d3eea4e",
+      "sha256": "361506043eec8de2763dbb7cb65d29591e08238d524f1494dde988c80d1757e9"
+    },
+    {
+      "source": "data/qa/teaching-controls-rates-green.log",
+      "file": "data__qa__teaching-controls-rates-green.log.gz",
+      "originalSha256": "868ee239329973ed59a938890f4065e8e6abc118fb260c39d7ef5ab5d929b5c8",
+      "sha256": "d769c3274025c5b830e7abcb46fa6fc65650211f0dc20ad4b5f63b0b282af0b2"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-settings.tsx",
+      "file": "apps__web__app__studio__whiteboard-settings.tsx.gz",
+      "originalSha256": "75b7e5ad4a68dd987c5fbaa1e16cee5d71677fab407f88d5198776cc2fb6e3fa",
+      "sha256": "ae1134c4ff3f174da0685bed2171eff63f235c1b30c354bffe1b27b68c5c89c8"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-voice-preview.ts",
+      "file": "apps__web__app__studio__whiteboard-voice-preview.ts.gz",
+      "originalSha256": "b5d259bf674203bec7798d4af1b242b62618830252fbba1d8190477ff6aec314",
+      "sha256": "111b609c41f2dfcafd0029122e28f13d3e8e9a5a14ba9699d649af929d7b7e74"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "apps__web__app__studio__whiteboard-session.tsx.gz",
+      "originalSha256": "f10f9fa8cced8815e36d4c7aa58f5dd7905bcaa76b4e696176f6bf85a528d90a",
+      "sha256": "d7545d6aab9abe1d395575aa3866f3cb595d2f8a881242416b1eb0e1700e5bc0"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.css",
+      "file": "apps__web__app__studio__original-teaching-shell.css.gz",
+      "originalSha256": "40f848d93f71591d8ffacc0eb3d1ba96970986c5d2c28ed8af24a1f2f09f9cc2",
+      "sha256": "783ca02d52694048d8b05697f6b76fcbe82c982ce0f20293a73a1e9badeb6ad6"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-speech.ts",
+      "file": "packages__contracts__src__whiteboard-speech.ts.gz",
+      "originalSha256": "8f88d3c1f6231d4eeb9ccc7d32870366f24f6166864d49d828266b5bf665b588",
+      "sha256": "9a6776a8593324372d38ec5febe336b6aab1efa7a6751dbf34d676c2afd90fb6"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+      "file": "apps__api__src__modules__learning__whiteboard-speech.test.ts.gz",
+      "originalSha256": "bf9d51f5f437c9a0d0c79698b29ebbac92b2cdcff31aeed933ffb9ca45ef28a4",
+      "sha256": "e4d775b026324c506bd64029c57911dd7ae981d1345f7bde35b05b7f3548aa3b"
+    },
+    {
+      "source": "tests/e2e/whiteboard-settings.spec.ts",
+      "file": "tests__e2e__whiteboard-settings.spec.ts.gz",
+      "originalSha256": "a8e3cef35b1d893cd44ae004b02f98478fc20cd8402688c55b8eb1e943224f1d",
+      "sha256": "68b960c31fe5492124a300fcbf5e75860b2824e5b73ec2cbc136205149000ad6"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-settings/actual-neutral-clip-decode.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__actual-neutral-clip-decode.json.gz",
+      "originalSha256": "c08bd1d241344a7947bb80b37ebe4bff5f73115a8094c9f1ee21cad79da278de",
+      "sha256": "f2809235be6337c901d15be60254676b2775b967097f2f6e35ee0e51d117f1a5"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-settings/double-rate-probe.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate-probe.json.gz",
+      "originalSha256": "3b06a2ce8e8ba0473559d0219c6c9b34669e5f67035b51c51e921e271bcb9218",
+      "sha256": "1f9e665f09803560dd2bb61c3ec8ef4f0274bd39abb18aa57df353854f5beac5"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-settings/double-rate.srt",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.srt.gz",
+      "originalSha256": "b7f29469dbbf2658df2eb248e1c2d27fa0aaa9123df5bddf4979d0604cc680d9",
+      "sha256": "f25fd8eaa1d08d331706d0492738cc0a911b6821bc8fb84a26b1131d0f785b78"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-settings/double-rate.webm",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.webm.gz",
+      "originalSha256": "fdf7a95e4d95e04818b0cabe03fa252c96165f77dcf12f8c5777035ce6c9962b",
+      "sha256": "34a79b94999208d7b71623c459496a8f531f5770fc183cc3a15cf430b4bbd441"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-settings/original-settings-1280.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__original-settings-1280.png.gz",
+      "originalSha256": "ec30bbfe0a5b1ece66ce48bd295f3c4485a47d62cb0837e807352a9df85fa9f4",
+      "sha256": "11e3fd5e1465cabae8b897699e734cfb52817abbe27318c2a7ba9e18391beee8"
+    }
+  ]
+}

@@ -13,6 +13,8 @@
 .hk-teaching.hk-teaching .voice-modal-option[aria-disabled=true]{cursor:default}
 .hk-teaching.hk-teaching .voice-modal-container{--course-board-font:Virgil,Xiaolai,sans-serif}
 .hk-teaching.hk-teaching .voice-modal-container .voice-modal-header{position:static;width:auto;margin:0;padding:0;border:0;justify-content:space-between;align-items:center}
+.hk-teaching.hk-teaching .ws-dialog-layer:has(.voice-modal-overlay),.hk-teaching.hk-teaching .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
+.hk-teaching.hk-teaching .cl-guided-tour{font-family:var(--font-satoshi-regular)}
 .hk-teaching.hk-teaching .hk-extra-voice{display:flex;align-items:center;gap:8px;font-size:12px;color:#737373}
 .hk-teaching.hk-teaching .hk-extra-voice select{min-width:0;max-width:70%;border:1px solid #ececef;border-radius:8px;background:#fff;padding:6px;color:#374151;font-size:12px}
 .hk-teaching.hk-teaching .wb-reading-layout{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:0;padding:0;margin:0;width:100%;height:100%;max-height:none;overflow:hidden}

@@ -1,0 +1,193 @@
+{
+  "at": "2026-10-26T21:07:04.804Z",
+  "status": "original-settings-tour-local-green",
+  "deployed": false,
+  "overallProductComplete": false,
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T21:04:38.342Z",
+      "duration": 76281.564,
+      "expected": 17,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 17,
+    "originalAttempts": 17,
+    "retries": 0
+  },
+  "sourceSha256": {
+    "apps/web/app/studio/classroom/tool-tour.tsx": "1bce218cf6daf1d0e0679e7059d0fde2a6ce13e19c934822854daed48d534ed5",
+    "apps/web/app/studio/original-teaching-shell.css": "2e78bcea9cacb77e46bf018d84e9304214c37ef826289512ae86742153e6b2b3",
+    "apps/web/app/studio/whiteboard-session.tsx": "bbea0795ef99077cdc520e275b5e7e179b4b3d29516bf6f413a5b077dba663b6",
+    "apps/web/app/studio/whiteboard-voice-preview.ts": "0f4cc02fc63e7ae59b8f24761400fc534e2e503684b306466f2b301e4245c898",
+    "tests/e2e/whiteboard-settings.spec.ts": "d981b8f8ef9f85574613bfb83a69c93c7bc790e48f65ddae47ed50ad6f8f80a3"
+  },
+  "files": [
+    {
+      "source": "apps/web/app/studio/classroom/tool-tour.tsx",
+      "file": "apps__web__app__studio__classroom__tool-tour.tsx.gz",
+      "bytes": 7842,
+      "originalSha256": "1bce218cf6daf1d0e0679e7059d0fde2a6ce13e19c934822854daed48d534ed5",
+      "sha256": "182bd308f49bd5fbcdc4f6e71646a8023cea54e199188cb17fe20a3895a3699d"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.css",
+      "file": "apps__web__app__studio__original-teaching-shell.css.gz",
+      "bytes": 9588,
+      "originalSha256": "2e78bcea9cacb77e46bf018d84e9304214c37ef826289512ae86742153e6b2b3",
+      "sha256": "9b2dc2f723bf42ca64fa519b65cb6dfb3845c9c61857dc5f029be88f973acc51"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "apps__web__app__studio__whiteboard-session.tsx.gz",
+      "bytes": 35739,
+      "originalSha256": "bbea0795ef99077cdc520e275b5e7e179b4b3d29516bf6f413a5b077dba663b6",
+      "sha256": "51890987c5d7d2888fbed0b700eabdca41456b30ad9126435f63b4ff6d1128d0"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-voice-preview.ts",
+      "file": "apps__web__app__studio__whiteboard-voice-preview.ts.gz",
+      "bytes": 5385,
+      "originalSha256": "0f4cc02fc63e7ae59b8f24761400fc534e2e503684b306466f2b301e4245c898",
+      "sha256": "f32f6941fd9a6476883d578630035a42956058fdd7ee0a49e212a65f3b92c084"
+    },
+    {
+      "source": "tests/e2e/whiteboard-settings.spec.ts",
+      "file": "tests__e2e__whiteboard-settings.spec.ts.gz",
+      "bytes": 12477,
+      "originalSha256": "d981b8f8ef9f85574613bfb83a69c93c7bc790e48f65ddae47ed50ad6f8f80a3",
+      "sha256": "f56daef96be0834c80ad5e5b68c05d812c29ac436521255f3512836c00a4ea2d"
+    },
+    {
+      "source": "data/qa/whiteboard-settings-browser.json",
+      "file": "browser-original.json.gz",
+      "bytes": 22030,
+      "originalSha256": "45217b679d2b09702c2b3bef7cc9714595721ec39adfc347cc2988468c1fa5a1",
+      "sha256": "f0cdde55fe88cfae2bc58a46a325eb394c91caa7af9fbc69de7d5f1cc3bd968c"
+    },
+    {
+      "source": "data/qa/teaching-controls-tour-browser.log",
+      "file": "browser-original.log.gz",
+      "bytes": 3427,
+      "originalSha256": "366ea803763647290b6fb97110e4fb8ce52f69b4a01e962684c0ceeddff3a71e",
+      "sha256": "1b0c07cb286d3c6a64b91d1f470be36c7c98a51a76508f2c77ba1357fc00fcd3"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\actual-neutral-clip-decode.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__actual-neutral-clip-decode.json.gz",
+      "bytes": 628,
+      "originalSha256": "c08bd1d241344a7947bb80b37ebe4bff5f73115a8094c9f1ee21cad79da278de",
+      "sha256": "f2809235be6337c901d15be60254676b2775b967097f2f6e35ee0e51d117f1a5"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate-probe.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate-probe.json.gz",
+      "bytes": 2999,
+      "originalSha256": "f9ffc0fb223e58c12b224869fe58e46602cfe7c01b97e71d7180447bea3fd204",
+      "sha256": "f1331d0ba25496cb5bf6dfd618e743c8b50e06c84bfc9a81e78814daf06d3d32"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate.srt",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.srt.gz",
+      "bytes": 297,
+      "originalSha256": "b7f29469dbbf2658df2eb248e1c2d27fa0aaa9123df5bddf4979d0604cc680d9",
+      "sha256": "f25fd8eaa1d08d331706d0492738cc0a911b6821bc8fb84a26b1131d0f785b78"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate.webm",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.webm.gz",
+      "bytes": 184279,
+      "originalSha256": "b1812597acce98df0958e93bc3c7e95815d7ecef3fdb5da713b7d33c89c15236",
+      "sha256": "416559e1be036b1e08dab574803c4d856c33a07e90b25d1ff83f28253c8bd59b"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\original-settings-1280.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__original-settings-1280.png.gz",
+      "bytes": 140127,
+      "originalSha256": "14f85b44251d4e8b113318fcec3c1aeb12e162c39dd829cbe742120dba93bb80",
+      "sha256": "b4ccdf24ec6380d254b06e65d86b7927e8706b1822cc0e9843513fc11d2608f8"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-board-fonts.png",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-board-fonts.png.gz",
+      "bytes": 120988,
+      "originalSha256": "b864561e1fc430149c5580880ce3a7facfae00a66964ef235bc1276addc422b7",
+      "sha256": "3960a10ea1331f41d85951c9a687e3dee9349beed5a0f45dfd3e498e106c3db0"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-loaded-fonts.json",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-loaded-fonts.json.gz",
+      "bytes": 3996,
+      "originalSha256": "0f0cbbae6227d48105ed80d87435ca232531e0f8eaa838b6034ae7a884cc7ed4",
+      "sha256": "5d8c68e4ba5e98f00c5f69a6a7322578e9a94766cd33600317891866a219e5ae"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\cumulative-second-scene.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__cumulative-second-scene.png.gz",
+      "bytes": 127672,
+      "originalSha256": "5511d5b0a2457dbfc85e1c58799b0e2a1c71f29fec9f596f406d9c78fcf59e60",
+      "sha256": "869ad20f9ac10ee02b57364dcb52f1039340d2a76e687560606a461ceef31407"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-1280.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-1280.png.gz",
+      "bytes": 118507,
+      "originalSha256": "f09cb15df7c48afb6f9e3b9e9c82e25b710609f099893f4e48ea1eb36fc0d19e",
+      "sha256": "22c332b470869b5a04d18d33506f97389bb7acba0f348e39d2ce648ce01875d6"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-390.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-390.png.gz",
+      "bytes": 45338,
+      "originalSha256": "a99701b8687e4acb50580f48d2f35578c2f30897cc327b33dce310135810e6ad",
+      "sha256": "f3c8bebd0f1ff69657b55a934d566a4e16ed1eb92a6a742a9a946fc2f567fd4f"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-768.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-768.png.gz",
+      "bytes": 103089,
+      "originalSha256": "5a84d8a84b3f0a1b99a296f82372910b263503b957297997e0d16498bb9cbde6",
+      "sha256": "8934496191b52da88024c28d07ec11d9a16d85b6c31518f670eb0843778f1cb5"
+    },
+    {
+      "source": "F:\\workspace\\github\\StudyAgent\\data\\research\\hyperknow-public\\2026-10-27-controls\\manifest.json",
+      "file": "public-controls-manifest.json.gz",
+      "bytes": 1278,
+      "originalSha256": "fc99557824ca5e3a6656adf7291c46d03bdc3a3105424d3b527a9b6cffe23fe6",
+      "sha256": "333a1e537ccff11c9681cdd7fe64afd6c05c1bec76fd0ab70acfff7116e59bb5"
+    },
+    {
+      "source": "F:\\workspace\\github\\StudyAgent\\data\\research\\hyperknow-public\\2026-10-27-controls\\voicePrefs-EiaQalhQ.js",
+      "file": "public-voicePrefs-EiaQalhQ.js.gz",
+      "bytes": 1103,
+      "originalSha256": "f5bd1479924fe2ac7fa1510e988c3757cabbbb6bd56826ba534fca9ed8fe336c",
+      "sha256": "6dd865f26cd3106a8bef530ca4c7c4eeb050ede33d2acc7cb571a5a01c99a322"
+    },
+    {
+      "source": "F:\\workspace\\github\\StudyAgent\\data\\research\\hyperknow-public\\2026-10-27-controls\\VoiceSettingsModal-BQ9sfs0z.js",
+      "file": "public-VoiceSettingsModal-BQ9sfs0z.js.gz",
+      "bytes": 9761,
+      "originalSha256": "e50dedaeed570f88e98053b5ff88995304bffd3e1e06b365afb66d038690a069",
+      "sha256": "afd42d32471cbe54bf86f4c21917b195b559dfb4669976b6394c0c45e92e8840"
+    },
+    {
+      "source": "F:\\workspace\\github\\StudyAgent\\data\\research\\hyperknow-public\\2026-10-27-controls\\BoardZoomControl-DRJS0_72.js",
+      "file": "public-BoardZoomControl-DRJS0_72.js.gz",
+      "bytes": 8213,
+      "originalSha256": "a15e3eb83a08d9708802a210c3bcddbf11457475bc56a43ee5b7e2e17c71bff6",
+      "sha256": "bc5bd81fe37d0084c328ca3482a96edf14da484edc3af569067adc15bd9c93b3"
+    }
+  ],
+  "scope": [
+    "Six actual neutral MiniMax samples; corruption/retry/close/late callback fencing.",
+    "Six speed values; real half-rate playback and persisted position; real double-rate video and subtitle timing.",
+    "Seven visible anchored tools at390/1280; original unit/focus/no learning writes; existing classroom tool regressions.",
+    "Original local fonts and app-owned math input fonts verified."
+  ],
+  "remaining": [
+    "Resizable and collapsible panel, mobile reading entry, original full toolbar and private-link/PNG.",
+    "Full exact-source API/browser/remote CI and production delivery.",
+    "Original manual geometry, actual frozen whiteboard AI questions, all shells/reference states and full M1-M7."
+  ]
+}

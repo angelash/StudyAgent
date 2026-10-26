@@ -32,6 +32,8 @@ test('original settings: six actual neutral MP3s decode, previews preserve selec
     await expect(f.player.getByRole('combobox',{name:'旁白音色',exact:true})).toHaveValue(selected);await expect(f.current).toHaveAttribute('data-unit-id',unit!);
   }
   await settings.getByRole('radio',{name:'Calm',exact:true}).click();await expect(f.player.getByRole('combobox',{name:'旁白音色',exact:true})).toHaveValue(manifest.voices.find((voice:any)=>voice.preset==='calm').voiceId);
+  await settings.getByRole('button',{name:'停止试听：'+manifest.voices.find((voice:any)=>voice.preset==='calm').providerName,exact:true}).click();
+  await settings.evaluate(async element=>{await Promise.allSettled(element.getAnimations({subtree:true}).filter(animation=>animation.effect?.getTiming().iterations!==Infinity).map(animation=>animation.finished));});
   await page.screenshot({path:join(browserEvidence('whiteboard-settings'),'original-settings-1280.png')});
   await page.keyboard.press('Escape');await expect(settings).toHaveCount(0);await expect(f.player).toBeVisible();expect(await page.evaluate(()=>(window as any).settingsAudio.every((audio:HTMLAudioElement)=>audio.paused))).toBe(true);expect(writes).toEqual([]);
   await expect(f.player.getByRole('button',{name:'播放',exact:true})).toBeEnabled();writeFileSync(join(browserEvidence('whiteboard-settings'),'actual-neutral-clip-decode.json'),JSON.stringify({decoded,writes,unit},null,2)+'\n');
@@ -53,4 +55,17 @@ test('original settings: half speed restores, double speed records real WAV and 
   const half=page.waitForEvent('download');await f.player.getByRole('button',{name:'导出字幕',exact:true}).click();expect(readFileSync((await(await half).path())!,'utf8')).toContain('00:00:12,000 --> 00:00:16,000');
   await f.player.getByRole('combobox',{name:'播放速度',exact:true}).selectOption('2');const video=page.waitForEvent('download');await f.player.getByRole('button',{name:'导出视频',exact:true}).click();const file=(await(await video).path())!,probe=JSON.parse(execFileSync(process.env.STUDY_FFPROBE??'ffprobe',['-v','error','-show_format','-show_streams','-of','json',file],{encoding:'utf8',windowsHide:true}));expect(probe.streams.some((stream:any)=>stream.codec_type==='audio')).toBe(true);expect(Math.abs(Number(probe.format.duration)-4)).toBeLessThan(.6);
   const subtitles=page.waitForEvent('download');await f.player.getByRole('button',{name:'导出字幕',exact:true}).click();const srt=readFileSync((await(await subtitles).path())!,'utf8');expect(srt).toContain('00:00:03,000 --> 00:00:04,000');const directory=browserEvidence('whiteboard-settings');copyFileSync(file,join(directory,'double-rate.webm'));writeFileSync(join(directory,'double-rate-probe.json'),JSON.stringify(probe,null,2)+'\n');writeFileSync(join(directory,'double-rate.srt'),srt);
+});
+
+for(const width of [390,1280])test('original settings: real seven-tool tour preserves position and focus at '+width,async({page})=>{
+  await page.setViewportSize({width,height:800});const f=await fixture(page),unit=await f.current.getAttribute('data-unit-id'),writes:string[]=[];page.on('request',request=>{if(request.method()==='POST')writes.push(request.url());});
+  await f.player.getByRole('button',{name:'白板设置',exact:true}).click();const settings=page.getByRole('dialog',{name:'白板设置',exact:true});
+  await expect(settings.getByRole('button',{name:/Replay the tour/})).toBeVisible();await settings.getByRole('button',{name:/Replay the tour/}).click();await expect(settings).toHaveCount(0);
+  const tour=page.getByRole('dialog',{name:'白板工具导览',exact:true});await tour.getByRole('button',{name:'开始导览',exact:true}).click();
+  for(const[index,anchor]of ['connection','zoom','settings','sound','playback','history','notes'].entries()){
+    const target=tour.locator('.cl-tour-target');await expect(target).toHaveAttribute('data-anchor',anchor);await expect(tour.locator('.cl-tour-unavailable')).toHaveCount(0);
+    const bounds=(await target.boundingBox())!;expect(bounds.x).toBeGreaterThanOrEqual(0);expect(bounds.y).toBeGreaterThanOrEqual(0);expect(bounds.x+bounds.width).toBeLessThanOrEqual(width+1);expect(bounds.y+bounds.height).toBeLessThanOrEqual(801);
+    await tour.getByRole('button',{name:index===6?/^完成/:/^下一步/}).click();
+  }
+  await tour.getByRole('button',{name:'返回白板',exact:true}).click();await expect(tour).toHaveCount(0);await expect(f.current).toHaveAttribute('data-unit-id',unit!);await expect(f.player.getByRole('button',{name:'白板设置',exact:true})).toBeFocused();expect(writes).toEqual([]);
 });
