@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-26T17:00:21.182Z",
+  "status": "organization-first-run-original",
+  "deployed": false,
+  "passed": 18,
+  "failed": 1,
+  "reason": "The test expected Chinese tags in a different order than the explicitly canonical UTF-16 sorted contract. Preserve deduplication/canonical hashing; correct the expected fixture order. All other cases passed, but the full completed/withdrawn journey must rerun past the failed assertion.",
+  "files": [
+    {
+      "source": "data/qa/paper-review-organization-first.json",
+      "file": "paper-review-organization-first.json.gz",
+      "originalSha256": "283a0bcc94f7a4ac9a00a6948dfd9cbc502be7942925d6447ef4535d3847afea",
+      "sha256": "0ea9d5dc1ea48e832fadca40dce23b97cf398bbd156899690dcda549f0303e47"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "paper-practice.integration.test.ts.gz",
+      "originalSha256": "3e171c28f95b0c487cd07c2621471d63b294193dfa626ab829d2562e127ccd22",
+      "sha256": "d42fce8b69e018611bb0ed97c88c663942a35b0018e07508a8d65369836f1899"
+    }
+  ]
+}

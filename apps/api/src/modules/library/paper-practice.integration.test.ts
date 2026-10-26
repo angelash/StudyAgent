@@ -34,7 +34,7 @@ describe('original paper practice, immutable first answers and explicit referenc
     const response = await query; expect(response.status, JSON.stringify(response.body)).toBe(status); return response.body.data;
   }
   const publish = (paperId: string, status = 'published') => call('post', '/library/papers/' + paperId + '/publication', { status, reason: '合成原创试卷用于独立流程核对', licenseEvidence: '全部题干与媒体为本测试原创构造', contentReviewed: true, mediaReviewed: true }, admin);
-  async function begin(papers = [{ paperId: 'p:complete' }], studentId: string | null = null, actor = owner) {
+  async function begin(papers: Array<{ paperId: string; positions?: number[] }> = [{ paperId: 'p:complete' }], studentId: string | null = null, actor = owner) {
     const command = { studentId, selection: papers }, preview = await call('post', '/library/practice/preview', command, actor);
     return call('post', '/library/practice/sessions', { ...command, sourceHash: preview.sourceHash, requestKey: randomUUID() }, actor);
   }
@@ -257,5 +257,78 @@ describe('original paper practice, immutable first answers and explicit referenc
       expect(commandSessions).toContain(own.id); expect(commandSessions).toContain(shared.id); expect(commandSessions).not.toContain(hidden.id);
       expect(JSON.stringify(exported)).not.toContain(hiddenText); expect(JSON.stringify(exported)).toContain('孩子共享的真实首答');
     }
+  });
+  const organization = (changes: object = {}) => ({ tags: ['读题', '过程'], favorite: false, archived: false, errorSteps: '遗漏了一个已知条件', reflection: '这是本人反思，不是测量诊断', plannedDate: '2026-11-09', ...changes });
+  it('organizes a completed withdrawn source while preserving the exact old first-answer receipt and append-only review history', async () => {
+    let row = await begin([{ paperId: 'p:complete', positions: [1] }]); const itemId = row.items[0].id;
+    const submit = { expectedVersion: row.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'answered', text: '不可覆盖的首答' };
+    const original = await command(row, submit); row = original.session; const first = (await item(row)).firstAnswer;
+    row = (await command(row, { kind: 'complete' })).session;
+    const body = { kind: 'organize', itemId, values: organization({ tags: ['过程', '读题', '过程'] }), expectedVersion: row.version, requestKey: randomUUID() };
+    row = (await command(row, body)).session; const organized = await item(row);
+    expect(organized).toMatchObject({ firstAnswer: first, corrections: [], reference: null, organization: { revision: 1, tags: ['读题', '过程'], history: [{ action: 'organize' }] } });
+    expect((await command(row, body)).session.version).toBe(row.version);
+    expect((await command(row, submit)).appliedVersion).toBe(original.appliedVersion);
+    await command(row, { ...body, values: organization({ reflection: '同键不能换内容' }) }, owner, 409);
+    await publish('p:complete', 'withdrawn');
+    try {
+      row = (await command(row, { kind: 'organize', itemId, values: organization({ reflection: '撤回后仍保留本人反思' }) })).session;
+      const hidden = await item(row); expect(hidden.html).toBe(''); expect(hidden.reference).toBeNull(); expect(hidden.firstAnswer).toEqual(first);
+      expect(hidden.organization.history).toHaveLength(2); expect(hidden.organization.reflection).toBe('撤回后仍保留本人反思');
+      await command(row, { kind: 'correct', itemId, text: '完成后不能追加订正' }, owner, 409);
+    } finally { await publish('p:complete'); }
+  });
+  it('projects stable local-date calendar events without writes, duplicating schedules or disclosing reflection text in ICS', async () => {
+    let row = await begin([{ paperId: 'p:complete', positions: [1] }]); const itemId = row.items[0].id;
+    row = (await command(row, { kind: 'submit', itemId, disposition: 'dont_know', text: '' })).session;
+    row = (await command(row, { kind: 'organize', itemId, values: organization({ reflection: 'PRIVATE_REFLECTION_NOT_IN_ICS', plannedDate: '2026-03-08' }) })).session;
+    const calendarUrl = '/library/practice/reviews/calendar?from=2026-03-01&to=2026-03-31';
+    const before = await store.requestContext(() => [store.paperPracticeSessions.length, store.paperPracticeCommands.length, store.studioScheduleEvents.length]);
+    const first = await call('get', calendarUrl), event = first.events.find((event: any) => event.sessionId === row.id);
+    expect(event).toMatchObject({ date: '2026-03-08', status: 'pending' }); expect(JSON.stringify(event)).not.toContain('PRIVATE_REFLECTION_NOT_IN_ICS');
+    expect(await call('get', calendarUrl)).toEqual(first);
+    const list = await call('get', '/library/practice/reviews?filter=needs_review&q=PRIVATE_REFLECTION_NOT_IN_ICS'); expect(list.total).toBe(1); expect(list.items[0]).toMatchObject({ sessionId: row.id, actor: 'self', editable: true });
+    expect(JSON.stringify(list)).not.toContain('answerHtml'); expect(JSON.stringify(list)).not.toContain('SYNTHETIC_REFERENCE_ONLY');
+    const exported = await call('get', '/library/practice/reviews/calendar/export?from=2026-03-01&to=2026-03-31');
+    expect(exported.content).toContain('DTSTART;VALUE=DATE:20260308'); expect(exported.content).not.toContain('PRIVATE_REFLECTION_NOT_IN_ICS');
+    expect(await store.requestContext(() => [store.paperPracticeSessions.length, store.paperPracticeCommands.length, store.studioScheduleEvents.length])).toEqual(before);
+    row = (await command(row, { kind: 'organize', itemId, values: organization({ plannedDate: '2026-03-09' }) })).session;
+    expect((await call('get', calendarUrl)).events.find((value: any) => value.sessionId === row.id)).toMatchObject({ id: event.id, date: '2026-03-09' });
+    row = (await command(row, { kind: 'organize', itemId, values: organization({ plannedDate: null }) })).session;
+    expect((await call('get', calendarUrl)).events.some((value: any) => value.sessionId === row.id)).toBe(false);
+    await command(row, { kind: 'organize', itemId, values: organization({ plannedDate: '2026-02-30' }) }, owner, 400);
+    expect((await get(row.id)).version).toBe(row.version);
+  });
+  it('records actual review and reopening separately from first answers and rejects a stale simultaneous edit', async () => {
+    let row = await begin([{ paperId: 'p:partial', positions: [1] }]); const itemId = row.items[0].id;
+    await command(row, { kind: 'review_complete', itemId }, owner, 409);
+    row = (await command(row, { kind: 'submit', itemId, disposition: 'skip', text: '' })).session;
+    row = (await command(row, { kind: 'organize', itemId, values: organization({ reflection: '唯一复习状态验证' }) })).session; const stale = row;
+    row = (await command(row, { kind: 'review_complete', itemId })).session;
+    const completed = (await item(row)).organization; expect(completed.status).toBe('reviewed'); expect(Number.isFinite(Date.parse(completed.reviewedAt))).toBe(true);
+    await command(stale, { kind: 'organize', itemId, values: organization({ reflection: '过时页面不能覆盖' }) }, owner, 409);
+    expect((await call('get', '/library/practice/reviews?filter=needs_review&q=唯一复习状态验证')).total).toBe(0);
+    expect((await call('get', '/library/practice/reviews?filter=reviewed&q=唯一复习状态验证')).total).toBe(1);
+    row = (await command(row, { kind: 'review_reopen', itemId })).session;
+    const reopened = await item(row); expect(reopened.organization).toMatchObject({ status: 'pending', reviewedAt: null, history: [{ action: 'organize' }, { action: 'review_complete' }, { action: 'review_reopen' }] });
+    expect(reopened.firstAnswer.disposition).toBe('skip'); expect(row.independentMeasurement).toBe(false);
+    expect((await call('get', '/library/practice/reviews?filter=needs_review&q=唯一复习状态验证')).total).toBe(1);
+  });
+  it('shares only learner organization with guardians while each guardian private review and calendar remain isolated', async () => {
+    const accessVersion = await store.requestContext(() => store.find('studentLearningAccess', { studentId: child }).version);
+    const grant = await call('post', '/students/' + child + '/learning-access', { enabled: true, expectedVersion: accessVersion, requestKey: randomUUID(), reason: '合成复习权限核对' });
+    const issued = await call('post', '/students/' + child + '/learning-access/codes', { expectedVersion: grant.version, requestKey: randomUUID() });
+    const currentLearner = await call('post', '/auth/learning-code', { code: issued.code }, null);
+    let shared = await begin([{ paperId: 'p:partial', positions: [1] }], child, currentLearner), mine = await begin([{ paperId: 'p:partial', positions: [1] }], child);
+    shared = (await command(shared, { kind: 'organize', itemId: shared.items[0].id, values: organization({ reflection: '孩子本人可共享反思' }) }, currentLearner)).session;
+    mine = (await command(mine, { kind: 'organize', itemId: mine.items[0].id, values: organization({ reflection: '当前家长的私人反思' }) })).session;
+    const query = '/library/practice/reviews?scope=learner&filter=all&studentId=' + child + '&q=孩子本人可共享反思';
+    const reviews = await call('get', query, undefined, other); expect(reviews.total).toBe(1); expect(reviews.items[0]).toMatchObject({ sessionId: shared.id, actor: 'learner', editable: false });
+    await command(shared, { kind: 'organize', itemId: shared.items[0].id, values: organization() }, other, 403);
+    expect((await call('get', '/library/practice/reviews?scope=mine&filter=all&studentId=' + child + '&q=当前家长的私人反思', undefined, other)).total).toBe(0);
+    const events = (await call('get', '/library/practice/reviews/calendar?scope=learner&studentId=' + child + '&from=2026-11-01&to=2026-11-30', undefined, other)).events;
+    expect(events.some((event: any) => event.sessionId === shared.id)).toBe(true); expect(events.some((event: any) => event.sessionId === mine.id)).toBe(false);
+    const exported = await call('post', '/privacy/students/' + child + '/export', { credential: 'Synthetic-paper-only-20261026', requestKey: randomUUID() }, other);
+    expect(JSON.stringify(exported)).toContain('孩子本人可共享反思'); expect(JSON.stringify(exported)).not.toContain('当前家长的私人反思');
   });
 });

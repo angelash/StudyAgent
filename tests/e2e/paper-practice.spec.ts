@@ -296,3 +296,58 @@ test('recovery: paper practice retains an uncommitted original start through thr
   await expect(page.getByLabel('先写下自己的回答')).toBeVisible(); const receipt = await f.call('/library/practice/requests/' + original.requestKey);
   expect(new URL(page.url()).searchParams.get('session')).toBe(receipt.session.id); expect((await f.call('/library/practice/sessions')).total).toBe(1);
 });
+
+test('paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar', async ({ page }) => {
+  const f = await fixture(page, 22); let row = await f.begin(); const itemId = row.items[0].id;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'dont_know', text: '原首答保留' })).session;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'complete', acknowledgeUnanswered: true })).session;
+  await page.goto('/library/practice/review?session=' + row.id + '&item=' + itemId);
+  const editor = page.getByRole('region', { name: '原卷复习与反思' }); await expect(editor.getByLabel('我的反思')).toBeEnabled();
+  await editor.getByLabel('标签，用逗号分隔').pressSequentially('读题，单位'); await expect(editor.getByLabel('标签，用逗号分隔')).toHaveValue('读题，单位');
+  await editor.getByLabel('具体错误步骤').fill('没有统一长度单位'); await editor.getByLabel('我的反思').fill('先检查单位，再写计算过程。'); await editor.getByLabel('计划回看日期').fill('2026-11-09');
+  await editor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(editor.getByText('完整整理历史 · 1 次', { exact: true })).toBeVisible();
+  const saved = await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId); expect(saved.firstAnswer.text).toBe('原首答保留'); expect(saved.organization).toMatchObject({ tags: ['单位', '读题'], reflection: '先检查单位，再写计算过程。', plannedDate: '2026-11-09' }); expect(saved.reference).toBeNull();
+  await editor.getByRole('button', { name: '我已实际回看', exact: true }).click(); await expect(editor.getByRole('button', { name: '重新放回待复习', exact: true })).toBeEnabled();
+  await page.goto('/library/practice/review?filter=reviewed&q=' + encodeURIComponent('先检查单位'));
+  await expect(page.getByRole('link', { name: /匿名原卷 22.*第 1 题/ })).toBeVisible(); await page.getByLabel('复习月份').fill('2026-11');
+  const calendar = page.getByRole('region', { name: '原卷复习日历' }); await expect(calendar.getByRole('link', { name: /2026-11-09.*匿名原卷 22/ })).toBeVisible();
+  const download = page.waitForEvent('download'); await calendar.getByRole('button', { name: '导出本月复习 ICS' }).click(); const exported = await download;
+  const content = readFileSync((await exported.path())!, 'utf8'); expect(content).toContain('DTSTART;VALUE=DATE:20261109'); expect(content).not.toContain('先检查单位');
+});
+
+test('recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection', async ({ page }) => {
+  const f = await fixture(page, 23), row = await f.begin(), itemId = row.items[0].id; await page.goto('/library/practice/review?session=' + row.id + '&item=' + itemId);
+  const editor = page.getByRole('region', { name: '原卷复习与反思' }); await expect(editor.getByLabel('我的反思')).toBeEnabled(); await editor.getByLabel('我的反思').fill('离线丢回执仍保留同一次反思。'); let captured: any;
+  await page.route('**/api/library/practice/sessions/*/commands', async route => { if (route.request().method() === 'POST' && route.request().postDataJSON()?.kind === 'organize' && !captured) { captured = route.request().postDataJSON(); await route.fetch(); return route.abort('failed'); } await route.continue(); });
+  await editor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(page.getByRole('region', { name: '整理原操作恢复' }).getByRole('button', { name: '核对或重试整理原操作' })).toBeEnabled();
+  for (let index = 0; index < 3; index++) { await page.reload(); await expect(page.getByRole('region', { name: '整理原操作恢复' })).toHaveCount(0); await expect(editor.getByLabel('我的反思')).toHaveValue('离线丢回执仍保留同一次反思。'); }
+  expect((await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId)).organization.history).toHaveLength(1);
+  await editor.getByLabel('我的反思').fill('确认之后继续写的新反思。'); for (let index = 0; index < 3; index++) { await page.reload(); await expect(editor.getByLabel('我的反思')).toHaveValue('确认之后继续写的新反思。'); }
+  await editor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(editor.getByText('完整整理历史 · 2 次', { exact: true })).toBeVisible();
+  const result = await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId); expect(result.organization.reflection).toBe('确认之后继续写的新反思。'); expect(result.organization.history).toHaveLength(2);
+});
+
+test('paper review: two real pages compare conflicting reflection drafts before saving a new command', async ({ page, context }) => {
+  const f = await fixture(page, 24), row = await f.begin(), itemId = row.items[0].id, url = '/library/practice/review?session=' + row.id + '&item=' + itemId;
+  await page.goto(url); const second = await context.newPage(); await second.goto(url);
+  const firstEditor = page.getByRole('region', { name: '原卷复习与反思' }), secondEditor = second.getByRole('region', { name: '原卷复习与反思' });
+  await expect(firstEditor.getByLabel('我的反思')).toBeEnabled(); await expect(secondEditor.getByLabel('我的反思')).toBeEnabled();
+  await firstEditor.getByLabel('我的反思').fill('第一页已保存的判断。'); await secondEditor.getByLabel('我的反思').fill('第二页保留的另一种判断。');
+  await firstEditor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(firstEditor.getByText('完整整理历史 · 1 次', { exact: true })).toBeVisible();
+  await secondEditor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(secondEditor.getByRole('alert')).toBeVisible();
+  expect((await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId)).organization.reflection).toBe('第一页已保存的判断。');
+  await secondEditor.getByRole('button', { name: '保留冲突文件，读取最新版本' }).click(); await expect(secondEditor.getByText('服务器反思：第一页已保存的判断。', { exact: true })).toBeVisible();
+  await secondEditor.getByRole('button', { name: '保留本机反思，按当前版本继续' }).click(); await expect(secondEditor.getByLabel('我的反思')).toHaveValue('第二页保留的另一种判断。');
+  await secondEditor.getByRole('button', { name: '保存反思与安排', exact: true }).click(); await expect(secondEditor.getByText('完整整理历史 · 2 次', { exact: true })).toBeVisible();
+  const saved = await f.call('/library/practice/sessions/' + row.id + '/items/' + itemId); expect(saved.organization.reflection).toBe('第二页保留的另一种判断。'); expect(saved.organization.history).toHaveLength(2); await second.close();
+});
+
+for (const width of [390, 768, 1440]) test('paper review: current item, full reflection and protected calendar fit ' + width, async ({ page }) => {
+  const f = await fixture(page, width === 390 ? 25 : width === 768 ? 26 : 27); let row = await f.begin(); const itemId = row.items[0].id;
+  row = (await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'submit', itemId, disposition: 'dont_know', text: '' })).session;
+  await f.call('/library/practice/sessions/' + row.id + '/commands', { expectedVersion: row.version, requestKey: randomUUID(), kind: 'organize', itemId, values: { tags: ['合成原题'], favorite: true, archived: false, errorSteps: '需要重新核对所给条件', reflection: '一份完整、可继续修改的合成反思。', plannedDate: '2026-11-09' } });
+  await page.setViewportSize({ width, height: 1000 }); await page.goto('/library/practice/review'); await expect(page.getByRole('link', { name: /匿名原卷.*第 1 题/ })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true); await page.screenshot({ path: join(browserEvidence('paper-practice'), 'review-workspace-' + width + '.png'), fullPage: true });
+  await page.getByRole('link', { name: /匿名原卷.*第 1 题/ }).click(); const editor = page.getByRole('region', { name: '原卷复习与反思' }); await expect(editor.getByLabel('我的反思')).toHaveValue('一份完整、可继续修改的合成反思。');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+});

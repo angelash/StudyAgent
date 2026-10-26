@@ -750,6 +750,7 @@ export * from './source-course-lifecycle';
 export * from './project-assets';
 export * from './answer-draft';
 export * from './paper-practice';
+export * from './paper-review';
 
 export * from './assistant-turn';
 export * from './project-teaching';

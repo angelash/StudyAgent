@@ -1,0 +1,166 @@
+{
+  "at": "2026-10-26T17:15:08.816Z",
+  "status": "organization-and-review-workspace-focused-pass",
+  "deployed": false,
+  "overallProductComplete": false,
+  "browser": {
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "originalAttempts": 27
+  },
+  "sqliteService": {
+    "passed": 19
+  },
+  "postgresServiceAndPriorNativeCommand": {
+    "passed": 21,
+    "scope": "19 PostgreSQL service cases plus two prior native restoration cases; latest organization-native validation is separately recorded below."
+  },
+  "organizationNative": {
+    "passed": 2,
+    "scope": "Actual SQLite and PostgreSQL backup/cold restore with reflection, complete organization history, actual review, stable calendar and original command replays."
+  },
+  "webSha256": {
+    "app/library/practice/session.tsx": "32c952fc6e4528dc6a2bba7f6646d7958c223aa4cc2a656f9d865e5e1a234ed7",
+    "app/library/practice/studio.tsx": "63bcaa33c10aaad0312bcd4daab1e47ac1f2e3ad3ea0d1397d92b73e2de76ed4",
+    "app/library/practice/review/page.tsx": "10709c6711eed66fd36e2dab95291a1911ce62be552e0f59d0ee4bd9321b6883",
+    "app/library/practice/review/studio.tsx": "33bd9350216177cf2c63823db0cdf0804446f74d5ea1695e79a5a95d7a4fd7cc",
+    "app/library/practice/review.css": "54656836ceff471e99fd92adb1fef01c2ee364b446c6cc1e3456cfd7741eff3c",
+    "components/paper-review-editor.tsx": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
+    "components/paper-practice-launcher.tsx": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d"
+  },
+  "qaWebBuildId": "xYoMpLBF0L7HuCou1DvFn",
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.service.js": "dd7af95f5b7e80b3680e8171a4a7568fc615aee33e2093b94cfa47322c48147f",
+    "apps/api/dist/apps/api/src/modules/library/paper-practice.controller.js": "782bfac65af617ae48579b594dd9425d8c71e72cea08fb4d7ae1342787d0e908",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-organization.js": "7554522717647f94291505be0d2eef79082357687a6f102ea117f2dc07a322f7",
+    "apps/api/dist/apps/api/src/modules/library/paper-review-query.js": "aa99f480839d18efe157703beddd84b83b7a0600bbea87e79df8a04dc0cced57"
+  },
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "data__qa__paper-practice-browser.json.gz",
+      "originalSha256": "6e3ff0d88c369872bcf8d6e2c70f005c81b4423c4954645c0c6d4e1db7265a4a",
+      "sha256": "408002b493f3c4f81cf25fedb13e257bcf6a806794aee9f3dccd32fc9291b512"
+    },
+    {
+      "source": "data/qa/paper-review-second-browser.log",
+      "file": "data__qa__paper-review-second-browser.log.gz",
+      "originalSha256": "986859b35ec38aff4ad6358a37e9f43ae1153d6908d874df523f8029d3dbb262",
+      "sha256": "cc83b4364e51b1a3361f31be96da8e7d61a96c631d11c0cd32cf1a39373666c7"
+    },
+    {
+      "source": "data/qa/paper-review-organization-green.json",
+      "file": "data__qa__paper-review-organization-green.json.gz",
+      "originalSha256": "0965b6df55de24501c51c6d8d5ee19f6a06d35060555286d99025eff2fb9a566",
+      "sha256": "f81d52a6326702497ba0368d4725972e6ad6ad09a705c944de54f7f4183d15f8"
+    },
+    {
+      "source": "data/qa/paper-practice-postgres.json",
+      "file": "data__qa__paper-practice-postgres.json.gz",
+      "originalSha256": "6e3dd1e634645b8f8eeef5631debe7906512affd7aab9cddd32f70b0e572636e",
+      "sha256": "06ec8163ea54d6c967b497e293328094dabdfdbebf1206eda39cf1c54d98fe10"
+    },
+    {
+      "source": "data/qa/paper-review-organization-native.json",
+      "file": "data__qa__paper-review-organization-native.json.gz",
+      "originalSha256": "ee1e793ca0eaac8cf53469dc41ccf458fa8125fc386f20d87df7f2829389234d",
+      "sha256": "2f9b9f58a2705a87e7786c5689c70ce47293f5b1a32a8540244c23875ee38e15"
+    },
+    {
+      "source": "data/qa/paper-review-web-build-second.log",
+      "file": "data__qa__paper-review-web-build-second.log.gz",
+      "originalSha256": "ea19377752e4fcc67d3bb70996ea75c8cfa2da09a1b264e569065db3a6a5b147",
+      "sha256": "682fbba53574c380da746bfe81ca4694a0acedf755a72fb2959f7fadd7542a8c"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice.integration.test.ts.gz",
+      "originalSha256": "d0e80266d016aefc53b4d652630528df634249dc71a9bfd41697f6c3e80af4d8",
+      "sha256": "a43c82a82f73d8e784b89508289b24109301d6cf5a4d81225e1700fedf59ffe6"
+    },
+    {
+      "source": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "file": "apps__api__src__modules__library__paper-practice-recovery.integration.test.ts.gz",
+      "originalSha256": "32b3b101bc48c04e10ca8788aa8156938a4e204777cee368c13fb37725e768d5",
+      "sha256": "f7e67efd56d42098dfee9591d326888f414e4cd397eba553701fe87de3e502a7"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "tests__e2e__paper-practice.spec.ts.gz",
+      "originalSha256": "9c817bbe440ded817499952b01d3b172a41aecc81ca9d1922d6175334975056a",
+      "sha256": "1f5cfb3dc1871d69ced14f973ba0c37ce7b7e0f2dc0cd4a53f182bf5e8c4d22b"
+    },
+    {
+      "source": "apps/web/app/library/practice/session.tsx",
+      "file": "apps__web__app__library__practice__session.tsx.gz",
+      "originalSha256": "32c952fc6e4528dc6a2bba7f6646d7958c223aa4cc2a656f9d865e5e1a234ed7",
+      "sha256": "502aa225769ccce62be545053b3b22e2b64d54ba21a84f4ff3a16aea71120b02"
+    },
+    {
+      "source": "apps/web/app/library/practice/studio.tsx",
+      "file": "apps__web__app__library__practice__studio.tsx.gz",
+      "originalSha256": "63bcaa33c10aaad0312bcd4daab1e47ac1f2e3ad3ea0d1397d92b73e2de76ed4",
+      "sha256": "623492f0294d6dc606ad5bb78f2de599b32e86596f2612be9a5278794ee5ba55"
+    },
+    {
+      "source": "apps/web/app/library/practice/review/page.tsx",
+      "file": "apps__web__app__library__practice__review__page.tsx.gz",
+      "originalSha256": "10709c6711eed66fd36e2dab95291a1911ce62be552e0f59d0ee4bd9321b6883",
+      "sha256": "29ddb5adea0072fdc4287c739fcb037b719369705aec0079015d26ec4ec05236"
+    },
+    {
+      "source": "apps/web/app/library/practice/review/studio.tsx",
+      "file": "apps__web__app__library__practice__review__studio.tsx.gz",
+      "originalSha256": "33bd9350216177cf2c63823db0cdf0804446f74d5ea1695e79a5a95d7a4fd7cc",
+      "sha256": "c3ab0087dd4d01bb99b1b6ddd58b114ed3e9d972e4531634a7595d96d3d6f34c"
+    },
+    {
+      "source": "apps/web/app/library/practice/review.css",
+      "file": "apps__web__app__library__practice__review.css.gz",
+      "originalSha256": "54656836ceff471e99fd92adb1fef01c2ee364b446c6cc1e3456cfd7741eff3c",
+      "sha256": "0533d7fad658132c49ee586ce02eeb20cb46e5e7a396a3bfb783a6d1c68fa4ee"
+    },
+    {
+      "source": "apps/web/components/paper-review-editor.tsx",
+      "file": "apps__web__components__paper-review-editor.tsx.gz",
+      "originalSha256": "6401c216154ebf7aae384fa9718fd04f7a7d28154e0047e922656b4c0a154a4b",
+      "sha256": "3e0891bbe69f21cab2826fa77c9a2287d72cc11908f523eee557005f803f934c"
+    },
+    {
+      "source": "apps/web/components/paper-practice-launcher.tsx",
+      "file": "apps__web__components__paper-practice-launcher.tsx.gz",
+      "originalSha256": "5fe31a28761b418f60b0d4cd51506ee6105db4b6e7f6e6ede53cde94977be61d",
+      "sha256": "6e024d65bacac1de5f6dd434e494c7ebc5d0d000fdfa5209c3692d377a3192f6"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-390.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-390.png",
+      "originalSha256": "8575f5d1e63ce8484a6ae79eb9e96d9ef3a9c6f43a0ebd935d3f6ec9106b3823",
+      "sha256": "8575f5d1e63ce8484a6ae79eb9e96d9ef3a9c6f43a0ebd935d3f6ec9106b3823"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-768.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-768.png",
+      "originalSha256": "5f8754a95956daece2d88dd7a902e883bf59af70f0c40ba14b301ca5bc6cff6f",
+      "sha256": "5f8754a95956daece2d88dd7a902e883bf59af70f0c40ba14b301ca5bc6cff6f"
+    },
+    {
+      "source": "data/qa/browser-evidence/paper-practice/review-workspace-1440.png",
+      "file": "data__qa__browser-evidence__paper-practice__review-workspace-1440.png",
+      "originalSha256": "1e20ad70e9506bfba6707bdc8a472bdb98ebb90c62876fa6866d30d5d8b2c6d6",
+      "sha256": "1e20ad70e9506bfba6707bdc8a472bdb98ebb90c62876fa6866d30d5d8b2c6d6"
+    }
+  ],
+  "remaining": [
+    "Origin-bound redo and current five-gate mapping to formal assessment preview.",
+    "Course-calendar integration, the remaining weak-network/account/file/large-history cases, compact filtering and full128 design inventory.",
+    "Full API/browser, exact three-job CI and actual production delivery after127."
+  ],
+  "limits": [
+    "Overlapping test scopes are not a product coverage percentage.",
+    "Screenshot layout inspection is limited to this synthetic desktop/phone/tablet flow.",
+    "No full128/product completion, original HyperKnow CSS/font/DPR/audio, physical-device, teacher or long-term acceptance."
+  ]
+}

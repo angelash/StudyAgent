@@ -6,6 +6,9 @@ import { PaperPracticeService } from './paper-practice.service';
 @Controller('library/practice')
 export class PaperPracticeController {
   constructor(private readonly practice: PaperPracticeService) {}
+  @Get('reviews') reviews(@Req() req: AuthenticatedRequest, @Query() input: unknown) { return this.practice.reviews(req.user, input); }
+  @Get('reviews/calendar') calendar(@Req() req: AuthenticatedRequest, @Query() input: unknown) { return this.practice.reviewCalendar(req.user, input); }
+  @Get('reviews/calendar/export') exportCalendar(@Req() req: AuthenticatedRequest, @Query() input: unknown) { return this.practice.exportReviewCalendar(req.user, input); }
   @Post('preview') preview(@Req() req: AuthenticatedRequest, @Body() input: unknown) { return this.practice.preview(req.user, input); }
   @Post('sessions') create(@Req() req: AuthenticatedRequest, @Body() input: unknown) { return this.practice.create(req.user, input); }
   @Get('requests/:requestKey') creationResult(@Req() req: AuthenticatedRequest, @Param('requestKey') key: string) { return this.practice.creationResult(req.user, key); }

@@ -67,6 +67,8 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       row = (await change(row, { kind: 'self_review', itemId: row.items[0].id, value: 'needs_correction' })).result.session;
       const corrected = await change(row, { kind: 'correct', itemId: row.items[0].id, text: '订正与原答分别保留，不自动量化' }); row = corrected.result.session;
       row = (await change(row, { kind: 'complete', acknowledgeUnanswered: true })).result.session;
+      const organized = await change(row, { kind: 'organize', itemId: row.items[0].id, values: { tags: ['原生恢复'], favorite: true, archived: false, errorSteps: '遗漏了条件的单位', reflection: 'PRIVATE_NATIVE_REVIEW_原反思完整保留', plannedDate: '2026-11-09' } }); row = organized.result.session;
+      const reviewed = await change(row, { kind: 'review_complete', itemId: row.items[0].id }); row = reviewed.result.session;
       const adultStart = await create(null), paused = (await change(adultStart.row, { kind: 'pause' })).result.session;
       const frozen = await store.requestContext(() => structuredClone({ session: store.find('paperPracticeSessions', { id: row.id }), commands: store.select('paperPracticeCommands', { sessionId: row.id }) }));
       const options = { dataDir: source, destination: bundle, assets, connectionString: sourceLocation, pgBin: process.env.STUDY_TEST_PG_BIN };
@@ -80,12 +82,15 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       expect(await store.requestContext(() => structuredClone({ session: store.find('paperPracticeSessions', { id: row.id }), commands: store.select('paperPracticeCommands', { sessionId: row.id }) }))).toEqual(frozen);
       expect((await call('get', '/library/practice/requests/' + childStart.command.requestKey)).session.id).toBe(row.id);
       expect((await call('post', '/library/practice/sessions', childStart.command)).id).toBe(row.id);
-      for (const original of [submitted, corrected]) {
+      for (const original of [submitted, corrected, organized, reviewed]) {
         const receipt = await call('get', commandPath(row.id) + '/' + original.command.requestKey); expect(receipt.appliedVersion).toBe(original.result.appliedVersion);
         expect((await call('post', commandPath(row.id), original.command)).appliedVersion).toBe(original.result.appliedVersion);
       }
       expect((await call('get', '/library/practice/sessions/' + paused.id)).status).toBe('paused');
       const item = await call('get', '/library/practice/sessions/' + row.id + '/items/' + row.items[0].id); expect(item.firstAnswer.text).toBe('原生备份前不可覆盖的首答'); expect(item.corrections).toHaveLength(1); expect(item.reference.answerHtml).toContain('合成原参考：5');
+      expect(item.organization).toMatchObject({ reflection: 'PRIVATE_NATIVE_REVIEW_原反思完整保留', plannedDate: '2026-11-09', status: 'reviewed', history: [{ action: 'organize' }, { action: 'review_complete' }] });
+      const calendar = await call('get', '/library/practice/reviews/calendar?from=2026-11-01&to=2026-11-30'); expect(calendar.events.filter((event: any) => event.sessionId === row.id)).toHaveLength(1);
+      const ics = await call('get', '/library/practice/reviews/calendar/export?from=2026-11-01&to=2026-11-30'); expect(ics.content).toContain('DTSTART;VALUE=DATE:20261109'); expect(ics.content).not.toContain('PRIVATE_NATIVE_REVIEW');
       const exported = await call('post', '/privacy/account/export', { credential, requestKey: randomUUID() }); expect(exported.accountRecords.paperPracticeSessions.some((record: any) => record.id === row.id)).toBe(true);
       const portableCommand = exported.accountRecords.paperPracticeCommands.find((record: any) => record.sessionId === row.id && record.kind === 'submit');
       expect(portableCommand).toMatchObject({ appliedVersion: submitted.result.appliedVersion });

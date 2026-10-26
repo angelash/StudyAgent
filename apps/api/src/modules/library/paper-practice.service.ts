@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { PaperPracticePreview, PaperPracticeSessionView, PaperPracticeItemSummary, PaperPracticeItemView, PaperPracticeAvailability, PaperPracticeCommandResult } from '@study-agent/contracts';
+import type { PaperPracticePreview, PaperPracticeSessionView, PaperPracticeItemSummary, PaperPracticeItemView, PaperPracticeAvailability, PaperPracticeCommandResult, PaperReviewList, PaperReviewScope, PaperReviewCalendarEvent } from '@study-agent/contracts';
 import { paperPracticeSelectionSchema as selectionSchema, paperPracticeCreationSchema as creationSchema, paperPracticeCommandSchema as commandSchema } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
@@ -11,6 +11,9 @@ import { LibraryRepository } from './library.repository';
 import { LibraryService } from './library.service';
 import { cleanPaperHtml } from './library-html';
 import type { PaperPracticeSessionRecord, PaperPracticeItemRecord, PaperPracticeSource } from './paper-practice-record';
+import { organizePaperItem, paperReviewOrganization } from './paper-review-organization';
+import { matchesPaperReview, paperReviewCalendarQuerySchema, paperReviewQuerySchema, paperReviewSummary } from './paper-review-query';
+import { renderIcs } from '../learning/ics-calendar';
 
 const id = z.string().trim().min(1).max(180), key = z.string().trim().min(8).max(180);
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -68,7 +71,7 @@ export class PaperPracticeService {
     const states = this.sourceStates(user, row), items = row.items.map(item => this.summary(item, row, states.get(item.paperId)!));
     return { id: row.id, ownerUserId: row.ownerUserId, studentId: row.studentId, status: row.status, version: row.version,
       currentItemId: row.currentItemId, createdAt: row.createdAt, updatedAt: row.updatedAt, completedAt: row.completedAt,
-      permissions: { edit: row.ownerUserId === user.id && row.status !== 'completed' }, independentMeasurement: false, items,
+      permissions: { edit: row.ownerUserId === user.id && row.status !== 'completed', organize: row.ownerUserId === user.id }, independentMeasurement: false, items,
       counts: { total: items.length, submitted: items.filter(item => item.disposition !== null).length,
         unanswered: items.filter(item => item.kind !== 'missing' && !item.disposition).length, missing: items.filter(item => item.kind === 'missing').length,
         unavailable: items.filter(item => item.kind !== 'missing' && !item.availability.available).length,
@@ -150,12 +153,48 @@ export class PaperPracticeService {
       papers: row.sources.map(source => ({ id: source.paperId, title: source.title })), total: row.items.length, submitted: row.items.filter(item => item.firstAnswer).length, updatedAt: row.updatedAt })) };
   }
   get(user: InMemoryUserAccount, sessionId: string) { return this.view(user, this.require(user, sessionId)); }
+  private reviewRows(user: InMemoryUserAccount, scope: PaperReviewScope, studentId?: string) {
+    this.student(user, studentId ?? null);
+    if (scope === 'learner' && !studentId) throw new BadRequestException('请选择需要查看的孩子学习账号记录。');
+    return this.store.select('paperPracticeSessions', { ...(studentId ? { studentId } : {}), ...(scope === 'mine' ? { ownerUserId: user.id } : {}) })
+      .filter(row => scope === 'mine' || Boolean(this.store.find('users', { id: row.ownerUserId, role: 'student' })) && (user.role !== 'student' || row.ownerUserId === user.id));
+  }
+  reviews(user: InMemoryUserAccount, input: unknown): PaperReviewList {
+    const query = validate(paperReviewQuerySchema, input), rows = this.reviewRows(user, query.scope, query.studentId);
+    const pairs = rows.flatMap(row => row.items.filter(item => {
+      const organization = paperReviewSummary(item.organization);
+      return matchesPaperReview(item, query.filter) && (!query.paperId || item.paperId === query.paperId) && (!query.tag || organization.tags.includes(query.tag)) &&
+        (!query.from || !!organization.plannedDate && organization.plannedDate >= query.from) && (!query.to || !!organization.plannedDate && organization.plannedDate <= query.to) &&
+        (!query.q || [row.sources.find(source => source.paperId === item.paperId)?.title ?? '', organization.errorSteps, organization.reflection, ...organization.tags].join('\n').toLocaleLowerCase().includes(query.q.toLocaleLowerCase()));
+    }).map(item => ({ row, item }))).sort((a, b) => b.row.updatedAt.localeCompare(a.row.updatedAt) || a.row.id.localeCompare(b.row.id) || a.item.position - b.item.position);
+    return { total: pairs.length, page: query.page, pageSize: query.pageSize, items: pairs.slice((query.page - 1) * query.pageSize, query.page * query.pageSize).map(({ row, item }) => ({
+      ...this.summary(item, row, this.sourceAvailability(user, row.sources.find(source => source.paperId === item.paperId)!)),
+      sessionId: row.id, sessionVersion: row.version, ownerUserId: row.ownerUserId, studentId: row.studentId,
+      actor: this.store.find('users', { id: row.ownerUserId, role: 'student' }) ? 'learner' : 'self', editable: row.ownerUserId === user.id,
+      organization: paperReviewSummary(item.organization), updatedAt: row.updatedAt,
+    })) };
+  }
+  reviewCalendar(user: InMemoryUserAccount, input: unknown): { events: PaperReviewCalendarEvent[] } {
+    const query = validate(paperReviewCalendarQuerySchema, input), rows = this.reviewRows(user, query.scope, query.studentId);
+    return { events: rows.flatMap(row => row.items.filter(item => !item.organization?.archived && !!item.organization?.plannedDate && item.organization.plannedDate >= query.from && item.organization.plannedDate <= query.to)
+      .map(item => ({ id: row.id + ':' + item.id, sessionId: row.id, itemId: item.id, ownerUserId: row.ownerUserId, studentId: row.studentId, editable: row.ownerUserId === user.id,
+        title: (row.sources.find(source => source.paperId === item.paperId)?.title ?? '原卷') + (item.kind === 'document' ? ' · 整卷回看' : ' · 第' + item.position + '题'),
+        date: item.organization!.plannedDate!, status: item.organization!.status,
+        href: '/library/practice/review?' + new URLSearchParams({ session: row.id, item: item.id, scope: query.scope, ...(query.studentId ? { studentId: query.studentId } : {}) }).toString(),
+      }))).sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id)) };
+  }
+  exportReviewCalendar(user: InMemoryUserAccount, input: unknown) {
+    const { events } = this.reviewCalendar(user, input);
+    return { filename: 'studyagent-paper-review.ics', content: renderIcs('原卷复习', events.map(event => ({ uid: 'paper-review:' + event.id,
+      title: event.title, description: (event.status === 'reviewed' ? '已实际回看；' : '计划回看；') + '不代表独立知识掌握证据。' + event.href,
+      startsAt: event.date + 'T00:00:00Z', endsAt: new Date(Date.parse(event.date + 'T00:00:00Z') + 86400000).toISOString(), allDay: true }))) };
+  }
   item(user: InMemoryUserAccount, sessionId: string, itemId: string): PaperPracticeItemView {
     const row = this.require(user, sessionId), item = row.items.find(item => item.id === itemId); if (!item) throw new NotFoundException('题位不属于这次练习');
     const availability = this.availability(item, this.sourceAvailability(user, row.sources.find(source => source.paperId === item.paperId)!));
     const missingMedia = item.referenceMedia.filter(url => !this.repo.media(url)).length;
     return { ...this.summary(item, row, availability), html: availability.available ? item.html : '', options: availability.available ? item.options : [], pdfUrl: availability.available ? item.pdfUrl : null,
-      draft: item.draft, firstAnswer: item.firstAnswer, corrections: item.corrections,
+      draft: item.draft, firstAnswer: item.firstAnswer, corrections: item.corrections, organization: paperReviewOrganization(item.organization),
       reference: availability.available && item.revealed && item.firstAnswer ? { answerHtml: item.answerHtml, analysisHtml: item.analysisHtml, hasAnswer: item.hasAnswer && !missingMedia, missingMedia } : null };
   }
   commandResult(user: InMemoryUserAccount, sessionId: string, requestKey: string): PaperPracticeCommandResult | null {
@@ -168,15 +207,23 @@ export class PaperPracticeService {
     const previous = this.store.find('paperPracticeCommands', { sessionId, ownerUserId: user.id, requestKey: command.requestKey });
     if (previous) { if (previous.inputHash !== inputHash) throw new ConflictException('原操作请求已用于另一份内容'); return { requestKey: command.requestKey, inputHash, appliedVersion: previous.appliedVersion, session: this.view(user, row) }; }
     if (row.version !== command.expectedVersion) throw new ConflictException('练习已在其他页面更新，本机输入请保留并核对最新版本');
-    if (row.status === 'completed' && command.kind !== 'reveal') throw new ConflictException('这份练习已完成，首次回答与订正保留为只读记录');
-    if (row.status === 'paused' && !['resume', 'navigate', 'complete'].includes(command.kind)) throw new ConflictException('请先继续这份练习');
+    const organizing = ['organize', 'review_complete', 'review_reopen'].includes(command.kind);
+    if (row.status === 'completed' && command.kind !== 'reveal' && !organizing) throw new ConflictException('这份练习已完成，首次回答与订正保留为只读记录');
+    if (row.status === 'paused' && !['resume', 'navigate', 'complete'].includes(command.kind) && !organizing) throw new ConflictException('请先继续这份练习');
     const item = 'itemId' in command ? row.items.find(item => item.id === command.itemId) : undefined;
     if ('itemId' in command && !item) throw new NotFoundException('题位不属于这次练习');
-    if (item && command.kind !== 'navigate') {
+    if (item && command.kind !== 'navigate' && !organizing) {
       const availability = this.availability(item, this.sourceAvailability(user, row.sources.find(source => source.paperId === item.paperId)!));
       if (!availability.available) throw new ConflictException(availability.reason);
     }
     const now = new Date().toISOString();
+    if (command.kind === 'organize' || command.kind === 'review_complete' || command.kind === 'review_reopen') {
+      if (command.kind === 'review_complete' && (!item!.firstAnswer || item!.kind === 'missing')) throw new ConflictException('这道题尚未保留首次回答，不能标记为已回看。');
+      const next = organizePaperItem(item!.organization, command.kind, command.kind === 'organize' ? command.values : undefined, user.id, row.id + ':' + command.requestKey, now);
+      const total = row.items.reduce((bytes, other) => bytes + Buffer.byteLength(JSON.stringify(other.id === item!.id ? next : other.organization ?? null)), 0);
+      if (total > 16 * 1024 * 1024) throw new BadRequestException('这份练习整理历史超过16MiB预算，请先下载完整历史；本次修改尚未保存。');
+      item!.organization = next;
+    }
     if (command.kind === 'draft') { if (item!.firstAnswer) throw new ConflictException('首次回答已经提交，请在订正里继续'); item!.draft = command.text; }
     if (command.kind === 'submit') {
       if (item!.firstAnswer) throw new ConflictException('首次回答已经提交，不能覆盖原记录');

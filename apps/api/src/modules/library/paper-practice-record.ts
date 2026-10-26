@@ -1,4 +1,4 @@
-import type { PaperPracticeDisposition, PaperPracticeSelfReview } from '@study-agent/contracts';
+import type { PaperPracticeDisposition, PaperPracticeSelfReview, PaperReviewOrganization } from '@study-agent/contracts';
 
 export type PaperPracticeSource = {
   paperId: string; title: string; state: string; detailSha256: string; publicationVersion: number | null;
@@ -10,6 +10,7 @@ export type PaperPracticeItemRecord = {
   promptMedia: string[]; referenceMedia: string[]; draft: string;
   firstAnswer: { disposition: PaperPracticeDisposition; text: string; submittedAt: string } | null;
   revealed: boolean; selfReview: PaperPracticeSelfReview | null; corrections: Array<{ id: string; text: string; at: string }>;
+  organization?: PaperReviewOrganization;
 };
 export type PaperPracticeSessionRecord = {
   id: string; ownerUserId: string; studentId: string | null; requestKey: string; inputHash: string; sourceHash: string;

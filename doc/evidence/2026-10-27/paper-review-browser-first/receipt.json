@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-26T17:11:50.937Z",
+  "status": "review-workspace-first-browser-original",
+  "passed": 26,
+  "failed": 1,
+  "skipped": 0,
+  "retries": 0,
+  "deployed": false,
+  "finding": "The pending organization block was a labeled generic div, so the expected accessible region could not be located. Make it a semantic section; the failed case has not yet exercised its later three-refresh assertions.",
+  "files": [
+    {
+      "source": "data/qa/paper-practice-browser.json",
+      "file": "paper-practice-browser.json.gz",
+      "originalSha256": "001131c2db1b22ff954057e2be1820b4e8083dca1f46ae8b915e71e7141e28bf",
+      "sha256": "08df6301867bbb87dc494d83a3e849b6390b5b50435e450a5d168c46dc8db685"
+    },
+    {
+      "source": "data/qa/paper-review-first-browser.log",
+      "file": "paper-review-first-browser.log.gz",
+      "originalSha256": "1dad217d91188ae7bfc52038982d0f10c3893f35e97b6df4e3775e77e58215c3",
+      "sha256": "5e9b77c2b9cc31eea01f57b5f224cc4c64a2bc730c04f922320e20b44542b934"
+    },
+    {
+      "source": "apps/web/components/paper-review-editor.tsx",
+      "file": "paper-review-editor.tsx.gz",
+      "originalSha256": "31af7e73307b071836f3246e0f4c0b7bc392bbe2b1667c1aa87bfc8ffc542f57",
+      "sha256": "b570357e1a45f5ff4eda8d16cc96c2b18d82ad6e185f821328aadad25bb252a7"
+    },
+    {
+      "source": "tests/e2e/paper-practice.spec.ts",
+      "file": "paper-practice.spec.ts.gz",
+      "originalSha256": "2a9d876943fb249ac030221ad0518dc309e9e06aa3cd50902cd1b483a51d1494",
+      "sha256": "7d68470ceb6ab20af2e532f822c1bcd8af20d668db0b8cbf932265be86d53175"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-98459-r-clearing-later-reflection/error-context.md",
+      "file": "error-context.md.gz",
+      "originalSha256": "ef3b4d90ce2e3ceceabfa35578e208db2bdd3604f919bd44537c63e0a2c7bfe1",
+      "sha256": "c06d1f6829a3e782244c7879acf9becbbbe7b24cef532500afedc5a463b5f3c0"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-98459-r-clearing-later-reflection/trace.zip",
+      "file": "trace.zip",
+      "originalSha256": "e0fc9bae4b4bf28f78b33682b223794993e2876d5b7e2aaa864cd929e787454a",
+      "sha256": "e0fc9bae4b4bf28f78b33682b223794993e2876d5b7e2aaa864cd929e787454a"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/paper-practice-paper-revie-98459-r-clearing-later-reflection/test-failed-1.png",
+      "file": "test-failed-1.png",
+      "originalSha256": "8979c87038e00cd05474516409b6bb629940f503f77c0fb4b5fd417ebbb13798",
+      "sha256": "8979c87038e00cd05474516409b6bb629940f503f77c0fb4b5fd417ebbb13798"
+    }
+  ]
+}

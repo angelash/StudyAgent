@@ -1,3 +1,4 @@
+import { paperReviewOrganizationInputSchema, type PaperReviewOrganization } from './paper-review';
 export type PaperPracticeDisposition = 'answered' | 'dont_know' | 'skip';
 export type PaperPracticeSelfReview = 'matches_reference' | 'needs_correction' | 'unsure';
 export type PaperPracticeSelection = { paperId: string; positions?: number[] };
@@ -12,11 +13,12 @@ export type PaperPracticeItemView = PaperPracticeItemSummary & {
   firstAnswer: { disposition: PaperPracticeDisposition; text: string; submittedAt: string } | null;
   reference: { answerHtml: string; analysisHtml: string; hasAnswer: boolean; missingMedia: number } | null;
   corrections: Array<{ id: string; text: string; at: string }>;
+  organization?: PaperReviewOrganization;
 };
 export type PaperPracticeSessionView = {
   id: string; ownerUserId: string; studentId: string | null; status: 'in_progress' | 'paused' | 'completed';
   version: number; currentItemId: string; createdAt: string; updatedAt: string; completedAt: string | null;
-  permissions: { edit: boolean }; independentMeasurement: false;
+  permissions: { edit: boolean; organize?: boolean }; independentMeasurement: false;
   items: PaperPracticeItemSummary[];
   counts: { total: number; submitted: number; unanswered: number; missing: number; unavailable: number; dontKnow: number; skipped: number; needsCorrection: number };
 };
@@ -42,4 +44,6 @@ export const paperPracticeCommandSchema = z.discriminatedUnion('kind', [
   z.object({ ...paperPracticeCommandBase, kind: z.literal('correct'), itemId: paperPracticeId, text: z.string().trim().min(1).max(24000) }).strict(),
   z.object({ ...paperPracticeCommandBase, kind: z.literal('navigate'), itemId: paperPracticeId }).strict(),
   z.object({ ...paperPracticeCommandBase, kind: z.enum(['pause', 'resume', 'complete']), acknowledgeUnanswered: z.boolean().optional() }).strict(),
+  z.object({ ...paperPracticeCommandBase, kind: z.literal('organize'), itemId: paperPracticeId, values: paperReviewOrganizationInputSchema }).strict(),
+  z.object({ ...paperPracticeCommandBase, kind: z.enum(['review_complete', 'review_reopen']), itemId: paperPracticeId }).strict(),
 ]);
