@@ -7,15 +7,12 @@ import { editableTopicContentSchema } from './content-draft';
 import { TopicManuscript } from './manuscript';
 import { topicCopies, topicStorage } from './local-copies';
 import { topicCommandMatches } from './command-digest';
-
-export function downloadTopicJson(value: unknown, filename: string) {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' }));
-  const anchor = document.createElement('a'); anchor.href = url; anchor.download = filename; document.body.append(anchor); anchor.click(); anchor.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
+import { downloadTopicJson } from './download';
+export { downloadTopicJson } from './download';
+import { TopicFigureWorkbench } from './figure-workbench';
 type EditCommand = ReturnType<typeof topicWhiteboardEditSchema.parse>;
 type LocalEditCopy = { content: TopicWhiteboardContent; baseline: { fingerprint: string; revision: number; content: TopicWhiteboardContent }; pending: EditCommand | null };
-export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, onDirtyChange }: {
+export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: reportCanLeave, onDirtyChange }: {
   row: TopicWhiteboardDraftView; ownerId: string; onSaved: (row: TopicWhiteboardDraftView) => void; onCanLeaveChange: (value: boolean) => void;
   onDirtyChange: (value: boolean) => void;
 }) {
@@ -24,6 +21,11 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
   const [pending, setPending] = React.useState<EditCommand | null>(null), [ready, setReady] = React.useState(false), [busy, setBusy] = React.useState(false);
   const [notice, setNotice] = React.useState(''), [storageError, setStorageError] = React.useState(false);
   const [downloadedRevision, setDownloadedRevision] = React.useState(-1);
+  const [editorCanLeave, setEditorCanLeave] = React.useState(true), [figuresCanLeave, setFiguresCanLeave] = React.useState(true), [figurePending, setFigurePending] = React.useState(false);
+  const onCanLeaveChange = React.useCallback((value: boolean) => setEditorCanLeave(value), []);
+  const figureCanLeaveChange = React.useCallback((value: boolean) => setFiguresCanLeave(value), []);
+  const figurePendingChange = React.useCallback((value: boolean) => setFigurePending(value), []);
+  React.useEffect(() => { reportCanLeave(editorCanLeave && figuresCanLeave); }, [editorCanLeave, figuresCanLeave, reportCanLeave]);
   const latest = React.useRef(content), request = React.useRef<AbortController | null>(null), sequence = React.useRef(0);
   latest.current = content;
   const storage = React.useMemo(() => topicStorage('studyagent.topic-whiteboard.editor.v1.' + ownerId + '.' + row.id), [ownerId, row.id]), key = storage.key;
@@ -36,7 +38,7 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
     return { content: parsed.data, baseline: { ...saved.baseline, content: base.data }, pending: original?.success ? original.data : null };
   }
   function restoreCopy(saved: LocalEditCopy) { sequence.current++; setContent(saved.content); latest.current = saved.content; setBaseline(saved.baseline); setPending(saved.pending); }
-  React.useEffect(() => { onDirtyChange(!ready || dirty || changedOnServer || Boolean(pending)); }, [ready, dirty, changedOnServer, pending, onDirtyChange]);
+  React.useEffect(() => { onDirtyChange(!ready || dirty || changedOnServer || Boolean(pending) || figurePending); }, [ready, dirty, changedOnServer, pending, figurePending, onDirtyChange]);
   React.useEffect(() => {
     try {
       for (const candidate of storage.restoreKeys) {
@@ -145,8 +147,16 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange, on
             <button disabled={scene.exhibit.headers.length >= 5} onClick={() => { if (scene.exhibit?.kind === 'table') sceneChange(index, { exhibit: { ...scene.exhibit, headers: [...scene.exhibit.headers, '新列'], rows: scene.exhibit.rows.map(row => [...row, '']) } }); }}>添加列</button>
             <button disabled={scene.exhibit.headers.length <= 2} onClick={() => { if (scene.exhibit?.kind === 'table') sceneChange(index, { exhibit: { ...scene.exhibit, headers: scene.exhibit.headers.slice(0, -1), rows: scene.exhibit.rows.map(row => row.slice(0, -1)) } }); }}>删除最后一列</button></div></div>}
         <WhiteboardExhibit exhibit={scene.exhibit}/>
+        {scene.figure && <div className="tw-figure-caption"><p>本幕已选图片，保存时会重新核对原图和教学内容。</p>
+          <label>已选图片的替代说明<textarea maxLength={600} value={scene.figure.alt} onChange={event => sceneChange(index, { figure: { ...scene.figure!, alt: event.target.value } })}/></label>
+          <label>已选图片的图注<textarea maxLength={600} value={scene.figure.caption} onChange={event => sceneChange(index, { figure: { ...scene.figure!, caption: event.target.value } })}/></label>
+          <button type="button" onClick={() => { const { figure: _figure, ...teaching } = scene; change({ ...content, scenes: content.scenes.map((item, current) => current === index ? teaching : item) }); }}>移除这一幕的图片</button></div>}
       </details>)}
     </fieldset>
+    <TopicFigureWorkbench row={row} ownerId={ownerId} manuscriptDirty={dirty || changedOnServer || Boolean(pending)} figures={content.scenes.map(scene => scene.figure)}
+      onFigure={(index, figure) => {
+        change({ ...content, scenes: content.scenes.map((scene, current) => { if (current !== index) return scene; const { figure: _previous, ...teaching } = scene; return figure ? { ...teaching, figure } : teaching; }) });
+      }} onCanLeaveChange={figureCanLeaveChange} onPendingChange={figurePendingChange}/>
     <footer><button className="tw-primary" disabled={busy || !ready || row.status !== 'ready' || changedOnServer && !pending || !dirty && !pending}
       onClick={() => void save()}>{busy ? '正在核对保存回执…' : pending ? '恢复原修改请求' : '保存完整改稿'}</button></footer>
   </section>;

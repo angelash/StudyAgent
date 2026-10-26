@@ -1,0 +1,761 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-whiteboard-visuals\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--max-failures=1",
+      "tests/e2e/topic-whiteboard.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-whiteboard-visuals\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-whiteboard-visuals/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-whiteboard-visuals/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-whiteboard-visuals/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-whiteboard-visuals\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-whiteboard-visuals\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-whiteboard-visuals\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3147",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/topic-whiteboard-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "topic-whiteboard.spec.ts",
+      "file": "topic-whiteboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "login forms cannot submit before their client handlers are ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 836,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:30.498Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-f9987f084dfa9c0f93de",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 54,
+          "column": 5
+        },
+        {
+          "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:31.657Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-c9fc89af84b21cba2190",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "topic-figure: uncached complete image commands block leaving until their exact download and changed inputs require another copy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3820,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:39.471Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-e84c9ed1fdd6470267f8",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 106,
+          "column": 5
+        },
+        {
+          "title": "topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4144,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:43.299Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-62dd971c78e0180155a8",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 125,
+          "column": 5
+        },
+        {
+          "title": "topic-figure: complete verified image and keyboard reader fit 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5935,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:47.450Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-dc29a0f3951d7982ca46",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 138,
+          "column": 43
+        },
+        {
+          "title": "topic-figure: complete verified image and keyboard reader fit 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5923,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:53.393Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-d3c5db8500cd6d17d3fd",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 138,
+          "column": 43
+        },
+        {
+          "title": "topic-figure: complete verified image and keyboard reader fit 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:11:59.324Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-6e51b821646e6c71ef70",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 138,
+          "column": 43
+        },
+        {
+          "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:05.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-cc5fb6bbf463525cd1fa",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 151,
+          "column": 5
+        },
+        {
+          "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:10.040Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-08adb2f21322eb11af0c",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 190,
+          "column": 5
+        },
+        {
+          "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:27.316Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-8cb1d37b7a0b896e38b0",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 201,
+          "column": 5
+        },
+        {
+          "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3407,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:30.946Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-2db515c98ce4055960c8",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 212,
+          "column": 5
+        },
+        {
+          "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4084,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:34.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-6112ba6cc45b4fcf6508",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 221,
+          "column": 5
+        },
+        {
+          "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1418,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:38.455Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-005f4c7ef7719a0a0bf6",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 237,
+          "column": 5
+        },
+        {
+          "title": "another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3665,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:39.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-30a6557ae1e7c4726a83",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 254,
+          "column": 5
+        },
+        {
+          "title": "recovery: an uncached original cancellation survives object changes until its exact command is downloaded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:43.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-11b13ee3ffb486bd9f65",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 272,
+          "column": 5
+        },
+        {
+          "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:45.179Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-b817f4c2c190b308c732",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 290,
+          "column": 5
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:49.131Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-1b928351ddb87fe05b18",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 303,
+          "column": 43
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:52.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-608c7ceb00f09af9ae8a",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 303,
+          "column": 43
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T04:12:56.487Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-eb298190669c5cc984ec",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 303,
+          "column": 43
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T04:11:25.034Z",
+    "duration": 97116.23800000001,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

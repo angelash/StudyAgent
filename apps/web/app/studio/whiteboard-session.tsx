@@ -7,6 +7,7 @@ import type { WhiteboardPlayerProps } from './whiteboard-player';
 import { drawWhiteboardScene } from './whiteboard-canvas';
 import { isTopicWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedError } from './whiteboard-original';
 import { WhiteboardExhibit } from './whiteboard-exhibit';
+import { decodeTopicFigure, TopicFigureImage } from './topic-figure-image';
 import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError, whiteboardAudio } from './whiteboard-media';
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
@@ -108,7 +109,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   React.useEffect(() => {
     const request = new AbortController(), urls = new Set<string>(); setImagesReady(false);
     const sources = [...new Map(board.scenes.flatMap(item => item.source ? [[item.source.materialId + ':' + item.source.page, item.source] as const] : [])).entries()];
-    void Promise.all(sources.map(async ([key, source]) => {
+    const figures = board.scenes.flatMap(scene => scene.figure ? [scene.figure] : []);
+    void Promise.all([...sources.map(async ([key, source]) => {
       const token = getAuthToken();
       const response = await fetch(apiBaseUrl + '/api/learning/studio/materials/' + encodeURIComponent(source.materialId) + '/pages/' + source.page,
         { credentials: 'include', signal: request.signal, headers: token ? { Authorization: 'Bearer ' + token } : {} });
@@ -118,9 +120,11 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       const url = URL.createObjectURL(blob); urls.add(url); const image = new Image();
       await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error('来源页图片无法解码。')); image.src = url; });
       assertWhiteboardActive(request.signal); return [key, image] as const;
-    })).then(rows => { if (!request.signal.aborted) { setImages(new Map(rows)); setImagesReady(true); } }).catch(error => {
+    }), ...figures.map(async figure => {
+      const result = await decodeTopicFigure(figure, request.signal); urls.add(result.url); return [figure.snapshotId, result.image] as const;
+    })]).then(rows => { if (!request.signal.aborted) { setImages(new Map(rows)); setImagesReady(true); } }).catch(error => {
       if (request.signal.aborted) return;
-      if (error instanceof WhiteboardAccessError) closeRef.current?.(); else setNotice(error.message);
+      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error.message);
     });
     return () => { request.abort(); urls.forEach(url => URL.revokeObjectURL(url)); };
   }, [board]);
@@ -128,6 +132,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   React.useEffect(() => {
     dialog.current?.querySelector<HTMLButtonElement>('[aria-label="关闭白板"]')?.focus();
     const key = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || document.querySelector('.ws-dialog-layer')) return;
       if (event.key === 'Escape') { event.preventDefault(); closeRef.current?.(); }
       if (event.key !== 'Tab') return;
       const nodes = [...(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),select:not(:disabled),input:not(:disabled),summary,[tabindex="0"]') ?? [])]
@@ -200,6 +205,11 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     generation.current++; setPlaying(false); releaseAudio(); resumeAudioTime.current = null;
     setUnitIndex(Math.max(0, Math.min(units.length - 1, index))); setProgress(fraction);
   }
+  function pauseForFigure() {
+    generation.current++; setPlaying(false); const audio = resource.current?.audio;
+    if (audio) { audio.pause(); if (Number.isFinite(audio.currentTime)) resumeAudioTime.current = audio.currentTime; }
+    setNotice('已暂停当前句，关闭图片后点击播放继续。');
+  }
   function saveBlob(blob: Blob, suffix: string) {
     const url = URL.createObjectURL(blob); downloadUrls.current.add(url); const anchor = document.createElement('a');
     anchor.href = url; anchor.download = board.title.replace(/[\u0000-\u001f\\/:*?"<>|]/gu, '-').slice(0, 90) + suffix;
@@ -213,7 +223,13 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     setPlaying(false); resource.current?.audio.pause();
     const request = new AbortController(); exportRequest.current = request; setExporting('正在准备时间表…');
     let prepared: Awaited<ReturnType<typeof prepareWhiteboardExport>> | undefined;
+    const figureReleases: Array<() => void> = [];
     try {
+      if (!preview) await readWhiteboardOriginal(board, request.signal);
+      const exportImages = new Map(images);
+      if (video) for (const currentScene of board.scenes) if (currentScene.figure) {
+        const result = await decodeTopicFigure(currentScene.figure, request.signal); figureReleases.push(result.close); exportImages.set(currentScene.figure.snapshotId, result.image);
+      }
       prepared = await prepareWhiteboardExport(board, presentation, mode, voice, speed, request.signal,
         index => setExporting('正在准备音轨 ' + index + ' / ' + units.length));
       assertWhiteboardActive(request.signal);
@@ -221,9 +237,9 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         setExporting('正在实时录制 WebM，可随时取消…');
         const blob = await recordWhiteboardVideo(canvas.current!, prepared, request.signal, (item, fraction) => {
           const context = canvas.current?.getContext('2d'), currentScene = board.scenes.find(scene => scene.id === item.sceneId);
-          if (context && currentScene) drawWhiteboardScene(context, currentScene, fraction, images, item);
+          if (context && currentScene) drawWhiteboardScene(context, currentScene, fraction, exportImages, item);
         });
-        assertWhiteboardActive(request.signal); saveBlob(blob, '.webm'); setPreparedTimeline(prepared.timeline);
+        assertWhiteboardActive(request.signal); if (!preview) await readWhiteboardOriginal(board, request.signal); saveBlob(blob, '.webm'); setPreparedTimeline(prepared.timeline);
         setNotice(mode === 'cloud' ? '带云语音的 WebM 已生成；导出字幕将使用相同音轨时间表。' : '无声 WebM 已生成，采用估计阅读时长；字幕使用相同时间表。');
       } else {
         saveBlob(new Blob([whiteboardSrt(prepared.timeline)], { type: 'application/x-subrip;charset=utf-8' }), '.srt');
@@ -232,9 +248,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       }
     } catch (error) {
       if (request.signal.aborted) return;
-      if (error instanceof WhiteboardAccessError) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '导出未能完成，请重试。');
+      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '导出未能完成，请重试。');
     } finally {
       await prepared?.close();
+      figureReleases.forEach(release => release());
       if (exportRequest.current === request) { exportRequest.current = null; if (!request.signal.aborted) setExporting(null); }
     }
   }
@@ -245,7 +262,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <p>{mode === 'cloud' ? '逐句云语音 · 实际音轨结束后继续' : '逐句文字阅读 · 使用估计阅读时长'} · 板书按完整要点呈现</p>
       {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}</div>
       <button aria-label="关闭白板" onClick={onClose}>×</button></header>
-    <div className="wb-reading-layout"><div><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={720} aria-label={scene?.title ?? '白板'} /></div>
+    <div className="wb-reading-layout"><div><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={720} aria-label={scene?.title ?? '白板'} />
+      {scene?.figure && <TopicFigureImage compact source={scene.figure} title={scene.title} onOpen={pauseForFigure}/>}</div>
       <p className="wb-current-sentence" aria-live="polite" aria-atomic="true" data-unit-id={unit?.id}>{unit?.text ?? '这份白板没有可用旁白，请阅读完整笔记。'}</p>
       <label className="sa-whiteboard-scrubber"><span className="sr-only">播放进度（{activeTimeline.kind === 'decoded-audio' ? '实际音轨' : '估计阅读'}）</span>
         <input type="range" min={0} max={1000} disabled={exporting !== null || !unit} value={Math.round(ratio * 1000)} onChange={event => {
@@ -286,7 +304,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
       <h3>完整笔记与来源</h3>{board.scenes.map(item => <details key={item.id} open={item.id === scene?.id}><summary>{item.title}</summary>
         {item.body && <p>{item.body}</p>}{item.bullets && <ul>{item.bullets.map((bullet, index) => <li key={index}>{bullet}</li>)}</ul>}
-        <WhiteboardExhibit exhibit={item.exhibit}/>{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
+        <WhiteboardExhibit exhibit={item.exhibit}/>{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>
     </aside></div>
   </div>;

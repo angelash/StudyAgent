@@ -1,10 +1,13 @@
 import { expect, test, type Page } from '@playwright/test';
 import { createHash, randomUUID } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import sharp from 'sharp';
 import { browserEvidence } from './evidence';
 import { join } from 'node:path';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107'), base = '/learning/studio/topic-whiteboards';
+const figureBase = '/learning/studio/topic-whiteboard-visuals';
 // Complete in-flight overview/media routes before Playwright disposes their API responses.
 test.afterEach(async ({ page }) => { await page.unrouteAll({ behavior: 'wait' }); });
 async function fixture(page: Page, child = false) {
@@ -41,6 +44,14 @@ async function generate(page: Page, topic = '用匿名观察解释条件与推�
   await page.getByRole('button', { name: '生成教学稿', exact: true }).click();
 }
 async function ready(page: Page) { await expect(page.locator('.tw-generation-state')).toHaveText('待你核对', { timeout: 25000 }); await expect(page.getByLabel('白板标题')).toBeVisible(); }
+async function figure(page: Page, requirements = '以两个有交集的圆说明条件和观察的关系，保留完整标签。') {
+  const pane = page.getByRole('region', { name: '白板配图工作区' });
+  await pane.getByLabel('希望图片说明什么').fill(requirements);
+  await pane.getByRole('button', { name: '预检配图范围', exact: true }).click();
+  await expect(pane.getByText('本次完整教学范围与配图要求', { exact: true })).toBeVisible();
+  await expect(pane.getByRole('button', { name: '生成参考图', exact: true })).toBeEnabled();
+  await pane.getByRole('button', { name: '生成参考图', exact: true }).click(); return pane;
+}
 
 test('login forms cannot submit before their client handlers are ready', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, baseURL: test.info().project.use.baseURL });
@@ -51,6 +62,142 @@ test('login forms cannot submit before their client handlers are ready', async (
       for (const input of await page.locator('form input, form button').all()) await expect(input).toBeDisabled();
     }
   } finally { await context.close(); }
+});
+
+test('topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume', async ({ page }) => {
+  const f = await fixture(page); await generate(page); await ready(page); const id = new URL(page.url()).searchParams.get('draft')!;
+  let dropped = true, writes = 0;
+  await page.route('**/api/learning/studio/topic-whiteboard-visuals', async route => {
+    if (route.request().method() !== 'POST') return route.continue(); writes++;
+    if (dropped) { dropped = false; expect((await route.fetch()).status()).toBe(201); await route.abort('failed'); } else await route.continue();
+  });
+  await figure(page); const pane = page.getByRole('region', { name: '白板配图工作区' });
+  await expect(pane.getByRole('button', { name: '恢复原配图请求', exact: true })).toBeEnabled(); await page.reload(); await ready(page);
+  await pane.getByRole('button', { name: '恢复原配图请求', exact: true }).click();
+  await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible(); expect(writes).toBe(1);
+  expect((await f.call(figureBase + '?draftId=' + id + '&sceneIndex=0', undefined, 'GET')).total).toBe(1);
+  await pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).click();
+  await expect(page.locator('.cl-figure-reader-sheet img')).toBeVisible(); await page.keyboard.press('Escape');
+  await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeFocused();
+  await pane.getByRole('button', { name: '以原图继续修订', exact: true }).click();
+  await pane.getByLabel('具体修改').fill('只去掉顶端标题，保留圆、交集和其他标签。');
+  await pane.getByRole('button', { name: '预检配图范围', exact: true }).click(); await expect(pane.getByRole('button', { name: '生成修订图片', exact: true })).toBeEnabled();
+  await pane.getByRole('button', { name: '生成修订图片', exact: true }).click();
+  await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible();
+  await pane.getByRole('textbox', { name: '图片替代说明', exact: true }).fill('两个概念圆及其交集，说明观察和条件的关系。');
+  await pane.getByRole('textbox', { name: '图注', exact: true }).fill('比较观察与条件，保留这条完整图注。');
+  await expect(pane.locator('.tw-figure-list .tw-figure-thumbnail img').first()).toBeVisible();
+  await pane.getByRole('button', { name: '加入对照', exact: true }).last().click(); await expect(pane.getByRole('region', { name: '两个图片候选对照' })).toBeVisible();
+  await expect(pane.getByRole('region', { name: '两个图片候选对照' }).locator('img').first()).toBeVisible();
+  await expect.poll(() => page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('studyagent.topic-whiteboard.figures.')).map(key => JSON.parse(localStorage.getItem(key)!).caption))).toContain('比较观察与条件，保留这条完整图注。');
+  await page.reload(); await ready(page); await expect(pane.getByRole('textbox', { name: '图片替代说明', exact: true })).toHaveValue('两个概念圆及其交集，说明观察和条件的关系。');
+  await expect(pane.getByRole('textbox', { name: '图注', exact: true })).toHaveValue('比较观察与条件，保留这条完整图注。');
+  await pane.getByRole('checkbox', { name: '我已阅读图片，并核对本次要使用的标签和关系。' }).check();
+  await pane.getByRole('button', { name: '选入当前完整稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+  await expect(page.locator('.tw-review')).toContainText('针对旧稿');
+  const draft = await f.call(base + '/drafts/' + id, undefined, 'GET'); expect(draft.content.scenes[0].figure).toBeTruthy();
+  const candidate = await f.call(figureBase + '/' + draft.content.scenes[0].figure.visualId, undefined, 'GET'); expect(candidate.operation).toBe('edit'); expect(candidate.parentVisualId).toBeTruthy();
+  await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check();
+  await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
+  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player).toBeVisible();
+  await expect(player.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).first()).toBeVisible();
+  await player.getByRole('button', { name: '播放', exact: true }).click();
+  await player.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).first().click();
+  const unit = await page.locator('.wb-current-sentence').getAttribute('data-unit-id');
+  await expect(page.locator('.cl-figure-reader-sheet')).toBeVisible(); await expect(player.getByRole('button', { name: '播放', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape'); await expect(player).toBeVisible(); await expect(page.locator('.cl-figure-reader-sheet')).toHaveCount(0);
+  await expect(page.locator('.wb-current-sentence')).toHaveAttribute('data-unit-id', unit!);
+  await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'topic-figure-saved-player.png'), fullPage: false });
+  const board = await f.call(base + '/' + (await f.call(base + '/drafts/' + id, undefined, 'GET')).whiteboardId, undefined, 'GET');
+  expect(JSON.stringify(board)).not.toContain(candidate.id); expect(board.scenes[0].figure.sha256).toBe(candidate.sha256);
+  const downloaded = page.waitForEvent('download', { timeout: 30000 }); await player.getByRole('button', { name: '导出视频', exact: true }).click();
+  const video = await downloaded, videoPath = (await video.path())!, directory = browserEvidence('topic-whiteboard'); copyFileSync(videoPath, join(directory, 'topic-figure-video.webm'));
+  const probe = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v', 'error', '-show_format', '-show_streams', '-of', 'json', videoPath], { encoding: 'utf8', windowsHide: true }));
+  expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true); expect(probe.streams.some((stream: any) => stream.codec_type === 'video')).toBe(true);
+  const frame = spawnSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-ss', '0.2', '-i', videoPath, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], { windowsHide: true, maxBuffer: 8 * 1024 * 1024 });
+  expect(frame.status).toBe(0); const decoded = await sharp(frame.stdout).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  expect([decoded.info.width, decoded.info.height, decoded.info.channels]).toEqual([1280, 720, 3]);
+  let blue = 0, warm = 0;
+  for (let y = 206; y < 566; y++) for (let x = 88; x < 698; x++) {
+    const offset = (y * 1280 + x) * 3, r = decoded.data[offset], g = decoded.data[offset + 1], b = decoded.data[offset + 2];
+    if (b > r + 5 && b > g) blue++; if (r > b + 10 && g > b + 5) warm++;
+  }
+  expect(blue).toBeGreaterThan(9000); expect(warm).toBeGreaterThan(9000);
+  writeFileSync(join(directory, 'topic-figure-video-first-frame.png'), frame.stdout); writeFileSync(join(directory, 'topic-figure-video-probe.json'), JSON.stringify({ probe, decodedImageRegion: { blue, warm } }, null, 2) + '\n');
+  const captions = page.waitForEvent('download'); await player.getByRole('button', { name: '导出字幕', exact: true }).click(); const srt = readFileSync((await (await captions).path())!, 'utf8');
+  expect(srt).toContain('00:00:00,000 --> 00:00:02,000'); expect(srt).toContain('00:00:10,000 --> 00:00:12,000'); writeFileSync(join(directory, 'topic-figure-video.srt'), srt);
+  const later: string[] = []; page.on('download', value => later.push(value.suggestedFilename()));
+  await page.route('**/api/learning/studio/topic-whiteboards/*/figures/*/image', route => route.fulfill({ status: 200, contentType: 'image/png', body: Buffer.from('Changed frozen image fixture') }));
+  await player.getByRole('button', { name: '导出视频', exact: true }).click(); await expect(player.locator('.sa-whiteboard-notice')).toContainText('字节与已保存版本不一致'); expect(later).toEqual([]);
+  const retained = page.waitForEvent('download'); await player.getByRole('button', { name: '导出字幕', exact: true }).click(); expect(readFileSync((await (await retained).path())!, 'utf8')).toBe(srt);
+});
+
+test('topic-figure: uncached complete image commands block leaving until their exact complete download', async ({ page }) => {
+  await fixture(page); await generate(page); await ready(page);
+  await page.evaluate(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) {
+    if (key.startsWith('studyagent.topic-whiteboard.figures.')) throw new DOMException('Synthetic unavailable image storage', 'QuotaExceededError'); return original.call(this, key, value);
+  }; });
+  let writes = 0;
+  await page.route('**/api/learning/studio/topic-whiteboard-visuals', async route => {
+    if (route.request().method() !== 'POST') return route.continue(); writes++; expect((await route.fetch()).status()).toBe(201); await route.abort('failed');
+  });
+  const pane = await figure(page, '即使本机拒写，也要保留这一完整需求及原图生成命令。');
+  await expect(pane.getByRole('button', { name: '恢复原配图请求', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: '＋ 新白板', exact: true }).click(); await expect(pane).toBeVisible();
+  const download = page.waitForEvent('download'); await pane.getByRole('button', { name: '下载完整配图请求', exact: true }).click();
+  const saved = JSON.parse(readFileSync((await (await download).path())!, 'utf8'));
+  expect(saved.pending.body).toMatchObject({ operation: 'generate', requirements: '即使本机拒写，也要保留这一完整需求及原图生成命令。' });
+  expect(saved.pending.body.requestKey).toBeTruthy(); expect(saved.draftId).toBe(saved.pending.body.draftId); expect(writes).toBe(1);
+  expect(saved.pending.path).toBe(figureBase);
+  await page.getByRole('button', { name: '＋ 新白板', exact: true }).click(); await expect(pane).toHaveCount(0);
+});
+
+test('topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate', async ({ page }) => {
+  const f = await fixture(page); await generate(page); await ready(page); const id = new URL(page.url()).searchParams.get('draft')!;
+  await page.route('**/api/learning/studio/topic-whiteboard-visuals/*/image', route => route.fulfill({ status: 200, contentType: 'image/png', body: Buffer.from('Synthetic changed PNG bytes') }));
+  const pane = await figure(page), current = pane.getByRole('article', { name: '当前图片候选' });
+  await expect(current.getByRole('alert')).toContainText('字节与已保存版本不一致'); await expect(current.getByRole('button', { name: '选入当前完整稿', exact: true })).toBeDisabled();
+  await expect(current.locator('.tw-figure-open')).toHaveCount(0);
+  await page.unroute('**/api/learning/studio/topic-whiteboard-visuals/*/image');
+  await current.getByRole('button', { name: '重新读取图片', exact: true }).click();
+  await expect(current.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible();
+  expect((await f.call(figureBase + '?draftId=' + id + '&sceneIndex=0', undefined, 'GET')).total).toBe(1);
+});
+
+test('topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation', async ({ page }) => {
+  const f = await fixture(page); await generate(page); await ready(page); const id = new URL(page.url()).searchParams.get('draft')!;
+  const pane = await figure(page, '[image-pause-once] 暂停的匿名概念图，用于验证原任务取消和重试。');
+  const current = pane.getByRole('article', { name: '当前图片候选' }); await expect(current.getByRole('heading', { name: '正在生成参考图', exact: true })).toBeVisible();
+  await current.getByRole('button', { name: '取消图片生成', exact: true }).click();
+  await expect(current.getByRole('heading', { name: '生成已取消', exact: true })).toBeVisible();
+  await current.getByRole('button', { name: '重试原图片任务', exact: true }).click(); await expect(current.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible();
+  const list = await f.call(figureBase + '?draftId=' + id + '&sceneIndex=0', undefined, 'GET'); expect(list.total).toBe(1); expect(list.items[0].task.generation).toBe(2);
+});
+
+test('topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads', async ({ page }) => {
+  await fixture(page); await generate(page); await ready(page); const second = await page.context().newPage();
+  try {
+    await second.goto(page.url()); await ready(second);
+    const firstPane = page.getByRole('region', { name: '白板配图工作区' }), secondPane = second.getByRole('region', { name: '白板配图工作区' });
+    await firstPane.getByLabel('希望图片说明什么').fill('第一标签页完整的配图要求。'); await secondPane.getByLabel('希望图片说明什么').fill('第二标签页不同的配图要求。');
+    const copies = () => page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('studyagent.topic-whiteboard.figures.')).map(key => JSON.parse(localStorage.getItem(key)!).form.requirements));
+    await expect.poll(copies).toContain('第一标签页完整的配图要求。'); await expect.poll(copies).toContain('第二标签页不同的配图要求。');
+    await page.reload(); await ready(page); await expect(firstPane.getByLabel('希望图片说明什么')).toHaveValue('第一标签页完整的配图要求。');
+    await second.reload(); await ready(second); await expect(secondPane.getByLabel('希望图片说明什么')).toHaveValue('第二标签页不同的配图要求。');
+  } finally { await second.close(); }
+});
+
+for (const width of [390, 768, 1440]) test('topic-figure: complete verified image and keyboard reader fit ' + width, async ({ page }) => {
+  await page.setViewportSize({ width, height: 900 }); await fixture(page); await generate(page); await ready(page); const pane = await figure(page);
+  await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  await pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).click();
+  const reader = page.locator('.cl-figure-reader-sheet'); await expect(reader).toBeVisible();
+  const image = reader.locator('img'); expect(await image.evaluate((item: HTMLImageElement) => [item.naturalWidth, item.naturalHeight])).toEqual([1536, 1024]);
+  expect(await reader.evaluate(item => item.scrollWidth <= item.clientWidth + 1)).toBe(true);
+  await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'topic-figure-reader-' + width + '.png'), fullPage: false });
+  await page.keyboard.press('Escape'); await expect(reader).toHaveCount(0);
+  await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeFocused();
 });
 
 test('adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player', async ({ page }) => {

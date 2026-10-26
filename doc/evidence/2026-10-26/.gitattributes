@@ -3,3 +3,7 @@ topic-figure-http/*.json -text
 topic-figure-http/*.log -text whitespace=cr-at-eol,-blank-at-eof
 topic-figure-snapshots/*.json -text
 topic-figure-snapshots/*.log -text whitespace=cr-at-eol,-blank-at-eof
+topic-figure-ui/* -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+topic-figure-ui-initial/* -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+topic-figure-video-initial/* -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+topic-figure-full-api-initial/* -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol

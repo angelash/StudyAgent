@@ -7,7 +7,7 @@ exports.installWhiteboardMediaFixture=app=>{
   const store=app.get(load('infrastructure/in-memory-store.service').InMemoryStoreService),speech=app.get(load('modules/ai/speech.service').SpeechService);
   const {hashToken}=load('modules/auth/auth.service'),{requestToken}=load('common/auth.guard'),original=speech.synthesize.bind(speech);
   speech.synthesize=async(text,voice)=>{
-    if(!text.includes('[whiteboard-fixture]'))return original(text,voice);
+    if(!text.includes('[whiteboard-fixture]')&&!['fixture-a','fixture-b','fixture-delay','fixture-fail'].includes(voice))return original(text,voice);
     if(voice==='fixture-delay')await new Promise(resolve=>setTimeout(resolve,1800));
     if(voice==='fixture-fail')throw new (require('@nestjs/common').ServiceUnavailableException)('Synthetic whiteboard audio failure');
     const rate=8000,count=16000,bytes=Buffer.alloc(44+count*2);bytes.write('RIFF',0);bytes.writeUInt32LE(bytes.length-8,4);bytes.write('WAVEfmt ',8);bytes.writeUInt32LE(16,16);bytes.writeUInt16LE(1,20);bytes.writeUInt16LE(1,22);bytes.writeUInt32LE(rate,24);bytes.writeUInt32LE(rate*2,28);bytes.writeUInt16LE(2,32);bytes.writeUInt16LE(16,34);bytes.write('data',36);bytes.writeUInt32LE(count*2,40);

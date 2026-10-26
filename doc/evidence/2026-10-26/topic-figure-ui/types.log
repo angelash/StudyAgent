@@ -1,0 +1,12 @@
+
+> study-agent@0.1.0 lint
+> npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web
+
+
+> @study-agent/api@0.1.0 lint
+> tsc -p tsconfig.json --noEmit
+
+
+> @study-agent/web@0.1.0 lint
+> tsc -p tsconfig.json --noEmit
+

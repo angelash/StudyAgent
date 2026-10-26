@@ -1,0 +1,17 @@
+{
+  "reason": "The agent invoked Vitest from the repository root with --root apps/api. Five existing suites resolve operation scripts from process.cwd() and require the documented apps/api working directory. No application change is justified by this command failure.",
+  "passed": 1312,
+  "failedTests": 3,
+  "failedFiles": 5,
+  "skippedTests": 50,
+  "files": [
+    {
+      "name": "topic-figure-full-api-initial.json",
+      "sha256": "d94aa3e3ae77a6d314557565942ee0aa7618103bac21d4ef980e93bf83e4fb77"
+    },
+    {
+      "name": "topic-figure-full-api-initial.log",
+      "sha256": "05b8ee00be28d3dc7815798ef87066d89ce63d84cbac0fb372ac98acf85eb0c9"
+    }
+  ]
+}

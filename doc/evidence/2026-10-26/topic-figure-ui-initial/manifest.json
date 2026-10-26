@@ -1,0 +1,35 @@
+{
+  "phase": "First image browser run",
+  "result": {
+    "passed": 1,
+    "failed": 1,
+    "notRun": 17
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "size": 20580,
+      "sha256": "630dbec518cdfc53de958e62069d4435b4deaf569d9ab421da82ab5aaa41e4d5"
+    },
+    {
+      "name": "error-context.md",
+      "size": 38776,
+      "sha256": "bc75a5913a8324669b9bfab0c8ce85bbba03a74e9abf1953b2a668e075ed77d9"
+    },
+    {
+      "name": "test-failed-1.png",
+      "size": 136771,
+      "sha256": "0230620291ae935fa5cfbbfbca07c13fc559ccd1eae8b10bf321a353ccefb111"
+    },
+    {
+      "name": "topic-figure-ui-browser-initial.log",
+      "size": 4245,
+      "sha256": "59e63e34c960e7f1a416bba6a3e00e62c8f46f7542fc48a97adfd103bd40f39d"
+    },
+    {
+      "name": "trace.zip",
+      "size": 1980846,
+      "sha256": "686372e5f80d4c36d0a3a12ae8f15bf859d183e8a7d2b6694c4a19efa882a739"
+    }
+  ]
+}

@@ -173,7 +173,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='studioTopicWhiteboardVisuals')result[name]=[];
     else if(name==='studioTopicWhiteboardDrafts')result[name]=records.filter(row=>row.ownerUserId===actorId)
       .map(({prepared,authorization:_auth,commands:_commands,taskId:_task,requestHash:_hash,...row})=>{
-        const withoutFigures=(content:Row|null)=>content?{...content,scenes:content.scenes.map(({figure:_figure,...scene}:Row)=>scene)}:content;
+        const withoutFigures=(content:Row|null)=>content&&Array.isArray(content.scenes)?{...content,scenes:content.scenes.map(({figure:_figure,...scene}:Row)=>scene)}:content;
         return {...row,content:withoutFigures(row.content),originalContent:withoutFigures(row.originalContent),
           ...(row.history?{history:row.history.map((item:Row)=>({...item,content:withoutFigures(item.content)}))}:{}),prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId};
       });

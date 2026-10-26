@@ -1,0 +1,205 @@
+{
+  "status": "isolated-ui-checkpoint",
+  "deployed": false,
+  "sourceRevision": "3e8a86087ffcedcc2a593e9288610a3838ee5104",
+  "at": "2026-10-26T04:52:23.882Z",
+  "browser": {
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "originalAttempts": 32,
+    "retriedAttempts": 0
+  },
+  "api": {
+    "passed": 1315,
+    "failed": 0,
+    "environmentSkipped": 53
+  },
+  "nativeFigurePostgres": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "nativeTopicPostgres": {
+    "passed": 14,
+    "failed": 0,
+    "sqliteOnlySkipped": 2
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 38139,
+      "sha256": "b5ac582b5238615a4319367cb335696a9d3b2495174e2a21cc8f29e332e7eca6"
+    },
+    {
+      "name": "browser.log",
+      "bytes": 5649,
+      "sha256": "bccb3618fe44c19c66c26db6edeeb69beb34fe33d54a3d31c3de690dfc7a96ce"
+    },
+    {
+      "name": "api-original.json",
+      "bytes": 629601,
+      "sha256": "ea779de60240a0a9f6e368de48728287d473fcddb1fcdcbb5f4be51a97a7488a"
+    },
+    {
+      "name": "api.log",
+      "bytes": 54982,
+      "sha256": "f610e59998659fd5a1d7ddb503c47584b440615dd4ea98933aa79e43b311e24e"
+    },
+    {
+      "name": "figure-postgres-original.json",
+      "bytes": 9618,
+      "sha256": "20f7c8e09407407aba239a2c31441b48febf01092b34e50f607f3dc4df9289a5"
+    },
+    {
+      "name": "topic-postgres-original.json",
+      "bytes": 8820,
+      "sha256": "190ab31ba3f99930817c3e88a5c47cb91600c0bd82b4c1cd5877b34f562aa8d4"
+    },
+    {
+      "name": "types.log",
+      "bytes": 256,
+      "sha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee"
+    },
+    {
+      "name": "build.log",
+      "bytes": 1410,
+      "sha256": "c7b0a9a8c21f9dbbf91d89e442f208362672ad83601eda1501eb2d18b6a336f2"
+    },
+    {
+      "name": "topic-figure-reader-390.png",
+      "bytes": 68051,
+      "sha256": "97741ca876e45668939ff9a23663d4c57105aec3fd3e524e3c2af8ef2de2fd53"
+    },
+    {
+      "name": "topic-figure-reader-768.png",
+      "bytes": 148837,
+      "sha256": "80f640ec75444bb9b35d06db9936cbc93905be6f6bc07baa219759c2b1fe3714"
+    },
+    {
+      "name": "topic-figure-reader-1440.png",
+      "bytes": 250461,
+      "sha256": "613ca60d99ba4e68692b7a190fae44161d7b1be31a62fed07dd1b64ea0770640"
+    },
+    {
+      "name": "topic-figure-saved-player.png",
+      "bytes": 122453,
+      "sha256": "e2ba8ef0c6aaf84c2d05f55906155674d86b7ad6152c736376980bf5241f7d23"
+    },
+    {
+      "name": "topic-figure-video.webm",
+      "bytes": 2226261,
+      "sha256": "b4d1fa34e8d5780746482aa468013522378e6ef207755942907fda1b91631904"
+    },
+    {
+      "name": "topic-figure-video.srt",
+      "bytes": 521,
+      "sha256": "2d2f189311f99d1b69c730f70c7e38c4ee5a73f3b38cde8096b44a1ad7e721da"
+    },
+    {
+      "name": "topic-figure-video-first-frame.png",
+      "bytes": 193861,
+      "sha256": "3e7d70120f2b47d33768bb21953aba6784fabb5925a526fa13bbcea20b760efb"
+    },
+    {
+      "name": "topic-figure-video-probe.json",
+      "bytes": 3319,
+      "sha256": "9b47b614f7285d2207109a31c50c40986f837a65f1de4beb5377d32ff9c4419d"
+    }
+  ],
+  "sources": [
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "sha256": "ed95defd444d8181e62fc383cf8a464adb7773c528202a4d220f0c3a5e1b148e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "sha256": "f380a87b5e36c66be441205097506fc22a2f1f5aa07f34b9d3e7cb00a12e3ecb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "sha256": "e1679fa730acba7fc0aef2920c842ff005aa4f195088cb769b681b396b97ac86"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "sha256": "fcfd3648b5217ed6d0524eb5c495bc5efb58f0efd34dd07d4c714c3b58078ece"
+    },
+    {
+      "path": "apps/web/app/studio/topic-figure-image.css",
+      "sha256": "12466101f6c5cadfa5db1e886c573954e5fb549d5e25ab2e52c1f19a14cef382"
+    },
+    {
+      "path": "apps/web/app/studio/topic-figure-image.tsx",
+      "sha256": "0a8765b8431b3dc15471388c4a58bbb10ca19d50b29307039dcf1f9c2d874946"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-canvas.tsx",
+      "sha256": "fda674eb714a93b92fed0c407224b3864018af11e9f2103d82a9b47cdc6093b2"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "0e869012fa8cc73781e4fe00ef84e5485b4fc424497776ef345995ca8831afc2"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/command-digest.ts",
+      "sha256": "112bf2f4fb03c5f1705ad4eb2c57ef64fda1524e2b8e595034f09da4efa0d033"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/content-draft.ts",
+      "sha256": "56c226244e6ae8d4ab7002a4e023fd9c88aa893b44e8404c8e5fc8deb4a55de2"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/content-editor.tsx",
+      "sha256": "7b6d0f0d943b3684a16ff37fd66cc576b51b3bfde842f9348f0353d8d61d78d9"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/download.ts",
+      "sha256": "b5892cd8b98e6a4c167f2c1d49927927e1c2d3f5808849512e42540557cb6cfc"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/figure-workbench.tsx",
+      "sha256": "ddfbb189c917262965789a0b0419773176d4a5ec847499a9c4d3a3833776a075"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/whiteboards.css",
+      "sha256": "d0f29f888adacc4239b0868a606ec7f146dcb4eda5647b898998a7e945c55c61"
+    },
+    {
+      "path": "scripts/architecture/project-feature-definitions.cjs",
+      "sha256": "f43b624132ef6e70a18d5d20337d0c8d28655569afd210a99b57cdca3ef8159a"
+    },
+    {
+      "path": "scripts/qa/source-course-test-api.cjs",
+      "sha256": "05d66dd8f893fcdddeed043301cac8da22aa6b9a1692dc299b6f8f336ef200c5"
+    },
+    {
+      "path": "scripts/qa/whiteboard-media-fixture.cjs",
+      "sha256": "ec353f841825420c9f84a74d49b1cbbcd391ba87cb8af2ac414b852b95b921e6"
+    },
+    {
+      "path": "tests/e2e/topic-whiteboard.spec.ts",
+      "sha256": "f60c5eec4ed8572d350f8d4e75c980674e206849b2f70197cebc0951405d86f0"
+    }
+  ],
+  "failures": [
+    "Initial browser input lookup used an exact label selector that did not resolve the controlled textarea; the accessible textbox role matches its actual name. Original trace/screenshot/JSON retained.",
+    "The first added complete-figure video test exposed an offline speech fixture which only recognized the first tagged sentence; all explicit fixture voices now produce controlled WAVs for the full narration. No production speech fallback was added.",
+    "The first complete API command used the wrong working directory; five existing test files resolved scripts outside the repository. Original 1312-pass/3-fail/50-skip run and two collection failures retained, then the documented apps/api invocation passed all1315 tests.",
+    "Git initially reused pre-attribute normalized entries for two raw type-check logs. Explicit renormalization under -text recovered the original byte digests; staged bytes rechecked."
+  ],
+  "deliveredInBranch": [
+    "Recoverable scene figure generation/edit/cancel/retry and exact command receipts",
+    "Verified candidate thumbnails, side-by-side comparison and explicitly selected complete manuscripts",
+    "Per-document input/alt/caption/pending recovery, two-tab separation and actual download before leaving uncached work",
+    "Authorized SHA/dimension verification, aspect-preserving keyboard image reader with focus restoration and paused sentence continuation",
+    "Actual WebM contains both archived image colors and a decodable audio stream; complete 12-second SRT matches six controlled WAVs",
+    "A later changed image prevents video download while preserving the earlier successful SRT"
+  ],
+  "limits": [
+    "Scoped browser and native counts overlap. These are not all requirement acceptance or overall completion.",
+    "Browser images and WAVs use controlled fixtures; this phase adds zero live provider invocations. Prior two actual CLI samples are separate evidence.",
+    "Complex formula video still uses the preserved raw LaTeX and remains unfinished. Original HyperKnow CSS/fonts/DPR/audio, teacher/device/long-term gates remain.",
+    "Full250-page-journey regression, exact124 CI, fresh current123/schema16 rollback and schema17 daemon delivery remain. Main stays on123."
+  ]
+}

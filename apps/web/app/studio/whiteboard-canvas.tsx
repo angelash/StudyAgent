@@ -52,8 +52,9 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
   context.fillStyle = '#dbe4da'; context.fillRect(88, 88, 1104, 1);
   context.fillStyle = '#243229'; context.fillRect(88, 120, 52, 2);
   context.fillStyle = '#718474'; context.fillRect(145, 120, 96 * progress, 2);
-  context.font = scene.exhibit ? '500 32px Georgia, "Microsoft YaHei UI", serif' : '500 47px Georgia, "Microsoft YaHei UI", serif'; context.fillStyle = '#111712';
-  const titleBottom = wrap(context, scene.title, 88, scene.exhibit ? 154 : 194, 1020, scene.exhibit ? 42 : 58, 2);
+  const compact = Boolean(scene.exhibit || scene.figure);
+  context.font = compact ? '500 32px Georgia, "Microsoft YaHei UI", serif' : '500 47px Georgia, "Microsoft YaHei UI", serif'; context.fillStyle = '#111712';
+  const titleBottom = wrap(context, scene.title, 88, compact ? 154 : 194, 1020, compact ? 42 : 58, 2);
   const sourceImage = scene.source ? pageImages?.get(scene.source.materialId + ':' + scene.source.page) : undefined;
   if (scene.source) {
     context.font = '600 14px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#516857';
@@ -62,35 +63,48 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
     context.fillText(scene.source.label, 198, titleBottom + 18);
   }
   let contentBottom = titleBottom + (scene.source ? 38 : 16);
+  if (scene.figure) {
+    const image = pageImages?.get(scene.figure.snapshotId), box = { x: 88, y: Math.max(206, titleBottom + 6), width: 610, height: 360 };
+    context.fillStyle = '#fff'; context.fillRect(box.x, box.y, box.width, box.height); context.strokeStyle = '#d9dfd7'; context.strokeRect(box.x, box.y, box.width, box.height);
+    if (image?.complete && image.naturalWidth) {
+      const scale = Math.min(box.width / image.naturalWidth, box.height / image.naturalHeight), width = image.naturalWidth * scale, height = image.naturalHeight * scale;
+      context.drawImage(image, box.x + (box.width - width) / 2, box.y + (box.height - height) / 2, width, height);
+    } else { context.fillStyle = '#657268'; context.font = '18px "Microsoft YaHei UI", sans-serif'; context.fillText('原图片尚未完整读取，文字稿仍可阅读。', box.x + 18, box.y + 48); }
+    context.font = '12px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#657268';
+    const lines = whiteboardTextLines(scene.figure.caption || scene.figure.alt, box.width, text => context.measureText(text).width), pages = Math.max(1, Math.ceil(lines.length / 3));
+    const ratio = unit && scene.narration.length ? (unit.start + (unit.end - unit.start) * progress) / scene.narration.length : progress;
+    const page = Math.min(pages - 1, Math.max(0, Math.floor(ratio * pages)));
+    lines.slice(page * 3, page * 3 + 3).forEach((line, index) => context.fillText(line, box.x, 579 + index * 14));
+  }
   if (scene.exhibit) {
-    const top = titleBottom + 6, available = 594 - top;
+    const top = titleBottom + 6, available = 594 - top, exhibitX = scene.figure ? 740 : 88, exhibitWidth = scene.figure ? 452 : 1104;
     if (scene.exhibit.kind === 'table') {
       try {
-        const table = scene.exhibit, layout = whiteboardTableLayout(context, table, 1104, available);
+        const table = scene.exhibit, layout = whiteboardTableLayout(context, table, exhibitWidth, available);
         const ratio = unit && scene.narration.length ? (unit.start + (unit.end - unit.start) * progress) / scene.narration.length : progress;
         const pageIndex = Math.min(layout.pages.length - 1, Math.max(0, Math.floor(ratio * layout.pages.length))), rows = layout.pages[pageIndex];
         const drawRow = (cells: string[][], y: number, rowHeight: number, header = false) => {
-          context.fillStyle = header ? '#e8ede6' : '#fff'; context.fillRect(88, y, 1104, rowHeight);
+          context.fillStyle = header ? '#e8ede6' : '#fff'; context.fillRect(exhibitX, y, exhibitWidth, rowHeight);
           cells.forEach((lines, column) => {
-            context.strokeStyle = '#d9e1d5'; context.strokeRect(88 + column * layout.columnWidth, y, layout.columnWidth, rowHeight);
+            context.strokeStyle = '#d9e1d5'; context.strokeRect(exhibitX + column * layout.columnWidth, y, layout.columnWidth, rowHeight);
             context.fillStyle = '#26382b'; context.font = (header ? '600 ' : '') + layout.font + 'px "Microsoft YaHei UI", sans-serif';
-            lines.forEach((line, index) => context.fillText(line, 100 + column * layout.columnWidth, y + 10 + layout.font + index * layout.lineHeight));
+            lines.forEach((line, index) => context.fillText(line, exhibitX + 12 + column * layout.columnWidth, y + 10 + layout.font + index * layout.lineHeight));
           });
         };
         drawRow(layout.headerLines, top, layout.headerHeight, true); let y = top + layout.headerHeight;
         for (const row of rows) { drawRow(row.cells, y, row.height); y += row.height; }
         context.font = '12px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#657268';
-        context.fillText('对照表 ' + (pageIndex + 1) + ' / ' + layout.pages.length + ' · 第' + (rows[0].index + 1) + '—' + (rows.at(-1)!.index + 1) + '行 · 完整表格见讲稿', 92, 612);
+        context.fillText('对照表 ' + (pageIndex + 1) + ' / ' + layout.pages.length + ' · 第' + (rows[0].index + 1) + '—' + (rows.at(-1)!.index + 1) + '行 · 完整表格见讲稿', exhibitX + 4, 612);
       } catch {
-        context.font = '20px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#26382b'; context.fillText('请在完整讲稿中核对这张表格。', 92, top + 40);
+        context.font = '20px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#26382b'; context.fillText('请在完整讲稿中核对这张表格。', exhibitX + 4, top + 40);
       }
     } else {
       const exhibit = scene.exhibit;
       for (const font of [27, 23, 19, 15, 11, 9]) {
         context.font = font + 'px "Microsoft YaHei UI", sans-serif';
-        const lines = whiteboardTextLines(exhibit.latex.replace(/\s+/gu, ' ').trim() + '\n\n' + exhibit.explanation.replace(/\s+/gu, ' ').trim(), 1072, text => context.measureText(text).width);
+        const lines = whiteboardTextLines(exhibit.latex.replace(/\s+/gu, ' ').trim() + '\n\n' + exhibit.explanation.replace(/\s+/gu, ' ').trim(), exhibitWidth - 32, text => context.measureText(text).width);
         if (lines.length * (font + 8) > available && font !== 9) continue;
-        context.fillStyle = '#26382b'; lines.forEach((line, index) => context.fillText(line, 98, top + font + index * (font + 8))); break;
+        context.fillStyle = '#26382b'; lines.forEach((line, index) => context.fillText(line, exhibitX + 10, top + font + index * (font + 8))); break;
       }
     }
   } else if (scene.kind === 'pdf_page' && sourceImage?.complete && sourceImage.naturalWidth) {
@@ -102,12 +116,18 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
     context.font = '22px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
     if (scene.body) contentBottom = wrap(context, scene.body, 552, 320, 618, 37, 6);
     contentBottom = Math.max(contentBottom, 500);
+  } else if (scene.figure) {
+    context.font = '19px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
+    if (scene.body) wrap(context, scene.body, 740, titleBottom + 42, 452, 28, 6);
+    const indices = unit?.visibleBulletIndices ?? scene.bullets?.map((_, index) => index) ?? [];
+    indices.slice(-3).forEach((index, row) => { context.fillStyle = '#66826c'; context.beginPath(); context.arc(748, 430 + row * 54, 4, 0, Math.PI * 2); context.fill();
+      context.fillStyle = '#303a32'; context.font = '16px "Microsoft YaHei UI", sans-serif'; wrap(context, scene.bullets![index], 765, 436 + row * 54, 420, 22, 2); });
   } else {
     context.font = '23px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#354038';
     if (scene.body) contentBottom = wrap(context, scene.body, 92, contentBottom + 27, 1014, 36, 3);
   }
   const bulletsTop = scene.visual ? 500 : Math.max(350, contentBottom + 34);
-  if (!scene.exhibit && scene.bullets?.length) {
+  if (!scene.exhibit && !scene.figure && scene.bullets?.length) {
     const indices = unit?.visibleBulletIndices ?? scene.bullets.map((_, index) => index);
     const shown = indices.slice(-3);
     shown.forEach((index, row) => {

@@ -1,0 +1,50 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:61716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:80800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:66240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\topic-whiteboard.spec.ts:54:5 › login forms cannot submit before their client handlers are ready (903ms)
+  x   2 tests\e2e\topic-whiteboard.spec.ts:65:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (21.7s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests\e2e\topic-whiteboard.spec.ts:65:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('region', { name: '白板配图工作区' }).getByLabel('图片替代说明', { exact: true })
+
+
+      83 |   await pane.getByRole('button', { name: '生成修订图片', exact: true }).click();
+      84 |   await expect(pane.getByRole('button', { name: '放大参考图：先核对观察', exact: true })).toBeVisible();
+    > 85 |   await pane.getByLabel('图片替代说明', { exact: true }).fill('两个概念圆及其交集，说明观察和条件的关系。');
+         |                                                    ^
+      86 |   await pane.getByRole('checkbox', { name: '我已阅读图片，并核对本次要使用的标签和关系。' }).check();
+      87 |   await pane.getByRole('button', { name: '选入当前完整稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+      88 |   await expect(page.locator('.tw-review')).toContainText('针对旧稿');
+        at F:\workspace\github\StudyAgent-whiteboard-visuals\tests\e2e\topic-whiteboard.spec.ts:85:52
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\topic-whiteboard.spec.ts:65:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume 
+  17 did not run
+  1 passed (29.9s)
+  1 error was not a part of any test, see above for details

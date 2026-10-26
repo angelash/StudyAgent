@@ -1,0 +1,43 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:61116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:37148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 30 tests using 1 worker
+
+(node:51452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\topic-whiteboard.spec.ts:54:5 › login forms cannot submit before their client handlers are ready (1.0s)
+  ok  2 tests\e2e\topic-whiteboard.spec.ts:65:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (10.5s)
+  ok  3 tests\e2e\topic-whiteboard.spec.ts:106:5 › topic-figure: uncached complete image commands block leaving until their exact download and changed inputs require another copy (4.6s)
+  ok  4 tests\e2e\topic-whiteboard.spec.ts:125:5 › topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads (5.2s)
+  ok  5 tests\e2e\topic-whiteboard.spec.ts:138:43 › topic-figure: complete verified image and keyboard reader fit 390 (6.7s)
+  ok  6 tests\e2e\topic-whiteboard.spec.ts:138:43 › topic-figure: complete verified image and keyboard reader fit 768 (6.7s)
+  ok  7 tests\e2e\topic-whiteboard.spec.ts:138:43 › topic-figure: complete verified image and keyboard reader fit 1440 (6.9s)
+  ok  8 tests\e2e\topic-whiteboard.spec.ts:151:5 › adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player (5.7s)
+  ok  9 tests\e2e\topic-whiteboard.spec.ts:190:5 › cancelled and failed review generations retain the original selected model through refresh and explicit retry (18.4s)
+  ok 10 tests\e2e\topic-whiteboard.spec.ts:201:5 › incomplete local teaching edits survive reload and another saved draft cannot silently replace them (5.0s)
+  ok 11 tests\e2e\topic-whiteboard.spec.ts:212:5 › unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving (4.7s)
+  ok 12 tests\e2e\topic-whiteboard.spec.ts:221:5 › stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save (3.5s)
+  ok 13 tests\e2e\topic-whiteboard.spec.ts:237:5 › uncached original topic cannot disappear on a scope change until its complete input is downloaded (2.3s)
+  ok 14 tests\e2e\topic-whiteboard.spec.ts:254:5 › another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded (4.8s)
+  ok 15 tests\e2e\topic-whiteboard.spec.ts:272:5 › recovery: an uncached original cancellation survives object changes until its exact command is downloaded (2.7s)
+  ok 16 tests\e2e\topic-whiteboard.spec.ts:290:5 › topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads (6.4s)
+  ok 17 tests\e2e\topic-whiteboard.spec.ts:303:43 › explicit child goals, adult separation and complete edit controls fit at 390 (5.9s)
+  ok 18 tests\e2e\topic-whiteboard.spec.ts:303:43 › explicit child goals, adult separation and complete edit controls fit at 768 (5.2s)
+  ok 19 tests\e2e\topic-whiteboard.spec.ts:303:43 › explicit child goals, adult separation and complete edit controls fit at 1440 (5.6s)
+  ok 20 tests\e2e\whiteboard-media.spec.ts:44:5 › complete sentence, complete notes, paused text reading and explicit sentence navigation (3.8s)
+  ok 21 tests\e2e\whiteboard-media.spec.ts:58:5 › real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence (6.2s)
+  ok 22 tests\e2e\whiteboard-media.spec.ts:75:5 › voice switch fences delayed requests and an audio failure offers explicit retry or text reading (5.5s)
+  ok 23 tests\e2e\whiteboard-media.spec.ts:85:5 › reopening a paused cloud sentence restores its known audio time in the verified original board (6.3s)
+  ok 24 tests\e2e\whiteboard-media.spec.ts:96:5 › scoped local resume and complete accessible notes fit phone, tablet and desktop (5.5s)
+
+  ok 25 tests\e2e\whiteboard-media.spec.ts:111:5 › actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed (12.1s)
+  ok 26 tests\e2e\whiteboard-media.spec.ts:170:5 › cancelling a recording releases it and never downloads a partial video (2.9s)
+  ok 27 tests\e2e\whiteboard-media.spec.ts:178:5 › seeking cancels old audio and ignores its late completion at the new reading position (2.9s)
+  ok 28 tests\e2e\whiteboard-media.spec.ts:189:5 › revoked student access closes the private player before another frozen sentence can be fetched (2.8s)
+  ok 29 tests\e2e\whiteboard-media.spec.ts:198:5 › closing while export audio is pending aborts it and cannot download or reopen a late result (4.5s)
+  ok 30 tests\e2e\whiteboard-media.spec.ts:205:5 › a recorder error releases resources, keeps the reading position and offers a retry without a partial download (2.6s)
+
+  30 passed (3.0m)

@@ -1,0 +1,50 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:50608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:70920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 21 tests using 1 worker
+
+(node:77324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\topic-whiteboard.spec.ts:56:5 › login forms cannot submit before their client handlers are ready (966ms)
+  x   2 tests\e2e\topic-whiteboard.spec.ts:67:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (26.5s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests\e2e\topic-whiteboard.spec.ts:67:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume 
+
+    TimeoutError: page.waitForEvent: Timeout 15000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      111 |   const board = await f.call(base + '/' + (await f.call(base + '/drafts/' + id, undefined, 'GET')).whiteboardId, undefined, 'GET');
+      112 |   expect(JSON.stringify(board)).not.toContain(candidate.id); expect(board.scenes[0].figure.sha256).toBe(candidate.sha256);
+    > 113 |   const downloaded = page.waitForEvent('download'); await player.getByRole('button', { name: '导出视频', exact: true }).click();
+          |                           ^
+      114 |   const video = await downloaded, videoPath = (await video.path())!, directory = browserEvidence('topic-whiteboard'); copyFileSync(videoPath, join(directory, 'topic-figure-video.webm'));
+      115 |   const probe = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v', 'error', '-show_format', '-show_streams', '-of', 'json', videoPath], { encoding: 'utf8', windowsHide: true }));
+      116 |   expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true); expect(probe.streams.some((stream: any) => stream.codec_type === 'video')).toBe(true);
+        at F:\workspace\github\StudyAgent-whiteboard-visuals\tests\e2e\topic-whiteboard.spec.ts:113:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\topic-whiteboard-topic-fig-29a6e-mage-with-pause-read-resume\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\topic-whiteboard.spec.ts:67:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume 
+  19 did not run
+  1 passed (36.7s)
+  1 error was not a part of any test, see above for details

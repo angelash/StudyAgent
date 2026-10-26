@@ -2,7 +2,7 @@
 
 核对日期：2026-10-24。核对代码：`a3ba56c`，文档基线：`2960d16`；工作树为 `feat/resumable-long-pdf`。本文更新[总计划92](92-experience-and-content-master-plan.md)的执行状态，不替换[原始需求](01-requirements.md)，不缩减完整产品目标。
 
-2026-10-26最新运行：121单课时资料核查与白板重放当前授权已交付；main与远端为f747bb3，实际构建dd9194e、buildId 0Zhr-Oq70fmQyS671XuvN，schema15。精确CI8071e7e/40238652989三组success，原始浏览器218零失败/跳过/重试，本地API1245/43、Linux1237/51，PG26按范围单列；69实际运行检查、六音频SHA及75948毫秒守护稳定观察通过。五配置/真实环境、843份旧构建与一致数据库/引用文件回退保留，assetsIncluded:false。122逐句白板播放/导出在独立分支已完成24专项、PG2和11浏览器零重试，正在合入121后做完整API与整站验证，尚未上线；原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7和全部教师/设备/全内容/原声CSS字体DPR/长期门禁保持。第1～4节保留2026-10-24核对基线。
+2026-10-26最新运行：123 AI主题白板已在main交付，main/远端1fd401e，实际构建453866d、buildId 7DPYUYWiUo1CUbaCcrd0R、schema16；100实际检查/11编译文件SHA/6音频SHA及119361毫秒守护观察见123运行原件。本轮另复核白板入口和/api/ready均200，两个123归档CI40262946670/40262946020均completed/success。124配图/edit、完整稿选图、独立冻结图片、共享孩子PNG保留/擦除与两库冷恢复、缩略图/对照/放大和实际带图WebM已在独立分支接入：完整API1315通过/53环境跳过，配图PG17、原主题PG14/2、浏览器32零失败/跳过/重试，见[124检查点](124-topic-whiteboard-figures-and-visual-manuscripts.md)和[原始收据](../evidence/2026-10-26/topic-figure-ui/receipt.json)。它尚未合入运行主目录，复杂公式视频、整站/精确CI/新鲜schema16回退及schema17守护交付仍待；原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持。第1～4节保留2026-10-24核对基线。
 
 ## 1. 整体判断与本轮核对结果
 
