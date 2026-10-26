@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`a1adbd97f912dd0106d3a1787123382ba5a34e42`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`9004ba6825165946f065b8758724e2bbb2cf170d`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -574,7 +574,8 @@
 
 ### packages/contracts/src/whiteboard-speech.ts
 
-- `WhiteboardSpeechUnit`：[packages/contracts/src/whiteboard-speech.ts:5](../../../packages/contracts/src/whiteboard-speech.ts#L5)；字段：`id`、`sceneId`、`start`、`end`、`text`、`estimatedMs`、`visibleBulletIndices`。
-- `WhiteboardPresentation`：[packages/contracts/src/whiteboard-speech.ts:9](../../../packages/contracts/src/whiteboard-speech.ts#L9)；字段：`version`、`fingerprint`、`units`。
-- `WhiteboardTimelineEntry`：[packages/contracts/src/whiteboard-speech.ts:12](../../../packages/contracts/src/whiteboard-speech.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `WhiteboardTimeline`：[packages/contracts/src/whiteboard-speech.ts:13](../../../packages/contracts/src/whiteboard-speech.ts#L13)；字段：`kind`、`speed`、`durationMs`、`tailMs`、`entries`。
+- `WhiteboardSpeed`：[packages/contracts/src/whiteboard-speech.ts:6](../../../packages/contracts/src/whiteboard-speech.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `WhiteboardSpeechUnit`：[packages/contracts/src/whiteboard-speech.ts:10](../../../packages/contracts/src/whiteboard-speech.ts#L10)；字段：`id`、`sceneId`、`start`、`end`、`text`、`estimatedMs`、`visibleBulletIndices`。
+- `WhiteboardPresentation`：[packages/contracts/src/whiteboard-speech.ts:14](../../../packages/contracts/src/whiteboard-speech.ts#L14)；字段：`version`、`fingerprint`、`units`。
+- `WhiteboardTimelineEntry`：[packages/contracts/src/whiteboard-speech.ts:17](../../../packages/contracts/src/whiteboard-speech.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `WhiteboardTimeline`：[packages/contracts/src/whiteboard-speech.ts:18](../../../packages/contracts/src/whiteboard-speech.ts#L18)；字段：`kind`、`speed`、`durationMs`、`tailMs`、`entries`。
