@@ -27,7 +27,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
+    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
@@ -69,6 +69,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'studentLearningCodes', row => row.createdBy === actorId);
   add(result, store, 'teacherAssignments', row => row.grantedBy === actorId || row.teacherUserId === actorId);
   add(result, store, 'libraryBookmarks', row => row.userId === actorId);
+  add(result, store, 'paperPracticeSessions', row => row.ownerUserId === actorId);
+  add(result, store, 'paperPracticeCommands', row => row.ownerUserId === actorId);
   add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
@@ -127,6 +129,8 @@ function scrub(value: unknown): unknown {
   return value;
 }
 export function portableRecords(selected: Selection, actorId: string): Record<string, unknown[]> {
+  const paperOwners = new Set([actorId, ...(selected.users ?? []).filter(user => user.role === 'student').map(recordId)]);
+  const allowedPaperPractice = new Set((selected.paperPracticeSessions ?? []).filter(row => paperOwners.has(row.ownerUserId)).map(recordId));
   const allowedAssistants = new Set((selected.assistantSessions ?? []).filter(row => row.ownerUserId === actorId ||
     (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(recordId));
   const allowedCourses = new Set((selected.sourceCourses??[]).filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')||row.studentId&&['active','archived'].includes(row.status)&&!['draft','discarded'].includes(row.versioning?.state)).map(recordId));
@@ -141,6 +145,8 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
+    else if (name === 'paperPracticeSessions') result[name] = records.filter(row => allowedPaperPractice.has(row.id));
+    else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))

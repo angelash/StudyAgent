@@ -83,6 +83,7 @@ describe('indexed local paper library, review and authenticated media', () => {
     expect((await get('/papers/p:one?answers=true')).body.data.questions[0].answerHtml).toContain('5');
     const range = await get(`/media?paperId=p:one&url=${encodeURIComponent(imageUrl)}`).set('Range', 'bytes=0-6').expect(206);
     expect(range.headers['content-range']).toBe('bytes 0-6/21'); expect(range.body.toString()).toBe('fixture');
+    expect(range.headers['cache-control']).toBe('private, no-store');
     await get(`/media?paperId=p:one&url=${encodeURIComponent(imageUrl)}`).set('Range', 'bytes=50-60').expect(416);
     await get(`/media?paperId=p:one&url=${encodeURIComponent(foreignUrl)}`).expect(403);
     await request(app.getHttpServer()).patch('/api/library/papers/p:one/bookmark').set('Authorization', `Bearer ${token}`).send({ bookmarked: true }).expect(200);

@@ -2,6 +2,7 @@ import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning
 import type { SourceCourseCheckRecord,SourceCourseCheckPublication } from '../modules/learning/source-course-check-record';
 import type { TopicWhiteboardDraftRecord, TopicWhiteboardRecord } from '../modules/learning/topic-whiteboard-record';
 import type { TopicVisualRecord } from '../modules/learning/topic-whiteboard-visual-record';
+import type { PaperPracticeSessionRecord, PaperPracticeCommandRecord } from '../modules/library/paper-practice-record';
 import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
@@ -357,6 +358,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   users: InMemoryUserAccount[] = [];
   paperPublications: PaperPublication[] = [];
   libraryBookmarks: LibraryBookmark[] = [];
+  paperPracticeSessions: PaperPracticeSessionRecord[] = [];
+  paperPracticeCommands: PaperPracticeCommandRecord[] = [];
   practiceSessions: PracticeSession[] = [];
   practiceAttempts: PracticeAttempt[] = [];
   practiceHints: PracticeHint[] = [];
@@ -463,6 +466,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.users = [];
     this.paperPublications = [];
     this.libraryBookmarks = [];
+    this.paperPracticeSessions = [];
+    this.paperPracticeCommands = [];
     this.practiceSessions = [];
     this.practiceAttempts = [];
     this.practiceHints = [];

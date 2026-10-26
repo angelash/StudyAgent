@@ -25,7 +25,7 @@ export class LibraryController {
     const type = ({ '.pdf': 'application/pdf', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
       '.gif': 'image/gif', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4' } as Record<string, string>)[extname(media.path).toLowerCase()];
     if (!type) throw new BadRequestException('暂不支持此媒体格式');
-    response.setHeader('Cache-Control', 'private, max-age=3600');
+    response.setHeader('Cache-Control', 'private, no-store');
     response.setHeader('ETag', `"${media.sha256}"`);
     response.setHeader('Accept-Ranges', 'bytes');
     response.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");

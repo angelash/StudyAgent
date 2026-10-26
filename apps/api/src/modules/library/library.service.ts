@@ -31,6 +31,8 @@ export class LibraryService {
     if (!row) throw new NotFoundException('试卷不存在');
     return row;
   }
+  /** Internal practice access uses the same current publication and role policy. */
+  practiceSource(user: InMemoryUserAccount, id: string) { return this.requirePaper(user, id); }
   private metadata(row: PaperRow, user: InMemoryUserAccount) {
     const publication = this.store.find('paperPublications', { paperId: row.id });
     return { id: row.id, title: row.title, grade: row.grade, subject: row.subject, province: row.province,

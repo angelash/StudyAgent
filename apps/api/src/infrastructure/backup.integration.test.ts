@@ -80,18 +80,45 @@ describe('verified backup and isolated recovery', () => {
 
   it('migrates a version-three database without changing evidence and refuses incomplete source restores even without the file marker', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-restore-guard-')), location = join(directory, 'study-agent.sqlite3');
-    let database = new DomainDatabase(location); await database.open();
+    // Construct the historical domain schema, rather than relabelling a current
+    // database that still contains future indexes, collection versions or guards.
+    // Source: domain-database.ts at 926d744^, immediately before migration four.
+    const old = new DatabaseSync(location);
     try {
-      await database.commit(await database.read(), { diagnosticResponses: [{ id: 'original', score: 0.25 }] });
-      await database.close();
-      const old = new DatabaseSync(location);
-      old.exec('DELETE FROM schema_migrations WHERE version>=4; DROP TABLE study_restore_guard'); old.close();
-      database = new DomainDatabase(location); await database.open();
+      old.exec(`CREATE TABLE schema_migrations(version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL);
+        INSERT INTO schema_migrations VALUES(1,'2026-01-01'),(2,'2026-01-01'),(3,'2026-01-01');
+        CREATE TABLE store_meta(id INTEGER PRIMARY KEY CHECK(id=1), revision INTEGER NOT NULL);
+        INSERT INTO store_meta VALUES(1,1);
+        CREATE TABLE domain_records(collection TEXT NOT NULL, record_id TEXT NOT NULL,
+          body TEXT NOT NULL CHECK(json_valid(body)), position INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(collection,record_id));
+        CREATE UNIQUE INDEX users_principal ON domain_records(json_extract(body,'$.principal')) WHERE collection='users';
+        CREATE UNIQUE INDEX session_token ON domain_records(json_extract(body,'$.tokenHash')) WHERE collection='sessions';
+        CREATE UNIQUE INDEX assessment_response ON domain_records(json_extract(body,'$.sessionId'),json_extract(body,'$.questionId')) WHERE collection='assessmentAnswers';
+        CREATE UNIQUE INDEX active_binding ON domain_records(json_extract(body,'$.parentUserId'),json_extract(body,'$.studentId')) WHERE collection='bindings' AND json_extract(body,'$.status')='active';`);
+      for (const [name, collection, fields, pending] of [
+        ['learning_access_student', 'studentLearningAccess', ['studentId']],
+        ['learning_access_user', 'studentLearningAccess', ['userId']],
+        ['learning_code_token', 'studentLearningCodes', ['tokenHash']],
+        ['learning_code_request', 'studentLearningCodes', ['studentId', 'createdBy', 'requestKey']],
+        ['learning_access_version', 'studentAccessRevisions', ['studentId', 'version']],
+        ['learning_access_request', 'studentAccessRevisions', ['studentId', 'actorId', 'requestKey']],
+        ['progress_proposal_request', 'studentProgressProposals', ['studentId', 'proposedBy', 'requestKey']],
+        ['progress_proposal_pending', 'studentProgressProposals', ['studentId', 'scope.subject'], true],
+        ['assistant_scope', 'assistantSessions', ['scopeKey']],
+        ['assistant_message_request', 'assistantMessages', ['sessionId', 'requestKey']],
+      ] as Array<[string, string, string[], boolean?]>) old.exec(`CREATE UNIQUE INDEX ${name} ON domain_records(${fields.map(field => `json_extract(body,'$.${field}')`).join(',')}) WHERE collection='${collection}'${pending ? " AND json_extract(body,'$.status')='pending'" : ''}`);
+      old.prepare('INSERT INTO domain_records VALUES(?,?,?,?)').run('diagnosticResponses', 'original', JSON.stringify({ id: 'original', score: 0.25 }), 0);
+      expect(old.prepare("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").all().map(row => row.name)).toEqual(['domain_records', 'schema_migrations', 'store_meta']);
+      expect(old.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='index' AND sql IS NOT NULL").get()?.count).toBe(14);
+    } finally { old.close(); }
+    const database = new DomainDatabase(location);
+    try {
+      await database.open();
       expect((await database.read()).state.diagnosticResponses).toEqual([{ id: 'original', score: 0.25 }]);
       await database.close();
       const guard = new DatabaseSync(location);
       try {
-        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(17);
+        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(18);
         expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
         guard.exec("UPDATE study_restore_guard SET state='restoring'");
       } finally { guard.close(); }
@@ -102,5 +129,17 @@ describe('verified backup and isolated recovery', () => {
       writeFileSync(join(directory, '.study-restore-incomplete'), 'pending receipt');
       await expect(createBundle({ dataDir: directory, destination: join(directory + '-marker') })).rejects.toThrow('source_database_restore_incomplete');
     } finally { await database.close(); rmSync(directory, { recursive: true, force: true }); rmSync(directory + '-backup', { recursive: true, force: true }); }
+  });
+
+  it('rejects future schema nineteen without publishing a backup success manifest', async () => {
+    const directory = mkdtempSync(join(tmpdir(), 'study-backup-future-')), source = join(directory, 'source'), bundle = join(directory, 'bundle');
+    mkdirSync(source); const db = new DomainDatabase(join(source, 'study-agent.sqlite3')); await db.open(); await db.close();
+    try {
+      const future = new DatabaseSync(join(source, 'study-agent.sqlite3'));
+      try { future.prepare('INSERT INTO schema_migrations VALUES(19,?)').run(new Date().toISOString()); } finally { future.close(); }
+      await expect(createBundle({ dataDir: source, destination: bundle })).rejects.toThrow('unsupported_database_schema');
+      expect(existsSync(join(bundle, 'manifest.json'))).toBe(false);
+      expect(existsSync(join(bundle, '.study-backup-incomplete'))).toBe(true);
+    } finally { rmSync(directory, { recursive: true, force: true }); }
   });
 });

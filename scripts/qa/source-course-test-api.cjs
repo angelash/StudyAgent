@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'../..'),directory=path.resolve(process.env.ST
 if(!directory.startsWith(path.join(root,'data','qa')+path.sep)||process.env.STUDY_STORAGE!=='sqlite'||process.env.XIAOJIU_CHAT_ENABLED!=='false')throw new Error('Source course fixture server requires an isolated QA directory, SQLite and disabled live models');
 const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
 (async()=>{
+  process.env.STUDY_ASSET_ROOT=require('./paper-practice-fixture.cjs').preparePaperPracticeAssets(directory,root);
   const{AppModule}=require('../../apps/api/dist/apps/api/src/app.module.js'),{XiaojiuChatService}=require('../../apps/api/dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
   const app=await NestFactory.create(AppModule,{logger:false});require('../../apps/api/dist/apps/api/src/common/http-body.js').configureJsonBody(app);app.setGlobalPrefix('api');
   app.getHttpAdapter().getInstance().set('trust proxy','loopback');

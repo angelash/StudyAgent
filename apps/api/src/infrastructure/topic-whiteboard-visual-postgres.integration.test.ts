@@ -15,13 +15,13 @@ describe.skipIf(!connection)('native PostgreSQL topic figure identities', () => 
     const schema = 'study_qa_topic_visual_' + randomUUID().replace(/-/g, ''); await pool.query('CREATE SCHEMA "' + schema + '"'); schemas.push(schema);
     const url = new URL(connection!); url.searchParams.set('options', '-c search_path=' + schema); return { url: url.toString(), schema };
   }
-  it('migrates schema17 and retains exact original figure requests through a native reopen', async () => {
+  it('opens current schema18 and retains exact original figure requests through a native reopen', async () => {
     const { url, schema } = await scoped(), initial = { studioTopicWhiteboardVisuals: [{ id: 'original', ownerUserId: 'owner', requestKey: 'key',
       frozenContext: { scene: { narration: '保留完整原讲述与条件。' } }, operation: 'generate' }] };
     let db = new DomainDatabase(url); await db.open();
     try { await db.commit(await db.read(), initial); await db.close(); db = new DomainDatabase(url); await db.open();
       expect((await db.read()).state).toEqual(initial);
-      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(17);
+      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(18);
       const state = await db.read(); await expect(db.commit(state, { studioTopicWhiteboardVisuals: [...state.state.studioTopicWhiteboardVisuals,
         { id: 'changed', ownerUserId: 'owner', requestKey: 'key', operation: 'edit' }] })).rejects.toThrow('duplicate');
       expect((await db.read()).state).toEqual(initial);
