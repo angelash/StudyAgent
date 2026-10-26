@@ -125,3 +125,6 @@ flowchart TD
 
 
 114最终工具交付：业务0dd1d04，精确CI 8b033ed/40180127851三组成功，应用1111通过/44环境跳过、浏览器132通过/0重试，PG最后草稿组10通过/1个SQLite专属跳过；本地完整132项也全部通过。主目录以8b033ed完成真实生产构建（buildId 3dd7PUBtRFNYTVkGO9yZZ），15项匿名烟测和三次跨68029毫秒的稳定观察通过；原五处配置字节、发布前一致数据库/引用文件与旧构建回退保留。详见[最终验收](../evidence/2026-10-25/classroom-tools-acceptance.json)与[运行收据](../evidence/2026-10-25/classroom-tools-runtime.json)。设置、锚点导览、独立当前句试听与全屏图形阅读已可使用。原站六声线与当前各供应商五项目录、课前样本、实际听感、原DPR/字体/CSS和完整自由白板等仍有差异；113助教持久任务和115课堂多选仅完成规格，尚未业务实现。完整M1～M7与72项需求的教师、实机、全内容和长期门禁保持，整体目标继续，不据CI提升整体完成度。
+
+
+2026-10-27原卷练习127已正式交付：精确CI头5468948/40368316059三组success，298浏览器原始单次通过、零失败/跳过/flaky/重试；Linux完整API1331通过/62环境跳过。本地未变运行代码基线为1339 API通过/54环境跳过及298浏览器通过，后续仅测试/工作流修正另有专项复验，不声称修正后又重跑全部本地。主目录实际构建buildId KSryKnPctKjE4SgQbXojy、schema18，178项HTTP/鉴权/资源、27编译及6原音频SHA通过，三次守护观察跨77565毫秒且PID/重启计数保持。五处配置与真实环境原字节保留；发布前新鲜126/schema17停服一致数据库及引用运行文件、900旧编译和私有配置回退已核对，assetsIncluded:false，不是全部研究资产或完整恢复演练。入口为题卷库的整卷/选题/跨卷练习与历史；首答、原参考、自评、订正、暂停/完成和连续刷新恢复分别留证。XP-H03改为in_progress，72项11 implemented/49 in_progress/12 planned/0 verified。128仍在隔离开发；M1～M7、全内容、原CSS/字体/DPR/原声、教师/实机/长期目标继续active。见[127验收](../evidence/2026-10-27/paper-practice-acceptance.json)、[精确CI](../evidence/2026-10-27/paper-practice-exact-ci/receipt.json)、[运行](../evidence/2026-10-27/paper-practice-runtime.json)。

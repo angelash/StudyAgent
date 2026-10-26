@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-26T18:00:25.536Z",
+  "status": "exact-head-three-job-success",
+  "head": "5468948cf9e5537f9d06f56ce3f374f745c8bc44",
+  "applicationRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "apiRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "validationRevision": "a0b260cf144da5447de8f03b243a58f8e919401b",
+  "run": 40368316059,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40368316059",
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121731941052
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121731941519
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121731941700
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T17:27:00.978Z",
+      "duration": 1548648.881,
+      "expected": 298,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "caseCount": 298,
+    "originalAttempts": 298,
+    "retriedAttempts": 0,
+    "sha256": "31c12fb534fb5064c41e1e3156c4d02b5501bd9a8cf28e358fbfa02a3faf91c4"
+  },
+  "testSummaries": {
+    "application": [
+      "application\tRun npm test\t2026-10-26T17:34:47.9523013Z  Test Files  150 passed | 12 skipped (162)",
+      "application\tRun npm test\t2026-10-26T17:34:47.9532318Z       Tests  1331 passed | 62 skipped (1393)"
+    ],
+    "postgres": [
+      "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-26T17:26:47.5764262Z  Test Files  1 passed (1)",
+      "postgres\tPostgreSQL migration, recovery and fencing\t2026-10-26T17:26:47.5765332Z       Tests  6 passed (6)",
+      "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-26T17:26:59.9973142Z  Test Files  1 passed (1)",
+      "postgres\tSource-course staged generation and checkpoint recovery on PostgreSQL\t2026-10-26T17:26:59.9973887Z       Tests  23 passed (23)",
+      "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-26T17:27:04.1224814Z  Test Files  1 passed (1)",
+      "postgres\tClassroom image task lifecycle and private references on PostgreSQL\t2026-10-26T17:27:04.1225839Z       Tests  11 passed (11)",
+      "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-26T17:27:20.4545875Z  Test Files  1 passed (1)",
+      "postgres\tLong-source chunks, independent checkpoints and original files on PostgreSQL\t2026-10-26T17:27:20.4547020Z       Tests  11 passed (11)",
+      "postgres\tResumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL\t2026-10-26T17:29:43.8126688Z  Test Files  8 passed (8)",
+      "postgres\tResumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL\t2026-10-26T17:29:43.8127540Z       Tests  81 passed (81)",
+      "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-26T17:29:47.3153519Z  Test Files  1 passed (1)",
+      "postgres\tFrozen classroom captions, historical upgrade and narration guards on PostgreSQL\t2026-10-26T17:29:47.3154537Z       Tests  11 passed (11)",
+      "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-26T17:30:32.1579174Z  Test Files  1 passed (1)",
+      "postgres\tDurable classroom turns, original position and permission fencing on PostgreSQL\t2026-10-26T17:30:32.1580671Z       Tests  16 passed | 1 skipped (17)",
+      "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-26T17:30:35.3538706Z  Test Files  1 passed (1)",
+      "postgres\tFrozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL\t2026-10-26T17:30:35.3540024Z       Tests  7 passed | 1 skipped (8)",
+      "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-26T17:30:40.7122063Z  Test Files  1 passed (1)",
+      "postgres\tCourse revision families, impact previews and historical privacy on PostgreSQL\t2026-10-26T17:30:40.7123168Z       Tests  10 passed | 1 skipped (11)",
+      "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-26T17:30:48.8339633Z  Test Files  2 passed (2)",
+      "postgres\tProject actual attachments, native file recovery and latest privacy ledger on PostgreSQL\t2026-10-26T17:30:48.8340729Z       Tests  12 passed | 1 skipped (13)",
+      "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-26T17:30:53.7006753Z  Test Files  2 passed (2)",
+      "postgres\tRecoverable answer drafts, first submissions and correction fencing on PostgreSQL\t2026-10-26T17:30:53.7008295Z       Tests  10 passed | 1 skipped (11)",
+      "postgres\tOrdinary assistant turns, native recovery and latest deletion ledger on PostgreSQL\t2026-10-26T17:31:00.9389916Z  Test Files  2 passed (2)",
+      "postgres\tOrdinary assistant turns, native recovery and latest deletion ledger on PostgreSQL\t2026-10-26T17:31:00.9390899Z       Tests  21 passed (21)",
+      "postgres\tFrozen classroom multiple choices, first feedback and native recovery on PostgreSQL\t2026-10-26T17:31:08.5827947Z  Test Files  2 passed (2)",
+      "postgres\tFrozen classroom multiple choices, first feedback and native recovery on PostgreSQL\t2026-10-26T17:31:08.5828640Z       Tests  12 passed (12)",
+      "postgres\tOriginal rule plans, durable model suggestions and native deletion recovery on PostgreSQL\t2026-10-26T17:32:26.3855479Z  Test Files  2 passed (2)",
+      "postgres\tOriginal rule plans, durable model suggestions and native deletion recovery on PostgreSQL\t2026-10-26T17:32:26.3856631Z       Tests  13 passed (13)",
+      "postgres\tNeutral classroom voice samples, fixed bytes and real learner permissions on PostgreSQL\t2026-10-26T17:32:28.9901288Z  Test Files  1 passed (1)",
+      "postgres\tNeutral classroom voice samples, fixed bytes and real learner permissions on PostgreSQL\t2026-10-26T17:32:28.9902760Z       Tests  4 passed (4)",
+      "postgres\tGuided project narration, original actor receipts and storage restart on PostgreSQL\t2026-10-26T17:32:33.2571963Z  Test Files  2 passed (2)",
+      "postgres\tGuided project narration, original actor receipts and storage restart on PostgreSQL\t2026-10-26T17:32:33.2572872Z       Tests  14 passed (14)",
+      "postgres\tSource-course projects, read-only journeys and JSONB teaching continuity on PostgreSQL\t2026-10-26T17:32:36.9229368Z  Test Files  3 passed (3)",
+      "postgres\tSource-course projects, read-only journeys and JSONB teaching continuity on PostgreSQL\t2026-10-26T17:32:36.9230764Z       Tests  15 passed | 1 skipped (16)",
+      "postgres\tIndependent source check generation, publication, student privacy and native recovery on PostgreSQL\t2026-10-26T17:32:44.7988515Z  Test Files  2 passed (2)",
+      "postgres\tIndependent source check generation, publication, student privacy and native recovery on PostgreSQL\t2026-10-26T17:32:44.7989489Z       Tests  26 passed (26)",
+      "postgres\tFrozen whiteboard sentences, original commands, current access and native restart on PostgreSQL\t2026-10-26T17:32:47.9007702Z  Test Files  1 passed (1)",
+      "postgres\tFrozen whiteboard sentences, original commands, current access and native restart on PostgreSQL\t2026-10-26T17:32:47.9008687Z       Tests  4 passed (4)",
+      "postgres\tAI topic whiteboard original commands, checkpoints and permissions on PostgreSQL\t2026-10-26T17:32:56.0564080Z  Test Files  3 passed (3)",
+      "postgres\tAI topic whiteboard original commands, checkpoints and permissions on PostgreSQL\t2026-10-26T17:32:56.0565813Z       Tests  14 passed | 2 skipped (16)",
+      "postgres\tTopic whiteboard image originals, shared retention and native recovery on PostgreSQL\t2026-10-26T17:33:07.3892660Z  Test Files  3 passed (3)",
+      "postgres\tTopic whiteboard image originals, shared retention and native recovery on PostgreSQL\t2026-10-26T17:33:07.3893277Z       Tests  17 passed (17)",
+      "postgres\tOriginal paper practice, exact command recovery and student permissions on PostgreSQL\t2026-10-26T17:33:16.3474375Z  Test Files  2 passed (2)",
+      "postgres\tOriginal paper practice, exact command recovery and student permissions on PostgreSQL\t2026-10-26T17:33:16.3475336Z       Tests  17 passed (17)"
+    ],
+    "browser": [
+      "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-26T17:52:49.6293102Z   298 passed (25.8m)"
+    ]
+  },
+  "files": [
+    {
+      "source": "data/qa/paper-practice-ci-final-originals/application.log",
+      "file": "data__qa__paper-practice-ci-final-originals__application.log.gz",
+      "originalSha256": "31695f84cfa7765eaccae32d52a94068039525cd3975585fdd0bf58ee6f3c0fd",
+      "sha256": "276d3793fe2437249072064c16e255a3c9f2cd6c8b5879ae813994f544808512"
+    },
+    {
+      "source": "data/qa/paper-practice-ci-final-originals/postgres.log",
+      "file": "data__qa__paper-practice-ci-final-originals__postgres.log.gz",
+      "originalSha256": "5527b9efb874efad7ef29796c4d8fa415c6dc02e7daf6057f16679e04a62889b",
+      "sha256": "a2f951f2e6062df691e3ad7e30eb063a996b1551d66a29b43432d24e4da39e8f"
+    },
+    {
+      "source": "data/qa/paper-practice-ci-final-originals/browser.log",
+      "file": "data__qa__paper-practice-ci-final-originals__browser.log.gz",
+      "originalSha256": "27f5f59230a1a8229d5762e125104bb975039e1b9bc33db560c583734bfea376",
+      "sha256": "af1eb84fe18f3393983d760abab1daf6913bb9bf25e03dc2ffc1367cca30f957"
+    },
+    {
+      "source": "data/qa/paper-practice-ci-final-originals/run.json",
+      "file": "data__qa__paper-practice-ci-final-originals__run.json.gz",
+      "originalSha256": "fa05778e3e6289bb8a1ddf24a2c9e911cbc1e9110c0cc570ca3f38c8c6ddbc31",
+      "sha256": "095c6ab4e33118a62656bbe5297fbdcbf704653c5cf44db28e1a6d80dcaffe36"
+    },
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "data__qa__source-course-full-browser.json.gz",
+      "originalSha256": "31c12fb534fb5064c41e1e3156c4d02b5501bd9a8cf28e358fbfa02a3faf91c4",
+      "sha256": "9514a7b7489526c3dc2d7ab670a38abded48ace791fc4796478839f05a2b6875"
+    }
+  ]
+}

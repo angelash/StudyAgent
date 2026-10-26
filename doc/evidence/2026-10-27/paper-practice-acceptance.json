@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-26T18:00:45.916Z",
+  "status": "original-paper-practice-delivered",
+  "passed": true,
+  "overallProductComplete": false,
+  "applicationRevision": "eb15902c48ed5ff415f38e1ad274dbe60e344157",
+  "apiRevision": "66bc54811087d7b504f677e90ef4c06bf87caefe",
+  "validationRevision": "a0b260cf144da5447de8f03b243a58f8e919401b",
+  "ciHead": "5468948cf9e5537f9d06f56ce3f374f745c8bc44",
+  "ciRun": 40368316059,
+  "webBuildId": "KSryKnPctKjE4SgQbXojy",
+  "schemaVersion": 18,
+  "entrypoints": [
+    "http://127.0.0.1:3217/learn",
+    "http://127.0.0.1:3217/library",
+    "http://127.0.0.1:3217/library/practice"
+  ],
+  "behavior": [
+    "Original whole, selected and cross-paper practice with frozen sources and explicit missing/document-only positions.",
+    "Immutable first answers, explicit per-item reference, self-check, appended corrections and completed review.",
+    "Original request receipts, normalized input hashes, optimistic conflicts and separate per-document local copies across repeated reloads.",
+    "Current learner permissions, original media availability and private family export/deletion boundaries."
+  ],
+  "validation": {
+    "localApi": {
+      "passed": 1339,
+      "failed": 0,
+      "environmentSkipped": 54,
+      "note": "Full unchanged-runtime baseline; later test and workflow corrections were validated by their focused suites and exact remote CI."
+    },
+    "localBrowser": {
+      "passed": 298,
+      "originalAttempts": 298,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "note": "Full unchanged-runtime baseline, followed by focused original-paper and whiteboard corrected-test validations."
+    },
+    "linuxApi": {
+      "passed": 1331,
+      "failed": 0,
+      "environmentSkipped": 62
+    },
+    "remoteBrowser": {
+      "stats": {
+        "startTime": "2026-10-26T17:27:00.978Z",
+        "duration": 1548648.881,
+        "expected": 298,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "caseCount": 298,
+      "originalAttempts": 298,
+      "retriedAttempts": 0,
+      "sha256": "31c12fb534fb5064c41e1e3156c4d02b5501bd9a8cf28e358fbfa02a3faf91c4"
+    },
+    "ciJobs": [
+      {
+        "name": "postgres",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121731941052
+      },
+      {
+        "name": "application",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121731941519
+      },
+      {
+        "name": "browser",
+        "status": "completed",
+        "conclusion": "success",
+        "databaseId": 121731941700
+      }
+    ],
+    "postgresOriginalPaper": {
+      "passed": 17,
+      "scope": "15 PostgreSQL service cases plus SQLite and PostgreSQL native backup/cold recovery."
+    },
+    "runtime": {
+      "httpChecks": 178,
+      "compiledSha256Files": 27,
+      "voiceSamples": 6,
+      "observedIntervalMs": 77565,
+      "protectedFiles": 5,
+      "localEnvironmentPreserved": true
+    }
+  },
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-26-paper-practice-1793028976501",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-26T15:36:49.118Z",
+      "passed": true,
+      "files": 900,
+      "bytes": 17196912,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified126 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "evidence": {
+    "exactCi": "paper-practice-exact-ci/receipt.json",
+    "runtime": "paper-practice-runtime.json",
+    "inputs": "paper-practice-release-ci-final-inputs/receipt.json"
+  },
+  "limitations": [
+    "128 organization, review workspace, original redo and formal verification are isolated development and not included in this runtime.",
+    "M1-M7, complete textbooks and independent families, original HyperKnow CSS/fonts/DPR/audio, real teachers/devices and long-term teaching remain incomplete.",
+    "Backup covers stopped-service database and referenced runtime files plus previous builds/config, not the full research-asset archive or an actual production restore rehearsal."
+  ]
+}
