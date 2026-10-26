@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-26T11:12:40.600Z",
+  "status": "original-report-before-knowledge-workspace",
+  "deployed": false,
+  "productionRevision": "f9eee1a0aca9395efd3c5593c6fb2e3ce8d9f85c",
+  "stats": {
+    "startTime": "2026-10-26T11:06:26.133Z",
+    "duration": 24753.563,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "failure": "The new knowledge-workspace region is absent. The initial test did not reach its later estimate assertion; actual report shows rule-estimate-v2 includes dont_know records, so that assumption must be corrected without changing scoring.",
+  "coverage": "Actual isolated parent, two approved grade4 atoms, six self-reported responses, completed frozen report and existing current report UI.",
+  "files": [
+    {
+      "source": "data/qa/knowledge-report-browser.json",
+      "file": "browser-original.json.gz",
+      "originalBytes": 9449,
+      "originalSha256": "fa9328040c1766e43b5517b60f11f6c1161abf379a09c334982ff3d9f05efe68",
+      "storedSha256": "ff69175d6cf61a28eb63b9bd64432071f6343b28d1a03273a0eb474847293857"
+    },
+    {
+      "source": "data/qa/knowledge-report-before-browser.log",
+      "file": "browser-original.log.gz",
+      "originalBytes": 4036,
+      "originalSha256": "0ea3bbd9c1985739f4f40a5d1395a0d328bfc04c93b293e809011a4789ee1981",
+      "storedSha256": "af204ca2caff972939d80d78d1d71af425175fc64ce15673aa085f15979bac68"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/actual-report-original.json",
+      "file": "actual-report-original.json",
+      "originalBytes": 22715,
+      "originalSha256": "7a2244f7ca9d9367f84970e316d132d6e03d4dc73226208a029a6f628ae8bc30",
+      "storedSha256": "7a2244f7ca9d9367f84970e316d132d6e03d4dc73226208a029a6f628ae8bc30"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/report-current.png",
+      "file": "report-before.png",
+      "originalBytes": 215776,
+      "originalSha256": "17d53cf316c51eca3654cbfaa690b69cacd1e0ae3d8fcc5bac1da6003e4b990a",
+      "storedSha256": "17d53cf316c51eca3654cbfaa690b69cacd1e0ae3d8fcc5bac1da6003e4b990a"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-89fd7-ther-when-selecting-a-point\\error-context.md",
+      "file": "error-context.md",
+      "originalBytes": 10588,
+      "originalSha256": "7bc1638319cff53b3e6a248447ea6b44ade241c37186c4cb226b94565e42a2cc",
+      "storedSha256": "7bc1638319cff53b3e6a248447ea6b44ade241c37186c4cb226b94565e42a2cc"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-89fd7-ther-when-selecting-a-point\\test-failed-1.png",
+      "file": "test-failed-1.png",
+      "originalBytes": 96210,
+      "originalSha256": "3e35c834733c02aa8c0c0dc2b16318405b638ef5a2c5e2247cf45f257d5a4492",
+      "storedSha256": "3e35c834733c02aa8c0c0dc2b16318405b638ef5a2c5e2247cf45f257d5a4492"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-89fd7-ther-when-selecting-a-point\\trace.zip",
+      "file": "trace.zip",
+      "originalBytes": 566897,
+      "originalSha256": "4df9c4d51d433c61b5bf3cc9db3b8622357c417319b03c82d2568029614b3ee0",
+      "storedSha256": "4df9c4d51d433c61b5bf3cc9db3b8622357c417319b03c82d2568029614b3ee0"
+    },
+    {
+      "source": "tests/e2e/knowledge-report.spec.ts",
+      "file": "test-source-original.ts",
+      "originalBytes": 4358,
+      "originalSha256": "92f0af9763ff24fc6f379c962a708d40c180d1d7856affe984f6f0f491c5dd38",
+      "storedSha256": "92f0af9763ff24fc6f379c962a708d40c180d1d7856affe984f6f0f491c5dd38"
+    },
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "file": "assessment-source-original.tsx",
+      "originalBytes": 58873,
+      "originalSha256": "e4724ae722f9fdd58f93c920721ff528c620a2a1b08a8f484afac18badd806bc",
+      "storedSha256": "e4724ae722f9fdd58f93c920721ff528c620a2a1b08a8f484afac18badd806bc"
+    }
+  ]
+}
