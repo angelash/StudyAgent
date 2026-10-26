@@ -1,5 +1,5 @@
 {
-  "status": "initial-exact-ci-postgres-installation-budget-failed-browser-running",
+  "status": "initial-ci-automatic-budgets-exhausted-current-ci-repair-ready",
   "deployed": false,
   "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
@@ -179,8 +179,12 @@
       "reason": "GitHub15-minute budget during FFmpeg install; no manual cancellation; remaining PG tests not executed."
     },
     "browser": {
-      "status": "in_progress"
+      "status": "completed",
+      "conclusion": "cancelled",
+      "reason": "GitHub30m budget after log observed passed case234 of242; no complete JSON report or uploaded artifact."
     },
-    "report": "topic-whiteboard-ci-initial/partial-receipt.json"
+    "report": "topic-whiteboard-ci-initial/final-receipt.json",
+    "status": "completed",
+    "conclusion": "cancelled"
   }
 }
