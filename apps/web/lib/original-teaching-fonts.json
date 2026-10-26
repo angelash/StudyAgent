@@ -1,8 +1,8 @@
 {
   "format": "original-teaching-fonts-v1",
-  "stylesheet": "/reference/hyperknow/font-faces-873aea85d4e2b6ae.css",
-  "sha256": "873aea85d4e2b6aef080d21b3a9925d2492cad06a5cf84525ea5707820f90f7a",
-  "bytes": 617064,
+  "stylesheet": "/reference/hyperknow/font-faces-427e7624ac0b3f9e.css",
+  "sha256": "427e7624ac0b3f9e1e69ec8ddbb4ed73ef994ae2ff57e4bc8aa9b93467c3c100",
+  "bytes": 617324,
   "faceCount": 815,
   "sourceAssetManifestSha256": "b11fef38af555e3e5014119942f1c5bd29451fa48c6944b80ada3dbad935a25e",
   "families": [
@@ -75,51 +75,51 @@
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_AMS",
+      "family": "HKOriginal-KaTeX_AMS",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Caligraphic",
+      "family": "HKOriginal-KaTeX_Caligraphic",
       "fontFaces": 2
     },
     {
-      "family": "KaTeX_Fraktur",
+      "family": "HKOriginal-KaTeX_Fraktur",
       "fontFaces": 2
     },
     {
-      "family": "KaTeX_Main",
+      "family": "HKOriginal-KaTeX_Main",
       "fontFaces": 4
     },
     {
-      "family": "KaTeX_Math",
+      "family": "HKOriginal-KaTeX_Math",
       "fontFaces": 2
     },
     {
-      "family": "KaTeX_SansSerif",
+      "family": "HKOriginal-KaTeX_SansSerif",
       "fontFaces": 3
     },
     {
-      "family": "KaTeX_Script",
+      "family": "HKOriginal-KaTeX_Script",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Size1",
+      "family": "HKOriginal-KaTeX_Size1",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Size2",
+      "family": "HKOriginal-KaTeX_Size2",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Size3",
+      "family": "HKOriginal-KaTeX_Size3",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Size4",
+      "family": "HKOriginal-KaTeX_Size4",
       "fontFaces": 1
     },
     {
-      "family": "KaTeX_Typewriter",
+      "family": "HKOriginal-KaTeX_Typewriter",
       "fontFaces": 1
     },
     {
@@ -135,6 +135,20 @@
       "fontFaces": 1
     }
   ],
+  "fontFamilyAliases": {
+    "KaTeX_AMS": "HKOriginal-KaTeX_AMS",
+    "KaTeX_Caligraphic": "HKOriginal-KaTeX_Caligraphic",
+    "KaTeX_Fraktur": "HKOriginal-KaTeX_Fraktur",
+    "KaTeX_Main": "HKOriginal-KaTeX_Main",
+    "KaTeX_Math": "HKOriginal-KaTeX_Math",
+    "KaTeX_SansSerif": "HKOriginal-KaTeX_SansSerif",
+    "KaTeX_Script": "HKOriginal-KaTeX_Script",
+    "KaTeX_Size1": "HKOriginal-KaTeX_Size1",
+    "KaTeX_Size2": "HKOriginal-KaTeX_Size2",
+    "KaTeX_Size3": "HKOriginal-KaTeX_Size3",
+    "KaTeX_Size4": "HKOriginal-KaTeX_Size4",
+    "KaTeX_Typewriter": "HKOriginal-KaTeX_Typewriter"
+  },
   "sources": [
     {
       "path": "/reference/hyperknow/font/Satoshi_Complete/Fonts/WEB/css/satoshi.css",

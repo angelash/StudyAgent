@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-26T20:37:33.962Z",
+  "status": "actual-owned-katex-source-differs-from-vendor-url-assumption",
+  "browser": {
+    "passed": 9,
+    "failed": 1
+  },
+  "reason": "MathLive detects the app existing twelve KaTeX families and uses their locally bundled Next fonts. Trace shows Main/Math/Size3 font200 responses under /_next/static/media; no /vendor request is needed in this app. Validate the real loaded font bytes against the locked KaTeX package, and separately verify all twenty prepared MathLive fallback files.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-settings-browser.json",
+      "file": "data__qa__whiteboard-settings-browser.json.gz",
+      "originalSha256": "d252b691cf293813930256c17c673532c5cad70d43f6cf4fd755cc8aa16a8821"
+    },
+    {
+      "source": "data/qa/teaching-controls-fonts-settings-first.log",
+      "file": "data__qa__teaching-controls-fonts-settings-first.log.gz",
+      "originalSha256": "5a05bc4b3d9e1b09c8ee5dc55e59dc6b21b15941d02471b8c3db6905d2b15383"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "originalSha256": "b33c0ef31a12bef83f45aabde838bab1b3db5f59ec2b86a9ac95d78410755397"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "e9fa6b08c54fa3837369e3dd7432873e47e00a834018443cb1cf754b6fc9d94b"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-or-8241a--bytes-after-a-board-closes\\error-context.md",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-or-8241a--bytes-after-a-board-closes__error-context.md.gz",
+      "originalSha256": "08baabea044b231289848e1ac1186d9212f057f55a4fdd11cfe7b262c8a9e29d"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-or-8241a--bytes-after-a-board-closes\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-or-8241a--bytes-after-a-board-closes__test-failed-1.png.gz",
+      "originalSha256": "e45e1d253733acbcbc6137759fc949c8ec3a9c392233b45727277816cc1e1870"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\original-teaching-fonts-or-8241a--bytes-after-a-board-closes\\trace.zip",
+      "file": "test-results__browser-product-acceptance__original-teaching-fonts-or-8241a--bytes-after-a-board-closes__trace.zip.gz",
+      "originalSha256": "ed3c90b5fc3c080ebe5637b360332f333198836277704e32b38fe696607cd57e"
+    }
+  ]
+}

@@ -46,4 +46,17 @@ describe('frozen whiteboard reading and a shared export timeline', () => {
     expect(whiteboardSrt(timeline)).toContain('00:00:01,600 --> 00:00:03,200');
     expect(() => whiteboardTimeline(presentation, [2000, 2000], 1, -1)).toThrow();
   });
+  it('uses all six original rates for complete decoded audio and captions without changing frozen sentence identities', () => {
+    const presentation = whiteboardPresentation(board('开头。结尾。')), before = JSON.stringify(presentation);
+    for (const [rate, firstEnd, total] of [[.5,4000,12000],[.75,2667,8000],[1,2000,6000],[1.25,1600,4800],[1.5,1333,4000],[2,1000,3000]]) {
+      const timeline = whiteboardTimeline(presentation, [2000,4000], rate);
+      expect(timeline.entries.map(unit => [unit.fromMs,unit.toMs])).toEqual([[0,firstEnd],[firstEnd,total]]);
+      expect(timeline.entries.map(unit => unit.id)).toEqual(presentation.units.map(unit => unit.id));
+      expect(timeline.durationMs).toBe(total);
+    }
+    expect(whiteboardSrt(whiteboardTimeline(presentation,[2000,4000],.5))).toContain('00:00:04,000 --> 00:00:12,000\n结尾。');
+    expect(whiteboardSrt(whiteboardTimeline(presentation,[2000,4000],2))).toContain('00:00:01,000 --> 00:00:03,000\n结尾。');
+    for(const invalid of [0,-1,.9,3,Infinity,NaN,'1' as unknown as number]) expect(() => whiteboardTimeline(presentation,[2000,4000],invalid)).toThrow();
+    expect(JSON.stringify(presentation)).toBe(before);
+  });
 });

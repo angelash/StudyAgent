@@ -2,6 +2,11 @@ import type { StudioWhiteboard } from './studio';
 import { classroomReadingMs, splitClassroomSpeech } from './classroom-speech';
 
 export const WHITEBOARD_SPEECH_VERSION = 'whiteboard-speech-v1' as const;
+export const WHITEBOARD_SPEEDS = [.5, .75, 1, 1.25, 1.5, 2] as const;
+export type WhiteboardSpeed = typeof WHITEBOARD_SPEEDS[number];
+export function isWhiteboardSpeed(value: unknown): value is WhiteboardSpeed {
+  return typeof value === 'number' && WHITEBOARD_SPEEDS.some(speed => speed === value);
+}
 export type WhiteboardSpeechUnit = {
   id: string; sceneId: string; start: number; end: number; text: string;
   estimatedMs: number; visibleBulletIndices: number[];
@@ -46,7 +51,7 @@ export function whiteboardPresentation(board: Pick<StudioWhiteboard, 'fingerprin
 
 /** Video frames, audio scheduling and SRT consume this same completed table. */
 export function whiteboardTimeline(presentation: WhiteboardPresentation, decodedDurationsMs?: number[], speed = 1, tailMs = 0): WhiteboardTimeline {
-  if (![.75, 1, 1.25].includes(speed)) throw new Error('Unsupported whiteboard speed');
+  if (!isWhiteboardSpeed(speed)) throw new Error('Unsupported whiteboard speed');
   if (!Number.isInteger(tailMs) || tailMs < 0 || tailMs > 1000) throw new Error('Invalid recording tail');
   if (decodedDurationsMs && (decodedDurationsMs.length !== presentation.units.length ||
     decodedDurationsMs.some(value => !Number.isFinite(value) || value <= 0))) throw new Error('Incomplete decoded audio timeline');

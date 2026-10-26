@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-26T20:29:08.673Z",
+  "status": "measured-during-original-scale-animation",
+  "browser": {
+    "passed": 2,
+    "failed": 1
+  },
+  "reason": "The geometry assertion read the initial 0.96 scale of the original220ms animation:441.6 vs460 CSS pixels. Wait for the real animation to finish before checking unchanged460px geometry.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-settings-browser.json",
+      "file": "data__qa__whiteboard-settings-browser.json.gz",
+      "originalSha256": "be426005bcb9ed093271f6a7f676834efa554d4f80ed69a24913d87dfa51861e"
+    },
+    {
+      "source": "data/qa/teaching-controls-settings-first.log",
+      "file": "data__qa__teaching-controls-settings-first.log.gz",
+      "originalSha256": "e90d22717d0805ff1246d5ce959207ce50f6bce4e17765cf2d0dd430e053f2d1"
+    },
+    {
+      "source": "tests/e2e/whiteboard-settings.spec.ts",
+      "file": "tests__e2e__whiteboard-settings.spec.ts.gz",
+      "originalSha256": "26235765146b414ac83334d48445b7856157dba7bd231dd7881251556642976e"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "file": "test-results__browser-product-acceptance__.last-run.json.gz",
+      "originalSha256": "c1447f67799f9a4f977b0e725dd14fe70c5a9b42c5b9ae97e4da8d810e760176"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-settings-origin-90c45--and-closing-releases-audio\\error-context.md",
+      "file": "test-results__browser-product-acceptance__whiteboard-settings-origin-90c45--and-closing-releases-audio__error-context.md.gz",
+      "originalSha256": "668ff1b2551d2d768d8bdca340661b6e998b366cc0b2fdf7ad4f32341f7f8295"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-settings-origin-90c45--and-closing-releases-audio\\test-failed-1.png",
+      "file": "test-results__browser-product-acceptance__whiteboard-settings-origin-90c45--and-closing-releases-audio__test-failed-1.png.gz",
+      "originalSha256": "b90407db46a3296fd1f77ba5b2f93ba5bad8c4ede4f1ead45d73198645824904"
+    },
+    {
+      "source": "test-results\\browser-product-acceptance\\whiteboard-settings-origin-90c45--and-closing-releases-audio\\trace.zip",
+      "file": "test-results__browser-product-acceptance__whiteboard-settings-origin-90c45--and-closing-releases-audio__trace.zip.gz",
+      "originalSha256": "a83f3b41af58f73590b94cbdc968bd76cec28440bbbd11d0fe64806447ed5a04"
+    }
+  ]
+}

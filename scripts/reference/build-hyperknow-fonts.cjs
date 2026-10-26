@@ -11,7 +11,7 @@ function bytes(file) { unlinked(file); return fs.readFileSync(file); }
 function main() {
   const sourceBytes = bytes(sourcePath), assets = JSON.parse(sourceBytes), knownPaths = new Set(assets.files.map(row => row.publicPath));
   if (assets.format !== 'hyperknow-local-assets-v1') throw Error('Verified local reference assets are required');
-  const declarations = [], sources = [], families = new Map(), unique = new Set();
+  const declarations = [], sources = [], families = new Map(), aliases = {}, unique = new Set();
   for (const item of assets.files.filter(row => row.kind === 'stylesheet')) {
     const file = path.resolve(root, 'apps/web/public', '.' + item.publicPath);
     if (!file.startsWith(assetRoot + path.sep)) throw Error('Stylesheet outside the verified mirror');
@@ -21,6 +21,10 @@ function main() {
       let family = '';
       rule.walkDecls('font-family', decl => { family = decl.value.replace(/^['"]|['"]$/g, ''); });
       if (!family) throw Error('A captured font face has no family');
+      if (family.startsWith('KaTeX_')) {
+        const original = family; family = 'HKOriginal-' + family; aliases[original] = family;
+        rule.walkDecls('font-family', decl => { decl.value = '"' + family + '"'; });
+      }
       const text = rule.toString().split('\n').map(line => line.trimEnd()).join('\n');
       for (const match of text.matchAll(/url\(\s*["']?([^"')\s]+)["']?\s*\)/g)) if (!match[1].startsWith('data:') && !knownPaths.has(match[1])) throw Error('Font source is not a verified local asset: ' + match[1].slice(0,180));
       const digest = sha(Buffer.from(text)); if (unique.has(digest)) return; unique.add(digest);
@@ -33,7 +37,7 @@ function main() {
   const css = Buffer.from('/* Original teaching font faces. Source notices are retained in the mirrored stylesheets listed in original-teaching-fonts.json. Layout rules are excluded. */\n' + declarations.join('\n\n') + '\n');
   const fingerprint = sha(css), publicPath = '/reference/hyperknow/font-faces-' + fingerprint.slice(0, 16) + '.css';
   const metadata = { format: 'original-teaching-fonts-v1', stylesheet: publicPath, sha256: fingerprint, bytes: css.length, faceCount: declarations.length,
-    sourceAssetManifestSha256: sha(sourceBytes), families: [...families].map(([family, fontFaces]) => ({ family, fontFaces })), sources };
+    sourceAssetManifestSha256: sha(sourceBytes), families: [...families].map(([family, fontFaces]) => ({ family, fontFaces })), fontFamilyAliases: aliases, sources };
   const encoded = Buffer.from(JSON.stringify(metadata, null, 2) + '\n'), destination = path.join(root, 'apps/web/public', publicPath);
   unlinked(destination); unlinked(metadataPath);
   if (process.argv.includes('--verify')) {

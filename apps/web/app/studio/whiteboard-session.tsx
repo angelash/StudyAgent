@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { WHITEBOARD_SPEECH_VERSION, whiteboardPresentation, whiteboardSrt, whiteboardTimeline } from '@study-agent/contracts';
+import { WHITEBOARD_SPEECH_VERSION, WHITEBOARD_SPEEDS, isWhiteboardSpeed, whiteboardPresentation, whiteboardSrt, whiteboardTimeline } from '@study-agent/contracts';
 import type { WhiteboardTimeline } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest, apiBaseUrl, getAuthToken } from '../../lib/api';
 import type { WhiteboardPlayerProps } from './whiteboard-player';
@@ -14,6 +14,8 @@ import { WhiteboardNarration, whiteboardAudioKey, type WhiteboardAudioResource }
 import { originalUiFontFamily, useOriginalTeachingFonts, type OriginalBoardFont } from '../../lib/original-teaching-fonts';
 import './original-teaching-shell.generated.css';
 import './original-teaching-shell.css';
+import { WhiteboardSettings } from './whiteboard-settings';
+import { ClassroomIcon } from './classroom/icons';
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
@@ -22,6 +24,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
   const units = presentation.units;
   const [boardFont, setBoardFont] = React.useState<OriginalBoardFont>('handwriting'), [dots, setDots] = React.useState(true);
+  const [settings, setSettings] = React.useState(false), [muted, setMuted] = React.useState(false), mutedRef = React.useRef(muted); mutedRef.current = muted;
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -46,6 +49,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     return () => resize.disconnect();
   }, []);
   const resource = React.useRef<WhiteboardAudioResource | null>(null), narration = React.useRef<WhiteboardNarration | null>(null);
+  React.useEffect(() => { if (resource.current) resource.current.audio.muted = muted; }, [muted]);
   const generation = React.useRef(0), exportRequest = React.useRef<AbortController | null>(null);
   const resumeAudioTime = React.useRef<number | null>(null);
   const progressRef = React.useRef(progress), indexRef = React.useRef(unitIndex), position = React.useRef<Position | null>(null);
@@ -113,7 +117,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
             if (stored.mode === 'cloud' && (!stored.voice || speech?.voices.some(item => item.id === stored.voice)) &&
               stored.audioTime !== null && Number.isFinite(stored.audioTime) && stored.audioTime >= 0)
               resumeAudioTime.current = stored.audioTime;
-            if ([.75, 1, 1.25].includes(stored.speed)) setSpeed(stored.speed);
+            if (isWhiteboardSpeed(stored.speed)) setSpeed(stored.speed);
             if (stored.mode === 'text' || stored.mode === 'cloud' && narrationAvailable) setMode(stored.mode);
             if (speech?.voices.some(item => item.id === stored.voice)) setVoice(stored.voice);
             setNotice('已恢复此账号在原白板的阅读位置；点击播放继续。');
@@ -216,7 +220,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       } else resumeAudioTime.current = null;
       await speechQueue().authorize(request.signal);
       if (!current()) return;
-      audio.playbackRate = speed; audio.onended = advance;
+      audio.playbackRate = speed; audio.muted = mutedRef.current; audio.onended = advance;
       audio.onerror = () => { if (current()) { narration.current?.cancelPending(); setPlaying(false); setNotice('当前句语音中断，可重试或切换文字阅读。'); releaseAudio(); } };
       await audio.play(); if (!current()) { audio.pause(); return; }
       setNotice('云语音播放中 · 由当前句实际音轨结束推进。');
@@ -303,7 +307,9 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill">
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
       <button className="whiteboard-zoom-readout" aria-label="重置白板视图" onClick={() => setCamera({ zoom: 1, x: 0, y: 0, follow: true })}>{Math.round(camera.zoom * 100)}%</button>
-      <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom >= 2} aria-label="放大白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.min(2, value.zoom + .1) }))}>+</button></div></nav>
+      <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom >= 2} aria-label="放大白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.min(2, value.zoom + .1) }))}>+</button></div>
+      <button className="whiteboard-icon-btn" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button></nav>
+    <button className="whiteboard-icon-btn hk-whiteboard-mute" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
     {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
     <div className="wb-reading-layout"><main className="whiteboard-main"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}
       onKeyDown={event => { if (exporting !== null || !['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const current = cameraRef.current; setCamera({ ...current, follow: false, x: current.x + (event.key === 'ArrowLeft' ? -100 : event.key === 'ArrowRight' ? 100 : 0), y: current.y + (event.key === 'ArrowUp' ? -100 : event.key === 'ArrowDown' ? 100 : 0) }); }}
@@ -334,7 +340,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
           generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(event.target.value); setNotice('音色已切换，下次播放从当前句开头开始。');
         }}>{speech?.voices.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select>}
         <select aria-label="播放速度" value={speed} disabled={exporting !== null} onChange={event => setSpeed(Number(event.target.value))}>
-          <option value={.75}>0.75×</option><option value={1}>1×</option><option value={1.25}>1.25×</option></select>
+          {WHITEBOARD_SPEEDS.map(value => <option key={value} value={value}>{value}×</option>)}</select>
         <label className="hk-font-choice"><span className="sr-only">板书字体</span><select aria-label="板书字体" value={boardFont} disabled={exporting !== null} onChange={event => { pausePlayback(); setBoardFont(event.target.value as OriginalBoardFont); }}><option value="handwriting">手写板书</option><option value="standard">标准板书</option></select></label>
         <label className="hk-dot-choice"><input type="checkbox" checked={dots} disabled={exporting !== null} onChange={event => setDots(event.target.checked)}/>点阵</label>
         <button disabled={exporting !== null || !unit || !imagesReady || !fonts.ready} title="按当前字体与点阵，自动跟随已讲板书导出" onClick={() => void exportFile(true)}>导出视频</button>
@@ -358,5 +364,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>
     </aside></div>
+    {settings && <WhiteboardSettings context={ownerId + ':' + board.id + ':' + board.fingerprint} speech={speech} voice={voice} speed={speed} font={boardFont} dots={dots} muted={muted}
+      onVoice={value => { generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(value); setNotice('音色已切换，下次播放从当前句开头开始。'); }}
+      onSpeed={setSpeed} onFont={value => { pausePlayback(); setBoardFont(value); }} onDots={setDots} beforePreview={pausePlayback} onClose={() => setSettings(false)}/>}
   </div>;
 }

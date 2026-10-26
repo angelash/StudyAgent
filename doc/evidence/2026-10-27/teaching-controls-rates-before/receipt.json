@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-26T20:10:27.448Z",
+  "status": "six-rate-contract-gap-reproduced",
+  "passed": 5,
+  "failed": 1,
+  "reason": "The original three-rate contract rejects 0.5 even though the reference offers six rates",
+  "files": [
+    {
+      "source": "data/qa/teaching-controls-rates-before.json",
+      "file": "data__qa__teaching-controls-rates-before.json.gz",
+      "originalSha256": "6fb68aa56b123735b9e8cc5c326e997e111cc63b7f5f270bb61fe49d3bbba5fa"
+    },
+    {
+      "source": "data/qa/teaching-controls-rates-before.log",
+      "file": "data__qa__teaching-controls-rates-before.log.gz",
+      "originalSha256": "e9d36b841131fcaa180120015a5fdb7ed3dffe1f2e49ca4385856ca1e1d127b3"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-speech.ts",
+      "file": "packages__contracts__src__whiteboard-speech.ts.gz",
+      "originalSha256": "10a8043e55849018ae1e88e44a8f523b00e7d782ada4a3aef09f6b224e815807"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+      "file": "apps__api__src__modules__learning__whiteboard-speech.test.ts.gz",
+      "originalSha256": "bf9d51f5f437c9a0d0c79698b29ebbac92b2cdcff31aeed933ffb9ca45ef28a4"
+    }
+  ]
+}
