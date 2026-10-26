@@ -76,15 +76,21 @@ test('paper practice: a lost creation acknowledgment restores the original start
   await expect(page.getByLabel('先写下自己的回答')).toBeVisible(); expect((await f.call('/library/practice/sessions')).total).toBe(1);
 });
 
-test('paper practice: offline draft saving and a refresh retain the full original command until explicit retry', async ({ page, context }) => {
+test('recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry', async ({ page, context }) => {
   const f = await fixture(page, 3), row = await f.begin(); await page.goto('/library/practice?session=' + row.id);
   await page.getByLabel('先写下自己的回答').fill('离线时仍保留完整思考，不自动提交首答。'); await context.setOffline(true);
   await page.getByRole('button', { name: '保存草稿', exact: true }).click(); await expect(page.locator('.pp-shell').getByRole('alert')).toContainText('无法连接');
-  await context.setOffline(false); page.once('dialog', dialog => dialog.accept()); await page.reload();
-  await expect(page.getByLabel('先写下自己的回答')).toHaveValue('离线时仍保留完整思考，不自动提交首答。');
+  await context.setOffline(false);
+  for (let refresh = 0; refresh < 3; refresh++) {
+    page.once('dialog', dialog => dialog.accept()); await page.reload();
+    await expect(page.getByLabel('先写下自己的回答')).toHaveValue('离线时仍保留完整思考，不自动提交首答。');
+    await expect(page.getByRole('region', { name: '原操作恢复' })).toBeVisible();
+  }
   expect((await f.call('/library/practice/sessions/' + row.id)).version).toBe(1);
   await page.getByRole('button', { name: '核对或重试原操作', exact: true }).click(); await expect(page.getByRole('region', { name: '原操作恢复' })).toHaveCount(0);
   const saved = await f.call('/library/practice/sessions/' + row.id + '/items/' + row.items[0].id); expect(saved.draft).toBe('离线时仍保留完整思考，不自动提交首答。'); expect(saved.firstAnswer).toBeNull();
+  await page.getByLabel('先写下自己的回答').fill('原草稿已确认后，更新的本机想法');
+  for (let refresh = 0; refresh < 3; refresh++) { page.once('dialog', dialog => dialog.accept()); await page.reload(); await expect(page.getByLabel('先写下自己的回答')).toHaveValue('原草稿已确认后，更新的本机想法'); await expect(page.getByRole('region', { name: '原操作恢复' })).toHaveCount(0); }
 });
 
 test('paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy', async ({ page, context }) => {
@@ -174,7 +180,7 @@ test('paper practice: selected positions from two actual papers remain in the cr
   await expect(page.locator('#library-question-2')).toBeInViewport();
 });
 
-test('paper practice: correction drafts stay with their own item through rapid review, navigation and a real reload', async ({ page }) => {
+test('recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload', async ({ page }) => {
   const f = await fixture(page, 10), row = await f.begin(); await page.goto('/library/practice?session=' + row.id);
   await page.getByLabel('先写下自己的回答').fill('第一题的首答'); await page.getByRole('button', { name: '提交本题回答', exact: true }).click();
   await page.getByRole('button', { name: '核对本题参考答案', exact: true }).click(); await page.getByRole('button', { name: '还需订正', exact: true }).click();
@@ -183,9 +189,11 @@ test('paper practice: correction drafts stay with their own item through rapid r
   await page.getByRole('button', { name: '提交本题回答', exact: true }).click(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('');
   await page.getByLabel('追加订正', { exact: true }).fill('只属于第二题的未保存订正');
   await page.getByRole('button', { name: '上一题位', exact: true }).click(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('只属于第一题的未保存订正');
-  page.once('dialog', dialog => dialog.accept()); await page.reload(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('只属于第一题的未保存订正');
+  for (let refresh = 0; refresh < 3; refresh++) { page.once('dialog', dialog => dialog.accept()); await page.reload(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('只属于第一题的未保存订正'); }
   await page.getByRole('button', { name: '保存这次订正', exact: true }).click(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('');
   await expect(page.getByRole('region', { name: '追加订正记录' })).toContainText('只属于第一题的未保存订正');
+  await page.getByLabel('追加订正', { exact: true }).fill('第一次订正已确认后，另一份新想法');
+  for (let refresh = 0; refresh < 3; refresh++) { page.once('dialog', dialog => dialog.accept()); await page.reload(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('第一次订正已确认后，另一份新想法'); await expect(page.getByRole('region', { name: '原操作恢复' })).toHaveCount(0); }
   await page.getByRole('button', { name: '下一题位 ↗', exact: true }).click(); await expect(page.getByLabel('追加订正', { exact: true })).toHaveValue('只属于第二题的未保存订正');
   const saved = await f.call('/library/practice/sessions/' + row.id + '/items/' + row.items[0].id); expect(saved.corrections).toHaveLength(1); expect(saved.firstAnswer.text).toBe('第一题的首答');
 });
@@ -262,4 +270,15 @@ test('paper practice: an expired original preview can be safely retained and pre
   await expect(recovery).toHaveCount(0); await page.getByRole('button', { name: '预览这次练习', exact: true }).click(); await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click();
   await expect(page.getByLabel('先写下自己的回答')).toBeVisible(); expect((await f.call('/library/practice/sessions')).total).toBe(1);
   expect(await page.evaluate(key => Object.entries(localStorage).some(([name, value]) => name.startsWith('study.paper-practice.start:') && JSON.parse(value).body?.requestKey === key), original.body.requestKey)).toBe(true);
+});
+
+test('recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry', async ({ page }) => {
+  const f = await fixture(page, 17); await page.goto('/library/practice?paper=' + encodeURIComponent(f.papers.complete)); await page.getByRole('button', { name: '预览这次练习', exact: true }).click();
+  let original: any;
+  await page.route('**/api/library/practice/sessions', async route => { if (route.request().method() === 'POST' && !original) { original = route.request().postDataJSON(); return route.abort('failed'); } await route.continue(); });
+  await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click(); await expect.poll(() => Boolean(original)).toBe(true);
+  for (let refresh = 0; refresh < 3; refresh++) { await page.reload(); await expect(page.getByRole('region', { name: '原开始记录恢复' })).toBeVisible(); expect(await f.call('/library/practice/requests/' + original.requestKey)).toBeNull(); }
+  expect((await f.call('/library/practice/sessions')).total).toBe(0); await page.getByRole('button', { name: '继续核对原开始记录 ↗', exact: true }).click();
+  await expect(page.getByLabel('先写下自己的回答')).toBeVisible(); const receipt = await f.call('/library/practice/requests/' + original.requestKey);
+  expect(new URL(page.url()).searchParams.get('session')).toBe(receipt.session.id); expect((await f.call('/library/practice/sessions')).total).toBe(1);
 });

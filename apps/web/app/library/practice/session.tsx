@@ -4,7 +4,7 @@ import { paperPracticeCommandSchema, type PaperPracticeCommandResult, type Paper
 import type { SessionUser } from '../../../lib/session-user';
 import { ApiRequestError, apiBaseUrl } from '../../../lib/api';
 import { paperPracticeFailure, usePaperPracticeApi } from '../../../lib/paper-practice-api';
-import { downloadPaperRecovery, firstPaperCopy, otherPaperCopies, paperPracticeInputHash, paperStorage, storePaperRecovery } from '../../../lib/paper-practice-local';
+import { clearPaperRecovery, downloadPaperRecovery, firstPaperCopy, otherPaperCopies, paperPracticeInputHash, paperStorage, storePaperRecovery } from '../../../lib/paper-practice-local';
 import { RichMath } from '../../../components/rich-math';
 import { WorkspaceDialog } from '../../studio/workspace-dialog';
 
@@ -45,8 +45,9 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
     const id = value.body.itemId;
     if (typeof id !== 'string') return;
     try {
-      if (['draft', 'submit'].includes(String(value.body.kind)) && typeof value.body.text === 'string') storePaperRecovery(draftKey(id), { format: 'paper-practice-draft-v1', ownerId: user.id, sessionId, itemId: id, text: value.body.text, baseText: value.body.text } satisfies Draft);
-      if (value.body.kind === 'correct') { correctionDrafts.current.set(id, ''); if (selectedRef.current === id) setCorrection(''); storePaperRecovery(correctionStorage(id).key, { format: 'paper-practice-draft-v1', ownerId: user.id, sessionId, itemId: id, text: '', baseText: '', purpose: 'correction' } satisfies Draft); }
+      const saved = firstPaperCopy(draftStorage(id), candidate => decodeDraft(candidate, id));
+      if (['draft', 'submit'].includes(String(value.body.kind)) && typeof value.body.text === 'string' && (!saved || saved.text === value.body.text)) storePaperRecovery(draftKey(id), { format: 'paper-practice-draft-v1', ownerId: user.id, sessionId, itemId: id, text: value.body.text, baseText: value.body.text } satisfies Draft);
+      if (value.body.kind === 'correct') { const savedCorrection = firstPaperCopy(correctionStorage(id), candidate => decodeDraft(candidate, id)), current = correctionDrafts.current.get(id) ?? savedCorrection?.text ?? ''; if (!current || current === value.body.text) { correctionDrafts.current.set(id, ''); if (selectedRef.current === id) setCorrection(''); storePaperRecovery(correctionStorage(id).key, { format: 'paper-practice-draft-v1', ownerId: user.id, sessionId, itemId: id, text: '', baseText: '', purpose: 'correction' } satisfies Draft); } }
     } catch { setNotice('服务器已保存，本机副本确认暂时未写入；原文件仍可核对。'); }
   }
   const apply = React.useCallback((value: PaperPracticeSessionView) => {
@@ -68,7 +69,9 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
     try {
       const value = firstPaperCopy(pendingStorage, decodePending);
       if (value) {
-        setPending(value); setProtectedLocally(true);
+        setPending(value);
+        try { storePaperRecovery(pendingKey, value); setProtectedLocally(true); }
+        catch { setProtectedLocally(false); setManualProtection(true); setNotice('原操作仍能核对，但本页未能保留新的恢复副本，请先下载完整保护文件。'); }
         void call<PaperPracticeCommandResult | null>('/library/practice/sessions/' + encodeURIComponent(sessionId) + '/commands/' + encodeURIComponent(String(value.body.requestKey)), undefined, controller.signal).then(async receipt => {
           if (!current || !receipt || receipt.inputHash !== await paperPracticeInputHash(value.body)) return;
           if (!current || actionGeneration.current !== generation) return; acknowledgeLocal(value); clearPending(); apply(receipt.session);
@@ -84,11 +87,12 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
       if (row.ownerUserId === user.id) try {
         const saved = firstPaperCopy(draftStorage(value.id), candidate => decodeDraft(candidate, value.id));
         if (saved) {
+          try { storePaperRecovery(draftKey(value.id), saved); } catch { setNotice('已读回原草稿，但本页恢复副本暂未保存，请下载保护后再离开。'); }
           if (saved.text !== value.draft && saved.baseText !== value.draft || value.firstAnswer && saved.text !== value.firstAnswer.text) setLocalConflict(saved);
           else editing = saved.text;
         }
         const savedCorrection = firstPaperCopy(correctionStorage(value.id), candidate => decodeDraft(candidate, value.id));
-        if (savedCorrection) { correcting = correctionDrafts.current.get(value.id) ?? savedCorrection.text; if (correcting && row.status === 'completed') setNotice('本机还有未保存的订正草稿，已完成记录不再改写，可下载保留。'); }
+        if (savedCorrection) { correcting = correctionDrafts.current.get(value.id) ?? savedCorrection.text; try { storePaperRecovery(correctionStorage(value.id).key, { ...savedCorrection, text: correcting }); } catch { setNotice('已读回订正，但本页恢复副本暂未保存，请下载保护后再离开。'); } if (correcting && row.status === 'completed') setNotice('本机还有未保存的订正草稿，已完成记录不再改写，可下载保留。'); }
       } catch { setNotice('本机草稿暂时无法核对，服务器原记录仍保留。'); }
       setText(editing); localText.current = editing; setCorrection(correcting);
     }).catch(caught => { if (current) { setItem(null); setError(paperPracticeFailure(caught)); if (caught instanceof ApiRequestError && [401, 403].includes(caught.status)) setRow(null); } });
@@ -120,7 +124,7 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
     catch { setNotice('本机暂不能保存订正草稿，请下载保护或明确保存后离开。'); }
   }
   function clearPending() {
-    try { window.localStorage.removeItem(pendingKey); } catch { /* A surviving original key remains idempotent. */ }
+    try { clearPaperRecovery(pendingStorage); } catch { setNotice('本机旧操作标识尚未标记结束，原键重试仍会核对服务器结果。'); }
     setPending(null); setProtectedLocally(false); setManualProtection(false); setCommandConflict(false);
   }
   function protectPending(value: Pending) {

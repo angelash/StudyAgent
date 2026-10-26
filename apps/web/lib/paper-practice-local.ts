@@ -2,22 +2,31 @@ import type { PaperPracticeSelection } from '@study-agent/contracts';
 import { paperPracticeCommandSchema, paperPracticeCreationSchema } from '@study-agent/contracts';
 
 // Reuses the project/whiteboard document-slot pattern: every document writes
-// its own copy, while a reload may read its predecessor without overwriting it.
-let documentSlot: { id: string; previous: string } | undefined;
+// its own copy. Keep the page ancestry so unvisited question drafts also survive
+// repeated reloads without reading another tab's newer independent copies.
+let documentSlot: { id: string; previous: string[] } | undefined;
 const slotPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 export function paperStorage(base: string) {
   if (typeof window === 'undefined') return { base, key: base + '.server', restoreKeys: [] as string[] };
   if (!documentSlot) {
-    const id = crypto.randomUUID(); let previous = '';
-    try { previous = window.sessionStorage.getItem('study.paper-practice.document-slot') ?? ''; window.sessionStorage.setItem('study.paper-practice.document-slot', id); } catch { /* Copies can still be recovered explicitly. */ }
-    documentSlot = { id, previous: slotPattern.test(previous) ? previous : '' };
+    const id = crypto.randomUUID(); let previous: string[] = [];
+    try {
+      const recent = window.sessionStorage.getItem('study.paper-practice.document-slot') ?? ''; if (slotPattern.test(recent)) previous.push(recent);
+      let history: unknown; try { history = JSON.parse(window.sessionStorage.getItem('study.paper-practice.document-ancestors') ?? '[]'); } catch { /* Keep the valid immediate predecessor. */ }
+      if (Array.isArray(history)) previous = [...new Set([...previous, ...history.filter((value): value is string => typeof value === 'string' && slotPattern.test(value))])];
+      window.sessionStorage.setItem('study.paper-practice.document-ancestors', JSON.stringify(previous)); window.sessionStorage.setItem('study.paper-practice.document-slot', id);
+    } catch { /* Preserved files and explicit older copies remain available. */ }
+    documentSlot = { id, previous };
   }
-  return { base, key: base + '.' + documentSlot.id, restoreKeys: [base + '.' + documentSlot.id, ...(documentSlot.previous ? [base + '.' + documentSlot.previous] : []), base] };
+  return { base, key: base + '.' + documentSlot.id, restoreKeys: [base + '.' + documentSlot.id, ...documentSlot.previous.map(id => base + '.' + id), base] };
 }
 export function firstPaperCopy<T>(storage: ReturnType<typeof paperStorage>, decode: (value: unknown) => T): T | null {
-  for (const key of storage.restoreKeys) { const raw = window.localStorage.getItem(key); if (!raw) continue; if (raw.length > 256 * 1024) continue; try { return decode(JSON.parse(raw)); } catch { /* Preserve invalid copies for explicit inspection. */ } }
+  for (const key of storage.restoreKeys) { const raw = window.localStorage.getItem(key); if (!raw) continue; if (raw.length > 256 * 1024) continue; try { const value = JSON.parse(raw); if (value?.format === 'paper-practice-cleared-v1' && value.base === storage.base) { if (key !== storage.key) try { storePaperRecovery(storage.key, value); } catch { /* The original clear marker still bounds this read. */ } return null; } return decode(value); } catch { /* Preserve invalid copies for explicit inspection. */ } }
   return null;
 }
+/** A local clear is not proof of server success. It only ends this page lineage's
+ * pending selection; older independent copies remain explicitly inspectable. */
+export function clearPaperRecovery(storage: ReturnType<typeof paperStorage>) { storePaperRecovery(storage.key, { format: 'paper-practice-cleared-v1', base: storage.base }); }
 export function otherPaperCopies<T>(storage: ReturnType<typeof paperStorage>, decode: (value: unknown) => T): T[] {
   const values: T[] = [];
   for (const key of Object.keys(window.localStorage).slice(0, 2000)) {
@@ -44,7 +53,7 @@ export function parsePaperSelection(value: unknown): PaperPracticeSelection[] {
   return rows;
 }
 export function storePaperRecovery(key: string, value: unknown) {
-  const serialized = JSON.stringify(value); window.localStorage.setItem(key, serialized);
+  const serialized = JSON.stringify(value); if (window.localStorage.getItem(key) !== serialized) window.localStorage.setItem(key, serialized);
   if (window.localStorage.getItem(key) !== serialized) throw new Error('本机未能确认恢复信息已保存。');
 }
 export function downloadPaperRecovery(value: unknown, name: string) {

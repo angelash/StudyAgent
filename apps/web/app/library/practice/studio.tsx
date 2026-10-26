@@ -5,7 +5,7 @@ import { useSessionStatus, refreshSessionUser, type SessionUser } from '../../..
 import { ApiRequestError } from '../../../lib/api';
 import { StudyNav } from '../../../components/study-nav';
 import { paperPracticeFailure, usePaperPracticeApi } from '../../../lib/paper-practice-api';
-import { downloadPaperRecovery, firstPaperCopy, otherPaperCopies, paperBasketKey, paperPracticeInputHash, paperStorage, parsePaperSelection, storePaperRecovery } from '../../../lib/paper-practice-local';
+import { clearPaperRecovery, downloadPaperRecovery, firstPaperCopy, otherPaperCopies, paperBasketKey, paperPracticeInputHash, paperStorage, parsePaperSelection, storePaperRecovery } from '../../../lib/paper-practice-local';
 import { PaperPracticeSession } from './session';
 import '../../student/assessment/studio.css';
 import './practice.css';
@@ -59,11 +59,13 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       try {
         const stored = firstPaperCopy(storage, decodeStart);
         if (stored) {
-          setPending(stored); setProtectedLocally(true);
+          setPending(stored);
+          try { storePaperRecovery(storage.key, stored); setProtectedLocally(true); }
+          catch { setProtectedLocally(false); setManualProtection(true); setNotice('已读回原开始记录，但本页恢复副本暂未保存，请下载保护文件后继续。'); }
           void call<PaperPracticeCreationResult | null>('/library/practice/requests/' + encodeURIComponent(stored.body.requestKey)).then(async result => {
             if (!current || !result || result.inputHash !== await paperPracticeInputHash(stored.body, true)) return;
             if (!current) return; setPending(null); setConfirmedStart(result.session.id); setNotice('上次开始已确认保存，可继续原练习。');
-            try { window.localStorage.removeItem(storage.key); } catch { /* Other document copies remain untouched. */ }
+            try { clearPaperRecovery(storage); } catch { /* Other document copies remain untouched. */ }
           }).catch(caught => { if (current) setError(paperPracticeFailure(caught)); });
         }
       } catch { setNotice('本机暂不能读取恢复信息。可以下载保护文件后继续。'); }
@@ -89,7 +91,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       confirmedMissing = receipt === null;
       const row = await call<PaperPracticeSessionView>('/library/practice/sessions', value.body);
       if (!alive.current) return;
-      try { window.localStorage.removeItem(storage.key); } catch { /* The retained original key can still read the same record later. */ }
+      try { clearPaperRecovery(storage); } catch { /* The retained original key can still read the same record later. */ }
       window.location.assign('/library/practice?session=' + encodeURIComponent(row.id));
     } catch (caught) { if (alive.current) { setError(paperPracticeFailure(caught)); if (confirmedMissing && caught instanceof ApiRequestError && [400, 409].includes(caught.status)) setExpiredStart(true); } } finally { if (alive.current) setBusy(false); }
   }
@@ -102,7 +104,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       try { storePaperRecovery(storage.base + '.' + crypto.randomUUID(), pending); }
       catch { if (!manualProtection) { setProtectedLocally(false); setManualProtection(true); setNotice('本机未能另存原开始记录。请先下载完整保护文件，并确认已经另外保留。'); return; } }
       setSelection(pending.body.selection); setStudentId(pending.body.studentId ?? ''); setPreview(null); setPending(null); setExpiredStart(false); setProtectedLocally(false); setManualProtection(false);
-      try { window.localStorage.removeItem(storage.key); } catch { /* The original external file or independent copy remains available. */ }
+      try { clearPaperRecovery(storage); } catch { /* The original external file or independent copy remains available. */ }
       setNotice('原开始记录已保留。请重新预览原选择，确认当前原卷版本后再开始。');
     } catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); } finally { if (alive.current) setBusy(false); }
   }
