@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T21:11:48.838Z",
-  "sourceRevision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
+  "at": "2026-10-26T22:03:07.895Z",
+  "sourceRevision": "9004ba6825165946f065b8758724e2bbb2cf170d",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -14,11 +14,11 @@
     "apiClasses": 150,
     "apiFunctions": 418,
     "domainCollections": 100,
-    "contractTypes": 355,
+    "contractTypes": 356,
     "webPages": 29,
     "webRouteHandlers": 1,
     "apiTestFiles": 163,
-    "browserTestFiles": 34
+    "browserTestFiles": 35
   },
   "features": {
     "areas": 14,
@@ -268,7 +268,7 @@
       "apps/api/src/modules/learning/topic-whiteboard.service.ts": "6050fac2332af256452345dfa9d16ca6ac85c3268554eef56443a72649cd1231",
       "apps/api/src/modules/learning/whiteboard-formula.test.ts": "7f84e6cd7d854687b603ec969baa940c137af3df24fc2c9abd0c32527f8a31d1",
       "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts": "0cf51e544ffb14f1f39cad7ef109cf7de326fbc966dcd8ba001e920c0ce4efaa",
-      "apps/api/src/modules/learning/whiteboard-speech.test.ts": "0350f9aaf606a549648fc8bafc7647b064eeb3e76d26575a0428c1892d731825",
+      "apps/api/src/modules/learning/whiteboard-speech.test.ts": "bf9d51f5f437c9a0d0c79698b29ebbac92b2cdcff31aeed933ffb9ca45ef28a4",
       "apps/api/src/modules/learning/whiteboard-webm.test.ts": "03718324eeaf417aa532578ad25e0a9c7e1f760f4cd5ffffd2469713c3b50330",
       "apps/api/src/modules/library/library.controller.ts": "e852178ae38f11f9ec3d38dbb6faf5eb2edf8538d405e12f9e40d0edbe568dec",
       "apps/api/src/modules/library/library.integration.test.ts": "fee5aa85b3363d11f892dda7752a337a0d4f61a0bc7cf5b80e6cdd992cf21a22",
@@ -343,7 +343,7 @@
       "apps/web/app/studio/classroom/reply-reading.ts": "07680f9daafa438cdc46cb6b45f669af6bc5530fc8c0d16edbbb67d76c56299f",
       "apps/web/app/studio/classroom/runner/route.ts": "21bbb5a25caa47e765ed5ba70a20edeb7480381dc603b7e085cb895cbc059f89",
       "apps/web/app/studio/classroom/tool-tour.css": "58a2cb074f4e6bc5682f160b0ee33e1826fb6cbe51cd0fd7341fc848b9ec6f1c",
-      "apps/web/app/studio/classroom/tool-tour.tsx": "485e81db850c0d9d3b87be5aedffea1fc34108ebacebb19a21e01862d8563c15",
+      "apps/web/app/studio/classroom/tool-tour.tsx": "1bce218cf6daf1d0e0679e7059d0fde2a6ce13e19c934822854daed48d534ed5",
       "apps/web/app/studio/classroom/turns.tsx": "fd33c3f5032c59503647b414ed2f31e64b2a245b4d762da625720b4791947d79",
       "apps/web/app/studio/classroom/visuals.css": "d8f9aa3a5744743f9b08ae7e5c7ca33065a9e3d19930571a5e73929bc970250a",
       "apps/web/app/studio/classroom/visuals.tsx": "96a4161f7dfb1f77ec5edb6aa94c622587e4556d49881436a7ffac0ba18d8898",
@@ -356,7 +356,7 @@
       "apps/web/app/studio/course-library-state.ts": "9113ddcfb94a840b6c5c59fd07bdde8199d6a08c216a218f0ec1d3b9d53d9718",
       "apps/web/app/studio/course-library.css": "0aa093dfcfe94c317bf2b556d7501016a063dbc74d15b0b40fc18d972c252eed",
       "apps/web/app/studio/my-courses.tsx": "226c1aeb2bfcc36bb3b7e1561c9088c02254b1282e7d899e64273b1dede7ddf0",
-      "apps/web/app/studio/original-teaching-shell.css": "84b36dd86fb4d9403de4390937c70defe7ac9bafd4dca70e3ed888fdb99cc4ff",
+      "apps/web/app/studio/original-teaching-shell.css": "c11f0cd5060744f078e53910617fe96509c95205b810d866be4487e9532891b8",
       "apps/web/app/studio/original-teaching-shell.generated.css": "1529cee10138def494c12606ac4a02295644b79aafcf3f8eabcdc1c8eb5f399d",
       "apps/web/app/studio/paper-review-calendar.tsx": "2a150efe93418d8417c0fa3ed1381d84cf5ba7794d9797cd6a777d98fbb95113",
       "apps/web/app/studio/projects/advice-scope.tsx": "1feee1c3c79a7257c293feb9bb6638618ab752c7c05792d272f2b9894f861f42",
@@ -392,11 +392,11 @@
       "apps/web/app/studio/whiteboard-exhibit.tsx": "8a7ec84dc6004967ff6d40451c903664ea4e8a5d942ae42ca2f084ac018b85af",
       "apps/web/app/studio/whiteboard-formula-image.ts": "db42a4eca54a96748879c8cf4aab98ee635ad6ec28af5dbb5ff303577cf2cd73",
       "apps/web/app/studio/whiteboard-formula.ts": "e4855de4197cc3ceea24d667c484e92792b60864d56b4f92c2f65977ff9edb2a",
-      "apps/web/app/studio/whiteboard-frame.ts": "08b356ce0953ec2599178d3eaba5cff69fcf9009077d98cbbde0d894ef4a88c9",
+      "apps/web/app/studio/whiteboard-frame.ts": "2a69c147b774a7bc8458a2065bab573ca45708906cef42593bd47a7039dd7f12",
       "apps/web/app/studio/whiteboard-media.ts": "5d67deae1837246da14e70137083a3c8ec5eaea54e4971296b74da5605e777a0",
       "apps/web/app/studio/whiteboard-narration.ts": "a14fd5eb726111e9d6cf19bb9c0d31c8ec4bf941228220484694509a0f3d62fd",
       "apps/web/app/studio/whiteboard-player.tsx": "b79a23b2c805fd23be6b663e2ecba2153c4ebb2ce3c6156edba7bc078d1f0fe7",
-      "apps/web/app/studio/whiteboard-session.tsx": "d794253666a91c0a1da79b896e6e3f3e255fef58464c74ca8f02d72d2f88325e",
+      "apps/web/app/studio/whiteboard-session.tsx": "86be740df01c87e84299e316942bddfe4c60a1e484400e784cde2e0fa7fa7832",
       "apps/web/app/studio/whiteboard-table.ts": "5edec2372f871c82eaa7c5e60e505b8cfe17281f0765e9987d567f4c7fc5121a",
       "apps/web/app/studio/whiteboard-webm.ts": "b03d3ed1860d2e9b5235fe10a4cf6e796301cd661ef20c75f4f026db9124a2e6",
       "apps/web/app/studio/whiteboards/command-digest.ts": "112bf2f4fb03c5f1705ad4eb2c57ef64fda1524e2b8e595034f09da4efa0d033",
@@ -444,7 +444,7 @@
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "18083c59ec9c5401e478c213bf5adf7611db1a0deef025d54cbdeb93bc377792",
       "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "9c49a70f91ce6c5e494cfc37ee6c82d70f56636e0a5a5c2e01aee9d562228cec",
-      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "9aa9c768b7640e808b979bde0c50bbb9f67e78fa6bb129dda5ec2846bd0e4f98",
+      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "711495da13d498950ca42c4f130944b28d50f193d1df2a3b398ed9c401043401",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -483,7 +483,7 @@
       "packages/contracts/src/studio.ts": "f94b1999943706203cb7ab4b233179b54bc1ca8a190989958c721d0196334412",
       "packages/contracts/src/topic-whiteboard-visual.ts": "42b8cdfde0d3dc4a0e78b689e687a1a9d7e2c80849a8d35d7432998ad23c8db9",
       "packages/contracts/src/topic-whiteboard.ts": "d873a7b727d784cfd9cdb5469b7b35c2c0cb33e36443711637a047186c7d8a65",
-      "packages/contracts/src/whiteboard-speech.ts": "10a8043e55849018ae1e88e44a8f523b00e7d782ada4a3aef09f6b224e815807",
+      "packages/contracts/src/whiteboard-speech.ts": "8f88d3c1f6231d4eeb9ccc7d32870366f24f6166864d49d828266b5bf665b588",
       "resources/gesp/knowledge-map.json": "0131e9f7ef27755f1edacb6da6b40f1b6e6dc9bacb61760b27c0ba09f7345fb4",
       "resources/gesp/student-curriculum-v2.json": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a",
       "scripts/ci/configure-ubuntu-packages.cjs": "96d8d65f1893e68a05e5ef0589bd140f92671dd1b3da43c0f3fd1747ecbbf577",
@@ -514,7 +514,7 @@
       "scripts/qa/run-browser-acceptance.cjs": "10bd7349a6834bc48db6c2ba7016479fb4cb2f5aefd20263eb7cefc01f3f51ec",
       "scripts/qa/run-project-files-postgres.cjs": "f0a78034f2203813195c7ce9d94bd724e717bf419ce48740bc1ded856a8f8138",
       "scripts/qa/run-project-teaching-postgres.cjs": "d8252568506d30ef9bcc2d3216e899cb1f10ee01edcad9c272ae162ecaa266e0",
-      "scripts/qa/run-source-course-browser.cjs": "fa9c32140bb0f70f79d946ff713eaf20de6fbdd060125a5e1f0fc626277ad2c0",
+      "scripts/qa/run-source-course-browser.cjs": "66282b11f8750fba17b66ccd868872b808fba439ff3510366cbf3e99de611d98",
       "scripts/qa/run-source-lifecycle-postgres.cjs": "aeb3a7b183a38f4cdf5f697d0a0ff5132e3c5e4a130d21e8b9803a5f4c13d0bd",
       "scripts/qa/run-source-projects-postgres.cjs": "712a5e09f8082ef6ccc833758e3c5d8666385e56e122c23bf6375847f9c95974",
       "scripts/qa/source-check-live.cjs": "1a9ad49056d5e159a77c9db1d246dde9e7935f368f6997dbb9560d0f5b5371ea",
@@ -527,7 +527,7 @@
       "scripts/qa/verify-project-file-preview.py": "84e9ff979b3b1e97fae98917f0e5df385ff7733c659e85b25f0f267049339d68",
       "scripts/reference/build-hyperknow-fonts.cjs": "956892eac723ee3a25802f5e67a9518bd4588bd044dd51daf6bef55c20b3e643",
       "scripts/reference/build-hyperknow-teaching-styles.cjs": "7430a7927cdc2660ed8d3e6e1fa94eb12a016fb786dffac802417cb56a105da1",
-      "scripts/reference/import-hyperknow-assets.cjs": "17ee7b95294a6ec519851565327887f08bfe39f7d4e5f07168c30d0ae713b35f",
+      "scripts/reference/import-hyperknow-assets.cjs": "e1d25b5ab760e0af0c56909258a898f4f801a6b1239d3376c86e4869bfd100cf",
       "tests/e2e/answer-journeys.spec.ts": "9684f5230a2a4aaa55abe6a1c234711bf80be3133810f5e6c7371be20fbf26b2",
       "tests/e2e/assistant-conversations.spec.ts": "ce55959f459056e472888c6028905f4cb6f9bb8cf07b3f553d2eb939faefdc6a",
       "tests/e2e/classroom-boards.spec.ts": "fc0248f4cf4a0c9c5d2a43a0cf9c0f5189662d1587876a136d781574d325811b",
@@ -559,7 +559,7 @@
       "tests/e2e/source-course-project.spec.ts": "d672c04033344ec4863d80b58c7b973ce6d6768ee4929235dc0e03a02664bf15",
       "tests/e2e/source-course.spec.ts": "1072e718f1433736a658b3f07776e0f82055aece2af82bed9dc94d15d0679fba",
       "tests/e2e/studio.spec.ts": "3a772149396a690841c8613e43550d84b60a9bdae97b6bdb10377d00312828b5",
-      "tests/e2e/topic-whiteboard.spec.ts": "fe4e61271bd1ea0c46f1ee31a88b6e82a77668f538175bb17015a301e61d8a0d",
+      "tests/e2e/topic-whiteboard.spec.ts": "163e749408c9405680cae911e6d9d322e0af5fb9dd2b56ca96efc5ffffe25fd9",
       "tests/e2e/whiteboard-media.spec.ts": "860aeb1e9633969ff54189a4e21d0bf3e597f37e5e68bad17e9c4c3af3dbea70",
       "tests/e2e/whiteboard-timing.ts": "9ba4120b8ed6e684e0c918b6cec478320a4456115ccc52cdd321e7ab33f377b2",
       "tests/e2e/workspace.spec.ts": "fb5a11d217dda079e5361fa475cbef09494e787bbde7a1bf0c3f12bc7483b632"
@@ -571,12 +571,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3309,
+    "checked": 3330,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-26T20:05:33.346Z",
+    "authoredAuditAt": "2026-10-26T22:03:01.994Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -642,8 +642,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-27/teaching-frame-final-full-local/receipt.json",
-    "revision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
+    "receipt": "../evidence/2026-10-27/teaching-controls-final-full-local/receipt.json",
+    "revision": "eeab006f2d9f623df3f3a634900de8f609877bf7",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

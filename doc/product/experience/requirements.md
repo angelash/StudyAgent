@@ -2,7 +2,7 @@
 
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
 
-2026-10-27当前账本核对：72项为11 implemented、50 in_progress、11 planned、0 verified。129原字体/累积知识画布已正式交付，见[本批验收](../../evidence/2026-10-27/teaching-frame-acceptance.json)。130六档设置、工具和面板继续隔离验收，白板插问、原自由几何、全部课程外壳与M1～M7继续；不能用本批专项或CI通过结案完整需求。以下旧核对保留历史。
+2026-10-27当前账本核对：72项为11 implemented、50 in_progress、11 planned、0 verified。130设置/面板/工具已正式交付，见[本批验收](../../evidence/2026-10-27/teaching-controls-acceptance.json)。131白板插问、原自由几何、全部课程外壳与M1～M7继续；不能用专项或CI通过结案完整需求。以下旧核对保留历史。
 
 2026-10-24核对：11项implemented、46项in_progress、15项planned，尚无整条verified。26项planned→in_progress是纠正已有部分实现，不是本轮新增交付。各领域的当前基础、具体缺口、版本/运行边界和M0～M7顺序见[整体进度与里程碑105](../105-development-plan-status-and-next-milestones.md)；72项前后状态及源码/测试/历史证据映射见[核对数据](../../evidence/2026-10-24/development-plan-audit.json)。implemented和in_progress均须继续完成原条目的全部验收，不能换算为完成率。
 

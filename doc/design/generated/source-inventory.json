@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
+  "sourceRevision": "9004ba6825165946f065b8758724e2bbb2cf170d",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 399,
@@ -12,11 +12,11 @@
     "apiClasses": 150,
     "apiFunctions": 418,
     "domainCollections": 100,
-    "contractTypes": 355,
+    "contractTypes": 356,
     "webPages": 29,
     "webRouteHandlers": 1,
     "apiTestFiles": 163,
-    "browserTestFiles": 34
+    "browserTestFiles": 35
   },
   "modules": [
     {
@@ -50561,9 +50561,16 @@
       ]
     },
     {
+      "name": "WhiteboardSpeed",
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "line": 6,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
       "name": "WhiteboardSpeechUnit",
       "file": "packages/contracts/src/whiteboard-speech.ts",
-      "line": 5,
+      "line": 10,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50606,7 +50613,7 @@
     {
       "name": "WhiteboardPresentation",
       "file": "packages/contracts/src/whiteboard-speech.ts",
-      "line": 9,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50629,14 +50636,14 @@
     {
       "name": "WhiteboardTimelineEntry",
       "file": "packages/contracts/src/whiteboard-speech.ts",
-      "line": 12,
+      "line": 17,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "WhiteboardTimeline",
       "file": "packages/contracts/src/whiteboard-speech.ts",
-      "line": 13,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -51207,6 +51214,7 @@
     "tests/e2e/studio.spec.ts",
     "tests/e2e/topic-whiteboard.spec.ts",
     "tests/e2e/whiteboard-media.spec.ts",
+    "tests/e2e/whiteboard-settings.spec.ts",
     "tests/e2e/workspace.spec.ts"
   ]
 }
