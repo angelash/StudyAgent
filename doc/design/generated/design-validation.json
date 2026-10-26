@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T10:49:24.344Z",
-  "sourceRevision": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "at": "2026-10-26T12:31:35.349Z",
+  "sourceRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -18,7 +18,7 @@
     "webPages": 27,
     "webRouteHandlers": 1,
     "apiTestFiles": 159,
-    "browserTestFiles": 31
+    "browserTestFiles": 32
   },
   "features": {
     "areas": 14,
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 364
   },
   "sourceReferences": {
-    "uniqueFiles": 493,
+    "uniqueFiles": 499,
     "problems": [],
     "sha256": {
       ".github/apt-ci.conf": "61be3bee1af091f0b3b8fa1ffed9b4da4392a4f8c0f302d5074e2b7b445f0444",
@@ -309,7 +309,7 @@
       "apps/web/app/learn/screen.tsx": "a6e833c717122100d114091aa13c5a170b0a68fc03d10629a21b607fb964a91a",
       "apps/web/app/parent/dashboard/studio.tsx": "4a5618d1a3e7b7250a2af9fe8431f685c238a715c2a96025bc2a6cc1884fd0ca",
       "apps/web/app/parent/login/page.tsx": "09ec6498b5dbc654ec87d40c9a9486e300d10970a6840e70b20ec5f8f6eaecec",
-      "apps/web/app/student/assessment/studio.tsx": "e4724ae722f9fdd58f93c920721ff528c620a2a1b08a8f484afac18badd806bc",
+      "apps/web/app/student/assessment/studio.tsx": "6b0626ae7f21fde8adc238f84e5ebd41def795a59a95e06c596986c6ebdbc218",
       "apps/web/app/student/login/page.tsx": "cf3fa0f8bcb9f20e8a77a2fb907d4a9a8c2effd66a4d64829f3ff12c8922c7de",
       "apps/web/app/studio/calendar-board.tsx": "ff7bf9b30c80429c26ee603fd37a1d6c61b8e3e69b3c44fb51ddc9028a3684a3",
       "apps/web/app/studio/classroom/board-formula.ts": "b86176ef09181c041064d40435e2bcc14b4ef31cfae10cd3db8006b0833be501",
@@ -392,7 +392,10 @@
       "apps/web/components/answer-draft-status.tsx": "c31e4ad8c900a1ac907589ae0edc6abced7107205cf3303150b0e885622c1613",
       "apps/web/components/assistant-widget.tsx": "55d6309b9396639990f250f2e8fba8ebb98e4763f18c0b1094f5df635da40a58",
       "apps/web/components/guidance-model-panel.tsx": "37e88a6531b15ab5bd2481c1f1e5afe63ff84257a270b1095f7db025b4e81c8b",
+      "apps/web/components/knowledge-report-workspace.css": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3",
+      "apps/web/components/knowledge-report-workspace.tsx": "c75105011829f5889df356344dd03511dad8d7c1b5c7be14dae95063ad1b0bd0",
       "apps/web/components/question-renderer.tsx": "2b9e1baba77e3be8d7ea9786cd9a448a55bfae4111f4bb12065e66125927b1e7",
+      "apps/web/components/report-plan-path.tsx": "18e08fdbb9e5a6c45d196fd4ed30b6121a03c3c7eddf5693b49b150b7e91e853",
       "apps/web/components/session-connection.tsx": "6da804b851b072d20de1faba7c2ed745065759dc2b14296a3628cbad2c8c4f99",
       "apps/web/components/session-control.tsx": "d8881755bb855fda67a229a2973f5036e1f3f12cb7cb579667c313f70353bc0b",
       "apps/web/components/structured-answer-input.tsx": "b63078b78c6ae08ca330e23c53f134827d5cf559dd31f0f2279748762c203b6f",
@@ -405,6 +408,7 @@
       "apps/web/lib/learning-context.ts": "532cea5d8a74192b5cde06af5b7f16820530c8348707c529dcbebb466c190269",
       "apps/web/lib/session-user.ts": "f62f9542eaa07b4198286cdbcd9ecbb415f31a2481d4f811e2e41d67b0b1c6ce",
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
+      "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json": "babaa746888d9582a9282c93beb4110dbd1bc360b3d05fdae5135f9e2b2c0739",
       "doc/evidence/2026-10-26/topic-figure-acceptance.json": "3e887de00ff06191e7ca08af307bc9ec8bd5ecaafe0ef8b8dca8ea8eba3c8484",
       "doc/evidence/2026-10-26/topic-figure-runtime.json": "fda829ef2841a114853d964feceb4ffb48bf2e82d6f109c605dad3f2ce0d3ad9",
       "doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json": "f58c7acc90a5e9bf5efa7d0543829924877ba04fa29f4f2492592b1f73d0ff39",
@@ -413,6 +417,7 @@
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "955b54815bc9c307eaa57ded9688375a1fe3f34699b74cf57a4c595cb6b3dcec",
+      "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "d95bf15ebd19b9c20961044a84cdff5854cdf4c1e2049b2ff8faf41d21e87a58",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -480,7 +485,7 @@
       "scripts/qa/run-browser-acceptance.cjs": "10bd7349a6834bc48db6c2ba7016479fb4cb2f5aefd20263eb7cefc01f3f51ec",
       "scripts/qa/run-project-files-postgres.cjs": "f0a78034f2203813195c7ce9d94bd724e717bf419ce48740bc1ded856a8f8138",
       "scripts/qa/run-project-teaching-postgres.cjs": "d8252568506d30ef9bcc2d3216e899cb1f10ee01edcad9c272ae162ecaa266e0",
-      "scripts/qa/run-source-course-browser.cjs": "bec8bbc981dba47e03562cd5c38ba12f6482840eae9fcde4c44f8559510ff9a7",
+      "scripts/qa/run-source-course-browser.cjs": "f127e01326143ccec1019f4067296adcb2bafef50f1fe28307f03a1c4b3c15e8",
       "scripts/qa/run-source-lifecycle-postgres.cjs": "aeb3a7b183a38f4cdf5f697d0a0ff5132e3c5e4a130d21e8b9803a5f4c13d0bd",
       "scripts/qa/run-source-projects-postgres.cjs": "712a5e09f8082ef6ccc833758e3c5d8666385e56e122c23bf6375847f9c95974",
       "scripts/qa/source-check-live.cjs": "1a9ad49056d5e159a77c9db1d246dde9e7935f368f6997dbb9560d0f5b5371ea",
@@ -508,6 +513,7 @@
       "tests/e2e/course-library.spec.ts": "488da0ba742cc606a8f28b2e467ec133533d7b6c0773a6f1f343785598c0b87a",
       "tests/e2e/course-project.spec.ts": "431f9ec2b065c29e85fae0a3ebac60c6efb67842a4f465fc0c2ae2032404d3ea",
       "tests/e2e/guidance-model.spec.ts": "5b9c25414004dc5a4627d19583930741bd69f3c118b2ea1e1030ea55c076c990",
+      "tests/e2e/knowledge-report.spec.ts": "861b4af8d06786d3ef6629b8030d5db3e362bf307f00871c8d1bf80f91f30d1b",
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
       "tests/e2e/pdf-material.spec.ts": "cf3e8c04730ae12bf97c866a4a1562d2101ead5ea26cacd8bb7b117d12ceb406",
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
@@ -531,7 +537,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3069,
+    "checked": 3102,
     "missing": []
   },
   "staticContent": {
@@ -602,8 +608,7 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/whiteboard-continuity-acceptance.json",
-    "revision": "68511750f1222e66dc69793db72249d9d60c1a4d",
+    "receipt": "../evidence/2026-10-26/knowledge-report-full-browser/receipt.json",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

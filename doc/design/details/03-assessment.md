@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`68511750f1222e66dc69793db72249d9d60c1a4d`。角色：学生、监护家长、授权教师。
+源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 
@@ -222,7 +222,7 @@
 
 **输入**：量规分项、理由、预期复核版本。
 
-**处理与实现**：授权复核员按冻结量规录入分项；生成追加式评分修订；重新生成报告版本与诊断，保留原始响应和原报告。
+**处理与实现**：授权复核员按冻结量规录入分项；生成追加式评分修订；重新生成报告版本与诊断，保留原始响应和原报告。知识点工作区按当前报告提供逐题原作答、评分修订与反馈读取，完整原因历史不截断。
 
 **输出**：新评分版本及历史对照。
 
@@ -240,17 +240,24 @@
 - `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:596](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L596)。
 - `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:490](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L490)。
 
+**补充实现文件**：
+
+- [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
+- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
+- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
+
 ## ASM-11 报告生成、画像与重新分析
 
 **输入**：sessionId或学生/学科、重分析请求键。
 
-**处理与实现**：汇总有效评分、样本、区间、原子观察和原因假设；保存报告版本；按报告与规则指纹去重重分析请求；AI失败保留规则结果。
+**处理与实现**：汇总有效评分、样本、区间、原子观察和原因假设；保存报告版本；按报告与规则指纹去重重分析请求；AI失败保留规则结果。报告工作区按冻结知识目标组织四维估计、区间和未知项，搜索与reportAtom选择支持刷新和浏览器前进后退。
 
 **输出**：证据报告、能力画像、分析状态。
 
 **状态与持久化**：`diagnosticReports`、`diagnosticHypotheses`、`diagnosticResponses`
 
-**权限、失败与边界**：画像是规则估计，没有标准化常模；未测点显示未知。
+**权限、失败与边界**：画像是规则估计，没有标准化常模；未测点显示未知。现行自我报告估计保持原服务端规则并说明限制，综合步骤不另加掌握证据。
 
 **关联接口**：
 
@@ -265,3 +272,11 @@
 - `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:463](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L463)。
 - `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:497](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L497)。
 - `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:506](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L506)。
+
+**补充实现文件**：
+
+- [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
+- [apps/web/components/knowledge-report-workspace.css](../../../apps/web/components/knowledge-report-workspace.css)
+- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
+- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)

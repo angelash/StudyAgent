@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "sourceRevision": "560a89bffe8a50dbe4d05494ba2f402a4c97c58f",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 385,
@@ -16,7 +16,7 @@
     "webPages": 27,
     "webRouteHandlers": 1,
     "apiTestFiles": 159,
-    "browserTestFiles": 31
+    "browserTestFiles": 32
   },
   "modules": [
     {
@@ -49592,6 +49592,7 @@
     "tests/e2e/course-library.spec.ts",
     "tests/e2e/course-project.spec.ts",
     "tests/e2e/guidance-model.spec.ts",
+    "tests/e2e/knowledge-report.spec.ts",
     "tests/e2e/learning-home.spec.ts",
     "tests/e2e/pdf-material.spec.ts",
     "tests/e2e/product-smoke.spec.ts",

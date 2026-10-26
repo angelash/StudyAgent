@@ -1,6 +1,6 @@
 # 05 指导计划、训练编排与间隔复盘 — 详细设计
 
-源码基线：`68511750f1222e66dc69793db72249d9d60c1a4d`。角色：监护家长、学生、授权教师。
+源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。角色：监护家长、学生、授权教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/parent/dashboard`。
 
@@ -37,13 +37,13 @@
 
 **输入**：完成的baselineSessionId、报告版本、每天5–60分钟、useAi与requestKey。
 
-**处理与实现**：拒绝过期定义或旧题族分析；优先支持的先修阻断与低证据知识点；最多选3个行动并分配时长；冻结证据、成功标准、教学卡与教材引用。规则计划与可选说明任务同事务保存；完整原创建命令先暂存，丢回执先读取再重放。
+**处理与实现**：拒绝过期定义或旧题族分析；优先支持的先修阻断与低证据知识点；最多选3个行动并分配时长；冻结证据、成功标准、教学卡与教材引用。规则计划与可选说明任务同事务保存；完整原创建命令先暂存，丢回执先读取再重放。报告从完整授权列表匹配原基线计划，按知识点显示活动、成功标准和原复测；以账号/学生/学科/报告版本/计划修订隔离迟到读取。
 
 **输出**：立即可用的proposed规则计划与精确创建回执。
 
 **状态与持久化**：`diagnosticPlans`、`guidancePlanRevisions`
 
-**权限、失败与边界**：AI说明独立生成并等待明确采用，不在创建事务等待模型；不可用模型仍保留规则计划和明确原因。
+**权限、失败与边界**：AI说明独立生成并等待明确采用，不在创建事务等待模型；不可用模型仍保留规则计划和明确原因。401/403回学习首页核对授权，404只隐藏不可用计划操作，学生不显示家长管理按钮。
 
 **关联接口**：
 
@@ -54,6 +54,14 @@
 
 - `GuidanceService.create`；[apps/api/src/modules/diagnostics/guidance.service.ts:43](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L43)。
 - `GuidanceService.creationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:149](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L149)。
+
+**补充实现文件**：
+
+- [apps/web/components/report-plan-path.tsx](../../../apps/web/components/report-plan-path.tsx)
+- [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
+- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
+- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
 
 ## PLAN-02 计划确认、暂停、调整与历史
 

@@ -1,6 +1,6 @@
 # 04 掌握量化、原子观察与深层原因 — 详细设计
 
-源码基线：`68511750f1222e66dc69793db72249d9d60c1a4d`。角色：学生、家长、教研。
+源码基线：`560a89bffe8a50dbe4d05494ba2f402a4c97c58f`。角色：学生、家长、教研。
 
 产品入口：`/student/assessment`、`/parent/dashboard`、`/admin/curriculum`。
 
@@ -71,26 +71,41 @@
 
 **输入**：独立题族表现、先修图、历史假设。
 
-**处理与实现**：推导理解/执行、先修、表示/迁移与保持假设；保存支持、反证、替代解释和核查条件；冲突保留未定；失败后的独立成功可关闭，后续失败可重开。
+**处理与实现**：推导理解/执行、先修、表示/迁移与保持假设；保存支持、反证、替代解释和核查条件；冲突保留未定；失败后的独立成功可关闭，后续失败可重开。知识点工作区并排保留表面观察、支持/反证/自我报告、替代解释、先修关系和完整状态历史。
 
 **输出**：proposed/testing/supported/contradicted/inconclusive/resolved/reopened等状态。
 
 **状态与持久化**：`diagnosticHypotheses`、`diagnosticResponses`
 
-**权限、失败与边界**：置信级别保持低/中；一次综合题失败不确定归因，AI不直接写入原因结论。
+**权限、失败与边界**：置信级别保持低/中；一次综合题失败不确定归因，AI不直接写入原因结论。受控原因投影仅验证界面与操作边界，不代替真实因果验证。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
+- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
+- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
 
 ## MEA-05 原因验证题组与真实保持
 
 **输入**：hypothesisId、目标点/全部直接先修、预算。
 
-**处理与实现**：按原因冻结基础与迁移或目标与先修对照组；每组要求独立题族；完成后核对真实可用观察；保持只能由至少一天后的到期任务核查。
+**处理与实现**：按原因冻结基础与迁移或目标与先修对照组；每组要求独立题族；完成后核对真实可用观察；保持只能由至少一天后的到期任务核查。报告中先预览原蓝图再确认开测，终态原因不提供验证按钮，保持原因指向原计划间隔任务。
 
 **输出**：支持、反证、未定与缺口。
 
 **状态与持久化**：`diagnosticSessions`、`diagnosticHypotheses`、`reviewTasks`
 
-**权限、失败与边界**：题量或时长不足时显示未满足条件，不能用同题重复补齐。
+**权限、失败与边界**：题量或时长不足时显示未满足条件，不能用同题重复补齐；切换知识点或预览不会创建评测。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
+- [apps/web/components/report-plan-path.tsx](../../../apps/web/components/report-plan-path.tsx)
+- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
+- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
