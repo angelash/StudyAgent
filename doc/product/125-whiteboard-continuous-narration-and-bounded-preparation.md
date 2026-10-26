@@ -65,3 +65,11 @@ WhiteboardSession目前在当前WAV ended后更新unitIndex，新effect才调用
 首个43条扩展测试37通过/6超时，原因是测试拦截器在请求取消后直接return，Playwright的handledPromise没有结束，导致收尾等待；原trace中的实际相邻播放事件保留。修正为明确abort，保留断言。第二次45条44通过/1失败，新增退出测试错撤销了注册用会话，而不是浏览器后来登录的会话；改为浏览器使用自己的Cookie退出，产品授权实现不变。原报告、失败截图/trace、当时测试及实现原件均分别归档到[初轮](../evidence/2026-10-26/whiteboard-continuity-expanded-initial/receipt.json)和[第二轮](../evidence/2026-10-26/whiteboard-continuity-expanded-second/receipt.json)。
 
 类型检查及独立生产构建通过；详细设计已更新为14领域/122功能/364业务路由/98集合/334契约，488源码引用、3044本地链接和10项离线阅读器检查通过。整站浏览器正在继续，新的精确远端CI、124/schema17新鲜回退与主目录守护交付仍待，当前生产继续124。不能把本地专项通过写成已部署，72项状态及M1～M7退出条件保持。
+
+## 9. 托管runner文件镜像列表修正（再次实施前）
+
+4a777d6的精确CI 40298092966中，browser在8分钟音频安装预算处失败，尚未执行浏览器断言；PG已成功，application仍运行，不取消或抢先推送。原日志显示APT读取`file:/etc/apt/apt-mirrors.txt Mirrorlist`，随后包仍从Azure下载。第7节只替换ubuntu.sources里的直接Azure URL，遗漏其真实`mirror+file:`引用，因而没有改变有效镜像。9MB的libcodec2下载耗时约233秒，不能称为修正成功。
+
+新增只用于临时Linux CI的配置脚本：识别Ubuntu默认ubuntu.sources及可选sources.list中的直接Azure地址，以及确切的`mirror+file:/etc/apt/apt-mirrors.txt`和`mirror+file:/etc/apt/apt-mirrors-security.txt`；分别改为Ubuntu官方archive/security HTTPS源，保持原suite、component、签名和密钥、非Ubuntu源及注释。先完整验证所有拟写文件，未知活动文件镜像/剩余Azure引用或符号链接明确失败，不静默继续用旧源；成功重复执行保持同样字节。配置有界APT重试/连接时限，公开输出实际源及数量，便于从下一份原日志确认真实生效。
+
+用临时合成APT目录跑原生回归：真实GitHub形式的文件镜像、直接Azure、重复配置、签名/suite/第三方源保留，及未知镜像在写入前拒绝。浏览器、应用及PG三个临时runner均在APT安装前使用同一脚本；应用媒体安装同样增加8分钟预算。完整媒体/浏览器依赖、所有业务检查与45/60分钟总任务预算保持。Windows机器、用户包管理配置与应用业务代码不变。先提交本节再实现，新完整CI结果与原失败日志继续分别归档。
