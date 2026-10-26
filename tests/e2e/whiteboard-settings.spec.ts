@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { browserEvidence } from './evidence';
+import sharp from 'sharp';
 const manifest = JSON.parse(readFileSync(join(process.cwd(),'apps/web/public/classroom-voice-samples/manifest.json'),'utf8'));
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4170') + '/api';
 test.afterEach(async ({ page }) => page.unrouteAll({ behavior: 'wait' }));
@@ -102,4 +103,35 @@ test('reading panel: malformed or wrong-owner device preferences are rejected an
   await page.reload();const separator=f.player.getByRole('separator',{name:'调整讲稿面板宽度',exact:true});await expect(separator).toHaveAttribute('aria-valuenow','380');
   await page.addInitScript(()=>{const get=Storage.prototype.getItem,set=Storage.prototype.setItem;Storage.prototype.getItem=function(key){if(key.startsWith('studyagent.whiteboard.layout.v1.'))throw new DOMException('Blocked','SecurityError');return get.call(this,key);};Storage.prototype.setItem=function(key,value){if(key.startsWith('studyagent.whiteboard.layout.v1.'))throw new DOMException('Blocked','QuotaExceededError');return set.call(this,key,value);};});
   await page.reload();await expect(f.player).toHaveAttribute('data-original-font-status','ready');await expect(separator).toHaveAttribute('aria-valuenow','380');await separator.focus();await page.keyboard.press('ArrowLeft');await expect(separator).toHaveAttribute('aria-valuenow','390');await expect(f.player.getByRole('button',{name:'播放',exact:true})).toBeEnabled();
+});
+
+test('share toolbar: a private link reopens the same board and a real PNG exactly decodes the visible frozen canvas',async({page,context})=>{
+  await page.setViewportSize({width:1280,height:800});const f=await fixture(page),unit=await f.current.getAttribute('data-unit-id'),writes:string[]=[];page.on('request',request=>{if(request.method()==='POST')writes.push(request.url());});
+  await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:new URL(page.url()).origin});
+  const icon=JSON.parse(readFileSync(join(process.cwd(),'apps/web/public/reference/hyperknow-controls/manifest.json'),'utf8')).files[0],iconResponse=await page.request.get('/reference/hyperknow-controls/chat.svg');expect(iconResponse.status()).toBe(200);expect(createHash('sha256').update(await iconResponse.body()).digest('hex')).toBe(icon.sha256);await expect(f.player.locator('[data-panel-toggle] img')).toHaveJSProperty('naturalWidth',32);
+  await expect(f.player.getByRole('button',{name:'上一页白板',exact:true})).toBeDisabled();await expect(f.player.getByRole('button',{name:'下一页白板',exact:true})).toBeDisabled();
+  const trigger=f.player.getByRole('button',{name:'分享与导出',exact:true});await trigger.click();const menu=page.getByRole('dialog',{name:'分享与导出',exact:true});
+  await expect(menu.locator('.whiteboard-share-menu-hint').first()).toHaveText('需要原账号的访问权限。');await menu.getByRole('button',{name:'复制白板链接',exact:true}).click();await expect(menu.getByRole('status')).toHaveText('链接已复制。');
+  const copied=await page.evaluate(()=>navigator.clipboard.readText()),url=new URL(copied);expect(url.origin).toBe(new URL(page.url()).origin);expect([...url.searchParams.keys()].sort()).toEqual(['student','subject','whiteboard']);expect(url.searchParams.get('whiteboard')).toBe(f.board.id);
+  await expect(menu.getByRole('button',{name:'复制白板链接',exact:true})).toBeFocused();await page.evaluate(()=>(document.activeElement as HTMLElement | null)?.blur());
+  await page.keyboard.press('Escape');await expect(menu).toHaveCount(0);await expect(trigger).toBeFocused();await expect(f.player).toBeVisible();await expect(f.current).toHaveAttribute('data-unit-id',unit!);
+  const canvas=f.player.locator('canvas').first(),before=Buffer.from((await canvas.evaluate(element=>(element as HTMLCanvasElement).toDataURL('image/png'))).split(',')[1],'base64');
+  await trigger.click();const download=page.waitForEvent('download');await menu.getByRole('button',{name:'下载当前视图 PNG',exact:true}).click();const saved=(await(await download).path())!,actual=readFileSync(saved),expectedPixels=await sharp(before).raw().toBuffer(),actualPixels=await sharp(actual).raw().toBuffer();
+  expect(createHash('sha256').update(actualPixels).digest('hex')).toBe(createHash('sha256').update(expectedPixels).digest('hex'));expect((await sharp(actual).metadata()).width).toBe(1280);await expect(f.current).toHaveAttribute('data-unit-id',unit!);expect(writes).toEqual([]);
+  const directory=browserEvidence('whiteboard-settings');copyFileSync(saved,join(directory,'actual-current-view.png'));writeFileSync(join(directory,'current-view-pixel-check.json'),JSON.stringify({unit,pixelsSha256:createHash('sha256').update(actualPixels).digest('hex'),metadata:await sharp(actual).metadata(),writes},null,2)+'\n');
+  await page.goto(copied);await expect(f.player).toHaveAttribute('data-original-font-status','ready');await expect(f.current).toHaveAttribute('data-unit-id',unit!);
+});
+
+test('share toolbar: closing during original PNG authorization fences a late reply and never downloads',async({page})=>{
+  const f=await fixture(page),downloads:string[]=[];page.on('download',download=>downloads.push(download.suggestedFilename()));let reached=false;
+  await page.route('**/api/learning/studio/overview?*',async route=>{reached=true;const response=await route.fetch();await new Promise(resolve=>setTimeout(resolve,700));try{await route.fulfill({response});}catch{}});
+  await f.player.getByRole('button',{name:'分享与导出',exact:true}).click();await page.getByRole('dialog',{name:'分享与导出',exact:true}).getByRole('button',{name:'下载当前视图 PNG',exact:true}).click();
+  await expect.poll(()=>reached).toBe(true);await f.player.getByRole('button',{name:'关闭白板',exact:true}).click();await page.waitForTimeout(1000);await expect(f.player).toHaveCount(0);expect(downloads).toEqual([]);
+});
+
+for(const width of [390,768,1280])test('share toolbar: every visible playback and toolbar control stays inside the actual viewport at '+width,async({page})=>{
+  await page.setViewportSize({width,height:800});const f=await fixture(page);
+  const clipped=await f.player.evaluate((element,width)=>[...element.querySelectorAll<HTMLElement>('.sa-whiteboard-controls button,.sa-whiteboard-controls select,.hk-board-tools button')].filter(node=>node.getClientRects().length>0).map(node=>({label:node.getAttribute('aria-label')||node.textContent,rect:node.getBoundingClientRect().toJSON()})).filter(row=>row.rect.x<0||row.rect.right>width+1||row.rect.y<0||row.rect.bottom>801),width);
+  expect(clipped).toEqual([]);await f.player.getByRole('button',{name:'分享与导出',exact:true}).click();const menu=page.getByRole('dialog',{name:'分享与导出',exact:true}),bounds=(await menu.boundingBox())!;expect(bounds.x).toBeGreaterThanOrEqual(0);expect(bounds.x+bounds.width).toBeLessThanOrEqual(width+1);expect(bounds.y+bounds.height).toBeLessThanOrEqual(800);
+  await page.screenshot({path:join(browserEvidence('whiteboard-settings'),'share-toolbar-'+width+'.png')});await page.keyboard.press('Escape');await expect(f.player).toBeVisible();
 });

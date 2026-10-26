@@ -1,0 +1,428 @@
+{
+  "at": "2026-10-26T21:32:02.700Z",
+  "passed": true,
+  "status": "local-original-browser-green",
+  "deployed": false,
+  "overallProductComplete": false,
+  "baseRevision": "268eb7871c005111d60331872e75c3a68d0608b6",
+  "workingTreeSnapshot": true,
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T21:30:22.152Z",
+      "duration": 72178.652,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 14,
+    "originalAttempts": 14,
+    "retries": 0,
+    "failed": 0
+  },
+  "sourceSha256": {
+    "apps/web/app/studio/classroom/tool-tour.tsx": "1bce218cf6daf1d0e0679e7059d0fde2a6ce13e19c934822854daed48d534ed5",
+    "apps/web/app/studio/original-teaching-shell.css": "c11f0cd5060744f078e53910617fe96509c95205b810d866be4487e9532891b8",
+    "apps/web/app/studio/whiteboard-session.tsx": "86be740df01c87e84299e316942bddfe4c60a1e484400e784cde2e0fa7fa7832",
+    "apps/web/app/studio/whiteboard-settings.tsx": "75b7e5ad4a68dd987c5fbaa1e16cee5d71677fab407f88d5198776cc2fb6e3fa",
+    "apps/web/app/studio/whiteboard-voice-preview.ts": "0f4cc02fc63e7ae59b8f24761400fc534e2e503684b306466f2b301e4245c898",
+    "apps/web/app/studio/whiteboard-reading-panel.tsx": "3ffbe6b8a1bf476560a58306c425875285d48f05f8c86c07c30232be020796f6",
+    "apps/web/app/studio/whiteboard-share-menu.tsx": "5bc91d639daf86871ad03b54c7ec09f0a8bcbfdfae6ee13629593b7eebb256c7",
+    "tests/e2e/whiteboard-settings.spec.ts": "92646147440991609f104ea0240f7a645d5e2c57cdbc4ea1c92b0ec7b1d0b8e6",
+    "tests/e2e/topic-whiteboard.spec.ts": "163e749408c9405680cae911e6d9d322e0af5fb9dd2b56ca96efc5ffffe25fd9"
+  },
+  "files": [
+    {
+      "source": "data/qa/whiteboard-settings-browser.json",
+      "file": "browser-original.json.gz",
+      "bytes": 18409,
+      "originalSha256": "7a941271f905988ed743b689c1b9c7445d6d7d972dd01cffb586f08f849b19ff",
+      "sha256": "ebaa8472b30d207baab205b039257bbcda449eabd65f77d8da2543e3d7109a2d"
+    },
+    {
+      "source": "data/qa/teaching-controls-share-focus-browser.log",
+      "file": "browser-original.log.gz",
+      "bytes": 3023,
+      "originalSha256": "6c5f0d1f9fe45bfaf01b5614143d047662827b4c39013e4990ab39bfdd9fbb38",
+      "sha256": "3142621a3fdc45d0610cd4c1865ef5cce8279fb341a9891ace3b2bbb214a3fff"
+    },
+    {
+      "source": "apps/web/app/studio/classroom/tool-tour.tsx",
+      "file": "apps__web__app__studio__classroom__tool-tour.tsx.gz",
+      "bytes": 7842,
+      "originalSha256": "1bce218cf6daf1d0e0679e7059d0fde2a6ce13e19c934822854daed48d534ed5",
+      "sha256": "182bd308f49bd5fbcdc4f6e71646a8023cea54e199188cb17fe20a3895a3699d"
+    },
+    {
+      "source": "apps/web/app/studio/original-teaching-shell.css",
+      "file": "apps__web__app__studio__original-teaching-shell.css.gz",
+      "bytes": 13683,
+      "originalSha256": "c11f0cd5060744f078e53910617fe96509c95205b810d866be4487e9532891b8",
+      "sha256": "6dd187d91e5a0f3c26374216c5929c9a40d47b0dad226a50d9eda62368fb0016"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "apps__web__app__studio__whiteboard-session.tsx.gz",
+      "bytes": 40667,
+      "originalSha256": "86be740df01c87e84299e316942bddfe4c60a1e484400e784cde2e0fa7fa7832",
+      "sha256": "4e9edcb1ee4d2103125eb8f6b756b6c81d2ef95fce0172ffa5126d24a41b17ef"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-settings.tsx",
+      "file": "apps__web__app__studio__whiteboard-settings.tsx.gz",
+      "bytes": 9573,
+      "originalSha256": "75b7e5ad4a68dd987c5fbaa1e16cee5d71677fab407f88d5198776cc2fb6e3fa",
+      "sha256": "ae1134c4ff3f174da0685bed2171eff63f235c1b30c354bffe1b27b68c5c89c8"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-voice-preview.ts",
+      "file": "apps__web__app__studio__whiteboard-voice-preview.ts.gz",
+      "bytes": 5385,
+      "originalSha256": "0f4cc02fc63e7ae59b8f24761400fc534e2e503684b306466f2b301e4245c898",
+      "sha256": "f32f6941fd9a6476883d578630035a42956058fdd7ee0a49e212a65f3b92c084"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-reading-panel.tsx",
+      "file": "apps__web__app__studio__whiteboard-reading-panel.tsx.gz",
+      "bytes": 4597,
+      "originalSha256": "3ffbe6b8a1bf476560a58306c425875285d48f05f8c86c07c30232be020796f6",
+      "sha256": "1e15f94b557fab1e21c922ea67d38981258d0b3f6dc47bbef9b97ecc345c2ead"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-share-menu.tsx",
+      "file": "apps__web__app__studio__whiteboard-share-menu.tsx.gz",
+      "bytes": 4003,
+      "originalSha256": "5bc91d639daf86871ad03b54c7ec09f0a8bcbfdfae6ee13629593b7eebb256c7",
+      "sha256": "bf87cd834983f55c705428508658c0f5047419b8028d194f883523c507eacfc1"
+    },
+    {
+      "source": "tests/e2e/whiteboard-settings.spec.ts",
+      "file": "tests__e2e__whiteboard-settings.spec.ts.gz",
+      "bytes": 23958,
+      "originalSha256": "92646147440991609f104ea0240f7a645d5e2c57cdbc4ea1c92b0ec7b1d0b8e6",
+      "sha256": "28a6379491e98ec698b9521739665310a2efc2963361234397049d4fb0a8e266"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "file": "tests__e2e__topic-whiteboard.spec.ts.gz",
+      "bytes": 49524,
+      "originalSha256": "163e749408c9405680cae911e6d9d322e0af5fb9dd2b56ca96efc5ffffe25fd9",
+      "sha256": "1bfd14fcf0ba7828c91fd476ffecb36182bce817dbda6ace086b34ffbfae8d50"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\actual-current-view.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__actual-current-view.png.gz",
+      "bytes": 71029,
+      "originalSha256": "4f9dd7c6708f5aba50d191e8cabfbbddca948d5478225ec994d5fe15efad416a",
+      "sha256": "4b182e3632b54fd6501a56d69d3c52693d57430c3957d0f7a4e348a5d07916f7"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\actual-neutral-clip-decode.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__actual-neutral-clip-decode.json.gz",
+      "bytes": 628,
+      "originalSha256": "c08bd1d241344a7947bb80b37ebe4bff5f73115a8094c9f1ee21cad79da278de",
+      "sha256": "f2809235be6337c901d15be60254676b2775b967097f2f6e35ee0e51d117f1a5"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\current-view-pixel-check.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__current-view-pixel-check.json.gz",
+      "bytes": 602,
+      "originalSha256": "9c275fee42bdcf4af24e9b29a2520c9c30879e17f24a3326757f822346ea64d2",
+      "sha256": "7af4307c03deb5ff8917349ab91435ff0cb1ebd1949e2c5c5528fa2a07a1210d"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate-probe.json",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate-probe.json.gz",
+      "bytes": 2999,
+      "originalSha256": "fd4191a3b2adf2f6e9112b1c732926caa2497edb8f4c9442e0503e4aba978ec5",
+      "sha256": "b832f8a2a391f4b9dab92825ef5e1a7467475d3f240adc32e985c0cc56c31077"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate.srt",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.srt.gz",
+      "bytes": 297,
+      "originalSha256": "b7f29469dbbf2658df2eb248e1c2d27fa0aaa9123df5bddf4979d0604cc680d9",
+      "sha256": "f25fd8eaa1d08d331706d0492738cc0a911b6821bc8fb84a26b1131d0f785b78"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\double-rate.webm",
+      "file": "data__qa__browser-evidence__whiteboard-settings__double-rate.webm.gz",
+      "bytes": 183901,
+      "originalSha256": "bc682fc25f7159f97008cfb448a2149a336a17aac798768c9965b3edda49feda",
+      "sha256": "1698210b3fa4695883b417eba374f694d9815a3c6992941ae4642a378b1d263e"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\original-settings-1280.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__original-settings-1280.png.gz",
+      "bytes": 141534,
+      "originalSha256": "38391f276d8439c79303cbd7c2ff182ee85bbe86efc3edc6af823f958cd4d2f5",
+      "sha256": "2d263358d036c1a2835a9646470c64ca6aaf918e90ca0f4d48b86e70740f4eef"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\reading-panel-1440.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__reading-panel-1440.png.gz",
+      "bytes": 95969,
+      "originalSha256": "552ed5442ae9676963f85efdbd612deaebf7e7abb457a82c6617310c36d834e7",
+      "sha256": "0221e17ea6ca1c0050e6e49843930ee96b9eb7448096df93bb8e083123e4aa46"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\reading-panel-390.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__reading-panel-390.png.gz",
+      "bytes": 38657,
+      "originalSha256": "2d0512d16c7ddae050a7b1f67b49b9a65bb1ad6de00f77734d46f8ac8508a491",
+      "sha256": "3ad24059d9570df494725ae964194e570f27a9a4a4024139c8a32bee6b055985"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\reading-panel-768.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__reading-panel-768.png.gz",
+      "bytes": 40789,
+      "originalSha256": "1c6387609c7fe50a10efebc0e530711adfae4056f0dbf8f4a31eec05d279cb32",
+      "sha256": "ac07f9bb6234a56b8aa527f3e55aae93a372b06976aa17a8660971c852e5a191"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\share-toolbar-1280.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__share-toolbar-1280.png.gz",
+      "bytes": 111445,
+      "originalSha256": "055696ed19959976a1ec8c77fa7508c2a9267ce7ccedf00b25ab993ae9725afa",
+      "sha256": "d76d64cca17150aa4a0e3c18775a8b49134dea4fb21ff8615fdeb0b7f45fb210"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\share-toolbar-390.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__share-toolbar-390.png.gz",
+      "bytes": 52858,
+      "originalSha256": "b41c3446431a70105a9f8241804d36e3b76a86a9f278733654dadb0938acc5c2",
+      "sha256": "c042315cbf754ee00fcf9f0f652e1275e56b87dd35349cf45cf811b24ae60abd"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-settings\\share-toolbar-768.png",
+      "file": "data__qa__browser-evidence__whiteboard-settings__share-toolbar-768.png.gz",
+      "bytes": 67139,
+      "originalSha256": "b4c518170f79a5d2a5605b92381ac7f7fc5734f5dbc3ca502dede32d2b201723",
+      "sha256": "9f51e75b2dc56b2f4335c5a5e5e8a2b6a2178a572ebeccba0daadf4b158af5ce"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-board-fonts.png",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-board-fonts.png.gz",
+      "bytes": 123666,
+      "originalSha256": "bbd838ccfde0ec4a744f10e6b7485acf2083b38d06073a78e9897e4c34640208",
+      "sha256": "0b1946db7de16c1664ee3ebceeed054e194a30885e0159ffbc4763122d538179"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-fonts\\actual-loaded-fonts.json",
+      "file": "data__qa__browser-evidence__original-teaching-fonts__actual-loaded-fonts.json.gz",
+      "bytes": 3996,
+      "originalSha256": "0f0cbbae6227d48105ed80d87435ca232531e0f8eaa838b6034ae7a884cc7ed4",
+      "sha256": "5d8c68e4ba5e98f00c5f69a6a7322578e9a94766cd33600317891866a219e5ae"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\cumulative-second-scene.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__cumulative-second-scene.png.gz",
+      "bytes": 132091,
+      "originalSha256": "2d99de05c3f6b33952d5ad928dbaa493f092150d0198df120413da4790f08186",
+      "sha256": "96d1c89403969594f98c4dcb48c6864794794771ec53369c510ab86c1efe4118"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-1280.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-1280.png.gz",
+      "bytes": 123433,
+      "originalSha256": "6f842dfd063cc7bd0f1613c168e7e68a9e5cb90d963216366f9e35bc6cbdec77",
+      "sha256": "1b292f3d7d0515a7291ef2db8819f28d1fb1b8d8581737f449919c81717fd7e9"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-390.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-390.png.gz",
+      "bytes": 47352,
+      "originalSha256": "c342bf6f6e4b712ccefeb555176bc656d7dd1c46307eaa069c62496fb488de06",
+      "sha256": "f8c2e38b3c8abd1be9d6514427ebaaa3aa64f679684cb1625d27e465bb9c9e75"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\original-teaching-frames\\original-shell-768.png",
+      "file": "data__qa__browser-evidence__original-teaching-frames__original-shell-768.png.gz",
+      "bytes": 59636,
+      "originalSha256": "f4ef7a208f6502caf23d391ada3d5602f248f36375e7bb8ca88907982aea1953",
+      "sha256": "608080939d1e0c697db91eec8285e4161c935f8ff34aeca8deef5b4dd61fcc4f"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\adult-complete-player.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__adult-complete-player.png.gz",
+      "bytes": 138365,
+      "originalSha256": "e063cf98d7b3607d8eae0b141a201719fd53d419f9ff6892da7e9d0f588ce462",
+      "sha256": "700b893c0600e8c0076272d84b5dc22de9f22285254dca5b587cd48dc9560df7"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\child-editor-1440.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__child-editor-1440.png.gz",
+      "bytes": 199600,
+      "originalSha256": "85626981c82cc54fc2ba6428c76111222381725b0eec6979889e983e01455141",
+      "sha256": "5579245585b339adb9b0485bd183be0d8f33fd4a9664fd0c7e90a3e6dc77b0a8"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\child-editor-390.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__child-editor-390.png.gz",
+      "bytes": 168959,
+      "originalSha256": "ca159f18344291fd56037109110c72046becebaa79d5e33f421047a487525d33",
+      "sha256": "9aab2a8e1a09ca6ce0e59269e9364e42f12940ef8e5f5b9df052fe13db3c34f4"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\child-editor-768.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__child-editor-768.png.gz",
+      "bytes": 192571,
+      "originalSha256": "bef5122818f28a62ea41b06ee60df8a3847f779300b0d839d4d646c18c62c0b8",
+      "sha256": "42c0d65d7e9db24ad64bf4c4318f395cfc37338b8f2be82cdc7502d657783448"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-reader-1440.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-reader-1440.png.gz",
+      "bytes": 250461,
+      "originalSha256": "613ca60d99ba4e68692b7a190fae44161d7b1be31a62fed07dd1b64ea0770640",
+      "sha256": "9d3ccdb295a4ce1596094a0575b746fca52f3c069dbcfeb04ef48e0f0d8bf02a"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-reader-390.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-reader-390.png.gz",
+      "bytes": 68051,
+      "originalSha256": "97741ca876e45668939ff9a23663d4c57105aec3fd3e524e3c2af8ef2de2fd53",
+      "sha256": "3bb3f41b3223162f73ee4de9ad67a2612eebae32dfdc2bc61ffeab1fc5d746e1"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-reader-768.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-reader-768.png.gz",
+      "bytes": 148837,
+      "originalSha256": "80f640ec75444bb9b35d06db9936cbc93905be6f6bc07baa219759c2b1fe3714",
+      "sha256": "e5358aca02fe4ba885453da7837c8c2575253b957f96a84f4b2c6daeea718397"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-saved-player.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-saved-player.png.gz",
+      "bytes": 161162,
+      "originalSha256": "74524a0fa84c5cbeac71da7a9bc8be4da485651305ab6a8960898ce8ea128e54",
+      "sha256": "404a8e20772ddcb160b74258337184c3aa7913220e691de927218ed9e7e6d9a4"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video-first-frame.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video-first-frame.png.gz",
+      "bytes": 182167,
+      "originalSha256": "f36b14c2bf6076cbe73f2fc544b0d32efc8b55083bc31dc9f8dcc3a307d820db",
+      "sha256": "e4de973816a750aa9e16bf3ce24e7c6ca86c50ba373775c66a85cfd0a086cc7c"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video-probe.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video-probe.json.gz",
+      "bytes": 3316,
+      "originalSha256": "27bfe0b5b1a67549f35052df63f5077e7e20579c77b625cd2672cb1e9e95ce3a",
+      "sha256": "d1490d025517082b184ce4f9f0d02a153b867ef719c402a295b656ece8cb4655"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video.srt",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video.srt.gz",
+      "bytes": 521,
+      "originalSha256": "2d2f189311f99d1b69c730f70c7e38c4ee5a73f3b38cde8096b44a1ad7e721da",
+      "sha256": "b15a547340fb8ecdf98f360abadad52739d0d368e30faa41663aa4b4172c253e"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-figure-video.webm",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-figure-video.webm.gz",
+      "bytes": 1502321,
+      "originalSha256": "3b96818161243b8eea0ea7d8ceb295ab495f25f6d4c6eb1618919391cacde728",
+      "sha256": "48623f8b079874e397e9246be36309c6bef570d5bacc1f0d92ba4bcd18b66c63"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-readable-video-crops.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-readable-video-crops.json.gz",
+      "bytes": 996900,
+      "originalSha256": "4df8e483855c7e3d0434014db6fc8e9c2e8389bb4a0ac7d9a8738d4a81b815e3",
+      "sha256": "ee069c4322128946a467dfd9bfc8541286c19455f92bd6510969fc1f317f4e31"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-reader-1440.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-reader-1440.png.gz",
+      "bytes": 147175,
+      "originalSha256": "538fd57d7f05994233f35333d5e67c2d35d8416944c8659a15205d4d457ce030",
+      "sha256": "09e8306fbb882e110b858436d8c2398a1329e2673b0ac47343cb4d6e053fcc02"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-reader-390.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-reader-390.png.gz",
+      "bytes": 59465,
+      "originalSha256": "f4343dbf491efc4efe2949c7c4d1452c5e1f211fb98c793b08e59a3465221a61",
+      "sha256": "be607d3a578bf90235bf821ebeedad26f0251359040b4a8d770ba3fab7694995"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-reader-768.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-reader-768.png.gz",
+      "bytes": 72470,
+      "originalSha256": "58ba18e534228613da7babe1a48da0f3f6bbb633ae71c21d9300e9f65476c0c5",
+      "sha256": "723408b8f2b7db6d5a93f9fdda771e3256a94250f57dc4c89f4038be63e9ee68"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-aligned.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-aligned.png.gz",
+      "bytes": 177152,
+      "originalSha256": "a5568c4508df42485d98e375973f88cf657861902c9df37333831d80ca3f7335",
+      "sha256": "a85b7e15eb3baad0d4880e5b667162397fd62e67b625f03522f72e9e06649fd0"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-first.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-first.png.gz",
+      "bytes": 185656,
+      "originalSha256": "02dd09c25fb317d53b2f42d14a6930f33b396f5a9ec1b4dd9005d3a4dce81258",
+      "sha256": "8ff4267a80e04952d80ffe0459de712e9e2d13ad6cd66af57170cf208d3e8641"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-last.png",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-last.png.gz",
+      "bytes": 252764,
+      "originalSha256": "3eea0384e12bc46bf443bddca14e59f86ff00f23aff747803c46e1ef4d818fe3",
+      "sha256": "66d31af60490b5fe783e064192cb2c33e0cf19acc1d6e903ff9e72a37d98bc21"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video-probe.json",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video-probe.json.gz",
+      "bytes": 3485,
+      "originalSha256": "1944c2d44dc0ce2fc30dfa5af08c8de6b89fdf0b5841255356658adb491053d2",
+      "sha256": "e8322c0979e9eab96d6e0c7fde7721c0af20e6f0e03ea0aaa88943a26c3162e1"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video.srt",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.srt.gz",
+      "bytes": 455,
+      "originalSha256": "76b3f2986c382d9428dcd72b3b905890d0c0982504ecaf839041730adbdd3cf9",
+      "sha256": "9f208771de81c761cc07c7938094e5224d890d8cb9111c12882b51db26016036"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\topic-whiteboard\\topic-formula-video.webm",
+      "file": "data__qa__browser-evidence__topic-whiteboard__topic-formula-video.webm.gz",
+      "bytes": 2150031,
+      "originalSha256": "878e4ec27f407c0a5cdf211943b8b03533b24162ae420562d5d622f0310dac27",
+      "sha256": "b0bc82fae9c3726a05a57dfeb9d3755d693ec225601437ceb11f863cbac2d68a"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\decoded-fixture.srt",
+      "file": "data__qa__browser-evidence__whiteboard-media__decoded-fixture.srt.gz",
+      "bytes": 297,
+      "originalSha256": "8f939f00bc90c727e212e01e8d2d4def8014e71a9c8e5499712ba740f452719d",
+      "sha256": "e2ac8c114bba82f9d67a99c39064363880639358580b3d9db90ad5da16128693"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\decoded-fixture.webm",
+      "file": "data__qa__browser-evidence__whiteboard-media__decoded-fixture.webm.gz",
+      "bytes": 314313,
+      "originalSha256": "c3403270620824208db6622b6da2990dbbdd2ed58e73e0369ab7fe477ec71675",
+      "sha256": "5cea41260309163bb5cdf3c2643c38bd1a8119132974c99698a908865ca3b420"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\decoder.json",
+      "file": "data__qa__browser-evidence__whiteboard-media__decoder.json.gz",
+      "bytes": 384,
+      "originalSha256": "bc45dbf7f795c82fa83febb0ef73396ab3987a61815cddf90125d01b07117b5a",
+      "sha256": "18c0bf783d7538e8fd038d29ae2e1a2ccca9de0721bc5ed1da502fef277a91ac"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\whiteboard-media\\independent-opus-control.webm",
+      "file": "data__qa__browser-evidence__whiteboard-media__independent-opus-control.webm.gz",
+      "bytes": 10715,
+      "originalSha256": "febb6c8279eb4c78038dad8981e4b2e1968b0654538092e77b7f186c3a208dcb",
+      "sha256": "eb5124a060329db21e4fca4bad3a9033ac4cd131ade165133126b9eb0c087549"
+    }
+  ]
+}

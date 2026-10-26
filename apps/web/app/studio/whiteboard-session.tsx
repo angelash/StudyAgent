@@ -18,6 +18,7 @@ import { WhiteboardSettings } from './whiteboard-settings';
 import { ClassroomIcon } from './classroom/icons';
 import { ClassroomToolTour, type ToolTourStep } from './classroom/tool-tour';
 import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-reading-panel';
+import { WhiteboardShareMenu } from './whiteboard-share-menu';
 
 const whiteboardToolSteps: ToolTourStep[] = [
   { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
@@ -39,6 +40,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const [settings, setSettings] = React.useState(false), [muted, setMuted] = React.useState(false), mutedRef = React.useRef(muted); mutedRef.current = muted;
   const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
   const panel = useWhiteboardReadingPanel(ownerId), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
+  const [share, setShare] = React.useState(false);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -187,7 +189,11 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     dialog.current?.querySelector<HTMLButtonElement>('[aria-label="关闭白板"]')?.focus();
     const key = (event: KeyboardEvent) => {
       if (event.defaultPrevented || document.querySelector('.ws-dialog-layer')) return;
-      if (event.key === 'Escape') { event.preventDefault(); closeRef.current?.(); }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        if (dialog.current?.querySelector('[data-whiteboard-share]')) { setShare(false); return; }
+        closeRef.current?.();
+      }
       if (event.key !== 'Tab') return;
       const nodes = [...(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),select:not(:disabled),input:not(:disabled),summary,[tabindex="0"]') ?? [])]
         .filter(node => node.getClientRects().length > 0);
@@ -272,6 +278,23 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     document.body.appendChild(anchor); anchor.click(); anchor.remove();
     setTimeout(() => { URL.revokeObjectURL(url); downloadUrls.current.delete(url); }, 10000);
   }
+  async function exportSnapshot() {
+    if (exportRequest.current || !canvas.current || !fonts.ready || !imagesReady) return;
+    pausePlayback();
+    const snapshot = document.createElement('canvas'); snapshot.width = canvas.current.width; snapshot.height = canvas.current.height;
+    snapshot.getContext('2d')!.drawImage(canvas.current, 0, 0);
+    const request = new AbortController(); exportRequest.current = request; setExporting('正在保存当前板书…');
+    try {
+      if (!preview) await readWhiteboardOriginal(board, request.signal);
+      const blob = await new Promise<Blob>((resolve, reject) => snapshot.toBlob(value => value ? resolve(value) : reject(new Error('当前板书未能编码，请重试。')), 'image/png'));
+      assertWhiteboardActive(request.signal); if (!preview) await readWhiteboardOriginal(board, request.signal); assertWhiteboardActive(request.signal);
+      saveBlob(blob, '-view.png'); setNotice('当前已讲视图已保存为 PNG。');
+    } catch (error) {
+      if (request.signal.aborted) return;
+      if (error instanceof WhiteboardOriginalChangedError || error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.();
+      else setNotice(error instanceof Error ? error.message : '当前板书暂时无法保存，请重试。');
+    } finally { if (exportRequest.current === request) { exportRequest.current = null; if (!request.signal.aborted) setExporting(null); } }
+  }
   async function exportFile(video: boolean) {
     if (exportRequest.current || !unit) return;
     if (video && !fonts.ready) { setNotice('板书字体尚未就绪，请重试后再导出视频。'); return; }
@@ -321,6 +344,12 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     if (index === null) dialog.current?.scrollTo({ top: tourOrigin.current });
     else requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>('[data-classroom-tour="' + whiteboardToolSteps[index].anchor + '"]')?.scrollIntoView({ block: 'center', inline: 'nearest' }));
   }
+  function privateLink() {
+    const url = new URL(isTopicWhiteboard(board) ? '/studio/whiteboards' : '/studio', window.location.origin);
+    url.searchParams.set('whiteboard', board.id);
+    if (!isTopicWhiteboard(board)) { if (board.studentId) url.searchParams.set('student', board.studentId); url.searchParams.set('subject', board.subject); }
+    return url.href;
+  }
 
   return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
     <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={onClose}>×</button>
@@ -329,8 +358,12 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
       <button className="whiteboard-zoom-readout" aria-label="重置白板视图" onClick={() => setCamera({ zoom: 1, x: 0, y: 0, follow: true })}>{Math.round(camera.zoom * 100)}%</button>
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom >= 2} aria-label="放大白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.min(2, value.zoom + .1) }))}>+</button></div>
-      <button type="button" className="whiteboard-icon-btn" data-classroom-tour="settings" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button>
-      <button type="button" className="whiteboard-icon-btn" data-panel-toggle aria-label={panel.compact ? '讲稿与笔记' : panel.expanded ? '收起讲稿与笔记' : '展开讲稿与笔记'} aria-controls={panelId} aria-expanded={panel.open} onClick={() => { if (panel.compact) panel.setMobileOpen(value => !value); else panel.setExpanded(value => !value); }}><ClassroomIcon name="panel" size={18}/></button></nav>
+      <div className="whiteboard-page-nav" role="group" aria-label="白板页码"><button type="button" className="whiteboard-page-nav-btn whiteboard-page-nav-arrow" aria-label="上一页白板" disabled>‹</button><div className="whiteboard-page-nav-count"><span className="whiteboard-page-nav-current">1</span><span className="whiteboard-page-nav-sep">/</span><span className="whiteboard-page-nav-total">1</span></div><button type="button" className="whiteboard-page-nav-btn whiteboard-page-nav-arrow" aria-label="下一页白板" disabled>›</button></div>
+      <div className="whiteboard-action-pill" role="group" aria-label="白板工具"><div className="whiteboard-export-menu-wrap">
+        <button type="button" className="whiteboard-action-pill-btn" aria-label="分享与导出" aria-haspopup="dialog" aria-expanded={share} disabled={exporting !== null} onClick={() => { pausePlayback(); setShare(value => !value); }}><ClassroomIcon name="share" size={18}/></button>
+        {share && <WhiteboardShareMenu link={privateLink()} preview={preview} canSnapshot={fonts.ready && imagesReady && !!unit} onClose={() => setShare(false)} onCopy={async signal => { await readWhiteboardOriginal(board, signal); assertWhiteboardActive(signal); if (!navigator.clipboard?.writeText) throw new Error('当前浏览器不支持复制，可选择上方链接手动复制。'); await navigator.clipboard.writeText(privateLink()); }} onPng={() => void exportSnapshot()} onVideo={() => void exportFile(true)} onCaptions={() => void exportFile(false)}/>}
+      </div><button type="button" className="whiteboard-action-pill-btn" data-classroom-tour="settings" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button></div>
+      <button type="button" className="whiteboard-icon-btn" data-panel-toggle aria-label={panel.compact ? '讲稿与笔记' : panel.expanded ? '收起讲稿与笔记' : '展开讲稿与笔记'} aria-controls={panelId} aria-expanded={panel.open} onClick={() => { if (panel.compact) panel.setMobileOpen(value => !value); else panel.setExpanded(value => !value); }}><img className="whiteboard-chat-toggle-icon" src="/reference/hyperknow-controls/chat.svg" width={20} height={20} alt="" aria-hidden="true"/></button></nav>
     <button type="button" className="whiteboard-icon-btn hk-whiteboard-mute" data-classroom-tour="sound" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
     {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
     <div className="wb-reading-layout"><main className="whiteboard-main"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}

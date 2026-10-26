@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-26T21:17:17.403Z",
+  "scope": "Unauthenticated static resources explicitly referenced by captured public WhiteboardPage and VoiceSettingsModal modules. Original voice references only; not our generated MiniMax voices.",
+  "files": [
+    {
+      "url": "https://agent.hyperknow.io/pages/coursePage/whiteboard/chat.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "file": "chat.svg",
+      "bytes": 369,
+      "sha256": "e96f7dde93a9527a0966580e4ff0035506548595479336c4646b16b745b4a675",
+      "archive": "chat.svg.gz",
+      "archiveSha256": "d7983d3dabc30a14f1b2baa7de04a6578a1bc96c8ff3c8a60992e5b79bfd4327"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/warm.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "warm.mp3",
+      "bytes": 18572,
+      "sha256": "53c4306a5f46b869f485a8816765522520ab2b1044f78af03a567449f5f07d57",
+      "archive": "warm.mp3.gz",
+      "archiveSha256": "422e1e662021cab5752b76e01acce0fac36e4b3a993acacf157e0ee0922f8b04"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/calm.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "calm.mp3",
+      "bytes": 16748,
+      "sha256": "1603229689d535164d30a6a9b5adc82859b2286821e04cd1baa82f01f0ecfe2b",
+      "archive": "calm.mp3.gz",
+      "archiveSha256": "75dc29fb48c912979d0d8fe61bcab5c388302164da73e97fed8bb22887d7d2d9"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/bright.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "bright.mp3",
+      "bytes": 19340,
+      "sha256": "72109bce928e7d9c3686be48ce328d4103c1a94b4ae9605f33ab877cc1dfe195",
+      "archive": "bright.mp3.gz",
+      "archiveSha256": "709e53e06b38d67c19bc00a74ee3bdc7085358c4c34b20baa4d236bf55bc306d"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/gentle.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "gentle.mp3",
+      "bytes": 17900,
+      "sha256": "92495036df30e1476ae212cfc324e8d9e3a8139a00b79e8edd44e60e253ee8eb",
+      "archive": "gentle.mp3.gz",
+      "archiveSha256": "9b41c2110582aac49e42cc94e6b444915420ff6677c07dcf4703a863260345e3"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/firm.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "firm.mp3",
+      "bytes": 17612,
+      "sha256": "b830c3325b0635b6f02fec2dbd718ff93e392826e7b9048f8dfa4a15aaf9f202",
+      "archive": "firm.mp3.gz",
+      "archiveSha256": "9ac1e4b918acd0fd738e086725b6319f9f2e8361c6980473baf9bde6592bc6ae"
+    },
+    {
+      "url": "https://agent.hyperknow.io/tts-samples/lively.mp3",
+      "status": 200,
+      "contentType": "audio/mpeg",
+      "file": "lively.mp3",
+      "bytes": 17708,
+      "sha256": "fbb8093e2b49c6de6e0e6c009079431ca84c52320eb3ff36aa9fd4032ba0305e",
+      "archive": "lively.mp3.gz",
+      "archiveSha256": "89d7f1d604270544f77f6d5783e1b50a068359c58048ad5c8067861a7515f9a0"
+    }
+  ],
+  "note": "Six original public voice clips are references only, and are not the MiniMax neutral samples used by our settings."
+}
