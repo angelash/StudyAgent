@@ -1,0 +1,40 @@
+{
+  "status": "preserved-complete-run-with-one-playback-failure",
+  "sourceRevision": "33af51c289f947b84be001ff90e39deefc47726d",
+  "at": "2026-10-26T06:07:13.003Z",
+  "passed": 251,
+  "failed": 1,
+  "retries": 0,
+  "traceObservation": "First scene narration HTTP requests at05:59:04.717,05:59:07.415,05:59:07.435; second/third requests only20ms apart, then next-scene request05:59:09.543. UI trace never observed the middle sentence while expecting it. Investigate stale progress after ended.",
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 290506,
+      "sha256": "0c3abbacde8f58b92c888faa02a3f7902011959d4b8d10807445c1620b087b05"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 44088,
+      "sha256": "65b9511e94e5f0325f1c0dfab0af7493c57c53dc617bf9f94847ba03b67d7bf0"
+    },
+    {
+      "name": "error-context.md",
+      "bytes": 18753,
+      "sha256": "c726be640277227bb9ac8dd22e1ec067a3d4967829b4dc58dc05e5f041a512ae"
+    },
+    {
+      "name": "trace.zip",
+      "bytes": 3354664,
+      "sha256": "2e8f8c794dc124ba4736c9a41fc2844f362bd45a3599d53dc8179b04f2ebc01d"
+    },
+    {
+      "name": "test-failed-1.png",
+      "bytes": 122005,
+      "sha256": "8cb10185af17fa5c18e7cf06f702f76e4004720fd20c828c987b3be3a7c23765"
+    }
+  ],
+  "limits": [
+    "Full run is not successful",
+    "Cause remains to be verified with a controlled event-boundary regression before claiming a fix"
+  ]
+}
