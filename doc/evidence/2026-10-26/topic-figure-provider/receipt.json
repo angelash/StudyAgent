@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-26T01:35:15.026Z",
+  "sourceRevision": "8f63a3da8679c611ea2e7df35103754ddab3415e",
+  "scope": "Anonymous sociology concept, actual integrated Skill CLI generate and edit. Standalone provider samples, not the future topic figure API or classroom publication.",
+  "modelId": "gpt-image-2",
+  "actualCliInvocations": 2,
+  "providerHttpRequestCount": "Not separately instrumented; SDK internal attempts are not counted here.",
+  "generate": {
+    "durationSeconds": 35.1,
+    "output": "sociology-intersection-9c7a32f1.png",
+    "prompt": "sociology-intersection-prompt-9c7a32f1.txt",
+    "status": "completed"
+  },
+  "edit": {
+    "durationSeconds": 39.4,
+    "input": "sociology-intersection-9c7a32f1.png",
+    "output": "sociology-intersection-no-heading-3f4d62a9.png",
+    "prompt": "sociology-no-heading-edit-prompt-3f4d62a9.txt",
+    "status": "completed"
+  },
+  "observed": {
+    "displayedBothWithViewImage": true,
+    "requestedChineseLabelsReadable": true,
+    "editedTopHeadingRemoved": true
+  },
+  "files": [
+    {
+      "path": "resources/teaching-visuals/topic-whiteboard/sociology-intersection-9c7a32f1.png",
+      "sha256": "d48a7fd060733a03d0c7d7d99dac8d916cd785380c9377a8e52199271b326306"
+    },
+    {
+      "path": "resources/teaching-visuals/topic-whiteboard/sociology-intersection-prompt-9c7a32f1.txt",
+      "sha256": "a695ba544f59e1460aea5005b6c3616ca8dd908c08222ad9cc35a6514927dc1c"
+    },
+    {
+      "path": "resources/teaching-visuals/topic-whiteboard/sociology-intersection-no-heading-3f4d62a9.png",
+      "sha256": "5be548ec2b32b7a1fdd6ef933b90c4d9bcad45f8a21f0fc817082debd032b8c9"
+    },
+    {
+      "path": "resources/teaching-visuals/topic-whiteboard/sociology-no-heading-edit-prompt-3f4d62a9.txt",
+      "sha256": "f0ac2be63bfb7aecbe34a3f6627d53184488f42353386b3633bd87d7a32a7e9e"
+    }
+  ],
+  "teacherReviewStatus": "pending",
+  "formalMeasurementEligible": false,
+  "limits": [
+    "No exact pixel preservation claim for model edit.",
+    "No original HyperKnow image/CSS/font bytes reused or obtained in this sample.",
+    "No new topic visual endpoint, selection, video, deletion or backup journey has been implemented yet."
+  ]
+}

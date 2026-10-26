@@ -1,0 +1,6 @@
+Use case: text-localization
+Asset type: Existing anonymous sociology teaching diagram for a whiteboard.
+Input image 1: Edit target, the generated two-circle diagram from this same project.
+Primary request: Remove only the large heading "传记与历史" above the circles. Replace that heading area with the same clean white background. The course already shows its own heading outside the image.
+Invariants: Keep the exact canvas size, both circle outlines, circle centers and radii, translucent blue and amber fills, violet overlap, existing whitespace, and ALL labels inside the circles unchanged. Do not shift, resize, reflow, crop, recolor or redraw the diagram. Preserve the labels "传记", "个人经历", "历史", "社会结构", and the center's two lines "社会学" and "想象力" verbatim.
+Constraints: Change only the top heading; no replacement title, added text, logo, watermark or new objects. Preserve original image quality.
