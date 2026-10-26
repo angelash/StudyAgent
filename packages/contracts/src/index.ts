@@ -759,3 +759,4 @@ export * from './source-course-check';
 export * from './whiteboard-speech';
 export * from './topic-whiteboard';
 export * from './topic-whiteboard-visual';
+export * from './whiteboard-question';

@@ -1,5 +1,5 @@
 'use client';
-import type { StudioWhiteboardScene, WhiteboardSpeechUnit } from '@study-agent/contracts';
+import { whiteboardTaughtTableRows, type StudioWhiteboardScene, type WhiteboardSpeechUnit } from '@study-agent/contracts';
 import { originalBoardFontFamily, originalUiFontFamily, type OriginalBoardFont } from '../../lib/original-teaching-fonts';
 import { whiteboardTextLines } from './whiteboard-table';
 import { renderWhiteboardFormula, whiteboardFormulaKey, whiteboardFormulaPages, type FormulaPage } from './whiteboard-formula';
@@ -78,7 +78,7 @@ function revealed(part: Part, block: TeachingBlock, unit: WhiteboardSpeechUnit |
   if (part.page) return part.page.index <= Math.min(part.page.count - 1, Math.floor((unit.start + (unit.end - unit.start) * progress) / Math.max(1, block.scene.narration.length) * part.page.count));
   if (part.row !== undefined && part.row >= 0 && block.scene.exhibit?.kind === 'table') {
     // Whole rows enter on sentence boundaries, never character-by-character.
-    return part.row < Math.ceil(unit.end / Math.max(1, block.scene.narration.length) * block.scene.exhibit.rows.length);
+    return part.row < whiteboardTaughtTableRows(block.scene, unit);
   }
   return true;
 }

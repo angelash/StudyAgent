@@ -1,4 +1,4 @@
-import type { StudioWhiteboard } from './studio';
+import type { StudioWhiteboard, StudioWhiteboardScene } from './studio';
 import { classroomReadingMs, splitClassroomSpeech } from './classroom-speech';
 
 export const WHITEBOARD_SPEECH_VERSION = 'whiteboard-speech-v1' as const;
@@ -18,6 +18,15 @@ export type WhiteboardTimelineEntry = WhiteboardSpeechUnit & { fromMs: number; t
 export type WhiteboardTimeline = {
   kind: 'estimated-reading' | 'decoded-audio'; speed: number; durationMs: number; tailMs: number; entries: WhiteboardTimelineEntry[];
 };
+
+/** Canvas rows and a frozen question context share the same whole-sentence frontier. */
+export function whiteboardTaughtTableRows(scene: StudioWhiteboardScene, unit: Pick<WhiteboardSpeechUnit, 'sceneId' | 'end'> | undefined, complete = false): number {
+  if (scene.exhibit?.kind !== 'table') return 0;
+  if (complete || !unit) return scene.exhibit.rows.length;
+  if (unit.sceneId !== scene.id) return 0;
+  return Math.max(0, Math.min(scene.exhibit.rows.length,
+    Math.ceil(unit.end / Math.max(1, scene.narration.length) * scene.exhibit.rows.length)));
+}
 
 /** Offsets are UTF-16 offsets into the unchanged saved narration. No persisted content is rewritten. */
 export function whiteboardPresentation(board: Pick<StudioWhiteboard, 'fingerprint' | 'scenes'>): WhiteboardPresentation {

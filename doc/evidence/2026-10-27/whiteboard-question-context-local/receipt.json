@@ -1,0 +1,98 @@
+{
+  "at": "2026-10-26T21:53:40.622Z",
+  "status": "pure-frozen-context-foundation-local-validated",
+  "deployed": false,
+  "overallProductComplete": false,
+  "baseRevision": "7ca44f7f144c00e2fbb800b64dc6f39080e6144b",
+  "workingTreeSnapshot": true,
+  "unitTests": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0
+  },
+  "apiTypecheck": true,
+  "webTypecheck": true,
+  "sourceSha256": {
+    "packages/contracts/src/whiteboard-question.ts": "fde79a9ea17d92c6dfd7b9a8a44f9848e3fa4115af90e0b856bd8f082f59ed88",
+    "packages/contracts/src/whiteboard-speech.ts": "2560ca0d9840d6e9c02756432e70bdd869de89b6cbba5483fc8eb0163ef25d19",
+    "packages/contracts/src/index.ts": "cd3580a2fbf9f88c789d32868251024027f269e82a308c1ee1a2bea82b34260d",
+    "apps/web/app/studio/whiteboard-frame.ts": "d96b17fedac5cb19d28a5795d963185fe52d31825bf1e31ca99abc7cb16f34f0",
+    "apps/api/src/modules/learning/whiteboard-question-context.ts": "ecf40a694240c9d62b3035c08f378ec11e69b12e67052fd03d5752acfd3089ee",
+    "apps/api/src/modules/learning/whiteboard-question-context.test.ts": "45f01e63861b12f6c8ae4d48ab6e2d4c465d73c17eaa20bfc6166c2486d6a4ef"
+  },
+  "contractsBuildSha256": "45412a62e29f343992949b7059a34d063fea97bf40d00e359d92c4c8beef6b6d",
+  "files": [
+    {
+      "source": "packages/contracts/src/whiteboard-question.ts",
+      "file": "packages__contracts__src__whiteboard-question.ts.gz",
+      "originalSha256": "fde79a9ea17d92c6dfd7b9a8a44f9848e3fa4115af90e0b856bd8f082f59ed88",
+      "sha256": "35abb1f0b7651e51e9ab08c3fe20663ef58b244c2c8973fda08e370eec25b926"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-speech.ts",
+      "file": "packages__contracts__src__whiteboard-speech.ts.gz",
+      "originalSha256": "2560ca0d9840d6e9c02756432e70bdd869de89b6cbba5483fc8eb0163ef25d19",
+      "sha256": "04db637ec873b2dfa9e438411b52c9f59c9239827ada9911091c92e145874f4a"
+    },
+    {
+      "source": "packages/contracts/src/index.ts",
+      "file": "packages__contracts__src__index.ts.gz",
+      "originalSha256": "cd3580a2fbf9f88c789d32868251024027f269e82a308c1ee1a2bea82b34260d",
+      "sha256": "36f5f702a45b1e2d815a4f2e49eadd98b6488a030d5cc40d9e413ff40712bad4"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "apps__web__app__studio__whiteboard-frame.ts.gz",
+      "originalSha256": "d96b17fedac5cb19d28a5795d963185fe52d31825bf1e31ca99abc7cb16f34f0",
+      "sha256": "f640abbd709d113cb295656df3d72355605d3cbb9b43efe422f39133cf58c7a8"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "file": "apps__api__src__modules__learning__whiteboard-question-context.ts.gz",
+      "originalSha256": "ecf40a694240c9d62b3035c08f378ec11e69b12e67052fd03d5752acfd3089ee",
+      "sha256": "96b1ab28c9efd67166053807124b8bd77886e27cacfd7050789582110f28cc25"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-context.test.ts",
+      "file": "apps__api__src__modules__learning__whiteboard-question-context.test.ts.gz",
+      "originalSha256": "45f01e63861b12f6c8ae4d48ab6e2d4c465d73c17eaa20bfc6166c2486d6a4ef",
+      "sha256": "5cf2243a18b3839018950f2d5f2c091133fcbd7783394ff93cbcdcd2d72b4980"
+    },
+    {
+      "source": "data/qa/question-context-first.json",
+      "file": "data__qa__question-context-first.json.gz",
+      "originalSha256": "da2102fd83de04c8524e7bdf15334a462fd6c4762744336671b8f60ae094723f",
+      "sha256": "538d5dad9a5800a760141029e1b47f2b75494cc3716ac962f12de4d02dc7a711"
+    },
+    {
+      "source": "data/qa/question-context-first.log",
+      "file": "data__qa__question-context-first.log.gz",
+      "originalSha256": "53832e79423dd2e164166d340aec14420f7de74bc7bb24799733a0c2b70a0155",
+      "sha256": "c9d38e18f1585a6308ee349fd9b08ac73426aae5d9a346a866f950e7706700e1"
+    },
+    {
+      "source": "data/qa/question-context-final-api-tsc.log",
+      "file": "data__qa__question-context-final-api-tsc.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "source": "data/qa/question-context-web-tsc.log",
+      "file": "data__qa__question-context-web-tsc.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "source": "data/qa/question-contracts-build.log",
+      "file": "data__qa__question-contracts-build.log.gz",
+      "originalSha256": "a5ab259e9a0e358b53fd86da1e962d813dbb0f38fdfc2b9a7d5b4551fbf7d8df",
+      "sha256": "c22428a41adbd15c8e16f3f8d5a1eff6b277b46872e411f2171527f55be6980e"
+    }
+  ],
+  "scope": "Server-owned original/sentence binding, current table frontier, complete formula, bounded previous notes, source citation validation and scope/content fences. Pure synthetic tests; no public endpoint, queue, model call, UI or new browser acceptance has been implemented by this phase.",
+  "remaining": [
+    "Authorized endpoints, durable queue and original-command recovery.",
+    "Actual model requests, five intents, panel/history and return to original sentence.",
+    "Supplementary teaching/voice/export, SQLite/PG, complete browser/CI and production delivery."
+  ]
+}
