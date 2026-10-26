@@ -1,14 +1,12 @@
 # 开发计划核对、整体进度与后续里程碑
 
-核对日期：2026-10-24。核对代码：`a3ba56c`，文档基线：`2960d16`；工作树为 `feat/resumable-long-pdf`。本文更新[总计划92](92-experience-and-content-master-plan.md)的执行状态，不替换[原始需求](01-requirements.md)，不缩减完整产品目标。
+2026-10-26当前交付：125连续逐句白板已在主目录实际构建并由守护服务运行，构建6851175、业务8284cd6、buildId NhoNotmav8Cvzr9bnQqEW、schema17。本地与精确远端6851175/40304753383均263浏览器/263次原始尝试零失败、跳过与重试；Linux完整API1311通过/61环境跳过，原生Ubuntu配置4通过/0跳过。120项实际HTTP/权限/脚本检查、16编译文件及6原音频逐SHA通过，三次守护观察跨163300毫秒PID/重启计数稳定；五配置和真实环境保持原字节。
 
-2026-10-26最新运行：124主题白板配图与统一复杂公式已在main实际守护交付，生产构建6ab9211、核心0d4e738，buildId YJmjG_Z1T6Zu2FJLZkicg、schema17。完整本地和精确远端09bdeee/40279485485均253浏览器/253次原始尝试零失败/跳过/重试，远端三组success；完整API本地1319/53环境跳过（前端边界修复未改API）、Linux1311/61，原生配图17及主题14/2 SQLite专属跳过分别留证。真实新图片HTTP生成/edit各1次，完整可复制公式与统一向量视频、图片放大暂停续播、结束边界同步栅栏均接通。120实际HTTP/权限/脚本检查、16编译文件SHA、6实际音频SHA及217787毫秒三次PID/重启计数稳定观察通过；五配置和真实环境保持原字节。新鲜123/schema16停服一致数据/引用文件及874旧编译文件回退已核验，assetsIncluded:false不冒称全研究资产备份或完整恢复演练。首次本地252的251通过/1边界失败、稳定红色复现、被替代全绿CI和最终修复均保留。见[124规格](124-topic-whiteboard-figures-and-visual-manuscripts.md)、[实际运行](../evidence/2026-10-26/topic-figure-runtime.json)与[最终验收](../evidence/2026-10-26/topic-figure-acceptance.json)。原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持，整体目标继续。第1～4节保留2026-10-24核对基线。
+普通/PDF/主题白板已接入仅一条相邻准备及每次实际播放前的原稿授权核对，暂停/音色/手动跳句/失败明确重试保持；700ms受控等待下普通换句由743.8ms降至35.6ms、主题12.3ms，没有125新增供应商调用或真人听感结论。新鲜124/schema17停服一致数据/引用文件、890旧编译文件及私有配置回退均已验证；assetsIncluded:false，未冒称全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声、教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
 
-2026-10-26接续125：普通及主题白板已实现至多一条相邻云语音准备，逐次交接重新核对原稿授权；暂停/换音色/手动跳句/关闭、失败后明确重试和有界超时均接通。本地45浏览器45次原始尝试零失败/跳过/重试，700ms受控等待下普通句间由743.8ms降至35.6ms、主题12.3ms；没有125真实供应商调用或真人听感结论。两轮测试工具/会话选取失败原件均保留。类型/独立生产构建和488源码引用/3044链接/10离线设计检查通过；整站与精确CI、可回退主目录交付继续，运行仍124，72项状态和M1～M7范围保持。40a1739的两次归档CI因Azure依赖镜像慢下载耗尽45分钟已自动终止，未人为取消，不能记成通过；125已按先提交的规格调整官方镜像及准备步骤预算，真实CI结果仍待。见[125规格与本地验证](125-whiteboard-continuous-narration-and-bounded-preparation.md)。
+见[125完整规格与交付](125-whiteboard-continuous-narration-and-bounded-preparation.md#11-最终精确ci与实际守护交付)、[最终验收](../evidence/2026-10-26/whiteboard-continuity-acceptance.json)、[精确CI原件](../evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json)与[实际运行](../evidence/2026-10-26/whiteboard-continuity-runtime.json)。
 
-2026-10-26更新：125实现8284cd6、设计4a777d6已推送；本地完整263浏览器263次原始尝试全部通过、零失败/跳过/重试（22.9分钟），与45专项重叠不相加。精确CI 40298092966中PG成功，browser在8分钟依赖预算失败，原日志证实托管runner实际用mirror+file列表，原直接URL替换未生效；application仍在运行，不取消、不抢推。补充规格已先提交a582b76，共用官方源解析脚本/全三组准备接入/原生3通过及1 Windows链接权限跳过已完成，等旧CI全部终态后推送复验；生产仍124/schema17。890旧编译文件及配置回退已预备，停服数据备份/125主目录交付仍待。见[完整本地验证](../evidence/2026-10-26/whiteboard-continuity-full-browser/receipt.json)及[125第9～10节](125-whiteboard-continuous-narration-and-bounded-preparation.md#9-托管runner文件镜像列表修正再次实施前)。全部72项及M1～M7退出条件保持。
-
-2026-10-26 CI终态：40298092966的application与PostgreSQL均success，完整Linux API1311通过/61环境跳过；browser在依赖准备阶段failure，整个run保持failure，未执行浏览器断言、未人为取消。原阶段快照和[完整终态/日志](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/terminal-receipt.json)分别保留。9b05691已修正实际mirror+file引用并接入全部临时runner，5578005完成491源码引用/3056链接/10离线阅读器检查；旧CI全部结束后接续推送修正复验，生产继续124/schema17，整体目标及真人/全内容/原样式门禁不变。
+第1～4节保留2026-10-24原始核对基线，第5节继续约束M0～M7完整目标；各次交付前的中间状态移至第7节按原文留存。当前运行与需求状态以以上收据及72项账本为准。
 
 ## 1. 整体判断与本轮核对结果
 
@@ -299,3 +297,15 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-26最新运行：124主题白板配图与统一复杂公式已在main实际守护交付，生产构建6ab9211、核心0d4e738，buildId YJmjG_Z1T6Zu2FJLZkicg、schema17。完整本地和精确远端09bdeee/40279485485均253浏览器/253次原始尝试零失败/跳过/重试，远端三组success；完整API本地1319/53环境跳过（前端边界修复未改API）、Linux1311/61，原生配图17及主题14/2 SQLite专属跳过分别留证。真实新图片HTTP生成/edit各1次，完整可复制公式与统一向量视频、图片放大暂停续播、结束边界同步栅栏均接通。120实际HTTP/权限/脚本检查、16编译文件SHA、6实际音频SHA及217787毫秒三次PID/重启计数稳定观察通过；五配置和真实环境保持原字节。新鲜123/schema16停服一致数据/引用文件及874旧编译文件回退已核验，assetsIncluded:false不冒称全研究资产备份或完整恢复演练。首次本地252的251通过/1边界失败、稳定红色复现、被替代全绿CI和最终修复均保留。见[124规格](124-topic-whiteboard-figures-and-visual-manuscripts.md)、[实际运行](../evidence/2026-10-26/topic-figure-runtime.json)与[最终验收](../evidence/2026-10-26/topic-figure-acceptance.json)。原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持，整体目标继续。第1～4节保留2026-10-24核对基线。
+
+## 7. 125交付前阶段记录（历史）
+
+核对日期：2026-10-24。核对代码：`a3ba56c`，文档基线：`2960d16`；工作树为 `feat/resumable-long-pdf`。本文更新[总计划92](92-experience-and-content-master-plan.md)的执行状态，不替换[原始需求](01-requirements.md)，不缩减完整产品目标。
+
+2026-10-26最新运行：124主题白板配图与统一复杂公式已在main实际守护交付，生产构建6ab9211、核心0d4e738，buildId YJmjG_Z1T6Zu2FJLZkicg、schema17。完整本地和精确远端09bdeee/40279485485均253浏览器/253次原始尝试零失败/跳过/重试，远端三组success；完整API本地1319/53环境跳过（前端边界修复未改API）、Linux1311/61，原生配图17及主题14/2 SQLite专属跳过分别留证。真实新图片HTTP生成/edit各1次，完整可复制公式与统一向量视频、图片放大暂停续播、结束边界同步栅栏均接通。120实际HTTP/权限/脚本检查、16编译文件SHA、6实际音频SHA及217787毫秒三次PID/重启计数稳定观察通过；五配置和真实环境保持原字节。新鲜123/schema16停服一致数据/引用文件及874旧编译文件回退已核验，assetsIncluded:false不冒称全研究资产备份或完整恢复演练。首次本地252的251通过/1边界失败、稳定红色复现、被替代全绿CI和最终修复均保留。见[124规格](124-topic-whiteboard-figures-and-visual-manuscripts.md)、[实际运行](../evidence/2026-10-26/topic-figure-runtime.json)与[最终验收](../evidence/2026-10-26/topic-figure-acceptance.json)。原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持，整体目标继续。第1～4节保留2026-10-24核对基线。
+
+2026-10-26接续125：普通及主题白板已实现至多一条相邻云语音准备，逐次交接重新核对原稿授权；暂停/换音色/手动跳句/关闭、失败后明确重试和有界超时均接通。本地45浏览器45次原始尝试零失败/跳过/重试，700ms受控等待下普通句间由743.8ms降至35.6ms、主题12.3ms；没有125真实供应商调用或真人听感结论。两轮测试工具/会话选取失败原件均保留。类型/独立生产构建和488源码引用/3044链接/10离线设计检查通过；整站与精确CI、可回退主目录交付继续，运行仍124，72项状态和M1～M7范围保持。40a1739的两次归档CI因Azure依赖镜像慢下载耗尽45分钟已自动终止，未人为取消，不能记成通过；125已按先提交的规格调整官方镜像及准备步骤预算，真实CI结果仍待。见[125规格与本地验证](125-whiteboard-continuous-narration-and-bounded-preparation.md)。
+
+2026-10-26更新：125实现8284cd6、设计4a777d6已推送；本地完整263浏览器263次原始尝试全部通过、零失败/跳过/重试（22.9分钟），与45专项重叠不相加。精确CI 40298092966中PG成功，browser在8分钟依赖预算失败，原日志证实托管runner实际用mirror+file列表，原直接URL替换未生效；application仍在运行，不取消、不抢推。补充规格已先提交a582b76，共用官方源解析脚本/全三组准备接入/原生3通过及1 Windows链接权限跳过已完成，等旧CI全部终态后推送复验；生产仍124/schema17。890旧编译文件及配置回退已预备，停服数据备份/125主目录交付仍待。见[完整本地验证](../evidence/2026-10-26/whiteboard-continuity-full-browser/receipt.json)及[125第9～10节](125-whiteboard-continuous-narration-and-bounded-preparation.md#9-托管runner文件镜像列表修正再次实施前)。全部72项及M1～M7退出条件保持。
+
+2026-10-26 CI终态：40298092966的application与PostgreSQL均success，完整Linux API1311通过/61环境跳过；browser在依赖准备阶段failure，整个run保持failure，未执行浏览器断言、未人为取消。原阶段快照和[完整终态/日志](../evidence/2026-10-26/whiteboard-continuity-ci-preparation-initial/terminal-receipt.json)分别保留。9b05691已修正实际mirror+file引用并接入全部临时runner，5578005完成491源码引用/3056链接/10离线阅读器检查；旧CI全部结束后接续推送修正复验，生产继续124/schema17，整体目标及真人/全内容/原样式门禁不变。

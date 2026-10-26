@@ -1,0 +1,159 @@
+{
+  "at": "2026-10-26T10:43:07.731Z",
+  "status": "runtime-delivered",
+  "applicationRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "productionBuildRevision": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "webBuildId": "NhoNotmav8Cvzr9bnQqEW",
+  "schemaVersion": 17,
+  "exactCi": {
+    "head": "68511750f1222e66dc69793db72249d9d60c1a4d",
+    "run": 40304753383,
+    "allThreeJobs": "success",
+    "receipt": "whiteboard-continuity-exact-ci/receipt.json"
+  },
+  "localBrowser": {
+    "passed": 263,
+    "attempts": 263,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retriedAttempts": 0,
+    "receipt": "whiteboard-continuity-full-browser/receipt.json"
+  },
+  "remoteBrowser": {
+    "passed": 263,
+    "attempts": 263,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retriedAttempts": 0,
+    "originalSha256": "f837def9de853c1009d80441c318a021a29b24a1a6428a192958205b511932f2",
+    "storedSha256": "888510cf6db6e68dd6ccfc5fe87f142d01d392e70aa51f3864e499ffb78b6c7b",
+    "durationMs": 1447281.329
+  },
+  "api": {
+    "linux": {
+      "passed": 1311,
+      "environmentSkipped": 61
+    },
+    "unchangedFrom124": true
+  },
+  "focusedBrowser": {
+    "passed": 45,
+    "receipt": "whiteboard-continuity-final/receipt.json",
+    "overlapsFullRegression": true
+  },
+  "controlledTiming": {
+    "originalBaselineGapMs": 743.8,
+    "current": [
+      {
+        "source": "adjacent-transfer.json",
+        "controlledRequestDelayMs": 700,
+        "actualGapMs": 35.60000002384186,
+        "adjacentRequestBeforeEndMs": 2113.899999976158,
+        "startsAtSeconds": 0
+      },
+      {
+        "source": "adult-topic-transfer.json",
+        "controlledRequestDelayMs": 700,
+        "actualGapMs": 12.300000011920929,
+        "adjacentRequestBeforeEndMs": 2254.900000035763,
+        "startsAtSeconds": 0
+      }
+    ],
+    "newProviderCallsIn125": 0,
+    "scope": "Controlled700ms HTTP wait and actual2s synthetic decodable WAV; not actual supplier latency, human listening or device acceptance."
+  },
+  "ciPreparation": {
+    "linuxNativeTests": {
+      "passed": 4,
+      "skipped": 0
+    },
+    "measuredSteps": [
+      {
+        "job": "postgres",
+        "step": "Configure official Ubuntu package sources",
+        "conclusion": "success",
+        "seconds": 0
+      },
+      {
+        "job": "postgres",
+        "step": "Verify prepared project attachment audio decoder",
+        "conclusion": "success",
+        "seconds": 0
+      },
+      {
+        "job": "browser",
+        "step": "Configure official Ubuntu package mirror for browser verification",
+        "conclusion": "success",
+        "seconds": 0
+      },
+      {
+        "job": "browser",
+        "step": "Install attachment audio decoder",
+        "conclusion": "success",
+        "seconds": 29
+      },
+      {
+        "job": "browser",
+        "step": "Install browser runtime",
+        "conclusion": "success",
+        "seconds": 17
+      },
+      {
+        "job": "application",
+        "step": "Verify official Ubuntu mirror configuration",
+        "conclusion": "success",
+        "seconds": 0
+      },
+      {
+        "job": "application",
+        "step": "Configure official Ubuntu package sources",
+        "conclusion": "success",
+        "seconds": 1
+      },
+      {
+        "job": "application",
+        "step": "Install media tools",
+        "conclusion": "success",
+        "seconds": 32
+      }
+    ],
+    "failedOriginal": "whiteboard-continuity-ci-preparation-initial/terminal-receipt.json"
+  },
+  "runtime": {
+    "receipt": "whiteboard-continuity-runtime.json",
+    "httpChecks": 120,
+    "compiledFiles": 16,
+    "originalVoiceSamples": 6,
+    "stableObservedMs": 163300,
+    "protectedConfigFiles": 5,
+    "localEnvironmentPreserved": true
+  },
+  "rollback": {
+    "schema": 17,
+    "verifiedRuntimeFiles": 1,
+    "compiledFiles": 890,
+    "assetsIncluded": false,
+    "scope": "Fresh stopped-service124 database/referenced files and890 original compiled files plus private configuration. No full research-asset backup or complete recovery rehearsal."
+  },
+  "preservedFailures": [
+    "whiteboard-continuity-before/receipt.json",
+    "whiteboard-continuity-expanded-initial/receipt.json",
+    "whiteboard-continuity-expanded-second/receipt.json",
+    "whiteboard-continuity-ci-preparation-initial/terminal-receipt.json",
+    "figure-archive-ci-timeouts/receipt.json"
+  ],
+  "requirements": {
+    "implemented": 11,
+    "inProgress": 48,
+    "planned": 13,
+    "verified": 0,
+    "total": 72
+  },
+  "limitations": [
+    "Internal product M1-M7 remains incomplete; billing, Marketplace and school OAuth/institution integration remain excluded.",
+    "Current increment applies to ordinary/PDF/topic whiteboards. Future hidden classroom narration needs its own permissions and does not inherit this queue.",
+    "Original HyperKnow CSS/fonts/DPR/audio, full states and teaching content, teacher/real-device/long-term learning acceptance remain open."
+  ]
+}

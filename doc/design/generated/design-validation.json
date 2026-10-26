@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T10:06:03.182Z",
-  "sourceRevision": "9b056916f0f93e24d62bb1c60b7f55b604ed5982",
+  "at": "2026-10-26T10:49:24.344Z",
+  "sourceRevision": "68511750f1222e66dc69793db72249d9d60c1a4d",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 364
   },
   "sourceReferences": {
-    "uniqueFiles": 491,
+    "uniqueFiles": 493,
     "problems": [],
     "sha256": {
       ".github/apt-ci.conf": "61be3bee1af091f0b3b8fa1ffed9b4da4392a4f8c0f302d5074e2b7b445f0444",
@@ -407,10 +407,12 @@
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
       "doc/evidence/2026-10-26/topic-figure-acceptance.json": "3e887de00ff06191e7ca08af307bc9ec8bd5ecaafe0ef8b8dca8ea8eba3c8484",
       "doc/evidence/2026-10-26/topic-figure-runtime.json": "fda829ef2841a114853d964feceb4ffb48bf2e82d6f109c605dad3f2ce0d3ad9",
+      "doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json": "f58c7acc90a5e9bf5efa7d0543829924877ba04fa29f4f2492592b1f73d0ff39",
+      "doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json": "77e30f422358d761292ee1c0100c84782dc994fc54ad522d36f043121395a322",
       "doc/product/120-source-course-independent-unit-checks.md": "cf5663bc83f27f7b5d8dc6110075d9dc2e1bb9fd06fa75364b556540108ffd79",
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
-      "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "0e95346d83c3af7fe94f641767ed0bd005ec625262255a85929835533ee90c5b",
+      "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "955b54815bc9c307eaa57ded9688375a1fe3f34699b74cf57a4c595cb6b3dcec",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -529,7 +531,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3058,
+    "checked": 3069,
     "missing": []
   },
   "staticContent": {
@@ -600,7 +602,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/topic-figure-acceptance.json",
+    "receipt": "../evidence/2026-10-26/whiteboard-continuity-acceptance.json",
+    "revision": "68511750f1222e66dc69793db72249d9d60c1a4d",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

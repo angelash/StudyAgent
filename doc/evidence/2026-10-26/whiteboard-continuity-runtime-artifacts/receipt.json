@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-26T10:45:00.124Z",
+  "status": "actual-production-build-and-bounded-rollback-proof",
+  "entries": [
+    {
+      "file": "build-original.log.gz",
+      "originalBytes": 2874,
+      "originalSha256": "074ea407076e2894b557e293ea35064aaa7c1f5feff8b614cd3482b569382264",
+      "storedSha256": "e1e2609d89f20026ad1f2f4ba5b04e1083fd28692e3937178aa84010196b1d06"
+    },
+    {
+      "file": "backup-verification.json",
+      "originalBytes": 452,
+      "originalSha256": "c923888a4796e09a33bebba81b8fb9eab10977f82be00108287e459a707f86f1",
+      "storedSha256": "c923888a4796e09a33bebba81b8fb9eab10977f82be00108287e459a707f86f1"
+    },
+    {
+      "file": "original-build-copy-verification.json",
+      "originalBytes": 248,
+      "originalSha256": "f6bf290cdb60a91de131c5319f68aedda034c3a00123dec4b05669a1d5fab481",
+      "storedSha256": "f6bf290cdb60a91de131c5319f68aedda034c3a00123dec4b05669a1d5fab481"
+    }
+  ],
+  "scope": "Build command output and backup counts/hashes only. No private configuration bytes, family database, full research archive or complete recovery rehearsal."
+}

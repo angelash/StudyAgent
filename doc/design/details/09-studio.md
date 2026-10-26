@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`9b056916f0f93e24d62bb1c60b7f55b604ed5982`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`68511750f1222e66dc69793db72249d9d60c1a4d`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -366,6 +366,8 @@
 - [tests/e2e/whiteboard-timing.ts](../../../tests/e2e/whiteboard-timing.ts)
 - [tests/e2e/whiteboard-media.spec.ts](../../../tests/e2e/whiteboard-media.spec.ts)
 - [doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md](../../../doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md)
+- [doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json](../../../doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json)
+- [doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json](../../../doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json)
 
 ## STUDIO-11 PDF上传、原文与逐页阅读
 

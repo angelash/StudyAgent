@@ -140,7 +140,7 @@ async function main() {
       offlineViewer: { checks, browserErrors, externalNetworkRequests: networkRequests, viewports: [1440, 768, 390], screenshots: ['data/qa/project-design-viewer/desktop.png', 'data/qa/project-design-viewer/mobile.png'] },
       applicationBaselineEvidence: { newlyRunByThisScript: false,
         receipt: path.relative(design, applicationReceipt).split(path.sep).join('/'),
-        revision: applicationEvidence.sourceRevision,
+        revision: applicationEvidence.sourceRevision ?? applicationEvidence.productionBuildRevision ?? applicationEvidence.applicationRevision,
         note: 'Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result.' }
     };
     fs.writeFileSync(path.join(design, 'generated/design-validation.json'), JSON.stringify(receipt, null, 2) + '\n');

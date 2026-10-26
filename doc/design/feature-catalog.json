@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9b056916f0f93e24d62bb1c60b7f55b604ed5982",
+  "sourceRevision": "68511750f1222e66dc69793db72249d9d60c1a4d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -5469,6 +5469,8 @@
             "tests/e2e/whiteboard-timing.ts",
             "tests/e2e/whiteboard-media.spec.ts",
             "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md",
+            "doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json",
+            "doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [

@@ -1,0 +1,123 @@
+{
+  "at": "2026-10-26T10:35:22.662Z",
+  "status": "exact-ci-passed-awaiting-runtime-delivery",
+  "deployed": false,
+  "head": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "applicationRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "run": 40304753383,
+  "jobs": [
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "passed": 263,
+    "attempts": 263,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retriedAttempts": 0,
+    "originalSha256": "f837def9de853c1009d80441c318a021a29b24a1a6428a192958205b511932f2",
+    "storedSha256": "888510cf6db6e68dd6ccfc5fe87f142d01d392e70aa51f3864e499ffb78b6c7b",
+    "durationMs": 1447281.329
+  },
+  "api": {
+    "passed": 1311,
+    "environmentSkipped": 61
+  },
+  "apiAndContractsUnchanged": true,
+  "linuxAptRegression": {
+    "passed": 4,
+    "skipped": 0
+  },
+  "dependencyPreparation": [
+    {
+      "job": "postgres",
+      "step": "Configure official Ubuntu package sources",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "job": "postgres",
+      "step": "Verify prepared project attachment audio decoder",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "job": "browser",
+      "step": "Configure official Ubuntu package mirror for browser verification",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "job": "browser",
+      "step": "Install attachment audio decoder",
+      "conclusion": "success",
+      "seconds": 29
+    },
+    {
+      "job": "browser",
+      "step": "Install browser runtime",
+      "conclusion": "success",
+      "seconds": 17
+    },
+    {
+      "job": "application",
+      "step": "Verify official Ubuntu mirror configuration",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "job": "application",
+      "step": "Configure official Ubuntu package sources",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "job": "application",
+      "step": "Install media tools",
+      "conclusion": "success",
+      "seconds": 32
+    }
+  ],
+  "logs": [
+    {
+      "job": "postgres",
+      "file": "postgres-job-original.log.gz",
+      "originalBytes": 245437,
+      "originalSha256": "02c88e874be48ec5e3461cbf3b413de3568dc697127017755f419ce1c18d4512",
+      "storedSha256": "3cd8aafe11d1eec4852c1ccfee2664556baad5a3e826c0490ae558daeb7b1764",
+      "azurePackageTransfers": 0
+    },
+    {
+      "job": "browser",
+      "file": "browser-job-original.log.gz",
+      "originalBytes": 168368,
+      "originalSha256": "02a30202cbcf5131b75989faf7253bca83e7a96f7a53c1612ca414382cf0f0b6",
+      "storedSha256": "e4e6fff083d2b455b98410d541839a7437bfadf88be5f2a86cb0b5e7dbda30cb",
+      "azurePackageTransfers": 0
+    },
+    {
+      "job": "application",
+      "file": "application-job-original.log.gz",
+      "originalBytes": 226763,
+      "originalSha256": "0cdb65db556bd2a6e4c87b3d5850584aee69beabc08bd39828b4aab6dcb92196",
+      "storedSha256": "c3d54e8e295b58594d3b09ab4287ef3088d16cfd53aba18f13bdeec311306474",
+      "azurePackageTransfers": 0
+    }
+  ],
+  "preservedFailedRun": "../whiteboard-continuity-ci-preparation-initial/terminal-receipt.json",
+  "limits": [
+    "Complete controlled regression, not original HyperKnow pixel/audio fidelity, actual provider latency, teacher validation, real-device or long-term learning validity.",
+    "Main production build, fresh consistent database backup and guardian runtime acceptance still required."
+  ]
+}

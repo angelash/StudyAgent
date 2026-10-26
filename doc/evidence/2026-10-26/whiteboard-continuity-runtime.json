@@ -1,0 +1,1279 @@
+{
+  "at": "2026-10-26T10:42:11.914Z",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "applicationRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
+  "ciHead": "68511750f1222e66dc69793db72249d9d60c1a4d",
+  "ciRun": 40304753383,
+  "webBuildId": "NhoNotmav8Cvzr9bnQqEW",
+  "schemaVersion": 17,
+  "protectedFiles": {
+    ".env.example": true,
+    "apps/web/next.config.ts": true,
+    "doc/product/87-local-windows-daemon.md": true,
+    "ecosystem.config.cjs": true,
+    "scripts/operations/start-daemon.ps1": true
+  },
+  "localEnvironmentPreserved": true,
+  "httpChecks": [
+    {
+      "url": "/learn",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/parent/login",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/classroom",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/source-courses",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/projects",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/whiteboards",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/student/assessment",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/ready",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/api/learning/studio/overview",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/source-courses/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/projects/nonexistent/teaching",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/whiteboards/nonexistent",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/requests/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/history",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/preflight",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/cancel",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/retry",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/confirm",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/nonexistent/narration/nonexistent",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/drafts/nonexistent/content",
+      "method": "PATCH",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/whiteboards",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/whiteboards/nonexistent/narration/nonexistent",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/capabilities",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/requests/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/requests/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/image",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/original",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/preflight",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/cancel",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/retry",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboard-visuals/nonexistent/edits",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/nonexistent/figures/nonexistent/image",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/api/learning/studio/topic-whiteboards/nonexistent/figures/nonexistent/original",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "url": "/studio/whiteboards",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/ae3adb96-1bed4d04d1640dba.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/9110-1df2b3af3e1a490c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1061-ea43bd2d19972e38.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/whiteboards/page-ef3470d9a402519e.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/ae3adb96-1bed4d04d1640dba.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/9110-1df2b3af3e1a490c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1061-ea43bd2d19972e38.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/7957-c39605afd121c832.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/page-9abcbb80b125abf8.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/source-courses",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/7957-c39605afd121c832.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/source-courses/page-ae17496edcfada97.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/classroom",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/classroom/page-6c6efa0ff0e7b018.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/studio/projects",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/app/studio/projects/page-b758ede73d2173e1.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/manifest.json",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/warm-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/calm-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/bright-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/gentle-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/professional-v1.mp3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/classroom-voice-samples/lively-v1.mp3",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "pageChecks": [
+    {
+      "page": "/studio/whiteboards",
+      "markers": [
+        "tw-candidate",
+        "studyagent.topic-whiteboard.document-slot",
+        "预检主题与范围",
+        "查看其他本机改稿",
+        "恢复原配图请求",
+        "topic-whiteboard-visuals",
+        "wb-formula-vector",
+        "mathjax4-svg-v1"
+      ],
+      "passed": true
+    },
+    {
+      "page": "/studio",
+      "markers": [
+        "wb-sentence-player",
+        "whiteboard-speech-v1",
+        "createConstantSource",
+        "完整讲稿与要点",
+        "当前登录已变化，请重新打开白板。",
+        "当前句语音准备超时，可重试或选择文字阅读。"
+      ],
+      "passed": true
+    },
+    {
+      "page": "/studio/source-courses",
+      "markers": [
+        "sc-check-manuscript",
+        "选择1～6个课时目标"
+      ],
+      "passed": true
+    },
+    {
+      "page": "/studio/classroom",
+      "markers": [
+        "ca-journey",
+        "cl-check-source"
+      ],
+      "passed": true
+    },
+    {
+      "page": "/studio/projects",
+      "markers": [
+        "pj-teaching-toolbar"
+      ],
+      "passed": true
+    }
+  ],
+  "scriptDigests": [
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f",
+      "bytes": 203725
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c",
+      "bytes": 243141
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf",
+      "bytes": 525
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431",
+      "bytes": 99904
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a",
+      "bytes": 4868
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "sha256": "34588dc6cfb65bc1b40c275d1a7d287985bbaea73fb5287b113a5e0680272e24",
+      "bytes": 264236
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/ae3adb96-1bed4d04d1640dba.js",
+      "sha256": "6072b7a412f60d43fe5d5877aaaf60959f906273e2034a9239fa6cdc39be4ec7",
+      "bytes": 498506
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04",
+      "bytes": 7670
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/9110-1df2b3af3e1a490c.js",
+      "sha256": "163609c5bc1e807106720b70eed8f7fc364573e9771366236d96d00f6351a39c",
+      "bytes": 1187050
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "sha256": "43526a42cb98b5e2335d6756dbb94bccb7783c24737183894422d2e01be03b3f",
+      "bytes": 43000
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "sha256": "15d2edd35bed6dbad2561c9b6feea38f028281fd58b0fa4708b0d8df23627138",
+      "bytes": 8357
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/1061-ea43bd2d19972e38.js",
+      "sha256": "fb9c712588f4347013dc89a65d64888632216fff5be663f2f137c2576721a879",
+      "bytes": 46028
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/app/studio/whiteboards/page-ef3470d9a402519e.js",
+      "sha256": "2a58dad3676bfba18394871ffe8e96c19619d00872ff101be5189153e07e3b8c",
+      "bytes": 58105
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/whiteboards",
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "sha256": "93f704e47cf88b24174829e5f647badcc9010049850fbdcc7f088b1c98d1f580",
+      "bytes": 3993
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f",
+      "bytes": 203725
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c",
+      "bytes": 243141
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf",
+      "bytes": 525
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431",
+      "bytes": 99904
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a",
+      "bytes": 4868
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "sha256": "34588dc6cfb65bc1b40c275d1a7d287985bbaea73fb5287b113a5e0680272e24",
+      "bytes": 264236
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/ae3adb96-1bed4d04d1640dba.js",
+      "sha256": "6072b7a412f60d43fe5d5877aaaf60959f906273e2034a9239fa6cdc39be4ec7",
+      "bytes": 498506
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04",
+      "bytes": 7670
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/9110-1df2b3af3e1a490c.js",
+      "sha256": "163609c5bc1e807106720b70eed8f7fc364573e9771366236d96d00f6351a39c",
+      "bytes": 1187050
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "sha256": "43526a42cb98b5e2335d6756dbb94bccb7783c24737183894422d2e01be03b3f",
+      "bytes": 43000
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "sha256": "15d2edd35bed6dbad2561c9b6feea38f028281fd58b0fa4708b0d8df23627138",
+      "bytes": 8357
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/1061-ea43bd2d19972e38.js",
+      "sha256": "fb9c712588f4347013dc89a65d64888632216fff5be663f2f137c2576721a879",
+      "bytes": 46028
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/7957-c39605afd121c832.js",
+      "sha256": "e727273aea84f81a5385d5de96f5f07d3a4f2ba79202ee402edeb5e078789439",
+      "bytes": 27203
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/app/studio/page-9abcbb80b125abf8.js",
+      "sha256": "dc1c3bc859b579f41d9ede0a79eaa7e6066e88a03267383f51d7c6dae0a4c597",
+      "bytes": 101643
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio",
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "sha256": "93f704e47cf88b24174829e5f647badcc9010049850fbdcc7f088b1c98d1f580",
+      "bytes": 3993
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f",
+      "bytes": 203725
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c",
+      "bytes": 243141
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf",
+      "bytes": 525
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431",
+      "bytes": 99904
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a",
+      "bytes": 4868
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04",
+      "bytes": 7670
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "sha256": "43526a42cb98b5e2335d6756dbb94bccb7783c24737183894422d2e01be03b3f",
+      "bytes": 43000
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "sha256": "15d2edd35bed6dbad2561c9b6feea38f028281fd58b0fa4708b0d8df23627138",
+      "bytes": 8357
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/7957-c39605afd121c832.js",
+      "sha256": "e727273aea84f81a5385d5de96f5f07d3a4f2ba79202ee402edeb5e078789439",
+      "bytes": 27203
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/app/studio/source-courses/page-ae17496edcfada97.js",
+      "sha256": "84adf3dc6b96d14b06d9687368108bc0dee2eea11fa422736d1f08596e6ef4b2",
+      "bytes": 102214
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/source-courses",
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "sha256": "93f704e47cf88b24174829e5f647badcc9010049850fbdcc7f088b1c98d1f580",
+      "bytes": 3993
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f",
+      "bytes": 203725
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c",
+      "bytes": 243141
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf",
+      "bytes": 525
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431",
+      "bytes": 99904
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a",
+      "bytes": 4868
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/db261188-5738595ca6645b56.js",
+      "sha256": "34588dc6cfb65bc1b40c275d1a7d287985bbaea73fb5287b113a5e0680272e24",
+      "bytes": 264236
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04",
+      "bytes": 7670
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "sha256": "43526a42cb98b5e2335d6756dbb94bccb7783c24737183894422d2e01be03b3f",
+      "bytes": 43000
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/8370-03d7cf6a08764314.js",
+      "sha256": "15d2edd35bed6dbad2561c9b6feea38f028281fd58b0fa4708b0d8df23627138",
+      "bytes": 8357
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/app/studio/classroom/page-6c6efa0ff0e7b018.js",
+      "sha256": "839675aae1817f61a24106692db0ec598e69ff901a3a4aee6fd9fc8de10be997",
+      "bytes": 119539
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/classroom",
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "sha256": "93f704e47cf88b24174829e5f647badcc9010049850fbdcc7f088b1c98d1f580",
+      "bytes": 3993
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/87c73c54-6890e5aad4d9e16a.js",
+      "sha256": "b61d529b088b3cee79dd72419d04e3e391acbb63b87d1a64118248b4fd259a5f",
+      "bytes": 203725
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/1968-a6d11f08f9277022.js",
+      "sha256": "c9ac052f0cb8f41039ab9dc0c3176dd4ae5defcdc4c78a2fbc27074b4b62939c",
+      "bytes": 243141
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/main-app-a9c900e828b5d4ee.js",
+      "sha256": "baaadc92068d5c9fc7d26f07afa6ada37136d886c78acae579dc54f9e1d20edf",
+      "bytes": 525
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/679-29d049b71f4b81af.js",
+      "sha256": "8a59f8a253dcf01b9f8f3e9e5d1f98917c9086288d88669ed0a55c4e85ea9431",
+      "bytes": 99904
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/app/layout-b9d4dbf1a32dcb51.js",
+      "sha256": "cc0a9afcd1453ec4dfb61dc92f95a2127f400f84c50e71f0bc08c182d325684a",
+      "bytes": 4868
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/5587-a8dc538170243aab.js",
+      "sha256": "fd28090cd88b5a45380305249bcca0982f7f143a5477d810340f724bb6055d04",
+      "bytes": 7670
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/3623-bdcfcb17a9f90bb3.js",
+      "sha256": "43526a42cb98b5e2335d6756dbb94bccb7783c24737183894422d2e01be03b3f",
+      "bytes": 43000
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/app/studio/projects/page-b758ede73d2173e1.js",
+      "sha256": "69b898e83063e3d2cd8824cba79ee99cb0788b2c4e05e5e409b8c47c9b54dd19",
+      "bytes": 79784
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "page": "/studio/projects",
+      "url": "/_next/static/chunks/webpack-99fc50cac38c553c.js",
+      "sha256": "93f704e47cf88b24174829e5f647badcc9010049850fbdcc7f088b1c98d1f580",
+      "bytes": 3993
+    }
+  ],
+  "compiled": [
+    {
+      "file": "apps/api/dist/apps/api/src/infrastructure/domain-database.js",
+      "sha256": "4717ce82edc3f02c55f13bed69d26e2b835f010bcd7dd19c42954a105104aee1"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/ai/classroom-image.service.js",
+      "sha256": "8d8ed77257e45b03614fa05e838956da0a9a42b33ee78f6e6af7a15b2f1f3df0"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard.service.js",
+      "sha256": "6805dfaf16e33703811c8e10ee5dc5615068a5ed2813e3d6ee1cc292c074944b"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-worker.service.js",
+      "sha256": "8dbdfda2604d4e60694b78c974c0ef5a2fe9124a782e8bf6ac1193ab1d129c7b"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-content.js",
+      "sha256": "7d791605aaf35ce371caace12ad7534e9952746dbedb9b7003ca53228973f7c6"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-access.js",
+      "sha256": "eb5b73dba6cc7e3641a7386e17640b8092c34c3c3b9b8f96288a873a4c8342b4"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-projection.js",
+      "sha256": "4ec2a17c0b72ceb9ed88cab1b8593b2a6ad27cdb19d57a42f0bd2bcde3070672"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-narration.service.js",
+      "sha256": "d9a263e897fa7a834330a9b5f95a148474d41c60194b8d0b78a5f059f2091a25"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual.controller.js",
+      "sha256": "74d62c2231318520f23fa135f8b935457ebd4b140cb7a0b0d997237f9c444fc3"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual.service.js",
+      "sha256": "a95ba27ca12168cfa5237d12c98ec2a9c423331ee41ef4c350a58f93cf1e930f"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.js",
+      "sha256": "9bf351a5013af67d0e71f7f9d5922cb0d359200ce231a48894b8baafd85c0d95"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-access.js",
+      "sha256": "3715effdf48bba3b67ce8f1be659bddd005963f6bcb8d0eff59fd4cdd5c99a4c"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-storage.js",
+      "sha256": "fa40470113a753b49ec4465a011ec4410d3556149e1f60e1b8ba933d5b93a9f6"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-retention.js",
+      "sha256": "203bdea58f646f3349289459d743a8d68c78b869f8471ea11673592c096cac0f"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-figures.js",
+      "sha256": "12972bec1bdfd972cd04af62445dbf9bab027f255602d326a085fa9a357aa074"
+    },
+    {
+      "file": "apps/api/dist/apps/api/src/modules/learning/teaching-visual-storage.js",
+      "sha256": "91126b968c0ece62502c3a07b1e184cb8213a476b4bff39a0cfbc9a81780900a"
+    }
+  ],
+  "voiceSamples": [
+    {
+      "file": "warm-v1.mp3",
+      "bytes": 72564,
+      "sha256": "a6a2dccb363caf307c62829cd2f9482acd4beaaa1bce140de5b40b2f1ac8f023",
+      "passed": true
+    },
+    {
+      "file": "calm-v1.mp3",
+      "bytes": 75444,
+      "sha256": "ab283698ffd0c7c541d07e56323f97dcfbf8be977f17f9550b546684ca8b64a7",
+      "passed": true
+    },
+    {
+      "file": "bright-v1.mp3",
+      "bytes": 90420,
+      "sha256": "7fbda45ec0383a98b9d32d7268b8cdf49006281a0a8353cf959ff2cb294b71ed",
+      "passed": true
+    },
+    {
+      "file": "gentle-v1.mp3",
+      "bytes": 81204,
+      "sha256": "920d425e5dae02a301b078a0a747d91a674ad78f936e535552bf3a665e6f9cf9",
+      "passed": true
+    },
+    {
+      "file": "professional-v1.mp3",
+      "bytes": 82356,
+      "sha256": "5d01b439d86621d11b294bdef737ffe1d1d9234071395ee6b921f25bf0a5faaa",
+      "passed": true
+    },
+    {
+      "file": "lively-v1.mp3",
+      "bytes": 74292,
+      "sha256": "bec74e344c8634d12b5dc7adcc23e84a4dc9b0df90d1ca6dbbec7d0f9e517f1e",
+      "passed": true
+    }
+  ],
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-26-whiteboard-continuity-1793006330849",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-26T09:19:05.653Z",
+      "passed": true,
+      "files": 890,
+      "bytes": 17268612,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified124 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "limitations": [
+    "Anonymous production checks; authorized synthetic flows and media decode verified in isolated storage.",
+    "No teacher, original HyperKnow CSS/fonts/DPR/audio, real-device or long-term learning acceptance."
+  ],
+  "observations": [
+    {
+      "at": "2026-10-26T10:39:26.110Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 56504,
+          "status": "online",
+          "restarts": 1164,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 65584,
+          "status": "online",
+          "restarts": 3,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 4588,
+          "status": "online",
+          "restarts": 1,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        }
+      ],
+      "http": {
+        "learn": 200,
+        "ready": 200
+      }
+    },
+    {
+      "at": "2026-10-26T10:39:59.180Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 56504,
+          "status": "online",
+          "restarts": 1164,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 65584,
+          "status": "online",
+          "restarts": 3,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 4588,
+          "status": "online",
+          "restarts": 1,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        }
+      ],
+      "http": {
+        "learn": 200,
+        "ready": 200
+      }
+    },
+    {
+      "at": "2026-10-26T10:42:09.410Z",
+      "services": [
+        {
+          "name": "study-agent-api",
+          "pid": 56504,
+          "status": "online",
+          "restarts": 1164,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-web",
+          "pid": 65584,
+          "status": "online",
+          "restarts": 3,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 4588,
+          "status": "online",
+          "restarts": 1,
+          "cwd": "F:\\workspace\\github\\StudyAgent"
+        }
+      ],
+      "http": {
+        "learn": 200,
+        "ready": 200
+      }
+    }
+  ],
+  "observedIntervalMs": 163300
+}

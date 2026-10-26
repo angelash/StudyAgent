@@ -2,6 +2,8 @@
 
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
 
+2026-10-26当前账本核对：72项实际为11 implemented、48 in_progress、13 planned、0 verified。125连续白板已完成精确CI与主目录守护交付，见[最终验收](../../evidence/2026-10-26/whiteboard-continuity-acceptance.json)；它补充C/D/K的既有实现，不替代各条完整范围、全教材/题族与教师/设备/长期验证。当前版本和后续M1～M7以[总进度105](../105-development-plan-status-and-next-milestones.md)首段为准，下面带日期的旧核对保留为历史。
+
 2026-10-24核对：11项implemented、46项in_progress、15项planned，尚无整条verified。26项planned→in_progress是纠正已有部分实现，不是本轮新增交付。各领域的当前基础、具体缺口、版本/运行边界和M0～M7顺序见[整体进度与里程碑105](../105-development-plan-status-and-next-milestones.md)；72项前后状态及源码/测试/历史证据映射见[核对数据](../../evidence/2026-10-24/development-plan-audit.json)。implemented和in_progress均须继续完成原条目的全部验收，不能换算为完成率。
 
 2026-10-25原件恢复已接入真实持久任务与两工作台，见[交付106](../106-original-repair-product-delivery.md)。XP-B02/B06、F03、G06、K05/K06继续in_progress，完整课程、复杂内容、设备与最终验收门槛不因本增量通过而清除。
