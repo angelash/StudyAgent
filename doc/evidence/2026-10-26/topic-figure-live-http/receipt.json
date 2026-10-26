@@ -1,0 +1,183 @@
+{
+  "status": "live-http-image-generation-and-original-edit",
+  "deployed": false,
+  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
+  "at": "2026-10-26T05:36:02.491Z",
+  "passed": true,
+  "calls": [
+    {
+      "operation": "generate",
+      "modelId": "gpt-image-2",
+      "status": "completed",
+      "durationMs": 37454
+    },
+    {
+      "operation": "edit",
+      "modelId": "gpt-image-2",
+      "status": "completed",
+      "durationMs": 44524
+    }
+  ],
+  "capabilities": {
+    "modelId": "gpt-image-2",
+    "available": true,
+    "reason": "ready",
+    "message": "可生成讲解参考图，标注仍需核对。",
+    "editAvailable": true
+  },
+  "http": [
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "get",
+      "status": 200
+    },
+    {
+      "method": "get",
+      "status": 200
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "get",
+      "status": 200
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "get",
+      "status": 200
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "patch",
+      "status": 200
+    },
+    {
+      "method": "post",
+      "status": 201
+    },
+    {
+      "method": "get",
+      "status": 200
+    }
+  ],
+  "checks": {
+    "replayDidNotRegenerate": true,
+    "frozenPublishedBytesVerified": true,
+    "measurementUnchanged": true,
+    "anonymousImageReadDenied": true,
+    "originalPngSourceEdit": true
+  },
+  "bindings": [
+    {
+      "file": "apps/api/src/modules/ai/classroom-image.service.ts",
+      "sourceSha256": "075853670fe3bb05c432f4445900aa7e6c61af97378a7d0a07f91e976de4a3e2",
+      "compiled": "apps/api/dist/apps/api/src/modules/ai/classroom-image.service.js",
+      "compiledSha256": "8d8ed77257e45b03614fa05e838956da0a9a42b33ee78f6e6af7a15b2f1f3df0"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts",
+      "sourceSha256": "acc4a203997ed9bbf96a4fd7cce06f13ee8827bd732ae201b424c77a14b38759",
+      "compiled": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.js",
+      "compiledSha256": "9bf351a5013af67d0e71f7f9d5922cb0d359200ce231a48894b8baafd85c0d95"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-visual-access.ts",
+      "sourceSha256": "e20412ce8960c85fdb4ac53888cd5ed6f922f18e420cebc59fa1deee360eec91",
+      "compiled": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-access.js",
+      "compiledSha256": "3715effdf48bba3b67ce8f1be659bddd005963f6bcb8d0eff59fd4cdd5c99a4c"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-visual-storage.ts",
+      "sourceSha256": "b3fdc356fa842580713c5470882b99c0fdacceb9fe6d128c94f75a5491c798cc",
+      "compiled": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-storage.js",
+      "compiledSha256": "fa40470113a753b49ec4465a011ec4410d3556149e1f60e1b8ba933d5b93a9f6"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-visual-retention.ts",
+      "sourceSha256": "402191f0ac8b1963d8ffd5c05e5b586c53c491cff74159fe6d8e6171cede8fbb",
+      "compiled": "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-retention.js",
+      "compiledSha256": "203bdea58f646f3349289459d743a8d68c78b869f8471ea11673592c096cac0f"
+    }
+  ],
+  "files": [
+    {
+      "operation": "generate",
+      "kind": "image",
+      "name": "generate-image-b2c2e278.png",
+      "bytes": 917450,
+      "sha256": "b2c2e2784af887947444514a44d64d07f4a992f4bec50c4235dacdb470c71859"
+    },
+    {
+      "operation": "generate",
+      "kind": "original",
+      "name": "generate-original-70ce780c.png",
+      "bytes": 1013219,
+      "sha256": "70ce780c00361d5bdf7ee54b554d59ca9e620bda62030fb10fee7d83b3ec509d"
+    },
+    {
+      "operation": "generate",
+      "kind": "prompt",
+      "name": "generate-prompt-0e5ae47e.txt",
+      "bytes": 1971,
+      "sha256": "0e5ae47e591ce34fdc047d279c8e7b8fc94aa9668fbd23992f47b3487ad9b1e2"
+    },
+    {
+      "operation": "edit",
+      "kind": "image",
+      "name": "edit-image-d07ac8e5.png",
+      "bytes": 503055,
+      "sha256": "d07ac8e51ceddde1bacf680929a9d297847114488e6cacd46a98a403f0ff28f7"
+    },
+    {
+      "operation": "edit",
+      "kind": "original",
+      "name": "edit-original-5af1f0bd.png",
+      "bytes": 570389,
+      "sha256": "5af1f0bde120af197b055312e74304a855d3fc1a7c4eb6523b34108d1f9e33f7"
+    },
+    {
+      "operation": "edit",
+      "kind": "prompt",
+      "name": "edit-prompt-64b3e818.txt",
+      "bytes": 2289,
+      "sha256": "64b3e818a587ed9c40d405a395cc65865f14e24bf69f08eb44cd87e0b67c85e2"
+    }
+  ],
+  "visualReview": {
+    "displayedWithViewImage": true,
+    "observed": "Both images retain only observation, conditions and pending-verification labels. Edit visibly thickens circle borders and lightens fills; no extra title observed.",
+    "teacherReview": "pending"
+  },
+  "limits": [
+    "Exactly two actual image requests; not a reliability estimate",
+    "Synthetic text provider and anonymous adult scope",
+    "Not full original HyperKnow pixels, fonts, audio, device or long-term instructional acceptance"
+  ]
+}
