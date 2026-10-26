@@ -1,0 +1,60 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:79324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:27276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:75284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\whiteboard-media.spec.ts:64:5 › complete sentence, complete notes, paused text reading and explicit sentence navigation (2.4s)
+  ok  2 tests\e2e\whiteboard-media.spec.ts:78:5 › real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence (4.7s)
+  x   3 tests\e2e\whiteboard-media.spec.ts:95:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end (4.8s)
+(node:56272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  4 tests\e2e\whiteboard-media.spec.ts:105:5 › voice switch fences delayed requests and an audio failure offers explicit retry or text reading (4.9s)
+  ok  5 tests\e2e\whiteboard-media.spec.ts:115:5 › reopening a paused cloud sentence restores its known audio time in the verified original board (4.7s)
+  ok  6 tests\e2e\whiteboard-media.spec.ts:126:5 › scoped local resume and complete accessible notes fit phone, tablet and desktop (4.3s)
+
+  ok  7 tests\e2e\whiteboard-media.spec.ts:141:5 › actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed (10.6s)
+  ok  8 tests\e2e\whiteboard-media.spec.ts:200:5 › cancelling a recording releases it and never downloads a partial video (2.1s)
+  ok  9 tests\e2e\whiteboard-media.spec.ts:208:5 › seeking cancels old audio and ignores its late completion at the new reading position (2.0s)
+  ok 10 tests\e2e\whiteboard-media.spec.ts:219:5 › revoked student access closes the private player before another frozen sentence can be fetched (2.0s)
+  ok 11 tests\e2e\whiteboard-media.spec.ts:228:5 › closing while export audio is pending aborts it and cannot download or reopen a late result (3.7s)
+  ok 12 tests\e2e\whiteboard-media.spec.ts:235:5 › a recorder error releases resources, keeps the reading position and offers a retry without a partial download (1.9s)
+
+
+  1) tests\e2e\whiteboard-media.spec.ts:95:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 0.15
+    Received:   2
+
+       97 |   await expect.poll(() => page.evaluate(() => (window as any).__whiteboardStarts.some((row: any) => row.index === 1))).toBe(true);
+       98 |   const starts = await page.evaluate(() => (window as any).__whiteboardStarts as Array<{ index: number; currentTime: number; duration: number }>);
+    >  99 |   expect(starts.find(row => row.index === 1)!.currentTime).toBeLessThan(.15);
+          |                                                            ^
+      100 |   expect(await page.evaluate(() => (window as any).__whiteboardBoundaryTicks)).toBeGreaterThan(0);
+      101 |   await page.getByRole('button', { name: '暂停', exact: true }).click(); await expect(f.current).toContainText('再合并份数');
+      102 |   await page.evaluate(() => (window as any).__whiteboardAudio[0].dispatchEvent(new Event('ended'))); await expect(f.current).toContainText('再合并份数');
+        at F:\workspace\github\StudyAgent-whiteboard-visuals\tests\e2e\whiteboard-media.spec.ts:99:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-ended-bou-c0b0e--next-actual-WAV-to-its-end\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-ended-bou-c0b0e--next-actual-WAV-to-its-end\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-ended-bou-c0b0e--next-actual-WAV-to-its-end\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-ended-bou-c0b0e--next-actual-WAV-to-its-end\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\whiteboard-media.spec.ts:95:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end 
+  11 passed (57.2s)

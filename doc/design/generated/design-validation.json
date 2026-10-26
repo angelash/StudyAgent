@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T05:41:33.830Z",
-  "sourceRevision": "33af51c289f947b84be001ff90e39deefc47726d",
+  "at": "2026-10-26T06:22:10.635Z",
+  "sourceRevision": "0d4e73880472f454c709590d542aad548658d76f",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -377,7 +377,7 @@
       "apps/web/app/studio/whiteboard-formula.ts": "f78240c71284be54b69630f4ffdee43471fefcddf76b3682067ec851f1313adc",
       "apps/web/app/studio/whiteboard-media.ts": "cd8806c9cdb5f83b908416b25d4dd1a072b149276f7104f3748e1b1f6314b90c",
       "apps/web/app/studio/whiteboard-player.tsx": "b79a23b2c805fd23be6b663e2ecba2153c4ebb2ce3c6156edba7bc078d1f0fe7",
-      "apps/web/app/studio/whiteboard-session.tsx": "476eeb41d5c1e108c41bc7f3e51c6d6a30af8fbaa2c6be1072e7c0dff3badcf4",
+      "apps/web/app/studio/whiteboard-session.tsx": "9ba5ae109fa6cef5c2a9c9a3ffbb7a282a36f09b17e28c8c00472a3a5ece9738",
       "apps/web/app/studio/whiteboard-table.ts": "951107f99a087e6a20c366e2b0ffc2962a562c6c7f28cd386f4fff832748b1a0",
       "apps/web/app/studio/whiteboard-webm.ts": "b03d3ed1860d2e9b5235fe10a4cf6e796301cd661ef20c75f4f026db9124a2e6",
       "apps/web/app/studio/whiteboards/command-digest.ts": "112bf2f4fb03c5f1705ad4eb2c57ef64fda1524e2b8e595034f09da4efa0d033",
@@ -405,7 +405,7 @@
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
       "doc/product/120-source-course-independent-unit-checks.md": "cf5663bc83f27f7b5d8dc6110075d9dc2e1bb9fd06fa75364b556540108ffd79",
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
-      "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "d635f8feb1a701b48007878eb367de83041cacfb2e477ad8ed0eb04078c75d41",
+      "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "d1c2e432d06a6aae536027774294519bcd6ee7af31ac25850c6db4fad13f8a5b",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -511,7 +511,7 @@
       "tests/e2e/source-course.spec.ts": "1072e718f1433736a658b3f07776e0f82055aece2af82bed9dc94d15d0679fba",
       "tests/e2e/studio.spec.ts": "3a772149396a690841c8613e43550d84b60a9bdae97b6bdb10377d00312828b5",
       "tests/e2e/topic-whiteboard.spec.ts": "d0cfd48f052a9c19c64a937ad433ce18b0352e2441db228b5a79f5e25bc8d5f8",
-      "tests/e2e/whiteboard-media.spec.ts": "596e62009a0b9169addb478b351848ca4ab691bb759889d682ef20744960e56a",
+      "tests/e2e/whiteboard-media.spec.ts": "fadd0936ac9ffd623d84bd55c93a471fc3cdc3c56057132ecb5bbe1e33c1e23e",
       "tests/e2e/workspace.spec.ts": "fb5a11d217dda079e5361fa475cbef09494e787bbde7a1bf0c3f12bc7483b632"
     }
   },
@@ -521,12 +521,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3023,
+    "checked": 3026,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-26T05:41:17.790Z",
+    "authoredAuditAt": "2026-10-26T06:22:03.782Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -592,8 +592,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/topic-formula-ui/receipt.json",
-    "revision": "33af51c289f947b84be001ff90e39deefc47726d",
+    "receipt": "../evidence/2026-10-26/whiteboard-ended-boundary-after/receipt.json",
+    "revision": "0d4e73880472f454c709590d542aad548658d76f",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

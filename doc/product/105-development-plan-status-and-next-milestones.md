@@ -2,7 +2,7 @@
 
 核对日期：2026-10-24。核对代码：`a3ba56c`，文档基线：`2960d16`；工作树为 `feat/resumable-long-pdf`。本文更新[总计划92](92-experience-and-content-master-plan.md)的执行状态，不替换[原始需求](01-requirements.md)，不缩减完整产品目标。
 
-2026-10-26最新运行：123 AI主题白板已在main交付，main/远端1fd401e，实际构建453866d、buildId 7DPYUYWiUo1CUbaCcrd0R、schema16；100实际检查/11编译文件SHA/6音频SHA及119361毫秒守护观察见123运行原件。本轮另复核白板入口和/api/ready均200，两个123归档CI40262946670/40262946020均completed/success。124配图/edit、完整稿选图、独立冻结图片、共享孩子PNG保留/擦除与两库冷恢复、缩略图/对照/放大和实际带图WebM已在独立分支接入：完整API1315通过/53环境跳过，配图PG17、原主题PG14/2、浏览器32零失败/跳过/重试，见[124检查点](124-topic-whiteboard-figures-and-visual-manuscripts.md)和[原始收据](../evidence/2026-10-26/topic-figure-ui/receipt.json)。它尚未合入运行主目录，复杂公式视频、整站/精确CI/新鲜schema16回退及schema17守护交付仍待；原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持。第1～4节保留2026-10-24核对基线。
+2026-10-26最新运行：123 AI主题白板仍在main运行，main/远端1fd401e，构建453866d、buildId 7DPYUYWiUo1CUbaCcrd0R、schema16；入口与/api/ready本轮200，五配置/真实环境保持原字节。124图片/edit、冻结快照、共享孩子PNG保留和删除账本、真实图片/复杂公式视频已接入独立分支，公式33af51c完整API1319通过/53环境跳过、34专项零失败/跳过/重试，另2次真实gpt-image-2 HTTP生成和原PNG修图成功。ca46963精确CI40275791053三组success、远端252零重试，但本地完整252出现251通过/1逐句边界失败；受控真实WAV稳定复现下一音轨从末尾2秒开始，不能用远端成功覆盖本地问题。修复0d4e738同步栅栏后35专项/35次原始尝试全部通过，253整站和新精确CI继续；尚未主目录升级。874旧编译文件/五配置/真实环境回退副本已核验，停服一致数据库/引用文件备份、schema17真实生产构建与守护观察待。见[124当前规格](124-topic-whiteboard-figures-and-visual-manuscripts.md)及[逐句边界修复](../evidence/2026-10-26/whiteboard-ended-boundary-after/receipt.json)。原72项仍11 implemented/48 in_progress/13 planned/0 verified，M1～M7及教师/设备/全内容/原声CSS字体DPR/长期门禁保持。第1～4节保留2026-10-24核对基线。
 
 ## 1. 整体判断与本轮核对结果
 

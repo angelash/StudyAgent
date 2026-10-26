@@ -1,0 +1,46 @@
+{
+  "status": "green-controlled-ended-boundary-regression",
+  "sourceRevision": "0d4e73880472f454c709590d542aad548658d76f",
+  "at": "2026-10-26T06:21:19.541Z",
+  "deployed": false,
+  "passed": 35,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "originalAttempts": 35,
+  "retriedAttempts": 0,
+  "checkedBoundary": "After the previous real WAV ended callback advances, force its queued progress frame before React cleanup. The next real WAV playing starts below0.15seconds instead of2seconds; second sentence remains and stale ended cannot move it.",
+  "source": {
+    "file": "apps/web/app/studio/whiteboard-session.tsx",
+    "sha256": "9ba5ae109fa6cef5c2a9c9a3ffbb7a282a36f09b17e28c8c00472a3a5ece9738",
+    "matchesBuildInput": true
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 41429,
+      "sha256": "4736d797915115d67bfb1f24ccadfed3cb2cce13fe2cf6c055e2f73ab64796e3"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 6179,
+      "sha256": "3afc0853e73ccf7885b7195d27bc929c5cc44abd7c77344ee0899e5b3c3a7ae2"
+    },
+    {
+      "name": "types-original.log",
+      "bytes": 256,
+      "sha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee"
+    },
+    {
+      "name": "build-original.log",
+      "bytes": 1410,
+      "sha256": "59eb21bb266652f4d75912236a933ad5651ef09374da268caec598070db2edf0"
+    }
+  ],
+  "priorRed": "../whiteboard-ended-boundary-before/receipt.json",
+  "limits": [
+    "253 full browser journeys and a new exact CI required before release",
+    "1319/53 API baseline is unchanged by this two-file frontend and browser-test fix",
+    "Not real teacher, device, original CSS/fonts/DPR/audio or long-term instructional acceptance"
+  ]
+}

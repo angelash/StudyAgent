@@ -1,0 +1,61 @@
+{
+  "status": "superseded-by-required-local-playback-fix",
+  "run": 40275791053,
+  "head": "ca46963c6115663fa3686bb0a09e87ac8350781f",
+  "conclusion": "success",
+  "jobs": {
+    "application": "success",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "passed": 252,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "originalAttempts": 252,
+    "retriedAttempts": 0
+  },
+  "linuxApi": {
+    "passed": 1311,
+    "failed": 0,
+    "environmentSkipped": 61
+  },
+  "nativeChecks": {
+    "sourceCheck": 26,
+    "topicWhiteboardPassed": 14,
+    "topicWhiteboardSqliteSkipped": 2,
+    "topicFigure": 17
+  },
+  "files": [
+    {
+      "name": "browser-original.json.gz",
+      "bytes": 21654,
+      "sha256": "7b6df1731aed059b2c5e44c40018fae5a715228a05b1d0b7e9d9fa41cc376a42",
+      "originalBytes": 284925,
+      "originalSha256": "37b681ad8cd1973fe46b7bb6df70434e297cc11703c650b67109cc6eefc4d3fc"
+    },
+    {
+      "name": "application-original.log.gz",
+      "bytes": 45561,
+      "sha256": "f8b9cf16a3fc96fb26eeda149bc9f4aeb1f1b09f04bdf57df67ebb957905778c",
+      "originalBytes": 214730,
+      "originalSha256": "fd9c4fab633e65d906fabd31dce4e76ec9a65f90eb2397339dc1ff3662a76dc0"
+    },
+    {
+      "name": "browser-original.log.gz",
+      "bytes": 34211,
+      "sha256": "aba43859c0a931faa28bc0f616bb714de7b7ce72ea6e80ec2f734c531b187736",
+      "originalBytes": 157399,
+      "originalSha256": "d08a6a4c98718781ce0e9bd52bfccc4e8b58cc98714c2972a3440c7e1d200ca1"
+    },
+    {
+      "name": "postgres-original.log.gz",
+      "bytes": 42784,
+      "sha256": "97a57b2be9dbc4770a8134a9b4a5fc50051d523e69c3fa8c984536fcf6988133",
+      "originalBytes": 237617,
+      "originalSha256": "4de69c2982e43d190900194d194b5b1886bb67fce2e0e956ddd889abf98df178"
+    }
+  ],
+  "limit": "The same application failed a local full playback boundary. All-green remote CI does not override the reproducible local failure. This is not the final release candidate."
+}

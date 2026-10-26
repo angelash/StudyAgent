@@ -1,0 +1,46 @@
+{
+  "status": "confirmed-red-regression-before-fix",
+  "applicationRevision": "33af51c289f947b84be001ff90e39deefc47726d",
+  "at": "2026-10-26T06:12:27.632Z",
+  "passed": 11,
+  "failed": 1,
+  "retries": 0,
+  "observation": {
+    "actualNextAudioStartedAt": 2,
+    "duration": 2,
+    "requiredStartBefore": 0.15,
+    "forcedQueuedPriorFrameAfterNativeEnded": true
+  },
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 20839,
+      "sha256": "32e053eaf65d40b10cc347698a825496cc44d32cba687d2702312fd6f37ede18"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 5627,
+      "sha256": "b3e5bf17f0fa03ce6bd6fb3cffffc5ebfb0e022066ff82277a3483d0755d0e10"
+    },
+    {
+      "name": "test-source-original.ts",
+      "bytes": 22246,
+      "sha256": "fadd0936ac9ffd623d84bd55c93a471fc3cdc3c56057132ecb5bbe1e33c1e23e"
+    },
+    {
+      "name": "error-context.md",
+      "bytes": 31597,
+      "sha256": "784ba8df300a258fc145d39acdb5dba5b92c5ebb0dfef5efd1ee20ada6bdf0a0"
+    },
+    {
+      "name": "trace.zip",
+      "bytes": 4371416,
+      "sha256": "4fbc3d47413ea641b022399f2de261c5f6c3ab6b886e36188e4ac37e055ad223"
+    },
+    {
+      "name": "test-failed-1.png",
+      "bytes": 131168,
+      "sha256": "c224758297ec0ea614877836c6c6ac3faf52aeb9ac5f1b0cf2710acbc8f4cbd3"
+    }
+  ]
+}
