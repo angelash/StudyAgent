@@ -1,0 +1,190 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "stale-topic",
+      "tests/e2e/topic-whiteboard.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-ai-whiteboards/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3147",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/topic-whiteboard-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "topic-whiteboard.spec.ts",
+      "file": "topic-whiteboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19322,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.tw-conflict')\nExpected substring: \u001b[32m\"服务器稿已变化\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.tw-conflict') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.tw-conflict')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.tw-conflict')\nExpected substring: \u001b[32m\"服务器稿已变化\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.tw-conflict') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.tw-conflict')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:117:48",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                      "column": 48,
+                      "line": 117
+                    },
+                    "snippet": "  115 |     await expect(second.locator('.tw-editor')).toContainText('完整改稿已保存');\n  116 |     await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();\n> 117 |     await expect(page.locator('.tw-conflict')).toContainText('服务器稿已变化');\n      |                                                ^\n  118 |     await expect(page.getByLabel('讲解概要')).toHaveValue('本机持有的冲突原稿。');\n  119 |     await page.getByText('阅读当前服务器完整稿', { exact: true }).click(); await expect(page.locator('.tw-conflict')).toContainText('其他页已经保存的完整稿。');\n  120 |     await page.getByRole('button', { name: '以服务器为基线继续我的改稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                        "column": 48,
+                        "line": 117
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.tw-conflict')\nExpected substring: \u001b[32m\"服务器稿已变化\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.tw-conflict') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.tw-conflict')\u001b[22m\n\n\n  115 |     await expect(second.locator('.tw-editor')).toContainText('完整改稿已保存');\n  116 |     await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();\n> 117 |     await expect(page.locator('.tw-conflict')).toContainText('服务器稿已变化');\n      |                                                ^\n  118 |     await expect(page.getByLabel('讲解概要')).toHaveValue('本机持有的冲突原稿。');\n  119 |     await page.getByText('阅读当前服务器完整稿', { exact: true }).click(); await expect(page.locator('.tw-conflict')).toContainText('其他页已经保存的完整稿。');\n  120 |     await page.getByRole('button', { name: '以服务器为基线继续我的改稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:117:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:46:45.458Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-stale-top-6a495-before-any-replacement-save\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-stale-top-6a495-before-any-replacement-save\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-stale-top-6a495-before-any-replacement-save\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                    "column": 48,
+                    "line": 117
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-6112ba6cc45b4fcf6508",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 109,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T00:46:40.011Z",
+    "duration": 26794.312,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

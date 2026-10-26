@@ -1,0 +1,190 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "topic-slot",
+      "tests/e2e/topic-whiteboard.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-ai-whiteboards/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3147",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/topic-whiteboard-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "topic-whiteboard.spec.ts",
+      "file": "topic-whiteboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19568,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('讲解概要')\nExpected: \u001b[32m\"第\u001b[7m一\u001b[27m标签页\u001b[7m尚未保存的\u001b[27m完整稿。\"\u001b[39m\nReceived: \u001b[31m\"第\u001b[7m二\u001b[27m标签页\u001b[7m的另一份\u001b[27m完整稿。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('讲解概要') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('讲解概要')\u001b[22m\n\u001b[2m    33 × locator resolved to <textarea maxlength=\"600\">第二标签页的另一份完整稿。</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"第二标签页的另一份完整稿。\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('讲解概要')\nExpected: \u001b[32m\"第\u001b[7m一\u001b[27m标签页\u001b[7m尚未保存的\u001b[27m完整稿。\"\u001b[39m\nReceived: \u001b[31m\"第\u001b[7m二\u001b[27m标签页\u001b[7m的另一份\u001b[27m完整稿。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('讲解概要') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('讲解概要')\u001b[22m\n\u001b[2m    33 × locator resolved to <textarea maxlength=\"600\">第二标签页的另一份完整稿。</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"第二标签页的另一份完整稿。\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:133:83",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                      "column": 83,
+                      "line": 133
+                    },
+                    "snippet": "  131 |     await expect.poll(copies).toContain('第一标签页尚未保存的完整稿。');\n  132 |     await second.getByLabel('讲解概要').fill('第二标签页的另一份完整稿。'); await expect.poll(copies).toContain('第二标签页的另一份完整稿。');\n> 133 |     await page.reload(); await ready(page); await expect(page.getByLabel('讲解概要')).toHaveValue('第一标签页尚未保存的完整稿。');\n      |                                                                                   ^\n  134 |     await second.reload(); await ready(second); await expect(second.getByLabel('讲解概要')).toHaveValue('第二标签页的另一份完整稿。');\n  135 |   } finally { await second.close(); }\n  136 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                        "column": 83,
+                        "line": 133
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('讲解概要')\nExpected: \u001b[32m\"第\u001b[7m一\u001b[27m标签页\u001b[7m尚未保存的\u001b[27m完整稿。\"\u001b[39m\nReceived: \u001b[31m\"第\u001b[7m二\u001b[27m标签页\u001b[7m的另一份\u001b[27m完整稿。\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('讲解概要') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('讲解概要')\u001b[22m\n\u001b[2m    33 × locator resolved to <textarea maxlength=\"600\">第二标签页的另一份完整稿。</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"第二标签页的另一份完整稿。\"\u001b[22m\n\n\n  131 |     await expect.poll(copies).toContain('第一标签页尚未保存的完整稿。');\n  132 |     await second.getByLabel('讲解概要').fill('第二标签页的另一份完整稿。'); await expect.poll(copies).toContain('第二标签页的另一份完整稿。');\n> 133 |     await page.reload(); await ready(page); await expect(page.getByLabel('讲解概要')).toHaveValue('第一标签页尚未保存的完整稿。');\n      |                                                                                   ^\n  134 |     await second.reload(); await ready(second); await expect(second.getByLabel('讲解概要')).toHaveValue('第二标签页的另一份完整稿。');\n  135 |   } finally { await second.close(); }\n  136 | });\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:133:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:49:06.429Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-topic-slo-d08da-ts-after-either-tab-reloads\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-topic-slo-d08da-ts-after-either-tab-reloads\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-topic-slo-d08da-ts-after-either-tab-reloads\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                    "column": 83,
+                    "line": 133
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-b817f4c2c190b308c732",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 125,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T00:49:01.027Z",
+    "duration": 27042.515,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
