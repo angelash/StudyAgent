@@ -1,0 +1,3 @@
+# Provider prompt and image evidence retain their original byte digests.
+*.txt -text whitespace=cr-at-eol
+*.png -text
