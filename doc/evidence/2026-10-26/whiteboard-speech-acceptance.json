@@ -1,6 +1,6 @@
 {
   "passed": false,
-  "status": "current-full-api-passed-full-browser-pending",
+  "status": "local-full-regression-passed-exact-ci-pending",
   "sourceRevision": "68202df",
   "deployed": false,
   "schemaVersion": 15,
@@ -40,7 +40,7 @@
     "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
   },
   "limits": [
-    "Current final complete API passed1258 with47 environment skips. Complete229 browser, exact candidate CI and actual production delivery remain pending.",
+    "Final local full API1258/47 environment skips and229 zero-retry browsers passed. Exact candidate CI and actual production delivery remain pending.",
     "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
     "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
     "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
@@ -73,5 +73,15 @@
     "originalSha256": "01c12c64e24e8fe16c05abf6a5615855e5d6f836de55385a5fc286dc0d30eca4",
     "sourceRevision": "68202df",
     "durationSeconds": 491.65
+  },
+  "fullBrowser": {
+    "passed": 229,
+    "failed": 0,
+    "skipped": 0,
+    "retry": 0,
+    "report": "whiteboard-full-browser-final/browser.json",
+    "originalSha256": "75b7396af6e472fd6948269ba95e449e6c6d5eb96ad254a278cfd83863b52291",
+    "durationSeconds": 1100.687662,
+    "applicationRevision": "68202df"
   }
 }
