@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-26T21:44:10.958Z",
+  "status": "original-teaching-frame-scope-delivered",
+  "passed": true,
+  "overallProductComplete": false,
+  "applicationRevision": "a1adbd97f912dd0106d3a1787123382ba5a34e42",
+  "apiRevision": "098820883a2dc5c02296efe5190d816949565013",
+  "ciHead": "a8d357866f82f720df3cae24c115be7b90333f20",
+  "ciRun": 40402400667,
+  "webBuildId": "hB-kjsY_yDoLds_3N-vY5",
+  "schemaVersion": 18,
+  "entrypoints": [
+    "http://127.0.0.1:3217/studio",
+    "http://127.0.0.1:3217/studio/whiteboards"
+  ],
+  "behavior": [
+    "Real captured local fonts and scoped original teaching CSS, white dotted canvas and original40px chrome.",
+    "Cumulative already-taught knowledge blocks, whole table rows and a single complete current caption.",
+    "Actual visible-size live canvas and independent1280x720 video reuse the measured teaching layout.",
+    "Font preparation/retry and export fencing; captured math families remain isolated from app-owned input fonts."
+  ],
+  "validation": {
+    "localBrowser": {
+      "passed": 322,
+      "originalAttempts": 322,
+      "retries": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "localApi": {
+      "rerun": false,
+      "baselineReceipt": "../paper-review-acceptance.json",
+      "baselineCiRun": 40382195553,
+      "sourceIdenticalTo": "a23e6cc27133d5a1aca8c41b1f1fd389b0d0c4a1",
+      "passed": 1354,
+      "environmentSkipped": 54,
+      "failed": 0,
+      "compiledFiles": 335,
+      "note": "Inherited delivered128 local API and PG evidence; no new local API/PG run claimed. Compiled JavaScript is byte identical except listed CRLF-only changes."
+    },
+    "localPostgres": {
+      "rerun": false,
+      "passed": 23,
+      "failed": 0,
+      "baselineReceipt": "../paper-review-acceptance.json"
+    },
+    "linuxApi": {
+      "rerun": true,
+      "passed": 1346,
+      "failed": 0,
+      "environmentSkipped": 62
+    },
+    "remoteBrowser": {
+      "stats": {
+        "startTime": "2026-10-26T21:14:51.646Z",
+        "duration": 1281442.325,
+        "expected": 322,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "originalAttempts": 322,
+      "retries": 0
+    },
+    "httpChecks": 1160,
+    "compiledShaFiles": 335,
+    "formatOnlyCompiledDifferences": [
+      {
+        "file": "apps/api/dist/apps/api/src/infrastructure/rate-limit-repository.js",
+        "sha256": "b3db1193083c0bf2514e629820c964baefe1ef3dd7c7e91965dd62438a83a7f2",
+        "expectedSha256": "934428b676b84a89387868c0c099d3334ccddd1bab128949b2c21b3d46f223ca",
+        "formatOnly": true
+      }
+    ],
+    "originalStaticShaFiles": 958,
+    "voiceShaFiles": 6,
+    "observedIntervalMs": 185765
+  },
+  "protectedLocalConfigurationsPreserved": 5,
+  "privateEnvironmentPreserved": true,
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-27-teaching-frame-1793047613634",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-26T20:47:06.763Z",
+      "passed": true,
+      "files": 942,
+      "bytes": 17673849,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified128 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "evidence": [
+    "doc/evidence/2026-10-27/teaching-frame-final-full-local/receipt.json",
+    "doc/evidence/2026-10-27/teaching-font-isolation-green/receipt.json",
+    "doc/evidence/2026-10-27/teaching-frame-exact-ci/receipt.json",
+    "doc/evidence/2026-10-27/teaching-frame-runtime.json"
+  ],
+  "remaining": [
+    "130 six-speed original settings, tour, adjustable panels and toolbar remain isolated and are not in this release.",
+    "Original manual geometry, real frozen whiteboard questions and all course/practice/project shells.",
+    "All reference states/DPR/original voice, full materials/camera/OCR/exports, teacher/real-device/long-term learning and complete M1-M7."
+  ]
+}
