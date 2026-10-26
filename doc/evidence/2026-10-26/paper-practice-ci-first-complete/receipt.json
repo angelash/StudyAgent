@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-26T16:43:49.562Z",
+  "status": "first-run-terminal-originals-preserved",
+  "run": 40357600754,
+  "head": "b28331890888b0e8b6a87d6ead84fdea426451b6",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40357600754",
+  "conclusion": "failure",
+  "deployed": false,
+  "jobs": [
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "failure",
+      "databaseId": 121694130166
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "failure",
+      "databaseId": 121694130331
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "failure",
+      "databaseId": 121694130353
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T16:19:03.750Z",
+      "duration": 1450560.018,
+      "expected": 297,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": 298,
+    "originalAttempts": 298,
+    "retriedAttempts": 1,
+    "errors": 0,
+    "sha256": "6dd0df5dd6115b94c3d29dcf1c6bb10b0888dd27444542bad2c3f0023ad670f4"
+  },
+  "summaries": {
+    "browser": [
+      "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-26T16:43:14.3150315Z     Error: expect(received).toHaveLength(expected)",
+      "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-26T16:43:14.3169425Z     Error: expect(received).toHaveLength(expected)",
+      "browser\tBrowser product journey at phone, tablet and desktop widths\t2026-10-26T16:43:14.3184830Z   297 passed (24.2m)"
+    ],
+    "postgres": [
+      "postgres\tOriginal paper practice, exact command recovery and student permissions on PostgreSQL\t2026-10-26T16:23:17.2489316Z ^[[31m^[[1mAssertionError^[[22m: expected 'warning: The `fitz` API is deprecated…' to be '1 Original synthetic paper' // Object.is equality^[[39m",
+      "postgres\tOriginal paper practice, exact command recovery and student permissions on PostgreSQL\tSerialized Error: { length: 110, severity: 'FATAL', code: '28P01', detail: undefined, hint: undefined, position: undefined, internalPosition: undefined, internalQuery: undefined, where: undefined, schema: undefined, table: undefined, dataType: undefined, constraint: undefined, file: 'auth.c', routine: 'auth_failed' }",
+      "postgres\tOriginal paper practice, exact command recovery and student permissions on PostgreSQL\t2026-10-26T16:23:17.2594155Z ##[error]AssertionError: expected 'warning: The `fitz` API is deprecated…' to be '1 Original synthetic paper' // Object.is equality"
+    ],
+    "application": [
+      "application\tRun npm test\t2026-10-26T16:26:15.2943389Z ^[[31m^[[1mAssertionError^[[22m: expected 'warning: The `fitz` API is deprecated…' to be '1 Original synthetic paper' // Object.is equality^[[39m",
+      "application\tRun npm test\t2026-10-26T16:26:15.3127673Z ##[error]AssertionError: expected 'warning: The `fitz` API is deprecated…' to be '1 Original synthetic paper' // Object.is equality"
+    ]
+  },
+  "files": [
+    {
+      "file": "run-original.json",
+      "originalBytes": 20226,
+      "originalSha256": "d0bb2a5a863f50adb79180464cd968f13a3c37e0eeb6cb693802c4ec08242680",
+      "sha256": "d0bb2a5a863f50adb79180464cd968f13a3c37e0eeb6cb693802c4ec08242680"
+    },
+    {
+      "file": "browser-original.json.gz",
+      "originalBytes": 352808,
+      "originalSha256": "6dd0df5dd6115b94c3d29dcf1c6bb10b0888dd27444542bad2c3f0023ad670f4",
+      "sha256": "bb17b462e4c1634b8a48649441393f78d03a7cbcc2f3a908bd4a4c0830e88706"
+    },
+    {
+      "file": "browser-original.log.gz",
+      "originalBytes": 260057,
+      "originalSha256": "b923b8b755ea61b4b6824bdd6ccd60f77ac59901cf3ac6edd80bb809ed2209b8",
+      "sha256": "2bffb9d55f01dcaab716c702d69ca7c0b91279fad19899a1a39adad266dd9f02"
+    },
+    {
+      "file": "postgres-original.log.gz",
+      "originalBytes": 383176,
+      "originalSha256": "e484e91a68bf48efd9cd38f0ddb5bc52d6f24d6691bf6578d47b861fcd457a4d",
+      "sha256": "b020151881aff4d9ef913e4b84545a06692a6cbb4ea7459f992c9e99ed7d9f6a"
+    },
+    {
+      "file": "application-original.log.gz",
+      "originalBytes": 249748,
+      "originalSha256": "eadd1bd20b7381c8ecec4287c1936080b5219d8ea5bf434d83975f422380fa62",
+      "sha256": "e5b647182c8dde47e7d177b4612883cbb6677789d8a82907e25526606f98637a"
+    },
+    {
+      "file": "first-trace.zip",
+      "originalBytes": 909369,
+      "originalSha256": "8f4e9e42153ea3bbbd8efde4e6aff4db108c256bf50c508e0190322c74e31169",
+      "sha256": "8f4e9e42153ea3bbbd8efde4e6aff4db108c256bf50c508e0190322c74e31169"
+    },
+    {
+      "file": "first-test-failed-1.png",
+      "originalBytes": 87310,
+      "originalSha256": "6902ab708b4ec6779dd19382d6044e7cc34203e9535d20a855447dd1730467e1",
+      "sha256": "6902ab708b4ec6779dd19382d6044e7cc34203e9535d20a855447dd1730467e1"
+    },
+    {
+      "file": "first-error-context.md.gz",
+      "originalBytes": 26444,
+      "originalSha256": "2b6a3f95574836021f4f26d6614f8ab3e125472b5d6d93bd1dc52c5779b20bfb",
+      "sha256": "890801e342b890bbba3cecc834792387b1046c307810d4e714aad64b395f76ec"
+    },
+    {
+      "file": "retry-trace.zip",
+      "originalBytes": 898029,
+      "originalSha256": "0c027da447debf54104f4797520d3e8a6e8f353004b8b5936792bdc74c620f8b",
+      "sha256": "0c027da447debf54104f4797520d3e8a6e8f353004b8b5936792bdc74c620f8b"
+    },
+    {
+      "file": "retry-test-failed-1.png",
+      "originalBytes": 86537,
+      "originalSha256": "2a248a4b382bbe6ff26f11717af5fcf2148a06b11930cdc3cb982bb394b1f833",
+      "sha256": "2a248a4b382bbe6ff26f11717af5fcf2148a06b11930cdc3cb982bb394b1f833"
+    },
+    {
+      "file": "retry-error-context.md.gz",
+      "originalBytes": 26444,
+      "originalSha256": "46fe8cccffecf04b0f579080ad59b16129c92155728c50461cb36ab066056c51",
+      "sha256": "9ef9e8345f6d7c540d25c26d838c21b5270017fd83a62be0c456daad704c98c2"
+    }
+  ],
+  "correctedRevision": "988ca2cadd889eac2d99a12f12eda6c916cec461",
+  "findings": [
+    "PG CI fixture password differed from the already-provisioned role.",
+    "Canonical pymupdf avoids a deprecated fitz stdout warning; exact page and source-text assertions remain required."
+  ],
+  "boundary": "First three-job failure, both browser attempts and original traces/screenshots retained. Test/CI-only corrections require their own local focused21/native17 and an exact new full successful three-job CI before deployment. Prior local1339/298 remain unchanged-runtime baselines, not full reruns of the corrected tests.",
+  "browserFinding": "The test awaited text in the whole correction region, which already contained that same draft in its textarea, then read the API before the correction save acknowledgement. The corrected case deliberately holds the command, verifies no saved history exists, then awaits an actual saved article before the strict API assertions. No runtime code changed."
+}
