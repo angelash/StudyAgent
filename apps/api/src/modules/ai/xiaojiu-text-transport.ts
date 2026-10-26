@@ -108,9 +108,12 @@ function verifyEvent(value: unknown) {
 export function verifyTextResponse(bytes: Buffer) {
   const text = bytes.toString('utf8'); let events = 0, completed = false;
   for (const block of text.split(/\r?\n\r?\n/)) {
-    const data = block.split(/\r?\n/).filter(line => line.startsWith('data:')).map(line => line.slice(5).trimStart()).join('\n');
+    const lines = block.split(/\r?\n/), names = lines.filter(line => line.startsWith('event:')).map(line => line.slice(6).trim());
+    const data = lines.filter(line => line.startsWith('data:')).map(line => line.slice(5).trimStart()).join('\n');
     if (!data || data === '[DONE]') continue;
-    const value = JSON.parse(data); verifyEvent(value); events++;
+    const value = JSON.parse(data); verifyEvent(value);
+    if (names.length > 1 || names.length === 1 && names[0] !== value.type) throw Error('text_transport_event_identity_mismatch');
+    events++;
     if (value.type === 'response.completed') completed = true;
   }
   if (!events || !completed) throw Error('text_transport_incomplete_response');

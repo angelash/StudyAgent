@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-26T23:08:52.986Z",
+  "passed": true,
+  "deployed": false,
+  "overallProductComplete": false,
+  "browser": {
+    "cases": 10,
+    "originalAttempts": 10,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-26T23:06:18.249Z",
+      "duration": 61483.433999999994,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "overlapsPreviousTen": true
+  },
+  "textTransport": {
+    "scopedUnitPassed": 19,
+    "eventNameMustMatchDataType": true,
+    "scope": "Reject mismatched SSE event names before forwarding; current19 unit checks cover this addition. Earlier installed21-model and realDS evidence predates this final event-name check; no claim of repeating those live probes."
+  },
+  "uiSha256": {
+    "apps/web/app/studio/whiteboard-questions.tsx": "daa50143409e16a3601b004044ba7b5d15173f79970632b994e332f8db17e14f",
+    "apps/web/app/studio/whiteboard-questions.css": "78672ee0f7c347b5f23afa94deda619238f50c4e84644d9a66cc1a66beb8e851",
+    "apps/web/app/studio/whiteboard-session.tsx": "9f6222c8da4dedfb466eb3dcdba128b53178b886c482c1b67d40616546049dc0"
+  },
+  "notes": [
+    "Recovery actions are collapsed during normal conversation; storage failure opens actual recovery controls. Native file-input chrome is visually replaced by an accessible import label.",
+    "Current341 compiled API served the same offline conversation logic; final SSE header check tested separately in source units and has not yet been rebuilt/released.",
+    "No full green API rerun, complete existing browser journey, fresh PG/restore, answer audio/supplementary board/notes export or production131 claim."
+  ],
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "sha256": "5c2a4529062ca4cce526729bedca56490b2b3f7396cbb63195520ee6f1ea3bc9",
+      "originalSha256": "62e59f09b69a9f858afa778de8fd3b1ffe9a0a444c7e2d7ea18bbe72e673561c"
+    },
+    {
+      "source": "data/qa/whiteboard-question-browser-recovery.log",
+      "file": "01-whiteboard-question-browser-recovery.log.gz",
+      "sha256": "45a9ccbfa2de1532cf813c798fe89ae33d19f27e56aac366cbc8f51678300497",
+      "originalSha256": "c02ff011a0a9243ea5514f9ca7f32ab848033e643cb1134a95ce97040848a37c"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ui-recovery-build.log",
+      "file": "02-whiteboard-question-ui-recovery-build.log.gz",
+      "sha256": "68d2c8e17840a313460618a2b95b38bcef7dbb2cd7f081635679e9d466916f7b",
+      "originalSha256": "18cd565207ebcbbf6b49e1889168cd8d233395a493e76d3139f26fa25ca081b1"
+    },
+    {
+      "source": "data/qa/whiteboard-question-transport-event-green.json",
+      "file": "03-whiteboard-question-transport-event-green.json.gz",
+      "sha256": "e78855c3c5b7670f5b9de7a041984ae2db5c1491906fe8cb051c604b0e4849fc",
+      "originalSha256": "6186f3212ce8ba77e6e7d2908547b56b3a3d3369532635bff9f943d00ae284fa"
+    },
+    {
+      "source": "data/qa/whiteboard-question-transport-event-green.log",
+      "file": "04-whiteboard-question-transport-event-green.log.gz",
+      "sha256": "813a71e7160ade203f008e43d0463055261cf65b371d15c67c838f0ee6b185b3",
+      "originalSha256": "e74fa13f1b0bd15a44679f2767632bb21944428303d20589a9f31795e57f2b70"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "05-whiteboard-questions.tsx.gz",
+      "sha256": "18eb64c4b82d759332a03cf77784cbfcc5d30d07bfe12eb5f1ccfe5bcfb6e294",
+      "originalSha256": "daa50143409e16a3601b004044ba7b5d15173f79970632b994e332f8db17e14f"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.css",
+      "file": "06-whiteboard-questions.css.gz",
+      "sha256": "15a50225199be979e16260d2ed7c3d904ec6a3099b4bd8513e02f8f40eb9ac31",
+      "originalSha256": "78672ee0f7c347b5f23afa94deda619238f50c4e84644d9a66cc1a66beb8e851"
+    },
+    {
+      "source": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "file": "07-xiaojiu-text-transport.ts.gz",
+      "sha256": "0563a30dab4cc5169f61f107727a4947ba752e5cc2f063cfe43a2bed1d5afce5",
+      "originalSha256": "71dbb9671504a6c1a177d656f93a2532238b8ca0ab1cd25313b69d76805eb586"
+    },
+    {
+      "source": "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
+      "file": "08-xiaojiu-text-transport.test.ts.gz",
+      "sha256": "fdcdecce5ec5c663e9937fe7f417b1f8a0d5032aa9f42cd893078f511d7eb614",
+      "originalSha256": "29fbb101293f2543db168c07b3be03eb8c395408bf9470147a488be6c4df3a8d"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "09-whiteboard-questions.spec.ts.gz",
+      "sha256": "6357939253e1e2fcf6ab055f033780d2410bbbed9d9a9a388ea3b7a0d64d91c9",
+      "originalSha256": "2a3647ea40d1c955a5386c91c86432cea12b58159b6a4d824bbe56a1335a574a"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-390.png",
+      "file": "10-question-panel-390.png.gz",
+      "sha256": "c58864968071ab0976de69410f4327fdeab796c5a4b70648698c51160558c449",
+      "originalSha256": "7b20ebde9c7718edfff34be0a3d1853aaed1f6d18ef5ff5d2d88cbc361b1b48a"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-768.png",
+      "file": "11-question-panel-768.png.gz",
+      "sha256": "2d198f7c183aee9c1512e4146a8526408c1444aaa761aa6d1c33b83080e7105b",
+      "originalSha256": "0b7552e08cc4242724e28ae7d431a89738c47d3bc82c7ad467b4a29f1d318654"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-1280.png",
+      "file": "12-question-panel-1280.png.gz",
+      "sha256": "c8a2896c3815ad4a443262f513b748f72a94273064e64ef7b5ebf27deb44ad9d",
+      "originalSha256": "839c6707b0c28bf4d51b3144615a5bb6ce84b99b0be1009276fc6a4c52ccb7f4"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/original-sentence-command.json",
+      "file": "13-original-sentence-command.json.gz",
+      "sha256": "7ffe00572889aed5753e1d129e50c1751b7095c4937e053ce1d0a74ab223ea42",
+      "originalSha256": "021e0e01c53a885e40e655b8bedfd73731126d91865054e3a070091b29e6dec5"
+    }
+  ]
+}

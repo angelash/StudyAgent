@@ -53,6 +53,7 @@ describe('text-only model transport boundary', () => {
   it('rejects tool argument events, missing completion, executable message parts and malformed streams', () => {
     for (const content of [
       'data: {"type":"response.function_call_arguments.delta","delta":"{}"}\n\n' + complete(),
+      'event: response.function_call_arguments.delta\ndata: {"type":"response.output_text.delta","delta":"mismatched"}\n\n' + complete(),
       'data: {"type":"response.output_text.delta","delta":"partial"}\n\n',
       complete([{ type: 'message', content: [{ type: 'function_call', name: 'read' }] }]),
       'data: incomplete-json\n\n',

@@ -178,20 +178,21 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
       {pending && <div className="wb-question-pending"><p>原{pending.kind === 'create' ? '提问' : pending.kind === 'cancel' ? '取消' : '重试'}请求待确认。</p><button type="button" disabled={busy || disabled} onClick={() => void execute(pending)}>按原请求继续</button></div>}
       {(notice || models.error) && <p role="status">{notice || models.error}</p>}
       {storageError && <p role="status">本机副本暂未保存。请下载完整输入与原请求后再离开。</p>}
+      <details className="wb-question-recovery" open={storageError}><summary>保留与恢复提问</summary><div className="wb-question-recovery-actions">
       <button type="button" className="wb-question-copy" onClick={() => { downloadTopicJson(current.current, 'whiteboard-question-copy.json'); setDownloaded(JSON.stringify(current.current)); }}>下载完整提问副本</button>
       <button type="button" className="wb-question-copy" disabled={busy || Boolean(pending)} onClick={() => {
         try { setCopies(topicCopies(storage, decode, 64000)); setNotice('仅列出当前账号与这份原稿的本机输入。'); } catch { setNotice('当前无法读取本机副本，可导入已下载的完整JSON。'); }
       }}>查看其他本机输入</button>
       {!!copies.length && <div className="wb-question-copies">{copies.map(item => <button type="button" key={item.key} disabled={busy || Boolean(pending)}
         onClick={() => adopt(item.value)}>{new Date(item.at).toLocaleString()} · {item.value.form.message.slice(0,36) || '原请求副本'}</button>)}</div>}
-      <label className="wb-question-copy">导入完整提问副本<input aria-label="导入完整提问副本" type="file" accept="application/json,.json" disabled={busy || Boolean(pending)} onChange={event => {
+      <label className="wb-question-copy wb-question-import">导入完整提问副本<input aria-label="导入完整提问副本" type="file" accept="application/json,.json" disabled={busy || Boolean(pending)} onChange={event => {
         const file = event.target.files?.[0]; event.target.value = ''; if (!file) return;
         const epoch = serial.current;
         if (file.size > 64000) { setNotice('提问副本超过读取上限，请保留原文件。'); return; }
         void file.text().then(raw => { if (!alive.current || epoch !== serial.current) return; const value = decode(raw);
           if (!value) { setNotice('副本与当前账号、原白板版本或格式不符，未替换输入。'); return; } adopt(value);
         }).catch(error => { if (alive.current) setNotice(error instanceof Error ? error.message : '无法读取提问副本。'); });
-      }}/></label>
+      }}/></label></div></details>
     </form>
   </section>;
 }
