@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-26T20:44:20.692Z",
+  "status": "original-font-and-math-editor-isolation-local-green",
+  "deployed": false,
+  "overallProductComplete": false,
+  "applicationRevision": "7597fac",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T20:38:32.490Z",
+      "duration": 28428.443,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 7,
+    "originalAttempts": 7,
+    "retries": 0
+  },
+  "originalFonts": {
+    "faces": 815,
+    "families": 32,
+    "bytes": 617324,
+    "isolatedFamilies": 12
+  },
+  "mathEditor": {
+    "actualBundledFontShaChecks": 3,
+    "loadedFaces": [
+      "KaTeX_Main",
+      "KaTeX_Math"
+    ],
+    "preparedFallbackFontShaChecks": 20,
+    "source": "The editor reuses app-owned locked KaTeX faces and locally bundled bytes; twenty separately prepared MathLive fonts remain available for fallback. Captured original families use independent names; obsolete owned font sheets are removed."
+  },
+  "remaining": [
+    "Final complete322 browser run, exact CI and main daemon delivery.",
+    "Full original teaching states and M1-M7 remain incomplete."
+  ],
+  "files": [
+    {
+      "source": "data/qa/original-teaching-fonts-browser.json",
+      "file": "data__qa__original-teaching-fonts-browser.json.gz",
+      "originalSha256": "97a91a0b4767762ffe78757c28aafcb8f39e8b719aa3efd714092714f4a5c711",
+      "sha256": "0a72b4926583a0e30746f9922f34a845dc073cfe3db168f3604d436624fb03cc"
+    },
+    {
+      "source": "data/qa-teaching-font-isolation-first.log",
+      "file": "data__qa-teaching-font-isolation-first.log.gz",
+      "originalSha256": "645657f8ca33545011d9e9213a1b0e9e1cf06123b9713b78537aa93d10c855f3",
+      "sha256": "2240e4a2f1d69b83c8d8d9bec59588c552bb81d1f488451823e1784e05bd8571"
+    },
+    {
+      "source": "data/qa-teaching-font-isolation-final-build.log",
+      "file": "data__qa-teaching-font-isolation-final-build.log.gz",
+      "originalSha256": "1125bbd9bef7759ff1300d4648e96980ab99847e1551ecd0488dfaaf6ccd1a45",
+      "sha256": "2723809f75348c331a4eead06a5427c3b47b5bfe4df6b940ef500f829ea37245"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-fonts.ts",
+      "file": "apps__web__lib__original-teaching-fonts.ts.gz",
+      "originalSha256": "5b06bcff9c0747a47bc3e69301039b0aaaa19cf6505f3c713d0d1eaec0e6b019",
+      "sha256": "19d20038b573b437aee8282ec331cb8961970a75519d0ea204f11da6600676fd"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-fonts.json",
+      "file": "apps__web__lib__original-teaching-fonts.json.gz",
+      "originalSha256": "e4319ea46a0b17947a6c0c606a87f86907c5e6d98271a76031770c9b373b2a02",
+      "sha256": "7b542e0bef38e89f6b5444dabcd38fa06330c049d254369647168f4d28692faa"
+    },
+    {
+      "source": "scripts/qa/experience-web.cjs",
+      "file": "scripts__qa__experience-web.cjs.gz",
+      "originalSha256": "1f9372adfe29085241c2ba0e18ff58bc36e40b9e17567e9d2c5d8c2627e32746",
+      "sha256": "7fae150ac0cebbfd69926aa58b68679354fa92264373a1ec17bdc1b87c9bc54f"
+    },
+    {
+      "source": "scripts/reference/build-hyperknow-fonts.cjs",
+      "file": "scripts__reference__build-hyperknow-fonts.cjs.gz",
+      "originalSha256": "956892eac723ee3a25802f5e67a9518bd4588bd044dd51daf6bef55c20b3e643",
+      "sha256": "2bcac0a709553597300a2a060b0f877ca4483b64024e733590aee9d46c81fd53"
+    },
+    {
+      "source": "scripts/reference/build-hyperknow-teaching-styles.cjs",
+      "file": "scripts__reference__build-hyperknow-teaching-styles.cjs.gz",
+      "originalSha256": "7430a7927cdc2660ed8d3e6e1fa94eb12a016fb786dffac802417cb56a105da1",
+      "sha256": "2dc699c8680dff1657a8051c292f2631114376511771cf2d21d514f9f4aebb7d"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "originalSha256": "ac70719ce7b054debbbcce0226ee3844bdeecdc137cab97195a299a14e882251",
+      "sha256": "bc75aaf507ae9c3879150f5c39382f956daecb7c944dcdcef25ae2d92b2aea57"
+    },
+    {
+      "source": "data/qa/browser-evidence/original-math-font-isolation/actual-math-editor-fonts.json",
+      "file": "data__qa__browser-evidence__original-math-font-isolation__actual-math-editor-fonts.json.gz",
+      "originalSha256": "bae029c19e340790bd023eeea085708f6ec4f736f636d558b45640a5524dee05",
+      "sha256": "25064ebe61c984d94d3884eb6dbcf82af90c919a955cbf2cc89fb2b6335a4d11"
+    },
+    {
+      "source": "data/qa/browser-evidence/original-math-font-isolation/actual-tall-formula.png",
+      "file": "data__qa__browser-evidence__original-math-font-isolation__actual-tall-formula.png.gz",
+      "originalSha256": "a52dbee463f0de322b963b033a742ec23b5d2a53cc5e37116cfca5a52419665e",
+      "sha256": "e99e568aa675eef2386c9482096279468d70cc46aa167355ba3870eff66b484a"
+    }
+  ]
+}

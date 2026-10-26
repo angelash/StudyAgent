@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-26T20:32:14.591Z",
+  "status": "complete-functional-baseline-with-known-math-font-preparation-gap",
+  "releaseReady": false,
+  "overallProductComplete": false,
+  "applicationRevision": "ce2af72bafa59db7ff0287c2ad051a6546b0f76e",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T20:04:54.439Z",
+      "duration": 1561304.841,
+      "expected": 321,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": 321,
+    "originalAttempts": 321,
+    "retries": 0
+  },
+  "qaWebBuildId": "oTcNDjYdksWUZOvOq2j5w",
+  "findings": [
+    "QA builder bypassed prebuild and omitted public/vendor/mathlive; its actual HTTP manifest returned404 during this run.",
+    "Captured font pack registers twelve KaTeX family names also used by the editor.19 of20 installed font bytes match captures; Size3 differs. Namespace captured KaTeX families before final validation.",
+    "This full functional baseline does not close local editor-font acceptance. Add real editor font decode and hash checks, prepare local assets and rerun the final full source."
+  ],
+  "files": [
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "data__qa__source-course-full-browser.json.gz",
+      "originalSha256": "151e7a401f0d575a7360442464dd45dcddd2462928c567ff631115915dfc857f",
+      "sha256": "13dbd273b7636c0bb5d74c8589d22a7a7d2ec2e701a79e444e3a231bc5052a42"
+    },
+    {
+      "source": "data/qa-teaching-frame-full-browser.log",
+      "file": "data__qa-teaching-frame-full-browser.log.gz",
+      "originalSha256": "41c6109d3968dc4b118e823a2b5d864f01288acb60722ac1a4048a81ce994d7d",
+      "sha256": "9464bd1ca7d9dcc0a2a1f57bc97048c7dcfe53be16e80769971f3e5a892523ed"
+    },
+    {
+      "source": "scripts/qa/experience-web.cjs",
+      "file": "scripts__qa__experience-web.cjs.gz",
+      "originalSha256": "7fdb8b18bf65ceb529122124d4d7c35b0c1a952fd01a6a0aab8e85e81d654341",
+      "sha256": "2ab769879eceacbb266a26ae538e24fe485f2a4971cada750dc176026d32b792"
+    },
+    {
+      "source": "scripts/reference/build-hyperknow-fonts.cjs",
+      "file": "scripts__reference__build-hyperknow-fonts.cjs.gz",
+      "originalSha256": "bf1328cbc687d34002d3669ddc6e2a8eae6d3cd0042aa0cdf4d16e9fb8980883",
+      "sha256": "1f274b257f15993ca8280205aba1a8f92a5729a8c8b95667f81ff4cb117836c2"
+    },
+    {
+      "source": "apps/web/lib/original-teaching-fonts.json",
+      "file": "apps__web__lib__original-teaching-fonts.json.gz",
+      "originalSha256": "cda550d10afdec46bdfe4bedec528a4b1cbfef1c59d05649b7521a575077078d",
+      "sha256": "035dd468f4914db6e61d87c1a9a9347735c04842ed89a7a11e01281cc021f1df"
+    },
+    {
+      "source": "tests/e2e/original-teaching-fonts.spec.ts",
+      "file": "tests__e2e__original-teaching-fonts.spec.ts.gz",
+      "originalSha256": "680028052fc7f774b72998fb090be8e088fa72ced4f416c19dec9051529cafef",
+      "sha256": "6c21effec3306077a29129fca691236d531220bd44015077dc69a2b387103d4c"
+    }
+  ]
+}
