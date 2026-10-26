@@ -3,8 +3,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import type { AnswerDraftState, GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
-  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, MasteryEstimate, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
-import { apiRequest, getAuthToken } from '../../../lib/api';
+  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
+import { apiRequest, ApiRequestError, getAuthToken } from '../../../lib/api';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import { useAnswerDraft, recoverPendingAnswerSubmission } from '../../../lib/answer-draft';
 import { AnswerDraftStatus } from '../../../components/answer-draft-status';
@@ -12,8 +12,6 @@ import './studio.css';
 import '../today/today.css';
 import { StudyNav } from '../../../components/study-nav';
 import { LearningProgressSelector, ProgressSelection } from '../../../components/learning-progress-selector';
-import { AnswerEvidenceView } from '../../../components/answer-evidence-view';
-import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
 import { ReportHistory } from '../../../components/report-history';
 import { ReportAnalysisUpdate } from '../../../components/report-analysis-update';
 import { GuidanceManager, ReviewScheduleEditor } from '../../../components/guidance-manager';
@@ -24,8 +22,9 @@ import { QuestionFaceView } from '../../../components/question-face-view';
 import { answerInputConfiguration } from '@study-agent/contracts';
 import { useGuidanceCreation } from '../../../lib/guidance-creation';
 import { AssessmentBlueprintCard } from '../../../components/assessment-blueprint';
-import { ComponentObservations, DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from '../../../components/diagnostic-evidence';
 import { VerificationObservationReport } from '../../../components/verification-observations';
+import { KnowledgeReportWorkspace } from '../../../components/knowledge-report-workspace';
+import type { ReportPlanRead } from '../../../components/report-plan-path';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -37,8 +36,6 @@ type Review = ReviewTask & { atomName: string; due: boolean };
 type Retrospective = { fingerprint: string; reviewed: boolean; followupSessionIds: string[]; measurementContext?: { notice: string };
   comparisons: Array<{ atomId: string; atomName: string; outcome: string; note: string; retentionSamples: number }> };
 const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语']];
-const statuses: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '稳定掌握' };
-const hypothesisStatuses: Record<string, string> = { proposed: '待验证', testing: '验证中', supported: '已有支持证据', contradicted: '已有反证', inconclusive: '证据不一致', monitoring: '持续观察', resolved: '已通过后续验证', reopened: '需要再次核查', withdrawn: '原依据已撤回' };
 const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', different_definitions: '知识定义待核对，暂不比较', different_dimensions: '测量维度或量规不同', insufficient: '证据待补充', uncertain: '变化尚不确定', improved: '观察到改善', declined: '需要重新指导' };
 const request = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) }, getAuthToken());
 const previewStorageKey = (studentId: string, subject: string) => `study-blueprint:${studentId}:${subject}`;
@@ -66,7 +63,9 @@ export function AssessmentStudio() {
   const [screen, setScreen] = React.useState<'setup' | 'preview' | 'assessment' | 'report' | 'plan'>('setup');
   const [busy, setBusy] = React.useState(false), [loading, setLoading] = React.useState(true), [error, setError] = React.useState('');
   const [loggedIn, setLoggedIn] = React.useState(false), [hint, setHint] = React.useState(''), [saved, setSaved] = React.useState('');
-  const [expandedAtom, setExpandedAtom] = React.useState<string | null>(null);
+  const [reportPlans, setReportPlans] = React.useState<GuidancePlanView[]>([]);
+  const [reportPlanRead, setReportPlanRead] = React.useState<ReportPlanRead>({ ownerId: '', studentId: '', subject: '', phase: 'loading' });
+  const [planReadRevision, setPlanReadRevision] = React.useState(0);
   const [retrospectiveNote, setRetrospectiveNote] = React.useState('');
   const [endOpen, setEndOpen] = React.useState(false), [endReason, setEndReason] = React.useState('');
   const previewRequest = React.useRef({ signature: '', key: '' }), stateRequest = React.useRef({ signature: '', key: '' });
@@ -74,7 +73,7 @@ export function AssessmentStudio() {
   React.useEffect(() => () => { sessionReadGeneration.current++; }, []);
   const atomDeepLinkDone = React.useRef(false);
   const [locatedItem, setLocatedItem] = React.useState<{ id: string; payload: QuestionRenderPayload } | null>(null);
-  const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>{setPlan(value);setRetrospective(null);setScreen('plan');});
+  const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>{setPlan(value);setReportPlans(rows=>[value,...rows.filter(row=>row.id!==value.id)]);setRetrospective(null);setScreen('plan');});
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
   const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
@@ -83,6 +82,8 @@ export function AssessmentStudio() {
   const child = children.find((item) => item.id === studentId);
   const subjectName = subjects.find(([key]) => key === subject)?.[1];
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [screen, current?.id]);
+
+  function reportAccessLost() { window.location.replace('/learn?subject=' + encodeURIComponent(report?.subject ?? subject)); }
 
   async function execute(fn: () => Promise<void>) {
     setBusy(true); setError('');
@@ -100,7 +101,10 @@ export function AssessmentStudio() {
     draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false); setLocatedItem(null);
     setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
     try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
-    window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}`);
+    const location = new URLSearchParams({ studentId: next.scopeSnapshot.studentId, subject: next.subject, session: next.id });
+    const previous = new URLSearchParams(window.location.search), reportAtom = previous.get('reportAtom');
+    if (['completed', 'aborted'].includes(next.status) && previous.get('session') === next.id && reportAtom && reportAtom.length <= 180) location.set('reportAtom', reportAtom);
+    window.history.replaceState({}, '', '?' + location.toString());
     if (['completed', 'aborted'].includes(next.status)) { const savedReport = await request<DiagnosticReport>(`/diagnostics/sessions/${next.id}/report`); if (generation !== sessionReadGeneration.current) return; setReport(savedReport); setScreen('report'); }
     else setScreen('assessment');
     if (generation !== sessionReadGeneration.current || !requestedItemId) return;
@@ -114,7 +118,7 @@ export function AssessmentStudio() {
       if (generation !== sessionReadGeneration.current) return;
       setLocatedItem({ id: target.id, payload: original.payload });
     }
-    window.history.replaceState({}, '', `?studentId=${encodeURIComponent(next.scopeSnapshot.studentId)}&session=${encodeURIComponent(next.id)}&item=${encodeURIComponent(target.id)}`);
+    location.set('item', target.id); window.history.replaceState({}, '', '?' + location.toString());
   }
 
   React.useEffect(() => {
@@ -164,11 +168,13 @@ export function AssessmentStudio() {
   React.useEffect(() => {
     if (!studentId) return;
     let alive = true;
+    setReportPlans([]); setReportPlanRead({ ownerId: identity?.id ?? '', studentId, subject, phase: 'loading' });
     Promise.all([request<LearningScope | null>(`/students/${studentId}/learning-scope?subject=${subject}`),
       request<Session[]>(`/diagnostics/sessions?studentId=${studentId}&subject=${subject}`),
       request<GuidancePlanView[]>(`/diagnostics/students/${studentId}/plans?subject=${subject}`)])
       .then(([scope, history, plans]) => {
         if (!alive) return;
+        setReportPlans(plans); setReportPlanRead({ ownerId: identity?.id ?? '', studentId, subject, phase: 'ready' });
         setConfirmedScope(scope);
         if (scope) { setGrade(scope.grade); setTerm(scope.term); setLearned(scope.learnedAtomIds); setMinutes(scope.minutesPerSession); setTextbookVersion(scope.textbookVersion);
           setProgress({ bookId: scope.textbookVolumeId ?? '', mode: scope.progressMode ?? 'knowledge', lessonIds: scope.selectedLessonIds ?? [] }); }
@@ -180,9 +186,9 @@ export function AssessmentStudio() {
         }
         setSessions(history); setPlan(plans.find(p => p.id === requestedPlan) ?? plans[0] ?? null); setRetrospective(null);
         if (new URLSearchParams(window.location.search).get('view') === 'plan' && plans[0]) setScreen('plan');
-      }).catch((caught) => { if (alive) setError(caught.message); });
+      }).catch((caught) => { if (!alive) return; if (caught instanceof ApiRequestError && [401, 403].includes(caught.status)) { reportAccessLost(); return; } setReportPlanRead({ ownerId: identity?.id ?? '', studentId, subject, phase: 'error' }); setError(caught.message); });
     return () => { alive = false; };
-  }, [studentId, subject, children]);
+  }, [studentId, subject, children, planReadRevision, identity?.id]);
 
   React.useEffect(() => {
     let alive = true; setReviews([]);
@@ -383,7 +389,7 @@ export function AssessmentStudio() {
             <span className="studio-eyebrow">原题回看</span><h2>已定位到当时讨论的题目。</h2>
             <p>这里显示原评测冻结的题面。首次作答保持原记录，回看不会重新提交或改变当前核查顺序。</p>
             <QuestionFaceView payload={locatedItem.payload} stem="原评测题目" />
-            <button className="studio-secondary" onClick={() => { setLocatedItem(null); window.history.replaceState({}, '', `?studentId=${encodeURIComponent(studentId)}&session=${encodeURIComponent(session.id)}`); }}>{['completed', 'aborted'].includes(session.status) ? '回到本组报告与原作答' : '回到当前核查进度'}</button>
+            <button className="studio-secondary" onClick={() => { setLocatedItem(null); const params = new URLSearchParams(window.location.search); params.delete('item'); params.set('studentId', studentId); params.set('subject', session.subject); params.set('session', session.id); window.history.replaceState({}, '', '?' + params.toString()); }}>{['completed', 'aborted'].includes(session.status) ? '回到本组报告与原作答' : '回到当前核查进度'}</button>
           </section>}
           {!locatedItem && screen === 'assessment' && session && <>
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
@@ -418,25 +424,11 @@ export function AssessmentStudio() {
               {!!report.definitionContext.unverifiedEvidenceIds.length && <p>{report.definitionContext.unverifiedEvidenceIds.length} 条历史作答无法核对原定义，保留记录并继续补充新证据。</p>}
             </details>}
             <div className="studio-report-stats"><div><strong>{report.scoredCount}<small> / {report.totalCount}</small></strong><span>已评分题目</span></div><div><strong>{report.rawScore === null ? '待评分' : `${report.rawScore}%`}</strong><span>本次题目得分</span></div><div><strong>{report.unmeasuredAtomIds.length}</strong><span>尚未测到的点</span></div></div>
-            <h3 className="studio-line-title">知识掌握与证据范围</h3><p className="studio-muted">点按知识点展开作答依据。横线范围越宽，说明仍需要更多证据。</p>
-            <div className="studio-estimates">{report.estimates.map((estimate) => <article key={estimate.atomId} data-status={estimate.status}>
-              <button className="studio-estimate-head" onClick={() => setExpandedAtom(expandedAtom === estimate.atomId ? null : estimate.atomId)} aria-expanded={expandedAtom === estimate.atomId}>
-                <span><strong>{estimate.atomName}</strong><small>{statuses[estimate.status]} · {estimate.scoredCount} 题证据 · {estimate.independentFamilies} 个题族</small></span><b>{estimate.mastery === null ? '—' : `${Math.round(estimate.mastery)}%`} <small>⌄</small></b></button>
-              <div className="studio-interval" aria-label={estimate.mastery === null ? '尚未测量' : `参考估计${estimate.mastery}%，95%区间${estimate.lower}%至${estimate.upper}%`}>
-                {estimate.lower !== null && estimate.upper !== null && <><span style={{ left: `${estimate.lower}%`, width: `${estimate.upper - estimate.lower}%` }} /><i style={{ left: `${estimate.mastery}%` }} /></>}</div>
-              {expandedAtom === estimate.atomId && <div className="studio-evidence"><p>{estimate.mastery === null ? '没有有效证据，保留为未知。' : `现有证据的估计区间：${estimate.lower}% – ${estimate.upper}%。有效样本权重 ${estimate.effectiveSamples}。`}</p>
-                <div className="studio-dimensions">{estimate.dimensions.map((dimension) => <span key={dimension.dimension}>{({ understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' } as Record<string, string>)[dimension.dimension]}<strong>{dimension.mastery === null ? '未测' : `${dimension.mastery}%`}</strong></span>)}</div>
-                {report.evidence.filter((item) => item.atomId === estimate.atomId).map((item) => <div key={item.id} className="studio-evidence-item"><b>{item.disposition === 'dont_know' ? '选择暂时不会' : item.status === 'pending_review' ? '待复核' : item.status === 'skipped' ? '已跳过' : item.correct ? '达到本题标准' : '本题需要核查'}</b><ObservedPerformance observation={report.observations?.find(observation => observation.responseId === item.id)} /><span>{item.gradingReason}</span><AnswerEvidenceView answer={item.answer} /><small>{item.disposition !== 'answered' ? '未提交解题过程' : item.priorExposure ? '曾曝光的题目' : item.hintLevel ? `使用${item.hintLevel}级提示` : '独立作答'} · {Math.round(item.elapsedMs / 1000)}秒</small><DiagnosticEvidence studentId={report.studentId} responseId={item.id} /><EvidenceFeedbackForm kind="diagnostic" responseId={item.id} /></div>)}
-              </div>}
-            </article>)}</div>
+            <KnowledgeReportWorkspace key={`${identity?.id}:${report.sessionId}:${report.version ?? 1}`} ownerId={identity?.id ?? ''} report={report}
+              plans={reportPlans} currentPlan={plan} planRead={reportPlanRead} busy={busy} analysisNeedsUpdate={analysisNeedsUpdate}
+              onRetryPlans={() => setPlanReadRevision(value => value + 1)} onVerify={(hypothesis, atomId) => { void verify(hypothesis, atomId); }}
+              onOpenPlan={!studentMode ? next => { const params = new URLSearchParams({ studentId: report.studentId, subject: report.subject, view: 'plan', planId: next.id }); window.location.assign('/student/assessment?' + params.toString()); } : undefined} onAccessLost={reportAccessLost} />
             <VerificationObservationReport result={report.verification} names={new Map(report.estimates.map(estimate => [estimate.atomId, estimate.atomName]))} studentId={report.studentId} />
-            <ComponentObservations observations={report.componentObservations} studentId={report.studentId} busy={busy}
-              onVerify={report.status === 'completed' ? atomId => { void verify(undefined, atomId); } : undefined} />
-            {report.hypotheses.length > 0 && <><h3 className="studio-line-title">可能卡在哪里，以及怎样验证</h3><div className="studio-hypotheses">{report.hypotheses.map((hypothesis) => <article key={hypothesis.id}><span className="studio-badge">{hypothesisStatuses[hypothesis.status]}</span><h4>{hypothesis.title}</h4><p>{hypothesis.observation}</p><p>{hypothesis.explanation}</p><small>支持 {hypothesis.supportingEvidenceIds.length} 条 · 反证 {hypothesis.counterEvidenceIds.length} 条</small>
-              <details><summary>查看验证条件、依据与其他解释</summary><p>{hypothesis.nextAction}</p>{hypothesis.verification && <dl className="diagnostic-verification"><dt>什么表现支持继续核查</dt><dd>{hypothesis.verification.supportCondition}</dd><dt>什么表现构成反证</dt><dd>{hypothesis.verification.counterCondition}</dd><dt>哪些情况仍然不能下结论</dt><dd>{hypothesis.verification.undecidedCondition}</dd></dl>}<ul>{hypothesis.alternatives.map((item) => <li key={item}>{item}</li>)}</ul>
-                <DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.supportingEvidenceIds} title="支持方向的依据" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.counterEvidenceIds} title="需要同时核对的反证" /><DiagnosticEvidenceReferences studentId={report.studentId} ids={hypothesis.reportedEvidenceIds ?? []} title="孩子报告暂时不会" /></details>
-              {hypothesis.cause === 'retention_gap' && <p>保持情况需要通过指导计划中的间隔复测验证，当天换题不能替代真实间隔。</p>}
-              {hypothesis.cause !== 'retention_gap' && report.status !== 'aborted' && report.definitionContext?.origin !== 'unavailable' && !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status) && <button className="studio-secondary" disabled={busy || analysisNeedsUpdate} onClick={() => verify(hypothesis)}>做一组题验证原因 ↗</button>}</article>)}</div></>}
             {report.status === 'aborted' || report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>{report.status === 'aborted' ? '这份记录保留了提前结束前的表现。完成一轮新评测后，再制定当前的指导计划。' : '这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。'}</p></div><button className="studio-primary" disabled={busy} onClick={() => setScreen('setup')}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy || analysisNeedsUpdate || planCreation.busy || !!planCreation.pending || !planCreation.ready} onClick={() => void planCreation.create(minutes)}>{planCreation.busy ? '正在保存规则计划…' : '制定指导计划'} ↗</button>
               <div className="guidance-create-recovery">{planCreation.error && <p className="studio-error" role="alert">{planCreation.error}</p>}{planCreation.storageNotice && <p role="status">{planCreation.storageNotice}</p>}
                 {planCreation.pending && <p>原请求预算{planCreation.pending.minutesPerDay}分钟，创建结果尚待确认。<button className="studio-secondary" disabled={planCreation.busy} onClick={() => void planCreation.create(minutes,true)}>读取原计划创建结果</button></p>}

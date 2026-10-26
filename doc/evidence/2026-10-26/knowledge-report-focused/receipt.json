@@ -1,0 +1,155 @@
+{
+  "at": "2026-10-26T12:02:57.813Z",
+  "status": "focused-local-knowledge-workspace-passed",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T11:57:11.392Z",
+    "duration": 39390.496,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 14,
+  "retriedAttempts": 0,
+  "bindings": [
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "sha256": "6b0626ae7f21fde8adc238f84e5ebd41def795a59a95e06c596986c6ebdbc218"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.tsx",
+      "sha256": "c75105011829f5889df356344dd03511dad8d7c1b5c7be14dae95063ad1b0bd0"
+    },
+    {
+      "source": "apps/web/components/report-plan-path.tsx",
+      "sha256": "18e08fdbb9e5a6c45d196fd4ed30b6121a03c3c7eddf5693b49b150b7e91e853"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.css",
+      "sha256": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3"
+    }
+  ],
+  "files": [
+    {
+      "source": "data/qa/knowledge-report-browser.json",
+      "file": "browser-original.json.gz",
+      "originalBytes": 18369,
+      "originalSha256": "c1d50dafa4239a1a6b3020d8202adaba54230826b8f5fa90ddc0793a3e9f3274",
+      "storedSha256": "06feb29bc164c4639e204bd11b381e7be475e460ea3b05ad89cc204d620db162"
+    },
+    {
+      "source": "data/qa/knowledge-report-final-focused-browser.log",
+      "file": "browser-original.log.gz",
+      "originalBytes": 2973,
+      "originalSha256": "f2b4d275ef6737f567d75a80088fcbef1382e771c254e748a9c83b3fdc65c835",
+      "storedSha256": "9aac43bb12c0faa7db511e90898b6c9cd741554f1f2664140751afe44cd7da45"
+    },
+    {
+      "source": "data/qa/knowledge-report-expanded-build.log",
+      "file": "build-original.log.gz",
+      "originalBytes": 1410,
+      "originalSha256": "6988edc1947357b6fea4eafc147bca9e709f408738ad430120381e27bc041d31",
+      "storedSha256": "1810ddc24909cb6da0a66bd86c5cf2416ee5258011782eeac65058e5a7b78ce2"
+    },
+    {
+      "source": "data/qa/knowledge-report-types-final.log",
+      "file": "types-original.log.gz",
+      "originalBytes": 256,
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "storedSha256": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e"
+    },
+    {
+      "source": "tests/e2e/knowledge-report.spec.ts",
+      "file": "test-source-original.ts",
+      "originalBytes": 23036,
+      "originalSha256": "861b4af8d06786d3ef6629b8030d5db3e362bf307f00871c8d1bf80f91f30d1b",
+      "storedSha256": "861b4af8d06786d3ef6629b8030d5db3e362bf307f00871c8d1bf80f91f30d1b"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/actual-active-guidance-schedule.png",
+      "file": "ui\\actual-active-guidance-schedule.png",
+      "originalBytes": 251927,
+      "originalSha256": "4857bd0e3b596fc90fd7b6a924e2cf6b94dbb0b0614ff25c1195df66c5eb6589",
+      "storedSha256": "4857bd0e3b596fc90fd7b6a924e2cf6b94dbb0b0614ff25c1195df66c5eb6589"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/actual-pending-review-report.json",
+      "file": "ui\\actual-pending-review-report.json",
+      "originalBytes": 10570,
+      "originalSha256": "98a2144e47bb977e09153dce283f4669cddbd1b69dd5555bca685f5c6f307ed4",
+      "storedSha256": "98a2144e47bb977e09153dce283f4669cddbd1b69dd5555bca685f5c6f307ed4"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/actual-report-original.json",
+      "file": "ui\\actual-report-original.json",
+      "originalBytes": 22727,
+      "originalSha256": "89bd0f29bc42ac93421dd77eb47b6e97a69a1e0632babf31a8be0a5280a743aa",
+      "storedSha256": "89bd0f29bc42ac93421dd77eb47b6e97a69a1e0632babf31a8be0a5280a743aa"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/controlled-cause-history-projection.json",
+      "file": "ui\\controlled-cause-history-projection.json",
+      "originalBytes": 27018,
+      "originalSha256": "a65cbe56e4f411234b4d1eca1f473062776bfc0e2078c3b5453847c0ee390309",
+      "storedSha256": "a65cbe56e4f411234b4d1eca1f473062776bfc0e2078c3b5453847c0ee390309"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/point-1440.png",
+      "file": "ui\\point-1440.png",
+      "originalBytes": 338825,
+      "originalSha256": "21776dfd3f307869fa8fa3b4495a5d762f618694a54211da074cd546f40ba54b",
+      "storedSha256": "21776dfd3f307869fa8fa3b4495a5d762f618694a54211da074cd546f40ba54b"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/point-390.png",
+      "file": "ui\\point-390.png",
+      "originalBytes": 291943,
+      "originalSha256": "ba7d256703585b75488394758f4ff75ed3b4db823fa770c4b5de8224c2461ca3",
+      "storedSha256": "ba7d256703585b75488394758f4ff75ed3b4db823fa770c4b5de8224c2461ca3"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/point-768.png",
+      "file": "ui\\point-768.png",
+      "originalBytes": 333183,
+      "originalSha256": "705484558d4f0374bbf120946c5d549ba703f7c3590fee3a22faf262318f3b95",
+      "storedSha256": "705484558d4f0374bbf120946c5d549ba703f7c3590fee3a22faf262318f3b95"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/report-current.png",
+      "file": "ui\\report-current.png",
+      "originalBytes": 220138,
+      "originalSha256": "1c1602eafe68622cb9fb15805b85631ef63bffd5dd61232228622bd704dcecc6",
+      "storedSha256": "1c1602eafe68622cb9fb15805b85631ef63bffd5dd61232228622bd704dcecc6"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/report-first-workspace.png",
+      "file": "ui\\report-first-workspace.png",
+      "originalBytes": 199055,
+      "originalSha256": "64ec835b28293562e3f04c5736e1d7f6de9cb59d1696ea056b611dcc3b66ee59",
+      "storedSha256": "64ec835b28293562e3f04c5736e1d7f6de9cb59d1696ea056b611dcc3b66ee59"
+    }
+  ],
+  "actualDomainFlows": [
+    "two frozen math goals and unchanged self-report estimates",
+    "all-skipped unknown estimate with reload/back/forward/search",
+    "actual older matching plan behind a different new report",
+    "plan page reload and return to selected point",
+    "actual plan activation and late old review response isolation",
+    "actual short-answer submissions pending review with null estimates",
+    "actual student permission and learning-grant revocation",
+    "actual browser login-session logout",
+    "original protected question reads and keyboard controls at390/768/1440"
+  ],
+  "controlledUiBoundaries": [
+    "transient plan read503 and explicit recovery",
+    "review404 hides unavailable plan actions without erasing report",
+    "unavailable frozen definition and foreign reportAtom",
+    "nine-record cause history and contradicted/reopened action gating"
+  ],
+  "limits": [
+    "Controlled report projections are rendering/action-boundary tests, not actual teacher decisions or causal measurement validation.",
+    "No new API, database, scoring algorithm or supplier call. Current rule-estimate-v2 self-report treatment is preserved.",
+    "Full regression, exact remote CI and main guarded runtime delivery still required; production remains125."
+  ]
+}

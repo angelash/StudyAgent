@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-26T12:27:57.939Z",
+  "status": "full-local-277-original-passes",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T12:03:05.126Z",
+    "duration": 1328542.54,
+    "expected": 277,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "caseCount": 277,
+  "originalAttempts": 277,
+  "retriedAttempts": 0,
+  "bindings": [
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "sha256": "6b0626ae7f21fde8adc238f84e5ebd41def795a59a95e06c596986c6ebdbc218"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.tsx",
+      "sha256": "c75105011829f5889df356344dd03511dad8d7c1b5c7be14dae95063ad1b0bd0"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.css",
+      "sha256": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3"
+    },
+    {
+      "source": "apps/web/components/report-plan-path.tsx",
+      "sha256": "18e08fdbb9e5a6c45d196fd4ed30b6121a03c3c7eddf5693b49b150b7e91e853"
+    }
+  ],
+  "files": [
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "browser-original.json.gz",
+      "originalBytes": 309602,
+      "originalSha256": "055cf8e9a42da29b4912a978c91f1e6fabf4bb2fba5dbeb015b555056359634e",
+      "storedSha256": "cbda24a6dfbe0125090f61428cd2174b2168c689fb3b3101059b436a95572a30"
+    },
+    {
+      "source": "data/qa/knowledge-report-full-browser.log",
+      "file": "browser-original.log.gz",
+      "originalBytes": 44011,
+      "originalSha256": "0c490db7793541e351247a3cfd4aca0e4ee0071efd7ca718ea2cd695bff6300c",
+      "storedSha256": "4a3f98b36e1d7b02f5f14e3c4cbad075fe1d59f762d41e0fb0530e3ccce4235b"
+    }
+  ],
+  "limits": [
+    "Synthetic accounts in isolated storage; no real family data or new supplier call.",
+    "Remote exact-head CI and actual main guardian delivery remain required.",
+    "Automated passes do not establish original CSS/fonts/DPR/audio fidelity or teacher/long-term measurement validity."
+  ]
+}

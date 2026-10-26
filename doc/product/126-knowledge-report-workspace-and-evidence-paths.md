@@ -53,3 +53,17 @@ AssessmentStudio已有完整范围/蓝图、量化报告、原子步骤、原因
 保留原报告、作答草稿、助教113、指导116、17题型、蓝图与复盘回归；合适本地验证后做完整整站、精确远端三组CI、归档提交推送、主目录可回退守护交付。所有新增业务实现前已有本规格提交；任何超出本规格的评分/领域策略变化先补设计。
 
 72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7范围保持。学校原生对接、计费和Marketplace排除，原站CSS/字体/DPR/原声、全教材/题族、教师/设备/长期条件继续留证。
+
+## 7. 本地实现与原始验证
+
+本批已接入KnowledgeReportWorkspace与ReportPlanPath，AssessmentStudio保留原报告总览、历史/复核、蓝图确认及整份指导管理。reportAtom与微测atom参数分开；原题回看和计划的完整导航保留有效的学生/学科/会话上下文。指导从完整授权列表匹配原报告；新报告的最新计划不遮掉旧报告计划，复测读取有作用域、撤销、15秒超时和显式重试，401/403重新核对授权，404仅说明计划不可用。
+
+本地最终14项专项/14次原始尝试，以及完整277项/277次原始尝试全部通过，零失败、跳过、flaky和重试。完整回归耗时1328542.54ms，原件与四项实际Web输入SHA见[完整收据](../evidence/2026-10-26/knowledge-report-full-browser/receipt.json)；专项覆盖与受控投影的界限见[专项收据](../evidence/2026-10-26/knowledge-report-focused/receipt.json)。根lint与隔离生产Web构建通过，原日志压缩留存于专项目录。
+
+最初红色基线确认新工作区尚不存在；后续两处失败来自知识点h3与综合步骤h4同名的选择器歧义，已指定heading level3。原始输入、trace、截图和首轮绿色分别留存在[红色基线](../evidence/2026-10-26/knowledge-report-before/receipt.json)、[初次运行](../evidence/2026-10-26/knowledge-report-initial/receipt.json)和[首轮绿色](../evidence/2026-10-26/knowledge-report-first-green/receipt.json)。中间12项通过日志曾出现，但对应完整JSON被最终运行覆盖，未宣称已保存其完整报告。
+
+实际领域流程包括：冻结的两个数学目标、自我报告原估计保持、全跳过与语文短答待复核的空估计、旧基线计划匹配、实际激活后迟到复测隔离、真实合成学习授权撤回、登录会话退出、原题鉴权读取及390/768/1440键盘阅读。九条原因历史与终态/重开按钮、旧定义和外来reportAtom等部分边界使用明确受控投影，仅证明界面及操作边界，不代表教师因果判定或长期教学效果。
+
+用户确认登录后，通过支持的Browser Runtime重新读取HyperKnow既有Correct/Score600练习、课程目录、日历期限弹窗与恢复白板。当前截图成功，课程/日历可访问快照完整；白板快照仍按Runtime标记partial/truncated。账号称呼已从归档投影移除，日历只截取弹窗以去除背景头像。未提交新消息、答案或日程，未取得原CSS/字体/DPR/音频；见[参考补查](../evidence/2026-10-26/hyperknow-login-recheck/receipt.json)。新观察用于继续M1逐状态对照，不能声称100%还原。
+
+以上为本地通过状态；远端精确三组CI、主目录构建/新鲜回退和实际守护交付继续进行。当前正式运行仍为125，不把开发工作区的功能当作已交付网页。

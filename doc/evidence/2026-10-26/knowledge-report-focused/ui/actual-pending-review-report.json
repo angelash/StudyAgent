@@ -1,0 +1,268 @@
+{
+  "sessionId": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a",
+  "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+  "subject": "chinese",
+  "status": "completed",
+  "familyIdentityVersion": "authored-family-identity-v1",
+  "answeredCount": 4,
+  "totalCount": 4,
+  "scoredCount": 0,
+  "pendingReviewCount": 3,
+  "rawScore": null,
+  "coverage": [
+    {
+      "atomId": "core:chinese:evidence-explanation",
+      "selected": 4,
+      "required": 2,
+      "role": "target",
+      "available": 52
+    }
+  ],
+  "estimates": [
+    {
+      "atomId": "core:chinese:evidence-explanation",
+      "atomName": "判断后引用具体证据",
+      "grade": 4,
+      "mastery": null,
+      "lower": null,
+      "upper": null,
+      "status": "unknown",
+      "rawCorrect": 0,
+      "scoredCount": 0,
+      "effectiveSamples": 0,
+      "independentFamilies": 0,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "procedure",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "transfer",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": null,
+      "transferVerified": false,
+      "retentionVerified": false,
+      "evidenceIds": [],
+      "lastMeasuredAt": null,
+      "algorithmVersion": "rule-estimate-v2",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    }
+  ],
+  "hypotheses": [],
+  "evidence": [
+    {
+      "id": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_69db9d99aff983d2dd9f3b21",
+      "sessionId": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a",
+      "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+      "itemId": "measurement:foundation_q_v2_69db9d99aff983d2dd9f3b21",
+      "questionId": "foundation_q_v2_69db9d99aff983d2dd9f3b21",
+      "atomId": "core:chinese:evidence-explanation",
+      "family": "core:chinese:evidence-explanation:source-based-production",
+      "dimension": "understanding",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": null,
+      "score": null,
+      "correct": null,
+      "status": "skipped",
+      "disposition": "skip",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": null,
+      "gradingReason": "本题已跳过，不计为错误。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:40.035Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_69db9d99aff983d2dd9f3b21",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "0c58baa08f4cd51da4a6ec0993e9cfd0e4a450d3142acbdc378a9a133e9d32c9"
+    },
+    {
+      "id": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_53793067e5f585a2e17333b1",
+      "sessionId": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a",
+      "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+      "itemId": "measurement:foundation_q_v2_53793067e5f585a2e17333b1",
+      "questionId": "foundation_q_v2_53793067e5f585a2e17333b1",
+      "atomId": "core:chinese:evidence-explanation",
+      "family": "core:chinese:evidence-explanation:personal-production",
+      "dimension": "procedure",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": {
+        "questionId": "foundation_q_v2_53793067e5f585a2e17333b1",
+        "mode": "short_answer",
+        "response": {
+          "value": "我先提出判断，再用材料中的具体事实说明依据。"
+        }
+      },
+      "score": null,
+      "correct": null,
+      "status": "pending_review",
+      "disposition": "answered",
+      "elapsedMs": 2000,
+      "hintLevel": 0,
+      "observationCode": null,
+      "gradingReason": "已保存，等待依据评分量规复核。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:40.066Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_53793067e5f585a2e17333b1",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "0c58baa08f4cd51da4a6ec0993e9cfd0e4a450d3142acbdc378a9a133e9d32c9"
+    },
+    {
+      "id": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7fdad44a37f048f3c740f73c",
+      "sessionId": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a",
+      "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+      "itemId": "measurement:foundation_q_v2_7fdad44a37f048f3c740f73c",
+      "questionId": "foundation_q_v2_7fdad44a37f048f3c740f73c",
+      "atomId": "core:chinese:evidence-explanation",
+      "family": "core:chinese:evidence-explanation:claim-limit",
+      "dimension": "transfer",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": {
+        "questionId": "foundation_q_v2_7fdad44a37f048f3c740f73c",
+        "mode": "short_answer",
+        "response": {
+          "value": "我先提出判断，再用材料中的具体事实说明依据。"
+        }
+      },
+      "score": null,
+      "correct": null,
+      "status": "pending_review",
+      "disposition": "answered",
+      "elapsedMs": 2000,
+      "hintLevel": 0,
+      "observationCode": null,
+      "gradingReason": "已保存，等待依据评分量规复核。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:40.096Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7fdad44a37f048f3c740f73c",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "0c58baa08f4cd51da4a6ec0993e9cfd0e4a450d3142acbdc378a9a133e9d32c9"
+    },
+    {
+      "id": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7c80b9bf6fbda9e621c39719",
+      "sessionId": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a",
+      "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+      "itemId": "measurement:foundation_q_v2_7c80b9bf6fbda9e621c39719",
+      "questionId": "foundation_q_v2_7c80b9bf6fbda9e621c39719",
+      "atomId": "core:chinese:evidence-explanation",
+      "family": "core:chinese:evidence-explanation:evidence-repair",
+      "dimension": "transfer",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": {
+        "questionId": "foundation_q_v2_7c80b9bf6fbda9e621c39719",
+        "mode": "short_answer",
+        "response": {
+          "value": "我先提出判断，再用材料中的具体事实说明依据。"
+        }
+      },
+      "score": null,
+      "correct": null,
+      "status": "pending_review",
+      "disposition": "answered",
+      "elapsedMs": 2000,
+      "hintLevel": 0,
+      "observationCode": null,
+      "gradingReason": "已保存，等待依据评分量规复核。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:40.128Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7c80b9bf6fbda9e621c39719",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "0c58baa08f4cd51da4a6ec0993e9cfd0e4a450d3142acbdc378a9a133e9d32c9"
+    }
+  ],
+  "unmeasuredAtomIds": [
+    "core:chinese:evidence-explanation"
+  ],
+  "observations": [
+    {
+      "responseId": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_69db9d99aff983d2dd9f3b21",
+      "atomId": "core:chinese:evidence-explanation",
+      "kind": "skipped",
+      "details": [],
+      "description": "本题被跳过，没有据此评价知识或错误步骤。"
+    },
+    {
+      "responseId": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_53793067e5f585a2e17333b1",
+      "atomId": "core:chinese:evidence-explanation",
+      "kind": "awaiting_review",
+      "details": [],
+      "description": "表达已保存，等待按量规核对，当前不判为错误。"
+    },
+    {
+      "responseId": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7fdad44a37f048f3c740f73c",
+      "atomId": "core:chinese:evidence-explanation",
+      "kind": "awaiting_review",
+      "details": [],
+      "description": "表达已保存，等待按量规核对，当前不判为错误。"
+    },
+    {
+      "responseId": "response:diagnostic_3f596ba7-3015-4785-9a66-caa4cbec665a:measurement:foundation_q_v2_7c80b9bf6fbda9e621c39719",
+      "atomId": "core:chinese:evidence-explanation",
+      "kind": "awaiting_review",
+      "details": [],
+      "description": "表达已保存，等待按量规核对，当前不判为错误。"
+    }
+  ],
+  "componentObservations": [],
+  "scopeSnapshot": {
+    "subject": "chinese",
+    "grade": 4,
+    "term": "upper",
+    "textbookVolumeId": null,
+    "textbookVersion": "合成已学语文范围",
+    "learnedAtomIds": [
+      "core:chinese:evidence-explanation"
+    ],
+    "currentAtomId": "core:chinese:evidence-explanation",
+    "minutesPerSession": 10,
+    "progressMode": "knowledge",
+    "selectedLessonIds": [],
+    "id": "scope_e0666dbf-f047-4295-af24-fdd4d3fa2ce5",
+    "studentId": "student_1cf01c2e-d0cd-4a9b-ae50-32ca01147ba7",
+    "version": 1,
+    "confirmedAt": "2026-10-26T11:57:39.893Z"
+  },
+  "scoringRevisionIds": [],
+  "definitionContext": {
+    "origin": "started",
+    "atoms": [
+      {
+        "id": "core:chinese:evidence-explanation",
+        "name": "判断后引用具体证据",
+        "version": 1,
+        "objective": "先提出判断，再引用材料中能支持它的行动或语言",
+        "successCriterion": "按题目条件独立完成判断后引用具体证据；用另一个结构的新题核查，并在延迟复测时再次验证。",
+        "fingerprint": "0c58baa08f4cd51da4a6ec0993e9cfd0e4a450d3142acbdc378a9a133e9d32c9"
+      }
+    ],
+    "incompatibleEvidenceIds": [],
+    "unverifiedEvidenceIds": []
+  },
+  "summary": "本次已评分 0 题，3 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+  "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。"
+}

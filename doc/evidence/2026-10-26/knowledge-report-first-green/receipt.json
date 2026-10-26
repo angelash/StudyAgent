@@ -1,0 +1,108 @@
+{
+  "at": "2026-10-26T11:35:51.407Z",
+  "status": "first-two-domain-browser-cases-passed",
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-26T11:32:10.914Z",
+    "duration": 11723.018,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "coverage": "Actual frozen objectives and unchanged self-report estimates; complete skip unknown state; real cause-preview without creating sessions; selected point survives reload/back/forward/search.",
+  "bindings": [
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "sha256": "4176bb97110247268648d6d321584eb33b69a2713d673ec0f37d5fc2eb8e2db5"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.tsx",
+      "sha256": "8b4ce97858f038d1513958d659e0ac9e1147713c1f9557cfb8f1ad956669c6de"
+    },
+    {
+      "source": "apps/web/components/report-plan-path.tsx",
+      "sha256": "14b2c8194f46b1fa35e826c8f43c54d996d9805350fc58b2921c33b4ba8a656c"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.css",
+      "sha256": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3"
+    }
+  ],
+  "files": [
+    {
+      "source": "data/qa/knowledge-report-browser.json",
+      "file": "browser-original.json.gz",
+      "originalBytes": 5205,
+      "originalSha256": "7969f6857a9df70e8793861d417567fb5d4e45addc1346ed25cd9a0d7dbbf158",
+      "storedSha256": "a716907c28136aeacd317f18c6c23096cea9152c91bdfc39a1614f754544b972"
+    },
+    {
+      "source": "data/qa/knowledge-report-second-browser.log",
+      "file": "browser-original.log.gz",
+      "originalBytes": 988,
+      "originalSha256": "d5cf8b4a2ec68dedf675ce8cebee8990a0819dbfafea69bceef676d8b752e35c",
+      "storedSha256": "9c5dceaa415f9706e46f2370a0be67fcbaa152bbc2b4844c604abc89674cdd56"
+    },
+    {
+      "source": "data/qa/knowledge-report-first-build.log",
+      "file": "build-original.log.gz",
+      "originalBytes": 1410,
+      "originalSha256": "3ae6e289da7a8a99d07e7500f9758765223cc03d943c8625cd397cbefd47f6fd",
+      "storedSha256": "4cea86044a16b4ea1d498ff00c0f6f33dae677abc6f164b372fdd2f23fa26ab3"
+    },
+    {
+      "source": "data/qa/knowledge-report-types-initial.log",
+      "file": "types-original.log.gz",
+      "originalBytes": 256,
+      "originalSha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "storedSha256": "7c184a0f6a631796125adfbaf0abd31be39f9b57efb4dcf529bcbf1920f4e83e"
+    },
+    {
+      "source": "tests/e2e/knowledge-report.spec.ts",
+      "file": "test-source-original.ts",
+      "originalBytes": 6966,
+      "originalSha256": "029d64652df101d89336df83019eae11f33983cd4f906502dfc34fbcd5234439",
+      "storedSha256": "029d64652df101d89336df83019eae11f33983cd4f906502dfc34fbcd5234439"
+    },
+    {
+      "source": "data/qa/browser-evidence/knowledge-report/report-first-workspace.png",
+      "file": "report-workspace.png",
+      "originalBytes": 270060,
+      "originalSha256": "7a4706a982244993ac5ae47b0d0ec325f4bccaec7d50c608bd49002ff2cbf4d4",
+      "storedSha256": "7a4706a982244993ac5ae47b0d0ec325f4bccaec7d50c608bd49002ff2cbf4d4"
+    },
+    {
+      "source": "apps/web/app/student/assessment/studio.tsx",
+      "file": "inputs\\studio.tsx",
+      "originalBytes": 54901,
+      "originalSha256": "4176bb97110247268648d6d321584eb33b69a2713d673ec0f37d5fc2eb8e2db5",
+      "storedSha256": "4176bb97110247268648d6d321584eb33b69a2713d673ec0f37d5fc2eb8e2db5"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.tsx",
+      "file": "inputs\\knowledge-report-workspace.tsx",
+      "originalBytes": 13499,
+      "originalSha256": "8b4ce97858f038d1513958d659e0ac9e1147713c1f9557cfb8f1ad956669c6de",
+      "storedSha256": "8b4ce97858f038d1513958d659e0ac9e1147713c1f9557cfb8f1ad956669c6de"
+    },
+    {
+      "source": "apps/web/components/report-plan-path.tsx",
+      "file": "inputs\\report-plan-path.tsx",
+      "originalBytes": 5595,
+      "originalSha256": "14b2c8194f46b1fa35e826c8f43c54d996d9805350fc58b2921c33b4ba8a656c",
+      "storedSha256": "14b2c8194f46b1fa35e826c8f43c54d996d9805350fc58b2921c33b4ba8a656c"
+    },
+    {
+      "source": "apps/web/components/knowledge-report-workspace.css",
+      "file": "inputs\\knowledge-report-workspace.css",
+      "originalBytes": 4113,
+      "originalSha256": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3",
+      "storedSha256": "3b25608c3ef112e74b62f50bf794b770b4c8d44573c977f543e0d9c09c3d3ec3"
+    }
+  ],
+  "limits": [
+    "Older matching plans, plan/review read failures, actual revocation, roles, responsive layout and wider regressions remain required.",
+    "Current production is delivered125;126 is an isolated development build."
+  ]
+}

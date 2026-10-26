@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-26T12:27:52.411Z",
+  "status": "authenticated-ui-read-only-rechecked",
+  "courseId": "35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "sessionId": "ed43f6c4-fb26-4603-8645-8e2599424343",
+  "actions": [
+    "read existing correct practice state",
+    "close practice to course",
+    "open calendar duration dialog and close without proceeding",
+    "resume existing whiteboard and read its restored history"
+  ],
+  "files": [
+    {
+      "file": "course-snapshot.json",
+      "bytes": 30146,
+      "sha256": "2db08fcb805d664eb3b841b6a53d847c8d289b9cf28dcfb9824fa1f9cfe96724",
+      "description": "Accessible UI projection; reference coverage retained."
+    },
+    {
+      "file": "calendar-snapshot.json",
+      "bytes": 32027,
+      "sha256": "ef4b4a1523d3456c57cdb5498383d054caa78a62a6900e91edd03460830e3b66",
+      "description": "Accessible UI projection; reference coverage retained."
+    },
+    {
+      "file": "board-snapshot.json",
+      "bytes": 18149,
+      "sha256": "373fd9b8845c3fb58ef245212f85902d54d8318eace36ba014b17b69b8a355f4",
+      "description": "Accessible UI projection; reference coverage retained."
+    },
+    {
+      "file": "practice-correct.png",
+      "bytes": 141472,
+      "sha256": "04e2aac844752a55dd173178254f0cb78344d0007ffd915bceb5876711dbd81b",
+      "description": "Current existing correct/Score600 state; no new answer submitted.880x887 screenshot; DPR unknown."
+    },
+    {
+      "file": "calendar-duration-dialog.png",
+      "bytes": 26406,
+      "sha256": "0b0aee4f9f8d2b9c4047695b021cd7c9d5480d5d5f5f3082d5ca4939281d53c5",
+      "description": "Cropped dialog from880x887 screenshot to omit background account avatar; no calendar schedule saved."
+    },
+    {
+      "file": "whiteboard-resumed-history.png",
+      "bytes": 212884,
+      "sha256": "26bb79fac3f75f38c0c488a71280d86d45ffff3cde6f89995699b3165c154fc1",
+      "description": "Existing resumed whiteboard/history state.880x887 screenshot; no new teaching query or audio request."
+    }
+  ],
+  "observed": [
+    "Practice combines stem, illustration, options, correctness explanation, score and next control; current880px layout partly occludes options.",
+    "Calendar offers1week/2weeks/1month/2months and custom days; current default2weeks. Later steps unobserved.",
+    "Restored board contains concise learning-navigation items, biography/history diagram, comparison table and anonymous practice prompt. Chat history has sentence blocks and board-location chips.",
+    "Resumed-conversation notice waits for a query; no new query was sent."
+  ],
+  "limits": [
+    "No source CSS, original fonts, current DPR, audio bytes, new model call or causal teaching result acquired.",
+    "Board snapshot coverage is partial/truncated as reported by Runtime; course and calendar coverage are complete.",
+    "Prior optional assistant click result was unknown at interruption; this archive does not retroactively claim its outcome.",
+    "A fresh current-turn screenshot succeeded through supported Browser Runtime; no authenticated HTTP, downloads or alternative browser tool used."
+  ]
+}

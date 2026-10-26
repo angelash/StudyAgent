@@ -1,0 +1,634 @@
+{
+  "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+  "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+  "subject": "math",
+  "status": "completed",
+  "familyIdentityVersion": "authored-family-identity-v1",
+  "answeredCount": 7,
+  "totalCount": 7,
+  "scoredCount": 7,
+  "pendingReviewCount": 0,
+  "rawScore": 0,
+  "coverage": [
+    {
+      "atomId": "core:math:average",
+      "selected": 3,
+      "required": 2,
+      "role": "target",
+      "available": 72
+    },
+    {
+      "atomId": "atomic:math:averagecount",
+      "selected": 4,
+      "required": 2,
+      "role": "target",
+      "available": 48
+    }
+  ],
+  "estimates": [
+    {
+      "atomId": "core:math:average",
+      "atomName": "平均数的总量等分",
+      "grade": 4,
+      "mastery": 20,
+      "lower": 0.6,
+      "upper": 60.2,
+      "status": "insufficient",
+      "rawCorrect": 0,
+      "scoredCount": 3,
+      "effectiveSamples": 3,
+      "independentFamilies": 3,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "procedure",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "transfer",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": 100,
+      "transferVerified": false,
+      "retentionVerified": false,
+      "evidenceIds": [
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229"
+      ],
+      "lastMeasuredAt": "2026-10-26T11:57:41.154Z",
+      "algorithmVersion": "rule-estimate-v2",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    },
+    {
+      "atomId": "atomic:math:averagecount",
+      "atomName": "明确平均对象并把零数据计入份数",
+      "grade": 4,
+      "mastery": 16.7,
+      "lower": 0.5,
+      "upper": 52.2,
+      "status": "learning",
+      "rawCorrect": 0,
+      "scoredCount": 4,
+      "effectiveSamples": 4,
+      "independentFamilies": 4,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "procedure",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "transfer",
+          "mastery": 25,
+          "samples": 2
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": 100,
+      "transferVerified": false,
+      "retentionVerified": false,
+      "evidenceIds": [
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d"
+      ],
+      "lastMeasuredAt": "2026-10-26T11:57:41.187Z",
+      "algorithmVersion": "rule-estimate-v2",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hypothesis:9d057b9bc82f920cc49fd212afaea5e60ae61e4b747b227ddfce030cdc338298",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "subject": "math",
+      "atomId": "core:math:average",
+      "cause": "procedure_gap",
+      "status": "contradicted",
+      "title": "当前知识点的理解或执行需要核查",
+      "observation": "在“平均数的总量等分”的 0 道不同题目中观察到未达标作答。另有 3 次选择暂时不会，尚无过程可以核对。",
+      "explanation": "基础题表现可以定位到当前行为，尚不能单独解释产生问题的原因。",
+      "alternatives": [
+        "题意或评分可能需要复核",
+        "作答环境、误触和当日状态尚未测量",
+        "其他知识或策略因素仍待排查"
+      ],
+      "supportingEvidenceIds": [],
+      "counterEvidenceIds": [],
+      "reportedEvidenceIds": [
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229"
+      ],
+      "verification": {
+        "undecidedCondition": "单题、同题重复、提示或曝光后的表现，以及暂时不会、未评分表达，不能满足独立验证条件；支持与反证并存时保留未定。缺题时显示缺口。",
+        "supportCondition": "基础理解或操作在至少两个独立题族中未达标，支持当前行为需要进一步核查；仍不能单独确定产生问题的原因。",
+        "counterCondition": "基础理解或操作在至少两个独立新题族中达标，构成反证；与失败并存时保持未定。",
+        "groups": [
+          {
+            "atomIds": [
+              "core:math:average"
+            ],
+            "dimensions": [
+              "understanding",
+              "procedure"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "分别核查理解与操作，观察卡住的位置"
+          }
+        ]
+      },
+      "probeAtomIds": [
+        "core:math:average"
+      ],
+      "nextAction": "用两个不同题族的基础题，分别检查概念理解和关键步骤。",
+      "confidence": "low",
+      "ruleVersion": "diagnosis-rules-v5",
+      "familyIdentityVersion": "authored-family-identity-v1",
+      "atomDefinitionFingerprint": "91eb6570ae2017c05c0771b1d3072a7a3c9119ed6e9ce592b09640616a243f09",
+      "updatedAt": "2026-10-26T11:57:41.215Z",
+      "history": [
+        {
+          "at": "2026-10-01T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 1 · 目标0"
+        },
+        {
+          "at": "2026-10-02T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 2 · 目标0"
+        },
+        {
+          "at": "2026-10-03T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 3 · 目标0"
+        },
+        {
+          "at": "2026-10-04T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 4 · 目标0"
+        },
+        {
+          "at": "2026-10-05T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 5 · 目标0"
+        },
+        {
+          "at": "2026-10-06T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 6 · 目标0"
+        },
+        {
+          "at": "2026-10-07T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 7 · 目标0"
+        },
+        {
+          "at": "2026-10-08T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 8 · 目标0"
+        },
+        {
+          "at": "2026-10-09T00:00:00.000Z",
+          "status": "contradicted",
+          "reason": "合成状态展示 9 · 目标0"
+        }
+      ]
+    },
+    {
+      "id": "hypothesis:8432f6b4b5e1fb370aa31a064ef015530d8dc6520cfa8d913f53edd2b531c554",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "subject": "math",
+      "atomId": "atomic:math:averagecount",
+      "cause": "procedure_gap",
+      "status": "reopened",
+      "title": "当前知识点的理解或执行需要核查",
+      "observation": "在“明确平均对象并把零数据计入份数”的 0 道不同题目中观察到未达标作答。另有 4 次选择暂时不会，尚无过程可以核对。",
+      "explanation": "基础题表现可以定位到当前行为，尚不能单独解释产生问题的原因。",
+      "alternatives": [
+        "题意或评分可能需要复核",
+        "作答环境、误触和当日状态尚未测量",
+        "其他知识或策略因素仍待排查"
+      ],
+      "supportingEvidenceIds": [],
+      "counterEvidenceIds": [],
+      "reportedEvidenceIds": [
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+        "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d"
+      ],
+      "verification": {
+        "undecidedCondition": "单题、同题重复、提示或曝光后的表现，以及暂时不会、未评分表达，不能满足独立验证条件；支持与反证并存时保留未定。缺题时显示缺口。",
+        "supportCondition": "基础理解或操作在至少两个独立题族中未达标，支持当前行为需要进一步核查；仍不能单独确定产生问题的原因。",
+        "counterCondition": "基础理解或操作在至少两个独立新题族中达标，构成反证；与失败并存时保持未定。",
+        "groups": [
+          {
+            "atomIds": [
+              "atomic:math:averagecount"
+            ],
+            "dimensions": [
+              "understanding",
+              "procedure"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "分别核查理解与操作，观察卡住的位置"
+          }
+        ]
+      },
+      "probeAtomIds": [
+        "atomic:math:averagecount"
+      ],
+      "nextAction": "用两个不同题族的基础题，分别检查概念理解和关键步骤。",
+      "confidence": "low",
+      "ruleVersion": "diagnosis-rules-v5",
+      "familyIdentityVersion": "authored-family-identity-v1",
+      "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81",
+      "updatedAt": "2026-10-26T11:57:41.215Z",
+      "history": [
+        {
+          "at": "2026-10-01T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 1 · 目标1"
+        },
+        {
+          "at": "2026-10-02T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 2 · 目标1"
+        },
+        {
+          "at": "2026-10-03T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 3 · 目标1"
+        },
+        {
+          "at": "2026-10-04T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 4 · 目标1"
+        },
+        {
+          "at": "2026-10-05T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 5 · 目标1"
+        },
+        {
+          "at": "2026-10-06T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 6 · 目标1"
+        },
+        {
+          "at": "2026-10-07T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 7 · 目标1"
+        },
+        {
+          "at": "2026-10-08T00:00:00.000Z",
+          "status": "testing",
+          "reason": "合成状态展示 8 · 目标1"
+        },
+        {
+          "at": "2026-10-09T00:00:00.000Z",
+          "status": "reopened",
+          "reason": "合成状态展示 9 · 目标1"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "questionId": "foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "atomId": "core:math:average",
+      "family": "core:math:average:average-redistribution-conservation-audit",
+      "dimension": "understanding",
+      "questionVersion": 1,
+      "mappingVersion": 2,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.092Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "atomVersion": 2,
+      "atomDefinitionFingerprint": "91eb6570ae2017c05c0771b1d3072a7a3c9119ed6e9ce592b09640616a243f09"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+      "questionId": "foundation_q_v2_fd0e2dbdd77b532dee15d917",
+      "atomId": "atomic:math:averagecount",
+      "family": "atomic:math:averagecount:average-count-zero-record-claim",
+      "dimension": "understanding",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.108Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "questionId": "foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "atomId": "core:math:average",
+      "family": "core:math:average:average-three-days",
+      "dimension": "procedure",
+      "questionVersion": 1,
+      "mappingVersion": 2,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.124Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "atomVersion": 2,
+      "atomDefinitionFingerprint": "91eb6570ae2017c05c0771b1d3072a7a3c9119ed6e9ce592b09640616a243f09"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+      "questionId": "foundation_q_v2_10162f080a6392a8e5e4ec13",
+      "atomId": "atomic:math:averagecount",
+      "family": "atomic:math:averagecount:average-count-complete-daily-record",
+      "dimension": "procedure",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.139Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "questionId": "foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "atomId": "core:math:average",
+      "family": "core:math:average:average-missing-datum-recovery",
+      "dimension": "transfer",
+      "questionVersion": 1,
+      "mappingVersion": 2,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.154Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "atomVersion": 2,
+      "atomDefinitionFingerprint": "91eb6570ae2017c05c0771b1d3072a7a3c9119ed6e9ce592b09640616a243f09"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+      "questionId": "foundation_q_v2_e40b92ad3413f18ab57cb841",
+      "atomId": "atomic:math:averagecount",
+      "family": "atomic:math:averagecount:average-count-participation-and-missingness",
+      "dimension": "transfer",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.169Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+    },
+    {
+      "id": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d",
+      "sessionId": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401",
+      "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+      "itemId": "measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d",
+      "questionId": "foundation_q_v2_fbf99b2eff4e02d37db3821d",
+      "atomId": "atomic:math:averagecount",
+      "family": "atomic:math:averagecount:average-count-person-versus-day",
+      "dimension": "transfer",
+      "questionVersion": 1,
+      "mappingVersion": 1,
+      "answer": null,
+      "score": 0,
+      "correct": false,
+      "status": "scored",
+      "disposition": "dont_know",
+      "elapsedMs": 1000,
+      "hintLevel": 0,
+      "observationCode": "reported_dont_know",
+      "gradingReason": "学生选择暂时不会，作为当前任务表现记录。",
+      "retentionDelayDays": null,
+      "priorExposure": false,
+      "submittedAt": "2026-10-26T11:57:41.187Z",
+      "gradingVersion": "deterministic-rubric-v2",
+      "requestKey": "diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d",
+      "atomVersion": 1,
+      "atomDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+    }
+  ],
+  "unmeasuredAtomIds": [],
+  "observations": [
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fe2a0a9cb77ba333ef8bc1f1",
+      "atomId": "core:math:average",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fd0e2dbdd77b532dee15d917",
+      "atomId": "atomic:math:averagecount",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "atomId": "core:math:average",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_10162f080a6392a8e5e4ec13",
+      "atomId": "atomic:math:averagecount",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_b54b3b57bad8d6cef07fb229",
+      "atomId": "core:math:average",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_e40b92ad3413f18ab57cb841",
+      "atomId": "atomic:math:averagecount",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    },
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_fbf99b2eff4e02d37db3821d",
+      "atomId": "atomic:math:averagecount",
+      "kind": "self_reported",
+      "details": [],
+      "description": "孩子选择暂时不会；没有提交可供核对的解题过程，不能据此确定卡住的步骤或深层原因。"
+    }
+  ],
+  "componentObservations": [
+    {
+      "responseId": "response:diagnostic_c8556508-f336-41e5-a85d-76e9f4706401:measurement:foundation_q_v2_ddaa02a656879a0e0ff5620a",
+      "bindingId": "average-object-count",
+      "sourceAtomId": "core:math:average",
+      "atomId": "atomic:math:averagecount",
+      "atomName": "明确平均对象并把零数据计入份数",
+      "scoreDetails": [],
+      "upstreamDetails": [],
+      "independentEstimateContribution": 0,
+      "ruleVersion": "component-observations-v2",
+      "targetDefinitionFingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81",
+      "state": "not_observed",
+      "description": "本次未形成可以核对的已评分步骤，子点表现仍未知。",
+      "nextAction": "先完成可独立评分的新题；暂时不会和跳过不能定位具体步骤。"
+    }
+  ],
+  "scopeSnapshot": {
+    "subject": "math",
+    "grade": 4,
+    "term": "upper",
+    "textbookVolumeId": null,
+    "textbookVersion": "合成已学知识范围",
+    "learnedAtomIds": [
+      "core:math:average",
+      "atomic:math:averagecount"
+    ],
+    "currentAtomId": "core:math:average",
+    "minutesPerSession": 10,
+    "progressMode": "knowledge",
+    "selectedLessonIds": [],
+    "id": "scope_ee2278b0-1f83-42c4-82bc-736ec9360250",
+    "studentId": "student_254d9477-797e-4dcb-b8f2-5b860028bae9",
+    "version": 1,
+    "confirmedAt": "2026-10-26T11:57:40.967Z"
+  },
+  "scoringRevisionIds": [],
+  "definitionContext": {
+    "origin": "started",
+    "atoms": [
+      {
+        "id": "core:math:average",
+        "name": "平均数的总量等分",
+        "version": 2,
+        "objective": "先合计总量再按数据个数平均",
+        "successCriterion": "按题目条件独立完成平均数的总量等分；用另一个结构的新题核查，并在延迟复测时再次验证。",
+        "fingerprint": "91eb6570ae2017c05c0771b1d3072a7a3c9119ed6e9ce592b09640616a243f09"
+      },
+      {
+        "id": "atomic:math:averagecount",
+        "name": "明确平均对象并把零数据计入份数",
+        "version": 1,
+        "objective": "按问题指定的人、天等平均对象确定份数；参与且为0的记录仍计入，未参加不混入，记录缺失不当成0",
+        "successCriterion": "能从完整记录和参与范围独立选择分母，区分0、未参加与未记录，在对象改变的新题中验证，并经过真实间隔复核。",
+        "fingerprint": "e3bed111559ed5cfcf53b419f4f4bebc4ad817bd5f7f081a97a8272c67374a81"
+      }
+    ],
+    "incompatibleEvidenceIds": [],
+    "unverifiedEvidenceIds": []
+  },
+  "summary": "本次已评分 7 题，0 题待复核；1 个知识点仍需补充证据。下一步优先核查具体知识与步骤。",
+  "modelNotice": "掌握度为规则估计，区间表示现有证据的不确定性；尚未建立标准化常模。一次表现不能确定深层原因。",
+  "version": 1,
+  "generatedAt": "2026-10-26T11:57:41.215Z"
+}
