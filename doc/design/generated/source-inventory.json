@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
+  "sourceRevision": "33af51c289f947b84be001ff90e39deefc47726d",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 385,
@@ -15,7 +15,7 @@
     "contractTypes": 334,
     "webPages": 27,
     "webRouteHandlers": 1,
-    "apiTestFiles": 158,
+    "apiTestFiles": 159,
     "browserTestFiles": 31
   },
   "modules": [
@@ -49556,6 +49556,7 @@
     "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
     "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
     "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts",
+    "apps/api/src/modules/learning/whiteboard-formula.test.ts",
     "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
     "apps/api/src/modules/learning/whiteboard-speech.test.ts",
     "apps/api/src/modules/learning/whiteboard-table.test.ts",

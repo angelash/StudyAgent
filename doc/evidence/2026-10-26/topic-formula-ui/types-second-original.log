@@ -1,0 +1,16 @@
+
+> study-agent@0.1.0 lint
+> npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web
+
+
+> @study-agent/api@0.1.0 lint
+> tsc -p tsconfig.json --noEmit
+
+../web/app/studio/whiteboard-formula.ts(36,38): error TS7006: Parameter 'value' implicitly has an 'any' type.
+npm error Lifecycle script `lint` failed with error:
+npm error code 2
+npm error path F:\workspace\github\StudyAgent-whiteboard-visuals\apps\api
+npm error workspace @study-agent/api@0.1.0
+npm error location F:\workspace\github\StudyAgent-whiteboard-visuals\apps\api
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -p tsconfig.json --noEmit

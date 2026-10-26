@@ -1,6 +1,6 @@
 # 10 GESP研究、C++试点与独立保持 — 详细设计
 
-源码基线：`69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231`。角色：教研、监护家长、试点学生。
+源码基线：`33af51c289f947b84be001ff90e39deefc47726d`。角色：教研、监护家长、试点学生。
 
 产品入口：`/admin/gesp`、`/parent/gesp`、`/student/gesp`。
 

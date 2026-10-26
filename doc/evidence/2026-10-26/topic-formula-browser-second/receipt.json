@@ -1,0 +1,41 @@
+{
+  "status": "preserved-failed-fixture-checkpoint",
+  "at": "2026-10-26T05:34:19.275Z",
+  "passed": 33,
+  "failed": 1,
+  "retries": 0,
+  "cause": "A synthetic direct HTTP manuscript update was correctly protected against a stale local manuscript; image preflight stayed disabled pending explicit server-baseline adoption.",
+  "resolution": "Follow the actual Adopt server manuscript UI before image generation; no product conflict or image-validity check removed.",
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 47572,
+      "sha256": "f50b81b90eafc24a7bbc157fdf859749cb7bb6840ff51b7dfcab4f57b70d7705"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 9979,
+      "sha256": "b6b82413845feb5ec39d0addb740e8bda1861174c6dc2512a01748703cfa97b1"
+    },
+    {
+      "name": "test-source-original.ts",
+      "bytes": 44756,
+      "sha256": "147cb25d1dfd46341751363da51a6e1483da9d32c043d8eee40bdff717266894"
+    },
+    {
+      "name": "error-context.md",
+      "bytes": 30927,
+      "sha256": "384bd7a9cf903b5c283109ee4bb1f77dc05843bc2e9dbac24cbea7702acc145b"
+    },
+    {
+      "name": "trace.zip",
+      "bytes": 1741622,
+      "sha256": "d083dba359547b58db2ab6fbc3b6e88dd22043d0706eecd7ee558a02f7868195"
+    },
+    {
+      "name": "test-failed-1.png",
+      "bytes": 51566,
+      "sha256": "62e2beb9d331994e3f9062077456d5d9697c8f438aee528deb4d0bc8e2b47ffa"
+    }
+  ]
+}

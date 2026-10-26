@@ -1,0 +1,564 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v4.1.12 F:/workspace/github/StudyAgent-whiteboard-visuals/apps/api
+
+ ✓ src/modules/learning/studio-material-upload.integration.test.ts (6 tests) 85942ms
+     ✓ resumes immutable chunks after a real reopen and processes all 120 pages of an actual PDF over 10MiB  52068ms
+     ✓ keeps cancelled page work fenced, backs up its verified checkpoints and resumes missing pages after restoring to an empty root  26464ms
+     ✓ uses actual learning-code upload permissions and fences publication after guardian revocation  2337ms
+     ✓ audits the actual persisted source and checkpoint files without changing the database revision  1246ms
+ ✓ src/infrastructure/sqlite-restore-resume.integration.test.ts (21 tests) 111783ms
+     ✓ recovers after a real parent SIGKILL at copy_created/database  6368ms
+     ✓ recovers after a real parent SIGKILL at copy_chunk/ordinary  7257ms
+     ✓ recovers after a real parent SIGKILL at copy_synced/database  8921ms
+     ✓ recovers after a real parent SIGKILL at copy_published/database  7325ms
+     ✓ recovers after a real parent SIGKILL at copy_published/ordinary  5820ms
+     ✓ recovers after a real parent SIGKILL at database_imported/any  6081ms
+     ✓ recovers after a real parent SIGKILL at ledger_applied/any  6078ms
+     ✓ recovers after a real parent SIGKILL at material_file_deleted/any  6028ms
+     ✓ recovers after a real parent SIGKILL at before_commit/any  7108ms
+     ✓ recovers after a real parent SIGKILL at sql_committed/any  6480ms
+     ✓ recovers after a real parent SIGKILL at receipt_copy_created/any  6531ms
+     ✓ recovers after a real parent SIGKILL at receipt_copy_published/any  7404ms
+     ✓ recovers after a real parent SIGKILL at restore_finished/any  6374ms
+     ✓ rejects a competing live operation and resumes after its actual process exits  5697ms
+     ✓ returns the original completed receipt after legal subsequent learning without repeating fences or cleanup  896ms
+     ✓ refuses changed backup/ledger/target identities and preserves an unexpected destination file  887ms
+     ✓ keeps linked or unknown material controls and refuses to remove the restore guard  1027ms
+     ✓ fails closed if imported business data changed before the cleanup transaction committed  660ms
+     ✓ supports the explicit CLI resume flag and refuses a different already-published receipt  7172ms
+     ✓ keeps an unknown operation database intact and rejects a linked database sidecar  736ms
+     ✓ preserves unlisted media bytes after failed cleanup and replenishes deleted source files before retrying  6930ms
+ ✓ src/modules/diagnostics/family-identity.integration.test.ts (8 tests) 40164ms
+     ✓ normalizes real seeded mappings, keeps raw responses and exact-question exposure, and reports the gap  4592ms
+     ✓ finishes an already-started legacy group, retaining its blueprint while counting one actual structure  3579ms
+     ✓ appends a versioned rule reanalysis, preserves all earlier records, and enforces request and actor boundaries  4370ms
+     ✓ invalidates an unstarted legacy preview but replays an already-started legacy reservation  4624ms
+     ✓ holds legacy guidance for reanalysis, then lets a guardian acknowledge the new evidence version  6730ms
+     ✓ appends current-rule results on score revision while retaining the legacy report and original answers  4516ms
+     ✓ cannot reanalyse an unfinished session or reconstruct missing historical definitions from current content  4593ms
+     ✓ does not treat self-reported difficulty as an independent follow-up that can authorize a retrospective  5420ms
+ ↓ src/infrastructure/topic-whiteboard-recovery.integration.test.ts (2 tests | 2 skipped)
+ ✓ src/infrastructure/studio-original-repair.test.ts (41 tests) 29932ms
+     ✓ recovers exact bytes after real Node SIGKILL at intent_created  783ms
+     ✓ recovers exact bytes after real Node SIGKILL at intent_written  798ms
+     ✓ recovers exact bytes after real Node SIGKILL at intent_synced  756ms
+     ✓ recovers exact bytes after real Node SIGKILL at intent_published  799ms
+     ✓ recovers exact bytes after real Node SIGKILL at candidate_created  806ms
+     ✓ recovers exact bytes after real Node SIGKILL at candidate_chunk  859ms
+     ✓ recovers exact bytes after real Node SIGKILL at candidate_synced  914ms
+     ✓ recovers exact bytes after real Node SIGKILL at candidate_published  865ms
+     ✓ recovers exact bytes after real Node SIGKILL at previous_linked  850ms
+     ✓ recovers exact bytes after real Node SIGKILL at original_removed  826ms
+     ✓ recovers exact bytes after real Node SIGKILL at original_published  811ms
+     ✓ recovers exact bytes after real Node SIGKILL at original_verified  864ms
+     ✓ recovers exact bytes after real Node SIGKILL at previous_removed  836ms
+     ✓ recovers exact bytes after real Node SIGKILL at candidate_removed  796ms
+     ✓ recovers exact bytes after real Node SIGKILL at files_finished  811ms
+     ✓ blocks another live writer and a live source reader before creating any private repair candidate  904ms
+     ✓ checks the authoritative guard again before publication and can continue without rolling back to damaged bytes  1000ms
+     ✓ requires the same immutable repair binding and preserves unknown staged files  653ms
+     ✓ finishes a previously published correct original even after upload chunks are no longer present  858ms
+     ✓ keeps private staged bytes when their immutable intent is missing or belongs to another binding  823ms
+     ✓ accepts correct originals but rejects changing an existing intent baseline  811ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at intent_created  704ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at intent_published  661ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at candidate_created  680ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at candidate_chunk  677ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at candidate_published  677ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at previous_linked  718ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at original_removed  776ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at original_published  841ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at previous_removed  826ms
+     ✓ cleans cancellation after real SIGKILL without publishing or rollback at candidate_removed  747ms
+     ✓ preserves unbound, changed, live and unknown cleanup artifacts  1275ms
+     ✓ continues cancellation cleanup interrupted at each removal boundary  2242ms
+     ✓ audits private files read-only against both the durable identity and request baseline  639ms
+ ✓ src/modules/diagnostics/average-atomic.integration.test.ts (4 tests) 28868ms
+     ✓ keeps the child unknown after a wrong composite count, then measures independent structures and binds guidance to their evidence  4328ms
+     ✓ upgrades all three explicit releases atomically and rolls earlier releases back when the average mapping fails  10137ms
+     ✓ protects changed content, draft mapping, pending candidate and edited target rather than broadening the frozen review  6373ms
+     ✓ preserves an old report and started definitions while invalidating an unused old preview after the release  6014ms
+ ✓ src/modules/diagnostics/atomic-components.integration.test.ts (5 tests) 26358ms
+     ✓ keeps the child unknown after composite answers, then measures it independently and makes an evidence-bound plan  5072ms
+     ✓ keeps historical scores frozen, revises observations after review and invalidates previews when the child goal changes  3923ms
+     ✓ reviews only actual fields, stamps the target fingerprint and protects mapping ownership and versions  2955ms
+     ✓ upgrades two explicit releases in one transaction and rolls both back together on an atomic mapping failure  8741ms
+     ✓ preserves an edited atomic target and leaves its parent relationship for review  3993ms
+ ✓ src/modules/diagnostics/guidance-model-recovery.integration.test.ts (2 tests | 1 skipped) 24804ms
+     ✓ restores rule creation, frozen model, cancellation and adoption receipts, then applies the latest deletion ledger  24802ms
+ ✓ src/modules/student-media/student-media.durability.integration.test.ts (2 tests) 23556ms
+     ✓ resumes a partially uploaded image across API restarts, restores the saved draft, and cleans bytes only after committed deletion  16870ms
+     ✓ prevents a decoding request from recreating files after another request deletes the child  6684ms
+ ✓ src/modules/diagnostics/diagnostics.integration.test.ts (28 tests) 21784ms
+     ✓ builds a provenance-backed learning memory and next-action feed without treating unknown as weakness  798ms
+     ✓ isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps  587ms
+     ✓ serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts  672ms
+     ✓ maps complete local math and English source books without inventing lesson page offsets  642ms
+     ✓ requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition  576ms
+     ✓ rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term  550ms
+     ✓ keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies  575ms
+     ✓ enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions  613ms
+     ✓ verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews  613ms
+     ✓ keeps subjective scoring pending and preserves review versions rather than overwriting evidence  551ms
+     ✓ previews six bounded purposes without exposing answers, creating observations or consuming fresh questions  580ms
+     ✓ starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries  602ms
+     ✓ invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage  596ms
+     ✓ expires unused blueprints without expiring a started assessment or losing its idempotent receipt  582ms
+     ✓ pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure  604ms
+     ✓ releases an aborted delayed task for a new probe without reusing exposed questions  854ms
+     ✓ freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes  1240ms
+     ✓ keeps labels and teaching revisions comparable while preserving historical names  630ms
+     ✓ blocks new guidance and verification after changed definitions while retaining started practice  632ms
+     ✓ preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence  641ms
+     ✓ excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint  627ms
+     ✓ versions parent adjustments, enforces budgets and idempotency, and freezes started activities  864ms
+     ✓ excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure  562ms
+     ✓ retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume  927ms
+     ✓ requires linked independent followups and current evidence acknowledgement before closing a real review cycle  1873ms
+     ✓ persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence  637ms
+     ✓ enforces practice ownership and pause, and leaves subjective practice pending for review  850ms
+     ✓ retires the prototype mutation and correctness-report APIs with an explicit upgrade response  562ms
+ ✓ src/modules/diagnostics/verification-materials.integration.test.ts (7 tests) 22622ms
+     ✓ returns all 258 points with complete published materials without mutating business data  4549ms
+     ✓ filters both atoms and published aggregates by subject and grade  909ms
+     ✓ uses every current eligibility gate and restores readiness only when the actual packets are eligible again  7698ms
+     ✓ distinguishes time budget from structure and removes inactive definitions from published totals  737ms
+     ✓ rechecks edited immutable answer snapshots with the same IDs instead of retaining prior input support  3570ms
+ ✓ src/modules/learning/studio-original-repair.integration.test.ts (15 tests) 22024ms
+     ✓ repairs missing and damaged originals through real endpoints, survives database reopen and replays one receipt  2147ms
+     ✓ rejects wrong files, other upload owners, changed versions and request-key mutation without modifying old bytes  541ms
+     ✓ protects reserved chunks past expiry against completion, cancellation, deduplication and physical maintenance  1046ms
+     ✓ blocks processing, file checks and an actual database backup while repairing  525ms
+     ✓ preserves a file installed after the queued request and retains the original immutable baseline on retry  450ms
+     ✓ waits for live source readers without exhausting attempts and resumes after they release  1072ms
+     ✓ cancels queued work transactionally, cleans after restart and releases the source and upload  838ms
+     ✓ does not roll back a correct file when cancellation happens after publication  526ms
+     ✓ finishes file publication after a domain failure without using deleted upload bytes or changing saved content  554ms
+     ✓ uses an actual learning-code identity and stops publication after its original guardian authorization is revoked  439ms
+     ✓ continues technical cleanup after a real child privacy deletion removes the business repair records  677ms
+     ✓ keeps shared and frozen content unchanged when repairing one source SHA  395ms
+     ✓ restores an actual large 120-page PDF and successfully regenerates original pages with the real processor  9114ms
+ ✓ src/modules/gesp/gesp-student.integration.test.ts (4 tests) 22094ms
+     ✓ runs source with hidden tests and returns only sanitized evidence  19708ms
+     ✓ rejects points outside scope, parent code submission and unrelated guardians  303ms
+ ✓ src/durability.integration.test.ts (1 test) 20911ms
+     ✓ restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations  20910ms
+ ✓ src/modules/privacy/privacy.durability.integration.test.ts (1 test) 23605ms
+     ✓ reapplies the latest deletion ledger inside recovery without resurrecting a closed account or erasing a shared child  23603ms
+ ✓ src/modules/learning/studio.integration.test.ts (20 tests) 21212ms
+     ✓ keeps saved whiteboard creation replays behind current student access without duplicating activity  738ms
+     ✓ previews, saves and reads a uniquely grounded whiteboard with student access  665ms
+     ✓ binds whiteboard replay receipts to the original action, actor, command and saved board  580ms
+     ✓ synthesizes only an authorized frozen sentence, keeps legacy narration, and rejects identity tampering  604ms
+     ✓ inflight: refuses late legacy narration after a separately committed logout of its original login  606ms
+     ✓ inflight: rechecks a separately committed guardian revocation before returning a frozen sentence  620ms
+     ✓ inflight: refuses an old learner session when a newer enabled learning-access epoch replaces it during synthesis  609ms
+     ✓ does not substitute another child for an explicit inaccessible studio selection  612ms
+     ✓ previews selected goals and pace without persisting a course and rejects invalid confirmation targets  650ms
+     ✓ replays the original confirmation after scope changes and rejects changed commands with the same key  686ms
+     ✓ warns only for selected unapproved teaching and preserves every selected strand  618ms
+     ✓ opens an approved course lesson in the shared classroom without replacing independent measurement  649ms
+     ✓ previews, persists and executes an evidence-driven plan with delayed reviews  677ms
+     ✓ renders, saves and grounds page-level whiteboards from an uploaded PDF  2209ms
+     ✓ OCRs an image-only PDF and returns reviewable page structures  4073ms
+     ✓ recovers native table cells and formula candidates while preserving source coordinates  1542ms
+     ✓ keeps connector creation idempotent, isolated, revocable and student read-only  689ms
+     ✓ creates, replays, removes and exports a StudyAgent calendar task  699ms
+     ✓ edits manual calendar tasks with revision checks and guardian isolation  716ms
+     ✓ validates every batch target before deleting and protects subscribed and plan events  863ms
+ ✓ src/modules/gesp/isolated-runner.test.ts (4 tests) 19589ms
+     ✓ compiles once and compares multiple independent test runs  5103ms
+     ✓ reports compile errors and wrong answers without exposing expected output in the receipt  5455ms
+     ✓ terminates an infinite loop and records the wall-time status  5757ms
+     ✓ hides the Windows mount from compiled code  3271ms
+ ✓ src/modules/learning/project-file.integration.test.ts (11 tests) 18746ms
+     ✓ resumes hashed chunks after restart, replays complete, keeps upload changes independent of text revisions and serves real ranges  1761ms
+     ✓ decodes real images, PDFs, audio and Office containers, preserving original hashes separately from sanitized previews  3015ms
+     ✓ freezes file identities in each submitted version and rejects cross-stage refs, incomplete assets and removing historical bytes  1398ms
+     ✓ rejects invalid UTF8 and disguised documents, and cancellation collects exact unreferenced bytes without resurrection  2065ms
+     ✓ includes actual original and preview bytes in family archives and cold recovery; latest deletion receipts erase old restored attachments  3733ms
+     ✓ grants learner file routes explicitly and fences the original learning grant before background publication  303ms
+     ✓ cancellation after real decoding fences a late worker before it publishes any normalized file  313ms
+     ✓ keeps active readers and unknown files intact, then resumes exact deletion when their blockers end  976ms
+     ✓ retains a shared learner submission and real bytes after its original guardian closes their account  1357ms
+ ✓ src/infrastructure/restored-materials.integration.test.ts (5 tests) 16247ms
+     ✓ physically removes deleted private sources and upload chunks while preserving shared/frozen originals and a legitimate resumable job  13615ms
+     ✓ keeps unknown verified-backup files and the restore guard, refusing to erase or overwrite the incomplete target  520ms
+     ✓ fails closed after one unlink and can repeat the same backup/ledger into a different empty target  852ms
+     ✓ rejects a directory junction introduced during copying without chmod or deletion through the link  423ms
+     ✓ rejects a current active-upload record that conflicts with an old permanent revocation  367ms
+ ✓ src/modules/learning/studio-material-maintenance.integration.test.ts (14 tests) 14413ms
+     ✓ does not revoke or unlink before a cancellation transaction commits, then resumes its durable cleanup after reopening  766ms
+     ✓ removes successful upload chunks while retaining the verified original, shared families and frozen course sources  1476ms
+     ✓ waits beyond maxAttempts for a live writer, survives a real reopen, then collects after its exact lease ends  1034ms
+     ✓ reclaims an identifiable dead purge owner but preserves an actually live owner  316ms
+     ✓ exports and deletes every legacy studio relation for an actual child without leaking encrypted subscription credentials  579ms
+     ✓ waits for an actual producer paused at an empty atomic staging file and recovers the durable task after its death  430ms
+     ✓ executes a committed cleanup after an actual worker-enabled application bootstrap without a manual run call  4214ms
+     ✓ continues private original, page and upload cleanup after the owning account has actually been deleted  1658ms
+ ✓ src/modules/reviews/reviews.integration.test.ts (10 tests) 14334ms
+     ✓ requires rechecking revised baseline evidence while preserving existing practice and its original plan snapshot  1360ms
+     ✓ requires guardian assignment, prevents broader teacher access and revokes access immediately  1028ms
+     ✓ uses frozen weights, validates every criterion and rejects score bypass, stale versions and key reuse  1084ms
+     ✓ recalculates later dependent reports, retains every original report and avoids future evidence in historical reports  1061ms
+     ✓ preserves a verified resolution in the later report while keeping future success out of the earlier report  1117ms
+     ✓ reviews practice without changing mastery or erasing hint and original attempt evidence  1128ms
+     ✓ isolates feedback, derives ownership from the response and preserves resolution history without auto-regrading  1146ms
+     ✓ withdraws a diagnostic hypothesis when corrected scores remove its supporting failures  1083ms
+     ✓ keeps malformed rubric evidence inspectable for feedback without allowing a total-score bypass  1170ms
+     ✓ lets only a reauthenticated admin grant teacher identity and revokes existing sessions on role changes  2530ms
+ ✓ src/modules/diagnostics/authored-relation-release.test.ts (5 tests) 15208ms
+     ✓ rebinds only the 51 fully unchanged reviewed packets, preserves nine edited boundaries and records both mapping versions  6758ms
+     ✓ rolls back the definition, mapping revisions and events together if a reviewed mapping save fails  6418ms
+ ✓ src/modules/learning/source-course-compilation.integration.test.ts (11 tests) 15759ms
+     ✓ generates more than six lessons from original assigned chunks with complete mechanical coverage and small progress polling  869ms
+     ✓ resumes only missing stages after a real database reopen and keeps the original fixed model  1283ms
+     ✓ preserves stable lesson identities, original drafts and honest coverage after lesson removal/reorder and individual editing  781ms
+     ✓ keeps an uploaded 179000-character UTF-8 original byte-exact and exports it without sending an oversized JSON body  3159ms
+     ✓ uses actual learning-code permissions for preflight and source reads, without granting access to author answers  304ms
+     ✓ compiles all 120 original pages within the 180000-character budget and retains the last page and its stages  5668ms
+ ✓ src/modules/diagnostics/curriculum-package.integration.test.ts (9 tests) 13186ms
+     ✓ previews and applies forward references atomically, deduplicates receipts and round-trips without version inflation  1402ms
+     ✓ rejects duplicate, missing, cyclic, cross-subject and unpublished relationships without partial writes  1465ms
+     ✓ rejects stale definitions and graph changes after preview, including individual editor saves  1180ms
+     ✓ removes omitted optional definitions, preserves old revisions and rejects stale additions  1252ms
+     ✓ enforces actor, upload ownership, type and size boundaries  1157ms
+     ✓ rejects malformed UTF-8, strict-schema errors and blob tampering before any definition is applied  1273ms
+     ✓ accepts BOM and leading whitespace while still verifying the complete JSON document  1128ms
+     ✓ keeps draft teaching out of student curriculum and freezes approved guidance and practice snapshots  1322ms
+     ✓ validates authored cards and enriches only exact unedited seed definitions  1254ms
+ ✓ src/modules/diagnostics/guidance-model.integration.test.ts (11 tests) 13735ms
+     ✓ serializes identical commands across two app instances and refuses two active suggestions for a plan  2493ms
+     ✓ cannot publish or retry after the exact original guardian authorization was revoked  302ms
+     ✓ does not publish an obsolete report, and adopting a completed suggestion requires its original plan revision  491ms
+ ✓ src/modules/learning/topic-whiteboard-visual.integration.test.ts (14 tests) 14437ms
+     ✓ publishes verifiable landscape bytes once and supports a real original PNG edit without overwriting the parent  682ms
+     ✓ cancels queued work without invoking a provider, retries explicitly and returns the immutable old-generation receipt  385ms
+     ✓ rejects a late PNG after running cancellation even if the controlled provider ignores the abort signal  2272ms
+     ✓ allows an unrelated manuscript description revision while refusing a changed teaching scene before late publication  525ms
+     ✓ keeps historical images readable after scene changes but checks exact file SHA and rejects foreign, stale and cross-scene edit sources  546ms
+     ✓ does not publish under a replacement login after the original author logs out during image generation  876ms
+     ✓ retains a failed original request across a native store reopen and requires explicit retry before a second provider invocation  876ms
+     ✓ keeps a single original candidate under two actual application instances and replays the winning prepare  639ms
+     ✓ refuses a late edit when its actual source PNG bytes change after the provider has read them  471ms
+     ✓ explicitly saves only current authorized scene images and freezes a public image identity without private candidates  725ms
+     ✓ preserves the full manuscript when a selected image corrupts and permits an explicit removal before confirmation  395ms
+     ✓ shares only frozen PNGs, physically erases author prompts and private images, then collects the shared PNG after child deletion  3075ms
+ ✓ src/modules/learning/notebook.integration.test.ts (9 tests) 11817ms
+     ✓ does not reveal unfinished independent answers through either notebook route and denies a different family  961ms
+     ✓ organizes tags, favorites and reflection with versioned replay, filters and reversible removal without changing the evidence  907ms
+     ✓ uses the frozen original in the real practice path and never counts repeated correction as independent mastery  954ms
+     ✓ prepares and replays independent new-question verification, keeps different long keys distinct and refuses changed knowledge semantics  894ms
+     ✓ retains a corrected card and notes after scoring revision, while untouched correct responses cannot enter the notebook  860ms
+     ✓ isolates the historical redo assistant from a later unrelated plan and freezes its original definition  984ms
+     ✓ allows a controlled student to organize, redo and resume their own notebook without acquiring management access  853ms
+     ✓ keeps image_upload redo uploads, pending scores and manual rubric revisions in the original learning path  1058ms
+     ✓ keeps audio_record redo uploads, pending scores and manual rubric revisions in the original learning path  2547ms
+ ✓ src/modules/diagnostics/adaptive-routing.integration.test.ts (10 tests) 10639ms
+     ✓ freezes preview scope and blocks future render, draft, hint, answer, coaching and media paths  915ms
+     ✓ follows basis → nearest prerequisite → original target → transfer → same-point contrast  957ms
+     ✓ records assisted and pending expressions as uncertain followups  876ms
+     ✓ replays first submissions once and preserves routing through pause, abort and scoring revisions  903ms
+     ✓ keeps old fixed APIs compatible, rejects adaptive retests and never adds unconfirmed prerequisites  839ms
+     ✓ withholds unfinished scores from reports, evidence and knowledge profiles until the group ends  878ms
+     ✓ records self-reports separately from causal support and makes the guidance plan verify first  873ms
+     ✓ preserves frozen per-position observations while separating a later total-score override  844ms
+     ✓ shows actual rubric observations after review without changing the original pending expression  851ms
+     ✓ uses reviewed independent expressions when deciding whether guidance still needs initial evidence  844ms
+ ✓ src/modules/learning/topic-whiteboard.integration.test.ts (12 tests) 10098ms
+     ✓ reopens a failed review and retries the original model without repeating the completed writing checkpoint  734ms
+     ✓ cancels a generation after it is claimed, aborts its actual provider signal and fences old controls after an explicit retry  2170ms
+     ✓ rejects a late model result after a separately committed logout rather than restoring it under a new login  651ms
+     ✓ checks the original session again after actual async narration and preserves private no-store presentation identity  410ms
+     ✓ keeps one original candidate across two real application instances and replays the winning command  578ms
+     ✓ deletes child drafts and boards, cancels queued generation and applies the newer ledger to an actual cold backup  797ms
+     ✓ restores an interrupted native task and permits an explicit retry under the new login and current recovered generation  1546ms
+ ✓ src/modules/learning/source-course-lifecycle.integration.test.ts (11 tests) 9920ms
+     ✓ retains withdrawal reasons and can explicitly restore an older version while archiving its replacement  302ms
+     ✓ copies actual long-course stages with new identities and can edit the original-backed lesson after reopen  810ms
+     ✓ hides discarded unpublished revisions from an actual learner and removes their relations on actual child deletion  560ms
+     ✓ cold restores an actual long-course revision, original-backed editing and lifecycle receipts  1999ms
+     ✓ keeps a shared published version while actually erasing its creator private discarded drafts and stage payloads  2376ms
+ ✓ src/modules/learning/source-course.integration.test.ts (23 tests) 10082ms
+     ✓ persists a queued task across restart and generates a complete candidate with verifiable quotations  763ms
+     ✓ invalidates a stale source preview while an active classroom retains its frozen original text  325ms
+     ✓ processes an adult PDF through the existing worker and includes its verified original in a family archive  1254ms
+     ✓ blocks complete editing after source changes or guardian revocation  301ms
+     ✓ restarts after a later lesson fails, reuses completed checkpoints and keeps Auto pinned to the original model  1341ms
+     ✓ handles six complete lessons and legacy provenance without inventing original inputs  335ms
+     ✓ closing an account retains a shared child published course and prevents a deleted in-flight draft from reappearing  450ms
+ ✓ src/modules/student-media/student-media.integration.test.ts (5 tests) 9395ms
+     ✓ resumes immutable chunks, validates content and scope, and keeps a pending manual score with reversible review  1093ms
+     ✓ rejects a fake image before scoring and cleans cancelled and expired uploads without deleting draft evidence  1113ms
+     ✓ refuses storage junctions without reading or writing their destination  884ms
+     ✓ accepts a real recording under the child identity and rejects cross-session, cross-kind and revoked student access  2080ms
+     ✓ streams a self-contained tar only for the preparing session, rechecks current guardianship, and physically erases a deleted child  2374ms
+ ✓ src/modules/learning/classroom.integration.test.ts (10 tests) 9744ms
+     ✓ saves hints before submission and preserves assistance after refresh and restart  672ms
+     ✓ grants sequential frozen hints once and keeps dont-know separate from skip and wrong  1340ms
+     ✓ retains identical teaching progress while old practice and legacy hints remain frozen  741ms
+     ✓ keeps old unit questions and scoring readable after a new check is published  759ms
+     ✓ synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor  733ms
+     ✓ persists supplemental board with its original page and keeps it private after restart  705ms
+     ✓ rejects invalid or stale progress, then restores frozen content, answers and project text after restart  720ms
+     ✓ restores edited calendar confirmation, time and completion after a SQLite restart  1248ms
+ ✓ src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts (1 test) 9312ms
+     ✓ retains only shared PNGs through the current account ledger and prevents old and post-account bundles from resurrecting deleted child images  9311ms
+ ✓ src/app.integration.test.ts (15 tests) 8708ms
+     ✓ allows parent login and student creation  305ms
+     ✓ imports math textbooks and exposes textbook tree  308ms
+     ✓ supports knowledge assembly actions for lessons, knowledge points and sample questions  311ms
+     ✓ creates textbook import job and generates candidate records  653ms
+     ✓ approves textbook import record and creates draft question candidate  611ms
+     ✓ builds question render payload and validates formula answers  576ms
+     ✓ supports multi blank answer schemas end-to-end  539ms
+     ✓ builds student knowledge map with textbook structure, knowledge points and linked questions  591ms
+     ✓ backfills question coverage so every knowledge point reaches at least five published questions  557ms
+     ✓ rejects access from an unbound parent  557ms
+     ✓ returns analytics overview for admin  614ms
+ ✓ src/modules/learning/classroom-visual.integration.test.ts (11 tests) 8400ms
+     ✓ exports verified original and display bytes in the family archive without private drawing instructions  330ms
+     ✓ retains failed work, explicitly retries the same task, cancels a late image and prevents a partial publication  539ms
+     ✓ rejects an old expired lease while a new worker produces the selected task output  358ms
+     ✓ rechecks a real child source classroom after guardian revocation and refuses the late file  356ms
+     ✓ survives an API restart, backs up referenced bytes and prevents deletion-ledger resurrection  3429ms
+ ✓ src/modules/learning/source-course-check.integration.test.ts (23 tests) 8272ms
+     ✓ retains the written checkpoint through review failure and real application reopen, then retries only review with the original model  689ms
+     ✓ refuses publication of an in-flight candidate after a real HTTP logout despite a fresh login by the same person  339ms
+     ✓ serves exact frozen sources and old answers after replacement, withdrawal and application reopen without mixing journey versions  792ms
+     ✓ uses real privacy export and account/child deletion while retaining shared first answers and fencing a late private draft  1389ms
+ ✓ src/modules/diagnostics/answer-draft.integration.test.ts (10 tests) 8190ms
+     ✓ diagnostic: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence  385ms
+     ✓ practice: lost first-submit receipts replay by JSON meaning and keep original time and independent evidence  412ms
+     ✓ keeps an unconfirmed save after restart and excludes internal command journals from real family exports  1082ms
+     ✓ restores actual SQLite draft journals into an empty root and applies the latest child deletion before reopening old backups  3305ms
+ ↓ src/infrastructure/source-course-check-postgres.integration.test.ts (3 tests | 3 skipped)
+ ✓ src/modules/learning/classroom-turn.integration.test.ts (17 tests) 8726ms
+     ✓ persists structured boards with frozen speech, keeps legacy notes and exports complete graphs after reopening  633ms
+     ✓ supports all five intents and keeps actual model identity fixed in the queued command  617ms
+     ✓ recovers a queued turn after database reopen and exports no internal prompt or authorization  655ms
+     ✓ removes turns through actual child privacy deletion and prevents queued model calls  393ms
+     ✓ recovers an expired worker lease after restart and fences the previous worker output  653ms
+     ✓ retains turn context through a real SQLite backup and cold restore with invalid old leases  2014ms
+ ✓ src/modules/privacy/privacy.integration.test.ts (5 tests) 8483ms
+     ✓ exports owned raw evidence and revisions, excludes secrets and other private conversations, and replays one committed snapshot  2362ms
+     ✓ requires the current password, exact confirmation and an unchanged preview before destructive work  1349ms
+     ✓ keeps family exports and deletion unavailable to teaching and administration identities  532ms
+     ✓ deletes a full linked child history and learning access once while preserving siblings, parent identity and shared content  1049ms
+     ✓ rejects unilateral shared-child deletion and closes a parent account without erasing another guardian learning history or access  1217ms
+ ✓ src/modules/ai/assistant-turn.integration.test.ts (19 tests) 7230ms
+     ✓ serializes concurrent creation from two application instances and isolates other owners  745ms
+     ✓ retains one queued command over a cold restart and rejects the expired worker lease  759ms
+     ✓ counts pending and cancelled commands once in the daily quota and permits exact replay  377ms
+     ✓ fences an in-flight answer after actual student deletion  679ms
+     ✓ fences an in-flight answer after actual account deletion  621ms
+ ✓ src/modules/diagnostics/verification-blueprint.integration.test.ts (6 tests) 7091ms
+     ✓ freezes both base and transfer groups, collects independent contrasts and preserves the initial specification  881ms
+     ✓ defaults to the target and every direct prerequisite, excluding more distant ancestors  889ms
+     ✓ retains real missing dimensions and budget gaps without substituting other questions  917ms
+     ✓ keeps prompted, self-reported, skipped and pending work out of independent counts  886ms
+     ✓ updates actual observations after rubric reviews while freezing every earlier report and original response  950ms
+     ✓ invalidates a preview when its evidence basis changes and enforces intent, retention, scope and ownership  860ms
+ ✓ src/modules/library/measurement-content.integration.test.ts (7 tests) 7049ms
+     ✓ keeps originals immutable, preserves missing positions, separates permissions and deduplicates staging  630ms
+     ✓ rejects incompatible grading gold cases, foreign media, bad scope and unsupported mappings  588ms
+     ✓ requires all five reviews, invalidates them on edit and blocks reference-only sources  761ms
+     ✓ publishes one primary measurement, withholds answers and reviews from learners, and freezes sessions on withdrawal  993ms
+     ✓ binds approvals to current knowledge definitions and rejects stale concurrent edits  633ms
+     ✓ removes changed rendered or scored content from new selection until reviewed again  718ms
+     ✓ accepts explicit subjective rubric examples and keeps scoring in human review  708ms
+ ✓ src/modules/learning/source-course-project.integration.test.ts (9 tests) 7333ms
+     ✓ creates once on explicit opening, binds a recoverable original save and survives actual storage restart  694ms
+     ✓ restores actual source reading, assisted first answers and private project metadata without leaking them to another account  810ms
+     ✓ cold restores the actual SQLite source-project binding, then applies the newer account deletion to the old backup  2642ms
+ ✓ src/modules/student-media/media-normalization.test.ts (3 tests) 7495ms
+     ✓ decodes real WAV, WebM, Ogg, MP3 and M4A without metadata, and rejects excessive duration and video streams  7476ms
+ ✓ src/modules/learning/studio-material-integrity.integration.test.ts (8 tests) 7189ms
+     ✓ reports existing mismatches without rebasing them and repairs real missing/corrupt pages through the persistent processor  815ms
+     ✓ does not traverse junctions, invent missing originals or change corrupt original bytes  452ms
+     ✓ persists newly recorded disk and embedded bytes through native backup to an empty root and application restart  1839ms
+ ✓ src/infrastructure/studio-atomic-marker.test.ts (23 tests) 6503ms
+     ✓ Node lease: protects while alive and recovers after forced exit at created  304ms
+     ✓ Node lease: protects while alive and recovers after forced exit at written  317ms
+     ✓ Node lease: protects while alive and recovers after forced exit at synced  330ms
+     ✓ Node lease: protects while alive and recovers after forced exit at published  357ms
+     ✓ Node lease: protects while alive and recovers after forced exit at cleaned  330ms
+     ✓ Node purge: protects while alive and recovers after forced exit at cleaned  316ms
+     ✓ Node revoked: protects while alive and recovers after forced exit at written  311ms
+     ✓ Node revoked: protects while alive and recovers after forced exit at published  301ms
+ ✓ src/modules/learning/classroom-code.integration.test.ts (8 tests) 5197ms
+     ✓ retains exact code, input, source binding and requests through a database reopen  581ms
+     ✓ allows an actual learner to save only their own draft, then deletes it through real child privacy deletion  379ms
+     ✓ restores personal code and input from a real verified SQLite bundle without changing the lesson  1643ms
+ ✓ src/modules/learning/classroom-choice.integration.test.ts (10 tests) 5004ms
+     ✓ recognizes unordered command replay while preserving the original first answer and assistance  629ms
+     ✓ isolates another account and serializes two actual instances without overwriting first feedback  587ms
+     ✓ serializes different concurrent commands and retains one complete original set  619ms
+     ✓ exports submitted feedback but withholds all unsubmitted private keys and internal commands  319ms
+ ✓ src/modules/learning/classroom-choice-recovery.integration.test.ts (2 tests | 1 skipped) 5403ms
+     ✓ restores private frozen scoring, original replay and portable feedback, then honors a newer deletion ledger  5402ms
+ ✓ src/modules/ai/assistant-turn-recovery.integration.test.ts (2 tests | 1 skipped) 5334ms
+     ✓ restores original commands, models and terminal messages then applies newer child and account deletions  5332ms
+ ✓ src/modules/students/student-access.integration.test.ts (5 tests) 5192ms
+     ✓ redeems only once, stores hashes, isolates siblings, and allows real learning and student coaching  756ms
+     ✓ denies every management route even for this child while allowing authorized practice  726ms
+     ✓ expires and revokes codes and devices without reviving old identities on reenable  618ms
+     ✓ keeps proposed grade/progress out of assessment until guardian acceptance and preserves old scopes  592ms
+     ✓ expires an eight-hour learning session and bounds code guessing  565ms
+ ✓ src/product-safety.integration.test.ts (6 tests) 4774ms
+     ✓ never grants admin from an account name, requires explicit registration, sets a private cookie and revokes logout  573ms
+     ✓ prevents self-binding by ID and allows only the invited recipient  896ms
+     ✓ protects drafts, correct answers and grading keys  328ms
+     ✓ protects assistant sessions from anonymous and cross-parent access  557ms
+ ✓ src/modules/learning/course-project.integration.test.ts (10 tests) 4363ms
+     ✓ freezes each submission, requires revision notes and survives a storage restart  605ms
+ ✓ src/modules/learning/classroom-presentation.integration.test.ts (11 tests) 4100ms
+     ✓ retains units, history and semantic identities through database reopen and portable export  682ms
+ ✓ src/modules/learning/project-teaching.integration.test.ts (4 tests) 4433ms
+     ✓ derives navigation from the original frozen fields and narrates only its verified instruction unit  387ms
+     ✓ rejects other accounts, arbitrary text, stale content and unknown navigation or voice without calling speech  417ms
+     ✓ ignores private answer edits while preserving their exact drafts and the old frozen teaching definition  398ms
+     ✓ refuses an in-flight result after its original login is revoked and honors exact cancellation  644ms
+ ✓ src/modules/ai/evidence-coach.integration.test.ts (7 tests) 3942ms
+     ✓ validates session scope and gives evidence-based local coaching in all three subjects  310ms
+     ✓ uses the selected frozen definition and baseline report across report, plan and practice coaching  593ms
+ ✓ src/modules/gesp/gesp.integration.test.ts (8 tests) 3721ms
+ ✓ src/common/http-body.integration.test.ts (4 tests) 3926ms
+     ✓ accepts valid gzip JSON and rejects malformed compressed bytes without exposing input  378ms
+     ✓ applies the 512KB limit to decoded content and keeps serving subsequent requests  328ms
+ ✓ src/modules/learning/learning-home.integration.test.ts (6 tests) 3820ms
+     ✓ restores the same profile and course facts after an API restart  756ms
+ ✓ src/modules/learning/classroom-voice-preview.integration.test.ts (4 tests) 3059ms
+ ✓ src/modules/processing/processing.integration.test.ts (5 tests) 3093ms
+ ✓ src/modules/gesp/gesp-learning-loop.integration.test.ts (4 tests) 2816ms
+ ✓ src/modules/library/library.integration.test.ts (3 tests) 2863ms
+ ✓ src/infrastructure/operations.integration.test.ts (3 tests) 2698ms
+ ✓ src/infrastructure/source-material-backup.integration.test.ts (4 tests) 1984ms
+     ✓ keeps a frozen PDF original after its mutable material record is gone, recording the actual size only after hash verification  445ms
+     ✓ retains a frozen text snapshot without inventing a TXT original from an unspecified historical format  348ms
+     ✓ restores byte-exact PDF/TXT originals, page images and saved stage payloads into an empty directory  1042ms
+ ✓ src/modules/diagnostics/authored-english-grade3-grade6-probes.test.ts (9 tests) 2028ms
+     ✓ assembles every four-structure point within the 600-second assessment budget  1437ms
+ ↓ src/infrastructure/topic-whiteboard-postgres.integration.test.ts (2 tests | 2 skipped)
+ ✓ src/modules/learning/topic-whiteboard-visual-files.test.ts (4 tests) 1958ms
+     ✓ backs up all actual schema17 image references and cold restores their original byte identities  791ms
+     ✓ applies a newer anonymous account deletion ledger to an old real bundle and physically removes the restored private image directory  846ms
+ ✓ src/modules/diagnostics/authored-chinese-grade5-grade6-probes.test.ts (11 tests) 1152ms
+     ✓ builds all 26 four-structure examples within 600 seconds  791ms
+ ✓ src/infrastructure/backup.integration.test.ts (3 tests) 991ms
+     ✓ backs up the live WAL snapshot and referenced bytes, restores learning records, revokes old access and fences old workers  544ms
+ ✓ src/infrastructure/source-course-check-storage.integration.test.ts (9 tests) 1088ms
+     ✓ backs up and restores an original referenced only by a frozen check, independently of a mutable course or material row  446ms
+     ✓ restores originals retained only by a frozen classroom and excludes private source snapshots from portable export  431ms
+ ✓ src/modules/diagnostics/authored-english-grade1-grade2-probes.test.ts (11 tests) 963ms
+     ✓ assembles all twenty four-structure examples within 600 seconds  621ms
+ ✓ src/modules/diagnostics/authored-chinese-grade1-probes.test.ts (20 tests) 774ms
+     ✓ assembles one four-structure example per written point within 600 seconds  408ms
+ ✓ src/modules/ai/classroom-image.service.test.ts (4 tests) 762ms
+     ✓ waits for an actual owned command and its child to stop before returning a cancellation  735ms
+ ✓ src/modules/diagnostics/authored-chinese-grade2-probes.test.ts (10 tests) 712ms
+     ✓ builds one four-structure written sample and one four-audio sample within 600 seconds  372ms
+ ✓ src/common/terminate-child-process.integration.test.ts (1 test) 753ms
+     ✓ waits for the real parent and its spawned worker to exit  752ms
+ ✓ src/modules/diagnostics/answer-protocol.test.ts (9 tests) 725ms
+     ✓ publishes usable configuration and independently checkable keys for every supported mode  711ms
+ ✓ src/modules/diagnostics/authored-chinese-grade3-probes.test.ts (6 tests) 793ms
+     ✓ assembles all thirteen points within the four-item, 600-second material budget  441ms
+ ✓ src/modules/diagnostics/authored-chinese-grade4-probes.test.ts (6 tests) 735ms
+     ✓ assembles all thirteen samples in four items and at most 600 seconds  398ms
+ ✓ src/infrastructure/restore-context.test.ts (5 tests) 547ms
+     ✓ verifies a read-only backup without loading the compiled application runtime  355ms
+ ✓ src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts (27 tests) 583ms
+ ✓ src/modules/diagnostics/authored-geometry-probes.test.ts (22 tests) 608ms
+ ✓ src/infrastructure/studio-file-coordination.test.ts (5 tests) 625ms
+ ✓ src/infrastructure/scoped-transactions.test.ts (4 tests) 775ms
+     ✓ merges disjoint transactions while protecting authorization, plan state, membership and every changed row  456ms
+ ✓ src/infrastructure/topic-whiteboard-storage.integration.test.ts (4 tests) 798ms
+     ✓ upgrades a real schema15 database while retaining original legacy whiteboards and adds the two intended constraints  391ms
+     ✓ backs up, verifies and cold restores actual schema17 original topic records without modifying them  396ms
+ ✓ src/modules/diagnostics/authored-math-grade5-grade6-probes.test.ts (7 tests) 454ms
+ ✓ src/modules/diagnostics/core-curriculum.test.ts (4 tests) 397ms
+     ✓ keeps objective options unambiguous, numbers finite and subjective criteria explicit  388ms
+ ✓ src/modules/diagnostics/authored-spatial-probes.test.ts (12 tests) 408ms
+ ✓ src/modules/diagnostics/authored-english-foundation-probes.test.ts (18 tests) 425ms
+ ✓ src/modules/learning/ics-calendar.test.ts (5 tests) 473ms
+     ✓ honors EXDATE and reports public-only network targets  451ms
+ ✓ src/modules/diagnostics/authored-fourth-grade-number-probes.test.ts (29 tests) 408ms
+ ✓ src/modules/learning/whiteboard-formula.test.ts (4 tests) 484ms
+ ✓ src/modules/diagnostics/authored-factor-multiple-probes.test.ts (26 tests) 389ms
+ ✓ src/modules/diagnostics/authored-english-lexical-probes.test.ts (20 tests) 365ms
+ ✓ src/modules/diagnostics/average-atomic.test.ts (11 tests) 343ms
+ ✓ src/modules/diagnostics/authored-remainder-decimal-probes.test.ts (21 tests) 363ms
+ ✓ src/modules/diagnostics/authored-third-grade-probes.test.ts (15 tests) 349ms
+ ✓ src/modules/diagnostics/authored-unit-probes.test.ts (19 tests) 359ms
+ ✓ src/modules/diagnostics/authored-data-probes.test.ts (15 tests) 338ms
+ ✓ src/modules/diagnostics/authored-second-grade-probes.test.ts (12 tests) 338ms
+ ✓ src/infrastructure/task-repository.test.ts (7 tests) 516ms
+     ✓ recovers an interrupted lease after reopening and rejects its stale output  344ms
+ ✓ src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts (3 tests) 514ms
+     ✓ upgrades an actual schema16 file without changing its original whiteboard or manuscript  380ms
+ ✓ src/modules/learning/classroom-visual-storage.test.ts (5 tests) 298ms
+ ✓ src/modules/diagnostics/authored-chinese-oral-grade1-probes.test.ts (11 tests) 301ms
+ ✓ src/infrastructure/snapshot-isolation.test.ts (4 tests) 244ms
+ ✓ src/modules/learning/source-course-chunks.test.ts (6 tests) 218ms
+ ✓ src/modules/diagnostics/authored-math-probes.test.ts (9 tests) 256ms
+ ✓ src/modules/diagnostics/atomic-components.test.ts (19 tests) 201ms
+ ✓ src/modules/diagnostics/authored-number-probes.test.ts (14 tests) 214ms
+ ✓ src/modules/ai/xiaojiu-chat.service.test.ts (7 tests) 189ms
+ ✓ src/modules/diagnostics/authored-arithmetic-probes.test.ts (9 tests) 187ms
+ ✓ src/infrastructure/rate-limit.test.ts (3 tests) 162ms
+ ✓ src/infrastructure/domain-database.test.ts (5 tests) 143ms
+ ✓ src/modules/diagnostics/family-identity.test.ts (16 tests) 148ms
+ ✓ src/modules/diagnostics/verification-materials.test.ts (13 tests) 136ms
+ ✓ src/modules/diagnostics/textbook-registry-document.test.ts (4 tests) 100ms
+ ✓ src/modules/gesp/gesp-learning-loop.test.ts (5 tests) 44ms
+ ✓ src/modules/learning/classroom-practice-content.test.ts (10 tests) 31ms
+ ✓ src/modules/learning/whiteboard-table.test.ts (2 tests) 26ms
+ ✓ src/modules/ai/codex-pdf-structure.service.test.ts (2 tests) 26ms
+ ✓ src/modules/diagnostics/verification-blueprint.test.ts (15 tests) 20ms
+ ✓ src/modules/learning/source-course-check-content.test.ts (18 tests) 20ms
+ ✓ src/modules/ai/classroom-reply-board.test.ts (16 tests) 21ms
+ ✓ src/modules/ai/openai-compatibility.test.ts (3 tests) 22ms
+ ✓ src/modules/learning/course-journey.test.ts (4 tests) 15ms
+ ✓ src/modules/ai/speech.service.test.ts (8 tests) 19ms
+ ✓ src/modules/ai/xiaojiu-models.service.test.ts (1 test) 17ms
+ ✓ src/modules/learning/topic-whiteboard-content.test.ts (5 tests) 14ms
+ ✓ src/modules/learning/classroom-unit-checks.test.ts (14 tests) 12ms
+ ✓ src/modules/learning/topic-whiteboard-access.test.ts (6 tests) 11ms
+ ✓ src/modules/learning/classroom-presentation.test.ts (6 tests) 12ms
+ ✓ src/modules/diagnostics/measurement.test.ts (11 tests) 12ms
+ ✓ src/modules/gesp/student-curriculum.test.ts (3 tests) 10ms
+ ✓ src/modules/learning/whiteboard-speech.test.ts (5 tests) 9ms
+ ✓ src/modules/learning/studio-course.test.ts (10 tests) 10ms
+ ✓ src/modules/learning/topic-whiteboard-visual-context.test.ts (4 tests) 9ms
+ ✓ src/modules/diagnostics/scoring.test.ts (4 tests) 10ms
+ ✓ src/modules/ai/codex-search.service.test.ts (1 test) 8ms
+ ✓ src/modules/diagnostics/guidance-model-record.test.ts (4 tests) 9ms
+ ✓ src/modules/diagnostics/adaptive-routing.test.ts (10 tests) 8ms
+ ✓ src/modules/question-workspace/question-import.utils.test.ts (5 tests) 8ms
+ ✓ src/common/validation.test.ts (2 tests) 9ms
+ ✓ src/modules/learning/whiteboard-webm.test.ts (3 tests) 6ms
+ ✓ src/modules/learning/studio-whiteboard.test.ts (1 test) 5ms
+ ✓ src/modules/learning/source-course-project.test.ts (3 tests) 6ms
+ ✓ src/modules/learning/classroom-visual-context.test.ts (2 tests) 5ms
+ ✓ src/modules/content/open-resource-registry.test.ts (2 tests) 4ms
+ ✓ src/modules/learning/studio-pdf-structure.test.ts (2 tests) 3ms
+ ✓ src/modules/diagnostics/learning-source-citation.test.ts (3 tests) 3ms
+ ↓ src/infrastructure/postgres-restore-import.integration.test.ts (9 tests | 9 skipped)
+ ✓ src/modules/learning/learning-home.test.ts (7 tests) 4ms
+ ↓ src/infrastructure/postgres-restore-resume.integration.test.ts (19 tests | 19 skipped)
+ ↓ src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts (2 tests | 2 skipped)
+ ↓ src/infrastructure/postgres.integration.test.ts (6 tests | 6 skipped)
+ ↓ src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts (1 test | 1 skipped)
+ ↓ src/modules/learning/project-file-postgres-recovery.integration.test.ts (2 tests | 2 skipped)
+ ↓ src/modules/learning/whiteboard-postgres.integration.test.ts (4 tests | 4 skipped)
+
+ Test Files  149 passed | 10 skipped (159)
+      Tests  1319 passed | 53 skipped (1372)
+   Start at  13:29:00
+   Duration  546.90s (transform 5.11s, setup 0ms, import 84.43s, tests 966.25s, environment 12ms)
+
+JSON report written to F:/workspace/github/StudyAgent-whiteboard-visuals/data/qa/vector-formula-full-api.json

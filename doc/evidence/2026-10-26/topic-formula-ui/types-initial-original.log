@@ -1,0 +1,32 @@
+
+> study-agent@0.1.0 lint
+> npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web
+
+
+> @study-agent/api@0.1.0 lint
+> tsc -p tsconfig.json --noEmit
+
+../web/app/studio/whiteboard-formula.ts(33,39): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(34,38): error TS7006: Parameter 'value' implicitly has an 'any' type.
+../web/app/studio/whiteboard-formula.ts(61,26): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(62,26): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(62,77): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(63,26): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(63,73): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(64,26): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+../web/app/studio/whiteboard-formula.ts(65,38): error TS2345: Argument of type 'LiteNode' is not assignable to parameter of type 'LiteElement'.
+  Type 'LiteText' is missing the following properties from type 'LiteElement': attributes, children, styles
+npm error Lifecycle script `lint` failed with error:
+npm error code 2
+npm error path F:\workspace\github\StudyAgent-whiteboard-visuals\apps\api
+npm error workspace @study-agent/api@0.1.0
+npm error location F:\workspace\github\StudyAgent-whiteboard-visuals\apps\api
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -p tsconfig.json --noEmit

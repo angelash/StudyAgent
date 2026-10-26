@@ -1,0 +1,56 @@
+{
+  "status": "preserved-failed-fixture-checkpoint",
+  "at": "2026-10-26T05:28:58.716Z",
+  "passed": 32,
+  "failed": 2,
+  "retries": 0,
+  "cause": "Synthetic complete manuscripts submitted figure:null where only omission is allowed, plus inherited bullets no longer present in changed narration. Product schema correctly rejected both with 400 before formula rendering.",
+  "resolution": "Use omitted picture references, valid spoken bullet anchors and create/review selected images after establishing the final teaching content. Product validation is unchanged.",
+  "files": [
+    {
+      "name": "browser-original.json",
+      "bytes": 50501,
+      "sha256": "6a6b1beda85d78eac7f82f25174ff31d8dc9b08c33e984f6fb6691a4868244c5"
+    },
+    {
+      "name": "browser-original.log",
+      "bytes": 12645,
+      "sha256": "8c7cadcc38c758bf2b2b68905b489738993f7e272d1d63812a8488aceaf26a0d"
+    },
+    {
+      "name": "test-source-original.ts",
+      "bytes": 44712,
+      "sha256": "6ac346dfca83b47f7af7dad87b9dfe911d4f89ca2952befab01bac84668bee2d"
+    },
+    {
+      "name": "1-error-context.md",
+      "bytes": 26715,
+      "sha256": "5907e0a4f1d2d532811bc90af24776b115d7c785f59efa5fc10381b4de96cab5"
+    },
+    {
+      "name": "1-trace.zip",
+      "bytes": 840951,
+      "sha256": "ae230450242c2c21d3f205a59bc0426afa950866a172628c61bbf1d31960a1fc"
+    },
+    {
+      "name": "1-test-failed-1.png",
+      "bytes": 77183,
+      "sha256": "cf57ca0343bf05a7e70be43c2cedf14ac2ae7fffe40804306414efe7f070668d"
+    },
+    {
+      "name": "2-error-context.md",
+      "bytes": 30313,
+      "sha256": "7eafeb13454071f7df2bbcee53ee6402f1b4f7dc1a702dfde7cda1eb39eece51"
+    },
+    {
+      "name": "2-trace.zip",
+      "bytes": 1209688,
+      "sha256": "0336eba66f16b1d907d5ff013e08b51dc5496aae14b926dfba96a903b5dea726"
+    },
+    {
+      "name": "2-test-failed-1.png",
+      "bytes": 73173,
+      "sha256": "a44b33017b548cfbe1af611ff35033a2ab25e087c2c64f5e286feec5e5059724"
+    }
+  ]
+}

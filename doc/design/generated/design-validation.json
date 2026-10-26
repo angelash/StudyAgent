@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-26T04:58:03.237Z",
-  "sourceRevision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
+  "at": "2026-10-26T05:41:33.830Z",
+  "sourceRevision": "33af51c289f947b84be001ff90e39deefc47726d",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -17,7 +17,7 @@
     "contractTypes": 334,
     "webPages": 27,
     "webRouteHandlers": 1,
-    "apiTestFiles": 158,
+    "apiTestFiles": 159,
     "browserTestFiles": 31
   },
   "features": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 364
   },
   "sourceReferences": {
-    "uniqueFiles": 477,
+    "uniqueFiles": 483,
     "problems": [],
     "sha256": {
       ".github/workflows/verify.yml": "d31bb3da55488096d59e67f4a58458afd29c31021f43decd7f0e324e3dccf9cc",
@@ -53,7 +53,7 @@
       "apps/api/src/infrastructure/restored-materials.integration.test.ts": "b7591e13953d53c11cfead97e432c30fb5e1c51c01a5a5cf04ac4021f0d9117e",
       "apps/api/src/infrastructure/runtime-metrics.service.ts": "7f237345ed1890c0234f148fc05f13d436b90da004aa41b21ae7e8f9893675df",
       "apps/api/src/infrastructure/scoped-transactions.test.ts": "32168d384b03ce88e08bc44b7196c86d1c52bce447ec8bb2e5b64a9605550848",
-      "apps/api/src/infrastructure/source-course-check-postgres.integration.test.ts": "411d873b354f6273670d0072f6684946255ef0f8c6cc09508589ffdaeebd767c",
+      "apps/api/src/infrastructure/source-course-check-postgres.integration.test.ts": "2aa72d0021fb1db7dcc671f0b8d0bf40e571e70523779744653af4c4bf107112",
       "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts": "e42a3ee9ca4cae8e9823ec6ff60ead03555feb1371b0f1ba83aa290493026b40",
       "apps/api/src/infrastructure/source-material-backup.integration.test.ts": "4e1c316f4437fb65ca62459170d66d6fb792734683f23e401e3c97f4e1bb31db",
       "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts": "65c1ec476edf5266f986e717415b66797ae8163d521f3c3b89b6d2d2d7083faa",
@@ -263,6 +263,7 @@
       "apps/api/src/modules/learning/topic-whiteboard.controller.ts": "aab6e83822058565a1e065e35b854c8609e44789d1d1a62eaf4f9a538f04a317",
       "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts": "f7b7ceac7b967d697c11048f64a041e070923089da33caedae29a27316cdf348",
       "apps/api/src/modules/learning/topic-whiteboard.service.ts": "6050fac2332af256452345dfa9d16ca6ac85c3268554eef56443a72649cd1231",
+      "apps/api/src/modules/learning/whiteboard-formula.test.ts": "7cf7ec33565464aa0a85d3f4e1042aeda4bdf3d97aed4ce0be51579f20bc028a",
       "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts": "0cf51e544ffb14f1f39cad7ef109cf7de326fbc966dcd8ba001e920c0ce4efaa",
       "apps/api/src/modules/learning/whiteboard-speech.test.ts": "0350f9aaf606a549648fc8bafc7647b064eeb3e76d26575a0428c1892d731825",
       "apps/api/src/modules/learning/whiteboard-webm.test.ts": "03718324eeaf417aa532578ad25e0a9c7e1f760f4cd5ffffd2469713c3b50330",
@@ -369,10 +370,14 @@
       "apps/web/app/studio/studio-navigation.tsx": "653b190fa51bd03155205bbb982c6ca1d91ea0e9e7c308e5034523c679532793",
       "apps/web/app/studio/studio.tsx": "04d458cdb5339c667937d8b27a0caa47ba9f764173ca612cf4a314f43121bb6d",
       "apps/web/app/studio/topic-figure-image.tsx": "0a8765b8431b3dc15471388c4a58bbb10ca19d50b29307039dcf1f9c2d874946",
-      "apps/web/app/studio/whiteboard-canvas.tsx": "fda674eb714a93b92fed0c407224b3864018af11e9f2103d82a9b47cdc6093b2",
+      "apps/web/app/studio/whiteboard-canvas.tsx": "be9ce3982a97362250a33c35d54fbe421fc6b727eb52b5b45ea5ba32078f73ea",
+      "apps/web/app/studio/whiteboard-exhibit.css": "78691180eaf78a24ca96f7ca81fdd530af14150dd62b3be110e7dc9a14802521",
+      "apps/web/app/studio/whiteboard-exhibit.tsx": "8a7ec84dc6004967ff6d40451c903664ea4e8a5d942ae42ca2f084ac018b85af",
+      "apps/web/app/studio/whiteboard-formula-image.ts": "63d520debb096bbbf9a32026c6e503a88bd621b28454b5d20bb4f2ecdf2f4014",
+      "apps/web/app/studio/whiteboard-formula.ts": "f78240c71284be54b69630f4ffdee43471fefcddf76b3682067ec851f1313adc",
       "apps/web/app/studio/whiteboard-media.ts": "cd8806c9cdb5f83b908416b25d4dd1a072b149276f7104f3748e1b1f6314b90c",
       "apps/web/app/studio/whiteboard-player.tsx": "b79a23b2c805fd23be6b663e2ecba2153c4ebb2ce3c6156edba7bc078d1f0fe7",
-      "apps/web/app/studio/whiteboard-session.tsx": "0e869012fa8cc73781e4fe00ef84e5485b4fc424497776ef345995ca8831afc2",
+      "apps/web/app/studio/whiteboard-session.tsx": "476eeb41d5c1e108c41bc7f3e51c6d6a30af8fbaa2c6be1072e7c0dff3badcf4",
       "apps/web/app/studio/whiteboard-table.ts": "951107f99a087e6a20c366e2b0ffc2962a562c6c7f28cd386f4fff832748b1a0",
       "apps/web/app/studio/whiteboard-webm.ts": "b03d3ed1860d2e9b5235fe10a4cf6e796301cd661ef20c75f4f026db9124a2e6",
       "apps/web/app/studio/whiteboards/command-digest.ts": "112bf2f4fb03c5f1705ad4eb2c57ef64fda1524e2b8e595034f09da4efa0d033",
@@ -400,7 +405,7 @@
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
       "doc/product/120-source-course-independent-unit-checks.md": "cf5663bc83f27f7b5d8dc6110075d9dc2e1bb9fd06fa75364b556540108ffd79",
       "doc/product/121-single-lesson-source-course-checks.md": "dd0a850566a33d6b00968ebdc2be7a894c675de86c6d38b9f02f5e5014eb2561",
-      "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "cf6a12df747403ef900eb8e239e55cdaf653e2519ff7620ed7b54ac6d91e7b40",
+      "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "d635f8feb1a701b48007878eb367de83041cacfb2e477ad8ed0eb04078c75d41",
       "packages/contracts/src/ai-models.ts": "0b2db48fcf83d58acd97a729fbd87b6c65cd0215f8e7430012d1f3f1bdf25e53",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
       "packages/contracts/src/answer-protocol.ts": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822",
@@ -472,6 +477,7 @@
       "scripts/qa/source-check-live.cjs": "1a9ad49056d5e159a77c9db1d246dde9e7935f368f6997dbb9560d0f5b5371ea",
       "scripts/qa/source-course-fixture.cjs": "ac8d49ce9d661f6463b825efc6554b2f57bca6b8e54bdf19dfd63dc7cbb3c605",
       "scripts/qa/source-course-test-api.cjs": "05d66dd8f893fcdddeed043301cac8da22aa6b9a1692dc299b6f8f336ef200c5",
+      "scripts/qa/topic-figure-live.cjs": "b1d9ed72cf87c563e65be52d50de65c68d9caea2f9a96e946e1e1ea604ac3f63",
       "scripts/qa/verify-assistant-turn-runtime.cjs": "ea7f51f8913b185e2708ad31261a32197b17004478058963a25bf0673165b714",
       "scripts/qa/verify-classroom-board-live.cjs": "ef5ed4103c366bf24598d9a1fc06b89da322bc280d844a9f2dd6423e5a3a995e",
       "scripts/qa/verify-classroom-turn-live.cjs": "8d9b325451d73b21c357dea9ddab2ea7d308c7dbd155d05d2a439800c16f5795",
@@ -504,7 +510,7 @@
       "tests/e2e/source-course-project.spec.ts": "d672c04033344ec4863d80b58c7b973ce6d6768ee4929235dc0e03a02664bf15",
       "tests/e2e/source-course.spec.ts": "1072e718f1433736a658b3f07776e0f82055aece2af82bed9dc94d15d0679fba",
       "tests/e2e/studio.spec.ts": "3a772149396a690841c8613e43550d84b60a9bdae97b6bdb10377d00312828b5",
-      "tests/e2e/topic-whiteboard.spec.ts": "f60c5eec4ed8572d350f8d4e75c980674e206849b2f70197cebc0951405d86f0",
+      "tests/e2e/topic-whiteboard.spec.ts": "d0cfd48f052a9c19c64a937ad433ce18b0352e2441db228b5a79f5e25bc8d5f8",
       "tests/e2e/whiteboard-media.spec.ts": "596e62009a0b9169addb478b351848ca4ab691bb759889d682ef20744960e56a",
       "tests/e2e/workspace.spec.ts": "fb5a11d217dda079e5361fa475cbef09494e787bbde7a1bf0c3f12bc7483b632"
     }
@@ -515,12 +521,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3012,
+    "checked": 3023,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-26T04:56:42.331Z",
+    "authoredAuditAt": "2026-10-26T05:41:17.790Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -586,8 +592,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-26/topic-figure-ui/receipt.json",
-    "revision": "69e53077ed9f9f0cb39e92a42cebb5d2e3eb1231",
+    "receipt": "../evidence/2026-10-26/topic-formula-ui/receipt.json",
+    "revision": "33af51c289f947b84be001ff90e39deefc47726d",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }
