@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-26T18:39:37.557Z",
+  "state": "session-settings-open",
+  "screenshot": "reference-settings-1280x800.png",
+  "viewportPixels": {
+    "width": 1280,
+    "height": 800
+  },
+  "dpr": "not separately observed",
+  "controls": [
+    {
+      "name": "Close",
+      "role": "button",
+      "rect": {
+        "height": 28,
+        "width": 28,
+        "x": 806,
+        "y": 46
+      }
+    },
+    {
+      "name": "Voice options",
+      "role": "radiogroup",
+      "rect": {
+        "height": 248.15625,
+        "width": 400,
+        "x": 434,
+        "y": 128.75
+      }
+    },
+    {
+      "name": "Warm\nLike a patient teacher, close and natural",
+      "role": "radio",
+      "rect": {
+        "height": 87.28125,
+        "width": 196,
+        "x": 434,
+        "y": 128.75
+      }
+    },
+    {
+      "name": "Calm\nLow and steady, easy on long listens",
+      "role": "radio",
+      "rect": {
+        "height": 87.28125,
+        "width": 196,
+        "x": 638,
+        "y": 128.75
+      }
+    },
+    {
+      "name": "Bright\nClear and energetic, key points pop",
+      "role": "radio",
+      "rect": {
+        "height": 72.4375,
+        "width": 196,
+        "x": 434,
+        "y": 224.03125
+      }
+    },
+    {
+      "name": "Gentle\nSoft-spoken and unhurried",
+      "role": "radio",
+      "rect": {
+        "height": 72.4375,
+        "width": 196,
+        "x": 638,
+        "y": 224.03125
+      }
+    },
+    {
+      "name": "Professional\nCrisp and clear, like a lecture hall",
+      "role": "radio",
+      "rect": {
+        "height": 72.4375,
+        "width": 196,
+        "x": 434,
+        "y": 304.46875
+      }
+    },
+    {
+      "name": "Lively\nQuick-paced and full of energy",
+      "role": "radio",
+      "rect": {
+        "height": 72.4375,
+        "width": 196,
+        "x": 638,
+        "y": 304.46875
+      }
+    },
+    {
+      "name": "Aa Bb\nHandwriting",
+      "role": "button",
+      "rect": {
+        "height": 75.9375,
+        "width": 196,
+        "x": 434,
+        "y": 532.65625
+      }
+    },
+    {
+      "name": "Aa Bb\nStandard",
+      "role": "button",
+      "rect": {
+        "height": 75.9375,
+        "width": 196,
+        "x": 638,
+        "y": 532.65625
+      }
+    },
+    {
+      "name": "Background dots\nThe dot grid behind the board.",
+      "role": "switch",
+      "rect": {
+        "height": 59.015625,
+        "width": 400,
+        "x": 434,
+        "y": 657.09375
+      }
+    },
+    {
+      "name": "Replay the tour\nWalk through what each button on the board does.",
+      "role": "button",
+      "rect": {
+        "height": 59.015625,
+        "width": 400,
+        "x": 434,
+        "y": 764.609375
+      }
+    }
+  ],
+  "observedSelection": {
+    "voice": "Calm",
+    "boardFont": "Handwriting",
+    "speed": "1x",
+    "backgroundDots": true
+  },
+  "actions": "Opened settings, read/screenshot, closed settings; no preference or voice change.",
+  "scope": "Visible controls and current screenshot only. Other platform states remain separate observations."
+}
