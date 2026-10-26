@@ -1,6 +1,6 @@
 {
-  "passed": false,
-  "status": "local-full-regression-passed-exact-ci-pending",
+  "passed": true,
+  "status": "exact-ci-passed-awaiting-runtime",
   "sourceRevision": "68202df",
   "deployed": false,
   "schemaVersion": 15,
@@ -40,7 +40,7 @@
     "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
   },
   "limits": [
-    "Final local full API1258/47 environment skips and229 zero-retry browsers passed. Exact candidate CI and actual production delivery remain pending.",
+    "Local API1258/47 and exact Linux API1250/55 environment skips; local and exact remote229 browser cases zero retries. Actual production delivery remains pending.",
     "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
     "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
     "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
@@ -83,5 +83,25 @@
     "originalSha256": "75b7396af6e472fd6948269ba95e449e6c6d5eb96ad254a278cfd83863b52291",
     "durationSeconds": 1100.687662,
     "applicationRevision": "68202df"
+  },
+  "exactCi": {
+    "head": "a7c06df79d5f8c8ba8fe6009a4295737e90ba6f1",
+    "run": 40247643763,
+    "status": "completed",
+    "conclusion": "success",
+    "jobCount": 3,
+    "browser": {
+      "passed": 229,
+      "failed": 0,
+      "skipped": 0,
+      "retry": 0,
+      "originalSha256": "8b6bb8772ae6e52e9695a3b0dd8e0dd8cfb5424341ae1bdecb9f641312a29dfc"
+    },
+    "linuxApi": {
+      "passed": 1250,
+      "skipped": 55
+    },
+    "report": "whiteboard-speech-exact-ci/run.json",
+    "rawBrowser": "whiteboard-speech-exact-ci/browser-original.json.gz"
   }
 }
