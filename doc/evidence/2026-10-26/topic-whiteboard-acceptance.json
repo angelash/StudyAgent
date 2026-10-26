@@ -1,7 +1,7 @@
 {
-  "status": "current-focused-passed-complete-regression-running",
+  "status": "complete-local-regression-passed-exact-ci-and-runtime-pending",
   "deployed": false,
-  "sourceRevision": "ed0ad2d",
+  "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
   "sqliteAndContent": {
     "passed": 9,
     "report": "topic-whiteboard-foundation/api.json"
@@ -14,7 +14,7 @@
   "productionSchemaVersion": 15,
   "limits": [
     "Independent page/editor and explicit topic player are connected but not deployed.",
-    "Complete current API/site regression, exact candidate CI and actual production delivery remain pending.",
+    "Exact candidate CI and actual production delivery remain pending.",
     "Exact original HyperKnow CSS/fonts/DPR/audio, real-device, teacher and long-term gates remain.",
     "Default DS required structure correction or explicit retry in these samples; no reliability percentage is established.",
     "The first two live probes retained valid manuscripts and failure counts, but did not capture the original invalid CLI response text.",
@@ -131,5 +131,37 @@
     "initialUncachedCommand": "topic-whiteboard-command-initial/browser.json.gz",
     "localInterruptedEnvironmentRun": "topic-whiteboard-wrong-qa-port/scope.json"
   },
-  "final122InheritedRevision": "1614ff1027f2b8e0d750797efe728017225d353f"
+  "final122InheritedRevision": "1614ff1027f2b8e0d750797efe728017225d353f",
+  "fullApi": {
+    "passed": 1287,
+    "failed": 0,
+    "environmentSkipped": 51,
+    "report": "topic-whiteboard-final-regression/api.json.gz",
+    "originalSha256": "c67ccad0c2daf6c0424ba31020a0995bd1327c9960572304fb626180ec6abdee",
+    "applicationRevision": "ed0ad2d"
+  },
+  "fullBrowser": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "attempts": 242,
+    "durationMs": 1154520.197,
+    "report": "topic-whiteboard-final-regression/browser.json.gz",
+    "originalSha256": "cf092b22f3f60a5419ae9dc7114ec1713d689d753625c0f8888d570ddacaf79e",
+    "applicationRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2"
+  },
+  "design": {
+    "sourceRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
+    "areas": 14,
+    "features": 121,
+    "activeNormalApiRoutes": 350,
+    "domainCollections": 97,
+    "contractTypes": 328,
+    "sourceReferences": 466,
+    "markdownLinks": 2939,
+    "offlineViewerChecks": 10,
+    "passed": true
+  }
 }

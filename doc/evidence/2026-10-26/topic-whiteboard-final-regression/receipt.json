@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-26T01:42:23.325Z",
+  "applicationRevision": "ed0ad2d1e6db8d67c468284158259fc2472b63f2",
+  "browser": {
+    "startTime": "2026-10-26T01:20:15.994Z",
+    "duration": 1154520.197,
+    "expected": 242,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "attempts": 242,
+    "retries": 0,
+    "originalSha256": "cf092b22f3f60a5419ae9dc7114ec1713d689d753625c0f8888d570ddacaf79e"
+  },
+  "api": {
+    "passed": 1287,
+    "failed": 0,
+    "environmentSkipped": 51
+  },
+  "media": [
+    {
+      "originalName": "decoded-fixture.srt",
+      "storedName": "decoded-fixture.srt.gz",
+      "originalSha256": "8f939f00bc90c727e212e01e8d2d4def8014e71a9c8e5499712ba740f452719d"
+    },
+    {
+      "originalName": "decoded-fixture.webm",
+      "storedName": "decoded-fixture.webm",
+      "originalSha256": "349ebc451ec965036792dd33602684e3d632c9932531c9052d6bd2f31ed1c4ae"
+    },
+    {
+      "originalName": "decoder.json",
+      "storedName": "decoder.json.gz",
+      "originalSha256": "c9104a918d5f014c468079259647c74d7fe8c3da54f72ceb518684037fa3c18b"
+    },
+    {
+      "originalName": "independent-opus-control.webm",
+      "storedName": "independent-opus-control.webm",
+      "originalSha256": "6dfd377b7e3f1e57107d97dc1b38f1dbdbbaa0aba8fa3e662095f065ff6c06bb"
+    }
+  ],
+  "limits": [
+    "Synthetic isolated accounts and model/media fixtures. Actual DS calls and provider image samples are separate.",
+    "No real-device, teacher, original CSS/font/DPR/audio or long-term acceptance."
+  ]
+}
