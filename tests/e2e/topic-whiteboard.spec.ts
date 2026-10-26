@@ -100,6 +100,7 @@ test('topic-formula: complete vector fractions, aligned roots and Unicode fit na
   const { player } = await formulaBoard(page, expressions);
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
+    if (width <= 900) await player.getByRole('button', { name: '讲稿与笔记', exact: true }).click();
     for (const [index, latex] of expressions.entries()) {
       const detail = player.locator('.wb-reading-notes > details').nth(index);
       if (!(await detail.getAttribute('open') !== null)) await detail.locator(':scope > summary').click();
@@ -112,6 +113,7 @@ test('topic-formula: complete vector fractions, aligned roots and Unicode fit na
     }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'topic-formula-reader-' + width + '.png'), fullPage: false });
+    if (width <= 900) await page.getByRole('button', { name: '返回白板画面', exact: true }).click();
   }
   expect(await page.locator('[href^="javascript:"],script[src*="mathjax"],image[href^="http"]').count()).toBe(0);
 });

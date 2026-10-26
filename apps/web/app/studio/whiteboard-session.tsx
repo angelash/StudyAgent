@@ -17,6 +17,7 @@ import './original-teaching-shell.css';
 import { WhiteboardSettings } from './whiteboard-settings';
 import { ClassroomIcon } from './classroom/icons';
 import { ClassroomToolTour, type ToolTourStep } from './classroom/tool-tour';
+import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-reading-panel';
 
 const whiteboardToolSteps: ToolTourStep[] = [
   { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
@@ -37,6 +38,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const [boardFont, setBoardFont] = React.useState<OriginalBoardFont>('handwriting'), [dots, setDots] = React.useState(true);
   const [settings, setSettings] = React.useState(false), [muted, setMuted] = React.useState(false), mutedRef = React.useRef(muted); mutedRef.current = muted;
   const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
+  const panel = useWhiteboardReadingPanel(ownerId), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -312,16 +314,23 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     }
   }
   function cancelExport() { exportRequest.current?.abort(); exportRequest.current = null; setExporting(null); setNotice('已取消导出，没有下载半成品。'); render(); }
-  function finishTour() { setTour(false); dialog.current?.scrollTo({ top: tourOrigin.current }); requestAnimationFrame(() => dialog.current?.querySelector<HTMLButtonElement>('[aria-label="白板设置"]')?.focus()); }
+  function finishTour() { setTour(false); setTourPanel(false); dialog.current?.scrollTo({ top: tourOrigin.current }); requestAnimationFrame(() => dialog.current?.querySelector<HTMLButtonElement>('[aria-label="白板设置"]')?.focus()); }
+  function closePanel() { if (panel.compact) panel.setMobileOpen(false); else panel.setExpanded(false); requestAnimationFrame(() => dialog.current?.querySelector<HTMLButtonElement>('[data-panel-toggle]')?.focus()); }
+  function showTourStep(index: number | null) {
+    setTourPanel(index !== null && whiteboardToolSteps[index].anchor === 'history');
+    if (index === null) dialog.current?.scrollTo({ top: tourOrigin.current });
+    else requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>('[data-classroom-tour="' + whiteboardToolSteps[index].anchor + '"]')?.scrollIntoView({ block: 'center', inline: 'nearest' }));
+  }
 
-  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily }} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
+  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
     <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={onClose}>×</button>
       <div className="whiteboard-session-title-pill" data-classroom-tour="connection"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
     <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill" data-classroom-tour="zoom">
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
       <button className="whiteboard-zoom-readout" aria-label="重置白板视图" onClick={() => setCamera({ zoom: 1, x: 0, y: 0, follow: true })}>{Math.round(camera.zoom * 100)}%</button>
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom >= 2} aria-label="放大白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.min(2, value.zoom + .1) }))}>+</button></div>
-      <button type="button" className="whiteboard-icon-btn" data-classroom-tour="settings" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button></nav>
+      <button type="button" className="whiteboard-icon-btn" data-classroom-tour="settings" disabled={exporting !== null} aria-label="白板设置" onClick={() => { pausePlayback(); setSettings(true); }}><ClassroomIcon name="settings" size={18}/></button>
+      <button type="button" className="whiteboard-icon-btn" data-panel-toggle aria-label={panel.compact ? '讲稿与笔记' : panel.expanded ? '收起讲稿与笔记' : '展开讲稿与笔记'} aria-controls={panelId} aria-expanded={panel.open} onClick={() => { if (panel.compact) panel.setMobileOpen(value => !value); else panel.setExpanded(value => !value); }}><ClassroomIcon name="panel" size={18}/></button></nav>
     <button type="button" className="whiteboard-icon-btn hk-whiteboard-mute" data-classroom-tour="sound" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
     {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
     <div className="wb-reading-layout"><main className="whiteboard-main"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}
@@ -367,7 +376,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <div className="sa-scene-strip">{board.scenes.map((item, index) => <button key={item.id} disabled={exporting !== null}
         data-active={item.id === scene?.id} onClick={() => { const next = units.findIndex(unit => unit.sceneId === item.id); if (next >= 0) go(next); }}>
         <span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}</div>
-    </main><aside className="wb-reading-notes whiteboard-chat-inner" data-classroom-tour="history" aria-label="完整讲稿与要点">
+    </main><WhiteboardReadingPanel panel={panel} tour={tourPanel} id={panelId} onClose={closePanel}>
       <h3>逐句讲稿</h3><p>点击一句定位。观看与续播不计作掌握。</p>
       <ol>{units.map((item, index) => <li key={item.id}><button aria-current={index === unitIndex ? 'step' : undefined}
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
@@ -376,10 +385,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         <WhiteboardExhibit exhibit={item.exhibit}/>{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
       {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>
-    </aside></div>
+    </WhiteboardReadingPanel></div>
     {settings && <WhiteboardSettings context={ownerId + ':' + board.id + ':' + board.fingerprint} speech={speech} voice={voice} speed={speed} font={boardFont} dots={dots} muted={muted}
       onVoice={value => { generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(value); setNotice('音色已切换，下次播放从当前句开头开始。'); }}
       onSpeed={setSpeed} onFont={value => { pausePlayback(); setBoardFont(value); }} onDots={setDots} beforePreview={pausePlayback} onClose={() => setSettings(false)} onReplayTour={() => { tourOrigin.current = dialog.current?.scrollTop ?? 0; setTour(true); }}/>}
-    {tour && <ClassroomToolTour onClose={finishTour} steps={whiteboardToolSteps} scope={dialog.current} label="白板工具导览" returnLabel="返回白板" welcome="了解白板工具" introduction="用七个实际控件，按自己的节奏阅读、听讲与回顾。" completion="导览结束。原讲解位置和笔记保持，准备好后再继续。" onStep={index => { if (index === null) dialog.current?.scrollTo({ top: tourOrigin.current }); else dialog.current?.querySelector<HTMLElement>('[data-classroom-tour="' + whiteboardToolSteps[index].anchor + '"]')?.scrollIntoView({ block: 'center', inline: 'nearest' }); }}/>}
+    {tour && <ClassroomToolTour onClose={finishTour} steps={whiteboardToolSteps} scope={dialog.current} label="白板工具导览" returnLabel="返回白板" welcome="了解白板工具" introduction="用七个实际控件，按自己的节奏阅读、听讲与回顾。" completion="导览结束。原讲解位置和笔记保持，准备好后再继续。" onStep={showTourStep}/>}
   </div>;
 }

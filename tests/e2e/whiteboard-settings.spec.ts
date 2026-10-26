@@ -69,3 +69,37 @@ for(const width of [390,1280])test('original settings: real seven-tool tour pres
   }
   await tour.getByRole('button',{name:'返回白板',exact:true}).click();await expect(tour).toHaveCount(0);await expect(f.current).toHaveAttribute('data-unit-id',unit!);await expect(f.player.getByRole('button',{name:'白板设置',exact:true})).toBeFocused();expect(writes).toEqual([]);
 });
+
+test('reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes',async({page})=>{
+  await page.setViewportSize({width:1440,height:900});const f=await fixture(page),unit=await f.current.getAttribute('data-unit-id'),writes:string[]=[];
+  page.on('request',request=>{if(request.method()==='POST')writes.push(request.url());});
+  const separator=f.player.getByRole('separator',{name:'调整讲稿面板宽度',exact:true});await expect(separator).toHaveAttribute('aria-valuenow','380');
+  expect((await f.player.locator('.hk-reading-panel').boundingBox())!.width).toBe(380);
+  const bounds=(await separator.boundingBox())!;await page.mouse.move(bounds.x+bounds.width/2,450);await page.mouse.down();await page.mouse.move(700,450,{steps:6});await page.mouse.up();
+  await expect(separator).toHaveAttribute('aria-valuenow','560');await expect(f.current).toHaveAttribute('data-unit-id',unit!);
+  await page.setViewportSize({width:1200,height:900});await expect(separator).toHaveAttribute('aria-valuenow','504');expect((await f.player.locator('.hk-reading-panel').boundingBox())!.width).toBe(504);
+  await page.setViewportSize({width:1440,height:900});await expect(separator).toHaveAttribute('aria-valuenow','560');
+  await separator.focus();await page.keyboard.press('Home');await expect(separator).toHaveAttribute('aria-valuenow','300');await page.keyboard.press('End');await expect(separator).toHaveAttribute('aria-valuenow','560');await page.keyboard.press('ArrowRight');await expect(separator).toHaveAttribute('aria-valuenow','550');
+  const toggle=f.player.locator('[data-panel-toggle]');await toggle.click();await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(f.player.getByLabel('完整讲稿与要点')).toBeHidden();
+  await expect.poll(()=>page.evaluate(()=>Object.keys(localStorage).some(key=>key.startsWith('studyagent.whiteboard.layout.v1.')&&JSON.parse(localStorage.getItem(key)!).expanded===false))).toBe(true);
+  await page.reload();await expect(f.player).toHaveAttribute('data-original-font-status','ready');await expect(toggle).toHaveAttribute('aria-expanded','false');await toggle.click();await expect(separator).toHaveAttribute('aria-valuenow','550');await expect(f.current).toHaveAttribute('data-unit-id',unit!);
+  const preference=await page.evaluate(()=>JSON.parse(localStorage.getItem(Object.keys(localStorage).find(key=>key.startsWith('studyagent.whiteboard.layout.v1.'))!)!));expect(Object.keys(preference).sort()).toEqual(['expanded','ownerId','version','width']);expect(writes).toEqual([]);
+  await page.screenshot({path:join(browserEvidence('whiteboard-settings'),'reading-panel-1440.png')});
+});
+
+for(const width of [390,768])test('reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at '+width,async({page})=>{
+  await page.setViewportSize({width,height:800});const f=await fixture(page),unit=await f.current.getAttribute('data-unit-id'),writes:string[]=[];page.on('request',request=>{if(request.method()==='POST')writes.push(request.url());});
+  const toggle=f.player.getByRole('button',{name:'讲稿与笔记',exact:true});await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(f.player.getByLabel('完整讲稿与要点')).toBeHidden();
+  await toggle.click();const reader=page.getByRole('dialog',{name:'讲稿与笔记',exact:true});await expect(reader).toBeVisible();await expect(reader.getByRole('button',{name:'返回白板画面',exact:true})).toBeFocused();
+  expect(await reader.evaluate(element=>element.scrollWidth<=element.clientWidth+1)).toBe(true);await page.keyboard.press('Shift+Tab');expect(await reader.evaluate(element=>element.contains(document.activeElement))).toBe(true);
+  await page.screenshot({path:join(browserEvidence('whiteboard-settings'),'reading-panel-'+width+'.png')});await page.keyboard.press('Escape');await expect(reader).toHaveCount(0);await expect(f.player).toBeVisible();await expect(toggle).toBeFocused();await expect(f.current).toHaveAttribute('data-unit-id',unit!);
+  await toggle.click();await reader.getByRole('button',{name:'返回白板画面',exact:true}).click();await expect(toggle).toBeFocused();expect(writes).toEqual([]);
+});
+
+test('reading panel: malformed or wrong-owner device preferences are rejected and blocked storage leaves resizing usable',async({page})=>{
+  await page.setViewportSize({width:1280,height:800});const f=await fixture(page);
+  await page.evaluate(()=>{const key=Object.keys(localStorage).find(key=>key.startsWith('studyagent.whiteboard.layout.v1.'))!;localStorage.setItem(key,JSON.stringify({version:1,ownerId:'another-owner',width:560,expanded:false}));});
+  await page.reload();const separator=f.player.getByRole('separator',{name:'调整讲稿面板宽度',exact:true});await expect(separator).toHaveAttribute('aria-valuenow','380');
+  await page.addInitScript(()=>{const get=Storage.prototype.getItem,set=Storage.prototype.setItem;Storage.prototype.getItem=function(key){if(key.startsWith('studyagent.whiteboard.layout.v1.'))throw new DOMException('Blocked','SecurityError');return get.call(this,key);};Storage.prototype.setItem=function(key,value){if(key.startsWith('studyagent.whiteboard.layout.v1.'))throw new DOMException('Blocked','QuotaExceededError');return set.call(this,key,value);};});
+  await page.reload();await expect(f.player).toHaveAttribute('data-original-font-status','ready');await expect(separator).toHaveAttribute('aria-valuenow','380');await separator.focus();await page.keyboard.press('ArrowLeft');await expect(separator).toHaveAttribute('aria-valuenow','390');await expect(f.player.getByRole('button',{name:'播放',exact:true})).toBeEnabled();
+});

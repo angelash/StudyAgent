@@ -50,3 +50,33 @@
 @media(max-width:900px){.hk-teaching.hk-teaching .wb-reading-layout{grid-template-columns:minmax(0,1fr) 300px}.hk-teaching.hk-teaching .hk-board-tools{right:320px}.hk-teaching.hk-teaching .whiteboard-session-header{right:460px}.hk-teaching.hk-teaching .whiteboard-session-title-pill{max-width:180px}.hk-teaching.hk-teaching .whiteboard-main{padding-bottom:220px}.hk-teaching.hk-teaching .wb-current-sentence{bottom:180px}.hk-teaching.hk-teaching .sa-whiteboard-scrubber{bottom:165px}.hk-teaching.hk-teaching .sa-whiteboard-notice{bottom:145px}}
 @media(max-width:600px){.hk-teaching.hk-teaching{overflow:auto}.hk-teaching.hk-teaching .wb-reading-layout{display:flex;flex-direction:column;height:auto;min-height:100%;overflow:visible}.hk-teaching.hk-teaching .whiteboard-session-header{position:absolute;top:16px;left:16px;right:16px;gap:8px}.hk-teaching.hk-teaching .whiteboard-session-title-pill{max-width:calc(100vw - 90px)}.hk-teaching.hk-teaching .hk-board-tools{top:72px;right:16px}.hk-teaching.hk-teaching .whiteboard-main{flex:none;min-height:660px;height:100dvh;max-height:900px;padding:128px 0 245px;overflow:hidden}.hk-teaching.hk-teaching .wb-current-sentence{left:16px;right:16px;bottom:198px;font-size:15px}.hk-teaching.hk-teaching .sa-whiteboard-controls{left:16px;right:16px;bottom:54px}.hk-teaching.hk-teaching .sa-whiteboard-scrubber{left:16px;right:16px;bottom:184px}.hk-teaching.hk-teaching .sa-whiteboard-notice{left:16px;right:16px;bottom:164px}.hk-teaching.hk-teaching .sa-scene-strip{left:16px;right:16px}.hk-teaching.hk-teaching .wb-reading-notes{flex:none;height:auto;max-height:none;margin:8px 12px 16px;padding:18px}.hk-teaching.hk-teaching>.whiteboard-session-header~p{left:16px;top:110px;max-width:calc(100% - 32px)}}
 @media(max-width:600px){.hk-teaching.hk-teaching .hk-whiteboard-mute{left:16px}.hk-teaching.hk-teaching .sa-whiteboard-controls,.hk-teaching.hk-teaching .sa-scene-strip{left:68px}}
+
+/* The original panel width follows the user width and the live viewport cap. */
+.hk-teaching.hk-teaching .wb-reading-layout{display:grid;grid-template-columns:minmax(0,1fr) var(--hk-panel-space,380px);height:100%;min-height:0;overflow:hidden}
+.hk-teaching.hk-teaching .whiteboard-main{position:relative}
+.hk-teaching.hk-teaching .hk-board-tools{right:calc(var(--hk-panel-space,380px) + 24px)}
+.hk-teaching.hk-teaching .whiteboard-session-header{right:calc(var(--hk-panel-space,380px) + 300px)}
+.hk-teaching.hk-teaching .hk-reading-panel{position:relative;min-width:0;height:100%;min-height:0}
+.hk-teaching.hk-teaching .hk-reading-panel[hidden]{display:none}
+.hk-teaching.hk-teaching .whiteboard-chat-resize-zone{position:absolute;top:0;bottom:0;left:-6px;width:12px;height:auto;z-index:38;cursor:col-resize;touch-action:none;display:flex;align-items:center;justify-content:center}
+.hk-teaching.hk-teaching .whiteboard-chat-resize-handle{width:3px;height:32px;border-radius:2px;background:#d4d4d4;opacity:0;transition:opacity .15s}
+.hk-teaching.hk-teaching .whiteboard-chat-resize-zone:hover .whiteboard-chat-resize-handle,.hk-teaching.hk-teaching .whiteboard-chat-resize-zone:focus-visible .whiteboard-chat-resize-handle{opacity:1}
+.hk-teaching.hk-teaching .whiteboard-chat-resize-zone:focus-visible{outline:2px solid #7950ff;outline-offset:-2px}
+.hk-teaching.hk-teaching .hk-panel-close{position:sticky;top:0;float:right;display:flex;align-items:center;justify-content:center;width:28px;height:28px;min-height:28px;padding:0;margin:-2px -4px 4px 8px;background:#fff;border:1px solid #ececef;border-radius:9px;color:#737373;z-index:1}
+.hk-teaching.hk-teaching .hk-reading-panel .wb-reading-notes{height:calc(100% - 44px);max-height:none}
+@media(max-width:900px){
+  .hk-teaching.hk-teaching{overflow:hidden}
+  .hk-teaching.hk-teaching .wb-reading-layout{display:block;height:100%;min-height:0;overflow:hidden}
+  .hk-teaching.hk-teaching .whiteboard-main{min-height:0;height:100dvh;max-height:none}
+  .hk-teaching.hk-teaching .hk-board-tools{right:24px}
+  .hk-teaching.hk-teaching .whiteboard-session-header{right:300px}
+  .hk-teaching.hk-teaching .hk-reading-dialog{position:fixed;inset:0;min-height:0;background:#fafafa;overflow:hidden}
+  .hk-teaching.hk-teaching .hk-reading-panel[data-compact=true]{position:fixed;inset:0;z-index:40;background:#fafafa;height:auto}
+  .hk-teaching.hk-teaching .hk-reading-panel[data-compact=true] .wb-reading-notes{height:calc(100% - 32px);max-height:none;margin:16px 12px;padding:18px;overflow:auto}
+  .hk-teaching.hk-teaching .hk-reading-panel[data-compact=true] .wb-reading-notes ol{max-height:none;overflow:visible}
+  .hk-teaching.hk-teaching .hk-reading-panel[data-tour=true][data-compact=true]{inset:96px 12px 20px;border-radius:18px;box-shadow:var(--wb-chrome-shadow)}
+}
+@media(max-width:600px){
+  .hk-teaching.hk-teaching .whiteboard-session-header{right:16px}
+  .hk-teaching.hk-teaching .hk-board-tools{right:16px}
+}
