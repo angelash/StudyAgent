@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`6ab9211635a1e903a7c5d59ad92968f2f8b03a5a`。角色：家长、学生、管理员、授权教师。
+源码基线：`8284cd6247c9d925e12b65a8321e1280d713e096`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 

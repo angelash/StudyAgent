@@ -1,0 +1,61 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:48948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:72312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:81896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\whiteboard-media.spec.ts:65:5 › complete sentence, complete notes, paused text reading and explicit sentence navigation (2.5s)
+  ok  2 tests\e2e\whiteboard-media.spec.ts:79:5 › real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence (4.6s)
+  ok  3 tests\e2e\whiteboard-media.spec.ts:96:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end (4.5s)
+  x   4 tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning (5.9s)
+(node:13436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 tests\e2e\whiteboard-media.spec.ts:124:5 › voice switch fences delayed requests and an audio failure offers explicit retry or text reading (4.1s)
+  ok  6 tests\e2e\whiteboard-media.spec.ts:134:5 › reopening a paused cloud sentence restores its known audio time in the verified original board (5.6s)
+  ok  7 tests\e2e\whiteboard-media.spec.ts:145:5 › scoped local resume and complete accessible notes fit phone, tablet and desktop (4.1s)
+
+  ok  8 tests\e2e\whiteboard-media.spec.ts:160:5 › actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed (10.7s)
+  ok  9 tests\e2e\whiteboard-media.spec.ts:219:5 › cancelling a recording releases it and never downloads a partial video (2.1s)
+  ok 10 tests\e2e\whiteboard-media.spec.ts:227:5 › seeking cancels old audio and ignores its late completion at the new reading position (2.1s)
+  ok 11 tests\e2e\whiteboard-media.spec.ts:238:5 › revoked student access closes the private player before another frozen sentence can be fetched (2.0s)
+  ok 12 tests\e2e\whiteboard-media.spec.ts:247:5 › closing while export audio is pending aborts it and cannot download or reopen a late result (3.7s)
+  ok 13 tests\e2e\whiteboard-media.spec.ts:254:5 › a recorder error releases resources, keeps the reading position and offers a retry without a partial download (1.8s)
+
+
+  1) tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 3075
+    Received:   3182.2999999523163
+
+      112 |     const result = await timing.save('adjacent-transfer'), firstEnd = result.audio.find(row => row.index === 0 && row.event === 'ended')!;
+      113 |     const prepared = result.audio.find(row => row.index === 1 && row.event === 'loadedmetadata')!, next = result.audio.find(row => row.index === 1 && row.event === 'playing')!;
+    > 114 |     expect(result.requests[1].startedAt).toBeLessThan(firstEnd.at - 100);
+          |                                          ^
+      115 |     expect(prepared.at).toBeLessThan(firstEnd.at);
+      116 |     expect(next.at - firstEnd.at).toBeLessThan(result.delayMs * .75);
+      117 |     expect(next.currentTime).toBeLessThan(.15);
+        at F:\workspace\github\StudyAgent-narration-continuity\tests\e2e\whiteboard-media.spec.ts:114:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning 
+  12 passed (1.1m)

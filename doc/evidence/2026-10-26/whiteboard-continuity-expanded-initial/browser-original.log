@@ -1,0 +1,184 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:76244) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:59636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 43 tests using 1 worker
+
+(node:47904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 tests\e2e\topic-whiteboard.spec.ts:57:5 › continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity (1.0m)
+(node:14756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 tests\e2e\topic-whiteboard.spec.ts:98:5 › topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback (6.2s)
+  ok  3 tests\e2e\topic-whiteboard.spec.ts:119:5 › topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline (22.0s)
+  ok  4 tests\e2e\topic-whiteboard.spec.ts:145:5 › login forms cannot submit before their client handlers are ready (637ms)
+  ok  5 tests\e2e\topic-whiteboard.spec.ts:156:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (23.2s)
+  ok  6 tests\e2e\topic-whiteboard.spec.ts:224:5 › topic-figure: uncached complete image commands block leaving until their exact complete download (3.6s)
+  ok  7 tests\e2e\topic-whiteboard.spec.ts:244:5 › topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate (5.9s)
+  ok  8 tests\e2e\topic-whiteboard.spec.ts:256:5 › topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation (10.6s)
+  ok  9 tests\e2e\topic-whiteboard.spec.ts:266:5 › topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads (4.3s)
+  ok 10 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 390 (5.9s)
+  ok 11 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 768 (6.0s)
+  ok 12 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 1440 (6.1s)
+  ok 13 tests\e2e\topic-whiteboard.spec.ts:292:5 › adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player (4.7s)
+  ok 14 tests\e2e\topic-whiteboard.spec.ts:331:5 › cancelled and failed review generations retain the original selected model through refresh and explicit retry (8.9s)
+  ok 15 tests\e2e\topic-whiteboard.spec.ts:342:5 › incomplete local teaching edits survive reload and another saved draft cannot silently replace them (3.7s)
+  ok 16 tests\e2e\topic-whiteboard.spec.ts:353:5 › unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving (3.4s)
+  ok 17 tests\e2e\topic-whiteboard.spec.ts:362:5 › stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save (4.1s)
+  ok 18 tests\e2e\topic-whiteboard.spec.ts:378:5 › uncached original topic cannot disappear on a scope change until its complete input is downloaded (1.5s)
+  ok 19 tests\e2e\topic-whiteboard.spec.ts:395:5 › another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded (3.8s)
+  ok 20 tests\e2e\topic-whiteboard.spec.ts:413:5 › recovery: an uncached original cancellation survives object changes until its exact command is downloaded (1.7s)
+  ok 21 tests\e2e\topic-whiteboard.spec.ts:431:5 › topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads (4.9s)
+  ok 22 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 390 (3.7s)
+  ok 23 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 768 (3.8s)
+  ok 24 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 1440 (4.3s)
+  ok 25 tests\e2e\whiteboard-media.spec.ts:65:5 › complete sentence, complete notes, paused text reading and explicit sentence navigation (2.0s)
+  ok 26 tests\e2e\whiteboard-media.spec.ts:79:5 › real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence (4.2s)
+  ok 27 tests\e2e\whiteboard-media.spec.ts:96:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end (4.5s)
+  x  28 tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning (1.0m)
+(node:31612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 29 tests\e2e\whiteboard-media.spec.ts:124:5 › continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence (5.5s)
+  x  30 tests\e2e\whiteboard-media.spec.ts:144:5 › continuity: closing during adjacent preparation aborts it and no late audio can play (1.0m)
+(node:59016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  31 tests\e2e\whiteboard-media.spec.ts:157:5 › continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request (1.0m)
+(node:57328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 32 tests\e2e\whiteboard-media.spec.ts:172:5 › continuity: a prepared WAV cannot play after actual guardian revocation before handover (5.0s)
+  x  33 tests\e2e\whiteboard-media.spec.ts:184:5 › continuity: changing voice fences the old adjacent request and preserves an explicit fresh play (1.0m)
+(node:60436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  34 tests\e2e\whiteboard-media.spec.ts:199:5 › continuity: slow adjacent audio cannot advance early and can be paused while waiting (1.0m)
+(node:72312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 35 tests\e2e\whiteboard-media.spec.ts:213:5 › voice switch fences delayed requests and an audio failure offers explicit retry or text reading (4.4s)
+  ok 36 tests\e2e\whiteboard-media.spec.ts:223:5 › reopening a paused cloud sentence restores its known audio time in the verified original board (6.5s)
+  ok 37 tests\e2e\whiteboard-media.spec.ts:234:5 › scoped local resume and complete accessible notes fit phone, tablet and desktop (4.3s)
+
+  ok 38 tests\e2e\whiteboard-media.spec.ts:249:5 › actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed (11.5s)
+  ok 39 tests\e2e\whiteboard-media.spec.ts:308:5 › cancelling a recording releases it and never downloads a partial video (2.3s)
+  ok 40 tests\e2e\whiteboard-media.spec.ts:316:5 › seeking cancels old audio and ignores its late completion at the new reading position (2.1s)
+  ok 41 tests\e2e\whiteboard-media.spec.ts:327:5 › revoked student access closes the private player before another frozen sentence can be fetched (2.6s)
+  ok 42 tests\e2e\whiteboard-media.spec.ts:336:5 › closing while export audio is pending aborts it and cannot download or reopen a late result (3.7s)
+  ok 43 tests\e2e\whiteboard-media.spec.ts:343:5 › a recorder error releases resources, keeps the reading position and offers a retry without a partial download (2.0s)
+
+
+  1) tests\e2e\topic-whiteboard.spec.ts:57:5 › continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\topic-whiteboard-continuit-50598-ts-frozen-sentence-identity\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-13d55-sfers-once-at-its-beginning\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\whiteboard-media.spec.ts:144:5 › continuity: closing during adjacent preparation aborts it and no late audio can play 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-d3703--and-no-late-audio-can-play\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\whiteboard-media.spec.ts:157:5 › continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-44bb6--it-without-another-request\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-44bb6--it-without-another-request\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-44bb6--it-without-another-request\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-44bb6--it-without-another-request\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests\e2e\whiteboard-media.spec.ts:184:5 › continuity: changing voice fences the old adjacent request and preserves an explicit fresh play 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests\e2e\whiteboard-media.spec.ts:199:5 › continuity: slow adjacent audio cannot advance early and can be paused while waiting 
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-397de-can-be-paused-while-waiting\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-397de-can-be-paused-while-waiting\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-397de-can-be-paused-while-waiting\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-397de-can-be-paused-while-waiting\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    tests\e2e\topic-whiteboard.spec.ts:57:5 › continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity 
+    tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning 
+    tests\e2e\whiteboard-media.spec.ts:144:5 › continuity: closing during adjacent preparation aborts it and no late audio can play 
+    tests\e2e\whiteboard-media.spec.ts:157:5 › continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request 
+    tests\e2e\whiteboard-media.spec.ts:184:5 › continuity: changing voice fences the old adjacent request and preserves an explicit fresh play 
+    tests\e2e\whiteboard-media.spec.ts:199:5 › continuity: slow adjacent audio cannot advance early and can be paused while waiting 
+  37 passed (9.8m)

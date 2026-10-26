@@ -1,0 +1,102 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:55432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:48376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 45 tests using 1 worker
+
+(node:58960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\topic-whiteboard.spec.ts:57:5 › continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity (8.5s)
+  ok  2 tests\e2e\topic-whiteboard.spec.ts:98:5 › topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback (6.5s)
+  ok  3 tests\e2e\topic-whiteboard.spec.ts:119:5 › topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline (22.2s)
+  ok  4 tests\e2e\topic-whiteboard.spec.ts:145:5 › login forms cannot submit before their client handlers are ready (744ms)
+  ok  5 tests\e2e\topic-whiteboard.spec.ts:156:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (24.4s)
+  ok  6 tests\e2e\topic-whiteboard.spec.ts:224:5 › topic-figure: uncached complete image commands block leaving until their exact complete download (3.9s)
+  ok  7 tests\e2e\topic-whiteboard.spec.ts:244:5 › topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate (6.5s)
+  ok  8 tests\e2e\topic-whiteboard.spec.ts:256:5 › topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation (10.8s)
+  ok  9 tests\e2e\topic-whiteboard.spec.ts:266:5 › topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads (4.6s)
+  ok 10 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 390 (6.1s)
+  ok 11 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 768 (6.0s)
+  ok 12 tests\e2e\topic-whiteboard.spec.ts:279:43 › topic-figure: complete verified image and keyboard reader fit 1440 (6.3s)
+  ok 13 tests\e2e\topic-whiteboard.spec.ts:292:5 › adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player (5.4s)
+  ok 14 tests\e2e\topic-whiteboard.spec.ts:331:5 › cancelled and failed review generations retain the original selected model through refresh and explicit retry (18.0s)
+  ok 15 tests\e2e\topic-whiteboard.spec.ts:342:5 › incomplete local teaching edits survive reload and another saved draft cannot silently replace them (4.5s)
+  ok 16 tests\e2e\topic-whiteboard.spec.ts:353:5 › unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving (3.7s)
+  ok 17 tests\e2e\topic-whiteboard.spec.ts:362:5 › stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save (4.9s)
+  ok 18 tests\e2e\topic-whiteboard.spec.ts:378:5 › uncached original topic cannot disappear on a scope change until its complete input is downloaded (2.1s)
+  ok 19 tests\e2e\topic-whiteboard.spec.ts:395:5 › another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded (4.5s)
+  ok 20 tests\e2e\topic-whiteboard.spec.ts:413:5 › recovery: an uncached original cancellation survives object changes until its exact command is downloaded (2.3s)
+  ok 21 tests\e2e\topic-whiteboard.spec.ts:431:5 › topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads (5.2s)
+  ok 22 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 390 (3.9s)
+  ok 23 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 768 (3.8s)
+  ok 24 tests\e2e\topic-whiteboard.spec.ts:444:43 › explicit child goals, adult separation and complete edit controls fit at 1440 (4.5s)
+  ok 25 tests\e2e\whiteboard-media.spec.ts:65:5 › complete sentence, complete notes, paused text reading and explicit sentence navigation (2.8s)
+  ok 26 tests\e2e\whiteboard-media.spec.ts:79:5 › real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence (4.8s)
+  ok 27 tests\e2e\whiteboard-media.spec.ts:96:5 › ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end (4.6s)
+  ok 28 tests\e2e\whiteboard-media.spec.ts:106:5 › continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning (5.7s)
+  ok 29 tests\e2e\whiteboard-media.spec.ts:124:5 › continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation (8.3s)
+  x  30 tests\e2e\whiteboard-media.spec.ts:149:5 › continuity: an already prepared WAV cannot survive actual login-session revocation (18.8s)
+(node:47020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 31 tests\e2e\whiteboard-media.spec.ts:162:5 › continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence (5.2s)
+  ok 32 tests\e2e\whiteboard-media.spec.ts:182:5 › continuity: closing during adjacent preparation aborts it and no late audio can play (3.6s)
+  ok 33 tests\e2e\whiteboard-media.spec.ts:195:5 › continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request (4.1s)
+  ok 34 tests\e2e\whiteboard-media.spec.ts:210:5 › continuity: a prepared WAV cannot play after actual guardian revocation before handover (4.2s)
+  ok 35 tests\e2e\whiteboard-media.spec.ts:222:5 › continuity: changing voice fences the old adjacent request and preserves an explicit fresh play (6.8s)
+  ok 36 tests\e2e\whiteboard-media.spec.ts:237:5 › continuity: slow adjacent audio cannot advance early and can be paused while waiting (9.2s)
+  ok 37 tests\e2e\whiteboard-media.spec.ts:251:5 › voice switch fences delayed requests and an audio failure offers explicit retry or text reading (3.9s)
+  ok 38 tests\e2e\whiteboard-media.spec.ts:261:5 › reopening a paused cloud sentence restores its known audio time in the verified original board (4.7s)
+  ok 39 tests\e2e\whiteboard-media.spec.ts:272:5 › scoped local resume and complete accessible notes fit phone, tablet and desktop (4.1s)
+
+  ok 40 tests\e2e\whiteboard-media.spec.ts:287:5 › actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed (10.7s)
+  ok 41 tests\e2e\whiteboard-media.spec.ts:346:5 › cancelling a recording releases it and never downloads a partial video (2.1s)
+  ok 42 tests\e2e\whiteboard-media.spec.ts:354:5 › seeking cancels old audio and ignores its late completion at the new reading position (2.0s)
+  ok 43 tests\e2e\whiteboard-media.spec.ts:365:5 › revoked student access closes the private player before another frozen sentence can be fetched (2.0s)
+  ok 44 tests\e2e\whiteboard-media.spec.ts:374:5 › closing while export audio is pending aborts it and cannot download or reopen a late result (3.7s)
+  ok 45 tests\e2e\whiteboard-media.spec.ts:381:5 › a recorder error releases resources, keeps the reading position and offers a retry without a partial download (1.9s)
+
+
+  1) tests\e2e\whiteboard-media.spec.ts:149:5 › continuity: an already prepared WAV cannot survive actual login-session revocation 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('dialog', { name: '白板视频' })
+    Expected: 0
+    Received: 1
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('dialog', { name: '白板视频' }) with timeout 15000ms
+      - waiting for getByRole('dialog', { name: '白板视频' })
+        33 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      153 |     await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
+      154 |     await f.call('/auth/logout', {}, f.actor.token);
+    > 155 |     await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+          |                                                              ^
+      156 |     const result = await timing.save('revoked-session');
+      157 |     expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
+      158 |     expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
+        at F:\workspace\github\StudyAgent-narration-continuity\tests\e2e\whiteboard-media.spec.ts:155:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-9824c-al-login-session-revocation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\browser-product-acceptance\whiteboard-media-continuit-9824c-al-login-session-revocation\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\browser-product-acceptance\whiteboard-media-continuit-9824c-al-login-session-revocation\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\browser-product-acceptance\whiteboard-media-continuit-9824c-al-login-session-revocation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\whiteboard-media.spec.ts:149:5 › continuity: an already prepared WAV cannot survive actual login-session revocation 
+  44 passed (4.9m)

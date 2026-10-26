@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "6ab9211635a1e903a7c5d59ad92968f2f8b03a5a",
+  "sourceRevision": "8284cd6247c9d925e12b65a8321e1280d713e096",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 385,
@@ -48705,7 +48705,7 @@
         {
           "name": "receipt",
           "optional": true,
-          "type": "{ key: string; kind: 'prepare' | 'cancel' | 'retry'; commandFingerprint: string;\n    effectiveRevision: number; generation: number; at: string }"
+          "type": "{ key: string; kind: 'prepare' | 'cancel' | 'retry'; commandFingerprint: string;\r\n    effectiveRevision: number; generation: number; at: string }"
         }
       ]
     },
