@@ -8,7 +8,7 @@ export type TopicVisualCommand = { key: string; kind: 'prepare' | 'cancel' | 're
 export type TopicVisualRecord = {
   id: string; ownerUserId: string; studentId: string | null; subject: StudioSubject | null;
   draftId: string; sceneIndex: number; sceneTeachingFingerprint: string; frozenContext: FrozenTopicVisualContext;
-  operation: TopicVisualView['operation']; parentVisualId: string | null; purpose: TopicVisualView['purpose'];
+  operation: TopicVisualView['operation']; parentVisualId: string | null; parentOriginal: ClassroomVisualFile | null; purpose: TopicVisualView['purpose'];
   requirements: string; changes: string | null; modelId: 'gpt-image-2'; size: '1536x1024';
   requestKey: string; requestHash: string; preflightFingerprint: string; input: TopicVisualPrepareCommand;
   authorization: TopicWhiteboardAuthorization; promptVersion: 'topic-whiteboard-image-v1'; prompt: string;

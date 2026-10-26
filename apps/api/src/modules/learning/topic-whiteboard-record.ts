@@ -1,4 +1,4 @@
-import type { StudioTopicWhiteboard, StudioSubject, TopicWhiteboardContent, TopicWhiteboardDraftStatus, TopicWhiteboardReview } from '@study-agent/contracts';
+import type { ClassroomVisualFile, StudioTopicWhiteboard, StudioSubject, TopicWhiteboardContent, TopicWhiteboardDraftStatus, TopicWhiteboardReview } from '@study-agent/contracts';
 import type { InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import type { PreparedTopicWhiteboard } from './topic-whiteboard-content';
 
@@ -16,4 +16,6 @@ export type TopicWhiteboardDraftRecord = {
   contentVersion: number; history: Array<{ version: number; content: TopicWhiteboardContent; fingerprint: string; at: string; actorId: string | null }>;
   commands: TopicWhiteboardCommand[]; whiteboardId: string | null; createdAt: string; updatedAt: string;
 };
-export type TopicWhiteboardRecord = StudioTopicWhiteboard & { ownerUserId: string; sourceDraftId: string };
+export type TopicWhiteboardFigureSnapshot = { sceneId: string; visualId: string; original: ClassroomVisualFile; image: ClassroomVisualFile;
+  width: number; height: number; alt: string; caption: string };
+export type TopicWhiteboardRecord = StudioTopicWhiteboard & { ownerUserId: string; sourceDraftId: string; figureSnapshots?: TopicWhiteboardFigureSnapshot[] };

@@ -6,3 +6,4 @@ export const topicVisualRoot = storage.root, topicVisualDirectory = storage.dire
   topicVisualFile = storage.file, publishTopicVisual = storage.publish, removeTopicVisualStage = storage.removeStage,
   purgeTopicVisual = storage.purge, pruneTopicVisualFiles = storage.pruneFiles, topicVisualDirectories = storage.directories,
   pruneTopicVisualStages = storage.pruneStages, newTopicVisualId = storage.newId;
+export const topicVisualDescriptorFile = storage.descriptorFile, pruneRetainedTopicVisualFiles = storage.pruneRetainedFiles;

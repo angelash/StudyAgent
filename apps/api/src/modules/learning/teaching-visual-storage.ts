@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { mkdirSync, lstatSync, existsSync, readFileSync, writeFileSync, rmSync, readdirSync } from 'node:fs';
+import { mkdirSync, lstatSync, existsSync, readFileSync, writeFileSync, rmSync, readdirSync, rmdirSync } from 'node:fs';
 import { resolve, parse, relative, sep, join } from 'node:path';
 import sharp from 'sharp';
 import type { ClassroomVisualFile } from '@study-agent/contracts';
@@ -67,6 +67,17 @@ export function createTeachingVisualStorage(options: { namespace: string; patter
       if (/^[a-f0-9]{64}\.(?:png|txt)$/.test(name) && !keep.has(name)) { const path = visualNoLinks(join(base, name)); if (lstatSync(path).isFile()) rmSync(path); }
     }
   }
+  /** Frozen public snapshots may retain PNGs after the private candidate and prompt have been erased. */
+  function pruneRetainedFiles(id: string, names: string[]) {
+    if (names.some(name => !/^[a-f0-9]{64}\.(?:png|txt)$/.test(name))) throw Error('visual_reference_invalid');
+    const base = directory(id), keep = new Set(names); if (!existsSync(base)) return;
+    for (const name of readdirSync(base)) {
+      if (!/^[a-f0-9]{64}\.(?:png|txt)$/.test(name) || keep.has(name)) continue;
+      const path = visualNoLinks(join(base, name)); if (lstatSync(path).isFile()) rmSync(path);
+    }
+    // An unexpected file/directory is retained for inspection; never recursively erase it.
+    if (!readdirSync(base).length) rmdirSync(base);
+  }
   function directories(minimumAgeMs = 0) {
     const base = visualNoLinks(root()); return existsSync(base) ? readdirSync(base, { withFileTypes: true }).filter(row => row.isDirectory() && options.pattern.test(row.name) &&
       Date.now() - lstatSync(visualNoLinks(join(base, row.name))).mtimeMs >= minimumAgeMs).map(row => row.name) : [];
@@ -78,5 +89,6 @@ export function createTeachingVisualStorage(options: { namespace: string; patter
       const path = visualNoLinks(join(base, name)), stat = lstatSync(path); if (stat.isDirectory() && Date.now() - stat.mtimeMs >= minimumAgeMs) removeStage(id, path);
     }
   }
-  return { root, directory, stage, file, publish, removeStage, purge, pruneFiles, directories, pruneStages, newId: () => options.prefix + randomUUID() };
+  return { root, directory, stage, file, descriptorFile: checkedFile, publish, removeStage, purge, pruneFiles, pruneRetainedFiles,
+    directories, pruneStages, newId: () => options.prefix + randomUUID() };
 }

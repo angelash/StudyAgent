@@ -19,7 +19,7 @@ export function buildTopicWhiteboard(row: TopicWhiteboardDraftRecord, id: string
       review, teacherReviewStatus: 'pending', formalMeasurementEligible: false } };
 }
 export function publicTopicWhiteboard(row: TopicWhiteboardRecord, actorId: string): StudioTopicWhiteboard {
-  const { ownerUserId, sourceDraftId: _source, ...board } = structuredClone(row);
+  const { ownerUserId, sourceDraftId: _source, figureSnapshots: _figures, ...board } = structuredClone(row);
   if (ownerUserId !== actorId) board.origin.draftId = null;
   return board;
 }

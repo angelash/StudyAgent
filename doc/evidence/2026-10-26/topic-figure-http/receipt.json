@@ -1,0 +1,103 @@
+{
+  "phase": "124 private HTTP and durable topic image candidates",
+  "at": "2026-10-26T03:34:26.772Z",
+  "baseRevision": "93730f5e1dea560b7703c1c9cc5eb8d2644a3949",
+  "reports": [
+    {
+      "name": "topic-figure-http-initial.json",
+      "sha256": "7d36801c8513871f16b3ee3d67d81fbd5543f043cec0080c72197c659b4adfff",
+      "size": 13474,
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-http-final.json",
+      "sha256": "83e5465cd144c5aea2f356cba512935e427acf55d28a7af7e09d90451aa2b064",
+      "size": 23947,
+      "passed": 47,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-postgres-http.json",
+      "sha256": "b84d0a72457bd2c4350a26cdfce280f5683ee9c639faf8db490246e86c8e2e1b",
+      "size": 7283,
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "success": true
+    },
+    {
+      "name": "topic-figure-http-lint-final.log",
+      "sha256": "48ebbe349321011a6a13b54c00c0e6d605e8fcc88ad54c42f5be5299ceb744ee",
+      "size": 256
+    }
+  ],
+  "sources": [
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "sha256": "1195f4b2cc7eb13150654bff24717997d7bfbc40068cb621055b336a134dc5fe"
+    },
+    {
+      "path": "apps/api/src/modules/learning/teaching-visual-storage.ts",
+      "sha256": "4da948f7034ced558a1da87936555c988016140e9babbf4368441e4a95558561"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-projection.ts",
+      "sha256": "e39a9c87e6ebd0c2fb90883a8a9d1a576a5da30e6920933f63acec9fa357969b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-record.ts",
+      "sha256": "731422b2cc7f6c87bcde974f6093122f37ad74a285db497632a4db7367d837b1"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-access.ts",
+      "sha256": "e20412ce8960c85fdb4ac53888cd5ed6f922f18e420cebc59fa1deee360eec91"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-record.ts",
+      "sha256": "b084392b39710b2b3b5140c61cdc7c7045c1fe0957718ac2b4f4db36852b7b98"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-retention.ts",
+      "sha256": "402191f0ac8b1963d8ffd5c05e5b586c53c491cff74159fe6d8e6171cede8fbb"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-storage.ts",
+      "sha256": "b3fdc356fa842580713c5470882b99c0fdacceb9fe6d128c94f75a5491c798cc"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts",
+      "sha256": "acc4a203997ed9bbf96a4fd7cce06f13ee8827bd732ae201b424c77a14b38759"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+      "sha256": "4ddd0cd4a979acaf758dace7433cbc56be91f7f36135c050aa2e3f29d5a9d5e9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+      "sha256": "62209fc1946e7b66c50a297ffee105d94db54bbbe0ac0759b21e98c12d5af7e1"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+      "sha256": "529a217e110cb02d41b75cef0ccff7774115de145a470f2a467d5d52e0904f3b"
+    },
+    {
+      "path": "scripts/qa/run-topic-figure-postgres.cjs",
+      "sha256": "0ac7d51ca7796bb05658df1efe44da2de8421c3e6291a7efeb5083b6b7d88ad4"
+    }
+  ],
+  "provider": "Controlled replacement writing the actual archived landscape PNG; zero new live image CLI invocations in this phase.",
+  "failures": [
+    "Two initial type checks exposed test-mock generic inference and widened literal return types. Terminal diagnostics remain in the conversation; explicit ClassroomImageService and TopicVisualCapabilities test types fixed them. Final root type check passed."
+  ],
+  "boundaries": [
+    "PostgreSQL HTTP uses a dedicated temporary schema with real native connections; counts overlap SQLite cases.",
+    "Selected figure manuscript integration and frozen image HTTP are not implemented in this checkpoint.",
+    "Shared image retention is only a referenced-file foundation; no two-guardian deletion or PostgreSQL image cold recovery proof yet.",
+    "No UI, video/formula change, full regression, remote CI, schema17 production upgrade or overall completion claim."
+  ]
+}
