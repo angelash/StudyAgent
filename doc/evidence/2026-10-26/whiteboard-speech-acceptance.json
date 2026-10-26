@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "status": "exact-ci-passed-awaiting-runtime",
+  "status": "runtime-delivered",
   "sourceRevision": "68202df",
-  "deployed": false,
+  "deployed": true,
   "schemaVersion": 15,
   "sqliteFocused": {
     "passed": 28,
@@ -40,7 +40,7 @@
     "scope": "Separate actual AIGW skill synthesis and decode. New narration HTTP uses controlled provider substitutes in automated tests, not a newly verified live provider through that endpoint."
   },
   "limits": [
-    "Local API1258/47 and exact Linux API1250/55 environment skips; local and exact remote229 browser cases zero retries. Actual production delivery remains pending.",
+    "Exact candidate and actual schema15 runtime delivered. Scoped automated evidence is not teacher, real-device, original pixels/audio or complete-product acceptance.",
     "Free topic content is still an approved knowledge card or generic template; arbitrary-topic AI generation is not implemented.",
     "No teacher, real-device, original HyperKnow CSS/fonts/DPR/audio or long-term learning acceptance.",
     "Complete notes are readable beside the canvas; long notes do not establish complete original pixel parity.",
@@ -103,5 +103,40 @@
     },
     "report": "whiteboard-speech-exact-ci/run.json",
     "rawBrowser": "whiteboard-speech-exact-ci/browser-original.json.gz"
+  },
+  "runtime": {
+    "report": "whiteboard-speech-runtime.json",
+    "buildRevision": "203d8f0b00e201896a03e4465e4d819c552486f6",
+    "webBuildId": "mSFyAwqNN3WmH4RE65D9V",
+    "schemaVersion": 15,
+    "httpChecks": 73,
+    "voiceSamples": 6,
+    "observedIntervalMs": 86599,
+    "services": [
+      {
+        "name": "study-agent-api",
+        "pid": 4280,
+        "status": "online",
+        "restarts": 1164,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-web",
+        "pid": 82724,
+        "status": "online",
+        "restarts": 3,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      },
+      {
+        "name": "study-agent-health",
+        "pid": 12016,
+        "status": "online",
+        "restarts": 1,
+        "cwd": "F:\\workspace\\github\\StudyAgent"
+      }
+    ],
+    "oldBuildFilesVerified": 843,
+    "backupFilesVerified": 1,
+    "assetsIncluded": false
   }
 }
