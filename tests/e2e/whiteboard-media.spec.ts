@@ -8,6 +8,7 @@ import { installNarrationTiming } from './whiteboard-timing';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107');
 const credential = 'Synthetic-whiteboard-only-20261026';
+test.afterEach(async ({ page }) => { await page.unrouteAll({ behavior: 'wait' }); });
 async function fixture(page: Page, endedBoundary = false) {
   const principal = 'whiteboard-' + crypto.randomUUID() + '@local.test';
   const bucket = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + bucket[0] + '.' + bucket[1];
@@ -224,18 +225,20 @@ test('continuity: a prepared WAV cannot play after actual guardian revocation be
 });
 
 test('continuity: changing voice fences the old adjacent request and preserves an explicit fresh play', async ({ page }) => {
-  const timing = await installNarrationTiming(page), f = await fixture(page);
+  const timing = await installNarrationTiming(page, 700, true), f = await fixture(page);
   try {
     await page.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(async () => (await timing.read()).requests.length).toBe(2);
     const old = (await timing.read()).requests[1].unitId;
-    await page.getByLabel('旁白音色').selectOption('fixture-delay'); await page.waitForTimeout(1000);
-    let result = await timing.read(); expect(result.requests[1].failure).toBeTruthy();
+    expect((await timing.read()).requests[1].status).toBeUndefined();
+    await page.getByLabel('旁白音色').selectOption('fixture-delay'); timing.releaseAdjacent();
+    await expect.poll(async () => (await timing.read()).requests[1].failure).toBeTruthy();
+    let result = await timing.read();
     expect(result.audio.filter(row => row.index > 0 && row.event === 'playing')).toEqual([]); await expect(f.current).toContainText('先统一单位');
     await page.getByRole('button', { name: '播放', exact: true }).click();
     await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing'), { timeout: 10000 }).toBe(true);
     result = await timing.save('voice-change'); expect(result.requests.filter(row => row.unitId === old && row.voice === 'fixture-a')).toHaveLength(1);
     expect(result.requests.some(row => row.voice === 'fixture-delay')).toBe(true);
-  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+  } finally { timing.releaseAdjacent(); await page.unrouteAll({ behavior: 'wait' }); }
 });
 
 test('continuity: slow adjacent audio cannot advance early and can be paused while waiting', async ({ page }) => {

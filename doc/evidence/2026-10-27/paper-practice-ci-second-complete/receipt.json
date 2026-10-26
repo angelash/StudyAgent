@@ -1,0 +1,283 @@
+{
+  "at": "2026-10-26T17:16:41.157Z",
+  "status": "second-exact-run-terminal-originals-preserved",
+  "run": 40362468339,
+  "head": "c8fb91e8270a8c0e3b781c4182cb88780963af81",
+  "conclusion": "failure",
+  "deployed": false,
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121711252725
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121711253291
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "failure",
+      "databaseId": 121711253359
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-26T16:49:45.286Z",
+      "duration": 1500801.754,
+      "expected": 295,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 2
+    },
+    "cases": 298,
+    "originalAttempts": 298,
+    "retriedAttempts": 3
+  },
+  "failures": [
+    {
+      "title": "continuity: changing voice fences the old adjacent request and preserves an explicit fresh play",
+      "file": "whiteboard-media.spec.ts",
+      "line": 226,
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "error": {
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m",
+            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n    at /home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts:232:74",
+            "location": {
+              "file": "/home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts",
+              "column": 74,
+              "line": 232
+            },
+            "snippet": "\u001b[0m \u001b[90m 230 |\u001b[39m     \u001b[36mconst\u001b[39m old \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread())\u001b[33m.\u001b[39mrequests[\u001b[35m1\u001b[39m]\u001b[33m.\u001b[39munitId\u001b[33m;\u001b[39m\n \u001b[90m 231 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'旁白音色'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'fixture-delay'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 232 |\u001b[39m     \u001b[36mlet\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread()\u001b[33m;\u001b[39m expect(result\u001b[33m.\u001b[39mrequests[\u001b[35m1\u001b[39m]\u001b[33m.\u001b[39mfailure)\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 233 |\u001b[39m     expect(result\u001b[33m.\u001b[39maudio\u001b[33m.\u001b[39mfilter(row \u001b[33m=>\u001b[39m row\u001b[33m.\u001b[39mindex \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mevent \u001b[33m===\u001b[39m \u001b[32m'playing'\u001b[39m))\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(f\u001b[33m.\u001b[39mcurrent)\u001b[33m.\u001b[39mtoContainText(\u001b[32m'先统一单位'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 234 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'播放'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 235 |\u001b[39m     \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread())\u001b[33m.\u001b[39maudio\u001b[33m.\u001b[39msome(row \u001b[33m=>\u001b[39m row\u001b[33m.\u001b[39mindex \u001b[33m===\u001b[39m \u001b[35m1\u001b[39m \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mevent \u001b[33m===\u001b[39m \u001b[32m'playing'\u001b[39m)\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+          },
+          "attachments": [
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play/test-failed-1.png"
+            },
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play/error-context.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play/trace.zip"
+            }
+          ]
+        },
+        {
+          "status": "failed",
+          "error": {
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m",
+            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n    at /home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts:232:74",
+            "location": {
+              "file": "/home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts",
+              "column": 74,
+              "line": 232
+            },
+            "snippet": "\u001b[0m \u001b[90m 230 |\u001b[39m     \u001b[36mconst\u001b[39m old \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread())\u001b[33m.\u001b[39mrequests[\u001b[35m1\u001b[39m]\u001b[33m.\u001b[39munitId\u001b[33m;\u001b[39m\n \u001b[90m 231 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'旁白音色'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'fixture-delay'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 232 |\u001b[39m     \u001b[36mlet\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread()\u001b[33m;\u001b[39m expect(result\u001b[33m.\u001b[39mrequests[\u001b[35m1\u001b[39m]\u001b[33m.\u001b[39mfailure)\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 233 |\u001b[39m     expect(result\u001b[33m.\u001b[39maudio\u001b[33m.\u001b[39mfilter(row \u001b[33m=>\u001b[39m row\u001b[33m.\u001b[39mindex \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mevent \u001b[33m===\u001b[39m \u001b[32m'playing'\u001b[39m))\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(f\u001b[33m.\u001b[39mcurrent)\u001b[33m.\u001b[39mtoContainText(\u001b[32m'先统一单位'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 234 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'播放'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 235 |\u001b[39m     \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m timing\u001b[33m.\u001b[39mread())\u001b[33m.\u001b[39maudio\u001b[33m.\u001b[39msome(row \u001b[33m=>\u001b[39m row\u001b[33m.\u001b[39mindex \u001b[33m===\u001b[39m \u001b[35m1\u001b[39m \u001b[33m&&\u001b[39m row\u001b[33m.\u001b[39mevent \u001b[33m===\u001b[39m \u001b[32m'playing'\u001b[39m)\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+          },
+          "attachments": [
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play-retry1/test-failed-1.png"
+            },
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play-retry1/error-context.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-continuit-c2aa8-rves-an-explicit-fresh-play-retry1/trace.zip"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reopening a paused cloud sentence restores its known audio time in the verified original board",
+      "file": "whiteboard-media.spec.ts",
+      "line": 265,
+      "status": "flaky",
+      "results": [
+        {
+          "status": "failed",
+          "error": {
+            "message": "Error: apiResponse.json: Response has been disposed",
+            "stack": "Error: apiResponse.json: Response has been disposed\n    at /home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts:29:36",
+            "location": {
+              "file": "/home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts",
+              "column": 36,
+              "line": 29
+            },
+            "snippet": "\u001b[0m \u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mroute(\u001b[32m'**/api/learning/studio/overview?*'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m route \u001b[33m=>\u001b[39m {\n \u001b[90m 28 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m route\u001b[33m.\u001b[39mfetch()\u001b[33m;\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok()) { \u001b[36mawait\u001b[39m route\u001b[33m.\u001b[39mfulfill({ response })\u001b[33m;\u001b[39m \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m payload \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m payload\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mnarrationAvailable \u001b[33m=\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 30 |\u001b[39m     payload\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mspeech \u001b[33m=\u001b[39m { available\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m provider\u001b[33m:\u001b[39m \u001b[32m'minimax'\u001b[39m\u001b[33m,\u001b[39m defaultVoice\u001b[33m:\u001b[39m \u001b[32m'fixture-a'\u001b[39m\u001b[33m,\u001b[39m voices\u001b[33m:\u001b[39m [\n \u001b[90m 31 |\u001b[39m       { id\u001b[33m:\u001b[39m \u001b[32m'fixture-a'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'合成音轨 A'\u001b[39m }\u001b[33m,\u001b[39m { id\u001b[33m:\u001b[39m \u001b[32m'fixture-delay'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'受控延迟音轨'\u001b[39m }\u001b[33m,\u001b[39m { id\u001b[33m:\u001b[39m \u001b[32m'fixture-fail'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'受控失败音轨'\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 32 |\u001b[39m     ] }\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m route\u001b[33m.\u001b[39mfulfill({ response\u001b[33m,\u001b[39m json\u001b[33m:\u001b[39m payload })\u001b[33m;\u001b[39m\u001b[0m"
+          },
+          "attachments": [
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-reopening-cca61-the-verified-original-board/error-context.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-reopening-cca61-the-verified-original-board/trace.zip"
+            }
+          ]
+        },
+        {
+          "status": "passed",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop",
+      "file": "whiteboard-media.spec.ts",
+      "line": 276,
+      "status": "flaky",
+      "results": [
+        {
+          "status": "failed",
+          "error": {
+            "message": "Error: \"route.fetch: Test ended.\nCall log:\n\u001b[2m  - → GET http://localhost:4107/api/learning/studio/overview?studentId=student_c7f16649-b6a0-4fa5-ab84-f4bfb906308c&subject=math\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - accept-language: en-US\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - cookie: study_session=5jt-nExx21FN0NkxJksFSzHDuY_TdZKa-R9W87Ufo5M\u001b[22m\n\u001b[2m    - origin: http://localhost:3107\u001b[22m\n\u001b[2m    - referer: http://localhost:3107/\u001b[22m\n\u001b[2m    - x-forwarded-for: 198.19.35.251\u001b[22m\n\u001b[2m    - sec-ch-ua: \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"HeadlessChrome\";v=\"156\"\u001b[22m\n\u001b[2m    - sec-ch-ua-mobile: ?0\u001b[22m\n\u001b[2m    - sec-ch-ua-platform: \"Linux\"\u001b[22m\n\" while running route callback.\nConsider awaiting `await page.unrouteAll({ behavior: 'ignoreErrors' })`\nbefore the end of the test to ignore remaining routes in flight.",
+            "stack": "Error: \"route.fetch: Test ended.\nCall log:\n\u001b[2m  - → GET http://localhost:4107/api/learning/studio/overview?studentId=student_c7f16649-b6a0-4fa5-ab84-f4bfb906308c&subject=math\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - accept-language: en-US\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - cookie: study_session=5jt-nExx21FN0NkxJksFSzHDuY_TdZKa-R9W87Ufo5M\u001b[22m\n\u001b[2m    - origin: http://localhost:3107\u001b[22m\n\u001b[2m    - referer: http://localhost:3107/\u001b[22m\n\u001b[2m    - x-forwarded-for: 198.19.35.251\u001b[22m\n\u001b[2m    - sec-ch-ua: \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"HeadlessChrome\";v=\"156\"\u001b[22m\n\u001b[2m    - sec-ch-ua-mobile: ?0\u001b[22m\n\u001b[2m    - sec-ch-ua-platform: \"Linux\"\u001b[22m\n\" while running route callback.\nConsider awaiting `await page.unrouteAll({ behavior: 'ignoreErrors' })`\nbefore the end of the test to ignore remaining routes in flight.\n    at /home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts:28:34",
+            "location": {
+              "file": "/home/runner/work/StudyAgent/StudyAgent/tests/e2e/whiteboard-media.spec.ts",
+              "column": 34,
+              "line": 28
+            },
+            "snippet": "\u001b[0m \u001b[90m 26 |\u001b[39m   \u001b[36mconst\u001b[39m board \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m call(\u001b[32m'/qa/whiteboard-media'\u001b[39m\u001b[33m,\u001b[39m { boardId\u001b[33m:\u001b[39m saved\u001b[33m.\u001b[39mid }\u001b[33m,\u001b[39m actor\u001b[33m.\u001b[39mtoken)\u001b[33m;\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mroute(\u001b[32m'**/api/learning/studio/overview?*'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m route \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m route\u001b[33m.\u001b[39mfetch()\u001b[33m;\u001b[39m \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok()) { \u001b[36mawait\u001b[39m route\u001b[33m.\u001b[39mfulfill({ response })\u001b[33m;\u001b[39m \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m }\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m payload \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m payload\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mnarrationAvailable \u001b[33m=\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     payload\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mspeech \u001b[33m=\u001b[39m { available\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m provider\u001b[33m:\u001b[39m \u001b[32m'minimax'\u001b[39m\u001b[33m,\u001b[39m defaultVoice\u001b[33m:\u001b[39m \u001b[32m'fixture-a'\u001b[39m\u001b[33m,\u001b[39m voices\u001b[33m:\u001b[39m [\n \u001b[90m 31 |\u001b[39m       { id\u001b[33m:\u001b[39m \u001b[32m'fixture-a'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'合成音轨 A'\u001b[39m }\u001b[33m,\u001b[39m { id\u001b[33m:\u001b[39m \u001b[32m'fixture-delay'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'受控延迟音轨'\u001b[39m }\u001b[33m,\u001b[39m { id\u001b[33m:\u001b[39m \u001b[32m'fixture-fail'\u001b[39m\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m \u001b[32m'受控失败音轨'\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m"
+          },
+          "attachments": [
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-scoped-lo-d8215-it-phone-tablet-and-desktop/test-failed-1.png"
+            },
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-scoped-lo-d8215-it-phone-tablet-and-desktop/error-context.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "/home/runner/work/StudyAgent/StudyAgent/test-results/browser-product-acceptance/whiteboard-media-scoped-lo-d8215-it-phone-tablet-and-desktop/trace.zip"
+            }
+          ]
+        },
+        {
+          "status": "passed",
+          "attachments": []
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "file": "run-original.json",
+      "originalSha256": "0fb174e5fc61545509e23579b8f485df16fc1d7a6f21f14e67b87e66df48b2b1",
+      "sha256": "0fb174e5fc61545509e23579b8f485df16fc1d7a6f21f14e67b87e66df48b2b1"
+    },
+    {
+      "file": "browser-original.json.gz",
+      "originalSha256": "d431c8824ca83759176def66c89ad8aeeb8220d1aad3acadfc4e675c8c4d7d17",
+      "sha256": "e8d1495a403350b57d16eff3c514007b44172d7b795224ce487aa837dc547e7e"
+    },
+    {
+      "file": "postgres-original.log.gz",
+      "originalSha256": "7abb182a05098b56d2aeece61729df34ad60fcc677909b6a7392d83dfba2281d",
+      "sha256": "4fd7837df7b72e82cd8ca022161e48bf3004de754d8d2d799055ccdf49695e5c"
+    },
+    {
+      "file": "application-original.log.gz",
+      "originalSha256": "fd144c0e15bbd2f214d77db0a5558e46d9132d4efc6a3d753a95e7acce560b4c",
+      "sha256": "c6e1572cb0d55bf325b38670684794a2aec6f897db0bb5bece523933e94ef330"
+    },
+    {
+      "file": "browser-original.log.gz",
+      "originalSha256": "30bbd73fcda06e4bcfa2541ba1f91b789089419b80140b36e6fde91710a65ba1",
+      "sha256": "4696dca5e4ca31b31cb320085dfef426f92d85bf0a7c1b8c11d12d2fb8263e4c"
+    },
+    {
+      "file": "failure-0-attempt-0-test-failed-1.png",
+      "originalSha256": "18b784b8b6ad7c4fcebb6dbb013fb1724fbad52a19b4decc70d6c0219b3d0487",
+      "sha256": "18b784b8b6ad7c4fcebb6dbb013fb1724fbad52a19b4decc70d6c0219b3d0487"
+    },
+    {
+      "file": "failure-0-attempt-0-error-context.md.gz",
+      "originalSha256": "81afe064ff7227b30af25a9bb6984776858073c52d25a079cfaed2b3982155c7",
+      "sha256": "35e25171221da56e48c3c79f52346c5c33a397c36c5e36b53d8e53c2e19c6e3f"
+    },
+    {
+      "file": "failure-0-attempt-0-trace.zip",
+      "originalSha256": "d5cd18c8d748655de675a8aecc91dc0ce0b13a96481b3a80e53cc5486daee36f",
+      "sha256": "d5cd18c8d748655de675a8aecc91dc0ce0b13a96481b3a80e53cc5486daee36f"
+    },
+    {
+      "file": "failure-0-attempt-1-test-failed-1.png",
+      "originalSha256": "18b784b8b6ad7c4fcebb6dbb013fb1724fbad52a19b4decc70d6c0219b3d0487",
+      "sha256": "18b784b8b6ad7c4fcebb6dbb013fb1724fbad52a19b4decc70d6c0219b3d0487"
+    },
+    {
+      "file": "failure-0-attempt-1-error-context.md.gz",
+      "originalSha256": "5720577af32918bbef8316f6078461ae44189811c22a2943423ff391eadee0d9",
+      "sha256": "a15de83247dfb83a0621f41c6e446431291e1587767b93ddb5671f6897a03594"
+    },
+    {
+      "file": "failure-0-attempt-1-trace.zip",
+      "originalSha256": "51ebb0ef2ad0647a5a3c2aa9cf2ec91a30653b0db69a323c6622f6c5de56b3df",
+      "sha256": "51ebb0ef2ad0647a5a3c2aa9cf2ec91a30653b0db69a323c6622f6c5de56b3df"
+    },
+    {
+      "file": "failure-1-attempt-0-error-context.md.gz",
+      "originalSha256": "5423c4ea2e2cd3dbe8efa505e496c624360ff24ad5a015848075d8afdc89f9f5",
+      "sha256": "57f3d0b7d8219e60f16aa85706e4d97bbbdcc4c125e6b436bfe5e046bef62767"
+    },
+    {
+      "file": "failure-1-attempt-0-trace.zip",
+      "originalSha256": "b97dbace64e3c66b81a9f87d70eb00b5e6f6389e4e6200d5b6fc10cf3691ead7",
+      "sha256": "b97dbace64e3c66b81a9f87d70eb00b5e6f6389e4e6200d5b6fc10cf3691ead7"
+    },
+    {
+      "file": "failure-2-attempt-0-test-failed-1.png",
+      "originalSha256": "93ef70bf65001bcb7e74933e860362fb651d2d52da47db60f7b7577cdab9a403",
+      "sha256": "93ef70bf65001bcb7e74933e860362fb651d2d52da47db60f7b7577cdab9a403"
+    },
+    {
+      "file": "failure-2-attempt-0-error-context.md.gz",
+      "originalSha256": "7514ff5c5e78383515ab5f1230a594c949df72817f7d2f400a6d672943de5adc",
+      "sha256": "03632bef31d861f0ca597c061069e42e61c04696181c8d5d589e2cf3e8e5d282"
+    },
+    {
+      "file": "failure-2-attempt-0-trace.zip",
+      "originalSha256": "714b3b64069061fabdb66a33f4475893b0a3ed7d1ae5653d526f3e6185cdeaba",
+      "sha256": "714b3b64069061fabdb66a33f4475893b0a3ed7d1ae5653d526f3e6185cdeaba"
+    }
+  ],
+  "diagnosis": {
+    "voiceChangeTrace": {
+      "oldAdjacentStartedAt": 1422528.816,
+      "oldAdjacentElapsed": 711.555,
+      "voiceSelectionStartedAt": 1423490.642,
+      "responseFinishedBeforeSelectionMs": 250.271
+    },
+    "meaning": "The asserted pending request had already completed before voice selection. Hold the adjacent request explicitly and observe actual failure, preserving the cancellation and fresh-play assertions.",
+    "teardown": "Two additional original tests passed only after retry because overview route handlers were still active when Playwright disposed the test context. Await unrouteAll(wait) after each case; do not ignore route errors.",
+    "runtimeChanged": false
+  }
+}
