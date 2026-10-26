@@ -1,0 +1,116 @@
+{
+  "at": "2026-10-26T00:22:52.662Z",
+  "passed": true,
+  "scope": "Anonymous adult topic over actual HTTP, live DS writing and AI review, explicit confirmation. Actual CLI invocations counted separately from structured stages. No teacher, audio, pixel or learning-validity acceptance.",
+  "calls": [
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:22:54.884Z",
+      "status": "failed",
+      "durationMs": 75609
+    },
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:24:10.533Z",
+      "status": "completed",
+      "modelName": "DeepSeek V4.1 Flash",
+      "durationMs": 16196
+    },
+    {
+      "stage": "reviewing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:24:26.735Z",
+      "status": "completed",
+      "modelName": "DeepSeek V4.1 Flash",
+      "durationMs": 29417
+    }
+  ],
+  "invocations": [
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:22:54.908Z",
+      "status": "completed",
+      "outputCharacters": 3469,
+      "durationMs": 30157
+    },
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:23:25.067Z",
+      "status": "completed",
+      "outputCharacters": 3060,
+      "durationMs": 45424
+    },
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:24:10.566Z",
+      "status": "completed",
+      "outputCharacters": 3108,
+      "durationMs": 16162
+    },
+    {
+      "stage": "reviewing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:24:26.759Z",
+      "status": "completed",
+      "outputCharacters": 2494,
+      "durationMs": 29390
+    }
+  ],
+  "validationFailures": [
+    {
+      "stage": "writing",
+      "name": "ZodError",
+      "issues": 1
+    },
+    {
+      "stage": "writing",
+      "name": "ZodError",
+      "issues": 3
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "failed",
+      "errorCode": "topic_whiteboard_generation_failed",
+      "durationMs": 75638
+    },
+    {
+      "attempt": 2,
+      "status": "ready",
+      "errorCode": null,
+      "durationMs": 45644
+    }
+  ],
+  "teacherReviewStatus": "pending",
+  "formalMeasurementEligible": false,
+  "baselineRevision": "0c5cab142df31457160e2e3b6e89912739c4ec73",
+  "compiledSha256": {
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard.service.js": "b88c65c2e754c8c295f245963ccac9951a8e4fc4be18f88cd13f775dff361495",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-worker.service.js": "8dbdfda2604d4e60694b78c974c0ef5a2fe9124a782e8bf6ac1193ab1d129c7b",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-content.js": "1186fbf0f73d5c0151eac6ea6b488fe1e32fbc29c9ebf18badb4d03eb92d5ce4",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-access.js": "eb5b73dba6cc7e3641a7386e17640b8092c34c3c3b9b8f96288a873a4c8342b4",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-projection.js": "cc14f2e1aabc6dd6f7ed442eb5e6eccf19c5d8c0fbcaa9910cd903c4c7ddd740"
+  },
+  "modelId": "deepseek-v4-flash",
+  "sceneCount": 4,
+  "tableCount": 1,
+  "formulaCount": 1,
+  "review": {
+    "decision": "revised",
+    "issues": [
+      "第三步把5/6写成了“五分之六”，按中文分数读法应为“六分之五”；后文和公式都使用5/6，原稿因此存在数值与文字不一致。已统一修正，并保留原公式及适用条件。"
+    ],
+    "modelId": "deepseek-v4-flash",
+    "inputFingerprint": "5a4ff619a7915744e575652b8eeb2c01ebe22b4010f3ecc2f74168982346880c",
+    "outputFingerprint": "0db6922971bde9a7dbc0841673e57ec763c6b6298fd864cd7043f9036549c388",
+    "at": "2026-10-26T00:24:56.152Z",
+    "current": true
+  },
+  "modelName": "DeepSeek V4.1 Flash"
+}

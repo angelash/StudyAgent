@@ -1,17 +1,18 @@
 'use client';
 import { WHITEBOARD_SPEECH_VERSION, whiteboardTimeline } from '@study-agent/contracts';
-import type { StudioWhiteboard, WhiteboardPresentation, WhiteboardTimeline, WhiteboardTimelineEntry } from '@study-agent/contracts';
+import type { WhiteboardPresentation, WhiteboardTimeline, WhiteboardTimelineEntry } from '@study-agent/contracts';
 import { apiBaseUrl, getAuthToken } from '../../lib/api';
 import { whiteboardWebmDuration } from './whiteboard-webm';
+import { whiteboardApiPath, type PlayableWhiteboard } from './whiteboard-original';
 
 export class WhiteboardAccessError extends Error {}
 export function assertWhiteboardActive(signal: AbortSignal) {
   if (signal.aborted) throw new DOMException('Cancelled', 'AbortError');
 }
-export async function whiteboardAudio(board: StudioWhiteboard, unit: WhiteboardTimelineEntry | WhiteboardPresentation['units'][number],
+export async function whiteboardAudio(board: PlayableWhiteboard, unit: WhiteboardTimelineEntry | WhiteboardPresentation['units'][number],
   voice: string, signal: AbortSignal): Promise<Blob> {
   const token = getAuthToken();
-  const response = await fetch(apiBaseUrl + '/api/learning/studio/whiteboards/' + encodeURIComponent(board.id) +
+  const response = await fetch(apiBaseUrl + '/api' + whiteboardApiPath(board) +
     '/narration/' + encodeURIComponent(unit.sceneId), { method: 'POST', credentials: 'include', signal,
     headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) },
     body: JSON.stringify({ ...(voice ? { voice } : {}), presentationVersion: WHITEBOARD_SPEECH_VERSION,
@@ -27,7 +28,7 @@ export async function whiteboardAudio(board: StudioWhiteboard, unit: WhiteboardT
 }
 
 export type WhiteboardExport = { timeline: WhiteboardTimeline; context: AudioContext | null; buffers: AudioBuffer[]; close: () => Promise<void> };
-export async function prepareWhiteboardExport(board: StudioWhiteboard, presentation: WhiteboardPresentation, mode: 'text' | 'cloud',
+export async function prepareWhiteboardExport(board: PlayableWhiteboard, presentation: WhiteboardPresentation, mode: 'text' | 'cloud',
   voice: string, speed: number, signal: AbortSignal, onProgress: (index: number) => void): Promise<WhiteboardExport> {
   const context = mode === 'cloud' ? new AudioContext() : null;
   const close = async () => { if (context && context.state !== 'closed') await context.close().catch(() => undefined); };

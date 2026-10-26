@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import type { StudioWhiteboardScene } from '@study-agent/contracts';
+import { whiteboardTableLayout, whiteboardTextLines } from './whiteboard-table';
 import { splitClassroomSpeech } from '@study-agent/contracts';
 import type { WhiteboardSpeechUnit } from '@study-agent/contracts';
 
@@ -47,12 +48,12 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
   context.fillStyle = '#152019'; context.fillRect(64, 57, 74, 4);
   context.font = '600 13px Arial'; context.fillStyle = '#738074';
   context.fillText('STUDYAGENT / LEARNING BOARD', 154, 66);
-  context.textAlign = 'right'; context.fillText('EVIDENCE GROUNDED', 1216, 66); context.textAlign = 'left';
+  context.textAlign = 'right'; context.fillText(scene.targetAtomIds ? 'AI GENERATED / CHECK CONTENT' : 'EVIDENCE GROUNDED', 1216, 66); context.textAlign = 'left';
   context.fillStyle = '#dbe4da'; context.fillRect(88, 88, 1104, 1);
   context.fillStyle = '#243229'; context.fillRect(88, 120, 52, 2);
   context.fillStyle = '#718474'; context.fillRect(145, 120, 96 * progress, 2);
-  context.font = '500 47px Georgia, "Microsoft YaHei UI", serif'; context.fillStyle = '#111712';
-  const titleBottom = wrap(context, scene.title, 88, 194, 1020, 58, 2);
+  context.font = scene.exhibit ? '500 32px Georgia, "Microsoft YaHei UI", serif' : '500 47px Georgia, "Microsoft YaHei UI", serif'; context.fillStyle = '#111712';
+  const titleBottom = wrap(context, scene.title, 88, scene.exhibit ? 154 : 194, 1020, scene.exhibit ? 42 : 58, 2);
   const sourceImage = scene.source ? pageImages?.get(scene.source.materialId + ':' + scene.source.page) : undefined;
   if (scene.source) {
     context.font = '600 14px Arial, "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#516857';
@@ -61,7 +62,38 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
     context.fillText(scene.source.label, 198, titleBottom + 18);
   }
   let contentBottom = titleBottom + (scene.source ? 38 : 16);
-  if (scene.kind === 'pdf_page' && sourceImage?.complete && sourceImage.naturalWidth) {
+  if (scene.exhibit) {
+    const top = titleBottom + 6, available = 594 - top;
+    if (scene.exhibit.kind === 'table') {
+      try {
+        const table = scene.exhibit, layout = whiteboardTableLayout(context, table, 1104, available);
+        const ratio = unit && scene.narration.length ? (unit.start + (unit.end - unit.start) * progress) / scene.narration.length : progress;
+        const pageIndex = Math.min(layout.pages.length - 1, Math.max(0, Math.floor(ratio * layout.pages.length))), rows = layout.pages[pageIndex];
+        const drawRow = (cells: string[][], y: number, rowHeight: number, header = false) => {
+          context.fillStyle = header ? '#e8ede6' : '#fff'; context.fillRect(88, y, 1104, rowHeight);
+          cells.forEach((lines, column) => {
+            context.strokeStyle = '#d9e1d5'; context.strokeRect(88 + column * layout.columnWidth, y, layout.columnWidth, rowHeight);
+            context.fillStyle = '#26382b'; context.font = (header ? '600 ' : '') + layout.font + 'px "Microsoft YaHei UI", sans-serif';
+            lines.forEach((line, index) => context.fillText(line, 100 + column * layout.columnWidth, y + 10 + layout.font + index * layout.lineHeight));
+          });
+        };
+        drawRow(layout.headerLines, top, layout.headerHeight, true); let y = top + layout.headerHeight;
+        for (const row of rows) { drawRow(row.cells, y, row.height); y += row.height; }
+        context.font = '12px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#657268';
+        context.fillText('对照表 ' + (pageIndex + 1) + ' / ' + layout.pages.length + ' · 第' + (rows[0].index + 1) + '—' + (rows.at(-1)!.index + 1) + '行 · 完整表格见讲稿', 92, 612);
+      } catch {
+        context.font = '20px "Microsoft YaHei UI", sans-serif'; context.fillStyle = '#26382b'; context.fillText('请在完整讲稿中核对这张表格。', 92, top + 40);
+      }
+    } else {
+      const exhibit = scene.exhibit;
+      for (const font of [27, 23, 19, 15, 11, 9]) {
+        context.font = font + 'px "Microsoft YaHei UI", sans-serif';
+        const lines = whiteboardTextLines(exhibit.latex.replace(/\s+/gu, ' ').trim() + '\n\n' + exhibit.explanation.replace(/\s+/gu, ' ').trim(), 1072, text => context.measureText(text).width);
+        if (lines.length * (font + 8) > available && font !== 9) continue;
+        context.fillStyle = '#26382b'; lines.forEach((line, index) => context.fillText(line, 98, top + font + index * (font + 8))); break;
+      }
+    }
+  } else if (scene.kind === 'pdf_page' && sourceImage?.complete && sourceImage.naturalWidth) {
     const box = { x: 88, y: 276, width: 430, height: 318 }, scale = Math.min(box.width / sourceImage.naturalWidth,
       box.height / sourceImage.naturalHeight), drawWidth = sourceImage.naturalWidth * scale, drawHeight = sourceImage.naturalHeight * scale;
     context.fillStyle = '#fff'; context.fillRect(box.x, box.y, box.width, box.height);
@@ -75,7 +107,7 @@ export function drawWhiteboardScene(context: CanvasRenderingContext2D, scene: St
     if (scene.body) contentBottom = wrap(context, scene.body, 92, contentBottom + 27, 1014, 36, 3);
   }
   const bulletsTop = scene.visual ? 500 : Math.max(350, contentBottom + 34);
-  if (scene.bullets?.length) {
+  if (!scene.exhibit && scene.bullets?.length) {
     const indices = unit?.visibleBulletIndices ?? scene.bullets.map((_, index) => index);
     const shown = indices.slice(-3);
     shown.forEach((index, row) => {

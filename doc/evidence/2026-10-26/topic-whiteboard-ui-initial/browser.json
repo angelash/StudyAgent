@@ -1,0 +1,779 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/topic-whiteboard.spec.ts",
+      "tests/e2e/whiteboard-media.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent-ai-whiteboards/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent-ai-whiteboards/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3147",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/topic-whiteboard-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "topic-whiteboard.spec.ts",
+      "file": "topic-whiteboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4976,
+                  "error": {
+                    "message": "Error: locator.click: Error: strict mode violation: getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary') resolved to 2 elements:\n    1) <summary>最后保留反例</summary> aka locator('summary').filter({ hasText: '最后保留反例' })\n    2) <summary>可复制的公式原文</summary> aka getByText('可复制的公式原文')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary')\u001b[22m\n",
+                    "stack": "Error: locator.click: Error: strict mode violation: getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary') resolved to 2 elements:\n    1) <summary>最后保留反例</summary> aka locator('summary').filter({ hasText: '最后保留反例' })\n    2) <summary>可复制的公式原文</summary> aka getByText('可复制的公式原文')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary')\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:72:81",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                      "column": 81,
+                      "line": 72
+                    },
+                    "snippet": "  70 |   await expect(page.locator('.wb-ai-origin')).toContainText('AI生成');\n  71 |   await page.getByLabel('完整讲稿与要点').locator('details').nth(1).locator('summary').click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');\n> 72 |   await page.getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary').click(); await expect(page.locator('math')).toBeVisible(); await expect(page.locator('.wb-complete-formula')).toContainText('计数单位相同');\n     |                                                                                 ^\n  73 |   const view = await f.call(base + '/drafts/' + id, undefined, 'GET'); expect(view).toMatchObject({ status: 'confirmed', modelId: 'deepseek-v4-flash', studentId: null, subject: null });\n  74 |   expect((await f.call(base, undefined, 'GET')).total).toBe(1);\n  75 |   await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'adult-complete-player.png'), fullPage: true });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                        "column": 81,
+                        "line": 72
+                      },
+                      "message": "Error: locator.click: Error: strict mode violation: getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary') resolved to 2 elements:\n    1) <summary>最后保留反例</summary> aka locator('summary').filter({ hasText: '最后保留反例' })\n    2) <summary>可复制的公式原文</summary> aka getByText('可复制的公式原文')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary')\u001b[22m\n\n\n  70 |   await expect(page.locator('.wb-ai-origin')).toContainText('AI生成');\n  71 |   await page.getByLabel('完整讲稿与要点').locator('details').nth(1).locator('summary').click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');\n> 72 |   await page.getByLabel('完整讲稿与要点').locator('details').nth(2).locator('summary').click(); await expect(page.locator('math')).toBeVisible(); await expect(page.locator('.wb-complete-formula')).toContainText('计数单位相同');\n     |                                                                                 ^\n  73 |   const view = await f.call(base + '/drafts/' + id, undefined, 'GET'); expect(view).toMatchObject({ status: 'confirmed', modelId: 'deepseek-v4-flash', studentId: null, subject: null });\n  74 |   expect((await f.call(base, undefined, 'GET')).total).toBe(1);\n  75 |   await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'adult-complete-player.png'), fullPage: true });\n    at F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts:72:81"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:22:25.328Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\test-results\\browser-product-acceptance\\topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent-ai-whiteboards\\tests\\e2e\\topic-whiteboard.spec.ts",
+                    "column": 81,
+                    "line": 72
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-cc5fb6bbf463525cd1fa",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17500,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:22:31.845Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-08adb2f21322eb11af0c",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:22:49.696Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-8cb1d37b7a0b896e38b0",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 89,
+          "column": 5
+        },
+        {
+          "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:22:53.327Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-2db515c98ce4055960c8",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3621,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:22:56.830Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-1b928351ddb87fe05b18",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 109,
+          "column": 43
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:00.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-608c7ceb00f09af9ae8a",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 109,
+          "column": 43
+        },
+        {
+          "title": "explicit child goals, adult separation and complete edit controls fit at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3661,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:04.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-eb298190669c5cc984ec",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 109,
+          "column": 43
+        }
+      ]
+    },
+    {
+      "title": "whiteboard-media.spec.ts",
+      "file": "whiteboard-media.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "complete sentence, complete notes, paused text reading and explicit sentence navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1985,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:08.315Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-bc7fcf39d7380703805e",
+          "file": "whiteboard-media.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:10.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-6231436059e5ab4cac1a",
+          "file": "whiteboard-media.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "voice switch fences delayed requests and an audio failure offers explicit retry or text reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:14.884Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-367305629a2286f541a1",
+          "file": "whiteboard-media.spec.ts",
+          "line": 75,
+          "column": 5
+        },
+        {
+          "title": "reopening a paused cloud sentence restores its known audio time in the verified original board",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4527,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:18.764Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-7aac6f08ec7bca02740f",
+          "file": "whiteboard-media.spec.ts",
+          "line": 85,
+          "column": 5
+        },
+        {
+          "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:23.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-39b1df6194b59dc7f2a8",
+          "file": "whiteboard-media.spec.ts",
+          "line": 96,
+          "column": 5
+        },
+        {
+          "title": "actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "buffer": ""
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:27.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-a3f399433c3bfe3876ec",
+          "file": "whiteboard-media.spec.ts",
+          "line": 111,
+          "column": 5
+        },
+        {
+          "title": "cancelling a recording releases it and never downloads a partial video",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:37.586Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-5089bc4b4e0a15aa7bb2",
+          "file": "whiteboard-media.spec.ts",
+          "line": 170,
+          "column": 5
+        },
+        {
+          "title": "seeking cancels old audio and ignores its late completion at the new reading position",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:39.683Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-9fce2e8b4aa915004ae6",
+          "file": "whiteboard-media.spec.ts",
+          "line": 178,
+          "column": 5
+        },
+        {
+          "title": "revoked student access closes the private player before another frozen sentence can be fetched",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:41.662Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-848caf2c5f8fd80094e2",
+          "file": "whiteboard-media.spec.ts",
+          "line": 189,
+          "column": 5
+        },
+        {
+          "title": "closing while export audio is pending aborts it and cannot download or reopen a late result",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:43.582Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-c8f3b92e098e122e66d0",
+          "file": "whiteboard-media.spec.ts",
+          "line": 198,
+          "column": 5
+        },
+        {
+          "title": "a recorder error releases resources, keeps the reading position and offers a retry without a partial download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1606,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T00:23:47.211Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "64bf3b59c02ea1230df8-21203581cb83a795e1c0",
+          "file": "whiteboard-media.spec.ts",
+          "line": 205,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T00:22:19.855Z",
+    "duration": 90909.248,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

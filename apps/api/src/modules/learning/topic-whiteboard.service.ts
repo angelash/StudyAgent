@@ -26,6 +26,7 @@ export function reconcileTopicWhiteboard(row: TopicWhiteboardDraftRecord, task: 
 export class TopicWhiteboardService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly models: XiaojiuModelsService, private readonly chat: XiaojiuChatService) {}
+  modelAvailable() { return this.chat.enabled; }
 
   private record(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession) {
     const row = this.store.find('studioTopicWhiteboardDrafts', { id, ownerUserId: user.id });
@@ -54,7 +55,7 @@ export class TopicWhiteboardService {
     const command = validate(topicWhiteboardInputSchema, input), model = this.models.resolve(command.modelId);
     captureTopicWhiteboardAuthorization(this.store, this.students, user, command.audience, session);
     const prepared = prepareTopicWhiteboard(this.store, this.students, user, command, model);
-    return { valid: true, available: this.chat.enabled, fingerprint: prepared.fingerprint, modelId: model.id, modelName: model.label,
+    return { valid: true, available: this.modelAvailable(), fingerprint: prepared.fingerprint, modelId: model.id, modelName: model.label,
       grade: prepared.grade, targets: prepared.targets.map(({ id, name, objective }) => ({ id, name, objective })),
       contextCharacters: prepared.context.length, maxContextCharacters: 18000 };
   }
@@ -71,7 +72,7 @@ export class TopicWhiteboardService {
       const authorization = captureTopicWhiteboardAuthorization(this.store, this.students, user, selection.audience, session);
       const prepared = prepareTopicWhiteboard(this.store, this.students, user, selection, model);
       if (prepared.fingerprint !== preflightFingerprint) throw new ConflictException('预检范围或模型已变化，请重新预检并保留原主题');
-      if (!this.chat.enabled) throw new ServiceUnavailableException('小九AI当前未启用，请先连接模型');
+      if (!this.modelAvailable()) throw new ServiceUnavailableException('小九AI当前未启用，请先连接模型');
       const now = new Date().toISOString(), audience = prepared.input.audience;
       const row: TopicWhiteboardDraftRecord = { id: this.store.nextId('topic_draft'), ownerUserId: user.id,
         studentId: audience.kind === 'student' ? audience.studentId : null, subject: audience.kind === 'student' ? audience.subject : null,
@@ -130,7 +131,7 @@ export class TopicWhiteboardService {
       if (action === 'retry') {
         if (!['failed', 'cancelled'].includes(task.state)) throw new ConflictException('原生成任务还未结束');
         assertTopicWhiteboardInputCurrent(this.store, this.students, user, row.prepared);
-        if (!this.chat.enabled) throw new ServiceUnavailableException('小九AI当前未启用');
+        if (!this.modelAvailable()) throw new ServiceUnavailableException('小九AI当前未启用');
         row.authorization = captureTopicWhiteboardAuthorization(this.store, this.students, user, row.prepared.input.audience, session);
         row.status = 'queued'; row.generation++;
       } else {

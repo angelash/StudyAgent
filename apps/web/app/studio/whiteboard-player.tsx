@@ -1,18 +1,18 @@
 'use client';
 import * as React from 'react';
-import type { StudioOverview, StudioSpeechCapabilities, StudioWhiteboard } from '@study-agent/contracts';
-import { apiRequest } from '../../lib/api';
+import type { StudioSpeechCapabilities } from '@study-agent/contracts';
 import { useSessionUser } from '../../lib/session-user';
 import { WhiteboardSession } from './whiteboard-session';
+import { isTopicWhiteboard, readWhiteboardOriginal, type PlayableWhiteboard } from './whiteboard-original';
 export { drawWhiteboardScene, WhiteboardScenePreview } from './whiteboard-canvas';
 
-export type WhiteboardPlayerProps = { whiteboard: StudioWhiteboard; narrationAvailable?: boolean; speech?: StudioSpeechCapabilities; onClose?: () => void };
+export type WhiteboardPlayerProps = { whiteboard: PlayableWhiteboard; narrationAvailable?: boolean; speech?: StudioSpeechCapabilities; onClose?: () => void };
 export function WhiteboardPlayer(props: WhiteboardPlayerProps) {
   const identity = useSessionUser(), board = props.whiteboard;
   const owner = React.useRef(identity?.id);
   const trigger = React.useRef<HTMLElement | null>(null);
-  const [verified, setVerified] = React.useState<StudioWhiteboard | null>(null), [error, setError] = React.useState('');
-  const preview = board.id.endsWith('_preview');
+  const [verified, setVerified] = React.useState<PlayableWhiteboard | null>(null), [error, setError] = React.useState('');
+  const preview = !isTopicWhiteboard(board) && board.id.endsWith('_preview');
   React.useLayoutEffect(() => {
     trigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     return () => { if (trigger.current?.isConnected) trigger.current.focus(); };
@@ -22,11 +22,8 @@ export function WhiteboardPlayer(props: WhiteboardPlayerProps) {
     if (!identity || identity.id !== owner.current) return;
     if (preview) { setVerified(board); return; }
     const controller = new AbortController();
-    void apiRequest<StudioOverview>('/learning/studio/overview?studentId=' + encodeURIComponent(board.studentId) + '&subject=' + board.subject,
-      { signal: controller.signal }).then(result => {
+    void readWhiteboardOriginal(board, controller.signal).then(original => {
       if (controller.signal.aborted) return;
-      const original = result.whiteboards.find(item => item.id === board.id && item.fingerprint === board.fingerprint);
-      if (!original) throw new Error('原白板已变化或当前无法读取，请关闭后重新打开。');
       setVerified(original);
     }).catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : '暂时无法读取原白板。'); });
     return () => controller.abort();

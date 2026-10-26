@@ -1,13 +1,15 @@
 'use client';
 import * as React from 'react';
 import { WHITEBOARD_SPEECH_VERSION, whiteboardPresentation, whiteboardSrt, whiteboardTimeline } from '@study-agent/contracts';
-import type { WhiteboardTimeline, StudioOverview } from '@study-agent/contracts';
+import type { WhiteboardTimeline } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest, apiBaseUrl, getAuthToken } from '../../lib/api';
 import type { WhiteboardPlayerProps } from './whiteboard-player';
 import { drawWhiteboardScene } from './whiteboard-canvas';
+import { isTopicWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedError } from './whiteboard-original';
+import { WhiteboardExhibit } from './whiteboard-exhibit';
 import { assertWhiteboardActive, prepareWhiteboardExport, recordWhiteboardVideo, WhiteboardAccessError, whiteboardAudio } from './whiteboard-media';
 
-type Position = { ownerId: string; studentId: string; boardId: string; fingerprint: string; version: string; unitId: string;
+type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
 type AudioResource = { key: string; audio: HTMLAudioElement; url: string };
 export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose }:
@@ -28,7 +30,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const downloadUrls = React.useRef(new Set<string>()), closeRef = React.useRef(onClose);
   closeRef.current = onClose; progressRef.current = progress; indexRef.current = unitIndex;
   const unit = units[unitIndex], scene = board.scenes.find(item => item.id === unit?.sceneId) ?? board.scenes[0];
-  const storageKey = 'studyagent.whiteboard.location.v1.' + ownerId + '.' + board.studentId + '.' + board.id;
+  const storagePrefix = 'studyagent.' + (isTopicWhiteboard(board) ? 'topic-whiteboard' : 'whiteboard') + '.location.v1.' + ownerId + '.';
+  const storageKey = storagePrefix + board.studentId + '.' + board.id;
   const estimatedTimeline = React.useMemo(() => whiteboardTimeline(presentation, undefined, speed), [presentation, speed]);
   const activeTimeline = preparedTimeline ?? estimatedTimeline;
   const entry = activeTimeline.entries[unitIndex];
@@ -53,13 +56,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     let request: AbortController | undefined;
     const verify = () => {
       request?.abort(); request = new AbortController(); const current = request;
-      void apiRequest<StudioOverview>('/learning/studio/overview?studentId=' + encodeURIComponent(board.studentId) + '&subject=' + board.subject,
-        { signal: current.signal }).then(overview => {
-        if (!current.signal.aborted && !overview.whiteboards.some(item => item.id === board.id && item.fingerprint === board.fingerprint)) closeRef.current?.();
-      }).catch(error => {
+      void readWhiteboardOriginal(board, current.signal).catch(error => {
         if (current.signal.aborted) return;
         setPlaying(false); resource.current?.audio.pause(); exportRequest.current?.abort(); exportRequest.current = null; setExporting(null);
-        if (error instanceof ApiRequestError && [401, 403].includes(error.status)) closeRef.current?.();
+        if (error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.();
         else setNotice('暂时无法核对原白板访问权限，播放已暂停，请重新打开后继续。');
       });
     };
@@ -96,7 +96,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       if (!position.current) return;
       try {
         localStorage.setItem(storageKey, JSON.stringify(position.current));
-        const prefix = 'studyagent.whiteboard.location.v1.' + ownerId + '.';
+        const prefix = storagePrefix;
         const keys = Array.from({ length: localStorage.length }, (_, index) => localStorage.key(index)!).filter(key => key?.startsWith(prefix));
         if (keys.length > 40) for (const key of keys.filter(key => key !== storageKey).slice(0, keys.length - 40)) localStorage.removeItem(key);
       } catch { setNotice('本机位置未能保存，当前页仍保留；可下载续播位置。'); }
@@ -242,7 +242,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
 
   return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player" role="dialog" aria-modal="true" aria-label="白板视频">
     <header><div><span>WHITEBOARD SESSION / {preview ? '预览' : '原白板'}</span><h2>{board.title}</h2>
-      <p>{mode === 'cloud' ? '逐句云语音 · 实际音轨结束后继续' : '逐句文字阅读 · 使用估计阅读时长'} · 板书按完整要点呈现</p></div>
+      <p>{mode === 'cloud' ? '逐句云语音 · 实际音轨结束后继续' : '逐句文字阅读 · 使用估计阅读时长'} · 板书按完整要点呈现</p>
+      {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}</div>
       <button aria-label="关闭白板" onClick={onClose}>×</button></header>
     <div className="wb-reading-layout"><div><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={720} aria-label={scene?.title ?? '白板'} /></div>
       <p className="wb-current-sentence" aria-live="polite" aria-atomic="true" data-unit-id={unit?.id}>{unit?.text ?? '这份白板没有可用旁白，请阅读完整笔记。'}</p>
@@ -285,7 +286,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
       <h3>完整笔记与来源</h3>{board.scenes.map(item => <details key={item.id} open={item.id === scene?.id}><summary>{item.title}</summary>
         {item.body && <p>{item.body}</p>}{item.bullets && <ul>{item.bullets.map((bullet, index) => <li key={index}>{bullet}</li>)}</ul>}
-        {item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
+        <WhiteboardExhibit exhibit={item.exhibit}/>{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>
     </aside></div>
   </div>;

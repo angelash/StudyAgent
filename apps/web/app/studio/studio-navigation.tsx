@@ -16,7 +16,7 @@ const navigation: Array<[StudioView, string, string, string]> = [
 export function StudioSymbol({ path, size = 20 }: { path: string; size?: number }) {
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={path}/></svg>;
 }
-export function StudioNavigation({ active, recent, onNavigate, onCreate, context }: { active: StudioView;
+export function StudioNavigation({ active, recent, onNavigate, onCreate, context }: { active: StudioView | 'whiteboards';
   recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: () => void; context?: LearningContext }) {
   const [mobile, setMobile] = React.useState(false);
   const user = useSessionUser();
@@ -32,7 +32,8 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
     <aside className="ws-navigation" data-open={mobile} aria-label="学习工作台导航">
       <Link href="/studio" className="ws-brand"><StudioSymbol path="m3 8 9-5 9 5-9 5ZM5 12v5l7 4 7-4v-5M9 10l3 2 3-2" size={26}/><b>StudyAgent</b></Link>
       <nav>{navigation.map(([view, label, english, path]) => onNavigate ? <button key={view} aria-label={english} aria-current={active === view ? 'page' : undefined} onClick={() => { setMobile(false); onNavigate(view); }}><StudioSymbol path={path}/><span>{label}</span></button> :
-        <Link key={view} href={'/studio?view=' + view} aria-label={english} aria-current={active === view ? 'page' : undefined} onClick={() => setMobile(false)}><StudioSymbol path={path}/><span>{label}</span></Link>)}</nav>
+        <Link key={view} href={'/studio?view=' + view} aria-label={english} aria-current={active === view ? 'page' : undefined} onClick={() => setMobile(false)}><StudioSymbol path={path}/><span>{label}</span></Link>)}
+        <Link href="/studio/whiteboards" aria-label="AI Whiteboards" aria-current={active === 'whiteboards' ? 'page' : undefined} onClick={() => setMobile(false)}><StudioSymbol path="M4 4h16v13H4ZM8 21l4-4 4 4M8 8h8M8 12h5"/><span>AI白板</span></Link></nav>
       {onCreate && <button className="ws-create-course" onClick={onCreate}>＋ 创建课程</button>}
       <section className="ws-continue"><h2>继续学习</h2><Link href={recent?.[0]?.href ?? '/studio/classroom'}><small>讲座</small><b>{recent?.[0]?.title ?? '社会学想象力'}</b><span>{recent?.[0]?.detail ?? '社会学概论'}</span></Link></section>
       <section className="ws-recents"><h2>近期活动</h2>{recent?.length ? recent.slice(1, 4).map((item, index) => <Link href={item.href} key={index} title={item.title}>{item.title}</Link>) : <p>开始学习后，活动会出现在这里。</p>}</section>

@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-26T00:19:10.161Z",
+  "passed": true,
+  "scope": "Anonymous adult topic over actual HTTP, live DS writing and AI review, explicit confirmation. No teacher, audio, pixel or learning-validity acceptance.",
+  "calls": [
+    {
+      "stage": "writing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:19:12.229Z",
+      "status": "completed",
+      "modelName": "DeepSeek V4.1 Flash",
+      "durationMs": 56188
+    },
+    {
+      "stage": "reviewing",
+      "modelId": "deepseek-v4-flash",
+      "startedAt": "2026-10-26T00:20:08.421Z",
+      "status": "completed",
+      "modelName": "DeepSeek V4.1 Flash",
+      "durationMs": 21593
+    }
+  ],
+  "validationFailures": [
+    {
+      "stage": "writing",
+      "name": "ZodError",
+      "issues": 1
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ready",
+      "errorCode": null,
+      "durationMs": 77815
+    }
+  ],
+  "teacherReviewStatus": "pending",
+  "formalMeasurementEligible": false,
+  "modelId": "deepseek-v4-flash",
+  "sceneCount": 4,
+  "tableCount": 1,
+  "formulaCount": 1,
+  "review": {
+    "decision": "pass",
+    "issues": [],
+    "modelId": "deepseek-v4-flash",
+    "inputFingerprint": "1ddc01b87bddd3caed9d0672cd82919fb5853b0d51918c577705a985dc3cf0bf",
+    "outputFingerprint": "1ddc01b87bddd3caed9d0672cd82919fb5853b0d51918c577705a985dc3cf0bf",
+    "at": "2026-10-26T00:20:30.015Z",
+    "current": true
+  },
+  "modelName": "DeepSeek V4.1 Flash"
+}
