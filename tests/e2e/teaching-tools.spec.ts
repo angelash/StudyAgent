@@ -175,3 +175,18 @@ test('teaching tools: an unknown control original remains discoverable across re
   await detail(page).getByRole('button', { name: '下载暂不能读取的原操作 1', exact: true }).click(); expect(readFileSync((await (await pending).path())!, 'utf8')).toBe(original);
   await expect(detail(page).getByRole('button', { name: '恢复原操作', exact: true })).toHaveCount(0); expect((await f.call('/qa/teaching-tools/observations')).calls).toHaveLength(1);
 });
+
+for (const field of ['待核对作答', '参考答案', '完整题目结构 JSON', '原答案结构 JSON']) test(`teaching tools: non-finite JSON in ${field} stays original and cannot become an unknown null`, async ({ page }) => {
+  const f = await enter(page); await fill(page); const original = '{"value":1e999,"tail":"NON_FINITE_ORIGINAL_COMPLETE"}';
+  if (['待核对作答', '参考答案'].includes(field)) await composer(page).getByLabel(field + '格式', { exact: true }).selectOption('json');
+  else await composer(page).getByText('补充表格、公式与答案结构', { exact: true }).click();
+  await composer(page).getByLabel(field, { exact: true }).fill(original);
+  let posts = 0; page.on('request', request => { if (request.method() === 'POST' && request.url().includes('/ai/teaching-tools/')) posts++; });
+  await composer(page).getByRole('button', { name: '预检完整输入', exact: true }).click(); await expect(composer(page).locator('.tt-notice')).toContainText('有限JSON');
+  expect(posts).toBe(0); await expect(composer(page).getByLabel(field, { exact: true })).toHaveValue(original); await page.reload();
+  if (field.endsWith('JSON')) await composer(page).getByText('补充表格、公式与答案结构', { exact: true }).click();
+  await expect(composer(page).getByLabel(field, { exact: true })).toHaveValue(original); expect((await f.call('/qa/teaching-tools/observations')).calls).toHaveLength(0);
+  if (field === '待核对作答') { await composer(page).getByLabel('暂不清楚待核对作答', { exact: true }).check(); await preview(page);
+    await expect(composer(page).getByRole('region', { name: '完整输入预检', exact: true })).toContainText('明确未知');
+    await composer(page).getByLabel('暂不清楚待核对作答', { exact: true }).uncheck(); await expect(composer(page).getByLabel(field, { exact: true })).toHaveValue(original); }
+});

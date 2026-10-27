@@ -981,7 +981,7 @@ describe('StudyAgent API integration', () => {
     ).toBe(true);
   });
 
-  it('returns explicit AI configuration error without API key', async () => {
+  it('returns the actual Xiaojiu teaching disabled state after migrating the legacy admin endpoint', async () => {
     const admin = await login('admin@example.com');
     const response = await request(app.getHttpServer())
       .post('/api/ai/assessment/analyze')
@@ -1004,7 +1004,7 @@ describe('StudyAgent API integration', () => {
 
     const payload = response.body as WrappedResponse<{ source: string }>;
     expect(payload.data).toBeNull();
-    expect(payload.error?.message).toContain('OPENAI_API_KEY');
+    expect(payload.error?.message).toContain('小九AI教研生成当前未启用');
   });
 
   it('rejects access from an unbound parent', async () => {

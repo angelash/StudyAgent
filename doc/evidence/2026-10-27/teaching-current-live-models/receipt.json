@@ -1,0 +1,154 @@
+{
+  "revision": "20d3bbf068906a8f72683fa099204e7f8698bb44",
+  "teaching": {
+    "cases": 4,
+    "passed": 4,
+    "cliStarts": 4,
+    "formalSentinelsUnchanged": true,
+    "models": [
+      "deepseek-v4-flash",
+      "gpt-6.1-sol"
+    ]
+  },
+  "matrix": {
+    "models": 22,
+    "passed": 21,
+    "failed": 1,
+    "allModelsPassed": false,
+    "cliStarts": 24,
+    "firstAttemptPassed": 20,
+    "retriedPassed": [
+      "deepseek-v4-flash"
+    ],
+    "failedModels": [
+      "claude-opus-5"
+    ]
+  },
+  "scope": "Anonymous real HTTP/worker teaching samples and separate small text/structured-output model matrix; does not prove teacher quality, visual, stability rate or physical upstream identity. No private runtime DB included.",
+  "files": {
+    "teaching-live-20d3bbf-first.log.gz": {
+      "bytes": 200,
+      "sha256": "539d8473ae76284f832fcbab479b8bc07c7b203598da120655d3c2a7ac09f20c"
+    },
+    "teaching-model-matrix-20d3bbf-first.log.gz": {
+      "bytes": 446,
+      "sha256": "bdeee196cc619a1fda1353154f621c1aa4075e77839977c203210041dc462c83"
+    },
+    "teaching-model-matrix-20d3bbf-public.json.gz": {
+      "bytes": 956,
+      "sha256": "cb40409e4e4c11568626089eeb57f14de0db87fd3bd7468b6f8ebceeb7298927"
+    },
+    "teaching-live-20d3bbf-first\\deepseek-v4-flash-assessment_analysis.json.gz": {
+      "bytes": 1967,
+      "sha256": "beb2cd5fa6396b31e19e9a961fda51c60884603642e9fed7aa1181f8d7006b4c"
+    },
+    "teaching-live-20d3bbf-first\\deepseek-v4-flash-hint_draft.json.gz": {
+      "bytes": 1177,
+      "sha256": "ec3a75c9ecf71409b83f4a9cbca0c09e55d4a18e8c09bb723c23cf09b35e147e"
+    },
+    "teaching-live-20d3bbf-first\\gpt-6.1-sol-assessment_analysis.json.gz": {
+      "bytes": 1845,
+      "sha256": "f7d14c2bdb72abd7f8d13b07d1543a6f3b0d13060bf7f0a30f875425fd987aeb"
+    },
+    "teaching-live-20d3bbf-first\\gpt-6.1-sol-hint_draft.json.gz": {
+      "bytes": 1325,
+      "sha256": "0a0e5e02782d27e8ce3ba50e7b20da6cbd45b81940ef198c8ed1c9cd9a8f24ed"
+    },
+    "teaching-live-20d3bbf-first\\receipt.json.gz": {
+      "bytes": 2371,
+      "sha256": "e3a06294b6b437778b2d744ecbb987153ecc4b0935a1b438a6eec368883633f0"
+    },
+    "teaching-model-matrix-20d3bbf-first\\catalog.json.gz": {
+      "bytes": 1010,
+      "sha256": "0850fdf26c2e1f257906dd6a5d051e9ba025800b1bbb9eee66d41a3e5f9e768b"
+    },
+    "teaching-model-matrix-20d3bbf-first\\claude-fable-5-1-f8064a2325.json.gz": {
+      "bytes": 277,
+      "sha256": "73434d000fe444fa7bfb3efbacd58502f7e182cb07625bde1529678d832ebdde"
+    },
+    "teaching-model-matrix-20d3bbf-first\\claude-opus-5.5-795584cf81.json.gz": {
+      "bytes": 276,
+      "sha256": "3dce778b927278e342c21b49cd2d92aab507d3229b9f0fe9f9b64787fb56581c"
+    },
+    "teaching-model-matrix-20d3bbf-first\\claude-sonnet-5-4b07d9a517.json.gz": {
+      "bytes": 275,
+      "sha256": "844d2d7fcb043118d8b25a4035a9d751fd7b61a72fb47403b140b070a5342232"
+    },
+    "teaching-model-matrix-20d3bbf-first\\deepseek-v4-flash-f61ff5cf8e.json.gz": {
+      "bytes": 285,
+      "sha256": "7a26b2f9d2064d8eef887c9283c777ec9c95c48b7ca784b9e24f311a866ad4b3"
+    },
+    "teaching-model-matrix-20d3bbf-first\\glm-5.2-bb43a640f0.json.gz": {
+      "bytes": 255,
+      "sha256": "a12b643f7e00f1e58006a916ef4ac27729455cf84cc47d7b22ef3998833f1b6c"
+    },
+    "teaching-model-matrix-20d3bbf-first\\glm-5.3-9691a990ed.json.gz": {
+      "bytes": 255,
+      "sha256": "33a9d1eaf67d4af15a790b8d808c99657f3e6eca5139d9c854fad09578a5e745"
+    },
+    "teaching-model-matrix-20d3bbf-first\\glm-5.3-flash-0d8724178b.json.gz": {
+      "bytes": 272,
+      "sha256": "dd3018ecf63fde2a34b1408d39cac20816aff2147b72c4b77303fde43a7708fb"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-5.5-ffc50c7066.json.gz": {
+      "bytes": 254,
+      "sha256": "d01ff8782ebafbd811c8516dd016e90c3e089149242bda04eecf6f38f405a912"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-5.6-luna-e33230db3d.json.gz": {
+      "bytes": 270,
+      "sha256": "3bd4917678b18f393fb8da7a0de643d346321432c52064909dad46a5b3bdf36b"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-5.6-sol-419255f2bb.json.gz": {
+      "bytes": 265,
+      "sha256": "c56c73cb45bac154002c4dec3e3d247f076ea751d5caefc0cf88995cf0c6ded5"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-5.6-terra-deda3dc02a.json.gz": {
+      "bytes": 271,
+      "sha256": "cbba64d67e5b7601d7c8f4d787fa695cc57f43687751687cc9cc86c58daa2d54"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-6-astra-576a599a64.json.gz": {
+      "bytes": 268,
+      "sha256": "caea0365373ca325c3449001aa8496e99a5c2e5ad32a35f4da32b009f33e4ed7"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-6-luna-9a7e60cd1c.json.gz": {
+      "bytes": 265,
+      "sha256": "4585567f4b8dbbe4c3f6653528111b2bd7adc23c812785f6cc3739805400f187"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-6-sol-7388db16de.json.gz": {
+      "bytes": 261,
+      "sha256": "71aba340bcaadcf95bb0e771478d2a9d0cc97bd2aeef7240aeb02ab13c038213"
+    },
+    "teaching-model-matrix-20d3bbf-first\\gpt-6.1-sol-dedfefd511.json.gz": {
+      "bytes": 268,
+      "sha256": "bde51885a5c3e6e6dd34efc6a00a7a03cb2193e3951c0428f06f87bb1e03de12"
+    },
+    "teaching-model-matrix-20d3bbf-first\\grok-4.6-44968622fb.json.gz": {
+      "bytes": 254,
+      "sha256": "9ce3e56d4c888141c0af8f4fb2200ea12f9fb180f22f0494620579523d68e4ed"
+    },
+    "teaching-model-matrix-20d3bbf-first\\grok-4.7-459415a966.json.gz": {
+      "bytes": 254,
+      "sha256": "5a687ba43f271eb8d1638ccb3780a190b4564b45338e064ccd1a21acc6a8c735"
+    },
+    "teaching-model-matrix-20d3bbf-first\\mimo-v2.6-flash-c7588f32c7.json.gz": {
+      "bytes": 279,
+      "sha256": "921d24c5bf770adcdb52f0ed49ddfb835544dd40179b536411955cb4fe81506b"
+    },
+    "teaching-model-matrix-20d3bbf-first\\mimo-v2.6-pro-42f4aabe21.json.gz": {
+      "bytes": 274,
+      "sha256": "09df59c176cc1f5f4042eaf2dc11baa2e3441e160c8943ed262dbba305e6498b"
+    },
+    "teaching-model-matrix-20d3bbf-first\\mimo-v2.6-pro-ultraspeed-d9fbcbf1eb.json.gz": {
+      "bytes": 296,
+      "sha256": "a788156966961db938d208559d0eeb3c7eae9ad6a2f088050e09acaad8189676"
+    },
+    "teaching-model-matrix-20d3bbf-first\\qwen3.8-max-bc33b81a67.json.gz": {
+      "bytes": 267,
+      "sha256": "0a4719eac2042cea16e6bbb61b08fd812dc1ade3bba6521caa866aa795049a2c"
+    },
+    "teaching-model-matrix-20d3bbf-first\\receipt.json.gz": {
+      "bytes": 4890,
+      "sha256": "840e9fbb903b9559b5cbf2e58a7e0396457aa94f8a55cc372e6da843bd88cd1e"
+    }
+  }
+}

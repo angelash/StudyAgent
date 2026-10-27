@@ -15,16 +15,24 @@ export const emptyTeachingForm = (): TeachingForm => ({ source: 'temporary', ban
   referenceAnswer: '', referenceFormat: 'text', referenceUnknown: false, referenceAnalysis: '', answer: '', answerFormat: 'text', answerUnknown: false,
   originalDocument: '', originalAnswerSchema: '', mediaNotice: '', hintLevel: 1, modelId: 'auto' });
 export function hasTeachingInput(form: TeachingForm) { return Boolean(form.questionId || form.title || form.stem || form.referenceAnswer || form.referenceUnknown || form.referenceAnalysis || form.answer || form.answerUnknown || form.originalDocument || form.originalAnswerSchema || form.mediaNotice); }
+function parseTeachingJson(raw: string, label: string): unknown {
+  try { return JSON.parse(raw, (_key, value: unknown) => {
+    if (typeof value === 'number' && !Number.isFinite(value)) throw Error(label + '必须是有限JSON，不能把超出范围的数字当作未知；原输入仍保留。');
+    return value;
+  }); } catch (error) {
+    if (error instanceof SyntaxError) throw Error(label + '不是完整JSON，请检查格式；原输入仍保留。');
+    throw error;
+  }
+}
 function value(raw: string, mode: 'text' | 'json', unknown: boolean, label: string) {
   if (unknown) return null;
   if (!raw.trim()) throw Error('请填写' + label + '，未知时请明确勾选“暂不清楚”。');
   if (mode === 'text') return raw;
-  try { return JSON.parse(raw); } catch { throw Error(label + '不是完整JSON，请检查格式；原输入仍保留。'); }
+  return parseTeachingJson(raw, label);
 }
 export function teachingDraft(form: TeachingForm, purpose: TeachingToolPurpose): TeachingToolDraft {
-  let document: unknown, schema: unknown;
-  try { if (form.source === 'temporary' && form.originalDocument.trim()) document = JSON.parse(form.originalDocument); if (form.source === 'temporary' && form.originalAnswerSchema.trim()) schema = JSON.parse(form.originalAnswerSchema); }
-  catch { throw Error('表格/公式原文或答案结构不是完整JSON；原输入仍保留。'); }
+  const document = form.source === 'temporary' && form.originalDocument.trim() ? parseTeachingJson(form.originalDocument, '表格/公式原文') : undefined;
+  const schema = form.source === 'temporary' && form.originalAnswerSchema.trim() ? parseTeachingJson(form.originalAnswerSchema, '答案结构') : undefined;
   const source = form.source === 'question_bank' ? { kind: 'question_bank' as const, questionId: form.questionId }
     : { kind: 'temporary' as const, title: form.title, question: { subject: form.subject, stem: form.stem,
       referenceAnswer: value(form.referenceAnswer, form.referenceFormat, form.referenceUnknown, '参考答案'), referenceAnalysis: form.referenceAnalysis,
