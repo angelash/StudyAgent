@@ -497,3 +497,8 @@ SQLite课堂组合35、PG33/2个SQLite专属跳过、完整API1069/34环境跳�
 ## 137 最终导航验收，等待运行交付
 
 2026-10-27：97条原CSS按原摘要提取、240/60桌面导航与窄屏焦点抽屉、无假继续学习和原sessionId已接通。7fa465f修复抽屉转课程蓝图焦点，0e5582f修复旧工作台手机用例的真实菜单流程；原本地389例1失败、远端389例/390尝试含1次失败重试与9/1焦点红色原件均保留。新本地11专项/390完整与精确远端40498629069的390原始单次全过，零失败/跳过/flaky/重试。LinuxAPI1461/68新跑；本地API1469/60来自0edc3d5，仅在API/包源码、测试和362编译一致下沿用。见[本地原件](../../evidence/2026-10-27/reference-navigation-final-local/receipt.json)、[远端原件](../../evidence/2026-10-27/reference-navigation-exact-ci/receipt.json)及[规格](../137-reference-navigation-and-account-continuity.md)。当前尚未生产切换，整体72项与M1～M7、原像素/声音/教师实机长期门槛保持，138教研建议另树开发。
+
+
+## 137 导航守护交付
+
+2026-10-27当前正式交付：137原样式导航已在主目录9907bdf真实构建（业务7fa465f，精确CI0e5582f/40498629069三组success），buildId lDcYsyiN0CUDuvRiFxrWK、schema20。复用97条原CSS与字体、240/60桌面导航、手机焦点抽屉、课程蓝图焦点交接和真实原sessionId恢复；无记录显示开始学习，取消伪继续学习。本地11专项与完整390、远端390均原始单次全过，零失败/跳过/flaky/重试。LinuxAPI1461/68新跑，本地1469/60仅沿用API/包源码、测试和362编译一致的0edc3d5原结果；1259实际HTTP/权限/资源、959原资产和6音频SHA通过。三次观察跨290703毫秒，API/Web/health均online且PID及重启计数不变；五配置/真实环境原字节、新鲜schema20停服一致数据和969份136旧构建回退已核验。仅历史rate-limit单文件4CRLF经完整源码/编译归一核对，其余361字节精确。旧手机流程远端一次失败重试及蓝图焦点红色原件均保留。原像素/图标封面/DPR/原声、教师实机/全教材/测量有效性/长期验收与138教研工具仍继续，72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7不变，整体active。见[137验收](../../evidence/2026-10-27/reference-navigation-acceptance.json)、[实际运行](../../evidence/2026-10-27/reference-navigation-runtime.json)和[精确CI](../../evidence/2026-10-27/reference-navigation-exact-ci/receipt.json)。

@@ -63,3 +63,8 @@
 最终0e5582f的11项专项与390项全站本地、精确远端40498629069的390项均原始单次通过，零失败/跳过/flaky/重试，见[最终本地原件及8张截图](../evidence/2026-10-27/reference-navigation-final-local/receipt.json)和[精确远端原件](../evidence/2026-10-27/reference-navigation-exact-ci/receipt.json)。Linux完整API新跑1461通过/68环境跳过；本地1469通过/60环境跳过来自0edc3d5，API/包源码、测试与362非Web编译逐字节一致后明确沿用，不称新跑。全模型原文字检查仍21通过/1旧Opus失败。
 
 当前开始主目录停服一致schema20数据与旧136构建回退、真实生产构建和守护稳定观察；本节尚不表示运行已切换。97条原CSS/字体、240/60导航与真实会话恢复已实现，原品牌图标/封面、未观察的原站状态、实际DPR/缩放/原声、真实教师与实机长期验收仍有差异，不能称100%还原或产品整体完成。72项保持11 implemented/50 in_progress/11 planned/0 verified，M1～M7完整范围继续。
+
+
+## 9. 主目录实际运行交付
+
+2026-10-27当前正式交付：137原样式导航已在主目录9907bdf真实构建（业务7fa465f，精确CI0e5582f/40498629069三组success），buildId lDcYsyiN0CUDuvRiFxrWK、schema20。复用97条原CSS与字体、240/60桌面导航、手机焦点抽屉、课程蓝图焦点交接和真实原sessionId恢复；无记录显示开始学习，取消伪继续学习。本地11专项与完整390、远端390均原始单次全过，零失败/跳过/flaky/重试。LinuxAPI1461/68新跑，本地1469/60仅沿用API/包源码、测试和362编译一致的0edc3d5原结果；1259实际HTTP/权限/资源、959原资产和6音频SHA通过。三次观察跨290703毫秒，API/Web/health均online且PID及重启计数不变；五配置/真实环境原字节、新鲜schema20停服一致数据和969份136旧构建回退已核验。仅历史rate-limit单文件4CRLF经完整源码/编译归一核对，其余361字节精确。旧手机流程远端一次失败重试及蓝图焦点红色原件均保留。原像素/图标封面/DPR/原声、教师实机/全教材/测量有效性/长期验收与138教研工具仍继续，72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7不变，整体active。见[137验收](../evidence/2026-10-27/reference-navigation-acceptance.json)、[实际运行](../evidence/2026-10-27/reference-navigation-runtime.json)和[精确CI](../evidence/2026-10-27/reference-navigation-exact-ci/receipt.json)。
