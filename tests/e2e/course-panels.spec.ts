@@ -29,6 +29,8 @@ for (const width of [390, 768, 1280, 1440]) test(`course panels: references and 
   const practices = page.getByRole('tabpanel', { name: '练习', exact: true }); await expect(practices.locator('.cl-panel-activity')).toHaveCount(70);
   await expect(practices).toContainText('单元 5 · Unit Check');
   await expect(page.locator('.cl-lecture')).toHaveCount(5);
+  const titleBoxes = await page.locator('.cl-microlessons .ws-micro-title').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().width));
+  for (const titleWidth of titleBoxes) expect(titleWidth, 'micro-lesson titles must retain readable inline space').toBeGreaterThanOrEqual(120);
   const last = practices.locator('.cl-panel-activity').last(); await last.scrollIntoViewIfNeeded();
   const box = await last.boundingBox(); expect(box!.x).toBeGreaterThanOrEqual(0); expect(box!.x + box!.width).toBeLessThanOrEqual(width);
   await page.screenshot({ path: evidence + '/activities-' + width + '.png', fullPage: true });

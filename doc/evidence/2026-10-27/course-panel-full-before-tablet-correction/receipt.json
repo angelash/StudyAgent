@@ -1,0 +1,118 @@
+{
+  "at": "2026-10-27T09:10:37.186003+00:00",
+  "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+  "automatedPassed": true,
+  "releaseAccepted": false,
+  "api": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482"
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-27T08:27:14.700Z",
+      "duration": 1954122.061,
+      "expected": 382,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 382,
+    "reportSha256": "497a3d0c4b91c1607e4b2e83763ab3638c3ff52f928c05db8d925815b68df047"
+  },
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T08:25:32.150Z",
+      "duration": 89502.932,
+      "expected": 16,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 16,
+    "reportSha256": "7b79b64151dc252f1532307426b9e6d9102fef2f678b59ad14ab7e46531add5e"
+  },
+  "compiledFiles": 652,
+  "qaWebBuildId": "B1sP6JZIovWiT1frEMFI_",
+  "realModelExecutionInputsUnchanged": true,
+  "manualFinding": "768px screenshot exposes narrow three-column directory and micro-lesson title squeezed to one Chinese glyph per line. All382 automated cases passed but did not assert title readability. Hold runtime release; add real title-width witness then stack tablet course layout.",
+  "originalReferenceLimit": "Original screenshot1280x800; local1280x900 and other widths differ, originalDPR unknown. No pixel parity claim.",
+  "files": [
+    {
+      "file": "api.json.gz",
+      "originalSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+      "originalBytes": 753730
+    },
+    {
+      "file": "api.log.gz",
+      "originalSha256": "556062e736f2d10d4ab93b3dce3fa8963594b92ab0fc8ac3a429761f34e7c349",
+      "originalBytes": 485
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "497a3d0c4b91c1607e4b2e83763ab3638c3ff52f928c05db8d925815b68df047",
+      "originalBytes": 426974
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "a385107850288a72507072b113830bdb675e2c02e5b7b624c7d672294bfb09a5",
+      "originalBytes": 61696
+    },
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "originalBytes": 62
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "8c90d537960f9c82f47a5849df6ebb883c5149310c421a2405a5a39526caaccc",
+      "originalBytes": 462
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "74cf959c4c3d9547c1b40e837e586d30af86abcc1d521a757b93ff58bbb759e1",
+      "originalBytes": 468
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "c216dbd31c2dabce587dd82b3ed479ddbbafa7420218bbe6025bb384d6b2e4f3",
+      "originalBytes": 1464
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "234e719143c32ac663fc5ea993cc23359a7dd717b59f79103eac65df65499644",
+      "originalBytes": 93588
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "7b79b64151dc252f1532307426b9e6d9102fef2f678b59ad14ab7e46531add5e",
+      "originalBytes": 20693
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "d54183a48cbec48aedc7f87568a0ece6cb02551e01bbf4ce3e144e4ffebc49ce",
+      "originalBytes": 3251
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "8a62add9313518f75475e1a05fea4f722e5a734bca4b72a7c5b09ec31e0b803d",
+      "originalBytes": 3118
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "f9526cae4de82889c49e80bc370a4695623df44c59e2c7460d7828124451a1fc",
+      "originalBytes": 299467
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df",
+      "originalBytes": 64
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8",
+      "originalBytes": 64
+    }
+  ]
+}
