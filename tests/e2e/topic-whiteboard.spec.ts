@@ -350,8 +350,8 @@ test('adult original generation, lost edit and confirmation replies recover with
   await page.getByRole('button', { name: '打开已保存白板', exact: true }).click(); await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
   expect(confirmationWrites).toBe(1);
   await expect(page.locator('.wb-ai-origin')).toContainText('AI生成');
-  await page.getByLabel('完整讲稿与要点').locator('details').nth(1).locator('summary').click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');
-  await page.getByLabel('完整讲稿与要点').locator('details').nth(2).locator(':scope > summary').click(); await expect(page.locator('math')).toBeVisible(); await expect(page.locator('.wb-complete-formula')).toContainText('计数单位相同');
+  await page.getByLabel('完整讲稿与要点').locator('summary').filter({ hasText: /^再比较条件$/ }).click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');
+  await page.getByLabel('完整讲稿与要点').locator('summary').filter({ hasText: /^最后保留反例$/ }).click(); await expect(page.locator('math')).toBeVisible(); await expect(page.locator('.wb-complete-formula')).toContainText('计数单位相同');
   const view = await f.call(base + '/drafts/' + id, undefined, 'GET'); expect(view).toMatchObject({ status: 'confirmed', modelId: 'deepseek-v4-flash', studentId: null, subject: null });
   expect((await f.call(base, undefined, 'GET')).total).toBe(1);
   await page.screenshot({ path: join(browserEvidence('topic-whiteboard'), 'adult-complete-player.png'), fullPage: true });

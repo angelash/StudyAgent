@@ -32,6 +32,16 @@ export function whiteboardQuestionNotesMarkdown(notes: WhiteboardTeachingNotes) 
       if (turn.reply.board) parts.push(replyBoardMarkdown(turn.reply.board));
       for (const anchor of turn.reply.anchors) parts.push('来源锚点：' + text(anchor.label) + (anchor.source ? ' · ' + text(anchor.source.label) + ' · 第' + anchor.source.page + '页' : ''));
     }
+    if (turn.teachingVersions?.length) {
+      parts.push('#### 全部教学版本');
+      for (const version of turn.teachingVersions) {
+        parts.push('版本：' + text(version.id) + (version.current ? '（当前采用）' : '') + '；创建时间：' + text(version.createdAt),
+          '原回答摘要：' + text(version.replyFingerprint) + '；前版本：' + text(version.previousVersionId ?? '无'));
+        if (version.figure) parts.push('图片说明：' + text(version.figure.alt), '图注：' + text(version.figure.caption),
+          '图片来源ID：' + text(version.figure.visualId), '原PNG SHA256：' + text(version.figure.originalSha256), '显示图 SHA256：' + text(version.figure.imageSha256));
+        else parts.push('原回答，无配图。');
+      }
+    }
   }
   return parts.join('\n\n') + '\n';
 }

@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-27T01:52:24.633Z",
+    "duration": 102208.68299999999,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 11,
+  "retries": 0,
+  "scope": "All11 answer-image journeys after clarifying the original-board leave guard for both question and image copies. At390/768/1280, blocked image storage also protects closing the original board and retains the entire requirement before actual JSON download/import. Overlaps the29-case original suite; do not add counts. No full-site or exact-CI claim.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-browser.json",
+      "file": "00-question-figure-browser.json.gz",
+      "originalSha256": "29282761cbc0ec92a6af87cf46eb1d835a92bbbe945a2488c533527724acd804",
+      "sha256": "30db56227337bc8f484ea325dd699ee3a19a47e48490a2bd3b38295d99326163"
+    },
+    {
+      "source": "data/qa/question-figure-guard-images.log",
+      "file": "01-question-figure-guard-images.log.gz",
+      "originalSha256": "8422da7f47be519afbf120f13a560c8296fe4648ff059059ecee9a1d745b89e4",
+      "sha256": "afc14ccdff77b06506bcb630c45eec85d54c90153409f40705b31d8ee357caf9"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-guard.log",
+      "file": "02-question-figure-web-build-guard.log.gz",
+      "originalSha256": "a7bb1e8e154d7575bf51b245351243f842a3f089ecfa5a71ced54a2384aedd03",
+      "sha256": "69887ab3882cbab1437696ae5dc086378ef3a7c36d09f1830e7eeca3c67920fb"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-2x.webm",
+      "file": "03-adopted-2x.webm.gz",
+      "originalSha256": "82cffc244f068b6934092938b975e867d024b4b0b5478eea26eb429bfc8a7e9d",
+      "sha256": "a9b4aa42ba3070a46858e63378892f2e6e0ef5eecf15e018804695f6044ff870"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-390.png",
+      "file": "04-adopted-mobile-390.png.gz",
+      "originalSha256": "823859accae07704dde24764fe568a7fab9b4cf1867aa9f388a3d2f17be67c5f",
+      "sha256": "271200ae388d2b87d3210733673bb21b91fc2b220d9d1358538722da33f66f1d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-768.png",
+      "file": "05-adopted-mobile-768.png.gz",
+      "originalSha256": "d2a7655a43ed2e7d14facd207c302f31d3dc859b4b19e192a9e55d7bec7df163",
+      "sha256": "3595eca3a10435fec25b83c2675bf36da993e6ce827e86574902db9f6ba70539"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-version.png",
+      "file": "06-adopted-version.png.gz",
+      "originalSha256": "1cb88451158a65639e08b9aaf199d1492d8975908f315441aea8166cd9a55c72",
+      "sha256": "5673d5bf8b05fa43355bfe4c47900eecd3cd984632db222dec03f266c879cb26"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-1280.png",
+      "file": "07-full-input-1280.png.gz",
+      "originalSha256": "b8d05b2d063795cbe6aa4b44570d7eb82f219856667625e4e85add0b687149ce",
+      "sha256": "9e273bd53eeda06dd1dafbb43194273463c545d6e35867e7c810bcf3414df645"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-390.png",
+      "file": "08-full-input-390.png.gz",
+      "originalSha256": "9cf3db8d79c1abedfc2dc6cad6c3310f65e41182728b04b57f3b433218171ed5",
+      "sha256": "0bf71352a44e9e92b16c2bc3a877d851a592c54a913c632aa992f04f1394faa7"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-768.png",
+      "file": "09-full-input-768.png.gz",
+      "originalSha256": "153d901fdad6327a47bc46dd9b48fd7a0ea68703ad2ba1bbb1f0fb1e20e66a53",
+      "sha256": "3ca7ed592d796d34f63b7a543848ce0b60716299c7eee46c2557c3be80955517"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-390.png",
+      "file": "10-image-reader-390.png.gz",
+      "originalSha256": "09419031f9bf79528f5aed13f4fb1c6435c2b8d08c119a5d0887b29415d66bb3",
+      "sha256": "037e67a1398ad171b552c5339698bccaae4f54b9fbfb4cff2748eb96f0a3432d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-768.png",
+      "file": "11-image-reader-768.png.gz",
+      "originalSha256": "e2ec1629d1f73009d4a090acfba6b509afecf072c292d82051dfff14047bb62a",
+      "sha256": "2356d321d525d1db48db5470aad43cb7205add0bec4bb02d07ab6da103d921a9"
+    }
+  ]
+}

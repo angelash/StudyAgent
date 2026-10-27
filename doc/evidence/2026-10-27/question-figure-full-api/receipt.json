@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "deployed": false,
+  "note": "1451 API cases passed, 60 environment cases skipped. Backend business matches 465272b. Web Markdown version metadata was added during this run and its existing notes unit executed after that addition; targeted version metadata assertions and UI checks follow separately. No full-browser or exact-CI claim.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-full-api-app.json",
+      "file": "00-question-figure-full-api-app.json.gz",
+      "sha256": "c55acbdd9b324c5b37f08d32b4ea47c956e25198d23756e24b8ab174768b6824",
+      "originalSha256": "c611e1461aeec34560f05e6958f20481354894361a2a7d759d2795fd07777165"
+    },
+    {
+      "source": "data/qa/question-figure-full-api-app.log",
+      "file": "01-question-figure-full-api-app.log.gz",
+      "sha256": "05337d664d80fc1e0248045186e9742cffa2b8014f7cb3030ac05ae63caf7b40",
+      "originalSha256": "9e84a0fff5a8e94ad4c7ada6d1f901d366541cc5a2be96b8d5c251f7e0fdf560"
+    },
+    {
+      "source": "data/qa/question-figure-api-build.log",
+      "file": "02-question-figure-api-build.log.gz",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424"
+    }
+  ]
+}

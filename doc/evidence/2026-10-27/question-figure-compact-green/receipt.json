@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "deployed": false,
+  "scope": "Same 29 cases passed in29 original attempts, zero retries, after limiting thumbnail CSS to noncompact images. Actual mobile canvas image buttons remain within36x36px and image/keyboard/return behavior is retained. Overlaps earlier29; not full-site or exact CI.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "whiteboard-question-browser.json.gz",
+      "originalSha256": "2a8e154a8fc5dc001fb4a911a798d22c596f6f02625523611be376a7043adbe2",
+      "sha256": "5cf0e1c6470a8bdf3f1327b1b7e826dffbe90aa1801ffc51e9e60a3f90c7bdb3"
+    },
+    {
+      "source": "data/qa/question-figure-browser-final.log",
+      "file": "question-figure-browser-final.log.gz",
+      "originalSha256": "01df825013f19129bc891baceded82cd1230d74835424f21aafcd0bb58df358c",
+      "sha256": "97834137461c4705c15dfcc85750965c4e96b9df5ac378e28756d19a79469d48"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-compact.log",
+      "file": "question-figure-web-build-compact.log.gz",
+      "originalSha256": "4db38df1f2b0665dbf1426f255acba3a1d5128102494851a9ccd688be2dc1f68",
+      "sha256": "f66c41def97daec108fca3837e2661df2572f6f458d2beb8911c62d48a9c6de9"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-390.png",
+      "file": "adopted-mobile-390.png.gz",
+      "originalSha256": "823859accae07704dde24764fe568a7fab9b4cf1867aa9f388a3d2f17be67c5f",
+      "sha256": "271200ae388d2b87d3210733673bb21b91fc2b220d9d1358538722da33f66f1d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-768.png",
+      "file": "adopted-mobile-768.png.gz",
+      "originalSha256": "d2a7655a43ed2e7d14facd207c302f31d3dc859b4b19e192a9e55d7bec7df163",
+      "sha256": "3595eca3a10435fec25b83c2675bf36da993e6ce827e86574902db9f6ba70539"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-390.png",
+      "file": "image-reader-390.png.gz",
+      "originalSha256": "09419031f9bf79528f5aed13f4fb1c6435c2b8d08c119a5d0887b29415d66bb3",
+      "sha256": "037e67a1398ad171b552c5339698bccaae4f54b9fbfb4cff2748eb96f0a3432d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-768.png",
+      "file": "image-reader-768.png.gz",
+      "originalSha256": "e2ec1629d1f73009d4a090acfba6b509afecf072c292d82051dfff14047bb62a",
+      "sha256": "2356d321d525d1db48db5470aad43cb7205add0bec4bb02d07ab6da103d921a9"
+    }
+  ]
+}

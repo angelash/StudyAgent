@@ -1,0 +1,121 @@
+{
+  "passed": false,
+  "deployed": false,
+  "note": "26 cases: 22 passed, 4 failed, zero retries. One real image-reader portal was behind the fixed whiteboard; three recovery tests looked for a button in a correctly collapsed, empty recovery section. Preserve assertions, fix portal and use the visible recovery summary.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "sha256": "b892f618b20700933a9dea7c13ccc4d52dcf9e428f50cc915c717d37ddc41f1b",
+      "originalSha256": "555c7332c990df82e34edeaf30af09520cd51ae45f979b751c1c09321338e86a"
+    },
+    {
+      "source": "data/qa/question-figure-browser-first.log",
+      "file": "01-question-figure-browser-first.log.gz",
+      "sha256": "4ac9c298b523026fd463795b25e1a63ce12ead3a370f873b16d2304da639e0a1",
+      "originalSha256": "134cbecbe467e0d793a8d384cd0ce24c075a17eac5a8a062774bf83ffc66fd81"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-connected.log",
+      "file": "02-question-figure-web-build-connected.log.gz",
+      "sha256": "91b1b747b02cb3360168989c97b451e664c16468eeecfb9aa652ad9a5691aa46",
+      "originalSha256": "71fdbc180ab7e46ab977949ece6618162fc4af2e906cbc9adff81364a7b102aa"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.last-run.json",
+      "file": "03-.last-run.json.gz",
+      "sha256": "cdc56301cb3692e94b1126f3753a48a114d808d2f05dfb3d4a10ae5c9243ecaf",
+      "originalSha256": "c9de22c6ec5b500ff0a7d20711bdd5f32f78db2602071f996a6c13924066bf62"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-046b7-import-remain-usable-at-768/error-context.md",
+      "file": "04-error-context.md.gz",
+      "sha256": "042d56baa839455cc7a381f9744f493c1db27f0eee8af9d2b0198155043f9494",
+      "originalSha256": "37ed1ee73b99c20637d7955f3d8530406e6a7d0d8f8ac42f36cf8aad2becb2d4"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-046b7-import-remain-usable-at-768/test-failed-1.png",
+      "file": "05-test-failed-1.png.gz",
+      "sha256": "1ade66ae94ecd0e324555733d0f4b4bad28a054d3857c30285966e8899b52ed1",
+      "originalSha256": "ec8110e54968f89738542e93b8e906c203767e3dbdd1ddd39cf9831b1b90ff29"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-046b7-import-remain-usable-at-768/trace.zip",
+      "file": "06-trace.zip.gz",
+      "sha256": "5a7d789f2a84f320149f42d1ac054c79106273153b0742de72f804826a5f565c",
+      "originalSha256": "c3410d8678f2e5f28898fcd7fc8894970d933a9266de426aacb956412cbdc951"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-231b9-mport-remain-usable-at-1280/error-context.md",
+      "file": "07-error-context.md.gz",
+      "sha256": "8e9b466d91455da8e198d4f5503eb17c776395deb8501b13b9d3b6420858e881",
+      "originalSha256": "4b4e59128ebdb29c833d2100bc4273943c63fa73ae6b67921f7a80e3898be37b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-231b9-mport-remain-usable-at-1280/test-failed-1.png",
+      "file": "08-test-failed-1.png.gz",
+      "sha256": "a410ee9798a1d978b1017d45082e90f57758edf1aaf4b62b498a57752c165d78",
+      "originalSha256": "b81c375c065c7b2ab70d952d5fe53729d6b2eba721a4690c6c6e163c64f5fcfb"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-231b9-mport-remain-usable-at-1280/trace.zip",
+      "file": "09-trace.zip.gz",
+      "sha256": "62e3e8fac5ed460474198f3da9d811e067ba7ca9e44a1b1473cae874be90ba16",
+      "originalSha256": "52fe31a56e13f01744142e418bf417f90540bff7cafa94557bf0bc81bcf134f9"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-acb63-import-remain-usable-at-390/error-context.md",
+      "file": "10-error-context.md.gz",
+      "sha256": "ca95c1bcd3939090947687054a5d4e725f312736332ac9600ffde4cc54831e0d",
+      "originalSha256": "9bcc5fc2c15c8ce6844110b8d49a8d528ac10aa28ce5f2ed6c13ffbcf58651f6"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-acb63-import-remain-usable-at-390/test-failed-1.png",
+      "file": "11-test-failed-1.png.gz",
+      "sha256": "c17bf29509bc9cf6a1ace42a5b9ffd7d4b5a06f6d3f7ede289f5ae9f2b4679ac",
+      "originalSha256": "98158392120471317083ea2c1d86430ea01ab5762428ad5f52e66e87937d3a80"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-acb63-import-remain-usable-at-390/trace.zip",
+      "file": "12-trace.zip.gz",
+      "sha256": "1d7a44d9ba94e949a62397bde51bc84e1e038ab66401ecb5952d571d5b03c360",
+      "originalSha256": "de1b5ed3674693bda124506215b89ec70cf670586e0bcbf98fbdcece23a64056"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/error-context.md",
+      "file": "13-error-context.md.gz",
+      "sha256": "a31e4cacf6bdf765e6ecdfeae203cf81442a10d4cd23bc0ebed63239bf98b12b",
+      "originalSha256": "9bcbcbf667dd6b6ec80ac0dfac5ab1146859439e0df28a065298cea94b37f840"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/test-failed-1.png",
+      "file": "14-test-failed-1.png.gz",
+      "sha256": "b90482a04e1bb004a6871343650f18accbec717b54d02df1acb284cb5b2f8cc9",
+      "originalSha256": "842b057300a8aad4a1a6e8fa4ba789d9bf84971915d4c58d2faf73621dd65699"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/trace.zip",
+      "file": "15-trace.zip.gz",
+      "sha256": "247f4a5072f9e9677f5af4fb0556b0cbb742753a74a6bcb8a57482ae1f4633a4",
+      "originalSha256": "ee8adee6ece3f90064c528391dc4466dd450ed648f030731f91e77bb6b28310b"
+    },
+    {
+      "source": "apps/web/app/studio/classroom/figure-reader.tsx",
+      "file": "16-figure-reader.tsx.gz",
+      "sha256": "68757131f429b2c1dd91e5cb1c7d8d65a3081b3b1603f39a1d172abd0858feb4",
+      "originalSha256": "9397d3486c87a8b9ce714a234ca6a92b07f09648e6bf73a2831e6797e97a5a97"
+    },
+    {
+      "source": "apps/web/app/studio/classroom/figure-reader.css",
+      "file": "17-figure-reader.css.gz",
+      "sha256": "6dc96f1bfbf04940cf0b159460293446026286e62a5272cebc504f97f2d6105f",
+      "originalSha256": "5a6b63d5f32c5700c20066046a17e2237152b40ac50809df14cbd7f0d60e4aed"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "18-whiteboard-questions.spec.ts.gz",
+      "sha256": "608272c90ac40517c89c88ce9e8d34acf772f52ebb0dd3123b926b3bfe433e5a",
+      "originalSha256": "ef83a0cd5382b5e5f327c7f85df5a99bfd282ce64741c4e333ae6a8d0256c7b0"
+    }
+  ]
+}

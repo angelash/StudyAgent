@@ -1,4 +1,4 @@
-.cl-room .ws-dialog-layer:has(.cl-figure-reader),.cl-room .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
+.cl-room .ws-dialog-layer:has(.cl-figure-reader),.sa-whiteboard-modal .ws-dialog-layer:has(.cl-figure-reader),.cl-room .ws-dialog-layer:has(.cl-guided-tour){background:transparent;backdrop-filter:none;padding:0}
 .cl-figure-reader{position:fixed;inset:0;z-index:90;background:#000c;backdrop-filter:blur(4px);display:grid;place-items:center;padding:64px 35px 35px;box-sizing:border-box;font-family:Arial,"Microsoft YaHei",sans-serif}
 .cl-figure-reader-sheet{width:min(1000px,100%);max-height:calc(100dvh - 100px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:#fcfcfc;border:1px solid #ddd;border-radius:11px;padding:20px;box-sizing:border-box;color:#35445a}
 .cl-figure-reader-sheet h2{font-size:15px;font-weight:500;line-height:1.6;margin:0 0 12px;text-align:center;overflow-wrap:anywhere}

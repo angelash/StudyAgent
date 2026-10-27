@@ -8,9 +8,10 @@ export function isTopicWhiteboard(board: PlayableWhiteboard): board is StudioTop
 export function isQuestionWhiteboard(board: PlayableWhiteboard): board is StudioQuestionWhiteboard {
   return 'kind' in board && board.kind === 'question-whiteboard';
 }
-export function whiteboardApiPath(board: PlayableWhiteboard) {
+export function whiteboardApiPath(board: PlayableWhiteboard, operation: 'read' | 'narration' = 'read') {
   if (isQuestionWhiteboard(board)) return '/learning/studio/' + (board.originalBoardKind === 'topic' ? 'topic-whiteboards/' : 'whiteboards/') +
-    encodeURIComponent(board.originalBoardId) + '/questions/' + encodeURIComponent(board.turnId) + '/board';
+    encodeURIComponent(board.originalBoardId) + '/questions/' + encodeURIComponent(board.turnId) + '/board' +
+    (operation === 'read' ? '?teachingVersionId=' + encodeURIComponent(board.teachingVersionId ?? 'original') : '');
   return '/learning/studio/' + (isTopicWhiteboard(board) ? 'topic-whiteboards/' : 'whiteboards/') + encodeURIComponent(board.id);
 }
 export async function readWhiteboardOriginal(board: PlayableWhiteboard, signal: AbortSignal): Promise<PlayableWhiteboard> {

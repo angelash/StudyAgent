@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-27T01:05:01.485Z",
+  "mode": "edit",
+  "passed": true,
+  "modelId": "gpt-image-2",
+  "contentReview": "pending",
+  "scope": "One anonymous answer-bound real generation or actual original-PNG edit through HTTP, durable worker and installed Xiaojiu image CLI. Not teacher or product-wide acceptance.",
+  "capabilities": {
+    "modelId": "gpt-image-2",
+    "available": true,
+    "reason": "ready",
+    "message": "可生成讲解参考图，标注仍需核对。",
+    "editAvailable": true
+  },
+  "durationMs": 43048,
+  "status": "ready",
+  "errorCode": null,
+  "artifacts": {
+    "image": "artifacts/question-figure-live-cc49228f/whiteboard-question-visuals/whiteboard_question_visual_535c66fa-19c6-4881-8466-144e656c6fcf/83365b3f7c3872b7d426dbdeea3138773817c40eb2d97985810b9d4781fb9476.png",
+    "original": "artifacts/question-figure-live-cc49228f/whiteboard-question-visuals/whiteboard_question_visual_535c66fa-19c6-4881-8466-144e656c6fcf/2447364604f527bf22b90782cbd2b1d8ed1f1639963b6da5e4df37f47cc7b270.png",
+    "prompt": "artifacts/question-figure-live-cc49228f/whiteboard-question-visuals/whiteboard_question_visual_535c66fa-19c6-4881-8466-144e656c6fcf/b15222df08088f6820f70822edcc8de4c656c0ee6bf84e4db72bacf9408be9b5.txt"
+  },
+  "parentOriginalSha256": "4a1c6fc105d00b88179770817a32ab934fc1833cc3e9bf328dcb73f1b1e0a1e3",
+  "visualId": "whiteboard_question_visual_535c66fa-19c6-4881-8466-144e656c6fcf",
+  "sha256": "83365b3f7c3872b7d426dbdeea3138773817c40eb2d97985810b9d4781fb9476",
+  "originalSha256": "2447364604f527bf22b90782cbd2b1d8ed1f1639963b6da5e4df37f47cc7b270",
+  "width": 1536,
+  "height": 1024
+}

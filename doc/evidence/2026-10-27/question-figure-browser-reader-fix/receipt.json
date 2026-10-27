@@ -1,0 +1,55 @@
+{
+  "passed": false,
+  "deployed": false,
+  "note": "27 cases: 26 passed, 1 failed, no retries. Reader overlay and all three blocked-storage round trips now pass; the remaining case reached voice, real video, notes, original-version review and final deep link but expected one generic .tw-figure whereas the UI intentionally has a canvas preview plus reading-note image. Scope the assertion to the actual canvas preview and assert the adopted SHA.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "ce56c61ba29db6b93899a31913bcf293ce4a48d047fffe25debb7d2faadbd1a9",
+      "sha256": "077fcb14ddcb153c5d74f11f5edaa2cb9fa7ab58b48c48e7fc217b4726b5bf11"
+    },
+    {
+      "source": "data/qa/question-figure-browser-reader-fix.log",
+      "file": "01-question-figure-browser-reader-fix.log.gz",
+      "originalSha256": "4459b68c295b2dc0a827f16823433f4e12af01d2ffc6087dd1de861d2de10428",
+      "sha256": "7c990edcbddcbb88b91661e03d674928c4b0f09fbbbde359e86add3dbe96cb61"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-reader-fix.log",
+      "file": "02-question-figure-web-build-reader-fix.log.gz",
+      "originalSha256": "a5045c83724959c57e3aa85d7cc1194ca24bd34c9f477e580e12ddeb4412e3bc",
+      "sha256": "1b5dfce78d28acf8ff9259dd87ca61666166c70fff0c73f7afa24c2bfc0697e8"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "03-whiteboard-questions.spec.ts.gz",
+      "originalSha256": "26956dd91a033e1c95723948763565371987541fb78f675c89263ec8b6a023cb",
+      "sha256": "dcd76790a7a1380e9fe152f3b95fb24156cf02177d814c7ca51b884da8961677"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.last-run.json",
+      "file": "04-.last-run.json.gz",
+      "originalSha256": "30eadf0410476862b7d237f996c2645d4469a7d81ef2504d80a13c2d9ff4f116",
+      "sha256": "338e092e58d305e84bdf436e804d17ebd508f8bd1feb08a00c0d99285b5fd930"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/error-context.md",
+      "file": "05-error-context.md.gz",
+      "originalSha256": "f1b4652cd6ea2c903cb962b4921651da976f440b7c3173df34acd36cb140bd37",
+      "sha256": "d9ccc502f158af2091820c7f81b5cc5b031edff31666125ab611b1573e2d6c16"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/test-failed-1.png",
+      "file": "06-test-failed-1.png.gz",
+      "originalSha256": "6e938ae9bcb170a6ca473a623d44ba7f1ed2c968d8fde5b3e6b5f004c0a0ae16",
+      "sha256": "777e124fefe41464c606739dd7f3e2da7eadd67f7fa5ab12e65ebd4e232a646b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-eeb3e-and-original-version-review/trace.zip",
+      "file": "07-trace.zip.gz",
+      "originalSha256": "70d44b2c65b83d2851553c1a5bc11ef9045efb72fee5f4cc3a7aaa5c265f0f02",
+      "sha256": "1dbedfdef723a03417f07ea7c45fae92062b729cce6ee648d1b14fa751da44b3"
+    }
+  ]
+}

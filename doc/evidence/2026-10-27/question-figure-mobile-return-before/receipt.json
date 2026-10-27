@@ -1,0 +1,73 @@
+{
+  "passed": false,
+  "deployed": false,
+  "note": "Two native browser cases failed at 390/768 after actual image adoption. Image reading and supplemental keyboard containment passed, but closing the supplemental board left the original mobile reading panel closed, so the actual adoption control and complete input were hidden. Restore the original panel for normal supplemental close; the explicit return-to-original-sentence command keeps its own original-canvas behavior.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-browser.json",
+      "file": "00-question-figure-browser.json.gz",
+      "originalSha256": "5078b7fd326f49ad09427e18e73419e9569de85238007e418ac8ee9213e55d3a",
+      "sha256": "c65c9dd061045d619d9bac9456d636870f49074b7dad95e948f89bf91a73c2fd"
+    },
+    {
+      "source": "data/qa/question-figure-mobile-focus-before.log",
+      "file": "01-question-figure-mobile-focus-before.log.gz",
+      "originalSha256": "9ea82279f3657f4850674a96a53dd44ba98bee295aa3ad59473e9851cf1f51e1",
+      "sha256": "d5fdfaf140b7e909ad1bb3178c1330679291e886b829fda222b70fc8b0d8ae43"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "02-whiteboard-session.tsx.gz",
+      "originalSha256": "8ef18ed5ad9317d3bc4358b7134465b9d643ad9378a04c1b04af6900513dc307",
+      "sha256": "4a8ba61bbc628a6c86251fd3244e6324a4e22022117450709995d177f957bd3c"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "03-whiteboard-questions.spec.ts.gz",
+      "originalSha256": "c7f1a33d5f096a1722bbf243a66db02a756eb290c567f59a3962e4f25c91eb3b",
+      "sha256": "5642d44e54254e5ae446d46958c1c209409bf25e50251de383f4c5502151c21f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.last-run.json",
+      "file": "04-.last-run.json.gz",
+      "originalSha256": "832085fc01d40f4b6542445771b2d1b6f18df85496479ee5c1fb9f59527938ae",
+      "sha256": "a4a0efe740e216f85df7bfbdf747110834a70f8213dc932006a9179d878f9d41"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-5d193-ual-original-control-at-768/error-context.md",
+      "file": "05-error-context.md.gz",
+      "originalSha256": "61dad08e8e3897ede674b2687880778c4aad6fb87b47c40a34e8e6b20835497e",
+      "sha256": "202090508eb181b44ba070cb447822f67b2b1c6fde6244b593844d782e18b6cc"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-5d193-ual-original-control-at-768/test-failed-1.png",
+      "file": "06-test-failed-1.png.gz",
+      "originalSha256": "6eb1b4f4e564e8435081dd46325a98e2f6d2859c158c3112b79a519e0a3eb7d9",
+      "sha256": "5b856ab6a2f1da2b75a8f86d21881201cf42a7d01208ae406273f9d94412beec"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-5d193-ual-original-control-at-768/trace.zip",
+      "file": "07-trace.zip.gz",
+      "originalSha256": "6670b695051f8fe8ef76952b89fb081b3bd70e648de6a47d22ebd24c8e2062ef",
+      "sha256": "6709d2e5f648103eab977bf7a49f27add3cbf0123c87c0572ad80c5de281816f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-6e9b6-ual-original-control-at-390/error-context.md",
+      "file": "08-error-context.md.gz",
+      "originalSha256": "71eba0b0aec2f39b74ca716a62192facdaf736a17ff4e521b4e10632b2a01586",
+      "sha256": "2495ce96f70a636979801fae8cae8a2508fe650240c75977e0e52673f2e12f13"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-6e9b6-ual-original-control-at-390/test-failed-1.png",
+      "file": "09-test-failed-1.png.gz",
+      "originalSha256": "d1dc1386a5aabba2b6ba1b8486a1dc959ad446903a8c8b9a5ff2b5b829819782",
+      "sha256": "85edeceeed63c77e3099414b7d81fc5d17b760775019e0fd3888edf5bd940da6"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-quest-6e9b6-ual-original-control-at-390/trace.zip",
+      "file": "10-trace.zip.gz",
+      "originalSha256": "f3e2b9d9eb96f20abdeb42eedd8f993bea9750a21dd9c3e9280d635ccdf23b4e",
+      "sha256": "681a01fd3a9882832c26660228550dac1b76582e4b048917d5e0d1b3ebf59b81"
+    }
+  ]
+}

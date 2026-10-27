@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "deployed": false,
+  "interrupted": true,
+  "newFinalReportWritten": false,
+  "scope": "Guard-message follow-up stopped after seven logged passes and wrote no final report. Tool handle66228 is missing; actual runtime PID75356 and3173/4173 listeners are absent. Existing whiteboard-question-browser.json belongs to the preceding29-pass run and is not reused as this invocation result. Cause of process termination is not established. Original log and completed build retained; targeted image journeys follow.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-browser-guard-green.log",
+      "file": "question-figure-browser-guard-green.log.gz",
+      "originalSha256": "db57e22167a94085d74f6e456b7687fde65b38339b5d7fc8ef78d9bcd4415dd2",
+      "sha256": "eb7d764300c1083f0d27ff70930390b373f2119f00dd0f885140df7b366f98f0"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-guard.log",
+      "file": "question-figure-web-build-guard.log.gz",
+      "originalSha256": "a7bb1e8e154d7575bf51b245351243f842a3f089ecfa5a71ced54a2384aedd03",
+      "sha256": "69887ab3882cbab1437696ae5dc086378ef3a7c36d09f1830e7eeca3c67920fb"
+    }
+  ]
+}

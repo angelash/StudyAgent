@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-27T01:12:59.513Z",
+    "duration": 208226.376,
+    "expected": 27,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 27,
+  "retries": 0,
+  "scope": "27 question and answer-image cases, including 18 existing and nine new image journeys. Not full-site, exact CI, mobile keyboard adoption or real-provider quality acceptance.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "16afd7f36c7e17c275b63c797e74e4633b5876578b143228f828e4affbdcf07b",
+      "sha256": "84f7ca0fa31ea3863924887c4e4f9f804a25c6d821c5ecf7a1389651a8ad8210"
+    },
+    {
+      "source": "data/qa/question-figure-browser-green.log",
+      "file": "01-question-figure-browser-green.log.gz",
+      "originalSha256": "5c23b659172b23672d01ac0090b7e8b4da1f0e6334e6eb6ef7a4005a8c29e116",
+      "sha256": "5fe97d40e61d801f9ca2286b46a7799d86ed00b03926853eb46fdf5dd4e56f4a"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-reader-fix.log",
+      "file": "02-question-figure-web-build-reader-fix.log.gz",
+      "originalSha256": "a5045c83724959c57e3aa85d7cc1194ca24bd34c9f477e580e12ddeb4412e3bc",
+      "sha256": "1b5dfce78d28acf8ff9259dd87ca61666166c70fff0c73f7afa24c2bfc0697e8"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-2x.webm",
+      "file": "03-adopted-2x.webm.gz",
+      "originalSha256": "c5672010eb305b78fda57f33a29e5cb19ed418caee377192e838358c41f414bc",
+      "sha256": "cc5c674c0fb48cbda5329e8e0019a78ebf6bda616323c4efa69156a13c899448"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-version.png",
+      "file": "04-adopted-version.png.gz",
+      "originalSha256": "6e938ae9bcb170a6ca473a623d44ba7f1ed2c968d8fde5b3e6b5f004c0a0ae16",
+      "sha256": "777e124fefe41464c606739dd7f3e2da7eadd67f7fa5ab12e65ebd4e232a646b"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-1280.png",
+      "file": "05-full-input-1280.png.gz",
+      "originalSha256": "191edcc826d9ceac3cd548a1e5fd71961b70b17359c3623b98776742a2b7b4b2",
+      "sha256": "8a8afd540c34269c63d7fb828dcee477922b55a82fbe1847c88aa6c6659a16d0"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-390.png",
+      "file": "06-full-input-390.png.gz",
+      "originalSha256": "1c666688e9d644168be75d7afcf719212fed6c1e11a2c338215123d2ad0f298e",
+      "sha256": "0cd2976fc6f3c05cb436adb16a4873984dc34fa79e9528bde2fed256e499d4d7"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-768.png",
+      "file": "07-full-input-768.png.gz",
+      "originalSha256": "e0d9ca840f23ad80cd3234a5c9237f7dd57b948e2667f6ee2659f13e137380c7",
+      "sha256": "9cf6f49025390b52dee0cab1d9b332a37de26b156f60b38d39a3f178b83d0a35"
+    }
+  ],
+  "sourceSha256": {
+    "apps/web/app/studio/whiteboard-question-figures.tsx": "ece1010fd553812193230ba1ba14977a133418953b805ecac67daed93a279b80",
+    "apps/web/app/studio/whiteboard-question-figures.css": "d1614d5048c56a9f2cd01380dc486f45c3d78aba62aa31d4992607955cdea8d2",
+    "apps/web/app/studio/whiteboard-questions.tsx": "cd4247e731eae004c4a3cbeb4ffd59629d4f7e0237dc3f3a8bab57f95bad6c45",
+    "apps/web/app/studio/whiteboard-session.tsx": "8ef18ed5ad9317d3bc4358b7134465b9d643ad9378a04c1b04af6900513dc307",
+    "apps/web/app/studio/whiteboard-original.ts": "f6b2e17cd0af840e599660bed3f2d2058e81baf0bdc0e14032f1dbe67c3b9ed1",
+    "apps/web/app/studio/whiteboard-media.ts": "00d33d6860fab9b9e4d1ac87657d882e3b62fe43052f30bcf7cd5af172209e9c",
+    "apps/web/app/studio/whiteboard-question-notes.ts": "d378359c0429acb4faf20385b7c5e910b31d237df8d0c3a349c3ee1656b33c57",
+    "apps/web/app/studio/topic-figure-image.tsx": "c8d02ec17500c3e71d0c93d9782624ef751e392ee8b4fa47058f92392f6f3610",
+    "apps/web/app/studio/classroom/figure-reader.tsx": "52d0f56d51b548460541048303336d02942a3fbfe5dfbb3945a16dcfc5a2792b",
+    "apps/web/app/studio/classroom/figure-reader.css": "226132039834e4f9b44ea6ea45abc402361882a58acd9007577b820c7b5cf23a",
+    "apps/web/app/studio/whiteboards/command-digest.ts": "f3bd3a7fee84dc5600c849ae17dc39ef913310bee99ead2af1651bc0a82e6de4",
+    "tests/e2e/whiteboard-questions.spec.ts": "619f82301cced231c435b706a31e71079af1ff990146b4bf250e374c225bb04d"
+  }
+}

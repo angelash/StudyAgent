@@ -10,6 +10,7 @@ import { topicCopies, topicStorage } from './whiteboards/local-copies';
 import { downloadTopicJson } from './whiteboards/download';
 import './whiteboard-questions.css';
 import { whiteboardQuestionNotesMarkdown } from './whiteboard-question-notes';
+import { WhiteboardQuestionFigures } from './whiteboard-question-figures';
 
 const fingerprint = z.string().regex(/^[a-f0-9]{64}$/), key = z.string().min(8).max(180);
 const formSchema = z.object({ message: z.string().max(3000), modelId: z.string().max(180), intent: z.enum(WHITEBOARD_QUESTION_INTENTS) }).strict();
@@ -39,12 +40,16 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
   const [turns, setTurns] = React.useState<WhiteboardQuestionTurnView[]>([]), [earlierPage, setEarlierPage] = React.useState(0), [historyReady, setHistoryReady] = React.useState(false);
   const [notice, setNotice] = React.useState(''), [downloaded, setDownloaded] = React.useState('');
   const [copies, setCopies] = React.useState<Array<{ key: string; at: number; value: { form: Form; pending: Pending | null } }>>([]);
+  const [figureTurn, setFigureTurn] = React.useState<string | null>(null), [teachingVersions, setTeachingVersions] = React.useState<Record<string, string>>({});
+  const figureCanLeave = React.useRef(true), questionUnsafe = React.useRef(false), figureTrigger = React.useRef<HTMLButtonElement | null>(null);
+  const figureLeaveChange = React.useCallback((value: boolean) => { figureCanLeave.current = value; callbacks.current.onCanLeaveChange(value && !questionUnsafe.current); }, []);
   const alive = React.useRef(false), requests = React.useRef(new Set<AbortController>()), serial = React.useRef(0), posting = React.useRef(false);
   const callbacks = React.useRef({ onUnavailable, onCanLeaveChange }); callbacks.current = { onUnavailable, onCanLeaveChange };
   const copy = { version: 1, ownerId, boardKind: kind, boardId: board.id, fingerprint: board.fingerprint, form, pending };
   const current = React.useRef(copy); current.current = copy;
   const serialized = JSON.stringify(copy), unsafe = Boolean(form.message.trim() || pending) && storageError && serialized !== downloaded;
-  const canLeave = React.useRef(!unsafe); canLeave.current = !unsafe;
+  questionUnsafe.current = unsafe;
+  const canLeave = React.useRef(!unsafe); canLeave.current = !unsafe && figureCanLeave.current;
   const activeTurn = turns.find(turn => active.has(turn.status));
   function decode(raw: string) {
     if (raw.length > 64000) return null;
@@ -103,7 +108,7 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
     setForm(value => ({ ...value, modelId: models.modelId })); setReady(true);
   }, [models.catalog, models.modelId, ready, storage, ownerId, kind, board.id, board.fingerprint]);
   React.useEffect(() => { if (ready) persist(current.current); }, [serialized, ready, storage.key]);
-  React.useEffect(() => { callbacks.current.onCanLeaveChange(!unsafe); }, [unsafe]);
+  React.useEffect(() => { callbacks.current.onCanLeaveChange(!unsafe && figureCanLeave.current); }, [unsafe]);
   React.useEffect(() => {
     if (!ready || !pending || pending.kind !== 'create') return;
     const requestKey = pending.command.requestKey; let valid = true;
@@ -190,13 +195,27 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
         {turn.reply && <button type="button" className="wb-question-open" disabled={busy || disabled} onClick={event => {
           const trigger = event.currentTarget;
           capture(); setBusy(true); const epoch = serial.current;
-          void read<StudioQuestionWhiteboard>('/' + encodeURIComponent(turn.id) + '/board').then(value => {
+          const versionId = teachingVersions[turn.id] ?? turn.teachingVersions?.find(item => item.current)?.id;
+          void read<StudioQuestionWhiteboard>('/' + encodeURIComponent(turn.id) + '/board' + (versionId ? '?teachingVersionId=' + encodeURIComponent(versionId) : '')).then(value => {
             if (!alive.current || epoch !== serial.current) return;
-            if (value.originalBoardKind !== kind || value.originalBoardId !== board.id || value.turnId !== turn.id || value.replyFingerprint !== turn.reply?.fingerprint)
+            if (value.originalBoardKind !== kind || value.originalBoardId !== board.id || value.turnId !== turn.id || value.replyFingerprint !== turn.reply?.fingerprint || versionId && value.teachingVersionId !== versionId)
               throw new Error('补充讲解与原回答不一致，请重新读取对话。');
             onOpenTeaching(value, trigger);
           }).catch(fail).finally(() => { if (alive.current) setBusy(false); });
         }}>{turn.reply.board ? '查看补充板书与声音' : '收听原回答'}</button>}
+        {turn.reply && (turn.teachingVersions?.length ?? 0) > 1 && <label className="wb-question-version">讲解版本<select aria-label="讲解版本" disabled={busy || disabled}
+          value={teachingVersions[turn.id] ?? turn.teachingVersions?.find(item => item.current)?.id ?? 'original'} onChange={event => setTeachingVersions(values => ({ ...values, [turn.id]: event.target.value }))}>
+          {turn.teachingVersions?.map((version, index) => <option key={version.id} value={version.id}>{version.id === 'original' ? '原回答 · 无配图' : '图片版本 ' + index + ' · ' + new Date(version.createdAt).toLocaleString()}{version.current ? ' · 当前采用' : ''}</option>)}
+        </select></label>}
+        {turn.reply?.fingerprint && <button type="button" className="wb-question-open" disabled={busy || disabled} onClick={event => {
+          if (figureTurn === turn.id) return;
+          if (!figureCanLeave.current) { setNotice('请先下载当前完整配图副本，再切换回答。'); return; }
+          capture(); figureTrigger.current = event.currentTarget; figureCanLeave.current = false; callbacks.current.onCanLeaveChange(false); setFigureTurn(turn.id);
+        }}>为这段讲解配图</button>}
+        {figureTurn === turn.id && turn.reply?.fingerprint && <WhiteboardQuestionFigures key={turn.id + ':' + turn.reply.fingerprint} ownerId={ownerId} boardKind={kind} boardId={board.id}
+          boardFingerprint={board.fingerprint} turnId={turn.id} replyFingerprint={turn.reply.fingerprint} onCanLeaveChange={figureLeaveChange} onUnavailable={onUnavailable}
+          onClose={() => { setFigureTurn(null); figureCanLeave.current = true; callbacks.current.onCanLeaveChange(!questionUnsafe.current); requestAnimationFrame(() => figureTrigger.current?.focus()); }}
+          onAdopted={(value, trigger) => { update({ ...turn, teachingVersions: value.versions }); setTeachingVersions(values => ({ ...values, [turn.id]: value.versionId })); onOpenTeaching(value.board, trigger); }}/>}
         <button type="button" className="wb-question-return" disabled={disabled} onClick={() => onReturn(turn.position)}>回到这句<span>{turn.position.sentenceText}</span></button>
         {active.has(turn.status) && <button type="button" disabled={busy || disabled || Boolean(pending) || !turn.task} onClick={() => { if (turn.task) void execute({ kind: 'cancel', turnId: turn.id, command: { requestKey: crypto.randomUUID(), generation: turn.task.generation, version: turn.task.version } }); }}>取消回答</button>}
         {['failed','cancelled'].includes(turn.status) && <button type="button" disabled={busy || disabled || Boolean(pending) || Boolean(activeTurn) || !turn.task} onClick={() => { if (turn.task) void execute({ kind: 'retry', turnId: turn.id, command: { requestKey: crypto.randomUUID(), generation: turn.task.generation, version: turn.task.version } }); }}>用原模型重试</button>}

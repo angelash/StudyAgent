@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "deployed": false,
+  "scope": "The same two 390/768 mobile journeys passed and produced screenshots; overlaps the 29. Manual inspection then found the compact enlargement button stretched into a180px empty bar by an old generic thumbnail rule. This is a visual finding, not a claimed failed assertion.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-browser.json",
+      "file": "question-figure-browser.json.gz",
+      "originalSha256": "e98642e200491eae107242a9e965f215a194430bfa660d5c4ccdd9ad46c4507f",
+      "sha256": "dd31d4dc6ee5c3c009771698bf41533bbf2dc7cf826592581acb8f81af1df8d2"
+    },
+    {
+      "source": "data/qa/question-figure-mobile-visual.log",
+      "file": "question-figure-mobile-visual.log.gz",
+      "originalSha256": "d332e7f5c737fb16c64ed9b106da3953c096279d837c1f916f319a4a26573481",
+      "sha256": "cd6033801748f68be1cf2580efb511691aac3f1fffd7e70932ec720581d61e7e"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-390.png",
+      "file": "adopted-mobile-390.png.gz",
+      "originalSha256": "ccdf1e8a368693079f0002408aecb3c51a0912351c80f65f7caacf1d8806b4f5",
+      "sha256": "a05360496a41f84ef5f3a9e7e2901ea3d7fd17cbc39d6c4dde39ce8bfb58e220"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-mobile-768.png",
+      "file": "adopted-mobile-768.png.gz",
+      "originalSha256": "0b1465f22e9187b9eac4d3016f6a5a596c9a26c834a94a1a79dcdd2a2ffc0bfa",
+      "sha256": "c5b79bc192b6f29766e55008e40f3aa984bb8469497435ac759857384170267a"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-390.png",
+      "file": "image-reader-390.png.gz",
+      "originalSha256": "09419031f9bf79528f5aed13f4fb1c6435c2b8d08c119a5d0887b29415d66bb3",
+      "sha256": "037e67a1398ad171b552c5339698bccaae4f54b9fbfb4cff2748eb96f0a3432d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/image-reader-768.png",
+      "file": "image-reader-768.png.gz",
+      "originalSha256": "e2ec1629d1f73009d4a090acfba6b509afecf072c292d82051dfff14047bb62a",
+      "sha256": "2356d321d525d1db48db5470aad43cb7205add0bec4bb02d07ab6da103d921a9"
+    }
+  ]
+}

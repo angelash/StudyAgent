@@ -22,7 +22,7 @@
 .hk-teaching.hk-teaching .sa-whiteboard-frame{width:100%;height:100%;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden}
 .hk-teaching.hk-teaching .sa-whiteboard-frame canvas{display:block;width:100%;height:100%;object-fit:contain;border:0;cursor:grab}
 .hk-teaching.hk-teaching .sa-whiteboard-frame canvas:active{cursor:grabbing}
-.hk-teaching.hk-teaching .sa-whiteboard-frame>.tw-figure{position:absolute;left:28px;bottom:190px;width:180px;max-height:120px}
+.hk-teaching.hk-teaching .sa-whiteboard-frame>.tw-figure[data-compact=false]{position:absolute;left:28px;bottom:190px;width:180px;max-height:120px}
 .hk-teaching.hk-teaching .wb-current-sentence{position:absolute;bottom:148px;left:36px;right:24px;max-height:100px;overflow:auto;margin:0;padding:8px 14px;border:0;border-radius:14px;background:#fafafad1;backdrop-filter:blur(2px);font-size:16px;line-height:1.7;text-align:center;color:#262626;white-space:normal;overflow-wrap:anywhere}
 .hk-teaching.hk-teaching .sa-whiteboard-scrubber{position:absolute;bottom:133px;left:36px;right:24px;width:auto;height:10px;margin:0;padding:0}
 .hk-teaching.hk-teaching .sa-whiteboard-scrubber input{display:block;width:100%;height:4px;accent-color:#7950ff}

@@ -8,7 +8,7 @@ import './topic-figure-image.css';
 export type TopicFigureImageSource = Pick<StudioWhiteboardFigure, 'imageUrl' | 'sha256' | 'width' | 'height' | 'alt' | 'caption'>;
 /** Use only our authorized image routes; no model/user supplied external image URL is fetched. */
 export async function topicFigureBlob(source: TopicFigureImageSource, signal: AbortSignal) {
-  if (!/^\/learning\/studio\/(?:topic-whiteboard-visuals\/topic_whiteboard_visual_[a-f0-9-]{36}\/image|topic-whiteboards\/[^/?#]+\/figures\/[^/?#]+\/(?:image|original))$/.test(source.imageUrl) ||
+  if (!/^\/learning\/studio\/(?:topic-whiteboard-visuals\/topic_whiteboard_visual_[a-f0-9-]{36}\/image|topic-whiteboards\/[^/?#]+\/figures\/[^/?#]+\/(?:image|original)|whiteboard-question-visuals\/whiteboard_question_visual_[a-f0-9-]{36}\/(?:image|original)|(?:topic-whiteboards|whiteboards)\/[^/?#]+\/questions\/[^/?#]+\/teaching-versions\/[a-f0-9-]{36}\/figure\/(?:image|original))$/.test(source.imageUrl) ||
     !/^[a-f0-9]{64}$/.test(source.sha256) || source.width !== 1536 || source.height !== 1024) throw Error('图片身份暂不可用，完整文字稿仍保留。');
   const token = getAuthToken(), response = await fetch(apiBaseUrl + '/api' + source.imageUrl,
     { credentials: 'include', signal, headers: token ? { Authorization: 'Bearer ' + token } : {} });

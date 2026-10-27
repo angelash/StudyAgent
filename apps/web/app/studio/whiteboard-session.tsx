@@ -33,7 +33,7 @@ const whiteboardToolSteps: ToolTourStep[] = [
 ];
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
-  progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
+  progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number; teachingVersionId?: string };
 export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose, onAccessLost, onReturnToOriginal }:
   WhiteboardPlayerProps & { ownerId: string; preview: boolean }) {
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
@@ -80,7 +80,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   closeRef.current = onClose; progressRef.current = progress; indexRef.current = unitIndex;
   userCloseRef.current = () => {
     if (!questionCanLeave.current) {
-      pausePlayback(); setNotice('提问尚未保存到本机。请先下载完整提问副本，再关闭白板。');
+      pausePlayback(); setNotice('完整输入或原请求尚未保存到本机。请先在讲稿与笔记中下载对应副本，再关闭白板。');
       if (panel.compact) panel.setMobileOpen(true); else panel.setExpanded(true);
       return;
     }
@@ -88,13 +88,14 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   };
   const unit = units[unitIndex], scene = board.scenes.find(item => item.id === unit?.sceneId) ?? board.scenes[0];
   const storagePrefix = 'studyagent.' + (isTopicWhiteboard(board) ? 'topic-whiteboard' : 'whiteboard') + '.location.v1.' + ownerId + '.';
-  const storageKey = storagePrefix + board.studentId + '.' + board.id;
+  const storageKey = storagePrefix + board.studentId + '.' + board.id + (isQuestionWhiteboard(board) && board.teachingVersionId && board.teachingVersionId !== 'original' ? '.' + board.teachingVersionId : '');
   const estimatedTimeline = React.useMemo(() => whiteboardTimeline(presentation, undefined, speed), [presentation, speed]);
   const activeTimeline = preparedTimeline ?? estimatedTimeline;
   const entry = activeTimeline.entries[unitIndex];
   const ratio = entry && activeTimeline.durationMs ? (entry.fromMs + (entry.toMs - entry.fromMs) * progress) / activeTimeline.durationMs : 0;
   position.current = unit ? { ownerId, studentId: board.studentId, boardId: board.id, fingerprint: board.fingerprint,
     version: WHITEBOARD_SPEECH_VERSION, unitId: unit.id, progress,
+    ...(isQuestionWhiteboard(board) ? { teachingVersionId: board.teachingVersionId ?? 'original' } : {}),
     audioTime: mode === 'cloud' ? (resource.current?.key === whiteboardAudioKey(unit.id, voice) ? resource.current.audio.currentTime : resumeAudioTime.current) : null,
     mode, voice, speed, at: Date.now() } : null;
 
@@ -364,7 +365,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     const topic = isTopicWhiteboard(board) || isQuestionWhiteboard(board) && board.originalBoardKind === 'topic';
     const url = new URL(topic ? '/studio/whiteboards' : '/studio', window.location.origin);
     url.searchParams.set('whiteboard', isQuestionWhiteboard(board) ? board.originalBoardId : board.id);
-    if (isQuestionWhiteboard(board)) url.searchParams.set('question', board.turnId);
+    if (isQuestionWhiteboard(board)) { url.searchParams.set('question', board.turnId); url.searchParams.set('teachingVersion', board.teachingVersionId ?? 'original'); }
     if (!topic) { if (board.studentId) url.searchParams.set('student', board.studentId); if (board.subject) url.searchParams.set('subject', board.subject); }
     return url.href;
   }
@@ -381,16 +382,20 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     }
     setNotice('已回到提问时的原句与进度，点击播放继续。'); if (panel.compact) panel.setMobileOpen(false);
   }
-  function closeAnswer() { setAnswerBoard(null); requestAnimationFrame(() => {
+  function closeAnswer(restorePanel = true) { setAnswerBoard(null);
+    if (restorePanel && panel.compact && answerTrigger.current?.isConnected) panel.setMobileOpen(true);
+    requestAnimationFrame(() => {
     if (answerTrigger.current?.isConnected && answerTrigger.current.getClientRects().length) answerTrigger.current.focus();
     else dialog.current?.querySelector<HTMLButtonElement>('[data-panel-toggle]')?.focus();
   }); }
   React.useEffect(() => {
     if (preview || isQuestionWhiteboard(board)) return;
-    const id = new URLSearchParams(window.location.search).get('question'); if (!id || id.length > 180) return;
+    const params = new URLSearchParams(window.location.search), id = params.get('question'); if (!id || id.length > 180) return;
+    const teachingVersion = params.get('teachingVersion');
+    if (teachingVersion !== null && !/^(?:original|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$/.test(teachingVersion)) { setNotice('补充讲解版本无效，请从原提问重新打开。'); return; }
     const request = new AbortController(), base = '/learning/studio/' + (isTopicWhiteboard(board) ? 'topic-whiteboards/' : 'whiteboards/') + encodeURIComponent(board.id);
-    void apiRequest<StudioQuestionWhiteboard>(base + '/questions/' + encodeURIComponent(id) + '/board', { signal: request.signal }).then(value => {
-      if (!request.signal.aborted && value.originalBoardId === board.id && value.turnId === id) { pausePlayback(); setAnswerBoard(value); }
+    void apiRequest<StudioQuestionWhiteboard>(base + '/questions/' + encodeURIComponent(id) + '/board' + (teachingVersion === null ? '' : '?teachingVersionId=' + encodeURIComponent(teachingVersion)), { signal: request.signal }).then(value => {
+      if (!request.signal.aborted && value.originalBoardId === board.id && value.turnId === id && (teachingVersion === null || value.teachingVersionId === teachingVersion)) { pausePlayback(); setAnswerBoard(value); }
     }).catch(error => { if (!request.signal.aborted) setNotice(error.message); });
     return () => request.abort();
   }, [board, preview]);
@@ -480,6 +485,6 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     {tour && <ClassroomToolTour onClose={finishTour} steps={whiteboardToolSteps} scope={dialog.current} label="白板工具导览" returnLabel="返回白板" welcome="了解白板工具" introduction="用七个实际控件，按自己的节奏阅读、听讲与回顾。" completion="导览结束。原讲解位置和笔记保持，准备好后再继续。" onStep={showTourStep}/>}
     {answerBoard && <WhiteboardSession key={answerBoard.id + ':' + answerBoard.fingerprint} whiteboard={answerBoard} ownerId={ownerId} preview={false}
       narrationAvailable={narrationAvailable} speech={speech} onClose={closeAnswer} onAccessLost={() => accessLostRef.current?.()}
-      onReturnToOriginal={saved => { closeAnswer(); restoreQuestionPosition(saved); }}/>}
+      onReturnToOriginal={saved => { closeAnswer(false); restoreQuestionPosition(saved); }}/>}
   </div>;
 }

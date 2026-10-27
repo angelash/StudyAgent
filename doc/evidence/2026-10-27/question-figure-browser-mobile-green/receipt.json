@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "deployed": false,
+  "stats": {
+    "startTime": "2026-10-27T01:20:10.714Z",
+    "duration": 220930.348,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 29,
+  "retries": 0,
+  "scope": "29 browser journeys: 18 prior question/teaching and 11 answer-image journeys. Includes actual PNG, original-file download/edit, two versions, voice/video/notes/deep link, lost prepare/adopt receipts, cancellation/retry, tabs/storage failure, stale competing adoption and mobile image reading/focus/return. Overlaps the earlier 27; do not add counts. No full-site or exact-CI claim.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "e7aeaa735209b8c155036e47fbc3024832c520bbb4670ea30b578ebcb40c48fb",
+      "sha256": "3bdc6d521927a3404e5fee9722415e0c7fe07424f30b9ab87cee7b021fd6b9a7"
+    },
+    {
+      "source": "data/qa/question-figure-browser-mobile-green.log",
+      "file": "01-question-figure-browser-mobile-green.log.gz",
+      "originalSha256": "bc03155397998daa837ad8fdb9e74be115b7fa98a724f14bcec7d430e8203dd1",
+      "sha256": "6881e32ab90002aee600b7f60cc3f865e5a997260f002a6ada45ec49fe73b0f5"
+    },
+    {
+      "source": "data/qa/question-figure-web-build-mobile-return.log",
+      "file": "02-question-figure-web-build-mobile-return.log.gz",
+      "originalSha256": "27591862849b97f4387ff94d6878759c73c91c13157327fb7ce0f30b99bf5349",
+      "sha256": "4cebe2e39125f617191f5f2c0bfda22886f0e148cf0203721ffea44b9daa6768"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-2x.webm",
+      "file": "03-adopted-2x.webm.gz",
+      "originalSha256": "e8248047e246bec8bd4305e1f77f0a60a7a99bcffbd2e2f026ed0831a123be2e",
+      "sha256": "f0c24f2ef28feeb0c91c4cc579e2483b86db066be44551ddbf60920e56b98b4e"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/adopted-version.png",
+      "file": "04-adopted-version.png.gz",
+      "originalSha256": "61e3402d4d56d5081c66360e5f8c0f1abf36e88f8e0bb99fb7f0a51f12824d4f",
+      "sha256": "6f08146f34a479df94920a99c2427a1db979e40f6ffc8319854715722269c190"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-1280.png",
+      "file": "05-full-input-1280.png.gz",
+      "originalSha256": "191edcc826d9ceac3cd548a1e5fd71961b70b17359c3623b98776742a2b7b4b2",
+      "sha256": "8a8afd540c34269c63d7fb828dcee477922b55a82fbe1847c88aa6c6659a16d0"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-390.png",
+      "file": "06-full-input-390.png.gz",
+      "originalSha256": "1c666688e9d644168be75d7afcf719212fed6c1e11a2c338215123d2ad0f298e",
+      "sha256": "0cd2976fc6f3c05cb436adb16a4873984dc34fa79e9528bde2fed256e499d4d7"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-question-figures/full-input-768.png",
+      "file": "07-full-input-768.png.gz",
+      "originalSha256": "e0d9ca840f23ad80cd3234a5c9237f7dd57b948e2667f6ee2659f13e137380c7",
+      "sha256": "9cf6f49025390b52dee0cab1d9b332a37de26b156f60b38d39a3f178b83d0a35"
+    }
+  ]
+}

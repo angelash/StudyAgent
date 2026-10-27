@@ -234,3 +234,172 @@ for (const width of [390,768,1280]) test('whiteboard questions: the real compose
   await page.screenshot({ path: join(browserEvidence('whiteboard-questions'), 'question-panel-' + width + '.png') });
   await f.region.getByRole('button', { name: /回到这句/ }).click(); await expect(f.player.getByRole('button', { name: '播放', exact: true })).toBeVisible();
 });
+
+const questionFigureBase = '/learning/studio/whiteboard-question-visuals';
+async function questionFigure(page: Page, f: Awaited<ReturnType<typeof fixture>>, requirements = '用两个圆与交集说明单位、条件和共同结论，保留全部中文标签。', generate = true) {
+  await f.inputBox.fill('[question-structure] 请将完整条件、表格和公式讲清楚。');
+  await f.region.getByRole('button', { name: '发送', exact: true }).click(); await expect(f.region.locator('.wb-question-answer')).toHaveCount(1);
+  await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click();
+  const pane = page.getByRole('region', { name: '回答配图工作区', exact: true });
+  await pane.getByRole('textbox', { name: '完整配图要求', exact: true }).fill(requirements);
+  if (generate) {
+    await pane.getByRole('button', { name: '预检完整配图提示', exact: true }).click();
+    await expect(pane.getByRole('button', { name: '生成这段讲解的配图', exact: true })).toBeEnabled();
+    await pane.getByRole('button', { name: '生成这段讲解的配图', exact: true }).click();
+    await expect(pane.getByRole('button', { name: '下载实际原PNG', exact: true })).toBeEnabled({ timeout: 25000 });
+  }
+  return pane;
+}
+
+test('question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review', async ({ page }) => {
+  const f = await fixture(page, true), pane = await questionFigure(page, f), commands: any[] = [], audio: any[] = [];
+  page.on('request', request => { if (request.method() !== 'POST') return;
+    if (request.url().endsWith(questionFigureBase + '/adopt')) commands.push(request.postDataJSON());
+    if (request.url().includes('/questions/') && request.url().includes('/board/narration/')) audio.push(request.postDataJSON()); });
+  const selected = pane.getByRole('region', { name: '所选回答图片', exact: true });
+  await selected.getByRole('button', { name: '放大参考图：回答配图', exact: true }).click(); await expect(page.getByRole('dialog', { name: '回答配图', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '关闭图片', exact: true }).click();
+  const originalPromise = page.waitForEvent('download'); await pane.getByRole('button', { name: '下载实际原PNG', exact: true }).click();
+  const original = readFileSync((await (await originalPromise).path())!); expect(original.subarray(0, 8)).toEqual(Buffer.from([137,80,78,71,13,10,26,10]));
+  await selected.getByLabel('图片说明', { exact: true }).fill('单位与完整条件的交集，图中关系已经逐项核对。'); await selected.getByLabel('展示图注', { exact: true }).fill('先统一单位，再比较条件。');
+  await expect(selected.getByRole('button', { name: '采用并打开这个讲解版本', exact: true })).toBeDisabled();
+  await selected.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true }).check();
+  await selected.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }).click();
+  const lesson = page.getByRole('dialog', { name: 'AI补充讲解', exact: true }); await expect(lesson).toHaveAttribute('data-original-font-status', 'ready');
+  expect(commands).toHaveLength(1); expect(commands[0].originalSha256).toBe(createHash('sha256').update(original).digest('hex'));
+  await lesson.getByRole('button', { name: '分享与导出', exact: true }).click(); const link = await lesson.getByLabel('原白板私有链接', { exact: true }).inputValue();
+  const versionId = new URL(link).searchParams.get('teachingVersion'); expect(versionId).toMatch(/^[a-f0-9-]{36}$/); await page.keyboard.press('Escape');
+  await lesson.getByRole('button', { name: '播放', exact: true }).click(); await expect.poll(() => audio.length).toBeGreaterThan(0); expect(audio[0].teachingVersionId).toBe(versionId);
+  await lesson.getByRole('button', { name: '暂停', exact: true }).click();
+  await lesson.getByRole('combobox', { name: '播放速度', exact: true }).selectOption('2');
+  const videoPromise = page.waitForEvent('download'); await lesson.getByRole('button', { name: '导出视频', exact: true }).click();
+  const videoPath = (await (await videoPromise).path())!, probe = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v','error','-show_format','-show_streams','-of','json',videoPath], { encoding: 'utf8', windowsHide: true }));
+  expect(probe.streams.some((stream: any) => stream.codec_type === 'audio')).toBe(true); expect(audio.every(item => item.teachingVersionId === versionId)).toBe(true);
+  copyFileSync(videoPath, join(browserEvidence('whiteboard-question-figures'), 'adopted-2x.webm'));
+  await lesson.getByRole('button', { name: '返回原讲解', exact: true }).click(); await expect(lesson).toHaveCount(0);
+  await f.region.getByText('带走完整教学笔记', { exact: true }).click(); const jsonPromise = page.waitForEvent('download');
+  await f.region.getByRole('button', { name: '下载完整教学笔记 JSON', exact: true }).click(); const notes = JSON.parse(readFileSync((await (await jsonPromise).path())!, 'utf8'));
+  expect(notes.turns[0].teachingVersions).toHaveLength(2); expect(notes.turns[0].teachingVersions.find((item: any) => item.current).id).toBe(versionId);
+  const mdPromise = page.waitForEvent('download'); await f.region.getByRole('button', { name: '下载完整教学笔记 Markdown', exact: true }).click();
+  const markdown = readFileSync((await (await mdPromise).path())!, 'utf8'); expect(markdown).toContain(versionId!); expect(markdown).toContain(commands[0].imageSha256); expect(markdown).not.toContain('sessionTokenHash');
+  await f.region.getByRole('combobox', { name: '讲解版本', exact: true }).selectOption('original'); await f.region.getByRole('button', { name: '查看补充板书与声音', exact: true }).click();
+  await expect(lesson).toHaveAttribute('data-original-font-status', 'ready'); await expect(lesson.locator('.tw-figure')).toHaveCount(0); await lesson.getByRole('button', { name: '返回原讲解', exact: true }).click();
+  await page.goto(link); await expect(lesson).toHaveAttribute('data-original-font-status', 'ready');
+  await expect(lesson.locator('.sa-whiteboard-frame > .tw-figure')).toHaveCount(1); await expect(lesson.locator('.sa-whiteboard-frame > .tw-figure')).toHaveAttribute('data-image-sha', commands[0].imageSha256);
+  await page.screenshot({ path: join(browserEvidence('whiteboard-question-figures'), 'adopted-version.png') });
+});
+
+test('question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions', async ({ page }) => {
+  const f = await fixture(page), pane = await questionFigure(page, f, '保留原请求的完整配图要求。', false); let prepareWrites = 0;
+  await page.route('**/api/learning/studio/whiteboard-question-visuals', async route => {
+    if (route.request().method() !== 'POST') return route.continue(); prepareWrites++; await route.fetch(); await route.abort('failed'); });
+  await pane.getByRole('button', { name: '预检完整配图提示', exact: true }).click(); await expect(pane.getByRole('button', { name: '生成这段讲解的配图', exact: true })).toBeEnabled();
+  await pane.getByRole('button', { name: '生成这段讲解的配图', exact: true }).click(); await expect(pane.getByRole('button', { name: '按原请求继续', exact: true })).toBeEnabled();
+  await page.reload(); await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue('保留原请求的完整配图要求。');
+  await pane.getByRole('button', { name: '按原请求继续', exact: true }).click(); await expect(pane.getByRole('button', { name: '下载实际原PNG', exact: true })).toBeEnabled(); expect(prepareWrites).toBe(1);
+  let adoptionWrites = 0, first: any;
+  await page.route('**/whiteboard-question-visuals/adopt', async route => { adoptionWrites++; const response = await route.fetch();
+    if (adoptionWrites === 1) { first = (await response.json()).data; await route.abort('failed'); } else await route.fulfill({ response }); });
+  await pane.getByLabel('图片说明', { exact: true }).fill('所有标签与条件已经核对。'); await pane.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true }).check();
+  await pane.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }).click(); await expect(pane.getByRole('button', { name: '按原请求继续', exact: true })).toBeEnabled();
+  await page.reload(); await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await pane.getByRole('button', { name: '按原请求继续', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'AI补充讲解', exact: true })).toHaveAttribute('data-original-font-status', 'ready'); expect(adoptionWrites).toBe(2);
+  const versions = await f.call('/learning/studio/whiteboards/' + f.board.id + '/questions/' + first.board.turnId + '/teaching-versions', undefined, f.actor.token, 'GET');
+  expect(versions).toHaveLength(2); expect(versions.find((item: any) => item.current).id).toBe(first.versionId);
+});
+
+test('question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions', async ({ page }) => {
+  const f = await fixture(page, false, true), pane = await questionFigure(page, f); const versions: string[] = [];
+  for (let pass = 0; pass < 2; pass++) {
+    if (pass) { await pane.getByRole('button', { name: '以这张原图继续修改', exact: true }).click(); await pane.getByLabel('具体修改说明', { exact: true }).fill('把交集标签加大，并保留两个原始圆圈。');
+      await pane.getByRole('button', { name: '预检完整配图提示', exact: true }).click(); await expect(pane.getByRole('button', { name: '用原PNG生成修改图', exact: true })).toBeEnabled();
+      await pane.getByRole('button', { name: '用原PNG生成修改图', exact: true }).click(); await expect(pane.getByRole('button', { name: '下载实际原PNG', exact: true })).toBeEnabled(); }
+    await pane.getByLabel('图片说明', { exact: true }).fill('第' + pass + '幅已核对的关系图。'); await pane.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true }).check();
+    const responsePromise = page.waitForResponse(response => response.request().method() === 'POST' && response.url().endsWith(questionFigureBase + '/adopt'));
+    await pane.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }).click(); const value = (await (await responsePromise).json()).data; versions.push(value.versionId);
+    const lesson = page.getByRole('dialog', { name: 'AI补充讲解', exact: true }); await expect(lesson).toHaveAttribute('data-original-font-status', 'ready');
+    await lesson.getByRole('button', { name: '返回原讲解', exact: true }).click();
+  }
+  expect(versions[0]).not.toBe(versions[1]); await expect(f.region.getByRole('combobox', { name: '讲解版本', exact: true }).locator('option')).toHaveCount(3);
+  await f.region.getByRole('combobox', { name: '讲解版本', exact: true }).selectOption(versions[0]); await f.region.getByRole('button', { name: '查看补充板书与声音', exact: true }).click();
+  const lesson = page.getByRole('dialog', { name: 'AI补充讲解', exact: true }); await expect(lesson).toHaveAttribute('data-original-font-status', 'ready');
+  await lesson.getByRole('button', { name: '分享与导出', exact: true }).click(); expect(await lesson.getByLabel('原白板私有链接').inputValue()).toContain('teachingVersion=' + versions[0]);
+});
+
+test('question figures: explicit cancel and original retry keep the same image requirement and target', async ({ page }) => {
+  const f = await fixture(page), pane = await questionFigure(page, f, '[image-pause-once] 完整条件与原图要求在重试后仍然保持。', false), commands: any[] = [];
+  page.on('request', request => { if (request.method() === 'POST' && request.url().endsWith(questionFigureBase)) commands.push(request.postDataJSON()); });
+  await pane.getByRole('button', { name: '预检完整配图提示', exact: true }).click(); await expect(pane.getByRole('button', { name: '生成这段讲解的配图', exact: true })).toBeEnabled();
+  await pane.getByRole('button', { name: '生成这段讲解的配图', exact: true }).click(); await pane.getByRole('button', { name: '取消图片生成', exact: true }).click();
+  await expect(pane.getByRole('button', { name: '按原要求重试图片', exact: true })).toBeEnabled({ timeout: 20000 }); await pane.getByRole('button', { name: '按原要求重试图片', exact: true }).click();
+  await expect(pane.getByRole('button', { name: '下载实际原PNG', exact: true })).toBeEnabled({ timeout: 25000 }); expect(commands).toHaveLength(1);
+  await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue(commands[0].requirements);
+});
+
+test('question figures: duplicated documents keep separate full inputs and a closed workbench discards late preflight', async ({ page, context }) => {
+  const f = await fixture(page), pane = await questionFigure(page, f, '第一标签的完整条件 A 尾部。', false), second = await context.newPage(); await second.goto(f.href);
+  await second.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); const other = second.getByRole('region', { name: '回答配图工作区', exact: true });
+  await other.getByRole('textbox', { name: '完整配图要求', exact: true }).fill('第二标签的完整条件 B 尾部。');
+  await page.reload(); await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue('第一标签的完整条件 A 尾部。');
+  await second.reload(); await second.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await expect(other.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue('第二标签的完整条件 B 尾部。'); await second.close();
+  let reached = false, delivered = false, release!: () => void; const gate = new Promise<void>(resolve => { release = resolve; });
+  await page.route('**/whiteboard-question-visuals/preflight', async route => { const response = await route.fetch(); reached = true; await gate; try { await route.fulfill({ response }); } catch {} finally { delivered = true; } });
+  await pane.getByRole('button', { name: '预检完整配图提示', exact: true }).click(); await expect.poll(() => reached).toBe(true); await pane.getByRole('button', { name: '关闭回答配图', exact: true }).click();
+  release(); await expect.poll(() => delivered).toBe(true); await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await expect(pane.getByRole('button', { name: '生成这段讲解的配图', exact: true })).toBeDisabled();
+});
+
+for (const width of [390, 768, 1280]) test('question figures: full input, storage failure, download and import remain usable at ' + width, async ({ page }) => {
+  await page.setViewportSize({ width, height: 800 }); await page.addInitScript(() => { const set = Storage.prototype.setItem; Storage.prototype.setItem = function(key, value) {
+    if (key.startsWith('studyagent.question-figures.v1.')) throw new DOMException('Blocked', 'QuotaExceededError'); return set.call(this, key, value); }; });
+  const f = await fixture(page), requirements = '完整首部。' + '图示保留全部条件。'.repeat(100) + '完整尾部。', pane = await questionFigure(page, f, requirements, false);
+  await pane.getByRole('button', { name: '关闭回答配图', exact: true }).click(); await expect(pane).toBeVisible(); await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue(requirements);
+  if (width <= 900) await f.player.getByRole('button', { name: '返回白板画面', exact: true }).click();
+  await f.player.getByRole('button', { name: '关闭白板', exact: true }).click(); await expect(f.player).toBeVisible();
+  await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue(requirements); await expect(f.player).toContainText('完整输入或原请求尚未保存到本机');
+  for (const control of [pane.getByRole('textbox', { name: '完整配图要求', exact: true }), pane.getByRole('button', { name: '预检完整配图提示', exact: true })]) {
+    const box = await control.boundingBox(); expect(box).not.toBeNull(); expect(box!.x).toBeGreaterThanOrEqual(0); expect(box!.x + box!.width).toBeLessThanOrEqual(width + 1);
+  }
+  const promise = page.waitForEvent('download'); await pane.getByRole('button', { name: '下载完整配图副本', exact: true }).click(); const bytes = readFileSync((await (await promise).path())!);
+  expect(JSON.parse(bytes.toString('utf8')).form.requirements).toBe(requirements); await pane.getByRole('button', { name: '关闭回答配图', exact: true }).click(); await expect(pane).toHaveCount(0);
+  await f.region.getByRole('button', { name: '为这段讲解配图', exact: true }).click(); await pane.getByText('保留与恢复完整配图要求', { exact: true }).click();
+  await pane.getByLabel('导入完整配图副本', { exact: true }).setInputFiles({ name: 'complete-figure-copy.json', mimeType: 'application/json', buffer: bytes });
+  await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue(requirements);
+  await page.screenshot({ path: join(browserEvidence('whiteboard-question-figures'), 'full-input-' + width + '.png') });
+});
+
+test('question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again', async ({ page, context }) => {
+  const f = await fixture(page), pane = await questionFigure(page, f), second = await context.newPage(); await second.goto(f.href);
+  await second.getByRole('button', { name: '为这段讲解配图', exact: true }).click();
+  const other = second.getByRole('region', { name: '回答配图工作区', exact: true });
+  await other.getByRole('textbox', { name: '完整配图要求', exact: true }).fill('第二标签保留的完整选择理由与条件尾部。');
+  await other.getByLabel('这段讲解的图片候选', { exact: true }).getByRole('button').first().click();
+  await expect(other.getByRole('button', { name: '下载实际原PNG', exact: true })).toBeEnabled();
+  for (const target of [pane, other]) { await target.getByLabel('图片说明', { exact: true }).fill('已核对相同原PNG与全部标签。'); await target.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true }).check(); }
+  const responsePromise = page.waitForResponse(response => response.request().method() === 'POST' && response.url().endsWith(questionFigureBase + '/adopt'));
+  await pane.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }).click(); const first = (await (await responsePromise).json()).data;
+  await other.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }).click();
+  await expect(other).toContainText('当前采用版本已变化'); await expect(other.getByRole('textbox', { name: '完整配图要求', exact: true })).toHaveValue('第二标签保留的完整选择理由与条件尾部。');
+  await expect(other.getByRole('button', { name: '重新读取原回答范围', exact: true })).toBeVisible();
+  const versions = await f.call('/learning/studio/whiteboards/' + f.board.id + '/questions/' + first.board.turnId + '/teaching-versions', undefined, f.actor.token, 'GET');
+  expect(versions).toHaveLength(2); expect(versions.find((item: any) => item.current).id).toBe(first.versionId);
+  await other.getByRole('button', { name: '重新读取原回答范围', exact: true }).click(); await expect(other).toContainText('当前采用图片：');
+  await expect(other.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true })).not.toBeChecked(); await second.close();
+});
+
+for (const width of [390, 768]) test('question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at ' + width, async ({ page }) => {
+  await page.setViewportSize({ width, height: 800 }); const f = await fixture(page), pane = await questionFigure(page, f);
+  const open = pane.getByRole('button', { name: '放大参考图：回答配图', exact: true }); await open.click();
+  const reader = page.getByRole('dialog', { name: '回答配图', exact: true }); await expect(reader).toBeVisible();
+  await page.screenshot({ path: join(browserEvidence('whiteboard-question-figures'), 'image-reader-' + width + '.png') });
+  await reader.getByRole('button', { name: '关闭图片', exact: true }).click(); await expect(open).toBeFocused();
+  await pane.getByLabel('图片说明', { exact: true }).fill('窄屏核对过的完整标签与关系。'); await pane.getByRole('checkbox', { name: '我已核对图中文字、条件和关系', exact: true }).check();
+  const adopt = pane.getByRole('button', { name: '采用并打开这个讲解版本', exact: true }); await adopt.click();
+  const lesson = page.getByRole('dialog', { name: 'AI补充讲解', exact: true }); await expect(lesson).toHaveAttribute('data-original-font-status', 'ready');
+  const imageButton = lesson.locator('.sa-whiteboard-frame .tw-figure-open'); await expect(imageButton).toBeVisible();
+  const imageButtonBox = await imageButton.boundingBox(); expect(imageButtonBox!.width).toBeLessThanOrEqual(36); expect(imageButtonBox!.height).toBeLessThanOrEqual(36);
+  await lesson.getByRole('button', { name: '关闭白板', exact: true }).focus(); await page.keyboard.press('Tab');
+  await page.screenshot({ path: join(browserEvidence('whiteboard-question-figures'), 'adopted-mobile-' + width + '.png') });
+  expect(await lesson.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Escape'); await expect(lesson).toHaveCount(0); await expect(pane).toBeVisible(); await expect(adopt).toBeFocused();
+  await expect(pane.getByRole('textbox', { name: '完整配图要求', exact: true })).not.toHaveValue('');
+});

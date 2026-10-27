@@ -1,0 +1,216 @@
+{
+  "original": {
+    "id": "question-figure-live-board-6d2037ce-dc33-405e-a04c-db2e53845d3d",
+    "kind": "ai-topic-whiteboard",
+    "ownerUserId": "user_34f33987-bcd9-41fb-862b-2b18a45c1d2c",
+    "sourceDraftId": "anonymous-live-fixture",
+    "studentId": null,
+    "subject": null,
+    "title": "匿名配图验证：比较分数",
+    "prompt": "独立匿名教学原件",
+    "scenes": [
+      {
+        "id": "unit",
+        "kind": "concept",
+        "title": "同一整体下比较分数",
+        "narration": "比较二分之一和三分之一，先确认整体相同。把同样大小的整体平均分成两份或三份，比较每一份的大小。",
+        "body": "整体相同是本次比较的前提。",
+        "bullets": [
+          "先确认整体相同",
+          "再比较每一份大小"
+        ],
+        "durationMs": 1000
+      }
+    ],
+    "fingerprint": "7957e92eee4bd009b33ac4598f809ee53b6e6f7697208d43447fce36bb4419e4",
+    "width": 1280,
+    "height": 720,
+    "durationMs": 1000,
+    "createdAt": "2026-10-27T01:01:55.993Z",
+    "updatedAt": "2026-10-27T01:01:55.993Z",
+    "origin": {
+      "draftId": null,
+      "modelId": "authored-anonymous-fixture",
+      "modelName": "匿名人工原件",
+      "review": null,
+      "teacherReviewStatus": "pending",
+      "formalMeasurementEligible": false
+    }
+  },
+  "turn": {
+    "id": "whiteboard_question_b6f90343-09b7-4559-8131-4dd834a497d7",
+    "boardKind": "topic",
+    "boardId": "question-figure-live-board-6d2037ce-dc33-405e-a04c-db2e53845d3d",
+    "requestKey": "80378468-5f93-4185-aa02-3b80a03b0f44",
+    "message": "请解释为什么整体相同时二分之一大于三分之一，用提炼要点和对照表说明，不要询问或使用个人信息。",
+    "intent": "question",
+    "modelId": "deepseek-v4-flash",
+    "modelName": "DeepSeek V4.1 Flash",
+    "position": {
+      "presentationVersion": "whiteboard-speech-v1",
+      "fingerprint": "7957e92eee4bd009b33ac4598f809ee53b6e6f7697208d43447fce36bb4419e4",
+      "sceneId": "unit",
+      "unitId": "wb1:7957e92eee4bd009b33ac4598f809ee53b6e6f7697208d43447fce36bb4419e4:unit:0:20",
+      "sentenceText": "比较二分之一和三分之一，先确认整体相同。",
+      "bookmark": {
+        "progress": 0,
+        "audioTime": null,
+        "mode": "text",
+        "voice": "",
+        "speed": 1
+      }
+    },
+    "revision": 2,
+    "createdAt": "2026-10-27T01:01:56.068Z",
+    "updatedAt": "2026-10-27T01:02:54.989Z",
+    "reply": {
+      "text": "你问的是，为什么整体相同时二分之一大于三分之一。先确认整体相同，这是比较的前提。把同一个整体平均分成两份并取其中一份，就得到二分之一。把同一个整体平均分成三份并取其中一份，就得到三分之一。二分之一只把整体分成2份，所以二分之一的一份额较大。三分之一要把整体分成3份，所以三分之一的一份额较小。在同一整体下，分成更多等份时，每一份更小。在同一整体下比较这两个一份额，二分之一就大于三分之一。这里的解释依据等份关系，没有对纸张实例实际测量。你可以拿两张同样大小的纸，把一张平均分成2份、另一张平均分成3份，然后各取1份叠放在一起，检查哪一份覆盖的面积更大。",
+      "anchors": [
+        {
+          "id": "wq1:744c90a872ecf75534d1c9067e653f3f8f967e77576f02c6849c7b0489bb0018",
+          "sceneId": "unit",
+          "unitId": "wb1:7957e92eee4bd009b33ac4598f809ee53b6e6f7697208d43447fce36bb4419e4:unit:0:20",
+          "label": "比较二分之一和三分之一，先确认整体相同。"
+        },
+        {
+          "id": "wq1:eb6b650756a393c041f1ba8012a7254c855f0be857f75f8a7458aae4e3dc945e",
+          "sceneId": "unit",
+          "label": "同一整体下比较分数"
+        }
+      ],
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek V4.1 Flash",
+      "createdAt": "2026-10-27T01:02:54.989Z",
+      "board": {
+        "title": "同一整体下比较分数",
+        "points": [
+          "比较前先确认两个分数面对同一整体。",
+          "二分之一是同一整体的2份中取1份。",
+          "三分之一是同一整体的3份中取1份。",
+          "整体相同时，等份越多，每份越小。",
+          "因此二分之一大于三分之一。"
+        ],
+        "diagram": null,
+        "table": {
+          "title": "二分之一与三分之一对照",
+          "headers": [
+            "分数",
+            "同一整体中的总份数",
+            "取出份数",
+            "每一份大小"
+          ],
+          "rows": [
+            [
+              "二分之一",
+              "2份",
+              "1份",
+              "较大"
+            ],
+            [
+              "三分之一",
+              "3份",
+              "1份",
+              "较小"
+            ]
+          ]
+        },
+        "reveal": {
+          "version": "speech-v2",
+          "sourceSha256": "382de6d695aba99e95786c775d8931a74bdac908d3f3de9c4de149ae752652a3",
+          "pointUnitIds": [
+            "speech_12d74addf1a28087c73c865aef19a63006d89f563ce73ad773a94635ffc6d256",
+            "speech_ac0cbe0e217493f0a3929deb0988de631f2723e775f94e299cd5f0b60abf9195",
+            "speech_16369f0c6e8f141738c8c4d33ead2158c564d49a31b40db43652e4a3ad30a66a",
+            "speech_a8edda29eb557dc9b75c1f47f4e6e5806911ed49698792f3849708e5c0478529",
+            "speech_b283626bc3a330a1783ed1d0c88bbfac06ffe52921ea477c4c4e91bd58ee5979"
+          ],
+          "tableRowUnitIds": [
+            "speech_67ddfb2f3690930c2dde1177cb78f2d7719144991ee091efe1ee77aef1b9b238",
+            "speech_f2e42d91871e070fea695712ab212db9f7222165596151c15fa02d68873eb02b"
+          ],
+          "formulaUnitIds": []
+        }
+      },
+      "speech": {
+        "version": "speech-v2",
+        "sourceSha256": "382de6d695aba99e95786c775d8931a74bdac908d3f3de9c4de149ae752652a3",
+        "units": [
+          {
+            "start": 0,
+            "end": 24,
+            "text": "你问的是，为什么整体相同时二分之一大于三分之一。",
+            "id": "speech_3c3268b3ead3a26301d100cb90d0fb21590af6231757322d978b8ff1fee671fe"
+          },
+          {
+            "start": 24,
+            "end": 40,
+            "text": "先确认整体相同，这是比较的前提。",
+            "id": "speech_12d74addf1a28087c73c865aef19a63006d89f563ce73ad773a94635ffc6d256"
+          },
+          {
+            "start": 40,
+            "end": 67,
+            "text": "把同一个整体平均分成两份并取其中一份，就得到二分之一。",
+            "id": "speech_ac0cbe0e217493f0a3929deb0988de631f2723e775f94e299cd5f0b60abf9195"
+          },
+          {
+            "start": 67,
+            "end": 94,
+            "text": "把同一个整体平均分成三份并取其中一份，就得到三分之一。",
+            "id": "speech_16369f0c6e8f141738c8c4d33ead2158c564d49a31b40db43652e4a3ad30a66a"
+          },
+          {
+            "start": 94,
+            "end": 120,
+            "text": "二分之一只把整体分成2份，所以二分之一的一份额较大。",
+            "id": "speech_67ddfb2f3690930c2dde1177cb78f2d7719144991ee091efe1ee77aef1b9b238"
+          },
+          {
+            "start": 120,
+            "end": 146,
+            "text": "三分之一要把整体分成3份，所以三分之一的一份额较小。",
+            "id": "speech_f2e42d91871e070fea695712ab212db9f7222165596151c15fa02d68873eb02b"
+          },
+          {
+            "start": 146,
+            "end": 167,
+            "text": "在同一整体下，分成更多等份时，每一份更小。",
+            "id": "speech_a8edda29eb557dc9b75c1f47f4e6e5806911ed49698792f3849708e5c0478529"
+          },
+          {
+            "start": 167,
+            "end": 194,
+            "text": "在同一整体下比较这两个一份额，二分之一就大于三分之一。",
+            "id": "speech_b283626bc3a330a1783ed1d0c88bbfac06ffe52921ea477c4c4e91bd58ee5979"
+          },
+          {
+            "start": 194,
+            "end": 218,
+            "text": "这里的解释依据等份关系，没有对纸张实例实际测量。",
+            "id": "speech_eae9a5a95f86333d4d697af2d777d0096d56d3a3325f71a852cff7b9f514f3bd"
+          },
+          {
+            "start": 218,
+            "end": 263,
+            "text": "你可以拿两张同样大小的纸，把一张平均分成2份、另一张平均分成3份，然后各取1份叠放在一起，",
+            "id": "speech_3fe0ea55d4c2a55624ea72715dc42d9ba87d1fef5619954ef1d7155989a9c619"
+          },
+          {
+            "start": 263,
+            "end": 276,
+            "text": "检查哪一份覆盖的面积更大。",
+            "id": "speech_cedf3d47deeafe233e2fc7ae4d49688bc76695b8892e6716708b8e0be142e915"
+          }
+        ]
+      },
+      "fingerprint": "5688760a4159c47298b4701c315a0ddcf261522f46dd5c260a9c094bba147c88"
+    },
+    "status": "completed",
+    "task": {
+      "state": "succeeded",
+      "generation": 1,
+      "version": 3,
+      "errorCode": null
+    }
+  }
+}
