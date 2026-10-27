@@ -47,6 +47,8 @@ test('course panels: a cross-unit practice returns to its original panel and reo
   await page.getByRole('button', { name: '关闭独立练习', exact: true }).click(); await page.getByRole('button', { name: '保存并离开', exact: true }).click();
   await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
   await expect(page).toHaveURL(/unit=1/); await page.reload(); await entry().click();
-  await expect(page.locator('.cl-answer-feedback')).toBeVisible(); expect(new URL(page.url()).searchParams.get('session')).toBe(original);
+  await expect(page.getByRole('button', { name: '第2题', exact: true })).toHaveAttribute('aria-current', 'step');
+  expect(new URL(page.url()).searchParams.get('session')).toBe(original);
+  await page.getByRole('button', { name: '第1题', exact: true }).click(); await expect(page.locator('.cl-answer-feedback')).toBeVisible();
   expect((await read('/learning/classroom/sessions/' + original)).answers).toEqual(saved.answers);
 });

@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-27T07:44:46.240616+00:00",
+  "head": "17102deeabc29fb5322bf0176f398a3966d0ad46",
+  "passed": false,
+  "cases": 14,
+  "passedCases": 13,
+  "failedCases": 1,
+  "attempts": 14,
+  "retries": 0,
+  "finding": "Reopening correctly resumes unattempted question2 with original1/3. New test incorrectly expected question1 feedback immediately. Explicitly select original question1 and keep exact session, next-unanswered and immutable answer checks.",
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "53933906b89c90f81361893a974ee2378a4b1d6efd670a885ebed559b1ff4f6c"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "148b6c73a329b42a0ba1f8b0d303e3feedc6cbc30545a901446dc92396729e64"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "8573ad787ad305d33a34a98942435c4389740ccf24e22598cbf1f677a16b64e6"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "f45bef51cdee89f4b3f614f2ff6cc89d15a4f7fcf70d5e1796986024802301c7"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "c19e1919c45f07c41e35f0b56c22ab882e828c55bef761fa7c2aa14697482372"
+    }
+  ]
+}
