@@ -52,6 +52,29 @@ describe('ordinary assistant durable turns and immutable publication context',()
     expect((await call('post',base(s.id)+'/turns',c)).assistantMessageId).toBe(done.assistantMessageId);
     await call('post',base(s.id)+'/turns',{...c,modelId:'gpt-6.1-sol'},parent,409);expect(await worker.runNext()).toBe(false);
   });
+  it('freezes the platform default for a legacy request without modelId even when a compatibility client is configured',async()=>{
+    const s=await open(parent,{studentId:null}),mock=reply(),legacyCall=vi.fn().mockRejectedValue(new Error('Synthetic legacy provider must remain unused'));
+    const oldClient=(ai as any).client;(ai as any).client={chat:{completions:{create:legacyCall}}};
+    try{
+      const command={message:'请根据现有证据安排下一步。',requestKey:randomUUID()};
+      const result=await call('post',base(s.id)+'/messages',command);
+      expect(result.source).toBe('xiaojiu');expect(result.modelId).toBe('deepseek-v4-flash');expect(legacyCall).not.toHaveBeenCalled();expect(mock).toHaveBeenCalledTimes(1);
+      expect(mock.mock.calls[0][0]).toMatchObject({modelId:'deepseek-v4-flash'});
+      const models=app.get(require('../../../dist/apps/api/src/modules/ai/xiaojiu-models.service.js').XiaojiuModelsService);
+      vi.spyOn(models,'resolve').mockImplementation(()=>{throw new Error('Changed catalog must not affect the original default command');});
+      const replay=await call('post',base(s.id)+'/messages',command);
+      expect(replay.reply).toBe(result.reply);expect(replay.modelId).toBe('deepseek-v4-flash');expect(mock).toHaveBeenCalledTimes(1);
+    }finally{(ai as any).client=oldClient;}
+  });
+  it('uses the explicit rules source when models are disabled and never selects a configured legacy client',async()=>{
+    const s=await open(parent,{studentId:null}),mock=reply(),legacyCall=vi.fn().mockRejectedValue(new Error('Synthetic legacy provider must remain unused'));
+    const oldClient=(ai as any).client;(ai as any).client={chat:{completions:{create:legacyCall}}};
+    vi.spyOn(chat,'enabled','get').mockReturnValue(false);
+    try{
+      const result=await call('post',base(s.id)+'/messages',{message:'请根据原证据说明下一步。',requestKey:randomUUID()});
+      expect(result.source).toBe('rules');expect(result.modelId).toBeNull();expect(mock).not.toHaveBeenCalled();expect(legacyCall).not.toHaveBeenCalled();
+    }finally{(ai as any).client=oldClient;}
+  });
   it('serializes concurrent creation from two application instances and isolates other owners',async()=>{
     const s=await open(),c=await input(s),{AppModule}=require('../../../dist/apps/api/src/app.module.js'),second=await NestFactory.create(AppModule,{logger:false});second.setGlobalPrefix('api');await second.init();
     try{const results=await Promise.all([call('post',base(s.id)+'/turns',c),call('post',base(s.id)+'/turns',c,parent,201,second)]);expect(results[0].id).toBe(results[1].id);

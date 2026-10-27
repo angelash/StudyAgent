@@ -19,6 +19,24 @@ async function send(page:Page,message:string){await page.getByLabel('想一起�
 async function shot(page:Page,name:string){if(!process.env.CI){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png'});}}
 test.afterEach(async({page})=>{await page.unrouteAll({behavior:'wait'});});
 
+test('Auto names the actual platform default and a later composer choice preserves the original saved model',async({page})=>{
+  const f=await setup(page),select=page.getByRole('combobox',{name:'选择大模型',exact:true}),posts:any[]=[];
+  page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
+  await select.selectOption('auto');await expect(select.locator('option:checked')).toContainText('DeepSeek V4.1 Flash');
+  for(const width of [390,768,1280]){
+    await page.setViewportSize({width,height:width===390?844:1000});
+    await expect(select).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    const box=await select.boundingBox();expect(box).toBeTruthy();expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(width+1);
+    await shot(page,'actual-default-model-'+width);
+  }
+  await send(page,'请根据已有条件提示下一步，不给最终答案。');await expect(task(page)).toHaveAttribute('data-status','completed',{timeout:20000});
+  expect(posts).toHaveLength(1);expect(posts[0].modelId).toBe('auto');
+  const before=await call(f.actor,'/ai/assistant/sessions/'+f.assistantId+'/turns');expect(before.turns).toHaveLength(1);expect(before.turns[0].modelId).toBe('deepseek-v4-flash');
+  await select.selectOption('glm-5.3-flash');await page.reload();await open(page);await expect(select).toHaveValue('glm-5.3-flash');
+  const after=await call(f.actor,'/ai/assistant/sessions/'+f.assistantId+'/turns');expect(after.turns).toHaveLength(1);
+  expect(after.turns[0].id).toBe(before.turns[0].id);expect(after.turns[0].modelId).toBe('deepseek-v4-flash');expect(posts).toHaveLength(1);
+});
+
 test('a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence',async({page})=>{
   const f=await setup(page),posts:any[]=[];page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
   const message='[assistant-pause-once] '+crypto.randomUUID()+' 请围绕条件给下一步提示。';await send(page,message);await expect(task(page)).toContainText(message);await expect(task(page)).toHaveAttribute('data-status',/queued|running/);

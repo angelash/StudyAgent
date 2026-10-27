@@ -356,12 +356,13 @@ export class AiService {
     const {withheldAnswer, bound, ...safe} = context;
     if (JSON.stringify(safe).length > 18000) throw new BadRequestException('当前学习上下文过长，请缩小到具体题目或活动后重新提问');
     const eligible = (session.userRole === 'parent' || bound) && !(bound?.kind === 'diagnostic' && ['in_progress','paused'].includes(bound.assessmentStatus));
-    const selected = requestedModelId ? this.models.resolve(requestedModelId) : null;
-    if (eligible && requestedModelId && !this.assistantModelAvailable()) throw new ServiceUnavailableException('小九模型服务尚未启用，请检查模型连接后重试');
-    const execution = eligible && requestedModelId ? 'xiaojiu' : eligible && this.client ? 'openai' : 'rules';
+    const modelAvailable = this.assistantModelAvailable();
+    const selected = requestedModelId ? this.models.resolve(requestedModelId) : eligible && modelAvailable ? this.models.resolve() : null;
+    if (eligible && requestedModelId && !modelAvailable) throw new ServiceUnavailableException('小九模型服务尚未启用，请检查模型连接后重试');
+    const execution = eligible && modelAvailable ? 'xiaojiu' : 'rules';
     return {session:structuredClone(session), ...snapshot, message, requestedModelId:requestedModelId ?? null, execution,
-      modelId:execution === 'rules' ? null : execution === 'openai' ? this.env.OPENAI_MODEL : selected!.id,
-      modelName:execution === 'rules' ? '本地规则引导' : execution === 'openai' ? this.env.OPENAI_MODEL : selected!.label,
+      modelId:execution === 'rules' ? null : selected!.id,
+      modelName:execution === 'rules' ? '本地规则引导' : selected!.label,
       history:this.store.select('assistantMessages',{sessionId}).slice(-10).map(item=>({role:item.sender,content:item.content}))};
   }
 
