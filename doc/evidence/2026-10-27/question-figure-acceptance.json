@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-27T02:50:10.526Z",
+  "at": "2026-10-27T03:13:24.202109+00:00",
   "passed": true,
-  "deployed": false,
-  "status": "full-candidate-verified-awaiting-runtime",
+  "deployed": true,
+  "status": "runtime-delivered",
   "applicationRevision": "3523b41d5e8242a285502a7a1c927adc720ca243",
   "schemaVersion": 20,
   "ciRun": 40437003207,
@@ -42,8 +42,22 @@
     "teacherReviewed": false
   },
   "runtime": {
-    "status": "pending",
-    "currentlyDeliveredSchema": 19
+    "passed": true,
+    "revision": "9685f7a389aea079ffd0355037c983e083e9c8b5",
+    "buildId": "AtnQOxOLr47cjIP2lS6UN",
+    "schemaVersion": 20,
+    "httpChecks": 1209,
+    "compiledFiles": 363,
+    "rawCompiledMatches": 362,
+    "onlyFormatDifference": "rate-limit-repository.js: four CRLF only; normalized bytes/source identical",
+    "originalAssetFiles": 959,
+    "voiceSamples": 6,
+    "stableObservationMs": 521371,
+    "rollbackBuildFiles": 956,
+    "rollbackSchemaVersion": 19,
+    "assetsIncluded": false,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true
   },
   "wholeProductComplete": false,
   "limitations": [
