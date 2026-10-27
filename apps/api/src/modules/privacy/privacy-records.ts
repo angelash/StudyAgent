@@ -96,6 +96,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
   add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
+  add(result, store, 'teachingToolRuns', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
   add(result, store, 'events', row => hasReference(row.payload, references));
@@ -113,7 +114,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
     activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
-    conversations: count('assistantMessages', 'assistantTurns', 'whiteboardQuestionTurns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
+    conversations: count('assistantMessages', 'assistantTurns', 'whiteboardQuestionTurns', 'teachingToolRuns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
   return digest({ context, collections: Object.keys(selection).sort().map(name => [name, [...selection[name]].sort((a, b) => recordId(a).localeCompare(recordId(b)))]) });
@@ -161,6 +162,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
+    else if (name === 'teachingToolRuns') result[name] = records.filter(row => row.ownerUserId === actorId)
+      .map(row => ({ id: row.id, purpose: row.purpose, snapshot: row.snapshot, modelId: row.modelId, modelName: row.modelName,
+          status: row.status === 'completed' && row.result ? 'completed' : 'not_completed', result: row.result, revision: row.revision, createdAt: row.createdAt, updatedAt: row.updatedAt, advisoryOnly: true, reviewRequired: true }));
     else if (name === 'guidanceModelSuggestions') result[name] = records.filter(row => row.ownerUserId === actorId)
       .map(({context:_context,taskId:_task,inputHash:_input,commandHash:_command,definitionHash:_definition,planHash:_plan,bindingId:_binding,authorizationRole:_role,requests:_requests,requestKey:_key,status:_state,...row})=>
         ({...row,publication:row.result?'published':'not_published'}));

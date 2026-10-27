@@ -1,3 +1,7 @@
+import { TeachingToolService } from './teaching-tool.service';
+import { TeachingToolWorkerService } from './teaching-tool-worker.service';
+import { TeachingToolController } from './teaching-tool.controller';
+import { teachingToolWorkerPort } from './teaching-tool-record';
 import { Module } from '@nestjs/common';
 import { AiController } from './ai.controller';
 import { AiService } from './ai.service';
@@ -13,8 +17,8 @@ import { assistantTurnPort, assistantWorkerPort } from './assistant-turn-record'
 
 @Module({
   imports: [StudentsModule],
-  controllers: [AiController,AssistantTurnController],
-  providers: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
+  controllers: [AiController,AssistantTurnController,TeachingToolController],
+  providers: [TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
     {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],
   exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService],
 })

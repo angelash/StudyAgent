@@ -502,3 +502,8 @@ SQLite课堂组合35、PG33/2个SQLite专属跳过、完整API1069/34环境跳�
 ## 137 导航守护交付
 
 2026-10-27当前正式交付：137原样式导航已在主目录9907bdf真实构建（业务7fa465f，精确CI0e5582f/40498629069三组success），buildId lDcYsyiN0CUDuvRiFxrWK、schema20。复用97条原CSS与字体、240/60桌面导航、手机焦点抽屉、课程蓝图焦点交接和真实原sessionId恢复；无记录显示开始学习，取消伪继续学习。本地11专项与完整390、远端390均原始单次全过，零失败/跳过/flaky/重试。LinuxAPI1461/68新跑，本地1469/60仅沿用API/包源码、测试和362编译一致的0edc3d5原结果；1259实际HTTP/权限/资源、959原资产和6音频SHA通过。三次观察跨290703毫秒，API/Web/health均online且PID及重启计数不变；五配置/真实环境原字节、新鲜schema20停服一致数据和969份136旧构建回退已核验。仅历史rate-limit单文件4CRLF经完整源码/编译归一核对，其余361字节精确。旧手机流程远端一次失败重试及蓝图焦点红色原件均保留。原像素/图标封面/DPR/原声、教师实机/全教材/测量有效性/长期验收与138教研工具仍继续，72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7不变，整体active。见[137验收](../../evidence/2026-10-27/reference-navigation-acceptance.json)、[实际运行](../../evidence/2026-10-27/reference-navigation-runtime.json)和[精确CI](../../evidence/2026-10-27/reference-navigation-exact-ci/receipt.json)。
+
+
+## 138 持久教研后端基础，未上线
+
+2026-10-27独立138进展：统一模型教研持久后端、schema21、表格/公式完整冻结、取消/原模型恢复和admin本人资料双库恢复已接入，当前完整API1498/0/64环境跳过、PG实际HTTP/原生恢复23/0/1 SQLite专属跳过、API/Web类型通过。所有初失败、双实例冲突、真实限流、无操作取消键和1e999重放红色原件保留；人工发现ISO时间字符串过滤漏项的纯服务红色，下一阶段先修并补HTTP边界。后台UI、旧SDK入口迁移、真实匿名供应商、新模型矩阵、完整浏览器/精确CI及正式schema21交付尚未完成；当前生产仍137/schema20，不能上线当前138或以测试全绿称整体完成。见[138当前完整范围](../138-internal-teaching-tools-unified-models.md)与[基础证据](../../evidence/2026-10-27/teaching-tool-durable-foundation/receipt.json)。72项与M1～M7保持。

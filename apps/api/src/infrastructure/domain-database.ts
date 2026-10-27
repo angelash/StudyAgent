@@ -199,6 +199,9 @@ export class DomainDatabase {
     await this.migrateConstraints(20, [
       { name: 'question_visual_prepare_request', collection: 'whiteboardQuestionVisuals', fields: ['ownerUserId', 'requestKey'] },
     ]);
+    await this.migrateConstraints(21, [
+      { name: 'teaching_tool_creation_request', collection: 'teachingToolRuns', fields: ['ownerUserId', 'requestKey'] },
+    ]);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

@@ -59,7 +59,9 @@ async function applyDeletionLedger(query, ledger) {
     const erased = (store.students ?? []).filter(child => receipt.erasedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
     const retained = (store.students ?? []).filter(child => receipt.retainedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
     const actor = (store.users ?? []).find(user => user.id === receipt.actorId);
-    if (receipt.kind === 'account_delete' && actor && (actor.role !== 'parent' || helpers.privacyHash({ id: actor.id }) !== receipt.subjectHash)) fail('privacy_ledger_account_identity_conflict');
+    if (receipt.kind === 'account_delete' && actor &&
+      (!['parent','admin'].includes(actor.role) || helpers.privacyHash({ id: actor.id }) !== receipt.subjectHash ||
+        actor.role === 'admin' && (receipt.erasedStudentHashes.length || receipt.retainedStudentHashes.length))) fail('privacy_ledger_account_identity_conflict');
     const selected = helpers.mergeSelections(...erased.map(child => helpers.studentRecords(store, child.id)),
       receipt.kind === 'account_delete' && actor ? helpers.accountRecords(store, actor.id, actor.principal) : {});
     helpers.removeSelected(store, selected);

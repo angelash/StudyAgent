@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-10-27",
+  "source": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/practice/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "method": "User IAB login, ordinary course/practice navigation, existing answered first item, assistant toggle, Accessibility snapshot and screenshots.",
+  "scope": "Historical Correct and600 score restored by original account; not answers or progress submitted in this run. No new answer, skip, next-item command, message, file, microphone or calendar change.",
+  "files": [
+    {
+      "file": "resumed.png",
+      "sha256": "06fc610fee053e13e39f87bf0d9a12ace03ce022aff0286adf6ee342545d8ec6",
+      "width": 1280,
+      "height": 800,
+      "dpr": null
+    },
+    {
+      "file": "assistant-open.png",
+      "sha256": "3500b8137a1008c016861fd94eb48e891ac9c64688dc04e227fcfa0aed2cc11b",
+      "width": 1280,
+      "height": 800,
+      "dpr": null
+    }
+  ],
+  "snapshots": [
+    "resumed.json",
+    "assistant-open.json"
+  ],
+  "observations": [
+    "Full-screen white practice, top progress dots/close/score/assistant, bottom fixed Next; question and original image left,340px options center and feedback right.",
+    "At1280x800 opening340px assistant shrinks the practice pane but feedback visually covers parts of options. Preserved as observed reference defect, not a usable layout target.",
+    "Assistant shows an empty explanatory prompt and text input; no send or upload performed."
+  ],
+  "limitations": [
+    "Actual DPR and computed CSS unobserved. No asset download, network/complete source acquisition or current original audio validation.",
+    "Historical existing answer only; no new grading, final completion, code execution, fresh question generation or sound observed."
+  ]
+}

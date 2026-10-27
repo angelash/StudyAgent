@@ -73,3 +73,6 @@ f0465ab实现题目媒体快照、原版控件CSS作用域复用、单选答后�
 ## 9. 实际守护交付
 
 2026-10-27当前正式交付：134/135模型选择、历史定位与练习逐状态整改已合入main实际构建278105e（代码/精确CI059f319/40465519169），buildId M34SOGY4NlMGWzrtPnUeo、schema20。本地1469 API通过/60环境跳过，Linux1461通过/68环境跳过；本地及远端均375浏览器/375原始尝试单次通过，零失败/跳过/flaky/重试。1212实际HTTP/权限/资源、959原资产与6音频核对通过，三个守护PID/重启计数跨89681毫秒稳定；20份模型执行输入逐SHA相同。362编译JS/JSON输入中361原SHA一致，仅历史rate-limit JS有4处CRLF差异，完整归一源码和编译字节相同；两份原模型源文件已恢复确切检查字节，严格拒绝原件保留。五配置和真实环境原字节保持；新鲜133/schema20停服一致数据/引用文件及966旧编译回退已核验，assetsIncluded:false，不代表全部研究资产备份或完整恢复演练。默认DS、九处可读菜单与检查状态、历史首次定位/迟到栅栏、原CSS/字体/图标练习和冻结配图已上线。真实文字模型仍21通过/1旧Opus失败，不称22全通。136课程侧栏在独立工作区完成规格、实现和14条修正后专项，尚未进入本运行版。72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7、教师/实机/全内容/原像素DPR声音和长期测量门槛保持，整体active。见[本批验收](../evidence/2026-10-27/combined-practice-models-acceptance.json)、[实际运行](../evidence/2026-10-27/combined-practice-models-runtime.json)与[回退边界](../evidence/2026-10-27/combined-practice-models-release/receipt.json)。
+
+
+2026-10-27登录后补充只读对照：重新恢复原已有第一题Correct/600状态，确认三栏和340px助教。1280×800助教展开时原站解释栏遮住选项文字，已保留[新鲜原件](../evidence/2026-10-27/hyperknow-practice-revisit/receipt.json)，登记为原站可用性缺陷；本地继续要求所有选项和解释可读。此轮未提交答案、Skip/Next、消息或文件；没有新的评分、代码或声音验证。实际DPR/计算样式未知，不扩大像素一致范围。

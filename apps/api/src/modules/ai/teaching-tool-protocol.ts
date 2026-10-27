@@ -7,15 +7,17 @@ const sourceSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('temporary'), title: completeText(180) }).strict(),
   z.object({ kind: z.literal('question_bank'), questionId: completeText(180), fingerprint: z.string().regex(/^[a-f0-9]{64}$/) }).strict(),
 ]);
-const questionSchema = z.object({ subject: completeText(100), stem: completeText(6000), referenceAnswer: z.unknown(), referenceAnalysis: z.string().max(6000) }).strict();
+const questionSchema = z.object({ subject: completeText(100), stem: completeText(6000), referenceAnswer: z.unknown(), referenceAnalysis: z.string().max(6000),
+  originalDocument: z.unknown().optional(), originalAnswerSchema: z.unknown().optional(), mediaNotice: completeText(1000).optional(),
+}).strict();
 const common = { source: sourceSchema, question: questionSchema };
 const snapshotSchema = z.discriminatedUnion('purpose', [
   z.object({ ...common, purpose: z.literal('assessment_analysis'), answer: z.unknown() }).strict(),
   z.object({ ...common, purpose: z.literal('hint_draft'), hintLevel: z.union([z.literal(1), z.literal(2), z.literal(3)]) }).strict(),
 ]);
 export type TeachingToolSnapshot = z.infer<typeof snapshotSchema>;
-export type TeachingEvidenceKey = 'question' | 'reference_answer' | 'reference_analysis' | 'submitted_answer';
-const evidenceKeySchema = z.enum(['question', 'reference_answer', 'reference_analysis', 'submitted_answer']);
+export type TeachingEvidenceKey = 'question' | 'question_document' | 'reference_answer' | 'reference_analysis' | 'submitted_answer';
+const evidenceKeySchema = z.enum(['question', 'question_document', 'reference_answer', 'reference_analysis', 'submitted_answer']);
 const observationSchema = z.object({ source: evidenceKeySchema, quote: completeText(1000), observation: completeText(1500) }).strict();
 export const teachingAnalysisSchema = z.object({ summary: completeText(2000),
   judgement: z.enum(['correct', 'incorrect', 'uncertain']), observations: z.array(observationSchema).min(1).max(8),
@@ -54,6 +56,8 @@ function answerText(value: unknown) {
   if (text.length > 8000) throw Error('完整作答超过8000字符，请明确缩小范围；原文不会被截断');
   return text;
 }
+/** Validate wire inputs before computing an idempotency hash, including on replays. */
+export function assertTeachingAnswerJson(value: unknown) { answerText(value); }
 export function prepareTeachingSnapshot(input: unknown): { snapshot: TeachingToolSnapshot; context: string; fingerprint: string } {
   const parsed = snapshotSchema.parse(input);
   if (!Object.hasOwn(parsed.question, 'referenceAnswer') || parsed.purpose === 'assessment_analysis' && !Object.hasOwn(parsed, 'answer'))
@@ -67,13 +71,24 @@ export function prepareTeachingSnapshot(input: unknown): { snapshot: TeachingToo
 export function teachingEvidence(snapshot: TeachingToolSnapshot): Partial<Record<TeachingEvidenceKey, string>> {
   const { snapshot: input } = prepareTeachingSnapshot(snapshot);
   return { question: input.question.stem, reference_answer: answerText(input.question.referenceAnswer), reference_analysis: input.question.referenceAnalysis,
+    ...(input.question.originalDocument == null ? {} : { question_document: JSON.stringify(canonical(input.question.originalDocument)) }),
     ...(input.purpose === 'assessment_analysis' ? { submitted_answer: answerText(input.answer) } : {}) };
+}
+function containsOriginalQuote(value: unknown, quote: string): boolean {
+  if (typeof value === 'string') return value.includes(quote);
+  if (value === undefined) return false;
+  if (JSON.stringify(canonical(value)).includes(quote)) return true;
+  if (Array.isArray(value)) return value.some(item => containsOriginalQuote(item, quote));
+  return value !== null && typeof value === 'object' && Object.values(value).some(item => containsOriginalQuote(item, quote));
 }
 export function validateTeachingAnalysis(value: unknown, snapshot: TeachingToolSnapshot): TeachingAnalysisSuggestion {
   if (snapshot.purpose !== 'assessment_analysis') throw Error('这份结果不属于答案分析用途');
   const result = teachingAnalysisSchema.parse(value), evidence = teachingEvidence(snapshot);
-  for (const row of result.observations) if (!evidence[row.source]?.includes(row.quote)) throw Error('教研观察只能引用本次完整输入中的原文');
+  const originalValues: Partial<Record<TeachingEvidenceKey, unknown>> = { ...evidence, question_document: snapshot.question.originalDocument,
+    reference_answer: snapshot.question.referenceAnswer, submitted_answer: snapshot.answer };
+  for (const row of result.observations) if (!containsOriginalQuote(originalValues[row.source], row.quote)) throw Error('教研观察只能引用本次完整输入中的原文');
   if (result.judgement === 'uncertain' && (!result.uncertainties.length || result.confidenceLevel === 'high')) throw Error('不确定判断必须保留未知与待验证条件');
+  if (snapshot.question.mediaNotice && result.judgement !== 'uncertain') throw Error('尚未读取的题目媒体需要保留待人工核对，文字分析不能冒充看图或听音判定');
   if (/(根因已确定|已证明根因|已经确诊|智力低下|孩子就是懒惰)/u.test(JSON.stringify(result))) throw Error('教研建议不能确诊或确定人格、智力及深层根因');
   return result;
 }

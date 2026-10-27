@@ -55,4 +55,21 @@ describe('complete admin teaching protocol; no model, storage or scoring executi
     expect(() => validateTeachingHint(draft, prepareTeachingSnapshot(input()).snapshot)).toThrow(/用途/);
     expect(teachingEvidence(snapshot)).not.toHaveProperty('submitted_answer');
   });
+  it('retains complete table/formula documents and accepts only their exact original formula values or serialized quotes', () => {
+    const original = { ...input(), question: { ...input().question,
+      originalDocument: { version: 3, blocks: [{ type: 'table', headers: ['人数', '总分'], rows: [['3', '18'], ['2', '14']] }, { type: 'formula', text: '\\frac{32}{5}=6.4' }] },
+      originalAnswerSchema: { mode: 'numeric_blank', gradingConfig: { tolerance: 0 } } } };
+    const prepared = prepareTeachingSnapshot(original); expect(prepared.snapshot.question.originalDocument).toEqual(original.question.originalDocument);
+    expect(prepared.context).toContain('\\\\frac{32}{5}=6.4');
+    expect(validateTeachingAnalysis({ ...analysis(), observations: [{ source: 'question_document', quote: '\\frac{32}{5}=6.4', observation: '原式明确以五人为分母。' }] }, prepared.snapshot).observations).toHaveLength(1);
+    expect(() => validateTeachingAnalysis({ ...analysis(), observations: [{ source: 'question_document', quote: '\\frac{32}{2}=16', observation: '伪造原式。' }] }, prepared.snapshot)).toThrow(/原文/);
+    expect(prepareTeachingSnapshot({ ...original, question: { ...original.question, originalDocument: { ...original.question.originalDocument, version: 4 } } }).fingerprint).not.toBe(prepared.fingerprint);
+  });
+  it('keeps unresolved media explicitly unknown and never calls its URL a verified visual observation', () => {
+    const snapshot = prepareTeachingSnapshot({ ...input(), question: { ...input().question,
+      originalDocument: { blocks: [{ type: 'image', src: '/anonymous-question-image.png' }] }, mediaNotice: '本次文字分析未读取图片内容，需要人工核对。' } }).snapshot;
+    expect(() => validateTeachingAnalysis(analysis(), snapshot)).toThrow(/媒体/);
+    expect(validateTeachingAnalysis({ ...analysis(), judgement: 'uncertain', uncertainties: ['图片内容未解析，不能核对完整题意。'], confidenceLevel: 'low' }, snapshot).judgement).toBe('uncertain');
+    expect(() => validateTeachingAnalysis({ ...analysis(), judgement: 'uncertain', confidenceLevel: 'low', observations: [{ source: 'question_document', quote: '图中有五个人', observation: '假称已看到图片。' }] }, snapshot)).toThrow(/原文/);
+  });
 });

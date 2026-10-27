@@ -35,6 +35,9 @@ export class PrivacyService {
   private parent(actor: InMemoryUserAccount) {
     if (actor.role !== 'parent' || actor.status !== 'active') throw new ForbiddenException('家庭资料管理需要家长本人登录');
   }
+  private accountActor(actor: InMemoryUserAccount) {
+    if (!['parent', 'admin'].includes(actor.role) || actor.status !== 'active') throw new ForbiddenException('本人资料管理需要当前有效账号登录');
+  }
   private child(actor: InMemoryUserAccount, id: string) {
     this.parent(actor);
     const child = this.store.find('students', { id: id });
@@ -42,6 +45,7 @@ export class PrivacyService {
     return child;
   }
   private children(actor: InMemoryUserAccount) {
+    if (actor.role === 'admin') return [];
     return this.store.students.filter(row => Boolean(this.store.find('bindings', { studentId: row.id, parentUserId: actor.id, status: 'active' })));
   }
   private guardians(id: string) {
@@ -49,21 +53,23 @@ export class PrivacyService {
       this.store.users.some(user => user.id === row.parentUserId && ['parent', 'admin'].includes(user.role) && user.status === 'active')).map(row => row.parentUserId))].sort();
   }
   overview(actor: InMemoryUserAccount): PrivacyOverview {
-    this.parent(actor);
+    this.accountActor(actor);
     return { account: { id: actor.id, principal: actor.principal, displayName: actor.displayName }, policyVersion, retentionNotice,
       children: this.children(actor).map(child => ({ id: child.id, nickname: child.nickname, grade: child.grade, guardianCount: this.guardians(child.id).length,
         canDelete: this.guardians(child.id).every(id => id === actor.id), counts: selectionCounts(studentRecords(this.store, child.id)) })),
       receipts: this.store.select('privacyRequests', { actorId: actor.id }).slice(-25).reverse().map(({ id, kind, completedAt, counts }) => ({ id, kind, completedAt, counts })) };
   }
   private previewData(actor: InMemoryUserAccount, studentId?: string) {
-    this.parent(actor);
+    if (studentId) this.parent(actor); else this.accountActor(actor);
     const children = studentId ? [this.child(actor, studentId)] : this.children(actor);
     const deleted = children.filter(child => this.guardians(child.id).every(id => id === actor.id));
     const retained = children.filter(child => !deleted.includes(child));
     const selection = studentId ? studentRecords(this.store, studentId) : mergeSelections(accountRecords(this.store, actor.id, actor.principal), ...deleted.map(child => studentRecords(this.store, child.id)));
     const context = { policyVersion, actorId: actor.id, subjectId: studentId ?? actor.id,
       guardians: children.map(child => ({ id: child.id, guardians: this.guardians(child.id) })) };
-    const blockers = studentId && retained.length ? ['这个档案仍有其他有效监护人，不能由当前账号单独永久删除。'] : [];
+    const blockers = studentId && retained.length ? ['这个档案仍有其他有效监护人，不能由当前账号单独永久删除。']
+      : actor.role === 'admin' && this.store.select('bindings', { parentUserId: actor.id, status: 'active' }).length
+        ? ['当前管理员仍有关联孩子档案，请先以原家长身份处理监护关系，再核对本人账号删除范围。'] : [];
     const preview: PrivacyPreview = { scope: studentId ? 'student' : 'account', subjectId: studentId ?? actor.id,
       confirmation: studentId ? children[0].nickname : actor.principal, fingerprint: selectionFingerprint(selection, context), counts: selectionCounts(selection),
       canDelete: !blockers.length, blockers, deletedChildren: deleted.map(({ id, nickname }) => ({ id, nickname })), retainedChildren: retained.map(({ id, nickname }) => ({ id, nickname })), policyVersion, retentionNotice };
@@ -77,7 +83,8 @@ export class PrivacyService {
     this.store.append('privacyRequests', entry); return entry;
   }
   async export(actor: InMemoryUserAccount, input: unknown, studentId?: string): Promise<PrivacyExport> {
-    this.parent(actor); const command = validate(credentials, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
+    if (studentId) this.parent(actor); else this.accountActor(actor);
+    const command = validate(credentials, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
     const children = studentId ? [this.child(actor, studentId)] : this.children(actor);
     const kind = studentId ? 'student_export' : 'account_export', subjectId = studentId ?? actor.id;
     const previous = this.store.find('privacyRequests', { actorId: actor.id, requestKey: command.requestKey });
@@ -118,7 +125,7 @@ export class PrivacyService {
     return { downloadPath: `/api/privacy/archives/${id}`, expiresAt: new Date(expiresAt).toISOString(), filename: `${snapshot.receipt.id}.tar` };
   }
   async downloadArchive(actor: InMemoryUserAccount, sessionId: string, id: string) {
-    this.parent(actor);
+    this.accountActor(actor);
     const prepared = this.preparedArchives.get(id);
     if (!prepared || prepared.expiresAt < Date.now() || prepared.actorId !== actor.id || prepared.sessionId !== sessionId) throw new NotFoundException('下载资格已结束，请重新核对密码后准备副本');
     for (const child of prepared.snapshot.students) this.child(actor, child.id);
@@ -192,7 +199,8 @@ export class PrivacyService {
     }catch(error){await release();throw error;}
   }
   async delete(actor: InMemoryUserAccount, input: unknown, studentId?: string) {
-    this.parent(actor); const command = validate(deletion, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
+    if (studentId) this.parent(actor); else this.accountActor(actor);
+    const command = validate(deletion, input); await this.auth.reauthenticate(actor, command.credential, 'privacy');
     const kind = studentId ? 'student_delete' : 'account_delete', subjectId = studentId ?? actor.id;
     const inputHash = privacyHash({ kind, subjectId, confirmation: command.confirmation, fingerprint: command.fingerprint });
     const previous = this.store.find('privacyRequests', { actorId: actor.id, requestKey: command.requestKey });
@@ -207,6 +215,12 @@ export class PrivacyService {
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
     const sourceHashes=new Set<string>();
+    for(const draft of selection.teachingToolRuns??[]){
+      const task=await this.store.tasks.get(String(draft.taskId));
+      if(task&&['ai.teaching.analysis','ai.teaching.hint'].includes(task.kind)&&task.ownerUserId===draft.ownerUserId&&task.payload.runId===draft.id&&
+        ['queued','running','retry_wait','cancel_requested'].includes(task.state))
+        await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const suggestion of selection.guidanceModelSuggestions??[]){
       const task=await this.store.tasks.get(String(suggestion.taskId));
       if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});

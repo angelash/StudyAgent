@@ -1,3 +1,4 @@
+import type { TeachingToolRunRecord } from '../modules/ai/teaching-tool-record';
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
 import type { SourceCourseCheckRecord,SourceCourseCheckPublication } from '../modules/learning/source-course-check-record';
 import type { TopicWhiteboardDraftRecord, TopicWhiteboardRecord } from '../modules/learning/topic-whiteboard-record';
@@ -403,6 +404,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantMessages: AssistantMessage[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
   guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];
+  teachingToolRuns: TeachingToolRunRecord[] = [];
   aiInsights: AIInsightRecord[] = [];
   events: Array<Record<string, unknown>> = [];
   knowledgeAtoms: KnowledgeAtom[] = [];
@@ -511,6 +513,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantMessages = [];
     this.assistantTurns = [];
     this.guidanceModelSuggestions = [];
+    this.teachingToolRuns = [];
     this.aiInsights = [];
     this.events = [];
     this.knowledgeAtoms = [];

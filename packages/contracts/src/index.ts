@@ -761,3 +761,5 @@ export * from './topic-whiteboard';
 export * from './topic-whiteboard-visual';
 export * from './whiteboard-question';
 export * from './whiteboard-question-visual';
+
+export * from './ai-teaching-tools';
