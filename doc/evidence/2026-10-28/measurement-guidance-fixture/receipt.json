@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "scope": "Only the guidance stale-report test fixture changed. Explicit obsolete QA method references a retained skipped response; public reanalysis must append a version while keeping the original skip. Runtime code is unchanged.",
+  "sqlite": {
+    "passed": 12,
+    "failed": 0,
+    "postgresOnlySkipped": 1
+  },
+  "postgresFirst": {
+    "passed": 12,
+    "failed": 1,
+    "failure": "Unchanged native guidance recovery reached the original60000ms test timeout during concurrent local full-browser load; original result retained, isolated replay pending."
+  },
+  "runtimeCompiledRawMatches": 370,
+  "currentFullBrowserStillRunningInOriginalWorktree": true,
+  "files": {
+    "guidance-fixture-sqlite-focused.json": {
+      "sha256": "016515424617c090ae79e52069c37a73065967d281a7e91c8e6302dcccb86a04",
+      "bytes": 5263
+    },
+    "guidance-fixture-sqlite-focused.log": {
+      "sha256": "2482717646ce5864843ea164a5a62745dfb4b7272fc84a94a2ae3ad483bc8f80",
+      "bytes": 486
+    },
+    "guidance-fixture-sqlite-all.json": {
+      "sha256": "a0b93ef2f71a486091377ee2dd38edf785a69ebcb8f00047070a2f5e4415f937",
+      "bytes": 6655
+    },
+    "guidance-fixture-sqlite-all.log": {
+      "sha256": "f0632e03349a96e698c07e0aadb867d9a4d68fc86bd3fbd3a7cc5bcef33e3203",
+      "bytes": 482
+    },
+    "guidance-fixture-postgres-all.json": {
+      "sha256": "a2866c3cc516c9f1afb3af548b5fa73465e58c5a9fe894c8ee24457fc30aba12",
+      "bytes": 7877
+    },
+    "guidance-fixture-postgres-all.log": {
+      "sha256": "c6e4df6983eddfea1c94777954fef69bad07a4c06ca2585ffab5bd20dd1e82b7",
+      "bytes": 2833
+    },
+    "original-byte-alignment.json": {
+      "sha256": "d5a3513e252b284c5f2503a74112a661abfc1ae3747eadc425cb6e35db433be2",
+      "bytes": 201
+    }
+  }
+}

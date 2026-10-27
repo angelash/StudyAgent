@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "localApi": {
+    "passed": 1521,
+    "failed": 1,
+    "environmentSkipped": 64
+  },
+  "head": "078f2eef267b4868f59656b43e6073c842d015e2",
+  "applicationRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+  "fixedInputsRechecked": 1422,
+  "failure": "guidance-model.integration test expected a method-only tag change on an unaffected skipped-evidence report to append a revision. Current v3 compatibility deliberately preserves this report. The fixture must establish an actual affected input and assert the public reanalysis revision before testing late publication.",
+  "files": {
+    "measurement-v3-full-api-first.json": {
+      "sha256": "e19194ce60ac2e3e1edd02c301efafee17ba7428cd36a9b03622c4065a9395cb",
+      "bytes": 781919
+    },
+    "measurement-v3-full-api-first.log": {
+      "sha256": "7f4f9754f8339c3f826a2d082c6d7c37183694b6630f8f653fc2baaaf9abbb39",
+      "bytes": 491
+    },
+    "measurement-v3-full-api-inputs.json": {
+      "sha256": "0bce586ff0954a57de014c5364ae93f1b10104af1e785f56cb7352f4d69bf3fd",
+      "bytes": 186729
+    }
+  },
+  "fullBrowserAndExactCiStillRunning": true
+}

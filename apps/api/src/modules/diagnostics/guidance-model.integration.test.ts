@@ -130,9 +130,18 @@ describe('durable parent guidance suggestions and immutable rule actions',()=>{
     await call('post',prefix(original.id)+'/'+row.id+'/adopt',{requestKey:randomUUID(),expectedRevision:original.revision+1,suggestionRevision:3},409);
     const late=await plan(),pending=await suggestion(late);mode='hold';const work=worker.runNext();await expect.poll(()=>!!releaseModel).toBe(true);
     try{
-      // Simulate a real measurement-method upgrade before invoking the public report reanalysis command.
-      await store.transaction(()=>{store.select('diagnosticReports',{sessionId:baseline.id}).at(-1).report.familyIdentityVersion='previous-qa-method';});
-      await call('post','/diagnostics/sessions/'+baseline.id+'/reanalyze',{requestKey:randomUUID(),expectedReportVersion:late.baselineReportVersion,reason:'合成测试在生成期间按新计量方法重分析原始证据'});releaseModel?.();await work;
+      // Explicit obsolete QA protocol counted a skipped response; the retained original remains skipped.
+      // This establishes affected evidence for the public method update and its late-publication fence.
+      await store.transaction(()=>{
+        const saved=store.select('diagnosticReports',{sessionId:baseline.id}).at(-1).report,response=saved.evidence[0];
+        const estimate=saved.estimates.find((item:any)=>item.atomId===response.atomId);
+        saved.measurementVersion='qa-counted-skip-v0';estimate.algorithmVersion='qa-counted-skip-v0';
+        estimate.scoredCount=1;estimate.evidenceIds=[response.id];
+      });
+      const updated=await call('post','/diagnostics/sessions/'+baseline.id+'/reanalyze',{requestKey:randomUUID(),expectedReportVersion:late.baselineReportVersion,reason:'合成测试在生成期间按新计量方法重分析原始证据'});
+      expect(updated.version).toBe(late.baselineReportVersion+1);
+      expect(updated.evidence.every((item:any)=>item.disposition==='skip'&&item.score===null)).toBe(true);
+      releaseModel?.();await work;
       expect((await call('get',prefix(late.id)+'/'+pending.id)).status).toBe('failed');
       const done=await call('get',prefix(original.id)+'/'+row.id);expect(done.eligibility.canAdopt).toBe(false);
       await call('post',prefix(original.id)+'/'+row.id+'/adopt',{requestKey:randomUUID(),expectedRevision:original.revision,suggestionRevision:done.revision},409);
