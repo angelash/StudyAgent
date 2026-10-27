@@ -1,5 +1,7 @@
 # StudyAgent 当前功能与设计总册
 
+2026-10-28候选结构更新：当前代码基线a59e335，14领域/128项功能/423个正常接入HTTP路由、103个领域集合、384个共享契约定义、30个Web页。138已接入admin内部教研工作台、统一模型持久分析/提示、原稿/原操作恢复和schema21；默认DS/明确备选四匿名样本及21专项通过，旧模型Opus5仍失败，完整新候选回归/精确CI/运行交付继续。设计总册是源码说明，不代表当前生产已从137/schema20升级；见[具体138](../product/138-internal-teaching-tools-unified-models.md)与[完整计划105](../product/105-development-plan-status-and-next-milestones.md)。以下较早统计是分批历史。
+
 整理日期：2026-10-26。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)、[111真实项目文件](../product/111-project-attachments-and-frozen-file-evidence.md)、[112可恢复作答](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
 
 这套文档回答“当前产品有什么、各能力怎样协作、每项功能具体怎样实现”。事实以当前接入代码、共享契约和测试为准；此前九十多份交付文档作为沿革与验证证据保留。
@@ -130,3 +132,6 @@ npm run qa:docs
 123精确e1bd27c/40258543480随后三组success；原始远端浏览器实际242零重试，Linux API1279/59环境跳过，新白板PG14/2 SQLite专属跳过，各日志和原件见[精确CI](../evidence/2026-10-26/topic-whiteboard-exact-ci/receipt.json)。主目录真实schema16生产构建、停服一致备份及守护稳定观察继续独立记录，尚不据CI结果自动声明部署。
 
 123运行也已交付：主目录453866d真实构建，buildId 7DPYUYWiUo1CUbaCcrd0R、schema16，100实际HTTP/权限/已提供JS检查、11编译逐SHA、6MP3逐SHA及跨119361毫秒三次守护稳定观察通过。五处本地配置与真实环境、新鲜122编译/停服一致数据库回退保持；assetsIncluded:false，不等于全资产独立备份或生产恢复演练。当前可访问`/studio/whiteboards`，见[运行原件](../evidence/2026-10-26/topic-whiteboard-runtime.json)。124图片/复杂公式与72项完整教学/像素/实机/教师门槛仍独立继续。
+
+
+138当前设计快照为14领域/128功能/423正常接口/103集合/384契约/30页，七个教研接口完整映射。AI-04现在说明服务端题库快照、只读待核对结果、旧入口202/201/200、原请求与原操作恢复、有限JSON和本人资料隔离；不再将活跃admin入口描述为OPENAI SDK。583源码引用、3718链接和离线查看器10项检查通过，完整候选与实际交付继续按[138](../product/138-internal-teaching-tools-unified-models.md)记载。

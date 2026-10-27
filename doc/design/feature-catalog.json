@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "7da5ceea50bed43169e450f5909cbc0d33f40d2a",
+  "sourceRevision": "a59e33516cf89248104b758b28862695e280b0c1",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 128,
-    "activeNormalApiRoutes": 416,
-    "coveredApiRoutes": 416
+    "activeNormalApiRoutes": 423,
+    "coveredApiRoutes": 423
   },
   "areas": [
     {
@@ -4412,7 +4412,8 @@
         "/studio",
         "/studio/classroom",
         "/student/assessment",
-        "/student/today"
+        "/student/today",
+        "/admin/ai-tools"
       ],
       "files": [
         "apps/api/src/modules/ai/ai.service.ts",
@@ -4425,6 +4426,7 @@
       "contracts": [
         "packages/contracts/src/ai-models.ts",
         "packages/contracts/src/assistant-turn.ts",
+        "packages/contracts/src/ai-teaching-tools.ts",
         "packages/contracts/src/index.ts"
       ],
       "tests": [
@@ -4435,7 +4437,10 @@
         "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
         "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
         "apps/api/src/common/terminate-child-process.integration.test.ts",
-        "tests/e2e/assistant-conversations.spec.ts"
+        "tests/e2e/assistant-conversations.spec.ts",
+        "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+        "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+        "tests/e2e/teaching-tools.spec.ts"
       ],
       "features": [
         {
@@ -4448,7 +4453,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "modelId或auto、配置中的模型目录",
           "implementation": "合并22个内置兼容项和本机目录；规范渠道slug与显示名；Auto解析为配置默认；每条消息保留实际选用模型。",
@@ -4471,7 +4477,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 69
+              "line": 73
             }
           ],
           "sourceFiles": [
@@ -4485,7 +4491,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4498,7 +4507,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "角色、学生、学科、页面上下文、完整原问题、原modelId、requestKey与contextVersion",
           "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。",
@@ -4517,7 +4527,7 @@
               "controller": "AiController",
               "method": "openSession",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 27
+              "line": 29
             },
             {
               "verb": "POST",
@@ -4525,7 +4535,7 @@
               "controller": "AiController",
               "method": "chat",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 44
+              "line": 46
             },
             {
               "verb": "GET",
@@ -4533,7 +4543,7 @@
               "controller": "AiController",
               "method": "listMessages",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 58
+              "line": 60
             },
             {
               "verb": "GET",
@@ -4588,22 +4598,22 @@
             {
               "name": "AiService.openAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 177
+              "line": 188
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 224
+              "line": 235
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 337
+              "line": 348
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 450
+              "line": 462
             },
             {
               "name": "AssistantTurnService.context",
@@ -4646,7 +4656,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4659,7 +4672,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "本人会话、query、pageSize、绑定会话/检索词的cursor或消息anchor",
           "implementation": "有界分页覆盖旧50条以外消息，按保存顺序处理同毫秒消息；搜索同时包含失败/取消原问题；定位原消息窗口，重新鉴权返回实际训练题或评测原题只读回看；原活动删除时返回不可导航状态。",
@@ -4712,7 +4726,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4725,15 +4742,16 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "受约束system/context/history/message及modelId",
-          "implementation": "使用ephemeral、read-only、JSON schema启动CLI；最多读取最近10轮、约18000字符上下文；解析终态JSON并验证；失败最多两次。Windows取消精确子进程树，其他系统终止本次独立进程组，并等待进程关闭；真实CLI小调用与进程测试分别留证。",
+          "implementation": "使用ephemeral、read-only、JSON schema启动CLI；所选历史最多10条且完整上下文最多18000字符，超限明确拒绝而不截取；解析终态JSON并验证；失败最多两次。Windows取消精确子进程树，其他系统终止本次独立进程组，并等待进程关闭；真实CLI小调用与进程测试分别留证。",
           "outputs": "reply、evidenceIds和可选板书结构",
           "collections": [
             "assistantMessages"
           ],
-          "limits": "网页接口返回完整消息，不是逐token流式聊天；提示限制工具不是操作系统级绝对隔离保证；遗留路径仍可能截取上下文，新持久提问则先检查预算。",
+          "limits": "网页接口返回完整消息，不是逐token流式聊天；提示限制工具不是操作系统级绝对隔离保证；原始CLI事件、完整性、取消与失败分别校验，模型目录不代表当前可用率。",
           "endpoints": [],
           "implementations": [],
           "sourceFiles": [
@@ -4749,12 +4767,15 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
           "id": "AI-04",
-          "title": "规则指导与兼容AI分析",
+          "title": "内部教研分析与提示草稿",
           "area": "ai",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生、教研",
@@ -4762,16 +4783,16 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
-          "inputs": "受控题目/回答、提示等级或报告上下文",
-          "implementation": "新学习路径保留确定性评分与规则指导；兼容分析接口按角色限制使用OpenAI兼容client；生成说明和分析日志；不可用时能降级的路径明确返回规则内容。",
-          "outputs": "分析建议、提示、reviewRequired与来源",
+          "inputs": "本人admin身份、题库完整原件或临时题、完整有限JSON作答/参考答案、用途/层级、modelId、预检指纹和原请求键",
+          "implementation": "预检不生成；服务端冻结完整题干/答案协议/表格公式及原模型，持久任务按原授权会话和lease/fence原子校验结果；两类输出严格schema、原文引用、未知和验证建议，均待人工核对。界面保留完整输入、本人分页历史、原模型重试、丢回执原键恢复、双标签独立原稿；状态冲突先显式归档原操作再只读最新状态，新的取消/重试由用户再次发起；本机失败下载后放行，未知原件连续刷新可逐字下载。旧入口202未生成、201完成、200失败/取消，内容null保持明确。",
+          "outputs": "可恢复的教研分析/提示、原文依据、未知、验证步骤、原模型和完整副本",
           "collections": [
-            "aiInsights",
-            "assistantMessages"
+            "teachingToolRuns"
           ],
-          "limits": "不是所有AI路径都统一经过CLI；部分兼容接口仍依赖OPENAI配置，不能声称全部离线。",
+          "limits": "不改变正式首答、评分、能力或指导计划；媒体引用不是看图/听音；不自动采用或降级旧SDK/规则；浏览器在发请求前拒绝非有限JSON并保留原文，只有明确未知才使用null；各模型与真人教学质量分别验收。",
           "endpoints": [
             {
               "verb": "POST",
@@ -4787,23 +4808,113 @@
               "controller": "AiController",
               "method": "generateHint",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 21
+              "line": 22
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/teaching-tools/preflight",
+              "controller": "TeachingToolController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/teaching-tools/runs",
+              "controller": "TeachingToolController",
+              "method": "create",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/teaching-tools/runs",
+              "controller": "TeachingToolController",
+              "method": "list",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/teaching-tools/requests/:requestKey",
+              "controller": "TeachingToolController",
+              "method": "original",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/teaching-tools/runs/:id",
+              "controller": "TeachingToolController",
+              "method": "get",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/teaching-tools/runs/:id/cancel",
+              "controller": "TeachingToolController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/teaching-tools/runs/:id/retry",
+              "controller": "TeachingToolController",
+              "method": "retry",
+              "file": "apps/api/src/modules/ai/teaching-tool.controller.ts",
+              "line": 15
             }
           ],
           "implementations": [
             {
-              "name": "AiService.analyzeAssessment",
-              "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 72
+              "name": "TeachingToolCompatibilityService.submit",
+              "file": "apps/api/src/modules/ai/teaching-tool-compatibility.service.ts",
+              "line": 21
             },
             {
-              "name": "AiService.generateHint",
-              "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 123
+              "name": "TeachingToolService.preflight",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 95
+            },
+            {
+              "name": "TeachingToolService.create",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 127
+            },
+            {
+              "name": "TeachingToolService.list",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 115
+            },
+            {
+              "name": "TeachingToolService.request",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 111
+            },
+            {
+              "name": "TeachingToolService.get",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 110
+            },
+            {
+              "name": "TeachingToolService.control",
+              "file": "apps/api/src/modules/ai/teaching-tool.service.ts",
+              "line": 160
             }
           ],
           "sourceFiles": [
-            "apps/api/src/modules/ai/ai.service.ts"
+            "apps/api/src/modules/ai/teaching-tool.service.ts",
+            "apps/api/src/modules/ai/teaching-tool-worker.service.ts",
+            "apps/api/src/modules/ai/teaching-tool-protocol.ts",
+            "apps/api/src/modules/ai/teaching-tool-record.ts",
+            "apps/api/src/modules/ai/teaching-tool-compatibility.service.ts",
+            "apps/web/app/admin/ai-tools/workbench.tsx",
+            "apps/web/app/admin/ai-tools/composer.tsx",
+            "apps/web/app/admin/ai-tools/run-detail.tsx",
+            "apps/web/app/admin/ai-tools/tool-draft.ts",
+            "scripts/qa/teaching-tools-live.cjs"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -4813,7 +4924,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4826,7 +4940,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "冻结字幕单元、受支持音色、语速配置与取消信号",
           "implementation": "优先MiniMax streaming PCM；解析SSE十六进制音频并封装16kHz单声道WAV；未配置MiniMax时可用OpenAI MP3；校验文本和音色，超过4096字显式拒绝而不截断；HTTP断开将取消传递到供应商，取消后不继续重试。",
@@ -4844,7 +4959,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4857,7 +4975,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "本人课堂、供应商voiceId与固定sampleVersion；当前句另带冻结unitId",
           "implementation": "六个独立MiniMax音色经集成技能真实合成并保存原创中性句，按清单核对版本/模型/文件名/大小/SHA后复用MP3；其他已有音色使用同一中性句生成。服务端不接受任意文本；客户端将选中、播放、固定样本和已展示当前句分开，暂停讲解，切换/关闭/换课堂时取消并释放精确音频和URL。元数据来自实际供应商ID，旧音色保留独立入口。",
@@ -4900,7 +5019,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4913,7 +5035,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "原页图、OCR文字、表格/公式候选、modelId",
           "implementation": "将需复核页面送CLI结构模型；要求段落/公式/表格JSON；Zod校验并按页合并，保留本地候选与警告。",
@@ -4933,7 +5056,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         },
         {
@@ -4946,7 +5072,8 @@
             "/studio",
             "/studio/classroom",
             "/student/assessment",
-            "/student/today"
+            "/student/today",
+            "/admin/ai-tools"
           ],
           "inputs": "当前节点提示词、固定图像规格、取消信号",
           "implementation": "每次真实生成前重新检查集成aigw-imagegen环境；通过参数数组、shell=false启动原技能；固定gpt-image-2/1024方图/medium/PNG，提示词文件、随机产物路径、4分钟超时和有界输出；项目内独立Python环境检查SDK参数兼容性，不修改技能或全局依赖。",
@@ -4972,7 +5099,10 @@
             "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
             "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
             "apps/api/src/common/terminate-child-process.integration.test.ts",
-            "tests/e2e/assistant-conversations.spec.ts"
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
           ]
         }
       ]
@@ -10388,17 +10518,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 51
+              "line": 55
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 72
+              "line": 78
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 79
+              "line": 85
             }
           ],
           "sourceFiles": [
@@ -10478,7 +10608,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 111
+              "line": 118
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -10488,7 +10618,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 120
+              "line": 127
             }
           ],
           "sourceFiles": [
@@ -10548,7 +10678,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 194
+              "line": 201
             }
           ],
           "sourceFiles": [
@@ -10718,7 +10848,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 347
+              "line": 348
             },
             {
               "name": "DomainEventBusService.publish",
@@ -10728,7 +10858,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 245
+              "line": 246
             }
           ],
           "sourceFiles": [
@@ -10921,7 +11051,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 245
+              "line": 246
             }
           ],
           "sourceFiles": [
@@ -10998,7 +11128,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 229
+              "line": 230
             },
             {
               "name": "RuntimeMetricsService.snapshot",

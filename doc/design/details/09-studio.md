@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`7da5ceea50bed43169e450f5909cbc0d33f40d2a`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`a59e33516cf89248104b758b28862695e280b0c1`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 

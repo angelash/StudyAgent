@@ -8,6 +8,12 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 - 直接引用：`react`、`next/link`、`../../../lib/api`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`
 
+## /admin/ai-tools
+
+类型：页面。实现：[apps/web/app/admin/ai-tools/page.tsx](../../../apps/web/app/admin/ai-tools/page.tsx)。
+
+- 直接引用：`./workbench`
+
 ## /admin/analytics
 
 类型：页面。实现：[apps/web/app/admin/analytics/page.tsx](../../../apps/web/app/admin/analytics/page.tsx)。

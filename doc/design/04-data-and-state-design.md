@@ -1,10 +1,12 @@
 # 数据与状态设计
 
+138候选新增`teachingToolRuns`，候选schema21，共103个领域集合。按`ownerUserId + requestKey`唯一索引防重，冻结用途、完整输入、模型、题源与原授权会话；控制命令保存独立键/版本/代次，迟到worker需通过租约及权限栅栏。未知/媒体限制、未完成与待复核明确记录，教研建议不进入正式评分或掌握证据。管理员本人导出/删除和双库原生旧备份加最新删除账本恢复覆盖该集合；admin有有效孩子绑定时删除阻断。具体实现和运行边界见[138](../product/138-internal-teaching-tools-unified-models.md)。
+
 127原卷练习新增`paperPracticeSessions`与`paperPracticeCommands`，当前候选schema18、100个领域集合；实际运行仍以对应交付收据为准。会话冻结来源/发布版本、题序与题面/参考，首次回答、自评和追加订正分别保存；命令记录本人/会话/原请求键、完整规范化输入摘要及实际应用版本。schema18用本人创建键及会话/本人命令键两个唯一索引阻止重复；乐观并发可以409，原键重读/重放取得同一结果。浏览器按文档槽和题位独立保护草稿/原命令，完成后只读复盘但允许本人明确核对已提交题目的原参考。PDF为未切分整卷笔记，全部原卷练习均不自动进入知识掌握评分。
 
 账号/孩子隐私关系纳入两集合；原生恢复保留完整首答/订正与命令，最新删除账本清除对应个人记录而保留共享题卷。SQLite/PG备份上限精确为18，未知19仍拒绝；媒体以`private,no-store`重新经过当前鉴权，保留Range/ETag。具体协议、旧库迁移、冷恢复证据和未完成范围见[127](../product/127-paper-practice-and-original-answer-review.md)。
 
-当前92个领域集合及共享类型字段见 [数据索引](generated/data-reference.md)。本文解释逻辑关系、数据库承载、证据冻结、状态和一致性。图中的关系是业务关系，不表示全部已建成SQL外键。
+当前接入103个领域集合及384个共享契约定义，逐字段见 [数据索引](generated/data-reference.md)。本文解释逻辑关系、数据库承载、证据冻结、状态和一致性。图中的关系是业务关系，不表示全部已建成SQL外键。
 
 ## 1. 三类存储
 
@@ -12,7 +14,7 @@
 
 `DomainDatabase`支持SQLite和PostgreSQL。领域对象主要存入`domain_records`，以`collection + record_id`定位，`body`保存JSON/JSONB，`position`维护稳定顺序。`InMemoryStoreService`是历史注入名称，实际正式运行使用数据库事务，并非服务重启即丢失的纯内存数组。
 
-当前迁移代码登记至版本13，不能继续使用早期文档中的版本8作为现状。主要表包括：
+当前候选迁移代码登记至版本21；正式运行仍以各批交付收据为准，当前已交付137为schema20。早期版本8/13描述只保留历史背景。主要表包括：
 
 - `schema_migrations(version, applied_at)`：迁移登记。
 - `store_meta(id, revision)`：全库版本。

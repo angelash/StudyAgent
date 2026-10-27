@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`7da5ceea50bed43169e450f5909cbc0d33f40d2a`。共 437 个 HTTP 路由声明，当前 AppModule 可达 416 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`a59e33516cf89248104b758b28862695e280b0c1`。共 444 个 HTTP 路由声明，当前 AppModule 可达 423 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -50,23 +50,23 @@
 
 实现：[apps/api/src/modules/ai/ai.controller.ts:15](../../../apps/api/src/modules/ai/ai.controller.ts#L15)，方法 `analyzeAssessment`。
 
-- 签名：`analyzeAssessment(@Req() req: AuthenticatedRequest, @Body() body: { question: Question; answer: unknown })`
+- 签名：`analyzeAssessment(@Req() req: AuthenticatedRequest, @Body() body: unknown, @Res({ passthrough: true }) response: Response)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
-- 调用：`this.aiService.analyzeAssessment`
+- 调用：`this.teaching.submit`
 
 ### POST /api/ai/hints/generate
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:21](../../../apps/api/src/modules/ai/ai.controller.ts#L21)，方法 `generateHint`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:22](../../../apps/api/src/modules/ai/ai.controller.ts#L22)，方法 `generateHint`。
 
-- 签名：`generateHint(@Req() req: AuthenticatedRequest, @Body() body: { question: Question; answerHistoryCount: number })`
+- 签名：`generateHint(@Req() req: AuthenticatedRequest, @Body() body: unknown, @Res({ passthrough: true }) response: Response)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
-- 调用：`this.aiService.generateHint`
+- 调用：`this.teaching.submit`
 
 ### POST /api/ai/assistant/sessions
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:27](../../../apps/api/src/modules/ai/ai.controller.ts#L27)，方法 `openSession`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:29](../../../apps/api/src/modules/ai/ai.controller.ts#L29)，方法 `openSession`。
 
 - 签名：`openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -75,7 +75,7 @@
 
 ### POST /api/ai/assistant/sessions/:sessionId/messages
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:44](../../../apps/api/src/modules/ai/ai.controller.ts#L44)，方法 `chat`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:46](../../../apps/api/src/modules/ai/ai.controller.ts#L46)，方法 `chat`。
 
 - 签名：`chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response, @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string; modelId?: string })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -84,7 +84,7 @@
 
 ### GET /api/ai/assistant/sessions/:sessionId/messages
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:58](../../../apps/api/src/modules/ai/ai.controller.ts#L58)，方法 `listMessages`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:60](../../../apps/api/src/modules/ai/ai.controller.ts#L60)，方法 `listMessages`。
 
 - 签名：`listMessages(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -164,6 +164,71 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.turns.control`
+
+## TeachingToolController — 当前接入
+
+### POST /api/ai/teaching-tools/preflight
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:9](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L9)，方法 `preflight`。
+
+- 签名：`preflight(@Req() request: AuthenticatedRequest, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.preflight`
+
+### POST /api/ai/teaching-tools/runs
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:10](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L10)，方法 `create`。
+
+- 签名：`create(@Req() request: AuthenticatedRequest, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.create`
+
+### GET /api/ai/teaching-tools/runs
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:11](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L11)，方法 `list`。
+
+- 签名：`list(@Req() request: AuthenticatedRequest, @Query() query: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.list`
+
+### GET /api/ai/teaching-tools/requests/:requestKey
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:12](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L12)，方法 `original`。
+
+- 签名：`original(@Req() request: AuthenticatedRequest, @Param('requestKey') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.request`
+
+### GET /api/ai/teaching-tools/runs/:id
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:13](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L13)，方法 `get`。
+
+- 签名：`get(@Req() request: AuthenticatedRequest, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.get`
+
+### POST /api/ai/teaching-tools/runs/:id/cancel
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:14](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L14)，方法 `cancel`。
+
+- 签名：`cancel(@Req() request: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.control`
+
+### POST /api/ai/teaching-tools/runs/:id/retry
+
+实现：[apps/api/src/modules/ai/teaching-tool.controller.ts:15](../../../apps/api/src/modules/ai/teaching-tool.controller.ts#L15)，方法 `retry`。
+
+- 签名：`retry(@Req() request: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.tools.control`
 
 ## AssessmentsController — 历史代码，未被AppModule接入
 
