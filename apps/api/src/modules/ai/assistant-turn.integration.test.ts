@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { beforeAll,afterAll,afterEach,describe,it,expect,vi } from 'vitest';
 import request from 'supertest';
-import { mkdtempSync,rmSync } from 'node:fs';
+import { mkdtempSync,rmSync,writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -74,6 +74,29 @@ describe('ordinary assistant durable turns and immutable publication context',()
       const result=await call('post',base(s.id)+'/messages',{message:'请根据原证据说明下一步。',requestKey:randomUUID()});
       expect(result.source).toBe('rules');expect(result.modelId).toBeNull();expect(mock).not.toHaveBeenCalled();expect(legacyCall).not.toHaveBeenCalled();
     }finally{(ai as any).client=oldClient;}
+  });
+  it('reads only the bounded public model check, keeps failures selectable and creates no assistant output',async()=>{
+    const modelModule=require('../../../dist/apps/api/src/modules/ai/xiaojiu-models.service.js'),proof=require('../../../dist/apps/api/src/modules/ai/xiaojiu-model-qualification.js');
+    const transport=require('../../../dist/apps/api/src/modules/ai/xiaojiu-text-transport.js'),upstream='http://127.0.0.1:1/anonymous-check-control/responses';
+    vi.spyOn(transport,'textProviderConfiguration').mockReturnValue({provider:'fixture',upstream,environment:{PRIVATE_TEST_KEY:'SYNTHETIC_AUTH_NEVER_PUBLIC'},disabledMcp:[]});
+    const models=app.get(modelModule.XiaojiuModelsService),catalog=models.catalog(),provider=reply(),file=join(directory,'public-check-fixture.json');
+    const previous=process.env.XIAOJIU_MODEL_QUALIFICATION,completed=Date.now()-1000;
+    const receipt=proof.sealModelQualification({version:1,kind:'xiaojiu-text-qualification',selection:'complete-current-application-catalog',status:'complete',
+      startedAt:new Date(completed-1000).toISOString(),completedAt:new Date(completed).toISOString(),catalogFingerprint:proof.modelCatalogFingerprint(catalog),
+      connectionFingerprint:proof.modelConnectionFingerprint({provider:'fixture',upstream,profile:modelModule.codexHomeDirectory()}),sourceReceiptSha256:'a'.repeat(64),
+      models:catalog.models.map((model:any)=>({id:model.id,status:model.id==='claude-opus-5'?'failed':'passed',completedAt:new Date(completed).toISOString(),
+        attempts:[{attempt:1,status:model.id==='claude-opus-5'?'failed':'passed',elapsedMs:1,...(model.id==='claude-opus-5'?{failureKind:'provider-error'}:{})}]}))});
+    writeFileSync(file,JSON.stringify(receipt));process.env.XIAOJIU_MODEL_QUALIFICATION=file;
+    try{
+      await call('get','/ai/models',undefined,null,401);const result=await call('get','/ai/models');
+      expect(result.textCheck).toMatchObject({passed:catalog.models.length-1,failed:1,unknown:0,allModelsPassed:false});
+      expect(result.models.find((model:any)=>model.id==='claude-opus-5').textCheck.status).toBe('failed');
+      expect(models.resolve('claude-opus-5').id).toBe('claude-opus-5');
+      const serialized=JSON.stringify(result);for(const privateValue of [file,upstream,'SYNTHETIC_AUTH_NEVER_PUBLIC'])expect(serialized).not.toContain(privateValue);
+      writeFileSync(file,'{"tampered":true}');const invalid=await call('get','/ai/models');
+      expect(invalid.models).toHaveLength(catalog.models.length);expect(invalid.textCheck).toMatchObject({unknown:catalog.models.length,allModelsPassed:null,reason:'report-invalid'});
+      expect(provider).not.toHaveBeenCalled();
+    }finally{if(previous===undefined)delete process.env.XIAOJIU_MODEL_QUALIFICATION;else process.env.XIAOJIU_MODEL_QUALIFICATION=previous;}
   });
   it('serializes concurrent creation from two application instances and isolates other owners',async()=>{
     const s=await open(),c=await input(s),{AppModule}=require('../../../dist/apps/api/src/app.module.js'),second=await NestFactory.create(AppModule,{logger:false});second.setGlobalPrefix('api');await second.init();

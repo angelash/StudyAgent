@@ -21,19 +21,30 @@ require('reflect-metadata');
 const load = module => require(path.join(root, 'apps/api/dist/apps/api/src', module + '.js'));
 const { XiaojiuModelsService } = load('modules/ai/xiaojiu-models.service');
 const { XiaojiuChatService } = load('modules/ai/xiaojiu-chat.service');
+const { modelCatalogFingerprint, modelConnectionFingerprint } = load('modules/ai/xiaojiu-model-qualification');
+const { textProviderConfiguration } = load('modules/ai/xiaojiu-text-transport');
+const { codexHomeDirectory } = load('modules/ai/xiaojiu-models.service');
 const models = new XiaojiuModelsService(), provider = new XiaojiuChatService(models);
 if (!provider.enabled) throw Error('The current application Xiaojiu connection is disabled');
 const catalog = models.catalog();
+const connectionIdentity = () => { const connection = textProviderConfiguration(); return modelConnectionFingerprint({
+  provider: connection.provider, upstream: connection.upstream, profile: codexHomeDirectory() }); };
+const binding = { catalogFingerprint: modelCatalogFingerprint(catalog), connectionFingerprint: connectionIdentity(), rechecked: false };
 const selected = requestedModel ? [models.resolve(requestedModel)] : catalog.models;
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-const sourceFiles = ['xiaojiu-models.service', 'xiaojiu-chat.service', 'xiaojiu-text-transport', 'codex-command'];
+const sourceFiles = ['xiaojiu-models.service', 'xiaojiu-chat.service', 'xiaojiu-text-transport', 'codex-command', 'xiaojiu-model-qualification', 'ai.service'];
 const inputs = {};
 for (const name of sourceFiles) for (const file of ['apps/api/src/modules/ai/' + name + '.ts', 'apps/api/dist/apps/api/src/modules/ai/' + name + '.js'])
   inputs[file] = sha(fs.readFileSync(path.join(root, file)));
 for (const file of ['apps/api/src/common/terminate-child-process.ts', 'apps/api/dist/apps/api/src/common/terminate-child-process.js'])
   inputs[file] = sha(fs.readFileSync(path.join(root, file)));
+for (const file of ['packages/config/src/index.ts', 'packages/config/dist/index.js', 'packages/contracts/src/ai-models.ts', 'packages/contracts/dist/index.js'])
+  inputs[file] = sha(fs.readFileSync(path.join(root, file)));
+for (const file of ['scripts/qa/qualify-xiaojiu-models.cjs', 'scripts/qa/publish-xiaojiu-model-qualification.cjs'])
+  inputs[file] = sha(fs.readFileSync(path.join(root, file)));
 const revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim();
-if (execFileSync('git', ['status', '--porcelain', '--', 'apps/api/src/modules/ai', 'apps/api/src/common/terminate-child-process.ts', 'scripts/qa/qualify-xiaojiu-models.cjs'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim())
+if (execFileSync('git', ['status', '--porcelain', '--', 'apps/api/src/modules/ai', 'apps/api/src/common/terminate-child-process.ts',
+    'packages/config/src/index.ts', 'packages/contracts/src/ai-models.ts', 'scripts/qa/qualify-xiaojiu-models.cjs', 'scripts/qa/publish-xiaojiu-model-qualification.cjs'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim())
   throw Error('Commit the qualified source and runner before the real attempt');
 fs.mkdirSync(destination, { recursive: true });
 const catalogBytes = Buffer.from(JSON.stringify(catalog, null, 2) + '\n');
@@ -43,6 +54,7 @@ const receipt = { version: 1, revision, startedAt: new Date().toISOString(), sta
   selection: requestedModel ? 'one-explicit-model' : 'complete-current-application-catalog',
   defaultModel: catalog.defaultModel, catalogSha256: sha(catalogBytes), modelCount: selected.length,
   concurrency: parallel, cliAttemptTimeoutMs: 60000, perModelDeadlineMs: modelDeadlineMs, sourceAndCompiledSha256: inputs,
+  binding,
   models: selected.map(model => ({ id: model.id, label: model.label, declaredInputModalities: model.inputModalities,
     visualVerified: false, status: 'pending', attempts: [] })) };
 const active = new Set(); let interrupted = false;
@@ -94,6 +106,9 @@ async function main() {
   }));
   for (const [file, digest] of Object.entries(inputs)) if (sha(fs.readFileSync(path.join(root, file))) !== digest)
     throw Error('Fixed model source or compiled input changed during qualification');
+  Object.assign(binding, { endCatalogFingerprint: modelCatalogFingerprint(models.catalog()), endConnectionFingerprint: connectionIdentity(), rechecked: true });
+  if (binding.catalogFingerprint !== binding.endCatalogFingerprint || binding.connectionFingerprint !== binding.endConnectionFingerprint)
+    throw Error('Original model catalog or connection changed during qualification');
   receipt.status = interrupted ? 'interrupted' : 'complete'; receipt.completedAt = new Date().toISOString();
   receipt.passedCount = receipt.models.filter(model => model.status === 'passed').length;
   receipt.failedCount = receipt.models.filter(model => model.status === 'failed').length;

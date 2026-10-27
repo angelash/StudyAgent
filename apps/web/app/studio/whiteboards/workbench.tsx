@@ -209,7 +209,7 @@ function TopicComposer({ ownerId, scope, overview, models, onCreated, onCanLeave
     <label>希望弄懂什么<textarea rows={3} maxLength={1000} value={form.objective} placeholder="想理解的区别、步骤，或一个具体困惑" onChange={event => change({ objective: event.target.value })}/></label>
     {scope.studentId && <fieldset className="tw-goals"><legend>明确选择这次要讲的知识点（最多6个）</legend>{atoms.length ? atoms.map(atom => <label key={atom.id}><input type="checkbox" checked={form.atomIds.includes(atom.id)} disabled={!form.atomIds.includes(atom.id) && form.atomIds.length >= 6}
       onChange={event => change({ atomIds: event.target.checked ? [...form.atomIds, atom.id] : form.atomIds.filter(id => id !== atom.id) })}/><span>{atom.name}</span></label>) : <p>尚未取得当前已确认知识点。请先确认学习范围。</p>}</fieldset>}
-    <XiaojiuModelPicker catalog={models.catalog} value={form.modelId || models.modelId} onChange={modelId => { models.setModelId(modelId); change({ modelId }); }} compact/>
+    <XiaojiuModelPicker error={models.error} onRetry={models.reload} catalog={models.catalog} value={form.modelId || models.modelId} onChange={modelId => { models.setModelId(modelId); change({ modelId }); }} compact/>
   </fieldset>
     {pending && <p className="tw-notice">原生成请求仍需定位；恢复时继续使用原主题、范围与模型。</p>}
     {ready && models.catalog && !modelAvailable && <p role="status">原模型目前不在可用目录，请明确选择模型后再预检。</p>}

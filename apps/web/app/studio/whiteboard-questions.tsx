@@ -226,7 +226,7 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
         disabled={!ready || busy || disabled} onChange={event => setForm(value => ({ ...value, message: event.target.value }))}/>
       <div className="wb-question-options"><select aria-label="讲解方式" value={form.intent} disabled={!ready || busy || disabled} onChange={event => setForm(value => ({ ...value, intent: event.target.value as Form['intent'] }))}>
         {WHITEBOARD_QUESTION_INTENTS.map(intent => <option key={intent} value={intent}>{intents[intent]}</option>)}</select>
-        <XiaojiuModelPicker compact catalog={models.catalog} value={form.modelId} disabled={!ready || busy || disabled} onChange={modelId => { models.setModelId(modelId); setForm(value => ({ ...value, modelId })); }}/>
+        <XiaojiuModelPicker compact error={models.error} onRetry={models.reload} catalog={models.catalog} value={form.modelId} disabled={!ready || busy || disabled} onChange={modelId => { models.setModelId(modelId); setForm(value => ({ ...value, modelId })); }}/>
         <button type="submit" disabled={!ready || !historyReady || busy || disabled || Boolean(activeTurn) || Boolean(pending) || !form.message.trim()}>发送</button></div>
       {pending && <div className="wb-question-pending"><p>原{pending.kind === 'create' ? '提问' : pending.kind === 'cancel' ? '取消' : '重试'}请求待确认。</p><button type="button" disabled={busy || disabled} onClick={() => void execute(pending)}>按原请求继续</button></div>}
       {(notice || models.error) && <p role="status">{notice || models.error}</p>}

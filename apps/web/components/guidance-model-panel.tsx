@@ -39,7 +39,7 @@ function decode(raw:string,ownerId:string,plan:GuidancePlanView):Draft|null {
 export function GuidanceModelPanel({plan,onChange}:{plan:GuidancePlanView;onChange:(value:GuidancePlanView)=>void}) {
   const identity=useSessionUser(),allowed=!!identity&&['parent','admin'].includes(identity.role),ownerId=allowed?identity!.id:'';
   const key=ownerId?'studyagent.guidance.model.v1.'+encodeURIComponent(ownerId)+'.'+encodeURIComponent(plan.id):'',base='/diagnostics/plans/'+plan.id+'/model-suggestions';
-  const {catalog,modelId,setModelId,error:modelError}=useXiaojiuModels(allowed);
+  const {catalog,modelId,setModelId,error:modelError,reload:reloadModels}=useXiaojiuModels(allowed);
   const [scope,setScope]=React.useState(''),[rows,setRows]=React.useState<GuidanceModelSuggestionView[]>([]),[selected,setSelected]=React.useState<GuidanceModelSuggestionView|null>(null);
   const [pending,setPending]=React.useState<Pending|null>(null),[rejected,setRejected]=React.useState<Pending|null>(null),[busy,setBusy]=React.useState(false),[loading,setLoading]=React.useState(false);
   const [error,setError]=React.useState(''),[notice,setNotice]=React.useState(''),[storageNotice,setStorageNotice]=React.useState(''),[page,setPage]=React.useState(1),[hasMore,setHasMore]=React.useState(false);
@@ -109,7 +109,7 @@ export function GuidanceModelPanel({plan,onChange}:{plan:GuidancePlanView;onChan
   if(!allowed)return null;
   return <section className="guidance-model-panel" aria-label="AI指导说明建议"><header><div><span>说明建议</span><h3>把下一步，写得更具体。</h3><p>对照原计划与建议，再决定是否采用。知识目标、时间、成功标准和复测安排按原计划保留。</p></div></header>
     {!matches||loading?<p role="status">正在读取这份计划的建议记录…</p>:<>
-      <div className="guidance-model-controls"><XiaojiuModelPicker catalog={catalog} value={modelId} onChange={setModelId} disabled={busy||!!pending}/>
+      <div className="guidance-model-controls"><XiaojiuModelPicker error={modelError} onRetry={reloadModels} catalog={catalog} value={modelId} onChange={setModelId} disabled={busy||!!pending}/>
         <button className="studio-secondary" disabled={busy||!!pending||!!rows.find(active)||plan.status!=='proposed'||plan.impact.needsReview||!catalog} onClick={()=>void submit()}>生成说明建议</button>
         <button className="studio-text-button" disabled={busy} onClick={()=>{setPollPaused(false);void refresh().catch(e=>setError(e.message));}}>读取最新状态</button></div>
       {(error||modelError)&&<p role="alert" className="studio-error">{error||modelError}</p>}{notice&&<p role="status" className="studio-notice">{notice}</p>}{storageNotice&&<p role="status">{storageNotice}</p>}

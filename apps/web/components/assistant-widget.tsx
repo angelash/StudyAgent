@@ -24,7 +24,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
   const context=JSON.stringify({userRole:props.userRole,studentId:props.studentId,subject:props.subject??null,pageContext:props.pageContext,
     contextRefType:props.contextRefType??null,contextRefId:props.contextRefId??null,contextItemId:props.contextItemId??null});
   const conversation=useAssistantConversation({open,ownerId:identity?.id??null,scope:context,context});
-  const {catalog,modelId,setModelId,error:modelError}=useXiaojiuModels(open&&!!identity);
+  const {catalog,modelId,setModelId,error:modelError,reload:reloadModels}=useXiaojiuModels(open&&!!identity);
   React.useEffect(()=>{locateEpoch.current++;},[identity?.id,context,conversation.viewSessionId,open]);
   React.useEffect(()=>{historyEpoch.current++;historyAbort.current?.abort();setHistoryOpen(false);setHistory(null);setHistoryError('');setHistoryQuery('');setMessageQuery('');},[identity?.id,context]);
   React.useEffect(()=>()=>historyAbort.current?.abort(),[]);
@@ -89,7 +89,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
       {(conversation.suspended||conversation.error)&&<button className="assistant-stop-waiting" disabled={conversation.busy} onClick={()=>void conversation.resume()}>读取最新状态</button>}
       {!conversation.historical&&<form onSubmit={e=>{e.preventDefault();void conversation.submit(modelId);}}><label>想一起看看什么<textarea value={conversation.input} onChange={e=>conversation.change(e.target.value)} rows={3}
         placeholder="写下卡住的一步，或想核对的学习表现" maxLength={3000} disabled={blocked}/></label>
-        <XiaojiuModelPicker catalog={catalog} value={modelId} onChange={setModelId} compact disabled={blocked}/>{modelError&&<p className="assistant-error" role="status">模型目录加载失败：{modelError}</p>}
+        <XiaojiuModelPicker error={modelError} onRetry={reloadModels} catalog={catalog} value={modelId} onChange={setModelId} compact disabled={blocked}/>{modelError&&<p className="assistant-error" role="status">模型目录加载失败：{modelError}</p>}
         <div className="assistant-controls"><small>收起后任务仍会保留，重新打开可恢复。</small><button disabled={blocked||!catalog||!conversation.input.trim()}>{conversation.busy?'正在确认…':'一起想一想 →'}</button></div>
       </form>}
       {conversation.mismatch&&<button className="assistant-stop-waiting" onClick={conversation.newScope}>下载原稿并转为新提问</button>}

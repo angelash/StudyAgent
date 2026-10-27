@@ -190,7 +190,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [replyUnit,setReplyUnit]=React.useState<{messageId:string;unitId:string|null}|null>(null),[expandedReply,setExpandedReply]=React.useState('');
   const replyAudio = React.useRef<{ abort: AbortController; audio: HTMLAudioElement | null; url: string } | null>(null);
   const recognition = React.useRef<SpeechRecognitionSession | null>(null), [showChat, setShowChat] = React.useState(initialTab !== 'practice');
-  const { catalog, modelId, setModelId } = useXiaojiuModels();
+  const { catalog, modelId, setModelId, error: modelCatalogError, reload: reloadModelCatalog } = useXiaojiuModels();
   const revisionQueue = React.useRef<Promise<unknown>>(Promise.resolve());
   const cloudAudio = React.useRef<HTMLAudioElement | null>(null), cache = React.useRef(new Map<string, Blob>());
   const playEpoch=React.useRef(0),narrationAbort=React.useRef<AbortController|null>(null);
@@ -566,7 +566,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           <button data-classroom-tour="microphone" type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={microphone} data-listening={listening}>♩</button>
           <button data-classroom-tour="playback" type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
           {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy||!turns.loaded||Boolean(turns.uncertain)}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
-          <XiaojiuModelPicker catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>
+          <XiaojiuModelPicker error={modelCatalogError} onRetry={reloadModelCatalog} catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>
       </aside></>}
     {!showChat && !standalonePractice && <button className="cl-show-chat" onClick={() => setShowChat(true)}>打开对话与控制 ▤</button>}
     {settings && <WorkspaceDialog onClose={()=>{pause();setSettings(false);}}><div className="cl-modal-backdrop"><section className="cl-settings" role="dialog" aria-modal="true" aria-label="课堂设置"><header><h2>Session settings</h2><button aria-label="关闭课堂设置" onClick={() => setSettings(false)}>×</button></header>

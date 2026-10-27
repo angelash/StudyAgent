@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-27T04:52:53.317065+00:00",
+  "passed": true,
+  "deployed": false,
+  "scope": "134 receipt and actual authenticated HTTP foundation only.9 pure receipt cases then56 combined cases passed, including actual directory response/no provider call and corrupt synthetic receipt recovery. Source/build/type checks pass. New public receipt has not yet been generated from a real bound run; new status/retry UI not yet browser-verified. No full regression/CI/runtime claim.",
+  "pureCases": 9,
+  "combinedCases": 56,
+  "overlap": true,
+  "scopeOfCombined": "22 durable assistant including new default/rules/read-only model HTTP +11 chat +12 transport +1 catalog +9 receipt +1 restart durability. Anonymous synthetic providers; not56 real models.",
+  "files": [
+    {
+      "source": "data/qa/model-check-foundation-first.log",
+      "file": "00-model-check-foundation-first.log.gz",
+      "originalSha256": "9f92a0b5d358d2327dda8247f4ae2cff82a92ab1d2ed6ced633b7d8b44e8df8f",
+      "sha256": "f4f45d8ef86efa273c1a486781c659858cb558798a011d8547a22f3ada7e3837"
+    },
+    {
+      "source": "data/qa/model-check-contracts-build.log",
+      "file": "01-model-check-contracts-build.log.gz",
+      "originalSha256": "08206e14b5ab7194da92692e78b0ae0928fb4bc7e3ca8a94fccb8eda9b5444ad",
+      "sha256": "199355968a2c335ba5a0715f495e5539393ca6018c8f51154a3452f2697aaaf8"
+    },
+    {
+      "source": "data/qa/model-check-api-build-first.log",
+      "file": "02-model-check-api-build-first.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/model-check-endpoint-build.log",
+      "file": "03-model-check-endpoint-build.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/model-check-endpoint-typecheck.log",
+      "file": "04-model-check-endpoint-typecheck.log.gz",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    {
+      "source": "data/qa/model-check-http-build.log",
+      "file": "05-model-check-http-build.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/model-check-http-api-typecheck.log",
+      "file": "06-model-check-http-api-typecheck.log.gz",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    {
+      "source": "data/qa/model-check-web-typecheck.log",
+      "file": "07-model-check-web-typecheck.log.gz",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "sha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    {
+      "source": "data/qa/model-check-http-green-first.log",
+      "file": "08-model-check-http-green-first.log.gz",
+      "originalSha256": "eb08adf5b7bb111d91d050852ce59fc1d2dfa82ff8d684c8e1c3d847308b77a0",
+      "sha256": "a1866fe3dd80cc99dc33d72f5f157cde9c2c0ecee523fb41fbf17b8c181e2fe1"
+    }
+  ]
+}

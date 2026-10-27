@@ -23,13 +23,17 @@ import { z } from 'zod';
 import { validate } from '../../common/validation';
 import OpenAI from 'openai';
 import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 import { routedItemAvailable } from '../diagnostics/adaptive-routing';
 import { XiaojiuChatService } from './xiaojiu-chat.service';
-import { XiaojiuModelsService } from './xiaojiu-models.service';
+import { codexHomeDirectory, XiaojiuModelsService } from './xiaojiu-models.service';
+import { modelConnectionFingerprint, readModelQualification } from './xiaojiu-model-qualification';
+import { textProviderConfiguration } from './xiaojiu-text-transport';
+import { workspaceRoot } from '../../infrastructure/workspace-paths';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -66,7 +70,14 @@ export class AiService {
     private readonly moduleRef: ModuleRef,
   ) {}
 
-  modelCatalog() { return this.models.catalog(); }
+  modelCatalog() {
+    const catalog = this.models.catalog();
+    let connectionFingerprint: string | null = null;
+    try { const connection = textProviderConfiguration(); connectionFingerprint = modelConnectionFingerprint({
+      provider: connection.provider, upstream: connection.upstream, profile: codexHomeDirectory() }); } catch { /* Directory reading remains available. */ }
+    const file = resolve(workspaceRoot(), process.env.XIAOJIU_MODEL_QUALIFICATION?.trim() || 'resources/ai/model-qualification.json');
+    return readModelQualification(catalog, { file, connectionFingerprint });
+  }
   assistantModelAvailable() { return this.xiaojiu.enabled; }
 
   async analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse> {

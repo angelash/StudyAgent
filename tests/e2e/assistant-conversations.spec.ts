@@ -37,6 +37,47 @@ test('Auto names the actual platform default and a later composer choice preserv
   expect(after.turns[0].id).toBe(before.turns[0].id);expect(after.turns[0].modelId).toBe('deepseek-v4-flash');expect(posts).toHaveLength(1);
 });
 
+test('model checks retain failure, historical scope and unknown states without generating an answer',async({page})=>{
+  let historical=false;const posts:any[]=[];
+  page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
+  await page.route('**/api/ai/models',async route=>{
+    const response=await route.fetch(),body=await response.json(),at=Date.now()-(historical?25*60*60*1000:1000);
+    body.data.models=body.data.models.map((model:any)=>({...model,textCheck:{status:model.id==='deepseek-v4-flash'?'passed':model.id==='claude-opus-5'?'failed':'unknown',
+      checkedAt:model.id==='deepseek-v4-flash'||model.id==='claude-opus-5'?new Date(at).toISOString():null,
+      expiresAt:model.id==='deepseek-v4-flash'||model.id==='claude-opus-5'?new Date(at+24*60*60*1000).toISOString():null,
+      historical,reason:model.id==='claude-opus-5'?'request-failed':model.id==='deepseek-v4-flash'?null:'not-checked'}}));
+    await route.fulfill({response,json:body});
+  });
+  await setup(page);const select=page.getByRole('combobox',{name:'选择大模型',exact:true}),check=panel(page).locator('.xiaojiu-model-check');
+  await select.selectOption('deepseek-v4-flash');await expect(check).toContainText('上次文字检查通过');
+  await page.getByLabel('想一起看看什么').fill('这段完整要求尚未发送，换模型与重读目录都应保留。');
+  await select.selectOption('claude-opus-5');await expect(select.locator('option:checked')).toContainText('上次未通过');
+  for(const width of [390,768,1280]){
+    await page.setViewportSize({width,height:width===390?844:1000});await check.scrollIntoViewIfNeeded();
+    await expect(check).toContainText('上次文字检查未通过');await expect(check).toContainText('未取得可核对的完整回答');await expect(check).toBeInViewport();
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await shot(page,'model-check-failed-'+width);
+  }
+  historical=true;await page.getByRole('button',{name:'收起学习小助教',exact:true}).click();await open(page);
+  await expect(check).toContainText('历史文字检查未通过');await expect(page.getByLabel('想一起看看什么')).toHaveValue('这段完整要求尚未发送，换模型与重读目录都应保留。');
+  await select.selectOption('glm-5.3-flash');await expect(check).toContainText('尚未进行文字检查');expect(posts).toHaveLength(0);
+});
+
+test('a failed model directory has an explicit retry that preserves the complete unsent question and chosen model',async({page})=>{
+  let reads=0;const posts:any[]=[];
+  page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
+  await page.route('**/api/ai/models',async route=>{
+    reads++;if(reads===1)return route.fulfill({status:503,json:{error:{message:'匿名目录读取故障，请重试。'}}});
+    return route.continue();
+  });
+  const f=await setup(page),draft='先保留完整条件：两个整体相同，再比较二分之一与三分之一，不要省略条件。';
+  await page.getByLabel('想一起看看什么').fill(draft);await expect(panel(page).getByRole('button',{name:'重新读取模型目录',exact:true})).toBeVisible();
+  await panel(page).getByRole('button',{name:'重新读取模型目录',exact:true}).click();const select=page.getByRole('combobox',{name:'选择大模型',exact:true});
+  await expect(select).toBeEnabled();await expect(page.getByLabel('想一起看看什么')).toHaveValue(draft);await select.selectOption('glm-5.3-flash');
+  await page.reload();await open(page);await expect(select).toHaveValue('glm-5.3-flash');await expect(page.getByLabel('想一起看看什么')).toHaveValue(draft);expect(posts).toHaveLength(0);
+  await send(page,draft);await expect(task(page)).toHaveAttribute('data-status','completed',{timeout:20000});
+  const turns=await call(f.actor,'/ai/assistant/sessions/'+f.assistantId+'/turns');expect(turns.turns).toHaveLength(1);expect(turns.turns[0].modelId).toBe('glm-5.3-flash');
+});
+
 test('a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence',async({page})=>{
   const f=await setup(page),posts:any[]=[];page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
   const message='[assistant-pause-once] '+crypto.randomUUID()+' 请围绕条件给下一步提示。';await send(page,message);await expect(task(page)).toContainText(message);await expect(task(page)).toHaveAttribute('data-status',/queued|running/);
