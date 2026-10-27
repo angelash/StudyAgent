@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "unitTests": {
+    "firstPassed": 4,
+    "secondPassed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coverage": [
+    "All15 current authored lectures and distinct return positions",
+    "Detached allowlisted snapshot excluding question/scoring properties",
+    "Content change without course-version bump cannot reuse original reference",
+    "Historical read survives course removal; new sends require current content",
+    "Corrupt/missing/forged original cannot be rebuilt from current curriculum"
+  ],
+  "sourceSha256": {
+    "apps/api/src/modules/ai/assistant-lecture-context.ts": "ac341f4156f1505b0c6cabe2b789589ebb4e07cf6f5ac0278578f570239541e3",
+    "apps/api/src/modules/ai/assistant-lecture-context.test.ts": "7ea78a51351d9c6a9c477fd304e09964957d9089376deea2b8d54072a28f23ef",
+    "apps/api/src/modules/learning/classroom-curriculum.ts": "2b5a13b8dabee036270ff668ba75540a621a493e53d4caf5555aa97c81a3aeef"
+  },
+  "sourceScope": "Direct new helper/test and authored course module only; not a complete execution input manifest.",
+  "files": {
+    "lecture-context-first.json": {
+      "sha256": "73d5d583cad8410b8f9cb8efeb814d236a59f6eee81b84fddb8c40631b277167",
+      "gzipSha256": "b8a8f572d26c0db2e340b992d63080a7b7edf5b62064b56e1630147756e427db",
+      "bytes": 2168
+    },
+    "lecture-context-first.log": {
+      "sha256": "171ecd631179b53816a4178ee83ca180c111b5db4995d8fd0b7799f813d16ae9",
+      "gzipSha256": "5ba404a295670fd0bcde3371f6e5eca235977e5afe0ad673c8148918be86816b",
+      "bytes": 485
+    },
+    "lecture-context-second.json": {
+      "sha256": "095447335b8d713e07b5612c2a1070fe3b77e4da95e67d0a2a67ca1e25cc2dec",
+      "gzipSha256": "ae4449b0ea65f30b2f746630edc60d5a1c101602a69a00ed0b4adec9c129eb8b",
+      "bytes": 2533
+    },
+    "lecture-context-second.log": {
+      "sha256": "e79349799e4b891264c931d5b2f66005f8aa94a8f743a5fd6891638c18a9fd75",
+      "gzipSha256": "7c1ca3a80a63c795c61aa3cdda04bd31b00fdc06f6d7a59ca9f0d5eaf1ba373c",
+      "bytes": 486
+    }
+  },
+  "apiConnected": false,
+  "frontendConnected": false,
+  "productionDelivered": false,
+  "realModelCalled": false,
+  "scope": "Pure helper foundation only. HTTP authorization, worker publication, PostgreSQL/native recovery, frontend and full release gates remain required."
+}
