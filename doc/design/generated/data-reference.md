@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`a59e33516cf89248104b758b28862695e280b0c1`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`6a51299711a8c40c62974490a9dd28bc9c5453c2`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -285,11 +285,12 @@
 - `DiagnosticHypothesis`：[packages/contracts/src/diagnostics.ts:233](../../../packages/contracts/src/diagnostics.ts#L233)；字段：`familyIdentityVersion?`、`id`、`studentId`、`subject`、`atomId`、`cause`、`status`、`title`、`observation`、`explanation`、`alternatives`、`supportingEvidenceIds`、`counterEvidenceIds`、`probeAtomIds`、`reportedEvidenceIds?`、`verification?`、`nextAction`、`confidence`、`ruleVersion`、`updatedAt`、`history`、`atomDefinitionFingerprint?`。
 - `LearningSourceCitation`：[packages/contracts/src/diagnostics.ts:248](../../../packages/contracts/src/diagnostics.ts#L248)；字段：`id`、`kind`、`bookId`、`bookVersion`、`title`、`edition`、`chapterName`、`lessonId`、`lessonName`、`mappingId`、`mappingVersion`、`pageStart`、`pageEnd`、`locatorStatus`、`sourceAvailability`、`note`。
 - `GuidanceAction`：[packages/contracts/src/diagnostics.ts:267](../../../packages/contracts/src/diagnostics.ts#L267)；字段：`id`、`atomId`、`hypothesisId`、`evidenceIds`、`title`、`activity`、`minutes`、`successCriterion`、`resourceQuestionIds`、`retestAt`、`teachingSnapshot?`、`sourceCitations?`。
-- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:274](../../../packages/contracts/src/diagnostics.ts#L274)；字段：`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`aiAdoption?`、`retrospectiveReview?`。
-- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:283](../../../packages/contracts/src/diagnostics.ts#L283)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:290](../../../packages/contracts/src/diagnostics.ts#L290)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
-- `ReviewTask`：[packages/contracts/src/diagnostics.ts:295](../../../packages/contracts/src/diagnostics.ts#L295)；字段：`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
-- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:303](../../../packages/contracts/src/diagnostics.ts#L303)；字段：`familyIdentityVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
+- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:274](../../../packages/contracts/src/diagnostics.ts#L274)；字段：`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`baselineMeasurementVersion?`、`baselineFamilyIdentityVersion?`、`aiAdoption?`、`retrospectiveReview?`。
+- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:284](../../../packages/contracts/src/diagnostics.ts#L284)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:291](../../../packages/contracts/src/diagnostics.ts#L291)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
+- `ReviewTask`：[packages/contracts/src/diagnostics.ts:296](../../../packages/contracts/src/diagnostics.ts#L296)；字段：`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
+- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:304](../../../packages/contracts/src/diagnostics.ts#L304)；字段：`familyIdentityVersion?`、`measurementVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
+- `DiagnosticReportAnalysisStatus`：[packages/contracts/src/diagnostics.ts:322](../../../packages/contracts/src/diagnostics.ts#L322)；字段：`requiresReanalysis`、`reportVersion`、`canReanalyze`、`reportMeasurementVersion`、`currentMeasurementVersion`、`reportFamilyIdentityVersion`、`currentFamilyIdentityVersion`、`measurementRulesChanged`、`familyRulesChanged`、`affectedEvidenceIds`、`unverifiedEvidenceIds`、`reasons`。
 
 ### packages/contracts/src/gesp.ts
 

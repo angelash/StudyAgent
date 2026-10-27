@@ -1,12 +1,13 @@
 # 04 掌握量化、原子观察与深层原因 — 详细设计
 
-源码基线：`a59e33516cf89248104b758b28862695e280b0c1`。角色：学生、家长、教研。
+源码基线：`6a51299711a8c40c62974490a9dd28bc9c5453c2`。角色：学生、家长、教研。
 
 产品入口：`/student/assessment`、`/parent/dashboard`、`/admin/curriculum`。
 
 ## 模块实现
 
 - [apps/api/src/modules/diagnostics/measurement.ts](../../../apps/api/src/modules/diagnostics/measurement.ts)
+- [apps/api/src/modules/diagnostics/measurement-compatibility.ts](../../../apps/api/src/modules/diagnostics/measurement-compatibility.ts)
 - [apps/api/src/modules/diagnostics/diagnosis.ts](../../../apps/api/src/modules/diagnostics/diagnosis.ts)
 - [apps/api/src/modules/diagnostics/component-observations.ts](../../../apps/api/src/modules/diagnostics/component-observations.ts)
 - [apps/api/src/modules/diagnostics/family-identity.ts](../../../apps/api/src/modules/diagnostics/family-identity.ts)
@@ -27,17 +28,23 @@
 
 ## MEA-01 独立证据筛选与权重
 
-**输入**：已评分响应、当前有效映射和测量时间。
+**输入**：原响应、冻结会话与映射、测量时间。
 
-**处理与实现**：同题同版本只取首次证据；排除已曝光和未审核映射；提示等级权重为1/0.6/0.3/0；同题族后续为0.5；按60天半衰期衰减。
+**处理与实现**：所有已见记录先占用同题键，仅answered/scored且有限0至1评分进入估计；自述、跳过、待复核及未知协议不计量。更早冻结会话证明曝光时派生标记，原记录不变。排除已曝光和未审核映射；提示权重1/0.6/0.3/0，同族后续0.5，60天半衰期。
 
-**输出**：weightedEvidence列表。
+**输出**：rule-estimate-v3的weightedEvidence列表。
 
 **状态与持久化**：`diagnosticResponses`、`measurementItems`
 
-**权限、失败与边界**：题族规范化防止只改呈现的题被当成新独立题族。
+**权限、失败与边界**：缺失disposition不猜测；题族规范化防止只改呈现的题被当成独立题族。
 
 **调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts](../../../apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts)
+- [apps/api/src/modules/diagnostics/measurement-compatibility.test.ts](../../../apps/api/src/modules/diagnostics/measurement-compatibility.test.ts)
+- [doc/product/139-self-reported-difficulty-and-measurement-versioning.md](../../../doc/product/139-self-reported-difficulty-and-measurement-versioning.md)
 
 ## MEA-02 Beta掌握估计与可信区间
 

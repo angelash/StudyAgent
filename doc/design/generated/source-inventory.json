@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a59e33516cf89248104b758b28862695e280b0c1",
+  "sourceRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 444,
@@ -10,12 +10,12 @@
     "activeModules": 19,
     "activeControllers": 44,
     "apiClasses": 163,
-    "apiFunctions": 469,
+    "apiFunctions": 472,
     "domainCollections": 103,
-    "contractTypes": 384,
+    "contractTypes": 385,
     "webPages": 30,
     "webRouteHandlers": 1,
-    "apiTestFiles": 178,
+    "apiTestFiles": 180,
     "browserTestFiles": 40
   },
   "modules": [
@@ -20779,7 +20779,7 @@
     {
       "name": "DiagnosticsService",
       "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-      "line": 29,
+      "line": 30,
       "decorators": [
         {
           "name": "Injectable",
@@ -20815,7 +20815,7 @@
       "methods": [
         {
           "name": "start",
-          "line": 35,
+          "line": 36,
           "signature": "start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope)",
           "access": "public",
           "decorators": [],
@@ -20826,7 +20826,7 @@
         },
         {
           "name": "prepareSession",
-          "line": 39,
+          "line": 40,
           "signature": "prepareSession(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope, seed: string = randomUUID(), allowEmpty = false): DiagnosticSession",
           "access": "private",
           "decorators": [],
@@ -20836,6 +20836,7 @@
             "this.requireSession",
             "this.store.diagnosticReports.filter",
             "this.report",
+            "this.analysisCompatibility",
             "this.changedPlanDefinitions",
             "this.curriculum.getScope",
             "this.curriculum.prerequisiteClosure",
@@ -20847,7 +20848,7 @@
         },
         {
           "name": "activateSession",
-          "line": 134,
+          "line": 135,
           "signature": "activateSession(user: InMemoryUserAccount, session: DiagnosticSession)",
           "access": "private",
           "decorators": [],
@@ -20860,7 +20861,7 @@
         },
         {
           "name": "blueprintFingerprint",
-          "line": 152,
+          "line": 153,
           "signature": "blueprintFingerprint(session: DiagnosticSession)",
           "access": "private",
           "decorators": [],
@@ -20868,7 +20869,7 @@
         },
         {
           "name": "previewBlueprint",
-          "line": 158,
+          "line": 159,
           "signature": "previewBlueprint(user: InMemoryUserAccount, input: unknown): DiagnosticBlueprintView",
           "access": "public",
           "decorators": [],
@@ -20883,7 +20884,7 @@
         },
         {
           "name": "requireBlueprint",
-          "line": 179,
+          "line": 180,
           "signature": "requireBlueprint(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -20894,7 +20895,7 @@
         },
         {
           "name": "blueprintView",
-          "line": 184,
+          "line": 185,
           "signature": "blueprintView(user: InMemoryUserAccount, reservation: DiagnosticBlueprintReservation): DiagnosticBlueprintView",
           "access": "private",
           "decorators": [],
@@ -20904,7 +20905,7 @@
         },
         {
           "name": "getBlueprint",
-          "line": 191,
+          "line": 192,
           "signature": "getBlueprint(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -20915,7 +20916,7 @@
         },
         {
           "name": "startBlueprint",
-          "line": 192,
+          "line": 193,
           "signature": "startBlueprint(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -20930,7 +20931,7 @@
         },
         {
           "name": "requireSession",
-          "line": 206,
+          "line": 207,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -20941,7 +20942,7 @@
         },
         {
           "name": "definitionsForSession",
-          "line": 213,
+          "line": 214,
           "signature": "definitionsForSession(session: DiagnosticSession): KnowledgeAtom[]",
           "access": "public",
           "decorators": [],
@@ -20951,7 +20952,7 @@
         },
         {
           "name": "definitionEvidence",
-          "line": 218,
+          "line": 219,
           "signature": "definitionEvidence(atoms: readonly KnowledgeAtom[], responses: DiagnosticResponse[], studentId: string, known = true)",
           "access": "public",
           "decorators": [],
@@ -20961,7 +20962,7 @@
         },
         {
           "name": "changedPlanDefinitions",
-          "line": 223,
+          "line": 224,
           "signature": "changedPlanDefinitions(baseline: DiagnosticSession, atomIds: string[])",
           "access": "public",
           "decorators": [],
@@ -20971,7 +20972,7 @@
         },
         {
           "name": "listSessions",
-          "line": 232,
+          "line": 233,
           "signature": "listSessions(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -20983,7 +20984,7 @@
         },
         {
           "name": "sessionView",
-          "line": 238,
+          "line": 239,
           "signature": "sessionView(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -20996,7 +20997,7 @@
         },
         {
           "name": "changeState",
-          "line": 259,
+          "line": 260,
           "signature": "changeState(user: InMemoryUserAccount, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21014,7 +21015,7 @@
         },
         {
           "name": "renderItem",
-          "line": 299,
+          "line": 300,
           "signature": "renderItem(user: InMemoryUserAccount, sessionId: string, itemId: string)",
           "access": "public",
           "decorators": [],
@@ -21026,7 +21027,7 @@
         },
         {
           "name": "draftState",
-          "line": 315,
+          "line": 316,
           "signature": "draftState(session: DiagnosticSession, itemId: string, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -21036,7 +21037,7 @@
         },
         {
           "name": "saveDraft",
-          "line": 324,
+          "line": 325,
           "signature": "saveDraft(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21050,7 +21051,7 @@
         },
         {
           "name": "submit",
-          "line": 342,
+          "line": 343,
           "signature": "submit(user: InMemoryUserAccount, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21070,7 +21071,7 @@
         },
         {
           "name": "hint",
-          "line": 403,
+          "line": 404,
           "signature": "hint(user: InMemoryUserAccount, sessionId: string, itemId: string)",
           "access": "public",
           "decorators": [],
@@ -21084,7 +21085,7 @@
         },
         {
           "name": "complete",
-          "line": 416,
+          "line": 417,
           "signature": "complete(user: InMemoryUserAccount, sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -21102,7 +21103,7 @@
         },
         {
           "name": "allMappings",
-          "line": 434,
+          "line": 435,
           "signature": "allMappings(studentId?: string)",
           "access": "public",
           "decorators": [],
@@ -21113,7 +21114,7 @@
         },
         {
           "name": "effectiveResponses",
-          "line": 441,
+          "line": 442,
           "signature": "effectiveResponses(studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -21123,7 +21124,7 @@
         },
         {
           "name": "refreshHypotheses",
-          "line": 452,
+          "line": 464,
           "signature": "refreshHypotheses(studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -21138,7 +21139,7 @@
         },
         {
           "name": "profile",
-          "line": 470,
+          "line": 482,
           "signature": "profile(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -21154,7 +21155,7 @@
         },
         {
           "name": "report",
-          "line": 490,
+          "line": 502,
           "signature": "report(user: InMemoryUserAccount, sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -21167,7 +21168,7 @@
         },
         {
           "name": "reportHistory",
-          "line": 497,
+          "line": 509,
           "signature": "reportHistory(user: InMemoryUserAccount, sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -21179,18 +21180,30 @@
         },
         {
           "name": "analysisStatus",
-          "line": 504,
+          "line": 516,
           "signature": "analysisStatus(user: InMemoryUserAccount, sessionId: string)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.report",
+            "this.analysisCompatibility",
             "this.requireSession"
           ]
         },
         {
+          "name": "analysisCompatibility",
+          "line": 523,
+          "signature": "analysisCompatibility(report: DiagnosticReport)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.select",
+            "this.effectiveResponses"
+          ]
+        },
+        {
           "name": "reanalyzeReport",
-          "line": 513,
+          "line": 535,
           "signature": "reanalyzeReport(user: InMemoryUserAccount, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21200,6 +21213,7 @@
             "this.store.select",
             "this.reportOrigin",
             "this.report",
+            "this.analysisCompatibility",
             "this.refreshHypotheses",
             "this.store.append",
             "this.store.nextId",
@@ -21209,7 +21223,7 @@
         },
         {
           "name": "evidenceView",
-          "line": 539,
+          "line": 563,
           "signature": "evidenceView(user: InMemoryUserAccount, studentId: string, responseId: string)",
           "access": "public",
           "decorators": [],
@@ -21223,7 +21237,7 @@
         },
         {
           "name": "reportOrigin",
-          "line": 558,
+          "line": 582,
           "signature": "reportOrigin(report: DiagnosticReport): DiagnosticReport",
           "access": "private",
           "decorators": [],
@@ -21231,7 +21245,7 @@
         },
         {
           "name": "buildReport",
-          "line": 564,
+          "line": 588,
           "signature": "buildReport(session: DiagnosticSession): DiagnosticReport",
           "access": "private",
           "decorators": [],
@@ -21246,7 +21260,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 603,
+          "line": 627,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21721,7 +21735,7 @@
     {
       "name": "GuidanceService",
       "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-      "line": 29,
+      "line": 30,
       "decorators": [
         {
           "name": "Injectable",
@@ -21757,7 +21771,7 @@
       "methods": [
         {
           "name": "sourceCitations",
-          "line": 35,
+          "line": 36,
           "signature": "sourceCitations(scope: LearningScope, atomId: string): LearningSourceCitation[]",
           "access": "private",
           "decorators": [],
@@ -21768,7 +21782,7 @@
         },
         {
           "name": "create",
-          "line": 43,
+          "line": 44,
           "signature": "create(user: InMemoryUserAccount, studentId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21779,7 +21793,7 @@
         },
         {
           "name": "createRulePlan",
-          "line": 50,
+          "line": 51,
           "signature": "createRulePlan(user: InMemoryUserAccount, studentId: string, command: z.infer<typeof createPlanSchema>)",
           "access": "private",
           "decorators": [],
@@ -21789,6 +21803,7 @@
             "this.get",
             "this.diagnostics.requireSession",
             "this.diagnostics.report",
+            "this.diagnostics.analysisCompatibility",
             "this.diagnostics.changedPlanDefinitions",
             "this.store.inspect",
             "this.diagnostics.effectiveResponses",
@@ -21804,7 +21819,7 @@
         },
         {
           "name": "adoptModelText",
-          "line": 128,
+          "line": 130,
           "signature": "adoptModelText(user:InMemoryUserAccount, planId:string, expectedRevision:number, result:GuidanceModelText, metadata:NonNullable<DiagnosticGuidancePlan['aiAdoption']>, requestKey:string)",
           "access": "public",
           "decorators": [],
@@ -21819,7 +21834,7 @@
         },
         {
           "name": "list",
-          "line": 142,
+          "line": 144,
           "signature": "list(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -21831,7 +21846,7 @@
         },
         {
           "name": "get",
-          "line": 148,
+          "line": 150,
           "signature": "get(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -21842,7 +21857,7 @@
         },
         {
           "name": "creationResult",
-          "line": 149,
+          "line": 151,
           "signature": "creationResult(user:InMemoryUserAccount, studentId:string, requestKey:string)",
           "access": "public",
           "decorators": [],
@@ -21854,7 +21869,7 @@
         },
         {
           "name": "history",
-          "line": 155,
+          "line": 157,
           "signature": "history(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -21865,7 +21880,7 @@
         },
         {
           "name": "requirePlan",
-          "line": 159,
+          "line": 161,
           "signature": "requirePlan(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -21876,7 +21891,7 @@
         },
         {
           "name": "baseVersion",
-          "line": 164,
+          "line": 166,
           "signature": "baseVersion(plan: DiagnosticGuidancePlan)",
           "access": "private",
           "decorators": [],
@@ -21886,20 +21901,21 @@
         },
         {
           "name": "view",
-          "line": 168,
+          "line": 170,
           "signature": "view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView",
           "access": "private",
           "decorators": [],
           "calls": [
             "this.diagnostics.report",
             "this.baseVersion",
+            "this.diagnostics.analysisCompatibility",
             "this.diagnostics.requireSession",
             "this.diagnostics.changedPlanDefinitions"
           ]
         },
         {
           "name": "saveRevision",
-          "line": 188,
+          "line": 190,
           "signature": "saveRevision(plan: DiagnosticGuidancePlan, actorId: string, kind: GuidancePlanRevision['kind'], reason: string, receipt?: { requestKey?: string; inputHash: string })",
           "access": "private",
           "decorators": [],
@@ -21909,7 +21925,7 @@
         },
         {
           "name": "command",
-          "line": 193,
+          "line": 195,
           "signature": "command(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan, kind: string, input: { expectedRevision?: number; requestKey?: string })",
           "access": "private",
           "decorators": [],
@@ -21919,7 +21935,7 @@
         },
         {
           "name": "bump",
-          "line": 207,
+          "line": 209,
           "signature": "bump(plan: DiagnosticGuidancePlan, actorId: string, kind: GuidancePlanRevision['kind'], reason: string, receipt?: { requestKey?: string; inputHash: string })",
           "access": "private",
           "decorators": [],
@@ -21929,7 +21945,7 @@
         },
         {
           "name": "preserveLegacy",
-          "line": 212,
+          "line": 214,
           "signature": "preserveLegacy(plan: DiagnosticGuidancePlan, actorId: string)",
           "access": "private",
           "decorators": [],
@@ -21942,7 +21958,7 @@
         },
         {
           "name": "adjust",
-          "line": 222,
+          "line": 224,
           "signature": "adjust(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21960,7 +21976,7 @@
         },
         {
           "name": "update",
-          "line": 256,
+          "line": 259,
           "signature": "update(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -21981,7 +21997,7 @@
         },
         {
           "name": "reviews",
-          "line": 290,
+          "line": 293,
           "signature": "reviews(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -21993,7 +22009,7 @@
         },
         {
           "name": "planReviews",
-          "line": 296,
+          "line": 299,
           "signature": "planReviews(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -22005,7 +22021,7 @@
         },
         {
           "name": "reviewViews",
-          "line": 301,
+          "line": 304,
           "signature": "reviewViews(tasks: typeof this.store.reviewTasks)",
           "access": "private",
           "decorators": [],
@@ -22015,7 +22031,7 @@
         },
         {
           "name": "reschedule",
-          "line": 307,
+          "line": 310,
           "signature": "reschedule(user: InMemoryUserAccount, reviewId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -22028,7 +22044,7 @@
         },
         {
           "name": "startReview",
-          "line": 330,
+          "line": 333,
           "signature": "startReview(user: InMemoryUserAccount, reviewId: string)",
           "access": "public",
           "decorators": [],
@@ -22043,7 +22059,7 @@
         },
         {
           "name": "retrospective",
-          "line": 344,
+          "line": 347,
           "signature": "retrospective(user: InMemoryUserAccount, planId: string)",
           "access": "public",
           "decorators": [],
@@ -22061,7 +22077,7 @@
         },
         {
           "name": "acknowledgeRetrospective",
-          "line": 404,
+          "line": 408,
           "signature": "acknowledgeRetrospective(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -39419,13 +39435,13 @@
     {
       "file": "apps/api/src/modules/diagnostics/diagnosis.ts",
       "name": "deriveHypotheses",
-      "line": 14,
+      "line": 15,
       "signature": "deriveHypotheses(studentId: string, subject: Subject, atoms: KnowledgeAtom[], responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, previous: DiagnosticHypothesis[], at: string): DiagnosticHypothesis[]"
     },
     {
       "file": "apps/api/src/modules/diagnostics/diagnosis.ts",
       "name": "verificationConditions",
-      "line": 92,
+      "line": 93,
       "signature": "verificationConditions(cause: DiagnosticHypothesis['cause'], atom: KnowledgeAtom, probes: string[]): NonNullable<DiagnosticHypothesis['verification']>"
     },
     {
@@ -39475,6 +39491,18 @@
       "name": "textbookSourceCitations",
       "line": 8,
       "signature": "textbookSourceCitations(scope: LearningScope, atomId: string, book: CurriculumBook, detail: CitationDetail): LearningSourceCitation[]"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+      "name": "reportMeasurementVersion",
+      "line": 5,
+      "signature": "reportMeasurementVersion(report: DiagnosticReport): string"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+      "name": "reportAnalysisCompatibility",
+      "line": 12,
+      "signature": "reportAnalysisCompatibility(report: DiagnosticReport, originals: DiagnosticResponse[])"
     },
     {
       "file": "apps/api/src/modules/diagnostics/measurement-definition.ts",
@@ -39544,14 +39572,20 @@
     },
     {
       "file": "apps/api/src/modules/diagnostics/measurement.ts",
+      "name": "firstQuestionResponses",
+      "line": 69,
+      "signature": "firstQuestionResponses(responses: DiagnosticResponse[])"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/measurement.ts",
       "name": "weightedEvidence",
-      "line": 63,
+      "line": 75,
       "signature": "weightedEvidence(responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, now: Date): WeightedEvidence[]"
     },
     {
       "file": "apps/api/src/modules/diagnostics/measurement.ts",
       "name": "estimateMastery",
-      "line": 84,
+      "line": 92,
       "signature": "estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[]): MasteryEstimate"
     },
     {
@@ -46791,6 +46825,16 @@
           "type": "string"
         },
         {
+          "name": "baselineMeasurementVersion",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "baselineFamilyIdentityVersion",
+          "optional": true,
+          "type": "string"
+        },
+        {
           "name": "aiAdoption",
           "optional": true,
           "type": "{ suggestionId: string; modelId: string; modelName: string; basedOnRevision: number; adoptedAt: string }"
@@ -46805,14 +46849,14 @@
     {
       "name": "GuidancePlanView",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 283,
+      "line": 284,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GuidancePlanRevision",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 290,
+      "line": 291,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -46870,7 +46914,7 @@
     {
       "name": "ReviewTask",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 295,
+      "line": 296,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -46948,11 +46992,16 @@
     {
       "name": "DiagnosticReport",
       "file": "packages/contracts/src/diagnostics.ts",
-      "line": 303,
+      "line": 304,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
           "name": "familyIdentityVersion",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "measurementVersion",
           "optional": true,
           "type": "string"
         },
@@ -47080,6 +47129,74 @@
           "name": "definitionContext",
           "optional": true,
           "type": "{ origin: 'started' | 'unavailable';\r\n    atoms: Array<{ id: string; name: string; version: number; objective: string; successCriterion: string; fingerprint: string | null }>;\r\n    incompatibleEvidenceIds: string[]; unverifiedEvidenceIds: string[] }"
+        }
+      ]
+    },
+    {
+      "name": "DiagnosticReportAnalysisStatus",
+      "file": "packages/contracts/src/diagnostics.ts",
+      "line": 322,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "requiresReanalysis",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "reportVersion",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "canReanalyze",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "reportMeasurementVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "currentMeasurementVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "reportFamilyIdentityVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "currentFamilyIdentityVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "measurementRulesChanged",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "familyRulesChanged",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "affectedEvidenceIds",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "unverifiedEvidenceIds",
+          "optional": false,
+          "type": "string[]"
+        },
+        {
+          "name": "reasons",
+          "optional": false,
+          "type": "string[]"
         }
       ]
     },
@@ -55522,6 +55639,8 @@
     "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
     "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
     "apps/api/src/modules/diagnostics/learning-source-citation.test.ts",
+    "apps/api/src/modules/diagnostics/measurement-compatibility.test.ts",
+    "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
     "apps/api/src/modules/diagnostics/measurement.test.ts",
     "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
     "apps/api/src/modules/diagnostics/scoring.test.ts",

@@ -1,5 +1,8 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-10-28 139独立候选6a51299：rule-estimate-v3按原子知识点计量实际回答，自述保留原任务分数且不计入能力样本；跨历史会话的报告兼容、显式原键重分析、版本化指导确认及原活动快照已实现。实际SQLite与PG各10项单次全过，含两实例并发/冷重启、缺失旧曝光标记、原生备份恢复与最新孩子删除账本；范围重叠不相加。报告浏览器首轮7/18、第二轮17/18的真实限流和恢复时序失败完整保留，单一组件与父级身份/报告键下恢复单项通过；当前完整18、完整API/415全站与精确新CI接续，不能提前交付。概要/详细设计同步同源码基线，588引用、3744链接及10离线阅读器检查已通过；这不是应用139完整验收。正式继续138/schema21，整体目标active，72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7范围保持。见[139规格与完整失败链](139-self-reported-difficulty-and-measurement-versioning.md#10-当前实现与原失败链仍未交付)和[双库原生原件](../evidence/2026-10-28/measurement-v3-specialties/receipt.json)。
+
+
 2026-10-28 138正式交付：主目录1618d91实际构建并运行schema21，buildId uoEIX8etphDnBG0Yznwij；精确64d8bce/40546374381三组success，本地与远端均411浏览器/411原始尝试全过，零失败、跳过、flaky与重试。完整API本地1505/0/64环境跳过、Linux1497/0/72，教研PG30/0/1 SQLite专属跳过，范围重叠不相加。1280实际HTTP/权限/资源、369编译全部原SHA、959原资产及6音频核对通过，三个守护PID与重启计数跨123787毫秒保持；前两次不足60秒的正式门禁拒绝与原观察保留，未降低门槛。五配置/真实环境原字节保留，新鲜137/schema20停服一致数据库/引用文件及971份旧构建回退逐SHA核验，assetsIncluded:false，不是全研究资产备份或完整恢复演练。/admin/ai-tools与analytics/会话入口、完整表格公式及有限JSON预检、持久分析/提示、原模型重试/取消/本人历史、原请求/冲突副本恢复和旧admin入口迁移均已上线；结果保持待复核，不写正式评分或计划。四个真实匿名教研样本通过；22模型文字矩阵21通过/旧Opus5失败、24次CLI启动，默认DeepSeek V4.1 Flash，不称22全通。139已先提交具体设计，随后独立实施。72项11 implemented/50 in_progress/11 planned/0 verified、完整M1～M7及原像素/DPR/原声、全内容/测量效度、教师/实机/长期门槛保持，整体active。见[本批验收](../evidence/2026-10-28/teaching-tools-acceptance.json)与[实际运行原件](../evidence/2026-10-28/teaching-tools-runtime/receipt.json)。
 
 以下保留此前候选与交付记录，当前正式状态以上方138收据为准。

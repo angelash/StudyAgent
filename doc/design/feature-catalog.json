@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a59e33516cf89248104b758b28862695e280b0c1",
+  "sourceRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -1237,12 +1237,12 @@
             {
               "name": "DiagnosticsService.previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 158
+              "line": 159
             },
             {
               "name": "DiagnosticsService.getBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 191
+              "line": 192
             }
           ],
           "sourceFiles": [
@@ -1298,12 +1298,12 @@
             {
               "name": "DiagnosticsService.startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 192
+              "line": 193
             },
             {
               "name": "DiagnosticsService.start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 35
+              "line": 36
             }
           ],
           "sourceFiles": [
@@ -1401,17 +1401,17 @@
             {
               "name": "DiagnosticsService.listSessions",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 232
+              "line": 233
             },
             {
               "name": "DiagnosticsService.sessionView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 238
+              "line": 239
             },
             {
               "name": "DiagnosticsService.renderItem",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 299
+              "line": 300
             }
           ],
           "sourceFiles": [
@@ -1476,17 +1476,17 @@
             {
               "name": "DiagnosticsService.saveDraft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 324
+              "line": 325
             },
             {
               "name": "DiagnosticsService.changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 259
+              "line": 260
             },
             {
               "name": "DiagnosticsService.complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 416
+              "line": 417
             }
           ],
           "sourceFiles": [
@@ -1542,12 +1542,12 @@
             {
               "name": "DiagnosticsService.submit",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 342
+              "line": 343
             },
             {
               "name": "DiagnosticsService.hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 403
+              "line": 404
             }
           ],
           "sourceFiles": [
@@ -1661,7 +1661,7 @@
             {
               "name": "DiagnosticsService.evidenceView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 539
+              "line": 563
             }
           ],
           "sourceFiles": [
@@ -1718,12 +1718,12 @@
             {
               "name": "DiagnosticsService.reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 603
+              "line": 627
             },
             {
               "name": "DiagnosticsService.reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 497
+              "line": 509
             }
           ],
           "sourceFiles": [
@@ -1754,14 +1754,14 @@
             "/parent/dashboard"
           ],
           "inputs": "sessionId或学生/学科、重分析请求键",
-          "implementation": "汇总有效评分、样本、区间、原子观察和原因假设；保存报告版本；按报告与规则指纹去重重分析请求；AI失败保留规则结果。报告工作区按冻结知识目标组织四维估计、区间和未知项，搜索与reportAtom选择支持刷新和浏览器前进后退。",
+          "implementation": "汇总实际作答的样本、区间、原子观察和原因假设；保存报告版本；沿估计引用追溯历史证据，区分计量与题族方法兼容性。家长显式按原记录追加报告，原键恢复同一回执；账号、角色、学生、版本与方法隔离状态读取和本机原命令，冲突先归档再只读最新。报告工作区按冻结目标组织四维估计、区间和未知项，支持搜索、刷新及前进后退。",
           "outputs": "证据报告、能力画像、分析状态",
           "collections": [
             "diagnosticReports",
             "diagnosticHypotheses",
             "diagnosticResponses"
           ],
-          "limits": "画像是规则估计，没有标准化常模；未测点显示未知。现行自我报告估计保持原服务端规则并说明限制，综合步骤不另加掌握证据。",
+          "limits": "rule-estimate-v3不把自述当成独立作答，只有自述时未知/null/0样本。原任务记分与历史v2数值保留；方法更新不表示进步。原件缺失时保留历史并要求新评测，不从新题库补原证据。",
           "endpoints": [
             {
               "verb": "GET",
@@ -1800,30 +1800,31 @@
             {
               "name": "DiagnosticsService.report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 490
+              "line": 502
             },
             {
               "name": "DiagnosticsService.profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 470
+              "line": 482
             },
             {
               "name": "DiagnosticsService.analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 504
+              "line": 516
             },
             {
               "name": "DiagnosticsService.reanalyzeReport",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 513
+              "line": 535
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+            "apps/web/components/report-analysis-update.tsx",
             "apps/web/components/knowledge-report-workspace.tsx",
             "apps/web/components/knowledge-report-workspace.css",
-            "doc/product/126-knowledge-report-workspace-and-evidence-paths.md",
+            "doc/product/139-self-reported-difficulty-and-measurement-versioning.md",
             "tests/e2e/knowledge-report.spec.ts",
-            "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json",
             "apps/api/src/modules/diagnostics/diagnostics.service.ts"
           ],
           "tests": [
@@ -1849,6 +1850,7 @@
       ],
       "files": [
         "apps/api/src/modules/diagnostics/measurement.ts",
+        "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
         "apps/api/src/modules/diagnostics/diagnosis.ts",
         "apps/api/src/modules/diagnostics/component-observations.ts",
         "apps/api/src/modules/diagnostics/family-identity.ts",
@@ -1875,17 +1877,21 @@
             "/parent/dashboard",
             "/admin/curriculum"
           ],
-          "inputs": "已评分响应、当前有效映射和测量时间",
-          "implementation": "同题同版本只取首次证据；排除已曝光和未审核映射；提示等级权重为1/0.6/0.3/0；同题族后续为0.5；按60天半衰期衰减。",
-          "outputs": "weightedEvidence列表",
+          "inputs": "原响应、冻结会话与映射、测量时间",
+          "implementation": "所有已见记录先占用同题键，仅answered/scored且有限0至1评分进入估计；自述、跳过、待复核及未知协议不计量。更早冻结会话证明曝光时派生标记，原记录不变。排除已曝光和未审核映射；提示权重1/0.6/0.3/0，同族后续0.5，60天半衰期。",
+          "outputs": "rule-estimate-v3的weightedEvidence列表",
           "collections": [
             "diagnosticResponses",
             "measurementItems"
           ],
-          "limits": "题族规范化防止只改呈现的题被当成新独立题族。",
+          "limits": "缺失disposition不猜测；题族规范化防止只改呈现的题被当成独立题族。",
           "endpoints": [],
           "implementations": [],
-          "sourceFiles": [],
+          "sourceFiles": [
+            "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
+            "apps/api/src/modules/diagnostics/measurement-compatibility.test.ts",
+            "doc/product/139-self-reported-difficulty-and-measurement-versioning.md"
+          ],
           "tests": [
             "apps/api/src/modules/diagnostics/measurement.test.ts",
             "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
@@ -2098,12 +2104,12 @@
             {
               "name": "GuidanceService.create",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 43
+              "line": 44
             },
             {
               "name": "GuidanceService.creationResult",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 149
+              "line": 151
             }
           ],
           "sourceFiles": [
@@ -2189,27 +2195,27 @@
             {
               "name": "GuidanceService.list",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 142
+              "line": 144
             },
             {
               "name": "GuidanceService.get",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 148
+              "line": 150
             },
             {
               "name": "GuidanceService.update",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 256
+              "line": 259
             },
             {
               "name": "GuidanceService.adjust",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 222
+              "line": 224
             },
             {
               "name": "GuidanceService.history",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 155
+              "line": 157
             }
           ],
           "sourceFiles": [
@@ -2282,22 +2288,22 @@
             {
               "name": "GuidanceService.reviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 290
+              "line": 293
             },
             {
               "name": "GuidanceService.planReviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 296
+              "line": 299
             },
             {
               "name": "GuidanceService.reschedule",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 307
+              "line": 310
             },
             {
               "name": "GuidanceService.startReview",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 330
+              "line": 333
             }
           ],
           "sourceFiles": [
@@ -2356,12 +2362,12 @@
             {
               "name": "GuidanceService.retrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 344
+              "line": 347
             },
             {
               "name": "GuidanceService.acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 404
+              "line": 408
             }
           ],
           "sourceFiles": [

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a59e33516cf89248104b758b28862695e280b0c1",
+  "sourceRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-27T16:15:00.847Z",
+    "auditAt": "2026-10-27T18:49:39.041Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "5b96867ef73e49dffaec16c27c9e5f31da3c487642410b81666dff105ca60aee",
+    "localAuditSha256": "66afd7255232ccc7b9461abcf2de418ef8873d9da4ec81048d1c351e3b2db7c2",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -166,7 +166,7 @@
     "sourceSha256": {
       "apps/api/src/modules/diagnostics/verification-materials.ts": "26ec2bd5e089b591e67d0e25f708ca9b4b398bbfcbc8da8e4bca9c2e5e703462",
       "apps/api/src/modules/diagnostics/verification-blueprint.ts": "c2cd5f751219f214dd1cc023bf436432d3126e8745bece848ee18e3418aa5318",
-      "apps/api/src/modules/diagnostics/diagnosis.ts": "e8ff42d33147bb8ddc042b73a63aa0635242a3cfdce4be9a668cd839ed8762d9",
+      "apps/api/src/modules/diagnostics/diagnosis.ts": "d8bd4a3f06d93a502147e29b40fa2e2410ceaf436a44065cf2ee967480c25c5e",
       "apps/api/src/modules/diagnostics/family-identity.ts": "8b5d173190e934e94cf1dfc2193948e12f9433c051cb2d50c13c1373bf6a9ae8",
       "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "c4e9964ff87e377f93ae6a8645e9f2697de239aaf563d5f502aba6decea7896b",
       "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "2af3b38205d266f2057e08bacfcd39848dcbe9793255f7562feeb9db0d55a0a7",

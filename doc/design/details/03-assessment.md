@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`a59e33516cf89248104b758b28862695e280b0c1`。角色：学生、监护家长、授权教师。
+源码基线：`6a51299711a8c40c62974490a9dd28bc9c5453c2`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 
@@ -53,8 +53,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:158](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L158)。
-- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:191](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L191)。
+- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:159](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L159)。
+- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:192](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L192)。
 
 ## ASM-02 确认蓝图与冻结评测
 
@@ -75,8 +75,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:192](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L192)。
-- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:35](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L35)。
+- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:193](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L193)。
+- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:36](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L36)。
 
 ## ASM-03 冻结题组内的逐题自适应
 
@@ -116,9 +116,9 @@
 
 **服务方法**：
 
-- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:232](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L232)。
-- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:238](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L238)。
-- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:299](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L299)。
+- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:233](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L233)。
+- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:239](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L239)。
+- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:300](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L300)。
 
 ## ASM-05 草稿、暂停、继续与提前结束
 
@@ -140,9 +140,9 @@
 
 **服务方法**：
 
-- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:324](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L324)。
-- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:259](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L259)。
-- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:416](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L416)。
+- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:325](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L325)。
+- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:260](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L260)。
+- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:417](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L417)。
 
 ## ASM-06 首次响应、跳过、不会与提示
 
@@ -163,8 +163,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:342](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L342)。
-- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:403](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L403)。
+- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:343](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L343)。
+- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:404](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L404)。
 
 ## ASM-07 17类作答控件与协议
 
@@ -216,7 +216,7 @@
 
 **服务方法**：
 
-- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:539](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L539)。
+- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:563](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L563)。
 
 ## ASM-10 评分复核与报告历史
 
@@ -237,8 +237,8 @@
 
 **服务方法**：
 
-- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:603](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L603)。
-- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:497](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L497)。
+- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:627](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L627)。
+- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:509](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L509)。
 
 **补充实现文件**：
 
@@ -251,13 +251,13 @@
 
 **输入**：sessionId或学生/学科、重分析请求键。
 
-**处理与实现**：汇总有效评分、样本、区间、原子观察和原因假设；保存报告版本；按报告与规则指纹去重重分析请求；AI失败保留规则结果。报告工作区按冻结知识目标组织四维估计、区间和未知项，搜索与reportAtom选择支持刷新和浏览器前进后退。
+**处理与实现**：汇总实际作答的样本、区间、原子观察和原因假设；保存报告版本；沿估计引用追溯历史证据，区分计量与题族方法兼容性。家长显式按原记录追加报告，原键恢复同一回执；账号、角色、学生、版本与方法隔离状态读取和本机原命令，冲突先归档再只读最新。报告工作区按冻结目标组织四维估计、区间和未知项，支持搜索、刷新及前进后退。
 
 **输出**：证据报告、能力画像、分析状态。
 
 **状态与持久化**：`diagnosticReports`、`diagnosticHypotheses`、`diagnosticResponses`
 
-**权限、失败与边界**：画像是规则估计，没有标准化常模；未测点显示未知。现行自我报告估计保持原服务端规则并说明限制，综合步骤不另加掌握证据。
+**权限、失败与边界**：rule-estimate-v3不把自述当成独立作答，只有自述时未知/null/0样本。原任务记分与历史v2数值保留；方法更新不表示进步。原件缺失时保留历史并要求新评测，不从新题库补原证据。
 
 **关联接口**：
 
@@ -268,15 +268,16 @@
 
 **服务方法**：
 
-- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:490](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L490)。
-- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:470](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L470)。
-- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:504](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L504)。
-- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:513](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L513)。
+- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:502](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L502)。
+- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:482](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L482)。
+- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:516](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L516)。
+- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:535](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L535)。
 
 **补充实现文件**：
 
+- [apps/api/src/modules/diagnostics/measurement-compatibility.ts](../../../apps/api/src/modules/diagnostics/measurement-compatibility.ts)
+- [apps/web/components/report-analysis-update.tsx](../../../apps/web/components/report-analysis-update.tsx)
 - [apps/web/components/knowledge-report-workspace.tsx](../../../apps/web/components/knowledge-report-workspace.tsx)
 - [apps/web/components/knowledge-report-workspace.css](../../../apps/web/components/knowledge-report-workspace.css)
-- [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
+- [doc/product/139-self-reported-difficulty-and-measurement-versioning.md](../../../doc/product/139-self-reported-difficulty-and-measurement-versioning.md)
 - [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
-- [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
