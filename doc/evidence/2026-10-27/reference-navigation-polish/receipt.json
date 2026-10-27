@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-27T10:28:16.988633+00:00",
+  "head": "1c7c73fc3f86163bff0d4bf757dc1b6f8cc9e727",
+  "passed": true,
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T10:24:52.510Z",
+      "duration": 34807.153,
+      "expected": 9,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 9,
+    "reportSha256": "87840e8cf9a163e51472488c6741124aadf1fcc8e37b85781000f71911588e77"
+  },
+  "compiledFiles": 654,
+  "qaWebBuildId": "bPngM7SA5dpCP5J9AfFUW",
+  "scope": "Nine original single-pass sidebar/workspace journeys after focus and row-layout corrections. Full389, exactCI, extended accounts/scale and production delivery still pending.",
+  "files": [
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "8652f0a91bc3a6f296d5656aa7cce874036f0d7af99159caa315bbd449e12b4f"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "472c035c3169eea886d03f54d2f5b972b79319f00be0fd030c39dec6999a17f8"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "de182c8e48f2e90873b32b766546098b888fe6b8efa58c90eec400002942bf6c"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "88cf11f7b0e655d4e622b8698aa72ccbc495debb257cffb8b5c8c271502d71b4"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "87840e8cf9a163e51472488c6741124aadf1fcc8e37b85781000f71911588e77"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "8da41aac41575bd8e4a00914e3d1d2ce3ecc5c6defa535fdbebc7ded5827f4dd"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "6240011077de97ecd7d92bd52dce218f76180c61afb2679cfc199f218326a4b3"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "25d8e060fbe1d4fbc469954377d28fb496d5dfc441948921d721923ed09a47f4"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    }
+  ]
+}
