@@ -1,5 +1,7 @@
 # 139 暂时不会、实际作答与版本化能力计量
 
+当前执行注记：138已在89c7465归档正式schema21交付，本批在独立measurement-v3工作树实施；下面最初设计时的138门禁状态作为历史保留。
+
 2026-10-28，实施前设计。承接105的M3/M6及XP-I01～I06。138当前本地411单次全过，精确64d8bce/40546374381的API和PG已成功，浏览器仍运行；正式服务仍137/schema20。本文件不表示139已实现，不修改138固定业务代码、编译或验收报告。学校对接、Marketplace和计费继续排除。
 
 ## 1. 已核对的具体行为
@@ -65,3 +67,17 @@ ReportAnalysisUpdate须按当前账号/角色/学生/报告版本和请求代次
 浏览器从年级/进度确认到测量、报告、原因核查、指导确认和复盘展示实际状态，覆盖390/768/1280、刷新/返回、原请求恢复和身份变化。新旧方法数字差异与真正新题学习变化分开；不降低既有“实际间隔”约束，也不以合成时钟声称真人1/3/7/14日效果。
 
 完成合适专项、完整API、全站浏览器、精确CI及主目录可回退守护交付后，才记录139已接入运行。教师有效性、真实设备与长期学习仍按M7另验。138先完成正式交付，再在独立工作树动139业务；72项和全部M1～M7保留。
+
+## 9. 历史协议核对及具体兼容契约（业务实现前补充）
+
+核对最初6955872的submit协议，answered/dont_know/skip从第一版均明确保存disposition，dont_know使用reported_dont_know，原评分版本deterministic-rubric-v1；现行v2和人工复核亦保留原disposition。只读正式SQLite聚合此次12条记录均有dont_know，无缺失标记；仅导出分组数量，不导出身份、原题或答案。不能据此证明所有外部旧备份都没有缺失。未识别/缺失disposition保持资格未知，不以评分版本、零分或null答案反推；从第一版已明确保存的真实answered继续计入。
+
+所有展示过的响应先按原同题键占用曝光，再检查资格；dont_know/skip/待复核/用过答案/不明旧协议均不释放同题供后续独立计量。weight和estimate两层都检查实际answered、scored、有限0～1分数及未曝光，避免直接传入WeightedEvidence绕过资格。原题版本键及既有服务端priorExposure继续保留。
+
+DiagnosticReport增加可选measurementVersion；旧报告缺此字段时从estimate.algorithmVersion核对，空报告的旧方法保持未知但不会凭空产生有效证据。新报告写rule-estimate-v3，旧快照不补写。统一DiagnosticReportAnalysisStatus含report/currentMeasurementVersion、report/currentFamilyIdentityVersion、measurementRulesChanged、familyRulesChanged、affectedEvidenceIds、unverifiedEvidenceIds、reasons、requiresReanalysis、canReanalyze和原reportVersion。沿estimate.evidenceIds逐条到该孩子同学科的实际原记录及旧报告原快照核对；如原件已不存在，只报告未知，不从旧快照复活原数据。
+
+同v3已排除的未知记录不要求无限循环重分析；旧v1/v2中已实际计入的自述/非实际记录、缺失原件或不明协议需要明确核对。只涉及当前v2明确answered且其他方法未变化的报告兼容。未知未来计量版本不能宣称兼容；若原知识定义/证据原件不足以重算则不可重分析，提示保留原报告并完成新评测。
+
+DiagnosticGuidancePlan增加可选baselineMeasurementVersion、baselineFamilyIdentityVersion，在新建和显式调整确认时记录实际基线协议，随现有revision快照保存；不回填既有计划。所有新增字段都在既有JSON文档中，不新增集合/索引或schema；现有导出、删除、原生备份/恢复自动包括这些字段。报告和计划兼容门禁共用服务判断，允许已开始活动按原快照完成；复盘fingerprint同时包括原disposition、曝光和当前计量协议，前后仅按同一套新资格计算。
+
+页面analysis-status读取按账号/角色/学生/报告版本和方法隔离，身份或报告变化撤销旧操作；失败保留原报告及重试。重分析保留确切请求键、版本和原因，断网恢复原命令；不能因切换报告/身份复用前一份操作。旧v2自述计入的提示明确使用过去时，v3显示自述不计入能力估计和独立样本。后续实际HTTP/浏览器原件再证明这些契约，不能将此设计当作实现。

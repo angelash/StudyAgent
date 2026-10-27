@@ -1,0 +1,45 @@
+{
+  "baselineHead": "89c7465bfb8eb194947cb834afa46de8b1767127",
+  "files": {
+    "measurement-v3-baseline.json": {
+      "sha256": "80a0c102ca511c2b79ed57a4ee90944a88256d22cc1fd2be637d7c220335367c",
+      "bytes": 2722,
+      "gzipSha256": "e4cd511e8cf5780b159305be7d3ed6c8ac64750e8873b71ff07f79c7f8fbafc1"
+    },
+    "measurement-v3-unit-red.log": {
+      "sha256": "c8e3c9a35e58f70d26ec717ca37df608dc10207d1da4162026895a7aff4e85cf",
+      "bytes": 1608,
+      "gzipSha256": "f02b21f14daa95b5b82e97e98be1f1c792406f4f6134a6f5484d5bd0c9ed05cb"
+    },
+    "measurement-v3-unit-red-actual.json": {
+      "sha256": "2147ffabfd9e6ceb5870a22d61a347cac6dc3eff7bb9107450ecf410ac65e0f3",
+      "bytes": 9205,
+      "gzipSha256": "098d59e81c2f147e8ab617549434cf6bd7dfb8ba087fa672f4375c01cdae5d02"
+    },
+    "measurement-v3-unit-red-actual.log": {
+      "sha256": "c83a7e050687be84efc05f70f72c02adb8e820127bc3b546c515ff0175ca3af1",
+      "bytes": 492,
+      "gzipSha256": "cc0dfeed2dd5435c34112ebf886b6203974756b39c8a2b7b8c379f8c4efd2706"
+    },
+    "measurement-v3-http-red.json": {
+      "sha256": "087068947475012e87a1214253f56f6e8090eb2c53b1e91588af4980a2a8e12a",
+      "bytes": 5721,
+      "gzipSha256": "e901f662ff3688d6965d13df0566fb369c249e3f57bc658381b3f9d200e5608b"
+    },
+    "measurement-v3-http-red.log": {
+      "sha256": "74612bed5cafdbb8dc2b475f48dcf95c64a88c355513778ce104753a74de04e3",
+      "bytes": 485,
+      "gzipSha256": "6772ffedbd2cca809732e91db062733a9b39cc0cebb5b5cc2aad8437c6a3bde8"
+    }
+  },
+  "unit": {
+    "passed": 11,
+    "failed": 3
+  },
+  "http": {
+    "passed": 1,
+    "failed": 4
+  },
+  "initialRunnerError": "First unit invocation used a doubly-prefixed config path and did not execute tests. Its original log is retained separately; actual unit failures are in unit-red-actual.",
+  "scope": "Controlled anonymous regression fixtures and read-only disposition aggregate. No production records or identity exported. Original schema21 service unchanged."
+}
