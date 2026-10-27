@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "scope": "Two actual isolated integration suites. Product source unchanged; legacy compatibility mocks replaced with enabled Xiaojiu reply fixtures. No provider calls. Prior full regression failure retained separately.",
+  "results": {
+    "red": {
+      "success": false,
+      "numPassedTests": 12,
+      "numFailedTests": 4,
+      "numPendingTests": 0
+    },
+    "green-first": {
+      "success": true,
+      "numPassedTests": 16,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    }
+  },
+  "checksRetained": [
+    "invented evidence rejected with zero messages",
+    "answer disclosure rejected with zero messages and zero hint until valid help",
+    "frozen definition and baseline across three scopes",
+    "historical notebook definition not replaced by current definition or plan",
+    "active diagnostic never invokes enabled model"
+  ],
+  "remaining": "Original full browser and remote CI still running; do not modify that worktree. Cherry-pick only this fixture commit afterward, then repeat complete regression and exact CI."
+}
