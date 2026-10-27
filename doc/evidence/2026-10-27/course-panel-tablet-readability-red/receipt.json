@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-27T09:22:12.591126+00:00",
+  "head": "d1face87dc80807bcb3089de128bedb474758f6a",
+  "productCompiledHead": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+  "passed": false,
+  "cases": 7,
+  "passedCases": 6,
+  "failedCases": 1,
+  "originalAttempts": 7,
+  "retries": 0,
+  "finding": "At768px the actual micro-lesson title width is48px, below120px readable inline space; other6 cases pass. Stable witness against unchanged compiled product, no rebuild or production data.",
+  "files": [
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "606627a266c0876c6966aa05d4096f45f354547629f26d5bbf9ab8c8793c3190"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "49f6f745e224622463d9e08b9918e6661284928ab06329cfe40087758596230f"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "f3a4323f1b3d71f04891c5e99f3618a44938b2d4d445fa5be3dbf0fe2cbbb29a"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "099428fdbdd838b7feeb66f8f0c417c8a1a8f84d45cadb14bb351f2d0a8355de"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "047327a4f4ee06af0f1e44c20745ff95ffc64c12894a7e33ac825a26ba1a200f"
+    }
+  ]
+}
