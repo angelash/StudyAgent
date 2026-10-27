@@ -1,0 +1,346 @@
+{
+  "passed": false,
+  "deployed": false,
+  "head": "e99e4da818645a057eba98641405086098105ac2",
+  "interrupted": true,
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-full-browser-e99e4da.log",
+      "file": "00-whiteboard-question-full-browser-e99e4da.log.gz",
+      "originalSha256": "0b00f28227742d2f5d61a83f04758ee8b51236bc9a4dae49e3f15c293cf15778",
+      "sha256": "ef9c679e499231fc1fe06132777a2187740411a26664310483cdf165f5d9d905"
+    },
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "01-source-course-full-browser.json.gz",
+      "originalSha256": "1d118596aa8e525b0c14156e367a2f08208dd2832fc552be4a743ed8e0d1f242",
+      "sha256": "f4cd73a9a7906f6c08cb0e5268b0673efaede0137f970adc8bcec0c282c4a4e3"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-pwnetcopy-1.network",
+      "file": "02-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-pwnetcopy-1.network.gz",
+      "originalSha256": "18b88d6b3d8b9aea844ae573d67e1c55ab1c902b55a181c67aeb8f7a72840671",
+      "sha256": "a499393d198a8a8d32377d6e1db5557744c70b14a6ce9b9241da342b577ceec1"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1-pwnetcopy-1.network",
+      "file": "03-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1-pwnetcopy-1.network.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1.network",
+      "file": "04-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1.network.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1.trace",
+      "file": "05-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a-recording1.trace.gz",
+      "originalSha256": "5cfdeb14b4e5aa21cec26b6831f69be762b9d0a9e6bd589d024c2a76b1a87266",
+      "sha256": "7b5598db9420b6bb99cfaa3f9ff8f77602a8826c081a2c8eac2776ad9100c294"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a.network",
+      "file": "06-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a.network.gz",
+      "originalSha256": "18b88d6b3d8b9aea844ae573d67e1c55ab1c902b55a181c67aeb8f7a72840671",
+      "sha256": "a499393d198a8a8d32377d6e1db5557744c70b14a6ce9b9241da342b577ceec1"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a.trace",
+      "file": "07-36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a.trace.gz",
+      "originalSha256": "d351620a565f7715690426ba231b7c4b30ef39314938129d66a4941e1f1a20d8",
+      "sha256": "de579eed25c5885a6c3d4ef4713a1b881b6107ec0f98ab4ce74ca3d399bf77bb"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/13c9c61f14aa2b9a632393af4f6b5cff40f83034.css",
+      "file": "08-13c9c61f14aa2b9a632393af4f6b5cff40f83034.css.gz",
+      "originalSha256": "79d26f8489b303e04f8ba72c716cf3986b233f33ac77965e8258d7ad901cfbe2",
+      "sha256": "74aa3a890b4692cea259cb4c449fdccab9233c32ec6880811d060854c48078c4"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/1ad158fbd33aae0d4ec2d1e44e2e758e1c2c3fcf.htc",
+      "file": "09-1ad158fbd33aae0d4ec2d1e44e2e758e1c2c3fcf.htc.gz",
+      "originalSha256": "994fed513e9e354eaa1b355cbf798a31486514648b9188609f2c367d3b4e428a",
+      "sha256": "5e02ac6a1d2765821ba465fe25b79a16265181ec39da4219239509fcc7cc9ea1"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/58dcfa481dbe7c15ef33257c6991d277539bcbe0.htc",
+      "file": "10-58dcfa481dbe7c15ef33257c6991d277539bcbe0.htc.gz",
+      "originalSha256": "1e5877e053d0b5e2465ccad4642b7a69c6af5c181735bc1fec661201bfad6bde",
+      "sha256": "f3e478872e296c120b2cf1e0886feaf051d14072bddc2941a991b6b3b80c891b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/78b9354882a13d2fd936f6ff1e5792a376fec94b.css",
+      "file": "11-78b9354882a13d2fd936f6ff1e5792a376fec94b.css.gz",
+      "originalSha256": "8d1eceba6f39bde439ed59633f15abcf342ebaaabacc29c7226392ddc85b81f6",
+      "sha256": "e2f07c939c0b403ec3e58d2b0ef61317bfd53d331a2152aa70632e735e82d979"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/7eafef62147ee7fa39e229ba654fabb16929e2eb.json",
+      "file": "12-7eafef62147ee7fa39e229ba654fabb16929e2eb.json.gz",
+      "originalSha256": "da737e21068693eb3bcfc249b7a25ce0ab0b9727cac99bd85cc74a79047e8fbb",
+      "sha256": "8dbf5b6d87a2014e5d63ea119e5b007a3ba11f5fd24c97485b42779a9d1a4f0f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/8d53fa5d4060d045a4c61e2a7e21646a04cfdcc5.css",
+      "file": "13-8d53fa5d4060d045a4c61e2a7e21646a04cfdcc5.css.gz",
+      "originalSha256": "ad0526a28c87e0364429181ae0b0352e29c6f7553d74947894bd8335fad438a9",
+      "sha256": "024c3efb9feed4663d319d471dd12ff1a0471be564dd7e253efc29d908e5dbd9"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/9d9137f3623db61c4798f25e482a67cd8aa006a1.css",
+      "file": "14-9d9137f3623db61c4798f25e482a67cd8aa006a1.css.gz",
+      "originalSha256": "16911db633c1f5102c25f778a49dd40631debdfb624a4c20c7341904962180f9",
+      "sha256": "14df8d96975789d5f8eaae4df9a2b7d1c40b5856f080e78a2c2b39ed1e021a5b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/a5288ce7eff7ca15c075bb322cb881dd98becb58.htc",
+      "file": "15-a5288ce7eff7ca15c075bb322cb881dd98becb58.htc.gz",
+      "originalSha256": "94cec3dc02eedce9f80ebbafd4a7cbfb5640efc918bb6fc581012415bce8a506",
+      "sha256": "d9d1fb298bcecad89682a09b5a1c1b064c8ced1b59170e18580254f4e556f891"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/b1b24a940f50015009b1c206119055468b24a4a2.html",
+      "file": "16-b1b24a940f50015009b1c206119055468b24a4a2.html.gz",
+      "originalSha256": "371b5036065d02449895898a9ca3d6e99d4172212255abd67d2bd5ee89e1e224",
+      "sha256": "1d14707343cc8b965b7c123bf73bb453765990fda8d0001df3af11789177441c"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/bedb58d51513372b2cba4817bb7d5cb5d2ad5f25.css",
+      "file": "17-bedb58d51513372b2cba4817bb7d5cb5d2ad5f25.css.gz",
+      "originalSha256": "8cefcc6f6e70966e3f9bf3638da77ccb7d4ce7705ef5159d00f2da97ebb8c917",
+      "sha256": "d8d05893ccf5629ffee157703680e82efb111a3f33196e6e2f5db3bd8a55b60c"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/c47901b36274fe7c44f4773175ddbf79ad490314.htc",
+      "file": "18-c47901b36274fe7c44f4773175ddbf79ad490314.htc.gz",
+      "originalSha256": "f88af9f56e57f807895e86838f0900c5ecb198a4b3471fa71dc0c5ec2b7b279a",
+      "sha256": "05fb5ccc4f958e3bbdc23b20c46a69381db2fc77b20b78ae601b39285bfc227f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/resources/d8a2e523e3cfe36cc22582d926428d667afc8e5c.css",
+      "file": "19-d8a2e523e3cfe36cc22582d926428d667afc8e5c.css.gz",
+      "originalSha256": "483232979a35aa5fb6a964a298203d5ab0772dbcc2d4ab3ed96e86e28243291e",
+      "sha256": "ae74c1623c856447f312bc4f91e73d77a5f80a7b1892dfae2aff8183f360f035"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062191573.jpeg",
+      "file": "20-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062191573.jpeg.gz",
+      "originalSha256": "3a829f9747ec49e0f7fafe05977cf3faa6dc229918ee73b807ec6dbf9d83c73f",
+      "sha256": "549f6740c77602e4d69c3e7dc638521a566c051246cae5b6f6267c9014c74a6e"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192170.jpeg",
+      "file": "21-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192170.jpeg.gz",
+      "originalSha256": "884e829fd3332b950186276f1d652049995a72ed0b1bcb0c3b2c8a6620edd7f8",
+      "sha256": "7b7c361b10a0cc9a80d678e154545d274ea31318651ac9f7f0d0d216b49b45d3"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192192.jpeg",
+      "file": "22-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192192.jpeg.gz",
+      "originalSha256": "85155f337e9d0b3dd358f4521dcc36719cf74829382e561fa34fefd82cc6ac91",
+      "sha256": "2dd257b85717b3d5d93366c0420a850d30dce6bc1ad5409a77f6e5a73878cc0d"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192223.jpeg",
+      "file": "23-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192223.jpeg.gz",
+      "originalSha256": "c012a896e8ff75530f717997b53d7101ede202aeedb739a2cf8a88d37a780151",
+      "sha256": "396ecf34e0bd6124999be7e757f24f3b628dfa94ef39bbd17e60e3d8fe34cc72"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192240.jpeg",
+      "file": "24-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192240.jpeg.gz",
+      "originalSha256": "cfdb4a583ae509aaa75aadaf6ea7dfc0d2f4905bbf83037a39825e802042a02a",
+      "sha256": "5e818bc9a4f6841fc615aad66b2328332ee53c7d20f43e9b4806d0b2b910363f"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192289.jpeg",
+      "file": "25-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192289.jpeg.gz",
+      "originalSha256": "f43387b86045a596d5115d048417c5b4a00962bc9b581f5d14c35b5ddc096640",
+      "sha256": "6aac4a8ee2e69164343daf363c5ba6610dda4246810fb45ca4d34f71d295a038"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192306.jpeg",
+      "file": "26-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192306.jpeg.gz",
+      "originalSha256": "e26558d6f86d02071db7ead2cedf49e9d4e3f0c9db7eb30e0268774f76e57163",
+      "sha256": "0ab6467138055f69560ee88ddb4b4e7ae423112a6dd77dd1d3223615e75709f8"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192401.jpeg",
+      "file": "27-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062192401.jpeg.gz",
+      "originalSha256": "018db953a4289ddd6ad41c9777b103813945402e1c3744c5d7a2d25bf7b7eceb",
+      "sha256": "d3f005aecbb49c126f22cb1bc4718a4de709dd3f34fc43ab82a19989889ac690"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/.playwright-artifacts-8/traces/screencast/page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062207323.jpeg",
+      "file": "28-page@211a1c8fdb9b8dc4a5a85a54d43e945f-1793062207323.jpeg.gz",
+      "originalSha256": "018db953a4289ddd6ad41c9777b103813945402e1c3744c5d7a2d25bf7b7eceb",
+      "sha256": "d3f005aecbb49c126f22cb1bc4718a4de709dd3f34fc43ab82a19989889ac690"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-63b09--after-the-learner-has-left/error-context.md",
+      "file": "29-error-context.md.gz",
+      "originalSha256": "9b85083cc9fc816286fe7ad8ca766efe7b23bc9421f1eb570b43840ca4ce15a3",
+      "sha256": "5909fd946ac2e6b6da79db23cc4c3eb7d5981c41477015c98bc05067cbabe698"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-63b09--after-the-learner-has-left/test-failed-1.png",
+      "file": "30-test-failed-1.png.gz",
+      "originalSha256": "edfad9041e80a741c1a846e7136b447c135a20832e9cddd21e423d1eefced3ec",
+      "sha256": "08631dfe591bb30d9dfb2b0a0c93e8f6b6ca4f1016d46e3de21b00ed0741f599"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-63b09--after-the-learner-has-left/trace.zip",
+      "file": "31-trace.zip.gz",
+      "originalSha256": "432f725537d52c3b371788028e6b9bf640cd2f53fd9a89aff34c9487c00c2f9c",
+      "sha256": "6843d8a57c7f7b3abaaaf32aa0c76c551aa892d758c04af9f019f39debec60f2"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-6dcac-a-manufactured-first-answer/error-context.md",
+      "file": "32-error-context.md.gz",
+      "originalSha256": "0b472bbbd91a075ece6717ba3ee767c0292a90ab0329e4b0c6333ff83da9bca5",
+      "sha256": "2d3271edcbfb5dcc37c71ecf4fe97878028b67e1d9f1dcdbe8721614572b3d25"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-6dcac-a-manufactured-first-answer/test-failed-1.png",
+      "file": "33-test-failed-1.png.gz",
+      "originalSha256": "76435be8b9bc91ebbce55aeff629f760ba39f1941f98bce8e4a3c97086acc3ac",
+      "sha256": "2e8e950d14b048d21b3b1d04de07040b86988f29230b11b1d2421bc7d3cb8517"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-6dcac-a-manufactured-first-answer/trace.zip",
+      "file": "34-trace.zip.gz",
+      "originalSha256": "33cc0b5221f056eb31814d824464479da8489557956c07c96ce09abe79ec92e6",
+      "sha256": "a3330e48de71e0ffb9680beaa07e980827d570f784d622f65fd3ae067f391054"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-9a17a-y-one-question-after-reload/error-context.md",
+      "file": "35-error-context.md.gz",
+      "originalSha256": "b0c70f05b4f3c30a2391fbbfeeab85396f7c46c469b2dee7466ea143da631db4",
+      "sha256": "f9434acf4132f5b6f97e37551340284aecc8896e0e28fa31dc096fc7804bd57d"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-9a17a-y-one-question-after-reload/test-failed-1.png",
+      "file": "36-test-failed-1.png.gz",
+      "originalSha256": "7ec079e3232c68579e3529e310e5878adc792d7a108d71696d4a2a3974875cf7",
+      "sha256": "758c8124e857e96bf380a68ccf47775a5533d654707419794c2260835ffc017c"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-9a17a-y-one-question-after-reload/trace.zip",
+      "file": "37-trace.zip.gz",
+      "originalSha256": "0e38a8ff5148c9f5c1c626b01d832b6117646827534889754d4d16393e01ee75",
+      "sha256": "d8455f9dd67979e04386a074b38446c670dafe097464885f1fb7d3075b23de64"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-d9ace-and-and-one-server-revision/error-context.md",
+      "file": "38-error-context.md.gz",
+      "originalSha256": "f7b471b215410569880cc34138a639b95206e982c85866f42eeaed21e624158d",
+      "sha256": "c6c5f568c44dc295b1ab92647eda7273fe7d94c8ae2c3fbd89aee3775fe0d8c9"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-d9ace-and-and-one-server-revision/test-failed-1.png",
+      "file": "39-test-failed-1.png.gz",
+      "originalSha256": "44f78aea09e34a8e641d0f4df7fd60952254ac333114e8bcebd1bef14a95cfc1",
+      "sha256": "0f549d3567552822db22ba8299e731205d2af3f0ba6624a547c639062faaf14e"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-d9ace-and-and-one-server-revision/trace.zip",
+      "file": "40-trace.zip.gz",
+      "originalSha256": "795455ff5b06b67333d2e170232a23312418019f8754dd0890a4fa4a5b824d61",
+      "sha256": "4775f04401a4f0286562d0884489b8f03b5cbe3fffa3feedf0e0f4711a340ab8"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-e9b23-aved-or-overwrite-its-queue/error-context.md",
+      "file": "41-error-context.md.gz",
+      "originalSha256": "af49030e3b3b62b33929567364369758a142a81a577db6aef63e8fbdb4a4a3e7",
+      "sha256": "7ec4d051334aa75a85b360c4d3e4273c03cf760bdb29878e4278453dbabef9f7"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-e9b23-aved-or-overwrite-its-queue/test-failed-1.png",
+      "file": "42-test-failed-1.png.gz",
+      "originalSha256": "36cc977fec63b8ce741934a61976b09b2c0541223f4d712cc2e95bfb55cf82bf",
+      "sha256": "0051ffd402f190f3498fee810e0bc4c4108fd94d5b974d38a404280e2b6b33f6"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-a-e9b23-aved-or-overwrite-its-queue/trace.zip",
+      "file": "43-trace.zip.gz",
+      "originalSha256": "785658954a04021c8bfd6be236c2fdc04c623f3ebf8550616a561bd67440f495",
+      "sha256": "4137ec1732fd3e24be842a589e0e82b9d9bbda1d05737bcaa0dd844a7998e29a"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-l-83043-ion-retains-its-local-input/error-context.md",
+      "file": "44-error-context.md.gz",
+      "originalSha256": "45b898c8d54e5e6895bb0af504df0b0b3b2b325a647754bc41ec1217587442c2",
+      "sha256": "67c043cc14ae497c06d58c0beadf6f2f77377fd8ca867c3c97cfd0a0ef31b410"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-l-83043-ion-retains-its-local-input/test-failed-1.png",
+      "file": "45-test-failed-1.png.gz",
+      "originalSha256": "121adfe719a403df5afe615ebf4c1952c6ca85824d75165e0594271c27aba279",
+      "sha256": "9a5a46c6f25705cc5acea912bc7b04c83a5f3eadb3f751e4832a8ab193403ad5"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-l-83043-ion-retains-its-local-input/trace.zip",
+      "file": "46-trace.zip.gz",
+      "originalSha256": "8ea4fcbc828ef0d0da1132d54a247b2fded90f9aea57dfe28f8f2b6fe11644ae",
+      "sha256": "64bd3943d8349f1c58eeb65cc99cdbe1fe439d3398a8493bdfdba56c7b05a843"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-p-62a55-er-and-the-current-question/error-context.md",
+      "file": "47-error-context.md.gz",
+      "originalSha256": "72c94494bb65527c5f678a2e60afa3e9b157d5018b19642e3e5b8545e4d638e3",
+      "sha256": "961ee0e3a5654c8e8b4f52cdf698f1864eb1cabfce4fdb394db7fb68092227d3"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-p-62a55-er-and-the-current-question/test-failed-1.png",
+      "file": "48-test-failed-1.png.gz",
+      "originalSha256": "f78b0e0e99dfae2de3e9da883595143b9bae8d5b4b5ac6df4bef3806e6d1e923",
+      "sha256": "bd6915edd8a8a023580ef00f8d9ee3c5f785ed6cb355b448efff3c3616292cc4"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-p-62a55-er-and-the-current-question/trace.zip",
+      "file": "49-trace.zip.gz",
+      "originalSha256": "51dc8dafc9162e41c2dc783a08b5b2715266238bb340ec4e713b798101b96121",
+      "sha256": "181d8017ff5cf5e9a81ce0d9cf0fc9e935cff983aa17009a100dff0b86275cc5"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-t-b524c-e-keeping-the-local-version/error-context.md",
+      "file": "50-error-context.md.gz",
+      "originalSha256": "44579c04902da4e5d90cb7677378aead04ced7ee6677ae5ddd11d3d972022d96",
+      "sha256": "dceafa96f31f88716e5c6e296b1579c52f2b47579495a03663353a504cbd613b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-t-b524c-e-keeping-the-local-version/test-failed-1.png",
+      "file": "51-test-failed-1.png.gz",
+      "originalSha256": "ebf7f064e0fe18a63ceda261f1620c6a19c68e77b41c1927ba9d9cd073bf98c1",
+      "sha256": "8021307285da2d13cfa167241d4f426462d02472984b40c44903b8e67bd6888b"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-t-b524c-e-keeping-the-local-version/trace.zip",
+      "file": "52-trace.zip.gz",
+      "originalSha256": "58bd0c5480c411a49a1a9b49123904230995babd5e605b8770d0d0ceb7d9b042",
+      "sha256": "67deed080eabdd76f0345f187aef481b3d8827bd46e7c98e94d53112c10cd8e1"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-u-c70f3-fers-a-real-downloaded-copy/error-context.md",
+      "file": "53-error-context.md.gz",
+      "originalSha256": "2c79a7faa7683eb37b9aabdb30f41b8eaf82918eeeefdfd325e1ad32a819c213",
+      "sha256": "e1fa6b04e43bd3c32fb164db57f651719d03ba84e3b2ea3e867c7cbf61f862a6"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-u-c70f3-fers-a-real-downloaded-copy/test-failed-1.png",
+      "file": "54-test-failed-1.png.gz",
+      "originalSha256": "811f6d67b3f4bd70908f2698f693effb6c0b08859e2a2f441128a8dc99daef24",
+      "sha256": "05e47fe67fb8ffde5a4ab6b4ec4e94b2bcdf4ae92eb376c586c0911990196ab3"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/answer-journeys-recovery-u-c70f3-fers-a-real-downloaded-copy/trace.zip",
+      "file": "55-trace.zip.gz",
+      "originalSha256": "b5307593af1ce62076b8b14d2e3ccfbc1a4f39129861cac54966905b4fee44e6",
+      "sha256": "bbedf942cbde79dd39ca4897e7a77fe7818cfd3f6354e60fe851ba4da9bd58d0"
+    }
+  ],
+  "note": "Stopped with SIGINT after repeated login failures: this invocation omitted E2E_API_PORT=4172/E2E_WEB_PORT=3172 while the frozen Web build embeds localhost:4172. No business/build/test source changed. Retry uses the original build ports. Remote CI is separate and was not cancelled. SIGINT did not write a new JSON report: the archived source-course-full-browser.json is the earlier 5e6a276 first-run report, retained as a prior artifact only. The current attempt is evidenced by its own log and screenshots/traces; no current-case totals are claimed.",
+  "reportWritten": false
+}

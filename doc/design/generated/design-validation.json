@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-27T00:04:05.669Z",
-  "sourceRevision": "13cd1f0036710adc0ca31fb22defe30653e118e1",
+  "at": "2026-10-27T01:21:56.599Z",
+  "sourceRevision": "e99e4da818645a057eba98641405086098105ac2",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -579,7 +579,7 @@
       "tests/e2e/source-course-project.spec.ts": "d672c04033344ec4863d80b58c7b973ce6d6768ee4929235dc0e03a02664bf15",
       "tests/e2e/source-course.spec.ts": "1072e718f1433736a658b3f07776e0f82055aece2af82bed9dc94d15d0679fba",
       "tests/e2e/studio.spec.ts": "3a772149396a690841c8613e43550d84b60a9bdae97b6bdb10377d00312828b5",
-      "tests/e2e/topic-whiteboard.spec.ts": "163e749408c9405680cae911e6d9d322e0af5fb9dd2b56ca96efc5ffffe25fd9",
+      "tests/e2e/topic-whiteboard.spec.ts": "f6da207f2bb24227f0de596f2aa14d8de1b9304e151609893433dee8d3046551",
       "tests/e2e/whiteboard-media.spec.ts": "860aeb1e9633969ff54189a4e21d0bf3e597f37e5e68bad17e9c4c3af3dbea70",
       "tests/e2e/whiteboard-questions.spec.ts": "cf911b00d3e8b7384f12c9a8f63330fed7922e128d07ebec45b268f5cb385eda",
       "tests/e2e/whiteboard-timing.ts": "9ba4120b8ed6e684e0c918b6cec478320a4456115ccc52cdd321e7ab33f377b2",
@@ -592,7 +592,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3447,
+    "checked": 3451,
     "missing": []
   },
   "staticContent": {
@@ -663,7 +663,7 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-27/whiteboard-question-teaching-verified/receipt.json",
+    "receipt": "../evidence/2026-10-27/whiteboard-question-exact-ci/receipt.json",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

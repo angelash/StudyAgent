@@ -153,3 +153,14 @@ GET原questions/notes为当前授权下的一致完整教学快照：原白板�
 131本地完整浏览器首轮354项中353通过、1失败、无重试；远端5e6a276/40424044286已全部终态，application和postgres成功，browser同一用例初次及重试均失败，整个run仍为failure。完整本地[首轮原件](../evidence/2026-10-27/whiteboard-question-full-browser-before/receipt.json)与[远端终态、完整日志及两次截图/context/trace](../evidence/2026-10-27/whiteboard-question-ci-initial/receipt.json)分别保留。
 
 失败原因是旧测试用details的第2/3项寻找讲稿，而新增提问恢复区增加了details，导致点开错误控件。已改为通过真实summary标题“再比较条件”“最后保留反例”定位，完整表格/长公式断言保留，API/Web业务源码和固定编译未改变。[修正后的24项主题白板专项](../evidence/2026-10-27/whiteboard-question-topic-notes-green/receipt.json)24次原始尝试全通过、0重试。这不是完整354项或新精确CI通过；两项继续执行，正式运行仍130/schema18，整体目标不变。
+
+
+## 16. 完整固定来源与精确远端通过
+
+[完整本地354项原件和固定输入](../evidence/2026-10-27/whiteboard-question-final-full-local/receipt.json)354次原始尝试全部通过，31.3分钟、零失败/跳过/flaky/重试。API1418通过/54环境跳过和PG24通过的既有原报告逐SHA核对；修正讲稿测试定位后API业务及编译没有改变。完整运行包含原成人讲稿表格/公式用例、原句提问/补充板书/显式声音、视频/SRT、完整笔记、成人/孩子私有深链、设置/导览/手机/分享与全部旧旅程。
+
+[精确远端e99e4da/40428575995](../evidence/2026-10-27/whiteboard-question-exact-ci/receipt.json)三组全部success。原始浏览器报告354项、354次原始尝试、0重试；Linux完整API1410通过/65环境跳过；PG整组成功，其中问答/补充教学/迁移子组24通过。没有将跳过项计为完成，也没有取消任何CI。最初5e6a276的旧定位失败及两次远端原件继续保留。
+
+本地接续全站曾漏传固定Web使用的3172/4172，导致重复登录失败，已主动停止并保存[端口错配原件](../evidence/2026-10-27/whiteboard-question-browser-port-mismatch/receipt.json)。中断未写新JSON，该目录复制到的旧JSON已明确标为此前报告，不能算中断轮统计；按原端口的完整354结果另存于上方最终收据。没有为重跑改写API/Web编译或放宽登录断言。
+
+概要/详细设计已按当前e99来源重新生成并核对。正式交付仍需新鲜停服一致schema18回退、主目录实际构建、schema19迁移及守护观察；此时主目录仍130。132配图候选/实际原PNG编辑/不可覆盖版本在另一工作树开发和验证，不混进本节131结果。整体M1～M7及72项11 implemented/50 in_progress/11 planned/0 verified保持。

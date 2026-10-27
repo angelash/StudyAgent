@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "deployed": false,
+  "headSha": "e99e4da818645a057eba98641405086098105ac2",
+  "run": 40428575995,
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "cases": 354,
+    "originalAttempts": 354,
+    "retries": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "linuxApi": {
+    "passed": 1410,
+    "environmentSkipped": 65,
+    "failed": 0
+  },
+  "postgres": {
+    "supplementaryQuestionCases": 24,
+    "scope": "The entire separate PostgreSQL job succeeded; 24 is its original question/teaching migration subgroup, not an all-job count."
+  },
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-ci-e99e4da-terminal.json",
+      "file": "000-whiteboard-question-ci-e99e4da-terminal.json.gz",
+      "originalSha256": "818f609fdbe8f127a154efd7bc3ea78f403e1e5516ffd803c1e3f84ba09514b8",
+      "sha256": "83329148f7670ce3720fbb010db94fd22c1c202f655ad5e5a2714292776f8efd"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-e99e4da.log",
+      "file": "001-whiteboard-question-ci-e99e4da.log.gz",
+      "originalSha256": "7141bb2bc58fcd45e37976ed9cce9f0933f7060317f30bbe007d6340b60944e8",
+      "sha256": "4cff2158548da9a516a9395118441c5ffcb2f32443c0928e8260d0e76af43593"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-e99e4da-artifacts/data/qa/source-course-full-browser.json",
+      "file": "002-source-course-full-browser.json.gz",
+      "originalSha256": "c97fd9a7fcc9bb92a764fd2eed7c9e1a70a250ee471ae45b30a44068cefdbfff",
+      "sha256": "6a4b55a9b1ecf02b0364f6b376994c1e7649aa7b55dbc7e56348f4b6de3524c6"
+    }
+  ],
+  "scope": "Exact e99e4da remote CI and original report. No local full-run, production, real-teacher or full-product claim."
+}
