@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T08:06:57.171Z",
+  "passed": true,
+  "head": "f2b0cc3d1171c483630a9cd3109e89bc49064cd4",
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T07:45:53.153Z",
+      "duration": 82508.548,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 14,
+    "reportSha256": "a7733ee760e8718579db0c7144bb22ec3886fdaf6955ab252861bff7d8fcf01c"
+  },
+  "compiledFiles": 666,
+  "qaWebBuildId": "b-Y3ccbsnWuv5zV2VkqII",
+  "scope": "14 original single-pass synthetic browser cases only. Complete380, exact CI, manual layout refinement and production delivery remain pending; do not substitute for134/135 acceptance.",
+  "files": [
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "869c3abb1e98cf473d2083cfc1c370c098e189f48569260ce4ce093c5aa4338c"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "a7733ee760e8718579db0c7144bb22ec3886fdaf6955ab252861bff7d8fcf01c"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "1ec7f0b24841d73512808193f75d86909466c196f710492413311d59e1134449"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "52ebdf42ded7379a75c85d45bd68046403ec14d6be1287b98727afc42e0817ec"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "2aa3bb2cedade09ea67f3996edf2d65a6a908aff2b01e655ca6fc971d509352b"
+    }
+  ]
+}
