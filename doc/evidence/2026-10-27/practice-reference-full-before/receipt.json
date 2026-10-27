@@ -1,0 +1,191 @@
+{
+  "head": "23b3dacfec324564b5dfa2576c9a4ea4952febf5",
+  "status": "failed",
+  "api": {
+    "passed": 1469,
+    "environmentSkipped": 60,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 365,
+    "failed": 8,
+    "originalAttempts": 373,
+    "retries": 0,
+    "skips": 0
+  },
+  "fixedSourceRecheckedAfterTerminal": true,
+  "findings": [
+    "Three registration 429 responses from the new unscoped synthetic source address",
+    "Five assertions still expect old title counters rather than the new question-progress semantics"
+  ],
+  "failures": [
+    {
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1440",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n   7 |   const nonce = crypto.randomUUID(), principal = 'practice-reference-' + nonce + '@local.test', credential = 'Practice-QA-' + nonce;\n   8 |   const response = await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ principal, credential }) });\n>  9 |   expect(response.status).toBe(201);\n     |                           ^\n  10 |   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));\n  11 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n  12 |   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n    at open (F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\practice-reference.spec.ts:9:27)\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\practice-reference.spec.ts:46:3"
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "title": "a parent can create a learning profile and complete an evidence-limited assessment",
+      "error": "Error: synthetic parent registration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  58 |     body: JSON.stringify({ principal, credential }),\n  59 |   });\n> 60 |   expect(registration.status, 'synthetic parent registration').toBe(201);\n     |                                                                ^\n  61 |\n  62 |   await page.goto('/parent/login');\n  63 |   await page.getByLabel('登录账号').fill(principal);\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\product-smoke.spec.ts:60:64"
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "title": "an approved fraction teaching card renders a safe step-by-step visual",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  132 |   const principal = `fraction-${suffix}@local.test`, credential = `Fraction-only-${suffix}`;\n  133 |   expect((await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' },\n> 134 |     body: JSON.stringify({ principal, credential }) })).status).toBe(201);\n      |                                                                 ^\n  135 |   await page.goto('/parent/login');\n  136 |   await page.getByLabel('登录账号').fill(principal);\n  137 |   await page.getByLabel('密码').fill(credential);\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\product-smoke.spec.ts:134:65"
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-practice-prompt small')\nExpected substring: \u001b[32m\"2 / 4\"\u001b[39m\nReceived string:    \u001b[31m\"SINGLE CHOICE\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-practice-prompt small') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-prompt small')\u001b[22m\n\u001b[2m    32 × locator resolved to <small class=\"cl-practice-kind practice-question-kicker\">SINGLE CHOICE</small>\u001b[22m\n\u001b[2m       - unexpected value \"SINGLE CHOICE\"\u001b[22m\n\n\n  25 |   await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');const answered=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(answered.answers).toHaveLength(1);expect(answered.answers[0].answerExposure).toBeUndefined();\n  26 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();await expect(page.getByRole('dialog',{name:'核查合成原文',exact:true})).toContainText('没有记录晚间');await page.keyboard.press('Escape');\n> 27 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');\n     |                                                                               ^\n  28 |   expect((await call(actor,'GET','/learning/classroom/sessions/'+sessionId)).answers[0]).toEqual(answered.answers[0]);\n  29 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);\n  30 | });\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\source-course-check.spec.ts:27:79"
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-practice-prompt small')\nExpected substring: \u001b[32m\"2 / 4\"\u001b[39m\nReceived string:    \u001b[31m\"SINGLE CHOICE\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-practice-prompt small') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-prompt small')\u001b[22m\n\u001b[2m    32 × locator resolved to <small class=\"cl-practice-kind practice-question-kicker\">SINGLE CHOICE</small>\u001b[22m\n\u001b[2m       - unexpected value \"SINGLE CHOICE\"\u001b[22m\n\n\n  39 |   await page.locator('.cl-practice-options label').nth(0).click();await page.locator('.cl-practice-options label').nth(2).click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');const original=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(original.answers[0].answerExposure).toBeUndefined();\n  40 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();const source=page.getByRole('dialog',{name:'核查合成原文',exact:true});await expect(source).toContainText('没有记录晚间');await page.screenshot({path:evidence+'/frozen-source-'+width+'.png'});await page.keyboard.press('Escape');await expect(source).toHaveCount(0);await expect(page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true})).toBeFocused();\n> 41 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'这题我不会',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'Skip',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.screenshot({path:evidence+'/review-'+width+'.png'});\n     |                                                                               ^\n  42 |   const final=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(final.answers[0]).toEqual(original.answers[0]);expect(final.answers).toHaveLength(4);await page.getByRole('button',{name:'返回课程，安排下一步',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/source-courses\\\\?.*course='+row.id));await expect(panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true})).toBeVisible();const course=await call(actor,'GET','/learning/source-courses/'+row.id);expect(course.journey.unitCheck.current.activity.practice.summary).toMatchObject({answered:4,independentCorrect:2,dontKnow:1,skipped:1});expect(course.lastSessionId).toBeNull();expect(errors).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(width===1440){await call(actor,'POST','/learning/source-courses/'+row.id+'/archive',{expectedRevision:course.revision,requestKey:crypto.randomUUID()});await panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'回到相关微课',exact:true}).first().click();await expect(page.getByRole('alert',{name:'课堂切换未完成',exact:true})).toContainText('已归档课程只能查看已有课堂记录');await page.getByRole('button',{name:'关闭课堂切换提示',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();}\n  43 | });\n  44 |\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\source-course-check.spec.ts:41:79"
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-practice-prompt small')\nExpected substring: \u001b[32m\"2 / 4\"\u001b[39m\nReceived string:    \u001b[31m\"SINGLE CHOICE\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-practice-prompt small') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-prompt small')\u001b[22m\n\u001b[2m    32 × locator resolved to <small class=\"cl-practice-kind practice-question-kicker\">SINGLE CHOICE</small>\u001b[22m\n\u001b[2m       - unexpected value \"SINGLE CHOICE\"\u001b[22m\n\n\n  39 |   await page.locator('.cl-practice-options label').nth(0).click();await page.locator('.cl-practice-options label').nth(2).click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');const original=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(original.answers[0].answerExposure).toBeUndefined();\n  40 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();const source=page.getByRole('dialog',{name:'核查合成原文',exact:true});await expect(source).toContainText('没有记录晚间');await page.screenshot({path:evidence+'/frozen-source-'+width+'.png'});await page.keyboard.press('Escape');await expect(source).toHaveCount(0);await expect(page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true})).toBeFocused();\n> 41 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'这题我不会',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'Skip',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.screenshot({path:evidence+'/review-'+width+'.png'});\n     |                                                                               ^\n  42 |   const final=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(final.answers[0]).toEqual(original.answers[0]);expect(final.answers).toHaveLength(4);await page.getByRole('button',{name:'返回课程，安排下一步',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/source-courses\\\\?.*course='+row.id));await expect(panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true})).toBeVisible();const course=await call(actor,'GET','/learning/source-courses/'+row.id);expect(course.journey.unitCheck.current.activity.practice.summary).toMatchObject({answered:4,independentCorrect:2,dontKnow:1,skipped:1});expect(course.lastSessionId).toBeNull();expect(errors).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(width===1440){await call(actor,'POST','/learning/source-courses/'+row.id+'/archive',{expectedRevision:course.revision,requestKey:crypto.randomUUID()});await panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'回到相关微课',exact:true}).first().click();await expect(page.getByRole('alert',{name:'课堂切换未完成',exact:true})).toContainText('已归档课程只能查看已有课堂记录');await page.getByRole('button',{name:'关闭课堂切换提示',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();}\n  43 | });\n  44 |\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\source-course-check.spec.ts:41:79"
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-practice-prompt small')\nExpected substring: \u001b[32m\"2 / 4\"\u001b[39m\nReceived string:    \u001b[31m\"SINGLE CHOICE\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-practice-prompt small') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-prompt small')\u001b[22m\n\u001b[2m    32 × locator resolved to <small class=\"cl-practice-kind practice-question-kicker\">SINGLE CHOICE</small>\u001b[22m\n\u001b[2m       - unexpected value \"SINGLE CHOICE\"\u001b[22m\n\n\n  39 |   await page.locator('.cl-practice-options label').nth(0).click();await page.locator('.cl-practice-options label').nth(2).click();await page.getByRole('button',{name:'Check →',exact:true}).click();await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');const original=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(original.answers[0].answerExposure).toBeUndefined();\n  40 |   await page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true}).click();const source=page.getByRole('dialog',{name:'核查合成原文',exact:true});await expect(source).toContainText('没有记录晚间');await page.screenshot({path:evidence+'/frozen-source-'+width+'.png'});await page.keyboard.press('Escape');await expect(source).toHaveCount(0);await expect(page.getByRole('button',{name:'核对本题原文 1 ↗',exact:true})).toBeFocused();\n> 41 |   await page.reload();await expect(page.locator('.cl-practice-prompt small')).toContainText('2 / 4');await page.locator('.cl-practice-options label').first().click();await page.getByRole('button',{name:'Check →',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'这题我不会',exact:true}).click();await page.getByRole('button',{name:'下一题 →',exact:true}).click();await page.getByRole('button',{name:'Skip',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.screenshot({path:evidence+'/review-'+width+'.png'});\n     |                                                                               ^\n  42 |   const final=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(final.answers[0]).toEqual(original.answers[0]);expect(final.answers).toHaveLength(4);await page.getByRole('button',{name:'返回课程，安排下一步',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/source-courses\\\\?.*course='+row.id));await expect(panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true})).toBeVisible();const course=await call(actor,'GET','/learning/source-courses/'+row.id);expect(course.journey.unitCheck.current.activity.practice.summary).toMatchObject({answered:4,independentCorrect:2,dontKnow:1,skipped:1});expect(course.lastSessionId).toBeNull();expect(errors).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);if(width===1440){await call(actor,'POST','/learning/source-courses/'+row.id+'/archive',{expectedRevision:course.revision,requestKey:crypto.randomUUID()});await panel(page).getByRole('link',{name:'复盘本次核查 →',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();await page.getByRole('button',{name:'回到相关微课',exact:true}).first().click();await expect(page.getByRole('alert',{name:'课堂切换未完成',exact:true})).toContainText('已归档课程只能查看已有课堂记录');await page.getByRole('button',{name:'关闭课堂切换提示',exact:true}).click();await expect(page.getByRole('region',{name:'课堂练习复盘',exact:true})).toBeVisible();}\n  43 | });\n  44 |\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\source-course-check.spec.ts:41:79"
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-practice-prompt>small')\nExpected substring: \u001b[32m\"2 / 2\"\u001b[39m\nReceived string:    \u001b[31m\"SINGLE CHOICE\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-practice-prompt>small') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-prompt>small')\u001b[22m\n\u001b[2m    32 × locator resolved to <small class=\"cl-practice-kind practice-question-kicker\">SINGLE CHOICE</small>\u001b[22m\n\u001b[2m       - unexpected value \"SINGLE CHOICE\"\u001b[22m\n\n\n  76 |   await page.getByRole('link',{name:'打开资料应用项目 →',exact:true}).click();await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await page.getByRole('button',{name:'下一步 ›',exact:true}).click();await page.getByRole('textbox',{name:'我准备核查的主张',exact:true}).fill('来源课程项目的保存稿');await page.getByRole('button',{name:'保存阶段草稿',exact:true}).click();await expect(page.getByText('草稿和自评准备已保存。',{exact:true})).toBeVisible();const projectId=new URL(page.url()).searchParams.get('project')!;await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n  77 |   const records=page.getByLabel('我的资料项目记录',{exact:true});await records.locator('summary').click();await expect(records).toContainText('已保存内容 1/3');await records.getByRole('link',{name:'继续这份项目 →',exact:true}).click();await expect(page.getByRole('textbox',{name:'我准备核查的主张',exact:true})).toHaveValue('来源课程项目的保存稿');expect(new URL(page.url()).searchParams.get('project')).toBe(projectId);await page.getByRole('button',{name:'关闭项目教学',exact:true}).click();\n> 78 |   await first.getByRole('link',{name:'继续讲解 →',exact:true}).click();await expect(page.locator('.cl-session-navigation')).toContainText('2 / 6');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开',exact:true}).click();await first.getByRole('link',{name:'进入课堂练习',exact:true}).click();await expect(page.locator('.cl-practice-prompt>small')).toContainText('2 / 2');expect(new URL(page.url()).searchParams.get('session')).toBe(sessionId);const current=await call(actor,'GET','/learning/classroom/sessions/'+sessionId);expect(current.answers).toHaveLength(1);expect((await call(actor,'GET','/learning/source-courses/'+row.id)).formalMeasurementEligible).toBe(false);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  79 | });\n  80 |\n  81 | test('returning from a course restores the personal project step and mode while an explicit URL takes priority',async({page})=>{\n    at F:\\workspace\\github\\StudyAgent-legacy-ai\\tests\\e2e\\source-course-project.spec.ts:78:466"
+    }
+  ],
+  "remaining": [
+    "Per-test synthetic source headers without changing rate limits",
+    "Assert actual current progress and immutable first answer in source journeys",
+    "Integrate the independently reproduced history fix after its controlled run",
+    "New complete and exact combined acceptance"
+  ],
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "e4772de6c6ba12b4bc536b12abdc795477feff32519d5f966ac1814e852f38ab"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "4940af3238d633944db23250190be4a5bc097fe601bbffa228ab334abfd2cde7"
+    },
+    {
+      "file": "api.json.gz",
+      "originalSha256": "b8bb8d72dc1b6e6d38bfe1bda9cc977b51befaa21cc65cf4c20352ac4b462bb7"
+    },
+    {
+      "file": "api.log.gz",
+      "originalSha256": "7c90b76642bd3cd05ff9d387ffbc062187729ca4cbcace4329a7f1b3e035c1da"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "3c15bad63c408646d51e38e7f44cac64f8e608b1b6240707b973a45ace46706c"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "e5710b24bb811b1cf192c73429c28773334beba6c9b40320b31740e00c7ff22f"
+    },
+    {
+      "file": "failures/practice-reference-referen-4d413-input-and-selection-at-1440/test-failed-1.png",
+      "originalSha256": "31534d0ff8b0900213a111990b158c5b950eb67812e29c91cece6292ddac76c1"
+    },
+    {
+      "file": "failures/practice-reference-referen-4d413-input-and-selection-at-1440/error-context.md.gz",
+      "originalSha256": "885e4f162120e47a6e8668e16df24c86fae31411698ef5540a197bf04874a800"
+    },
+    {
+      "file": "failures/practice-reference-referen-4d413-input-and-selection-at-1440/trace.zip",
+      "originalSha256": "f598a365011f65cf4a52f768dab631515f86963b6da341eb24cf78673ea0b161"
+    },
+    {
+      "file": "failures/product-smoke-a-parent-can-6a623-evidence-limited-assessment/test-failed-1.png",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "file": "failures/product-smoke-a-parent-can-6a623-evidence-limited-assessment/error-context.md.gz",
+      "originalSha256": "622f2074d1bfeffe34b2317b067132cc306b14005cfca1f44c034d92435da7b7"
+    },
+    {
+      "file": "failures/product-smoke-a-parent-can-6a623-evidence-limited-assessment/trace.zip",
+      "originalSha256": "13fac51afede324aa0c14fbfdbd73739fb8c9203a3ed559f06e545844b1c03c4"
+    },
+    {
+      "file": "failures/product-smoke-an-approved--03a2d--a-safe-step-by-step-visual/test-failed-1.png",
+      "originalSha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+    },
+    {
+      "file": "failures/product-smoke-an-approved--03a2d--a-safe-step-by-step-visual/error-context.md.gz",
+      "originalSha256": "abf88c7d3f8428fcf26552f1358efaa13edba99d4cbaacd9c0807bede3112a58"
+    },
+    {
+      "file": "failures/product-smoke-an-approved--03a2d--a-safe-step-by-step-visual/trace.zip",
+      "originalSha256": "8fff85740e33d9caa546a622d705993c243d05444e7036d4a795c483fe65312b"
+    },
+    {
+      "file": "failures/source-course-check-one-co-eeccb-st-answer-and-frozen-source/test-failed-1.png",
+      "originalSha256": "ee147ad739c4606accb070db9baccc17e841eb5a7c4f40b1f6a1a909bad321f9"
+    },
+    {
+      "file": "failures/source-course-check-one-co-eeccb-st-answer-and-frozen-source/error-context.md.gz",
+      "originalSha256": "8ad6cdd5a35cc2c0c74cc87fbc919fd1e490bb6f7dc1b79bc03df7958aca2675"
+    },
+    {
+      "file": "failures/source-course-check-one-co-eeccb-st-answer-and-frozen-source/trace.zip",
+      "originalSha256": "54df2453dd6b3387b41e82d3dee04b5e02fe3254a3402769e212bedaf8e33cb5"
+    },
+    {
+      "file": "failures/source-course-check-source-5be59--exact-course-return-at-390/test-failed-1.png",
+      "originalSha256": "ee147ad739c4606accb070db9baccc17e841eb5a7c4f40b1f6a1a909bad321f9"
+    },
+    {
+      "file": "failures/source-course-check-source-5be59--exact-course-return-at-390/error-context.md.gz",
+      "originalSha256": "f01e1b96072ba38771c6b42e3fee432893734e8f90d0313302cd96d243541ba8"
+    },
+    {
+      "file": "failures/source-course-check-source-5be59--exact-course-return-at-390/trace.zip",
+      "originalSha256": "bdd4d4900f3807fe545b8dca7ebb141889bacf807143e6bd13b8185f4a38b2d0"
+    },
+    {
+      "file": "failures/source-course-check-source-5ba2d--exact-course-return-at-768/test-failed-1.png",
+      "originalSha256": "317fac07fe0da96bcf7323cf8e045167b28754dd72da593a5dd202b8214832f9"
+    },
+    {
+      "file": "failures/source-course-check-source-5ba2d--exact-course-return-at-768/error-context.md.gz",
+      "originalSha256": "0942162c66436a1bb7e3eacad0a9ba6aa86bdc35cf5f573ca4d218560b996fe3"
+    },
+    {
+      "file": "failures/source-course-check-source-5ba2d--exact-course-return-at-768/trace.zip",
+      "originalSha256": "bbac00c09a9c397c891e1d842312b183fb0fe0ac8c376bcac05eb1fcdcedd939"
+    },
+    {
+      "file": "failures/source-course-check-source-78344-exact-course-return-at-1440/test-failed-1.png",
+      "originalSha256": "0a1d145aed49b40417991666deac1234367761132239f472a537d532779c1b60"
+    },
+    {
+      "file": "failures/source-course-check-source-78344-exact-course-return-at-1440/error-context.md.gz",
+      "originalSha256": "85ca79f182edc75164f65f5dfccf8412f951a4b590329bb169d8532e094b9056"
+    },
+    {
+      "file": "failures/source-course-check-source-78344-exact-course-return-at-1440/trace.zip",
+      "originalSha256": "a4604cf07f20ab7f779d000be0f3796ddcf7dea4dddc6cb600ad4f3972402afa"
+    },
+    {
+      "file": "failures/source-course-project-sour-c66dd-s-in-one-continuous-journey/test-failed-1.png",
+      "originalSha256": "aeacb55bb4be3e1004d9061f41664d32873b06376ab759be7212a2cb00195672"
+    },
+    {
+      "file": "failures/source-course-project-sour-c66dd-s-in-one-continuous-journey/error-context.md.gz",
+      "originalSha256": "9136df54033063cf82abc19f501a8f083ba2af48f0a3bbdded98b696bf86abc3"
+    },
+    {
+      "file": "failures/source-course-project-sour-c66dd-s-in-one-continuous-journey/trace.zip",
+      "originalSha256": "b0b695d8c43dcac26904d03b3a0b5746b508ae1578791c799a416008e261c6e6"
+    }
+  ]
+}
