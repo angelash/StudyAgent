@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T10:14:12.729714+00:00",
+  "passed": true,
+  "ciRun": 40481433427,
+  "head": "b11f104918d09c57a3c3ab60a0fedc56b31b0a0f",
+  "allJobsSuccess": true,
+  "browser": {
+    "passed": 382,
+    "originalAttempts": 382,
+    "retries": 0,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "postgres": "Every current workflow service/command/native restore group passed. Original log contains individual scopes; no summed coverage claim.",
+  "files": [
+    {
+      "file": "run.json.gz",
+      "originalSha256": "4fa4fafa556296c54f77232c7d768f4353482cc7023941bc18973fdc06a0b142",
+      "originalBytes": 20591
+    },
+    {
+      "file": "jobs.log.gz",
+      "originalSha256": "a8c9ab586bae6f38fce826c7ea5875aeb6942b72bfcd4d559f7a06f6c100e5ff",
+      "originalBytes": 1015356
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "b0604fd8158ee23e614655e30c9c9b02e53eb006719dc495d10a0bc0ddd82752",
+      "originalBytes": 429860
+    }
+  ],
+  "limitations": [
+    "Pending actual stopped-service backup, production build and guardian delivery.",
+    "No full-reference pixel/DPR/audio, teacher/real-device/complete curriculum or longitudinal-effect acceptance."
+  ]
+}
